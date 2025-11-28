@@ -18,8 +18,7 @@ public class ChangeHeaderPatch {
         DEFAULT(null, null),
         REGULAR("ytWordmarkHeader", "yt_ringo2_wordmark_header"),
         PREMIUM("ytPremiumWordmarkHeader", "yt_ringo2_premium_wordmark_header"),
-        ROUNDED("morphe_header_rounded"),
-        MINIMAL("morphe_header_minimal"),
+        MORPHE("morphe_header"),
         CUSTOM("morphe_header_custom");
 
         @Nullable

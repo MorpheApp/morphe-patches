@@ -1476,8 +1476,7 @@ Swipe to expand or close"</string>
             <string name="morphe_header_logo_entry_3" translatable="false">Premium</string>
             <string name="morphe_header_logo_entry_4" translatable="false">Morphe</string>
             <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
-            <string name="morphe_header_logo_entry_5">Morphe minimal</string>
-            <string name="morphe_header_logo_entry_6">Custom</string>
+            <string name="morphe_header_logo_entry_5">Custom</string>
         </patch>
         <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
             <string name="morphe_bypass_image_region_restrictions_title">Bypass image region restrictions</string>

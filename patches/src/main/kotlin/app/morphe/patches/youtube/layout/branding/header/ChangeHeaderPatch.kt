@@ -35,8 +35,7 @@ private val targetResourceDirectoryNames = mapOf(
  * Header logos built into this patch.
  */
 private val logoResourceNames = arrayOf(
-    "morphe_header_minimal",
-    "morphe_header_rounded",
+    "morphe_header",
 )
 
 /**
