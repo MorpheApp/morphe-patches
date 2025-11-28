@@ -1,0 +1,28 @@
+<!--
+   https://github.com/google/material-design-icons/blob/9beae745bb758f3ad56654fb377ea5cf62be4915/symbols/android/fast_forward/materialsymbolsoutlined/fast_forward_wght200_24px.xml
+   Changes made: Icon has been resized to 30dp.
+
+Copyright 2022 Google
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="30dp"
+        android:height="30dp"
+        android:viewportWidth="30"
+        android:viewportHeight="30">
+    <path
+            android:fillColor="@android:color/white"
+            android:pathData="M5.12109,20.7695 L5.12109,9.23047 L13.7734,15 Z M16.2266,20.7695 L16.2266,9.23047 L24.8789,15 Z M6.37109,15 Z M17.4766,15 Z M6.37109,18.4375 L11.5352,15 L6.37109,11.5625 Z M17.4766,18.4375 L22.6406,15 L17.4766,11.5625 Z M17.4766,18.4375"/>
+</vector>
