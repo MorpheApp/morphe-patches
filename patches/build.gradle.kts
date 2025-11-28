@@ -1,14 +1,14 @@
-group = "app.revanced"
+group = "app.morphe"
 
 patches {
     about {
-        name = "ReVanced Liso Patches"
-        description = "Forked patches, from the former ReVanced team member and 3 year contributor to ReVanced YouTube"
-        source = "git@github.com:LisoUseInAIKyrios/revanced-patches.git"
-        author = "LisoUseInAIKyrios"
+        name = "Morphe Patches"
+        description = "Patches for Morphe"
+        source = "git@github.com:Morphe/morphe-patches.git"
+        author = "Morphe"
         contact = "na@na"
         website = "na"
-        license = "GNU General Public License v3.0"
+        license = "GNU General Public License v3.0, with project attributation required"
     }
 }
 
@@ -41,13 +41,14 @@ dependencies {
 }
 
 tasks {
+    // TODO: Fix AddResourcesPatch so strings never need pre-processing.
     register<JavaExec>("preprocessCrowdinStrings") {
         description = "Preprocess strings for Crowdin push"
 
         dependsOn(compileKotlin)
 
         classpath = sourceSets["main"].runtimeClasspath
-        mainClass.set("app.revanced.util.CrowdinPreprocessorKt")
+        mainClass.set("app.morphe.util.CrowdinPreprocessorKt")
 
         args = listOf(
             "src/main/resources/addresources/values/strings.xml",
@@ -69,7 +70,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/revanced/revanced-patches")
+            url = uri("https://maven.pkg.github.com/morphe/morphe-patches")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")

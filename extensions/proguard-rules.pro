@@ -1,7 +1,7 @@
 -dontobfuscate
 -dontoptimize
 -keepattributes *
--keep class app.revanced.** {
+-keep class app.morphe.** {
   *;
 }
 -keep class com.google.** {

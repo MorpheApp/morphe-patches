@@ -5,7 +5,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <app.revanced.extension.shared.settings.preference.ColorPickerView
+    <app.morphe.extension.shared.settings.preference.ColorPickerView
             android:id="@+id/revanced_color_picker_view"
             android:layout_width="match_parent"
             android:layout_height="0dp" />

@@ -1,0 +1,76 @@
+package app.morphe.patches.youtube.interaction.copyvideourl
+
+import app.revanced.patcher.patch.bytecodePatch
+import app.revanced.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.addResources
+import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.playercontrols.*
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
+
+private val copyVideoUrlResourcePatch = resourcePatch {
+    dependsOn(
+        settingsPatch,
+        playerControlsPatch,
+        addResourcesPatch,
+    )
+
+    execute {
+        addResources("youtube", "interaction.copyvideourl.copyVideoUrlResourcePatch")
+
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("revanced_copy_video_url"),
+            SwitchPreference("revanced_copy_video_url_timestamp"),
+        )
+
+        copyResources(
+            "copyvideourl",
+            ResourceGroup(
+                resourceDirectoryName = "drawable",
+                "revanced_yt_copy.xml",
+                "revanced_yt_copy_timestamp.xml",
+            ),
+        )
+
+        addBottomControl("copyvideourl")
+    }
+}
+
+@Suppress("unused")
+val copyVideoUrlPatch = bytecodePatch(
+    name = "Copy video URL",
+    description = "Adds options to display buttons in the video player to copy video URLs.",
+) {
+    dependsOn(
+        copyVideoUrlResourcePatch,
+        playerControlsPatch,
+        videoInformationPatch,
+    )
+
+    compatibleWith(
+        "com.google.android.youtube"(
+            "19.43.41",
+            "20.14.43",
+            "20.21.37",
+            "20.31.40",
+            "20.46.41",
+        )
+    )
+
+    execute {
+        val extensionPlayerPackage = "Lapp/morphe/extension/youtube/videoplayer"
+        val buttonsDescriptors = listOf(
+            "$extensionPlayerPackage/CopyVideoUrlButton;",
+            "$extensionPlayerPackage/CopyVideoUrlTimestampButton;",
+        )
+
+        buttonsDescriptors.forEach { descriptor ->
+            initializeBottomControl(descriptor)
+            injectVisibilityCheckCall(descriptor)
+        }
+    }
+}

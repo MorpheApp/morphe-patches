@@ -1,0 +1,325 @@
+package app.morphe.patches.youtube.layout.returnyoutubedislike
+
+import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.patch.PatchException
+import app.revanced.patcher.patch.bytecodePatch
+import app.morphe.patches.all.misc.resources.addResources
+import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_19_33_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_41_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
+import app.morphe.patches.youtube.shared.rollingNumberTextViewAnimationUpdateFingerprint
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
+import app.morphe.patches.youtube.video.videoid.hookVideoId
+import app.morphe.patches.youtube.video.videoid.videoIdPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findFreeRegister
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.returnLate
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import java.util.logging.Logger
+
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
+
+private const val FILTER_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/components/ReturnYouTubeDislikeFilter;"
+
+val returnYouTubeDislikePatch = bytecodePatch(
+    name = "Return YouTube Dislike",
+    description = "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
+) {
+    dependsOn(
+        settingsPatch,
+        sharedExtensionPatch,
+        addResourcesPatch,
+        lithoFilterPatch,
+        videoIdPatch,
+        playerTypeHookPatch,
+        versionCheckPatch,
+    )
+
+    compatibleWith(
+        "com.google.android.youtube"(
+            "19.43.41",
+            "20.14.43",
+            "20.21.37",
+            "20.31.40",
+            "20.46.41",
+            // 20.40+ does not support yet support the Shorts player.
+        )
+    )
+
+    execute {
+        addResources("youtube", "layout.returnyoutubedislike.returnYouTubeDislikePatch")
+
+        PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
+            SwitchPreference("revanced_ryd_enabled"),
+            SwitchPreference("revanced_ryd_shorts"),
+            SwitchPreference("revanced_ryd_dislike_percentage"),
+            SwitchPreference("revanced_ryd_compact_layout"),
+            SwitchPreference("revanced_ryd_estimated_like"),
+            SwitchPreference("revanced_ryd_toast_on_connection_error"),
+            NonInteractivePreference(
+                key = "revanced_ryd_attribution",
+                tag = "app.morphe.extension.youtube.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
+                selectable = true,
+            ),
+            PreferenceCategory(
+                key = "revanced_ryd_statistics_category",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = emptySet(), // Preferences are added by custom class at runtime.
+                tag = "app.morphe.extension.youtube.returnyoutubedislike.ui.ReturnYouTubeDislikeDebugStatsPreferenceCategory"
+            )
+        )
+
+        // region Inject newVideoLoaded event handler to update dislikes when a new video is loaded.
+
+        hookVideoId("$EXTENSION_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
+
+        // Hook the player response video id, to start loading RYD sooner in the background.
+        hookPlayerResponseVideoId("$EXTENSION_CLASS_DESCRIPTOR->preloadVideoId(Ljava/lang/String;Z)V")
+
+        // endregion
+
+        // region Hook like/dislike/remove like button clicks to send votes to the API.
+
+        arrayOf(
+            likeFingerprint to Vote.LIKE,
+            dislikeFingerprint to Vote.DISLIKE,
+            removeLikeFingerprint to Vote.REMOVE_LIKE,
+        ).forEach { (fingerprint, vote) ->
+            fingerprint.method.addInstructions(
+                0,
+                """
+                    const/4 v0, ${vote.value}
+                    invoke-static {v0}, $EXTENSION_CLASS_DESCRIPTOR->sendVote(I)V
+                """,
+            )
+        }
+
+        // endregion
+
+        // region Hook code for creation and cached lookup of text Spans.
+
+        // Alternatively the hook can be made in the creation of Spans in TextComponentSpec.
+        // And it works in all situations except if the likes do not such as disliking.
+        // This hook handles all situations, as it's where the created Spans are stored and later reused.
+
+        // Find the field name of the conversion context.
+        val conversionContextClass = conversionContextFingerprintToString.originalClassDef
+        val textComponentConversionContextField = textComponentConstructorFingerprint.originalClassDef.fields.find {
+            it.type == conversionContextClass.type
+                    // 20.41+ uses superclass field type.
+                    || it.type == conversionContextClass.superclass
+        } ?: throw PatchException("Could not find conversion context field")
+
+        textComponentLookupFingerprint.match(textComponentConstructorFingerprint.originalClassDef).method.apply {
+            // Find the instruction for creating the text data object.
+            val textDataClassType = textComponentDataFingerprint.originalClassDef.type
+
+            val insertIndex: Int
+            val charSequenceRegister: Int
+
+            if (is_19_33_or_greater && !is_20_10_or_greater) {
+                val index = indexOfFirstInstructionOrThrow {
+                    (opcode == Opcode.INVOKE_STATIC || opcode == Opcode.INVOKE_STATIC_RANGE)
+                            && getReference<MethodReference>()?.returnType == textDataClassType
+                }
+
+                insertIndex = indexOfFirstInstructionOrThrow(index) {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                            getReference<MethodReference>()?.parameterTypes?.firstOrNull() == "Ljava/lang/CharSequence;"
+                }
+
+                charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
+            } else {
+                insertIndex = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.NEW_INSTANCE &&
+                        getReference<TypeReference>()?.type == textDataClassType
+                }
+
+                val charSequenceIndex = indexOfFirstInstructionOrThrow(insertIndex) {
+                    opcode == Opcode.IPUT_OBJECT &&
+                            getReference<FieldReference>()?.type == "Ljava/lang/CharSequence;"
+                }
+                charSequenceRegister = getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
+            }
+
+            val free1 = findFreeRegister(insertIndex, charSequenceRegister)
+            val free2 = findFreeRegister(insertIndex, charSequenceRegister, free1)
+
+            addInstructionsAtControlFlowLabel(
+                insertIndex,
+                """
+                    # Copy conversion context.
+                    move-object/from16 v$free1, p0
+                    
+                    # 20.41 field is the abstract superclass.
+                    # Verify it's the expected subclass just in case. 
+                    instance-of v$free2, v$free1, ${textComponentConversionContextField.type}
+                    if-eqz v$free2, :ignore
+                    
+                    check-cast v$free1, $conversionContextClass
+                    invoke-static { v$free1, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                    move-result-object v$charSequenceRegister
+                    
+                    :ignore
+                    nop
+                """
+            )
+        }
+
+        // endregion
+
+        // region Hook Shorts
+
+        // Filter that parses the video id from the UI
+        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+
+        if (is_20_07_or_greater) {
+            // Turn off a/b flag that enables new code for creating litho spans.
+            // If enabled then the litho text span hook is never called.
+            // Target code is very obfuscated and exactly what the code does is not clear.
+            // Return late so debug patch logs if the flag is enabled.
+            if (is_20_41_or_greater) {
+                // TODO: Support the new non litho Shorts layout.
+                // Turning off this flag on later versions can break the Shorts overlay and nothing is shown.
+                Logger.getLogger(this::class.java.name).warning(
+                    "\n!!!" +
+                            "\n!!! Dislikes are not yet fully supported when patching YouTube 20.40+" +
+                            "\n!!! Patch earlier target if dislikes are not shown" +
+                            "\n!!!"
+                )
+            } else {
+                textComponentFeatureFlagFingerprint.method.returnLate(false)
+            }
+        }
+
+        // Player response video id is needed to search for the video ids in Shorts litho components.
+        hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
+
+        // endregion
+
+        // region Hook rolling numbers.
+
+        rollingNumberSetterFingerprint.method.apply {
+            val insertIndex = 1
+            val dislikesIndex = rollingNumberSetterFingerprint.instructionMatches.last().index
+            val charSequenceInstanceRegister =
+                getInstruction<OneRegisterInstruction>(0).registerA
+            val charSequenceFieldReference =
+                getInstruction<ReferenceInstruction>(dislikesIndex).reference
+
+            val conversionContextRegister = implementation!!.registerCount - parameters.size + 1
+
+            val freeRegister = findFreeRegister(insertIndex, charSequenceInstanceRegister, conversionContextRegister)
+
+            addInstructions(
+                insertIndex,
+                """
+                    iget-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
+                    invoke-static {v$conversionContextRegister, v$freeRegister}, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberLoaded(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+                    move-result-object v$freeRegister
+                    iput-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
+                """
+            )
+        }
+
+        // Rolling Number text views use the measured width of the raw string for layout.
+        // Modify the measure text calculation to include the left drawable separator if needed.
+        rollingNumberMeasureAnimatedTextFingerprint.let {
+            // Additional check to verify the opcodes are at the start of the method
+            if (it.instructionMatches.first().index != 0) throw PatchException("Unexpected opcode location")
+            val endIndex = it.instructionMatches.last().index
+
+            it.method.apply {
+                val measuredTextWidthRegister = getInstruction<OneRegisterInstruction>(endIndex).registerA
+
+                addInstructions(
+                    endIndex + 1,
+                    """
+                        invoke-static {p1, v$measuredTextWidthRegister}, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                        move-result v$measuredTextWidthRegister
+                    """
+                )
+            }
+        }
+
+        // Additional text measurement method. Used if YouTube decides not to animate the likes count
+        // and sometimes used for initial video load.
+        rollingNumberMeasureStaticLabelFingerprint.match(
+            rollingNumberMeasureStaticLabelParentFingerprint.originalClassDef,
+        ).let {
+            val measureTextIndex = it.instructionMatches.first().index + 1
+            it.method.apply {
+                val freeRegister = getInstruction<TwoRegisterInstruction>(0).registerA
+
+                addInstructions(
+                    measureTextIndex + 1,
+                    """
+                        move-result v$freeRegister
+                        invoke-static {p1, v$freeRegister}, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                    """
+                )
+            }
+        }
+
+        arrayOf(
+            // The rolling number Span is missing styling since it's initially set as a String.
+            // Modify the UI text view and use the styled like/dislike Span.
+            // Initial TextView is set in this method.
+            rollingNumberTextViewFingerprint.method,
+            // Videos less than 24 hours after uploaded, like counts will be updated in real time.
+            // Whenever like counts are updated, TextView is set in this method.
+            rollingNumberTextViewAnimationUpdateFingerprint.method,
+        ).forEach { insertMethod ->
+            insertMethod.apply {
+                val setTextIndex = indexOfFirstInstructionOrThrow {
+                    getReference<MethodReference>()?.name == "setText"
+                }
+
+                val textViewRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerC
+                val textSpanRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerD
+
+                addInstructions(
+                    setTextIndex,
+                    """
+                        invoke-static {v$textViewRegister, v$textSpanRegister}, $EXTENSION_CLASS_DESCRIPTOR->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        move-result-object v$textSpanRegister
+                    """
+                )
+            }
+        }
+
+        // endregion
+    }
+}
+
+enum class Vote(val value: Int) {
+    LIKE(1),
+    DISLIKE(-1),
+    REMOVE_LIKE(0),
+}
