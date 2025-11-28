@@ -1,1 +1,14 @@
 <!-- TODO: Create icons -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="800"
+    android:viewportHeight="800">
+    <group
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:translateX="200"
+        android:translateY="200">
+    </group>
+</vector>

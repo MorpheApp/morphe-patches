@@ -1,1 +1,20 @@
 <!-- TODO: Create icons -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="256"
+    android:viewportHeight="256">
+    <!-- Android launcher can hide the background layer if it's black or nearly black.
+     The dark background is needed to see the V shape in day mode. To prevent hiding
+     the layer it must be added to the foreground. -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M0,0 L256,0 L256,256 L0,256 Z" />
+    <group
+        android:scaleX="0.3"
+        android:scaleY="0.3"
+        android:translateX="89.6"
+        android:translateY="89.6">
+    </group>
+</vector>
