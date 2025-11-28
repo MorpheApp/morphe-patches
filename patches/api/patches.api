@@ -605,10 +605,6 @@ public final class app/morphe/patches/youtube/layout/returnyoutubedislike/Vote :
 	public static fun values ()[Lapp/morphe/patches/youtube/layout/returnyoutubedislike/Vote;
 }
 
-public final class app/morphe/patches/youtube/layout/searchbar/WideSearchbarPatchKt {
-	public static final fun getWideSearchbarPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
-}
-
 public final class app/morphe/patches/youtube/layout/seekbar/SeekbarColorPatchKt {
 	public static final fun getSeekbarColorPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }

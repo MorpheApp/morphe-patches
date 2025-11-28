@@ -1,8 +1,5 @@
 package app.morphe.patches.youtube.layout.searchbar
 
-import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
-import app.revanced.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -16,16 +13,17 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/WideSearchbarPatch;"
 
-val wideSearchbarPatch = bytecodePatch(
-    name = "Wide search bar",
+internal val wideSearchbarPatch = bytecodePatch(
     description = "Adds an option to replace the search icon with a wide search bar. " +
             "This will hide the YouTube logo when active.",
 ) {
@@ -51,9 +49,7 @@ val wideSearchbarPatch = bytecodePatch(
             // YT removed the legacy text search text field all code required to use it.
             // This functionality could be restored by adding a search text field to the toolbar
             // with a listener that artificially clicks the toolbar search button.
-            return@execute Logger.getLogger(this::class.java.name).warning(
-                "Wide searchbar is not compatible with 20.31+"
-            )
+            return@execute
         }
 
         addResources("youtube", "layout.searchbar.wideSearchbarPatch")
