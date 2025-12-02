@@ -160,10 +160,12 @@ val lithoFilterPatch = bytecodePatch(
                     parameters = listOf(),
                     returnType = "Ljava/lang/String;"
                 ),
+                // TODO: Change to methodCall(reference = accessibilityIdMethod, location = MatchAfterWithin(3))
+                //       After changing to latest patcher release.
                 methodCall(
                     smali = accessibilityIdMethod.toString(),
                     location = MatchAfterWithin(3)
-                ),
+                )
             )
             custom { method, _ ->
                 // 'public final synthetic' or 'public final bridge synthetic'.
@@ -241,24 +243,26 @@ val lithoFilterPatch = bytecodePatch(
 
             // If there is text related to accessibility, get the accessibilityId and accessibilityText.
             addInstructions(
-                accessibilityIdIndex, """
-                    # Get accessibilityId
-                    invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
-                    move-result-object v$accessibilityIdRegister
-                    
-                    # Get accessibilityText
-                    invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
-                    move-result-object v$accessibilityTextRegister
+                accessibilityIdIndex,
                     """
+                        # Get accessibilityId
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
+                        move-result-object v$accessibilityIdRegister
+                        
+                        # Get accessibilityText
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
+                        move-result-object v$accessibilityTextRegister
+                """
             )
 
             // If there is no accessibility-related text,
             // both accessibilityId and accessibilityText use empty values.
             addInstructions(
-                nullCheckIndex, """
+                nullCheckIndex,
+                """
                     const-string v$accessibilityIdRegister, ""
                     const-string v$accessibilityTextRegister, ""
-                    """
+                """
             )
         }
 
