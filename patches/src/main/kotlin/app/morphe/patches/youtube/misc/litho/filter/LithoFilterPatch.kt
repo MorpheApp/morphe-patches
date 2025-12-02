@@ -10,7 +10,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.findFreeRegister
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -182,9 +182,10 @@ val lithoFilterPatch = bytecodePatch(
         componentCreateFingerprint.method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
 
-            val freeRegister = findFreeRegister(insertIndex)
-            val identifierRegister = findFreeRegister(insertIndex, freeRegister)
-            val pathRegister = findFreeRegister(insertIndex, freeRegister, identifierRegister)
+            val registerProvider = getFreeRegisterProvider(insertIndex)
+            val freeRegister = registerProvider.getFreeRegister()
+            val identifierRegister = registerProvider.getFreeRegister()
+            val pathRegister = registerProvider.getFreeRegister()
 
             // We can directly access the class related with the buttonViewModel from this method.
             // This is within 10 lines of insertIndex.
@@ -205,11 +206,12 @@ val lithoFilterPatch = bytecodePatch(
             // We need to find a free register to store the accessibilityId and accessibilityText,
             // but the 'findFreeRegister' function cannot be used due to the 'if-eqz' branch.
             // Set checkBranch to false and use the 'findFreeRegister' function.
-            val accessibilityIdRegister = findFreeRegister(nullCheckIndex,
-                freeRegister, identifierRegister, pathRegister, buttonViewModelRegister, nullCheckRegister)
-            val accessibilityTextRegister = findFreeRegister(nullCheckIndex,
-                freeRegister, identifierRegister, pathRegister, buttonViewModelRegister, nullCheckRegister, accessibilityIdRegister)
-
+            val accessibilityRegisterProvider = getFreeRegisterProvider(
+                nullCheckIndex,
+                registerProvider.getUsedAndExcludedRegisters()
+            )
+            val accessibilityIdRegister = accessibilityRegisterProvider.getFreeRegister()
+            val accessibilityTextRegister = accessibilityRegisterProvider.getFreeRegister()
 
             addInstructionsAtControlFlowLabel(
                 insertIndex,

@@ -4,7 +4,7 @@ import app.revanced.patcher.patch.resourcePatch
 import org.w3c.dom.Element
 
 @Suppress("unused")
-val enableAndroidDebuggingPatch = resourcePatch(
+internal val enableAndroidDebuggingPatch = resourcePatch(
     // name = "Enable Android debugging",
     description = "Enables Android developer debugging capabilities. Including this patch can slow down the app."
 ) {
