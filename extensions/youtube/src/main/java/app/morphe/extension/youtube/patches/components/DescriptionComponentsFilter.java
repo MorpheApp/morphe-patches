@@ -123,7 +123,7 @@ final class DescriptionComponentsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String path, byte[] buffer,
+    boolean isFiltered(String identifier, String path, String accessibility, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
 
         if (matchedGroup == aiGeneratedVideoSummarySection || matchedGroup == hypePoints) {

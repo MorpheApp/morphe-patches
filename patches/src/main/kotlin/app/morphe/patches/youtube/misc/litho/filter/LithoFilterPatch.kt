@@ -2,11 +2,6 @@
 
 package app.morphe.patches.youtube.misc.litho.filter
 
-import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.removeInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.revanced.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
@@ -17,11 +12,27 @@ import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findFreeRegister
+import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnLate
+import app.revanced.patcher.InstructionLocation.MatchAfterWithin
+import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.removeInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.revanced.patcher.fingerprint
+import app.revanced.patcher.methodCall
+import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import java.util.logging.Logger
 
 lateinit var addLithoFilter: (String) -> Unit
     private set
@@ -128,13 +139,44 @@ val lithoFilterPatch = bytecodePatch(
             .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = emptyComponentFingerprint.classDef.methods.single {
+        val builderMethodDescriptor = emptyComponentFingerprint.classDef.methods.single { method ->
             // The only static method in the class.
-                method -> AccessFlags.STATIC.isSet(method.accessFlags)
+            AccessFlags.STATIC.isSet(method.accessFlags)
         }
 
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 
+        val accessibilityIdMethod = with(accessibilityIdFingerprint) {
+            val index = instructionMatches.first().index
+            method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
+        }
+
+        val accessibilityLabelFingerprint = fingerprint {
+            returns("V")
+            instructions(
+                methodCall(
+                    opcode = Opcode.INVOKE_INTERFACE,
+                    parameters = listOf(),
+                    returnType = "Ljava/lang/String;"
+                ),
+                methodCall(
+                    smali = accessibilityIdMethod.toString(),
+                    location = MatchAfterWithin(3)
+                ),
+            )
+            custom { method, _ ->
+                AccessFlags.SYNTHETIC.isSet(method.accessFlags)
+            }
+        }
+
+        val accessibilityLabelMethod = with (accessibilityLabelFingerprint) {
+            val index = instructionMatches.first().index
+            method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
+        }
+
+        // TODO: Completely remove compatibility with YouTube 19.16 to make code easier to maintain.
+        //       YouTube 19.16 is sufficiently out of date, and without the 'Disable update screen' patch,
+        //       the 'Update your app' dialog will be shown and users will not be able to use the app.
         componentCreateFingerprint.method.apply {
             val insertIndex = if (is_19_17_or_greater) {
                 indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
@@ -143,9 +185,55 @@ val lithoFilterPatch = bytecodePatch(
                 0
             }
 
+            // TODO: Since so many free registers are used,
+            //       it should be checked that there are no register conflicts in the latest YouTube.
+            var buttonViewModelIndex = 0
+            var buttonViewModelRegister = 0
+            var accessibilityIdIndex = 0
+            var accessibilityIdRegister = 0
+            var accessibilityLabelRegister = 0
+            var nullCheckIndex = 0
+
             val freeRegister = findFreeRegister(insertIndex)
-            val identifierRegister = findFreeRegister(insertIndex, freeRegister)
-            val pathRegister = findFreeRegister(insertIndex, freeRegister, identifierRegister)
+            val identifierRegister =
+                findFreeRegister(insertIndex, freeRegister)
+            val pathRegister =
+                findFreeRegister(insertIndex, freeRegister, identifierRegister)
+
+            val extensionMethodCall = if (is_19_17_or_greater) {
+                buttonViewModelIndex = indexOfFirstInstructionReversedOrThrow(insertIndex) {
+                    opcode == Opcode.CHECK_CAST &&
+                            getReference<TypeReference>()?.type == accessibilityIdMethod.definingClass
+                }
+                buttonViewModelRegister =
+                    getInstruction<OneRegisterInstruction>(buttonViewModelIndex).registerA
+                accessibilityIdIndex = buttonViewModelIndex + 2
+
+                nullCheckIndex =
+                    indexOfFirstInstructionReversedOrThrow(buttonViewModelIndex, Opcode.IF_EQZ)
+                val nullCheckRegister = getInstruction<OneRegisterInstruction>(nullCheckIndex).registerA
+
+                accessibilityIdRegister = findFreeRegister(nullCheckIndex, false,
+                    freeRegister, buttonViewModelRegister, nullCheckRegister)
+                accessibilityLabelRegister = findFreeRegister(nullCheckIndex, false,
+                        freeRegister, buttonViewModelRegister, accessibilityIdRegister, nullCheckRegister)
+
+                // TODO: Delete this debug line once you have checked the latest YouTube.
+                Logger.getLogger(this::class.java.name).info(
+                    "\"LithoFilterPatch\": Debug info for registers" +
+                            "\n identifierRegister: $identifierRegister" +
+                            "\n pathRegister: $pathRegister" +
+                            "\n accessibilityIdRegister: $accessibilityIdRegister" +
+                            "\n accessibilityLabelRegister: $accessibilityLabelRegister"
+                )
+
+                "invoke-static { v$identifierRegister, v$pathRegister, v$accessibilityIdRegister, v$accessibilityLabelRegister }, " +
+                        "$EXTENSION_CLASS_DESCRIPTOR->" +
+                        "isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Z"
+            } else {
+                "invoke-static { v$identifierRegister, v$pathRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                        "isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;)Z"
+            }
 
             addInstructionsAtControlFlowLabel(
                 insertIndex,
@@ -159,7 +247,7 @@ val lithoFilterPatch = bytecodePatch(
                     
                     iget-object v$identifierRegister, v$freeRegister, $conversionContextIdentifierField
                     iget-object v$pathRegister, v$freeRegister, $conversionContextPathBuilderField
-                    invoke-static { v$identifierRegister, v$pathRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;)Z
+                    $extensionMethodCall
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :unfiltered
                     
@@ -174,6 +262,25 @@ val lithoFilterPatch = bytecodePatch(
                     nop
                 """
             )
+
+            if (is_19_17_or_greater) {
+                addInstructions(
+                    accessibilityIdIndex, """
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
+                        move-result-object v$accessibilityIdRegister
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityLabelMethod
+                        move-result-object v$accessibilityLabelRegister
+                        """
+                )
+
+                // Set the initial values of accessibilityId and accessibilityLabel (empty values).
+                addInstructions(
+                    nullCheckIndex, """
+                        const-string v$accessibilityIdRegister, ""
+                        const-string v$accessibilityLabelRegister, ""
+                        """
+                )
+            }
         }
 
         // endregion

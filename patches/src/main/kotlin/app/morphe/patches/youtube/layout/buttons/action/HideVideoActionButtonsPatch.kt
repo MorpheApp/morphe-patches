@@ -42,6 +42,8 @@ val hideVideoActionButtonsPatch = resourcePatch(
             SwitchPreference("morphe_hide_like_dislike_button"),
             SwitchPreference("morphe_hide_comments_button"),
             SwitchPreference("morphe_hide_save_button"),
+            SwitchPreference("morphe_hide_remix_button"),
+            SwitchPreference("morphe_hide_share_button"),
         )
 
         if (is_20_22_or_greater) {
@@ -60,9 +62,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
                     SwitchPreference("morphe_hide_ask_button"),
                     SwitchPreference("morphe_hide_clip_button"),
                     SwitchPreference("morphe_hide_promote_button"),
-                    SwitchPreference("morphe_hide_remix_button"),
                     SwitchPreference("morphe_hide_report_button"),
-                    SwitchPreference("morphe_hide_share_button"),
                     SwitchPreference("morphe_hide_shop_button"),
                     SwitchPreference("morphe_hide_stop_ads_button"),
                     SwitchPreference("morphe_hide_thanks_button"),

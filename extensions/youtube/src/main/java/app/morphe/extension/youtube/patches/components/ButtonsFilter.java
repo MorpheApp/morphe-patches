@@ -16,7 +16,8 @@ final class ButtonsFilter extends Filter {
 
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup actionBarGroup;
-    private final StringFilterGroup bufferFilterPathGroup;
+    private final StringFilterGroup buttonFilterPathGroup;
+    private final StringFilterGroupList accessibilityButtonsGroupList = new StringFilterGroupList();
     private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
 
     public ButtonsFilter() {
@@ -32,7 +33,7 @@ final class ButtonsFilter extends Filter {
                 "animated_button_border.e"
         );
 
-        bufferFilterPathGroup = new StringFilterGroup(
+        buttonFilterPathGroup = new StringFilterGroup(
                 null,
                 "|ContainerType|button.e"
         );
@@ -57,60 +58,72 @@ final class ButtonsFilter extends Filter {
                 )
         );
 
-        // FIXME: 20.22+ filtering of the action buttons doesn't work because
-        //        the buffer is the same for all buttons.
-        if (!VersionCheckPatch.IS_20_22_OR_GREATER) {
-            addPathCallbacks(bufferFilterPathGroup);
-        }
+        addPathCallbacks(buttonFilterPathGroup);
 
-        bufferButtonsGroupList.addAll(
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_REPORT_BUTTON,
-                        "yt_outline_flag"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_SHARE_BUTTON,
-                        "yt_outline_share"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_REMIX_BUTTON,
-                        "yt_outline_youtube_shorts_plus"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_THANKS_BUTTON,
-                        "yt_outline_dollar_sign_heart"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_ASK_BUTTON,
-                        "yt_fill_spark"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_SHOP_BUTTON,
-                        "yt_outline_bag"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_STOP_ADS_BUTTON,
-                        "yt_outline_slash_circle_left"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_COMMENTS_BUTTON,
-                        "yt_outline_message_bubble_right"
-                ),
-                // Check for clip button both here and using a path filter,
-                // as there's a chance the path is a generic action button and won't contain 'clip_button'
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_CLIP_BUTTON,
-                        "yt_outline_scissors"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_HYPE_BUTTON,
-                        "yt_outline_star_shooting"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PROMOTE_BUTTON,
-                        "yt_outline_megaphone"
-                )
-        );
+        if (VersionCheckPatch.IS_20_22_OR_GREATER) {
+            // FIXME: Most buttons do not have an accessibilityId.
+            //        Instead, they have an accessibilityLabel, so hiding functionality must be implemented using this
+            //        (e.g. custom filter - 'video_action_bar$Hype')
+            accessibilityButtonsGroupList.addAll(
+                    new StringFilterGroup(
+                            Settings.HIDE_SHARE_BUTTON,
+                            "id.video.share.button"
+                    ),
+                    new StringFilterGroup(
+                            Settings.HIDE_REMIX_BUTTON,
+                            "id.video.remix.button"
+                    )
+            );
+        } else {
+            bufferButtonsGroupList.addAll(
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_REPORT_BUTTON,
+                            "yt_outline_flag"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_SHARE_BUTTON,
+                            "yt_outline_share"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_REMIX_BUTTON,
+                            "yt_outline_youtube_shorts_plus"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_THANKS_BUTTON,
+                            "yt_outline_dollar_sign_heart"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_ASK_BUTTON,
+                            "yt_fill_spark"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_SHOP_BUTTON,
+                            "yt_outline_bag"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_STOP_ADS_BUTTON,
+                            "yt_outline_slash_circle_left"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_COMMENTS_BUTTON,
+                            "yt_outline_message_bubble_right"
+                    ),
+                    // Check for clip button both here and using a path filter,
+                    // as there's a chance the path is a generic action button and won't contain 'clip_button'
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_CLIP_BUTTON,
+                            "yt_outline_scissors"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_HYPE_BUTTON,
+                            "yt_outline_star_shooting"
+                    ),
+                    new ByteArrayFilterGroup(
+                            Settings.HIDE_PROMOTE_BUTTON,
+                            "yt_outline_megaphone"
+                    )
+            );
+        }
     }
 
     private boolean isEveryFilterGroupEnabled() {
@@ -118,15 +131,32 @@ final class ButtonsFilter extends Filter {
             if (!group.isEnabled()) return false;
         }
 
-        for (var group : bufferButtonsGroupList) {
-            if (!group.isEnabled()) return false;
+        if (VersionCheckPatch.IS_20_22_OR_GREATER) {
+            for (var group : accessibilityButtonsGroupList) {
+                if (!group.isEnabled()) return false;
+            }
+        } else {
+            for (var group : bufferButtonsGroupList) {
+                if (!group.isEnabled()) return false;
+            }
         }
 
         return true;
     }
 
+    private boolean hideButtons(String path, String accessibility, byte[] buffer) {
+        // Make sure the current path is the right one to avoid false positives.
+        if (!path.startsWith(VIDEO_ACTION_BAR_PATH) && !path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH)) {
+            return false;
+        }
+
+        return VersionCheckPatch.IS_20_22_OR_GREATER
+                ? accessibilityButtonsGroupList.check(accessibility).isFiltered()
+                : bufferButtonsGroupList.check(buffer).isFiltered();
+    }
+
     @Override
-    boolean isFiltered(String identifier, String path, byte[] buffer,
+    boolean isFiltered(String identifier, String path, String accessibility, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (matchedGroup == likeSubscribeGlow) {
             return (path.startsWith(VIDEO_ACTION_BAR_PATH_PREFIX) || path.startsWith(COMPACT_CHANNEL_BAR_PATH_PREFIX))
@@ -139,10 +169,8 @@ final class ButtonsFilter extends Filter {
             return isEveryFilterGroupEnabled();
         }
 
-        if (matchedGroup == bufferFilterPathGroup) {
-            // Make sure the current path is the right one to avoid false positives.
-            return (path.startsWith(VIDEO_ACTION_BAR_PATH) || path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH))
-                    && bufferButtonsGroupList.check(buffer).isFiltered();
+        if (matchedGroup == buttonFilterPathGroup) {
+            return hideButtons(path, accessibility, buffer);
         }
 
         return true;

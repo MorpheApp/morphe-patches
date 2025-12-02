@@ -19,16 +19,24 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class LithoFilterPatch {
     /**
+     * Non ascii character, to allow easier log filtering.
+     */
+    private static final String DELIMITING_CHARACTER = "❙";
+
+    /**
      * Simple wrapper to pass the litho parameters through the prefix search.
      */
     private static final class LithoFilterParameters {
         final String identifier;
         final String path;
+        final String accessibility;
         final byte[] buffer;
 
-        LithoFilterParameters(String lithoIdentifier, String lithoPath, byte[] buffer) {
+        LithoFilterParameters(String lithoIdentifier, String lithoPath,
+                              String accessibility, byte[] buffer) {
             this.identifier = lithoIdentifier;
             this.path = lithoPath;
+            this.accessibility = accessibility;
             this.buffer = buffer;
         }
 
@@ -42,6 +50,12 @@ public final class LithoFilterPatch {
             builder.append(" Path: ");
             builder.append(path);
             if (Settings.DEBUG_PROTOBUFFER.get()) {
+                // If both accessibilityId and accessibilityLabel are empty, don't add them to the debug log.
+                if (accessibility.length() > 1) {
+                    // AccessibilityId and AccessibilityLabel are pieces of BufferStrings.
+                    builder.append(" Accessibility: ");
+                    builder.append(accessibility);
+                }
                 builder.append(" BufferStrings: ");
                 findAsciiStrings(builder, buffer);
             }
@@ -57,7 +71,6 @@ public final class LithoFilterPatch {
             final int minimumAscii = 32;  // 32 = space character
             final int maximumAscii = 126; // 127 = delete character
             final int minimumAsciiStringLength = 4; // Minimum length of an ASCII string to include.
-            String delimitingCharacter = "❙"; // Non ascii character, to allow easier log filtering.
 
             final int length = buffer.length;
             int start = 0;
@@ -69,7 +82,7 @@ public final class LithoFilterPatch {
                         for (int i = start; i < end; i++) {
                             builder.append((char) buffer[i]);
                         }
-                        builder.append(delimitingCharacter);
+                        builder.append(DELIMITING_CHARACTER);
                     }
                     start = end + 1;
                 }
@@ -180,7 +193,8 @@ public final class LithoFilterPatch {
 
                             LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
                             final boolean isFiltered = filter.isFiltered(parameters.identifier,
-                                    parameters.path, parameters.buffer, group, type, matchedStartIndex);
+                                    parameters.path, parameters.accessibility, parameters.buffer,
+                                    group, type, matchedStartIndex);
 
                             if (isFiltered && BaseSettings.DEBUG.get()) {
                                 if (type == Filter.FilterContentType.IDENTIFIER) {
@@ -321,9 +335,18 @@ public final class LithoFilterPatch {
     }
 
     /**
-     * Injection point.
+     * Injection point.  Called off the main thread.
+     * Targets 19.17 and lower.
      */
     public static boolean isFiltered(String identifier, StringBuilder pathBuilder) {
+        return isFiltered(identifier, pathBuilder, "", "");
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean isFiltered(String identifier, StringBuilder pathBuilder,
+                                     String accessibilityId, String accessibilityLabel) {
         try {
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;
@@ -366,7 +389,8 @@ public final class LithoFilterPatch {
             }
 
             String path = pathBuilder.toString();
-            LithoFilterParameters parameter = new LithoFilterParameters(identifier, path, buffer);
+            String accessibility = accessibilityId + DELIMITING_CHARACTER + accessibilityLabel;
+            LithoFilterParameters parameter = new LithoFilterParameters(identifier, path, accessibility, buffer);
             Logger.printDebug(() -> "Searching " + parameter);
 
             return identifierSearchTree.matches(identifier, parameter)

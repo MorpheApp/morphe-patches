@@ -88,7 +88,7 @@ final class CommentsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String path, byte[] buffer,
+    boolean isFiltered(String identifier, String path, String accessibility, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (matchedGroup == chipBar) {
             // Playlist sort button uses same components and must only filter if the player is opened.

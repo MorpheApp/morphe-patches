@@ -40,6 +40,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.util.MethodUtil
 import java.util.EnumSet
 
+internal fun Method.findFreeRegister(startIndex: Int, vararg registersToExclude: Int) =
+    findFreeRegister(startIndex, true, *registersToExclude)
+
 /**
  * Starting from and including the instruction at index [startIndex],
  * finds the next register that is wrote to and not read from. If a return instruction
@@ -49,12 +52,17 @@ import java.util.EnumSet
  * swap register contents if a 4-bit register is required.
  *
  * @param startIndex Inclusive starting index.
+ * @param checkBranch Whether to check branch opcodes. This can only be used on verified indices.
  * @param registersToExclude Registers to exclude, and consider as used. For most use cases,
  *                           all registers used in injected code should be specified.
  * @throws IllegalArgumentException If a branch or conditional statement is encountered
  *                                  before a suitable register is found.
  */
-fun Method.findFreeRegister(startIndex: Int, vararg registersToExclude: Int): Int {
+fun Method.findFreeRegister(
+    startIndex: Int,
+    checkBranch: Boolean,
+    vararg registersToExclude: Int
+): Int {
     if (implementation == null) {
         throw IllegalArgumentException("Method has no implementation: $this")
     }
@@ -92,7 +100,7 @@ fun Method.findFreeRegister(startIndex: Int, vararg registersToExclude: Int): In
 
         usedRegisters.addAll(instructionRegisters)
 
-        if (instruction.isBranchInstruction) {
+        if (checkBranch && instruction.isBranchInstruction) {
             if (bestFreeRegisterFound != null) {
                 return bestFreeRegisterFound
             }
