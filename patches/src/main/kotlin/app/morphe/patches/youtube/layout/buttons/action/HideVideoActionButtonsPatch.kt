@@ -16,7 +16,8 @@ import java.util.logging.Logger
 @Suppress("unused")
 val hideVideoActionButtonsPatch = resourcePatch(
     name = "Hide video action buttons",
-    description = "Adds options to hide action buttons (such as the Download button) under videos.",
+    description = "Adds options to hide action buttons (such as the Download button) under videos. " +
+            "Patching version 20.21.37 or lower can hide more player button types"
 ) {
     dependsOn(
         resourceMappingPatch,
@@ -49,8 +50,9 @@ val hideVideoActionButtonsPatch = resourcePatch(
         )
 
         if (is_20_22_or_greater) {
-            // FIXME: 20.22+ filtering of the action buttons doesn't work because
-            //        the buffer is the same for all buttons.
+            // 20.22+ filtering of the action buttons doesn't work because
+            // the buffer is the same for all buttons.
+            // TODO: Eventually remove this warning.
             Logger.getLogger(this::class.java.name).warning(
                 "\n!!!" +
                         "\n!!! Not all player action buttons can be set hidden when patching 20.22+" +
