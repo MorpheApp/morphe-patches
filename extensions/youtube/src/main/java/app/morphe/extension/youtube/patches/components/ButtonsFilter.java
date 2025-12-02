@@ -62,8 +62,8 @@ final class ButtonsFilter extends Filter {
 
         if (VersionCheckPatch.IS_20_22_OR_GREATER) {
             // FIXME: Most buttons do not have an accessibilityId.
-            //        Instead, they have an accessibilityLabel, so hiding functionality must be implemented using this
-            //        (e.g. custom filter - 'video_action_bar$Hype')
+            //        Instead, they have an accessibilityText, so hiding functionality must be implemented using this
+            //        (e.g. custom filter - 'video_action_bar#Hype')
             accessibilityButtonsGroupList.addAll(
                     new StringFilterGroup(
                             Settings.HIDE_SHARE_BUTTON,
