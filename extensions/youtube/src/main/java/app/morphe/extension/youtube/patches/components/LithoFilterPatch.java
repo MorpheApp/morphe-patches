@@ -362,7 +362,9 @@ public final class LithoFilterPatch {
                             // No buffer is found for some components, such as
                             // shorts_lockup_cell.eml on channel profiles.
                             // For now, just ignore this and filter without a buffer.
-                            Logger.printException(() -> "Could not find global buffer for identifier: " + identifier);
+                            if (BaseSettings.DEBUG.get()) {
+                                Logger.printException(() -> "Could not find buffer for identifier: " + identifier);
+                            }
                         }
                     }
                 }
