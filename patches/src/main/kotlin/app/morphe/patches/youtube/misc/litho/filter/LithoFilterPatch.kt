@@ -3,7 +3,6 @@
 package app.morphe.patches.youtube.misc.litho.filter
 
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
@@ -32,7 +31,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
-import java.util.logging.Logger
 
 lateinit var addLithoFilter: (String) -> Unit
     private set
@@ -146,11 +144,14 @@ val lithoFilterPatch = bytecodePatch(
 
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 
+        // Find the method call that gets the value of 'buttonViewModel.accessibilityId'.
         val accessibilityIdMethod = with(accessibilityIdFingerprint) {
             val index = instructionMatches.first().index
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
 
+        // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
+        // As this class is abstract, we need to find another method that uses a method call.
         val accessibilityTextFingerprint = fingerprint {
             returns("V")
             instructions(
@@ -170,30 +171,14 @@ val lithoFilterPatch = bytecodePatch(
             }
         }
 
+        // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
         val accessibilityTextMethod = with (accessibilityTextFingerprint) {
             val index = instructionMatches.first().index
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
 
-        // TODO: Completely remove compatibility with YouTube 19.16 to make code easier to maintain.
-        //       YouTube 19.16 is sufficiently out of date, and without the 'Disable update screen' patch,
-        //       the 'Update your app' dialog will be shown and users will not be able to use the app.
         componentCreateFingerprint.method.apply {
-            val insertIndex = if (is_19_17_or_greater) {
-                indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
-            } else {
-                // 19.16 clobbers p2 so must check at start of the method and not at the return index.
-                0
-            }
-
-            // TODO: Since so many free registers are used,
-            //       it should be checked that there are no register conflicts in the latest YouTube.
-            var buttonViewModelIndex = 0
-            var buttonViewModelRegister = 0
-            var accessibilityIdIndex = 0
-            var accessibilityIdRegister = 0
-            var accessibilityTextRegister = 0
-            var nullCheckIndex = 0
+            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
 
             val freeRegister = findFreeRegister(insertIndex)
             val identifierRegister =
@@ -201,40 +186,30 @@ val lithoFilterPatch = bytecodePatch(
             val pathRegister =
                 findFreeRegister(insertIndex, freeRegister, identifierRegister)
 
-            val extensionMethodCall = if (is_19_17_or_greater) {
-                buttonViewModelIndex = indexOfFirstInstructionReversedOrThrow(insertIndex) {
-                    opcode == Opcode.CHECK_CAST &&
-                            getReference<TypeReference>()?.type == accessibilityIdMethod.definingClass
-                }
-                buttonViewModelRegister =
-                    getInstruction<OneRegisterInstruction>(buttonViewModelIndex).registerA
-                accessibilityIdIndex = buttonViewModelIndex + 2
-
-                nullCheckIndex =
-                    indexOfFirstInstructionReversedOrThrow(buttonViewModelIndex, Opcode.IF_EQZ)
-                val nullCheckRegister = getInstruction<OneRegisterInstruction>(nullCheckIndex).registerA
-
-                accessibilityIdRegister = findFreeRegister(nullCheckIndex, false,
-                    freeRegister, buttonViewModelRegister, nullCheckRegister)
-                accessibilityTextRegister = findFreeRegister(nullCheckIndex, false,
-                        freeRegister, buttonViewModelRegister, accessibilityIdRegister, nullCheckRegister)
-
-                // TODO: Delete this debug line once you have checked the latest YouTube.
-                Logger.getLogger(this::class.java.name).info(
-                    "\"LithoFilterPatch\": Debug info for registers" +
-                            "\n identifierRegister: $identifierRegister" +
-                            "\n pathRegister: $pathRegister" +
-                            "\n accessibilityIdRegister: $accessibilityIdRegister" +
-                            "\n accessibilityTextRegister: $accessibilityTextRegister"
-                )
-
-                "invoke-static { v$identifierRegister, v$pathRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->" +
-                        "isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Z"
-            } else {
-                "invoke-static { v$identifierRegister, v$pathRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                        "isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;)Z"
+            // We can directly access the class related with the buttonViewModel from this method.
+            // This is within 10 lines of insertIndex.
+            val buttonViewModelIndex = indexOfFirstInstructionReversedOrThrow(insertIndex) {
+                opcode == Opcode.CHECK_CAST &&
+                        getReference<TypeReference>()?.type == accessibilityIdMethod.definingClass
             }
+            val buttonViewModelRegister =
+                getInstruction<OneRegisterInstruction>(buttonViewModelIndex).registerA
+            val accessibilityIdIndex = buttonViewModelIndex + 2
+
+            // This is an index that checks if there is accessibility-related text.
+            // This is within 10 lines of buttonViewModelIndex.
+            val nullCheckIndex =
+                indexOfFirstInstructionReversedOrThrow(buttonViewModelIndex, Opcode.IF_EQZ)
+            val nullCheckRegister = getInstruction<OneRegisterInstruction>(nullCheckIndex).registerA
+
+            // We need to find a free register to store the accessibilityId and accessibilityText,
+            // but the 'findFreeRegister' function cannot be used due to the 'if-eqz' branch.
+            // Set checkBranch to false and use the 'findFreeRegister' function.
+            val accessibilityIdRegister = findFreeRegister(nullCheckIndex, false,
+                freeRegister, buttonViewModelRegister, nullCheckRegister)
+            val accessibilityTextRegister = findFreeRegister(nullCheckIndex, false,
+                freeRegister, buttonViewModelRegister, accessibilityIdRegister, nullCheckRegister)
+
 
             addInstructionsAtControlFlowLabel(
                 insertIndex,
@@ -248,7 +223,7 @@ val lithoFilterPatch = bytecodePatch(
                     
                     iget-object v$identifierRegister, v$freeRegister, $conversionContextIdentifierField
                     iget-object v$pathRegister, v$freeRegister, $conversionContextPathBuilderField
-                    $extensionMethodCall
+                    invoke-static { v$identifierRegister, v$pathRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Z
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :unfiltered
                     
@@ -264,24 +239,27 @@ val lithoFilterPatch = bytecodePatch(
                 """
             )
 
-            if (is_19_17_or_greater) {
-                addInstructions(
-                    accessibilityIdIndex, """
-                        invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
-                        move-result-object v$accessibilityIdRegister
-                        invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
-                        move-result-object v$accessibilityTextRegister
-                        """
-                )
+            // If there is text related to accessibility, get the accessibilityId and accessibilityText.
+            addInstructions(
+                accessibilityIdIndex, """
+                    # Get accessibilityId
+                    invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
+                    move-result-object v$accessibilityIdRegister
+                    
+                    # Get accessibilityText
+                    invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
+                    move-result-object v$accessibilityTextRegister
+                    """
+            )
 
-                // Set the initial values of accessibilityId and accessibilityText (empty values).
-                addInstructions(
-                    nullCheckIndex, """
+            // If there is no accessibility-related text,
+            // both accessibilityId and accessibilityText use empty values.
+            addInstructions(
+                nullCheckIndex, """
                         const-string v$accessibilityIdRegister, ""
                         const-string v$accessibilityTextRegister, ""
                         """
-                )
-            }
+            )
         }
 
         // endregion

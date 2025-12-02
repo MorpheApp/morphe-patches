@@ -331,14 +331,6 @@ public final class LithoFilterPatch {
     }
 
     /**
-     * Injection point.  Called off the main thread.
-     * Targets 19.17 and lower.
-     */
-    public static boolean isFiltered(String identifier, StringBuilder pathBuilder) {
-        return isFiltered(identifier, pathBuilder, "", "");
-    }
-
-    /**
      * Injection point.
      */
     public static boolean isFiltered(String identifier, StringBuilder pathBuilder,
