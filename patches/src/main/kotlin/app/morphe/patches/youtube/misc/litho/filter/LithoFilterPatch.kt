@@ -256,9 +256,9 @@ val lithoFilterPatch = bytecodePatch(
             // both accessibilityId and accessibilityText use empty values.
             addInstructions(
                 nullCheckIndex, """
-                        const-string v$accessibilityIdRegister, ""
-                        const-string v$accessibilityTextRegister, ""
-                        """
+                    const-string v$accessibilityIdRegister, ""
+                    const-string v$accessibilityTextRegister, ""
+                    """
             )
         }
 
