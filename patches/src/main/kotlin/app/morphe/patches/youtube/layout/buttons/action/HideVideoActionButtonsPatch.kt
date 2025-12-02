@@ -13,6 +13,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import java.util.logging.Logger
 
+@Suppress("unused")
 val hideVideoActionButtonsPatch = resourcePatch(
     name = "Hide video action buttons",
     description = "Adds options to hide action buttons (such as the Download button) under videos.",
@@ -29,7 +30,8 @@ val hideVideoActionButtonsPatch = resourcePatch(
             "19.43.41",
             "20.14.43",
             "20.21.37",
-            // 20.22+ does not yet support hiding all player buttons.
+            "20.31.40",
+            "20.46.41",
         )
     )
 
@@ -52,7 +54,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
             Logger.getLogger(this::class.java.name).warning(
                 "\n!!!" +
                         "\n!!! Not all player action buttons can be set hidden when patching 20.22+" +
-                        "\n!!! Patch 20.21.37 or lower if you want to hide player action buttons" +
+                        "\n!!! Patch 20.21.37 if you want to hide more player action buttons" +
                         "\n!!!"
             )
         } else {

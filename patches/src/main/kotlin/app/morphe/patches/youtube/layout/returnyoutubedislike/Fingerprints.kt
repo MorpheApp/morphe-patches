@@ -1,7 +1,10 @@
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
+import app.revanced.patcher.InstructionLocation
 import app.revanced.patcher.fingerprint
 import app.revanced.patcher.literal
+import app.revanced.patcher.methodCall
+import app.revanced.patcher.newInstance
 import app.revanced.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -132,5 +135,27 @@ internal val textComponentFeatureFlagFingerprint = fingerprint {
     parameters()
     instructions (
         literal(45675738L)
+    )
+}
+
+internal val lithoSpannableStringCreationFingerprint = fingerprint {
+    accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
+    returns("V")
+    parameters("L", "Ljava/lang/Object;", "L")
+    instructions(
+        newInstance(type = "Landroid/text/SpannableString;"),
+        methodCall(
+            smali = "Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V",
+            location = InstructionLocation.MatchAfterWithin(5)
+        ),
+        methodCall(
+            smali = "Landroid/text/SpannableString;->getSpans(IILjava/lang/Class;)[Ljava/lang/Object;",
+            location = InstructionLocation.MatchAfterWithin(5)
+        ),
+
+        methodCall(
+            name = "addOnLayoutChangeListener",
+            parameters = listOf("Landroid/view/View\$OnLayoutChangeListener;")
+        )
     )
 }
