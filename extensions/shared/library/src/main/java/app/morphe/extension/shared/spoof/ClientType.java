@@ -1,5 +1,7 @@
 package app.morphe.extension.shared.spoof;
 
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
+
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,7 @@ public enum ClientType {
             "1.61.48",
             false,
             false,
+            false,
             "Android VR 1.61"
     ),
     /**
@@ -50,13 +53,14 @@ public enum ClientType {
             Objects.requireNonNull(ANDROID_VR_1_61_48.buildId),
             "107.0.5284.2",
             "1.43.32",
-            ANDROID_VR_1_61_48.useAuth,
+            ANDROID_VR_1_61_48.canLogin,
+            ANDROID_VR_1_61_48.requireLogin,
             ANDROID_VR_1_61_48.supportsMultiAudioTracks,
             "Android VR 1.43"
     ),
     /**
-     * Video not playable: Paid / Movie / Private / Age-restricted.
-     * Note: The 'Authorization' key must be excluded from the header.
+     * Video not playable (YouTube): None.
+     * Video not playable (YouTube Music): Paid / Movie / Private / Age-restricted.
      *
      * According to TeamNewPipe in 2022, if the 'androidSdkVersion' field is missing,
      * the GVS did not return a valid response:
@@ -73,10 +77,16 @@ public enum ClientType {
             "ANDROID",
             "",
             "",
-            "",
+            "Android",
             Build.VERSION.RELEASE,
             "20.05.46",
             "com.google.android.youtube/20.05.46 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
+            // Due to Google API changes in September 2025, Authorization issued with a different 'client_sig' can no longer be used.
+            // That is, this client must use an OAuth2 token issued by Android YouTube (com.google.android.youtube).
+            // 
+            // Both 'Auth' and 'No Auth' work on YouTube.
+            // Only 'No Auth' works on YouTube Music.
+            IS_YOUTUBE,
             false,
             true,
             "Android No SDK"
@@ -98,6 +108,7 @@ public enum ClientType {
             "132.0.6779.0",
             "23.47.101",
             true,
+            true,
             false,
             "Android Studio"
     ),
@@ -112,6 +123,7 @@ public enum ClientType {
             "1.3.21O771",
             "0.1",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+            false,
             false,
             false,
             "visionOS"
@@ -137,6 +149,7 @@ public enum ClientType {
             "17.7.10.21H450",
             "19.22.3",
             "com.google.ios.youtube/19.22.3 (iPad7,6; U; CPU iPadOS 17_7_10 like Mac OS X; " + Locale.getDefault() + ")",
+            false,
             false,
             true,
             "iPadOS"
@@ -208,9 +221,14 @@ public enum ClientType {
     public final String clientVersion;
 
     /**
+     * If the client can access the API logged in.
+     */
+    public final boolean canLogin;
+
+    /**
      * If the client should use authentication if available.
      */
-    public final boolean useAuth;
+    public final boolean requireLogin;
 
     /**
      * If the client supports multiple audio tracks.
@@ -236,7 +254,8 @@ public enum ClientType {
                @NonNull String buildId,
                @NonNull String cronetVersion,
                String clientVersion,
-               boolean useAuth,
+               boolean canLogin,
+               boolean requireLogin,
                boolean supportsMultiAudioTracks,
                String friendlyName) {
         this.id = id;
@@ -250,7 +269,8 @@ public enum ClientType {
         this.buildId = buildId;
         this.cronetVersion = cronetVersion;
         this.clientVersion = clientVersion;
-        this.useAuth = useAuth;
+        this.canLogin = canLogin;
+        this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.friendlyName = friendlyName;
 
@@ -276,7 +296,8 @@ public enum ClientType {
                String osVersion,
                String clientVersion,
                String userAgent,
-               boolean useAuth,
+               boolean canLogin,
+               boolean requireLogin,
                boolean supportsMultiAudioTracks,
                String friendlyName) {
         this.id = id;
@@ -287,7 +308,8 @@ public enum ClientType {
         this.osVersion = osVersion;
         this.clientVersion = clientVersion;
         this.userAgent = userAgent;
-        this.useAuth = useAuth;
+        this.canLogin = canLogin;
+        this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.friendlyName = friendlyName;
         this.packageName = null;

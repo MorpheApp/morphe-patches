@@ -171,7 +171,7 @@ public class SpoofVideoStreamsPatch {
         return false;
     }
 
-    /*
+    /**
      * Injection point.
      * Fix audio stuttering in YouTube Music.
      */

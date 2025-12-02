@@ -157,7 +157,7 @@ public class StreamingDataRequest {
 
                 if (value != null) {
                     if (key.equals(AUTHORIZATION_HEADER)) {
-                        if (!clientType.useAuth) {
+                        if (!clientType.canLogin) {
                             Logger.printDebug(() -> "Not including request header: " + key);
                             continue;
                         }
@@ -169,7 +169,7 @@ public class StreamingDataRequest {
                 }
             }
 
-            if (!authHeadersIncludes && clientType.useAuth) {
+            if (!authHeadersIncludes && clientType.requireLogin) {
                 Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
                         + " videoId: " + videoId);
                 return null;
