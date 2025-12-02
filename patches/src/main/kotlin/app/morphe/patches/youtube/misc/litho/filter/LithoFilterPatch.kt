@@ -165,6 +165,7 @@ val lithoFilterPatch = bytecodePatch(
                 ),
             )
             custom { method, _ ->
+                // 'public final synthetic' or 'public final bridge synthetic'.
                 AccessFlags.SYNTHETIC.isSet(method.accessFlags)
             }
         }
