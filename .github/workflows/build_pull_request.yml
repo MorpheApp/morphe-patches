@@ -31,5 +31,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v5
         with:
-          name: revanced-patches
+          name: morphe-patches
           path: patches/build/libs
