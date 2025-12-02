@@ -61,12 +61,15 @@ abstract class Filter {
      * <p>
      * Method is called off the main thread.
      *
+     * @param identifier Litho identifier.
+     * @param accessibility Accessibility string, or an empty string if not present for the component.
+     * @param buffer Protocol buffer.
      * @param matchedGroup The actual filter that matched.
      * @param contentType  The type of content matched.
      * @param contentIndex Matched index of the identifier or path.
      * @return True if the litho component should be filtered out.
      */
-    boolean isFiltered(String identifier, String path, String accessibility, byte[] buffer,
+    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         return true;
     }

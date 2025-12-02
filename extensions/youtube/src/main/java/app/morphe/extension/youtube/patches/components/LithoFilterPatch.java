@@ -42,13 +42,13 @@ public final class LithoFilterPatch {
             StringBuilder builder = new StringBuilder(Math.max(100, buffer.length / 2));
             builder.append( "ID: ");
             builder.append(identifier);
-            builder.append(" Path: ");
-            builder.append(path);
             if (!accessibility.isEmpty()) {
                 // AccessibilityId and AccessibilityText are pieces of BufferStrings.
                 builder.append(" Accessibility: ");
                 builder.append(accessibility);
             }
+            builder.append(" Path: ");
+            builder.append(path);
             if (Settings.DEBUG_PROTOBUFFER.get()) {
                 builder.append(" BufferStrings: ");
                 findAsciiStrings(builder, buffer);
@@ -126,7 +126,7 @@ public final class LithoFilterPatch {
 
     /**
      * String suffix for components.
-     * Can be any of: ".eml", ".e-b", ".eml-js", "e-js-b"
+     * Can be any of: ".eml", ".eml-fe", ".e-b", ".eml-js", "e-js-b"
      */
     private static final String LITHO_COMPONENT_EXTENSION = ".e";
     private static final byte[] LITHO_COMPONENT_EXTENSION_BYTES = LITHO_COMPONENT_EXTENSION.getBytes(StandardCharsets.US_ASCII);
@@ -188,7 +188,7 @@ public final class LithoFilterPatch {
 
                             LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
                             final boolean isFiltered = filter.isFiltered(parameters.identifier,
-                                    parameters.path, parameters.accessibility, parameters.buffer,
+                                    parameters.accessibility, parameters.path, parameters.buffer,
                                     group, type, matchedStartIndex);
 
                             if (isFiltered && BaseSettings.DEBUG.get()) {
@@ -332,8 +332,8 @@ public final class LithoFilterPatch {
     /**
      * Injection point.
      */
-    public static boolean isFiltered(String identifier, StringBuilder pathBuilder,
-                                     @Nullable String accessibilityId, @Nullable String accessibilityText) {
+    public static boolean isFiltered(String identifier, @Nullable String accessibilityId,
+                                     @Nullable String accessibilityText, StringBuilder pathBuilder) {
         try {
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;

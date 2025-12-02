@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -144,14 +143,14 @@ final class CustomFilter extends Filter {
         public String toString() {
             StringBuilder builder = new StringBuilder();
             builder.append("CustomFilterGroup{");
-            builder.append("path=");
-            if (startsWith) builder.append(SYNTAX_STARTS_WITH);
-            builder.append(filters[0]);
-
             if (accessibilitySearch != null) {
                 builder.append(", accessibility=");
                 builder.append(accessibilitySearch.getPatterns());
             }
+
+            builder.append("path=");
+            if (startsWith) builder.append(SYNTAX_STARTS_WITH);
+            builder.append(filters[0]);
 
             if (bufferSearch != null) {
                 String delimitingCharacter = "❙";
@@ -178,7 +177,7 @@ final class CustomFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String path, String accessibility, byte[] buffer,
+    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         // All callbacks are custom filter groups.
         CustomFilterGroup custom = (CustomFilterGroup) matchedGroup;
