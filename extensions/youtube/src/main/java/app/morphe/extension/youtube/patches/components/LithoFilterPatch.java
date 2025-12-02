@@ -333,7 +333,7 @@ public final class LithoFilterPatch {
      * Injection point.
      */
     public static boolean isFiltered(String identifier, StringBuilder pathBuilder,
-                                     String accessibilityId, String accessibilityText) {
+                                     @Nullable String accessibilityId, @Nullable String accessibilityText) {
         try {
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;
