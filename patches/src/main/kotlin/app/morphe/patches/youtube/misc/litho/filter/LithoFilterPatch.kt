@@ -208,9 +208,9 @@ val lithoFilterPatch = bytecodePatch(
             // but the 'findFreeRegister' function cannot be used due to the 'if-eqz' branch.
             // Set checkBranch to false and use the 'findFreeRegister' function.
             val accessibilityIdRegister = findFreeRegister(nullCheckIndex, false,
-                freeRegister, buttonViewModelRegister, nullCheckRegister)
+                freeRegister, identifierRegister, pathRegister, buttonViewModelRegister, nullCheckRegister)
             val accessibilityTextRegister = findFreeRegister(nullCheckIndex, false,
-                freeRegister, buttonViewModelRegister, accessibilityIdRegister, nullCheckRegister)
+                freeRegister, identifierRegister, pathRegister, buttonViewModelRegister, nullCheckRegister, accessibilityIdRegister)
 
 
             addInstructionsAtControlFlowLabel(

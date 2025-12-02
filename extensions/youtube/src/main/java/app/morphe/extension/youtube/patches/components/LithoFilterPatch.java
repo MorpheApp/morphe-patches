@@ -378,6 +378,7 @@ public final class LithoFilterPatch {
             }
 
             String path = pathBuilder.toString();
+
             String accessibility = "";
             if (accessibilityId != null && !accessibilityId.isBlank()) {
                 accessibility = accessibilityId;
