@@ -4,7 +4,7 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-final class ButtonsFilter extends Filter {
+final class VideoActionButtonsFilter extends Filter {
     private static final String COMPACT_CHANNEL_BAR_PATH_PREFIX = "compact_channel_bar.e";
     private static final String VIDEO_ACTION_BAR_PATH_PREFIX = "video_action_bar.e";
     private static final String VIDEO_ACTION_BAR_PATH = "video_action_bar.e";
@@ -20,7 +20,7 @@ final class ButtonsFilter extends Filter {
     private final StringFilterGroupList accessibilityButtonsGroupList = new StringFilterGroupList();
     private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
 
-    public ButtonsFilter() {
+    public VideoActionButtonsFilter() {
         actionBarGroup = new StringFilterGroup(
                 null,
                 VIDEO_ACTION_BAR_PATH

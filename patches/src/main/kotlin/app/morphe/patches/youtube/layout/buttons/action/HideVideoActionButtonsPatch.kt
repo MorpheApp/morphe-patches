@@ -79,6 +79,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
             )
         )
 
-        addLithoFilter("Lapp/morphe/extension/youtube/patches/components/ButtonsFilter;")
+        addLithoFilter("Lapp/morphe/extension/youtube/patches/components/VideoActionButtonsFilter;")
     }
 }
