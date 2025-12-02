@@ -151,13 +151,15 @@ public final class ShortsFilter extends Filter {
         StringFilterGroup likeButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_LIKE_BUTTON,
                 "shorts_like_button.e",
-                "reel_like_button.e"
+                "reel_like_button.e",
+                "reel_like_toggled_button.e"
         );
 
         StringFilterGroup dislikeButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_DISLIKE_BUTTON,
                 "shorts_dislike_button.e",
-                "reel_dislike_button.e"
+                "reel_dislike_button.e",
+                "reel_dislike_toggled_button.e"
         );
 
         StringFilterGroup previewComment = new StringFilterGroup(
