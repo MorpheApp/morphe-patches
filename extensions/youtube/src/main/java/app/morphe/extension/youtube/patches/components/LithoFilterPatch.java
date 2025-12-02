@@ -19,11 +19,6 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class LithoFilterPatch {
     /**
-     * Non ascii character, to allow easier log filtering.
-     */
-    private static final String DELIMITING_CHARACTER = "❙";
-
-    /**
      * Simple wrapper to pass the litho parameters through the prefix search.
      */
     private static final class LithoFilterParameters {
@@ -71,6 +66,7 @@ public final class LithoFilterPatch {
             final int minimumAscii = 32;  // 32 = space character
             final int maximumAscii = 126; // 127 = delete character
             final int minimumAsciiStringLength = 4; // Minimum length of an ASCII string to include.
+            String delimitingCharacter = "❙"; // Non ascii character, to allow easier log filtering.
 
             final int length = buffer.length;
             int start = 0;
@@ -82,7 +78,7 @@ public final class LithoFilterPatch {
                         for (int i = start; i < end; i++) {
                             builder.append((char) buffer[i]);
                         }
-                        builder.append(DELIMITING_CHARACTER);
+                        builder.append(delimitingCharacter);
                     }
                     start = end + 1;
                 }
@@ -389,7 +385,7 @@ public final class LithoFilterPatch {
             }
 
             String path = pathBuilder.toString();
-            String accessibility = accessibilityId + DELIMITING_CHARACTER + accessibilityLabel;
+            String accessibility = accessibilityId + '|' + accessibilityLabel;
             LithoFilterParameters parameter = new LithoFilterParameters(identifier, path, accessibility, buffer);
             Logger.printDebug(() -> "Searching " + parameter);
 
