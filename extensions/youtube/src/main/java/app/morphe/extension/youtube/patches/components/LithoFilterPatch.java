@@ -45,9 +45,9 @@ public final class LithoFilterPatch {
             builder.append(" Path: ");
             builder.append(path);
             if (Settings.DEBUG_PROTOBUFFER.get()) {
-                // If both accessibilityId and accessibilityLabel are empty, don't add them to the debug log.
+                // If both AccessibilityId and AccessibilityText are empty, don't add them to the debug log.
                 if (accessibility.length() > 1) {
-                    // AccessibilityId and AccessibilityLabel are pieces of BufferStrings.
+                    // AccessibilityId and AccessibilityText are pieces of BufferStrings.
                     builder.append(" Accessibility: ");
                     builder.append(accessibility);
                 }
@@ -342,7 +342,7 @@ public final class LithoFilterPatch {
      * Injection point.
      */
     public static boolean isFiltered(String identifier, StringBuilder pathBuilder,
-                                     String accessibilityId, String accessibilityLabel) {
+                                     String accessibilityId, String accessibilityText) {
         try {
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;
@@ -385,7 +385,7 @@ public final class LithoFilterPatch {
             }
 
             String path = pathBuilder.toString();
-            String accessibility = accessibilityId + '|' + accessibilityLabel;
+            String accessibility = accessibilityId + '|' + accessibilityText;
             LithoFilterParameters parameter = new LithoFilterParameters(identifier, path, accessibility, buffer);
             Logger.printDebug(() -> "Searching " + parameter);
 

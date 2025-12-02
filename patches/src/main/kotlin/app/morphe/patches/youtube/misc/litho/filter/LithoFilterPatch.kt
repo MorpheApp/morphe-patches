@@ -151,7 +151,7 @@ val lithoFilterPatch = bytecodePatch(
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
 
-        val accessibilityLabelFingerprint = fingerprint {
+        val accessibilityTextFingerprint = fingerprint {
             returns("V")
             instructions(
                 methodCall(
@@ -170,7 +170,7 @@ val lithoFilterPatch = bytecodePatch(
             }
         }
 
-        val accessibilityLabelMethod = with (accessibilityLabelFingerprint) {
+        val accessibilityTextMethod = with (accessibilityTextFingerprint) {
             val index = instructionMatches.first().index
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
@@ -192,7 +192,7 @@ val lithoFilterPatch = bytecodePatch(
             var buttonViewModelRegister = 0
             var accessibilityIdIndex = 0
             var accessibilityIdRegister = 0
-            var accessibilityLabelRegister = 0
+            var accessibilityTextRegister = 0
             var nullCheckIndex = 0
 
             val freeRegister = findFreeRegister(insertIndex)
@@ -216,7 +216,7 @@ val lithoFilterPatch = bytecodePatch(
 
                 accessibilityIdRegister = findFreeRegister(nullCheckIndex, false,
                     freeRegister, buttonViewModelRegister, nullCheckRegister)
-                accessibilityLabelRegister = findFreeRegister(nullCheckIndex, false,
+                accessibilityTextRegister = findFreeRegister(nullCheckIndex, false,
                         freeRegister, buttonViewModelRegister, accessibilityIdRegister, nullCheckRegister)
 
                 // TODO: Delete this debug line once you have checked the latest YouTube.
@@ -225,10 +225,10 @@ val lithoFilterPatch = bytecodePatch(
                             "\n identifierRegister: $identifierRegister" +
                             "\n pathRegister: $pathRegister" +
                             "\n accessibilityIdRegister: $accessibilityIdRegister" +
-                            "\n accessibilityLabelRegister: $accessibilityLabelRegister"
+                            "\n accessibilityTextRegister: $accessibilityTextRegister"
                 )
 
-                "invoke-static { v$identifierRegister, v$pathRegister, v$accessibilityIdRegister, v$accessibilityLabelRegister }, " +
+                "invoke-static { v$identifierRegister, v$pathRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, " +
                         "$EXTENSION_CLASS_DESCRIPTOR->" +
                         "isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Z"
             } else {
@@ -269,16 +269,16 @@ val lithoFilterPatch = bytecodePatch(
                     accessibilityIdIndex, """
                         invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
                         move-result-object v$accessibilityIdRegister
-                        invoke-interface { v$buttonViewModelRegister }, $accessibilityLabelMethod
-                        move-result-object v$accessibilityLabelRegister
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
+                        move-result-object v$accessibilityTextRegister
                         """
                 )
 
-                // Set the initial values of accessibilityId and accessibilityLabel (empty values).
+                // Set the initial values of accessibilityId and accessibilityText (empty values).
                 addInstructions(
                     nullCheckIndex, """
                         const-string v$accessibilityIdRegister, ""
-                        const-string v$accessibilityLabelRegister, ""
+                        const-string v$accessibilityTextRegister, ""
                         """
                 )
             }
