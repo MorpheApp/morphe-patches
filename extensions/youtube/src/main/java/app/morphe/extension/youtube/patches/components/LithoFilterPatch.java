@@ -192,13 +192,9 @@ public final class LithoFilterPatch {
                                     group, type, matchedStartIndex);
 
                             if (isFiltered && BaseSettings.DEBUG.get()) {
-                                if (type == Filter.FilterContentType.IDENTIFIER) {
-                                    Logger.printDebug(() -> "Filtered " + filterSimpleName
-                                            + " identifier: " + parameters.identifier);
-                                } else {
-                                    Logger.printDebug(() -> "Filtered " + filterSimpleName
-                                            + " path: " + parameters.path);
-                                }
+                                Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
+                                        ? filterSimpleName + " filtered identifier: " + parameters.identifier
+                                        : filterSimpleName + " filtered path: " + parameters.path);
                             }
 
                             return isFiltered;
@@ -293,7 +289,9 @@ public final class LithoFilterPatch {
             }
         }
         if (endIndex < 0) {
-            Logger.printException(() -> "Could not find buffer identifier");
+            if (BaseSettings.DEBUG.get()) {
+                Logger.printException(() -> "Debug: Could not find buffer identifier");
+            }
             return;
         }
 
@@ -362,7 +360,7 @@ public final class LithoFilterPatch {
                             // shorts_lockup_cell.eml on channel profiles.
                             // For now, just ignore this and filter without a buffer.
                             if (BaseSettings.DEBUG.get()) {
-                                Logger.printException(() -> "Could not find buffer for identifier: " + identifier);
+                                Logger.printException(() -> "Debug: Could not find buffer for identifier: " + identifier);
                             }
                         }
                     }
