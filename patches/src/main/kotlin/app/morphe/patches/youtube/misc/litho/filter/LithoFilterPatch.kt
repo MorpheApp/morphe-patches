@@ -205,9 +205,9 @@ val lithoFilterPatch = bytecodePatch(
             // We need to find a free register to store the accessibilityId and accessibilityText,
             // but the 'findFreeRegister' function cannot be used due to the 'if-eqz' branch.
             // Set checkBranch to false and use the 'findFreeRegister' function.
-            val accessibilityIdRegister = findFreeRegister(nullCheckIndex, false,
+            val accessibilityIdRegister = findFreeRegister(nullCheckIndex,
                 freeRegister, identifierRegister, pathRegister, buttonViewModelRegister, nullCheckRegister)
-            val accessibilityTextRegister = findFreeRegister(nullCheckIndex, false,
+            val accessibilityTextRegister = findFreeRegister(nullCheckIndex,
                 freeRegister, identifierRegister, pathRegister, buttonViewModelRegister, nullCheckRegister, accessibilityIdRegister)
 
 
