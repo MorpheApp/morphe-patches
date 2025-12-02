@@ -183,10 +183,8 @@ val lithoFilterPatch = bytecodePatch(
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
 
             val freeRegister = findFreeRegister(insertIndex)
-            val identifierRegister =
-                findFreeRegister(insertIndex, freeRegister)
-            val pathRegister =
-                findFreeRegister(insertIndex, freeRegister, identifierRegister)
+            val identifierRegister = findFreeRegister(insertIndex, freeRegister)
+            val pathRegister = findFreeRegister(insertIndex, freeRegister, identifierRegister)
 
             // We can directly access the class related with the buttonViewModel from this method.
             // This is within 10 lines of insertIndex.

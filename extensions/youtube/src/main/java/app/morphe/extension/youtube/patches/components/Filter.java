@@ -10,7 +10,7 @@ import java.util.List;
  * Callbacks to filter content are added using {@link #addIdentifierCallbacks(StringFilterGroup...)}
  * and {@link #addPathCallbacks(StringFilterGroup...)}.
  *
- * To filter {@link FilterContentType#PROTOBUFFER} or {@link FilterContentType#ACCEESSIBILITY}, first add a callback to
+ * To filter {@link FilterContentType#PROTOBUFFER} or {@link FilterContentType#ACCESSIBILITY}, first add a callback to
  * either an identifier or a path.
  * Then inside {@link #isFiltered(String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
  * search for the buffer content using either a {@link ByteArrayFilterGroup} (if searching for 1 pattern)
@@ -23,7 +23,7 @@ abstract class Filter {
     public enum FilterContentType {
         IDENTIFIER,
         PATH,
-        ACCEESSIBILITY,
+        ACCESSIBILITY,
         PROTOBUFFER
     }
 

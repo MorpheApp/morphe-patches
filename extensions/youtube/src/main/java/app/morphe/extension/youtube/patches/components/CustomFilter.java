@@ -197,8 +197,6 @@ final class CustomFilter extends Filter {
             return false;
         }
 
-        Logger.printDebug(() -> "Custom filtered: " + path + " accessibility: " + accessibility);
-
         return true; // All custom filter conditions passed.
     }
 }
