@@ -7,8 +7,6 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.hide.shorts.hideShortsAppShortcutOption
-import app.morphe.patches.youtube.layout.hide.shorts.hideShortsWidgetOption
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -23,8 +21,8 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.findFreeRegister
 import app.morphe.util.forEachLiteralValueInstruction
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.removeFromParent
@@ -214,8 +212,9 @@ val hideShortsComponentsPatch = bytecodePatch(
                 val insertIndex = implementation!!.instructions.lastIndex
                 val listRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
-                val freeRegister = findFreeRegister(insertIndex)
-                val pathRegister = findFreeRegister(insertIndex, freeRegister)
+                val registerProvider = getFreeRegisterProvider(insertIndex)
+                val freeRegister = registerProvider.getFreeRegister()
+                val pathRegister = registerProvider.getFreeRegister()
 
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
