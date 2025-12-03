@@ -54,18 +54,8 @@ class FreeRegisterProvider internal constructor(
         vararg registersToExclude: Int
     ) : this(method, startIndex, registersToExclude.toList())
 
-//    private var freeRegisters: MutableList<Int> = LinkedList(
-//        method.findFreeRegisters(
-//            startIndex, true, registersToExclude
-//        )
-//    )
-    // FIXME:
     private var freeRegisters: MutableList<Int> = LinkedList(
-        method.findFreeRegisters(
-            startIndex, registersToExclude
-        ).also {
-            println("Free register: " + method.name + " startIndex: " + startIndex + " free: " + it)
-        }
+        method.findFreeRegisters(startIndex, registersToExclude)
     )
 
     private val originallyExcludedRegisters = registersToExclude
@@ -255,7 +245,7 @@ private fun Method.buildInstructionOffsetArray(): IntArray {
  * @param offsetArray Array mapping instruction index to code offset (-1 for payloads)
  * @return List of target instruction indices
  */
-private fun getBranchTargets(
+private fun Method.getBranchTargets(
     instruction: Instruction,
     currentIndex: Int,
     offsetArray: IntArray
@@ -414,7 +404,7 @@ private fun Method.findFreeRegistersInternal(
  * @param offsetArray Array mapping instruction index to code offset (-1 for payloads)
  * @return Instruction index at or before the target offset, or null if not found
  */
-private fun findInstructionIndexByOffset(
+private fun Method.findInstructionIndexByOffset(
     targetOffset: Int,
     offsetArray: IntArray
 ): Int? {
@@ -434,7 +424,7 @@ private fun findInstructionIndexByOffset(
                 "Please file a bug report in the Morphe patches repo"
     )
 
-    return bestIndex
+    return null
 }
 /**
  * Starting from and including the instruction at index [startIndex],

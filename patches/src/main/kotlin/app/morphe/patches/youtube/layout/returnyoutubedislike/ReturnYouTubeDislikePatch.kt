@@ -199,24 +199,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 )
             }
 
-            // FIXME:
-            // iterate thru all instruction indices
-            classDefBy("Labad;").methods.forEach { method ->
-                method.implementation!!.instructions.forEachIndexed { index, instruction ->
-                    if (instruction.opcode == Opcode.PACKED_SWITCH
-                        || instruction.opcode == Opcode.SPARSE_SWITCH
-                        || instruction.opcode == Opcode.PACKED_SWITCH_PAYLOAD
-                        || instruction.opcode == Opcode.SPARSE_SWITCH_PAYLOAD) {
-//                        println("Found switch: "  + instruction.opcode)
-                    }
-                    try {
-                        val provider = method.getFreeRegisterProvider(index)
-                    } catch (ex: IllegalArgumentException) {
-                        println("Could not find free registers at index: $index")
-                    }
-                }
-            }
-
             lithoSpannableStringCreationFingerprint.let {
                 val conversionContextField = it.classDef.type +
                         "->" + textComponentConversionContextField.name +
