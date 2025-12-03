@@ -7,6 +7,8 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.hide.shorts.hideShortsAppShortcutOption
+import app.morphe.patches.youtube.layout.hide.shorts.hideShortsWidgetOption
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -150,7 +152,8 @@ private const val FILTER_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patch
 @Suppress("unused")
 val hideShortsComponentsPatch = bytecodePatch(
     name = "Hide Shorts components",
-    description = "Adds options to hide components related to Shorts.",
+    description = "Adds options to hide components related to Shorts. " +
+            "Patching version 20.21.37 or lower can hide more Shorts player button types."
 ) {
     dependsOn(
         sharedExtensionPatch,

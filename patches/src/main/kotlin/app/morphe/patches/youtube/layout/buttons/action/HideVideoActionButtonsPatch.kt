@@ -16,7 +16,8 @@ import java.util.logging.Logger
 @Suppress("unused")
 val hideVideoActionButtonsPatch = resourcePatch(
     name = "Hide video action buttons",
-    description = "Adds options to hide action buttons (such as the Download button) under videos.",
+    description = "Adds options to hide action buttons (such as the Download button) under videos. " +
+            "Patching version 20.21.37 or lower can hide more player button types"
 ) {
     dependsOn(
         resourceMappingPatch,
@@ -44,11 +45,14 @@ val hideVideoActionButtonsPatch = resourcePatch(
             SwitchPreference("morphe_hide_like_dislike_button"),
             SwitchPreference("morphe_hide_comments_button"),
             SwitchPreference("morphe_hide_save_button"),
+            SwitchPreference("morphe_hide_remix_button"),
+            SwitchPreference("morphe_hide_share_button"),
         )
 
         if (is_20_22_or_greater) {
-            // FIXME: 20.22+ filtering of the action buttons doesn't work because
-            //        the buffer is the same for all buttons.
+            // 20.22+ filtering of the action buttons doesn't work because
+            // the buffer is the same for all buttons.
+            // TODO: Eventually remove this warning.
             Logger.getLogger(this::class.java.name).warning(
                 "\n!!!" +
                         "\n!!! Not all player action buttons can be set hidden when patching 20.22+" +
@@ -62,9 +66,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
                     SwitchPreference("morphe_hide_ask_button"),
                     SwitchPreference("morphe_hide_clip_button"),
                     SwitchPreference("morphe_hide_promote_button"),
-                    SwitchPreference("morphe_hide_remix_button"),
                     SwitchPreference("morphe_hide_report_button"),
-                    SwitchPreference("morphe_hide_share_button"),
                     SwitchPreference("morphe_hide_shop_button"),
                     SwitchPreference("morphe_hide_stop_ads_button"),
                     SwitchPreference("morphe_hide_thanks_button"),
@@ -79,6 +81,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
             )
         )
 
-        addLithoFilter("Lapp/morphe/extension/youtube/patches/components/ButtonsFilter;")
+        addLithoFilter("Lapp/morphe/extension/youtube/patches/components/VideoActionButtonsFilter;")
     }
 }

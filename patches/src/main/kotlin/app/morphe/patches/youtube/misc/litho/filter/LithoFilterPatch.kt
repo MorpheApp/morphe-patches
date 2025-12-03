@@ -2,13 +2,7 @@
 
 package app.morphe.patches.youtube.misc.litho.filter
 
-import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.removeInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.revanced.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
@@ -16,12 +10,27 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.findFreeRegister
+import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnLate
+import app.revanced.patcher.InstructionLocation.MatchAfterWithin
+import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.removeInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.revanced.patcher.fingerprint
+import app.revanced.patcher.methodCall
+import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 lateinit var addLithoFilter: (String) -> Unit
     private set
@@ -128,24 +137,81 @@ val lithoFilterPatch = bytecodePatch(
             .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = emptyComponentFingerprint.classDef.methods.single {
+        val builderMethodDescriptor = emptyComponentFingerprint.classDef.methods.single { method ->
             // The only static method in the class.
-                method -> AccessFlags.STATIC.isSet(method.accessFlags)
+            AccessFlags.STATIC.isSet(method.accessFlags)
         }
 
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 
-        componentCreateFingerprint.method.apply {
-            val insertIndex = if (is_19_17_or_greater) {
-                indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
-            } else {
-                // 19.16 clobbers p2 so must check at start of the method and not at the return index.
-                0
-            }
+        // Find the method call that gets the value of 'buttonViewModel.accessibilityId'.
+        val accessibilityIdMethod = with(accessibilityIdFingerprint) {
+            val index = instructionMatches.first().index
+            method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
+        }
 
-            val freeRegister = findFreeRegister(insertIndex)
-            val identifierRegister = findFreeRegister(insertIndex, freeRegister)
-            val pathRegister = findFreeRegister(insertIndex, freeRegister, identifierRegister)
+        // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
+        // As this class is abstract, we need to find another method that uses a method call.
+        val accessibilityTextFingerprint = fingerprint {
+            returns("V")
+            instructions(
+                methodCall(
+                    opcode = Opcode.INVOKE_INTERFACE,
+                    parameters = listOf(),
+                    returnType = "Ljava/lang/String;"
+                ),
+                // TODO: Change to methodCall(reference = accessibilityIdMethod, location = MatchAfterWithin(3))
+                //       After changing to latest patcher release.
+                methodCall(
+                    smali = accessibilityIdMethod.toString(),
+                    location = MatchAfterWithin(3)
+                )
+            )
+            custom { method, _ ->
+                // 'public final synthetic' or 'public final bridge synthetic'.
+                AccessFlags.SYNTHETIC.isSet(method.accessFlags)
+            }
+        }
+
+        // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
+        val accessibilityTextMethod = with (accessibilityTextFingerprint) {
+            val index = instructionMatches.first().index
+            method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
+        }
+
+        componentCreateFingerprint.method.apply {
+            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
+
+            val registerProvider = getFreeRegisterProvider(insertIndex)
+            val freeRegister = registerProvider.getFreeRegister()
+            val identifierRegister = registerProvider.getFreeRegister()
+            val pathRegister = registerProvider.getFreeRegister()
+
+            // We can directly access the class related with the buttonViewModel from this method.
+            // This is within 10 lines of insertIndex.
+            val buttonViewModelIndex = indexOfFirstInstructionReversedOrThrow(insertIndex) {
+                opcode == Opcode.CHECK_CAST &&
+                        getReference<TypeReference>()?.type == accessibilityIdMethod.definingClass
+            }
+            val buttonViewModelRegister =
+                getInstruction<OneRegisterInstruction>(buttonViewModelIndex).registerA
+            val accessibilityIdIndex = buttonViewModelIndex + 2
+
+            // This is an index that checks if there is accessibility-related text.
+            // This is within 10 lines of buttonViewModelIndex.
+            val nullCheckIndex =
+                indexOfFirstInstructionReversedOrThrow(buttonViewModelIndex, Opcode.IF_EQZ)
+            val nullCheckRegister = getInstruction<OneRegisterInstruction>(nullCheckIndex).registerA
+
+            // We need to find a free register to store the accessibilityId and accessibilityText,
+            // but the 'findFreeRegister' function cannot be used due to the 'if-eqz' branch.
+            // Set checkBranch to false and use the 'findFreeRegister' function.
+            val accessibilityRegisterProvider = getFreeRegisterProvider(
+                nullCheckIndex,
+                registerProvider.getUsedAndExcludedRegisters()
+            )
+            val accessibilityIdRegister = accessibilityRegisterProvider.getFreeRegister()
+            val accessibilityTextRegister = accessibilityRegisterProvider.getFreeRegister()
 
             addInstructionsAtControlFlowLabel(
                 insertIndex,
@@ -159,7 +225,7 @@ val lithoFilterPatch = bytecodePatch(
                     
                     iget-object v$identifierRegister, v$freeRegister, $conversionContextIdentifierField
                     iget-object v$pathRegister, v$freeRegister, $conversionContextPathBuilderField
-                    invoke-static { v$identifierRegister, v$pathRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(Ljava/lang/String;Ljava/lang/StringBuilder;)Z
+                    invoke-static { v$identifierRegister, v$accessibilityIdRegister, v$accessibilityTextRegister, v$pathRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/StringBuilder;)Z
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :unfiltered
                     
@@ -172,6 +238,30 @@ val lithoFilterPatch = bytecodePatch(
         
                     :unfiltered
                     nop
+                """
+            )
+
+            // If there is text related to accessibility, get the accessibilityId and accessibilityText.
+            addInstructions(
+                accessibilityIdIndex,
+                    """
+                        # Get accessibilityId
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
+                        move-result-object v$accessibilityIdRegister
+                        
+                        # Get accessibilityText
+                        invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
+                        move-result-object v$accessibilityTextRegister
+                """
+            )
+
+            // If there is no accessibility-related text,
+            // both accessibilityId and accessibilityText use empty values.
+            addInstructions(
+                nullCheckIndex,
+                """
+                    const-string v$accessibilityIdRegister, ""
+                    const-string v$accessibilityTextRegister, ""
                 """
             )
         }

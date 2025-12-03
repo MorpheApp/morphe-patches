@@ -1,13 +1,25 @@
 package app.morphe.patches.youtube.misc.litho.filter
 
+import app.morphe.util.containsLiteralInstruction
+import app.revanced.patcher.InstructionLocation.MatchAfterWithin
 import app.revanced.patcher.fieldAccess
 import app.revanced.patcher.fingerprint
-import app.morphe.util.containsLiteralInstruction
 import app.revanced.patcher.literal
 import app.revanced.patcher.methodCall
 import app.revanced.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
+internal val accessibilityIdFingerprint = fingerprint {
+    instructions(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(),
+            returnType = "Ljava/lang/String;"
+        ),
+        string("primary_image", location = MatchAfterWithin(5)),
+    )
+}
 
 internal val componentCreateFingerprint = fingerprint {
     instructions(
