@@ -347,7 +347,7 @@ public final class ShortsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String path, byte[] buffer,
+    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (contentType == FilterContentType.PATH) {
             if (matchedGroup == subscribeButton || matchedGroup == joinButton || matchedGroup == paidPromotionButton) {

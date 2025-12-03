@@ -874,12 +874,10 @@ public final class app/morphe/patches/youtube/video/videoid/VideoIdPatchKt {
 }
 
 public final class app/morphe/util/BytecodeUtilsKt {
-	public static final fun addInstructionsAtControlFlowLabel (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;ILjava/lang/String;)V
 	public static final fun addInstructionsAtControlFlowLabel (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;ILjava/lang/String;[Lapp/revanced/patcher/util/smali/ExternalLabel;)V
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;D)Z
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;F)Z
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;J)Z
-	public static final fun findFreeRegister (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)I
 	public static final fun findInstructionIndicesReversed (Lcom/android/tools/smali/dexlib2/iface/Method;Lcom/android/tools/smali/dexlib2/Opcode;)Ljava/util/List;
 	public static final fun findInstructionIndicesReversed (Lcom/android/tools/smali/dexlib2/iface/Method;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun findInstructionIndicesReversedOrThrow (Lcom/android/tools/smali/dexlib2/iface/Method;Lcom/android/tools/smali/dexlib2/Opcode;)Ljava/util/List;
@@ -945,6 +943,23 @@ public final class app/morphe/util/BytecodeUtilsKt {
 	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Z)V
 	public static final fun transformMethods (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 	public static final fun traverseClassHierarchy (Lapp/revanced/patcher/patch/BytecodePatchContext;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class app/morphe/util/FreeRegisterProvider {
+	public final fun availableCount ()I
+	public final fun getAllocatedFreeRegisters ()Ljava/util/List;
+	public final fun getFreeRegister ()I
+	public final fun getUsedAndExcludedRegisters ()Ljava/util/List;
+	public final fun hasFreeRegisters ()Z
+}
+
+public final class app/morphe/util/FreeRegisterProviderKt {
+	public static final fun findFreeRegister (Lcom/android/tools/smali/dexlib2/iface/Method;ILjava/util/List;)I
+	public static final fun findFreeRegister (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)I
+	public static final fun getFreeRegisterProvider (Lcom/android/tools/smali/dexlib2/iface/Method;ILjava/util/List;)Lapp/morphe/util/FreeRegisterProvider;
+	public static final fun getFreeRegisterProvider (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)Lapp/morphe/util/FreeRegisterProvider;
+	public static final fun getRegistersUsed (Lcom/android/tools/smali/dexlib2/iface/instruction/Instruction;)Ljava/util/List;
+	public static final fun getWriteRegister (Lcom/android/tools/smali/dexlib2/iface/instruction/Instruction;)Ljava/lang/Integer;
 }
 
 public final class app/morphe/util/ResourceGroup {
