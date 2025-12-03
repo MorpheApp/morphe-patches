@@ -8,28 +8,47 @@ import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public final class ShortsFilter extends Filter {
     private static final boolean HIDE_SHORTS_NAVIGATION_BAR = Settings.HIDE_SHORTS_NAVIGATION_BAR.get();
-    private static final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
+    private static final String COMPONENT_TYPE = "ComponentType";
+    private static final String[] REEL_ACTION_BAR_PATHS = {
+            "reel_action_bar.", // Regular Shorts.
+            "reels_player_overlay_layout." // Shorts ads.
+    };
+    private static final Map<Integer, BooleanSetting> REEL_ACTION_BUTTONS_MAP = new HashMap<>() {
+        {
+            // Like button and Dislike button can be hidden with Litho filter.
+            // put(0, Settings.HIDE_SHORTS_LIKE_BUTTON);
+            // put(1, Settings.HIDE_SHORTS_DISLIKE_BUTTON);
+            put(2, Settings.HIDE_SHORTS_COMMENTS_BUTTON);
+            put(3, Settings.HIDE_SHORTS_SHARE_BUTTON);
+            put(4, Settings.HIDE_SHORTS_REMIX_BUTTON);
+        }
+    };
+    private final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
     /**
      * For paid promotion label and subscribe button that appears in the channel bar.
      */
-    private static final String REEL_METAPANEL_PATH = "reel_metapanel.e";
+    private final String REEL_METAPANEL_PATH = "reel_metapanel.e";
 
     /**
      * For paid promotion label and subscribe button that appears in the channel bar.
      */
-    private static final String REEL_PLAYER_OVERLAY_PATH = "reel_player_overlay.e";
+    private final String REEL_PLAYER_OVERLAY_PATH = "reel_player_overlay.e";
 
     /**
      * Tags that appears when opening the Shorts player.
@@ -399,7 +418,7 @@ public final class ShortsFilter extends Filter {
         return shouldHideShortsFeedItems();
     }
 
-    private static boolean shouldHideShortsFeedItems() {
+    private boolean shouldHideShortsFeedItems() {
         // Known issue if hide home is on but at least one other hide is off:
         //
         // Shorts suggestions will load in the background if a video is opened and
@@ -449,6 +468,61 @@ public final class ShortsFilter extends Filter {
         };
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * Hide action buttons by index.
+     * <p>
+     * Regular video action buttons vary in order by video, country, and account.
+     * Therefore, hiding buttons by index may hide unintended buttons.
+     * <p>
+     * Shorts action buttons are almost always in the same order.
+     * (From top to bottom: Like, Dislike, Comment, Share, Remix).
+     * Therefore, we can hide Shorts action buttons by index.
+     *
+     * @param pathBuilder Same as pathBuilder used in {@link LithoFilterPatch}.
+     * @param treeNodeResultList List containing Litho components.
+     */
+    public static void hideActionButtons(StringBuilder pathBuilder, List<Object> treeNodeResultList) {
+        try {
+            if (pathBuilder == null || pathBuilder.length() == 0 || treeNodeResultList == null) {
+                return;
+            }
+            int size = treeNodeResultList.size();
+
+            // The minimum size of the target List is 4.
+            if (size < 4) {
+                return;
+            }
+            String path = pathBuilder.toString();
+
+            if (!Utils.containsAny(path, REEL_ACTION_BAR_PATHS)
+                    // Regular Shorts: [ComponentType, ComponentType, ComponentType, ComponentType, ComponentType]
+                    // Shorts ads: [ComponentType, ComponentType, ComponentType, ComponentType] (No Remix button)
+                    || !COMPONENT_TYPE.equals(treeNodeResultList.get(0).toString())) {
+                return;
+            }
+            // Removing elements without iterating through the list in reverse order will throw an exception.
+            for (int i = size - 1; i > -1; i--) {
+                // treeNodeResult is each button.
+                Object treeNodeResult = treeNodeResultList.get(i);
+                if (treeNodeResult != null) {
+                    BooleanSetting setting = REEL_ACTION_BUTTONS_MAP.get(i);
+                    if (setting != null && setting.get()) {
+                        int finalI = i;
+                        Logger.printDebug(() -> "Hiding action button by index: " + finalI + ", key: " + setting.key);
+                        treeNodeResultList.remove(i);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideActionButtons failed", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static int getSoundButtonSize(int original) {
         if (Settings.HIDE_SHORTS_SOUND_BUTTON.get()) {
             return 0;
@@ -457,10 +531,16 @@ public final class ShortsFilter extends Filter {
         return original;
     }
 
+    /**
+     * Injection point.
+     */
     public static void setNavigationBar(PivotBar view) {
         pivotBarRef = new WeakReference<>(view);
     }
 
+    /**
+     * Injection point.
+     */
     public static void hideNavigationBar(String tag) {
         if (HIDE_SHORTS_NAVIGATION_BAR) {
             if (REEL_WATCH_FRAGMENT_INIT_PLAYBACK.contains(tag)) {
@@ -475,6 +555,9 @@ public final class ShortsFilter extends Filter {
         }
     }
 
+    /**
+     * Injection point.
+     */
     public static int getNavigationBarHeight(int original) {
         if (HIDE_SHORTS_NAVIGATION_BAR) {
             return HIDDEN_NAVIGATION_BAR_VERTICAL_HEIGHT;

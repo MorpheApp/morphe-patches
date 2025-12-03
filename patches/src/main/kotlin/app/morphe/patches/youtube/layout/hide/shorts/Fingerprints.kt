@@ -11,6 +11,21 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal val componentContextParserFingerprint = fingerprint {
+    returns("L")
+    instructions(
+        string("Number of bits must be positive")
+    )
+}
+
+internal val treeNodeResultListFingerprint = fingerprint {
+    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
+    returns("Ljava/util/List;")
+    instructions(
+        methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC),
+    )
+}
+
 internal val shortsBottomBarContainerFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returns("V")
