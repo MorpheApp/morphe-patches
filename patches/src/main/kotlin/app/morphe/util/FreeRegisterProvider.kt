@@ -6,6 +6,7 @@ import app.morphe.util.FreeRegisterProvider.Companion.returnOpcodes
 import app.morphe.util.FreeRegisterProvider.Companion.writeOpcodes
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.instructions
+import com.android.tools.smali.dexlib2.Format
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.Opcode.*
 import com.android.tools.smali.dexlib2.iface.Method
@@ -220,34 +221,31 @@ private fun Method.findFreeRegisters(
 
 private fun Method.buildInstructionOffsetArray(): IntArray {
     val instructionCount = instructions.count()
-    val offsetArray = IntArray(instructionCount) { -1 } // Use -1 to indicate invalid/not mapped
+    val offsetArray = IntArray(instructionCount) { -1 }
     var currentOffset = 0
 
     for (i in 0 until instructionCount) {
         val instruction = getInstruction(i)
         val format = instruction.opcode.format
 
-        // Only map non-payload instructions.
-        // Payloads are special and aren't part of normal code flow.
         if (!format.isPayloadFormat) {
             offsetArray[i] = currentOffset
 
+            // Get size in bytes from format.
             val sizeInBytes = format.size
-            currentOffset += if (sizeInBytes > 0) {
-                sizeInBytes / 2  // Convert bytes to code units.
-            } else {
-                // Shouldn't happen for non-payload, but handle it.
-                1
+            val sizeInCodeUnits = when {
+                sizeInBytes > 0 -> sizeInBytes / 2  // Normal instruction
+                format == Format.UnresolvedOdexInstruction -> 1  // Default size
+                else -> 1  // Fallback for any other edge case
             }
+
+            currentOffset += sizeInCodeUnits
         }
-        // Skip payloads - they don't get entries in the array.
-        // Their offsets don't matter for branch calculations,
-        // and they remain -1 in the array.
+        // Skip payloads
     }
 
     return offsetArray
 }
-
 /**
  * Gets all branch target indices for a branch instruction.
  * Returns empty list if not a branch or targets cannot be determined.
@@ -414,18 +412,16 @@ private fun Method.findFreeRegistersInternal(
  *
  * @param targetOffset Target code offset in 16-bit units
  * @param offsetArray Array mapping instruction index to code offset (-1 for payloads)
- * @return Instruction index at or before the target offset, or null if not found
+ * @return Instruction index at the target offset, or null if not found
  */
 private fun Method.findInstructionIndexByOffset(
     targetOffset: Int,
     offsetArray: IntArray
 ): Int? {
-    // Simple linear search (could optimize with binary search if needed).
-    for (i in offsetArray.indices) {
-        val offset = offsetArray[i]
-        if (offset != -1 && offset == targetOffset) {
-            return i
-        }
+    // Simple linear search using indexOfFirst
+    val index = offsetArray.indexOfFirst { it == targetOffset }
+    if (index >= 0) {
+        return index
     }
 
     // Should never happen.
@@ -435,9 +431,9 @@ private fun Method.findInstructionIndexByOffset(
         "Could not find exact instruction offset for method: $this at offset: $targetOffset. " +
                 "Please file a bug report in the Morphe patches repo"
     )
-
     return null
 }
+
 /**
  * Starting from and including the instruction at index [startIndex],
  * finds the next register that is written to and not read from. If a return instruction
