@@ -946,7 +946,6 @@ public final class app/morphe/util/BytecodeUtilsKt {
 }
 
 public final class app/morphe/util/FreeRegisterProvider {
-	public static final field Companion Lapp/morphe/util/FreeRegisterProvider$Companion;
 	public final fun availableCount ()I
 	public final fun getAllocatedFreeRegisters ()Ljava/util/List;
 	public final fun getFreeRegister ()I
@@ -954,18 +953,9 @@ public final class app/morphe/util/FreeRegisterProvider {
 	public final fun hasFreeRegisters ()Z
 }
 
-public final class app/morphe/util/FreeRegisterProvider$Companion {
-	public final fun getBranchOpcodes ()Ljava/util/EnumSet;
-	public final fun getConditionalBranchOpcodes ()Ljava/util/EnumSet;
-	public final fun getReturnOpcodes ()Ljava/util/EnumSet;
-	public final fun getWriteOpcodes ()Ljava/util/EnumSet;
-}
-
 public final class app/morphe/util/FreeRegisterProviderKt {
 	public static final fun findFreeRegister (Lcom/android/tools/smali/dexlib2/iface/Method;ILjava/util/List;)I
 	public static final fun findFreeRegister (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)I
-	public static final fun findFreeRegisters (Lcom/android/tools/smali/dexlib2/iface/Method;ILjava/util/List;)Ljava/util/List;
-	public static final fun findFreeRegisters (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)Ljava/util/List;
 	public static final fun getFreeRegisterProvider (Lcom/android/tools/smali/dexlib2/iface/Method;ILjava/util/List;)Lapp/morphe/util/FreeRegisterProvider;
 	public static final fun getFreeRegisterProvider (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)Lapp/morphe/util/FreeRegisterProvider;
 }
