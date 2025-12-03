@@ -22,25 +22,35 @@ import java.util.logging.Logger
 
 /**
  * Finds free registers at a specific index in a method.
- * Allows consuming free registers one at a time.
+ * Allows allocating multiple free registers for a given index.
  *
  * If you only need a single free register, instead use [findFreeRegister].
+ *
+ * @throws IllegalArgumentException If no free registers can be found at the given index.
+ *                                  This includes unusual method indexes that read from every register
+ *                                  before any registers are wrote to, or if a switch statement is
+ *                                  encountered before any free registers are found.
  */
 fun Method.getFreeRegisterProvider(startIndex: Int, registersToExclude: List<Int>) =
     FreeRegisterProvider(this, startIndex, registersToExclude)
 
 /**
  * Finds free registers at a specific index in a method.
- * Allows consuming free registers one at a time.
+ * Allows allocating multiple free registers for a given index.
  *
  * If you only need a single free register, instead use [findFreeRegister].
+ *
+ * @throws IllegalArgumentException If no free registers can be found at the given index.
+ *                                  This includes unusual method indexes that read from every register
+ *                                  before any registers are wrote to, or if a switch statement is
+ *                                  encountered before any free registers are found.
  */
 fun Method.getFreeRegisterProvider(startIndex: Int, vararg registersToExclude: Int) =
     FreeRegisterProvider(this, startIndex, *registersToExclude)
 
 /**
- * Simple wrapper around [findFreeRegister] that allows finding then consuming multiple registers.
- * If you only need a single free register, instead use [findFreeRegister].
+ * Simple wrapper around [findFreeRegister] that allows finding then allocating multiple registers.
+ * If you only need a one free register, instead use [findFreeRegister].
  */
 class FreeRegisterProvider internal constructor(
     method: Method,
@@ -162,9 +172,8 @@ class FreeRegisterProvider internal constructor(
 }
 
 /**
- * Starting from and including the instruction at index [startIndex],
- * finds the next register that is written to and not read from. If a return instruction
- * is encountered, then the lowest unused register is returned.
+ * Starting from and including the instruction at index [startIndex], finds the next register
+ * that is written to and not read from.
  *
  * This method can return a non 4-bit register, and the calling code may need to temporarily
  * swap register contents if a 4-bit register is required.
@@ -173,7 +182,10 @@ class FreeRegisterProvider internal constructor(
  * @param registersToExclude Registers to exclude, and consider as used. For most use cases,
  *                           all registers used in injected code should be specified.
  * @return The lowest register number (usually a 4-bit register) that is free at the given index.
- * @throws IllegalArgumentException If no free registers exist at the given index.
+ * @throws IllegalArgumentException If no free registers can be found at the given index.
+ *                                  This includes unusual method indexes that read from every register
+ *                                  before any registers are wrote to, or if a switch statement is
+ *                                  encountered before any free registers are found.
  * @see [FreeRegisterProvider]
  */
 fun Method.findFreeRegister(
