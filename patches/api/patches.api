@@ -958,6 +958,8 @@ public final class app/morphe/util/FreeRegisterProviderKt {
 	public static final fun findFreeRegister (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)I
 	public static final fun getFreeRegisterProvider (Lcom/android/tools/smali/dexlib2/iface/Method;ILjava/util/List;)Lapp/morphe/util/FreeRegisterProvider;
 	public static final fun getFreeRegisterProvider (Lcom/android/tools/smali/dexlib2/iface/Method;I[I)Lapp/morphe/util/FreeRegisterProvider;
+	public static final fun getRegistersUsed (Lcom/android/tools/smali/dexlib2/iface/instruction/Instruction;)Ljava/util/List;
+	public static final fun getWriteRegister (Lcom/android/tools/smali/dexlib2/iface/instruction/Instruction;)Ljava/lang/Integer;
 }
 
 public final class app/morphe/util/ResourceGroup {

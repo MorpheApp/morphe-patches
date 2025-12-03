@@ -23,6 +23,7 @@ import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -196,6 +197,24 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useNewLithoTextCreation(Z)Z"
                 )
+            }
+
+            // FIXME:
+            // iterate thru all instruction indices
+            classDefBy("Labad;").methods.forEach { method ->
+                method.implementation!!.instructions.forEachIndexed { index, instruction ->
+                    if (instruction.opcode == Opcode.PACKED_SWITCH
+                        || instruction.opcode == Opcode.SPARSE_SWITCH
+                        || instruction.opcode == Opcode.PACKED_SWITCH_PAYLOAD
+                        || instruction.opcode == Opcode.SPARSE_SWITCH_PAYLOAD) {
+//                        println("Found switch: "  + instruction.opcode)
+                    }
+                    try {
+                        val provider = method.getFreeRegisterProvider(index)
+                    } catch (ex: IllegalArgumentException) {
+                        println("Could not find free registers at index: $index")
+                    }
+                }
             }
 
             lithoSpannableStringCreationFingerprint.let {
