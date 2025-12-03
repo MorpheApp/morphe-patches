@@ -49,7 +49,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup ticketShelf;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
-    private final ByteArrayFilterGroupList channelProfileBuffer;
+    private final StringFilterGroupList channelProfileGroupList;
     private final ByteArrayFilterGroup playablesBuffer;
 
     public LayoutComponentsFilter() {
@@ -259,12 +259,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "channel_profile.e",
                 "page_header.e"
         );
-        channelProfileBuffer = new ByteArrayFilterGroupList();
-        channelProfileBuffer.addAll(new ByteArrayFilterGroup(
+        channelProfileGroupList = new StringFilterGroupList();
+        channelProfileGroupList.addAll(new StringFilterGroup(
                         Settings.HIDE_VISIT_STORE_BUTTON,
                         "header_store_button"
                 ),
-                new ByteArrayFilterGroup(
+                new StringFilterGroup(
                         Settings.HIDE_VISIT_COMMUNITY_BUTTON,
                         "community_button"
                 )
@@ -335,7 +335,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelProfile) {
-            return channelProfileBuffer.check(buffer).isFiltered();
+            return channelProfileGroupList.check(accessibility).isFiltered();
         }
 
         if (matchedGroup == communityPosts && NavigationBar.isBackButtonVisible()) {
