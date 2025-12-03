@@ -30,7 +30,7 @@ public final class ShortsFilter extends Filter {
     };
     private static final Map<Integer, BooleanSetting> REEL_ACTION_BUTTONS_MAP = new HashMap<>() {
         {
-            // Like button and Dislike button can be removed with Litho filter.
+            // Like button and Dislike button can be hidden with Litho filter.
             // put(0, Settings.HIDE_SHORTS_LIKE_BUTTON);
             // put(1, Settings.HIDE_SHORTS_DISLIKE_BUTTON);
             put(2, Settings.HIDE_SHORTS_COMMENTS_BUTTON);
