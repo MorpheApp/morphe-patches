@@ -811,7 +811,7 @@ public class Utils {
     }
 
     /**
-     * Controls if ReVanced bold icons are shown in various places.
+     * Controls if Morphe bold icons are shown in various places.
      * @param boldIcons If the app is currently using bold icons.
      */
     public static void setAppIsUsingBoldIcons(boolean boldIcons) {

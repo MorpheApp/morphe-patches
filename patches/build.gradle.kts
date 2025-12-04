@@ -4,46 +4,17 @@ patches {
     about {
         name = "Morphe Patches"
         description = "Patches for Morphe"
-        source = "git@github.com:Morphe/morphe-patches.git"
-        author = "Morphe"
+        source = "git@github.com:MorpheApp/morphe-patches.git"
+        author = "MorpheApp"
         contact = "na@na"
         website = "na"
         license = "GNU General Public License v3.0, with project attributation required"
     }
 }
 
-repositories {
-    mavenLocal()
-    flatDir { // Use custom forked patcher libraries.
-        dirs("libs")
-    }
-    gradlePluginPortal()
-    google()
-
-    // Use same copy pasted hack fix used by CLI. Without this it won't resolve patcher dependencies.
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/MorpheApp/registry")
-        credentials {
-            username = providers.gradleProperty("gpr.user").getOrElse(System.getenv("GITHUB_ACTOR"))
-            password = providers.gradleProperty("gpr.key").getOrElse(System.getenv("GITHUB_TOKEN"))
-        }
-    }
-    // FIXME: Required for old apktool repo.
-    maven {
-        url = uri("https://maven.pkg.github.com/revanced/registry")
-        credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
-            password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
-        }
-    }
-}
-
 dependencies {
     // Required due to smali, or build fails. Can be removed once smali is bumped.
     implementation(libs.guava)
-
-    implementation(libs.apksig)
 
     // Android API stubs defined here.
     compileOnly(project(":patches:stub"))
@@ -79,7 +50,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/morphe/morphe-patches")
+            url = uri("https://maven.pkg.github.com/MorpheApp/morphe-patches")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
