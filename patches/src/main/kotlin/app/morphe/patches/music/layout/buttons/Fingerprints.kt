@@ -26,9 +26,9 @@ internal val historyMenuItemFingerprint = fingerprint {
         Opcode.INVOKE_INTERFACE,
         Opcode.RETURN_VOID
     )
-    literal { historyMenuItem }
-    custom { _, classDef ->
-        classDef.methods.count() == 5
+    custom { method, classDef ->
+        method.containsLiteralInstruction(historyMenuItem) &&
+            classDef.methods.count() == 5
     }
 }
 
@@ -42,7 +42,7 @@ internal val historyMenuItemOfflineTabFingerprint = fingerprint {
     )
     custom { method, _ ->
         method.containsLiteralInstruction(historyMenuItem) &&
-                method.containsLiteralInstruction(offlineSettingsMenuItem)
+            method.containsLiteralInstruction(offlineSettingsMenuItem)
     }
 }
 
@@ -50,9 +50,9 @@ internal val searchActionViewFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returns("Landroid/view/View;")
     parameters()
-    literal { searchButton }
-    custom { _, classDef ->
-        classDef.type.endsWith("/SearchActionProvider;")
+    custom { method, classDef ->
+        method.containsLiteralInstruction(searchButton) &&
+            classDef.type.endsWith("/SearchActionProvider;")
     }
 }
 
