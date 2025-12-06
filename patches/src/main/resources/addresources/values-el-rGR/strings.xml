@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>
   <string name="morphe_custom_branding_icon_entry_1">Αρχικό</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Αποτυχία ελέγχων</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Άνοιγμα επίσημης ιστοσελίδας</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Παράλειψη</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Αυτή η εφαρμογή δεν φαίνεται να έχει τροποποιηθεί από εσάς.&lt;/h5&gt;&lt;br&gt;Η εφαρμογή μπορεί να μη λειτουργεί σωστά, &lt;b&gt;θα μπορούσε να είναι επιβλαβής ή ακόμα και επικίνδυνη για χρήση&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Αυτοί οι έλεγχοι υποδηλώνουν ότι αυτή η εφαρμογή έχει τροποποιηθεί στο παρελθόν ή λήφθηκε από κάποιον άλλο:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Συνιστάται έντονα να απεγκαταστήσετε την εφαρμογή &lt;br&gt;και να την τροποποιήσετε μόνοι σας&lt;br&gt; για να διασφαλίσετε ότι χρησιμοποιείτε μια επικυρωμένη και ασφαλή εφαρμογή.&lt;p&gt;&lt;br&gt;Εάν αγνοηθεί, αυτή η προειδοποίηση θα εμφανιστεί μόνο δύο φορές.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Τροποποιήθηκε σε διαφορετική συσκευή</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Δεν έχει εγκατασταθεί μέσω του Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Τροποποιήθηκε πάνω από 10 λεπτά πριν</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Τροποποιήθηκε πριν %s μέρες</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Η ημερομηνία κατασκευής του APK είναι κατεστραμμένη</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω αποκλεισμού διαφημίσεων μέσω DNS ή μέσω διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε τους DNS/proxy blockers.</string>

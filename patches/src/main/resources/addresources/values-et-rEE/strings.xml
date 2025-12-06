@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Rakenduse ikoon</string>
   <string name="morphe_custom_branding_icon_entry_1">Algne</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Kontrollid ebaõnnestusid</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Ava oficial veebileht</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Eira</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;See rakendus ei paista olevat teie poolt parandatud.&lt;/h5&gt;&lt;br&gt;See rakendus ei pruugi korrektselt töötada, &lt;b&gt;võib olla kahjulik või isegi ohtlik kasutada&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Need kontrollid viitavad sellele, et see rakendus on eelnevalt parandatud või saadud kellegi teise käest:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Tugevalt soovitatakse &lt;b&gt;see rakendus desinstallida ja ise parandada&lt;/b&gt;, et tagada valideeritud ja turvalise rakenduse kasutamine.&lt;p&gt;&lt;br&gt;Kui ignoreeritakse, kuvatakse see hoiatus ainult kaks korda.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Parandatud teisel seadmel</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Pole installitud Morphe Manageri poolt</string>
-  <string name="morphe_check_environment_not_near_patch_time">Parandatud rohkem kui 10 minutit tagasi</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Parandatud %s päeva tagasi</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK ehituskuupäev on rikutud</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphei Teade</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Teie vaatamise ajalugu ei salvestata.&lt;br&gt;&lt;br&gt;See on tõenäoliselt tingitud DNS-i reklaamiblokeerijast või võrguproksilt.&lt;br&gt;&lt;br&gt;Selle parandamiseks lisage valgesse nimekirja &lt;b&gt;s.youtube.com&lt;/b&gt; või lülitage kõik DNS-i reklaamiblokeerijad ja proksid välja.</string>

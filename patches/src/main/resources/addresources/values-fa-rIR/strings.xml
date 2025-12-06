@@ -27,17 +27,6 @@ Second \"item\" text"</string>
   <!-- Translation of this should be identical to morphe_header_logo_entry_5 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">بررسی ناموفق بود</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">رفتن به وبسایت رسمی</string>
-  <string name="morphe_check_environment_dialog_ignore_button">نادیده بگیر</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;به نظر نمی‌رسد این برنامه توسط شما وصله شده باشد.&lt;/h5&gt;&lt;br&gt;این برنامه ممکن است به درستی کار نکند، &lt;b&gt;ممکن است استفاده از آن مضر یا حتی خطرناک باشد&lt;/b&gt;.&lt;br&gt;&lt;بر&gt;این برنامه از قبل دریافت شده است یا این چک از قبل دریافت شده است  else:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;اکیداً توصیه می‌شود که &lt;b&gt;این برنامه را حذف نصب کنید و خودتان آن را وصله کنید&lt;/b&gt;  برای اطمینان از اینکه از یک برنامه معتبر و ایمن استفاده می‌کنید.&lt;p&gt;&lt;br&gt;اگر نادیده گرفته شود، این هشدار فقط دو بار نشان داده می‌شود.</string>
-  <string name="morphe_check_environment_not_same_patching_device">روی دستگاه دیگری وصله شده است</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">به وسیله Morphe Manager نصب نشده است</string>
-  <string name="morphe_check_environment_not_near_patch_time">بیشتر از ۱۰ دقیقه پیش وصله شده است</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">%s روز پیش وصله شده است</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">تاریخ ایجاد APK مخدوش شده است</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   </patch>
   <patch id="misc.settings.settingsResourcePatch">

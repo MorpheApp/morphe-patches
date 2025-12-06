@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Icon ng app</string>
   <string name="morphe_custom_branding_icon_entry_1">Orihinal</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Nabigo ang mga pagsusuri</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Buksan ang Opisyal na Website</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Balewalain</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Ang app na ito ay tila hindi mo na-patch.&lt;/h5&gt;&lt;br&gt;Ang app na ito ay maaaring hindi gumana nang maayos, &lt;b&gt;maaaring mapanganib o maging delikado gamitin&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Ang mga tseke na ito ay nagpapahiwatig na ang app na ito ay na-pre-patch o nakuha mula sa ibang tao:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Malakas na inirerekomenda na &lt;b&gt;i-uninstall ang app na ito at i-patch ito sa iyong sarili&lt;/b&gt; upang matiyak na gumagamit ka ng isang na-validate at ligtas na app.&lt;p&gt;&lt;br&gt;Kung hindi papansinin, ang babalang ito ay ipapakita lamang nang dalawang beses.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Naka-patch sa ibang device</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Hindi naka-install sa pamamagitan ng Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Naka-patch mahigit sa 10 minuto ang nakararaan</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Naka-patch %s araw ang nakalipas</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Ang petsa ng pagbuo ng APK ay sira</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi nai-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Karaniwang sanhi nito ay ang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Para maayos ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o i-off ang lahat ng DNS blocker at proxy.</string>

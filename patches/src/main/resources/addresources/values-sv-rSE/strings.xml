@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Ursprunglig</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Kontroller misslyckades</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Öppna officiell hemsida</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorera</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Appen verkar inte vara patchad av dig.&lt;/h5&gt;&lt;br&gt;Den kanske inte fungerar korrekt, &lt;b&gt;kan vara skadlig eller till och med farlig att använda&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Resultatet av kontrollerna innebär att appen har patchats på förhand eller erhållits från någon annan:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Vi rekommenderar starkt att &lt;b&gt;avinstallera appen och patcha den själv&lt;/b&gt; för att säkerställa att du använder en validerad och säker app.&lt;p&gt;&lt;br&gt;Om du ignorerar den här varningen kommer den endast att visas två gånger.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Patchad på en annan enhet</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Inte installerad av Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Patchad för mer än 10 minuter sedan</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Patchad för %s dagar sedan</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Byggdatum för APK är skadat</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>

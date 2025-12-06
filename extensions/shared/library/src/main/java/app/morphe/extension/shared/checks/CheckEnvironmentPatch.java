@@ -38,8 +38,7 @@ public final class CheckEnvironmentPatch {
          */
         ADB((String) null),
         ROOT_MOUNT_ON_APP_STORE("com.android.vending"),
-        MANAGER("app.morphe.manager.flutter",
-                "app.morphe.manager",
+        MANAGER("app.morphe.manager",
                 "app.morphe.manager.debug");
 
         @Nullable
@@ -308,10 +307,9 @@ public final class CheckEnvironmentPatch {
                 //noinspection ComparatorCombinators
                 Collections.sort(failedChecks, (o1, o2) -> o1.uiSortingValue() - o2.uiSortingValue());
 
-                Check.issueWarning(
-                        context,
-                        failedChecks
-                );
+                // FIXME: Nag screen is permanently turned off.
+                //        But still use most of this class just to log the installer source.
+                Check.disableForever();
             } catch (Exception ex) {
                 Logger.printException(() -> "check failure", ex);
             }

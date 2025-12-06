@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Originalna</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Provere nisu uspele</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Otvori zvanični veb-sajt</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Zanemari</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Izgleda da niste vi pečovali ovu aplikaciju.&lt;/h5&gt;&lt;br&gt;Ova aplikacija možda neće ispravno raditi, &lt;b&gt;može biti štetna ili čak opasna za korišćenje.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ove provere podrazumevaju da je ova aplikacija unapred pečovana ili dobijena od nekog drugog:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Izričito se preporučuje da &lt;b&gt;deinstalirate ovu aplikaciju i sami je pečujete&lt;/b&gt; da biste bili sigurni da koristite proverenu i bezbednu aplikaciju.&lt;p&gt;&lt;br&gt;Ako se zanemari, ovo upozorenje će biti prikazano samo dva puta.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Pečovano na drugom uređaju</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nije instalirano u Morphe Manageru</string>
-  <string name="morphe_check_environment_not_near_patch_time">Pečovano pre više od 10 minuta</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Pečovano pre %s dana</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Datum izrade APK-a je oštećen</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije.</string>

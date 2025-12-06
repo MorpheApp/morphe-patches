@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Izvirno</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Preverjanja so spodletela</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Obiščite uradno spletno mesto</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Prezri</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Zdi se, da ta aplikacija ni zakrpana z vašo stranjo.&lt;/h5&gt;&lt;br&gt;Ta aplikacija morda ne bo delovala pravilno, &lt;b&gt;lahko bi bila škodljiva ali celo nevarna za uporabo&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Ti pregledi kažejo, da je bila ta aplikacija predhodno zakrpana ali pridobljena od nekoga drugega:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Toplo priporočamo, da &lt;b&gt;odstranite to aplikacijo in jo sami zakrpa&lt;/b&gt;, da zagotovite, da uporabljate preverjeno in varno aplikacijo.&lt;p&gt;&lt;br&gt;Če jo prezrete, se bo to opozorilo prikazalo samo dvakrat.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Popravljeno na drugi napravi</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Ni namestil Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Popravljeno pred več kot 10 minutami</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Zakrpan %s dni nazaj</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Datum izgradnje APK je poškodovan</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Obvestilo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaš zgodovine gledanja se ne shranjuje.&lt;br&gt;&lt;br&gt;To najverjetneje povzroči DNS blokiralnik oglasov ali omrežni posrednik.&lt;br&gt;&lt;br&gt;Za odpravo težave dodajte na beli seznam &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokiralnike oglasov DNS in posrednike.</string>

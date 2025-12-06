@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
   <string name="morphe_custom_branding_icon_entry_1">Bunaidh</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Theip ar sheiceálacha</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Oscailt láithreán gréasáin oifigiúil</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Neamhaird</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Ní cosúil gur tusa a rinne paiste ar an aip seo.&lt;/h5&gt;&lt;br&gt;B’fhéidir nach bhfeidhmeoidh an aip seo i gceart, &lt;b&gt;agus d’fhéadfadh sé a bheith díobhálach nó fiú contúirteach le húsáid&lt;/b&gt;&lt; br&gt;&lt;br&gt;.Tugann na seiceálacha seo le fios go bhfuil an aip seo patáilte roimh ré nó gur thángthas uirthi ó dhuine eile:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt; &lt;b&gt;Moltar go láidir duit an aip seo a dhíshuiteáil agus í a phaisteáil leat féin&lt;/b&gt; chun a chinntiú go bhfuil tú ag úsáid aip bailíochtaithe agus slán.&lt;p&gt;&lt;br&gt;Mura ndéanann tú aird ar an rabhadh seo, ní thaispeánfar é ach faoi dhó.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Paisteáilte ar ghléas eile</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Gan a bheith suiteáilte ag Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Paisteáilte níos mó ná 10 nóiméad ó shin</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Paisteáilte %s lá ó shin</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Tá dáta tógála APK truaillithe</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is é is dóichí gur seachfhreastalaí fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt; Chun é seo a réiteach, déan liosta bán &lt;b&gt;s.youtube.com&lt;/b&gt; nó gach seachfhreastalaí DNS a mhúchadh.</string>

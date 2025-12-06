@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинальная</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Проверки не удались</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Открыть официальный веб-сайт</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Игнорировать</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Похоже, что это приложение пропатчено не Вами.&lt;/h5&gt;&lt;br&gt;Оно может работать неправильно, &lt;b&gt;быть вредным или даже опасным.&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Эти проверки предполагают, что это приложение пропатчено или получено от кого-то другого:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Настоятельно рекомендуется &lt;b&gt;удалить это приложение и пропатчить его самостоятельно,&lt;/b&gt; чтобы быть уверенным, что Вы используете проверенное и безопасное приложение.&lt;p&gt;&lt;br&gt;Если проигнорировать это предупреждение, оно будет показано только дважды.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Пропатчено на другом устройстве</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Установлено не через Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Пропатчено более 10 минут назад</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Пропатчено %s дней назад</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Дата сборки APK повреждена</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt;Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt;Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси.</string>

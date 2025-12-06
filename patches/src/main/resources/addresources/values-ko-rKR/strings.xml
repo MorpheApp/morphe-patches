@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
   <string name="morphe_custom_branding_icon_entry_1">원본</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">환경 검사에 실패하였습니다</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">공식 홈페이지 열기</string>
-  <string name="morphe_check_environment_dialog_ignore_button">닫기</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;이 앱은 사용자가 패치하지 않은 것 같습니다.&lt;/h5&gt;&lt;br&gt;이 앱은 제대로 작동하지 않을 수 있으며, &lt;b&gt;사용 시 해롭거나 심지어 위험할 수도 있습니다&lt;/b&gt;.&lt;br&gt;&lt;br&gt;이러한 검사는 이 앱이 다른 사람에 의하여 패치되었거나 다른 사람으로부터 받은 것임을 의미합니다:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;검증되고 안전한 앱을 사용하고 있는지 확인하려면 &lt;b&gt;이 앱을 삭제하고 직접 패치하는 것&lt;/b&gt;을 강력히 권장합니다.&lt;p&gt;&lt;br&gt;이 경고는 두 번만 표시됩니다.</string>
-  <string name="morphe_check_environment_not_same_patching_device">다른 기기에서 패치되었습니다</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Morphe Manager에 의해 설치되지 않았습니다</string>
-  <string name="morphe_check_environment_not_near_patch_time">10분 이상 전에 패치되었습니다</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">%s 일 전에 패치되었습니다</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK 빌드 날짜가 손상되었습니다</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>

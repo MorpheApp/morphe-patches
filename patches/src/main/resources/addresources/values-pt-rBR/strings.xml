@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ícone do aplicativo</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Verificação falhou</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Abrir o site oficial</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorar</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Este aplicativo não parece ter sido patcheado por você.&lt;/h5&gt;&lt;br&gt;Este app pode não funcionar corretamente, &lt;b&gt;pode ser prejudicial ou até mesmo perigoso de usar&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Essas verificações indicam que este app foi pré-patcheado ou obtido de outra pessoa&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;É altamente recomendável &lt;b&gt;desinstalar este app e você mesmo patchear&lt;/b&gt; para garantir que você esteja usando um app validado e seguro.&lt;p&gt;&lt;br&gt;Se ignorado, este aviso será exibido apenas duas vezes.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Patcheado em um dispositivo diferente</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Não instalado pelo Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Patcheado há mais de 10 minutos</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Patcheado há %s dias</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Data de compilação do APK está corrompida</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Seu histórico de exibição não está sendo salvo.&lt;br&gt;&lt;br&gt;Na maioria dos casos isso é causado por um bloqueador de anúncios por DNS ou proxy de rede.&lt;br&gt;&lt;br&gt;Para corrigir isso, permita &lt;b&gt;s.youtube.com&lt;/b&gt; na sua lista ou desative todos os bloqueadores de DNS e proxies.</string>

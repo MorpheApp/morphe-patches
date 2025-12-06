@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
   <string name="morphe_custom_branding_icon_entry_1">Původní</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Kontrola proběhla neúspěšně</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Otevřít oficiální webovou stránku</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorovat</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Zdá se, že jste tuto upravenou verzi aplikace nevygenerovali vy.&lt;/h5&gt;&lt;br&gt;Aplikace nemusí fungovat správně, &lt;b&gt;může být škodlivá nebo nebezpečná&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Z následujících kontrol vyplývá, že úpravy této aplikace byly provedeny někým jiným:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Je důrazně doporučeno &lt;b&gt;odinstalovat tuto aplikaci a vygenerovat ji sami&lt;/b&gt;, abyste měli jistotu, že je aplikace ověřená a bezpečná.&lt;p&gt;&lt;br&gt;Pokud zvolíte Ignorovat, toto varování se zobrazí pouze dvakrát.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Vygenerována na jiném zařízení</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nebyla nainstalována skrze Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Vygenerována před více než 10 minutami</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Vygenerována před %s dny</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Datum sestavení souboru APK je poškozeno</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornění Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Příčinou je s největší pravděpodobností DNS blokátor reklam nebo síťový proxy server.&lt;br&gt;&lt;br&gt;Chcete-li to opravit, přidejte&lt;b&gt;s.youtube.com&lt;/b&gt; na whitelist nebo vypněte všechny DNS blokátory a proxy servery.</string>

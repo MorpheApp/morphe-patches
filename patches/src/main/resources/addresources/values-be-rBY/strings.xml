@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Значок праграмы</string>
   <string name="morphe_custom_branding_icon_entry_1">Арыгінал</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Праверкі не пройдзены</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Адкрыць афіцыйны вэб-сайт</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ігнараваць</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Гэта дадатак відавочна не з\'яўляецца патчам.&lt;/h5&gt;&lt;br&gt;Гэта дадатак можа працаваць няправільна, а таксама можа быць &lt;b&gt;небяспечным або нават небяспечным у выкарыстанні&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Гэтыя праверкі азначаюць, што гэта дадатак было загаддзя перароблена або атрымана ад кагосьці іншага:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Настойліва рэкамендуецца &lt;b&gt;выдаліць гэты дадатак і перарабіць яго самастойна&lt;/b&gt;, каб пераканацца, што вы выкарыстоўваеце правераны і бяспечны дадатак.&lt;p&gt;&lt;br&gt;Калі ігнараваць, гэта папярэджанне будзе паказана толькі два разы.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Адкарэктавана на іншай прыладзе</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Не ўстаноўлена Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Адкарэктавана больш чым 10 хвілін таму</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Адкарэктавана %s дзён таму</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Дата стварэння APK пашкоджана</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Заўвага Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша гісторыя прагляду не захоўваецца.&lt;br&gt;&lt;br&gt;Гэта, хутчэй за ўсё, выклікана DNS-блакіроўшчыкам рэкламы або сеткавым праксі.&lt;br&gt;&lt;br&gt;Каб выправіць гэта, дадайце &lt;b&gt;s.youtube.com&lt;/b&gt; у белы спіс або адключыце ўсе DNS-блакіроўшчыкі і праксі.</string>

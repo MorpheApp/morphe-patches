@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Tarkastuksia epäonnistui</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Avaa virallinen sivusto</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ohita</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Tämä sovellus ei näytä olevan sinun paikkaamasi.&lt;/h5&gt;&lt;br&gt;Tämä sovellus ei ehkä toimi oikein, &lt;b&gt;voi olla haitallinen tai jopa vaarallinen käyttää&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Nämä tarkastukset viittaavat siihen, että tämä sovellus on valmiiksi paikattu tai saatu joltakulta muulta:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;On erittäin suositeltavaa, että &lt;b&gt;poistat tämän sovelluksen ja paikkaat sen itse&lt;/b&gt; varmistaaksesi, että käytät tarkistettua ja turvallista sovellusta.&lt;p&gt;&lt;br&gt;Jos tämä varoitus jätetään huomiotta, se näytetään vain kahdesti.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Paikattu toisella laitteella</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Ei Morphe Managerin asentama</string>
-  <string name="morphe_check_environment_not_near_patch_time">Paikattu yli 10 minuuttia sitten</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Paikattu %s päivää sitten</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK käännöspäivä on vioittunut</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ilmoitus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Kellon historiaa ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä todennäköisesti johtuu DNS mainosten estäjä tai verkkovälityspalvelin.&lt;br&gt;&lt;br&gt;Korjataksesi tämän, valkoiselle listalle &lt;b&gt;s.youtube.com&lt;/b&gt; tai poistaaksesi kaikki DNS-estäjät ja -profiilit.</string>

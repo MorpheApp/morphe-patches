@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Tətbiq simvolu</string>
   <string name="morphe_custom_branding_icon_entry_1">Orijinal</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Yoxlamalar uğursuz oldu</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Xidməti veb saytı aç</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Məhəl qoyma</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Bu tətbiq sizin tərəfinizdən yamaqlanmayıb.&lt;/h5&gt;&lt;br&gt;Bu tətbiq düzgün işləməyə bilər, &lt;b&gt;istifadə etmək zərərli və ya hətta təhlükəli ola bilər&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Bu yoxlamalar bu tətbiqin əvvəl yamaqlandığını və ya başqasından əldə edildiyini bildirir:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt; &lt;br&gt;onu silməyiniz və özünüz yamaqlamağınız tövsiyə olunur. &lt;/b&gt;təsdiqlənmiş və təhlükəsiz tətbiq istifadə etdiyinizə əmin olmaq üçün. &lt;p&gt;&lt;br&gt; Ləğv edilməzsə, bu xəbərdarlıq yalnız iki dəfə göstəriləcək.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Fərqli cihazda yamaqlanıb</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Morphe Manager tərəfindən quraşdırılmayıb</string>
-  <string name="morphe_check_environment_not_near_patch_time">10 dəqiqədən çox əvvəl yamaqlanıb</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">%s gün əvvəl yamaqlanıb</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK qurulma vaxtı pozulub</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildiriş</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam bloklayıcı və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;.Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS bloklayıcıları və proksiləri bağlayın.</string>

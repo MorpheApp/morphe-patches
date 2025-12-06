@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ikona e aplikacionit</string>
   <string name="morphe_custom_branding_icon_entry_1">Origjinal</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Kontrollat ​​dështu</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Hap faqen zyrtare</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Injoro</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Kjo aplikacion nuk duket të jetë e rregulluar nga ju.&lt;/h5&gt;&lt;br&gt;Kjo aplikacion mund të mos funksionojë siç duhet, &lt;b&gt;mund të jetë e dëmshme ose edhe e rrezikshme për t\'u përdorur&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Këto verifikime tregojnë se kjo aplikacion është e rregulluar paraprakisht ose është marrë nga dikush tjetër:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Rekomandohet fuqishëm &lt;b&gt;dezinstalimi i kësaj aplikacioni dhe rregullimi i saj vetë&lt;/b&gt; për të siguruar që përdorni një aplikacion të vlefshëm dhe të sigurt.&lt;p&gt;&lt;br&gt;Nëse injorohet, ky paralajmërim do të tregohet vetëm dy herë.</string>
-  <string name="morphe_check_environment_not_same_patching_device">E rregulluar në një pajisje tjetër</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nuk është instaluar nga Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">E rregulluar më shumë se 10 minuta më parë</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">E rregulluar para %s ditësh</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Data e ndërtimit të APK është e korruptuar</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Njoftim Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Historia juaj e shikimit nuk po ruhet.&lt;br&gt;&lt;br&gt;Kjo me shumë mundësi shkaktohet nga një bllokues DNS reklamash ose një prokuri rrjeti.&lt;br&gt;&lt;br&gt;Për të zgjidhur këtë, shto në listën e bardhë &lt;b&gt;s.youtube.com&lt;/b&gt; ose çaktivizo të gjithë bllokuesit DNS dhe prokuritë.</string>

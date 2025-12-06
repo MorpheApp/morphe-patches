@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">অ্যাপ আইকন</string>
   <string name="morphe_custom_branding_icon_entry_1">মূল</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">চেক ফেইল করেছে</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">অফিশ্যাল ওয়েবসাইট খুলুন</string>
-  <string name="morphe_check_environment_dialog_ignore_button">অবজ্ঞা করুন</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;এই অ্যাপটি আপনার দ্বারা প্যাচ করা হয়েছে বলে মনে হচ্ছে না।&lt;/h5&gt;&lt;br&gt;এই অ্যাপটি সঠিকভাবে কাজ নাও করতে পারে, &lt;b&gt;ক্ষতিকারক বা এমনকি ব্যবহারের জন্য বিপজ্জনক হতে পারে&lt;/b&gt;।&lt;br&gt;&lt;br&gt;এই চেকগুলি ইঙ্গিত দেয় যে এই অ্যাপটি পূর্ববর্তীভাবে প্যাচ করা হয়েছে বা অন্য কাউকে থেকে পাওয়া গেছে:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;এটি দৃঢ়ভাবে সুপারিশ করা হয় যে &lt;b&gt;এই অ্যাপটি আনইনস্টল করা হোক এবং নিজেই প্যাচ করা হোক&lt;/b&gt; যাতে নিশ্চিত করা হয় যে আপনি একটি যাচাইকৃত এবং সুরক্ষিত অ্যাপ ব্যবহার করছেন।&lt;p&gt;&lt;br&gt;যদি উপেক্ষা করা হয়, তাহলে এই সতর্কতাটি শুধুমাত্র দু\'বার দেখানো হবে।</string>
-  <string name="morphe_check_environment_not_same_patching_device">অন্য ডিভাইসে প্যাচ করা হয়েছে</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Morphe Manager দ্বারা প্যাচ করা হয়নি</string>
-  <string name="morphe_check_environment_not_near_patch_time">১০ মিনিটেরও বেশি আগে প্যাচ করা হয়েছে</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">%s দিন আগে প্যাচ করা হয়েছে</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK তৈরির তারিখ ত্রুটিপূর্ণ</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe নোটিশ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>
