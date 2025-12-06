@@ -768,6 +768,7 @@ public final class app/morphe/patches/youtube/misc/playservice/VersionCheckPatch
 	public static final fun is_20_41_or_greater ()Z
 	public static final fun is_20_45_or_greater ()Z
 	public static final fun is_20_46_or_greater ()Z
+	public static final fun is_20_49_or_greater ()Z
 }
 
 public final class app/morphe/patches/youtube/misc/privacy/SanitizeSharingLinksPatchKt {

@@ -38,9 +38,6 @@ internal val shortsBottomBarContainerFingerprint = fingerprint {
     )
 }
 
-/**
- * 19.41 to 20.44.
- */
 internal val renderBottomNavigationBarFingerprint = fingerprint {
     returns("V")
     parameters("Ljava/lang/String;")
@@ -52,10 +49,9 @@ internal val renderBottomNavigationBarFingerprint = fingerprint {
         opcode(Opcode.INVOKE_INTERFACE, MatchAfterImmediately()),
 
         opcode(Opcode.MONITOR_EXIT),
-        opcode(Opcode.RETURN_VOID, MatchAfterImmediately()),
-        opcode(Opcode.MOVE_EXCEPTION, MatchAfterImmediately()),
-        opcode(Opcode.MONITOR_EXIT, MatchAfterImmediately()),
-        opcode(Opcode.THROW, MatchAfterImmediately()),
+        opcode(Opcode.MOVE_EXCEPTION),
+        opcode(Opcode.MONITOR_EXIT),
+        opcode(Opcode.THROW)
     )
 }
 
@@ -77,8 +73,7 @@ internal val legacyRenderBottomNavigationBarLegacyParentFingerprint = fingerprin
 }
 
 /**
- * Identical to [legacyRenderBottomNavigationBarLegacyParentFingerprint]
- * except this has an extra parameter.
+ * 19.41 - 20.44
  */
 internal val renderBottomNavigationBarLegacy1941ParentFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
@@ -96,6 +91,9 @@ internal val renderBottomNavigationBarLegacy1941ParentFingerprint = fingerprint 
     )
 }
 
+/**
+ * 20.45+
+ */
 internal val renderBottomNavigationBarParentFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returns("[Ljava/lang/Class;")
