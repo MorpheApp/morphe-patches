@@ -46,8 +46,8 @@ private val mipmapDirectories = mapOf(
 )
 
 private val iconStyleNames = arrayOf(
-    "light",
     "dark",
+    "light",
 )
 
 private const val ORIGINAL_USER_ICON_STYLE_NAME = "original"
@@ -347,20 +347,20 @@ internal fun baseCustomBrandingPatch(
                         iconMipmapName = originalLauncherIconName,
                         appNameIndex = appNameIndex,
                         useCustomName = useCustomNameLabel,
-                        enabled = (appNameIndex == 1),
+                        enabled = false,
                         intentFilters
                     )
                 )
 
                 // Bundled icons.
-                iconStyleNames.forEachIndexed { index, style ->
+                iconStyleNames.forEachIndexed { iconIndex, style ->
                     application.appendChild(
                         createAlias(
                             aliasName = aliasName(style),
                             iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
                             appNameIndex = appNameIndex,
                             useCustomName = useCustomNameLabel,
-                            enabled = false,
+                            enabled = (iconIndex == 0 && appNameIndex == 1),
                             intentFilters
                         )
                     )
