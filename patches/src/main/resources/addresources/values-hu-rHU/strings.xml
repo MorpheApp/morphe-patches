@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
   <string name="morphe_custom_branding_icon_entry_1">Eredeti</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Az ellenőrzések sikertelenek</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Hivatalos weboldal megnyitása</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Mellőzés</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Úgy tűnik, hogy ezt az alkalmazást nem te patchelted.&lt;/h5&gt;&lt;br&gt;Lehet, hogy az alkalmazás nem fog megfelelően működni, sőt, &lt;b&gt;ártalmas vagy akár veszélyes is lehet a használata&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Az alábbi ellenőrzések arra utalnak, hogy már előre patchelték az alkalmazást, vagy mástól szerezted be azt:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Ajánlott &lt;b&gt;letörölni és magadnak patchelni&lt;/b&gt; az alkalmazást a teljes biztonság érdekében.&lt;p&gt;&lt;br&gt;Ha ezt az értesítést mellőzöd, csak kétszer fog megjelenni.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Patchelve egy másik eszközön</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nem a Morphe Manager telepítette</string>
-  <string name="morphe_check_environment_not_near_patch_time">Több mint 10 perce patchelve</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">%s napja patchelve</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Az APK build dátuma sérült</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt.</string>

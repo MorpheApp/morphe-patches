@@ -25,9 +25,6 @@ Second \"item\" text"</string>
   <!-- Translation of this should be identical to morphe_header_logo_entry_5 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Provjere nisu uspjele</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   </patch>
   <patch id="misc.settings.settingsResourcePatch">

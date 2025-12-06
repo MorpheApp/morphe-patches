@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
   <string name="morphe_custom_branding_icon_entry_1">Asli</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Pemeriksaan gagal</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Buka situs resmi</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Abaikan</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Aplikasi ini tampaknya tidak ditambal oleh Anda.&lt;/h5&gt;&lt;br&gt;Aplikasi ini mungkin tidak bisa berfungsi dengan baik, &lt;b&gt;bisa berbahaya atau bahkan membahayakan untuk digunakan&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Pemeriksaan ini berarti bahwa aplikasi ini telah ditambal sebelumnya atau diperoleh dari orang lain:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Sangat disarankan untuk &lt;b&gt;mencopot pemasangan aplikasi ini dan menambalnya sendiri&lt;/b&gt; guna memastikan Anda menggunakan aplikasi yang tervalidasi dan aman.&lt;p&gt;&lt;br&gt;Jika diabaikan, peringatan ini hanya akan ditampilkan dua kali.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Ditambal pada perangkat yang berbeda</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Tidak terpasang oleh Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Ditambal lebih dari 10 menit yang lalu</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Ditambal %s hari yang lalu</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Tanggal pembuatan APK rusak</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>

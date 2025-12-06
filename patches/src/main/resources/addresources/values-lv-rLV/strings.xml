@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Lietotnes ikona</string>
   <string name="morphe_custom_branding_icon_entry_1">Oriģināls</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Pārbaudes neizdevās</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Atvērt oficiālo vietni</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorēt</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Šī lietotne, šķiet, nav labota jūsu ierīcē.&lt;/h5&gt;&lt;br&gt;Šī lietotne var nedarboties pareizi, &lt;b&gt;varētu būt kaitīga vai pat bīstama lietošanai&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Šīs pārbaudes liecina, ka lietotne ir iepriekš labota vai iegūta no kāda cita:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Ir stingri ieteicams &lt;b&gt;atinstalēt šo lietotni un paši to labot&lt;/b&gt;, lai pārliecinātos, ka lietojat apstiprinātu un drošu lietotni.&lt;p&gt;&lt;br&gt;Ja ignorēsiet, šis brīdinājums tiks parādīts tikai divas reizes.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Labots citā ierīcē</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nav instalēts ar Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Labots pirms vairāk nekā 10 minūtēm</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Labots pirms %s dienām</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK veidošanas datums ir bojāts</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe paziņojums</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Jūsu skatīšanās vēsture netiek saglabāta.&lt;br&gt;&lt;br&gt;Visticamāk, to izraisa DNS reklāmu bloķētājs vai tīkla starpniekserveris.&lt;br&gt;&lt;br&gt;Lai to novērstu, pievienojiet baltajam sarakstam &lt;b&gt;s.youtube.com&lt;/b&gt; vai izslēdziet visus DNS bloķētājus un starpniekservera serverus.</string>

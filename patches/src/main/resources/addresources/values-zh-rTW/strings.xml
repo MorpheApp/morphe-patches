@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">應用程式圖示</string>
   <string name="morphe_custom_branding_icon_entry_1">原始</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">檢查失敗</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">開啟官方網站</string>
-  <string name="morphe_check_environment_dialog_ignore_button">忽略</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;此應用程式似乎不是由您修補的。&lt;/h5&gt;&lt;br&gt;此應用程式可能無法正常運作，&lt;b&gt;使用上可能有害甚至危險&lt;/b&gt;。&lt;br&gt;&lt;br&gt;這些檢查表示此應用程式是預先修補的或從其他人那裡取得的：&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;強烈建議您&lt;b&gt;解除安裝此應用程式並自行修補&lt;/b&gt;，以確保您使用的是經過驗證且安全的應用程式。&lt;p&gt;&lt;br&gt;如果忽略，此警告將只顯示兩次。</string>
-  <string name="morphe_check_environment_not_same_patching_device">在其他裝置上修補</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">不是由 Morphe Manager 安裝</string>
-  <string name="morphe_check_environment_not_near_patch_time">修補時間超過 10 分鐘</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">修補於 %s 天前</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK 建構日期已損毀</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由於 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>

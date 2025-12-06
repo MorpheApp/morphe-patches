@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">App-pictogram</string>
   <string name="morphe_custom_branding_icon_entry_1">Origineel</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Controle mislukt</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Open officiële website</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Negeren</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Deze app lijkt niet door u te zijn gepatcht.&lt;/h5&gt;&lt;br&gt;Deze app werkt mogelijk niet goed, is **mogelijk schadelijk of zelfs gevaarlijk om te gebruiken**.&lt;br&gt;&lt;br&gt;Deze checks geven aan dat deze app is gepatcht of van iemand anders is verkregen:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Het is sterk aan te raden om **deze app te verwijderen en zelf te patchen** om er zeker van te zijn dat u een gevalideerde en veilige app gebruikt.&lt;p&gt;&lt;br&gt;Indien genegeerd, zal deze waarschuwing nog slechts twee keer worden getoond.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Op een ander apparaat gepatcht</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Niet geïnstalleerd door Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Meer dan 10 minuten geleden gepatcht</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Gepatcht %s dagen geleden</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK-bouwdatum is beschadigd</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Melding</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit.</string>

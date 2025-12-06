@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Programos piktograma</string>
   <string name="morphe_custom_branding_icon_entry_1">Originalus</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Patikrinimai nepavyko</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Atidaryti oficialią svetainę</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignoruoti</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Ši programa, atrodo, nebuvo pataisyta jūsų.&lt;/h5&gt;&lt;br&gt;Ši programa gali veikti netinkamai, &lt;b&gt;gali būti kenksminga arba net pavojinga naudoti&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Šie patikrinimai rodo, kad ši programa yra iš anksto pataisyta arba gauta iš kito asmens:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Stipriai rekomenduojama &lt;b&gt;ištrinti šią programą ir ją pataisyti patiems&lt;/b&gt;, kad įsitikintumėte, jog naudojate patikrintą ir saugią programą.&lt;p&gt;&lt;br&gt;Jei ignoruosite, šis perspėjimas bus rodomas tik du kartus.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Pataisyta kitame įrenginyje</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nėra įdiegta Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Pataisyta daugiau nei prieš 10 minučių</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Pataisyta prieš %s dienas</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK sukurties data yra sugadinta</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe pranešimas</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Jūsų žiūrėjimo istorija nėra išsaugoma.&lt;br&gt;&lt;br&gt;Tikėtina, kad tai sukelia DNS skelbimų blokatorius arba tinklo tarpinis serveris.&lt;br&gt;&lt;br&gt;Norėdami išspręsti šią problemą, įtraukite į baltąjį sąrašą &lt;b&gt;s.youtube.com&lt;/b&gt; arba išjunkite visus DNS blokatorius ir tarpinį serverį.</string>

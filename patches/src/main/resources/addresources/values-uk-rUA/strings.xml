@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Іконка додатку</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригінальна</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Перевірки не вдалися</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Відкрити офіційний вебсайт</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ігнорувати</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Схоже, що цей застосунок був пропатчений не Вами.&lt;/h5&gt;&lt;br&gt;Він може працювати не належним чином, &lt;b&gt;бути шкідливим або навіть небезпечним&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Ці перевірки означають, що цей застосунок був пропатчений та отриманий від когось іншого:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Наполегливо рекомендується &lt;b&gt;видалити цей застосунок та пропатчити його самостійно,&lt;/b&gt; щоб переконатися, що Ви використовуєте перевірений та безпечний застосунок.&lt;p&gt;&lt;br&gt;Якщо це попередження проігнорувати, воно буде показано лише двічі.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Пропатчено на іншому пристрої</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Встановлено не через Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Пропатчено більше 10 хвилин тому</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Пропатчено %s дні(в) тому</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Дата збірки APK пошкоджена</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Повідомлення Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша історія переглядів не зберігається.&lt;br&gt;&lt;br&gt;Швидше за все, це спричинено блокувальником реклами DNS або мережевим проксі.&lt;br&gt;&lt;br&gt;Щоб це виправити, додайте &lt;b&gt;s.youtube.com&lt;/b&gt; у білий список блокувальника або вимкніть усі DNS блокувальники та проксі.</string>

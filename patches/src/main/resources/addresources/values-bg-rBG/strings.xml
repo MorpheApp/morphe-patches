@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Икона на приложението</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинален</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Проверката е неуспешна</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Отворете официалния уебсайт</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Пропусни</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Изглежда, че това приложение не е коригирано от вас.&lt;/h5&gt;&lt;br&gt;Това приложение може да не функционира правилно, &lt;b&gt;може да бъде вредно или дори опасно за използване&lt;/b&gt;.&lt; br&gt;&lt;br&gt;Тези проверки предполагат, че това приложение е предварително коригирано или получено от някой друг:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Силно се препоръчва да &lt;b&gt;деинсталирайте това приложение и го поправете сами&lt;/b&gt; за да сте сигурни, че използвате валидирано и защитено приложение.&lt;p&gt;&lt;br&gt;Ако бъде пренебрегнато, това предупреждение ще се покаже само два пъти.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Коригирано на друго устройство</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Не е инсталиран Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Редактирано преди повече от 10 минути</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Коригирано преди %s дни</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Датата на компилация на APK е повредена</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Известие от Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>

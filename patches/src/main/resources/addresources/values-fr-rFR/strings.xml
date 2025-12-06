@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Icône de l\'application</string>
   <string name="morphe_custom_branding_icon_entry_1">Originale</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Les vérifications ont échoué</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Ouvrir le site officiel</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorer</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Cette application ne semble pas avoir été patchée par vous.&lt;/h5&gt;&lt;br&gt;Cette application pourrait ne pas fonctionner correctement, &lt;b&gt;être nocive ou même dangereuse à utiliser&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Ces vérifications impliquent que cette application a été pré-patchée ou obtenue auprès de quelqu\'un d\'autre :&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Il est fortement recommandé de &lt;b&gt;désinstaller cette application et de la patcher vous-même&lt;/b&gt; pour garantir le fait que vous utilisez une application vérifiée et sécurisée.&lt;p&gt;&lt;br&gt;S\'il est ignoré, cet avertissement ne sera affiché que deux fois.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Patché sur un appareil différent</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Non installé par Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Patché il y a plus de 10 minutes</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Patché il y a %s jours</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">La date de construction de l\'APK est corrompue</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avis Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Les vidéos que vous regardez ne sont pas enregistrées dans votre historique.&lt;br&gt;&lt;br&gt;La cause la plus probable est l\'utilisation d\'un serveur DNS bloqueur de publicités ou d\'un proxy.&lt;br&gt;&lt;br&gt;Pour résoudre ce problème, autorisez l\'accès à &lt;b&gt;s.youtube.com&lt;/b&gt; ou désactivez tous vos bloqueurs DNS et proxys.</string>

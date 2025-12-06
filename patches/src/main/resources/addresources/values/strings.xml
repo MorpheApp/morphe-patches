@@ -30,17 +30,6 @@ Second \"item\" text"</string>
             <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
             <string name="morphe_custom_branding_icon_entry_4">Custom</string>
         </patch>
-        <patch id="misc.checks.checkEnvironmentPatch">
-            <string name="morphe_check_environment_failed_title">Checks failed</string>
-            <string name="morphe_check_environment_dialog_open_official_source_button">Open official website</string>
-            <string name="morphe_check_environment_dialog_ignore_button">Ignore</string>
-            <string name="morphe_check_environment_failed_message">&lt;h5>This app does not appear to be patched by you.&lt;/h5>&lt;br>This app may not function correctly, &lt;b>could be harmful or even dangerous to use&lt;/b>.&lt;br>&lt;br>These checks imply this app is pre-patched or obtained from someone else:&lt;br>&lt;br>&lt;small>%1$s&lt;/small>&lt;br>It is strongly recommended to &lt;b>uninstall this app and patch it yourself&lt;/b> to ensure you are using a validated and secure app.&lt;p>&lt;br>If ignored, this warning will only be shown twice.</string>
-            <string name="morphe_check_environment_not_same_patching_device">Patched on a different device</string>
-            <string name="morphe_check_environment_manager_not_expected_installer">Not installed by Morphe</string>
-            <string name="morphe_check_environment_not_near_patch_time">Patched more than 10 minutes ago</string>
-            <string name="morphe_check_environment_not_near_patch_time_days">Patched %s days ago</string>
-            <string name="morphe_check_environment_not_near_patch_time_invalid">APK build date is corrupted</string>
-        </patch>
         <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
             <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
             <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>

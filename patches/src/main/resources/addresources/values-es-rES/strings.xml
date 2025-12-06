@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Icono de la aplicación</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Comprobaciones fallidas</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Ir al sitio web oficial</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorar</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Esta app no parece estar parcheada por ti.&lt;/h5&gt;&lt;br&gt;Esta app podría no funcionar correctamente, &lt;b&gt; podría ser perjudicial o incluso peligrosa de usar&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Estas comprobaciones implican que esta app está pre-parcheada o se ha obtenido de alguien más:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Se recomienda mucho &lt;b&gt;desinstalar esta app y parchearla por ti mismo&lt;/b&gt; para asegurarte de que estás usando una app segura y validada.&lt;p&gt;&lt;br&gt;Si se ignora, este aviso se mostrará solo dos veces.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Parcheado en un dispositivo diferente</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">No instalado por Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Parcheado hace más de 10 minutos</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Parcheado hace %s días</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">La fecha de compilación del APK está corrupta</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso de Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Tu historial no está siendo guardado.&lt;br&gt;&lt;br&gt;Esto puede ser por un bloqueador de anuncios DNS o Proxy.&lt;br&gt;&lt;br&gt;Para arreglarlo, permita el dominio &lt;b&gt;s.youtube.com&lt;/b&gt; o desactive el bloqueador DNS o Proxy.</string>

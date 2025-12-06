@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
   <string name="morphe_custom_branding_icon_entry_1">الأصلية</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">فشلت عمليات التحقق</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">فتح الموقع الرسمي</string>
-  <string name="morphe_check_environment_dialog_ignore_button">تجاهل</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;لا يبدو أن هذا التطبيق قد تم تعديله من قبلك.&lt;/h5&gt;&lt;br&gt;قد لا يعمل هذا التطبيق بشكل صحيح، &lt;b&gt;قد يكون ضارًا أو حتى خطيرًا للاستخدام&lt;/b&gt;.&lt;br&gt;&lt;br&gt;تشير هذه الفحوصات إلى أن هذا التطبيق تم تعديله مسبقًا أو تم الحصول عليه من شخص آخر:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;يوصى بشدة بـ &lt;b&gt;إلغاء تثبيت هذا التطبيق وتعديله بنفسك&lt;/b&gt; للتأكد من أنك تستخدم تطبيقًا معتمدًا وآمنًا.&lt;p&gt;&lt;br&gt;في حالة تجاهل هذا التحذير، سيتم عرضه مرتين فقط.</string>
-  <string name="morphe_check_environment_not_same_patching_device">تم تعديله على جهاز مختلف</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">لم يتم تثبيته بواسطة Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">تم تعديله قبل أكثر من 10 دقائق</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">تم التعديل منذ %s يوم</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">تاريخ بناء APK تالف</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي.</string>

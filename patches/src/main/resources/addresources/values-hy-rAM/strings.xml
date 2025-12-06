@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Հավելվածի պատկերակը</string>
   <string name="morphe_custom_branding_icon_entry_1">Բնօրինակ</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Վերահսկումները ձախողվել են</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Բացել պաշտոնական կայքը</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Մերժել</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Այս հավելվածը, ըստ երևույթին, չի մշակվել ձեզ կողմից։&lt;/h5&gt;&lt;br&gt;Այս հավելվածը կարող է անսպասելիորեն աշխատել կամ &lt;b&gt;վտանգավոր լինել կամ նույնիսկ վտանգավոր լինել օգտագործման համար&lt;/b&gt;։&lt;br&gt;&lt;br&gt;Այս վերահսկումները ենթադրում են, որ այս հավելվածը նախապես մշակված է կամ ստացվել է մեկ այլ անձից։&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Հ強くРекомендуется &lt;b&gt;թվոտացնել այս հավելվածը և ինքնուրույն մշակել այն&lt;/b&gt;՝  ապահովելու համար, որ դուք օգտագործում եք վավերացված և անվտանգ հավելված։&lt;p&gt;&lt;br&gt;Եթե ​​չեք ուշադրություն դարձնում, այս նախազգուշացումը կցուցադրվի միայն երկու անգամ։</string>
-  <string name="morphe_check_environment_not_same_patching_device">Պատչված է տարբեր սարքի վրա</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Morphe Manager-ով չի տեղադրվել</string>
-  <string name="morphe_check_environment_not_near_patch_time">Պատչված է ավելի քան 10 րոպե առաջ</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Մշակվել է %s օր առաջ</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK-ի կառուցման ամսաթիվը վնասված է</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Ծանուցում</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ձեր դիտման պատմությունը չի պահպանվում.&lt;br&gt;&lt;br&gt;Այս  հավանական  պատճառը DNS  գովազդների  բլոկավորիչ կամ ցանցային պրոքսի  է.&lt;br&gt;&lt;br&gt;Խնդրում ենք  գործարկել &lt;b&gt;s.youtube.com&lt;/b&gt;  կամ անջատել  DNS  բլոկավորիչներ  և  պրոքսիներ:</string>

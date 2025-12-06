@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
   <string name="morphe_custom_branding_icon_entry_1">מקורי</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">בדיקות נכשלו</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">פתח אתר רשמי</string>
-  <string name="morphe_check_environment_dialog_ignore_button">התעלם</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;נראה שיישום זה לא תוקן על ידך.&lt;/h5&gt;&lt;br&gt;ייתכן שיישום זה לא יפעל כראוי, &lt;b&gt;יכול להיות מזיק ואפילו מסוכן לשימוש&lt;/b&gt;.&lt;br&gt;&lt;br&gt;בדיקות אלה מרמזות שיישום זה תוקן מראש או הושג ממישהו אחר:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;מומלץ בחום &lt;b&gt;להסיר יישום זה ולתקן אותו בעצמך&lt;/b&gt; כדי להבטיח שאתה משתמש ביישום מאומת ומאובטח.&lt;p&gt;&lt;br&gt;אם תתעלם מכך, אזהרה זו תוצג רק פעמיים.</string>
-  <string name="morphe_check_environment_not_same_patching_device">תוקן במכשיר אחר</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">לא הותקן על ידי Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">תוקן לפני יותר מ-10 דקות</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">תוקן לפני %s ימים</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">תאריך בניית ה-APK פגום</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>

@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
   <string name="morphe_custom_branding_icon_entry_1">オリジナル</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">チェックに失敗しました</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">公式サイトを開く</string>
-  <string name="morphe_check_environment_dialog_ignore_button">無視</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;このアプリはあなたによってパッチが適用されていないようです。&lt;/h5&gt;&lt;br&gt;このアプリは正しく機能しない可能性があり、&lt;b&gt;使用すると有害または危険になる可能性があります&lt;/b&gt;。&lt;br&gt;&lt;br&gt;これらのチェックは、このアプリが事前にパッチが適用されているか、または他の誰かから取得されたことを意味します:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;検証済みで安全なアプリを使用していることを確認するために、&lt;b&gt;このアプリをアンインストールして自分でパッチを適用する&lt;/b&gt;ことを強くおすすめします。&lt;p&gt;&lt;br&gt;無視した場合、この警告は 2 回のみ表示されます。</string>
-  <string name="morphe_check_environment_not_same_patching_device">別のデバイス上でパッチが適用されている</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Morphe Manager によってインストールされていない</string>
-  <string name="morphe_check_environment_not_near_patch_time">10 分以上前にパッチが適用されている</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">%s 日前にパッチが適用されている</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">APK の作成日時データが破損している</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からのお知らせ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>

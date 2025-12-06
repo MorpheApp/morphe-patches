@@ -25,17 +25,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikácie</string>
   <string name="morphe_custom_branding_icon_entry_1">Pôvodné</string>
   </patch>
-  <patch id="misc.checks.checkEnvironmentPatch">
-  <string name="morphe_check_environment_failed_title">Kontrola zlyhala</string>
-  <string name="morphe_check_environment_dialog_open_official_source_button">Otvoriť oficiálnu webovú stránku</string>
-  <string name="morphe_check_environment_dialog_ignore_button">Ignorovať</string>
-  <string name="morphe_check_environment_failed_message">&lt;h5&gt;Táto aplikácia sa javí, že nie je upravená.&lt;/h5&gt;&lt;br&gt;Táto aplikácia nemusí fungovať správne, &lt;b&gt;môže byť škodlivá alebo dokonca nebezpečná na použitie&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Tieto kontroly znamenajú, že táto aplikácia je predpripravená alebo získaná od niekoho iného:&lt;br&gt;&lt;br&gt;&lt;small&gt;%1$s&lt;/small&gt;&lt;br&gt;Odporúčame &lt;b&gt;odstrániť túto aplikáciu a upraviť ju sami&lt;/b&gt;, aby ste sa uistili, že používate overenú a bezpečnú aplikáciu.&lt;p&gt;&lt;br&gt;Ak sa bude ignorovať, toto upozornenie sa zobrazí už len dvakrát.</string>
-  <string name="morphe_check_environment_not_same_patching_device">Upravené na inom zariadení</string>
-  <string name="morphe_check_environment_manager_not_expected_installer">Nie je nainštalovaný pomocou Morphe Manager</string>
-  <string name="morphe_check_environment_not_near_patch_time">Upravené pred viac ako 10 minútami</string>
-  <string name="morphe_check_environment_not_near_patch_time_days">Upravené pred %s dňami</string>
-  <string name="morphe_check_environment_not_near_patch_time_invalid">Dátum zostavenia APK je poškodený</string>
-  </patch>
   <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornenie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša história pozeraného sa neuchováva.&lt;br&gt;&lt;br&gt;Toto je pravdepodobne spôsobené blokovaním reklám pomocou DNS alebo sieťového proxy.&lt;br&gt;&lt;br&gt;Pre vyriešenie tohto problému povoľte &lt;b&gt;s.youtube.com&lt;/b&gt; alebo vypnite všetky blokátory reklám pomocou DNS a proxy.</string>
