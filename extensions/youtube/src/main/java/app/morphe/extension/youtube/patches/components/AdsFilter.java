@@ -80,7 +80,7 @@ public final class AdsFilter extends Filter {
                 "primetime_promo",
                 "product_details",
                 "square_image_layout",
-                "statement_banner",
+                "statement_banner.",
                 "text_image_button_layout",
                 "text_image_no_button_layout", // Tablet layout search results.
                 "video_display_button_group_layout",
