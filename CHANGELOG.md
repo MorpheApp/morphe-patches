@@ -1,0 +1,23 @@
+# 1.0.0-dev.1 (2025-12-07)
+
+
+### Bug Fixes
+
+* Move all classes to morphe namespace ([9948922](https://github.com/MorpheApp/morphe-patches/commit/9948922e4e2015fa15af27a7ebb5e2cbffc1c01c))
+* Remove installation nag screen that prevent sharing with close friends, but also will never stop counterfeit sites ([e7f3497](https://github.com/MorpheApp/morphe-patches/commit/e7f3497d4197f10e028be0fc2623e152375b52b6))
+* Restore code ([2e4979a](https://github.com/MorpheApp/morphe-patches/commit/2e4979ae17533eb80658aca7f50a9cb62cba478b))
+* **YouTube - Hide ads:** Hide new type of ad ([066a3ff](https://github.com/MorpheApp/morphe-patches/commit/066a3ff6c53656d60ef5eb32c48042f6ed970c41))
+* **YouTube - Hide ads:** YouTube Doodles are unclickable when Hide ads is turned on ([1ba6238](https://github.com/MorpheApp/morphe-patches/commit/1ba623899ad6f89e4d4c44114dcea090118887d3))
+* **YouTube - Hide ads:** YouTube Doodles are unclickable when Hide ads is turned on ([d3a54c1](https://github.com/MorpheApp/morphe-patches/commit/d3a54c1b9c2c9f3179dacc07611792ee4852fc9e))
+* **YouTube - Hide Shorts components:** Action buttons are not hidden in YouTube 20.22+ ([#4](https://github.com/MorpheApp/morphe-patches/issues/4)) ([171351a](https://github.com/MorpheApp/morphe-patches/commit/171351a3989cbc8a17990789fd34b1d7b35ffad8))
+* **YouTube - Return YouTube Dislike:** Sometimes incorrect dislike counts shown in Shorts ([6401688](https://github.com/MorpheApp/morphe-patches/commit/640168818c9ada91ed7c429de7b75f08f0b79f9c))
+* **YouTube - Return YouTube Dislike:** Sometimes incorrect dislike counts shown when the dislike button is clicked and then canceled ([b598b22](https://github.com/MorpheApp/morphe-patches/commit/b598b22b8c0ca5c5c37f18bf0f02ff7a97463a20))
+* **YouTube - ReturnYouTubeDislike:** Fix dislikes not showing with 20.31+ ([f238b81](https://github.com/MorpheApp/morphe-patches/commit/f238b8112f0a46dc24118cf2e8b9138cfdb932c3))
+* **YouTube - Spoof video streams:** Age-restricted videos do not play in the `Android No SDK` client ([#3](https://github.com/MorpheApp/morphe-patches/issues/3)) ([c8096b1](https://github.com/MorpheApp/morphe-patches/commit/c8096b14685c8822e36a9acbe7f7729d95f754e8))
+* **YouTube Music - Hide buttons:** An exception is thrown due to an invalid fingerprint format ([81042aa](https://github.com/MorpheApp/morphe-patches/commit/81042aa5a7fb8afd1da8dc2a7e854ac0a5b0958c))
+* **YouTube:** Move loop video setting to player menu ([cd82e1e](https://github.com/MorpheApp/morphe-patches/commit/cd82e1e807533e7f39bc40b1d9171929166ff9bb))
+
+
+### Features
+
+* **YouTube - LithoFilterPatch:** Add support for accessibility filtering ([#1](https://github.com/MorpheApp/morphe-patches/issues/1)) ([61fb9c2](https://github.com/MorpheApp/morphe-patches/commit/61fb9c2498ad261ae526b347fb89d4faf1723704))
