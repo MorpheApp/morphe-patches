@@ -1,7 +1,9 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -10,25 +12,25 @@ import com.android.tools.smali.dexlib2.Opcode
 /**
  * 19.46+
  */
-internal val openVideosFullscreenPortraitFingerprint = fingerprint {
-    returns("V")
-    parameters("L", "Lj\$/util/Optional;")
-    instructions(
+internal val openVideosFullscreenPortraitFingerprint = Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Lj\$/util/Optional;"),
+    filters = listOf(
         opcode(Opcode.MOVE_RESULT), // Conditional check to modify.
         // Open videos fullscreen portrait feature flag.
-        literal(45666112L, location = MatchAfterWithin(5)), // Cannot be more than 5.
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(10)),
+        literal(45666112L, location = InstructionLocation.MatchAfterWithin(5)), // Cannot be more than 5.
+        opcode(Opcode.MOVE_RESULT, location = InstructionLocation.MatchAfterWithin(10)),
     )
-}
+)
 
 /**
  * Pre 19.46.
  */
-internal val openVideosFullscreenPortraitLegacyFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L", "Lj\$/util/Optional;")
-    opcodes(
+internal val openVideosFullscreenPortraitLegacyFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Lj\$/util/Optional;"),
+    filters = opcodesToFilters(
         Opcode.GOTO,
         Opcode.SGET_OBJECT,
         Opcode.GOTO,
@@ -41,13 +43,13 @@ internal val openVideosFullscreenPortraitLegacyFingerprint = fingerprint {
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT  // Conditional check to modify.
     )
-}
+)
 
-internal val openVideosFullscreenHookPatchExtensionFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
-    returns("Z")
-    parameters()
-    custom { methodDef, classDef ->
+internal val openVideosFullscreenHookPatchExtensionFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf(),
+    custom = { methodDef, classDef ->
         methodDef.name == "isFullScreenPatchIncluded" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
     }
-}
+)

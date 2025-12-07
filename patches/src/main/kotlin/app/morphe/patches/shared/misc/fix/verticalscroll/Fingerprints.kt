@@ -1,18 +1,20 @@
 package app.morphe.patches.shared.misc.fix.verticalscroll
 
-import com.android.tools.smali.dexlib2.Opcode
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.AccessFlags
-import app.morphe.patcher.fingerprint
+import com.android.tools.smali.dexlib2.Opcode
 
-internal val canScrollVerticallyFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    opcodes(
+internal val canScrollVerticallyFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT,
         Opcode.RETURN,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT
-    )
-    custom { _, classDef -> classDef.endsWith("SwipeRefreshLayout;") }
-}
+    ),
+    custom = { _, classDef -> classDef.endsWith("SwipeRefreshLayout;") }
+)

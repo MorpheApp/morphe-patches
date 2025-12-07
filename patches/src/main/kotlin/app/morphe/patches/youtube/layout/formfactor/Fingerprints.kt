@@ -1,14 +1,15 @@
 package app.morphe.patches.youtube.layout.formfactor
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patches.shared.layout.branding.NotificationFingerprint.strings
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val formFactorEnumConstructorFingerprint = fingerprint {
-    accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
-    strings(
+internal val formFactorEnumConstructorFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
         "UNKNOWN_FORM_FACTOR",
         "SMALL_FORM_FACTOR",
         "LARGE_FORM_FACTOR",
         "AUTOMOTIVE_FORM_FACTOR"
     )
-}
+)

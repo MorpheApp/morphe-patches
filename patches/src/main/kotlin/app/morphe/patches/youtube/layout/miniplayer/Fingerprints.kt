@@ -2,9 +2,10 @@
 
 package app.morphe.patches.youtube.layout.miniplayer
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -25,139 +26,139 @@ internal const val MINIPLAYER_INITIAL_SIZE_FEATURE_KEY = 45640023L
 internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
 
-internal val miniplayerModernConstructorFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    instructions(
+internal val miniplayerModernConstructorFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
         literal(45623000L) // Magic number found in the constructor.
     )
-}
+)
 
-internal val miniplayerDimensionsCalculatorParentFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L")
-    instructions(
+internal val miniplayerDimensionsCalculatorParentFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
         resourceLiteral(ResourceType.DIMEN, "floaty_bar_button_top_margin")
     )
-}
+)
 
-internal val miniplayerModernViewParentFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Ljava/lang/String;")
-    parameters()
-    instructions(
+internal val miniplayerModernViewParentFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
         string("player_overlay_modern_mini_player_controls")
     )
-}
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernAddViewListenerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/view/View;")
-}
+internal val miniplayerModernAddViewListenerFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernCloseButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters()
-    instructions(
+internal val miniplayerModernCloseButtonFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "modern_miniplayer_close"),
         checkCast("Landroid/widget/ImageView;")
     )
-}
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernExpandButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters()
-    instructions(
+internal val miniplayerModernExpandButtonFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "modern_miniplayer_expand"),
         checkCast("Landroid/widget/ImageView;")
     )
-}
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernExpandCloseDrawablesFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L")
-    instructions(
+internal val miniplayerModernExpandCloseDrawablesFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
         literal(ytOutlinePictureInPictureWhite24)
     )
-}
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernForwardButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters()
-    instructions(
+internal val miniplayerModernForwardButtonFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "modern_miniplayer_forward_button"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterWithin(5))
     )
-}
+)
 
-internal val miniplayerModernOverlayViewFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters()
-    instructions(
+internal val miniplayerModernOverlayViewFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "scrim_overlay"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterWithin(5))
     )
-}
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernRewindButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters()
-    instructions(
+internal val miniplayerModernRewindButtonFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "modern_miniplayer_rewind_button"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterWithin(5))
     )
-}
+)
 
 /**
  * Matches using the class found in [miniplayerModernViewParentFingerprint].
  */
-internal val miniplayerModernActionButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters()
-    instructions(
+internal val miniplayerModernActionButtonFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "modern_miniplayer_overlay_action_button"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterWithin(5))
     )
-}
+)
 
-internal val miniplayerMinimumSizeFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    instructions(
+internal val miniplayerMinimumSizeFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
         resourceLiteral(ResourceType.DIMEN, "miniplayer_max_size"),
         literal(192), // Default miniplayer width constant.
         literal(128)  // Default miniplayer height constant.
     )
-}
+)
 
-internal val miniplayerOverrideFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    instructions(
+internal val miniplayerOverrideFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    filters = listOf(
         string("appName"),
         methodCall(
             parameters = listOf("Landroid/content/Context;"),
@@ -165,24 +166,24 @@ internal val miniplayerOverrideFingerprint = fingerprint {
             location = MatchAfterWithin(10)
         )
     )
-}
+)
 
-internal val miniplayerOverrideNoContextFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
-    returns("Z")
-    instructions(
+internal val miniplayerOverrideNoContextFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    filters = listOf(
         opcode(Opcode.IGET_BOOLEAN) // Anchor to insert the instruction.
     )
-}
+)
 
 /**
  * 20.36 and lower. Codes appears to be removed in 20.37+
  */
-internal val miniplayerResponseModelSizeCheckFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters("Ljava/lang/Object;", "Ljava/lang/Object;")
-    opcodes(
+internal val miniplayerResponseModelSizeCheckFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.RETURN_OBJECT,
         Opcode.CHECK_CAST,
         Opcode.CHECK_CAST,
@@ -190,30 +191,30 @@ internal val miniplayerResponseModelSizeCheckFingerprint = fingerprint {
         Opcode.MOVE_RESULT,
         Opcode.IF_NEZ,
     )
-}
+)
 
-internal val miniplayerOnCloseHandlerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    instructions(
+internal val miniplayerOnCloseHandlerFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    filters = listOf(
         literal(MINIPLAYER_DISABLED_FEATURE_KEY)
     )
-}
+)
 
 internal const val YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME =
     "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;"
 
-internal val playerOverlaysLayoutFingerprint = fingerprint {
-    custom { method, _ ->
+internal val playerOverlaysLayoutFingerprint = Fingerprint(
+    custom = { method, _ ->
         method.definingClass == YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
     }
-}
+)
 
-internal val miniplayerSetIconsFingerprint = fingerprint {
-    returns("V")
-    parameters("I", "Ljava/lang/Runnable;")
-    instructions(
+internal val miniplayerSetIconsFingerprint = Fingerprint(
+    returnType = "V",
+    parameters = listOf("I", "Ljava/lang/Runnable;"),
+    filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_white_36"),
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_black_36")
     )
-}
+)

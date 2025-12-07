@@ -4,7 +4,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -209,14 +208,14 @@ val seekbarColorPatch = bytecodePatch(
                 factoryStreamReturnType = returnType
             }
 
-            val lottieAnimationViewSetAnimationStreamFingerprint = fingerprint {
-                accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-                parameters(factoryStreamReturnType.toString())
-                returns("V")
-                custom { _, classDef ->
+            val lottieAnimationViewSetAnimationStreamFingerprint = Fingerprint(
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = "V",
+                parameters = listOf(factoryStreamReturnType.toString()),
+                custom = { _, classDef ->
                     classDef.type == lottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type
                 }
-            }
+            )
             val setAnimationStreamName = lottieAnimationViewSetAnimationStreamFingerprint
                 .originalMethod.name
 

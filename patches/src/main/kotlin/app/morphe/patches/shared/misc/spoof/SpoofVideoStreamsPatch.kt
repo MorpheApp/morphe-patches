@@ -1,12 +1,12 @@
 package app.morphe.patches.shared.misc.spoof
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
@@ -299,16 +299,16 @@ internal fun spoofVideoStreamsPatch(
             )
         }
 
-        val sabrFingerprint = fingerprint {
-            returns(mediaFetchEnumClass)
-            opcodes(
+        val sabrFingerprint = Fingerprint(
+            returnType = mediaFetchEnumClass,
+            filters = opcodesToFilters(
                 Opcode.SGET_OBJECT,
                 Opcode.RETURN_OBJECT,
-            )
-            custom { method, _ ->
+            ),
+            custom = { method, _ ->
                 !method.parameterTypes.isEmpty()
             }
-        }
+        )
         sabrFingerprint.method.addInstructionsWithLabels(
             0,
             """

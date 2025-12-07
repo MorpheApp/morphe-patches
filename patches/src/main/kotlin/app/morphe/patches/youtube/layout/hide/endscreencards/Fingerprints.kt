@@ -1,60 +1,61 @@
 package app.morphe.patches.youtube.layout.hide.endscreencards
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.util.containsLiteralInstruction
+import app.morphe.util.customLiteral
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
-import app.morphe.util.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-internal val layoutCircleFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters()
-    returns("Landroid/view/View;")
-    opcodes(
+internal val layoutCircleFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "Landroid/view/View;",
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST,
         Opcode.CONST_4,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-    )
-    literal { layoutCircle }
-}
+    ),
+    custom = customLiteral { layoutCircle }
+)
 
-internal val layoutIconFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters()
-    returns("Landroid/view/View;")
-    opcodes(
+internal val layoutIconFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "Landroid/view/View;",
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
 
-    )
-    literal { layoutIcon }
-}
+        ),
+    custom = customLiteral { layoutIcon }
+)
 
-internal val layoutVideoFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC)
-    parameters()
-    returns("Landroid/view/View;")
-    opcodes(
+internal val layoutVideoFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC),
+    parameters = listOf(),
+    returnType = "Landroid/view/View;",
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST,
         Opcode.CONST_4,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-    )
-    literal { layoutVideo }
-}
+    ),
+    custom = customLiteral { layoutVideo }
+)
 
-internal val showEndscreenCardsFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L")
-    custom { method, classDef ->
+internal val showEndscreenCardsFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    custom = { method, classDef ->
         classDef.methods.count() == 5
                 && method.containsLiteralInstruction(0)
                 && method.containsLiteralInstruction(5)
@@ -64,4 +65,4 @@ internal val showEndscreenCardsFingerprint = fingerprint {
             reference?.type == "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"
         } >= 0
     }
-}
+)

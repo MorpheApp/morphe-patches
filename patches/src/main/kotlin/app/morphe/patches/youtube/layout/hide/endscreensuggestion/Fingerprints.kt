@@ -1,38 +1,39 @@
 package app.morphe.patches.youtube.layout.hide.endscreensuggestion
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val autoNavConstructorFingerprint = fingerprint {
-    returns("V")
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    strings("main_app_autonav")
-}
+internal val autoNavConstructorFingerprint = Fingerprint(
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf("main_app_autonav")
+)
 
-internal val autoNavStatusFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-}
+internal val autoNavStatusFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf()
+)
 
-internal val removeOnLayoutChangeListenerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters()
-    opcodes(
+internal val removeOnLayoutChangeListenerFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IPUT,
         Opcode.INVOKE_VIRTUAL
-    )
-    // This is the only reference present in the entire smali.
-    custom { method, _ ->
+    ),
+    // This is the only reference present in the entire smali.,
+    custom = { method, _ ->
         method.indexOfFirstInstruction {
             val reference = getReference<MethodReference>()
             reference?.name == "removeOnLayoutChangeListener" &&
             reference.definingClass.endsWith("/YouTubePlayerOverlaysLayout;")
         } >= 0
     }
-}
+)

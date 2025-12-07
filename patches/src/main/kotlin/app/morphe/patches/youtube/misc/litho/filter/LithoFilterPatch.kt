@@ -2,6 +2,15 @@
 
 package app.morphe.patches.youtube.misc.litho.filter
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
@@ -16,15 +25,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnLate
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.fingerprint
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -152,9 +152,9 @@ val lithoFilterPatch = bytecodePatch(
 
         // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
         // As this class is abstract, we need to find another method that uses a method call.
-        val accessibilityTextFingerprint = fingerprint {
-            returns("V")
-            instructions(
+        val accessibilityTextFingerprint = Fingerprint(
+            returnType = "V",
+            filters = listOf(
                 methodCall(
                     opcode = Opcode.INVOKE_INTERFACE,
                     parameters = listOf(),
@@ -166,12 +166,12 @@ val lithoFilterPatch = bytecodePatch(
                     smali = accessibilityIdMethod.toString(),
                     location = MatchAfterWithin(3)
                 )
-            )
-            custom { method, _ ->
+            ),
+            custom = { method, _ ->
                 // 'public final synthetic' or 'public final bridge synthetic'.
                 AccessFlags.SYNTHETIC.isSet(method.accessFlags)
             }
-        }
+        )
 
         // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
         val accessibilityTextMethod = with (accessibilityTextFingerprint) {

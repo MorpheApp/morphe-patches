@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.layout.buttons.navigation
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -9,61 +9,61 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val addCreateButtonViewFingerprint = fingerprint {
-    instructions(
+internal val addCreateButtonViewFingerprint = Fingerprint(
+    filters = listOf(
         string("Android Wear"),
         opcode(Opcode.IF_EQZ),
         string("Android Automotive", location = MatchAfterImmediately()),
     )
-}
+)
 
-internal val createPivotBarFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    parameters(
+internal val createPivotBarFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(
         "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
         "Landroid/widget/TextView;",
         "Ljava/lang/CharSequence;",
-    )
-    instructions(
+    ),
+    filters = listOf(
         methodCall(definingClass = "Landroid/widget/TextView;", name = "setText"),
         opcode(Opcode.RETURN_VOID)
     )
-}
+)
 
-internal val animatedNavigationTabsFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    instructions(
+internal val animatedNavigationTabsFeatureFlagFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    filters = listOf(
         literal(45680008L)
     )
-}
+)
 
-internal val translucentNavigationStatusBarFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    instructions(
+internal val translucentNavigationStatusBarFeatureFlagFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    filters = listOf(
         literal(45400535L) // Translucent status bar feature flag.
     )
-}
+)
 
 /**
  * YouTube nav buttons.
  */
-internal val translucentNavigationButtonsFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    instructions(
+internal val translucentNavigationButtonsFeatureFlagFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
         literal(45630927L) // Translucent navigation bar buttons feature flag.
     )
-}
+)
 
 /**
  * Device on screen back/home/recent buttons.
  */
-internal val translucentNavigationButtonsSystemFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    instructions(
+internal val translucentNavigationButtonsSystemFeatureFlagFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    filters = listOf(
         literal(45632194L) // Translucent system buttons feature flag.
     )
-}
+)

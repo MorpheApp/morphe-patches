@@ -1,10 +1,12 @@
 package app.morphe.patches.youtube.layout.sponsorblock
 
-import app.morphe.patcher.InstructionLocation.*
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import app.morphe.patches.youtube.shared.seekbarFingerprint
@@ -15,46 +17,46 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val appendTimeFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;")
-    instructions(
+internal val appendTimeFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;"),
+    filters = listOf(
         resourceLiteral(ResourceType.STRING, "total_time"),
 
         methodCall(smali = "Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
     )
-}
+)
 
-internal val controlsOverlayFingerprint = fingerprint {
-    returns("V")
-    parameters()
-    instructions(
+internal val controlsOverlayFingerprint = Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "inset_overlay_view_layout"),
         checkCast("Landroid/widget/FrameLayout;", MatchAfterWithin(20))
     )
-}
+)
 
 /**
  * Resolves to the class found in [seekbarFingerprint].
  */
-internal val rectangleFieldInvalidatorFingerprint = fingerprint {
-    returns("V")
-    parameters()
-    instructions(
+internal val rectangleFieldInvalidatorFingerprint = Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
         methodCall(name = "invalidate")
     )
-}
+)
 
-internal val adProgressTextViewVisibilityFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Z")
-    custom { method, _ ->
+internal val adProgressTextViewVisibilityFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z"),
+    custom = { method, _ ->
         indexOfAdProgressTextViewVisibilityInstruction(method) >= 0
     }
-}
+)
 
 internal fun indexOfAdProgressTextViewVisibilityInstruction(method: Method) =
     method.indexOfFirstInstructionReversed {

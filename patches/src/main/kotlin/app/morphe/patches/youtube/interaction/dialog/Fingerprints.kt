@@ -1,15 +1,15 @@
 package app.morphe.patches.youtube.interaction.dialog
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
 
-internal val createDialogFingerprint = fingerprint {
-    returns("V")
-    parameters("L", "L", "Ljava/lang/String;")
-    instructions(
+internal val createDialogFingerprint = Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "L", "Ljava/lang/String;"),
+    filters = listOf(
         methodCall(smali = "Landroid/app/AlertDialog\$Builder;->setNegativeButton(ILandroid/content/DialogInterface\$OnClickListener;)Landroid/app/AlertDialog\$Builder;"),
         methodCall(smali = "Landroid/app/AlertDialog\$Builder;->setOnCancelListener(Landroid/content/DialogInterface\$OnCancelListener;)Landroid/app/AlertDialog\$Builder;"),
         methodCall(smali = "Landroid/app/AlertDialog\$Builder;->create()Landroid/app/AlertDialog;"),
         methodCall(smali = "Landroid/app/AlertDialog;->show()V")
     )
-}
+)

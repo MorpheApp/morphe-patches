@@ -1,9 +1,11 @@
 package app.morphe.patches.youtube.interaction.seekbar
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
@@ -13,73 +15,75 @@ import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.util.customLiteral
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
-import app.morphe.util.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
-internal val swipingUpGestureParentFingerprint = fingerprint {
-    returns("Z")
-    parameters()
-    instructions(
+internal val swipingUpGestureParentFingerprint = Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
         literal(45379021) // Swipe up fullscreen feature flag
     )
-}
+)
 
 /**
  * Resolves using the class found in [swipingUpGestureParentFingerprint].
  */
-internal val showSwipingUpGuideFingerprint = fingerprint {
-    accessFlags(AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    instructions(
+internal val showSwipingUpGuideFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
         literal(1)
     )
-}
+)
 
 /**
  * Resolves using the class found in [swipingUpGestureParentFingerprint].
  */
-internal val allowSwipingUpGestureFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L")
-}
+internal val allowSwipingUpGestureFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L")
+)
 
-internal val disableFastForwardLegacyFingerprint = fingerprint {
-    returns("Z")
-    parameters()
-    opcodes(Opcode.MOVE_RESULT)
+internal val disableFastForwardLegacyFingerprint = Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.MOVE_RESULT
+    ),
     // Intent start flag only used in the subscription activity
-    literal {45411330}
-}
+    custom = customLiteral { 45411330 }
+)
 
-internal val disableFastForwardGestureFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    opcodes(
+internal val disableFastForwardGestureFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IF_EQZ,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
-    )
-    custom { methodDef, classDef ->
+    ),
+    custom = { methodDef, classDef ->
         methodDef.implementation!!.instructions.count() > 30 &&
-            classDef.type.endsWith("/NextGenWatchLayout;")
+                classDef.type.endsWith("/NextGenWatchLayout;")
     }
-}
+)
 
-internal val customTapAndHoldFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters()
-    instructions(
+internal val customTapAndHoldFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
         literal(2.0f)
-    )
-    custom { method, _ ->
+    ),
+    custom = { method, _ ->
         // Code is found in different methods with different strings.
         val findSearchLandingKey = (is_19_34_or_greater && !is_19_47_or_greater)
                 || (is_20_19_or_greater && !is_20_20_or_greater) || is_20_31_or_greater
@@ -90,13 +94,13 @@ internal val customTapAndHoldFingerprint = fingerprint {
                     || (findSearchLandingKey && string == "search_landing_cache_key")
         } >= 0
     }
-}
+)
 
-internal val onTouchEventHandlerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.PUBLIC)
-    returns("Z")
-    parameters("L")
-    opcodes(
+internal val onTouchEventHandlerFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.PUBLIC),
+    returnType = "Z",
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL, // nMethodReference
         Opcode.RETURN,
         Opcode.IGET_OBJECT,
@@ -111,55 +115,65 @@ internal val onTouchEventHandlerFingerprint = fingerprint {
         Opcode.IF_EQZ,
         Opcode.INVOKE_VIRTUAL,
         Opcode.INVOKE_VIRTUAL, // oMethodReference
-    )
-    custom { method, _ -> method.name == "onTouchEvent" }
-}
+    ),
+    custom = { method, _ -> method.name == "onTouchEvent" }
+)
 
-internal val seekbarTappingFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters("Landroid/view/MotionEvent;")
-    instructions(
+internal val seekbarTappingFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/MotionEvent;"),
+    filters = listOf(
         literal(Int.MAX_VALUE),
 
         newInstance("Landroid/graphics/Point;"),
-        methodCall(smali = "Landroid/graphics/Point;-><init>(II)V", location = MatchAfterImmediately()),
-        methodCall(smali = "Lj\$/util/Optional;->of(Ljava/lang/Object;)Lj\$/util/Optional;", location = MatchAfterImmediately()),
+        methodCall(
+            smali = "Landroid/graphics/Point;-><init>(II)V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            smali = "Lj\$/util/Optional;->of(Ljava/lang/Object;)Lj\$/util/Optional;",
+            location = MatchAfterImmediately()
+        ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Lj\$/util/Optional;", location = MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Lj\$/util/Optional;",
+            location = MatchAfterImmediately()
+        ),
 
         opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(10))
-    )
-    custom { method, _ -> method.name == "onTouchEvent" }
-}
+    ),
+    custom = { method, _ -> method.name == "onTouchEvent" }
+)
 
-internal val slideToSeekFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/view/View;", "F")
-    opcodes(
+internal val slideToSeekFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "F"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
         Opcode.IF_EQZ,
         Opcode.GOTO_16,
-    )
-    literal { 67108864 }
-}
+    ),
+    custom = customLiteral { 67108864 }
+)
 
-internal val fullscreenSeekbarThumbnailsQualityFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    instructions(
+internal val fullscreenSeekbarThumbnailsQualityFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
         literal(45399684L) // Video stream seekbar thumbnails feature flag.
     )
-}
+)
 
-internal val fullscreenLargeSeekbarFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    instructions(
+internal val fullscreenLargeSeekbarFeatureFlagFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
         literal(45691569)
     )
-}
+)

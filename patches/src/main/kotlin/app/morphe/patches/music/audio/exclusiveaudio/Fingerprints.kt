@@ -1,14 +1,16 @@
 package app.morphe.patches.music.audio.exclusiveaudio
 
-import com.android.tools.smali.dexlib2.Opcode
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.AccessFlags
-import app.morphe.patcher.fingerprint
+import com.android.tools.smali.dexlib2.Opcode
 
-internal val allowExclusiveAudioPlaybackFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    opcodes(
+internal val allowExclusiveAudioPlaybackFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_INTERFACE,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IGET_OBJECT,
@@ -20,4 +22,4 @@ internal val allowExclusiveAudioPlaybackFingerprint = fingerprint {
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT
     )
-}
+)

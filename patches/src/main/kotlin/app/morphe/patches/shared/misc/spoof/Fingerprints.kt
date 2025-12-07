@@ -1,54 +1,56 @@
 package app.morphe.patches.shared.misc.spoof
 
-import app.morphe.patcher.fingerprint
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val buildInitPlaybackRequestFingerprint = fingerprint {
-    returns("Lorg/chromium/net/UrlRequest\$Builder;")
-    opcodes(
+internal val buildInitPlaybackRequestFingerprint = Fingerprint(
+    returnType = "Lorg/chromium/net/UrlRequest\$Builder;",
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IGET_OBJECT, // Moves the request URI string to a register to build the request with.
-    )
-    strings(
+    ),
+    strings = listOf(
         "Content-Type",
         "Range",
     )
-}
+)
 
-internal val buildPlayerRequestURIFingerprint = fingerprint {
-    returns("Ljava/lang/String;")
-    opcodes(
+internal val buildPlayerRequestURIFingerprint = Fingerprint(
+    returnType = "Ljava/lang/String;",
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL, // Register holds player request URI.
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IPUT_OBJECT,
         Opcode.IGET_OBJECT,
         Opcode.MONITOR_EXIT,
         Opcode.RETURN_OBJECT,
-    )
-    strings(
+    ),
+    strings = listOf(
         "key",
         "asig",
     )
-}
+)
 
-internal val buildRequestFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("Lorg/chromium/net/UrlRequest") // UrlRequest; or UrlRequest$Builder;
-    instructions(
+internal val buildRequestFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Lorg/chromium/net/UrlRequest", // UrlRequest; or UrlRequest$Builder;
+    filters = listOf(
         methodCall(name = "newUrlRequestBuilder")
-    ) // UrlRequest; or UrlRequest$Builder;
-    custom { methodDef, _ ->
+    ), // UrlRequest; or UrlRequest$Builder;
+    custom = { methodDef, _ ->
         // Different targets have slightly different parameters
 
-        // Earlier targets have parameters:
+        // Earlier targets have parameters = listOf(:),
         // L
         // Ljava/util/Map;
         // [B
@@ -57,7 +59,7 @@ internal val buildRequestFingerprint = fingerprint {
         // L
         // Lorg/chromium/net/UrlRequest$Callback;
 
-        // Later targets have parameters:
+        // Later targets have parameters = listOf(:),
         // L
         // Ljava/util/Map;
         // [B
@@ -81,41 +83,41 @@ internal val buildRequestFingerprint = fingerprint {
                 parameterTypes[1] == "Ljava/util/Map;" // URL headers.
                 && indexOfNewUrlRequestBuilderInstruction(methodDef) >= 0
     }
-}
+)
 
-internal val protobufClassParseByteBufferFingerprint = fingerprint {
-    accessFlags(AccessFlags.PROTECTED, AccessFlags.STATIC)
-    returns("L")
-    parameters("L", "Ljava/nio/ByteBuffer;")
-    opcodes(
+internal val protobufClassParseByteBufferFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/nio/ByteBuffer;"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.SGET_OBJECT,
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.RETURN_OBJECT,
-    )
-    custom { method, _ -> method.name == "parseFrom" }
-}
+    ),
+    custom = { method, _ -> method.name == "parseFrom" }
+)
 
-internal val createStreamingDataFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    parameters("L")
-    opcodes(
+internal val createStreamingDataFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IPUT_OBJECT,
         Opcode.IGET_OBJECT,
         Opcode.IF_NEZ,
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
-    )
-    custom { method, classDef ->
+    ),
+    custom = { method, classDef ->
         classDef.fields.any { field ->
             field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
         }
     }
-}
+)
 
-internal val buildMediaDataSourceFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    parameters(
+internal val buildMediaDataSourceFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(
         "Landroid/net/Uri;",
         "J",
         "I",
@@ -127,73 +129,73 @@ internal val buildMediaDataSourceFingerprint = fingerprint {
         "I",
         "Ljava/lang/Object;",
     )
-}
+)
 
-internal val hlsCurrentTimeFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters("Z", "L")
-    instructions(
+internal val hlsCurrentTimeFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Z", "L"),
+    filters = listOf(
         literal(45355374L) // HLS current time feature flag.
     )
-}
+)
 
 internal const val DISABLED_BY_SABR_STREAMING_URI_STRING = "DISABLED_BY_SABR_STREAMING_URI"
 
-internal val mediaFetchEnumConstructorFingerprint = fingerprint {
-    returns("V")
-    strings(
+internal val mediaFetchEnumConstructorFingerprint = Fingerprint(
+    returnType = "V",
+    strings = listOf(
         "ENABLED",
         "DISABLED_FOR_PLAYBACK",
         DISABLED_BY_SABR_STREAMING_URI_STRING
     )
-}
+)
 
-internal val nerdsStatsVideoFormatBuilderFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("Ljava/lang/String;")
-    parameters("L")
-    instructions(
+internal val nerdsStatsVideoFormatBuilderFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf("L"),
+    filters = listOf(
         string("codecs=\"")
     )
-}
+)
 
-internal val patchIncludedExtensionMethodFingerprint = fingerprint {
-    returns("Z")
-    parameters()
-    custom { method, classDef ->
+internal val patchIncludedExtensionMethodFingerprint = Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    custom = { method, classDef ->
         method.name == "isPatchIncluded" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
     }
-}
+)
 
 // Feature flag that turns on Platypus programming language code compiled to native C++.
 // This code appears to replace the player config after the streams are loaded.
 // Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
 // Flag and Platypus code is also present in newer versions of YouTube Music.
-internal val mediaFetchHotConfigFingerprint = fingerprint {
-    instructions(
+internal val mediaFetchHotConfigFingerprint = Fingerprint(
+    filters = listOf(
         literal(45645570L)
     )
-}
+)
 
 // YT 20.10+, YT Music 8.11 - 8.14.
 // Flag is missing in YT Music 8.15+, and it is not known if a replacement flag/feature exists.
-internal val mediaFetchHotConfigAlternativeFingerprint = fingerprint {
-    instructions(
+internal val mediaFetchHotConfigAlternativeFingerprint = Fingerprint(
+    filters = listOf(
         literal(45683169L)
     )
-}
+)
 
 // Feature flag that enables different code for parsing and starting video playback,
 // but it's exact purpose is not known. If this flag is enabled while stream spoofing
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
-internal val playbackStartDescriptorFeatureFlagFingerprint = fingerprint {
-    parameters()
-    returns("Z")
-    instructions(
+internal val playbackStartDescriptorFeatureFlagFingerprint = Fingerprint(
+    parameters = listOf(),
+    returnType = "Z",
+    filters = listOf(
         literal(45665455L)
     )
-}
+)
 
 internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
     val reference = getReference<MethodReference>()

@@ -1,7 +1,6 @@
 package app.morphe.patches.shared.misc.extension
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.FingerprintBuilder
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.BytecodePatchContext
@@ -20,7 +19,7 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/Ut
  */
 fun sharedExtensionPatch(
     extensionName: String,
-    vararg hooks: () -> ExtensionHook,
+    vararg hooks: ExtensionHook,
 ) = bytecodePatch {
     dependsOn(sharedExtensionPatch(*hooks))
 
@@ -34,7 +33,7 @@ fun sharedExtensionPatch(
  * commonly for the onCreate method of exported activities.
  */
 fun sharedExtensionPatch(
-    vararg hooks: () -> ExtensionHook,
+    vararg hooks: ExtensionHook,
 ) = bytecodePatch {
     extendWith("extensions/shared.mpe")
 
@@ -45,7 +44,7 @@ fun sharedExtensionPatch(
 
     finalize {
         // The hooks are made in finalize to ensure that the context is hooked before any other patches.
-        hooks.forEach { hook -> hook()(EXTENSION_CLASS_DESCRIPTOR) }
+        hooks.forEach { hook -> hook(EXTENSION_CLASS_DESCRIPTOR) }
 
         // Modify Utils method to include the patches release version.
         morpheUtilsPatchesVersionFingerprint.method.apply {
@@ -83,10 +82,10 @@ fun sharedExtensionPatch(
     }
 }
 
-class ExtensionHook internal constructor(
+class ExtensionHook(
     internal val fingerprint: Fingerprint,
-    private val insertIndexResolver: BytecodePatchContext.(Method) -> Int,
-    private val contextRegisterResolver: BytecodePatchContext.(Method) -> String,
+    private val insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
+    private val contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
 ) {
     context(BytecodePatchContext)
     operator fun invoke(extensionClassDescriptor: String) {
@@ -101,20 +100,6 @@ class ExtensionHook internal constructor(
     }
 }
 
-fun extensionHook(
-    insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
-    contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
-    fingerprint: Fingerprint,
-) = ExtensionHook(fingerprint, insertIndexResolver, contextRegisterResolver)
-
-fun extensionHook(
-    insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
-    contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
-    fingerprintBuilderBlock: FingerprintBuilder.() -> Unit,
-) = {
-    ExtensionHook(fingerprint(block = fingerprintBuilderBlock), insertIndexResolver, contextRegisterResolver)
-}
-
 /**
  * Creates an extension hook from a non-obfuscated activity, which typically is the main activity
  * defined in the app manifest.xml file.
@@ -123,24 +108,30 @@ fun extensionHook(
  *                          or the 'ends with' string for the activity such as `/MainActivity;`
  * @param targetBundleMethod If the extension should hook `onCreate(Landroid/os/Bundle;)` or `onCreate()`
  */
-fun activityOnCreateExtensionHook(activityClassType: String, targetBundleMethod: Boolean = true): () -> ExtensionHook {
+fun activityOnCreateExtensionHook(activityClassType: String, targetBundleMethod: Boolean = true): ExtensionHook {
     require(activityClassType.endsWith(';')) {
         "Class type must end with a semicolon: $activityClassType"
     }
 
     val fullClassType = activityClassType.startsWith('L')
 
-    return extensionHook {
-        returns("V")
-        if (targetBundleMethod) {
-            parameters("Landroid/os/Bundle;")
+    val fingerprint = Fingerprint(
+        returnType = "V",
+        parameters = if (targetBundleMethod) {
+            listOf("Landroid/os/Bundle;")
         } else {
-            parameters()
-        }
-        custom { method, classDef ->
+            listOf()
+        },
+        custom = { method, classDef ->
             method.name == "onCreate" &&
                     if (fullClassType) classDef.type == activityClassType
                     else classDef.type.endsWith(activityClassType)
         }
-    }
+    )
+
+    return ExtensionHook(
+        fingerprint = fingerprint,
+        insertIndexResolver = { 0 },
+        contextRegisterResolver = { "p0" }
+    )
 }

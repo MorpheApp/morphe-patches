@@ -1,25 +1,27 @@
 package app.morphe.patches.music.layout.premium
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val hideGetPremiumFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters()
-    opcodes(
+internal val hideGetPremiumFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IF_NEZ,
         Opcode.CONST_16,
         Opcode.INVOKE_VIRTUAL,
-    )
-    strings("FEmusic_history", "FEmusic_offline")
-}
+    ),
+    strings = listOf ("FEmusic_history", "FEmusic_offline")
+)
 
-internal val membershipSettingsFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Ljava/lang/CharSequence;")
-    opcodes(
+internal val membershipSettingsFingerprint = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/CharSequence;",
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET_OBJECT,
         Opcode.INVOKE_INTERFACE,
         Opcode.MOVE_RESULT_OBJECT,
@@ -28,4 +30,4 @@ internal val membershipSettingsFingerprint = fingerprint {
         Opcode.IF_EQZ,
         Opcode.IGET_OBJECT,
     )
-}
+)
