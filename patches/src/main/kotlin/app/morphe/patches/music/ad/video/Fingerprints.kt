@@ -2,7 +2,6 @@ package app.morphe.patches.music.ad.video
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object ShowVideoAdsParentFingerprint : Fingerprint(

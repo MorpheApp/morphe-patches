@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.layout.formfactor
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.strings
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object FormFactorEnumConstructorFingerprint : Fingerprint(

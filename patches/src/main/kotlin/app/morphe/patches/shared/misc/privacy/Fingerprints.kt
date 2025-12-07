@@ -1,7 +1,7 @@
 package app.morphe.patches.shared.misc.privacy
 
-import app.morphe.patcher.InstructionLocation.*
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess

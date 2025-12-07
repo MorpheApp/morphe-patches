@@ -1,6 +1,6 @@
 package app.morphe.patches.youtube.layout.formfactor
 
-import app.morphe.patcher.InstructionLocation.*
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess

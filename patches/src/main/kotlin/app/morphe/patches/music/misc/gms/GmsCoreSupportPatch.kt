@@ -4,16 +4,16 @@ import app.morphe.patcher.patch.Option
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
+import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.music.misc.gms.Constants.MORPHE_MUSIC_PACKAGE_NAME
+import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
-import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.shared.CastContextFetchFingerprint
+import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
-import app.morphe.patches.shared.PrimeMethodFingerprint
 
 @Suppress("unused")
 val gmsCoreSupportPatch = gmsCoreSupportPatch(

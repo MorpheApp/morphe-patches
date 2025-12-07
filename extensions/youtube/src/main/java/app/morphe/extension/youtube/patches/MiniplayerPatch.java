@@ -1,8 +1,17 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.*;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.*;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.DEFAULT;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.DISABLED;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_1;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_2;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_20_OR_GREATER;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_21_OR_GREATER;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_26_OR_GREATER;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_29_OR_GREATER;
 
 import android.util.DisplayMetrics;
 import android.view.View;

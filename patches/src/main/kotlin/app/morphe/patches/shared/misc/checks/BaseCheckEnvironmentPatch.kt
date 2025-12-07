@@ -1,6 +1,23 @@
 package app.morphe.patches.shared.misc.checks
 
-import android.os.Build.*
+import android.os.Build.BOARD
+import android.os.Build.BOOTLOADER
+import android.os.Build.BRAND
+import android.os.Build.CPU_ABI
+import android.os.Build.CPU_ABI2
+import android.os.Build.DEVICE
+import android.os.Build.DISPLAY
+import android.os.Build.FINGERPRINT
+import android.os.Build.HARDWARE
+import android.os.Build.HOST
+import android.os.Build.ID
+import android.os.Build.MANUFACTURER
+import android.os.Build.MODEL
+import android.os.Build.PRODUCT
+import android.os.Build.RADIO
+import android.os.Build.TAGS
+import android.os.Build.TYPE
+import android.os.Build.USER
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.Patch

@@ -1,9 +1,7 @@
 package app.morphe.patches.youtube.misc.extension.hooks
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.string
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.filters
 import app.morphe.patches.shared.misc.extension.ExtensionHook
 import app.morphe.patches.shared.misc.extension.activityOnCreateExtensionHook
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE

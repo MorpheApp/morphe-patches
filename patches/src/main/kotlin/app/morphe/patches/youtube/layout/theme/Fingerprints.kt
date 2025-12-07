@@ -3,7 +3,6 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 
 internal object UseGradientLoadingScreenFingerprint : Fingerprint(

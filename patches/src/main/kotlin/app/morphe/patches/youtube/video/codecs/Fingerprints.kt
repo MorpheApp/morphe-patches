@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.video.codecs
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.strings
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object Vp9CapabilityFingerprint : Fingerprint(

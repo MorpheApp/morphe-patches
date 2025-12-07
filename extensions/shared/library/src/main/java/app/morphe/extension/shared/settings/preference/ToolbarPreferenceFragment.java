@@ -21,7 +21,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 @SuppressWarnings({"deprecation", "NewApi"})
 public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {

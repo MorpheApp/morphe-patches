@@ -1,7 +1,8 @@
 package app.morphe.patches.youtube.layout.spoofappversion
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.*
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall

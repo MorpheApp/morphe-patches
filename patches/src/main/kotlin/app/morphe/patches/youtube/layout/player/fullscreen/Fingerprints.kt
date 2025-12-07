@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode

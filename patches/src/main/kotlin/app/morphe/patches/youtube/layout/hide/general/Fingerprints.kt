@@ -1,7 +1,8 @@
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.*
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast

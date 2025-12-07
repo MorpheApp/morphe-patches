@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.literal
 import app.morphe.patcher.string
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags

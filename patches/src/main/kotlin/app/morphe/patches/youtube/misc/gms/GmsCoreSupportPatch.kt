@@ -4,9 +4,9 @@ import app.morphe.patcher.patch.Option
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.CastContextFetchFingerprint
+import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
-import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.youtube.layout.buttons.overlay.hidePlayerOverlayButtonsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.MORPHE_YOUTUBE_PACKAGE_NAME

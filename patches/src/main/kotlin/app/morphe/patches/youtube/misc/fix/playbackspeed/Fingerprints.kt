@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.misc.fix.playbackspeed
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.AccessFlags

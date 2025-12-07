@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.layout.panels.popup
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.strings
 
 internal object EngagementPanelControllerFingerprint : Fingerprint(
     returnType = "L",

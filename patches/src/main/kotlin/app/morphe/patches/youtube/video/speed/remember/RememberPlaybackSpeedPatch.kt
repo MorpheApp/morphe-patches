@@ -10,7 +10,13 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.video.information.*
+import app.morphe.patches.youtube.video.information.onCreateHook
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedClassFieldReference
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReference
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceClassType
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedMethodReference
+import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction

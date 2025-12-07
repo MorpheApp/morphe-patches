@@ -2,7 +2,6 @@ package app.morphe.patches.music.layout.navigationbar
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction

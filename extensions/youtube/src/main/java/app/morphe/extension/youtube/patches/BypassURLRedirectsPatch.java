@@ -2,8 +2,8 @@ package app.morphe.extension.youtube.patches;
 
 import android.net.Uri;
 
-import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class BypassURLRedirectsPatch {

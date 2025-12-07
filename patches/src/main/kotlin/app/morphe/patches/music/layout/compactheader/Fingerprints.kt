@@ -2,7 +2,6 @@ package app.morphe.patches.music.layout.compactheader
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.Opcode
 

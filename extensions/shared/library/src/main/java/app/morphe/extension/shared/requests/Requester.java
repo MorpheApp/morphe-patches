@@ -1,6 +1,5 @@
 package app.morphe.extension.shared.requests;
 
-import app.morphe.extension.shared.Utils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +10,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import app.morphe.extension.shared.Utils;
 
 public class Requester {
     private Requester() {
