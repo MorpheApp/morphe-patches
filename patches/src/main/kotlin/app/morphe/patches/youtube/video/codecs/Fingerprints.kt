@@ -4,7 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.layout.branding.NotificationFingerprint.strings
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val vp9CapabilityFingerprint = Fingerprint(
+internal object Vp9CapabilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     strings = listOf(

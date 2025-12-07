@@ -73,9 +73,9 @@ val hideEndScreenCardsPatch = bytecodePatch(
 
     execute {
         listOf(
-            layoutCircleFingerprint,
-            layoutIconFingerprint,
-            layoutVideoFingerprint,
+            LayoutCircleFingerprint,
+            LayoutIconFingerprint,
+            LayoutVideoFingerprint,
         ).forEach { fingerprint ->
             fingerprint.method.apply {
                 val insertIndex = fingerprint.instructionMatches.last().index + 1
@@ -90,7 +90,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         }
 
         if (is_19_43_or_greater) {
-            showEndscreenCardsFingerprint.method.addInstructionsWithLabels(
+            ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z

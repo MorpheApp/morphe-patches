@@ -38,7 +38,7 @@ val hideTimestampPatch = bytecodePatch(
             SwitchPreference("morphe_hide_timestamp"),
         )
 
-        timeCounterFingerprint.method.addInstructionsWithLabels(
+        TimeCounterFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideTimestamp()Z

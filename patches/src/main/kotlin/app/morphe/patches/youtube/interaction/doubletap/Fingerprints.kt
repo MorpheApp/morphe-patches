@@ -3,7 +3,7 @@ package app.morphe.patches.youtube.interaction.doubletap
 import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val seekTypeEnumFingerprint = Fingerprint(
+internal object SeekTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "SEEK_SOURCE_SEEK_TO_NEXT_CHAPTER",
@@ -11,7 +11,7 @@ internal val seekTypeEnumFingerprint = Fingerprint(
     )
 )
 
-internal val doubleTapInfoCtorFingerprint = Fingerprint(
+internal object DoubleTapInfoCtorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
         "Landroid/view/MotionEvent;",

@@ -4,7 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.extension.EXTENSION_CLASS_DESCRIPTOR
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val themeLightColorResourceNameFingerprint = Fingerprint(
+internal object ThemeLightColorResourceNameFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -13,7 +13,7 @@ internal val themeLightColorResourceNameFingerprint = Fingerprint(
     }
 )
 
-internal val themeDarkColorResourceNameFingerprint = Fingerprint(
+internal object ThemeDarkColorResourceNameFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),

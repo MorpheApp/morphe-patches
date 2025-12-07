@@ -8,7 +8,7 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val videoQualityItemOnClickParentFingerprint = Fingerprint(
+internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT"),
@@ -18,7 +18,7 @@ internal val videoQualityItemOnClickParentFingerprint = Fingerprint(
 /**
  * Resolves to class found in [videoQualityItemOnClickFingerprint].
  */
-internal val videoQualityItemOnClickFingerprint = Fingerprint(
+internal object VideoQualityItemOnClickFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(
         "Landroid/widget/AdapterView;",
@@ -31,7 +31,7 @@ internal val videoQualityItemOnClickFingerprint = Fingerprint(
     }
 )
 
-internal val videoQualityMenuOptionsFingerprint = Fingerprint(
+internal object VideoQualityMenuOptionsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC),
     returnType = "[L",
     parameters = listOf("Landroid/content/Context", "L", "L"),
@@ -45,7 +45,7 @@ internal val videoQualityMenuOptionsFingerprint = Fingerprint(
     custom = customLiteral { videoQualityQuickMenuAdvancedMenuDescription }
 )
 
-internal val videoQualityMenuViewInflateFingerprint = Fingerprint(
+internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L", "L", "L"),

@@ -12,7 +12,7 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.videoQualityChangedFingerprint
+import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -63,16 +63,16 @@ val rememberVideoQualityPatch = bytecodePatch {
         onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
 
         // Inject a call to remember the selected quality for Shorts.
-        videoQualityItemOnClickFingerprint.match(
-            videoQualityItemOnClickParentFingerprint.classDef
+        VideoQualityItemOnClickFingerprint.match(
+            VideoQualityItemOnClickParentFingerprint.classDef
         ).method.addInstruction(
             0,
             "invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->userChangedShortsQuality(I)V"
         )
 
         // Inject a call to remember the user selected quality for regular videos.
-        videoQualityChangedFingerprint.method.apply {
-            val index = videoQualityChangedFingerprint.instructionMatches[3].index
+        VideoQualityChangedFingerprint.method.apply {
+            val index = VideoQualityChangedFingerprint.instructionMatches[3].index
             val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
             addInstruction(

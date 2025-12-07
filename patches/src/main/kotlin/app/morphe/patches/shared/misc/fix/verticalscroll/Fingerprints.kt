@@ -6,7 +6,7 @@ import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val canScrollVerticallyFingerprint = Fingerprint(
+internal object CanScrollVerticallyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

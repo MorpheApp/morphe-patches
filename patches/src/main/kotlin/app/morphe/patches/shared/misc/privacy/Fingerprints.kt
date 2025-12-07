@@ -10,7 +10,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val youTubeCopyTextFingerprint = Fingerprint(
+internal object YouTubeCopyTextFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(
@@ -28,7 +28,7 @@ internal val youTubeCopyTextFingerprint = Fingerprint(
     )
 )
 
-internal val youTubeSystemShareSheetFingerprint = Fingerprint(
+internal object YouTubeSystemShareSheetFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(
@@ -54,7 +54,7 @@ internal val youTubeSystemShareSheetFingerprint = Fingerprint(
     )
 )
 
-internal val youTubeShareSheetFingerprint = Fingerprint(
+internal object YouTubeShareSheetFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(

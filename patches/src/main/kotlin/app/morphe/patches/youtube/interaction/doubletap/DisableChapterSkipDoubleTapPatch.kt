@@ -59,7 +59,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
 
         val doubleTapInfoGetSeekSourceFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = seekTypeEnumFingerprint.originalClassDef.type,
+            returnType = SeekTypeEnumFingerprint.originalClassDef.type,
             parameters = listOf("Z"),
             filters = opcodesToFilters(
                 Opcode.IF_EQZ,
@@ -82,7 +82,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
             """
         )
 
-        doubleTapInfoCtorFingerprint.match(
+        DoubleTapInfoCtorFingerprint.match(
             doubleTapInfoGetSeekSourceFingerprint.classDef
         ).method.addInstructions(
             0,

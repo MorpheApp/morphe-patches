@@ -5,7 +5,7 @@ import app.morphe.patcher.OpcodesFilter
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val recyclerViewTreeObserverFingerprint = Fingerprint(
+internal object RecyclerViewTreeObserverFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CHECK_CAST,

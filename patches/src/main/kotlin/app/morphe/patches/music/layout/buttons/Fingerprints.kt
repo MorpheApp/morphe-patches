@@ -7,19 +7,19 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val mediaRouteButtonFingerprint = Fingerprint(
+internal object MediaRouteButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Z",
     strings = listOf("MediaRouteButton")
 )
 
-internal val playerOverlayChipFingerprint = Fingerprint(
+internal object PlayerOverlayChipFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     custom = customLiteral { playerOverlayChip }
 )
 
-internal val historyMenuItemFingerprint = Fingerprint(
+internal object HistoryMenuItemFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/Menu;"),
@@ -33,7 +33,7 @@ internal val historyMenuItemFingerprint = Fingerprint(
     }
 )
 
-internal val historyMenuItemOfflineTabFingerprint = Fingerprint(
+internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/Menu;"),
@@ -47,7 +47,7 @@ internal val historyMenuItemOfflineTabFingerprint = Fingerprint(
     }
 )
 
-internal val searchActionViewFingerprint = Fingerprint(
+internal object SearchActionViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
@@ -57,7 +57,7 @@ internal val searchActionViewFingerprint = Fingerprint(
     }
 )
 
-internal val topBarMenuItemImageViewFingerprint = Fingerprint(
+internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),

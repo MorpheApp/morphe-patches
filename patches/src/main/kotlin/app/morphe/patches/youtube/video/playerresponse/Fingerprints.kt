@@ -7,7 +7,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 /**
  * For targets 20.46 and later.
  */
-internal val playerParameterBuilderFingerprint = Fingerprint(
+internal object PlayerParameterBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
@@ -33,7 +33,7 @@ internal val playerParameterBuilderFingerprint = Fingerprint(
 /**
  * For targets 20.26 and later.
  */
-internal val playerParameterBuilder2026Fingerprint = Fingerprint(
+internal object PlayerParameterBuilder2026Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
@@ -62,7 +62,7 @@ internal val playerParameterBuilder2026Fingerprint = Fingerprint(
 /**
  * For targets 20.15 to 20.25
  */
-internal val playerParameterBuilder2015Fingerprint = Fingerprint(
+internal object PlayerParameterBuilder2015Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
@@ -90,7 +90,7 @@ internal val playerParameterBuilder2015Fingerprint = Fingerprint(
 /**
  * For targets 20.10 to 20.14.
  */
-internal val playerParameterBuilder2010Fingerprint = Fingerprint(
+internal object PlayerParameterBuilder2010Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
@@ -119,7 +119,7 @@ internal val playerParameterBuilder2010Fingerprint = Fingerprint(
 /**
  * For targets 20.02 to 20.09.
  */
-internal val playerParameterBuilder2002Fingerprint = Fingerprint(
+internal object PlayerParameterBuilder2002Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
@@ -147,7 +147,7 @@ internal val playerParameterBuilder2002Fingerprint = Fingerprint(
 /**
  * For targets 19.25 to 19.50.
  */
-internal val playerParameterBuilder1925Fingerprint = Fingerprint(
+internal object PlayerParameterBuilder1925Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
@@ -174,7 +174,7 @@ internal val playerParameterBuilder1925Fingerprint = Fingerprint(
 /**
  * For targets 19.01 to 19.24.
  */
-internal val playerParameterBuilderLegacyFingerprint = Fingerprint(
+internal object PlayerParameterBuilderLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(

@@ -10,6 +10,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -44,26 +45,19 @@ val bypassURLRedirectsPatch = bytecodePatch(
         )
 
         arrayOf(
-            // Pass along the fingerprint name, because classless DSL declarations don't have names.
-            Triple(::httpUriParserFingerprint.name, httpUriParserFingerprint, 0),
+            HttpUriParserFingerprint to 0,
 
             if (is_20_49_or_greater) {
                 // Code has moved, and now seems to be an account url
                 // and may not be anything to do with sharing links.
-                Triple(null, null,-1)
+                null to -1
             } else if (is_20_37_or_greater) {
-                Triple(::abUriParserFingerprint.name, abUriParserFingerprint,  2)
+                AbUriParserFingerprint to 2
             } else {
-                Triple(::abUriParserLegacyFingerprint.name, abUriParserLegacyFingerprint, 2)
+                AbUriParserLegacyFingerprint to 2
             }
-        ).forEach { (fingerprintName, fingerprint, index) ->
+        ).forEach { (fingerprint, index) ->
             if (fingerprint == null) return@forEach
-
-            // Stupid work around required to have a meaningful stacktrace if a fingerprint fails to resolve.
-            // TODO: Remove DSL from patcher fingerprints.
-            if (fingerprint.methodOrNull == null) {
-                throw PatchException("Could not resolve: $fingerprintName")
-            }
 
             fingerprint.method.apply {
                 val insertIndex = fingerprint.instructionMatches[index].index

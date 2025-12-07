@@ -3,7 +3,7 @@ package app.morphe.patches.shared.misc.gms
 import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val googlePlayUtilityFingerprint = Fingerprint(
+internal object GooglePlayUtilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "I",
     parameters = listOf("L", "I"),
@@ -14,14 +14,14 @@ internal val googlePlayUtilityFingerprint = Fingerprint(
     )
 )
 
-internal val serviceCheckFingerprint = Fingerprint(
+internal object ServiceCheckFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("L", "I"),
     strings = listOf("Google Play Services not available")
 )
 
-internal val gmsCoreSupportFingerprint = Fingerprint(
+internal object GmsCoreSupportFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -30,7 +30,7 @@ internal val gmsCoreSupportFingerprint = Fingerprint(
     }
 )
 
-internal val originalPackageNameExtensionFingerprint = Fingerprint(
+internal object OriginalPackageNameExtensionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),

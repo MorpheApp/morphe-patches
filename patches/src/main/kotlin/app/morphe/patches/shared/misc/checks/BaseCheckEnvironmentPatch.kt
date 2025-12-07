@@ -10,6 +10,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableLongEncode
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableStringEncodedValue
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 import com.android.tools.smali.dexlib2.immutable.value.ImmutableLongEncodedValue
 import com.android.tools.smali.dexlib2.immutable.value.ImmutableStringEncodedValue
 import java.nio.charset.StandardCharsets
@@ -46,12 +47,12 @@ fun checkEnvironmentPatch(
                 }
             }
 
-            patchInfoFingerprint.setClassFields(
+            PatchInfoFingerprint.setClassFields(
                 "PATCH_TIME" to System.currentTimeMillis().encoded,
             )
 
             fun setBuildInfo() {
-                patchInfoBuildFingerprint.setClassFields(
+                PatchInfoBuildFingerprint.setClassFields(
                     "PATCH_BOARD" to BOARD.encodedAndHashed,
                     "PATCH_BOOTLOADER" to BOOTLOADER.encodedAndHashed,
                     "PATCH_BRAND" to BRAND.encodedAndHashed,
@@ -82,7 +83,7 @@ fun checkEnvironmentPatch(
             }
         }
 
-        fun invokeCheck() = mainActivityOnCreateFingerprint.method.addInstruction(
+        fun invokeCheck() = MainActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->check(Landroid/app/Activity;)V",
         )

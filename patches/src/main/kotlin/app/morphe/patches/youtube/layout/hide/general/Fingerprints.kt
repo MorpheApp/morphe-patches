@@ -10,7 +10,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
-import app.morphe.patches.youtube.layout.searchbar.wideSearchbarLayoutFingerprint
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -18,7 +17,7 @@ import com.android.tools.smali.dexlib2.Opcode
 /**
  * 20.26+
  */
-internal val hideShowMoreButtonFingerprint = Fingerprint(
+internal object HideShowMoreButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
     returnType = "V",
     parameters = listOf("L", "Ljava/lang/Object;"),
@@ -29,7 +28,7 @@ internal val hideShowMoreButtonFingerprint = Fingerprint(
     )
 )
 
-internal val hideShowMoreLegacyButtonFingerprint = Fingerprint(
+internal object HideShowMoreLegacyButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
@@ -38,7 +37,7 @@ internal val hideShowMoreLegacyButtonFingerprint = Fingerprint(
     )
 )
 
-internal val parseElementFromBufferFingerprint = Fingerprint(
+internal object ParseElementFromBufferFingerprint : Fingerprint(
     parameters = listOf("L", "L", "[B", "L", "L"),
     filters = listOf(
         opcode(Opcode.IGET_OBJECT),
@@ -50,7 +49,7 @@ internal val parseElementFromBufferFingerprint = Fingerprint(
     )
 )
 
-internal val playerOverlayFingerprint = Fingerprint(
+internal object PlayerOverlayFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     filters = listOf(
@@ -58,7 +57,7 @@ internal val playerOverlayFingerprint = Fingerprint(
     )
 )
 
-internal val showWatermarkFingerprint = Fingerprint(
+internal object ShowWatermarkFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "L")
@@ -67,7 +66,7 @@ internal val showWatermarkFingerprint = Fingerprint(
 /**
  * Matches same method as [wideSearchbarLayoutFingerprint].
  */
-internal val yoodlesImageViewFingerprint = Fingerprint(
+internal object YouTubeDoodlesImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf("L", "L"),
@@ -76,7 +75,7 @@ internal val yoodlesImageViewFingerprint = Fingerprint(
     )
 )
 
-internal val crowdfundingBoxFingerprint = Fingerprint(
+internal object CrowdfundingBoxFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL,
@@ -86,7 +85,7 @@ internal val crowdfundingBoxFingerprint = Fingerprint(
     custom = customLiteral { crowdfundingBoxId }
 )
 
-internal val albumCardsFingerprint = Fingerprint(
+internal object AlbumCardsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
@@ -99,7 +98,7 @@ internal val albumCardsFingerprint = Fingerprint(
     custom = customLiteral { albumCardId }
 )
 
-internal val filterBarHeightFingerprint = Fingerprint(
+internal object FilterBarHeightFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST,
@@ -110,7 +109,7 @@ internal val filterBarHeightFingerprint = Fingerprint(
     custom = customLiteral { filterBarHeightId }
 )
 
-internal val relatedChipCloudFingerprint = Fingerprint(
+internal object RelatedChipCloudFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST,
@@ -120,7 +119,7 @@ internal val relatedChipCloudFingerprint = Fingerprint(
     custom = customLiteral { relatedChipCloudMarginId }
 )
 
-internal val searchResultsChipBarFingerprint = Fingerprint(
+internal object SearchResultsChipBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST,
@@ -132,7 +131,7 @@ internal val searchResultsChipBarFingerprint = Fingerprint(
     custom = customLiteral { barContainerHeightId }
 )
 
-internal val showFloatingMicrophoneButtonFingerprint = Fingerprint(
+internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -143,7 +142,7 @@ internal val showFloatingMicrophoneButtonFingerprint = Fingerprint(
     )
 )
 
-internal val hideViewCountFingerprint = Fingerprint(
+internal object HideViewCountFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/CharSequence;",
 

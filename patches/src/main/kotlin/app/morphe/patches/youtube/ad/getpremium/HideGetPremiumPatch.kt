@@ -40,8 +40,8 @@ val hideGetPremiumPatch = bytecodePatch(
             SwitchPreference("morphe_hide_get_premium"),
         )
 
-        getPremiumViewFingerprint.method.apply {
-            val startIndex = getPremiumViewFingerprint.instructionMatches.first().index
+        GetPremiumViewFingerprint.method.apply {
+            val startIndex = GetPremiumViewFingerprint.instructionMatches.first().index
             val measuredWidthRegister = getInstruction<TwoRegisterInstruction>(startIndex).registerA
             val measuredHeightInstruction = getInstruction<TwoRegisterInstruction>(startIndex + 1)
 

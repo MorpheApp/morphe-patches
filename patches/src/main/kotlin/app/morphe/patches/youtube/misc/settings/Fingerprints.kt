@@ -10,7 +10,7 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val licenseActivityOnCreateFingerprint = Fingerprint(
+internal object LicenseActivityOnCreateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
@@ -19,7 +19,7 @@ internal val licenseActivityOnCreateFingerprint = Fingerprint(
     }
 )
 
-internal val setThemeFingerprint = Fingerprint(
+internal object SetThemeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -28,7 +28,7 @@ internal val setThemeFingerprint = Fingerprint(
     )
 )
 
-internal val cairoFragmentConfigFingerprint = Fingerprint(
+internal object CairoFragmentConfigFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     filters = listOf(

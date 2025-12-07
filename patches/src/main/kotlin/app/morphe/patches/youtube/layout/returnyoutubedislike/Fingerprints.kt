@@ -10,28 +10,28 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val dislikeFingerprint = Fingerprint(
+internal object DislikeFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("like/dislike")
     )
 )
 
-internal val likeFingerprint = Fingerprint(
+internal object LikeFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("like/like")
     )
 )
 
-internal val removeLikeFingerprint = Fingerprint(
+internal object RemoveLikeFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("like/removelike")
     )
 )
 
-internal val rollingNumberMeasureAnimatedTextFingerprint = Fingerprint(
+internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lj\$/util/Optional;",
     parameters = listOf("L", "Ljava/lang/String;", "L"),
@@ -52,7 +52,7 @@ internal val rollingNumberMeasureAnimatedTextFingerprint = Fingerprint(
 /**
  * Matches to class found in [rollingNumberMeasureStaticLabelParentFingerprint].
  */
-internal val rollingNumberMeasureStaticLabelFingerprint = Fingerprint(
+internal object RollingNumberMeasureStaticLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "F",
     parameters = listOf("Ljava/lang/String;"),
@@ -64,7 +64,7 @@ internal val rollingNumberMeasureStaticLabelFingerprint = Fingerprint(
     )
 )
 
-internal val rollingNumberMeasureStaticLabelParentFingerprint = Fingerprint(
+internal object RollingNumberMeasureStaticLabelParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -73,7 +73,7 @@ internal val rollingNumberMeasureStaticLabelParentFingerprint = Fingerprint(
     )
 )
 
-internal val rollingNumberSetterFingerprint = Fingerprint(
+internal object RollingNumberSetterFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_DIRECT,
         Opcode.IGET_OBJECT,
@@ -82,7 +82,7 @@ internal val rollingNumberSetterFingerprint = Fingerprint(
     strings = listOf("RollingNumberType required properties missing! Need")
 )
 
-internal val rollingNumberTextViewFingerprint = Fingerprint(
+internal object RollingNumberTextViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "F", "F"),
@@ -100,14 +100,14 @@ internal val rollingNumberTextViewFingerprint = Fingerprint(
     }
 )
 
-internal val textComponentConstructorFingerprint = Fingerprint(
+internal object TextComponentConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.CONSTRUCTOR, AccessFlags.PRIVATE),
     filters = listOf(
         string("TextComponent")
     )
 )
 
-internal val textComponentDataFingerprint = Fingerprint(
+internal object TextComponentDataFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("L", "L"),
     filters = listOf(
@@ -121,7 +121,7 @@ internal val textComponentDataFingerprint = Fingerprint(
 /**
  * Matches against the same class found in [textComponentConstructorFingerprint].
  */
-internal val textComponentLookupFingerprint = Fingerprint(
+internal object TextComponentLookupFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),
@@ -130,7 +130,7 @@ internal val textComponentLookupFingerprint = Fingerprint(
     )
 )
 
-internal val textComponentFeatureFlagFingerprint = Fingerprint(
+internal object TextComponentFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -139,7 +139,7 @@ internal val textComponentFeatureFlagFingerprint = Fingerprint(
     )
 )
 
-internal val lithoSpannableStringCreationFingerprint = Fingerprint(
+internal object LithoSpannableStringCreationFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/lang/Object;", "L"),

@@ -6,13 +6,13 @@ import app.morphe.patcher.literal
 import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 
-internal val useGradientLoadingScreenFingerprint = Fingerprint(
+internal object UseGradientLoadingScreenFingerprint : Fingerprint(
     filters = listOf(
         literal(45412406L)
     )
 )
 
-internal val splashScreenStyleFingerprint = Fingerprint(
+internal object SplashScreenStyleFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(

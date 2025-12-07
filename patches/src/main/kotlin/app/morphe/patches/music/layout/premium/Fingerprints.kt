@@ -6,7 +6,7 @@ import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val hideGetPremiumFingerprint = Fingerprint(
+internal object HideGetPremiumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -18,7 +18,7 @@ internal val hideGetPremiumFingerprint = Fingerprint(
     strings = listOf ("FEmusic_history", "FEmusic_offline")
 )
 
-internal val membershipSettingsFingerprint = Fingerprint(
+internal object MembershipSettingsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/CharSequence;",
     filters = OpcodesFilter.opcodesToFilters(

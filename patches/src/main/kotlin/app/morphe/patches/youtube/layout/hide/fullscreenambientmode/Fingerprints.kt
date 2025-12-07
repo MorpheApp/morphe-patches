@@ -5,7 +5,7 @@ import app.morphe.patches.shared.layout.branding.NotificationFingerprint.classDe
 import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val setFullScreenBackgroundColorFingerprint = Fingerprint(
+internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     parameters = listOf("Z", "I", "I", "I", "I"),

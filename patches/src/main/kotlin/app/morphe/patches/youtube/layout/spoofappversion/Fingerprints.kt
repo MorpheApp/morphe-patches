@@ -11,7 +11,7 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val toolBarButtonFingerprint = Fingerprint(
+internal object ToolBarButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -30,7 +30,7 @@ internal val toolBarButtonFingerprint = Fingerprint(
     }
 )
 
-internal val spoofAppVersionFingerprint = Fingerprint(
+internal object SpoofAppVersionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "L",
     parameters = listOf("L"),

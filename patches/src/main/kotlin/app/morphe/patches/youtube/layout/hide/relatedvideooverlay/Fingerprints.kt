@@ -4,14 +4,14 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 
-internal val relatedEndScreenResultsParentFingerprint = Fingerprint(
+internal object RelatedEndScreenResultsParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "app_related_endscreen_results")
     )
 )
 
-internal val relatedEndScreenResultsFingerprint = Fingerprint(
+internal object RelatedEndScreenResultsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(
         "I",

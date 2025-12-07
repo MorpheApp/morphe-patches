@@ -6,7 +6,7 @@ import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val chipCloudFingerprint = Fingerprint(
+internal object ChipCloudFingerprint : Fingerprint(
     returnType = "V",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST,

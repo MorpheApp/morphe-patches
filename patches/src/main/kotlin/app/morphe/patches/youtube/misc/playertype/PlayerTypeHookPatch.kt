@@ -22,21 +22,21 @@ val playerTypeHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch, resourceMappingPatch)
 
     execute {
-        val playerOverlaysSetPlayerTypeFingerprint = Fingerprint(
+        val PlayerOverlaysSetPlayerTypeFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
-            parameters = listOf(playerTypeEnumFingerprint.originalClassDef.type),
+            parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type),
             custom = { _, classDef ->
                 classDef.endsWith("/YouTubePlayerOverlaysLayout;")
             }
         )
 
-        playerOverlaysSetPlayerTypeFingerprint.method.addInstruction(
+        PlayerOverlaysSetPlayerTypeFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setPlayerType(Ljava/lang/Enum;)V",
         )
 
-        reelWatchPagerFingerprint.let {
+        ReelWatchPagerFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -48,9 +48,9 @@ val playerTypeHookPatch = bytecodePatch(
             }
         }
 
-        val controlStateType = controlsStateToStringFingerprint.originalClassDef.type
+        val controlStateType = ControlsStateToStringFingerprint.originalClassDef.type
 
-        val videoStateFingerprint = Fingerprint(
+        val VideoStateFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf(controlStateType),
@@ -58,14 +58,14 @@ val playerTypeHookPatch = bytecodePatch(
                 // Obfuscated parameter field name.
                 fieldAccess(
                     definingClass = controlStateType,
-                    type = videoStateEnumFingerprint.originalClassDef.type
+                    type = VideoStateEnumFingerprint.originalClassDef.type
                 ),
                 resourceLiteral(ResourceType.STRING, "accessibility_play"),
                 resourceLiteral(ResourceType.STRING, "accessibility_pause")
             )
         )
 
-        videoStateFingerprint.let {
+        VideoStateFingerprint.let {
             it.method.apply {
                 val videoStateFieldName = getInstruction<ReferenceInstruction>(
                     it.instructionMatches.first().index

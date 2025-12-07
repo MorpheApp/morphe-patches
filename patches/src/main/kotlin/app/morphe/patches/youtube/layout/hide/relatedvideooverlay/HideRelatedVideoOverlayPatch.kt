@@ -44,8 +44,8 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
             SwitchPreference("morphe_hide_related_videos_overlay")
         )
 
-        relatedEndScreenResultsFingerprint.match(
-            relatedEndScreenResultsParentFingerprint.originalClassDef
+        RelatedEndScreenResultsFingerprint.match(
+            RelatedEndScreenResultsParentFingerprint.originalClassDef
         ).method.apply {
             addInstructionsWithLabels(
                 0,

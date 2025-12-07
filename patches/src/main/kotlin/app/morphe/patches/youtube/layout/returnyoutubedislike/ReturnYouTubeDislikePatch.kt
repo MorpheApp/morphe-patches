@@ -1,5 +1,9 @@
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -16,21 +20,16 @@ import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
-import app.morphe.patches.youtube.shared.rollingNumberTextViewAnimationUpdateFingerprint
+import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
+import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -106,9 +105,9 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // region Hook like/dislike/remove like button clicks to send votes to the API.
 
         arrayOf(
-            likeFingerprint to Vote.LIKE,
-            dislikeFingerprint to Vote.DISLIKE,
-            removeLikeFingerprint to Vote.REMOVE_LIKE,
+            LikeFingerprint to Vote.LIKE,
+            DislikeFingerprint to Vote.DISLIKE,
+            RemoveLikeFingerprint to Vote.REMOVE_LIKE,
         ).forEach { (fingerprint, vote) ->
             fingerprint.method.addInstructions(
                 0,
@@ -128,20 +127,20 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // This hook handles all situations, as it's where the created Spans are stored and later reused.
 
         // Find the field name of the conversion context.
-        val conversionContextClass = conversionContextFingerprintToString.originalClassDef
-        val textComponentConversionContextField = textComponentConstructorFingerprint.originalClassDef.fields.find {
+        val conversionContextClass = ConversionContextFingerprintToString.originalClassDef
+        val textComponentConversionContextField = TextComponentConstructorFingerprint.originalClassDef.fields.find {
             it.type == conversionContextClass.type
                     // 20.41+ uses superclass field type.
                     || it.type == conversionContextClass.superclass
         } ?: throw PatchException("Could not find conversion context field")
 
-        val conversionContextPathBuilderField = conversionContextFingerprintToString.originalClassDef
+        val conversionContextPathBuilderField = ConversionContextFingerprintToString.originalClassDef
             .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
         // Old pre 20.40 and lower hook.
-        textComponentLookupFingerprint.match(textComponentConstructorFingerprint.originalClassDef).method.apply {
+        TextComponentLookupFingerprint.match(TextComponentConstructorFingerprint.originalClassDef).method.apply {
             // Find the instruction for creating the text data object.
-            val textDataClassType = textComponentDataFingerprint.originalClassDef.type
+            val textDataClassType = TextComponentDataFingerprint.originalClassDef.type
 
             val insertIndex: Int
             val charSequenceRegister: Int
@@ -192,14 +191,14 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Hook new litho text creation code.
         if (is_20_07_or_greater) {
-            textComponentFeatureFlagFingerprint.let {
+            TextComponentFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useNewLithoTextCreation(Z)Z"
                 )
             }
 
-            lithoSpannableStringCreationFingerprint.let {
+            LithoSpannableStringCreationFingerprint.let {
                 val conversionContextField = it.classDef.type +
                         "->" + textComponentConversionContextField.name +
                         ":" + textComponentConversionContextField.type
@@ -237,9 +236,9 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Hook rolling numbers.
 
-        rollingNumberSetterFingerprint.method.apply {
+        RollingNumberSetterFingerprint.method.apply {
             val insertIndex = 1
-            val dislikesIndex = rollingNumberSetterFingerprint.instructionMatches.last().index
+            val dislikesIndex = RollingNumberSetterFingerprint.instructionMatches.last().index
             val charSequenceInstanceRegister =
                 getInstruction<OneRegisterInstruction>(0).registerA
             val charSequenceFieldReference =
@@ -262,7 +261,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Rolling Number text views use the measured width of the raw string for layout.
         // Modify the measure text calculation to include the left drawable separator if needed.
-        rollingNumberMeasureAnimatedTextFingerprint.let {
+        RollingNumberMeasureAnimatedTextFingerprint.let {
             // Additional check to verify the opcodes are at the start of the method
             if (it.instructionMatches.first().index != 0) throw PatchException("Unexpected opcode location")
             val endIndex = it.instructionMatches.last().index
@@ -282,8 +281,8 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Additional text measurement method. Used if YouTube decides not to animate the likes count
         // and sometimes used for initial video load.
-        rollingNumberMeasureStaticLabelFingerprint.match(
-            rollingNumberMeasureStaticLabelParentFingerprint.originalClassDef,
+        RollingNumberMeasureStaticLabelFingerprint.match(
+            RollingNumberMeasureStaticLabelParentFingerprint.originalClassDef,
         ).let {
             val measureTextIndex = it.instructionMatches.first().index + 1
             it.method.apply {
@@ -303,10 +302,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
             // The rolling number Span is missing styling since it's initially set as a String.
             // Modify the UI text view and use the styled like/dislike Span.
             // Initial TextView is set in this method.
-            rollingNumberTextViewFingerprint.method,
+            RollingNumberTextViewFingerprint.method,
             // Videos less than 24 hours after uploaded, like counts will be updated in real time.
             // Whenever like counts are updated, TextView is set in this method.
-            rollingNumberTextViewAnimationUpdateFingerprint.method,
+            RollingNumberTextViewAnimationUpdateFingerprint.method,
         ).forEach { insertMethod ->
             insertMethod.apply {
                 val setTextIndex = indexOfFirstInstructionOrThrow {

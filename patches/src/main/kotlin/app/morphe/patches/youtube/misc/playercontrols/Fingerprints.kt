@@ -13,7 +13,7 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val playerControlsVisibilityEntityModelFingerprint = Fingerprint(
+internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "L",
     parameters = listOf(),
@@ -26,7 +26,7 @@ internal val playerControlsVisibilityEntityModelFingerprint = Fingerprint(
     }
 )
 
-internal val youtubeControlsOverlayFingerprint = Fingerprint(
+internal object YoutubeControlsOverlayFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -36,7 +36,7 @@ internal val youtubeControlsOverlayFingerprint = Fingerprint(
     )
 )
 
-internal val motionEventFingerprint = Fingerprint(
+internal object MotionEventFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/view/MotionEvent;"),
     filters = listOf(
@@ -44,7 +44,7 @@ internal val motionEventFingerprint = Fingerprint(
     )
 )
 
-internal val playerControlsExtensionHookListenersExistFingerprint = Fingerprint(
+internal object PlayerControlsExtensionHookListenersExistFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf(),
@@ -54,7 +54,7 @@ internal val playerControlsExtensionHookListenersExistFingerprint = Fingerprint(
     }
 )
 
-internal val playerControlsExtensionHookFingerprint = Fingerprint(
+internal object PlayerControlsExtensionHookFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("Z"),
@@ -64,7 +64,7 @@ internal val playerControlsExtensionHookFingerprint = Fingerprint(
     }
 )
 
-internal val playerTopControlsInflateFingerprint = Fingerprint(
+internal object PlayerTopControlsInflateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -75,7 +75,7 @@ internal val playerTopControlsInflateFingerprint = Fingerprint(
     )
 )
 
-internal val playerBottomControlsInflateFingerprint = Fingerprint(
+internal object PlayerBottomControlsInflateFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
     parameters = listOf(),
     filters = listOf(
@@ -85,7 +85,7 @@ internal val playerBottomControlsInflateFingerprint = Fingerprint(
     )
 )
 
-internal val overlayViewInflateFingerprint = Fingerprint(
+internal object OverlayViewInflateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;"),
@@ -99,13 +99,13 @@ internal val overlayViewInflateFingerprint = Fingerprint(
 /**
  * Resolves to the class found in [playerTopControlsInflateFingerprint].
  */
-internal val controlsOverlayVisibilityFingerprint = Fingerprint(
+internal object ControlsOverlayVisibilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z", "Z"),
 )
 
-internal val playerBottomControlsExploderFeatureFlagFingerprint = Fingerprint(
+internal object PlayerBottomControlsExploderFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -114,7 +114,7 @@ internal val playerBottomControlsExploderFeatureFlagFingerprint = Fingerprint(
     )
 )
 
-internal val playerTopControlsExperimentalLayoutFeatureFlagFingerprint = Fingerprint(
+internal object PlayerTopControlsExperimentalLayoutFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",
     parameters = listOf(),
@@ -123,7 +123,7 @@ internal val playerTopControlsExperimentalLayoutFeatureFlagFingerprint = Fingerp
     )
 )
 
-internal val playerControlsLargeOverlayButtonsFeatureFlagFingerprint = Fingerprint(
+internal object PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -132,7 +132,7 @@ internal val playerControlsLargeOverlayButtonsFeatureFlagFingerprint = Fingerpri
     )
 )
 
-internal val playerControlsFullscreenLargeButtonsFeatureFlagFingerprint = Fingerprint(
+internal object PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -141,7 +141,7 @@ internal val playerControlsFullscreenLargeButtonsFeatureFlagFingerprint = Finger
     )
 )
 
-internal val playerControlsButtonStrokeFeatureFlagFingerprint = Fingerprint(
+internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

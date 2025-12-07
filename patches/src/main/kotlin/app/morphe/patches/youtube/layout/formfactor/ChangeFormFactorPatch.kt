@@ -57,7 +57,7 @@ val changeFormFactorPatch = bytecodePatch(
             instructions(
                 fieldAccess(smali = "Landroid/os/Build;->MODEL:Ljava/lang/String;"),
                 fieldAccess(
-                    definingClass = formFactorEnumConstructorFingerprint.originalClassDef.type,
+                    definingClass = FormFactorEnumConstructorFingerprint.originalClassDef.type,
                     type = "I",
                     location = MatchAfterWithin(50)
                 )

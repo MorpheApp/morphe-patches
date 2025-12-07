@@ -7,7 +7,7 @@ import app.morphe.patcher.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val backgroundPlaybackDisableFingerprint = Fingerprint(
+internal object BackgroundPlaybackDisableFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf("L"),
@@ -24,7 +24,7 @@ internal val backgroundPlaybackDisableFingerprint = Fingerprint(
     )
 )
 
-internal val kidsBackgroundPlaybackPolicyControllerFingerprint = Fingerprint(
+internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "L", "Z"),

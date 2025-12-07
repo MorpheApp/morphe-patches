@@ -15,8 +15,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.layoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.subtitleButtonControllerFingerprint
+import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.patches.youtube.shared.SubtitleButtonControllerFingerprint
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -66,7 +66,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide player next/previous button.
 
-        layoutConstructorFingerprint.let {
+        LayoutConstructorFingerprint.let {
             it.clearMatch() // Fingerprint is shared with other patches.
 
             it.method.apply {
@@ -85,7 +85,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide cast button.
 
-        mediaRouteButtonFingerprint.method.addInstructions(
+        MediaRouteButtonFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->getCastButtonOverrideV2(I)I
@@ -95,8 +95,8 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         if (is_20_28_or_greater) {
             arrayOf(
-                castButtonPlayerFeatureFlagFingerprint,
-                castButtonActionFeatureFlagFingerprint
+                CastButtonPlayerFeatureFlagFingerprint,
+                CastButtonActionFeatureFlagFingerprint
             ).forEach { fingerprint ->
                 fingerprint.let {
                     it.method.insertLiteralOverride(
@@ -111,7 +111,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide captions button.
 
-        subtitleButtonControllerFingerprint.method.apply {
+        SubtitleButtonControllerFingerprint.method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.IGET_BOOLEAN) + 1
 
             addInstruction(
@@ -124,7 +124,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide autoplay button.
 
-        layoutConstructorFingerprint.method.apply {
+        LayoutConstructorFingerprint.method.apply {
             val constIndex = indexOfFirstResourceIdOrThrow("autonav_toggle")
             val constRegister = getInstruction<OneRegisterInstruction>(constIndex).registerA
 
@@ -151,7 +151,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide player control buttons background.
 
-        inflateControlsGroupLayoutStubFingerprint.let {
+        InflateControlsGroupLayoutStubFingerprint.let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index + 1
                 val freeRegister = findFreeRegister(insertIndex)

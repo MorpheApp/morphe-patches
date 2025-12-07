@@ -16,7 +16,7 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal const val YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;"
 
-internal val conversionContextFingerprintToString = Fingerprint(
+internal object ConversionContextFingerprintToString : Fingerprint(
     parameters = listOf(),
     strings = listOf(
         "ConversionContext{", // Partial string match.
@@ -31,7 +31,7 @@ internal val conversionContextFingerprintToString = Fingerprint(
     }
 )
 
-internal val layoutConstructorFingerprint = Fingerprint(
+internal object LayoutConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -42,7 +42,7 @@ internal val layoutConstructorFingerprint = Fingerprint(
     )
 )
 
-internal val mainActivityConstructorFingerprint = Fingerprint(
+internal object MainActivityConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(),
     custom = { _, classDef ->
@@ -50,7 +50,7 @@ internal val mainActivityConstructorFingerprint = Fingerprint(
     }
 )
 
-internal val mainActivityOnBackPressedFingerprint = Fingerprint(
+internal object MainActivityOnBackPressedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -59,7 +59,7 @@ internal val mainActivityOnBackPressedFingerprint = Fingerprint(
     }
 )
 
-internal val mainActivityOnCreateFingerprint = Fingerprint(
+internal object MainActivityOnCreateFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     custom = { method, classDef ->
@@ -67,7 +67,7 @@ internal val mainActivityOnCreateFingerprint = Fingerprint(
     }
 )
 
-internal val rollingNumberTextViewAnimationUpdateFingerprint = Fingerprint(
+internal object RollingNumberTextViewAnimationUpdateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/graphics/Bitmap;"),
@@ -93,7 +93,7 @@ internal val rollingNumberTextViewAnimationUpdateFingerprint = Fingerprint(
     }
 )
 
-internal val seekbarFingerprint = Fingerprint(
+internal object SeekbarFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("timed_markers_width"),
@@ -103,7 +103,7 @@ internal val seekbarFingerprint = Fingerprint(
 /**
  * Matches to _mutable_ class found in [seekbarFingerprint].
  */
-internal val seekbarOnDrawFingerprint = Fingerprint(
+internal object SeekbarOnDrawFingerprint : Fingerprint(
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
@@ -111,7 +111,7 @@ internal val seekbarOnDrawFingerprint = Fingerprint(
     custom = { method, _ -> method.name == "onDraw" }
 )
 
-internal val subtitleButtonControllerFingerprint = Fingerprint(
+internal object SubtitleButtonControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lcom/google/android/libraries/youtube/player/subtitles/model/SubtitleTrack;"),
@@ -121,7 +121,7 @@ internal val subtitleButtonControllerFingerprint = Fingerprint(
     )
 )
 
-internal val videoQualityChangedFingerprint = Fingerprint(
+internal object VideoQualityChangedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),

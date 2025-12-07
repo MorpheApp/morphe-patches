@@ -14,7 +14,7 @@ import com.android.tools.smali.dexlib2.Opcode
 /**
  * 20.02+
  */
-internal val userWasInShortsAlternativeFingerprint = Fingerprint(
+internal object UserWasInShortsAlternativeFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/Object;"),
@@ -32,7 +32,7 @@ internal val userWasInShortsAlternativeFingerprint = Fingerprint(
 /**
  * Pre 20.02
  */
-internal val userWasInShortsLegacyFingerprint = Fingerprint(
+internal object UserWasInShortsLegacyFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/Object;"),
@@ -44,7 +44,7 @@ internal val userWasInShortsLegacyFingerprint = Fingerprint(
 /**
  * 18.15.40+
  */
-internal val userWasInShortsConfigFingerprint = Fingerprint(
+internal object UserWasInShortsConfigFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

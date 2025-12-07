@@ -22,7 +22,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
-internal val swipingUpGestureParentFingerprint = Fingerprint(
+internal object SwipingUpGestureParentFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
@@ -33,7 +33,7 @@ internal val swipingUpGestureParentFingerprint = Fingerprint(
 /**
  * Resolves using the class found in [swipingUpGestureParentFingerprint].
  */
-internal val showSwipingUpGuideFingerprint = Fingerprint(
+internal object ShowSwipingUpGuideFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -45,13 +45,13 @@ internal val showSwipingUpGuideFingerprint = Fingerprint(
 /**
  * Resolves using the class found in [swipingUpGestureParentFingerprint].
  */
-internal val allowSwipingUpGestureFingerprint = Fingerprint(
+internal object AllowSwipingUpGestureFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L")
 )
 
-internal val disableFastForwardLegacyFingerprint = Fingerprint(
+internal object DisableFastForwardLegacyFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(),
     filters = OpcodesFilter.opcodesToFilters(
@@ -61,7 +61,7 @@ internal val disableFastForwardLegacyFingerprint = Fingerprint(
     custom = customLiteral { 45411330 }
 )
 
-internal val disableFastForwardGestureFingerprint = Fingerprint(
+internal object DisableFastForwardGestureFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -76,7 +76,7 @@ internal val disableFastForwardGestureFingerprint = Fingerprint(
     }
 )
 
-internal val customTapAndHoldFingerprint = Fingerprint(
+internal object CustomTapAndHoldFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -96,7 +96,7 @@ internal val customTapAndHoldFingerprint = Fingerprint(
     }
 )
 
-internal val onTouchEventHandlerFingerprint = Fingerprint(
+internal object OnTouchEventHandlerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.PUBLIC),
     returnType = "Z",
     parameters = listOf("L"),
@@ -119,7 +119,7 @@ internal val onTouchEventHandlerFingerprint = Fingerprint(
     custom = { method, _ -> method.name == "onTouchEvent" }
 )
 
-internal val seekbarTappingFingerprint = Fingerprint(
+internal object SeekbarTappingFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf("Landroid/view/MotionEvent;"),
@@ -147,7 +147,7 @@ internal val seekbarTappingFingerprint = Fingerprint(
     custom = { method, _ -> method.name == "onTouchEvent" }
 )
 
-internal val slideToSeekFingerprint = Fingerprint(
+internal object SlideToSeekFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "F"),
@@ -160,7 +160,7 @@ internal val slideToSeekFingerprint = Fingerprint(
     custom = customLiteral { 67108864 }
 )
 
-internal val fullscreenSeekbarThumbnailsQualityFingerprint = Fingerprint(
+internal object FullscreenSeekbarThumbnailsQualityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -169,7 +169,7 @@ internal val fullscreenSeekbarThumbnailsQualityFingerprint = Fingerprint(
     )
 )
 
-internal val fullscreenLargeSeekbarFeatureFlagFingerprint = Fingerprint(
+internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

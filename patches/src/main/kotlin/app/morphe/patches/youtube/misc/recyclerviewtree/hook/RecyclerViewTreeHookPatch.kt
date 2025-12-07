@@ -11,8 +11,8 @@ val recyclerViewTreeHookPatch = bytecodePatch {
     dependsOn(sharedExtensionPatch)
 
     execute {
-        recyclerViewTreeObserverFingerprint.method.apply {
-            val insertIndex = recyclerViewTreeObserverFingerprint.instructionMatches.first().index + 1
+        RecyclerViewTreeObserverFingerprint.method.apply {
+            val insertIndex = RecyclerViewTreeObserverFingerprint.instructionMatches.first().index + 1
             val recyclerViewParameter = 2
 
             addRecyclerViewTreeHook = { classDescriptor ->

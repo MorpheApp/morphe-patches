@@ -9,7 +9,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val addCreateButtonViewFingerprint = Fingerprint(
+internal object AddCreateButtonViewFingerprint : Fingerprint(
     filters = listOf(
         string("Android Wear"),
         opcode(Opcode.IF_EQZ),
@@ -17,7 +17,7 @@ internal val addCreateButtonViewFingerprint = Fingerprint(
     )
 )
 
-internal val createPivotBarFingerprint = Fingerprint(
+internal object CreatePivotBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
         "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
@@ -30,7 +30,7 @@ internal val createPivotBarFingerprint = Fingerprint(
     )
 )
 
-internal val animatedNavigationTabsFeatureFlagFingerprint = Fingerprint(
+internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     filters = listOf(
@@ -38,7 +38,7 @@ internal val animatedNavigationTabsFeatureFlagFingerprint = Fingerprint(
     )
 )
 
-internal val translucentNavigationStatusBarFeatureFlagFingerprint = Fingerprint(
+internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     filters = listOf(
@@ -49,7 +49,7 @@ internal val translucentNavigationStatusBarFeatureFlagFingerprint = Fingerprint(
 /**
  * YouTube nav buttons.
  */
-internal val translucentNavigationButtonsFeatureFlagFingerprint = Fingerprint(
+internal object TranslucentNavigationButtonsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -60,7 +60,7 @@ internal val translucentNavigationButtonsFeatureFlagFingerprint = Fingerprint(
 /**
  * Device on screen back/home/recent buttons.
  */
-internal val translucentNavigationButtonsSystemFeatureFlagFingerprint = Fingerprint(
+internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     filters = listOf(

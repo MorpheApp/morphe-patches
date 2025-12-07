@@ -3,7 +3,7 @@ package app.morphe.patches.music.misc.fileprovider
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.music.utils.fix.fileprovider.fileProviderResolverFingerprint
+import app.morphe.patches.music.utils.fix.fileprovider.FileProviderResolverFingerprint
 
 internal fun fileProviderPatch(
     youtubePackageName: String,
@@ -21,7 +21,7 @@ internal fun fileProviderPatch(
         // There is no issue in the stock YT Music, but this is an issue in the GmsCore Build.
         //
         // To solve this issue, replace the package name of YouTube with YT Music's package name.
-        fileProviderResolverFingerprint.method.addInstructionsWithLabels(
+        FileProviderResolverFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 const-string v0, "com.google.android.youtube.fileprovider"

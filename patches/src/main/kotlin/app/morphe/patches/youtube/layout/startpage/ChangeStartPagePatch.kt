@@ -56,7 +56,7 @@ val changeStartPagePatch = bytecodePatch(
         )
 
         // Hook browseId.
-        browseIdFingerprint.let {
+        BrowseIdFingerprint.let {
             it.method.apply {
                 val browseIdIndex = it.instructionMatches.first().index
                 val browseIdRegister = getInstruction<OneRegisterInstruction>(browseIdIndex).registerA
@@ -73,7 +73,7 @@ val changeStartPagePatch = bytecodePatch(
 
         // There is no browserId assigned to Shorts and Search.
         // Just hook the Intent action.
-        intentActionFingerprint.method.addInstruction(
+        IntentActionFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentAction(Landroid/content/Intent;)V",
         )

@@ -5,7 +5,7 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val onFailureFingerprint = Fingerprint(
+internal object OnFailureFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(
@@ -19,7 +19,7 @@ internal val onFailureFingerprint = Fingerprint(
 )
 
 // Acts as a parent fingerprint.
-internal val onResponseStartedFingerprint = Fingerprint(
+internal object OnResponseStartedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;"),
@@ -34,7 +34,7 @@ internal val onResponseStartedFingerprint = Fingerprint(
     }
 )
 
-internal val onSucceededFingerprint = Fingerprint(
+internal object OnSucceededFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;"),
@@ -45,19 +45,19 @@ internal val onSucceededFingerprint = Fingerprint(
 
 internal const val CRONET_URL_REQUEST_CLASS_DESCRIPTOR = "Lorg/chromium/net/impl/CronetUrlRequest;"
 
-internal val requestFingerprint = Fingerprint(
+internal object RequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     custom = { _, classDef ->
         classDef.type == CRONET_URL_REQUEST_CLASS_DESCRIPTOR
     }
 )
 
-internal val messageDigestImageUrlFingerprint = Fingerprint(
+internal object MessageDigestImageUrlFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Ljava/lang/String;", "L")
 )
 
-internal val messageDigestImageUrlParentFingerprint = Fingerprint(
+internal object MessageDigestImageUrlParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),

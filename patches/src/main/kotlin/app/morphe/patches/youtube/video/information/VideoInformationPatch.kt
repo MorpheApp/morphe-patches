@@ -13,7 +13,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.videoQualityChangedFingerprint
+import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
@@ -96,7 +96,7 @@ val videoInformationPatch = bytecodePatch(
     )
 
     execute {
-        playerInitMethod = playerInitFingerprint.classDef.methods.first { MethodUtil.isConstructor(it) }
+        playerInitMethod = PlayerInitFingerprint.classDef.methods.first { MethodUtil.isConstructor(it) }
 
         // Find the location of the first invoke-direct call and extract the register storing the 'this' object reference.
         val initThisIndex = playerInitMethod.indexOfFirstInstructionOrThrow {
@@ -105,18 +105,18 @@ val videoInformationPatch = bytecodePatch(
         playerInitInsertRegister = playerInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
         playerInitInsertIndex = initThisIndex + 1
 
-        val seekFingerprintResultMethod = seekFingerprint.match(playerInitFingerprint.originalClassDef).method
-        val seekRelativeFingerprintResultMethod =
-            seekRelativeFingerprint.match(playerInitFingerprint.originalClassDef).method
+        val SeekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
+        val SeekRelativeFingerprintResultMethod =
+            SeekRelativeFingerprint.match(PlayerInitFingerprint.originalClassDef).method
 
         // Create extension interface methods.
         addSeekInterfaceMethods(
-            playerInitFingerprint.classDef,
-            seekFingerprintResultMethod,
-            seekRelativeFingerprintResultMethod,
+            PlayerInitFingerprint.classDef,
+            SeekFingerprintResultMethod,
+            SeekRelativeFingerprintResultMethod,
         )
 
-        with(mdxPlayerDirectorSetVideoStageFingerprint) {
+        with(MdxPlayerDirectorSetVideoStageFingerprint) {
             mdxInitMethod = classDef.methods.first { MethodUtil.isConstructor(it) }
 
             val initThisIndex = mdxInitMethod.indexOfFirstInstructionOrThrow {
@@ -128,14 +128,14 @@ val videoInformationPatch = bytecodePatch(
             // Hook the MDX director for use through the extension.
             onCreateHookMdx(EXTENSION_CLASS_DESCRIPTOR, "initializeMdx")
 
-            val mdxSeekFingerprintResultMethod = mdxSeekFingerprint.match(classDef).method
-            val mdxSeekRelativeFingerprintResultMethod = mdxSeekRelativeFingerprint.match(classDef).method
+            val MdxSeekFingerprintResultMethod = MdxSeekFingerprint.match(classDef).method
+            val MdxSeekRelativeFingerprintResultMethod = MdxSeekRelativeFingerprint.match(classDef).method
 
-            addSeekInterfaceMethods(classDef, mdxSeekFingerprintResultMethod, mdxSeekRelativeFingerprintResultMethod)
+            addSeekInterfaceMethods(classDef, MdxSeekFingerprintResultMethod, MdxSeekRelativeFingerprintResultMethod)
         }
 
-        with(createVideoPlayerSeekbarFingerprint) {
-            val videoLengthMethodMatch = videoLengthFingerprint.match(originalClassDef)
+        with(CreateVideoPlayerSeekbarFingerprint) {
+            val videoLengthMethodMatch = VideoLengthFingerprint.match(originalClassDef)
 
             videoLengthMethodMatch.method.apply {
                 val videoLengthRegisterIndex = videoLengthMethodMatch.instructionMatches.last().index - 2
@@ -150,7 +150,7 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        videoEndFingerprint.let {
+        VideoEndFingerprint.let {
             videoEndMethod = navigate(it.originalMethod).to(it.instructionMatches[0].index).stop()
         }
 
@@ -175,8 +175,8 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Set the video time method
          */
-        timeMethod = navigate(playerControllerSetTimeReferenceFingerprint.originalMethod)
-            .to(playerControllerSetTimeReferenceFingerprint.instructionMatches.first().index)
+        timeMethod = navigate(PlayerControllerSetTimeReferenceFingerprint.originalMethod)
+            .to(PlayerControllerSetTimeReferenceFingerprint.instructionMatches.first().index)
             .stop()
 
         /*
@@ -187,7 +187,7 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the user playback speed selection.
          */
-        onPlaybackSpeedItemClickFingerprint.method.apply {
+        OnPlaybackSpeedItemClickFingerprint.method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethod = this
@@ -238,7 +238,7 @@ val videoInformationPatch = bytecodePatch(
             setPlaybackSpeedMethodIndex = 0
 
             // Add override playback speed method.
-            onPlaybackSpeedItemClickFingerprint.classDef.methods.add(
+            OnPlaybackSpeedItemClickFingerprint.classDef.methods.add(
                 ImmutableMethod(
                     definingClass,
                     "overridePlaybackSpeed",
@@ -278,7 +278,7 @@ val videoInformationPatch = bytecodePatch(
             )
         }
 
-        playbackSpeedClassFingerprint.method.apply {
+        PlaybackSpeedClassFingerprint.method.apply {
             val index = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
             val register = getInstruction<OneRegisterInstruction>(index).registerA
             val playbackSpeedClass = this.returnType
@@ -308,8 +308,8 @@ val videoInformationPatch = bytecodePatch(
         }
 
         // Handle new playback speed menu.
-        playbackSpeedMenuSpeedChangedFingerprint.match(
-            videoQualityChangedFingerprint.originalClassDef,
+        PlaybackSpeedMenuSpeedChangedFingerprint.match(
+            VideoQualityChangedFingerprint.originalClassDef,
         ).let {
             it.method.apply {
                 val index = it.instructionMatches.first().index
@@ -320,7 +320,7 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        (if (is_20_19_or_greater) videoQualityFingerprint else videoQualityLegacyFingerprint).let {
+        (if (is_20_19_or_greater) VideoQualityFingerprint else VideoQualityLegacyFingerprint).let {
             // Fix bad data used by YouTube.
             val nameRegister = if (is_20_20_or_greater) "p3" else "p2"
             it.method.addInstructions(
@@ -387,8 +387,8 @@ val videoInformationPatch = bytecodePatch(
         }
 
         // Detect video quality changes and override the current quality.
-        setVideoQualityFingerprint.match(
-            videoQualitySetterFingerprint.originalClassDef
+        SetVideoQualityFingerprint.match(
+            VideoQualitySetterFingerprint.originalClassDef
         ).let { match ->
             // This instruction refers to the field with the type that contains the setQuality method.
             val onItemClickListenerClassReference = match.method
@@ -428,7 +428,7 @@ val videoInformationPatch = bytecodePatch(
                 )
             }
 
-            videoQualitySetterFingerprint.method.addInstructions(
+            VideoQualitySetterFingerprint.method.addInstructions(
                 0,
                 """
                     # Get object instance to invoke setQuality method.

@@ -6,14 +6,14 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val intentActionFingerprint = Fingerprint(
+internal object IntentActionFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Intent;"),
     filters = listOf(
         string("has_handled_intent")
     )
 )
 
-internal val browseIdFingerprint = Fingerprint(
+internal object BrowseIdFingerprint : Fingerprint(
     returnType = "Lcom/google/android/apps/youtube/app/common/ui/navigation/PaneDescriptor;",
 
     //parameters() // 20.30 and earlier is no parameters = listOf(.  20.31+ parameter is L.),

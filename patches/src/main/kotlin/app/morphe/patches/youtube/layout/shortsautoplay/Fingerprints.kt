@@ -9,7 +9,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val reelEnumConstructorFingerprint = Fingerprint(
+internal object ReelEnumConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         string("REEL_LOOP_BEHAVIOR_UNKNOWN"),
@@ -20,7 +20,7 @@ internal val reelEnumConstructorFingerprint = Fingerprint(
     )
 )
 
-internal val reelPlaybackRepeatParentFingerprint = Fingerprint(
+internal object ReelPlaybackRepeatParentFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/String;", "J"),
     filters = listOf(
@@ -31,7 +31,7 @@ internal val reelPlaybackRepeatParentFingerprint = Fingerprint(
 /**
  * Matches class found in [reelPlaybackRepeatParentFingerprint].
  */
-internal val reelPlaybackRepeatFingerprint = Fingerprint(
+internal object ReelPlaybackRepeatFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
@@ -39,7 +39,7 @@ internal val reelPlaybackRepeatFingerprint = Fingerprint(
     )
 )
 
-internal val reelPlaybackFingerprint = Fingerprint(
+internal object ReelPlaybackFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("J"),

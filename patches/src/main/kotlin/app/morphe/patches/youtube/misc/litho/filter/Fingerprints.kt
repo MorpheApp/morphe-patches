@@ -11,7 +11,7 @@ import app.morphe.util.containsLiteralInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val accessibilityIdFingerprint = Fingerprint(
+internal object AccessibilityIdFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
@@ -22,21 +22,21 @@ internal val accessibilityIdFingerprint = Fingerprint(
     )
 )
 
-internal val componentCreateFingerprint = Fingerprint(
+internal object ComponentCreateFingerprint : Fingerprint(
     filters = listOf(
         string("Element missing correct type extension"),
         string("Element missing type")
     )
 )
 
-internal val lithoFilterFingerprint = Fingerprint(
+internal object LithoFilterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     custom = { _, classDef ->
         classDef.endsWith("/LithoFilterPatch;")
     }
 )
 
-internal val protobufBufferReferenceFingerprint = Fingerprint(
+internal object ProtobufBufferReferenceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("[B"),
@@ -53,7 +53,7 @@ internal val protobufBufferReferenceFingerprint = Fingerprint(
     )
 )
 
-internal val protobufBufferReferenceLegacyFingerprint = Fingerprint(
+internal object ProtobufBufferReferenceLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "Ljava/nio/ByteBuffer;"),
@@ -65,7 +65,7 @@ internal val protobufBufferReferenceLegacyFingerprint = Fingerprint(
     )
 )
 
-internal val emptyComponentFingerprint = Fingerprint(
+internal object EmptyComponentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
     parameters = listOf(),
     filters = listOf(
@@ -76,7 +76,7 @@ internal val emptyComponentFingerprint = Fingerprint(
     }
 )
 
-internal val lithoThreadExecutorFingerprint = Fingerprint(
+internal object LithoThreadExecutorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("I", "I", "I"),
     custom = { method, classDef ->
@@ -85,7 +85,7 @@ internal val lithoThreadExecutorFingerprint = Fingerprint(
     }
 )
 
-internal val lithoComponentNameUpbFeatureFlagFingerprint = Fingerprint(
+internal object LithoComponentNameUpbFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -94,7 +94,7 @@ internal val lithoComponentNameUpbFeatureFlagFingerprint = Fingerprint(
     )
 )
 
-internal val lithoConverterBufferUpbFeatureFlagFingerprint = Fingerprint(
+internal object LithoConverterBufferUpbFeatureFlagFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(
         literal(45419603L)

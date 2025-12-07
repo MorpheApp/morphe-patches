@@ -3,7 +3,7 @@ package app.morphe.patches.youtube.interaction.dialog
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
 
-internal val createDialogFingerprint = Fingerprint(
+internal object CreateDialogFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "L", "Ljava/lang/String;"),
     filters = listOf(

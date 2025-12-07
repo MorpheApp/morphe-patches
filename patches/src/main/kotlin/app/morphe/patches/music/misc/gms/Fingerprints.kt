@@ -2,7 +2,7 @@ package app.morphe.patches.music.misc.gms
 
 import app.morphe.patcher.Fingerprint
 
-internal val musicActivityOnCreateFingerprint = Fingerprint(
+internal object MusicActivityOnCreateFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     custom = { method, classDef ->

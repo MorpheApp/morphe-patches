@@ -6,7 +6,7 @@ import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val getPremiumViewFingerprint = Fingerprint(
+internal object GetPremiumViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "I"),

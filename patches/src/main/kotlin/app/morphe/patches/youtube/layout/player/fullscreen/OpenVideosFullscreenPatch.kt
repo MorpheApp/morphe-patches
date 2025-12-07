@@ -39,6 +39,6 @@ val openVideosFullscreenPatch = bytecodePatch(
         )
 
         // Enable the logic for the user Setting to open regular videos fullscreen.
-        openVideosFullscreenHookPatchExtensionFingerprint.method.returnEarly(true)
+        OpenVideosFullscreenHookPatchExtensionFingerprint.method.returnEarly(true)
     }
 }

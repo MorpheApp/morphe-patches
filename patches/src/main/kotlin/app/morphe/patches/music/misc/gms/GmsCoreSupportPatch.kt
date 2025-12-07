@@ -10,20 +10,20 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
-import app.morphe.patches.shared.castContextFetchFingerprint
+import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
-import app.morphe.patches.shared.primeMethodFingerprint
+import app.morphe.patches.shared.PrimeMethodFingerprint
 
 @Suppress("unused")
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = MUSIC_PACKAGE_NAME,
     toPackageName = MORPHE_MUSIC_PACKAGE_NAME,
-    primeMethodFingerprint = primeMethodFingerprint,
+    primeMethodFingerprint = PrimeMethodFingerprint,
     earlyReturnFingerprints = setOf(
-        castContextFetchFingerprint,
+        CastContextFetchFingerprint,
     ),
-    mainActivityOnCreateFingerprint = musicActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
 ) {

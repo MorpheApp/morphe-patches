@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.layout.hide.shorts
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.*
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
@@ -13,14 +12,14 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val componentContextParserFingerprint = Fingerprint(
+internal object ComponentContextParserFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(
         string("Number of bits must be positive")
     )
 )
 
-internal val treeNodeResultListFingerprint = Fingerprint(
+internal object TreeNodeResultListFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Ljava/util/List;",
     filters = listOf(
@@ -28,7 +27,7 @@ internal val treeNodeResultListFingerprint = Fingerprint(
     )
 )
 
-internal val shortsBottomBarContainerFingerprint = Fingerprint(
+internal object ShortsBottomBarContainerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "Landroid/os/Bundle;"),
@@ -40,7 +39,7 @@ internal val shortsBottomBarContainerFingerprint = Fingerprint(
     )
 )
 
-internal val renderBottomNavigationBarFingerprint = Fingerprint(
+internal object RenderBottomNavigationBarFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/String;"),
     filters = listOf(
@@ -60,7 +59,7 @@ internal val renderBottomNavigationBarFingerprint = Fingerprint(
 /**
  * Less than 19.41.
  */
-internal val legacyRenderBottomNavigationBarLegacyParentFingerprint = Fingerprint(
+internal object LegacyRenderBottomNavigationBarLegacyParentFingerprint : Fingerprint(
     parameters = listOf(
         "I",
         "I",
@@ -77,7 +76,7 @@ internal val legacyRenderBottomNavigationBarLegacyParentFingerprint = Fingerprin
 /**
  * 19.41 - 20.44
  */
-internal val renderBottomNavigationBarLegacy1941ParentFingerprint = Fingerprint(
+internal object RenderBottomNavigationBarLegacy1941ParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(
         "I",
@@ -96,7 +95,7 @@ internal val renderBottomNavigationBarLegacy1941ParentFingerprint = Fingerprint(
 /**
  * 20.45+
  */
-internal val renderBottomNavigationBarParentFingerprint = Fingerprint(
+internal object RenderBottomNavigationBarParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "[Ljava/lang/Class;",
     parameters = listOf(
@@ -109,7 +108,7 @@ internal val renderBottomNavigationBarParentFingerprint = Fingerprint(
     )
 )
 
-internal val setPivotBarVisibilityFingerprint = Fingerprint(
+internal object SetPivotBarVisibilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
@@ -119,14 +118,14 @@ internal val setPivotBarVisibilityFingerprint = Fingerprint(
     )
 )
 
-internal val setPivotBarVisibilityParentFingerprint = Fingerprint(
+internal object SetPivotBarVisibilityParentFingerprint : Fingerprint(
     parameters = listOf("Z"),
     filters = listOf(
         string("FEnotifications_inbox")
     )
 )
 
-internal val shortsExperimentalPlayerFeatureFlagFingerprint = Fingerprint(
+internal object ShortsExperimentalPlayerFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -135,7 +134,7 @@ internal val shortsExperimentalPlayerFeatureFlagFingerprint = Fingerprint(
     )
 )
 
-internal val renderNextUIFeatureFlagFingerprint = Fingerprint(
+internal object RenderNextUIFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

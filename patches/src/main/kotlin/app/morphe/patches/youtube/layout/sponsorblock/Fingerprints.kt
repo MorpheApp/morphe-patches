@@ -6,10 +6,8 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
-import app.morphe.patches.youtube.shared.seekbarFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -17,7 +15,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val appendTimeFingerprint = Fingerprint(
+internal object AppendTimeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;"),
@@ -29,7 +27,7 @@ internal val appendTimeFingerprint = Fingerprint(
     )
 )
 
-internal val controlsOverlayFingerprint = Fingerprint(
+internal object ControlsOverlayFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -41,7 +39,7 @@ internal val controlsOverlayFingerprint = Fingerprint(
 /**
  * Resolves to the class found in [seekbarFingerprint].
  */
-internal val rectangleFieldInvalidatorFingerprint = Fingerprint(
+internal object RectangleFieldInvalidatorFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -49,7 +47,7 @@ internal val rectangleFieldInvalidatorFingerprint = Fingerprint(
     )
 )
 
-internal val adProgressTextViewVisibilityFingerprint = Fingerprint(
+internal object AdProgressTextViewVisibilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),

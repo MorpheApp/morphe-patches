@@ -42,7 +42,7 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
             TextPreference("morphe_player_overlay_opacity", inputType = InputType.NUMBER),
         )
 
-        createPlayerOverviewFingerprint.let {
+        CreatePlayerOverviewFingerprint.let {
             it.method.apply {
                 val viewRegisterIndex = it.instructionMatches.last().index
                 val viewRegister = getInstruction<OneRegisterInstruction>(viewRegisterIndex).registerA

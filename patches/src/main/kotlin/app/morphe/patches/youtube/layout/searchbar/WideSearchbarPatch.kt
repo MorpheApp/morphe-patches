@@ -58,7 +58,7 @@ internal val wideSearchbarPatch = bytecodePatch(
             SwitchPreference("morphe_wide_searchbar"),
         )
 
-        setWordmarkHeaderFingerprint.let {
+        SetWordmarkHeaderFingerprint.let {
             // Navigate to the method that checks if the YT logo is shown beside the search bar.
             val shouldShowLogoMethod = with(it.originalMethod) {
                 val invokeStaticIndex = indexOfFirstInstructionOrThrow {
@@ -84,7 +84,7 @@ internal val wideSearchbarPatch = bytecodePatch(
         }
 
         // Fix missing left padding when using wide searchbar.
-        wideSearchbarLayoutFingerprint.method.apply {
+        WideSearchbarLayoutFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow {
                 val reference = getReference<MethodReference>()
                 reference?.definingClass == "Landroid/view/LayoutInflater;"

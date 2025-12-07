@@ -44,25 +44,25 @@ val playerResponseMethodHookPatch = bytecodePatch {
         val fingerprint : Fingerprint
         if (is_20_46_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 13
-            fingerprint = playerParameterBuilderFingerprint
+            fingerprint = PlayerParameterBuilderFingerprint
         } else if (is_20_26_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 13
-            fingerprint = playerParameterBuilder2026Fingerprint
+            fingerprint = PlayerParameterBuilder2026Fingerprint
         } else if (is_20_15_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 13
-            fingerprint = playerParameterBuilder2015Fingerprint
+            fingerprint = PlayerParameterBuilder2015Fingerprint
         } else if (is_20_10_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 13
-            fingerprint = playerParameterBuilder2010Fingerprint
+            fingerprint = PlayerParameterBuilder2010Fingerprint
         } else if (is_20_02_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 12
-            fingerprint = playerParameterBuilder2002Fingerprint
+            fingerprint = PlayerParameterBuilder2002Fingerprint
         } else if (is_19_23_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 12
-            fingerprint = playerParameterBuilder1925Fingerprint
+            fingerprint = PlayerParameterBuilder1925Fingerprint
         } else {
             parameterIsShortAndOpeningOrPlaying = 11
-            fingerprint = playerParameterBuilderLegacyFingerprint
+            fingerprint = PlayerParameterBuilderLegacyFingerprint
         }
         playerResponseMethod = fingerprint.method
 

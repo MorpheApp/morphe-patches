@@ -14,22 +14,22 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 
-internal val getOldPlaybackSpeedsFingerprint = Fingerprint(
+internal object GetOldPlaybackSpeedsFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
     strings = listOf("menu_item_playback_speed")
 )
 
-internal val showOldPlaybackSpeedMenuFingerprint = Fingerprint(
+internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "varispeed_unavailable_message")
     )
 )
 
-internal val showOldPlaybackSpeedMenuExtensionFingerprint = Fingerprint(
+internal object ShowOldPlaybackSpeedMenuExtensionFingerprint : Fingerprint(
     custom = { method, _ -> method.name == "showOldPlaybackSpeedMenu" }
 )
 
-internal val serverSideMaxSpeedFeatureFlagFingerprint = Fingerprint(
+internal object ServerSideMaxSpeedFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     filters = listOf(
@@ -37,7 +37,7 @@ internal val serverSideMaxSpeedFeatureFlagFingerprint = Fingerprint(
     )
 )
 
-internal val speedArrayGeneratorFingerprint = Fingerprint(
+internal object SpeedArrayGeneratorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "[L",
     parameters = listOf("Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"),
@@ -54,7 +54,7 @@ internal val speedArrayGeneratorFingerprint = Fingerprint(
 /**
  * 20.34+
  */
-internal val speedLimiterFingerprint = Fingerprint(
+internal object SpeedLimiterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("F", "Lcom/google/android/libraries/youtube/innertube/model/media/PlayerConfigModel;"),
@@ -67,7 +67,7 @@ internal val speedLimiterFingerprint = Fingerprint(
 /**
  * 20.33 and lower.
  */
-internal val speedLimiterLegacyFingerprint = Fingerprint(
+internal object SpeedLimiterLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("F"),

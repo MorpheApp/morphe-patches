@@ -17,7 +17,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -62,7 +62,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         )
 
         // Activity is used as the context to launch an Intent.
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        MainActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
                     "setMainActivity(Landroid/app/Activity;)V",
@@ -70,11 +70,11 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
         // Find the obfuscated method name for PlaybackStartDescriptor.videoId()
         val (videoIdStartMethod, videoIdIndex) = if (is_20_39_or_greater) {
-            watchPanelVideoIdFingerprint.let {
+            WatchPanelVideoIdFingerprint.let {
                 it.method to it.instructionMatches.last().index
             }
         } else {
-            playbackStartFeatureFlagFingerprint.let {
+            PlaybackStartFeatureFlagFingerprint.let {
                 it.method to it.instructionMatches.first().index
             }
         }
@@ -94,7 +94,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
             """
 
         if (is_19_25_or_greater) {
-            shortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
+            ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
                     move-object/from16 v0, p1
@@ -102,7 +102,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                 """
             )
         } else {
-            shortsPlaybackIntentLegacyFingerprint.let {
+            ShortsPlaybackIntentLegacyFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches.first().index
                     val playbackStartRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
@@ -120,7 +120,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         // Fix issue with back button exiting the app instead of minimizing the player.
         // Without this change this issue can be difficult to reproduce, but seems to occur
         // most often with 'open video in regular player' and not open in fullscreen player.
-        exitVideoPlayerFingerprint.method.apply {
+        ExitVideoPlayerFingerprint.method.apply {
             // Method call for Activity.finish()
             val finishIndex = indexOfFirstInstructionOrThrow {
                 val reference = getReference<MethodReference>()

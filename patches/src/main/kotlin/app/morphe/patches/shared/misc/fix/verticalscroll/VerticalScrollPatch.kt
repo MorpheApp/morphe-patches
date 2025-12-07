@@ -10,7 +10,7 @@ val verticalScrollPatch = bytecodePatch(
 ) {
 
     execute {
-        canScrollVerticallyFingerprint.let {
+        CanScrollVerticallyFingerprint.let {
             it.method.apply {
                 val moveResultIndex = it.instructionMatches.last().index
                 val moveResultRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA

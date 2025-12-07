@@ -7,7 +7,7 @@ import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/announcements/AnnouncementsPatch;"
@@ -39,7 +39,7 @@ val announcementsPatch = bytecodePatch(
             SwitchPreference("morphe_announcements"),
         )
 
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        MainActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->showAnnouncement(Landroid/app/Activity;)V",
         )

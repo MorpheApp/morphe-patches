@@ -9,7 +9,7 @@ import app.morphe.patches.shared.layout.branding.NotificationFingerprint.method
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val videoIdFingerprint = Fingerprint(
+internal object VideoIdFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -22,7 +22,7 @@ internal val videoIdFingerprint = Fingerprint(
     )
 )
 
-internal val videoIdBackgroundPlayFingerprint = Fingerprint(
+internal object VideoIdBackgroundPlayFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.DECLARED_SYNCHRONIZED, AccessFlags.FINAL, AccessFlags.PUBLIC),
     returnType = "V",
     parameters = listOf("L"),
@@ -45,7 +45,7 @@ internal val videoIdBackgroundPlayFingerprint = Fingerprint(
     }
 )
 
-internal val videoIdParentFingerprint = Fingerprint(
+internal object VideoIdParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "[L",
     parameters = listOf("L"),

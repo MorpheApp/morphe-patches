@@ -12,7 +12,7 @@ import com.android.tools.smali.dexlib2.Opcode
 /**
  * 19.46+
  */
-internal val openVideosFullscreenPortraitFingerprint = Fingerprint(
+internal object OpenVideosFullscreenPortraitFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Lj\$/util/Optional;"),
     filters = listOf(
@@ -26,7 +26,7 @@ internal val openVideosFullscreenPortraitFingerprint = Fingerprint(
 /**
  * Pre 19.46.
  */
-internal val openVideosFullscreenPortraitLegacyFingerprint = Fingerprint(
+internal object OpenVideosFullscreenPortraitLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Lj\$/util/Optional;"),
@@ -45,7 +45,7 @@ internal val openVideosFullscreenPortraitLegacyFingerprint = Fingerprint(
     )
 )
 
-internal val openVideosFullscreenHookPatchExtensionFingerprint = Fingerprint(
+internal object OpenVideosFullscreenHookPatchExtensionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf(),

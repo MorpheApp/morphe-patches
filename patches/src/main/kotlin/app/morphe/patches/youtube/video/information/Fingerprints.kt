@@ -7,20 +7,20 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
-import app.morphe.patches.youtube.shared.videoQualityChangedFingerprint
+import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-internal val createVideoPlayerSeekbarFingerprint = Fingerprint(
+internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("timed_markers_width"),
     )
 )
 
-internal val onPlaybackSpeedItemClickFingerprint = Fingerprint(
+internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "L", "I", "J"),
@@ -33,28 +33,28 @@ internal val onPlaybackSpeedItemClickFingerprint = Fingerprint(
     }
 )
 
-internal val playerControllerSetTimeReferenceFingerprint = Fingerprint(
+internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
 Opcode.INVOKE_DIRECT_RANGE, Opcode.IGET_OBJECT),
     strings = listOf("Media progress reported outside media playback: ")
 )
 
-internal val playerInitFingerprint = Fingerprint(
+internal object PlayerInitFingerprint : Fingerprint(
     filters = listOf(
         string("playVideo called on player response with no videoStreamingData."),
     )
 )
 
 /**
- * Matched using class found in [playerInitFingerprint].
+ * Matched using class found in [PlayerInitFingerprint].
  */
-internal val seekFingerprint = Fingerprint(
+internal object SeekFingerprint : Fingerprint(
     filters = listOf(
         string("Attempting to seek during an ad"),
     )
 )
 
-internal val videoLengthFingerprint = Fingerprint(
+internal object VideoLengthFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_WIDE,
         Opcode.CMP_LONG,
@@ -72,9 +72,9 @@ internal val videoLengthFingerprint = Fingerprint(
 )
 
 /**
- * Matches using class found in [mdxPlayerDirectorSetVideoStageFingerprint].
+ * Matches using class found in [MdxPlayerDirectorSetVideoStageFingerprint].
  */
-internal val mdxSeekFingerprint = Fingerprint(
+internal object MdxSeekFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf("J", "L"),
@@ -91,16 +91,16 @@ internal val mdxSeekFingerprint = Fingerprint(
     }
 )
 
-internal val mdxPlayerDirectorSetVideoStageFingerprint = Fingerprint(
+internal object MdxPlayerDirectorSetVideoStageFingerprint : Fingerprint(
     filters = listOf(
         string("MdxDirector setVideoStage ad should be null when videoStage is not an Ad state "),
     )
 )
 
 /**
- * Matches using class found in [mdxPlayerDirectorSetVideoStageFingerprint].
+ * Matches using class found in [MdxPlayerDirectorSetVideoStageFingerprint].
  */
-internal val mdxSeekRelativeFingerprint = Fingerprint(
+internal object MdxSeekRelativeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     // Return type is boolean up to 19.39, and void with 19.39+.
     parameters = listOf("J", "L"),
@@ -111,9 +111,9 @@ internal val mdxSeekRelativeFingerprint = Fingerprint(
 )
 
 /**
- * Matches using class found in [playerInitFingerprint].
+ * Matches using class found in [PlayerInitFingerprint].
  */
-internal val seekRelativeFingerprint = Fingerprint(
+internal object SeekRelativeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     // Return type is boolean up to 19.39, and void with 19.39+.
     parameters = listOf("J", "L"),
@@ -123,7 +123,7 @@ internal val seekRelativeFingerprint = Fingerprint(
     )
 )
 
-internal val videoEndFingerprint = Fingerprint(
+internal object VideoEndFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf("J", "L"),
@@ -138,9 +138,9 @@ internal val videoEndFingerprint = Fingerprint(
 )
 
 /**
- * Resolves with the class found in [videoQualityChangedFingerprint].
+ * Resolves with the class found in [VideoQualityChangedFingerprint].
  */
-internal val playbackSpeedMenuSpeedChangedFingerprint = Fingerprint(
+internal object PlaybackSpeedMenuSpeedChangedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),
@@ -149,7 +149,7 @@ internal val playbackSpeedMenuSpeedChangedFingerprint = Fingerprint(
     )
 )
 
-internal val playbackSpeedClassFingerprint = Fingerprint(
+internal object PlaybackSpeedClassFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "L",
     parameters = listOf("L"),
@@ -165,7 +165,7 @@ internal const val YOUTUBE_VIDEO_QUALITY_CLASS_TYPE = "Lcom/google/android/libra
 /**
  * YouTube 20.19 and lower.
  */
-internal val videoQualityLegacyFingerprint = Fingerprint(
+internal object VideoQualityLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
         "I", // Resolution.
@@ -178,7 +178,7 @@ internal val videoQualityLegacyFingerprint = Fingerprint(
     }
 )
 
-internal val videoQualityFingerprint = Fingerprint(
+internal object VideoQualityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
         "I", // Resolution.
@@ -192,7 +192,7 @@ internal val videoQualityFingerprint = Fingerprint(
     }
 )
 
-internal val videoQualitySetterFingerprint = Fingerprint(
+internal object VideoQualitySetterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("[L", "I", "Z"),
@@ -207,9 +207,9 @@ internal val videoQualitySetterFingerprint = Fingerprint(
 )
 
 /**
- * Matches with the class found in [videoQualitySetterFingerprint].
+ * Matches with the class found in [VideoQualitySetterFingerprint].
  */
-internal val setVideoQualityFingerprint = Fingerprint(
+internal object SetVideoQualityFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(

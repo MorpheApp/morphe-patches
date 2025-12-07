@@ -8,7 +8,7 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val backgroundPlaybackManagerFingerprint = Fingerprint(
+internal object BackgroundPlaybackManagerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf("L"),
@@ -41,7 +41,7 @@ internal val backgroundPlaybackManagerFingerprint = Fingerprint(
     )
 )
 
-internal val backgroundPlaybackSettingsFingerprint = Fingerprint(
+internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -57,7 +57,7 @@ internal val backgroundPlaybackSettingsFingerprint = Fingerprint(
     custom = customLiteral { prefBackgroundAndOfflineCategoryId }
 )
 
-internal val kidsBackgroundPlaybackPolicyControllerFingerprint = Fingerprint(
+internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "L", "L"),
@@ -74,7 +74,7 @@ internal val kidsBackgroundPlaybackPolicyControllerFingerprint = Fingerprint(
     custom = customLiteral { 5 }
 )
 
-internal val backgroundPlaybackManagerShortsFingerprint = Fingerprint(
+internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf("L"),
@@ -83,7 +83,7 @@ internal val backgroundPlaybackManagerShortsFingerprint = Fingerprint(
     )
 )
 
-internal val shortsBackgroundPlaybackFeatureFlagFingerprint = Fingerprint(
+internal object ShortsBackgroundPlaybackFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -93,7 +93,7 @@ internal val shortsBackgroundPlaybackFeatureFlagFingerprint = Fingerprint(
 )
 
 // Fix 'E/InputDispatcher: Window handle pip_input_consumer has no registered input channel'
-internal val pipInputConsumerFeatureFlagFingerprint = Fingerprint(
+internal object PipInputConsumerFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         // PiP input consumer feature flag.
         literal(45638483L)

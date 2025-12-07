@@ -51,7 +51,7 @@ val changeMiniplayerColor = bytecodePatch(
             SwitchPreference("morphe_music_change_miniplayer_color"),
         )
 
-        switchToggleColorFingerprint.match(miniPlayerConstructorFingerprint.classDef).let {
+        SwitchToggleColorFingerprint.match(MiniPlayerConstructorFingerprint.classDef).let {
             val relativeIndex = it.instructionMatches.last().index + 1
 
             val invokeVirtualIndex = it.method.indexOfFirstInstructionOrThrow(
@@ -66,16 +66,16 @@ val changeMiniplayerColor = bytecodePatch(
             val colorMathPlayerIGetReference = it.method
                 .getInstruction<ReferenceInstruction>(iGetIndex).reference as FieldReference
 
-            val colorGreyIndex = miniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
+            val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
                 getReference<MethodReference>()?.name == "getColor"
             }
-            val iPutIndex = miniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
+            val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
                 colorGreyIndex, Opcode.IPUT
             )
-            val colorMathPlayerIPutReference = miniPlayerConstructorFingerprint.method
+            val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
                 .getInstruction<ReferenceInstruction>(iPutIndex).reference
 
-            miniPlayerConstructorFingerprint.classDef.methods.single { method ->
+            MiniPlayerConstructorFingerprint.classDef.methods.single { method ->
                 method.accessFlags == AccessFlags.PUBLIC.value or AccessFlags.FINAL.value &&
                         method.returnType == "V" &&
                         method.parameters == it.originalMethod.parameters

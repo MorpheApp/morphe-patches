@@ -5,7 +5,7 @@ import app.morphe.patcher.OpcodesFilter
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val startVideoInformerFingerprint = Fingerprint(
+internal object StartVideoInformerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = OpcodesFilter.opcodesToFilters(
@@ -15,14 +15,14 @@ internal val startVideoInformerFingerprint = Fingerprint(
     strings = listOf("pc")
 )
 
-internal val storyboardRendererDecoderRecommendedLevelFingerprint = Fingerprint(
+internal object StoryboardRendererDecoderRecommendedLevelFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("L"),
     strings = listOf("#-1#")
 )
 
-internal val subtitleTrackFingerprint = Fingerprint(
+internal object SubtitleTrackFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

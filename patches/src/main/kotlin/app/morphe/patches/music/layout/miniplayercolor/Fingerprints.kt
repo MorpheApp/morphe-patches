@@ -8,7 +8,7 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val miniPlayerConstructorFingerprint = Fingerprint(
+internal object MiniPlayerConstructorFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "mpp_player_bottom_sheet")
@@ -17,9 +17,9 @@ internal val miniPlayerConstructorFingerprint = Fingerprint(
 )
 
 /**
- * Matches to the class found in [miniPlayerConstructorFingerprint].
+ * Matches to the class found in [MiniPlayerConstructorFingerprint].
  */
-internal val switchToggleColorFingerprint = Fingerprint(
+internal object SwitchToggleColorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "J"),

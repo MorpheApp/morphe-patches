@@ -5,7 +5,7 @@ import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val showVideoAdsParentFingerprint = Fingerprint(
+internal object ShowVideoAdsParentFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.INVOKE_VIRTUAL,

@@ -89,7 +89,7 @@ val hideAdsPatch = bytecodePatch(
     execute {
         // Hide end screen store banner
 
-        fullScreenEngagementAdContainerFingerprint.method.apply {
+        FullScreenEngagementAdContainerFingerprint.method.apply {
             val addListIndex = indexOfAddListInstruction(this)
             val addListInstruction = getInstruction<FiveRegisterInstruction>(addListIndex)
             val listRegister = addListInstruction.registerC

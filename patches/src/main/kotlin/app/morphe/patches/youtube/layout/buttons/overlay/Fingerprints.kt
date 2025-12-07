@@ -7,28 +7,28 @@ import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val mediaRouteButtonFingerprint = Fingerprint(
+internal object MediaRouteButtonFingerprint : Fingerprint(
     parameters = listOf("I"),
     custom = { methodDef, _ ->
         methodDef.definingClass.endsWith("/MediaRouteButton;") && methodDef.name == "setVisibility"
     }
 )
 
-internal val castButtonPlayerFeatureFlagFingerprint = Fingerprint(
+internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(
     returnType = "Z",
     filters = listOf(
         literal(45690091)
     )
 )
 
-internal val castButtonActionFeatureFlagFingerprint = Fingerprint(
+internal object CastButtonActionFeatureFlagFingerprint : Fingerprint(
     returnType = "Z",
     filters = listOf(
         literal(45690090)
     )
 )
 
-internal val inflateControlsGroupLayoutStubFingerprint = Fingerprint(
+internal object InflateControlsGroupLayoutStubFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     returnType = "V",

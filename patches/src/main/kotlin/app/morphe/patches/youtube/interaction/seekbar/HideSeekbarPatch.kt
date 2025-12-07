@@ -11,8 +11,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.seekbarFingerprint
-import app.morphe.patches.youtube.shared.seekbarOnDrawFingerprint
+import app.morphe.patches.youtube.shared.SeekbarFingerprint
+import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.util.insertLiteralOverride
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/HideSeekbarPatch;"
@@ -37,7 +37,7 @@ val hideSeekbarPatch = bytecodePatch(
             SwitchPreference("morphe_fullscreen_large_seekbar"),
         )
 
-        seekbarOnDrawFingerprint.match(seekbarFingerprint.originalClassDef).method.addInstructionsWithLabels(
+        SeekbarOnDrawFingerprint.match(SeekbarFingerprint.originalClassDef).method.addInstructionsWithLabels(
             0,
             """
                 const/4 v0, 0x0
@@ -51,7 +51,7 @@ val hideSeekbarPatch = bytecodePatch(
         )
 
         if (is_20_28_or_greater) {
-            fullscreenLargeSeekbarFeatureFlagFingerprint.let {
+            FullscreenLargeSeekbarFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useFullscreenLargeSeekbar(Z)Z"

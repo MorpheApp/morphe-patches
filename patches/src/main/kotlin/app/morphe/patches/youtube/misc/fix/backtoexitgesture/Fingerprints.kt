@@ -10,7 +10,7 @@ import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val scrollPositionFingerprint = Fingerprint(
+internal object ScrollPositionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -22,7 +22,7 @@ internal val scrollPositionFingerprint = Fingerprint(
     strings = listOf("scroll_position")
 )
 
-internal val recyclerViewTopScrollingFingerprint = Fingerprint(
+internal object RecyclerViewTopScrollingFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),

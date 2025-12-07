@@ -4,7 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.layout.branding.NotificationFingerprint.strings
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val formFactorEnumConstructorFingerprint = Fingerprint(
+internal object FormFactorEnumConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "UNKNOWN_FORM_FACTOR",

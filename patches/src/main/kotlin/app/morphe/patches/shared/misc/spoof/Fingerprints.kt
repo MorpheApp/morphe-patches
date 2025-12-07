@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val buildInitPlaybackRequestFingerprint = Fingerprint(
+internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     returnType = "Lorg/chromium/net/UrlRequest\$Builder;",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
@@ -25,7 +25,7 @@ internal val buildInitPlaybackRequestFingerprint = Fingerprint(
     )
 )
 
-internal val buildPlayerRequestURIFingerprint = Fingerprint(
+internal object BuildPlayerRequestURIFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL, // Register holds player request URI.
@@ -41,7 +41,7 @@ internal val buildPlayerRequestURIFingerprint = Fingerprint(
     )
 )
 
-internal val buildRequestFingerprint = Fingerprint(
+internal object BuildRequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lorg/chromium/net/UrlRequest", // UrlRequest; or UrlRequest$Builder;
     filters = listOf(
@@ -85,7 +85,7 @@ internal val buildRequestFingerprint = Fingerprint(
     }
 )
 
-internal val protobufClassParseByteBufferFingerprint = Fingerprint(
+internal object ProtobufClassParseByteBufferFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.STATIC),
     returnType = "L",
     parameters = listOf("L", "Ljava/nio/ByteBuffer;"),
@@ -98,7 +98,7 @@ internal val protobufClassParseByteBufferFingerprint = Fingerprint(
     custom = { method, _ -> method.name == "parseFrom" }
 )
 
-internal val createStreamingDataFingerprint = Fingerprint(
+internal object CreateStreamingDataFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(
@@ -115,7 +115,7 @@ internal val createStreamingDataFingerprint = Fingerprint(
     }
 )
 
-internal val buildMediaDataSourceFingerprint = Fingerprint(
+internal object BuildMediaDataSourceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
         "Landroid/net/Uri;",
@@ -131,7 +131,7 @@ internal val buildMediaDataSourceFingerprint = Fingerprint(
     )
 )
 
-internal val hlsCurrentTimeFingerprint = Fingerprint(
+internal object HlsCurrentTimeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Z", "L"),
     filters = listOf(
@@ -141,7 +141,7 @@ internal val hlsCurrentTimeFingerprint = Fingerprint(
 
 internal const val DISABLED_BY_SABR_STREAMING_URI_STRING = "DISABLED_BY_SABR_STREAMING_URI"
 
-internal val mediaFetchEnumConstructorFingerprint = Fingerprint(
+internal object MediaFetchEnumConstructorFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf(
         "ENABLED",
@@ -150,7 +150,7 @@ internal val mediaFetchEnumConstructorFingerprint = Fingerprint(
     )
 )
 
-internal val nerdsStatsVideoFormatBuilderFingerprint = Fingerprint(
+internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf("L"),
@@ -159,7 +159,7 @@ internal val nerdsStatsVideoFormatBuilderFingerprint = Fingerprint(
     )
 )
 
-internal val patchIncludedExtensionMethodFingerprint = Fingerprint(
+internal object PatchIncludedExtensionMethodFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(),
     custom = { method, classDef ->
@@ -171,7 +171,7 @@ internal val patchIncludedExtensionMethodFingerprint = Fingerprint(
 // This code appears to replace the player config after the streams are loaded.
 // Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
 // Flag and Platypus code is also present in newer versions of YouTube Music.
-internal val mediaFetchHotConfigFingerprint = Fingerprint(
+internal object MediaFetchHotConfigFingerprint : Fingerprint(
     filters = listOf(
         literal(45645570L)
     )
@@ -179,7 +179,7 @@ internal val mediaFetchHotConfigFingerprint = Fingerprint(
 
 // YT 20.10+, YT Music 8.11 - 8.14.
 // Flag is missing in YT Music 8.15+, and it is not known if a replacement flag/feature exists.
-internal val mediaFetchHotConfigAlternativeFingerprint = Fingerprint(
+internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
     filters = listOf(
         literal(45683169L)
     )
@@ -189,7 +189,7 @@ internal val mediaFetchHotConfigAlternativeFingerprint = Fingerprint(
 // but it's exact purpose is not known. If this flag is enabled while stream spoofing
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
-internal val playbackStartDescriptorFeatureFlagFingerprint = Fingerprint(
+internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Z",
     filters = listOf(

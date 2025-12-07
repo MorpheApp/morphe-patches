@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
+import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.getFreeRegisterProvider
@@ -86,7 +86,7 @@ val lithoFilterPatch = bytecodePatch(
     execute {
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
-        lithoFilterFingerprint.method.apply {
+        LithoFilterFingerprint.method.apply {
             removeInstructions(2, 4) // Remove dummy filter.
 
             addLithoFilter = { classDescriptor ->
@@ -107,7 +107,7 @@ val lithoFilterPatch = bytecodePatch(
         if (is_20_22_or_greater) {
             // Hook method that bridges between UPB buffer native code and FB Litho.
             // Method is found in 19.25+, but is forcefully turned off for 20.21 and lower.
-            protobufBufferReferenceFingerprint.let {
+            ProtobufBufferReferenceFingerprint.let {
                 // Hook the buffer after the call to jniDecode().
                 it.method.addInstruction(
                     it.instructionMatches.last().index + 1,
@@ -117,7 +117,7 @@ val lithoFilterPatch = bytecodePatch(
         }
 
         // Legacy Non native buffer.
-        protobufBufferReferenceLegacyFingerprint.method.addInstruction(
+        ProtobufBufferReferenceLegacyFingerprint.method.addInstruction(
             0,
             "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
         )
@@ -130,14 +130,14 @@ val lithoFilterPatch = bytecodePatch(
 
         // Find the identifier/path fields of the conversion context.
 
-        val conversionContextIdentifierField = conversionContextFingerprintToString.method
+        val conversionContextIdentifierField = ConversionContextFingerprintToString.method
             .findFieldFromToString("identifierProperty=")
 
-        val conversionContextPathBuilderField = conversionContextFingerprintToString.originalClassDef
+        val conversionContextPathBuilderField = ConversionContextFingerprintToString.originalClassDef
             .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = emptyComponentFingerprint.classDef.methods.single { method ->
+        val builderMethodDescriptor = EmptyComponentFingerprint.classDef.methods.single { method ->
             // The only static method in the class.
             AccessFlags.STATIC.isSet(method.accessFlags)
         }
@@ -145,7 +145,7 @@ val lithoFilterPatch = bytecodePatch(
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 
         // Find the method call that gets the value of 'buttonViewModel.accessibilityId'.
-        val accessibilityIdMethod = with(accessibilityIdFingerprint) {
+        val accessibilityIdMethod = with(AccessibilityIdFingerprint) {
             val index = instructionMatches.first().index
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
@@ -179,7 +179,7 @@ val lithoFilterPatch = bytecodePatch(
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
 
-        componentCreateFingerprint.method.apply {
+        ComponentCreateFingerprint.method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
 
             val registerProvider = getFreeRegisterProvider(insertIndex)
@@ -220,7 +220,7 @@ val lithoFilterPatch = bytecodePatch(
                     
                     # 20.41 field is the abstract superclass.
                     # Verify it's the expected subclass just in case. 
-                    instance-of v$identifierRegister, v$freeRegister, ${conversionContextFingerprintToString.classDef.type}
+                    instance-of v$identifierRegister, v$freeRegister, ${ConversionContextFingerprintToString.classDef.type}
                     if-eqz v$identifierRegister, :unfiltered
                     
                     iget-object v$identifierRegister, v$freeRegister, $conversionContextIdentifierField
@@ -271,7 +271,7 @@ val lithoFilterPatch = bytecodePatch(
 
         // region Change Litho thread executor to 1 thread to fix layout issue in unpatched YouTube.
 
-        lithoThreadExecutorFingerprint.method.addInstructions(
+        LithoThreadExecutorFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->getExecutorCorePoolSize(I)I
@@ -292,11 +292,11 @@ val lithoFilterPatch = bytecodePatch(
         // Flag was removed in 20.05. It appears a new flag might be used instead (45660109L),
         // but if the flag is forced on then litho filtering still works correctly.
         if (is_19_25_or_greater && !is_20_05_or_greater) {
-            lithoComponentNameUpbFeatureFlagFingerprint.method.returnLate(false)
+            LithoComponentNameUpbFeatureFlagFingerprint.method.returnLate(false)
         }
 
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).
-        lithoConverterBufferUpbFeatureFlagFingerprint.let {
+        LithoConverterBufferUpbFeatureFlagFingerprint.let {
             // 20.22 the flag is still enabled in one location, but what it does is not known.
             // Disable it anyway.
             it.method.insertLiteralOverride(
@@ -309,6 +309,6 @@ val lithoFilterPatch = bytecodePatch(
     }
 
     finalize {
-        lithoFilterFingerprint.method.replaceInstruction(0, "const/16 v0, $filterCount")
+        LithoFilterFingerprint.method.replaceInstruction(0, "const/16 v0, $filterCount")
     }
 }

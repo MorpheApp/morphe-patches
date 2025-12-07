@@ -10,7 +10,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
-import app.morphe.patches.shared.boldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.layout.branding.addBrandLicensePatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
@@ -244,7 +244,7 @@ val settingsPatch = bytecodePatch(
         // Update shared dark mode status based on YT theme.
         // This is needed because YT allows forcing light/dark mode
         // which then differs from the system dark mode status.
-        setThemeFingerprint.method.apply {
+        SetThemeFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
                 addInstructionsAtControlFlowLabel(
@@ -255,15 +255,15 @@ val settingsPatch = bytecodePatch(
         }
 
         // Add setting to force Cairo settings fragment on/off.
-        cairoFragmentConfigFingerprint.method.insertLiteralOverride(
-            cairoFragmentConfigFingerprint.instructionMatches.first().index,
+        CairoFragmentConfigFingerprint.method.insertLiteralOverride(
+            CairoFragmentConfigFingerprint.instructionMatches.first().index,
             "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z"
         )
 
         // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
         // 20.31 is the first version that seems to have all the bold icons.
         if (is_20_31_or_greater) {
-            boldIconsFeatureFlagFingerprint.let {
+            BoldIconsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z"
@@ -272,8 +272,8 @@ val settingsPatch = bytecodePatch(
         }
 
         modifyActivityForSettingsInjection(
-            licenseActivityOnCreateFingerprint.classDef,
-            licenseActivityOnCreateFingerprint.method,
+            LicenseActivityOnCreateFingerprint.classDef,
+            LicenseActivityOnCreateFingerprint.method,
             YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
             false
         )

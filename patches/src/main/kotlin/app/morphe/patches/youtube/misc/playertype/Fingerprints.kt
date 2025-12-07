@@ -10,7 +10,7 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val playerTypeEnumFingerprint = Fingerprint(
+internal object PlayerTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "NONE",
@@ -27,7 +27,7 @@ internal val playerTypeEnumFingerprint = Fingerprint(
     )
 )
 
-internal val reelWatchPagerFingerprint = Fingerprint(
+internal object ReelWatchPagerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     filters = listOf(
@@ -36,7 +36,7 @@ internal val reelWatchPagerFingerprint = Fingerprint(
     )
 )
 
-internal val videoStateEnumFingerprint = Fingerprint(
+internal object VideoStateEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(),
     strings = listOf(
@@ -50,7 +50,7 @@ internal val videoStateEnumFingerprint = Fingerprint(
 )
 
 // 20.33 and lower class name ControlsState. 20.34+ class name is obfuscated.
-internal val controlsStateToStringFingerprint = Fingerprint(
+internal object ControlsStateToStringFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
