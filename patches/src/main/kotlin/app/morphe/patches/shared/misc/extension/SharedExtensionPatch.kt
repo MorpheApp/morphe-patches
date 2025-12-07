@@ -24,7 +24,7 @@ fun sharedExtensionPatch(
 ) = bytecodePatch {
     dependsOn(sharedExtensionPatch(*hooks))
 
-    extendWith("extensions/$extensionName.rve")
+    extendWith("extensions/$extensionName.mpe")
 }
 
 /**
@@ -36,7 +36,7 @@ fun sharedExtensionPatch(
 fun sharedExtensionPatch(
     vararg hooks: () -> ExtensionHook,
 ) = bytecodePatch {
-    extendWith("extensions/shared.rve")
+    extendWith("extensions/shared.mpe")
 
     execute {
         // Verify the extension class exists.

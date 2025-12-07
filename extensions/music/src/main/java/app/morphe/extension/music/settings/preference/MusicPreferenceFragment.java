@@ -12,7 +12,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 
 /**
- * Preference fragment for ReVanced settings.
+ * Preference fragment for Morphe settings.
  */
 @SuppressWarnings("deprecation")
 public class MusicPreferenceFragment extends ToolbarPreferenceFragment {

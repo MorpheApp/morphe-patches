@@ -1,21 +1,21 @@
 public final class app/morphe/patches/all/misc/packagename/ChangePackageNamePatchKt {
-	public static field packageNameOption Lapp/revanced/patcher/patch/Option;
-	public static final fun getChangePackageNamePatch ()Lapp/revanced/patcher/patch/ResourcePatch;
-	public static final fun getPackageNameOption ()Lapp/revanced/patcher/patch/Option;
+	public static field packageNameOption Lapp/morphe/patcher/patch/Option;
+	public static final fun getChangePackageNamePatch ()Lapp/morphe/patcher/patch/ResourcePatch;
+	public static final fun getPackageNameOption ()Lapp/morphe/patcher/patch/Option;
 	public static final fun setOrGetFallbackPackageName (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun setPackageNameOption (Lapp/revanced/patcher/patch/Option;)V
+	public static final fun setPackageNameOption (Lapp/morphe/patcher/patch/Option;)V
 }
 
 public final class app/morphe/patches/all/misc/resources/AddResourcesPatchKt {
 	public static final fun addResource (Ljava/lang/String;Lapp/morphe/util/resource/BaseResource;)Z
-	public static final fun addResources (Lapp/revanced/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;)Z
+	public static final fun addResources (Lapp/morphe/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;)Z
 	public static final fun addResources (Ljava/lang/String;Ljava/lang/Iterable;)Z
 	public static final fun addResources (Ljava/lang/String;Ljava/lang/String;)V
 	public static final fun addResources (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)Z
 	public static final fun addResources (Ljava/lang/String;Ljava/util/List;)Z
-	public static synthetic fun addResources$default (Lapp/revanced/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Z
+	public static synthetic fun addResources$default (Lapp/morphe/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Z
 	public static synthetic fun addResources$default (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;ILjava/lang/Object;)Z
-	public static final fun getAddResourcesPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getAddResourcesPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public abstract interface class app/morphe/patches/all/misc/transformation/IMethodCall {
@@ -23,75 +23,75 @@ public abstract interface class app/morphe/patches/all/misc/transformation/IMeth
 	public abstract fun getMethodName ()Ljava/lang/String;
 	public abstract fun getMethodParams ()[Ljava/lang/String;
 	public abstract fun getReturnType ()Ljava/lang/String;
-	public abstract fun replaceInvokeVirtualWithExtension (Ljava/lang/String;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Lcom/android/tools/smali/dexlib2/iface/instruction/formats/Instruction35c;I)V
+	public abstract fun replaceInvokeVirtualWithExtension (Ljava/lang/String;Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Lcom/android/tools/smali/dexlib2/iface/instruction/formats/Instruction35c;I)V
 }
 
 public final class app/morphe/patches/all/misc/transformation/IMethodCall$DefaultImpls {
-	public static fun replaceInvokeVirtualWithExtension (Lapp/morphe/patches/all/misc/transformation/IMethodCall;Ljava/lang/String;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Lcom/android/tools/smali/dexlib2/iface/instruction/formats/Instruction35c;I)V
+	public static fun replaceInvokeVirtualWithExtension (Lapp/morphe/patches/all/misc/transformation/IMethodCall;Ljava/lang/String;Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Lcom/android/tools/smali/dexlib2/iface/instruction/formats/Instruction35c;I)V
 }
 
 public final class app/morphe/patches/all/misc/transformation/TransformInstructionsPatchKt {
-	public static final fun transformInstructionsPatch (Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function2;)Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun transformInstructionsPatch (Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function2;)Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/ad/video/HideVideoAdsKt {
-	public static final fun getHideVideoAdsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideVideoAdsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/audio/exclusiveaudio/EnableExclusiveAudioPlaybackKt {
-	public static final fun getEnableExclusiveAudioPlaybackPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getEnableExclusiveAudioPlaybackPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/interaction/permanentrepeat/PermanentRepeatPatchKt {
-	public static final fun getPermanentRepeatPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPermanentRepeatPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/layout/branding/CustomBrandingPatchKt {
-	public static final fun getCustomBrandingPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getCustomBrandingPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public final class app/morphe/patches/music/layout/buttons/HideButtonsKt {
-	public static final fun getHideButtons ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideButtons ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/layout/compactheader/HideCategoryBarKt {
-	public static final fun getHideCategoryBar ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideCategoryBar ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/layout/miniplayercolor/ChangeMiniplayerColorKt {
-	public static final fun getChangeMiniplayerColor ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getChangeMiniplayerColor ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/layout/navigationbar/NavigationBarPatchKt {
-	public static final fun getNavigationBarPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getNavigationBarPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/layout/premium/HideGetPremiumPatchKt {
-	public static final fun getHideGetPremiumPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideGetPremiumPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/layout/theme/ThemePatchKt {
-	public static final fun getThemePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getThemePatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/androidauto/BypassCertificateChecksPatchKt {
-	public static final fun getBypassCertificateChecksPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getBypassCertificateChecksPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/backgroundplayback/BackgroundPlaybackPatchKt {
-	public static final fun getBackgroundPlaybackPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getBackgroundPlaybackPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/debugging/EnableDebuggingPatchKt {
-	public static final fun getEnableDebuggingPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getEnableDebuggingPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/dns/CheckWatchHistoryDomainNameResolutionPatchKt {
-	public static final fun getCheckWatchHistoryDomainNameResolutionPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getCheckWatchHistoryDomainNameResolutionPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/extension/SharedExtensionPatchKt {
-	public static final fun getSharedExtensionPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSharedExtensionPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/gms/Constants {
@@ -99,11 +99,11 @@ public final class app/morphe/patches/music/misc/gms/Constants {
 }
 
 public final class app/morphe/patches/music/misc/gms/GmsCoreSupportPatchKt {
-	public static final fun getGmsCoreSupportPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getGmsCoreSupportPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/privacy/SanitizeSharingLinksPatchKt {
-	public static final fun getSanitizeSharingLinksPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSanitizeSharingLinksPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/settings/PreferenceScreen : app/morphe/patches/shared/misc/settings/preference/BasePreferenceScreen {
@@ -116,24 +116,24 @@ public final class app/morphe/patches/music/misc/settings/PreferenceScreen : app
 }
 
 public final class app/morphe/patches/music/misc/settings/SettingsPatchKt {
-	public static final fun getSettingsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSettingsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun newIntent (Ljava/lang/String;)Lapp/morphe/patches/shared/misc/settings/preference/IntentPreference$Intent;
 }
 
 public final class app/morphe/patches/music/misc/spoof/SpoofVideoStreamsPatchKt {
-	public static final fun getSpoofVideoStreamsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSpoofVideoStreamsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/spoof/UserAgentClientSpoofPatchKt {
-	public static final fun getUserAgentClientSpoofPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getUserAgentClientSpoofPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/misc/tracks/ForceOriginalAudioPatchKt {
-	public static final fun getForceOriginalAudioPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getForceOriginalAudioPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/music/playservice/VersionCheckPatchKt {
-	public static final fun getVersionCheckPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getVersionCheckPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 	public static final fun is_7_16_or_greater ()Z
 	public static final fun is_7_33_or_greater ()Z
 	public static final fun is_8_05_or_greater ()Z
@@ -144,38 +144,38 @@ public final class app/morphe/patches/music/playservice/VersionCheckPatchKt {
 }
 
 public final class app/morphe/patches/shared/layout/theme/LithoColorHookPatchKt {
-	public static final fun getLithoColorHookPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getLithoColorHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun getLithoColorOverrideHook ()Lkotlin/jvm/functions/Function2;
 }
 
 public final class app/morphe/patches/shared/misc/checks/BaseCheckEnvironmentPatchKt {
-	public static final fun checkEnvironmentPatch (Lapp/revanced/patcher/Fingerprint;Lapp/revanced/patcher/patch/Patch;[Ljava/lang/String;)Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun checkEnvironmentPatch (Lapp/morphe/patcher/Fingerprint;Lapp/morphe/patcher/patch/Patch;[Ljava/lang/String;)Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/shared/misc/extension/ExtensionHook {
-	public final fun invoke (Lapp/revanced/patcher/patch/BytecodePatchContext;Ljava/lang/String;)V
+	public final fun invoke (Lapp/morphe/patcher/patch/BytecodePatchContext;Ljava/lang/String;)V
 }
 
 public final class app/morphe/patches/shared/misc/extension/SharedExtensionPatchKt {
 	public static final fun activityOnCreateExtensionHook (Ljava/lang/String;Z)Lkotlin/jvm/functions/Function0;
 	public static synthetic fun activityOnCreateExtensionHook$default (Ljava/lang/String;ZILjava/lang/Object;)Lkotlin/jvm/functions/Function0;
-	public static final fun extensionHook (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lapp/revanced/patcher/Fingerprint;)Lapp/morphe/patches/shared/misc/extension/ExtensionHook;
+	public static final fun extensionHook (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lapp/morphe/patcher/Fingerprint;)Lapp/morphe/patches/shared/misc/extension/ExtensionHook;
 	public static final fun extensionHook (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function0;
-	public static synthetic fun extensionHook$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lapp/revanced/patcher/Fingerprint;ILjava/lang/Object;)Lapp/morphe/patches/shared/misc/extension/ExtensionHook;
+	public static synthetic fun extensionHook$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lapp/morphe/patcher/Fingerprint;ILjava/lang/Object;)Lapp/morphe/patches/shared/misc/extension/ExtensionHook;
 	public static synthetic fun extensionHook$default (Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lkotlin/jvm/functions/Function0;
-	public static final fun sharedExtensionPatch (Ljava/lang/String;[Lkotlin/jvm/functions/Function0;)Lapp/revanced/patcher/patch/BytecodePatch;
-	public static final fun sharedExtensionPatch ([Lkotlin/jvm/functions/Function0;)Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun sharedExtensionPatch (Ljava/lang/String;[Lkotlin/jvm/functions/Function0;)Lapp/morphe/patcher/patch/BytecodePatch;
+	public static final fun sharedExtensionPatch ([Lkotlin/jvm/functions/Function0;)Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/shared/misc/fix/verticalscroll/VerticalScrollPatchKt {
-	public static final fun getVerticalScrollPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getVerticalScrollPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/shared/misc/gms/GmsCoreSupportPatchKt {
-	public static final fun gmsCoreSupportPatch (Ljava/lang/String;Ljava/lang/String;Lapp/revanced/patcher/Fingerprint;Ljava/util/Set;Lapp/revanced/patcher/Fingerprint;Lapp/revanced/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lapp/revanced/patcher/patch/BytecodePatch;
-	public static synthetic fun gmsCoreSupportPatch$default (Ljava/lang/String;Ljava/lang/String;Lapp/revanced/patcher/Fingerprint;Ljava/util/Set;Lapp/revanced/patcher/Fingerprint;Lapp/revanced/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lapp/revanced/patcher/patch/BytecodePatch;
-	public static final fun gmsCoreSupportResourcePatch (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lapp/revanced/patcher/patch/Option;ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lapp/revanced/patcher/patch/ResourcePatch;
-	public static synthetic fun gmsCoreSupportResourcePatch$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lapp/revanced/patcher/patch/Option;ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun gmsCoreSupportPatch (Ljava/lang/String;Ljava/lang/String;Lapp/morphe/patcher/Fingerprint;Ljava/util/Set;Lapp/morphe/patcher/Fingerprint;Lapp/morphe/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lapp/morphe/patcher/patch/BytecodePatch;
+	public static synthetic fun gmsCoreSupportPatch$default (Ljava/lang/String;Ljava/lang/String;Lapp/morphe/patcher/Fingerprint;Ljava/util/Set;Lapp/morphe/patcher/Fingerprint;Lapp/morphe/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lapp/morphe/patcher/patch/BytecodePatch;
+	public static final fun gmsCoreSupportResourcePatch (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lapp/morphe/patcher/patch/Option;ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lapp/morphe/patcher/patch/ResourcePatch;
+	public static synthetic fun gmsCoreSupportResourcePatch$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lapp/morphe/patcher/patch/Option;ZLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public final class app/morphe/patches/shared/misc/hex/HexPatchBuilder : java/util/Set, kotlin/jvm/internal/markers/KMappedMarker {
@@ -201,10 +201,10 @@ public final class app/morphe/patches/shared/misc/hex/HexPatchBuilder : java/uti
 }
 
 public final class app/morphe/patches/shared/misc/hex/HexPatchBuilderKt {
-	public static final fun hexPatch (ZLkotlin/jvm/functions/Function0;)Lapp/revanced/patcher/patch/RawResourcePatch;
-	public static final fun hexPatch (ZLkotlin/jvm/functions/Function1;)Lapp/revanced/patcher/patch/RawResourcePatch;
-	public static synthetic fun hexPatch$default (ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lapp/revanced/patcher/patch/RawResourcePatch;
-	public static synthetic fun hexPatch$default (ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lapp/revanced/patcher/patch/RawResourcePatch;
+	public static final fun hexPatch (ZLkotlin/jvm/functions/Function0;)Lapp/morphe/patcher/patch/RawResourcePatch;
+	public static final fun hexPatch (ZLkotlin/jvm/functions/Function1;)Lapp/morphe/patcher/patch/RawResourcePatch;
+	public static synthetic fun hexPatch$default (ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lapp/morphe/patcher/patch/RawResourcePatch;
+	public static synthetic fun hexPatch$default (ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lapp/morphe/patcher/patch/RawResourcePatch;
 }
 
 public final class app/morphe/patches/shared/misc/hex/Replacement {
@@ -231,10 +231,10 @@ public final class app/morphe/patches/shared/misc/mapping/ResourceElement {
 public final class app/morphe/patches/shared/misc/mapping/ResourceMappingPatchKt {
 	public static final fun getResourceElements ()Ljava/util/Collection;
 	public static final fun getResourceId (Lapp/morphe/patches/shared/misc/mapping/ResourceType;Ljava/lang/String;)J
-	public static final fun getResourceMappingPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getResourceMappingPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 	public static final fun hasResourceId (Lapp/morphe/patches/shared/misc/mapping/ResourceType;Ljava/lang/String;)Z
-	public static final fun resourceLiteral (Lapp/morphe/patches/shared/misc/mapping/ResourceType;Ljava/lang/String;Lapp/revanced/patcher/InstructionLocation;)Lapp/revanced/patcher/LiteralFilter;
-	public static synthetic fun resourceLiteral$default (Lapp/morphe/patches/shared/misc/mapping/ResourceType;Ljava/lang/String;Lapp/revanced/patcher/InstructionLocation;ILjava/lang/Object;)Lapp/revanced/patcher/LiteralFilter;
+	public static final fun resourceLiteral (Lapp/morphe/patches/shared/misc/mapping/ResourceType;Ljava/lang/String;Lapp/morphe/patcher/InstructionLocation;)Lapp/morphe/patcher/LiteralFilter;
+	public static synthetic fun resourceLiteral$default (Lapp/morphe/patches/shared/misc/mapping/ResourceType;Ljava/lang/String;Lapp/morphe/patcher/InstructionLocation;ILjava/lang/Object;)Lapp/morphe/patcher/LiteralFilter;
 }
 
 public final class app/morphe/patches/shared/misc/mapping/ResourceType : java/lang/Enum {
@@ -276,8 +276,8 @@ public final class app/morphe/patches/shared/misc/mapping/ResourceType$Companion
 
 public final class app/morphe/patches/shared/misc/settings/SettingsPatchKt {
 	public static final fun overrideThemeColors (Ljava/lang/String;Ljava/lang/String;)V
-	public static final fun settingsPatch (Ljava/util/List;Ljava/util/Set;)Lapp/revanced/patcher/patch/ResourcePatch;
-	public static synthetic fun settingsPatch$default (Ljava/util/List;Ljava/util/Set;ILjava/lang/Object;)Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun settingsPatch (Ljava/util/List;Ljava/util/Set;)Lapp/morphe/patcher/patch/ResourcePatch;
+	public static synthetic fun settingsPatch$default (Ljava/util/List;Ljava/util/Set;ILjava/lang/Object;)Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public abstract class app/morphe/patches/shared/misc/settings/preference/BasePreference {
@@ -440,159 +440,159 @@ public final class app/morphe/patches/shared/misc/settings/preference/TextPrefer
 }
 
 public final class app/morphe/patches/shared/misc/spoof/UserAgentClientSpoofPatchKt {
-	public static final fun userAgentClientSpoofPatch (Ljava/lang/String;)Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun userAgentClientSpoofPatch (Ljava/lang/String;)Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/shared/misc/string/ReplaceStringPatchKt {
-	public static final fun replaceStringPatch (Ljava/lang/String;Ljava/lang/String;)Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun replaceStringPatch (Ljava/lang/String;Ljava/lang/String;)Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/ad/general/HideAdsPatchKt {
-	public static final fun getHideAdsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideAdsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/ad/getpremium/HideGetPremiumPatchKt {
-	public static final fun getHideGetPremiumPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideGetPremiumPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/ad/video/VideoAdsPatchKt {
-	public static final fun getVideoAdsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getVideoAdsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/copyvideourl/CopyVideoUrlPatchKt {
-	public static final fun getCopyVideoUrlPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getCopyVideoUrlPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/dialog/RemoveViewerDiscretionDialogPatchKt {
-	public static final fun getRemoveViewerDiscretionDialogPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getRemoveViewerDiscretionDialogPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/doubletap/DisableChapterSkipDoubleTapPatchKt {
-	public static final fun getDisableDoubleTapActionsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableDoubleTapActionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/downloads/DownloadsPatchKt {
-	public static final fun getDownloadsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDownloadsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/seekbar/DisablePreciseSeekingGesturePatchKt {
-	public static final fun getDisablePreciseSeekingGesturePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisablePreciseSeekingGesturePatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/seekbar/EnableSeekbarTappingPatchKt {
-	public static final fun getEnableSeekbarTappingPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getEnableSeekbarTappingPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/seekbar/EnableSlideToSeekPatchKt {
-	public static final fun getEnableSlideToSeekPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getEnableSlideToSeekPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/seekbar/HideSeekbarPatchKt {
-	public static final fun getHideSeekbarPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideSeekbarPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/seekbar/SeekbarPatchKt {
-	public static final fun getSeekbarPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSeekbarPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/seekbar/SeekbarThumbnailsPatchKt {
-	public static final fun getSeekbarThumbnailsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSeekbarThumbnailsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/interaction/swipecontrols/SwipeControlsPatchKt {
-	public static final fun getSwipeControlsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSwipeControlsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/autocaptions/AutoCaptionsPatchKt {
-	public static final fun getAutoCaptionsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getAutoCaptionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/branding/CustomBrandingPatchKt {
-	public static final fun getCustomBrandingPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getCustomBrandingPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/branding/header/ChangeHeaderPatchKt {
-	public static final fun getChangeHeaderPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getChangeHeaderPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/buttons/action/HideVideoActionButtonsPatchKt {
-	public static final fun getHideVideoActionButtonsPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getHideVideoActionButtonsPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/buttons/navigation/NavigationButtonsPatchKt {
-	public static final fun getNavigationButtonsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getNavigationButtonsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/buttons/overlay/HidePlayerOverlayButtonsPatchKt {
-	public static final fun getHidePlayerOverlayButtonsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHidePlayerOverlayButtonsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/formfactor/ChangeFormFactorPatchKt {
-	public static final fun getChangeFormFactorPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getChangeFormFactorPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/endscreencards/HideEndScreenCardsPatchKt {
-	public static final fun getHideEndScreenCardsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideEndScreenCardsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/endscreensuggestion/HideEndScreenSuggestedVideoPatchKt {
-	public static final fun getHideEndScreenSuggestedVideoPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideEndScreenSuggestedVideoPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/fullscreenambientmode/DisableFullscreenAmbientModePatchKt {
-	public static final fun getDisableFullscreenAmbientModePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableFullscreenAmbientModePatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/general/HideLayoutComponentsPatchKt {
-	public static final fun getHideLayoutComponentsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideLayoutComponentsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/infocards/HideInfoCardsPatchKt {
-	public static final fun getHideInfoCardsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideInfoCardsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/player/flyoutmenupanel/HidePlayerFlyoutMenuPatchKt {
-	public static final fun getHidePlayerFlyoutMenuPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHidePlayerFlyoutMenuPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/relatedvideooverlay/HideRelatedVideoOverlayPatchKt {
-	public static final fun getHideRelatedVideoOverlayPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideRelatedVideoOverlayPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/rollingnumber/DisableRollingNumberAnimationPatchKt {
-	public static final fun getDisableRollingNumberAnimationPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableRollingNumberAnimationPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/shorts/HideShortsComponentsPatchKt {
-	public static final fun getHideShortsComponentsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideShortsComponentsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/signintotvpopup/DisableSignInToTvPatchPopupKt {
-	public static final fun getDisableSignInToTvPopupPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableSignInToTvPopupPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/hide/time/HideTimestampPatchKt {
-	public static final fun getHideTimestampPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getHideTimestampPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/miniplayer/MiniplayerPatchKt {
-	public static final fun getMiniplayerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getMiniplayerPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/panels/popup/PlayerPopupPanelsPatchKt {
-	public static final fun getPlayerPopupPanelsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlayerPopupPanelsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/player/fullscreen/OpenVideosFullscreenPatchKt {
-	public static final fun getOpenVideosFullscreenPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getOpenVideosFullscreenPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/player/overlay/CustomPlayerOverlayOpacityPatchKt {
-	public static final fun getCustomPlayerOverlayOpacityPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getCustomPlayerOverlayOpacityPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/returnyoutubedislike/ReturnYouTubeDislikePatchKt {
-	public static final fun getReturnYouTubeDislikePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getReturnYouTubeDislikePatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/returnyoutubedislike/Vote : java/lang/Enum {
@@ -606,79 +606,79 @@ public final class app/morphe/patches/youtube/layout/returnyoutubedislike/Vote :
 }
 
 public final class app/morphe/patches/youtube/layout/seekbar/SeekbarColorPatchKt {
-	public static final fun getSeekbarColorPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSeekbarColorPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/shortsautoplay/ShortsAutoplayPatchKt {
-	public static final fun getShortsAutoplayPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getShortsAutoplayPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/shortsplayer/OpenShortsInRegularPlayerPatchKt {
-	public static final fun getOpenShortsInRegularPlayerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getOpenShortsInRegularPlayerPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/sponsorblock/SponsorBlockPatchKt {
-	public static final fun getSponsorBlockPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSponsorBlockPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/spoofappversion/SpoofAppVersionPatchKt {
-	public static final fun getSpoofAppVersionPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSpoofAppVersionPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/startpage/ChangeStartPagePatchKt {
-	public static final fun getChangeStartPagePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getChangeStartPagePatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/startupshortsreset/DisableResumingShortsOnStartupPatchKt {
-	public static final fun getDisableResumingShortsOnStartupPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableResumingShortsOnStartupPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/theme/ThemePatchKt {
-	public static final fun getThemePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getThemePatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/thumbnails/AlternativeThumbnailsPatchKt {
-	public static final fun getAlternativeThumbnailsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getAlternativeThumbnailsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/thumbnails/BypassImageRegionRestrictionsPatchKt {
-	public static final fun getBypassImageRegionRestrictionsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getBypassImageRegionRestrictionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/announcements/AnnouncementsPatchKt {
-	public static final fun getAnnouncementsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getAnnouncementsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/backgroundplayback/BackgroundPlaybackPatchKt {
-	public static final fun getBackgroundPlaybackPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getBackgroundPlaybackPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/debugging/EnableDebuggingPatchKt {
-	public static final fun getEnableDebuggingPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getEnableDebuggingPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/dimensions/spoof/SpoofDeviceDimensionsPatchKt {
-	public static final fun getSpoofDeviceDimensionsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSpoofDeviceDimensionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/dns/CheckWatchHistoryDomainNameResolutionPatchKt {
-	public static final fun getCheckWatchHistoryDomainNameResolutionPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getCheckWatchHistoryDomainNameResolutionPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/extension/SharedExtensionPatchKt {
-	public static final fun getSharedExtensionPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSharedExtensionPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/fix/playbackspeed/FIxPlaybackSpeedWhilePlayingPatchKt {
-	public static final fun getFixPlaybackSpeedWhilePlayingPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getFixPlaybackSpeedWhilePlayingPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/gms/GmsCoreSupportPatchKt {
-	public static final fun getGmsCoreSupportPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getGmsCoreSupportPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/hapticfeedback/DisableHapticFeedbackPatchKt {
-	public static final fun getDisableHapticFeedbackPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableHapticFeedbackPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/imageurlhook/CronetImageUrlHookKt {
@@ -686,50 +686,50 @@ public final class app/morphe/patches/youtube/misc/imageurlhook/CronetImageUrlHo
 	public static final fun addImageUrlHook (Ljava/lang/String;Z)V
 	public static synthetic fun addImageUrlHook$default (Ljava/lang/String;ZILjava/lang/Object;)V
 	public static final fun addImageUrlSuccessCallbackHook (Ljava/lang/String;)V
-	public static final fun getCronetImageUrlHookPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getCronetImageUrlHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/links/BypassURLRedirectsPatchKt {
-	public static final fun getBypassURLRedirectsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getBypassURLRedirectsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/links/OpenLinksExternallyPatchKt {
-	public static final fun getOpenLinksExternallyPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getOpenLinksExternallyPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/litho/filter/LithoFilterPatchKt {
 	public static final fun getAddLithoFilter ()Lkotlin/jvm/functions/Function1;
-	public static final fun getLithoFilterPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getLithoFilterPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/loopvideo/LoopVideoPatchKt {
-	public static final fun getLoopVideoPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getLoopVideoPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/navigation/NavigationBarHookPatchKt {
 	public static field hookNavigationButtonCreated Lkotlin/jvm/functions/Function1;
 	public static final fun getHookNavigationButtonCreated ()Lkotlin/jvm/functions/Function1;
-	public static final fun getNavigationBarHookPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getNavigationBarHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun setHookNavigationButtonCreated (Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class app/morphe/patches/youtube/misc/playercontrols/PlayerControlsOverlayVisibilityPatchKt {
-	public static final fun getPlayerControlsOverlayVisibilityPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlayerControlsOverlayVisibilityPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/playercontrols/PlayerControlsPatchKt {
 	public static final fun getAddBottomControl ()Lkotlin/jvm/functions/Function1;
-	public static final fun getPlayerControlsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlayerControlsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun initializeBottomControl (Ljava/lang/String;)V
 	public static final fun injectVisibilityCheckCall (Ljava/lang/String;)V
 }
 
 public final class app/morphe/patches/youtube/misc/playertype/PlayerTypeHookPatchKt {
-	public static final fun getPlayerTypeHookPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlayerTypeHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/playservice/VersionCheckPatchKt {
-	public static final fun getVersionCheckPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getVersionCheckPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 	public static final fun is_19_17_or_greater ()Z
 	public static final fun is_19_18_or_greater ()Z
 	public static final fun is_19_23_or_greater ()Z
@@ -772,12 +772,12 @@ public final class app/morphe/patches/youtube/misc/playservice/VersionCheckPatch
 }
 
 public final class app/morphe/patches/youtube/misc/privacy/SanitizeSharingLinksPatchKt {
-	public static final fun getSanitizeSharingLinksPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSanitizeSharingLinksPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/recyclerviewtree/hook/RecyclerViewTreeHookPatchKt {
 	public static final fun getAddRecyclerViewTreeHook ()Lkotlin/jvm/functions/Function1;
-	public static final fun getRecyclerViewTreeHookPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getRecyclerViewTreeHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/settings/PreferenceScreen : app/morphe/patches/shared/misc/settings/preference/BasePreferenceScreen {
@@ -798,28 +798,28 @@ public final class app/morphe/patches/youtube/misc/settings/PreferenceScreen : a
 }
 
 public final class app/morphe/patches/youtube/misc/settings/SettingsPatchKt {
-	public static final fun getSettingsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSettingsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun newIntent (Ljava/lang/String;)Lapp/morphe/patches/shared/misc/settings/preference/IntentPreference$Intent;
 }
 
 public final class app/morphe/patches/youtube/misc/spoof/SpoofVideoStreamsPatchKt {
-	public static final fun getSpoofVideoStreamsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getSpoofVideoStreamsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/misc/spoof/UserAgentClientSpoofPatchKt {
-	public static final fun getUserAgentClientSpoofPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getUserAgentClientSpoofPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/audio/ForceOriginalAudioPatchKt {
-	public static final fun getForceOriginalAudioPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getForceOriginalAudioPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/codecs/DisableVideoCodecsPatchKt {
-	public static final fun getDisableVideoCodecsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getDisableVideoCodecsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/information/VideoInformationPatchKt {
-	public static final fun getVideoInformationPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getVideoInformationPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun userSelectedPlaybackSpeedHook (Ljava/lang/String;Ljava/lang/String;)V
 	public static final fun videoSpeedChangedHook (Ljava/lang/String;Ljava/lang/String;)V
 	public static final fun videoTimeHook (Ljava/lang/String;Ljava/lang/String;)V
@@ -844,38 +844,38 @@ public final class app/morphe/patches/youtube/video/playerresponse/Hook$VideoId 
 
 public final class app/morphe/patches/youtube/video/playerresponse/PlayerResponseMethodHookPatchKt {
 	public static final fun addPlayerResponseMethodHook (Lapp/morphe/patches/youtube/video/playerresponse/Hook;)V
-	public static final fun getPlayerResponseMethodHookPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlayerResponseMethodHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/quality/RememberVideoQualityPatchKt {
-	public static final fun getRememberVideoQualityPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getRememberVideoQualityPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/quality/VideoQualityDialogButtonPatchKt {
-	public static final fun getVideoQualityDialogButtonPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getVideoQualityDialogButtonPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/quality/VideoQualityPatchKt {
-	public static final fun getVideoQualityPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getVideoQualityPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/speed/PlaybackSpeedPatchKt {
-	public static final fun getPlaybackSpeedPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlaybackSpeedPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/speed/button/PlaybackSpeedButtonPatchKt {
-	public static final fun getPlaybackSpeedButtonPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getPlaybackSpeedButtonPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/video/videoid/VideoIdPatchKt {
-	public static final fun getVideoIdPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+	public static final fun getVideoIdPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 	public static final fun hookBackgroundPlayVideoId (Ljava/lang/String;)V
 	public static final fun hookPlayerResponseVideoId (Ljava/lang/String;)V
 	public static final fun hookVideoId (Ljava/lang/String;)V
 }
 
 public final class app/morphe/util/BytecodeUtilsKt {
-	public static final fun addInstructionsAtControlFlowLabel (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;ILjava/lang/String;[Lapp/revanced/patcher/util/smali/ExternalLabel;)V
+	public static final fun addInstructionsAtControlFlowLabel (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;ILjava/lang/String;[Lapp/morphe/patcher/util/smali/ExternalLabel;)V
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;D)Z
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;F)Z
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;J)Z
@@ -883,8 +883,8 @@ public final class app/morphe/util/BytecodeUtilsKt {
 	public static final fun findInstructionIndicesReversed (Lcom/android/tools/smali/dexlib2/iface/Method;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun findInstructionIndicesReversedOrThrow (Lcom/android/tools/smali/dexlib2/iface/Method;Lcom/android/tools/smali/dexlib2/Opcode;)Ljava/util/List;
 	public static final fun findInstructionIndicesReversedOrThrow (Lcom/android/tools/smali/dexlib2/iface/Method;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun findMutableMethodOf (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lcom/android/tools/smali/dexlib2/iface/Method;)Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;
-	public static final fun forEachLiteralValueInstruction (Lapp/revanced/patcher/patch/BytecodePatchContext;JLkotlin/jvm/functions/Function2;)V
+	public static final fun findMutableMethodOf (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableClass;Lcom/android/tools/smali/dexlib2/iface/Method;)Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;
+	public static final fun forEachLiteralValueInstruction (Lapp/morphe/patcher/patch/BytecodePatchContext;JLkotlin/jvm/functions/Function2;)V
 	public static final fun indexOfFirstInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;ILcom/android/tools/smali/dexlib2/Opcode;)I
 	public static final fun indexOfFirstInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;ILkotlin/jvm/functions/Function1;)I
 	public static final fun indexOfFirstInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;Lcom/android/tools/smali/dexlib2/Opcode;)I
@@ -919,31 +919,31 @@ public final class app/morphe/util/BytecodeUtilsKt {
 	public static final fun indexOfFirstLiteralInstructionReversedOrThrow (Lcom/android/tools/smali/dexlib2/iface/Method;J)I
 	public static final fun indexOfFirstResourceId (Lcom/android/tools/smali/dexlib2/iface/Method;Ljava/lang/String;)I
 	public static final fun indexOfFirstResourceIdOrThrow (Lcom/android/tools/smali/dexlib2/iface/Method;Ljava/lang/String;)I
-	public static final fun injectHideViewCall (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;IILjava/lang/String;Ljava/lang/String;)V
-	public static final fun literal (Lapp/revanced/patcher/FingerprintBuilder;Lkotlin/jvm/functions/Function0;)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;B)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;C)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;D)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;F)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;I)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;J)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/String;)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/Void;)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;S)V
-	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Z)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;B)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;C)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;D)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;F)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;I)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;J)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/String;)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/Void;)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;S)V
-	public static final fun returnLate (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Z)V
-	public static final fun transformMethods (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
-	public static final fun traverseClassHierarchy (Lapp/revanced/patcher/patch/BytecodePatchContext;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
+	public static final fun injectHideViewCall (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;IILjava/lang/String;Ljava/lang/String;)V
+	public static final fun literal (Lapp/morphe/patcher/FingerprintBuilder;Lkotlin/jvm/functions/Function0;)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;B)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;C)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;D)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;F)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;I)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;J)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/String;)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/Void;)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;S)V
+	public static final fun returnEarly (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Z)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;B)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;C)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;D)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;F)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;I)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;J)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/String;)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Ljava/lang/Void;)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;S)V
+	public static final fun returnLate (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableMethod;Z)V
+	public static final fun transformMethods (Lapp/morphe/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
+	public static final fun traverseClassHierarchy (Lapp/morphe/patcher/patch/BytecodePatchContext;Lapp/morphe/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class app/morphe/util/FreeRegisterProvider {
@@ -972,12 +972,12 @@ public final class app/morphe/util/ResourceGroup {
 public final class app/morphe/util/ResourceUtilsKt {
 	public static final fun asSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
 	public static final fun childElementsSequence (Lorg/w3c/dom/Node;)Lkotlin/sequences/Sequence;
-	public static final fun copyResources (Lapp/revanced/patcher/patch/ResourcePatchContext;Ljava/lang/String;[Lapp/morphe/util/ResourceGroup;)V
-	public static final fun copyXmlNode (Ljava/lang/String;Lapp/revanced/patcher/util/Document;Lapp/revanced/patcher/util/Document;)Ljava/lang/AutoCloseable;
+	public static final fun copyResources (Lapp/morphe/patcher/patch/ResourcePatchContext;Ljava/lang/String;[Lapp/morphe/util/ResourceGroup;)V
+	public static final fun copyXmlNode (Ljava/lang/String;Lapp/morphe/patcher/util/Document;Lapp/morphe/patcher/util/Document;)Ljava/lang/AutoCloseable;
 	public static final fun doRecursively (Lorg/w3c/dom/Node;Lkotlin/jvm/functions/Function1;)V
 	public static final fun forEachChildElement (Lorg/w3c/dom/Node;Lkotlin/jvm/functions/Function1;)V
 	public static final fun insertFirst (Lorg/w3c/dom/Node;Lorg/w3c/dom/Node;)V
-	public static final fun iterateXmlNodeChildren (Lapp/revanced/patcher/patch/ResourcePatchContext;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public static final fun iterateXmlNodeChildren (Lapp/morphe/patcher/patch/ResourcePatchContext;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public static final fun removeFromParent (Lorg/w3c/dom/Node;)Lorg/w3c/dom/Node;
 }
 
