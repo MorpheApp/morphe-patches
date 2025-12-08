@@ -1,13 +1,12 @@
 package app.morphe.patches.music.misc.androidauto
 
-import com.android.tools.smali.dexlib2.AccessFlags
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 
-internal val checkCertificateFingerprint = fingerprint {
-    returns("Z")
-    parameters("Ljava/lang/String;")
-    strings(
+internal object CheckCertificateFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("Ljava/lang/String;"),
+    strings = listOf(
         "X509",
         "Failed to get certificate" // Partial String match.
     )
-}
+)

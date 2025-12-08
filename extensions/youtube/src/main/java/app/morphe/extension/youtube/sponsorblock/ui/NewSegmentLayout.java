@@ -15,8 +15,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;

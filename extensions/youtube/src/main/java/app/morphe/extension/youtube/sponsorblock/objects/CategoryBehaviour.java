@@ -7,8 +7,8 @@ import androidx.annotation.Nullable;
 
 import java.util.Objects;
 
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.Utils;
 
 public enum CategoryBehaviour {
     SKIP_AUTOMATICALLY("skip", 2, true, sf("morphe_sb_skip_automatically")),

@@ -54,7 +54,7 @@ val loopVideoPatch = bytecodePatch(
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->shouldLoopVideo()Z
                     move-result v0
                     if-eqz v0, :do_not_loop
-                    invoke-virtual { p0 }, ${videoStartPlaybackFingerprint.method}
+                    invoke-virtual { p0 }, ${VideoStartPlaybackFingerprint.method}
                     return-void
                     :do_not_loop
                     nop

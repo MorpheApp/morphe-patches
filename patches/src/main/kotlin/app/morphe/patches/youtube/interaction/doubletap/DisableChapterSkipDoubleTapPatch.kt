@@ -1,7 +1,8 @@
 package app.morphe.patches.youtube.interaction.doubletap
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -55,21 +56,21 @@ val disableDoubleTapActionsPatch = bytecodePatch(
             SwitchPreference("morphe_disable_chapter_skip_double_tap"),
         )
 
-        val doubleTapInfoGetSeekSourceFingerprint = fingerprint {
-            accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-            parameters("Z")
-            returns(seekTypeEnumFingerprint.originalClassDef.type)
-            opcodes(
+        val doubleTapInfoGetSeekSourceFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = SeekTypeEnumFingerprint.originalClassDef.type,
+            parameters = listOf("Z"),
+            filters = opcodesToFilters(
                 Opcode.IF_EQZ,
                 Opcode.SGET_OBJECT,
                 Opcode.RETURN_OBJECT,
                 Opcode.SGET_OBJECT,
                 Opcode.RETURN_OBJECT,
-            )
-            custom { _, classDef ->
+            ),
+            custom = { _, classDef ->
                 classDef.fields.count() == 4
             }
-        }
+        )
 
         // Force isChapterSeek flag to false.
         doubleTapInfoGetSeekSourceFingerprint.method.addInstructions(
@@ -80,7 +81,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
             """
         )
 
-        doubleTapInfoCtorFingerprint.match(
+        DoubleTapInfoCtorFingerprint.match(
             doubleTapInfoGetSeekSourceFingerprint.classDef
         ).method.addInstructions(
             0,

@@ -11,7 +11,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.rollingNumberTextViewAnimationUpdateFingerprint
+import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -46,7 +46,7 @@ val disableRollingNumberAnimationPatch = bytecodePatch(
 
         // Animations are disabled by preventing an Image from being applied to the text span,
         // which prevents the animations from appearing.
-        rollingNumberTextViewAnimationUpdateFingerprint.let {
+        RollingNumberTextViewAnimationUpdateFingerprint.let {
             val blockStartIndex = it.instructionMatches.first().index
             val blockEndIndex = it.instructionMatches.last().index + 1
             it.method.apply {

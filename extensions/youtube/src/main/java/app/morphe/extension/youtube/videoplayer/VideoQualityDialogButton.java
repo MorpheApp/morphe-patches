@@ -1,7 +1,10 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.*;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_ITEM_TEXT;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED;
 import static app.morphe.extension.youtube.patches.VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
 import static app.morphe.extension.youtube.patches.VideoInformation.VIDEO_QUALITY_PREMIUM_NAME;
 import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.fadeInDuration;
@@ -15,14 +18,15 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.shared.ui.SheetBottomDialog;
-import app.morphe.extension.youtube.shared.PlayerType;
 import com.google.android.libraries.youtube.innertube.model.media.VideoQuality;
 
 import java.lang.ref.WeakReference;
@@ -31,9 +35,12 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 

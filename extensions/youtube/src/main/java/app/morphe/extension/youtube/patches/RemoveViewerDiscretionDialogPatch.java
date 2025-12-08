@@ -3,7 +3,6 @@ package app.morphe.extension.youtube.patches;
 import android.app.AlertDialog;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")

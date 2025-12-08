@@ -1,18 +1,19 @@
 package app.morphe.patches.youtube.layout.hide.time
 
-import app.morphe.patcher.InstructionLocation.*
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val timeCounterFingerprint = fingerprint {
-    returns("V")
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters()
-    instructions(
+internal object TimeCounterFingerprint : Fingerprint(
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    filters = listOf(
         opcode(Opcode.SUB_LONG_2ADDR),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
@@ -30,4 +31,4 @@ internal val timeCounterFingerprint = fingerprint {
             location = MatchAfterWithin(5)
         )
     )
-}
+)

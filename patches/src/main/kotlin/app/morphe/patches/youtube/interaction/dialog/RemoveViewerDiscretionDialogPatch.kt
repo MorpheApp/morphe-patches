@@ -41,7 +41,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             SwitchPreference("morphe_remove_viewer_discretion_dialog"),
         )
 
-        createDialogFingerprint.let {
+        CreateDialogFingerprint.let {
             it.method.apply {
                 val showDialogIndex = it.instructionMatches.last().index
                 val dialogRegister = getInstruction<FiveRegisterInstruction>(showDialogIndex).registerC

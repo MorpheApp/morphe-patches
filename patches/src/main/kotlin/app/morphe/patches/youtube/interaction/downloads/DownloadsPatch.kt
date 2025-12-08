@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
@@ -86,12 +86,12 @@ val downloadsPatch = bytecodePatch(
         injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
 
         // Main activity is used to launch downloader intent.
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        MainActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, ${EXTENSION_CLASS_DESCRIPTOR}->setMainActivity(Landroid/app/Activity;)V"
         )
 
-        offlineVideoEndpointFingerprint.method.apply {
+        OfflineVideoEndpointFingerprint.method.apply {
             addInstructionsWithLabels(
                 0,
                 """

@@ -1,23 +1,23 @@
 package app.morphe.patches.youtube.misc.hapticfeedback
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 
-internal val markerHapticsFingerprint = fingerprint {
-    returns("V")
-    strings("Failed to execute markers haptics vibrate.")
-}
+internal object MarkerHapticsFingerprint : Fingerprint(
+    returnType = "V",
+    strings = listOf("Failed to execute markers haptics vibrate.")
+)
 
-internal val scrubbingHapticsFingerprint = fingerprint {
-    returns("V")
-    strings("Failed to haptics vibrate for fine scrubbing.")
-}
+internal object ScrubbingHapticsFingerprint : Fingerprint(
+    returnType = "V",
+    strings = listOf("Failed to haptics vibrate for fine scrubbing.")
+)
 
-internal val seekUndoHapticsFingerprint = fingerprint {
-    returns("V")
-    strings("Failed to execute seek undo haptics vibrate.")
-}
+internal object SeekUndoHapticsFingerprint : Fingerprint(
+    returnType = "V",
+    strings = listOf("Failed to execute seek undo haptics vibrate.")
+)
 
-internal val zoomHapticsFingerprint = fingerprint {
-    returns("V")
-    strings("Failed to haptics vibrate for video zoom")
-}
+internal object ZoomHapticsFingerprint : Fingerprint(
+    returnType = "V",
+    strings = listOf("Failed to haptics vibrate for video zoom")
+)

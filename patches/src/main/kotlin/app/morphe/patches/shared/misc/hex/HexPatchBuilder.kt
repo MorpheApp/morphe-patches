@@ -2,8 +2,6 @@ package app.morphe.patches.shared.misc.hex
 
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.rawResourcePatch
-import kotlin.collections.component1
-import kotlin.collections.component2
 import kotlin.math.max
 
 fun hexPatch(ignoreMissingTargetFiles: Boolean = false, block: HexPatchBuilder.() -> Unit) =

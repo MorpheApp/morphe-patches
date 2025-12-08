@@ -1,6 +1,10 @@
 package app.morphe.patches.all.misc.packagename
 
-import app.morphe.patcher.patch.*
+import app.morphe.patcher.patch.Option
+import app.morphe.patcher.patch.OptionException
+import app.morphe.patcher.patch.booleanOption
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.stringOption
 import app.morphe.util.asSequence
 import app.morphe.util.getNode
 import org.w3c.dom.Element

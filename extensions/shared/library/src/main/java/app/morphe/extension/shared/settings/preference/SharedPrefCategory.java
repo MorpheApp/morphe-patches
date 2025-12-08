@@ -3,12 +3,14 @@ package app.morphe.extension.shared.settings.preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceFragment;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 import java.util.Objects;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Shared categories, and helper methods.

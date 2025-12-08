@@ -1,14 +1,14 @@
 package app.morphe.patches.youtube.layout.hide.fullscreenambientmode
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val setFullScreenBackgroundColorFingerprint = fingerprint {
-    returns("V")
-    accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
-    parameters("Z", "I", "I", "I", "I")
-    custom { method, classDef ->
+internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    parameters = listOf("Z", "I", "I", "I", "I"),
+    custom = { method, classDef ->
         classDef.type.endsWith("/YouTubePlayerViewNotForReflection;")
                 && method.name == "onLayout"
     }
-}
+)

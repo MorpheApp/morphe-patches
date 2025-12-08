@@ -3,7 +3,7 @@ package app.morphe.patches.music.misc.spoof
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.gms.musicActivityOnCreateFingerprint
+import app.morphe.patches.music.misc.gms.MusicActivityOnCreateFingerprint
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.playservice.is_7_16_or_greater
@@ -18,7 +18,7 @@ import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     extensionClassDescriptor = "Lapp/morphe/extension/music/patches/spoof/SpoofVideoStreamsPatch;",
-    mainActivityOnCreateFingerprint = musicActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     fixMediaFetchHotConfig = { is_7_16_or_greater },
     fixMediaFetchHotConfigAlternative = { is_8_11_or_greater && !is_8_15_or_greater },
     fixParsePlaybackResponseFeatureFlag = { is_7_33_or_greater },

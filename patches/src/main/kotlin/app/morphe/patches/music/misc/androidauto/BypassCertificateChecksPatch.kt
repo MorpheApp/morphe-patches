@@ -24,6 +24,6 @@ val bypassCertificateChecksPatch = bytecodePatch(
     )
 
     execute {
-        checkCertificateFingerprint.method.returnEarly(true)
+        CheckCertificateFingerprint.method.returnEarly(true)
     }
 }

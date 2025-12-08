@@ -1,8 +1,8 @@
 package app.morphe.extension.shared.settings.preference;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.preference.Preference;
+import android.util.AttributeSet;
 
 /**
  * A custom preference that triggers exporting Morphe debug logs to the clipboard when clicked.

@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 /**
  * Dynamic drawable that is either the regular or bolded Morphe preference icon.

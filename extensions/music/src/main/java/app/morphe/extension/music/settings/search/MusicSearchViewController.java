@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Toolbar;
 
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
-import app.morphe.extension.shared.settings.search.*;
+import app.morphe.extension.shared.settings.search.BaseSearchResultItem;
+import app.morphe.extension.shared.settings.search.BaseSearchResultsAdapter;
+import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 
 /**
  * Music-specific search view controller implementation.

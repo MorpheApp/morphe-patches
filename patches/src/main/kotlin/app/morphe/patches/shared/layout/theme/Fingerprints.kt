@@ -1,18 +1,18 @@
 package app.morphe.patches.shared.layout.theme
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val lithoOnBoundsChangeFingerprint = fingerprint {
-    accessFlags(AccessFlags.PROTECTED, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/graphics/Rect;")
-    instructions(
+internal object LithoOnBoundsChangeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Rect;"),
+    filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
@@ -36,8 +36,8 @@ internal val lithoOnBoundsChangeFingerprint = fingerprint {
             smali = "Landroid/graphics/Paint;->setColor(I)V",
             location = MatchAfterImmediately()
         )
-    )
-    custom { method, _ ->
+    ),
+    custom = { method, _ ->
         method.name == "onBoundsChange"
     }
-}
+)

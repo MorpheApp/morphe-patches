@@ -44,7 +44,7 @@ val disableFullscreenAmbientModePatch = bytecodePatch(
             SwitchPreference("morphe_disable_fullscreen_ambient_mode"),
         )
 
-        setFullScreenBackgroundColorFingerprint.method.apply {
+        SetFullScreenBackgroundColorFingerprint.method.apply {
             val insertIndex = indexOfFirstInstructionReversedOrThrow {
                 getReference<MethodReference>()?.name == "setBackgroundColor"
             }

@@ -7,13 +7,12 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.seekbar.fullscreenSeekbarThumbnailsFingerprint
+import app.morphe.patches.youtube.layout.seekbar.FullscreenSeekbarThumbnailsFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_09_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/SeekbarThumbnailsPatch;"
@@ -50,7 +49,7 @@ val seekbarThumbnailsPatch = bytecodePatch(
                 )
             )
 
-            fullscreenSeekbarThumbnailsFingerprint.method.apply {
+            FullscreenSeekbarThumbnailsFingerprint.method.apply {
                 val moveResultIndex = instructions.lastIndex - 1
 
                 addInstruction(
@@ -60,7 +59,7 @@ val seekbarThumbnailsPatch = bytecodePatch(
             }
         }
 
-        fullscreenSeekbarThumbnailsQualityFingerprint.method.addInstructions(
+        FullscreenSeekbarThumbnailsQualityFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->useHighQualityFullscreenThumbnails()Z

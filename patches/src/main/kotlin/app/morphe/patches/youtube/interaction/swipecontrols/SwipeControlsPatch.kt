@@ -17,7 +17,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityConstructorFingerprint
+import app.morphe.patches.youtube.shared.MainActivityConstructorFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.insertLiteralOverride
@@ -108,8 +108,8 @@ val swipeControlsPatch = bytecodePatch(
     )
 
     execute {
-        val wrapperClass = swipeControlsHostActivityFingerprint.classDef
-        val targetClass = mainActivityConstructorFingerprint.classDef
+        val wrapperClass = SwipeControlsHostActivityFingerprint.classDef
+        val targetClass = MainActivityConstructorFingerprint.classDef
 
         // Inject the wrapper class from the extension into the class hierarchy of MainActivity.
         wrapperClass.setSuperClass(targetClass.superclass)
@@ -135,7 +135,7 @@ val swipeControlsPatch = bytecodePatch(
         // region patch to enable/disable swipe to change video.
 
         if (is_19_43_or_greater && !is_20_34_or_greater) {
-            swipeChangeVideoFingerprint.let {
+            SwipeChangeVideoFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.last().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->allowSwipeChangeVideo(Z)Z"

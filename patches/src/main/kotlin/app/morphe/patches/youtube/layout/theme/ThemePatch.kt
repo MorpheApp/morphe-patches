@@ -201,7 +201,7 @@ val themePatch = baseThemePatch(
             )
         }
 
-        useGradientLoadingScreenFingerprint.let {
+        UseGradientLoadingScreenFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS_DESCRIPTOR->gradientLoadingScreenEnabled(Z)Z"
@@ -210,7 +210,7 @@ val themePatch = baseThemePatch(
 
         if (is_19_47_or_greater) {
             // Lottie splash screen exists in earlier versions, but it may not be always on.
-            splashScreenStyleFingerprint.let {
+            SplashScreenStyleFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I"

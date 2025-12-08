@@ -30,8 +30,8 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
         // MicroG accounts look almost identical to Google device accounts
         // and it's more foolproof to instead uninstall/reinstall.
         arrayOf(
-            specificNetworkErrorViewControllerFingerprint,
-            loadingFrameLayoutControllerFingerprint
+            SpecificNetworkErrorViewControllerFingerprint,
+            LoadingFrameLayoutControllerFingerprint
         ).forEach { fingerprint ->
             fingerprint.apply {
                 val index = instructionMatches.last().index

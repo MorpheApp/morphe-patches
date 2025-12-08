@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.settings.Settings;

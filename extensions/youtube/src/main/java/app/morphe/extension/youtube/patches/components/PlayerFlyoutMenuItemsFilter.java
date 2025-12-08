@@ -1,12 +1,12 @@
 package app.morphe.extension.youtube.patches.components;
 
+import java.util.List;
+
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
-
-import java.util.List;
 
 @SuppressWarnings("unused")
 public class PlayerFlyoutMenuItemsFilter extends Filter {

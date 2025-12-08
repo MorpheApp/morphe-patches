@@ -1,16 +1,37 @@
 package app.morphe.extension.youtube.sponsorblock.objects;
 
 import static app.morphe.extension.shared.StringRef.sf;
-import static app.morphe.extension.youtube.settings.Settings.*;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_FILLER;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_FILLER_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HIGHLIGHT;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HIGHLIGHT_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HOOK;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HOOK_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTERACTION;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTERACTION_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTRO;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTRO_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_MUSIC_OFFTOPIC;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_MUSIC_OFFTOPIC_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_OUTRO;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_OUTRO_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_PREVIEW;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_PREVIEW_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SELF_PROMO;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SELF_PROMO_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SPONSOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SPONSOR_COLOR;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_UNSUBMITTED;
+import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_UNSUBMITTED_COLOR;
 
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
-
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -46,12 +46,12 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
             SwitchPreference("morphe_end_screen_suggested_video"),
         )
 
-        removeOnLayoutChangeListenerFingerprint.let {
+        RemoveOnLayoutChangeListenerFingerprint.let {
             val endScreenMethod = navigate(it.originalMethod).to(it.instructionMatches.last().index).stop()
 
             endScreenMethod.apply {
-                val autoNavStatusMethodName = autoNavStatusFingerprint.match(
-                    autoNavConstructorFingerprint.classDef
+                val autoNavStatusMethodName = AutoNavStatusFingerprint.match(
+                    AutoNavConstructorFingerprint.classDef
                 ).originalMethod.name
 
                 val invokeIndex = indexOfFirstInstructionOrThrow {

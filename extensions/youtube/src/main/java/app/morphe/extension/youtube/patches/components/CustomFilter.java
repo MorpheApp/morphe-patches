@@ -12,10 +12,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**

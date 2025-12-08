@@ -46,8 +46,8 @@ val hideCategoryBar = bytecodePatch(
 
         chipCloud = getResourceId(ResourceType.LAYOUT, "chip_cloud")
 
-        chipCloudFingerprint.method.apply {
-            val targetIndex = chipCloudFingerprint.instructionMatches.last().index
+        ChipCloudFingerprint.method.apply {
+            val targetIndex = ChipCloudFingerprint.instructionMatches.last().index
             val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
             addInstruction(

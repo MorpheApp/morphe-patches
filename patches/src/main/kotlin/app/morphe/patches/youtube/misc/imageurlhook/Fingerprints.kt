@@ -1,70 +1,70 @@
 package app.morphe.patches.youtube.misc.imageurlhook
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val onFailureFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters(
+internal object OnFailureFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
         "Lorg/chromium/net/UrlRequest;",
         "Lorg/chromium/net/UrlResponseInfo;",
         "Lorg/chromium/net/CronetException;"
-    )
-    custom { method, _ ->
+    ),
+    custom = { method, _ ->
         method.name == "onFailed"
     }
-}
+)
 
 // Acts as a parent fingerprint.
-internal val onResponseStartedFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;")
-    strings(
+internal object OnResponseStartedFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;"),
+    strings = listOf(
         "Content-Length",
         "Content-Type",
         "identity",
         "application/x-protobuf",
-    )
-    custom { method, _ ->
+    ),
+    custom = { method, _ ->
         method.name == "onResponseStarted"
     }
-}
+)
 
-internal val onSucceededFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;")
-    custom { method, _ ->
+internal object OnSucceededFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;"),
+    custom = { method, _ ->
         method.name == "onSucceeded"
     }
-}
+)
 
 internal const val CRONET_URL_REQUEST_CLASS_DESCRIPTOR = "Lorg/chromium/net/impl/CronetUrlRequest;"
 
-internal val requestFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    custom { _, classDef ->
+internal object RequestFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    custom = { _, classDef ->
         classDef.type == CRONET_URL_REQUEST_CLASS_DESCRIPTOR
     }
-}
+)
 
-internal val messageDigestImageUrlFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    parameters("Ljava/lang/String;", "L")
-}
+internal object MessageDigestImageUrlFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Ljava/lang/String;", "L")
+)
 
-internal val messageDigestImageUrlParentFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Ljava/lang/String;")
-    parameters()
-    instructions(
+internal object MessageDigestImageUrlParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
         anyInstruction(
             string("@#&=*+-_.,:!?()/~'%;\$"),
             string("@#&=*+-_.,:!?()/~'%;\$[]"), // 20.38+
         )
     )
-}
+)

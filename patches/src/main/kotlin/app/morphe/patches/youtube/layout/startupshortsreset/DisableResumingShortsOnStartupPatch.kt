@@ -50,7 +50,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
         )
 
         if (is_20_03_or_greater) {
-            userWasInShortsAlternativeFingerprint.let {
+            UserWasInShortsAlternativeFingerprint.let {
                 it.method.apply {
                     val match = it.instructionMatches[2]
                     val insertIndex = match.index + 1
@@ -66,7 +66,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
                 }
             }
         } else {
-            userWasInShortsLegacyFingerprint.method.apply {
+            UserWasInShortsLegacyFingerprint.method.apply {
                 val listenableInstructionIndex = indexOfFirstInstructionOrThrow {
                     opcode == Opcode.INVOKE_INTERFACE &&
                             getReference<MethodReference>()?.definingClass == "Lcom/google/common/util/concurrent/ListenableFuture;" &&
@@ -88,7 +88,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
             }
         }
 
-        userWasInShortsConfigFingerprint.method.addInstructions(
+        UserWasInShortsConfigFingerprint.method.addInstructions(
             0,
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer()Z

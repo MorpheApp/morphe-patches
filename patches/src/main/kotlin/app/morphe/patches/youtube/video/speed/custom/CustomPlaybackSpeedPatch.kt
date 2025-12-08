@@ -14,7 +14,7 @@ import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.youtube.interaction.seekbar.customTapAndHoldFingerprint
+import app.morphe.patches.youtube.interaction.seekbar.CustomTapAndHoldFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -71,7 +71,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         }
 
         // Override the min/max speeds that can be used.
-        (if (is_20_34_or_greater) speedLimiterFingerprint else speedLimiterLegacyFingerprint).method.apply {
+        (if (is_20_34_or_greater) SpeedLimiterFingerprint else SpeedLimiterLegacyFingerprint).method.apply {
             val limitMinIndex = indexOfFirstLiteralInstructionOrThrow(0.25f)
             // Older unsupported targets use 2.0f and not 4.0f
             val limitMaxIndex = indexOfFirstLiteralInstructionOrThrow(4.0f)
@@ -85,13 +85,13 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
 
         // Turn off client side flag that use server provided min/max speeds.
         if (is_20_34_or_greater) {
-            serverSideMaxSpeedFeatureFlagFingerprint.method.returnEarly(false)
+            ServerSideMaxSpeedFeatureFlagFingerprint.method.returnEarly(false)
         }
 
         // region Force old video quality menu.
 
         // Replace the speeds float array with custom speeds.
-        speedArrayGeneratorFingerprint.let {
+        SpeedArrayGeneratorFingerprint.let {
             val matches = it.instructionMatches
             it.method.apply {
                 val playbackSpeedsArrayType = "$EXTENSION_CLASS_DESCRIPTOR->customPlaybackSpeeds:[F"
@@ -124,28 +124,28 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // This is later used to call "showOldPlaybackSpeedMenu" on the instance.
 
         val instanceField = ImmutableField(
-            getOldPlaybackSpeedsFingerprint.originalClassDef.type,
+            GetOldPlaybackSpeedsFingerprint.originalClassDef.type,
             "INSTANCE",
-            getOldPlaybackSpeedsFingerprint.originalClassDef.type,
+            GetOldPlaybackSpeedsFingerprint.originalClassDef.type,
             AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
             null,
             null,
             null,
         ).toMutable()
 
-        getOldPlaybackSpeedsFingerprint.classDef.staticFields.add(instanceField)
+        GetOldPlaybackSpeedsFingerprint.classDef.staticFields.add(instanceField)
         // Set the INSTANCE field to the instance of the class.
         // In order to prevent a conflict with another patch, add the instruction at index 1.
-        getOldPlaybackSpeedsFingerprint.method.addInstruction(1, "sput-object p0, $instanceField")
+        GetOldPlaybackSpeedsFingerprint.method.addInstruction(1, "sput-object p0, $instanceField")
 
         // Get the "showOldPlaybackSpeedMenu" method.
         // This is later called on the field INSTANCE.
-        val showOldPlaybackSpeedMenuMethod = showOldPlaybackSpeedMenuFingerprint.match(
-            getOldPlaybackSpeedsFingerprint.classDef,
+        val showOldPlaybackSpeedMenuMethod = ShowOldPlaybackSpeedMenuFingerprint.match(
+            GetOldPlaybackSpeedsFingerprint.classDef,
         ).method
 
         // Insert the call to the "showOldPlaybackSpeedMenu" method on the field INSTANCE.
-        showOldPlaybackSpeedMenuExtensionFingerprint.method.apply {
+        ShowOldPlaybackSpeedMenuExtensionFingerprint.method.apply {
             addInstructionsWithLabels(
                 instructions.lastIndex,
                 """
@@ -171,7 +171,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // region Custom tap and hold 2x speed.
 
         if (is_19_47_or_greater) {
-            customTapAndHoldFingerprint.let {
+            CustomTapAndHoldFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches.first().index
                     val register = getInstruction<OneRegisterInstruction>(index).registerA

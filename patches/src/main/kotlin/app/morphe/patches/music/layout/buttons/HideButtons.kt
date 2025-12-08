@@ -70,8 +70,8 @@ val hideButtons = bytecodePatch(
 
         // Region for hide history button in the top bar.
         arrayOf(
-            historyMenuItemFingerprint,
-            historyMenuItemOfflineTabFingerprint
+            HistoryMenuItemFingerprint,
+            HistoryMenuItemOfflineTabFingerprint
         ).forEach { fingerprint ->
             fingerprint.method.apply {
                 val targetIndex = fingerprint.instructionMatches.first().index
@@ -89,9 +89,9 @@ val hideButtons = bytecodePatch(
 
         // Region for hide cast, search and notification buttons in the top bar.
         arrayOf(
-            Triple(playerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
-            Triple(searchActionViewFingerprint, searchButton, "hideSearchButton"),
-            Triple(topBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
+            Triple(PlayerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
+            Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton"),
+            Triple(TopBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
         ).forEach { (fingerprint, resourceIdLiteral, methodName) ->
             fingerprint.method.apply {
                 val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
@@ -109,7 +109,7 @@ val hideButtons = bytecodePatch(
         }
 
         // Region for hide cast button in the player.
-        mediaRouteButtonFingerprint.classDef.methods.single { method ->
+        MediaRouteButtonFingerprint.classDef.methods.single { method ->
             method.name == "setVisibility"
         }.addInstructions(
             0,
