@@ -1,6 +1,5 @@
 package app.morphe.util
 
-import app.morphe.patcher.FingerprintBuilder
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -1043,18 +1042,6 @@ internal fun BytecodePatchContext.addStaticFieldToExtension(
                 """ + smaliInstructions
             )
         }
-    }
-}
-
-/**
- * Set the custom condition for this fingerprint to check for a literal value.
- *
- * @param literalSupplier The supplier for the literal value to check for.
- */
-@Deprecated("Instead use instruction filters and `literal()`")
-fun FingerprintBuilder.literal(literalSupplier: () -> Long) {
-    custom { method, _ ->
-        method.containsLiteralInstruction(literalSupplier())
     }
 }
 
