@@ -1,3 +1,10 @@
+# [1.0.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2025-12-08)
+
+
+### Bug Fixes
+
+* Revert Android Studio automatic changes ([f59279b](https://github.com/MorpheApp/morphe-patches/commit/f59279b8f9d2e6c1ab9e1d6716ded469a7db486c))
+
 # [1.0.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2025-12-08)
 
 
