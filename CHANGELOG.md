@@ -1,3 +1,10 @@
+# [1.0.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2025-12-08)
+
+
+### Bug Fixes
+
+* Remove DSL from fingerprints ([#6](https://github.com/MorpheApp/morphe-patches/issues/6)) ([ea41840](https://github.com/MorpheApp/morphe-patches/commit/ea41840e7ef6d678ab84bb3bfd10f8c84070f4e8))
+
 # [1.0.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2025-12-07)
 
 
