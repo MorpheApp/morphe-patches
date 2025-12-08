@@ -2,9 +2,9 @@ package app.morphe.extension.youtube.patches.components;
 
 import androidx.annotation.NonNull;
 
+import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.shared.ByteTrieSearch;
 
 abstract class FilterGroup<T> {
     final static class FilterGroupResult {

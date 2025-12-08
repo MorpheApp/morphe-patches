@@ -87,12 +87,12 @@ internal fun sanitizeSharingLinksPatch(
         }
 
         // YouTube share sheet copy link.
-        youTubeCopyTextFingerprint.hookUrlString(0)
+        YouTubeCopyTextFingerprint.hookUrlString(0)
 
         // YouTube share sheet other apps.
-        youTubeShareSheetFingerprint.hookIntentPutExtra(3)
+        YouTubeShareSheetFingerprint.hookIntentPutExtra(3)
 
         // Native system share sheet.
-        youTubeSystemShareSheetFingerprint.hookIntentPutExtra(3)
+        YouTubeSystemShareSheetFingerprint.hookIntentPutExtra(3)
     }
 }

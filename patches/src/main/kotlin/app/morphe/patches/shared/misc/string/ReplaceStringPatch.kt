@@ -7,7 +7,6 @@ import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.ReferenceType
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
-import kotlin.text.contains
 
 fun replaceStringPatch(
     from: String,

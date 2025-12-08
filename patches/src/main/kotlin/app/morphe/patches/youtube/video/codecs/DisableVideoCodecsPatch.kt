@@ -73,7 +73,7 @@ val disableVideoCodecsPatch = bytecodePatch(
             SwitchPreference("morphe_force_avc_codec")
         )
 
-        vp9CapabilityFingerprint.method.addInstructionsWithLabels(
+        Vp9CapabilityFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->allowVP9()Z

@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
@@ -24,10 +28,6 @@ import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment.SegmentVote;
 import app.morphe.extension.youtube.sponsorblock.objects.UserStats;
-import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 public class SBRequester {
     private static final String TIME_TEMPLATE = "%.3f";

@@ -82,7 +82,7 @@ val spoofAppVersionPatch = bytecodePatch(
          * missing image resources. As a workaround, do not set an image in the
          * toolbar when the enum name is UNKNOWN.
          */
-        toolBarButtonFingerprint.apply {
+        ToolBarButtonFingerprint.apply {
             val imageResourceIndex = instructionMatches[2].index
             val register = method.getInstruction<OneRegisterInstruction>(imageResourceIndex).registerA
             val jumpIndex = instructionMatches.last().index + 1
@@ -94,7 +94,7 @@ val spoofAppVersionPatch = bytecodePatch(
             )
         }
 
-        spoofAppVersionFingerprint.apply {
+        SpoofAppVersionFingerprint.apply {
             val index = instructionMatches.first().index
             val register = method.getInstruction<OneRegisterInstruction>(index).registerA
 

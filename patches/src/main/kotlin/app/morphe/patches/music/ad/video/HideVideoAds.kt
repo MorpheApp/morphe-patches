@@ -37,8 +37,8 @@ val hideVideoAdsPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_video_ads"),
         )
 
-        navigate(showVideoAdsParentFingerprint.originalMethod)
-            .to(showVideoAdsParentFingerprint.instructionMatches.first().index + 1)
+        navigate(ShowVideoAdsParentFingerprint.originalMethod)
+            .to(ShowVideoAdsParentFingerprint.instructionMatches.first().index + 1)
             .stop()
             .addInstructions(
                 0,

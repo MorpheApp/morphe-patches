@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.youtube.shared.mainActivityOnBackPressedFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -16,14 +16,14 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
 ) {
 
     execute {
-        recyclerViewTopScrollingFingerprint.let {
+        RecyclerViewTopScrollingFingerprint.let {
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.last().index + 1,
                 "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->onTopView()V"
             )
         }
 
-        scrollPositionFingerprint.let {
+        ScrollPositionFingerprint.let {
             navigate(it.originalMethod)
                 .to(it.instructionMatches.first().index + 1)
                 .stop().apply {
@@ -39,7 +39,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
                 }
         }
 
-        mainActivityOnBackPressedFingerprint.method.apply {
+        MainActivityOnBackPressedFingerprint.method.apply {
             val index = indexOfFirstInstructionOrThrow(Opcode.RETURN_VOID)
             addInstruction(
                 index,

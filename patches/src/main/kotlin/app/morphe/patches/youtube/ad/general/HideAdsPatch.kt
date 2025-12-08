@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.ad.general
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addResources
@@ -24,7 +23,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
-import org.stringtemplate.v4.compiler.Bytecode.instructions
 
 internal var adAttributionId = -1L
     private set
@@ -89,7 +87,7 @@ val hideAdsPatch = bytecodePatch(
     execute {
         // Hide end screen store banner
 
-        fullScreenEngagementAdContainerFingerprint.method.apply {
+        FullScreenEngagementAdContainerFingerprint.method.apply {
             val addListIndex = indexOfAddListInstruction(this)
             val addListInstruction = getInstruction<FiveRegisterInstruction>(addListIndex)
             val listRegister = addListInstruction.registerC

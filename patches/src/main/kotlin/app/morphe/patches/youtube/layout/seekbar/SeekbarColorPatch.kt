@@ -4,7 +4,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -16,7 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -49,19 +48,19 @@ val seekbarColorPatch = bytecodePatch(
             )
         }
 
-        playerSeekbarColorFingerprint.let {
+        PlayerSeekbarColorFingerprint.let {
             it.method.apply {
                 addColorChangeInstructions(it.instructionMatches.last().index)
                 addColorChangeInstructions(it.instructionMatches.first().index)
             }
         }
 
-        shortsSeekbarColorFingerprint.let {
+        ShortsSeekbarColorFingerprint.let {
             it.method.addColorChangeInstructions(it.instructionMatches.first().index)
         }
 
-        setSeekbarClickedColorFingerprint.originalMethod.let {
-            val setColorMethodIndex = setSeekbarClickedColorFingerprint.instructionMatches.first().index + 1
+        SetSeekbarClickedColorFingerprint.originalMethod.let {
+            val setColorMethodIndex = SetSeekbarClickedColorFingerprint.instructionMatches.first().index + 1
 
             navigate(it).to(setColorMethodIndex).stop().apply {
                 val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
@@ -79,9 +78,9 @@ val seekbarColorPatch = bytecodePatch(
 
         // 19.25+ changes
 
-        var handleBarColorFingerprints = mutableListOf(playerSeekbarHandle1ColorFingerprint)
+        var handleBarColorFingerprints = mutableListOf<Fingerprint>(PlayerSeekbarHandle1ColorFingerprint)
         if (!is_20_34_or_greater) {
-            handleBarColorFingerprints += playerSeekbarHandle2ColorFingerprint
+            handleBarColorFingerprints += PlayerSeekbarHandle2ColorFingerprint
         }
         handleBarColorFingerprints.forEach {
             it.method.addColorChangeInstructions(it.instructionMatches.last().index)
@@ -91,7 +90,7 @@ val seekbarColorPatch = bytecodePatch(
         // of the watch history menu items as they use the same gradient as the
         // player and there is no easy way to distinguish which to use a transparent color.
         if (is_19_34_or_greater) {
-            watchHistoryMenuUseProgressDrawableFingerprint.let {
+            WatchHistoryMenuUseProgressDrawableFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches[1].index
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -107,7 +106,7 @@ val seekbarColorPatch = bytecodePatch(
             }
         }
 
-        lithoLinearGradientFingerprint.method.addInstructions(
+        LithoLinearGradientFingerprint.method.addInstructions(
             0,
             """
                 invoke-static/range { p4 .. p5 },  $EXTENSION_CLASS_DESCRIPTOR->getLithoLinearGradient([I[F)[I
@@ -115,17 +114,17 @@ val seekbarColorPatch = bytecodePatch(
             """
         )
 
-        val playerFingerprint: Fingerprint
+        val PlayerFingerprint: Fingerprint
         val checkGradientCoordinates: Boolean
         if (is_19_49_or_greater) {
-            playerFingerprint = playerLinearGradientFingerprint
+            PlayerFingerprint = PlayerLinearGradientFingerprint
             checkGradientCoordinates = true
         } else {
-            playerFingerprint = playerLinearGradientLegacyFingerprint
+            PlayerFingerprint = PlayerLinearGradientLegacyFingerprint
             checkGradientCoordinates = false
         }
 
-        playerFingerprint.let {
+        PlayerFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -154,9 +153,9 @@ val seekbarColorPatch = bytecodePatch(
         }
 
         // Hook the splash animation to set the a seekbar color.
-        mainActivityOnCreateFingerprint.method.apply {
+        MainActivityOnCreateFingerprint.method.apply {
             val setAnimationIntMethodName =
-                lottieAnimationViewSetAnimationIntFingerprint.originalMethod.name
+                LottieAnimationViewSetAnimationIntFingerprint.originalMethod.name
 
             findInstructionIndicesReversedOrThrow {
                 val reference = getReference<MethodReference>()
@@ -175,9 +174,9 @@ val seekbarColorPatch = bytecodePatch(
 
         // Add non obfuscated method aliases for `setAnimation(int)`
         // and `setAnimation(InputStream, String)` so extension code can call them.
-        lottieAnimationViewSetAnimationIntFingerprint.classDef.methods.apply {
+        LottieAnimationViewSetAnimationIntFingerprint.classDef.methods.apply {
             val addedMethodName = "patch_setAnimation"
-            val setAnimationIntName = lottieAnimationViewSetAnimationIntFingerprint
+            val setAnimationIntName = LottieAnimationViewSetAnimationIntFingerprint
                 .originalMethod.name
 
             add(ImmutableMethod(
@@ -201,23 +200,23 @@ val seekbarColorPatch = bytecodePatch(
             val factoryStreamClass: CharSequence
             val factoryStreamName: CharSequence
             val factoryStreamReturnType: CharSequence
-            lottieCompositionFactoryFromJsonInputStreamFingerprint.match(
-                lottieCompositionFactoryZipFingerprint.originalClassDef
+            LottieCompositionFactoryFromJsonInputStreamFingerprint.match(
+                LottieCompositionFactoryZipFingerprint.originalClassDef
             ).originalMethod.apply {
                 factoryStreamClass = definingClass
                 factoryStreamName = name
                 factoryStreamReturnType = returnType
             }
 
-            val lottieAnimationViewSetAnimationStreamFingerprint = fingerprint {
-                accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-                parameters(factoryStreamReturnType.toString())
-                returns("V")
-                custom { _, classDef ->
-                    classDef.type == lottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type
+            val LottieAnimationViewSetAnimationStreamFingerprint = Fingerprint(
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = "V",
+                parameters = listOf(factoryStreamReturnType.toString()),
+                custom = { _, classDef ->
+                    classDef.type == LottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type
                 }
-            }
-            val setAnimationStreamName = lottieAnimationViewSetAnimationStreamFingerprint
+            )
+            val setAnimationStreamName = LottieAnimationViewSetAnimationStreamFingerprint
                 .originalMethod.name
 
             add(ImmutableMethod(

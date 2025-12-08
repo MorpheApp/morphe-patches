@@ -1,19 +1,19 @@
 package app.morphe.patches.shared.misc.privacy
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val youTubeCopyTextFingerprint = fingerprint {
-    returns("V")
-    parameters("L", "Ljava/util/Map;")
-    instructions(
+internal object YouTubeCopyTextFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
         opcode(Opcode.IGET_OBJECT),
         string("text/plain", location = MatchAfterWithin(2)),
         methodCall(
@@ -26,12 +26,12 @@ internal val youTubeCopyTextFingerprint = fingerprint {
             location = MatchAfterWithin(2)
         )
     )
-}
+)
 
-internal val youTubeSystemShareSheetFingerprint = fingerprint {
-    returns("V")
-    parameters("L", "Ljava/util/Map;")
-    instructions(
+internal object YouTubeSystemShareSheetFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
         methodCall(
             smali = "Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;"
         ),
@@ -52,12 +52,12 @@ internal val youTubeSystemShareSheetFingerprint = fingerprint {
             location = MatchAfterWithin(15)
         )
     )
-}
+)
 
-internal val youTubeShareSheetFingerprint = fingerprint {
-    returns("V")
-    parameters("L", "Ljava/util/Map;")
-    instructions(
+internal object YouTubeShareSheetFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
         opcode(Opcode.IGET_OBJECT),
         checkCast("Ljava/lang/String;", location = MatchAfterImmediately()),
         opcode(Opcode.GOTO, location = MatchAfterImmediately()),
@@ -66,4 +66,4 @@ internal val youTubeShareSheetFingerprint = fingerprint {
 
         string("YTShare_Logging_Share_Intent_Endpoint_Byte_Array")
     )
-}
+)

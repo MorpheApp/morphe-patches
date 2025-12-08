@@ -40,10 +40,10 @@ val permanentRepeatPatch = bytecodePatch(
             SwitchPreference("morphe_music_play_permanent_repeat"),
         )
 
-        val startIndex = repeatTrackFingerprint.instructionMatches.last().index
+        val startIndex = RepeatTrackFingerprint.instructionMatches.last().index
         val repeatIndex = startIndex + 1
 
-        repeatTrackFingerprint.method.apply {
+        RepeatTrackFingerprint.method.apply {
             // Start index is at a branch, but the same
             // register is clobbered in both branch paths.
             val freeRegister = findFreeRegister(startIndex + 1)

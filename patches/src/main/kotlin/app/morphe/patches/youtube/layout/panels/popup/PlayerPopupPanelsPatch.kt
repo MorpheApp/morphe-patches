@@ -38,7 +38,7 @@ val playerPopupPanelsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_player_popup_panels"),
         )
 
-        engagementPanelControllerFingerprint.method.addInstructionsWithLabels(
+        EngagementPanelControllerFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disablePlayerPopupPanels()Z

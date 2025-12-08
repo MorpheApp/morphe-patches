@@ -41,7 +41,7 @@ val disableSignInToTvPopupPatch = bytecodePatch(
             SwitchPreference("morphe_disable_signin_to_tv_popup"),
         )
 
-        signInToTvPopupFingerprint.method.addInstructionsWithLabels(
+        SignInToTvPopupFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableSignInToTvPopup()Z

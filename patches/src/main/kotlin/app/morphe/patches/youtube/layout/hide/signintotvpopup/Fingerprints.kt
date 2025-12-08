@@ -1,16 +1,16 @@
 package app.morphe.patches.youtube.layout.hide.signintotvpopup
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 
-internal val signInToTvPopupFingerprint = fingerprint {
-    returns("Z")
-    parameters("Ljava/lang/String;", "Z", "L")
-    instructions(
+internal object SignInToTvPopupFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("Ljava/lang/String;", "Z", "L"),
+    filters = listOf(
         resourceLiteral(
             ResourceType.STRING,
             "mdx_seamless_tv_sign_in_drawer_fragment_title"
         )
     )
-}
+)

@@ -1,39 +1,39 @@
 package app.morphe.patches.youtube.layout.buttons.overlay
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val mediaRouteButtonFingerprint = fingerprint {
-    parameters("I")
-    custom { methodDef, _ ->
+internal object MediaRouteButtonFingerprint : Fingerprint(
+    parameters = listOf("I"),
+    custom = { methodDef, _ ->
         methodDef.definingClass.endsWith("/MediaRouteButton;") && methodDef.name == "setVisibility"
     }
-}
+)
 
-internal val castButtonPlayerFeatureFlagFingerprint = fingerprint {
-    returns("Z")
-    instructions(
+internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    filters = listOf(
         literal(45690091)
     )
-}
+)
 
-internal val castButtonActionFeatureFlagFingerprint = fingerprint {
-    returns("Z")
-    instructions(
+internal object CastButtonActionFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    filters = listOf(
         literal(45690090)
     )
-}
+)
 
-internal val inflateControlsGroupLayoutStubFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters()
-    returns("V")
-    instructions(
+internal object InflateControlsGroupLayoutStubFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "V",
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "youtube_controls_button_group_layout_stub"),
         methodCall(name = "inflate")
     )
-}
+)

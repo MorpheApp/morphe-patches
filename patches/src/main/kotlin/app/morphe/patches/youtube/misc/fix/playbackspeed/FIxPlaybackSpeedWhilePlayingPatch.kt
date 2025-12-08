@@ -41,7 +41,7 @@ val fixPlaybackSpeedWhilePlayingPatch = bytecodePatch{
             return@execute
         }
 
-        playbackSpeedInFeedsFingerprint.method.apply {
+        PlaybackSpeedInFeedsFingerprint.method.apply {
             val playbackSpeedIndex = indexOfGetPlaybackSpeedInstruction(this)
             val playbackSpeedRegister = getInstruction<TwoRegisterInstruction>(playbackSpeedIndex).registerA
             val returnIndex = indexOfFirstInstructionOrThrow(playbackSpeedIndex, Opcode.RETURN_VOID)

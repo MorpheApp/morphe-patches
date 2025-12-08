@@ -1,8 +1,15 @@
 package app.morphe.extension.youtube.patches.components;
 
+import static java.lang.Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS;
+import static java.lang.Character.UnicodeBlock.HIRAGANA;
+import static java.lang.Character.UnicodeBlock.KATAKANA;
+import static java.lang.Character.UnicodeBlock.KHMER;
+import static java.lang.Character.UnicodeBlock.LAO;
+import static java.lang.Character.UnicodeBlock.MYANMAR;
+import static java.lang.Character.UnicodeBlock.THAI;
+import static java.lang.Character.UnicodeBlock.TIBETAN;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
-import static java.lang.Character.UnicodeBlock.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,11 +19,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ByteTrieSearch;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.TrieSearch;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;

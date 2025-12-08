@@ -10,7 +10,13 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.video.information.*
+import app.morphe.patches.youtube.video.information.onCreateHook
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedClassFieldReference
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReference
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceClassType
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedMethodReference
+import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -54,7 +60,7 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
          */
-        initializePlaybackSpeedValuesFingerprint.method.apply {
+        InitializePlaybackSpeedValuesFingerprint.method.apply {
             // Infer everything necessary for calling the method setPlaybackSpeed().
             val onItemClickListenerClassFieldReference = getInstruction<ReferenceInstruction>(0).reference
 

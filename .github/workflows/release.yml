@@ -13,8 +13,9 @@ jobs:
     permissions:
       contents: write
       packages: write
-      id-token: write
-      attestations: write
+      # TODO: uncomment these
+#      id-token: write
+#      attestations: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

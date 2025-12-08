@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.misc.playertype
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -9,9 +9,9 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val playerTypeEnumFingerprint = fingerprint {
-    accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
-    strings(
+internal object PlayerTypeEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
         "NONE",
         "HIDDEN",
         "WATCH_WHILE_MINIMIZED",
@@ -24,21 +24,21 @@ internal val playerTypeEnumFingerprint = fingerprint {
         "VIRTUAL_REALITY_FULLSCREEN",
         "WATCH_WHILE_PICTURE_IN_PICTURE",
     )
-}
+)
 
-internal val reelWatchPagerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    instructions(
+internal object ReelWatchPagerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "reel_watch_player"),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(10))
     )
-}
+)
 
-internal val videoStateEnumFingerprint = fingerprint {
-    accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
-    parameters()
-    strings(
+internal object VideoStateEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(),
+    strings = listOf(
         "NEW",
         "PLAYING",
         "PAUSED",
@@ -46,15 +46,15 @@ internal val videoStateEnumFingerprint = fingerprint {
         "UNRECOVERABLE_ERROR",
         "ENDED"
     )
-}
+)
 
 // 20.33 and lower class name ControlsState. 20.34+ class name is obfuscated.
-internal val controlsStateToStringFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters()
-    returns("Ljava/lang/String;")
-    instructions(
+internal object ControlsStateToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
         string("videoState"),
         string("isBuffering")
     )
-}
+)

@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_09_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -66,14 +66,14 @@ val shortsAutoplayPatch = bytecodePatch(
         }
 
         // Main activity is used to check if app is in pip mode.
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        MainActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V",
         )
 
         var reelEnumClass : String
 
-        reelEnumConstructorFingerprint.let {
+        ReelEnumConstructorFingerprint.let {
             reelEnumClass = it.originalClassDef.type
 
             it.method.addInstructions(
@@ -87,8 +87,8 @@ val shortsAutoplayPatch = bytecodePatch(
             )
         }
         
-        reelPlaybackRepeatFingerprint.match(
-            reelPlaybackRepeatParentFingerprint.originalClassDef
+        ReelPlaybackRepeatFingerprint.match(
+            ReelPlaybackRepeatParentFingerprint.originalClassDef
         ).method.apply {
             // The behavior enums are looked up from an ordinal value to an enum type.
             findInstructionIndicesReversedOrThrow {
@@ -113,12 +113,12 @@ val shortsAutoplayPatch = bytecodePatch(
         // Manually restore the removed 'Autoplay' code.
         if (is_20_09_or_greater) {
             // Variable names are only a rough guess of what these methods do.
-            val userActionMethodReference = reelPlaybackFingerprint.instructionMatches[1]
+            val userActionMethodReference = ReelPlaybackFingerprint.instructionMatches[1]
                 .getInstruction<ReferenceInstruction>().reference as MethodReference
-            val reelSequenceControllerMethodReference = reelPlaybackFingerprint.instructionMatches[2]
+            val reelSequenceControllerMethodReference = ReelPlaybackFingerprint.instructionMatches[2]
                 .getInstruction<ReferenceInstruction>().reference as MethodReference
 
-            reelPlaybackRepeatFingerprint.method.apply {
+            ReelPlaybackRepeatFingerprint.method.apply {
                 // Find the first call modified by extension code above.
                 val extensionReturnResultIndex = indexOfFirstInstructionOrThrow {
                     opcode == Opcode.INVOKE_STATIC &&
@@ -169,7 +169,7 @@ val shortsAutoplayPatch = bytecodePatch(
                         """
                     )
                 }
-                reelPlaybackRepeatFingerprint.classDef.methods.add(helperMethod)
+                ReelPlaybackRepeatFingerprint.classDef.methods.add(helperMethod)
 
                 addInstructionsWithLabels(
                     extensionReturnResultIndex + 1,

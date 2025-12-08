@@ -1,5 +1,26 @@
 package app.morphe.extension.shared.checks;
 
+import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.checks.Check.debugAlwaysShowWarning;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_BOARD;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_BOOTLOADER;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_BRAND;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_CPU_ABI;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_CPU_ABI2;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_DEVICE;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_DISPLAY;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_FINGERPRINT;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_HARDWARE;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_HOST;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_ID;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_MANUFACTURER;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_MODEL;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_PRODUCT;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_RADIO;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_TAGS;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_TYPE;
+import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_USER;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -7,19 +28,21 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Base64;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
-import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.checks.Check.debugAlwaysShowWarning;
-import static app.morphe.extension.shared.checks.PatchInfo.Build.*;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * This class is used to check if the app was patched by the user

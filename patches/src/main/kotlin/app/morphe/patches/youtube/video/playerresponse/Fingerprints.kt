@@ -1,19 +1,19 @@
 package app.morphe.patches.youtube.video.playerresponse
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
  * For targets 20.46 and later.
  */
-internal val playerParameterBuilderFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;",  // VideoId.
         "[B",
-        "Ljava/lang/String;",  // Player parameters proto buffer.
+        "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "Z",
@@ -28,18 +28,18 @@ internal val playerParameterBuilderFingerprint = fingerprint {
         "Z",
         "Lj\$/time/Duration;"
     )
-}
+)
 
 /**
  * For targets 20.26 and later.
  */
-internal val playerParameterBuilder2026Fingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilder2026Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;",  // VideoId.
         "[B",
-        "Ljava/lang/String;",  // Player parameters proto buffer.
+        "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "Z",
@@ -53,22 +53,22 @@ internal val playerParameterBuilder2026Fingerprint = fingerprint {
         "Z",
         "Z",
         "Lj\$/time/Duration;"
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("psps")
     )
-}
+)
 
 /**
  * For targets 20.15 to 20.25
  */
-internal val playerParameterBuilder2015Fingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilder2015Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;",  // VideoId.
         "[B",
-        "Ljava/lang/String;",  // Player parameters proto buffer.
+        "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "Z",
@@ -81,22 +81,22 @@ internal val playerParameterBuilder2015Fingerprint = fingerprint {
         "Z", // Appears to indicate if the video id is being opened or is currently playing.
         "Z",
         "Z",
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("psps")
     )
-}
+)
 
 /**
  * For targets 20.10 to 20.14.
  */
-internal val playerParameterBuilder2010Fingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilder2010Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;",  // VideoId.
         "[B",
-        "Ljava/lang/String;",  // Player parameters proto buffer.
+        "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "Z",
@@ -110,22 +110,22 @@ internal val playerParameterBuilder2010Fingerprint = fingerprint {
         "Z",
         "Z",
         "Z"
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("psps")
     )
-}
+)
 
 /**
  * For targets 20.02 to 20.09.
  */
-internal val playerParameterBuilder2002Fingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilder2002Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;", // VideoId.
         "[B",
-        "Ljava/lang/String;", // Player parameters proto buffer.
+        "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "I",
@@ -138,22 +138,22 @@ internal val playerParameterBuilder2002Fingerprint = fingerprint {
         "Z",
         "Z",
         "Z",
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("psps"),
     )
-}
+)
 
 /**
  * For targets 19.25 to 19.50.
  */
-internal val playerParameterBuilder1925Fingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilder1925Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;", // VideoId.
         "[B",
-        "Ljava/lang/String;", // Player parameters proto buffer.
+        "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "I",
@@ -165,22 +165,22 @@ internal val playerParameterBuilder1925Fingerprint = fingerprint {
         "Z", // Appears to indicate if the video id is being opened or is currently playing.
         "Z",
         "Z",
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("psps")
     )
-}
+)
 
 /**
  * For targets 19.01 to 19.24.
  */
-internal val playerParameterBuilderLegacyFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    parameters(
+internal object PlayerParameterBuilderLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
         "Ljava/lang/String;", // VideoId.
         "[B",
-        "Ljava/lang/String;", // Player parameters proto buffer.
+        "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
         "I",
         "I",
@@ -192,4 +192,4 @@ internal val playerParameterBuilderLegacyFingerprint = fingerprint {
         "Z",
         "Z",
     )
-}
+)

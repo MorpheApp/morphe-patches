@@ -1,6 +1,7 @@
 package app.morphe.patches.music.layout.navigationbar
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -9,11 +10,11 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val tabLayoutTextFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L")
-    opcodes(
+internal object TabLayoutTextFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET,
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT_OBJECT,
@@ -21,13 +22,13 @@ internal val tabLayoutTextFingerprint = fingerprint {
         Opcode.SGET_OBJECT,
         Opcode.INVOKE_INTERFACE,
         Opcode.MOVE_RESULT
-    )
-    strings("FEmusic_search")
-    custom { method, _ ->
+    ),
+    strings = listOf("FEmusic_search"),
+    custom = { method, _ ->
         method.containsLiteralInstruction(text1) &&
             indexOfGetVisibilityInstruction(method) >= 0
     }
-}
+)
 
 internal fun indexOfGetVisibilityInstruction(method: Method) =
     method.indexOfFirstInstruction {

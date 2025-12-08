@@ -41,8 +41,8 @@ val hideGetPremiumPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_get_premium_label"),
         )
 
-        hideGetPremiumFingerprint.method.apply {
-            val insertIndex = hideGetPremiumFingerprint.instructionMatches.last().index
+        HideGetPremiumFingerprint.method.apply {
+            val insertIndex = HideGetPremiumFingerprint.instructionMatches.last().index
 
             val setVisibilityInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
             val getPremiumViewRegister = setVisibilityInstruction.registerC
@@ -60,7 +60,7 @@ val hideGetPremiumPatch = bytecodePatch(
             )
         }
 
-        membershipSettingsFingerprint.method.addInstructionsWithLabels(
+        MembershipSettingsFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumLabel()Z

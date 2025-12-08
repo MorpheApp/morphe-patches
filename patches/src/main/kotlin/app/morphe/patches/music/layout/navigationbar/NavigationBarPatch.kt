@@ -85,7 +85,7 @@ val navigationBarPatch = bytecodePatch(
             )
         )
 
-        tabLayoutTextFingerprint.method.apply {
+        TabLayoutTextFingerprint.method.apply {
             // Hide navigation labels.
             val constIndex = indexOfFirstLiteralInstructionOrThrow(text1)
             val targetIndex = indexOfFirstInstructionOrThrow(constIndex, Opcode.CHECK_CAST)
@@ -101,7 +101,7 @@ val navigationBarPatch = bytecodePatch(
             )
 
             // Set navigation enum and hide navigation buttons.
-            val enumIndex = tabLayoutTextFingerprint.instructionMatches.first().index + 3
+            val enumIndex = TabLayoutTextFingerprint.instructionMatches.first().index + 3
             val enumRegister = getInstruction<OneRegisterInstruction>(enumIndex).registerA
             val insertEnumIndex = indexOfFirstInstructionOrThrow(Opcode.AND_INT_LIT8) - 2
 

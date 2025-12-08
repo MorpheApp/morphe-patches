@@ -215,15 +215,15 @@ fun gmsCoreSupportPatch(
                 }
             }
         }
-        serviceCheckFingerprint.method.returnEarly()
+        ServiceCheckFingerprint.method.returnEarly()
 
         // Google Play Utility is not present in all apps, so we need to check if it's present.
-        if (googlePlayUtilityFingerprint.methodOrNull != null) {
-            googlePlayUtilityFingerprint.method.returnEarly(0)
+        if (GooglePlayUtilityFingerprint.methodOrNull != null) {
+            GooglePlayUtilityFingerprint.method.returnEarly(0)
         }
 
         // Set original and patched package names for extension to use.
-        originalPackageNameExtensionFingerprint.method.returnEarly(fromPackageName)
+        OriginalPackageNameExtensionFingerprint.method.returnEarly(fromPackageName)
 
         // Verify GmsCore is installed and whitelisted for power optimizations and background usage.
         mainActivityOnCreateFingerprint.method.addInstruction(
@@ -233,7 +233,7 @@ fun gmsCoreSupportPatch(
         )
 
         // Change the vendor of GmsCore in the extension.
-        gmsCoreSupportFingerprint.method.returnEarly(gmsCoreVendorGroupId!!)
+        GmsCoreSupportFingerprint.method.returnEarly(gmsCoreVendorGroupId!!)
 
         executeBlock()
     }

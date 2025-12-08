@@ -1,13 +1,13 @@
 package app.morphe.patches.youtube.video.codecs
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val vp9CapabilityFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    strings(
+internal object Vp9CapabilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    strings = listOf(
         "vp9_supported",
         "video/x-vnd.on2.vp9"
     )
-}
+)

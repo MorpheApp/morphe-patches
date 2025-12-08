@@ -1,7 +1,9 @@
 package app.morphe.patches.youtube.layout.hide.shorts
 
-import app.morphe.patcher.InstructionLocation.*
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -11,37 +13,37 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val componentContextParserFingerprint = fingerprint {
-    returns("L")
-    instructions(
+internal object ComponentContextParserFingerprint : Fingerprint(
+    returnType = "L",
+    filters = listOf(
         string("Number of bits must be positive")
     )
-}
+)
 
-internal val treeNodeResultListFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
-    returns("Ljava/util/List;")
-    instructions(
+internal object TreeNodeResultListFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
         methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC),
     )
-}
+)
 
-internal val shortsBottomBarContainerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/view/View;", "Landroid/os/Bundle;")
-    instructions(
+internal object ShortsBottomBarContainerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Landroid/os/Bundle;"),
+    filters = listOf(
         string("r_pfvc"),
         resourceLiteral(ResourceType.ID, "bottom_bar_container"),
         methodCall(name = "getHeight"),
         opcode(Opcode.MOVE_RESULT)
     )
-}
+)
 
-internal val renderBottomNavigationBarFingerprint = fingerprint {
-    returns("V")
-    parameters("Ljava/lang/String;")
-    instructions(
+internal object RenderBottomNavigationBarFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
         opcode(Opcode.IGET_OBJECT, MatchFirst()),
         opcode(Opcode.MONITOR_ENTER, MatchAfterImmediately()),
         opcode(Opcode.IGET_OBJECT, MatchAfterImmediately()),
@@ -53,31 +55,31 @@ internal val renderBottomNavigationBarFingerprint = fingerprint {
         opcode(Opcode.MONITOR_EXIT),
         opcode(Opcode.THROW)
     )
-}
+)
 
 /**
  * Less than 19.41.
  */
-internal val legacyRenderBottomNavigationBarLegacyParentFingerprint = fingerprint {
-    parameters(
+internal object LegacyRenderBottomNavigationBarLegacyParentFingerprint : Fingerprint(
+    parameters = listOf(
         "I",
         "I",
         "L",
         "L",
         "J",
         "L",
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("aa")
     )
-}
+)
 
 /**
  * 19.41 - 20.44
  */
-internal val renderBottomNavigationBarLegacy1941ParentFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    parameters(
+internal object RenderBottomNavigationBarLegacy1941ParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(
         "I",
         "I",
         "L", // ReelWatchEndpointOuterClass
@@ -85,59 +87,59 @@ internal val renderBottomNavigationBarLegacy1941ParentFingerprint = fingerprint 
         "J",
         "Ljava/lang/String;",
         "L",
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("aa")
     )
-}
+)
 
 /**
  * 20.45+
  */
-internal val renderBottomNavigationBarParentFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("[Ljava/lang/Class;")
-    parameters(
+internal object RenderBottomNavigationBarParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "[Ljava/lang/Class;",
+    parameters = listOf(
         "Ljava/lang/Class;",
         "Ljava/lang/Object;",
         "I"
-    )
-    instructions(
+    ),
+    filters = listOf(
         string("RPCAC")
     )
-}
+)
 
-internal val setPivotBarVisibilityFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
-    returns("V")
-    parameters("Z")
-    opcodes(
+internal object SetPivotBarVisibilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.CHECK_CAST,
         Opcode.IF_EQZ,
     )
-}
+)
 
-internal val setPivotBarVisibilityParentFingerprint = fingerprint {
-    parameters("Z")
-    instructions(
+internal object SetPivotBarVisibilityParentFingerprint : Fingerprint(
+    parameters = listOf("Z"),
+    filters = listOf(
         string("FEnotifications_inbox")
     )
-}
+)
 
-internal val shortsExperimentalPlayerFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    instructions(
+internal object ShortsExperimentalPlayerFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
         literal(45677719L)
     )
-}
+)
 
-internal val renderNextUIFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    instructions(
+internal object RenderNextUIFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
         literal(45649743L)
     )
-}
+)

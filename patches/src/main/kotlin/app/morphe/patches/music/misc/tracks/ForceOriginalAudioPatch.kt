@@ -5,7 +5,7 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.playservice.is_8_05_or_greater
 import app.morphe.patches.music.playservice.versionCheckPatch
-import app.morphe.patches.music.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.music.shared.MainActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.audio.forceOriginalAudioPatch
 
 @Suppress("unused")
@@ -26,7 +26,7 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
         )
     },
     fixUseLocalizedAudioTrackFlag = { is_8_05_or_greater },
-    mainActivityOnCreateFingerprint = mainActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = MainActivityOnCreateFingerprint,
     subclassExtensionClassDescriptor = "Lapp/morphe/extension/music/patches/ForceOriginalAudioPatch;",
     preferenceScreen = PreferenceScreen.MISC,
 )

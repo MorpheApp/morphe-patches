@@ -1,15 +1,16 @@
 package app.morphe.patches.music.misc.backgroundplayback
 
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.AccessFlags
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
-internal val backgroundPlaybackDisableFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("Z")
-    parameters("L")
-    opcodes(
+internal object BackgroundPlaybackDisableFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST_4,
         Opcode.IF_EQZ,
         Opcode.IGET,
@@ -20,13 +21,13 @@ internal val backgroundPlaybackDisableFingerprint = fingerprint {
         Opcode.SGET_OBJECT,
         Opcode.IGET,
     )
-}
+)
 
-internal val kidsBackgroundPlaybackPolicyControllerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("I", "L", "Z")
-    instructions(
+internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "L", "Z"),
+    filters = listOf(
         literal(45638079L)
     )
-}
+)

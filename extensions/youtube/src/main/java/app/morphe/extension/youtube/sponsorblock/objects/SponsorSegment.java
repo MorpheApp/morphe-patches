@@ -1,15 +1,16 @@
 package app.morphe.extension.youtube.sponsorblock.objects;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.shared.StringRef;
-
-import java.util.Objects;
-
 import static app.morphe.extension.shared.StringRef.sf;
 
 import android.util.Range;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.Objects;
+
+import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 public class SponsorSegment implements Comparable<SponsorSegment> {
 

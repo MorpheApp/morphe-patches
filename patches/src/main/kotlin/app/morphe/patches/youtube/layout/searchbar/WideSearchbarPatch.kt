@@ -1,5 +1,8 @@
 package app.morphe.patches.youtube.layout.searchbar
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -13,9 +16,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -58,7 +58,7 @@ internal val wideSearchbarPatch = bytecodePatch(
             SwitchPreference("morphe_wide_searchbar"),
         )
 
-        setWordmarkHeaderFingerprint.let {
+        SetWordmarkHeaderFingerprint.let {
             // Navigate to the method that checks if the YT logo is shown beside the search bar.
             val shouldShowLogoMethod = with(it.originalMethod) {
                 val invokeStaticIndex = indexOfFirstInstructionOrThrow {
@@ -84,7 +84,7 @@ internal val wideSearchbarPatch = bytecodePatch(
         }
 
         // Fix missing left padding when using wide searchbar.
-        wideSearchbarLayoutFingerprint.method.apply {
+        WideSearchbarLayoutFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow {
                 val reference = getReference<MethodReference>()
                 reference?.definingClass == "Landroid/view/LayoutInflater;"

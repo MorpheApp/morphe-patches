@@ -39,7 +39,7 @@ val autoCaptionsPatch = bytecodePatch(
             SwitchPreference("morphe_disable_auto_captions"),
         )
 
-        subtitleTrackFingerprint.method.addInstructions(
+        SubtitleTrackFingerprint.method.addInstructions(
             0,
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions()Z
@@ -53,8 +53,8 @@ val autoCaptionsPatch = bytecodePatch(
         )
 
         arrayOf(
-            startVideoInformerFingerprint to 0,
-            storyboardRendererDecoderRecommendedLevelFingerprint to 1
+            StartVideoInformerFingerprint to 0,
+            StoryboardRendererDecoderRecommendedLevelFingerprint to 1
         ).forEach { (fingerprint, enabled) ->
             fingerprint.method.addInstructions(
                 0,

@@ -244,7 +244,7 @@ val playerControlsPatch = bytecodePatch(
     )
 
     execute {
-        playerBottomControlsInflateFingerprint.let {
+        PlayerBottomControlsInflateFingerprint.let {
             it.method.apply {
                 inflateBottomControlMethod = this
 
@@ -254,7 +254,7 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        playerTopControlsInflateFingerprint.let {
+        PlayerTopControlsInflateFingerprint.let {
             it.method.apply {
                 inflateTopControlMethod = this
 
@@ -264,13 +264,13 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        visibilityMethod = controlsOverlayVisibilityFingerprint.match(
-            playerTopControlsInflateFingerprint.originalClassDef,
+        visibilityMethod = ControlsOverlayVisibilityFingerprint.match(
+            PlayerTopControlsInflateFingerprint.originalClassDef,
         ).method
 
         // Hook the fullscreen close button.  Used to fix visibility
         // when seeking and other situations.
-        overlayViewInflateFingerprint.let {
+        OverlayViewInflateFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -283,10 +283,10 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        visibilityImmediateCallbacksExistMethod = playerControlsExtensionHookListenersExistFingerprint.method
-        visibilityImmediateMethod = playerControlsExtensionHookFingerprint.method
+        visibilityImmediateCallbacksExistMethod = PlayerControlsExtensionHookListenersExistFingerprint.method
+        visibilityImmediateMethod = PlayerControlsExtensionHookFingerprint.method
 
-        motionEventFingerprint.match(youtubeControlsOverlayFingerprint.originalClassDef).let {
+        MotionEventFingerprint.match(YoutubeControlsOverlayFingerprint.originalClassDef).let {
             visibilityNegatedImmediateMethod = it.method
             visibilityNegatedImmediateInsertIndex = it.instructionMatches.first().index + 1
         }
@@ -296,7 +296,7 @@ val playerControlsPatch = bytecodePatch(
         // The change to support this is simple and only requires adding buttons to both layout files,
         // but for now force this different layout off since it's still an experimental test.
         if (is_19_35_or_greater) {
-            playerBottomControlsExploderFeatureFlagFingerprint.method.returnLate(false)
+            PlayerBottomControlsExploderFeatureFlagFingerprint.method.returnLate(false)
         }
 
         // A/B test of different top overlay controls. Two different layouts can be used:
@@ -305,7 +305,7 @@ val playerControlsPatch = bytecodePatch(
         //
         // Flag was removed in 20.19+
         if (is_19_25_or_greater && !is_20_19_or_greater) {
-            playerTopControlsExperimentalLayoutFeatureFlagFingerprint.method.apply {
+            PlayerTopControlsExperimentalLayoutFeatureFlagFingerprint.method.apply {
                 val index = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_OBJECT)
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
@@ -315,14 +315,14 @@ val playerControlsPatch = bytecodePatch(
 
         // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
         if (is_20_20_or_greater) {
-            playerControlsFullscreenLargeButtonsFeatureFlagFingerprint.method.returnLate(false)
+            PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint.method.returnLate(false)
 
             if (is_20_28_or_greater) {
-                playerControlsLargeOverlayButtonsFeatureFlagFingerprint.method.returnLate(false)
+                PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint.method.returnLate(false)
             }
 
             if (is_20_30_or_greater) {
-                playerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
+                PlayerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
             }
         }
     }

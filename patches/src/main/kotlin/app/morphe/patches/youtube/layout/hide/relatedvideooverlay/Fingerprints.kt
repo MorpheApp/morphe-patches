@@ -1,21 +1,21 @@
 package app.morphe.patches.youtube.layout.hide.relatedvideooverlay
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 
-internal val relatedEndScreenResultsParentFingerprint = fingerprint {
-    returns("V")
-    instructions(
+internal object RelatedEndScreenResultsParentFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "app_related_endscreen_results")
     )
-}
+)
 
-internal val relatedEndScreenResultsFingerprint = fingerprint {
-    returns("V")
-    parameters(
+internal object RelatedEndScreenResultsFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(
         "I",
         "Z",
         "I",
     )
-}
+)

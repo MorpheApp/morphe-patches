@@ -1,9 +1,9 @@
 package app.morphe.extension.youtube.patches;
 
+import java.util.List;
+
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
-
-import java.util.List;
 
 @SuppressWarnings("unused")
 public class SeekbarThumbnailsPatch {

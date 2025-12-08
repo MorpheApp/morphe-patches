@@ -83,7 +83,7 @@ val navigationButtonsPatch = bytecodePatch(
         )
 
         // Switch create with notifications button.
-        addCreateButtonViewFingerprint.let {
+        AddCreateButtonViewFingerprint.let {
             it.method.apply {
                 val conditionalCheckIndex = it.instructionMatches[1].index
                 val conditionRegister =
@@ -100,7 +100,7 @@ val navigationButtonsPatch = bytecodePatch(
         }
 
         // Hide navigation button labels.
-        createPivotBarFingerprint.let {
+        CreatePivotBarFingerprint.let {
             it.method.apply {
                 val setTextIndex = it.instructionMatches.first().index
                 val targetRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerC
@@ -118,21 +118,21 @@ val navigationButtonsPatch = bytecodePatch(
 
         // Force on/off translucent effect on status bar and navigation buttons.
         if (is_19_25_or_greater) {
-            translucentNavigationStatusBarFeatureFlagFingerprint.let {
+            TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
                 )
             }
 
-            translucentNavigationButtonsFeatureFlagFingerprint.let {
+            TranslucentNavigationButtonsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
                 )
             }
 
-            translucentNavigationButtonsSystemFeatureFlagFingerprint.let {
+            TranslucentNavigationButtonsSystemFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
@@ -141,7 +141,7 @@ val navigationButtonsPatch = bytecodePatch(
         }
 
         if (is_20_15_or_greater) {
-            animatedNavigationTabsFeatureFlagFingerprint.let {
+            AnimatedNavigationTabsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z"
