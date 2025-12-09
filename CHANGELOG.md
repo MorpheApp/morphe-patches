@@ -1,3 +1,10 @@
+# [1.0.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.5...v1.0.0-dev.6) (2025-12-09)
+
+
+### Bug Fixes
+
+* **YouTube - Hide player flyout menu items:** Remove hide submenu items for 20.22+ ([5d5d1f1](https://github.com/MorpheApp/morphe-patches/commit/5d5d1f1630a08899b4423f1482d602102f12e8ca))
+
 # [1.0.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.4...v1.0.0-dev.5) (2025-12-09)
 
 
