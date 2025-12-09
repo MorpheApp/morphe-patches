@@ -1,3 +1,10 @@
+# [1.0.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.4...v1.0.0-dev.5) (2025-12-09)
+
+
+### Features
+
+* Generate new release ([ad7d1c3](https://github.com/MorpheApp/morphe-patches/commit/ad7d1c3a1c5f8d75859e0a8f3f92b5c8d708e794))
+
 # [1.0.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2025-12-08)
 
 
