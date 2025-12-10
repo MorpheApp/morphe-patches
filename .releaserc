@@ -28,8 +28,8 @@
       {
         "assets": [
           "CHANGELOG.md",
-          "gradle.properties",
           "bundle.json",
+          "gradle.properties",
           "list.json"
         ],
         "message": "chore: Release v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
