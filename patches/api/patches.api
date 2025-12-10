@@ -961,6 +961,10 @@ public final class app/morphe/util/FreeRegisterProviderKt {
 	public static final fun getWriteRegister (Lcom/android/tools/smali/dexlib2/iface/instruction/Instruction;)Ljava/lang/Integer;
 }
 
+public final class app/morphe/util/PatchListGeneratorKt {
+	public static synthetic fun main ([Ljava/lang/String;)V
+}
+
 public final class app/morphe/util/ResourceGroup {
 	public fun <init> (Ljava/lang/String;[Ljava/lang/String;)V
 	public final fun getResourceDirectoryName ()Ljava/lang/String;
