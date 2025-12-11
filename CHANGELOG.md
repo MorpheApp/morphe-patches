@@ -1,3 +1,10 @@
+# [1.0.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.7...v1.0.0-dev.8) (2025-12-11)
+
+
+### Bug Fixes
+
+* Rename `bundleBundles` to `generatePatchesList` ([0bcc12f](https://github.com/MorpheApp/morphe-patches/commit/0bcc12f64aab9045df6f94c2ab20a52fb52ca096))
+
 # [1.0.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2025-12-11)
 
 
