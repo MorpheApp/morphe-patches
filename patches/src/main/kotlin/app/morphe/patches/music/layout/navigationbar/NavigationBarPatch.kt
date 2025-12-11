@@ -86,24 +86,28 @@ val navigationBarPatch = bytecodePatch(
         )
 
         TabLayoutTextFingerprint.method.apply {
+            // Set navigation enum and hide navigation buttons.
+            val enumIndex = TabLayoutTextFingerprint.instructionMatches.first().index + 2
+            val enumRegister = getInstruction<OneRegisterInstruction>(enumIndex).registerA
+
+            addInstruction(
+                enumIndex + 1,
+                "invoke-static { v$enumRegister }, $EXTENSION_CLASS_DESCRIPTOR->setLastAppNavigationEnum(Ljava/lang/Enum;)V"
+            )
+
             // Hide navigation labels.
             val constIndex = indexOfFirstLiteralInstructionOrThrow(text1)
-            val targetIndex = indexOfFirstInstructionOrThrow(constIndex, Opcode.CHECK_CAST)
-            val targetParameter = getInstruction<ReferenceInstruction>(targetIndex).reference
-            val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+            val labelIndex = indexOfFirstInstructionOrThrow(constIndex, Opcode.CHECK_CAST)
+            val targetParameter = getInstruction<ReferenceInstruction>(labelIndex).reference
+            val targetRegister = getInstruction<OneRegisterInstruction>(labelIndex).registerA
 
             if (!targetParameter.toString().endsWith("Landroid/widget/TextView;"))
                 throw PatchException("Method signature parameter did not match: $targetParameter")
 
             addInstruction(
-                targetIndex + 1,
+                labelIndex + 1,
                 "invoke-static { v$targetRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNavigationLabel(Landroid/widget/TextView;)V"
             )
-
-            // Set navigation enum and hide navigation buttons.
-            val enumIndex = TabLayoutTextFingerprint.instructionMatches.first().index + 3
-            val enumRegister = getInstruction<OneRegisterInstruction>(enumIndex).registerA
-            val insertEnumIndex = indexOfFirstInstructionOrThrow(Opcode.AND_INT_LIT8) - 2
 
             val pivotTabIndex = indexOfGetVisibilityInstruction(this)
             val pivotTabRegister = getInstruction<FiveRegisterInstruction>(pivotTabIndex).registerC
@@ -111,11 +115,6 @@ val navigationBarPatch = bytecodePatch(
             addInstruction(
                 pivotTabIndex,
                 "invoke-static { v$pivotTabRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNavigationButton(Landroid/view/View;)V"
-            )
-
-            addInstruction(
-                insertEnumIndex,
-                "invoke-static { v$enumRegister }, $EXTENSION_CLASS_DESCRIPTOR->setLastAppNavigationEnum(Ljava/lang/Enum;)V"
             )
         }
     }
