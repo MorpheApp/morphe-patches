@@ -18,11 +18,19 @@
     "@semantic-release/changelog",
     "gradle-semantic-release-plugin",
     [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "node ./bundles.js \"${nextRelease.version}\" \"${nextRelease.notes}\""
+      }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": [
           "CHANGELOG.md",
-          "gradle.properties"
+          "bundle.json",
+          "gradle.properties",
+          "list.json"
         ],
         "message": "chore: Release v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
