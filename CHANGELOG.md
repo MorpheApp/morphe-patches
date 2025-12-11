@@ -1,3 +1,10 @@
+# [1.0.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2025-12-11)
+
+
+### Bug Fixes
+
+* **YT Music:** Support `8.49.52` ([052629c](https://github.com/MorpheApp/morphe-patches/commit/052629ce202ae978a311c35751ab3f771a2fed9c))
+
 # [1.0.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.5...v1.0.0-dev.6) (2025-12-09)
 
 
