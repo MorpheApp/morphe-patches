@@ -36,7 +36,7 @@ internal fun main() {
 
 @Suppress("DEPRECATION")
 private fun generatePatchList(version: String, patches: Set<Patch<*>>) {
-    val listJson = File("../list.json")
+    val listJson = File("../patches-list.json")
 
     val patchesMap = patches.sortedBy { it.name }.map {
         JsonPatch(

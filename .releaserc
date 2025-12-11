@@ -20,7 +20,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./bundles.js \"${nextRelease.version}\" \"${nextRelease.notes}\""
+        "prepareCmd": "node ./generate-patches-bundles.js \"${nextRelease.version}\" \"${nextRelease.notes}\""
       }
     ],
     [
@@ -28,9 +28,9 @@
       {
         "assets": [
           "CHANGELOG.md",
-          "bundle.json",
           "gradle.properties",
-          "list.json"
+          "patches-bundle.json",
+          "patches-list.json"
         ],
         "message": "chore: Release v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }

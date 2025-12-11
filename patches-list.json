@@ -217,12 +217,10 @@
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": []
@@ -235,10 +233,12 @@
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": []
@@ -269,17 +269,16 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": [
@@ -309,16 +308,17 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
-        "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": [
@@ -575,12 +575,10 @@
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": []
@@ -596,10 +594,12 @@
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": []
@@ -655,12 +655,10 @@
         "ResourcePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": []
@@ -676,10 +674,12 @@
         "ResourcePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": []
@@ -692,16 +692,13 @@
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch",
-        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": [
@@ -726,13 +723,16 @@
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": [
@@ -1266,6 +1266,23 @@
       "description": "Removes restrictions on background playback, including playing kids videos in the background.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Remove background playback restrictions",
+      "description": "Removes restrictions on background playback, including playing kids videos in the background.",
+      "use": true,
+      "dependencies": [
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch",
@@ -1281,23 +1298,6 @@
           "20.21.37",
           "20.31.42",
           "20.46.41"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Remove background playback restrictions",
-      "description": "Removes restrictions on background playback, including playing kids videos in the background.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
         ]
       },
       "options": []
@@ -1356,12 +1356,10 @@
         "ResourcePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": []
@@ -1376,10 +1374,12 @@
         "ResourcePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": []
@@ -1501,15 +1501,14 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "ResourcePatch"
+        "ResourcePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.youtube": [
-          "19.43.41",
-          "20.14.43",
-          "20.21.37",
-          "20.31.42",
-          "20.46.41"
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
         ]
       },
       "options": []
@@ -1522,14 +1521,15 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "ResourcePatch",
-        "BytecodePatch"
+        "ResourcePatch"
       ],
       "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
+        "com.google.android.youtube": [
+          "19.43.41",
+          "20.14.43",
+          "20.21.37",
+          "20.31.42",
+          "20.46.41"
         ]
       },
       "options": []
@@ -1553,6 +1553,45 @@
         ]
       },
       "options": []
+    },
+    {
+      "name": "Theme",
+      "description": "Adds options for theming and applies a custom background theme (dark background theme defaults to pure black).",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "7.29.52",
+          "8.10.52",
+          "8.46.57"
+        ]
+      },
+      "options": [
+        {
+          "key": "darkThemeBackgroundColor",
+          "title": "Dark theme background color",
+          "description": "Can be a hex color (#RRGGBB) or a color resource reference.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "@android:color/black",
+          "values": {
+            "Pure black": "@android:color/black",
+            "Material You": "@android:color/system_neutral1_900",
+            "Classic (old YouTube)": "#212121",
+            "Catppuccin (Mocha)": "#181825",
+            "Dark pink": "#290025",
+            "Dark blue": "#001029",
+            "Dark green": "#002905",
+            "Dark yellow": "#282900",
+            "Dark orange": "#291800",
+            "Dark red": "#290000"
+          }
+        }
+      ]
     },
     {
       "name": "Theme",
@@ -1614,45 +1653,6 @@
             "Light yellow": "#FDFFCC",
             "Light orange": "#FFE6CC",
             "Light red": "#FFD6D6"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Theme",
-      "description": "Adds options for theming and applies a custom background theme (dark background theme defaults to pure black).",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "ResourcePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.apps.youtube.music": [
-          "7.29.52",
-          "8.10.52",
-          "8.46.57"
-        ]
-      },
-      "options": [
-        {
-          "key": "darkThemeBackgroundColor",
-          "title": "Dark theme background color",
-          "description": "Can be a hex color (#RRGGBB) or a color resource reference.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "@android:color/black",
-          "values": {
-            "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
-            "Classic (old YouTube)": "#212121",
-            "Catppuccin (Mocha)": "#181825",
-            "Dark pink": "#290025",
-            "Dark blue": "#001029",
-            "Dark green": "#002905",
-            "Dark yellow": "#282900",
-            "Dark orange": "#291800",
-            "Dark red": "#290000"
           }
         }
       ]

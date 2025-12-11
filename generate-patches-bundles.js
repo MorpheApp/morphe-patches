@@ -37,10 +37,10 @@ function updateJsonFile(filePath, updateFn) {
 }
 
 // =========================================================
-// 1. Update list.json
+// 1. Update patches-list.json
 // =========================================================
-console.log(`\n--- Updating list.json (Version: v${nextVersion}) ---`);
-updateJsonFile('list.json', (bundle) => {
+console.log(`\n--- Updating patches-list.json (Version: v${nextVersion}) ---`);
+updateJsonFile('patches-list.json', (bundle) => {
   const newVersionTag = `v${nextVersion}`;
   console.log(`  'version': ${bundle.version} -> ${newVersionTag}`);
   bundle.version = newVersionTag;
@@ -48,13 +48,13 @@ updateJsonFile('list.json', (bundle) => {
 });
 
 // =========================================================
-// 2. Update bundle.json
+// 2. Update patches-bundle.json
 // =========================================================
 console.log(`\n--- Updating bundle.json (Version: v${nextVersion}) ---`);
-updateJsonFile('bundle.json', (release) => {
+updateJsonFile('patches-bundle.json', (release) => {
   const timestamp = getTimestamp();
   
-  // The current version string stored in bundle.json (used as the base for URL replacement).
+  // The current version string stored in patches-bundle.json (used as the base for URL replacement).
   const oldVersionInUrl = release.version.replace('v', '');
   const newVersionInUrl = nextVersion;
 

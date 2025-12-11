@@ -42,7 +42,7 @@ tasks {
         )
     }
 
-    register<JavaExec>("buildBundles") {
+    register<JavaExec>("generatePatchesList") {
         description = "Build patch with patch list"
 
         dependsOn(build)
@@ -52,7 +52,7 @@ tasks {
     }
     // Used by gradle-semantic-release-plugin.
     publish {
-        dependsOn("buildBundles")
+        dependsOn("generatePatchesList")
     }
 }
 
