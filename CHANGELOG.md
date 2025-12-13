@@ -1,3 +1,10 @@
+# [1.0.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.9...v1.0.0-dev.10) (2025-12-13)
+
+
+### Bug Fixes
+
+* `backtick` is replaced with an empty string in bash ([#9](https://github.com/MorpheApp/morphe-patches/issues/9)) ([a29ac22](https://github.com/MorpheApp/morphe-patches/commit/a29ac22799417bde5c5d3f047b1dd4c09b7137c2))
+
 # [1.0.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.8...v1.0.0-dev.9) (2025-12-12)
 
 
