@@ -20,7 +20,13 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./generate-patches-bundles.js \"${nextRelease.version}\" \"$(echo \"${nextRelease.notes}\" | jq -sRr @json)\""
+        "prepareCmd": "node ./generate-patches-bundles.js ${nextRelease.version}"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "jq '.description=\"${nextRelease.notes}\"' patches-bundle.json > patches-bundle.json.tmp && mv patches-bundle.json.tmp patches-bundle.json"
       }
     ],
     [
