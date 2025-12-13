@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// 1. Receive the next version and release notes (description) as arguments.
-const [nextVersion, nextDescription] = process.argv.slice(2);
+// Receive the next version string as the only argument.
+const nextVersion = process.argv[2];
 
 if (!nextVersion) {
   console.error("Error: Next release version not provided.");
@@ -50,7 +50,7 @@ updateJsonFile('patches-list.json', (bundle) => {
 // =========================================================
 // 2. Update patches-bundle.json
 // =========================================================
-console.log(`\n--- Updating bundle.json (Version: v${nextVersion}) ---`);
+console.log(`\n--- Updating patches-bundle.json (Version: v${nextVersion}) ---`);
 updateJsonFile('patches-bundle.json', (release) => {
   const timestamp = getTimestamp();
   
@@ -71,18 +71,14 @@ updateJsonFile('patches-bundle.json', (release) => {
   // 1. Update 'created_at' (current time).
   console.log(`  'created_at': ${timestamp}`);
   release.created_at = timestamp;
-
-  // 2. Update 'description' (${nextRelease.notes}).
-  console.log(`  'description' (Release Notes) updated`);
-  release.description = nextDescription || ""; // Use empty string if release notes are not provided
-
-  // 3. Update 'download_url'.
+  
+  // 2. Update 'download_url'.
   release.download_url = replaceUrlVersion(release.download_url);
   
-  // 4. Update 'signature_download_url'.
+  // 3. Update 'signature_download_url'.
   release.signature_download_url = replaceUrlVersion(release.signature_download_url);
   
-  // 5. Update 'version' (v${nextRelease.version}).
+  // 4. Update 'version' (v${nextRelease.version}).
   const newVersionTag = `v${nextVersion}`;
   console.log(`  'version': ${release.version} -> ${newVersionTag}`);
   release.version = newVersionTag;
