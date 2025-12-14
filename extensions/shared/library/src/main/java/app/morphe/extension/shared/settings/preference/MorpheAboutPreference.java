@@ -390,7 +390,7 @@ class AboutLinksRoutes {
             "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg"
           },
           "contact": {
-            "email": "contact@morphe.software"
+            "email": "na"
           },
           "socials": [
             {
