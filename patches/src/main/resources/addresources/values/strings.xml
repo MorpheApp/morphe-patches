@@ -1021,12 +1021,12 @@ Settings → Playback → Autoplay next video"</string>
             <string name="morphe_player_overlay_opacity_invalid_toast">Player overlay opacity must be between 0-100</string>
         </patch>
         <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
-            <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+            <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
             <string name="morphe_ryd_failure_connection_timeout">Dislikes are temporarily not available (API timed out)</string>
             <string name="morphe_ryd_failure_connection_status_code">Dislikes are not available (status %d)</string>
             <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes are not available (client API limit)</string>
             <string name="morphe_ryd_failure_generic">Dislikes are not available (%s)</string>
-            <!-- Toast shown if the user enables RYD while a video is opened, and then tries to vote for the video. -->
+            <!-- Brief notification (Toast) shown if the user enables RYD while a video is opened, and then tries to vote for the video. -->
             <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">Reload video to vote using Return YouTube Dislike</string>
             <!-- Video likes have been set to hidden by the video uploader. -->
             <string name="morphe_ryd_video_likes_hidden_by_video_owner">Hidden by owner</string>
@@ -1048,13 +1048,13 @@ Limitation: Dislikes may not appear in incognito mode"</string>
             <string name="morphe_ryd_estimated_like_title">Show estimated likes</string>
             <string name="morphe_ryd_estimated_like_summary_on">Videos with disabled likes show an estimated likes count</string>
             <string name="morphe_ryd_estimated_like_summary_off">Estimated likes are not shown</string>
-            <string name="morphe_ryd_toast_on_connection_error_title">Show a toast if API is not available</string>
-            <string name="morphe_ryd_toast_on_connection_error_summary_on">Toast is shown if Return YouTube Dislike is not available</string>
-            <string name="morphe_ryd_toast_on_connection_error_summary_off">Toast is not shown if Return YouTube Dislike is not available</string>
+            <string name="morphe_ryd_toast_on_connection_error_title">Show a notification if API is not available</string>
+            <string name="morphe_ryd_toast_on_connection_error_summary_on">Notification is shown if Return YouTube Dislike is not available</string>
+            <string name="morphe_ryd_toast_on_connection_error_summary_off">Notification is not shown if Return YouTube Dislike is not available</string>
             <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike.com</string>
             <string name="morphe_ryd_attribution_summary">Data is provided by the Return YouTube Dislike API. Tap here to learn more</string>
             <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
-            <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API statistics of this device</string>
+            <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>
             <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API response time, average</string>
             <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API response time, minimum</string>
             <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API response time, maximum</string>
@@ -1111,11 +1111,11 @@ This feature works best with a video quality of 720p or lower and when using a v
             <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">Skip button is shown for the entire segment</string>
             <string name="morphe_sb_auto_hide_skip_button_duration">Skip button duration</string>
             <string name="morphe_sb_auto_hide_skip_button_duration_sum">How long to show the skip and skip to highlight buttons before automatically hiding</string>
-            <string name="morphe_sb_general_skiptoast">Show undo skip toast</string>
-            <string name="morphe_sb_general_skiptoast_sum_on">Toast is shown when a segment is automatically skipped. Tap the toast notification to undo the skip</string>
-            <string name="morphe_sb_general_skiptoast_sum_off">Toast is not shown</string>
-            <string name="morphe_sb_toast_on_skip_duration">Skip toast duration</string>
-            <string name="morphe_sb_toast_on_skip_duration_sum">How long to show the undo skip toast</string>
+            <string name="morphe_sb_general_skiptoast">Show undo skip notification</string>
+            <string name="morphe_sb_general_skiptoast_sum_on">Notification is shown when a segment is automatically skipped. Tap the notification to undo the skip</string>
+            <string name="morphe_sb_general_skiptoast_sum_off">Notification is not shown</string>
+            <string name="morphe_sb_toast_on_skip_duration">Skip notification duration</string>
+            <string name="morphe_sb_toast_on_skip_duration_sum">How long to show the undo skip notification</string>
             <string name="morphe_sb_duration_1s">1 second</string>
             <string name="morphe_sb_duration_2s">2 seconds</string>
             <string name="morphe_sb_duration_3s">3 seconds</string>
@@ -1143,9 +1143,9 @@ This feature works best with a video quality of 720p or lower and when using a v
             <string name="morphe_sb_guidelines_popup_already_read">Already read</string>
             <string name="morphe_sb_guidelines_popup_open">Show me</string>
             <string name="morphe_sb_general">General</string>
-            <string name="morphe_sb_toast_on_connection_error">Show a toast if API is not available</string>
-            <string name="morphe_sb_toast_on_connection_error_sum_on">Toast is shown if SponsorBlock is not available</string>
-            <string name="morphe_sb_toast_on_connection_error_sum_off">Toast is not shown if SponsorBlock is not available</string>
+            <string name="morphe_sb_toast_on_connection_error">Show a notification if API is not available</string>
+            <string name="morphe_sb_toast_on_connection_error_sum_on">Notification is shown if SponsorBlock is not available</string>
+            <string name="morphe_sb_toast_on_connection_error_sum_off">Notification is not shown if SponsorBlock is not available</string>
             <string name="morphe_sb_general_skipcount">Enable skip count tracking</string>
             <string name="morphe_sb_general_skipcount_sum_on">Lets the SponsorBlock leaderboard know how much time is saved. A message is sent to the leaderboard each time a segment is skipped</string>
             <string name="morphe_sb_general_skipcount_sum_off">Skip count tracking is not enabled</string>
@@ -1239,7 +1239,7 @@ Your user id is like a password and it should never be shared.
             <string name="morphe_sb_submit_failed_duplicate">"Can\'t submit the segment.
 Already exists"</string>
             <string name="morphe_sb_submit_succeeded">Segment submitted successfully</string>
-            <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+            <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
             <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock is temporarily not available (API timed out)</string>
             <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock is temporarily not available (status %d)</string>
             <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock is temporarily not available</string>
@@ -1495,9 +1495,9 @@ Enabling this can fix missing images that are blocked in some regions"</string>
 If enabled, video URLs will be sent to the API server and no other data is sent. If a video does not have DeArrow thumbnails, then the original or still captures are shown
 
 Tap here to learn more about DeArrow"</string>
-            <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Show a toast if API is not available</string>
-            <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_on">Toast is shown if DeArrow is not available</string>
-            <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">Toast is not shown if DeArrow is not available</string>
+            <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Show a notification if API is not available</string>
+            <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_on">Notification is shown if DeArrow is not available</string>
+            <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">Notification is not shown if DeArrow is not available</string>
             <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
             <string name="morphe_alt_thumbnail_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
             <string name="morphe_alt_thumbnail_stills_about_title">Still video captures</string>
@@ -1578,9 +1578,9 @@ Enabling this can unlock higher video qualities"</string>
             <string name="morphe_remember_video_quality_last_selected_title">Remember video quality changes</string>
             <string name="morphe_remember_video_quality_last_selected_summary_on">Quality changes apply to all videos</string>
             <string name="morphe_remember_video_quality_last_selected_summary_off">Quality changes only apply to the current video</string>
-            <string name="morphe_remember_video_quality_last_selected_toast_title">Show toast on video quality changes</string>
-            <string name="morphe_remember_video_quality_last_selected_toast_summary_on">A toast is shown when the default video quality is changed</string>
-            <string name="morphe_remember_video_quality_last_selected_toast_summary_off">A toast is not shown when the default video quality is changed</string>
+            <string name="morphe_remember_video_quality_last_selected_toast_title">Show notification on video quality changes</string>
+            <string name="morphe_remember_video_quality_last_selected_toast_summary_on">A notification is shown when the default video quality is changed</string>
+            <string name="morphe_remember_video_quality_last_selected_toast_summary_off">A notification is not shown when the default video quality is changed</string>
             <string name="morphe_video_quality_default_wifi_title">Default video quality on Wi-Fi network</string>
             <string name="morphe_video_quality_default_mobile_title">Default video quality on mobile network</string>
             <string name="morphe_remember_shorts_quality_last_selected_title">Remember Shorts quality changes</string>
@@ -1622,9 +1622,9 @@ Enabling this can unlock higher video qualities"</string>
             <string name="morphe_remember_playback_speed_last_selected_title">Remember playback speed changes</string>
             <string name="morphe_remember_playback_speed_last_selected_summary_on">Playback speed changes apply to all videos</string>
             <string name="morphe_remember_playback_speed_last_selected_summary_off">Playback speed changes only apply to the current video</string>
-            <string name="morphe_remember_playback_speed_last_selected_toast_title">Show toast on playback speed changes</string>
-            <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">A toast is shown when the default playback speed is changed</string>
-            <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">A toast is not shown when the default playback speed is changed</string>
+            <string name="morphe_remember_playback_speed_last_selected_toast_title">Show notification on playback speed changes</string>
+            <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">A notification is shown when the default playback speed is changed</string>
+            <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">A notification is not shown when the default playback speed is changed</string>
             <string name="morphe_playback_speed_default_title">Default playback speed</string>
             <string name="morphe_remember_playback_speed_toast">Changed default speed to: %s</string>
         </patch>
