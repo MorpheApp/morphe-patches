@@ -72,16 +72,14 @@ public class LoopVideoButton {
             Utils.verifyOnMainThread();
 
             final boolean currentState = Settings.LOOP_VIDEO.get();
-            final boolean newState = userClickedButton ? !currentState : currentState;
+            final boolean newState = userClickedButton != currentState;
 
             instance.setIcon(newState
                     ? LOOP_VIDEO_ON
                     : LOOP_VIDEO_OFF);
 
             if (!userClickedButton) return;
-
             Settings.LOOP_VIDEO.save(newState);
-
             Utils.showToastShort(str(newState
                     ? "morphe_loop_video_button_toast_on"
                     : "morphe_loop_video_button_toast_off"));
