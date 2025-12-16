@@ -4,36 +4,13 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
-import app.morphe.util.resource.StringResource
+import app.morphe.util.resource.StringResource.Companion.sanitizeAndroidResourceString
+import java.util.Locale
 import java.util.logging.Level
 import java.util.logging.Logger
+import kotlin.jvm.javaClass
 
-private class AppLocale(
-    private val srcLocale: String,
-    private val destLocale: String,
-    val isBuiltInLanguage: Boolean = true
-) {
-    private fun getValuesFolderName(localeName: String): String {
-        val folderName = "values"
-
-        return if (localeName.isEmpty()) {
-            folderName
-        } else {
-            "$folderName-$localeName"
-        }
-    }
-
-    fun isDefaultLocale() = srcLocale.isEmpty()
-
-    fun getSrcLocaleFolderName() = getValuesFolderName(srcLocale)
-    fun getDestLocaleFolderName() = getValuesFolderName(destLocale)
-
-    override fun toString(): String {
-        return "AppLocale(srcLocale='$srcLocale', destLocale='$destLocale', isBuiltInLanguage=$isBuiltInLanguage)"
-    }
-}
-
-private val locales = listOf(
+internal val locales = listOf(
     AppLocale("", ""), // Default English locale. Must be first.
     AppLocale("af-rZA", "af"),
     AppLocale("am-rET", "am"),
@@ -115,19 +92,66 @@ private val locales = listOf(
     AppLocale("ga-rIE", "ga", isBuiltInLanguage = false)
 )
 
+internal class AppLocale(
+    private val srcLocale: String,
+    private val destLocale: String,
+    val isBuiltInLanguage: Boolean = true
+) {
+    fun isDefaultLocale() = srcLocale.isEmpty()
+
+    fun getSrcLocaleFolderName() = getValuesFolderName(srcLocale)
+    fun getDestLocaleFolderName() = getValuesFolderName(destLocale)
+
+    override fun toString(): String {
+        return "AppLocale(srcLocale='${getSrcLocaleFolderName()}', destLocale='${getDestLocaleFolderName()}', " +
+                "isBuiltInLanguage=$isBuiltInLanguage)"
+    }
+
+    private companion object {
+        private fun getValuesFolderName(localeName: String): String {
+            val folderName = "values"
+
+            return if (localeName.isEmpty()) {
+                folderName
+            } else {
+                "$folderName-$localeName"
+            }
+        }
+    }
+}
+
+private enum class BundledResourceType {
+    STRINGS,
+    ARRAYS;
+
+    override fun toString(): String {
+        return super.toString().lowercase(Locale.US)
+    }
+}
+
 private val appsToInclude = mutableSetOf<String>()
 
-private val defaultResourcesAdded = mutableSetOf<String>()
+/**
+ * Add all resources for the given app.
+ */
+internal fun addAppResources(appId: String) {
+    appsToInclude.add(appId)
+}
 
 internal val addResourcesPatch = resourcePatch(
     description = "Add resources such as strings or arrays to the app."
 ) {
 
+    val defaultResourcesAdded = mutableSetOf<String>()
+
+
     finalize {
+        fun getLogger(): Logger = Logger.getLogger(AppLocale.javaClass.name)
+
         fun addResourcesFromFile(
             appId: String,
             locale: AppLocale,
-            resourceType: String
+            resourceType: BundledResourceType
         ) {
             val isDefaultLocale = locale.isDefaultLocale()
             val srcFolderName = locale.getSrcLocaleFolderName()
@@ -140,7 +164,7 @@ internal val addResourcesPatch = resourcePatch(
 
             if (srcStream == null) {
                 // Localized arrays are optional, but string files are expected.
-                if (resourceType == "string") {
+                if (resourceType == BundledResourceType.STRINGS) {
                     throw IllegalArgumentException("Could not find: $srcSubPath")
                 }
                 return
@@ -173,8 +197,14 @@ internal val addResourcesPatch = resourcePatch(
                             "resources"
                         ).item(0)?.forEachChildElement { srcNode ->
                             val resourceName = srcNode.getAttributeNode("name").value
-
-                            fun getLogger(): Logger = Logger.getLogger(StringResource.javaClass.name)!!
+                            if (resourceType == BundledResourceType.STRINGS) {
+                                // Check for bad text strings that will fail resource compilation.
+                                val textContent = srcNode.textContent
+                                val sanitized = sanitizeAndroidResourceString(resourceName, textContent)
+                                if (textContent != sanitized) {
+                                    srcNode.textContent = sanitized
+                                }
+                            }
 
                             if (!localeStringsAdded.add(resourceName)) {
                                 getLogger().warning(
@@ -206,16 +236,9 @@ internal val addResourcesPatch = resourcePatch(
 
         appsToInclude.forEach { app ->
             locales.forEach { locale ->
-                addResourcesFromFile(app, locale, "strings")
-                addResourcesFromFile(app, locale, "arrays")
+                addResourcesFromFile(app, locale, BundledResourceType.STRINGS)
+                addResourcesFromFile(app, locale, BundledResourceType.ARRAYS)
             }
         }
     }
-}
-
-/**
- * Add all resources for the given app.
- */
-internal fun addAppResources(appId: String) {
-    appsToInclude.add(appId)
 }
