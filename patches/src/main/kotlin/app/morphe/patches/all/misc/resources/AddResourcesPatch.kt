@@ -134,14 +134,24 @@ internal val addResourcesPatch = resourcePatch(
             val srcSubPath = "$srcFolderName/$appId/$resourceType.xml"
             val destSubPath = "res/${locale.getDestLocaleFolderName()}/$resourceType.xml"
 
-            inputStreamFromBundledResource(
+            val srcStream = inputStreamFromBundledResource(
                 "addresources", srcSubPath
-            )?.use { srcStream ->
+            )
+
+            if (srcStream == null) {
+                // Localized arrays are optional, but string files are expected.
+                if (resourceType == "string") {
+                    throw IllegalArgumentException("Could not find: $srcSubPath")
+                }
+                return
+            }
+
+            srcStream.use {
                 val destFile = this@finalize[destSubPath]
                 if (!destFile.exists()) {
                     if (locale.isBuiltInLanguage) {
                         throw IllegalStateException(
-                            "Expected to find locale: $locale but file not found: $destFile"
+                            "Expected to find locale: $locale but file does not exist in target app: $destFile"
                         )
                     }
 
@@ -190,11 +200,6 @@ internal val addResourcesPatch = resourcePatch(
                             destResourceNode.appendChild(importedSrcNode)
                         }
                     }
-                }
-            } ?: {
-                // Localized arrays are optional, but string files are expected.
-                if (resourceType == "string") {
-                    throw IllegalArgumentException("Could not find: $srcSubPath")
                 }
             }
         }
