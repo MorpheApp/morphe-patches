@@ -1,6 +1,7 @@
 package app.morphe.extension.shared.spoof;
 
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.os.Build;
 
@@ -15,62 +16,54 @@ import app.morphe.extension.shared.Logger;
 @SuppressWarnings("ConstantLocale")
 public enum ClientType {
     /**
-     * Video not playable: Kids / Paid / Movie / Private / Age-restricted.
-     * This client can only be used when logged out.
+     * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
+     * Uses non adaptive bitrate.
+     * AV1 codec available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/eureka
-    ANDROID_VR_1_61_48(
+    ANDROID_VR_1_54_20(
             28,
             "ANDROID_VR",
             "com.google.android.apps.youtube.vr.oculus",
             "Oculus",
             "Quest 3",
             "Android",
-            "12",
-            // Android 12.1
-            "32",
-            "SQ3A.220605.009.A1",
-            "132.0.6808.3",
-            "1.61.48",
+            "14",
+            "34",
+            "UP1A.231005.007.A1",
+            "122.0.6238.3",
+            "1.54.20",
             false,
             false,
             false,
-            "Android VR 1.61"
+            "Android VR 1.54"
     ),
     /**
-     * Uses non adaptive bitrate, which fixes audio stuttering with YT Music.
-     * Does not use AV1.
+     * Uses non adaptive bitrate.
+     * AV1 codec not available.
      */
-    ANDROID_VR_1_43_32(
-            ANDROID_VR_1_61_48.id,
-            ANDROID_VR_1_61_48.clientName,
-            Objects.requireNonNull(ANDROID_VR_1_61_48.packageName),
-            ANDROID_VR_1_61_48.deviceMake,
-            ANDROID_VR_1_61_48.deviceModel,
-            ANDROID_VR_1_61_48.osName,
-            ANDROID_VR_1_61_48.osVersion,
-            Objects.requireNonNull(ANDROID_VR_1_61_48.androidSdkVersion),
-            Objects.requireNonNull(ANDROID_VR_1_61_48.buildId),
-            "107.0.5284.2",
-            "1.43.32",
-            ANDROID_VR_1_61_48.canLogin,
-            ANDROID_VR_1_61_48.requireLogin,
-            ANDROID_VR_1_61_48.supportsMultiAudioTracks,
-            "Android VR 1.43"
+    // https://dumps.tadiphone.dev/dumps/oculus/monterey
+    ANDROID_VR_1_47_48(
+            ANDROID_VR_1_54_20.id,
+            ANDROID_VR_1_54_20.clientName,
+            Objects.requireNonNull(ANDROID_VR_1_54_20.packageName),
+            ANDROID_VR_1_54_20.deviceMake,
+            "Quest",
+            ANDROID_VR_1_54_20.osName,
+            "10",
+            "29",
+            "QQ3A.200805.001",
+            "113.0.5672.24",
+            "1.47.48",
+            ANDROID_VR_1_54_20.canLogin,
+            ANDROID_VR_1_54_20.requireLogin,
+            ANDROID_VR_1_54_20.supportsMultiAudioTracks,
+            "Android VR 1.47"
     ),
     /**
-     * Video not playable (YouTube): None.
-     * Video not playable (YouTube Music): Paid / Movie / Private / Age-restricted.
-     *
-     * According to TeamNewPipe in 2022, if the 'androidSdkVersion' field is missing,
-     * the GVS did not return a valid response:
-     * [NewPipe#8713 (comment)](https://github.com/TeamNewPipe/NewPipe/issues/8713#issuecomment-1207443550).
-     *
-     * According to the latest commit in yt-dlp, the GVS returns a valid response
-     * even if the 'androidSdkVersion' field is missing:
-     * [yt-dlp#14693](https://github.com/yt-dlp/yt-dlp/pull/14693).
-     *
-     * For some reason, PoToken is not required.
+     * Video not playable in YouTube: None.
+     * Video not playable in YouTube Music: Paid, Movie, Private, Age-restricted.
+     * Uses adaptive bitrate.
      */
     ANDROID_NO_SDK(
             3,
@@ -83,18 +76,38 @@ public enum ClientType {
             "com.google.android.youtube/20.05.46 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
             // Due to Google API changes in September 2025, Authorization issued with a different 'client_sig' can no longer be used.
             // That is, this client must use an OAuth2 token issued by Android YouTube (com.google.android.youtube).
-            // 
-            // Both 'Auth' and 'No Auth' work on YouTube.
-            // Only 'No Auth' works on YouTube Music.
             IS_YOUTUBE,
             false,
             true,
             "Android No SDK"
     ),
     /**
-     * Cannot play livestreams and lacks HDR, but can play videos with music and labeled "for children".
-     * <a href="https://dumps.tadiphone.dev/dumps/google/barbet">Google Pixel 9 Pro Fold</a>
+     * Video not playable in YouTube: All videos (This client requires login, but cannot log in with YouTube's access token).
+     * Video not playable in YouTube Music: None.
+     * Uses non adaptive bitrate.
      */
+    ANDROID_MUSIC_NO_SDK(
+            21,
+            "ANDROID_MUSIC",
+            ANDROID_NO_SDK.deviceMake,
+            ANDROID_NO_SDK.deviceModel,
+            ANDROID_NO_SDK.osName,
+            ANDROID_NO_SDK.osVersion,
+            "7.12.52",
+            "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
+            // Due to Google API changes in September 2025, Authorization issued with a different 'client_sig' can no longer be used.
+            // That is, this client must use an OAuth2 token issued by Android YouTube Music (com.google.android.apps.youtube.music).
+            IS_YOUTUBE_MUSIC,
+            true,
+            false,
+            "Android Music No SDK"
+    ),
+    /**
+     * Video not playable: Livestream.
+     * Uses non adaptive bitrate.
+     * AV1 codec and HDR codec are not available, and the maximum resolution is 720p.
+     */
+    // https://dumps.tadiphone.dev/dumps/google/barbet
     ANDROID_CREATOR(
             14,
             "ANDROID_CREATOR",
@@ -127,32 +140,6 @@ public enum ClientType {
             false,
             false,
             "visionOS"
-    ),
-    /**
-     * The device machine id for the iPad 6th Gen (iPad7,6).
-     * AV1 hardware decoding is not supported.
-     * See [this GitHub Gist](https://gist.github.com/adamawolf/3048717) for more information.
-     *
-     * Based on Google's actions to date, PoToken may not be required on devices with very low specs.
-     * For example, suppose the User-Agent for a PlayStation 3 (with 256MB of RAM) is used.
-     * Accessing 'Web' (https://www.youtube.com) will redirect to 'TV' (https://www.youtube.com/tv).
-     * 'TV' target devices with very low specs, such as embedded devices, game consoles, and blu-ray players, so PoToken is not required.
-     *
-     * For this reason, the device machine id for the iPad 6th Gen (with 2GB of RAM),
-     * the lowest spec device capable of running iPadOS 17, was used.
-     */
-    IPADOS(5,
-            "IOS",
-            "Apple",
-            "iPad7,6",
-            "iPadOS",
-            "17.7.10.21H450",
-            "19.22.3",
-            "com.google.ios.youtube/19.22.3 (iPad7,6; U; CPU iPadOS 17_7_10 like Mac OS X; " + Locale.getDefault() + ")",
-            false,
-            false,
-            true,
-            "iPadOS"
     );
 
     /**
@@ -200,20 +187,6 @@ public enum ClientType {
      */
     @Nullable
     public final String androidSdkVersion;
-
-    /**
-     * Android build id, equivalent to {@link Build#ID}.
-     * Field is null if not applicable.
-     */
-    @Nullable
-    private final String buildId;
-
-    /**
-     * Cronet release version, as found in decompiled client apk.
-     * Field is null if not applicable.
-     */
-    @Nullable
-    private final String cronetVersion;
 
     /**
      * App version.
@@ -266,8 +239,6 @@ public enum ClientType {
         this.osName = osName;
         this.osVersion = osVersion;
         this.androidSdkVersion = androidSdkVersion;
-        this.buildId = buildId;
-        this.cronetVersion = cronetVersion;
         this.clientVersion = clientVersion;
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
@@ -275,7 +246,8 @@ public enum ClientType {
         this.friendlyName = friendlyName;
 
         Locale defaultLocale = Locale.getDefault();
-        this.userAgent = String.format("%s/%s (Linux; U; Android %s; %s; %s; Build/%s; Cronet/%s)",
+        this.userAgent = String.format(Locale.ENGLISH,
+                "%s/%s (Linux; U; Android %s; %s; %s; Build/%s; Cronet/%s)",
                 packageName,
                 clientVersion,
                 osVersion,
@@ -287,7 +259,6 @@ public enum ClientType {
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
 
-    @SuppressWarnings("ConstantLocale")
     ClientType(int id,
                String clientName,
                String deviceMake,
@@ -314,7 +285,5 @@ public enum ClientType {
         this.friendlyName = friendlyName;
         this.packageName = null;
         this.androidSdkVersion = null;
-        this.buildId = null;
-        this.cronetVersion = null;
     }
 }
