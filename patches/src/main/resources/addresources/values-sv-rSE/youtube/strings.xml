@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_07_seekbar_title">Sökreglage</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Svepgester</string>
   <string name="morphe_settings_screen_11_misc_title">Övrigt</string>
+  <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Återställ gamla inställningsmenyer</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Gamla inställningsmenyer visas</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Gamla inställningsmenyer visas inte</string>
@@ -1257,12 +1258,6 @@ Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow är inte tillgängligt just nu (statuskod: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow är inte tillgängligt just nu</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">Visa Morphe-meddelanden</string>
-  <string name="morphe_announcements_summary_on">Meddelanden vid start visas</string>
-  <string name="morphe_announcements_summary_off">Meddelanden vid start visas inte</string>
-  <string name="morphe_announcements_enabled_summary">Visa notiser vid start</string>
-  <string name="morphe_announcements_connection_failed">Det gick inte att ansluta till meddelandeleverantören</string>
-  <string name="morphe_announcements_dialog_dismiss">Avfärda</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktivera videoslinga</string>
   <string name="morphe_loop_video_summary_on">Slinga skapas för videon</string>

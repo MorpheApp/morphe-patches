@@ -663,6 +663,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_title">הסתר סרגל דילוג עם תמונות ממוזערות של סרטון</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">סרגל דילוג עם תמונות ממוזערות של סרטון מוסתר</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">סרגל דילוג עם תמונות ממוזערות של סרטון מוצג</string>
+  <string name="morphe_fullscreen_large_seekbar_summary_on">מחוון הכרטיסייה במסך מלא הוא בגודל גדול</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">נגן Shorts</string>
   <string name="morphe_shorts_player_screen_summary">הסתר או הצג רכיבי נגן Shorts</string>
@@ -1272,12 +1273,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">השירות DeArrow אינו זמין באופן זמני (קוד מצב: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">השירות DeArrow אינו זמין באופן זמני</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">הצג הכרזות של Morphe</string>
-  <string name="morphe_announcements_summary_on">הכרזות בעת הפעלה מוצגות</string>
-  <string name="morphe_announcements_summary_off">הכרזות בעת הפעלה אינן מוצגות</string>
-  <string name="morphe_announcements_enabled_summary">הצג הכרזות בעת הפעלה</string>
-  <string name="morphe_announcements_connection_failed">נכשל בהתחברות לספק הכרזות</string>
-  <string name="morphe_announcements_dialog_dismiss">דחה</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">הפעל סרטון בלולאה</string>
   <string name="morphe_loop_video_summary_on">הסרטון יופעל בלולאה</string>

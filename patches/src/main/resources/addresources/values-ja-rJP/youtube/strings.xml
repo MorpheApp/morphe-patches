@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">フィード</string>
   <string name="morphe_settings_screen_04_general_title">全般</string>
   <string name="morphe_settings_screen_05_player_title">プレーヤー</string>
-  <string name="morphe_settings_screen_06_shorts_title">ショート</string>
   <string name="morphe_settings_screen_07_seekbar_title">シークバー</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">スワイプ コントロール</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
@@ -1235,12 +1234,6 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow は一時的に利用できません (status code: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow は一時的に利用できません</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">Morphe からのお知らせを表示</string>
-  <string name="morphe_announcements_summary_on">アプリの起動時にお知らせが表示されます</string>
-  <string name="morphe_announcements_summary_off">アプリの起動時にお知らせは表示されません</string>
-  <string name="morphe_announcements_enabled_summary">アプリの起動時にお知らせを表示します</string>
-  <string name="morphe_announcements_connection_failed">お知らせの取得に失敗しました</string>
-  <string name="morphe_announcements_dialog_dismiss">閉じる</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
   <string name="morphe_loop_video_summary_on">動画はループ再生されます</string>

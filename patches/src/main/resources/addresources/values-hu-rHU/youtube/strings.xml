@@ -1256,12 +1256,6 @@ Ha engedélyezve van, akkor a videók URL-jeit elküldjük az API kiszolgálóna
   <string name="morphe_alt_thumbnail_dearrow_error">A DeArrow átmenetileg nem érhető el (állapotkód: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">A DeArrow átmenetileg nem érhető el</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">Morphe közlemények megjelenítése</string>
-  <string name="morphe_announcements_summary_on">A bejelentések indításkor megjelennek</string>
-  <string name="morphe_announcements_summary_off">A bejelentések indításkor nem jelennek meg</string>
-  <string name="morphe_announcements_enabled_summary">Közlemények megjelenítése indításkor</string>
-  <string name="morphe_announcements_connection_failed">Nem sikerült csatlakozni a közlemény szolgáltatóhoz</string>
-  <string name="morphe_announcements_dialog_dismiss">Elvetés</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Hurokismétlés engedélyezése</string>
   <string name="morphe_loop_video_summary_on">A videó ismétlődni fog</string>

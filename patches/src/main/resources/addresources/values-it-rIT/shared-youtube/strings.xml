@@ -19,11 +19,9 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nome dell\'app</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
-  <string name="morphe_custom_branding_name_entry_5">Morphe minimale</string>
   <string name="morphe_custom_branding_icon_title">Icona dell\'app</string>
   <string name="morphe_custom_branding_icon_entry_1">Originale</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_4">Morphe minimale</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avviso Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">La tua cronologia di visualizzazione non sta venendo salvata.&lt;br&gt;&lt;br&gt;Questo è molto probabilmente causato da un blocco annunci DNS o da un proxy di rete.&lt;br&gt;&lt;br&gt;Per risolvere, inserisci nella whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; o disattiva tutti i blocchi DNS e proxy.</string>

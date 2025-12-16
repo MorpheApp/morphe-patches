@@ -873,6 +873,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_thumbnails_high_quality_title">تمكين المصغرات عالية الجودة</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">مصغرات شريط التقدم عالية الجودة</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">مصغرات شريط التقدم متوسطة الجودة</string>
+  <string name="morphe_seekbar_thumbnails_high_quality_legacy_summary_off">مصغرات شريط التقدم بخلفية ملء الشاشة ذات جودة متوسطة</string>
   <string name="morphe_seekbar_thumbnails_high_quality_dialog_message">"سيؤدي هذا أيضا إلى استعادة المصغرات على البث المباشر الذي لا يحتوي على مصغرات شريط التقدم.
 
 مصغرات شريط التقدم سوف تستخدم نفس جودة الفيديو الحالي.
@@ -1275,12 +1276,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow غير متوفر مؤقتًا (رمز الحالة: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow غير متوفر مؤقتًا</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">عرض إعلانات Morphe</string>
-  <string name="morphe_announcements_summary_on">يتم عرض الإعلانات عند بدء التشغيل</string>
-  <string name="morphe_announcements_summary_off">لا يتم عرض الإعلانات عند بدء التشغيل</string>
-  <string name="morphe_announcements_enabled_summary">عرض الإعلانات عند بدء التشغيل</string>
-  <string name="morphe_announcements_connection_failed">فشل الاتصال بموفر الإعلانات</string>
-  <string name="morphe_announcements_dialog_dismiss">تجاهل</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
   <string name="morphe_loop_video_summary_on">سيتم تكرار الفيديو</string>

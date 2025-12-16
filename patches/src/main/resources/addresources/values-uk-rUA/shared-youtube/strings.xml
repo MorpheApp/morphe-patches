@@ -19,11 +19,9 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Назва додатку</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
-  <string name="morphe_custom_branding_name_entry_5">Morphe мінімальний</string>
   <string name="morphe_custom_branding_icon_title">Іконка додатку</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригінальна</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_4">Morphe мінімальний</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Повідомлення Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша історія переглядів не зберігається.&lt;br&gt;&lt;br&gt;Швидше за все, це спричинено блокувальником реклами DNS або мережевим проксі.&lt;br&gt;&lt;br&gt;Щоб це виправити, додайте &lt;b&gt;s.youtube.com&lt;/b&gt; у білий список блокувальника або вимкніть усі DNS блокувальники та проксі.</string>

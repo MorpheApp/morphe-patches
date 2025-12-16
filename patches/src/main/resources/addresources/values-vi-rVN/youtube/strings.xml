@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_07_seekbar_title">Thanh tiến trình</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Cử chỉ vuốt</string>
   <string name="morphe_settings_screen_11_misc_title">Khác</string>
+  <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Khôi phục trình đơn cài đặt cũ</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Các trình đơn cài đặt cũ được hiển thị</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Các trình đơn cài đặt cũ không được hiển thị</string>
@@ -665,6 +666,7 @@ Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển 
   <string name="morphe_hide_seekbar_thumbnail_title">Ẩn thanh tiến trình trong hình thu nhỏ</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Thanh tiến trình trong hình thu nhỏ video đã xem đã bị ẩn</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Thanh tiến trình trong hình thu nhỏ video đã xem được hiển thị</string>
+  <string name="morphe_fullscreen_large_seekbar_summary_off">Thanh tìm kiếm toàn màn hình có kích thước bình thường</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Trình phát Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ẩn hoặc hiện các thành phần của trình phát Shorts</string>
@@ -1278,12 +1280,6 @@ Nhấn vào đây để tìm hiểu thêm về DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow tạm thời không khả dụng (mã trạng thái: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow tạm thời không khả dụng</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">Hiện thông báo của Morphe</string>
-  <string name="morphe_announcements_summary_on">Thông báo sẽ được hiển thị khi khởi động ứng dụng</string>
-  <string name="morphe_announcements_summary_off">Thông báo không được hiển thị khi khởi động ứng dụng</string>
-  <string name="morphe_announcements_enabled_summary">Hiện thông báo khi khởi động</string>
-  <string name="morphe_announcements_connection_failed">Không thể tải thông báo từ máy chủ</string>
-  <string name="morphe_announcements_dialog_dismiss">Đóng</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Bật video lặp lại</string>
   <string name="morphe_loop_video_summary_on">Video sẽ lặp lại</string>

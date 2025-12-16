@@ -1274,12 +1274,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow 暂时不可用（状态码：%s）</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow 暂时不可用</string>
   <!-- misc.announcements.announcementsPatch -->
-  <string name="morphe_announcements_title">显示 Morphe 公告</string>
-  <string name="morphe_announcements_summary_on">启动时显示公告</string>
-  <string name="morphe_announcements_summary_off">启动时不显示公告</string>
-  <string name="morphe_announcements_enabled_summary">启动时显示公告</string>
-  <string name="morphe_announcements_connection_failed">无法连接到公告提供者</string>
-  <string name="morphe_announcements_dialog_dismiss">忽略</string>
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">启用循环播放视频</string>
   <string name="morphe_loop_video_summary_on">视频将循环播放</string>

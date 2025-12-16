@@ -19,11 +19,9 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">앱 이름</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
-  <string name="morphe_custom_branding_name_entry_5">Morphe 최소화</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
   <string name="morphe_custom_branding_icon_entry_1">원본</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_4">Morphe 최소화</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>
