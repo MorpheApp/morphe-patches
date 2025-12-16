@@ -14,15 +14,6 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object FullscreenSeekbarThumbnailsFingerprint : Fingerprint(
-    returnType = "Z",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf(),
-    filters = listOf(
-        literal(45398577)
-    )
-)
-
 internal object PlayerSeekbarColorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(

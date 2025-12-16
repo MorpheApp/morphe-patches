@@ -30,7 +30,7 @@ internal object SwipingUpGestureParentFingerprint : Fingerprint(
 )
 
 /**
- * Resolves using the class found in [swipingUpGestureParentFingerprint].
+ * Resolves using the class found in [SwipingUpGestureParentFingerprint].
  */
 internal object ShowSwipingUpGuideFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.FINAL),
@@ -42,7 +42,7 @@ internal object ShowSwipingUpGuideFingerprint : Fingerprint(
 )
 
 /**
- * Resolves using the class found in [swipingUpGestureParentFingerprint].
+ * Resolves using the class found in [SwipingUpGestureParentFingerprint].
  */
 internal object AllowSwipingUpGestureFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -157,15 +157,6 @@ internal object SlideToSeekFingerprint : Fingerprint(
         Opcode.GOTO_16,
     ),
     custom = customLiteral { 67108864 }
-)
-
-internal object FullscreenSeekbarThumbnailsQualityFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        literal(45399684L) // Video stream seekbar thumbnails feature flag.
-    )
 )
 
 internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
