@@ -1,185 +1,204 @@
 package app.morphe.patches.all.misc.resources
 
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.Document
-import app.morphe.util.*
-import app.morphe.util.resource.ArrayResource
-import app.morphe.util.resource.BaseResource
+import app.morphe.util.forEachChildElement
+import app.morphe.util.getNode
+import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.resource.StringResource
-import org.w3c.dom.Node
+import java.util.logging.Level
+import java.util.logging.Logger
 
-private typealias AppId = String
-private typealias AppResources = MutableSet<BaseResource>
-private typealias Value = String
+private class AppLocale(
+    private val srcLocale: String,
+    private val destLocale: String,
+    val isBuiltInLanguage: Boolean = true
+) {
+    private fun getValuesFolderName(localeName: String): String {
+        val folderName = "values"
 
-private val locales = mapOf(
-    "af-rZA" to "af",
-    "am-rET" to "am",
-    "ar-rSA" to "ar",
-    "as-rIN" to "as",
-    "az-rAZ" to "az",
-    "be-rBY" to "be",
-    "bg-rBG" to "bg",
-    "bn-rBD" to "bn",
-    "bs-rBA" to "bs",
-    "ca-rES" to "ca",
-    "cs-rCZ" to "cs",
-    "da-rDK" to "da",
-    "de-rDE" to "de",
-    "el-rGR" to "el",
-    "es-rES" to "es",
-    "et-rEE" to "et",
-    "eu-rES" to "eu",
-    "fa-rIR" to "fa",
-    "fi-rFI" to "fi",
-    "fil-rPH" to "fil",
-    "fr-rFR" to "fr",
-    "ga-rIE" to "ga",
-    "gl-rES" to "gl",
-    "gu-rIN" to "gu",
-    "hi-rIN" to "hi",
-    "hr-rHR" to "hr",
-    "hu-rHU" to "hu",
-    "hy-rAM" to "hy",
-    "in-rID" to "in",
-    "is-rIS" to "is",
-    "it-rIT" to "it",
-    "iw-rIL" to "iw",
-    "ja-rJP" to "ja",
-    "ka-rGE" to "ka",
-    "kk-rKZ" to "kk",
-    "km-rKH" to "km",
-    "kn-rIN" to "kn",
-    "ko-rKR" to "ko",
-    "ky-rKG" to "ky",
-    "lo-rLA" to "lo",
-    "lt-rLT" to "lt",
-    "lv-rLV" to "lv",
-    "mk-rMK" to "mk",
-    "ml-rIN" to "ml",
-    "mn-rMN" to "mn",
-    "mr-rIN" to "mr",
-    "ms-rMY" to "ms",
-    "my-rMM" to "my",
-    "nb-rNO" to "nb",
-    "ne-rNP" to "ne",
-    "nl-rNL" to "nl",
-    "or-rIN" to "or",
-    "pa-rIN" to "pa",
-    "pl-rPL" to "pl",
-    "pt-rBR" to "pt-rBR",
-    "pt-rPT" to "pt-rPT",
-    "ro-rRO" to "ro",
-    "ru-rRU" to "ru",
-    "si-rLK" to "si",
-    "sk-rSK" to "sk",
-    "sl-rSI" to "sl",
-    "sq-rAL" to "sq",
-    "sr-rCS" to "b+sr+Latn",
-    "sr-rSP" to "sr",
-    "sv-rSE" to "sv",
-    "sw-rKE" to "sw",
-    "ta-rIN" to "ta",
-    "te-rIN" to "te",
-    "th-rTH" to "th",
-    "tr-rTR" to "tr",
-    "uk-rUA" to "uk",
-    "ur-rIN" to "ur",
-    "uz-rUZ" to "uz",
-    "vi-rVN" to "vi",
-    "zh-rCN" to "zh-rCN",
-    "zh-rTW" to "zh-rTW",
-    "zu-rZA" to "zu",
+        return if (localeName.isEmpty()) {
+            folderName
+        } else {
+            "$folderName-$localeName"
+        }
+    }
+
+    fun isDefaultLocale() = srcLocale.isEmpty()
+
+    fun getSrcLocaleFolderName() = getValuesFolderName(srcLocale)
+    fun getDestLocaleFolderName() = getValuesFolderName(destLocale)
+
+    override fun toString(): String {
+        return "AppLocale(srcLocale='$srcLocale', destLocale='$destLocale', isBuiltInLanguage=$isBuiltInLanguage)"
+    }
+}
+
+private val locales = listOf(
+    AppLocale("", ""), // Default English locale. Must be first.
+    AppLocale("af-rZA", "af"),
+    AppLocale("am-rET", "am"),
+    AppLocale("ar-rSA", "ar"),
+    AppLocale("as-rIN", "as"),
+    AppLocale("az-rAZ", "az"),
+    AppLocale("be-rBY", "be"),
+    AppLocale("bg-rBG", "bg"),
+    AppLocale("bn-rBD", "bn"),
+    AppLocale("bs-rBA", "bs"),
+    AppLocale("ca-rES", "ca"),
+    AppLocale("cs-rCZ", "cs"),
+    AppLocale("da-rDK", "da"),
+    AppLocale("de-rDE", "de"),
+    AppLocale("el-rGR", "el"),
+    AppLocale("es-rES", "es"),
+    AppLocale("et-rEE", "et"),
+    AppLocale("eu-rES", "eu"),
+    AppLocale("fa-rIR", "fa"),
+    AppLocale("fi-rFI", "fi"),
+    AppLocale("fil-rPH", "tl"),
+    AppLocale("fr-rFR", "fr"),
+    AppLocale("gl-rES", "gl"),
+    AppLocale("gu-rIN", "gu"),
+    AppLocale("hi-rIN", "hi"),
+    AppLocale("hr-rHR", "hr"),
+    AppLocale("hu-rHU", "hu"),
+    AppLocale("hy-rAM", "hy"),
+    AppLocale("in-rID", "in"),
+    AppLocale("is-rIS", "is"),
+    AppLocale("it-rIT", "it"),
+    AppLocale("iw-rIL", "iw"),
+    AppLocale("ja-rJP", "ja"),
+    AppLocale("ka-rGE", "ka"),
+    AppLocale("kk-rKZ", "kk"),
+    AppLocale("km-rKH", "km"),
+    AppLocale("kn-rIN", "kn"),
+    AppLocale("ko-rKR", "ko"),
+    AppLocale("ky-rKG", "ky"),
+    AppLocale("lo-rLA", "lo"),
+    AppLocale("lt-rLT", "lt"),
+    AppLocale("lv-rLV", "lv"),
+    AppLocale("mk-rMK", "mk"),
+    AppLocale("ml-rIN", "ml"),
+    AppLocale("mn-rMN", "mn"),
+    AppLocale("mr-rIN", "mr"),
+    AppLocale("ms-rMY", "ms"),
+    AppLocale("my-rMM", "my"),
+    AppLocale("nb-rNO", "nb"),
+    AppLocale("ne-rNP", "ne"),
+    AppLocale("nl-rNL", "nl"),
+    AppLocale("or-rIN", "or"),
+    AppLocale("pa-rIN", "pa"),
+    AppLocale("pl-rPL", "pl"),
+    AppLocale("pt-rBR", "pt-rBR"),
+    AppLocale("pt-rPT", "pt-rPT"),
+    AppLocale("ro-rRO", "ro"),
+    AppLocale("ru-rRU", "ru"),
+    AppLocale("si-rLK", "si"),
+    AppLocale("sk-rSK", "sk"),
+    AppLocale("sl-rSI", "sl"),
+    AppLocale("sq-rAL", "sq"),
+    AppLocale("sr-rCS", "b+sr+Latn"),
+    AppLocale("sr-rSP", "sr"),
+    AppLocale("sv-rSE", "sv"),
+    AppLocale("sw-rKE", "sw"),
+    AppLocale("ta-rIN", "ta"),
+    AppLocale("te-rIN", "te"),
+    AppLocale("th-rTH", "th"),
+    AppLocale("tr-rTR", "tr"),
+    AppLocale("uk-rUA", "uk"),
+    AppLocale("ur-rIN", "ur"),
+    AppLocale("uz-rUZ", "uz"),
+    AppLocale("vi-rVN", "vi"),
+    AppLocale("zh-rCN", "zh-rCN"),
+    AppLocale("zh-rTW", "zh-rTW"),
+    AppLocale("zu-rZA", "zu"),
+    // Languages not found in YouTube.
+    AppLocale("ga-rIE", "ga", isBuiltInLanguage = false)
 )
 
-/**
- * Apps to include in finalize.
- */
-private val appsToInclude = mutableSetOf<AppId>()
+private val appsToInclude = mutableSetOf<String>()
 
-/**
- * Stage a single resource for a given value.
- */
-private fun addResource(resources: MutableMap<Value, AppResources>, value: Value, resource: BaseResource) {
-    resources.getOrPut(value, ::mutableSetOf).add(resource)
-}
+private val defaultResourcesAdded = mutableSetOf<String>()
 
 internal val addResourcesPatch = resourcePatch(
     description = "Add resources such as strings or arrays to the app."
 ) {
 
     finalize {
-        val resources: MutableMap<Value, AppResources> = mutableMapOf()
-
-        /**
-         * Add all resources from a single XML file
-         */
         fun addResourcesFromFile(
-            resources: MutableMap<Value, AppResources>,
-            appId: AppId,
-            locale: Value,
-            resourceType: String,
-            transform: (Node) -> BaseResource
+            appId: String,
+            locale: AppLocale,
+            resourceType: String
         ) {
-            val resourceSubPath = "$locale/$appId/$resourceType.xml"
+            val isDefaultLocale = locale.isDefaultLocale()
+            val srcSubPath = "${locale.getSrcLocaleFolderName()}/$appId/$resourceType.xml"
+            val destSubPath = "res/${locale.getDestLocaleFolderName()}/$resourceType.xml"
 
-            inputStreamFromBundledResource("addresources", resourceSubPath)?.use { stream ->
-                document(stream).use { doc ->
-                    doc.getElementsByTagName("resources").item(0)?.forEachChildElement { node ->
-                        addResource(resources, locale, transform(node))
+            inputStreamFromBundledResource(
+                "addresources", srcSubPath
+            )?.use { srcStream ->
+                val destFile = this@finalize[destSubPath]
+                if (!destFile.exists()) {
+                    if (locale.isBuiltInLanguage) {
+                        throw IllegalStateException(
+                            "Expected to find locale: $locale but file not found: $destFile"
+                        )
+                    }
+
+                    destFile.parentFile?.mkdirs()
+                    if (!destFile.createNewFile()) throw IllegalStateException()
+                    destFile.writeText(
+                        "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
+                    )
+                }
+
+                document(destSubPath).use { destDoc ->
+                    val destResourceNode = destDoc.getNode("resources")
+
+                    document(srcStream).use { srcDoc ->
+                        srcDoc.getElementsByTagName(
+                            "resources"
+                        ).item(0)?.forEachChildElement { srcNode ->
+                            val resourceName = srcNode.getAttributeNode("name").value
+
+                            if (isDefaultLocale) {
+                                if (!defaultResourcesAdded.add(resourceName)) {
+                                    Logger.getLogger(StringResource.javaClass.name).warning(
+                                        "Duplicate string resource is declared: $resourceName"
+                                    )
+                                    return@forEachChildElement
+                                }
+                            } else if (!defaultResourcesAdded.contains(resourceName)) {
+                                // TODO: Enable when patcher/CLI supports debug/dev logging.
+                                if (false)
+                                    Logger.getLogger(StringResource.javaClass.name).log(
+                                        Level.INFO
+                                    ) {
+                                        "Ignoring removed resource for locale: " +
+                                                "${locale.getSrcLocaleFolderName()} " +
+                                                "resource: $resourceName"
+                                    }
+                                return@forEachChildElement
+                            }
+
+                            val importedSrcNode = destDoc.importNode(srcNode, true)
+                            destResourceNode.appendChild(importedSrcNode)
+                        }
                     }
                 }
-            } // FIXME //?: throw IllegalArgumentException("Could not find: $resourceSubPath")
+            } ?: {
+                // Localized arrays are optional, but string files are expected.
+                if (resourceType == "string") {
+                    throw IllegalArgumentException("Could not find: $srcSubPath")
+                }
+            }
         }
 
         appsToInclude.forEach { app ->
-            // Default English.
-            addResourcesFromFile(resources, app, "values", "strings", StringResource::fromNode)
-            addResourcesFromFile(resources, app, "values", "arrays", ArrayResource::fromNode)
-
-            // Localized.
-            locales.forEach { (src, _) ->
-                addResourcesFromFile(resources, app, "values-$src", "strings", StringResource::fromNode)
-                addResourcesFromFile(resources, app, "values-$src", "arrays", ArrayResource::fromNode)
+            locales.forEach { locale ->
+                addResourcesFromFile(app, locale, "strings")
+                addResourcesFromFile(app, locale, "arrays")
             }
         }
-
-
-        operator fun MutableMap<String, Pair<Document, Node>>.invoke(value: Value, resource: BaseResource) {
-            val resourceFileName =
-                when (resource) {
-                    is StringResource -> "strings"
-                    is ArrayResource -> "arrays"
-                    else -> throw NotImplementedError("Unsupported resource type")
-                }
-
-            getOrPut(resourceFileName) {
-                val fileName = "res/$value/$resourceFileName.xml"
-                // Create if not present.
-                this@finalize[fileName].also {
-                    it.parentFile?.mkdirs()
-                    if (it.createNewFile()) {
-                        it.writeText("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>")
-                    }
-                }
-
-                val doc = document(fileName)
-                doc to doc.getNode("resources")
-            }.let { (_, targetNode) ->
-                targetNode.addResource(resource) { invoke(value, it) }
-            }
-        }
-
-        // Write resources to disk using the original operator pattern.
-        val documents = mutableMapOf<String, Pair<Document, Node>>()
-
-        resources.forEach { (value, appResources) ->
-            appResources.forEach { resource ->
-                documents(value, resource)
-            }
-        }
-
-        documents.values.forEach { (doc, _) -> doc.close() }
     }
 }
 

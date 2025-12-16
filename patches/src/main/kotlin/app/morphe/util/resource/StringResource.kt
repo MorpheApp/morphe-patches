@@ -14,8 +14,7 @@ import java.util.logging.Logger
  */
 class StringResource(
     name: String,
-    val value: String,
-    val formatted: Boolean = true,
+    val value: String
 ) : BaseResource(name, "string") {
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {
@@ -45,20 +44,18 @@ class StringResource(
                 return this
             }
 
-            // if the string is un-formatted, explicitly add the formatted attribute
-            if (!formatted) setAttribute("formatted", "false")
-
             textContent = value.validateAndroidStringEscaping()
         }
+
+    override fun toString(): String {
+        return "StringResource(value='$value')"
+    }
 
     companion object {
         fun fromNode(node: Node): StringResource {
             val name = node.attributes.getNamedItem("name").textContent
             val value = node.textContent
-            // TODO: Should this be true by default? It is too in the constructor of StringResource.
-            val formatted = node.attributes.getNamedItem("formatted")?.textContent?.toBoolean() ?: true
-
-            return StringResource(name, value, formatted)
+            return StringResource(name, value)
         }
     }
 }
