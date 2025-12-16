@@ -46,6 +46,21 @@ internal object PlayerInitFingerprint : Fingerprint(
 )
 
 /**
+ * Matches using class found in [PlayerInitFingerprint].
+ */
+internal object PlayerStatusFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            definingClass = "Lj${'$'}/time/Instant;",
+            name = "plus"
+        ),
+    )
+)
+
+/**
  * Matched using class found in [PlayerInitFingerprint].
  */
 internal object SeekFingerprint : Fingerprint(
@@ -120,20 +135,6 @@ internal object SeekRelativeFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.ADD_LONG_2ADDR,
         Opcode.INVOKE_VIRTUAL,
-    )
-)
-
-internal object VideoEndFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf("J", "L"),
-    filters = listOf(
-        methodCall(
-            parameters = listOf(),
-            returnType = "V"
-        ),
-        literal(45368273L, location = InstructionLocation.MatchAfterWithin(5)),
-        string("Attempting to seek when video is not playing"),
     )
 )
 

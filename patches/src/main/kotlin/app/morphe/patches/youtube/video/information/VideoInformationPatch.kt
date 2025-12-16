@@ -73,7 +73,7 @@ private var speedSelectionValueRegister = -1
 private lateinit var setPlaybackSpeedMethod: MutableMethod
 private var setPlaybackSpeedMethodIndex = -1
 
-internal lateinit var videoEndMethod: MutableMethod
+internal lateinit var playerStatusMethod: MutableMethod
 
 // Used by other patches.
 internal lateinit var setPlaybackSpeedContainerClassFieldReference: FieldReference
@@ -150,9 +150,8 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        VideoEndFingerprint.let {
-            videoEndMethod = navigate(it.originalMethod).to(it.instructionMatches[0].index).stop()
-        }
+        playerStatusMethod =
+            PlayerStatusFingerprint.match(PlayerInitFingerprint.originalClassDef).method
 
         /*
          * Inject call for video ids
