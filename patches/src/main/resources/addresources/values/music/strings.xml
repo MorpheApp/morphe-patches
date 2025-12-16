@@ -19,20 +19,24 @@ Second \"item\" text"</string>
     <string name="morphe_custom_branding_name_entry_2" translatable="false">YT Music Morphe</string>
     <string name="morphe_custom_branding_name_entry_3" translatable="false">Music Morphe</string>
     <string name="morphe_custom_branding_name_entry_4" translatable="false">Music</string>
+
     <!-- misc.settings.settingsPatch -->
     <string name="morphe_settings_music_screen_0_about_title">About</string>
     <string name="morphe_settings_music_screen_1_ads_title">Ads</string>
     <string name="morphe_settings_music_screen_2_general_title">General</string>
     <string name="morphe_settings_music_screen_3_player_title">Player</string>
     <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
+
     <!-- ad.video.hideVideoAdsPatch -->
     <string name="morphe_music_hide_video_ads_title">Hide video ads</string>
     <string name="morphe_music_hide_video_ads_summary_on">Video ads are hidden</string>
     <string name="morphe_music_hide_video_ads_summary_off">Video ads are shown</string>
+
     <!-- interaction.permanentrepeat.permanentRepeatPatch -->
     <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
     <string name="morphe_music_play_permanent_repeat_summary_on">Permanent repeat is enabled</string>
     <string name="morphe_music_play_permanent_repeat_summary_off">Permanent repeat is disabled</string>
+
     <!-- layout.buttons.hideButtons -->
     <string name="morphe_music_hide_cast_button_title">Hide cast button</string>
     <string name="morphe_music_hide_cast_button_summary_on">Cast button is hidden</string>
@@ -46,14 +50,17 @@ Second \"item\" text"</string>
     <string name="morphe_music_hide_search_button_title">Hide search button</string>
     <string name="morphe_music_hide_search_button_summary_on">Search button is hidden</string>
     <string name="morphe_music_hide_search_button_summary_off">Search button is shown</string>
+
     <!-- layout.compactheader.hideCategoryBar -->
     <string name="morphe_music_hide_category_bar_title">Hide category bar</string>
     <string name="morphe_music_hide_category_bar_summary_on">Category bar is hidden</string>
     <string name="morphe_music_hide_category_bar_summary_off">Category bar is shown</string>
+
     <!-- layout.miniplayercolor.changeMiniplayerColor -->
     <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
     <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer color matches fullscreen player</string>
     <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer uses default color</string>
+
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
     <string name="morphe_music_navigation_bar_screen_summary">Hide or change navigation bar buttons</string>
@@ -83,10 +90,12 @@ Second \"item\" text"</string>
     <string name="morphe_music_hide_navigation_bar_labels_title">Hide navigation button labels</string>
     <string name="morphe_music_hide_navigation_bar_labels_summary_on">Labels are hidden</string>
     <string name="morphe_music_hide_navigation_bar_labels_summary_off">Labels are shown</string>
+
     <!-- layout.premium.hideGetPremiumPatch -->
     <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
     <string name="morphe_music_hide_get_premium_label_summary_on">Label is hidden</string>
     <string name="morphe_music_hide_get_premium_label_summary_off">Label is shown</string>
+
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
     <string name="morphe_music_hide_upgrade_button_summary_on">Button is hidden</string>
