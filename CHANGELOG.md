@@ -1,18 +1,3 @@
-# [1.0.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2025-12-16)
-
-
-### Bug Fixes
-
-* **AddResources:** Change resource system to per app, remove per patch resource system that is problematic with Crowdin ([#12](https://github.com/MorpheApp/morphe-patches/issues/12)) ([3d8b223](https://github.com/MorpheApp/morphe-patches/commit/3d8b223e390004ace9c02e138e708477e3d220ae))
-* **YouTube - Hide player flyout menu items:** Hide additional menu items with 20.22+ ([734bfb3](https://github.com/MorpheApp/morphe-patches/commit/734bfb344e846339378a3aa5bb050b01a6b76223))
-
-# [1.0.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2025-12-16)
-
-
-### Bug Fixes
-
-* **YouTube - Hide video action buttons:** Update hide like and subscribe button glow for 20.22+ ([0fec09c](https://github.com/MorpheApp/morphe-patches/commit/0fec09c816cc2584e279d5290d082d391136bc0b))
-
 # [1.0.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.10...v1.0.0-dev.11) (2025-12-15)
 
 
