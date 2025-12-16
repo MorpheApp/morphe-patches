@@ -130,7 +130,8 @@ internal val addResourcesPatch = resourcePatch(
             resourceType: String
         ) {
             val isDefaultLocale = locale.isDefaultLocale()
-            val srcSubPath = "${locale.getSrcLocaleFolderName()}/$appId/$resourceType.xml"
+            val srcFolderName = locale.getSrcLocaleFolderName()
+            val srcSubPath = "$srcFolderName/$appId/$resourceType.xml"
             val destSubPath = "res/${locale.getDestLocaleFolderName()}/$resourceType.xml"
 
             inputStreamFromBundledResource(
@@ -155,28 +156,33 @@ internal val addResourcesPatch = resourcePatch(
                     val destResourceNode = destDoc.getNode("resources")
 
                     document(srcStream).use { srcDoc ->
+                        // Check for bad localized files with duplicate strings.
+                        val localeStringsAdded = mutableSetOf<String>()
+
                         srcDoc.getElementsByTagName(
                             "resources"
                         ).item(0)?.forEachChildElement { srcNode ->
                             val resourceName = srcNode.getAttributeNode("name").value
 
+                            fun getLogger(): Logger = Logger.getLogger(StringResource.javaClass.name)!!
+
+                            if (!localeStringsAdded.add(resourceName)) {
+                                getLogger().warning(
+                                    "Duplicate string resource is declared: $srcFolderName " +
+                                            "resource: $resourceName"
+                                )
+                                return@forEachChildElement
+                            }
+
                             if (isDefaultLocale) {
-                                if (!defaultResourcesAdded.add(resourceName)) {
-                                    Logger.getLogger(StringResource.javaClass.name).warning(
-                                        "Duplicate string resource is declared: $resourceName"
-                                    )
-                                    return@forEachChildElement
-                                }
+                                // Duplicate check alreday handled above.
+                                defaultResourcesAdded.add(resourceName)
                             } else if (!defaultResourcesAdded.contains(resourceName)) {
                                 // TODO: Enable when patcher/CLI supports debug/dev logging.
-                                if (false)
-                                    Logger.getLogger(StringResource.javaClass.name).log(
-                                        Level.INFO
-                                    ) {
-                                        "Ignoring removed resource for locale: " +
-                                                "${locale.getSrcLocaleFolderName()} " +
-                                                "resource: $resourceName"
-                                    }
+                                if (false) getLogger().log(Level.INFO) {
+                                    "Ignoring removed default resource for locale (Issue will be fixed after next Crowdin sync): " +
+                                            "$srcFolderName resource: $resourceName"
+                                }
                                 return@forEachChildElement
                             }
 
