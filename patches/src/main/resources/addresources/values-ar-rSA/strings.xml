@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">اسم التطبيق</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
   <string name="morphe_custom_branding_icon_entry_1">الأصلية</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">لا تعرض مرة أخرى</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">الإعدادات</string>
   <string name="morphe_settings_confirm_user_dialog_title">هل أنت متأكد أنك تريد المتابعة؟</string>
   <string name="morphe_settings_save">حفظ</string>
@@ -80,8 +77,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_header">الروابط الرسمية</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">إعدادات GmsCore</string>
   <string name="microg_settings_summary">إعدادات لـ GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ Second \"item\" text"</string>
 
 انقر فوق زر الاستمرار واسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
   <string name="morphe_spoof_video_streams_screen_summary">تزييف تدفقات الفيديو الخاصة بالعميل لمنع حدوث مشكلات أثناء التشغيل</string>
   <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
@@ -114,15 +111,15 @@ Second \"item\" text"</string>
 قد لا يعمل تشغيل الفيديو"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
   <string name="morphe_spoof_video_streams_client_type_title">العميل الافتراضي</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_on">استخدام لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_off">استخدام الصوت الافتراضي</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams إلى أي عميل باستثناء Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">تصحيح الأخطاء</string>
   <string name="morphe_debug_screen_summary">تمكين أو تعطيل خيارات تصحيح الأخطاء</string>
   <string name="morphe_debug_title">تسجيل تصحيح الأخطاء</string>
@@ -154,18 +151,18 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">تم حفظ Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">تم إعادة تعيين Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Flags إلى الحافظة</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
   <string name="morphe_sanitize_sharing_links_summary_on">تمت إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
   <string name="morphe_sanitize_sharing_links_summary_off">لم تتم إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
   <string name="morphe_replace_music_with_youtube_title">تغيير روابط المشاركة إلى youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">تستخدم روابط المشاركة youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">تستخدم روابط المشاركة music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">لمحة</string>
   <string name="morphe_settings_screen_01_ads_title">الإعلانات</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">مصغرات فيديو بديلة</string>
@@ -179,13 +176,13 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">استعادة قوائم الإعدادات القديمة</string>
   <string name="morphe_restore_old_settings_menus_summary_on">يتم عرض قوائم الإعدادات القديمة</string>
   <string name="morphe_restore_old_settings_menus_summary_off">لا يتم عرض قوائم الإعدادات القديمة</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">تعطيل تشغيل فيديوهات Shorts في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">تم تعطيل تشغيل Shorts بالخلفية</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">تم تمكين تشغيل Shorts بالخلفية</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">سجل بروتوكول التخزين المؤقت</string>
   <string name="morphe_debug_protobuffer_summary_on">تتضمن سجلات التصحيح التخزين المؤقت</string>
   <string name="morphe_debug_protobuffer_summary_off">لا تتضمن سجلات التصحيح التخزين المؤقت</string>
@@ -194,8 +191,8 @@ Second \"item\" text"</string>
 يمكن أن يساعد هذا في تحديد المكونات عند إنشاء عوامل تصفية مخصصة.
 
 ومع ذلك، سيؤدي تمكين هذا أيضًا إلى تسجيل بعض بيانات المستخدم مثل عنوان IP الخاص بك."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">إخفاء بطاقات الألبوم</string>
   <string name="morphe_hide_album_cards_summary_on">تم إخفاء بطاقات الألبوم</string>
   <string name="morphe_hide_album_cards_summary_off">يتم عرض بطاقات الألبوم</string>
@@ -465,8 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">الكلمة المفتاحية بها تعريفات متعارضة: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">الكلمة المفتاحية قصيرة جدًا وتتطلب اقتباسات: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">الكلمة المفتاحية سوف تخفي جميع الفيديوهات: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">إخفاء رف متجر المنشئ</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">تم إخفاء رف متجر المنشئ أسفل مشغل الفيديو</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">يتم عرض رف متجر المنشئ أسفل مشغل الفيديو</string>
@@ -501,18 +498,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">إخفاء نتائج بحث الويب</string>
   <string name="morphe_hide_web_search_results_summary_on">تم إخفاء نتائج البحث على الويب</string>
   <string name="morphe_hide_web_search_results_summary_off">يتم عرض نتائج البحث على الويب</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">إخفاء ترقية YouTube Premium</string>
   <string name="morphe_hide_get_premium_summary_on">تم إخفاء عروض YouTube Premium الترويجية تحت مشغل الفيديو</string>
   <string name="morphe_hide_get_premium_summary_off">يتم إظهار عروض YouTube Premium الترويجية تحت مشغل الفيديو</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">تم نسخ URL إلى الحافظة</string>
   <string name="morphe_share_copy_url_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني</string>
   <string name="morphe_copy_video_url_title">عرض زر نسخ عنوان URL للفيديو</string>
@@ -521,24 +518,24 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_timestamp_title">عرض زر نسخ URL مع الطابع الزمني</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">يتم عرض الزر. انقر لنسخ عنوان URL للفيديو مع الطابع الزمني. انقر مع الاستمرار للنسخ بدون الطابع الزمني</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">لا يتم عرض الزر</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">إزالة مربع حوار تقدير المشاهد</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">سيتم إزالة مربع الحوار</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">سيتم عرض مربع الحوار</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">وهذا لا يتجاوز قيود السن. بل يقبلها تلقائيًا.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">تعطيل النافذة المنبثقة لتسجيل الدخول إلى التلفزيون</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">تم تعطيل نافذة تسجيل الدخول إلى التلفزيون</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">تم تمكين نافذة تسجيل الدخول إلى التلفزيون</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">تعطيل تخطي الفصل بالنقر المزدوج</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">لا يمكن للنقر المزدوج مطلقًا أن يؤدي إلى تخطي الفصل التالي/السابق</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">يمكن للنقر المزدوج أن يؤدي أحيانًا إلى تخطي الفصل التالي/السابق</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">التنزيلات الخارجية</string>
   <string name="morphe_external_downloader_screen_summary">إعدادات لاستخدام أداة التنزيل الخارجية</string>
   <string name="morphe_external_downloader_title">عرض زر التنزيل الخارجي</string>
@@ -558,18 +555,18 @@ Second \"item\" text"</string>
 
 تأكد من أن اسم الحزمة صحيح وأن التطبيق مثبت"</string>
   <string name="morphe_external_downloader_empty_warning">لا يمكن أن يكون اسم الحزمة فارغًا</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">تم تمكين إيماءة التمرير الدقيقة</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">تمكين النقر للتمرير</string>
   <string name="morphe_seekbar_tapping_summary_on">تم تمكين النقر للتمرير</string>
   <string name="morphe_seekbar_tapping_summary_off">تم تعطيل النقر للتمرير</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">تمكين إيماءة السطوع</string>
   <string name="morphe_swipe_brightness_summary_on">"تم تمكين إيماءة مستوى السطوع في وضع ملء الشاشة
 
@@ -620,13 +617,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">تمكين إيماءة التمرير لتغيير الفيديوهات</string>
   <string name="morphe_swipe_change_video_summary_on">سيؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <string name="morphe_swipe_change_video_summary_off">لن يؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">تعطيل الترجمة التلقائية</string>
   <string name="morphe_disable_auto_captions_summary_on">تم تعطيل الترجمة التلقائية</string>
   <string name="morphe_disable_auto_captions_summary_off">تم تمكين الترجمة التلقائية</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">أزرار الإجراء</string>
   <string name="morphe_hide_buttons_screen_summary">إخفاء أو عرض الأزرار تحت الفيديوهات</string>
   <string name="morphe_disable_like_subscribe_glow_title">تعطيل توهج الإعجاب والاشتراك</string>
@@ -690,8 +687,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">إخفاء حفظ</string>
   <string name="morphe_hide_save_button_summary_on">تم إخفاء زر حفظ</string>
   <string name="morphe_hide_save_button_summary_off">يتم عرض زر حفظ</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">أزرار التنقل</string>
   <string name="morphe_navigation_buttons_screen_summary">إخفاء أو تغيير الأزرار في شريط التنقل</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">تعطيل الشريط الشفاف الداكن</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">شريط التنقل في الوضع الداكن غير شفاف</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">شريط التنقل في الوضع الداكن معتم او شفاف</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
   <string name="morphe_hide_player_flyout_summary">إخفاء أو عرض عناصر قائمة المشغل المنبثقة</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">إخفاء تذييل قائمة جودة الفيديو</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">تم إخفاء تذييل قائمة جودة الفيديو</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">يتم عرض تذييل قائمة جودة الفيديو</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">إخفاء زر التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_button_summary_on">تم إخفاء زر التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_button_summary_off">يتم عرض زر التشغيل التلقائي</string>
@@ -814,28 +811,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">تم إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">يتم عرض أزرار السابق &amp; التالي</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">إخفاء بطاقات شاشة النهاية</string>
   <string name="morphe_hide_endscreen_cards_summary_on">تم إخفاء بطاقات شاشة النهاية</string>
   <string name="morphe_hide_endscreen_cards_summary_off">يتم عرض بطاقات شاشة النهاية</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">تعطيل وضع الإضاءة السينمائية في ملء الشاشة</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">تم تعطيل وضع الإضاءة السينمائية</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">تم تمكين وضع الإضاءة السينمائية</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">إخفاء بطاقات المعلومات</string>
   <string name="morphe_hide_info_cards_summary_on">تم إخفاء بطاقات المعلومات</string>
   <string name="morphe_hide_info_cards_summary_off">يتم عرض بطاقات المعلومات</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">تعطيل عدد مرات المشاهدة والإعجابات في الوقت الفعلي</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">عدد مرات المشاهدة والإعجابات غير متحركة</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">عدد مرات المشاهدة والإعجابات متحركة</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">إخفاء شريط تقدم مشغل الفيديو</string>
   <string name="morphe_hide_seekbar_summary_on">تم إخفاء شريط تقدم الفيديو</string>
   <string name="morphe_hide_seekbar_summary_off">يتم عرض شريط تقدم الفيديو</string>
@@ -843,8 +840,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_title">إخفاء شريط تقدم مصغرات الفيديو</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">تم إخفاء شريط تقدم مصغرات الفيديو</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">يتم عرض شريط تقدم مصغرات الفيديو</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">مشغل Shorts</string>
   <string name="morphe_shorts_player_screen_summary">إخفاء أو عرض مكونات مشغل Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,48 +954,48 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">تم إخفاء شريط التنقل</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">يتم عرض شريط التنقل</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">إخفاء الفيديو المقترح في شاشة النهاية</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"تم إخفاء الفيديو المقترح في شاشة النهاية عند إيقاف التشغيل التلقائي
 
 يمكن تغيير التشغيل التلقائي في إعدادات YouTube:
 الإعدادات ← التشغيل ← تشغيل الفيديو التالي تلقائيًا"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">يتم عرض الفيديو المقترح في شاشة النهاية</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">إخفاء واجهة الفيديوهات ذات الصلة</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">تم إخفاء واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">يتم عرض واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">إخفاء الطابع الزمني للفيديو</string>
   <string name="morphe_hide_timestamp_summary_on">تم إخفاء الطابع الزمني</string>
   <string name="morphe_hide_timestamp_summary_off">يتم عرض الطابع الزمني</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">إخفاء لوحات المشغل المنبثقة</string>
   <string name="morphe_hide_player_popup_panels_summary_on">تم إخفاء لوحات المشغل المنبثقة</string>
   <string name="morphe_hide_player_popup_panels_summary_off">يتم عرض لوحات المشغل المنبثقة</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">الخروج من وضع ملء الشاشة عند انتهاء الفيديو</string>
   <string name="morphe_exit_fullscreen_entry_1">معطل</string>
   <string name="morphe_exit_fullscreen_entry_2">بالطول</string>
   <string name="morphe_exit_fullscreen_entry_3">بالعرض</string>
   <string name="morphe_exit_fullscreen_entry_4">بالطول والعرض</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">فتح الفيديوهات في ملء الشاشة</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">يتم فتح الفيديوهات في وضع ملء الشاشة</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">لا يتم فتح الفيديوهات في وضع ملء الشاشة</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">شفافية واجهة المشغل</string>
   <string name="morphe_player_overlay_opacity_summary">قيمة الشفافية بين 0-100، حيث يكون 0 شفاف</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">شفافية واجهة المشغل يجب أن تكون بين 0-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">لم يعجبني غير متاح مؤقتًا (انتهت مهلة API)</string>
   <string name="morphe_ryd_failure_connection_status_code">لم يعجبني غير متاح (الحالة %d)</string>
@@ -1046,13 +1043,13 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">لا توجد حدود لمعدل العميل</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">تم مواجهة حد معدل العميل %d مرة</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d جزء الثانية</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">تمكين شريط البحث العريض</string>
   <string name="morphe_wide_searchbar_summary_on">تم تمكين شريط البحث العريض</string>
   <string name="morphe_wide_searchbar_summary_off">تم تعطيل شريط البحث العريض</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">تمكين المصغرات عالية الجودة</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">مصغرات شريط التقدم عالية الجودة</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">مصغرات شريط التقدم متوسطة الجودة</string>
@@ -1064,8 +1061,8 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_seekbar_thumbnails_title">استعادة مصغرات شريط التقدم القديمة</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">مصغرات شريط التقدم ستظهر فوق شريط تقدم الفيديو</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">مصغرات شريط التقدم ستظهر في ملء الشاشة</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">تمكين SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">مانع الرُعَاة هو نظام جماعي لتخطي الأجزاء المزعجة من فيديوهات YouTube</string>
   <string name="morphe_sb_appearance_category">المظهر</string>
@@ -1276,8 +1273,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_dot_label">اللون:</string>
   <string name="morphe_sb_about_title">لمحة</string>
   <string name="morphe_sb_about_api_summary">يتم توفير البيانات بواسطة SponsorBlock API. انقر هنا لمعرفة المزيد والتنزيل لمنصات أخرى</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">شكل نموذج التخطيط</string>
   <string name="morphe_change_form_factor_entry_1">الافتراضي</string>
   <string name="morphe_change_form_factor_entry_2">الجوّال</string>
@@ -1291,8 +1288,8 @@ Second \"item\" text"</string>
 تصميم Automotive
 • يتم فتح Shorts في المشغل العادي
 • يتم تنظيم الموجز حسب المواضيع والقنوات"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">إصدار تطبيق وهمي</string>
   <string name="morphe_spoof_app_version_summary_on">تم تغيير اصدار التطبيق</string>
   <string name="morphe_spoof_app_version_summary_off">لم يتم تغيير اصدار التطبيق</string>
@@ -1306,8 +1303,8 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - استعادة وظيفة النسخ</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - استعادة أيقونات مشغل Shorts القديمة</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - استعادة أيقونات التنقل القديمة</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">تغيير صفحة البداية</string>
   <string name="morphe_change_start_page_entry_default">الافتراضي</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">كلّ الاشتراكات</string>
@@ -1338,27 +1335,27 @@ Second \"item\" text"</string>
 
 التقييد: قد لا يعمل استخدام زر الرجوع على شريط الأدوات"</string>
   <string name="morphe_change_start_page_always_summary_off">يتم تغيير صفحة البداية فقط عند بدء تشغيل التطبيق</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">تعطيل استئناف مشغل Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">لن يتم استئناف تشغيل مشغل Shorts عند بدء تشغيل التطبيق</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">سيتم استئناف تشغيل مشغل Shorts عند بدء تشغيل التطبيق</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">فتح فيديوهات Shorts باستخدام</string>
   <string name="morphe_shorts_player_type_shorts">مشغل Shorts</string>
   <string name="morphe_shorts_player_type_regular_player">المشغل العادي</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">المشغل العادي في وضع ملء الشاشة</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">التشغيل التلقائي لفيديوهات Shorts</string>
   <string name="morphe_shorts_autoplay_summary_on">سيتم تشغيل فيديوهات Shorts تلقائيًا</string>
   <string name="morphe_shorts_autoplay_summary_off">سيتم تكرار فيديوهات Shorts</string>
   <string name="morphe_shorts_autoplay_background_title">تشغيل فيديوهات Shorts تلقائيًا في الخلفية</string>
   <string name="morphe_shorts_autoplay_background_summary_on">سيتم تشغيل فيديوهات Shorts تلقائيًا في الخلفية</string>
   <string name="morphe_shorts_autoplay_background_summary_off">سيتم تكرار فيديوهات Shorts في الخلفية</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_miniplayer_screen_summary">تغيير نمط المشغل المصغر داخل التطبيق</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
@@ -1404,8 +1401,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">شفافية الواجهة</string>
   <string name="morphe_miniplayer_opacity_summary">قيمة الشفافية بين 0-100، حيث يكون 0 شفاف</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">شفافية واجهة المشغل المصغر يجب أن تكون بين 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">تمكين شاشة التحميل المتدرجة</string>
   <string name="morphe_gradient_loading_screen_summary_on">ستحتوي شاشة التحميل على خلفية متدرجة</string>
   <string name="morphe_gradient_loading_screen_summary_off">ستحتوي شاشة التحميل على خلفية ثابتة</string>
@@ -1420,24 +1417,24 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">لون تمييز شريط التقدم المخصص</string>
   <string name="morphe_seekbar_custom_color_accent_summary">لون تمييز شريط التقدم</string>
   <string name="morphe_seekbar_custom_color_invalid">لون شريط التقدم غير صالح</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">علامة الشعار</string>
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_2">القياسي</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe minimal</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">تجاوز قيود منطقة الصورة</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">استخدام مضيف الصورة yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"استخدام مضيف الصور الأصلي
 
 تمكين هذا يمكن إصلاح الصور المفقودة التي يتم حظرها في بعض المناطق"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">علامة التبويب الصفحة الرئيسية</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1472,28 +1469,28 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow غير متوفر مؤقتًا (رمز الحالة: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow غير متوفر مؤقتًا</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">عرض إعلانات Morphe</string>
   <string name="morphe_announcements_summary_on">يتم عرض الإعلانات عند بدء التشغيل</string>
   <string name="morphe_announcements_summary_off">لا يتم عرض الإعلانات عند بدء التشغيل</string>
   <string name="morphe_announcements_enabled_summary">عرض الإعلانات عند بدء التشغيل</string>
   <string name="morphe_announcements_connection_failed">فشل الاتصال بموفر الإعلانات</string>
   <string name="morphe_announcements_dialog_dismiss">تجاهل</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
   <string name="morphe_loop_video_summary_on">سيتم تكرار الفيديو</string>
   <string name="morphe_loop_video_summary_off">لن يتم تكرار الفيديو</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">عرض زر تكرار الفيديو</string>
   <string name="morphe_loop_video_button_summary_on">يتم عرض الزر</string>
   <string name="morphe_loop_video_button_summary_off">لا يتم عرض الزر</string>
   <string name="morphe_loop_video_button_toast_on">تكرار الفيديو قيد التشغيل</string>
   <string name="morphe_loop_video_button_toast_off">تكرار الفيديو متوقف</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">تزوير أبعاد الجهاز</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"تم تزييف أبعاد الجهاز
 
@@ -1502,8 +1499,8 @@ Second \"item\" text"</string>
 
 تفعيل هذا يمكن أن يفتح جودات فيديو أعلى"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">قد يؤدي تمكين هذا إلى تباطؤ تشغيل الفيديو وتدهور عمر البطارية وآثار جانبية غير معروفة.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">الاهتزاز عند الضغط</string>
   <string name="morphe_disable_haptic_feedback_summary">تغيير الاهتزاز عند الضغط</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">تعطيل الاهتزاز للفصول</string>
@@ -1518,21 +1515,21 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">تعطيل الاهتزاز عند التكبير</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">تم تعطيل الاهتزاز عند التكبير</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">تم تمكين الاهتزاز عند التكبير</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">إذا قمت مؤخرًا بتغيير تفاصيل تسجيل الدخول إلى حسابك، فقم بإلغاء تثبيت MicroG وإعادة تثبيته.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">تجاوز إعادة توجيه URL</string>
   <string name="morphe_bypass_url_redirects_summary_on">تم تجاوز إعادة توجيه عنوان URL</string>
   <string name="morphe_bypass_url_redirects_summary_off">لم يتم تجاوز إعادة توجيه عنوان URL</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">فتح الروابط في المتصفح</string>
   <string name="morphe_external_browser_summary_on">فتح الروابط في متصفح خارجي</string>
   <string name="morphe_external_browser_summary_off">فتح الروابط في متصفح داخل التطبيق</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">تلقائي</string>
   <string name="morphe_remember_video_quality_last_selected_title">تذكر تغييرات جودة الفيديو</string>
@@ -1552,18 +1549,18 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">تم تغيير جودة %1$s الافتراضية إلى: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">تم تغيير جودة Shorts %1$s إلى: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">عرض زر مربع حوار السرعة</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">يتم عرض الزر. انقر مع الاستمرار لإعادة ضبط سرعة التشغيل إلى الوضع الافتراضي</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">لا يتم عرض الزر</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">عرض زر جودة الفيديو</string>
   <string name="morphe_video_quality_dialog_button_summary_on">يتم عرض الزر. انقر مع الاستمرار لإعادة تعيين الجودة إلى الوضع الافتراضي</string>
   <string name="morphe_video_quality_dialog_button_summary_off">لا يتم عرض الزر</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">قائمة سرعة التشغيل المخصصة</string>
   <string name="morphe_custom_speed_menu_summary_on">يتم عرض قائمة سرعة التشغيل المخصصة</string>
   <string name="morphe_custom_speed_menu_summary_off">لا يتم عرض قائمة سرعة التشغيل المخصصة</string>
@@ -1577,8 +1574,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_auto">تلقائي</string>
   <string name="morphe_speed_tap_and_hold_title">سرعة النقر مع الاستمرار المخصصة</string>
   <string name="morphe_speed_tap_and_hold_summary">سرعة التشغيل بين 0-8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">تذكر تغييرات سرعة التشغيل</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">تطبيق تغييرات سرعة التشغيل على جميع الفيديوهات</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">تطبيق تغييرات سرعة التشغيل فقط على الفيديو الحالي</string>
@@ -1587,8 +1584,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">لا يتم عرض ملاحظة عند تغيير سرعة التشغيل الافتراضية</string>
   <string name="morphe_playback_speed_default_title">سرعة التشغيل الافتراضية</string>
   <string name="morphe_remember_playback_speed_toast">تغيير السرعة الافتراضية إلى: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">تم تعطيل فيديو HDR</string>
   <string name="morphe_disable_hdr_video_summary_off">تم تمكين فيديو HDR</string>
@@ -1604,18 +1601,18 @@ Second \"item\" text"</string>
 • تشغيل الفيديو سيستهلك المزيد من بيانات الإنترنت مقارنةً بـ VP9 أو AV1
 • لن تستخدم فيديوهات HDR ترميز AVC
 • لا يمكن لبعض الأجهزة فرض AVC"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">عرض قائمة جودة الفيديو المتقدمة</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">يتم عرض قائمة جودة الفيديو المتقدمة</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">لا يتم عرض قائمة جودة الفيديو المتقدمة</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary_on">تم تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary_off">تم تعطيل التمرير للتقديم أو الترجيع</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">السماح بـ Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"برنامج ترميز الفيديو هو AVC (H.264) أو VP9 أو AV1
 
@@ -1636,29 +1633,29 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">عرض في إحصاءات تقنية</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">يتم عرض نوع العميل في إحصاءات تقنية</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">تم إخفاء نوع العميل في إحصاءات تقنية</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">لمحة</string>
   <string name="morphe_settings_music_screen_1_ads_title">الإعلانات</string>
   <string name="morphe_settings_music_screen_2_general_title">عام</string>
   <string name="morphe_settings_music_screen_3_player_title">المشغل</string>
   <string name="morphe_settings_music_screen_4_misc_title">متنوعة</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <string name="morphe_music_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
   <string name="morphe_music_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">تمكين التكرار الدائم</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">تم تمكين التكرار الدائم</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">تم تعطيل التكرار الدائم</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">إخفاء زر البث</string>
   <string name="morphe_music_hide_cast_button_summary_on">تم إخفاء زر البث</string>
   <string name="morphe_music_hide_cast_button_summary_off">يتم عرض زر البث</string>
@@ -1671,18 +1668,18 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">إخفاء زر البحث</string>
   <string name="morphe_music_hide_search_button_summary_on">تم إخفاء زر البحث</string>
   <string name="morphe_music_hide_search_button_summary_off">يتم عرض زر البحث</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">إخفاء شريط الفئات</string>
   <string name="morphe_music_hide_category_bar_summary_on">تم إخفاء شريط الفئات</string>
   <string name="morphe_music_hide_category_bar_summary_off">يتم عرض شريط الفئات</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">تغيير لون المشغل المصغر</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">يستخدم المشغل المصغر اللون الافتراضي</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">شريط التنقل</string>
   <string name="morphe_music_navigation_bar_screen_summary">إخفاء أزرار شريط التنقل أو تغييرها</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1711,16 +1708,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">التسميات مخفية</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">التسميات ظاهرة</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">التسمية مخفية</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">التسمية معروضة</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">إخفاء زر الترقية</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">الزر مخفي</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">الزر معروض</string>
-  </patch>
-  </app>
+
+
 </resources>

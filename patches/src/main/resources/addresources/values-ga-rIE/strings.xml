@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ainm an aip</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
   <string name="morphe_custom_branding_icon_entry_1">Bunaidh</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is é is dóichí gur seachfhreastalaí fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt; Chun é seo a réiteach, déan liosta bán &lt;b&gt;s.youtube.com&lt;/b&gt; nó gach seachfhreastalaí DNS a mhúchadh.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ná taispeáin arís</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Socruithe</string>
   <string name="morphe_settings_confirm_user_dialog_title">An bhfuil tú cinnte gur mhaith leat dul ar aghaidh?</string>
   <string name="morphe_settings_save">Sábháil</string>
@@ -80,8 +77,8 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_links_header">Naisc oifigiúla</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">Socruithe GmsCore</string>
   <string name="microg_settings_summary">Socruithe le haghaidh GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ Ní chuirfidh díghníomhachtú optúimíochtaí ceallraí do MicroG isteach ar 
 
 Brúigh an cnaipe leanúnaí agus ligean athruithe optúimíochta."</string>
   <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
   <string name="morphe_spoof_video_streams_screen_summary">Déan sruthanna físe an chliaint a fhalsú chun fadhbanna athsheinm a chosc</string>
   <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
@@ -114,15 +111,15 @@ Mura bhfuil tú i d’úsáideoir YouTube Premium, b’fhéidir nach mbeidh an s
 Seans nach n-oibreoidh an t-athsheinm"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Má mhúchann tú an socrú seo, d\'fhéadfadh saincheisteanna athsheinm a theacht chun cinn.</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliant réamhshocraithe</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Fórsaigh teanga bhunaidh na fuaime</string>
   <string name="morphe_force_original_audio_summary_on">Ag úsáid teanga bhunaidh na fuaime</string>
   <string name="morphe_force_original_audio_summary_off">Ag úsáid fuaim réamhshocraithe</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Bréag-sruthanna físeáin\' chuig aon chliant seachas Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
   <string name="morphe_debug_screen_summary">Cumasaigh nó díchumasaigh roghanna dífhabhtú</string>
   <string name="morphe_debug_title">Dífhabhtú logáil</string>
@@ -154,18 +151,18 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha sábháilte</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Bratacha athshocraithe</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha cóipeáilte chuig an ngearrthaisce</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Glan na naisc roinnte</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Baintear an paraiméadar fiosrúcháin rianaithe de na naisc roinnte</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Ní bhaintear an paraiméadar fiosrúcháin rianaithe de na naisc roinnte</string>
   <string name="morphe_replace_music_with_youtube_title">Athraigh na naisc comhroinnte go youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Úsáideann naisc chomhroinnte youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Úsáideann naisc chomhroinnte music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">Maidir</string>
   <string name="morphe_settings_screen_01_ads_title">Fógraí</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Mionsamhlacha malartacha</string>
@@ -179,13 +176,13 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_restore_old_settings_menus_title">Athchóirigh sean-roghchláir socruithe</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Taispeántar sean-roghchláir socruithe</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Ní thaispeántar sean-roghchláir socruithe</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Díchumasaigh seinnte Cúlra Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Tá seinm chúlra Shorts díchumasaithe</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Tá seinm chúlra Shorts cumasaithe</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Maolán prótacal logála</string>
   <string name="morphe_debug_protobuffer_summary_on">Cuimsíonn logaí dífhabhtaithe maolán</string>
   <string name="morphe_debug_protobuffer_summary_off">Ní chuimsíonn logaí dífhabhtaithe maolán proto</string>
@@ -194,8 +191,8 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
 Is féidir leis seo cabhrú le comhpháirteanna a aithint agus scagairí saincheaptha á gcruthú.
 
 Mar sin féin, logálfaidh sé seo roinnt sonraí úsáideora freisin, mar shampla do sheoladh IP."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">Folaigh cártaí albam</string>
   <string name="morphe_hide_album_cards_summary_on">Tá cártaí albam i bhfolach</string>
   <string name="morphe_hide_album_cards_summary_off">Taispeántar cártaí albam</string>
@@ -465,8 +462,8 @@ Teorainneacha
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Tá dearbhuithe contrártha ag eochairfhocal: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Eochairfhocal ró-ghearr, teastaíonn luachana: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Folaigh eochairfhocal gach físeán: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Folaigh seilf siopa an chruthaitheora</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Seilf siopa an chruthaitheora faoin imreoir físeáin i bhfolach</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Taispeántar seilf siopa na gcruthaitheoirí faoin seinnteoir físeáin</string>
@@ -501,18 +498,18 @@ Níl an ghné seo ar fáil ach do ghléasanna níos sine"</string>
   <string name="morphe_hide_web_search_results_title">Folaigh torthaí cuardaigh gréasáin</string>
   <string name="morphe_hide_web_search_results_summary_on">Tá torthaí cuardaigh gréasáin i bhfolach</string>
   <string name="morphe_hide_web_search_results_summary_off">Taispeántar torthaí cuardaigh gréasáin</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Folaigh ardú céime YouTube Premium</string>
   <string name="morphe_hide_get_premium_summary_on">Tá cur chun cinn YouTube Premium faoi seinnteoir físe i bhfolach</string>
   <string name="morphe_hide_get_premium_summary_off">Taispeántar ardú céime YouTube Premium faoin seinnteoir físe</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Folaigh fógraí físe</string>
   <string name="morphe_hide_video_ads_summary_on">Tá fógraí físe i bhfolach</string>
   <string name="morphe_hide_video_ads_summary_off">Taispeántar fógraí físe</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">URL cóipeáilte chuig gearr</string>
   <string name="morphe_share_copy_url_timestamp_success">URL le stampa ama cóipeáilte</string>
   <string name="morphe_copy_video_url_title">Taispeáin an cnaipe cóipeála URL an fhíseáin</string>
@@ -521,24 +518,24 @@ Níl an ghné seo ar fáil ach do ghléasanna níos sine"</string>
   <string name="morphe_copy_video_url_timestamp_title">Taispeáin cnaipe URL stampa ama cóipeáil</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Taispeántar an cnaipe. Tapáil chun URL físeáin a chóipeáil le stampa ama. Tapáil agus coinnigh chun cóip a dhéanamh gan stampa ama</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Ní thaispeántar an cnaipe</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Bain dialóg rogha féachana</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Bainfear dialóg</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Taispeánfar dialóg</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Ní sheachnaíonn sé seo an srian aoise. Ní ghlacann sé leis go huathoibríoch.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Díchumasaigh an Aníos Sínigh Isteach sa Teilifís</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Tá preab aníos sínithe isteach sa teilifís díchumasaithe</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Tá preab aníos sínithe isteach sa teilifís cumasaithe</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Díchumasaigh scipeáil caibidle le sconna dúbailte</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Ní féidir léim go dtí an chéad chaibidil eile/roimhe seo a spreagadh le tapáil faoi dhó</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Is féidir le sconna dúbailte scipeáil chuig an gcéad chaibidil eile/roimhe seo a spreagadh ó am go chéile</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Íosluchtaigh seachtracha</string>
   <string name="morphe_external_downloader_screen_summary">Socruithe chun íoslódálaí seachtrach a úsáid</string>
   <string name="morphe_external_downloader_title">Taispeáin cnaipe íoslódála seachtrach</string>
@@ -556,18 +553,18 @@ Níl an ghné seo ar fáil ach do ghléasanna níos sine"</string>
   <string name="morphe_external_downloader_not_installed_warning">Níl %s suiteáilte. Suiteáil é le do thoil.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Níorbh fhéidir an aip suiteáilte a aimsiú le hainm an phacáiste: %s\n\nDeimhnigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"</string>
   <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh comhartha cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tá gotha ​​cuardaigh chruinn díchumasaithe</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Tá gotha ​​cuardaigh chruinn cumasaithe</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Cumasaigh tapáil chun cuardach a dhéanamh</string>
   <string name="morphe_seekbar_tapping_summary_on">Tá tapáil chun cuardach cumasaithe</string>
   <string name="morphe_seekbar_tapping_summary_off">Tá tapáil chun cuardach a dhíchumasaithe</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Cumasaigh gotha ​​gile</string>
   <string name="morphe_swipe_brightness_summary_on">"Tá swipeáil gile lánscáileáin cumasaithe
 
@@ -618,13 +615,13 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
   <string name="morphe_swipe_change_video_title">Cumasaigh svaidhpeáil chun físeáin a athrú</string>
   <string name="morphe_swipe_change_video_summary_on">Athróidh svaidhpeáil i mód lánscáileáin go dtí an chéad fhíseán eile/roimhe seo</string>
   <string name="morphe_swipe_change_video_summary_off">Ní athróidh svaidhpeáil i mód lánscáileáin go dtí an chéad fhíseán eile/roimhe seo</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Díchumasaigh fotheidil uathoibríocha</string>
   <string name="morphe_disable_auto_captions_summary_on">Tá fotheidil uathoibríocha díchumasaithe</string>
   <string name="morphe_disable_auto_captions_summary_off">Tá fotheidil uathoibríocha cumasaithe</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Cnaipí gníomhaíochta</string>
   <string name="morphe_hide_buttons_screen_summary">Folaigh nó taispeáin cnaipí faoi fhíseáin</string>
   <string name="morphe_disable_like_subscribe_glow_title">Díchumasaigh lonradh na cnaipí Cosúil / Liostáil</string>
@@ -688,8 +685,8 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
   <string name="morphe_hide_save_button_title">Folaigh Sábháil</string>
   <string name="morphe_hide_save_button_summary_on">Tá cnaipe sábhála i bhfolach</string>
   <string name="morphe_hide_save_button_summary_off">Taispeántar an cnaipe Sábháil</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Cnaipí nascleanúna</string>
   <string name="morphe_navigation_buttons_screen_summary">Folaigh nó athraigh cnaipí sa bharra nascleanúna</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -733,8 +730,8 @@ Mura dtagann aon athrú ar an socrú seo, bain triail as mód Incognito a chur a
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Díchumasaigh barra tréshoilseach dorcha</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Tá an barra nascleanúna i mód dorcha teimhneach</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tá barra nascleanúna mód dorcha teimhneach nó tréshoilseach</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Roghchlár Flyout</string>
   <string name="morphe_hide_player_flyout_summary">Folaigh nó taispeáin míreanna roghchlár flyout an imreora</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -794,8 +791,8 @@ Chun roghchlár an rian fuaime a thaispeáint, athraigh 'Sruthanna físeáin bhr
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Folaigh buntásc roghchlár cáilíochta físe</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Tá buntásc roghchláir cáilíochta físe i bhfolach</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Taispeántar buntásc roghchlár cáilíochta físeáin</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Folaigh an cnaipe Uath-imirt</string>
   <string name="morphe_hide_autoplay_button_summary_on">Tá an cnaipe uath-sheinm i bhfolach</string>
   <string name="morphe_hide_autoplay_button_summary_off">Taispeántar cnaipe Autoplay</string>
@@ -812,28 +809,28 @@ Chun roghchlár an rian fuaime a thaispeáint, athraigh 'Sruthanna físeáin bhr
   <string name="morphe_hide_player_previous_next_buttons_title">Folaigh cnaipí Roimhe Seo &amp; Ar Aghaidh</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Tá cnaipí Roimhe Seo &amp; Ar Aghaidh  i bhfolach</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Taispeántar cnaipí Roimhe Seo &amp; Ar Aghaidh</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Folaigh cártaí scáileáin deireadh</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Tá cártaí scáileáin deiridh i bhfolach</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Taispeántar cártaí scáileáin deireadh</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Díchumasaigh mód comhthimpeallach i lánscáileán</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Díchumasaíodh mód comhthimpeallach</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Mód comhthimpeallach cumasaithe</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Folaigh cártaí faisnéise</string>
   <string name="morphe_hide_info_cards_summary_on">Tá cártaí faisnéise i bhfolach</string>
   <string name="morphe_hide_info_cards_summary_off">Taispeántar cártaí faisnéise</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Díchumasaigh beochana uimhreacha rollta</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Ní bhíonn uimhreacha rollta beoite</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Tá uimhreacha rollta beoite</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Folaigh barra cuardaigh an tseinnteora físeáin</string>
   <string name="morphe_hide_seekbar_summary_on">Tá barra cuardaigh seinnteoir físe i bhfolach</string>
   <string name="morphe_hide_seekbar_summary_off">Taispeántar barra cuardaigh an t-imreoir físeán</string>
@@ -841,8 +838,8 @@ Chun roghchlár an rian fuaime a thaispeáint, athraigh 'Sruthanna físeáin bhr
   <string name="morphe_hide_seekbar_thumbnail_title">Folaigh barra cuardaigh mionsamhlacha físeáin</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Tá barra cuardaigh mionsamhlacha físeáin i bhfolach</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Taispeántar barra cuardaigh mionsamhlacha físe</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts seinnteoir</string>
   <string name="morphe_shorts_player_screen_summary">Folaigh nó taispeáin comhpháirteanna seinnteora Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -955,48 +952,48 @@ Chun roghchlár an rian fuaime a thaispeáint, athraigh 'Sruthanna físeáin bhr
   <string name="morphe_hide_shorts_navigation_bar_title">Folaigh barra nascleanúna</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Tá barra nascleanúna i bhfolach</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Folaigh físeán molta deireadh scáileáin</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"Bíonn an físeán molta don scáileán deiridh i bhfolach nuair a bhíonn an t-uathsheinm múchta
 
 Is féidir an t-uathsheinm a athrú i socruithe YouTube:
 Socruithe → Athsheinm → Uathsheinm an chéad fhíseán eile"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Taispeántar físeán molta deireadh scáileáin</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Folaigh forleagan físeáin ghaolmhara</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Tá forleagan físeáin ghaolmhara i lánscáileán i bhfolach</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">Taispeántar forleagan físeáin ghaolmhara i lánscáileán</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Folaigh stampa ama an fhíseáin</string>
   <string name="morphe_hide_timestamp_summary_on">Tá stampa ama i bhfolach</string>
   <string name="morphe_hide_timestamp_summary_off">Taispeántar stampa ama</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Folaigh painéil preab aníos imreoir</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Tá painéil preab aníos imreoir i bhfolach</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Taispeántar painéil preab aníos imreoir</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Scoir an mód lánscáileáin ag deireadh an fhíseáin</string>
   <string name="morphe_exit_fullscreen_entry_1">Díchumasaithe</string>
   <string name="morphe_exit_fullscreen_entry_2">Portráid</string>
   <string name="morphe_exit_fullscreen_entry_3">Tírdhreach</string>
   <string name="morphe_exit_fullscreen_entry_4">Portráid agus tírdhreach</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Oscail físeáin i bportráid lánscáileáin</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Osclaítear físeáin i mód lánscáileáin</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Ní osclaítear físeáin i mód lánscáileáin</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Teimhneacht fhorleagan imreora</string>
   <string name="morphe_player_overlay_opacity_summary">Luach teimhneachta idir 0-100, áit a seasann 0 do thrédhearcacht</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Teimhneacht fhorleagan an imreora idir 0-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl dí-mhaith ar fáil faoi láthair (API am istigh)</string>
   <string name="morphe_ryd_failure_connection_status_code">Níl \'Ní maith liom\' ar fáil (stádas %d)</string>
@@ -1044,13 +1041,13 @@ Teorainn: B’fhéidir nach dtaispeánfar 'Ní thaitníonn' i mód incognito"</s
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Níor aimsíodh aon teorainneacha ráta cliant</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Teorainn ráta cliant a bhíonn le fáil %d uair</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d milleasoicind</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Cumasaigh barra cuardaigh leathan</string>
   <string name="morphe_wide_searchbar_summary_on">Tá barra cuardaigh leathan cumasaithe</string>
   <string name="morphe_wide_searchbar_summary_off">Tá an barra cuardaigh leathan díchumasaithe</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Cumasaigh mionsamhlacha ardchaighdeáin</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">Tá mionsamhlacha Seekbar ardchaighdeáin</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">Tá mionsamhlacha Seekbar ar chaighdeán meánach</string>
@@ -1062,8 +1059,8 @@ Oibríonn an ghné seo is fearr le caighdeán físeáin 720p nó níos ísle agu
   <string name="morphe_restore_old_seekbar_thumbnails_title">Cuir sean-mionsamhlacha barra cuardaigh ar ais</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">Beidh mionsamhlacha Seekbar le feiceáil os cionn an barra cuardaigh</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">Beidh mionsamhlacha Seekbar le feiceáil ar an scáileán</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Cumasaigh SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">Is córas sruthaíodh ó lucht an phobail é SponsorBlock le haghaidh codanna do-áisiúla físeán YouTube a leag thar n-ais</string>
   <string name="morphe_sb_appearance_category">Dealramh</string>
@@ -1274,8 +1271,8 @@ Réidh le cur isteach?"</string>
   <string name="morphe_sb_color_dot_label">Dath:</string>
   <string name="morphe_sb_about_title">Maidir</string>
   <string name="morphe_sb_about_api_summary">Cuirtear sonraí ar fáil ag API SponsorBlock. Tapáil anseo chun tuilleadh eolais a fháil agus íoslódálacha le haghaidh ardáin eile a fheiceáil</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Fachtóir foirme leagan amach</string>
   <string name="morphe_change_form_factor_entry_1">Réamhshocrú</string>
   <string name="morphe_change_form_factor_entry_2">Guthán</string>
@@ -1289,8 +1286,8 @@ Leagan amach táibléid
 Leagan amach gluaisteán
 • Gearrscannáin oscailte sa ghnáth-imreoir
 • Tá an fotha eagraithe de réir topaicí agus bealaí"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
   <string name="morphe_spoof_app_version_summary_on">Leagan bréagach</string>
   <string name="morphe_spoof_app_version_summary_off">Leagan gan bréag</string>
@@ -1304,8 +1301,8 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Athchóirigh feidhmiúlacht an trascríbhinn</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Athchóirigh deilbhíní sean-imreoir Shorts</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - Athchóirigh deilbhíní nascleanúna sean</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Athraigh an leathanach tosaigh</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Gach síntiús</string>
@@ -1336,27 +1333,27 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
 
 Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbarra uirlisí"</string>
   <string name="morphe_change_start_page_always_summary_off">Ní athraítear an leathanach tosaigh ach amháin ar tosú an aip</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Díchumasaigh atosú seinnteoir Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Ní atosóidh seinnteoir Shorts nuair a thosófar an aip</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Atosóidh seinnteoir Shorts nuair a thosóidh an aip arís</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Oscail Shorts le</string>
   <string name="morphe_shorts_player_type_shorts">Shorts seinnteoir</string>
   <string name="morphe_shorts_player_type_regular_player">Imreoir rialta</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Lánscáileáin imreoir rialta</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Shorts Uathsheinn</string>
   <string name="morphe_shorts_autoplay_summary_on">Seinnfidh Shorts go huathoibríoch</string>
   <string name="morphe_shorts_autoplay_summary_off">Déanfaidh Shorts arís</string>
   <string name="morphe_shorts_autoplay_background_title">Uathsheinn Shorts Cúlra sheinn</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Déanfar súgradh cúlra Shorts go huathoibríoch</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Athdhéanfar athsheinm Shorts cúlra sheinn</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Mion seinnteoir</string>
   <string name="morphe_miniplayer_screen_summary">Athraigh stíl an imreora íoslaghdaithe in-aip</string>
   <string name="morphe_miniplayer_type_title">Cineál Mion seinnteoir</string>
@@ -1402,8 +1399,8 @@ Is féidir an mini-imreoir a tharraingt amach as an scáileán ar chlé nó ar d
   <string name="morphe_miniplayer_opacity_title">Trédhearcacht forleagan</string>
   <string name="morphe_miniplayer_opacity_summary">Luach trédhearcachta idir 0-100, áit a bhfuil 0 trédhearcach</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Caithfidh teimhneacht forleagan mion-imreoir a bheith idir 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Cumasaigh scáileán luchtaithe</string>
   <string name="morphe_gradient_loading_screen_summary_on">Beidh cúlra grádáin ag an scáileán lódála</string>
   <string name="morphe_gradient_loading_screen_summary_off">Beidh cúlra láidir ag scáileán luchtaithe</string>
@@ -1418,24 +1415,24 @@ Is féidir an mini-imreoir a tharraingt amach as an scáileán ar chlé nó ar d
   <string name="morphe_seekbar_custom_color_accent_title">Dath béime saincheaptha an bharra cuardaigh</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Dath béime an bharra cuardaigh</string>
   <string name="morphe_seekbar_custom_color_invalid">Luach datha barra cuardaigh neamhbhailí</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Lógó ceanntásca</string>
   <string name="morphe_header_logo_entry_1">Réamhshocrú</string>
   <string name="morphe_header_logo_entry_2">Rialta</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe íosta</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Seachbhóthar srianta réigiún íomhá</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Ag baint úsáide as óstach íomhá yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Óstáil íomhá bhunaidh á úsáid
 
 Is féidir le seo íomhánna atá blocáilte i roinnt réigiún a dheisiú"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Cluaisín Baile</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1470,28 +1467,28 @@ Brúigh anseo chun tuilleadh eolais a fháil faoi DeArrow"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">Níl DeArrow ar fáil go sealadach (cód stádais: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">Níl DeArrow ar fáil go sealadach</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Taispeáin fógraí Morphe</string>
   <string name="morphe_announcements_summary_on">Taispeántar fógraí ar thosú</string>
   <string name="morphe_announcements_summary_off">Ní thaispeántar fógraí ar thosú</string>
   <string name="morphe_announcements_enabled_summary">Taispeáin fógraí ar thosú</string>
   <string name="morphe_announcements_connection_failed">Theip ar nascadh le soláthraí fógraí</string>
   <string name="morphe_announcements_dialog_dismiss">Díbhe</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
   <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
   <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
   <string name="morphe_loop_video_button_summary_on">Taispeántar an cnaipe</string>
   <string name="morphe_loop_video_button_summary_off">Níl an cnaipe ar taispeáint</string>
   <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
   <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Toisí gléas a fhalsú</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Toisí na ngléasanna falsaithe
 
@@ -1500,8 +1497,8 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
 
 D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’fhéadfadh go mbeadh stad ar athsheinm físe, saol ceallraí níos measa, agus fo-iarsmaí anaithnide agat"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Is féidir go mbeidh stad ar athsheinm físe, saolré na ceallraí níos measa, agus fo-iarsmaí anaithnide mar thoradh air seo.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Aiseolas haiptice</string>
   <string name="morphe_disable_haptic_feedback_summary">Athraigh aiseolas haiptice</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Díchumasaigh haiptice caibidlí</string>
@@ -1516,21 +1513,21 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haiptice súmála</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Tá haiptice súmála díchumasaithe</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Tá haiptice súmála cumasaithe</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Má d’athraigh tú sonraí logála isteach do chuntais le déanaí, ansin díshuiteáil agus athshuiteáil MicroG.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Seachain atreoruithe URL</string>
   <string name="morphe_bypass_url_redirects_summary_on">Déantar atreoruithe URL a sheachaint</string>
   <string name="morphe_bypass_url_redirects_summary_off">Ní dhéantar seachaint ar atreoruithe URL</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Oscail naisc sa bhrabhsála</string>
   <string name="morphe_external_browser_summary_on">Ag oscailt naisc sa bhrabhsálaí seachtrach</string>
   <string name="morphe_external_browser_summary_off">Ag oscailt naisc sa bhrabhsálaí in-aip</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Uathoibríoch</string>
   <string name="morphe_remember_video_quality_last_selected_title">Cuimhnigh athruithe ar cháilíocht físe</string>
@@ -1550,18 +1547,18 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">Athraíodh cáilíocht réamhshocraithe %1$s go: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Athraíodh cáilíocht Shorts %1$s go: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Taispeáin cnaipe dialóg luais</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Taispeántar an cnaipe. Tapáil agus coinnigh chun luas athsheinm a athshocrú go réamhshocrú</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Ní thaispeántar an cnaipe</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Taispeáin cnaipe cáilíochta físeáin</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Taispeántar an cnaipe. Tapáil agus coinnigh síos chun an caighdeán a athshocrú go dtí an caighdeán réamhshocraithe</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Ní thaispeántar an cnaipe</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Roghchlár luas athsheinm saincheaptha</string>
   <string name="morphe_custom_speed_menu_summary_on">Taispeántar roghchlár luais saincheaptha</string>
   <string name="morphe_custom_speed_menu_summary_off">Ní thaispeántar roghchlár luais saincheaptha</string>
@@ -1575,8 +1572,8 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_custom_playback_speeds_auto">Uathoibríoch</string>
   <string name="morphe_speed_tap_and_hold_title">Luas saincheaptha tapála agus coinnigh</string>
   <string name="morphe_speed_tap_and_hold_summary">Luas athsheinm eatarthu 0-8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Cuimhnigh athruithe ar luas athsheinm</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Baineann athruithe luais athsheinm le gach físeáin</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Ní bhaineann athruithe luas athsheinm ach leis an bhfíseán reatha</string>
@@ -1585,8 +1582,8 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Ní thaispeántar fógra nuair a athraítear an luas athsheinm réamhshocraithe.</string>
   <string name="morphe_playback_speed_default_title">Luas athsheinm réamhshocraithe</string>
   <string name="morphe_remember_playback_speed_toast">Athraigh luas réamhshocraithe go: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Díchumasaigh físeán HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">Tá físeán HDR díchumasaithe</string>
   <string name="morphe_disable_hdr_video_summary_off">Tá físeán HDR cumasaithe</string>
@@ -1602,18 +1599,18 @@ Teorainneacha:
 • Úsáidfidh athsheinm físeáin níos mó sonraí idirlín ná VP9 nó AV1
 • Ní úsáidfidh físeáin HDR AVC
 • Ní féidir le roinnt gléasanna AVC a bhrú"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Taispeáin roghchlár ardcháilíochta físeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Taispeántar roghchlár ardcháilíochta físeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Ní thaispeántar roghchlár ardcháilíochta físeáin</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
   <string name="morphe_slide_to_seek_summary_on">Tá sleamhnán le lorg cumasaithe</string>
   <string name="morphe_slide_to_seek_summary_off">Níl sleamhnán le lorg cumasaithe</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Ceadaigh Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Is é an códac físeáin AVC (H.264), VP9, nó AV1
 
@@ -1634,29 +1631,29 @@ D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe l
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Taispeáin i Staitisticí do nerds</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Taispeántar cineál an chliaint i Staitisticí do nerds</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Tá an cliant curtha i bhfolach i Staitisticí do nerds</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">Maidir</string>
   <string name="morphe_settings_music_screen_1_ads_title">Fógraí</string>
   <string name="morphe_settings_music_screen_2_general_title">Ginearálta</string>
   <string name="morphe_settings_music_screen_3_player_title">Seinnteoir</string>
   <string name="morphe_settings_music_screen_4_misc_title">Ilchineálach</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físeáin</string>
   <string name="morphe_music_hide_video_ads_summary_on">Tá fógraí físeáin i bhfolach</string>
   <string name="morphe_music_hide_video_ads_summary_off">Taispeántar fógraí físeáin</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Cumasaigh athdhéanamh buan</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Tá athrá buan cumasaithe</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Tá athrá buan díchumasaithe</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Folaigh an cnaipe teilgthe</string>
   <string name="morphe_music_hide_cast_button_summary_on">Tá an cnaipe teilgthe i bhfolach</string>
   <string name="morphe_music_hide_cast_button_summary_off">Taispeántar an cnaipe teilgthe</string>
@@ -1669,18 +1666,18 @@ D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe l
   <string name="morphe_music_hide_search_button_title">Folaigh cnaipe cuardaigh</string>
   <string name="morphe_music_hide_search_button_summary_on">Tá cnaipe cuardaigh i bhfolach</string>
   <string name="morphe_music_hide_search_button_summary_off">Taispeántar an cnaipe cuardaigh</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Folaigh an barra catagóirí</string>
   <string name="morphe_music_hide_category_bar_summary_on">Tá an barra catagóirí i bhfolach</string>
   <string name="morphe_music_hide_category_bar_summary_off">Taispeántar an barra catagóirí</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreoir</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Tá dath an mhion-imreoir ag teacht leis an imreoir lánscáileáin</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Úsáideann an mion-imreoir an dath réamhshocraithe</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra nascleanúna</string>
   <string name="morphe_music_navigation_bar_screen_summary">Folaigh nó athraigh cnaipí an bharra nascleanúna</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1709,16 +1706,16 @@ D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe l
   <string name="morphe_music_hide_navigation_bar_labels_title">Folaigh lipéid cnaipí nascleanúna</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Tá lipéid i bhfolach</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Taispeántar lipéid</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Folaigh an lipéad \'Faigh Music Premium\'</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Tá an lipéad i bhfolach</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Taispeántar an lipéad</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Folaigh an cnaipe uasghrádaithe</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Tá an cnaipe i bhfolach</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Taispeántar an cnaipe</string>
-  </patch>
-  </app>
+
+
 </resources>

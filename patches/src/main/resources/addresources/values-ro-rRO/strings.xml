@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Numele aplicației</string>
   <string name="morphe_custom_branding_icon_title">Pictograma aplicației</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nu mai afișa</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Setări</string>
   <string name="morphe_settings_confirm_user_dialog_title">Sigur doriți să continuați?</string>
   <string name="morphe_settings_save">Salvați</string>
@@ -80,8 +77,8 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_links_header">Link-uri oficiale</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">Setări GmsCore</string>
   <string name="microg_settings_summary">Setări pentru GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ Dezactivare optimizărilor bateriei pentru MicroG nu va afecta negativ utilizare
 
 Apăsați butonul continuare și permiteți modificările de optimizare."</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof video stream-uri</string>
   <string name="morphe_spoof_video_streams_screen_summary">Sporirea canalelor video client pentru a preveni problemele de redare</string>
   <string name="morphe_spoof_video_streams_screen_title">Falsifică fluxurile video</string>
@@ -114,15 +111,15 @@ Dacă ești utilizator YouTube Premium, această setare ar putea să nu fie nece
 Redarea poate să nu funcționeze"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare.</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client implicit</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary_on">Folosind limba audio originală</string>
   <string name="morphe_force_original_audio_summary_off">Utilizează audio implicit</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Pentru a utiliza această funcție, modificați \"Falsificare fluxuri video\" la orice client, cu excepția Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depanare</string>
   <string name="morphe_debug_screen_summary">Activează sau dezactivează opțiunile de depanare</string>
   <string name="morphe_debug_title">Jurnal depanare</string>
@@ -154,18 +151,18 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Steaguri salvate</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Steaguri resetate</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Steaguri copiate în clipboard</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Igienizează linkurile de partajare</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Parametrul de interogare de urmărire este eliminat din linkurile partajate</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Parametrul de interogare de urmărire nu este eliminat din linkurile partajate</string>
   <string name="morphe_replace_music_with_youtube_title">Schimbați linkurile de partajare la youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Linkurile partajate utilizează youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Linkurile partajate utilizează music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">Despre</string>
   <string name="morphe_settings_screen_01_ads_title">Reclame</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniaturi alternative</string>
@@ -179,13 +176,13 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurare meniuri setări vechi</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Meniurile de setări vechi sunt afișate</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Meniurile de setări vechi nu sunt afișate</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal a Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Redarea în fundal a Shorts este dezactivată</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Redarea Shorts în fundal este activată</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Jurnal protocol buffer</string>
   <string name="morphe_debug_protobuffer_summary_on">Jurnalele de depanare includ bufferul de protocol</string>
   <string name="morphe_debug_protobuffer_summary_off">Jurnalele de depanare nu includ memoria tampon</string>
@@ -194,8 +191,8 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
 Acest lucru poate ajuta la identificarea componentelor atunci când creați filtre personalizate.
 
 Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">Ascundeți cardurile de album</string>
   <string name="morphe_hide_album_cards_summary_on">Cardurile de album sunt ascunse</string>
   <string name="morphe_hide_album_cards_summary_off">Cardurile de album sunt afișate</string>
@@ -463,8 +460,8 @@ Limitări
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Cuvântul-cheie are declarații contradictorii: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul cheie este prea scurt și necesită oferte: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul cheie va ascunde toate videoclipurile: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ascunde raftul magazinului creatorului</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Raftul magazinului creatorului de sub playerul video este ascuns.</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Raftul magazinului creatorului sub playerul video este afișat</string>
@@ -499,18 +496,18 @@ Această funcție este disponibilă numai pentru dispozitivele mai vechi"</strin
   <string name="morphe_hide_web_search_results_title">Ascunde rezultatele căutării web</string>
   <string name="morphe_hide_web_search_results_summary_on">Rezultatele căutării pe web sunt ascunse</string>
   <string name="morphe_hide_web_search_results_summary_off">Rezultatele căutării web sunt afișate</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Ascunde promoțiile YouTube Premium</string>
   <string name="morphe_hide_get_premium_summary_on">Promoțiile YouTube Premium sub video player sunt ascunse</string>
   <string name="morphe_hide_get_premium_summary_off">Promoțiile YouTube Premium sub video player sunt afișate</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ascunde reclamele video</string>
   <string name="morphe_hide_video_ads_summary_on">Anunțurile video sunt ascunse</string>
   <string name="morphe_hide_video_ads_summary_off">Anunțurile video sunt afișate</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">URL copiat în clipboard</string>
   <string name="morphe_share_copy_url_timestamp_success">URL cu marcaj de timp copiat</string>
   <string name="morphe_copy_video_url_title">Afișare buton copie URL</string>
@@ -519,24 +516,24 @@ Această funcție este disponibilă numai pentru dispozitivele mai vechi"</strin
   <string name="morphe_copy_video_url_timestamp_title">Afișare buton copie marcaj URL</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Butonul este afișat. Atingeți pentru a copia adresa URL a videoclipului cu marcaj temporal. Atingeți și mențineți apăsat pentru a copia fără marcaj temporal</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Butonul nu este afișat</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul discreționar al vizualizatorului</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialogul va fi șters</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Va fi afișat catalogul</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Aceasta nu ocolește restricția de vârstă. O acceptă automat.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Dezactivare pop-up Conectare la televizor</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Pop-up-ul Conectare la televizor este dezactivat</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Pop-up-ul Conectare la televizor este activat</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Dezactivare omisiune capitol prin atingere dublă</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Atingerea dublă nu va declanșa niciodată sărirea la capitolul următor/anterior</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Atingerea dublă poate declanșa ocazional sărirea la capitolul următor/anterior</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
   <string name="morphe_external_downloader_screen_summary">Setări pentru utilizarea unui downloader extern</string>
   <string name="morphe_external_downloader_title">Arată butonul extern de descărcare</string>
@@ -556,18 +553,18 @@ Această funcție este disponibilă numai pentru dispozitivele mai vechi"</strin
 
 Verificați dacă numele pachetului este corect și dacă aplicația este instalată"</string>
   <string name="morphe_external_downloader_empty_warning">Numele pachetului nu poate fi gol</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gestul este dezactivat</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gestul este activat</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Activează atingerea pentru a căuta</string>
   <string name="morphe_seekbar_tapping_summary_on">Atingeți pentru a activa căutarea</string>
   <string name="morphe_seekbar_tapping_summary_off">Atingerea pentru a căuta este dezactivată</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Activează gestul de luminozitate</string>
   <string name="morphe_swipe_brightness_summary_on">"Tragerea luminozității pe tot ecranul este activată
 
@@ -618,13 +615,13 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_swipe_change_video_title">Activați glisarea pentru a schimba videoclipurile</string>
   <string name="morphe_swipe_change_video_summary_on">Glisarea în modul pe ecran complet va trece la următorul/anteriorul videoclip</string>
   <string name="morphe_swipe_change_video_summary_off">Glisarea în modul pe ecran complet nu va trece la următorul/anteriorul videoclip</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Dezactivează subtitrările automate</string>
   <string name="morphe_disable_auto_captions_summary_on">Subtitrările Auto sunt dezactivate</string>
   <string name="morphe_disable_auto_captions_summary_off">Subtitrările Auto sunt activate</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Butoane de acţiune</string>
   <string name="morphe_hide_buttons_screen_summary">Ascunde sau arată butoanele sub videoclipuri</string>
   <string name="morphe_disable_like_subscribe_glow_title">Dezactivați luminozitatea butonului Like and Subscribe</string>
@@ -688,8 +685,8 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_hide_save_button_title">Ascunde Salvare</string>
   <string name="morphe_hide_save_button_summary_on">Butonul Salvare este ascuns</string>
   <string name="morphe_hide_save_button_summary_off">Butonul Salvare este afișat</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Butoane de navigare</string>
   <string name="morphe_navigation_buttons_screen_summary">Ascunde sau modifică butoanele din bara de navigare</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -733,8 +730,8 @@ Dacă modificarea acestei setări nu are efect, încercați să comutați la mod
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Dezactivați bara translucidă închisă la culoare</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Bara de navigare în modul întunecat este opacă</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bara de navigare în modul întunecat este opaca sau translucida</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Ascunde sau arată elementele de meniu Flyout ale jucătorului</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -794,8 +791,8 @@ Pentru a afișa meniul de piste audio, modificați „Emulare fluxuri video” l
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ascunde subsol meniu calitate video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Subsolul meniului calităţii video este ascuns</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Subsolul meniului calității video este afișat</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Ascunde butonul Redare automată</string>
   <string name="morphe_hide_autoplay_button_summary_on">Butonul Autoplay este ascuns</string>
   <string name="morphe_hide_autoplay_button_summary_off">Butonul Auto-redare este afișat</string>
@@ -812,28 +809,28 @@ Pentru a afișa meniul de piste audio, modificați „Emulare fluxuri video” l
   <string name="morphe_hide_player_previous_next_buttons_title">Ascunde butoanele Anterior &amp; Următorul</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Butoanele sunt ascunse</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Butoanele sunt afișate</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Ascunde cardurile ecranului final</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Cardurile de pe ecranul de închidere sunt ascunse</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Cardurile de închidere ecran sunt afișate</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Dezactivați modul Ambient în ecran complet</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Mod ambiental dezactivat</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Mod Ambient activat</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Ascunde cardurile cu informații</string>
   <string name="morphe_hide_info_cards_summary_on">Cardurile de informații sunt ascunse</string>
   <string name="morphe_hide_info_cards_summary_off">Cardurile de informații sunt afișate</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Dezactivează animațiile cu numere de rulare</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Numerele de rulare nu sunt animate</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Numerele de rulare sunt animate</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Ascunde bara de derulare a playerului video</string>
   <string name="morphe_hide_seekbar_summary_on">Bara de căutare a playerului video este ascunsă</string>
   <string name="morphe_hide_seekbar_summary_off">Se afișează bara de căutare a playerului video</string>
@@ -841,8 +838,8 @@ Pentru a afișa meniul de piste audio, modificați „Emulare fluxuri video” l
   <string name="morphe_hide_seekbar_thumbnail_title">Ascunde bara de derulare a miniaturilor video</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Bara de derulare a miniaturilor video este ascunsă</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Bara de derulare a miniaturilor video este afișată</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ascunde sau afișează componentele playerului Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -955,48 +952,48 @@ Pentru a afișa meniul de piste audio, modificați „Emulare fluxuri video” l
   <string name="morphe_hide_shorts_navigation_bar_title">Ascunde bara de navigare</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Bara de navigare este ascunsă</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Bara de navigare este afișată</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ascunde videoclipul sugerat de pe ecranul final</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"Videoclipul sugerat de pe ecranul final este ascuns când redarea automată este oprită
 
 Redarea automată poate fi modificată în setările YouTube:
 Setări → Redare → Redare automată videoclipul următor"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Videoclipul sugerat de pe ecranul final este afișat</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Suprapunerea videoclipurilor similare în ecran complet este ascunsă.</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">Suprapunerea videoclipurilor similare în ecran complet este afișată.</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ascunde marcajul temporal video</string>
   <string name="morphe_hide_timestamp_summary_on">Marcajul de timp este ascuns</string>
   <string name="morphe_hide_timestamp_summary_off">Ora este afișată</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Ascunde panourile pop-up jucător</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Panourile pop-up ale jucătorilor sunt ascunse</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Panourile pop-up ale jucătorului sunt afișate</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Ieșiți din modul ecran complet la sfârșitul videoclipului</string>
   <string name="morphe_exit_fullscreen_entry_1">Dezactivat</string>
   <string name="morphe_exit_fullscreen_entry_2">Portret</string>
   <string name="morphe_exit_fullscreen_entry_3">Peisaj</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret și peisaj</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Deschide videoclipurile în modul ecran complet</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Videoclipuri deschide tot ecranul</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Videoclipurile nu deschid tot ecranul</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Opacitate suprapusă jucătorului</string>
   <string name="morphe_player_overlay_opacity_summary">Valoarea Opacității între 0-100, unde 0 este transparent</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Opacitatea suportată de jucător trebuie să fie între 0-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike-uri temporar indisponibile (API a expirat)</string>
   <string name="morphe_ryd_failure_connection_status_code">Dislike-uri indisponibile (status %d)</string>
@@ -1044,13 +1041,13 @@ Limitare: Este posibil ca aprecierile negative să nu apară în modul incognito
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nici o limită pentru rata clientului</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limita ratei clientului a fost întâlnită de %d ori</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d milisecunde</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Activează bara de căutare largă</string>
   <string name="morphe_wide_searchbar_summary_on">Bara de căutare largă este activată</string>
   <string name="morphe_wide_searchbar_summary_off">Bara de căutare largă este dezactivată</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Permite miniaturi de înaltă calitate</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">Miniaturile din bara de afișare sunt de înaltă calitate</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">Miniaturile din bara de afișare sunt de calitate medie</string>
@@ -1062,8 +1059,8 @@ Această caracteristică funcționează cel mai bine cu o calitate video de 720p
   <string name="morphe_restore_old_seekbar_thumbnails_title">Restaurează miniaturile vechi din bara de căutare</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">Miniaturile din bara de căutare vor apărea deasupra barei de căutare</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">Miniaturile din bara de afișare vor apărea pe tot ecranul</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Activează SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock este un sistem bazat pe crowdsourcing pentru a sări peste părțile enervante din videoclipurile de pe YouTube</string>
   <string name="morphe_sb_appearance_category">Aspect</string>
@@ -1273,8 +1270,8 @@ Ești gata să trimiți?"</string>
   <string name="morphe_sb_color_dot_label">Culoare:</string>
   <string name="morphe_sb_about_title">Despre</string>
   <string name="morphe_sb_about_api_summary">Datele sunt furnizate de API-ul SponsorBlock. Apasă aici pentru a afla mai multe și a vedea descărcările pentru alte platforme</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Formatul aspectului formularului</string>
   <string name="morphe_change_form_factor_entry_1">Implicit</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
@@ -1288,8 +1285,8 @@ Aspect tabletă
 Aspect auto
 • Shorts se deschid în playerul obișnuit
 • Fluxul este organizat pe teme și canale"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary_on">Versiune falsificată</string>
   <string name="morphe_spoof_app_version_summary_off">Versiune neafectată</string>
@@ -1303,8 +1300,8 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Restaurare funcționalitate transcriere</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Restaurează pictogramele vechi ale playerului Shorts</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - Restaurați pictogramele de navigare vechi</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Schimbă pagina de start</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Toate abonamentele</string>
@@ -1335,27 +1332,27 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
 
 Limitare: Utilizarea butonului Înapoi de pe bara de instrumente poate să nu funcționeze"</string>
   <string name="morphe_change_start_page_always_summary_off">Pagina de pornire este schimbată doar la pornirea aplicației</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Dezactivează reluarea playerului Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Playerul Shorts nu va relua la pornirea aplicației</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Scurtătura va fi reluată la pornirea aplicației</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Deschide Shorts cu</string>
   <string name="morphe_shorts_player_type_shorts">Player Shorts</string>
   <string name="morphe_shorts_player_type_regular_player">Player obișnuit</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Player Obișnuit pe tot ecranul</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Redare automată Shorts</string>
   <string name="morphe_shorts_autoplay_summary_on">Shorts-urile se vor reda automat</string>
   <string name="morphe_shorts_autoplay_summary_off">Shorts-urile se vor repeta</string>
   <string name="morphe_shorts_autoplay_background_title">Redare automată Shorts în fundal</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Redarea în fundal a Shorts-urilor se va reda automat</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Redarea în fundal a Shorts-urilor se va repeta</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Schimbă stilul playerului minimizat în aplicație</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
@@ -1401,8 +1398,8 @@ Miniplayerul poate fi tras pe ecran spre stânga sau spre dreapta"</string>
   <string name="morphe_miniplayer_opacity_title">Opacitatea suprapunerii</string>
   <string name="morphe_miniplayer_opacity_summary">Valoarea Opacității între 0-100, unde 0 este transparent</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Opacitatea miniplayer suprapusă trebuie să fie între 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Activează ecranul de încărcare gradient</string>
   <string name="morphe_gradient_loading_screen_summary_on">Încărcarea ecranului va avea un fundal pentru gradient</string>
   <string name="morphe_gradient_loading_screen_summary_off">Ecranul de încărcare va avea un fundal solid</string>
@@ -1417,24 +1414,24 @@ Miniplayerul poate fi tras pe ecran spre stânga sau spre dreapta"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Culoare personalizată a accentului barei de căutare</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Culoarea de accent a barei de căutare</string>
   <string name="morphe_seekbar_custom_color_invalid">Valoare culoare bară căutare nevalidă</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Siglă antet</string>
   <string name="morphe_header_logo_entry_1">Implicit</string>
   <string name="morphe_header_logo_entry_2">Normal</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe minimalist</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Ignoră restricțiile regiunii imaginii</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Utilizarea imaginii host yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Utilizarea gazdei originale a imaginii
 
 Activarea acestei opțiuni poate remedia imaginile lipsă care sunt blocate în anumite regiuni"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Fila \"Acasă\"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1469,28 +1466,28 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow nu este disponibil temporar (cod de stare: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow nu este disponibil temporar</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Afișează anunțurile Morphe</string>
   <string name="morphe_announcements_summary_on">Anunțurile la pornire sunt afișate</string>
   <string name="morphe_announcements_summary_off">Anunțurile la pornire nu sunt afișate</string>
   <string name="morphe_announcements_enabled_summary">Afișare anunțuri la pornire</string>
   <string name="morphe_announcements_connection_failed">Conectarea la furnizorul de anunțuri a eșuat</string>
   <string name="morphe_announcements_dialog_dismiss">Anulare</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activează bucla video</string>
   <string name="morphe_loop_video_summary_on">Videoclipul se va repeta în buclă</string>
   <string name="morphe_loop_video_summary_off">Videoclipul nu se va repeta în buclă</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Afișează butonul de buclă video</string>
   <string name="morphe_loop_video_button_summary_on">Butonul este afișat</string>
   <string name="morphe_loop_video_button_summary_off">Butonul nu este afișat</string>
   <string name="morphe_loop_video_button_toast_on">Bucla video este activată</string>
   <string name="morphe_loop_video_button_toast_off">Bucla video este dezactivată</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoul dimensiunilor dispozitivului</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimensiunile dispozitivului falsificate
 
@@ -1499,8 +1496,8 @@ Calitățile video mai mari ar putea fi deblocate, dar este posibil să întâmp
 
 Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Activarea acestei opțiuni poate provoca redare video care rulează, o durată de viață mai slabă a bateriei și efecte secundare necunoscute.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Feedback haptic</string>
   <string name="morphe_disable_haptic_feedback_summary">Schimbă feedback-ul haptic</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Dezactivare haptics capitole</string>
@@ -1515,21 +1512,21 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Dezactivare haptics zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptica zoom este dezactivată</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptica zoom este activată</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dacă ți-ai schimbat recent detaliile de conectare la cont, dezinstalează și reinstalează MicroG.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Ignoră redirecționările adreselor URL</string>
   <string name="morphe_bypass_url_redirects_summary_on">Redirecționările URL sunt ocolite</string>
   <string name="morphe_bypass_url_redirects_summary_off">Redirecționările URL nu sunt ocolite</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Deschide link-uri în browser</string>
   <string name="morphe_external_browser_summary_on">Deschiderea linkurilor în browserul extern</string>
   <string name="morphe_external_browser_summary_off">Deschiderea linkurilor în browserul din aplicație</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automat</string>
   <string name="morphe_remember_video_quality_last_selected_title">Memorează modificările calității video</string>
@@ -1549,18 +1546,18 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">Calitate %1$s modificată implicit: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Calitatea Shorts %1$s a fost modificată la: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Arată butonul de dialog de viteză</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Butonul este afișat. Atingeți și mențineți apăsat pentru a reseta viteza de redare la cea implicită</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Butonul nu este afișat</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afișați butonul de calitate video</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Butonul este afișat. Atingeți și mențineți apăsat pentru a reseta calitatea la valoarea implicită</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Butonul nu este afișat.</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Meniu de redare personalizat</string>
   <string name="morphe_custom_speed_menu_summary_on">Meniul de viteză personalizat este afișat</string>
   <string name="morphe_custom_speed_menu_summary_off">Meniul de viteză personalizat nu este afișat</string>
@@ -1574,8 +1571,8 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_custom_playback_speeds_auto">Automat</string>
   <string name="morphe_speed_tap_and_hold_title">Viteză personalizată de apăsare și menținere</string>
   <string name="morphe_speed_tap_and_hold_summary">Viteză de redare între 0-8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Memorează schimbările vitezei de redare</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Schimbarea vitezei de redare se aplică tuturor videoclipurilor</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Modificările vitezei de redare se aplică numai videoclipului curent</string>
@@ -1584,8 +1581,8 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Un mesaj de tip toast nu se afișează când viteza de redare implicită este modificată</string>
   <string name="morphe_playback_speed_default_title">Viteza de redare implicită</string>
   <string name="morphe_remember_playback_speed_toast">Viteza implicită a fost modificată la: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Dezactivați videoclipurile HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">Videoclipurile HDR sunt dezactivate</string>
   <string name="morphe_disable_hdr_video_summary_off">Videoclipurile HDR sunt activate</string>
@@ -1601,18 +1598,18 @@ Limitări:
 • Redarea video va utiliza mai multe date de internet decât VP9 sau AV1
 • Videoclipurile HDR nu vor utiliza AVC
 • Unele dispozitive nu pot forța AVC"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Afișează meniul avansat de calitate video</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Se afișează meniul avansat de calitate video</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Nu se afișează meniul avansat de calitate video</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activează diapozitivul pentru a căuta</string>
   <string name="morphe_slide_to_seek_summary_on">Slide pentru căutare este activat</string>
   <string name="morphe_slide_to_seek_summary_off">Slide pentru a căuta nu este activat</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permite Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Codecul video este AVC (H.264), VP9 sau AV1
 
@@ -1633,29 +1630,29 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Afișează în Statistici pentru pasionați</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Tipul clientului este afișat în Statistici pentru pasionați</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Clientul este ascuns în Statistici pentru pasionați</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">Despre</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anunțuri</string>
   <string name="morphe_settings_music_screen_2_general_title">General</string>
   <string name="morphe_settings_music_screen_3_player_title">Player</string>
   <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
   <string name="morphe_music_hide_video_ads_summary_on">Anunțurile video sunt ascunse</string>
   <string name="morphe_music_hide_video_ads_summary_off">Anunțurile video sunt afișate</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activează repetarea permanentă</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Repetarea permanentă este activată</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Repetarea permanentă este dezactivată</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Ascunde butonul de transmisie</string>
   <string name="morphe_music_hide_cast_button_summary_on">Butonul de transmisie este ascuns</string>
   <string name="morphe_music_hide_cast_button_summary_off">Butonul de transmisie este afișat</string>
@@ -1668,18 +1665,18 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_music_hide_search_button_title">Ascunde butonul de căutare</string>
   <string name="morphe_music_hide_search_button_summary_on">Butonul de căutare este ascuns</string>
   <string name="morphe_music_hide_search_button_summary_off">Butonul de căutare este afișat</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Ascunde bara de categorii</string>
   <string name="morphe_music_hide_category_bar_summary_on">Bara de categorii este ascunsă</string>
   <string name="morphe_music_hide_category_bar_summary_off">Bara de categorii este afișată</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Schimbă culoarea miniplayer-ului</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Culoarea miniplayer-ului se potrivește cu player-ul pe ecran complet</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer-ul folosește culoarea implicită</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Bară de navigare</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ascundeți sau modificați butoanele barei de navigare</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1708,16 +1705,16 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ascundeți etichetele butoanelor de navigare</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etichetele sunt ascunse</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etichetele sunt afișate</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ascunde eticheta „Obține Music Premium”</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Eticheta este ascunsă</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Eticheta este afișată</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ascunde butonul de upgrade</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Butonul este ascuns</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Butonul este afișat</string>
-  </patch>
-  </app>
+
+
 </resources>

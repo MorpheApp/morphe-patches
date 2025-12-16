@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Име на приложението</string>
   <string name="morphe_custom_branding_icon_title">Икона на приложението</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинален</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Известие от Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показвай отново</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Настройки</string>
   <string name="morphe_settings_confirm_user_dialog_title">Сигурни ли сте, че искате да продължите?</string>
   <string name="morphe_settings_save">Запазване</string>
@@ -80,8 +77,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_header">Официални линкове</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">GmsCore Настройки</string>
   <string name="microg_settings_summary">Настройки на GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ Second \"item\" text"</string>
 
 Докоснете бутона за продължаване и разрешете промени в оптимизацията."</string>
   <string name="gms_core_dialog_continue_text">Продължи</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подправяне на видео потоци</string>
   <string name="morphe_spoof_video_streams_screen_summary">Подправете клиентските видео потоци, за да предотвратите проблеми с възпроизвеждането</string>
   <string name="morphe_spoof_video_streams_screen_title">Имитиране на видео потоци</string>
@@ -114,15 +111,15 @@ Second \"item\" text"</string>
 Възпроизвеждането може да не работи"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми с възпроизвеждането.</string>
   <string name="morphe_spoof_video_streams_client_type_title">Клиент по подразбиране</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудително оригинално аудио език</string>
   <string name="morphe_force_original_audio_summary_on">Използване на оригиналния език на аудиото</string>
   <string name="morphe_force_original_audio_summary_off">Използване на аудио по подразбиране</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">За да използвате тази функция, променете \'Фалшифициране на видео потоци\' на всеки клиент, освен Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отстраняване на грешки</string>
   <string name="morphe_debug_screen_summary">Активиране или деактивиране на отстраняването на грешки</string>
   <string name="morphe_debug_title">Дневник на отстраняването на грешки</string>
@@ -154,18 +151,18 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Флаговете са запазени</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Флаговете са нулирани</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Флаговете са копирани в клипборда</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Почистване на връзки за споделяне</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Параметърът за проследяване се премахва от споделените връзки</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Параметърът за проследяване не се премахва от споделените връзки</string>
   <string name="morphe_replace_music_with_youtube_title">Промяна на връзките за споделяне към youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Споделените връзки използват youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Споделените връзки използват music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">За програмата</string>
   <string name="morphe_settings_screen_01_ads_title">Реклами</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Алтернативни миниатюри</string>
@@ -179,13 +176,13 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">Възстановяване на старите менюта за настройки</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Старите менюта с настройки се показват</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Старите менюта с настройки не се показват</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Възпроизвеждане на  Shorts в фонов режим</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фоновото възпроизвеждане на Shorts е деактивирано</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фоновото възпроизвеждане на Shorts е активирано</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Буфер на протокола за дневника</string>
   <string name="morphe_debug_protobuffer_summary_on">Файлове с дневници за грешки включват буфера</string>
   <string name="morphe_debug_protobuffer_summary_off">Файлове с дневници за грешки не включват буфера</string>
@@ -194,8 +191,8 @@ Second \"item\" text"</string>
 Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.
 
 Активирането на тази настройка обаче ще регистрира и някои потребителски данни, като например вашия IP адрес."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">\"Карти на албумите\"</string>
   <string name="morphe_hide_album_cards_summary_on">Албумните карти са скрити</string>
   <string name="morphe_hide_album_cards_summary_off">Албумните карти се показват</string>
@@ -465,8 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключовата дума има противоречиви твърдения: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключовата дума е твърде кратка и изисква кавички: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Всички видеа с ключовата дума ще бъдат скрити: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Скриване на рафта на магазина на създателя</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Рафтът на магазина на създателя под видео плейъра е скрит</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Рафтът на магазина на създателя под видеоплейъра е показан</string>
@@ -501,18 +498,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">Скриване на резултатите от уеб търсенето</string>
   <string name="morphe_hide_web_search_results_summary_on">Резултатите от уеб търсенето са скрити</string>
   <string name="morphe_hide_web_search_results_summary_off">Резултатите от уеб търсенето са показани.</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Скриване на YouTube Premium промоциите</string>
   <string name="morphe_hide_get_premium_summary_on">YouTube Premium промоциите са скрити.</string>
   <string name="morphe_hide_get_premium_summary_off">YouTube Premium промоциите се показват.</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Скриване на видео рекламите</string>
   <string name="morphe_hide_video_ads_summary_on">Видео рекламите са скрити.</string>
   <string name="morphe_hide_video_ads_summary_off">Видео рекламите се показват.</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">Връзката е копирана в клипборда.</string>
   <string name="morphe_share_copy_url_timestamp_success">URL адрес с отметка за време, копиран в клипборда.</string>
   <string name="morphe_copy_video_url_title">Показване на бутона за копиране на URL адреса на видеоклипа</string>
@@ -521,24 +518,24 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_timestamp_title">Показване на бутона за копиране на URL адреса на времевия отпечатък на видеоклипа</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Бутонът е показан. Докоснете, за да копирате URL адреса на видеоклипа с времеви печат. Докоснете и задръжте, за да копирате без времеви печат</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Бутонът не е показан</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Прозорец за възрастово ограничение</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Диалоговият прозорец ще бъде премахнат</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Диалоговият прозорец ще бъде показан</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Тази функция не заобикаля възрастовото ограничение. Тя просто приема възрастовата граница автоматично.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Деактивиране на изскачащия прозорец „Влизане в телевизора“</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Изскачащият прозорец „Влизане в телевизора“ е деактивиран</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Изскачащият прозорец „Влизане в телевизора“ е активиран</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Деактивиране на пропускане на глава с двойно докосване</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Двойното докосване никога не може да предизвика пропускане до следваща/предишна глава</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Двойното докосване може понякога да предизвика пропускане до следваща/предишна глава</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Външни изтегляния</string>
   <string name="morphe_external_downloader_screen_summary">Настройки за използване на външно приложение за изтегляне</string>
   <string name="morphe_external_downloader_title">Показване на бутона за изтегляне чрез външно приложение</string>
@@ -558,18 +555,18 @@ Second \"item\" text"</string>
 
 Проверете дали името на пакета е правилно и приложението е инсталирано"</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакета не може да бъде празно</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Деактивиране на жеста за точно търсене</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест отключен</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Жест включен</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Активиране на докосване за превъртане</string>
   <string name="morphe_seekbar_tapping_summary_on">Докоснете, за да търсите е активирано</string>
   <string name="morphe_seekbar_tapping_summary_off">Докосването за превъртане е деактивирано</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Задаване на яркост чрез плъзгане</string>
   <string name="morphe_swipe_brightness_summary_on">"Плъзгането за яркост на цял екран е активирано
 
@@ -620,13 +617,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">Включване на превключване на видеото чрез плъзване</string>
   <string name="morphe_swipe_change_video_summary_on">Плъзването в режим на цял екран ще превключи към следващото/предишно видео</string>
   <string name="morphe_swipe_change_video_summary_off">Плъзването в режим на цял екран няма да превключи към следващото/предишно видео</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Автоматични Субтитри</string>
   <string name="morphe_disable_auto_captions_summary_on">Автоматичните надписи са деактивирани</string>
   <string name="morphe_disable_auto_captions_summary_off">Автоматичните надписи са активирани</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Бутони за действия</string>
   <string name="morphe_hide_buttons_screen_summary">Скриване или показване на бутони под видеото</string>
   <string name="morphe_disable_like_subscribe_glow_title">Деактивиране на светенето на бутон Like и Subscribe</string>
@@ -690,8 +687,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Скриване на Запазване</string>
   <string name="morphe_hide_save_button_summary_on">Бутонът за запазване е скрит</string>
   <string name="morphe_hide_save_button_summary_off">Бутонът за запазване е показан</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Бутони за навигация</string>
   <string name="morphe_navigation_buttons_screen_summary">Скриване или промяна на бутоните в лентата за навигация</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Деактивиране на тъмната полупрозрачна лента</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Тъмната лента за навигация е непрозрачна</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Тъмната лента за навигация е непрозрачна или прозрачна</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Падащо меню</string>
   <string name="morphe_hide_player_flyout_summary">Скриване или показване на елементи от падащото меню на плейъра</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Скриване на футъра на менюто за качество на видеото</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Долният колонтитул на менюто за качество на видеото е скрит</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Долният колонтитул на менюто за качество на видеото се показва</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Скриване на бутона Autoplay</string>
   <string name="morphe_hide_autoplay_button_summary_on">Бутона за авт. изпълнение е скрит</string>
   <string name="morphe_hide_autoplay_button_summary_off">Бутона за авт. изпълнение се показва</string>
@@ -814,28 +811,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Скриване на бутоните \"Предишен и Следващ\"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Бутоните са скрити</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Бутоните се показват</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Скриване на препоръките в края</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Препоръките в края са скрити</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Препоръките в края се показват</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Деактивиране на Ambient режим в цял екран</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Подсветката в режим на цял екран е деактивирана</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Подсветката в режим на цял екран е активирана</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Скриване на инфо. карти</string>
   <string name="morphe_hide_info_cards_summary_on">Информационните карти са скрити</string>
   <string name="morphe_hide_info_cards_summary_off">Информационните карти се показват</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Анимация на числа в реално време</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Анимацията е деактивирана</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Анимацията е активирана</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Скриване на лентата за търсене на видео плейър</string>
   <string name="morphe_hide_seekbar_summary_on">Лентата за време на плейъра е скрита</string>
   <string name="morphe_hide_seekbar_summary_off">Лентата за време на плейъра се показва</string>
@@ -843,8 +840,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_title">Скриване на лентата за търсене на миниатюри на видеоклипове</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Лентата за търсене на миниатюри на видеоклипове е скрита</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Лентата за търсене на миниатюри на видеоклипове е показана</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Играч на Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Скриване или показване на компонентите на плейъра за Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,48 +954,48 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Скриване лентата за навигация</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Навигационната лента е скрита</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Навигационната лента се показва</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Скриване на предложеното видео в края на екрана</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"Предложеното видео в края на екрана е скрито, когато автоматичното пускане е изключено
 
 Автоматичното пускане може да бъде променено в настройките на YouTube:
 Настройки → Възпроизвеждане → Автоматично пускане на следващото видео"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Предложеното видео в края на екрана е показано</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Скриване на наслагването със свързани видеоклипове</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Наслагването със свързани видеоклипове на цял екран е скрито</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">Наслагването със свързани видеоклипове на цял екран е показано</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Скриване на клеймото за време на видеоклипа</string>
   <string name="morphe_hide_timestamp_summary_on">Скрито</string>
   <string name="morphe_hide_timestamp_summary_off">Показва се</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Изскачащи панели на плейъра</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Изскачащите панели на плейъра са скрити</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Изскачащите панели на плейъра се показват</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Изход от режим на цял екран в края на видеото</string>
   <string name="morphe_exit_fullscreen_entry_1">Деактивирано</string>
   <string name="morphe_exit_fullscreen_entry_2">Портрет</string>
   <string name="morphe_exit_fullscreen_entry_3">Пейзаж</string>
   <string name="morphe_exit_fullscreen_entry_4">Портрет и пейзаж</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Отваряне на видеоклипове в портретен режим на цял екран</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Видеоклиповете се отварят на цял екран</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Видеоклиповете Не се отварят на цял екран</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Прозрачност на настройките в Плеара</string>
   <string name="morphe_player_overlay_opacity_summary">Стойност на прозрачност между 0-100, където 0 е прозрачно</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Прозрачността на менюто на плейъра трябва да бъде между 0-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Нехаресванията временно не са налични (API timed out)</string>
   <string name="morphe_ryd_failure_connection_status_code">Нехаресванията не са налични (status %d)</string>
@@ -1046,13 +1043,13 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ограниченията на скоростта на клиента на Api не са открити</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Открити са ограничения на скоростта на клиента на Api %d пъти</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d милисекунди</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Широка лента за търсене</string>
   <string name="morphe_wide_searchbar_summary_on">Широката лента за търсене е включена</string>
   <string name="morphe_wide_searchbar_summary_off">Широката лента за търсене е изключена</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Активиране на висококачествени миниатюри</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">Миниатюри с високо качество в лентата на възпроизвеждане</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">Миниатюри с средно качество в лентата на възпроизвеждане</string>
@@ -1064,8 +1061,8 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_seekbar_thumbnails_title">Стари миниатюри на времевата линия</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">Над лентата за възпроизвеждане се появяват миниатюри</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">Миниатюрите се показват в режим на цял екран</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Включване на SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock е система с отворен код за прескачане на досадни части от видеоклипове в YouTube</string>
   <string name="morphe_sb_appearance_category">Външен вид</string>
@@ -1276,8 +1273,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_dot_label">Цвят:</string>
   <string name="morphe_sb_about_title">За програмата</string>
   <string name="morphe_sb_about_api_summary">Данните са предоставени от SponsorBlock API. Докоснете тук за повече информация и изтеглияния</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Формат на екрана /Таблет, Телфон, .../</string>
   <string name="morphe_change_form_factor_entry_1">По подразбиране</string>
   <string name="morphe_change_form_factor_entry_2">Телефон</string>
@@ -1291,8 +1288,8 @@ Second \"item\" text"</string>
 Автомобилно оформление
 • Shorts се отварят в обикновения плейър
 • Каналът е организиран по теми и канали"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подлъгване за версията на приложението</string>
   <string name="morphe_spoof_app_version_summary_on">Подправена версия</string>
   <string name="morphe_spoof_app_version_summary_off">Не подправена версия</string>
@@ -1306,8 +1303,8 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Възстановяване на функционалността на преписа</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Възстановете старите икони на Shorts в плейъра</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - Възстановяване на стари икони за навигация</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промяна на началната страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Всички абонаменти</string>
@@ -1338,27 +1335,27 @@ Second \"item\" text"</string>
 
 Ограничение: Използването на бутона за връщане назад в лентата с инструменти може да не работи"</string>
   <string name="morphe_change_start_page_always_summary_off">Началната страница се променя само при стартиране на приложението</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Скриване на Shorts плейъра при стартиране</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts плейъра при стартиране на приложението е скрит</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts плейъра при стартиране на приложението се показва</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Отворете Shorts с</string>
   <string name="morphe_shorts_player_type_shorts">Играч на Shorts</string>
   <string name="morphe_shorts_player_type_regular_player">Обикновен плейър</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Обикновен плейър на цял екран</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Автоматично пускане Shorts</string>
   <string name="morphe_shorts_autoplay_summary_on">Shorts ще се пускат автоматично</string>
   <string name="morphe_shorts_autoplay_summary_off">Shorts ще се повторят</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматично пускане на Shorts във фонов режим</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts ще се възпроизвеждат автоматично един след друг във фонов режим</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts ще се повтори във фонов режим</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Минимизиран екран за възпроизвеждане</string>
   <string name="morphe_miniplayer_screen_summary">Промяна на стила на минимизиран плейър в приложението</string>
   <string name="morphe_miniplayer_type_title">Минимизиран тип екран за гледане</string>
@@ -1404,8 +1401,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">Прозрачност на менютата</string>
   <string name="morphe_miniplayer_opacity_summary">Стойност на прозрачност между 0-100, където 0 е прозрачно</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Прозрачността на менюто трябва да бъде между 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Фон на екрана при зареждане на видео</string>
   <string name="morphe_gradient_loading_screen_summary_on">Екранът за зареждане ще има градиентен фон</string>
   <string name="morphe_gradient_loading_screen_summary_off">Екранът за зареждане ще има плътен фон</string>
@@ -1420,24 +1417,24 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Цвят на лентата за търсене по избор</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Цветът на лентата за търсене</string>
   <string name="morphe_seekbar_custom_color_invalid">Невалидна стойност за цвят на лентата на прогреса</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Лого в заглавката</string>
   <string name="morphe_header_logo_entry_1">По подразбиране</string>
   <string name="morphe_header_logo_entry_2">Обикновено</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe минимално</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Прескочете забраната за зареждане на изображение</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Домейнът yt4.ggpht.com се използва за зареждане на изображения</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Използва се оригинален хост на изображения
 
 Активирането на това може да поправи липсващите изображения, които са блокирани в някои региони"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Раздел Начало</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1472,28 +1469,28 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow временно не е наличен (код на състоянието: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow временно не е наличен</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Показване на Morphe съобщения</string>
   <string name="morphe_announcements_summary_on">Обявите при стартиране са показани</string>
   <string name="morphe_announcements_summary_off">Обявите при стартиране не са показани</string>
   <string name="morphe_announcements_enabled_summary">Показване на съобщения при стартиране</string>
   <string name="morphe_announcements_connection_failed">Неуспешно свързване с доставчик на съобщения</string>
   <string name="morphe_announcements_dialog_dismiss">Отхвърли</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Активиране на повторение на видеото</string>
   <string name="morphe_loop_video_summary_on">Видеоклипът ще се повтаря</string>
   <string name="morphe_loop_video_summary_off">Видеоклипът няма да се повтаря</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Показване на бутона за повторение на видеото</string>
   <string name="morphe_loop_video_button_summary_on">Бутонът е показан</string>
   <string name="morphe_loop_video_button_summary_off">Бутонът не е показан</string>
   <string name="morphe_loop_video_button_toast_on">Повторението на видеото е включено</string>
   <string name="morphe_loop_video_button_toast_off">Повторението на видеото е изключено</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Лъжливи параметри на устройството</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размерите на устройството са фалшифицирани
 
@@ -1502,8 +1499,8 @@ Second \"item\" text"</string>
 
 Активирането на това може да отключи по-високи видео качества"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Разрешаването на това може да причини прекъсване на възпроизвеждането на видео, влошен живот на батерията и неизвестни странични ефекти.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Вибрационна обратна връзка</string>
   <string name="morphe_disable_haptic_feedback_summary">Промяна на вибрационната обратна връзка</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Деактивиране на вибрацията при главите</string>
@@ -1518,21 +1515,21 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Деактивиране на вибрация при мащабиране</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Вибрацията при мащабиране е деактивирана</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Вибрацията при мащабиране е активирана</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ако наскоро сте променили данните си за вход в профила, деинсталирайте и инсталирайте отново MicroG.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Заобикаляне на URL пренасочване</string>
   <string name="morphe_bypass_url_redirects_summary_on">URL пренасочванията се заобикалят</string>
   <string name="morphe_bypass_url_redirects_summary_off">URL пренасочванията не се заобикалят</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Отваряне на връзки в браузъра</string>
   <string name="morphe_external_browser_summary_on">Отваряне на връзки във външен браузър</string>
   <string name="morphe_external_browser_summary_off">Отваряне на връзки във вграден браузър</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
   <string name="morphe_remember_video_quality_last_selected_title">Запомни промените в качеството на видеото</string>
@@ -1552,18 +1549,18 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_wifi">wi-fi</string>
   <string name="morphe_remember_video_quality_toast">Променено стандартно %1$s качество на: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Променено качество на Shorts %1$s на: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Показване бутон за скорост</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Бутонът е показан. Докоснете и задръжте, за да върнете скоростта на възпроизвеждане към стойността по подразбиране</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Бутонът не е показан</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Покажи бутона за качество на видеото</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Бутонът е показан. Докоснете и задръжте, за да възстановите качеството до подразбиране</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Бутонът не е показан</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Менюто за потребителска скорост</string>
   <string name="morphe_custom_speed_menu_summary_on">Менюто за потребителска скорост се показва</string>
   <string name="morphe_custom_speed_menu_summary_off">Менюто за потребителска скорост не се показва</string>
@@ -1577,8 +1574,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_auto">Авто</string>
   <string name="morphe_speed_tap_and_hold_title">Персонализирана скорост при докосване и задържане</string>
   <string name="morphe_speed_tap_and_hold_summary">Скорост на възпроизвеждане между 0-8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запомни промените в скоростта на възпроизвеждане</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Промените в скоростта на възпроизвеждане се отнасят за всички видеоклипове</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Промените в скоростта на възпроизвеждане се отнасят само за текущия видеоклип</string>
@@ -1587,8 +1584,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Известие не се показва, когато скоростта на възпроизвеждане по подразбиране се промени</string>
   <string name="morphe_playback_speed_default_title">Скорост на възпроизвеждане по подразбиране</string>
   <string name="morphe_remember_playback_speed_toast">Скоростта по подразбиране е променена на: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Деактивиране на HDR видео</string>
   <string name="morphe_disable_hdr_video_summary_on">HDR видеото е деактивирано</string>
   <string name="morphe_disable_hdr_video_summary_off">HDR видеото е активирано</string>
@@ -1604,18 +1601,18 @@ Second \"item\" text"</string>
 • Възпроизвеждането на видео ще използва повече интернет данни от VP9 или AV1
 • HDR видеоклиповете няма да използват AVC
 • Някои устройства не могат да принудят AVC"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Показване на менюто за разширено качество на видеото</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Показва се менюто за разширено качество на видеото</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Менюто за разширено качество на видеото не се показва</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Активиране на слайд за превъртане</string>
   <string name="morphe_slide_to_seek_summary_on">Слайд за превъртане е активиран</string>
   <string name="morphe_slide_to_seek_summary_off">Слайд за превъртане е деактивиран</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Разрешаване на Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Видеокодекът е AVC (H.264), VP9 или AV1
 
@@ -1636,29 +1633,29 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Poka6i v Statistiki za nerds</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Tipът na klienta se poka6va v Statistiki za nerds</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Klientът e skriт v Statistiki za nerds</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">Относно</string>
   <string name="morphe_settings_music_screen_1_ads_title">Реклами</string>
   <string name="morphe_settings_music_screen_2_general_title">Общи</string>
   <string name="morphe_settings_music_screen_3_player_title">Плейър</string>
   <string name="morphe_settings_music_screen_4_misc_title">Разни</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Скриване на видеореклами</string>
   <string name="morphe_music_hide_video_ads_summary_on">Видеорекламите са скрити</string>
   <string name="morphe_music_hide_video_ads_summary_off">Видеорекламите са показани</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Активиране на постоянно повтаряне</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Постоянното повтаряне е активирано</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Постоянното повтаряне е деактивирано</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Скриване на бутона за предаване</string>
   <string name="morphe_music_hide_cast_button_summary_on">Бутонът за предаване е скрит</string>
   <string name="morphe_music_hide_cast_button_summary_off">Бутонът за предаване е показан</string>
@@ -1671,18 +1668,18 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">Скриване на бутона за търсене</string>
   <string name="morphe_music_hide_search_button_summary_on">Бутонът за търсене е скрит</string>
   <string name="morphe_music_hide_search_button_summary_off">Бутонът за търсене е показан</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Скриване на лентата с категории</string>
   <string name="morphe_music_hide_category_bar_summary_on">Лентата с категории е скрита</string>
   <string name="morphe_music_hide_category_bar_summary_off">Лентата с категории е показана</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Промяна на цвета на миниплейъра</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Цветът на миниплейъра съвпада с този на плейъра на цял екран</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Миниплейърът използва цвят по подразбиране</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Навигационна лента</string>
   <string name="morphe_music_navigation_bar_screen_summary">Скриване или промяна на бутоните на навигационната лента</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1711,16 +1708,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Скриване на етикетите на навигационните бутони</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Етикетите са скрити</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Етикетите са показани</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Скриване на етикета „Вземете Music Premium“</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Етикетът е скрит</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Етикетът е показан</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Скриване на бутона за надстройка</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Бутонът е скрит</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Бутонът е показан</string>
-  </patch>
-  </app>
+
+
 </resources>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Rakenduse nimi</string>
   <string name="morphe_custom_branding_icon_title">Rakenduse ikoon</string>
   <string name="morphe_custom_branding_icon_entry_1">Algne</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphei Teade</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Teie vaatamise ajalugu ei salvestata.&lt;br&gt;&lt;br&gt;See on tõenäoliselt tingitud DNS-i reklaamiblokeerijast või võrguproksilt.&lt;br&gt;&lt;br&gt;Selle parandamiseks lisage valgesse nimekirja &lt;b&gt;s.youtube.com&lt;/b&gt; või lülitage kõik DNS-i reklaamiblokeerijad ja proksid välja.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ära kuva uuesti</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Seaded</string>
   <string name="morphe_settings_confirm_user_dialog_title">Kas sa oled kindel, et soovid jätkata?</string>
   <string name="morphe_settings_save">Salvesta</string>
@@ -80,8 +77,8 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage tr
   <string name="morphe_settings_about_links_header">Ametlikud lingid</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">GmsCore seaded</string>
   <string name="microg_settings_summary">GmsCore seaded</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ MicroG aku optimeerimise keelamine ei mõjuta aku kestvust negatiivselt.
 
 Vajutage jätkamise nuppu ja lubage optimeerimismuutused."</string>
   <string name="gms_core_dialog_continue_text">Jätka</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Võltsitud video voogedastused</string>
   <string name="morphe_spoof_video_streams_screen_summary">Võltsitud kliendi video voogedastused, et vältida taasesituse probleeme</string>
   <string name="morphe_spoof_video_streams_screen_title">Võltsitud videovood</string>
@@ -114,15 +111,15 @@ Kui olete YouTube Premiumi kasutaja, ei pruugi see säte vajalik olla"</string>
 Taasesitus ei pruugi töötada"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Selle sätte väljalülitamine võib põhjustada taasesitusprobleeme.</string>
   <string name="morphe_spoof_video_streams_client_type_title">Vaikimisi klient</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Sunni originaalheli keel</string>
   <string name="morphe_force_original_audio_summary_on">Algse helikeele kasutamine</string>
   <string name="morphe_force_original_audio_summary_off">Kasutan vaikeheli</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Selle funktsiooni kasutamiseks muutke „Võltsitud videovood” mis tahes muule kliendile peale Android Studio.</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Veaotsing</string>
   <string name="morphe_debug_screen_summary">Veaotsinguvalikud lubamiseks või keelamiseks</string>
   <string name="morphe_debug_title">Veaotsingulogimine</string>
@@ -154,18 +151,18 @@ Teid ei teavitata ühestki ootamatust sündmusest."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Lipud salvestatud</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Lipud lähtestatud</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Lipud kopeeritud lõikelauale</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Puhasta jagamislingid</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Jälgimispäringu parameeter on jagatud linkidest eemaldatud</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Jälgimispäringu parameetrit ei eemaldata jagatud linkidest</string>
   <string name="morphe_replace_music_with_youtube_title">Muuda jagamislingid youtube.com-iks</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Jagatud lingid kasutavad youtube.com-i</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Jagatud lingid kasutavad music.youtube.com-i</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">Teave</string>
   <string name="morphe_settings_screen_01_ads_title">Reklaamid</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternatiivsed pisipildid</string>
@@ -179,13 +176,13 @@ Teid ei teavitata ühestki ootamatust sündmusest."</string>
   <string name="morphe_restore_old_settings_menus_title">Taasta vanad seadete menüüd</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Vanad seadete menüüd on kuvatud</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Vanad seadete menüüd ei ole kuvatud</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Shorts taustavideo esitamine lülitada</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Lühivideod taasesitus taustal on keelatud</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Lühivideod taasesitus taustal on lubatud</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Logi protokolipuffari</string>
   <string name="morphe_debug_protobuffer_summary_on">Vea logid sisaldavad protokolipuffari</string>
   <string name="morphe_debug_protobuffer_summary_off">Vea logid ei sisalda protokolipuffari</string>
@@ -194,8 +191,8 @@ Teid ei teavitata ühestki ootamatust sündmusest."</string>
 See võib aidata komponente tuvastada kohandatud filtrite loomisel.
 
 Selle lubamine logib aga ka mõningaid kasutajaandmeid, näiteks teie IP-aadressi."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">Peida albumikaardid</string>
   <string name="morphe_hide_album_cards_summary_on">Albumikaardid on peidetud</string>
   <string name="morphe_hide_album_cards_summary_off">Albumikaardid on nähtavad</string>
@@ -465,8 +462,8 @@ Piirangud
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Võtmesõnal on vastuolulised deklareeringud: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Võtmesõna on liiga lühike ja vajab jutumärke: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Võti sõna: %s peidab kõik videod</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Peida looja poe riiul</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Looja poe riiul videopleieri all on peidetud</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Looja poeriiul videopleieri all on nähtav</string>
@@ -501,18 +498,18 @@ See funktsioon on saadaval ainult vanemates seadmetes"</string>
   <string name="morphe_hide_web_search_results_title">Peida veebiotsingu tulemused</string>
   <string name="morphe_hide_web_search_results_summary_on">Veebiotsingu tulemused on peidetud</string>
   <string name="morphe_hide_web_search_results_summary_off">Veebiotsingu tulemused on nähtavad</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Peida YouTube Premiumi reklaamid</string>
   <string name="morphe_hide_get_premium_summary_on">Videoall mängija all olevad YouTube Premiumi reklaamid on peidetud</string>
   <string name="morphe_hide_get_premium_summary_off">YouTube Premium reklaamide alla esitatakse YouTube Premiumi reklaamkampaaniad</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Peida video reklaamid</string>
   <string name="morphe_hide_video_ads_summary_on">Videoreklaamid on peidetud</string>
   <string name="morphe_hide_video_ads_summary_off">Videoreklaamid on kuvatud</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">URL kopeeritud clipboardi</string>
   <string name="morphe_share_copy_url_timestamp_success">Aadres URL ajaga kopeeritud</string>
   <string name="morphe_copy_video_url_title">Kuva video URL kopeerimise nupp</string>
@@ -521,24 +518,24 @@ See funktsioon on saadaval ainult vanemates seadmetes"</string>
   <string name="morphe_copy_video_url_timestamp_title">Näita video URL-i ajatempliga kopeerimise nuppu</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Nupp on nähtav. Ajakoodiga video URL-i kopeerimiseks puuduta. Ilma ajakoodita kopeerimiseks puuduta pikalt</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Nupud ei ole näha</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eemalda vaataja arvamuse dialoog</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialoog eemaldatakse</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Dialoog kuvatakse</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">See ei mööda vanusepiirangust. See lihtsalt aktsepteerib seda automaatselt.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Keela telerisse sisselogimise hüpikaken</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Telerisse sisselogimise hüpikaken on keelatud</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Telerisse sisselogimise hüpikaken on lubatud</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Keela topeltpuudutusega peatüki vahelejätmine</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Topeltpuudutus ei saa kunagi käivitada järgmise/eelmise peatüki vahelejätmist</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Topeltpuudutus võib aeg-ajalt käivitada järgmise/eelmise peatüki vahelejätmise</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Välised allalaadimised</string>
   <string name="morphe_external_downloader_screen_summary">Seaded välise allalaadija kasutamiseks</string>
   <string name="morphe_external_downloader_title">Näita välise allalaadimise nuppu</string>
@@ -558,18 +555,18 @@ See funktsioon on saadaval ainult vanemates seadmetes"</string>
 
 Veendu, et paketi nimi on õige ja rakendus on installitud"</string>
   <string name="morphe_external_downloader_empty_warning">Paketi nimi ei tohi olla tühi</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Keela täpne otsingu žest</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Žest on keelatud</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Žest on lubatud</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Puudutusega otsimise lubamine</string>
   <string name="morphe_seekbar_tapping_summary_on">Puudutusega otsimine on lubatud</string>
   <string name="morphe_seekbar_tapping_summary_off">Puudutusega otsimine on keelatud</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Luba heleduse žest</string>
   <string name="morphe_swipe_brightness_summary_on">"Täisekraani heleduse pühkimine on lubatud
 
@@ -620,13 +617,13 @@ Helitugevuse reguleerimiseks pühkige ekraani paremal küljel vertikaalselt"</st
   <string name="morphe_swipe_change_video_title">Luba pühkimine videote vahetamiseks</string>
   <string name="morphe_swipe_change_video_summary_on">Täisekraanrežiimis pühkimine vahetab järgmise/eelmise video</string>
   <string name="morphe_swipe_change_video_summary_off">Täisekraanrežiimis pühkimine ei vaheta järgmise/eelmise video</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Keela automaatsed pealdised</string>
   <string name="morphe_disable_auto_captions_summary_on">Automaatsed subtiitrid on keelatud</string>
   <string name="morphe_disable_auto_captions_summary_off">Automaatsed subtiitrid on lubatud</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Tegevuse nupud</string>
   <string name="morphe_hide_buttons_screen_summary">Peida või näita videote all olevaid nuppe</string>
   <string name="morphe_disable_like_subscribe_glow_title">Eemalda Meeldi ja Telli nuppude helk</string>
@@ -690,8 +687,8 @@ Helitugevuse reguleerimiseks pühkige ekraani paremal küljel vertikaalselt"</st
   <string name="morphe_hide_save_button_title">Peida Salvesta</string>
   <string name="morphe_hide_save_button_summary_on">Nupp Salvesta on peidetud</string>
   <string name="morphe_hide_save_button_summary_off">Nupp Salvesta on nähtav</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigeerimisnupud</string>
   <string name="morphe_navigation_buttons_screen_summary">Peida või muuda navigeerimisriba nuppe</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ Kui selle sätte muutmine ei avalda mõju, proovige lülituda Inkognito režiimi
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Keela tume õhuke riba</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Tumeda režiimi navigeerimisriba on läbipaistmatu</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tume režiimi navigeerimisriba on matt või läbipaistev</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Väljuv menüü</string>
   <string name="morphe_hide_player_flyout_summary">Peida või näita esitusprogrammi väljaulatuva menüü esemeid</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ Heliraja menüü nägemiseks muutke \"Video voogude võltsimine\" iPadOS-iks"</s
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Peida video kvaliteedi menüü jalg</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video kvaliteedi menüü jalg on peidetud</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video kvaliteedi menüü jalg on nähtav</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Peida Automaatse esitamise nupp</string>
   <string name="morphe_hide_autoplay_button_summary_on">Automaatse esituse nupp on peidetud</string>
   <string name="morphe_hide_autoplay_button_summary_off">Automaatse esituse nupp on nähtav</string>
@@ -814,28 +811,28 @@ Heliraja menüü nägemiseks muutke \"Video voogude võltsimine\" iPadOS-iks"</s
   <string name="morphe_hide_player_previous_next_buttons_title">Peida eelmine &amp; järgmine nupp</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Nupud on peidetud</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Nupud on nähtavad</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Peida lõpukujunduse kaardid</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Lõpukujunduse kaardid on peidetud</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Lõpukujunduse kaardid on nähtavad</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Keela ümbritseva režiim täisekraanil</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Ümbritseva režiimi keelatud</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Ümbritseva režiimi lubatud</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Peida infokaardid</string>
   <string name="morphe_hide_info_cards_summary_on">Infokaardid on peidetud</string>
   <string name="morphe_hide_info_cards_summary_off">Infokaardid on nähtaval</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Keela rulluvate numbrite animatsioonid</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Rulluvad numbrid ei ole animeeritud</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Rulluvad numbrid on animeeritud</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Peida videopleieri edenemisriba</string>
   <string name="morphe_hide_seekbar_summary_on">Videopleieri otsimisriba on peidetud</string>
   <string name="morphe_hide_seekbar_summary_off">Videopleieri otsimisriba on nähtav</string>
@@ -843,8 +840,8 @@ Heliraja menüü nägemiseks muutke \"Video voogude võltsimine\" iPadOS-iks"</s
   <string name="morphe_hide_seekbar_thumbnail_title">Peida video pisipiltide edenemisriba</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Video pisipiltide edenemisriba on peidetud</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Video pisipiltide edenemisriba on nähtav</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts esitusprogramm</string>
   <string name="morphe_shorts_player_screen_summary">Peida või näita Shortside pleieri komponente</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,48 +954,48 @@ Heliraja menüü nägemiseks muutke \"Video voogude võltsimine\" iPadOS-iks"</s
   <string name="morphe_hide_shorts_navigation_bar_title">Peida navigeerimisriba</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigeerimisriba on peidetud</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigeerimisriba on nähtav</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Peida lõpuekraani soovitatud video</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"Lõpuekraani soovitatud video on peidetud, kui automaatesitus on välja lülitatud.
 
 Automaatesitust saab muuta YouTube'i seadetes:
 Seaded → Taasesitus → Esita järgmine video automaatselt"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Lõpuekraani soovitatud video on näidatud</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Peida seotud videote kate</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Seotud videote kate täisekraanil on peidetud</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">Seotud videote kate täisekraanil on nähtaval</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Peida video ajamärk</string>
   <string name="morphe_hide_timestamp_summary_on">Ajamärk on peidetud</string>
   <string name="morphe_hide_timestamp_summary_off">Ajamärk on nähtav</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Peida esitaja hüpikaknad</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Esitaja hüpikaknad on peidetud</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Esitaja hüpikaknad on nähtavad</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Video lõpus välju täisekraanirežiimist</string>
   <string name="morphe_exit_fullscreen_entry_1">Keelatud</string>
   <string name="morphe_exit_fullscreen_entry_2">Portree</string>
   <string name="morphe_exit_fullscreen_entry_3">Maastiku</string>
   <string name="morphe_exit_fullscreen_entry_4">Portree ja maastiku</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Ava videod täisekraani portreerežiimis</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Videod avanevad täisekraani režiimis</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Videod ei avane täisekraani režiimis</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Esitaja kattekihi läbipaistvus</string>
   <string name="morphe_player_overlay_opacity_summary">Läbipaistvuse väärtus vahemikus 0-100, kus 0 on läbipaistev</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Mängija kattekihi läbipaistvus peab olema 0-100 vahel</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Mittemeeldimised pole ajutiselt saadaval (API aegus)</string>
   <string name="morphe_ryd_failure_connection_status_code">Mittemeeldimised pole saadaval (olek %d)</string>
@@ -1046,13 +1043,13 @@ Piirang: Ei meeldimised ei pruugi inkognito režiimis kuvada"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Kliendi kiirusepiiranguid ei ole kohatud</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliendi kiirusepiirang on kohatud %d korda</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d millisekundit</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Luba lai otsinguriba</string>
   <string name="morphe_wide_searchbar_summary_on">Lai otsinguriba on lubatud</string>
   <string name="morphe_wide_searchbar_summary_off">Lai otsinguriba on keelatud</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Luba kvaliteetsed pisipildid</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">Pisipildid on kvaliteetsed</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">Pisipildid on keskmiselt kvaliteetsed</string>
@@ -1064,8 +1061,8 @@ See funktsioon toimib kõige paremini 720p või madalama video kvaliteedi ja vä
   <string name="morphe_restore_old_seekbar_thumbnails_title">Taasta vanad pisipildid</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">Pisipildid ilmuvad otsinguriba kohale</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">Pisipildid ilmuvad täisekraanil</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Luba SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock on rahvahulga loodud süsteem YouTube\'i videote tüütute osade vahelejätmiseks</string>
   <string name="morphe_sb_appearance_category">Välimus</string>
@@ -1276,8 +1273,8 @@ Kas olete esitamiseks valmis?"</string>
   <string name="morphe_sb_color_dot_label">Värv:</string>
   <string name="morphe_sb_about_title">Teave</string>
   <string name="morphe_sb_about_api_summary">Andmed on pärit SponsorBlock API-st. Puudutage siia, et saada lisateavet ja vaadata allalaadimisi teistele platvormidele</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Paigutuse vormitegur</string>
   <string name="morphe_change_form_factor_entry_1">Vaikimisi</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
@@ -1291,8 +1288,8 @@ Tahvelarvuti paigutus
 Autode paigutus
 • Shorts avanevad tavalises pleieris
 • Voog on korraldatud teemade ja kanalite järgi"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Võltsitud rakenduse versioon</string>
   <string name="morphe_spoof_app_version_summary_on">Versioon on võltsitud</string>
   <string name="morphe_spoof_app_version_summary_off">Versiooni ei ole võltsitud</string>
@@ -1306,8 +1303,8 @@ Kui see hiljem välja lülitatakse, on soovitatav rakenduse andmed kustutada, et
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Taasta transkriptsioonifunktsionaalsus</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Taastage vanad Shortsi esitajaikoonid</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 – Taasta vanad navigeerimisikoonid</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Muuda alguslehte</string>
   <string name="morphe_change_start_page_entry_default">Vaikimisi</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Kõik tellimused</string>
@@ -1338,27 +1335,27 @@ Kui see hiljem välja lülitatakse, on soovitatav rakenduse andmed kustutada, et
 
 Piirang: tööriistaribal tagasinupp ei pruugi töötada"</string>
   <string name="morphe_change_start_page_always_summary_off">Avalehte muudetakse ainult rakenduse käivitamisel</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Keela Shortsi esitaja jätkamine</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Shortsi esitaja ei jätka rakenduse käivitamisel</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Shortsi esitaja jätkub rakenduse käivitamisel</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Ava Shorts</string>
   <string name="morphe_shorts_player_type_shorts">Shorts esitusprogramm</string>
   <string name="morphe_shorts_player_type_regular_player">Tavaline mängija</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Tavaline mängija täisekraanil</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Shortsi automaatne esitus</string>
   <string name="morphe_shorts_autoplay_summary_on">Shortsid esitatakse automaatselt</string>
   <string name="morphe_shorts_autoplay_summary_off">Shortsid korratakse</string>
   <string name="morphe_shorts_autoplay_background_title">Shortsi automaatne esitus taustal</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shortsi taustal esitamine toimub automaatselt</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shortsi taustal esitamine korratakse</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Minimängija</string>
   <string name="morphe_miniplayer_screen_summary">Muuda rakendusesisese minipleieri stiili</string>
   <string name="morphe_miniplayer_type_title">Miniplayeri tüüp</string>
@@ -1404,8 +1401,8 @@ Minimaalset mängijat saab lohistada ekraanilt vasakule või paremale"</string>
   <string name="morphe_miniplayer_opacity_title">Katte läbipaistvus</string>
   <string name="morphe_miniplayer_opacity_summary">Läbipaistvuse väärtus vahemikus 0-100, kus 0 on läbipaistev</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayeri katte läbipaistvus peab olema vahemikus 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Lülita gradientega laadimiskuva sisse</string>
   <string name="morphe_gradient_loading_screen_summary_on">Laadimiskuval on gradientega taust</string>
   <string name="morphe_gradient_loading_screen_summary_off">Laadimiskuval on tahke taust</string>
@@ -1420,24 +1417,24 @@ Minimaalset mängijat saab lohistada ekraanilt vasakule või paremale"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Kohandatud otsinguriba esiletõiduv värv</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Otsinguriba esiletõiduv värv</string>
   <string name="morphe_seekbar_custom_color_invalid">Vigane edastusriba värvi väärtus</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Päise logo</string>
   <string name="morphe_header_logo_entry_1">Vaikimisi</string>
   <string name="morphe_header_logo_entry_2">Tavaline</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe minimaalne</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Ületa pildi piirkondlike piirangute keelud</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Kasutatakse pildi hosti yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Kasutatakse originaalset piltide hosti
 
 Selle lubamine võib parandada puuduvate piltide probleemi, mis mõnes piirkonnas on blokeeritud"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Avalehe vaheleht</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1472,28 +1469,28 @@ Puudutage siia, et saada lisateavet DeArrow kohta"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow pole ajutiselt kättesaadav (oleku kood: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow pole ajutiselt kättesaadav</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Kuva Morphei teated</string>
   <string name="morphe_announcements_summary_on">Teadaanded käivitamisel on kuvatud</string>
   <string name="morphe_announcements_summary_off">Teadaanded käivitamisel pole kuvatud</string>
   <string name="morphe_announcements_enabled_summary">Kuva teated käivitamisel</string>
   <string name="morphe_announcements_connection_failed">Ühenduse loomine teatepakkujaga ebaõnnestus</string>
   <string name="morphe_announcements_dialog_dismiss">Loobu</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Luba video kordamine</string>
   <string name="morphe_loop_video_summary_on">Video kordub</string>
   <string name="morphe_loop_video_summary_off">Video ei kordu</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Näita video korduse nuppu</string>
   <string name="morphe_loop_video_button_summary_on">Nuppu kuvatakse</string>
   <string name="morphe_loop_video_button_summary_off">Nuppu ei kuvata</string>
   <string name="morphe_loop_video_button_toast_on">Video kordus on sees</string>
   <string name="morphe_loop_video_button_toast_off">Video kordus on väljas</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Võltsitud seadme mõõtmed</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Seadme mõõtmed võltsitakse
 
@@ -1502,8 +1499,8 @@ Võib avada kõrgema video kvaliteedi, kuid see võib põhjustada video taasesit
 
 Selle lubamine võib avada kõrgema video kvaliteedi"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Selle funktsiooni lubamine võib põhjustada videote taasesituse häireid, kehvema aku kestvuse ja tundmatud kõrvalmõjud.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptiline tagasiside</string>
   <string name="morphe_disable_haptic_feedback_summary">Muuda haptilist tagasisidet</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Keela peatükkide hääled</string>
@@ -1518,21 +1515,21 @@ Selle lubamine võib avada kõrgema video kvaliteedi"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Keela suumimise hääled</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Suumi haptika on keelatud</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Suumi haptika on lubatud</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Kui sa hiljuti muutsid oma konto sisselogimisandmeid, siis eemalda ja installeeri MicroG uuesti.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Ümbersuunamiste URL-id mööda minna</string>
   <string name="morphe_bypass_url_redirects_summary_on">Ümbersuunamiste URL-id mööda minnakse</string>
   <string name="morphe_bypass_url_redirects_summary_off">Ümbersuunamiste URL-id ei mööda minnakse</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Ava lingid brauseris</string>
   <string name="morphe_external_browser_summary_on">Linkide avamine välises brauseris</string>
   <string name="morphe_external_browser_summary_off">Linkide avamine rakendusesiseses brauseris</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaatne</string>
   <string name="morphe_remember_video_quality_last_selected_title">Määle video kvaliteedi muudatused meelde</string>
@@ -1552,18 +1549,18 @@ Selle lubamine võib avada kõrgema video kvaliteedi"</string>
   <string name="morphe_remember_video_quality_wifi">WiFi</string>
   <string name="morphe_remember_video_quality_toast">Vaikimisi %1$s kvaliteet muudeti: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Muudetud Shorts %1$s kvaliteet: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Kuva kiiruse dialoogi nupp</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Nupp on nähtaval. Puudutage ja hoidke all, et taastada taasesituse kiirus vaikeväärtusele</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Nuppi ei kuvata</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Näita video kvaliteedi nuppu</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Nupp on nähtaval. Kvaliteedi lähtestamiseks vaikeseadeteks puudutage ja hoidke</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Nuppu ei kuvata</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Kohandatud taasesituse kiiruse menüü</string>
   <string name="morphe_custom_speed_menu_summary_on">Kohandatud kiiruse menüü kuvatakse</string>
   <string name="morphe_custom_speed_menu_summary_off">Kohandatud kiiruse menüüd ei kuvata</string>
@@ -1577,8 +1574,8 @@ Selle lubamine võib avada kõrgema video kvaliteedi"</string>
   <string name="morphe_custom_playback_speeds_auto">Automaatne</string>
   <string name="morphe_speed_tap_and_hold_title">Kohandatud puuduta ja hoia kiiruse tase</string>
   <string name="morphe_speed_tap_and_hold_summary">Taasesituse kiirus vahemikus 0-8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Määle taasesituse kiiruse muudatused meelde</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Taasesituse kiiruse muudatused kehtivad kõigile videotele</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Taasesituse kiiruse muudatused kehtivad ainult praegusele videole</string>
@@ -1587,8 +1584,8 @@ Selle lubamine võib avada kõrgema video kvaliteedi"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Teavitust ei kuvata, kui vaike taasesituskiirust muudetakse.</string>
   <string name="morphe_playback_speed_default_title">Vaikimisi taasesituse kiirus</string>
   <string name="morphe_remember_playback_speed_toast">Vaikimisi kiirus muudeti: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Keela HDR video</string>
   <string name="morphe_disable_hdr_video_summary_on">HDR video on keelatud</string>
   <string name="morphe_disable_hdr_video_summary_off">HDR video on lubatud</string>
@@ -1604,18 +1601,18 @@ Piirangud:
 • Video taasesitus kasutab rohkem internetiandmeid kui VP9 või AV1
 • HDR-videod ei kasuta AVC-d
 • Mõned seadmed ei saa AVC-d sundida"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Kuva täiustatud video kvaliteedi menüü</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Täiustatud video kvaliteedi menüü on kuvatud</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Täiustatud video kvaliteedi menüü ei ole kuvatud</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Luba libistamine otsimiseks</string>
   <string name="morphe_slide_to_seek_summary_on">Libistamine otsimiseks on lubatud</string>
   <string name="morphe_slide_to_seek_summary_off">Libistamine otsimiseks on keelatud</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Luba Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Videokodek on AVC (H.264), VP9 või AV1
 
@@ -1636,29 +1633,29 @@ AV1-ga videotaasesitus võib hakitud olla või kaadreid vahele jätta."</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Kuva statistikas \"Nerdide jaoks\"</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Klienditüüp on statistikas \"Nerdide jaoks\" nähtav</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Klient on statistikas \"Nerdide jaoks\" peidetud</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">Teave</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklaamid</string>
   <string name="morphe_settings_music_screen_2_general_title">Üldine</string>
   <string name="morphe_settings_music_screen_3_player_title">Mängija</string>
   <string name="morphe_settings_music_screen_4_misc_title">Muu</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Peida videoreklaamid</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoreklaamid on peidetud</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoreklaamid on nähtaval</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Luba püsiv kordus</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Püsiv kordus on lubatud</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Püsiv kordus on keelatud</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Peida edastusnupp</string>
   <string name="morphe_music_hide_cast_button_summary_on">Edastusnupp on peidetud</string>
   <string name="morphe_music_hide_cast_button_summary_off">Edastusnupp on nähtav</string>
@@ -1671,18 +1668,18 @@ AV1-ga videotaasesitus võib hakitud olla või kaadreid vahele jätta."</string>
   <string name="morphe_music_hide_search_button_title">Peida otsingunupp</string>
   <string name="morphe_music_hide_search_button_summary_on">Otsingunupp on peidetud</string>
   <string name="morphe_music_hide_search_button_summary_off">Otsingunupp on nähtav</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Peida kategooriariba</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategooriariba on peidetud</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategooriariba on nähtaval</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Muuda minipleieri värvi</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Minipleieri värv ühtib täisekraanipleieri omaga</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minipleier kasutab vaikevärvi</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigeerimisriba</string>
   <string name="morphe_music_navigation_bar_screen_summary">Peida või muuda navigeerimisriba nuppe</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1711,16 +1708,16 @@ AV1-ga videotaasesitus võib hakitud olla või kaadreid vahele jätta."</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Peida navigeerimisnuppude sildid</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Sildid on peidetud</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Sildid on nähtavale toodud</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Peida sildike \"Hangi Music Premium\"</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Silt on peidetud</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Silt on nähtaval</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Peida uuendamise nupp</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Nupp on peidetud</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Nupp on nähtaval</string>
-  </patch>
-  </app>
+
+
 </resources>

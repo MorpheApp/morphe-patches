@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">שם האפליקציה</string>
   <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
   <string name="morphe_custom_branding_icon_entry_1">מקורי</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">אל תציג שוב</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">הגדרות</string>
   <string name="morphe_settings_confirm_user_dialog_title">האם אתה בטוח שברצונך להמשיך?</string>
   <string name="morphe_settings_save">שמור</string>
@@ -80,8 +77,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_header">קישורים רשמיים</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">הגדרות GmsCore</string>
   <string name="microg_settings_summary">הגדרות עבור GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ Second \"item\" text"</string>
 
 הקש על הלחצן 'המשך' ואפשר שינויי מיטוב."</string>
   <string name="gms_core_dialog_continue_text">המשך</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">זייף זרמי וידאו</string>
   <string name="morphe_spoof_video_streams_screen_summary">זייף זרמי וידאו של לקוח כדי למנוע בעיות הפעלה</string>
   <string name="morphe_spoof_video_streams_screen_title">זיוף זרמי וידאו</string>
@@ -114,15 +111,15 @@ Second \"item\" text"</string>
 ההשמעה עשויה שלא לפעול"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
   <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary_on">שימוש בשפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary_off">שימוש בשמע ברירת מחדל</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">כדי להשתמש בתכונה זו, שנה את \'זיוף זרמי וידאו\' לכל לקוח מלבד Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">איתור באגים</string>
   <string name="morphe_debug_screen_summary">הפעל או השבת אפשרויות לאיתור באגים</string>
   <string name="morphe_debug_title">רישום איתור באגים</string>
@@ -154,18 +151,18 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">הדגלים נשמרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">הדגלים אופסו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
   <string name="morphe_sanitize_sharing_links_summary_on">פרמטר מעקב מוסר מקישורי שיתוף</string>
   <string name="morphe_sanitize_sharing_links_summary_off">פרמטר מעקב אינו מוסר מקישורי שיתוף</string>
   <string name="morphe_replace_music_with_youtube_title">שנה קישורי שיתוף ל-youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">קישורים משותפים משתמשים ב-youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">קישורים משותפים משתמשים ב-music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">אודות</string>
   <string name="morphe_settings_screen_01_ads_title">מודעות</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">תמונות ממוזערות חלופיות</string>
@@ -179,13 +176,13 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">שחזר תפריטי הגדרות ישנים</string>
   <string name="morphe_restore_old_settings_menus_summary_on">תפריטי הגדרות ישנים מוצגים</string>
   <string name="morphe_restore_old_settings_menus_summary_off">תפריטי הגדרות ישנים אינם מוצגים</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">השבת הפעלה ברקע של Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">הפעלה ברקע של Shorts מושבתת</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">הפעלה ברקע של Shorts מופעלת</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">רשום פרוטוקול חוצץ</string>
   <string name="morphe_debug_protobuffer_summary_on">יומני איתור באגים כוללים פרוטוקול חוצץ</string>
   <string name="morphe_debug_protobuffer_summary_off">יומני איתור באגים אינם כוללים פרוטוקול חוצץ</string>
@@ -194,8 +191,8 @@ Second \"item\" text"</string>
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.
 
 עם זאת, הפעלת הגדרה זו תתעד גם כמה נתוני משתמש כמו כתובת ה-IP שלך."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">הסתר כרטיסי אלבום</string>
   <string name="morphe_hide_album_cards_summary_on">כרטיסי אלבום מוסתרים</string>
   <string name="morphe_hide_album_cards_summary_off">כרטיסי אלבום מוצגים</string>
@@ -465,8 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">למילת מפתח יש הצהרות סותרות: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">מילת מפתח קצרה מדי ודורשת מרכאות: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">מילת מפתח תסתיר את כל הסרטונים: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">הסתר מדף חנות היוצר</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">מדף חנות היוצר מתחת לנגן הוידאו מוסתר</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">מדף חנות היוצר מתחת לנגן הוידאו מוצג</string>
@@ -501,18 +498,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">הסתר תוצאות חיפוש באינטרנט</string>
   <string name="morphe_hide_web_search_results_summary_on">תוצאות חיפוש באינטרנט מוסתרות</string>
   <string name="morphe_hide_web_search_results_summary_off">תוצאות חיפוש באינטרנט מוצגות</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">הסתר קידומי YouTube Premium</string>
   <string name="morphe_hide_get_premium_summary_on">קידומי YouTube Premium תחת נגן הוידאו מוסתרים</string>
   <string name="morphe_hide_get_premium_summary_off">קידומי YouTube Premium תחת נגן הוידאו מוצגים</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">הסתר מודעות סרטון</string>
   <string name="morphe_hide_video_ads_summary_on">מודעות סרטון מוסתרות</string>
   <string name="morphe_hide_video_ads_summary_off">מודעות סרטון מוצגות</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">כתובת URL הועתקה אל הלוח</string>
   <string name="morphe_share_copy_url_timestamp_success">כתובת URL עם חותמת זמן הועתקה</string>
   <string name="morphe_copy_video_url_title">הצג לחצן העתקת כתובת ה-URL של הסרטון</string>
@@ -521,24 +518,24 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_timestamp_title">הצג לחצן העתקת כתובת ה-URL של הסרטון עם חותמת זמן</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">הלחצן מוצג. הקש כדי להעתיק את כתובת ה-URL של הסרטון עם חותמת זמן. הקש והחזק כדי להעתיק ללא חותמת זמן</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">הלחצן אינו מוצג</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">הסר דו-שיח שיקול דעת הצופים</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">דו-שיח יוסר</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">דו-שיח יוצג</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">זה לא עוקף את מגבלת הגיל. זה רק מסכים לזה באופן אוטומטי.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">השבת חלון קופץ של כניסה לטלוויזיה</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">חלון קופץ של כניסה לטלוויזיה מושבת</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">חלון קופץ של כניסה לטלוויזיה מופעל</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">השבת דילוג פרקים בהקשה כפולה</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">הקשה כפולה לעולם לא יכולה לגרום דילוג לפרק הבא/הקודם</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">הקשה כפולה יכולה לגרום מדי פעם דילוג לפרק הבא/הקודם</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">הורדות חיצוניות</string>
   <string name="morphe_external_downloader_screen_summary">הגדרות לשימוש במוריד חיצונית</string>
   <string name="morphe_external_downloader_title">הצג לחצן הורדה חיצונית</string>
@@ -558,18 +555,18 @@ Second \"item\" text"</string>
 
 יש לוודא ששם החבילה נכון ושהיישום מותקן"</string>
   <string name="morphe_external_downloader_empty_warning">שם החבילה אינו יכול להיות ריק</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">מחווה מושבתת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">מחווה מופעלת</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">הפעל הקשה כדי לדלג</string>
   <string name="morphe_seekbar_tapping_summary_on">הקשה כדי לדלג מופעלת</string>
   <string name="morphe_seekbar_tapping_summary_off">הקשה כדי לדלג מושבתת</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">הפעל מחוות בהירות</string>
   <string name="morphe_swipe_brightness_summary_on">"החלקת בהירות במסך מלא מופעלת
 
@@ -620,13 +617,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">הפעל החלקה כדי לשנות סרטונים</string>
   <string name="morphe_swipe_change_video_summary_on">החלקה במצב מסך מלא תשנה לסרטון הבא/הקודם</string>
   <string name="morphe_swipe_change_video_summary_off">החלקה במצב מסך מלא לא תשנה לסרטון הבא/הקודם</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">השבת כתוביות אוטומטיות</string>
   <string name="morphe_disable_auto_captions_summary_on">כתוביות אוטומטיות מופעלות</string>
   <string name="morphe_disable_auto_captions_summary_off">כתוביות אוטומטיות מושבתות</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">פעולות לחצנים</string>
   <string name="morphe_hide_buttons_screen_summary">הסתר או הצג לחצנים תחת סרטונים</string>
   <string name="morphe_disable_like_subscribe_glow_title">השבת זוהר אהבתי והרשמה למינוי</string>
@@ -690,8 +687,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">הסתר \'שמירה\'</string>
   <string name="morphe_hide_save_button_summary_on">הלחצן \'שמירה\' מוסתר</string>
   <string name="morphe_hide_save_button_summary_off">הלחצן שמירה\' מוצג</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">לחצני ניווט</string>
   <string name="morphe_navigation_buttons_screen_summary">הסתר או שנה לחצנים בסרגל הניווט</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">השבת סרגל כהה שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">סרגל ניווט במצב כהה הוא אטום</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">סרגל ניווט במצב כהה הוא אטום או שקוף</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">תפריט נשלף</string>
   <string name="morphe_hide_player_flyout_summary">הסתר או הצג פריטי תפריט נשלף של נגן</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">הסתר כותרת תחתונה של תפריט איכות סרטון</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">כותרת תחתונה של תפריט איכות סרטון מוסתרת</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">כותרת תחתונה של תפריט איכות סרטון מוצגת</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">הסתר לחצן הפעלה אוטומטית</string>
   <string name="morphe_hide_autoplay_button_summary_on">לחצן הפעלה אוטומטית מוסתר</string>
   <string name="morphe_hide_autoplay_button_summary_off">לחצן הפעלה אוטומטית מוצג</string>
@@ -814,28 +811,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">הסתר לחצני הקודם &amp; הבא</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">הלחצנים מוסתרים</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">הלחצנים מוצגים</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">הסתר כרטיסי מסך סיום</string>
   <string name="morphe_hide_endscreen_cards_summary_on">כרטיסי מסך מסיום מוסתרים</string>
   <string name="morphe_hide_endscreen_cards_summary_off">כרטיסי מסך מסיום מוצגים</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">השבת תאורת אווירה במסך מלא</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">תאורת אווירה מושבתת</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">תאורת אווירה מופעלת</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">הסתר כרטיסי מידע</string>
   <string name="morphe_hide_info_cards_summary_on">כרטיסי המידע מוסתרים</string>
   <string name="morphe_hide_info_cards_summary_off">כרטיסי המידע מוצגים</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">השבת הנפשות מספר מתגלגל</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">מספרים מתגלגלים אינם מונפשים</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">מספרים מתגלגלים מונפשים</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">הסתר סרגל דילוג של נגן וידאו</string>
   <string name="morphe_hide_seekbar_summary_on">סרגל דילוג של נגן וידאו מוסתר</string>
   <string name="morphe_hide_seekbar_summary_off">סרגל דילוג של נגן וידאו מוצג</string>
@@ -843,8 +840,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_title">הסתר סרגל דילוג עם תמונות ממוזערות של סרטון</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">סרגל דילוג עם תמונות ממוזערות של סרטון מוסתר</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">סרגל דילוג עם תמונות ממוזערות של סרטון מוצג</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">נגן Shorts</string>
   <string name="morphe_shorts_player_screen_summary">הסתר או הצג רכיבי נגן Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,8 +954,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_title">הסתר סרגל ניווט</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">סרגל ניווט מוסתר</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">סרגל ניווט מוצג</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">הסתר סרטון מוצע של מסך סיום</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"סרטון מוצע של מסך סיום מוסתר כאשר הפעלה אוטומטית כבויה
 
@@ -966,40 +963,40 @@ Second \"item\" text"</string>
 הפעלה אוטומטית ניתנת לשינוי בהגדרות YouTube:
 הגדרות ← הפעלה ← הפעלה אוטומטית של הסרטון הבא"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">סרטון מוצע של מסך סיום מוצג</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">הסתר חותמת זמן של סרטון</string>
   <string name="morphe_hide_timestamp_summary_on">חותמת זמן מוסתרת</string>
   <string name="morphe_hide_timestamp_summary_off">חותמת זמן מוצגת</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">הסתר לוחות נגן צצים</string>
   <string name="morphe_hide_player_popup_panels_summary_on">לוחות נגן צצים מוסתרים</string>
   <string name="morphe_hide_player_popup_panels_summary_off">לוחות נגן צצים מוצגים</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">צא ממצב מסך מלא בסוף סרטון</string>
   <string name="morphe_exit_fullscreen_entry_1">מושבת</string>
   <string name="morphe_exit_fullscreen_entry_2">לאורך</string>
   <string name="morphe_exit_fullscreen_entry_3">לרוחב</string>
   <string name="morphe_exit_fullscreen_entry_4">לאורך ולרוחב</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">פתח סרטונים במסך מלא לאורך</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">סרטונים פותחים מסך מלא</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">סרטונים אינם פותחים מסך מלא</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">אטימות שכבת-על של נגן</string>
   <string name="morphe_player_overlay_opacity_summary">ערך אטימות בין 0 ל-100, כאשר 0 שקוף</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">אטימות שכבת-על של נגן חייבת להיות בין 0 ל-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">דיסלייקים אינם זמינים באופן זמני (תם פסק הזמן של ה-API)</string>
   <string name="morphe_ryd_failure_connection_status_code">דיסלייקים אינם זמינים (מצב %d)</string>
@@ -1047,13 +1044,13 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">לא נתקלו מגבלות קצב לקוח</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">מגבלת קצב לקוח נתקלו %d פעמים</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d אלפיות שנייה</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">הפעל סרגל חיפוש רחב</string>
   <string name="morphe_wide_searchbar_summary_on">סרגל חיפוש רחב מופעל</string>
   <string name="morphe_wide_searchbar_summary_off">סרגל חיפוש רחב מושבת</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">הפעל תמונות ממוזערות באיכות גבוהה</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">תמונות ממוזערות של סרגל דילוג הן באיכות גבוהה</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">תמונות ממוזערות של סרגל דילוג הן באיכות בינונית</string>
@@ -1067,8 +1064,8 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_seekbar_thumbnails_title">שחזר תמונות ממוזערות של סרגל דילוג ישנות</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">תמונות ממוזערות של סרגל דילוג יופיעו מעל סרגל הדילוג</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">תמונות ממוזערות של סרגל דילוג יופיעו במסך מלא</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">הפעל את SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">המערכת SponsorBlock היא מערכת מיקור המונים לדילוג על חלקים מעצבנים של סרטוני YouTube</string>
   <string name="morphe_sb_appearance_category">מראה</string>
@@ -1278,8 +1275,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_dot_label">צבע:</string>
   <string name="morphe_sb_about_title">אודות</string>
   <string name="morphe_sb_about_api_summary">הנתונים מסופקים על ידי SponsorBlock API. הקש כאן כדי ללמוד עוד ולראות הורדות עבור פלטפורמות אחרות</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">גורם צורת הפריסה</string>
   <string name="morphe_change_form_factor_entry_1">ברירת מחדל</string>
   <string name="morphe_change_form_factor_entry_2">טלפון</string>
@@ -1293,8 +1290,8 @@ Second \"item\" text"</string>
 פריסת רכב
 • סרטוני Shorts נפתחים בנגן הרגיל
 • פיד מאורגן לפי נושאים וערוצים"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">זייף גרסת יישום</string>
   <string name="morphe_spoof_app_version_summary_on">גרסה מזויפת</string>
   <string name="morphe_spoof_app_version_summary_off">גרסה לא מזויפת</string>
@@ -1308,8 +1305,8 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - שחזור פונקציונליות תמלול</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - שחזר סמלי נגן Shorts ישנים</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - שחזר סמלי ניווט ישנים</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">כל המינויים</string>
@@ -1340,27 +1337,27 @@ Second \"item\" text"</string>
 
 מגבלה: ייתכן שלחצן החזרה בסרגל הכלים לא יפעל"</string>
   <string name="morphe_change_start_page_always_summary_off">דף הפתיחה משתנה רק בעת הפעלת האפליקציה</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">השבת חידוש נגן Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">נגן Shorts לא יתחדש בעת הפעלת היישום</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">נגן Shorts יתחדש בעת הפעלת היישום</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">פתח Shorts עם</string>
   <string name="morphe_shorts_player_type_shorts">נגן Shorts</string>
   <string name="morphe_shorts_player_type_regular_player">נגן רגיל</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">נגן רגיל במסך מלא</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">הפעלה אוטומטית של Shorts</string>
   <string name="morphe_shorts_autoplay_summary_on">סרטוני Shorts יפעילו אוטומטית</string>
   <string name="morphe_shorts_autoplay_summary_off">סרטוני Shorts יחזרו על עצמם</string>
   <string name="morphe_shorts_autoplay_background_title">הפעלה אוטומטית בעת הפעלה ברקע של Shorts</string>
   <string name="morphe_shorts_autoplay_background_summary_on">הפעלה ברקע של Shorts תפעיל אוטומטית</string>
   <string name="morphe_shorts_autoplay_background_summary_off">הפעלה ברקע של Shorts תחזור על עצמה</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">מיני-נגן</string>
   <string name="morphe_miniplayer_screen_summary">שנה את הסגנון של הנגן הממוזער בתוך היישום</string>
   <string name="morphe_miniplayer_type_title">סוג מיני-נגן</string>
@@ -1406,8 +1403,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">אטימות שכבת-על</string>
   <string name="morphe_miniplayer_opacity_summary">ערך אטימות בין 0 ל-100, כאשר 0 שקוף</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">אטימות שכבת-על של מיני-נגן חייבת להיות בין 0 ל-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">הפעל מסך טעינה עם מעבר צבע</string>
   <string name="morphe_gradient_loading_screen_summary_on">מסך הטעינה יהיה בעל רקע עם מעבר צבע</string>
   <string name="morphe_gradient_loading_screen_summary_off">מסך הטעינה יהיה בעל רקע מוצק</string>
@@ -1422,24 +1419,24 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">צבע הדגשת סרגל דילוג מותאם אישית</string>
   <string name="morphe_seekbar_custom_color_accent_summary">צבע ההדגשה של סרגל הדילוג</string>
   <string name="morphe_seekbar_custom_color_invalid">ערך צבע סרגל דילוג לא חוקי</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">לוגו כותרת</string>
   <string name="morphe_header_logo_entry_1">ברירת מחדל</string>
   <string name="morphe_header_logo_entry_2">רגיל</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe מינימלי</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">עקוף מגבלות תמונה אזוריות</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">שימוב במארח תמונות yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"שימוש במארח תמונות מקורי
 
 הפעלת אפשרות זו יכולה לתקן תמונות חסרות שנחסמו באזורים מסוימים"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">כרטיסיית דף הבית</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1474,28 +1471,28 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">השירות DeArrow אינו זמין באופן זמני (קוד מצב: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">השירות DeArrow אינו זמין באופן זמני</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">הצג הכרזות של Morphe</string>
   <string name="morphe_announcements_summary_on">הכרזות בעת הפעלה מוצגות</string>
   <string name="morphe_announcements_summary_off">הכרזות בעת הפעלה אינן מוצגות</string>
   <string name="morphe_announcements_enabled_summary">הצג הכרזות בעת הפעלה</string>
   <string name="morphe_announcements_connection_failed">נכשל בהתחברות לספק הכרזות</string>
   <string name="morphe_announcements_dialog_dismiss">דחה</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">הפעל סרטון בלולאה</string>
   <string name="morphe_loop_video_summary_on">הסרטון יופעל בלולאה</string>
   <string name="morphe_loop_video_summary_off">הסרטון לא יופעל בלולאה</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">הצג לחצן הפעלת סרטון בלולאה</string>
   <string name="morphe_loop_video_button_summary_on">הלחצן מוצג</string>
   <string name="morphe_loop_video_button_summary_off">הלחצן אינו מוצג</string>
   <string name="morphe_loop_video_button_toast_on">הפעלת סרטון בלולאה מופעלת</string>
   <string name="morphe_loop_video_button_toast_off">הפעלת סרטון בלולאה כבויה</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">זייף ממדי מכשיר</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"מימדי המכשיר מזויפים
 
@@ -1504,8 +1501,8 @@ Second \"item\" text"</string>
 
 הפעלת אפשרות זו יכולה לפתוח איכויות סרטון גבוהות יותר"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">הפעלת אפשרות זו עלולה לגרום לגמגום בהפעלת סרטון, חיי סוללה גרועים יותר, ותופעות לוואי לא ידועות.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">משוב ברטט</string>
   <string name="morphe_disable_haptic_feedback_summary">שנה משוב ברטט</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">השבת משוב ברטט עבור פרקים</string>
@@ -1520,21 +1517,21 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">השבת משוב זום ברטט</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">משוב ברטט עבור זום מושבת</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">משוב ברטט עבור זום מופעל</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">אם פרטי הכניסה לחשבונך השתנו לאחרונה, אז יש להסיר ולהתקין מחדש את MicroG.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">עקוף הפניות מחדש של URL</string>
   <string name="morphe_bypass_url_redirects_summary_on">הפניות מחדש של URL נעקפות</string>
   <string name="morphe_bypass_url_redirects_summary_off">הפניות מחדש של URL אינן נעקפות</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">פתח קישורים בדפדפן</string>
   <string name="morphe_external_browser_summary_on">פותח קישורים בדפדפן חיצוני </string>
   <string name="morphe_external_browser_summary_off">פותח קישורים בדפדפן בתוך היישום</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
   <string name="morphe_remember_video_quality_last_selected_title">זכור שינויי איכות סרטון</string>
@@ -1554,18 +1551,18 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_wifi">אלחוטית</string>
   <string name="morphe_remember_video_quality_toast">איכות %1$s ברירת מחדל שונתה ל: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">איכות %1$s Shorts שונתה ל: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">הצג לחצן דו-שיח של מהירות</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">הלחצן מוצג. יש להקיש ולהחזיק כדי לאפס את מהירות ההפעלה לברירת מחדל</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">הלחצן אינו מוצג</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">הצג לחצן איכות סרטון</string>
   <string name="morphe_video_quality_dialog_button_summary_on">הלחצן מוצג. הקש והחזק כדי לאפס את האיכות לברירת מחדל</string>
   <string name="morphe_video_quality_dialog_button_summary_off">הלחצן אינו מוצג</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">תפריט מהירות הפעלה מותאם אישית</string>
   <string name="morphe_custom_speed_menu_summary_on">תפריט מהירות מותאם אישית מוצג</string>
   <string name="morphe_custom_speed_menu_summary_off">תפריט מהירות מותאם אישית אינו מוצג</string>
@@ -1579,8 +1576,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_auto">אוטומטי</string>
   <string name="morphe_speed_tap_and_hold_title">מהירות הקשה והחזקה מותאמת אישית</string>
   <string name="morphe_speed_tap_and_hold_summary">מהירות הפעלה בין 0 ל-8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">זכור שינויי מהירות הפעלה</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">שינויי מהירות הפעלה חלים על כל הסרטונים</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">שינויי מהירות הפעלה חלים רק על הסרטון הנוכחי</string>
@@ -1589,8 +1586,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">לא מוצגת הודעה קוצפת  כאשר מהירות ההפעלה ברירת המחדל משתנה</string>
   <string name="morphe_playback_speed_default_title">מהירות הפעלה ברירת מחדל</string>
   <string name="morphe_remember_playback_speed_toast">מהירות ברירת המחדל שונתה ל: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">השבת סרטון HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">סרטון HDR מושבת</string>
   <string name="morphe_disable_hdr_video_summary_off">סרטון HDR מופעל</string>
@@ -1606,18 +1603,18 @@ Second \"item\" text"</string>
 • הפעלת וידאו תשתמש ביותר נתוני אינטרנט מאשר VP9 או AV1
 • סרטוני HDR לא ישתמשו ב-AVC
 • התקנים מסוימים אינם יכולים לאכוף AVC"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">הצג תפריט איכות סרטון מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">תפריט איכות סרטון מתקדם מוצג</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">תפריט איכות סרטון מתקדם אינו מוצג</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
   <string name="morphe_slide_to_seek_summary_on">החלק כדי לדלג מופעל</string>
   <string name="morphe_slide_to_seek_summary_off">החלק כדי לדלג אינו מופעל</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">אפשר Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"מקודד וידאו הוא AVC (H.264), VP9, או AV1
 
@@ -1638,29 +1635,29 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">הצג בנתונים לגיקים</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">סוג הלקוח מוצג בנתונים לגיקים</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">הלקוח מוסתר בנתונים לגיקים</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">אודות</string>
   <string name="morphe_settings_music_screen_1_ads_title">מודעות</string>
   <string name="morphe_settings_music_screen_2_general_title">כללי</string>
   <string name="morphe_settings_music_screen_3_player_title">נגן</string>
   <string name="morphe_settings_music_screen_4_misc_title">שונות</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">הסתר מודעות וידאו</string>
   <string name="morphe_music_hide_video_ads_summary_on">מודעות הווידאו מוסתרות</string>
   <string name="morphe_music_hide_video_ads_summary_off">מודעות הווידאו מוצגות</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">אפשר חזרה קבועה</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">חזרה קבועה מופעלת</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">חזרה קבועה מושבתת</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">הסתר לחצן שידור</string>
   <string name="morphe_music_hide_cast_button_summary_on">לחצן השידור מוסתר</string>
   <string name="morphe_music_hide_cast_button_summary_off">לחצן השידור מוצג</string>
@@ -1673,18 +1670,18 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">הסתר לחצן חיפוש</string>
   <string name="morphe_music_hide_search_button_summary_on">לחצן החיפוש מוסתר</string>
   <string name="morphe_music_hide_search_button_summary_off">לחצן החיפוש מוצג</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">הסתר סרגל קטגוריות</string>
   <string name="morphe_music_hide_category_bar_summary_on">סרגל הקטגוריות מוסתר</string>
   <string name="morphe_music_hide_category_bar_summary_off">סרגל הקטגוריות מוצג</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">שנה צבע מיני-נגן</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">צבע המיני-נגן תואם לנגן במסך מלא</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">מיני-נגן משתמש בצבע ברירת המחדל</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">סרגל ניווט</string>
   <string name="morphe_music_navigation_bar_screen_summary">הסתר או שנה לחצני סרגל ניווט</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1713,16 +1710,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">התוויות מוסתרות</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">התוויות מוצגות</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">התווית מוסתרת</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">התווית מוצגת</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">הסתר לחצן שדרוג</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">הלחצן מוסתר</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">הלחצן מוצג</string>
-  </patch>
-  </app>
+
+
 </resources>

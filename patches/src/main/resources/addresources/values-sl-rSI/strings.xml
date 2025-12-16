@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ime aplikacije</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Izvirno</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Obvestilo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaš zgodovine gledanja se ne shranjuje.&lt;br&gt;&lt;br&gt;To najverjetneje povzroči DNS blokiralnik oglasov ali omrežni posrednik.&lt;br&gt;&lt;br&gt;Za odpravo težave dodajte na beli seznam &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokiralnike oglasov DNS in posrednike.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj več</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Nastavitve</string>
   <string name="morphe_settings_confirm_user_dialog_title">Ali ste prepričani, da želite nadaljevati?</string>
   <string name="morphe_settings_save">Shrani</string>
@@ -80,8 +77,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_header">Uradne povezave</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">Nastavitve GmsCore</string>
   <string name="microg_settings_summary">Nastavitve za GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ Onemogočanje optimizacij baterije za MicroG ne bo negativno vplivalo na porabo 
 
 Tapnite gumb za nadaljevanje in dovolite spremembe optimizacij."</string>
   <string name="gms_core_dialog_continue_text">Nadaljuj</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Ponarejanje video tokov</string>
   <string name="morphe_spoof_video_streams_screen_summary">Ponaredite video tokove odjemalca, da preprečite težave s predvajanjem</string>
   <string name="morphe_spoof_video_streams_screen_title">Ponaredi video tokove</string>
@@ -114,15 +111,15 @@ Tapnite gumb za nadaljevanje in dovolite spremembe optimizacij."</string>
 Predvajanje morda ne bo delovalo"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Izklop te nastavitve lahko povzroči težave z predvajanjem.</string>
   <string name="morphe_spoof_video_streams_client_type_title">Privzeti odjemalec</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Izsili izvirni jezik zvoka</string>
   <string name="morphe_force_original_audio_summary_on">Uporabi izvirni jezik zvoka</string>
   <string name="morphe_force_original_audio_summary_off">Uporaba privzetega zvoka</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Za uporabo te funkcije spremenite \"Ponaredi video tokove\" na katerega koli odjemalca, razen na Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Razhroščevanje</string>
   <string name="morphe_debug_screen_summary">Omogoči ali onemogoči možnosti razhroščevanja</string>
   <string name="morphe_debug_title">Dnevnik napak</string>
@@ -154,18 +151,18 @@ Ne boste obveščeni o nobenih nepričakovanih dogodkih."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice shranjene</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice ponastavljene</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice kopirane v odložišče</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Sanitiziraj povezave za deljenje</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Parameter sledenja poizvedbe je odstranjen iz deljenih povezav</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Parameter sledenja poizvedbe ni odstranjen iz deljenih povezav</string>
   <string name="morphe_replace_music_with_youtube_title">Spremenite povezave za skupno rabo v youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Skupne povezave uporabljajo youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Skupne povezave uporabljajo music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">O nas</string>
   <string name="morphe_settings_screen_01_ads_title">Oglasi</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternativne sličice</string>
@@ -179,13 +176,13 @@ Ne boste obveščeni o nobenih nepričakovanih dogodkih."</string>
   <string name="morphe_restore_old_settings_menus_title">Obnovi stare menije nastavitev</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Prikazani so stari meniji nastavitev</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Stari meniji nastavitev niso prikazani</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Onemogoči predvajanje Shorts v ozadju</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Predvajanje Shorts v ozadju je onemogočeno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Predvajanje Shorts v ozadju je omogočeno</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Dnevnik protokola pufra</string>
   <string name="morphe_debug_protobuffer_summary_on">Dnevniki napak vključujejo protokol pufra</string>
   <string name="morphe_debug_protobuffer_summary_off">Dnevniki napak ne vključujejo protokola pufra</string>
@@ -194,8 +191,8 @@ Ne boste obveščeni o nobenih nepričakovanih dogodkih."</string>
 To lahko pomaga prepoznati komponente pri ustvarjanju filtrov po meri.
 
 Vendar pa bo omogočitev tega beležila tudi nekatere uporabniške podatke, kot je vaš naslov IP."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">Skrij kartice albuma</string>
   <string name="morphe_hide_album_cards_summary_on">Kartice albuma so skrite</string>
   <string name="morphe_hide_album_cards_summary_off">Kartice albuma so prikazane</string>
@@ -465,8 +462,8 @@ Omejitve
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ključna beseda ima nasprotujoče si deklaracije: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ključna beseda je prekratka in zahteva narekovaje: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ključna beseda bo skrila vse videoposnetke: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skrij polico trgovine ustvarjalcev</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Polica trgovine za ustvarjalce pod video predvajalnikom je skrita</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Polica trgovine za ustvarjalce pod video predvajalnikom je prikazana</string>
@@ -501,18 +498,18 @@ Ta funkcija je na voljo samo za starejše naprave"</string>
   <string name="morphe_hide_web_search_results_title">Skrij rezultate spletnega iskanja</string>
   <string name="morphe_hide_web_search_results_summary_on">Rezultati spletnega iskanja so skriti</string>
   <string name="morphe_hide_web_search_results_summary_off">Rezultati spletnega iskanja so prikazani</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Skrij promocije YouTube Premium</string>
   <string name="morphe_hide_get_premium_summary_on">Promocije YouTube Premium pod video predvajalnikom so skrite</string>
   <string name="morphe_hide_get_premium_summary_off">Promocije YouTube Premium pod video predvajalnikom so prikazane</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skrij oglase v videoposnetkih</string>
   <string name="morphe_hide_video_ads_summary_on">Oglasi v videoposnetkih so skriti</string>
   <string name="morphe_hide_video_ads_summary_off">Oglasi v videoposnetkih so prikazani</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">URL je kopiran v odložišče</string>
   <string name="morphe_share_copy_url_timestamp_success">URL s časovnim žigom je kopiran</string>
   <string name="morphe_copy_video_url_title">Pokaži gumb za kopiranje URL-ja videoposnetka</string>
@@ -521,24 +518,24 @@ Ta funkcija je na voljo samo za starejše naprave"</string>
   <string name="morphe_copy_video_url_timestamp_title">Prikaži gumb za kopiranje URL-ja s časovnim žigom</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Gumb je prikazan. Dotaknite se, da kopirate URL videoposnetka s časovnim žigom. Dotaknite se in pridržite, da kopirate brez časovnega žiga</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Gumb ni prikazan</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Odstrani opozorilo za preudarno presojo gledalcev</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Opozorilo bo odstranjeno</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Opozorilo bo prikazano</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">To ne obide starostne omejitve. Samo samodejno jo sprejme.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Onemogoči pojavno okno za prijavo v TV</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Pojavno okno za prijavo v TV je onemogočeno</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Pojavno okno za prijavo v TV je omogočeno</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogoči preskok poglavja z dvojnim dotikom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Dvojni dotik nikoli ne more sprožiti preskoka na naslednje/prejšnje poglavje</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Dvojni dotik lahko občasno sproži preskok na naslednje/prejšnje poglavje</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Zunanji prenosi</string>
   <string name="morphe_external_downloader_screen_summary">Nastavitve za uporabo zunanjega prenašalnika</string>
   <string name="morphe_external_downloader_title">Prikaži gumb za zunanji prenos</string>
@@ -558,18 +555,18 @@ Ta funkcija je na voljo samo za starejše naprave"</string>
 
 Preverite, ali je ime paketa pravilno in ali je aplikacija nameščena"</string>
   <string name="morphe_external_downloader_empty_warning">Ime paketa ne sme biti prazno</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogoči natančno kretnjo iskanja</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Kretnja je onemogočena</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Kretnja je omogočena</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Omogoči dotik za iskanje</string>
   <string name="morphe_seekbar_tapping_summary_on">Dotik za iskanje je omogočen</string>
   <string name="morphe_seekbar_tapping_summary_off">Dotik za iskanje je onemogočen</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Omogoči kretnjo za svetlost</string>
   <string name="morphe_swipe_brightness_summary_on">"Potezanje za svetlost čez cel zaslon je omogočeno
 
@@ -620,13 +617,13 @@ Prilagodite glasnost s potegom navpično na desni strani zaslona"</string>
   <string name="morphe_swipe_change_video_title">Omogoči menjavanje videoposnetkov z drsenjem</string>
   <string name="morphe_swipe_change_video_summary_on">Drsenje v celozaslonskem načinu bo prešlo na naslednji/prejšnji videoposnetek.</string>
   <string name="morphe_swipe_change_video_summary_off">Drsenje v celozaslonskem načinu ne bo prešlo na naslednji/prejšnji videoposnetek.</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Onemogoči samodejne podnapise</string>
   <string name="morphe_disable_auto_captions_summary_on">Samodejni podnapisi so onemogočeni</string>
   <string name="morphe_disable_auto_captions_summary_off">Samodejni napisi so omogočeni</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Gumbi za dejanja</string>
   <string name="morphe_hide_buttons_screen_summary">Skrij ali prikaži gumbe pod videoposnetki</string>
   <string name="morphe_disable_like_subscribe_glow_title">Onemogoči sijaj gumbov »Všeč mi je« in »Naroči se«</string>
@@ -690,8 +687,8 @@ Prilagodite glasnost s potegom navpično na desni strani zaslona"</string>
   <string name="morphe_hide_save_button_title">Skrij Shrani</string>
   <string name="morphe_hide_save_button_summary_on">Gumb Shrani je skrit</string>
   <string name="morphe_hide_save_button_summary_off">Gumb Shrani je prikazan</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigacijski gumbi</string>
   <string name="morphe_navigation_buttons_screen_summary">Skrij ali spremeni gumbe v navigacijski vrstici</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ Opomba: Omogočanje tega tudi prisilno skrije video oglase"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Onemogoči temno prosojno vrstico</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Navigacijska vrstica v temnem načinu je neprosojna</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Navigacijska vrstica v temnem načinu je neprozorna ali prosojna</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Izbirni meni</string>
   <string name="morphe_hide_player_flyout_summary">Skrij ali prikaži elemente izbirnega menija predvajalnika</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ Za prikaz menija za zvočno skladbo, spremenite \"Ponarejene video tokove\" na i
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Skrij nogo menija s kakovostjo videa</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Noga menija s kakovostjo videa je skrita</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Noga menija s kakovostjo videa je prikazana</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Skrij gumb \'Samodejno predvajanje\'</string>
   <string name="morphe_hide_autoplay_button_summary_on">Gumb za samodejno predvajanje je skrit</string>
   <string name="morphe_hide_autoplay_button_summary_off">Gumb za samodejno predvajanje je prikazan</string>
@@ -814,28 +811,28 @@ Za prikaz menija za zvočno skladbo, spremenite \"Ponarejene video tokove\" na i
   <string name="morphe_hide_player_previous_next_buttons_title">Skrij gumbe »Prejšnji« &amp; »Naslednji«</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Gumbi so skriti</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Gumbi so prikazani</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Skrij kartice na končnem zaslonu</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Kartice na končnem zaslonu so skrite</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Kartice na končnem zaslonu so prikazane</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Onemogoči ambientalni način v celozaslonskem prikazu</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Način \"Ambient\" je onemogočen</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Način \"Ambient\" je omogočen</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Skrij kartice z informacijami</string>
   <string name="morphe_hide_info_cards_summary_on">Kartice z informacijami so skrite</string>
   <string name="morphe_hide_info_cards_summary_off">Kartice z informacijami so prikazane</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Onemogoči animacije valjanja števil</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Števila se ne animirajo</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Števila se animirajo</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Skrij iskalno vrstico predvajalnika videa</string>
   <string name="morphe_hide_seekbar_summary_on">Iskalna vrstica v predvajalniku videoposnetkov je skrita</string>
   <string name="morphe_hide_seekbar_summary_off">Iskalna vrstica v predvajalniku videoposnetkov je prikazana</string>
@@ -843,8 +840,8 @@ Za prikaz menija za zvočno skladbo, spremenite \"Ponarejene video tokove\" na i
   <string name="morphe_hide_seekbar_thumbnail_title">Skrij iskalno vrstico sličic videa</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Iskalna vrstica sličic videa je skrita</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Iskalna vrstica sličic videa je prikazana</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Predvajalnik Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Skrij ali prikaži komponente predvajalnika Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,48 +954,48 @@ Za prikaz menija za zvočno skladbo, spremenite \"Ponarejene video tokove\" na i
   <string name="morphe_hide_shorts_navigation_bar_title">Skrij navigacijsko vrstico</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigacijska vrstica je skrita</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigacijska vrstica je prikazana</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Skrij predlagani videoposnetek na koncu zaslona</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"Predlagani videoposnetek na koncu zaslona je skrit, ko je samodejno predvajanje izklopljeno
 
 Samodejno predvajanje lahko spremenite v nastavitvah YouTube:
 Nastavitve → Predvajanje → Samodejno predvajanje naslednjega videoposnetka"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Predlagani videoposnetek na koncu zaslona je prikazan</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Skrij prekrivanje povezanih videoposnetkov</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Prekrivanje povezanih videoposnetkov v celozaslonskem načinu je skrito</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">Prekrivanje povezanih videoposnetkov v celozaslonskem načinu je prikazano</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Skrij časovni žig videoposnetka</string>
   <string name="morphe_hide_timestamp_summary_on">Časovni žig je skrit</string>
   <string name="morphe_hide_timestamp_summary_off">Časovni žig je prikazan</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Skrij pojavna okna predvajalnika</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Pojavna okna predvajalnika so skrita</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Pojavna okna predvajalnika so prikazana</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Zapusti način celotnega zaslona ob koncu videoposnetka</string>
   <string name="morphe_exit_fullscreen_entry_1">Onemogočeno</string>
   <string name="morphe_exit_fullscreen_entry_2">Portret</string>
   <string name="morphe_exit_fullscreen_entry_3">Ležeće</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret in ležeće</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Odpri videoposnetke v celozaslonskem načinu v portretni orientaciji</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Videoposnetki se odprejo v celozaslonskem načinu</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Videoposnetki se ne odprejo v celozaslonskem načinu</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Prosojnost prekrivanja predvajalnika</string>
   <string name="morphe_player_overlay_opacity_summary">Vrednost prosojnosti med 0-100, kjer je 0 prosojno</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Prosojnost prekrivanja predvajalnika mora biti med 0-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Všečkov ne je začasno nedostopno (API je časovno omejen)</string>
   <string name="morphe_ryd_failure_connection_status_code">Všečkov ne je na voljo (status %d)</string>
@@ -1046,13 +1043,13 @@ Omejitev: Število »Ni mi všeč« se morda ne bo prikazalo v načinu brez bele
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ni bilo naletov na omejitve stopnje za klienta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Na omejitev stopnje za klienta je bilo naletov %d-krat</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d milisekund</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Omogoči široko iskalno vrstico</string>
   <string name="morphe_wide_searchbar_summary_on">Široka iskalna vrstica je omogočena</string>
   <string name="morphe_wide_searchbar_summary_off">Široka iskalna vrstica je onemogočena</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Omogoči sličice visoke kakovosti</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">Sličice za iskanje so visoke kakovosti</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">Sličice za iskanje so srednje kakovosti</string>
@@ -1064,8 +1061,8 @@ Ta funkcija deluje najbolje pri kakovosti videa 720p ali nižji in pri uporabi z
   <string name="morphe_restore_old_seekbar_thumbnails_title">Obnovi stare sličice za iskanje</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">Sličice za iskanje se bodo prikazale nad iskalno vrstico</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">Sličice za iskanje se bodo prikazale v celozaslonskem načinu</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Omogoči SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock je sistem množičnega urejanja za preskakovanje motečih delov videoposnetkov YouTube</string>
   <string name="morphe_sb_appearance_category">Videz</string>
@@ -1275,8 +1272,8 @@ Ali ste pripravljeni na oddajo?"</string>
   <string name="morphe_sb_color_dot_label">Barva:</string>
   <string name="morphe_sb_about_title">O programu</string>
   <string name="morphe_sb_about_api_summary">Podatki so zagotovljeni s strani SponsorBlock API. Tapnite tukaj, da izveste več in si ogledate prenose za druge platforme</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Postavitev obrazca</string>
   <string name="morphe_change_form_factor_entry_1">Privzeto</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
@@ -1290,8 +1287,8 @@ Postavitev za tablične računalnike
 Avtomobilska postavitev
 • Shorts se odprejo v običajnem predvajalniku
 • Vir je organiziran po temah in kanalih"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof različice aplikacije</string>
   <string name="morphe_spoof_app_version_summary_on">Različica spoofana</string>
   <string name="morphe_spoof_app_version_summary_off">Različica ni spoofana</string>
@@ -1305,8 +1302,8 @@ To bo spremenilo videz in funkcije aplikacije, vendar se lahko pojavijo neznani 
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Obnovi funkcionalnost prepisa</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Obnovi stare ikone predvajalnika Shorts</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 – Obnovi stare ikone za krmarjenje</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Spremeni začetno stran</string>
   <string name="morphe_change_start_page_entry_default">Privzeto</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Vse naročnine</string>
@@ -1337,27 +1334,27 @@ To bo spremenilo videz in funkcije aplikacije, vendar se lahko pojavijo neznani 
 
 Omejitev: uporaba gumba za nazaj v orodni vrstici morda ne bo delovala"</string>
   <string name="morphe_change_start_page_always_summary_off">Začetna stran se spremeni samo ob zagonu aplikacije</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Onemogoči nadaljevanje predvajalnika Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Predvajalnik Shorts se ne bo nadaljeval ob zagonu aplikacije</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Predvajalnik Shorts se bo nadaljeval ob zagonu aplikacije</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Odpri Shorts z</string>
   <string name="morphe_shorts_player_type_shorts">Predvajalnik Shorts</string>
   <string name="morphe_shorts_player_type_regular_player">Redni predvajalnik</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Redni predvajalnik v celozaslonskem načinu</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Samodejno predvajanje Shorts</string>
   <string name="morphe_shorts_autoplay_summary_on">Shorts se bodo samodejno predvajali</string>
   <string name="morphe_shorts_autoplay_summary_off">Shorts se bodo ponovili</string>
   <string name="morphe_shorts_autoplay_background_title">Samodejno predvajanje Shorts v ozadju</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Samodejno predvajanje Shorts v ozadju se bo samodejno predvajalo</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Samodejno predvajanje Shorts v ozadju se bo ponovilo</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">\"Miniplayer\"</string>
   <string name="morphe_miniplayer_screen_summary">Spremenite slog minimiziranega predvajalnika v aplikaciji</string>
   <string name="morphe_miniplayer_type_title">Vrsta mini predvajalnika</string>
@@ -1404,8 +1401,8 @@ Minipredvajalnik lahko povlečete z zaslona na levo ali desno"</string>
   <string name="morphe_miniplayer_opacity_title">Prosojnost prekrivanja</string>
   <string name="morphe_miniplayer_opacity_summary">Vrednost prosojnosti med 0-100, kjer je 0 prozorno</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Prosojnost prekrivanja mini predvajalnika mora biti med 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Omogoči zaslon za nalaganje z gradientom</string>
   <string name="morphe_gradient_loading_screen_summary_on">Zaslon za nalaganje bo imel ozadje z gradientom</string>
   <string name="morphe_gradient_loading_screen_summary_off">Zaslon za nalaganje bo imel enobarvno ozadje</string>
@@ -1420,24 +1417,24 @@ Minipredvajalnik lahko povlečete z zaslona na levo ali desno"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Barva poudarka po meri za iskalnik</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Barva poudarka iskalnika</string>
   <string name="morphe_seekbar_custom_color_invalid">Neveljavna vrednost barve drsnika</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotip glave</string>
   <string name="morphe_header_logo_entry_1">Privzeto</string>
   <string name="morphe_header_logo_entry_2">Navadno</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe minimalno</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Obvozi omejitve območja slike</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Z uporabo gostitelja slik yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Uporaba izvirnega gostitelja slik
 
 Omogočanje tega lahko odpravi manjkajoče slike, ki so v nekaterih regijah blokirane"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Domov</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1472,28 +1469,28 @@ Tapnite tukaj, če želite izvedeti več o DeArrow"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow začasno ni na voljo (koda stanja: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow začasno ni na voljo</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Pokaži obvestila Morphe</string>
   <string name="morphe_announcements_summary_on">Napovedi ob zagonu so prikazane</string>
   <string name="morphe_announcements_summary_off">Napovedi ob zagonu niso prikazane</string>
   <string name="morphe_announcements_enabled_summary">Pokaži obvestila ob zagonu</string>
   <string name="morphe_announcements_connection_failed">Povezovanje z ponudnikom obvestil ni uspelo</string>
   <string name="morphe_announcements_dialog_dismiss">Zavrzi</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Omogoči ponavljanje videa</string>
   <string name="morphe_loop_video_summary_on">Video se bo ponavljal</string>
   <string name="morphe_loop_video_summary_off">Video se ne bo ponavljal</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Prikaži gumb za ponavljanje videa</string>
   <string name="morphe_loop_video_button_summary_on">Gumb je prikazan</string>
   <string name="morphe_loop_video_button_summary_off">Gumb ni prikazan</string>
   <string name="morphe_loop_video_button_toast_on">Ponavljanje videa je vklopljeno</string>
   <string name="morphe_loop_video_button_toast_off">Ponavljanje videa je izklopljeno</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Ponarejanje dimenzij naprave</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimenzije naprave so posnemane
 
@@ -1502,8 +1499,8 @@ Odklenjene so lahko višje kakovosti videa, vendar se lahko pojavijo trzanje pri
 
 Omogočanje tega lahko odklene višje kakovosti videa"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Omogočanje tega lahko povzroči jecljanje pri predvajanju videoposnetkov, slabšo življenjsko dobo baterije in neznane stranske učinke.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptični odziv</string>
   <string name="morphe_disable_haptic_feedback_summary">Spremeni haptični odziv</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Onemogoči haptiko poglavij</string>
@@ -1518,21 +1515,21 @@ Omogočanje tega lahko odklene višje kakovosti videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogoči haptiko pri povečavi</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptika pri povečavi je onemogočena</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptika pri povečavi je omogočena</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Če ste nedavno spremenili podatke za prijavo v račun, odstranite in znova namestite MicroG.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Obvod preusmeritev URL-jev</string>
   <string name="morphe_bypass_url_redirects_summary_on">Preusmeritve URL-jev so obvodene</string>
   <string name="morphe_bypass_url_redirects_summary_off">Preusmeritve URL-jev niso obvodene</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Odpri povezave v brskalniku</string>
   <string name="morphe_external_browser_summary_on">Odpiranje povezav v zunanjem brskalniku</string>
   <string name="morphe_external_browser_summary_off">Odpiranje povezav v brskalniku v aplikaciji</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Samodejno</string>
   <string name="morphe_remember_video_quality_last_selected_title">Zapomni si spremembe kakovosti videoposnetka</string>
@@ -1552,18 +1549,18 @@ Omogočanje tega lahko odklene višje kakovosti videa"</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">Spremenjena privzeta kakovost %1$s na: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Spremenjena kakovost Shorts %1$s v: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Pokaži gumb za pogovor o hitrosti</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Gumb je prikazan. Dotaknite se ga in ga pridržite, da ponastavite hitrost predvajanja na privzeto.</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Gumb ni prikazan</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Prikaži gumb za kakovost videa</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Prikazan je gumb. Dotaknite se in držite, da ponastavite kakovost na privzeto</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Gumb ni prikazan</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Meni za nastavitev hitrosti predvajanja</string>
   <string name="morphe_custom_speed_menu_summary_on">Meni za nastavitev hitrosti je prikazan</string>
   <string name="morphe_custom_speed_menu_summary_off">Meni za nastavitev hitrosti ni prikazan</string>
@@ -1577,8 +1574,8 @@ Omogočanje tega lahko odklene višje kakovosti videa"</string>
   <string name="morphe_custom_playback_speeds_auto">Samodejno</string>
   <string name="morphe_speed_tap_and_hold_title">Hitrost pritiska in pridržanja po meri</string>
   <string name="morphe_speed_tap_and_hold_summary">Hitrost predvajanja med 0 in 8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapomni si spremembe hitrosti predvajanja</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Spremembe hitrosti predvajanja se uporabijo za vse videoposnetke</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Spremembe hitrosti predvajanja se uporabijo le za trenutni videoposnetek</string>
@@ -1587,8 +1584,8 @@ Omogočanje tega lahko odklene višje kakovosti videa"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Sporočilo ni prikazano, ko je privzeta hitrost predvajanja spremenjena</string>
   <string name="morphe_playback_speed_default_title">Privzeta hitrost predvajanja</string>
   <string name="morphe_remember_playback_speed_toast">Spremenjena privzeta hitrost na: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogoči HDR video</string>
   <string name="morphe_disable_hdr_video_summary_on">HDR video je onemogočen</string>
   <string name="morphe_disable_hdr_video_summary_off">HDR video je omogočen</string>
@@ -1604,18 +1601,18 @@ Omejitve:
 • Predvajanje videa bo porabilo več internetnih podatkov kot VP9 ali AV1
 • HDR videi ne bodo uporabljali AVC
 • Nekatere naprave ne morejo prisiliti AVC"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Pokaži napredni meni za kakovost videoposnetkov</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Napredni meni za kakovost videoposnetkov je prikazan</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Napredni meni za kakovost videoposnetkov ni prikazan</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogoči drsno iskanje</string>
   <string name="morphe_slide_to_seek_summary_on">Drsno iskanje je omogočeno</string>
   <string name="morphe_slide_to_seek_summary_off">Drsno iskanje ni omogočeno</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Dovoli Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Video kodek je AVC (H.264), VP9 ali AV1
 
@@ -1636,29 +1633,29 @@ Predvajanje videa z AV1 se lahko zatika ali izpušča sličice."</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Pokaži v statistiki za piflarje</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Vrsta odjemalca je prikazana v statistiki za piflarje</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Odjemalec je skrit v statistiki za piflarje</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">O</string>
   <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
   <string name="morphe_settings_music_screen_2_general_title">Splošno</string>
   <string name="morphe_settings_music_screen_3_player_title">Predvajalnik</string>
   <string name="morphe_settings_music_screen_4_misc_title">Razno</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Skrij video oglase</string>
   <string name="morphe_music_hide_video_ads_summary_on">Video oglasi so skriti</string>
   <string name="morphe_music_hide_video_ads_summary_off">Video oglasi so prikazani</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Omogoči trajno ponavljanje</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Trajno ponavljanje je omogočeno</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Trajno ponavljanje je onemogočeno</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Skrij gumb za predvajanje</string>
   <string name="morphe_music_hide_cast_button_summary_on">Gumb za predvajanje je skrit</string>
   <string name="morphe_music_hide_cast_button_summary_off">Gumb za predvajanje je prikazan</string>
@@ -1671,18 +1668,18 @@ Predvajanje videa z AV1 se lahko zatika ali izpušča sličice."</string>
   <string name="morphe_music_hide_search_button_title">Skrij gumb za iskanje</string>
   <string name="morphe_music_hide_search_button_summary_on">Gumb za iskanje je skrit</string>
   <string name="morphe_music_hide_search_button_summary_off">Gumb za iskanje je prikazan</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Skrij vrstico kategorij</string>
   <string name="morphe_music_hide_category_bar_summary_on">Vrstica kategorij je skrita</string>
   <string name="morphe_music_hide_category_bar_summary_off">Vrstica kategorij je prikazana</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Spremeni barvo mini predvajalnika</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Barva mini predvajalnika se ujema z barvo celozaslonskega predvajalnika</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini predvajalnik uporablja privzeto barvo</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigacijska vrstica</string>
   <string name="morphe_music_navigation_bar_screen_summary">Skrij ali spremeni gumbe navigacijske vrstice</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1711,16 +1708,16 @@ Predvajanje videa z AV1 se lahko zatika ali izpušča sličice."</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skrij oznake navigacijskih gumbov</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Oznake so skrite</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Oznake so prikazane</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skrij oznako \'Pridobi Music Premium\'</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Oznaka je skrita</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Oznaka je prikazana</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skrij gumb za nadgradnjo</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Gumb je skrit</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Gumb je prikazan</string>
-  </patch>
-  </app>
+
+
 </resources>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Հավելվածի անվանումը</string>
   <string name="morphe_custom_branding_icon_title">Հավելվածի պատկերակը</string>
   <string name="morphe_custom_branding_icon_entry_1">Բնօրինակ</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Ծանուցում</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ձեր դիտման պատմությունը չի պահպանվում.&lt;br&gt;&lt;br&gt;Այս  հավանական  պատճառը DNS  գովազդների  բլոկավորիչ կամ ցանցային պրոքսի  է.&lt;br&gt;&lt;br&gt;Խնդրում ենք  գործարկել &lt;b&gt;s.youtube.com&lt;/b&gt;  կամ անջատել  DNS  բլոկավորիչներ  և  պրոքսիներ:</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ավելի  չցուցադրել</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Կարգավորումներ</string>
   <string name="morphe_settings_confirm_user_dialog_title">Վստա՞հ եք, որ ցանկանում եք շարունակել:</string>
   <string name="morphe_settings_save">Պահպանել</string>
@@ -80,8 +77,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_header">Պաշտոնական հղումներ</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">GmsCore  կարգավորումներ</string>
   <string name="microg_settings_summary">GmsCore-ի  կարգավորումներ</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
 
 Սեղմեք շարունակել կոճակը և թույլ տվեք օպտիմալացման փոփոխությունները։"</string>
   <string name="gms_core_dialog_continue_text">Շարունակել</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Հնարավոր է  տեսանյութի  հոսքերը  փոփոխել</string>
   <string name="morphe_spoof_video_streams_screen_summary">Փոփոխել  տեսանյութի  հոսքերը  համար  խուսափել  վերարտադրման  հետ  կապված  պրոբլեմներից</string>
   <string name="morphe_spoof_video_streams_screen_title">Տեսահոսքերի կեղծում</string>
@@ -114,15 +111,15 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
 Նվագարկումը հնարավոր է՝ չաշխատի"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Այս կարգավորումն անջատելը կարող է նվագարկման խնդիրներ առաջացնել։</string>
   <string name="morphe_spoof_video_streams_client_type_title">Դեֆոլտ  կլիենտ</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Բնօրինակ ձայն օգտագործել լեզուն</string>
   <string name="morphe_force_original_audio_summary_on">Օգտագործելով ձայնային օրիգինալ լեզուն</string>
   <string name="morphe_force_original_audio_summary_off">Վերջնական ձայն օգտագործվում է</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Այս հնարավորությունն օգտագործելու համար «Կեղծել վիդեո հոսքերը» տարբերակը փոխեք ցանկացած հաճախորդի, բացի Android Studio-ից</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Միացնել կամ անջատել առաջնորդման ռեժիմի ֆունկցիաները</string>
   <string name="morphe_debug_title">Առաջնորդման մատնանշում</string>
@@ -154,18 +151,18 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_debug_feature_flags_manager_toast_saved">Դրոշակները պահպանվեցին</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Դրոշակները զրոյացվեցին</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Դրոշակները պատճենվեցին սեղմատախտակին</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Մաքրել համօգտագործման հղումները</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Հետևման հարցման պարամետրը հեռացված է համօգտագործված հղումներից</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Հետևման հարցման պարամետրը հեռացված չէ համօգտագործված հղումներից</string>
   <string name="morphe_replace_music_with_youtube_title">Փոխել համօգտագործման հղումները youtube.com-ի</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Համօգտագործվող հղումները օգտագործում են youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Համօգտագործվող հղումները օգտագործում են music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">Ծրագրի մասին</string>
   <string name="morphe_settings_screen_01_ads_title">Գովազդներ</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Ալտերնատիվ մանրապատկերներ</string>
@@ -179,13 +176,13 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_restore_old_settings_menus_title">Վերականգնել հին սահմանումների մենյուները</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Նախկին կարգավորումների մենյուները ցուցադրվում են</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Նախկին կարգավորումների մենյուները չեն ցուցադրվում</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Անջատել  Shorts-ի  ֆոնային  վերարտադրությունը</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts-ի  ֆոնային  վերարտադրությունը  անջատված  է</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts-ի  ֆոնային  վերարտադրությունը  հնարավոր  է</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Բուֆերի արձանագրությունը մտնել</string>
   <string name="morphe_debug_protobuffer_summary_on">Մարմնացման առաջնորդման մատնանշումները պարունակում են բուֆերի տարր</string>
   <string name="morphe_debug_protobuffer_summary_off">Մարմնացման առաջնորդման մատնանշումները ներառում են բուֆերի տարր</string>
@@ -194,8 +191,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
 Սա կարող է օգնել բացահայտել բաղադրիչները՝ հատուկ զտիչներ ստեղծելիս։
 
 Այնուամենայնիվ, սա միացնելը կգրանցի նաև օգտատիրոջ որոշ տվյալներ, ինչպիսիք են ձեր IP հասցեն:"</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">Թաքցնել  ալբոմի  քարտերը</string>
   <string name="morphe_hide_album_cards_summary_on">Ալբոմի  քարտերը  թաքցված  են</string>
   <string name="morphe_hide_album_cards_summary_off">Ալբոմի  քարտերը  ցույց  են  տրվում</string>
@@ -465,8 +462,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Բանալի բառը ունի հակասող հայտարարություններ։ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Բանալի բառը շատ կարճ է և պահանջում է մեջբերման նշաններ։ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Բանալի բառը կթաքցնի բոլոր տեսանյութերը։ %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Թաքցնել ստեղծողի խանութի դարակը</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Ստեղծողի խանութի դարակը տեսանվագարկչի տակ թաքնված է</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Ստեղծողի խանութի դարակը վիդեո նվագարկչի տակ ցուցադրվում է</string>
@@ -501,18 +498,18 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_web_search_results_title">Թաքցնել վեբ-որոնման արդյունքները</string>
   <string name="morphe_hide_web_search_results_summary_on">Վեբ-որոնման արդյունքները թաքցված են</string>
   <string name="morphe_hide_web_search_results_summary_off">Վեբ-որոնման արդյունքները երևում են</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Թաքցնել YouTube Premium-ի խթանումները</string>
   <string name="morphe_hide_get_premium_summary_on">YouTube Premium-ի խթանումները տեսանյութի խաղացողի տակ թաքցված են</string>
   <string name="morphe_hide_get_premium_summary_off">YouTube Premium-ի խթանումները տեսանյութի խաղացողի տակ երևում են</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Թաքցնել տեսահոլովակների գովազդները</string>
   <string name="morphe_hide_video_ads_summary_on">Տեսահոլովակների գովազդները բլոկավորված են</string>
   <string name="morphe_hide_video_ads_summary_off">Տեսահոլովակների գովազդները երևում են</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">URL-ը կրկնօրինակվել է բացման տախտակին</string>
   <string name="morphe_share_copy_url_timestamp_success">URL-ը ժամանակի կնիքով կրկնօրինակվել է</string>
   <string name="morphe_copy_video_url_title">Ցույց տալ տեսանյութի URL-ի կրկնօրինակման կոճակը</string>
@@ -521,24 +518,24 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_copy_video_url_timestamp_title">Ցույց տալ ժամանակի կնիքով URL-ի կրկնօրինակման կոճակը</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Կոճակը ցուցադրվում է: Հպեք ժամանակային նշումով վիդեոյի URL-ը պատճենելու համար: Հպեք և պահեք առանց ժամանակային նշման պատճենելու համար</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Կոճակը չի երևում</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Հեռացնել դիտողի խոհեմության երկխոսությունը</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Երկխոսությունը հեռացվելու է</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Զրույցը կցուցադրվի</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Սա չի խուսափում տարիքային սահմանափակումից։ Այն պարզապես ավտոմատ կերպով ընդունում է այն։</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Անջատել հեռուստացույց մուտքի պատուհանը</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Հեռուստացույց մուտքի պատուհանն անջատված է</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Հեռուստացույց մուտքի պատուհանը միացված է</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Անջատել կրկնակի հպումով գլուխը բաց թողնելը</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Կրկնակի հպումը երբեք չի կարող առաջացնել հաջորդ/նախորդ գլուխն անցնելը</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Կրկնակի հպումը երբեմն կարող է առաջացնել հաջորդ/նախորդ գլուխն անցնելը</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Արտաքին ներբեռնումներ</string>
   <string name="morphe_external_downloader_screen_summary">Արտաքին ներբեռնող օգտագործելու համար կարգավորումներ</string>
   <string name="morphe_external_downloader_title">Ցույց տալ արտաքին ներբեռնման կոճակը</string>
@@ -558,18 +555,18 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
 
 Ստուգեք, որ փաթեթի անունը ճիշտ է և հավելվածը տեղադրված է"</string>
   <string name="morphe_external_downloader_empty_warning">Փաթեթի անունը չի կարող դատարկ լինել</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Անջատել ճշգրիտ փնտրման ժեստը</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Ժեստը անջատված է</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Ժեստը միացված է</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Միացնել հպելը՝ որոնելու համար</string>
   <string name="morphe_seekbar_tapping_summary_on">Հպեք՝ որոնումը միացնելու համար</string>
   <string name="morphe_seekbar_tapping_summary_off">Հպելը՝ որոնելու համար, անջատված է</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Միացնել լուսավորության ժեստը</string>
   <string name="morphe_swipe_brightness_summary_on">"Մեծ էկրանով պայծառության սահեցումը միացված է։
 
@@ -620,13 +617,13 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_swipe_change_video_title">Վայրէջքով տեսանյութերը փոխելու ակտիվացում</string>
   <string name="morphe_swipe_change_video_summary_on">Լիարժեք ռեժիմով վայրէջքը կփոխվի հաջորդ / նախորդ տեսանյութին</string>
   <string name="morphe_swipe_change_video_summary_off">Լիարժեք ռեժիմով վայրէջքը չի փոխվի հաջորդ / նախորդ տեսանյութին</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Անջատել ավտոմատ ենթագրերը</string>
   <string name="morphe_disable_auto_captions_summary_on">Auto ենթագրերը անջատված են</string>
   <string name="morphe_disable_auto_captions_summary_off">Auto ենթագրերը միացված են</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Գործողության կոճակներ</string>
   <string name="morphe_hide_buttons_screen_summary">Թաքցնել կամ ցույց տալ կոճակները տեսանյութերի տակ</string>
   <string name="morphe_disable_like_subscribe_glow_title">Հանել «Like» և «Subscribe» լուսավորումը</string>
@@ -690,8 +687,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_save_button_title">Թաքցնել պահելը</string>
   <string name="morphe_hide_save_button_summary_on">Պահելու կոճակը թաքցված է</string>
   <string name="morphe_hide_save_button_summary_off">Պահելու կոճակը ցուցադրված է</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Նավիգացիայի կոճակներ</string>
   <string name="morphe_navigation_buttons_screen_summary">Թաքցնել կամ փոխել կոճակները նավիգացիայի վանդակում</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Անջատել մուգ կիսաթափանց նշագիծ</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Մութ ռեժիմի նավիգացիոն շերտը անթափանց է</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Մուգ ռեժիմի նավիգացիոն նշագիծը անթափանց է կամ կիսաթափանց</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout մենյու</string>
   <string name="morphe_hide_player_flyout_summary">Թաքցնել կամ ցույց տալ խաղացողի flyout մենյուի կետերը</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Տեսանյութի որակի մենյուի ստորագրությունը թաքցնել</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Տեսանյութի որակի մենյուի ստորագրությունը թաքցված է</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Տեսանյութի որակի մենյուի ստորագրությունը երևում է</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Թաքցնել Ավտոմատ կրկնում կոճակը</string>
   <string name="morphe_hide_autoplay_button_summary_on">Ավտոմատ վերարտադրման կոճակը թաքցված է</string>
   <string name="morphe_hide_autoplay_button_summary_off">Ավտոմատ վերարտադրման կոճակը երևում է</string>
@@ -814,28 +811,28 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_player_previous_next_buttons_title">Թաքցնել \"Նախորդ\" և \"Հաջորդ\" կոճակները</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Կոճակները թաքցված են</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Կոճակները երևում են</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Էկրանի վերջում քարտերը թաքցնել</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Էկրանի վերջում քարտերը թաքցված են</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Էկրանի վերջում քարտերը երևում են</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Անջատել շրջապատող ռեժիմը լիարժեք էկրանում</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Ամբիենտ ռեժիմը անջատված է</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Ամբիենտ ռեժիմը միացված է</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Տեղեկատվական քարտերը թաքցնել</string>
   <string name="morphe_hide_info_cards_summary_on">Տեղեկատվական քարտերը թաքցված են</string>
   <string name="morphe_hide_info_cards_summary_off">Տեղեկատվական քարտերը երևում են</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Հաշվողական թվերի մուլտիպլիկացիան անջատել</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Հաշվողական թվերը մուլտիպլիկացված չեն</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Հաշվողական թվերը մուլտիպլիկացված են</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Թաքցնել տեսանվագարկիչի ժամանակագիծը</string>
   <string name="morphe_hide_seekbar_summary_on">Տեսանյութի կրողի վրա տեղաշարժի ձողը թաքցված է</string>
   <string name="morphe_hide_seekbar_summary_off">Տեսանյութի կրողի վրա տեղաշարժի ձողը երևում է</string>
@@ -843,8 +840,8 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_seekbar_thumbnail_title">Թաքցնել տեսանյութերի մանրապատկերների ժամանակագիծը</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Տեսանյութերի մանրապատկերների ժամանակագիծը թաքցված է</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Տեսանյութերի մանրապատկերների ժամանակագիծը ցուցադրված է</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts կրող</string>
   <string name="morphe_shorts_player_screen_summary">Թաքցնել կամ ցուցադրել Shorts նվագարկիչի բաղադրիչները</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,48 +954,48 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_hide_shorts_navigation_bar_title">Թաքցնել նավիգացիայի ձողը</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Նավիգացիայի ձողը թաքցված է</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Նավիգացիայի ձողը երևում է</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Թաքցնել վերջնական էկրանին առաջարկվող տեսանյութը</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"Վերջնական էկրանին առաջարկվող տեսանյութը թաքցված է, երբ ավտոմատ նվագարկումն անջատված է
 
 Ավտոմատ նվագարկումը կարելի է փոխել YouTube-ի կարգավորումներում.
 Կարգավորումներ → Վերարտադրում → Ավտոմատ նվագարկել հաջորդ տեսանյութը"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Վերջնական էկրանին առաջարկվող տեսանյութը ցուցադրվում է</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Թաքցնել հարակից տեսանյութերի վերադիրը</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Հարակից տեսանյութերի վերադիրը ամբողջ էկրանով թաքնված է</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">Հարակից տեսանյութերի վերադիրը ամբողջ էկրանով ցուցադրված է</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Թաքցնել տեսանյութի ժամանակային կետը</string>
   <string name="morphe_hide_timestamp_summary_on">Ժամանակային կետը թաքցված է</string>
   <string name="morphe_hide_timestamp_summary_off">Ժամանակային կետը երևում է</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Թաքցնել հաղորդակցման վահանակների ելնող պատուհանները</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Հաղորդակցման վահանակների ելնող պատուհանները թաքցված են</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Հաղորդակցման վահանակների ելնող պատուհանները երևում են</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Տեսանյութի ավարտին դուրս գալ լիաէկրան ռեժիմից</string>
   <string name="morphe_exit_fullscreen_entry_1">Անջատված</string>
   <string name="morphe_exit_fullscreen_entry_2">Դիմանկար</string>
   <string name="morphe_exit_fullscreen_entry_3">Լանդշաֆտ</string>
   <string name="morphe_exit_fullscreen_entry_4">Դիմանկար և լանդշաֆտ</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Բացել տեսանյութերը լի էկրանի պորտրետային ռեժիմով</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Տեսանյութերը բացվում են լի էկրանով</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Տեսանյութերը չեն բացվում լի էկրանով</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Հաղորդակցման վահանակի թափանցիկություն</string>
   <string name="morphe_player_overlay_opacity_summary">Թափանցիկության արժեքը 0-100 միջակայքում, որտեղ 0-ը թափանցիկ է</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Խաղացողի վերածածկի թափանցիկությունը պետք է լինի 0-100 միջակայքում</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">\"Dislike\"-երը  մի որոշ ժամանակ  հասանելի չեն (API-ն ժամանակի սահմանը  անցել է)</string>
   <string name="morphe_ryd_failure_connection_status_code">\"Dislike\"-երը  հասանելի չեն (կարգավիճակ %d)</string>
@@ -1046,13 +1043,13 @@ MicroG-ի համար մարտկոցի օպտիմալացումը անջատել�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Client-ի կողմից սահմանված արագության սահմանափակումներ չեն հանդիպել</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-ի կողմից սահմանված արագության սահմանափակումը հանդիպել է %d անգամ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d միլիվայրկյան</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Ակտիվացնել լայն որոնման տողը</string>
   <string name="morphe_wide_searchbar_summary_on">Լայն որոնման տողը ակտիվացված է</string>
   <string name="morphe_wide_searchbar_summary_off">Լայն որոնման տողը անակտիվ է</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Ակտիվացնել բարձր որակի մանրապատկերները</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">Seekbar-ի մանրապատկերները բարձր որակի են</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">Seekbar-ի մանրապատկերները միջին որակի են</string>
@@ -1065,8 +1062,8 @@ Seekbar thumbnails-ները կօգտագործեն նույն որակը, ինչ
   <string name="morphe_restore_old_seekbar_thumbnails_title">Վերականգնել հին Seekbar մանրապատկերները</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">Seekbar մանրապատկերները կհայտնվեն Seekbar-ի վերևում</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">Seekbar մանրապատկերները կհայտնվեն fullscreen-ում</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ակտիվացնել SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock е կամավարական համակարգ, որը նախատեսված է YouTube տեսանյութերի ձանձրալի հատվածները բաց թողնելու համար</string>
   <string name="morphe_sb_appearance_category">Արտաքին տեսք</string>
@@ -1277,8 +1274,8 @@ Seekbar thumbnails-ները կօգտագործեն նույն որակը, ինչ
   <string name="morphe_sb_color_dot_label">Գույն։</string>
   <string name="morphe_sb_about_title">Ծրագրի մասին</string>
   <string name="morphe_sb_about_api_summary">Տվյալները մատուցվում են SponsorBlock API-ի կողմից։ Սեղմեք այստեղ՝ ավելի շատ իմանալու և այլ հարթակների համար ներբեռնումները տեսնելու</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Ձևաչափի փոփոխություն</string>
   <string name="morphe_change_form_factor_entry_1">Ընտրված</string>
   <string name="morphe_change_form_factor_entry_2">Հեռախոս</string>
@@ -1292,8 +1289,8 @@ Seekbar thumbnails-ները կօգտագործեն նույն որակը, ինչ
 Ավտոմեքենայի դասավորություն
 • Shorts-ը բացվում է սովորական նվագարկչում
 • Ֆիդը կազմակերպվում է ըստ թեմաների և ալիքների"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Կեղծել հավելվածի տարբերակը</string>
   <string name="morphe_spoof_app_version_summary_on">Տարբերակը կեղծված է</string>
   <string name="morphe_spoof_app_version_summary_off">Տարբերակը կեղծված չէ</string>
@@ -1307,8 +1304,8 @@ Seekbar thumbnails-ները կօգտագործեն նույն որակը, ինչ
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Վերականգնել արտագրման ֆունկցիոնալությունը</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Վերականգնել հին Shorts պլեյերի պատկերակները</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - Վերականգնել հին նավիգացիոն պատկերակները</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Փոխել մեկնարկային էջը</string>
   <string name="morphe_change_start_page_entry_default">Ըստ լռելյայնի</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Բոլոր բաժանորդագրությունները</string>
@@ -1339,27 +1336,27 @@ Seekbar thumbnails-ները կօգտագործեն նույն որակը, ինչ
 
 Սահմանափակում. գործիքագոտու վրա հետադարձ կոճակն օգտագործելը կարող է չաշխատել"</string>
   <string name="morphe_change_start_page_always_summary_off">Մեկնարկային էջը փոխվում է միայն հավելվածի գործարկման ժամանակ</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Անջատել Shorts պլեյերի վերսկսումը</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts պլեյերը չի վերսկսվի կիրառության մեկնարկի ժամանակ</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts պլեյերը կվերսկսվի կիրառության մեկնարկի ժամանակ</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Բացեք Shorts</string>
   <string name="morphe_shorts_player_type_shorts">Shorts կրող</string>
   <string name="morphe_shorts_player_type_regular_player">Կանոնավոր նվագարկիչ</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Կանոնավոր նվագարկիչ լիարժեք էկրանով</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Ավտոմատ կարճ տեսանյութերի միացում</string>
   <string name="morphe_shorts_autoplay_summary_on">Shorts-ը կվերարտադրվի ավտոմատ կերպով</string>
   <string name="morphe_shorts_autoplay_summary_off">Shorts-ը կկրկնվի</string>
   <string name="morphe_shorts_autoplay_background_title">Autoplay Shorts ֆոնային վերարտադրում</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts-ի ֆոնային վերարտադրումը կվերարտադրվի ավտոմատ կերպով</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts-ի ֆոնային վերարտադրումը կկրկնվի</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Մինի նվագարկիչ</string>
   <string name="morphe_miniplayer_screen_summary">Փոխել ներծրագրային փոքրացված նվագարկչի ոճը</string>
   <string name="morphe_miniplayer_type_title">Miniplayer-ի տեսակ</string>
@@ -1405,8 +1402,8 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <string name="morphe_miniplayer_opacity_title">Գերդրման թափանցիկություն</string>
   <string name="morphe_miniplayer_opacity_summary">Թափանցիկության արժեքը 0-100 միջև, որտեղ 0-ը թափանցիկ է</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer-ի գերդրման թափանցիկությունը պետք է լինի 0-100 միջև</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Աктиվացնել գրադիենտի բեռնման էկրանը</string>
   <string name="morphe_gradient_loading_screen_summary_on">Բեռնման էկրանը կունենա գրադիենտի ֆոն</string>
   <string name="morphe_gradient_loading_screen_summary_off">Բեռնման էկրանը կունենա մեկ գույնի ֆոն</string>
@@ -1421,24 +1418,24 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <string name="morphe_seekbar_custom_color_accent_title">Նշման գույնի ընտրում</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Մարզումից դուրս ողորկության նշման գույնը</string>
   <string name="morphe_seekbar_custom_color_invalid">Սխալ seekbar-ի գույնի արժեք</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Գլխագրի լոգո</string>
   <string name="morphe_header_logo_entry_1">Լռակյաց</string>
   <string name="morphe_header_logo_entry_2">Սովորական</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe մինիմալ</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Անտեսել պատկերի տարածաշրջանի սահմանափակումները</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Օգտագործելով yt4.ggpht.com պատկերային հոսքը</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Օգտագործվում է սկզբնական պատկերների հոսքը
 
 Այս կարգավորման միացումը կարող է լուծել որոշ տարածաշրջաններում կասեցված պատկերների խնդիրը։"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Գլխավոր ներդիր</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1473,28 +1470,28 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow-ը ժամանակավորապես հասանելի չէ (կարգավիճակի կոդը՝ %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow-ը ժամանակավորապես հասանելի չէ</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Ցուցադրել Morphe հայտարարությունները</string>
   <string name="morphe_announcements_summary_on">Գործարկման մասին հայտարարությունները ցուցադրվում են</string>
   <string name="morphe_announcements_summary_off">Գործարկման մասին հայտարարությունները չեն ցուցադրվում</string>
   <string name="morphe_announcements_enabled_summary">Ցուցադրել հայտարարությունները մեկնարկի ժամանակ</string>
   <string name="morphe_announcements_connection_failed">Հայտարարությունների մատակարարի հետ կապի  անհաջողություն</string>
   <string name="morphe_announcements_dialog_dismiss">Մերժել</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Միացնել տեսանյութի կրկնությունը</string>
   <string name="morphe_loop_video_summary_on">Տեսանյութը կկրկնվի</string>
   <string name="morphe_loop_video_summary_off">Տեսանյութը չի կրկնվի</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Ցուցադրել տեսանյութի կրկնության կոճակը</string>
   <string name="morphe_loop_video_button_summary_on">Կոճակը ցուցադրված է</string>
   <string name="morphe_loop_video_button_summary_off">Կոճակը ցուցադրված չէ</string>
   <string name="morphe_loop_video_button_toast_on">Տեսանյութի կրկնությունը միացված է</string>
   <string name="morphe_loop_video_button_toast_off">Տեսանյութի կրկնությունը անջատված է</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Հեռախոսի  չափերը  հնարավոր է  փոփոխել</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Սարքի չափերը կեղծվում են
 
@@ -1503,8 +1500,8 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
 
 Այս կարգավորման միացումը կարող է բացել տեսանյութի ավելի բարձր որակ։"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Այս  ընտրության  ակտիվացումը  կարող է  առաջացնել  տեսանյութի  վերարտադրման  հետ  կապված  պրոբլեմների,  ավելի  վատ  մարտկոցի  վերջնական  համարձակության  և  անհայտ  կողմնակի  ազդեցությունների</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Հպումային արձագանք</string>
   <string name="morphe_disable_haptic_feedback_summary">Փոխել հպումային արձագանքը</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Անջատել գլուխների հպումները</string>
@@ -1519,21 +1516,21 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <string name="morphe_disable_haptic_feedback_zoom_title">Զուումի  հպումների  ակտիվացումը  անջատել</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Զուումի հպումն անջատված է</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Զուումի հպումը միացված է</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Եթե վերջերս փոխել եք ձեր հաշվի մուտքի տվյալները, ապա ջնջեք և նորից տեղադրեք MicroG-ն:</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">URL-ի  վերահղումների  հնարավորությունը  անջատել</string>
   <string name="morphe_bypass_url_redirects_summary_on">URL-ի  վերահղումները  անջատված են</string>
   <string name="morphe_bypass_url_redirects_summary_off">URL-ի  վերահղումները  անջատված  չեն</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Բրաուզերում  հղումներ  բացել</string>
   <string name="morphe_external_browser_summary_on">Բացել հղումները արտաքին բրաուզերում</string>
   <string name="morphe_external_browser_summary_off">Բացել հղումները ներծրագրային բրաուզերում</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Ավտո</string>
   <string name="morphe_remember_video_quality_last_selected_title">Հիշել  տեսանյութի  որակի  փոփոխությունները</string>
@@ -1553,18 +1550,18 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <string name="morphe_remember_video_quality_wifi">ուայ-ֆայ</string>
   <string name="morphe_remember_video_quality_toast">Փոփոխվել է  դեֆոլտ  %1$s  որակը: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Փոխվել է Shorts %1$s-ի որակը հետևյալի վրա. %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Ցուցադրել  արագության  դիալոգի  պատուհանի  կոճակը</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Կոճակը ցուցադրվում է: Հպեք և պահեք՝ նվագարկման արագությունը լռելյայնի վերականգնելու համար</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Կոճակը  չի  ցուցադրվում</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Ցուցադրել տեսանյութի որակի կոճակը</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Կոճակը ցուցադրված է։ Հպեք և պահեք՝ որակը լռելյայնին վերականգնելու համար</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Կոճակը ցուցադրված չէ։</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Տեսանյութի  արագության  հարմարեցված  մենյու</string>
   <string name="morphe_custom_speed_menu_summary_on">Հարմարեցված  արագության  մենյուը  ցուցադրվում է</string>
   <string name="morphe_custom_speed_menu_summary_off">Հարմարեցված  արագության  մենյուը  չի  ցուցադրվում</string>
@@ -1578,8 +1575,8 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <string name="morphe_custom_playback_speeds_auto">Ավտո</string>
   <string name="morphe_speed_tap_and_hold_title">Զգայական վերահսկում՝ անվանափոխման համար</string>
   <string name="morphe_speed_tap_and_hold_summary">Վերարտադրման արագությունը 0-8 միջակայքում</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Հիշել  տեսանյութի  վերարտադրման  արագության  փոփոխությունները</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Վերարտադրման  արագության  փոփոխությունները  կիրառվում են  բոլոր  տեսանյութերի  համար</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Վերարտադրման  արագության  փոփոխությունները  կիրառվում են  միայն  ներկայիս  տեսանյութի  համար</string>
@@ -1588,8 +1585,8 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Ծանուցումը չի ցուցադրվում, երբ փոխվում է լռելյայն նվագարկման արագությունը</string>
   <string name="morphe_playback_speed_default_title">Տեսանյութի  վերարտադրման  դեֆոլտ  արագությունը</string>
   <string name="morphe_remember_playback_speed_toast">Փոփոխվել է  դեֆոլտ  արագությունը: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR տեսանյութը անջատված է</string>
   <string name="morphe_disable_hdr_video_summary_on">HDR տեսանյութը անջատված է</string>
   <string name="morphe_disable_hdr_video_summary_off">HDR տեսանյութը միացված է</string>
@@ -1605,18 +1602,18 @@ Mini-player-ը կարող է գրավվել էկրանից դուրս՝ դեպի
 • Տեսանյութի նվագարկումը կօգտագործի ավելի շատ ինտերնետ տվյալներ, քան VP9 կամ AV1-ը
 • HDR տեսանյութերը չեն օգտագործի AVC
 • Որոշ սարքեր չեն կարող պարտադրել AVC-ն"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Ցուցադրել տեսանյութի որակի ընդլայնված մենյուն</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Տեսանյութի որակի ընդլայնված մենյուն ցուցադրվում է</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Տեսանյութի որակի ընդլայնված մենյուն չի ցուցադրվում</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ակտիվացնել  սահելը  համար  ընտրելու</string>
   <string name="morphe_slide_to_seek_summary_on">Սահելը  համար  ընտրելը  ակտիվացված է</string>
   <string name="morphe_slide_to_seek_summary_off">Սահելը  համար  ընտրելը  անջատված է</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Թույլատրել Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Տեսակոդեկը AVC (H.264), VP9 կամ AV1 է
 
@@ -1637,29 +1634,29 @@ AV1-ով տեսանյութի նվագարկումը կարող է ընդհատ�
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Ցուցադրել վիճակագրության ակնոցներում</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Հաճախորդի տեսակը ցուցադրվում է վիճակագրության ակնոցներում</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Հաճախորդը թաքնված է վիճակագրության ակնոցներում</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">Մասին</string>
   <string name="morphe_settings_music_screen_1_ads_title">Գովազդներ</string>
   <string name="morphe_settings_music_screen_2_general_title">Ընդհանուր</string>
   <string name="morphe_settings_music_screen_3_player_title">Նվագարկիչ</string>
   <string name="morphe_settings_music_screen_4_misc_title">Տարբեր</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Թաքցնել տեսագովազդները</string>
   <string name="morphe_music_hide_video_ads_summary_on">Տեսագովազդները թաքցված են</string>
   <string name="morphe_music_hide_video_ads_summary_off">Տեսագովազդները ցուցադրվում են</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Միացնել մշտական կրկնություն</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Մշտական կրկնությունը միացված է</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Մշտական կրկնությունը անջատված է</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Թաքցնել հեռարձակման կոճակը</string>
   <string name="morphe_music_hide_cast_button_summary_on">Հեռարձակման կոճակը թաքնված է</string>
   <string name="morphe_music_hide_cast_button_summary_off">Հեռարձակման կոճակը ցուցադրված է</string>
@@ -1672,18 +1669,18 @@ AV1-ով տեսանյութի նվագարկումը կարող է ընդհատ�
   <string name="morphe_music_hide_search_button_title">Թաքցնել որոնման կոճակը</string>
   <string name="morphe_music_hide_search_button_summary_on">Որոնման կոճակը թաքցված է</string>
   <string name="morphe_music_hide_search_button_summary_off">Որոնման կոճակը ցուցադրվում է</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Թաքցնել կատեգորիաների վահանակը</string>
   <string name="morphe_music_hide_category_bar_summary_on">Կատեգորիաների վահանակը թաքցված է</string>
   <string name="morphe_music_hide_category_bar_summary_off">Կատեգորիաների վահանակը ցուցադրվում է</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Փոխել մինի նվագարկչի գույնը</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Մինի նվագարկչի գույնը համապատասխանում է լիաէկրան նվագարկչին</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Մինի նվագարկիչը օգտագործում է լռելյայն գույնը</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Նավիգացիոն գիծ</string>
   <string name="morphe_music_navigation_bar_screen_summary">Թաքցնել կամ փոխել նավիգացիոն գծի կոճակները</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1712,16 +1709,16 @@ AV1-ով տեսանյութի նվագարկումը կարող է ընդհատ�
   <string name="morphe_music_hide_navigation_bar_labels_title">Թաքցնել նավիգացիոն կոճակների պիտակները</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Պիտակները թաքնված են</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Պիտակները ցուցադրված են</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Թաքցնել «Ստացեք Music Premium» պիտակը</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Պիտակը թաքցված է</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Պիտակը ցուցադրվում է</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Թաքցնել թարմացման կոճակը</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Կոճակը թաքցված է</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Կոճակը ցուցադրվում է</string>
-  </patch>
-  </app>
+
+
 </resources>

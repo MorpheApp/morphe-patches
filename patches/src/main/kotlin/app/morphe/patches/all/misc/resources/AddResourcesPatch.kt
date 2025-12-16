@@ -130,7 +130,7 @@ internal val addResourcesPatch = resourcePatch(
                         addResource(resources, locale, transform(node))
                     }
                 }
-            } ?: throw IllegalArgumentException("Could not find: $resourceSubPath")
+            } // FIXME //?: throw IllegalArgumentException("Could not find: $resourceSubPath")
         }
 
         appsToInclude.forEach { app ->

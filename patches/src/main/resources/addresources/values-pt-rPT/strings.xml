@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    All strings must have a unique path, even if the same string is declared in two different apps.
-    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
-
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
     Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
 
@@ -19,18 +16,18 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <app id="shared">
-  <patch id="layout.branding.baseCustomBrandingPatch">
+
+  <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nome da aplicação</string>
   <string name="morphe_custom_branding_icon_title">Ícone da aplicação</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
-  </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">O teu histórico de visualização não está a ser guardado.&lt;br&gt;&lt;br&gt;Isto é mais provávelmente causado por um bloqueador de anúncios DNS ou proxy de rede.&lt;br&gt;&lt;br&gt;Para reparar isto, adiciona às exceções &lt;b&gt;s.youtube.com&lt;/b&gt; ou desativa todos os bloqueadores DNS e proxies.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Não mostrar novamente</string>
-  </patch>
-  <patch id="misc.settings.settingsResourcePatch">
+
+  <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Configurações</string>
   <string name="morphe_settings_confirm_user_dialog_title">Tem certeza de que deseja prosseguir?</string>
   <string name="morphe_settings_save">Salvar</string>
@@ -80,8 +77,8 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite transl
   <string name="morphe_settings_about_links_header">Links oficiais</string>
   <!-- NOTE: the about strings above are duplicated in the TikTok about screen code,
                  and changes made here must also be made there. -->
-  </patch>
-  <patch id="misc.gms.gmsCoreSupportResourcePatch">
+
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">Configurações do GmsCore</string>
   <string name="microg_settings_summary">Configurações para GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -99,8 +96,8 @@ A desativação das otimizações de bateria para o MicroG não afetará negativ
 
 Toque no botão continuar e permita as alterações de otimização."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Fluxos de vídeo falsos</string>
   <string name="morphe_spoof_video_streams_screen_summary">Disfarçar os fluxos de vídeo do cliente para evitar problemas de reprodução</string>
   <string name="morphe_spoof_video_streams_screen_title">Falsificar fluxos de vídeo</string>
@@ -114,15 +111,15 @@ Se você for um usuário do YouTube Premium, esta configuração pode não ser n
 A reprodução pode não funcionar"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta configuração pode causar problemas de reprodução.</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente predefinido</string>
-  </patch>
-  <patch id="misc.audio.forceOriginalAudioPatch">
+
+  <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forçar idioma original do áudio</string>
   <string name="morphe_force_original_audio_summary_on">Usando o idioma de áudio original</string>
   <string name="morphe_force_original_audio_summary_off">Usando o áudio predefinido</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para usar este recurso, altere \'Falsificar streams de vídeo\' para qualquer cliente, exceto o Android Studio</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuração</string>
   <string name="morphe_debug_screen_summary">Ativar ou desativar opções de depuração</string>
   <string name="morphe_debug_title">Registo da depuração</string>
@@ -154,18 +151,18 @@ Não será notificado de quaisquer eventos inesperados."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores salvos</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores redefinidos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores copiados para a área de transferência</string>
-  </patch>
-  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Sanitizar links de partilha</string>
   <string name="morphe_sanitize_sharing_links_summary_on">O parâmetro de consulta de rastreamento é removido dos links partilhados</string>
   <string name="morphe_sanitize_sharing_links_summary_off">O parâmetro de consulta de rastreamento não é removido dos links partilhados</string>
   <string name="morphe_replace_music_with_youtube_title">Alterar links de compartilhamento para youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Links compartilhados usam youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Links compartilhados usam music.youtube.com</string>
-  </patch>
-  </app>
-  <app id="youtube">
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_screen_00_about_title">Sobre</string>
   <string name="morphe_settings_screen_01_ads_title">Anúncios</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniaturas alternativas</string>
@@ -179,13 +176,13 @@ Não será notificado de quaisquer eventos inesperados."</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar menus de configurações antigos</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Os menus de configurações antigos são mostrados</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Os menus de configurações antigos não são mostrados</string>
-  </patch>
-  <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
+
+  <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Desativar reprodução de fundo de Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodução de fundo de Shorts está desativada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodução de fundo de Shorts está ativa</string>
-  </patch>
-  <patch id="misc.debugging.enableDebuggingPatch">
+
+  <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Registo do buffer de protocolo</string>
   <string name="morphe_debug_protobuffer_summary_on">Registos de depuração incluem buffer de sondagem</string>
   <string name="morphe_debug_protobuffer_summary_off">Os registos da depuração não incluem buffer de perfil</string>
@@ -194,8 +191,8 @@ Não será notificado de quaisquer eventos inesperados."</string>
 Isto pode ajudar a identificar componentes ao criar filtros personalizados.
 
 No entanto, ativar isto também irá registar alguns dados do utilizador, como o seu endereço IP."</string>
-  </patch>
-  <patch id="layout.hide.general.hideLayoutComponentsPatch">
+
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">Esconder cartões de álbuns</string>
   <string name="morphe_hide_album_cards_summary_on">Cartões de álbuns estão escondidos</string>
   <string name="morphe_hide_album_cards_summary_off">Cartões de álbum são visíveis</string>
@@ -465,8 +462,8 @@ Limitações
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Palavra-chave tem declarações conflitantes: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">A palavra-chave é muito curta e requer citações: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Palavra-chave irá ocultar todos os vídeos: %s</string>
-  </patch>
-  <patch id="ad.general.hideAdsResourcePatch">
+
+  <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ocultar prateleira da loja do criador</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">A prateleira da loja do criador sob o reprodutor de vídeo está oculta</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Prateleira da loja do criador sob o leitor de vídeo é exibida</string>
@@ -501,18 +498,18 @@ Tính năng này chỉ khả dụng cho các thiết bị cũ"</string>
   <string name="morphe_hide_web_search_results_title">Esconder resultados da pesquisa web</string>
   <string name="morphe_hide_web_search_results_summary_on">Resultados de pesquisa web estão escondidos</string>
   <string name="morphe_hide_web_search_results_summary_off">Resultados de pesquisa web são visíveis</string>
-  </patch>
-  <patch id="ad.getpremium.hideGetPremiumPatch">
+
+  <!-- ad.getpremium.hideGetPremiumPatch -->
   <string name="morphe_hide_get_premium_title">Esconder promoções Premium do YouTube</string>
   <string name="morphe_hide_get_premium_summary_on">As promoções do YouTube Premium sob o reprodutor de vídeo estão escondidas</string>
   <string name="morphe_hide_get_premium_summary_off">Promoções do YouTube Premium sob o reprodutor de vídeo são visíveis</string>
-  </patch>
-  <patch id="ad.video.videoAdsPatch">
+
+  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Esconder anúncios do vídeo</string>
   <string name="morphe_hide_video_ads_summary_on">Anúncios de vídeo estão escondidos</string>
   <string name="morphe_hide_video_ads_summary_off">Anúncios de vídeo são visíveis</string>
-  </patch>
-  <patch id="interaction.copyvideourl.copyVideoUrlResourcePatch">
+
+  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">URL copiado</string>
   <string name="morphe_share_copy_url_timestamp_success">URL com timestamp copiado</string>
   <string name="morphe_copy_video_url_title">Mostrar botão de URL de vídeo copiado</string>
@@ -521,24 +518,24 @@ Tính năng này chỉ khả dụng cho các thiết bị cũ"</string>
   <string name="morphe_copy_video_url_timestamp_title">Mostrar botão de copiar timestamp URL</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">O botão é mostrado. Toque para copiar o URL do vídeo com o carimbo de data/hora. Toque e segure para copiar sem o carimbo de data/hora</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">O botão não está visível</string>
-  </patch>
-  <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
+
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo discreto do visualizador</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">A caixa de diálogo será removida</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">A caixa de diálogo será exibida</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Isto não ignora a restrição de idade, apenas a aceita automaticamente.</string>
-  </patch>
-  <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
+
+  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Desativar o pop-up Entrar na TV</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">O pop-up Entrar na TV está desativado</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">O pop-up Entrar na TV está ativado</string>
-  </patch>
-  <patch id="interaction.doubletap.disableDoubleTapActionsPatch">
+
+  <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Desativar o salto de capítulo com toque duplo</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">O toque duplo nunca acionará um salto para o capítulo seguinte/anterior</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">O toque duplo pode ocasionalmente acionar um salto para o capítulo seguinte/anterior</string>
-  </patch>
-  <patch id="interaction.downloads.downloadsResourcePatch">
+
+  <!-- interaction.downloads.downloadsResourcePatch -->
   <string name="morphe_external_downloader_screen_title">Transferências externas</string>
   <string name="morphe_external_downloader_screen_summary">Definições para usar um downloader externo</string>
   <string name="morphe_external_downloader_title">Mostrar botão externo de transferir</string>
@@ -558,18 +555,18 @@ Tính năng này chỉ khả dụng cho các thiết bị cũ"</string>
 
 Verifique se o nome do pacote está correto e se o aplicativo está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
-  </patch>
-  <patch id="interaction.seekbar.disablePreciseSeekingGesturePatch">
+
+  <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desativar gesto de pesquisa precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesto está desativado </string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gesto ativado</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSeekbarTappingPatch">
+
+  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Ativar tocar para procurar</string>
   <string name="morphe_seekbar_tapping_summary_on">Toque para procurar está ativado</string>
   <string name="morphe_seekbar_tapping_summary_off">Tocar para procurar está desativado</string>
-  </patch>
-  <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
+
+  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Ativar gesto de brilho</string>
   <string name="morphe_swipe_brightness_summary_on">"O deslize de brilho em tela cheia está ativado
 
@@ -620,13 +617,13 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_swipe_change_video_title">Ativar deslizar para mudar de vídeo</string>
   <string name="morphe_swipe_change_video_summary_on">Deslizar no modo de ecrã inteiro mudará para o vídeo seguinte/anterior</string>
   <string name="morphe_swipe_change_video_summary_off">Deslizar no modo de ecrã inteiro não mudará para o vídeo seguinte/anterior</string>
-  </patch>
-  <patch id="layout.autocaptions.autoCaptionsPatch">
+
+  <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_disable_auto_captions_title">Desativar legendas automáticas</string>
   <string name="morphe_disable_auto_captions_summary_on">As legendas automáticas estão desativadas</string>
   <string name="morphe_disable_auto_captions_summary_off">As legendas automáticas estão ativadas</string>
-  </patch>
-  <patch id="layout.buttons.action.hideButtonsPatch">
+
+  <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Botões de ação</string>
   <string name="morphe_hide_buttons_screen_summary">Esconder ou mostrar botões sob vídeos</string>
   <string name="morphe_disable_like_subscribe_glow_title">Desativar o brilho de \"Gostar\" e \"Subscrever\"</string>
@@ -690,8 +687,8 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_save_button_title">Ocultar Salvar</string>
   <string name="morphe_hide_save_button_summary_on">O botão Salvar está oculto</string>
   <string name="morphe_hide_save_button_summary_off">O botão Salvar está exibido</string>
-  </patch>
-  <patch id="layout.buttons.navigation.navigationButtonsPatch">
+
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botões de navegação</string>
   <string name="morphe_navigation_buttons_screen_summary">Esconder ou alterar botões na barra de navegação</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -735,8 +732,8 @@ Se alterar esta configuração não fizer efeito, tente alternar para o modo an�
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Desativar barra translúcida escura</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">A barra de navegação no modo escuro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A barra de navegação em modo escuro é opaca ou translúcida</string>
-  </patch>
-  <patch id="layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch">
+
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu suspenso</string>
   <string name="morphe_hide_player_flyout_summary">Esconder ou mostrar itens do menu de saída do player</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -796,8 +793,8 @@ Para mostrar o menu da faixa de áudio, altere 'Falsificar fluxos de vídeo' par
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Esconder rodapé do menu de qualidade de vídeo</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">O rodapé do menu de qualidade de vídeo está oculto</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Cabeçalho do menu de qualidade de vídeo mostrado</string>
-  </patch>
-  <patch id="layout.buttons.overlay.hidePlayerOverlayButtonsPatch">
+
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Ocultar botão de reprodução automática</string>
   <string name="morphe_hide_autoplay_button_summary_on">O botão de reprodução automática está escondido</string>
   <string name="morphe_hide_autoplay_button_summary_off">Botão de reprodução automática é visível</string>
@@ -814,28 +811,28 @@ Para mostrar o menu da faixa de áudio, altere 'Falsificar fluxos de vídeo' par
   <string name="morphe_hide_player_previous_next_buttons_title">Ocultar botões Anterior &amp; Próximo</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Botões estão ocultos</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Botões são exibidos</string>
-  </patch>
-  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
+
+  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_endscreen_cards_title">Esconder cartões de ecrã final</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Cartões de fim de ecrã estão escondidos</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Cartões de fim de ecrã são exibidos</string>
-  </patch>
-  <patch id="layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch">
+
+  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desabilitar modo ambiente em tela cheia</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Modo ambiente desativado</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Modo ambiente ativado</string>
-  </patch>
-  <patch id="layout.hide.infocards.hideInfocardsResourcePatch">
+
+  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Esconder cartões de informação</string>
   <string name="morphe_hide_info_cards_summary_on">Cartões de informação estão escondidos</string>
   <string name="morphe_hide_info_cards_summary_off">Cartões de informação são exibidos</string>
-  </patch>
-  <patch id="layout.hide.rollingnumber.disableRollingNumberAnimationPatch">
+
+  <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">Desativar animações de números rolantes</string>
   <string name="morphe_disable_rolling_number_animations_summary_on">Números de rolagem não estão animados</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Números de rolagem estão animados</string>
-  </patch>
-  <patch id="layout.hide.seekbar.hideSeekbarPatch">
+
+  <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Ocultar barra de busca do player de vídeo</string>
   <string name="morphe_hide_seekbar_summary_on">Barra de busca do vídeo está escondida</string>
   <string name="morphe_hide_seekbar_summary_off">Barra de busca do vídeo visível</string>
@@ -843,8 +840,8 @@ Para mostrar o menu da faixa de áudio, altere 'Falsificar fluxos de vídeo' par
   <string name="morphe_hide_seekbar_thumbnail_title">Ocultar barra de busca de miniaturas de vídeo</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Barra de busca de miniaturas de vídeo está oculta</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Barra de busca de miniaturas de vídeo está visível</string>
-  </patch>
-  <patch id="layout.hide.shorts.hideShortsComponentsResourcePatch">
+
+  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Reprodutor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ocultar ou mostrar componentes do player de Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
@@ -957,48 +954,48 @@ Para mostrar o menu da faixa de áudio, altere 'Falsificar fluxos de vídeo' par
   <string name="morphe_hide_shorts_navigation_bar_title">Esconder barra de navegação</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">A barra de navegação está escondida</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Barra de navegação exibida</string>
-  </patch>
-  <patch id="layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch">
+
+  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ocultar o vídeo sugerido na tela final</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"O vídeo sugerido na tela final fica oculto quando a reprodução automática está desativada
 
 A reprodução automática pode ser alterada nas configurações do YouTube:
 Configurações → Reprodução → Reproduzir o próximo vídeo automaticamente"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">O vídeo sugerido na tela final é exibido</string>
-  </patch>
-  <patch id="layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch">
+
+  <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
   <string name="morphe_hide_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia está visível</string>
-  </patch>
-  <patch id="layout.hide.time.hideTimestampPatch">
+
+  <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Esconder timestamp do vídeo</string>
   <string name="morphe_hide_timestamp_summary_on">Timestamp está escondido</string>
   <string name="morphe_hide_timestamp_summary_off">Timestamp é visível</string>
-  </patch>
-  <patch id="layout.panels.popup.playerPopupPanelsPatch">
+
+  <!-- layout.panels.popup.playerPopupPanelsPatch -->
   <string name="morphe_hide_player_popup_panels_title">Esconder painéis popup do player</string>
   <string name="morphe_hide_player_popup_panels_summary_on">Painéis pop-up do jogador estão escondidos</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Painéis pop-up do jogador são visíveis</string>
-  </patch>
-  <patch id="layout.player.fullscreen.exitFullscreenPatch">
+
+  <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Sair do modo de ecrã inteiro no final do vídeo</string>
   <string name="morphe_exit_fullscreen_entry_1">Desativado</string>
   <string name="morphe_exit_fullscreen_entry_2">Retrato</string>
   <string name="morphe_exit_fullscreen_entry_3">Paisagem</string>
   <string name="morphe_exit_fullscreen_entry_4">Retrato e paisagem</string>
-  </patch>
-  <patch id="layout.player.fullscreen.openVideosFullscreen">
+
+  <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Abrir vídeos em retrato em ecrã cheio</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Vídeos abertos em ecrã cheio</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Vídeos não abrem em ecrã cheio</string>
-  </patch>
-  <patch id="layout.player.overlay.customPlayerOverlayOpacityResourcePatch">
+
+  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
   <string name="morphe_player_overlay_opacity_title">Opacidade do jogador</string>
   <string name="morphe_player_overlay_opacity_summary">Valor de opacidade entre 0-100, onde 0 é transparente</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Opacidade do jogador deve estar entre 0-100</string>
-  </patch>
-  <patch id="layout.returnyoutubedislike.returnYouTubeDislikePatch">
+
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Toast shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes temporariamente indisponível (API expirou)</string>
   <string name="morphe_ryd_failure_connection_status_code">Descurtir não disponível (status %d)</string>
@@ -1046,13 +1043,13 @@ Limitação: As não gostos podem não aparecer no modo anônimo"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nenhum limite de taxa de cliente encontrado</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limite da taxa de cliente encontrado %d vezes</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d milissegundos</string>
-  </patch>
-  <patch id="layout.searchbar.wideSearchbarPatch">
+
+  <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">Ativar barra de pesquisa ampla</string>
   <string name="morphe_wide_searchbar_summary_on">Barra de pesquisa ampla está ativada</string>
   <string name="morphe_wide_searchbar_summary_off">Barra de pesquisa ampla está desativada</string>
-  </patch>
-  <patch id="layout.seekbar.seekbarThumbnailsPatch">
+
+  <!-- layout.seekbar.seekbarThumbnailsPatch -->
   <string name="morphe_seekbar_thumbnails_high_quality_title">Habilitar miniaturas de alta qualidade</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_on">As miniaturas na barra de busca são de alta qualidade</string>
   <string name="morphe_seekbar_thumbnails_high_quality_summary_off">As miniaturas na barra de busca são de qualidade média</string>
@@ -1064,8 +1061,8 @@ Tính năng này hoạt động tốt nhất với chất lg video là 720p tr�
   <string name="morphe_restore_old_seekbar_thumbnails_title">Restaurar as miniaturas antigas da barra de pesquisa</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_on">As miniaturas da barra de busca aparecerão acima da barra de busca</string>
   <string name="morphe_restore_old_seekbar_thumbnails_summary_off">As miniaturas da Seekbar aparecerão em ecrã cheia</string>
-  </patch>
-  <patch id="layout.sponsorblock.sponsorBlockResourcePatch">
+
+  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Habilitar Patrocínio</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock é um sistema de crowdsourcing para saltar partes irritantes de vídeos do YouTube</string>
   <string name="morphe_sb_appearance_category">Aparência</string>
@@ -1276,8 +1273,8 @@ Pronto para enviar?"</string>
   <string name="morphe_sb_color_dot_label">Cor:</string>
   <string name="morphe_sb_about_title">Sobre</string>
   <string name="morphe_sb_about_api_summary">Os dados são fornecidos pela API do SponsorBlock. Toque aqui para aprender mais e ver downloads para outras plataformas</string>
-  </patch>
-  <patch id="layout.formfactor.changeFormFactorPatch">
+
+  <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Fator de forma do layout</string>
   <string name="morphe_change_form_factor_entry_1">Padrão</string>
   <string name="morphe_change_form_factor_entry_2">Telemóvel</string>
@@ -1291,8 +1288,8 @@ Layout do tablet
 Layout automotivo
 • Os Shorts são abertos no reprodutor normal
 • O feed é organizado por tópicos e canais"</string>
-  </patch>
-  <patch id="layout.spoofappversion.spoofAppVersionPatch">
+
+  <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versão do Spoof app</string>
   <string name="morphe_spoof_app_version_summary_on">Versão falsificada</string>
   <string name="morphe_spoof_app_version_summary_off">Versão não falsificada</string>
@@ -1306,8 +1303,8 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
   <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Restaurar funcionalidade de transcrição</string>
   <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Restaurar os icones antigos do reprodutor dos Shorts</string>
   <string name="morphe_spoof_app_version_target_entry_4">19.01.34 - Restaurar ícones antigos de navegação</string>
-  </patch>
-  <patch id="layout.startpage.changeStartPagePatch">
+
+  <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Alterar página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Todas as assinaturas</string>
@@ -1338,27 +1335,27 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
 
 Limitação: Usar o botão voltar na barra de ferramentas pode não funcionar"</string>
   <string name="morphe_change_start_page_always_summary_off">A página inicial é alterada apenas na inicialização do aplicativo</string>
-  </patch>
-  <patch id="layout.startupshortsreset.disableResumingShortsOnStartupPatch">
+
+  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Desativar a retomada do player do Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Desativar a retomada do player do Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts que o reprodutor continuará na inicialização do aplicativo</string>
-  </patch>
-  <patch id="layout.shortsplayer.shortsPlayerTypePatch">
+
+  <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Abrir Â Shorts com</string>
   <string name="morphe_shorts_player_type_shorts">Reprodutor de Shorts</string>
   <string name="morphe_shorts_player_type_regular_player">Reprodução normal</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Reprodução normal em ecrã cheia</string>
-  </patch>
-  <patch id="layout.shortsautoplay.shortsAutoplayPatch">
+
+  <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Reprodução automática de Shorts</string>
   <string name="morphe_shorts_autoplay_summary_on">Shorts vão ser reproduzidos automaticamente</string>
   <string name="morphe_shorts_autoplay_summary_off">Shorts irão repetir</string>
   <string name="morphe_shorts_autoplay_background_title">Reprodução automática de Shorts no fundo</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Reprodução de fundo de Shorts irá reproduzir automaticamente</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Reprodução de fundo de Shorts irá repetir</string>
-  </patch>
-  <patch id="layout.miniplayer.miniplayerPatch">
+
+  <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Minijogador</string>
   <string name="morphe_miniplayer_screen_summary">Altere o estilo do player minimizado no aplicativo</string>
   <string name="morphe_miniplayer_type_title">Tipo de minijogador</string>
@@ -1404,8 +1401,8 @@ Miniplayer có thể được kéo ra khỏi màn hình sang trái hoặc phải
   <string name="morphe_miniplayer_opacity_title">Opacidade da sobreposição</string>
   <string name="morphe_miniplayer_opacity_summary">Valor de opacidade entre 0-100, onde 0 é transparente</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Opacidade da sobreposição de minijogador deve estar entre 0-100</string>
-  </patch>
-  <patch id="layout.theme.themePatch">
+
+  <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Ativar ecrã de carregamento do gradiente</string>
   <string name="morphe_gradient_loading_screen_summary_on">Carregar ecrã terá um fundo em gradiente</string>
   <string name="morphe_gradient_loading_screen_summary_off">Carregar ecrã terá um fundo sólido</string>
@@ -1420,24 +1417,24 @@ Miniplayer có thể được kéo ra khỏi màn hình sang trái hoặc phải
   <string name="morphe_seekbar_custom_color_accent_title">Cor personalizada de destaque da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_accent_summary">A cor de destaque da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_invalid">Valor de cor de seekbar inválido</string>
-  </patch>
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="layout.branding.changeHeaderPatch">
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- layout.branding.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotipo do cabeçalho</string>
   <string name="morphe_header_logo_entry_1">Padrão</string>
   <string name="morphe_header_logo_entry_2">Regular</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
   <string name="morphe_header_logo_entry_5">Morphe mínimo</string>
-  </patch>
-  <patch id="layout.thumbnails.bypassImageRegionRestrictionsPatch">
+
+  <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Ignorar restrições de região de imagem</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Usando imagem host yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"Sử dụng máy chủ hình ảnh gốc
 
 Bật tính năng này có thể sửa lỗi hình ảnh bị thiếu do bị chặn ở một số khu vực"</string>
-  </patch>
-  <patch id="layout.thumbnails.alternativeThumbnailsPatch">
+
+  <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
   <string name="morphe_alt_thumbnail_home_title">Aba principal</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
@@ -1472,28 +1469,28 @@ Toque aqui para saber mais sobre DeArrow"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow não está disponível temporariamente (código de status: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow não está disponível temporariamente</string>
-  </patch>
-  <patch id="misc.announcements.announcementsPatch">
+
+  <!-- misc.announcements.announcementsPatch -->
   <string name="morphe_announcements_title">Exibir avisos de Morphe</string>
   <string name="morphe_announcements_summary_on">Os anúncios no arranque são mostrados</string>
   <string name="morphe_announcements_summary_off">Os anúncios no arranque não são mostrados</string>
   <string name="morphe_announcements_enabled_summary">Mostrar avisos na inicialização</string>
   <string name="morphe_announcements_connection_failed">Falha ao conectar ao provedor de avisos</string>
   <string name="morphe_announcements_dialog_dismiss">Dispensar</string>
-  </patch>
-  <patch id="misc.loopvideo.loopVideoPatch">
+
+  <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
   <string name="morphe_loop_video_summary_on">O vídeo ficará em loop</string>
   <string name="morphe_loop_video_summary_off">O vídeo não ficará em loop</string>
-  </patch>
-  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+
+  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Mostrar botão de vídeo em loop</string>
   <string name="morphe_loop_video_button_summary_on">O botão é exibido</string>
   <string name="morphe_loop_video_button_summary_off">O botão não é exibido</string>
   <string name="morphe_loop_video_button_toast_on">Vídeo em loop está ativado</string>
   <string name="morphe_loop_video_button_toast_off">Vídeo em loop está desativado</string>
-  </patch>
-  <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
+
+  <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Dimensões do dispositivo Spoof</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Kích thước thiết bị bị giả mạo
 
@@ -1502,8 +1499,8 @@ Chất lượng video cao hơn có thể được mở khóa nhưng bạn có th
 
 Bật tính năng này có thể mở khóa chất lượng video cao hơn"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Habilitar isto pode causar travamentos na reprodução de vídeo, pior vida na bateria e efeitos colaterais desconhecidos.</string>
-  </patch>
-  <patch id="misc.hapticfeedback.disableHapticFeedbackPatch">
+
+  <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Feedback háptico</string>
   <string name="morphe_disable_haptic_feedback_summary">Alterar feedback háptico</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Desativar haptics dos capítulos</string>
@@ -1518,21 +1515,21 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_disable_haptic_feedback_zoom_title">Desativar zoom haptics</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom haptics está desativado</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics está ativado</string>
-  </patch>
-  <patch id="misc.gms.accountCredentialsInvalidTextPatch">
+
+  <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se você alterou recentemente os detalhes de login da sua conta, desinstale e reinstale o MicroG.</string>
-  </patch>
-  <patch id="misc.links.bypassURLRedirectsPatch">
+
+  <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Ignorar redirecionamentos de URL</string>
   <string name="morphe_bypass_url_redirects_summary_on">Redirecionamentos de URL estão ignorados</string>
   <string name="morphe_bypass_url_redirects_summary_off">Redirecionamentos de URL não estão ignorados</string>
-  </patch>
-  <patch id="misc.links.openLinksExternallyPatch">
+
+  <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Abrir links no navegador</string>
   <string name="morphe_external_browser_summary_on">Abrindo links no navegador externo</string>
   <string name="morphe_external_browser_summary_off">Abrindo links no navegador no aplicativo</string>
-  </patch>
-  <patch id="video.quality.rememberVideoQualityPatch">
+
+  <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automático</string>
   <string name="morphe_remember_video_quality_last_selected_title">Lembrar mudanças na qualidade do vídeo</string>
@@ -1552,18 +1549,18 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">A qualidade predefinida %1$s foi alterada para: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Qualidade do Shorts %1$s alterada para: %2$s</string>
-  </patch>
-  <patch id="video.speed.button.playbackSpeedButtonPatch">
+
+  <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Mostrar botão de diálogo de velocidade</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">O botão é mostrado. Toque e segure para redefinir a velocidade de reprodução para o padrão</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">O botão não está visível</string>
-  </patch>
-  <patch id="video.quality.button.videoQualityDialogButtonPatch">
+
+  <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Mostrar botão de qualidade de vídeo</string>
   <string name="morphe_video_quality_dialog_button_summary_on">O botão é exibido. Toque e segure para redefinir a qualidade para o padrão</string>
   <string name="morphe_video_quality_dialog_button_summary_off">O botão não é exibido</string>
-  </patch>
-  <patch id="video.speed.custom.customPlaybackSpeedPatch">
+
+  <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu personalizado de velocidade de reprodução</string>
   <string name="morphe_custom_speed_menu_summary_on">O menu de velocidade personalizado é exibido</string>
   <string name="morphe_custom_speed_menu_summary_off">O menu de velocidade personalizado não é mostrado</string>
@@ -1577,8 +1574,8 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_custom_playback_speeds_auto">Automático</string>
   <string name="morphe_speed_tap_and_hold_title">Velocidade personalizada ao tocar e segurar</string>
   <string name="morphe_speed_tap_and_hold_summary">Velocidade de reprodução de 0 a 8</string>
-  </patch>
-  <patch id="video.speed.remember.rememberPlaybackSpeedPatch">
+
+  <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Lembrar velocidade de reprodução</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">As mudanças de velocidade de reprodução aplicam-se a todos os vídeos</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">As mudanças de velocidade de reprodução só se aplicam ao vídeo atual</string>
@@ -1587,8 +1584,8 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Uma mensagem não é exibida quando a velocidade de reprodução padrão é alterada</string>
   <string name="morphe_playback_speed_default_title">Velocidade de reprodução predefinida</string>
   <string name="morphe_remember_playback_speed_toast">Velocidade predefinida alterada para: %s</string>
-  </patch>
-  <patch id="video.codecs.disableVideoCodecsPatch">
+
+  <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Desabilitar vídeo HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">O vídeo HDR está desabilitado</string>
   <string name="morphe_disable_hdr_video_summary_off">O vídeo HDR está ativado</string>
@@ -1604,18 +1601,18 @@ Limitações:
 • A reprodução de vídeo usará mais dados da internet do que VP9 ou AV1
 • Vídeos HDR não usarão AVC
 • Alguns dispositivos não conseguem forçar AVC"</string>
-  </patch>
-  <patch id="video.quality.advancedVideoQualityMenuPatch">
+
+  <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Mostrar menu de qualidade de vídeo avançado</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">O menu de qualidade de vídeo avançado é mostrado</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">O menu de qualidade de vídeo avançado não é mostrado</string>
-  </patch>
-  <patch id="interaction.seekbar.enableSlideToSeekPatch">
+
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Habilitar o slide para procurar</string>
   <string name="morphe_slide_to_seek_summary_on">Deslize para procurar está ativado</string>
   <string name="morphe_slide_to_seek_summary_off">Deslize para procurar não está habilitado</string>
-  </patch>
-  <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"O codec de vídeo é AVC (H.264), VP9 ou AV1
 
@@ -1636,29 +1633,29 @@ A reprodução de vídeo com AV1 pode apresentar soluços ou perder quadros."</s
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Mostrar em Estatísticas para nerds</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">O tipo de cliente é mostrado em Estatísticas para nerds</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">O cliente está oculto em Estatísticas para nerds</string>
-  </patch>
-  </app>
-  <app id="music">
-  <patch id="layout.branding.customBrandingPatch">
-  </patch>
-  <patch id="misc.settings.settingsPatch">
+
+
+
+  <!-- layout.branding.customBrandingPatch -->
+
+  <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_music_screen_0_about_title">Sobre</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anúncios</string>
   <string name="morphe_settings_music_screen_2_general_title">Geral</string>
   <string name="morphe_settings_music_screen_3_player_title">Player</string>
   <string name="morphe_settings_music_screen_4_misc_title">Diversos</string>
-  </patch>
-  <patch id="ad.video.hideVideoAdsPatch">
+
+  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ocultar anúncios em vídeo</string>
   <string name="morphe_music_hide_video_ads_summary_on">Anúncios em vídeo estão ocultos</string>
   <string name="morphe_music_hide_video_ads_summary_off">Anúncios em vídeo estão exibidos</string>
-  </patch>
-  <patch id="interaction.permanentrepeat.permanentRepeatPatch">
+
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ativar repetição permanente</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Repetição permanente está ativada</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Repetição permanente está desativada</string>
-  </patch>
-  <patch id="layout.buttons.hideButtons">
+
+  <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Ocultar botão de transmissão</string>
   <string name="morphe_music_hide_cast_button_summary_on">O botão de transmissão está oculto</string>
   <string name="morphe_music_hide_cast_button_summary_off">O botão de transmissão está exibido</string>
@@ -1671,18 +1668,18 @@ A reprodução de vídeo com AV1 pode apresentar soluços ou perder quadros."</s
   <string name="morphe_music_hide_search_button_title">Ocultar botão de pesquisa</string>
   <string name="morphe_music_hide_search_button_summary_on">O botão de pesquisa está oculto</string>
   <string name="morphe_music_hide_search_button_summary_off">O botão de pesquisa está visível</string>
-  </patch>
-  <patch id="layout.compactheader.hideCategoryBar">
+
+  <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Ocultar barra de categorias</string>
   <string name="morphe_music_hide_category_bar_summary_on">Barra de categorias está oculta</string>
   <string name="morphe_music_hide_category_bar_summary_off">Barra de categorias está exibida</string>
-  </patch>
-  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Alterar a cor do minitocador</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">A cor do minitocador corresponde à do reprodutor em tela cheia</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">O minitocador usa a cor padrão</string>
-  </patch>
-  <patch id="layout.navigationbar.navigationBarPatch">
+
+  <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra de navegação</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ocultar ou alterar botões da barra de navegação</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -1711,16 +1708,16 @@ A reprodução de vídeo com AV1 pode apresentar soluços ou perder quadros."</s
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Rótulos estão ocultos</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Rótulos estão exibidos</string>
-  </patch>
-  <patch id="layout.premium.hideGetPremiumPatch">
+
+  <!-- layout.premium.hideGetPremiumPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ocultar o rótulo \"Obter Music Premium\"</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Rótulo está oculto</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Rótulo está exibido</string>
-  </patch>
-  <patch id="layout.upgradebutton.hideUpgradeButtonPatch">
+
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ocultar botão de atualização</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Botão está oculto</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Botão está exibido</string>
-  </patch>
-  </app>
+
+
 </resources>
