@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">Over</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Advertenties</string>
+  <string name="morphe_settings_music_screen_2_general_title">Algemeen</string>
+  <string name="morphe_settings_music_screen_3_player_title">Speler</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Overige</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Videoadvertenties verbergen</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Videoadvertenties zijn verborgen</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Videoadvertenties worden weergegeven</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Permanent herhalen inschakelen</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Permanent herhalen is ingeschakeld</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Permanent herhalen is uitgeschakeld</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Cast-knop verbergen</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Cast-knop is verborgen</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Cast-knop is weergegeven</string>
+  <string name="morphe_music_hide_history_button_title">Geschiedenisknop verbergen</string>
+  <string name="morphe_music_hide_history_button_summary_on">Geschiedenisknop is verborgen</string>
+  <string name="morphe_music_hide_history_button_summary_off">Geschiedenisknop wordt weergegeven</string>
+  <string name="morphe_music_hide_notification_button_title">Meldingsknop verbergen</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Meldingsknop is verborgen</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Meldingsknop is weergegeven</string>
+  <string name="morphe_music_hide_search_button_title">Zoekknop verbergen</string>
+  <string name="morphe_music_hide_search_button_summary_on">Zoekknop is verborgen</string>
+  <string name="morphe_music_hide_search_button_summary_off">Zoekknop is weergegeven</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Categoriebalk verbergen</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Categoriebalk is verborgen</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Categoriebalk wordt weergegeven</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Wijzig miniplayerkleur</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayerkleur komt overeen met de volledigschermspeler</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer gebruikt standaardkleur</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Navigatiebalk</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Navigatiebalkknoppen verbergen of wijzigen</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Startpagina verbergen</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Startknop is verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Startknop wordt weergegeven</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Fragmenten verbergen</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Knop Voorbeelden is verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Knop Voorbeelden wordt weergegeven</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Verberg Ontdekken</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Knop Ontdekken is verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Knop Ontdekken wordt weergegeven</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Verberg Bibliotheek</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Knop Bibliotheek is verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Knop Bibliotheek wordt weergegeven</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Verberg Upgraden</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Upgrade-knop is verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Upgrade-knop wordt weergegeven</string>
+  <string name="morphe_music_hide_navigation_bar_title">Navigatiebalk verbergen</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Navigatiebalk is verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Navigatiebalk wordt weergegeven</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Labels van navigatieknoppen verbergen</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Labels zijn verborgen</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Labels worden weergegeven</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'Muziek Premium krijgen\' label verbergen</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Label is verborgen</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Label wordt weergegeven</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Upgrade-knop verbergen</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Knop is verborgen</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Knop wordt weergegeven</string>
+</resources>

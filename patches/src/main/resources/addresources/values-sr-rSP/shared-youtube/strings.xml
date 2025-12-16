@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Назив апликације</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_name_entry_5">Morphe минималистички</string>
+  <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
+  <string name="morphe_custom_branding_icon_entry_1">Оригинална</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_4">Morphe минималистички</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe обавештење</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша историја гледања се не чува.&lt;br&gt;&lt;br&gt;Ово је највероватније узроковано DNS блокатором огласа или мрежним проксијем.&lt;br&gt;&lt;br&gt;Да бисте ово поправили, ставите на белу листу &lt;b&gt;s.youtube.com&lt;/b&gt; или искључите све DNS блокаторе и проксије.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не приказуј поново</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Лажирани видео стримови</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Лажирање видео стримова клијента да би се спречили проблеми са репродукцијом</string>
+  <string name="morphe_spoof_video_streams_screen_title">Лажирани видео стримови</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Лажирање видео стримова клијента да би се спречили проблеми са репродукцијом</string>
+  <string name="morphe_spoof_video_streams_title">Лажирани видео стримови</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Видео стримови су лажирани
+
+Ако сте корисник YouTube Premium-а, ово подешавање можда неће бити потребно"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Видео стримови нису лажирани
+
+Репродукција можда неће радити"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Искључивање овог подешавања може изазвати проблеме са репродукцијом.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Подразумевани клијент</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Присили оригинални језик звука</string>
+  <string name="morphe_force_original_audio_summary_on">Коришћење оригиналног језика звука</string>
+  <string name="morphe_force_original_audio_summary_off">Коришћење подразумеваног звука</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Да бисте користили ову функцију, промените опцију „Лажирани видео стримови” на било који клијент осим Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Очисти дељене линкове</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Параметар упита за праћење је уклоњен из дељених линкова</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Параметар упита за праћење није уклоњен из дељених линкова</string>
+  <string name="morphe_replace_music_with_youtube_title">Промени линкове за дељење на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Дељени линкови користе youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Дељени линкови користе music.youtube.com</string>
+</resources>

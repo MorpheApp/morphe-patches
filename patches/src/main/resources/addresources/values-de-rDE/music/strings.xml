@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">Über</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Werbung</string>
+  <string name="morphe_settings_music_screen_2_general_title">Allgemein</string>
+  <string name="morphe_settings_music_screen_3_player_title">Spieler</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Sonstiges</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Videoanzeigen ausblenden</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Videoanzeigen sind ausgeblendet</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Videoanzeigen werden angezeigt</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Dauerwiederholung aktivieren</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Dauerwiederholung ist aktiviert</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Dauerwiederholung ist deaktiviert</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Übertragen-Taste ausblenden</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Übertragen-Taste ist ausgeblendet</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Übertragen-Taste wird angezeigt</string>
+  <string name="morphe_music_hide_history_button_title">Verlauf-Schaltfläche ausblenden</string>
+  <string name="morphe_music_hide_history_button_summary_on">Verlauf-Schaltfläche ist ausgeblendet</string>
+  <string name="morphe_music_hide_history_button_summary_off">Verlauf-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_notification_button_title">Benachrichtigungsschaltfläche ausblenden</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Benachrichtigungsschaltfläche wird ausgeblendet</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Benachrichtigungsschaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_search_button_title">Suchschaltfläche ausblenden</string>
+  <string name="morphe_music_hide_search_button_summary_on">Suchschaltfläche wird ausgeblendet</string>
+  <string name="morphe_music_hide_search_button_summary_off">Suchschaltfläche wird angezeigt</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Kategorieleiste ausblenden</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Kategorieleiste ist ausgeblendet</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Kategorieleiste wird angezeigt</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Miniplayer-Farbe ändern</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer-Farbe entspricht dem Vollbild-Player</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer verwendet Standardfarbe</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Navigationsleiste</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Navigationsleisten-Schaltflächen ausblenden oder ändern</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Startseite ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Start-Schaltfläche ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Start-Schaltfläche wird angezeigt</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Kurzvideos ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Samples-Schaltfläche ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Samples-Schaltfläche wird angezeigt</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Erkunden ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Entdecken-Schaltfläche ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Entdecken-Schaltfläche wird angezeigt</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Mediathek ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Mediathek-Schaltfläche ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Mediathek-Schaltfläche wird angezeigt</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Upgrade ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Upgrade-Schaltfläche ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Upgrade-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Navigationsleiste ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Navigationsleiste wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Beschriftungen der Navigationsschaltflächen ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Beschriftungen sind ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Beschriftungen werden angezeigt</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\"Music Premium holen\"-Label ausblenden</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Label ist ausgeblendet</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Label wird angezeigt</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Upgrade-Button ausblenden</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Button wird angezeigt</string>
+</resources>

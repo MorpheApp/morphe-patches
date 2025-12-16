@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Asetukset</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Haluatko varmasti jatkaa?</string>
+  <string name="morphe_settings_save">Tallenna</string>
+  <string name="morphe_settings_reset">Nollaa</string>
+  <string name="morphe_settings_reset_color">Nollaa väri</string>
+  <string name="morphe_settings_color_invalid">Virheellinen väri</string>
+  <string name="morphe_settings_restart_title">Uudelleenkäynnistys vaaditaan</string>
+  <string name="morphe_settings_restart_dialog_message">Käynnistä sovellus uudelleen, jotta muutos tulee voimaan.</string>
+  <string name="morphe_settings_restart">Käynnistä uudelleen</string>
+  <string name="morphe_settings_import">Tuo</string>
+  <string name="morphe_settings_import_copy">Kopioi</string>
+  <string name="morphe_settings_import_reset">Morphe-asetukset nollattiin</string>
+  <string name="morphe_settings_import_success">%d asetusta tuotiin</string>
+  <string name="morphe_settings_import_failure_parse">Tuonti epäonnistui: %s</string>
+  <string name="morphe_settings_search_hint">Hae asetuksista</string>
+  <string name="morphe_settings_search_no_results_title">Tuloksia ei löytynyt haulle \"%s\"</string>
+  <string name="morphe_settings_search_no_results_summary">Kokeile toista hakusanaa</string>
+  <string name="morphe_settings_search_recent_searches">Viimeisimmät haut</string>
+  <string name="morphe_settings_search_remove_message">Poistetaanko hakuhistoriasta?</string>
+  <string name="morphe_settings_search_clear_history">Tyhjennä hakuhistoria</string>
+  <string name="morphe_settings_search_clear_history_message">Haluatko varmasti tyhjentää kaiken hakuhistorian?</string>
+  <string name="morphe_settings_search_tips_title">Hakuvinkit</string>
+  <string name="morphe_settings_search_tips_summary">"• Napauta polkua siirtyäksesi siihen
+• Pidä asetusta painettuna siirtyäksesi siihen
+• Paina Enter-näppäintä tallentaaksesi hakukyselyn historiaan
+• Haku ei huomioi kirjainkokoa eikä välimerkkejä
+• Ylätason asetukset näkyvät käytöstä poistettujen ala-asetusten yläpuolella"</string>
+  <string name="morphe_settings_search_empty_history_title">Hakuhistoria on tyhjä</string>
+  <string name="morphe_settings_search_empty_history_summary">Tallennaaksesi hakuhistorian, kirjoita hakukysely ja paina Enter-näppäintä</string>
+  <string name="morphe_settings_search_history_title">Näytä asetusten hakuhistoria</string>
+  <string name="morphe_settings_search_history_summary_on">Asetusten hakuhistoria näytetään</string>
+  <string name="morphe_settings_search_history_summary_off">Asetusten hakuhistoriaa ei näytetä</string>
+  <string name="morphe_show_menu_icons_title">Näytä Morphe-asetuskuvakkeet</string>
+  <string name="morphe_show_menu_icons_summary_on">Asetuskuvakkeet näytetään</string>
+  <string name="morphe_show_menu_icons_summary_off">Asetuskuvakkeita ei näytetä</string>
+  <string name="morphe_language_title">Morphein kieli</string>
+  <string name="morphe_language_user_dialog_message">"Joidenkin kielten käännökset saattavat puuttua tai olla puutteellisia.
+
+Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä, vieraile osoitteessa translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">Sovelluksen kieli</string>
+  <string name="morphe_pref_import_export_title">Tuonti/vienti</string>
+  <string name="morphe_pref_import_export_summary">Tuo/vie Morphe-asetukset</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">Käytät Morphe Patchesin versiota &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_dev_header">Huomautus</string>
+  <string name="morphe_settings_about_links_dev_body">Tämä versio on ennakkojulkaisuversio, joten voit kokea odottamattomia ongelmia</string>
+  <string name="morphe_settings_about_links_header">Viralliset linkit</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Virheenkorjaus</string>
+  <string name="morphe_debug_screen_summary">Ota tai poista virheenkorjausasetukset käytöstä</string>
+  <string name="morphe_debug_title">Virheenkorjauksen kirjaaminen</string>
+  <string name="morphe_debug_summary_on">Virheenkorjauslokit ovat käytössä</string>
+  <string name="morphe_debug_summary_off">Virheenkorjauslokit eivät ole käytössä</string>
+  <string name="morphe_debug_stacktrace_title">Loki pinojäljet</string>
+  <string name="morphe_debug_stacktrace_summary_on">Vianetsintälokit sisältävät pinojäljet</string>
+  <string name="morphe_debug_stacktrace_summary_off">Vianetsintälokit eivät sisällä pinojälkiä</string>
+  <string name="morphe_debug_toast_on_error_title">Näytä ponnahdusilmoitus Morphe-virheen tapahtuessa</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Ponnahdusilmoitus näytetään virheen tapahtuessa</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Ponnahdusilmoitusta ei näytetä virheen tapahtuessa</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Virheilmoitusten poistaminen käytöstä piilottaa kaikki Morphein virheilmoitukset.
+
+Et saa ilmoituksia odottamattomista tapahtumista."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Vie virheenkorjauslokit</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopioi Morphein virheenkorjauslokit leikepöydälle</string>
+  <string name="morphe_debug_logs_disabled">Virheenkorjausloki ei ole käytössä</string>
+  <string name="morphe_debug_logs_none_found">Lokeja ei löytynyt</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Lokit kopioitu</string>
+  <string name="morphe_debug_logs_failed_to_export">Lokien vienti epäonnistui: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Tyhjennä virheenkorjauslokit</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Tyhjentää kaikki tallennetut Morphe-virheenkorjauslokit</string>
+  <string name="morphe_debug_logs_clear_toast">Lokit tyhjennetty</string>
+  <string name="morphe_debug_feature_flags_manager_title">Ominaisuuslippujen hallinta</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Hallitse totuusarvo-ominaisuuslippuja</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktiiviset liput (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Estetyt liput (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Hae lippuja...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Liput tallennettu</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Liput nollattu</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">GmsCore-asetukset</string>
+  <string name="microg_settings_summary">GmsCoren asetukset</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCorea ei ole asennettu. Asenna se.</string>
+  <string name="gms_core_dialog_title">Vaatii toimenpiteitä</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCorella ei ole lupaa pysyä käynnissä taustalla.
+
+Seuraa puhelimeesi sopivaa \"Don't kill my app\" -opasta ja sovella sen ohjeita MicroG-asennukseesi.
+
+Tämä on välttämätöntä sovelluksen toiminnalle."</string>
+  <string name="gms_core_dialog_open_website_text">Avaa verkkosivusto</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG GmsCoren akun optimoinnit on poistettava käytöstä ongelmien välttämiseksi.
+
+MicroG:n akun optimointien poistaminen käytöstä ei vaikuta akun käyttöön negatiivisesti.
+
+Napauta jatka-painiketta ja salli optimoinnin muutokset."</string>
+  <string name="gms_core_dialog_continue_text">Jatka</string>
+</resources>

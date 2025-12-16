@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">앱 이름</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_name_entry_5">Morphe 최소화</string>
+  <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
+  <string name="morphe_custom_branding_icon_entry_1">원본</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_4">Morphe 최소화</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">다시 보지 않기</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">동영상 스트림 변경하기</string>
+  <string name="morphe_spoof_video_streams_screen_summary">클라이언트 동영상 스트림을 변경하여 재생 문제를 방지할 수 있습니다</string>
+  <string name="morphe_spoof_video_streams_screen_title">동영상 스트림 변경하기</string>
+  <string name="morphe_spoof_video_streams_screen_summary">클라이언트 동영상 스트림을 변경하여 재생 문제를 방지할 수 있습니다</string>
+  <string name="morphe_spoof_video_streams_title">동영상 스트림 변경하기</string>
+  <string name="morphe_spoof_video_streams_summary_on">"동영상 스트림를 변경합니다
+
+YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니다"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"동영상 스트림을 변경하지 않습니다
+
+재생 문제가 발생할 수 있습니다"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">원본 오디오 언어 강제로 활성화하기</string>
+  <string name="morphe_force_original_audio_summary_on">원본 오디오 언어를 사용 중입니다</string>
+  <string name="morphe_force_original_audio_summary_off">기본 오디오 언어를 사용 중입니다</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">이 기능을 사용하려면, \'동영상 스트림 변경하기\'에서 기본 클라이언트를 Android Studio를 제외한 다른 클라이언트로 변경하세요</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">추적 쿼리를 제거한 링크 공유하기</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">링크를 공유할 경우에 URL에서 추적 쿼리 매개변수를 삭제합니다</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">링크를 공유할 경우에 URL에서 추적 쿼리 매개변수를 삭제하지 않습니다</string>
+  <string name="morphe_replace_music_with_youtube_title">공유 링크를 youtube.com으로 변경하기</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">공유 링크를 youtube.com으로 사용합니다</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">공유 링크를 music.youtube.com으로 사용합니다</string>
+</resources>

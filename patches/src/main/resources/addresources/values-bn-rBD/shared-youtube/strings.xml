@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">অ্যাপের নাম</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">অ্যাপ আইকন</string>
+  <string name="morphe_custom_branding_icon_entry_1">মূল</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe নোটিশ</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">আবার দেখাবেন না</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">ভিডিও স্ট্রিম স্পুফ করুন</string>
+  <string name="morphe_spoof_video_streams_screen_summary">প্লেব্যাক সংক্রান্ত সমস্যা রোধ করতে ক্লায়েন্টের ভিডিও স্ট্রিমগুলি স্পুফ করুন</string>
+  <string name="morphe_spoof_video_streams_title">ভিডিও স্ট্রিমিং স্পুফ করুন</string>
+  <string name="morphe_spoof_video_streams_summary_on">"ভিডিও স্ট্রিম স্পুফ করা হয়েছে
+
+আপনি যদি YouTube Premium ব্যবহারকারী হন, তাহলে এই সেটিংটির প্রয়োজন নাও হতে পারে"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"ভিডিও স্ট্রিম স্পুফ করা হয়নি
+
+প্লেব্যাক কাজ নাও করতে পারে"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
+  <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
+  <string name="morphe_force_original_audio_summary_on">মূল অডিও ভাষা ব্যবহার করা হচ্ছে</string>
+  <string name="morphe_force_original_audio_summary_off">ডিফল্ট অডিও ব্যবহার করছে</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' অ্যান্ড্রয়েড স্টুডিও ছাড়া অন্য কোনো ক্লায়েন্টে পরিবর্তন করুন</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">শেয়ারিং লিঙ্ক স্যানিটাইজ করুন</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়েছে</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়নি</string>
+  <string name="morphe_replace_music_with_youtube_title">শেয়ার লিঙ্কগুলি youtube.com-এ পরিবর্তন করুন</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">শেয়ার করা লিঙ্কগুলি youtube.com ব্যবহার করে</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">শেয়ার করা লিঙ্কগুলি music.youtube.com ব্যবহার করে</string>
+</resources>

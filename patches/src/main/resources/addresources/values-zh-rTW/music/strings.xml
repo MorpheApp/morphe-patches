@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">關於</string>
+  <string name="morphe_settings_music_screen_1_ads_title">廣告</string>
+  <string name="morphe_settings_music_screen_2_general_title">一般</string>
+  <string name="morphe_settings_music_screen_3_player_title">播放器</string>
+  <string name="morphe_settings_music_screen_4_misc_title">其他</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">隱藏影片廣告</string>
+  <string name="morphe_music_hide_video_ads_summary_on">影片廣告已隱藏</string>
+  <string name="morphe_music_hide_video_ads_summary_off">影片廣告已顯示</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">啟用永久重複播放</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">永久重複播放已啟用</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">永久重複播放已停用</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">隱藏「投放」按鈕</string>
+  <string name="morphe_music_hide_cast_button_summary_on">「投放」按鈕已隱藏</string>
+  <string name="morphe_music_hide_cast_button_summary_off">「投放」按鈕已顯示</string>
+  <string name="morphe_music_hide_history_button_title">隱藏「歷史記錄」按鈕</string>
+  <string name="morphe_music_hide_history_button_summary_on">「歷史記錄」按鈕已隱藏</string>
+  <string name="morphe_music_hide_history_button_summary_off">「歷史記錄」按鈕已顯示</string>
+  <string name="morphe_music_hide_notification_button_title">隱藏「通知」按鈕</string>
+  <string name="morphe_music_hide_notification_button_summary_on">「通知」按鈕已隱藏</string>
+  <string name="morphe_music_hide_notification_button_summary_off">「通知」按鈕已顯示</string>
+  <string name="morphe_music_hide_search_button_title">隱藏「搜尋」按鈕</string>
+  <string name="morphe_music_hide_search_button_summary_on">「搜尋」按鈕已隱藏</string>
+  <string name="morphe_music_hide_search_button_summary_off">「搜尋」按鈕已顯示</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">隱藏類別列</string>
+  <string name="morphe_music_hide_category_bar_summary_on">類別列已隱藏</string>
+  <string name="morphe_music_hide_category_bar_summary_off">類別列已顯示</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">變更迷你播放器顏色</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">迷你播放器顏色符合全螢幕播放器</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">迷你播放器使用預設顏色</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">導覽列</string>
+  <string name="morphe_music_navigation_bar_screen_summary">隱藏或變更導覽列按鈕</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">隱藏「首頁」</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">「首頁」按鈕已隱藏</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">「首頁」按鈕已顯示</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">隱藏「取樣」</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">「取樣」按鈕已隱藏</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">「取樣」按鈕已顯示</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">隱藏探索</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">「探索」按鈕已隱藏</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">「探索」按鈕已顯示</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">隱藏媒體庫</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">「媒體庫」按鈕已隱藏</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">「媒體庫」按鈕已顯示</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">隱藏升級</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">「升級」按鈕已隱藏</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">「升級」按鈕已顯示</string>
+  <string name="morphe_music_hide_navigation_bar_title">隱藏導覽列</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">導覽列已隱藏</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">導覽列已顯示</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">隱藏導覽按鈕標籤</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">已隱藏「標籤」</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">已顯示「標籤」</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">隱藏「取得 Music Premium」標籤</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">標籤已隱藏</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">標籤已顯示</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">隱藏升級按鈕</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">按鈕已隱藏</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">按鈕已顯示</string>
+</resources>

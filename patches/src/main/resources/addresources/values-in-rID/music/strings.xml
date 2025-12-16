@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Iklan</string>
+  <string name="morphe_settings_music_screen_2_general_title">Umum</string>
+  <string name="morphe_settings_music_screen_3_player_title">Pemutar</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Lain-lain</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Sembunyikan iklan video</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Iklan video disembunyikan</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Iklan video ditampilkan</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Aktifkan pengulangan permanen</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Pengulangan permanen diaktifkan</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Pengulangan permanen dinonaktifkan</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Tombol transmisi disembunyikan</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Tombol transmisi ditampilkan</string>
+  <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
+  <string name="morphe_music_hide_history_button_summary_on">Tombol Riwayat disembunyikan</string>
+  <string name="morphe_music_hide_history_button_summary_off">Tombol Riwayat ditampilkan</string>
+  <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol notifikasi</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Tombol notifikasi disembunyikan</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Tombol notifikasi ditampilkan</string>
+  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol pencarian</string>
+  <string name="morphe_music_hide_search_button_summary_on">Tombol pencarian disembunyikan</string>
+  <string name="morphe_music_hide_search_button_summary_off">Tombol pencarian ditampilkan</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Sembunyikan bilah kategori</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Bilah kategori disembunyikan</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Bilah kategori ditampilkan</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Ubah warna pemutar mini</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Warna pemutar mini sesuai dengan pemutar layar penuh</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Pemutar mini menggunakan warna standar</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Bilah navigasi</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Sembunyikan atau ubah tombol bilah navigasi</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Sembunyikan Beranda</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Tombol Beranda disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Tombol Beranda ditampilkan</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Sembunyikan Sampel</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Tombol Sampel disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Tombol Sampel ditampilkan</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Sembunyikan Jelajahi</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Tombol Jelajahi disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Tombol Jelajahi ditampilkan</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Sembunyikan Pustaka</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Tombol Pustaka disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Tombol Pustaka ditampilkan</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Sembunyikan Upgrade</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Tombol Upgrade disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Tombol Upgrade ditampilkan</string>
+  <string name="morphe_music_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Bilah navigasi disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Bilah navigasi ditampilkan</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Sembunyikan label tombol navigasi</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Label disembunyikan</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Label ditampilkan</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Sembunyikan label \'Dapatkan Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Label disembunyikan</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Label ditampilkan</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Sembunyikan tombol Upgrade</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Tombol disembunyikan</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Tombol ditampilkan</string>
+</resources>

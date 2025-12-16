@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Configurações</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Tem certeza de que deseja prosseguir?</string>
+  <string name="morphe_settings_save">Salvar</string>
+  <string name="morphe_settings_reset">Repor</string>
+  <string name="morphe_settings_reset_color">Redefinir cor</string>
+  <string name="morphe_settings_color_invalid">Cor inválida</string>
+  <string name="morphe_settings_restart_title">Reinicialização necessária</string>
+  <string name="morphe_settings_restart_dialog_message">Reinicie o aplicativo para que esta alteração entre em vigor.</string>
+  <string name="morphe_settings_restart">Reiniciar</string>
+  <string name="morphe_settings_import">Importar</string>
+  <string name="morphe_settings_import_copy">Copiar</string>
+  <string name="morphe_settings_import_reset">As definições do Morphe foram redefinidas para a predefinição</string>
+  <string name="morphe_settings_import_success">Configurações importadas: %d</string>
+  <string name="morphe_settings_import_failure_parse">A importação falhou: %s</string>
+  <string name="morphe_settings_search_hint">Configurações de pesquisa</string>
+  <string name="morphe_settings_search_no_results_title">Nenhum resultado encontrado para \"%s\"</string>
+  <string name="morphe_settings_search_no_results_summary">Tente outra palavra-chave</string>
+  <string name="morphe_settings_search_recent_searches">Pesquisas recentes</string>
+  <string name="morphe_settings_search_remove_message">Remover do histórico de pesquisa?</string>
+  <string name="morphe_settings_search_clear_history">Limpar histórico de pesquisa</string>
+  <string name="morphe_settings_search_clear_history_message">Tem certeza de que deseja limpar todo o histórico de pesquisa?</string>
+  <string name="morphe_settings_search_tips_title">Dicas de Pesquisa</string>
+  <string name="morphe_settings_search_tips_summary">"• Toque em um caminho para navegar até ele
+• Pressione e segure uma configuração para navegar até ela
+• Pressione Enter para salvar uma consulta de pesquisa no histórico
+• A pesquisa ignora maiúsculas/minúsculas e pontuação
+• As configurações pai aparecem acima das configurações filho desativadas"</string>
+  <string name="morphe_settings_search_empty_history_title">O histórico de pesquisa está vazio</string>
+  <string name="morphe_settings_search_empty_history_summary">Para salvar o histórico de pesquisa, digite uma consulta de pesquisa e pressione Enter</string>
+  <string name="morphe_settings_search_history_title">Mostrar histórico de pesquisa de configurações</string>
+  <string name="morphe_settings_search_history_summary_on">O histórico de pesquisa de configurações é exibido</string>
+  <string name="morphe_settings_search_history_summary_off">O histórico de pesquisa de configurações não é exibido</string>
+  <string name="morphe_show_menu_icons_title">Mostrar ícones de configuração do Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Os ícones de configuração são mostrados</string>
+  <string name="morphe_show_menu_icons_summary_off">Os ícones de configuração não são mostrados</string>
+  <string name="morphe_language_title">Idioma do Morphe</string>
+  <string name="morphe_language_user_dialog_message">"As traduções para alguns idiomas podem estar ausentes ou incompletas.
+
+Para traduzir novos idiomas ou melhorar as traduções existentes, visite translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">Idioma da aplicação</string>
+  <string name="morphe_pref_import_export_title">Importar / Exportar</string>
+  <string name="morphe_pref_import_export_summary">Importar / Exportar as configurações do Morphe</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">Está a utilizar a versão Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_dev_header">Observação</string>
+  <string name="morphe_settings_about_links_dev_body">Esta versão está em pré-lançamento e poderá ter problemas inesperados</string>
+  <string name="morphe_settings_about_links_header">Links oficiais</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Depuração</string>
+  <string name="morphe_debug_screen_summary">Ativar ou desativar opções de depuração</string>
+  <string name="morphe_debug_title">Registo da depuração</string>
+  <string name="morphe_debug_summary_on">Os registos da depuração estão ativados</string>
+  <string name="morphe_debug_summary_off">Os registos da depuração estão desativados</string>
+  <string name="morphe_debug_stacktrace_title">Pilha de registos</string>
+  <string name="morphe_debug_stacktrace_summary_on">Os registos da depuração incluem stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_off">Os registos da depuração não incluem stack trace</string>
+  <string name="morphe_debug_toast_on_error_title">Mostrar toast com erro de Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">O toast é exibido se ocorrer um erro</string>
+  <string name="morphe_debug_toast_on_error_summary_off">O toast não é exibido se ocorrer um erro</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"A desativação dos erros toasts oculta todas as notificações de erro do Morphe.
+
+Não será notificado de quaisquer eventos inesperados."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar registos de depuração</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia os registos de depuração do Morphe para a área de transferência</string>
+  <string name="morphe_debug_logs_disabled">O registo de depuração está desativado</string>
+  <string name="morphe_debug_logs_none_found">Nenhum registo encontrado</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Registos copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Falha ao exportar registros: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Limpar registos de depuração</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Limpa todos os registos de depuração do Morphe armazenados</string>
+  <string name="morphe_debug_logs_clear_toast">Registos limpos</string>
+  <string name="morphe_debug_feature_flags_manager_title">Manager de sinalizadores de recurso</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recurso booleanos</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Sinalizadores ativos (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Sinalizadores bloqueados (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar sinalizadores...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores salvos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores redefinidos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores copiados para a área de transferência</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">Configurações do GmsCore</string>
+  <string name="microg_settings_summary">Configurações para GmsCore</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore não está instalado. Instala-o.</string>
+  <string name="gms_core_dialog_title">Ação necessária</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"O MicroG GmsCore não tem permissão para ser executado em segundo plano.
+
+Siga o guia “Não feche a minha aplicação” do seu telemóvel e aplique as instruções à instalação do MicroG.
+
+Isto é necessário para que a aplicação funcione."</string>
+  <string name="gms_core_dialog_open_website_text">Abrir site</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"As otimizações de bateria do MicroG GmsCore devem ser desativadas para evitar problemas.
+
+A desativação das otimizações de bateria para o MicroG não afetará negativamente o uso da bateria.
+
+Toque no botão continuar e permita as alterações de otimização."</string>
+  <string name="gms_core_dialog_continue_text">Continuar</string>
+</resources>

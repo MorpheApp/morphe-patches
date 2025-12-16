@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Nome dell\'app</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_name_entry_5">Morphe minimale</string>
+  <string name="morphe_custom_branding_icon_title">Icona dell\'app</string>
+  <string name="morphe_custom_branding_icon_entry_1">Originale</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_4">Morphe minimale</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Avviso Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">La tua cronologia di visualizzazione non sta venendo salvata.&lt;br&gt;&lt;br&gt;Questo è molto probabilmente causato da un blocco annunci DNS o da un proxy di rete.&lt;br&gt;&lt;br&gt;Per risolvere, inserisci nella whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; o disattiva tutti i blocchi DNS e proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Non mostrare più</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Falsifica i flussi video</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Falsifica i flussi video del client per prevenire problemi di riproduzione</string>
+  <string name="morphe_spoof_video_streams_screen_title">Falsifica i flussi video</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Falsifica i flussi video del client per prevenire problemi di riproduzione</string>
+  <string name="morphe_spoof_video_streams_title">Simula il client del flusso video</string>
+  <string name="morphe_spoof_video_streams_summary_on">"I flussi video sono falsificati
+
+Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necessaria"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"I flussi video non sono falsificati
+
+La riproduzione potrebbe non funzionare"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Client predefinito</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Forza la lingua audio originale</string>
+  <string name="morphe_force_original_audio_summary_on">Utilizza la lingua audio originale</string>
+  <string name="morphe_force_original_audio_summary_off">Utilizzo audio predefinito</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Per usare questa funzionalità, cambia \"Falsifica i flussi video\" a qualsiasi client eccetto Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Il parametro di query di tracciamento viene rimosso dai collegamenti condivisi</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Il parametro di query di tracciamento non viene rimosso dai collegamenti condivisi</string>
+  <string name="morphe_replace_music_with_youtube_title">Cambia i link di condivisione in youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">I link condivisi usano youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">I link condivisi usano music.youtube.com</string>
+</resources>

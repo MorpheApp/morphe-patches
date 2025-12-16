@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Podešavanja</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Želite li zaista da nastavite?</string>
+  <string name="morphe_settings_save">Sačuvaj</string>
+  <string name="morphe_settings_reset">Resetuj</string>
+  <string name="morphe_settings_reset_color">Resetuj boju</string>
+  <string name="morphe_settings_color_invalid">Nevažeća boja</string>
+  <string name="morphe_settings_restart_title">Potrebno je restartovanje</string>
+  <string name="morphe_settings_restart_dialog_message">Restartujte aplikaciju da bi ova promena stupila na snagu.</string>
+  <string name="morphe_settings_restart">Restartuj</string>
+  <string name="morphe_settings_import">Uvoz</string>
+  <string name="morphe_settings_import_copy">Kopiraj</string>
+  <string name="morphe_settings_import_reset">Podešavanja Morphea su vraćena na podrazumevane vrednosti</string>
+  <string name="morphe_settings_import_success">Uvezeno %d podešavanja</string>
+  <string name="morphe_settings_import_failure_parse">Neuspešan uvoz: %s</string>
+  <string name="morphe_settings_search_hint">Pretraži podešavanja</string>
+  <string name="morphe_settings_search_no_results_title">Nisu pronađeni rezultati za „%s”</string>
+  <string name="morphe_settings_search_no_results_summary">Pokušajte sa drugom ključnom reči</string>
+  <string name="morphe_settings_search_recent_searches">Nedavne pretrage</string>
+  <string name="morphe_settings_search_remove_message">Ukloniti iz istorije pretrage?</string>
+  <string name="morphe_settings_search_clear_history">Očisti istoriju pretrage</string>
+  <string name="morphe_settings_search_clear_history_message">Želite li zaista da očistite celu istoriju pretrage?</string>
+  <string name="morphe_settings_search_tips_title">Saveti za pretragu</string>
+  <string name="morphe_settings_search_tips_summary">"• Dodirnite putanju da biste došli do nje
+• Dugo dodirnite podešavanje da biste došli do njega
+• Pritisnite Enter da biste sačuvali upit za pretragu u istoriju
+• Pretraga zanemaruje velika i mala slova i interpunkciju
+• Roditeljska podešavanja se prikazuju iznad onemogućenih dečjih podešavanja"</string>
+  <string name="morphe_settings_search_empty_history_title">Istorija pretrage je prazna</string>
+  <string name="morphe_settings_search_empty_history_summary">Da biste sačuvali istoriju pretrage, unesite upit za pretragu i pritisnite Enter</string>
+  <string name="morphe_settings_search_history_title">Prikaži istoriju pretrage podešavanja</string>
+  <string name="morphe_settings_search_history_summary_on">Istorija pretrage podešavanja je prikazana</string>
+  <string name="morphe_settings_search_history_summary_off">Istorija pretrage podešavanja nije prikazana</string>
+  <string name="morphe_show_menu_icons_title">Prikaži ikonice podešavanja Morphea</string>
+  <string name="morphe_show_menu_icons_summary_on">Ikonice podešavanja su prikazane</string>
+  <string name="morphe_show_menu_icons_summary_off">Ikonice podešavanja nisu prikazane</string>
+  <string name="morphe_language_title">Jezik Morphea</string>
+  <string name="morphe_language_user_dialog_message">"Prevodi za neke jezike mogu nedostajati ili biti nepotpuni.
+
+Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
+  <string name="morphe_pref_import_export_title">Uvoz / Izvoz</string>
+  <string name="morphe_pref_import_export_summary">Uvoz / Izvoz podešavanja Morphea</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">Koristite verziju &lt;i&gt;%s&lt;/i&gt; Morphe pečeva</string>
+  <string name="morphe_settings_about_links_dev_header">Napomena</string>
+  <string name="morphe_settings_about_links_dev_body">Ova verzija je predizdanje i možda ćete imati neočekivane probleme</string>
+  <string name="morphe_settings_about_links_header">Zvanični linkovi</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Otklanjanje grešaka</string>
+  <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije za otklanjanje grešaka</string>
+  <string name="morphe_debug_title">Evidentiranje otklanjanja grešaka</string>
+  <string name="morphe_debug_summary_on">Evidencije otklanjanja grešaka su omogućene</string>
+  <string name="morphe_debug_summary_off">Evidencije otklanjanja grešaka su onemogućene</string>
+  <string name="morphe_debug_stacktrace_title">Evidentiranje praćenja steka</string>
+  <string name="morphe_debug_stacktrace_summary_on">Evidencije otklanjanja grešaka sadrže praćenje steka</string>
+  <string name="morphe_debug_stacktrace_summary_off">Evidencije otklanjanja grešaka ne sadrže praćenje steka</string>
+  <string name="morphe_debug_toast_on_error_title">Prikaži iskačuće obaveštenje pri grešci s Morpheom</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Iskačuće obaveštenje je prikazano, ako dođe do greške</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Iskačuće obaveštenje nije prikazano, ako dođe do greške</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Isključivanje iskačućih obaveštenja o greškama sakriva sve obaveštenja o greškama u Morpheu.
+
+Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Izvezi evidencije otklanjanja grešaka</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopira evidencije otklanjanja grešaka Morphea u privremenu memoriju</string>
+  <string name="morphe_debug_logs_disabled">Evidentiranje otklanjanja grešaka je onemogućeno</string>
+  <string name="morphe_debug_logs_none_found">Nema pronađenih evidencija</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Evidencije su kopirane</string>
+  <string name="morphe_debug_logs_failed_to_export">Neuspešan izvoz evidencija: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Izbriši evidencije otklanjanja grešaka</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Briše sve sačuvane evidencije otklanjanja grešaka Morphea</string>
+  <string name="morphe_debug_logs_clear_toast">Evidencije su izbrisane</string>
+  <string name="morphe_debug_feature_flags_manager_title">Feature flags Manager</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Upravljajte bulovim zastavicama funkcija</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktivne zastavice (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane zastavice (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Pretraži zastavice...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice sačuvane</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice resetovane</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice kopirane u međumemoriju</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">Podešavanja GmsCorea</string>
+  <string name="microg_settings_summary">Podešavanja za GmsCore</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore nije instaliran. Instalirajte ga.</string>
+  <string name="gms_core_dialog_title">Neophodna radnja</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore nema dozvolu za rad u pozadini.
+
+Pratite uputstvo „Don't kill my app” za vaš telefon i primenite uputstva na vašu MicroG instalaciju.
+
+Ovo je neophodno za rad aplikacije."</string>
+  <string name="gms_core_dialog_open_website_text">Otvori veb-sajt</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimizacije baterije za MicroG GmsCore moraju biti onemogućene da bi se sprečili problemi.
+
+Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potrošnju baterije.
+
+Dodirnite dugme „Nastavi” i dozvolite promene optimizacije."</string>
+  <string name="gms_core_dialog_continue_text">Nastavi</string>
+</resources>

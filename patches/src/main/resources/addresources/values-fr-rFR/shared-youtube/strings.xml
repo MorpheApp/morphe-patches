@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Nom de l\'application</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Icône de l\'application</string>
+  <string name="morphe_custom_branding_icon_entry_1">Originale</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Avis Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Les vidéos que vous regardez ne sont pas enregistrées dans votre historique.&lt;br&gt;&lt;br&gt;La cause la plus probable est l\'utilisation d\'un serveur DNS bloqueur de publicités ou d\'un proxy.&lt;br&gt;&lt;br&gt;Pour résoudre ce problème, autorisez l\'accès à &lt;b&gt;s.youtube.com&lt;/b&gt; ou désactivez tous vos bloqueurs DNS et proxys.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne plus afficher</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Falsifier les flux vidéo</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Falsifiez les flux vidéo client pour éviter les problèmes de lecture</string>
+  <string name="morphe_spoof_video_streams_title">Falsifier les flux vidéo</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Les flux vidéo sont falsifiés
+
+Si vous êtes abonné à YouTube Premium, ce paramètre n'est peut-être pas nécessaire"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Les flux vidéo ne sont pas falsifiés
+
+Il est possible que la lecture ne fonctionne pas"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">La désactivation de ce paramètre peut entraîner des problèmes de lecture.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Client par défaut</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Forcer la langue audio d\'origine</string>
+  <string name="morphe_force_original_audio_summary_on">Utilisation de la langue audio d\'origine</string>
+  <string name="morphe_force_original_audio_summary_off">Utilisation de l\'audio par défaut</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Pour utiliser cette fonctionnalité, définissez \"Falsifier les flux vidéo\" sur n\'importe quel client, sauf Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Nettoyer les liens de partage</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Le paramètre de requête dédié au suivi est supprimé des liens partagés</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Le paramètre de requête dédié au suivi n\'est pas supprimé des liens partagés</string>
+  <string name="morphe_replace_music_with_youtube_title">Utiliser youtube.com dans les liens partagés</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Les liens partagés utilisent youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Les liens partagés utilisent music.youtube.com</string>
+</resources>

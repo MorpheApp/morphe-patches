@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Ayarlar</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Devam etmek istediğinizden emin misiniz?</string>
+  <string name="morphe_settings_save">Kaydet</string>
+  <string name="morphe_settings_reset">Sıfırla</string>
+  <string name="morphe_settings_reset_color">Rengi sıfırla</string>
+  <string name="morphe_settings_color_invalid">Geçersiz renk</string>
+  <string name="morphe_settings_restart_title">Yeniden başlatma gerekli</string>
+  <string name="morphe_settings_restart_dialog_message">Bu değişikliğin etkili olması için uygulamayı yeniden başlatın.</string>
+  <string name="morphe_settings_restart">Yeniden başlat</string>
+  <string name="morphe_settings_import">İçe aktar</string>
+  <string name="morphe_settings_import_copy">Kopyala</string>
+  <string name="morphe_settings_import_reset">Morphe ayarları varsayılanlara sıfırlandı</string>
+  <string name="morphe_settings_import_success">%d ayar içe aktarıldı</string>
+  <string name="morphe_settings_import_failure_parse">İçe aktarılamadı: %s</string>
+  <string name="morphe_settings_search_hint">Ayarları ara</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\' için sonuç bulunamadı</string>
+  <string name="morphe_settings_search_no_results_summary">Başka bir anahtar kelime deneyin</string>
+  <string name="morphe_settings_search_recent_searches">Son aramalar</string>
+  <string name="morphe_settings_search_remove_message">Arama geçmişinden kaldırılsın mı?</string>
+  <string name="morphe_settings_search_clear_history">Arama geçmişini temizle</string>
+  <string name="morphe_settings_search_clear_history_message">Tüm arama geçmişini temizlemek istediğinizden emin misiniz?</string>
+  <string name="morphe_settings_search_tips_title">Arama İpuçları</string>
+  <string name="morphe_settings_search_tips_summary">"• Bir yola gitmek için ona dokunun
+• Bir ayara gitmek için üzerine uzun basın
+• Bir arama sorgusunu geçmişe kaydetmek için Enter'a basın
+• Arama, büyük/küçük harf ve noktalama işaretlerini dikkate almaz
+• Ana ayarlar, devre dışı bırakılmış alt ayarların üzerinde görünür"</string>
+  <string name="morphe_settings_search_empty_history_title">Arama geçmişi boş</string>
+  <string name="morphe_settings_search_empty_history_summary">Arama geçmişini kaydetmek için bir arama sorgusu yazın ve Enter\'a basın</string>
+  <string name="morphe_settings_search_history_title">Ayarlar arama geçmişini göster</string>
+  <string name="morphe_settings_search_history_summary_on">Ayarlar arama geçmişi gösteriliyor</string>
+  <string name="morphe_settings_search_history_summary_off">Ayarlar arama geçmişi gösterilmiyor</string>
+  <string name="morphe_show_menu_icons_title">Morphe ayar simgelerini göster</string>
+  <string name="morphe_show_menu_icons_summary_on">Ayar simgeleri gösteriliyor</string>
+  <string name="morphe_show_menu_icons_summary_off">Ayar simgeleri gösterilmiyor</string>
+  <string name="morphe_language_title">Morphe dili</string>
+  <string name="morphe_language_user_dialog_message">"Bazı diller için çeviriler eksik veya tamamlanmamış olabilir.
+
+Yeni dilleri çevirmek veya mevcut çevirileri geliştirmek için translate.morphe.software adresini ziyaret edin."</string>
+  <string name="morphe_language_DEFAULT">Uygulama dili</string>
+  <string name="morphe_pref_import_export_title">İçe / Dışa aktar</string>
+  <string name="morphe_pref_import_export_summary">Morphe ayarlarını içe / dışa aktar</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">Morphe Patches &lt;i&gt;%s&lt;/i&gt; sürümünü kullanıyorsunuz</string>
+  <string name="morphe_settings_about_links_dev_header">Not</string>
+  <string name="morphe_settings_about_links_dev_body">Bu sürüm bir ön sürümdür ve beklenmeyen sorunlar yaşayabilirsiniz</string>
+  <string name="morphe_settings_about_links_header">Resmî bağlantılar</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Hata ayıklama</string>
+  <string name="morphe_debug_screen_summary">Hata ayıklama seçeneklerini etkinleştir veya devre dışı bırak</string>
+  <string name="morphe_debug_title">Hata ayıklama kayıtları</string>
+  <string name="morphe_debug_summary_on">Hata ayıklama kayıtları etkin</string>
+  <string name="morphe_debug_summary_off">Hata ayıklama kayıtları devre dışı</string>
+  <string name="morphe_debug_stacktrace_title">Stack traces\'in kaydını tut</string>
+  <string name="morphe_debug_stacktrace_summary_on">Hata ayıklama kayıtları stack traces\'i içerir</string>
+  <string name="morphe_debug_stacktrace_summary_off">Hata ayıklama kayıtları stack traces\'i içermez</string>
+  <string name="morphe_debug_toast_on_error_title">Morphe hatası durumunda uyarı göster</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Hata oluşursa uyarı gösterilir</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Hata oluşursa uyarı gösterilmez</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Hata bildirimlerini kapatmak, tüm Morphe hata bildirimlerini gizler.
+
+Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Hata ayıklama kayıtlarını dışa aktar</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe hata ayıklama kayıtlarını panoya kopyalar</string>
+  <string name="morphe_debug_logs_disabled">Hata ayıklama kayıtları devre dışı</string>
+  <string name="morphe_debug_logs_none_found">Kayıt bulunamadı</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Kayıtlar kopyalandı</string>
+  <string name="morphe_debug_logs_failed_to_export">Kayıtlar dışa aktarılamadı: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Hata ayıklama kayıtlarını temizle</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Kaydedilmiş tüm Morphe hata ayıklama kayıtlarını temizler</string>
+  <string name="morphe_debug_logs_clear_toast">Kayıtlar temizlendi</string>
+  <string name="morphe_debug_feature_flags_manager_title">Özellik işaretçileri yöneticisi</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Boolean özellik işaretçilerini yönet</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktif işaretçiler (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Engellenen işaretçiler (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">İşaretçileri ara...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">İşaretçiler kaydedildi</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">İşaretçiler sıfırlandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">İşaretçiler panoya kopyalandı</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">GmsCore Ayarları</string>
+  <string name="microg_settings_summary">GmsCore için ayarlar</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore yüklü değil. Yükleyin.</string>
+  <string name="gms_core_dialog_title">Eylem gerekli</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore'nin arka planda çalışma izni yok.
+
+Telefonunuz için \"Don't kill my app\" rehberini takip edin ve talimatları MicroG kurulumunuza uygulayın.
+
+Bu, uygulamanın çalışması için gereklidir."</string>
+  <string name="gms_core_dialog_open_website_text">Websitesini aç</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Sorunları önlemek için MicroG GmsCore pil optimizasyonları devre dışı bırakılmalıdır.
+
+MicroG için pil optimizasyonlarını devre dışı bırakmak, pil kullanımını olumsuz etkilemeyecektir.
+
+Devam düğmesine dokunun ve optimizasyon değişikliklerine izin verin."</string>
+  <string name="gms_core_dialog_continue_text">Devam et</string>
+</resources>

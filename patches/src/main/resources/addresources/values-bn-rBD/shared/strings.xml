@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">সেটিংস</string>
+  <string name="morphe_settings_confirm_user_dialog_title">আপনি কি এগিয়ে যেতে চান?</string>
+  <string name="morphe_settings_save">সংরক্ষণ করুন</string>
+  <string name="morphe_settings_reset">আবার সেট করুন</string>
+  <string name="morphe_settings_reset_color">রঙ রিসেট করুন</string>
+  <string name="morphe_settings_color_invalid">অবৈধ রঙ</string>
+  <string name="morphe_settings_restart_title">পুনরায় আরম্ভ করা আবশ্যক</string>
+  <string name="morphe_settings_restart_dialog_message">এই পরিবর্তন কার্যকর করার জন্য অ্যাপটি পুনরায় চালু করুন।</string>
+  <string name="morphe_settings_restart">আবার চালু করুন</string>
+  <string name="morphe_settings_import">আমদানি করুন</string>
+  <string name="morphe_settings_import_copy">অনুলিপি করুন</string>
+  <string name="morphe_settings_import_reset">Morphe সেটিং ডিফল্ট সেট করা হয়েছে</string>
+  <string name="morphe_settings_import_success">%d সেটিং আমদানি হয়েছে</string>
+  <string name="morphe_settings_import_failure_parse">আমদানি করা যায়নি: %s</string>
+  <string name="morphe_settings_search_hint">অনুসন্ধান সেটিংস</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\'-এর জন্য কোন ফলাফল পাওয়া যায়নি</string>
+  <string name="morphe_settings_search_no_results_summary">অন্য কোনো কীওয়ার্ড চেষ্টা করুন</string>
+  <string name="morphe_settings_search_recent_searches">সাম্প্রতিক অনুসন্ধানগুলি</string>
+  <string name="morphe_settings_search_remove_message">অনুসন্ধান ইতিহাস থেকে সরাবেন?</string>
+  <string name="morphe_settings_search_clear_history">অনুসন্ধানের ইতিহাস মুছুন</string>
+  <string name="morphe_settings_search_clear_history_message">আপনি কি আপনার সমস্ত অনুসন্ধানের ইতিহাস মুছে ফেলতে চান?</string>
+  <string name="morphe_settings_search_tips_title">অনুসন্ধানের টিপস</string>
+  <string name="morphe_settings_search_tips_summary">"• এটিতে নেভিগেট করতে একটি পাথে ট্যাপ করুন
+• এটিতে নেভিগেট করতে একটি সেটিং-এ লং-প্রেস করুন
+• অনুসন্ধানের প্রশ্ন ইতিহাসে সংরক্ষণ করতে এন্টার চাপুন
+• অনুসন্ধান কেসিং এবং বিরামচিহ্ন উপেক্ষা করে
+• অক্ষম শিশু সেটিংসের উপরে মূল সেটিংস দেখা যায়"</string>
+  <string name="morphe_settings_search_empty_history_title">অনুসন্ধান ইতিহাস খালি</string>
+  <string name="morphe_settings_search_empty_history_summary">অনুসন্ধান ইতিহাস সংরক্ষণ করতে, একটি অনুসন্ধানের প্রশ্ন টাইপ করুন এবং এন্টার চাপুন</string>
+  <string name="morphe_settings_search_history_title">অনুসন্ধান সেটিংসের ইতিহাস দেখান</string>
+  <string name="morphe_settings_search_history_summary_on">সেটিংস অনুসন্ধান ইতিহাস দেখানো হয়েছে</string>
+  <string name="morphe_settings_search_history_summary_off">সেটিংস অনুসন্ধান ইতিহাস দেখানো হয় না</string>
+  <string name="morphe_show_menu_icons_title">Morphe সেটিং আইকন দেখান</string>
+  <string name="morphe_show_menu_icons_summary_on">সেটিং আইকন দেখানো হয়েছে</string>
+  <string name="morphe_show_menu_icons_summary_off">সেটিং আইকন দেখানো হচ্ছে না</string>
+  <string name="morphe_language_title">Morphe ভাষা</string>
+  <string name="morphe_language_user_dialog_message">"কিছু ভাষার অনুবাদ অনুপস্থিত বা অসম্পূর্ণ হতে পারে।
+
+নতুন ভাষা অনুবাদ করতে বা বিদ্যমান অনুবাদ উন্নত করতে, translate.morphe.software এ ভিজিট করুন"</string>
+  <string name="morphe_language_DEFAULT">অ্যাপ্লিকেশনের ভাষা</string>
+  <string name="morphe_pref_import_export_title">আমদানি এবং রপ্তানি</string>
+  <string name="morphe_pref_import_export_summary">Morphe সেটিং আমদানি বা রপ্তানি করুন</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%s&lt;/i&gt; ব্যবহার করছেন</string>
+  <string name="morphe_settings_about_links_dev_header">দ্রষ্টব্য</string>
+  <string name="morphe_settings_about_links_dev_body">এই সংস্করণ একটি প্রাক-প্রকাশনা এবং এতে আপনি অনাকাঙ্খিত সমস্যার সম্মুখিন হতে পারেন</string>
+  <string name="morphe_settings_about_links_header">অফিশ্যাল লিংকসমূহ</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">ডিবাগিং</string>
+  <string name="morphe_debug_screen_summary">ডিবাগিং অপশন সক্রিয় বা নিষ্ক্রিয় করুন</string>
+  <string name="morphe_debug_title">ডিবাগ লগিং</string>
+  <string name="morphe_debug_summary_on">ডিবাগ লগ সক্রিয় হয়েছে</string>
+  <string name="morphe_debug_summary_off">ডিবাগ লগ নিষ্ক্রিয় হয়েছে</string>
+  <string name="morphe_debug_stacktrace_title">স্টেক ট্রেস লগ</string>
+  <string name="morphe_debug_stacktrace_summary_on">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে</string>
+  <string name="morphe_debug_stacktrace_summary_off">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে না</string>
+  <string name="morphe_debug_toast_on_error_title">Morphe এর ত্রুটির ক্ষেত্রে টোস্ট দেখান</string>
+  <string name="morphe_debug_toast_on_error_summary_on">যদি ত্রুটি ঘটে তবে toast দেখানো হবে</string>
+  <string name="morphe_debug_toast_on_error_summary_off">যদি ত্রুটি ঘটে তবে toast দেখানো হবে না</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"ত্রুটি \"toast\" বন্ধ করে Morphe ত্রুটি বিজ্ঞপ্তিগুলি লুকানো হয়।
+
+আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">ডিবাগ লগগুলি রফতানি করুন</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">ক্লিপবোর্ডে Morphe ডিবাগ লগগুলি অনুলিপি করে</string>
+  <string name="morphe_debug_logs_disabled">ডিবাগ লগিং নিষ্ক্রিয় করা হয়েছে</string>
+  <string name="morphe_debug_logs_none_found">কোনো লগ পাওয়া যায়নি</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">লগ অনুলিপি করা হয়েছে</string>
+  <string name="morphe_debug_logs_failed_to_export">লগ এক্সপোর্ট করা যায়নি: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">ডিবাগ লগগুলি সাফ করুন</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">সমস্ত সঞ্চিত Morphe ডিবাগ লগ সাফ করে</string>
+  <string name="morphe_debug_logs_clear_toast">লগ সাফ করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_title">ফিচার ফ্ল্যাগ Manager</string>
+  <string name="morphe_debug_feature_flags_manager_summary">বুলিয়ান ফিচার ফ্ল্যাগ পরিচালনা করুন</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">সক্রিয় ফ্ল্যাগ (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">ব্লক করা ফ্ল্যাগ (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">ফ্ল্যাগ খুঁজুন...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">ফ্ল্যাগ সংরক্ষণ করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">ফ্ল্যাগ রিসেট করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">ফ্ল্যাগ ক্লিপবোর্ডে কপি করা হয়েছে</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">GmsCore সেটিং</string>
+  <string name="microg_settings_summary">GmsCore এর জন্য সেটিং</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore ইনস্টল করা হয়নি। ইনস্টল করুন।</string>
+  <string name="gms_core_dialog_title">পদক্ষেপ প্রয়োজন</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore-এর পটভূমিতে চালানোর অনুমতি নেই।
+
+আপনার ফোনের জন্য \"Don't kill my app\" গাইড অনুসরণ করুন এবং MicroG ইনস্টলেশনের জন্য নির্দেশাবলী প্রয়োগ করুন।
+
+এটি অ্যাপ্লিকেশনটি কাজ করার জন্য প্রয়োজন।"</string>
+  <string name="gms_core_dialog_open_website_text">ওয়েবসাইট খুলুন</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"সমস্যা এড়াতে MicroG GmsCore-এর ব্যাটারি অপ্টিমাইজেশন অক্ষম করতে হবে।
+
+MicroG-এর জন্য ব্যাটারি অপ্টিমাইজেশন অক্ষম করা ব্যাটারি ব্যবহারকে নেতিবাচকভাবে প্রভাবিত করবে না।
+
+চালিয়ে যান বোতামটি ট্যাপ করুন এবং অপ্টিমাইজেশন পরিবর্তনগুলি অনুমোদন করুন।"</string>
+  <string name="gms_core_dialog_continue_text">এগিয়ে যান</string>
+</resources>

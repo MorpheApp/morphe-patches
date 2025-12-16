@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Ainm an aip</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_name_entry_5">Morphe íosta</string>
+  <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
+  <string name="morphe_custom_branding_icon_entry_1">Bunaidh</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_4">Morphe íosta</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is é is dóichí gur seachfhreastalaí fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt; Chun é seo a réiteach, déan liosta bán &lt;b&gt;s.youtube.com&lt;/b&gt; nó gach seachfhreastalaí DNS a mhúchadh.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ná taispeáin arís</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Déan sruthanna físe an chliaint a fhalsú chun fadhbanna athsheinm a chosc</string>
+  <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Déan sruthanna físe an chliaint a fhalsú chun fadhbanna athsheinm a chosc</string>
+  <string name="morphe_spoof_video_streams_title">Sruthanna físe bréige</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Déantar sruthanna físe a bhréagnú
+
+Mura bhfuil tú i d’úsáideoir YouTube Premium, b’fhéidir nach mbeidh an socrú seo ag teastáil"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Ní dhéantar sruthanna físeáin a bhréagnú
+
+Seans nach n-oibreoidh an t-athsheinm"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Má mhúchann tú an socrú seo, d\'fhéadfadh saincheisteanna athsheinm a theacht chun cinn.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Cliant réamhshocraithe</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Fórsaigh teanga bhunaidh na fuaime</string>
+  <string name="morphe_force_original_audio_summary_on">Ag úsáid teanga bhunaidh na fuaime</string>
+  <string name="morphe_force_original_audio_summary_off">Ag úsáid fuaim réamhshocraithe</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Bréag-sruthanna físeáin\' chuig aon chliant seachas Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Glan na naisc roinnte</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Baintear an paraiméadar fiosrúcháin rianaithe de na naisc roinnte</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Ní bhaintear an paraiméadar fiosrúcháin rianaithe de na naisc roinnte</string>
+  <string name="morphe_replace_music_with_youtube_title">Athraigh na naisc comhroinnte go youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Úsáideann naisc chomhroinnte youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Úsáideann naisc chomhroinnte music.youtube.com</string>
+</resources>

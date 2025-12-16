@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Beállítások</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Biztosan folytatni szeretné?</string>
+  <string name="morphe_settings_save">Mentés</string>
+  <string name="morphe_settings_reset">Visszaállítás</string>
+  <string name="morphe_settings_reset_color">Szín alaphelyzetbe állítása</string>
+  <string name="morphe_settings_color_invalid">Érvénytelen szín</string>
+  <string name="morphe_settings_restart_title">Újraindítás szükséges</string>
+  <string name="morphe_settings_restart_dialog_message">Indítsa újra az alkalmazást, hogy a változás érvénybe lépjen.</string>
+  <string name="morphe_settings_restart">Újraindítás</string>
+  <string name="morphe_settings_import">Importálás</string>
+  <string name="morphe_settings_import_copy">Másolás</string>
+  <string name="morphe_settings_import_reset">A Morphe beállítások visszaállnak az alapértelmezettre</string>
+  <string name="morphe_settings_import_success">%d beállítás importálva</string>
+  <string name="morphe_settings_import_failure_parse">Sikertelen importálás: %s</string>
+  <string name="morphe_settings_search_hint">Beállítások keresése</string>
+  <string name="morphe_settings_search_no_results_title">Nincs találat erre: „%s”</string>
+  <string name="morphe_settings_search_no_results_summary">Próbáljon ki egy másik kulcsszót</string>
+  <string name="morphe_settings_search_recent_searches">Legutóbbi keresések</string>
+  <string name="morphe_settings_search_remove_message">Eltávolítja a keresési előzményekből?</string>
+  <string name="morphe_settings_search_clear_history">Keresési előzmények törlése</string>
+  <string name="morphe_settings_search_clear_history_message">Biztosan törölni szeretné az összes keresési előzményt?</string>
+  <string name="morphe_settings_search_tips_title">Keresési tippek</string>
+  <string name="morphe_settings_search_tips_summary">"• Érintse meg az útvonalat az oda navigáláshoz
+• Hosszan nyomja meg a beállítást az oda navigáláshoz
+• Nyomja meg az Entert a keresési lekérdezés előzményekbe mentéséhez
+• A keresés figyelmen kívül hagyja a kis- és nagybetűket, valamint az írásjeleket
+• A szülőbeállítások a letiltott gyermekbeállítások felett jelennek meg"</string>
+  <string name="morphe_settings_search_empty_history_title">A keresési előzmények üresek</string>
+  <string name="morphe_settings_search_empty_history_summary">A keresési előzmények mentéséhez írjon be egy keresési lekérdezést, majd nyomja meg az Entert</string>
+  <string name="morphe_settings_search_history_title">Beállítások keresési előzményeinek megjelenítése</string>
+  <string name="morphe_settings_search_history_summary_on">A beállítások keresési előzményei láthatók</string>
+  <string name="morphe_settings_search_history_summary_off">A beállítások keresési előzményei nincsenek megjelenítve</string>
+  <string name="morphe_show_menu_icons_title">Morphe beállításikonok megjelenítése</string>
+  <string name="morphe_show_menu_icons_summary_on">A beállításikonok láthatók</string>
+  <string name="morphe_show_menu_icons_summary_off">A beállítások ikonjai nem jelennek meg</string>
+  <string name="morphe_language_title">Morphe nyelve</string>
+  <string name="morphe_language_user_dialog_message">"Egyes nyelvek fordításai hiányozhatnak vagy hiányosak lehetnek.
+
+Új nyelvek fordításához vagy a meglévő fordítások javításához látogasson el a translate.morphe.software oldalra."</string>
+  <string name="morphe_language_DEFAULT">Alkalmazás nyelve</string>
+  <string name="morphe_pref_import_export_title">Importálás / exportálás</string>
+  <string name="morphe_pref_import_export_summary">Morphe beállítások importálása / exportálása</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">A Morphe Patchek &lt;i&gt;%s&lt;i&gt; verzióját használja</string>
+  <string name="morphe_settings_about_links_dev_header">Megjegyzés</string>
+  <string name="morphe_settings_about_links_dev_body">Ez a verzió egy előzetes kiadás, és nem kívánt hibákat tapasztalhat</string>
+  <string name="morphe_settings_about_links_header">Hivatalos linkek</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Hibakeresés</string>
+  <string name="morphe_debug_screen_summary">Hibakeresési beállítások engedélyezése vagy letiltása</string>
+  <string name="morphe_debug_title">Hibakeresési naplózás</string>
+  <string name="morphe_debug_summary_on">A hibakeresési naplók engedélyezve vannak</string>
+  <string name="morphe_debug_summary_off">A hibakeresési naplók le vannak tiltva</string>
+  <string name="morphe_debug_stacktrace_title">Naplóverem nyomai</string>
+  <string name="morphe_debug_stacktrace_summary_on">A hibakeresési naplók tartalmazzák a verem nyomkövetését</string>
+  <string name="morphe_debug_stacktrace_summary_off">A hibakeresési naplók nem tartalmazzák a verem nyomkövetését</string>
+  <string name="morphe_debug_toast_on_error_title">Üzenet megjelenítése Morphe hiba esetén</string>
+  <string name="morphe_debug_toast_on_error_summary_on">A \"toast\" üzenet jelenik meg, ha hiba történik</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Nem jelenik meg \"toast\" üzenet, ha hiba történik</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"A hibaüzenetek kikapcsolása elrejti az összes Morphe hibaértesítést.
+
+Nem fog értesülni semmilyen váratlan eseményről."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Hibakeresési naplók exportálása</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">A Morphe hibakeresési naplóit a vágólapra másolja</string>
+  <string name="morphe_debug_logs_disabled">A hibakeresési naplózás ki van kapcsolva</string>
+  <string name="morphe_debug_logs_none_found">Nem találhatók naplók</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Naplók másolva</string>
+  <string name="morphe_debug_logs_failed_to_export">Nem sikerült exportálni a naplókat: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Hibakeresési naplók törlése</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Törli az összes tárolt Morphe hibakeresési naplót</string>
+  <string name="morphe_debug_logs_clear_toast">Naplók törölve</string>
+  <string name="morphe_debug_feature_flags_manager_title">Funkciójelzők Manager</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Logikai funkciójelzők kezelése</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktív jelzők (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokkolt jelzők (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Jelzők keresése...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Jelzők mentve</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Jelzők visszaállítva</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Jelzők vágólapra másolva</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">GmsCore beállítások</string>
+  <string name="microg_settings_summary">A GmsCore beállításai</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore nincs telepítve. Telepítse.</string>
+  <string name="gms_core_dialog_title">Művelet szükséges</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"A MicroG GmsCore nem rendelkezik engedéllyel a háttérben történő futáshoz.
+
+Kövesse a \"Ne ölj meg az alkalmazásomat\" útmutatót a telefonján, és alkalmazza az utasításokat a MicroG telepítésére.
+
+Ez szükséges az alkalmazás működéséhez."</string>
+  <string name="gms_core_dialog_open_website_text">Webhely megnyitása</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"A MicroG GmsCore akkumulátor-optimalizálását le kell tiltani a problémák elkerülése érdekében.
+
+A MicroG akkumulátor-optimalizálásának letiltása nem befolyásolja negatívan az akkumulátor használatát.
+
+Kattintson a folytatás gombra, és engedélyezze az optimalizálási módosításokat."</string>
+  <string name="gms_core_dialog_continue_text">Folytatás</string>
+</resources>

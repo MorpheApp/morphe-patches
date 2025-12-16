@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">O programie</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
+  <string name="morphe_settings_music_screen_2_general_title">Ogólne</string>
+  <string name="morphe_settings_music_screen_3_player_title">Odtwarzacz</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Różne</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Ukryj reklamy wideo</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Reklamy wideo są ukryte</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Reklamy wideo są widoczne</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Włącz stałe powtarzanie</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Stałe powtarzanie jest włączone</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Stałe powtarzanie jest wyłączone</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Ukryj przycisk Cast</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Przycisk Cast jest ukryty</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Przycisk Cast jest widoczny</string>
+  <string name="morphe_music_hide_history_button_title">Ukryj przycisk historii</string>
+  <string name="morphe_music_hide_history_button_summary_on">Przycisk historii jest ukryty</string>
+  <string name="morphe_music_hide_history_button_summary_off">Przycisk historii jest widoczny</string>
+  <string name="morphe_music_hide_notification_button_title">Ukryj przycisk powiadomień</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Przycisk powiadomień jest ukryty</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Przycisk powiadomień jest widoczny</string>
+  <string name="morphe_music_hide_search_button_title">Ukryj przycisk wyszukiwania</string>
+  <string name="morphe_music_hide_search_button_summary_on">Przycisk wyszukiwania jest ukryty</string>
+  <string name="morphe_music_hide_search_button_summary_off">Przycisk wyszukiwania jest widoczny</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Ukryj pasek kategorii</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Pasek kategorii jest ukryty</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Pasek kategorii jest widoczny</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Zmień kolor miniplayera</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Kolor miniplayera dopasowany do odtwarzacza pełnoekranowego</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer używa domyślnego koloru</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Pasek nawigacji</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Ukryj lub zmień przyciski paska nawigacji</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Ukryj Główną</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Przycisk Główna jest ukryty</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Przycisk Główna jest pokazany</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Ukryj Fragmenty</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Przycisk Wycinki jest ukryty</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Przycisk Wycinki jest pokazany</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Ukryj Odkrywaj</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Przycisk Przeglądaj jest ukryty</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Przycisk Przeglądaj jest pokazany</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Ukryj Bibliotekę</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Przycisk Biblioteka jest ukryty</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Przycisk Biblioteka jest pokazany</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ukryj Ulepsz</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Przycisk Ulepsz jest ukryty</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Przycisk Ulepsz jest pokazany</string>
+  <string name="morphe_music_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Pasek nawigacji jest ukryty</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Pasek nawigacji jest pokazany</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Ukryj etykiety przycisków nawigacji</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etykiety są ukryte</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etykiety są pokazane</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Ukryj etykietę „Uzyskaj Music Premium”</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Etykieta jest ukryta</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Etykieta jest widoczna</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Ukryj przycisk uaktualnienia</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Przycisk jest ukryty</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Przycisk jest widoczny</string>
+</resources>

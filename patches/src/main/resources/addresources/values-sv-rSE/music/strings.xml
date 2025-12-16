@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">Om</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Annonser</string>
+  <string name="morphe_settings_music_screen_2_general_title">Allmänt</string>
+  <string name="morphe_settings_music_screen_3_player_title">Spelare</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Övrigt</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Dölj videoannonser</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Videoannonser är dolda</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Videoannonser visas</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Aktivera permanent upprepning</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Permanent upprepning är aktiverad</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Permanent upprepning är inaktiverad</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Dölj knappen Casta</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Knappen Casta är dold</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Knappen Casta visas</string>
+  <string name="morphe_music_hide_history_button_title">Dölj historikknappen</string>
+  <string name="morphe_music_hide_history_button_summary_on">Historikknappen är dold</string>
+  <string name="morphe_music_hide_history_button_summary_off">Historikknappen visas</string>
+  <string name="morphe_music_hide_notification_button_title">Dölj aviseringsknappen</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Aviseringsknappen är dold</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Aviseringsknappen visas</string>
+  <string name="morphe_music_hide_search_button_title">Dölj sökknappen</string>
+  <string name="morphe_music_hide_search_button_summary_on">Sökknappen är dold</string>
+  <string name="morphe_music_hide_search_button_summary_off">Sökknappen visas</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Dölj kategorifält</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Kategorifältet är dolt</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Kategorifältet visas</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Ändra minispelarens färg</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Minispelarens färg matchar helskärmsspelaren</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Minispelaren använder standardfärg</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Navigeringsfält</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Dölj eller ändra knappar i navigeringsfältet</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Dölj Hem</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Knappen Hem är dold</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Knappen Hem visas</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Dölj Samples</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Knappen Samples är dold</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Knappen Samples visas</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Dölj Utforska</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Knappen Utforska är dold</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Knappen Utforska visas</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Dölj Bibliotek</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Knappen Bibliotek är dold</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Knappen Bibliotek visas</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Dölj Uppgradera</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Knappen Uppgradera är dold</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Knappen Uppgradera visas</string>
+  <string name="morphe_music_hide_navigation_bar_title">Dölj navigeringsfältet</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Navigeringsfältet är dolt</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Navigeringsfältet visas</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etiketter är dolda</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etiketter visas</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Dölj etiketten \"Skaffa Music Premium\"</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Etiketten är dold</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Etiketten visas</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Dölj uppgraderingsknappen</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Knappen är dold</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Knappen visas</string>
+</resources>

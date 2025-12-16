@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">لمحة</string>
+  <string name="morphe_settings_music_screen_1_ads_title">الإعلانات</string>
+  <string name="morphe_settings_music_screen_2_general_title">عام</string>
+  <string name="morphe_settings_music_screen_3_player_title">المشغل</string>
+  <string name="morphe_settings_music_screen_4_misc_title">متنوعة</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
+  <string name="morphe_music_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
+  <string name="morphe_music_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">تمكين التكرار الدائم</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">تم تمكين التكرار الدائم</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">تم تعطيل التكرار الدائم</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">إخفاء زر البث</string>
+  <string name="morphe_music_hide_cast_button_summary_on">تم إخفاء زر البث</string>
+  <string name="morphe_music_hide_cast_button_summary_off">يتم عرض زر البث</string>
+  <string name="morphe_music_hide_history_button_title">إخفاء زر السجل</string>
+  <string name="morphe_music_hide_history_button_summary_on">زر السجل مخفي</string>
+  <string name="morphe_music_hide_history_button_summary_off">زر السجل ظاهر</string>
+  <string name="morphe_music_hide_notification_button_title">إخفاء زر الإشعارات</string>
+  <string name="morphe_music_hide_notification_button_summary_on">تم إخفاء زر الإشعارات</string>
+  <string name="morphe_music_hide_notification_button_summary_off">يتم عرض زر الإشعارات</string>
+  <string name="morphe_music_hide_search_button_title">إخفاء زر البحث</string>
+  <string name="morphe_music_hide_search_button_summary_on">تم إخفاء زر البحث</string>
+  <string name="morphe_music_hide_search_button_summary_off">يتم عرض زر البحث</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">إخفاء شريط الفئات</string>
+  <string name="morphe_music_hide_category_bar_summary_on">تم إخفاء شريط الفئات</string>
+  <string name="morphe_music_hide_category_bar_summary_off">يتم عرض شريط الفئات</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">تغيير لون المشغل المصغر</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">يستخدم المشغل المصغر اللون الافتراضي</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">شريط التنقل</string>
+  <string name="morphe_music_navigation_bar_screen_summary">إخفاء أزرار شريط التنقل أو تغييرها</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">إخفاء الصفحة الرئيسية</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">تم إخفاء زر الصفحة الرئيسية</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">يتم عرض زر الصفحة الرئيسية</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">إخفاء المقاطع</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">زر \"المقتطفات\" مخفي</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">زر \"المقتطفات\" ظاهر</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">إخفاء استكشاف</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">زر \"استكشاف\" مخفي</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">زر \"استكشاف\" ظاهر</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">إخفاء المكتبة</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">زر \"المكتبة\" مخفي</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">زر \"المكتبة\" ظاهر</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">إخفاء ترقية</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">زر \"الترقية\" مخفي</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">زر \"الترقية\" ظاهر</string>
+  <string name="morphe_music_hide_navigation_bar_title">إخفاء شريط التنقل</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">شريط التنقل مخفي</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">شريط التنقل ظاهر</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">التسميات مخفية</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">التسميات ظاهرة</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">التسمية مخفية</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">التسمية معروضة</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">إخفاء زر الترقية</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">الزر مخفي</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">الزر معروض</string>
+</resources>
