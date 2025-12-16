@@ -481,10 +481,6 @@ public final class app/morphe/patches/youtube/interaction/seekbar/SeekbarPatchKt
 	public static final fun getSeekbarPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
-public final class app/morphe/patches/youtube/interaction/seekbar/SeekbarThumbnailsPatchKt {
-	public static final fun getSeekbarThumbnailsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
-}
-
 public final class app/morphe/patches/youtube/interaction/swipecontrols/SwipeControlsPatchKt {
 	public static final fun getSwipeControlsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
@@ -994,11 +990,10 @@ public abstract class app/morphe/util/resource/BaseResource {
 
 public final class app/morphe/util/resource/StringResource : app/morphe/util/resource/BaseResource {
 	public static final field Companion Lapp/morphe/util/resource/StringResource$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getFormatted ()Z
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
 	public final fun getValue ()Ljava/lang/String;
 	public fun serialize (Lorg/w3c/dom/Document;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Element;
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class app/morphe/util/resource/StringResource$Companion {
