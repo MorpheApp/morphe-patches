@@ -103,7 +103,6 @@ private val appsToInclude = mutableSetOf<AppId>()
  */
 private fun addResource(resources: MutableMap<Value, AppResources>, value: Value, resource: BaseResource) {
     resources.getOrPut(value, ::mutableSetOf).add(resource)
-    println("Staged resource for value=$value: $resource")
 }
 
 internal val addResourcesPatch = resourcePatch(
@@ -124,7 +123,6 @@ internal val addResourcesPatch = resourcePatch(
             transform: (Node) -> BaseResource
         ) {
             val resourceSubPath = "$locale/$appId/$resourceType.xml"
-            println("Reading resources from $resourceSubPath")
 
             inputStreamFromBundledResource("addresources", resourceSubPath)?.use { stream ->
                 document(stream).use { doc ->
@@ -158,6 +156,7 @@ internal val addResourcesPatch = resourcePatch(
 
             getOrPut(resourceFileName) {
                 val fileName = "res/$value/$resourceFileName.xml"
+                // Create if not present.
                 this@finalize[fileName].also {
                     it.parentFile?.mkdirs()
                     if (it.createNewFile()) {
@@ -169,7 +168,6 @@ internal val addResourcesPatch = resourcePatch(
                 doc to doc.getNode("resources")
             }.let { (_, targetNode) ->
                 targetNode.addResource(resource) { invoke(value, it) }
-                println("Written resource to $value/$resourceFileName: $resource")
             }
         }
 
@@ -183,7 +181,6 @@ internal val addResourcesPatch = resourcePatch(
         }
 
         documents.values.forEach { (doc, _) -> doc.close() }
-        println("Finalize complete. Total resources written: ${resources.values.sumOf { it.size }}")
     }
 }
 
