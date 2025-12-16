@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -32,7 +30,6 @@ val spoofAppVersionPatch = bytecodePatch(
         resourceMappingPatch,
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch
     )
 
@@ -47,8 +44,6 @@ val spoofAppVersionPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.spoofappversion.spoofAppVersionPatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             // Group the switch and list preference together, since General menu is sorted by name
             // and the preferences can be scattered apart with non English languages.

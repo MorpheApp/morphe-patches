@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.layout.searchbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -30,7 +28,6 @@ internal val wideSearchbarPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         resourceMappingPatch,
         versionCheckPatch
     )
@@ -51,8 +48,6 @@ internal val wideSearchbarPatch = bytecodePatch(
             // with a listener that artificially clicks the toolbar search button.
             return@execute
         }
-
-        addResources("youtube", "layout.searchbar.wideSearchbarPatch")
 
         PreferenceScreen.FEED.addPreferences(
             SwitchPreference("morphe_wide_searchbar"),

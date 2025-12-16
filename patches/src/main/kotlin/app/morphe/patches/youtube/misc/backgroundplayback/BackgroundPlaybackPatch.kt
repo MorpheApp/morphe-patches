@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.misc.backgroundplayback
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -37,7 +35,6 @@ val backgroundPlaybackPatch = bytecodePatch(
 ) {
     dependsOn(
         resourceMappingPatch,
-        addResourcesPatch,
         sharedExtensionPatch,
         playerTypeHookPatch,
         videoInformationPatch,
@@ -56,8 +53,6 @@ val backgroundPlaybackPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.backgroundplayback.backgroundPlaybackPatch")
-
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_shorts_disable_background_playback")
         )

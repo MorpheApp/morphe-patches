@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -24,7 +22,6 @@ val changeStartPagePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -38,8 +35,6 @@ val changeStartPagePatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.startpage.changeStartPagePatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             PreferenceCategory(
                 titleKey = null,

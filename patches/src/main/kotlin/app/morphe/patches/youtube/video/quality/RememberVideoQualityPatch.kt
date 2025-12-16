@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.video.quality
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -25,13 +23,10 @@ val rememberVideoQualityPatch = bytecodePatch {
         videoInformationPatch,
         playerTypeHookPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
-        addResources("youtube", "video.quality.rememberVideoQualityPatch")
-
         settingsMenuVideoQualityGroup.addAll(listOf(
             ListPreference(
                 key = "morphe_video_quality_default_mobile",

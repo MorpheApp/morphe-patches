@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.interaction.copyvideourl
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
@@ -19,12 +17,9 @@ private val copyVideoUrlResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         playerControlsPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.copyvideourl.copyVideoUrlResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_copy_video_url"),
             SwitchPreference("morphe_copy_video_url_timestamp"),

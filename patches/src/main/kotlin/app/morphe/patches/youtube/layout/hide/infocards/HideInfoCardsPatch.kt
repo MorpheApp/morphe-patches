@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -29,7 +27,6 @@ private val hideInfocardsResourcePatch = resourcePatch {
         )
     
     execute {
-
         drawerResourceId = getResourceId(
             ResourceType.ID,
             "info_cards_drawer_header",
@@ -47,7 +44,6 @@ val hideInfoCardsPatch = bytecodePatch(
         lithoFilterPatch,
         hideInfocardsResourcePatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -61,8 +57,6 @@ val hideInfoCardsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.infocards.hideInfocardsResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_info_cards"),
         )

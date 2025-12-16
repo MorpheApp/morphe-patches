@@ -1,7 +1,5 @@
 package app.morphe.patches.music.misc.spoof
 
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.MusicActivityOnCreateFingerprint
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -42,7 +40,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     },
 
     executeBlock = {
-        addResources("music", "misc.fix.playback.spoofVideoStreamsPatch")
 
         PreferenceScreen.MISC.addPreferences(
             PreferenceScreenPreference(

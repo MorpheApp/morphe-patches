@@ -6,10 +6,6 @@ public final class app/morphe/patches/all/misc/packagename/ChangePackageNamePatc
 	public static final fun setPackageNameOption (Lapp/morphe/patcher/patch/Option;)V
 }
 
-public final class app/morphe/patches/all/misc/resources/AddResourcesPatchKt {
-	public static final fun addResources (Ljava/lang/String;Ljava/lang/String;)V
-}
-
 public abstract interface class app/morphe/patches/all/misc/transformation/IMethodCall {
 	public abstract fun getDefinedClassName ()Ljava/lang/String;
 	public abstract fun getMethodName ()Ljava/lang/String;

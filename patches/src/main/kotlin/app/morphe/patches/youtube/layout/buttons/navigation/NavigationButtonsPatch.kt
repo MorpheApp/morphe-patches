@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -31,7 +29,6 @@ val navigationButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         navigationBarHookPatch,
         versionCheckPatch
     )
@@ -47,8 +44,6 @@ val navigationButtonsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.buttons.navigation.navigationButtonsPatch")
-
         val preferences = mutableSetOf(
             SwitchPreference("morphe_hide_home_button"),
             SwitchPreference("morphe_hide_shorts_button"),

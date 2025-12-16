@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.misc.links
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -50,8 +49,6 @@ val openLinksExternallyPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.links.openLinksExternallyPatch")
-
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_external_browser"),
         )

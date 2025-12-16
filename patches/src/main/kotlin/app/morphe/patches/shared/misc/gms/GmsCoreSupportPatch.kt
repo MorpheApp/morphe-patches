@@ -15,8 +15,6 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.changePackageNamePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
 import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
 import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
@@ -532,7 +530,6 @@ fun gmsCoreSupportResourcePatch(
 ) = resourcePatch {
     dependsOn(
         changePackageNamePatch,
-        addResourcesPatch,
     )
 
     val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
@@ -540,7 +537,6 @@ fun gmsCoreSupportResourcePatch(
     execute {
         // Some patches don't use shared String resources so there's no need to add them.
         if (addStringResources) {
-            addResources("shared", "misc.gms.gmsCoreSupportResourcePatch")
         }
 
         /**

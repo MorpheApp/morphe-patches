@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -23,7 +21,6 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
-        addResourcesPatch,
         resourceMappingPatch,
     )
 
@@ -38,8 +35,6 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_related_videos_overlay")
         )

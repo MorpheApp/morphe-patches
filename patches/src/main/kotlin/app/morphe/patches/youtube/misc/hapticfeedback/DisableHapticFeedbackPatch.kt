@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -21,7 +19,6 @@ val disableHapticFeedbackPatch = bytecodePatch(
 ) {
     dependsOn(
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -35,8 +32,6 @@ val disableHapticFeedbackPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.hapticfeedback.disableHapticFeedbackPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 "morphe_disable_haptic_feedback",

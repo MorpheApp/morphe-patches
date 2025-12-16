@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
@@ -27,13 +25,10 @@ val enableSlideToSeekPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.seekbar.enableSlideToSeekPatch")
-
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_slide_to_seek"),
         )

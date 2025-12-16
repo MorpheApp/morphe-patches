@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -22,7 +20,6 @@ val permanentRepeatPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -34,8 +31,6 @@ val permanentRepeatPatch = bytecodePatch(
     )
 
     execute {
-        addResources("music", "interaction.permanentrepeat.permanentRepeatPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_music_play_permanent_repeat"),
         )

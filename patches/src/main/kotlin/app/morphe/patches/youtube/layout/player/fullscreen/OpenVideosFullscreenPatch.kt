@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -16,7 +14,6 @@ val openVideosFullscreenPatch = bytecodePatch(
     dependsOn(
         openVideosFullscreenHookPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -32,8 +29,6 @@ val openVideosFullscreenPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.player.fullscreen.openVideosFullscreen")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_open_videos_fullscreen_portrait")
         )

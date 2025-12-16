@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -38,7 +36,6 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         resourceMappingPatch, // Used by fingerprints.
         versionCheckPatch
     )
@@ -54,8 +51,6 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.buttons.overlay.hidePlayerOverlayButtonsPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_player_previous_next_buttons"),
             SwitchPreference("morphe_hide_cast_button"),

@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.layout.player.overlay
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -22,7 +20,6 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
 ) {
     dependsOn(settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -36,8 +33,6 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.player.overlay.customPlayerOverlayOpacityResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             TextPreference("morphe_player_overlay_opacity", inputType = InputType.NUMBER),
         )

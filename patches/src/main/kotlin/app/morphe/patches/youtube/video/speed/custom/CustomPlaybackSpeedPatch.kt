@@ -8,8 +8,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -43,7 +41,6 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         lithoFilterPatch,
         versionCheckPatch,
         recyclerViewTreeHookPatch,
@@ -51,8 +48,6 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "video.speed.custom.customPlaybackSpeedPatch")
-
         settingsMenuVideoSpeedGroup.addAll(
             listOf(
                 SwitchPreference("morphe_custom_speed_menu"),

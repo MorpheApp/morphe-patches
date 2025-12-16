@@ -11,8 +11,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -120,7 +118,6 @@ internal fun baseCustomBrandingPatch(
     block()
 
     dependsOn(
-        addResourcesPatch,
         resourceMappingPatch,
         bytecodePatch {
             execute {
@@ -187,9 +184,6 @@ internal fun baseCustomBrandingPatch(
     }
 
     execute {
-        addResources("shared", "layout.branding.baseCustomBrandingPatch")
-        addResources(addResourcePatchName, "layout.branding.customBrandingPatch")
-
         preferenceScreen.addPreferences(
             if (customName != null ) {
                 ListPreference(

@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.hide.signintotvpopup
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -20,7 +18,6 @@ val disableSignInToTvPopupPatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
-        addResourcesPatch,
         resourceMappingPatch
     )
 
@@ -35,8 +32,6 @@ val disableSignInToTvPopupPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.signintotv.disableSignInToTvPopupPatch")
-
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_disable_signin_to_tv_popup"),
         )

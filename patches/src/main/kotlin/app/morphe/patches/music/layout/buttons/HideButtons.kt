@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -40,7 +38,6 @@ val hideButtons = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         resourceMappingPatch
     )
 
@@ -58,8 +55,6 @@ val hideButtons = bytecodePatch(
         offlineSettingsMenuItem = getResourceId(ResourceType.ID, "offline_settings_menu_item")
         searchButton = getResourceId(ResourceType.LAYOUT, "search_button")
         topBarMenuItemImageView = getResourceId(ResourceType.ID, "top_bar_menu_item_image_view")
-
-        addResources("music", "layout.buttons.hideButtons")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),

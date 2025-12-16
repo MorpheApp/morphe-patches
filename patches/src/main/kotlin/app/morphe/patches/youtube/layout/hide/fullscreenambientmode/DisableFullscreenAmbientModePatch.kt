@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.layout.hide.fullscreenambientmode
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -24,7 +22,6 @@ val disableFullscreenAmbientModePatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -38,8 +35,6 @@ val disableFullscreenAmbientModePatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_disable_fullscreen_ambient_mode"),
         )

@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.seekbar.FullscreenSeekbarThumbnailsFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -22,7 +20,6 @@ val seekbarThumbnailsPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
@@ -32,8 +29,6 @@ val seekbarThumbnailsPatch = bytecodePatch(
             // and the code is completely removed in 20.10+
             return@execute
         }
-
-        addResources("youtube", "layout.seekbar.seekbarThumbnailsPatch")
 
         if (is_19_17_or_greater) {
             PreferenceScreen.SEEKBAR.addPreferences(

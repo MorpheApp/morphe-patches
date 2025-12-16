@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -52,7 +50,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
-        addResourcesPatch,
         lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
@@ -71,8 +68,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.returnyoutubedislike.returnYouTubeDislikePatch")
-
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
             SwitchPreference("morphe_ryd_enabled"),
             SwitchPreference("morphe_ryd_shorts"),

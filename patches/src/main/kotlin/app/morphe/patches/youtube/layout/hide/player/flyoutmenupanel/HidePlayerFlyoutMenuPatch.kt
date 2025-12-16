@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.hide.player.flyoutmenupanel
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
@@ -21,7 +19,6 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
         lithoFilterPatch,
         playerTypeHookPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch
     )
 
@@ -37,8 +34,6 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
 
     execute {
         val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuItemsFilter;"
-
-        addResources("youtube", "layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch")
 
         val preferences = mutableSetOf(
             SwitchPreference("morphe_hide_player_flyout_captions"),

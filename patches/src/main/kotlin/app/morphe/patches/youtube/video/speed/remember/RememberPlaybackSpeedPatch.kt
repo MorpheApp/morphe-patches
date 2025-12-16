@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -28,14 +26,11 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         videoInformationPatch,
         customPlaybackSpeedPatch
     )
 
     execute {
-        addResources("youtube", "video.speed.remember.rememberPlaybackSpeedPatch")
-
         settingsMenuVideoSpeedGroup.addAll(
             listOf(
                 ListPreference(

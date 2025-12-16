@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.interaction.dialog
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -21,7 +19,6 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -35,8 +32,6 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "interaction.dialog.removeViewerDiscretionDialogPatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             SwitchPreference("morphe_remove_viewer_discretion_dialog"),
         )

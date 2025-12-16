@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -42,13 +40,10 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
         playerControlsPatch,
     )
 
     execute {
-        addResources("youtube", "layout.sponsorblock.sponsorBlockResourcePatch")
-
         PreferenceScreen.SPONSORBLOCK.addPreferences(
             // SB setting is old code with lots of custom preferences and updating behavior.
             // Added as a preference group and not a fragment so the preferences are searchable.

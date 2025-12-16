@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -34,15 +32,12 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         lithoFilterPatch,
         recyclerViewTreeHookPatch,
         resourceMappingPatch
     )
 
     execute {
-        addResources("youtube", "video.quality.advancedVideoQualityMenuPatch")
-
         settingsMenuVideoQualityGroup.add(
             SwitchPreference("morphe_advanced_video_quality_menu")
         )

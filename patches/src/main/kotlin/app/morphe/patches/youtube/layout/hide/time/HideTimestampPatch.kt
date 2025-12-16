@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.hide.time
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -18,7 +16,6 @@ val hideTimestampPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -32,8 +29,6 @@ val hideTimestampPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.time.hideTimestampPatch")
-
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_hide_timestamp"),
         )

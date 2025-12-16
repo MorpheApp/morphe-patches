@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.autocaptions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -19,7 +17,6 @@ val autoCaptionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -33,8 +30,6 @@ val autoCaptionsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.autocaptions.autoCaptionsPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_disable_auto_captions"),
         )

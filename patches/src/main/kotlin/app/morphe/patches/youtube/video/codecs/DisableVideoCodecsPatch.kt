@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.video.codecs
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -25,7 +23,6 @@ val disableVideoCodecsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         /**
          * Override all calls of `getSupportedHdrTypes`.
          */
@@ -66,8 +63,6 @@ val disableVideoCodecsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "video.codecs.disableVideoCodecsPatch")
-
         PreferenceScreen.VIDEO.addPreferences(
             SwitchPreference("morphe_disable_hdr_video"),
             SwitchPreference("morphe_force_avc_codec")

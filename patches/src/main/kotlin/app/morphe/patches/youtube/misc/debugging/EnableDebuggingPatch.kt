@@ -1,6 +1,5 @@
 package app.morphe.patches.youtube.misc.debugging
 
-import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.shared.misc.debugging.enableDebuggingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -26,7 +25,6 @@ val enableDebuggingPatch = enableDebuggingPatch(
         )
     },
     executeBlock = {
-        addResources("youtube", "misc.debugging.enableDebuggingPatch")
     },
     hookStringFeatureFlag = true,
     preferenceScreen = PreferenceScreen.MISC,

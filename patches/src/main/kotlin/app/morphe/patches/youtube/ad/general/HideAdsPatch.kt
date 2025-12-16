@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.fix.verticalscroll.verticalScrollPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
@@ -36,12 +34,9 @@ private val hideAdsResourcePatch = resourcePatch {
         lithoFilterPatch,
         settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("youtube", "ad.general.hideAdsResourcePatch")
-
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_hide_creator_store_shelf"),
             SwitchPreference("morphe_hide_end_screen_store_banner"),

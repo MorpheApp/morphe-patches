@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.misc.gms
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -18,8 +16,6 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
     )
 
     execute {
-        addResources("youtube", "misc.gms.accountCredentialsInvalidTextPatch")
-
         // If the user recently changed their account password,
         // the app can show "You're offline. Check your internet connection."
         // even when the internet is available.  For this situation

@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -36,7 +34,6 @@ val navigationBarPatch = bytecodePatch(
         resourceMappingPatch,
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         resourcePatch {
             execute {
                 // Ensure the first ImageView has 'layout_weight' to stay properly sized
@@ -65,8 +62,6 @@ val navigationBarPatch = bytecodePatch(
 
     execute {
         text1 = getResourceId(ResourceType.ID, "text1")
-
-        addResources("music", "layout.navigationbar.navigationBarPatch")
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(

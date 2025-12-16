@@ -187,12 +187,6 @@ internal val addResourcesPatch = resourcePatch(
 /**
  * Add all resources for the given app.
  */
-fun addAppResources(appId: String) {
+internal fun addAppResources(appId: String) {
     appsToInclude.add(appId)
-}
-
-
-@Deprecated("Use addAppResources instead.")
-fun addResources(appId: String, ignoredPatchId: String?) { // TODO: delete this
-//    appsToInclude.add(appId)
 }

@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.misc.loopvideo
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loopvideo.button.loopVideoButtonPatch
@@ -21,7 +19,6 @@ val loopVideoPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        addResourcesPatch,
         loopVideoButtonPatch,
         videoInformationPatch
     )
@@ -37,8 +34,6 @@ val loopVideoPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.loopvideo.loopVideoPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_loop_video"),
         )

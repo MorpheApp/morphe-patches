@@ -6,8 +6,6 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -40,7 +38,6 @@ internal fun enableDebuggingPatch(
 ) {
 
     dependsOn(
-        addResourcesPatch,
         resourcePatch {
             execute {
                 copyResources(
@@ -65,8 +62,6 @@ internal fun enableDebuggingPatch(
 
     execute {
         executeBlock()
-
-        addResources("shared", "misc.debugging.enableDebuggingPatch")
 
         val preferences = mutableSetOf<BasePreference>(
             SwitchPreference("morphe_debug"),

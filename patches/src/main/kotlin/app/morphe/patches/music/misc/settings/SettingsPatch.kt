@@ -46,7 +46,6 @@ private val settingsResourcePatch = resourcePatch {
     )
 
     execute {
-
         // Set the style for the Morphe settings to follow the style of the music settings,
         // namely: action bar height, menu item padding and remove horizontal dividers.
         val targetResource = "values/styles.xml"

@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -24,7 +22,6 @@ val disableRollingNumberAnimationPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -38,8 +35,6 @@ val disableRollingNumberAnimationPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.rollingnumber.disableRollingNumberAnimationPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_disable_rolling_number_animations"),
         )

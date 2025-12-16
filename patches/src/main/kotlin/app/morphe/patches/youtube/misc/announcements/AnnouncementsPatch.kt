@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.misc.announcements
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -19,7 +17,6 @@ val announcementsPatch = bytecodePatch(
 ) {
     dependsOn(
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -33,8 +30,6 @@ val announcementsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.announcements.announcementsPatch")
-
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_announcements"),
         )

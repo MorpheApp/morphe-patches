@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.PATCH_DESCRIPTION_SANITIZE_SHARING_LINKS
 import app.morphe.patches.shared.PATCH_NAME_SANITIZE_SHARING_LINKS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -39,8 +37,6 @@ internal fun sanitizeSharingLinksPatch(
 
     execute {
         executeBlock()
-
-        addResources("shared", "misc.privacy.sanitizeSharingLinksPatch")
 
         val sanitizePreference = SwitchPreference("morphe_sanitize_sharing_links")
 
