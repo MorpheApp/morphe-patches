@@ -1,4 +1,4 @@
-name: Push strings
+name: Crowdin push from GitHub
 
 on:
   workflow_dispatch:
@@ -6,7 +6,8 @@ on:
     branches:
       - dev
     paths:
-      - patches/src/main/resources/addresources/values/strings.xml
+      - app/src/main/res/values/plurals.xml
+      - app/src/main/res/values/strings.xml
 
 jobs:
   push:
@@ -15,11 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
-      - name: Preprocess strings
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean preprocessCrowdinStrings
 
       - name: Push strings
         uses: crowdin/github-action@v2
