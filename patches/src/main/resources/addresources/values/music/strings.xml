@@ -1,0 +1,94 @@
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+    <!-- layout.branding.customBrandingPatch -->
+    <string name="morphe_custom_branding_name_entry_2" translatable="false">YT Music Morphe</string>
+    <string name="morphe_custom_branding_name_entry_3" translatable="false">Music Morphe</string>
+    <string name="morphe_custom_branding_name_entry_4" translatable="false">Music</string>
+    <!-- misc.settings.settingsPatch -->
+    <string name="morphe_settings_music_screen_0_about_title">About</string>
+    <string name="morphe_settings_music_screen_1_ads_title">Ads</string>
+    <string name="morphe_settings_music_screen_2_general_title">General</string>
+    <string name="morphe_settings_music_screen_3_player_title">Player</string>
+    <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
+    <!-- ad.video.hideVideoAdsPatch -->
+    <string name="morphe_music_hide_video_ads_title">Hide video ads</string>
+    <string name="morphe_music_hide_video_ads_summary_on">Video ads are hidden</string>
+    <string name="morphe_music_hide_video_ads_summary_off">Video ads are shown</string>
+    <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+    <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
+    <string name="morphe_music_play_permanent_repeat_summary_on">Permanent repeat is enabled</string>
+    <string name="morphe_music_play_permanent_repeat_summary_off">Permanent repeat is disabled</string>
+    <!-- layout.buttons.hideButtons -->
+    <string name="morphe_music_hide_cast_button_title">Hide cast button</string>
+    <string name="morphe_music_hide_cast_button_summary_on">Cast button is hidden</string>
+    <string name="morphe_music_hide_cast_button_summary_off">Cast button is shown</string>
+    <string name="morphe_music_hide_history_button_title">Hide history button</string>
+    <string name="morphe_music_hide_history_button_summary_on">History button is hidden</string>
+    <string name="morphe_music_hide_history_button_summary_off">History button is shown</string>
+    <string name="morphe_music_hide_notification_button_title">Hide notification button</string>
+    <string name="morphe_music_hide_notification_button_summary_on">Notification button is hidden</string>
+    <string name="morphe_music_hide_notification_button_summary_off">Notification button is shown</string>
+    <string name="morphe_music_hide_search_button_title">Hide search button</string>
+    <string name="morphe_music_hide_search_button_summary_on">Search button is hidden</string>
+    <string name="morphe_music_hide_search_button_summary_off">Search button is shown</string>
+    <!-- layout.compactheader.hideCategoryBar -->
+    <string name="morphe_music_hide_category_bar_title">Hide category bar</string>
+    <string name="morphe_music_hide_category_bar_summary_on">Category bar is hidden</string>
+    <string name="morphe_music_hide_category_bar_summary_off">Category bar is shown</string>
+    <!-- layout.miniplayercolor.changeMiniplayerColor -->
+    <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
+    <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer color matches fullscreen player</string>
+    <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer uses default color</string>
+    <!-- layout.navigationbar.navigationBarPatch -->
+    <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
+    <string name="morphe_music_navigation_bar_screen_summary">Hide or change navigation bar buttons</string>
+    <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_navigation_bar_home_button_title">Hide Home</string>
+    <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Home button is hidden</string>
+    <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Home button is shown</string>
+    <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_navigation_bar_samples_button_title">Hide Samples</string>
+    <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Samples button is hidden</string>
+    <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Samples button is shown</string>
+    <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_navigation_bar_explore_button_title">Hide Explore</string>
+    <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Explore button is hidden</string>
+    <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Explore button is shown</string>
+    <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_navigation_bar_library_button_title">Hide Library</string>
+    <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Library button is hidden</string>
+    <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Library button is shown</string>
+    <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Hide Upgrade</string>
+    <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Upgrade button is hidden</string>
+    <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Upgrade button is shown</string>
+    <string name="morphe_music_hide_navigation_bar_title">Hide navigation bar</string>
+    <string name="morphe_music_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
+    <string name="morphe_music_hide_navigation_bar_summary_off">Navigation bar is shown</string>
+    <string name="morphe_music_hide_navigation_bar_labels_title">Hide navigation button labels</string>
+    <string name="morphe_music_hide_navigation_bar_labels_summary_on">Labels are hidden</string>
+    <string name="morphe_music_hide_navigation_bar_labels_summary_off">Labels are shown</string>
+    <!-- layout.premium.hideGetPremiumPatch -->
+    <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
+    <string name="morphe_music_hide_get_premium_label_summary_on">Label is hidden</string>
+    <string name="morphe_music_hide_get_premium_label_summary_off">Label is shown</string>
+    <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+    <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
+    <string name="morphe_music_hide_upgrade_button_summary_on">Button is hidden</string>
+    <string name="morphe_music_hide_upgrade_button_summary_off">Button is shown</string>
+</resources>

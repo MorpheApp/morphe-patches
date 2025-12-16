@@ -1,0 +1,165 @@
+<!--
+
+    All strings must have a unique path, even if the same string is declared in two different apps.
+    This is because Crowdin requires temporarily flattening this file and removing the <app> and <patch> elements.
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+    <!-- layout.branding.baseCustomBrandingPatch -->
+    <string name="morphe_custom_branding_name_title">App name</string>
+    <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+    <string name="morphe_custom_branding_name_entry_5">Custom</string>
+    <string name="morphe_custom_branding_icon_title">App icon</string>
+    <string name="morphe_custom_branding_icon_entry_1">Original</string>
+    <string name="morphe_custom_branding_icon_entry_2">Morphe light</string>
+    <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
+    <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+    <string name="morphe_custom_branding_icon_entry_4">Custom</string>
+    <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+    <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
+    <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>
+    <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
+    <!-- misc.settings.settingsResourcePatch -->
+    <string name="morphe_settings_submenu_title">Settings</string>
+    <string name="morphe_settings_title" translatable="false">Morphe</string>
+    <string name="morphe_settings_about_donate">Donate</string>
+    <string name="morphe_settings_confirm_user_dialog_title">Are you sure you want to proceed?</string>
+    <string name="morphe_settings_save">Save</string>
+    <string name="morphe_settings_reset">Reset</string>
+    <string name="morphe_settings_reset_color">Reset color</string>
+    <string name="morphe_settings_color_invalid">Invalid color</string>
+    <string name="morphe_settings_restart_title">Restart required</string>
+    <string name="morphe_settings_restart_dialog_message">Restart the app for this change to take effect.</string>
+    <string name="morphe_settings_restart">Restart</string>
+    <string name="morphe_settings_import">Import</string>
+    <string name="morphe_settings_import_copy">Copy</string>
+    <string name="morphe_settings_import_reset">Morphe settings reset to default</string>
+    <string name="morphe_settings_import_success">Imported %d settings</string>
+    <string name="morphe_settings_import_failure_parse">Import failed: %s</string>
+    <string name="morphe_settings_search_hint">Search settings</string>
+    <string name="morphe_settings_search_no_results_title">No results found for \'%s\'</string>
+    <string name="morphe_settings_search_no_results_summary">Try another keyword</string>
+    <string name="morphe_settings_search_recent_searches">Recent searches</string>
+    <string name="morphe_settings_search_remove_message">Remove from search history?</string>
+    <string name="morphe_settings_search_clear_history">Clear search history</string>
+    <string name="morphe_settings_search_clear_history_message">Are you sure you want to clear all search history?</string>
+    <string name="morphe_settings_search_tips_title">Search Tips</string>
+    <string name="morphe_settings_search_tips_summary">"• Tap a path to navigate to it
+• Long-press a setting to navigate to it
+• Press Enter to save a search query to history
+• Search ignores casing and punctuation
+• Parent settings appear above disabled child settings"</string>
+    <string name="morphe_settings_search_empty_history_title">Search history is empty</string>
+    <string name="morphe_settings_search_empty_history_summary">To save search history, type a search query and press Enter</string>
+    <string name="morphe_settings_search_history_title">Show settings search history</string>
+    <string name="morphe_settings_search_history_summary_on">Settings search history is shown</string>
+    <string name="morphe_settings_search_history_summary_off">Settings search history is not shown</string>
+    <string name="morphe_settings_disable_bold_icons_title">Disable bold icons</string>
+    <string name="morphe_settings_disable_bold_icons_summary_on">Icons are not bold</string>
+    <string name="morphe_settings_disable_bold_icons_summary_off">Icons are bold</string>
+    <string name="morphe_show_menu_icons_title">Show Morphe setting icons</string>
+    <string name="morphe_show_menu_icons_summary_on">Setting icons are shown</string>
+    <string name="morphe_show_menu_icons_summary_off">Setting icons are not shown</string>
+    <string name="morphe_language_title">Morphe language</string>
+    <string name="morphe_language_user_dialog_message">"Translations for some languages may be missing or incomplete.
+
+To translate new languages or improve the existing translations, visit translate.morphe.software"</string>
+    <string name="morphe_language_DEFAULT">App language</string>
+    <string name="morphe_pref_import_export_title">Import / Export</string>
+    <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
+    <!-- Settings about dialog. -->
+    <string name="morphe_settings_about_links_body">You are using Morphe Patches version &lt;i>%s&lt;/i></string>
+    <string name="morphe_settings_about_links_dev_header">Note</string>
+    <string name="morphe_settings_about_links_dev_body">This version is a pre-release and you may experience unexpected issues</string>
+    <string name="morphe_settings_about_links_header">Official links</string>
+    <!-- misc.gms.gmsCoreSupportResourcePatch -->
+    <string name="microg_settings_title">GmsCore Settings</string>
+    <string name="microg_settings_summary">Settings for GmsCore</string>
+    <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+    <string name="gms_core_toast_not_installed_message">MicroG GmsCore is not installed. Install it.</string>
+    <string name="gms_core_dialog_title">Action needed</string>
+    <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore does not have permission to run in the background.
+
+Follow the \"Don\'t kill my app\" guide for your phone, and apply the instructions to your MicroG installation.
+
+This is required for the app to work."</string>
+    <string name="gms_core_dialog_open_website_text">Open website</string>
+    <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG GmsCore battery optimizations must be disabled to prevent issues.
+
+Disabling battery optimizations for MicroG will not negatively affect battery usage.
+
+Tap the continue button and allow optimization changes."</string>
+    <string name="gms_core_dialog_continue_text">Continue</string>
+    <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+    <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
+    <string name="morphe_spoof_video_streams_screen_summary">Spoof the client video streams to prevent playback issues</string>
+    <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
+    <string name="morphe_spoof_video_streams_screen_summary">Spoof the client video streams to prevent playback issues</string>
+    <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
+    <string name="morphe_spoof_video_streams_summary_on">"Video streams are spoofed
+
+If you are a YouTube Premium user, this setting may not be required"</string>
+    <string name="morphe_spoof_video_streams_summary_off">"Video streams are not spoofed
+
+Playback may not work"</string>
+    <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
+    <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
+    <!-- misc.audio.forceOriginalAudioPatch -->
+    <string name="morphe_force_original_audio_title">Force original audio language</string>
+    <string name="morphe_force_original_audio_summary_on">Using original audio language</string>
+    <string name="morphe_force_original_audio_summary_off">Using default audio</string>
+    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to any client except Android Studio</string>
+    <!-- misc.debugging.enableDebuggingPatch -->
+    <string name="morphe_debug_screen_title">Debugging</string>
+    <string name="morphe_debug_screen_summary">Enable or disable debugging options</string>
+    <string name="morphe_debug_title">Debug logging</string>
+    <string name="morphe_debug_summary_on">Debug logs are enabled</string>
+    <string name="morphe_debug_summary_off">Debug logs are disabled</string>
+    <string name="morphe_debug_stacktrace_title">Log stack traces</string>
+    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack trace</string>
+    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack trace</string>
+    <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>
+    <string name="morphe_debug_toast_on_error_summary_on">Toast is shown if error occurs</string>
+    <string name="morphe_debug_toast_on_error_summary_off">Toast is not shown if error occurs</string>
+    <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Morphe error notifications.
+
+You will not be notified of any unexpected events."</string>
+    <string name="morphe_debug_export_logs_to_clipboard_title">Export debug logs</string>
+    <string name="morphe_debug_export_logs_to_clipboard_summary">Copies Morphe debug logs to the clipboard</string>
+    <string name="morphe_debug_logs_disabled">Debug logging is disabled</string>
+    <string name="morphe_debug_logs_none_found">No logs found</string>
+    <string name="morphe_debug_logs_copied_to_clipboard">Logs copied</string>
+    <string name="morphe_debug_logs_failed_to_export">Failed to export logs: %s</string>
+    <string name="morphe_debug_logs_clear_buffer_title">Clear debug logs</string>
+    <string name="morphe_debug_logs_clear_buffer_summary">Clears all stored Morphe debug logs</string>
+    <string name="morphe_debug_logs_clear_toast">Logs cleared</string>
+    <string name="morphe_debug_feature_flags_manager_title">Feature flags manager</string>
+    <string name="morphe_debug_feature_flags_manager_summary">Manage boolean feature flags</string>
+    <string name="morphe_debug_feature_flags_manager_active_header">Active flags (%d)</string>
+    <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked flags (%d)</string>
+    <string name="morphe_debug_feature_flags_manager_search_hint">Search flags...</string>
+    <string name="morphe_debug_feature_flags_manager_toast_saved">Flags saved</string>
+    <string name="morphe_debug_feature_flags_manager_toast_reset">Flags reset</string>
+    <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copied to clipboard</string>
+    <!-- misc.privacy.sanitizeSharingLinksPatch -->
+    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
+    <string name="morphe_sanitize_sharing_links_summary_on">Tracking query parameter is removed from shared links</string>
+    <string name="morphe_sanitize_sharing_links_summary_off">Tracking query parameter is not removed from shared links</string>
+    <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
+    <string name="morphe_replace_music_with_youtube_summary_on">Shared links use youtube.com</string>
+    <string name="morphe_replace_music_with_youtube_summary_off">Shared links use music.youtube.com</string>
+</resources>
