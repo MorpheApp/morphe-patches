@@ -1,8 +1,11 @@
 package app.morphe.patches.youtube.video.information
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
@@ -149,6 +152,21 @@ val videoInformationPatch = bytecodePatch(
                 )
             }
         }
+
+        val PlayerStatusFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf(PlayerStatusEnumFingerprint.originalClassDef.type),
+            filters = listOf(
+                // The opcode for the first index of the method is sget-object.
+                // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
+                opcode(Opcode.SGET_OBJECT),
+                methodCall(
+                    definingClass = "Lj${'$'}/time/Instant;",
+                    name = "plus"
+                ),
+            )
+        )
 
         playerStatusMethod =
             PlayerStatusFingerprint.match(PlayerInitFingerprint.originalClassDef).method

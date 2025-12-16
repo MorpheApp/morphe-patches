@@ -45,18 +45,17 @@ internal object PlayerInitFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using class found in [PlayerInitFingerprint].
- */
-internal object PlayerStatusFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        methodCall(
-            definingClass = "Lj${'$'}/time/Instant;",
-            name = "plus"
-        ),
+internal object PlayerStatusEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
+        "NEW",
+        "PLAYBACK_PENDING",
+        "PLAYBACK_LOADED",
+        "PLAYBACK_INTERRUPTED",
+        "INTERSTITIAL_REQUESTED",
+        "INTERSTITIAL_PLAYING",
+        "VIDEO_PLAYING",
+        "ENDED",
     )
 )
 

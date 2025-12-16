@@ -12,6 +12,8 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.playerStatusMethod
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import com.android.tools.smali.dexlib2.Opcode
 
 @Suppress("unused")
 internal val exitFullscreenPatch = bytecodePatch(
@@ -51,9 +53,14 @@ internal val exitFullscreenPatch = bytecodePatch(
             ListPreference("morphe_exit_fullscreen")
         )
 
-        playerStatusMethod.addInstruction(
-            0,
-            "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->endOfVideoReached(Ljava/lang/Enum;)V"
-        )
+        playerStatusMethod.apply {
+            val insertIndex =
+                indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT) + 1
+
+            addInstruction(
+                insertIndex,
+                "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->endOfVideoReached(Ljava/lang/Enum;)V",
+            )
+        }
     }
 }
