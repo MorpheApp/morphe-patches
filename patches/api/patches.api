@@ -7,15 +7,7 @@ public final class app/morphe/patches/all/misc/packagename/ChangePackageNamePatc
 }
 
 public final class app/morphe/patches/all/misc/resources/AddResourcesPatchKt {
-	public static final fun addResource (Ljava/lang/String;Lapp/morphe/util/resource/BaseResource;)Z
-	public static final fun addResources (Lapp/morphe/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;)Z
-	public static final fun addResources (Ljava/lang/String;Ljava/lang/Iterable;)Z
 	public static final fun addResources (Ljava/lang/String;Ljava/lang/String;)V
-	public static final fun addResources (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)Z
-	public static final fun addResources (Ljava/lang/String;Ljava/util/List;)Z
-	public static synthetic fun addResources$default (Lapp/morphe/patcher/patch/Patch;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Z
-	public static synthetic fun addResources$default (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;ILjava/lang/Object;)Z
-	public static final fun getAddResourcesPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
 }
 
 public abstract interface class app/morphe/patches/all/misc/transformation/IMethodCall {
