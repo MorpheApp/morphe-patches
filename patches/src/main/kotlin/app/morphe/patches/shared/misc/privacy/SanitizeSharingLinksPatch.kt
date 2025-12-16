@@ -33,8 +33,6 @@ internal fun sanitizeSharingLinksPatch(
 ) {
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
         executeBlock()
 

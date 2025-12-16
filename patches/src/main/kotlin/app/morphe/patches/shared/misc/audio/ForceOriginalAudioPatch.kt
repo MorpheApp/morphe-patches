@@ -43,8 +43,6 @@ internal fun forceOriginalAudioPatch(
 
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
         preferenceScreen.addPreferences(
             SwitchPreference(

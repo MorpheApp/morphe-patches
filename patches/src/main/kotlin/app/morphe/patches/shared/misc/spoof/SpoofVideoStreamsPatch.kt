@@ -49,8 +49,6 @@ internal fun spoofVideoStreamsPatch(
 ) {
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
         mainActivityOnCreateFingerprint.method.addInstruction(
             0,

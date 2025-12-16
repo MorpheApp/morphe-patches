@@ -10,10 +10,8 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AccountCredentialsInvalidTextPatch;"
 
 internal val accountCredentialsInvalidTextPatch = bytecodePatch {
-    dependsOn(
-        sharedExtensionPatch,
-        addResourcesPatch
-    )
+
+    dependsOn(sharedExtensionPatch)
 
     execute {
         // If the user recently changed their account password,

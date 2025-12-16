@@ -25,7 +25,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-            addResourcesPatch,
             versionCheckPatch,
             userAgentClientSpoofPatch
         )
