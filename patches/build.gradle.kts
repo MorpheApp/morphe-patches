@@ -24,24 +24,6 @@ dependencies {
 }
 
 tasks {
-    // TODO: Fix AddResourcesPatch so strings never need pre-processing.
-    register<JavaExec>("preprocessCrowdinStrings") {
-        description = "Preprocess strings for Crowdin push"
-
-        dependsOn(compileKotlin)
-
-        classpath = sourceSets["main"].runtimeClasspath
-        mainClass.set("app.morphe.util.CrowdinPreprocessorKt")
-
-        args = listOf(
-            "src/main/resources/addresources/values/strings.xml",
-            // Ideally this would use build/tmp/crowdin/strings.xml
-            // But using that does not work with Crowdin pull because
-            // it does not recognize the strings.xml file belongs to this project.
-            "src/main/resources/addresources/values/strings.xml"
-        )
-    }
-
     register<JavaExec>("generatePatchesList") {
         description = "Build patch with patch list"
 
