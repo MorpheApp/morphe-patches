@@ -188,6 +188,7 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
+        addAppResources("sharedyoutube")
         addAppResources("youtube")
 
         // Add an "about" preference to the top.
