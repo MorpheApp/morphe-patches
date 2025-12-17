@@ -31,13 +31,15 @@
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
     <string-array name="morphe_spoof_video_streams_client_type_entries">
+        <item>Android Music No SDK</item>
+        <item>Android No SDK</item>
         <item>Android VR</item>
         <item>visionOS</item>
-        <item>Android No SDK</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
-        <item>ANDROID_VR_1_43_32</item>
-        <item>VISIONOS</item>
+        <item>ANDROID_MUSIC_NO_SDK</item>
         <item>ANDROID_NO_SDK</item>
+        <item>ANDROID_VR_1_47_48</item>
+        <item>VISIONOS</item>
     </string-array>
 </resources>
