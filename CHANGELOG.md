@@ -1,3 +1,15 @@
+# [1.0.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2025-12-17)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Restore missing file during commit conflict resolution ([69823a5](https://github.com/MorpheApp/morphe-patches/commit/69823a5d8788fd3391d32260341895fcc28f1051))
+
+
+### Features
+
+* **Spoof video streams:** Default client maintenance ([#11](https://github.com/MorpheApp/morphe-patches/issues/11)) ([339f897](https://github.com/MorpheApp/morphe-patches/commit/339f897e422cfaa5d34b8ffcf0334b96ce50d5e7))
+
 # [1.0.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2025-12-16)
 
 
