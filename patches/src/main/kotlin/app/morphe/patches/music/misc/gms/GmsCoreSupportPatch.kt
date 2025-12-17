@@ -1,8 +1,6 @@
 package app.morphe.patches.music.misc.gms
 
 import app.morphe.patcher.patch.Option
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.music.misc.gms.Constants.MORPHE_MUSIC_PACKAGE_NAME
@@ -46,7 +44,6 @@ private fun gmsCoreSupportResourcePatch(
     gmsCoreVendorGroupIdOption = gmsCoreVendorGroupIdOption,
     spoofedPackageSignature = "afb0fed5eeaebdd86f56a97742f4b6b33ef59875",
     executeBlock = {
-        addResources("shared", "misc.gms.gmsCoreSupportResourcePatch")
 
         val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
 
@@ -61,7 +58,6 @@ private fun gmsCoreSupportResourcePatch(
     }
 ) {
     dependsOn(
-        addResourcesPatch,
         settingsPatch,
         fileProviderPatch(
             MUSIC_PACKAGE_NAME,

@@ -4,8 +4,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
@@ -27,7 +25,6 @@ val disableDoubleTapActionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch
     )
 
@@ -49,8 +46,6 @@ val disableDoubleTapActionsPatch = bytecodePatch(
                 "Disable double tap actions requires 20.14.43+"
             )
         }
-
-        addResources("youtube", "interaction.doubletap.disableDoubleTapActionsPatch")
 
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_disable_chapter_skip_double_tap"),

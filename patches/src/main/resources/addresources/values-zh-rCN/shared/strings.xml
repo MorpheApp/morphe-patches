@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">设置</string>
+  <string name="morphe_settings_confirm_user_dialog_title">确定要继续吗？</string>
+  <string name="morphe_settings_save">保存</string>
+  <string name="morphe_settings_reset">重置</string>
+  <string name="morphe_settings_reset_color">重置颜色</string>
+  <string name="morphe_settings_color_invalid">无效的颜色</string>
+  <string name="morphe_settings_restart_title">需要重启</string>
+  <string name="morphe_settings_restart_dialog_message">重启应用以使更改生效。</string>
+  <string name="morphe_settings_restart">重启</string>
+  <string name="morphe_settings_import">导入</string>
+  <string name="morphe_settings_import_copy">复制</string>
+  <string name="morphe_settings_import_reset">Morphe 设置重置为默认</string>
+  <string name="morphe_settings_import_success">导入 %d 个设置</string>
+  <string name="morphe_settings_import_failure_parse">导入失败：%s</string>
+  <string name="morphe_settings_search_hint">搜索设置</string>
+  <string name="morphe_settings_search_no_results_title">未找到“%s”的结果</string>
+  <string name="morphe_settings_search_no_results_summary">尝试其他关键字</string>
+  <string name="morphe_settings_search_recent_searches">最近搜索</string>
+  <string name="morphe_settings_search_remove_message">从搜索历史记录中删除？</string>
+  <string name="morphe_settings_search_clear_history">清除搜索历史</string>
+  <string name="morphe_settings_search_clear_history_message">您确定要清除所有搜索历史吗？</string>
+  <string name="morphe_settings_search_tips_title">搜索技巧</string>
+  <string name="morphe_settings_search_tips_summary">"• 点击路径以导航到该位置
+• 长按设置以导航到该位置
+• 按回车键将搜索查询保存到历史记录
+• 搜索忽略大小写和标点符号
+• 父设置显示在禁用的子设置上方"</string>
+  <string name="morphe_settings_search_empty_history_title">搜索历史为空</string>
+  <string name="morphe_settings_search_empty_history_summary">要保存搜索历史，请键入搜索查询并按回车键</string>
+  <string name="morphe_settings_search_history_title">显示设置搜索历史记录</string>
+  <string name="morphe_settings_search_history_summary_on">设置搜索历史记录已显示</string>
+  <string name="morphe_settings_search_history_summary_off">不显示设置搜索历史记录</string>
+  <string name="morphe_show_menu_icons_title">显示Morphe设置图标</string>
+  <string name="morphe_show_menu_icons_summary_on">设置图标已显示</string>
+  <string name="morphe_show_menu_icons_summary_off">未显示设置图标</string>
+  <string name="morphe_language_title">Morphe 语言</string>
+  <string name="morphe_language_user_dialog_message">"某些语言的翻译可能缺失或不完整。
+
+要翻译新语言或改进现有翻译，请访问 translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">应用语言</string>
+  <string name="morphe_pref_import_export_title">导入/导出</string>
+  <string name="morphe_pref_import_export_summary">导入/导出 Morphe 设置</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_dev_header">注意</string>
+  <string name="morphe_settings_about_links_dev_body">此版本是预发布版本，您可能会遇到意外问题</string>
+  <string name="morphe_settings_about_links_header">官方链接</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">调试</string>
+  <string name="morphe_debug_screen_summary">启用或禁用调试选项</string>
+  <string name="morphe_debug_title">调试日志</string>
+  <string name="morphe_debug_summary_on">已启用调试日志记录</string>
+  <string name="morphe_debug_summary_off">已禁用调试日志记录</string>
+  <string name="morphe_debug_stacktrace_title">记录堆栈跟踪</string>
+  <string name="morphe_debug_stacktrace_summary_on">调试日志包括堆栈跟踪</string>
+  <string name="morphe_debug_stacktrace_summary_off">调试日志不包括堆栈跟踪</string>
+  <string name="morphe_debug_toast_on_error_title">在发生 Morphe 错误时显示 Toast</string>
+  <string name="morphe_debug_toast_on_error_summary_on">发生错误时显示Toast</string>
+  <string name="morphe_debug_toast_on_error_summary_off">发生错误时不显示Toast</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"关闭错误 Toast 会隐藏所有 Morphe 错误通知。
+
+您不会收到任何意外事件的通知。"</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">导出调试日志</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">将 Morphe 调试日志复制到剪贴板</string>
+  <string name="morphe_debug_logs_disabled">调试日志记录已禁用</string>
+  <string name="morphe_debug_logs_none_found">未找到日志</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">日志已复制</string>
+  <string name="morphe_debug_logs_failed_to_export">导出日志失败：%s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">清除调试日志</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">清除所有存储的 Morphe 调试日志</string>
+  <string name="morphe_debug_logs_clear_toast">日志已清除</string>
+  <string name="morphe_debug_feature_flags_manager_title">功能标志 Manager</string>
+  <string name="morphe_debug_feature_flags_manager_summary">管理布尔功能标志</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">活动标志 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">已阻止标志 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">搜索标志...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">标志已保存</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">标志已重置</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">标志已复制到剪贴板</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">GmsCore 设置</string>
+  <string name="microg_settings_summary">GmsCore 的设置</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore 未安装。请先安装。</string>
+  <string name="gms_core_dialog_title">需要采取措施</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore 无法在后台运行。
+
+请按照「Don't kill my app」网站上对应手机的指南，允许 MicroG 在后台运行。
+
+这是应用程序正常运行的必要条件。"</string>
+  <string name="gms_core_dialog_open_website_text">打开网站</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"必须禁用 MicroG GmsCore 的电池优化，以防止出现问题。
+
+禁用 MicroG 的电池优化不会对电池续航时间造成负面影响。
+
+点击继续按钮并允许优化更改。"</string>
+  <string name="gms_core_dialog_continue_text">继续</string>
+</resources>

@@ -3,8 +3,6 @@ package app.morphe.patches.music.layout.compactheader
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -26,7 +24,6 @@ val hideCategoryBar = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -38,8 +35,6 @@ val hideCategoryBar = bytecodePatch(
     )
 
     execute {
-        addResources("music", "layout.compactheader.hideCategoryBar")
-
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_category_bar"),
         )

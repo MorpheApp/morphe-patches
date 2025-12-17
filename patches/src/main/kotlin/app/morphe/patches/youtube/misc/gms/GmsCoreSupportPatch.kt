@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.misc.gms
 
 import app.morphe.patcher.patch.Option
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
@@ -52,7 +50,6 @@ private fun gmsCoreSupportResourcePatch(
     gmsCoreVendorGroupIdOption = gmsCoreVendorGroupIdOption,
     spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
     executeBlock = {
-        addResources("shared", "misc.gms.gmsCoreSupportResourcePatch")
 
         val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
 
@@ -67,7 +64,6 @@ private fun gmsCoreSupportResourcePatch(
     }
 ) {
     dependsOn(
-        addResourcesPatch,
         settingsPatch,
         accountCredentialsInvalidTextPatch
     )

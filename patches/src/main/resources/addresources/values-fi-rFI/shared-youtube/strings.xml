@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
+  <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ilmoitus</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Kellon historiaa ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä todennäköisesti johtuu DNS mainosten estäjä tai verkkovälityspalvelin.&lt;br&gt;&lt;br&gt;Korjataksesi tämän, valkoiselle listalle &lt;b&gt;s.youtube.com&lt;/b&gt; tai poistaaksesi kaikki DNS-estäjät ja -profiilit.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Älä näytä uudelleen</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Naamioi asiakasohjelman videovirrat toisto-ongelmien estämiseksi</string>
+  <string name="morphe_spoof_video_streams_title">Naamioi videovirrat</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Videovirrat on naamioitu
+
+Jos olet YouTube Premium -käyttäjä, tätä asetusta ei välttämättä tarvita"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Videovirtoja ei naamioida
+
+Toisto ei välttämättä toimi"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
+  <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä ääntä</string>
+  <string name="morphe_force_original_audio_summary_off">Käytetään oletusääntä</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, muuta \"Naamioi videovirrat\" mihin tahansa asiakasohjelmaan paitsi Android Studioon</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Seurantakyselyparametrit poistetaan jaetuista linkeistä</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Seurantakyselyparametrejä ei poisteta jaetuista linkeistä</string>
+  <string name="morphe_replace_music_with_youtube_title">Muuta jakolinkit youtube.com-sivustoksi</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Jaetut linkit käyttävät youtube.com-sivustoa</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Jaetut linkit käyttävät music.youtube.com-sivustoa</string>
+</resources>

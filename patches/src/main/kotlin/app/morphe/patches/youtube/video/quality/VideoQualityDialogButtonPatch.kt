@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
@@ -40,15 +38,12 @@ val videoQualityDialogButtonPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         rememberVideoQualityPatch,
         videoQualityButtonResourcePatch,
         playerControlsPatch,
     )
 
     execute {
-        addResources("youtube", "video.quality.button.videoQualityDialogButtonPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_video_quality_dialog_button"),
         )

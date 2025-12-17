@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Uygulama adı</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>
+  <string name="morphe_custom_branding_icon_entry_1">Orijinal</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirimi</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Bir daha gösterme</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Video akışlarını taklit et</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Oynatma sorunlarını önlemek için istemci video akışlarını taklit et</string>
+  <string name="morphe_spoof_video_streams_title">Video akışlarını taklit et</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Video akışları taklit ediliyor.
+
+YouTube Premium kullanıcısıysanız, bu ayar gerekli olmayabilir"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Video akışları taklit edilmez
+
+Oynatma çalışmayabilir"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Bu ayarı devre dışı bırakmak oynatma sorunlarına yol açabilir.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Orijinal ses dilini zorla</string>
+  <string name="morphe_force_original_audio_summary_on">Orijinal ses dili kullanılıyor</string>
+  <string name="morphe_force_original_audio_summary_off">Varsayılan ses kullanılıyor</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\' ayarını Android Studio dışındaki herhangi bir istemciye değiştirin</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Paylaşım bağlantılarını temizle</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Paylaşılan bağlantılardan izleyici sorgu parametresi kaldırılır</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Paylaşılan bağlantılardan izleyici sorgu parametresi kaldırılmaz</string>
+  <string name="morphe_replace_music_with_youtube_title">Paylaşım bağlantılarını youtube.com olarak değiştir</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Paylaşılan bağlantılar youtube.com kullanır</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Paylaşılan bağlantılar music.youtube.com kullanır</string>
+</resources>

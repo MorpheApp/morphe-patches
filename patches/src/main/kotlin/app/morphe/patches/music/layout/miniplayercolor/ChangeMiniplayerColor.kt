@@ -4,8 +4,6 @@ package app.morphe.patches.music.layout.miniplayercolor
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -32,7 +30,6 @@ val changeMiniplayerColor = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         resourceMappingPatch
     )
 
@@ -45,8 +42,6 @@ val changeMiniplayerColor = bytecodePatch(
     )
 
     execute {
-        addResources("music", "layout.miniplayercolor.changeMiniplayerColor")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_music_change_miniplayer_color"),
         )

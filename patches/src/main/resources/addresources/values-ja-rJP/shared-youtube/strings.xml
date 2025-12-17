@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">アプリ名</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
+  <string name="morphe_custom_branding_icon_entry_1">オリジナル</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からのお知らせ</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">動画ストリームを偽装</string>
+  <string name="morphe_spoof_video_streams_screen_summary">動画再生の失敗を回避するために、クライアントの動画ストリームを偽装します</string>
+  <string name="morphe_spoof_video_streams_title">動画ストリームを偽装</string>
+  <string name="morphe_spoof_video_streams_summary_on">"動画ストリームは偽装されます
+
+YouTube Premium ユーザーの場合、この設定は必要ない可能性があります"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"動画ストリームは偽装されません
+
+再生に失敗する可能性があります"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">この設定を無効にすると、動画の再生に失敗するようになる可能性があります。</string>
+  <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">オリジナルの音声を強制的に使用</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">この機能を使用するには、「動画ストリームを偽装」のクライアントを Android Studio 以外の任意のクライアントに変更してください</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">共有リンクから追跡パラメータが削除されます</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">共有リンクから追跡パラメータは削除されません</string>
+  <string name="morphe_replace_music_with_youtube_title">共有リンクを youtube.com に変更</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">共有リンクには youtube.com が使用されます</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">共有リンクには music.youtube.com が使用されます</string>
+</resources>

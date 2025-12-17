@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -25,12 +23,9 @@ private val downloadsResourcePatch = resourcePatch {
     dependsOn(
         playerControlsPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.downloads.downloadsResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_external_downloader_screen",

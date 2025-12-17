@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">App-Name</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">App-Symbol</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Hinweis</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setze &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nicht wieder anzeigen</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Spoofe Video-Streams</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Spoofe die Client-Video-Streams, um Wiedergabeprobleme zu verhindern</string>
+  <string name="morphe_spoof_video_streams_title">Spoofe Video-Streams</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Videostreams werden gespooft
+
+Wenn Sie ein YouTube Premium-Nutzer sind, ist diese Einstellung möglicherweise nicht erforderlich"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Video-Streams werden nicht gespooft
+
+Die Wiedergabe funktioniert möglicherweise nicht"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Standard-Client</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Original Audio erzwingen</string>
+  <string name="morphe_force_original_audio_summary_on">Original-Audiosprache verwenden</string>
+  <string name="morphe_force_original_audio_summary_off">Standardaudio verwenden</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändere \"Video-Streams fälschen\" auf einen beliebigen Client außer Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Freigabelinks säubern</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Tracking-Abfrageparameter wird aus freigegebenen Links entfernt</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Tracking-Abfrageparameter wird nicht aus freigegebenen Links entfernt</string>
+  <string name="morphe_replace_music_with_youtube_title">Teilen-Links zu youtube.com ändern</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Geteilte Links verwenden youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Geteilte Links verwenden music.youtube.com</string>
+</resources>

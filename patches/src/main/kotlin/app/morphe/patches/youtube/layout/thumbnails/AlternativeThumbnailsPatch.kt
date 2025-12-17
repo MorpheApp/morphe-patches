@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.thumbnails
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -26,7 +24,6 @@ val alternativeThumbnailsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         navigationBarHookPatch,
         cronetImageUrlHookPatch,
     )
@@ -42,8 +39,6 @@ val alternativeThumbnailsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.thumbnails.alternativeThumbnailsPatch")
-
         val entries = "morphe_alt_thumbnail_options_entries"
         val values = "morphe_alt_thumbnail_options_entry_values"
         PreferenceScreen.ALTERNATIVE_THUMBNAILS.addPreferences(

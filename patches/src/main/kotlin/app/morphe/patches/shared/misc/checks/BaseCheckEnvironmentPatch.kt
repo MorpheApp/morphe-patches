@@ -25,8 +25,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableEncodedValue
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableLongEncodedValue
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableStringEncodedValue
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
 import com.android.tools.smali.dexlib2.immutable.value.ImmutableLongEncodedValue
 import com.android.tools.smali.dexlib2.immutable.value.ImmutableStringEncodedValue
@@ -49,12 +47,9 @@ fun checkEnvironmentPatch(
 
     dependsOn(
         extensionPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("shared", "misc.checks.checkEnvironmentPatch")
-
         fun setPatchInfo() {
             fun <T : MutableEncodedValue> Fingerprint.setClassFields(vararg fieldNameValues: Pair<String, T>) {
                 val fieldNameValueMap = mapOf(*fieldNameValues)

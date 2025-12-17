@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
@@ -34,7 +32,6 @@ internal val exitFullscreenPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         playerTypeHookPatch,
         playerControlsPatch,
         videoInformationPatch
@@ -47,8 +44,6 @@ internal val exitFullscreenPatch = bytecodePatch(
         "Lapp/morphe/extension/youtube/patches/ExitFullscreenPatch;"
 
     execute {
-        addResources("youtube", "layout.player.fullscreen.exitFullscreenPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             ListPreference("morphe_exit_fullscreen")
         )

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Appnaam</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">App-pictogram</string>
+  <string name="morphe_custom_branding_icon_entry_1">Origineel</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Melding</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Niet meer weergeven</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Videostreams spoofen</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Spoof de client-videostreams om afspeelproblemen te voorkomen</string>
+  <string name="morphe_spoof_video_streams_title">Videostreams vervalsen</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Videostreams worden gespooft
+
+Als je een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet vereist"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Videostreams worden niet gespoofed
+
+Afspeelproblemen kunnen optreden"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Het uitschakelen van deze instelling kan afspeelproblemen veroorzaken.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Standaard client</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Forceer de originele audiotaal</string>
+  <string name="morphe_force_original_audio_summary_on">De oorspronkelijke audiotaal gebruiken</string>
+  <string name="morphe_force_original_audio_summary_off">Standaard audio gebruiken</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Om deze functie te gebruiken, wijzig \'Videostreams spoofen\' naar elke client behalve Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Deelbare links opschonen</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Tracking queryparameter wordt verwijderd uit gedeelde links</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Tracking queryparameter wordt niet verwijderd uit gedeelde links</string>
+  <string name="morphe_replace_music_with_youtube_title">Deelkoppelingen wijzigen naar youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Gedeelde koppelingen gebruiken youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Gedeelde koppelingen gebruiken music.youtube.com</string>
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Nastavení</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Opravdu chcete pokračovat?</string>
+  <string name="morphe_settings_save">Uložit</string>
+  <string name="morphe_settings_reset">Výchozí</string>
+  <string name="morphe_settings_reset_color">Obnovit barvu</string>
+  <string name="morphe_settings_color_invalid">Neplatná barva</string>
+  <string name="morphe_settings_restart_title">Je vyžadován restart</string>
+  <string name="morphe_settings_restart_dialog_message">Aby se tato změna projevila, restartujte aplikaci.</string>
+  <string name="morphe_settings_restart">Restartovat</string>
+  <string name="morphe_settings_import">Importovat</string>
+  <string name="morphe_settings_import_copy">Kopírovat</string>
+  <string name="morphe_settings_import_reset">Nastavení Morphe obnoveno do výchozího stavu</string>
+  <string name="morphe_settings_import_success">Importováno %d nastavení</string>
+  <string name="morphe_settings_import_failure_parse">Importováni selhalo: %s</string>
+  <string name="morphe_settings_search_hint">Hledat nastavení</string>
+  <string name="morphe_settings_search_no_results_title">Nebyly nalezeny žádné výsledky pro \",%s\"</string>
+  <string name="morphe_settings_search_no_results_summary">Zkuste jiné klíčové slovo</string>
+  <string name="morphe_settings_search_recent_searches">Nedávná hledání</string>
+  <string name="morphe_settings_search_remove_message">Odebrat z historie vyhledávání?</string>
+  <string name="morphe_settings_search_clear_history">Vymazat historii hledání</string>
+  <string name="morphe_settings_search_clear_history_message">Opravdu chcete vymazat celou historii hledání?</string>
+  <string name="morphe_settings_search_tips_title">Tipy pro vyhledávání</string>
+  <string name="morphe_settings_search_tips_summary">"• Klepnutím na cestu k ní přejdete
+• Dlouhým stisknutím nastavení k němu přejdete
+• Stisknutím klávesy Enter uložíte vyhledávací dotaz do historie
+• Vyhledávání ignoruje velikost písmen a interpunkci
+• Nadřazená nastavení se zobrazují nad zakázanými podřízenými nastaveními"</string>
+  <string name="morphe_settings_search_empty_history_title">Historie vyhledávání je prázdná</string>
+  <string name="morphe_settings_search_empty_history_summary">Chcete-li uložit historii vyhledávání, zadejte vyhledávací dotaz a stiskněte Enter</string>
+  <string name="morphe_settings_search_history_title">Zobrazit historii vyhledávání v nastavení</string>
+  <string name="morphe_settings_search_history_summary_on">Historie vyhledávání v nastavení je zobrazena</string>
+  <string name="morphe_settings_search_history_summary_off">Historie vyhledávání nastavení se nezobrazuje</string>
+  <string name="morphe_show_menu_icons_title">Zobrazit ikony nastavení Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Ikony nastavení se zobrazují</string>
+  <string name="morphe_show_menu_icons_summary_off">Ikony nastavení se nezobrazují</string>
+  <string name="morphe_language_title">Jazyk Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Překlady pro některé jazyky mohou chybět nebo být neúplné.
+
+Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštivte translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">Jazyk aplikace</string>
+  <string name="morphe_pref_import_export_title">Importovat / Exportovat</string>
+  <string name="morphe_pref_import_export_summary">Importovat/exportovat nastavení Morphe</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">Používáte verzi Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_dev_header">Poznámka</string>
+  <string name="morphe_settings_about_links_dev_body">Tato verze je předběžná a můžete narazit na neočekávané problémy</string>
+  <string name="morphe_settings_about_links_header">Odkazy na oficiální stránky</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Debugování</string>
+  <string name="morphe_debug_screen_summary">Povolit nebo zakázat debugovací možnosti</string>
+  <string name="morphe_debug_title">Debugovací záznamy</string>
+  <string name="morphe_debug_summary_on">Debugovací záznamy jsou zapnuty</string>
+  <string name="morphe_debug_summary_off">Debugovací záznamy jsou vypnuty</string>
+  <string name="morphe_debug_stacktrace_title">Protokolovat trasování zásobníku</string>
+  <string name="morphe_debug_stacktrace_summary_on">Protokoly ladění obsahují trasování zásobníku</string>
+  <string name="morphe_debug_stacktrace_summary_off">Ladící protokoly nezahrnují sledování zásobníku</string>
+  <string name="morphe_debug_toast_on_error_title">Zobrazit oznámení v případě chyby Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Zobrazí se toast, pokud dojde k chybě</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Toast se nezobrazí, pokud dojde k chybě</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutí chybových toastů skryje všechna chybová oznámení Morphe.
+
+Nebudete informováni o žádné neočekávané události."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Exportovat ladicí protokoly</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Zkopíruje ladicí protokoly Morphe do schránky</string>
+  <string name="morphe_debug_logs_disabled">Ladění je vypnuto</string>
+  <string name="morphe_debug_logs_none_found">Nebyly nalezeny žádné protokoly</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Protokoly zkopírovány</string>
+  <string name="morphe_debug_logs_failed_to_export">Nepodařilo se exportovat protokoly: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Vymazat ladicí protokoly</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Vymaže všechny uložené ladicí protokoly Morphe</string>
+  <string name="morphe_debug_logs_clear_toast">Protokoly vymazány</string>
+  <string name="morphe_debug_feature_flags_manager_title">Příznaky funkcí Manager</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Spravovat boolean příznaky funkcí</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktivní přepínače (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokované přepínače (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Hledat přepínače...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Přepínače uloženy</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Přepínače resetovány</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Přepínače zkopírovány do schránky</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">Nastavení GmsCore</string>
+  <string name="microg_settings_summary">Nastavení pro GmsCore</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore není nainstalován. Nainstalujte jej.</string>
+  <string name="gms_core_dialog_title">Požadovaná akce</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore nemá oprávnění běžet na pozadí.
+
+Postupujte podle návodu \"Nezabíjej mou aplikaci\" pro váš telefon a použijte pokyny pro instalaci MicroG.
+
+To je nutné pro fungování aplikace."</string>
+  <string name="gms_core_dialog_open_website_text">Otevřít web</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimalizace baterie MicroG GmsCore musí být zakázány, aby se zabránilo problémům.
+
+Zakázání optimalizace baterie pro MicroG nebude mít negativní vliv na spotřebu baterie.
+
+Klepněte na tlačítko Pokračovat a povolte změny optimalizace."</string>
+  <string name="gms_core_dialog_continue_text">Pokračovat</string>
+</resources>

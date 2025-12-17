@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.buttons.action
 
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -22,7 +20,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
     dependsOn(
         resourceMappingPatch,
         lithoFilterPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
@@ -37,8 +34,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
     )
 
     execute {
-        addResources("youtube", "layout.buttons.action.hideButtonsPatch")
-
         val preferences = mutableSetOf(
             SwitchPreference("morphe_disable_like_subscribe_glow"),
             SwitchPreference("morphe_hide_download_button"),

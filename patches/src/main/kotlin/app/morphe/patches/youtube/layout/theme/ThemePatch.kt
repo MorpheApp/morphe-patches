@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
@@ -146,7 +144,6 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-            addResourcesPatch,
             seekbarColorPatch,
             baseThemeResourcePatch(
                 lightColorReplacement = { lightThemeBackgroundColor!! }
@@ -166,7 +163,6 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
-        addResources("youtube", "layout.theme.themePatch")
 
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             SwitchPreference("morphe_gradient_loading_screen")

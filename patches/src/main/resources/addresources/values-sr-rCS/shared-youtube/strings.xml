@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Naziv aplikacije</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>
+  <string name="morphe_custom_branding_icon_entry_1">Originalna</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovo</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Lažirani video strimovi</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Lažiranje video strimova klijenta da bi se sprečili problemi sa reprodukcijom</string>
+  <string name="morphe_spoof_video_streams_title">Lažirani video strimovi</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Video strimovi su lažirani
+
+Ako ste korisnik YouTube Premiuma, ovo podešavanje možda neće biti potrebno"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Video strimovi nisu lažirani
+
+Reprodukcija možda neće raditi"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ovog podešavanja može izazvati probleme sa reprodukcijom.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Podrazumevani klijent</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Prisili originalni jezik zvuka</string>
+  <string name="morphe_force_original_audio_summary_on">Korišćenje originalnog jezika zvuka</string>
+  <string name="morphe_force_original_audio_summary_off">Korišćenje podrazumevanog zvuka</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Da biste koristili ovu funkciju, promenite opciju „Lažirani video strimovi” na bilo koji klijent osim Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Očisti deljene linkove</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parametar upita za praćenje je uklonjen iz deljenih linkova</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parametar upita za praćenje nije uklonjen iz deljenih linkova</string>
+  <string name="morphe_replace_music_with_youtube_title">Promeni linkove za deljenje na youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Deljeni linkovi koriste youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Deljeni linkovi koriste music.youtube.com</string>
+</resources>

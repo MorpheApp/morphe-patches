@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationButtonsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -27,7 +25,6 @@ val changeFormFactorPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         navigationButtonsPatch
     )
 
@@ -42,8 +39,6 @@ val changeFormFactorPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.formfactor.changeFormFactorPatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             ListPreference("morphe_change_form_factor")
         )

@@ -7,8 +7,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.Document
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -95,7 +93,6 @@ val changeHeaderPatch = resourcePatch(
     description = "Adds an option to change the header logo in the top left corner of the app.",
 ) {
     dependsOn(
-        addResourcesPatch,
         changeHeaderBytecodePatch,
         wideSearchbarPatch
     )
@@ -128,8 +125,6 @@ val changeHeaderPatch = resourcePatch(
     )
 
     execute {
-        addResources("youtube", "layout.branding.changeHeaderPatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             if (custom == null) {
                 ListPreference("morphe_header_logo")

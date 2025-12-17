@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -18,7 +16,6 @@ val videoAdsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -32,8 +29,6 @@ val videoAdsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "ad.video.videoAdsPatch")
-
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_hide_video_ads"),
         )

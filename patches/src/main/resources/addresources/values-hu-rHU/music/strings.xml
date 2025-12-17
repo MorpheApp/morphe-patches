@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Hirdetések</string>
+  <string name="morphe_settings_music_screen_2_general_title">Általános</string>
+  <string name="morphe_settings_music_screen_3_player_title">Lejátszó</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Egyéb</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
+  <string name="morphe_music_hide_video_ads_summary_on">A videóhirdetések rejtve vannak</string>
+  <string name="morphe_music_hide_video_ads_summary_off">A videóhirdetések láthatók</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Állandó ismétlés engedélyezése</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Az állandó ismétlés engedélyezve van</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Az állandó ismétlés letiltva van</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Kivetítés gomb elrejtése</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Kivetítés gomb elrejtve</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Kivetítés gomb látható</string>
+  <string name="morphe_music_hide_history_button_title">Elrejti az előzmények gombot</string>
+  <string name="morphe_music_hide_history_button_summary_on">Az előzmények gomb rejtett</string>
+  <string name="morphe_music_hide_history_button_summary_off">Az előzmények gomb látható</string>
+  <string name="morphe_music_hide_notification_button_title">Értesítési gomb elrejtése</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Az értesítési gomb el van rejtve</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Az értesítési gomb látható</string>
+  <string name="morphe_music_hide_search_button_title">Keresés gomb elrejtése</string>
+  <string name="morphe_music_hide_search_button_summary_on">A keresés gomb el van rejtve</string>
+  <string name="morphe_music_hide_search_button_summary_off">A keresés gomb látható</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Kategóriasáv elrejtése</string>
+  <string name="morphe_music_hide_category_bar_summary_on">A kategóriasáv rejtve van</string>
+  <string name="morphe_music_hide_category_bar_summary_off">A kategóriasáv látható</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Mini lejátszó színének módosítása</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">A mini lejátszó színe megegyezik a teljes képernyős lejátszóéval</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">A mini lejátszó alapértelmezett színt használ</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Navigációs sáv</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Navigációs sáv gombjainak elrejtése vagy módosítása</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Főoldal elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">A Kezdőlap gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">A Kezdőlap gomb látható</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Minták elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">A Minták gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">A Minták gomb látható</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Felfedezés elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">A Felfedezés gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">A Felfedezés gomb látható</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Könyvtár elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">A Könyvtár gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">A Könyvtár gomb látható</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Frissítés elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">A Frissítés gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">A Frissítés gomb látható</string>
+  <string name="morphe_music_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">A navigációs sáv elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">A navigációs sáv látható</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">A feliratok elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">A feliratok láthatóak</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">A „Music Premium beszerzése” címke elrejtése</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">A címke rejtve van</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">A címke látható</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Frissítés gomb elrejtése</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">A gomb rejtve van</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">A gomb látható</string>
+</resources>

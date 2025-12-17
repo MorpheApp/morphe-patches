@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Tên ứng dụng</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_name_entry_5">Tùy chỉnh</string>
+  <string name="morphe_custom_branding_icon_title">Biểu tượng ứng dụng</string>
+  <string name="morphe_custom_branding_icon_entry_1">Gốc</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe sáng</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe tối giản</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_4">Morphe tỉ lệ</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân có thể là do trình chặn quảng cáo DNS hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Để khắc phục, hãy thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả trình chặn DNS và proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Không hiện lại</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng video</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Giả mạo luồng video của ứng dụng khách nhằm ngăn chặn lỗi khi phát</string>
+  <string name="morphe_spoof_video_streams_title">Giả mạo luồng video</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Luồng video đã được giả mạo
+
+Nếu bạn là người dùng YouTube Premium, thì cài đặt này có thể không cần thiết"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Luồng video không được giả mạo
+
+Có thể gặp lỗi khi phát."</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Ứng dụng khách mặc định</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Buộc ngôn ngữ âm thanh gốc</string>
+  <string name="morphe_force_original_audio_summary_on">Đang dùng ngôn ngữ âm thanh gốc</string>
+  <string name="morphe_force_original_audio_summary_off">Đang dùng âm thanh mặc định</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Để dùng tính năng này, hãy đổi \'Giả mạo luồng video\' thành bất kỳ ứng dụng khách nào ngoại trừ Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Tham số truy vấn theo dõi bị loại bỏ khỏi các liên kết được chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Tham số truy vấn theo dõi không bị loại bỏ khỏi các liên kết được chia sẻ</string>
+  <string name="morphe_replace_music_with_youtube_title">Thay đổi liên kết chia sẻ thành youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Liên kết chia sẻ bắt đầu bằng youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Liên kết chia sẻ bắt đầu bằng music.youtube.com</string>
+</resources>

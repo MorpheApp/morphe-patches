@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">اسم التطبيق</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
+  <string name="morphe_custom_branding_icon_entry_1">الأصلية</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">لا تعرض مرة أخرى</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
+  <string name="morphe_spoof_video_streams_screen_summary">تزييف بثوث الفيديو الخاصة بالعميل لمنع مشكلات التشغيل</string>
+  <string name="morphe_spoof_video_streams_title">Spoof Video Streams</string>
+  <string name="morphe_spoof_video_streams_summary_on">"يتم تزييف تدفقات الفيديو
+
+إذا كنت مستخدمًا لـ YouTube Premium، فقد لا يكون هذا الإعداد مطلوبًا"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"لا يتم تزييف تدفقات الفيديو
+
+قد لا يعمل تشغيل الفيديو"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">العميل الافتراضي</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
+  <string name="morphe_force_original_audio_summary_on">استخدام لغة الصوت الأصلية</string>
+  <string name="morphe_force_original_audio_summary_off">استخدام الصوت الافتراضي</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams إلى أي عميل باستثناء Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">تمت إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">لم تتم إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
+  <string name="morphe_replace_music_with_youtube_title">تغيير روابط المشاركة إلى youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">تستخدم روابط المشاركة youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">تستخدم روابط المشاركة music.youtube.com</string>
+</resources>

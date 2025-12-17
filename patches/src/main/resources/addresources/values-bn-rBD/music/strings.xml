@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">সম্পর্কে</string>
+  <string name="morphe_settings_music_screen_1_ads_title">বিজ্ঞাপন</string>
+  <string name="morphe_settings_music_screen_2_general_title">সাধারণ</string>
+  <string name="morphe_settings_music_screen_3_player_title">প্লেয়ার</string>
+  <string name="morphe_settings_music_screen_4_misc_title">বিবিধ</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
+  <string name="morphe_music_hide_video_ads_summary_on">ভিডিও বিজ্ঞাপন লুকানো আছে</string>
+  <string name="morphe_music_hide_video_ads_summary_off">ভিডিও বিজ্ঞাপন দেখানো আছে</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">স্থায়ী পুনরাবৃত্তি সক্ষম করুন</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">স্থায়ী পুনরাবৃত্তি সক্ষম করা হয়েছে</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">স্থায়ী পুনরাবৃত্তি অক্ষম করা হয়েছে</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
+  <string name="morphe_music_hide_cast_button_summary_on">কাস্ট বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_cast_button_summary_off">কাস্ট বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
+  <string name="morphe_music_hide_history_button_summary_on">ইতিহাস বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_history_button_summary_off">ইতিহাস বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_notification_button_title">বিজ্ঞপ্তি বাটন লুকান</string>
+  <string name="morphe_music_hide_notification_button_summary_on">বিজ্ঞপ্তি বাটন লুকানো আছে</string>
+  <string name="morphe_music_hide_notification_button_summary_off">বিজ্ঞপ্তি বাটন দেখানো হয়েছে</string>
+  <string name="morphe_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
+  <string name="morphe_music_hide_search_button_summary_on">অনুসন্ধান বাটন লুকানো আছে</string>
+  <string name="morphe_music_hide_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়েছে</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">ক্যাটাগরি বার লুকান</string>
+  <string name="morphe_music_hide_category_bar_summary_on">ক্যাটাগরি বার লুকানো আছে</string>
+  <string name="morphe_music_hide_category_bar_summary_off">ক্যাটাগরি বার দেখানো আছে</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">মিনিপ্লেয়ার ডিফল্ট রঙ ব্যবহার করে</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">নেভিগেশন বার</string>
+  <string name="morphe_music_navigation_bar_screen_summary">নেভিগেশন বারের বোতামগুলি লুকান বা পরিবর্তন করুন</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">হোম লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">হোম বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">হোম বোতাম দেখানো আছে</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">স্যাম্পল লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">স্যাম্পল বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">স্যাম্পল বোতাম দেখানো আছে</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">এক্সপ্লোর লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">অনুসন্ধান বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">অনুসন্ধান বোতাম দেখানো আছে</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">লাইব্রেরি লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">লাইব্রেরি বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">লাইব্রেরি বোতাম দেখানো আছে</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">আপগ্রেড লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">আপগ্রেড বোতাম লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">আপগ্রেড বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">নেভিগেশন বার লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">নেভিগেশন বার দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">লেবেলগুলি লুকানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">লেবেলগুলি দেখানো আছে</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">লেবেল লুকানো আছে</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">লেবেল দেখানো আছে</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">আপগ্রেড বাটন লুকান</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">বাটন লুকানো আছে</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">বাটন দেখানো আছে</string>
+</resources>

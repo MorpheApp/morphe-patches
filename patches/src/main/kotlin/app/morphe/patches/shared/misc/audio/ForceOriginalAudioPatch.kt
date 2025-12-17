@@ -10,8 +10,6 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findMethodFromToString
@@ -45,11 +43,7 @@ internal fun forceOriginalAudioPatch(
 
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
-        addResources("shared", "misc.audio.forceOriginalAudioPatch")
-
         preferenceScreen.addPreferences(
             SwitchPreference(
                 key = "morphe_force_original_audio",

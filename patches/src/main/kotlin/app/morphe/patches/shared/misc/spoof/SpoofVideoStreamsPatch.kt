@@ -12,8 +12,6 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -51,11 +49,7 @@ internal fun spoofVideoStreamsPatch(
 ) {
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
-        addResources("shared", "misc.fix.playback.spoofVideoStreamsPatch")
-
         mainActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static { }, $extensionClassDescriptor->setClientOrderToUse()V"

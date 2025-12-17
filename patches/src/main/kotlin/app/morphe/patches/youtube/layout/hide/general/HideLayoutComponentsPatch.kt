@@ -12,8 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -101,7 +99,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
     dependsOn(
         lithoFilterPatch,
         settingsPatch,
-        addResourcesPatch,
         hideLayoutComponentsResourcePatch,
         navigationBarHookPatch,
         versionCheckPatch,
@@ -119,8 +116,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.hide.general.hideLayoutComponentsPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",

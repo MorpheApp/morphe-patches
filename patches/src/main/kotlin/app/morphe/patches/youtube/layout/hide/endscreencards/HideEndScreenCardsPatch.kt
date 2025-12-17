@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -29,12 +27,9 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("youtube", "layout.hide.endscreencards.hideEndScreenCardsResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_endscreen_cards"),
         )

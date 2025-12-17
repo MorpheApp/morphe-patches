@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Appnavn</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Appikon</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Meddelelse</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Din urhistorik gemmes ikke.&lt;br&gt;&lt;br&gt;Dette skyldes sandsynligvis en DNS-annonceblokker eller netværksproxy.&lt;br&gt;&lt;br&gt;For at løse dette, whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; eller slå alle DNS-blokkere og fuldmagter fra.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Vis ikke igen</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Simuler videostreams</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Simuler klientens videostreams for at forhindre afspilningsproblemer</string>
+  <string name="morphe_spoof_video_streams_title">Spoof videostreams</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Videostreams er spoofede
+
+Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke påkrævet"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Videostreams simuleres ikke
+
+Afspilning fungerer muligvis ikke"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Deaktivering af denne indstilling kan forårsage afspilningsproblemer.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Standard klient</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
+  <string name="morphe_force_original_audio_summary_on">Bruger originalt lydsprog</string>
+  <string name="morphe_force_original_audio_summary_off">Brug standard lyd</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">For at bruge denne funktion skal du ændre \"Forfalsk videostreams\" til en hvilken som helst klient undtagen Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Rens delingslinks</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Sporingsforespørgselsparameter er fjernet fra delte links</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Sporingsforespørgselsparameter er ikke fjernet fra delte links</string>
+  <string name="morphe_replace_music_with_youtube_title">Skift delingslinks til youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Delte links bruger youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Delte links bruger music.youtube.com</string>
+</resources>

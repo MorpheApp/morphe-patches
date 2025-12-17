@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Назва додатку</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Іконка додатку</string>
+  <string name="morphe_custom_branding_icon_entry_1">Оригінальна</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Повідомлення Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша історія переглядів не зберігається.&lt;br&gt;&lt;br&gt;Швидше за все, це спричинено блокувальником реклами DNS або мережевим проксі.&lt;br&gt;&lt;br&gt;Щоб це виправити, додайте &lt;b&gt;s.youtube.com&lt;/b&gt; у білий список блокувальника або вимкніть усі DNS блокувальники та проксі.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Більше не показувати</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Підміна відеопотоків</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Підміняти відеопотоки клієнта, щоб уникнути проблем із відтворенням</string>
+  <string name="morphe_spoof_video_streams_title">Підміна відеопотоків</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Відеопотоки підмінено
+
+Якщо Ви користуєтеся YouTube Premium, ця опція може бути не потрібна"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Відеопотоки не підмінено
+
+Відтворення може не працювати"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Вимкнення цієї опції може спричинити проблеми з відтворенням.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Клієнт за замовчуванням</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Примусово оригінальна мова звукової доріжки</string>
+  <string name="morphe_force_original_audio_summary_on">Використовується оригінальна мова звукової доріжки</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Щоб використовувати цю функцію, змініть клієнт \"Підміни відеопотоків\" на будь-який клієнт, окрім Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Очищення посилань для поширення</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Параметри запиту відстеження вилучаються з поширених посилань</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Параметри запиту відстеження не вилучаються з поширених посилань</string>
+  <string name="morphe_replace_music_with_youtube_title">Змінити посилання для поширення на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Під час поширення посилань використовується youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Під час поширення посилань використовується music.youtube.com</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Nama aplikasi</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
+  <string name="morphe_custom_branding_icon_entry_1">Asli</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Jangan tampilkan lagi</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Palsukan aliran video</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Palsukan klien aliran video untuk mencegah masalah pemutaran</string>
+  <string name="morphe_spoof_video_streams_title">Palsukan aliran video</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Aliran video dipalsukan
+
+Jika Anda adalah pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Aliran video tidak dipalsukan
+
+Pemutaran mungkin tidak berfungsi"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan pengaturan ini dapat menyebabkan masalah pemutaran.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
+  <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
+  <string name="morphe_force_original_audio_summary_off">Menggunakan audio bawaan</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke klien apa pun kecuali Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parameter kueri pelacakan dihapus dari tautan yang dibagikan</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parameter kueri pelacakan tidak dihapus dari tautan yang dibagikan</string>
+  <string name="morphe_replace_music_with_youtube_title">Ubah tautan berbagi ke youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Tautan yang dibagikan menggunakan youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Tautan yang dibagikan menggunakan music.youtube.com</string>
+</resources>

@@ -1,400 +1,244 @@
 package app.morphe.patches.all.misc.resources
 
-import app.morphe.patcher.patch.Patch
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.Document
-import app.morphe.util.addResource
-import app.morphe.util.asSequence
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
-import app.morphe.util.resource.ArrayResource
-import app.morphe.util.resource.BaseResource
-import app.morphe.util.resource.StringResource
-import org.w3c.dom.Node
+import app.morphe.util.resource.StringResource.Companion.sanitizeAndroidResourceString
+import java.util.Locale
+import java.util.logging.Level
+import java.util.logging.Logger
+import kotlin.jvm.javaClass
 
-/**
- * An identifier of an app. For example, `youtube`.
- */
-private typealias AppId = String
-
-/**
- * An identifier of a patch. For example, `ad.general.HideAdsPatch`.
- */
-private typealias PatchId = String
-
-/**
- * A set of resources of a patch.
- */
-private typealias PatchResources = MutableSet<BaseResource>
-
-/**
- * A map of resources belonging to a patch.
- */
-private typealias AppResources = MutableMap<PatchId, PatchResources>
-
-/**
- * A map of resources belonging to an app.
- */
-private typealias Resources = MutableMap<AppId, AppResources>
-
-/**
- * The value of a resource.
- * For example, `values` or `values-de`.
- */
-private typealias Value = String
-
-/**
- * A set of resources mapped by their value.
- */
-private typealias MutableResources = MutableMap<Value, MutableSet<BaseResource>>
-
-/**
- * A map of all resources associated by their value staged by [addResourcesPatch].
- */
-private lateinit var stagedResources: Map<Value, Resources>
-
-/**
- * A map of all resources added to the app by [addResourcesPatch].
- */
-private val resources: MutableResources = mutableMapOf()
-
-/**
- * Map of Crowdin locales to Android resource locale names.
- *
- * Fixme: Instead this patch should detect what locale regions are present in both patches and the target app,
- * and automatically merge into the appropriate existing target file.
- * So if a target app has only 'es', then the Crowdin file of 'es-rES' should merge into that.
- * But if a target app has specific regions (such as 'pt-rBR'),
- * then the Crowdin region specific file should merged into that.
- */
-private val locales = mapOf(
-    "af-rZA" to "af",
-    "am-rET" to "am",
-    "ar-rSA" to "ar",
-    "as-rIN" to "as",
-    "az-rAZ" to "az",
-    "be-rBY" to "be",
-    "bg-rBG" to "bg",
-    "bn-rBD" to "bn",
-    "bs-rBA" to "bs",
-    "ca-rES" to "ca",
-    "cs-rCZ" to "cs",
-    "da-rDK" to "da",
-    "de-rDE" to "de",
-    "el-rGR" to "el",
-    "es-rES" to "es",
-    "et-rEE" to "et",
-    "eu-rES" to "eu",
-    "fa-rIR" to "fa",
-    "fi-rFI" to "fi",
-    "fil-rPH" to "tl",
-    "fr-rFR" to "fr",
-    "ga-rIE" to "ga",
-    "gl-rES" to "gl",
-    "gu-rIN" to "gu",
-    "hi-rIN" to "hi",
-    "hr-rHR" to "hr",
-    "hu-rHU" to "hu",
-    "hy-rAM" to "hy",
-    "in-rID" to "in",
-    "is-rIS" to "is",
-    "it-rIT" to "it",
-    "iw-rIL" to "iw",
-    "ja-rJP" to "ja",
-    "ka-rGE" to "ka",
-    "kk-rKZ" to "kk",
-    "km-rKH" to "km",
-    "kn-rIN" to "kn",
-    "ko-rKR" to "ko",
-    "ky-rKG" to "ky",
-    "lo-rLA" to "lo",
-    "lt-rLT" to "lt",
-    "lv-rLV" to "lv",
-    "mk-rMK" to "mk",
-    "ml-rIN" to "ml",
-    "mn-rMN" to "mn",
-    "mr-rIN" to "mr",
-    "ms-rMY" to "ms",
-    "my-rMM" to "my",
-    "nb-rNO" to "nb",
-    "ne-rIN" to "ne",
-    "nl-rNL" to "nl",
-    "or-rIN" to "or",
-    "pa-rIN" to "pa",
-    "pl-rPL" to "pl",
-    "pt-rBR" to "pt-rBR",
-    "pt-rPT" to "pt-rPT",
-    "ro-rRO" to "ro",
-    "ru-rRU" to "ru",
-    "si-rLK" to "si",
-    "sk-rSK" to "sk",
-    "sl-rSI" to "sl",
-    "sq-rAL" to "sq",
-    "sr-rCS" to "b+sr+Latn",
-    "sr-rSP" to "sr",
-    "sv-rSE" to "sv",
-    "sw-rKE" to "sw",
-    "ta-rIN" to "ta",
-    "te-rIN" to "te",
-    "th-rTH" to "th",
-    "tl-rPH" to "tl",
-    "tr-rTR" to "tr",
-    "uk-rUA" to "uk",
-    "ur-rIN" to "ur",
-    "uz-rUZ" to "uz",
-    "vi-rVN" to "vi",
-    "zh-rCN" to "zh-rCN",
-    "zh-rTW" to "zh-rTW",
-    "zu-rZA" to "zu",
+internal val locales = listOf(
+    AppLocale("", ""), // Default English locale. Must be first.
+    AppLocale("af-rZA", "af"),
+    AppLocale("am-rET", "am"),
+    AppLocale("ar-rSA", "ar"),
+    AppLocale("as-rIN", "as"),
+    AppLocale("az-rAZ", "az"),
+    AppLocale("be-rBY", "be"),
+    AppLocale("bg-rBG", "bg"),
+    AppLocale("bn-rBD", "bn"),
+    AppLocale("bs-rBA", "bs"),
+    AppLocale("ca-rES", "ca"),
+    AppLocale("cs-rCZ", "cs"),
+    AppLocale("da-rDK", "da"),
+    AppLocale("de-rDE", "de"),
+    AppLocale("el-rGR", "el"),
+    AppLocale("es-rES", "es"),
+    AppLocale("et-rEE", "et"),
+    AppLocale("eu-rES", "eu"),
+    AppLocale("fa-rIR", "fa"),
+    AppLocale("fi-rFI", "fi"),
+    AppLocale("fil-rPH", "tl"),
+    AppLocale("fr-rFR", "fr"),
+    AppLocale("gl-rES", "gl"),
+    AppLocale("gu-rIN", "gu"),
+    AppLocale("hi-rIN", "hi"),
+    AppLocale("hr-rHR", "hr"),
+    AppLocale("hu-rHU", "hu"),
+    AppLocale("hy-rAM", "hy"),
+    AppLocale("in-rID", "in"),
+    AppLocale("is-rIS", "is"),
+    AppLocale("it-rIT", "it"),
+    AppLocale("iw-rIL", "iw"),
+    AppLocale("ja-rJP", "ja"),
+    AppLocale("ka-rGE", "ka"),
+    AppLocale("kk-rKZ", "kk"),
+    AppLocale("km-rKH", "km"),
+    AppLocale("kn-rIN", "kn"),
+    AppLocale("ko-rKR", "ko"),
+    AppLocale("ky-rKG", "ky"),
+    AppLocale("lo-rLA", "lo"),
+    AppLocale("lt-rLT", "lt"),
+    AppLocale("lv-rLV", "lv"),
+    AppLocale("mk-rMK", "mk"),
+    AppLocale("ml-rIN", "ml"),
+    AppLocale("mn-rMN", "mn"),
+    AppLocale("mr-rIN", "mr"),
+    AppLocale("ms-rMY", "ms"),
+    AppLocale("my-rMM", "my"),
+    AppLocale("nb-rNO", "nb"),
+    AppLocale("ne-rNP", "ne"),
+    AppLocale("nl-rNL", "nl"),
+    AppLocale("or-rIN", "or"),
+    AppLocale("pa-rIN", "pa"),
+    AppLocale("pl-rPL", "pl"),
+    AppLocale("pt-rBR", "pt-rBR"),
+    AppLocale("pt-rPT", "pt-rPT"),
+    AppLocale("ro-rRO", "ro"),
+    AppLocale("ru-rRU", "ru"),
+    AppLocale("si-rLK", "si"),
+    AppLocale("sk-rSK", "sk"),
+    AppLocale("sl-rSI", "sl"),
+    AppLocale("sq-rAL", "sq"),
+    AppLocale("sr-rCS", "b+sr+Latn"),
+    AppLocale("sr-rSP", "sr"),
+    AppLocale("sv-rSE", "sv"),
+    AppLocale("sw-rKE", "sw"),
+    AppLocale("ta-rIN", "ta"),
+    AppLocale("te-rIN", "te"),
+    AppLocale("th-rTH", "th"),
+    AppLocale("tr-rTR", "tr"),
+    AppLocale("uk-rUA", "uk"),
+    AppLocale("ur-rIN", "ur"),
+    AppLocale("uz-rUZ", "uz"),
+    AppLocale("vi-rVN", "vi"),
+    AppLocale("zh-rCN", "zh-rCN"),
+    AppLocale("zh-rTW", "zh-rTW"),
+    AppLocale("zu-rZA", "zu"),
+    // Languages not found in YouTube.
+    AppLocale("ga-rIE", "ga", isBuiltInLanguage = false)
 )
 
-/**
- * Adds a [BaseResource] to the map using [MutableMap.getOrPut].
- *
- * @param value The value of the resource. For example, `values` or `values-de`.
- * @param resource The resource to add.
- *
- * @return True if the resource was added, false if it already existed.
- */
-fun addResource(
-    value: Value,
-    resource: BaseResource,
-) = resources.getOrPut(value, ::mutableSetOf).add(resource)
-
-/**
- * Adds a list of [BaseResource]s to the map using [MutableMap.getOrPut].
- *
- * @param value The value of the resource. For example, `values` or `values-de`.
- * @param resources The resources to add.
- *
- * @return True if the resources were added, false if they already existed.
- */
-fun addResources(
-    value: Value,
-    resources: Iterable<BaseResource>,
-) = app.morphe.patches.all.misc.resources.resources.getOrPut(value, ::mutableSetOf).addAll(resources)
-
-/**
- * Adds a [StringResource].
- *
- * @param name The name of the string resource.
- * @param value The value of the string resource.
- * @param formatted Whether the string resource is formatted. Defaults to `true`.
- * @param resourceValue The value of the resource. For example, `values` or `values-de`.
- *
- * @return True if the resource was added, false if it already existed.
- */
-fun addResources(
-    name: String,
-    value: String,
-    formatted: Boolean = true,
-    resourceValue: Value = "values",
-) = addResource(resourceValue, StringResource(name, value, formatted))
-
-/**
- * Adds an [ArrayResource].
- *
- * @param name The name of the array resource.
- * @param items The items of the array resource.
- *
- * @return True if the resource was added, false if it already existed.
- */
-fun addResources(
-    name: String,
-    items: List<String>,
-) = addResource("values", ArrayResource(name, items))
-
-/**
- * Puts all resources of any [Value] staged in [stagedResources] for the [Patch] to [addResources].
- *
- * @param patch The [Patch] of the patch to stage resources for.
- * @param parseIds A function that parses a set of [PatchId] each mapped to an [AppId] from the given [Patch].
- * This is used to access the resources in [addResources] to stage them in [stagedResources].
- * The default implementation assumes that the [Patch] has a name and declares packages it is compatible with.
- *
- * @return True if any resources were added, false if none were added.
- *
- * @see addResourcesPatch
- */
-fun addResources(
-    patch: Patch<*>,
-    parseIds: (Patch<*>) -> Map<AppId, Set<PatchId>> = {
-        val patchId = patch.name ?: throw PatchException("Patch has no name")
-        val packages = patch.compatiblePackages ?: throw PatchException("Patch has no compatible packages")
-
-        buildMap<AppId, MutableSet<PatchId>> {
-            packages.forEach { (appId, _) ->
-                getOrPut(appId) { mutableSetOf() }.add(patchId)
-            }
-        }
-    },
-): Boolean {
-    var result = false
-
-    // Stage resources for the given patch to addResourcesPatch associated with their value.
-    parseIds(patch).forEach { (appId, patchIds) ->
-        patchIds.forEach { patchId ->
-            stagedResources.forEach { (value, resources) ->
-                resources[appId]?.get(patchId)?.let { patchResources ->
-                    if (addResources(value, patchResources)) result = true
-                }
-            }
-        }
-    }
-
-    return result
-}
-
-/**
- * Puts all resources for the given [appId] and [patchId] staged in [addResources] to [addResourcesPatch].
- *
- *
- * @return True if any resources were added, false if none were added.
- *
- * @see addResourcesPatch
- */
-fun addResources(
-    appId: AppId,
-    patchId: String,
-) = stagedResources.forEach { (value, resources) ->
-    resources[appId]?.get(patchId)?.let { patchResources ->
-        addResources(value, patchResources)
-    }
-}
-
-val addResourcesPatch = resourcePatch(
-    description = "Add resources such as strings or arrays to the app.",
+internal class AppLocale(
+    private val srcLocale: String,
+    private val destLocale: String,
+    val isBuiltInLanguage: Boolean = true
 ) {
-    /*
-    The strategy of this patch is to stage resources present in `/resources/addresources`.
-    These resources are organized by their respective value and patch.
+    fun isDefaultLocale() = srcLocale.isEmpty()
 
-    On addResourcesPatch#execute, all resources are staged in a temporary map.
-    After that, other patches that depend on addResourcesPatch can call
-    addResourcesPatch#invoke(Patch) to stage resources belonging to that patch
-    from the temporary map to addResourcesPatch.
+    fun getSrcLocaleFolderName() = getValuesFolderName(srcLocale)
+    fun getDestLocaleFolderName() = getValuesFolderName(destLocale)
 
-    After all patches that depend on addResourcesPatch have been executed,
-    addResourcesPatch#finalize is finally called to add all staged resources to the app.
-     */
-    execute {
-        stagedResources = buildMap {
-            /**
-             * Puts resources under `/resources/addresources/<value>/<resourceKind>.xml` into the map.
-             *
-             * @param sourceValue The source value of the resource. For example, `values` or `values-de-rDE`.
-             * @param destValue The destination value of the resource. For example, 'values' or 'values-de'.
-             * @param resourceKind The kind of the resource. For example, `strings` or `arrays`.
-             * @param transform A function that transforms the [Node]s from the XML files to a [BaseResource].
-             */
-            fun addResources(
-                sourceValue: Value,
-                destValue: Value = sourceValue,
-                resourceKind: String,
-                transform: (Node) -> BaseResource,
-            ) {
-                inputStreamFromBundledResource(
-                    "addresources",
-                    "$sourceValue/$resourceKind.xml",
-                )?.let { stream ->
-                    // Add the resources associated with the given value to the map,
-                    // instead of overwriting it.
-                    // This covers the example case such as adding strings and arrays of the same value.
-                    getOrPut(destValue, ::mutableMapOf).apply {
-                        document(stream).use { document ->
-                            document.getElementsByTagName("app").asSequence().forEach { app ->
-                                val appId = app.attributes.getNamedItem("id").textContent
+    override fun toString(): String {
+        return "AppLocale(srcLocale='${getSrcLocaleFolderName()}', destLocale='${getDestLocaleFolderName()}', " +
+                "isBuiltInLanguage=$isBuiltInLanguage)"
+    }
 
-                                getOrPut(appId, ::mutableMapOf).apply {
-                                    app.forEachChildElement { patch ->
-                                        val patchId = patch.attributes.getNamedItem("id").textContent
+    private companion object {
+        private fun getValuesFolderName(localeName: String): String {
+            val folderName = "values"
 
-                                        getOrPut(patchId, ::mutableSetOf).apply {
-                                            patch.forEachChildElement { resourceNode ->
-                                                val resource = transform(resourceNode)
+            return if (localeName.isEmpty()) {
+                folderName
+            } else {
+                "$folderName-$localeName"
+            }
+        }
+    }
+}
 
-                                                add(resource)
-                                            }
-                                        }
-                                    }
+private enum class BundledResourceType {
+    STRINGS,
+    ARRAYS;
+
+    override fun toString(): String {
+        return super.toString().lowercase(Locale.US)
+    }
+}
+
+private val appsToInclude = mutableSetOf<String>()
+
+/**
+ * Add all resources for the given app.
+ */
+internal fun addAppResources(appId: String) {
+    appsToInclude.add(appId)
+}
+
+internal val addResourcesPatch = resourcePatch(
+    description = "Add resources such as strings or arrays to the app."
+) {
+
+    val defaultResourcesAdded = mutableSetOf<String>()
+
+
+    finalize {
+        fun getLogger(): Logger = Logger.getLogger(AppLocale.javaClass.name)
+
+        fun addResourcesFromFile(
+            appId: String,
+            locale: AppLocale,
+            resourceType: BundledResourceType
+        ) {
+            val isDefaultLocale = locale.isDefaultLocale()
+            val srcFolderName = locale.getSrcLocaleFolderName()
+            val srcSubPath = "$srcFolderName/$appId/$resourceType.xml"
+            val destSubPath = "res/${locale.getDestLocaleFolderName()}/$resourceType.xml"
+
+            val srcStream = inputStreamFromBundledResource(
+                "addresources", srcSubPath
+            )
+
+            if (srcStream == null) {
+                // Localized arrays are optional, but string files are expected.
+                if (resourceType == BundledResourceType.STRINGS) {
+                    throw IllegalArgumentException("Could not find: $srcSubPath")
+                }
+                return
+            }
+
+            srcStream.use {
+                val destFile = this@finalize[destSubPath]
+                if (!destFile.exists()) {
+                    if (locale.isBuiltInLanguage) {
+                        throw IllegalStateException(
+                            "Expected to find locale: $locale but file does not exist in target app: $destFile"
+                        )
+                    }
+
+                    destFile.parentFile?.mkdirs()
+                    if (!destFile.createNewFile()) throw IllegalStateException()
+                    destFile.writeText(
+                        "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
+                    )
+                }
+
+                document(destSubPath).use { destDoc ->
+                    val destResourceNode = destDoc.getNode("resources")
+
+                    document(srcStream).use { srcDoc ->
+                        // Check for bad localized files with duplicate strings.
+                        val localeStringsAdded = mutableSetOf<String>()
+
+                        srcDoc.getElementsByTagName(
+                            "resources"
+                        ).item(0)?.forEachChildElement { srcNode ->
+                            val resourceName = srcNode.getAttributeNode("name").value
+                            if (resourceType == BundledResourceType.STRINGS) {
+                                // Check for bad text strings that will fail resource compilation.
+                                val textContent = srcNode.textContent
+                                val sanitized = sanitizeAndroidResourceString(resourceName, textContent)
+                                if (textContent != sanitized) {
+                                    srcNode.textContent = sanitized
                                 }
                             }
+
+                            if (!localeStringsAdded.add(resourceName)) {
+                                getLogger().warning(
+                                    "Duplicate string resource is declared: $srcFolderName " +
+                                            "resource: $resourceName"
+                                )
+                                return@forEachChildElement
+                            }
+
+                            if (isDefaultLocale) {
+                                // Duplicate check alreday handled above.
+                                defaultResourcesAdded.add(resourceName)
+                            } else if (!defaultResourcesAdded.contains(resourceName)) {
+                                // TODO: Enable when patcher/CLI supports debug/dev logging.
+                                if (false) getLogger().log(Level.INFO) {
+                                    "Ignoring removed default resource for locale (Issue will be fixed after next Crowdin sync): " +
+                                            "$srcFolderName resource: $resourceName"
+                                }
+                                return@forEachChildElement
+                            }
+
+                            val importedSrcNode = destDoc.importNode(srcNode, true)
+                            destResourceNode.appendChild(importedSrcNode)
                         }
                     }
                 }
             }
-
-            // Stage all resources to a temporary map.
-            // Staged resources consumed by addResourcesPatch#invoke(Patch)
-            // are later used in addResourcesPatch#finalize.
-            try {
-                val addStringResources = { source: Value, dest: Value ->
-                    addResources(source, dest, "strings", StringResource::fromNode)
-                }
-                locales.forEach { (source, dest) -> addStringResources("values-$source", "values-$dest") }
-                addStringResources("values", "values")
-
-                addResources("values", "values", "arrays", ArrayResource::fromNode)
-            } catch (e: Exception) {
-                throw PatchException("Failed to read resources", e)
-            }
-        }
-    }
-
-    /**
-     * Adds all resources staged in [addResourcesPatch] to the app.
-     * This is called after all patches that depend on [addResourcesPatch] have been executed.
-     */
-    finalize {
-        operator fun MutableMap<String, Pair<Document, Node>>.invoke(
-            value: Value,
-            resource: BaseResource,
-        ) {
-            // TODO: Fix open-closed principle violation by modifying BaseResource#serialize so that it accepts
-            //  a Value and the map of documents. It will then get or put the document suitable for its resource type
-            //  to serialize itself to it.
-            val resourceFileName =
-                when (resource) {
-                    is StringResource -> "strings"
-                    is ArrayResource -> "arrays"
-                    else -> throw NotImplementedError("Unsupported resource type")
-                }
-
-            getOrPut(resourceFileName) {
-                this@finalize["res/$value/$resourceFileName.xml"].also {
-                    it.parentFile?.mkdirs()
-
-                    if (it.createNewFile()) {
-                        it.writeText("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>")
-                    }
-                }
- 
-                document("res/$value/$resourceFileName.xml").let { document ->
-
-                    // Save the target node here as well
-                    // in order to avoid having to call document.getNode("resources")
-                    // but also save the document so that it can be closed later.
-                    document to document.getNode("resources")
-                }
-            }.let { (_, targetNode) ->
-                targetNode.addResource(resource) { invoke(value, it) }
-            }
         }
 
-        resources.forEach { (value, resources) ->
-            // A map of document associated by their kind (e.g. strings, arrays).
-            // Each document is accompanied by the target node to which resources are added.
-            // A map is used because Map#getOrPut allows opening a new document for the duration of a resource value.
-            // This is done to prevent having to open the files for every resource that is added.
-            // Instead, it is cached once and reused for resources of the same value.
-            // This map is later accessed to close all documents for the current resource value.
-            val documents = mutableMapOf<String, Pair<Document, Node>>()
-
-            resources.forEach { resource -> documents(value, resource) }
-
-            documents.values.forEach { (document, _) -> document.close() }
+        appsToInclude.forEach { app ->
+            locales.forEach { locale ->
+                addResourcesFromFile(app, locale, BundledResourceType.STRINGS)
+                addResourcesFromFile(app, locale, BundledResourceType.ARRAYS)
+            }
         }
     }
 }

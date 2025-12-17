@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -54,15 +52,12 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
         val hideShortsAppShortcut by hideShortsAppShortcutOption
         val hideShortsWidget by hideShortsWidgetOption
-
-        addResources("youtube", "layout.hide.shorts.hideShortsComponentsResourcePatch")
 
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_hide_shorts_home"),

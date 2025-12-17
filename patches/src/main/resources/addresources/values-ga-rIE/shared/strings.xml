@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Socruithe</string>
+  <string name="morphe_settings_confirm_user_dialog_title">An bhfuil tú cinnte gur mhaith leat dul ar aghaidh?</string>
+  <string name="morphe_settings_save">Sábháil</string>
+  <string name="morphe_settings_reset">Athshocrú</string>
+  <string name="morphe_settings_reset_color">Dath a athshocrú</string>
+  <string name="morphe_settings_color_invalid">Dath neamhbhailí</string>
+  <string name="morphe_settings_restart_title">Atosú ag teastáil</string>
+  <string name="morphe_settings_restart_dialog_message">Atosaigh an aip chun go mbeidh an t-athrú seo i bhfeidhm.</string>
+  <string name="morphe_settings_restart">Atosaigh</string>
+  <string name="morphe_settings_import">Iompórtáil</string>
+  <string name="morphe_settings_import_copy">Cóipeáil</string>
+  <string name="morphe_settings_import_reset">Athshocraigh socruithe Morphe go réamhshocrú</string>
+  <string name="morphe_settings_import_success">Iompórtáladh %d socruithe</string>
+  <string name="morphe_settings_import_failure_parse">Theip ar allmhairiú: %s</string>
+  <string name="morphe_settings_search_hint">Cuardaigh socruithe</string>
+  <string name="morphe_settings_search_no_results_title">Ní bhfuarthas aon toradh ar \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Bain triail as eochairfhocal eile</string>
+  <string name="morphe_settings_search_recent_searches">Cuardaigh le déanaí</string>
+  <string name="morphe_settings_search_remove_message">Bain as stair an chuardaigh?</string>
+  <string name="morphe_settings_search_clear_history">Glan stair chuardaigh</string>
+  <string name="morphe_settings_search_clear_history_message">An bhfuil tú cinnte gur mhaith leat stair chuardaigh go léir a ghlanadh?</string>
+  <string name="morphe_settings_search_tips_title">Leideanna Cuardaigh</string>
+  <string name="morphe_settings_search_tips_summary">"• Tapáil cosán chun dul chuige
+• Brúigh fada ar shocrú chun dul chuige
+• Brúigh Iontráil chun iarratas cuardaigh a shábháil sa stair
+• Déanann cuardach neamhaird de chásáil agus poncaíocht
+• Tá socruithe tuismitheora le feiceáil os cionn socruithe leanaí díchumasaithe"</string>
+  <string name="morphe_settings_search_empty_history_title">Tá stair an chuardaigh folamh</string>
+  <string name="morphe_settings_search_empty_history_summary">Chun stair an chuardaigh a shábháil, clóscríobh iarratas cuardaigh agus brúigh Iontráil</string>
+  <string name="morphe_settings_search_history_title">Taispeáin stair cuardaigh na socruithe</string>
+  <string name="morphe_settings_search_history_summary_on">Taispeántar stair cuardaigh na socruithe</string>
+  <string name="morphe_settings_search_history_summary_off">Ní thaispeántar stair cuardaigh na socruithe</string>
+  <string name="morphe_show_menu_icons_title">Taispeáin deilbhíní socruithe Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Taispeántar deilbhíní socruithe</string>
+  <string name="morphe_show_menu_icons_summary_off">Ní thaispeántar deilbhíní socraithe</string>
+  <string name="morphe_language_title">Teanga Morphe</string>
+  <string name="morphe_language_user_dialog_message">"D'fhéadfadh aistriúcháin do roinnt teangacha a bheith ar iarraidh nó mí-iomlán.
+
+Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fheabhsú, tabhair cuairt ar translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">Teanga aip</string>
+  <string name="morphe_pref_import_export_title">Iompórtáil / Easpórtáil</string>
+  <string name="morphe_pref_import_export_summary">Iompórtáil / Easpórtáil socruithe Morphe</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">Tá tú ag baint úsáide as leagan &lt;i&gt;%s&lt;/i&gt; Morphe Patches</string>
+  <string name="morphe_settings_about_links_dev_header">Nóta</string>
+  <string name="morphe_settings_about_links_dev_body">Is réamh-eisiúint é an leagan seo agus d\'fhéadfadh fadhbanna gan choinne a bheith agat</string>
+  <string name="morphe_settings_about_links_header">Naisc oifigiúla</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Dífhabhtú</string>
+  <string name="morphe_debug_screen_summary">Cumasaigh nó díchumasaigh roghanna dífhabhtú</string>
+  <string name="morphe_debug_title">Dífhabhtú logáil</string>
+  <string name="morphe_debug_summary_on">Tá logaí dífhabhtaithe cumasaithe</string>
+  <string name="morphe_debug_summary_off">Tá logaí dífhabhtaithe díchumasaithe</string>
+  <string name="morphe_debug_stacktrace_title">Rianta cruach logála</string>
+  <string name="morphe_debug_stacktrace_summary_on">Cuimsíonn logaí dífhabhtaithe rian cruach</string>
+  <string name="morphe_debug_stacktrace_summary_off">Ní chuimsíonn logaí dífhabhtaithe rian cruach</string>
+  <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Taispeántar tósta má tharlaíonn earráid</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Ní thaispeántar tósta má tharlaíonn earráid</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide Morphe.
+
+Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Easpórtáil logaí dífhabhtaithe</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Cóipeálann sé logaí dífhabhtaithe Morphe chuig an gearrthaisce</string>
+  <string name="morphe_debug_logs_disabled">Tá logáil dífhabhtaithe díchumasaithe</string>
+  <string name="morphe_debug_logs_none_found">Níor aimsíodh aon logaí</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Lógaí cóipeáilte</string>
+  <string name="morphe_debug_logs_failed_to_export">Theip ar logaí a easpórtáil: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Glan logaí dífhabhtaithe</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Glanann sé gach loga dífhabhtaithe Morphe stóráilte</string>
+  <string name="morphe_debug_logs_clear_toast">Lógaí glanta</string>
+  <string name="morphe_debug_feature_flags_manager_title">Bainisteoir bratacha gnéithe</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Bainistigh bratacha gné booléacha</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Bratacha gníomhacha (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Bratacha blocáilte (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Cuardaigh bratacha...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha sábháilte</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Bratacha athshocraithe</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha cóipeáilte chuig an ngearrthaisce</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">Socruithe GmsCore</string>
+  <string name="microg_settings_summary">Socruithe le haghaidh GmsCore</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">Níl MicroG GmsCore suiteáilte. Suiteáil é.</string>
+  <string name="gms_core_dialog_title">Gníomh riachtanach</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Níl cead ag MicroG GmsCore rith sa chúlra.
+
+Lean an treoir \"Ná maraigh mo aip\" do do ghuthán, agus cuir na treoracha i bhfeidhm ar do shuiteáil MicroG.
+
+Is gá seo chun go n-oibreoidh an aip."</string>
+  <string name="gms_core_dialog_open_website_text">Oscail láithreán gréasáin</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Caithfidh tú optúimíochtaí ceallraí MicroG GmsCore a dhíchumasú chun fadhbanna a sheachaint.
+
+Ní chuirfidh díghníomhachtú optúimíochtaí ceallraí do MicroG isteach ar úsáid ceallraí ar bhealach diúltach.
+
+Brúigh an cnaipe leanúnaí agus ligean athruithe optúimíochta."</string>
+  <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
+</resources>

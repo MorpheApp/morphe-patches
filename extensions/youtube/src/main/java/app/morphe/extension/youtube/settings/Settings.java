@@ -17,7 +17,6 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHid
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHorizontalDragAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import static app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
-import static app.morphe.extension.youtube.patches.SeekbarThumbnailsPatch.SeekbarThumbnailsHighQualityAvailability;
 import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuItemsFilter.HideAudioFlyoutMenuAvailability;
 import static app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import static app.morphe.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
@@ -335,10 +334,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_SEEKBAR_THUMBNAIL = new BooleanSetting("morphe_hide_seekbar_thumbnail", FALSE, true);
     public static final BooleanSetting FULLSCREEN_LARGE_SEEKBAR = new BooleanSetting("morphe_fullscreen_large_seekbar", FALSE);
     public static final BooleanSetting HIDE_TIMESTAMP = new BooleanSetting("morphe_hide_timestamp", FALSE);
-    public static final BooleanSetting RESTORE_OLD_SEEKBAR_THUMBNAILS = new BooleanSetting("morphe_restore_old_seekbar_thumbnails", TRUE);
     public static final BooleanSetting SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
-    public static final BooleanSetting SEEKBAR_THUMBNAILS_HIGH_QUALITY = new BooleanSetting("morphe_seekbar_thumbnails_high_quality", FALSE, true,
-            "morphe_seekbar_thumbnails_high_quality_dialog_message", new SeekbarThumbnailsHighQualityAvailability());
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("morphe_slide_to_seek", FALSE, true);
     public static final BooleanSetting SEEKBAR_CUSTOM_COLOR = new BooleanSetting("morphe_seekbar_custom_color", FALSE, true);
     public static final StringSetting SEEKBAR_CUSTOM_COLOR_PRIMARY = new StringSetting("morphe_seekbar_custom_color_primary", "#FF0033", true, parent(SEEKBAR_CUSTOM_COLOR));

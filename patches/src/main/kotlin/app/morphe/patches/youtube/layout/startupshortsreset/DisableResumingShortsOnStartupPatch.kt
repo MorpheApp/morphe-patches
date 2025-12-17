@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.startupshortsreset
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
@@ -28,7 +26,6 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch
     )
 
@@ -43,8 +40,6 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.startupshortsreset.disableResumingShortsOnStartupPatch")
-
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_disable_resuming_shorts_player"),
         )

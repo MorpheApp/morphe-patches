@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.interaction.swipecontrols
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -31,13 +29,10 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/s
 private val swipeControlsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.swipecontrols.swipeControlsResourcePatch")
-
         // If fullscreen swipe is enabled in newer versions the app can crash.
         // It likely is caused by conflicting experimental flags that are never enabled together.
         // Flag was completely removed in 20.34+

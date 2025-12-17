@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">การตั้งค่า</string>
+  <string name="morphe_settings_confirm_user_dialog_title">คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ</string>
+  <string name="morphe_settings_save">บันทึก</string>
+  <string name="morphe_settings_reset">รีเซ็ต</string>
+  <string name="morphe_settings_reset_color">รีเซ็ตสี</string>
+  <string name="morphe_settings_color_invalid">สีไม่ถูกต้อง</string>
+  <string name="morphe_settings_restart_title">ต้องรีสตาร์ท</string>
+  <string name="morphe_settings_restart_dialog_message">รีสตาร์ทแอปเพื่อให้การเปลี่ยนแปลงนี้มีผล</string>
+  <string name="morphe_settings_restart">เริ่มต้นใหม่</string>
+  <string name="morphe_settings_import">นำเข้า</string>
+  <string name="morphe_settings_import_copy">คัดลอก</string>
+  <string name="morphe_settings_import_reset">การตั้งค่า Morphe ถูกตั้งค่าเป็นค่าเริ่มต้น</string>
+  <string name="morphe_settings_import_success">นำเข้าการตั้งค่า %d</string>
+  <string name="morphe_settings_import_failure_parse">การนำเข้าล้มเหลว: %s</string>
+  <string name="morphe_settings_search_hint">ค้นหาในการตั้งค่า</string>
+  <string name="morphe_settings_search_no_results_title">ไม่พบผลลัพธ์สำหรับ \",%s\"</string>
+  <string name="morphe_settings_search_no_results_summary">ลองใช้คำหลักอื่น</string>
+  <string name="morphe_settings_search_recent_searches">การค้นหาล่าสุด</string>
+  <string name="morphe_settings_search_remove_message">นำออกจากประวัติการค้นหาใช่ไหม</string>
+  <string name="morphe_settings_search_clear_history">ล้างประวัติการค้นหา</string>
+  <string name="morphe_settings_search_clear_history_message">คุณแน่ใจหรือไม่ว่าต้องการล้างประวัติการค้นหาทั้งหมด</string>
+  <string name="morphe_settings_search_tips_title">เคล็ดลับการค้นหา</string>
+  <string name="morphe_settings_search_tips_summary">"• แตะเส้นทางเพื่อไปยังเส้นทางนั้น
+• กดค้างที่การตั้งค่าเพื่อไปยังการตั้งค่า
+• กด Enter เพื่อบันทึกคำค้นหาลงในประวัติ
+• การค้นหาไม่สนใจตัวพิมพ์เล็ก/ใหญ่และเครื่องหมายวรรคตอน
+• การตั้งค่าหลักจะปรากฏอยู่เหนือการตั้งค่ารองที่ถูกปิดใช้งาน"</string>
+  <string name="morphe_settings_search_empty_history_title">ประวัติการค้นหาว่างเปล่า</string>
+  <string name="morphe_settings_search_empty_history_summary">หากต้องการบันทึกประวัติการค้นหา ให้พิมพ์คำค้นหาแล้วกด Enter</string>
+  <string name="morphe_settings_search_history_title">แสดงประวัติการค้นหาในการตั้งค่า</string>
+  <string name="morphe_settings_search_history_summary_on">ประวัติการค้นหาในการตั้งค่าจะปรากฏ</string>
+  <string name="morphe_settings_search_history_summary_off">ไม่แสดงประวัติการค้นหาการตั้งค่า</string>
+  <string name="morphe_show_menu_icons_title">แสดงไอคอนการตั้งค่า Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">ไอคอนการตั้งค่าจะปรากฏขึ้น</string>
+  <string name="morphe_show_menu_icons_summary_off">ไม่แสดงไอคอนการตั้งค่า</string>
+  <string name="morphe_language_title">ภาษา Morphe</string>
+  <string name="morphe_language_user_dialog_message">"คำแปลสำหรับบางภาษาอาจหายไปหรือไม่สมบูรณ์
+
+หากต้องการแปลภาษาใหม่หรือปรับปรุงคำแปลที่มีอยู่ โปรดไปที่ translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">ภาษาของแอป</string>
+  <string name="morphe_pref_import_export_title">นำเข้า / ส่งออก</string>
+  <string name="morphe_pref_import_export_summary">นำเข้า / ส่งออกการตั้งค่า Morphe</string>
+  <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_dev_header">หมายเหตุ</string>
+  <string name="morphe_settings_about_links_dev_body">เวอร์ชันนี้เป็นเวอร์ชันก่อนวางจำหน่ายและคุณอาจพบปัญหาที่ไม่คาดคิด</string>
+  <string name="morphe_settings_about_links_header">ลิงก์อย่างเป็นทางการ</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">ดีบัก</string>
+  <string name="morphe_debug_screen_summary">เปิดใช้งานหรือปิดใช้งานตัวเลือกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_title">การบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_summary_on">การบันทึกการแก้ไขข้อบกพร่องถูกเปิดใช้งาน</string>
+  <string name="morphe_debug_summary_off">การบันทึกการแก้ไขข้อบกพร่องถูกปิดใช้งาน</string>
+  <string name="morphe_debug_stacktrace_title">บันทึกการติดตามสแต็ก</string>
+  <string name="morphe_debug_stacktrace_summary_on">การบันทึกการแก้ไขข้อบกพร่องรวมถึงการติดตามสแต็ก</string>
+  <string name="morphe_debug_stacktrace_summary_off">การบันทึกการแก้ไขข้อบกพร่องไม่รวมการติดตามสแต็ก</string>
+  <string name="morphe_debug_toast_on_error_title">แสดง  toast  เมื่อเกิดข้อผิดพลาดของ Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Toast จะปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Toast จะไม่ปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดการแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดของ Morphe ทั้งหมด
+
+คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ที่ไม่คาดคิดใดๆ"</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">คัดลอกบันทึกการแก้ไขข้อบกพร่องของ Morphe ไปยังคลิปบอร์ด</string>
+  <string name="morphe_debug_logs_disabled">ปิดใช้งานการบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_logs_none_found">ไม่พบบันทึก</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">คัดลอกบันทึกแล้ว</string>
+  <string name="morphe_debug_logs_failed_to_export">ส่งออกบันทึกไม่สำเร็จ: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">ล้างบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">ล้างบันทึกการแก้ไขข้อบกพร่องของ Morphe ที่จัดเก็บไว้ทั้งหมด</string>
+  <string name="morphe_debug_logs_clear_toast">ล้างบันทึกแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_title">แฟล็กคุณสมบัติ Manager</string>
+  <string name="morphe_debug_feature_flags_manager_summary">จัดการแฟล็กคุณสมบัติบูลีน</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">แฟล็กที่ใช้งานอยู่ (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">แฟล็กที่ถูกบล็อก (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">ค้นหาแฟล็ก...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กไปยังคลิปบอร์ดแล้ว</string>
+  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">การตั้งค่า GmsCore</string>
+  <string name="microg_settings_summary">การตั้งค่าสำหรับ GmsCore</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG GmsCore ไม่ได้ติดตั้ง ติดตั้ง</string>
+  <string name="gms_core_dialog_title">ต้องดำเนินการ</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore ไม่มีสิทธิ์รันในพื้นหลัง
+
+ทำตามคําแนะนํา \"อย่าฆ่าแอปของฉัน\" สําหรับโทรศัพท์ของคุณ และใช้คําแนะนําเหล่านั้นกับการติดตั้ง MicroG ของคุณ
+
+สิ่งนี้จําเป็นสําหรับแอปในการทํางาน"</string>
+  <string name="gms_core_dialog_open_website_text">เปิดเว็บไซต์</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"การปรับแต่งแบตเตอรี่ของ MicroG GmsCore ต้องถูกปิดใช้งานเพื่อป้องกันปัญหา
+
+การปิดใช้งานการปรับแต่งแบตเตอรี่สําหรับ MicroG จะไม่ส่งผลเสียต่อการใช้แบตเตอรี่
+
+แตะปุ่มตกลง และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
+  <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
+</resources>

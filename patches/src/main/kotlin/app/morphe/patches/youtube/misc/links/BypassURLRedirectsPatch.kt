@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.misc.links
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_37_or_greater
@@ -22,7 +20,6 @@ val bypassURLRedirectsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -36,8 +33,6 @@ val bypassURLRedirectsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.links.bypassURLRedirectsPatch")
-
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_bypass_url_redirects"),
         )

@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
@@ -37,7 +35,6 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         openVideosFullscreenHookPatch,
         navigationBarHookPatch,
         versionCheckPatch,
@@ -55,8 +52,6 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.shortsplayer.shortsPlayerTypePatch")
-
         PreferenceScreen.SHORTS.addPreferences(
             ListPreference("morphe_shorts_player_type")
         )

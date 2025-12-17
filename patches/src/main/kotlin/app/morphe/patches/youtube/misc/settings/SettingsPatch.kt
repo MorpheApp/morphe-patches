@@ -8,7 +8,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.addResources
+import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.layout.branding.addBrandLicensePatch
@@ -188,7 +188,8 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "misc.settings.settingsPatch")
+        addAppResources("shared-youtube")
+        addAppResources("youtube")
 
         // Add an "about" preference to the top.
         preferences += NonInteractivePreference(

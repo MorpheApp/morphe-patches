@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">应用名称</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">应用图标</string>
+  <string name="morphe_custom_branding_icon_entry_1">原始</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">您的观看历史记录未保存。&lt;br&gt;&lt;br&gt;这很可能是由 DNS 广告拦截器或网络代理造成的。&lt;br&gt;&lt;br&gt;要解决此问题，请将 &lt;b&gt;s.youtube.com&lt;/b&gt; 添加到白名单或关闭所有 DNS 广告拦截器和代理。</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再显示</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">欺骗视频流</string>
+  <string name="morphe_spoof_video_streams_screen_summary">欺骗客户端视频流以防止播放问题</string>
+  <string name="morphe_spoof_video_streams_title">伪造视频流</string>
+  <string name="morphe_spoof_video_streams_summary_on">"视频流已欺骗
+
+如果您是 YouTube Premium 用户，此设置可能不需要"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"未欺骗视频流
+
+播放可能无法正常进行"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题。</string>
+  <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
+  <string name="morphe_force_original_audio_summary_on">使用原始音频语言</string>
+  <string name="morphe_force_original_audio_summary_off">正在使用默认音频</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">要使用此功能，请将“伪造视频流”更改为除 Android Studio 之外的任何客户端</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">净化分享链接</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">跟踪查询参数已从分享链接中移除</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">跟踪查询参数未从分享链接中移除</string>
+  <string name="morphe_replace_music_with_youtube_title">将分享链接更改为 youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">分享链接使用 youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">分享链接使用 music.youtube.com</string>
+</resources>

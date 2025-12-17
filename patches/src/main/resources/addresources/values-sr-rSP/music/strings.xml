@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_music_screen_0_about_title">О програму</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Огласи</string>
+  <string name="morphe_settings_music_screen_2_general_title">Опште</string>
+  <string name="morphe_settings_music_screen_3_player_title">Плејер</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Разно</string>
+  <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Сакриј видео огласе</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Видео огласи су скривени</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Видео огласи су приказани</string>
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Омогући трајно понављање</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Трајно понављање је омогућено</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Трајно понављање је онемогућено</string>
+  <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Сакриј дугме „Пребацуј”</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Дугме „Пребацуј” је скривено</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Дугме „Пребацуј” је приказано</string>
+  <string name="morphe_music_hide_history_button_title">Сакриј дугме „Историја”</string>
+  <string name="morphe_music_hide_history_button_summary_on">Дугме „Историја” је скривено</string>
+  <string name="morphe_music_hide_history_button_summary_off">Дугме „Историја” је приказано</string>
+  <string name="morphe_music_hide_notification_button_title">Сакриј дугме „Обавештење”</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Дугме „Обавештење” је скривено</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Дугме „Обавештење” је приказано</string>
+  <string name="morphe_music_hide_search_button_title">Сакриј дугме „Претрага”</string>
+  <string name="morphe_music_hide_search_button_summary_on">Дугме „Претрага” је скривено</string>
+  <string name="morphe_music_hide_search_button_summary_off">Дугме „Претрага” је приказано</string>
+  <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Сакриј траку категорија</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Трака категорија је скривена</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Трака категорија је приказана</string>
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Промени боју мини плејера</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Боја мини плејера одговара плејеру преко целог екрана</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Мини плејер користи подразумевану боју</string>
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Трака за навигацију</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Сакријте или промените дугмад траке за навигацију</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Сакриј дугме „Почетна”</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Дугме „Почетна” је скривено</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Дугме „Почетна” је приказано</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Сакриј дугме „Семплови”</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Дугме „Семплови” је скривено</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Дугме „Семплови” је приказано</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Сакриј дугме „Истражите”</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Дугме „Истражите” је скривено</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Дугме „Истражите” је приказано</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Сакриј дугме „Збирка”</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Дугме „Збирка” је скривено</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Дугме „Збирка” је приказано</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Сакриј дугме „Надогради”</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Дугме „Надогради” је скривено</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Дугме „Надогради” је приказано</string>
+  <string name="morphe_music_hide_navigation_bar_title">Сакриј траку за навигацију</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Трака за навигацију је скривена</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Трака за навигацију је приказана</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Сакриј ознаке дугмади за навигацију</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Ознаке су скривене</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Ознаке су приказане</string>
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Сакриј ознаку „Набавите Music Premium”</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Ознака је скривена</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Ознака је приказана</string>
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Сакриј дугме за надоградњу</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Дугме је скривено</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Дугме је приказано</string>
+</resources>

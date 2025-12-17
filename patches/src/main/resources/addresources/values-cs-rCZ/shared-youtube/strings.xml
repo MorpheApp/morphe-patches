@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Název aplikace</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_4 -->
+  <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
+  <string name="morphe_custom_branding_icon_entry_1">Původní</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornění Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Příčinou je s největší pravděpodobností DNS blokátor reklam nebo síťový proxy server.&lt;br&gt;&lt;br&gt;Chcete-li to opravit, přidejte&lt;b&gt;s.youtube.com&lt;/b&gt; na whitelist nebo vypněte všechny DNS blokátory a proxy servery.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Už nezobrazovat</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Falšovat video streamy</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Falšovat video streamy klienta, aby se předešlo problémům s přehráváním.</string>
+  <string name="morphe_spoof_video_streams_title">Napodobovat video streamy</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Video streamy jsou maskovány
+
+Pokud jste uživatelem YouTube Premium, toto nastavení nemusí být vyžadováno."</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Video streamy nejsou falšované
+
+Přehrávání nemusí fungovat"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutí tohoto nastavení může způsobit problémy s přehráváním.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Výchozí klient</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
+  <string name="morphe_force_original_audio_summary_on">Použít původní jazyk zvuku</string>
+  <string name="morphe_force_original_audio_summary_off">Používání výchozího zvuku</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Chcete-li použít tuto funkci, změňte \'Zfalšovat video streamy\' na libovolného klienta kromě Android Studia</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Vyčistit sdílené odkazy</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parametr sledování je odstraněn ze sdílených odkazů</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parametr sledování není odstraněn ze sdílených odkazů</string>
+  <string name="morphe_replace_music_with_youtube_title">Změnit odkazy pro sdílení na youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Sdílené odkazy používají youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Sdílené odkazy používají music.youtube.com</string>
+</resources>

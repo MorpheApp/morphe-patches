@@ -11,8 +11,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -98,7 +96,6 @@ val miniplayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         miniplayerResourcePatch,
     )
 
@@ -113,8 +110,6 @@ val miniplayerPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "layout.miniplayer.miniplayerPatch")
-
         val preferences = mutableSetOf<BasePreference>()
 
 

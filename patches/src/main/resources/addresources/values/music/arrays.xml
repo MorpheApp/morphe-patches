@@ -1,0 +1,43 @@
+<resources>
+    <!-- layout.branding.customBrandingPatch -->
+    <string-array name="morphe_custom_branding_name_entries">
+        <!-- Original must be first. -->
+        <item>@string/app_launcher_name</item>
+        <item>@string/morphe_custom_branding_name_entry_2</item>
+        <item>@string/morphe_custom_branding_name_entry_3</item>
+        <item>@string/morphe_custom_branding_name_entry_4</item>
+    </string-array>
+    <string-array name="morphe_custom_branding_name_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="morphe_custom_branding_name_custom_entries">
+        <!-- Original must be first. -->
+        <item>@string/app_launcher_name</item>
+        <item>@string/morphe_custom_branding_name_entry_2</item>
+        <item>@string/morphe_custom_branding_name_entry_3</item>
+        <item>@string/morphe_custom_branding_name_entry_4</item>
+        <item>@string/morphe_custom_branding_name_entry_5</item>
+    </string-array>
+    <string-array name="morphe_custom_branding_name_custom_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+    <string-array name="morphe_spoof_video_streams_client_type_entries">
+        <item>Android VR</item>
+        <item>visionOS</item>
+        <item>Android No SDK</item>
+    </string-array>
+    <string-array name="morphe_spoof_video_streams_client_type_entry_values">
+        <item>ANDROID_VR_1_43_32</item>
+        <item>VISIONOS</item>
+        <item>ANDROID_NO_SDK</item>
+    </string-array>
+</resources>

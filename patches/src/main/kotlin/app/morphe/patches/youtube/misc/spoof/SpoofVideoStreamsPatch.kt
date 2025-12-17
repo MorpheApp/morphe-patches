@@ -1,6 +1,5 @@
 package app.morphe.patches.youtube.misc.spoof
 
-import app.morphe.patches.all.misc.resources.addResources
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -48,7 +47,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     },
 
     executeBlock = {
-        addResources("youtube", "misc.fix.playback.spoofVideoStreamsPatch")
 
         PreferenceScreen.MISC.addPreferences(
             PreferenceScreenPreference(

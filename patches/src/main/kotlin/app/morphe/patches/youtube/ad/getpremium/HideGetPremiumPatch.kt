@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.ad.getpremium
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -20,7 +18,6 @@ val hideGetPremiumPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
@@ -34,8 +31,6 @@ val hideGetPremiumPatch = bytecodePatch(
     )
 
     execute {
-        addResources("youtube", "ad.getpremium.hideGetPremiumPatch")
-
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_hide_get_premium"),
         )

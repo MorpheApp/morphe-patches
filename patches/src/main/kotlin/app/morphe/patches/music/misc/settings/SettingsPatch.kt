@@ -3,7 +3,7 @@ package app.morphe.patches.music.misc.settings
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.addResources
+import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
@@ -46,7 +46,6 @@ private val settingsResourcePatch = resourcePatch {
     )
 
     execute {
-
         // Set the style for the Morphe settings to follow the style of the music settings,
         // namely: action bar height, menu item padding and remove horizontal dividers.
         val targetResource = "values/styles.xml"
@@ -86,8 +85,8 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("music", "misc.settings.settingsPatch")
-        addResources("shared", "misc.debugging.enableDebuggingPatch")
+        addAppResources("shared-youtube")
+        addAppResources("music")
 
         // Add an "About" preference to the top.
         preferences += NonInteractivePreference(
