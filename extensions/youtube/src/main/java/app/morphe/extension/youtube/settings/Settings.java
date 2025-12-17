@@ -219,26 +219,26 @@ public class Settings extends BaseSettings {
     // Action buttons
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("morphe_disable_like_subscribe_glow", FALSE);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE);
-    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("morphe_hide_clip_button", TRUE);
-    public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_comments_button", TRUE);
+    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("morphe_hide_clip_button", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_comments_button", FALSE);
     public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("morphe_hide_download_button", FALSE);
     public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("morphe_hide_hype_button", FALSE);
     public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("morphe_hide_like_dislike_button", FALSE);
     public static final BooleanSetting HIDE_PROMOTE_BUTTON = new BooleanSetting("morphe_hide_promote_button", FALSE);
-    public static final BooleanSetting HIDE_REMIX_BUTTON = new BooleanSetting("morphe_hide_remix_button", TRUE);
+    public static final BooleanSetting HIDE_REMIX_BUTTON = new BooleanSetting("morphe_hide_remix_button", FALSE);
     public static final BooleanSetting HIDE_REPORT_BUTTON = new BooleanSetting("morphe_hide_report_button", FALSE);
     public static final BooleanSetting HIDE_SAVE_BUTTON = new BooleanSetting("morphe_hide_save_button", FALSE);
     public static final BooleanSetting HIDE_SHARE_BUTTON = new BooleanSetting("morphe_hide_share_button", FALSE);
     public static final BooleanSetting HIDE_SHOP_BUTTON = new BooleanSetting("morphe_hide_shop_button", FALSE);
-    public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("morphe_hide_stop_ads_button", TRUE);
-    public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("morphe_hide_thanks_button", TRUE);
+    public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("morphe_hide_stop_ads_button", FALSE);
+    public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("morphe_hide_thanks_button", FALSE);
 
     // Player flyout menu items
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS = new BooleanSetting("morphe_hide_player_flyout_additional_settings", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_AMBIENT_MODE = new BooleanSetting("morphe_hide_player_flyout_ambient_mode", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_AUDIO_TRACK = new BooleanSetting("morphe_hide_player_flyout_audio_track", FALSE, new HideAudioFlyoutMenuAvailability());
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_CAPTIONS = new BooleanSetting("morphe_hide_player_flyout_captions", FALSE);
-    public static final BooleanSetting HIDE_PLAYER_FLYOUT_HELP = new BooleanSetting("morphe_hide_player_flyout_help", TRUE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_HELP = new BooleanSetting("morphe_hide_player_flyout_help", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC = new BooleanSetting("morphe_hide_player_flyout_listen_with_youtube_music", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_LOCK_SCREEN = new BooleanSetting("morphe_hide_player_flyout_lock_screen", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_LOOP_VIDEO = new BooleanSetting("morphe_hide_player_flyout_loop_video", FALSE);
@@ -247,7 +247,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_STABLE_VOLUME = new BooleanSetting("morphe_hide_player_flyout_stable_volume", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER = new BooleanSetting("morphe_hide_player_flyout_video_quality_footer", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_VIDEO_QUALITY = new BooleanSetting("morphe_hide_player_flyout_video_quality", FALSE);
-    public static final BooleanSetting HIDE_PLAYER_FLYOUT_WATCH_IN_VR = new BooleanSetting("morphe_hide_player_flyout_watch_in_vr", TRUE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_WATCH_IN_VR = new BooleanSetting("morphe_hide_player_flyout_watch_in_vr", FALSE);
 
     // General layout
     public static final BooleanSetting RESTORE_OLD_SETTINGS_MENUS = new BooleanSetting("morphe_restore_old_settings_menus", FALSE, true);
