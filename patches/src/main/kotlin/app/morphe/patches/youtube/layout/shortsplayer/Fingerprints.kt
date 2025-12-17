@@ -56,27 +56,7 @@ internal object WatchPanelVideoIdFingerprint : Fingerprint(
 )
 
 
-// Pre 19.25
-internal object ShortsPlaybackIntentLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(
-        "L",
-        "Ljava/util/Map;",
-        "J",
-        "Ljava/lang/String;",
-        "Z",
-        "Ljava/util/Map;"
-    ),
-    filters = listOf(
-        methodCall(returnType = "Lcom/google/android/libraries/youtube/player/model/PlaybackStartDescriptor;"),
-        // None of these strings are unique.
-        string("com.google.android.apps.youtube.app.endpoint.flags"),
-        string("ReelWatchFragmentArgs"),
-        string("reels_fragment_descriptor")
-    )
-)
-
+// 19.25+
 internal object ShortsPlaybackIntentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
