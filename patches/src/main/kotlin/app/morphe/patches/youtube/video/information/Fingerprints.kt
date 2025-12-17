@@ -45,6 +45,20 @@ internal object PlayerInitFingerprint : Fingerprint(
     )
 )
 
+internal object PlayerStatusEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
+        "NEW",
+        "PLAYBACK_PENDING",
+        "PLAYBACK_LOADED",
+        "PLAYBACK_INTERRUPTED",
+        "INTERSTITIAL_REQUESTED",
+        "INTERSTITIAL_PLAYING",
+        "VIDEO_PLAYING",
+        "ENDED",
+    )
+)
+
 /**
  * Matched using class found in [PlayerInitFingerprint].
  */
@@ -120,20 +134,6 @@ internal object SeekRelativeFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.ADD_LONG_2ADDR,
         Opcode.INVOKE_VIRTUAL,
-    )
-)
-
-internal object VideoEndFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf("J", "L"),
-    filters = listOf(
-        methodCall(
-            parameters = listOf(),
-            returnType = "V"
-        ),
-        literal(45368273L, location = InstructionLocation.MatchAfterWithin(5)),
-        string("Attempting to seek when video is not playing"),
     )
 )
 

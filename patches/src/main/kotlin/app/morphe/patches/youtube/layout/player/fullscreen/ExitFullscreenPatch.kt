@@ -1,5 +1,6 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -7,10 +8,9 @@ import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.video.information.videoEndMethod
+import app.morphe.patches.youtube.video.information.playerStatusMethod
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 
 @Suppress("unused")
@@ -47,12 +47,13 @@ internal val exitFullscreenPatch = bytecodePatch(
             ListPreference("morphe_exit_fullscreen")
         )
 
-        videoEndMethod.apply {
-            val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
+        playerStatusMethod.apply {
+            val insertIndex =
+                indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT) + 1
 
-            addInstructionsAtControlFlowLabel(
+            addInstruction(
                 insertIndex,
-                "invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->endOfVideoReached()V",
+                "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->endOfVideoReached(Ljava/lang/Enum;)V",
             )
         }
     }
