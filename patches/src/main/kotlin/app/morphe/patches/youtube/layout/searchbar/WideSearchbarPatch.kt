@@ -32,15 +32,6 @@ internal val wideSearchbarPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "19.43.41",
-            "20.14.43",
-            "20.21.37",
-            // 20.31.40+ not supported. YouTube code was removed.
-        )
-    )
-
     execute {
         if (is_20_31_or_greater) {
             // YT removed the legacy text search text field all code required to use it.
