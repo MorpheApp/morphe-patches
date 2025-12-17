@@ -180,7 +180,7 @@ val lithoFilterPatch = bytecodePatch(
         ComponentCreateFingerprint.method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
 
-            val registerProvider = getFreeRegisterProvider(insertIndex)
+            val registerProvider = getFreeRegisterProvider(insertIndex, 3)
             val freeRegister = registerProvider.getFreeRegister()
             val identifierRegister = registerProvider.getFreeRegister()
             val pathRegister = registerProvider.getFreeRegister()
@@ -206,6 +206,7 @@ val lithoFilterPatch = bytecodePatch(
             // Set checkBranch to false and use the 'findFreeRegister' function.
             val accessibilityRegisterProvider = getFreeRegisterProvider(
                 nullCheckIndex,
+                2,
                 registerProvider.getUsedAndExcludedRegisters()
             )
             val accessibilityIdRegister = accessibilityRegisterProvider.getFreeRegister()
