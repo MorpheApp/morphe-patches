@@ -1,3 +1,14 @@
+# [1.0.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2025-12-17)
+
+
+### Bug Fixes
+
+* **YouTube - Loop video:** `Enable loop video` setting not working in playlist ([#14](https://github.com/MorpheApp/morphe-patches/issues/14)) ([77df0a3](https://github.com/MorpheApp/morphe-patches/commit/77df0a33f3ad29cdfeb859a4b89068efe9d6a860))
+* **YouTube - Loop video:** Wrong icon applied ([#13](https://github.com/MorpheApp/morphe-patches/issues/13)) ([92f1325](https://github.com/MorpheApp/morphe-patches/commit/92f13251c0005b44c7859c11f442ddb3a9f5375a))
+* **YouTube - Open Shorts in regular player:** Resolve back button sometimes closing the app instead of exiting fullscreen mode ([d22f9b6](https://github.com/MorpheApp/morphe-patches/commit/d22f9b6ae16b4bfa0f9133fd3f902372533a6e9e))
+* **YouTube:** Changes the default values for some settings ([#10](https://github.com/MorpheApp/morphe-patches/issues/10)) ([fc0f0b8](https://github.com/MorpheApp/morphe-patches/commit/fc0f0b82427acabe225567ce570aa08490b9f15a))
+* **YouTube:** Remove `19.43.41` that YouTube no longer supports ([ae1a03b](https://github.com/MorpheApp/morphe-patches/commit/ae1a03b7e40cb033575e6f1d2e5c49f54e44c5f3))
+
 # [1.0.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2025-12-17)
 
 
