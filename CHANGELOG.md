@@ -1,3 +1,10 @@
+# [1.0.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.14...v1.0.0-dev.15) (2025-12-18)
+
+
+### Features
+
+* Perform full search of free registers ([7a04ba3](https://github.com/MorpheApp/morphe-patches/commit/7a04ba3ba7ac11dea565bdf6e1daa53a707e4ecf))
+
 # [1.0.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2025-12-17)
 
 

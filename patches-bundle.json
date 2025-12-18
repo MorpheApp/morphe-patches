@@ -1,7 +1,7 @@
 {
-  "created_at": "2025-12-17T18:40:43",
-  "description": "# [1.0.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2025-12-17)\n\n\n### Bug Fixes\n\n* **YouTube - Loop video:** `Enable loop video` setting not working in playlist ([#14](https://github.com/MorpheApp/morphe-patches/issues/14)) ([77df0a3](https://github.com/MorpheApp/morphe-patches/commit/77df0a33f3ad29cdfeb859a4b89068efe9d6a860))\n* **YouTube - Loop video:** Wrong icon applied ([#13](https://github.com/MorpheApp/morphe-patches/issues/13)) ([92f1325](https://github.com/MorpheApp/morphe-patches/commit/92f13251c0005b44c7859c11f442ddb3a9f5375a))\n* **YouTube - Open Shorts in regular player:** Resolve back button sometimes closing the app instead of exiting fullscreen mode ([d22f9b6](https://github.com/MorpheApp/morphe-patches/commit/d22f9b6ae16b4bfa0f9133fd3f902372533a6e9e))\n* **YouTube:** Changes the default values for some settings ([#10](https://github.com/MorpheApp/morphe-patches/issues/10)) ([fc0f0b8](https://github.com/MorpheApp/morphe-patches/commit/fc0f0b82427acabe225567ce570aa08490b9f15a))\n* **YouTube:** Remove `19.43.41` that YouTube no longer supports ([ae1a03b](https://github.com/MorpheApp/morphe-patches/commit/ae1a03b7e40cb033575e6f1d2e5c49f54e44c5f3))\n\n\n\n",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.14/patches-1.0.0-dev.14.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.14/patches-1.0.0-dev.14.mpp.asc",
-  "version": "v1.0.0-dev.14"
+  "created_at": "2025-12-18T18:19:04",
+  "description": "# [1.0.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.14...v1.0.0-dev.15) (2025-12-18)\n\n\n### Features\n\n* Perform full search of free registers ([7a04ba3](https://github.com/MorpheApp/morphe-patches/commit/7a04ba3ba7ac11dea565bdf6e1daa53a707e4ecf))\n\n\n\n",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.15/patches-1.0.0-dev.15.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.15/patches-1.0.0-dev.15.mpp.asc",
+  "version": "v1.0.0-dev.15"
 }
