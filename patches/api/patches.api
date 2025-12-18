@@ -932,7 +932,8 @@ public final class app/morphe/util/FreeRegisterProvider {
 	public final fun availableCount ()I
 	public final fun getAllocatedFreeRegisters ()Ljava/util/List;
 	public final fun getFreeRegister ()I
-	public final fun getUsedAndExcludedRegisters ()Ljava/util/List;
+	public final fun getMethod ()Lcom/android/tools/smali/dexlib2/iface/Method;
+	public final fun getUsedAndUnAvailableRegisters ()Ljava/util/List;
 	public final fun hasFreeRegisters ()Z
 }
 
