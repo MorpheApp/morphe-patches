@@ -1,3 +1,35 @@
+/*
+ * Copyright 2025 Morphe.
+ * https://github.com/morpheapp/morphe-patches
+ *
+ * File-Specific License Notice (GPLv3 Section 7 Additional Permission).
+ *
+ * This file is part of the Morphe patches project and is licensed under
+ * the GNU General Public License version 3 (GPLv3), with the Additional
+ * Terms under Section 7 described in the Morphe patches LICENSE file.
+ *
+ * https://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * File-Specific Exception to Section 7b:
+ * -------------------------------------
+ * Section 7b (Attribution Requirement) of the Morphe patches LICENSE
+ * does not apply to THIS FILE. Use of this file does NOT require any
+ * user-facing, in-application, or UI-visible attribution.
+ *
+ * For this file only, attribution under Section 7b is satisfied by
+ * retaining this comment block in the source code of this file.
+ *
+ * Distribution and Derivative Works:
+ * ----------------------------------
+ * This comment block MUST be preserved in all copies, distributions,
+ * and derivative works of this file, whether in source or modified
+ * form.
+ *
+ * All other terms of the Morphe Patches LICENSE, including Section 7c
+ * (Project Name Restriction) and the GPLv3 itself, remain fully
+  * applicable to this file.
+ */
+
 package app.morphe.util
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -10,187 +42,7 @@ import app.morphe.util.FreeRegisterProvider.Companion.unconditionalBranchOpcodes
 import app.morphe.util.FreeRegisterProvider.Companion.writeOpcodes
 import com.android.tools.smali.dexlib2.Format
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.Opcode.ADD_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.ADD_DOUBLE_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.ADD_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.ADD_FLOAT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.ADD_INT
-import com.android.tools.smali.dexlib2.Opcode.ADD_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.ADD_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.ADD_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.ADD_LONG
-import com.android.tools.smali.dexlib2.Opcode.ADD_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.AGET
-import com.android.tools.smali.dexlib2.Opcode.AGET_BOOLEAN
-import com.android.tools.smali.dexlib2.Opcode.AGET_BYTE
-import com.android.tools.smali.dexlib2.Opcode.AGET_CHAR
-import com.android.tools.smali.dexlib2.Opcode.AGET_OBJECT
-import com.android.tools.smali.dexlib2.Opcode.AGET_SHORT
-import com.android.tools.smali.dexlib2.Opcode.AGET_WIDE
-import com.android.tools.smali.dexlib2.Opcode.AND_INT
-import com.android.tools.smali.dexlib2.Opcode.AND_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.AND_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.AND_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.AND_LONG
-import com.android.tools.smali.dexlib2.Opcode.AND_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.ARRAY_LENGTH
-import com.android.tools.smali.dexlib2.Opcode.CONST
-import com.android.tools.smali.dexlib2.Opcode.CONST_16
-import com.android.tools.smali.dexlib2.Opcode.CONST_4
-import com.android.tools.smali.dexlib2.Opcode.CONST_HIGH16
-import com.android.tools.smali.dexlib2.Opcode.CONST_STRING
-import com.android.tools.smali.dexlib2.Opcode.CONST_STRING_JUMBO
-import com.android.tools.smali.dexlib2.Opcode.CONST_WIDE
-import com.android.tools.smali.dexlib2.Opcode.CONST_WIDE_16
-import com.android.tools.smali.dexlib2.Opcode.CONST_WIDE_32
-import com.android.tools.smali.dexlib2.Opcode.CONST_WIDE_HIGH16
-import com.android.tools.smali.dexlib2.Opcode.DIV_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.DIV_DOUBLE_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.DIV_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.DIV_FLOAT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.DIV_INT
-import com.android.tools.smali.dexlib2.Opcode.DIV_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.DIV_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.DIV_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.DIV_LONG
-import com.android.tools.smali.dexlib2.Opcode.DIV_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.DOUBLE_TO_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.DOUBLE_TO_INT
-import com.android.tools.smali.dexlib2.Opcode.DOUBLE_TO_LONG
-import com.android.tools.smali.dexlib2.Opcode.FLOAT_TO_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.FLOAT_TO_INT
-import com.android.tools.smali.dexlib2.Opcode.FLOAT_TO_LONG
-import com.android.tools.smali.dexlib2.Opcode.GOTO
-import com.android.tools.smali.dexlib2.Opcode.GOTO_16
-import com.android.tools.smali.dexlib2.Opcode.GOTO_32
-import com.android.tools.smali.dexlib2.Opcode.IF_EQ
-import com.android.tools.smali.dexlib2.Opcode.IF_EQZ
-import com.android.tools.smali.dexlib2.Opcode.IF_GE
-import com.android.tools.smali.dexlib2.Opcode.IF_GEZ
-import com.android.tools.smali.dexlib2.Opcode.IF_GT
-import com.android.tools.smali.dexlib2.Opcode.IF_GTZ
-import com.android.tools.smali.dexlib2.Opcode.IF_LE
-import com.android.tools.smali.dexlib2.Opcode.IF_LEZ
-import com.android.tools.smali.dexlib2.Opcode.IF_LT
-import com.android.tools.smali.dexlib2.Opcode.IF_LTZ
-import com.android.tools.smali.dexlib2.Opcode.IF_NE
-import com.android.tools.smali.dexlib2.Opcode.IF_NEZ
-import com.android.tools.smali.dexlib2.Opcode.IGET
-import com.android.tools.smali.dexlib2.Opcode.IGET_BOOLEAN
-import com.android.tools.smali.dexlib2.Opcode.IGET_BYTE
-import com.android.tools.smali.dexlib2.Opcode.IGET_CHAR
-import com.android.tools.smali.dexlib2.Opcode.IGET_OBJECT
-import com.android.tools.smali.dexlib2.Opcode.IGET_OBJECT_VOLATILE
-import com.android.tools.smali.dexlib2.Opcode.IGET_SHORT
-import com.android.tools.smali.dexlib2.Opcode.IGET_VOLATILE
-import com.android.tools.smali.dexlib2.Opcode.IGET_WIDE
-import com.android.tools.smali.dexlib2.Opcode.IGET_WIDE_VOLATILE
-import com.android.tools.smali.dexlib2.Opcode.INSTANCE_OF
-import com.android.tools.smali.dexlib2.Opcode.INT_TO_BYTE
-import com.android.tools.smali.dexlib2.Opcode.INT_TO_CHAR
-import com.android.tools.smali.dexlib2.Opcode.INT_TO_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.INT_TO_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.INT_TO_LONG
-import com.android.tools.smali.dexlib2.Opcode.INT_TO_SHORT
-import com.android.tools.smali.dexlib2.Opcode.LONG_TO_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.LONG_TO_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.LONG_TO_INT
-import com.android.tools.smali.dexlib2.Opcode.MOVE
-import com.android.tools.smali.dexlib2.Opcode.MOVE_16
-import com.android.tools.smali.dexlib2.Opcode.MOVE_EXCEPTION
-import com.android.tools.smali.dexlib2.Opcode.MOVE_FROM16
-import com.android.tools.smali.dexlib2.Opcode.MOVE_OBJECT
-import com.android.tools.smali.dexlib2.Opcode.MOVE_OBJECT_16
-import com.android.tools.smali.dexlib2.Opcode.MOVE_OBJECT_FROM16
-import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT
-import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_OBJECT
-import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_WIDE
-import com.android.tools.smali.dexlib2.Opcode.MOVE_WIDE
-import com.android.tools.smali.dexlib2.Opcode.MOVE_WIDE_16
-import com.android.tools.smali.dexlib2.Opcode.MOVE_WIDE_FROM16
-import com.android.tools.smali.dexlib2.Opcode.MUL_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.MUL_DOUBLE_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.MUL_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.MUL_FLOAT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.MUL_INT
-import com.android.tools.smali.dexlib2.Opcode.MUL_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.MUL_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.MUL_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.MUL_LONG
-import com.android.tools.smali.dexlib2.Opcode.MUL_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.NEG_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.NEG_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.NEG_INT
-import com.android.tools.smali.dexlib2.Opcode.NEG_LONG
-import com.android.tools.smali.dexlib2.Opcode.NEW_ARRAY
-import com.android.tools.smali.dexlib2.Opcode.NEW_INSTANCE
-import com.android.tools.smali.dexlib2.Opcode.NOT_INT
-import com.android.tools.smali.dexlib2.Opcode.NOT_LONG
-import com.android.tools.smali.dexlib2.Opcode.OR_INT
-import com.android.tools.smali.dexlib2.Opcode.OR_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.OR_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.OR_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.OR_LONG
-import com.android.tools.smali.dexlib2.Opcode.OR_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.PACKED_SWITCH
-import com.android.tools.smali.dexlib2.Opcode.REM_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.REM_DOUBLE_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.REM_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.REM_FLOAT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.REM_INT
-import com.android.tools.smali.dexlib2.Opcode.REM_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.REM_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.REM_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.REM_LONG
-import com.android.tools.smali.dexlib2.Opcode.REM_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.RETURN
-import com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT
-import com.android.tools.smali.dexlib2.Opcode.RETURN_VOID
-import com.android.tools.smali.dexlib2.Opcode.RETURN_VOID_NO_BARRIER
-import com.android.tools.smali.dexlib2.Opcode.RETURN_WIDE
-import com.android.tools.smali.dexlib2.Opcode.RSUB_INT
-import com.android.tools.smali.dexlib2.Opcode.RSUB_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.SGET
-import com.android.tools.smali.dexlib2.Opcode.SGET_BOOLEAN
-import com.android.tools.smali.dexlib2.Opcode.SGET_BYTE
-import com.android.tools.smali.dexlib2.Opcode.SGET_CHAR
-import com.android.tools.smali.dexlib2.Opcode.SGET_OBJECT
-import com.android.tools.smali.dexlib2.Opcode.SGET_OBJECT_VOLATILE
-import com.android.tools.smali.dexlib2.Opcode.SGET_SHORT
-import com.android.tools.smali.dexlib2.Opcode.SGET_VOLATILE
-import com.android.tools.smali.dexlib2.Opcode.SGET_WIDE
-import com.android.tools.smali.dexlib2.Opcode.SGET_WIDE_VOLATILE
-import com.android.tools.smali.dexlib2.Opcode.SHL_INT
-import com.android.tools.smali.dexlib2.Opcode.SHL_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SHL_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.SHL_LONG
-import com.android.tools.smali.dexlib2.Opcode.SHL_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SHR_INT
-import com.android.tools.smali.dexlib2.Opcode.SHR_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SHR_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.SHR_LONG
-import com.android.tools.smali.dexlib2.Opcode.SHR_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SPARSE_SWITCH
-import com.android.tools.smali.dexlib2.Opcode.SUB_DOUBLE
-import com.android.tools.smali.dexlib2.Opcode.SUB_DOUBLE_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SUB_FLOAT
-import com.android.tools.smali.dexlib2.Opcode.SUB_FLOAT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SUB_INT
-import com.android.tools.smali.dexlib2.Opcode.SUB_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.SUB_LONG
-import com.android.tools.smali.dexlib2.Opcode.SUB_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.THROW
-import com.android.tools.smali.dexlib2.Opcode.USHR_INT
-import com.android.tools.smali.dexlib2.Opcode.USHR_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.USHR_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.USHR_LONG
-import com.android.tools.smali.dexlib2.Opcode.USHR_LONG_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.XOR_INT
-import com.android.tools.smali.dexlib2.Opcode.XOR_INT_2ADDR
-import com.android.tools.smali.dexlib2.Opcode.XOR_INT_LIT16
-import com.android.tools.smali.dexlib2.Opcode.XOR_INT_LIT8
-import com.android.tools.smali.dexlib2.Opcode.XOR_LONG
-import com.android.tools.smali.dexlib2.Opcode.XOR_LONG_2ADDR
+import com.android.tools.smali.dexlib2.Opcode.*
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
@@ -201,7 +53,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.util.EnumSet
 import java.util.LinkedList
-import java.util.logging.Logger
 
 /**
  * Finds free registers at a specific index in a method.
@@ -432,20 +283,13 @@ private fun Method.findFreeRegisters(
     numberOfFreeRegistersNeeded: Int,
     registersToExclude: List<Int>
 ): List<Int> {
-    check(startIndex > 0) {
-        "startIndex must be greater than zero: $startIndex"
-    }
-    check(numberOfFreeRegistersNeeded > 0) {
-        "numberOfFreeRegistersNeeded must be greater than zero: $numberOfFreeRegistersNeeded"
-    }
     if (logFreeRegisterSearch) println("Searching startIndex: $startIndex method: $this")
 
     val freeRegisters = findFreeRegistersInternal(
         startIndex = startIndex,
-        minimumFreeRegisters = numberOfFreeRegistersNeeded,
+        numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
         currentDepth = 0,
         visitedIndices = mutableSetOf(),
-        visitedBranches = mutableSetOf(),
         registersToExclude = registersToExclude.toSet(),
         offsetArray = buildInstructionOffsetArray()
     )
@@ -474,28 +318,29 @@ private fun Method.findFreeRegisters(
  * Returns all free registers found starting from [startIndex].Follows branches up to [maxDepth].
  *
  * @param startIndex Inclusive starting index.
- * @param minimumFreeRegisters The minimum free registers to ensure will be returned.
+ * @param numberOfFreeRegistersNeeded The minimum free registers to ensure will be returned.
  * @param currentDepth Current branching depth. Value of zero means no branching has been followed yet.
  * @param visitedIndices Set of instruction indices already visited to avoid infinite loops.
- * @param visitedBranches Set of branch target indices already visited.
  * @param registersToExclude Registers to exclude from consideration.
  * @param registersToExclude Map from instruction index to code offset.
  * @return List of all free registers found.
  */
 private fun Method.findFreeRegistersInternal(
     startIndex: Int,
-    minimumFreeRegisters: Int,
+    numberOfFreeRegistersNeeded: Int,
     currentDepth: Int,
     visitedIndices: MutableSet<Int>,
-    visitedBranches: MutableSet<Int>,
     registersToExclude: Set<Int>,
     offsetArray: IntArray
 ): List<Int> {
-    if (implementation == null) {
-        throw IllegalArgumentException("Method has no implementation: $this")
+    check(implementation != null) {
+        "Method has no implementation: $this"
     }
-    if (startIndex < 0 || startIndex >= instructions.count()) {
-        throw IllegalArgumentException("startIndex out of bounds: $startIndex")
+    check(startIndex > 0 && startIndex < instructions.count()) {
+        "startIndex out of bounds: $startIndex methodInstructionCount: ${instructions.count()}"
+    }
+    check(numberOfFreeRegistersNeeded > 0) {
+        "numberOfFreeRegistersNeeded must be greater than zero: $numberOfFreeRegistersNeeded"
     }
 
     fun Collection<Int>.numberOf4BitRegisters() = this.count { it < 16 }
@@ -532,7 +377,7 @@ private fun Method.findFreeRegistersInternal(
                 // But if this is a branch, then this all free registers should be found
                 // because the intersection of free registers from different branches may be
                 // less than the requested number of registers.
-                if (currentDepth == 0 && freeRegisters.numberOf4BitRegisters() >= minimumFreeRegisters) {
+                if (currentDepth == 0 && freeRegisters.numberOf4BitRegisters() >= numberOfFreeRegistersNeeded) {
                     return freeRegisters.toList()
                 }
             }
@@ -558,16 +403,13 @@ private fun Method.findFreeRegistersInternal(
 
         if (instruction.isUnconditionalBranchInstruction) {
             if (logFreeRegisterSearch) println("encountered unconditional branch index: $i opcode: " + instruction.opcode)
-            val gotoTarget = getBranchTarget(instruction, i, offsetArray)
-            if (gotoTarget < 0) throw IllegalStateException("Could not find branch target index")
 
             // Continue searching from the goto index.
             return findFreeRegistersInternal(
-                startIndex = gotoTarget,
-                minimumFreeRegisters = minimumFreeRegisters,
+                startIndex = getBranchTargetInstructionIndex(instruction, i, offsetArray),
+                numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
                 currentDepth = currentDepth,
                 visitedIndices = visitedIndices,
-                visitedBranches = visitedBranches,
                 registersToExclude = registersToExclude,
                 offsetArray = offsetArray
             )
@@ -578,11 +420,10 @@ private fun Method.findFreeRegistersInternal(
             val freeRegistersPlusExcluded = freeRegisters + registersToExclude
 
             val branchFreeRegisters = findFreeRegistersInternal(
-                startIndex = getBranchTarget(instruction, i, offsetArray),
-                minimumFreeRegisters = minimumFreeRegisters,
+                startIndex = getBranchTargetInstructionIndex(instruction, i, offsetArray),
+                numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
                 currentDepth = currentDepth + 1,
                 visitedIndices = visitedIndices,
-                visitedBranches = visitedBranches,
                 registersToExclude = freeRegistersPlusExcluded,
                 offsetArray = offsetArray
             )
@@ -590,10 +431,9 @@ private fun Method.findFreeRegistersInternal(
 
             val fallThruFreeRegisters = findFreeRegistersInternal(
                 startIndex = i + 1,
-                minimumFreeRegisters = minimumFreeRegisters,
+                numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
                 currentDepth = currentDepth + 1,
                 visitedIndices = visitedIndices,
-                visitedBranches = visitedBranches,
                 registersToExclude = freeRegistersPlusExcluded,
                 offsetArray = offsetArray
             )
@@ -639,20 +479,21 @@ private fun Method.buildInstructionOffsetArray(): IntArray {
 }
 
 /**
- * Gets all branch target indices for a branch instruction.
- * Returns empty list if not a branch or targets cannot be determined.
+ * Returns a instruction index for a given branch instruction.
  *
  * @param instruction The branch instruction
- * @param currentIndex Current instruction index
- * @param offsetArray Array mapping instruction index to code offset (-1 for payloads)
+ * @param index Current instruction index
+ * @param offsetArray Array mapping instruction index to code offset.
  */
-private fun Method.getBranchTarget(
+private fun Method.getBranchTargetInstructionIndex(
     instruction: Instruction,
-    currentIndex: Int,
+    index: Int,
     offsetArray: IntArray
 ): Int {
-    val currentOffset = if (currentIndex < offsetArray.size) offsetArray[currentIndex] else -1
-    if (currentOffset == -1) return -1 // This is a payload instruction.
+    check (index >0 && index < offsetArray.size) {
+        "Invalid index: $index"
+    }
+    val currentOffset = offsetArray[index]
 
     return when (instruction.opcode) {
         GOTO, GOTO_16, GOTO_32,
@@ -663,12 +504,10 @@ private fun Method.getBranchTarget(
             // Find the instruction index at this offset.
             findInstructionIndexByOffset(targetOffset, offsetArray)
         }
-        PACKED_SWITCH, SPARSE_SWITCH -> {
-            // These need special handling - they jump to payloads
-            // which then have their own target lists.
-            -1 // Simplified for now
-        }
-        else -> -1
+        // These need special handling - they jump to payloads
+        // which then have their own target lists.
+        // PACKED_SWITCH, SPARSE_SWITCH -> // TODO?
+        else -> throw IllegalStateException("Unsupported opcode: ${instruction.opcode}")
     }
 }
 
@@ -692,11 +531,9 @@ private fun Method.findInstructionIndexByOffset(
     // Should never happen.
     // Code has been tested on hundreds of random methods on all instruction indices,
     // but maybe some weird code exists that this has overlooked.
-    Logger.getLogger(FreeRegisterProvider.javaClass.name).warning(
-        "Could not find exact instruction offset for method: $this at offset: $targetOffset. " +
-                "Please file a bug report in the Morphe patches repo"
+    throw IllegalArgumentException("Could not find exact instruction offset for method: " +
+            "$this at offset: $targetOffset. Please file a bug report in the Morphe patches repo"
     )
-    return -1
 }
 
 /**
@@ -741,7 +578,6 @@ val Instruction.writeRegister: Int?
  * This differs from [isUnconditionalBranchInstruction] in that it does not include unconditional goto.
  *
  * @return If this instruction is a conditional branch (multiple branch paths).
- *
  */
 internal val Instruction.isConditionalBranchInstruction: Boolean
     get() = this.opcode in conditionalBranchOpcodes
