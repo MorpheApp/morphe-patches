@@ -56,7 +56,6 @@ private val disableSplashAnimationPatch = bytecodePatch {
 
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
-    addResourcePatchName = "music",
     originalLauncherIconName = "ic_launcher_release",
     originalAppName = "@string/app_launcher_name",
     originalAppPackageName = MUSIC_PACKAGE_NAME,

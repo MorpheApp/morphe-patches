@@ -44,6 +44,7 @@ private val mipmapDirectories = mapOf(
 )
 
 private val iconStyleNames = arrayOf(
+    "black",
     "dark",
     "light",
 )
@@ -71,7 +72,6 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/pa
  * Shared custom branding patch for YouTube and YT Music.
  */
 internal fun baseCustomBrandingPatch(
-    addResourcePatchName: String,
     originalLauncherIconName: String,
     originalAppName: String,
     originalAppPackageName: String,
