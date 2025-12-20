@@ -1,3 +1,10 @@
+# [1.0.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.15...v1.0.0-dev.16) (2025-12-20)
+
+
+### Features
+
+* Add dark icon ([#16](https://github.com/MorpheApp/morphe-patches/issues/16)) ([980e4ac](https://github.com/MorpheApp/morphe-patches/commit/980e4ac8804948c5a577097dc33c498e0ca89de5))
+
 # [1.0.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.14...v1.0.0-dev.15) (2025-12-18)
 
 
