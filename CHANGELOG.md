@@ -1,3 +1,10 @@
+# [1.0.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.16...v1.0.0-dev.17) (2025-12-21)
+
+
+### Bug Fixes
+
+* **YouTube - Open Shorts in regular player:** Fix back to exit with 20.51 ([6203858](https://github.com/MorpheApp/morphe-patches/commit/62038585df427364e7aeb4aa37f5c1b1e0639478))
+
 # [1.0.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.15...v1.0.0-dev.16) (2025-12-20)
 
 
