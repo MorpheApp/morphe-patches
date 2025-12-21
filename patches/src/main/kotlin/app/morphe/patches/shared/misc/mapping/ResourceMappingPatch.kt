@@ -120,7 +120,7 @@ val resourceMappingPatch = resourcePatch {
         document(get("res/values/public.xml").inputStream()).use { document ->
             val resources = document.documentElement.childNodes
             val resourcesLength = resources.length
-            resourceMappings = HashMap<String, ResourceElement>(2 * resourcesLength)
+            resourceMappings = HashMap(2 * resourcesLength)
 
             for (i in 0 until resourcesLength) {
                 val node = resources.item(i) as? Element ?: continue
