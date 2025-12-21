@@ -5,6 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
@@ -15,12 +16,14 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -92,8 +95,6 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         )
 
         // Fix issue with back button exiting the app instead of minimizing the player.
-        // Without this change this issue can be difficult to reproduce, but seems to occur
-        // most often with 'open video in regular player' and not open in fullscreen player.
         ExitVideoPlayerFingerprint.method.apply {
             // Method call for Activity.finish()
             val finishIndexFirst = indexOfFirstInstructionOrThrow {
@@ -120,16 +121,28 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                 """
             )
 
-            // Index of PlayerType.isWatchWhileMaximizedOrFullscreen()
-            val index = indexOfFirstInstructionReversedOrThrow(finishIndexFirst, Opcode.MOVE_RESULT)
-            val register = getInstruction<OneRegisterInstruction>(index).registerA
+            // Surround first activity.finish() and return-void with conditional check.
+            val returnVoidIndex = indexOfFirstInstructionOrThrow(
+                finishIndexFirst, Opcode.RETURN_VOID
+            )
+            // Find free register using index after return void (new control flow path added below).
+            val freeRegister = findFreeRegister(
+                returnVoidIndex + 1,
+                // Exclude all registers used by only instruction we will skip over.
+                getInstruction(finishIndexFirst).registersUsed
+            )
 
-            addInstructions(
-                index + 1,
+            addInstructionsAtControlFlowLabel(
+                finishIndexFirst,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit(Z)Z    
-                    move-result v$register
-                """
+                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :doNotCallActivityFinish
+                """,
+                ExternalLabel(
+                    "doNotCallActivityFinish",
+                    getInstruction(returnVoidIndex + 1)
+                )
             )
         }
     }
