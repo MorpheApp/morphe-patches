@@ -130,7 +130,7 @@ public final class AdsFilter extends Filter {
         );
 
         final var promotionBanner = new StringFilterGroup(
-                Settings.HIDE_GET_PREMIUM,
+                Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
                 "statement_banner"
         );
 
