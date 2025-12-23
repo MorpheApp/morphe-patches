@@ -15,16 +15,25 @@ import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findFreeRegister
 import app.morphe.util.findMutableMethodOf
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.injectHideViewCall
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal var adAttributionId = -1L
     private set
 internal var fullScreenEngagementAdContainer = -1L
+    private set
+internal var slidingDialogAnimation = -1L
     private set
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
@@ -54,6 +63,7 @@ private val hideAdsResourcePatch = resourcePatch {
 
         adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
         fullScreenEngagementAdContainer = getResourceId(ResourceType.ID, "fullscreen_engagement_ad_container")
+        slidingDialogAnimation = getResourceId(ResourceType.STYLE, "SlidingDialogAnimation")
     }
 }
 
@@ -91,6 +101,32 @@ val hideAdsPatch = bytecodePatch(
                 addListIndex,
                 "invoke-static { v$listRegister, v$objectRegister }, $EXTENSION_CLASS_DESCRIPTOR" +
                         "->hideEndScreenStoreBanner(Ljava/util/List;Ljava/lang/Object;)V"
+            )
+        }
+
+        // Hide fullscreen ad
+
+        LithoDialogBuilderFingerprint.method.apply {
+            // Find the class name of the custom dialog
+            val dialogIndex = indexOfShowDialogInstruction(this)
+            val dialogClass = getInstruction(dialogIndex).getReference<MethodReference>()!!.definingClass
+
+            // The dialog can be closed after dialog.show(),
+            // and it is better to close the dialog after the layout of the dialog has changed
+            val insertIndex = indexOfFirstInstructionReversedOrThrow {
+                opcode == Opcode.IPUT_OBJECT &&
+                        getReference<FieldReference>()?.type == dialogClass
+            }
+            val insertRegister =
+                getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+            val freeRegister = findFreeRegister(insertIndex, insertRegister)
+
+            addInstructionsAtControlFlowLabel(
+                insertIndex,
+                """
+                    move-object/from16 v$freeRegister, p1
+                    invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->closeFullscreenAd(Ljava/lang/Object;[B)V
+                """
             )
         }
 

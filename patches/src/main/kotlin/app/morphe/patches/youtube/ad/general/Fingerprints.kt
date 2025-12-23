@@ -23,3 +23,17 @@ internal fun indexOfAddListInstruction(method: Method) =
         getReference<MethodReference>()?.name == "add"
     }
 
+internal object LithoDialogBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("[B", "L"),
+    custom = { method, _ ->
+        method.containsLiteralInstruction(slidingDialogAnimation)
+                && indexOfShowDialogInstruction(method) >= 0
+    }
+)
+
+internal fun indexOfShowDialogInstruction(method: Method) =
+    method.indexOfFirstInstructionReversed {
+        getReference<MethodReference>()?.name == "show"
+    }
