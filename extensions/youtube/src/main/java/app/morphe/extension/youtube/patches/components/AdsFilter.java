@@ -218,6 +218,12 @@ public final class AdsFilter extends Filter {
         elementsList.add(protobufList);
     }
 
+    /**
+     * Injection point.
+     */
+    public static boolean hideGetPremiumView() {
+        return Settings.HIDE_GET_PREMIUM.get();
+    }
 
     /**
      * Hide the view, which shows ads in the homepage.

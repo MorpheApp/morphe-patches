@@ -1,5 +1,6 @@
 package app.morphe.patches.youtube.ad.general
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -9,7 +10,6 @@ import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.ad.getpremium.hideGetPremiumPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -57,6 +57,7 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_shopping_links"),
             SwitchPreference("morphe_hide_view_products_banner"),
             SwitchPreference("morphe_hide_web_search_results"),
+            SwitchPreference("morphe_hide_get_premium"),
         )
 
         addLithoFilter("Lapp/morphe/extension/youtube/patches/components/AdsFilter;")
@@ -73,7 +74,6 @@ val hideAdsPatch = bytecodePatch(
     description = "Adds options to remove general ads.",
 ) {
     dependsOn(
-        hideGetPremiumPatch,
         hideAdsResourcePatch,
         verticalScrollPatch,
         fixBackToExitGesturePatch,
@@ -127,6 +127,32 @@ val hideAdsPatch = bytecodePatch(
                     move-object/from16 v$freeRegister, p1
                     invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->closeFullscreenAd(Ljava/lang/Object;[B)V
                 """
+            )
+        }
+
+        // Hide get premium
+
+        GetPremiumViewFingerprint.method.apply {
+            val startIndex = GetPremiumViewFingerprint.instructionMatches.first().index
+            val measuredWidthRegister = getInstruction<TwoRegisterInstruction>(startIndex).registerA
+            val measuredHeightInstruction = getInstruction<TwoRegisterInstruction>(startIndex + 1)
+
+            val measuredHeightRegister = measuredHeightInstruction.registerA
+            val tempRegister = measuredHeightInstruction.registerB
+
+            addInstructionsWithLabels(
+                startIndex + 2,
+                """
+                    # Override the internal measurement of the layout with zero values.
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumView()Z
+                    move-result v$tempRegister
+                    if-eqz v$tempRegister, :allow
+                    const/4 v$measuredWidthRegister, 0x0
+                    const/4 v$measuredHeightRegister, 0x0
+                    :allow
+                    nop
+                    # Layout width/height is then passed to a protected class method.
+                """,
             )
         }
 
