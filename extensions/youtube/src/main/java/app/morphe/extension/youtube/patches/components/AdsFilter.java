@@ -183,9 +183,9 @@ public final class AdsFilter extends Filter {
 
                 Window window = dialog.getWindow();
 
-                // Set the dialog size to 0 before closing
-                // This is not strictly necessary
                 if (window != null) {
+                    // Set the dialog size to 0 before closing
+                    // If the dialog is not resized to 0, it will remain visible for about a second before closing
                     WindowManager.LayoutParams params = window.getAttributes();
                     params.height = 0;
                     params.width = 0;
@@ -228,7 +228,7 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideGetPremiumView() {
-        return Settings.HIDE_GET_PREMIUM.get();
+        return Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get();
     }
 
     /**

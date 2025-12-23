@@ -2,6 +2,8 @@ package app.morphe.patches.youtube.ad.general
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
@@ -45,13 +47,11 @@ internal object LithoDialogBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("[B", "L"),
-    custom = { method, _ ->
-        method.containsLiteralInstruction(slidingDialogAnimation)
-                && indexOfShowDialogInstruction(method) >= 0
-    }
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "show"
+        ),
+        literal(slidingDialogAnimation),
+    )
 )
-
-internal fun indexOfShowDialogInstruction(method: Method) =
-    method.indexOfFirstInstructionReversed {
-        getReference<MethodReference>()?.name == "show"
-    }

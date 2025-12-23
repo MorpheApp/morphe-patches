@@ -57,7 +57,7 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_shopping_links"),
             SwitchPreference("morphe_hide_view_products_banner"),
             SwitchPreference("morphe_hide_web_search_results"),
-            SwitchPreference("morphe_hide_get_premium"),
+            SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
         addLithoFilter("Lapp/morphe/extension/youtube/patches/components/AdsFilter;")
@@ -106,28 +106,30 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide fullscreen ad
 
-        LithoDialogBuilderFingerprint.method.apply {
-            // Find the class name of the custom dialog
-            val dialogIndex = indexOfShowDialogInstruction(this)
-            val dialogClass = getInstruction(dialogIndex).getReference<MethodReference>()!!.definingClass
+        LithoDialogBuilderFingerprint.let {
+            it.method.apply {
+                // Find the class name of the custom dialog
+                val dialogIndex = it.instructionMatches.first().index
+                val dialogClass = getInstruction(dialogIndex).getReference<MethodReference>()!!.definingClass
 
-            // The dialog can be closed after dialog.show(),
-            // and it is better to close the dialog after the layout of the dialog has changed
-            val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                opcode == Opcode.IPUT_OBJECT &&
-                        getReference<FieldReference>()?.type == dialogClass
+                // The dialog can be closed after dialog.show(),
+                // and it is better to close the dialog after the layout of the dialog has changed
+                val insertIndex = indexOfFirstInstructionReversedOrThrow {
+                    opcode == Opcode.IPUT_OBJECT &&
+                            getReference<FieldReference>()?.type == dialogClass
+                }
+                val insertRegister =
+                    getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+                val freeRegister = findFreeRegister(insertIndex, insertRegister)
+
+                addInstructionsAtControlFlowLabel(
+                    insertIndex,
+                    """
+                        move-object/from16 v$freeRegister, p1
+                        invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->closeFullscreenAd(Ljava/lang/Object;[B)V
+                    """
+                )
             }
-            val insertRegister =
-                getInstruction<TwoRegisterInstruction>(insertIndex).registerA
-            val freeRegister = findFreeRegister(insertIndex, insertRegister)
-
-            addInstructionsAtControlFlowLabel(
-                insertIndex,
-                """
-                    move-object/from16 v$freeRegister, p1
-                    invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->closeFullscreenAd(Ljava/lang/Object;[B)V
-                """
-            )
         }
 
         // Hide get premium
