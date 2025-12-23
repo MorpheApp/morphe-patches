@@ -78,7 +78,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             }
         }
 
-        val PlayerStatusFingerprint = Fingerprint(
+        val PlayabilityStatusFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
             returnType = "Z",
             parameters = listOf(PlayabilityStatusEnumFingerprint.originalClassDef.type),
@@ -89,7 +89,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             }
         )
 
-        PlayerStatusFingerprint.match(
+        PlayabilityStatusFingerprint.match(
             BackgroundPlaybackManagerShortsFingerprint.originalClassDef
         ).method.addInstruction(
             0,
