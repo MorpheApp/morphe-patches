@@ -73,15 +73,6 @@ internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     custom = customLiteral { 5 }
 )
 
-internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Z",
-    parameters = listOf("L"),
-    filters = listOf(
-        literal(151635310)
-    )
-)
-
 internal object ShortsBackgroundPlaybackFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
