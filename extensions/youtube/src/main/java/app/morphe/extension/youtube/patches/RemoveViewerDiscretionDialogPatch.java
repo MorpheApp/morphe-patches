@@ -14,7 +14,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class RemoveViewerDiscretionDialogPatch {
-    private static final String[] VIER_DISCRETION_DIALOG_PLAYABILITY_STATUS = {
+    private static final String[] VIEWER_DISCRETION_DIALOG_PLAYABILITY_STATUS = {
             "AGE_CHECK_REQUIRED",
             "AGE_VERIFICATION_REQUIRED",
             "CONTENT_CHECK_REQUIRED",
@@ -97,6 +97,6 @@ public class RemoveViewerDiscretionDialogPatch {
      */
     private static boolean shouldConfirmDialog() {
         return Settings.REMOVE_VIEWER_DISCRETION_DIALOG.get()
-                && Utils.containsAny(playabilityStatus, VIER_DISCRETION_DIALOG_PLAYABILITY_STATUS);
+                && Utils.containsAny(playabilityStatus, VIEWER_DISCRETION_DIALOG_PLAYABILITY_STATUS);
     }
 }
