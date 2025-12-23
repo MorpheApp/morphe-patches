@@ -255,14 +255,12 @@ public class GmsCoreSupport {
         final var vendorGroupId = getGmsCoreVendorGroupId();
         //noinspection SwitchStatementWithTooFewBranches
         return switch (vendorGroupId) {
-            // TODO: Update this.
-            case "app.revanced" -> "https://github.com/revanced/gmscore/releases/latest";
+            case "app.revanced" -> "https://github.com/WSTxda/MicroG-RE/releases/latest";
             default -> vendorGroupId + ".android.gms";
         };
     }
 
     private static String getGmsCoreVendorGroupId() {
-        // TODO: Update this.
         return "app.revanced"; // Modified during patching.
     }
 }

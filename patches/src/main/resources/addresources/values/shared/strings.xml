@@ -107,15 +107,16 @@ You will not be notified of any unexpected events."</string>
     <string name="microg_settings_title">GmsCore Settings</string>
     <string name="microg_settings_summary">Settings for GmsCore</string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-    <string name="gms_core_toast_not_installed_message">MicroG GmsCore is not installed. Install it.</string>
+    <string name="gms_core_toast_not_installed_message">MicroG is not installed. Install it.</string>
     <string name="gms_core_dialog_title">Action needed</string>
-    <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore does not have permission to run in the background.
+    <!-- "Don't kill my app" should be kept in English and not translated -->
+    <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG does not have permission to run in the background.
 
 Follow the \"Don\'t kill my app\" guide for your phone, and apply the instructions to your MicroG installation.
 
 This is required for the app to work."</string>
     <string name="gms_core_dialog_open_website_text">Open website</string>
-    <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG GmsCore battery optimizations must be disabled to prevent issues.
+    <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG battery optimizations must be disabled to prevent issues.
 
 Disabling battery optimizations for MicroG will not negatively affect battery usage.
 
