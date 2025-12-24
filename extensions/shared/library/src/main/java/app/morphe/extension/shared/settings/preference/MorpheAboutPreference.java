@@ -112,7 +112,7 @@ public class MorpheAboutPreference extends Preference {
                                  align-items: center;
                                  justify-content: center;
                                  overflow: hidden;
-                                 padding: 3px;
+                                 padding: 0px;
                              }
                              .logo-bg {
                                  width: 100%%;
