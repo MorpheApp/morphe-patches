@@ -18,7 +18,6 @@ Second \"item\" text"</string>
     <!-- misc.settings.settingsResourcePatch -->
     <string name="morphe_settings_submenu_title">Settings</string>
     <string name="morphe_settings_title" translatable="false">Morphe</string>
-    <string name="morphe_settings_about_donate">Donate</string>
     <string name="morphe_settings_confirm_user_dialog_title">Are you sure you want to proceed?</string>
     <string name="morphe_settings_save">Save</string>
     <string name="morphe_settings_reset">Reset</string>
@@ -68,6 +67,8 @@ To translate new languages or improve the existing translations, visit translate
     <string name="morphe_settings_about_links_dev_header">Note</string>
     <string name="morphe_settings_about_links_dev_body">This version is a pre-release and you may experience unexpected issues</string>
     <string name="morphe_settings_about_links_header">Official links</string>
+    <string name="morphe_settings_about_links_donate">Donate</string>
+    <string name="morphe_settings_about_links_website">Website</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>

@@ -231,7 +231,7 @@ public class MorpheAboutPreference extends Preference {
                      <div class="logo-container">
                          <div class="logo-inner">
                              <div class="logo-bg">
-                                 <img onerror="this.parentElement.parentElement.parentElement.style.display='none';src="%s" />
+                                 <img src="%s" onerror="this.parentElement.parentElement.parentElement.style.display='none';" />
                              </div>
                          </div>
                      </div>
@@ -244,7 +244,9 @@ public class MorpheAboutPreference extends Preference {
         html.append("<h1>Morphe</h1>");
 
         // Description.
-        html.append("<p>").append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))).append("</p>");
+        html.append("<p>").append(
+                useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))
+        ).append("</p>");
 
         // Dev warning banner.
         if (patchesVersion.contains("dev")) {
@@ -267,7 +269,8 @@ public class MorpheAboutPreference extends Preference {
 
         // Link buttons.
         for (WebLink link : aboutLinks) {
-            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">").append(link.name).append("</a>");
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
+                    .append(link.name).append("</a>\n");
         }
 
         html.append("""
@@ -455,18 +458,17 @@ class AboutLinksRoutes {
     /**
      * Backup icon url if the API call fails.
      */
-    public static volatile String aboutLogoUrl = "https://morphe.software/favicon.ico";
+    public static volatile String aboutLogoUrl = "https://morphe.software/favicon.svg";
 
     /**
      * Links to use if fetch links api call fails.
      */
     private static final WebLink[] NO_CONNECTION_STATIC_LINKS = {
-            new WebLink(true, "Morphe", "https://morphe.software")
+            new WebLink(true, str("morphe_settings_about_links_website"), "https://morphe.software")
     };
 
-    // TODO
-    private static final String SOCIAL_LINKS_PROVIDER = "https://software.morphi.app/v1";
-    private static final Route.CompiledRoute GET_SOCIAL = new Route(GET, "/about").compile();
+    private static final String API_URL = "https://api.morphe.software/v1";
+    private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
 
     @Nullable
     private static volatile WebLink[] fetchedLinks;
@@ -482,26 +484,20 @@ class AboutLinksRoutes {
             // Check if there is no internet connection.
             if (!Utils.isNetworkConnected()) return NO_CONNECTION_STATIC_LINKS;
 
-            JSONObject json;
-
-            if (true) {
-                json = new JSONObject(ABOUT_JSON_TEMPORARY);
-            } else {
-                HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(SOCIAL_LINKS_PROVIDER, GET_SOCIAL);
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
-                Logger.printDebug(() -> "Fetching social links from: " + connection.getURL());
+            HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(API_URL, API_ROUTE_ABOUT);
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            Logger.printDebug(() -> "Fetching social links from: " + connection.getURL());
 
 
-                // Do not show an exception toast if the server is down
-                final int responseCode = connection.getResponseCode();
-                if (responseCode != 200) {
-                    Logger.printDebug(() -> "Failed to get social links. Response code: " + responseCode);
-                    return NO_CONNECTION_STATIC_LINKS;
-                }
-
-                json = Requester.parseJSONObjectAndDisconnect(connection);
+            // Do not show an exception toast if the server is down
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                Logger.printDebug(() -> "Failed to get social links. Response code: " + responseCode);
+                return NO_CONNECTION_STATIC_LINKS;
             }
+
+            JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
 
             aboutLogoUrl = json.getJSONObject("branding").getString("logo");
 
@@ -511,7 +507,7 @@ class AboutLinksRoutes {
             for (int i = 0, length = donations.length(); i < length; i++) {
                 WebLink link = new WebLink(donations.getJSONObject(i));
                 if (link.preferred) {
-                    link.name = str("morphe_settings_about_donate");
+                    link.name = str("morphe_settings_about_links_donate");
                     links.add(link);
                 }
             }
@@ -519,6 +515,9 @@ class AboutLinksRoutes {
             JSONArray socials = json.getJSONArray("socials");
             for (int i = 0, length = socials.length(); i < length; i++) {
                 WebLink link = new WebLink(socials.getJSONObject(i));
+                if (link.name.equalsIgnoreCase("Website")) {
+                    link.name = str("morphe_settings_about_links_website");
+                }
                 links.add(link);
             }
 
@@ -536,80 +535,4 @@ class AboutLinksRoutes {
 
         return NO_CONNECTION_STATIC_LINKS;
     }
-
-    // TODO: Eventually move this to a web server.
-    private static final String ABOUT_JSON_TEMPORARY = """
-        {
-          "name": "Morphe",
-          "branding": {
-            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/refs/heads/main/assets/morphe-logo/morphe_logo.svg"
-          },
-          "contact": {
-            "email": "na"
-          },
-          "socials": [
-            {
-              "name": "Website",
-              "url": "https://Morphe.software",
-              "preferred": true
-            },
-            {
-              "name": "GitHub",
-              "url": "https://github.com/MorpheApp",
-              "preferred": false
-            },
-            {
-              "name": "X",
-              "url": "https://x.com/MorpheApp",
-              "preferred": false
-            },
-            {
-              "name": "Reddit",
-              "url": "https://reddit.com/r/MorpheApp",
-              "preferred": false
-            }
-          ],
-          "donations": {
-            "wallets": [
-            {
-                "network": "Ethereum",
-                "currency_code": "ETH",
-                "address": "XXX",
-                "preferred": true
-              },
-              {
-                "network": "Bitcoin",
-                "currency_code": "BTC",
-                "address": "XXX",
-                "preferred": false
-              },
-              {
-                "network": "Dogecoin",
-                "currency_code": "DOGE",
-                "address": "XXX",
-                "preferred": false
-              },
-              {
-                "network": "Litecoin",
-                "currency_code": "LTC",
-                "address": "XXX",
-                "preferred": false
-              },
-              {
-                "network": "Monero",
-                "currency_code": "XMR",
-                "address": "XXX",
-                "preferred": false
-              }
-            ],
-            "links": [
-              {
-                "name": "Donate",
-                "url": "https://morphe.software/donate",
-                "preferred": true
-              }
-            ]
-          }
-        }
-    """;
 }
