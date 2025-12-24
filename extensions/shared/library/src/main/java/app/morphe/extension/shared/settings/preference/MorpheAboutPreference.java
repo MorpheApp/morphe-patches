@@ -74,8 +74,7 @@ public class MorpheAboutPreference extends Preference {
         String morpheBlue = "#1E5AA8";
         String morpheTeal = "#00AFAE";
 
-        StringBuilder html = new StringBuilder(
-                 """
+        StringBuilder html = new StringBuilder("""
                  <html>
                  <head>
                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -228,8 +227,7 @@ public class MorpheAboutPreference extends Preference {
 
         // Logo with Morphe gradient border.
         if (isNetworkConnected) {
-            html.append(
-                     """
+            html.append("""
                      <div class="logo-container">
                          <div class="logo-inner">
                              <div class="logo-bg">
@@ -250,8 +248,7 @@ public class MorpheAboutPreference extends Preference {
 
         // Dev warning banner.
         if (patchesVersion.contains("dev")) {
-            html.append(
-                    """
+            html.append("""
                     <div class="dev-warning">
                         <h3>%s</h3>
                         <p>%s</p>
@@ -263,8 +260,7 @@ public class MorpheAboutPreference extends Preference {
         }
 
         // Links section.
-        html.append(
-                """
+        html.append("""
                 <div class="links-section">
                     <h2>%s</h2>
                 """.formatted(getString("morphe_settings_about_links_header")));
@@ -274,8 +270,7 @@ public class MorpheAboutPreference extends Preference {
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">").append(link.name).append("</a>");
         }
 
-        html.append(
-                """
+        html.append("""
                 </div>
                 </body>
                 </html>
