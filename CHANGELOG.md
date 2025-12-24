@@ -1,3 +1,10 @@
+# [1.0.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.21...v1.0.0-dev.22) (2025-12-24)
+
+
+### Features
+
+* **YouTube Music:** Unofficial support of `8.50.51` ([a392f3f](https://github.com/MorpheApp/morphe-patches/commit/a392f3f69148e1d20c61f61b11e0d167fd920e61))
+
 # [1.0.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.20...v1.0.0-dev.21) (2025-12-24)
 
 
