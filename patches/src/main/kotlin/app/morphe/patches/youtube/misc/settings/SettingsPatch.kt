@@ -93,6 +93,8 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_icon_dynamic.xml",
                 "morphe_settings_icon.xml",
                 "morphe_settings_icon_bold.xml",
+                "morphe_settings_screen_00_about.xml",
+                "morphe_settings_screen_00_about_bold.xml",
                 "morphe_settings_screen_01_ads.xml",
                 "morphe_settings_screen_01_ads_bold.xml",
                 "morphe_settings_screen_02_alt_thumbnails.xml",
@@ -117,8 +119,6 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_11_misc_bold.xml",
                 "morphe_settings_screen_12_video.xml",
                 "morphe_settings_screen_12_video_bold.xml",
-                "morphe_settings_screen_99_about.xml",
-                "morphe_settings_screen_99_about_bold.xml",
             )
         )
 
@@ -191,11 +191,11 @@ val settingsPatch = bytecodePatch(
         addAppResources("shared-youtube")
         addAppResources("youtube")
 
-        // Add "about" preference at the very end.
+        // Add an "About" preference to the top.
         preferences += NonInteractivePreference(
-            key = "morphe_settings_screen_99_about",
-            icon = "@drawable/morphe_settings_screen_99_about",
-            iconBold = "@drawable/morphe_settings_screen_99_about_bold",
+            key = "morphe_settings_screen_00_about",
+            icon = "@drawable/morphe_settings_screen_00_about",
+            iconBold = "@drawable/morphe_settings_screen_00_about_bold",
             layout = "@layout/preference_with_icon",
             summaryKey = null,
             tag = "app.morphe.extension.shared.settings.preference.MorpheAboutPreference",
