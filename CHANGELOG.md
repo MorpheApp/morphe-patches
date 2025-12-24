@@ -1,3 +1,10 @@
+# [1.0.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.20...v1.0.0-dev.21) (2025-12-24)
+
+
+### Features
+
+* Add overlay buttons animation ([#20](https://github.com/MorpheApp/morphe-patches/issues/20)) ([a105d4c](https://github.com/MorpheApp/morphe-patches/commit/a105d4c35c9ca198eb8040bce548712f644a6349))
+
 # [1.0.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.19...v1.0.0-dev.20) (2025-12-24)
 
 
