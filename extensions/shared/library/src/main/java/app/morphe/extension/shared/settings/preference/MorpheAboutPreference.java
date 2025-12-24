@@ -462,7 +462,7 @@ class AboutLinksRoutes {
      * Links to use if fetch links api call fails.
      */
     private static final WebLink[] NO_CONNECTION_STATIC_LINKS = {
-            new WebLink(true, str("morphe_settings_about_links_website"), "https://morphe.software")
+            new WebLink(true, "Website", "https://morphe.software")
     };
 
     private static final String API_URL = "https://api.morphe.software/v1";
