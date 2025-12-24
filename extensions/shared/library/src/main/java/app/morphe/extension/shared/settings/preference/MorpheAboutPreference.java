@@ -113,7 +113,18 @@ public class MorpheAboutPreference extends Preference {
         builder.append("  align-items: center;");
         builder.append("  justify-content: center;");
         builder.append("  overflow: hidden;");
-        builder.append("  padding: 16px;");
+        builder.append("  padding: 3px;");
+        builder.append("}");
+
+        builder.append(".logo-bg {");
+        builder.append("  width: 100%;");
+        builder.append("  height: 100%;");
+        builder.append("  border-radius: 24px;");
+        builder.append("  background: #EEEEEE;");
+        builder.append("  display: flex;");
+        builder.append("  align-items: center;");
+        builder.append("  justify-content: center;");
+        builder.append("  padding: 12px;");
         builder.append("}");
 
         builder.append("img {");
@@ -460,7 +471,7 @@ class AboutLinksRoutes {
     /**
      * Backup icon url if the API call fails.
      */
-    public static volatile String aboutLogoUrl = "https://morphe.software/favicon.ico";
+    public static volatile String aboutLogoUrl = "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg";
 
     /**
      * Links to use if fetch links api call fails.
@@ -547,7 +558,7 @@ class AboutLinksRoutes {
         {
           "name": "Morphe",
           "branding": {
-            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo_with_frame.svg"
+            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg"
           },
           "contact": {
             "email": "na"
