@@ -559,13 +559,13 @@ class AboutLinksRoutes {
               "preferred": false
             },
             {
-              "name": "Twitter",
-              "url": "https://twitter.com/MorpheApp",
+              "name": "X",
+              "url": "https://x.com/MorpheApp",
               "preferred": false
             },
             {
               "name": "Reddit",
-              "url": "https://www.reddit.com/r/Morphe",
+              "url": "https://reddit.com/r/MorpheApp",
               "preferred": false
             }
           ],
