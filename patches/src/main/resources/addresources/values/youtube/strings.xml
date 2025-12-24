@@ -27,6 +27,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_screen_09_return_youtube_dislike_title" translatable="false">Return YouTube Dislike</string>
     <string name="morphe_settings_screen_11_misc_title">Miscellaneous</string>
     <string name="morphe_settings_screen_12_video_title">Video</string>
+    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
     <string name="morphe_settings_screen_99_about_title">About</string>
     <string name="morphe_restore_old_settings_menus_title">Restore old settings menus</string>
     <string name="morphe_restore_old_settings_menus_summary_on">Old settings menus are shown</string>
