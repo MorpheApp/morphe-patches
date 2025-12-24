@@ -196,9 +196,9 @@ public final class AdsFilter extends Filter {
                     // Disable dialog's background dim
                     window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
 
-                    // Hide DecorView
+                    // Restore decorView visibility
                     View decorView = window.getDecorView();
-                    decorView.setVisibility(View.GONE);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
                 }
 
                 // Dismiss dialog
