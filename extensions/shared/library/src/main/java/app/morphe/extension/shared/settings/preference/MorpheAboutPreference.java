@@ -63,7 +63,7 @@ public class MorpheAboutPreference extends Preference {
         return str(key, args);
     }
 
-    private String createDialogHtml(WebLink[] aboutLinks) {
+    private String createDialogHtml(WebLink[] aboutLinks, @Nullable String currentVersion) {
         final boolean isNetworkConnected = Utils.isNetworkConnected();
 
         // Get theme colors.
@@ -234,21 +234,24 @@ public class MorpheAboutPreference extends Preference {
                             </div>
                         </div>
                     </div>
-                    """, AboutLinksRoutes.aboutLogoUrl));
+                    """, AboutRoutes.aboutLogoUrl));
         }
 
-        String patchesVersion = Utils.getPatchesReleaseVersion();
+        String appPatchesVersion = Utils.getPatchesReleaseVersion();
 
         // Title with gradient.
         html.append("<h1>Morphe</h1>");
 
         // Description.
         html.append("<p>").append(
-                useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))
+                useNonBreakingHyphens(currentVersion == null || appPatchesVersion.equalsIgnoreCase(currentVersion)
+                        ? getString("morphe_settings_about_links_body_version_current", appPatchesVersion)
+                        : getString("morphe_settings_about_links_body_version_outdated", appPatchesVersion, currentVersion)
+                )
         ).append("</p>");
 
         // Dev note banner.
-        if (patchesVersion.contains("dev")) {
+        if (Utils.isPreReleasePatches()) {
             html.append(String.format("""
                             <div class="dev-note">
                                 <h3>%s</h3>
@@ -285,7 +288,7 @@ public class MorpheAboutPreference extends Preference {
             Context context = pref.getContext();
 
             // Show a progress spinner if the social links are not fetched yet.
-            if (!AboutLinksRoutes.hasFetchedLinks() && Utils.isNetworkConnected()) {
+            if (!AboutRoutes.hasFetchedLinks() && Utils.isNetworkConnected()) {
                 // Show a progress spinner, but only if the api fetch takes more than a half a second.
                 final long delayToShowProgressSpinner = 500;
                 ProgressDialog progress = new ProgressDialog(getContext());
@@ -310,8 +313,9 @@ public class MorpheAboutPreference extends Preference {
                                          @Nullable Handler handler,
                                          Runnable showDialogRunnable,
                                          @Nullable ProgressDialog progress) {
-        WebLink[] links = AboutLinksRoutes.fetchAboutLinks();
-        String htmlDialog = createDialogHtml(links);
+        WebLink[] links = AboutRoutes.fetchAboutLinks();
+        String currentVersion = AboutRoutes.getLatestPatchesVersion();
+        String htmlDialog = createDialogHtml(links, currentVersion);
 
         // Enable to randomly force a delay to debug the spinner logic.
         final boolean debugSpinnerDelayLogic = false;
@@ -452,7 +456,7 @@ class WebLink {
     }
 }
 
-class AboutLinksRoutes {
+class AboutRoutes {
     /**
      * Backup icon url if the API call fails.
      */
@@ -467,6 +471,57 @@ class AboutLinksRoutes {
 
     private static final String API_URL = "https://api.morphe.software/v1";
     private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
+    private static final Route.CompiledRoute API_ROUTE_PATCHES = new Route(GET,
+            (Utils.isPreReleasePatches() ? "/patches/prerelease" : "/patches")
+    ).compile();
+
+    @Nullable
+    private static volatile String latestPatchesVersion;
+    private static volatile long latestPatchesVersionLastCheckedTime;
+
+    @Nullable
+    static String getLatestPatchesVersion() {
+        Utils.verifyOffMainThread();
+
+        final long updateCheckFrequency = 30 * 60 * 1000; // 30 minutes.
+        final long now = System.currentTimeMillis();
+
+        String version = latestPatchesVersion;
+        if (version != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency) {
+            return version;
+        }
+
+        if (!Utils.isNetworkConnected()) return null;
+
+        try {
+            HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(API_URL, API_ROUTE_PATCHES);
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            Logger.printDebug(() -> "Fetching latest patches version links from: " + connection.getURL());
+
+            // Do not show an exception toast if the server is down
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                Logger.printDebug(() -> "Failed to get social links. Response code: " + responseCode);
+                return null;
+            }
+
+            JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
+            version = json.getString("version");
+            latestPatchesVersion = version;
+            latestPatchesVersionLastCheckedTime = now;
+
+            return version;
+        } catch (SocketTimeoutException ex) {
+            Logger.printInfo(() -> "Could not fetch social links", ex); // No toast.
+        } catch (JSONException ex) {
+            Logger.printException(() -> "Could not parse about information", ex);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to get about information", ex);
+        }
+
+        return null;
+    }
 
     @Nullable
     private static volatile WebLink[] fetchedLinks;
@@ -477,6 +532,8 @@ class AboutLinksRoutes {
 
     static WebLink[] fetchAboutLinks() {
         try {
+            Utils.verifyOffMainThread();
+
             if (hasFetchedLinks()) return fetchedLinks;
 
             // Check if there is no internet connection.

@@ -102,6 +102,10 @@ public class Utils {
         return ""; // Value is replaced during patching.
     }
 
+    public static boolean isPreReleasePatches() {
+        return getPatchesReleaseVersion().contains("dev");
+    }
+
     private static PackageInfo getPackageInfo() throws PackageManager.NameNotFoundException {
         final var packageName = Objects.requireNonNull(getContext()).getPackageName();
 

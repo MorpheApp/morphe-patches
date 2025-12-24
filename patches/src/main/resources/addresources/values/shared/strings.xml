@@ -63,7 +63,8 @@ To translate new languages or improve the existing translations, visit translate
     <string name="morphe_pref_import_export_title">Import / Export</string>
     <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
     <!-- Settings about dialog. -->
-    <string name="morphe_settings_about_links_body">You are using Morphe Patches version &lt;i>%s&lt;/i></string>
+    <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
+    <string name="morphe_settings_about_links_body_version_outdated">You are using the Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Patch updates are available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update, repatch again using Morphe</string>
     <string name="morphe_settings_about_links_dev_header">Note</string>
     <string name="morphe_settings_about_links_dev_body">This version is a pre-release and you may experience unexpected issues</string>
     <string name="morphe_settings_about_links_header">Official links</string>
