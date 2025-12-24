@@ -288,7 +288,7 @@ public class MorpheAboutPreference extends Preference {
             Context context = pref.getContext();
 
             // Show a progress spinner if the social links are not fetched yet.
-            if (!AboutRoutes.hasFetchedLinks() && Utils.isNetworkConnected()) {
+            if (Utils.isNetworkConnected() && !AboutRoutes.hasFetchedLinks() && !AboutRoutes.hasFetchedPatchersVersion()) {
                 // Show a progress spinner, but only if the api fetch takes more than a half a second.
                 final long delayToShowProgressSpinner = 500;
                 ProgressDialog progress = new ProgressDialog(getContext());
@@ -479,17 +479,17 @@ class AboutRoutes {
     private static volatile String latestPatchesVersion;
     private static volatile long latestPatchesVersionLastCheckedTime;
 
-    @Nullable
-    static String getLatestPatchesVersion() {
-        Utils.verifyOffMainThread();
-
+    static boolean hasFetchedPatchersVersion() {
         final long updateCheckFrequency = 30 * 60 * 1000; // 30 minutes.
         final long now = System.currentTimeMillis();
 
+        return latestPatchesVersion != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency;
+    }
+
+    @Nullable
+    static String getLatestPatchesVersion() {
         String version = latestPatchesVersion;
-        if (version != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency) {
-            return version;
-        }
+        if (version != null) return version;
 
         if (!Utils.isNetworkConnected()) return null;
 
@@ -509,7 +509,7 @@ class AboutRoutes {
             JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
             version = json.getString("version");
             latestPatchesVersion = version;
-            latestPatchesVersionLastCheckedTime = now;
+            latestPatchesVersionLastCheckedTime = System.currentTimeMillis();
 
             return version;
         } catch (SocketTimeoutException ex) {
@@ -532,8 +532,6 @@ class AboutRoutes {
 
     static WebLink[] fetchAboutLinks() {
         try {
-            Utils.verifyOffMainThread();
-
             if (hasFetchedLinks()) return fetchedLinks;
 
             // Check if there is no internet connection.
