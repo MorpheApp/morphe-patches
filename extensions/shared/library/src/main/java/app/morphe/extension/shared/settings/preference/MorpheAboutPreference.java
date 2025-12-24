@@ -243,9 +243,11 @@ public class MorpheAboutPreference extends Preference {
         html.append("<h1>Morphe</h1>");
 
         // Description.
-        html.append("<p>").append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))).append("</p>");
+        html.append("<p>").append(
+                useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))
+        ).append("</p>");
 
-        // Dev note banner (not a warning).
+        // Dev note banner.
         if (patchesVersion.contains("dev")) {
             html.append(String.format("""
                             <div class="dev-note">
@@ -265,7 +267,8 @@ public class MorpheAboutPreference extends Preference {
 
         // Link buttons.
         for (WebLink link : aboutLinks) {
-            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">").append(link.name).append("</a>");
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
+                    .append(link.name).append("</a>");
         }
 
         html.append("""
