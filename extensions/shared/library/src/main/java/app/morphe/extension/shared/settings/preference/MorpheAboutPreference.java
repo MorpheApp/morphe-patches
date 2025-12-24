@@ -68,55 +68,215 @@ public class MorpheAboutPreference extends Preference {
 
         StringBuilder builder = new StringBuilder();
         builder.append("<html>");
-        builder.append("<body style=\"text-align: center; padding: 10px;\">");
+        builder.append("<head>");
+        builder.append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        builder.append("</head>");
+        builder.append("<body>");
 
+        // Get theme colors.
         String foregroundColorHex = Utils.getColorHexString(Utils.getAppForegroundColor());
         String backgroundColorHex = Utils.getColorHexString(Utils.getDialogBackgroundColor());
-        // Apply light/dark mode colors.
-        builder.append(String.format(
-                "<style> body { background-color: %s; color: %s; } a { color: %s; } </style>",
-                backgroundColorHex, foregroundColorHex, foregroundColorHex));
 
+        // Morphe brand colors from logo.
+        String morpheBlue = "#1E5AA8";
+        String morpheTeal = "#00AFAE";
+
+        // Apply Morphe-style CSS.
+        builder.append("<style>");
+        builder.append("* { margin: 0; padding: 0; box-sizing: border-box; }");
+        builder.append("body { ");
+        builder.append("  background: ").append(backgroundColorHex).append(";");
+        builder.append("  color: ").append(foregroundColorHex).append(";");
+        builder.append("  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;");
+        builder.append("  padding: 24px;");
+        builder.append("  text-align: center;");
+        builder.append("}");
+
+        // Logo container with Morphe gradient border.
+        builder.append(".logo-container {");
+        builder.append("  margin: 0 auto 24px;");
+        builder.append("  width: 120px;");
+        builder.append("  height: 120px;");
+        builder.append("  border-radius: 28px;");
+        builder.append("  background: linear-gradient(135deg, ").append(morpheBlue).append(" 0%, ").append(morpheTeal).append(" 100%);");
+        builder.append("  padding: 3px;");
+        builder.append("  display: inline-block;");
+        builder.append("  box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);");
+        builder.append("}");
+
+        builder.append(".logo-inner {");
+        builder.append("  width: 100%;");
+        builder.append("  height: 100%;");
+        builder.append("  border-radius: 26px;");
+        builder.append("  background: ").append(backgroundColorHex).append(";");
+        builder.append("  display: flex;");
+        builder.append("  align-items: center;");
+        builder.append("  justify-content: center;");
+        builder.append("  overflow: hidden;");
+        builder.append("  padding: 16px;");
+        builder.append("}");
+
+        builder.append("img {");
+        builder.append("  width: 100%;");
+        builder.append("  height: 100%;");
+        builder.append("  object-fit: contain;");
+        builder.append("}");
+
+        // Title styling with Morphe gradient.
+        builder.append("h1 {");
+        builder.append("  font-size: 32px;");
+        builder.append("  font-weight: 700;");
+        builder.append("  margin-bottom: 8px;");
+        builder.append("  background: linear-gradient(135deg, ").append(morpheBlue).append(" 0%, ").append(morpheTeal).append(" 100%);");
+        builder.append("  -webkit-background-clip: text;");
+        builder.append("  -webkit-text-fill-color: transparent;");
+        builder.append("  background-clip: text;");
+        builder.append("}");
+
+        // Description text.
+        builder.append("p {");
+        builder.append("  font-size: 14px;");
+        builder.append("  line-height: 1.6;");
+        builder.append("  margin-bottom: 16px;");
+        builder.append("  opacity: 0.8;");
+        builder.append("}");
+
+        // Dev warning banner.
+        builder.append(".dev-warning {");
+        builder.append("  background: rgba(239, 68, 68, 0.1);");
+        builder.append("  border: 1px solid rgba(239, 68, 68, 0.3);");
+        builder.append("  border-radius: 12px;");
+        builder.append("  padding: 12px 16px;");
+        builder.append("  margin: 16px 0;");
+        builder.append("}");
+
+        builder.append(".dev-warning h3 {");
+        builder.append("  color: #EF4444;");
+        builder.append("  font-size: 16px;");
+        builder.append("  font-weight: 600;");
+        builder.append("  margin-bottom: 6px;");
+        builder.append("}");
+
+        builder.append(".dev-warning p {");
+        builder.append("  color: #EF4444;");
+        builder.append("  margin: 0;");
+        builder.append("  font-size: 13px;");
+        builder.append("}");
+
+        // Links section.
+        builder.append(".links-section {");
+        builder.append("  margin-top: 32px;");
+        builder.append("}");
+
+        builder.append("h2 {");
+        builder.append("  font-size: 18px;");
+        builder.append("  font-weight: 600;");
+        builder.append("  margin-bottom: 16px;");
+        builder.append("  opacity: 0.9;");
+        builder.append("}");
+
+        // Link buttons with Morphe gradient accent.
+        builder.append(".link-button {");
+        builder.append("  display: block;");
+        builder.append("  text-decoration: none;");
+        builder.append("  color: ").append(foregroundColorHex).append(";");
+        builder.append("  background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%, rgba(0, 175, 174, 0.08) 100%);");
+        builder.append("  border: 1px solid rgba(30, 90, 168, 0.2);");
+        builder.append("  border-radius: 12px;");
+        builder.append("  padding: 14px 20px;");
+        builder.append("  margin-bottom: 10px;");
+        builder.append("  font-size: 15px;");
+        builder.append("  font-weight: 500;");
+        builder.append("  transition: all 0.2s ease;");
+        builder.append("  position: relative;");
+        builder.append("  overflow: hidden;");
+        builder.append("  -webkit-tap-highlight-color: transparent;");
+        builder.append("  -webkit-touch-callout: none;");
+        builder.append("  -webkit-user-select: none;");
+        builder.append("  user-select: none;");
+        builder.append("}");
+
+        // Add ripple effect overlay.
+        builder.append(".link-button::after {");
+        builder.append("  content: '';");
+        builder.append("  position: absolute;");
+        builder.append("  top: 50%;");
+        builder.append("  left: 50%;");
+        builder.append("  width: 0;");
+        builder.append("  height: 0;");
+        builder.append("  border-radius: 50%;");
+        builder.append("  background: rgba(30, 90, 168, 0.3);");
+        builder.append("  transform: translate(-50%, -50%);");
+        builder.append("  transition: width 0.3s, height 0.3s;");
+        builder.append("  pointer-events: none;");
+        builder.append("}");
+
+        builder.append(".link-button:active {");
+        builder.append("  transform: scale(0.98);");
+        builder.append("  background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%, rgba(0, 175, 174, 0.15) 100%);");
+        builder.append("  border-color: rgba(30, 90, 168, 0.4);");
+        builder.append("  outline: none;");
+        builder.append("}");
+
+        builder.append(".link-button:active::after {");
+        builder.append("  width: 300px;");
+        builder.append("  height: 300px;");
+        builder.append("}");
+
+        builder.append(".link-button:focus {");
+        builder.append("  outline: none;");
+        builder.append("}");
+
+        builder.append("</style>");
+
+        builder.append("</head><body>");
+
+        // Logo with Morphe gradient border.
         if (isNetworkConnected) {
-            builder.append("<img style=\"width: 100px; height: 100px;\" "
-                    // Hide the image if it does not load.
-                    + "onerror=\"this.style.display='none';\" "
-                    + "src=\"").append(AboutLinksRoutes.aboutLogoUrl).append("\" />");
+            builder.append("<div class=\"logo-container\">");
+            builder.append("<div class=\"logo-inner\">");
+            builder.append("<img ");
+            builder.append("onerror=\"this.parentElement.parentElement.style.display='none';\" ");
+            builder.append("src=\"").append(AboutLinksRoutes.aboutLogoUrl).append("\" />");
+            builder.append("</div>");
+            builder.append("</div>");
         }
 
         String patchesVersion = Utils.getPatchesReleaseVersion();
 
-        // Add the title.
-        builder.append("<h1>")
-                .append("Morphe")
-                .append("</h1>");
+        // Title with gradient.
+        builder.append("<h1>Morphe</h1>");
 
+        // Description.
         builder.append("<p>")
                 // Replace hyphens with non breaking dashes so the version number does not break lines.
                 .append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion)))
                 .append("</p>");
 
-        // Add a disclaimer if using a dev release.
+        // Dev warning banner.
         if (patchesVersion.contains("dev")) {
+            builder.append("<div class=\"dev-warning\">");
             builder.append("<h3>")
                     // English text 'Pre-release' can break lines.
                     .append(useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")))
                     .append("</h3>");
-
             builder.append("<p>")
                     .append(getString("morphe_settings_about_links_dev_body"))
                     .append("</p>");
+            builder.append("</div>");
         }
 
-        builder.append("<h2 style=\"margin-top: 30px;\">")
+        // Links section.
+        builder.append("<div class=\"links-section\">");
+        builder.append("<h2>")
                 .append(getString("morphe_settings_about_links_header"))
                 .append("</h2>");
 
-        builder.append("<div>");
+        // Link buttons.
         for (WebLink link : aboutLinks) {
-            builder.append("<div style=\"margin-bottom: 20px;\">");
-            builder.append(String.format("<a href=\"%s\">%s</a>", link.url, link.name));
-            builder.append("</div>");
+            builder.append("<a href=\"").append(link.url).append("\" class=\"link-button\">");
+            builder.append(link.name);
+            builder.append("</a>");
         }
         builder.append("</div>");
 
@@ -387,7 +547,7 @@ class AboutLinksRoutes {
         {
           "name": "Morphe",
           "branding": {
-            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg"
+            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo_with_frame.svg"
           },
           "contact": {
             "email": "na"

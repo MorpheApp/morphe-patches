@@ -16,7 +16,6 @@ Second \"item\" text"</string>
 -->
 <resources>
     <!-- misc.settings.settingsPatch -->
-    <string name="morphe_settings_screen_00_about_title">About</string>
     <string name="morphe_settings_screen_01_ads_title">Ads</string>
     <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative thumbnails</string>
     <string name="morphe_settings_screen_03_feed_title">Feed</string>
@@ -28,6 +27,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_screen_09_return_youtube_dislike_title" translatable="false">Return YouTube Dislike</string>
     <string name="morphe_settings_screen_11_misc_title">Miscellaneous</string>
     <string name="morphe_settings_screen_12_video_title">Video</string>
+    <string name="morphe_settings_screen_99_about_title">About Morphe</string>
     <string name="morphe_restore_old_settings_menus_title">Restore old settings menus</string>
     <string name="morphe_restore_old_settings_menus_summary_on">Old settings menus are shown</string>
     <string name="morphe_restore_old_settings_menus_summary_off">Old settings menus are not shown</string>
