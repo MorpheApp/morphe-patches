@@ -33,8 +33,6 @@ internal var adAttributionId = -1L
     private set
 internal var fullScreenEngagementAdContainer = -1L
     private set
-internal var slidingDialogAnimation = -1L
-    private set
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
 
@@ -64,7 +62,6 @@ private val hideAdsResourcePatch = resourcePatch {
 
         adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
         fullScreenEngagementAdContainer = getResourceId(ResourceType.ID, "fullscreen_engagement_ad_container")
-        slidingDialogAnimation = getResourceId(ResourceType.STYLE, "SlidingDialogAnimation")
     }
 }
 
@@ -109,8 +106,7 @@ val hideAdsPatch = bytecodePatch(
         LithoDialogBuilderFingerprint.let {
             it.method.apply {
                 // Find the class name of the custom dialog
-                val dialogIndex = it.instructionMatches.first().index
-                val dialogClass = getInstruction(dialogIndex).getReference<MethodReference>()!!.definingClass
+                val dialogClass = it.instructionMatches.first().instruction.getReference<MethodReference>()!!.definingClass
 
                 // The dialog can be closed after dialog.show(),
                 // and it is better to close the dialog after the layout of the dialog has changed

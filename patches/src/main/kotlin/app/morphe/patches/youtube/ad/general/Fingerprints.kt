@@ -2,8 +2,9 @@ package app.morphe.patches.youtube.ad.general
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
@@ -52,6 +53,6 @@ internal object LithoDialogBuilderFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             name = "show"
         ),
-        literal(slidingDialogAnimation),
+        resourceLiteral(ResourceType.STYLE, "SlidingDialogAnimation"),
     )
 )
