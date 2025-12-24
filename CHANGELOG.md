@@ -1,3 +1,10 @@
+# [1.0.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.19...v1.0.0-dev.20) (2025-12-24)
+
+
+### Bug Fixes
+
+* **YouTube Music - Navigation bar:** Hide library tab with 8.24+ ([789dd2a](https://github.com/MorpheApp/morphe-patches/commit/789dd2a59fb2b3ace4a3d57b270d4f4ff13a38b2))
+
 # [1.0.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.18...v1.0.0-dev.19) (2025-12-24)
 
 
