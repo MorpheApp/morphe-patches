@@ -59,7 +59,7 @@ public class MorpheAboutPreference extends Preference {
      *
      * @return A localized string to display for the key.
      */
-    protected String getString(String key, Object ... args) {
+    protected String getString(String key, Object... args) {
         return str(key, args);
     }
 
@@ -74,151 +74,150 @@ public class MorpheAboutPreference extends Preference {
         String morpheBlue = "#1E5AA8";
         String morpheTeal = "#00AFAE";
 
-        StringBuilder html = new StringBuilder("""
-                 <html>
-                 <head>
-                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                 </head>
-                 <body>
-                 <style>
-                     * {
-                         margin: 0;
-                         padding: 0;
-                         box-sizing: border-box;
-                     }
-                     body {
-                         background: %s;
-                         color: %s;
-                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                         padding: 24px;
-                         text-align: center;
-                     }
-                     .logo-container {
-                         margin: 0 auto 24px;
-                         width: 120px;
-                         height: 120px;
-                         border-radius: 28px;
-                         background: linear-gradient(135deg, %s 0%%, %s 100%%);
-                         padding: 3px;
-                         display: inline-block;
-                         box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);
-                     }
-                     .logo-inner {
-                         width: 100%%;
-                         height: 100%%;
-                         border-radius: 26px;
-                         background: %s;
-                         display: flex;
-                         align-items: center;
-                         justify-content: center;
-                         overflow: hidden;
-                         padding: 3px;
-                     }
-                     .logo-bg {
-                         width: 100%%;
-                         height: 100%%;
-                         border-radius: 24px;
-                         background: #EEEEEE;
-                         display: flex;
-                         align-items: center;
-                         justify-content: center;
-                         padding: 12px;
-                     }
-                     img {
-                         width: 100%%;
-                         height: 100%%;
-                         object-fit: contain;
-                     }
-                     h1 {
-                         font-size: 32px;
-                         font-weight: 700;
-                         margin-bottom: 8px;
-                         background: linear-gradient(135deg, %s 0%%, %s 100%%);
-                         -webkit-background-clip: text;
-                         -webkit-text-fill-color: transparent;
-                         background-clip: text;
-                     }
-                     p {
-                         font-size: 14px;
-                         line-height: 1.6;
-                         margin-bottom: 16px;
-                         opacity: 0.8;
-                     }
-                     .dev-warning {
-                         background: rgba(239, 68, 68, 0.1);
-                         border: 1px solid rgba(239, 68, 68, 0.3);
-                         border-radius: 12px;
-                         padding: 12px 16px;
-                         margin: 16px 0;
-                     }
-                     .dev-warning h3 {
-                         color: #EF4444;
-                         font-size: 16px;
-                         font-weight: 600;
-                         margin-bottom: 6px;
-                     }
-                     .dev-warning p {
-                         color: #EF4444;
-                         margin: 0;
-                         font-size: 13px;
-                     }
-                     .links-section {
-                         margin-top: 32px;
-                     }
-                     h2 {
-                         font-size: 18px;
-                         font-weight: 600;
-                         margin-bottom: 16px;
-                         opacity: 0.9;
-                     }
-                     .link-button {
-                         display: block;
-                         text-decoration: none;
-                         color: %s;
-                         background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%%, rgba(0, 175, 174, 0.08) 100%%);
-                         border: 1px solid rgba(30, 90, 168, 0.2);
-                         border-radius: 12px;
-                         padding: 14px 20px;
-                         margin-bottom: 10px;
-                         font-size: 15px;
-                         font-weight: 500;
-                         transition: all 0.2s ease;
-                         position: relative;
-                         overflow: hidden;
-                         -webkit-tap-highlight-color: transparent;
-                         -webkit-touch-callout: none;
-                         -webkit-user-select: none;
-                         user-select: none;
-                     }
-                     .link-button::after {
-                         content: '';
-                         position: absolute;
-                         top: 50%%;
-                         left: 50%%;
-                         width: 0;
-                         height: 0;
-                         border-radius: 50%%;
-                         background: rgba(30, 90, 168, 0.3);
-                         transform: translate(-50%%, -50%%);
-                         transition: width 0.3s, height 0.3s;
-                         pointer-events: none;
-                     }
-                     .link-button:active {
-                         transform: scale(0.98);
-                         background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%%, rgba(0, 175, 174, 0.15) 100%%);
-                         border-color: rgba(30, 90, 168, 0.4);
-                         outline: none;
-                     }
-                     .link-button:active::after {
-                         width: 300px;
-                         height: 300px;
-                     }
-                     .link-button:focus {
-                         outline: none;
-                     }
-                 </style>
-                """.formatted(
-                backgroundColorHex, foregroundColorHex,
+        StringBuilder html = new StringBuilder(String.format("""
+                         <html>
+                         <head>
+                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                         </head>
+                         <body>
+                         <style>
+                             * {
+                                 margin: 0;
+                                 padding: 0;
+                                 box-sizing: border-box;
+                             }
+                             body {
+                                 background: %s;
+                                 color: %s;
+                                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                                 padding: 24px;
+                                 text-align: center;
+                             }
+                             .logo-container {
+                                 margin: 0 auto 24px;
+                                 width: 120px;
+                                 height: 120px;
+                                 border-radius: 28px;
+                                 background: linear-gradient(135deg, %s 0%%, %s 100%%);
+                                 padding: 3px;
+                                 display: inline-block;
+                                 box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);
+                             }
+                             .logo-inner {
+                                 width: 100%%;
+                                 height: 100%%;
+                                 border-radius: 26px;
+                                 background: %s;
+                                 display: flex;
+                                 align-items: center;
+                                 justify-content: center;
+                                 overflow: hidden;
+                                 padding: 3px;
+                             }
+                             .logo-bg {
+                                 width: 100%%;
+                                 height: 100%%;
+                                 border-radius: 24px;
+                                 background: #EEEEEE;
+                                 display: flex;
+                                 align-items: center;
+                                 justify-content: center;
+                                 padding: 12px;
+                             }
+                             img {
+                                 width: 100%%;
+                                 height: 100%%;
+                                 object-fit: contain;
+                             }
+                             h1 {
+                                 font-size: 32px;
+                                 font-weight: 700;
+                                 margin-bottom: 8px;
+                                 background: linear-gradient(135deg, %s 0%%, %s 100%%);
+                                 -webkit-background-clip: text;
+                                 -webkit-text-fill-color: transparent;
+                                 background-clip: text;
+                             }
+                             p {
+                                 font-size: 14px;
+                                 line-height: 1.6;
+                                 margin-bottom: 16px;
+                                 opacity: 0.8;
+                             }
+                             .dev-note {
+                                 background: rgba(30, 90, 168, 0.08);
+                                 border: 1px solid rgba(30, 90, 168, 0.2);
+                                 border-radius: 12px;
+                                 padding: 12px 16px;
+                                 margin: 16px 0;
+                             }
+                             .dev-note h3 {
+                                 font-size: 16px;
+                                 font-weight: 600;
+                                 margin-bottom: 6px;
+                                 opacity: 0.9;
+                             }
+                             .dev-note p {
+                                 margin: 0;
+                                 font-size: 13px;
+                                 opacity: 0.8;
+                             }
+                             .links-section {
+                                 margin-top: 32px;
+                             }
+                             h2 {
+                                 font-size: 18px;
+                                 font-weight: 600;
+                                 margin-bottom: 16px;
+                                 opacity: 0.9;
+                             }
+                             .link-button {
+                                 display: block;
+                                 text-decoration: none;
+                                 color: %s;
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%%, rgba(0, 175, 174, 0.08) 100%%);
+                                 border: 1px solid rgba(30, 90, 168, 0.2);
+                                 border-radius: 12px;
+                                 padding: 14px 20px;
+                                 margin-bottom: 10px;
+                                 font-size: 15px;
+                                 font-weight: 500;
+                                 transition: all 0.2s ease;
+                                 position: relative;
+                                 overflow: hidden;
+                                 -webkit-tap-highlight-color: transparent;
+                                 -webkit-touch-callout: none;
+                                 -webkit-user-select: none;
+                                 user-select: none;
+                             }
+                             .link-button::after {
+                                 content: '';
+                                 position: absolute;
+                                 top: 50%%;
+                                 left: 50%%;
+                                 width: 0;
+                                 height: 0;
+                                 border-radius: 50%%;
+                                 background: rgba(30, 90, 168, 0.3);
+                                 transform: translate(-50%%, -50%%);
+                                 transition: width 0.3s, height 0.3s;
+                                 pointer-events: none;
+                             }
+                             .link-button:active {
+                                 transform: scale(0.98);
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%%, rgba(0, 175, 174, 0.15) 100%%);
+                                 border-color: rgba(30, 90, 168, 0.4);
+                                 outline: none;
+                             }
+                             .link-button:active::after {
+                                 width: 300px;
+                                 height: 300px;
+                             }
+                             .link-button:focus {
+                                 outline: none;
+                             }
+                         </style>
+                        """, backgroundColorHex, foregroundColorHex,
                 morpheBlue, morpheTeal,
                 backgroundColorHex,
                 morpheBlue, morpheTeal,
@@ -227,15 +226,15 @@ public class MorpheAboutPreference extends Preference {
 
         // Logo with Morphe gradient border.
         if (isNetworkConnected) {
-            html.append("""
-                     <div class="logo-container">
-                         <div class="logo-inner">
-                             <div class="logo-bg">
-                                 <img src="%s" onerror="this.parentElement.parentElement.parentElement.style.display='none';" />
-                             </div>
-                         </div>
-                     </div>
-                    """.formatted(AboutLinksRoutes.aboutLogoUrl));
+            html.append(String.format("""
+                    <div class="logo-container">
+                        <div class="logo-inner">
+                            <div class="logo-bg">
+                                <img src="%s" onerror="this.parentElement.parentElement.parentElement.style.display='none';" />
+                            </div>
+                        </div>
+                    </div>
+                    """, AboutLinksRoutes.aboutLogoUrl));
         }
 
         String patchesVersion = Utils.getPatchesReleaseVersion();
@@ -244,33 +243,29 @@ public class MorpheAboutPreference extends Preference {
         html.append("<h1>Morphe</h1>");
 
         // Description.
-        html.append("<p>").append(
-                useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))
-        ).append("</p>");
+        html.append("<p>").append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))).append("</p>");
 
-        // Dev warning banner.
+        // Dev note banner (not a warning).
         if (patchesVersion.contains("dev")) {
-            html.append("""
-                    <div class="dev-warning">
-                        <h3>%s</h3>
-                        <p>%s</p>
-                    </div>
-                    """.formatted(
-                    useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")),
+            html.append(String.format("""
+                            <div class="dev-note">
+                                <h3>%s</h3>
+                                <p>%s</p>
+                            </div>
+                            """, useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")),
                     getString("morphe_settings_about_links_dev_body")
             ));
         }
 
         // Links section.
-        html.append("""
+        html.append(String.format("""
                 <div class="links-section">
                     <h2>%s</h2>
-                """.formatted(getString("morphe_settings_about_links_header")));
+                """, getString("morphe_settings_about_links_header")));
 
         // Link buttons.
         for (WebLink link : aboutLinks) {
-            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
-                    .append(link.name).append("</a>\n");
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">").append(link.name).append("</a>");
         }
 
         html.append("""
