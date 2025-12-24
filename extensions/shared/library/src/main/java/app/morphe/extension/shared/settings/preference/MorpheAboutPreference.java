@@ -66,13 +66,6 @@ public class MorpheAboutPreference extends Preference {
     private String createDialogHtml(WebLink[] aboutLinks) {
         final boolean isNetworkConnected = Utils.isNetworkConnected();
 
-        StringBuilder builder = new StringBuilder();
-        builder.append("<html>");
-        builder.append("<head>");
-        builder.append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-        builder.append("</head>");
-        builder.append("<body>");
-
         // Get theme colors.
         String foregroundColorHex = Utils.getColorHexString(Utils.getAppForegroundColor());
         String backgroundColorHex = Utils.getColorHexString(Utils.getDialogBackgroundColor());
@@ -81,218 +74,214 @@ public class MorpheAboutPreference extends Preference {
         String morpheBlue = "#1E5AA8";
         String morpheTeal = "#00AFAE";
 
-        // Apply Morphe-style CSS.
-        builder.append("<style>");
-        builder.append("* { margin: 0; padding: 0; box-sizing: border-box; }");
-        builder.append("body { ");
-        builder.append("  background: ").append(backgroundColorHex).append(";");
-        builder.append("  color: ").append(foregroundColorHex).append(";");
-        builder.append("  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;");
-        builder.append("  padding: 24px;");
-        builder.append("  text-align: center;");
-        builder.append("}");
-
-        // Logo container with Morphe gradient border.
-        builder.append(".logo-container {");
-        builder.append("  margin: 0 auto 24px;");
-        builder.append("  width: 120px;");
-        builder.append("  height: 120px;");
-        builder.append("  border-radius: 28px;");
-        builder.append("  background: linear-gradient(135deg, ").append(morpheBlue).append(" 0%, ").append(morpheTeal).append(" 100%);");
-        builder.append("  padding: 3px;");
-        builder.append("  display: inline-block;");
-        builder.append("  box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);");
-        builder.append("}");
-
-        builder.append(".logo-inner {");
-        builder.append("  width: 100%;");
-        builder.append("  height: 100%;");
-        builder.append("  border-radius: 26px;");
-        builder.append("  background: ").append(backgroundColorHex).append(";");
-        builder.append("  display: flex;");
-        builder.append("  align-items: center;");
-        builder.append("  justify-content: center;");
-        builder.append("  overflow: hidden;");
-        builder.append("  padding: 3px;");
-        builder.append("}");
-
-        builder.append(".logo-bg {");
-        builder.append("  width: 100%;");
-        builder.append("  height: 100%;");
-        builder.append("  border-radius: 24px;");
-        builder.append("  background: #EEEEEE;");
-        builder.append("  display: flex;");
-        builder.append("  align-items: center;");
-        builder.append("  justify-content: center;");
-        builder.append("  padding: 12px;");
-        builder.append("}");
-
-        builder.append("img {");
-        builder.append("  width: 100%;");
-        builder.append("  height: 100%;");
-        builder.append("  object-fit: contain;");
-        builder.append("}");
-
-        // Title styling with Morphe gradient.
-        builder.append("h1 {");
-        builder.append("  font-size: 32px;");
-        builder.append("  font-weight: 700;");
-        builder.append("  margin-bottom: 8px;");
-        builder.append("  background: linear-gradient(135deg, ").append(morpheBlue).append(" 0%, ").append(morpheTeal).append(" 100%);");
-        builder.append("  -webkit-background-clip: text;");
-        builder.append("  -webkit-text-fill-color: transparent;");
-        builder.append("  background-clip: text;");
-        builder.append("}");
-
-        // Description text.
-        builder.append("p {");
-        builder.append("  font-size: 14px;");
-        builder.append("  line-height: 1.6;");
-        builder.append("  margin-bottom: 16px;");
-        builder.append("  opacity: 0.8;");
-        builder.append("}");
-
-        // Dev warning banner.
-        builder.append(".dev-warning {");
-        builder.append("  background: rgba(239, 68, 68, 0.1);");
-        builder.append("  border: 1px solid rgba(239, 68, 68, 0.3);");
-        builder.append("  border-radius: 12px;");
-        builder.append("  padding: 12px 16px;");
-        builder.append("  margin: 16px 0;");
-        builder.append("}");
-
-        builder.append(".dev-warning h3 {");
-        builder.append("  color: #EF4444;");
-        builder.append("  font-size: 16px;");
-        builder.append("  font-weight: 600;");
-        builder.append("  margin-bottom: 6px;");
-        builder.append("}");
-
-        builder.append(".dev-warning p {");
-        builder.append("  color: #EF4444;");
-        builder.append("  margin: 0;");
-        builder.append("  font-size: 13px;");
-        builder.append("}");
-
-        // Links section.
-        builder.append(".links-section {");
-        builder.append("  margin-top: 32px;");
-        builder.append("}");
-
-        builder.append("h2 {");
-        builder.append("  font-size: 18px;");
-        builder.append("  font-weight: 600;");
-        builder.append("  margin-bottom: 16px;");
-        builder.append("  opacity: 0.9;");
-        builder.append("}");
-
-        // Link buttons with Morphe gradient accent.
-        builder.append(".link-button {");
-        builder.append("  display: block;");
-        builder.append("  text-decoration: none;");
-        builder.append("  color: ").append(foregroundColorHex).append(";");
-        builder.append("  background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%, rgba(0, 175, 174, 0.08) 100%);");
-        builder.append("  border: 1px solid rgba(30, 90, 168, 0.2);");
-        builder.append("  border-radius: 12px;");
-        builder.append("  padding: 14px 20px;");
-        builder.append("  margin-bottom: 10px;");
-        builder.append("  font-size: 15px;");
-        builder.append("  font-weight: 500;");
-        builder.append("  transition: all 0.2s ease;");
-        builder.append("  position: relative;");
-        builder.append("  overflow: hidden;");
-        builder.append("  -webkit-tap-highlight-color: transparent;");
-        builder.append("  -webkit-touch-callout: none;");
-        builder.append("  -webkit-user-select: none;");
-        builder.append("  user-select: none;");
-        builder.append("}");
-
-        // Add ripple effect overlay.
-        builder.append(".link-button::after {");
-        builder.append("  content: '';");
-        builder.append("  position: absolute;");
-        builder.append("  top: 50%;");
-        builder.append("  left: 50%;");
-        builder.append("  width: 0;");
-        builder.append("  height: 0;");
-        builder.append("  border-radius: 50%;");
-        builder.append("  background: rgba(30, 90, 168, 0.3);");
-        builder.append("  transform: translate(-50%, -50%);");
-        builder.append("  transition: width 0.3s, height 0.3s;");
-        builder.append("  pointer-events: none;");
-        builder.append("}");
-
-        builder.append(".link-button:active {");
-        builder.append("  transform: scale(0.98);");
-        builder.append("  background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%, rgba(0, 175, 174, 0.15) 100%);");
-        builder.append("  border-color: rgba(30, 90, 168, 0.4);");
-        builder.append("  outline: none;");
-        builder.append("}");
-
-        builder.append(".link-button:active::after {");
-        builder.append("  width: 300px;");
-        builder.append("  height: 300px;");
-        builder.append("}");
-
-        builder.append(".link-button:focus {");
-        builder.append("  outline: none;");
-        builder.append("}");
-
-        builder.append("</style>");
-
-        builder.append("</head><body>");
+        StringBuilder html = new StringBuilder(
+                 """
+                 <html>
+                 <head>
+                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 </head>
+                 <body>
+                 <style>
+                     * {
+                         margin: 0;
+                         padding: 0;
+                         box-sizing: border-box;
+                     }
+                     body {
+                         background: %s;
+                         color: %s;
+                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                         padding: 24px;
+                         text-align: center;
+                     }
+                     .logo-container {
+                         margin: 0 auto 24px;
+                         width: 120px;
+                         height: 120px;
+                         border-radius: 28px;
+                         background: linear-gradient(135deg, %s 0%%, %s 100%%);
+                         padding: 3px;
+                         display: inline-block;
+                         box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);
+                     }
+                     .logo-inner {
+                         width: 100%%;
+                         height: 100%%;
+                         border-radius: 26px;
+                         background: %s;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         overflow: hidden;
+                         padding: 3px;
+                     }
+                     .logo-bg {
+                         width: 100%%;
+                         height: 100%%;
+                         border-radius: 24px;
+                         background: #EEEEEE;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         padding: 12px;
+                     }
+                     img {
+                         width: 100%%;
+                         height: 100%%;
+                         object-fit: contain;
+                     }
+                     h1 {
+                         font-size: 32px;
+                         font-weight: 700;
+                         margin-bottom: 8px;
+                         background: linear-gradient(135deg, %s 0%%, %s 100%%);
+                         -webkit-background-clip: text;
+                         -webkit-text-fill-color: transparent;
+                         background-clip: text;
+                     }
+                     p {
+                         font-size: 14px;
+                         line-height: 1.6;
+                         margin-bottom: 16px;
+                         opacity: 0.8;
+                     }
+                     .dev-warning {
+                         background: rgba(239, 68, 68, 0.1);
+                         border: 1px solid rgba(239, 68, 68, 0.3);
+                         border-radius: 12px;
+                         padding: 12px 16px;
+                         margin: 16px 0;
+                     }
+                     .dev-warning h3 {
+                         color: #EF4444;
+                         font-size: 16px;
+                         font-weight: 600;
+                         margin-bottom: 6px;
+                     }
+                     .dev-warning p {
+                         color: #EF4444;
+                         margin: 0;
+                         font-size: 13px;
+                     }
+                     .links-section {
+                         margin-top: 32px;
+                     }
+                     h2 {
+                         font-size: 18px;
+                         font-weight: 600;
+                         margin-bottom: 16px;
+                         opacity: 0.9;
+                     }
+                     .link-button {
+                         display: block;
+                         text-decoration: none;
+                         color: %s;
+                         background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%%, rgba(0, 175, 174, 0.08) 100%%);
+                         border: 1px solid rgba(30, 90, 168, 0.2);
+                         border-radius: 12px;
+                         padding: 14px 20px;
+                         margin-bottom: 10px;
+                         font-size: 15px;
+                         font-weight: 500;
+                         transition: all 0.2s ease;
+                         position: relative;
+                         overflow: hidden;
+                         -webkit-tap-highlight-color: transparent;
+                         -webkit-touch-callout: none;
+                         -webkit-user-select: none;
+                         user-select: none;
+                     }
+                     .link-button::after {
+                         content: '';
+                         position: absolute;
+                         top: 50%%;
+                         left: 50%%;
+                         width: 0;
+                         height: 0;
+                         border-radius: 50%%;
+                         background: rgba(30, 90, 168, 0.3);
+                         transform: translate(-50%%, -50%%);
+                         transition: width 0.3s, height 0.3s;
+                         pointer-events: none;
+                     }
+                     .link-button:active {
+                         transform: scale(0.98);
+                         background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%%, rgba(0, 175, 174, 0.15) 100%%);
+                         border-color: rgba(30, 90, 168, 0.4);
+                         outline: none;
+                     }
+                     .link-button:active::after {
+                         width: 300px;
+                         height: 300px;
+                     }
+                     .link-button:focus {
+                         outline: none;
+                     }
+                 </style>
+                """.formatted(
+                backgroundColorHex, foregroundColorHex,
+                morpheBlue, morpheTeal,
+                backgroundColorHex,
+                morpheBlue, morpheTeal,
+                foregroundColorHex
+        ));
 
         // Logo with Morphe gradient border.
         if (isNetworkConnected) {
-            builder.append("<div class=\"logo-container\">");
-            builder.append("<div class=\"logo-inner\">");
-            builder.append("<img ");
-            builder.append("onerror=\"this.parentElement.parentElement.style.display='none';\" ");
-            builder.append("src=\"").append(AboutLinksRoutes.aboutLogoUrl).append("\" />");
-            builder.append("</div>");
-            builder.append("</div>");
+            html.append(
+                     """
+                     <div class="logo-container">
+                         <div class="logo-inner">
+                             <div class="logo-bg">
+                                 <img onerror="this.parentElement.parentElement.parentElement.style.display='none';src="%s" />
+                             </div>
+                         </div>
+                     </div>
+                    """.formatted(AboutLinksRoutes.aboutLogoUrl));
         }
 
         String patchesVersion = Utils.getPatchesReleaseVersion();
 
         // Title with gradient.
-        builder.append("<h1>Morphe</h1>");
+        html.append("<h1>Morphe</h1>");
 
         // Description.
-        builder.append("<p>")
-                // Replace hyphens with non breaking dashes so the version number does not break lines.
-                .append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion)))
-                .append("</p>");
+        html.append("<p>").append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion))).append("</p>");
 
         // Dev warning banner.
         if (patchesVersion.contains("dev")) {
-            builder.append("<div class=\"dev-warning\">");
-            builder.append("<h3>")
-                    // English text 'Pre-release' can break lines.
-                    .append(useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")))
-                    .append("</h3>");
-            builder.append("<p>")
-                    .append(getString("morphe_settings_about_links_dev_body"))
-                    .append("</p>");
-            builder.append("</div>");
+            html.append(
+                    """
+                    <div class="dev-warning">
+                        <h3>%s</h3>
+                        <p>%s</p>
+                    </div>
+                    """.formatted(
+                    useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")),
+                    getString("morphe_settings_about_links_dev_body")
+            ));
         }
 
         // Links section.
-        builder.append("<div class=\"links-section\">");
-        builder.append("<h2>")
-                .append(getString("morphe_settings_about_links_header"))
-                .append("</h2>");
+        html.append(
+                """
+                <div class="links-section">
+                    <h2>%s</h2>
+                """.formatted(getString("morphe_settings_about_links_header")));
 
         // Link buttons.
         for (WebLink link : aboutLinks) {
-            builder.append("<a href=\"").append(link.url).append("\" class=\"link-button\">");
-            builder.append(link.name);
-            builder.append("</a>");
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">").append(link.name).append("</a>");
         }
-        builder.append("</div>");
 
-        builder.append("</body></html>");
-        return builder.toString();
+        html.append(
+                """
+                </div>
+                </body>
+                </html>
+                """);
+
+        return html.toString();
     }
 
     {
@@ -471,7 +460,7 @@ class AboutLinksRoutes {
     /**
      * Backup icon url if the API call fails.
      */
-    public static volatile String aboutLogoUrl = "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg";
+    public static volatile String aboutLogoUrl = "https://morphe.software/favicon.ico";
 
     /**
      * Links to use if fetch links api call fails.
@@ -558,7 +547,7 @@ class AboutLinksRoutes {
         {
           "name": "Morphe",
           "branding": {
-            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg"
+            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/refs/heads/main/assets/morphe-logo/morphe_logo.svg"
           },
           "contact": {
             "email": "na"
