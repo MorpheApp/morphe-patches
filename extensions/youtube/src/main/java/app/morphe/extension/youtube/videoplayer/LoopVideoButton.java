@@ -104,10 +104,8 @@ public class LoopVideoButton {
         PlayerControlButton localInstance = instance;
         if (localInstance == null) return;
 
-        Utils.runOnMainThread(() -> {
-            final boolean currentState = Settings.LOOP_VIDEO.get();
-            localInstance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
-        });
+        final boolean currentState = Settings.LOOP_VIDEO.get();
+        localInstance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
     }
 
     /**
