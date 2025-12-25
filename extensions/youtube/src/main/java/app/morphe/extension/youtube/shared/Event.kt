@@ -1,4 +1,4 @@
-package app.morphe.extension.youtube
+package app.morphe.extension.youtube.shared
 
 import app.morphe.extension.shared.Logger
 import java.util.Collections
