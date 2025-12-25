@@ -1,3 +1,10 @@
+# [1.0.0-dev.23](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.22...v1.0.0-dev.23) (2025-12-25)
+
+
+### Bug Fixes
+
+* Change recommended version to 20.37.48 ([5361d03](https://github.com/MorpheApp/morphe-patches/commit/5361d03c5aec922429b6cffc6b5b60690c9b608e))
+
 # [1.0.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.21...v1.0.0-dev.22) (2025-12-24)
 
 
