@@ -1,3 +1,10 @@
+# [1.0.0-dev.25](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.24...v1.0.0-dev.25) (2025-12-25)
+
+
+### Bug Fixes
+
+* **YouTube Music:** Change recommended version to `8.37.56` ([ab6033c](https://github.com/MorpheApp/morphe-patches/commit/ab6033c294215e4d9c50db7fe95546c2f9524da4))
+
 # [1.0.0-dev.24](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.23...v1.0.0-dev.24) (2025-12-25)
 
 
