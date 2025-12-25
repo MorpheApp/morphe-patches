@@ -101,16 +101,13 @@ public class LoopVideoButton {
      * Update icon based on current setting value.
      */
     private static void updateIconFromSettings() {
-        if (instance == null) return;
+        PlayerControlButton localInstance = instance;
+        if (localInstance == null) return;
 
-        try {
-            Utils.runOnMainThread(() -> {
-                final boolean currentState = Settings.LOOP_VIDEO.get();
-                instance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
-            });
-        } catch (Exception ex) {
-            Logger.printException(() -> "updateIconFromSettings failure", ex);
-        }
+        Utils.runOnMainThread(() -> {
+            final boolean currentState = Settings.LOOP_VIDEO.get();
+            localInstance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
+        });
     }
 
     /**
