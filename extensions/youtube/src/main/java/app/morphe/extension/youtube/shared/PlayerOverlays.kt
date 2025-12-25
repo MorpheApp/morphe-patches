@@ -2,7 +2,6 @@ package app.morphe.extension.youtube.shared
 
 import android.view.View
 import android.view.ViewGroup
-import app.morphe.extension.youtube.Event
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
 
 /**
