@@ -539,6 +539,7 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_clip_button_title">Hide Clip</string>
     <string name="morphe_hide_clip_button_summary_on">Clip button is hidden</string>
     <string name="morphe_hide_clip_button_summary_off">Clip button is shown</string>
+    <string name="morphe_hide_clip_button_user_dialog_message">This hide function may not work for some user accounts.</string>
     <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
     <string name="morphe_hide_shop_button_title">Hide Shop</string>
     <string name="morphe_hide_shop_button_summary_on">Shop button is hidden</string>

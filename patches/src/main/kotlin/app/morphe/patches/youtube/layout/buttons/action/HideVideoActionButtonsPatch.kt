@@ -15,7 +15,7 @@ import java.util.logging.Logger
 val hideVideoActionButtonsPatch = resourcePatch(
     name = "Hide video action buttons",
     description = "Adds options to hide action buttons (such as the Download button) under videos. " +
-            "Patching version 20.21.37 or lower can hide more player button types"
+            "Patching version 20.21.37 or lower can hide more player button types."
 ) {
     dependsOn(
         resourceMappingPatch,
@@ -38,6 +38,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
             SwitchPreference("morphe_hide_download_button"),
             SwitchPreference("morphe_hide_like_dislike_button"),
             SwitchPreference("morphe_hide_comments_button"),
+            SwitchPreference("morphe_hide_clip_button"),
             SwitchPreference("morphe_hide_save_button"),
             SwitchPreference("morphe_hide_remix_button"),
             SwitchPreference("morphe_hide_share_button"),
@@ -58,7 +59,6 @@ val hideVideoActionButtonsPatch = resourcePatch(
                 listOf(
                     SwitchPreference("morphe_hide_hype_button"),
                     SwitchPreference("morphe_hide_ask_button"),
-                    SwitchPreference("morphe_hide_clip_button"),
                     SwitchPreference("morphe_hide_promote_button"),
                     SwitchPreference("morphe_hide_report_button"),
                     SwitchPreference("morphe_hide_shop_button"),

@@ -219,7 +219,7 @@ public class Settings extends BaseSettings {
     // Action buttons
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("morphe_disable_like_subscribe_glow", FALSE);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE);
-    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("morphe_hide_clip_button", FALSE);
+    public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("morphe_hide_clip_button", FALSE, "morphe_hide_clip_button_user_dialog_message");
     public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_comments_button", FALSE);
     public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("morphe_hide_download_button", FALSE);
     public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("morphe_hide_hype_button", FALSE);
