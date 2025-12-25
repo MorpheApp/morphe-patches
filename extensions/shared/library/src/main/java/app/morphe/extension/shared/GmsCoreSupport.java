@@ -252,11 +252,10 @@ public class GmsCoreSupport {
     }
 
     private static String getGmsCoreDownload() {
-        final var vendorGroupId = getGmsCoreVendorGroupId();
         //noinspection SwitchStatementWithTooFewBranches
-        return switch (vendorGroupId) {
-            case "app.revanced" -> "https://github.com/WSTxda/MicroG-RE/releases/latest";
-            default -> vendorGroupId + ".android.gms";
+        return switch (getGmsCoreVendorGroupId()) {
+            case "app.revanced" -> "https://morphe.software/microg";
+            default -> getGmsCoreVendorGroupId() + ".android.gms";
         };
     }
 
