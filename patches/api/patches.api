@@ -437,10 +437,6 @@ public final class app/morphe/patches/youtube/ad/general/HideAdsPatchKt {
 	public static final fun getHideAdsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
-public final class app/morphe/patches/youtube/ad/getpremium/HideGetPremiumPatchKt {
-	public static final fun getHideGetPremiumPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
-}
-
 public final class app/morphe/patches/youtube/ad/video/VideoAdsPatchKt {
 	public static final fun getVideoAdsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
