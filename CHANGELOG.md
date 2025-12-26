@@ -1,3 +1,15 @@
+# [1.0.0-dev.27](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.26...v1.0.0-dev.27) (2025-12-26)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Fix side effect of Disable translucent status bar ([48bf054](https://github.com/MorpheApp/morphe-patches/commit/48bf0542c1417fc374bd88fee12b7af1b78eabe5))
+
+
+### Features
+
+* Add new About dialog style ([#21](https://github.com/MorpheApp/morphe-patches/issues/21)) ([69ee718](https://github.com/MorpheApp/morphe-patches/commit/69ee718af2462f9fffd0289d38dec1b94fa9a9db))
+
 # [1.0.0-dev.26](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.25...v1.0.0-dev.26) (2025-12-26)
 
 
