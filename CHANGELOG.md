@@ -1,3 +1,78 @@
+# [1.0.0-dev.27](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.26...v1.0.0-dev.27) (2025-12-26)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Fix side effect of Disable translucent status bar ([48bf054](https://github.com/MorpheApp/morphe-patches/commit/48bf0542c1417fc374bd88fee12b7af1b78eabe5))
+
+
+### Features
+
+* Add new About dialog style ([#21](https://github.com/MorpheApp/morphe-patches/issues/21)) ([69ee718](https://github.com/MorpheApp/morphe-patches/commit/69ee718af2462f9fffd0289d38dec1b94fa9a9db))
+
+# [1.0.0-dev.26](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.25...v1.0.0-dev.26) (2025-12-26)
+
+
+### Bug Fixes
+
+* **YouTube - Exit fullscreen mode:** Handle exiting fullscreen on the first video opened ([2d12182](https://github.com/MorpheApp/morphe-patches/commit/2d121828132dbbc5992084bed8527117c129973b))
+
+# [1.0.0-dev.25](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.24...v1.0.0-dev.25) (2025-12-25)
+
+
+### Bug Fixes
+
+* **YouTube Music:** Change recommended version to `8.37.56` ([ab6033c](https://github.com/MorpheApp/morphe-patches/commit/ab6033c294215e4d9c50db7fe95546c2f9524da4))
+
+# [1.0.0-dev.24](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.23...v1.0.0-dev.24) (2025-12-25)
+
+
+### Bug Fixes
+
+* Create pre-release build for testing ([931017d](https://github.com/MorpheApp/morphe-patches/commit/931017d3a97a9f40b2f1acf4fc0b636c85faf210))
+
+# [1.0.0-dev.23](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.22...v1.0.0-dev.23) (2025-12-25)
+
+
+### Bug Fixes
+
+* Change recommended version to 20.37.48 ([5361d03](https://github.com/MorpheApp/morphe-patches/commit/5361d03c5aec922429b6cffc6b5b60690c9b608e))
+
+# [1.0.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.21...v1.0.0-dev.22) (2025-12-24)
+
+
+### Features
+
+* **YouTube Music:** Unofficial support of `8.50.51` ([a392f3f](https://github.com/MorpheApp/morphe-patches/commit/a392f3f69148e1d20c61f61b11e0d167fd920e61))
+
+# [1.0.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.20...v1.0.0-dev.21) (2025-12-24)
+
+
+### Features
+
+* Add overlay buttons animation ([#20](https://github.com/MorpheApp/morphe-patches/issues/20)) ([a105d4c](https://github.com/MorpheApp/morphe-patches/commit/a105d4c35c9ca198eb8040bce548712f644a6349))
+
+# [1.0.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.19...v1.0.0-dev.20) (2025-12-24)
+
+
+### Bug Fixes
+
+* **YouTube Music - Navigation bar:** Hide library tab with 8.24+ ([789dd2a](https://github.com/MorpheApp/morphe-patches/commit/789dd2a59fb2b3ace4a3d57b270d4f4ff13a38b2))
+
+# [1.0.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.18...v1.0.0-dev.19) (2025-12-24)
+
+
+### Bug Fixes
+
+* Resolve ssl connection timeout in ci (test) ([031ffba](https://github.com/MorpheApp/morphe-patches/commit/031ffba84ed17cd742356fb3321198c73c99ab29))
+
+# [1.0.0-dev.18](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.17...v1.0.0-dev.18) (2025-12-23)
+
+
+### Bug Fixes
+
+* **GmsCore support:** Change recommended MicroG to MicroG-RE ([87fe57d](https://github.com/MorpheApp/morphe-patches/commit/87fe57dae2eac232741abf7c7530cc228cf95955))
+
 # [1.0.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.16...v1.0.0-dev.17) (2025-12-21)
 
 

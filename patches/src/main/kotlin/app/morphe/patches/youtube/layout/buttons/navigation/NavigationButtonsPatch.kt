@@ -38,7 +38,7 @@ val navigationButtonsPatch = bytecodePatch(
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
@@ -112,9 +112,12 @@ val navigationButtonsPatch = bytecodePatch(
 
         // Force on/off translucent effect on status bar and navigation buttons.
         if (is_19_25_or_greater) {
-            TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
+            arrayOf(
+                TranslucentNavigationStatusBarFeatureFlagFingerprint,
+                TranslucentNavigationStatusBarSecondaryFeatureFlagFingerprint
+            ).forEach { fingerprint ->
+                fingerprint.method.insertLiteralOverride(
+                    fingerprint.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
                 )
             }

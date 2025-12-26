@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 -->
 <resources>
     <!-- misc.settings.settingsPatch -->
+
+    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
     <string name="morphe_settings_screen_00_about_title">About</string>
     <string name="morphe_settings_screen_01_ads_title">Ads</string>
     <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative thumbnails</string>
@@ -539,6 +541,7 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_clip_button_title">Hide Clip</string>
     <string name="morphe_hide_clip_button_summary_on">Clip button is hidden</string>
     <string name="morphe_hide_clip_button_summary_off">Clip button is shown</string>
+    <string name="morphe_hide_clip_button_user_dialog_message">This hide function may not work for some user accounts.</string>
     <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
     <string name="morphe_hide_shop_button_title">Hide Shop</string>
     <string name="morphe_hide_shop_button_summary_on">Shop button is hidden</string>
@@ -588,7 +591,6 @@ If changing this setting does not take effect, try switching to Incognito mode."
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
-    <string name="morphe_disable_translucent_status_bar_user_dialog_message">On some devices, enabling this feature can change the system navigation bar to transparent.</string>
     <string name="morphe_disable_translucent_navigation_bar_light_title">Disable light translucent bar</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Light mode navigation bar is opaque</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Light mode navigation bar is opaque or translucent</string>
