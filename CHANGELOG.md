@@ -1,3 +1,10 @@
+# [1.0.0-dev.26](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.25...v1.0.0-dev.26) (2025-12-26)
+
+
+### Bug Fixes
+
+* **YouTube - Exit fullscreen mode:** Handle exiting fullscreen on the first video opened ([2d12182](https://github.com/MorpheApp/morphe-patches/commit/2d121828132dbbc5992084bed8527117c129973b))
+
 # [1.0.0-dev.25](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.24...v1.0.0-dev.25) (2025-12-25)
 
 

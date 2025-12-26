@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-dev.25",
+  "version": "1.0.0-dev.26",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -988,7 +988,7 @@
     },
     {
       "name": "Hide video action buttons",
-      "description": "Adds options to hide action buttons (such as the Download button) under videos. Patching version 20.21.37 or lower can hide more player button types",
+      "description": "Adds options to hide action buttons (such as the Download button) under videos. Patching version 20.21.37 or lower can hide more player button types.",
       "use": true,
       "dependencies": [
         "ResourcePatch",
