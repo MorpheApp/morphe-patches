@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 -->
 <resources>
     <!-- misc.settings.settingsPatch -->
+
+    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
     <string name="morphe_settings_screen_00_about_title">About</string>
     <string name="morphe_settings_screen_01_ads_title">Ads</string>
     <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative thumbnails</string>
