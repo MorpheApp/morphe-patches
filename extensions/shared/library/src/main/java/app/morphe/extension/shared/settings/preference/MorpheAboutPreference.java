@@ -129,15 +129,6 @@ public class MorpheAboutPreference extends Preference {
                                  height: 100%%;
                                  object-fit: contain;
                              }
-                             h1 {
-                                 font-size: 32px;
-                                 font-weight: 700;
-                                 margin-bottom: 8px;
-                                 background: linear-gradient(135deg, %s 0%%, %s 100%%);
-                                 -webkit-background-clip: text;
-                                 -webkit-text-fill-color: transparent;
-                                 background-clip: text;
-                             }
                              p {
                                  font-size: 14px;
                                  line-height: 1.6;
@@ -238,9 +229,6 @@ public class MorpheAboutPreference extends Preference {
         }
 
         String appPatchesVersion = Utils.getPatchesReleaseVersion();
-
-        // Title with gradient.
-        html.append("<h1>Morphe</h1>");
 
         // Description.
         html.append("<p>").append(
@@ -480,7 +468,7 @@ class AboutRoutes {
     private static volatile long latestPatchesVersionLastCheckedTime;
 
     static boolean hasFetchedPatchersVersion() {
-        final long updateCheckFrequency = 30 * 60 * 1000; // 30 minutes.
+        final long updateCheckFrequency = 10 * 60 * 1000; // 10 minutes.
         final long now = System.currentTimeMillis();
 
         return latestPatchesVersion != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency;
@@ -502,22 +490,25 @@ class AboutRoutes {
             // Do not show an exception toast if the server is down
             final int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
-                Logger.printDebug(() -> "Failed to get social links. Response code: " + responseCode);
+                Logger.printDebug(() -> "Failed to get patches bundle. Response code: " + responseCode);
                 return null;
             }
 
             JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
             version = json.getString("version");
+            if (version.startsWith("v")) {
+                version = version.substring(1);
+            }
             latestPatchesVersion = version;
             latestPatchesVersionLastCheckedTime = System.currentTimeMillis();
 
             return version;
         } catch (SocketTimeoutException ex) {
-            Logger.printInfo(() -> "Could not fetch social links", ex); // No toast.
+            Logger.printInfo(() -> "Could not fetch patches version", ex); // No toast.
         } catch (JSONException ex) {
             Logger.printException(() -> "Could not parse about information", ex);
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to get about information", ex);
+            Logger.printException(() -> "Failed to get patches version", ex);
         }
 
         return null;
@@ -546,7 +537,7 @@ class AboutRoutes {
             // Do not show an exception toast if the server is down
             final int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
-                Logger.printDebug(() -> "Failed to get social links. Response code: " + responseCode);
+                Logger.printDebug(() -> "Failed to get about information. Response code: " + responseCode);
                 return NO_CONNECTION_STATIC_LINKS;
             }
 
@@ -579,7 +570,7 @@ class AboutRoutes {
             return fetchedLinks = links.toArray(new WebLink[0]);
 
         } catch (SocketTimeoutException ex) {
-            Logger.printInfo(() -> "Could not fetch social links", ex); // No toast.
+            Logger.printInfo(() -> "Could not fetch about information", ex); // No toast.
         } catch (JSONException ex) {
             Logger.printException(() -> "Could not parse about information", ex);
         } catch (Exception ex) {
