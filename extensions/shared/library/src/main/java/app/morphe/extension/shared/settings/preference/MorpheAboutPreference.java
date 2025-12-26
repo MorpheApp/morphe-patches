@@ -34,7 +34,10 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -416,8 +419,20 @@ class WebViewDialog extends Dialog {
 }
 
 class WebLink {
+
+    /**
+     * Localized name replacements for links.
+     */
+    private static final Map<String, String> webLinkNameReplacements = new HashMap<>() {
+        {
+            put("website", "morphe_settings_about_links_website");
+            put("donate", "morphe_settings_about_links_donate");
+            put("translations", "morphe_settings_about_links_translations");
+        }
+    };
+
     final boolean preferred;
-    String name;
+    final String name;
     final String url;
 
     WebLink(JSONObject json) throws JSONException {
@@ -429,8 +444,9 @@ class WebLink {
 
     WebLink(boolean preferred, String name, String url) {
         this.preferred = preferred;
-        this.name = name;
         this.url = url;
+        String localizedNameKey = webLinkNameReplacements.get(name.toLowerCase(Locale.US));
+        this.name = (localizedNameKey != null) ? str(localizedNameKey) : name;
     }
 
     @NonNull
@@ -551,7 +567,6 @@ class AboutRoutes {
             for (int i = 0, length = donations.length(); i < length; i++) {
                 WebLink link = new WebLink(donations.getJSONObject(i));
                 if (link.preferred) {
-                    link.name = str("morphe_settings_about_links_donate");
                     links.add(link);
                 }
             }
@@ -559,9 +574,6 @@ class AboutRoutes {
             JSONArray socials = json.getJSONArray("socials");
             for (int i = 0, length = socials.length(); i < length; i++) {
                 WebLink link = new WebLink(socials.getJSONObject(i));
-                if (link.name.equalsIgnoreCase("Website")) {
-                    link.name = str("morphe_settings_about_links_website");
-                }
                 links.add(link);
             }
 
