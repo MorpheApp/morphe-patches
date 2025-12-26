@@ -18,7 +18,6 @@ Second \"item\" text"</string>
     <!-- misc.settings.settingsResourcePatch -->
     <string name="morphe_settings_submenu_title">Settings</string>
     <string name="morphe_settings_title" translatable="false">Morphe</string>
-    <string name="morphe_settings_about_donate">Donate</string>
     <string name="morphe_settings_confirm_user_dialog_title">Are you sure you want to proceed?</string>
     <string name="morphe_settings_save">Save</string>
     <string name="morphe_settings_reset">Reset</string>
@@ -64,10 +63,14 @@ To translate new languages or improve the existing translations, visit translate
     <string name="morphe_pref_import_export_title">Import / Export</string>
     <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
     <!-- Settings about dialog. -->
-    <string name="morphe_settings_about_links_body">You are using Morphe Patches version &lt;i>%s&lt;/i></string>
+    <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
+    <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
     <string name="morphe_settings_about_links_dev_header">Note</string>
     <string name="morphe_settings_about_links_dev_body">This version is a pre-release and you may experience unexpected issues</string>
     <string name="morphe_settings_about_links_header">Official links</string>
+    <string name="morphe_settings_about_links_website">Website</string>
+    <string name="morphe_settings_about_links_donate">Donate</string>
+    <string name="morphe_settings_about_links_translations">Translations</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
@@ -107,15 +110,16 @@ You will not be notified of any unexpected events."</string>
     <string name="microg_settings_title">GmsCore Settings</string>
     <string name="microg_settings_summary">Settings for GmsCore</string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-    <string name="gms_core_toast_not_installed_message">MicroG GmsCore is not installed. Install it.</string>
+    <string name="gms_core_toast_not_installed_message">MicroG is not installed. Install it.</string>
     <string name="gms_core_dialog_title">Action needed</string>
-    <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore does not have permission to run in the background.
+    <!-- "Don't kill my app" should be kept in English and not translated -->
+    <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG does not have permission to run in the background.
 
 Follow the \"Don\'t kill my app\" guide for your phone, and apply the instructions to your MicroG installation.
 
 This is required for the app to work."</string>
     <string name="gms_core_dialog_open_website_text">Open website</string>
-    <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG GmsCore battery optimizations must be disabled to prevent issues.
+    <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG battery optimizations must be disabled to prevent issues.
 
 Disabling battery optimizations for MicroG will not negatively affect battery usage.
 

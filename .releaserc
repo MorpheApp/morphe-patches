@@ -15,18 +15,20 @@
       }
     ],
     "@semantic-release/release-notes-generator",
-    "@semantic-release/changelog",
+    [
+      "@MorpheApp/changelog", {
+        "releaseJson": {
+          "path": "patches-bundle.json",
+          "downloadUrlTemplate": "https://github.com/${owner}/${repo}/releases/download/v${version}/patches-${version}.mpp",
+          "signatureUrlTemplate": "https://github.com/${owner}/${repo}/releases/download/v${version}/patches-${version}.mpp.asc"
+        }
+      }
+    ],
     "gradle-semantic-release-plugin",
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./generate-patches-bundles.js ${nextRelease.version}"
-      }
-    ],
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "jq '.description=\"${nextRelease.notes}\"' patches-bundle.json > patches-bundle.json.tmp && mv patches-bundle.json.tmp patches-bundle.json"
+        "prepareCmd": "jq '.version=\"${nextRelease.version}\"' patches-list.json > patches-list.json.tmp && mv patches-list.json.tmp patches-list.json"
       }
     ],
     [

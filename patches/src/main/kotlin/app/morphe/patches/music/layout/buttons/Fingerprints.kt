@@ -29,7 +29,7 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
     ),
     custom = { method, classDef ->
         method.containsLiteralInstruction(historyMenuItem) &&
-            classDef.methods.count() == 5
+                (classDef.methods.count() == 5 || classDef.methods.count() == 4)
     }
 )
 
