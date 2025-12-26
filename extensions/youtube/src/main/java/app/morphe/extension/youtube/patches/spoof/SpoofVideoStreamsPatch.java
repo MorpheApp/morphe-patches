@@ -8,6 +8,7 @@ import static app.morphe.extension.shared.spoof.ClientType.VISIONOS;
 
 import java.util.List;
 
+import app.morphe.extension.shared.oauth2.OAuth2Helper;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.settings.Settings;
@@ -51,5 +52,7 @@ public class SpoofVideoStreamsPatch {
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
                 availableClients, client);
+
+        OAuth2Helper.updateAccessToken();
     }
 }

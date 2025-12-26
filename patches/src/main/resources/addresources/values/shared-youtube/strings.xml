@@ -45,6 +45,46 @@ If you are a YouTube Premium user, this setting may not be required"</string>
 Playback may not work"</string>
     <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Sign in to Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Click here to see how to sign in to Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_message">"Signing in to Android VR (YouTube VR) follows the guidelines provided by Google (Google account authorization - OAuth 2.0 for TV and Limited-Input Device Applications):
+
+1. Click 'Get activation code' to generate an activation code.
+2. Click 'Open website' to go to the verification page.
+3. Enter the activation code.
+4. Sign in when prompted. If you have multiple Google Accounts, select the account you use with YouTube. If you're already signed in, skip to the next step.
+5. Once signed in, return to Morphe and click 'Sign in to Android VR' again.
+6. Click 'Get authorization token' to get an authorization token.
+
+※ Click 'Reset' to remove an authentication token or activation code."</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_get_activation_code_text">Get activation code</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_get_authorization_token_text">Get authorization token</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset_text">Reset</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an aactivation code</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Signed in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication token saved.
+
+- Authentication token issued through this process can only be used in YouTube VR.
+- Authentication token unused for more than 6 months will be revoked by Google servers.
+- If you change your password, or deregister a device in your account settings, or uninstall the app, you will need to reissue the authentication token."</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Activation code</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code:
+%s
+
+1. Click 'Open website' to go to the verification page.
+2. Enter the activation code.
+3. Sign in when prompted. If you have multiple Google Accounts, select the account you use with YouTube. If you're already signed in, skip to the next step.
+4. Once signed in, return to Morphe and click 'Sign in to Android VR' again.
+5. Click 'Get authorization token' to get an authorization token."</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text">Open website</string>
+    <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
+    <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
+    <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
+    <string name="morphe_oauth2_toast_reset">Authentication token and activation code reset</string>
+    <string name="morphe_oauth2_toast_invalid">Invalid token, reset the cached token</string>
+
 
     <!-- misc.audio.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>

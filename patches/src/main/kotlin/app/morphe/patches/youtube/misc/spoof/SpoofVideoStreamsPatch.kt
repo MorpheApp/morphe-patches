@@ -61,6 +61,11 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         tag = "app.morphe.extension.youtube.settings.preference.SpoofStreamingDataSideEffectsPreference"
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1"),
+                    NonInteractivePreference(
+                        "morphe_spoof_video_streams_sign_in_android_vr_about",
+                        tag = "app.morphe.extension.youtube.settings.preference.SpoofStreamingDataSignInPreference",
+                        selectable = true,
+                    ),
                     SwitchPreference("morphe_spoof_streaming_data_stats_for_nerds"),
                 )
             )

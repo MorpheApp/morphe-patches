@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.oauth2.OAuth2Helper;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
@@ -237,6 +238,7 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
+                OAuth2Helper.updateAccessToken();
                 StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
