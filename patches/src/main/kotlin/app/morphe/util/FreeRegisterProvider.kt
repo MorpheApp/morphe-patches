@@ -137,12 +137,12 @@ class FreeRegisterProvider internal constructor(
     fun getAllocatedFreeRegisters(): List<Int> = allocatedFreeRegisters.toList()
 
     /**
-     * Returns all registers that are considered "in use" - both originally
-     * excluded registers and newly allocated registers.
+     * Returns all registers that are considered "in use" or unsafe to use. This includes the
+     * excluded registers originally passed in, all registers that are unsuitable to use
+     * (registers are read from by the original code), and all free registers previously provided
+     * by this class using [getFreeRegister].
      *
-     * @return List of all registers that should not be used,
-     *         with originally excluded registers first, followed by
-     *         newly allocated registers in allocation order
+     * @return List of all registers that are un-safe to use at this time.
      */
     fun getUsedAndUnAvailableRegisters(): List<Int> {
         val allRegisters = 0 until method.implementation!!.registerCount
@@ -289,8 +289,8 @@ private fun Method.findFreeRegisters(
         startIndex = startIndex,
         numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
         currentDepth = 0,
-        visitedIndices = mutableSetOf(),
-        registersToExclude = registersToExclude.toSet(),
+        foundFreeRegistersAtIndex = mutableMapOf(),
+        registersToExclude = registersToExclude,
         offsetArray = buildInstructionOffsetArray()
     )
 
@@ -320,17 +320,17 @@ private fun Method.findFreeRegisters(
  * @param startIndex Inclusive starting index.
  * @param numberOfFreeRegistersNeeded The minimum free registers to ensure will be returned.
  * @param currentDepth Current branching depth. Value of zero means no branching has been followed yet.
- * @param visitedIndices Set of instruction indices already visited to avoid infinite loops.
+ * @param foundFreeRegistersAtIndex Map of instruction index to list of free registers previously found.
  * @param registersToExclude Registers to exclude from consideration.
- * @param registersToExclude Map from instruction index to code offset.
+ * @param offsetArray Map from instruction index to code offset.
  * @return List of all free registers found.
  */
 private fun Method.findFreeRegistersInternal(
     startIndex: Int,
     numberOfFreeRegistersNeeded: Int,
     currentDepth: Int,
-    visitedIndices: MutableSet<Int>,
-    registersToExclude: Set<Int>,
+    foundFreeRegistersAtIndex: MutableMap<Int, Set<Int>?>,
+    registersToExclude: List<Int>,
     offsetArray: IntArray
 ): List<Int> {
     check(implementation != null) {
@@ -345,18 +345,16 @@ private fun Method.findFreeRegistersInternal(
 
     fun Collection<Int>.numberOf4BitRegisters() = this.count { it < 16 }
 
-    // Avoid infinite recursion.
-    if (visitedIndices.contains(startIndex)) {
-        return emptyList()
+    foundFreeRegistersAtIndex[startIndex]?.let {
+        // Recursive call to a branch index that has already been explored.
+        return (it - registersToExclude.toSet()).toList()
     }
 
     val usedRegisters = registersToExclude.toMutableSet()
     val freeRegisters = mutableSetOf<Int>()
+    foundFreeRegistersAtIndex[startIndex] = freeRegisters
 
     for (i in startIndex until instructions.count()) {
-        // Mark this index as visited.
-        visitedIndices.add(i)
-
         val instruction = getInstruction(i)
         val instructionRegisters = instruction.registersUsed
 
@@ -405,26 +403,26 @@ private fun Method.findFreeRegistersInternal(
             if (logFreeRegisterSearch) println("encountered unconditional branch index: $i opcode: " + instruction.opcode)
 
             // Continue searching from the goto index.
-            return findFreeRegistersInternal(
+            return (freeRegisters + findFreeRegistersInternal(
                 startIndex = getBranchTargetInstructionIndex(instruction, i, offsetArray),
                 numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
-                currentDepth = currentDepth,
-                visitedIndices = visitedIndices,
-                registersToExclude = registersToExclude,
+                currentDepth = currentDepth, // Same depth since it's a continuation of single path.
+                foundFreeRegistersAtIndex = foundFreeRegistersAtIndex,
+                registersToExclude = usedRegisters.toList(),
                 offsetArray = offsetArray
-            )
+            )).toList()
         }
 
         if (instruction.isConditionalBranchInstruction) {
             if (logFreeRegisterSearch) println("encountered conditional branch index: $i opcode: " + instruction.opcode)
-            val freeRegistersPlusExcluded = freeRegisters + registersToExclude
+            val usedRegistersList = usedRegisters.toList()
 
             val branchFreeRegisters = findFreeRegistersInternal(
                 startIndex = getBranchTargetInstructionIndex(instruction, i, offsetArray),
                 numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
                 currentDepth = currentDepth + 1,
-                visitedIndices = visitedIndices,
-                registersToExclude = freeRegistersPlusExcluded,
+                foundFreeRegistersAtIndex = foundFreeRegistersAtIndex,
+                registersToExclude = usedRegistersList,
                 offsetArray = offsetArray
             )
             if (logFreeRegisterSearch) println("branch registers: $branchFreeRegisters")
@@ -433,12 +431,11 @@ private fun Method.findFreeRegistersInternal(
                 startIndex = i + 1,
                 numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
                 currentDepth = currentDepth + 1,
-                visitedIndices = visitedIndices,
-                registersToExclude = freeRegistersPlusExcluded,
+                foundFreeRegistersAtIndex = foundFreeRegistersAtIndex,
+                registersToExclude = usedRegistersList,
                 offsetArray = offsetArray
             )
             if (logFreeRegisterSearch) println("fall thru registers: $fallThruFreeRegisters")
-
 
             return (freeRegisters + branchFreeRegisters.intersect(fallThruFreeRegisters.toSet())).toList()
         }
