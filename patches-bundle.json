@@ -1,7 +1,7 @@
 {
-  "created_at": "2025-12-26T13:39:02.827Z",
-  "description": "# [1.0.0-dev.28](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.27...v1.0.0-dev.28) (2025-12-26)\n\n\n### Bug Fixes\n\n* **YouTube - Hide ads:** Support `Hide fullscreen ads` on Android 13+ devices ([#17](https://github.com/MorpheApp/morphe-patches/issues/17)) ([e016b8b](https://github.com/MorpheApp/morphe-patches/commit/e016b8be4a631d6ccf123464f7fb5bd2062b7b99))\n* **YouTube - Remove viewer discretion dialog:** Not working on YouTube 20.14.43+ ([#19](https://github.com/MorpheApp/morphe-patches/issues/19)) ([d951f2e](https://github.com/MorpheApp/morphe-patches/commit/d951f2ef952f6e7858699c9e981e6a375a88ef55))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.28/patches-1.0.0-dev.28.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.28/patches-1.0.0-dev.28.mpp.asc",
-  "version": "1.0.0-dev.28"
+  "created_at": "2025-12-28T23:41:50.339Z",
+  "description": "# [1.0.0-dev.29](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.28...v1.0.0-dev.29) (2025-12-28)\n\n\n### Bug Fixes\n\n* Use more informative patch error if the same APK is patched twice ([9112491](https://github.com/MorpheApp/morphe-patches/commit/9112491a61f5a5a2c16ce56f5bdb838a367df7d7))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.29/patches-1.0.0-dev.29.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.0.0-dev.29/patches-1.0.0-dev.29.mpp.asc",
+  "version": "1.0.0-dev.29"
 }

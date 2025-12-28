@@ -1,3 +1,10 @@
+# [1.0.0-dev.29](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.28...v1.0.0-dev.29) (2025-12-28)
+
+
+### Bug Fixes
+
+* Use more informative patch error if the same APK is patched twice ([9112491](https://github.com/MorpheApp/morphe-patches/commit/9112491a61f5a5a2c16ce56f5bdb838a367df7d7))
+
 # [1.0.0-dev.28](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.27...v1.0.0-dev.28) (2025-12-26)
 
 
