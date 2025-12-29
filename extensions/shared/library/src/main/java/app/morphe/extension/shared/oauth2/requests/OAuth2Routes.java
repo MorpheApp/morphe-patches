@@ -16,7 +16,7 @@ final class OAuth2Routes {
             "com.google.android.apps.youtube.vr.oculus/1.47.48(Linux; U; Android 10; en_US; Quest Build/QQ3A.200805.001) gzip";
 
     /**
-     * TCP connection and HTTP read timeout
+     * TCP connection and HTTP read timeout.
      */
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 10 * 1000; // 10 Seconds.
 

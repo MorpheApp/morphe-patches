@@ -6,36 +6,35 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * OAuth2 activation code data
+ * OAuth2 activation code data.
  */
 public class ActivationCodeData {
     /**
-     * Used in requests for refresh token
+     * Used in requests for refresh token.
      */
     public final String deviceCode;
     /**
-     * Activation code
-     * (Similar to SMS verification code)
-     * User should enter this code in {@link #verificationUrl} and log in
+     * Activation code (Similar to SMS verification code).
+     * User should enter this code in {@link #verificationUrl} and log in.
      */
     public final String userCode;
     /**
-     * How long to cache activation code objects
-     * Typically, this value is '1800' (1800 seconds)
+     * How long to cache activation code objects.
+     * Typically, this value is '1800' (1800 seconds).
      */
     public final int expiresIn;
     /**
-     * Typically, this value is '5' (5 seconds)
-     * YouTube TV and YouTube VR send a request every 5 seconds to fetch a refresh token
+     * Typically, this value is '5' (5 seconds).
+     * YouTube TV and YouTube VR send a request every 5 seconds to fetch a refresh token.
      */
     public final int interval;
     /**
-     * Users enter their activation code here and log in
-     * Typically, this value is 'https://www.google.com/device'
+     * Users enter their activation code here and log in.
+     * Typically, this value is '<a href="https://www.google.com/device">...</a>'.
      */
     public final String verificationUrl;
     /**
-     * When this code was fetched
+     * When this code was fetched.
      */
     public final long fetchTime;
 

@@ -27,7 +27,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.oauth2.OAuth2Helper;
+import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
@@ -173,7 +173,7 @@ public class StreamingDataRequest {
                 if (value != null) {
                     if (key.equals(AUTHORIZATION_HEADER)) {
                         if (clientType.supportsOAuth2) {
-                            String authorization = OAuth2Helper.getAndUpdateAccessTokenIfNeeded();
+                            String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
                             if (authorization.isEmpty()) {
                                 // Access token is empty, the user has not signed in to VR.
                                 // YouTube/YouTube Music access tokens cannot be used with YouTube VR.

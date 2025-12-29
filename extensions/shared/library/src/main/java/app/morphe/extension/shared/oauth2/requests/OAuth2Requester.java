@@ -6,6 +6,7 @@ import static app.morphe.extension.shared.oauth2.requests.OAuth2Routes.getUrlCon
 
 import android.net.Uri;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import org.json.JSONObject;
@@ -19,7 +20,6 @@ import java.util.UUID;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.oauth2.OAuth2Helper;
 import app.morphe.extension.shared.oauth2.object.AccessTokenData;
 import app.morphe.extension.shared.oauth2.object.ActivationCodeData;
 import app.morphe.extension.shared.requests.Requester;
@@ -27,30 +27,30 @@ import app.morphe.extension.shared.settings.BaseSettings;
 
 public class OAuth2Requester {
     /**
-     * Response code of a successful API call
+     * Response code of a successful API call.
      */
     private static final int HTTP_STATUS_CODE_SUCCESS = 200;
 
     /**
-     * Response code of a failed API call
+     * Response code of a failed API call.
      */
     private static final int HTTP_STATUS_CODE_FAILED = 400;
 
     /**
-     * The client id of the Android YouTube VR client
-     * This value is unique and does not change
+     * The client id of the Android YouTube VR client.
+     * This value is unique and does not change.
      */
     private static final String CLIENT_ID =
             "652469312169-4lvs9bnhr9lpns9v451j5oivd81vjvu1.apps.googleusercontent.com";
 
     /**
-     * The client secret of the Android YouTube VR client
-     * This value is unique and does not change
+     * The client secret of the Android YouTube VR client.
+     * This value is unique and does not change.
      */
     private static final String CLIENT_SECRET = "3fTWrBJI5Uojm1TK7_iJCW5Z";
 
     /**
-     * Device model enum name for the Android YouTube VR app
+     * Device model enum name for the Android YouTube VR app.
      * <p>
      * Available values are [UNKNOWN], [QUEST1], [QUEST2], [QUEST_PRO],
      * [MOOHAN], [PICO4], [QUEST3], [QUEST3S], [PICO4_ULTRA], and [ANDROID_XR].
@@ -58,58 +58,132 @@ public class OAuth2Requester {
     private static final String DEVICE_MODEL = "QUEST1";
 
     /**
-     * Access token scope
-     * Permissions are granted only for YouTube
+     * Access token scope.
+     * Permissions are granted only for YouTube.
      */
     private static final String OAUTH2_SCOPE =
             "https://www.googleapis.com/auth/youtube";
 
     /**
-     * Used when issuing an access token without a refresh token
-     * An unexpired device code is required
+     * Used when issuing an access token without a refresh token.
+     * An unexpired device code is required.
      */
     private static final String GRANT_TYPE_DEFAULT =
             "http://oauth.net/grant_type/device/1.0";
 
     /**
-     * Used when issuing an access token with a refresh token
+     * Used when issuing an access token with a refresh token.
      */
     private static final String GRANT_TYPE_REFRESH = "refresh_token";
 
     @Nullable
-    private static volatile ActivationCodeData lastFetchedActivationCodeData;
+    @GuardedBy("OAuth2Requester.class")
+    private static ActivationCodeData lastFetchedActivationCodeData;
 
     @Nullable
-    private static volatile AccessTokenData lastFetchedAccessTokenData;
+    @GuardedBy("OAuth2Requester.class")
+    private static AccessTokenData lastFetchedAccessTokenData;
+
+    /**
+     * The value of 'Authorization' in the header.
+     * Bearer token is used on mobile devices.
+     */
+    @GuardedBy("OAuth2Requester.class")
+    private static String authorization = "";
 
     private OAuth2Requester() {
+    }
+
+    public static void setAuthorization(AccessTokenData accessTokenData) {
+        synchronized (OAuth2Requester.class) {
+            // Bearer y29.xxx...
+            authorization = accessTokenData.tokenType + " " + accessTokenData.accessToken;
+        }
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
         if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastShort(toastMessage);
         }
-        if (ex != null) {
-            Logger.printInfo(() -> toastMessage, ex);
+        Logger.printInfo(() -> toastMessage, ex);
+    }
+
+    private static void clearAll(boolean clearedByUser) {
+        if (!clearedByUser) {
+            Utils.showToastShort(str("morphe_oauth2_toast_invalid"));
         }
-    }
 
-    public static void clearAll() {
-        lastFetchedActivationCodeData = null;
-        lastFetchedAccessTokenData = null;
-    }
+        synchronized (OAuth2Requester.class) {
+            BaseSettings.OAUTH2_REFRESH_TOKEN.resetToDefault();
+            lastFetchedActivationCodeData = null;
+            lastFetchedAccessTokenData = null;
+            authorization = "";
+        }
 
-    public static boolean isActivationCodeDataAvailable() {
-        return isActivationCodeDataAvailable(lastFetchedActivationCodeData);
+        Utils.showToastShort(str("morphe_oauth2_toast_reset"));
     }
 
     private static boolean isActivationCodeDataAvailable(ActivationCodeData activationCodeData) {
         return activationCodeData != null && !activationCodeData.isExpired();
     }
 
-    public static boolean isAccessTokenDataAvailable() {
-        AccessTokenData accessTokenDataData = lastFetchedAccessTokenData;
-        return accessTokenDataData != null && !accessTokenDataData.isExpired();
+    public static boolean isActivationCodeDataAvailable() {
+        synchronized (OAuth2Requester.class) {
+            return isActivationCodeDataAvailable(lastFetchedActivationCodeData);
+        }
+    }
+
+    private static boolean isAccessTokenDataAvailable() {
+        synchronized (OAuth2Requester.class) {
+            AccessTokenData accessTokenDataData = lastFetchedAccessTokenData;
+            return accessTokenDataData != null && !accessTokenDataData.isExpired();
+        }
+    }
+
+    /**
+     * Check the validity of the access token before the video starts.
+     * Blocking call, and must be made off the main thread.
+     */
+    public static synchronized String getAndUpdateAccessTokenIfNeeded() {
+        Utils.verifyOffMainThread();
+
+        synchronized (OAuth2Requester.class) {
+            String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
+
+            // Refresh token is empty, the user has not signed in to VR.
+            if (refreshToken.isEmpty()) {
+                return authorization;
+            }
+
+            // Access token has not expired, do nothing.
+            if (isAccessTokenDataAvailable()) {
+                return authorization;
+            }
+
+            // Access token has expired, so reissue it.
+            updateAccessTokenData(refreshToken);
+
+            return authorization;
+        }
+    }
+
+    /**
+     * Revoke token using OAuth2 API.
+     * Safe to call from any thread.
+     */
+    public static void revokeToken() {
+        Utils.runOnBackgroundThread(() -> {
+            synchronized (OAuth2Requester.class) {
+                String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
+
+                if (!refreshToken.isEmpty()) {
+                    if (!OAuth2Requester.revokeRefreshToken(refreshToken)) {
+                        Logger.printException(() -> "Failed to revoke refresh token");
+                    }
+                }
+                clearAll(true);
+            }
+        });
     }
 
     @Nullable
@@ -122,7 +196,7 @@ public class OAuth2Requester {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("client_id", CLIENT_ID);
             jsonObject.put("scope", OAUTH2_SCOPE);
-            // Android YouTube VR app also uses random UUIDs
+            // Android YouTube VR app also uses random UUIDs.
             jsonObject.put("device_id", UUID.randomUUID().toString());
             jsonObject.put("device_model", DEVICE_MODEL);
 
@@ -130,16 +204,17 @@ public class OAuth2Requester {
             connection.setFixedLengthStreamingMode(body.length);
             connection.getOutputStream().write(body);
 
-            int responseCode = connection.getResponseCode();
+            final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
-                ActivationCodeData fetchedActivationCodeData = new ActivationCodeData(Requester.parseJSONObjectAndDisconnect(connection));
-                Logger.printDebug(() -> "deviceCode: " + fetchedActivationCodeData);
-                lastFetchedActivationCodeData = fetchedActivationCodeData;
-                return fetchedActivationCodeData;
-            } else {
-                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
+                synchronized (OAuth2Requester.class) {
+                    ActivationCodeData fetchedActivationCodeData = new ActivationCodeData(Requester.parseJSONObjectAndDisconnect(connection));
+                    Logger.printDebug(() -> "deviceCode: " + fetchedActivationCodeData);
+                    lastFetchedActivationCodeData = fetchedActivationCodeData;
+                    return fetchedActivationCodeData;
+                }
             }
+            handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
         } catch (SocketTimeoutException ex) {
             handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
         } catch (IOException ex) {
@@ -154,48 +229,48 @@ public class OAuth2Requester {
     public static AccessTokenData getRefreshTokenData() {
         Utils.verifyOffMainThread();
 
-        try {
-            ActivationCodeData activationCodeData = lastFetchedActivationCodeData;
-            if (!isActivationCodeDataAvailable(activationCodeData)) {
-                Logger.printDebug(() -> "Activation code has expired");
-                clearAll();
-                return null;
-            }
+        synchronized (OAuth2Requester.class) {
+            try {
+                ActivationCodeData activationCodeData = lastFetchedActivationCodeData;
+                if (!isActivationCodeDataAvailable(activationCodeData)) {
+                    Logger.printDebug(() -> "Activation code has expired");
+                    clearAll(false);
+                    return null;
+                }
 
-            HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
+                HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("client_id", CLIENT_ID);
-            jsonObject.put("client_secret", CLIENT_SECRET);
-            jsonObject.put("code", activationCodeData.deviceCode);
-            jsonObject.put("grant_type", GRANT_TYPE_DEFAULT);
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("client_id", CLIENT_ID);
+                jsonObject.put("client_secret", CLIENT_SECRET);
+                jsonObject.put("code", activationCodeData.deviceCode);
+                jsonObject.put("grant_type", GRANT_TYPE_DEFAULT);
 
-            byte[] body = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
-            connection.setFixedLengthStreamingMode(body.length);
-            connection.getOutputStream().write(body);
+                byte[] body = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
+                connection.setFixedLengthStreamingMode(body.length);
+                connection.getOutputStream().write(body);
 
-            int responseCode = connection.getResponseCode();
+                final int responseCode = connection.getResponseCode();
 
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
-                AccessTokenData fetchedAccessTokenData = new AccessTokenData(Requester.parseJSONObjectAndDisconnect(connection));
-                Logger.printDebug(() -> "accessToken: " + fetchedAccessTokenData);
-                lastFetchedAccessTokenData = fetchedAccessTokenData;
-                return fetchedAccessTokenData;
-            } else {
+                if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+                    AccessTokenData fetchedAccessTokenData = new AccessTokenData(Requester.parseJSONObjectAndDisconnect(connection));
+                    Logger.printDebug(() -> "accessToken: " + fetchedAccessTokenData);
+                    lastFetchedAccessTokenData = fetchedAccessTokenData;
+                    return fetchedAccessTokenData;
+                }
                 handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
+            } catch (SocketTimeoutException ex) {
+                handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
+            } catch (IOException ex) {
+                handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
+            } catch (Exception ex) {
+                Logger.printException(() -> "getRefreshTokenData failure", ex);
             }
-        } catch (SocketTimeoutException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
-        } catch (IOException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
-        } catch (Exception ex) {
-            Logger.printException(() -> "getRefreshTokenData failure", ex);
+            return null;
         }
-        return null;
     }
 
-    @Nullable
-    public static AccessTokenData getAccessTokenData(String refreshToken) {
+    private static void updateAccessTokenData(String refreshToken) {
         Utils.verifyOffMainThread();
 
         try {
@@ -211,14 +286,17 @@ public class OAuth2Requester {
             connection.setFixedLengthStreamingMode(body.length);
             connection.getOutputStream().write(body);
 
-            int responseCode = connection.getResponseCode();
+            final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
-                AccessTokenData fetchedAccessTokenData = new AccessTokenData(refreshToken,
-                        Requester.parseJSONObjectAndDisconnect(connection));
-                Logger.printDebug(() -> "new accessToken: " + fetchedAccessTokenData);
-                lastFetchedAccessTokenData = fetchedAccessTokenData;
-                return fetchedAccessTokenData;
+                synchronized (OAuth2Requester.class) {
+                    AccessTokenData fetchedAccessTokenData = new AccessTokenData(refreshToken,
+                            Requester.parseJSONObjectAndDisconnect(connection));
+                    Logger.printDebug(() -> "new accessToken: " + fetchedAccessTokenData);
+
+                    lastFetchedAccessTokenData = fetchedAccessTokenData;
+                    setAuthorization(fetchedAccessTokenData);
+                }
             } else if (responseCode == HTTP_STATUS_CODE_FAILED) {
                 // Tokens are revoked for the following reasons:
                 // 1. The user changes their password
@@ -228,21 +306,21 @@ public class OAuth2Requester {
                 // In this case, a response code of 400 is returned
                 // Since the refresh token is no longer valid, all locally stored tokens are removed
                 Logger.printDebug(() -> "Invalid token, clear all");
-                OAuth2Helper.clearAll(false);
+                clearAll(false);
             } else {
                 handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
+                // TODO: Clear auth token?
             }
         } catch (SocketTimeoutException ex) {
             handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
         } catch (IOException ex) {
             handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
         } catch (Exception ex) {
-            Logger.printException(() -> "getAccessTokenData failure", ex);
+            Logger.printException(() -> "updateAccessTokenData failure", ex);
         }
-        return null;
     }
 
-    public static boolean revokeRefreshToken(String refreshToken) {
+    private static boolean revokeRefreshToken(String refreshToken) {
         Utils.verifyOffMainThread();
 
         try {
@@ -256,13 +334,12 @@ public class OAuth2Requester {
             connection.setFixedLengthStreamingMode(body.length);
             connection.getOutputStream().write(body);
 
-            int responseCode = connection.getResponseCode();
+            final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
                 return true;
-            } else {
-                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
             }
+            handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
         } catch (SocketTimeoutException ex) {
             handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
         } catch (IOException ex) {

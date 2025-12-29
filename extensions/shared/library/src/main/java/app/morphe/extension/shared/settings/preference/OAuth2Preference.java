@@ -7,13 +7,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.oauth2.OAuth2Helper;
 import app.morphe.extension.shared.oauth2.object.AccessTokenData;
 import app.morphe.extension.shared.oauth2.object.ActivationCodeData;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
@@ -72,7 +72,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
                     // Neutral button text.
                     resetButtonText,
                     // Neutral button action.
-                    OAuth2Helper::revokeToken,
+                    OAuth2Requester::revokeToken,
                     // Dismiss dialog when onNeutralClick.
                     true
             );
@@ -94,7 +94,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
                     // Neutral button text.
                     resetButtonText,
                     // Neutral button action.
-                    OAuth2Helper::revokeToken,
+                    OAuth2Requester::revokeToken,
                     // Dismiss dialog when onNeutralClick.
                     true
             );
@@ -158,7 +158,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
                     String refreshToken = accessTokenData.refreshToken;
                     if (refreshToken != null && !refreshToken.isEmpty()) {
                         BaseSettings.OAUTH2_REFRESH_TOKEN.save(refreshToken);
-                        OAuth2Helper.setAuthorization(accessTokenData);
+                        OAuth2Requester.setAuthorization(accessTokenData);
 
                         Context context = getContext();
                         String dialogTitle =
@@ -184,7 +184,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
                                 // Neutral button text.
                                 null,
                                 // Neutral button action.
-                                OAuth2Helper::revokeToken,
+                                OAuth2Requester::revokeToken,
                                 // Dismiss dialog when onNeutralClick.
                                 true
                         );
