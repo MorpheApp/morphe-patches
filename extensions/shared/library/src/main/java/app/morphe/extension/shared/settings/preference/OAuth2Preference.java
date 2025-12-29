@@ -3,24 +3,63 @@ package app.morphe.extension.shared.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.oauth2.requests.OAuth2Requester.isActivationCodeDataAvailable;
 
+import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.oauth2.object.AccessTokenData;
 import app.morphe.extension.shared.oauth2.object.ActivationCodeData;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings({"FieldCanBeLocal", "deprecation"})
 public class OAuth2Preference extends Preference implements Preference.OnPreferenceClickListener {
+
+    private final Application.ActivityLifecycleCallbacks ACTIVITY_LIFECYCLE_CALLBACKS
+            = new Application.ActivityLifecycleCallbacks() {
+
+        public void onActivityResumed(@NonNull Activity activity) {
+            Logger.printDebug(() -> "onActivityResumed");
+            if (isActivationCodeDataAvailable()) {
+                unregisterApplicationOnResumeCallback();
+                setRefreshToken();
+            }
+        }
+
+        public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
+        public void onActivityStarted(@NonNull Activity a) {}
+        public void onActivityPaused(@NonNull Activity a) {}
+        public void onActivityStopped(@NonNull Activity a) {}
+        public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
+        public void onActivityDestroyed(@NonNull Activity a) {}
+    };
+
+    private void registerApplicationOnResumeCallback() {
+        SpoofVideoStreamsPatch.getMainActivity().getApplication().registerActivityLifecycleCallbacks(
+                ACTIVITY_LIFECYCLE_CALLBACKS
+        );
+    }
+
+    private void unregisterApplicationOnResumeCallback() {
+        SpoofVideoStreamsPatch.getMainActivity().getApplication().unregisterActivityLifecycleCallbacks(
+                ACTIVITY_LIFECYCLE_CALLBACKS
+        );
+    }
 
     protected void updateSummaryText(boolean currentlySignedIn) {
         String summaryKey = currentlySignedIn
@@ -68,6 +107,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
         } else {
             okButtonStringKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_get_activation_code_text";
             okButtonRunnable = this::showActivationCodeDialog;
+            registerApplicationOnResumeCallback();
         }
 
         CustomDialog.create(
