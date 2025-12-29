@@ -7,7 +7,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -20,11 +19,19 @@ import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-@SuppressWarnings({"FieldCanBeLocal", "deprecation", "unused"})
+@SuppressWarnings({"FieldCanBeLocal", "deprecation"})
 public class OAuth2Preference extends Preference implements Preference.OnPreferenceClickListener {
+
+    protected void updateSummaryText(boolean currentlySignedIn) {
+        String summaryKey = currentlySignedIn
+                ? "morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in"
+                : "morphe_spoof_video_streams_sign_in_android_vr_about_summary";
+        setSummary(str(summaryKey));
+    }
 
     private void init() {
         setOnPreferenceClickListener(this);
+        updateSummaryText(!BaseSettings.OAUTH2_REFRESH_TOKEN.get().isEmpty());
     }
 
     public OAuth2Preference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -50,56 +57,44 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
     @Override
     public boolean onPreferenceClick(Preference preference) {
         Context context = getContext();
-        Pair<Dialog, LinearLayout> dialogPair;
         String dialogTitle = str("morphe_spoof_video_streams_sign_in_android_vr_about_title");
         String dialogMessage = str("morphe_spoof_video_streams_sign_in_android_vr_dialog_message");
         String resetButtonText = str("morphe_spoof_video_streams_sign_in_android_vr_dialog_reset_text");
+        String okButtonStringKey;
+        Runnable okButtonRunnable;
         if (isActivationCodeDataAvailable()) {
-            dialogPair = CustomDialog.create(
-                    context,
-                    // Title.
-                    dialogTitle,
-                    // Message.
-                    dialogMessage,
-                    // No EditText.
-                    null,
-                    // OK button text.
-                    str("morphe_spoof_video_streams_sign_in_android_vr_dialog_get_authorization_token_text"),
-                    // OK button action.
-                    this::setRefreshToken,
-                    // Cancel button action.
-                    null,
-                    // Neutral button text.
-                    resetButtonText,
-                    // Neutral button action.
-                    OAuth2Requester::revokeToken,
-                    // Dismiss dialog when onNeutralClick.
-                    true
-            );
+            okButtonStringKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_get_authorization_token_text";
+            okButtonRunnable = this::setRefreshToken;
         } else {
-            dialogPair = CustomDialog.create(
-                    context,
-                    // Title.
-                    dialogTitle,
-                    // Message.
-                    dialogMessage,
-                    // No EditText.
-                    null,
-                    // OK button text.
-                    str("morphe_spoof_video_streams_sign_in_android_vr_dialog_get_activation_code_text"),
-                    // OK button action.
-                    this::showActivationCodeDialog,
-                    // Cancel button action.
-                    null,
-                    // Neutral button text.
-                    resetButtonText,
-                    // Neutral button action.
-                    OAuth2Requester::revokeToken,
-                    // Dismiss dialog when onNeutralClick.
-                    true
-            );
+            okButtonStringKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_get_activation_code_text";
+            okButtonRunnable = this::showActivationCodeDialog;
         }
-        dialogPair.first.show();
+
+        CustomDialog.create(
+                context,
+                // Title.
+                dialogTitle,
+                // Message.
+                dialogMessage,
+                // No EditText.
+                null,
+                // OK button text.
+                str(okButtonStringKey),
+                // OK button action.
+                okButtonRunnable,
+                // Cancel button action.
+                null,
+                // Neutral button text.
+                resetButtonText,
+                // Neutral button action.
+                () -> {
+                    OAuth2Requester.revokeToken();
+                    updateSummaryText(false);
+                },
+                // Dismiss dialog when onNeutralClick.
+                true
+        ).first.show();
+
         return true;
     }
 
@@ -159,6 +154,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
                     if (refreshToken != null && !refreshToken.isEmpty()) {
                         BaseSettings.OAUTH2_REFRESH_TOKEN.save(refreshToken);
                         OAuth2Requester.setAuthorization(accessTokenData);
+                        updateSummaryText(true);
 
                         Context context = getContext();
                         String dialogTitle =
