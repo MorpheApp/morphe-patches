@@ -294,7 +294,9 @@ public class OAuth2Requester {
                 synchronized (OAuth2Requester.class) {
                     AccessTokenData fetchedAccessTokenData = new AccessTokenData(refreshToken,
                             Requester.parseJSONObjectAndDisconnect(connection));
-                    Logger.printDebug(() -> "new accessToken: " + fetchedAccessTokenData);
+                    // Access token expires after 1 hour. Value is mostly safe to potentially
+                    // disclose in a log file, but it's still not logged.
+                    Logger.printDebug(() -> "New accessToken received");
 
                     lastFetchedAccessTokenData = fetchedAccessTokenData;
                     setAuthorization(fetchedAccessTokenData);
