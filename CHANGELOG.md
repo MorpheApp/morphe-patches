@@ -1,3 +1,37 @@
+# [1.0.0-dev.30](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.29...v1.0.0-dev.30) (2025-12-29)
+
+
+### Bug Fixes
+
+* **YouTube - Loop video:** Fix looping button state ([#22](https://github.com/MorpheApp/morphe-patches/issues/22)) ([d02c00e](https://github.com/MorpheApp/morphe-patches/commit/d02c00e325d967c48a9153269d52b9e94ae68f24))
+
+# [1.0.0-dev.29](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.28...v1.0.0-dev.29) (2025-12-28)
+
+
+### Bug Fixes
+
+* Use more informative patch error if the same APK is patched twice ([9112491](https://github.com/MorpheApp/morphe-patches/commit/9112491a61f5a5a2c16ce56f5bdb838a367df7d7))
+
+# [1.0.0-dev.28](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.27...v1.0.0-dev.28) (2025-12-26)
+
+
+### Bug Fixes
+
+* **YouTube - Hide ads:** Support `Hide fullscreen ads` on Android 13+ devices ([#17](https://github.com/MorpheApp/morphe-patches/issues/17)) ([e016b8b](https://github.com/MorpheApp/morphe-patches/commit/e016b8be4a631d6ccf123464f7fb5bd2062b7b99))
+* **YouTube - Remove viewer discretion dialog:** Not working on YouTube 20.14.43+ ([#19](https://github.com/MorpheApp/morphe-patches/issues/19)) ([d951f2e](https://github.com/MorpheApp/morphe-patches/commit/d951f2ef952f6e7858699c9e981e6a375a88ef55))
+
+# [1.0.0-dev.27](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.26...v1.0.0-dev.27) (2025-12-26)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Fix side effect of Disable translucent status bar ([48bf054](https://github.com/MorpheApp/morphe-patches/commit/48bf0542c1417fc374bd88fee12b7af1b78eabe5))
+
+
+### Features
+
+* Add new About dialog style ([#21](https://github.com/MorpheApp/morphe-patches/issues/21)) ([69ee718](https://github.com/MorpheApp/morphe-patches/commit/69ee718af2462f9fffd0289d38dec1b94fa9a9db))
+
 # [1.0.0-dev.26](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.25...v1.0.0-dev.26) (2025-12-26)
 
 

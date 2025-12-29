@@ -21,6 +21,8 @@ Second \"item\" text"</string>
     <string name="morphe_custom_branding_name_entry_4" translatable="false">Music</string>
 
     <!-- misc.settings.settingsPatch -->
+
+    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
     <string name="morphe_settings_music_screen_0_about_title">About</string>
     <string name="morphe_settings_music_screen_1_ads_title">Ads</string>
     <string name="morphe_settings_music_screen_2_general_title">General</string>

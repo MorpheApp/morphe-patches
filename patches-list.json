@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-dev.26",
+  "version": "1.0.0-dev.30",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -765,7 +765,6 @@
       "description": "Adds options to remove general ads.",
       "use": true,
       "dependencies": [
-        "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
         "BytecodePatch"

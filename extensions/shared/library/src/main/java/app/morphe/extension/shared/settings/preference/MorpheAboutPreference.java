@@ -34,7 +34,10 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -59,69 +62,216 @@ public class MorpheAboutPreference extends Preference {
      *
      * @return A localized string to display for the key.
      */
-    protected String getString(String key, Object ... args) {
+    protected String getString(String key, Object... args) {
         return str(key, args);
     }
 
-    private String createDialogHtml(WebLink[] aboutLinks) {
+    private String createDialogHtml(WebLink[] aboutLinks, @Nullable String currentVersion) {
         final boolean isNetworkConnected = Utils.isNetworkConnected();
 
-        StringBuilder builder = new StringBuilder();
-        builder.append("<html>");
-        builder.append("<body style=\"text-align: center; padding: 10px;\">");
-
+        // Get theme colors.
         String foregroundColorHex = Utils.getColorHexString(Utils.getAppForegroundColor());
         String backgroundColorHex = Utils.getColorHexString(Utils.getDialogBackgroundColor());
-        // Apply light/dark mode colors.
-        builder.append(String.format(
-                "<style> body { background-color: %s; color: %s; } a { color: %s; } </style>",
-                backgroundColorHex, foregroundColorHex, foregroundColorHex));
 
+        // Morphe brand colors from logo.
+        String morpheBlue = "#1E5AA8";
+        String morpheTeal = "#00AFAE";
+
+        StringBuilder html = new StringBuilder(String.format("""
+                         <html>
+                         <head>
+                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                         </head>
+                         <body>
+                         <style>
+                             * {
+                                 margin: 0;
+                                 padding: 0;
+                                 box-sizing: border-box;
+                             }
+                             body {
+                                 background: %s;
+                                 color: %s;
+                                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                                 padding: 24px;
+                                 text-align: center;
+                             }
+                             .logo-container {
+                                 margin: 0 auto 24px;
+                                 width: 120px;
+                                 height: 120px;
+                                 border-radius: 28px;
+                                 background: linear-gradient(135deg, %s 0%%, %s 100%%);
+                                 padding: 3px;
+                                 display: inline-block;
+                                 box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);
+                             }
+                             .logo-inner {
+                                 width: 100%%;
+                                 height: 100%%;
+                                 border-radius: 26px;
+                                 background: %s;
+                                 display: flex;
+                                 align-items: center;
+                                 justify-content: center;
+                                 overflow: hidden;
+                                 padding: 0px;
+                             }
+                             .logo-bg {
+                                 width: 100%%;
+                                 height: 100%%;
+                                 border-radius: 24px;
+                                 background: #EEEEEE;
+                                 display: flex;
+                                 align-items: center;
+                                 justify-content: center;
+                                 padding: 12px;
+                             }
+                             img {
+                                 width: 100%%;
+                                 height: 100%%;
+                                 object-fit: contain;
+                             }
+                             p {
+                                 font-size: 14px;
+                                 line-height: 1.6;
+                                 margin-bottom: 16px;
+                                 opacity: 0.8;
+                             }
+                             .dev-note {
+                                 background: rgba(30, 90, 168, 0.08);
+                                 border: 1px solid rgba(30, 90, 168, 0.2);
+                                 border-radius: 12px;
+                                 padding: 12px 16px;
+                                 margin: 16px 0;
+                             }
+                             .dev-note h3 {
+                                 font-size: 16px;
+                                 font-weight: 600;
+                                 margin-bottom: 6px;
+                                 opacity: 0.9;
+                             }
+                             .dev-note p {
+                                 margin: 0;
+                                 font-size: 13px;
+                                 opacity: 0.8;
+                             }
+                             .links-section {
+                                 margin-top: 32px;
+                             }
+                             h2 {
+                                 font-size: 18px;
+                                 font-weight: 600;
+                                 margin-bottom: 16px;
+                                 opacity: 0.9;
+                             }
+                             .link-button {
+                                 display: block;
+                                 text-decoration: none;
+                                 color: %s;
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%%, rgba(0, 175, 174, 0.08) 100%%);
+                                 border: 1px solid rgba(30, 90, 168, 0.2);
+                                 border-radius: 12px;
+                                 padding: 14px 20px;
+                                 margin-bottom: 10px;
+                                 font-size: 15px;
+                                 font-weight: 500;
+                                 transition: all 0.2s ease;
+                                 position: relative;
+                                 overflow: hidden;
+                                 -webkit-tap-highlight-color: transparent;
+                                 -webkit-touch-callout: none;
+                                 -webkit-user-select: none;
+                                 user-select: none;
+                             }
+                             .link-button::after {
+                                 content: '';
+                                 position: absolute;
+                                 top: 50%%;
+                                 left: 50%%;
+                                 width: 0;
+                                 height: 0;
+                                 border-radius: 50%%;
+                                 background: rgba(30, 90, 168, 0.3);
+                                 transform: translate(-50%%, -50%%);
+                                 transition: width 0.3s, height 0.3s;
+                                 pointer-events: none;
+                             }
+                             .link-button:active {
+                                 transform: scale(0.98);
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%%, rgba(0, 175, 174, 0.15) 100%%);
+                                 border-color: rgba(30, 90, 168, 0.4);
+                                 outline: none;
+                             }
+                             .link-button:active::after {
+                                 width: 300px;
+                                 height: 300px;
+                             }
+                             .link-button:focus {
+                                 outline: none;
+                             }
+                         </style>
+                        """, backgroundColorHex, foregroundColorHex,
+                morpheBlue, morpheTeal,
+                backgroundColorHex,
+                morpheBlue, morpheTeal,
+                foregroundColorHex
+        ));
+
+        // Logo with Morphe gradient border.
         if (isNetworkConnected) {
-            builder.append("<img style=\"width: 100px; height: 100px;\" "
-                    // Hide the image if it does not load.
-                    + "onerror=\"this.style.display='none';\" "
-                    + "src=\"").append(AboutLinksRoutes.aboutLogoUrl).append("\" />");
+            html.append(String.format("""
+                    <div class="logo-container">
+                        <div class="logo-inner">
+                            <div class="logo-bg">
+                                <img src="%s" onerror="this.parentElement.parentElement.parentElement.style.display='none';" />
+                            </div>
+                        </div>
+                    </div>
+                    """, AboutRoutes.aboutLogoUrl));
         }
 
-        String patchesVersion = Utils.getPatchesReleaseVersion();
+        String appPatchesVersion = Utils.getPatchesReleaseVersion();
 
-        // Add the title.
-        builder.append("<h1>")
-                .append("Morphe")
-                .append("</h1>");
+        // Description.
+        html.append("<p>").append(
+                useNonBreakingHyphens(currentVersion == null || appPatchesVersion.equalsIgnoreCase(currentVersion)
+                        ? getString("morphe_settings_about_links_body_version_current", appPatchesVersion)
+                        : getString("morphe_settings_about_links_body_version_outdated", appPatchesVersion, currentVersion)
+                )
+        ).append("</p>");
 
-        builder.append("<p>")
-                // Replace hyphens with non breaking dashes so the version number does not break lines.
-                .append(useNonBreakingHyphens(getString("morphe_settings_about_links_body", patchesVersion)))
-                .append("</p>");
-
-        // Add a disclaimer if using a dev release.
-        if (patchesVersion.contains("dev")) {
-            builder.append("<h3>")
-                    // English text 'Pre-release' can break lines.
-                    .append(useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")))
-                    .append("</h3>");
-
-            builder.append("<p>")
-                    .append(getString("morphe_settings_about_links_dev_body"))
-                    .append("</p>");
+        // Dev note banner.
+        if (Utils.isPreReleasePatches()) {
+            html.append(String.format("""
+                            <div class="dev-note">
+                                <h3>%s</h3>
+                                <p>%s</p>
+                            </div>
+                            """, useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")),
+                    getString("morphe_settings_about_links_dev_body")
+            ));
         }
 
-        builder.append("<h2 style=\"margin-top: 30px;\">")
-                .append(getString("morphe_settings_about_links_header"))
-                .append("</h2>");
+        // Links section.
+        html.append(String.format("""
+                <div class="links-section">
+                    <h2>%s</h2>
+                """, getString("morphe_settings_about_links_header")));
 
-        builder.append("<div>");
+        // Link buttons.
         for (WebLink link : aboutLinks) {
-            builder.append("<div style=\"margin-bottom: 20px;\">");
-            builder.append(String.format("<a href=\"%s\">%s</a>", link.url, link.name));
-            builder.append("</div>");
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
+                    .append(link.name).append("</a>");
         }
-        builder.append("</div>");
 
-        builder.append("</body></html>");
-        return builder.toString();
+        html.append("""
+                </div>
+                </body>
+                </html>
+                """);
+
+        return html.toString();
     }
 
     {
@@ -129,7 +279,7 @@ public class MorpheAboutPreference extends Preference {
             Context context = pref.getContext();
 
             // Show a progress spinner if the social links are not fetched yet.
-            if (!AboutLinksRoutes.hasFetchedLinks() && Utils.isNetworkConnected()) {
+            if (Utils.isNetworkConnected() && !AboutRoutes.hasFetchedLinks() && !AboutRoutes.hasFetchedPatchersVersion()) {
                 // Show a progress spinner, but only if the api fetch takes more than a half a second.
                 final long delayToShowProgressSpinner = 500;
                 ProgressDialog progress = new ProgressDialog(getContext());
@@ -154,8 +304,9 @@ public class MorpheAboutPreference extends Preference {
                                          @Nullable Handler handler,
                                          Runnable showDialogRunnable,
                                          @Nullable ProgressDialog progress) {
-        WebLink[] links = AboutLinksRoutes.fetchAboutLinks();
-        String htmlDialog = createDialogHtml(links);
+        WebLink[] links = AboutRoutes.fetchAboutLinks();
+        String currentVersion = AboutRoutes.getLatestPatchesVersion();
+        String htmlDialog = createDialogHtml(links, currentVersion);
 
         // Enable to randomly force a delay to debug the spinner logic.
         final boolean debugSpinnerDelayLogic = false;
@@ -268,8 +419,20 @@ class WebViewDialog extends Dialog {
 }
 
 class WebLink {
+
+    /**
+     * Localized name replacements for links.
+     */
+    private static final Map<String, String> webLinkNameReplacements = new HashMap<>() {
+        {
+            put("website", "morphe_settings_about_links_website");
+            put("donate", "morphe_settings_about_links_donate");
+            put("translations", "morphe_settings_about_links_translations");
+        }
+    };
+
     final boolean preferred;
-    String name;
+    final String name;
     final String url;
 
     WebLink(JSONObject json) throws JSONException {
@@ -281,8 +444,9 @@ class WebLink {
 
     WebLink(boolean preferred, String name, String url) {
         this.preferred = preferred;
-        this.name = name;
         this.url = url;
+        String localizedNameKey = webLinkNameReplacements.get(name.toLowerCase(Locale.US));
+        this.name = (localizedNameKey != null) ? str(localizedNameKey) : name;
     }
 
     @NonNull
@@ -296,22 +460,75 @@ class WebLink {
     }
 }
 
-class AboutLinksRoutes {
+class AboutRoutes {
     /**
      * Backup icon url if the API call fails.
      */
-    public static volatile String aboutLogoUrl = "https://morphe.software/favicon.ico";
+    public static volatile String aboutLogoUrl = "https://morphe.software/favicon.svg";
 
     /**
      * Links to use if fetch links api call fails.
      */
     private static final WebLink[] NO_CONNECTION_STATIC_LINKS = {
-            new WebLink(true, "Morphe", "https://morphe.software")
+            new WebLink(true, "Website", "https://morphe.software")
     };
 
-    // TODO
-    private static final String SOCIAL_LINKS_PROVIDER = "https://software.morphi.app/v1";
-    private static final Route.CompiledRoute GET_SOCIAL = new Route(GET, "/about").compile();
+    private static final String API_URL = "https://api.morphe.software/v1";
+    private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
+    private static final Route.CompiledRoute API_ROUTE_PATCHES = new Route(GET,
+            (Utils.isPreReleasePatches() ? "/patches/prerelease" : "/patches")
+    ).compile();
+
+    @Nullable
+    private static volatile String latestPatchesVersion;
+    private static volatile long latestPatchesVersionLastCheckedTime;
+
+    static boolean hasFetchedPatchersVersion() {
+        final long updateCheckFrequency = 10 * 60 * 1000; // 10 minutes.
+        final long now = System.currentTimeMillis();
+
+        return latestPatchesVersion != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency;
+    }
+
+    @Nullable
+    static String getLatestPatchesVersion() {
+        String version = latestPatchesVersion;
+        if (version != null) return version;
+
+        if (!Utils.isNetworkConnected()) return null;
+
+        try {
+            HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(API_URL, API_ROUTE_PATCHES);
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            Logger.printDebug(() -> "Fetching latest patches version links from: " + connection.getURL());
+
+            // Do not show an exception toast if the server is down
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                Logger.printDebug(() -> "Failed to get patches bundle. Response code: " + responseCode);
+                return null;
+            }
+
+            JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
+            version = json.getString("version");
+            if (version.startsWith("v")) {
+                version = version.substring(1);
+            }
+            latestPatchesVersion = version;
+            latestPatchesVersionLastCheckedTime = System.currentTimeMillis();
+
+            return version;
+        } catch (SocketTimeoutException ex) {
+            Logger.printInfo(() -> "Could not fetch patches version", ex); // No toast.
+        } catch (JSONException ex) {
+            Logger.printException(() -> "Could not parse about information", ex);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to get patches version", ex);
+        }
+
+        return null;
+    }
 
     @Nullable
     private static volatile WebLink[] fetchedLinks;
@@ -327,26 +544,20 @@ class AboutLinksRoutes {
             // Check if there is no internet connection.
             if (!Utils.isNetworkConnected()) return NO_CONNECTION_STATIC_LINKS;
 
-            JSONObject json;
-
-            if (true) {
-                json = new JSONObject(ABOUT_JSON_TEMPORARY);
-            } else {
-                HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(SOCIAL_LINKS_PROVIDER, GET_SOCIAL);
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
-                Logger.printDebug(() -> "Fetching social links from: " + connection.getURL());
+            HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(API_URL, API_ROUTE_ABOUT);
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            Logger.printDebug(() -> "Fetching social links from: " + connection.getURL());
 
 
-                // Do not show an exception toast if the server is down
-                final int responseCode = connection.getResponseCode();
-                if (responseCode != 200) {
-                    Logger.printDebug(() -> "Failed to get social links. Response code: " + responseCode);
-                    return NO_CONNECTION_STATIC_LINKS;
-                }
-
-                json = Requester.parseJSONObjectAndDisconnect(connection);
+            // Do not show an exception toast if the server is down
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                Logger.printDebug(() -> "Failed to get about information. Response code: " + responseCode);
+                return NO_CONNECTION_STATIC_LINKS;
             }
+
+            JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
 
             aboutLogoUrl = json.getJSONObject("branding").getString("logo");
 
@@ -356,7 +567,6 @@ class AboutLinksRoutes {
             for (int i = 0, length = donations.length(); i < length; i++) {
                 WebLink link = new WebLink(donations.getJSONObject(i));
                 if (link.preferred) {
-                    link.name = str("morphe_settings_about_donate");
                     links.add(link);
                 }
             }
@@ -372,7 +582,7 @@ class AboutLinksRoutes {
             return fetchedLinks = links.toArray(new WebLink[0]);
 
         } catch (SocketTimeoutException ex) {
-            Logger.printInfo(() -> "Could not fetch social links", ex); // No toast.
+            Logger.printInfo(() -> "Could not fetch about information", ex); // No toast.
         } catch (JSONException ex) {
             Logger.printException(() -> "Could not parse about information", ex);
         } catch (Exception ex) {
@@ -381,80 +591,4 @@ class AboutLinksRoutes {
 
         return NO_CONNECTION_STATIC_LINKS;
     }
-
-    // TODO: Eventually move this to a web server.
-    private static final String ABOUT_JSON_TEMPORARY = """
-        {
-          "name": "Morphe",
-          "branding": {
-            "logo": "https://raw.githubusercontent.com/MorpheApp/morphe-branding/main/assets/morphe-logo/morphe_logo.svg"
-          },
-          "contact": {
-            "email": "na"
-          },
-          "socials": [
-            {
-              "name": "Website",
-              "url": "https://Morphe.software",
-              "preferred": true
-            },
-            {
-              "name": "GitHub",
-              "url": "https://github.com/MorpheApp",
-              "preferred": false
-            },
-            {
-              "name": "Twitter",
-              "url": "https://twitter.com/MorpheApp",
-              "preferred": false
-            },
-            {
-              "name": "Reddit",
-              "url": "https://www.reddit.com/r/Morphe",
-              "preferred": false
-            }
-          ],
-          "donations": {
-            "wallets": [
-            {
-                "network": "Ethereum",
-                "currency_code": "ETH",
-                "address": "XXX",
-                "preferred": true
-              },
-              {
-                "network": "Bitcoin",
-                "currency_code": "BTC",
-                "address": "XXX",
-                "preferred": false
-              },
-              {
-                "network": "Dogecoin",
-                "currency_code": "DOGE",
-                "address": "XXX",
-                "preferred": false
-              },
-              {
-                "network": "Litecoin",
-                "currency_code": "LTC",
-                "address": "XXX",
-                "preferred": false
-              },
-              {
-                "network": "Monero",
-                "currency_code": "XMR",
-                "address": "XXX",
-                "preferred": false
-              }
-            ],
-            "links": [
-              {
-                "name": "Donate",
-                "url": "https://morphe.software/donate",
-                "preferred": true
-              }
-            ]
-          }
-        }
-    """;
 }
