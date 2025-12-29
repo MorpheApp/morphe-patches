@@ -238,7 +238,6 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                OAuth2Helper.updateAccessToken();
                 StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);

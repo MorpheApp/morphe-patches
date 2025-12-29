@@ -104,6 +104,10 @@ public class StreamingDataRequest {
     );
 
     private static volatile ClientType lastSpoofedClientType;
+
+    /**
+     * Used only for stats for nerds to show VR sign-in was used.
+     */
     private static volatile boolean authHeadersOverrides;
 
     public static String getLastSpoofedClientName() {
@@ -169,7 +173,7 @@ public class StreamingDataRequest {
                 if (value != null) {
                     if (key.equals(AUTHORIZATION_HEADER)) {
                         if (clientType.supportsOAuth2) {
-                            String authorization = OAuth2Helper.getAuthorization();
+                            String authorization = OAuth2Helper.getAndUpdateAccessTokenIfNeeded();
                             if (authorization.isEmpty()) {
                                 // Access token is empty, the user has not signed in to VR.
                                 // YouTube/YouTube Music access tokens cannot be used with YouTube VR.

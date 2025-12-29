@@ -2,69 +2,65 @@ package app.morphe.extension.shared.oauth2;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.oauth2.object.AccessTokenData;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
-import app.morphe.extension.shared.Utils;
 
 public class OAuth2Helper {
     /**
      * The value of 'Authorization' in the header
      * Bearer token is used on mobile devices
      */
-    private static volatile String authorization = "";
+    @GuardedBy("OAuth2Helper.class")
+    private static String authorization = "";
 
     public static void clearAll(boolean clearedByUser) {
-        Utils.runOnMainThreadDelayed(() -> {
-            if (!clearedByUser) {
-                Utils.showToastShort(str("morphe_oauth2_toast_invalid"));
-            }
+        if (!clearedByUser) {
+            Utils.showToastShort(str("morphe_oauth2_toast_invalid"));
+        }
 
+        synchronized (OAuth2Helper.class) {
             BaseSettings.OAUTH2_REFRESH_TOKEN.resetToDefault();
             OAuth2Requester.clearAll();
             authorization = "";
+        }
 
-            Utils.showToastShort(str("morphe_oauth2_toast_reset"));
-        }, 100L);
+        Utils.showToastShort(str("morphe_oauth2_toast_reset"));
     }
 
-    public static String getAuthorization() {
-        return authorization;
-    }
-
-    public static void setAuthorization(@NonNull AccessTokenData accessTokenData) {
-        StringBuilder sb = new StringBuilder();
-        // 'Bearer'
-        sb.append(accessTokenData.tokenType);
-        sb.append(" ");
-        // 'y29.xxx...'
-        sb.append(accessTokenData.accessToken);
-
-        // Bearer y29.xxx...
-        authorization = sb.toString();
+    public static void setAuthorization(AccessTokenData accessTokenData) {
+        synchronized (OAuth2Helper.class) {
+            // Bearer y29.xxx...
+            authorization = accessTokenData.tokenType + " " + accessTokenData.accessToken;
+        }
     }
 
     /**
-     * Check the validity of the access token before the video starts
+     * Check the validity of the access token before the video starts.
+     * Blocking call, and must be made off the main thread.
      */
-    public static void updateAccessToken() {
-        String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
+    public static synchronized String getAndUpdateAccessTokenIfNeeded() {
+        Utils.verifyOffMainThread();
 
-        // Refresh token is empty, the user has not signed in to VR
-        if (refreshToken.isEmpty()) {
-            return;
-        }
+        synchronized (OAuth2Helper.class) {
+            String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
 
-        // Access token has not expired, do nothing
-        if (OAuth2Requester.isAccessTokenDataAvailable()) {
-            return;
-        }
+            // Refresh token is empty, the user has not signed in to VR.
+            if (refreshToken.isEmpty()) {
+                return authorization;
+            }
 
-        // Access token has expired, so reissue it
-        Utils.runOnBackgroundThread(() -> {
+            // Access token has not expired, do nothing.
+            if (OAuth2Requester.isAccessTokenDataAvailable()) {
+                return authorization;
+            }
+
+            // Access token has expired, so reissue it.
             AccessTokenData accessTokenData = OAuth2Requester.getAccessTokenData(refreshToken);
 
             if (accessTokenData == null) {
@@ -72,27 +68,27 @@ public class OAuth2Helper {
             } else {
                 setAuthorization(accessTokenData);
             }
-        });
+
+            return authorization;
+        }
     }
 
     /**
-     * Revoke token using OAuth2 API
+     * Revoke token using OAuth2 API.
+     * Safe to call from any thread.
      */
     public static void revokeToken() {
-        String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
+        Utils.runOnBackgroundThread(() -> {
+            synchronized (OAuth2Helper.class) {
+                String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
 
-        // Refresh token is empty, the user has not signed in to VR
-        if (refreshToken.isEmpty()) {
-            clearAll(true);
-        } else {
-            Utils.runOnBackgroundThread(() -> {
-                boolean success = OAuth2Requester.revokeRefreshToken(refreshToken);
-                if (success) {
+                if (refreshToken.isEmpty()) {
                     clearAll(true);
-                } else {
-                    Logger.printException(() -> "Failed to reset refresh token");
+                } else if (OAuth2Requester.revokeRefreshToken(refreshToken)) {
+                    clearAll(true);
+                    Logger.printException(() -> "Failed to revoke refresh token");
                 }
-            });
-        }
+            }
+        });
     }
 }
