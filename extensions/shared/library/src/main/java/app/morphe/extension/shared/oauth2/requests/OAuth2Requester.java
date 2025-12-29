@@ -105,7 +105,9 @@ public class OAuth2Requester {
         if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastShort(toastMessage);
         }
-        Logger.printInfo(() -> toastMessage, ex);
+        if (ex != null) {
+            Logger.printInfo(() -> toastMessage, ex);
+        }
     }
 
     private static void clearAll(boolean clearedByUser) {
@@ -306,10 +308,10 @@ public class OAuth2Requester {
                 // In this case, a response code of 400 is returned
                 // Since the refresh token is no longer valid, all locally stored tokens are removed
                 Logger.printDebug(() -> "Invalid token, clear all");
+                handleConnectionError(str("morphe_oauth2_connection_failure_status_400", responseCode), null);
                 clearAll(false);
             } else {
                 handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
-                // TODO: Clear auth token?
             }
         } catch (SocketTimeoutException ex) {
             handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);

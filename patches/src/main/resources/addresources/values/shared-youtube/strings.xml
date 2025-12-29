@@ -80,6 +80,7 @@ Playback may not work"</string>
 5. Click 'Get authorization token' to get an authorization token."</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text">Open website</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
+    <string name="morphe_oauth2_connection_failure_status_400">Android VR Sign-in expired, try signing into VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
     <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
     <string name="morphe_oauth2_toast_reset">Authentication token and activation code reset</string>
