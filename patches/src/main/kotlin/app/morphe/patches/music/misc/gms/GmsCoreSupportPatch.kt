@@ -8,6 +8,7 @@ import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch

@@ -1,7 +1,7 @@
 package app.morphe.patches.music.misc.dns
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.dns.checkWatchHistoryDomainNameResolutionPatch
 
 val checkWatchHistoryDomainNameResolutionPatch = checkWatchHistoryDomainNameResolutionPatch(
@@ -19,5 +19,5 @@ val checkWatchHistoryDomainNameResolutionPatch = checkWatchHistoryDomainNameReso
         )
     },
 
-    mainActivityFingerprint = MainActivityOnCreateFingerprint
+    mainActivityFingerprint = MusicActivityOnCreateFingerprint
 )

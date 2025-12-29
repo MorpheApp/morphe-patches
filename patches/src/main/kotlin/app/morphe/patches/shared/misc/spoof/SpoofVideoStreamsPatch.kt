@@ -192,9 +192,9 @@ internal fun spoofVideoStreamsPatch(
                             
                             :disabled
                             return-void
-                        """,
+                        """
                     )
-                },
+                }
             )
         }
 

@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -59,7 +59,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         )
 
         // Activity is used as the context to launch an Intent.
-        MainActivityOnCreateFingerprint.method.addInstruction(
+        YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
                     "setMainActivity(Landroid/app/Activity;)V",
