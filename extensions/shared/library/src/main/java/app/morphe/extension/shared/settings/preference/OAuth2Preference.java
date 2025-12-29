@@ -51,7 +51,7 @@ public class OAuth2Preference extends Preference implements Preference.OnPrefere
     public boolean onPreferenceClick(Preference preference) {
         Context context = getContext();
         Pair<Dialog, LinearLayout> dialogPair;
-        String dialogTitle = str("morphe_spoof_video_streams_sign_in_android_vr_dialog_title");
+        String dialogTitle = str("morphe_spoof_video_streams_sign_in_android_vr_about_title");
         String dialogMessage = str("morphe_spoof_video_streams_sign_in_android_vr_dialog_message");
         String resetButtonText = str("morphe_spoof_video_streams_sign_in_android_vr_dialog_reset_text");
         if (isActivationCodeDataAvailable()) {

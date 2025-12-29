@@ -1,6 +1,7 @@
 package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
+import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_STREAMING_DATA;
 
 import androidx.annotation.NonNull;
@@ -275,7 +276,8 @@ public class StreamingDataRequest {
         }
 
         lastSpoofedClientType = null;
-        handleConnectionError("Could not fetch any client streams", null, true);
+        handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
+        handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         return null;
     }
 
