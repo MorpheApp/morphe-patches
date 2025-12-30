@@ -61,7 +61,7 @@ To sign in, press continue below"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
-    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text -->
+    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
 
 1. Tap 'Open website' below to open the 'Connect a device website'
@@ -69,15 +69,15 @@ To sign in, press continue below"</string>
 3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
 4. Tap 'Allow YouTube VR' access
 5. Return to this app after reaching the 'Device connected' message"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text">Open website</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Open website</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication saved
 
 • Your Morphe settings will not import/export Android VR authentication
-• If this app is unused for 6 months then Google will remove Android VR authentication
-• You will need to do this sign in again if you change your Google password or deregister this device from your Google settings"</string>
+• If this app is unused for 6 months then Google will remove this authentication
+• You will need to sign in again if you later change your Google password or deregister this device from your Google settings"</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
     <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing into VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>

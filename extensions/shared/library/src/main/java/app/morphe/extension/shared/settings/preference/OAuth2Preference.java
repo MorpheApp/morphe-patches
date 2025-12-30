@@ -41,12 +41,26 @@ public abstract class OAuth2Preference extends Preference implements Preference.
      */
     private int getTokenIntervalCheckMilliseconds;
 
+    /**
+     * How many get token attempts are left. Used to prevent re-trying if the user abandons
+     * the website sign-in process.
+     */
     private int getTokenAttemptsLeft;
 
+    /**
+     * The last time token auth was checked. Required to prevent "too_fast" errors
+     * if re-checking too quickly.
+     */
     private long lastGetTokenAttemptTime;
 
+    /**
+     * If a get token attempt is scheduled for the future.
+     */
     private boolean getTokenAttemptScheduled;
 
+    /**
+     * Callback when the app is resumed. Used to automatically finish the client side sign in process.
+     */
     private final Application.ActivityLifecycleCallbacks ACTIVITY_LIFECYCLE_CALLBACKS
             = new Application.ActivityLifecycleCallbacks() {
 
@@ -91,13 +105,13 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     };
 
     private void registerApplicationOnResumeCallback() {
-        SpoofVideoStreamsPatch.getMainActivity().getApplication().registerActivityLifecycleCallbacks(
+        SpoofVideoStreamsPatch.getApplication().registerActivityLifecycleCallbacks(
                 ACTIVITY_LIFECYCLE_CALLBACKS
         );
     }
 
     private void unregisterApplicationOnResumeCallback() {
-        SpoofVideoStreamsPatch.getMainActivity().getApplication().unregisterActivityLifecycleCallbacks(
+        SpoofVideoStreamsPatch.getApplication().unregisterActivityLifecycleCallbacks(
                 ACTIVITY_LIFECYCLE_CALLBACKS
         );
     }
@@ -210,6 +224,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
 
     private void showActivationCodeDialog() {
         getTokenAttemptsLeft = GET_REFRESH_TOKENS_MAX_ATTEMPTS;
+        Context context = getContext();
 
         Utils.runOnBackgroundThread(() -> {
             ActivationCodeData activationCodeData = OAuth2Requester.getActivationCodeData();
@@ -217,8 +232,8 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                 Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed"));
                 return;
             }
+
             Utils.runOnMainThread(() -> {
-                Context context = getContext();
                 String userCode = activationCodeData.userCode;
                 String verificationUrl = activationCodeData.verificationUrl;
                 getTokenIntervalCheckMilliseconds = 1000 * activationCodeData.interval;
@@ -232,7 +247,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                         // No EditText.
                         null,
                         // OK button text.
-                        str("morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text"),
+                        str("morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website"),
                         // OK button action.
                         () -> {
                             // Automatically fetch the auth token after the user returns.

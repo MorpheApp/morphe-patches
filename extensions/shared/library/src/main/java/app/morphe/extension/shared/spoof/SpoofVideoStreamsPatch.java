@@ -1,6 +1,7 @@
 package app.morphe.extension.shared.spoof;
 
 import android.app.Activity;
+import android.app.Application;
 import android.net.Uri;
 import android.text.TextUtils;
 
@@ -43,16 +44,16 @@ public class SpoofVideoStreamsPatch {
 
     private static volatile ClientType preferredClient = ClientType.ANDROID_VR_1_47_48;
 
-    private static WeakReference<Activity> mainActivityRef = new WeakReference<>(null);
+    private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
 
     /**
      * Injection point.
      */
     public static void setMainActivity(Activity activity) {
-        mainActivityRef = new WeakReference<>(activity);
+        mainActivityRef = new WeakReference<>(activity.getApplication());
     }
 
-    public static Activity getMainActivity() {
+    public static Application getApplication() {
         return mainActivityRef.get();
     }
 
