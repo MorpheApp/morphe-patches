@@ -103,7 +103,7 @@ public class OAuth2Requester {
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
         if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
-            Utils.showToastShort(toastMessage);
+            Utils.showToastLong(toastMessage);
         }
         if (ex != null) {
             Logger.printInfo(() -> toastMessage, ex);
@@ -173,11 +173,9 @@ public class OAuth2Requester {
      * Revoke token using OAuth2 API.
      * Safe to call from any thread.
      */
-    public static void revokeToken() {
+    public static void revokeToken(String refreshToken) {
         Utils.runOnBackgroundThread(() -> {
             synchronized (OAuth2Requester.class) {
-                String refreshToken = BaseSettings.OAUTH2_REFRESH_TOKEN.get();
-
                 if (!refreshToken.isEmpty()) {
                     if (!OAuth2Requester.revokeRefreshToken(refreshToken)) {
                         Logger.printException(() -> "Failed to revoke refresh token");
@@ -228,7 +226,7 @@ public class OAuth2Requester {
     }
 
     @Nullable
-    public static AccessTokenData getRefreshTokenData() {
+    public static AccessTokenData getRefreshTokenData(boolean showErrorToastIfAccessNotApproved) {
         Utils.verifyOffMainThread();
 
         synchronized (OAuth2Requester.class) {
@@ -255,7 +253,23 @@ public class OAuth2Requester {
                 final int responseCode = connection.getResponseCode();
 
                 if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
-                    AccessTokenData fetchedAccessTokenData = new AccessTokenData(Requester.parseJSONObjectAndDisconnect(connection));
+                    JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
+                    String errorKey = "error";
+                    if (json.has(errorKey)) {
+                        String error = json.getString("error");
+                        Logger.printDebug(() -> "getRefreshTokenData error:" + error);
+                        if (error.equalsIgnoreCase("authorization_pending")) {
+                            if (showErrorToastIfAccessNotApproved) {
+                                Utils.showToastLong(str("morphe_oauth2_connection_failure_auth_not_approved"));
+                            }
+                            return null;
+                        }
+
+                        Utils.showToastLong(str("morphe_oauth2_connection_failure_auth_error", error));
+                        return null;
+                    }
+
+                    AccessTokenData fetchedAccessTokenData = new AccessTokenData(json);
                     Logger.printDebug(() -> "getRefreshTokenData updated lastFetchedAccessTokenData");
                     lastFetchedAccessTokenData = fetchedAccessTokenData;
                     return fetchedAccessTokenData;

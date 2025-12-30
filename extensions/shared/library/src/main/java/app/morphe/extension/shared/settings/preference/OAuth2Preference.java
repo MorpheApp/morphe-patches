@@ -7,11 +7,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
@@ -23,32 +21,61 @@ import app.morphe.extension.shared.oauth2.object.AccessTokenData;
 import app.morphe.extension.shared.oauth2.object.ActivationCodeData;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("deprecation")
 public abstract class OAuth2Preference extends Preference implements Preference.OnPreferenceClickListener {
 
-    private final SharedPreferences.OnSharedPreferenceChangeListener listener
-            = (sharedPreferences, str) -> Utils.runOnMainThread(this::updateUI);
-
-    private void addChangeListener() {
-        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
+    {
+        setOnPreferenceClickListener(this);
     }
 
-    private void removeChangeListener() {
-        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
-    }
+    /**
+     * How many times to try to get a refresh token after the user returns to the app.
+     */
+    private static final int GET_REFRESH_TOKENS_MAX_ATTEMPTS = 5;
+
+    /**
+     * Interval of fetched {@link ActivationCodeData#interval}.
+     */
+    private int getTokenIntervalCheckMilliseconds;
+
+    private int getTokenAttemptsLeft;
+
+    private long lastGetTokenAttemptTime;
+
+    private boolean getTokenAttemptScheduled;
 
     private final Application.ActivityLifecycleCallbacks ACTIVITY_LIFECYCLE_CALLBACKS
             = new Application.ActivityLifecycleCallbacks() {
 
         public void onActivityResumed(@NonNull Activity activity) {
+            // Check for auth approval when the app resumes.
+            // This could be done in the background on a timer, but the Google update interval is
+            // usually 5 seconds which means if the user returns to the app there could be up to 5 second
+            // delay before showing the success dialog.
+            //
+            // Instead check when the app resumes with some logic to wait a few seconds if the
+            // user is changing back and forth before auth is approved.
             Logger.printDebug(() -> "onActivityResumed");
             if (isActivationCodeDataAvailable()) {
-                unregisterApplicationOnResumeCallback();
-                getRefreshToken();
+                final long now = System.currentTimeMillis();
+
+                if (now > (lastGetTokenAttemptTime + getTokenIntervalCheckMilliseconds)) {
+                    lastGetTokenAttemptTime = now;
+                    getRefreshToken();
+                } else if (!getTokenAttemptScheduled) {
+                    getTokenAttemptScheduled = true;
+                    // Too soon to check again. Schedule a check in the future.
+                    final long delayMillis = getTokenIntervalCheckMilliseconds - (now - lastGetTokenAttemptTime);
+                    Logger.printDebug(() -> "Scheduling get token check in: " + delayMillis + "ms");
+                    Utils.runOnMainThreadDelayed(() -> {
+                        lastGetTokenAttemptTime = now;
+                        getTokenAttemptScheduled = false;
+                        getRefreshToken();
+                    }, delayMillis);
+                }
             }
         }
 
@@ -72,28 +99,15 @@ public abstract class OAuth2Preference extends Preference implements Preference.
         );
     }
 
-    private void init() {
-        setOnPreferenceClickListener(this);
+    @Override
+    protected void onPrepareForRemoval() {
+        super.onPrepareForRemoval();
+        // Remove just in case the user never finished signing in.
+        unregisterApplicationOnResumeCallback();
     }
 
-    public OAuth2Preference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init();
-    }
-
-    public OAuth2Preference(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    public OAuth2Preference(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
-    public OAuth2Preference(Context context) {
-        super(context);
-        init();
+    protected boolean isRefreshTokenSaved() {
+        return !BaseSettings.OAUTH2_REFRESH_TOKEN.get().isEmpty();
     }
 
     protected void updateUI(boolean currentlySignedIn) {
@@ -106,58 +120,78 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     protected void updateUI() {
-        updateUI(!BaseSettings.OAUTH2_REFRESH_TOKEN.get().isEmpty());
+        updateUI(isRefreshTokenSaved());
     }
 
+    public OAuth2Preference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        updateUI();
+    }
+
+    public OAuth2Preference(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        updateUI();
+    }
+
+    public OAuth2Preference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        updateUI();
+    }
+
+    public OAuth2Preference(Context context) {
+        super(context);
+        updateUI();
+    }
+
+    /**
+     * @return If the app spoof settings are configured in a way to allow using VR sign in.
+     */
     protected abstract boolean isSettingEnabled();
 
     @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        updateUI();
-        addChangeListener();
-    }
-
-    @Override
-    protected void onPrepareForRemoval() {
-        super.onPrepareForRemoval();
-        removeChangeListener();
-    }
-
-    @Override
     public boolean onPreferenceClick(Preference preference) {
-        String okButtonStringKey;
+        String titleKey;
+        String messageKey;
+        String okButtonTextKey;
         Runnable okButtonRunnable;
-        if (isActivationCodeDataAvailable()) {
-            okButtonStringKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_get_authorization_token_text";
-            okButtonRunnable = this::getRefreshToken;
+
+        if (isRefreshTokenSaved()) {
+            titleKey = "morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in";
+            messageKey = "morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message";
+            okButtonTextKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_reset";
+            okButtonRunnable = () -> {
+                OAuth2Requester.revokeToken(BaseSettings.OAUTH2_REFRESH_TOKEN.get());
+                // Don't wait for revoke to finish and clear the token now so UI is up to date.
+                BaseSettings.OAUTH2_REFRESH_TOKEN.resetToDefault();
+                updateUI(false);
+            };
         } else {
-            okButtonStringKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_get_activation_code_text";
+            titleKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_title";
+            messageKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message";
+            okButtonTextKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_continue";
             okButtonRunnable = this::showActivationCodeDialog;
-            registerApplicationOnResumeCallback();
         }
 
         CustomDialog.create(
                 getContext(),
                 // Title.
-                str("morphe_spoof_video_streams_sign_in_android_vr_dialog_title"),
+                str(titleKey),
                 // Message.
-                str("morphe_spoof_video_streams_sign_in_android_vr_dialog_message"),
+                BulletPointPreference.formatIntoBulletPoints(str(messageKey)),
                 // No EditText.
                 null,
                 // OK button text.
-                str(okButtonStringKey),
+                str(okButtonTextKey),
                 // OK button action.
                 okButtonRunnable,
                 // Cancel button action.
-                null,
-                // Neutral button text.
-                str("morphe_spoof_video_streams_sign_in_android_vr_dialog_reset_text"),
-                // Neutral button action.
                 () -> {
-                    OAuth2Requester.revokeToken();
-                    updateUI(false);
+
                 },
+                // Neutral button text.
+                null,
+                // Neutral button action.
+                null,
                 // Dismiss dialog when onNeutralClick.
                 true
         ).first.show();
@@ -166,6 +200,8 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     private void showActivationCodeDialog() {
+        getTokenAttemptsLeft = GET_REFRESH_TOKENS_MAX_ATTEMPTS;
+
         Utils.runOnBackgroundThread(() -> {
             ActivationCodeData activationCodeData = OAuth2Requester.getActivationCodeData();
             if (activationCodeData == null) {
@@ -173,11 +209,13 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                 return;
             }
             Utils.runOnMainThread(() -> {
+                Context context = getContext();
                 String userCode = activationCodeData.userCode;
                 String verificationUrl = activationCodeData.verificationUrl;
+                getTokenIntervalCheckMilliseconds = 1000 * activationCodeData.interval;
 
                 CustomDialog.create(
-                        getContext(),
+                        context,
                         // Title.
                         str("morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title"),
                         // Message.
@@ -188,10 +226,13 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                         str("morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text"),
                         // OK button action.
                         () -> {
+                            // Automatically fetch the auth token after the user returns.
+                            registerApplicationOnResumeCallback();
+
                             Utils.setClipboard(userCode);
                             Intent i = new Intent(Intent.ACTION_VIEW);
                             i.setData(Uri.parse(verificationUrl));
-                            getContext().startActivity(i);
+                            context.startActivity(i);
                         },
                         // Cancel button action (dismiss only).
                         null,
@@ -207,20 +248,33 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     private void getRefreshToken() {
+        final boolean reachedMaxGetTokenAttempts = --getTokenAttemptsLeft <= 0;
+        if (reachedMaxGetTokenAttempts) {
+            unregisterApplicationOnResumeCallback();
+        }
+
         Utils.runOnBackgroundThread(() -> {
-            AccessTokenData accessTokenData = OAuth2Requester.getRefreshTokenData();
-            if (accessTokenData == null) {
-                Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed"));
-                return;
-            }
-            String refreshToken = accessTokenData.refreshToken;
-            if (refreshToken == null || refreshToken.isEmpty()) {
-                return;
-            }
-            BaseSettings.OAUTH2_REFRESH_TOKEN.save(refreshToken);
-            OAuth2Requester.setAuthorization(accessTokenData);
+            AccessTokenData accessTokenData = OAuth2Requester.getRefreshTokenData(reachedMaxGetTokenAttempts);
 
             Utils.runOnMainThread(() -> {
+                if (accessTokenData == null) {
+                    Logger.printDebug(() -> "No refresh token found");
+                    if (reachedMaxGetTokenAttempts) {
+                        Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed"));
+                    }
+                    return;
+                }
+                String refreshToken = accessTokenData.refreshToken;
+                if (refreshToken == null || refreshToken.isEmpty()) {
+                    Logger.printException(() -> "No refresh token found");
+                    return;
+                }
+
+                unregisterApplicationOnResumeCallback();
+
+                BaseSettings.OAUTH2_REFRESH_TOKEN.save(refreshToken);
+                OAuth2Requester.setAuthorization(accessTokenData);
+
                 updateUI(true);
 
                 CustomDialog.create(
@@ -228,7 +282,9 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                         // Title.
                         str("morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title"),
                         // Message.
-                        str("morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message"),
+                        BulletPointPreference.formatIntoBulletPoints(
+                                str("morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message")
+                        ),
                         // No EditText.
                         null,
                         // OK button text.
@@ -241,7 +297,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                         // Neutral button text.
                         null,
                         // Neutral button action.
-                        OAuth2Requester::revokeToken,
+                        null,
                         // Dismiss dialog when onNeutralClick.
                         true
                 ).first.show();

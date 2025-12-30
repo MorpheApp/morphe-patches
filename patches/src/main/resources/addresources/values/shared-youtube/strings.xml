@@ -53,42 +53,36 @@ Playback may not work"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Not signed in to Android VR. Tap here to sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_message">"Signing in to Android VR (YouTube VR) follows the guidelines provided by Google (Google account authorization - OAuth 2.0 for TV and Limited-Input Device Applications):
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing into Android VR can fix playback issues for some users
 
-1. Click 'Get activation code' to generate an activation code.
-2. Click 'Open website' to go to the verification page.
-3. Enter the activation code.
-4. Sign in when prompted. If you have multiple Google Accounts, select the account you use with YouTube. If you're already signed in, skip to the next step.
-5. Once signed in, return to Morphe and click 'Sign in to Android VR' again.
-6. Click 'Get authorization token' to get an authorization token.
+To sign in, press continue below"</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
+    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text -->
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
 
-※ Click 'Reset' to remove an authentication token or activation code."</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_get_activation_code_text">Get activation code</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_get_authorization_token_text">Get authorization token</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset_text">Reset</string>
+1. Tap 'Open website' below to open the 'Connect a device website'
+2. Paste from clipboard (or type out by hand) the activation code shown above
+3. Sign in to Google if prompted. If you have multiple Google Accounts then choose the account you use with YouTube
+4. Tap 'Allow YouTube VR' access
+5. Return to this app after reaching the 'Device connected' message"</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text">Open website</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed into Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication token saved.
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication saved
 
-- Authentication token issued through this process can only be used in YouTube VR.
-- Authentication token unused for more than 6 months will be revoked by Google servers.
-- If you change your password, or deregister a device in your account settings, or uninstall the app, you will need to reissue the authentication token."</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Activation code</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code:
-%s
-
-1. Click 'Open website' to go to the verification page.
-2. Enter the activation code.
-3. Sign in when prompted. If you have multiple Google Accounts, select the account you use with YouTube. If you're already signed in, skip to the next step.
-4. Once signed in, return to Morphe and click 'Sign in to Android VR' again.
-5. Click 'Get authorization token' to get an authorization token."</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text">Open website</string>
+• Your Morphe settings will not import/export Android VR authentication
+• If this app is unused for 6 months then Google will remove Android VR authentication
+• You will need to do this sign in again if you change your Google password or deregister this device from your Google settings"</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
     <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing into VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
     <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
-    <string name="morphe_oauth2_toast_reset">Authentication token and activation code reset</string>
+    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign into VR, authentication not approved</string>
+    <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign into VR: %s</string>
+    <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
     <string name="morphe_oauth2_toast_invalid">Invalid token, reset the cached token</string>
 
     <!-- misc.audio.forceOriginalAudioPatch -->
