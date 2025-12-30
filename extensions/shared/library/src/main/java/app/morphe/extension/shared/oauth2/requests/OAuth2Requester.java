@@ -274,6 +274,7 @@ public class OAuth2Requester {
 
     private static void updateAccessTokenData(String refreshToken) {
         Utils.verifyOffMainThread();
+        Objects.requireNonNull(refreshToken);
 
         try {
             HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
@@ -294,7 +295,7 @@ public class OAuth2Requester {
                 synchronized (OAuth2Requester.class) {
                     AccessTokenData fetchedAccessTokenData = new AccessTokenData(refreshToken,
                             Requester.parseJSONObjectAndDisconnect(connection));
-                    // Access token expires after 1 hour. Value is mostly safe to potentially
+                    // Access token expires after 1 hour. Value is mostly safe to
                     // disclose in a log file, but it's still not logged.
                     Logger.printDebug(() -> "updateAccessTokenData updated lastFetchedAccessTokenData");
 
@@ -308,7 +309,7 @@ public class OAuth2Requester {
                 // 3. The refresh token has not been used for 6 months
                 //
                 // In this case, a response code of 400 is returned
-                // Since the refresh token is no longer valid, all locally stored tokens are removed
+                // Since the refresh token is no longer valid, all locally stored tokens are removed.
                 Logger.printDebug(() -> "Invalid token, clear all");
                 handleConnectionError(str("morphe_oauth2_connection_failure_status_400", responseCode), null);
                 clearAll(false);

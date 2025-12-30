@@ -49,10 +49,10 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                     SwitchPreference("morphe_spoof_video_streams"),
                     ListPreference("morphe_spoof_video_streams_client_type"),
                     NonInteractivePreference(
-                        "morphe_spoof_video_streams_sign_in_android_vr_about",
+                        key = "morphe_spoof_video_streams_sign_in_android_vr_about",
                         tag = "app.morphe.extension.music.settings.preference.SpoofStreamingDataSignInPreference",
                         selectable = true,
-                    ),
+                    )
                 )
             )
         )

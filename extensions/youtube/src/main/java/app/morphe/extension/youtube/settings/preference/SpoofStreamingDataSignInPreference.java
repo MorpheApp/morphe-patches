@@ -9,13 +9,6 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings({"unused", "deprecation"})
 public final class SpoofStreamingDataSignInPreference extends OAuth2Preference {
 
-    {
-        boolean enabled = Settings.SPOOF_VIDEO_STREAMS.get() &&
-                Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get().supportsOAuth2;
-
-        setEnabled(enabled);
-    }
-
     public SpoofStreamingDataSignInPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
@@ -32,4 +25,9 @@ public final class SpoofStreamingDataSignInPreference extends OAuth2Preference {
         super(context);
     }
 
+    @Override
+    protected boolean isSettingEnabled() {
+        return Settings.SPOOF_VIDEO_STREAMS.get() &&
+                Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get().supportsOAuth2;
+    }
 }

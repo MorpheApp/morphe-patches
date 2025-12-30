@@ -49,9 +49,10 @@ Playback may not work"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Sign in to Android VR</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Sign in to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Tap here to sign into Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Not signed in to Android VR. Tap here to sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_message">"Signing in to Android VR (YouTube VR) follows the guidelines provided by Google (Google account authorization - OAuth 2.0 for TV and Limited-Input Device Applications):
 
 1. Click 'Get activation code' to generate an activation code.
@@ -67,7 +68,7 @@ Playback may not work"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset_text">Reset</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Signed in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed into Android VR</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication token saved.
 
 - Authentication token issued through this process can only be used in YouTube VR.
@@ -84,7 +85,7 @@ Playback may not work"</string>
 5. Click 'Get authorization token' to get an authorization token."</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website_text">Open website</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
-    <string name="morphe_oauth2_connection_failure_status_400">Android VR Sign-in expired, try signing into VR again</string>
+    <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing into VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
     <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
     <string name="morphe_oauth2_toast_reset">Authentication token and activation code reset</string>
