@@ -253,6 +253,8 @@ public abstract class OAuth2Preference extends Preference implements Preference.
             unregisterApplicationOnResumeCallback();
         }
 
+        Context context = getContext();
+
         Utils.runOnBackgroundThread(() -> {
             AccessTokenData accessTokenData = OAuth2Requester.getRefreshTokenData(reachedMaxGetTokenAttempts);
 
@@ -278,7 +280,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                 updateUI(true);
 
                 CustomDialog.create(
-                        getContext(),
+                        context,
                         // Title.
                         str("morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title"),
                         // Message.
