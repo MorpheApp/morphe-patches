@@ -60,18 +60,21 @@ public abstract class OAuth2Preference extends Preference implements Preference.
             // user is changing back and forth before auth is approved.
             Logger.printDebug(() -> "onActivityResumed");
             if (isActivationCodeDataAvailable()) {
-                final long now = System.currentTimeMillis();
+                if (getTokenAttemptScheduled) {
+                    return;
+                }
 
-                if (now > (lastGetTokenAttemptTime + getTokenIntervalCheckMilliseconds)) {
+                final long now = System.currentTimeMillis();
+                if (System.currentTimeMillis() > (lastGetTokenAttemptTime + getTokenIntervalCheckMilliseconds)) {
                     lastGetTokenAttemptTime = now;
                     getRefreshToken();
-                } else if (!getTokenAttemptScheduled) {
+                } else {
                     getTokenAttemptScheduled = true;
                     // Too soon to check again. Schedule a check in the future.
                     final long delayMillis = getTokenIntervalCheckMilliseconds - (now - lastGetTokenAttemptTime);
                     Logger.printDebug(() -> "Scheduling get token check in: " + delayMillis + "ms");
                     Utils.runOnMainThreadDelayed(() -> {
-                        lastGetTokenAttemptTime = now;
+                        lastGetTokenAttemptTime = System.currentTimeMillis();
                         getTokenAttemptScheduled = false;
                         getRefreshToken();
                     }, delayMillis);
@@ -111,12 +114,18 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     protected void updateUI(boolean currentlySignedIn) {
-        String summaryKey = currentlySignedIn
-                ? "morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in"
-                : "morphe_spoof_video_streams_sign_in_android_vr_about_summary";
-        setSummary(str(summaryKey));
+        final boolean isSettingEnabled = isSettingEnabled();
+        setEnabled(isSettingEnabled);
 
-        setEnabled(isSettingEnabled());
+        String summaryKey;
+        if (isSettingEnabled) {
+            summaryKey = currentlySignedIn
+                    ? "morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in"
+                    : "morphe_spoof_video_streams_sign_in_android_vr_about_summary";
+        } else {
+            summaryKey = "morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled";
+        }
+        setSummary(str(summaryKey));
     }
 
     protected void updateUI() {

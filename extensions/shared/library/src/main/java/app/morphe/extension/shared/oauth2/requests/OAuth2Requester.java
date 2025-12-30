@@ -190,39 +190,39 @@ public class OAuth2Requester {
     public static ActivationCodeData getActivationCodeData() {
         Utils.verifyOffMainThread();
 
-        try {
-            HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.DEVICE_CODE);
+        synchronized (OAuth2Requester.class) {
+            try {
+                HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.DEVICE_CODE);
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("client_id", CLIENT_ID);
-            jsonObject.put("scope", OAUTH2_SCOPE);
-            // Android YouTube VR app also uses random UUIDs.
-            jsonObject.put("device_id", UUID.randomUUID().toString());
-            jsonObject.put("device_model", DEVICE_MODEL);
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("client_id", CLIENT_ID);
+                jsonObject.put("scope", OAUTH2_SCOPE);
+                // Android YouTube VR app also uses random UUIDs.
+                jsonObject.put("device_id", UUID.randomUUID().toString());
+                jsonObject.put("device_model", DEVICE_MODEL);
 
-            byte[] body = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
-            connection.setFixedLengthStreamingMode(body.length);
-            connection.getOutputStream().write(body);
+                byte[] body = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
+                connection.setFixedLengthStreamingMode(body.length);
+                connection.getOutputStream().write(body);
 
-            final int responseCode = connection.getResponseCode();
+                final int responseCode = connection.getResponseCode();
 
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
-                synchronized (OAuth2Requester.class) {
+                if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
                     ActivationCodeData fetchedActivationCodeData = new ActivationCodeData(Requester.parseJSONObjectAndDisconnect(connection));
                     Logger.printDebug(() -> "deviceCode: " + fetchedActivationCodeData);
                     lastFetchedActivationCodeData = fetchedActivationCodeData;
                     return fetchedActivationCodeData;
                 }
+                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
+            } catch (SocketTimeoutException ex) {
+                handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
+            } catch (IOException ex) {
+                handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
+            } catch (Exception ex) {
+                Logger.printException(() -> "getActivationCodeData failure", ex);
             }
-            handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
-        } catch (SocketTimeoutException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
-        } catch (IOException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
-        } catch (Exception ex) {
-            Logger.printException(() -> "getActivationCodeData failure", ex);
+            return null;
         }
-        return null;
     }
 
     @Nullable

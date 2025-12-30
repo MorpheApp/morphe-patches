@@ -52,6 +52,8 @@ Playback may not work"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Not signed in to Android VR. Tap here to sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
+    <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to Android VR</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing into Android VR can fix playback issues for some users
 
