@@ -65,8 +65,8 @@ To sign in, press continue below"</string>
     <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
 
-1. Tap 'Open website' below to open the 'Connect a device website'
-2. Paste from clipboard (or type out by hand) the activation code shown above
+1. Tap 'Open website' below to open the 'Connect a device' website
+2. Paste from the clipboard (or type out) the activation code shown above
 3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
 4. Tap 'Allow YouTube VR' access
 5. Return to this app after reaching the 'Device connected' message"</string>
@@ -78,15 +78,15 @@ To sign in, press continue below"</string>
 
 • Your Morphe settings will not import/export Android VR authentication
 • If this app is unused for 6 months then Google will remove this authentication
-• You will need to sign in again if you later change your Google password or deregister this device from your Google settings"</string>
+• You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
     <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing into VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
     <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
-    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign into VR, authentication not approved</string>
+    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign into VR, website authentication was not approved</string>
     <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign into VR: %s</string>
     <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
-    <string name="morphe_oauth2_toast_invalid">Invalid token, reset the cached token</string>
+    <string name="morphe_oauth2_toast_invalid">Invalid VR sign-in token, try signing into VR again</string>
 
     <!-- misc.audio.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>
