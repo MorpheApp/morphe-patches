@@ -46,6 +46,8 @@ public class BaseSettings {
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
     public static final BooleanSetting SPOOF_STREAMING_DATA_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_streaming_data_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
 
+    public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
+
     public static final BooleanSetting SANITIZE_SHARED_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
 

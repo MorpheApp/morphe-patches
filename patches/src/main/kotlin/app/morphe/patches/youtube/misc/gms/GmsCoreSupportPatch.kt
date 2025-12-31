@@ -12,7 +12,7 @@ import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.spoof.spoofVideoStreamsPatch
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 @Suppress("unused")
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
@@ -22,7 +22,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     earlyReturnFingerprints = setOf(
         CastContextFetchFingerprint,
     ),
-    mainActivityOnCreateFingerprint = MainActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
 ) {

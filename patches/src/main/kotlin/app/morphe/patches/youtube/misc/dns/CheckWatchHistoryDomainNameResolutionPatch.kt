@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.misc.dns
 
 import app.morphe.patches.shared.misc.dns.checkWatchHistoryDomainNameResolutionPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 val checkWatchHistoryDomainNameResolutionPatch = checkWatchHistoryDomainNameResolutionPatch(
     block = {
@@ -19,5 +19,5 @@ val checkWatchHistoryDomainNameResolutionPatch = checkWatchHistoryDomainNameReso
             )
         )
     },
-    mainActivityFingerprint = MainActivityOnCreateFingerprint
+    mainActivityFingerprint = YouTubeActivityOnCreateFingerprint
 )

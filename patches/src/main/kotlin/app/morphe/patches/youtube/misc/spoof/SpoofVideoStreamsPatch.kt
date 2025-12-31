@@ -12,11 +12,11 @@ import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     extensionClassDescriptor = "Lapp/morphe/extension/youtube/patches/spoof/SpoofVideoStreamsPatch;",
-    mainActivityOnCreateFingerprint = MainActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     fixMediaFetchHotConfig = {
         is_19_34_or_greater
     },
@@ -59,6 +59,11 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         key = "morphe_spoof_video_streams_about",
                         summaryKey = null,
                         tag = "app.morphe.extension.youtube.settings.preference.SpoofStreamingDataSideEffectsPreference"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_spoof_video_streams_sign_in_android_vr_about",
+                        tag = "app.morphe.extension.youtube.settings.preference.SpoofStreamingDataSignInPreference",
+                        selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1"),
                     SwitchPreference("morphe_spoof_streaming_data_stats_for_nerds"),

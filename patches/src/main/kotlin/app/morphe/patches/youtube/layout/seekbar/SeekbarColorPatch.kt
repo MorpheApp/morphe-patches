@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -153,7 +153,7 @@ val seekbarColorPatch = bytecodePatch(
         }
 
         // Hook the splash animation to set the a seekbar color.
-        MainActivityOnCreateFingerprint.method.apply {
+        YouTubeActivityOnCreateFingerprint.method.apply {
             val setAnimationIntMethodName =
                 LottieAnimationViewSetAnimationIntFingerprint.originalMethod.name
 

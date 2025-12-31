@@ -5,7 +5,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_MAIN_ACTIVITY_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
@@ -14,7 +14,7 @@ val customBrandingPatch = baseCustomBrandingPatch(
     originalAppPackageName = YOUTUBE_PACKAGE_NAME,
     isYouTubeMusic = false,
     numberOfPresetAppNames = 5,
-    mainActivityOnCreateFingerprint = MainActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     mainActivityName = YOUTUBE_MAIN_ACTIVITY_NAME,
     activityAliasNameWithIntents = "com.google.android.youtube.app.honeycomb.Shell\$HomeActivity",
     preferenceScreen = PreferenceScreen.GENERAL_LAYOUT,

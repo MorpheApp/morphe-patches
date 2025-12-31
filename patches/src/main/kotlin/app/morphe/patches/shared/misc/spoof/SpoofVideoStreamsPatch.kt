@@ -50,9 +50,12 @@ internal fun spoofVideoStreamsPatch(
     block()
 
     execute {
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        mainActivityOnCreateFingerprint.method.addInstructions(
             0,
-            "invoke-static { }, $extensionClassDescriptor->setClientOrderToUse()V"
+            """
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V       
+                invoke-static { }, $extensionClassDescriptor->setClientOrderToUse()V   
+            """
         )
 
         // TODO?: Force off 45708738L ?
@@ -192,9 +195,9 @@ internal fun spoofVideoStreamsPatch(
                             
                             :disabled
                             return-void
-                        """,
+                        """
                     )
-                },
+                }
             )
         }
 

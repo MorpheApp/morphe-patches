@@ -14,7 +14,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_09_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.MainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -62,7 +62,7 @@ val shortsAutoplayPatch = bytecodePatch(
         }
 
         // Main activity is used to check if app is in pip mode.
-        MainActivityOnCreateFingerprint.method.addInstruction(
+        YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V",
         )
