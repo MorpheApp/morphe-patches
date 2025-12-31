@@ -36,6 +36,7 @@ public enum ClientType {
             false,
             false,
             false,
+            true,
             "Android VR 1.54"
     ),
     /**
@@ -58,6 +59,7 @@ public enum ClientType {
             ANDROID_VR_1_54_20.canLogin,
             ANDROID_VR_1_54_20.requireLogin,
             ANDROID_VR_1_54_20.supportsMultiAudioTracks,
+            ANDROID_VR_1_54_20.supportsOAuth2,
             "Android VR 1.47"
     ),
     /**
@@ -79,6 +81,7 @@ public enum ClientType {
             IS_YOUTUBE,
             false,
             true,
+            false,
             "Android No SDK"
     ),
     /**
@@ -99,6 +102,7 @@ public enum ClientType {
             // That is, this client must use an OAuth2 token issued by Android YouTube Music (com.google.android.apps.youtube.music).
             IS_YOUTUBE_MUSIC,
             true,
+            false,
             false,
             "Android Music No SDK"
     ),
@@ -123,6 +127,7 @@ public enum ClientType {
             true,
             true,
             false,
+            false,
             "Android Studio"
     ),
     /**
@@ -136,6 +141,7 @@ public enum ClientType {
             "1.3.21O771",
             "0.1",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+            false,
             false,
             false,
             false,
@@ -204,6 +210,11 @@ public enum ClientType {
     public final boolean requireLogin;
 
     /**
+     * If the client supports oauth2.0 for limited-input device.
+     */
+    public final boolean supportsOAuth2;
+
+    /**
      * If the client supports multiple audio tracks.
      */
     public final boolean supportsMultiAudioTracks;
@@ -230,6 +241,7 @@ public enum ClientType {
                boolean canLogin,
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
+               boolean supportsOAuth2,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -243,6 +255,7 @@ public enum ClientType {
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
+        this.supportsOAuth2 = supportsOAuth2;
         this.friendlyName = friendlyName;
 
         Locale defaultLocale = Locale.getDefault();
@@ -270,6 +283,7 @@ public enum ClientType {
                boolean canLogin,
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
+               boolean supportsOAuth2,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -282,6 +296,7 @@ public enum ClientType {
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
+        this.supportsOAuth2 = supportsOAuth2;
         this.friendlyName = friendlyName;
         this.packageName = null;
         this.androidSdkVersion = null;

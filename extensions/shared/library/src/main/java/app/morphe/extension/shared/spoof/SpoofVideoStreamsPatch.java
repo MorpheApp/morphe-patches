@@ -1,10 +1,13 @@
 package app.morphe.extension.shared.spoof;
 
+import android.app.Activity;
+import android.app.Application;
 import android.net.Uri;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +43,19 @@ public class SpoofVideoStreamsPatch {
     private static volatile AppLanguage languageOverride;
 
     private static volatile ClientType preferredClient = ClientType.ANDROID_VR_1_47_48;
+
+    private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
+
+    /**
+     * Injection point.
+     */
+    public static void setMainActivity(Activity activity) {
+        mainActivityRef = new WeakReference<>(activity.getApplication());
+    }
+
+    public static Application getApplication() {
+        return mainActivityRef.get();
+    }
 
     /**
      * @return If this patch was included during patching.

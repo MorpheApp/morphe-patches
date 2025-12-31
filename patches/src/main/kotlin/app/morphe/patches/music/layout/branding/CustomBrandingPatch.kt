@@ -6,8 +6,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
-import app.morphe.patches.music.misc.gms.MusicActivityOnCreateFingerprint
 import app.morphe.patches.music.misc.settings.PreferenceScreen
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType

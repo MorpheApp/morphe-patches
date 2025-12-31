@@ -68,7 +68,7 @@ internal object MainActivityOnBackPressedFingerprint : Fingerprint(
     }
 )
 
-internal object MainActivityOnCreateFingerprint : Fingerprint(
+internal object YouTubeActivityOnCreateFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     custom = { method, classDef ->

@@ -1,6 +1,7 @@
 package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
+import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_STREAMING_DATA;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
@@ -104,9 +106,22 @@ public class StreamingDataRequest {
 
     private static volatile ClientType lastSpoofedClientType;
 
+    /**
+     * Used only for stats for nerds to show VR sign-in was used.
+     */
+    private static volatile boolean authHeadersOverrides;
+
     public static String getLastSpoofedClientName() {
         ClientType client = lastSpoofedClientType;
-        return client == null ? "Unknown" : client.friendlyName;
+        if (client == null) {
+            return "Unknown";
+        } else {
+            String clientName = client.friendlyName;
+            if (client.supportsOAuth2 && authHeadersOverrides) {
+                clientName += " Signed in";
+            }
+            return clientName;
+        }
     }
 
     private final String videoId;
@@ -151,13 +166,28 @@ public class StreamingDataRequest {
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
             boolean authHeadersIncludes = false;
+            authHeadersOverrides = false;
 
             for (String key : REQUEST_HEADER_KEYS) {
                 String value = playerHeaders.get(key);
 
                 if (value != null) {
                     if (key.equals(AUTHORIZATION_HEADER)) {
-                        if (!clientType.canLogin) {
+                        if (clientType.supportsOAuth2) {
+                            String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                            if (authorization.isEmpty()) {
+                                // Access token is empty, the user has not signed in to VR.
+                                // YouTube/YouTube Music access tokens cannot be used with YouTube VR.
+                                // Do not set the header.
+                                Logger.printDebug(() -> "Not including request header: " + key);
+                                continue;
+                            } else {
+                                // Access token is not empty, the user has signed in to VR.
+                                // Set the header.
+                                value = authorization;
+                                authHeadersOverrides = true;
+                            }
+                        } else if (!clientType.canLogin) {
                             Logger.printDebug(() -> "Not including request header: " + key);
                             continue;
                         }
@@ -246,7 +276,8 @@ public class StreamingDataRequest {
         }
 
         lastSpoofedClientType = null;
-        handleConnectionError("Could not fetch any client streams", null, true);
+        handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
+        handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         return null;
     }
 
