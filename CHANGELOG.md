@@ -1,3 +1,10 @@
+# [1.0.0-dev.34](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.33...v1.0.0-dev.34) (2026-01-01)
+
+
+### Features
+
+* Add less restrictive license for build related code ([43cbf13](https://github.com/MorpheApp/morphe-patches/commit/43cbf133a1f3bdb550d6af1332a5122b9ccfc25e))
+
 # [1.0.0-dev.33](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.32...v1.0.0-dev.33) (2026-01-01)
 
 
