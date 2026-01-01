@@ -121,6 +121,19 @@
         <item>FPS_60_BLACK_AND_WHITE</item>
     </string-array>
 
+    <string-array name="morphe_auto_captions_block_type_entries">
+        <item>@string/morphe_auto_captions_block_type_entry_1</item>
+        <item>@string/morphe_auto_captions_block_type_entry_2</item>
+        <item>@string/morphe_auto_captions_block_type_entry_3</item>
+        <item>@string/morphe_auto_captions_block_type_entry_4</item>
+    </string-array>
+    <string-array name="morphe_auto_captions_block_type_entry_values">
+        <item>KEEP_BOTH</item>
+        <item>DISABLE_BOTH</item>
+        <item>WITH_VOLUME_ONLY</item>
+        <item>WITHOUT_VOLUME_ONLY</item>
+    </string-array>
+
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string-array name="morphe_exit_fullscreen_entries">
         <item>@string/morphe_exit_fullscreen_entry_1</item>

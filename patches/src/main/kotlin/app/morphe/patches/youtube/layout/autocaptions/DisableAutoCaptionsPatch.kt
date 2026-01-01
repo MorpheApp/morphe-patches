@@ -4,6 +4,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_43_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
@@ -17,6 +19,7 @@ val autoCaptionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch
     )
 
     compatibleWith(
@@ -24,7 +27,7 @@ val autoCaptionsPatch = bytecodePatch(
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.37.48",
+            "20.37.48"
         )
     )
 
@@ -58,5 +61,19 @@ val autoCaptionsPatch = bytecodePatch(
                 """
             )
         }
+
+        if (is_20_43_or_greater)
+            NoVolumeCaptionsFingerprint.method.apply {
+                addInstructions(
+                    0,
+
+                    """
+                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableMuteAutoCaptions()Z
+                        move-result v0
+                        return v0
+                        nop
+                    """
+                )
+            }
     }
 }

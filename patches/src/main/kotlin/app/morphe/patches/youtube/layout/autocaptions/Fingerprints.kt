@@ -2,6 +2,8 @@ package app.morphe.patches.youtube.layout.autocaptions
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.literal
+import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -38,4 +40,12 @@ internal object SubtitleTrackFingerprint : Fingerprint(
     custom = { _, classDef ->
         classDef.endsWith("/SubtitleTrack;")
     }
+)
+
+internal object NoVolumeCaptionsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    filters = listOf(
+        literal(45692436L)
+    )
 )
