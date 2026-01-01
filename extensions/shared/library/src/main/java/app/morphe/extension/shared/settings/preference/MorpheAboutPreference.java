@@ -473,7 +473,7 @@ class AboutRoutes {
             new WebLink(true, "Website", "https://morphe.software")
     };
 
-    private static final String API_URL = "https://api.morphe.software/v1";
+    private static final String API_URL = "https://api.morphe.software/v2";
     private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
     private static final Route.CompiledRoute API_ROUTE_PATCHES = new Route(GET,
             (Utils.isPreReleasePatches() ? "/patches/prerelease" : "/patches")
