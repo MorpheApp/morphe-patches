@@ -1,10 +1,8 @@
 package app.morphe.patches.youtube.misc.gms
 
-import app.morphe.patcher.patch.Option
 import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
-import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.hidePlayerOverlayButtonsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.MORPHE_YOUTUBE_PACKAGE_NAME
@@ -41,29 +39,16 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     )
 }
 
-private fun gmsCoreSupportResourcePatch(
-    gmsCoreVendorGroupIdOption: Option<String>,
-) = app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
-    fromPackageName = YOUTUBE_PACKAGE_NAME,
-    toPackageName = MORPHE_YOUTUBE_PACKAGE_NAME,
-    gmsCoreVendorGroupIdOption = gmsCoreVendorGroupIdOption,
-    spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
-    executeBlock = {
-
-        val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
-
-        PreferenceScreen.MISC.addPreferences(
-            IntentPreference(
-                "microg_settings",
-                intent = IntentPreference.Intent("", "org.microg.gms.ui.SettingsActivity") {
-                    "$gmsCoreVendorGroupId.android.gms"
-                }
+private fun gmsCoreSupportResourcePatch() =
+    app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
+        fromPackageName = YOUTUBE_PACKAGE_NAME,
+        toPackageName = MORPHE_YOUTUBE_PACKAGE_NAME,
+        spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
+        screen = PreferenceScreen.MISC,
+        block = {
+            dependsOn(
+                settingsPatch,
+                accountCredentialsInvalidTextPatch
             )
-        )
-    }
-) {
-    dependsOn(
-        settingsPatch,
-        accountCredentialsInvalidTextPatch
+        }
     )
-}

@@ -6,18 +6,18 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.changePackageNamePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
 import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
 import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
+import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
+import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.returnEarly
@@ -32,7 +32,7 @@ import org.w3c.dom.Node
 
 internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/GmsCoreSupport;"
 
-private const val PACKAGE_NAME_REGEX_PATTERN = "^[a-z]\\w*(\\.[a-z]\\w*)+\$"
+internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
 
 /**
  * A patch that allows patched Google apps to run without root and under a different package name
@@ -44,8 +44,6 @@ private const val PACKAGE_NAME_REGEX_PATTERN = "^[a-z]\\w*(\\.[a-z]\\w*)+\$"
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
  * @param extensionPatch The patch responsible for the extension.
- * @param gmsCoreSupportResourcePatchFactory The factory for the corresponding resource patch
- * that is used to patch the resources.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
@@ -56,7 +54,7 @@ fun gmsCoreSupportPatch(
     earlyReturnFingerprints: Set<Fingerprint> = setOf(),
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch<*>,
-    gmsCoreSupportResourcePatchFactory: (gmsCoreVendorGroupIdOption: Option<String>) -> Patch<*>,
+    gmsCoreSupportResourcePatchFactory: () -> Patch<*>,
     executeBlock: BytecodePatchContext.() -> Unit = {},
     block: BytecodePatchBuilder.() -> Unit = {},
 ) = bytecodePatch(
@@ -65,26 +63,11 @@ fun gmsCoreSupportPatch(
         "using a GmsCore instead of Google Play Services.",
 ) {
 
-    // FIXME: Change this to a hard coded value.
-    val gmsCoreVendorGroupIdOption = stringOption(
-        key = "gmsCoreVendorGroupId",
-        default = "app.revanced",
-        values =
-        mapOf(
-            "ReVanced" to "app.revanced",
-        ),
-        title = "GmsCore vendor group ID",
-        description = "The vendor's group ID for GmsCore.",
-        required = true,
-    ) { it!!.matches(Regex(PACKAGE_NAME_REGEX_PATTERN)) }
-
     dependsOn(
         changePackageNamePatch,
-        gmsCoreSupportResourcePatchFactory(gmsCoreVendorGroupIdOption),
+        gmsCoreSupportResourcePatchFactory(),
         extensionPatch,
     )
-
-    val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
 
     execute {
         fun transformStringReferences(transform: (str: String) -> String?) = classDefForEach {
@@ -126,10 +109,10 @@ fun gmsCoreSupportPatch(
             in PERMISSIONS,
             in ACTIONS,
             in AUTHORITIES,
-            -> referencedString.replace("com.google", gmsCoreVendorGroupId!!)
+            -> referencedString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID!!)
 
             // No vendor prefix for whatever reason...
-            "subscribedfeeds" -> "$gmsCoreVendorGroupId.subscribedfeeds"
+            "subscribedfeeds" -> "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds"
             else -> null
         }
 
@@ -142,7 +125,7 @@ fun gmsCoreSupportPatch(
                     if (str.startsWith(uriPrefix)) {
                         return str.replace(
                             uriPrefix,
-                            "content://${authority.replace("com.google", gmsCoreVendorGroupId!!)}",
+                            "content://${authority.replace("com.google", GMS_CORE_VENDOR_GROUP_ID!!)}",
                         )
                     }
                 }
@@ -150,7 +133,7 @@ fun gmsCoreSupportPatch(
                 // gms also has a 'subscribedfeeds' authority, check for that one too
                 val subFeedsUriPrefix = "content://subscribedfeeds"
                 if (str.startsWith(subFeedsUriPrefix)) {
-                    return str.replace(subFeedsUriPrefix, "content://$gmsCoreVendorGroupId.subscribedfeeds")
+                    return str.replace(subFeedsUriPrefix, "content://$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds")
                 }
             }
 
@@ -231,7 +214,7 @@ fun gmsCoreSupportPatch(
         )
 
         // Change the vendor of GmsCore in the extension.
-        GmsCoreSupportFingerprint.method.returnEarly(gmsCoreVendorGroupId!!)
+        GmsCoreSupportFingerprint.method.returnEarly(GMS_CORE_VENDOR_GROUP_ID!!)
 
         executeBlock()
     }
@@ -514,8 +497,6 @@ private object Constants {
  * @param fromPackageName The package name of the original app.
  * @param toPackageName The package name to fall back to if no custom package name is specified in patch options.
  * @param spoofedPackageSignature The signature of the package to spoof to.
- * @param gmsCoreVendorGroupIdOption The option to get the vendor group ID of GmsCore.
- * @param addStringResources If the GmsCore shared strings should be added to the patched app.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
@@ -523,22 +504,15 @@ fun gmsCoreSupportResourcePatch(
     fromPackageName: String,
     toPackageName: String,
     spoofedPackageSignature: String,
-    gmsCoreVendorGroupIdOption: Option<String>,
-    addStringResources: Boolean = true,
+    screen: BasePreferenceScreen.Screen,
     executeBlock: ResourcePatchContext.() -> Unit = {},
     block: ResourcePatchBuilder.() -> Unit = {},
 ) = resourcePatch {
     dependsOn(
-        changePackageNamePatch,
+        changePackageNamePatch
     )
 
-    val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
-
     execute {
-        // Some patches don't use shared String resources so there's no need to add them.
-        if (addStringResources) {
-        }
-
         /**
          * Add metadata to manifest to support spoofing the package name and signature of GmsCore.
          */
@@ -560,12 +534,12 @@ fun gmsCoreSupportResourcePatch(
 
                 // Spoof package name and signature.
                 applicationNode.adoptChild("meta-data") {
-                    setAttribute("android:name", "$gmsCoreVendorGroupId.android.gms.SPOOFED_PACKAGE_NAME")
+                    setAttribute("android:name", "$GMS_CORE_VENDOR_GROUP_ID.android.gms.SPOOFED_PACKAGE_NAME")
                     setAttribute("android:value", fromPackageName)
                 }
 
                 applicationNode.adoptChild("meta-data") {
-                    setAttribute("android:name", "$gmsCoreVendorGroupId.android.gms.SPOOFED_PACKAGE_SIGNATURE")
+                    setAttribute("android:name", "$GMS_CORE_VENDOR_GROUP_ID.android.gms.SPOOFED_PACKAGE_SIGNATURE")
                     setAttribute("android:value", spoofedPackageSignature)
                 }
 
@@ -573,7 +547,7 @@ fun gmsCoreSupportResourcePatch(
                 applicationNode.adoptChild("meta-data") {
                     // TODO: The name of this metadata should be dynamic.
                     setAttribute("android:name", "app.revanced.MICROG_PACKAGE_NAME")
-                    setAttribute("android:value", "$gmsCoreVendorGroupId.android.gms")
+                    setAttribute("android:value", "$GMS_CORE_VENDOR_GROUP_ID.android.gms")
                 }
             }
         }
@@ -589,9 +563,9 @@ fun gmsCoreSupportResourcePatch(
                 "android:authorities=\"$fromPackageName" to "android:authorities=\"$packageName",
                 "$fromPackageName.permission.C2D_MESSAGE" to "$packageName.permission.C2D_MESSAGE",
                 "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$packageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
-                "com.google.android.c2dm" to "$gmsCoreVendorGroupId.android.c2dm",
-                "com.google.android.libraries.photos.api.mars" to "$gmsCoreVendorGroupId.android.apps.photos.api.mars",
-                "</queries>" to "<package android:name=\"$gmsCoreVendorGroupId.android.gms\"/></queries>",
+                "com.google.android.c2dm" to "$GMS_CORE_VENDOR_GROUP_ID.android.c2dm",
+                "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
+                "</queries>" to "<package android:name=\"$GMS_CORE_VENDOR_GROUP_ID.android.gms\"/></queries>",
             )
 
             val manifest = get("AndroidManifest.xml")
@@ -607,6 +581,15 @@ fun gmsCoreSupportResourcePatch(
 
         patchManifest()
         addSpoofingMetadata()
+
+        screen.addPreferences(
+            IntentPreference(
+                "microg_settings",
+                intent = IntentPreference.Intent("", "org.microg.gms.ui.SettingsActivity") {
+                    "$GMS_CORE_VENDOR_GROUP_ID.android.gms"
+                }
+            )
+        )
 
         executeBlock()
     }

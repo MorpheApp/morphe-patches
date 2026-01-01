@@ -1,6 +1,5 @@
 package app.morphe.patches.music.misc.gms
 
-import app.morphe.patcher.patch.Option
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.music.misc.gms.Constants.MORPHE_MUSIC_PACKAGE_NAME
@@ -12,7 +11,6 @@ import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
-import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 
 @Suppress("unused")
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
@@ -37,32 +35,19 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     )
 }
 
-private fun gmsCoreSupportResourcePatch(
-    gmsCoreVendorGroupIdOption: Option<String>,
-) = app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
-    fromPackageName = MUSIC_PACKAGE_NAME,
-    toPackageName = MORPHE_MUSIC_PACKAGE_NAME,
-    gmsCoreVendorGroupIdOption = gmsCoreVendorGroupIdOption,
-    spoofedPackageSignature = "afb0fed5eeaebdd86f56a97742f4b6b33ef59875",
-    executeBlock = {
-
-        val gmsCoreVendorGroupId by gmsCoreVendorGroupIdOption
-
-        PreferenceScreen.MISC.addPreferences(
-            IntentPreference(
-                "microg_settings",
-                intent = IntentPreference.Intent("", "org.microg.gms.ui.SettingsActivity") {
-                    "$gmsCoreVendorGroupId.android.gms"
-                }
+private fun gmsCoreSupportResourcePatch() =
+    app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
+        fromPackageName = MUSIC_PACKAGE_NAME,
+        toPackageName = MORPHE_MUSIC_PACKAGE_NAME,
+        spoofedPackageSignature = "afb0fed5eeaebdd86f56a97742f4b6b33ef59875",
+        screen = PreferenceScreen.MISC,
+        block = {
+            dependsOn(
+                settingsPatch,
+                fileProviderPatch(
+                    MUSIC_PACKAGE_NAME,
+                    MORPHE_MUSIC_PACKAGE_NAME
+                )
             )
-        )
-    }
-) {
-    dependsOn(
-        settingsPatch,
-        fileProviderPatch(
-            MUSIC_PACKAGE_NAME,
-            MORPHE_MUSIC_PACKAGE_NAME
-        )
+        }
     )
-}
