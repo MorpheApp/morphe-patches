@@ -49,14 +49,6 @@ val HideWatchRestrictedVideoBoxPatch = bytecodePatch(
                 showBoxMethodClassDef.methods.find { it.name == showBoxMethodRef.name }
                     ?: throw PatchException("Show Box method not found!")
 
-            Logger.getLogger(this::class.java.name).info(
-                showBoxMethod.name
-            )
-
-            Logger.getLogger(this::class.java.name).info(
-                showBoxMethod.definingClass
-            )
-
             showBoxMethod.addInstructions(
                 0,
 
