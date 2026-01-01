@@ -4,19 +4,23 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_43_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableAutoCaptionsPatch;"
 
-val autoCaptionsPatch = bytecodePatch(
+@Suppress("unused")
+val disableAutoCaptionsPatch = bytecodePatch(
     name = "Disable auto captions",
     description = "Adds an option to disable captions from being automatically enabled.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch
     )
 
     compatibleWith(
@@ -59,13 +63,13 @@ val autoCaptionsPatch = bytecodePatch(
             )
         }
 
-        StreamVolumeManagerFingerprint.match(
-            StreamVolumeManagerParentFingerprint.originalClassDef
-        ).method.apply {
-            addInstructions(
-                0,
-
-                """
+        if (is_20_43_or_greater) {
+            StreamVolumeManagerFingerprint.match(
+                StreamVolumeManagerParentFingerprint.originalClassDef
+            ).method.apply {
+                addInstructions(
+                    0,
+                    """
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions()Z
                     move-result v0
                     if-eqz v0, :no_volume_auto_captions_enabled
@@ -73,7 +77,8 @@ val autoCaptionsPatch = bytecodePatch(
                     :no_volume_auto_captions_enabled
                     nop
                 """
-            )
+                )
+            }
         }
     }
 }

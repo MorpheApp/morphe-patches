@@ -481,8 +481,8 @@ public final class app/morphe/patches/youtube/interaction/swipecontrols/SwipeCon
 	public static final fun getSwipeControlsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
-public final class app/morphe/patches/youtube/layout/autocaptions/AutoCaptionsPatchKt {
-	public static final fun getAutoCaptionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
+public final class app/morphe/patches/youtube/layout/autocaptions/DisableAutoCaptionsPatchKt {
+	public static final fun getDisableAutoCaptionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
 public final class app/morphe/patches/youtube/layout/branding/CustomBrandingPatchKt {
@@ -744,6 +744,7 @@ public final class app/morphe/patches/youtube/misc/playservice/VersionCheckPatch
 	public static final fun is_20_37_or_greater ()Z
 	public static final fun is_20_39_or_greater ()Z
 	public static final fun is_20_41_or_greater ()Z
+	public static final fun is_20_43_or_greater ()Z
 	public static final fun is_20_45_or_greater ()Z
 	public static final fun is_20_46_or_greater ()Z
 	public static final fun is_20_49_or_greater ()Z
