@@ -4,16 +4,16 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class DisableAutoCaptionsPatch {
-    public enum DisableAutoCaptionsStyle {
+public class AutoCaptionsPatch {
+    public enum AutoCaptionsStyle {
         KEEP_BOTH(0),
         DISABLE_BOTH(1),
         WITH_VOLUME_ONLY(2),
         WITHOUT_VOLUME_ONLY(3);
 
         @Nullable
-        static DisableAutoCaptionsPatch.DisableAutoCaptionsStyle blockTypeFromOrdinal(int blockType) {
-            for (DisableAutoCaptionsPatch.DisableAutoCaptionsStyle value : values()) {
+        static AutoCaptionsPatch.AutoCaptionsStyle blockTypeFromOrdinal(int blockType) {
+            for (AutoCaptionsPatch.AutoCaptionsStyle value : values()) {
                 if (value.blockType == blockType) {
                     return value;
                 }
@@ -24,7 +24,7 @@ public class DisableAutoCaptionsPatch {
 
         final int blockType;
 
-        DisableAutoCaptionsStyle(int blockType) {
+        AutoCaptionsStyle(int blockType) {
             this.blockType = blockType;
         }
     }
@@ -35,8 +35,8 @@ public class DisableAutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions() {
-        DisableAutoCaptionsStyle blockType = Settings.DISABLE_AUTO_CAPTIONS_STYLE.get();
-        return (blockType == DisableAutoCaptionsStyle.KEEP_BOTH || blockType == DisableAutoCaptionsStyle.WITH_VOLUME_ONLY)
+        AutoCaptionsStyle blockType = Settings.AUTO_CAPTIONS_STYLE.get();
+        return (blockType == AutoCaptionsStyle.KEEP_BOTH || blockType == AutoCaptionsStyle.WITH_VOLUME_ONLY)
                     &&
                 !captionsButtonStatus;
     }
@@ -45,8 +45,8 @@ public class DisableAutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableMuteAutoCaptions() {
-        DisableAutoCaptionsStyle blockType = Settings.DISABLE_AUTO_CAPTIONS_STYLE.get();
-        return !((blockType == DisableAutoCaptionsStyle.KEEP_BOTH || blockType == DisableAutoCaptionsStyle.WITHOUT_VOLUME_ONLY)
+        AutoCaptionsStyle blockType = Settings.AUTO_CAPTIONS_STYLE.get();
+        return !((blockType == AutoCaptionsStyle.KEEP_BOTH || blockType == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY)
                     &&
                 !captionsButtonStatus);
     }

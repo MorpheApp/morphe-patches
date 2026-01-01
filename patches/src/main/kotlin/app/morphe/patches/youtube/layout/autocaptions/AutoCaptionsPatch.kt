@@ -10,10 +10,10 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/DisableAutoCaptionsPatch;"
+    "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
 
-val autoCaptionsPatch = bytecodePatch(
-    name = "Disable auto captions",
+val AutoCaptionsPatch = bytecodePatch(
+    name = "Auto captions",
     description = "Adds an option to disable captions from being automatically enabled.",
 ) {
     dependsOn(
@@ -33,7 +33,7 @@ val autoCaptionsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_auto_captions"),
+            SwitchPreference("morphe_auto_captions"),
         )
 
         SubtitleTrackFingerprint.method.addInstructions(
