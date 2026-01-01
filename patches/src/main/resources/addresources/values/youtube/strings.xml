@@ -861,6 +861,11 @@ Settings → Playback → Autoplay next video"</string>
     <string name="morphe_player_overlay_opacity_summary">Opacity value between 0-100, where 0 is transparent</string>
     <string name="morphe_player_overlay_opacity_invalid_toast">Player overlay opacity must be between 0-100</string>
 
+    <!-- layout.player.restrictedvideoconfirmation.RestrictedVideoConfirmationPatch -->
+    <string name="morphe_hide_watch_restricted_video_box_title">Hide confirm watching restricted video box</string>
+    <string name="morphe_hide_watch_restricted_video_box_summary_on">Box is hidden</string>
+    <string name="morphe_hide_watch_restricted_video_box_summary_off">Box is shown</string>
+
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
     <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
     <string name="morphe_ryd_failure_connection_timeout">Dislikes are temporarily not available (API timed out)</string>

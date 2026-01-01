@@ -170,6 +170,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
+    public static final BooleanSetting RESTRICTED_VIDEO_BOX = new BooleanSetting("morphe_restricted_video_box", FALSE);
     public static final BooleanSetting PLAYER_POPUP_PANELS = new BooleanSetting("morphe_hide_player_popup_panels", FALSE);
 
     // Miniplayer
