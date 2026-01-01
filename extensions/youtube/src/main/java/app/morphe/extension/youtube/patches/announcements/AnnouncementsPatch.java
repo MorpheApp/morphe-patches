@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import app.morphe.extension.shared.ui.CustomDialog;
 import org.json.JSONArray;
 
 import java.io.IOException;
@@ -23,6 +22,7 @@ import java.time.LocalDateTime;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.announcements.requests.AnnouncementsRoutes;
 import app.morphe.extension.youtube.settings.Settings;

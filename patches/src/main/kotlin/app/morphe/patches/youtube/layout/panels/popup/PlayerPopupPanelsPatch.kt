@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.panels.popup
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -18,27 +16,23 @@ val playerPopupPanelsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.panels.popup.playerPopupPanelsPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_player_popup_panels"),
         )
 
-        engagementPanelControllerFingerprint.method.addInstructionsWithLabels(
+        EngagementPanelControllerFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disablePlayerPopupPanels()Z

@@ -5,25 +5,26 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -37,7 +38,6 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         openVideosFullscreenHookPatch,
         navigationBarHookPatch,
         versionCheckPatch,
@@ -46,23 +46,20 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.shortsplayer.shortsPlayerTypePatch")
-
         PreferenceScreen.SHORTS.addPreferences(
             ListPreference("morphe_shorts_player_type")
         )
 
         // Activity is used as the context to launch an Intent.
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
                     "setMainActivity(Landroid/app/Activity;)V",
@@ -70,73 +67,82 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
         // Find the obfuscated method name for PlaybackStartDescriptor.videoId()
         val (videoIdStartMethod, videoIdIndex) = if (is_20_39_or_greater) {
-            watchPanelVideoIdFingerprint.let {
+            WatchPanelVideoIdFingerprint.let {
                 it.method to it.instructionMatches.last().index
             }
         } else {
-            playbackStartFeatureFlagFingerprint.let {
+            PlaybackStartFeatureFlagFingerprint.let {
                 it.method to it.instructionMatches.first().index
             }
         }
         val playbackStartVideoIdMethodName = navigate(videoIdStartMethod).to(videoIdIndex).stop().name
 
-        fun extensionInstructions(playbackStartRegister: Int, freeRegister: Int) =
+        ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
+            0,
             """
-                invoke-virtual { v$playbackStartRegister }, Lcom/google/android/libraries/youtube/player/model/PlaybackStartDescriptor;->$playbackStartVideoIdMethodName()Ljava/lang/String;
-                move-result-object v$freeRegister
-                invoke-static { v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->openShort(Ljava/lang/String;)Z
-                move-result v$freeRegister
-                if-eqz v$freeRegister, :disabled
+                move-object/from16 v0, p1
+                
+                invoke-virtual { v0 }, Lcom/google/android/libraries/youtube/player/model/PlaybackStartDescriptor;->$playbackStartVideoIdMethodName()Ljava/lang/String;
+                move-result-object v1
+                invoke-static { v1 }, $EXTENSION_CLASS_DESCRIPTOR->openShort(Ljava/lang/String;)Z
+                move-result v1
+                if-eqz v1, :disabled
                 return-void
                 
                 :disabled
                 nop
             """
-
-        if (is_19_25_or_greater) {
-            shortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
-                0,
-                """
-                    move-object/from16 v0, p1
-                    ${extensionInstructions(0, 1)}
-                """
-            )
-        } else {
-            shortsPlaybackIntentLegacyFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val playbackStartRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
-                    val insertIndex = index + 2
-                    val freeRegister = findFreeRegister(insertIndex, playbackStartRegister)
-
-                    addInstructionsWithLabels(
-                        insertIndex,
-                        extensionInstructions(playbackStartRegister, freeRegister)
-                    )
-                }
-            }
-        }
+        )
 
         // Fix issue with back button exiting the app instead of minimizing the player.
-        // Without this change this issue can be difficult to reproduce, but seems to occur
-        // most often with 'open video in regular player' and not open in fullscreen player.
-        exitVideoPlayerFingerprint.method.apply {
+        ExitVideoPlayerFingerprint.method.apply {
             // Method call for Activity.finish()
-            val finishIndex = indexOfFirstInstructionOrThrow {
+            val finishIndexFirst = indexOfFirstInstructionOrThrow {
                 val reference = getReference<MethodReference>()
                 reference?.name == "finish"
             }
 
-            // Index of PlayerType.isWatchWhileMaximizedOrFullscreen()
-            val index = indexOfFirstInstructionReversedOrThrow(finishIndex, Opcode.MOVE_RESULT)
-            val register = getInstruction<OneRegisterInstruction>(index).registerA
+            // Second Activity.finish() call. Has been present since 19.x but started
+            // to interfere with back to exit fullscreen around 20.47.
+            val finishIndexSecond = indexOfFirstInstruction(finishIndexFirst + 1) {
+                val reference = getReference<MethodReference>()
+                reference?.name == "finish"
+            }
+            val getBooleanFieldIndex = indexOfFirstInstructionReversedOrThrow(finishIndexSecond) {
+                opcode == Opcode.IGET_BOOLEAN
+            }
+            val booleanRegister = getInstruction<TwoRegisterInstruction>(getBooleanFieldIndex).registerA
 
             addInstructions(
-                index + 1,
+                getBooleanFieldIndex + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit(Z)Z    
-                    move-result v$register
+                    invoke-static { v$booleanRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit(Z)Z    
+                    move-result v$booleanRegister
                 """
+            )
+
+            // Surround first activity.finish() and return-void with conditional check.
+            val returnVoidIndex = indexOfFirstInstructionOrThrow(
+                finishIndexFirst, Opcode.RETURN_VOID
+            )
+            // Find free register using index after return void (new control flow path added below).
+            val freeRegister = findFreeRegister(
+                returnVoidIndex + 1,
+                // Exclude all registers used by only instruction we will skip over.
+                getInstruction(finishIndexFirst).registersUsed
+            )
+
+            addInstructionsAtControlFlowLabel(
+                finishIndexFirst,
+                """
+                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :doNotCallActivityFinish
+                """,
+                ExternalLabel(
+                    "doNotCallActivityFinish",
+                    getInstruction(returnVoidIndex + 1)
+                )
             )
         }
     }

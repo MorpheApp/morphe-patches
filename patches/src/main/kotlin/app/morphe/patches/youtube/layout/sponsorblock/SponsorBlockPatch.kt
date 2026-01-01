@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -19,9 +17,9 @@ import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.layoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.seekbarFingerprint
-import app.morphe.patches.youtube.shared.seekbarOnDrawFingerprint
+import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.patches.youtube.shared.SeekbarFingerprint
+import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
@@ -42,13 +40,10 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
         playerControlsPatch,
     )
 
     execute {
-        addResources("youtube", "layout.sponsorblock.sponsorBlockResourcePatch")
-
         PreferenceScreen.SPONSORBLOCK.addPreferences(
             // SB setting is old code with lots of custom preferences and updating behavior.
             // Added as a preference group and not a fragment so the preferences are searchable.
@@ -132,11 +127,10 @@ val sponsorBlockPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
@@ -154,8 +148,8 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Set seekbar draw rectangle.
         val rectangleFieldName: FieldReference
-        rectangleFieldInvalidatorFingerprint.match(
-            seekbarFingerprint.originalClassDef
+        RectangleFieldInvalidatorFingerprint.match(
+            SeekbarFingerprint.originalClassDef
         ).let {
             it.method.apply {
                 val rectangleIndex = indexOfFirstInstructionReversedOrThrow(
@@ -170,10 +164,10 @@ val sponsorBlockPatch = bytecodePatch(
         // Seekbar drawing.
 
         // Shared fingerprint and indexes may have changed.
-        seekbarOnDrawFingerprint.clearMatch()
+        SeekbarOnDrawFingerprint.clearMatch()
         // Cannot match using original immutable class because
         // class may have been modified by other patches
-        seekbarOnDrawFingerprint.match(seekbarFingerprint.classDef).let {
+        SeekbarOnDrawFingerprint.match(SeekbarFingerprint.classDef).let {
             it.method.apply {
                 // Set seekbar thickness.
                 val thicknessIndex = it.instructionMatches.last().index
@@ -219,7 +213,7 @@ val sponsorBlockPatch = bytecodePatch(
         injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
 
         // Append the new time to the player layout.
-        appendTimeFingerprint.let {
+        AppendTimeFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -238,7 +232,7 @@ val sponsorBlockPatch = bytecodePatch(
         onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR, "initialize")
 
         // Initialize the SponsorBlock view.
-        controlsOverlayFingerprint.match(layoutConstructorFingerprint.originalClassDef).let {
+        ControlsOverlayFingerprint.match(LayoutConstructorFingerprint.originalClassDef).let {
             val checkCastIndex = it.instructionMatches.last().index
             it.method.apply {
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
@@ -249,7 +243,7 @@ val sponsorBlockPatch = bytecodePatch(
             }
         }
 
-        adProgressTextViewVisibilityFingerprint.method.apply {
+        AdProgressTextViewVisibilityFingerprint.method.apply {
             val index = indexOfAdProgressTextViewVisibilityInstruction(this)
             val register = getInstruction<FiveRegisterInstruction>(index).registerD
 

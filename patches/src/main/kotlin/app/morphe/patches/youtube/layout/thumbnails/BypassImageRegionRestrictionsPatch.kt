@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.thumbnails
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.imageurlhook.addImageUrlHook
@@ -21,23 +19,19 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         cronetImageUrlHookPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.thumbnails.bypassImageRegionRestrictionsPatch")
-
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_bypass_image_region_restrictions"),
         )

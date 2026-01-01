@@ -1,6 +1,23 @@
 package app.morphe.patches.shared.misc.checks
 
-import android.os.Build.*
+import android.os.Build.BOARD
+import android.os.Build.BOOTLOADER
+import android.os.Build.BRAND
+import android.os.Build.CPU_ABI
+import android.os.Build.CPU_ABI2
+import android.os.Build.DEVICE
+import android.os.Build.DISPLAY
+import android.os.Build.FINGERPRINT
+import android.os.Build.HARDWARE
+import android.os.Build.HOST
+import android.os.Build.ID
+import android.os.Build.MANUFACTURER
+import android.os.Build.MODEL
+import android.os.Build.PRODUCT
+import android.os.Build.RADIO
+import android.os.Build.TAGS
+import android.os.Build.TYPE
+import android.os.Build.USER
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.Patch
@@ -8,8 +25,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableEncodedValue
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableLongEncodedValue
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableStringEncodedValue
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import com.android.tools.smali.dexlib2.immutable.value.ImmutableLongEncodedValue
 import com.android.tools.smali.dexlib2.immutable.value.ImmutableStringEncodedValue
 import java.nio.charset.StandardCharsets
@@ -31,12 +47,9 @@ fun checkEnvironmentPatch(
 
     dependsOn(
         extensionPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("shared", "misc.checks.checkEnvironmentPatch")
-
         fun setPatchInfo() {
             fun <T : MutableEncodedValue> Fingerprint.setClassFields(vararg fieldNameValues: Pair<String, T>) {
                 val fieldNameValueMap = mapOf(*fieldNameValues)
@@ -46,12 +59,12 @@ fun checkEnvironmentPatch(
                 }
             }
 
-            patchInfoFingerprint.setClassFields(
+            PatchInfoFingerprint.setClassFields(
                 "PATCH_TIME" to System.currentTimeMillis().encoded,
             )
 
             fun setBuildInfo() {
-                patchInfoBuildFingerprint.setClassFields(
+                PatchInfoBuildFingerprint.setClassFields(
                     "PATCH_BOARD" to BOARD.encodedAndHashed,
                     "PATCH_BOOTLOADER" to BOOTLOADER.encodedAndHashed,
                     "PATCH_BRAND" to BRAND.encodedAndHashed,
@@ -82,7 +95,7 @@ fun checkEnvironmentPatch(
             }
         }
 
-        fun invokeCheck() = mainActivityOnCreateFingerprint.method.addInstruction(
+        fun invokeCheck() = YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->check(Landroid/app/Activity;)V",
         )

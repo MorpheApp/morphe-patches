@@ -1,9 +1,37 @@
+/*
+ * Copyright 2025 Morphe.
+ * https://github.com/morpheapp/morphe-patches
+ *
+ * File-Specific License Notice (GPLv3 Section 7 Additional Permission).
+ *
+ * This file is part of the Morphe patches project and is licensed under
+ * the GNU General Public License version 3 (GPLv3), with the Additional
+ * Terms under Section 7 described in the Morphe patches LICENSE file.
+ *
+ * https://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * File-Specific Exception to Section 7b:
+ * -------------------------------------
+ * Section 7b (Attribution Requirement) of the Morphe patches LICENSE
+ * does not apply to THIS FILE. Use of this file does NOT require any
+ * user-facing, in-application, or UI-visible attribution.
+ *
+ * For this file only, attribution under Section 7b is satisfied by
+ * retaining this comment block in the source code of this file.
+ *
+ * Distribution and Derivative Works:
+ * ----------------------------------
+ * This comment block MUST be preserved in all copies, distributions,
+ * and derivative works of this file, whether in source or modified
+ * form.
+ *
+ * All other terms of the Morphe Patches LICENSE, including Section 7c
+ * (Project Name Restriction) and the GPLv3 itself, remain fully
+  * applicable to this file.
+ */
+
 package app.morphe.util
 
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
-import app.morphe.patcher.FingerprintBuilder
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -17,9 +45,18 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.getResourceId
+import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.Opcode.*
+import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT
+import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_OBJECT
+import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_WIDE
+import com.android.tools.smali.dexlib2.Opcode.RETURN
+import com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT
+import com.android.tools.smali.dexlib2.Opcode.RETURN_WIDE
+import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
@@ -1043,12 +1080,10 @@ internal fun BytecodePatchContext.addStaticFieldToExtension(
 /**
  * Set the custom condition for this fingerprint to check for a literal value.
  *
- * @param literalSupplier The supplier for the literal value to check for.
+ * @param customLiteral The literal value.
  */
-@Deprecated("Instead use instruction filters and `literal()`")
-fun FingerprintBuilder.literal(literalSupplier: () -> Long) {
-    custom { method, _ ->
+@Deprecated("Instead use InstructionFilter and `literal()`")
+fun customLiteral(literalSupplier: () -> Long): ((method: Method, classDef: ClassDef) -> Boolean) =
+    { method, _ ->
         method.containsLiteralInstruction(literalSupplier())
     }
-}
-

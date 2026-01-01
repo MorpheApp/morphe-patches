@@ -1,13 +1,11 @@
 package app.morphe.patches.youtube.layout.formfactor
 
-import app.morphe.patcher.InstructionLocation.*
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationButtonsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -27,42 +25,38 @@ val changeFormFactorPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         navigationButtonsPatch
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.formfactor.changeFormFactorPatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             ListPreference("morphe_change_form_factor")
         )
 
         hookNavigationButtonCreated(EXTENSION_CLASS_DESCRIPTOR)
 
-        val createPlayerRequestBodyWithModelFingerprint = fingerprint {
-            accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-            returns("L")
-            parameters()
-            instructions(
+        val createPlayerRequestBodyWithModelFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "L",
+            parameters = listOf(),
+            filters = listOf(
                 fieldAccess(smali = "Landroid/os/Build;->MODEL:Ljava/lang/String;"),
                 fieldAccess(
-                    definingClass = formFactorEnumConstructorFingerprint.originalClassDef.type,
+                    definingClass = FormFactorEnumConstructorFingerprint.originalClassDef.type,
                     type = "I",
                     location = MatchAfterWithin(50)
                 )
             )
-        }
+        )
 
         createPlayerRequestBodyWithModelFingerprint.let {
             it.method.apply {

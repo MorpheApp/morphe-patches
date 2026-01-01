@@ -1,7 +1,6 @@
 package app.morphe.extension.youtube.shared
 
 import app.morphe.extension.shared.Logger
-import app.morphe.extension.youtube.Event
 
 /**
  * Regular player type.

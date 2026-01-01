@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.interaction.swipecontrols
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -17,7 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityConstructorFingerprint
+import app.morphe.patches.youtube.shared.MainActivityConstructorFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.insertLiteralOverride
@@ -31,13 +29,10 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/s
 private val swipeControlsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.swipecontrols.swipeControlsResourcePatch")
-
         // If fullscreen swipe is enabled in newer versions the app can crash.
         // It likely is caused by conflicting experimental flags that are never enabled together.
         // Flag was completely removed in 20.34+
@@ -99,17 +94,16 @@ val swipeControlsPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        val wrapperClass = swipeControlsHostActivityFingerprint.classDef
-        val targetClass = mainActivityConstructorFingerprint.classDef
+        val wrapperClass = SwipeControlsHostActivityFingerprint.classDef
+        val targetClass = MainActivityConstructorFingerprint.classDef
 
         // Inject the wrapper class from the extension into the class hierarchy of MainActivity.
         wrapperClass.setSuperClass(targetClass.superclass)
@@ -135,7 +129,7 @@ val swipeControlsPatch = bytecodePatch(
         // region patch to enable/disable swipe to change video.
 
         if (is_19_43_or_greater && !is_20_34_or_greater) {
-            swipeChangeVideoFingerprint.let {
+            SwipeChangeVideoFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.last().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->allowSwipeChangeVideo(Z)Z"

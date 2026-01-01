@@ -6,8 +6,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
-import app.morphe.patches.music.misc.gms.musicActivityOnCreateFingerprint
 import app.morphe.patches.music.misc.settings.PreferenceScreen
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -32,7 +32,7 @@ private val disableSplashAnimationPatch = bytecodePatch {
         // Could replace the lottie animation file with our own custom animation (app_launch.json),
         // but the animation is not always the same size as the launch screen and it's still
         // barely shown. Instead turn off the animation entirely (app will also launch a little faster).
-        cairoSplashAnimationConfigFingerprint.method.apply {
+        CairoSplashAnimationConfigFingerprint.method.apply {
             val literalIndex = indexOfFirstLiteralInstructionOrThrow(
                 getResourceId(ResourceType.LAYOUT, "main_activity_launch_animation")
             )
@@ -56,13 +56,12 @@ private val disableSplashAnimationPatch = bytecodePatch {
 
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
-    addResourcePatchName = "music",
     originalLauncherIconName = "ic_launcher_release",
     originalAppName = "@string/app_launcher_name",
     originalAppPackageName = MUSIC_PACKAGE_NAME,
     isYouTubeMusic = true,
     numberOfPresetAppNames = 5,
-    mainActivityOnCreateFingerprint = musicActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     mainActivityName = MUSIC_MAIN_ACTIVITY_NAME,
     activityAliasNameWithIntents = MUSIC_MAIN_ACTIVITY_NAME,
     preferenceScreen = PreferenceScreen.GENERAL,
@@ -74,7 +73,7 @@ val customBrandingPatch = baseCustomBrandingPatch(
             "com.google.android.apps.youtube.music"(
                 "7.29.52",
                 "8.10.52",
-                "8.46.57",
+                "8.37.56",
             )
         )
     }

@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.startupshortsreset
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
@@ -28,29 +26,25 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.startupshortsreset.disableResumingShortsOnStartupPatch")
-
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_disable_resuming_shorts_player"),
         )
 
         if (is_20_03_or_greater) {
-            userWasInShortsAlternativeFingerprint.let {
+            UserWasInShortsAlternativeFingerprint.let {
                 it.method.apply {
                     val match = it.instructionMatches[2]
                     val insertIndex = match.index + 1
@@ -66,7 +60,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
                 }
             }
         } else {
-            userWasInShortsLegacyFingerprint.method.apply {
+            UserWasInShortsLegacyFingerprint.method.apply {
                 val listenableInstructionIndex = indexOfFirstInstructionOrThrow {
                     opcode == Opcode.INVOKE_INTERFACE &&
                             getReference<MethodReference>()?.definingClass == "Lcom/google/common/util/concurrent/ListenableFuture;" &&
@@ -83,12 +77,12 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
                         return-void
                         :show_startup_shorts_player
                         nop
-                    """,
+                    """
                 )
             }
         }
 
-        userWasInShortsConfigFingerprint.method.addInstructions(
+        UserWasInShortsConfigFingerprint.method.addInstructions(
             0,
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer()Z

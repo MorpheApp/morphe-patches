@@ -1,7 +1,11 @@
 package app.morphe.patches.youtube.layout.hide.shorts
 
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.booleanOption
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -18,7 +22,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
+import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
@@ -27,12 +31,6 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnLate
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.booleanOption
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -54,15 +52,12 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
         val hideShortsAppShortcut by hideShortsAppShortcutOption
         val hideShortsWidget by hideShortsWidgetOption
-
-        addResources("youtube", "layout.hide.shorts.hideShortsComponentsResourcePatch")
 
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_hide_shorts_home"),
@@ -164,11 +159,10 @@ val hideShortsComponentsPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
@@ -203,16 +197,16 @@ val hideShortsComponentsPatch = bytecodePatch(
         // region Hide action buttons.
 
         if (is_20_22_or_greater) {
-            treeNodeResultListFingerprint.match(
-                componentContextParserFingerprint.originalClassDef,
+            TreeNodeResultListFingerprint.match(
+                ComponentContextParserFingerprint.originalClassDef,
             ).method.apply {
-                val conversionContextPathBuilderField = conversionContextFingerprintToString.originalClassDef
+                val conversionContextPathBuilderField = ConversionContextFingerprintToString.originalClassDef
                     .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
                 val insertIndex = implementation!!.instructions.lastIndex
                 val listRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
-                val registerProvider = getFreeRegisterProvider(insertIndex)
+                val registerProvider = getFreeRegisterProvider(insertIndex, 2)
                 val freeRegister = registerProvider.getFreeRegister()
                 val pathRegister = registerProvider.getFreeRegister()
 
@@ -223,7 +217,7 @@ val hideShortsComponentsPatch = bytecodePatch(
                         
                         # 20.41 field is the abstract superclass.
                         # Verify it's the expected subclass just in case.
-                        instance-of v$pathRegister, v$freeRegister, ${conversionContextFingerprintToString.classDef.type}
+                        instance-of v$pathRegister, v$freeRegister, ${ConversionContextFingerprintToString.classDef.type}
                         if-eqz v$pathRegister, :ignore
                         
                         iget-object v$pathRegister, v$freeRegister, $conversionContextPathBuilderField
@@ -240,8 +234,8 @@ val hideShortsComponentsPatch = bytecodePatch(
         // region Hide the navigation bar.
 
         // Hook to get the pivotBar view.
-        setPivotBarVisibilityFingerprint.match(
-            setPivotBarVisibilityParentFingerprint.originalClassDef,
+        SetPivotBarVisibilityFingerprint.match(
+            SetPivotBarVisibilityParentFingerprint.originalClassDef,
         ).let { result ->
             result.method.apply {
                 val insertIndex = result.instructionMatches.last().index
@@ -255,13 +249,13 @@ val hideShortsComponentsPatch = bytecodePatch(
         }
 
         // Hook to hide the shared navigation bar when the Shorts player is opened.
-        renderBottomNavigationBarFingerprint.match(
+        RenderBottomNavigationBarFingerprint.match(
             (if (is_20_45_or_greater) {
-                renderBottomNavigationBarParentFingerprint
+                RenderBottomNavigationBarParentFingerprint
             } else if (is_19_41_or_greater) {
-                renderBottomNavigationBarLegacy1941ParentFingerprint
+                RenderBottomNavigationBarLegacy1941ParentFingerprint
             } else {
-                legacyRenderBottomNavigationBarLegacyParentFingerprint
+                LegacyRenderBottomNavigationBarLegacyParentFingerprint
             }).originalClassDef
         ).method.addInstruction(
             0,
@@ -269,7 +263,7 @@ val hideShortsComponentsPatch = bytecodePatch(
         )
 
         // Hide the bottom bar container of the Shorts player.
-        shortsBottomBarContainerFingerprint.let {
+        ShortsBottomBarContainerFingerprint.let {
             it.method.apply {
                 val targetIndex = it.instructionMatches.last().index
                 val heightRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
@@ -299,12 +293,12 @@ val hideShortsComponentsPatch = bytecodePatch(
             // Since the buttons are native components and not Litho, it should be possible to
             // fix the RYD Shorts loading delay by asynchronously loading RYD and updating
             // the button text after RYD has loaded.
-            shortsExperimentalPlayerFeatureFlagFingerprint.method.returnLate(false)
+            ShortsExperimentalPlayerFeatureFlagFingerprint.method.returnLate(false)
 
             // Experimental UI renderer must also be disabled since it requires the
             // experimental Shorts player.  If this is enabled but Shorts player
             // is disabled then the app crashes when the Shorts player is opened.
-            renderNextUIFeatureFlagFingerprint.method.returnLate(false)
+            RenderNextUIFeatureFlagFingerprint.method.returnLate(false)
         }
 
         // endregion

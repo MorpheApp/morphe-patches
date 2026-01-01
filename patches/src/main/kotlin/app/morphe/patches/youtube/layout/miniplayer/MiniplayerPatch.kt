@@ -11,14 +11,27 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
-import app.morphe.patches.shared.misc.settings.preference.*
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
+import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.*
+import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_19_23_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_19_26_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_19_29_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_19_36_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_37_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -83,23 +96,19 @@ val miniplayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         miniplayerResourcePatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.miniplayer.miniplayerPatch")
-
         val preferences = mutableSetOf<BasePreference>()
 
 
@@ -245,8 +254,8 @@ val miniplayerPatch = bytecodePatch(
         // Parts of the YT code is removed in 20.37+ and the legacy player no longer works.
 
         if (!is_20_37_or_greater) {
-            miniplayerOverrideNoContextFingerprint.match(
-                miniplayerDimensionsCalculatorParentFingerprint.originalClassDef,
+            MiniplayerOverrideNoContextFingerprint.match(
+                MiniplayerDimensionsCalculatorParentFingerprint.originalClassDef,
             ).method.apply {
                 findReturnIndicesReversed().forEach { index ->
                     insertLegacyTabletMiniplayerOverride(
@@ -258,7 +267,7 @@ val miniplayerPatch = bytecodePatch(
             // endregion
 
             // region Legacy tablet miniplayer hooks.
-            miniplayerOverrideFingerprint.let {
+            MiniplayerOverrideFingerprint.let {
                 val appNameStringIndex = it.instructionMatches.last().index
                 navigate(it.originalMethod).to(appNameStringIndex).stop().apply {
                     findReturnIndicesReversed().forEach { index ->
@@ -269,7 +278,7 @@ val miniplayerPatch = bytecodePatch(
                 }
             }
 
-            miniplayerResponseModelSizeCheckFingerprint.let {
+            MiniplayerResponseModelSizeCheckFingerprint.let {
                 it.method.insertLegacyTabletMiniplayerOverride(it.instructionMatches.last().index)
             }
         }
@@ -278,7 +287,7 @@ val miniplayerPatch = bytecodePatch(
 
         // region Enable modern miniplayer.
 
-        miniplayerModernConstructorFingerprint.classDef.methods.forEach {
+        MiniplayerModernConstructorFingerprint.classDef.methods.forEach {
             it.apply {
                 if (AccessFlags.CONSTRUCTOR.isSet(accessFlags)) {
                     val iPutIndex = indexOfFirstInstructionOrThrow {
@@ -293,31 +302,31 @@ val miniplayerPatch = bytecodePatch(
         }
 
         if (is_19_23_or_greater) {
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_DRAG_DROP_FEATURE_KEY,
                 "getMiniplayerDragAndDrop",
             )
         }
 
         if (is_19_25_or_greater) {
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_MODERN_FEATURE_LEGACY_KEY,
                 "getModernMiniplayerOverride",
             )
 
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_MODERN_FEATURE_KEY,
                 "getModernFeatureFlagsActiveOverride",
             )
 
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_DOUBLE_TAP_FEATURE_KEY,
                 "getMiniplayerDoubleTapAction",
             )
         }
 
         if (is_19_26_or_greater) {
-            miniplayerModernConstructorFingerprint.method.apply {
+            MiniplayerModernConstructorFingerprint.method.apply {
                 val literalIndex = indexOfFirstLiteralInstructionOrThrow(
                     MINIPLAYER_INITIAL_SIZE_FEATURE_KEY,
                 )
@@ -334,7 +343,7 @@ val miniplayerPatch = bytecodePatch(
             }
 
             // Override a minimum size constant.
-            miniplayerMinimumSizeFingerprint.let {
+            MiniplayerMinimumSizeFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches[1].index
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -348,24 +357,24 @@ val miniplayerPatch = bytecodePatch(
         }
 
         if (is_19_36_or_greater) {
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY,
                 "getRoundedCorners",
             )
         }
 
         if (is_19_43_or_greater) {
-            miniplayerOnCloseHandlerFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerOnCloseHandlerFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_DISABLED_FEATURE_KEY,
                 "getMiniplayerOnCloseHandler"
             )
 
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
                 "getHorizontalDrag",
             )
 
-            miniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
                 "getMaximizeAnimation",
             )
@@ -377,8 +386,8 @@ val miniplayerPatch = bytecodePatch(
         // YT fixed this mistake in 19.17.
         // Fix this, by swapping the drawable resource values with each other.
         if (!is_19_17_or_greater) {
-            miniplayerModernExpandCloseDrawablesFingerprint.match(
-                miniplayerModernViewParentFingerprint.originalClassDef,
+            MiniplayerModernExpandCloseDrawablesFingerprint.match(
+                MiniplayerModernViewParentFingerprint.originalClassDef,
             ).method.apply {
                 listOf(
                     ytOutlinePictureInPictureWhite24 to ytOutlineXWhite24,
@@ -397,7 +406,7 @@ val miniplayerPatch = bytecodePatch(
         // region fix minimal miniplayer using the wrong pause/play bold icons.
 
         if (is_20_31_or_greater) {
-            miniplayerSetIconsFingerprint.method.apply {
+            MiniplayerSetIconsFingerprint.method.apply {
                 findInstructionIndicesReversedOrThrow {
                     val reference = getReference<MethodReference>()
                     opcode == Opcode.INVOKE_INTERFACE
@@ -421,15 +430,15 @@ val miniplayerPatch = bytecodePatch(
         // region Add hooks to hide modern miniplayer buttons.
 
         listOf(
-            miniplayerModernExpandButtonFingerprint to "hideMiniplayerExpandClose",
-            miniplayerModernCloseButtonFingerprint to "hideMiniplayerExpandClose",
-            miniplayerModernActionButtonFingerprint to "hideMiniplayerActionButton",
-            miniplayerModernRewindButtonFingerprint to "hideMiniplayerRewindForward",
-            miniplayerModernForwardButtonFingerprint to "hideMiniplayerRewindForward",
-            miniplayerModernOverlayViewFingerprint to "adjustMiniplayerOpacity"
+            MiniplayerModernExpandButtonFingerprint to "hideMiniplayerExpandClose",
+            MiniplayerModernCloseButtonFingerprint to "hideMiniplayerExpandClose",
+            MiniplayerModernActionButtonFingerprint to "hideMiniplayerActionButton",
+            MiniplayerModernRewindButtonFingerprint to "hideMiniplayerRewindForward",
+            MiniplayerModernForwardButtonFingerprint to "hideMiniplayerRewindForward",
+            MiniplayerModernOverlayViewFingerprint to "adjustMiniplayerOpacity"
         ).forEach { (fingerprint, methodName) ->
             fingerprint.match(
-                miniplayerModernViewParentFingerprint.classDef,
+                MiniplayerModernViewParentFingerprint.classDef,
             ).method.apply {
                 val index = fingerprint.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -441,8 +450,8 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
-        miniplayerModernAddViewListenerFingerprint.match(
-            miniplayerModernViewParentFingerprint.classDef,
+        MiniplayerModernAddViewListenerFingerprint.match(
+            MiniplayerModernViewParentFingerprint.classDef,
         ).method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->" +
@@ -458,7 +467,7 @@ val miniplayerPatch = bytecodePatch(
         // NOTE: Modern 2 uses the same video UI as the regular player except resized to smaller.
         // This patch code could be used to hide other player overlays that do not use Litho.
         if (!is_19_17_or_greater) {
-            playerOverlaysLayoutFingerprint.classDef.methods.add(
+            PlayerOverlaysLayoutFingerprint.classDef.methods.add(
                 ImmutableMethod(
                     YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME,
                     "addView",

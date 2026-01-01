@@ -5,7 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/patches/CheckWatchHistoryDomainNameResolutionPatch;"
@@ -25,8 +24,6 @@ internal fun checkWatchHistoryDomainNameResolutionPatch(
 
     execute {
         executeBlock()
-
-        addResources("shared", "misc.dns.checkWatchHistoryDomainNameResolutionPatch")
 
         mainActivityFingerprint.method.addInstruction(
             0,

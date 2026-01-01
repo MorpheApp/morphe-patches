@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.misc.backgroundplayback
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -15,6 +13,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.BackgroundPlaybackManagerShortsFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -37,7 +36,6 @@ val backgroundPlaybackPatch = bytecodePatch(
 ) {
     dependsOn(
         resourceMappingPatch,
-        addResourcesPatch,
         sharedExtensionPatch,
         playerTypeHookPatch,
         videoInformationPatch,
@@ -47,17 +45,14 @@ val backgroundPlaybackPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "misc.backgroundplayback.backgroundPlaybackPatch")
-
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_shorts_disable_background_playback")
         )
@@ -68,8 +63,8 @@ val backgroundPlaybackPatch = bytecodePatch(
         )
 
         arrayOf(
-            backgroundPlaybackManagerFingerprint to "isBackgroundPlaybackAllowed",
-            backgroundPlaybackManagerShortsFingerprint to "isBackgroundShortsPlaybackAllowed",
+            BackgroundPlaybackManagerFingerprint to "isBackgroundPlaybackAllowed",
+            BackgroundPlaybackManagerShortsFingerprint to "isBackgroundShortsPlaybackAllowed",
         ).forEach { (fingerprint, integrationsMethod) ->
             fingerprint.method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
@@ -87,7 +82,7 @@ val backgroundPlaybackPatch = bytecodePatch(
         }
 
         // Enable background playback option in YouTube settings
-        backgroundPlaybackSettingsFingerprint.originalMethod.apply {
+        BackgroundPlaybackSettingsFingerprint.originalMethod.apply {
             val booleanCalls = instructions.withIndex().filter {
                 it.value.getReference<MethodReference>()?.returnType == "Z"
             }
@@ -99,14 +94,14 @@ val backgroundPlaybackPatch = bytecodePatch(
         }
 
         // Force allowing background play for Shorts.
-        shortsBackgroundPlaybackFeatureFlagFingerprint.method.returnEarly(true)
+        ShortsBackgroundPlaybackFeatureFlagFingerprint.method.returnEarly(true)
 
         // Force allowing background play for videos labeled for kids.
-        kidsBackgroundPlaybackPolicyControllerFingerprint.method.returnEarly()
+        KidsBackgroundPlaybackPolicyControllerFingerprint.method.returnEarly()
 
         // Fix PiP buttons not working after locking/unlocking device screen.
         if (is_19_34_or_greater) {
-            pipInputConsumerFeatureFlagFingerprint.let {
+            PipInputConsumerFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     false

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Название приложения</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">Пользовательский</string>
+  <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
+  <string name="morphe_custom_branding_icon_entry_1">Оригинальная</string>
+  <string name="morphe_custom_branding_icon_entry_2">Мorphe чёрное</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe тёмный</string>
+  <string name="morphe_custom_branding_icon_entry_4">Мorphe светло</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">Пользовательский</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt;Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt;Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показывать снова</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Подмена видеопотоков</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Подмена видеопотоков клиента для предотвращения проблем с воспроизведением видео</string>
+  <string name="morphe_spoof_video_streams_title">Подменить видеопотоки</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Видеопотоки подменены
+
+Если Вы являетесь пользователем YouTube Premium, эта настройка может не потребоваться"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Видеопотоки не подменены
+
+Воспроизведение может не работать"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Отключение этой настройки может вызвать проблемы с воспроизведением.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Клиент по умолчанию</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Принудительно оригинальная звуковая дорожка</string>
+  <string name="morphe_force_original_audio_summary_on">Используется оригинальная звуковая дорожка</string>
+  <string name="morphe_force_original_audio_summary_off">Используется звуковая дорожка по умолчанию</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Для использования этой функции измените клиент в \"Подмене видеопотоков\" на любой, кроме Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Очищать ссылки для обмена</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Параметр отслеживания запросов удален из ссылок для обмена</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Параметр отслеживания запросов не удален из ссылок для обмена</string>
+  <string name="morphe_replace_music_with_youtube_title">Изменить ссылки для обмена на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Общие ссылки используют youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Общие ссылки используют music.youtube.com</string>
+</resources>

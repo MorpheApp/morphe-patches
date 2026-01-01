@@ -1,20 +1,21 @@
 package app.morphe.patches.music.interaction.permanentrepeat
 
-import com.android.tools.smali.dexlib2.Opcode
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import com.android.tools.smali.dexlib2.AccessFlags
-import app.morphe.patcher.fingerprint
+import com.android.tools.smali.dexlib2.Opcode
 
-internal val repeatTrackFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("L", "L")
-    opcodes(
+internal object RepeatTrackFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET_OBJECT,
         Opcode.IGET_OBJECT,
         Opcode.SGET_OBJECT,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
         Opcode.IF_NEZ
-    )
-    strings("w_st")
-}
+    ),
+    strings = listOf ("w_st")
+)

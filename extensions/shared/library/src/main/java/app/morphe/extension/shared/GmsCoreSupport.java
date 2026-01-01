@@ -252,17 +252,14 @@ public class GmsCoreSupport {
     }
 
     private static String getGmsCoreDownload() {
-        final var vendorGroupId = getGmsCoreVendorGroupId();
         //noinspection SwitchStatementWithTooFewBranches
-        return switch (vendorGroupId) {
-            // TODO: Update this.
-            case "app.revanced" -> "https://github.com/revanced/gmscore/releases/latest";
-            default -> vendorGroupId + ".android.gms";
+        return switch (getGmsCoreVendorGroupId()) {
+            case "app.revanced" -> "https://morphe.software/microg";
+            default -> getGmsCoreVendorGroupId() + ".android.gms";
         };
     }
 
     private static String getGmsCoreVendorGroupId() {
-        // TODO: Update this.
         return "app.revanced"; // Modified during patching.
     }
 }

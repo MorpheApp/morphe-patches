@@ -1,19 +1,17 @@
 package app.morphe.patches.shared.misc.spoof
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -51,28 +49,27 @@ internal fun spoofVideoStreamsPatch(
 ) {
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
-        addResources("shared", "misc.fix.playback.spoofVideoStreamsPatch")
-
-        mainActivityOnCreateFingerprint.method.addInstruction(
+        mainActivityOnCreateFingerprint.method.addInstructions(
             0,
-            "invoke-static { }, $extensionClassDescriptor->setClientOrderToUse()V"
+            """
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V       
+                invoke-static { }, $extensionClassDescriptor->setClientOrderToUse()V   
+            """
         )
 
         // TODO?: Force off 45708738L ?
 
         // region Enable extension helper method used by other patches
 
-        patchIncludedExtensionMethodFingerprint.method.returnEarly(true)
+        PatchIncludedExtensionMethodFingerprint.method.returnEarly(true)
 
         // endregion
 
         // region Block /initplayback requests to fall back to /get_watch requests.
 
 
-        buildInitPlaybackRequestFingerprint.let {
+        BuildInitPlaybackRequestFingerprint.let {
             it.method.apply {
                 val moveUriStringIndex = it.instructionMatches.first().index
                 val targetRegister = getInstruction<OneRegisterInstruction>(moveUriStringIndex).registerA
@@ -91,7 +88,7 @@ internal fun spoofVideoStreamsPatch(
 
         // region Block /get_watch requests to fall back to /player requests.
 
-        buildPlayerRequestURIFingerprint.let {
+        BuildPlayerRequestURIFingerprint.let {
             it.method.apply {
                 val invokeToStringIndex = it.instructionMatches.first().index
                 val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
@@ -110,10 +107,10 @@ internal fun spoofVideoStreamsPatch(
 
         // region Get replacement streams at player requests.
 
-        buildRequestFingerprint.method.apply {
+        BuildRequestFingerprint.method.apply {
             buildRequestMethod = this
 
-            val newRequestBuilderIndex = buildRequestFingerprint.instructionMatches.first().index
+            val newRequestBuilderIndex = BuildRequestFingerprint.instructionMatches.first().index
             buildRequestMethodUrlRegister = getInstruction<FiveRegisterInstruction>(newRequestBuilderIndex).registerD
             val freeRegister = findFreeRegister(newRequestBuilderIndex, buildRequestMethodUrlRegister)
 
@@ -129,11 +126,11 @@ internal fun spoofVideoStreamsPatch(
         // endregion
 
         // region Replace the streaming data with the replacement streams.
-
-        createStreamingDataFingerprint.method.apply {
+        
+        CreateStreamingDataFingerprint.method.apply {
             val setStreamDataMethodName = "patch_setStreamingData"
-            val resultMethodType = createStreamingDataFingerprint.classDef.type
-            val videoDetailsIndex = createStreamingDataFingerprint.instructionMatches.last().index
+            val resultMethodType = CreateStreamingDataFingerprint.classDef.type
+            val videoDetailsIndex = CreateStreamingDataFingerprint.instructionMatches.last().index
             val videoDetailsRegister = getInstruction<TwoRegisterInstruction>(videoDetailsIndex).registerA
             val videoDetailsClass = getInstruction(videoDetailsIndex).getReference<FieldReference>()!!.type
 
@@ -143,8 +140,8 @@ internal fun spoofVideoStreamsPatch(
                     "$resultMethodType->$setStreamDataMethodName($videoDetailsClass)V",
             )
 
-            val protobufClass = protobufClassParseByteBufferFingerprint.method.definingClass
-            val setStreamingDataIndex = createStreamingDataFingerprint.instructionMatches.first().index
+            val protobufClass = ProtobufClassParseByteBufferFingerprint.method.definingClass
+            val setStreamingDataIndex = CreateStreamingDataFingerprint.instructionMatches.first().index
 
             val playerProtoClass = getInstruction(setStreamingDataIndex + 1)
                 .getReference<FieldReference>()!!.definingClass
@@ -158,7 +155,7 @@ internal fun spoofVideoStreamsPatch(
             ).getReference<FieldReference>()
 
             // Use a helper method to avoid the need of picking out multiple free registers from the hooked code.
-            createStreamingDataFingerprint.classDef.methods.add(
+            CreateStreamingDataFingerprint.classDef.methods.add(
                 ImmutableMethod(
                     resultMethodType,
                     setStreamDataMethodName,
@@ -198,9 +195,9 @@ internal fun spoofVideoStreamsPatch(
                             
                             :disabled
                             return-void
-                        """,
+                        """
                     )
-                },
+                }
             )
         }
 
@@ -226,7 +223,7 @@ internal fun spoofVideoStreamsPatch(
         // Requesting streams intended for other platforms with a body tuned for Android could be the cause of 400 errors.
         // A proper fix may include modifying the request body to match the platforms expected body.
 
-        buildMediaDataSourceFingerprint.method.apply {
+        BuildMediaDataSourceFingerprint.method.apply {
             val targetIndex = instructions.lastIndex
 
             // Instructions are added just before the method returns,
@@ -252,7 +249,7 @@ internal fun spoofVideoStreamsPatch(
 
         // region Append spoof info.
 
-        nerdsStatsVideoFormatBuilderFingerprint.method.apply {
+        NerdsStatsVideoFormatBuilderFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
@@ -270,7 +267,7 @@ internal fun spoofVideoStreamsPatch(
 
         // region Fix iOS livestream current time.
 
-        hlsCurrentTimeFingerprint.let {
+        HlsCurrentTimeFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS_DESCRIPTOR->fixHLSCurrentTime(Z)Z"
@@ -282,8 +279,8 @@ internal fun spoofVideoStreamsPatch(
         // region Disable SABR playback.
         // If SABR is disabled, it seems 'MediaFetchHotConfig' may no longer need an override (not confirmed).
 
-        val (mediaFetchEnumClass, sabrFieldReference) = with(mediaFetchEnumConstructorFingerprint.method) {
-            val stringIndex = mediaFetchEnumConstructorFingerprint.stringMatches!!.first {
+        val (mediaFetchEnumClass, sabrFieldReference) = with(MediaFetchEnumConstructorFingerprint.method) {
+            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches!!.first {
                 it.string == DISABLED_BY_SABR_STREAMING_URI_STRING
             }.index
 
@@ -299,16 +296,16 @@ internal fun spoofVideoStreamsPatch(
             )
         }
 
-        val sabrFingerprint = fingerprint {
-            returns(mediaFetchEnumClass)
-            opcodes(
+        val sabrFingerprint = Fingerprint(
+            returnType = mediaFetchEnumClass,
+            filters = opcodesToFilters(
                 Opcode.SGET_OBJECT,
                 Opcode.RETURN_OBJECT,
-            )
-            custom { method, _ ->
+            ),
+            custom = { method, _ ->
                 !method.parameterTypes.isEmpty()
             }
-        }
+        )
         sabrFingerprint.method.addInstructionsWithLabels(
             0,
             """
@@ -327,7 +324,7 @@ internal fun spoofVideoStreamsPatch(
         // region turn off stream config replacement feature flag.
 
         if (fixMediaFetchHotConfig()) {
-            mediaFetchHotConfigFingerprint.let {
+            MediaFetchHotConfigFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useMediaFetchHotConfigReplacement(Z)Z"
@@ -336,7 +333,7 @@ internal fun spoofVideoStreamsPatch(
         }
 
         if (fixMediaFetchHotConfigAlternative()) {
-            mediaFetchHotConfigAlternativeFingerprint.let {
+            MediaFetchHotConfigAlternativeFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useMediaFetchHotConfigReplacement(Z)Z"
@@ -345,7 +342,7 @@ internal fun spoofVideoStreamsPatch(
         }
 
         if (fixParsePlaybackResponseFeatureFlag()) {
-            playbackStartDescriptorFeatureFlagFingerprint.let {
+            PlaybackStartDescriptorFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->usePlaybackStartFeatureFlag(Z)Z"

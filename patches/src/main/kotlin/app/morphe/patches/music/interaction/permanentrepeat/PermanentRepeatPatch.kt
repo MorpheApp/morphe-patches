@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -22,28 +20,25 @@ val permanentRepeatPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.apps.youtube.music"(
             "7.29.52",
             "8.10.52",
-            "8.46.57",
+            "8.37.56",
         )
     )
 
     execute {
-        addResources("music", "interaction.permanentrepeat.permanentRepeatPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_music_play_permanent_repeat"),
         )
 
-        val startIndex = repeatTrackFingerprint.instructionMatches.last().index
+        val startIndex = RepeatTrackFingerprint.instructionMatches.last().index
         val repeatIndex = startIndex + 1
 
-        repeatTrackFingerprint.method.apply {
+        RepeatTrackFingerprint.method.apply {
             // Start index is at a branch, but the same
             // register is clobbered in both branch paths.
             val freeRegister = findFreeRegister(startIndex + 1)

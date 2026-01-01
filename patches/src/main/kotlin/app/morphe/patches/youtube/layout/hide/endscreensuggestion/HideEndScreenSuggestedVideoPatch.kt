@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -26,32 +24,28 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_end_screen_suggested_video"),
         )
 
-        removeOnLayoutChangeListenerFingerprint.let {
+        RemoveOnLayoutChangeListenerFingerprint.let {
             val endScreenMethod = navigate(it.originalMethod).to(it.instructionMatches.last().index).stop()
 
             endScreenMethod.apply {
-                val autoNavStatusMethodName = autoNavStatusFingerprint.match(
-                    autoNavConstructorFingerprint.classDef
+                val autoNavStatusMethodName = AutoNavStatusFingerprint.match(
+                    AutoNavConstructorFingerprint.classDef
                 ).originalMethod.name
 
                 val invokeIndex = indexOfFirstInstructionOrThrow {

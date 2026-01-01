@@ -1,8 +1,16 @@
 package app.morphe.patches.shared.layout.branding
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.ResourcePatch
+import app.morphe.patcher.patch.ResourcePatchBuilder
+import app.morphe.patcher.patch.ResourcePatchContext
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -17,16 +25,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatch
-import app.morphe.patcher.patch.ResourcePatchBuilder
-import app.morphe.patcher.patch.ResourcePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.patch.stringOption
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -46,6 +44,7 @@ private val mipmapDirectories = mapOf(
 )
 
 private val iconStyleNames = arrayOf(
+    "black",
     "dark",
     "light",
 )
@@ -73,7 +72,6 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/pa
  * Shared custom branding patch for YouTube and YT Music.
  */
 internal fun baseCustomBrandingPatch(
-    addResourcePatchName: String,
     originalLauncherIconName: String,
     originalAppName: String,
     originalAppPackageName: String,
@@ -120,7 +118,6 @@ internal fun baseCustomBrandingPatch(
     block()
 
     dependsOn(
-        addResourcesPatch,
         resourceMappingPatch,
         bytecodePatch {
             execute {
@@ -129,9 +126,9 @@ internal fun baseCustomBrandingPatch(
                     "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->setBranding()V"
                 )
 
-                numberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
+                NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
 
-                notificationFingerprint.method.apply {
+                NotificationFingerprint.method.apply {
                     val getBuilderIndex = if (isYouTubeMusic) {
                         // YT Music the field is not a plain object type.
                         indexOfFirstInstructionOrThrow {
@@ -187,9 +184,6 @@ internal fun baseCustomBrandingPatch(
     }
 
     execute {
-        addResources("shared", "layout.branding.baseCustomBrandingPatch")
-        addResources(addResourcePatchName, "layout.branding.customBrandingPatch")
-
         preferenceScreen.addPreferences(
             if (customName != null ) {
                 ListPreference(

@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -34,15 +32,12 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         lithoFilterPatch,
         recyclerViewTreeHookPatch,
         resourceMappingPatch
     )
 
     execute {
-        addResources("youtube", "video.quality.advancedVideoQualityMenuPatch")
-
         settingsMenuVideoQualityGroup.add(
             SwitchPreference("morphe_advanced_video_quality_menu")
         )
@@ -61,7 +56,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
         // region Patch for the old type of the video quality menu.
         // Used for regular videos when spoofing to old app version,
         // and for the Shorts quality flyout on newer app versions.
-        videoQualityMenuViewInflateFingerprint.let {
+        VideoQualityMenuViewInflateFingerprint.let {
             it.method.apply {
                 val checkCastIndex = it.instructionMatches.last().index
                 val listViewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
@@ -75,7 +70,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
         }
 
         // Force YT to add the 'advanced' quality menu for Shorts.
-        videoQualityMenuOptionsFingerprint.let {
+        VideoQualityMenuOptionsFingerprint.let {
             val patternMatch = it.instructionMatches
             val startIndex = patternMatch.first().index
             val insertIndex = patternMatch.last().index

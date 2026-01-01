@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -23,18 +21,15 @@ val enableSeekbarTappingPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.seekbar.enableSeekbarTappingPatch")
-
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_seekbar_tapping"),
         )
 
         // Find the required methods to tap the seekbar.
-        val seekbarTappingMethods = onTouchEventHandlerFingerprint.let {
+        val seekbarTappingMethods = OnTouchEventHandlerFingerprint.let {
             fun getReference(index: Int) = it.method.getInstruction<ReferenceInstruction>(index)
                 .reference as MethodReference
 
@@ -44,7 +39,7 @@ val enableSeekbarTappingPatch = bytecodePatch(
             )
         }
 
-        seekbarTappingFingerprint.let {
+        SeekbarTappingFingerprint.let {
             val insertIndex = it.instructionMatches.last().index + 1
 
             it.method.apply {

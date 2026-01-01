@@ -6,7 +6,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.mainActivityOnCreateFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 @Suppress("unused")
 val forceOriginalAudioPatch = forceOriginalAudioPatch(
@@ -19,16 +19,15 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
 
         compatibleWith(
             "com.google.android.youtube"(
-                "19.43.41",
                 "20.14.43",
                 "20.21.37",
                 "20.31.42",
-                "20.46.41",
+                "20.37.48",
             )
         )
     },
     fixUseLocalizedAudioTrackFlag = { is_20_07_or_greater },
-    mainActivityOnCreateFingerprint = mainActivityOnCreateFingerprint,
+    mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     subclassExtensionClassDescriptor = "Lapp/morphe/extension/youtube/patches/ForceOriginalAudioPatch;",
     preferenceScreen = PreferenceScreen.VIDEO,
 )

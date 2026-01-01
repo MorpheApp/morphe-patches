@@ -2,8 +2,6 @@ package app.morphe.patches.youtube.layout.hide.signintotvpopup
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -20,28 +18,24 @@ val disableSignInToTvPopupPatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
-        addResourcesPatch,
         resourceMappingPatch
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.hide.signintotv.disableSignInToTvPopupPatch")
-
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_disable_signin_to_tv_popup"),
         )
 
-        signInToTvPopupFingerprint.method.addInstructionsWithLabels(
+        SignInToTvPopupFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableSignInToTvPopup()Z

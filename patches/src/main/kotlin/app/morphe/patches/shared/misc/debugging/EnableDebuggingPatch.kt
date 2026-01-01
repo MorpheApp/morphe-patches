@@ -6,8 +6,6 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -40,7 +38,6 @@ internal fun enableDebuggingPatch(
 ) {
 
     dependsOn(
-        addResourcesPatch,
         resourcePatch {
             execute {
                 copyResources(
@@ -65,8 +62,6 @@ internal fun enableDebuggingPatch(
 
     execute {
         executeBlock()
-
-        addResources("shared", "misc.debugging.enableDebuggingPatch")
 
         val preferences = mutableSetOf<BasePreference>(
             SwitchPreference("morphe_debug"),
@@ -105,8 +100,8 @@ internal fun enableDebuggingPatch(
         )
 
         // Hook the methods that look up if a feature flag is active.
-        experimentalBooleanFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
+        ExperimentalBooleanFeatureFlagFingerprint.match(
+            ExperimentalFeatureFlagParentFingerprint.originalClassDef
         ).method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -121,8 +116,8 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        experimentalDoubleFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
+        ExperimentalDoubleFeatureFlagFingerprint.match(
+            ExperimentalFeatureFlagParentFingerprint.originalClassDef
         ).method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_WIDE)
 
@@ -137,8 +132,8 @@ internal fun enableDebuggingPatch(
             )
         }
 
-        experimentalLongFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
+        ExperimentalLongFeatureFlagFingerprint.match(
+            ExperimentalFeatureFlagParentFingerprint.originalClassDef
         ).method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_WIDE)
 
@@ -153,8 +148,8 @@ internal fun enableDebuggingPatch(
             )
         }
 
-        if (hookStringFeatureFlag) experimentalStringFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
+        if (hookStringFeatureFlag) ExperimentalStringFeatureFlagFingerprint.match(
+            ExperimentalFeatureFlagParentFingerprint.originalClassDef
         ).method.apply {
             val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.MOVE_RESULT_OBJECT)
 

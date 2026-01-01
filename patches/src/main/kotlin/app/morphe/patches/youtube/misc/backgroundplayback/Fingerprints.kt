@@ -1,15 +1,17 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
-import app.morphe.patcher.fingerprint
-import app.morphe.util.literal
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.literal
+import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val backgroundPlaybackManagerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("Z")
-    parameters("L")
-    opcodes(
+internal object BackgroundPlaybackManagerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST_4,
         Opcode.IF_EQZ,
         Opcode.IGET,
@@ -36,13 +38,13 @@ internal val backgroundPlaybackManagerFingerprint = fingerprint {
         Opcode.IGET_BOOLEAN,
         Opcode.IF_EQZ,
     )
-}
+)
 
-internal val backgroundPlaybackSettingsFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Ljava/lang/String;")
-    parameters()
-    opcodes(
+internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
         Opcode.INVOKE_VIRTUAL,
@@ -50,15 +52,15 @@ internal val backgroundPlaybackSettingsFingerprint = fingerprint {
         Opcode.IF_EQZ,
         Opcode.IF_NEZ,
         Opcode.GOTO,
-    )
-    literal { prefBackgroundAndOfflineCategoryId }
-}
+    ),
+    custom = customLiteral { prefBackgroundAndOfflineCategoryId }
+)
 
-internal val kidsBackgroundPlaybackPolicyControllerFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("I", "L", "L")
-    opcodes(
+internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "L", "L"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.CONST_4,
         Opcode.IF_NE,
         Opcode.SGET_OBJECT,
@@ -67,32 +69,23 @@ internal val kidsBackgroundPlaybackPolicyControllerFingerprint = fingerprint {
         Opcode.CONST_4,
         Opcode.IF_NE,
         Opcode.IGET_OBJECT,
-    )
-    literal { 5 }
-}
+    ),
+    custom = customLiteral { 5 }
+)
 
-internal val backgroundPlaybackManagerShortsFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("Z")
-    parameters("L")
-    instructions(
-        app.morphe.patcher.literal(151635310)
+internal object ShortsBackgroundPlaybackFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45415425)
     )
-}
-
-internal val shortsBackgroundPlaybackFeatureFlagFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Z")
-    parameters()
-    instructions(
-        app.morphe.patcher.literal(45415425)
-    )
-}
+)
 
 // Fix 'E/InputDispatcher: Window handle pip_input_consumer has no registered input channel'
-internal val pipInputConsumerFeatureFlagFingerprint = fingerprint {
-    instructions(
+internal object PipInputConsumerFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
         // PiP input consumer feature flag.
-        app.morphe.patcher.literal(45638483L)
+        literal(45638483L)
     )
-}
+)

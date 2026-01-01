@@ -2,8 +2,6 @@ package app.morphe.patches.music.ad.video
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -19,26 +17,23 @@ val hideVideoAdsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.apps.youtube.music"(
             "7.29.52",
             "8.10.52",
-            "8.46.57",
+            "8.37.56",
         )
     )
 
     execute {
-        addResources("music", "ad.video.hideVideoAdsPatch")
-
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_music_hide_video_ads"),
         )
 
-        navigate(showVideoAdsParentFingerprint.originalMethod)
-            .to(showVideoAdsParentFingerprint.instructionMatches.first().index + 1)
+        navigate(ShowVideoAdsParentFingerprint.originalMethod)
+            .to(ShowVideoAdsParentFingerprint.instructionMatches.first().index + 1)
             .stop()
             .addInstructions(
                 0,

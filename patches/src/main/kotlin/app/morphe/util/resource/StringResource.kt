@@ -10,55 +10,73 @@ import java.util.logging.Logger
  *
  * @param name The name of the string.
  * @param value The value of the string.
- * @param formatted If the string is formatted. Defaults to `true`.
  */
 class StringResource(
     name: String,
-    val value: String,
-    val formatted: Boolean = true,
+    val value: String
 ) : BaseResource(name, "string") {
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {
-
-            fun String.validateAndroidStringEscaping() : String {
-                if (value.startsWith('"') && value.endsWith('"')) {
-                    // Raw strings allow unescaped single quote but not double quote.
-                    if (!value.substring(1, value.length - 1).contains(Regex("(?<!\\\\)[\"]"))) {
-                        return this
-                    }
-                } else {
-                    if (value.contains('\n')) {
-                        // Don't throw an exception, otherwise unnoticed mistakes
-                        // in Crowdin can cause patching failures.
-                        // Incorrectly escaped strings still work but do not display as intended.
-                        Logger.getLogger(StringResource.javaClass.name).warning(
-                            "String $name is not raw but contains encoded new line characters: $value")
-                    }
-                    if (!value.contains(Regex("(?<!\\\\)['\"]"))) {
-                        return this
-                    }
-                }
-
-                Logger.getLogger(StringResource.javaClass.name).warning(
-                    "String $name cannot contain unescaped quotes in value: $value")
-
-                return this
-            }
-
-            // if the string is un-formatted, explicitly add the formatted attribute
-            if (!formatted) setAttribute("formatted", "false")
-
-            textContent = value.validateAndroidStringEscaping()
+            textContent = sanitizeAndroidResourceString(name, value)
         }
 
+    override fun toString(): String {
+        return "StringResource(value='$value')"
+    }
+
     companion object {
+        // Matches unescaped double quotes.
+        private val UNESCAPED_DOUBLE_QUOTE = Regex("(?<!\\\\)\"")
+
+        // Matches unescaped single or double quotes.
+        private val UNESCAPED_QUOTE = Regex("(?<!\\\\)['\"]")
+
+        /**
+         * @param key String key
+         * @param value Text to validate and sanitize
+         * @param booleanThrowException If true, will throw an exception on problems; otherwise, sanitizes.
+         * @return sanitized string
+         */
+        internal fun sanitizeAndroidResourceString(
+            key: String,
+            value: String,
+            booleanThrowException: Boolean = false
+        ): String {
+            val logger = Logger.getLogger(StringResource::class.java.name)
+            var sanitized = value
+
+            // Could check for other invalid strings, but for now just check quotes.
+            if (value.startsWith('"') && value.endsWith('"')) {
+                // Raw strings allow unescaped single quotes but not double quotes.
+                val inner = value.substring(1, value.length - 1)
+                if (UNESCAPED_DOUBLE_QUOTE.containsMatchIn(inner)) {
+                    val message = "String $key contains unescaped double quotes: $value"
+                    if (booleanThrowException) throw IllegalArgumentException(message)
+                    logger.warning(message)
+                    sanitized = "\"" + UNESCAPED_DOUBLE_QUOTE.replace(inner, "") + "\""
+                }
+            } else {
+                if (value.contains('\n')) {
+                    val message = "String $key is not raw but contains newline characters: $value"
+                    if (booleanThrowException) throw IllegalArgumentException(message)
+                    logger.warning(message)
+                }
+
+                if (UNESCAPED_QUOTE.containsMatchIn(value)) {
+                    val message = "String $key contains unescaped quotes: $value"
+                    if (booleanThrowException) throw IllegalArgumentException(message)
+                    logger.warning(message)
+                    sanitized = UNESCAPED_QUOTE.replace(value, "")
+                }
+            }
+
+            return sanitized
+        }
+
         fun fromNode(node: Node): StringResource {
             val name = node.attributes.getNamedItem("name").textContent
             val value = node.textContent
-            // TODO: Should this be true by default? It is too in the constructor of StringResource.
-            val formatted = node.attributes.getNamedItem("formatted")?.textContent?.toBoolean() ?: true
-
-            return StringResource(name, value, formatted)
+            return StringResource(name, value)
         }
     }
 }

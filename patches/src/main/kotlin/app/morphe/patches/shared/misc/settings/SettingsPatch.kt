@@ -1,10 +1,10 @@
 package app.morphe.patches.shared.misc.settings
 
+//import app.morphe.patches.all.misc.resources.addResource
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.addResource
-import app.morphe.patches.all.misc.resources.addResources
+import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.branding.addBrandLicensePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -33,10 +33,10 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
 private val settingsColorPatch = bytecodePatch {
     finalize {
         if (lightThemeColor != null) {
-            themeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor!!)
+            ThemeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor!!)
         }
         if (darkThemeColor != null) {
-            themeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor!!)
+            ThemeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor!!)
         }
     }
 }
@@ -59,6 +59,8 @@ fun settingsPatch (
     )
 
     execute {
+        addAppResources("shared")
+
         copyResources(
             "settings",
             ResourceGroup("xml",
@@ -101,16 +103,13 @@ fun settingsPatch (
                 "morphe_settings_with_toolbar.xml"
             )
         )
-
-        addResources("shared", "misc.settings.settingsResourcePatch")
     }
 
     finalize {
         fun Node.addPreference(preference: BasePreference) {
             preference.serialize(ownerDocument) { resource ->
-                // TODO: Currently, resources can only be added to "values", which may not be the correct place.
-                //  It may be necessary to ask for the desired resourceValue in the future.
-                addResource("values", resource)
+                // FIXME? Not needed anymore?
+//                addResource("values", resource)
             }.let { preferenceNode ->
                 insertFirst(preferenceNode)
             }

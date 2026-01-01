@@ -10,8 +10,6 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findMethodFromToString
@@ -45,11 +43,7 @@ internal fun forceOriginalAudioPatch(
 
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
-        addResources("shared", "misc.audio.forceOriginalAudioPatch")
-
         preferenceScreen.addPreferences(
             SwitchPreference(
                 key = "morphe_force_original_audio",
@@ -65,13 +59,13 @@ internal fun forceOriginalAudioPatch(
         // Disable feature flag that ignores the default track flag
         // and instead overrides to the user region language.
         if (fixUseLocalizedAudioTrackFlag()) {
-            selectAudioStreamFingerprint.method.insertLiteralOverride(
-                selectAudioStreamFingerprint.instructionMatches.first().index,
+            SelectAudioStreamFingerprint.method.insertLiteralOverride(
+                SelectAudioStreamFingerprint.instructionMatches.first().index,
                 "$EXTENSION_CLASS_DESCRIPTOR->ignoreDefaultAudioStream(Z)Z"
             )
         }
 
-        formatStreamModelToStringFingerprint.let {
+        FormatStreamModelToStringFingerprint.let {
             val isDefaultAudioTrackMethod = it.originalMethod.findMethodFromToString("isDefaultAudioTrack=")
             val audioTrackDisplayNameMethod = it.originalMethod.findMethodFromToString("audioTrackDisplayName=")
             val audioTrackIdMethod = it.originalMethod.findMethodFromToString("audioTrackId=")

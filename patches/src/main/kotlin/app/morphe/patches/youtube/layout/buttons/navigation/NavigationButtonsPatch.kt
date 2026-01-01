@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -31,24 +29,20 @@ val navigationButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         navigationBarHookPatch,
         versionCheckPatch
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.buttons.navigation.navigationButtonsPatch")
-
         val preferences = mutableSetOf(
             SwitchPreference("morphe_hide_home_button"),
             SwitchPreference("morphe_hide_shorts_button"),
@@ -83,7 +77,7 @@ val navigationButtonsPatch = bytecodePatch(
         )
 
         // Switch create with notifications button.
-        addCreateButtonViewFingerprint.let {
+        AddCreateButtonViewFingerprint.let {
             it.method.apply {
                 val conditionalCheckIndex = it.instructionMatches[1].index
                 val conditionRegister =
@@ -100,7 +94,7 @@ val navigationButtonsPatch = bytecodePatch(
         }
 
         // Hide navigation button labels.
-        createPivotBarFingerprint.let {
+        CreatePivotBarFingerprint.let {
             it.method.apply {
                 val setTextIndex = it.instructionMatches.first().index
                 val targetRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerC
@@ -118,21 +112,24 @@ val navigationButtonsPatch = bytecodePatch(
 
         // Force on/off translucent effect on status bar and navigation buttons.
         if (is_19_25_or_greater) {
-            translucentNavigationStatusBarFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
+            arrayOf(
+                TranslucentNavigationStatusBarFeatureFlagFingerprint,
+                TranslucentNavigationStatusBarSecondaryFeatureFlagFingerprint
+            ).forEach { fingerprint ->
+                fingerprint.method.insertLiteralOverride(
+                    fingerprint.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
                 )
             }
 
-            translucentNavigationButtonsFeatureFlagFingerprint.let {
+            TranslucentNavigationButtonsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
                 )
             }
 
-            translucentNavigationButtonsSystemFeatureFlagFingerprint.let {
+            TranslucentNavigationButtonsSystemFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
@@ -141,7 +138,7 @@ val navigationButtonsPatch = bytecodePatch(
         }
 
         if (is_20_15_or_greater) {
-            animatedNavigationTabsFeatureFlagFingerprint.let {
+            AnimatedNavigationTabsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z"

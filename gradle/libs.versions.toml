@@ -6,10 +6,12 @@ smali = "b6365a84f4"
 #noinspection GradleDependency
 agp = "8.2.2"
 annotation = "1.9.1"
+gson = "2.13.2"
 guava = "33.5.0-jre"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 
 [plugins]

@@ -1,8 +1,6 @@
 package app.morphe.patches.youtube.layout.hide.player.flyoutmenupanel
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
@@ -18,34 +16,27 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
     dependsOn(
         lithoFilterPatch,
         playerTypeHookPatch,
-        settingsPatch,
-        addResourcesPatch,
+        settingsPatch
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
         val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuItemsFilter;"
 
-        addResources("youtube", "layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch")
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_player_flyout",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_player_flyout_captions"),
-                    SwitchPreference("morphe_hide_player_flyout_additional_settings"),
-                    SwitchPreference("morphe_hide_player_flyout_loop_video"),
-                    SwitchPreference("morphe_hide_player_flyout_ambient_mode"),
-                    SwitchPreference("morphe_hide_player_flyout_stable_volume"),
                     SwitchPreference("morphe_hide_player_flyout_listen_with_youtube_music"),
                     SwitchPreference("morphe_hide_player_flyout_help"),
                     SwitchPreference("morphe_hide_player_flyout_speed"),
@@ -54,12 +45,16 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
                         key = "morphe_hide_player_flyout_audio_track",
                         tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
                     ),
-                    SwitchPreference("morphe_hide_player_flyout_watch_in_vr"),
-                    SwitchPreference("morphe_hide_player_flyout_sleep_timer"),
                     SwitchPreference("morphe_hide_player_flyout_video_quality"),
                     SwitchPreference("morphe_hide_player_flyout_video_quality_footer"),
+                    SwitchPreference("morphe_hide_player_flyout_additional_settings"),
+                    SwitchPreference("morphe_hide_player_flyout_ambient_mode"),
+                    SwitchPreference("morphe_hide_player_flyout_stable_volume"),
+                    SwitchPreference("morphe_hide_player_flyout_loop_video"),
+                    SwitchPreference("morphe_hide_player_flyout_sleep_timer"),
+                    SwitchPreference("morphe_hide_player_flyout_watch_in_vr"),
                 ),
-            ),
+            )
         )
 
         addLithoFilter(filterClassDescriptor)

@@ -1,9 +1,7 @@
 package app.morphe.patches.shared.misc.extension
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.FingerprintBuilder
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.util.returnEarly
@@ -20,11 +18,11 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/Ut
  */
 fun sharedExtensionPatch(
     extensionName: String,
-    vararg hooks: () -> ExtensionHook,
+    vararg hooks: ExtensionHook,
 ) = bytecodePatch {
     dependsOn(sharedExtensionPatch(*hooks))
 
-    extendWith("extensions/$extensionName.rve")
+    extendWith("extensions/$extensionName.mpe")
 }
 
 /**
@@ -34,9 +32,9 @@ fun sharedExtensionPatch(
  * commonly for the onCreate method of exported activities.
  */
 fun sharedExtensionPatch(
-    vararg hooks: () -> ExtensionHook,
+    vararg hooks: ExtensionHook,
 ) = bytecodePatch {
-    extendWith("extensions/shared.rve")
+    extendWith("extensions/shared.mpe")
 
     execute {
         // Verify the extension class exists.
@@ -45,10 +43,10 @@ fun sharedExtensionPatch(
 
     finalize {
         // The hooks are made in finalize to ensure that the context is hooked before any other patches.
-        hooks.forEach { hook -> hook()(EXTENSION_CLASS_DESCRIPTOR) }
+        hooks.forEach { hook -> hook(EXTENSION_CLASS_DESCRIPTOR) }
 
         // Modify Utils method to include the patches release version.
-        morpheUtilsPatchesVersionFingerprint.method.apply {
+        MorpheUtilsPatchesVersionFingerprint.method.apply {
             /**
              * @return The file path for the jar this classfile is contained inside.
              */
@@ -83,36 +81,29 @@ fun sharedExtensionPatch(
     }
 }
 
-class ExtensionHook internal constructor(
+/**
+ * Handles passing the application context to the extension code. Typically the main activity
+ * onCreate() method is hooked, but sometimes additional hooks are required if extension code
+ * can be reached before the main activity is fully created.
+ */
+open class ExtensionHook(
     internal val fingerprint: Fingerprint,
-    private val insertIndexResolver: BytecodePatchContext.(Method) -> Int,
-    private val contextRegisterResolver: BytecodePatchContext.(Method) -> String,
+    private val insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
+    private val contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
 ) {
     context(BytecodePatchContext)
     operator fun invoke(extensionClassDescriptor: String) {
-        val insertIndex = insertIndexResolver(fingerprint.method)
-        val contextRegister = contextRegisterResolver(fingerprint.method)
+        fingerprint.method.apply {
+            val insertIndex = insertIndexResolver(this)
+            val contextRegister = contextRegisterResolver(this)
 
-        fingerprint.method.addInstruction(
-            insertIndex,
-            "invoke-static/range { $contextRegister .. $contextRegister }, " +
-                    "$extensionClassDescriptor->setContext(Landroid/content/Context;)V",
-        )
+            addInstruction(
+                insertIndex,
+                "invoke-static/range { $contextRegister .. $contextRegister }, " +
+                        "$extensionClassDescriptor->setContext(Landroid/content/Context;)V",
+            )
+        }
     }
-}
-
-fun extensionHook(
-    insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
-    contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
-    fingerprint: Fingerprint,
-) = ExtensionHook(fingerprint, insertIndexResolver, contextRegisterResolver)
-
-fun extensionHook(
-    insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
-    contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
-    fingerprintBuilderBlock: FingerprintBuilder.() -> Unit,
-) = {
-    ExtensionHook(fingerprint(block = fingerprintBuilderBlock), insertIndexResolver, contextRegisterResolver)
 }
 
 /**
@@ -123,24 +114,26 @@ fun extensionHook(
  *                          or the 'ends with' string for the activity such as `/MainActivity;`
  * @param targetBundleMethod If the extension should hook `onCreate(Landroid/os/Bundle;)` or `onCreate()`
  */
-fun activityOnCreateExtensionHook(activityClassType: String, targetBundleMethod: Boolean = true): () -> ExtensionHook {
+fun activityOnCreateExtensionHook(activityClassType: String, targetBundleMethod: Boolean = true): ExtensionHook {
     require(activityClassType.endsWith(';')) {
         "Class type must end with a semicolon: $activityClassType"
     }
 
     val fullClassType = activityClassType.startsWith('L')
 
-    return extensionHook {
-        returns("V")
-        if (targetBundleMethod) {
-            parameters("Landroid/os/Bundle;")
+    val fingerprint = Fingerprint(
+        returnType = "V",
+        parameters = if (targetBundleMethod) {
+            listOf("Landroid/os/Bundle;")
         } else {
-            parameters()
-        }
-        custom { method, classDef ->
+            listOf()
+        },
+        custom = { method, classDef ->
             method.name == "onCreate" &&
                     if (fullClassType) classDef.type == activityClassType
                     else classDef.type.endsWith(activityClassType)
         }
-    }
+    )
+
+    return ExtensionHook(fingerprint)
 }

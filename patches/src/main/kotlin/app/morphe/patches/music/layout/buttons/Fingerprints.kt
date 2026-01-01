@@ -1,64 +1,65 @@
 package app.morphe.patches.music.layout.buttons
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.util.containsLiteralInstruction
-import app.morphe.util.literal
+import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val mediaRouteButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.FINAL)
-    returns("Z")
-    strings("MediaRouteButton")
-}
+internal object MediaRouteButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    strings = listOf("MediaRouteButton")
+)
 
-internal val playerOverlayChipFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("L")
-    literal { playerOverlayChip }
-}
+internal object PlayerOverlayChipFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    custom = customLiteral { playerOverlayChip }
+)
 
-internal val historyMenuItemFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/view/Menu;")
-    opcodes(
+internal object HistoryMenuItemFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_INTERFACE,
         Opcode.RETURN_VOID
-    )
-    custom { method, classDef ->
+    ),
+    custom = { method, classDef ->
         method.containsLiteralInstruction(historyMenuItem) &&
-            classDef.methods.count() == 5
+                (classDef.methods.count() == 5 || classDef.methods.count() == 4)
     }
-}
+)
 
-internal val historyMenuItemOfflineTabFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/view/Menu;")
-    opcodes(
+internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_INTERFACE,
         Opcode.RETURN_VOID
-    )
-    custom { method, _ ->
+    ),
+    custom = { method, _ ->
         method.containsLiteralInstruction(historyMenuItem) &&
             method.containsLiteralInstruction(offlineSettingsMenuItem)
     }
-}
+)
 
-internal val searchActionViewFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    parameters()
-    custom { method, classDef ->
+internal object SearchActionViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(),
+    custom = { method, classDef ->
         method.containsLiteralInstruction(searchButton) &&
-            classDef.type.endsWith("/SearchActionProvider;")
+                classDef.type.endsWith("/SearchActionProvider;")
     }
-}
+)
 
-internal val topBarMenuItemImageViewFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    parameters()
-    literal { topBarMenuItemImageView }
-}
+internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(),
+    custom = customLiteral { topBarMenuItemImageView }
+)

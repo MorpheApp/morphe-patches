@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.PATCH_DESCRIPTION_SANITIZE_SHARING_LINKS
 import app.morphe.patches.shared.PATCH_NAME_SANITIZE_SHARING_LINKS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -35,12 +33,8 @@ internal fun sanitizeSharingLinksPatch(
 ) {
     block()
 
-    dependsOn(addResourcesPatch)
-
     execute {
         executeBlock()
-
-        addResources("shared", "misc.privacy.sanitizeSharingLinksPatch")
 
         val sanitizePreference = SwitchPreference("morphe_sanitize_sharing_links")
 
@@ -87,12 +81,12 @@ internal fun sanitizeSharingLinksPatch(
         }
 
         // YouTube share sheet copy link.
-        youTubeCopyTextFingerprint.hookUrlString(0)
+        YouTubeCopyTextFingerprint.hookUrlString(0)
 
         // YouTube share sheet other apps.
-        youTubeShareSheetFingerprint.hookIntentPutExtra(3)
+        YouTubeShareSheetFingerprint.hookIntentPutExtra(3)
 
         // Native system share sheet.
-        youTubeSystemShareSheetFingerprint.hookIntentPutExtra(3)
+        YouTubeSystemShareSheetFingerprint.hookIntentPutExtra(3)
     }
 }

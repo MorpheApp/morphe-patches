@@ -3,11 +3,11 @@ package app.morphe.extension.youtube.settings.search;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import java.util.List;
+
+import app.morphe.extension.shared.settings.search.BaseSearchResultItem;
 import app.morphe.extension.shared.settings.search.BaseSearchResultsAdapter;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
-import app.morphe.extension.shared.settings.search.BaseSearchResultItem;
-
-import java.util.List;
 
 /**
  * YouTube-specific search results adapter.

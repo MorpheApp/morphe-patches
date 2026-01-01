@@ -1,7 +1,11 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.settings.Settings.*;
+import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_HOME;
+import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_LIBRARY;
+import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_PLAYER;
+import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_SEARCH;
+import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_SUBSCRIPTIONS;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.net.Uri;
@@ -18,7 +22,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;

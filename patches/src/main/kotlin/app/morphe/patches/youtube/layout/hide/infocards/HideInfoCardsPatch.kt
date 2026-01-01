@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -29,7 +27,6 @@ private val hideInfocardsResourcePatch = resourcePatch {
         )
     
     execute {
-
         drawerResourceId = getResourceId(
             ResourceType.ID,
             "info_cards_drawer_header",
@@ -47,28 +44,24 @@ val hideInfoCardsPatch = bytecodePatch(
         lithoFilterPatch,
         hideInfocardsResourcePatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.hide.infocards.hideInfocardsResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_info_cards"),
         )
 
         // Edit: This old non litho code may be obsolete and no longer used by any supported versions.
-        infocardsIncognitoFingerprint.match(infocardsIncognitoParentFingerprint.originalClassDef).method.apply {
+        InfocardsIncognitoFingerprint.match(InfocardsIncognitoParentFingerprint.originalClassDef).method.apply {
             val invokeInstructionIndex = implementation!!.instructions.indexOfFirst {
                 it.opcode.ordinal == Opcode.INVOKE_VIRTUAL.ordinal &&
                     ((it as ReferenceInstruction).reference.toString() == "Landroid/view/View;->setVisibility(I)V")
@@ -82,7 +75,7 @@ val hideInfoCardsPatch = bytecodePatch(
         }
 
         // Edit: This old non litho code may be obsolete and no longer used by any supported versions.
-        infocardsMethodCallFingerprint.let {
+        InfocardsMethodCallFingerprint.let {
             val invokeInterfaceIndex = it.instructionMatches.last().index
             it.method.apply {
                 val register = implementation!!.registerCount - 1

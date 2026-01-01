@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">שם האפליקציה</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">מותאם אישית</string>
+  <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
+  <string name="morphe_custom_branding_icon_entry_1">מקורי</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe שחור</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe כהה</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe אורות</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">מותאם אישית</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">אל תציג שוב</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">זיוף זרמי וידאו</string>
+  <string name="morphe_spoof_video_streams_screen_summary">זייף את זרמי הווידאו של הלקוח כדי למנוע בעיות השמעה</string>
+  <string name="morphe_spoof_video_streams_title">זייף זרמי וידאו</string>
+  <string name="morphe_spoof_video_streams_summary_on">"מתבצעת התחזות לזרמי וידאו
+
+אם אתה משתמש YouTube Premium, ייתכן שהגדרה זו אינה נחוצה"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"זרמי וידאו אינם מזויפים
+
+ההשמעה עשויה שלא לפעול"</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
+  <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
+  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
+  <string name="morphe_force_original_audio_summary_on">שימוש בשפת שמע מקורית</string>
+  <string name="morphe_force_original_audio_summary_off">שימוש בשמע ברירת מחדל</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">כדי להשתמש בתכונה זו, שנה את \'זיוף זרמי וידאו\' לכל לקוח מלבד Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">פרמטר מעקב מוסר מקישורי שיתוף</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">פרמטר מעקב אינו מוסר מקישורי שיתוף</string>
+  <string name="morphe_replace_music_with_youtube_title">שנה קישורי שיתוף ל-youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">קישורים משותפים משתמשים ב-youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">קישורים משותפים משתמשים ב-music.youtube.com</string>
+</resources>

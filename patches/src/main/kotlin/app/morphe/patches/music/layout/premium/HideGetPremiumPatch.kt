@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -23,26 +21,23 @@ val hideGetPremiumPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.apps.youtube.music"(
             "7.29.52",
             "8.10.52",
-            "8.46.57",
+            "8.37.56",
         )
     )
 
     execute {
-        addResources("music", "layout.premium.hideGetPremiumPatch")
-
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_music_hide_get_premium_label"),
         )
 
-        hideGetPremiumFingerprint.method.apply {
-            val insertIndex = hideGetPremiumFingerprint.instructionMatches.last().index
+        HideGetPremiumFingerprint.method.apply {
+            val insertIndex = HideGetPremiumFingerprint.instructionMatches.last().index
 
             val setVisibilityInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
             val getPremiumViewRegister = setVisibilityInstruction.registerC
@@ -60,7 +55,7 @@ val hideGetPremiumPatch = bytecodePatch(
             )
         }
 
-        membershipSettingsFingerprint.method.addInstructionsWithLabels(
+        MembershipSettingsFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumLabel()Z

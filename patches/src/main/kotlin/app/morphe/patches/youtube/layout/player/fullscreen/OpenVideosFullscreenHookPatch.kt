@@ -28,10 +28,10 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
         var insertIndex: Int
 
         if (is_19_46_or_greater) {
-            fingerprint = openVideosFullscreenPortraitFingerprint
+            fingerprint = OpenVideosFullscreenPortraitFingerprint
             insertIndex = fingerprint.instructionMatches.first().index
 
-            openVideosFullscreenPortraitFingerprint.let {
+            OpenVideosFullscreenPortraitFingerprint.let {
                 // Remove A/B feature call that forces what this patch already does.
                 // Cannot use the A/B flag to accomplish the same goal because 19.50+
                 // Shorts fullscreen regular player does not use fullscreen
@@ -42,7 +42,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
                 )
             }
         } else {
-            fingerprint = openVideosFullscreenPortraitLegacyFingerprint
+            fingerprint = OpenVideosFullscreenPortraitLegacyFingerprint
             insertIndex = fingerprint.instructionMatches.last().index
         }
 

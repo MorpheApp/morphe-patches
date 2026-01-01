@@ -1,29 +1,28 @@
 package app.morphe.patches.youtube.layout.searchbar
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
-import app.morphe.patches.youtube.layout.hide.general.yoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val setWordmarkHeaderFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("Landroid/widget/ImageView;")
-    instructions(
+internal object SetWordmarkHeaderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/widget/ImageView;"),
+    filters = listOf(
         resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
         resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
     )
-}
+)
 
 /**
  * Matches the same method as [yoodlesImageViewFingerprint].
  */
-internal val wideSearchbarLayoutFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    parameters("L", "L")
-    instructions(
+internal object WideSearchbarLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("L", "L"),
+    filters = listOf(
          resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo"),
     )
-}
+)

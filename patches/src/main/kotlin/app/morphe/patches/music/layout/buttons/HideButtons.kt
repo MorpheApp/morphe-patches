@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -40,7 +38,6 @@ val hideButtons = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         resourceMappingPatch
     )
 
@@ -48,7 +45,7 @@ val hideButtons = bytecodePatch(
         "com.google.android.apps.youtube.music"(
             "7.29.52",
             "8.10.52",
-            "8.46.57",
+            "8.37.56",
         )
     )
 
@@ -59,8 +56,6 @@ val hideButtons = bytecodePatch(
         searchButton = getResourceId(ResourceType.LAYOUT, "search_button")
         topBarMenuItemImageView = getResourceId(ResourceType.ID, "top_bar_menu_item_image_view")
 
-        addResources("music", "layout.buttons.hideButtons")
-
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),
             SwitchPreference("morphe_music_hide_history_button"),
@@ -70,8 +65,8 @@ val hideButtons = bytecodePatch(
 
         // Region for hide history button in the top bar.
         arrayOf(
-            historyMenuItemFingerprint,
-            historyMenuItemOfflineTabFingerprint
+            HistoryMenuItemFingerprint,
+            HistoryMenuItemOfflineTabFingerprint
         ).forEach { fingerprint ->
             fingerprint.method.apply {
                 val targetIndex = fingerprint.instructionMatches.first().index
@@ -89,9 +84,9 @@ val hideButtons = bytecodePatch(
 
         // Region for hide cast, search and notification buttons in the top bar.
         arrayOf(
-            Triple(playerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
-            Triple(searchActionViewFingerprint, searchButton, "hideSearchButton"),
-            Triple(topBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
+            Triple(PlayerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
+            Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton"),
+            Triple(TopBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
         ).forEach { (fingerprint, resourceIdLiteral, methodName) ->
             fingerprint.method.apply {
                 val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
@@ -109,7 +104,7 @@ val hideButtons = bytecodePatch(
         }
 
         // Region for hide cast button in the player.
-        mediaRouteButtonFingerprint.classDef.methods.single { method ->
+        MediaRouteButtonFingerprint.classDef.methods.single { method ->
             method.name == "setVisibility"
         }.addInstructions(
             0,

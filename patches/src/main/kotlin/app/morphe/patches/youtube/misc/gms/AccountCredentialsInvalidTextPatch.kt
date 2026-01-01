@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.misc.gms
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -12,14 +10,10 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AccountCredentialsInvalidTextPatch;"
 
 internal val accountCredentialsInvalidTextPatch = bytecodePatch {
-    dependsOn(
-        sharedExtensionPatch,
-        addResourcesPatch
-    )
+
+    dependsOn(sharedExtensionPatch)
 
     execute {
-        addResources("youtube", "misc.gms.accountCredentialsInvalidTextPatch")
-
         // If the user recently changed their account password,
         // the app can show "You're offline. Check your internet connection."
         // even when the internet is available.  For this situation
@@ -30,8 +24,8 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
         // MicroG accounts look almost identical to Google device accounts
         // and it's more foolproof to instead uninstall/reinstall.
         arrayOf(
-            specificNetworkErrorViewControllerFingerprint,
-            loadingFrameLayoutControllerFingerprint
+            SpecificNetworkErrorViewControllerFingerprint,
+            LoadingFrameLayoutControllerFingerprint
         ).forEach { fingerprint ->
             fingerprint.apply {
                 val index = instructionMatches.last().index

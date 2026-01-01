@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -24,22 +22,18 @@ val changeStartPagePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.startpage.changeStartPagePatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             PreferenceCategory(
                 titleKey = null,
@@ -56,7 +50,7 @@ val changeStartPagePatch = bytecodePatch(
         )
 
         // Hook browseId.
-        browseIdFingerprint.let {
+        BrowseIdFingerprint.let {
             it.method.apply {
                 val browseIdIndex = it.instructionMatches.first().index
                 val browseIdRegister = getInstruction<OneRegisterInstruction>(browseIdIndex).registerA
@@ -73,7 +67,7 @@ val changeStartPagePatch = bytecodePatch(
 
         // There is no browserId assigned to Shorts and Search.
         // Just hook the Intent action.
-        intentActionFingerprint.method.addInstruction(
+        IntentActionFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentAction(Landroid/content/Intent;)V",
         )

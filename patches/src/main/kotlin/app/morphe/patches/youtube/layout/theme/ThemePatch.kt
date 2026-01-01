@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
@@ -146,7 +144,6 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-            addResourcesPatch,
             seekbarColorPatch,
             baseThemeResourcePatch(
                 lightColorReplacement = { lightThemeBackgroundColor!! }
@@ -156,17 +153,15 @@ val themePatch = baseThemePatch(
 
         compatibleWith(
             "com.google.android.youtube"(
-                "19.43.41",
                 "20.14.43",
                 "20.21.37",
                 "20.31.42",
-                "20.46.41",
+                "20.37.48",
             )
         )
     },
 
     executeBlock = {
-        addResources("youtube", "layout.theme.themePatch")
 
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             SwitchPreference("morphe_gradient_loading_screen")
@@ -201,7 +196,7 @@ val themePatch = baseThemePatch(
             )
         }
 
-        useGradientLoadingScreenFingerprint.let {
+        UseGradientLoadingScreenFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS_DESCRIPTOR->gradientLoadingScreenEnabled(Z)Z"
@@ -210,7 +205,7 @@ val themePatch = baseThemePatch(
 
         if (is_19_47_or_greater) {
             // Lottie splash screen exists in earlier versions, but it may not be always on.
-            splashScreenStyleFingerprint.let {
+            SplashScreenStyleFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I"

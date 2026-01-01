@@ -1,40 +1,40 @@
 package app.morphe.patches.shared.misc.gms
 
-import app.morphe.patcher.fingerprint
+import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal val googlePlayUtilityFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("I")
-    parameters("L", "I")
-    strings(
+internal object GooglePlayUtilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "I",
+    parameters = listOf("L", "I"),
+    strings = listOf(
         "This should never happen.",
         "MetadataValueReader",
         "com.google.android.gms",
     )
-}
+)
 
-internal val serviceCheckFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
-    returns("V")
-    parameters("L", "I")
-    strings("Google Play Services not available")
-}
+internal object ServiceCheckFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf("L", "I"),
+    strings = listOf("Google Play Services not available")
+)
 
-internal val gmsCoreSupportFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
-    returns("Ljava/lang/String;")
-    parameters()
-    custom { method, classDef ->
+internal object GmsCoreSupportFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    custom = { method, classDef ->
         method.name == "getGmsCoreVendorGroupId" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
     }
-}
+)
 
-internal val originalPackageNameExtensionFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
-    returns("Ljava/lang/String;")
-    parameters()
-    custom { methodDef, classDef ->
+internal object OriginalPackageNameExtensionFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    custom = { methodDef, classDef ->
         methodDef.name == "getOriginalPackageName" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
     }
-}
+)

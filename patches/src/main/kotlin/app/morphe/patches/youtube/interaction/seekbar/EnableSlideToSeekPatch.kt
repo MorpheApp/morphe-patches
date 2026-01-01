@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
@@ -27,13 +25,10 @@ val enableSlideToSeekPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.seekbar.enableSlideToSeekPatch")
-
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_slide_to_seek"),
         )
@@ -42,14 +37,14 @@ val enableSlideToSeekPatch = bytecodePatch(
 
         // Restore the behaviour to slide to seek.
 
-        val checkIndex = slideToSeekFingerprint.instructionMatches.first().index
-        val checkReference = slideToSeekFingerprint.method.getInstruction(checkIndex)
+        val checkIndex = SlideToSeekFingerprint.instructionMatches.first().index
+        val checkReference = SlideToSeekFingerprint.method.getInstruction(checkIndex)
             .getReference<MethodReference>()!!
 
         val extensionMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->isSlideToSeekDisabled(Z)Z"
 
         // A/B check method was only called on this class.
-        slideToSeekFingerprint.classDef.methods.forEach { method ->
+        SlideToSeekFingerprint.classDef.methods.forEach { method ->
             method.findInstructionIndicesReversed {
                 opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>() == checkReference
             }.forEach { index ->
@@ -73,7 +68,7 @@ val enableSlideToSeekPatch = bytecodePatch(
 
         // Disable the double speed seek gesture.
         if (is_19_17_or_greater) {
-            disableFastForwardGestureFingerprint.let {
+            DisableFastForwardGestureFingerprint.let {
                 it.method.apply {
                     val targetIndex = it.instructionMatches.last().index
                     val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
@@ -88,7 +83,7 @@ val enableSlideToSeekPatch = bytecodePatch(
                 }
             }
         } else {
-            disableFastForwardLegacyFingerprint.let {
+            DisableFastForwardLegacyFingerprint.let {
                 it.method.apply {
                     val insertIndex = it.instructionMatches.last().index + 1
                     val targetRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA

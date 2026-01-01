@@ -1,8 +1,8 @@
 package app.morphe.patches.youtube.misc.navigation
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
-import app.morphe.patcher.fingerprint
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -12,66 +12,66 @@ import app.morphe.patches.youtube.layout.buttons.navigation.navigationButtonsPat
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal val actionBarSearchResultsFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    instructions(
+internal object ActionBarSearchResultsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "action_bar_search_results_view_mic"),
         methodCall(name = "setLayoutDirection")
     )
-}
+)
 
-internal val toolbarLayoutFingerprint = fingerprint {
-    accessFlags(AccessFlags.PROTECTED, AccessFlags.CONSTRUCTOR)
-    instructions(
+internal object ToolbarLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
         resourceLiteral(ResourceType.ID, "toolbar_container"),
         checkCast("Lcom/google/android/apps/youtube/app/ui/actionbar/MainCollapsingToolbarLayout;")
     )
-}
+)
 
 /**
  * Matches to https://android.googlesource.com/platform/frameworks/support/+/9eee6ba/v7/appcompat/src/android/support/v7/widget/Toolbar.java#963
  */
-internal val appCompatToolbarBackButtonFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/graphics/drawable/Drawable;")
-    parameters()
-    custom { _, classDef ->
+internal object AppCompatToolbarBackButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/graphics/drawable/Drawable;",
+    parameters = listOf(),
+    custom = { _, classDef ->
         classDef.type == "Landroid/support/v7/widget/Toolbar;"
     }
-}
+)
 
 /**
  * Matches to the class found in [pivotBarConstructorFingerprint].
  */
-internal val initializeButtonsFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    instructions(
+internal object InitializeButtonsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "image_only_tab")
     )
-}
+)
 
 /**
  * Extension method, used for callback into to other patches.
  * Specifically, [navigationButtonsPatch].
  */
-internal val navigationBarHookCallbackFingerprint = fingerprint {
-    accessFlags(AccessFlags.PRIVATE, AccessFlags.STATIC)
-    returns("V")
-    parameters(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;")
-    custom { method, _ ->
+internal object NavigationBarHookCallbackFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;"),
+    custom = { method, _ ->
         method.name == "navigationTabCreatedCallback" &&
             method.definingClass == EXTENSION_CLASS_DESCRIPTOR
     }
-}
+)
 
 /**
  * Matches to the Enum class that looks up ordinal -> instance.
  */
-internal val navigationEnumFingerprint = fingerprint {
-    accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
-    strings(
+internal object NavigationEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
         "PIVOT_HOME",
         "TAB_SHORTS",
         "CREATION_TAB_LARGE",
@@ -79,80 +79,80 @@ internal val navigationEnumFingerprint = fingerprint {
         "TAB_ACTIVITY",
         "VIDEO_LIBRARY_WHITE",
         "INCOGNITO_CIRCLE",
-    )
-    custom { _, classDef ->
+    ),
+    custom = { _, classDef ->
         // Don't match our own code.
         !classDef.type.startsWith("Lapp/morphe")
     }
-}
+)
 
-internal val pivotBarButtonsCreateDrawableViewFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    custom { method, _ ->
+internal object PivotBarButtonsCreateDrawableViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    custom = { method, _ ->
         method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;" &&
             // Only one view creation method has a Drawable parameter.
             method.parameterTypes.firstOrNull() == "Landroid/graphics/drawable/Drawable;"
     }
-}
+)
 
-internal val pivotBarButtonsCreateResourceStyledViewFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    parameters("L", "Z", "I", "L")
-    custom { method, _ ->
+internal object PivotBarButtonsCreateResourceStyledViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("L", "Z", "I", "L"),
+    custom = { method, _ ->
         method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
     }
-}
+)
 
 /**
  * 20.21+
  */
-internal val pivotBarButtonsCreateResourceIntViewFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("Landroid/view/View;")
-    custom { method, _ ->
+internal object PivotBarButtonsCreateResourceIntViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    custom = { method, _ ->
         method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;" &&
             // Only one view creation method has an int first parameter.
             method.parameterTypes.firstOrNull() == "I"
     }
-}
+)
 
-internal val pivotBarButtonsViewSetSelectedFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
-    returns("V")
-    parameters("I", "Z")
-    instructions(
+internal object PivotBarButtonsViewSetSelectedFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "Z"),
+    filters = listOf(
         methodCall(name = "setSelected")
-    )
-    custom { method, _ ->
+    ),
+    custom = { method, _ ->
         method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
     }
-}
+)
 
-internal val pivotBarConstructorFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    instructions(
+internal object PivotBarConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
         string("com.google.android.apps.youtube.app.endpoint.flags"),
     )
-}
+)
 
-internal val imageEnumConstructorFingerprint = fingerprint {
-    accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
-    instructions(
+internal object ImageEnumConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
         string("TAB_ACTIVITY_CAIRO"),
         opcode(Opcode.SPUT_OBJECT)
-    )
-    custom { _, classDef ->
+    ),
+    custom = { _, classDef ->
         // Don't match our extension code.
         !classDef.type.startsWith("Lapp/morphe/")
     }
-}
+)
 
-internal val setEnumMapFingerprint = fingerprint {
-    instructions(
+internal object SetEnumMapFingerprint : Fingerprint(
+    filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_bell_black_24"),
         methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;", location = MatchAfterWithin(10)),
         methodCall(smali = "Ljava/util/EnumMap;->put(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;", location = MatchAfterWithin(10))
     )
-}
+)

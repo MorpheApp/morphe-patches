@@ -12,8 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -32,13 +30,13 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 
 internal var albumCardId = -1L
     private set
@@ -101,7 +99,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
     dependsOn(
         lithoFilterPatch,
         settingsPatch,
-        addResourcesPatch,
         hideLayoutComponentsResourcePatch,
         navigationBarHookPatch,
         versionCheckPatch,
@@ -110,17 +107,14 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.hide.general.hideLayoutComponentsPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",
@@ -251,8 +245,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region Mix playlists
 
-        parseElementFromBufferFingerprint.method.apply {
-            val startIndex = parseElementFromBufferFingerprint.instructionMatches.first().index
+        ParseElementFromBufferFingerprint.method.apply {
+            val startIndex = ParseElementFromBufferFingerprint.instructionMatches.first().index
             val insertIndex = startIndex + 1
 
             val byteArrayParameter = "p3"
@@ -280,8 +274,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region Watermark (legacy code for old versions of YouTube)
 
-        showWatermarkFingerprint.match(
-            playerOverlayFingerprint.originalClassDef,
+        ShowWatermarkFingerprint.match(
+            PlayerOverlayFingerprint.originalClassDef,
         ).method.apply {
             val index = implementation!!.instructions.size - 5
 
@@ -299,7 +293,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region Show more button
 
-        (if (is_20_26_or_greater) hideShowMoreButtonFingerprint else hideShowMoreLegacyButtonFingerprint).let {
+        (if (is_20_26_or_greater) HideShowMoreButtonFingerprint else HideShowMoreLegacyButtonFingerprint).let {
             it.method.apply {
                 val moveRegisterIndex = it.instructionMatches.last().index
                 val viewRegister = getInstruction<OneRegisterInstruction>(moveRegisterIndex).registerA
@@ -316,7 +310,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // endregion
 
         // region crowdfunding box
-        crowdfundingBoxFingerprint.let {
+        CrowdfundingBoxFingerprint.let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index
                 val objectRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
@@ -333,7 +327,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide album cards
 
-        albumCardsFingerprint.let {
+        AlbumCardsFingerprint.let {
             it.method.apply {
                 val checkCastAnchorIndex = it.instructionMatches.last().index
                 val insertIndex = checkCastAnchorIndex + 1
@@ -351,7 +345,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide floating microphone
 
-        showFloatingMicrophoneButtonFingerprint.let {
+        ShowFloatingMicrophoneButtonFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -370,7 +364,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region 'Yoodles'
 
-        yoodlesImageViewFingerprint.method.apply {
+        YouTubeDoodlesImageViewFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow {
                 getReference<MethodReference>()?.name == "setImageDrawable"
             }.forEach { insertIndex ->
@@ -390,8 +384,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide view count
 
-        hideViewCountFingerprint.method.apply {
-            val startIndex = hideViewCountFingerprint.instructionMatches.first().index
+        HideViewCountFingerprint.method.apply {
+            val startIndex = HideViewCountFingerprint.instructionMatches.first().index
             var returnStringRegister = getInstruction<OneRegisterInstruction>(startIndex).registerA
 
             // Find the instruction where the text dimension is retrieved.
@@ -442,21 +436,21 @@ val hideLayoutComponentsPatch = bytecodePatch(
             addInstructions(insertIndex, instructions(register))
         }
 
-        filterBarHeightFingerprint.patch<TwoRegisterInstruction> { register ->
+        FilterBarHeightFingerprint.patch<TwoRegisterInstruction> { register ->
             """
                 invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInFeed(I)I
                 move-result v$register
             """
         }
 
-        searchResultsChipBarFingerprint.patch<OneRegisterInstruction>(-1, -2) { register ->
+        SearchResultsChipBarFingerprint.patch<OneRegisterInstruction>(-1, -2) { register ->
             """
                 invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInSearch(I)I
                 move-result v$register
             """
         }
 
-        relatedChipCloudFingerprint.patch<OneRegisterInstruction>(1) { register ->
+        RelatedChipCloudFingerprint.patch<OneRegisterInstruction>(1) { register ->
             "invoke-static { v$register }, " +
                 "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
         }

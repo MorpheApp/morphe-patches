@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -32,23 +30,19 @@ val spoofAppVersionPatch = bytecodePatch(
         resourceMappingPatch,
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         versionCheckPatch
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.spoofappversion.spoofAppVersionPatch")
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             // Group the switch and list preference together, since General menu is sorted by name
             // and the preferences can be scattered apart with non English languages.
@@ -82,7 +76,7 @@ val spoofAppVersionPatch = bytecodePatch(
          * missing image resources. As a workaround, do not set an image in the
          * toolbar when the enum name is UNKNOWN.
          */
-        toolBarButtonFingerprint.apply {
+        ToolBarButtonFingerprint.apply {
             val imageResourceIndex = instructionMatches[2].index
             val register = method.getInstruction<OneRegisterInstruction>(imageResourceIndex).registerA
             val jumpIndex = instructionMatches.last().index + 1
@@ -94,7 +88,7 @@ val spoofAppVersionPatch = bytecodePatch(
             )
         }
 
-        spoofAppVersionFingerprint.apply {
+        SpoofAppVersionFingerprint.apply {
             val index = instructionMatches.first().index
             val register = method.getInstruction<OneRegisterInstruction>(index).registerA
 

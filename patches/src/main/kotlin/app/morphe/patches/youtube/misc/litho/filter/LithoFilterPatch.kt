@@ -2,12 +2,22 @@
 
 package app.morphe.patches.youtube.misc.litho.filter
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.conversionContextFingerprintToString
+import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
+import app.morphe.util.FreeRegisterProvider
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.getFreeRegisterProvider
@@ -16,15 +26,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnLate
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.fingerprint
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -86,7 +87,7 @@ val lithoFilterPatch = bytecodePatch(
     execute {
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
-        lithoFilterFingerprint.method.apply {
+        LithoFilterFingerprint.method.apply {
             removeInstructions(2, 4) // Remove dummy filter.
 
             addLithoFilter = { classDescriptor ->
@@ -107,7 +108,7 @@ val lithoFilterPatch = bytecodePatch(
         if (is_20_22_or_greater) {
             // Hook method that bridges between UPB buffer native code and FB Litho.
             // Method is found in 19.25+, but is forcefully turned off for 20.21 and lower.
-            protobufBufferReferenceFingerprint.let {
+            ProtobufBufferReferenceFingerprint.let {
                 // Hook the buffer after the call to jniDecode().
                 it.method.addInstruction(
                     it.instructionMatches.last().index + 1,
@@ -117,7 +118,7 @@ val lithoFilterPatch = bytecodePatch(
         }
 
         // Legacy Non native buffer.
-        protobufBufferReferenceLegacyFingerprint.method.addInstruction(
+        ProtobufBufferReferenceLegacyFingerprint.method.addInstruction(
             0,
             "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
         )
@@ -130,14 +131,14 @@ val lithoFilterPatch = bytecodePatch(
 
         // Find the identifier/path fields of the conversion context.
 
-        val conversionContextIdentifierField = conversionContextFingerprintToString.method
+        val conversionContextIdentifierField = ConversionContextFingerprintToString.method
             .findFieldFromToString("identifierProperty=")
 
-        val conversionContextPathBuilderField = conversionContextFingerprintToString.originalClassDef
+        val conversionContextPathBuilderField = ConversionContextFingerprintToString.originalClassDef
             .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = emptyComponentFingerprint.classDef.methods.single { method ->
+        val builderMethodDescriptor = EmptyComponentFingerprint.classDef.methods.single { method ->
             // The only static method in the class.
             AccessFlags.STATIC.isSet(method.accessFlags)
         }
@@ -145,33 +146,31 @@ val lithoFilterPatch = bytecodePatch(
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 
         // Find the method call that gets the value of 'buttonViewModel.accessibilityId'.
-        val accessibilityIdMethod = with(accessibilityIdFingerprint) {
+        val accessibilityIdMethod = with(AccessibilityIdFingerprint) {
             val index = instructionMatches.first().index
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
 
         // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
         // As this class is abstract, we need to find another method that uses a method call.
-        val accessibilityTextFingerprint = fingerprint {
-            returns("V")
-            instructions(
+        val accessibilityTextFingerprint = Fingerprint(
+            returnType = "V",
+            filters = listOf(
                 methodCall(
                     opcode = Opcode.INVOKE_INTERFACE,
                     parameters = listOf(),
                     returnType = "Ljava/lang/String;"
                 ),
-                // TODO: Change to methodCall(reference = accessibilityIdMethod, location = MatchAfterWithin(3))
-                //       After changing to latest patcher release.
                 methodCall(
-                    smali = accessibilityIdMethod.toString(),
-                    location = MatchAfterWithin(3)
+                    reference = accessibilityIdMethod,
+                    location = MatchAfterWithin(5)
                 )
-            )
-            custom { method, _ ->
+            ),
+            custom = { method, _ ->
                 // 'public final synthetic' or 'public final bridge synthetic'.
                 AccessFlags.SYNTHETIC.isSet(method.accessFlags)
             }
-        }
+        )
 
         // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
         val accessibilityTextMethod = with (accessibilityTextFingerprint) {
@@ -179,13 +178,9 @@ val lithoFilterPatch = bytecodePatch(
             method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
         }
 
-        componentCreateFingerprint.method.apply {
+        ComponentCreateFingerprint.method.apply {
             val insertIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
 
-            val registerProvider = getFreeRegisterProvider(insertIndex)
-            val freeRegister = registerProvider.getFreeRegister()
-            val identifierRegister = registerProvider.getFreeRegister()
-            val pathRegister = registerProvider.getFreeRegister()
 
             // We can directly access the class related with the buttonViewModel from this method.
             // This is within 10 lines of insertIndex.
@@ -199,16 +194,23 @@ val lithoFilterPatch = bytecodePatch(
 
             // This is an index that checks if there is accessibility-related text.
             // This is within 10 lines of buttonViewModelIndex.
-            val nullCheckIndex =
-                indexOfFirstInstructionReversedOrThrow(buttonViewModelIndex, Opcode.IF_EQZ)
-            val nullCheckRegister = getInstruction<OneRegisterInstruction>(nullCheckIndex).registerA
+            val nullCheckIndex = indexOfFirstInstructionReversedOrThrow(
+                buttonViewModelIndex, Opcode.IF_EQZ
+            )
 
-            // We need to find a free register to store the accessibilityId and accessibilityText,
-            // but the 'findFreeRegister' function cannot be used due to the 'if-eqz' branch.
-            // Set checkBranch to false and use the 'findFreeRegister' function.
+            val registerProvider = getFreeRegisterProvider(
+                insertIndex, 3, buttonViewModelRegister
+            )
+            val freeRegister = registerProvider.getFreeRegister()
+            val identifierRegister = registerProvider.getFreeRegister()
+            val pathRegister = registerProvider.getFreeRegister()
+
+            // We need to find a free register to store the accessibilityId and accessibilityText.
+            // This is before the insertion index.
             val accessibilityRegisterProvider = getFreeRegisterProvider(
                 nullCheckIndex,
-                registerProvider.getUsedAndExcludedRegisters()
+                2,
+                registerProvider.getUsedAndUnAvailableRegisters()
             )
             val accessibilityIdRegister = accessibilityRegisterProvider.getFreeRegister()
             val accessibilityTextRegister = accessibilityRegisterProvider.getFreeRegister()
@@ -220,7 +222,7 @@ val lithoFilterPatch = bytecodePatch(
                     
                     # 20.41 field is the abstract superclass.
                     # Verify it's the expected subclass just in case. 
-                    instance-of v$identifierRegister, v$freeRegister, ${conversionContextFingerprintToString.classDef.type}
+                    instance-of v$identifierRegister, v$freeRegister, ${ConversionContextFingerprintToString.classDef.type}
                     if-eqz v$identifierRegister, :unfiltered
                     
                     iget-object v$identifierRegister, v$freeRegister, $conversionContextIdentifierField
@@ -271,7 +273,7 @@ val lithoFilterPatch = bytecodePatch(
 
         // region Change Litho thread executor to 1 thread to fix layout issue in unpatched YouTube.
 
-        lithoThreadExecutorFingerprint.method.addInstructions(
+        LithoThreadExecutorFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->getExecutorCorePoolSize(I)I
@@ -292,11 +294,11 @@ val lithoFilterPatch = bytecodePatch(
         // Flag was removed in 20.05. It appears a new flag might be used instead (45660109L),
         // but if the flag is forced on then litho filtering still works correctly.
         if (is_19_25_or_greater && !is_20_05_or_greater) {
-            lithoComponentNameUpbFeatureFlagFingerprint.method.returnLate(false)
+            LithoComponentNameUpbFeatureFlagFingerprint.method.returnLate(false)
         }
 
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).
-        lithoConverterBufferUpbFeatureFlagFingerprint.let {
+        LithoConverterBufferUpbFeatureFlagFingerprint.let {
             // 20.22 the flag is still enabled in one location, but what it does is not known.
             // Disable it anyway.
             it.method.insertLiteralOverride(
@@ -309,6 +311,6 @@ val lithoFilterPatch = bytecodePatch(
     }
 
     finalize {
-        lithoFilterFingerprint.method.replaceInstruction(0, "const/16 v0, $filterCount")
+        LithoFilterFingerprint.method.replaceInstruction(0, "const/16 v0, $filterCount")
     }
 }

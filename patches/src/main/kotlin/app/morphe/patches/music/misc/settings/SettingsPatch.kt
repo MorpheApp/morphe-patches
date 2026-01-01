@@ -3,13 +3,13 @@ package app.morphe.patches.music.misc.settings
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.addResources
+import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.playservice.is_8_40_or_greater
 import app.morphe.patches.music.playservice.versionCheckPatch
-import app.morphe.patches.shared.boldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -46,7 +46,6 @@ private val settingsResourcePatch = resourcePatch {
     )
 
     execute {
-
         // Set the style for the Morphe settings to follow the style of the music settings,
         // namely: action bar height, menu item padding and remove horizontal dividers.
         val targetResource = "values/styles.xml"
@@ -86,8 +85,8 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
-        addResources("music", "misc.settings.settingsPatch")
-        addResources("shared", "misc.debugging.enableDebuggingPatch")
+        addAppResources("shared-youtube")
+        addAppResources("music")
 
         // Add an "About" preference to the top.
         preferences += NonInteractivePreference(
@@ -118,14 +117,14 @@ val settingsPatch = bytecodePatch(
         )
 
         modifyActivityForSettingsInjection(
-            googleApiActivityFingerprint.classDef,
-            googleApiActivityFingerprint.method,
+            GoogleApiActivityFingerprint.classDef,
+            GoogleApiActivityFingerprint.method,
             MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
             true
         )
 
         if (is_8_40_or_greater) {
-            boldIconsFeatureFlagFingerprint.let {
+            BoldIconsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z"

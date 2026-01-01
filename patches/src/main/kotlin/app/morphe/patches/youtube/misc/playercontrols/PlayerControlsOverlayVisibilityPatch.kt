@@ -16,7 +16,7 @@ val playerControlsOverlayVisibilityPatch = bytecodePatch {
     dependsOn(sharedExtensionPatch)
 
     execute {
-        playerControlsVisibilityEntityModelFingerprint.let {
+        PlayerControlsVisibilityEntityModelFingerprint.let {
             it.method.apply {
                 val startIndex = it.instructionMatches.first().index
                 val iGetReference = getInstruction<ReferenceInstruction>(startIndex).reference

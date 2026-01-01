@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -20,18 +18,15 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
     )
 
     execute {
-        addResources("youtube", "interaction.seekbar.disablePreciseSeekingGesturePatch")
-
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_disable_precise_seeking_gesture"),
         )
 
-        allowSwipingUpGestureFingerprint.match(
-            swipingUpGestureParentFingerprint.originalClassDef,
+        AllowSwipingUpGestureFingerprint.match(
+            SwipingUpGestureParentFingerprint.originalClassDef,
         ).method.apply {
             addInstructionsWithLabels(
                 0,
@@ -45,8 +40,8 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
             )
         }
 
-        showSwipingUpGuideFingerprint.match(
-            swipingUpGestureParentFingerprint.originalClassDef,
+        ShowSwipingUpGuideFingerprint.match(
+            SwipingUpGestureParentFingerprint.originalClassDef,
         ).method.apply {
             addInstructionsWithLabels(
                 0,

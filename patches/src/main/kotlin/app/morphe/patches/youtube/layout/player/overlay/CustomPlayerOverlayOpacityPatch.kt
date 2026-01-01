@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.layout.player.overlay
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -22,27 +20,23 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
 ) {
     dependsOn(settingsPatch,
         resourceMappingPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "layout.player.overlay.customPlayerOverlayOpacityResourcePatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             TextPreference("morphe_player_overlay_opacity", inputType = InputType.NUMBER),
         )
 
-        createPlayerOverviewFingerprint.let {
+        CreatePlayerOverviewFingerprint.let {
             it.method.apply {
                 val viewRegisterIndex = it.instructionMatches.last().index
                 val viewRegister = getInstruction<OneRegisterInstruction>(viewRegisterIndex).registerA

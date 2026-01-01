@@ -3,8 +3,6 @@ package app.morphe.patches.youtube.video.codecs
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -25,7 +23,6 @@ val disableVideoCodecsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        addResourcesPatch,
         /**
          * Override all calls of `getSupportedHdrTypes`.
          */
@@ -57,23 +54,20 @@ val disableVideoCodecsPatch = bytecodePatch(
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "video.codecs.disableVideoCodecsPatch")
-
         PreferenceScreen.VIDEO.addPreferences(
             SwitchPreference("morphe_disable_hdr_video"),
             SwitchPreference("morphe_force_avc_codec")
         )
 
-        vp9CapabilityFingerprint.method.addInstructionsWithLabels(
+        Vp9CapabilityFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->allowVP9()Z

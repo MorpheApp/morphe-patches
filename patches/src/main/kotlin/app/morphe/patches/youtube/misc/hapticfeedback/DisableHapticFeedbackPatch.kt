@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.addResources
-import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -21,22 +19,18 @@ val disableHapticFeedbackPatch = bytecodePatch(
 ) {
     dependsOn(
         settingsPatch,
-        addResourcesPatch,
     )
 
     compatibleWith(
         "com.google.android.youtube"(
-            "19.43.41",
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.46.41",
+            "20.37.48",
         )
     )
 
     execute {
-        addResources("youtube", "misc.hapticfeedback.disableHapticFeedbackPatch")
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 "morphe_disable_haptic_feedback",
@@ -50,10 +44,10 @@ val disableHapticFeedbackPatch = bytecodePatch(
         )
 
         arrayOf(
-            markerHapticsFingerprint to "disableChapterVibrate",
-            scrubbingHapticsFingerprint to "disablePreciseSeekingVibrate",
-            seekUndoHapticsFingerprint to "disableSeekUndoVibrate",
-            zoomHapticsFingerprint to "disableZoomVibrate"
+            MarkerHapticsFingerprint to "disableChapterVibrate",
+            ScrubbingHapticsFingerprint to "disablePreciseSeekingVibrate",
+            SeekUndoHapticsFingerprint to "disableSeekUndoVibrate",
+            ZoomHapticsFingerprint to "disableZoomVibrate"
         ).forEach { (fingerprint, methodName) ->
             fingerprint.method.apply {
                 addInstructionsWithLabels(

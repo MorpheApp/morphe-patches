@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.mainActivityOnBackPressedFingerprint
+import app.morphe.patches.youtube.shared.MainActivityOnBackPressedFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
@@ -77,16 +77,16 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
         }
 
-        initializeButtonsFingerprint.match(pivotBarConstructorFingerprint.originalClassDef).method.apply {
+        InitializeButtonsFingerprint.match(PivotBarConstructorFingerprint.originalClassDef).method.apply {
             // Hook the current navigation bar enum value. Note, the 'You' tab does not have an enum value.
-            val navigationEnumClassName = navigationEnumFingerprint.classDef.type
+            val navigationEnumClassName = NavigationEnumFingerprint.classDef.type
             addHook(NavigationHook.SET_LAST_APP_NAVIGATION_ENUM) {
                 opcode == Opcode.INVOKE_STATIC &&
                     getReference<MethodReference>()?.definingClass == navigationEnumClassName
             }
 
             // Hook the creation of navigation tab views.
-            val drawableTabMethod = pivotBarButtonsCreateDrawableViewFingerprint.method
+            val drawableTabMethod = PivotBarButtonsCreateDrawableViewFingerprint.method
             addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
                 MethodUtil.methodSignaturesMatch(
                     getReference<MethodReference>() ?: return@predicate false,
@@ -95,7 +95,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
 
             if (is_20_21_or_greater && !is_20_28_or_greater) {
-                val imageResourceIntTabMethod = pivotBarButtonsCreateResourceIntViewFingerprint.originalMethod
+                val imageResourceIntTabMethod = PivotBarButtonsCreateResourceIntViewFingerprint.originalMethod
                 addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
                     MethodUtil.methodSignaturesMatch(
                         getReference<MethodReference>() ?: return@predicate false,
@@ -104,7 +104,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 }
             }
 
-            val imageResourceTabMethod = pivotBarButtonsCreateResourceStyledViewFingerprint.originalMethod
+            val imageResourceTabMethod = PivotBarButtonsCreateResourceStyledViewFingerprint.originalMethod
             addHook(NavigationHook.NAVIGATION_IMAGE_RESOURCE_TAB_LOADED) predicate@{
                 MethodUtil.methodSignaturesMatch(
                     getReference<MethodReference>() ?: return@predicate false,
@@ -113,7 +113,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
         }
 
-        pivotBarButtonsViewSetSelectedFingerprint.let {
+        PivotBarButtonsViewSetSelectedFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.first().index
                 val instruction = getInstruction<FiveRegisterInstruction>(index)
@@ -130,7 +130,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
 
         // Hook onto back button pressed.  Needed to fix race problem with
         // Litho filtering based on navigation tab before the tab is updated.
-        mainActivityOnBackPressedFingerprint.method.addInstruction(
+        MainActivityOnBackPressedFingerprint.method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V",
         )
@@ -140,7 +140,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         // Two different layouts are used at the hooked code.
         // Insert before the first ViewGroup method call after inflating,
         // so this works regardless which layout is used.
-        actionBarSearchResultsFingerprint.let {
+        ActionBarSearchResultsFingerprint.let {
             it.method.apply {
                 val instructionIndex = it.instructionMatches.last().index
                 val viewRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
@@ -155,7 +155,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
 
         // Hook the back button visibility.
 
-        toolbarLayoutFingerprint.let {
+        ToolbarLayoutFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -168,7 +168,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         }
 
         // Add interface for extensions code to call obfuscated methods.
-        appCompatToolbarBackButtonFingerprint.let {
+        AppCompatToolbarBackButtonFingerprint.let {
             it.classDef.apply {
                 interfaces.add(EXTENSION_TOOLBAR_INTERFACE)
 
@@ -201,7 +201,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         }
 
         hookNavigationButtonCreated = { extensionClassDescriptor ->
-            navigationBarHookCallbackFingerprint.method.addInstruction(
+            NavigationBarHookCallbackFingerprint.method.addInstruction(
                 0,
                 "invoke-static { p0, p1 }, $extensionClassDescriptor->navigationTabCreated" +
                     "(${EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
@@ -210,10 +210,10 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
 
         // Fix YT bug of notification tab missing the filled icon.
         if (is_19_35_or_greater) {
-            val cairoNotificationEnumReference = imageEnumConstructorFingerprint
+            val cairoNotificationEnumReference = ImageEnumConstructorFingerprint
                 .instructionMatches.last().getInstruction<ReferenceInstruction>().reference
 
-            setEnumMapFingerprint.let {
+            SetEnumMapFingerprint.let {
                 it.method.apply {
                     val setEnumIntegerIndex = it.instructionMatches.last().index
                     val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC

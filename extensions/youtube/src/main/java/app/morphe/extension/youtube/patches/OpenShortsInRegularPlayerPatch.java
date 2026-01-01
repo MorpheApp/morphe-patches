@@ -34,6 +34,13 @@ public class OpenShortsInRegularPlayerPatch {
     /**
      * Injection point.
      */
+    public static boolean overrideBackPressToExit() {
+        return overrideBackPressToExit(true);
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean overrideBackPressToExit(boolean original) {
         if (overrideBackPressToExit) {
             Logger.printDebug(() -> "Overriding back press to exit activity");
@@ -76,6 +83,7 @@ public class OpenShortsInRegularPlayerPatch {
                 return false; // Always use Shorts player for the Shorts nav button.
             }
 
+            Logger.printDebug(() -> "Setting back button override and opening Shorts intent");
             overrideBackPressToExit = true;
 
             final boolean forceFullScreen = (type == ShortsPlayerType.REGULAR_PLAYER_FULLSCREEN);

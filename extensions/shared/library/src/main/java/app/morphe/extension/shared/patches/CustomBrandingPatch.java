@@ -39,6 +39,7 @@ public class CustomBrandingPatch {
         ORIGINAL,
         LIGHT,
         DARK,
+        BLACK,
         /**
          * User provided custom icon.
          */
@@ -99,7 +100,7 @@ public class CustomBrandingPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * The total number of app name aliases, including dummy aliases.
      */
     private static int numberOfPresetAppNames() {

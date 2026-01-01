@@ -131,14 +131,11 @@ final class VideoActionButtonsFilter extends Filter {
             if (!group.isEnabled()) return false;
         }
 
-        if (VersionCheckPatch.IS_20_22_OR_GREATER) {
-            for (var group : accessibilityButtonsGroupList) {
-                if (!group.isEnabled()) return false;
-            }
-        } else {
-            for (var group : bufferButtonsGroupList) {
-                if (!group.isEnabled()) return false;
-            }
+        var buttonList = VersionCheckPatch.IS_20_22_OR_GREATER
+                ? accessibilityButtonsGroupList
+                : bufferButtonsGroupList;
+        for (var group : buttonList) {
+            if (!group.isEnabled()) return false;
         }
 
         return true;
@@ -159,8 +156,8 @@ final class VideoActionButtonsFilter extends Filter {
     boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (matchedGroup == likeSubscribeGlow) {
-            return (path.startsWith(VIDEO_ACTION_BAR_PATH_PREFIX) || path.startsWith(COMPACT_CHANNEL_BAR_PATH_PREFIX))
-                    && path.contains(ANIMATED_VECTOR_TYPE_PATH);
+            return path.startsWith(VIDEO_ACTION_BAR_PATH_PREFIX) || path.startsWith(COMPACT_CHANNEL_BAR_PATH_PREFIX)
+                    || path.startsWith(COMPACTIFY_VIDEO_ACTION_BAR_PATH);
         }
 
         // If the current matched group is the action bar group,
