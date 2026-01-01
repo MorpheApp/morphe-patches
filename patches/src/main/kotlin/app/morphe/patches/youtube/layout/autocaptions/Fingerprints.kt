@@ -39,3 +39,32 @@ internal object SubtitleTrackFingerprint : Fingerprint(
         classDef.endsWith("/SubtitleTrack;")
     }
 )
+
+internal object StreamVolumeManagerParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.IGET_OBJECT,
+        Opcode.IGET_OBJECT,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT_OBJECT,
+    ),
+    strings = listOf("ACOMC")
+)
+
+internal object StreamVolumeManagerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT,
+        Opcode.IF_EQZ,
+        Opcode.IGET_BOOLEAN,
+        Opcode.IF_EQZ,
+    )
+)

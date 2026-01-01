@@ -24,7 +24,7 @@ val autoCaptionsPatch = bytecodePatch(
             "20.14.43",
             "20.21.37",
             "20.31.42",
-            "20.37.48",
+            "20.37.48"
         )
     )
 
@@ -55,6 +55,23 @@ val autoCaptionsPatch = bytecodePatch(
                 """
                     const/4 v0, 0x$enabled
                     invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setCaptionsButtonStatus(Z)V
+                """
+            )
+        }
+
+        StreamVolumeManagerFingerprint.match(
+            StreamVolumeManagerParentFingerprint.originalClassDef
+        ).method.apply {
+            addInstructions(
+                0,
+
+                """
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions()Z
+                    move-result v0
+                    if-eqz v0, :no_volume_auto_captions_enabled
+                    return-void
+                    :no_volume_auto_captions_enabled
+                    nop
                 """
             )
         }
