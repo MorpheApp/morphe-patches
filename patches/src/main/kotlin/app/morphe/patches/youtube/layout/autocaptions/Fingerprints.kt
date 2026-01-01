@@ -1,7 +1,11 @@
 package app.morphe.patches.youtube.layout.autocaptions
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -44,27 +48,20 @@ internal object StreamVolumeManagerParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.IGET_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-    ),
-    strings = listOf("ACOMC")
+    filters = listOf(
+        string("ACOMC")
+    )
 )
 
+/**
+ * Matches with the class found in [StreamVolumeManagerParentFingerprint].
+ */
 internal object StreamVolumeManagerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.IGET_BOOLEAN,
-        Opcode.IF_EQZ,
+    filters = listOf(
+        literal(1),
+        methodCall(name = "<init>", location = MatchAfterWithin(5))
     )
 )
