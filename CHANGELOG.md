@@ -1,3 +1,10 @@
+# [1.0.0-dev.32](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.31...v1.0.0-dev.32) (2026-01-01)
+
+
+### Bug Fixes
+
+* **GmsCore support:** Remove vendor id patch option ([8fa44d2](https://github.com/MorpheApp/morphe-patches/commit/8fa44d21662d74c2103c29672f01e73863ec0c5f))
+
 # [1.0.0-dev.31](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0-dev.30...v1.0.0-dev.31) (2025-12-31)
 
 

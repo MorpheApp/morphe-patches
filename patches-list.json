@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-dev.31",
+  "version": "1.0.0-dev.32",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -655,19 +655,7 @@
           "8.37.56"
         ]
       },
-      "options": [
-        {
-          "key": "gmsCoreVendorGroupId",
-          "title": "GmsCore vendor group ID",
-          "description": "The vendor's group ID for GmsCore.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "app.revanced",
-          "values": {
-            "ReVanced": "app.revanced"
-          }
-        }
-      ]
+      "options": []
     },
     {
       "name": "GmsCore support",
@@ -688,19 +676,7 @@
           "20.37.48"
         ]
       },
-      "options": [
-        {
-          "key": "gmsCoreVendorGroupId",
-          "title": "GmsCore vendor group ID",
-          "description": "The vendor's group ID for GmsCore.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "app.revanced",
-          "values": {
-            "ReVanced": "app.revanced"
-          }
-        }
-      ]
+      "options": []
     },
     {
       "name": "Hide 'Get Music Premium'",
