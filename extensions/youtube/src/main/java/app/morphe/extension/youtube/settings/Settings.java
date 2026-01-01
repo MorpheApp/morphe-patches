@@ -143,7 +143,6 @@ public class Settings extends BaseSettings {
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
     public static final BooleanSetting COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("morphe_copy_video_url_timestamp", TRUE);
-    public static final BooleanSetting DISABLE_AUTO_CAPTIONS = new BooleanSetting("morphe_disable_auto_captions", FALSE, true);
     public static final EnumSetting<DisableAutoCaptionsPatch.DisableAutoCaptionsStyle> DISABLE_AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_disable_auto_captions_style", DisableAutoCaptionsPatch.DisableAutoCaptionsStyle.KEEP_BOTH, false);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", TRUE, true);

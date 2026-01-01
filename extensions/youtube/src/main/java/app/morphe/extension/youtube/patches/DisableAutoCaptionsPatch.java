@@ -36,9 +36,7 @@ public class DisableAutoCaptionsPatch {
      */
     public static boolean disableAutoCaptions() {
         DisableAutoCaptionsStyle blockType = Settings.DISABLE_AUTO_CAPTIONS_STYLE.get();
-        return Settings.DISABLE_AUTO_CAPTIONS.get()
-                    &&
-                (blockType == DisableAutoCaptionsStyle.KEEP_BOTH || blockType == DisableAutoCaptionsStyle.WITH_VOLUME_ONLY)
+        return (blockType == DisableAutoCaptionsStyle.KEEP_BOTH || blockType == DisableAutoCaptionsStyle.WITH_VOLUME_ONLY)
                     &&
                 !captionsButtonStatus;
     }
@@ -48,9 +46,7 @@ public class DisableAutoCaptionsPatch {
      */
     public static boolean disableMuteAutoCaptions() {
         DisableAutoCaptionsStyle blockType = Settings.DISABLE_AUTO_CAPTIONS_STYLE.get();
-        return !(Settings.DISABLE_AUTO_CAPTIONS.get()
-                    &&
-                (blockType == DisableAutoCaptionsStyle.KEEP_BOTH || blockType == DisableAutoCaptionsStyle.WITHOUT_VOLUME_ONLY)
+        return !((blockType == DisableAutoCaptionsStyle.KEEP_BOTH || blockType == DisableAutoCaptionsStyle.WITHOUT_VOLUME_ONLY)
                     &&
                 !captionsButtonStatus);
     }
