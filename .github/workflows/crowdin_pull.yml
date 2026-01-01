@@ -58,9 +58,8 @@ jobs:
 
       - name: Check strings
         env:
-          GPR_USER: ${{ secrets.GPR_USER }}
-          GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
-        run: ./gradlew clean checkStringResources --no-daemon -Pgpr.user=${{ env.GPR_USER }} -Pgpr.key=${{ env.GPR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew clean checkStringResources --no-daemon
 
       # Step 3: Squash merge crowdin into dev
       - name: Squash merge crowdin into dev

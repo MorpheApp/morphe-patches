@@ -13,9 +13,8 @@ jobs:
     permissions:
       contents: write
       packages: write
-      # TODO: uncomment these
-#      id-token: write
-#      attestations: write
+      id-token: write
+      attestations: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,13 +31,8 @@ jobs:
 
       - name: Build
         env:
-          GPR_USER: ${{ secrets.GPR_USER }}
-          GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
-        run: ./gradlew :patches:buildAndroid generatePatchesList clean --refresh-dependencies -Pgpr.user=${{ env.GPR_USER }} -Pgpr.key=${{ env.GPR_TOKEN }}
-#      - name: Build
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: ./gradlew :patches:buildAndroid generatePatchesList clean
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:buildAndroid generatePatchesList clean
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -60,8 +54,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v5
         id: release
         env:
-          GITHUB_TOKEN: ${{ secrets.GPR_TOKEN }}
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Attest
         if: steps.release.outputs.new_release_published == 'true'

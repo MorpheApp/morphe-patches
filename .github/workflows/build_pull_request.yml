@@ -25,12 +25,8 @@ jobs:
 
       - name: Build
         env:
-          GPR_USER: ${{ secrets.GPR_USER }}
-          GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
-        run: ./gradlew :patches:buildAndroid --no-daemon --no-daemon -Pgpr.user=${{ env.GPR_USER }} -Pgpr.key=${{ env.GPR_TOKEN }}
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: ./gradlew :patches:buildAndroid --no-daemon
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:buildAndroid --no-daemon
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v5
