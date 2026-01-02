@@ -65,9 +65,6 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary_on">Compact banners are hidden</string>
     <string name="morphe_hide_compact_banner_summary_off">Compact banners are shown</string>
-    <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
-    <string name="morphe_hide_crowdfunding_box_summary_on">Crowdfunding box is hidden</string>
-    <string name="morphe_hide_crowdfunding_box_summary_off">Crowdfunding box is shown</string>
     <string name="morphe_hide_expandable_card_title">Hide expandable card</string>
     <string name="morphe_hide_expandable_card_summary_on">Expandable card under videos is hidden</string>
     <string name="morphe_hide_expandable_card_summary_off">Expandable card under videos is shown</string>
@@ -130,8 +127,11 @@ If a Doodle is currently showing in your region and this hide setting is on, the
     <string name="morphe_hide_channel_bar_summary_on">Channel bar is hidden</string>
     <string name="morphe_hide_channel_bar_summary_off">Channel bar is shown</string>
     <string name="morphe_hide_channel_watermark_title">Hide channel watermark</string>
-    <string name="morphe_hide_channel_watermark_summary_on">Watermark is hidden</string>
-    <string name="morphe_hide_channel_watermark_summary_off">Watermark is shown</string>
+    <string name="morphe_hide_channel_watermark_summary_on">Channel watermark is hidden</string>
+    <string name="morphe_hide_channel_watermark_summary_off">Channel watermark is shown</string>
+    <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
+    <string name="morphe_hide_crowdfunding_box_summary_on">Crowdfunding box is hidden</string>
+    <string name="morphe_hide_crowdfunding_box_summary_off">Crowdfunding box is shown</string>
     <string name="morphe_hide_emergency_box_title">Hide emergency boxes</string>
     <string name="morphe_hide_emergency_box_summary_on">Emergency boxes are hidden</string>
     <string name="morphe_hide_emergency_box_summary_off">Emergency boxes are shown</string>
@@ -319,7 +319,7 @@ Keywords can be channel names or any text shown in video titles
 
 Words with uppercase letters in the middle must be entered with the casing (ie: iPhone, TikTok, LeBlanc)"</string>
     <string name="morphe_hide_keyword_content_about_title">About keyword filtering</string>
-    <string name="morphe_hide_keyword_content_about_summary">"Home/Subscriptions/Search results are filtered to hide content that matches keyword phrases
+    <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search results are filtered to hide content that matches keyword phrases
 
 Limitations
 • Shorts cannot be hidden by channel name
@@ -381,11 +381,11 @@ Limitations: YouTube Doodles page is not available"</string>
     <string name="morphe_share_copy_url_success">URL copied to clipboard</string>
     <string name="morphe_share_copy_url_timestamp_success">URL with timestamp copied</string>
     <string name="morphe_copy_video_url_title">Show copy video URL button</string>
-    <string name="morphe_copy_video_url_summary_on">Button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
-    <string name="morphe_copy_video_url_summary_off">Button is not shown</string>
+    <string name="morphe_copy_video_url_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
+    <string name="morphe_copy_video_url_summary_off">Copy video URL button is not shown</string>
     <string name="morphe_copy_video_url_timestamp_title">Show copy timestamp URL button</string>
-    <string name="morphe_copy_video_url_timestamp_summary_on">Button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
-    <string name="morphe_copy_video_url_timestamp_summary_off">Button is not shown</string>
+    <string name="morphe_copy_video_url_timestamp_summary_on">Copy timestamp URL button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_off">Copy timestamp URL button is not shown</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -394,7 +394,7 @@ Limitations: YouTube Doodles page is not available"</string>
     <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">This does not bypass the age restriction. It just accepts it automatically.</string>
 
     <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-    <string name="morphe_disable_signin_to_tv_popup_title">Disable Sign in to TV popup</string>
+    <string name="morphe_disable_signin_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
     <string name="morphe_disable_signin_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
     <string name="morphe_disable_signin_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
 
@@ -612,10 +612,10 @@ If changing this setting does not take effect, try switching to Incognito mode."
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions</string>
     <string name="morphe_hide_player_flyout_captions_summary_on">Captions menu is hidden</string>
     <string name="morphe_hide_player_flyout_captions_summary_off">Captions menu is shown</string>
-    <!-- 'Additional settings' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings</string>
-    <string name="morphe_hide_player_flyout_additional_settings_summary_on">Additional settings menu is hidden</string>
-    <string name="morphe_hide_player_flyout_additional_settings_summary_off">Additional settings menu is shown</string>
+    <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings / More</string>
+    <string name="morphe_hide_player_flyout_additional_settings_summary_on">Additional settings / More menu is hidden</string>
+    <string name="morphe_hide_player_flyout_additional_settings_summary_off">Additional settings / More menu is shown</string>
     <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_sleep_timer_title">Hide Sleep timer</string>
     <string name="morphe_hide_player_flyout_sleep_timer_summary_on">Sleep timer menu is hidden</string>
@@ -660,12 +660,12 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Watch in VR menu is shown</string>
-    <string name="morphe_hide_player_flyout_video_quality_title">Hide video quality menu</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_on">Video quality menu is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_off">Video quality menu is shown</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_title">Hide video quality menu footer</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video quality menu footer is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video quality menu footer is shown</string>
+    <string name="morphe_hide_player_flyout_video_quality_title">Hide Quality</string>
+    <string name="morphe_hide_player_flyout_video_quality_summary_on">Quality menu is hidden</string>
+    <string name="morphe_hide_player_flyout_video_quality_summary_off">Quality menu is shown</string>
+    <string name="morphe_hide_player_flyout_video_quality_footer_title">Hide quality menu footer</string>
+    <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
+    <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
 
     <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
     <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
@@ -709,7 +709,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_seekbar_title">Hide video player seekbar</string>
     <string name="morphe_hide_seekbar_summary_on">Video player seekbar is hidden</string>
     <string name="morphe_hide_seekbar_summary_off">Video player seekbar is shown</string>
-    <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
+    <!-- Seekbar shown inside video thumbnails found the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress when the video was last open. -->
     <string name="morphe_hide_seekbar_thumbnail_title">Hide video thumbnails seekbar</string>
     <string name="morphe_hide_seekbar_thumbnail_summary_on">Video thumbnails seekbar is hidden</string>
     <string name="morphe_hide_seekbar_thumbnail_summary_off">Video thumbnails seekbar is shown</string>
@@ -1010,7 +1010,7 @@ Your user id is like a password and it should never be shared."</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Do not show again</string>
     <string name="morphe_sb_diff_segments">Change segment behavior</string>
     <string name="morphe_sb_segments_sponsor">Sponsor</string>
-    <string name="morphe_sb_segments_sponsor_sum">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes/creators/websites/products they like</string>
+    <string name="morphe_sb_segments_sponsor_sum">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes / creators / websites / products they like</string>
     <string name="morphe_sb_segments_selfpromo">Unpaid / Self Promotion</string>
     <string name="morphe_sb_segments_selfpromo_sum">Similar to Sponsor except for unpaid or self promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
     <string name="morphe_sb_segments_interaction">Interaction Reminder (Subscribe)</string>
@@ -1336,7 +1336,7 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
     <string name="morphe_alt_thumbnail_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
     <string name="morphe_alt_thumbnail_stills_about_title">Still video captures</string>
-    <string name="morphe_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning/middle/end of each video. These images are built into YouTube and no external API is used</string>
+    <string name="morphe_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning / middle / end of each video. These images are built into YouTube and no external API is used</string>
     <string name="morphe_alt_thumbnail_stills_fast_title">Use fast still captures</string>
     <string name="morphe_alt_thumbnail_stills_fast_summary_on">Using medium quality still captures. Thumbnails will load faster, but live streams, unreleased, or very old videos may show blank thumbnails</string>
     <string name="morphe_alt_thumbnail_stills_fast_summary_off">Using high quality still captures</string>
@@ -1430,13 +1430,13 @@ Enabling this can unlock higher video qualities"</string>
 
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show speed dialog button</string>
-    <string name="morphe_playback_speed_dialog_button_summary_on">Button is shown. Tap and hold to reset playback speed to default</string>
-    <string name="morphe_playback_speed_dialog_button_summary_off">Button is not shown</string>
+    <string name="morphe_playback_speed_dialog_button_summary_on">Speed dialog button is shown. Tap and hold to reset playback speed to default</string>
+    <string name="morphe_playback_speed_dialog_button_summary_off">Speed dialog button is not shown</string>
 
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
     <string name="morphe_video_quality_dialog_button_title">Show video quality button</string>
-    <string name="morphe_video_quality_dialog_button_summary_on">Button is shown. Tap and hold to reset quality to default</string>
-    <string name="morphe_video_quality_dialog_button_summary_off">Button is not shown</string>
+    <string name="morphe_video_quality_dialog_button_summary_on">Video quality button is shown. Tap and hold to reset quality to default</string>
+    <string name="morphe_video_quality_dialog_button_summary_off">Video quality button is not shown</string>
 
     <!-- video.speed.custom.customPlaybackSpeedPatch -->
     <string name="morphe_custom_speed_menu_title">Custom playback speed menu</string>

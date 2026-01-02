@@ -107,6 +107,10 @@ public final class LayoutComponentsFilter extends Filter {
                 Settings.HIDE_COMPACT_BANNER,
                 "compact_banner"
         );
+        final var crowdfundingBox = new StringFilterGroup(
+                Settings.HIDE_CROWDFUNDING_BOX,
+                "donation_shelf"
+        );
 
         final var subscriptionsChipBar = new StringFilterGroup(
                 Settings.HIDE_FILTER_BAR_FEED_IN_FEED,
@@ -240,7 +244,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         final var channelWatermark = new StringFilterGroup(
-                Settings.HIDE_VIDEO_CHANNEL_WATERMARK,
+                Settings.HIDE_CHANNEL_WATERMARK,
                 "featured_channel_watermark_overlay"
         );
 
@@ -303,6 +307,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactChannelBar,
                 compactChannelBarInner,
                 communityPosts,
+                crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
                 forYouShelf,
@@ -414,7 +419,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean showWatermark() {
-        return !Settings.HIDE_VIDEO_CHANNEL_WATERMARK.get();
+        return !Settings.HIDE_CHANNEL_WATERMARK.get();
     }
 
     /**
