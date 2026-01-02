@@ -193,11 +193,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_channel_screen",
                 preferences = setOf(
+                    SwitchPreference("morphe_hide_community_button"),
                     SwitchPreference("morphe_hide_for_you_shelf"),
+                    SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview"),
                     SwitchPreference("morphe_hide_members_shelf"),
-                    SwitchPreference("morphe_hide_visit_community_button"),
-                    SwitchPreference("morphe_hide_visit_store_button"),
+                    SwitchPreference("morphe_hide_store_button"),
+                    SwitchPreference("morphe_hide_subscribe_button_in_channel_page"),
                 ),
             ),
             SwitchPreference("morphe_hide_album_cards"),
