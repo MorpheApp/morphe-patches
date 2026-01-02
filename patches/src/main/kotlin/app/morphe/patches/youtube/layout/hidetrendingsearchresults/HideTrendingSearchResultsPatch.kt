@@ -3,19 +3,12 @@ package app.morphe.patches.youtube.layout.hidetrendingsearchresults
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.findFreeRegister
-import app.morphe.util.registersUsed
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
-
-internal var suggestionCategoryDividerHeight = -1L
-    private set
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HideTrendingSearchResultsPatch;"
@@ -43,10 +36,8 @@ val HideSearchTrendingResultsPatch = bytecodePatch(
     )
 
     execute {
-        suggestionCategoryDividerHeight = getResourceId(ResourceType.DIMEN, "suggestion_category_divider_height")
-
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
-            SwitchPreference("morphe_hide_search_trending_results"),
+        PreferenceScreen.FEED.addPreferences(
+            SwitchPreference("morphe_hide_search_trending_results")
         )
 
         SearchBoxTypingStringFingerprint.match(
