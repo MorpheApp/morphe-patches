@@ -7,17 +7,16 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
-import app.morphe.util.FreeRegisterProvider
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.getFreeRegisterProvider
@@ -28,15 +27,22 @@ import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+
+// Registers used in extension helperMethod.
+private const val REGISTER_FILTER_CLASS = 0
+private const val REGISTER_FILTER_COUNT = 1
+private const val REGISTER_FILTER_ARRAY = 2
 
 lateinit var addLithoFilter: (String) -> Unit
     private set
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
+private lateinit var helperMethod: MutableMethod
 
 val lithoFilterPatch = bytecodePatch(
     description = "Hooks the method which parses the bytes into a ComponentContext to filter components.",
@@ -87,18 +93,46 @@ val lithoFilterPatch = bytecodePatch(
     execute {
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
-        LithoFilterFingerprint.method.apply {
-            removeInstructions(2, 4) // Remove dummy filter.
+        LithoFilterFingerprint.let {
+            it.method.apply {
+                // Add a helper method to avoid finding multiple free registers.
+                // This fixes an issue with extension compiled with Android Gradle Plugin 8.3.0+.
+                val helperClass = definingClass
+                val helperName = "patch_getFilterArray"
+                val helperReturnType = EXTENSION_FILER_ARRAY_DESCRIPTOR
+                helperMethod = ImmutableMethod(
+                    helperClass,
+                    helperName,
+                    listOf(),
+                    helperReturnType,
+                    AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(3),
+                ).toMutable().apply {
+                    addLithoFilter = { classDescriptor ->
+                        addInstructions(
+                            0,
+                            """
+                                new-instance v$REGISTER_FILTER_CLASS, $classDescriptor
+                                invoke-direct { v$REGISTER_FILTER_CLASS }, $classDescriptor-><init>()V
+                                const/16 v$REGISTER_FILTER_COUNT, ${filterCount++}
+                                aput-object v$REGISTER_FILTER_CLASS, v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT
+                            """
+                        )
+                    }
+                }
+                it.classDef.methods.add(helperMethod)
 
-            addLithoFilter = { classDescriptor ->
+                val insertIndex = it.instructionMatches.first().index
+                val insertRegister =
+                    getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
                 addInstructions(
-                    2,
-                    """
-                        new-instance v1, $classDescriptor
-                        invoke-direct { v1 }, $classDescriptor-><init>()V
-                        const/16 v2, ${filterCount++}
-                        aput-object v1, v0, v2
-                    """
+                    insertIndex, """
+                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->$helperName()$EXTENSION_FILER_ARRAY_DESCRIPTOR
+                        move-result-object v$insertRegister
+                        """
                 )
             }
         }
@@ -246,14 +280,14 @@ val lithoFilterPatch = bytecodePatch(
             // If there is text related to accessibility, get the accessibilityId and accessibilityText.
             addInstructions(
                 accessibilityIdIndex,
-                    """
-                        # Get accessibilityId
-                        invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
-                        move-result-object v$accessibilityIdRegister
-                        
-                        # Get accessibilityText
-                        invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
-                        move-result-object v$accessibilityTextRegister
+                """
+                    # Get accessibilityId
+                    invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
+                    move-result-object v$accessibilityIdRegister
+                    
+                    # Get accessibilityText
+                    invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
+                    move-result-object v$accessibilityTextRegister
                 """
             )
 
@@ -311,6 +345,19 @@ val lithoFilterPatch = bytecodePatch(
     }
 
     finalize {
-        LithoFilterFingerprint.method.replaceInstruction(0, "const/16 v0, $filterCount")
+        helperMethod.apply {
+            addInstruction(
+                implementation!!.instructions.size,
+                "return-object v$REGISTER_FILTER_ARRAY"
+            )
+
+            addInstructions(
+                0,
+                """
+                    const/16 v$REGISTER_FILTER_COUNT, $filterCount
+                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILER_ARRAY_DESCRIPTOR
+                """
+            )
+        }
     }
 }
