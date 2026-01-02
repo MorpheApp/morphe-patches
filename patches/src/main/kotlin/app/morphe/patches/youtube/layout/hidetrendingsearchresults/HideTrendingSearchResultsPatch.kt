@@ -10,6 +10,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.util.findFreeRegister
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 
@@ -51,14 +52,10 @@ val HideSearchTrendingResultsPatch = bytecodePatch(
         SearchBoxTypingStringFingerprint.match(
             SearchBoxTypingMethodFingerprint.method,
         ).method.apply {
-            fun getFirstRegister(instruction: Instruction): Int {
-                return instruction.registersUsed.first()
-            }
-
             val typingStringInstruction = SearchBoxTypingStringFingerprint.instructionMatches[4]
-            val typingStringRegister = getFirstRegister(typingStringInstruction.instruction)
-            val freeRegister = getFirstRegister(SearchBoxTypingStringFingerprint.instructionMatches.last().instruction)
+            val typingStringRegister = typingStringInstruction.instruction.registersUsed.first()
             val addPatchIndex = typingStringInstruction.index
+            val freeRegister = findFreeRegister(addPatchIndex, typingStringRegister)
 
             addInstructionsWithLabels(
                 addPatchIndex,
