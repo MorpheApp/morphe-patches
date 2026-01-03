@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.settings;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.parent;
+import static app.morphe.extension.shared.settings.Setting.parentNot;
 import static app.morphe.extension.shared.settings.Setting.parentsAll;
 import static app.morphe.extension.shared.settings.Setting.parentsAny;
 import static app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
@@ -92,7 +93,6 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_CHIPS_SHELF = new BooleanSetting("morphe_hide_chips_shelf", TRUE);
     public static final BooleanSetting HIDE_COMMUNITY_POSTS = new BooleanSetting("morphe_hide_community_posts", FALSE);
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE);
-    public static final BooleanSetting HIDE_CROWDFUNDING_BOX = new BooleanSetting("morphe_hide_crowdfunding_box", FALSE, true);
     public static final BooleanSetting HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE, true, "morphe_hide_doodles_user_dialog_message");
     public static final BooleanSetting HIDE_EXPANDABLE_CARD = new BooleanSetting("morphe_hide_expandable_card", TRUE);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);
@@ -133,11 +133,13 @@ public class Settings extends BaseSettings {
             parentsAny(HIDE_KEYWORD_CONTENT_HOME, HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS, HIDE_KEYWORD_CONTENT_SEARCH));
 
     // Channel page
+    public static final BooleanSetting HIDE_COMMUNITY_BUTTON = new BooleanSetting("morphe_hide_community_button", TRUE);
     public static final BooleanSetting HIDE_FOR_YOU_SHELF = new BooleanSetting("morphe_hide_for_you_shelf", FALSE);
+    public static final BooleanSetting HIDE_JOIN_BUTTON = new BooleanSetting("morphe_hide_join_button", FALSE);
     public static final BooleanSetting HIDE_LINKS_PREVIEW = new BooleanSetting("morphe_hide_links_preview", TRUE);
     public static final BooleanSetting HIDE_MEMBERS_SHELF = new BooleanSetting("morphe_hide_members_shelf", TRUE);
-    public static final BooleanSetting HIDE_VISIT_COMMUNITY_BUTTON = new BooleanSetting("morphe_hide_visit_community_button", TRUE);
-    public static final BooleanSetting HIDE_VISIT_STORE_BUTTON = new BooleanSetting("morphe_hide_visit_store_button", TRUE);
+    public static final BooleanSetting HIDE_STORE_BUTTON = new BooleanSetting("morphe_hide_store_button", TRUE);
+    public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE = new BooleanSetting("morphe_hide_subscribe_button_in_channel_page", FALSE);
 
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
@@ -151,6 +153,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_CAPTIONS_BUTTON = new BooleanSetting("morphe_hide_captions_button", FALSE);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_hide_cast_button", TRUE, true);
     public static final BooleanSetting HIDE_CHANNEL_BAR = new BooleanSetting("morphe_hide_channel_bar", FALSE);
+    public static final BooleanSetting HIDE_CHANNEL_WATERMARK = new BooleanSetting("morphe_hide_channel_watermark", TRUE);
+    public static final BooleanSetting HIDE_CROWDFUNDING_BOX = new BooleanSetting("morphe_hide_crowdfunding_box", FALSE, true);
     public static final BooleanSetting HIDE_EMERGENCY_BOX = new BooleanSetting("morphe_hide_emergency_box", TRUE);
     public static final BooleanSetting HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
     public static final BooleanSetting HIDE_END_SCREEN_SUGGESTED_VIDEO = new BooleanSetting("morphe_end_screen_suggested_video", FALSE, true);
@@ -165,7 +169,6 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_RELATED_VIDEOS = new BooleanSetting("morphe_hide_related_videos", FALSE);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
-    public static final BooleanSetting HIDE_VIDEO_CHANNEL_WATERMARK = new BooleanSetting("morphe_hide_channel_watermark", TRUE);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("morphe_open_videos_fullscreen_portrait", FALSE);
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE);
@@ -207,13 +210,17 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_ASK_SECTION = new BooleanSetting("morphe_hide_ask_section", FALSE);
     public static final BooleanSetting HIDE_ATTRIBUTES_SECTION = new BooleanSetting("morphe_hide_attributes_section", FALSE);
     public static final BooleanSetting HIDE_CHAPTERS_SECTION = new BooleanSetting("morphe_hide_chapters_section", TRUE);
-    public static final BooleanSetting HIDE_FEATURED_SECTION = new BooleanSetting("morphe_hide_featured_section", TRUE);
+    public static final BooleanSetting HIDE_EXPLORE_PODCAST_SECTION = new BooleanSetting("morphe_hide_explore_podcast_section", TRUE);
+    public static final BooleanSetting HIDE_FEATURED_PLACES_SECTION = new BooleanSetting("morphe_hide_featured_places_section", FALSE);
+    public static final BooleanSetting HIDE_GAMING_SECTION = new BooleanSetting("morphe_hide_gaming_section", FALSE);
     public static final BooleanSetting HIDE_HOW_THIS_WAS_MADE_SECTION = new BooleanSetting("morphe_hide_how_this_was_made_section", FALSE);
     public static final BooleanSetting HIDE_HYPE_POINTS = new BooleanSetting("morphe_hide_hype_points", FALSE);
     public static final BooleanSetting HIDE_INFO_CARDS_SECTION = new BooleanSetting("morphe_hide_info_cards_section", TRUE);
+    public static final BooleanSetting HIDE_FEATURED_LINKS_SECTION = new BooleanSetting("morphe_hide_featured_links_section", FALSE, parentNot(HIDE_INFO_CARDS_SECTION));
+    public static final BooleanSetting HIDE_FEATURED_VIDEOS_SECTION = new BooleanSetting("morphe_hide_featured_videos_section", FALSE, parentNot(HIDE_INFO_CARDS_SECTION));
+    public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON = new BooleanSetting("morphe_hide_subscribe_button", FALSE, parentNot(HIDE_INFO_CARDS_SECTION));
     public static final BooleanSetting HIDE_KEY_CONCEPTS_SECTION = new BooleanSetting("morphe_hide_key_concepts_section", FALSE);
-    public static final BooleanSetting HIDE_PODCAST_SECTION = new BooleanSetting("morphe_hide_podcast_section", TRUE);
-    public static final BooleanSetting HIDE_DESCRIPTION_SUBSCRIBE_BUTTON = new BooleanSetting("morphe_hide_description_subscribe_button", TRUE);
+    public static final BooleanSetting HIDE_MUSIC_SECTION = new BooleanSetting("morphe_hide_music_section", FALSE);
     public static final BooleanSetting HIDE_TRANSCRIPT_SECTION = new BooleanSetting("morphe_hide_transcript_section", TRUE);
 
     // Action buttons

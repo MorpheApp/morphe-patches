@@ -65,9 +65,6 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary_on">Compact banners are hidden</string>
     <string name="morphe_hide_compact_banner_summary_off">Compact banners are shown</string>
-    <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
-    <string name="morphe_hide_crowdfunding_box_summary_on">Crowdfunding box is hidden</string>
-    <string name="morphe_hide_crowdfunding_box_summary_off">Crowdfunding box is shown</string>
     <string name="morphe_hide_expandable_card_title">Hide expandable card</string>
     <string name="morphe_hide_expandable_card_summary_on">Expandable card under videos is hidden</string>
     <string name="morphe_hide_expandable_card_summary_off">Expandable card under videos is shown</string>
@@ -96,7 +93,7 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_movies_section_title">Hide movies section</string>
     <string name="morphe_hide_movies_section_summary_on">Movies section is hidden</string>
     <string name="morphe_hide_movies_section_summary_off">Movies section is shown</string>
-    <!-- 'Notify me' should be translated using the same localized wording YouTube displays.
+    <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
     <string name="morphe_hide_notify_me_button_title">Hide \'Notify me\' button</string>
     <string name="morphe_hide_notify_me_button_summary_on">Notify me button is hidden</string>
@@ -104,8 +101,8 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_playables_title">Hide Playables</string>
     <string name="morphe_hide_playables_summary_on">Playables are hidden</string>
     <string name="morphe_hide_playables_summary_off">Playables are shown</string>
-    <!-- 'Show more' should be translated with the same localized wording that YouTube displays.
-          This button usually appears when searching for a YT creator. -->
+    <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when searching for a YouTube creator. -->
     <string name="morphe_hide_show_more_button_title">Hide \'Show more\' button</string>
     <string name="morphe_hide_show_more_button_summary_on">Show more button in search results is hidden</string>
     <string name="morphe_hide_show_more_button_summary_off">Show more button in search results is shown</string>
@@ -115,7 +112,7 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_ticket_shelf_title">Hide ticket shelf</string>
     <string name="morphe_hide_ticket_shelf_summary_on">Ticket shelf is hidden</string>
     <string name="morphe_hide_ticket_shelf_summary_off">Ticket shelf is shown</string>
-    <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays. -->
+    <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
     <string name="morphe_hide_video_recommendation_labels_title">Hide video recommendation labels</string>
     <string name="morphe_hide_video_recommendation_labels_summary_on">\'People also watched\' and \'You might also like\' labels in search results are hidden</string>
     <string name="morphe_hide_video_recommendation_labels_summary_off">\'People also watched\' and \'You might also like\' labels in search results are shown</string>
@@ -130,15 +127,18 @@ If a Doodle is currently showing in your region and this hide setting is on, the
     <string name="morphe_hide_channel_bar_summary_on">Channel bar is hidden</string>
     <string name="morphe_hide_channel_bar_summary_off">Channel bar is shown</string>
     <string name="morphe_hide_channel_watermark_title">Hide channel watermark</string>
-    <string name="morphe_hide_channel_watermark_summary_on">Watermark is hidden</string>
-    <string name="morphe_hide_channel_watermark_summary_off">Watermark is shown</string>
+    <string name="morphe_hide_channel_watermark_summary_on">Channel watermark is hidden</string>
+    <string name="morphe_hide_channel_watermark_summary_off">Channel watermark is shown</string>
+    <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
+    <string name="morphe_hide_crowdfunding_box_summary_on">Crowdfunding box is hidden</string>
+    <string name="morphe_hide_crowdfunding_box_summary_off">Crowdfunding box is shown</string>
     <string name="morphe_hide_emergency_box_title">Hide emergency boxes</string>
     <string name="morphe_hide_emergency_box_summary_on">Emergency boxes are hidden</string>
     <string name="morphe_hide_emergency_box_summary_off">Emergency boxes are shown</string>
     <string name="morphe_hide_info_panels_title">Hide info panels</string>
     <string name="morphe_hide_info_panels_summary_on">Info panels are hidden</string>
     <string name="morphe_hide_info_panels_summary_off">Info panels are shown</string>
-    <!-- 'Join' should be translated using the same localized wording YouTube displays.
+    <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This appears in the video player for certain videos. -->
     <string name="morphe_hide_join_membership_button_title">Hide Join button</string>
     <string name="morphe_hide_join_membership_button_summary_on">Join button is hidden</string>
@@ -170,27 +170,39 @@ If a Doodle is currently showing in your region and this hide setting is on, the
     <string name="morphe_hide_chapters_section_title">Hide Chapters</string>
     <string name="morphe_hide_chapters_section_summary_on">Chapters section is hidden</string>
     <string name="morphe_hide_chapters_section_summary_off">Chapters section is shown</string>
+    <string name="morphe_hide_explore_podcast_section_title">Hide \'Explore the podcast\'</string>
+    <string name="morphe_hide_explore_podcast_section_summary_on">Explore the podcast section is hidden</string>
+    <string name="morphe_hide_explore_podcast_section_summary_off">Explore the podcast section is shown</string>
+    <string name="morphe_hide_featured_links_section_title">Hide Featured links</string>
+    <string name="morphe_hide_featured_links_section_summary_on">Featured links section is hidden</string>
+    <string name="morphe_hide_featured_links_section_summary_off">Featured links section is shown</string>
+    <string name="morphe_hide_featured_places_section_title">Hide \'Featured places\'</string>
+    <string name="morphe_hide_featured_places_section_summary_on">Featured places section is hidden</string>
+    <string name="morphe_hide_featured_places_section_summary_off">Featured places section is shown</string>
+    <string name="morphe_hide_featured_videos_section_title">Hide Featured videos</string>
+    <string name="morphe_hide_featured_videos_section_summary_on">Featured videos section is hidden</string>
+    <string name="morphe_hide_featured_videos_section_summary_off">Featured videos section is shown</string>
+    <string name="morphe_hide_gaming_section_title">Hide Gaming</string>
+    <string name="morphe_hide_gaming_section_summary_on">Gaming section is hidden</string>
+    <string name="morphe_hide_gaming_section_summary_off">Gaming section is shown</string>
     <string name="morphe_hide_how_this_was_made_section_title">Hide \'How this content was made\'</string>
     <string name="morphe_hide_how_this_was_made_section_summary_on">How this content was made section is hidden</string>
     <string name="morphe_hide_how_this_was_made_section_summary_off">How this content was made section is shown</string>
     <string name="morphe_hide_hype_points_title">Hide Hype points</string>
     <string name="morphe_hide_hype_points_summary_on">Hype points are hidden</string>
     <string name="morphe_hide_hype_points_summary_off">Hype points are shown</string>
-    <string name="morphe_hide_podcast_section_title">Hide \'Explore the podcast\'</string>
-    <string name="morphe_hide_podcast_section_summary_on">Explore the podcast section is hidden</string>
-    <string name="morphe_hide_podcast_section_summary_off">Explore the podcast section is shown</string>
-    <string name="morphe_hide_featured_section_title">Hide Featured content</string>
-    <string name="morphe_hide_featured_section_summary_on">Featured content section is hidden</string>
-    <string name="morphe_hide_featured_section_summary_off">Featured content section is shown</string>
     <string name="morphe_hide_info_cards_section_title">Hide Info cards</string>
     <string name="morphe_hide_info_cards_section_summary_on">Info cards section is hidden</string>
     <string name="morphe_hide_info_cards_section_summary_off">Info cards section is shown</string>
     <string name="morphe_hide_key_concepts_section_title">Hide \'Key concepts\'</string>
     <string name="morphe_hide_key_concepts_section_summary_on">Key concepts section is hidden</string>
     <string name="morphe_hide_key_concepts_section_summary_off">Key concepts section is shown</string>
-    <string name="morphe_hide_description_subscribe_button_title">Hide Subscribe button</string>
-    <string name="morphe_hide_description_subscribe_button_summary_on">Subscribe button is hidden</string>
-    <string name="morphe_hide_description_subscribe_button_summary_off">Subscribe button is shown</string>
+    <string name="morphe_hide_music_section_title">Hide Music</string>
+    <string name="morphe_hide_music_section_summary_on">Music section is hidden</string>
+    <string name="morphe_hide_music_section_summary_off">Music section is shown</string>
+    <string name="morphe_hide_subscribe_button_title">Hide Subscribe button</string>
+    <string name="morphe_hide_subscribe_button_summary_on">Subscribe button is hidden</string>
+    <string name="morphe_hide_subscribe_button_summary_off">Subscribe button is shown</string>
     <string name="morphe_hide_transcript_section_title">Hide Transcript</string>
     <string name="morphe_hide_transcript_section_summary_on">Transcript section is hidden</string>
     <string name="morphe_hide_transcript_section_summary_off">Transcript section is shown</string>
@@ -214,24 +226,32 @@ If a Doodle is currently showing in your region and this hide setting is on, the
 
     <string name="morphe_channel_screen_title">Channel page</string>
     <string name="morphe_channel_screen_summary">Hide or show channel page components</string>
-    <!-- 'For You' should be translated using the same localized wording YouTube displays. -->
+    <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_community_button_title">Hide Community button</string>
+    <string name="morphe_hide_community_button_summary_on">Community button is hidden</string>
+    <string name="morphe_hide_community_button_summary_off">Community button is shown</string>
+    <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
     <string name="morphe_hide_for_you_shelf_title">Hide \'For You\' shelf</string>
     <string name="morphe_hide_for_you_shelf_summary_on">For You shelf is hidden</string>
     <string name="morphe_hide_for_you_shelf_summary_off">For You shelf is shown</string>
+    <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_join_button_title">Hide Join button</string>
+    <string name="morphe_hide_join_button_summary_on">Join button is hidden</string>
+    <string name="morphe_hide_join_button_summary_off">Join button is shown</string>
     <string name="morphe_hide_links_preview_title">Hide links preview</string>
     <string name="morphe_hide_links_preview_summary_on">Links preview is hidden</string>
     <string name="morphe_hide_links_preview_summary_off">Links preview is shown</string>
     <string name="morphe_hide_members_shelf_title">Hide members shelf</string>
     <string name="morphe_hide_members_shelf_summary_on">Members shelf is hidden</string>
     <string name="morphe_hide_members_shelf_summary_off">Members shelf is shown</string>
-    <!-- 'Visit Community' should be translated with the same localized wording that YouTube displays. -->
-    <string name="morphe_hide_visit_community_button_title">Hide \'Visit Community\' button</string>
-    <string name="morphe_hide_visit_community_button_summary_on">Visit Community button is hidden</string>
-    <string name="morphe_hide_visit_community_button_summary_off">Visit Community button is shown</string>
-    <!-- 'Visit store' should be translated with the same localized wording that YouTube displays. -->
-    <string name="morphe_hide_visit_store_button_title">Hide \'Visit store\' button</string>
-    <string name="morphe_hide_visit_store_button_summary_on">Visit store button is hidden</string>
-    <string name="morphe_hide_visit_store_button_summary_off">Visit store button is shown</string>
+    <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_store_button_title">Hide Store button</string>
+    <string name="morphe_hide_store_button_summary_on">Store button is hidden</string>
+    <string name="morphe_hide_store_button_summary_off">Store button is shown</string>
+    <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_subscribe_button_in_channel_page_title">Hide Subscribe button</string>
+    <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Subscribe button is hidden</string>
+    <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Subscribe button is shown</string>
 
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Hide or show comments section components</string>
@@ -277,14 +297,14 @@ If a Doodle is currently showing in your region and this hide setting is on, the
     <string name="morphe_hide_view_count_title">Hide view count</string>
     <string name="morphe_hide_view_count_summary_on">View count is hidden in feed and search results</string>
     <string name="morphe_hide_view_count_summary_off">View count is shown in feed and search results</string>
-    <!-- Translations should lanaguge similar to morphe_hide_upload_time_user_dialog_message -->
+    <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
     <string name="morphe_hide_view_count_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show view counts
 • This feature does not work with automotive form factor"</string>
     <string name="morphe_hide_upload_time_title">Hide upload time</string>
     <string name="morphe_hide_upload_time_summary_on">Upload time is hidden in feed and search results</string>
     <string name="morphe_hide_upload_time_summary_off">Upload time is shown in feed and search results</string>
-    <!-- Translations should lanaguge similar to morphe_hide_view_count_user_dialog_message -->
+    <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
     <string name="morphe_hide_upload_time_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times
 • This feature does not work with automotive form factor"</string>
@@ -308,14 +328,14 @@ Keywords can be channel names or any text shown in video titles
 
 Words with uppercase letters in the middle must be entered with the casing (ie: iPhone, TikTok, LeBlanc)"</string>
     <string name="morphe_hide_keyword_content_about_title">About keyword filtering</string>
-    <string name="morphe_hide_keyword_content_about_summary">"Home/Subscriptions/Search results are filtered to hide content that matches keyword phrases
+    <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search results are filtered to hide content that matches keyword phrases
 
 Limitations
 • Shorts cannot be hidden by channel name
 • Some UI components may not be hidden
 • Searching for a keyword may show no results"</string>
     <string name="morphe_hide_keyword_content_about_whole_words_title">Match whole words</string>
-    <!-- Translations _must_ use a localized example.  For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist.  Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+    <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
     <string name="morphe_hide_keyword_content_about_whole_words_summary">Surrounding a keyword/phrase with double-quotes will prevent partial matches of video titles and channel names&lt;br>&lt;br>For example,&lt;br>&lt;b>\"ai\"&lt;/b> will hide the video: &lt;b>How does AI work?&lt;/b>&lt;br>but will not hide: &lt;b>What does fair use mean?&lt;/b></string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_hide_keyword_toast_invalid_common">Cannot use keyword: %s</string>
@@ -370,11 +390,11 @@ Limitations: YouTube Doodles page is not available"</string>
     <string name="morphe_share_copy_url_success">URL copied to clipboard</string>
     <string name="morphe_share_copy_url_timestamp_success">URL with timestamp copied</string>
     <string name="morphe_copy_video_url_title">Show copy video URL button</string>
-    <string name="morphe_copy_video_url_summary_on">Button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
-    <string name="morphe_copy_video_url_summary_off">Button is not shown</string>
+    <string name="morphe_copy_video_url_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
+    <string name="morphe_copy_video_url_summary_off">Copy video URL button is not shown</string>
     <string name="morphe_copy_video_url_timestamp_title">Show copy timestamp URL button</string>
-    <string name="morphe_copy_video_url_timestamp_summary_on">Button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
-    <string name="morphe_copy_video_url_timestamp_summary_off">Button is not shown</string>
+    <string name="morphe_copy_video_url_timestamp_summary_on">Copy timestamp URL button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_off">Copy timestamp URL button is not shown</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -383,7 +403,7 @@ Limitations: YouTube Doodles page is not available"</string>
     <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">This does not bypass the age restriction. It just accepts it automatically.</string>
 
     <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-    <string name="morphe_disable_signin_to_tv_popup_title">Disable Sign in to TV popup</string>
+    <string name="morphe_disable_signin_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
     <string name="morphe_disable_signin_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
     <string name="morphe_disable_signin_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
 
@@ -399,7 +419,7 @@ Limitations: YouTube Doodles page is not available"</string>
     <string name="morphe_external_downloader_summary_on">Download button in player is shown</string>
     <string name="morphe_external_downloader_summary_off">Download button in player is not shown</string>
 
-    <!-- 'Download action button' should be translated using the same wording as the translation of 'morphe_hide_download_button_title'. -->
+    <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
     <string name="morphe_external_downloader_action_button_summary_on">Download button opens your external downloader</string>
     <string name="morphe_external_downloader_action_button_summary_off">Download button opens the native in-app downloader</string>
@@ -490,11 +510,11 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_like_dislike_button_title">Hide Like and Dislike</string>
     <string name="morphe_hide_like_dislike_button_summary_on">Like and Dislike buttons are hidden</string>
     <string name="morphe_hide_like_dislike_button_summary_off">Like and Dislike buttons are shown</string>
-    <!-- 'Share' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_share_button_title">Hide Share</string>
     <string name="morphe_hide_share_button_summary_on">Share button is hidden</string>
     <string name="morphe_hide_share_button_summary_off">Share button is shown</string>
-    <!-- 'Stop ads' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_stop_ads_button_title">Hide Stop ads</string>
     <string name="morphe_hide_stop_ads_button_summary_on">Stop ads button is hidden</string>
     <string name="morphe_hide_stop_ads_button_summary_off">Stop ads button is shown</string>
@@ -502,47 +522,47 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_comments_button_title">Hide Comments</string>
     <string name="morphe_hide_comments_button_summary_on">Comments button is hidden</string>
     <string name="morphe_hide_comments_button_summary_off">Comments button is shown</string>
-    <!-- 'Report' should be translated with the same localized wording that YouTube displays.
+    <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually only shows on live streams. -->
     <string name="morphe_hide_report_button_title">Hide Report</string>
     <string name="morphe_hide_report_button_summary_on">Report button is hidden</string>
     <string name="morphe_hide_report_button_summary_off">Report button is shown</string>
-    <!-- 'Remix' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_remix_button_title">Hide Remix</string>
     <string name="morphe_hide_remix_button_summary_on">Remix button is hidden</string>
     <string name="morphe_hide_remix_button_summary_off">Remix button is shown</string>
-    <!-- 'Download' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_download_button_title">Hide Download</string>
     <string name="morphe_hide_download_button_summary_on">Download button is hidden</string>
     <string name="morphe_hide_download_button_summary_off">Download button is shown</string>
-    <!-- 'Hype' should be translated with the same localized wording that YouTube displays.
-          This button only shows on videos uploaded by the logged in user. -->
+    <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button only shows on videos uploaded by the logged-in user. -->
     <string name="morphe_hide_hype_button_title">Hide Hype</string>
     <string name="morphe_hide_hype_button_summary_on">Hype button is hidden</string>
     <string name="morphe_hide_hype_button_summary_off">Hype button is shown</string>
-    <!-- 'Promote' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_promote_button_title">Hide Promote</string>
     <string name="morphe_hide_promote_button_summary_on">Promote button is hidden</string>
     <string name="morphe_hide_promote_button_summary_off">Promote button is shown</string>
-    <!-- 'Thanks' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_thanks_button_title">Hide Thanks</string>
     <string name="morphe_hide_thanks_button_summary_on">Thanks button is hidden</string>
     <string name="morphe_hide_thanks_button_summary_off">Thanks button is shown</string>
-    <!-- 'Ask' should be translated with the same localized wording that YouTube displays.
+    <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button only shows if the user ip is from specific region such as the USA or EU. -->
     <string name="morphe_hide_ask_button_title">Hide Ask</string>
     <string name="morphe_hide_ask_button_summary_on">Ask button is hidden</string>
     <string name="morphe_hide_ask_button_summary_off">Ask button is shown</string>
-    <!-- 'Clip' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_clip_button_title">Hide Clip</string>
     <string name="morphe_hide_clip_button_summary_on">Clip button is hidden</string>
     <string name="morphe_hide_clip_button_summary_off">Clip button is shown</string>
     <string name="morphe_hide_clip_button_user_dialog_message">This hide function may not work for some user accounts.</string>
-    <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shop_button_title">Hide Shop</string>
     <string name="morphe_hide_shop_button_summary_on">Shop button is hidden</string>
     <string name="morphe_hide_shop_button_summary_off">Shop button is shown</string>
-    <!-- 'Save' should be translated with the same localized wording that YouTube displays. -->
+    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_save_button_title">Hide Save</string>
     <string name="morphe_hide_save_button_summary_on">Save button is hidden</string>
     <string name="morphe_hide_save_button_summary_off">Save button is shown</string>
@@ -554,7 +574,7 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_home_button_title">Hide Home</string>
     <string name="morphe_hide_home_button_summary_on">Home button is hidden</string>
     <string name="morphe_hide_home_button_summary_off">Home button is shown</string>
-    <!-- 'Shorts' should be translated using the same localized wording YouTube displays the tab. -->
+    <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_button_title">Hide Shorts</string>
     <string name="morphe_hide_shorts_button_summary_on">Shorts button is hidden</string>
     <string name="morphe_hide_shorts_button_summary_off">Shorts button is shown</string>
@@ -562,14 +582,14 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_create_button_title">Hide Create</string>
     <string name="morphe_hide_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_create_button_summary_off">Create button is shown</string>
-    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays the tab. -->
+    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_subscriptions_button_title">Hide Subscriptions</string>
     <string name="morphe_hide_subscriptions_button_summary_on">Subscriptions button is hidden</string>
     <string name="morphe_hide_subscriptions_button_summary_off">Subscriptions button is shown</string>
     <string name="morphe_hide_notifications_button_title">Hide Notifications</string>
     <string name="morphe_hide_notifications_button_summary_on">Notifications button is hidden</string>
     <string name="morphe_hide_notifications_button_summary_off">Notifications button is shown</string>
-    <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
+    <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_switch_create_with_notifications_button_title">Switch Create with Notifications</string>
     <string name="morphe_switch_create_with_notifications_button_summary_on">"Create button is switched with Notifications button
 
@@ -601,10 +621,10 @@ If changing this setting does not take effect, try switching to Incognito mode."
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions</string>
     <string name="morphe_hide_player_flyout_captions_summary_on">Captions menu is hidden</string>
     <string name="morphe_hide_player_flyout_captions_summary_off">Captions menu is shown</string>
-    <!-- 'Additional settings' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings</string>
-    <string name="morphe_hide_player_flyout_additional_settings_summary_on">Additional settings menu is hidden</string>
-    <string name="morphe_hide_player_flyout_additional_settings_summary_off">Additional settings menu is shown</string>
+    <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings / More</string>
+    <string name="morphe_hide_player_flyout_additional_settings_summary_on">Additional settings / More menu is hidden</string>
+    <string name="morphe_hide_player_flyout_additional_settings_summary_off">Additional settings / More menu is shown</string>
     <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_sleep_timer_title">Hide Sleep timer</string>
     <string name="morphe_hide_player_flyout_sleep_timer_summary_on">Sleep timer menu is hidden</string>
@@ -617,6 +637,7 @@ If changing this setting does not take effect, try switching to Incognito mode."
     <string name="morphe_hide_player_flyout_ambient_mode_title">Hide Ambient mode</string>
     <string name="morphe_hide_player_flyout_ambient_mode_summary_on">Ambient mode menu is hidden</string>
     <string name="morphe_hide_player_flyout_ambient_mode_summary_off">Ambient mode menu is shown</string>
+    <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_stable_volume_title">Hide Stable volume</string>
     <string name="morphe_hide_player_flyout_stable_volume_summary_off">Stable volume menu is shown</string>
     <string name="morphe_hide_player_flyout_stable_volume_summary_on">Stable volume menu is hidden</string>
@@ -640,7 +661,7 @@ If changing this setting does not take effect, try switching to Incognito mode."
     <string name="morphe_hide_player_flyout_audio_track_title">Hide Audio track</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_on">Audio track menu is hidden</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_off">Audio track menu is shown</string>
-    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
+    <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is hidden
 
@@ -649,18 +670,19 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Watch in VR menu is shown</string>
-    <string name="morphe_hide_player_flyout_video_quality_title">Hide video quality menu</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_on">Video quality menu is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_off">Video quality menu is shown</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_title">Hide video quality menu footer</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video quality menu footer is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video quality menu footer is shown</string>
+    <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_video_quality_title">Hide Quality menu</string>
+    <string name="morphe_hide_player_flyout_video_quality_summary_on">Quality menu is hidden</string>
+    <string name="morphe_hide_player_flyout_video_quality_summary_off">Quality menu is shown</string>
+    <string name="morphe_hide_player_flyout_video_quality_footer_title">Hide Quality menu footer</string>
+    <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
+    <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
 
     <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
     <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
     <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
     <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
-    <!-- This button does not display any text, but 'Captions' should be translated using the same wording used as the translation of 'morphe_hide_player_flyout_captions_title'. -->
+    <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
     <string name="morphe_hide_captions_button_summary_on">Captions button is hidden</string>
     <string name="morphe_hide_captions_button_summary_off">Captions button is shown</string>
@@ -698,7 +720,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_seekbar_title">Hide video player seekbar</string>
     <string name="morphe_hide_seekbar_summary_on">Video player seekbar is hidden</string>
     <string name="morphe_hide_seekbar_summary_off">Video player seekbar is shown</string>
-    <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
+    <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
     <string name="morphe_hide_seekbar_thumbnail_title">Hide video thumbnails seekbar</string>
     <string name="morphe_hide_seekbar_thumbnail_summary_on">Video thumbnails seekbar is hidden</string>
     <string name="morphe_hide_seekbar_thumbnail_summary_off">Video thumbnails seekbar is shown</string>
@@ -709,14 +731,14 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Hide or show Shorts player components</string>
-    <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+    <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_home_title">Hide Shorts in Home feed</string>
     <string name="morphe_hide_shorts_home_summary_on">Hidden in Home feed and related videos</string>
     <string name="morphe_hide_shorts_home_summary_off">Shown in Home feed and related videos</string>
     <string name="morphe_hide_shorts_search_title">Hide Shorts in search results</string>
     <string name="morphe_hide_shorts_search_summary_on">Hidden in search results</string>
     <string name="morphe_hide_shorts_search_summary_off">Shown in search results</string>
-    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_subscriptions_title">Hide Shorts in Subscriptions feed</string>
     <string name="morphe_hide_shorts_subscriptions_summary_on">Hidden in Subscriptions feed</string>
     <string name="morphe_hide_shorts_subscriptions_summary_off">Shown in Subscriptions feed</string>
@@ -778,7 +800,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_shorts_use_template_button_title">Hide Use this template button</string>
     <string name="morphe_hide_shorts_use_template_button_summary_on">Use this template button is hidden</string>
     <string name="morphe_hide_shorts_use_template_button_summary_off">Use this template button is shown</string>
-    <!-- YT may no longer use this feature and this setting may be obsolete. -->
+    <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
     <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_like_fountain_summary_on">Like button fountain animation is hidden</string>
     <string name="morphe_hide_shorts_like_fountain_summary_off">Like button fountain animation is shown</string>
@@ -862,7 +884,7 @@ Settings → Playback → Autoplay next video"</string>
     <string name="morphe_player_overlay_opacity_invalid_toast">Player overlay opacity must be between 0-100</string>
 
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-    <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+    <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_ryd_failure_connection_timeout">Dislikes are temporarily not available (API timed out)</string>
     <string name="morphe_ryd_failure_connection_status_code">Dislikes are not available (status %d)</string>
     <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes are not available (client API limit)</string>
@@ -882,7 +904,7 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_ryd_dislike_percentage_title">Dislikes as percentage</string>
     <string name="morphe_ryd_dislike_percentage_summary_on">Dislikes are shown as a percentage</string>
     <string name="morphe_ryd_dislike_percentage_summary_off">Dislikes are shown as a number</string>
-    <!-- Translations should use language similar to 'morphe_sb_enable_compact_skip_button'. -->
+    <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
     <string name="morphe_ryd_compact_layout_title">Compact Like button</string>
     <string name="morphe_ryd_compact_layout_summary_on">Like button styled for minimum width</string>
     <string name="morphe_ryd_compact_layout_summary_off">Like button styled for best appearance</string>
@@ -928,7 +950,7 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_sb_square_layout">Use square layout</string>
     <string name="morphe_sb_square_layout_sum_on">Buttons and controls are square</string>
     <string name="morphe_sb_square_layout_sum_off">Buttons and controls are rounded</string>
-    <!-- Translations should use language similar to 'morphe_ryd_compact_layout_title'. -->
+    <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
     <string name="morphe_sb_enable_compact_skip_button">Use compact Skip button</string>
     <string name="morphe_sb_enable_compact_skip_button_sum_on">Skip button styled for minimum width</string>
     <string name="morphe_sb_enable_compact_skip_button_sum_off">Skip button styled for best appearance</string>
@@ -995,13 +1017,13 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_sb_settings_export_failed">Failed to export: %s</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning">"Your settings contain a private SponsorBlock userid.
 
-Your user id is like a password and it should never be shared."</string>
+Your user ID is like a password, and it should never be shared."</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Do not show again</string>
     <string name="morphe_sb_diff_segments">Change segment behavior</string>
     <string name="morphe_sb_segments_sponsor">Sponsor</string>
-    <string name="morphe_sb_segments_sponsor_sum">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes/creators/websites/products they like</string>
+    <string name="morphe_sb_segments_sponsor_sum">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes / creators / websites / products they like</string>
     <string name="morphe_sb_segments_selfpromo">Unpaid / Self Promotion</string>
-    <string name="morphe_sb_segments_selfpromo_sum">Similar to Sponsor except for unpaid or self promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
+    <string name="morphe_sb_segments_selfpromo_sum">Similar to Sponsor except for unpaid / self promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
     <string name="morphe_sb_segments_interaction">Interaction Reminder (Subscribe)</string>
     <string name="morphe_sb_segments_interaction_sum">A short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should instead be under self promotion</string>
     <string name="morphe_sb_segments_highlight">Highlight</string>
@@ -1064,7 +1086,7 @@ Your user id is like a password and it should never be shared."</string>
     <string name="morphe_sb_submit_failed_duplicate">"Can\'t submit the segment.
 Already exists"</string>
     <string name="morphe_sb_submit_succeeded">Segment submitted successfully</string>
-    <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+    <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock is temporarily not available (API timed out)</string>
     <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock is temporarily not available (status %d)</string>
     <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock is temporarily not available</string>
@@ -1290,7 +1312,7 @@ Swipe to expand or close"</string>
     <string name="morphe_header_logo_entry_2">Regular</string>
     <string name="morphe_header_logo_entry_3" translatable="false">Premium</string>
     <string name="morphe_header_logo_entry_4" translatable="false">Morphe</string>
-    <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
+    <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
     <string name="morphe_header_logo_entry_5">Custom</string>
 
     <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
@@ -1301,11 +1323,11 @@ Swipe to expand or close"</string>
 Enabling this can fix missing images that are blocked in some regions"</string>
 
     <!-- layout.thumbnails.alternativeThumbnailsPatch -->
-    <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+    <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_alt_thumbnail_home_title">Home tab</string>
-    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_alt_thumbnail_subscription_title">Subscriptions tab</string>
-    <!-- 'You' should be translated using the same localized wording YouTube displays for the You (Library) tab. -->
+    <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_alt_thumbnail_library_title">You tab</string>
     <string name="morphe_alt_thumbnail_player_title">Player playlists &amp; recommendations</string>
     <string name="morphe_alt_thumbnail_search_title">Search results</string>
@@ -1325,7 +1347,7 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
     <string name="morphe_alt_thumbnail_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
     <string name="morphe_alt_thumbnail_stills_about_title">Still video captures</string>
-    <string name="morphe_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning/middle/end of each video. These images are built into YouTube and no external API is used</string>
+    <string name="morphe_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning / middle / end of each video. These images are built into YouTube and no external API is used</string>
     <string name="morphe_alt_thumbnail_stills_fast_title">Use fast still captures</string>
     <string name="morphe_alt_thumbnail_stills_fast_summary_on">Using medium quality still captures. Thumbnails will load faster, but live streams, unreleased, or very old videos may show blank thumbnails</string>
     <string name="morphe_alt_thumbnail_stills_fast_summary_off">Using high quality still captures</string>
@@ -1352,8 +1374,8 @@ Tap here to learn more about DeArrow"</string>
 
     <!-- misc.loopvideo.button.loopVideoButtonPatch -->
     <string name="morphe_loop_video_button_title">Show loop video button</string>
-    <string name="morphe_loop_video_button_summary_on">Button is shown</string>
-    <string name="morphe_loop_video_button_summary_off">Button is not shown</string>
+    <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
+    <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
     <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
     <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
 
@@ -1361,7 +1383,7 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>
     <string name="morphe_spoof_device_dimensions_summary_on">"Device dimensions spoofed
 
-Higher video qualities might be unlocked but you may experience video playback stuttering, worse battery life, and unknown side effects"</string>
+Higher video qualities might be unlocked, but you may experience video playback stuttering, worse battery life, and unknown side effects"</string>
     <string name="morphe_spoof_device_dimensions_summary_off">"Device dimensions not spoofed
 
 Enabling this can unlock higher video qualities"</string>
@@ -1397,7 +1419,7 @@ Enabling this can unlock higher video qualities"</string>
     <string name="morphe_external_browser_summary_off">Opening links in in-app browser</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
-    <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
+    <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
     <string name="morphe_video_quality_default_entry_1">Auto</string>
     <string name="morphe_remember_video_quality_last_selected_title">Remember video quality changes</string>
     <string name="morphe_remember_video_quality_last_selected_summary_on">Quality changes apply to all videos</string>
@@ -1419,13 +1441,13 @@ Enabling this can unlock higher video qualities"</string>
 
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show speed dialog button</string>
-    <string name="morphe_playback_speed_dialog_button_summary_on">Button is shown. Tap and hold to reset playback speed to default</string>
-    <string name="morphe_playback_speed_dialog_button_summary_off">Button is not shown</string>
+    <string name="morphe_playback_speed_dialog_button_summary_on">Speed dialog button is shown. Tap and hold to reset playback speed to default</string>
+    <string name="morphe_playback_speed_dialog_button_summary_off">Speed dialog button is not shown</string>
 
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
     <string name="morphe_video_quality_dialog_button_title">Show video quality button</string>
-    <string name="morphe_video_quality_dialog_button_summary_on">Button is shown. Tap and hold to reset quality to default</string>
-    <string name="morphe_video_quality_dialog_button_summary_off">Button is not shown</string>
+    <string name="morphe_video_quality_dialog_button_summary_on">Video quality button is shown. Tap and hold to reset quality to default</string>
+    <string name="morphe_video_quality_dialog_button_summary_off">Video quality button is not shown</string>
 
     <!-- video.speed.custom.customPlaybackSpeedPatch -->
     <string name="morphe_custom_speed_menu_title">Custom playback speed menu</string>
@@ -1495,7 +1517,7 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_av1">• No AV1 video codec</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
     <string name="morphe_spoof_video_streams_about_kids_videos">• Kids videos may not play when logged out or in incognito mode</string>
-    <!-- "Force original audio" should use the same text as morphe_force_original_audio_title -->
+    <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Show in Stats for nerds</string>
     <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Client type is shown in Stats for nerds</string>
