@@ -96,6 +96,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_effect_button"),
                     SwitchPreference("morphe_hide_shorts_green_screen_button"),
                     SwitchPreference("morphe_hide_shorts_hashtag_button"),
+                    SwitchPreference("morphe_hide_shorts_live_preview"),
                     SwitchPreference("morphe_hide_shorts_new_posts_button"),
                     SwitchPreference("morphe_hide_shorts_shop_button"),
                     SwitchPreference("morphe_hide_shorts_tagged_products"),
@@ -104,6 +105,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_stickers"),
 
                     // Bottom of the screen.
+                    SwitchPreference("morphe_hide_shorts_auto_dubbed_label"),
                     SwitchPreference("morphe_hide_shorts_location_label"),
                     SwitchPreference("morphe_hide_shorts_channel_bar"),
                     SwitchPreference("morphe_hide_shorts_info_panel"),
