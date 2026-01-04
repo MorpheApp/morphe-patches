@@ -2,9 +2,9 @@ package app.morphe.patches.youtube.layout.autocaptions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_43_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -12,7 +12,8 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
 
-val AutoCaptionsPatch = bytecodePatch(
+@Suppress("unused")
+val autoCaptionsPatch = bytecodePatch(
     name = "Auto captions",
     description = "Adds an option to disable captions from being automatically enabled.",
 ) {
@@ -33,7 +34,15 @@ val AutoCaptionsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_auto_captions"),
+            if (is_20_26_or_greater) {
+                ListPreference("morphe_auto_captions_style")
+            } else {
+                ListPreference(
+                    key = "morphe_auto_captions_style",
+                    entriesKey = "morphe_auto_captions_style_legacy_entries",
+                    entryValuesKey = "morphe_auto_captions_style_legacy_entry_values"
+                )
+            }
         )
 
         SubtitleTrackFingerprint.method.addInstructions(
@@ -62,11 +71,10 @@ val AutoCaptionsPatch = bytecodePatch(
             )
         }
 
-        if (is_20_43_or_greater)
-            NoVolumeCaptionsFingerprint.method.apply {
+        if (is_20_26_or_greater) {
+            NoVolumeCaptionsFeatureFlagFingerprint.method.apply {
                 addInstructions(
                     0,
-
                     """
                         invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableMuteAutoCaptions()Z
                         move-result v0
@@ -75,5 +83,6 @@ val AutoCaptionsPatch = bytecodePatch(
                     """
                 )
             }
+        }
     }
 }
