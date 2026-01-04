@@ -20,28 +20,28 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">À propos</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Annonces</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Publicités</string>
   <string name="morphe_settings_music_screen_2_general_title">Général</string>
   <string name="morphe_settings_music_screen_3_player_title">Lecteur</string>
   <string name="morphe_settings_music_screen_4_misc_title">Divers</string>
   <!-- ad.video.hideVideoAdsPatch -->
-  <string name="morphe_music_hide_video_ads_title">Masquer les annonces vidéo</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Les annonces vidéo sont masquées</string>
-  <string name="morphe_music_hide_video_ads_summary_off">Les annonces vidéo sont affichées</string>
+  <string name="morphe_music_hide_video_ads_title">Masquer les publicités vidéo</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Les publicités vidéo sont masquées</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Les publicités vidéo sont affichées</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activer la lecture en boucle permanente</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">La lecture en boucle permanente est activée</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">La lecture en boucle permanente est désactivée</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Masquer le bouton Diffuser</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Le bouton Diffuser est masqué</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Le bouton Diffuser est affiché</string>
-  <string name="morphe_music_hide_history_button_title">Masquer le bouton Historique</string>
-  <string name="morphe_music_hide_history_button_summary_on">Le bouton Historique est masqué</string>
-  <string name="morphe_music_hide_history_button_summary_off">Le bouton Historique est affiché</string>
-  <string name="morphe_music_hide_notification_button_title">Masquer le bouton des notifications</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Le bouton des notifications est masqué</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Le bouton des notifications est affiché</string>
+  <string name="morphe_music_hide_cast_button_title">Masquer le bouton \'Caster\'</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Le bouton \'Caster\' est masqué</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Le bouton \'Caster\' est affiché</string>
+  <string name="morphe_music_hide_history_button_title">Masquer le bouton \'Historique\'</string>
+  <string name="morphe_music_hide_history_button_summary_on">Le bouton \'Historique\' est masqué</string>
+  <string name="morphe_music_hide_history_button_summary_off">Le bouton \'Historique\' est affiché</string>
+  <string name="morphe_music_hide_notification_button_title">Masquer le bouton \'Notification\'</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Le bouton \'Notification\' est masqué</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Le bouton \'Notification\' est affiché</string>
   <string name="morphe_music_hide_search_button_title">Masquer le bouton de recherche</string>
   <string name="morphe_music_hide_search_button_summary_on">Le bouton de recherche est masqué</string>
   <string name="morphe_music_hide_search_button_summary_off">Le bouton de recherche est affiché</string>
@@ -50,44 +50,44 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_summary_on">La barre des catégories est masquée</string>
   <string name="morphe_music_hide_category_bar_summary_off">La barre des catégories est affichée</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
-  <string name="morphe_music_change_miniplayer_color_title">Changer la couleur du lecteur réduit</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">La couleur du lecteur réduit correspond à celle du lecteur plein écran</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">Le lecteur réduit utilise la couleur par défaut</string>
+  <string name="morphe_music_change_miniplayer_color_title">Changer la couleur du mini-lecteur</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">La couleur du mini-lecteur correspond à la couleur du lecteur plein écran.</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Le mini-lecteur utilise la couleur par défaut</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barre de navigation</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Masquez ou modifiez les boutons de la barre de navigation</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Masque ou modifie les boutons de la barre de navigation</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">Masquer \"Accueil\"</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Le bouton Accueil est masqué</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Le bouton Accueil est affiché</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Masquer \'Accueil\'</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Le bouton \'Accueil\' est masqué</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Le bouton \'Accueil\' est affiché</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Masquer \"Samples\"</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Le bouton Samples est masqué</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Le bouton Samples est affiché</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Masquer \'Samples\'</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Le bouton \'Samples\' est masqué</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Le bouton \'Samples\' est affiché</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Masquer \"Explorer\"</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Le bouton Explorer est masqué</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Le bouton Explorer est affiché</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Masquer \'Explorer\'</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Le bouton \'Explorer\' est masqué</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Le bouton \'Explorer\' est affiché</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Masquer \"Bibliothèque\"</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Le bouton Bibliothèque est masqué</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Le bouton Bibliothèque est affiché</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Masquer \'Bibliothèque\'</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Le bouton \'Bibliothèque\' est masqué</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Le bouton \'Bibliothèque\' est affiché</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Masquer \"S\'abonner\"</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Le bouton S\'abonner est masqué</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Le bouton S\'abonner est affiché</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Masquer \'S\'abonner\'</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Le bouton \'S\'abonner\' est masqué</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Le bouton \'S\'abonner\' est affiché</string>
   <string name="morphe_music_hide_navigation_bar_title">Masquer la barre de navigation</string>
   <string name="morphe_music_hide_navigation_bar_summary_on">La barre de navigation est masquée</string>
   <string name="morphe_music_hide_navigation_bar_summary_off">La barre de navigation est affichée</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Masquer les libellés des boutons de navigation</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Les libellés sont masqués</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Les libellés sont affichés</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Masquer les noms des boutons dans barre de navigation</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Les noms sont masqués</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Les noms sont affichés</string>
   <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Masquer le libellé \"S\'abonner à Music Premium\"</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Le libellé est masqué</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Le libellé est affiché</string>
+  <string name="morphe_music_hide_get_premium_label_title">Masquer l\'affichage \'S\'abonner à Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">L\'affichage est masqué</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">L\'affichage est affiché</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">Masquer le bouton S\'abonner</string>
+  <string name="morphe_music_hide_upgrade_button_title">Masquer le bouton \'S\'abonner\'</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Le bouton est masqué</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Le bouton est affiché</string>
 </resources>

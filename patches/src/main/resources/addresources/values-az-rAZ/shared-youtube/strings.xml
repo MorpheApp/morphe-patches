@@ -41,8 +41,50 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Video yayımları saxtalaşmayıb
 
 Oynatma işləməyə bilər"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Heç bir client axını əldə etmək mümkün olmadı.</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bunları aktiv etməyə cəhd edin: Video axınlarını əyləcələmək > Android VR-na daxil olmaq.</string>
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-na daxil olmaq.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-a daxil edilməmiş. Daxil olmaq üçün bura vurun.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hal-hazırda Android VR-a daxil edilmişsiniz.</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu funksiyanı istifadə etmək üçün, \'Zəhmət client\'ni Android VR ilə dəyişin.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-a daxil ol.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-a daxil olma bəzi istifadəçilər üçün oynatma problemlərini həll edə bilər.
+
+Daxil olmaq üçün aşağa davam edin."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Davam et.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıxış.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Qaydalar.</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivasiya kodu: %s
+
+1. sayta getmək üçün aşağıdakı 'Veb saytını aç' düyməsini vurun
+2. yuxarıda göstərilən aktivasiya kodunu bufere alıb (və ya əllə yazın)
+3. Əgər xoad hạň manipulate Google-a daxil olmaq tələb olunursa. Əgər çoxlu hesablarınız var, bu YouTube hesabını seçin.
+4. 'YouTube VR' üçün icazəni vurun
+5. 'Qərar verildi' mesajına çatdıqdan sonra bu proqrama geri qayıtın."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Veb saytını aç.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Aktivasiya kodu vermək mümkün olmadı.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kimlikdəstəyi vermək mümkünsüzləşdi.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uğurla daxil olundu.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Kimlikdəstəsi saxlanıldı.
+
+• Morphe tənzimlənləri Android VR kimliyəsini idxal və ixrac edə bilməz.
+• Əgər bu proqram 6 ay ərzində istifadə edilməsə, Google bu kimliyi siləcək.
+• Əgər Google parolunuzu dəyişir və ya bu cihazınızı Google tənzimlənmələrdən çıxarthersəyid, yenidən daxil olmaq lazım."</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 müvəqqəti olaraq mövcud deyil (API vaxtı bitdi).</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR daxil olma müddəti bitdi. Yenidən cəhd edin.</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 müvəqqəti olaraq mövcud deyil (status %d).</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 müvəqqəti olaraq mövcud deyil.</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-a daxil olmaq mümkünsüzləşdi, sayt kimliyinə təsdiq nicht verilmiş.</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq mümkünsüzləşdi: %s.</string>
+  <string name="morphe_oauth2_toast_reset">Android VR-dən çıxdı.</string>
+  <string name="morphe_oauth2_toast_invalid">VR daxil olma tokeni geçərsizdir. Yenidən cəhd edin.</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
   <string name="morphe_force_original_audio_summary_on">Orijinal səs dilini istifadə</string>

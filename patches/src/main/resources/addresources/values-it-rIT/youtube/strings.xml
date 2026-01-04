@@ -60,9 +60,6 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_compact_banner_title">Nascondi i banner compatti</string>
   <string name="morphe_hide_compact_banner_summary_on">I banner compatti sono nascosti</string>
   <string name="morphe_hide_compact_banner_summary_off">I banner compatti sono visibili</string>
-  <string name="morphe_hide_crowdfunding_box_title">Nascondi il riquadro Raccolta fondi</string>
-  <string name="morphe_hide_crowdfunding_box_summary_on">Il riquadro Raccolta fondii è nascosto</string>
-  <string name="morphe_hide_crowdfunding_box_summary_off">Il riquadro Raccolta fondi è visibile</string>
   <string name="morphe_hide_expandable_card_title">Nascondi scheda espandibile</string>
   <string name="morphe_hide_expandable_card_summary_on">La scheda espandibile sotto i video è nascosta</string>
   <string name="morphe_hide_expandable_card_summary_off">La scheda espandibile sotto i video è mostrata</string>
@@ -90,7 +87,7 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_movies_section_title">Nascondi la sezione film</string>
   <string name="morphe_hide_movies_section_summary_on">La sezione film è nascosta</string>
   <string name="morphe_hide_movies_section_summary_off">La sezione film è visibile</string>
-  <!-- 'Notify me' should be translated using the same localized wording YouTube displays.
+  <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Nascondi il pulsante \'Avvisami\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">Il pulsante Avvisami è nascosto</string>
@@ -98,8 +95,8 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_playables_title">Nascondi Sala Giochi</string>
   <string name="morphe_hide_playables_summary_on">I giochi sono nascosti</string>
   <string name="morphe_hide_playables_summary_off">I giochi sono visibili</string>
-  <!-- 'Show more' should be translated with the same localized wording that YouTube displays.
-          This button usually appears when searching for a YT creator. -->
+  <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Nascondi il pulsante \'Mostra di più\'</string>
   <string name="morphe_hide_show_more_button_summary_on">Il pulsante Mostra altro nei risultati di ricerca è nascosto</string>
   <string name="morphe_hide_show_more_button_summary_off">Il pulsante Mostra altro nei risultati di ricerca è mostrato</string>
@@ -109,7 +106,7 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_ticket_shelf_title">Nascondi la sezione dei biglietti</string>
   <string name="morphe_hide_ticket_shelf_summary_on">La sezione dei biglietti è nascosta</string>
   <string name="morphe_hide_ticket_shelf_summary_off">La sezione dei biglietti è visibile</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays. -->
+  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Nascondi etichette di video consigliati</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Le etichette \'Le persone hanno anche guardato\' e \'Potrebbe piacerti anche\' nei risultati di ricerca sono nascoste</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Le etichette \'Le persone hanno anche guardato\' e \'Potrebbe piacerti anche\' nei risultati di ricerca sono mostrate</string>
@@ -124,15 +121,18 @@ Se al momento un Doodle è visibile nella tua regione e questa impostazione nasc
   <string name="morphe_hide_channel_bar_summary_on">La barra del canale è nascosta</string>
   <string name="morphe_hide_channel_bar_summary_off">La barra dei canali è visibile</string>
   <string name="morphe_hide_channel_watermark_title">Nascondi la filigrana del canale</string>
-  <string name="morphe_hide_channel_watermark_summary_on">La filigrana è nascosta</string>
-  <string name="morphe_hide_channel_watermark_summary_off">La filigrana è visibile</string>
+  <string name="morphe_hide_channel_watermark_summary_on">La marca d\'acqua del canale è nascosta</string>
+  <string name="morphe_hide_channel_watermark_summary_off">La marca d\'acqua del canale è visibile</string>
+  <string name="morphe_hide_crowdfunding_box_title">Nascondi il riquadro Raccolta fondi</string>
+  <string name="morphe_hide_crowdfunding_box_summary_on">Il riquadro Raccolta fondii è nascosto</string>
+  <string name="morphe_hide_crowdfunding_box_summary_off">Il riquadro Raccolta fondi è visibile</string>
   <string name="morphe_hide_emergency_box_title">Nascondi riquadri di emergenza</string>
   <string name="morphe_hide_emergency_box_summary_on">I riquadri di emergenza sono nascosti</string>
   <string name="morphe_hide_emergency_box_summary_off">I riquadri di emergenza sono visibili</string>
   <string name="morphe_hide_info_panels_title">Nascondi i pannelli informativi</string>
   <string name="morphe_hide_info_panels_summary_on">I pannelli informativi sono nascosti</string>
   <string name="morphe_hide_info_panels_summary_off">I pannelli informativi sono visibili</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays.
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Nascondi il pulsante Abbonati</string>
   <string name="morphe_hide_join_membership_button_summary_on">Il pulsante Unisciti è nascosto</string>
@@ -164,27 +164,39 @@ Se al momento un Doodle è visibile nella tua regione e questa impostazione nasc
   <string name="morphe_hide_chapters_section_title">Nascondi Capitoli</string>
   <string name="morphe_hide_chapters_section_summary_on">La sezione Capitoli è nascosta</string>
   <string name="morphe_hide_chapters_section_summary_off">La sezione Capitoli è visibile</string>
+  <string name="morphe_hide_explore_podcast_section_title">Nascondi \"Esplora il podcast\"</string>
+  <string name="morphe_hide_explore_podcast_section_summary_on">La sezione Esplora il podcast è nascosta</string>
+  <string name="morphe_hide_explore_podcast_section_summary_off">La sezione Esplora il podcast è visibile</string>
+  <string name="morphe_hide_featured_links_section_title">Nascondi contenuti in primo piano</string>
+  <string name="morphe_hide_featured_links_section_summary_on">La sezione dei contenuti in primo piano è nascosta</string>
+  <string name="morphe_hide_featured_links_section_summary_off">La sezione dei contenuti in primo piano è mostrata</string>
+  <string name="morphe_hide_featured_places_section_title">Nascondi contenuti in primo piano</string>
+  <string name="morphe_hide_featured_places_section_summary_on">La sezione dei contenuti in primo piano è nascosta</string>
+  <string name="morphe_hide_featured_places_section_summary_off">La sezione dei contenuti in primo piano è mostrata</string>
+  <string name="morphe_hide_featured_videos_section_title">Nascondi video correlati</string>
+  <string name="morphe_hide_featured_videos_section_summary_on">La sezione dei contenuti in primo piano è nascosta</string>
+  <string name="morphe_hide_featured_videos_section_summary_off">La sezione dei contenuti in primo piano è mostrata</string>
+  <string name="morphe_hide_gaming_section_title">Nascondi Remix</string>
+  <string name="morphe_hide_gaming_section_summary_on">La sezione film è nascosta</string>
+  <string name="morphe_hide_gaming_section_summary_off">La sezione film è visibile</string>
   <string name="morphe_hide_how_this_was_made_section_title">Nascondi \"Come è stato realizzato questo contenuto\"</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">La sezione Come è stato realizzato questo contenuto è nascosta</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">La sezione Come è stato realizzato questo contenuto è visibile</string>
   <string name="morphe_hide_hype_points_title">Nascondi i punti Hype</string>
   <string name="morphe_hide_hype_points_summary_on">I punti Hype sono nascosti</string>
   <string name="morphe_hide_hype_points_summary_off">I punti Hype sono mostrati</string>
-  <string name="morphe_hide_podcast_section_title">Nascondi \"Esplora il podcast\"</string>
-  <string name="morphe_hide_podcast_section_summary_on">La sezione Esplora il podcast è nascosta</string>
-  <string name="morphe_hide_podcast_section_summary_off">La sezione Esplora il podcast è visibile</string>
-  <string name="morphe_hide_featured_section_title">Nascondi contenuti in primo piano</string>
-  <string name="morphe_hide_featured_section_summary_on">La sezione dei contenuti in primo piano è nascosta</string>
-  <string name="morphe_hide_featured_section_summary_off">La sezione dei contenuti in primo piano è mostrata</string>
   <string name="morphe_hide_info_cards_section_title">Nascondi le schede informative</string>
   <string name="morphe_hide_info_cards_section_summary_on">La sezione Schede Informative è nascosta</string>
   <string name="morphe_hide_info_cards_section_summary_off">La sezione Schede Informative è visibile</string>
   <string name="morphe_hide_key_concepts_section_title">Nascondi \"Concetti chiave\"</string>
   <string name="morphe_hide_key_concepts_section_summary_on">La sezione Concetti chiave è nascosta</string>
   <string name="morphe_hide_key_concepts_section_summary_off">La sezione Concetti chiave è visibile</string>
-  <string name="morphe_hide_description_subscribe_button_title">Nascondi il pulsante Iscriviti</string>
-  <string name="morphe_hide_description_subscribe_button_summary_on">Il pulsante Iscriviti è nascosto</string>
-  <string name="morphe_hide_description_subscribe_button_summary_off">Il pulsante Iscriviti è mostrato</string>
+  <string name="morphe_hide_music_section_title">Nascondi richiesta</string>
+  <string name="morphe_hide_music_section_summary_on">La sezione film è nascosta</string>
+  <string name="morphe_hide_music_section_summary_off">La sezione film è visibile</string>
+  <string name="morphe_hide_subscribe_button_title">Nascondi il pulsante Iscriviti</string>
+  <string name="morphe_hide_subscribe_button_summary_on">Il pulsante Iscriviti è nascosto</string>
+  <string name="morphe_hide_subscribe_button_summary_off">Il pulsante Iscriviti è visibile</string>
   <string name="morphe_hide_transcript_section_title">Nascondi Trascrizione</string>
   <string name="morphe_hide_transcript_section_summary_on">La sezione Trascrizione è nascosta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sezione Trascrizione è visibile</string>
@@ -206,24 +218,32 @@ Se al momento un Doodle è visibile nella tua regione e questa impostazione nasc
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">Mostrato nella cronologia visualizzazioni</string>
   <string name="morphe_channel_screen_title">Pagina canale</string>
   <string name="morphe_channel_screen_summary">Nascondi o mostra i componenti della pagina del canale</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays. -->
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Nascondi il pulsante Commenti</string>
+  <string name="morphe_hide_community_button_summary_on">Il pulsante Commenti è nascosto</string>
+  <string name="morphe_hide_community_button_summary_off">Il pulsante Commenti è visibile</string>
+  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">Nascondi sezione \"Per te\"</string>
   <string name="morphe_hide_for_you_shelf_summary_on">La sezione Per Te è nascosta</string>
   <string name="morphe_hide_for_you_shelf_summary_off">La sezione Per Te è mostrata</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Nascondi il pulsante Abbonati</string>
+  <string name="morphe_hide_join_button_summary_on">Il pulsante Abbonati è nascosto</string>
+  <string name="morphe_hide_join_button_summary_off">Il pulsante Abbonati è visibile</string>
   <string name="morphe_hide_links_preview_title">Nascondi anteprima link</string>
   <string name="morphe_hide_links_preview_summary_on">L\'anteprima dei link è nascosta</string>
   <string name="morphe_hide_links_preview_summary_off">L\'anteprima dei link è mostrata</string>
   <string name="morphe_hide_members_shelf_title">Nascondi sezione membri</string>
   <string name="morphe_hide_members_shelf_summary_on">La sezione membri è nascosta</string>
   <string name="morphe_hide_members_shelf_summary_off">La sezione Membri è mostrata</string>
-  <!-- 'Visit Community' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_community_button_title">Nascondi il pulsante \"Visita la community\"</string>
-  <string name="morphe_hide_visit_community_button_summary_on">Il pulsante Visita la community è nascosto</string>
-  <string name="morphe_hide_visit_community_button_summary_off">Il pulsante Visita Community è mostrato</string>
-  <!-- 'Visit store' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_store_button_title">Nascondi il pulsante \'Visita negozio\' nelle pagine del canale</string>
-  <string name="morphe_hide_visit_store_button_summary_on">Il pulsante Visita negozio è nascosto</string>
-  <string name="morphe_hide_visit_store_button_summary_off">Il pulsante Visita negozio è mostrato</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Nascondi il pulsante Condividi</string>
+  <string name="morphe_hide_store_button_summary_on">Il pulsante Condividi è nascosto</string>
+  <string name="morphe_hide_store_button_summary_off">Il pulsante Condividi è visibile</string>
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Nascondi il pulsante Iscriviti</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Il pulsante Iscriviti è nascosto</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Il pulsante Iscriviti è visibile</string>
   <string name="morphe_comments_screen_title">Commenti</string>
   <string name="morphe_comments_screen_summary">Mostra o nascondi i componenti della sezione commenti</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Nascondi riepilogo chat IA</string>
@@ -268,14 +288,14 @@ Se al momento un Doodle è visibile nella tua regione e questa impostazione nasc
   <string name="morphe_hide_view_count_title">Nascondi il numero di visualizzazioni</string>
   <string name="morphe_hide_view_count_summary_on">Il numero di visualizzazioni è nascosto nel feed e nei risultati di ricerca</string>
   <string name="morphe_hide_view_count_summary_off">Il numero di visualizzazioni è mostrato nel feed e nei risultati di ricerca</string>
-  <!-- Translations should lanaguge similar to morphe_hide_upload_time_user_dialog_message -->
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Limitazioni:
 • Le sezioni Shorts, le pagine dei canali e i risultati di ricerca potrebbero mostrare comunque il numero di visualizzazioni
 • Questa funzionalità non è compatibile con i fattori di forma automobilistici"</string>
   <string name="morphe_hide_upload_time_title">Nascondi l\'ora di caricamento</string>
   <string name="morphe_hide_upload_time_summary_on">L\'ora di caricamento è nascosta nel feed e nei risultati di ricerca</string>
   <string name="morphe_hide_upload_time_summary_off">L\'ora di caricamento è mostrata nel feed e nei risultati di ricerca</string>
-  <!-- Translations should lanaguge similar to morphe_hide_view_count_user_dialog_message -->
+  <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitazioni:
 • Le sezioni Shorts, le pagine del canale e i risultati di ricerca potrebbero ancora mostrare gli orari di caricamento.
 • Questa funzione non funziona con il fattore di forma automotive."</string>
@@ -306,7 +326,7 @@ Note:
 • Alcuni componenti dell'interfaccia potrebbero non essere nascosti
 • La ricerca di una parola chiave potrebbe non mostrare alcun risultato"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Solo parole intere</string>
-  <!-- Translations _must_ use a localized example.  For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist.  Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Racchiudendo una parola chiave o frase tra virgolette doppie si impediranno corrispondenze parziali dei titoli dei video e dei nomi dei canali&lt;br&gt;&lt;br&gt;Ad esempio:&lt;br&gt;&lt;b&gt;\"ia\"&lt;/b&gt; nasconderà il video &lt;b&gt;\"Come funziona la IA?\"&lt;/b&gt;&lt;br&gt;Ma non nasconderà il video &lt;b&gt;\"Cosa significa imparzialità?\"&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_keyword_toast_invalid_common">Impossibile usare la parola chiave: %s</string>
@@ -359,10 +379,10 @@ Limitazioni: la pagina Doodles di YouTube non è disponibile"</string>
   <string name="morphe_share_copy_url_timestamp_success">URL con timestamp copiato</string>
   <string name="morphe_copy_video_url_title">Mostra il pulsante Copia URL Video</string>
   <string name="morphe_copy_video_url_summary_on">Il pulsante viene mostrato. Tocca per copiare l\'URL del video. Tieni premuto per copiare con il timestamp</string>
-  <string name="morphe_copy_video_url_summary_off">Il pulsante non è visibile</string>
+  <string name="morphe_copy_video_url_summary_off">Il pulsante di voto del segmento è nascosto</string>
   <string name="morphe_copy_video_url_timestamp_title">Mostra il pulsante Copia URL Video con Timestamp</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Il pulsante viene mostrato. Tocca per copiare l\'URL del video con il timestamp. Tieni premuto per copiare senza il timestamp</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Il pulsante non è visibile</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Il pulsante di voto del segmento è nascosto</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Rimuovi la finestra sulla discrezione dello spettatore</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">La finestra di dialogo verrà rimossa</string>
@@ -382,7 +402,7 @@ Limitazioni: la pagina Doodles di YouTube non è disponibile"</string>
   <string name="morphe_external_downloader_title">Mostra il pulsante Scarica esterno</string>
   <string name="morphe_external_downloader_summary_on">Il pulsante di download nel player è visibile</string>
   <string name="morphe_external_downloader_summary_off">Il pulsante di download nel player non è visibile</string>
-  <!-- 'Download action button' should be translated using the same wording as the translation of 'morphe_hide_download_button_title'. -->
+  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Sovrascrivi il pulsante azione Download</string>
   <string name="morphe_external_downloader_action_button_summary_on">Il pulsante Scarica apre il tuo downloader esterno</string>
   <string name="morphe_external_downloader_action_button_summary_off">Il pulsante Scarica apre il nativo in-app downloader</string>
@@ -468,11 +488,11 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
   <string name="morphe_hide_like_dislike_button_title">Nascondi Mi Piace e Non Mi Piace</string>
   <string name="morphe_hide_like_dislike_button_summary_on">I pulsanti Mi Piace e Non Mi Piace sono nascosti</string>
   <string name="morphe_hide_like_dislike_button_summary_off">I pulsanti Mi Piace e Non Mi Piace sono visibili</string>
-  <!-- 'Share' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">Nascondi Condividi</string>
   <string name="morphe_hide_share_button_summary_on">Il pulsante Condividi è nascosto</string>
   <string name="morphe_hide_share_button_summary_off">Il pulsante Condividi è visibile</string>
-  <!-- 'Stop ads' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_stop_ads_button_title">Nascondi Interrompi annunci</string>
   <string name="morphe_hide_stop_ads_button_summary_on">Il pulsante per interrompere gli annunci è nascosto</string>
   <string name="morphe_hide_stop_ads_button_summary_off">Il pulsante per interrompere gli annunci è mostrato</string>
@@ -480,47 +500,47 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
   <string name="morphe_hide_comments_button_title">Nascondi commenti</string>
   <string name="morphe_hide_comments_button_summary_on">Il pulsante Commenti è nascosto</string>
   <string name="morphe_hide_comments_button_summary_off">Il pulsante Commenti è mostrato</string>
-  <!-- 'Report' should be translated with the same localized wording that YouTube displays.
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually only shows on live streams. -->
   <string name="morphe_hide_report_button_title">Nascondi Segnala</string>
   <string name="morphe_hide_report_button_summary_on">Il pulsante Segnala è nascosto</string>
   <string name="morphe_hide_report_button_summary_off">Il pulsante Segnala è visibile</string>
-  <!-- 'Remix' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_remix_button_title">Nascondi Remix</string>
   <string name="morphe_hide_remix_button_summary_on">Il pulsante Remix è nascosto</string>
   <string name="morphe_hide_remix_button_summary_off">Il pulsante Remix è visibile</string>
-  <!-- 'Download' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_download_button_title">Nascondi Scarica</string>
   <string name="morphe_hide_download_button_summary_on">Il pulsante Scarica è nascosto</string>
   <string name="morphe_hide_download_button_summary_off">Il pulsante Scarica è visibile</string>
-  <!-- 'Hype' should be translated with the same localized wording that YouTube displays.
-          This button only shows on videos uploaded by the logged in user. -->
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button only shows on videos uploaded by the logged-in user. -->
   <string name="morphe_hide_hype_button_title">Nascondi Hype</string>
   <string name="morphe_hide_hype_button_summary_on">Il pulsante Hype è nascosto</string>
   <string name="morphe_hide_hype_button_summary_off">Pulsante Hype è mostrato</string>
-  <!-- 'Promote' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_promote_button_title">Nascondi Promuovi</string>
   <string name="morphe_hide_promote_button_summary_on">Il pulsante Promuovi è nascosto</string>
   <string name="morphe_hide_promote_button_summary_off">Il pulsante Promuovi è mostrato</string>
-  <!-- 'Thanks' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_thanks_button_title">Nascondi Grazie</string>
   <string name="morphe_hide_thanks_button_summary_on">Grazie pulsante è nascosto</string>
   <string name="morphe_hide_thanks_button_summary_off">Il pulsante Grazie è visibile</string>
-  <!-- 'Ask' should be translated with the same localized wording that YouTube displays.
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button only shows if the user ip is from specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Nascondi richiesta</string>
   <string name="morphe_hide_ask_button_summary_on">Il pulsante Richiedi è nascosto</string>
   <string name="morphe_hide_ask_button_summary_off">Il pulsante Richiedi è visibile</string>
-  <!-- 'Clip' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Nascondi Clip</string>
   <string name="morphe_hide_clip_button_summary_on">Il pulsante Clip è nascosto</string>
   <string name="morphe_hide_clip_button_summary_off">Il pulsante Clip è visibile</string>
   <string name="morphe_hide_clip_button_user_dialog_message">Questa funzione di nascondimento potrebbe non funzionare per alcuni account utente.</string>
-  <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shop_button_title">Nascondi Acquisti</string>
   <string name="morphe_hide_shop_button_summary_on">Il pulsante Acquisti è nascosto</string>
   <string name="morphe_hide_shop_button_summary_off">Il pulsante Acquisti è visibile</string>
-  <!-- 'Save' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Nascondi Salva</string>
   <string name="morphe_hide_save_button_summary_on">Il pulsante Salva è nascosto</string>
   <string name="morphe_hide_save_button_summary_off">Il pulsante Salva è mostrato</string>
@@ -531,7 +551,7 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
   <string name="morphe_hide_home_button_title">Nascondi Home</string>
   <string name="morphe_hide_home_button_summary_on">Il pulsante Home è nascosto</string>
   <string name="morphe_hide_home_button_summary_off">Il pulsante Home è visibile</string>
-  <!-- 'Shorts' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_button_title">Nascondi Shorts</string>
   <string name="morphe_hide_shorts_button_summary_on">Il pulsante Shorts è nascosto</string>
   <string name="morphe_hide_shorts_button_summary_off">Il pulsante Shorts è visibile</string>
@@ -539,14 +559,14 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
   <string name="morphe_hide_create_button_title">Nascondi Crea</string>
   <string name="morphe_hide_create_button_summary_on">Il pulsante Crea è nascosto</string>
   <string name="morphe_hide_create_button_summary_off">Il pulsante Crea è visibile</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">Nascondi Iscrizioni</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Il pulsante Iscrizioni è nascosto</string>
   <string name="morphe_hide_subscriptions_button_summary_off">Il pulsante Iscrizioni è visibile</string>
   <string name="morphe_hide_notifications_button_title">Nascondi Notifiche</string>
   <string name="morphe_hide_notifications_button_summary_on">Il pulsante Notifiche è nascosto</string>
   <string name="morphe_hide_notifications_button_summary_off">Il pulsante Notifiche è visibile</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Cambia Crea con le notifiche</string>
   <string name="morphe_switch_create_with_notifications_button_summary_on">"Il pulsante Crea viene sostituito con il pulsante Notifiche
 
@@ -577,7 +597,7 @@ Se la modifica di questa impostazione non ha effetto, prova a passare alla modal
   <string name="morphe_hide_player_flyout_captions_title">Nascondi Sottotitoli</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Il menu Sottotitoli è nascosto</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Il menu Sottotitoli è visibile</string>
-  <!-- 'Additional settings' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Nascondi Impostazioni aggiuntive</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Il menu Impostazioni aggiuntive è nascosto</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_off">Il menu Impostazioni aggiuntive è visibile</string>
@@ -593,6 +613,7 @@ Se la modifica di questa impostazione non ha effetto, prova a passare alla modal
   <string name="morphe_hide_player_flyout_ambient_mode_title">Nascondi la modalità Ambient</string>
   <string name="morphe_hide_player_flyout_ambient_mode_summary_on">Il menu Modalità Ambient è nascosto</string>
   <string name="morphe_hide_player_flyout_ambient_mode_summary_off">Il menu Modalità Ambient è visibile</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_stable_volume_title">Nascondi Volume Stabile</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_off">Il menu Volume Stabile è visibile</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_on">Il menu Volume Stabile è nascosto</string>
@@ -616,15 +637,16 @@ Se la modifica di questa impostazione non ha effetto, prova a passare alla modal
   <string name="morphe_hide_player_flyout_audio_track_title">Nascondi Traccia audio</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Il menu Traccia audio è nascosto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Il menu Traccia audio è visibile</string>
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Il menu della traccia audio è nascosto
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu delle tracce audio nascosto
 
-Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su iPadOS"</string>
+Per visualizzare il menu delle tracce audio, impostare 'Spoof video streams' su 'Android No SDK'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Nascondi Guarda in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Il menu Guarda in VR è nascosto</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Il menu Guarda in VR è visibile</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_video_quality_title">Nascondi menu qualità video</string>
   <string name="morphe_hide_player_flyout_video_quality_summary_on">Il menu della qualità video è nascosto</string>
   <string name="morphe_hide_player_flyout_video_quality_summary_off">Il menu della qualità video è visualizzato</string>
@@ -635,7 +657,7 @@ Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su i
   <string name="morphe_hide_autoplay_button_title">Nascondi il pulsante Riproduzione Automatica</string>
   <string name="morphe_hide_autoplay_button_summary_on">Il pulsante Riproduzione Automatica è nascosto</string>
   <string name="morphe_hide_autoplay_button_summary_off">Il pulsante Riproduzione Automatica è visibile</string>
-  <!-- This button does not display any text, but 'Captions' should be translated using the same wording used as the translation of 'morphe_hide_player_flyout_captions_title'. -->
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Nascondi il pulsante Sottotitoli</string>
   <string name="morphe_hide_captions_button_summary_on">Il pulsante Sottotitoli è nascosto</string>
   <string name="morphe_hide_captions_button_summary_off">Il pulsante Sottotitoli è visibile</string>
@@ -668,7 +690,7 @@ Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su i
   <string name="morphe_hide_seekbar_title">Nascondi barra di ricerca del lettore video</string>
   <string name="morphe_hide_seekbar_summary_on">La barra di avanzamento nel player video è nascosta</string>
   <string name="morphe_hide_seekbar_summary_off">La barra di avanzamento nel player video video è visibile</string>
-  <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
+  <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_hide_seekbar_thumbnail_title">Nascondi barra di ricerca delle miniature video</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">La barra di ricerca delle miniature video è nascosta</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">La barra di ricerca delle miniature video è mostrata</string>
@@ -678,27 +700,27 @@ Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su i
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Nascondi o mostra i componenti del lettore Shorts</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Nascondi Shorts nel feed Home</string>
   <string name="morphe_hide_shorts_home_summary_on">Nascosto nel feed Home e nei video correlati</string>
   <string name="morphe_hide_shorts_home_summary_off">Mostrato nel feed Home e nei video correlati</string>
   <string name="morphe_hide_shorts_search_title">Nascondi gli Shorts dei risultati di ricerca</string>
   <string name="morphe_hide_shorts_search_summary_on">Nascosti nei risultati di ricerca</string>
   <string name="morphe_hide_shorts_search_summary_off">Mostrati nei risultati di ricerca</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">Nascondi Shorts nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Nascosto nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Mostrato nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_history_title">Nascondi Shorts nella cronologia</string>
   <string name="morphe_hide_shorts_history_summary_on">Nascosti nella cronologia di visualizzazione</string>
   <string name="morphe_hide_shorts_history_summary_off">Mostrato nella cronologia</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Nascondi il pulsante Acquista Super Grazie</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">L\'etichetta di posizione è nascosta</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">L\'etichetta di posizione è visibile</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Il pulsante Acquista Super Grazie è nascosto</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Il pulsante Acquista Super Grazie è mostrato</string>
   <string name="morphe_hide_shorts_effect_button_title">Nascondi pulsante effetto</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Il pulsante Effetto è nascosto</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Il pulsante Effetto è mostrato</string>
-  <string name="morphe_hide_shorts_green_screen_button_title">Nascondi il pulsante Green Screen</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Il pulsante Schermo verde è nascosto</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Il pulsante Schermo verde è visibile</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Nascondi il pulsante Hashtag</string>
@@ -708,10 +730,12 @@ Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su i
   <string name="morphe_hide_shorts_join_button_title">Nascondi il pulsante Abbonati</string>
   <string name="morphe_hide_shorts_join_button_summary_on">Il pulsante Abbonati è nascosto</string>
   <string name="morphe_hide_shorts_join_button_summary_off">Il pulsante Abbonati è visibile</string>
+  <string name="morphe_hide_shorts_live_preview_title">Nascondi anteprima link</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">L\'anteprima dei link è nascosta</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">L\'anteprima dei link è mostrata</string>
   <string name="morphe_hide_shorts_location_label_title">Nascondi etichetta di posizione</string>
   <string name="morphe_hide_shorts_location_label_summary_on">L\'etichetta di posizione è nascosta</string>
   <string name="morphe_hide_shorts_location_label_summary_off">L\'etichetta di posizione è visibile</string>
-  <string name="morphe_hide_shorts_new_posts_button_title">Nascondi il pulsante Nuovi post</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Il pulsante Nuovi post è nascosto</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Il pulsante Nuovi post è visibile</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Nascondi i pulsanti di sovrapposizione quando il video è in pausa</string>
@@ -720,7 +744,6 @@ Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su i
   <string name="morphe_hide_shorts_preview_comment_title">Nascondi commento di anteprima</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Il commento di anteprima è nascosto</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Viene mostrata l\'anteprima del commento</string>
-  <string name="morphe_hide_shorts_save_sound_button_title">Nascondi il pulsante Salva Musica</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Il pulsante Salva traccia è nascosto</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Il pulsante Salva traccia è visibile</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Nascondi i suggerimenti di ricerca</string>
@@ -741,13 +764,11 @@ Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su i
   <string name="morphe_hide_shorts_upcoming_button_title">Nascondi il pulsante Prossimamente</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Il pulsante Imminente è nascosto</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Il pulsante Imminente è visibile</string>
-  <string name="morphe_hide_shorts_use_sound_button_title">Nascondi il pulsante \"Usa questo suono\"</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Il pulsante \"Usa questo suono\" è nascosto</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Il pulsante \"Usa questo suono\" è mostrato</string>
-  <string name="morphe_hide_shorts_use_template_button_title">Nascondi il pulsante \"Usa questo modello\"</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Il pulsante \"Usa questo modello\" è nascosto</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Il pulsante \"Usa questo modello\" è mostrato</string>
-  <!-- YT may no longer use this feature and this setting may be obsolete. -->
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Nascondi animazione fontana Mi piace</string>
   <string name="morphe_hide_shorts_like_fountain_summary_on">L\'animazione della fontana di Mi Piace è nascosta</string>
   <string name="morphe_hide_shorts_like_fountain_summary_off">L\'animazione della fontana di Mi Piace è visibile</string>
@@ -823,7 +844,7 @@ Impostazioni → Riproduzione → Riproduzione automatica video successivo"</str
   <string name="morphe_player_overlay_opacity_summary">Il valore dell\'opacità compreso tra 0 e 100, dove 0 è trasparente</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">L\'opacità della sovrapposizione del lettore deve essere compresa tra 0-100</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+  <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Non Mi Piace temporaneamente non disponibili (API scaduto)</string>
   <string name="morphe_ryd_failure_connection_status_code">Non Mi Piace non disponibili (stato: %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">I \"Non mi piace\" non sono disponibili (limite API client)</string>
@@ -842,7 +863,7 @@ Limitazione: i \"Non mi piace\" potrebbero non apparire in modalità incognito"<
   <string name="morphe_ryd_dislike_percentage_title">I Non Mi piace in percentuale</string>
   <string name="morphe_ryd_dislike_percentage_summary_on">I \"Non mi piace\" sono visualizzati come percentuale</string>
   <string name="morphe_ryd_dislike_percentage_summary_off">I \"Non mi piace\" sono visualizzati come numero</string>
-  <!-- Translations should use language similar to 'morphe_sb_enable_compact_skip_button'. -->
+  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Attiva il pulsante Mi piace compatto</string>
   <string name="morphe_ryd_compact_layout_summary_on">Pulsante Mi Piace riadattato per una larghezza minima</string>
   <string name="morphe_ryd_compact_layout_summary_off">Pulsante Mi Piace riadattato per la migliore visualizzazione</string>
@@ -884,7 +905,7 @@ Limitazione: i \"Non mi piace\" potrebbero non apparire in modalità incognito"<
   <string name="morphe_sb_square_layout">Usa layout squadrato</string>
   <string name="morphe_sb_square_layout_sum_on">Pulsanti e controlli sono squadrati</string>
   <string name="morphe_sb_square_layout_sum_off">Pulsanti e controlli sono arrotondati</string>
-  <!-- Translations should use language similar to 'morphe_ryd_compact_layout_title'. -->
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_enable_compact_skip_button">Usa il pulsante Salta compatto</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_on">Pulsante Salta riadattato per una larghezza minima</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_off">Pulsante Salta riadattato per la migliore visualizzazione</string>
@@ -957,7 +978,7 @@ Il tuo ID utente è come una password e non dovrebbe mai essere condiviso."</str
   <string name="morphe_sb_segments_sponsor">Sponsorizzazione</string>
   <string name="morphe_sb_segments_sponsor_sum">Promozione a pagamento, rinvii a pagamento e pubblicità diretta. Non per auto-promozione o gridare gratis a cause/creatori/siti web/prodotti che gradiscono</string>
   <string name="morphe_sb_segments_selfpromo">Non pagata/Auto Promozione</string>
-  <string name="morphe_sb_segments_selfpromo_sum">Simili agli Sponsor, ma sono promozioni non pagate o autopromozioni. Questo include segmenti sul merchandising, donazioni o informazioni dei collaboratori del video</string>
+  <string name="morphe_sb_segments_selfpromo_sum">Simili agli Sponsor, ma sono promozioni non pagate o autopromozioni. Questo include segmenti sul merchandising, donazioni, o informazioni dei collaboratori del video</string>
   <string name="morphe_sb_segments_interaction">Promemoria di interazione (iscrizione)</string>
   <string name="morphe_sb_segments_interaction_sum">Un breve promemoria per piacere, iscriversi o seguirli nel mezzo dei contenuti. Se è lungo o su qualcosa di specifico, dovrebbe invece essere sotto auto-promozione</string>
   <string name="morphe_sb_segments_highlight">Momento saliente</string>
@@ -1020,7 +1041,7 @@ Il tuo ID utente è come una password e non dovrebbe mai essere condiviso."</str
   <string name="morphe_sb_submit_failed_duplicate">"Impossibile inviare il segmento.
 Esiste già"</string>
   <string name="morphe_sb_submit_succeeded">Segmento inviato con successo</string>
-  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock temporaneamente non disponibile (API scaduto)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock temporaneamente non disponibile (stato %d)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock temporaneamente non disponibile</string>
@@ -1230,8 +1251,8 @@ Scorri per espandere o chiudere"</string>
   <string name="morphe_header_logo_title">Logo dell\'intestazione</string>
   <string name="morphe_header_logo_entry_1">Predefinito</string>
   <string name="morphe_header_logo_entry_2">Regolare</string>
-  <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
-  <string name="morphe_header_logo_entry_5">Morphe minimale</string>
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">Personalizzato</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Aggira le restrizioni regionali delle immagini</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Usando l\'host yt4.ggpht.com per le immagini</string>
@@ -1239,11 +1260,11 @@ Scorri per espandere o chiudere"</string>
 
 Abilitare questa opzione può risolvere le immagini mancanti che sono bloccate in alcune regioni"</string>
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_home_title">Scheda Home</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_subscription_title">Scheda Iscrizioni</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the You (Library) tab. -->
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_library_title">Scheda Tu</string>
   <string name="morphe_alt_thumbnail_player_title">Playlist e video consigliati</string>
   <string name="morphe_alt_thumbnail_search_title">Risultati della ricerca</string>
@@ -1262,7 +1283,7 @@ Tocca qui per saperne di più su DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Endpoint API di DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">L\'URL dell\'endpoint della cache delle miniature di DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Istantanea</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">Le istantanee sono prese all\'inizio, metà o fine di ogni video. Queste immagini sono integrate in YouTube e non viene usato nessun API esterno</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Le istantanee sono prese all\'inizio, metà o fine di ogni video. Queste immagini sono integrate in YouTube e no viene usato nessun API esterno</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Usa istantanee veloci</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">Utilizzando le istantanee di media qualità le miniature caricheranno più velocemente, ma le dirette, i video non rilasciati o molto vecchi possono mostrare miniature vuote</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">Utilizzando istantanee di alta qualità</string>
@@ -1280,8 +1301,8 @@ Tocca qui per saperne di più su DeArrow"</string>
   <string name="morphe_loop_video_summary_off">Il video non verrà riprodotto in loop</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Mostra pulsante riproduzione video in loop</string>
-  <string name="morphe_loop_video_button_summary_on">Pulsante mostrato</string>
-  <string name="morphe_loop_video_button_summary_off">Pulsante non mostrato</string>
+  <string name="morphe_loop_video_button_summary_on">Il menu Loop del video è visibile</string>
+  <string name="morphe_loop_video_button_summary_off">Il menu Loop del video è visibile</string>
   <string name="morphe_loop_video_button_toast_on">Riproduzione video in loop attivata</string>
   <string name="morphe_loop_video_button_toast_off">Riproduzione video in loop disattivata</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
@@ -1319,7 +1340,7 @@ Abilitare questa opzione può sbloccare qualità video più elevate"</string>
   <string name="morphe_external_browser_summary_on">Apertura dei link nel browser esterno</string>
   <string name="morphe_external_browser_summary_off">Apertura dei link nel browser in-app</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatico</string>
   <string name="morphe_remember_video_quality_last_selected_title">Ricorda le modifiche della qualità del video</string>
   <string name="morphe_remember_video_quality_last_selected_summary_on">Le modifiche della qualità si applicano a tutti i video</string>
@@ -1341,11 +1362,11 @@ Abilitare questa opzione può sbloccare qualità video più elevate"</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Mostra il pulsante Velocità Video</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Il pulsante è visualizzato. Tieni premuto per ripristinare la velocità di riproduzione predefinita</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">Il pulsante non è visibile</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Il pulsante di voto del segmento è nascosto</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Mostra il pulsante qualità video</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Il pulsante è visualizzato. Tocca e tieni premuto per ripristinare la qualità predefinita</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">Il pulsante non è visibile.</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Il menu della qualità video è visualizzato</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu di velocità di riproduzione personalizzato</string>
   <string name="morphe_custom_speed_menu_summary_on">Il menu di velocità personalizzato è visibile</string>
@@ -1409,7 +1430,7 @@ La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi."</string
   <string name="morphe_spoof_video_streams_about_no_av1">• Nessun codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Il volume stabile non è disponibile</string>
   <string name="morphe_spoof_video_streams_about_kids_videos">• I video dei bambini potrebbero non essere riprodotti quando si è disconnessi o in modalità di navigazione in incognito</string>
-  <!-- "Force original audio" should use the same text as morphe_force_original_audio_title -->
+  <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• L\'audio originale forzato non è disponibile</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Mostra nelle statistiche per nerd</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Il tipo di client è mostrato nelle statistiche per nerd</string>

@@ -31,8 +31,9 @@ public class YouTubeActivityHook extends BaseActivityHook {
 
     private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
             && !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
+            && !Settings.RESTORE_OLD_SETTINGS_MENUS.get()
             && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
-            > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS
+                > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS
             && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
 
     static {

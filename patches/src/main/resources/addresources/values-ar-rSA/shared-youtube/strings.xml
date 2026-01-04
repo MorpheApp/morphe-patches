@@ -22,9 +22,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_name_entry_5">مُخصّص</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
   <string name="morphe_custom_branding_icon_entry_1">الأصلية</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe أسود</string>
-  <string name="morphe_custom_branding_icon_entry_3">Morphe داكن</string>
-  <string name="morphe_custom_branding_icon_entry_4">ضوء Morphe</string>
+  <string name="morphe_custom_branding_icon_entry_2">أسود Morphe</string>
+  <string name="morphe_custom_branding_icon_entry_3">داكن Morphe</string>
+  <string name="morphe_custom_branding_icon_entry_4">فاتح Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">مُخصّص</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -41,14 +41,56 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"لا يتم تزييف تدفقات الفيديو
 
 قد لا يعمل تشغيل الفيديو"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">لم يتم استرداد أي تدفق عميل</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: تضمين تدفقات الفيديو &gt; تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">العميل الافتراضي</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">تسجيل الدخول إلى Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">لم يتم تسجيل الدخول إلى Android VR. انقر هنا لتسجيل الدخول</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حالياً في Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">للحصول على هذه الميزة، تغيير \'العميل الافتراضي\' إلى Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"تسجيل الدخول إلى Android VR يمكنه إصلاح مشكلات التشغيل لبعض المستخدمين
+
+لم يتم تسجيل الدخول. انقر على 'استمرار' أدناه لتسجيل الدخول"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">استمرار</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">تسجيل خروج</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">تعليمات</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"رمز التفعيل: %s
+
+1. انقر على 'فتح الموقع' أدناه لفتح موقع 'ربط جهاز'
+2. الصق رمز التفعيل الموضح أعلاه من الحافظة (أو اكتبه)
+3. تسجل الدخول إلى Google إذا طلب ذلك. إذا كان لديك أكثر من حساب، فاختر حساب YouTube هذا
+4.انقر على 'السماح بالوصول إلى YouTube VR'
+5. ارجع إلى هذا التطبيق بعد الوصول إلى رسالة 'تم توصيل الجهاز'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">فتح الموقع</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">فشل في إصدار رمز التفعيل</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">فشل في إصدار رمز المصادقة</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">تم تسجيل الدخول بنجاح</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"تم حفظ بيانات المصادقة
+
+• لن يتم استيراد/تصدير بيانات مصادقة Android VR من إعدادات Morphe الخاصة بك
+• إذا لم يتم استخدام هذا التطبيق لمدة 6 أشهر، فستقوم Google بإزالة بيانات المصادقة هذه
+• ستحتاج إلى تسجيل الدخول مرة أخرى إذا قمت بتغيير كلمة مرور Google أو إلغاء تسجيل هذا الجهاز من إعدادات Google الخاصة بك"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 غير متاح مؤقتًا (انتهت مهلة API)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">انتهت صلاحية تسجيل الدخول إلى Android VR، حاول تسجيل الدخول إلى VR مرة أخرى</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 غير متاح مؤقتًا (الحالة %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 غير متاح مؤقتًا</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">لا يمكن تسجيل الدخول إلى VR، لم تتم الموافقة على مصادقة الموقع الإلكتروني</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">تم تسجيل خروج Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_on">استخدام لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_off">استخدام الصوت الافتراضي</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams إلى أي عميل باستثناء Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams\' إلى أي عميل باستثناء Android Studio</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
   <string name="morphe_sanitize_sharing_links_summary_on">تمت إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>

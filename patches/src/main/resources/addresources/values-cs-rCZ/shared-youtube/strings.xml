@@ -41,8 +41,50 @@ Pokud jste uživatelem YouTube Premium, toto nastavení nemusí být vyžadován
   <string name="morphe_spoof_video_streams_summary_off">"Video streamy nejsou falšovány
 
 Přehrávání nemusí fungovat"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Nepodařilo se načíst žádné streamy klientů</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutí tohoto nastavení může způsobit problémy s přehráváním</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Zkuste zapnout: Spoof video streams &gt; Sign in to Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Výchozí klient</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Sign in to Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nejsme přihlášeni k Android VR. Stiskněte Zde pro přihlášení</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Právě jsme přihlášeni do Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pro použití této funkce změňte výchozího klienta na Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Přihlášení do Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Na přihlášení do Android VR může dojít problémy s přehráváním některých uživatelů.
+
+Pro přihlášení stiskněte Pokračovat níže"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Pokračovat</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásit se</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Nálepky</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kód pro aktivaci: %s
+
+1. Stiskněte Otevřít web níže, aby otevřeli webovou stránku Connect a device (Připojit zařízení)
+2. Vložte z klipboru (nebo přepište) kód pro aktivaci zobrazený výše
+3. Přihlašte se do Googlu, pokud bude požadováno. Pokud máte několik účtů, zvolte tento účet YouTube
+4. Stiskněte Povolit přístup YouTube VR
+5. Po dosažení zprávy Device connected (Zařízení připojeno) vraťte se do této aplikace."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otevřít web</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Selhalo vydání kódu pro aktivaci</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Selhalo přidání ověřovacího tokenu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Přihlášení bylo úspěšné</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Ověření uloženo
+
+• Váš konfigurační profil Morphe nebude importován nebo exportován Android VR ověření
+• Pokud tento aplikace nepoužijete během 6 měsíců, odstraní Google toto ověření
+• Jestliže změníte své heslo Googlu nebo odstraníte toto zařízení z Vašich nastavení Googlu, budete muset znovu se přihlásit."</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 dočasně není k dispozici (Časový limit API)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Čas přihlášení do VR vypršel, zkuste znovu se přihlásit do VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 dočasně není k dispozici (stav %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 dočasně není k dispozici</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nelze se přihlásit do VR, ověření na webovém serveru nebylo schváleno</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nelze se přihlásit do VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Nesprávný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary_on">Používá se původní jazyk zvuku</string>

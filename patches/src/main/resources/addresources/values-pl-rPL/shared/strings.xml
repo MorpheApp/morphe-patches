@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Zresetuj kolor</string>
   <string name="morphe_settings_color_invalid">Nieprawidłowy kolor</string>
   <string name="morphe_settings_restart_title">Wymagane ponowne uruchomienie</string>
-  <string name="morphe_settings_restart_dialog_message">Aby zmiany zostały wprowadzone, uruchom ponownie aplikację.</string>
+  <string name="morphe_settings_restart_dialog_message">Aby zmiany zostały wprowadzone, uruchom aplikację ponownie.</string>
   <string name="morphe_settings_restart">Uruchom ponownie</string>
   <string name="morphe_settings_import">Zaimportuj</string>
   <string name="morphe_settings_import_copy">Skopiuj</string>
@@ -32,8 +32,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">Zaimportowano %d ustawień</string>
   <string name="morphe_settings_import_failure_parse">Importowanie nie powiodło się: %s</string>
   <string name="morphe_settings_search_hint">Szukaj w ustawieniach</string>
-  <string name="morphe_settings_search_no_results_title">Brak wyników dla „%s”</string>
-  <string name="morphe_settings_search_no_results_summary">Spróbuj innego słowa kluczowego</string>
+  <string name="morphe_settings_search_no_results_title">Brak wyników dla \"%s\"</string>
+  <string name="morphe_settings_search_no_results_summary">Spróbuj innego słowa</string>
   <string name="morphe_settings_search_recent_searches">Ostatnie wyszukiwania</string>
   <string name="morphe_settings_search_remove_message">Usunąć z historii wyszukiwania?</string>
   <string name="morphe_settings_search_clear_history">Wyczyść historię wyszukiwania</string>
@@ -46,15 +46,15 @@ Second \"item\" text"</string>
 • Ustawienia nadrzędne pojawiają się powyżej wyłączonych ustawień podrzędnych"</string>
   <string name="morphe_settings_search_empty_history_title">Historia wyszukiwania jest pusta</string>
   <string name="morphe_settings_search_empty_history_summary">Aby zapisać historię wyszukiwania, wpisz zapytanie i naciśnij Enter</string>
-  <string name="morphe_settings_search_history_title">Pokaż historię wyszukiwania ustawień</string>
-  <string name="morphe_settings_search_history_summary_on">Historia wyszukiwania ustawień jest wyświetlana</string>
-  <string name="morphe_settings_search_history_summary_off">Historia wyszukiwania w ustawieniach jest niewidoczna</string>
-  <string name="morphe_settings_disable_bold_icons_title">Wyłącz pogrubione ikony</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Ikony nie są pogrubione</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Ikony są pogrubione</string>
-  <string name="morphe_show_menu_icons_title">Pokaż ikony ustawień Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Ikony ustawień są widoczne</string>
-  <string name="morphe_show_menu_icons_summary_off">Ikony ustawień nie są wyświetlane</string>
+  <string name="morphe_settings_search_history_title">Historia wyszukiwania ustawień</string>
+  <string name="morphe_settings_search_history_summary_on">Widoczna</string>
+  <string name="morphe_settings_search_history_summary_off">Niewidoczna</string>
+  <string name="morphe_settings_disable_bold_icons_title">Pogrubione ikony</string>
+  <string name="morphe_settings_disable_bold_icons_summary_on">Nie</string>
+  <string name="morphe_settings_disable_bold_icons_summary_off">Tak</string>
+  <string name="morphe_show_menu_icons_title">Ikony ustawień Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Widoczne</string>
+  <string name="morphe_show_menu_icons_summary_off">Niewidoczne</string>
   <string name="morphe_language_title">Język Morphe</string>
   <string name="morphe_language_user_dialog_message">"Tłumaczenia dla niektórych języków mogą być brakujące lub niekompletne.
 
@@ -63,39 +63,39 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_pref_import_export_title">Zaimportuj / Wyeksportuj</string>
   <string name="morphe_pref_import_export_summary">Zaimportuj / Wyeksportuj ustawienia Morphe</string>
   <!-- Settings about dialog. -->
-  <string name="morphe_settings_about_links_body_version_current">Używasz najnowszej wersji łatek Morphe &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Używasz łatek Morphe w wersji &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostępna aktualizacja: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aby zaktualizować łatki, użyj Morphe, aby przepodszyć tę aplikację</string>
+  <string name="morphe_settings_about_links_body_version_current">Używasz najnowszej wersji modyfikacji Morphe &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Używasz modyfikacji Morphe w wersji &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostępna aktualizacja: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aby zaktualizować modyfikacje, użyj Morphe, aby zmodyfikować tę aplikację ponownie</string>
   <string name="morphe_settings_about_links_dev_header">Notka</string>
-  <string name="morphe_settings_about_links_dev_body">Ta wersja jest wersją wstępną i mogą wystąpić nieoczekiwane problemy</string>
+  <string name="morphe_settings_about_links_dev_body">To jest wersja wstępna i mogą wystąpić nieoczekiwane problemy</string>
   <string name="morphe_settings_about_links_header">Oficjalne linki</string>
   <string name="morphe_settings_about_links_website">Strona internetowa</string>
-  <string name="morphe_settings_about_links_donate">Dotacja</string>
+  <string name="morphe_settings_about_links_donate">Wesprzyj</string>
   <string name="morphe_settings_about_links_translations">Tłumaczenia</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
   <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>
   <string name="morphe_debug_title">Logi do debugowania</string>
-  <string name="morphe_debug_summary_on">Logi debugowania są włączone</string>
-  <string name="morphe_debug_summary_off">Logi debugowania są wyłączone</string>
+  <string name="morphe_debug_summary_on">Włączone</string>
+  <string name="morphe_debug_summary_off">Wyłączone</string>
   <string name="morphe_debug_stacktrace_title">Logi śladów stosów</string>
-  <string name="morphe_debug_stacktrace_summary_on">Logi do debugowania zawierają ślady stosów</string>
-  <string name="morphe_debug_stacktrace_summary_off">Logi do debugowania nie zawierają śladów stosów</string>
+  <string name="morphe_debug_stacktrace_summary_on">Włączone</string>
+  <string name="morphe_debug_stacktrace_summary_off">Wyłączone</string>
   <string name="morphe_debug_toast_on_error_title">Komunikaty o błędach Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Wyświetlany jest toast, jeśli wystąpi błąd</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Toast nie jest wyświetlany, jeśli wystąpi błąd</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie notyfikacji błędów ukrywa wszystkie powiadomienia o błędach Morphe.
+  <string name="morphe_debug_toast_on_error_summary_on">Widoczne</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Niewidoczne</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie komunikatów o błędach ukrywa wszystkie komunikaty o błędach Morphe.
 
 Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Eksportuj dzienniki debugowania</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje dzienniki debugowania Morphe do schowka</string>
-  <string name="morphe_debug_logs_disabled">Rejestrowanie debugowania jest wyłączone</string>
-  <string name="morphe_debug_logs_none_found">Nie znaleziono dzienników</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Dzienniki skopiowane</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Wyeksportuj logi do debugowania</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje logi do debugowania Morphe do schowka</string>
+  <string name="morphe_debug_logs_disabled">Wyłączone jest rejestrowanie debugowania</string>
+  <string name="morphe_debug_logs_none_found">Nie znaleziono logów</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Logi skopiowane</string>
   <string name="morphe_debug_logs_failed_to_export">Nie udało się wyeksportować logów: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Wyczyść dzienniki debugowania</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Czyści wszystkie zapisane dzienniki debugowania Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Dzienniki wyczyszczone</string>
-  <string name="morphe_debug_feature_flags_manager_title">Manager flag funkcji</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Wyczyść logi do debugowania</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Czyści wszystkie zapisane logi do debugowania Morphe</string>
+  <string name="morphe_debug_logs_clear_toast">Logi usunięte</string>
+  <string name="morphe_debug_feature_flags_manager_title">Menedżer flag funkcji</string>
   <string name="morphe_debug_feature_flags_manager_summary">Zarządzaj flagami funkcji typu boolean</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Aktywne flagi (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokowane flagi (%d)</string>
@@ -106,7 +106,7 @@ Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">Ustawienia GmsCore</string>
-  <string name="microg_settings_summary">Ustawienia GmsCore</string>
+  <string name="microg_settings_summary">Ustawienia dla GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nie jest zainstalowany. Zainstaluj go.</string>
   <string name="gms_core_dialog_title">Wymagane działanie</string>
@@ -117,7 +117,7 @@ Postępuj zgodnie z instrukcją \"Don't kill my app\" dla swojego telefonu i zas
 
 To jest wymagane, aby aplikacja mogła funkcjonować."</string>
   <string name="gms_core_dialog_open_website_text">Otwórz stronę</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optymalizacje baterii MicroG muszą zostać wyłączonych, aby uniknąć problemów.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optymalizacje baterii MicroG muszą zostać wyłączone, aby uniknąć problemów.
 
 Wyłączenie optymalizacji baterii MicroG nie będzie negatywnie wpływało na zużycie baterii.
 

@@ -41,8 +41,50 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"ভিডিও স্ট্রিম স্পুফ করা হয়নি
 
 প্লেব্যাক কাজ নাও করতে পারে"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">কোনো ক্লায়েন্ট স্ট্রিম আনতে পারেনি</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">চেষ্টা করুন সক্রিয় করতে: ভিডিও স্ট্রিম স্পুফিং > অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">অ্যান্ড্রয়েড ভিআরে সাইন ইন করা হয়নি। সাইন ইন করতে এখানে ট্যাপ করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">বর্তমানে অ্যান্ড্রয়েড ভিআরে সাইন ইন করা হয়েছে</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">এই বৈশিষ্ট্যটি ব্যবহার করতে \'ডিফল্ট ক্লায়েন্ট\' অ্যান্ড্রয়েড ভিআর এ পরিবর্তন করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">অ্যান্ড্রয়েড ভিআরে সাইন ইন করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"কিছু ব্যবহারকারীদের জন্য প্লেব্যাক সমস্যা সংশ্লেষণ করতে অ্যান্ড্রয়েড ভিআরে সাইন ইন করা সাহায্য করতে পারে
+
+সাইন ইন করতে, নিচে কন্টিনিউ ট্যাপ করুন"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">এগিয়ে যান</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">সাইন আউট করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">নির্দেশনা</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"অ্যাক্টিভেশন কোড: %s
+
+1. নিচের 'ওয়েবসাইট খুলুন' ট্যাপ করে 'কনেক্ট এ ডিভাইস' ওয়েবসাইট খুলুন
+2. ক্লিপবোর্ড থেকে পেস্ট করুন (অথবা টাইপ করুন) উপরে দেখানো অ্যাক্টিভেশন কোড
+3. গুগলে সাইন ইন করতে প্রম্প্ট হলে। যদি আপনার একাধিক অ্যাকাউন্ট থাকে তাহলে এই ইউটিউব অ্যাকাউন্ট বেছে নিন
+4. 'ইউটিউব ভিআর' অ্যাক্সেস অনুমতি দিন
+5. 'ডিভাইস কনেক্টেড' মেসেজ পাওয়ার পর এই অ্যাপে ফিরে আসুন"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">ওয়েবসাইট খুলুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">অ্যাক্টিভেশন কোড জারি করতে ব্যর্থ হয়েছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">প্রমাণीकरण টোকেন জারি করতে ব্যর্থ হয়েছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">সফলভাবে সাইন ইন করা হয়েছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"প্রমাণীকরণ সংরক্ষিত হয়েছে
+
+• আপনার মলফে সেটিংস অ্যান্ড্রয়েড ভিআর প্রমাণীকরণ আমদানি / রফতানি করবে না
+• যদি এই অ্যাপটি ৬ মাসের জন্য অব্যবহৃত থাকে তাহলে গুগল এই প্রমাণীকরণ সরিয়ে দেবে
+• যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইস আনয়ন করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাবে উপলব্ধ নয় (API সময় শেষ হয়েছে)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">অ্যান্ড্রয়েড ভিআর সাইন ইন সময় শেষ হয়েছে, আবার ভিআরে সাইন ইন করার চেষ্টা করুন</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাবে উপলব্ধ নয় (অবস্থা %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 সাময়িকভাবে উপলব্ধ নয়</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">ভিআরে সাইন ইন করতে পারছেন না, ওয়েবসাইট প্রমাণীকরণ অনুমোদিত হয়নি</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">ভিআরে সাইন ইন করতে পারছেন না: %s</string>
+  <string name="morphe_oauth2_toast_reset">অ্যান্ড্রয়েড ভিআর থেকে লগ আউট করা হয়েছে</string>
+  <string name="morphe_oauth2_toast_invalid">ভিআর সাইন-ইন টোকেন বলগা, আবার ভিআরে সাইন ইন করার চেষ্টা করুন</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
   <string name="morphe_force_original_audio_summary_on">মূল অডিও ভাষা ব্যবহার করা হচ্ছে</string>

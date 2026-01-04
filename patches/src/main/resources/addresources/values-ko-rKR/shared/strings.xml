@@ -49,9 +49,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">설정 검색 기록 표시하기</string>
   <string name="morphe_settings_search_history_summary_on">설정 검색 기록을 표시합니다</string>
   <string name="morphe_settings_search_history_summary_off">설정 검색 기록을 표시하지 않습니다</string>
-  <string name="morphe_settings_disable_bold_icons_title">굵은 아이콘 비활성화</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">아이콘이 굵지 않음</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">아이콘이 굵게 표시됨</string>
+  <string name="morphe_settings_disable_bold_icons_title">굵은 아이콘 비활성화하기</string>
+  <string name="morphe_settings_disable_bold_icons_summary_on">아이콘을 굵게 표시하지 않습니다</string>
+  <string name="morphe_settings_disable_bold_icons_summary_off">아이콘을 굵게 표시합니다</string>
   <string name="morphe_show_menu_icons_title">Morphe 설정 아이콘 표시하기</string>
   <string name="morphe_show_menu_icons_summary_on">설정 아이콘을 표시합니다</string>
   <string name="morphe_show_menu_icons_summary_off">설정 아이콘을 표시하지 않습니다</string>
@@ -63,20 +63,20 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">가져오기 / 내보내기</string>
   <string name="morphe_pref_import_export_summary">Morphe 설정을 가져오거나 내보낼 수 있습니다</string>
   <!-- Settings about dialog. -->
-  <string name="morphe_settings_about_links_body_version_current">귀하는 최신 Morphe Patches 버전 &lt;i&gt;%s&lt;/i&gt;를 사용하고 계십니다.</string>
-  <string name="morphe_settings_about_links_body_version_outdated">귀하는 Morphe Patches 버전 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;업데이트 가능: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;패치를 업데이트하려면 Morphe를 사용하여 이 앱을 다시 패치하십시오.</string>
+  <string name="morphe_settings_about_links_body_version_current">Morphe Patches &lt;i&gt;%s&lt;/i&gt;&lt;br&gt;최신 버전을 사용 중입니다</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;버전을 사용 중입니다&lt;br&gt;&lt;br&gt;&lt;b&gt;업데이트 사용 가능: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;패치를 업데이트하려면&lt;br&gt;Morphe를 사용하여&lt;br&gt;이 앱을 다시 패치하세요</string>
   <string name="morphe_settings_about_links_dev_header">알림</string>
-  <string name="morphe_settings_about_links_dev_body">이 버전은 사전 릴리스이며 예상치 못한 문제가 발생할 수 있습니다</string>
+  <string name="morphe_settings_about_links_dev_body">Pre-release 버전이므로&lt;br&gt;알려지지 않은 문제점이&lt;br&gt;발생할 수 있습니다</string>
   <string name="morphe_settings_about_links_header">공식 링크</string>
   <string name="morphe_settings_about_links_website">웹사이트</string>
-  <string name="morphe_settings_about_links_donate">기부</string>
-  <string name="morphe_settings_about_links_translations">번역</string>
+  <string name="morphe_settings_about_links_donate">기부하기</string>
+  <string name="morphe_settings_about_links_translations">번역에 참여하기</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_screen_title">디버깅</string>
-  <string name="morphe_debug_screen_summary">디버깅 옵션을 활성화하거나 비활성화할 수 있습니다</string>
-  <string name="morphe_debug_title">디버그 로깅</string>
-  <string name="morphe_debug_summary_on">디버그 로깅을 활성화합니다</string>
-  <string name="morphe_debug_summary_off">디버그 로깅을 비활성화합니다</string>
+  <string name="morphe_debug_screen_title">디버그</string>
+  <string name="morphe_debug_screen_summary">디버그 옵션을 활성화하거나 비활성화할 수 있습니다</string>
+  <string name="morphe_debug_title">디버그 로그</string>
+  <string name="morphe_debug_summary_on">디버그 로그을 활성화합니다</string>
+  <string name="morphe_debug_summary_off">디버그 로그를 비활성화합니다</string>
   <string name="morphe_debug_stacktrace_title">로그 스택 트레이스</string>
   <string name="morphe_debug_stacktrace_summary_on">디버그 로그에 로그 스택 트레이스를 포함합니다</string>
   <string name="morphe_debug_stacktrace_summary_off">디버그 로그에 로그 스택 트레이스를 포함하지 않습니다</string>
@@ -88,7 +88,7 @@ Second \"item\" text"</string>
 예상되지 않은 이벤트에 대한 알림을 받지 못할 수 있습니다."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">디버그 로그 내보내기</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe 디버그 로그를 클립보드에 복사할 수 있습니다</string>
-  <string name="morphe_debug_logs_disabled">디버그 로깅이 비활성화되어 있습니다</string>
+  <string name="morphe_debug_logs_disabled">디버그 로그가 비활성화되어 있습니다</string>
   <string name="morphe_debug_logs_none_found">디버그 로그를 찾을 수 없습니다</string>
   <string name="morphe_debug_logs_copied_to_clipboard">디버그 로그를 복사하였습니다</string>
   <string name="morphe_debug_logs_failed_to_export">디버그 로그를 내보낼 수 없습니다: %s</string>

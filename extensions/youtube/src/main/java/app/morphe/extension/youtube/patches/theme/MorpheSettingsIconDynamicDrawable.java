@@ -11,9 +11,11 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.Utils;
 
+import java.util.Objects;
+
 /**
  * Dynamic drawable that is either the regular or bolded Morphe preference icon.
- *
+ * <p>
  * This is needed because the YouTube Morphe preference intent is an AndroidX preference,
  * and AndroidX classes are not built into Android which makes programmatically changing
  * the preference thru patching overly complex. This solves the problem by using a drawable
@@ -22,20 +24,49 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public class MorpheSettingsIconDynamicDrawable extends Drawable {
 
-    private final Drawable icon;
+    @NonNull
+    private Drawable icon;
+    private Boolean lastKnownDarkMode;
 
     public MorpheSettingsIconDynamicDrawable() {
-        final int resId = Utils.getResourceIdentifier(ResourceType.DRAWABLE,
-                Utils.appIsUsingBoldIcons()
-                        ? "morphe_settings_icon_bold"
-                        : "morphe_settings_icon"
-        );
+        updateIcon();
+    }
 
-        icon = Utils.getContext().getDrawable(resId);
+    /**
+     * Updates the icon based on current theme and bold icon settings.
+     * Only reloads the drawable if the theme has changed.
+     */
+    private void updateIcon() {
+        boolean isDarkMode = Utils.isDarkModeEnabled();
+
+        // Only update if theme changed.
+        if (lastKnownDarkMode == null || lastKnownDarkMode != isDarkMode) {
+            lastKnownDarkMode = isDarkMode;
+
+            String iconName = Utils.appIsUsingBoldIcons()
+                    ? (isDarkMode ? "morphe_settings_icon_bold_dark" : "morphe_settings_icon_bold_light")
+                    : (isDarkMode ? "morphe_settings_icon_dark" : "morphe_settings_icon_light");
+
+            final int resId = Utils.getResourceIdentifier(ResourceType.DRAWABLE, iconName);
+            Drawable newIcon = Utils.getContext().getDrawable(resId);
+
+            if (newIcon == null) {
+                throw new IllegalStateException("Failed to load icon: " + iconName);
+            }
+
+            // Preserve bounds when switching icons.
+            if (getBounds() != null) {
+                newIcon.setBounds(getBounds());
+            }
+
+            icon = newIcon;
+        }
     }
 
     @Override
     public void draw(@NonNull Canvas canvas) {
+        // Check and update icon before each draw to respond to theme changes.
+        updateIcon();
         icon.draw(canvas);
     }
 

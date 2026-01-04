@@ -19,14 +19,14 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">앱 이름</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
-  <string name="morphe_custom_branding_name_entry_5">사용자 지정</string>
+  <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
   <string name="morphe_custom_branding_icon_entry_1">원본</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe 검정</string>
-  <string name="morphe_custom_branding_icon_entry_3">Morphe 어두움</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe 라이트</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe Black</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe Dark</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe Light</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">사용자 지정</string>
+  <string name="morphe_custom_branding_icon_entry_5">사용자 정의</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>
@@ -41,8 +41,50 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
   <string name="morphe_spoof_video_streams_summary_off">"동영상 스트림을 변경하지 않습니다
 
 재생 문제가 발생할 수 있습니다"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">클라이언트 스트림을 가져올 수 없습니다</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 변경하기 &gt; Android VR에 로그인하기</string>
   <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR에 로그인하기</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR에 로그인되어 있지 않습니다. 로그인하려면 여기를 탭하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">현재 Android VR에 로그인되어 있습니다</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">이 기능을 사용하려면, \'기본 클라이언트\'를 Android VR로 변경하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR에 로그인하기</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR에 로그인하면 일부 사용자의 재생 문제가 해결될 수 있습니다
+
+로그인하려면 아래에 있는 계속하기를 탭하세요"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">계속하기</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">로그아웃</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">설명서</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"활성화 코드: %s
+
+1. 아래에 있는 '웹사이트 열기'를 탭하여 '기기 연결' 웹사이트를 엽니다.
+2. 위에 표시된 활성화 코드를 클립보드에서 붙여넣거나 입력합니다.
+3. 메시지가 표시되면 Google에 로그인합니다. 계정이 여러 개인 경우에는 Morphe에서 사용하는 YouTube 계정을 선택합니다.
+4. 'YouTube VR 액세스 허용'을 탭합니다.
+5. '기기 연결됨' 메시지가 표시되면 이 앱으로 돌아갑니다."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">웹사이트 열기</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">활성화 코드를 발급할 수 없습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">인증 토큰을 발급할 수 없습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">로그인 성공</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"인증을 저장하였습니다
+
+• Morphe 설정에서 Android VR 인증을 가져오거나 내보낼 수 없습니다.
+• 이 앱을 6개월 동안 사용하지 않으면 Google에서 이 인증이 제거됩니다.
+• Google 암호를 변경하거나 Google 설정에서 이 기기 등록을 해제하면 다시 로그인해야 합니다"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2를 일시적으로 사용할 수 없습니다 (API 시간 초과)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR 로그인이 만료되었습니다. VR에 다시 로그인하세요</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2를 일시적으로 사용할 수 없습니다 (상태 코드 %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2를 일시적으로 사용할 수 없습니다</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR에 로그인할 수 없습니다. 웹사이트 인증이 승인되지 않았습니다</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
+  <string name="morphe_oauth2_toast_reset">Android VR에서 로그아웃되었습니다</string>
+  <string name="morphe_oauth2_toast_invalid">잘못된 VR 로그인 토큰입니다. VR에 다시 로그인하세요</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">원본 오디오 언어 강제로 활성화하기</string>
   <string name="morphe_force_original_audio_summary_on">원본 오디오 언어를 사용 중입니다</string>

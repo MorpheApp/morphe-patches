@@ -41,8 +41,50 @@ Dacă ești utilizator YouTube Premium, această setare ar putea să nu fie nece
   <string name="morphe_spoof_video_streams_summary_off">"Fluxurile video nu sunt falsificate
 
 Redarea poate să nu funcționeze"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Nu s-a putut încărca nicio client stream</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Încearcă activarea: Spoof video streams > Autentificare Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client implicit</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Autentificare Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nu te-ai autentificat la Android VR. Apasă aici pentru a te autentifica</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Ești autentificat actualmente la Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pentru a utiliza această funcție, schimbă \'Default client\' în Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Autentificare la Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Autentificarea la Android VR poate corrigenționa problemele de reproducere pentru unii utilizator
+
+Apasă Continua mai jos pentru a te autentifica"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continua</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Dezautentificare</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instrucțiuni</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Cod de autentificare: %s
+
+1. Apasă 'Open website' de mai jos pentru a deschide site-ul 'Conectează un dispozitiv'
+2. Copiază din clipboard (sau tastează) codul de autentificare de mai sus
+3. Autentifichează-te la Google dacă este cerut. Dacă ai mai multe conturi, alege acest cont YouTube
+4. Apasă 'Permite accesului YouTube VR'
+5. Înapoiază în această aplicație după apariția mesajului 'Dispozitiv conectat'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Deschide site-ul</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Eșit să emit codul de activare</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Eșit să emit codul de autentificare</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Autentificare cu succes</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentificare salvată
+
+• Configurațiile Morphe nu vor importa/exporta autentificarea Android VR
+• Dacă această aplicație nu este folosită timp de 6 luni, Google va șterge această autentificare
+• Dacă schimbi parola Google sau deblochezi acest dispozitiv din setări Google, vei avea nevoie să te autentifici din nou"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 este momentan indisponibil (API a expirat)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Autentificare la VR Android expirată, încearcați să vă autentificați din nou la VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 este momentan indisponibil (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 este momentan indisponibil</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nu se poate autentifica la VR, autentificarea web nu a fost aprobată</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nu se poate autentifica la VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Token de autentificare VR invalid, încearcați să vă autentificați din nou la VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary_on">Folosind limba audio originală</string>

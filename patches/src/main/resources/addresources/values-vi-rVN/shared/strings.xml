@@ -58,19 +58,19 @@ Second \"item\" text"</string>
   <string name="morphe_language_title">Ngôn ngữ Morphe</string>
   <string name="morphe_language_user_dialog_message">"Bản dịch cho một số ngôn ngữ có thể bị thiếu hoặc chưa hoàn thiện.
 
-Để dịch các ngôn ngữ mới hoặc cải thiện bản dịch hiện có, hãy truy cập translate.morphe.software"</string>
+Để thêm các ngôn ngữ mới hoặc cải thiện bản dịch đang có, hãy truy cập translate.morphe.software"</string>
   <string name="morphe_language_DEFAULT">Ngôn ngữ ứng dụng</string>
   <string name="morphe_pref_import_export_title">Nhập hoặc Xuất</string>
   <string name="morphe_pref_import_export_summary">Nhập hoắc xuất các cài đặt Morphe</string>
   <!-- Settings about dialog. -->
-  <string name="morphe_settings_about_links_body_version_current">Bạn đang dùng Morphe Patches phiên bản &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Bạn đang dùng Morphe Patches phiên bản &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Có bản cập nhật: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Để cập nhật các bản vá của bạn, hãy dùng Morphe để vá lại ứng dụng này</string>
+  <string name="morphe_settings_about_links_body_version_current">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Đã có bản cập nhật mới: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Để cập nhật các bản vá của bạn, hãy dùng Morphe để vá lại ứng dụng này</string>
   <string name="morphe_settings_about_links_dev_header">Lưu ý</string>
   <string name="morphe_settings_about_links_dev_body">Phiên bản này là bản phát hành trước và bạn có thể gặp phải các sự cố không mong muốn</string>
-  <string name="morphe_settings_about_links_header">Liên kết chính thức</string>
+  <string name="morphe_settings_about_links_header">Liên kết chính chủ</string>
   <string name="morphe_settings_about_links_website">Trang web</string>
   <string name="morphe_settings_about_links_donate">Ủng hộ</string>
-  <string name="morphe_settings_about_links_translations">Bản dịch</string>
+  <string name="morphe_settings_about_links_translations">Dịch thuật</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
   <string name="morphe_debug_screen_summary">Bật hoặc tắt tùy chọn gỡ lỗi</string>
@@ -95,7 +95,7 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="morphe_debug_logs_clear_buffer_title">Xóa nhật ký gỡ lỗi</string>
   <string name="morphe_debug_logs_clear_buffer_summary">Xóa tất cả nhật ký gỡ lỗi Morphe đã lưu trữ</string>
   <string name="morphe_debug_logs_clear_toast">Đã xóa nhật ký</string>
-  <string name="morphe_debug_feature_flags_manager_title">Manager cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_title">Trình quản lý cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_summary">Quản lý các cờ tính năng boolean</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Cờ đang hoạt động (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Cờ bị chặn (%d)</string>
@@ -113,6 +113,6 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don't kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt MicroG của bạn.\n\nĐiều này cần thiết cho ứng dụng hoạt động."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bài học từ MicroG GmsCore: bạn cần tắt tối ưu hóa pin để tránh sự cố.\n\nViệc tắt tối ưu hóa pin cho MicroG sẽ không ảnh hưởng tiêu cực đến lượng pin.\n\nẤn nút tiếp tục để cho phép các thay đổi."</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bài học từ MicroG GmsCore: bạn cần tắt tối ưu hóa pin để tránh xẩy ra sự cố.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nNhấn tiếp tục để thay đổi lựa chọn tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
 </resources>

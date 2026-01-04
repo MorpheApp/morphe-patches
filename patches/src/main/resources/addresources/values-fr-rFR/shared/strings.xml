@@ -28,10 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart">Redémarrer</string>
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Copier</string>
-  <string name="morphe_settings_import_reset">Paramètres Morphe réinitialisés aux valeurs par défaut</string>
+  <string name="morphe_settings_import_reset">Réinitialisation des paramètres Morphe aux valeurs par défaut</string>
   <string name="morphe_settings_import_success">%d paramètres importés</string>
   <string name="morphe_settings_import_failure_parse">Importation échouée : %s</string>
-  <string name="morphe_settings_search_hint">Rechercher dans les paramètres</string>
+  <string name="morphe_settings_search_hint">Recherche de paramètres</string>
   <string name="morphe_settings_search_no_results_title">Aucun résultat trouvé pour \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Essayez un autre mot-clé</string>
   <string name="morphe_settings_search_recent_searches">Recherches récentes</string>
@@ -39,13 +39,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_clear_history">Effacer l\'historique des recherches</string>
   <string name="morphe_settings_search_clear_history_message">Voulez-vous vraiment effacer tout l\'historique des recherches ?</string>
   <string name="morphe_settings_search_tips_title">Conseils de recherche</string>
-  <string name="morphe_settings_search_tips_summary">"• Appuyez sur un chemin pour y naviguer
-• Appuyez longuement sur un paramètre pour y naviguer
-• Appuyez sur Entrée pour enregistrer une requête de recherche dans l'historique
-• La recherche ignore la casse et la ponctuation
-• Les paramètres parents apparaissent au-dessus des paramètres enfants désactivés"</string>
+  <string name="morphe_settings_search_tips_summary">"• Appuyez sur un chemin pour y naviguer.
+• Maintenez un paramètre enfoncé pour l'ouvrir.
+• Appuyez sur Entrée pour enregistrer une recherche dans l'historique.
+• La recherche ignore la distinction entre majuscules et minuscules ainsi que la ponctuation.
+• Les paramètres principaux s'affichent au-dessus des sous-paramètres désactivés."</string>
   <string name="morphe_settings_search_empty_history_title">L\'historique des recherches est vide</string>
-  <string name="morphe_settings_search_empty_history_summary">Pour enregistrer l\'historique des recherches, saisissez une requête de recherche et appuyez sur Entrée</string>
+  <string name="morphe_settings_search_empty_history_summary">Pour enregistrer l\'historique de recherche, saisissez une recherche et appuyez sur Entrée.</string>
   <string name="morphe_settings_search_history_title">Afficher l\'historique des recherches dans les paramètres</string>
   <string name="morphe_settings_search_history_summary_on">L\'historique des recherches dans les paramètres est affiché</string>
   <string name="morphe_settings_search_history_summary_off">L\'historique des recherches dans les paramètres n\'est pas affiché</string>
@@ -56,17 +56,18 @@ Second \"item\" text"</string>
   <string name="morphe_show_menu_icons_summary_on">Les icônes des paramètres sont affichées</string>
   <string name="morphe_show_menu_icons_summary_off">Les icônes des paramètres ne sont pas affichées</string>
   <string name="morphe_language_title">Langue de Morphe</string>
-  <string name="morphe_language_user_dialog_message">"Les traductions en certaines langues peuvent être manquantes ou incomplètes.
+  <string name="morphe_language_user_dialog_message">"Les traductions pour certaines langues peuvent être manquantes ou incomplètes.
 
-Pour traduire l'application en de nouvelles langues ou améliorer les traductions existantes, visitez translate.morphe.software"</string>
+Pour traduire de nouvelles langues ou améliorer les traductions existantes, visitez translate.morphe.software
+"</string>
   <string name="morphe_language_DEFAULT">Langue de l\'application</string>
   <string name="morphe_pref_import_export_title">Importer/Exporter</string>
   <string name="morphe_pref_import_export_summary">Importer/Exporter les paramètres Morphe</string>
   <!-- Settings about dialog. -->
-  <string name="morphe_settings_about_links_body_version_current">Vous utilisez la dernière version de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Vous utilisez la version de Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Mise à jour disponible : &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pour mettre à jour vos patchs, utilisez Morphe pour repatcher cette application</string>
+  <string name="morphe_settings_about_links_body_version_current">Vous utilisez la dernière version des Patchs Morphe &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Vous utilisez la version des Patchs Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Mise à jour disponible : &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pour mettre à jour vos patchs, utilisez Morphe pour repatcher cette application</string>
   <string name="morphe_settings_about_links_dev_header">Remarque</string>
-  <string name="morphe_settings_about_links_dev_body">Vous utilisez actuellement une préversion, il se peut que vous rencontriez des problèmes inattendus</string>
+  <string name="morphe_settings_about_links_dev_body">Cette version est une pré-version et vous pourriez rencontrer des problèmes inattendus.</string>
   <string name="morphe_settings_about_links_header">Liens officiels</string>
   <string name="morphe_settings_about_links_website">Site Web</string>
   <string name="morphe_settings_about_links_donate">Faire un don</string>
@@ -74,53 +75,55 @@ Pour traduire l'application en de nouvelles langues ou améliorer les traduction
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
   <string name="morphe_debug_screen_summary">Activez ou désactivez les options de débogage</string>
-  <string name="morphe_debug_title">Journalisation de débogage</string>
+  <string name="morphe_debug_title">Journaux de débogage</string>
   <string name="morphe_debug_summary_on">Les journaux de débogage sont activés</string>
   <string name="morphe_debug_summary_off">Les journaux de débogage sont désactivés</string>
-  <string name="morphe_debug_stacktrace_title">Journaliser les stack traces</string>
-  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent les stack traces</string>
-  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas les stack traces</string>
-  <string name="morphe_debug_toast_on_error_title">Afficher un message toast en cas d\'erreur Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Un message toast est affiché en cas d\'erreur</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Aucun message toast n\'est affiché en cas d\'erreur</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"La désactivation des messages toasts d'erreur masque toutes les notifications d'erreur Morphe.
+  <string name="morphe_debug_stacktrace_title">Journaliser les traces de pile</string>
+  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent la trace de pile</string>
+  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas la trace de pile</string>
+  <string name="morphe_debug_toast_on_error_title">Afficher une notification toast en cas d\'erreur Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Une notification toast est affiché en cas d\'erreur</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Aucune notification toast n\'est affiché en cas d\'erreur</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d’erreur masque toutes les notifications d’erreur de Morphe.
 
-Vous ne serez pas informé des événements inattendus."</string>
+Vous ne serez plus averti en cas d’événements inattendus."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">Exporter les journaux de débogage</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">Copie les journaux de débogage Morphe dans le presse-papiers</string>
   <string name="morphe_debug_logs_disabled">La journalisation de débogage est désactivée</string>
-  <string name="morphe_debug_logs_none_found">Aucun journal trouvé</string>
+  <string name="morphe_debug_logs_none_found">Aucuns journaux trouvés</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Journaux copiés</string>
   <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux : %s</string>
   <string name="morphe_debug_logs_clear_buffer_title">Effacer les journaux de débogage</string>
   <string name="morphe_debug_logs_clear_buffer_summary">Efface tous les journaux de débogage Morphe stockés</string>
   <string name="morphe_debug_logs_clear_toast">Journaux effacés</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire des flags de fonctionnalités</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gérez les flags de fonctionnalités booléens</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Flags actifs (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags bloqués (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des flags...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags enregistrés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags réinitialisés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de drapeaux de fonctionnalités</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gérer les drapeaux de fonctionnalités booléens</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Drapeaux actifs (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Drapeaux bloqués (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des drapeaux...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Drapeaux enregistrés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Drapeaux réinitialisés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Drapeaux copiés dans le presse-papiers</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_title">Paramètres GmsCore</string>
-  <string name="microg_settings_summary">Paramètres relatifs à GmsCore</string>
+  <string name="microg_settings_summary">Paramètres pour GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le.</string>
   <string name="gms_core_dialog_title">Action requise</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ne dispose pas d'autorisation pour fonctionner en arrière-plan.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n’a pas l’autorisation de fonctionner en arrière-plan.
 
-Suivez le guide \"Don't kill my app\" de votre téléphone et appliquez les instructions à votre installation MicroG.
+Suivez le guide 'Don’t kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
 
-Cette opération est nécessaire au bon fonctionnement de l'application."</string>
+Cela est indispensable pour que l’application fonctionne correctement."</string>
   <string name="gms_core_dialog_open_website_text">Ouvrir le site Web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Les optimisations de la batterie doivent être désactivées pour MicroG afin d'éviter tout problème.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Les optimisations de batterie doivent être désactivées pour MicroG pour éviter des problèmes.
 
-Désactiver les optimisations de la batterie pour MicroG n'affectera pas négativement l'utilisation de la batterie.
+Désactiver les optimisations de batterie pour MicroG n’aura pas d’impact négatif sur l’autonomie de la batterie.
 
-Appuyez sur le bouton Continuer et autorisez les modifications d'optimisation."</string>
+Appuyez sur le bouton Continuer et autorisez la modification des optimisations.
+
+"</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
 </resources>

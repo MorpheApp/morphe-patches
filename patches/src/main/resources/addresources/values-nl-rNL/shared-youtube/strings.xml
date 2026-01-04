@@ -41,8 +41,42 @@ Als je een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet vere
   <string name="morphe_spoof_video_streams_summary_off">"Videostreams worden niet gespoofed
 
 Afspeelproblemen kunnen optreden"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Kon geen client-streams opvragen</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Het uitschakelen van deze instelling kan afspeelproblemen veroorzaken.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer het volgende inschakelen: Spoof video streams > Inloggen in Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard client</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inloggen in Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Niet ingelogd bij Android VR. Tik hieromtrent om in te loggen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Momenteel ingelogd bij Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Voor gebruik van deze functie, verander \'Standaard client\' naar Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Inloggen in Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Inloggen in Android VR kan afspelproblemen voor sommige gebruikers oplossen\n\nOm in te loggen, tik 'Doorgaan' hieronder\n\nInschakelen bij Google als gevraagd. Als je meerdere accounts hebt, selecteer dan dit YouTube-account\n\nSchakel YouTube VR > Access in\n\nGa terug naar deze app nadat het bericht 'Apparaat verbonden' is verschenen"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Doorgaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Uitloggen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructies</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activatienummer: %s\n\n1. Tik 'Open website' hieronder om de 'Apparaat verbinden' website te openen\n2. Plak vanuit het klembord het hierboven weergegeven activatienummer\n3. Log in bij Google als gevraagd. Als je meerdere accounts hebt, selecteer dan dit YouTube-account\n4. Tik 'YouTube VR toestaan' in\n5. Ga terug naar deze app na bereiking van het bericht 'Apparaat verbonden'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Website openen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Mislukt het verstrekken van een activatienummer</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Mislukt het verstrekken van een verifikasiëringstoken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Succesvol ingelogd</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authenticatie is opgeslagen
+
+• Uw Morphe-instellingen kunnen Android VR-authenticatie niet importeren/uitvoeren
+• Als deze app ongebruikt is gedurende 6 maanden, dan zal Google deze authenticatie verwijderen
+• U moet opnieuw inloggen als u uw Google-wachtwoord wijzigt of deze apparaat deregistreert bij uw Google-instellingen"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tijdelijk niet beschikbaar (API heeft time-out)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR-inlogging is verlopen, probeer opnieuw in te loggen bij VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 is tijdelijk niet beschikbaar (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 is tijdelijk niet beschikbaar</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan niet inloggen bij VR, website-verificatie is niet goedgekeurd</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Kan niet inloggen bij VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Uitgelogd van Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Ongeldig VR-inlogtoken, probeer opnieuw in te loggen bij VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forceer de originele audiotaal</string>
   <string name="morphe_force_original_audio_summary_on">De oorspronkelijke audiotaal gebruiken</string>

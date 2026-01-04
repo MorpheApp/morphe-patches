@@ -60,9 +60,6 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_compact_banner_title">Sakrij kompaktne banere</string>
   <string name="morphe_hide_compact_banner_summary_on">Kompaktni baneri su skriveni</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompaktni baneri su prikazani</string>
-  <string name="morphe_hide_crowdfunding_box_title">Sakrij polje za kolektivno finansiranje</string>
-  <string name="morphe_hide_crowdfunding_box_summary_on">Polje za kolektivno finansiranje je skriveno</string>
-  <string name="morphe_hide_crowdfunding_box_summary_off">Polje za kolektivno finansiranje je prikazano</string>
   <string name="morphe_hide_expandable_card_title">Sakrij proširivu karticu</string>
   <string name="morphe_hide_expandable_card_summary_on">Proširiva kartica ispod videa je skrivena</string>
   <string name="morphe_hide_expandable_card_summary_off">Kartica koja se može proširiti ispod video zapisa je prikazana</string>
@@ -90,7 +87,7 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_movies_section_title">Sakrij odeljak za filmove</string>
   <string name="morphe_hide_movies_section_summary_on">Odeljak za filmove je skriven</string>
   <string name="morphe_hide_movies_section_summary_off">Odeljak za filmove je prikazan</string>
-  <!-- 'Notify me' should be translated using the same localized wording YouTube displays.
+  <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sakrij dugme „Obavesti me”</string>
   <string name="morphe_hide_notify_me_button_summary_on">Dugme „Obavesti me” je skriveno</string>
@@ -98,8 +95,8 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_playables_title">Sakrij salu za igru</string>
   <string name="morphe_hide_playables_summary_on">Sala za igru je skrivena</string>
   <string name="morphe_hide_playables_summary_off">Sala za igru je prikazana</string>
-  <!-- 'Show more' should be translated with the same localized wording that YouTube displays.
-          This button usually appears when searching for a YT creator. -->
+  <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Sakrij dugme „Prikaži još”</string>
   <string name="morphe_hide_show_more_button_summary_on">Dugme „Prikaži više” u rezultatima pretrage je skriveno</string>
   <string name="morphe_hide_show_more_button_summary_off">Dugme „Prikaži više” u rezultatima pretrage je prikazano</string>
@@ -109,7 +106,7 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_ticket_shelf_title">Sakrij policu sa kartama</string>
   <string name="morphe_hide_ticket_shelf_summary_on">Polica sa kartama je skrivena</string>
   <string name="morphe_hide_ticket_shelf_summary_off">Polica sa kartama je prikazana</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays. -->
+  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Sakrij oznake preporuka videa</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Oznake „Drugi su takođe gledali ovaj video” i „Možda će vam se takođe dopasti” u rezultatima pretrage su skrivene</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Oznake „Drugi su takođe gledali ovaj video” i „Možda će vam se takođe dopasti” u rezultatima pretrage su prikazane</string>
@@ -126,13 +123,16 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_channel_watermark_title">Sakrij vodeni žig kanala</string>
   <string name="morphe_hide_channel_watermark_summary_on">Vodeni žig kanala je skriven</string>
   <string name="morphe_hide_channel_watermark_summary_off">Vodeni žig kanala je prikazan</string>
+  <string name="morphe_hide_crowdfunding_box_title">Sakrij polje za kolektivno finansiranje</string>
+  <string name="morphe_hide_crowdfunding_box_summary_on">Polje za kolektivno finansiranje je skriveno</string>
+  <string name="morphe_hide_crowdfunding_box_summary_off">Polje za kolektivno finansiranje je prikazano</string>
   <string name="morphe_hide_emergency_box_title">Sakrij polja za hitne slučajeve</string>
   <string name="morphe_hide_emergency_box_summary_on">Polja za hitne slučajeve su skrivena</string>
   <string name="morphe_hide_emergency_box_summary_off">Polja za hitne slučajeve su prikazana</string>
   <string name="morphe_hide_info_panels_title">Sakrij okna sa informacijama</string>
   <string name="morphe_hide_info_panels_summary_on">Okna sa informacijama su skrivena</string>
   <string name="morphe_hide_info_panels_summary_off">Okna sa informacijama su prikazana</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays.
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Sakrij dugme „Učlani me”</string>
   <string name="morphe_hide_join_membership_button_summary_on">Dugme „Pridruži se” je skriveno</string>
@@ -164,27 +164,24 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_chapters_section_title">Sakrij poglavlja</string>
   <string name="morphe_hide_chapters_section_summary_on">Odeljak za poglavlja je skriven</string>
   <string name="morphe_hide_chapters_section_summary_off">Odeljak za poglavlja je prikazan</string>
+  <string name="morphe_hide_explore_podcast_section_title">Sakrij odeljak „Istražite podkast”</string>
+  <string name="morphe_hide_explore_podcast_section_summary_on">Odeljak „Istražite podkast” je skriven</string>
+  <string name="morphe_hide_explore_podcast_section_summary_off">Odeljak „Istražite podkast” je prikazan</string>
   <string name="morphe_hide_how_this_was_made_section_title">Sakrij odeljak „Kako je napravljen ovaj sadržaj”</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">Odeljak „Kako je napravljen ovaj sadržaj” je skriven</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">Odeljak „Kako je napravljen ovaj sadržaj” je prikazan</string>
   <string name="morphe_hide_hype_points_title">Sakrij hajp poene</string>
   <string name="morphe_hide_hype_points_summary_on">Hajp poeni su skriveni</string>
   <string name="morphe_hide_hype_points_summary_off">Hajp poeni su prikazani</string>
-  <string name="morphe_hide_podcast_section_title">Sakrij odeljak „Istražite podkast”</string>
-  <string name="morphe_hide_podcast_section_summary_on">Odeljak „Istražite podkast” je skriven</string>
-  <string name="morphe_hide_podcast_section_summary_off">Odeljak „Istražite podkast” je prikazan</string>
-  <string name="morphe_hide_featured_section_title">Sakrij istaknuti sadržaj</string>
-  <string name="morphe_hide_featured_section_summary_on">Odeljak sa istaknutim sadržajem je skriven</string>
-  <string name="morphe_hide_featured_section_summary_off">Odeljak sa istaknutim sadržajem je prikazan</string>
   <string name="morphe_hide_info_cards_section_title">Sakrij kartice sa informacijama</string>
   <string name="morphe_hide_info_cards_section_summary_on">Odeljak za kartice sa informacijama je skriven</string>
   <string name="morphe_hide_info_cards_section_summary_off">Odeljak za kartice sa informacijama je prikazan</string>
   <string name="morphe_hide_key_concepts_section_title">Sakrij odeljak „Ključni koncepti”</string>
   <string name="morphe_hide_key_concepts_section_summary_on">Odeljak „Ključni koncepti” je skriven</string>
   <string name="morphe_hide_key_concepts_section_summary_off">Odeljak „Ključni koncepti” je prikazan</string>
-  <string name="morphe_hide_description_subscribe_button_title">Sakrij dugme „Pretplati se”</string>
-  <string name="morphe_hide_description_subscribe_button_summary_on">Dugme „Pretplati se“ je skriveno</string>
-  <string name="morphe_hide_description_subscribe_button_summary_off">Dugme „Pretplati se“ je prikazano</string>
+  <string name="morphe_hide_subscribe_button_title">Sakrij dugme „Zaprati”</string>
+  <string name="morphe_hide_subscribe_button_summary_on">Dugme „Zaprati” je skriveno</string>
+  <string name="morphe_hide_subscribe_button_summary_off">Dugme „Zaprati” je prikazano</string>
   <string name="morphe_hide_transcript_section_title">Sakrij transkript</string>
   <string name="morphe_hide_transcript_section_summary_on">Odeljak za transkripciju je skriven</string>
   <string name="morphe_hide_transcript_section_summary_off">Odeljak za transkripciju je prikazan</string>
@@ -206,24 +203,26 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">Prikazano u istoriji gledanja</string>
   <string name="morphe_channel_screen_title">Stranica kanala</string>
   <string name="morphe_channel_screen_summary">Sakrijte ili prikažite komponente stranice kanala</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays. -->
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">Sakrij policu „Za vas”</string>
   <string name="morphe_hide_for_you_shelf_summary_on">Polica „Za vas” je skrivena</string>
   <string name="morphe_hide_for_you_shelf_summary_off">Polica „Za vas” je prikazana</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Sakrij dugme „Učlani me”</string>
+  <string name="morphe_hide_join_button_summary_on">Dugme „Učlani me” je skriveno</string>
+  <string name="morphe_hide_join_button_summary_off">Dugme „Učlani me” je prikazano</string>
   <string name="morphe_hide_links_preview_title">Sakrij pregled linkova</string>
   <string name="morphe_hide_links_preview_summary_on">Pregled linkova je skriven</string>
   <string name="morphe_hide_links_preview_summary_off">Pregled linkova je prikazan</string>
   <string name="morphe_hide_members_shelf_title">Sakrij policu članova</string>
   <string name="morphe_hide_members_shelf_summary_on">Polica članova je skrivena</string>
   <string name="morphe_hide_members_shelf_summary_off">Polica za članove je prikazana</string>
-  <!-- 'Visit Community' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_community_button_title">Sakrij dugme „Poseti zajednicu”</string>
-  <string name="morphe_hide_visit_community_button_summary_on">Dugme „Poseti zajednicu” je skriveno</string>
-  <string name="morphe_hide_visit_community_button_summary_off">Dugme „Poseti zajednicu” je prikazano</string>
-  <!-- 'Visit store' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_store_button_title">Sakrij dugme „Poseti prodavnicu” na stranicama kanala</string>
-  <string name="morphe_hide_visit_store_button_summary_on">Dugme „Poseti prodavnicu” je skriveno</string>
-  <string name="morphe_hide_visit_store_button_summary_off">Dugme „Poseti prodavnicu” je prikazano</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Sakrij dugme „Zaprati”</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Dugme „Zaprati” je skriveno</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Dugme „Zaprati” je prikazano</string>
   <string name="morphe_comments_screen_title">Komentari</string>
   <string name="morphe_comments_screen_summary">Sakrijte ili prikažite komponente odeljka za komentare</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sakrij „Rezime ćaskanja koji je generisala veštačka inteligencija”</string>
@@ -268,14 +267,14 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_view_count_title">Sakrij broj pregleda</string>
   <string name="morphe_hide_view_count_summary_on">Broj pregleda je skriven u fidu i rezultatima pretrage</string>
   <string name="morphe_hide_view_count_summary_off">Broj pregleda je prikazan u fidu i rezultatima pretrage</string>
-  <!-- Translations should lanaguge similar to morphe_hide_upload_time_user_dialog_message -->
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Ograničenja:
 • Police Shorts, stranice kanala i rezultati pretrage mogu i dalje prikazivati broj pregleda
 • Ova funkcija ne radi sa automobilskim faktorom forme"</string>
   <string name="morphe_hide_upload_time_title">Sakrij vreme otpremanja</string>
   <string name="morphe_hide_upload_time_summary_on">Vreme otpremanja je skriveno u fidu i rezultatima pretrage</string>
   <string name="morphe_hide_upload_time_summary_off">Vreme otpremanja je prikazano u fidu i rezultatima pretrage</string>
-  <!-- Translations should lanaguge similar to morphe_hide_view_count_user_dialog_message -->
+  <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Ograničenja:
 • Police Shorts, stranice kanala i rezultati pretrage mogu i dalje prikazivati vreme otpremanja
 • Ova funkcija ne radi sa automobilskim faktorom forme"</string>
@@ -299,14 +298,8 @@ Ključne reči mogu biti nazivi kanala ili bilo koji tekst koji se prikazuje u n
 
 Reči sa velikim slovima u sredini moraju se uneti sa velikim i malim slovima (npr.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">O filtriranju prema ključnim rečima</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Početna/Praćenja/Rezultati pretrage se filtriraju da bi sakrili sadržaj koji se podudara sa frazama ključnih reči
-
-Ograničenja
-• Shorts videi se ne mogu sakriti prema nazivu kanala
-• Neke komponente korisničkog interfejsa možda neće biti sakrivene
-• Pretraživanje ključne reči možda neće dati rezultate"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Samo cele reči</string>
-  <!-- Translations _must_ use a localized example.  For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist.  Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Obeležavanje ključne reči/fraze dvostrukim navodnicima će sprečiti delimična podudaranja naslova videa i naziva kanala&lt;br&gt;&lt;br&gt;Na primer,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; će sakriti video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ali neće sakriti: &lt;b&gt;What does fair use mean?&lt;br&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_keyword_toast_invalid_common">Nije moguće koristiti ključnu reč: %s</string>
@@ -358,18 +351,13 @@ Ograničenja: Stranica sa YouTube Doodle-ima nije dostupna"</string>
   <string name="morphe_share_copy_url_success">Link je kopiran u privremenu memoriju</string>
   <string name="morphe_share_copy_url_timestamp_success">Link s vremenskom oznakom je kopiran</string>
   <string name="morphe_copy_video_url_title">Prikaži dugme za kopiranje linka videa</string>
-  <string name="morphe_copy_video_url_summary_on">Dugme je prikazano. Dodirnite da biste kopirali link videa. Dodirnite i zadržite da biste kopirali link s vremenskom oznakom</string>
-  <string name="morphe_copy_video_url_summary_off">Dugme za kopiranje linka videa nije prikazano</string>
   <string name="morphe_copy_video_url_timestamp_title">Prikaži dugme za kopiranje linka videa s vremenskom oznakom</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Dugme je prikazano. Dodirnite da biste kopirali link videa s vremenskom oznakom. Dodirnite i zadržite da biste kopirali link bez vremenske oznake</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Dugme za kopiranje linka videa s vremenskom oznakom nije prikazano</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Ukloni dijalog o diskreciji gledaoca</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dijalog o diskreciji gledaoca će biti uklonjen</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Dijalog o diskreciji gledaoca će biti prikazan</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Ovo ne zaobilazi starosno ograničenje. Samo ga automatski prihvata.</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Onemogući iskačući prozor „Prijava na TV”</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Iskačući prozor „Prijava na TV” je onemogućen</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Iskačući prozor „Prijava na TV” je omogućen</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -382,7 +370,7 @@ Ograničenja: Stranica sa YouTube Doodle-ima nije dostupna"</string>
   <string name="morphe_external_downloader_title">Prikaži dugme za spoljno preuzimanje</string>
   <string name="morphe_external_downloader_summary_on">Dugme „Preuzmi” u plejeru je prikazano</string>
   <string name="morphe_external_downloader_summary_off">Dugme „Preuzmi” u plejeru nije prikazano</string>
-  <!-- 'Download action button' should be translated using the same wording as the translation of 'morphe_hide_download_button_title'. -->
+  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Zameni dugme radnje „Preuzmi”</string>
   <string name="morphe_external_downloader_action_button_summary_on">Dugme „Preuzmi” otvara spoljni program za preuzimanje</string>
   <string name="morphe_external_downloader_action_button_summary_off">Dugme „Preuzmi” otvara izvorni program za preuzimanje u aplikaciji</string>
@@ -468,11 +456,11 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_hide_like_dislike_button_title">Sakrij dugmad „Sviđanje” i „Nesviđanje”</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Dugmad „Sviđanje” i „Nesviđanje” su skrivena</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Dugmad „Sviđanje” i „Nesviđanje” su prikazana</string>
-  <!-- 'Share' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">Sakrij dugme „Deli”</string>
   <string name="morphe_hide_share_button_summary_on">Dugme „Deli” je skriveno</string>
   <string name="morphe_hide_share_button_summary_off">Dugme „Deli” je prikazano</string>
-  <!-- 'Stop ads' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_stop_ads_button_title">Sakrij dugme „Zaustavi oglase”</string>
   <string name="morphe_hide_stop_ads_button_summary_on">Dugme „Zaustavi oglase” je skriveno</string>
   <string name="morphe_hide_stop_ads_button_summary_off">Dugme „Zaustavi oglase” je prikazano</string>
@@ -480,47 +468,47 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_hide_comments_button_title">Sakrij dugme „Komentari”</string>
   <string name="morphe_hide_comments_button_summary_on">Dugme „Komentari” je skriveno</string>
   <string name="morphe_hide_comments_button_summary_off">Dugme „Komentari” je prikazano</string>
-  <!-- 'Report' should be translated with the same localized wording that YouTube displays.
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually only shows on live streams. -->
   <string name="morphe_hide_report_button_title">Sakrij dugme „Prijavi”</string>
   <string name="morphe_hide_report_button_summary_on">Dugme „Prijavi” je skriveno</string>
   <string name="morphe_hide_report_button_summary_off">Dugme „Prijavi” je prikazano</string>
-  <!-- 'Remix' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_remix_button_title">Sakrij dugme „Remiks”</string>
   <string name="morphe_hide_remix_button_summary_on">Dugme „Remiks” je skriveno</string>
   <string name="morphe_hide_remix_button_summary_off">Dugme „Remiks” je prikazano</string>
-  <!-- 'Download' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_download_button_title">Sakrij dugme „Preuzmi”</string>
   <string name="morphe_hide_download_button_summary_on">Dugme „Preuzmi” je skriveno</string>
   <string name="morphe_hide_download_button_summary_off">Dugme „Preuzmi” je prikazano</string>
-  <!-- 'Hype' should be translated with the same localized wording that YouTube displays.
-          This button only shows on videos uploaded by the logged in user. -->
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button only shows on videos uploaded by the logged-in user. -->
   <string name="morphe_hide_hype_button_title">Sakrij dugme „Hajp”</string>
   <string name="morphe_hide_hype_button_summary_on">Dugme „Hajp” je skriveno</string>
   <string name="morphe_hide_hype_button_summary_off">Dugme „Hajp” je prikazano</string>
-  <!-- 'Promote' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_promote_button_title">Sakrij dugme „Promoviši”</string>
   <string name="morphe_hide_promote_button_summary_on">Dugme „Promoviši” je skriveno</string>
   <string name="morphe_hide_promote_button_summary_off">Dugme „Promoviši” je prikazano</string>
-  <!-- 'Thanks' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_thanks_button_title">Sakrij dugme „Hvala”</string>
   <string name="morphe_hide_thanks_button_summary_on">Dugme „Hvala” je skriveno</string>
   <string name="morphe_hide_thanks_button_summary_off">Dugme „Hvala” je prikazano</string>
-  <!-- 'Ask' should be translated with the same localized wording that YouTube displays.
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button only shows if the user ip is from specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Sakrij dugme „Pitaj”</string>
   <string name="morphe_hide_ask_button_summary_on">Dugme „Pitaj” je skriveno</string>
   <string name="morphe_hide_ask_button_summary_off">Dugme „Pitaj” je prikazano</string>
-  <!-- 'Clip' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Sakrij dugme „Klip”</string>
   <string name="morphe_hide_clip_button_summary_on">Dugme „Klip” je skriveno</string>
   <string name="morphe_hide_clip_button_summary_off">Dugme „Klip” je prikazano</string>
   <string name="morphe_hide_clip_button_user_dialog_message">Ova funkcija sakrivanja možda neće raditi za neke korisničke naloge.</string>
-  <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shop_button_title">Sakrij dugme „Prodavnica”</string>
   <string name="morphe_hide_shop_button_summary_on">Dugme „Prodavnica” je skriveno</string>
   <string name="morphe_hide_shop_button_summary_off">Dugme „Prodavnica” je prikazano</string>
-  <!-- 'Save' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Sakrij dugme „Sačuvaj”</string>
   <string name="morphe_hide_save_button_summary_on">Dugme „Sačuvaj” je skriveno</string>
   <string name="morphe_hide_save_button_summary_off">Dugme „Sačuvaj” je prikazano</string>
@@ -531,7 +519,7 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_hide_home_button_title">Sakrij dugme „Početna”</string>
   <string name="morphe_hide_home_button_summary_on">Dugme „Početna” je skriveno</string>
   <string name="morphe_hide_home_button_summary_off">Dugme „Početna” je prikazano</string>
-  <!-- 'Shorts' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_button_title">Sakrij dugme „Shorts”</string>
   <string name="morphe_hide_shorts_button_summary_on">Dugme „Shorts” je skriveno</string>
   <string name="morphe_hide_shorts_button_summary_off">Dugme „Shorts” je prikazano</string>
@@ -539,14 +527,14 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_hide_create_button_title">Sakrij dugme „Napravi”</string>
   <string name="morphe_hide_create_button_summary_on">Dugme „Napravi” je skriveno</string>
   <string name="morphe_hide_create_button_summary_off">Dugme „Napravi” je prikazano</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">Sakrij dugme „Praćenja”</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Dugme „Praćenja” je skriveno</string>
   <string name="morphe_hide_subscriptions_button_summary_off">Dugme „Praćenja” je prikazano</string>
   <string name="morphe_hide_notifications_button_title">Sakrij obaveštenja</string>
   <string name="morphe_hide_notifications_button_summary_on">Dugme „Obaveštenja” je skriveno</string>
   <string name="morphe_hide_notifications_button_summary_off">Dugme „Obaveštenja” je prikazano</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Zameni dugme „Napravi” dugmetom „Obaveštenja”</string>
   <string name="morphe_switch_create_with_notifications_button_summary_on">"Dugme „Napravi” je zamenjeno dugmetom „Obaveštenja”
 
@@ -577,10 +565,7 @@ Ako se promena ove opcije ne primeni, pokušajte da pređete u režim bez arhivi
   <string name="morphe_hide_player_flyout_captions_title">Sakrij meni „Titl”</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meni „Titl” je skriven</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Meni „Titl” je prikazan</string>
-  <!-- 'Additional settings' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Sakrij meni „Dodatna podešavanja”</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Meni „Dodatna podešavanja” je skriven</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_off">Meni „Dodatna podešavanja” je prikazan</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">Sakrij meni „Tajmer za spavanje”</string>
   <string name="morphe_hide_player_flyout_sleep_timer_summary_on">Meni „Tajmer za spavanje” je skriven</string>
@@ -593,6 +578,7 @@ Ako se promena ove opcije ne primeni, pokušajte da pređete u režim bez arhivi
   <string name="morphe_hide_player_flyout_ambient_mode_title">Sakrij dugme „Ambijentalni režim”</string>
   <string name="morphe_hide_player_flyout_ambient_mode_summary_on">Dugme „Ambijentalni režim” je skriveno</string>
   <string name="morphe_hide_player_flyout_ambient_mode_summary_off">Dugme „Ambijentalni režim” je prikazano</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_stable_volume_title">Sakrij dugme „Ujednačena jačina zvuka”</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_off">Dugme „Ujednačena jačina zvuka” je prikazano</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_on">Dugme „Ujednačena jačina zvuka” je skriveno</string>
@@ -616,26 +602,21 @@ Ako se promena ove opcije ne primeni, pokušajte da pređete u režim bez arhivi
   <string name="morphe_hide_player_flyout_audio_track_title">Sakrij meni „Audio snimak”</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Meni „Audio snimak” je skriven</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Meni „Audio snimak” je prikazan</string>
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni „Audio snimak” je skriven
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni sa audio trakom je sakriven
 
-Da biste prikazali meni „Audio snimak”, promenite opciju „Lažirani video strimovi” na iPadOS"</string>
+Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'Android No SDK'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sakrij dugme „Gledaj u VR”</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Dugme „Gledaj u VR” je skriveno</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Dugme „Gledaj u VR” je prikazano</string>
-  <string name="morphe_hide_player_flyout_video_quality_title">Sakrij meni kvaliteta videa</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Meni kvaliteta videa je skriven</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Meni kvaliteta videa je prikazan</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija kvaliteta videa</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija kvaliteta videa je skriveno</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija kvaliteta videa je prikazano</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Sakrij dugme „Autoplej”</string>
   <string name="morphe_hide_autoplay_button_summary_on">Dugme „Autoplej” je skriveno</string>
   <string name="morphe_hide_autoplay_button_summary_off">Dugme „Autoplej” je prikazano</string>
-  <!-- This button does not display any text, but 'Captions' should be translated using the same wording used as the translation of 'morphe_hide_player_flyout_captions_title'. -->
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sakrij dugme „Titl”</string>
   <string name="morphe_hide_captions_button_summary_on">Dugme „Titl” je skriveno</string>
   <string name="morphe_hide_captions_button_summary_off">Dugme „Titl” je prikazano</string>
@@ -668,7 +649,7 @@ Da biste prikazali meni „Audio snimak”, promenite opciju „Lažirani video 
   <string name="morphe_hide_seekbar_title">Sakrij traku za premotavanje u video plejeru</string>
   <string name="morphe_hide_seekbar_summary_on">Traka za premotavanje u video plejeru je skrivena</string>
   <string name="morphe_hide_seekbar_summary_off">Traka za premotavanje u video plejeru je prikazana</string>
-  <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
+  <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_hide_seekbar_thumbnail_title">Sakrij traku za premotavanje na sličicama videa</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Traka za premotavanje na sličicama videa je skrivena</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">Traka za premotavanje na sličicama videa je prikazana</string>
@@ -678,27 +659,25 @@ Da biste prikazali meni „Audio snimak”, promenite opciju „Lažirani video 
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts plejer</string>
   <string name="morphe_shorts_player_screen_summary">Sakrijte ili prikažite komponente Shorts plejera</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Sakrij Shorts u fidu „Početna”</string>
   <string name="morphe_hide_shorts_home_summary_on">Skriveno u fidu „Početna” i srodnim videima</string>
   <string name="morphe_hide_shorts_home_summary_off">Prikazano u fidu „Početna” i srodnim videima</string>
   <string name="morphe_hide_shorts_search_title">Sakrij Shorts videe u rezultatima pretrage</string>
   <string name="morphe_hide_shorts_search_summary_on">Skriveno u rezultatima pretrage</string>
   <string name="morphe_hide_shorts_search_summary_off">Prikazano u rezultatima pretrage</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">Sakrij Shorts u fidu „Praćenja”</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Skriveno u fidu „Praćenja”</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Prikazano u fidu „Praćenja”</string>
   <string name="morphe_hide_shorts_history_title">Sakrij Shorts u istoriji gledanja</string>
   <string name="morphe_hide_shorts_history_summary_on">Skriveno u istoriji gledanja</string>
   <string name="morphe_hide_shorts_history_summary_off">Prikazano u istoriji gledanja</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Sakrij dugme za kupovinu „Superhvala”</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Dugme „Kupi superhvala” je skriveno</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Dugme „Kupi superhvala” je prikazano</string>
   <string name="morphe_hide_shorts_effect_button_title">Sakrij dugme „Efekat”</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Dugme „Efekat” je skriveno</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Dugme „Efekat” je prikazano</string>
-  <string name="morphe_hide_shorts_green_screen_button_title">Sakrij dugme „Zeleni ekran”</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Dugme „Zeleni ekran” je skriveno</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Dugme „Zeleni ekran” je prikazano</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Sakrij dugme heš-oznake</string>
@@ -711,7 +690,6 @@ Da biste prikazali meni „Audio snimak”, promenite opciju „Lažirani video 
   <string name="morphe_hide_shorts_location_label_title">Sakrij oznaku lokacije</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Oznaka lokacije je skrivena</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Oznaka lokacije je prikazana</string>
-  <string name="morphe_hide_shorts_new_posts_button_title">Sakrij dugme „Nove objave”</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Dugme „Nove objave” je skriveno</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Dugme „Nove objave” je prikazano</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Sakrij dugmad u plejeru pri pauzi</string>
@@ -720,7 +698,6 @@ Da biste prikazali meni „Audio snimak”, promenite opciju „Lažirani video 
   <string name="morphe_hide_shorts_preview_comment_title">Sakrij pregled komentara</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Pregled komentara je skriven</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Pregled komentara je prikazan</string>
-  <string name="morphe_hide_shorts_save_sound_button_title">Sakrij dugme „Sačuvaj muziku”</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Dugme „Sačuvaj zvuk” je skriveno</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Dugme „Sačuvaj zvuk” je prikazano</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Sakrij predloge za pretragu</string>
@@ -741,13 +718,11 @@ Da biste prikazali meni „Audio snimak”, promenite opciju „Lažirani video 
   <string name="morphe_hide_shorts_upcoming_button_title">Sakrij dugme „Predstojeće”</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Dugme „Predstojeće” je skriveno</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Dugme „Predstojeće” je prikazano</string>
-  <string name="morphe_hide_shorts_use_sound_button_title">Sakrij dugme „Koristi ovaj zvuk”</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Dugme „Koristi ovaj zvuk” je skriveno</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Dugme „Koristi ovaj zvuk” je prikazano</string>
-  <string name="morphe_hide_shorts_use_template_button_title">Sakrij dugme „Koristi ovaj šablon”</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Dugme „Koristi ovaj šablon” je skriveno</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Dugme „Koristi ovaj šablon” je prikazano</string>
-  <!-- YT may no longer use this feature and this setting may be obsolete. -->
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Sakrij animaciju dugmeta „Sviđanje”</string>
   <string name="morphe_hide_shorts_like_fountain_summary_on">Animacija dugmeta „Sviđanje” je skrivena</string>
   <string name="morphe_hide_shorts_like_fountain_summary_off">Animacija dugmeta „Sviđanje” je prikazana</string>
@@ -823,7 +798,7 @@ Podešavanja → Reprodukcija → Automatski pusti sledeći video"</string>
   <string name="morphe_player_overlay_opacity_summary">Vrednost neprozirnosti između 0 i 100, gde je 0 prozirno</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Neprozirnost preklopa plejera mora biti između 0 i 100</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+  <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nesviđanja privremeno nisu dostupna (API istekao)</string>
   <string name="morphe_ryd_failure_connection_status_code">Nesviđanja nisu dostupna (status %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Nesviđanja nisu dostupna (ograničenje klijenta API-ja)</string>
@@ -842,7 +817,7 @@ Ograničenje: Nesviđanja se možda neće pojaviti u režimu bez arhiviranja"</
   <string name="morphe_ryd_dislike_percentage_title">Nesviđanja u procentima</string>
   <string name="morphe_ryd_dislike_percentage_summary_on">Nesviđanja su prikazana kao procenat</string>
   <string name="morphe_ryd_dislike_percentage_summary_off">Nesviđanja su prikazana kao broj</string>
-  <!-- Translations should use language similar to 'morphe_sb_enable_compact_skip_button'. -->
+  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Kompaktno dugme „Sviđanje”</string>
   <string name="morphe_ryd_compact_layout_summary_on">Dugme „Sviđanje” stilizovano za minimalnu širinu</string>
   <string name="morphe_ryd_compact_layout_summary_off">Dugme „Sviđanje” stilizovano za najbolji izgled</string>
@@ -884,7 +859,7 @@ Ograničenje: Nesviđanja se možda neće pojaviti u režimu bez arhiviranja"</
   <string name="morphe_sb_square_layout">Koristi kvadratni izgled</string>
   <string name="morphe_sb_square_layout_sum_on">Dugmad i kontrole su kvadratni</string>
   <string name="morphe_sb_square_layout_sum_off">Dugmad i kontrole su zaobljeni</string>
-  <!-- Translations should use language similar to 'morphe_ryd_compact_layout_title'. -->
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_enable_compact_skip_button">Koristi kompaktno dugme za preskakanje</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_on">Dugme za preskakanje stilizovano za minimalnu širinu</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_off">Dugme za preskakanje stilizovano za najbolji izgled</string>
@@ -949,15 +924,10 @@ Ograničenje: Nesviđanja se možda neće pojaviti u režimu bez arhiviranja"</
   <string name="morphe_sb_settings_import_successful">Podešavanja su uspešno uvezena</string>
   <string name="morphe_sb_settings_import_failed">Neuspešan uvoz: %s</string>
   <string name="morphe_sb_settings_export_failed">Neuspešan izvoz: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Vaša podešavanja sadrže privatni SponsorBlock korisnički ID.
-
-Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ne prikazuj ponovo</string>
   <string name="morphe_sb_diff_segments">Promena ponašanja segmenta</string>
   <string name="morphe_sb_segments_sponsor">Sponzor</string>
-  <string name="morphe_sb_segments_sponsor_sum">Plaćene promocije, plaćene preporuke i direktne reklame. Nije za samopromociju ili besplatno pozivanje na ciljeve/kreatore/veb-sajtove/proizvode koji im se dopadaju</string>
   <string name="morphe_sb_segments_selfpromo">Neplaćena promocija/Samopromocija</string>
-  <string name="morphe_sb_segments_selfpromo_sum">Slično kao „Sponzor”, isključujući neplaćenu promociju ili samopromociju. Uključuje odeljke o robi, donacijama ili informacijama o tome sa kim su sarađivali</string>
   <string name="morphe_sb_segments_interaction">Podsetnik o interakciji (praćenje)</string>
   <string name="morphe_sb_segments_interaction_sum">Kratak podsetnik da lajkujete, pretplatite se ili ih zapratite usred sadržaja. Ako je dugačak ili o nečemu konkretnom, trebalo bi da bude pod samopromocijom</string>
   <string name="morphe_sb_segments_highlight">Istaknuto</string>
@@ -1020,7 +990,7 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_sb_submit_failed_duplicate">"Nije moguće podneti segment.
 Već postoji"</string>
   <string name="morphe_sb_submit_succeeded">Segment je uspešno podnet</string>
-  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock privremeno nije dostupan (API istekao)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock privremeno nije dostupan (status %d)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock privremeno nije dostupan</string>
@@ -1230,8 +1200,8 @@ Povucite za proširenje ili zatvaranje"</string>
   <string name="morphe_header_logo_title">Logotip u zaglavlju</string>
   <string name="morphe_header_logo_entry_1">Podrazumevani</string>
   <string name="morphe_header_logo_entry_2">Obični</string>
-  <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
-  <string name="morphe_header_logo_entry_5">Morphe minimalistički</string>
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">Prilagođen</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Zaobiđi ograničenja regiona slike</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Korišćenje hosta slike yt4.ggpht.com</string>
@@ -1239,11 +1209,11 @@ Povucite za proširenje ili zatvaranje"</string>
 
 Ako ovo omogućite, mogu se popraviti nedostajuće slike koje su blokirane u nekim regionima"</string>
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_home_title">Kartica „Početna”</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_subscription_title">Kartica „Praćenja”</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the You (Library) tab. -->
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_library_title">Kartica „Vi”</string>
   <string name="morphe_alt_thumbnail_player_title">Liste za reprodukciju plejera &amp; preporuke</string>
   <string name="morphe_alt_thumbnail_search_title">Rezultati pretrage</string>
@@ -1262,7 +1232,6 @@ Dodirnite ovde da saznate više o DeArrowu"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Krajnja tačka DeArrow API-ja</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">URL krajnje tačke keša DeArrow sličica</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Zahvati kadra iz videa</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">Zahvati kadra se prave od početka/sredine/kraja svakog videa. Ove slike su ugrađene u YouTube i ne koristi se nijedan spoljni API</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Koristi brze zahvate kadra</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">Koriste se zahvati kadra srednjeg kvaliteta. Sličice će se brže učitavati, ali strimovi uživo, neobjavljeni ili veoma stari videi mogu da prikazuju prazne sličice</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">Koriste se zahvati kadra visokog kvaliteta</string>
@@ -1280,15 +1249,10 @@ Dodirnite ovde da saznate više o DeArrowu"</string>
   <string name="morphe_loop_video_summary_off">Video se neće ponavljati</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Prikaži dugme za ponavljanje videa</string>
-  <string name="morphe_loop_video_button_summary_on">Dugme je prikazano</string>
-  <string name="morphe_loop_video_button_summary_off">Dugme nije prikazano</string>
   <string name="morphe_loop_video_button_toast_on">Ponavljanje videa je uključeno</string>
   <string name="morphe_loop_video_button_toast_off">Ponavljanje videa je isključeno</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Lažirane dimenzije uređaja</string>
-  <string name="morphe_spoof_device_dimensions_summary_on">"Dimenzije uređaja su lažirane
-
-Viši kvaliteti videa mogu biti otključani, ali može doći do zastoja pri reprodukciji videa, kraćeg trajanja baterije i nepoznatih neželjenih efekata"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"Dimenzije uređaja nisu lažirane
 
 Ako ovo omogućite, mogu biti otključani viši kvaliteti videa"</string>
@@ -1319,7 +1283,7 @@ Ako ovo omogućite, mogu biti otključani viši kvaliteti videa"</string>
   <string name="morphe_external_browser_summary_on">Otvaranje linkova u spoljnom pregledaču</string>
   <string name="morphe_external_browser_summary_off">Otvaranje linkova u pregledaču u aplikaciji</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatski</string>
   <string name="morphe_remember_video_quality_last_selected_title">Zapamti promene kvaliteta videa</string>
   <string name="morphe_remember_video_quality_last_selected_summary_on">Promene kvaliteta se primenjuju na sve videe</string>
@@ -1340,12 +1304,8 @@ Ako ovo omogućite, mogu biti otključani viši kvaliteti videa"</string>
   <string name="morphe_remember_video_quality_toast_shorts">Kvalitet Shorts videa na %1$s promenjen na: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Prikaži dugme dijaloga za brzinu</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">Dugme je prikazano. Dodirnite i zadržite da biste vratili brzinu reprodukcije na podrazumevanu vrednost</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">Dugme dijaloga za brzinu nije prikazano</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Prikaži dugme kvaliteta videa</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">Dugme je prikazano. Dodirnite i zadržite da biste vratili kvalitet videa na podrazumevanu vrednost</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">Dugme nije prikazano</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Meni prilagođene brzine reprodukcije</string>
   <string name="morphe_custom_speed_menu_summary_on">Meni prilagođene brzine reprodukcije je prikazan</string>
@@ -1409,7 +1369,7 @@ Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema video kodeka AV1</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Opcija „Ujednačena jačina zvuka” nije dostupna</string>
   <string name="morphe_spoof_video_streams_about_kids_videos">• Videi za decu se možda neće puštati kada ste odjavljeni ili u režimu bez arhiviranja</string>
-  <!-- "Force original audio" should use the same text as morphe_force_original_audio_title -->
+  <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Prisiljavanje originalnog zvuka nije dostupno</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Prikaži u „Statistici za znalce”</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Tip klijenta je prikazan u „Statistici za znalce”</string>

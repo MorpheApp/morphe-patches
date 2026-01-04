@@ -108,6 +108,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_banner"
         );
 
+        final var crowdfundingBox = new StringFilterGroup(
+                Settings.HIDE_CROWDFUNDING_BOX,
+                "donation_shelf"
+        );
+
         final var subscriptionsChipBar = new StringFilterGroup(
                 Settings.HIDE_FILTER_BAR_FEED_IN_FEED,
                 "subscriptions_chip_bar"
@@ -240,7 +245,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         final var channelWatermark = new StringFilterGroup(
-                Settings.HIDE_VIDEO_CHANNEL_WATERMARK,
+                Settings.HIDE_CHANNEL_WATERMARK,
                 "featured_channel_watermark_overlay"
         );
 
@@ -261,12 +266,20 @@ public final class LayoutComponentsFilter extends Filter {
         );
         channelProfileGroupList = new StringFilterGroupList();
         channelProfileGroupList.addAll(new StringFilterGroup(
-                        Settings.HIDE_VISIT_STORE_BUTTON,
+                        Settings.HIDE_COMMUNITY_BUTTON,
+                        "community_button"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_JOIN_BUTTON,
+                        "sponsor_button"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_STORE_BUTTON,
                         "header_store_button"
                 ),
                 new StringFilterGroup(
-                        Settings.HIDE_VISIT_COMMUNITY_BUTTON,
-                        "community_button"
+                        Settings.HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE,
+                        "subscribe_button"
                 )
         );
 
@@ -295,6 +308,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactChannelBar,
                 compactChannelBarInner,
                 communityPosts,
+                crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
                 forYouShelf,
@@ -406,7 +420,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean showWatermark() {
-        return !Settings.HIDE_VIDEO_CHANNEL_WATERMARK.get();
+        return !Settings.HIDE_CHANNEL_WATERMARK.get();
     }
 
     /**

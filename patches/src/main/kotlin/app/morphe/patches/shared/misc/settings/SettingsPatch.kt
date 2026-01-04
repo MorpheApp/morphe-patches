@@ -1,12 +1,11 @@
 package app.morphe.patches.shared.misc.settings
 
-//import app.morphe.patches.all.misc.resources.addResource
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
-import app.morphe.patches.shared.layout.branding.addBrandLicensePatch
+import app.morphe.patches.shared.layout.branding.addLicensePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -55,7 +54,7 @@ fun settingsPatch (
     dependsOn(
         addResourcesPatch,
         settingsColorPatch,
-        addBrandLicensePatch
+        addLicensePatch
     )
 
     execute {

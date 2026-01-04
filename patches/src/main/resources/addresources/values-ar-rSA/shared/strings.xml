@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_summary">استيراد / تصدير إعدادات Morphe</string>
   <!-- Settings about dialog. -->
   <string name="morphe_settings_about_links_body_version_current">أنت تستخدم أحدث إصدار من Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">أنت تستخدم إصدار Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;تحديث متاح: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;لتحديث التصحيحات الخاصة بك، استخدم Morphe لإعادة تصحيح هذا التطبيق</string>
+  <string name="morphe_settings_about_links_body_version_outdated">أنت تستخدم إصدار Morphe Patches&lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;تحديث متاح: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;لتحديث التعديلات الخاصة بك، استخدم Morphe لإعادة تعديل هذا التطبيق</string>
   <string name="morphe_settings_about_links_dev_header">ملاحظة</string>
-  <string name="morphe_settings_about_links_dev_body">هذه النسخة هي إصدار ما قبل الإصدار وقد تواجه مشكلات غير متوقعة</string>
+  <string name="morphe_settings_about_links_dev_body">هذه النسخة هي إصدار ما قبل الإطلاق وقد تواجه مشكلات غير متوقعة</string>
   <string name="morphe_settings_about_links_header">الروابط الرسمية</string>
   <string name="morphe_settings_about_links_website">الموقع الإلكتروني</string>
   <string name="morphe_settings_about_links_donate">تبرع</string>
@@ -119,8 +119,8 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_open_website_text">فتح الموقع</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">" MicroG تحسينات البطارية يجب تعطيلها لمنع المشكلات.
 
- تعطيل تحسينات الدقة لـ MicroG لا يضغظ على استهلاك البطارية.
+تعطيل تحسينات البطارية لـ MicroG لا يضغظ على استهلاك البطارية.
 
- انقر على زر الإستمرار و Allow تغييرات التحسين."</string>
+ انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
 </resources>

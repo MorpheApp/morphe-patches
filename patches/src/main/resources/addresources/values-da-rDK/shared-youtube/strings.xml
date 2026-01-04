@@ -41,8 +41,50 @@ Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke påkræ
   <string name="morphe_spoof_video_streams_summary_off">"Videostreams simuleres ikke
 
 Afspilning fungerer muligvis ikke"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Kun ikke hentet nogen klientsmidler</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Deaktivering af denne indstilling kan forårsage afspilningsproblemer.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv at aktivere: Spoof videostrømmer &gt; Android VR log ind</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standard klient</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR log ind</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ikke logget ind i Android VR. Tryk her for at logge ind</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Logget ind i Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">For at bruge denne funktion, ændr \'Standardklient\' til Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log ind i Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"At logge ind i Android VR kan reparere afspilningsproblemer for nogle brugere
+
+For at logge ind, tryk på fortsæt nedenfor"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsæt</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Log ud</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Anvisninger</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktiveringskode: %s
+
+1. Tryk på 'Åbn hjemmeside' nedenfor for at åbne 'Tilslut en enhed' hjemmesiden
+2. Indsæt fra klippebordet (eller skriv ud) den visede aktiveringskode ovenfor
+3. Log ind i Google hvis det spørger. Hvis du har flere kontoer, vælg denne YouTube-konto
+4. Tryk på 'Tillad YouTube VR' adgang
+5. Kom tilbage til denne app efter at du har nået 'Enheden er tilsluttet' beskeden"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Åbn hjemmeside</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Kun ikke udsendt en aktiveringskode</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kun ikke udsendt en autoriseringskode</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Succesfuldt logget ind</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentificering gemt
+
+• Vægtenes Morphe indstillinger vil ikke import/export Android VR autentificering
+• Hvis denne app ikke bruges i 6 måneder, vil Google fjerne denne autentificering
+• Du skal logge ind igen, hvis du ændrer din Google-adgangskode eller deautoriserer denne enhed fra dine Google-instillinger"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er midlertidigt utilgængelig (API timeout)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR login udløbet - prøv at logge ind til VR igen</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidigt utilgængelig (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 er midlertidigt utilgængelig</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan ikke logge ind i VR, webstedet GODKENDET ikke authentificering</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind i VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Logged ud fra Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Ugyldigt VR login token - prøv at logge ind til VR igen</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary_on">Bruger originalt lydsprog</string>

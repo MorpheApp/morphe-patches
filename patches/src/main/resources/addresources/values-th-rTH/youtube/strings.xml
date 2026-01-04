@@ -60,9 +60,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_compact_banner_title">ซ่อนแบนเนอร์ขนาดกะทัดรัด</string>
   <string name="morphe_hide_compact_banner_summary_on">แบนเนอร์ขนาดกะทัดรัดถูกซ่อนไว้</string>
   <string name="morphe_hide_compact_banner_summary_off">แบนเนอร์ขนาดกะทัดรัดแสดงอยู่</string>
-  <string name="morphe_hide_crowdfunding_box_title">ซ่อนกล่องระดมทุน</string>
-  <string name="morphe_hide_crowdfunding_box_summary_on">กล่องระดมทุนถูกซ่อน</string>
-  <string name="morphe_hide_crowdfunding_box_summary_off">กล่องระดมทุนถูกแสดง</string>
   <string name="morphe_hide_expandable_card_title">ซ่อนการ์ดแบบขยายได้</string>
   <string name="morphe_hide_expandable_card_summary_on">การ์ดแบบขยายได้ใต้คลิปวิดีโอถูกซ่อนไว้</string>
   <string name="morphe_hide_expandable_card_summary_off">การ์ดแบบขยายได้ใต้คลิปวิดีโอแสดงอยู่</string>
@@ -90,7 +87,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_title">ซ่อนส่วนภาพยนตร์</string>
   <string name="morphe_hide_movies_section_summary_on">ส่วนภาพยนตร์ถูกซ่อนไว้</string>
   <string name="morphe_hide_movies_section_summary_off">ส่วนภาพยนตร์แสดงอยู่</string>
-  <!-- 'Notify me' should be translated using the same localized wording YouTube displays.
+  <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">ซ่อนปุ่ม \"แจ้งเตือนฉัน\"</string>
   <string name="morphe_hide_notify_me_button_summary_on">ปุ่มแจ้งเตือนฉันถูกซ่อนไว้</string>
@@ -98,8 +95,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ซ่อน Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables ถูกซ่อนไว้</string>
   <string name="morphe_hide_playables_summary_off">Playables แสดงอยู่</string>
-  <!-- 'Show more' should be translated with the same localized wording that YouTube displays.
-          This button usually appears when searching for a YT creator. -->
+  <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">ซ่อนปุ่ม \"แสดงเพิ่มเติม\"</string>
   <string name="morphe_hide_show_more_button_summary_on">ปุ่มแสดงเพิ่มเติมในผลการค้นหาถูกซ่อนไว้</string>
   <string name="morphe_hide_show_more_button_summary_off">ปุ่มแสดงเพิ่มเติมในผลการค้นหาแสดงอยู่</string>
@@ -109,7 +106,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ticket_shelf_title">ซ่อนชั้นวางตั๋ว</string>
   <string name="morphe_hide_ticket_shelf_summary_on">ชั้นวางตั๋วถูกซ่อนอยู่</string>
   <string name="morphe_hide_ticket_shelf_summary_off">ชั้นวางตั๋วแสดงอยู่</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays. -->
+  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">ซ่อนป้ายกำกับการแนะนำวิดีโอ</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">ป้ายกำกับ \"ผู้คนยังรับชม\" และ \"คุณอาจชอบ\" ในผลการค้นหาถูกซ่อนไว้</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">ป้ายกำกับ \"ผู้คนยังรับชม\" และ \"คุณอาจชอบ\" ในผลการค้นหาแสดงอยู่</string>
@@ -124,15 +121,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_bar_summary_on">แถบช่องถูกซ่อนไว้</string>
   <string name="morphe_hide_channel_bar_summary_off">แถบช่องแสดงอยู่</string>
   <string name="morphe_hide_channel_watermark_title">ซ่อนลายน้ำของช่อง</string>
-  <string name="morphe_hide_channel_watermark_summary_on">ลายน้ำถูกซ่อน</string>
-  <string name="morphe_hide_channel_watermark_summary_off">ลายน้ำถูกแสดง</string>
+  <string name="morphe_hide_channel_watermark_summary_on">ซ่อนตรรกน้ำช่อง</string>
+  <string name="morphe_hide_channel_watermark_summary_off">แสดงตรรกน้ำช่อง</string>
+  <string name="morphe_hide_crowdfunding_box_title">ซ่อนกล่องระดมทุน</string>
+  <string name="morphe_hide_crowdfunding_box_summary_on">กล่องระดมทุนถูกซ่อน</string>
+  <string name="morphe_hide_crowdfunding_box_summary_off">กล่องระดมทุนถูกแสดง</string>
   <string name="morphe_hide_emergency_box_title">ซ่อนกล่องฉุกเฉิน</string>
   <string name="morphe_hide_emergency_box_summary_on">กล่องฉุกเฉินถูกซ่อนไว้</string>
   <string name="morphe_hide_emergency_box_summary_off">กล่องฉุกเฉินแสดงอยู่</string>
   <string name="morphe_hide_info_panels_title">ซ่อนแผงข้อมูล</string>
   <string name="morphe_hide_info_panels_summary_on">แผงข้อมูลถูกซ่อนไว้</string>
   <string name="morphe_hide_info_panels_summary_off">แผงข้อมูลแสดงอยู่</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays.
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">ซ่อนปุ่มเข้าร่วม</string>
   <string name="morphe_hide_join_membership_button_summary_on">ปุ่มเข้าร่วมถูกซ่อนไว้</string>
@@ -164,27 +164,24 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">ซ่อนบท</string>
   <string name="morphe_hide_chapters_section_summary_on">ส่วนบทถูกซ่อนไว้</string>
   <string name="morphe_hide_chapters_section_summary_off">ส่วนบทแสดงอยู่</string>
+  <string name="morphe_hide_explore_podcast_section_title">ซ่อน \'สำรวจพอดแคสต์\'</string>
+  <string name="morphe_hide_explore_podcast_section_summary_on">ส่วนสำรวจพอดแคสต์ถูกซ่อน</string>
+  <string name="morphe_hide_explore_podcast_section_summary_off">ส่วนสำรวจพอดแคสต์แสดงอยู่</string>
   <string name="morphe_hide_how_this_was_made_section_title">ซ่อน \'วิธีการสร้างเนื้อหานี้\'</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">ส่วนวิธีการสร้างเนื้อหานี้ถูกซ่อน</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">ส่วนวิธีการสร้างเนื้อหานี้แสดงอยู่</string>
   <string name="morphe_hide_hype_points_title">ซ่อนคะแนน Hype</string>
   <string name="morphe_hide_hype_points_summary_on">คะแนน Hype ถูกซ่อน</string>
   <string name="morphe_hide_hype_points_summary_off">คะแนน Hype แสดงอยู่</string>
-  <string name="morphe_hide_podcast_section_title">ซ่อน \'สำรวจพอดแคสต์\'</string>
-  <string name="morphe_hide_podcast_section_summary_on">ส่วนสำรวจพอดแคสต์ถูกซ่อน</string>
-  <string name="morphe_hide_podcast_section_summary_off">ส่วนสำรวจพอดแคสต์แสดงอยู่</string>
-  <string name="morphe_hide_featured_section_title">ซ่อนเนื้อหาแนะนำ</string>
-  <string name="morphe_hide_featured_section_summary_on">ส่วนเนื้อหาแนะนำถูกซ่อนอยู่</string>
-  <string name="morphe_hide_featured_section_summary_off">ส่วนเนื้อหาแนะนำถูกแสดง</string>
   <string name="morphe_hide_info_cards_section_title">ซ่อนการ์ดข้อมูล</string>
   <string name="morphe_hide_info_cards_section_summary_on">ส่วนบัตรข้อมูลถูกซ่อนไว้</string>
   <string name="morphe_hide_info_cards_section_summary_off">ส่วนบัตรข้อมูลแสดงอยู่</string>
   <string name="morphe_hide_key_concepts_section_title">ซ่อน \'แนวคิดหลัก\'</string>
   <string name="morphe_hide_key_concepts_section_summary_on">ส่วนแนวคิดหลักถูกซ่อน</string>
   <string name="morphe_hide_key_concepts_section_summary_off">ส่วนแนวคิดหลักแสดงอยู่</string>
-  <string name="morphe_hide_description_subscribe_button_title">ซ่อนปุ่มสมัครรับข้อมูล</string>
-  <string name="morphe_hide_description_subscribe_button_summary_on">ปุ่มสมัครสมาชิกถูกซ่อน</string>
-  <string name="morphe_hide_description_subscribe_button_summary_off">ปุ่มสมัครสมาชิกแสดงอยู่</string>
+  <string name="morphe_hide_subscribe_button_title">ซ่อนปุ่มสมัครใช้</string>
+  <string name="morphe_hide_subscribe_button_summary_on">ปุ่มสมัครรับข้อมูลซ่อนอยู่</string>
+  <string name="morphe_hide_subscribe_button_summary_off">ปุ่มสมัครรับข้อมูลแสดงอยู่</string>
   <string name="morphe_hide_transcript_section_title">ซ่อนบทถอดเสียง</string>
   <string name="morphe_hide_transcript_section_summary_on">ส่วนคำอธิบายถูกซ่อนไว้</string>
   <string name="morphe_hide_transcript_section_summary_off">ส่วนคำอธิบายแสดงอยู่</string>
@@ -206,24 +203,26 @@ Second \"item\" text"</string>
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">แสดงในประวัติการดู</string>
   <string name="morphe_channel_screen_title">หน้าช่อง</string>
   <string name="morphe_channel_screen_summary">ซ่อนหรือแสดงองค์ประกอบของหน้าช่อง</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays. -->
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">ซ่อนชั้นวาง \'สำหรับคุณ\'</string>
   <string name="morphe_hide_for_you_shelf_summary_on">ชั้นวาง \"สำหรับคุณ\" ถูกซ่อนไว้</string>
   <string name="morphe_hide_for_you_shelf_summary_off">ชั้นวาง \"สำหรับคุณ\" แสดงอยู่</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">ซ่อนปุ่มเข้าร่วม</string>
+  <string name="morphe_hide_join_button_summary_on">ปุ่มเข้าร่วมซ่อนอยู่</string>
+  <string name="morphe_hide_join_button_summary_off">ปุ่มเข้าร่วมแสดงอยู่</string>
   <string name="morphe_hide_links_preview_title">ซ่อนตัวอย่างลิงก์</string>
   <string name="morphe_hide_links_preview_summary_on">ตัวอย่างลิงก์ถูกซ่อนไว้</string>
   <string name="morphe_hide_links_preview_summary_off">ตัวอย่างลิงก์แสดงอยู่</string>
   <string name="morphe_hide_members_shelf_title">ซ่อนชั้นวางสมาชิก</string>
   <string name="morphe_hide_members_shelf_summary_on">ชั้นวางสมาชิกถูกซ่อนไว้</string>
   <string name="morphe_hide_members_shelf_summary_off">แสดงชั้นวางของสมาชิก</string>
-  <!-- 'Visit Community' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_community_button_title">ซ่อนปุ่ม \'เยี่ยมชมชุมชน\'</string>
-  <string name="morphe_hide_visit_community_button_summary_on">ซ่อนปุ่มเยี่ยมชมชุมชนแล้ว</string>
-  <string name="morphe_hide_visit_community_button_summary_off">ปุ่ม \"เยี่ยมชมชุมชน\" แสดงอยู่</string>
-  <!-- 'Visit store' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_store_button_title">ซ่อนปุ่ม \'ไปที่ร้านค้า\' บนหน้าช่อง</string>
-  <string name="morphe_hide_visit_store_button_summary_on">ปุ่ม \"เยี่ยมชมร้านค้า\" ถูกซ่อนไว้</string>
-  <string name="morphe_hide_visit_store_button_summary_off">ปุ่ม \"เยี่ยมชมร้านค้า\" แสดงอยู่</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">ซ่อนปุ่มสมัครใช้</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">ปุ่มสมัครรับข้อมูลซ่อนอยู่</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">ปุ่มสมัครรับข้อมูลแสดงอยู่</string>
   <string name="morphe_comments_screen_title">ความคิดเห็น</string>
   <string name="morphe_comments_screen_summary">ซ่อนหรือแสดงส่วนประกอบของส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ซ่อนสรุปแชท AI</string>
@@ -268,14 +267,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">ซ่อนจำนวนการดู</string>
   <string name="morphe_hide_view_count_summary_on">จำนวนการดูถูกซ่อนอยู่ในฟีดและผลการค้นหา</string>
   <string name="morphe_hide_view_count_summary_off">จำนวนการดูแสดงอยู่ในฟีดและผลการค้นหา</string>
-  <!-- Translations should lanaguge similar to morphe_hide_upload_time_user_dialog_message -->
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"ข้อจำกัด:
 • ชั้นวาง Shorts, หน้าช่อง และผลการค้นหาอาจยังคงแสดงจำนวนการดู
 • ฟีเจอร์นี้ไม่สามารถใช้งานได้กับรูปแบบที่ใช้ในยานยนต์"</string>
   <string name="morphe_hide_upload_time_title">ซ่อนเวลาอัปโหลด</string>
   <string name="morphe_hide_upload_time_summary_on">เวลาอัปโหลดถูกซ่อนอยู่ในฟีดและผลการค้นหา</string>
   <string name="morphe_hide_upload_time_summary_off">เวลาอัปโหลดจะแสดงในฟีดและผลการค้นหา</string>
-  <!-- Translations should lanaguge similar to morphe_hide_view_count_user_dialog_message -->
+  <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"ข้อจำกัด:
 • แถบ Shorts, หน้าช่อง และผลการค้นหา อาจยังคงแสดงเวลาอัปโหลด
 • คุณสมบัตินี้ไม่ทำงานกับฟอร์มแฟกเตอร์ยานยนต์"</string>
@@ -299,14 +298,8 @@ Second \"item\" text"</string>
 
 คําที่มีตัวอักษรตัวใหญ่ตรงกลางต้องป้อนพร้อมเคส (เช่น: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">เกี่ยวกับการกรองคำสำคัญ</string>
-  <string name="morphe_hide_keyword_content_about_summary">"ผลลัพธ์ หน้าแรก/การสมัครสมาชิก/การค้นหา จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคําหลัก
-
-ข้อจํากัด
-• Shorts ไม่สามารถซ่อนได้ตามชื่อช่อง
-• บางส่วนของ UI อาจไม่ถูกซ่อน
-• การค้นหาคําหลักอาจไม่แสดงผลลัพธ์"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">จับคู่ทั้งคำ</string>
-  <!-- Translations _must_ use a localized example.  For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist.  Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">การล้อมรอบคีย์เวิร์ด/วลีด้วยเครื่องหมายคำพูดคู่จะป้องกันการจับคู่บางส่วนของชื่อวิดีโอและชื่อช่อง&lt;br&gt;&lt;br&gt;ตัวอย่างเช่น&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; จะซ่อนวิดีโอ: &lt;b&gt;AI ทำงานอย่างไร?&lt;/b&gt;&lt;br&gt;แต่จะไม่ซ่อน: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_keyword_toast_invalid_common">ไม่สามารถใช้คำสำคัญ: %s</string>
@@ -358,18 +351,13 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_url_success">คัดลอก URL ไปยังคลิปบอร์ด</string>
   <string name="morphe_share_copy_url_timestamp_success">คัดลอก URL พร้อมเวลาไปยังคลิปบอร์ด</string>
   <string name="morphe_copy_video_url_title">แสดงปุ่มคัดลอก URL วิดีโอ</string>
-  <string name="morphe_copy_video_url_summary_on">ปุ่มแสดงอยู่ แตะเพื่อคัดลอก URL วิดีโอ แตะค้างไว้เพื่อคัดลอกพร้อมการประทับเวลา</string>
-  <string name="morphe_copy_video_url_summary_off">ปุ่มไม่แสดง</string>
   <string name="morphe_copy_video_url_timestamp_title">แสดงปุ่มคัดลอก URL เวลา</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">ปุ่มแสดงอยู่ แตะเพื่อคัดลอก URL วิดีโอพร้อมการประทับเวลา แตะค้างไว้เพื่อคัดลอกโดยไม่มีการประทับเวลา</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">ปุ่มไม่แสดง</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">ลบกล่องโต้ตอบการพิจารณาของผู้ชม</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">กล่องโต้ตอบจะถูกลบ</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">กล่องโต้ตอบจะแสดง</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">สิ่งนี้ไม่ได้ข้ามข้อจำกัดอายุ มันแค่ยอมรับอายุโดยอัตโนมัติ</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวีแล้ว</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">เปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวีแล้ว</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -382,7 +370,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_title">แสดงปุ่มดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_summary_on">ปุ่มดาวน์โหลดในเครื่องเล่นแสดงอยู่</string>
   <string name="morphe_external_downloader_summary_off">ปุ่มดาวน์โหลดในเครื่องเล่นไม่ได้แสดงอยู่</string>
-  <!-- 'Download action button' should be translated using the same wording as the translation of 'morphe_hide_download_button_title'. -->
+  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\'</string>
   <string name="morphe_external_downloader_action_button_summary_on">ปุ่มดาวน์โหลดเปิดโปรแกรมดาวน์โหลดภายนอกของคุณ</string>
   <string name="morphe_external_downloader_action_button_summary_off">ปุ่มดาวน์โหลดเปิดโปรแกรมดาวน์โหลดในแอปแบบเนทีฟ</string>
@@ -466,11 +454,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_like_dislike_button_title">ซ่อนชอบและไม่ชอบ</string>
   <string name="morphe_hide_like_dislike_button_summary_on">ปุ่มชอบและไม่ชอบถูกซ่อน</string>
   <string name="morphe_hide_like_dislike_button_summary_off">ปุ่มชอบและไม่ชอบถูกแสดง</string>
-  <!-- 'Share' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">ซ่อนแบ่งปัน</string>
   <string name="morphe_hide_share_button_summary_on">ปุ่มแบ่งปันถูกซ่อน</string>
   <string name="morphe_hide_share_button_summary_off">ปุ่มแบ่งปันถูกแสดง</string>
-  <!-- 'Stop ads' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_stop_ads_button_title">ซ่อนหยุดโฆษณา</string>
   <string name="morphe_hide_stop_ads_button_summary_on">ปุ่มหยุดโฆษณาถูกซ่อน</string>
   <string name="morphe_hide_stop_ads_button_summary_off">ปุ่มหยุดโฆษณาถูกแสดง</string>
@@ -478,47 +466,47 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_button_title">ซ่อนความคิดเห็น</string>
   <string name="morphe_hide_comments_button_summary_on">ปุ่มความคิดเห็นถูกซ่อน</string>
   <string name="morphe_hide_comments_button_summary_off">ปุ่มความคิดเห็นแสดงอยู่</string>
-  <!-- 'Report' should be translated with the same localized wording that YouTube displays.
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually only shows on live streams. -->
   <string name="morphe_hide_report_button_title">ซ่อนรายงาน</string>
   <string name="morphe_hide_report_button_summary_on">ปุ่มรายงานถูกซ่อน</string>
   <string name="morphe_hide_report_button_summary_off">ปุ่มรายงานถูกแสดง</string>
-  <!-- 'Remix' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_remix_button_title">ซ่อนรีมิกซ์</string>
   <string name="morphe_hide_remix_button_summary_on">ปุ่มรีมิกซ์ถูกซ่อน</string>
   <string name="morphe_hide_remix_button_summary_off">ปุ่มรีมิกซ์ถูกแสดง</string>
-  <!-- 'Download' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_download_button_title">ซ่อนดาวน์โหลด</string>
   <string name="morphe_hide_download_button_summary_on">ปุ่มดาวน์โหลดถูกซ่อน</string>
   <string name="morphe_hide_download_button_summary_off">ปุ่มดาวน์โหลดถูกแสดง</string>
-  <!-- 'Hype' should be translated with the same localized wording that YouTube displays.
-          This button only shows on videos uploaded by the logged in user. -->
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button only shows on videos uploaded by the logged-in user. -->
   <string name="morphe_hide_hype_button_title">ซ่อนกระแส</string>
   <string name="morphe_hide_hype_button_summary_on">ปุ่ม Hype ถูกซ่อนอยู่</string>
   <string name="morphe_hide_hype_button_summary_off">ปุ่ม Hype กำลังแสดง</string>
-  <!-- 'Promote' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_promote_button_title">ซ่อนโปรโมต</string>
   <string name="morphe_hide_promote_button_summary_on">ปุ่มโปรโมทถูกซ่อน</string>
   <string name="morphe_hide_promote_button_summary_off">ปุ่มโปรโมทแสดงอยู่</string>
-  <!-- 'Thanks' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_thanks_button_title">ซ่อนขอบคุณ</string>
   <string name="morphe_hide_thanks_button_summary_on">ปุ่มขอบคุณถูกซ่อน</string>
   <string name="morphe_hide_thanks_button_summary_off">ปุ่มขอบคุณถูกแสดง</string>
-  <!-- 'Ask' should be translated with the same localized wording that YouTube displays.
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button only shows if the user ip is from specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">ซ่อนปุ่มถาม</string>
   <string name="morphe_hide_ask_button_summary_on">ปุ่มถามถูกซ่อนอยู่</string>
   <string name="morphe_hide_ask_button_summary_off">ปุ่มถามแสดงอยู่</string>
-  <!-- 'Clip' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">ซ่อนคลิป</string>
   <string name="morphe_hide_clip_button_summary_on">ปุ่มคลิปถูกซ่อน</string>
   <string name="morphe_hide_clip_button_summary_off">ปุ่มคลิปถูกแสดง</string>
   <string name="morphe_hide_clip_button_user_dialog_message">การซ่อนฟังก์ชันนี้อาจไม่ทำงานสำหรับบัญชีผู้ใช้บางราย</string>
-  <!-- 'Shop' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shop_button_title">ซ่อนร้านค้า</string>
   <string name="morphe_hide_shop_button_summary_on">ปุ่มร้านค้าถูกซ่อน</string>
   <string name="morphe_hide_shop_button_summary_off">ปุ่มร้านค้าถูกแสดง</string>
-  <!-- 'Save' should be translated with the same localized wording that YouTube displays. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">ซ่อนบันทึก</string>
   <string name="morphe_hide_save_button_summary_on">ปุ่มบันทึกถูกซ่อน</string>
   <string name="morphe_hide_save_button_summary_off">ปุ่มบันทึกถูกแสดง</string>
@@ -529,7 +517,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_home_button_title">ซ่อนหน้าแรก</string>
   <string name="morphe_hide_home_button_summary_on">ปุ่มหน้าแรกถูกซ่อน</string>
   <string name="morphe_hide_home_button_summary_off">ปุ่มหน้าแรกถูกแสดง</string>
-  <!-- 'Shorts' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_button_title">ซ่อน Shorts</string>
   <string name="morphe_hide_shorts_button_summary_on">ปุ่ม Shorts ถูกซ่อนอยู่</string>
   <string name="morphe_hide_shorts_button_summary_off">ปุ่ม Shorts แสดงอยู่</string>
@@ -537,14 +525,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_create_button_title">ซ่อนสร้าง</string>
   <string name="morphe_hide_create_button_summary_on">ปุ่มสร้างถูกซ่อน</string>
   <string name="morphe_hide_create_button_summary_off">ปุ่มสร้างถูกแสดง</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">ซ่อนการสมัครสมาชิก</string>
   <string name="morphe_hide_subscriptions_button_summary_on">ปุ่มการสมัครสมาชิกถูกซ่อน</string>
   <string name="morphe_hide_subscriptions_button_summary_off">ปุ่มการสมัครสมาชิกถูกแสดง</string>
   <string name="morphe_hide_notifications_button_title">ซ่อนการแจ้งเตือน</string>
   <string name="morphe_hide_notifications_button_summary_on">ปุ่มการแจ้งเตือนถูกซ่อนอยู่</string>
   <string name="morphe_hide_notifications_button_summary_off">ปุ่มการแจ้งเตือนแสดงอยู่</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays the tab. -->
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">สลับสร้างด้วยการแจ้งเตือน</string>
   <string name="morphe_switch_create_with_notifications_button_summary_on">"ปุ่มสร้างถูกสลับกับปุ่มการแจ้งเตือน
 
@@ -575,10 +563,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_captions_title">ซ่อนคำบรรยาย</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">เมนูคำบรรยายถูกซ่อน</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">เมนูคำบรรยายแสดงอยู่</string>
-  <!-- 'Additional settings' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">ซ่อนการตั้งค่าเพิ่มเติม</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_on">เมนูการตั้งค่าเพิ่มเติมซ่อนอยู่</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_off">เมนูการตั้งค่าเพิ่มเติมแสดงอยู่</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">ซ่อนตัวจับเวลาพัก</string>
   <string name="morphe_hide_player_flyout_sleep_timer_summary_on">เมนูตัวจับเวลาพักซ่อนอยู่</string>
@@ -591,6 +576,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_ambient_mode_title">ซ่อนโหมดพักผ่อน</string>
   <string name="morphe_hide_player_flyout_ambient_mode_summary_on">เมนูโหมดพักผ่อนซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_ambient_mode_summary_off">เมนูโหมดพักผ่อนแสดงอยู่</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_stable_volume_title">ซ่อนระดับเสียงคงที่</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_off">เมนูระดับเสียงคงที่แสดงอยู่</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_on">เมนูระดับเสียงคงที่ซ่อนอยู่</string>
@@ -614,26 +600,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_title">ซ่อนแทร็กเสียง</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">เมนูแทร็กเสียงซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">เมนูแทร็กเสียงแสดงอยู่</string>
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"เมนูแทร็กเสียงถูกซ่อน
 
-หากต้องการแสดงเมนูแทร็กเสียง ให้เปลี่ยน 'สตรีมวิดีโอปลอม' เป็น iPadOS"</string>
+เพื่อแสดงเมนูแทร็กเสียง ให้เปลี่ยน 'Spoof video streams' เป็น 'Android No SDK'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">ซ่อนดูใน VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">เมนูดูใน VR ซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">เมนูดูใน VR แสดงอยู่</string>
-  <string name="morphe_hide_player_flyout_video_quality_title">ซ่อนเมนูคุณภาพวิดีโอ</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">เมนูคุณภาพวิดีโอถูกซ่อน</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">เมนูคุณภาพวิดีโอแสดงอยู่</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">ซ่อนส่วนท้ายเมนูคุณภาพวิดีโอ</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">ส่วนท้ายเมนูคุณภาพวิดีโอซ่อนอยู่</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">ส่วนท้ายเมนูคุณภาพวิดีโอแสดงอยู่</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">ซ่อนปุ่มเล่นอัตโนมัติ</string>
   <string name="morphe_hide_autoplay_button_summary_on">ปุ่มเล่นอัตโนมัติซ่อนอยู่</string>
   <string name="morphe_hide_autoplay_button_summary_off">ปุ่มเล่นอัตโนมัติแสดงอยู่</string>
-  <!-- This button does not display any text, but 'Captions' should be translated using the same wording used as the translation of 'morphe_hide_player_flyout_captions_title'. -->
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ซ่อนปุ่มคำบรรยาย</string>
   <string name="morphe_hide_captions_button_summary_on">ปุ่มคำบรรยายซ่อนอยู่</string>
   <string name="morphe_hide_captions_button_summary_off">ปุ่มคำบรรยายแสดงอยู่</string>
@@ -666,7 +647,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_title">ซ่อนแถบเลื่อนของเครื่องเล่นวิดีโอ</string>
   <string name="morphe_hide_seekbar_summary_on">แถบเลื่อนเครื่องเล่นวิดีโอซ่อนอยู่</string>
   <string name="morphe_hide_seekbar_summary_off">แถบเลื่อนเครื่องเล่นวิดีโอแสดงอยู่</string>
-  <!-- Seekbar shown inside video thumbnails found the home/feed/search/history.  The seekbar shows the prior watch progress when the video was last open. -->
+  <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_hide_seekbar_thumbnail_title">ซ่อนแถบเลื่อนภาพขนาดย่อของวิดีโอ</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">แถบเลื่อนภาพขนาดย่อของวิดีโอถูกซ่อนอยู่</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">แถบเลื่อนภาพขนาดย่อของวิดีโอแสดงอยู่</string>
@@ -676,27 +657,25 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts Player</string>
   <string name="morphe_shorts_player_screen_summary">ซ่อนหรือแสดงส่วนประกอบเครื่องเล่น Shorts</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">ซ่อน Shorts ในหน้าแรก</string>
   <string name="morphe_hide_shorts_home_summary_on">ซ่อนในหน้าแรกและวิดีโอที่เกี่ยวข้อง</string>
   <string name="morphe_hide_shorts_home_summary_off">แสดงในหน้าแรกและวิดีโอที่เกี่ยวข้อง</string>
   <string name="morphe_hide_shorts_search_title">ซ่อน Shorts ในผลลัพธ์การค้นหา</string>
   <string name="morphe_hide_shorts_search_summary_on">ซ่อนในการค้นหา</string>
   <string name="morphe_hide_shorts_search_summary_off">แสดงในผลการค้นหา</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">ซ่อน Shorts ในฟีดการติดตาม</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">ซ่อนในฟีดการติดตาม</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">แสดงในฟีดการติดตาม</string>
   <string name="morphe_hide_shorts_history_title">ซ่อน \"shorts\" ในประวัติการรับชม</string>
   <string name="morphe_hide_shorts_history_summary_on">ซ่อนอยู่ในประวัติการรับชม</string>
   <string name="morphe_hide_shorts_history_summary_off">แสดงในการค้นหา</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">ซ่อนปุ่มซื้อ Super Thanks</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">ปุ่มซื้อ Super Thanks ถูกซ่อนไว้</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">ปุ่มซื้อ Super Thanks แสดงอยู่</string>
   <string name="morphe_hide_shorts_effect_button_title">ซ่อนปุ่มเอฟเฟกต์</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">ปุ่มเอฟเฟกต์ถูกซ่อน</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">ปุ่มเอฟเฟกต์แสดงอยู่</string>
-  <string name="morphe_hide_shorts_green_screen_button_title">ซ่อนปุ่มกรีนสกรีน</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">ปุ่ม Green Screen ถูกซ่อน</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">ปุ่ม Green Screen  แสดงขึ้น</string>
   <string name="morphe_hide_shorts_hashtag_button_title">ซ่อนปุ่ม Hashtag</string>
@@ -709,7 +688,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_location_label_title">ซ่อนป้ายกำกับสถานที่</string>
   <string name="morphe_hide_shorts_location_label_summary_on">ป้ายกำกับสถานที่ถูกซ่อน</string>
   <string name="morphe_hide_shorts_location_label_summary_off">ป้ายกำกับสถานที่แสดงอยู่</string>
-  <string name="morphe_hide_shorts_new_posts_button_title">ซ่อนปุ่มโพสต์ใหม่</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">ปุ่มโพสต์ใหม่ถูกซ่อน</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">ปุ่มโพสต์ใหม่แสดงอยู่</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">ซ่อนปุ่มซ้อนทับหยุดชั่วคราว</string>
@@ -718,7 +696,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_preview_comment_title">ซ่อนความคิดเห็นตัวอย่าง</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">ซ่อนความคิดเห็นตัวอย่างแล้ว</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">แสดงตัวอย่างความคิดเห็น</string>
-  <string name="morphe_hide_shorts_save_sound_button_title">ซ่อนปุ่มบันทึกเพลง</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">ปุ่มบันทึกเพลงถูกซ่อน</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">ปุ่มบันทึกเพลงแสดงอยู่</string>
   <string name="morphe_hide_shorts_search_suggestions_title">ซ่อนคำแนะนำในการค้นหา</string>
@@ -739,13 +716,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_upcoming_button_title">ซ่อนปุ่มที่กำลังจะมาถึง</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">ปุ่ม «Upcoming» ซ่อนอยู่</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">ปุ่ม «Upcoming» แสดงอยู่</string>
-  <string name="morphe_hide_shorts_use_sound_button_title">ซ่อนปุ่มใช้เสียงนี้</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">ปุ่มใช้เสียงนี้ถูกซ่อน</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">ปุ่มใช้เสียงนี้แสดงอยู่</string>
-  <string name="morphe_hide_shorts_use_template_button_title">ซ่อนปุ่ม \"ใช้เทมเพลตนี้\"</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">ปุ่มใช้เทมเพลตนี้ถูกซ่อน</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">ปุ่ม \"ใช้เทมเพลตนี้\" กำลังแสดง</string>
-  <!-- YT may no longer use this feature and this setting may be obsolete. -->
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">ซ่อนเอฟเฟกต์น้ำพุปุ่มถูกใจ</string>
   <string name="morphe_hide_shorts_like_fountain_summary_on">เอฟเฟกต์น้ำพุของปุ่มไลก์ถูกซ่อนไว้</string>
   <string name="morphe_hide_shorts_like_fountain_summary_off">เอฟเฟกต์น้ำพุของปุ่มไลก์ถูกแสดงไว้</string>
@@ -821,7 +796,7 @@ Second \"item\" text"</string>
   <string name="morphe_player_overlay_opacity_summary">ค่าความโปร่งใสระหว่าง 0-100, โดยที่ 0 คือโปร่งใส</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">ความทึบของเลเยอร์เล่นวิดีโอต้องอยู่ระหว่าง 0-100</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+  <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ไม่สามารถแสดงความไม่ชอบชั่วคราว (API หมดเวลา)</string>
   <string name="morphe_ryd_failure_connection_status_code">ไม่สามารถแสดงความไม่ชอบได้ (รหัสสถานะ %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">ไม่สามารถใช้งานการไม่ถูกใจได้ (ข้อจำกัดของ Client API)</string>
@@ -840,7 +815,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_title">ไม่ชอบ เป็น เปอร์เซ็นต์</string>
   <string name="morphe_ryd_dislike_percentage_summary_on">แสดงการไม่ถูกใจเป็นเปอร์เซ็นต์</string>
   <string name="morphe_ryd_dislike_percentage_summary_off">แสดงการไม่ถูกใจเป็นตัวเลข</string>
-  <!-- Translations should use language similar to 'morphe_sb_enable_compact_skip_button'. -->
+  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">ปุ่มถูกใจแบบกะทัดรัด</string>
   <string name="morphe_ryd_compact_layout_summary_on">ปุ่ม \"ถูกใจ\" ปรับให้มีขนาดเล็กที่สุด</string>
   <string name="morphe_ryd_compact_layout_summary_off">ปุ่ม \"ถูกใจ\" ปรับให้แสดงผลได้ดีที่สุด</string>
@@ -882,7 +857,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_square_layout">ใช้เลย์เอาต์สี่เหลี่ยมจัตุรัส</string>
   <string name="morphe_sb_square_layout_sum_on">ปุ่มและส่วนควบคุมเป็นสี่เหลี่ยมจัตุรัส</string>
   <string name="morphe_sb_square_layout_sum_off">ปุ่มและส่วนควบคุมเป็นแบบโค้งมน</string>
-  <!-- Translations should use language similar to 'morphe_ryd_compact_layout_title'. -->
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_enable_compact_skip_button">ใช้ปุ่มข้ามขนาดกะทัดรัด</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_on">ปุ่มข้ามมีรูปแบบสำหรับความกว้างขั้นต่ำ</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_off">ปุ่มข้ามมีรูปแบบสำหรับรูปลักษณ์ที่ดีที่สุด</string>
@@ -947,16 +922,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">การตั้งค่าถูกนำเข้าเรียบร้อยแล้ว</string>
   <string name="morphe_sb_settings_import_failed">ไม่สามารถนำเข้าได้: %s</string>
   <string name="morphe_sb_settings_export_failed">ไม่สามารถส่งออกได้: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมี SponsorBlock userid ที่เป็นส่วนตัว
-
-User id ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์
-"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">อย่าแสดงอีก</string>
   <string name="morphe_sb_diff_segments">เปลี่ยนพฤติกรรมของส่วน</string>
   <string name="morphe_sb_segments_sponsor">สปอนเซอร์</string>
-  <string name="morphe_sb_segments_sponsor_sum">การโปรโมตแบบชำระเงิน การแนะนำแบบชำระเงิน และโฆษณาโดยตรง ไม่ใช่สำหรับการโปรโมตตัวเองหรือการตะโกนฟรีให้กับสาเหตุ/ผู้สร้าง/เว็บไซต์/ผลิตภัณฑ์ที่พวกเขาชอบ</string>
   <string name="morphe_sb_segments_selfpromo">ไม่ได้จ่ายชำระ/โปรโมทตนเอง</string>
-  <string name="morphe_sb_segments_selfpromo_sum">คล้ายกับ SponsorBlock ยกเว้นการโปรโมตตัวเองหรือการที่ไม่ได้รับการชำระเงิน รวมถึงส่วนต่างๆ เกี่ยวกับสินค้า บริจาค หรือข้อมูลเกี่ยวกับผู้ที่พวกเขาทำงานร่วมกัน</string>
   <string name="morphe_sb_segments_interaction">แจ้งเตือนการกด (ติดตาม)</string>
   <string name="morphe_sb_segments_interaction_sum">การเตือนสั้นๆ เพื่อให้ชอบ สมัครรับข้อมูล หรือติดตามพวกเขาในช่วงกลางของเนื้อหา หากยาวหรือเกี่ยวกับบางสิ่งบางอย่างโดยเฉพาะ ควรอยู่ภายใต้การโปรโมตตัวเองแทน</string>
   <string name="morphe_sb_segments_highlight">ไฮไลต์</string>
@@ -1019,7 +988,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_sb_submit_failed_duplicate">"ไม่สามารถส่งส่วนได้
 มีอยู่แล้ว"</string>
   <string name="morphe_sb_submit_succeeded">ส่งคำขอของคุณสำเร็จ</string>
-  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English or the text can be clipped and not entirely shown. -->
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ไม่พร้อมใช้งานชั่วคราว (API หมดเวลา)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ไม่พร้อมใช้งานชั่วคราว (สถานะ %d)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock ไม่พร้อมใช้งานชั่วคราว</string>
@@ -1229,8 +1198,8 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_header_logo_title">โลโก้ส่วนหัว</string>
   <string name="morphe_header_logo_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_header_logo_entry_2">ปกติ</string>
-  <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
-  <string name="morphe_header_logo_entry_5">Morphe แบบย่อ</string>
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">กำหนดเอง</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">เลี่ยงข้อจำกัดด้านภูมิภาคของรูปภาพ</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">ใช้โฮสต์รูปภาพ yt4.ggpht.com</string>
@@ -1238,11 +1207,11 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 
 การเปิดใช้งานสิ่งนี้สามารถแก้ไขรูปภาพที่หายไปซึ่งถูกบล็อกในบางภูมิภาค"</string>
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the Home tab. -->
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_home_title">แท็บหน้าแรก</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the Subscriptions tab. -->
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_subscription_title">แท็บการติดตาม</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the You (Library) tab. -->
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_library_title">แท็บคุณ</string>
   <string name="morphe_alt_thumbnail_player_title">เพลย์ลิสต์เครื่องเล่น &amp; คำแนะนำ</string>
   <string name="morphe_alt_thumbnail_search_title">ผลลัพธ์การค้นหา</string>
@@ -1261,7 +1230,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">จุดสิ้นสุด API ของ DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">URL ของจุดสิ้นสุดแคชรูปขนาดย่อ DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">ภาพนิ่งจากวิดีโอ</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">ภาพนิ่งถูกถ่ายจากจุดเริ่มต้น/กลาง/ท้ายของแต่ละวิดีโอ รูปภาพเหล่านี้ถูกสร้างไว้ใน YouTube และไม่มีการใช้ API ภายนอก</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">ใช้ภาพนิ่งรวดเร็ว</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">ใช้ภาพนิ่งคุณภาพปานกลาง รูปขนาดย่อจะโหลดเร็วขึ้น แต่สตรีมสด วิดีโอที่ยังไม่เผยแพร่ หรือวิดีโอเก่ามากอาจแสดงรูปขนาดย่อว่างเปล่า</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">ใช้ภาพนิ่งคุณภาพสูง</string>
@@ -1279,15 +1247,10 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_loop_video_summary_off">วิดีโอจะไม่เล่นซ้ำ</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">แสดงปุ่มเล่นวิดีโอซ้ำ</string>
-  <string name="morphe_loop_video_button_summary_on">แสดงปุ่มแล้ว</string>
-  <string name="morphe_loop_video_button_summary_off">ยังไม่แสดงปุ่ม</string>
   <string name="morphe_loop_video_button_toast_on">เปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
   <string name="morphe_loop_video_button_toast_off">ปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ปลอมแปลงมิติของอุปกรณ์</string>
-  <string name="morphe_spoof_device_dimensions_summary_on">"มิติของอุปกรณ์ถูกปลอมแปลง
-
-คุณภาพวิดีโอที่สูงขึ้นอาจถูกปลดล็อก แต่คุณอาจพบปัญหาการสะดุดในการเล่นวิดีโอ อายุการใช้งานแบตเตอรี่แย่ลง และผลข้างเคียงที่ไม่คาดคิด"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"มิติของอุปกรณ์ไม่ถูกปลอมแปลง
 
 การเปิดใช้งานสิ่งนี้สามารถปลดล็อกคุณภาพวิดีโอที่สูงขึ้น"</string>
@@ -1318,7 +1281,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_external_browser_summary_on">เปิดลิงก์ในเบราว์เซอร์ภายนอก</string>
   <string name="morphe_external_browser_summary_off">เปิดลิงก์ในเบราว์เซอร์ในแอป</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should use the same text as 'morphe_custom_playback_speeds_auto'. -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">อัตโนมัติ</string>
   <string name="morphe_remember_video_quality_last_selected_title">จำการเปลี่ยนแปลงคุณภาพวิดีโอ</string>
   <string name="morphe_remember_video_quality_last_selected_summary_on">การเปลี่ยนแปลงคุณภาพใช้กับวิดีโอทั้งหมด</string>
@@ -1339,12 +1302,8 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_remember_video_quality_toast_shorts">เปลี่ยนคุณภาพ Shorts %1$s เป็น: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">แสดงปุ่มกล่องโต้ตอบความเร็ว</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">ปุ่มจะปรากฏขึ้น แตะค้างไว้เพื่อรีเซ็ตความเร็วในการเล่นเป็นค่าเริ่มต้น</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">ไม่แสดงปุ่ม</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">แสดงปุ่มคุณภาพวิดีโอ</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">แสดงปุ่มแล้ว แตะค้างไว้เพื่อรีเซ็ตคุณภาพเป็นค่าเริ่มต้น</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">ไม่ได้แสดงปุ่ม</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">เมนูกำหนดความเร็วในการเล่นแบบกำหนดเอง</string>
   <string name="morphe_custom_speed_menu_summary_on">แสดงเมนูกำหนดความเร็ว</string>
@@ -1408,7 +1367,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_spoof_video_streams_about_no_av1">• ไม่มีตัวแปลงสัญญาณวิดีโอ AV1</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• ระดับเสียงคงที่ไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_video_streams_about_kids_videos">• วิดีโอเด็กอาจไม่เล่นเมื่อลงชื่อออกหรืออยู่ในโหมดไม่ระบุตัวตน</string>
-  <!-- "Force original audio" should use the same text as morphe_force_original_audio_title -->
+  <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">แสดงในสถิติสำหรับพวกเนิร์ด</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">แสดงชนิดไคลเอ็นต์ในสถิติสำหรับพวกเนิร์ด</string>

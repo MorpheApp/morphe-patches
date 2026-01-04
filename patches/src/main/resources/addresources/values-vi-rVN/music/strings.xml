@@ -26,29 +26,29 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">Khác</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ẩn quảng cáo trên video</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Quảng cáo trên video đã bị ẩn</string>
-  <string name="morphe_music_hide_video_ads_summary_off">Quảng cáo trên video được hiển thị</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Quảng cáo trên video đang ẩn</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Quảng cáo trên video đang hiển thị</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Bật lặp lại vĩnh viễn</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Lặp lại vĩnh viễn đã được bật</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Lặp lại vĩnh viễn đã tắt</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Ẩn nút truyền</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Nút truyền đã bị ẩn</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Nút truyền được hiển thị</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Nút truyền đang ẩn</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Nút truyền đang hiển thị</string>
   <string name="morphe_music_hide_history_button_title">Ẩn nút lịch sử</string>
-  <string name="morphe_music_hide_history_button_summary_on">Nút lịch sử đã bị ẩn</string>
-  <string name="morphe_music_hide_history_button_summary_off">Nút lịch sử được hiển thị</string>
+  <string name="morphe_music_hide_history_button_summary_on">Nút lịch sử đang ẩn</string>
+  <string name="morphe_music_hide_history_button_summary_off">Nút lịch sử đang hiển thị</string>
   <string name="morphe_music_hide_notification_button_title">Ẩn nút thông báo</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Nút thông báo đã bị ẩn</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Nút thông báo được hiển thị</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Nút thông báo đang ẩn</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Nút thông báo đang hiển thị</string>
   <string name="morphe_music_hide_search_button_title">Ẩn nút tìm kiếm</string>
-  <string name="morphe_music_hide_search_button_summary_on">Nút tìm kiếm đã bị ẩn</string>
-  <string name="morphe_music_hide_search_button_summary_off">Nút tìm kiếm được hiển thị</string>
+  <string name="morphe_music_hide_search_button_summary_on">Nút tìm kiếm đang ẩn</string>
+  <string name="morphe_music_hide_search_button_summary_off">Nút tìm kiếm đang hiển thị</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Ẩn thanh danh mục</string>
-  <string name="morphe_music_hide_category_bar_summary_on">Thanh danh mục đã bị ẩn</string>
-  <string name="morphe_music_hide_category_bar_summary_off">Thanh danh mục được hiển thị</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Thanh danh mục đang ẩn</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Thanh danh mục đang hiển thị</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Đổi màu trình phát thu nhỏ</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Màu trình phát thu nhỏ khớp với trình phát toàn màn hình</string>
@@ -58,36 +58,36 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ẩn hoặc thay đổi các nút trên thanh điều hướng</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ẩn Trang chủ</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Nút Trang chủ đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Nút Trang chủ được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Nút Trang chủ đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Nút Trang chủ đang hiển thị</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_samples_button_title">Ẩn Đoạn nhạc</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Nút Đoạn nhạc đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Nút Đoạn nhạc được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Nút Đoạn nhạc đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Nút Đoạn nhạc đang hiển thị</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_explore_button_title">Ẩn Khám phá</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Nút Khám phá đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Nút Khám phá được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Nút Khám phá đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Nút Khám phá đang hiển thị</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_library_button_title">Ẩn Thư viện</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Nút Thư viện đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Nút Thư viện được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Nút Thư viện đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Nút Thư viện đang hiển thị</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ẩn Nâng cấp</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Nút Nâng cấp đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Nút Nâng cấp được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Nút Nâng cấp đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Nút Nâng cấp đang hiển thị</string>
   <string name="morphe_music_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">Thanh điều hướng đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">Thanh điều hướng được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Thanh điều hướng đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Thanh điều hướng đang hiển thị</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ẩn tên nút điều hướng</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Tên nút đã bị ẩn</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Tên nút được hiển thị</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Tên nút đang ẩn</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Tên nút đang hiển thị</string>
   <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Ẩn trình đơn \'Mua Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Trình đơn này đã bị ẩn</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Trình đơn này được hiển thị</string>
+  <string name="morphe_music_hide_get_premium_label_title">Ẩn menu \'Mua Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Menu này đang ẩn</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Menu này đang hiển thị</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ẩn nút nâng cấp</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">Nút đã bị ẩn</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">Nút được hiển thị</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Nút đang ẩn</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Nút đang hiển thị</string>
 </resources>
