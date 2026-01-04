@@ -6,16 +6,17 @@ import app.morphe.util.inputStreamFromBundledResource
 import java.nio.file.Files
 
 /**
- * Copies a branding license text file to the target apk.
+ * Copies the license and branding notice files to the target apk.
  */
-internal val addBrandLicensePatch = rawResourcePatch {
+internal val addLicensePatch = rawResourcePatch {
     execute {
         arrayOf(
+            "MORPHE_BRANDING.TXT",
             "MORPHE_LICENSE.TXT",
             "MORPHE_LICENSE_NOTICE.TXT"
         ).forEach { sourceFileName ->
             val inputFileStream = inputStreamFromBundledResource(
-                "branding-license",
+                "license",
                 sourceFileName
             )!!
 
