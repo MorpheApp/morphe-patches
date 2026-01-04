@@ -322,6 +322,7 @@ Korlátozások
   <string name="morphe_hide_end_screen_store_banner_summary_on">A végképernyő bolt banner elrejtve</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">A végképernyő bolt banner látható</string>
   <string name="morphe_hide_fullscreen_ads_title">Teljes képernyős hirdetések elrejtése</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">A teljes képernyős hirdetések elrejtve</string>
   <string name="morphe_hide_fullscreen_ads_summary_off">A teljes képernyős hirdetések láthatók</string>
   <string name="morphe_hide_general_ads_title">Általános hirdetések elrejtése</string>
   <string name="morphe_hide_general_ads_summary_on">Az általános hirdetések el vannak rejtve</string>
@@ -345,6 +346,10 @@ Korlátozások
   <string name="morphe_hide_web_search_results_summary_on">A webes keresési találatok rejtve vannak</string>
   <string name="morphe_hide_web_search_results_summary_off">A webes keresési találatok megjelennek</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"A YouTube Premium promóciók elrejtve
+
+ Korlátok: A Doodles YouTube-oldal el nem érhető el"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_off">A YouTube Premium promóciók láthatók</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videó hirdetések elrejtése</string>
   <string name="morphe_hide_video_ads_summary_on">A videó hirdetések el vannak rejtve</string>
@@ -613,9 +618,6 @@ Ha a beállítás módosítása nem lép életbe, próbáljon meg Inkognitó mó
   <string name="morphe_hide_player_flyout_audio_track_summary_off">A hangsáv menü megjelenik</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Az hangsáv menü rejtett
-
-Az hangsáv menü megjelenítéséhez állítsa a 'Videó stream-ek meghamisítása' beállítást iPadOS-re"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"Megtekintés VR-módban\" elrejtése</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">A megtekintés VR-módban menü el van rejtve</string>

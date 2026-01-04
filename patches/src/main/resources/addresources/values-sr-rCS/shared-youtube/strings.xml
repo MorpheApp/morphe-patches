@@ -41,8 +41,50 @@ Ako ste korisnik YouTube Premiuma, ovo podešavanje možda neće biti potrebno"<
   <string name="morphe_spoof_video_streams_summary_off">"Video strimovi nisu lažirani
 
 Reprodukcija možda neće raditi"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Nije moguće učitati streame za klijente</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ovog podešavanja može izazvati probleme sa reprodukcijom.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušaj da uključiš: Fali video strame > Prijava na Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Podrazumevani klijent</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava na Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nije prijavljen na Android VR. Pritisni ovdje za prijavu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno je prijavljen na Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Da biste koristili ovu funkciju, promijenite \'Zadani klijent\' u Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava na Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijavom na Android VR može se reš  iti problem pri prikazivanju za neke korisnike
+
+Za prijavu, pritisn  i Nastai ispod"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Nastai</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjavi se</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Upute</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivacijski kod: %s
+
+1. Pritisni 'Otvori veb-sajt' ispod za otvaranje veb-stranice za povezivanje uređaja
+2. Kopiraj sa clipboarda (ili upiši) aktivacijski kod prikazan iznad
+3. Prijava na Google ako je potrebno. Ako imate više naloga, odaberite ovaj YouTube nalog
+4. Pritisni 'Dopusti pristup YouTube VR'
+5. Nazad u ovu aplikaciju poslije poruke za uspješno povezan uređaj"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otvori veb-sajt</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Neuspješno izdavanje aktivacijskog koda</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Neuspješno izdavanje autentikacijskog tokena</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uspješno prijavljen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentikacija sačuvana
+
+• Vaša Morphe postavka neće uvoziti/izvoziti autentikaciju za Android VR
+• Ako aplikacija nije korišćena u roku od 6 meseci, Google će ukloniti ovu autentikaciju
+• Ako promijenite lozinku za Google ili uklonite ovaj uređaj iz postavki Google, trebate ponovno prijaviti"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 privremeno nije dostupan (API istekao)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Prijava na Android VR istekla, pokušaj ponovno prijava na VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 privremeno nije dostupan (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 privremeno nije dostupan</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Korisnik nije mogao biti prijavljen na VR jer je web-autentikacija odbijena</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Korisnik nije mogao biti prijavljen na VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Odjavljen sa Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušaj ponovno prijava na VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Prisili originalni jezik zvuka</string>
   <string name="morphe_force_original_audio_summary_on">Korišćenje originalnog jezika zvuka</string>

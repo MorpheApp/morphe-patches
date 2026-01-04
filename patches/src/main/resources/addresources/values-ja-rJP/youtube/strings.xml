@@ -222,9 +222,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_visit_community_button_summary_on">「コミュニティにアクセス」ボタンは表示されません</string>
   <string name="morphe_hide_visit_community_button_summary_off">「コミュニティにアクセス」ボタンは表示されます</string>
   <!-- 'Visit store' should be translated with the same localized wording that YouTube displays. -->
-  <string name="morphe_hide_visit_store_button_title">「ストアに移動」ボタンを非表示</string>
-  <string name="morphe_hide_visit_store_button_summary_on">「ストアに移動」ボタンは表示されません</string>
-  <string name="morphe_hide_visit_store_button_summary_off">「ストアに移動」ボタンは表示されます</string>
+  <string name="morphe_hide_visit_store_button_title">ストアボタンを非表示</string>
+  <string name="morphe_hide_visit_store_button_summary_on">ストアボタンは表示されません</string>
+  <string name="morphe_hide_visit_store_button_summary_off">ストアボタンは表示されます</string>
   <string name="morphe_comments_screen_title">コメント</string>
   <string name="morphe_comments_screen_summary">コメント セクションのコンポーネントを表示または非表示にします</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
@@ -317,13 +317,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全ての動画を除外するキーワード: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">クリエイターのストア欄を非表示</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下にあるクリエイターのストア欄は表示されません</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">動画プレーヤー下にあるクリエイターのストア欄は表示されます</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下のクリエイターのストア欄は表示されません</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">動画プレーヤー下のクリエイターのストア欄は表示されます</string>
   <string name="morphe_hide_end_screen_store_banner_title">終了画面のストアバナーを非表示</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">終了画面のストアバナーは表示されません</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">終了画面のストアバナーは表示されます</string>
   <string name="morphe_hide_fullscreen_ads_title">全画面広告を非表示</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">全画面広告は非表示</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">全画面広告は表示されません</string>
   <string name="morphe_hide_fullscreen_ads_summary_off">全画面広告は表示されます</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
   <string name="morphe_hide_general_ads_summary_on">一般的な広告は表示されません</string>
@@ -341,15 +341,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">動画の概要欄の商品へのリンクは表示されません</string>
   <string name="morphe_hide_shopping_links_summary_off">動画の概要欄の商品へのリンクは表示されます</string>
   <string name="morphe_hide_view_products_banner_title">「商品を表示」バナーを非表示</string>
-  <string name="morphe_hide_view_products_banner_summary_on">動画オーバーレイの「商品を表示」バナーは表示されません</string>
-  <string name="morphe_hide_view_products_banner_summary_off">動画オーバーレイの「商品を表示」バナーは表示されます</string>
+  <string name="morphe_hide_view_products_banner_summary_on">「商品を表示」バナーはプレーヤー画面に表示されません</string>
+  <string name="morphe_hide_view_products_banner_summary_off">「商品を表示」バナーはプレーヤー画面に表示されます</string>
   <string name="morphe_hide_web_search_results_title">ウェブ検索結果を非表示</string>
   <string name="morphe_hide_web_search_results_summary_on">ウェブ検索結果は表示されません</string>
   <string name="morphe_hide_web_search_results_summary_off">ウェブ検索結果は表示されます</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premiumの広告は非表示
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium の広告は表示されません
 
-制限: YouTube Doodlesページは利用できません"</string>
+制限事項: YouTube Doodle が利用できません"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium の広告は表示されます</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
@@ -619,9 +619,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">「音声トラック」は表示されます</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」は表示されません
-
-「音声トラック」を表示するには、「動画ストリームを偽装」を iPadOS に変更してください"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">「VR で見る」を非表示</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>
@@ -1249,8 +1246,8 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_player_title">プレーヤーのプレイリスト &amp; 関連動画</string>
   <string name="morphe_alt_thumbnail_search_title">検索結果</string>
   <string name="morphe_alt_thumbnail_options_entry_1">オリジナルのサムネイル</string>
-  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; オリジナルのサムネイル</string>
-  <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; 静止画サムネイル</string>
+  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; オリジナル</string>
+  <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; 静止画</string>
   <string name="morphe_alt_thumbnail_options_entry_4">静止画サムネイル</string>
   <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow は、YouTube 動画のサムネイルをクラウドソーシングで提供する機能です。DeArrow のサムネイルは、YouTube が提供するサムネイルよりも適切なことが多いです。これを有効にすると、動画の URL が API サーバーに送信されますが、他のデータは送信されません。動画に DeArrow サムネイルがない場合は、オリジナルのサムネイルまたは静止画サムネイルが表示されます
 
@@ -1263,7 +1260,7 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_stills_about_title">静止画サムネイル</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">静止画は各動画の序盤 / 中盤 / 終盤から取得されます。これらの画像は YouTube に組み込まれており、外部 API は使用されません</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">高速な静止画サムネイルを使用</string>
-  <string name="morphe_alt_thumbnail_stills_fast_summary_on">中画質の静止画サムネイルを使用します。サムネイルの読み込みは速くなりますが、ライブ、未公開、または非常に古い動画には空白のサムネイルが表示されることがあります</string>
+  <string name="morphe_alt_thumbnail_stills_fast_summary_on">中画質の静止画サムネイルを使用します。サムネイルの読み込みは速くなりますが、ライブ、未公開、または非常に古い動画には、空白のサムネイルが表示される場合があります</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">高画質の静止画サムネイルを使用します</string>
   <string name="morphe_alt_thumbnail_stills_time_title">静止画サムネイルを取得する位置</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_1">動画の序盤</string>

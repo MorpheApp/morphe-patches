@@ -63,9 +63,14 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">Importálás / exportálás</string>
   <string name="morphe_pref_import_export_summary">Morphe beállítások importálása / exportálása</string>
   <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body_version_current">A Morphe Patches legutóbbi &lt;i&gt;%s&lt;/i&gt; verzióját itt használja</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Itt használja a Morphe Patches &lt;i&gt;%1$s&lt;/i&gt; verzióját&lt;br&gt;&lt;br&gt;&lt;b&gt;Frissítés elérhető: &lt;i&gt;%2$s&lt;i&gt;&lt;b&gt;&lt;br&gt;&lt;br&gt;Az appfrissítéshez használja a Morphe-t</string>
   <string name="morphe_settings_about_links_dev_header">Megjegyzés</string>
   <string name="morphe_settings_about_links_dev_body">Ez a verzió egy előzetes kiadás, és nem kívánt hibákat tapasztalhat</string>
   <string name="morphe_settings_about_links_header">Hivatalos linkek</string>
+  <string name="morphe_settings_about_links_website">Weboldal</string>
+  <string name="morphe_settings_about_links_donate">Adományozz</string>
+  <string name="morphe_settings_about_links_translations">Fordítások</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hibakeresés</string>
   <string name="morphe_debug_screen_summary">Hibakeresési beállítások engedélyezése vagy letiltása</string>

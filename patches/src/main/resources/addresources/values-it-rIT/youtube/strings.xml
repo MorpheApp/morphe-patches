@@ -618,9 +618,6 @@ Se la modifica di questa impostazione non ha effetto, prova a passare alla modal
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Il menu Traccia audio è visibile</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Il menu della traccia audio è nascosto
-
-Per mostrare il menu della traccia audio, cambia \"Falsifica flussi video\" su iPadOS"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Nascondi Guarda in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Il menu Guarda in VR è nascosto</string>

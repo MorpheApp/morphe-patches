@@ -618,9 +618,6 @@ Jika mengubah setelan ini tidak berpengaruh, coba beralih ke mode Penyamaran."</
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu trek audio ditampilkan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu trek audio disembunyikan
-
-Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' ke iPadOS"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sembunyikan Tonton di VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu tonton di VR disembunyikan</string>
@@ -1231,7 +1228,7 @@ Gesek untuk memperluas atau menutup"</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
   <string name="morphe_header_logo_entry_2">Reguler</string>
   <!-- Translation of this should be identical to morphe_custom_branding_icon_entry_3 -->
-  <string name="morphe_header_logo_entry_5">Morphe minimal</string>
+  <string name="morphe_header_logo_entry_5">Khusus</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Abaikan pembatasan wilayah gambar</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">Menggunakan sumber gambar yt4.ggpht.com</string>
@@ -1356,7 +1353,7 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_custom_playback_speeds_title">Kecepatan pemutaran khusus</string>
   <string name="morphe_custom_playback_speeds_summary">Tambah atau ubah kecepatan pemutaran khusus</string>
   <string name="morphe_custom_playback_speeds_invalid">Kecepatan khusus harus kurang dari %s</string>
-  <string name="morphe_custom_playback_speeds_parse_exception">Kecepatan pemutaran khusus tidak valid</string>
+  <string name="morphe_custom_playback_speeds_parse_exception">Kecepatan pemutaran khusus tidak sah</string>
   <string name="morphe_custom_playback_speeds_auto">Otomatis</string>
   <string name="morphe_speed_tap_and_hold_title">Kecepatan ketuk dan tahan khusus</string>
   <string name="morphe_speed_tap_and_hold_summary">Kecepatan pemutaran antara 0-8</string>

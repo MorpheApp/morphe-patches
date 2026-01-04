@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">விபரம்</string>
+  <string name="morphe_settings_screen_01_ads_title">விளம்பரங்கள்</string>
+  <string name="morphe_settings_screen_04_general_title">பொது</string>
+  <string name="morphe_settings_screen_12_video_title">காணொளி</string>
+  <string name="morphe_restore_old_settings_menus_title">முந்தைய அமைப்புகள் மெனுவகைகளை மீட்டமை</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">முன்னைய அமைப்புத் தேர்வுகள் காட்டப்பட்டுள்ளன</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">முன்னைய அமைப்புத் தேர்வுகள் காட்டப்படவில்லை</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->

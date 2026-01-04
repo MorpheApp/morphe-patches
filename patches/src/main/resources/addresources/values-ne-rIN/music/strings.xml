@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.customBrandingPatch -->
+  <!-- misc.settings.settingsPatch -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <!-- ad.video.hideVideoAdsPatch -->
+  <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <!-- layout.buttons.hideButtons -->
+  <!-- layout.compactheader.hideCategoryBar -->
+  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.navigationbar.navigationBarPatch -->
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- layout.premium.hideGetPremiumPatch -->
+  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+</resources>

@@ -41,8 +41,50 @@ Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necess
   <string name="morphe_spoof_video_streams_summary_off">"I flussi video non sono falsificati
 
 La riproduzione potrebbe non funzionare"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Impossibile recuperare qualsiasi flusso client</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prova a abilitare: Falsificare video streams > accesso Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client predefinito</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">accesso Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Non sei connesso ad Android VR. Premere qui per accedere</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Attualmente connesso ad Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Per utilizzare questa funzione, modificare \'Default client\' ad Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Accedere ad Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"L'accesso ad Android VR può risolvere problemi di riproduzione per alcuni utenti
+
+Per accedere, premere 'Continua' qui sotto"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continua</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Disconnettersi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Istruzioni</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Codice attivazione: %s
+
+1. Premi 'Apri sito web' qui sotto per aprire il sito 'Connettività di un dispositivo'
+2. Incolla dalla clipboard (o digita) il codice attivazione mostrato sopra
+3. Effettua l'accesso a Google se richiesto. Se hai più account, scegli questa account YouTube
+4. Premi 'Concedi accesso YouTube VR'
+5. Torna a questa app dopo aver raggiunto il messaggio 'Dispositivo connesso'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Apri sito web</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Impossibile emettere un codice attivazione</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Impossibile emettere un token di autenticazione</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Accesso effettuato con successo</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autenticazione salvata
+
+• Le tue impostazioni Morphe non importeranno/exporteranno l'autenticazione per Android VR
+• Se questa app non viene utilizzata per 6 mesi, Google rimuoverà questa autenticazione
+• In caso di cambio della password Google o deregistrazione di questo dispositivo dalle impostazioni Google, dovrai accedere nuovamente"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 è temporaneamente non disponibile (API scaduta)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">l\'accesso Android VR è scaduto, riprova ad accedere ad VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 è temporaneamente non disponibile (stato %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 non è disponibile al momento</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Impossibile accedere ad VR, l\'autenticazione tramite sito web non è stata approvata</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Impossibile accedere ad VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Disconnesso da Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Token di accesso VR non valido, riprova ad accedere ad VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forza la lingua audio originale</string>
   <string name="morphe_force_original_audio_summary_on">Utilizza la lingua audio originale</string>

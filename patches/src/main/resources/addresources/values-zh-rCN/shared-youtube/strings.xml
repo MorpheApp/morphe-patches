@@ -41,8 +41,50 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"未欺骗视频流
 
 播放可能无法正常进行"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">无法获取任何客户端流</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题。</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 > 登录 Google VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">登录 Google VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">尚未登录 Google VR。点击继续登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 Google VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将 \'默认客户端\' 更改至 Google VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登录 Google VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录 Google VR 可以解决部分用户的播放问题
+
+点击'继续'进行登录"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">继续</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出 Google VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">说明</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"激活码：%s
+
+1. 点击'打开网站'访问'连接设备'页面
+2. 粘贴（或输入）上方显示的激活码
+3. 如有提示，请使用 Google 登录。如果有多账户，请选择此 YouTube 账户
+4. 允许 YouTube VR 访问权限
+5. 等待显示'设备已连接'后返回应用"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">打开网站</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">无法获取激活码</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">无法获取身份验证令牌</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">登录成功</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"身份验证保存成功
+
+• 您的 Morphe 设置将无法导出/导入 Android VR 认证
+• 长期未使用时，该认证可能被 Google 移除
+• 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暂时不可用（API 超时）</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Google VR 登录已过期，请再次尝试登录</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 暂时不可用（状态：%d）</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 暂时不可用</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">无法登录 VR，网页授权未通过</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
+  <string name="morphe_oauth2_toast_reset">已从 Google VR 登出</string>
+  <string name="morphe_oauth2_toast_invalid">Google VR 登录令牌无效，请重新尝试登录</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary_on">使用原始音频语言</string>

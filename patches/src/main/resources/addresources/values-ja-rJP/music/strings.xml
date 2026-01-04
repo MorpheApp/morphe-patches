@@ -19,7 +19,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morphe について</string>
+  <string name="morphe_settings_music_screen_0_about_title">このアプリについて</string>
   <string name="morphe_settings_music_screen_1_ads_title">広告</string>
   <string name="morphe_settings_music_screen_2_general_title">全般</string>
   <string name="morphe_settings_music_screen_3_player_title">プレーヤー</string>
@@ -34,8 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">常時リピートは無効です\n\nリピート設定は保存されず毎回リセットされます</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">キャストボタンを非表示</string>
-  <string name="morphe_music_hide_cast_button_summary_on">キャストボタンはプレーヤー オーバーレイに表示されません</string>
-  <string name="morphe_music_hide_cast_button_summary_off">キャストボタンはプレーヤー オーバーレイに表示されます</string>
+  <string name="morphe_music_hide_cast_button_summary_on">キャストボタンは表示されません</string>
+  <string name="morphe_music_hide_cast_button_summary_off">キャストボタンは表示されます</string>
   <string name="morphe_music_hide_history_button_title">履歴ボタンを非表示</string>
   <string name="morphe_music_hide_history_button_summary_on">履歴ボタンは表示されません</string>
   <string name="morphe_music_hide_history_button_summary_off">履歴ボタンは表示されます</string>

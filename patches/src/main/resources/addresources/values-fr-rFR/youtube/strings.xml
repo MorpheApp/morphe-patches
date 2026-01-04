@@ -618,9 +618,6 @@ Si la modification de ce paramètre ne prend pas effet, essayez de passer en mod
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Le menu Piste audio est affiché</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Le menu Piste audio est masqué
-
-Pour afficher le menu Piste audio, définissez \"Falsifier les flux vidéo\" sur iPadOS"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Masquer \"Regarder en RV\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Le menu Regarder en RV est masqué</string>

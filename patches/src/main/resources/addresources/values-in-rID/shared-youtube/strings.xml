@@ -19,10 +19,10 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nama aplikasi</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
-  <string name="morphe_custom_branding_name_entry_5">Kustom</string>
+  <string name="morphe_custom_branding_name_entry_5">Khusus</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
   <string name="morphe_custom_branding_icon_entry_1">Asli</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe gelap</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe hitam</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe gelap</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe terang</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
@@ -41,8 +41,50 @@ Jika Anda adalah pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"
   <string name="morphe_spoof_video_streams_summary_off">"Aliran video tidak dipalsukan
 
 Pemutaran mungkin tidak berfungsi"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Tidak dapat mengambil aliran klien apa pun</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan pengaturan ini dapat menyebabkan masalah pemutaran.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Tidak masuk ke Android VR. Ketuk disini untuk masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Saat ini sedang masuk ke Android VR</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Masuk ke Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Masuk ke Android VR dapat memperbaiki masalah pemutaran untuk beberapa pengguna
+
+Untuk masuk, tekan lanjutkan di bawah ini"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Lanjutkan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Keluar</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Petunjuk</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kode aktivasi: %s
+
+1. Ketuk 'Buka situs web' di bawah ini untuk membuka situs web 'Hubungkan perangkat'
+2. Tempel dari papan klip (atau ketik) kode aktivasi yang ditampilkan di atas
+3. Masuk ke Google jika diminta. Jika Anda memiliki beberapa akun, pilih akun YouTube ini
+4. Ketuk 'Izinkan akses YouTube VR'
+5. Kembali ke aplikasi ini setelah muncul pesan 'Perangkat terhubung'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Buka situs web</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Gagal dalam menghasilkan kode aktivasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Gagal dalam menghasilkan token autentikasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Berhasil masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentikasi disimpan
+
+• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
+• Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan menghapus autentikasi ini
+• Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari pengaturan Google Anda"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Masuk ke Android VR telah kadaluwarsa, coba masuk ke VR lagi</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 sementara tidak tersedia (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 sementara tidak tersedia</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Tidak dapat masuk ke VR, autentikasi situs web tidak disetujui</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
