@@ -745,13 +745,16 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_shorts_history_title">Hide Shorts in watch history</string>
     <string name="morphe_hide_shorts_history_summary_on">Hidden in watch history</string>
     <string name="morphe_hide_shorts_history_summary_off">Shown in watch history</string>
-    <string name="morphe_hide_shorts_super_thanks_button_title">Hide Buy Super Thanks button</string>
+    <string name="morphe_hide_shorts_auto_dubbed_label_title">Hide /'Auto-dubbed/' label</string>
+    <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Auto-dubbed label is hidden</string>
+    <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Auto-dubbed label is shown</string>
+    <string name="morphe_hide_shorts_super_thanks_button_title">Hide /'Buy Super Thanks/' button</string>
     <string name="morphe_hide_shorts_super_thanks_button_summary_on">Buy Super Thanks button is hidden</string>
     <string name="morphe_hide_shorts_super_thanks_button_summary_off">Buy Super Thanks button is shown</string>
     <string name="morphe_hide_shorts_effect_button_title">Hide Effect button</string>
     <string name="morphe_hide_shorts_effect_button_summary_on">Effect button is hidden</string>
     <string name="morphe_hide_shorts_effect_button_summary_off">Effect button is shown</string>
-    <string name="morphe_hide_shorts_green_screen_button_title">Hide Green screen button</string>
+    <string name="morphe_hide_shorts_green_screen_button_title">Hide /'Green screen/' button</string>
     <string name="morphe_hide_shorts_green_screen_button_summary_on">Green screen button is hidden</string>
     <string name="morphe_hide_shorts_green_screen_button_summary_off">Green screen button is shown</string>
     <string name="morphe_hide_shorts_hashtag_button_title">Hide Hashtag button</string>
@@ -761,10 +764,13 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_shorts_join_button_title">Hide Join button</string>
     <string name="morphe_hide_shorts_join_button_summary_on">Join button is hidden</string>
     <string name="morphe_hide_shorts_join_button_summary_off">Join button is shown</string>
+    <string name="morphe_hide_shorts_live_preview_title">Hide live preview</string>
+    <string name="morphe_hide_shorts_live_preview_summary_on">Live preview is hidden</string>
+    <string name="morphe_hide_shorts_live_preview_summary_off">Live preview is shown</string>
     <string name="morphe_hide_shorts_location_label_title">Hide location label</string>
     <string name="morphe_hide_shorts_location_label_summary_on">Location label is hidden</string>
     <string name="morphe_hide_shorts_location_label_summary_off">Location label is shown</string>
-    <string name="morphe_hide_shorts_new_posts_button_title">Hide New posts button</string>
+    <string name="morphe_hide_shorts_new_posts_button_title">Hide /'New posts/' button</string>
     <string name="morphe_hide_shorts_new_posts_button_summary_on">New posts button is hidden</string>
     <string name="morphe_hide_shorts_new_posts_button_summary_off">New posts button is shown</string>
     <string name="morphe_hide_shorts_paused_overlay_buttons_title">Hide paused overlay buttons</string>
@@ -773,7 +779,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_shorts_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_shorts_preview_comment_summary_on">Preview comment is hidden</string>
     <string name="morphe_hide_shorts_preview_comment_summary_off">Preview comment is shown</string>
-    <string name="morphe_hide_shorts_save_sound_button_title">Hide Save music button</string>
+    <string name="morphe_hide_shorts_save_sound_button_title">Hide /'Save music/' button</string>
     <string name="morphe_hide_shorts_save_sound_button_summary_on">Save music button is hidden</string>
     <string name="morphe_hide_shorts_save_sound_button_summary_off">Save music button is shown</string>
     <string name="morphe_hide_shorts_search_suggestions_title">Hide search suggestions</string>
@@ -794,10 +800,10 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_shorts_upcoming_button_title">Hide Upcoming button</string>
     <string name="morphe_hide_shorts_upcoming_button_summary_on">Upcoming button is hidden</string>
     <string name="morphe_hide_shorts_upcoming_button_summary_off">Upcoming button is shown</string>
-    <string name="morphe_hide_shorts_use_sound_button_title">Hide Use this sound button</string>
+    <string name="morphe_hide_shorts_use_sound_button_title">Hide /'Use this sound/' button</string>
     <string name="morphe_hide_shorts_use_sound_button_summary_on">Use this sound button is hidden</string>
     <string name="morphe_hide_shorts_use_sound_button_summary_off">Use this sound button is shown</string>
-    <string name="morphe_hide_shorts_use_template_button_title">Hide Use this template button</string>
+    <string name="morphe_hide_shorts_use_template_button_title">Hide /'Use this template/' button</string>
     <string name="morphe_hide_shorts_use_template_button_summary_on">Use this template button is hidden</string>
     <string name="morphe_hide_shorts_use_template_button_summary_off">Use this template button is shown</string>
     <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
