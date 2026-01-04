@@ -714,13 +714,16 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_shorts_history_title">Ocultar Shorts en historial de reproducciones</string>
   <string name="morphe_hide_shorts_history_summary_on">Ocultos en el historial de reproducciones</string>
   <string name="morphe_hide_shorts_history_summary_off">Visibles en el historial de reproducciones</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">La etiqueta de ubicación está oculta</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">La etiqueta de ubicación está visible</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Ocultar etiqueta \"Doblaje automático\"</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">La etiqueta \"Doblaje automático\" está oculta</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">La etiqueta \"Doblaje automático\" está visible</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Ocultar botón \"Comprar Súper Gracias\"</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">El botón \"Comprar Súper Gracias\" está oculto</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">El botón \"Comprar Súper Gracias\" está visible</string>
   <string name="morphe_hide_shorts_effect_button_title">Ocultar botón \"Efecto\"</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">El botón \"Efecto\" está oculto</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">El botón \"Efecto\" está visible</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Ocultar botón \"Pantalla verde\"</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">El botón \"Pantalla verde\" está oculto</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">El botón \"Pantalla verde\" está visible</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Ocultar botón \"Hashtag\"</string>
@@ -730,12 +733,13 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_shorts_join_button_title">Ocultar botón \"Unirme\"</string>
   <string name="morphe_hide_shorts_join_button_summary_on">El botón \"Unirme\" está oculto</string>
   <string name="morphe_hide_shorts_join_button_summary_off">El botón \"Unirme\" está visible</string>
-  <string name="morphe_hide_shorts_live_preview_title">Ocultar vista previa de enlaces</string>
-  <string name="morphe_hide_shorts_live_preview_summary_on">La vista previa de enlaces está oculta</string>
-  <string name="morphe_hide_shorts_live_preview_summary_off">La vista previa de enlaces está visible</string>
+  <string name="morphe_hide_shorts_live_preview_title">Ocultar vista previa en directo</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">La vista previa en directo está oculta</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">La vista previa en directo está visible</string>
   <string name="morphe_hide_shorts_location_label_title">Ocultar etiqueta de ubicación</string>
   <string name="morphe_hide_shorts_location_label_summary_on">La etiqueta de ubicación está oculta</string>
   <string name="morphe_hide_shorts_location_label_summary_off">La etiqueta de ubicación está visible</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Ocultar botón \"Nuevas publicaciones\"</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">El botón \"Nuevas publicaciones\" está oculto</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">El botón \"Nuevas publicaciones\" está visible</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ocultar botones de superposición en pausa</string>
@@ -744,6 +748,7 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_shorts_preview_comment_title">Ocultar vista previa de comentarios</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">La vista previa de comentarios está oculta</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">La vista previa de comentarios está visible</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Ocultar botón \"Guardar música\"</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">El botón \"Guardar música\" está oculto</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">El botón \"Guardar música\" está visible</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Ocultar sugerencias de búsqueda</string>
@@ -764,8 +769,10 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_shorts_upcoming_button_title">Ocultar botón \"Próximos\"</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">El botón \"Próximos\" está oculto</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">El botón \"Próximos\" está visible</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Ocultar botón \"Usar este sonido\"</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">El botón \"Usar este sonido\" está oculto</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">El botón \"Usar este sonido\" está visible</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Ocultar botón \"Usar esta plantilla\"</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">El botón \"Usar esta plantilla\" está oculto</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">El botón \"Usar esta plantilla\" está visible</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -1283,7 +1290,7 @@ Toca aquí para obtener más información sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Punto final de la API DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">La URL del final de la caché en miniatura de DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Capturas estáticas de vídeo</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">Las capturas se toman desde el principio/medio/final de cada vídeo. Estas imágenes están incorporadas en YouTube y no se utiliza ninguna API externa</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Las capturas se toman del principio, la mitad o el final de cada vídeo. Estas imágenes están integradas en YouTube y no se utiliza ninguna API externa</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Usar capturas aún rápidas</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">Usar captura de calidad media todavía. Las miniaturas se cargarán más rápido, pero streams en vivo, no liberados o vídeos muy antiguos pueden mostrar miniaturas en blanco</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">Usando capturas de alta calidad</string>
@@ -1361,12 +1368,12 @@ Habilitar esto puede desbloquear calidades de vídeo más altas"</string>
   <string name="morphe_remember_video_quality_toast_shorts">Calidad de Shorts %1$s cambiada a: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Mostrar botón de diálogo de velocidad</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">Se muestra el botón. Mantén pulsado para restablecer la velocidad de reproducción predeterminada</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">El botón de votación del segmento está oculto</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">El botón de diálogo de velocidad está visible. Mantén pulsado para restablecer la velocidad de reproducción predeterminada</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">El botón de diálogo de velocidad está oculto</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Mostrar botón de calidad de vídeo</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">Botón visible. Toca y mantén para restablecer la calidad a los valores predeterminados</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">El menú \"Calidad\" está visible</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">El botón de calidad de vídeo está visible. Mantén pulsado para restablecer la calidad predeterminada</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">El botón de calidad de vídeo está oculto</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menú de velocidad de reproducción personalizada</string>
   <string name="morphe_custom_speed_menu_summary_on">El menú de velocidad personalizada se muestra</string>

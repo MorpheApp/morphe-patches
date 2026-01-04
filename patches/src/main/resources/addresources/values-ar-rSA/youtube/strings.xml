@@ -714,13 +714,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_history_title">إخفاء Shorts في السجلّ</string>
   <string name="morphe_hide_shorts_history_summary_on">مخفي في السجلّ</string>
   <string name="morphe_hide_shorts_history_summary_off">يُعرض في السجلّ</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">إخفاء علامة \'تترجم تلقائيًا\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">تم إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">يتم عرض تسمية الموقع</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'اشترِ شكرًا سوبر\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">تم إخفاء زر شراء Super Thanks</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">يتم عرض زر شراء Super Thanks</string>
   <string name="morphe_hide_shorts_effect_button_title">إخفاء زر التأثير</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">تم إخفاء زر التأثير</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">يتم عرض زر التأثير</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">إخفاء زر \'شاشة خضراء\'</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">تم إخفاء زر الشاشة الخضراء</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">يتم عرض زر الشاشة الخضراء</string>
   <string name="morphe_hide_shorts_hashtag_button_title">إخفاء زر هاشتاج</string>
@@ -736,6 +739,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_location_label_title">إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_location_label_summary_on">تم إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_location_label_summary_off">يتم عرض تسمية الموقع</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">إخفاء زر \'منشورات جديدة\'</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">تم إخفاء زر المنشورات الجديدة</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">يتم عرض زر المنشورات الجديدة</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">إخفاء أزرار واجهة التوقف</string>
@@ -744,6 +748,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_preview_comment_title">إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">تم إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">يتم عرض تعليق المعاينة</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">إخفاء زر \'حفظ الموسيقى\'</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">تم إخفاء زر حفظ الموسيقى</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">يتم عرض زر حفظ الموسيقى</string>
   <string name="morphe_hide_shorts_search_suggestions_title">إخفاء اقتراحات البحث</string>
@@ -764,8 +769,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_upcoming_button_title">إخفاء زر القادم</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">تم إخفاء زر القادم</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">يتم عرض زر القادم</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">إخفاء زر \'استخدام هذا الصوت\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">تم إخفاء زر استخدام هذا الصوت</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">يتم عرض زر استخدام هذا الصوت</string>
+  <string name="morphe_hide_shorts_use_template_button_title">إخفاء زر \'استخدام هذا النموذج\'</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">تم إخفاء زر استخدم هذا النموذج</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">يتم عرض زر استخدم هذا النموذج</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

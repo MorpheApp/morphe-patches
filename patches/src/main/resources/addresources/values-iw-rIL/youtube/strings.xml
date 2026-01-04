@@ -710,13 +710,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_history_title">הסתר Shorts בהיסטוריית הצפייה</string>
   <string name="morphe_hide_shorts_history_summary_on">מוסתר בהיסטוריית הצפייה</string>
   <string name="morphe_hide_shorts_history_summary_off">מוצג בהיסטוריית הצפייה</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">הסתר את הלאabel \'אוטו-דובב\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">תווית מיקום מוסתרת</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">תווית מיקום מוצגת</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">הסתר את הלחצן \'קנה סופר תודה\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">הלחצן \'קנה סופר תודה\' מוסתר</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">הלחצן \'קנה סופר תודה\' מוצג</string>
   <string name="morphe_hide_shorts_effect_button_title">הסתר לחצן \'אפקט\'</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">הלחצן \'אפקט\' מוסתר</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">הלחצן \'אפקט\' מוצג</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">הסתר את הלחצן \'מסך ירוק\'</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">לחצן מסך ירוק מוסתר</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">לחצן מסך ירוק מוצג</string>
   <string name="morphe_hide_shorts_hashtag_button_title">הסתר לחצן hashtag</string>
@@ -732,6 +735,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_location_label_title">הסתר תווית מיקום</string>
   <string name="morphe_hide_shorts_location_label_summary_on">תווית מיקום מוסתרת</string>
   <string name="morphe_hide_shorts_location_label_summary_off">תווית מיקום מוצגת</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">הסתר את הלחצן \'פוסטים חדשים\'</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">לחצן \"פוסטים חדשים\" מוסתר</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">לחצן \"פוסטים חדשים\" מוצג</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">הסתר לחצני שכבת-על בעת השהיה</string>
@@ -740,6 +744,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_preview_comment_title">הסתר תצוגה מקדימה של תגובה</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">תצוגה מקדימה של תגובה מוסתרת</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">תצוגה מקדימה של תגובה מוצגת</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">הסתר את הלחצן \'שמור מוזיקה\'</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">לחצן שמור מוזיקה מוסתר</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">לחצן שמור מוזיקה מוצג</string>
   <string name="morphe_hide_shorts_search_suggestions_title">הסתר הצעות חיפוש</string>
@@ -760,8 +765,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_upcoming_button_title">הסתר לחצן \'בקרוב\'</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">לחצן \'בקרוב\' מוסתר</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">לחצן \'בקרוב\' מוצג</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">הסתר את הלחצן \'השתמש בצליל זה\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">הלחצן \'השתמש בצליל זה\' מוסתר</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">הלחצן \'השתמש בצליל זה\' מוצג</string>
+  <string name="morphe_hide_shorts_use_template_button_title">הסתר את הלחצן \'השתמש בתבנית זו\'</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">הלחצן \'השתמש בתבנית זו\' מוסתר</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">הלחצן \'השתמש בתבנית זו\' מוצג</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

@@ -167,6 +167,18 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_hide_explore_podcast_section_title">\'Ontdek de podcast\' verbergen</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Het gedeelte \'Ontdek de podcast\' is verborgen</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Het gedeelte \'Ontdek de podcast\' wordt weergegeven</string>
+  <string name="morphe_hide_featured_links_section_title">Verberg uitgelichte inhoud</string>
+  <string name="morphe_hide_featured_links_section_summary_on">Sectie uitgelichte inhoud is verborgen</string>
+  <string name="morphe_hide_featured_links_section_summary_off">Sectie uitgelichte inhoud is zichtbaar</string>
+  <string name="morphe_hide_featured_places_section_title">Verberg \'Uitgelichte plaatsen\'</string>
+  <string name="morphe_hide_featured_places_section_summary_on">Sectie uitgelichte plaatsen is verborgen</string>
+  <string name="morphe_hide_featured_places_section_summary_off">Sectie uitgelichte plaatsen is zichtbaar</string>
+  <string name="morphe_hide_featured_videos_section_title">Verberg uitgelichte video\'s</string>
+  <string name="morphe_hide_featured_videos_section_summary_on">Sectie uitgelichte video\'s is verborgen</string>
+  <string name="morphe_hide_featured_videos_section_summary_off">Sectie uitgelichte video\'s is zichtbaar</string>
+  <string name="morphe_hide_gaming_section_title">Verberg Gaming</string>
+  <string name="morphe_hide_gaming_section_summary_on">Sectie Gaming is verborgen</string>
+  <string name="morphe_hide_gaming_section_summary_off">Sectie Gaming is zichtbaar</string>
   <string name="morphe_hide_how_this_was_made_section_title">\'Zo is deze content gemaakt\' verbergen</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">Het gedeelte \"Zo is deze content gemaakt\" is verborgen</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">Het gedeelte \"Zo is deze content gemaakt\" is zichtbaar</string>
@@ -179,6 +191,9 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_hide_key_concepts_section_title">\'Belangrijkste begrippen\' verbergen</string>
   <string name="morphe_hide_key_concepts_section_summary_on">Het gedeelte \'Belangrijkste begrippen\' is verborgen</string>
   <string name="morphe_hide_key_concepts_section_summary_off">Het gedeelte \'Belangrijkste begrippen\' is zichtbaar</string>
+  <string name="morphe_hide_music_section_title">Verberg Muziek</string>
+  <string name="morphe_hide_music_section_summary_on">Sectie Muziek is verborgen</string>
+  <string name="morphe_hide_music_section_summary_off">Sectie Muziek is zichtbaar</string>
   <string name="morphe_hide_subscribe_button_title">Verberg de knop \"Abonneren\"</string>
   <string name="morphe_hide_subscribe_button_summary_on">Abonneerknop is verborgen</string>
   <string name="morphe_hide_subscribe_button_summary_off">Abonneerknop wordt weergegeven</string>
@@ -204,6 +219,9 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_channel_screen_title">Kanaalpagina</string>
   <string name="morphe_channel_screen_summary">Kanaalpagina-componenten verbergen of tonen</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Verberg \'Community\' knop</string>
+  <string name="morphe_hide_community_button_summary_on">Knop \'Community\' is verborgen</string>
+  <string name="morphe_hide_community_button_summary_off">Knop \'Community\' is zichtbaar</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">Verberg \"Voor jou\"-schap</string>
   <string name="morphe_hide_for_you_shelf_summary_on">Voor jou-plank is verborgen</string>
@@ -219,6 +237,9 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_hide_members_shelf_summary_on">Ledenplank is verborgen</string>
   <string name="morphe_hide_members_shelf_summary_off">Ledenplank wordt weergegeven</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Verberg \'Winkel\' knop</string>
+  <string name="morphe_hide_store_button_summary_on">Knop \'Winkel\' is verborgen</string>
+  <string name="morphe_hide_store_button_summary_off">Knop \'Winkel\' is zichtbaar</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Verberg de knop \"Abonneren\"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Abonneerknop is verborgen</string>
@@ -298,6 +319,12 @@ Trefwoorden kunnen kanaalnamen of alle tekst zijn die wordt weergegeven in video
 
 Woorden met hoofdletters in het midden moeten met de hoofdletter worden ingevoerd (bijv.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Over keyword filtering</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoekresultaten zijn gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
+
+Beperkingen
+• Shorts kunnen niet worden verborgen op kanaalnaam
+• Sommige UI-componenten zijn mogelijk niet verborgen
+• Zoeken naar een trefwoord kan geen resultaten opleveren"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Match hele woorden</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Omkeren van een trefwoord/zin met dubbele aanhalingstekens zal voorkomen dat deel-matches van videotitels en kanaalnamen&lt;br&gt;&lt;br&gt;Bijvoorbeeld,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; verbergt de video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;maar zal deze niet verbergen: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -351,13 +378,18 @@ Beperkingen: de pagina YouTube Doodles is niet beschikbaar"</string>
   <string name="morphe_share_copy_url_success">URL gekopieerd naar klembord</string>
   <string name="morphe_share_copy_url_timestamp_success">URL met tijdstempel gekopieerd</string>
   <string name="morphe_copy_video_url_title">Knop \"Video-URL kopiëren\" weergeven</string>
+  <string name="morphe_copy_video_url_summary_on">Knop wordt weergegeven. Tik om de video-URL te kopiëren. Tik en houd vast om met tijdstempel te kopiëren</string>
+  <string name="morphe_copy_video_url_summary_off">Knop om video-URL te kopiëren wordt niet weergegeven</string>
   <string name="morphe_copy_video_url_timestamp_title">Knop \"Tijdstempel URL kopiëren\" weergeven</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Knop wordt weergegeven. Tik om de video-URL met tijdstempel te kopiëren. Tik en houd vast om zonder tijdstempel te kopiëren</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Knop om video-URL met tijdstempel te kopiëren wordt niet weergegeven</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Dialog van kijker discretie verwijderen</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialog wordt verwijderd</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Dialog wordt getoond</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Dit omzeilt de leeftijdsbeperking niet. Het accepteert het alleen automatisch.</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
+  <string name="morphe_disable_signin_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">Pop-up \'Inloggen op tv\' is uitgeschakeld</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">Pop-up \'Inloggen op tv\' is ingeschakeld</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -566,6 +598,9 @@ Als het wijzigen van deze instelling geen effect heeft, probeer dan over te scha
   <string name="morphe_hide_player_flyout_captions_summary_on">Ondertitels-menu is verborgen</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Ondertitels-menu wordt weergegeven</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Verberg \'Extra instellingen / Meer\'</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menu \'Extra instellingen / Meer\' is verborgen</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_off">Menu \'Extra instellingen / Meer\' wordt weergegeven</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">Slaaptimer verbergen</string>
   <string name="morphe_hide_player_flyout_sleep_timer_summary_on">Slaaptimer-menu is verborgen</string>
@@ -612,6 +647,12 @@ Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu Bekijk in VR is verborgen</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menu Bekijk in VR wordt weergegeven</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_video_quality_title">Verberg menu \'Kwaliteit\'</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menu \'Kwaliteit\' is verborgen</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menu \'Kwaliteit\' is zichtbaar</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_title">Verberg voettekst van menu \'Kwaliteit\'</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Voettekst van menu \'Kwaliteit\' is verborgen</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Voettekst van menu \'Kwaliteit\' wordt weergegeven</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Verberg knop voor automatisch afspelen</string>
   <string name="morphe_hide_autoplay_button_summary_on">Automatische afspeelknop is verborgen</string>
@@ -673,11 +714,16 @@ Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android
   <string name="morphe_hide_shorts_history_title">Verberg Shorts in geschiedenis bekijken</string>
   <string name="morphe_hide_shorts_history_summary_on">Verborgen in de kijkgeschiedenis</string>
   <string name="morphe_hide_shorts_history_summary_off">Getoond in geschiedenis bekijken</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Verberg \'Auto-vertalen\' label</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Locatie-etiket is verborgen</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Locatie-etiket wordt weergegeven</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Verberg \'Koop Super Thanks\' knop</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Super Thanks kopen-knop is verborgen</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Super Thanks kopen-knop wordt getoond</string>
   <string name="morphe_hide_shorts_effect_button_title">Verberg effectknop</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Effectknop is verborgen</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Effectknop is weergegeven</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Verberg \'Groen scherm\' knop</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">De knop \"Groen scherm\" is verborgen</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">De knop \"Groen scherm\" is zichtbaar</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Verberg de knop \"Hashtag\"</string>
@@ -687,9 +733,13 @@ Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android
   <string name="morphe_hide_shorts_join_button_title">Verberg de knop \"Word lid\"</string>
   <string name="morphe_hide_shorts_join_button_summary_on">Join-knop is verborgen</string>
   <string name="morphe_hide_shorts_join_button_summary_off">Join-knop wordt weergegeven</string>
+  <string name="morphe_hide_shorts_live_preview_title">Verberg live-voorbeeld</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">Live-voorbeeld is verborgen</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">Live-voorbeeld wordt weergegeven</string>
   <string name="morphe_hide_shorts_location_label_title">Verberg locatie-etiket</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Locatie-etiket is verborgen</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Locatie-etiket wordt weergegeven</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Verberg \'Nieuwe berichten\' knop</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Knop Nieuwe berichten is verborgen</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Knop Nieuwe berichten wordt weergegeven</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Verberg knoppen van de pauze-overlay</string>
@@ -698,6 +748,7 @@ Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android
   <string name="morphe_hide_shorts_preview_comment_title">Voorbeeldcommentaar verbergen</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Voorbeeldcommentaar is verborgen</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Voorbeeldcommentaar wordt weergegeven</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Verberg \'Muziek opslaan\' knop</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Muziek opslaan-knop is verborgen</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Muziek opslaan-knop wordt weergegeven</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Verberg zoeksuggesties</string>
@@ -718,8 +769,10 @@ Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android
   <string name="morphe_hide_shorts_upcoming_button_title">Verberg de knop \"Aanstaande\"</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">De \"Volgende\" knop is verborgen</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">De \"Volgende\" knop is zichtbaar</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Verberg \'Geluid gebruiken\' knop</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Knop Geluid gebruiken is verborgen</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Knop Geluid gebruiken is weergegeven</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Verberg \'Dit sjabloon gebruiken\' knop</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Knop Sjabloon gebruiken is verborgen</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">De knop Dit sjabloon gebruiken wordt weergegeven</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -924,10 +977,15 @@ Beperking: Vind ik niet leuk verschijnen mogelijk niet in de incognitomodus"</st
   <string name="morphe_sb_settings_import_successful">Instellingen met succes geïmporteerd</string>
   <string name="morphe_sb_settings_import_failed">Importeren mislukt: %s</string>
   <string name="morphe_sb_settings_export_failed">Exporteren mislukt: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Uw instellingen bevatten een privé SponsorBlock-gebruikers-ID.
+
+Uw gebruikers-ID is als een wachtwoord en mag nooit worden gedeeld."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Niet meer tonen</string>
   <string name="morphe_sb_diff_segments">Verander het segmentgedrag</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_sum">Betaalde promotie, betaalde verwijzingen en directe advertenties. Niet voor zelfpromotie of gratis shout-outs naar oorzaken/makers/websites/producten die ze leuk vinden</string>
   <string name="morphe_sb_segments_selfpromo">Onbetaalde/Zelfpromotie</string>
+  <string name="morphe_sb_segments_selfpromo_sum">Vergelijkbaar met Sponsor, maar dan voor onbetaalde of zelfpromotie. Inclusief secties over merchandise, donaties of informatie over met wie ze hebben samengewerkt</string>
   <string name="morphe_sb_segments_interaction">Interactieherinnering (abonneren)</string>
   <string name="morphe_sb_segments_interaction_sum">Een korte herinnering om te liken, te abonneren of te volgen tussen de inhoud in. Als het lang of iets specifieks is, moet het in plaats daarvan onder zelfpromotie vallen</string>
   <string name="morphe_sb_segments_highlight">Markeren</string>
@@ -1230,6 +1288,7 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API-eindpunt</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">De URL van het DeArrow-miniaturencache-eindpunt</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Stilstaande video-opnames</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Nog steeds opgenomen worden vanaf het begin/midden/einde van elke video. Deze afbeeldingen zijn in YouTube ingebouwd en er wordt geen externe API gebruikt</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Gebruik snelle stilstaande opnames</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">Gebruik stilstaande opnames van gemiddelde kwaliteit. Miniaturen worden sneller geladen, maar live-streams, niet-uitgebrachte of zeer oude video\'s kunnen lege miniaturen weergeven</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">Gebruik stilstaande opnames van hoge kwaliteit</string>
@@ -1247,10 +1306,15 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_loop_video_summary_off">Video zal niet herhalen</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Knop voor loopvideo weergeven</string>
+  <string name="morphe_loop_video_button_summary_on">Knop om video te herhalen wordt weergegeven</string>
+  <string name="morphe_loop_video_button_summary_off">Knop om video te herhalen wordt niet weergegeven</string>
   <string name="morphe_loop_video_button_toast_on">Loopvideo is ingeschakeld</string>
   <string name="morphe_loop_video_button_toast_off">Loopvideo is uitgeschakeld</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoof apparaatdimensies</string>
+  <string name="morphe_spoof_device_dimensions_summary_on">"Apparaatdimensies gespoofed
+
+Hogere videokwaliteiten kunnen worden ontgrendeld, maar u kunt video-playback haperen, een slechtere batterijduur en onbekende neveneffecten ervaren"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"Apparaatdimensies niet gespoofed
 
 Het inschakelen hiervan kan hogere videokwaliteiten ontgrendelen"</string>
@@ -1302,8 +1366,12 @@ Het inschakelen hiervan kan hogere videokwaliteiten ontgrendelen"</string>
   <string name="morphe_remember_video_quality_toast_shorts">De kwaliteit van Shorts %1$s is gewijzigd in: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Snelheidsdialoogknop weergeven</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">De knop wordt weergegeven. Tik en houd vast om de afspeelsnelheid terug te zetten naar de standaardwaarde</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Knop om afspeelsnelheid te resetten wordt niet weergegeven</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Toon videokwaliteitknop</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">Knop wordt weergegeven. Tik en houd vast om de kwaliteit terug te zetten naar standaard</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Knop om videokwaliteit te resetten wordt niet weergegeven</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu voor aangepaste afspeelsnelheid</string>
   <string name="morphe_custom_speed_menu_summary_on">Menu voor aangepaste snelheid wordt weergegeven</string>

@@ -168,6 +168,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_explore_podcast_section_title">「ポッドキャストを検索」を非表示</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">「ポッドキャストを検索」セクションは表示されません</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">「ポッドキャストを検索」セクションは表示されます</string>
+  <string name="morphe_hide_featured_links_section_title">Hide Featured links section</string>
+  <string name="morphe_hide_featured_links_section_summary_on">Featured links section is hidden</string>
+  <string name="morphe_hide_featured_links_section_summary_off">Featured links section is shown</string>
+  <string name="morphe_hide_featured_places_section_title">Hide Featured places</string>
+  <string name="morphe_hide_featured_places_section_summary_on">Featured places section is hidden</string>
+  <string name="morphe_hide_featured_places_section_summary_off">Featured places section is shown</string>
+  <string name="morphe_hide_featured_videos_section_title">Hide Gaming</string>
+  <string name="morphe_hide_featured_videos_section_summary_on">Gaming section is hidden</string>
+  <string name="morphe_hide_featured_videos_section_summary_off">Gaming section is shown</string>
+  <string name="morphe_hide_gaming_section_title">Hide Music</string>
+  <string name="morphe_hide_gaming_section_summary_on">Music section is hidden</string>
+  <string name="morphe_hide_gaming_section_summary_off">Music section is shown</string>
   <string name="morphe_hide_how_this_was_made_section_title">「このコンテンツの作成手段」を非表示</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">「このコンテンツの作成手段」セクションは表示されません</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">「このコンテンツの作成手段」セクションは表示されます</string>
@@ -180,6 +192,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_key_concepts_section_title">「主な概念」を非表示</string>
   <string name="morphe_hide_key_concepts_section_summary_on">主な概念セクションは表示されません</string>
   <string name="morphe_hide_key_concepts_section_summary_off">主な概念セクションが表示されます</string>
+  <string name="morphe_hide_music_section_title">Hide Community button</string>
+  <string name="morphe_hide_music_section_summary_on">Community button is hidden</string>
+  <string name="morphe_hide_music_section_summary_off">Community button is shown</string>
   <string name="morphe_hide_subscribe_button_title">チャンネル登録ボタンを非表示</string>
   <string name="morphe_hide_subscribe_button_summary_on">チャンネル登録ボタンは表示されません</string>
   <string name="morphe_hide_subscribe_button_summary_off">チャンネル登録ボタンは表示されます</string>
@@ -205,6 +220,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_screen_title">チャンネル ページ</string>
   <string name="morphe_channel_screen_summary">チャンネル ページのコンポーネントを表示または非表示にします</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Home / Subscriptions / Search results are filtered to hide content that matches keyword phrases</string>
+  <string name="morphe_hide_community_button_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
+  <string name="morphe_hide_community_button_summary_off">Copy video URL button is not shown</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">「おすすめ」欄を非表示</string>
   <string name="morphe_hide_for_you_shelf_summary_on">「おすすめ」欄は表示されません</string>
@@ -220,6 +238,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_summary_on">メンバー欄は表示されません</string>
   <string name="morphe_hide_members_shelf_summary_off">メンバー欄は表示されます</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Hide Additional settings / More</string>
+  <string name="morphe_hide_store_button_summary_on">Additional settings / More menu is hidden</string>
+  <string name="morphe_hide_store_button_summary_off">Additional settings / More menu is shown</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">チャンネル登録ボタンを非表示</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">チャンネル登録ボタンは表示されません</string>
@@ -299,6 +320,7 @@ Second \"item\" text"</string>
 
 単語の途中に大文字が含まれる場合は、大文字のまま入力する必要があります (例: iPhone、TikTok、LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">キーワード フィルタリングについて</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Hide Quality menu footer"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">単語全体で合致</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">キーワードを二重引用符で囲むことで、動画のタイトルやチャンネル名に含まれる単語の一部分とキーワードが合致しないようにできます&lt;br&gt;&lt;br&gt;例えば、&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;は、次の動画を除外します: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;しかし、次の動画は除外しません: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -352,13 +374,20 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_url_success">URL をクリップボードにコピーしました</string>
   <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付きの URL がコピーされました</string>
   <string name="morphe_copy_video_url_title">「動画の URL をコピー」ボタンを表示</string>
+  <string name="morphe_copy_video_url_summary_on">Quality menu footer is hidden</string>
+  <string name="morphe_copy_video_url_summary_off">Quality menu footer is shown</string>
   <string name="morphe_copy_video_url_timestamp_title">「タイムスタンプ付き URL をコピー」ボタンを表示</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Your settings contain a private SponsorBlock userid.
+
+Your user ID is like a password, and it should never be shared.</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes / creators / websites / products they like</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">ダイアログは削除されます</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">ダイアログは表示されます</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">この機能によって年齢制限が回避される訳ではありません。自動的に承認するだけです。</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
+  <string name="morphe_disable_signin_to_tv_popup_title">Similar to Sponsor except for unpaid / self promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">「テレビでログイン」ポップアップは無効です</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">「テレビでログイン」ポップアップは有効です</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -567,6 +596,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">「字幕」は表示されません</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">「字幕」は表示されます</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Still captures are taken from the beginning / middle / end of each video. These images are built into YouTube and no external API is used</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Loop video button is shown</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_off">Loop video button is not shown</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">「スリープ タイマー」を非表示</string>
   <string name="morphe_hide_player_flyout_sleep_timer_summary_on">「スリープ タイマー」は表示されません</string>
@@ -613,6 +645,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">「VR で見る」は表示されます</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_video_quality_title">Device dimensions spoofed
+
+Higher video qualities might be unlocked, but you may experience video playback stuttering, worse battery life, and unknown side effects</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_on">Speed dialog button is shown. Tap and hold to reset playback speed to default</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_off">Speed dialog button is not shown</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_title">Video quality button is shown. Tap and hold to reset quality to default</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video quality button is not shown</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Auto-dubbed label is hidden</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">自動再生ボタンを非表示</string>
   <string name="morphe_hide_autoplay_button_summary_on">自動再生ボタンはプレーヤー オーバーレイに表示されません</string>
@@ -674,11 +714,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_history_title">再生履歴でショートを非表示</string>
   <string name="morphe_hide_shorts_history_summary_on">再生履歴にはショート動画は表示されません</string>
   <string name="morphe_hide_shorts_history_summary_off">再生履歴にはショート動画が表示されます</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">「オートダビング」ラベルを非表示にする</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">「自動字幕」ラベルは表示されません</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">「自動字幕」ラベルは表示されます</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">「Super Thanks を購入する」ボタンを非表示にする</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">「Super Thanks を購入する」ボタンは表示されません</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">「Super Thanks を購入する」ボタンは表示されます</string>
   <string name="morphe_hide_shorts_effect_button_title">効果ボタンを非表示</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">効果ボタンは表示されません</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">効果ボタンは表示されます</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">グリーン スクリーン ボタンを非表示にする</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">グリーン スクリーン ボタンは表示されません</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">グリーン スクリーン ボタンは表示されます</string>
   <string name="morphe_hide_shorts_hashtag_button_title">ハッシュタグ ボタンを非表示</string>
@@ -688,9 +733,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_join_button_title">「メンバーになる」ボタンを非表示</string>
   <string name="morphe_hide_shorts_join_button_summary_on">「メンバーになる」ボタンは表示されません</string>
   <string name="morphe_hide_shorts_join_button_summary_off">「メンバーになる」ボタンは表示されます</string>
+  <string name="morphe_hide_shorts_live_preview_title">ライブプレビューを非表示</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">ライブプレビューは表示されません</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">ライブプレビューは表示されます</string>
   <string name="morphe_hide_shorts_location_label_title">位置情報ラベルを非表示</string>
   <string name="morphe_hide_shorts_location_label_summary_on">位置情報ラベルは表示されません</string>
   <string name="morphe_hide_shorts_location_label_summary_off">位置情報ラベルは表示されます</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">「新しい投稿」ボタンを非表示にする</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">「新しい投稿」ボタンは表示されません</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">「新しい投稿」ボタンは表示されます</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">一時停止オーバーレイのボタンを非表示</string>
@@ -699,6 +748,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">コメントのプレビューは表示されません</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">コメントのプレビューは表示されます</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">「音楽を保存」ボタンを非表示にする</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">「音楽を保存」ボタンは表示されません</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">「音楽を保存」ボタンは表示されます</string>
   <string name="morphe_hide_shorts_search_suggestions_title">検索候補を非表示</string>
@@ -719,8 +769,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_upcoming_button_title">今後の動画ボタンを非表示</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">今後の動画ボタンは表示されません</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">今後の動画ボタンは表示されます</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">「このサウンドを使用する」ボタンを非表示にする</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">「このサウンドを使用する」ボタンは表示されません</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">「このサウンドを使用する」ボタンは表示されます</string>
+  <string name="morphe_hide_shorts_use_template_button_title">「このテンプレートを使用する」ボタンを非表示にする</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">「このテンプレートを使用する」ボタンは表示されません</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">「このテンプレートを使用する」ボタンは表示されます</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -925,10 +977,13 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">設定のインポートに成功しました</string>
   <string name="morphe_sb_settings_import_failed">インポートに失敗しました: %s</string>
   <string name="morphe_sb_settings_export_failed">エクスポートに失敗しました: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Auto-dubbed label is shown"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">今後表示しない</string>
   <string name="morphe_sb_diff_segments">セグメントに対する動作を変更</string>
   <string name="morphe_sb_segments_sponsor">スポンサー</string>
+  <string name="morphe_sb_segments_sponsor_sum">Hide live preview</string>
   <string name="morphe_sb_segments_selfpromo">無報酬の宣伝 / 自己宣伝</string>
+  <string name="morphe_sb_segments_selfpromo_sum">Live preview is hidden</string>
   <string name="morphe_sb_segments_interaction">視聴者への催促 (登録)</string>
   <string name="morphe_sb_segments_interaction_sum">動画内に挿入される、高評価、チャンネル登録、フォローなどを視聴者にうながす短時間の催促。時間的に長い場合またはイベントなどの個別具体的なものに関する催促の場合は、このカテゴリではなく「自己宣伝」に分類すべきです</string>
   <string name="morphe_sb_segments_highlight">ハイライト</string>
@@ -1231,6 +1286,7 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API のエンドポイント</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow がサムネイルのキャッシュを取得するエンドポイントの URL</string>
   <string name="morphe_alt_thumbnail_stills_about_title">静止画サムネイル</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Live preview is shown</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">高速な静止画サムネイルを使用</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">中画質の静止画サムネイルを使用します。サムネイルの読み込みは速くなりますが、ライブ、未公開、または非常に古い動画には、空白のサムネイルが表示される場合があります</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">高画質の静止画サムネイルを使用します</string>
@@ -1248,10 +1304,16 @@ Automotive レイアウト
   <string name="morphe_loop_video_summary_off">動画はループ再生されません</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">動画のループ再生ボタンを表示</string>
+  <string name="morphe_loop_video_button_summary_on">動画のループ再生ボタンが表示されます</string>
+  <string name="morphe_loop_video_button_summary_off">動画のループ再生ボタンは表示されません</string>
   <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
   <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
+  <string name="morphe_spoof_device_dimensions_summary_on">"デバイスの画面サイズは偽装されています
+
+より高画質な映像がアンロックされる可能性がありますが、動画のカクつき、バッテリー寿命の悪化、予期せぬ副作用が
+発生するかもしれません"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"デバイスの画面サイズは偽装されていません
 
 この機能を有効にすると、より高画質な映像がアンロックされる可能性があります"</string>
@@ -1303,8 +1365,12 @@ Automotive レイアウト
   <string name="morphe_remember_video_quality_toast_shorts">Shortsの%1$sの品質を%2$sに変更しました</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">再生速度設定ボタンを表示</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">再生速度ダイアログボタンがプレーヤー オーバーレイに表示されます。長押しすると、再生速度がデフォルトの値にリセットされます</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">再生速度ダイアログボタンはプレーヤー オーバーレイに表示されません</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質設定ボタンを表示</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">画質ダイアログボタンがプレーヤー オーバーレイに表示されます。長押しすると、画質がデフォルトの値にリセットされます</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">「画質」は表示されません</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">カスタム再生速度メニュー</string>
   <string name="morphe_custom_speed_menu_summary_on">カスタム再生速度リストが再生速度メニューに表示されます</string>

@@ -712,13 +712,16 @@ Pentru a afişa meniul de traiectorie audio, schimbați 'Falsificarea streamuril
   <string name="morphe_hide_shorts_history_title">Ascunde Shorts în istoricul vizionărilor</string>
   <string name="morphe_hide_shorts_history_summary_on">Ascuns în istoricul vizionărilor</string>
   <string name="morphe_hide_shorts_history_summary_off">Afișate în istoricul vizionărilor</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Ascunde etichetă \'Auto-dubbed\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Eticheta \'Auto-dubbed/\' este ascunsă</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Eticheta \'Auto-dubbed/\' este afișată</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Ascunde butonul \'Cumpără Super Mulțumiri\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Butonul \"Cumpără Super Mulțumiri\" este ascuns.</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Butonul \"Cumpără Super Mulțumiri\" este afișat.</string>
   <string name="morphe_hide_shorts_effect_button_title">Ascunde butonul Efect</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Butonul de efect este ascuns</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Butonul de efect este afișat</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Ascunde butonul \'Ecran verde\'</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Butonul de ecran verde este ascuns</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Butonul de ecran verde este afișat</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Ascunde butonul hashtag</string>
@@ -734,6 +737,7 @@ Pentru a afişa meniul de traiectorie audio, schimbați 'Falsificarea streamuril
   <string name="morphe_hide_shorts_location_label_title">Ascunde eticheta locației</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Eticheta locației este ascunsă</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Eticheta locației este afișată</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Ascunde butonul \'Postări noi\'</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Butonul Postări noi este ascuns</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Butonul Postări noi este afișat</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ascunde butoanele de suprapunere din pauză</string>
@@ -742,6 +746,7 @@ Pentru a afişa meniul de traiectorie audio, schimbați 'Falsificarea streamuril
   <string name="morphe_hide_shorts_preview_comment_title">Ascunde comentariul de previzualizare</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Comentariul de previzualizare este ascuns</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Previzualizarea comentariului este afișată</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Ascunde butonul \'Salvează melodia\'</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Butonul de salvare a muzicii este ascuns</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Butonul de salvare a muzicii este afișat</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Ascunde sugestiile de căutare</string>
@@ -762,8 +767,10 @@ Pentru a afişa meniul de traiectorie audio, schimbați 'Falsificarea streamuril
   <string name="morphe_hide_shorts_upcoming_button_title">Ascunde butonul Următor</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Butonul următor este ascuns</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Următorul buton este afișat</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Ascunde butonul \'Folosește acest sunet\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Butonul Folosește acest sunet este ascuns</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Butonul Folosește acest sunet este afișat</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Ascunde butonul \'Folosește acest șablon\'</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Butonul Folosește acest șablon este ascuns</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Butonul Folosește acest șablon este afișat</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

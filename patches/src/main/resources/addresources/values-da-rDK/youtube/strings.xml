@@ -714,13 +714,16 @@ For at vise Lydspor-menuen, ændr 'Spoof video streams' til 'Android No SDK'"</s
   <string name="morphe_hide_shorts_history_title">Skjul shorts i historik</string>
   <string name="morphe_hide_shorts_history_summary_on">Skjult i historikken</string>
   <string name="morphe_hide_shorts_history_summary_off">Vises i historik</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Skjul \'Auto-dubbed\' label</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Placeringsetiket er skjult</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Placeringsetiket er vist</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Skjul \'Køb Super Thanks\' knap</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Køb Super Thanks-knap er skjult</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Køb Super Thanks-knap vises</string>
   <string name="morphe_hide_shorts_effect_button_title">Skjul effektknap</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Effektknap er skjult</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Effektknap er vist</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Skjul \'Grøn skærm\' knap</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Grøn skærmknap er skjult</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Grøn skærmknap vises</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Skjul hashtag knap</string>
@@ -736,6 +739,7 @@ For at vise Lydspor-menuen, ændr 'Spoof video streams' til 'Android No SDK'"</s
   <string name="morphe_hide_shorts_location_label_title">Skjul placeringsetiket</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Placeringsetiket er skjult</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Placeringsetiket er vist</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Skjul \'Nye indlæg\' knap</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Knappen Nye indlæg er skjult</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Knappen Nye indlæg vises</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Skjul overlay knapper på pause</string>
@@ -744,6 +748,7 @@ For at vise Lydspor-menuen, ændr 'Spoof video streams' til 'Android No SDK'"</s
   <string name="morphe_hide_shorts_preview_comment_title">Skjul forhåndsvisning af kommentar</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Forhåndsvisning af kommentar er skjult</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Forhåndsvisningskommentar vises</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Skjul \'Gem musik\' knap</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Gem musik knap er skjult</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Gem musik knap er vist</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Skjul søgeforslag</string>
@@ -764,8 +769,10 @@ For at vise Lydspor-menuen, ændr 'Spoof video streams' til 'Android No SDK'"</s
   <string name="morphe_hide_shorts_upcoming_button_title">Skjul knappen Kommende</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Kommende knap er skjult</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Kommende knap vises</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Skjul \'Brug denne lyd\' knap</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Knappen \"Brug denne lyd\" er skjult</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Knappen \"Brug denne lyd\" vises</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Skjul \'Brug denne skabelon\' knap</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Knappen \"Brug denne skabelon\" er skjult</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Knappen Brug denne skabelon vises</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

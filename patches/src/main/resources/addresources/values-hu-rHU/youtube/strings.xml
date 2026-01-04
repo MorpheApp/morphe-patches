@@ -714,13 +714,16 @@ A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállí
   <string name="morphe_hide_shorts_history_title">Shorts elrejtése a megtekintési előzményekben</string>
   <string name="morphe_hide_shorts_history_summary_on">Elrejtve a megtekintési előzményekben</string>
   <string name="morphe_hide_shorts_history_summary_off">Megjelenik a megtekintési előzményekben</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Rejtélyezd el az \'Automatikus szinkronizálás\' címkét</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">A helycízke címke el van rejtve</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">A helycízke címke meg van jelenítve</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Rejtélyezd el a \'Vásárlás Szuperköszönettel\' gombot</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">A „Super Thanks vásárlása” gomb elrejtve</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">A „Super Thanks vásárlása” gomb látható</string>
   <string name="morphe_hide_shorts_effect_button_title">Effekt gomb elrejtése</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Az effekt gomb el van rejtve</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Az effekt gomb látható</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Rejtélyezd el a \'Zöld háttér\' gombot</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">A zöld képernyő gomb el van rejtve</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">A zöld képernyő gomb látható</string>
   <string name="morphe_hide_shorts_hashtag_button_title">A hashtag gomb elrejtése</string>
@@ -736,6 +739,7 @@ A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállí
   <string name="morphe_hide_shorts_location_label_title">Helycímke elrejtése</string>
   <string name="morphe_hide_shorts_location_label_summary_on">A helycízke címke el van rejtve</string>
   <string name="morphe_hide_shorts_location_label_summary_off">A helycízke címke meg van jelenítve</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Rejtélyezd el a \'Új bejegyzések\' gombot</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Az új bejegyzések gomb rejtve van</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Az új bejegyzések gomb megjelenik</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Szüneteltetett fedő gombok elrejtése</string>
@@ -744,6 +748,7 @@ A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállí
   <string name="morphe_hide_shorts_preview_comment_title">Elrejtés előnézeti megjegyzés</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Az előnézeti megjegyzés rejtve van</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Megjelenik a megjegyzés előnézete</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Rejtélyezd el a \'Zene mentése\' gombot</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">A zene mentés gomb el van rejtve</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">A zene mentés gomb látható</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Keresési javaslatok elrejtése</string>
@@ -764,8 +769,10 @@ A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállí
   <string name="morphe_hide_shorts_upcoming_button_title">Következő videó gomb elrejtése</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">A közelgő gomb el van rejtve</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Megjelenik a Közelgő gomb</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Rejtélyezd el a \'Használj ezt a hangot\' gombot</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">A \"Hang használata\" gomb el van rejtve</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">A \"Hang használata\" gomb látható</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Rejtélyezd el a \'Használj ezt a sablont\' gombot</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">A \"Sablon használata\" gomb el van rejtve</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">A „Sablon használata” gomb látható</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

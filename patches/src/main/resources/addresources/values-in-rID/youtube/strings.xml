@@ -650,6 +650,9 @@ Untuk menampilkan menu trek audio, ubah 'Spoof video streams' menjadi 'Android N
   <string name="morphe_hide_player_flyout_video_quality_title">Sembunyikan menu Kualitas</string>
   <string name="morphe_hide_player_flyout_video_quality_summary_on">Menu kualitas disembunyikan</string>
   <string name="morphe_hide_player_flyout_video_quality_summary_off">Menu kualitas ditampilkan</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_title">Sembunyikan footer menu kualitas video</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Footer menu kualitas video disembunyikan</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Footer menu kualitas video ditampilkan</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">Sembunyikan tombol Putar Otomatis</string>
   <string name="morphe_hide_autoplay_button_summary_on">Tombol putar otomatis disembunyikan</string>
@@ -711,11 +714,16 @@ Untuk menampilkan menu trek audio, ubah 'Spoof video streams' menjadi 'Android N
   <string name="morphe_hide_shorts_history_title">Sembunyikan Shorts dalam riwayat tontonan</string>
   <string name="morphe_hide_shorts_history_summary_on">Disembunyikan dalam riwayat tontonan</string>
   <string name="morphe_hide_shorts_history_summary_off">Ditampilkan dalam riwayat tontonan</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Sembunyikan label \'Auto-dubbed\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Label lokasi disembunyikan</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Label lokasi ditampilkan</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Sembunyikan tombol \'Beli Super Thanks\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Tombol Beli Super Thanks disembunyikan</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Tombol Beli Super Thanks ditampilkan</string>
   <string name="morphe_hide_shorts_effect_button_title">Sembunyikan tombol Efek</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Tombol Efek disembunyikan</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Tombol Efek ditampilkan</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Sembunyikan tombol \'Layar Hijau\'</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Tombol layar hijau disembunyikan</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Tombol layar hijau ditampilkan</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Sembunyikan tombol tagar</string>
@@ -725,6 +733,9 @@ Untuk menampilkan menu trek audio, ubah 'Spoof video streams' menjadi 'Android N
   <string name="morphe_hide_shorts_join_button_title">Sembunyikan tombol Gabung</string>
   <string name="morphe_hide_shorts_join_button_summary_on">Tombol gabung disembunyikan</string>
   <string name="morphe_hide_shorts_join_button_summary_off">Tombol gabung ditampilkan</string>
+  <string name="morphe_hide_shorts_live_preview_title">Sembunyikan pratinjau tautan</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">Pratinjau tautan disembunyikan</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">Pratinjau tautan ditampilkan</string>
   <string name="morphe_hide_shorts_location_label_title">Sembunyikan label lokasi</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Label lokasi disembunyikan</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Label lokasi ditampilkan</string>
@@ -758,8 +769,10 @@ Untuk menampilkan menu trek audio, ubah 'Spoof video streams' menjadi 'Android N
   <string name="morphe_hide_shorts_upcoming_button_title">Sembunyikan tombol Mendatang</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Tombol yang akan datang disembunyikan</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Tombol yang akan datang ditampilkan</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Sembunyikan tombol \'Gunakan suara ini\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Tombol gunakan suara ini disembunyikan</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Tombol gunakan suara ini ditampilkan</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Sembunyikan tombol \'Gunakan template ini\'</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Tombol gunakan template ini disembunyikan</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Tombol gunakan template ini ditampilkan</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -964,10 +977,15 @@ Batasan: Dislike mungkin tidak muncul dalam mode penyamaran"</string>
   <string name="morphe_sb_settings_import_successful">Pengaturan berhasil diimpor</string>
   <string name="morphe_sb_settings_import_failed">Gagal mengimpor: %s</string>
   <string name="morphe_sb_settings_export_failed">Gagal mengekspor: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Pengaturan Anda berisi Id pengguna pribadi SponsorBlock.
+
+Id pengguna Anda seperti kata sandi dan jangan pernah dibagikan."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Jangan tampilkan lagi</string>
   <string name="morphe_sb_diff_segments">Ubah perilaku segmen</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_sum">Promosi berbayar, rujukan berbayar, dan iklan langsung. Bukan untuk promosi diri atau promosi gratis untuk gerakan/kreator/situs web/produk yang mereka sukai</string>
   <string name="morphe_sb_segments_selfpromo">Tidak Dibayar/Promosi Diri Sendiri</string>
+  <string name="morphe_sb_segments_selfpromo_sum">Serupa dengan Sponsor kecuali tidak dibayar atau promosi diri sendiri. Termasuk bagian merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka</string>
   <string name="morphe_sb_segments_interaction">Pengingat Interaksi (Berlangganan)</string>
   <string name="morphe_sb_segments_interaction_sum">Pengingat singkat untuk menyukai, berlangganan, atau mengikuti mereka di tengah-tengah konten. Jika berdurasi panjang atau tentang sesuatu yang spesifik, sebaiknya berada di bawah promosi diri sendiri</string>
   <string name="morphe_sb_segments_highlight">Sorotan</string>
@@ -1272,6 +1290,7 @@ Ketuk di sini untuk mempelajari lebih lanjut tentang DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Titik akhir API DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">URL titik akhir cache thumbnail DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Tangkapan video diam</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Tangkapan diam diambil dari awal/tengah/akhir setiap video. Gambar-gambar ini dibuat di YouTube dan tidak ada API eksternal yang digunakan</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Gunakan tangkapan diam cepat</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">Menggunakan tangkapan diam kualitas sedang. Thumbnail akan dimuat lebih cepat, tetapi siaran langsung, video yang belum dirilis, atau video yang sangat lama mungkin menampilkan thumbnail kosong</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">Menggunakan tangkapan diam berkualitas tinggi</string>
@@ -1289,10 +1308,15 @@ Ketuk di sini untuk mempelajari lebih lanjut tentang DeArrow"</string>
   <string name="morphe_loop_video_summary_off">Video tidak akan diulangi</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Tampilkan tombol pengulangan video</string>
+  <string name="morphe_loop_video_button_summary_on">Menu ulangi video ditampilkan</string>
+  <string name="morphe_loop_video_button_summary_off">Tombol salin URL video tidak ditampilkan</string>
   <string name="morphe_loop_video_button_toast_on">Pengulangan video aktif</string>
   <string name="morphe_loop_video_button_toast_off">Pengulangan video tidak aktif</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Palsukan dimensi perangkat</string>
+  <string name="morphe_spoof_device_dimensions_summary_on">"Dimensi perangkat dipalsukan
+
+Kualitas video yang lebih tinggi mungkin tidak terkunci, tetapi Anda mungkin mengalami masalah pemutaran video, masa pakai baterai yang lebih buruk, dan efek samping yang tidak diketahui"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"Dimensi perangkat tidak dipalsukan
 
 Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
@@ -1344,8 +1368,12 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_remember_video_quality_toast_shorts">Kualitas Shorts %1$s diubah menjadi: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Tampilkan tombol dialog kecepatan</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">Tombol ditampilkan. Ketuk dan tahan untuk mengatur ulang kecepatan pemutaran ke bawaan</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Tombol segmen voting tidak ditampilkan</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Tampilkan tombol kualitas video</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">Tombol ditampilkan. Ketuk dan tahan untuk mengatur ulang kualitas ke bawaan</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Menu kualitas video ditampilkan</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu kecepatan pemutaran khusus</string>
   <string name="morphe_custom_speed_menu_summary_on">Menu kecepatan khusus ditampilkan</string>

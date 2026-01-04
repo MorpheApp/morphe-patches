@@ -714,13 +714,16 @@ Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"<
   <string name="morphe_hide_shorts_history_title">Piilota Shortsit katseluhistoriassa</string>
   <string name="morphe_hide_shorts_history_summary_on">Piilotetaan katseluhistoriassa</string>
   <string name="morphe_hide_shorts_history_summary_off">Näytetään katseluhistoriassa</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Piilota \'Automaattisesti dubattu\' -merkki</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Sijaintitieto piilotetaan</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Sijaintitieto näytetään</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Piilota \'Osta Superkiitos\' -nappi</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Osta Superkiitos -painike piilotetaan</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Osta Superkiitos -painike näytetään</string>
   <string name="morphe_hide_shorts_effect_button_title">Piilota Tehoste-painike</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Tehoste-painike piilotetaan</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Tehoste-painike näytetään</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Piilota \'Vihertävä tausta\' -nappi</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Vihertausta-painike piilotetaan</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Vihertausta-painike näytetään</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Piilota Hashtag-painike</string>
@@ -736,6 +739,7 @@ Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"<
   <string name="morphe_hide_shorts_location_label_title">Piilota sijaintitieto</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Sijaintitieto piilotetaan</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Sijaintitieto näytetään</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Piilota \'Uudet postaukset\' -nappi</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Uudet postaukset -painike piilotetaan</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Uudet postaukset -painike näytetään</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Piilota pysäytysruudun painikkeet</string>
@@ -744,6 +748,7 @@ Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"<
   <string name="morphe_hide_shorts_preview_comment_title">Piilota kommentin esikatselu</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Kommentin esikatselu piilotetaan</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Kommentin esikatselu näytetään</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Piilota \'Tallenna musiikki\' -nappi</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Tallenna musiikki -painike piilotetaan</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Tallenna musiikki -painike näytetään</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Piilota hakuehdotukset</string>
@@ -764,8 +769,10 @@ Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"<
   <string name="morphe_hide_shorts_upcoming_button_title">Piilota Tulossa-painike</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Tulossa-painike piilotetaan</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Tulossa-painike näytetään</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Piilota \'Käytä tätä ääntä\' -nappi</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Käytä tätä ääntä -painike piilotetaan</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Käytä tätä ääntä -painike näytetään</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Piilota \'Käytä tätä mallia\' -nappi</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Käytä tätä mallia -painike piilotetaan</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Käytä tätä mallia -painike näytetään</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

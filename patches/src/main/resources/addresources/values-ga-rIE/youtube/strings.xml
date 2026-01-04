@@ -712,13 +712,16 @@ Chugainn an menú an t-áite seo, athraigh 'Spoof video streams' go 'Android No 
   <string name="morphe_hide_shorts_history_title">Folaigh Shorts i stair féachana</string>
   <string name="morphe_hide_shorts_history_summary_on">I bhfolach i stair féachana</string>
   <string name="morphe_hide_shorts_history_summary_off">Taispeántar i stair féachana</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Folaigh leibhéal \'Auto-dubbed\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Tá lipéad \'Auto-dubbed\' i bhfolach</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Taispeántar lipéad \'Auto-dubbed\'</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Folaigh cnaipe \'Ceannaigh Super Thanks\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Cnaipe Ceannaigh Super Thanks i bhfolach</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Taispeántar an cnaipe Ceannaigh Super Thanks</string>
   <string name="morphe_hide_shorts_effect_button_title">Folaigh cnaipe Éifeacht</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Tá cnaipe Éifeacht i bhfolach</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Taispeántar cnaipe Éifeacht</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Folaigh cnaipe \'Scáileáin Ghlais\'</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Tá cnaipe Scáileáin Ghlais i bhfolach</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Taispeántar cnaipe Scáileáin Ghlais</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Folaigh cnaipe Hashtag</string>
@@ -734,6 +737,7 @@ Chugainn an menú an t-áite seo, athraigh 'Spoof video streams' go 'Android No 
   <string name="morphe_hide_shorts_location_label_title">Folaigh lipéad suímh</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Tá lipéad suímh i bhfolach</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Taispeántar lipéad suímh</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Folaigh cnaipe \'Poist nua\'</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Tá cnaipe Poist nua i bhfolach</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Taispeántar cnaipe Poist nua</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Folaigh cnaipí forleagan ar sos</string>
@@ -742,6 +746,7 @@ Chugainn an menú an t-áite seo, athraigh 'Spoof video streams' go 'Android No 
   <string name="morphe_hide_shorts_preview_comment_title">Folaigh trácht réamhamhairc</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Tá an trácht réamhamhairc i bhfolach</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Taispeántar réamhamharc tráchta</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Folaigh cnaipe \'Sábháil Ceoil\'</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Tá an cnaipe sábháil ceoil i bhfolach</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Taispeántar an cnaipe sábháil ceoil</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Folaigh moltaí cuardaigh</string>
@@ -762,8 +767,10 @@ Chugainn an menú an t-áite seo, athraigh 'Spoof video streams' go 'Android No 
   <string name="morphe_hide_shorts_upcoming_button_title">Folaigh cnaipe Ag Teacht</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Tá cnaipe Ag Teacht i bhfolach</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Taispeántar an cnaipe Ag Teacht</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Folaigh cnaipe \'Úsáid an fuaime seo\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Tá an cnaipe Úsáid an fhuaim seo i bhfolach</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Taispeántar an cnaipe Úsáid an fhuaim seo</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Folaigh cnaipe \'Úsáid an teimpléad seo\'</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Tá an cnaipe Úsáid an teimpléid seo i bhfolach</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Taispeántar an cnaipe Úsáid an teimpléid seo</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

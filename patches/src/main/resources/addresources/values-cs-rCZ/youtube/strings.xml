@@ -715,13 +715,16 @@ Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Andro
   <string name="morphe_hide_shorts_history_title">Skrýt Shorts z historie sledování</string>
   <string name="morphe_hide_shorts_history_summary_on">Skryté v historii sledování</string>
   <string name="morphe_hide_shorts_history_summary_off">Zobrazené v historii sledování</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Skrýt označení \'Automaticky dabován\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Štítek umístění je skrytý</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Štítek umístění je zobrazen</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Skrýt tlačítko \'Koupit Super Thanks\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Tlačítko \"Koupit Super Thanks\" je skryto</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Tlačítko \"Koupit Super Thanks\" je zobrazeno</string>
   <string name="morphe_hide_shorts_effect_button_title">Skrýt tlačítko efektu</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Tlačítko Efekt je skryté</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Tlačítko Efekt je zobrazeno</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Skrýt tlačítko \'Zelená obrazovka\'</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Tlačítko zelené obrazovky je skryté</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Tlačítko zelené obrazovky je zobrazeno</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Skrýt tlačítko hashtagů</string>
@@ -737,6 +740,7 @@ Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Andro
   <string name="morphe_hide_shorts_location_label_title">Skrýt štítek umístění</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Štítek umístění je skrytý</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Štítek umístění je zobrazen</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Skrýt tlačítko \'Novinky\'</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Tlačítko Nové příspěvky je skryto</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Tlačítko Nové příspěvky je zobrazeno</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Skrýt tlačítka pozastaveného překrytí</string>
@@ -745,6 +749,7 @@ Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Andro
   <string name="morphe_hide_shorts_preview_comment_title">Skrýt náhled komentáře</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Náhled komentáře je skrytý</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Zobrazuje se náhled komentáře</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Skrýt tlačítko \'Uložit hudbu\'</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Tlačítko Uložit hudbu je skryté</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Tlačítko Uložit hudbu je zobrazeno</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Skrýt návrhy vyhledávání</string>
@@ -765,8 +770,10 @@ Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Andro
   <string name="morphe_hide_shorts_upcoming_button_title">Skrýt tlačítko Nadcházející</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Tlačítko Nadcházející je skryté</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Tlačítko Nadcházející je zobrazeno</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Skrýt tlačítko \'Použít tento zvuk\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Tlačítko Použít tento zvuk je skryté</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Tlačítko Použít tento zvuk je zobrazené</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Skrýt tlačítko \'Použít tuto šablonu\'</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Tlačítko Použít tuto šablonu je skryté</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Tlačítko Použít tuto šablonu je zobrazeno</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->

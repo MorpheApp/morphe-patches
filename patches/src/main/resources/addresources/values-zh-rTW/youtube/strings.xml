@@ -167,6 +167,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_explore_podcast_section_title">隱藏「探索 Podcast」</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">已隱藏探索 Podcast 區塊</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">已顯示探索 Podcast 區塊</string>
+  <string name="morphe_hide_featured_links_section_title">隱藏精選連結</string>
+  <string name="morphe_hide_featured_links_section_summary_on">精選連結區塊已隱藏</string>
+  <string name="morphe_hide_featured_links_section_summary_off">精選連結區塊已顯示</string>
+  <string name="morphe_hide_featured_places_section_title">隱藏「精選地點」</string>
+  <string name="morphe_hide_featured_places_section_summary_on">精選地點區塊已隱藏</string>
+  <string name="morphe_hide_featured_places_section_summary_off">精選地點區塊已顯示</string>
+  <string name="morphe_hide_featured_videos_section_title">隱藏精選影片</string>
+  <string name="morphe_hide_featured_videos_section_summary_on">精選影片區塊已隱藏</string>
+  <string name="morphe_hide_featured_videos_section_summary_off">精選影片區塊已顯示</string>
+  <string name="morphe_hide_gaming_section_title">隱藏遊戲</string>
+  <string name="morphe_hide_gaming_section_summary_on">遊戲區塊已隱藏</string>
+  <string name="morphe_hide_gaming_section_summary_off">遊戲區塊已顯示</string>
   <string name="morphe_hide_how_this_was_made_section_title">隱藏「這項內容的製作方式」</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">已隱藏這項內容的製作方式區塊</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">已顯示這項內容的製作方式區塊</string>
@@ -179,6 +191,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_key_concepts_section_title">隱藏「核心概念」</string>
   <string name="morphe_hide_key_concepts_section_summary_on">已隱藏核心概念區塊</string>
   <string name="morphe_hide_key_concepts_section_summary_off">已顯示核心概念區塊</string>
+  <string name="morphe_hide_music_section_title">隱藏音樂</string>
+  <string name="morphe_hide_music_section_summary_on">音樂區塊已隱藏</string>
+  <string name="morphe_hide_music_section_summary_off">音樂區塊已顯示</string>
   <string name="morphe_hide_subscribe_button_title">隱藏「訂閱」按鈕</string>
   <string name="morphe_hide_subscribe_button_summary_on">已隱藏「訂閱」按鈕</string>
   <string name="morphe_hide_subscribe_button_summary_off">已顯示「訂閱」按鈕</string>
@@ -204,6 +219,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_screen_title">頻道頁面</string>
   <string name="morphe_channel_screen_summary">隱藏或顯示頻道頁面元件</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">隱藏「社區」按鈕</string>
+  <string name="morphe_hide_community_button_summary_on">「社區」按鈕已隱藏</string>
+  <string name="morphe_hide_community_button_summary_off">「社區」按鈕已顯示</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">隱藏「為你推薦」區塊</string>
   <string name="morphe_hide_for_you_shelf_summary_on">已隱藏「為您推薦」區塊</string>
@@ -219,6 +237,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_summary_on">會員專屬區塊已隱藏</string>
   <string name="morphe_hide_members_shelf_summary_off">會員專屬區塊已顯示</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">隱藏「商店」按鈕</string>
+  <string name="morphe_hide_store_button_summary_on">「商店」按鈕已隱藏</string>
+  <string name="morphe_hide_store_button_summary_off">「商店」按鈕已顯示</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">隱藏「訂閱」按鈕</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">已隱藏「訂閱」按鈕</string>
@@ -298,6 +319,12 @@ Second \"item\" text"</string>
 
 中間有大寫字母的詞語必須輸入完全相同的大小寫（例如：iPhone、TikTok、YouTube）"</string>
   <string name="morphe_hide_keyword_content_about_title">關於關鍵字篩選</string>
+  <string name="morphe_hide_keyword_content_about_summary">"首頁/訂閱/搜尋結果會根據篩選條件，隱藏包含關鍵字詞組的相關內容
+
+限制
+• Shorts 無法透過頻道名稱篩選隱藏
+• 某些使用者介面可能無法隱藏
+• 搜尋關鍵字可能顯示無結果"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">比對整個字詞</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">將關鍵字或詞組用雙引號括起來，可以防止影片標題和頻道名稱的部分相符&lt;br&gt;&lt;br&gt;例如：&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 會隱藏影片：&lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不會隱藏：&lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -351,13 +378,18 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_url_success">已將網址複製到剪貼簿</string>
   <string name="morphe_share_copy_url_timestamp_success">已複製時間戳記網址</string>
   <string name="morphe_copy_video_url_title">顯示複製影片網址按鈕</string>
+  <string name="morphe_copy_video_url_summary_on">已顯示按鈕。輕觸以複製影片網址。按住以複製包含時間戳記的影片網址</string>
+  <string name="morphe_copy_video_url_summary_off">不顯示「複製影片網址」按鈕</string>
   <string name="morphe_copy_video_url_timestamp_title">顯示複製時間戳記網址按鈕</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">已顯示按鈕。輕觸以複製包含時間戳記的影片網址。按住以複製不包含時間戳記的影片網址</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">不顯示「複製時間戳記」按鈕</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">移除觀眾謹慎觀看對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">將移除對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">將顯示對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">這不會繞過年齡限制，只會自動按下同意。</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
+  <string name="morphe_disable_signin_to_tv_popup_title">停用「登入電視」彈出視窗</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">「登入電視」彈出視窗已停用</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">「登入電視」彈出視窗已啟用</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -566,6 +598,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">已隱藏「字幕」選單</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">已顯示「字幕」選單</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">隱藏「其他設定」</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">「其他設定」選單已隱藏</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_off">「其他設定」選單已顯示</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">隱藏「睡眠計時器」</string>
   <string name="morphe_hide_player_flyout_sleep_timer_summary_on">已隱藏「睡眠計時器」選單</string>
@@ -612,6 +647,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">已隱藏「以 VR 模式觀看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">已顯示「以 VR 模式觀看」</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_video_quality_title">隱藏影片畫質選單</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_on">影片畫質選單已隱藏</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_off">影片畫質選單已顯示</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_title">隱藏影片畫質選單頁尾</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">已隱藏影片畫質選單頁尾</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">已顯示影片畫質選單頁尾</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">隱藏「自動播放」按鈕</string>
   <string name="morphe_hide_autoplay_button_summary_on">已隱藏「自動播放」按鈕</string>
@@ -673,11 +714,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_history_title">隱藏觀看記錄中的 Shorts</string>
   <string name="morphe_hide_shorts_history_summary_on">已在觀看記錄中隱藏</string>
   <string name="morphe_hide_shorts_history_summary_off">已在觀看記錄中顯示</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">隱藏「自動配音」標籤</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">已隱藏地點標籤</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">已顯示地點標籤</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">隱藏「購買超級感謝」按鈕</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">「購買超級感謝」按鈕已隱藏</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">「購買超級感謝」按鈕已顯示</string>
   <string name="morphe_hide_shorts_effect_button_title">隱藏「特效」按鈕</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">「特效」按鈕已隱藏</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">「特效」按鈕已顯示</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">隱藏「綠幕」按鈕</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">已隱藏「綠幕」按鈕</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">已顯示「綠幕」按鈕</string>
   <string name="morphe_hide_shorts_hashtag_button_title">隱藏主題標記按鈕</string>
@@ -687,9 +733,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_join_button_title">隱藏「加入」按鈕</string>
   <string name="morphe_hide_shorts_join_button_summary_on">已隱藏「加入」按鈕</string>
   <string name="morphe_hide_shorts_join_button_summary_off">已顯示「加入」按鈕</string>
+  <string name="morphe_hide_shorts_live_preview_title">隱藏直播預覽</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">已隱藏直播預覽</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">已顯示直播預覽</string>
   <string name="morphe_hide_shorts_location_label_title">隱藏地點標籤</string>
   <string name="morphe_hide_shorts_location_label_summary_on">已隱藏地點標籤</string>
   <string name="morphe_hide_shorts_location_label_summary_off">已顯示地點標籤</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">隱藏「新貼文」按鈕</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">「新貼文」按鈕已隱藏</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">「新貼文」按鈕已顯示</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">隱藏暫停時顯示的按鈕</string>
@@ -698,6 +748,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_preview_comment_title">隱藏留言預覽</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">留言預覽已隱藏</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">留言預覽已顯示</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">隱藏「儲存音樂」按鈕</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">已隱藏「儲存音樂」按鈕</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">已顯示「儲存音樂」按鈕</string>
   <string name="morphe_hide_shorts_search_suggestions_title">隱藏搜尋建議</string>
@@ -718,8 +769,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_upcoming_button_title">隱藏「即將直播/首播」按鈕</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">已隱藏「即將直播/首播」按鈕</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">已顯示「即將直播/首播」按鈕</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">隱藏「使用此音效」按鈕</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">「使用此音效」按鈕已隱藏</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">「使用此音效」按鈕已顯示</string>
+  <string name="morphe_hide_shorts_use_template_button_title">隱藏「使用此範本」按鈕</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">「使用此範本」按鈕已隱藏</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">「使用此範本」按鈕已顯示</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -924,10 +977,15 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">設定匯入成功</string>
   <string name="morphe_sb_settings_import_failed">無法匯入：%s</string>
   <string name="morphe_sb_settings_export_failed">無法匯出：%s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"您的設定中包含一組私人的 SponsorBlock 使用者 ID。
+
+您的使用者 ID 就像密碼一樣，絕對不應該分享。"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">不再顯示</string>
   <string name="morphe_sb_diff_segments">變更片段操作</string>
   <string name="morphe_sb_segments_sponsor">贊助商廣告</string>
+  <string name="morphe_sb_segments_sponsor_sum">付費宣傳、付費推薦和直接廣告。不適用於自我推銷或為個人喜愛的公益活動/創作者/網站/產品提供免費宣傳。</string>
   <string name="morphe_sb_segments_selfpromo">非付費/自我推廣</string>
+  <string name="morphe_sb_segments_selfpromo_sum">類似「贊助商廣告」，但針對的是非付費或自我宣傳的內容。包含商品、捐款或合作夥伴資訊等片段</string>
   <string name="morphe_sb_segments_interaction">互動提醒（訂閱）</string>
   <string name="morphe_sb_segments_interaction_sum">內容中段簡短提醒觀眾按讚、訂閱或追蹤。 若提醒過長或內容具體，則應歸類為自我宣傳。</string>
   <string name="morphe_sb_segments_highlight">精華</string>
@@ -1237,6 +1295,7 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API 端點</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow URL 縮圖快取端點</string>
   <string name="morphe_alt_thumbnail_stills_about_title">靜態影片擷取</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">靜態擷取是擷取每個影片的開頭/中間/結尾作為縮圖。這些圖像內建於 YouTube 中，不會使用外部 API</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">使用快速靜態擷取</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_on">使用中等品質靜態擷取。縮圖載入速度會更快，但直播、未發布或非常舊的影片可能會顯示空白縮圖</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary_off">使用高品質的靜態擷取</string>
@@ -1254,10 +1313,15 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_summary_off">影片將不循環播放</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">顯示循環播放影片按鈕</string>
+  <string name="morphe_loop_video_button_summary_on">已顯示「循環播放影片」選單</string>
+  <string name="morphe_loop_video_button_summary_off">不顯示「循環播放影片」選單</string>
   <string name="morphe_loop_video_button_toast_on">循環播放影片已開啟</string>
   <string name="morphe_loop_video_button_toast_off">循環播放影片已關閉</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">偽裝裝置尺寸</string>
+  <string name="morphe_spoof_device_dimensions_summary_on">"已偽裝裝置尺寸
+
+雖然可能會解鎖更高的影片畫質，但你可能會遇到影片播放卡頓、電池續航力變差，以及未知的副作用"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"未偽裝裝置尺寸
 
 啟用此設定可以解鎖更高的影片畫質"</string>
@@ -1309,8 +1373,12 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_toast_shorts">已將 Shorts %1$s 畫質變更為：%2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">顯示速度對話方塊按鈕</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">按鈕已顯示。長按可將播放速度重設為預設值</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">不顯示「片段投票」按鈕</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">顯示畫質切換按鈕</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">按鈕已顯示。長按可重設為預設畫質</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">影片畫質選單已顯示</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">自訂播放速度選單</string>
   <string name="morphe_custom_speed_menu_summary_on">已顯示自訂播放速度選單</string>

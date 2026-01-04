@@ -124,7 +124,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_bar_summary_on">채널바가 숨겨집니다</string>
   <string name="morphe_hide_channel_bar_summary_off">채널바가 표시됩니다</string>
   <string name="morphe_hide_channel_watermark_title">채널 워터마크 숨기기</string>
-  <string name="morphe_hide_channel_watermark_summary_on">채널 워터마크가 숨겨져 있습니다</string>
+  <string name="morphe_hide_channel_watermark_summary_on">채널 워터마크가 숨겨집니다</string>
   <string name="morphe_hide_channel_watermark_summary_off">채널 워터마크가 표시됩니다</string>
   <string name="morphe_hide_crowdfunding_box_title">모금 행사 패널 숨기기</string>
   <string name="morphe_hide_crowdfunding_box_summary_on">모금 행사 패널이 숨겨집니다</string>
@@ -168,8 +168,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_summary_on">챕터 섹션이 숨겨집니다</string>
   <string name="morphe_hide_chapters_section_summary_off">챕터 섹션이 표시됩니다</string>
   <string name="morphe_hide_explore_podcast_section_title">\'팟캐스트 살펴보기\' 숨기기</string>
-  <string name="morphe_hide_explore_podcast_section_summary_on">팟캐스트 살펴보기 섹션이 숨겨집니다</string>
-  <string name="morphe_hide_explore_podcast_section_summary_off">팟캐스트 살펴보기 섹션이 표시됩니다</string>
+  <string name="morphe_hide_explore_podcast_section_summary_on">\'팟캐스트 살펴보기\' 섹션이 숨겨집니다</string>
+  <string name="morphe_hide_explore_podcast_section_summary_off">\'팟캐스트 살펴보기\' 섹션이 표시됩니다</string>
   <string name="morphe_hide_featured_links_section_title">추천 링크 숨기기</string>
   <string name="morphe_hide_featured_links_section_summary_on">추천 링크 섹션이 숨겨집니다</string>
   <string name="morphe_hide_featured_links_section_summary_off">추천 링크 섹션이 표시됩니다</string>
@@ -639,9 +639,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">오디오 트랙 메뉴가 표시됩니다</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨져 있습니다.
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨집니다
 
-'스푸핑 비디오 스트림'을 '안드로이드 No SDK'로 변경하여 오디오 트랙 메뉴를 표시하세요."</string>
+오디오 트랙 메뉴를 표시하려면, '동영상 스트림 변경하기'에서 기본 클라이언트를 'Android No SDK'로 변경하세요"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR로 보기 숨기기</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR로 보기 메뉴가 숨겨집니다</string>
@@ -650,9 +650,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_title">화질 메뉴 숨기기</string>
   <string name="morphe_hide_player_flyout_video_quality_summary_on">화질 메뉴가 숨겨집니다</string>
   <string name="morphe_hide_player_flyout_video_quality_summary_off">화질 메뉴가 표시됩니다</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">품질 설정 메뉴 하단 설명 숨기기</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">품질 설정 메뉴에서 하단 설명이 숨겨집니다</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">품질 설정 메뉴에서 하단 설명이 표시됩니다</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_title">화질 설정 메뉴 하단 설명 숨기기</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">화질 설정 메뉴에서 하단 설명이 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">화질 설정 메뉴에서 하단 설명이 표시됩니다</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_hide_autoplay_button_title">자동재생 버튼 숨기기</string>
   <string name="morphe_hide_autoplay_button_summary_on">자동재생 버튼이 숨겨집니다</string>
@@ -714,16 +714,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_history_title">시청 기록에서 Shorts 숨기기</string>
   <string name="morphe_hide_shorts_history_summary_on">시청 기록에서 숨겨집니다</string>
   <string name="morphe_hide_shorts_history_summary_off">시청 기록에서 표시됩니다</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_title">\'자동 더빙\' 라벨 숨기기</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">자동 더빙 라벨 숨기기</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">자동 더빙 라벨이 숨겨집니다</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">자동 더빙 라벨이 표시됩니다</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">\'Super Thanks 구매\' 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Super Thanks 구매 버튼 숨기기</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Super Thanks 구매 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Super Thanks 구매 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_effect_button_title">효과 버튼 숨기기</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">효과 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">효과 버튼이 표시됩니다</string>
-  <string name="morphe_hide_shorts_green_screen_button_title">\'그린 스크린\' 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">그린 스크린 버튼 숨기기</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">그린 스크린 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">그린 스크린 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_hashtag_button_title">해시태그 버튼 숨기기</string>
@@ -739,7 +739,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_location_label_title">위치 라벨 숨기기</string>
   <string name="morphe_hide_shorts_location_label_summary_on">위치 라벨이 숨겨집니다</string>
   <string name="morphe_hide_shorts_location_label_summary_off">위치 라벨이 표시됩니다</string>
-  <string name="morphe_hide_shorts_new_posts_button_title">\'새로운 게시물\' 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">새로운 게시물 버튼 숨기기</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">새로운 게시물 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">새로운 게시물 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">일시 정지 오버레이 버튼 숨기기</string>
@@ -748,7 +748,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">댓글 미리보기가 숨겨집니다</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">댓글 미리보기가 표시됩니다</string>
-  <string name="morphe_hide_shorts_save_sound_button_title">\'음악 저장\' 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">음악 저장 버튼 숨기기</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">음악 저장 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">음악 저장 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_search_suggestions_title">검색 추천 숨기기</string>
@@ -769,10 +769,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_upcoming_button_title">예정된 라이브 버튼 숨기기</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">예정된 라이브 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">예정된 라이브 버튼이 표시됩니다</string>
-  <string name="morphe_hide_shorts_use_sound_button_title">\'이 사운드 사용\' 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">이 사운드 사용 버튼 숨기기</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">이 사운드 사용 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">이 사운드 사용 버튼이 표시됩니다</string>
-  <string name="morphe_hide_shorts_use_template_button_title">\'템플릿 사용\' 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_use_template_button_title">템플릿 사용 버튼 숨기기</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">템플릿 사용 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">템플릿 사용 버튼이 표시됩니다</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -1306,12 +1306,12 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.loopvideo.loopVideoPatch -->
   <string name="morphe_loop_video_title">동영상 연속 재생 활성화하기</string>
-  <string name="morphe_loop_video_summary_on">동영상이 연속 재생됩니다</string>
-  <string name="morphe_loop_video_summary_off">동영상이 연속 재생되지 않습니다</string>
+  <string name="morphe_loop_video_summary_on">동영상을 연속 재생합니다</string>
+  <string name="morphe_loop_video_summary_off">동영상을 연속 재생하지 않습니다</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">동영상 연속 재생 버튼 표시하기</string>
-  <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼이 표시됩니다</string>
-  <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼이 표시되지 않습니다</string>
+  <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼을 표시합니다</string>
+  <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
   <string name="morphe_loop_video_button_toast_on">동영상 연속 재생이 켜집니다</string>
   <string name="morphe_loop_video_button_toast_off">동영상 연속 재생이 꺼집니다</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->

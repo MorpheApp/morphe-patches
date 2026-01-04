@@ -711,13 +711,16 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie 'Video-Streams fingieren' in 'A
   <string name="morphe_hide_shorts_history_title">Shorts im Verlauf verstecken</string>
   <string name="morphe_hide_shorts_history_summary_on">Im Verlauf versteckt</string>
   <string name="morphe_hide_shorts_history_summary_off">Im Verlauf angezeigt</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Verbergen des \'Auto-dubbed\'-Labels</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Label \"Automatisch synchronisiert\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Label \"Automatisch synchronisiert\" ist angezeigt</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">\'Super Thanks\'-Button ausblenden</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Schaltfläche \"Super Thanks kaufen\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Schaltfläche \"Super Thanks kaufen\" wird angezeigt</string>
   <string name="morphe_hide_shorts_effect_button_title">Effekt-Schaltfläche ausblenden</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Effekt-Taste ist ausgeblendet</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Effekt-Taste ist eingeblendet</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Green-Screen-Button ausblenden</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Grünbildschirm-Taste ist ausgeblendet</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Grünbildschirm-Taste wird angezeigt</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Hashtag Button ausblenden</string>
@@ -733,6 +736,7 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie 'Video-Streams fingieren' in 'A
   <string name="morphe_hide_shorts_location_label_title">Standortbezeichnung ausblenden</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Ortsbezeichnung ist ausgeblendet</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Ortsbezeichnung wird angezeigt</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Schaltfläche \"Neue Beiträge ausblenden\"</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Schaltfläche \"Neue Beiträge\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Schaltfläche \"Neue Beiträge\" wird angezeigt</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Pausierte Overlay-Tasten ausblenden</string>
@@ -741,6 +745,7 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie 'Video-Streams fingieren' in 'A
   <string name="morphe_hide_shorts_preview_comment_title">Kommentarvorschau ausblenden</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Vorschaukommentar ist ausgeblendet</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Vorschaukommentar wird angezeigt</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">\'Musik speichern\'-Button ausblenden</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Musikspeicher Button ist ausgeblendet</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Musikspeicher Button wird angezeigt</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Suchvorschläge ausblenden</string>
@@ -761,8 +766,10 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie 'Video-Streams fingieren' in 'A
   <string name="morphe_hide_shorts_upcoming_button_title">\'Demnächst\'-Button ausblenden</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Kommender Button ist ausgeblendet</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Kommende Schaltfläche wird angezeigt</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Schaltfläche \"Diesen Sound verwenden\" ausblenden</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Schaltfläche \"Diesen Sound verwenden\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Schaltfläche \"Diesen Sound verwenden\" ist angezeigt</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Schaltfläche „Diese Vorlage verwenden“ ausblenden</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Schaltfläche \"Diese Vorlage verwenden\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Schaltfläche „Diese Vorlage verwenden“ wird angezeigt</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
