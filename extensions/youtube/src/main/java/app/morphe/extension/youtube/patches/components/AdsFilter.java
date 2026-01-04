@@ -120,7 +120,8 @@ public final class AdsFilter extends Filter {
 
         final var webLinkPanel = new StringFilterGroup(
                 Settings.HIDE_WEB_SEARCH_RESULTS,
-                "web_link_panel"
+                "web_link_panel",
+                "web_result_panel"
         );
 
         final var merchandise = new StringFilterGroup(
