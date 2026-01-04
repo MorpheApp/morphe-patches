@@ -1,28 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-   https://github.com/google/material-design-icons/blob/9beae745bb758f3ad56654fb377ea5cf62be4915/symbols/android/edit/materialsymbolsoutlined/edit_wght200_24px.xml
-   Changes made: Icon has been resized to 30dp.
+    https://github.com/google/material-design-icons/blob/9beae745bb758f3ad56654fb377ea5cf62be4915/symbols/android/edit/materialsymbolsoutlined/edit_wght200_24px.xml
+    Changes made: Icon has been resized to 30dp.
 
-Copyright 2022 Google
+    Copyright 2022 Google
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+        http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 -->
-
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="30dp"
-        android:height="30dp"
-        android:viewportWidth="30"
-        android:viewportHeight="30">
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="30"
+    android:viewportHeight="30">
+
     <path
-            android:fillColor="@android:color/white"
-            android:pathData="M6.25,23.75 L7.62109,23.75 L20.9961,10.3789 L19.6211,9.00391 L6.25,22.3789 Z M5,25 L5,21.8516 L21.4766,5.35938 C21.6055,5.24219,21.7461,5.15625,21.8984,5.09375 C22.0547,5.03125,22.2148,5,22.3828,5 C22.5508,5,22.7148,5.02734,22.8711,5.07813 C23.0313,5.13281,23.1758,5.22656,23.3086,5.36719 L24.6406,6.70703 C24.7813,6.83984,24.875,6.98438,24.9258,7.14453 C24.9766,7.30469,25,7.46094,25,7.62109 C25,7.78906,24.9727,7.95313,24.9141,8.10547 C24.8555,8.26172,24.7656,8.40234,24.6406,8.53125 L8.14844,25 Z M23.7734,7.61719 L22.3828,6.22656 Z M20.2969,9.70313 L19.6211,9.00391 L20.9961,10.3789 Z M20.2969,9.70313"/>
+        android:fillColor="@android:color/white"
+        android:pathData="M6.25,23.75 L7.62109,23.75 L20.9961,10.3789 L19.6211,9.00391 L6.25,22.3789 Z M5,25 L5,21.8516 L21.4766,5.35938 C21.6055,5.24219,21.7461,5.15625,21.8984,5.09375 C22.0547,5.03125,22.2148,5,22.3828,5 C22.5508,5,22.7148,5.02734,22.8711,5.07813 C23.0313,5.13281,23.1758,5.22656,23.3086,5.36719 L24.6406,6.70703 C24.7813,6.83984,24.875,6.98438,24.9258,7.14453 C24.9766,7.30469,25,7.46094,25,7.62109 C25,7.78906,24.9727,7.95313,24.9141,8.10547 C24.8555,8.26172,24.7656,8.40234,24.6406,8.53125 L8.14844,25 Z M23.7734,7.61719 L22.3828,6.22656 Z M20.2969,9.70313 L19.6211,9.00391 L20.9961,10.3789 Z M20.2969,9.70313"/>
 </vector>
