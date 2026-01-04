@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-01-04T14:56:27",
-  "description": "# [1.1.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.0.1-dev.1...v1.1.0-dev.1) (2026-01-04)\n\n\n### Features\n\n* **YouTube - Hide layout components:** Add \"Hide Featured links\", \"Hide Featured videos\", \"Hide Join button\", and \"Hide Subscribe button\" options ([#72](https://github.com/MorpheApp/morphe-patches/issues/72)) ([727c2d9](https://github.com/MorpheApp/morphe-patches/commit/727c2d9d9d6af82d0c565472a6e120a7ec43e94a))\n* **YouTube - Hide Shorts components:** Add \"Hide 'Auto-dubbed' label\" and \"Hide live preview\" options ([#70](https://github.com/MorpheApp/morphe-patches/issues/70)) ([5239e43](https://github.com/MorpheApp/morphe-patches/commit/5239e434ef44433b5efacbbaa122c8c036e1f57d))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.1.0-dev.1/patches-1.1.0-dev.1.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.1.0-dev.1/patches-1.1.0-dev.1.mpp.asc",
-  "version": "1.1.0-dev.1"
+  "created_at": "2026-01-04T15:44:37",
+  "description": "# [1.1.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-01-04)\n\n\n### Bug Fixes\n\n* **YouTube:** Do not show bold icons if old settings menus is enabled ([bee9bb3](https://github.com/MorpheApp/morphe-patches/commit/bee9bb37b39f39a3db7dfe9c59147457b7cdefd0))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.1.0-dev.2/patches-1.1.0-dev.2.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.1.0-dev.2/patches-1.1.0-dev.2.mpp.asc",
+  "version": "1.1.0-dev.2"
 }
