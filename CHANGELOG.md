@@ -1,3 +1,10 @@
+# [1.1.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-01-04)
+
+
+### Bug Fixes
+
+* **YouTube:** Do not show bold icons if old settings menus is enabled ([bee9bb3](https://github.com/MorpheApp/morphe-patches/commit/bee9bb37b39f39a3db7dfe9c59147457b7cdefd0))
+
 # [1.1.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.0.1-dev.1...v1.1.0-dev.1) (2026-01-04)
 
 
