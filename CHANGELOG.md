@@ -1,3 +1,10 @@
+## [1.0.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-01-04)
+
+
+### Bug Fixes
+
+* **YouTube - Settings:** Icon doesn't change immediately with the theme ([#85](https://github.com/MorpheApp/morphe-patches/issues/85)) ([88e0fb8](https://github.com/MorpheApp/morphe-patches/commit/88e0fb8247b89122c197b99c65e99a6e53f7093c))
+
 # 1.0.0 (2026-01-01)
 
 
