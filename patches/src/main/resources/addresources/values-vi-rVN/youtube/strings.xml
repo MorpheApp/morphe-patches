@@ -168,13 +168,13 @@ Nếu cài đặt này được bật và Doodle đang hiển thị tại khu v�
   <string name="morphe_hide_explore_podcast_section_title">Ẩn \'Khám phá podcast\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Phần khám phá podcast đang ẩn</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Phần khám phá podcast đang hiển thị</string>
-  <string name="morphe_hide_featured_links_section_title">Ẩn liên kết nổi bật</string>
+  <string name="morphe_hide_featured_links_section_title">Ẩn Liên kết nổi bật</string>
   <string name="morphe_hide_featured_links_section_summary_on">Phần liên kết nổi bật đang ẩn</string>
   <string name="morphe_hide_featured_links_section_summary_off">Phần liên kết nổi bật đang hiển thị</string>
   <string name="morphe_hide_featured_places_section_title">Ẩn \'Địa điểm nổi bật\'</string>
   <string name="morphe_hide_featured_places_section_summary_on">Phần địa điểm nổi bật đang ẩn</string>
   <string name="morphe_hide_featured_places_section_summary_off">Phần địa điểm nổi bật đang hiển thị</string>
-  <string name="morphe_hide_featured_videos_section_title">Ẩn video liên quan</string>
+  <string name="morphe_hide_featured_videos_section_title">Ẩn Video nổi bật</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Phần video nổi bật đang ẩn</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Phần video nổi bật đang hiển thị</string>
   <string name="morphe_hide_gaming_section_title">Ẩn Gaming</string>
@@ -640,9 +640,9 @@ Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển 
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu bản âm thanh đang hiển thị</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Thực đơn âm thanh bị ẩn
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu bản âm thanh bị ẩn
 
-Để hiển thị thực đơn âm thanh, thay đổi 'Thao tác video giả' thành 'Android No SDK'"</string>
+Để hiển thị menu bản âm thanh, hãy đổi 'Giả mạo luồng video' thành 'Android No SDK'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ẩn Xem ở chế độ thực tế ảo</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu xem ở chế độ thực tế ảo đang ẩn</string>
@@ -715,9 +715,9 @@ Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển 
   <string name="morphe_hide_shorts_history_title">Ẩn Shorts trong nhật ký xem</string>
   <string name="morphe_hide_shorts_history_summary_on">Đã ẩn trong nhật ký xem</string>
   <string name="morphe_hide_shorts_history_summary_off">Đã hiển thị trong nhật ký xem</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_title">Ẩn nhãn \'Tự động lồng tiếng\'</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Nhãn vị trí đang ẩn</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Nhãn vị trí đang hiển thị</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Ẩn nhãn \'Bản lồng tiếng\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Nhãn bản lồng tiếng đang ẩn</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Nhãn bản lồng tiếng đang hiển thị</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Ẩn nút \'Mua Super Thanks\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Nút mua Super Thanks đang ẩn</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Nút mua Super Thanks đang hiển thị</string>

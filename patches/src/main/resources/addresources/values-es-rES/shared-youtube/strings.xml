@@ -35,7 +35,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Falsificar transmisiones de vídeo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Falsifica las transmisiones de vídeo del cliente para evitar problemas de reproducción</string>
   <string name="morphe_spoof_video_streams_title">Falsificar transmisiones de vídeo</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Las transmisiones de vídeo están falsificadas.
+  <string name="morphe_spoof_video_streams_summary_on">"Las transmisiones de vídeo están falsificadas
 
 Si eres un usuario de YouTube Premium, esta configuración podría no ser necesaria"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Las transmisiones de video no están suplantadas
@@ -92,7 +92,7 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para usar esta función, cambia \'Falsificar transmisiones de vídeo\' a cualquier cliente excepto Android Studio</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Sanear enlaces compartidos</string>
+  <string name="morphe_sanitize_sharing_links_title">Limpiar enlaces compartidos</string>
   <string name="morphe_sanitize_sharing_links_summary_on">El parámetro de consulta de seguimiento se elimina de los enlaces compartidos</string>
   <string name="morphe_sanitize_sharing_links_summary_off">El parámetro de consulta de seguimiento no se elimina de los enlaces compartidos</string>
   <string name="morphe_replace_music_with_youtube_title">Cambiar enlaces compartidos a youtube.com</string>

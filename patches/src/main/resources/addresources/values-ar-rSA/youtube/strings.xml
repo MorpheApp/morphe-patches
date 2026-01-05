@@ -121,8 +121,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_bar_summary_on">تم إخفاء شريط القناة</string>
   <string name="morphe_hide_channel_bar_summary_off">يتم عرض شريط القناة</string>
   <string name="morphe_hide_channel_watermark_title">إخفاء العلامة المائية للقناة</string>
-  <string name="morphe_hide_channel_watermark_summary_on">تم إخفاء علامة الماء على القناة</string>
-  <string name="morphe_hide_channel_watermark_summary_off">تم عرض علامة الماء على القناة</string>
+  <string name="morphe_hide_channel_watermark_summary_on">تم إخفاء علامة القناة المائية</string>
+  <string name="morphe_hide_channel_watermark_summary_off">يتم عرض علامة القناة المائية</string>
   <string name="morphe_hide_crowdfunding_box_title">إخفاء مربع التمويل الجماعي</string>
   <string name="morphe_hide_crowdfunding_box_summary_on">تم إخفاء مربع التمويل الجماعي</string>
   <string name="morphe_hide_crowdfunding_box_summary_off">يتم عرض مربع التمويل الجماعي</string>
@@ -167,15 +167,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_explore_podcast_section_title">إخفاء \'استكشاف البودكاست\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">تم إخفاء قسم استكشاف البودكاست</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">يتم عرض قسم استكشاف البودكاست</string>
-  <string name="morphe_hide_featured_links_section_title">إخفاء محتوى المميز</string>
-  <string name="morphe_hide_featured_links_section_summary_on">تم إخفاء قسم محتوى المميز</string>
-  <string name="morphe_hide_featured_links_section_summary_off">يتم عرض قسم محتوى المميز</string>
-  <string name="morphe_hide_featured_places_section_title">إخفاء \'مواقع المميز\'</string>
-  <string name="morphe_hide_featured_places_section_summary_on">تم إخفاء قسم محتوى المميز</string>
-  <string name="morphe_hide_featured_places_section_summary_off">يتم عرض قسم محتوى المميز</string>
-  <string name="morphe_hide_featured_videos_section_title">إخفاء فيديوهات المميز</string>
-  <string name="morphe_hide_featured_videos_section_summary_on">تم إخفاء قسم فيديوهات المميز</string>
-  <string name="morphe_hide_featured_videos_section_summary_off">يتم عرض قسم فيديوهات المميز</string>
+  <string name="morphe_hide_featured_links_section_title">إخفاء روابط مميزة</string>
+  <string name="morphe_hide_featured_links_section_summary_on">تم إخفاء قسم روابط مميزة</string>
+  <string name="morphe_hide_featured_links_section_summary_off">يتم عرض قسم روابط مميزة</string>
+  <string name="morphe_hide_featured_places_section_title">إخفاء \'أماكن مميزة\'</string>
+  <string name="morphe_hide_featured_places_section_summary_on">تم إخفاء قسم أماكن مميزة</string>
+  <string name="morphe_hide_featured_places_section_summary_off">يتم عرض قسم أماكن مميزة</string>
+  <string name="morphe_hide_featured_videos_section_title">إخفاء فيديوهات مميزة</string>
+  <string name="morphe_hide_featured_videos_section_summary_on">تم إخفاء قسم فيديوهات مميزة</string>
+  <string name="morphe_hide_featured_videos_section_summary_off">يتم عرض قسم فيديوهات مميزة</string>
   <string name="morphe_hide_gaming_section_title">إخفاء الألعاب</string>
   <string name="morphe_hide_gaming_section_summary_on">تم إخفاء قسم الألعاب</string>
   <string name="morphe_hide_gaming_section_summary_off">يتم عرض قسم الألعاب</string>
@@ -219,9 +219,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_screen_title">صفحة القناة</string>
   <string name="morphe_channel_screen_summary">إخفاء أو عرض مكونات صفحة القناة</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">إخفاء زر \'المنطقة\'</string>
-  <string name="morphe_hide_community_button_summary_on">تم إخفاء زر \'المنطقة\'</string>
-  <string name="morphe_hide_community_button_summary_off">يتم عرض زر \'المنطقة\'</string>
+  <string name="morphe_hide_community_button_title">إخفاء زر المنتدى</string>
+  <string name="morphe_hide_community_button_summary_on">تم إخفاء زر المنتدى</string>
+  <string name="morphe_hide_community_button_summary_off">يتم عرض زر المنتدى</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">إخفاء رف \'مقترحات لك\'</string>
   <string name="morphe_hide_for_you_shelf_summary_on">تم إخفاء رف مقترح لك</string>
@@ -237,9 +237,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_summary_on">تم إخفاء رف الأعضاء</string>
   <string name="morphe_hide_members_shelf_summary_off">يتم عرض رف الأعضاء</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">إخفاء زر \'المتجر\'</string>
-  <string name="morphe_hide_store_button_summary_on">تم إخفاء زر \'المتجر\'</string>
-  <string name="morphe_hide_store_button_summary_off">يتم عرض زر \'المتجر\'</string>
+  <string name="morphe_hide_store_button_title">إخفاء زر المتجر</string>
+  <string name="morphe_hide_store_button_summary_on">تم إخفاء زر المتجر</string>
+  <string name="morphe_hide_store_button_summary_off">يتم عرض زر المتجر</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">إخفاء زر اشتراك</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">تم إخفاء زر اشتراك</string>
@@ -319,7 +319,7 @@ Second \"item\" text"</string>
 
 يجب إدخال الكلمات التي تحتوي على أحرف كبيرة في المنتصف بنفس الحالة (على سبيل المثال: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">لمحة عن تصفية الكلمات المفتاحية</string>
-  <string name="morphe_hide_keyword_content_about_summary">"الصفحة الرئيسية/الاشتراكات/نتائج البحث يتم تصفيتها لإخفاء المحتوى الذي يتطابق مع كلمات البحث
+  <string name="morphe_hide_keyword_content_about_summary">"الصفحة الرئيسية / الاشتراكات / نتائج البحث يتم تصفيتها لإخفاء المحتوى الذي يتطابق مع كلمات البحث
 
 القيود
 • فيديوهات Shorts لا يمكن إخفاؤها بواسطة اسم القناة
@@ -379,17 +379,17 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_url_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني</string>
   <string name="morphe_copy_video_url_title">عرض زر نسخ عنوان URL للفيديو</string>
   <string name="morphe_copy_video_url_summary_on">يتم عرض الزر. انقر لنسخ عنوان URL للفيديو. انقر مع الاستمرار للنسخ مع الطابع الزمني</string>
-  <string name="morphe_copy_video_url_summary_off">لا يتم عرض زر التصويت على المقطع</string>
+  <string name="morphe_copy_video_url_summary_off">لا يتم عرض زر نسخ رابط الفيديو</string>
   <string name="morphe_copy_video_url_timestamp_title">عرض زر نسخ URL مع الطابع الزمني</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">يتم عرض الزر. انقر لنسخ عنوان URL للفيديو مع الطابع الزمني. انقر مع الاستمرار للنسخ بدون الطابع الزمني</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">لا يتم عرض زر التصويت على المقطع</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">لا يتم عرض زر نسخ URL مع الطابع الزمني</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">إزالة مربع حوار تقدير المشاهد</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">سيتم إزالة مربع الحوار</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">سيتم عرض مربع الحوار</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">وهذا لا يتجاوز قيود السن. بل يقبلها تلقائيًا.</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">تعطيل النافذة المنبثقة لتسجيل الدخول إلى التلفزيون</string>
+  <string name="morphe_disable_signin_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_on">تم تعطيل نافذة تسجيل الدخول إلى التلفزيون</string>
   <string name="morphe_disable_signin_to_tv_popup_summary_off">تم تمكين نافذة تسجيل الدخول إلى التلفزيون</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -598,7 +598,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">تم إخفاء قائمة الترجمة</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">يتم عرض قائمة الترجمة</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">إخفاء إعدادات إضافية</string>
+  <string name="morphe_hide_player_flyout_additional_settings_title">إخفاء إعدادات إضافية / المزيد</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">تم إخفاء قائمة إعدادات إضافية</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_off">يتم عرض قائمة إعدادات إضافية</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -639,9 +639,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">يتم عرض قائمة المقطع الصوتي</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"قائمة المسارات الصوتية مخفية
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"تم إخفاء قائمة المقطع الصوتي
 
-لإظهار قائمة المسارات الصوتية، قم بتغيير 'تضليل فيديوهات' إلى 'أندرويد بلا SDK'"</string>
+لعرض قائمة المقطع الصوتي، غيّر 'Spoof Video Streams' إلى 'Android No SDK'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء المشاهدة في VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">تم إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
@@ -714,10 +714,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_history_title">إخفاء Shorts في السجلّ</string>
   <string name="morphe_hide_shorts_history_summary_on">مخفي في السجلّ</string>
   <string name="morphe_hide_shorts_history_summary_off">يُعرض في السجلّ</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_title">إخفاء علامة \'تترجم تلقائيًا\'</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">تم إخفاء تسمية الموقع</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">يتم عرض تسمية الموقع</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'اشترِ شكرًا سوبر\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">إخفاء علامة \'مُدبلج تلقائيًا\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">تم إخفاء علامة \'مُدبلج تلقائيًا\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">يتم عرض علامة \'مُدبلج تلقائيًا\'</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'شراء Super Thanks\'</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">تم إخفاء زر شراء Super Thanks</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">يتم عرض زر شراء Super Thanks</string>
   <string name="morphe_hide_shorts_effect_button_title">إخفاء زر التأثير</string>
@@ -1309,15 +1309,15 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_summary_off">لن يتم تكرار الفيديو</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">عرض زر تكرار الفيديو</string>
-  <string name="morphe_loop_video_button_summary_on">يتم عرض قائمة تكرار الفيديو</string>
-  <string name="morphe_loop_video_button_summary_off">لا يتم عرض قائمة تكرار الفيديو</string>
+  <string name="morphe_loop_video_button_summary_on">يتم عرض زر تكرار الفيديو</string>
+  <string name="morphe_loop_video_button_summary_off">لا يتم عرض زر تكرار الفيديو</string>
   <string name="morphe_loop_video_button_toast_on">تكرار الفيديو قيد التشغيل</string>
   <string name="morphe_loop_video_button_toast_off">تكرار الفيديو متوقف</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">تزوير أبعاد الجهاز</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"تم تزييف أبعاد الجهاز
 
-قد يتم فتح قفل جودة الفيديو العالية ولكن قد تواجه تقطعًا في تشغيل الفيديو وعمر بطارية أسوأ وتأثيرات جانبية غير معروفة"</string>
+قد يتم فتح قفل جودات الفيديو العالية، ولكن قد تواجه تقطعًا في تشغيل الفيديو، وعمر بطارية أسوأ، وتأثيرات جانبية غير معروفة"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"أبعاد الجهاز غير مزيفة
 
 تمكين هذا يمكن أن يفتح جودات فيديو أعلى"</string>
@@ -1370,11 +1370,11 @@ Second \"item\" text"</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">عرض زر مربع حوار السرعة</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">يتم عرض الزر. انقر مع الاستمرار لإعادة ضبط سرعة التشغيل إلى الوضع الافتراضي</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">لا يتم عرض زر التصويت على المقطع</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">لا يتم عرض زر مربع حوار السرعة</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">عرض زر جودة الفيديو</string>
   <string name="morphe_video_quality_dialog_button_summary_on">يتم عرض الزر. انقر مع الاستمرار لإعادة تعيين الجودة إلى الوضع الافتراضي</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">يتم عرض قائمة جودة الفيديو</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">لا يتم عرض قائمة جودة الفيديو</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">قائمة سرعة التشغيل المخصصة</string>
   <string name="morphe_custom_speed_menu_summary_on">يتم عرض قائمة سرعة التشغيل المخصصة</string>

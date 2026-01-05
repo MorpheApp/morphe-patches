@@ -19,17 +19,67 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Относно</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Реклами</string>
+  <string name="morphe_settings_music_screen_2_general_title">Основни</string>
+  <string name="morphe_settings_music_screen_3_player_title">Плейър</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Разни</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Скриване на видео рекламите</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Видео рекламите са скрити</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Видео рекламите се показват</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Включи постоянно повтаряне</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Постоянното повтаряне е включено</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Постоянното повтаряне е изключено</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Бутон за предаване на Тв</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Бутонът за предаване е скрит</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Бутонът за предаване се показва</string>
+  <string name="morphe_music_hide_history_button_title">Скрийте бутона \"История\"</string>
+  <string name="morphe_music_hide_history_button_summary_on"> \"История\" е скрита</string>
+  <string name="morphe_music_hide_history_button_summary_off">\"История\" се показва</string>
+  <string name="morphe_music_hide_notification_button_title">Бутон за Известия</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Бутонът за известия е скрит</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Бутонът за известия е показан</string>
+  <string name="morphe_music_hide_search_button_title">Скриване на бутона за Търсене</string>
+  <string name="morphe_music_hide_search_button_summary_on">Бутона за Търсене е скрит</string>
+  <string name="morphe_music_hide_search_button_summary_off">Бутона за Търсене се показва</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Скриване на панела с Категории</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Лентата с категории е скрита</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Лентата с категории се показва</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Смени цвет на миниплеъра</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Цвятът на миниплеера съвпада с цвятът на пълноекранния плеер</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Миниплеърът използва стандартна цветова схема</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Навигационна лента</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Скриване или промяна на бутоните на лентата за навигация</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Бутон за Начало</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Бутона за начало е скрит</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Бутона за начало се показва</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Скриване на Библиотека</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Бутона за библиотека е скрит</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Бутона за библиотека се показва</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Скриване на Апгрейд</string>
+  <string name="morphe_music_hide_navigation_bar_title">Скриване на лентата за навигация</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Навигационната лента е скрита</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Навигационната лента се показва</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Имена на бутоните в лентата за навигация</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Етикетите са скрити</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Етикетите се показват</string>
   <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Скриване на  \'Получи премиум музика\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Етикетът е скрит</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Етикетът се показва</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Скриване на бутона за Апгрейд</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Бутонът е скрит</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Бутонът е показан</string>
 </resources>

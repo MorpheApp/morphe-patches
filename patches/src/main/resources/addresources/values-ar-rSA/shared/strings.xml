@@ -111,13 +111,13 @@ Second \"item\" text"</string>
   <string name="gms_core_toast_not_installed_message">MicroG لم يتم تثبيته. قم بتثبيته.</string>
   <string name="gms_core_dialog_title">الإجراء مطلوب</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG لا يملك صلاحية التشغيل في الخلفية.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"لا يملك MicroG صلاحية التشغيل في الخلفية.
 
 اتبَع دليل \"Don't kill my app\" الخاص بجوالك، وطبّق التعليمات على تثبيت MicroG.
 
 هذا ضروري لعمل التطبيق."</string>
   <string name="gms_core_dialog_open_website_text">فتح الموقع</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">" MicroG تحسينات البطارية يجب تعطيلها لمنع المشكلات.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">" تحسينات البطارية يجب تعطيلها لمنع المشكلات MicroG.
 
 تعطيل تحسينات البطارية لـ MicroG لا يضغظ على استهلاك البطارية.
 

@@ -41,13 +41,50 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Οι ροές βίντεο δεν παραποιούνται
 
 Η αναπαραγωγή ενδέχεται να μην λειτουργεί"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Αδυναμία λήψης ροής του προγράμματος πελάτη</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Δοκιμάστε να ενεργοποιήσετε: Μιμήση ροής βίντεο > Είσοδος Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Προεπιλεγμένο πρόγραμμα πελάτη</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Είσοδος Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Δεν είστε συνδεδεμένοι στο Android VR. Πατήστε εδώ για να συνδεθείτε</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Τρέχουσα σύνδεση σε Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε \'Κyendo κλέιντ\' σε Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Είσοδος στο Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Είσοδος στο Android VR μπορεί να επιλύσει προβλήματα αναπαραγωγής για ορισμένους χρήστες
+
+Για να εισέλθετε, πατήστε \"Συνέχεια\" παρακάτω"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Συνέχεια</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Αποσύνδεση</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Οδηγίες</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Κωδικός ενεργοποίησης: %s
+
+1. Πατήστε 'Άνοιγμα ιστοσελίδας' παρακάτω για να ανοίξετε την ιστοσελίδα 'Σύνδεση συσκευής'
+2. Εισάγετε από το πρόχειρο (ή πληκτρολογήστε) τον κωδικό ενεργοποίησης που εμφανίζεται παραπάνω
+3. Είσοδος στο Google εάν ζητηθεί. Εάν έχετε πολλαπλές λογαριασμούς τότε επιλέξτε αυτόν τον λογαριασμό YouTube
+4. Πατήστε 'Είσοδος YouTube VR'
+5. Επιστρέψτε σε αυτήν την εφαρμογή αφού φτάσετε στο μήνυμα 'Συσκευή συνδεδεμένη'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Άνοιγμα ιστοσελίδας</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Αποτυχία εξαγωγής κώδικα ενεργοποίησης</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Αποτυχία έκδοσης διακριτικού εξουσιοδότησης</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Είσοδος ολοκληρώθηκε με επιτυχία</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Η εγκρίνιση αποθηκεύτηκε
+
+• Οι ρυθμίσεις Morphe δεν θα εισάγουν/εξάγουν εγκρίνιση Android VR
+• Εάν η εφαρμογή παραμείνει αχρησιμοποίητη για 6 μήνες, η Google θα αφαιρέσει αυτή την εγκρίνιση
+• Θα χρειαστεί να συνδεθείτε ξανά εάν αλλάξετε το κωδικό πρόσβασης της Google ή να αποσυνδεθείτε αυτή την συσκευή από τις ρυθμίσεις της Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 προσωρινά μη διαθέσιμο (καθυστέρηση API)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Η σύνδεση Android VR έληξε, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 προσωρινά μη διαθέσιμο (καθυστέρηση %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 είναι προσωρινά μη διαθέσιμο</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Δεν είναι δυνατός ο έλεγχος εισόδου VR, η έγκριση διαδικασίας ελέγχου ιστοσελίδας δεν έχει επιτευχθεί</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Έξοδος από το Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Δεν έγκειται το κωδικό εισόδου VR, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
   <string name="morphe_force_original_audio_summary_on">Χρησιμοποιείται η αρχική γλώσσα ήχου</string>

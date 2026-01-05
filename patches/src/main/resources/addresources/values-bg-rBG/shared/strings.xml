@@ -17,6 +17,23 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Настройки</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Сигурни ли сте, че искате да продължите?</string>
+  <string name="morphe_settings_save">Запази</string>
+  <string name="morphe_settings_reset">Изчисти</string>
+  <string name="morphe_settings_reset_color">Възстановяване на цвят</string>
+  <string name="morphe_settings_color_invalid">Невалиден цвят</string>
+  <string name="morphe_settings_restart_title">Нужен е рестарт</string>
+  <string name="morphe_settings_restart_dialog_message">Рестартирайте приложението, за да влязат в сила тези промени.</string>
+  <string name="morphe_settings_restart">Рестарт</string>
+  <string name="morphe_settings_import">Импортиране</string>
+  <string name="morphe_settings_import_copy">Копиране</string>
+  <string name="morphe_settings_import_success">Импортирани са %d настройки</string>
+  <string name="morphe_settings_import_failure_parse">Неуспешно импортиране: %s</string>
+  <string name="morphe_settings_search_hint">Търсене на настройки</string>
+  <string name="morphe_settings_search_no_results_title">Не са открити резултати за \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Опитайте друга ключова дума</string>
+  <string name="morphe_settings_search_recent_searches">Последни търсения</string>
   <!-- Settings about dialog. -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->

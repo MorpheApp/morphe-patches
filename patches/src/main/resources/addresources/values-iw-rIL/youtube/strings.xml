@@ -377,8 +377,10 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_url_timestamp_success">כתובת URL עם חותמת זמן הועתקה</string>
   <string name="morphe_copy_video_url_title">הצג לחצן העתקת כתובת ה-URL של הסרטון</string>
   <string name="morphe_copy_video_url_summary_on">הלחצן מוצג. הקש כדי להעתיק את כתובת ה-URL של הסרטון. הקש והחזק כדי להעתיק עם חותמת זמן</string>
+  <string name="morphe_copy_video_url_summary_off">לחצן העתקה של כתובת וידאו אינו מוצג</string>
   <string name="morphe_copy_video_url_timestamp_title">הצג לחצן העתקת כתובת ה-URL של הסרטון עם חותמת זמן</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">הלחצן מוצג. הקש כדי להעתיק את כתובת ה-URL של הסרטון עם חותמת זמן. הקש והחזק כדי להעתיק ללא חותמת זמן</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">לחצן העתקה של כתובת טיימסטמפ אינו מוצג</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">הסר דו-שיח שיקול דעת הצופים</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">דו-שיח יוסר</string>
@@ -1364,6 +1366,7 @@ Second \"item\" text"</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">הצג לחצן דו-שיח של מהירות</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">הלחצן מוצג. יש להקיש ולהחזיק כדי לאפס את מהירות ההפעלה לברירת מחדל</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">לחצן מהירות לא מופיע</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">הצג לחצן איכות סרטון</string>
   <string name="morphe_video_quality_dialog_button_summary_on">הלחצן מוצג. הקש והחזק כדי לאפס את האיכות לברירת מחדל</string>

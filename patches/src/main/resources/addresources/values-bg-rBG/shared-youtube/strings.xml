@@ -17,16 +17,79 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Име на приложението</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">По избор</string>
+  <string name="morphe_custom_branding_icon_title">Икона на приложението</string>
+  <string name="morphe_custom_branding_icon_entry_1">Оригинал</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">По избор</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показвай отново</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Подправяне на видео потоци</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Подправете клиентските видео потоци, за да предотвратите проблеми с възпроизвеждането</string>
+  <string name="morphe_spoof_video_streams_title">Подправяне на видео потоци</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Видео потоците са подправени
+
+Ако сте потребител на YouTube Premium, това настройка може да не е нужна"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Видеопотоците не са подправени
+
+Възпроизвеждането може да не работи"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Не може да се изтеглят клиентски потоци</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Пробвайте да вкл. Подправяне на видеопотокове &gt; Вход в Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Клиент по подразбиране</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Вход в Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Несте влезли в Android VR. Натиснете тук за да се влезете.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Входът в Android VR е активен</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">За да използвате тази функционалност, променете \'Стандартен клиент\' на Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Вход за Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вход в Android VR може да реши проблеми с възпроизвеждане за някои потребители
+
+За да се влезете, натиснете \"Продължи\" отдолу"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продължи</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Изход</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код за активация: %s
+
+1. Натиснете 'Отвори уебсайт' отдолу, за да отворите уебсайта 'Приклейте уебсайт'
+2. Вмъкнете от клипборда (или напишете) кода за активация, показан отгоре
+3. Влезте в Google, ако ви е нужно. Ако имате повече сметки, изберете тази сметка YouTube
+4. Натиснете 'Разрешете YouTube VR' достъп
+5. Върнете се в това приложение след като достигнете съобщението 'Уебсайт приклеен'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Отвори уебсайта</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно издаване на код за активация</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно издаване на код за авторизация</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно се влязохте</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Автентификацията е запазена
+
+• Настройките за Morphe няма да бъдат импортирани/експортирани за Android VR автентификация
+• Ако приложението не се използва в продължение на 6 месеца, Google ще премахне тази автентификация
+• Ще трябва да се впишете отново, ако промените своя Google парола или изключите това устройство от Google настройки"</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
+  <string name="morphe_oauth2_toast_invalid">Невалиден токен за VR, опитайте се да се влезете в VR отново</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Принудително оригинален аудио език</string>
+  <string name="morphe_force_original_audio_summary_on">Използване на оригиналния език на аудиото</string>
+  <string name="morphe_force_original_audio_summary_off">Използване на аудио по подразбиране</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">За да използвате тази функция, променете \'Ппомяна на видео поток\' на всеки клиент освен Android Studio.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Почистване на споделените връзки</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Параметърът за следене е премахнат от споделяни връзки</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Параметърът за отчитане не е премахнат от споделяни връзки</string>
+  <string name="morphe_replace_music_with_youtube_title">Сменете споделяните връзки на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Споделяните връзки използват youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Споделяните връзки използват music.youtube.com</string>
 </resources>

@@ -41,7 +41,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"لا يتم تزييف تدفقات الفيديو
 
 قد لا يعمل تشغيل الفيديو"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">لم يتم استرداد أي تدفق عميل</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">تعذر جلب أي تدفقات عميل</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -52,12 +52,12 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">لم يتم تسجيل الدخول إلى Android VR. انقر هنا لتسجيل الدخول</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حالياً في Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">للحصول على هذه الميزة، تغيير \'العميل الافتراضي\' إلى Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">للحصول على هذه الميزة، غيّر \'العميل الافتراضي\' إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"تسجيل الدخول إلى Android VR يمكنه إصلاح مشكلات التشغيل لبعض المستخدمين
 
-لم يتم تسجيل الدخول. انقر على 'استمرار' أدناه لتسجيل الدخول"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">استمرار</string>
+لتسجيل الدخول. اضغط على 'متابعة' بالأسفل"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">متابعة</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">تسجيل خروج</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">تعليمات</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
