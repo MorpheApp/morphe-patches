@@ -6,8 +6,8 @@ import app.morphe.extension.youtube.settings.Settings;
 public class AutoCaptionsPatch {
 
     public enum AutoCaptionsStyle {
-        KEEP_BOTH,
-        DISABLE_BOTH,
+        BOTH_ENABLED,
+        BOTH_DISABLED,
         WITH_VOLUME_ONLY,
         WITHOUT_VOLUME_ONLY
     }
@@ -18,20 +18,36 @@ public class AutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions() {
-        if (!captionsButtonStatus) return false;
+        AutoCaptionsStyle style =
+            Settings.AUTO_CAPTIONS_STYLE.get();
+        boolean withVolumeAutoCaptioningEnabled =
+            style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
 
-        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
-        return style == AutoCaptionsStyle.DISABLE_BOTH || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY;
+        if (!withVolumeAutoCaptioningEnabled) {
+            /**
+             * Do this trick to disable auto-captioning only
+             * when 'withVolumeAutoCaptioningEnabled'
+             * field is false
+             */
+
+            return captionsButtonStatus;
+        }
+
+        return true;
     }
 
     /**
      * Injection point.
+     *
+     * Note: 'captionsButtonStatus' field check is not needed here
+     * because it's only related to 'disableAutoCaptions()' method
+     * in order to prevent auto-captioning with volume enabled
      */
     public static boolean disableMuteAutoCaptions() {
-        if (!captionsButtonStatus) return false;
+        AutoCaptionsStyle style =
+            Settings.AUTO_CAPTIONS_STYLE.get();
 
-        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
-        return style == AutoCaptionsStyle.DISABLE_BOTH || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
+        return style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY;
     }
 
     /**

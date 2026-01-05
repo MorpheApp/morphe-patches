@@ -146,7 +146,7 @@ public class Settings extends BaseSettings {
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
     public static final BooleanSetting COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("morphe_copy_video_url_timestamp", TRUE);
-    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.KEEP_BOTH, false);
+    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", TRUE, true);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
@@ -493,7 +493,7 @@ public class Settings extends BaseSettings {
         if (!VersionCheckPatch.IS_20_26_OR_GREATER) {
             var style = AUTO_CAPTIONS_STYLE.get();
             if (style == AutoCaptionsStyle.WITH_VOLUME_ONLY || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY) {
-                AUTO_CAPTIONS_STYLE.save(AutoCaptionsStyle.KEEP_BOTH);
+                AUTO_CAPTIONS_STYLE.save(AutoCaptionsStyle.BOTH_ENABLED);
             }
         }
 

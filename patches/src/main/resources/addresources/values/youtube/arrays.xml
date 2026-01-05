@@ -129,8 +129,8 @@
         <item>@string/morphe_auto_captions_style_entry_4</item>
     </string-array>
     <string-array name="morphe_auto_captions_style_entry_values">
-        <item>KEEP_BOTH</item>
-        <item>DISABLE_BOTH</item>
+        <item>BOTH_ENABLED</item>
+        <item>BOTH_DISABLED</item>
         <item>WITH_VOLUME_ONLY</item>
         <item>WITHOUT_VOLUME_ONLY</item>
     </string-array>

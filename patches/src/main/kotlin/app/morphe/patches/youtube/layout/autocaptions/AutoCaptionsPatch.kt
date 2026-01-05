@@ -8,6 +8,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.SubtitleButtonControllerFingerprint
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
@@ -50,7 +51,7 @@ val autoCaptionsPatch = bytecodePatch(
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions()Z
                 move-result v0
-                if-eqz v0, :auto_captions_enabled
+                if-nez v0, :auto_captions_enabled
                 const/4 v0, 0x1
                 return v0
                 :auto_captions_enabled
@@ -60,7 +61,7 @@ val autoCaptionsPatch = bytecodePatch(
 
         arrayOf(
             StartVideoInformerFingerprint to 0,
-            StoryboardRendererDecoderRecommendedLevelFingerprint to 1
+            SubtitleButtonControllerFingerprint to 1
         ).forEach { (fingerprint, enabled) ->
             fingerprint.method.addInstructions(
                 0,
