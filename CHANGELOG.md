@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0...v1.1.0) (2026-01-05)
+
+
+### Bug Fixes
+
+* **YouTube - Settings:** Icon doesn't change immediately with the theme ([#85](https://github.com/MorpheApp/morphe-patches/issues/85)) ([88e0fb8](https://github.com/MorpheApp/morphe-patches/commit/88e0fb8247b89122c197b99c65e99a6e53f7093c))
+* **YouTube - Spoof app version:** Change oldest spoof target to `19.35.36` ([#86](https://github.com/MorpheApp/morphe-patches/issues/86)) ([53ae587](https://github.com/MorpheApp/morphe-patches/commit/53ae587629e129c80be628b87779bfefadf0c2fb))
+* **YouTube:** Do not show bold icons if old settings menus is enabled ([bee9bb3](https://github.com/MorpheApp/morphe-patches/commit/bee9bb37b39f39a3db7dfe9c59147457b7cdefd0))
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide Featured links", "Hide Featured videos", "Hide Join button", and "Hide Subscribe button" options ([#72](https://github.com/MorpheApp/morphe-patches/issues/72)) ([727c2d9](https://github.com/MorpheApp/morphe-patches/commit/727c2d9d9d6af82d0c565472a6e120a7ec43e94a))
+* **YouTube - Hide Shorts components:** Add "Hide 'Auto-dubbed' label" and "Hide live preview" options ([#70](https://github.com/MorpheApp/morphe-patches/issues/70)) ([5239e43](https://github.com/MorpheApp/morphe-patches/commit/5239e434ef44433b5efacbbaa122c8c036e1f57d))
+
 # [1.1.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-01-05)
 
 
