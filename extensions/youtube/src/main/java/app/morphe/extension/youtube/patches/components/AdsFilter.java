@@ -73,6 +73,7 @@ public final class AdsFilter extends Filter {
                 "hero_promo_image",
                 // text_image_button_group_layout, landscape_image_button_group_layout, full_width_square_image_button_group_layout
                 "image_button_group_layout",
+                "landscape_image_carousel_layout",
                 "landscape_image_wide_button_layout",
                 "primetime_promo",
                 "product_details",
