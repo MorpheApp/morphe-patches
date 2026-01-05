@@ -131,12 +131,6 @@ public final class AdsFilter extends Filter {
                 "shopping_item_card_list"
         );
 
-        final var webLinkPanel = new StringFilterGroup(
-                Settings.HIDE_WEB_SEARCH_RESULTS,
-                "web_link_panel",
-                "web_result_panel"
-        );
-
         final var merchandise = new StringFilterGroup(
                 Settings.HIDE_MERCHANDISE_BANNERS,
                 "product_carousel",
@@ -162,8 +156,7 @@ public final class AdsFilter extends Filter {
                 promotionBanner,
                 selfSponsor,
                 shoppingLinks,
-                viewProducts,
-                webLinkPanel
+                viewProducts
         );
     }
 

@@ -259,6 +259,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "endorsement_header_footer.e"
         );
 
+        final var webLinkPanel = new StringFilterGroup(
+                Settings.HIDE_WEB_SEARCH_RESULTS,
+                "web_link_panel",
+                "web_result_panel"
+        );
+
         channelProfile = new StringFilterGroup(
                 null,
                 "channel_profile.e",
@@ -327,7 +333,8 @@ public final class LayoutComponentsFilter extends Filter {
                 subscriptionsChipBar,
                 surveys,
                 timedReactions,
-                videoRecommendationLabels
+                videoRecommendationLabels,
+                webLinkPanel
         );
     }
 

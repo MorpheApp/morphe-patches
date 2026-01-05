@@ -84,7 +84,6 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_SHOPPING_LINKS = new BooleanSetting("morphe_hide_shopping_links", TRUE);
     public static final BooleanSetting HIDE_VIDEO_ADS = new BooleanSetting("morphe_hide_video_ads", TRUE, true);
     public static final BooleanSetting HIDE_VIEW_PRODUCTS_BANNER = new BooleanSetting("morphe_hide_view_products_banner", TRUE);
-    public static final BooleanSetting HIDE_WEB_SEARCH_RESULTS = new BooleanSetting("morphe_hide_web_search_results", TRUE);
     public static final BooleanSetting HIDE_YOUTUBE_PREMIUM_PROMOTIONS = new BooleanSetting("morphe_hide_youtube_premium_promotions", TRUE);
 
     // Feed
@@ -112,6 +111,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_UPLOAD_TIME = new BooleanSetting("morphe_hide_upload_time", FALSE, "morphe_hide_upload_time_user_dialog_message");
     public static final BooleanSetting HIDE_VIDEO_RECOMMENDATION_LABELS = new BooleanSetting("morphe_hide_video_recommendation_labels", TRUE);
     public static final BooleanSetting HIDE_VIEW_COUNT = new BooleanSetting("morphe_hide_view_count", FALSE, "morphe_hide_view_count_user_dialog_message");
+    public static final BooleanSetting HIDE_WEB_SEARCH_RESULTS = new BooleanSetting("morphe_hide_web_search_results", TRUE);
 
     // Alternative thumbnails
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);

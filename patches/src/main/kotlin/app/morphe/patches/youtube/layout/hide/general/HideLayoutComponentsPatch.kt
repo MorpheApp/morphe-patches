@@ -229,6 +229,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_upload_time"),
             SwitchPreference("morphe_hide_video_recommendation_labels"),
             SwitchPreference("morphe_hide_view_count"),
+            SwitchPreference("morphe_hide_web_search_results"),
             SwitchPreference("morphe_hide_doodles"),
         )
 
