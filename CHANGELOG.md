@@ -1,3 +1,10 @@
+# [1.1.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-01-05)
+
+
+### Bug Fixes
+
+* **YouTube - Spoof app version:** Change oldest spoof target to `19.35.36` ([#86](https://github.com/MorpheApp/morphe-patches/issues/86)) ([53ae587](https://github.com/MorpheApp/morphe-patches/commit/53ae587629e129c80be628b87779bfefadf0c2fb))
+
 # [1.1.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-01-04)
 
 
