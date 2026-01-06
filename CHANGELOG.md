@@ -1,3 +1,10 @@
+# [1.2.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-01-06)
+
+
+### Features
+
+* **YouTube - Auto-captions:** Add an option to disable auto-captions when the device volume is muted ([#37](https://github.com/MorpheApp/morphe-patches/issues/37)) ([369f91e](https://github.com/MorpheApp/morphe-patches/commit/369f91e509d5b273624be5c75466757d9ed20a2a))
+
 # [1.1.0](https://github.com/MorpheApp/morphe-patches/compare/v1.0.0...v1.1.0) (2026-01-05)
 
 
