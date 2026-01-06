@@ -46,14 +46,6 @@ internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerpri
     )
 )
 
-internal object TranslucentNavigationStatusBarSecondaryFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    filters = listOf(
-        literal(45632194L)
-    )
-)
-
 /**
  * YouTube nav buttons.
  */
