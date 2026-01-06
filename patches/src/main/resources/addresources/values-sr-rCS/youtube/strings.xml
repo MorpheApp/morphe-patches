@@ -476,9 +476,13 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_swipe_change_video_summary_on">Prevlačenje u režimu celog ekrana će promeniti na sledeći/prethodni video</string>
   <string name="morphe_swipe_change_video_summary_off">Prevlačenje u režimu celog ekrana neće promeniti na sledeći/prethodni video</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Onemogući automatski titl</string>
-  <string name="morphe_disable_auto_captions_summary_on">Automatski titl je onemogućen</string>
-  <string name="morphe_disable_auto_captions_summary_off">Automatski titl je omogućen</string>
+  <string name="morphe_auto_captions_style_title">Automatski titlovi vidljivi</string>
+  <string name="morphe_auto_captions_style_entry_1">Prikaži kada je mutiran i kada nije</string>
+  <string name="morphe_auto_captions_style_entry_2">Nikada ne prikaži</string>
+  <string name="morphe_auto_captions_style_entry_3">Prikaži kada nije mutiran</string>
+  <string name="morphe_auto_captions_style_entry_4">Prikaži kada mutiran</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Prikaži automatske titlove</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Sakrij automatske titlove</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Dugmad radnji</string>
   <string name="morphe_hide_buttons_screen_summary">Sakrijte ili prikažite dugmad ispod videa</string>

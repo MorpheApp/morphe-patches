@@ -476,9 +476,13 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_swipe_change_video_summary_on">Teljes képernyős módban történő ujjbegyújtás megváltoztatja a következő/előző videóra</string>
   <string name="morphe_swipe_change_video_summary_off">Teljes képernyős módban történő ujjbegyújtás nem változtatja meg a következő/előző videóra</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Automatikus feliratok letiltása</string>
-  <string name="morphe_disable_auto_captions_summary_on">Az automatikus feliratok ki vannak kapcsolva</string>
-  <string name="morphe_disable_auto_captions_summary_off">Az automatikus feliratok be vannak kapcsolva</string>
+  <string name="morphe_auto_captions_style_title">Automatik feliratok láthatóság</string>
+  <string name="morphe_auto_captions_style_entry_1">Mutolt és nem mutolt állapotban mutassa</string>
+  <string name="morphe_auto_captions_style_entry_2">Soha ne mutassa</string>
+  <string name="morphe_auto_captions_style_entry_3">Nem mutolt állapotban mutassa</string>
+  <string name="morphe_auto_captions_style_entry_4">Mutoltáskor mutat</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Mutatja az automatikus feliratokat</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Rejtje az automatikus feliratokat</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Művelet gombok</string>
   <string name="morphe_hide_buttons_screen_summary">Gombok megjelenítése vagy elrejtése a videók alatt</string>

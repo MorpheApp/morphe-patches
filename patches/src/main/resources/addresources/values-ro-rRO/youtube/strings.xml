@@ -474,9 +474,13 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_swipe_change_video_summary_on">Glisarea în modul pe ecran complet va trece la următorul/anteriorul videoclip</string>
   <string name="morphe_swipe_change_video_summary_off">Glisarea în modul pe ecran complet nu va trece la următorul/anteriorul videoclip</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Dezactivează subtitrările automate</string>
-  <string name="morphe_disable_auto_captions_summary_on">Subtitrările Auto sunt dezactivate</string>
-  <string name="morphe_disable_auto_captions_summary_off">Subtitrările Auto sunt activate</string>
+  <string name="morphe_auto_captions_style_title">Vizibilitatea subtitrărilor Auto</string>
+  <string name="morphe_auto_captions_style_entry_1">Arată când mut și neamut</string>
+  <string name="morphe_auto_captions_style_entry_2">Nu arată niciodată</string>
+  <string name="morphe_auto_captions_style_entry_3">Arată când nu mut</string>
+  <string name="morphe_auto_captions_style_entry_4">Arată când mut</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Arată subtitrări automate</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Ascunde subtitrări automate</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Butoane de acţiune</string>
   <string name="morphe_hide_buttons_screen_summary">Ascunde sau arată butoanele sub videoclipuri</string>

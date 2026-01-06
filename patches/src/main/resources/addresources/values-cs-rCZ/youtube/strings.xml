@@ -477,9 +477,13 @@ Upravte hlasitost svislým přejetím po pravé straně obrazovky"</string>
   <string name="morphe_swipe_change_video_summary_on">Přejetí prstem v režimu celé obrazovky změní video na další/předchozí</string>
   <string name="morphe_swipe_change_video_summary_off">Přejetí prstem v režimu celé obrazovky nebude video měnit na další/předchozí</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Zakázat automatické titulky</string>
-  <string name="morphe_disable_auto_captions_summary_on">Automatické titulky jsou zakázány</string>
-  <string name="morphe_disable_auto_captions_summary_off">Automatické titulky jsou povoleny</string>
+  <string name="morphe_auto_captions_style_title">Viditelnost automatických titulků</string>
+  <string name="morphe_auto_captions_style_entry_1">Ukázat i když je ztichlé a neztichlé</string>
+  <string name="morphe_auto_captions_style_entry_2">Nikdy neukázat</string>
+  <string name="morphe_auto_captions_style_entry_3">Ukázat když není ztichlé</string>
+  <string name="morphe_auto_captions_style_entry_4">Zobrazit při tichém</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Zobrazit automatické titulky</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Skrýt automatické titulky</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Akční tlačítka</string>
   <string name="morphe_hide_buttons_screen_summary">Skrýt nebo zobrazit tlačítka pod videi</string>

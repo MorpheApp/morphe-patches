@@ -476,9 +476,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Превлачење у режиму целог екрана ће променити на следећи/претходни видео</string>
   <string name="morphe_swipe_change_video_summary_off">Превлачење у режиму целог екрана неће променити на следећи/претходни видео</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Онемогући аутоматски титл</string>
-  <string name="morphe_disable_auto_captions_summary_on">Аутоматски титл је онемогућен</string>
-  <string name="morphe_disable_auto_captions_summary_off">Аутоматски титл је омогућен</string>
+  <string name="morphe_auto_captions_style_title">Видивост аутоматских натписа</string>
+  <string name="morphe_auto_captions_style_entry_1">Прикажи када је мутиран и немутиран</string>
+  <string name="morphe_auto_captions_style_entry_2">Никада не приказуј</string>
+  <string name="morphe_auto_captions_style_entry_3">Прикажи када није мутиран</string>
+  <string name="morphe_auto_captions_style_entry_4">Прикажи када је утишано</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Прикажи аутоматске титлове</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Сакриј аутоматске титлове</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Дугмад радњи</string>
   <string name="morphe_hide_buttons_screen_summary">Сакријте или прикажите дугмад испод видеа</string>

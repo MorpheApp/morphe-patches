@@ -476,9 +476,13 @@ Regola il volume scorrendo verticalmente sul lato destro dello schermo"</string>
   <string name="morphe_swipe_change_video_summary_on">Lo scorrimento in modalità a schermo intero passerà al video successivo/precedente</string>
   <string name="morphe_swipe_change_video_summary_off">Lo scorrimento in modalità schermo intero non cambierà al video successivo/precedente</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Disabilita i sottotitoli automatici </string>
-  <string name="morphe_disable_auto_captions_summary_on">I sottotitoli Auto sono disabilitati</string>
-  <string name="morphe_disable_auto_captions_summary_off">I sottotitoli Auto sono abilitati</string>
+  <string name="morphe_auto_captions_style_title">Visibilità dei sottotitoli automatici</string>
+  <string name="morphe_auto_captions_style_entry_1">Mostra sempre</string>
+  <string name="morphe_auto_captions_style_entry_2">Mai mostrare</string>
+  <string name="morphe_auto_captions_style_entry_3">Mostra quando non silenzioso</string>
+  <string name="morphe_auto_captions_style_entry_4">Mostra quando silenzioso</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Mostra i sottotitoli automatici</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Nascondi i sottotitoli automatici</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Pulsanti azione</string>
   <string name="morphe_hide_buttons_screen_summary">Mostra o nascondi i pulsanti sotto i video</string>

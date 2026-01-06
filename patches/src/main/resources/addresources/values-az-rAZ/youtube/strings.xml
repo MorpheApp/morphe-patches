@@ -476,9 +476,13 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_swipe_change_video_summary_on">Tam ekran rejimində sürüşdürmə növbəti/əvvəlki videoya ötürəcək</string>
   <string name="morphe_swipe_change_video_summary_off">Tam ekran rejimində sürüşdürmə növbəti/əvvəlki videoya ötürməyəcək</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Avtomatik titrləri qapat</string>
-  <string name="morphe_disable_auto_captions_summary_on">Avtomatik titrlər qapalıdır</string>
-  <string name="morphe_disable_auto_captions_summary_off">Avtomatik titrlər aktivdir</string>
+  <string name="morphe_auto_captions_style_title">Avtomatik titrlərin görünüşü</string>
+  <string name="morphe_auto_captions_style_entry_1">Sessiz və aktiv halda göstər</string>
+  <string name="morphe_auto_captions_style_entry_2">Heç vaxt göstərilmir</string>
+  <string name="morphe_auto_captions_style_entry_3">Sessiz halda göstərilmir</string>
+  <string name="morphe_auto_captions_style_entry_4">Sessiz halda göstər</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik titrləri göstər</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik titrləri gizlət</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_hide_buttons_screen_summary">Videonun altındakı düymələri gizlət və ya göstər</string>

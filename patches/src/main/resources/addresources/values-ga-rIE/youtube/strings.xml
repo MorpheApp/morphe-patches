@@ -474,9 +474,13 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
   <string name="morphe_swipe_change_video_summary_on">Athróidh svaidhpeáil i mód lánscáileáin go dtí an chéad fhíseán eile/roimhe seo</string>
   <string name="morphe_swipe_change_video_summary_off">Ní athróidh svaidhpeáil i mód lánscáileáin go dtí an chéad fhíseán eile/roimhe seo</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Díchumasaigh fotheidil uathoibríocha</string>
-  <string name="morphe_disable_auto_captions_summary_on">Tá fotheidil uathoibríocha díchumasaithe</string>
-  <string name="morphe_disable_auto_captions_summary_off">Tá fotheidil uathoibríocha cumasaithe</string>
+  <string name="morphe_auto_captions_style_title">Tá visible go leor fo-ghníomhartha uathoibríocha</string>
+  <string name="morphe_auto_captions_style_entry_1">Tá visible nuair atá sé briste agus nuair nár briste</string>
+  <string name="morphe_auto_captions_style_entry_2">Ní fhéadfaidh sé a bheith visible riamh</string>
+  <string name="morphe_auto_captions_style_entry_3">Tá visible nuair nár briste</string>
+  <string name="morphe_auto_captions_style_entry_4">Taispeáin nuair atá tinn</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Taispeáin fotheidil uathoibríocha</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Fhág fotheidil uathoibríocha</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Cnaipí gníomhaíochta</string>
   <string name="morphe_hide_buttons_screen_summary">Folaigh nó taispeáin cnaipí faoi fhíseáin</string>

@@ -480,9 +480,13 @@ Réglez le volume en balayant verticalement sur le côté droit de l’écran"</
   <string name="morphe_swipe_change_video_summary_on">Le balayage en mode plein écran permet de passer à la vidéo suivante/précédente</string>
   <string name="morphe_swipe_change_video_summary_off">Le balayage en mode plein écran ne  permet pas de passer à la vidéo suivante/précédente</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Désactiver les sous-titres automatiques</string>
-  <string name="morphe_disable_auto_captions_summary_on">Les sous-titres automatiques sont désactivés</string>
-  <string name="morphe_disable_auto_captions_summary_off">Les sous-titres automatiques sont activés</string>
+  <string name="morphe_auto_captions_style_title">Visibilité des sous-titres automatiques</string>
+  <string name="morphe_auto_captions_style_entry_1">Afficher lorsque muet ou non muet</string>
+  <string name="morphe_auto_captions_style_entry_2">Ne jamais afficher</string>
+  <string name="morphe_auto_captions_style_entry_3">Afficher lorsque non muet</string>
+  <string name="morphe_auto_captions_style_entry_4">Afficher lors du silence</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Afficher les sous-titres automatiques</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Masquer les sous-titres automatiques</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Boutons sous la vidéo</string>
   <string name="morphe_hide_buttons_screen_summary">Masquer ou afficher les boutons sous les vidéos</string>

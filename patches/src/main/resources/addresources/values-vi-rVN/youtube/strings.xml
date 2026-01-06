@@ -477,9 +477,13 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_swipe_change_video_summary_on">Vuốt trong chế độ toàn màn hình sẽ chuyển sang video tiếp theo/trước đó</string>
   <string name="morphe_swipe_change_video_summary_off">Vuốt trong chế độ toàn màn hình sẽ không chuyển sang video tiếp theo/trước đó</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Tắt phụ đề tự động</string>
-  <string name="morphe_disable_auto_captions_summary_on">Phụ đề tự động đã tắt</string>
-  <string name="morphe_disable_auto_captions_summary_off">Phụ đề tự động đã bật</string>
+  <string name="morphe_auto_captions_style_title">Tự động hiển thị phụ đề</string>
+  <string name="morphe_auto_captions_style_entry_1">Hiển thị khi tắt âm thanh và không tắt âm thanh</string>
+  <string name="morphe_auto_captions_style_entry_2">Không bao giờ hiển thị</string>
+  <string name="morphe_auto_captions_style_entry_3">Hiển thị khi không tắt âm thanh</string>
+  <string name="morphe_auto_captions_style_entry_4">Hiển thị khi tắt tiếng</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Hiển thị phụ đề tự động</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Ẩn phụ đề tự động</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Nút thao tác</string>
   <string name="morphe_hide_buttons_screen_summary">Ẩn hoặc hiện các nút bên dưới video</string>

@@ -476,9 +476,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Проведення пальцем у повноекранному режимі перейде до наступного/попереднього відео</string>
   <string name="morphe_swipe_change_video_summary_off">Проведення пальцем у повноекранному режимі не перейде до наступного/попереднього відео</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Вимкнути автоматичні субтитри</string>
-  <string name="morphe_disable_auto_captions_summary_on">Автоматичні субтитри вимкнено</string>
-  <string name="morphe_disable_auto_captions_summary_off">Автоматичні субтитри ввімкнено</string>
+  <string name="morphe_auto_captions_style_title">Автоматичні підписи видимість</string>
+  <string name="morphe_auto_captions_style_entry_1">Показувати коли вимкнено та не вимкнено</string>
+  <string name="morphe_auto_captions_style_entry_2">Ніколи не показувати</string>
+  <string name="morphe_auto_captions_style_entry_3">Показувати коли не вимкнено</string>
+  <string name="morphe_auto_captions_style_entry_4">Показувати, коли відключено звук</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Показувати автоматичні субтитри</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Приховати автоматичні субтитри</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Кнопки дій</string>
   <string name="morphe_hide_buttons_screen_summary">Приховати або показувати кнопки дій під відео</string>

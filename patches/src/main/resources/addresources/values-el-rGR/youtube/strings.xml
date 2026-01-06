@@ -478,9 +478,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Σάρωση αριστερά/δεξιά κατά τη λειτουργία πλήρους οθόνης για αλλαγή σε επόμενο/προηγούμενο βίντεο</string>
   <string name="morphe_swipe_change_video_summary_off">Η χειρονομία αλλαγής βίντεο κατά τη λειτουργία πλήρους οθόνης είναι ανενεργή</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Απενεργοποίηση αυτόματων υπότιτλων</string>
-  <string name="morphe_disable_auto_captions_summary_on">Οι αυτόματοι υπότιτλοι είναι απενεργοποιημένοι</string>
-  <string name="morphe_disable_auto_captions_summary_off">Οι αυτόματοι υπότιτλοι είναι ενεργοποιημένοι</string>
+  <string name="morphe_auto_captions_style_title">Ορατότητα αυτόματων υπότιτλων</string>
+  <string name="morphe_auto_captions_style_entry_1">Εμφάνιση όταν είναι σιωπηλός και όχι</string>
+  <string name="morphe_auto_captions_style_entry_2">Δεν εμφανίζεται ποτέ</string>
+  <string name="morphe_auto_captions_style_entry_3">Εμφάνιση όταν δεν είναι σιωπηλός</string>
+  <string name="morphe_auto_captions_style_entry_4">Εμφάνιση όταν σιωπηλός</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Εμφάνιση αυτόματων υπότιτλων</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Απόκρυψη αυτόματων υπότιτλων</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Κουμπιά ενεργειών</string>
   <string name="morphe_hide_buttons_screen_summary">Απόκρυψη ή εμφάνιση κουμπιών κάτω από βίντεο</string>

@@ -476,9 +476,13 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_swipe_change_video_summary_on">Strygning i fuldskærmstilstand vil ændre til den næste/forrige video</string>
   <string name="morphe_swipe_change_video_summary_off">Strygning i fuldskærmstilstand vil ikke ændre til den næste/forrige video</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Deaktivér auto-billedtekster</string>
-  <string name="morphe_disable_auto_captions_summary_on">Automatiske billedtekster er deaktiveret</string>
-  <string name="morphe_disable_auto_captions_summary_off">Automatiske billedtekster er aktiveret</string>
+  <string name="morphe_auto_captions_style_title">Automatisk tekstbilledvisning</string>
+  <string name="morphe_auto_captions_style_entry_1">Vis når stumt og ikke stumt</string>
+  <string name="morphe_auto_captions_style_entry_2">Vis aldrig</string>
+  <string name="morphe_auto_captions_style_entry_3">Vis når ikke stumt</string>
+  <string name="morphe_auto_captions_style_entry_4">Vis, hvis stumt</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Vis auto-billedtekster</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Skjul auto-billedtekster</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Handlingsknapper</string>
   <string name="morphe_hide_buttons_screen_summary">Skjul eller vis knapper under videoer</string>

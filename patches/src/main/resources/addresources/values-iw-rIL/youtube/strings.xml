@@ -474,9 +474,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">החלקה במצב מסך מלא תשנה לסרטון הבא/הקודם</string>
   <string name="morphe_swipe_change_video_summary_off">החלקה במצב מסך מלא לא תשנה לסרטון הבא/הקודם</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">השבת כתוביות אוטומטיות</string>
-  <string name="morphe_disable_auto_captions_summary_on">כתוביות אוטומטיות מופעלות</string>
-  <string name="morphe_disable_auto_captions_summary_off">כתוביות אוטומטיות מושבתות</string>
+  <string name="morphe_auto_captions_style_title">הצגת כתוביות אוטומטיות</string>
+  <string name="morphe_auto_captions_style_entry_1">הצג כשהוא/היא און/אוף</string>
+  <string name="morphe_auto_captions_style_entry_2">אל תהצג</string>
+  <string name="morphe_auto_captions_style_entry_3">הצג כשהוא/היא און</string>
+  <string name="morphe_auto_captions_style_entry_4">הצג בעת שתק</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">הצג כתוביות אוטומטיות</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">הסתר כתוביות אוטומטיות</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">פעולות לחצנים</string>
   <string name="morphe_hide_buttons_screen_summary">הסתר או הצג לחצנים תחת סרטונים</string>

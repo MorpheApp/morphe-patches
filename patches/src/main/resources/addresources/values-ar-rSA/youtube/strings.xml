@@ -476,9 +476,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">سيؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <string name="morphe_swipe_change_video_summary_off">لن يؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">تعطيل الترجمة التلقائية</string>
-  <string name="morphe_disable_auto_captions_summary_on">تم تعطيل الترجمة التلقائية</string>
-  <string name="morphe_disable_auto_captions_summary_off">تم تمكين الترجمة التلقائية</string>
+  <string name="morphe_auto_captions_style_title">تظهر الترجمة التلقائية</string>
+  <string name="morphe_auto_captions_style_entry_1">أظهر عند الصامتة وغير الصامتة</string>
+  <string name="morphe_auto_captions_style_entry_2">عدم العرض أبداً</string>
+  <string name="morphe_auto_captions_style_entry_3">أظهر عند عدم الصامتة</string>
+  <string name="morphe_auto_captions_style_entry_4">أظهر عند الصامت</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">أظهر الترجمة التلقائية</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">إخفاء الترجمة التلقائية</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">أزرار الإجراء</string>
   <string name="morphe_hide_buttons_screen_summary">إخفاء أو عرض الأزرار تحت الفيديوهات</string>

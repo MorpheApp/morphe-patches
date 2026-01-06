@@ -476,9 +476,13 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_swipe_change_video_summary_on">Tam ekran modunda kaydırma, bir sonraki/önceki videoya geçecektir</string>
   <string name="morphe_swipe_change_video_summary_off">Tam ekran modunda kaydırma, bir sonraki/önceki videoya geçmeyecektir</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Otomatik altyazıları devre dışı bırak</string>
-  <string name="morphe_disable_auto_captions_summary_on">Otomatik altyazılar devre dışı</string>
-  <string name="morphe_disable_auto_captions_summary_off">Otomatik altyazılar etkin</string>
+  <string name="morphe_auto_captions_style_title">Otomatik altyazılar görünürlüğü</string>
+  <string name="morphe_auto_captions_style_entry_1">Sessiz ve sessiz olmayan durumda göster</string>
+  <string name="morphe_auto_captions_style_entry_2">Asla gösterme</string>
+  <string name="morphe_auto_captions_style_entry_3">Sessiz olmayan durumda göster</string>
+  <string name="morphe_auto_captions_style_entry_4">Sessizkenalog göster</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Otomatik altyazıları göster</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Otomatik altyazıları gizle</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Eylem düğmeleri</string>
   <string name="morphe_hide_buttons_screen_summary">Videoların altındaki düğmeleri gizle veya göster</string>

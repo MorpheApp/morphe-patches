@@ -475,9 +475,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환합니다</string>
   <string name="morphe_swipe_change_video_summary_off">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환하지 않습니다</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">자동 자막 비활성화하기</string>
-  <string name="morphe_disable_auto_captions_summary_on">자동 자막을 비활성화합니다</string>
-  <string name="morphe_disable_auto_captions_summary_off">자동 자막을 활성화합니다</string>
+  <string name="morphe_auto_captions_style_title">자동 자막 표시 여부</string>
+  <string name="morphe_auto_captions_style_entry_1">무음 시 표시/무음 아닐 때 표시</string>
+  <string name="morphe_auto_captions_style_entry_2">결코 표시하지 않음</string>
+  <string name="morphe_auto_captions_style_entry_3">무음 아닐 때 표시</string>
+  <string name="morphe_auto_captions_style_entry_4">무음 시 표시</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">자동 자막 표시</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막 숨기기</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">동작 버튼</string>
   <string name="morphe_hide_buttons_screen_summary">플레이어 하단에서 동작 버튼을 숨기거나 표시할 수 있습니다</string>

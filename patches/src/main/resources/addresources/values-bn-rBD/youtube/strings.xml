@@ -472,9 +472,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">ফুলস্ক্রিন মোডে সোয়াইপ করলে পরবর্তী/পূর্ববর্তী ভিডিওতে পরিবর্তন হবে</string>
   <string name="morphe_swipe_change_video_summary_off">ফুলস্ক্রিন মোডে সোয়াইপ করলে পরবর্তী /পূর্ববর্তী ভিডিওতে পরিবর্তন হবে না</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">স্বয়ংক্রিয় ক্যাপশন বন্ধ করুন</string>
-  <string name="morphe_disable_auto_captions_summary_on">অটো ক্যাপশনগুলি নিষ্ক্রিয় করা হয়েছে</string>
-  <string name="morphe_disable_auto_captions_summary_off">অটো ক্যাপশনগুলি সক্রিয় করা হয়েছে</string>
+  <string name="morphe_auto_captions_style_title">অটো ক্যাপশন দৃশ্যমানতা</string>
+  <string name="morphe_auto_captions_style_entry_1">মুটি করা এবং মুটি না করা অবস্থায় দেখান</string>
+  <string name="morphe_auto_captions_style_entry_2">কখনো দেখান না</string>
+  <string name="morphe_auto_captions_style_entry_3">মুটি না করা অবস্থায় দেখান</string>
+  <string name="morphe_auto_captions_style_entry_4">মুটি অবস্থায় দেখান</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">স্বয়ংক্রিয় ক্যাপশন দেখান</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">স্বয়ংক্রিয় ক্যাপশন লুকান</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">অ্যাকশন বোতাম</string>
   <string name="morphe_hide_buttons_screen_summary">ভিডিওর নীচে বোতাম লুকানো বা দেখানো</string>

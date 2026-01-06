@@ -476,9 +476,13 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_swipe_change_video_summary_on">Mengusap dalam mode layar penuh akan beralih ke video berikutnya/sebelumnya</string>
   <string name="morphe_swipe_change_video_summary_off">Mengusap dalam mode layar penuh tidak akan beralih ke video berikutnya/sebelumnya</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Matikan teks otomatis</string>
-  <string name="morphe_disable_auto_captions_summary_on">Teks otomatis dinonaktifkan</string>
-  <string name="morphe_disable_auto_captions_summary_off">Teks otomatis diaktifkan</string>
+  <string name="morphe_auto_captions_style_title">Ketentuan teks otomatis</string>
+  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat bisu dan tidak bisu</string>
+  <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
+  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak bisu</string>
+  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat bisu</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Tampilkan teks otomatis</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_hide_buttons_screen_summary">Sembunyikan atau tampilkan tombol di bawah video</string>

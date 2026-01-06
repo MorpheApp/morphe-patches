@@ -474,9 +474,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">การปัดในโหมดเต็มหน้าจอจะเปลี่ยนไปเป็นวิดีโอถัดไป/ก่อนหน้า</string>
   <string name="morphe_swipe_change_video_summary_off">การปัดในโหมดเต็มหน้าจอจะไม่เปลี่ยนเป็นวิดีโอถัดไป/ก่อนหน้า</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">ปิดใช้งานคำบรรยายอัตโนมัติ</string>
-  <string name="morphe_disable_auto_captions_summary_on">คำบรรยาย\"Auto\"ถูกปิดใช้งาน</string>
-  <string name="morphe_disable_auto_captions_summary_off">คำบรรยาย\"Auto\"ถูกเปิดใช้งาน</string>
+  <string name="morphe_auto_captions_style_title">คำบรรยายแบบอัตโนมัติ</string>
+  <string name="morphe_auto_captions_style_entry_1">แสดงเสมอ</string>
+  <string name="morphe_auto_captions_style_entry_2">ไม่แสดง</string>
+  <string name="morphe_auto_captions_style_entry_3">แสดงเมื่อไม่เป็นเสียงดัง</string>
+  <string name="morphe_auto_captions_style_entry_4">แสดงเมื่อเงียบเสียง</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">แสดงคำบรรยายอัตโนมัติ</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">ซ่อนคำบรรยายอัตโนมัติ</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">ปุ่มการกระทำ</string>
   <string name="morphe_hide_buttons_screen_summary">ซ่อนหรือแสดงปุ่มใต้วิดีโอ</string>

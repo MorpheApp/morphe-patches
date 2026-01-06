@@ -476,9 +476,13 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
   <string name="morphe_swipe_change_video_summary_on">Vegen in de modus volledig scherm weergegeven, verandert naar de volgende/vorige video</string>
   <string name="morphe_swipe_change_video_summary_off">Vegen in de modus volledig scherm weergegeven, verandert niet naar de volgende/vorige video</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Automatische ondertitels uitschakelen</string>
-  <string name="morphe_disable_auto_captions_summary_on">Automatische ondertiteling is uitgeschakeld</string>
-  <string name="morphe_disable_auto_captions_summary_off">Automatische ondertiteling is ingeschakeld</string>
+  <string name="morphe_auto_captions_style_title">Automatische ondertitels zichtbaarheid</string>
+  <string name="morphe_auto_captions_style_entry_1">Toon bij stilstand en niet stil</string>
+  <string name="morphe_auto_captions_style_entry_2">Nooit tonen</string>
+  <string name="morphe_auto_captions_style_entry_3">Toon bij niet stil</string>
+  <string name="morphe_auto_captions_style_entry_4">Toon als gemuteerd</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Toon automatisch ondertitels</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Verberg automatisch ondertitels</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Actieknoppen</string>
   <string name="morphe_hide_buttons_screen_summary">Knoppen onder video\'s verbergen of weergeven</string>

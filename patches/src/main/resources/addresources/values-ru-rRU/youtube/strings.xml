@@ -476,9 +476,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Жест в полноэкранном режиме переключает на следующее/предыдущее видео</string>
   <string name="morphe_swipe_change_video_summary_off">Жест в полноэкранном режиме не переключает на следующее/предыдущее видео</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Отключить автоматические субтитры</string>
-  <string name="morphe_disable_auto_captions_summary_on">Автоматические субтитры отключены</string>
-  <string name="morphe_disable_auto_captions_summary_off">Автоматические субтитры включены</string>
+  <string name="morphe_auto_captions_style_title">Видимость автоматических субтитров</string>
+  <string name="morphe_auto_captions_style_entry_1">Показывать при включенном и выключенном звуке</string>
+  <string name="morphe_auto_captions_style_entry_2">Никогда не показывать</string>
+  <string name="morphe_auto_captions_style_entry_3">Показывать при выключенном звуке</string>
+  <string name="morphe_auto_captions_style_entry_4">Показать при заглушенном звуке</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Показать автоматические субтитры</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Скрыть автоматические субтитры</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Кнопки действий</string>
   <string name="morphe_hide_buttons_screen_summary">Скрыть или показать кнопки действий под плеером</string>

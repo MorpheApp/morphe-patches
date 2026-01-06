@@ -476,9 +476,13 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_swipe_change_video_summary_on">Pyyhkäisemällä kokoruututilassa siirrytään seuraavaan/edelliseen videoon</string>
   <string name="morphe_swipe_change_video_summary_off">Pyyhkäisemällä kokoruututilassa ei siirrytä seuraavaan/edelliseen videoon</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Poista automaattiset tekstitykset käytöstä</string>
-  <string name="morphe_disable_auto_captions_summary_on">Automaattiset tekstitykset eivät ole käytössä</string>
-  <string name="morphe_disable_auto_captions_summary_off">Automaattiset tekstitykset ovat käytössä</string>
+  <string name="morphe_auto_captions_style_title">Automaattisten tekstityksien näkyvyys</string>
+  <string name="morphe_auto_captions_style_entry_1">Näytä, kun mutkuttu ja ei mutkuttu</string>
+  <string name="morphe_auto_captions_style_entry_2">Älä näytä koskaan</string>
+  <string name="morphe_auto_captions_style_entry_3">Näytä, kun ei mutkuttu</string>
+  <string name="morphe_auto_captions_style_entry_4">Näytä, kun hiljennetty</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Näytä automaattiset tekstitykset</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Piilota automaattiset tekstitykset</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Toimintopainikkeet</string>
   <string name="morphe_hide_buttons_screen_summary">Piilota tai näytä painikkeet videoiden alla</string>

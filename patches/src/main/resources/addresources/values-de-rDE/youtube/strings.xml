@@ -473,9 +473,13 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_swipe_change_video_summary_on">Im Vollbildmodus wischen, um zum nächsten/vorherigen Video zu wechseln</string>
   <string name="morphe_swipe_change_video_summary_off">Im Vollbildmodus wischen, um nicht zum nächsten/vorherigen Video zu wechseln</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Autounterschriften deaktivieren</string>
-  <string name="morphe_disable_auto_captions_summary_on">Automatische Untertitel sind deaktiviert</string>
-  <string name="morphe_disable_auto_captions_summary_off">Automatische Untertitel sind aktiviert</string>
+  <string name="morphe_auto_captions_style_title">Automatische Untertitel-Ansicht</string>
+  <string name="morphe_auto_captions_style_entry_1">Anzeigen, wenn stummgeschaltet und nicht stummgeschaltet</string>
+  <string name="morphe_auto_captions_style_entry_2">Nie anzeigen</string>
+  <string name="morphe_auto_captions_style_entry_3">Anzeigen, wenn nicht stummgeschaltet</string>
+  <string name="morphe_auto_captions_style_entry_4">Zeige bei stummgeschaltet</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Zeige automatische Untertitel</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Verberge automatische Untertitel</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Aktionstasten</string>
   <string name="morphe_hide_buttons_screen_summary">Verstecke oder zeige Schaltflächen unter Videos</string>

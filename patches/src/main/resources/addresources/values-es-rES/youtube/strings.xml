@@ -476,9 +476,13 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_swipe_change_video_summary_on">Deslizar en modo de pantalla completa cambiará al video siguiente/anterior</string>
   <string name="morphe_swipe_change_video_summary_off">Deslizar en modo de pantalla completa no cambiará al video siguiente/anterior</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">Desactivar subtítulos automáticos</string>
-  <string name="morphe_disable_auto_captions_summary_on">Los subtítulos automáticos están desactivados</string>
-  <string name="morphe_disable_auto_captions_summary_off">Los subtítulos automáticos están activados</string>
+  <string name="morphe_auto_captions_style_title">Visibilidad de subtítulos automáticos</string>
+  <string name="morphe_auto_captions_style_entry_1">Mostrar cuando silenciado y no silenciado</string>
+  <string name="morphe_auto_captions_style_entry_2">Nunca mostrar</string>
+  <string name="morphe_auto_captions_style_entry_3">Mostrar cuando no silenciado</string>
+  <string name="morphe_auto_captions_style_entry_4">Mostrar cuando silenciado</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Mostrar subtítulos automáticos</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Ocultar subtítulos automáticos</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Botones de acción</string>
   <string name="morphe_hide_buttons_screen_summary">Oculta o muestra botones debajo de los vídeos</string>

@@ -476,9 +476,13 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">在全屏模式下滑动将切换到下一个/上一个视频</string>
   <string name="morphe_swipe_change_video_summary_off">在全屏模式下滑动将不会切换到下一个/上一个视频</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_disable_auto_captions_title">禁用自动字幕</string>
-  <string name="morphe_disable_auto_captions_summary_on">自动字幕已禁用</string>
-  <string name="morphe_disable_auto_captions_summary_off">自动字幕已启用</string>
+  <string name="morphe_auto_captions_style_title">自动字幕可见性</string>
+  <string name="morphe_auto_captions_style_entry_1">静音时显示，非静音时显示</string>
+  <string name="morphe_auto_captions_style_entry_2">从不显示</string>
+  <string name="morphe_auto_captions_style_entry_3">非静音时显示</string>
+  <string name="morphe_auto_captions_style_entry_4">显示静音时的字幕</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">显示自动字幕</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">隐藏自动字幕</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">操作按钮</string>
   <string name="morphe_hide_buttons_screen_summary">隐藏或显示视频下的按钮</string>
