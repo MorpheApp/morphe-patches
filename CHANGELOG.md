@@ -1,3 +1,10 @@
+# [1.2.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-01-06)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Do not change system nav bar transparency when disabling status bar transparency ([2b1330c](https://github.com/MorpheApp/morphe-patches/commit/2b1330c364cbed8ae243554616d88205fcf96376))
+
 # [1.2.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-01-06)
 
 
