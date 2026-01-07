@@ -603,6 +603,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideSearchSuggestions(String typingString) {
-        return Settings.HIDE_TRENDING_SEARCH_RESULTS.get() && typingString.isEmpty();
+        return Settings.HIDE_SEARCH_SUGGESTIONS.get() && typingString.isEmpty();
     }
 }
