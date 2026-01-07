@@ -464,7 +464,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
         }
 
-        // Hide trending searches
+        // Hide search suggestions
 
         SearchBoxTypingStringFingerprint.match(
             SearchBoxTypingMethodFingerprint.method,
