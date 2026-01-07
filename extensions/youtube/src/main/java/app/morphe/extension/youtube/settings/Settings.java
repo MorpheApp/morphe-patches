@@ -110,7 +110,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_SHOW_MORE_BUTTON = new BooleanSetting("morphe_hide_show_more_button", TRUE, true);
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);
     public static final BooleanSetting HIDE_TICKET_SHELF = new BooleanSetting("morphe_hide_ticket_shelf", FALSE);
-    public static final BooleanSetting HIDE_TRENDING_SEARCH_RESULTS = new BooleanSetting("morphe_hide_search_trending_results", FALSE);
+    public static final BooleanSetting HIDE_SEARCH_SUGGESTIONS = new BooleanSetting("morphe_hide_search_suggestions", FALSE);
     public static final BooleanSetting HIDE_UPLOAD_TIME = new BooleanSetting("morphe_hide_upload_time", FALSE, "morphe_hide_upload_time_user_dialog_message");
     public static final BooleanSetting HIDE_VIDEO_RECOMMENDATION_LABELS = new BooleanSetting("morphe_hide_video_recommendation_labels", TRUE);
     public static final BooleanSetting HIDE_VIEW_COUNT = new BooleanSetting("morphe_hide_view_count", FALSE, "morphe_hide_view_count_user_dialog_message");
