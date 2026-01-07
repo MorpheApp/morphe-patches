@@ -598,4 +598,11 @@ public final class LayoutComponentsFilter extends Filter {
 
         return original;
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideTrendingSearchResult(String typingString) {
+        return Settings.HIDE_TRENDING_SEARCH_RESULTS.get() && typingString.isEmpty();
+    }
 }

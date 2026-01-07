@@ -224,6 +224,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_movies_section"),
             SwitchPreference("morphe_hide_notify_me_button"),
             SwitchPreference("morphe_hide_playables"),
+            SwitchPreference("morphe_hide_search_trending_results"),
             SwitchPreference("morphe_hide_show_more_button"),
             SwitchPreference("morphe_hide_surveys"),
             SwitchPreference("morphe_hide_ticket_shelf"),
@@ -461,6 +462,32 @@ val hideLayoutComponentsPatch = bytecodePatch(
         RelatedChipCloudFingerprint.patch<OneRegisterInstruction>(1) { register ->
             "invoke-static { v$register }, " +
                 "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
+        }
+
+        // Hide trending searches
+
+        SearchBoxTypingStringFingerprint.match(
+            SearchBoxTypingMethodFingerprint.method,
+        ).let {
+            it.method.apply {
+                val stringRegisterIndex = it.instructionMatches.first().index
+                val typingStringRegister = getInstruction<TwoRegisterInstruction>(stringRegisterIndex).registerA
+
+                val insertIndex = stringRegisterIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, typingStringRegister)
+
+                addInstructionsWithLabels(
+                    insertIndex,
+                    """
+                        invoke-static { v$typingStringRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideTrendingSearchResult(Ljava/lang/String;)Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :show
+                        return-void
+                        :show
+                        nop
+                    """
+                )
+            }
         }
     }
 }
