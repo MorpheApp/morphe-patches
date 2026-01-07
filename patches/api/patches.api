@@ -553,6 +553,10 @@ public final class app/morphe/patches/youtube/layout/hide/time/HideTimestampPatc
 	public static final fun getHideTimestampPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
+public final class app/morphe/patches/youtube/layout/hidetrendingsearchresults/HideTrendingSearchResultsPatchKt {
+	public static final fun getHideSearchTrendingResultsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
+}
+
 public final class app/morphe/patches/youtube/layout/miniplayer/MiniplayerPatchKt {
 	public static final fun getMiniplayerPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }

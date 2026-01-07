@@ -1,5 +1,6 @@
 package app.morphe.patches.youtube.layout.hidetrendingsearchresults
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -13,11 +14,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HideTrendingSearchResultsPatch;"
 
-private const val PATCH_LABEL_NAME =
-    "trending_results_typing_string_empty"
-
 @Suppress("unused")
-val HideSearchTrendingResultsPatch = bytecodePatch(
+val hideSearchTrendingResultsPatch = bytecodePatch(
     name = "Hide search trending results",
     description = "Hide the trending results under the input search box.",
 ) {
@@ -42,26 +40,26 @@ val HideSearchTrendingResultsPatch = bytecodePatch(
 
         SearchBoxTypingStringFingerprint.match(
             SearchBoxTypingMethodFingerprint.method,
-        ).method.apply {
-            val typingStringInstruction = SearchBoxTypingStringFingerprint.instructionMatches[4]
-            val typingStringRegister = typingStringInstruction.instruction.registersUsed.first()
-            val addPatchIndex = typingStringInstruction.index
-            val freeRegister = findFreeRegister(addPatchIndex, typingStringRegister)
+        ).let {
+            it.method.apply {
+                val stringRegisterIndex = it.instructionMatches.first().index
+                val typingStringRegister = getInstruction<TwoRegisterInstruction>(stringRegisterIndex).registerA
 
-            addInstructionsWithLabels(
-                addPatchIndex,
+                val insertIndex = stringRegisterIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, typingStringRegister)
 
-                """
-                    invoke-static {v$typingStringRegister}, $EXTENSION_CLASS_DESCRIPTOR->isTypingStringEmpty(Ljava/lang/String;)Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :$PATCH_LABEL_NAME
-                    return-void
-                """,
-                ExternalLabel(
-                    PATCH_LABEL_NAME,
-                    getInstruction(addPatchIndex)
+                addInstructionsWithLabels(
+                    insertIndex,
+                    """
+                        invoke-static { v$typingStringRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideTrendingSearchResult(Ljava/lang/String;)Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :show
+                        return-void
+                        :show
+                        nop
+                    """
                 )
-            )
+            }
         }
     }
 }
