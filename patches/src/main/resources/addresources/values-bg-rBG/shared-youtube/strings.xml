@@ -77,7 +77,13 @@ Second \"item\" text"</string>
 • Настройките за Morphe няма да бъдат импортирани/експортирани за Android VR автентификация
 • Ако приложението не се използва в продължение на 6 месеца, Google ще премахне тази автентификация
 • Ще трябва да се впишете отново, ако промените своя Google парола или изключите това устройство от Google настройки"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">Временно не е възможно OAuth2 (изтекло време на API).</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Входът за Android VR е изтекъл, опитайте се да влезете в VR отново</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 временно не е достъпен (статус %d).</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 временно не е достъпен</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Не може да се впишете в VR, защото идентификацията на уебсайта не е одобрена</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Излезли сте от Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за VR, опитайте се да се влезете в VR отново</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудително оригинален аудио език</string>

@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Umpan</string>
   <string name="morphe_settings_screen_04_general_title">Umum</string>
   <string name="morphe_settings_screen_05_player_title">Pemutar</string>
-  <string name="morphe_settings_screen_07_seekbar_title">Bilah Ber-slider</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kontrol usap</string>
   <string name="morphe_settings_screen_11_misc_title">Lain-lain</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
@@ -366,7 +366,7 @@ Keterbatasan
   <string name="morphe_hide_view_products_banner_summary_on">Spanduk lihat produk di hamparan video disembunyikan</string>
   <string name="morphe_hide_view_products_banner_summary_off">Spanduk lihat produk di hamparan video ditampilkan</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Iklan YouTube Premium disembunyikan
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promosi YouTube Premium disembunyikan
 
 Keterbatasan: Halaman YouTube Doodles tidak tersedia"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promosi YouTube Premium ditampilkan</string>
@@ -476,11 +476,11 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_swipe_change_video_summary_on">Mengusap dalam mode layar penuh akan beralih ke video berikutnya/sebelumnya</string>
   <string name="morphe_swipe_change_video_summary_off">Mengusap dalam mode layar penuh tidak akan beralih ke video berikutnya/sebelumnya</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">Ketentuan teks otomatis</string>
-  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat bisu dan tidak bisu</string>
+  <string name="morphe_auto_captions_style_title">Visibilitas teks otomatis</string>
+  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat dibisukan dan tidak dibisukan</string>
   <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
-  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak bisu</string>
-  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat bisu</string>
+  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak dibisukan</string>
+  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat dibisukan</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Tampilkan teks otomatis</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
   <!-- layout.buttons.action.hideButtonsPatch -->

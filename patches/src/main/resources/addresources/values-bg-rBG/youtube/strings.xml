@@ -18,9 +18,66 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">Относно</string>
+  <string name="morphe_settings_screen_01_ads_title">Реклами</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">Алтернативни миниатюри</string>
+  <string name="morphe_settings_screen_03_feed_title">Емисия </string>
+  <string name="morphe_settings_screen_04_general_title">Основни</string>
+  <string name="morphe_settings_screen_05_player_title">Плейър</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Лента на прогрес</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">Плъзгащи контроли</string>
+  <string name="morphe_settings_screen_11_misc_title">Други</string>
+  <string name="morphe_settings_screen_12_video_title">Видео</string>
+  <string name="morphe_restore_old_settings_menus_title">Възстановяване на старите менюта за настройки</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">Старите менюта с настройки се показват</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">Старите менюта с настройки не се показват</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_shorts_disable_background_playback_title">Възпроизвеждане на  Shorts в фонов режим</string>
+  <string name="morphe_shorts_disable_background_playback_summary_on">Фоновото възпроизвеждане на Shorts е деактивирано</string>
+  <string name="morphe_shorts_disable_background_playback_summary_off">Фоновото възпроизвеждане на Shorts е активирано</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Буфер на протокола за дневника</string>
+  <string name="morphe_debug_protobuffer_summary_on">Файлове с дневници за грешки включват буфера</string>
+  <string name="morphe_debug_protobuffer_summary_off">Файлове с дневници за грешки не включват буфера</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Активирането на тази настройка ще регистрира допълнителни данни за оформлението, включително текст на екрана за някои компоненти на потребителския интерфейс.
+
+Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.
+
+Активирането на тази настройка обаче ще регистрира и някои потребителски данни, като например вашия IP адрес."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_album_cards_title">\"Карти на албумите\"</string>
+  <string name="morphe_hide_album_cards_summary_on">Албумните карти са скрити</string>
+  <string name="morphe_hide_album_cards_summary_off">Албумните карти се показват.</string>
+  <string name="morphe_hide_artist_cards_title">Скриване на картите на изпълнителите</string>
+  <string name="morphe_hide_artist_cards_summary_on">Картите на изпълнителите са скрити</string>
+  <string name="morphe_hide_artist_cards_summary_off">Картите на изпълнителите са показани</string>
+  <string name="morphe_hide_chips_shelf_title">Скр. филмовите рафтове</string>
+  <string name="morphe_hide_chips_shelf_summary_on">Филмовите рафтове са скрити</string>
+  <string name="morphe_hide_chips_shelf_summary_off">Филмовите рафтове се показват</string>
+  <string name="morphe_hide_community_posts_title">Скриване на публикациите от общността</string>
+  <string name="morphe_hide_community_posts_summary_on">Публикациите от общността са скрити</string>
+  <string name="morphe_hide_community_posts_summary_off">Публикациите от общността са показани</string>
+  <string name="morphe_hide_compact_banner_title">Скриване на компактните банери</string>
+  <string name="morphe_hide_compact_banner_summary_on">Компактните банери са скрити</string>
+  <string name="morphe_hide_compact_banner_summary_off">Компактните банери са показани</string>
+  <string name="morphe_hide_floating_microphone_button_title">Плаващ бутон за микрофона</string>
+  <string name="morphe_hide_floating_microphone_button_summary_on">Плаващ бутон за микрофона е скрит</string>
+  <string name="morphe_hide_floating_microphone_button_summary_off">Плаващ бутон за микрофона е показан</string>
+  <string name="morphe_hide_horizontal_shelves_title">Хоризонтални секции</string>
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Хоризонтални рафтове са скрити, като:
+• Извънредни новини
+• Продължи гледането
+• Разгледайте още канали
+• Най-подходящи
+• Пазаруване
+• Гледайте отново"</string>
+  <string name="morphe_hide_horizontal_shelves_summary_off">Хоризонталните рафтове са показани</string>
+  <string name="morphe_hide_image_shelf_title">Скр. рафтовете със снимки</string>
+  <string name="morphe_hide_image_shelf_summary_on">Рафтовете с изображения в резултатите от търсенето е скрита</string>
+  <string name="morphe_hide_image_shelf_summary_off">Рафтът с изображения в резултатите от търсенето е показан</string>
+  <string name="morphe_hide_latest_posts_title">Скриване на последни публикации</string>
+  <string name="morphe_hide_latest_posts_summary_on">Последните публикации са скрити</string>
+  <string name="morphe_hide_latest_posts_summary_off">Последни публикации са показани</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
@@ -29,6 +86,17 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_summary_on">Бутона за присъединяване е скрит</string>
+  <string name="morphe_hide_join_membership_button_summary_off">Бутона за присъединяване се показва</string>
+  <string name="morphe_hide_medical_panels_title">Скриване на медицинските панели</string>
+  <string name="morphe_hide_medical_panels_summary_on">Медицинските панели са скрити</string>
+  <string name="morphe_hide_medical_panels_summary_off">Медицинските панели се показват</string>
+  <string name="morphe_hide_quick_actions_title">Бързите действия в пълноекранен режим</string>
+  <string name="morphe_hide_quick_actions_summary_on">Бързите действия в пълноекранен режим са скрити</string>
+  <string name="morphe_hide_quick_actions_summary_off">Бързите действия в пълноекранен режим са показани</string>
+  <string name="morphe_hide_related_videos_title">Скриване в сродни видеоклипове</string>
+  <string name="morphe_hide_related_videos_summary_on">Видео в бързи действия са скрити</string>
+  <string name="morphe_hide_related_videos_summary_off">Видео в бързи действия се показват</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
