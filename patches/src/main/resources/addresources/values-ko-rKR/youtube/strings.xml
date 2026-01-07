@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">동영상 추천 라벨 숨기기</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">검색 결과에서 다음 라벨이 숨겨집니다:\n• 시청자가 이 동영상도 시청함\n• 내가 좋아할 만한 동영상</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">검색 결과에서 다음 라벨이 표시됩니다:\n• 시청자가 이 동영상도 시청함\n• 내가 좋아할 만한 동영상</string>
+  <string name="morphe_hide_web_search_results_title">웹 검색 결과 숨기기</string>
+  <string name="morphe_hide_web_search_results_summary_on">웹 검색 결과가 숨겨집니다</string>
+  <string name="morphe_hide_web_search_results_summary_off">웹 검색 결과가 표시됩니다</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles 숨기기</string>
   <string name="morphe_hide_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
@@ -321,12 +324,12 @@ Second \"item\" text"</string>
 • 필터링 키워드는 채널 이름 또는 동영상 제목에 표시되는 모든 텍스트가 될 수 있습니다
 • 대문자가 있는 단어는 대소문자를 함께 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">키워드 필터링 정보</string>
-  <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과가 키워드 구문과 일치하는 콘텐츠를 숨기기 위해 필터링됩니다.
+  <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과가 필터링되어 키워드 구문과 일치하는 콘텐츠가 숨겨집니다
 
 제한 사항:
 • 채널 이름으로 Shorts는 숨길 수 없습니다
 • 일부 UI 구성요소는 숨겨지지 않을 수 있습니다
-• 키워드를 검색하면 검색 결과가 표시되지 않을 수 있습니다"</string>
+• 필터링 키워드를 검색하면 검색 결과가 표시되지 않을 수 있습니다"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">전체 단어 일치시키기</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">키워드/구문을 큰따옴표로 묶으면 동영상 제목 및 채널 이름의 부분 일치를 방지할 수 있습니다&lt;br&gt;&lt;br&gt;예를 들어&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;는 다음 동영상을 숨깁니다: &lt;b&gt;AI는 어떻게 작동하나요?&lt;/b&gt;&lt;br&gt;하지만 다음 동영상은 숨기지 않습니다: &lt;b&gt;공정 사용이란 무엇인가요?&lt;/b&gt;</string>
@@ -364,9 +367,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">\'제품 보기\' 배너 숨기기</string>
   <string name="morphe_hide_view_products_banner_summary_on">플레이어에서 제품 보기 배너가 숨겨집니다</string>
   <string name="morphe_hide_view_products_banner_summary_off">플레이어에서 제품 보기 배너가 표시됩니다</string>
-  <string name="morphe_hide_web_search_results_title">웹 검색 결과 숨기기</string>
-  <string name="morphe_hide_web_search_results_summary_on">웹 검색 결과가 숨겨집니다</string>
-  <string name="morphe_hide_web_search_results_summary_off">웹 검색 결과가 표시됩니다</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium 프로모션 숨기기</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium 프로모션이 숨겨집니다
 
@@ -476,12 +476,12 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_off">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환하지 않습니다</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">자동 자막 표시 여부</string>
-  <string name="morphe_auto_captions_style_entry_1">무음 시 표시/무음 아닐 때 표시</string>
-  <string name="morphe_auto_captions_style_entry_2">결코 표시하지 않음</string>
-  <string name="morphe_auto_captions_style_entry_3">무음 아닐 때 표시</string>
-  <string name="morphe_auto_captions_style_entry_4">무음 시 표시</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">자동 자막 표시</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막 숨기기</string>
+  <string name="morphe_auto_captions_style_entry_1">음소거 및 음소거 해제 시 표시함</string>
+  <string name="morphe_auto_captions_style_entry_2">표시 안 함</string>
+  <string name="morphe_auto_captions_style_entry_3">음소거 해제 시 표시함</string>
+  <string name="morphe_auto_captions_style_entry_4">음소거 시 표시함</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">자동 자막을 표시함</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안 함</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">동작 버튼</string>
   <string name="morphe_hide_buttons_screen_summary">플레이어 하단에서 동작 버튼을 숨기거나 표시할 수 있습니다</string>
@@ -588,6 +588,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">상태바가 불투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">상태바가 불투명하거나 반투명합니다</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">일부 기기에서는 이 기능을 활성화하면 시스템 네비게이션바가 투명해질 수 있습니다.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">밝은 반투명 하단바 비활성화하기</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">밝은 테마에서 하단바가 불투명합니다</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">밝은 테마에서 하단바가 불투명하거나 반투명합니다</string>
@@ -842,7 +843,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_panels_summary_off">다음 플레이어 팝업 패널이 표시됩니다:\n실시간 채팅, 재생목록, etc.</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">동영상 종료 시 전체 화면에서 나가기</string>
-  <string name="morphe_exit_fullscreen_entry_1">사용 안함</string>
+  <string name="morphe_exit_fullscreen_entry_1">사용 안 함</string>
   <string name="morphe_exit_fullscreen_entry_2">세로 모드</string>
   <string name="morphe_exit_fullscreen_entry_3">가로 모드</string>
   <string name="morphe_exit_fullscreen_entry_4">세로 및 가로 모드</string>
@@ -1050,7 +1051,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_unknown_error">구간을 제출할 수 없습니다 (상태 코드: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">세그먼트 제출 불가. 속도 제한(동일 사용자 또는 IP에서 너무 많이 전송됨)</string>
   <string name="morphe_sb_submit_failed_forbidden">구간을 제출할 수 없습니다: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"구간을 제출할 수 없습니다
+  <string name="morphe_sb_submit_failed_duplicate">"구간을 제출할 수 없습니다.
 이미 존재하는 구간입니다"</string>
   <string name="morphe_sb_submit_succeeded">구간을 성공적으로 제출하였습니다</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -1196,7 +1197,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">미니 플레이어</string>
   <string name="morphe_miniplayer_screen_summary">앱 내에서 최소화된 플레이어의 스타일을 변경할 수 있습니다</string>
   <string name="morphe_miniplayer_type_title">미니 플레이어 유형</string>
-  <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
+  <string name="morphe_miniplayer_type_entry_0">사용 안 함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
   <string name="morphe_miniplayer_type_entry_2">최소화</string>
   <string name="morphe_miniplayer_type_entry_3">태블릿</string>
@@ -1217,7 +1218,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">드래그 &amp; 드롭을 비활성화합니다</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"드래그 &amp; 드롭을 활성화합니다
 
-• 미니 플레이어를 화면 구석으로 드래그 할 수 있습니다"</string>
+• 미니 플레이어를 화면 모서리로 드래그 할 수 있습니다"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">수평 드래그 제스처 비활성화하기</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary_on">수평 드래그 제스처를 비활성화합니다</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary_off">"수평 드래그 제스처를 활성화합니다

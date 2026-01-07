@@ -110,6 +110,9 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_video_recommendation_labels_title">Ocultar marcadores de recomendação de vídeo</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Os marcadores \'As pessoas também assistiram\' e \'Você pode gostar também\' nos resultados da pesquisa estão ocultos</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Os marcadores \'As pessoas também assistiram\' e \'Você pode gostar também\' nos resultados da pesquisa são exibidos</string>
+  <string name="morphe_hide_web_search_results_title">Ocultar resultados de busca web</string>
+  <string name="morphe_hide_web_search_results_summary_on">Resultados de busca web estão ocultos</string>
+  <string name="morphe_hide_web_search_results_summary_off">Os resultados de busca web são mostrados</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ocultar Doodles do YouTube</string>
   <string name="morphe_hide_doodles_summary_on">A animação de Doodles do YouTube no logotipo está oculta</string>
@@ -319,11 +322,11 @@ As palavras-chave podem ser nomes de canais ou qualquer texto mostrado nos títu
 
 As palavras com letras maiúsculas no meio devem ser inseridas com a caixa (por exemplo: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Sobre a filtragem com palavra-chave</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Os resultados da página inicial/assinatura/pesquisa são filtrados para ocultar o conteúdo que corresponde às frases de palavras-chave
+  <string name="morphe_hide_keyword_content_about_summary">"Início / Assinaturas / Os resultados da pesquisa são filtrados para ocultar o conteúdo que corresponde às frases de palavras-chave
 
-Limitações
-• Shorts não podem ser ocultados pelo nome do canal 
-• Alguns componentes da IU podem não ser ocultados 
+Limitações:
+• Os Shorts não podem ser ocultados pelo nome do canal
+• Alguns componentes da IU podem não ser ocultados
 • A pesquisa por uma palavra-chave pode não mostrar resultados"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Corresponder palavras inteiras</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
@@ -362,13 +365,10 @@ Limitações
   <string name="morphe_hide_view_products_banner_title">Ocultar banner \"Ver produtos\"</string>
   <string name="morphe_hide_view_products_banner_summary_on">O banner Ver produtos na sobreposição do vídeo está oculto</string>
   <string name="morphe_hide_view_products_banner_summary_off">O banner Ver produtos na sobreposição do vídeo é exibido</string>
-  <string name="morphe_hide_web_search_results_title">Ocultar resultados de busca web</string>
-  <string name="morphe_hide_web_search_results_summary_on">Resultados de busca web estão ocultos</string>
-  <string name="morphe_hide_web_search_results_summary_off">Os resultados de busca web são mostrados</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ocultar promoções do YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promoções do YouTube Premium estão ocultas
 
-Limitações: Página Doodles do YouTube não está disponível"</string>
+Limitação: A página de YouTube Doodles não está disponível"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">As promoções do YouTube Premium são exibidas</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ocultar anúncios do vídeo</string>
@@ -588,6 +588,7 @@ Se alterar esta configuração não fizer efeito, tente mudar para o modo anôni
   <string name="morphe_disable_translucent_status_bar_title">Desabilitar barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Em alguns dispositivos, ativar este recurso pode alterar a barra de navegação do sistema para transparente.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desabilitar barra de navegação translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">A barra de navegação no modo claro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A barra de navegação do modo claro é opaca ou translúcida</string>

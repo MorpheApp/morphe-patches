@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">ซ่อนป้ายกำกับการแนะนำวิดีโอ</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">ป้ายกำกับ \"ผู้คนยังรับชม\" และ \"คุณอาจชอบ\" ในผลการค้นหาถูกซ่อนไว้</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">ป้ายกำกับ \"ผู้คนยังรับชม\" และ \"คุณอาจชอบ\" ในผลการค้นหาแสดงอยู่</string>
+  <string name="morphe_hide_web_search_results_title">ซ่อนผลลัพธ์การค้นหาบนเว็บ</string>
+  <string name="morphe_hide_web_search_results_summary_on">ผลลัพธ์การค้นหาบนเว็บถูกซ่อน</string>
+  <string name="morphe_hide_web_search_results_summary_off">ผลลัพธ์การค้นหาบนเว็บจะแสดง</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">ซ่อน Doodles ของ YouTube</string>
   <string name="morphe_hide_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
@@ -319,7 +322,7 @@ Second \"item\" text"</string>
 
 คําที่มีตัวอักษรตัวใหญ่ตรงกลางต้องป้อนพร้อมเคส (เช่น: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">เกี่ยวกับการกรองคำสำคัญ</string>
-  <string name="morphe_hide_keyword_content_about_summary">"ผลลัพธ์ หน้าแรก/การสมัครสมาชิก/การค้นหา จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคําหลัก
+  <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก/การสมัครสมาชิก/ผลลัพธ์การค้นหา จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคําหลัก
 
 ข้อจํากัด
 • Shorts ไม่สามารถซ่อนได้ตามชื่อช่อง
@@ -362,13 +365,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">ซ่อนแบนเนอร์ \'ดูสินค้า\'</string>
   <string name="morphe_hide_view_products_banner_summary_on">แบนเนอร์ดูผลิตภัณฑ์ในโอเวอร์เลย์วิดีโอถูกซ่อนไว้</string>
   <string name="morphe_hide_view_products_banner_summary_off">แบนเนอร์ดูผลิตภัณฑ์ในโอเวอร์เลย์วิดีโอแสดงอยู่</string>
-  <string name="morphe_hide_web_search_results_title">ซ่อนผลลัพธ์การค้นหาบนเว็บ</string>
-  <string name="morphe_hide_web_search_results_summary_on">ผลลัพธ์การค้นหาบนเว็บถูกซ่อน</string>
-  <string name="morphe_hide_web_search_results_summary_off">ผลลัพธ์การค้นหาบนเว็บจะแสดง</string>
   <string name="morphe_hide_youtube_premium_promotions_title">ซ่อนการโปรโมต YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"การโฆษณา YouTube Premium จะถูกซ่อน
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"โฆษณา YouTube Premium ถูกซ่อน
 
-ข้อจำกัด: หน้า YouTube Doodles ไม่สามารถใช้งานได้"</string>
+ข้อจํากัด: หน้า YouTube Doodles ไม่พร้อมใช้งาน"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">การแสดงการโปรโมต YouTube Premium</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
@@ -586,6 +586,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">ปิดใช้งานแถบสถานะแบบโปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">ในอุปกรณ์บางรุ่น การเปิดใช้งานคุณสมบัตินี้อาจเปลี่ยนแถบนำทางระบบให้โปร่งใสได้</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ปิดใช้งานแถบนำทางแบบโปร่งแสงสีอ่อน</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">แถบนำทางโหมดสว่างเป็นแบบทึบแสง</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">แถบนำทางโหมดสว่างโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -1048,8 +1049,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_sb_submit_failed_unknown_error">ไม่สามารถส่งส่วน (สถานะ: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">ไม่สามารถส่งส่วนได้ จํากัดอัตรา (มากเกินไปจากผู้ใช้หรือ IP เดียวกัน)</string>
   <string name="morphe_sb_submit_failed_forbidden">ไม่สามารถส่งส่วน: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"ไม่สามารถส่งส่วนได้
-มีอยู่แล้ว"</string>
+  <string name="morphe_sb_submit_failed_duplicate">"ไม่สามารถส่งส่วนได้\nมีอยู่แล้ว"</string>
   <string name="morphe_sb_submit_succeeded">ส่งคำขอของคุณสำเร็จ</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ไม่พร้อมใช้งานชั่วคราว (API หมดเวลา)</string>

@@ -110,6 +110,9 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_video_recommendation_labels_title">Etykiety z rekomendacjami filmów</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Ukryte są etykiety \"Ludzie też oglądali\" i \"Może Ci się spodobać\" w wynikach wyszukiwania</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Widoczne są etykiety \"Ludzie też oglądali\" i \"Może Ci się spodobać\" w wynikach wyszukiwania</string>
+  <string name="morphe_hide_web_search_results_title">Wyniki wyszukiwania stron internetowych</string>
+  <string name="morphe_hide_web_search_results_summary_on">Ukryte</string>
+  <string name="morphe_hide_web_search_results_summary_off">Widoczne</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Ukryta jest animacja logo YouTube Doodles </string>
@@ -319,12 +322,12 @@ Słowami mogą być nazwy kanałów odraz dowolny tekst wyświetlany w tytułach
 
 Słowa zawierające duże litery w środku muszą być wpisane z odpowiednią wielkością liter (np. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">O filtrowaniu słów</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyniki wyszukiwania są filtrowane, by ukryć zawartość, która zawiera słowa z filtra.
+  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / subskrypcji / wyniki wyszukiwania są filtrowane, by ukryć kontent, który zawiera słowa z filtra.
 
-Ograniczenia
-• Shortsy nie mogą być ukrywane po nazwie kanału
-• Niektóre komponenty interfejsu mogą nie zostać ukryte
-• Wyszukiwanie słowa z filtru może nie pokazać żadnych wyników"</string>
+Ograniczenia:
+• Shortsy nie mogą być ukryte po nazwie kanału
+• Niektóre elementy interfejsu użytkownika mogą nie być ukryte
+• Wyszukiwanie słowa z filtru może nie pokazywać żadnych wyników"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Uwzględnij całe wyrazy</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Otoczenie słowa/frazy podwójnym cudzysłowem może zapobiec częściowemu dopasowywaniu tytułów filmów i nazw kanałów&lt;br&gt;&lt;br&gt;Na przykład,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ukryje film: &lt;b&gt;Jak działa AI?&lt;/b&gt;&lt;br&gt;lecz nie ukryje: &lt;b&gt;Style drzewka Bonsai&lt;/b&gt;</string>
@@ -362,11 +365,8 @@ Ograniczenia
   <string name="morphe_hide_view_products_banner_title">Banery produktów</string>
   <string name="morphe_hide_view_products_banner_summary_on">Ukryte na końcu filmów</string>
   <string name="morphe_hide_view_products_banner_summary_off">Widoczne na końcu filmów</string>
-  <string name="morphe_hide_web_search_results_title">Wyniki wyszukiwania stron internetowych</string>
-  <string name="morphe_hide_web_search_results_summary_on">Ukryte</string>
-  <string name="morphe_hide_web_search_results_summary_off">Widoczne</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Promocje YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Ukryte są promocje YouTube Premium
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Ukryte
 
 Ograniczenia: Strona YouTube Doodles nie jest dostępna"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Widoczne są promocje YouTube Premium</string>
@@ -476,13 +476,13 @@ Dostosuj głośność, przesuwając pionowo po prawej stronie ekranu"</string>
   <string name="morphe_swipe_change_video_summary_on">Włączony w trybie pełnoekranowym</string>
   <string name="morphe_swipe_change_video_summary_off">Wyłączony w trybie pełnoekranowym</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">Widoczność automatycznych napisów</string>
-  <string name="morphe_auto_captions_style_entry_1">Pokaż, gdy wyciszony i nie wyciszony</string>
-  <string name="morphe_auto_captions_style_entry_2">Nigdy nie pokazuj</string>
-  <string name="morphe_auto_captions_style_entry_3">Pokaż, gdy nie wyciszony</string>
-  <string name="morphe_auto_captions_style_entry_4">Pokaż przy wyciszeniu</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Pokaż automatyczne napisy</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Ukryj automatyczne napisy</string>
+  <string name="morphe_auto_captions_style_title">Automatyczne napisy</string>
+  <string name="morphe_auto_captions_style_entry_1">Zawsze widoczne</string>
+  <string name="morphe_auto_captions_style_entry_2">Zawsze ukryte</string>
+  <string name="morphe_auto_captions_style_entry_3">Widoczne, gdy nie wyciszone</string>
+  <string name="morphe_auto_captions_style_entry_4">Widoczne, gdy wyciszone</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Widoczne</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Ukryte</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Przyciski akcji</string>
   <string name="morphe_hide_buttons_screen_summary">Ukryj lub pokazuj przyciski pod filmami</string>
@@ -588,6 +588,7 @@ Jeśli zmiana tego ustawienia nie przyniesie efektu, spróbuj przełączyć się
   <string name="morphe_disable_translucent_status_bar_title">Półprzezroczysty pasek statusu</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Nie</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tak</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Na niektórych urządzeniach włączenie tej funkcji może zmienić systemowy pasek nawigacji na przeźroczysty.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Półprzezroczysty pasek w trybie jasnym</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Nie</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Tak</string>

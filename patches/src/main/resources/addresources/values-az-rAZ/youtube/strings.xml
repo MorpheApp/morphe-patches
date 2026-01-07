@@ -110,6 +110,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_video_recommendation_labels_title">Video tövsiyə etiketlərini gizlət</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">\'İnsanlar həmçinin izləyiblər\' və \'Bunu da bəyənə bilərsiniz\' etiketləri axtarış nəticələrində gizlədilib</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">\'İnsanlar həmçinin izləyiblər\' və \'Bunu da bəyənə bilərsiniz\' etiketləri axtarış nəticələrində görünür</string>
+  <string name="morphe_hide_web_search_results_title">Veb axtarış nəticələrini gizlət</string>
+  <string name="morphe_hide_web_search_results_summary_on">Veb axtarış nəticələri gizlədilir</string>
+  <string name="morphe_hide_web_search_results_summary_off">Veb axtarış nəticələri göstərilir</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodle-ları gizlət</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
@@ -362,13 +365,10 @@ Məhdudiyyətlər
   <string name="morphe_hide_view_products_banner_title">“Məhsullara baxın” afişasın gizlət</string>
   <string name="morphe_hide_view_products_banner_summary_on">Məhsullara baxış etiketi video örtüyündə gizlidir</string>
   <string name="morphe_hide_view_products_banner_summary_off">Məhsullara baxış etiketi video örtüyündə görünür</string>
-  <string name="morphe_hide_web_search_results_title">Veb axtarış nəticələrini gizlət</string>
-  <string name="morphe_hide_web_search_results_summary_on">Veb axtarış nəticələri gizlədilir</string>
-  <string name="morphe_hide_web_search_results_summary_off">Veb axtarış nəticələri göstərilir</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium təbliğatları gizlənir
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium reklamları gizlənir
 
-Məhdudiyyətlər: YouTube Doodles səhifəsi əlçatan deyil"</string>
+Məhdudiyyət: YouTube Doodles səhifəsi mövcud deyil"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Video oynadıcı altındakı YouTube Premium elanları göstərilir</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
@@ -588,6 +588,7 @@ Bu seçimi dəyişdirmə işə düşmürsə, Gizli rejimə keçməyə çalışı
   <string name="morphe_disable_translucent_status_bar_title">Yarımşəffaf mövqe cizgisin qapat</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Mövqe cizgisi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Mövqe cizgisi qeyri-şəffaf və ya şəffafdır</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Bəzi cihazlarda bu xüsusiyyət aktivləşməsi sistem fəaliyyət cərgəsini şəffaf-a dəyişə bilər.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Açıq temada şəffaf cizgini qapat</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">İşıqlı rejim fəaliyyət cərgəsi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">İşıqlı rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
@@ -1049,7 +1050,7 @@ Sizin istifadəçi Id-niz parol kimidir və heç vaxt paylaşmaq olmaz.
   <string name="morphe_sb_submit_failed_unknown_error">Bölüm göndərilmir (status: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Bölüm təqdim etmək olmur. Sürət Məhduddur (eyni istifadəçi və ya IP-dən artıq)</string>
   <string name="morphe_sb_submit_failed_forbidden">Bölüm göndərilmir: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Bölüm təqdim etmək olmur.
+  <string name="morphe_sb_submit_failed_duplicate">"Bölüm təqdim etmək mümkün deyil.
 Artıq mövcuddur"</string>
   <string name="morphe_sb_submit_succeeded">Bölüm uğurla göndərildi</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

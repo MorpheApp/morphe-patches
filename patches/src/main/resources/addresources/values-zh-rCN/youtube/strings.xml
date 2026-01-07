@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">隐藏视频推荐标签</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">搜索结果中“观看者还观看了”和“你可能也喜欢”标签已隐藏</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">搜索结果中“观看者还观看了”和“你可能也喜欢”标签已显示</string>
+  <string name="morphe_hide_web_search_results_title">隐藏网页搜索结果</string>
+  <string name="morphe_hide_web_search_results_summary_on">网页搜索结果已隐藏</string>
+  <string name="morphe_hide_web_search_results_summary_off">网页搜索结果已显示</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">隐藏 YouTube 涂鸦</string>
   <string name="morphe_hide_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
@@ -319,12 +322,6 @@ Second \"item\" text"</string>
 
 中间带有大写字母的单词必须按照字母的大小写输入 (例如: iPhone、TikTok、LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">关于关键字过滤</string>
-  <string name="morphe_hide_keyword_content_about_summary">"主页/订阅/搜索结果会过滤掉与关键词短语匹配的内容
-
-限制
-• Shorts 无法通过频道名称隐藏
-• 某些 UI 组件可能不会隐藏
-• 搜索关键词可能没有结果"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">匹配整个词语</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">使用带双引号的关键字/短语来防止过滤掉只有部分匹配的视频标题和频道名称&lt;br&gt;&lt;br&gt;例如，&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 将隐藏视频： &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不会隐藏： &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -362,13 +359,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">隐藏“查看商品”横幅</string>
   <string name="morphe_hide_view_products_banner_summary_on">视频叠加层中的查看商品横幅已隐藏</string>
   <string name="morphe_hide_view_products_banner_summary_off">视频叠加层中的查看商品横幅已显示</string>
-  <string name="morphe_hide_web_search_results_title">隐藏网页搜索结果</string>
-  <string name="morphe_hide_web_search_results_summary_on">网页搜索结果已隐藏</string>
-  <string name="morphe_hide_web_search_results_summary_off">网页搜索结果已显示</string>
   <string name="morphe_hide_youtube_premium_promotions_title">隐藏 YouTube Premium 促销推广</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium 促销已隐藏
-
-限制: YouTube Doodles 页面不可用"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium推广已显示</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
@@ -588,6 +579,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">禁用半透明状态栏</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">在某些设备上，启用此功能可能会将系统导航栏更改为透明。</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">禁用浅色半透明导航栏</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">浅色模式的导航栏不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">浅色模式导航栏为不透明或半透明</string>
@@ -1005,7 +997,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_filler">离题 / 笑话</string>
   <string name="morphe_sb_segments_filler_sum">视频中非必需的切题场景或笑话，不包括提供上下文或背景细节的部分</string>
   <string name="morphe_sb_segments_nomusic">音乐：非音乐部分</string>
-  <string name="morphe_sb_segments_nomusic_sum">仅供音乐视频使用。音乐视频中没有音乐的部分，这些部分没有被其他类别涵盖</string>
   <string name="morphe_sb_skip_button_compact">跳过</string>
   <string name="morphe_sb_skip_button_compact_highlight">重点</string>
   <string name="morphe_sb_skip_button_sponsor">跳过赞助</string>
@@ -1048,7 +1039,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock 暂时无法使用</string>
   <string name="morphe_sb_submit_failed_unknown_error">无法提交片段 (状态: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">无法提交片段。速率限制（来自同一用户或 IP 的太多）</string>
-  <string name="morphe_sb_submit_failed_forbidden">无法提交片段: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"无法提交片段。
 已存在"</string>
   <string name="morphe_sb_submit_succeeded">成功提交新片段</string>

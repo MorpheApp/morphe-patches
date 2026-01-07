@@ -110,6 +110,9 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_video_recommendation_labels_title">Sakrij oznake preporuka videa</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Oznake „Drugi su takođe gledali ovaj video” i „Možda će vam se takođe dopasti” u rezultatima pretrage su skrivene</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Oznake „Drugi su takođe gledali ovaj video” i „Možda će vam se takođe dopasti” u rezultatima pretrage su prikazane</string>
+  <string name="morphe_hide_web_search_results_title">Sakrij rezultate veb-pretrage</string>
+  <string name="morphe_hide_web_search_results_summary_on">Rezultati veb-pretrage su skriveni</string>
+  <string name="morphe_hide_web_search_results_summary_off">Rezultati veb-pretrage su prikazani</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Sakrij YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animacija YouTube Doodlesa na logotipu je skrivena</string>
@@ -321,7 +324,7 @@ Reči sa velikim slovima u sredini moraju se uneti sa velikim i malim slovima (n
   <string name="morphe_hide_keyword_content_about_title">O filtriranju prema ključnim rečima</string>
   <string name="morphe_hide_keyword_content_about_summary">"Početna/Praćenja/Rezultati pretrage se filtriraju da bi sakrili sadržaj koji se podudara sa frazama ključnih reči
 
-Ograničenja
+Ograničenja:
 • Shorts videi se ne mogu sakriti prema nazivu kanala
 • Neke komponente korisničkog interfejsa možda neće biti sakrivene
 • Pretraživanje ključne reči možda neće dati rezultate"</string>
@@ -362,13 +365,10 @@ Ograničenja
   <string name="morphe_hide_view_products_banner_title">Sakrij baner „Pogledajte proizvode”</string>
   <string name="morphe_hide_view_products_banner_summary_on">Baner „Pogledajte proizvode” u video plejeru je skriven</string>
   <string name="morphe_hide_view_products_banner_summary_off">Baner „Pogledajte proizvode” u video plejeru je prikazan</string>
-  <string name="morphe_hide_web_search_results_title">Sakrij rezultate veb-pretrage</string>
-  <string name="morphe_hide_web_search_results_summary_on">Rezultati veb-pretrage su skriveni</string>
-  <string name="morphe_hide_web_search_results_summary_off">Rezultati veb-pretrage su prikazani</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sakrij promocije za YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promotivne ponude za YouTube Premium su sakrivene
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Ponude YouTube Premium su sakrivene
 
-Ograničenja: Stranica sa YouTube Doodle-ima nije dostupna"</string>
+Ograničenje: Stranica YouTube Doodles nije dostupna"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promocije za YouTube Premium su prikazane</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
@@ -588,6 +588,7 @@ Ako se promena ove opcije ne primeni, pokušajte da pređete u režim bez arhivi
   <string name="morphe_disable_translucent_status_bar_title">Onemogući prozirnu statusnu traku</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusna traka je neprozirna</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusna traka je neprozirna ili prozirna</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Na nekim uređajima, omogućavanje ove funkcije može da promeni traku za navigaciju kroz sistem u prozirnu.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Onemogući svetlu prozirnu traku za navigaciju</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Traka za navigaciju u svetlom režimu je neprozirna</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Traka za navigaciju u svetlom režimu je neprozirna ili prozirna</string>

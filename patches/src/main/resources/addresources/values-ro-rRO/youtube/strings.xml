@@ -110,6 +110,9 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_video_recommendation_labels_title">Ascunde etichetele de recomandare video</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Etichetele \"Utilizatorii au mai urmărit și\" și \"S-ar putea să-ți placă și\" din rezultatele căutării sunt ascunse.</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Etichetele \"Utilizatorii au mai urmărit și\" și \"S-ar putea să-ți placă și\" din rezultatele căutării sunt afișate.</string>
+  <string name="morphe_hide_web_search_results_title">Ascunde rezultatele căutării web</string>
+  <string name="morphe_hide_web_search_results_summary_on">Rezultatele căutării pe web sunt ascunse</string>
+  <string name="morphe_hide_web_search_results_summary_off">Rezultatele căutării web sunt afișate</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ascunde Doodle-urile YouTube</string>
   <string name="morphe_hide_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
@@ -317,9 +320,9 @@ Cuvintele cheie pot fi numele canalului sau orice text afișat în titlurile vid
 
 Cuvintele cu litere mari în mijloc trebuie introduse cu majuscule (de exemplu: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Despre filtrarea cuvintelor cheie</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Rezultatele căutărilor pe pagina de pornire/Abonamente/Căutare sunt filtrate pentru a ascunde conținutul care se potrivește cu expresiile de cuvinte cheie
+  <string name="morphe_hide_keyword_content_about_summary">"Acasă / Abonamente / Rezultatele căutărilor sunt filtrate pentru a ascunde conținutul care se potrivește cu expresiile de cuvinte cheie
 
-Limitări
+Limitări:
 • Shorts nu pot fi ascunse după numele canalului
 • Este posibil ca anumite componente ale interfeței de utilizare să nu fie ascunse
 • Căutarea unui cuvânt cheie poate să nu afișeze rezultate"</string>
@@ -360,13 +363,10 @@ Limitări
   <string name="morphe_hide_view_products_banner_title">Ascunde bannerul \"Vezi produse\"</string>
   <string name="morphe_hide_view_products_banner_summary_on">Bannerul \"Vezi produse\" din suprapunerea video este ascuns.</string>
   <string name="morphe_hide_view_products_banner_summary_off">Bannerul \"Vezi produse\" din suprapunerea video este afișat.</string>
-  <string name="morphe_hide_web_search_results_title">Ascunde rezultatele căutării web</string>
-  <string name="morphe_hide_web_search_results_summary_on">Rezultatele căutării pe web sunt ascunse</string>
-  <string name="morphe_hide_web_search_results_summary_off">Rezultatele căutării web sunt afișate</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ascunde promoțiile YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promoțiile YouTube Premium sunt ascunse
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promovările YouTube Premium sunt ascunse
 
-Limitări: Pagina Doodles YouTube nu este disponibilă"</string>
+Limitare: Pagină YouTube Doodles nu este disponibilă"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promoțiile YouTube Premium sunt afișate</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ascunde reclamele video</string>
@@ -586,6 +586,7 @@ Dacă modificarea acestei setări nu are efect, încercați să comutați la mod
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Pe unele dispozitive, activarea acestei funcții poate schimba bara de navigare a sistemului în una transparentă.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Dezactivează bara de navigare translucidă deschisă</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Bara de navigare în modul deschis este opacă</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Bara de navigare în modul deschis este opaca sau translucida</string>

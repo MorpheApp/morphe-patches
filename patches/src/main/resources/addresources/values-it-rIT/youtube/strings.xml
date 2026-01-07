@@ -110,6 +110,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_video_recommendation_labels_title">Nascondi etichette di video consigliati</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Le etichette \'Le persone hanno anche guardato\' e \'Potrebbe piacerti anche\' nei risultati di ricerca sono nascoste</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Le etichette \'Le persone hanno anche guardato\' e \'Potrebbe piacerti anche\' nei risultati di ricerca sono mostrate</string>
+  <string name="morphe_hide_web_search_results_title">Nascondi i risultati della ricerca web</string>
+  <string name="morphe_hide_web_search_results_summary_on">I risultati della ricerca web sono nascosti</string>
+  <string name="morphe_hide_web_search_results_summary_off">I risultati della ricerca web sono visibili</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Nascondi Doodles di YouTube</string>
   <string name="morphe_hide_doodles_summary_on">L\'animazione YouTube Doodles sul logo è nascosta</string>
@@ -319,9 +322,9 @@ Le parole chiave possono essere nomi di canali o qualsiasi testo mostrato nei ti
 
 Le parole con lettere maiuscole all'interno devono essere inserite con il maiuscolo (ad esempio: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Informazioni sul filtro delle parole chiave</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Le schede Home ed Iscrizioni ed i risultati di ricerca sono filtrati per nascondere i video che corrispondono alle parole chiave
+  <string name="morphe_hide_keyword_content_about_summary">"Home / Iscrizioni / I risultati di ricerca sono filtrati per nascondere i contenuti che corrispondono alle parole chiave
 
-Note: 
+Limitazioni:
 • Gli Shorts non possono essere nascosti in base al nome del canale
 • Alcuni componenti dell'interfaccia potrebbero non essere nascosti
 • La ricerca di una parola chiave potrebbe non mostrare alcun risultato"</string>
@@ -362,13 +365,10 @@ Note:
   <string name="morphe_hide_view_products_banner_title">Nascondi il banner \'Visualizza prodotti\'</string>
   <string name="morphe_hide_view_products_banner_summary_on">Il banner Visualizza prodotti nell\'overlay del video è nascosto</string>
   <string name="morphe_hide_view_products_banner_summary_off">Il banner Visualizza prodotti nell\'overlay del video è mostrato</string>
-  <string name="morphe_hide_web_search_results_title">Nascondi i risultati della ricerca web</string>
-  <string name="morphe_hide_web_search_results_summary_on">I risultati della ricerca web sono nascosti</string>
-  <string name="morphe_hide_web_search_results_summary_off">I risultati della ricerca web sono visibili</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Nascondi la promozione di YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Le promozioni di YouTube Premium sono nascoste
 
-Limitazioni: la pagina Doodles di YouTube non è disponibile"</string>
+Limite: la pagina YouTube Doodles non è disponibile"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Le promozioni di YouTube Premium sono mostrate</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Nascondi le pubblicità del video</string>
@@ -588,6 +588,7 @@ Se la modifica di questa impostazione non ha effetto, prova a passare alla modal
   <string name="morphe_disable_translucent_status_bar_title">Disabilita la barra di stato traslucida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra di stato è opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra di stato è opaca o traslucida</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Su alcuni dispositivi, l\'abilitazione di questa funzione può rendere trasparente la barra di navigazione del sistema.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Disabilita la barra traslucida chiara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">La barra di navigazione in modalità chiara è opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">La barra di navigazione in modalità chiara è opaca o traslucida</string>
@@ -1005,7 +1006,7 @@ Il tuo ID utente è come una password e non dovrebbe mai essere condiviso."</str
   <string name="morphe_sb_segments_filler">Divagazione / Battute</string>
   <string name="morphe_sb_segments_filler_sum">Scene o battute tangenziali che non sono necessarie per comprendere il contenuto principale del video. Non include sezioni che forniscono contesto o dettagli di sfondo</string>
   <string name="morphe_sb_segments_nomusic">Musica: Sezione Non-Musicale</string>
-  <string name="morphe_sb_segments_nomusic_sum">Solo per l\'uso in video musicali. Sezioni di video musicali senza musica, che non sono già coperti da un\'altra categoria</string>
+  <string name="morphe_sb_segments_nomusic_sum">Solo per l\'uso in video musicali. Sezioni di video musicali senza musica, che non sono già coperte da un\'altra categoria</string>
   <string name="morphe_sb_skip_button_compact">Salta</string>
   <string name="morphe_sb_skip_button_compact_highlight">Momento saliente</string>
   <string name="morphe_sb_skip_button_sponsor">Salta sponsor</string>

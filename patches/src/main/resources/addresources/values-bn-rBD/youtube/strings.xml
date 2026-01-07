@@ -106,6 +106,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">ভিডিও সুপারিশ লেবেল লুকান</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">\"অন্যান্য দর্শক দেখেছেন\" এবং \"আপনার পছন্দ হতে পারে\" লেবেলগুলি অনুসন্ধান ফলাফলে লুকানো আছে</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">\"অন্যান্য দর্শক দেখেছেন\" এবং \"আপনার পছন্দ হতে পারে\" লেবেলগুলি অনুসন্ধান ফলাফলে দেখানো হয়েছে</string>
+  <string name="morphe_hide_web_search_results_title">লোকেরা এইগুলিও সার্চ করছে লুকান</string>
+  <string name="morphe_hide_web_search_results_summary_on">লোকেরা এইগুলিও সার্চ করছে লুকিয়ে রয়েছে</string>
+  <string name="morphe_hide_web_search_results_summary_off">লোকেরা এইগুলিও সার্চ করছে প্রদর্শিত হয়েছে</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles छिपाएँ</string>
   <string name="morphe_hide_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
@@ -320,7 +323,7 @@ Second \"item\" text"</string>
 সীমাবদ্ধতা
 • চ্যানেলের নাম দ্বারা Shorts লুকানো যাবে না
 • কিছু UI উপাদান লুকানো নাও হতে পারে
-• অনুসন্ধান করলে কোনও ফলাফল নাও দেখাতে পারে"</string>
+• কোনও কিওয়ার্ড অনুসন্ধান করলে কোনও ফলাফল নাও দেখাতে পারে"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">সম্পূর্ণ শব্দ মেলাও</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ডাবল কোটের মধ্যে একটি কীওয়ার্ড/ফ্রেজ রাখলে ভিডিও শিরোনাম এবং চ্যানেলের নামের আংশিক মিল সনাক্ত করা বন্ধ হয়ে যাবে&lt;br&gt;&lt;br&gt;উদাহরণস্বরূপ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ভিডিওটি লুকিয়ে দেবে: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;কিন্তু লুকিয়ে দেবে না: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -358,13 +361,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">\'পণ্য দেখুন\' ব্যানার লুকান</string>
   <string name="morphe_hide_view_products_banner_summary_on">ভিডিও ওভারলেতে \"পণ্য দেখুন\" ব্যানার লুকানো আছে</string>
   <string name="morphe_hide_view_products_banner_summary_off">ভিডিও ওভারলেতে \"পণ্য দেখুন\" ব্যানার দেখানো হয়েছে</string>
-  <string name="morphe_hide_web_search_results_title">লোকেরা এইগুলিও সার্চ করছে লুকান</string>
-  <string name="morphe_hide_web_search_results_summary_on">লোকেরা এইগুলিও সার্চ করছে লুকিয়ে রয়েছে</string>
-  <string name="morphe_hide_web_search_results_summary_off">লোকেরা এইগুলিও সার্চ করছে প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube প্রিমিয়াম প্রচারণা লুকান</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium প্রচারণা লুকানো হয়েছে
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube প্রিমিয়ামের প্রোমোশন লুকানো হয়েছে
 
-সীমাবদ্ধতা: YouTube Doodles পৃষ্ঠা উপলব্ধ নয়"</string>
+সীমাবদ্ধতা: YouTube ডুডলস পেজ অ্যাক্সেসযোগ্য নয়"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium প্রচারণাগুলি প্রদর্শিত হয়</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
@@ -584,6 +584,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">অর্ধস্বচ্ছ স্থিতি বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">স্ট্যাটাস বারটি অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">স্ট্যাটাস বারটি অস্বচ্ছ বা স্বচ্ছ</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">কিছু ডিভাইসে, এই বৈশিষ্ট্যটি সক্ষম করলে সিস্টেম নেভিগেশন বার স্বচ্ছ হয়ে যেতে পারে।</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">অর্ধস্বচ্ছ হালকা বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">হালকা মোড নেভিগেশন বার অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">লাইট মোড ন্যাভিগেশন বারটি অস্বচ্ছ বা স্বচ্ছ</string>

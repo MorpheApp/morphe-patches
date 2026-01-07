@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">Скрыть метки видеорекомендаций</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Метки \"Люди также смотрели\" и \"Вам также может понравиться\" в результатах поиска скрыты</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Метки \"Люди также смотрели\" и \"Вам также может понравиться\" в результатах поиска показаны</string>
+  <string name="morphe_hide_web_search_results_title">Скрыть результаты веб-поиска</string>
+  <string name="morphe_hide_web_search_results_summary_on">Результаты веб-поиска в ленте скрыты</string>
+  <string name="morphe_hide_web_search_results_summary_off">Результаты веб-поиска в ленте показаны</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Скрыть YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Анимация YouTube Doodles на логотипе скрыта</string>
@@ -321,7 +324,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_about_title">О фильтрации по ключевым словам</string>
   <string name="morphe_hide_keyword_content_about_summary">"Вкладки \"Главная\", \"Подписки\" и результаты поиска фильтруются для скрытия контента, соответствующего ключевым фразам
 
-Ограничения
+Ограничения:
 • Shorts нельзя скрыть по имени канала
 • Некоторые компоненты пользовательского интерфейса могут быть не скрыты
 • Поиск по ключевому слову может не дать результатов"</string>
@@ -362,13 +365,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">Скрыть баннер просмотра товаров</string>
   <string name="morphe_hide_view_products_banner_summary_on">Баннер просмотра товаров в плеере скрыт</string>
   <string name="morphe_hide_view_products_banner_summary_off">Баннер просмотра товаров в плеере показан</string>
-  <string name="morphe_hide_web_search_results_title">Скрыть результаты веб-поиска</string>
-  <string name="morphe_hide_web_search_results_summary_on">Результаты веб-поиска в ленте скрыты</string>
-  <string name="morphe_hide_web_search_results_summary_off">Результаты веб-поиска в ленте показаны</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Скрыть рекламу YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Продвижение YouTube Premium скрыто
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Промоакции YouTube Premium скрыты
 
-Ограничения: страница Doodles YouTube недоступна"</string>
+Ограничение: страница YouTube Doodles недоступна"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Показываются промо YouTube Premium</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Скрыть видеорекламу</string>
@@ -588,6 +588,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">Отключить полупрозрачность строки состояния</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Строка состояния непрозрачная</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Строка состояния непрозрачная или полупрозрачная</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">На некоторых устройствах включение данной опции может сделать системную панель навигации прозрачной.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Отключить полупрозрачность светлой панели навигации</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Панель навигации при светлой теме непрозрачная</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Панель навигации при светлой теме непрозрачная или полупрозрачная</string>

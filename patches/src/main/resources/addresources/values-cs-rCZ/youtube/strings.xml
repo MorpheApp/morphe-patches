@@ -111,6 +111,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_video_recommendation_labels_title">Skrýt štítky doporučení videí</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Štítky „Lidé také sledovali“ a „Mohlo by se vám také líbit“ ve výsledcích vyhledávání jsou skryty</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Štítky „Lidé také sledovali“ a „Mohlo by se vám také líbit“ ve výsledcích vyhledávání jsou zobrazeny</string>
+  <string name="morphe_hide_web_search_results_title">Skryté webové výsledky vyhledávání</string>
+  <string name="morphe_hide_web_search_results_summary_on">Webové výsledky vyhledávání jsou skryté</string>
+  <string name="morphe_hide_web_search_results_summary_off">Webové výsledky vyhledávání jsou zobrazeny</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Skrýt YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skrytá</string>
@@ -323,7 +326,7 @@ Slova s velkými písmeny uprostřed musí být zadána s tímto písmenováním
   <string name="morphe_hide_keyword_content_about_summary">"Domů / Přihlášení / Výsledky vyhledávání jsou filtrovány tak, aby se skryl obsah, který odpovídá klíčovým frázím
 
 Omezení:
-• Krátké videa nelze skrýt podle názvu kanálu
+• Krátká videa nelze skrýt podle názvu kanálu
 • Některé komponenty uživatelského rozhraní nemusí být skryty
 • Hledání klíčového slova nemusí zobrazit žádné výsledky"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Shoda celých slov</string>
@@ -363,13 +366,10 @@ Omezení:
   <string name="morphe_hide_view_products_banner_title">Skrýt banner „Zobrazit produkty“</string>
   <string name="morphe_hide_view_products_banner_summary_on">Banner \"Zobrazit produkty\" v překrytí videa je skryt</string>
   <string name="morphe_hide_view_products_banner_summary_off">Banner \"Zobrazit produkty\" v překrytí videa je zobrazen</string>
-  <string name="morphe_hide_web_search_results_title">Skryté webové výsledky vyhledávání</string>
-  <string name="morphe_hide_web_search_results_summary_on">Webové výsledky vyhledávání jsou skryté</string>
-  <string name="morphe_hide_web_search_results_summary_off">Webové výsledky vyhledávání jsou zobrazeny</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Skrýt nabídky YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Propagace YouTube Premium je skryta
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Připomínky YouTube Premium jsou skryty
 
-Omezení: Stránka s Doodles YouTube není k dispozici"</string>
+Omezení: Stránka YouTube Doodles není k dispozici"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Nabídky YouTube Premium jsou zobrazeny</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skrýt reklamy ve videu</string>
@@ -589,6 +589,7 @@ Pokud změna tohoto nastavení nemá žádný účinek, zkuste přepnout do rež
   <string name="morphe_disable_translucent_status_bar_title">Deaktivovat průsvitný stavový řádek</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Stavový řádek je neprůhledný</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Stavový řádek je neprůhledný nebo průsvitný</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Na některých zařízeních může aktivace této funkce změnit navigační lištu systému na průhlednou.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktivovat světlý průsvitný navigační panel</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigační panel v světlém režimu je neprůhledný</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Navigační lišta v světlém režimu je neprůhledná nebo průsvitná</string>

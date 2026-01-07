@@ -110,6 +110,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_video_recommendation_labels_title">Videóajánló címkék elrejtése</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">A „Ezt is megnézték” és „Még érdekelhet” címkék a keresési eredményekben elrejtve</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">A „Ezt is megnézték” és „Még érdekelhet” címkék a keresési eredményekben láthatók</string>
+  <string name="morphe_hide_web_search_results_title">Webes keresési találatok elrejtése</string>
+  <string name="morphe_hide_web_search_results_summary_on">A webes keresési találatok rejtve vannak</string>
+  <string name="morphe_hide_web_search_results_summary_off">A webes keresési találatok megjelennek</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles elrejtése</string>
   <string name="morphe_hide_doodles_summary_on">A YouTube Doodles animáció a logón elrejtve</string>
@@ -362,13 +365,10 @@ Korlátozások
   <string name="morphe_hide_view_products_banner_title">A „Termékek megtekintése” szalaghirdetés elrejtése</string>
   <string name="morphe_hide_view_products_banner_summary_on">A „Termékek megtekintése” banner a videó átfedésében elrejtve</string>
   <string name="morphe_hide_view_products_banner_summary_off">A „Termékek megtekintése” banner a videó átfedésében látható</string>
-  <string name="morphe_hide_web_search_results_title">Webes keresési találatok elrejtése</string>
-  <string name="morphe_hide_web_search_results_summary_on">A webes keresési találatok rejtve vannak</string>
-  <string name="morphe_hide_web_search_results_summary_off">A webes keresési találatok megjelennek</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"A YouTube Premium promóciók elrejtve
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium reklámok elrejtve
 
- Korlátok: A Doodles YouTube-oldal el nem érhető el"</string>
+Korlátozás: YouTube Doodles oldal nem elérhető"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">A YouTube Premium promóciók láthatók</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videó hirdetések elrejtése</string>
@@ -588,6 +588,7 @@ Ha a beállítás módosítása nem lép életbe, próbáljon meg Inkognitó mó
   <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Az állapotsor nem áttetsző</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Az állapotsor nem áttetsző vagy áttetsző</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Egyes eszközökön ennek a funkciónak az engedélyezése átlátszóvá teheti a rendszer navigációs sávját.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Világos, átlátszó sáv letiltása</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Világos módban az átlátszó navigációs sáv átlátszatlan</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A világos módú navigációs sáv nem áttetsző vagy áttetsző</string>
@@ -1050,7 +1051,7 @@ A felhasználói azonosítója olyan, mint egy jelszó, és soha nem szabad mego
   <string name="morphe_sb_submit_failed_unknown_error">Nem lehet beküldeni a szegmenst (állapot: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">A szegmens nem küldhető be. Korlátozva (túl sok ugyanazon felhasználótól vagy IP-címről)</string>
   <string name="morphe_sb_submit_failed_forbidden">Nem lehet beküldeni a szegmenst: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"A szegmens nem küldhető be.
+  <string name="morphe_sb_submit_failed_duplicate">"Nem lehet elküldeni a szegmenst.
 Már létezik"</string>
   <string name="morphe_sb_submit_succeeded">A szakasz sikeresen beküldve</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

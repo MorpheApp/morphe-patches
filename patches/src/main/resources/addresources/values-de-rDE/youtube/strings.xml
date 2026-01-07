@@ -21,12 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Über</string>
   <string name="morphe_settings_screen_01_ads_title">Werbung</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative Thumbnails</string>
-  <string name="morphe_settings_screen_03_feed_title">Füttern</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Allgemein</string>
-  <string name="morphe_settings_screen_05_player_title">Spieler</string>
+  <string name="morphe_settings_screen_05_player_title">Player</string>
   <string name="morphe_settings_screen_07_seekbar_title">Fortschrittsbalken</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Wischsteuerung</string>
-  <string name="morphe_settings_screen_11_misc_title">Verschiedenes</string>
+  <string name="morphe_settings_screen_11_misc_title">Sonstiges</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Alte Einstellungsmenüs wiederherstellen</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Alte Einstellungsmenüs werden angezeigt</string>
@@ -66,7 +66,7 @@ Wenn Sie dies aktivieren, werden jedoch auch einige Benutzerdaten wie Ihre IP-Ad
   <string name="morphe_hide_floating_microphone_button_title">Schwebende Mikrofon-Schaltfläche ausblenden</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Schwebende Mikrofon-Schaltfläche wird in der Suche ausgeblendet</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Schwebende Mikrofon-Schaltfläche wird in der Suche angezeigt</string>
-  <string name="morphe_hide_horizontal_shelves_title">Horizontale Reihe ausblenden</string>
+  <string name="morphe_hide_horizontal_shelves_title">Horizontale Regale ausblenden</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontale Regale sind ausgeblendet, wie zum Beispiel:
 • Aktuelle Nachrichten
 • Weiter ansehen
@@ -110,6 +110,9 @@ Wenn Sie dies aktivieren, werden jedoch auch einige Benutzerdaten wie Ihre IP-Ad
   <string name="morphe_hide_video_recommendation_labels_title">Videovorschlagsbeschriftungen ausblenden</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">\'Das haben andere auch angesehen\' und \'Dir könnten auch gefallen\' Beschriftungen in den Suchergebnissen sind ausgeblendet</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">\'Das haben andere auch angesehen\' und \'Dir könnten auch gefallen\' Beschriftungen in den Suchergebnissen werden angezeigt</string>
+  <string name="morphe_hide_web_search_results_title">Suchergebnisse ausblenden</string>
+  <string name="morphe_hide_web_search_results_summary_on">Web-Suchergebnisse sind ausgeblendet</string>
+  <string name="morphe_hide_web_search_results_summary_off">Web-Suchergebnisse werden angezeigt</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles ausblenden</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-Animation auf dem Logo ist ausgeblendet</string>
@@ -318,12 +321,12 @@ Stichwörter können Kanalnamen oder alle Texte sein, die in Videobeschreibungen
 
 Wörter mit Großbuchstaben in der Mitte müssen mit der Groß- und Kleinschreibung eingegeben werden (z. B.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Über Keyword-Filterung</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Startseite/Abonnements/Suchergebnisse werden gefiltert, um Inhalte auszublenden, die mit Stichwortphrasen übereinstimmen
+  <string name="morphe_hide_keyword_content_about_summary">"Startseite / Abonnements / Suchergebnisse werden gefiltert, um Inhalte auszublenden, die mit Stichwortphrasen übereinstimmen
 
-Einschränkungen
+Einschränkungen:
 • Shorts können nicht nach Kanalnamen ausgeblendet werden
 • Einige UI-Komponenten können nicht ausgeblendet werden
-• Suchen nach einem Stichwort kann zu keinen Ergebnissen führen"</string>
+• Die Suche nach einem Stichwort kann zu keinen Ergebnissen führen"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Ganze Wörter abgleichen</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Durch das Umschließen mit doppelten Anführungszeichen wird verhindert, dass teilweise Videotitel und Kanalnamen&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; wird das Video ausblenden: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;aber nicht versteckt: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -361,13 +364,10 @@ Einschränkungen
   <string name="morphe_hide_view_products_banner_title">„Produkte ansehen“-Banner ausblenden</string>
   <string name="morphe_hide_view_products_banner_summary_on">Produkte anzeigen-Banner im Video-Overlay ist ausgeblendet</string>
   <string name="morphe_hide_view_products_banner_summary_off">Produkte anzeigen-Banner im Video-Overlay wird angezeigt</string>
-  <string name="morphe_hide_web_search_results_title">Suchergebnisse ausblenden</string>
-  <string name="morphe_hide_web_search_results_summary_on">Web-Suchergebnisse sind ausgeblendet</string>
-  <string name="morphe_hide_web_search_results_summary_off">Web-Suchergebnisse werden angezeigt</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium-Aktionen ausblenden</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-Werbungen werden ausgeblendet
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Angebote von YouTube Premium sind ausgeblendet
 
-Einschränkungen: Die YouTube Doodles-Seite ist nicht verfügbar"</string>
+Einschränkung: YouTube Doodles-Seite ist nicht verfügbar"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium Aktionen werden angezeigt</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videowerbung ausblenden</string>
@@ -585,6 +585,7 @@ Wenn diese Änderung nicht wirksam wird, versuchen Sie, in den Inkognito-Modus z
   <string name="morphe_disable_translucent_status_bar_title">Transluzente Statusleiste deaktivieren</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusleiste ist undurchsichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Die Statusleiste ist undurchsichtig oder durchscheinend</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Auf einigen Geräten kann die Aktivierung dieser Funktion die Systemnavigationsleiste in transparent ändern.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Hellen, lichtdurchlässigen Balken deaktivieren</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Heller Navigationsbalken ist opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Die Navigationsleiste im hellen Modus ist undurchsichtig oder durchscheinend</string>
@@ -1046,7 +1047,7 @@ Ihre Benutzer-ID ist wie ein Passwort und sollte niemals weitergegeben werden."<
   <string name="morphe_sb_submit_failed_unknown_error">Segment kann nicht gesendet werden (Status: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Segment kann nicht übermittelt werden. Rate Limited (zu viele vom selben Benutzer oder der gleichen IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Das Segment kann nicht gesendet werden: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Segment kann nicht übermittelt werden.
+  <string name="morphe_sb_submit_failed_duplicate">"Kann das Segment nicht übermitteln.
 Existiert bereits"</string>
   <string name="morphe_sb_submit_succeeded">Segment erfolgreich übertragen</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

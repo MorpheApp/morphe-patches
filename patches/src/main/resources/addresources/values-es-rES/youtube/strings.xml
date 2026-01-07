@@ -110,6 +110,9 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <string name="morphe_hide_video_recommendation_labels_title">Ocultar etiquetas de recomendación de vídeo</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Las etiquetas \"Otras personas también vieron\" y \"También te puede gustar\" en los resultados de búsqueda están ocultas</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Las etiquetas \"Otras personas también vieron\" y \"También te puede gustar\" en los resultados de búsqueda están visibles</string>
+  <string name="morphe_hide_web_search_results_title">Ocultar resultados de búsqueda web</string>
+  <string name="morphe_hide_web_search_results_summary_on">Los resultados de búsqueda web están ocultos</string>
+  <string name="morphe_hide_web_search_results_summary_off">Los resultados de la búsqueda web están visibles</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ocultar Doodles de YouTube</string>
   <string name="morphe_hide_doodles_summary_on">La animación de los Doodles de YouTube en el logo está oculta</string>
@@ -362,9 +365,6 @@ Limitaciones:
   <string name="morphe_hide_view_products_banner_title">Ocultar banner \"Ver productos\"</string>
   <string name="morphe_hide_view_products_banner_summary_on">El banner \"Ver productos\" en la superposición de vídeo está oculto</string>
   <string name="morphe_hide_view_products_banner_summary_off">El banner \"Ver productos\" en la superposición de vídeo está visible</string>
-  <string name="morphe_hide_web_search_results_title">Ocultar resultados de búsqueda web</string>
-  <string name="morphe_hide_web_search_results_summary_on">Los resultados de búsqueda web están ocultos</string>
-  <string name="morphe_hide_web_search_results_summary_off">Los resultados de la búsqueda web están visibles</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ocultar promociones de YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Las promociones de YouTube Premium están ocultas
 
@@ -477,10 +477,10 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_swipe_change_video_summary_off">Deslizar en modo de pantalla completa no cambiará al video siguiente/anterior</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Visibilidad de subtítulos automáticos</string>
-  <string name="morphe_auto_captions_style_entry_1">Mostrar cuando silenciado y no silenciado</string>
-  <string name="morphe_auto_captions_style_entry_2">Nunca mostrar</string>
-  <string name="morphe_auto_captions_style_entry_3">Mostrar cuando no silenciado</string>
-  <string name="morphe_auto_captions_style_entry_4">Mostrar cuando silenciado</string>
+  <string name="morphe_auto_captions_style_entry_1">Mostrar cuando está silenciado y no silenciado</string>
+  <string name="morphe_auto_captions_style_entry_2">No mostrar nunca</string>
+  <string name="morphe_auto_captions_style_entry_3">Mostrar cuando no está silenciado</string>
+  <string name="morphe_auto_captions_style_entry_4">Mostrar cuando está silenciado</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Mostrar subtítulos automáticos</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Ocultar subtítulos automáticos</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
@@ -588,6 +588,7 @@ Si al cambiar este ajuste no se aplica, intenta cambiar al modo incógnito."</st
   <string name="morphe_disable_translucent_status_bar_title">Desactivar barra de estado translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra de estado es opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra de estado es opaca o translúcida</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">En algunos dispositivos, habilitar esta función puede cambiar la barra de navegación del sistema a transparente.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desactivar barra translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">La barra de navegación en modo claro es opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">La barra de navegación en modo claro es opaca o translúcida</string>

@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">隱藏影片推薦標籤</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">搜尋結果中的「其他人也觀看」與「您可能也喜歡」標籤已隱藏</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">搜尋結果中的「其他人也觀看」與「您可能也喜歡」標籤已顯示</string>
+  <string name="morphe_hide_web_search_results_title">隱藏網頁搜尋結果</string>
+  <string name="morphe_hide_web_search_results_summary_on">已隱藏網頁搜尋結果</string>
+  <string name="morphe_hide_web_search_results_summary_off">已顯示網頁搜尋結果</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">隱藏 YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">YouTube 標誌上的 Doodles 動畫已隱藏</string>
@@ -362,13 +365,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">隱藏「查看商品」橫幅</string>
   <string name="morphe_hide_view_products_banner_summary_on">已隱藏影片畫面上的「查看商品」橫幅</string>
   <string name="morphe_hide_view_products_banner_summary_off">已顯示影片畫面上的「查看商品」橫幅</string>
-  <string name="morphe_hide_web_search_results_title">隱藏網頁搜尋結果</string>
-  <string name="morphe_hide_web_search_results_summary_on">已隱藏網頁搜尋結果</string>
-  <string name="morphe_hide_web_search_results_summary_off">已顯示網頁搜尋結果</string>
   <string name="morphe_hide_youtube_premium_promotions_title">隱藏 YouTube Premium 促銷內容</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"已隱藏 YouTube Premium 推廣
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium 促銷會被隱藏
 
-限制: YouTube Doodles 頁面不可用"</string>
+限制：YouTube Doodles 頁面無法使用"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">已顯示影片播放器下方 YouTube Premium 促銷內容</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">隱藏影片廣告</string>
@@ -588,6 +588,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">停用半透明狀態列</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">狀態列為不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">狀態列為不透明或半透明</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">在部分裝置上，啟用這項功能可能會使系統導覽列變成透明。</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">停用淺色半透明狀態列</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">淺色模式導覽列為不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">淺色模式導覽列為不透明或半透明</string>

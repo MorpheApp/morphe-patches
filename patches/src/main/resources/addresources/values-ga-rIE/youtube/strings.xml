@@ -110,6 +110,9 @@ Mar sin féin, logálfaidh sé seo roinnt sonraí úsáideora freisin, mar shamp
   <string name="morphe_hide_video_recommendation_labels_title">Folaigh lipéid mholtaí físeáin</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Tá lipéid \'D\'fhéach daoine freisin ar\' agus \'B\'fhéidir gur mhaith leat freisin\' sna torthaí cuardaigh i bhfolach</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Taispeántar lipéid ‘Daoine a d’fhéach freisin’ agus ‘B’fhéidir gur mhaith leat freisin’ i dtorthaí cuardaigh</string>
+  <string name="morphe_hide_web_search_results_title">Folaigh torthaí cuardaigh gréasáin</string>
+  <string name="morphe_hide_web_search_results_summary_on">Tá torthaí cuardaigh gréasáin i bhfolach</string>
+  <string name="morphe_hide_web_search_results_summary_off">Taispeántar torthaí cuardaigh gréasáin</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Folaigh YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
@@ -319,9 +322,9 @@ Is féidir le focail a bheith ina ainmneacha cainéil nó aon fhocal a thaispeá
 
 Ní mór focail le litreacha móra sa lár a chur isteach leis an gcású (ie: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Maidir le scagadh eochairfhocal</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Baile/Síntiúis/Déantar torthaí cuardaigh a scagadh chun ábhar a mheaitseálann frásaí eochairfhocail a cheilt
+  <string name="morphe_hide_keyword_content_about_summary">"Baile / Síntiúis / Déantar torthaí cuardaigh a scagadh chun ábhar a mheaitseálann frásaí eochairfhocail a cheilt
 
-Teorainneacha
+Teorainneacha:
 • Ní féidir Shorts a chur i bhfolach de réir ainm cainéil
 • Ní fhéadfar cuid de chomhpháirteanna UI a chur i bhfolach
 • D'fhéadfadh gan aon torthaí a thaispeáint má chuirtear cuardach ar fhocal eochair"</string>
@@ -362,13 +365,10 @@ Teorainneacha
   <string name="morphe_hide_view_products_banner_title">Folaigh meirge táirgí</string>
   <string name="morphe_hide_view_products_banner_summary_on">Tá an meirge féach táirgí i bhfolach sa fhorleagan físe</string>
   <string name="morphe_hide_view_products_banner_summary_off">Taispeántar meirge féach táirgí i bhforleagan físe</string>
-  <string name="morphe_hide_web_search_results_title">Folaigh torthaí cuardaigh gréasáin</string>
-  <string name="morphe_hide_web_search_results_summary_on">Tá torthaí cuardaigh gréasáin i bhfolach</string>
-  <string name="morphe_hide_web_search_results_summary_off">Taispeántar torthaí cuardaigh gréasáin</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Folaigh ardú céime YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Choimisiúnú YouTube Premium á bhfolú
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Tá próimíúcháin YouTube Premium i gcló
 
-Srianta: Níl leathanach Doodles YouTube ar fáil"</string>
+Teorainn: Ní fhéadfadh leathanaigh YouTube Doodles a fháil"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Taispeántar ardú céime YouTube Premium faoin seinnteoir físe</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Folaigh fógraí físe</string>
@@ -586,6 +586,7 @@ Mura dtagann aon athrú ar an socrú seo, bain triail as mód Incognito a chur a
   <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tá an barra stádais teimhneach</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tá an barra stádais teimhneach nó tréshoilseach</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Ar roinnt gléasanna, is féidir leis an ngné seo a chumasú barra nascleanúna an chórais a athrú go trédhearcach.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Díchumasaigh barra tréshoilseach solais</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Tá an barra nascleanúna i mód solais teimhneach</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Tá barra nascleanúna mód solais teimhneach nó tréshoilseach</string>

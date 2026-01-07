@@ -110,6 +110,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_hide_video_recommendation_labels_title">Sembunyikan label rekomendasi video</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Label \'Orang juga menonton\' dan \'Anda mungkin juga menyukai\' di hasil pencarian disembunyikan</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Label \'Orang juga menonton\' dan \'Anda mungkin juga menyukai\' di hasil pencarian ditampilkan</string>
+  <string name="morphe_hide_web_search_results_title">Sembunyikan hasil pencarian web</string>
+  <string name="morphe_hide_web_search_results_summary_on">Hasil pencarian web disembunyikan</string>
+  <string name="morphe_hide_web_search_results_summary_off">Hasil pencarian web ditampilkan</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Sembunyikan YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animasi YouTube Doodles pada logo disembunyikan</string>
@@ -362,13 +365,10 @@ Keterbatasan
   <string name="morphe_hide_view_products_banner_title">Sembunyikan spanduk \'Lihat produk\'</string>
   <string name="morphe_hide_view_products_banner_summary_on">Spanduk lihat produk di hamparan video disembunyikan</string>
   <string name="morphe_hide_view_products_banner_summary_off">Spanduk lihat produk di hamparan video ditampilkan</string>
-  <string name="morphe_hide_web_search_results_title">Sembunyikan hasil pencarian web</string>
-  <string name="morphe_hide_web_search_results_summary_on">Hasil pencarian web disembunyikan</string>
-  <string name="morphe_hide_web_search_results_summary_off">Hasil pencarian web ditampilkan</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promosi YouTube Premium disembunyikan
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Iklan YouTube Premium disembunyikan
 
-Batasan: Halaman Doodles YouTube tidak tersedia"</string>
+Keterbatasan: Halaman YouTube Doodles tidak tersedia"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promosi YouTube Premium ditampilkan</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
@@ -588,6 +588,7 @@ Jika mengubah setelan ini tidak berpengaruh, coba beralih ke mode Penyamaran."</
   <string name="morphe_disable_translucent_status_bar_title">Nonaktifkan bilah status tembus cahaya</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bilah status buram</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bilah status buram atau tembus pandang</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Di beberapa perangkat, mengaktifkan fitur ini dapat mengubah bilah navigasi sistem menjadi transparan.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Nonaktifkan bilah tembus cahaya terang</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Bilah navigasi mode terang adalah buram</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Bilah navigasi mode terang buram atau tembus pandang</string>
@@ -1005,7 +1006,7 @@ Id pengguna Anda seperti kata sandi dan jangan pernah dibagikan."</string>
   <string name="morphe_sb_segments_filler">Singgungan / Lelucon</string>
   <string name="morphe_sb_segments_filler_sum">Adegan atau lelucon sampingan yang tidak diperlukan untuk memahami konten utama video. Tidak termasuk bagian yang memberikan konteks atau detail latar belakang</string>
   <string name="morphe_sb_segments_nomusic">Musik: Bagian Non-Musik</string>
-  <string name="morphe_sb_segments_nomusic_sum">Hanya untuk digunakan pada video musik. Bagian video musik tanpa musiknya, yang belum tercakup dalam kategori lain</string>
+  <string name="morphe_sb_segments_nomusic_sum">Hanya untuk digunakan pada video musik. Bagian video musik tanpa musik, yang belum tercakup dalam kategori lain</string>
   <string name="morphe_sb_skip_button_compact">Lewati</string>
   <string name="morphe_sb_skip_button_compact_highlight">Sorotan</string>
   <string name="morphe_sb_skip_button_sponsor">Lewati sponsor</string>

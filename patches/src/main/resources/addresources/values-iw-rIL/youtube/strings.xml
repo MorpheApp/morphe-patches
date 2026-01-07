@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">הסתר תוויות המלצות סרטונים</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">התוויות \'אנשים גם צפו\' ו\'אולי תאהב גם\' בתוצאות החיפוש מוסתרות</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">התוויות \'אנשים גם צפו\' ו\'אולי תאהב גם\' בתוצאות חיפוש מוצגות</string>
+  <string name="morphe_hide_web_search_results_title">הסתר תוצאות חיפוש באינטרנט</string>
+  <string name="morphe_hide_web_search_results_summary_on">תוצאות חיפוש באינטרנט מוסתרות</string>
+  <string name="morphe_hide_web_search_results_summary_off">תוצאות חיפוש באינטרנט מוצגות</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">הסתר YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">הנפשת YouTube Doodles על הלוגו מוסתרת</string>
@@ -319,7 +322,9 @@ Second \"item\" text"</string>
 
 יש להזין מילים עם אותיות רישיות באמצע עם הרישיות המתאימות (למשל: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">אודות סינון מילות מפתח</string>
-  <string name="morphe_hide_keyword_content_about_summary">"תוצאות דף הבית/מינויים/חיפוש מסוננות כדי להסתיר תוכן שתואם ביטויי מילות מפתח
+  <string name="morphe_hide_keyword_content_about_summary">"דף הבית/מינויים/תוצאות החיפוש מסוננות כדי להסתיר תוכן שתואם ביטויי מילות מפתח
+
+מגבלות:
 • סרטוני Shorts אינם ניתנים להסתרה לפי שם ערוץ
 • ייתכן שחלק מרכיבי ממשק המשתמש לא יוסתרו
 • חיפוש אחר מילת מפתח עשוי שלא להציג תוצאות"</string>
@@ -360,13 +365,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">הסתר באנר צפייה במוצרים</string>
   <string name="morphe_hide_view_products_banner_summary_on">באנר צפייה במוצרים בשכבת-על של וידאו מוסתר</string>
   <string name="morphe_hide_view_products_banner_summary_off">באנר צפייה במוצרים בשכבת-על של וידאו מוצג</string>
-  <string name="morphe_hide_web_search_results_title">הסתר תוצאות חיפוש באינטרנט</string>
-  <string name="morphe_hide_web_search_results_summary_on">תוצאות חיפוש באינטרנט מוסתרות</string>
-  <string name="morphe_hide_web_search_results_summary_off">תוצאות חיפוש באינטרנט מוצגות</string>
   <string name="morphe_hide_youtube_premium_promotions_title">הסתר קידומי YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"קידומות YouTube Premium מוסתרות
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"הטענות של YouTube Premium מוסתרות
 
-מגבלות: עמוד Doodles של YouTube אינו זמין"</string>
+מגבלה: הדף של YouTube Doodles אינו זמין"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">קידומי YouTube Premium מוצגים</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">הסתר מודעות סרטון</string>
@@ -586,6 +588,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">בחלק מהמכשירים, הפעלת תכונה זו עשויה לשנות את סרגל הניווט של המערכת לשקוף.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">השבת סרגל בהיר שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">סרגל ניווט במצב בהיר הוא אטום</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">סרגל ניווט במצב בהיר הוא אטום או שקוף</string>
@@ -1046,8 +1049,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_timeout">המערכת SponsorBlock מושבתת באופן זמני</string>
   <string name="morphe_sb_submit_failed_unknown_error">לא ניתן לשלוח את המקטע (מצב: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">לא ניתן לשלוח מקטע. מוגבל קצב (יותר מדי מאותו המשתמש או כתובת IP)</string>
-  <string name="morphe_sb_submit_failed_forbidden">לא יכול לשלוח את המקטע: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"לא יכול לשלוח את המקטע.
+  <string name="morphe_sb_submit_failed_forbidden">לא ניתן לשלוח את המקטע: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"לא ניתן להגיש את המקטע.
 כבר קיים"</string>
   <string name="morphe_sb_submit_succeeded">המקטע נשלח בהצלחה</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

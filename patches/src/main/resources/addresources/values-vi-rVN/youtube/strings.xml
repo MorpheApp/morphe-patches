@@ -111,6 +111,9 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_hide_video_recommendation_labels_title">Ẩn nhãn video đề xuất</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Nhãn \"Mọi người cũng xem video này\" và \"Có thể bạn cũng thích nội dung này\" trong kết quả tìm kiếm đang ẩn</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Nhãn \"Mọi người cũng xem video này\" và \"Có thể bạn cũng thích nội dung này\" trong kết quả tìm kiếm đang hiển thị</string>
+  <string name="morphe_hide_web_search_results_title">Ẩn kết quả tìm kiếm trên web</string>
+  <string name="morphe_hide_web_search_results_summary_on">Kết quả tìm kiếm trên web đang ẩn</string>
+  <string name="morphe_hide_web_search_results_summary_off">Kết quả tìm kiếm trên web đang hiển thị</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ẩn YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Hoạt ảnh YouTube Doodles trên logo đang ẩn</string>
@@ -322,10 +325,10 @@ Từ có chữ in hoa ở giữa phải được nhập cùng với chữ viết
   <string name="morphe_hide_keyword_content_about_title">Giới thiệu về bộ lọc từ khóa</string>
   <string name="morphe_hide_keyword_content_about_summary">"Trang chủ/Kênh đăng ký/Kết quả tìm kiếm được lọc để ẩn nội dung khớp với cụm từ khóa
 
-Hạn chế
-• Video ngắn không thể đang ẩn theo tên kênh
-• Một số thành phần giao diện người dùng có thể không đang ẩn
-• Tìm kiếm từ khóa có thể không hiển thị kết quả"</string>
+Hạn chế:
+• Không thể ẩn Shorts theo tên kênh
+• Một số thành phần giao diện có thể không bị ẩn
+• Tìm kiếm từ khóa có thể không hiện kết quả nào"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Khớp toàn bộ từ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Đặt từ/cụm từ cần lọc trong dấu ngoặc kép sẽ ngăn chặn các kết quả chỉ trùng một phần với tiêu đề video và tên kênh&lt;br&gt;&lt;br&gt;Ví dụ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sẽ ẩn video: &lt;b&gt;AI hoạt động ra sao?&lt;/b&gt;&lt;br&gt;nhưng sẽ không ẩn: &lt;b&gt;Hai lai nghĩa là gì?&lt;/b&gt;</string>
@@ -363,13 +366,10 @@ Hạn chế
   <string name="morphe_hide_view_products_banner_title">Ẩn biểu ngữ \"Xem sản phẩm\"</string>
   <string name="morphe_hide_view_products_banner_summary_on">Biểu ngữ xem sản phẩm trong lớp phủ video đang ẩn</string>
   <string name="morphe_hide_view_products_banner_summary_off">Biểu ngữ xem sản phẩm trong lớp phủ video đang hiển thị</string>
-  <string name="morphe_hide_web_search_results_title">Ẩn kết quả tìm kiếm trên web</string>
-  <string name="morphe_hide_web_search_results_summary_on">Kết quả tìm kiếm trên web đang ẩn</string>
-  <string name="morphe_hide_web_search_results_summary_off">Kết quả tìm kiếm trên web đang hiển thị</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ẩn quảng cáo YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Khuyến mãi YouTube Premium được ẩn
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Quảng cáo YouTube Premium đang ẩn
 
-Hạn chế: Trang Doodles YouTube không khả dụng"</string>
+Hạn chế: Trang YouTube Doodles không khả dụng"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Các chương trình khuyến mãi YouTube Premium đang hiển thị</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ẩn quảng cáo trên video</string>
@@ -478,9 +478,9 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_swipe_change_video_summary_off">Vuốt trong chế độ toàn màn hình sẽ không chuyển sang video tiếp theo/trước đó</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Tự động hiển thị phụ đề</string>
-  <string name="morphe_auto_captions_style_entry_1">Hiển thị khi tắt âm thanh và không tắt âm thanh</string>
-  <string name="morphe_auto_captions_style_entry_2">Không bao giờ hiển thị</string>
-  <string name="morphe_auto_captions_style_entry_3">Hiển thị khi không tắt âm thanh</string>
+  <string name="morphe_auto_captions_style_entry_1">Hiển thị cả khi tắt tiếng và không tắt tiếng</string>
+  <string name="morphe_auto_captions_style_entry_2">Không bao giờ hiện</string>
+  <string name="morphe_auto_captions_style_entry_3">Hiển thị khi không tắt tiếng</string>
   <string name="morphe_auto_captions_style_entry_4">Hiển thị khi tắt tiếng</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Hiển thị phụ đề tự động</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Ẩn phụ đề tự động</string>
@@ -589,6 +589,7 @@ Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển 
   <string name="morphe_disable_translucent_status_bar_title">Vô hiệu hóa thanh trạng thái trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Thanh trạng thái không trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Thanh trạng thái có thể mờ hoặc trong suốt</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Trên một số thiết bị, bật tính năng này có thể khiến thanh điều hướng hệ thống trở nên trong suốt.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Vô hiệu hóa thanh điều hướng trong suốt ở chế độ sáng</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Thanh điều hướng ở chế độ sáng không trong suốt</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Thanh điều hướng ở chế độ sáng có thể mờ hoặc trong suốt</string>
@@ -1006,7 +1007,7 @@ ID người dùng của bạn giống như mật khẩu và không bao giờ đ�
   <string name="morphe_sb_segments_filler">Lạc đề / Câu đùa</string>
   <string name="morphe_sb_segments_filler_sum">Các cảnh phụ hoặc trò đùa không cần thiết để hiểu nội dung chính của video. Không bao gồm các phần cung cấp bối cảnh hoặc chi tiết nền</string>
   <string name="morphe_sb_segments_nomusic">Âm nhạc: Phần không phải âm nhạc</string>
-  <string name="morphe_sb_segments_nomusic_sum">Chỉ dành cho video âm nhạc. Phần của video âm nhạc nhưng không có nhạc, mà cũng không được phân loại vào danh mục khác</string>
+  <string name="morphe_sb_segments_nomusic_sum">Chỉ dành cho video âm nhạc. Phần không có nhạc, mà cũng không thuộc danh mục nào khác</string>
   <string name="morphe_sb_skip_button_compact">Bỏ qua</string>
   <string name="morphe_sb_skip_button_compact_highlight">Nổi bật</string>
   <string name="morphe_sb_skip_button_sponsor">Bỏ qua nhà tài trợ</string>
@@ -1050,8 +1051,7 @@ ID người dùng của bạn giống như mật khẩu và không bao giờ đ�
   <string name="morphe_sb_submit_failed_unknown_error">Không thể gửi phân đoạn (trạng thái: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Không thể gửi phân đoạn. Giới hạn tỷ lệ (quá nhiều từ cùng một người dùng hoặc IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Không thể gửi phân đoạn: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Không thể gửi phân đoạn.
-Đã tồn tại"</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Không thể gửi phân đoạn trùng lặp."</string>
   <string name="morphe_sb_submit_succeeded">Phân đoạn được gửi thành công</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock tạm thời không khả dụng (hết thời gian chờ API)</string>

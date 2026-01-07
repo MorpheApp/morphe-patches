@@ -110,6 +110,9 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_video_recommendation_labels_title">Piilota videosuositusten tunnisteet</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">\'Ihmiset katsoivat myös\' ja \'Saatat myös pitää\' -tunnisteet piilotetaan hakutuloksissa</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">\"Ihmiset katsoivat myös\" ja \"Saatat myös pitää\" -otsikot näkyvät hakutuloksissa</string>
+  <string name="morphe_hide_web_search_results_title">Piilota verkkohakutulokset</string>
+  <string name="morphe_hide_web_search_results_summary_on">Verkkohakutulokset piilotetaan</string>
+  <string name="morphe_hide_web_search_results_summary_off">Verkkohakutulokset näytetään</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Piilota YouTube Doodlet</string>
   <string name="morphe_hide_doodles_summary_on">Logon YouTube Doodles -animaatio piilotetaan</string>
@@ -362,13 +365,10 @@ Rajoitukset
   <string name="morphe_hide_view_products_banner_title">Piilota \"Näytä tuotteet\" -banneri</string>
   <string name="morphe_hide_view_products_banner_summary_on">Videon peittokuvan tuotebannerit piilotetaan</string>
   <string name="morphe_hide_view_products_banner_summary_off">Videon peittokuvan tuotebannerit näytetään</string>
-  <string name="morphe_hide_web_search_results_title">Piilota verkkohakutulokset</string>
-  <string name="morphe_hide_web_search_results_summary_on">Verkkohakutulokset piilotetaan</string>
-  <string name="morphe_hide_web_search_results_summary_off">Verkkohakutulokset näytetään</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Piilota YouTube Premium -mainokset</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium -mainokset piilotetaan
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium mainokset piilotetaan
 
-Rajoitukset: YouTube Doodles -sivu ei ole käytettävissä"</string>
+Rajoitus: YouTube Doodles-sivu ei ole käytettävissä"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium -mainokset näytetään</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Piilota videomainokset</string>
@@ -588,6 +588,7 @@ Jos tämän asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa Incognito-til
   <string name="morphe_disable_translucent_status_bar_title">Poista läpikuultava tilapalkki käytöstä</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tilapalkki on läpinäkymätön</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tilapalkki on läpinäkymätön tai läpikuultava</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Joillakin laitteilla tämän ominaisuuden käyttöönotto voi muuttaa järjestelmän navigointipalkin läpinäkyväksi.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Poista vaalea läpikuultava palkki käytöstä</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Vaalean tilan navigointipalkki on läpinäkymätön</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Vaalean tilan navigointipalkki on läpinäkymätön tai läpikuultava</string>
@@ -1050,7 +1051,7 @@ UserID on kuin salasana, eikä sitä pidä jakaa kenellekään.
   <string name="morphe_sb_submit_failed_unknown_error">Osiota ei voitu lähettää (tila: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Segmenttiä ei voida lähettää. Nopeuden rajoitus (liian monta samalta käyttäjältä tai IP-osoitteesta)</string>
   <string name="morphe_sb_submit_failed_forbidden">Osiota ei voi lähettää: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Segmenttiä ei voi lähettää.
+  <string name="morphe_sb_submit_failed_duplicate">"Ei voida lähettää segmenttiä.
 On jo olemassa"</string>
   <string name="morphe_sb_submit_succeeded">Osion lähetys onnistui</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">إخفاء تسميات توصيات الفيديو</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">تم إخفاء تسميات \'شاهد المستخدمون أيضًا\' و\'قد يعجبك أيضًا\' في نتائج البحث</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">يتم عرض تسميات \'شاهد المستخدمون أيضًا\' و\'قد يعجبك أيضًا\' في نتائج البحث</string>
+  <string name="morphe_hide_web_search_results_title">إخفاء نتائج بحث الويب</string>
+  <string name="morphe_hide_web_search_results_summary_on">تم إخفاء نتائج البحث على الويب</string>
+  <string name="morphe_hide_web_search_results_summary_off">يتم عرض نتائج البحث على الويب</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">إخفاء رسومات YouTube</string>
   <string name="morphe_hide_doodles_summary_on">تم إخفاء رسوم Doodles المتحركة على شعار YouTube</string>
@@ -319,9 +322,9 @@ Second \"item\" text"</string>
 
 يجب إدخال الكلمات التي تحتوي على أحرف كبيرة في المنتصف بنفس الحالة (على سبيل المثال: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">لمحة عن تصفية الكلمات المفتاحية</string>
-  <string name="morphe_hide_keyword_content_about_summary">"الصفحة الرئيسية / الاشتراكات / نتائج البحث يتم تصفيتها لإخفاء المحتوى الذي يتطابق مع كلمات البحث
+  <string name="morphe_hide_keyword_content_about_summary">"الصفحة الرئيسية / الاشتراكات / نتائج البحث يتم تصفيتها لإخفاء المحتوى الذي يطابق عبارات الكلمات المفتاحية
 
-القيود
+القيود:
 • فيديوهات Shorts لا يمكن إخفاؤها بواسطة اسم القناة
 • بعض مكونات واجهة المستخدم قد لا يتم إخفاؤها
 • البحث عن كلمة ما قد لا يعطي نتائج"</string>
@@ -362,9 +365,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">إخفاء لافتة \'عرض المنتجات\'</string>
   <string name="morphe_hide_view_products_banner_summary_on">تم إخفاء لافتة عرض المنتجات في واجهة الفيديو</string>
   <string name="morphe_hide_view_products_banner_summary_off">يتم عرض لافتة عرض المنتجات في واجهة الفيديو</string>
-  <string name="morphe_hide_web_search_results_title">إخفاء نتائج بحث الويب</string>
-  <string name="morphe_hide_web_search_results_summary_on">تم إخفاء نتائج البحث على الويب</string>
-  <string name="morphe_hide_web_search_results_summary_off">يتم عرض نتائج البحث على الويب</string>
   <string name="morphe_hide_youtube_premium_promotions_title">إخفاء ترقية YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"تم إخفاء ترويج YouTube Premium
 
@@ -476,12 +476,12 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">سيؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <string name="morphe_swipe_change_video_summary_off">لن يؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">تظهر الترجمة التلقائية</string>
-  <string name="morphe_auto_captions_style_entry_1">أظهر عند الصامتة وغير الصامتة</string>
-  <string name="morphe_auto_captions_style_entry_2">عدم العرض أبداً</string>
-  <string name="morphe_auto_captions_style_entry_3">أظهر عند عدم الصامتة</string>
-  <string name="morphe_auto_captions_style_entry_4">أظهر عند الصامت</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">أظهر الترجمة التلقائية</string>
+  <string name="morphe_auto_captions_style_title">إمكانية رؤية الترجمة التلقائية</string>
+  <string name="morphe_auto_captions_style_entry_1">عرضها عند كتم الصوت وعند عدم كتمه</string>
+  <string name="morphe_auto_captions_style_entry_2">عدم عرضها أبداً</string>
+  <string name="morphe_auto_captions_style_entry_3">عرضها عند عدم كتم الصوت</string>
+  <string name="morphe_auto_captions_style_entry_4">عرضها عند كتم الصوت</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">عرض الترجمة التلقائية</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">إخفاء الترجمة التلقائية</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">أزرار الإجراء</string>
@@ -588,6 +588,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">تعطيل شريط الحالة الشفاف</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">شريط الحالة غير شفاف</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">شريط الحالة معتم أو شفاف</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">في بعض الأجهزة، قد يؤدي تمكين هذه الميزة إلى تغيير شريط التنقل في النظام إلى شفاف.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">تعطيل الشريط الشفاف الفاتح</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">شريط التنقل في الوضع الفاتح غير شفاف</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">شريط التنقل في الوضع الفاتح معتم او شفاف</string>

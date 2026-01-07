@@ -110,6 +110,9 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_video_recommendation_labels_title">Videobevellabels verbergen</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Labels \'Mensen keken ook\' en \'Misschien vind je dit ook leuk\' in zoekresultaten zijn verborgen</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Labels \'Mensen keken ook\' en \'Misschien vind je dit ook leuk\' in zoekresultaten worden getoond</string>
+  <string name="morphe_hide_web_search_results_title">Webzoekresultaten verbergen</string>
+  <string name="morphe_hide_web_search_results_summary_on">Webzoekresultaten zijn verborgen</string>
+  <string name="morphe_hide_web_search_results_summary_off">Webzoekresultaten worden getoond</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles verbergen</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animatie op het logo is verborgen</string>
@@ -319,9 +322,9 @@ Trefwoorden kunnen kanaalnamen of alle tekst zijn die wordt weergegeven in video
 
 Woorden met hoofdletters in het midden moeten met de hoofdletter worden ingevoerd (bijv.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Over keyword filtering</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoekresultaten zijn gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
+  <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoekresultaten worden gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
 
-Beperkingen
+Beperkingen:
 • Shorts kunnen niet worden verborgen op kanaalnaam
 • Sommige UI-componenten zijn mogelijk niet verborgen
 • Zoeken naar een trefwoord kan geen resultaten opleveren"</string>
@@ -362,13 +365,10 @@ Beperkingen
   <string name="morphe_hide_view_products_banner_title">Banner \'Producten bekijken\' verbergen</string>
   <string name="morphe_hide_view_products_banner_summary_on">Producten bekijken-banner in video-overlay is verborgen</string>
   <string name="morphe_hide_view_products_banner_summary_off">Producten bekijken-banner in video-overlay wordt getoond</string>
-  <string name="morphe_hide_web_search_results_title">Webzoekresultaten verbergen</string>
-  <string name="morphe_hide_web_search_results_summary_on">Webzoekresultaten zijn verborgen</string>
-  <string name="morphe_hide_web_search_results_summary_off">Webzoekresultaten worden getoond</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promoties verbergen</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-promoties worden verborgen
 
-Beperkingen: de pagina YouTube Doodles is niet beschikbaar"</string>
+Beperking: YouTube Doodles-pagina is niet beschikbaar"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium-promoties worden getoond</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video-advertenties verbergen</string>
@@ -588,6 +588,7 @@ Als het wijzigen van deze instelling geen effect heeft, probeer dan over te scha
   <string name="morphe_disable_translucent_status_bar_title">Transparante statusbalk uitschakelen</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusbalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusbalk is ondoorzichtig of doorschijnend</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Op sommige apparaten kan het inschakelen van deze functie de systeemnavigatiebalk transparant maken.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Transparante lichte navigatiebalk uitschakelen</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">De lichte navigatiebalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">De lichtmodus navigatiebalk is ondoorzichtig of doorschijnend</string>

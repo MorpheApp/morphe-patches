@@ -110,6 +110,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">Приховати мітки відеорекомендацій</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Мітки \"Інші користувачі також переглядали це відео\" та \"Вам також може сподобатися\" у результатах пошуку приховано</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Мітки \"Інші користувачі також переглядали це відео\" та \"Вам також може сподобатися\" у результатах пошуку показуються</string>
+  <string name="morphe_hide_web_search_results_title">Приховати результати вебпошуку</string>
+  <string name="morphe_hide_web_search_results_summary_on">Результати вебпошуку приховано</string>
+  <string name="morphe_hide_web_search_results_summary_off">Результати вебпошуку показуються</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Приховати Дудли YouTube</string>
   <string name="morphe_hide_doodles_summary_on">Анімацію Дудлів YouTube на логотипі приховано</string>
@@ -319,9 +322,9 @@ Second \"item\" text"</string>
 
 Слова з великими літерами посередині мають містити регістр (наприклад: iPhone, TikTok, Івано-Франківськ)"</string>
   <string name="morphe_hide_keyword_content_about_title">Про фільтр ключових слів</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Головна/Підписки/Результати пошуку фільтруються, щоб приховати вміст, який відповідає ключовим фразам
+  <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Результати пошуку фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
-Обмеження
+Обмеження:
 • Shorts неможливо приховати за назвою каналу
 • Деякі компоненти інтерфейсу можуть не приховуватися
 • Пошук за ключовим словом може не показувати результатів"</string>
@@ -362,13 +365,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">Приховати банер \"Перегляд товарів\"</string>
   <string name="morphe_hide_view_products_banner_summary_on">Банер перегляду товарів у інтерфейсі відеоплеєра приховано</string>
   <string name="morphe_hide_view_products_banner_summary_off">Банер перегляду товарів у інтерфейсі відеоплеєра показується</string>
-  <string name="morphe_hide_web_search_results_title">Приховати результати вебпошуку</string>
-  <string name="morphe_hide_web_search_results_summary_on">Результати вебпошуку приховано</string>
-  <string name="morphe_hide_web_search_results_summary_off">Результати вебпошуку показуються</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Приховати рекламу YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Рекламні пропозиції YouTube Premium приховані
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Реклама YouTube Premium прихована
 
-Обмеження: сторінка Doodles YouTube недоступна"</string>
+Обмеження: сторінка YouTube Doodles недоступна"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Показується реклама передплати YouTube Premium</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Приховати відеорекламу</string>
@@ -588,6 +588,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">Вимкнути напівпрозорість рядка стану</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Рядок стану непрозорий</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Рядок стану непрозорий або напівпрозорий</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">На деяких пристроях увімкнення цієї функції може змінити панель навігації системи на прозору.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Вимкнути напівпрозорість світлої панелі</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Панель навігації світлого режиму непрозора</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Панель навігації світлого режиму непрозора або напівпрозора</string>

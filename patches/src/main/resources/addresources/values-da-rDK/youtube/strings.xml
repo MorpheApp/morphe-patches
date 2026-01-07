@@ -110,6 +110,9 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_video_recommendation_labels_title">Skjul etiketter for videoanbefalinger</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">\'Folk har også set\'- og \'Du vil måske også synes om\'-etiketter i søgeresultater er skjult</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">\'Folk har også set\'- og \'Du vil måske også synes om\'-etiketter i søgeresultater vises</string>
+  <string name="morphe_hide_web_search_results_title">Skjul søgeresultater</string>
+  <string name="morphe_hide_web_search_results_summary_on">Websøgeresultater er skjult</string>
+  <string name="morphe_hide_web_search_results_summary_off">Websøgeresultater vises</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Skjul YouTube-Doudler</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
@@ -321,10 +324,10 @@ Ord med store bogstaver i midten skal indtastes med store og små bogstaver (f.e
   <string name="morphe_hide_keyword_content_about_title">Om søgeord filtrering</string>
   <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søgeresultater filtreres for at skjule indhold, der svarer til søgeordssætninger
 
-Begrænsninger
+Begrænsninger:
 • Shorts kan ikke skjules efter kanalnavn
-• Nogle UI-komponenter kan være skjulte
-• Søgning efter et søgeord kan vise ingen resultater"</string>
+• Nogle UI-komponenter skjules muligvis ikke
+• Søgning efter et søgeord viser muligvis ingen resultater"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Match hele ord</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Omkring et nøgleord/sætning med dobbelt-citater vil forhindre partielle kampe af videotitler og kanalnavne&lt;br&gt;&lt;br&gt;For eksempel&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vil skjule videoen: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;, men skjuler ikke: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -362,13 +365,10 @@ Begrænsninger
   <string name="morphe_hide_view_products_banner_title">Skjul banneret \"Se produkter\"</string>
   <string name="morphe_hide_view_products_banner_summary_on">Se produkter-banner i videooverlay er skjult</string>
   <string name="morphe_hide_view_products_banner_summary_off">Se produkter-banner i videooverlay vises</string>
-  <string name="morphe_hide_web_search_results_title">Skjul søgeresultater</string>
-  <string name="morphe_hide_web_search_results_summary_on">Websøgeresultater er skjult</string>
-  <string name="morphe_hide_web_search_results_summary_off">Websøgeresultater vises</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium kampagner</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-reklamer er skjult
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-tilbud skjules
 
-Begrænsninger: YouTube Doodles-siden er ikke tilgængelig"</string>
+Begrænsning: YouTube Doodles-siden er ikke tilgængelig"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium reklamer vises</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skjul videoannoncer</string>
@@ -588,6 +588,7 @@ Hvis ændring af denne indstilling ikke træder i kraft, kan du prøve at skifte
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">På nogle enheder kan aktivering af denne funktion ændre systemets navigationslinje til gennemsigtig.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver lys gennemsigtig linje</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigationslinjen i lys tilstand er ikke gennemsigtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Lys tilstand navigationslinjen er opak eller gennemsigtig</string>

@@ -112,6 +112,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">Ετικέτες προτάσεων βίντεο</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Κρυμμένες\n\nΑφορά τις ετικέτες «Άλλοι χρήστες παρακολούθησαν επίσης» και «Ενδέχεται επίσης να σας αρέσει» στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Εμφανίζονται\n\nΑφορά τις ετικέτες «Άλλοι χρήστες παρακολούθησαν επίσης» και «Ενδέχεται επίσης να σας αρέσει» στα αποτελέσματα αναζήτησης</string>
+  <string name="morphe_hide_web_search_results_title">Αποτελέσματα αναζήτησης στο διαδίκτυο</string>
+  <string name="morphe_hide_web_search_results_summary_on">Κρυμμένα</string>
+  <string name="morphe_hide_web_search_results_summary_off">Εμφανίζονται</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
@@ -321,7 +324,7 @@ Second \"item\" text"</string>
 
 Οι λέξεις με κεφαλαία γράμματα στη μέση πρέπει να είναι ευαίσθητες στην πεζότητα (π.χ: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Σχετικά με το φιλτράρισμα λέξεων-κλειδιών</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Οι καρτέλες «Αρχική», «Εγγραφές» και τα αποτελέσματα αναζήτησης φιλτράρονται για απόκρυψη περιεχομένου που ταιριάζει με τις λέξεις-κλειδιά
+  <string name="morphe_hide_keyword_content_about_summary">"Αρχική / Εγγραφές / Τα αποτελέσματα αναζήτησης φιλτράρονται για να αποκρύψουν περιεχόμενο που ταιριάζει με φράσεις λέξεων-κλειδιών
 
 Περιορισμοί:
 • Δεν γίνεται απόκρυψη των Shorts με βάση το όνομα καναλιού
@@ -364,13 +367,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">Ετικέτα «Προβολή προϊόντων» στην οθόνη αναπαραγωγής</string>
   <string name="morphe_hide_view_products_banner_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_view_products_banner_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_web_search_results_title">Αποτελέσματα αναζήτησης στο διαδίκτυο</string>
-  <string name="morphe_hide_web_search_results_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_web_search_results_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Προωθήσεις για απόκτηση YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Οι προωθήσεις του YouTube Premium είναι κρυμμένες
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Οι προωθήσεις YouTube Premium είναι κρυμμένες
 
-Περιορισμοί: Η σελίδα Doodles του YouTube δεν είναι διαθέσιμη"</string>
+Περιορισμός: Η σελίδα YouTube Doodles δεν είναι διαθέσιμη"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Εμφανίζονται προωθήσεις του YouTube Premium</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Διαφημίσεις βίντεο</string>
@@ -590,6 +590,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">Απενεργοποίηση διαφανούς γραμμής κατάστασης</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Σε ορισμένες συσκευές, η ενεργοποίηση αυτής της λειτουργίας μπορεί να αλλάξει τη γραμμή πλοήγησης του συστήματος σε διαφανή.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Απενεργοποίηση διαφανούς γραμμής στο φωτεινό θέμα</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Η γραμμή πλοήγησης στο φωτεινό θέμα δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο φωτεινό θέμα ορίζεται αυτόματα</string>
@@ -1052,7 +1053,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_rate_limit">Αδυναμία υποβολής τμήματος. Όριο Συχνότητας (πάρα πολλά από τον ίδιο χρήστη ή την IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Αδυναμία υποβολής του τμήματος: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Δεν είναι δυνατή η υποβολή του τμήματος.
-Υπάρχει ήδη"</string>
+Διαθέτει ήδη την ίδια τιμή"</string>
   <string name="morphe_sb_submit_succeeded">Το τμήμα υποβλήθηκε επιτυχώς</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock προσωρινά μη διαθέσιμο (καθυστέρηση API)</string>

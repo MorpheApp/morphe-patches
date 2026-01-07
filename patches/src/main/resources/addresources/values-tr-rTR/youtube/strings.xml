@@ -110,6 +110,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_video_recommendation_labels_title">Video öneri etiketlerini gizle</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Arama sonuçlarındaki \'İnsanların izlediği diğer videolar\' ve \'Şunlar da hoşunuza gidebilir\' etiketleri gizli</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Arama sonuçlarındaki \'İnsanların izlediği diğer videolar\' ve \'Şunlar da hoşunuza gidebilir\' etiketleri görünür</string>
+  <string name="morphe_hide_web_search_results_title">Web arama sonuçlarını gizle</string>
+  <string name="morphe_hide_web_search_results_summary_on">Web arama sonuçları gizli</string>
+  <string name="morphe_hide_web_search_results_summary_off">Web arama sonuçları görünür</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodle\'larını gizle</string>
   <string name="morphe_hide_doodles_summary_on">Logodaki YouTube Doodles animasyonu gizli</string>
@@ -319,7 +322,7 @@ Anahtar kelimeler, kanal adları veya video başlıklarında gösterilen herhang
 
 Ortadaki harfleri büyük olan kelimeler, büyük/küçük harf kullanımına göre girilmelidir (örneğin: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Anahtar kelimeyle filtreleme hakkında</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Ana Sayfa/Abonelikler/Arama sonuçları, anahtar kelime ifadeleriyle eşleşen içeriği gizlemek için filtrelenir.
+  <string name="morphe_hide_keyword_content_about_summary">"Ana Sayfa/Abonelikler/Arama sonuçları, anahtar kelime ifadeleriyle eşleşen içeriği gizlemek için filtrelenir
 
 Sınırlamalar
 • Shorts, kanal adı ile gizlenemez
@@ -362,13 +365,10 @@ Sınırlamalar
   <string name="morphe_hide_view_products_banner_title">\'Ürünleri görüntüle\' afişini gizle</string>
   <string name="morphe_hide_view_products_banner_summary_on">Video katmanındaki ürünleri görüntüle afişi gizli</string>
   <string name="morphe_hide_view_products_banner_summary_off">Video katmanındaki ürünleri görüntüle afişi görünür</string>
-  <string name="morphe_hide_web_search_results_title">Web arama sonuçlarını gizle</string>
-  <string name="morphe_hide_web_search_results_summary_on">Web arama sonuçları gizli</string>
-  <string name="morphe_hide_web_search_results_summary_off">Web arama sonuçları görünür</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promosyonlarını gizle</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium promosyonları gizlendi
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium promosyonları gizlenir
 
-Sınırlamalar: YouTube Doodles sayfası kullanılamıyor"</string>
+Sınırlama: YouTube Doodles sayfası kullanılabilir değil"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium promosyonları gösteriliyor</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
@@ -588,6 +588,7 @@ Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin."</string>
   <string name="morphe_disable_translucent_status_bar_title">Yarı saydam durum çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Bazı cihazlarda, bu özelliği etkinleştirmek sistem gezinme çubuğunu şeffaf hale getirebilir.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Aydınlık temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Aydınlık temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Aydınlık temada gezinti çubuğu opak veya yarı saydam</string>
@@ -1005,7 +1006,7 @@ Kullanıcı kimliğiniz bir parola gibidir ve asla paylaşılmamalıdır."</stri
   <string name="morphe_sb_segments_filler">Konuyla Alakasız / Şakalar</string>
   <string name="morphe_sb_segments_filler_sum">Videonun ana içeriğini anlamak için gerekli olmayan alakasız sahneler veya şakalar. Bağlam veya arka plan detayları sağlayan kısımları içermez</string>
   <string name="morphe_sb_segments_nomusic">Müzik: Müzik Olmayan Kısım</string>
-  <string name="morphe_sb_segments_nomusic_sum">Yalnızca müzik videolarında kullanım içindir. Müzik videolarının başka bir kategorinin kapsamadığı müziksiz bölümleri</string>
+  <string name="morphe_sb_segments_nomusic_sum">Sadece müzik videolarında kullanım içindir. Müzik videolarının başka bir kategorinin kapsamadığı müziksiz bölümleri</string>
   <string name="morphe_sb_skip_button_compact">Atla</string>
   <string name="morphe_sb_skip_button_compact_highlight">Vurgu</string>
   <string name="morphe_sb_skip_button_sponsor">Sponsoru atla</string>
@@ -1049,7 +1050,7 @@ Kullanıcı kimliğiniz bir parola gibidir ve asla paylaşılmamalıdır."</stri
   <string name="morphe_sb_submit_failed_unknown_error">Kısım gönderilemedi (durum: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Segment gönderilemedi. Hız Sınırlı (aynı kullanıcıdan veya IP\'den çok fazla)</string>
   <string name="morphe_sb_submit_failed_forbidden">Kısım gönderilemiyor: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Kısım gönderilemiyor.
+  <string name="morphe_sb_submit_failed_duplicate">"Kısmı gönderilemiyor.
 Aynısı mevcut"</string>
   <string name="morphe_sb_submit_succeeded">Kısım başarıyla gönderildi</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

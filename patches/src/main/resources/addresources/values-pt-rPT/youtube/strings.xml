@@ -110,6 +110,9 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_hide_video_recommendation_labels_title">Ocultar rótulos de recomendação de vídeo</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">\'Pessoas também assistiram\' e \'Você também pode gostar\' rótulos nos resultados da pesquisa estão ocultos</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">\'Pessoas também assistiram\' e \'Você também pode gostar\' rótulos nos resultados da pesquisa são mostrados</string>
+  <string name="morphe_hide_web_search_results_title">Esconder resultados da pesquisa web</string>
+  <string name="morphe_hide_web_search_results_summary_on">Resultados de pesquisa web estão escondidos</string>
+  <string name="morphe_hide_web_search_results_summary_off">Resultados de pesquisa web são visíveis</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ocultar Doodles do YouTube</string>
   <string name="morphe_hide_doodles_summary_on">A animação dos Doodles do YouTube no logótipo está oculta</string>
@@ -319,9 +322,9 @@ Từ khóa có thể là tên kênh hoặc bất kỳ văn bản nào hiển th�
 
 Từ có chữ in hoa ở giữa phải được nhập với chữ hoa (ví dụ: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Sobre a filtragem por palavra-chave</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Os resultados de Início/Assinaturas/Pesquisa são filtrados para ocultar conteúdo que corresponda a frases de palavras-chave
+  <string name="morphe_hide_keyword_content_about_summary">"Início / Inscrições / Os resultados da pesquisa são filtrados para ocultar conteúdo que corresponda a frases de palavras-chave
 
-Limitações
+Limitações:
 • Os Shorts não podem ser ocultados pelo nome do canal
 • Alguns componentes da interface do usuário podem não estar ocultos
 • A pesquisa por uma palavra-chave pode não mostrar resultados"</string>
@@ -362,13 +365,10 @@ Limitações
   <string name="morphe_hide_view_products_banner_title">Ocultar banner \'Ver produtos\'</string>
   <string name="morphe_hide_view_products_banner_summary_on">O banner de visualização de produtos na sobreposição de vídeo está oculto</string>
   <string name="morphe_hide_view_products_banner_summary_off">O banner de visualização de produtos na sobreposição de vídeo está exibido</string>
-  <string name="morphe_hide_web_search_results_title">Esconder resultados da pesquisa web</string>
-  <string name="morphe_hide_web_search_results_summary_on">Resultados de pesquisa web estão escondidos</string>
-  <string name="morphe_hide_web_search_results_summary_off">Resultados de pesquisa web são visíveis</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Esconder promoções Premium do YouTube</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"As promoções do YouTube Premium estão ocultas
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promoções do YouTube Premium são ocultadas
 
-Limitações: A página de Doodles do YouTube não está disponível"</string>
+Limitação: A página de YouTube Doodles não está disponível"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promoções do YouTube Premium são mostradas</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Esconder anúncios do vídeo</string>
@@ -588,6 +588,7 @@ Se alterar esta configuração não fizer efeito, tente alternar para o modo an�
   <string name="morphe_disable_translucent_status_bar_title">Desativar a barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Em alguns dispositivos, habilitar este recurso pode mudar a barra de navegação do sistema para transparente.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desativar a barra translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">A barra de navegação no modo claro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A barra de navegação em modo claro é opaca ou translúcida</string>
@@ -1049,8 +1050,8 @@ Seu ID de usuário é como uma senha e nunca deve ser compartilhado."</string>
   <string name="morphe_sb_submit_failed_unknown_error">Não é possível enviar o segmento (estado: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Không thể gửi phân đoạn. Bị giới hạn (quá nhiều từ cùng một người dùng hoặc IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Não é possível enviar o segmento: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Không thể gửi phân đoạn.
-Đã tồn tại"</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Não é possível enviar o segmento.
+Já existe"</string>
   <string name="morphe_sb_submit_succeeded">Segmento enviado com sucesso</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock temporariamente indisponível (API TimeOut)</string>

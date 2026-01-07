@@ -111,6 +111,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_recommendation_labels_title">おすすめ動画のラベルを非表示</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">「他の人はこの動画も視聴しています」ラベルと「あなたへのおすすめ」ラベルは検索結果に表示されません</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">「他の人はこの動画も視聴しています」ラベルと「あなたへのおすすめ」ラベルは検索結果に表示されます</string>
+  <string name="morphe_hide_web_search_results_title">ウェブ検索結果を非表示</string>
+  <string name="morphe_hide_web_search_results_summary_on">ウェブ検索結果は表示されません</string>
+  <string name="morphe_hide_web_search_results_summary_off">ウェブ検索結果は表示されます</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodle を非表示</string>
   <string name="morphe_hide_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
@@ -314,7 +317,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">キーワード</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"キーワードとなる単語やフレーズのリスト (改行区切り)
+  <string name="morphe_hide_keyword_content_phrases_summary">"除外するためのキーワードとなる単語やフレーズのリスト (改行区切り)
 
 キーワードには、除外したい動画のチャンネル名もしくはタイトルの一部を指定することができます
 
@@ -322,7 +325,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_about_title">キーワード フィルタリングについて</string>
   <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索結果でキーワードに合致する動画を除外します
 
-制限事項
+制限事項:
 • ショート動画はチャンネル名の合致では除外できない
 • 一部の UI コンポーネントが残ってしまう場合がある
 • キーワードで検索したとき、結果が表示されない場合がある"</string>
@@ -363,9 +366,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_title">「商品を表示」バナーを非表示</string>
   <string name="morphe_hide_view_products_banner_summary_on">「商品を表示」バナーはプレーヤー画面に表示されません</string>
   <string name="morphe_hide_view_products_banner_summary_off">「商品を表示」バナーはプレーヤー画面に表示されます</string>
-  <string name="morphe_hide_web_search_results_title">ウェブ検索結果を非表示</string>
-  <string name="morphe_hide_web_search_results_summary_on">ウェブ検索結果は表示されません</string>
-  <string name="morphe_hide_web_search_results_summary_off">ウェブ検索結果は表示されます</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium の広告は表示されません
 
@@ -477,11 +477,11 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">全画面表示中に左 / 右にスワイプすると、前 / 次の動画に切り替わります</string>
   <string name="morphe_swipe_change_video_summary_off">全画面表示中に左 / 右にスワイプしても、前 / 次の動画に切り替わりません</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">自動字幕の表示</string>
-  <string name="morphe_auto_captions_style_entry_1">ミュート中に表示</string>
-  <string name="morphe_auto_captions_style_entry_2">常に表示しない</string>
-  <string name="morphe_auto_captions_style_entry_3">ミュート中に表示</string>
-  <string name="morphe_auto_captions_style_entry_4">静音中に表示</string>
+  <string name="morphe_auto_captions_style_title">自動字幕表示</string>
+  <string name="morphe_auto_captions_style_entry_1">ミュート時および非ミュート時に表示</string>
+  <string name="morphe_auto_captions_style_entry_2">常に非表示</string>
+  <string name="morphe_auto_captions_style_entry_3">非ミュート時に表示</string>
+  <string name="morphe_auto_captions_style_entry_4">ミュート時に表示</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">自動字幕を表示</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">自動字幕を非表示</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
@@ -589,6 +589,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">一部のデバイスでは、この機能を有効にすると、システムのナビゲーション バーが半透明になりアプリ内のコンポーネントに重なってしまう場合があります。</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ライトモードの半透明バーを無効化</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">ライトモードではナビゲーション バーは透けません</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">ライトモードではナビゲーション バーが状況に応じて透けます</string>
