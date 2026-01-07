@@ -18,6 +18,11 @@
 # 🧩 Patches
 Morphe Patches
 
+## ❓ About
+
+Morphe Patches are based off the prior work of [ReVanced](https://github.com/ReVanced/revanced-patches).
+All modifications made by Morphe, along with their dates, can be found in the Git history.
+
 &nbsp;
 ## 📜 License
 
