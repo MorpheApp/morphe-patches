@@ -337,7 +337,10 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
+        val videoQualityClassType : String
         (if (is_20_19_or_greater) VideoQualityFingerprint else VideoQualityLegacyFingerprint).let {
+            videoQualityClassType = it.classDef.type
+
             // Fix bad data used by YouTube.
             val nameRegister = if (is_20_20_or_greater) "p3" else "p2"
             it.method.addInstructions(
@@ -422,7 +425,7 @@ val videoInformationPatch = bytecodePatch(
                         type,
                         "patch_setQuality",
                         listOf(
-                            ImmutableMethodParameter(YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY, null, null)
+                            ImmutableMethodParameter(videoQualityClassType, null, null)
                         ),
                         "V",
                         AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
@@ -431,7 +434,7 @@ val videoInformationPatch = bytecodePatch(
                         MutableMethodImplementation(2),
                     ).toMutable().apply {
                         val setQualityMenuIndexMethod = methods.single { method ->
-                            method.parameterTypes.firstOrNull() == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY
+                            method.parameterTypes.firstOrNull() == videoQualityClassType
                         }
 
                         addInstructions(
