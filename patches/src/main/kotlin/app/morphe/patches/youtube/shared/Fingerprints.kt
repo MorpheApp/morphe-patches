@@ -110,9 +110,6 @@ internal object SeekbarFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to _mutable_ class found in [seekbarFingerprint].
- */
 internal object SeekbarOnDrawFingerprint : Fingerprint(
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),

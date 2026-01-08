@@ -235,10 +235,10 @@ val videoInformationPatch = bytecodePatch(
                         if (fieldReferenceType != null) {
                             throw PatchException("Found more than one playback speed interface: $def")
                         }
-                        fieldReferenceType = def;
+                        fieldReferenceType = def
                     }
                 }
-                setPlaybackSpeedContainerClassFieldReferenceClassType = fieldReferenceType!!;
+                setPlaybackSpeedContainerClassFieldReferenceClassType = fieldReferenceType!!
             } else {
                 setPlaybackSpeedContainerClassFieldReferenceClassType =
                     classDefBy(setPlaybackSpeedContainerClassFieldReference.type)

@@ -11,7 +11,6 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -67,18 +66,10 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
-        // Find the obfuscated method name for PlaybackStartDescriptor.videoId()
-        val (videoIdStartMethod, videoIdIndex) = if (is_20_39_or_greater) {
-            PlaybackStartDescriptorToStringFingerprint.let {
-                it.method to it.instructionMatches[1].index
-            }
-        } else {
-            // This probably can be removed and use the updated 20.39+ fingerprint above for all targets.
-            PlaybackStartFeatureFlagFingerprint.let {
-                it.method to it.instructionMatches.first().index
-            }
+        val playbackStartVideoIdMethodName : String
+        PlaybackStartDescriptorToStringFingerprint.let {
+            playbackStartVideoIdMethodName = navigate(it.method).to(it.instructionMatches[1].index).stop().name
         }
-        val playbackStartVideoIdMethodName = navigate(videoIdStartMethod).to(videoIdIndex).stop().name
 
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,
