@@ -479,7 +479,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        invoke-static { v$typingStringRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideTrendingSearchResult(Ljava/lang/String;)Z
+                        invoke-static { v$typingStringRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSearchSuggestions(Ljava/lang/String;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :show
                         return-void
