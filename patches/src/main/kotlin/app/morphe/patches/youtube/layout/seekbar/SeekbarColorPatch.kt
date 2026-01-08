@@ -14,12 +14,12 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -217,12 +217,7 @@ val seekbarColorPatch = bytecodePatch(
                 }
             )
 
-            val setAnimationStreamName : String
-            lottieAnimationViewSetAnimationStreamFingerprint.method.apply {
-                // 21.02+ method is private and the helper method needs to call it.
-                accessFlags = accessFlags.toPublicAccessFlags()
-                setAnimationStreamName = name
-            }
+            val setAnimationStreamName = lottieAnimationViewSetAnimationStreamFingerprint.method.name
 
             add(ImmutableMethod(
                 LOTTIE_ANIMATION_VIEW_CLASS_TYPE,
@@ -237,11 +232,15 @@ val seekbarColorPatch = bytecodePatch(
                 null,
                 MutableMethodImplementation(4),
             ).toMutable().apply {
+                // 21.02+ method is private. Cannot easily change the access flags to public
+                // because that breaks unrelated opcode that uses invoke-direct and not invoke-virtual.
+                val methodOpcode = if (is_21_02_or_greater) "invoke-direct" else "invoke-virtual"
+
                 addInstructions(
                     """
                         invoke-static { p1, p2 }, $factoryStreamClass->$factoryStreamName(Ljava/io/InputStream;Ljava/lang/String;)$factoryStreamReturnType
                         move-result-object v0
-                        invoke-virtual { p0, v0}, Lcom/airbnb/lottie/LottieAnimationView;->$setAnimationStreamName($factoryStreamReturnType)V
+                        $methodOpcode { p0, v0}, Lcom/airbnb/lottie/LottieAnimationView;->$setAnimationStreamName($factoryStreamReturnType)V
                         return-void
                     """
                 )
