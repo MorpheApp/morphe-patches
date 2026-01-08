@@ -185,12 +185,6 @@ internal object PlaybackSpeedClassFingerprint : Fingerprint(
     strings = listOf("PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT")
 )
 
-
-/**
- * 20.x and lower.
- */
-internal const val YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
-
 /**
  * YouTube 20.19 and lower.
  */
@@ -203,7 +197,7 @@ internal object VideoQualityLegacyFingerprint : Fingerprint(
         "L"
     ),
     custom = { _, classDef ->
-        classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY
+        classDef.type == "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
     }
 )
 

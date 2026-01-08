@@ -3,13 +3,12 @@ package app.morphe.extension.youtube.patches.playback.quality;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.NetworkType;
 
-import com.google.android.libraries.youtube.innertube.model.media.VideoQuality;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
@@ -74,12 +73,12 @@ public class RememberVideoQualityPatch {
     public static void userChangedShortsQuality(int userSelectedQualityIndex) {
         try {
             if (shouldRememberVideoQuality()) {
-                VideoQuality[] currentQualities = VideoInformation.getCurrentQualities();
+                VideoQualityInterface[] currentQualities = VideoInformation.getCurrentQualities();
                 if (currentQualities == null) {
                     Logger.printDebug(() -> "Cannot save default quality, qualities is null");
                     return;
                 }
-                VideoQuality quality = currentQualities[userSelectedQualityIndex];
+                VideoQualityInterface quality = currentQualities[userSelectedQualityIndex];
                 saveDefaultQuality(quality.patch_getResolution());
             }
         } catch (Exception ex) {

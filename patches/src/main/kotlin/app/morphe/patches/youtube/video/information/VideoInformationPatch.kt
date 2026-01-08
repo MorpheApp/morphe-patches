@@ -50,6 +50,8 @@ private const val EXTENSION_PLAYER_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$PlaybackController;"
 private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityMenuInterface;"
+private const val EXTENSION_VIDEO_QUALITY_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityInterface;"
 
 private lateinit var playerInitMethod: MutableMethod
 private var playerInitInsertIndex = -1
@@ -353,6 +355,8 @@ val videoInformationPatch = bytecodePatch(
 
             // Add methods to access obfuscated quality fields.
             it.classDef.apply {
+                // Add interface and helper methods to allow extension code to call obfuscated methods.
+                interfaces.add(EXTENSION_VIDEO_QUALITY_INTERFACE)
                 methods.add(
                     ImmutableMethod(
                         type,
@@ -425,7 +429,7 @@ val videoInformationPatch = bytecodePatch(
                         type,
                         "patch_setQuality",
                         listOf(
-                            ImmutableMethodParameter(videoQualityClassType, null, null)
+                            ImmutableMethodParameter(EXTENSION_VIDEO_QUALITY_INTERFACE, null, null)
                         ),
                         "V",
                         AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
@@ -440,6 +444,7 @@ val videoInformationPatch = bytecodePatch(
                         addInstructions(
                             0,
                             """
+                                check-cast p1, $videoQualityClassType
                                 invoke-virtual { p0, p1 }, $setQualityMenuIndexMethod
                                 return-void
                             """
@@ -455,7 +460,7 @@ val videoInformationPatch = bytecodePatch(
                     iget-object v0, p0, $onItemClickListenerClassReference
                     iget-object v0, v0, $setQualityFieldReference
                     
-                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
+                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$EXTENSION_VIDEO_QUALITY_INTERFACE${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
                     move-result p2
                 """
             )
