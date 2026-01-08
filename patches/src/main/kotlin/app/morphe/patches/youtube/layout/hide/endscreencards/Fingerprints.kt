@@ -1,14 +1,16 @@
 package app.morphe.patches.youtube.layout.hide.endscreencards
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.util.containsLiteralInstruction
+import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.literal
+import app.morphe.patcher.opcode
 import app.morphe.util.customLiteral
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object LayoutCircleFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -51,18 +53,37 @@ internal object LayoutVideoFingerprint : Fingerprint(
     custom = customLiteral { layoutVideo }
 )
 
+internal object ShowEndscreenCardsParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "[L",
+    parameters = listOf("L"),
+    filters = listOf(
+        literal(3, location = MatchFirst()),
+        opcode(Opcode.NEW_ARRAY, location = MatchAfterImmediately()),
+        literal(1024L, location = MatchAfterWithin(12)),
+        literal(1, location = MatchAfterWithin(12)),
+        anyInstruction(
+            // 20.x
+            literal(15, location = MatchAfterWithin(12)),
+            // 21.x+
+            literal(4, location = MatchAfterWithin(12)),
+        )
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 5
+    }
+)
+
+/**
+ * Matches to the class found in [ShowEndscreenCardsParentFingerprint].
+ */
 internal object ShowEndscreenCardsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
-    custom = { method, classDef ->
-        classDef.methods.count() == 5
-                && method.containsLiteralInstruction(0)
-                && method.containsLiteralInstruction(5)
-                && method.containsLiteralInstruction(8)
-                && method.indexOfFirstInstruction {
-            val reference = getReference<FieldReference>()
-            reference?.type == "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"
-        } >= 0
-    }
+    filters = listOf(
+        literal(5),
+        literal(8),
+        literal(9)
+    )
 )
