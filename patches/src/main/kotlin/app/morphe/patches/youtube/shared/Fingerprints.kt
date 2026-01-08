@@ -123,7 +123,7 @@ internal object SeekbarOnDrawFingerprint : Fingerprint(
 internal object SubtitleButtonControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Lcom/google/android/libraries/youtube/player/subtitles/model/SubtitleTrack;"),
+    parameters = listOf("L"),
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "accessibility_captions_unavailable"),
         resourceLiteral(ResourceType.STRING, "accessibility_captions_button_name"),
