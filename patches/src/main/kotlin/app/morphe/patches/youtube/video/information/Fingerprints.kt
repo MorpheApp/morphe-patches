@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
@@ -203,6 +204,20 @@ internal object VideoQualityLegacyFingerprint : Fingerprint(
     ),
     custom = { _, classDef ->
         classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY
+    }
+)
+
+internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        methodCall(smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;"),
+        // First method call after Locale is the video id.
+        methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
+        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+    ),
+    custom = { method, _ ->
+        method.name == "toString"
     }
 )
 

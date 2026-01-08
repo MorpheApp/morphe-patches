@@ -13,7 +13,6 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-
 internal object GetOldPlaybackSpeedsFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
     strings = listOf("menu_item_playback_speed")
@@ -40,14 +39,14 @@ internal object ServerSideMaxSpeedFeatureFlagFingerprint : Fingerprint(
 internal object SpeedArrayGeneratorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "[L",
-    parameters = listOf("Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"),
+    parameters = listOf("L"),
     filters = listOf(
         methodCall(name = "size", returnType = "I"),
         newInstance("Ljava/text/DecimalFormat;"),
         string("0.0#"),
         literal(7),
         opcode(Opcode.NEW_ARRAY),
-        fieldAccess(definingClass = "/PlayerConfigModel;", type = "[F")
+        fieldAccess(type = "[F")
     )
 )
 
@@ -57,8 +56,9 @@ internal object SpeedArrayGeneratorFingerprint : Fingerprint(
 internal object SpeedLimiterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("F", "Lcom/google/android/libraries/youtube/innertube/model/media/PlayerConfigModel;"),
+    parameters = listOf("F", "L"),
     filters = listOf(
+        string("setPlaybackRate"),
         literal(0.25f),
         literal(4.0f)
     )

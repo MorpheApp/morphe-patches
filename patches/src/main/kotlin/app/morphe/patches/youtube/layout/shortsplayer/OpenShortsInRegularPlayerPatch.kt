@@ -16,6 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
+import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -68,10 +69,11 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
         // Find the obfuscated method name for PlaybackStartDescriptor.videoId()
         val (videoIdStartMethod, videoIdIndex) = if (is_20_39_or_greater) {
-            WatchPanelVideoIdFingerprint.let {
-                it.method to it.instructionMatches.last().index
+            PlaybackStartDescriptorToStringFingerprint.let {
+                it.method to it.instructionMatches[1].index
             }
         } else {
+            // This probably can be removed and use the updated 20.39+ fingerprint above for all targets.
             PlaybackStartFeatureFlagFingerprint.let {
                 it.method to it.instructionMatches.first().index
             }

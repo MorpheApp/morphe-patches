@@ -19,6 +19,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -208,16 +209,20 @@ val seekbarColorPatch = bytecodePatch(
                 factoryStreamReturnType = returnType
             }
 
-            val LottieAnimationViewSetAnimationStreamFingerprint = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            val lottieAnimationViewSetAnimationStreamFingerprint = Fingerprint(
                 returnType = "V",
                 parameters = listOf(factoryStreamReturnType.toString()),
                 custom = { _, classDef ->
                     classDef.type == LottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type
                 }
             )
-            val setAnimationStreamName = LottieAnimationViewSetAnimationStreamFingerprint
-                .originalMethod.name
+
+            val setAnimationStreamName : String
+            lottieAnimationViewSetAnimationStreamFingerprint.method.apply {
+                // 21.02+ method is private and the helper method needs to call it.
+                accessFlags = accessFlags.toPublicAccessFlags()
+                setAnimationStreamName = name
+            }
 
             add(ImmutableMethod(
                 LOTTIE_ANIMATION_VIEW_CLASS_TYPE,
