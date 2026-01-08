@@ -36,7 +36,7 @@ public final class VideoInformation {
     /**
      * Interface to use obfuscated methods.
      */
-    public interface VideoQualityInterface extends Comparable<VideoQualityInterface> {
+    public interface VideoQualityInterface {
         // Methods are added during patching.
         String patch_getQualityName();
         int patch_getResolution();
