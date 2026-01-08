@@ -108,15 +108,15 @@ val videoInformationPatch = bytecodePatch(
         playerInitInsertRegister = playerInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
         playerInitInsertIndex = initThisIndex + 1
 
-        val SeekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
-        val SeekRelativeFingerprintResultMethod =
+        val seekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
+        val seekRelativeFingerprintResultMethod =
             SeekRelativeFingerprint.match(PlayerInitFingerprint.originalClassDef).method
 
         // Create extension interface methods.
         addSeekInterfaceMethods(
             PlayerInitFingerprint.classDef,
-            SeekFingerprintResultMethod,
-            SeekRelativeFingerprintResultMethod,
+            seekFingerprintResultMethod,
+            seekRelativeFingerprintResultMethod,
         )
 
         with(MdxPlayerDirectorSetVideoStageFingerprint) {
@@ -204,7 +204,7 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the user playback speed selection.
          */
-        OnPlaybackSpeedItemClickFingerprint.method.apply {
+        OnPlaybackSpeedItemClickFingerprint.match(OnPlaybackSpeedItemClickParentFingerprint.classDef).method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethod = this

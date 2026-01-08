@@ -1,17 +1,17 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     returnType = "V",
@@ -20,16 +20,36 @@ internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     )
 )
 
+internal object OnPlaybackSpeedItemClickParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            returnType = "L",
+            parameters = listOf("Ljava/lang/String;"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 8
+    }
+)
+
+/**
+ * Resolves using the method found in [OnPlaybackSpeedItemClickParentFingerprint].
+ */
 internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "L", "I", "J"),
     custom = { method, _ ->
-        method.name == "onItemClick" &&
-            method.implementation?.instructions?.find {
-                it.opcode == Opcode.IGET_OBJECT &&
-                    it.getReference<FieldReference>()!!.type == "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"
-            } != null
+        method.name == "onItemClick"
     }
 )
 
@@ -64,7 +84,12 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
  */
 internal object SeekFingerprint : Fingerprint(
     filters = listOf(
-        string("Attempting to seek during an ad"),
+        anyInstruction(
+            // 20.xx
+            string("Attempting to seek during an ad"),
+            // 21.02.32
+            string("Attempting to seek during an ad or non-seekable video")
+        )
     )
 )
 
