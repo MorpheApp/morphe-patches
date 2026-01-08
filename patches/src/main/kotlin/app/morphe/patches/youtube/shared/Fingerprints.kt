@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.shared
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.*
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -135,8 +135,12 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
     filters = listOf(
-        newInstance("Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"),
-        opcode(Opcode.IGET_OBJECT),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchFirst()),
+        literal(2, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(Opcode.NEW_INSTANCE, location = MatchAfterImmediately()), // Obfuscated VideoQuality
+
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
         opcode(Opcode.CHECK_CAST),
         fieldAccess(type = "I", opcode = Opcode.IGET, location = MatchAfterImmediately()), // Video resolution (human readable).
     )
