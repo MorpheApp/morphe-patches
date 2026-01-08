@@ -65,15 +65,16 @@ val rememberVideoQualityPatch = bytecodePatch {
         )
 
         // Inject a call to remember the user selected quality for regular videos.
-        VideoQualityChangedFingerprint.method.apply {
-            val index = VideoQualityChangedFingerprint.instructionMatches[3].index
-            val register = getInstruction<TwoRegisterInstruction>(index).registerA
+        VideoQualityChangedFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-            addInstruction(
-                index + 1,
-                "invoke-static { v$register }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->userChangedQuality(I)V",
-            )
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->userChangedQuality(I)V",
+                )
+            }
         }
     }
 }

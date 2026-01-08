@@ -185,7 +185,10 @@ internal object PlaybackSpeedClassFingerprint : Fingerprint(
 )
 
 
-internal const val YOUTUBE_VIDEO_QUALITY_CLASS_TYPE = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
+/**
+ * 20.x and lower.
+ */
+internal const val YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
 
 /**
  * YouTube 20.19 and lower.
@@ -199,10 +202,11 @@ internal object VideoQualityLegacyFingerprint : Fingerprint(
         "L"
     ),
     custom = { _, classDef ->
-        classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE
+        classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY
     }
 )
 
+// Class name is un-obfuscated in targets before 21.01
 internal object VideoQualityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
@@ -211,10 +215,7 @@ internal object VideoQualityFingerprint : Fingerprint(
         "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
         "Z",
         "L"
-    ),
-    custom = { _, classDef ->
-        classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE
-    }
+    )
 )
 
 internal object VideoQualitySetterFingerprint : Fingerprint(

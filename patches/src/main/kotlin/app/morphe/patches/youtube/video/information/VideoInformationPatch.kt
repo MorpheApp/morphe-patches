@@ -422,7 +422,7 @@ val videoInformationPatch = bytecodePatch(
                         type,
                         "patch_setQuality",
                         listOf(
-                            ImmutableMethodParameter(YOUTUBE_VIDEO_QUALITY_CLASS_TYPE, null, null)
+                            ImmutableMethodParameter(YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY, null, null)
                         ),
                         "V",
                         AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
@@ -431,7 +431,7 @@ val videoInformationPatch = bytecodePatch(
                         MutableMethodImplementation(2),
                     ).toMutable().apply {
                         val setQualityMenuIndexMethod = methods.single { method ->
-                            method.parameterTypes.firstOrNull() == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE
+                            method.parameterTypes.firstOrNull() == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY
                         }
 
                         addInstructions(
@@ -452,7 +452,7 @@ val videoInformationPatch = bytecodePatch(
                     iget-object v0, p0, $onItemClickListenerClassReference
                     iget-object v0, v0, $setQualityFieldReference
                     
-                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$YOUTUBE_VIDEO_QUALITY_CLASS_TYPE${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
+                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$YOUTUBE_VIDEO_QUALITY_CLASS_TYPE_LEGACY${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
                     move-result p2
                 """
             )
