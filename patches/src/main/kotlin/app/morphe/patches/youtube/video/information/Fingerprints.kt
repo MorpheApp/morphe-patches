@@ -87,7 +87,7 @@ internal object SeekFingerprint : Fingerprint(
         anyInstruction(
             // 20.xx
             string("Attempting to seek during an ad"),
-            // 21.02.32
+            // 21.02+
             string("Attempting to seek during an ad or non-seekable video")
         )
     )
