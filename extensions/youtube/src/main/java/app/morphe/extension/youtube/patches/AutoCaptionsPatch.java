@@ -11,10 +11,6 @@ public class AutoCaptionsPatch {
         WITH_VOLUME_ONLY,
         WITHOUT_VOLUME_ONLY
     }
-    public enum AutoCaptionsStyleLegacy {
-        ENABLED,
-        DISABLED
-    }
 
     private static volatile boolean captionsButtonStatus;
 
@@ -22,18 +18,14 @@ public class AutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions() {
-        boolean withVolumeAutoCaptioningEnabled;
+        final boolean withVolumeAutoCaptioningEnabled;
+        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
 
         if (VersionCheckPatch.IS_20_26_OR_GREATER) {
-            AutoCaptionsStyle style =
-                Settings.AUTO_CAPTIONS_STYLE.get();
-            withVolumeAutoCaptioningEnabled =
-                style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
+            withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED)
+                    || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
         } else {
-            AutoCaptionsStyleLegacy style =
-                Settings.AUTO_CAPTIONS_STYLE_LEGACY.get();
-            withVolumeAutoCaptioningEnabled =
-                style == AutoCaptionsStyleLegacy.ENABLED;
+            withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED);
         }
 
         if (!withVolumeAutoCaptioningEnabled) {
@@ -42,7 +34,6 @@ public class AutoCaptionsPatch {
              * when 'withVolumeAutoCaptioningEnabled'
              * field is false
              */
-
             return captionsButtonStatus;
         }
 
