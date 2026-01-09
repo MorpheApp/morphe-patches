@@ -146,11 +146,8 @@ public class Settings extends BaseSettings {
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
     public static final BooleanSetting COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("morphe_copy_video_url_timestamp", TRUE);
-    if (VersionCheckPatch.IS_20_26_OR_GREATER) {
-        public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
-    } else {
-        public static final EnumSetting<AutoCaptionsStyleLegacy> AUTO_CAPTIONS_STYLE_LEGACY = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyleLegacy.ENABLED, false);
-    }
+    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
+    public static final EnumSetting<AutoCaptionsStyleLegacy> AUTO_CAPTIONS_STYLE_LEGACY = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyleLegacy.ENABLED, false);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", TRUE, true);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
