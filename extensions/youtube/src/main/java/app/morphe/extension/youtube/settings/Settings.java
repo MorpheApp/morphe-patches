@@ -44,6 +44,7 @@ import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.Thumbnail
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailStillTime;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
+import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyleLegacy;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
