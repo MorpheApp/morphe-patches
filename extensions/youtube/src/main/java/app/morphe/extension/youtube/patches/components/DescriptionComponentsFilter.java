@@ -107,7 +107,7 @@ final class DescriptionComponentsFilter extends Filter {
         horizontalShelfGroupList.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_ATTRIBUTES_SECTION,
-                        // May no longer work on v20.30+, even though the component is still there.
+                        // May no longer work on v20.31+, even though the component is still there.
                         "cell_video_attribute"
                 ),
                 new ByteArrayFilterGroup(
