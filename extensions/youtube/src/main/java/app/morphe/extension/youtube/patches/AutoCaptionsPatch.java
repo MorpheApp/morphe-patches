@@ -1,6 +1,6 @@
 package app.morphe.extension.youtube.patches;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 
 @SuppressWarnings("unused")
 public class AutoCaptionsPatch {
@@ -26,7 +26,7 @@ public class AutoCaptionsPatch {
             Settings.AUTO_CAPTIONS_STYLE.get();
         boolean withVolumeAutoCaptioningEnabled;
 
-        if (is_20_26_or_greater) {
+        if (VersionCheckPatch.IS_20_26_OR_GREATER) {
             withVolumeAutoCaptioningEnabled =
                 style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
         } else {
