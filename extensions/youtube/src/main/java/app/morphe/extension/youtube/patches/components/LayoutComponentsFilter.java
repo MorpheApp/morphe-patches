@@ -46,7 +46,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup horizontalShelves;
-    private final StringFilterGroup ticketShelf;
     private final ByteArrayFilterGroup ticketShelfBuffer;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
@@ -205,7 +204,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         // Playable horizontal shelf header.
         playablesBuffer = new ByteArrayFilterGroup(
-                Settings.HIDE_PLAYABLES,
+                null,
                 "FEmini_app_destination"
         );
 
@@ -298,11 +297,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "horizontal_tile_shelf.e"
         );
 
-        ticketShelf = new StringFilterGroup(
-                Settings.HIDE_TICKET_SHELF,
-                "horizontal_shelf.e"
-        );
-
         ticketShelfBuffer = new ByteArrayFilterGroup(
                 null,
                 "ticket_item.e"
@@ -338,7 +332,6 @@ public final class LayoutComponentsFilter extends Filter {
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
-                ticketShelf,
                 timedReactions,
                 videoRecommendationLabels,
                 webLinkPanel
@@ -372,9 +365,6 @@ public final class LayoutComponentsFilter extends Filter {
             return false;
         }
 
-        if (matchedGroup == ticketShelf) {
-            return ticketShelfBuffer.check(buffer).isFiltered();
-        }
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
 
@@ -386,8 +376,11 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == horizontalShelves) {
-            return contentIndex == 0 && (hideShelves()
-                    || playablesBuffer.check(buffer).isFiltered());
+            if (contentIndex != 0) return false;
+            if (ticketShelfBuffer.check(buffer).isFiltered()) return Settings.HIDE_TICKET_SHELF.get();
+            if (playablesBuffer.check(buffer).isFiltered()) return Settings.HIDE_PLAYABLES.get();
+
+            return hideShelves();
         }
 
         if (matchedGroup == chipBar) {
