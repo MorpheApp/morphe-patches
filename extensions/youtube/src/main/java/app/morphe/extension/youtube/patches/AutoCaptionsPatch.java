@@ -18,22 +18,14 @@ public class AutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions() {
-        final boolean withVolumeAutoCaptioningEnabled;
         AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
-
-        if (VersionCheckPatch.IS_20_26_OR_GREATER) {
-            withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED)
-                    || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
-        } else {
-            withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED);
-        }
+        final boolean withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED)
+                || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
 
         if (!withVolumeAutoCaptioningEnabled) {
-            /**
-             * Do this trick to disable auto-captioning only
-             * when 'withVolumeAutoCaptioningEnabled'
-             * field is false
-             */
+            // Disable auto-captioning only
+            // when 'withVolumeAutoCaptioningEnabled'
+            // field is false
             return captionsButtonStatus;
         }
 
