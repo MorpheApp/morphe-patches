@@ -377,6 +377,8 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == horizontalShelves) {
             if (contentIndex != 0) return false;
+            // Must always check other buffers first, to prevent incorrectly hiding them
+            // if they are set to show but hide horizontal shelves is set to hidden.
             if (ticketShelfBuffer.check(buffer).isFiltered()) return Settings.HIDE_TICKET_SHELF.get();
             if (playablesBuffer.check(buffer).isFiltered()) return Settings.HIDE_PLAYABLES.get();
 
