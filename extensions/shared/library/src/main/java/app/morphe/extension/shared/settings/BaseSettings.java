@@ -6,6 +6,7 @@ import static app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTh
 import static app.morphe.extension.shared.settings.Setting.parent;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.CustomBrandingPatch;
 
 /**
  * Settings shared across multiple apps.
@@ -53,8 +54,8 @@ public class BaseSettings {
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
 
-    public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", BrandingTheme.BLACK, true);
-    public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", 1, true);
+    public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
+    public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);
 
     public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, parent(DEBUG));
 

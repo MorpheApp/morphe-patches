@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-01-09T10:17:08",
-  "description": "# [1.3.0](https://github.com/MorpheApp/morphe-patches/compare/v1.2.0...v1.3.0) (2026-01-09)\n\n\n### Bug Fixes\n\n* **Spoof video streams:** Change default client to VR 1.47.48 ([#116](https://github.com/MorpheApp/morphe-patches/issues/116)) ([2bc5775](https://github.com/MorpheApp/morphe-patches/commit/2bc577554f54fd2ecfcd682b83844511461effe4))\n* **YouTube - Hide layout components:** Fix certain description components not working ([#143](https://github.com/MorpheApp/morphe-patches/issues/143)) ([4efcb4d](https://github.com/MorpheApp/morphe-patches/commit/4efcb4d2c0f2085b6dbd0d203ef2979a041d512a))\n* **YouTube - Remove background playback restrictions:** Fix background playback not working with certain offline videos ([bb38f76](https://github.com/MorpheApp/morphe-patches/commit/bb38f763f271d14b80166d517a3e840578d1f5b9))\n* **YouTube:** Change \"Hide mix playlist\" to default off ([00f1240](https://github.com/MorpheApp/morphe-patches/commit/00f124004efd758092a5a8330aaea92f08064172))\n\n\n### Features\n\n* **YouTube:** Add experimental support for `21.02.32` ([#138](https://github.com/MorpheApp/morphe-patches/issues/138)) ([660699d](https://github.com/MorpheApp/morphe-patches/commit/660699da7ee6b623d5010b42fe575e63947b450a))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.3.0/patches-1.3.0.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.3.0/patches-1.3.0.mpp.asc",
-  "version": "1.3.0"
+  "created_at": "2026-01-09T17:38:46",
+  "description": "## [1.3.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-01-09)\n\n\n### Bug Fixes\n\n* **Custom branding:** Default to user‑provided icon and name when provided ([eef8798](https://github.com/MorpheApp/morphe-patches/commit/eef8798602ebf805eb3cff08e010025a0a8e93ab))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.3.1-dev.1/patches-1.3.1-dev.1.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.3.1-dev.1/patches-1.3.1-dev.1.mpp.asc",
+  "version": "1.3.1-dev.1"
 }

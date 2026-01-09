@@ -1,3 +1,10 @@
+## [1.3.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-01-09)
+
+
+### Bug Fixes
+
+* **Custom branding:** Default to user‑provided icon and name when provided ([eef8798](https://github.com/MorpheApp/morphe-patches/commit/eef8798602ebf805eb3cff08e010025a0a8e93ab))
+
 # [1.3.0](https://github.com/MorpheApp/morphe-patches/compare/v1.2.0...v1.3.0) (2026-01-09)
 
 
