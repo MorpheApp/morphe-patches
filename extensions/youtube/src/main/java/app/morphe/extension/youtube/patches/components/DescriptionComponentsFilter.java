@@ -107,12 +107,11 @@ final class DescriptionComponentsFilter extends Filter {
         horizontalShelfGroupList.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_ATTRIBUTES_SECTION,
-                        // May no longer work on v20.30+
+                        // May no longer work on v20.30+, even though the component is still there.
                         "cell_video_attribute"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FEATURED_PLACES_SECTION,
-                        // "maps.google.com"
                         "yt_fill_star",
                         "yt_fill_experimental_star"
                 ),
