@@ -381,7 +381,7 @@ public final class LayoutComponentsFilter extends Filter {
             final boolean hideTickets = Settings.HIDE_TICKET_SHELF.get();
             final boolean hidePlayables = Settings.HIDE_PLAYABLES.get();
 
-            if (!hidePlayables && !hideTickets && !hidePlayables) return false;
+            if (!hideShelves && !hideTickets && !hidePlayables) return false;
 
             // Must always check other buffers first, to prevent incorrectly hiding them
             // if they are set to show but hide horizontal shelves is set to hidden.
