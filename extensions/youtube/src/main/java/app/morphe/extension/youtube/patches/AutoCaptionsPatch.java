@@ -22,14 +22,17 @@ public class AutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions() {
-        AutoCaptionsStyle style =
-            Settings.AUTO_CAPTIONS_STYLE.get();
+        AutoCaptionsStyle style;
         boolean withVolumeAutoCaptioningEnabled;
 
         if (VersionCheckPatch.IS_20_26_OR_GREATER) {
+            style =
+                Settings.AUTO_CAPTIONS_STYLE.get();
             withVolumeAutoCaptioningEnabled =
                 style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
         } else {
+            style =
+                Settings.AUTO_CAPTIONS_STYLE_LEGACY.get();
             withVolumeAutoCaptioningEnabled =
                 style == AutoCaptionsStyleLegacy.ENABLED;
         }
