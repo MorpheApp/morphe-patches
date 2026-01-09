@@ -290,7 +290,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         horizontalShelves = new StringFilterGroup(
-                Settings.HIDE_HORIZONTAL_SHELVES,
+                null, // Setting is checked in isFiltered()
                 "horizontal_video_shelf.e",
                 "horizontal_shelf.e",
                 "horizontal_shelf_inline.e",
@@ -377,12 +377,18 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == horizontalShelves) {
             if (contentIndex != 0) return false;
+            final boolean hideShelves = Settings.HIDE_HORIZONTAL_SHELVES.get();
+            final boolean hideTickets = Settings.HIDE_TICKET_SHELF.get();
+            final boolean hidePlayables = Settings.HIDE_PLAYABLES.get();
+
+            if (!hidePlayables && !hideTickets && !hidePlayables) return false;
+
             // Must always check other buffers first, to prevent incorrectly hiding them
             // if they are set to show but hide horizontal shelves is set to hidden.
-            if (ticketShelfBuffer.check(buffer).isFiltered()) return Settings.HIDE_TICKET_SHELF.get();
-            if (playablesBuffer.check(buffer).isFiltered()) return Settings.HIDE_PLAYABLES.get();
+            if (ticketShelfBuffer.check(buffer).isFiltered()) return hideTickets;
+            if (playablesBuffer.check(buffer).isFiltered()) return hidePlayables;
 
-            return hideShelves();
+            return hideShelves && hideShelves();
         }
 
         if (matchedGroup == chipBar) {
