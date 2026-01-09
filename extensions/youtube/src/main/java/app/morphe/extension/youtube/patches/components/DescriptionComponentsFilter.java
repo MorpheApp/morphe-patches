@@ -113,15 +113,18 @@ final class DescriptionComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FEATURED_PLACES_SECTION,
                         // "maps.google.com"
-                        "yt_fill_star"
+                        "yt_fill_star",
+                        "yt_fill_experimental_star"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_GAMING_SECTION,
-                        "yt_outline_gaming"
+                        "yt_outline_gaming",
+                        "yt_outline_experimental_gaming"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_MUSIC_SECTION,
-                        "yt_outline_audio"
+                        "yt_outline_audio",
+                        "yt_outline_experimental_audio"
                 )
         );
 
