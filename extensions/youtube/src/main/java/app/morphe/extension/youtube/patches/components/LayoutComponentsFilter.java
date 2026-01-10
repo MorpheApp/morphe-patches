@@ -424,16 +424,17 @@ public final class LayoutComponentsFilter extends Filter {
                 return descriptionFilterResult.get();
             }
 
+            final boolean hidePlayerShoppingShelf = Settings.HIDE_CREATOR_STORE_SHELF.get();
+            if (playerShoppingShelfBuffer.check(buffer).isFiltered()) return hidePlayerShoppingShelf;
+
             // Check if others are off before searching.
             final boolean hideShelves = Settings.HIDE_HORIZONTAL_SHELVES.get();
             final boolean hideTickets = Settings.HIDE_TICKET_SHELF.get();
             final boolean hidePlayables = Settings.HIDE_PLAYABLES.get();
-            final boolean hidePlayerShoppingShelf = Settings.HIDE_CREATOR_STORE_SHELF.get();
-            if (!hideShelves && !hideTickets && !hidePlayables && !hidePlayerShoppingShelf) return false;
+            if (!hideShelves && !hideTickets && !hidePlayables) return false;
 
             if (ticketShelfBuffer.check(buffer).isFiltered()) return hideTickets;
             if (playablesBuffer.check(buffer).isFiltered()) return hidePlayables;
-            if (playerShoppingShelfBuffer.check(buffer).isFiltered()) return hidePlayerShoppingShelf;
 
             return hideShelves && hideShelves();
         }
