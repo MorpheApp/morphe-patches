@@ -390,8 +390,8 @@ Keterbatasan: Halaman YouTube Doodles tidak tersedia"</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Ini tidak mengabaikan batasan usia. Ini hanya menerimanya secara otomatis.</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Pop-up Masuk ke TV dinonaktifkan</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Pop-up Masuk ke TV diaktifkan</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_on">Pesan timbul Masuk ke TV dinonaktifkan</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_off">Pesan timbul Masuk ke TV diaktifkan</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Nonaktifkan lewati bab dengan ketuk dua kali</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Ketuk dua kali tidak akan pernah memicu lewati ke bab berikutnya/sebelumnya</string>
@@ -838,9 +838,9 @@ Pengaturan → Pemutaran → Putar otomatis video berikutnya"</string>
   <string name="morphe_hide_timestamp_summary_on">Penanda waktu disembunyikan</string>
   <string name="morphe_hide_timestamp_summary_off">Penanda waktu ditampilkan</string>
   <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Sembunyikan panel popup pemutar</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">Panel popup pemutar disembunyikan</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">Panel popup pemutar ditampilkan</string>
+  <string name="morphe_hide_player_popup_panels_title">Sembunyikan panel pesan timbul pemutar</string>
+  <string name="morphe_hide_player_popup_panels_summary_on">Panel pesan timbul pemutar disembunyikan</string>
+  <string name="morphe_hide_player_popup_panels_summary_off">Panel pesan timbul pemutar ditampilkan</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Keluar dari mode layar penuh di akhir video</string>
   <string name="morphe_exit_fullscreen_entry_1">Nonaktif</string>

@@ -13,8 +13,12 @@ jobs:
     name: Push strings
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout dev
         uses: actions/checkout@v6
+        with:
+          ref: dev
+          fetch-depth: 0
+          clean: true
 
       - name: Push strings
         uses: crowdin/github-action@v2

@@ -58,16 +58,9 @@ internal object ShowEndscreenCardsParentFingerprint : Fingerprint(
     returnType = "[L",
     parameters = listOf("L"),
     filters = listOf(
-        literal(3, location = MatchFirst()),
-        opcode(Opcode.NEW_ARRAY, location = MatchAfterImmediately()),
+        opcode(Opcode.NEW_ARRAY),
         literal(1024L, location = MatchAfterWithin(12)),
         literal(1, location = MatchAfterWithin(12)),
-        anyInstruction(
-            // 20.x
-            literal(15, location = MatchAfterWithin(12)),
-            // 21.x+
-            literal(4, location = MatchAfterWithin(12)),
-        )
     ),
     custom = { _, classDef ->
         classDef.methods.count() == 5

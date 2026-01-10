@@ -1366,12 +1366,12 @@ L’activation de cette option peut débloquer des qualités vidéo plus élevé
   <string name="morphe_remember_video_quality_last_selected_toast_summary_on">Une notification est affichée lorsque la qualité vidéo par défaut est modifiée</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_off">Aucune notification n\'est affichée lorsque la qualité vidéo par défaut est modifiée</string>
   <string name="morphe_video_quality_default_wifi_title">Qualité vidéo par défaut sur le réseau Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur les données mobiles</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur le réseau mobile</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Enregistrer la modification de la qualité sur les Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_on">La modification de la qualité est appliqué pour tous les Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_off">La modification de la qualité est appliqué pour le Short en cours</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualité par défaut des Shorts sur le réseau Wi-Fi</string>
-  <string name="morphe_shorts_quality_default_mobile_title">Qualité par défaut des Shorts sur les données mobiles</string>
+  <string name="morphe_shorts_quality_default_mobile_title">Qualité par défaut des Shorts sur le réseau mobile</string>
   <string name="morphe_remember_video_quality_mobile">mobile</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">Qualité par défaut %1$s modifiée en : %2$s</string>

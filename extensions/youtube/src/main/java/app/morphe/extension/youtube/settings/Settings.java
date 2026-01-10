@@ -42,7 +42,6 @@ import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.DeArrowAv
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.StillImagesAvailability;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailOption;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailStillTime;
-import app.morphe.extension.youtube.patches.AutoCaptionsPatch;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
@@ -489,13 +488,6 @@ public class Settings extends BaseSettings {
         // VR 1.54 is not selectable in the settings, and it's selected by spoof stream patch if needed.
         if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.ANDROID_VR_1_54_20) {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();
-        }
-
-        if (!VersionCheckPatch.IS_20_26_OR_GREATER) {
-            var style = AUTO_CAPTIONS_STYLE.get();
-            if (style == AutoCaptionsStyle.WITH_VOLUME_ONLY || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY) {
-                AUTO_CAPTIONS_STYLE.save(AutoCaptionsStyle.BOTH_ENABLED);
-            }
         }
 
         // endregion
