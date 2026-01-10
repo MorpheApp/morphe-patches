@@ -436,15 +436,6 @@ public final class LayoutComponentsFilter extends Filter {
             if (ticketShelfBuffer.check(buffer).isFiltered()) return hideTickets;
             if (playablesBuffer.check(buffer).isFiltered()) return hidePlayables;
 
-            // 20.31+ when exiting fullscreen after watching for a while or when resuming the app,
-            // then sometimes the buffer isn't correct and the player shopping shelf is shown.
-            // If filtering reaches this point then there are no more shelves that could be in the player.
-            // If shopping shelves are set to hidden and the player is active, then assume
-            // its the shopping shelf.
-            if (hidePlayerShoppingShelf && PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-                return true;
-            }
-
             return hideShelves && hideShelves();
         }
 
