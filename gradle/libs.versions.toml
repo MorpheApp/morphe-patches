@@ -1,5 +1,5 @@
 [versions]
-morphe-patcher = "1.0.0"
+morphe-patcher = "1.0.1"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "b6365a84f4"
 # 8.3.0 causes java verifier error: https://github.com/ReVanced/revanced-patches/issues/2818.
