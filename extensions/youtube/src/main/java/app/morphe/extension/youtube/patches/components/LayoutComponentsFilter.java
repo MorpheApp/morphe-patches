@@ -7,11 +7,17 @@ import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
+import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
@@ -45,12 +51,14 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
-    private final StringFilterGroup horizontalShelves;
-    private final ByteArrayFilterGroup ticketShelfBuffer;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+    private final StringFilterGroup horizontalShelves;
     private final ByteArrayFilterGroup playablesBuffer;
+    private final ByteArrayFilterGroup ticketShelfBuffer;
+    private final ByteArrayFilterGroup playerShoppingShelfBuffer;
+    private final ByteTrieSearch descriptionSearch;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -302,6 +310,35 @@ public final class LayoutComponentsFilter extends Filter {
                 "ticket_item.e"
         );
 
+        playerShoppingShelfBuffer = new ByteArrayFilterGroup(
+                null,
+                "shopping_item_card_list"
+        );
+
+        // Work around for unique situation where filtering is based on the setting,
+        // but it must not fall over to other filters if the setting is _not_ enabled.
+        // This is only needed for the horizontal shelf that is used so extensively everywhere.
+        descriptionSearch = new ByteTrieSearch();
+        List.of(
+                new Pair<>(Settings.HIDE_FEATURED_PLACES_SECTION, "yt_fill_star"),
+                new Pair<>(Settings.HIDE_FEATURED_PLACES_SECTION, "yt_fill_experimental_star"),
+                new Pair<>(Settings.HIDE_GAMING_SECTION, "yt_outline_gaming"),
+                new Pair<>(Settings.HIDE_GAMING_SECTION, "yt_outline_experimental_gaming"),
+                new Pair<>(Settings.HIDE_MUSIC_SECTION, "yt_outline_audio"),
+                new Pair<>(Settings.HIDE_MUSIC_SECTION, "yt_outline_experimental_audio"),
+                // May no longer work on v20.31+, even though the component is still there.
+                new Pair<>(Settings.HIDE_ATTRIBUTES_SECTION, "cell_video_attribute")
+        ).forEach(pair ->
+                descriptionSearch.addPattern(pair.second.getBytes(StandardCharsets.UTF_8),
+                        (textSearched, matchedStartIndex, matchedLength, callbackParameter) -> {
+                            //noinspection unchecked
+                            AtomicReference<Boolean> hide = (AtomicReference<Boolean>) callbackParameter;
+                            hide.set(pair.first.get());
+                            return true;
+                        }
+                )
+        );
+
         addPathCallbacks(
                 artistCard,
                 audioTrackButton,
@@ -375,18 +412,38 @@ public final class LayoutComponentsFilter extends Filter {
                     && joinMembershipButton.check(buffer).isFiltered();
         }
 
+        // Horizontal shelves are used everywhere in the app. And to prevent the generic "hide shelves"
+        // from incorrectly hiding other stuff that has it's own hide filters,
+        // the more specific shelf filters must check first _and_ they must halt falling over
+        // to other filters if the buffer matches but the setting is off.
         if (matchedGroup == horizontalShelves) {
             if (contentIndex != 0) return false;
+
+            AtomicReference<Boolean> descriptionFilterResult = new AtomicReference<>(null);
+            if (descriptionSearch.matches(buffer, descriptionFilterResult)) {
+                return descriptionFilterResult.get();
+            }
+
+            final boolean hidePlayerShoppingShelf = Settings.HIDE_CREATOR_STORE_SHELF.get();
+            if (playerShoppingShelfBuffer.check(buffer).isFiltered()) return hidePlayerShoppingShelf;
+
+            // Check if others are off before searching.
             final boolean hideShelves = Settings.HIDE_HORIZONTAL_SHELVES.get();
             final boolean hideTickets = Settings.HIDE_TICKET_SHELF.get();
             final boolean hidePlayables = Settings.HIDE_PLAYABLES.get();
-
             if (!hideShelves && !hideTickets && !hidePlayables) return false;
 
-            // Must always check other buffers first, to prevent incorrectly hiding them
-            // if they are set to show but hide horizontal shelves is set to hidden.
             if (ticketShelfBuffer.check(buffer).isFiltered()) return hideTickets;
             if (playablesBuffer.check(buffer).isFiltered()) return hidePlayables;
+
+            // 20.31+ when exiting fullscreen after watching for a while or when resuming the app,
+            // then sometimes the buffer isn't correct and the player shopping shelf is shown.
+            // If filtering reaches this point then there are no more shelves that could be in the player.
+            // If shopping shelves are set to hidden and the player is active, then assume
+            // its the shopping shelf.
+            if (hidePlayerShoppingShelf && PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+                return true;
+            }
 
             return hideShelves && hideShelves();
         }
