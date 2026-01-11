@@ -42,10 +42,10 @@ YouTube Premium ユーザーの場合、この設定が必要ない場合があ�
 
 再生に失敗する場合があります"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">クライアントの動画ストリームを取得できませんでした</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生に失敗するようになる場合があります。</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生に失敗するようになる可能性があります。</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">設定オン: [動画ストリームを偽装] &gt; [Android VR (ログイン)]</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">[動画ストリームを偽装] &gt; [Android VR (ログイン)] をオンにしてください</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR (ログイン)</string>

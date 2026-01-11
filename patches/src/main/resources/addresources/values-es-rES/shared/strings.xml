@@ -105,8 +105,7 @@ No se le notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Banderas copiadas al portapapeles</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Ajustes de GmsCore</string>
-  <string name="microg_settings_summary">Configuración de GmsCore</string>
+  <string name="microg_settings_summary">Abrir la configuración de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG no está instalado. Instálalo.</string>
   <string name="gms_core_dialog_title">Acción necesaria</string>

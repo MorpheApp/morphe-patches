@@ -105,8 +105,7 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha cóipeáilte chuig an ngearrthaisce</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Socruithe GmsCore</string>
-  <string name="microg_settings_summary">Socruithe le haghaidh GmsCore</string>
+  <string name="microg_settings_summary">Aithní an tSeirbhís MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">Níl MicroG suiteáilte. Suiteáil é.</string>
   <string name="gms_core_dialog_title">Gníomh riachtanach</string>

@@ -1070,7 +1070,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_new_segment_choose_category">セグメントのカテゴリを選択してください</string>
   <string name="morphe_sb_new_segment_disabled_category">カテゴリが「無効」に設定されています。送信するには、設定を変更してください。</string>
   <string name="morphe_sb_new_segment_title">新しいセグメント </string>
-  <string name="morphe_sb_new_segment_mark_time_as_question">%sを新しいセグメントの開始または終了として設定しますか？</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">%s を SponsorBlock の新しいセグメントの開始位置 / 終了位置に設定しますか？</string>
   <string name="morphe_sb_new_segment_mark_start">開始位置</string>
   <string name="morphe_sb_new_segment_mark_end">終了位置</string>
   <string name="morphe_sb_new_segment_now">現在の再生位置</string>
@@ -1256,7 +1256,7 @@ Automotive レイアウト
   <string name="morphe_seekbar_custom_color_primary_title">シークバーの色</string>
   <string name="morphe_seekbar_custom_color_primary_summary">シークバーの色を編集します</string>
   <string name="morphe_seekbar_custom_color_accent_title">シークバーのアクセント カラー</string>
-  <string name="morphe_seekbar_custom_color_accent_summary">シークバーのアクセントカラーを編集します</string>
+  <string name="morphe_seekbar_custom_color_accent_summary">シークバーのアクセント カラーを編集します</string>
   <string name="morphe_seekbar_custom_color_invalid">シークバーの色の値が無効です</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.changeHeaderPatch -->
@@ -1322,7 +1322,7 @@ Automotive レイアウト
 より高画質な映像が利用可能になる場合がありますが、動画のカクつき、バッテリー消費の悪化、予期せぬ副作用が発生する可能性があります"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"デバイスの画面サイズは偽装されていません
 
-この機能を有効にすると、より高画質な映像がアンロックされる可能性があります"</string>
+この機能を有効にすると、より高画質な映像が利用可能になる場合があります"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">この機能を有効にすると、動画のカクつき、バッテリー消費の悪化、および予期せぬ副作用を引き起こす可能性があります。</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">触覚フィードバック</string>

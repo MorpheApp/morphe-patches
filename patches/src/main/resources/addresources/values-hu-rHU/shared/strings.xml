@@ -105,8 +105,7 @@ Nem fog értesülni semmilyen váratlan eseményről."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Jelzők vágólapra másolva</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore beállítások</string>
-  <string name="microg_settings_summary">A GmsCore beállításai</string>
+  <string name="microg_settings_summary">Nyisson a MicroG beállításokat</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">A MicroG nincs telepítve. Telepítse azt.</string>
   <string name="gms_core_dialog_title">Művelet szükséges</string>

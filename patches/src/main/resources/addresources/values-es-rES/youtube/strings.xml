@@ -227,8 +227,8 @@ Si un Doodle está actualmente mostrándose en tu región y este ajuste de ocult
   <string name="morphe_hide_community_button_summary_off">El botón \"Comunidad\" está visible</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">Ocultar estantería \"Para tí\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">La estantería \"Para tí\" está oculta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">La estantería \"Para tí\" está visible</string>
+  <string name="morphe_hide_for_you_shelf_summary_on">La pestaña \"Para tí\" está oculta</string>
+  <string name="morphe_hide_for_you_shelf_summary_off">La pestaña \"Para tí\" está visible</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ocultar botón \"Unirme\"</string>
   <string name="morphe_hide_join_button_summary_on">El botón \"Unirme\" está oculto</string>
@@ -1027,7 +1027,7 @@ Tu ID de usuario es como una contraseña y nunca debe compartirse."</string>
   <string name="morphe_sb_skipped_sponsor">Patrocinador omitido</string>
   <string name="morphe_sb_skipped_selfpromo">Promoción propia omitida</string>
   <string name="morphe_sb_skipped_interaction">Recordatorio molesto omitido</string>
-  <string name="morphe_sb_skipped_highlight">Saltado a destacado</string>
+  <string name="morphe_sb_skipped_highlight">Saltado destacado</string>
   <string name="morphe_sb_skipped_intro_beginning">Introducción omitida</string>
   <string name="morphe_sb_skipped_intro_middle">Interrupción omitida</string>
   <string name="morphe_sb_skipped_intro_end">Interrupción omitida</string>

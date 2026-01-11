@@ -105,8 +105,7 @@ Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda disalin ke papan klip</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Pengaturan GmsCore</string>
-  <string name="microg_settings_summary">Pengaturan untuk GmsCore</string>
+  <string name="microg_settings_summary">Buka pengaturan MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG belum dipasang. Pasang dulu.</string>
   <string name="gms_core_dialog_title">Diperlukan tindakan</string>

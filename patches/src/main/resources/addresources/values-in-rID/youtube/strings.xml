@@ -334,7 +334,7 @@ Keterbatasan
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_keyword_toast_invalid_common">Tidak dapat menggunakan kata kunci: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Tambahkan tanda kutip untuk menggunakan kata kunci: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci punya keterangan yang bertentangan: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci punya keterangan yang berkonflik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan butuh tanda kutip: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
@@ -1341,7 +1341,7 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Sentuh getar zoom dinonaktifkan</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Sentuh getar zoom diaktifkan</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, hapus pemasangan dan ulangi memasang MicroG.</string>
+  <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot pemasangan dan ulangi memasang MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">Abaikan pengalihan URL</string>
   <string name="morphe_bypass_url_redirects_summary_on">Pengalihan URL diabaikan</string>

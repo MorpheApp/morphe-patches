@@ -105,8 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กไปยังคลิปบอร์ดแล้ว</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">การตั้งค่า GmsCore</string>
-  <string name="microg_settings_summary">การตั้งค่าสำหรับ GmsCore</string>
+  <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ไม่ได้ติดตั้ง ติดตั้ง</string>
   <string name="gms_core_dialog_title">ต้องดำเนินการ</string>
