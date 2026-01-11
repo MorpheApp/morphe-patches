@@ -159,7 +159,7 @@ val hideAdsPatch = bytecodePatch(
         PlayerOverlayTimelyShelfFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumView()Z
+                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideAds()Z
                 move-result v0
                 if-eqz v0, :show
                 return-void
