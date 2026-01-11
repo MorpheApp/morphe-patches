@@ -453,6 +453,10 @@ public final class app/morphe/patches/youtube/interaction/doubletap/DisableChapt
 	public static final fun getDisableDoubleTapActionsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
+public final class app/morphe/patches/youtube/interaction/doubletap/DoubleTapLengthPatchKt {
+	public static final fun getDoubleTapLengthPatch ()Lapp/morphe/patcher/patch/ResourcePatch;
+}
+
 public final class app/morphe/patches/youtube/interaction/downloads/DownloadsPatchKt {
 	public static final fun getDownloadsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }

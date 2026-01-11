@@ -1,3 +1,10 @@
+# [1.4.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.2...v1.4.0-dev.1) (2026-01-11)
+
+
+### Features
+
+* **YouTube:** Add `Double tap to seek` patch ([1a57a34](https://github.com/MorpheApp/morphe-patches/commit/1a57a34734d31b803820b0a530e0c57c50963f63))
+
 ## [1.3.2](https://github.com/MorpheApp/morphe-patches/compare/v1.3.1...v1.3.2) (2026-01-10)
 
 
