@@ -150,9 +150,23 @@ val hideAdsPatch = bytecodePatch(
                     :allow
                     nop
                     # Layout width/height is then passed to a protected class method.
-                """,
+                """
             )
         }
+
+        // Hide player overlay view. This can be hidden with a regular litho filter
+        // but an empty space remains.
+        PlayerOverlayTimelyShelfFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumView()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
 
         // Hide ad views
 
