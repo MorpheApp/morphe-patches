@@ -105,8 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">标志已复制到剪贴板</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore 设置</string>
-  <string name="microg_settings_summary">GmsCore 的设置</string>
+  <string name="microg_settings_summary">打开 MicroG 设置</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG 未安装。请先安装。</string>
   <string name="gms_core_dialog_title">需要采取措施</string>

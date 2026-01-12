@@ -105,8 +105,7 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Steaguri copiate în clipboard</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Setări GmsCore</string>
-  <string name="microg_settings_summary">Setări pentru GmsCore</string>
+  <string name="microg_settings_summary">Deschide setârii MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nu este instalat. Instalati-l.</string>
   <string name="gms_core_dialog_title">Acțiune necesară</string>

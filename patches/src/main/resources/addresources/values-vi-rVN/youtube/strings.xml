@@ -120,7 +120,7 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_hide_doodles_summary_off">Hoạt ảnh YouTube Doodles trên logo đang hiển thị</string>
   <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles chỉ xuất hiện vào một số ngày nhất định trong năm.
 
-Nếu cài đặt này được bật và Doodle đang hiển thị tại khu vực của bạn, thì thanh bộ lọc bên dưới thanh tìm kiếm cũng sẽ đang ẩn."</string>
+Nếu cài đặt này đang bật và Doodle cũng đang hiển thị tại khu vực của bạn, thì thanh bộ lọc bên dưới thanh tìm kiếm cũng sẽ ẩn theo."</string>
   <string name="morphe_hide_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_channel_bar_summary_on">Nút kênh đang ẩn</string>
   <string name="morphe_hide_channel_bar_summary_off">Nút kênh đang hiển thị</string>
@@ -372,9 +372,9 @@ Hạn chế:
 Hạn chế: Trang YouTube Doodles không khả dụng"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Các chương trình khuyến mãi YouTube Premium đang hiển thị</string>
   <!-- ad.video.videoAdsPatch -->
-  <string name="morphe_hide_video_ads_title">Ẩn quảng cáo trên video</string>
-  <string name="morphe_hide_video_ads_summary_on">Quảng cáo trên video đang ẩn</string>
-  <string name="morphe_hide_video_ads_summary_off">Quảng cáo trên video đang hiển thị</string>
+  <string name="morphe_hide_video_ads_title">Ẩn video quảng cáo</string>
+  <string name="morphe_hide_video_ads_summary_on">Video quảng cáo đang ẩn</string>
+  <string name="morphe_hide_video_ads_summary_off">Video quảng cáo đang hiển thị</string>
   <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
   <string name="morphe_share_copy_url_success">Đã sao chép URL vào bảng nhớ tạm</string>
   <string name="morphe_share_copy_url_timestamp_success">Đã sao chép URL kèm dấu thời gian</string>

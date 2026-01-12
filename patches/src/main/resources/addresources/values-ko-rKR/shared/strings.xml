@@ -69,8 +69,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_dev_body">Pre-release 버전이므로&lt;br&gt;알려지지 않은 문제점이&lt;br&gt;발생할 수 있습니다</string>
   <string name="morphe_settings_about_links_header">공식 링크</string>
   <string name="morphe_settings_about_links_website">웹사이트</string>
-  <string name="morphe_settings_about_links_donate">기부하기</string>
-  <string name="morphe_settings_about_links_translations">번역에 참여하기</string>
+  <string name="morphe_settings_about_links_donate">후원하기</string>
+  <string name="morphe_settings_about_links_translations">번역에 도움주기</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버그</string>
   <string name="morphe_debug_screen_summary">디버그 옵션을 활성화하거나 비활성화할 수 있습니다</string>
@@ -105,8 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">플래그를 클립보드에 복사하였습니다</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore 설정</string>
-  <string name="microg_settings_summary">알림 수신을 위한 클라우드 메시징을 설정할 수 있습니다</string>
+  <string name="microg_settings_summary">MicroG 설정을 실행할 수 있습니다</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG가 설치되어 있지 않습니다. 설치하세요.</string>
   <string name="gms_core_dialog_title">필수 조치</string>

@@ -105,8 +105,7 @@ Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice kopirane u međumemoriju</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Podešavanja GmsCorea</string>
-  <string name="microg_settings_summary">Podešavanja za GmsCore</string>
+  <string name="microg_settings_summary">Otvori postavke MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nije instalirana. Instalirajte je.</string>
   <string name="gms_core_dialog_title">Neophodna radnja</string>

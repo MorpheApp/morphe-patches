@@ -105,8 +105,7 @@ Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags in die Zwischenablage kopiert</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore Einstellungen</string>
-  <string name="microg_settings_summary">Einstellungen für GmsCore</string>
+  <string name="microg_settings_summary">Öffne die MicroG-Einstellungen</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ist nicht installiert. Installieren Sie es.</string>
   <string name="gms_core_dialog_title">Aktion notwendig</string>

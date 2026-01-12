@@ -105,8 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Flags إلى الحافظة</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">إعدادات GmsCore</string>
-  <string name="microg_settings_summary">إعدادات لـ GmsCore</string>
+  <string name="microg_settings_summary">فتح إعدادات microG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG لم يتم تثبيته. قم بتثبيته.</string>
   <string name="gms_core_dialog_title">الإجراء مطلوب</string>

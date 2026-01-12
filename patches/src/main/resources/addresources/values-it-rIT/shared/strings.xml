@@ -105,8 +105,7 @@ Non sarai notificato di eventi imprevisti."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flag copiati negli appunti</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Impostazioni di GmsCore</string>
-  <string name="microg_settings_summary">Impostazioni per GmsCore</string>
+  <string name="microg_settings_summary">Apri le impostazioni di MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG non è installato. Installalo.</string>
   <string name="gms_core_dialog_title">Azione necessaria</string>
