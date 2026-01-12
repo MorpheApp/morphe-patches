@@ -89,3 +89,9 @@ internal object PipInputConsumerFeatureFlagFingerprint : Fingerprint(
         literal(45638483L)
     )
 )
+
+internal object NewPlayerTypeEnumFeatureFlag : Fingerprint(
+    filters = listOf(
+        literal(45698813L)
+    )
+)

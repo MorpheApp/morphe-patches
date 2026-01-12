@@ -127,6 +127,8 @@ internal fun baseCustomBrandingPatch(
                 )
 
                 NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
+                UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
+                UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
 
                 NotificationFingerprint.method.apply {
                     val getBuilderIndex = if (isYouTubeMusic) {
@@ -184,8 +186,11 @@ internal fun baseCustomBrandingPatch(
     }
 
     execute {
+        val useCustomName = customName != null
+        val useCustomIcon = customIcon != null
+
         preferenceScreen.addPreferences(
-            if (customName != null ) {
+            if (useCustomName) {
                 ListPreference(
                     key = "morphe_custom_branding_name",
                     entriesKey = "morphe_custom_branding_name_custom_entries",
@@ -194,7 +199,8 @@ internal fun baseCustomBrandingPatch(
             } else {
                 ListPreference("morphe_custom_branding_name")
             },
-            if (customIcon != null) {
+
+            if (useCustomIcon) {
                 ListPreference(
                     key = "morphe_custom_branding_icon",
                     entriesKey = "morphe_custom_branding_icon_custom_entries",
@@ -204,9 +210,6 @@ internal fun baseCustomBrandingPatch(
                 ListPreference("morphe_custom_branding_icon")
             }
         )
-
-        val useCustomName = customName != null
-        val useCustomIcon = customIcon != null
 
         iconStyleNames.forEach { style ->
             copyResources(
@@ -329,6 +332,9 @@ internal fun baseCustomBrandingPatch(
                 "@string/morphe_custom_branding_name_entry_2"
             )
 
+            val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
+            val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else 0 // 0 indexing
+
             for (appNameIndex in 1 .. numberOfPresetAppNames) {
                 fun aliasName(name: String): String = ".morphe_" + name + '_' + appNameIndex
 
@@ -354,7 +360,7 @@ internal fun baseCustomBrandingPatch(
                             iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
                             appNameIndex = appNameIndex,
                             useCustomName = useCustomNameLabel,
-                            enabled = (iconIndex == 0 && appNameIndex == 1),
+                            enabled = (appNameIndex == enabledNameIndex && iconIndex == enabledIconIndex),
                             intentFilters
                         )
                     )
@@ -374,7 +380,7 @@ internal fun baseCustomBrandingPatch(
                         iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + CUSTOM_USER_ICON_STYLE_NAME,
                         appNameIndex = appNameIndex,
                         useCustomName = useCustomNameLabel,
-                        enabled = false,
+                        enabled = appNameIndex == enabledNameIndex && useCustomIcon,
                         intentFilters
                     )
                 )

@@ -14,7 +14,7 @@ internal object IntentActionFingerprint : Fingerprint(
 )
 
 internal object BrowseIdFingerprint : Fingerprint(
-    returnType = "Lcom/google/android/apps/youtube/app/common/ui/navigation/PaneDescriptor;",
+    returnType = "L",
 
     //parameters() // 20.30 and earlier is no parameters = listOf(.  20.31+ parameter is L.),
     filters = listOf(

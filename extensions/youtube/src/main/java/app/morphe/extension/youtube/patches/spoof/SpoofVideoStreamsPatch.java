@@ -42,11 +42,11 @@ public class SpoofVideoStreamsPatch {
             client = ANDROID_VR_1_54_20;
         }
 
+        // For some users No SDK can fail at 1 minute. Only use it if the user has explicitly set it.
         List<ClientType> availableClients = List.of(
                 VISIONOS,
                 ANDROID_VR_1_47_48,
-                ANDROID_CREATOR,
-                ANDROID_NO_SDK
+                ANDROID_CREATOR
         );
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(

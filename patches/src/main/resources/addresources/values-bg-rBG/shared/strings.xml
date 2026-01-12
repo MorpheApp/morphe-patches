@@ -28,16 +28,99 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart">Рестарт</string>
   <string name="morphe_settings_import">Импортиране</string>
   <string name="morphe_settings_import_copy">Копиране</string>
+  <string name="morphe_settings_import_reset">Настройките на Morphe са възстановени по подразбиране.</string>
   <string name="morphe_settings_import_success">Импортирани са %d настройки</string>
   <string name="morphe_settings_import_failure_parse">Неуспешно импортиране: %s</string>
   <string name="morphe_settings_search_hint">Търсене на настройки</string>
   <string name="morphe_settings_search_no_results_title">Не са открити резултати за \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Опитайте друга ключова дума</string>
   <string name="morphe_settings_search_recent_searches">Последни търсения</string>
+  <string name="morphe_settings_search_remove_message">Изтрий от историята на търсенето?</string>
+  <string name="morphe_settings_search_clear_history">Изтрий историята на търсенето</string>
+  <string name="morphe_settings_search_clear_history_message">Сигурни ли сте, че искате да изчистите цялата история на търсенето?</string>
+  <string name="morphe_settings_search_tips_title">Съвети за търсене</string>
+  <string name="morphe_settings_search_tips_summary">"• Докоснете адреса, за да отидете до него 
+• Докоснете и задръжте настройка, за да отидете до нея 
+• Натиснете Enter, за да запазите заявката за търсене в историята 
+• Търсенето игнорира главни и малки букви и пунктуации
+ • Родителските настройки се показват над деактивираните детски настройки"</string>
+  <string name="morphe_settings_search_empty_history_title">Няма историятя на търсене</string>
+  <string name="morphe_settings_search_empty_history_summary">За да запазите история на търсенето, въведете заявка за търсене и натиснете Enter</string>
+  <string name="morphe_settings_search_history_title">Покажи история търсене на настройки</string>
+  <string name="morphe_settings_search_history_summary_on">Историята на търсенията в настройките е показана</string>
+  <string name="morphe_settings_search_history_summary_off">Историята на търсенията в настройките не е показана.</string>
+  <string name="morphe_settings_disable_bold_icons_title">Удебеляване на иконите</string>
+  <string name="morphe_settings_disable_bold_icons_summary_on">Иконите не са удебелени</string>
+  <string name="morphe_settings_disable_bold_icons_summary_off">Иконите са удебелени</string>
+  <string name="morphe_show_menu_icons_title">Покажи икони за настройки на Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Иконите на настройките се показват</string>
+  <string name="morphe_show_menu_icons_summary_off">Иконите на настройките не се показват</string>
+  <string name="morphe_language_title">Език на Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Преводи за някои езици може да липсват или да са незавършени.
+
+За да преведете нови езици или подобрите съществуващите преводи, посетете translate.morphe.software"</string>
+  <string name="morphe_language_DEFAULT">Език на приложението</string>
+  <string name="morphe_pref_import_export_title">Импорт / Експорт</string>
+  <string name="morphe_pref_import_export_summary">Импорт / Експор на настройките на Morphe</string>
   <!-- Settings about dialog. -->
+  <string name="morphe_settings_about_links_body_version_current">Вие използвате последната версия на Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Използвате Morphe Patches версия &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Достъпна е нова версия: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;За да актуализирате пачовете си, използвайте Morphe, за да направите повторен пач на това приложение.</string>
+  <string name="morphe_settings_about_links_dev_header">Бележка</string>
+  <string name="morphe_settings_about_links_dev_body">Тази версия е предварителна, така че може да срещнете неочаквани проблеми</string>
+  <string name="morphe_settings_about_links_header">Официални линкове</string>
+  <string name="morphe_settings_about_links_website">Уебсайт</string>
+  <string name="morphe_settings_about_links_donate">Дарение</string>
+  <string name="morphe_settings_about_links_translations">Преводи</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Отстраняване на грешки</string>
+  <string name="morphe_debug_screen_summary">Активиране или деактивиране на отстраняването на грешки</string>
+  <string name="morphe_debug_title">Дневник за отчетените грешки</string>
+  <string name="morphe_debug_summary_on">Отчетите за грешки са включени</string>
+  <string name="morphe_debug_summary_off">Отчетите за грешки са изключени</string>
+  <string name="morphe_debug_stacktrace_title">Записи на лог файловете</string>
+  <string name="morphe_debug_stacktrace_summary_on">Дневникът за отстраняване на грешки съдържа записи</string>
+  <string name="morphe_debug_stacktrace_summary_off">Дневникът за отстраняване на грешки не съдържа записи</string>
+  <string name="morphe_debug_toast_on_error_title">Показване на уведомление при грешка в Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Съобщение ще бъде показано, ако се появи грешка</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Съобщение няма да бъде показано, ако се появи грешка</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Изключването на изскачащи съобщения за грешки крие всички известия за грешки на Morphe.
+
+Няма да бъдете уведомени за неочаквани събития."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Експортиране на логове за отстраняване на грешки</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Копиране на отчети за грешки на Morphe в клипборда</string>
+  <string name="morphe_debug_logs_disabled">Отчетите за отстраняване на грешки са изключени</string>
+  <string name="morphe_debug_logs_none_found">Няма намерени логове</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Лог файловете са копирани</string>
+  <string name="morphe_debug_logs_failed_to_export">Неуспешно експортиране на логове: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Изчистване на логовете за отстраняване на грешки</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Изчиства всички съхранени отчети за грешки на Morphe</string>
+  <string name="morphe_debug_logs_clear_toast">Логовете са изтрити</string>
+  <string name="morphe_debug_feature_flags_manager_title">Мениджър на флагове на функции</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Управление на флагове на логически функции</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Активни флагове (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокирани флагове (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Търсене на флагове...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Флаговете са запазени</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Флаговете са изтрити</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Флаговете са копирани в клипборда</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_title">GmsCore Настройки</string>
+  <string name="microg_settings_summary">Настройки на GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG не е инсталиран. Инсталирайте го.</string>
+  <string name="gms_core_dialog_title">Нужно е действие</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG няма разрешение да се изпълнява в фонов режим.
+
+Следвайте увода \"Не убивайте моето приложение\" за вашия телефон и прилагодете инструкциите към вашето MicroG инсталиране.
+
+Това е необходимо за работа на приложението."</string>
+  <string name="gms_core_dialog_open_website_text">Отвори уебсайта</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Оптимизациите на батерията за MicroG GmsCore трябва да бъдат деактивирани, за да се избегнат проблеми.
+
+Деактивирането на оптимизациите на батерията за MicroG няма да повлияе отрицателно на използването на батерията.
+
+Докоснете бутона за продължаване и разрешете промени в оптимизацията."</string>
+  <string name="gms_core_dialog_continue_text">Продължи</string>
 </resources>

@@ -50,6 +50,8 @@ private const val EXTENSION_PLAYER_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$PlaybackController;"
 private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityMenuInterface;"
+private const val EXTENSION_VIDEO_QUALITY_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityInterface;"
 
 private lateinit var playerInitMethod: MutableMethod
 private var playerInitInsertIndex = -1
@@ -108,15 +110,15 @@ val videoInformationPatch = bytecodePatch(
         playerInitInsertRegister = playerInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
         playerInitInsertIndex = initThisIndex + 1
 
-        val SeekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
-        val SeekRelativeFingerprintResultMethod =
+        val seekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
+        val seekRelativeFingerprintResultMethod =
             SeekRelativeFingerprint.match(PlayerInitFingerprint.originalClassDef).method
 
         // Create extension interface methods.
         addSeekInterfaceMethods(
             PlayerInitFingerprint.classDef,
-            SeekFingerprintResultMethod,
-            SeekRelativeFingerprintResultMethod,
+            seekFingerprintResultMethod,
+            seekRelativeFingerprintResultMethod,
         )
 
         with(MdxPlayerDirectorSetVideoStageFingerprint) {
@@ -204,7 +206,7 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the user playback speed selection.
          */
-        OnPlaybackSpeedItemClickFingerprint.method.apply {
+        OnPlaybackSpeedItemClickFingerprint.match(OnPlaybackSpeedItemClickParentFingerprint.classDef).method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethod = this
@@ -233,10 +235,10 @@ val videoInformationPatch = bytecodePatch(
                         if (fieldReferenceType != null) {
                             throw PatchException("Found more than one playback speed interface: $def")
                         }
-                        fieldReferenceType = def;
+                        fieldReferenceType = def
                     }
                 }
-                setPlaybackSpeedContainerClassFieldReferenceClassType = fieldReferenceType!!;
+                setPlaybackSpeedContainerClassFieldReferenceClassType = fieldReferenceType!!
             } else {
                 setPlaybackSpeedContainerClassFieldReferenceClassType =
                     classDefBy(setPlaybackSpeedContainerClassFieldReference.type)
@@ -337,7 +339,10 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
+        val videoQualityClassType : String
         (if (is_20_19_or_greater) VideoQualityFingerprint else VideoQualityLegacyFingerprint).let {
+            videoQualityClassType = it.classDef.type
+
             // Fix bad data used by YouTube.
             val nameRegister = if (is_20_20_or_greater) "p3" else "p2"
             it.method.addInstructions(
@@ -350,6 +355,8 @@ val videoInformationPatch = bytecodePatch(
 
             // Add methods to access obfuscated quality fields.
             it.classDef.apply {
+                // Add interface and helper methods to allow extension code to call obfuscated methods.
+                interfaces.add(EXTENSION_VIDEO_QUALITY_INTERFACE)
                 methods.add(
                     ImmutableMethod(
                         type,
@@ -422,7 +429,7 @@ val videoInformationPatch = bytecodePatch(
                         type,
                         "patch_setQuality",
                         listOf(
-                            ImmutableMethodParameter(YOUTUBE_VIDEO_QUALITY_CLASS_TYPE, null, null)
+                            ImmutableMethodParameter(EXTENSION_VIDEO_QUALITY_INTERFACE, null, null)
                         ),
                         "V",
                         AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
@@ -431,12 +438,13 @@ val videoInformationPatch = bytecodePatch(
                         MutableMethodImplementation(2),
                     ).toMutable().apply {
                         val setQualityMenuIndexMethod = methods.single { method ->
-                            method.parameterTypes.firstOrNull() == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE
+                            method.parameterTypes.firstOrNull() == videoQualityClassType
                         }
 
                         addInstructions(
                             0,
                             """
+                                check-cast p1, $videoQualityClassType
                                 invoke-virtual { p0, p1 }, $setQualityMenuIndexMethod
                                 return-void
                             """
@@ -452,7 +460,7 @@ val videoInformationPatch = bytecodePatch(
                     iget-object v0, p0, $onItemClickListenerClassReference
                     iget-object v0, v0, $setQualityFieldReference
                     
-                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$YOUTUBE_VIDEO_QUALITY_CLASS_TYPE${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
+                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$EXTENSION_VIDEO_QUALITY_INTERFACE${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
                     move-result p2
                 """
             )

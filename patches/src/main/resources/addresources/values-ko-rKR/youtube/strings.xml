@@ -274,7 +274,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_create_a_short_button_summary_on">Shorts 만들기 버튼이 숨겨집니다</string>
   <string name="morphe_hide_comments_create_a_short_button_summary_off">Shorts 만들기 버튼이 표시됩니다</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">이모지 및 타임스탬프 버튼 숨기기</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">이모지 및 타임스탬프 버튼이 숨겨졌습니다</string>
+  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">이모지 및 타임스탬프 버튼이 숨겨집니다</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">이모지 및 타임스탬프 버튼이 표시됩니다</string>
   <string name="morphe_hide_comments_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">댓글 미리보기가 숨겨집니다</string>
@@ -824,7 +824,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">하단바가 표시됩니다</string>
   <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"자동재생이 꺼져 있을 경우에 최종 화면에서 추천 동영상이 숨겨집니다
+  <string name="morphe_end_screen_suggested_video_summary_on">"자동재생이 비활성화되어 있는 경우에 최종 화면에서 추천 동영상이 숨겨집니다
 
 자동재생은 YouTube 설정에서 변경할 수 있습니다:
 설정 → 재생 → 다음 동영상 자동재생"</string>
@@ -1316,8 +1316,8 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_loop_video_button_title">동영상 연속 재생 버튼 표시하기</string>
   <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼을 표시합니다</string>
   <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
-  <string name="morphe_loop_video_button_toast_on">동영상 연속 재생이 켜집니다</string>
-  <string name="morphe_loop_video_button_toast_off">동영상 연속 재생이 꺼집니다</string>
+  <string name="morphe_loop_video_button_toast_on">동영상 연속 재생을 활성화합니다</string>
+  <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">기기 크기 정보 변경하기</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"기기 크기 정보를 변경합니다
@@ -1446,6 +1446,6 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 원본 오디오를 강제로 활성화할 수 없습니다</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">전문 통계에서 표시하기</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">동영상 스트림을 가져오는 데 사용되는 클라이언트가 전문 통계에서 표시됩니다</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">동영상 스트림을 가져오는 데 사용되는 클라이언트가 전문 통계에서 표시되지 않습니다</string>
+  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">동영상 스트림을 가져오는 데 사용되는 클라이언트를 전문 통계에서 표시합니다</string>
+  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">동영상 스트림을 가져오는 데 사용되는 클라이언트를 전문 통계에서 표시하지 않습니다</string>
 </resources>

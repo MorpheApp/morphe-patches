@@ -95,9 +95,9 @@ val videoIdPatch = bytecodePatch(
         VideoIdFingerprint.match(VideoIdParentFingerprint.originalClassDef).let {
             it.method.apply {
                 videoIdMethod = this
-                val index = it.instructionMatches.first().index
-                videoIdRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
-                videoIdInsertIndex = index + 2
+                val index = it.instructionMatches[1].index
+                videoIdRegister = getInstruction<OneRegisterInstruction>(index).registerA
+                videoIdInsertIndex = index + 1
             }
         }
 

@@ -10,6 +10,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -20,6 +21,7 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
+import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -76,7 +78,7 @@ val backgroundPlaybackPatch = bytecodePatch(
                         """
                             invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$integrationsMethod(Z)Z
                             move-result v$register 
-                        """,
+                        """
                     )
                 }
             }
@@ -108,6 +110,12 @@ val backgroundPlaybackPatch = bytecodePatch(
                     false
                 )
             }
+        }
+
+        if (is_20_29_or_greater) {
+            // Client flag that interferes with background playback of some video types.
+            // Exact purpose is not clear and it's used in ~ 100 locations.
+            NewPlayerTypeEnumFeatureFlag.method.returnLate(false)
         }
     }
 }

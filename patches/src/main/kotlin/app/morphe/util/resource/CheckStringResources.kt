@@ -44,6 +44,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 internal fun main(args: Array<String>) {
     var stringsChecked = 0
 
+    val exceptions = mutableListOf<Exception>()
+
     arrayOf(
         "music",
         "shared",
@@ -69,12 +71,17 @@ internal fun main(args: Array<String>) {
                         val element = node as Element
                         val name = element.getAttribute("name")
                         val value = element.textContent
-                        StringResource.sanitizeAndroidResourceString(
-                            key = name,
-                            value = value,
-                            filePath = srcSubPath,
-                            throwException = true
-                        )
+                        try {
+                            StringResource.sanitizeAndroidResourceString(
+                                key = name,
+                                value = value,
+                                filePath = srcSubPath,
+                                throwException = true
+                            )
+                        } catch (e: Exception) {
+                            exceptions += e
+                        }
+
                         stringsChecked++
                     }
                 }
@@ -82,5 +89,13 @@ internal fun main(args: Array<String>) {
         }
     }
 
-    println("Checked $stringsChecked strings")
+    if (exceptions.isNotEmpty()) {
+        val builder = StringBuilder("\n")
+        exceptions.forEach { exception ->
+            builder.appendLine(exception.message)
+        }
+        throw IllegalStateException(builder.toString())
+    }
+
+    println("Verified $stringsChecked strings, no issues found")
 }

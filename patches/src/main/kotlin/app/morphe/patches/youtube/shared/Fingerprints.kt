@@ -2,11 +2,12 @@ package app.morphe.patches.youtube.shared
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -109,9 +110,6 @@ internal object SeekbarFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to _mutable_ class found in [seekbarFingerprint].
- */
 internal object SeekbarOnDrawFingerprint : Fingerprint(
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
@@ -123,7 +121,7 @@ internal object SeekbarOnDrawFingerprint : Fingerprint(
 internal object SubtitleButtonControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Lcom/google/android/libraries/youtube/player/subtitles/model/SubtitleTrack;"),
+    parameters = listOf("L"),
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "accessibility_captions_unavailable"),
         resourceLiteral(ResourceType.STRING, "accessibility_captions_button_name"),
@@ -135,8 +133,12 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
     filters = listOf(
-        newInstance("Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"),
-        opcode(Opcode.IGET_OBJECT),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchFirst()),
+        literal(2, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(Opcode.NEW_INSTANCE, location = MatchAfterImmediately()), // Obfuscated VideoQuality
+
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
         opcode(Opcode.CHECK_CAST),
         fieldAccess(type = "I", opcode = Opcode.IGET, location = MatchAfterImmediately()), // Video resolution (human readable).
     )

@@ -64,7 +64,7 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_summary">Імпорт / Експорт налаштувань Morphe\n\nДля збереження налаштувань скопіюйте текст у вікні кнопкою \"Копіювати\" та збережіть його в текстовому файлі.\nДля відновлення налаштувань вставте у вікно збережений раніше текст та натисніть кнопку \"Імпортувати\"</string>
   <!-- Settings about dialog. -->
   <string name="morphe_settings_about_links_body_version_current">Ви використовуєте останню версію Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчування цього додатка</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчінгу цього додатка</string>
   <string name="morphe_settings_about_links_dev_header">Примітка</string>
   <string name="morphe_settings_about_links_dev_body">Ця версія є попередньою, тому у вас можуть виникати несподівані проблеми</string>
   <string name="morphe_settings_about_links_header">Офіційні посилання</string>
@@ -77,7 +77,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Журнал налагодження</string>
   <string name="morphe_debug_summary_on">Журнали налагодження ввімкнено</string>
   <string name="morphe_debug_summary_off">Журнали налагодження вимкнено</string>
-  <string name="morphe_debug_stacktrace_title">Журнал стека трасування</string>
+  <string name="morphe_debug_stacktrace_title">Реєструвати трасування стека</string>
   <string name="morphe_debug_stacktrace_summary_on">Журнали налагодження містять трасування стека</string>
   <string name="morphe_debug_stacktrace_summary_off">Журнали налагодження не містять трасування стека</string>
   <string name="morphe_debug_toast_on_error_title">Показати повідомлення про помилку Morphe</string>
@@ -95,11 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_buffer_title">Очистити журнали налагодження</string>
   <string name="morphe_debug_logs_clear_buffer_summary">Очищує всі збережені журнали налагодження Morphe</string>
   <string name="morphe_debug_logs_clear_toast">Журнали очищено</string>
-  <string name="morphe_debug_feature_flags_manager_title">Функція прапорців менеджера</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Керування логічних функцій прапорцями</string>
+  <string name="morphe_debug_feature_flags_manager_title">Менеджер експериментальних прапорців</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Керувати експериментальними boolean прапорцями</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Активні (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Заблоковані (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Пошук прапорів...</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Пошук прапорців...</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Прапорці збережено</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Прапорці скинуто</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Прапорці скопійовано до буфера обміну</string>
@@ -113,14 +113,14 @@ Second \"item\" text"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG не має дозволу на роботу у фоновому режимі.
 
-Дотримуйтеся посібника «Don't kill my app» для вашого пристрою та застосуйте інструкції до вашого MicroG.
+Дотримуйтеся посібника \"Don't kill my app\" для вашого пристрою та застосуйте інструкції до вашого MicroG.
 
 Це необхідно для роботи програми."</string>
   <string name="gms_core_dialog_open_website_text">Відкрити вебсайт</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Оптимізація батареї для MicroG має бути вимкнена для запобігання проблем.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Необхідно вимкнути оптимізацію енергії для MicroG GmsCore, щоб запобігти проблемам.
 
-Вимкнення оптимізації батареї для MicroG не вплине негативно на користування.
+Вимкнення оптимізації енергії для MicroG не вплине негативно на час автономної роботи.
 
-Натисніть кнопку «Продовжити» та вимкніть оптимізацію."</string>
+Натисніть кнопку \"Продовжити\" та вимкніть оптимізацію."</string>
   <string name="gms_core_dialog_continue_text">Продовжити</string>
 </resources>

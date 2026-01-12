@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-01-07T09:28:55",
-  "description": "# [1.2.0](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0...v1.2.0) (2026-01-07)\n\n\n### Bug Fixes\n\n* Changing default enum setting type setting does not always always clear preference data ([302fa77](https://github.com/MorpheApp/morphe-patches/commit/302fa773b97d032e6d0a1ff0f1de26b8ef348f13))\n* **YouTube - Hide ads:** Hide new type of general ad, movie ad and web search result ([#92](https://github.com/MorpheApp/morphe-patches/issues/92)) ([ed5c287](https://github.com/MorpheApp/morphe-patches/commit/ed5c2875be27a178368203251e7c07caa18556cf))\n* **YouTube - Hide layout components:** Do not change system nav bar transparency when disabling status bar transparency ([2b1330c](https://github.com/MorpheApp/morphe-patches/commit/2b1330c364cbed8ae243554616d88205fcf96376))\n\n\n### Features\n\n* **YouTube - Auto-captions:** Add an option to disable auto-captions when the device volume is muted ([#37](https://github.com/MorpheApp/morphe-patches/issues/37)) ([369f91e](https://github.com/MorpheApp/morphe-patches/commit/369f91e509d5b273624be5c75466757d9ed20a2a))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.2.0/patches-1.2.0.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.2.0/patches-1.2.0.mpp.asc",
-  "version": "1.2.0"
+  "created_at": "2026-01-11T21:57:27",
+  "description": "# [1.4.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-01-11)\n\n\n### Bug Fixes\n\n* **YouTube - Hide ads:** Hide new type of player ad ([#187](https://github.com/MorpheApp/morphe-patches/issues/187)) ([4702043](https://github.com/MorpheApp/morphe-patches/commit/4702043ea35fb3b1439ad30406b41179d019f2a1))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.4.0-dev.2/patches-1.4.0-dev.2.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.4.0-dev.2/patches-1.4.0-dev.2.mpp.asc",
+  "version": "1.4.0-dev.2"
 }

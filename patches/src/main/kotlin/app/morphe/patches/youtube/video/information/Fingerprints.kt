@@ -1,17 +1,18 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     returnType = "V",
@@ -20,16 +21,36 @@ internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     )
 )
 
+internal object OnPlaybackSpeedItemClickParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            returnType = "L",
+            parameters = listOf("Ljava/lang/String;"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 8
+    }
+)
+
+/**
+ * Resolves using the method found in [OnPlaybackSpeedItemClickParentFingerprint].
+ */
 internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "L", "I", "J"),
     custom = { method, _ ->
-        method.name == "onItemClick" &&
-            method.implementation?.instructions?.find {
-                it.opcode == Opcode.IGET_OBJECT &&
-                    it.getReference<FieldReference>()!!.type == "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"
-            } != null
+        method.name == "onItemClick"
     }
 )
 
@@ -64,7 +85,12 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
  */
 internal object SeekFingerprint : Fingerprint(
     filters = listOf(
-        string("Attempting to seek during an ad"),
+        anyInstruction(
+            // 20.xx
+            string("Attempting to seek during an ad"),
+            // 21.02+
+            string("Attempting to seek during an ad or non-seekable video")
+        )
     )
 )
 
@@ -159,9 +185,6 @@ internal object PlaybackSpeedClassFingerprint : Fingerprint(
     strings = listOf("PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT")
 )
 
-
-internal const val YOUTUBE_VIDEO_QUALITY_CLASS_TYPE = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
-
 /**
  * YouTube 20.19 and lower.
  */
@@ -174,10 +197,25 @@ internal object VideoQualityLegacyFingerprint : Fingerprint(
         "L"
     ),
     custom = { _, classDef ->
-        classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE
+        classDef.type == "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
     }
 )
 
+internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        methodCall(smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;"),
+        // First method call after Locale is the video id.
+        methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
+        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+    ),
+    custom = { method, _ ->
+        method.name == "toString"
+    }
+)
+
+// Class name is un-obfuscated in targets before 21.01
 internal object VideoQualityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
@@ -186,10 +224,7 @@ internal object VideoQualityFingerprint : Fingerprint(
         "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
         "Z",
         "L"
-    ),
-    custom = { _, classDef ->
-        classDef.type == YOUTUBE_VIDEO_QUALITY_CLASS_TYPE
-    }
+    )
 )
 
 internal object VideoQualitySetterFingerprint : Fingerprint(

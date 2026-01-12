@@ -1,3 +1,113 @@
+# [1.4.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-01-11)
+
+
+### Bug Fixes
+
+* **YouTube - Hide ads:** Hide new type of player ad ([#187](https://github.com/MorpheApp/morphe-patches/issues/187)) ([4702043](https://github.com/MorpheApp/morphe-patches/commit/4702043ea35fb3b1439ad30406b41179d019f2a1))
+
+# [1.4.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.2...v1.4.0-dev.1) (2026-01-11)
+
+
+### Features
+
+* **YouTube:** Add `Double tap to seek` patch ([1a57a34](https://github.com/MorpheApp/morphe-patches/commit/1a57a34734d31b803820b0a530e0c57c50963f63))
+
+## [1.3.2](https://github.com/MorpheApp/morphe-patches/compare/v1.3.1...v1.3.2) (2026-01-10)
+
+
+### Bug Fixes
+
+* **Custom branding:** Resolve startup crash if custom branding is excluded in expert mode ([3f2d733](https://github.com/MorpheApp/morphe-patches/commit/3f2d7338f587ef8a4ff8331621d6e68dd160d746))
+
+## [1.3.2-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.1...v1.3.2-dev.1) (2026-01-10)
+
+
+### Bug Fixes
+
+* **Custom branding:** Resolve startup crash if custom branding is excluded in expert mode ([3f2d733](https://github.com/MorpheApp/morphe-patches/commit/3f2d7338f587ef8a4ff8331621d6e68dd160d746))
+
+## [1.3.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.0...v1.3.1) (2026-01-10)
+
+
+### Bug Fixes
+
+* **Custom branding:** Default to user‑provided icon and name when provided ([eef8798](https://github.com/MorpheApp/morphe-patches/commit/eef8798602ebf805eb3cff08e010025a0a8e93ab))
+* **YouTube - Auto captions:** Cannot disable auto captions with 20.21 app target ([#145](https://github.com/MorpheApp/morphe-patches/issues/145)) ([dc43944](https://github.com/MorpheApp/morphe-patches/commit/dc43944adbcef5aa4754ca3d1fecd07a502277f3))
+* **YouTube - Hide end screen cards:** Resolve patching `20.31.42` ([3033432](https://github.com/MorpheApp/morphe-patches/commit/3033432644fc986930f4eec51d4fc233f6389c23))
+* **YouTube - Hide layout components:** Fix "Hide ticket shelf" not working when "Hide horizontal shelves" is off ([#124](https://github.com/MorpheApp/morphe-patches/issues/124)) ([84eeb0d](https://github.com/MorpheApp/morphe-patches/commit/84eeb0d9f949657a7d468d9babfaca37d03b0d78))
+
+## [1.3.1-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.3.1-dev.3...v1.3.1-dev.4) (2026-01-09)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Fix "Hide ticket shelf" not working when "Hide horizontal shelves" is off ([#124](https://github.com/MorpheApp/morphe-patches/issues/124)) ([84eeb0d](https://github.com/MorpheApp/morphe-patches/commit/84eeb0d9f949657a7d468d9babfaca37d03b0d78))
+
+## [1.3.1-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.3.1-dev.2...v1.3.1-dev.3) (2026-01-09)
+
+
+### Bug Fixes
+
+* **YouTube - Auto captions:** Cannot disable auto captions with 20.21 app target ([#145](https://github.com/MorpheApp/morphe-patches/issues/145)) ([dc43944](https://github.com/MorpheApp/morphe-patches/commit/dc43944adbcef5aa4754ca3d1fecd07a502277f3))
+
+## [1.3.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.3.1-dev.1...v1.3.1-dev.2) (2026-01-09)
+
+
+### Bug Fixes
+
+* **YouTube - Hide end screen cards:** Resolve patching `20.31.42` ([3033432](https://github.com/MorpheApp/morphe-patches/commit/3033432644fc986930f4eec51d4fc233f6389c23))
+
+## [1.3.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-01-09)
+
+
+### Bug Fixes
+
+* **Custom branding:** Default to user‑provided icon and name when provided ([eef8798](https://github.com/MorpheApp/morphe-patches/commit/eef8798602ebf805eb3cff08e010025a0a8e93ab))
+
+# [1.3.0](https://github.com/MorpheApp/morphe-patches/compare/v1.2.0...v1.3.0) (2026-01-09)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Change default client to VR 1.47.48 ([#116](https://github.com/MorpheApp/morphe-patches/issues/116)) ([2bc5775](https://github.com/MorpheApp/morphe-patches/commit/2bc577554f54fd2ecfcd682b83844511461effe4))
+* **YouTube - Hide layout components:** Fix certain description components not working ([#143](https://github.com/MorpheApp/morphe-patches/issues/143)) ([4efcb4d](https://github.com/MorpheApp/morphe-patches/commit/4efcb4d2c0f2085b6dbd0d203ef2979a041d512a))
+* **YouTube - Remove background playback restrictions:** Fix background playback not working with certain offline videos ([bb38f76](https://github.com/MorpheApp/morphe-patches/commit/bb38f763f271d14b80166d517a3e840578d1f5b9))
+* **YouTube:** Change "Hide mix playlist" to default off ([00f1240](https://github.com/MorpheApp/morphe-patches/commit/00f124004efd758092a5a8330aaea92f08064172))
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.02.32` ([#138](https://github.com/MorpheApp/morphe-patches/issues/138)) ([660699d](https://github.com/MorpheApp/morphe-patches/commit/660699da7ee6b623d5010b42fe575e63947b450a))
+
+# [1.3.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-01-09)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Fix certain description components not working ([#143](https://github.com/MorpheApp/morphe-patches/issues/143)) ([4efcb4d](https://github.com/MorpheApp/morphe-patches/commit/4efcb4d2c0f2085b6dbd0d203ef2979a041d512a))
+
+# [1.3.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.2.1-dev.2...v1.3.0-dev.1) (2026-01-09)
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.02.32` ([#138](https://github.com/MorpheApp/morphe-patches/issues/138)) ([660699d](https://github.com/MorpheApp/morphe-patches/commit/660699da7ee6b623d5010b42fe575e63947b450a))
+
+## [1.2.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.2.1-dev.1...v1.2.1-dev.2) (2026-01-07)
+
+
+### Bug Fixes
+
+* **YouTube:** Change "Hide mix playlist" to default off ([00f1240](https://github.com/MorpheApp/morphe-patches/commit/00f124004efd758092a5a8330aaea92f08064172))
+
+## [1.2.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.2.0...v1.2.1-dev.1) (2026-01-07)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Change default client to VR 1.47.48 ([#116](https://github.com/MorpheApp/morphe-patches/issues/116)) ([2bc5775](https://github.com/MorpheApp/morphe-patches/commit/2bc577554f54fd2ecfcd682b83844511461effe4))
+* **YouTube - Remove background playback restrictions:** Fix background playback not working with certain offline videos ([bb38f76](https://github.com/MorpheApp/morphe-patches/commit/bb38f763f271d14b80166d517a3e840578d1f5b9))
+
 # [1.2.0](https://github.com/MorpheApp/morphe-patches/compare/v1.1.0...v1.2.0) (2026-01-07)
 
 

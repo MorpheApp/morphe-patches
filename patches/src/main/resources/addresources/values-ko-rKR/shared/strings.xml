@@ -41,11 +41,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_tips_title">검색 팁</string>
   <string name="morphe_settings_search_tips_summary">"• 경로를 탭하여 설정 카테고리로 이동할 수 있습니다
 • 설정을 길게 탭하여 설정 위치로 이동할 수 있습니다
-• 엔터키를 눌러서 검색어를 기록에 저장할 수 있습니다
+• 엔터키를 탭하여 검색어를 기록에 저장할 수 있습니다
 • 검색할 경우에 대소문자와 구두점이 무시됩니다
 • 상위 설정이 비활성화된 하위 설정 위에 표시됩니다"</string>
   <string name="morphe_settings_search_empty_history_title">검색 기록이 비어 있습니다</string>
-  <string name="morphe_settings_search_empty_history_summary">검색 기록을 저장하려면 검색어를 입력하고 엔터키를 누르세요</string>
+  <string name="morphe_settings_search_empty_history_summary">검색 기록을 저장하려면 검색어를 입력하고 엔터키를 탭하세요</string>
   <string name="morphe_settings_search_history_title">설정 검색 기록 표시하기</string>
   <string name="morphe_settings_search_history_summary_on">설정 검색 기록을 표시합니다</string>
   <string name="morphe_settings_search_history_summary_off">설정 검색 기록을 표시하지 않습니다</string>
@@ -117,10 +117,10 @@ Second \"item\" text"</string>
 
 이러한 조치 없이는 앱이 정상적으로 작동하지 않습니다."</string>
   <string name="gms_core_dialog_open_website_text">웹사이트 열기</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG 배터리 최적화를 해제하여 문제가 발생하지 않도록 하세요.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG 앱 배터리 최적화를 비활성화(제한 없음)하여 앱 문제를 방지할 수 있습니다.
 
-MicroG의 배터리 최적화를 해제하더라도 배터리 사용에 부정적 영향이 없습니다.
+MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배터리 사용량에 부정적인 영향을 미치지 않습니다.
 
-계속하기 버튼을 눌러 최적화 설정을 허용하세요."</string>
+앱 배터리 최적화를 비활성화(제한 없음)하려면 '계속하기' 버튼을 탭하세요."</string>
   <string name="gms_core_dialog_continue_text">계속하기</string>
 </resources>

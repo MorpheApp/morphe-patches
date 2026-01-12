@@ -15,6 +15,14 @@
 <br>
 </div> 
 
+&nbsp;
+<p align="center">
+  <a href="https://morphe.software" title="Download Morphe">
+    <img src="https://raw.githubusercontent.com/MorpheApp/.github/refs/heads/main/profile/assets/download-morphe.svg" alt="Download Morphe" width="240"/>
+  </a>
+</p>
+&nbsp;
+
 # 🧩 Patches
 Morphe Patches
 

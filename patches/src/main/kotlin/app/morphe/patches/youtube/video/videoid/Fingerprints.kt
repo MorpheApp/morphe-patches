@@ -1,6 +1,8 @@
 package app.morphe.patches.youtube.video.videoid
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -12,11 +14,13 @@ internal object VideoIdFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "Ljava/lang/String;"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()), // videoId
         methodCall(
-            definingClass = "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;",
-            returnType = "Ljava/lang/String;"
+            smali = "Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
+            location = MatchAfterWithin(6)
         ),
-        opcode(Opcode.MOVE_RESULT_OBJECT),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
     )
 )
 
@@ -25,10 +29,7 @@ internal object VideoIdBackgroundPlayFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall(
-            definingClass = "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;",
-            returnType = "Ljava/lang/String;"
-        ),
+        methodCall(returnType = "Ljava/lang/String;"),
         opcode(Opcode.MOVE_RESULT_OBJECT),
         opcode(Opcode.IPUT_OBJECT),
         opcode(Opcode.MONITOR_EXIT),

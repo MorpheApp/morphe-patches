@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Umpan</string>
   <string name="morphe_settings_screen_04_general_title">Umum</string>
   <string name="morphe_settings_screen_05_player_title">Pemutar</string>
-  <string name="morphe_settings_screen_07_seekbar_title">Bilah Ber-slider</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kontrol usap</string>
   <string name="morphe_settings_screen_11_misc_title">Lain-lain</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
@@ -366,7 +366,7 @@ Keterbatasan
   <string name="morphe_hide_view_products_banner_summary_on">Spanduk lihat produk di hamparan video disembunyikan</string>
   <string name="morphe_hide_view_products_banner_summary_off">Spanduk lihat produk di hamparan video ditampilkan</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Iklan YouTube Premium disembunyikan
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promosi YouTube Premium disembunyikan
 
 Keterbatasan: Halaman YouTube Doodles tidak tersedia"</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promosi YouTube Premium ditampilkan</string>
@@ -390,8 +390,8 @@ Keterbatasan: Halaman YouTube Doodles tidak tersedia"</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Ini tidak mengabaikan batasan usia. Ini hanya menerimanya secara otomatis.</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
   <string name="morphe_disable_signin_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Pop-up Masuk ke TV dinonaktifkan</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Pop-up Masuk ke TV diaktifkan</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_on">Pesan timbul Masuk ke TV dinonaktifkan</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_off">Pesan timbul Masuk ke TV diaktifkan</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Nonaktifkan lewati bab dengan ketuk dua kali</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Ketuk dua kali tidak akan pernah memicu lewati ke bab berikutnya/sebelumnya</string>
@@ -476,11 +476,11 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_swipe_change_video_summary_on">Mengusap dalam mode layar penuh akan beralih ke video berikutnya/sebelumnya</string>
   <string name="morphe_swipe_change_video_summary_off">Mengusap dalam mode layar penuh tidak akan beralih ke video berikutnya/sebelumnya</string>
   <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">Ketentuan teks otomatis</string>
-  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat bisu dan tidak bisu</string>
+  <string name="morphe_auto_captions_style_title">Visibilitas teks otomatis</string>
+  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat dibisukan dan tidak dibisukan</string>
   <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
-  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak bisu</string>
-  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat bisu</string>
+  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak dibisukan</string>
+  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat dibisukan</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Tampilkan teks otomatis</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
@@ -692,13 +692,13 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_disable_rolling_number_animations_summary_on">Angka bergulir tidak dianimasikan</string>
   <string name="morphe_disable_rolling_number_animations_summary_off">Angka bergulir dianimasikan</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
-  <string name="morphe_hide_seekbar_title">Sembunyikan bilah pencari pemutar video</string>
+  <string name="morphe_hide_seekbar_title">Sembunyikan seekbar pemutar video</string>
   <string name="morphe_hide_seekbar_summary_on">Seekbar pemutar video disembunyikan</string>
   <string name="morphe_hide_seekbar_summary_off">Seekbar pemutar video ditampilkan</string>
   <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
-  <string name="morphe_hide_seekbar_thumbnail_title">Sembunyikan bilah pencari thumbnail video</string>
+  <string name="morphe_hide_seekbar_thumbnail_title">Sembunyikan seekbar thumbnail video</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">Bilah pencari thumbnail video disembunyikan</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary_off">Bilah pencari thumbnail video ditampilkan</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary_off">Seekbar thumbnail video ditampilkan</string>
   <string name="morphe_fullscreen_large_seekbar_title">Aktifkan seekbar besar layar penuh</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">Seekbar layar penuh berukuran besar</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">Seekbar layar penuh berukuran normal</string>
@@ -838,9 +838,9 @@ Pengaturan → Pemutaran → Putar otomatis video berikutnya"</string>
   <string name="morphe_hide_timestamp_summary_on">Penanda waktu disembunyikan</string>
   <string name="morphe_hide_timestamp_summary_off">Penanda waktu ditampilkan</string>
   <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Sembunyikan panel popup pemutar</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">Panel popup pemutar disembunyikan</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">Panel popup pemutar ditampilkan</string>
+  <string name="morphe_hide_player_popup_panels_title">Sembunyikan panel pesan timbul pemutar</string>
+  <string name="morphe_hide_player_popup_panels_summary_on">Panel pesan timbul pemutar disembunyikan</string>
+  <string name="morphe_hide_player_popup_panels_summary_off">Panel pesan timbul pemutar ditampilkan</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Keluar dari mode layar penuh di akhir video</string>
   <string name="morphe_exit_fullscreen_entry_1">Nonaktif</string>
@@ -942,7 +942,7 @@ Batasan: Dislike mungkin tidak muncul dalam mode penyamaran"</string>
   <string name="morphe_sb_duration_9s">9 detik</string>
   <string name="morphe_sb_duration_10s">10 detik</string>
   <string name="morphe_sb_general_time_without">Tampilkan durasi video tanpa segmen</string>
-  <string name="morphe_sb_general_time_without_sum_on">Durasi video tanpa semua segmen ditampilkan pada bilah pencarian</string>
+  <string name="morphe_sb_general_time_without_sum_on">Durasi video tanpa semua segmen ditampilkan pada seekbar</string>
   <string name="morphe_sb_general_time_without_sum_off">Durasi video penuh ditampilkan</string>
   <string name="morphe_sb_create_segment_category">Membuat segmen baru</string>
   <string name="morphe_sb_enable_create_segment">Tampilkan tombol Buat segmen baru</string>
@@ -1050,7 +1050,7 @@ Id pengguna Anda seperti kata sandi dan jangan pernah dibagikan."</string>
   <string name="morphe_sb_submit_failed_unknown_error">Tak dapat mengirim segmen (status: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Tidak dapat mengirimkan segmen. Rate Limited (terlalu banyak dari pengguna atau IP yang sama)</string>
   <string name="morphe_sb_submit_failed_forbidden">Tidak dapat mengirim segmen: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"Tidak dapat mengirimkan segmen.
+  <string name="morphe_sb_submit_failed_duplicate">"Tidak dapat mengirim segmen.
 Sudah ada"</string>
   <string name="morphe_sb_submit_succeeded">Segmen berhasil terkirim</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

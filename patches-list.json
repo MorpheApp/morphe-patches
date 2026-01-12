@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.4.0-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -514,6 +514,24 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.14.43",
+          "20.21.37",
+          "20.26.46",
+          "20.31.42",
+          "20.37.48"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Double tap to seek",
+      "description": "Adds additional double-tap to seek values to the YouTube settings menu.",
+      "use": true,
+      "dependencies": [
         "BytecodePatch"
       ],
       "compatiblePackages": {

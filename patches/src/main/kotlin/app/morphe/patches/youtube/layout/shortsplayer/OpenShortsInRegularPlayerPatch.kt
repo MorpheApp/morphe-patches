@@ -11,11 +11,11 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
+import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -66,24 +66,17 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
-        // Find the obfuscated method name for PlaybackStartDescriptor.videoId()
-        val (videoIdStartMethod, videoIdIndex) = if (is_20_39_or_greater) {
-            WatchPanelVideoIdFingerprint.let {
-                it.method to it.instructionMatches.last().index
-            }
-        } else {
-            PlaybackStartFeatureFlagFingerprint.let {
-                it.method to it.instructionMatches.first().index
-            }
+        val playbackStartVideoIdMethodName : String
+        PlaybackStartDescriptorToStringFingerprint.let {
+            playbackStartVideoIdMethodName = navigate(it.method).to(it.instructionMatches[1].index).stop().name
         }
-        val playbackStartVideoIdMethodName = navigate(videoIdStartMethod).to(videoIdIndex).stop().name
 
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p1
                 
-                invoke-virtual { v0 }, Lcom/google/android/libraries/youtube/player/model/PlaybackStartDescriptor;->$playbackStartVideoIdMethodName()Ljava/lang/String;
+                invoke-virtual { v0 }, ${PlaybackStartDescriptorToStringFingerprint.classDef}->$playbackStartVideoIdMethodName()Ljava/lang/String;
                 move-result-object v1
                 invoke-static { v1 }, $EXTENSION_CLASS_DESCRIPTOR->openShort(Ljava/lang/String;)Z
                 move-result v1

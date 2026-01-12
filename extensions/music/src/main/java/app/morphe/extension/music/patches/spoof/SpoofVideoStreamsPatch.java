@@ -18,12 +18,11 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      */
     public static void setClientOrderToUse() {
+        // For some users No SDK can fail at 1 minute. Only use it if the user has explicitly set it.
         List<ClientType> availableClients = List.of(
-                ANDROID_NO_SDK,
                 ANDROID_VR_1_47_48,
                 VISIONOS,
-                ANDROID_VR_1_54_20,
-                ANDROID_MUSIC_NO_SDK
+                ANDROID_VR_1_54_20
         );
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
