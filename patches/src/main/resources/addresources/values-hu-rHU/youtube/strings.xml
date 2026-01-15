@@ -95,6 +95,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_playables_title">Lejátszható elemek elrejtése</string>
   <string name="morphe_hide_playables_summary_on">A játékszoba rejtett</string>
   <string name="morphe_hide_playables_summary_off">A játékszoba megjelenik</string>
+  <string name="morphe_hide_search_suggestions_title">Keresési javaslatok elrejtése</string>
+  <string name="morphe_hide_search_suggestions_summary_on">A keresési javaslatok el vannak rejtve</string>
+  <string name="morphe_hide_search_suggestions_summary_off">A keresési javaslatok meg vannak jelenítve</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Továbbiak megjelenítése\' gomb elrejtése</string>
@@ -582,6 +585,9 @@ Ha a beállítás módosítása nem lép életbe, próbáljon meg Inkognitó mó
   <string name="morphe_hide_navigation_button_labels_title">A navigációs gombok címkéinek elrejtése</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">A címke el vannak rejtve</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">A címke meg vannak jelenítve</string>
+  <string name="morphe_narrow_navigation_buttons_title">Szeletelt navigációs gombok engedélyezése</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">A navigációs gombok közötti távolság szűk</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">A navigációs gombok közötti távolság normál</string>
   <string name="morphe_navigation_bar_animations_title">Navigációs sáv animációinak engedélyezése</string>
   <string name="morphe_navigation_bar_animations_summary_on">A navigációs átmenetek animáltak</string>
   <string name="morphe_navigation_bar_animations_summary_off">A navigációs átmenetek nem animáltak</string>

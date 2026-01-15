@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Флаги сохранены</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Флаги сброшены</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Флаги скопированы в буфер обмена</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту функцию</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Откройте настройки MicroG</string>

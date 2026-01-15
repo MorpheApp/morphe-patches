@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กไปยังคลิปบอร์ดแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">รีสตาร์ตแอปเพื่อใช้คุณสมบัตินี้</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>

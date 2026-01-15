@@ -97,6 +97,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Παιχνίδια YouTube</string>
   <string name="morphe_hide_playables_summary_on">Κρυμμένα</string>
   <string name="morphe_hide_playables_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_search_suggestions_title">Προτάσεις αναζήτησης</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Κρυμμένες</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Εμφανίζονται</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Κουμπί «Εμφάνιση περισσότερων»</string>
@@ -584,6 +587,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Εμφανίζονται</string>
+  <string name="morphe_narrow_navigation_buttons_title">Ενεργοποίηση στενών κουμπιών πλοήγησης</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Το διάστημα μεταξύ των κουμπιών πλοήγησης είναι στενό</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Το διάστημα μεταξύ των κουμπιών πλοήγησης είναι κανονικό</string>
   <string name="morphe_navigation_bar_animations_title">Ενεργοποίηση κινούμενων εικόνων στη γραμμή πλοήγησης</string>
   <string name="morphe_navigation_bar_animations_summary_on">Οι μεταβάσεις πλοήγησης κινούνται</string>
   <string name="morphe_navigation_bar_animations_summary_off">Οι μεταβάσεις πλοήγησης δεν κινούνται</string>

@@ -96,6 +96,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ゲームルームを非表示</string>
   <string name="morphe_hide_playables_summary_on">ゲームルームは表示されません</string>
   <string name="morphe_hide_playables_summary_off">ゲームルームは表示されます</string>
+  <string name="morphe_hide_search_suggestions_title">検索候補を非表示</string>
+  <string name="morphe_hide_search_suggestions_summary_on">検索候補は表示されません</string>
+  <string name="morphe_hide_search_suggestions_summary_off">検索候補は表示されます</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">「もっと見る」ボタンを非表示</string>
@@ -449,20 +452,20 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary_on">ジェスチャーで明るさを最小値まで下げると、明るさが自動で調節されます</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary_off">ジェスチャーで明るさを最小値まで下げても、明るさは自動で調節されません</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">自動</string>
-  <string name="morphe_swipe_overlay_timeout_title">オーバーレイのタイムアウト</string>
-  <string name="morphe_swipe_overlay_timeout_summary">オーバーレイが表示されるミリ秒数</string>
+  <string name="morphe_swipe_overlay_timeout_title">オーバーレイの表示時間</string>
+  <string name="morphe_swipe_overlay_timeout_summary">スワイプ オーバーレイが表示される時間 (ミリ秒)</string>
   <string name="morphe_swipe_overlay_background_opacity_title">オーバーレイの背景の透明度</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">透明度の範囲は 0-100 で、0 が透明です</string>
   <string name="morphe_swipe_overlay_background_opacity_invalid_toast">スワイプ: 透明度の範囲は 0-100 です</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">オーバーレイの明るさグラフの色</string>
-  <string name="morphe_swipe_overlay_progress_brightness_color_summary">スワイプ中の明るさの現在値を視覚的に表示するグラフの色</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_summary">明るさジェスチャー中の現在値を視覚的に表示するグラフの色</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">オーバーレイの音量グラフの色</string>
-  <string name="morphe_swipe_overlay_progress_volume_color_summary">スワイプ中の音量の現在値を視覚的に表示するグラフの色</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_summary">音量ジェスチャー中の現在値を視覚的に表示するグラフの色</string>
   <string name="morphe_swipe_text_overlay_size_title">オーバーレイのテキストサイズ</string>
-  <string name="morphe_swipe_text_overlay_size_summary">スワイプオーバーレイのテキストサイズは1～30の間です</string>
+  <string name="morphe_swipe_text_overlay_size_summary">スワイプ オーバーレイのテキストサイズ (1-30)</string>
   <string name="morphe_swipe_text_overlay_size_invalid_toast">テキストサイズの範囲は 1-30 です</string>
   <string name="morphe_swipe_threshold_title">スワイプのしきい値</string>
-  <string name="morphe_swipe_threshold_summary">スワイプと判定される最小のスワイプ距離</string>
+  <string name="morphe_swipe_threshold_summary">ジェスチャーとして判定される最小のスワイプ距離</string>
   <string name="morphe_swipe_volume_sensitivity_title">音量ジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_volume_sensitivity_summary">スワイプによる音量の変化量</string>
   <string name="morphe_swipe_overlay_style_title">オーバーレイのスタイル</string>
@@ -583,6 +586,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">ナビゲーション ボタンはアイコンのみで表示されます</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">ナビゲーション ボタンはアイコンと文字で表示されます</string>
+  <string name="morphe_narrow_navigation_buttons_title">ナビゲーション ボタンの間を詰める</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">ナビゲーション ボタンは狭い間隔で表示されます</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">ナビゲーション ボタンは通常の間隔で表示されます</string>
   <string name="morphe_navigation_bar_animations_title">ナビゲーションバーのアニメーションを有効にする</string>
   <string name="morphe_navigation_bar_animations_summary_on">ナビゲーション遷移がアニメーション表示されます</string>
   <string name="morphe_navigation_bar_animations_summary_off">ナビゲーション遷移はアニメーション表示されません</string>
@@ -868,7 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">非公開</string>
   <string name="morphe_ryd_enabled_summary_on">低評価数は表示されます</string>
   <string name="morphe_ryd_enabled_summary_off">低評価数は表示されません</string>
-  <string name="morphe_ryd_shorts_title">ショート動画の低評価数を表示</string>
+  <string name="morphe_ryd_shorts_title">ショートの低評価数を表示</string>
   <string name="morphe_ryd_shorts_summary_on">"ショート動画の低評価数は表示されます
 
 制限事項: シークレット モードでは低評価数が表示されない場合があります"</string>
@@ -889,20 +895,20 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_attribution_summary">データは Return YouTube Dislike API によって提供されています。詳細は、ここをタップしてください</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">このデバイスの ReturnYouTubeDislike API 統計情報</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API応答時間の平均</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API応答時間、最小</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API応答時間、最大</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API応答時間、最後の動画</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API の応答時間 (平均)</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API の応答時間 (最小)</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API の応答時間 (最大)</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API の応答時間 (直近)</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">低評価数表示は一時的に利用できません。クライアント API のレート制限が原因です</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_title">API取得投票、呼び出し回数</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">API の投票数取得 (呼び出し回数)</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">ネットワーク呼び出しは実行されていません</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d 回のネットワーク呼び出しが実行されました</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API取得投票、タイムアウト回数</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API の投票数取得 (タイムアウト回数)</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">ネットワーク呼び出しはタイムアウトしていません</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d 回のネットワーク呼び出しがタイムアウトしました</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API クライアントのレート制限</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限には遭遇していません</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限に %d 回遭遇しました</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限は発生していません</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %d 回発生しました</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d ミリ秒</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_wide_searchbar_title">ワイド検索バーを有効化</string>

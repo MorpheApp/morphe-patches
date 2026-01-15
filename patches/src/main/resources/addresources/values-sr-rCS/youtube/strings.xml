@@ -95,6 +95,9 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_playables_title">Sakrij salu za igru</string>
   <string name="morphe_hide_playables_summary_on">Sala za igru je skrivena</string>
   <string name="morphe_hide_playables_summary_off">Sala za igru je prikazana</string>
+  <string name="morphe_hide_search_suggestions_title">Sakrij predloge za pretragu</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Predlozi za pretragu su skriveni</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Predlozi za pretragu su prikazani</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Sakrij dugme „Prikaži još”</string>
@@ -582,6 +585,9 @@ Ako se promena ove opcije ne primeni, pokušajte da pređete u režim bez arhivi
   <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake dugmadi za navigaciju</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Oznake dugmadi za navigaciju su skrivene</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Oznake dugmadi za navigaciju su prikazane</string>
+  <string name="morphe_narrow_navigation_buttons_title">Omogući uske dugmadi za navigaciju</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između dugmada za navigaciju je uska</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između dugmada za navigaciju je normalan</string>
   <string name="morphe_navigation_bar_animations_title">Omogući animacije navigacione trake</string>
   <string name="morphe_navigation_bar_animations_summary_on">Animacije prelaza navigacije su uključene</string>
   <string name="morphe_navigation_bar_animations_summary_off">Animacije prelaza navigacije su isključene</string>

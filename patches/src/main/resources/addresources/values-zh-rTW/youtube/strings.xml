@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_on">已隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_off">已顯示遊戲角落</string>
+  <string name="morphe_hide_search_suggestions_title">隱藏搜尋建議</string>
+  <string name="morphe_hide_search_suggestions_summary_on">已隱藏搜尋建議</string>
+  <string name="morphe_hide_search_suggestions_summary_off">已顯示搜尋建議</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">隱藏「顯示更多」按鈕</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">已隱藏「標籤」</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">已顯示「標籤」</string>
+  <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">導航按鈕間距離狹窄</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">導航按鈕間距離正常</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary_on">導覽轉換會進行動畫</string>
   <string name="morphe_navigation_bar_animations_summary_off">導覽轉換不會進行動畫</string>

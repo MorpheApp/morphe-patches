@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">隐藏可播放内容</string>
   <string name="morphe_hide_playables_summary_on">可播放内容已隐藏</string>
   <string name="morphe_hide_playables_summary_off">可播放内容已显示</string>
+  <string name="morphe_hide_search_suggestions_title">隐藏搜索建议</string>
+  <string name="morphe_hide_search_suggestions_summary_on">搜索建议已隐藏</string>
+  <string name="morphe_hide_search_suggestions_summary_off">搜索建议已显示</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">隐藏「显示更多」按钮</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">隐藏导航栏按钮标签</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">标签已隐藏</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">标签已显示</string>
+  <string name="morphe_narrow_navigation_buttons_title">启用狭窄导航按钮</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">导航按钮间距狭窄</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">导航按钮间距正常</string>
   <string name="morphe_navigation_bar_animations_title">启用导航栏动画</string>
   <string name="morphe_navigation_bar_animations_summary_on">导航过渡是动画的</string>
   <string name="morphe_navigation_bar_animations_summary_off">导航过渡没有动画</string>

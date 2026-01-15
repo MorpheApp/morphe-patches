@@ -95,6 +95,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_playables_title">Hazır Oyunlar\'ı gizle</string>
   <string name="morphe_hide_playables_summary_on">Hazır Oyunlar gizli</string>
   <string name="morphe_hide_playables_summary_off">Hazır Oyunlar görünür</string>
+  <string name="morphe_hide_search_suggestions_title">Arama önerilerini gizle</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Arama önerileri gizli</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Arama önerileri görünür</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Daha fazla göster\' düğmesini gizle</string>
@@ -582,6 +585,9 @@ Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin."</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Etiketler gizli</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Etiketler görünür</string>
+  <string name="morphe_narrow_navigation_buttons_title">Navigasyon düğmeleri dar yapılandırmayı etkinleştirin</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Navigasyon düğmeleri arasındaki boşluk dar</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Navigasyon düğmeleri arasındaki boşluk normal</string>
   <string name="morphe_navigation_bar_animations_title">Gezinme çubuğu animasyonlarını etkinleştir</string>
   <string name="morphe_navigation_bar_animations_summary_on">Gezinme geçişleri animasyonludur</string>
   <string name="morphe_navigation_bar_animations_summary_off">Gezinme geçişleri animasyonlu değildir</string>

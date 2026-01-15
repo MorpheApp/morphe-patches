@@ -95,6 +95,9 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_hide_playables_title">Ocultar Reprodução</string>
   <string name="morphe_hide_playables_summary_on">Reproduzíveis estão escondidos</string>
   <string name="morphe_hide_playables_summary_off">Reproduzíveis são visíveis</string>
+  <string name="morphe_hide_search_suggestions_title">Ocultar sugestões de busca</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Sugestões de pesquisa estão ocultas</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Sugestões de pesquisa são mostradas</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ocultar botão \'Mostrar mais\'</string>
@@ -582,6 +585,9 @@ Se alterar esta configuração não fizer efeito, tente alternar para o modo an�
   <string name="morphe_hide_navigation_button_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Marcadores estão ocultos</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Marcadores são mostrados</string>
+  <string name="morphe_narrow_navigation_buttons_title">Habilitar botões de navegação estreitos</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Espaçamento entre os botões de navegação é estreito</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Espaçamento entre os botões de navegação é normal</string>
   <string name="morphe_navigation_bar_animations_title">Ativar animações da barra de navegação</string>
   <string name="morphe_navigation_bar_animations_summary_on">As transições de navegação são animadas</string>
   <string name="morphe_navigation_bar_animations_summary_off">As transições de navegação não são animadas</string>

@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Скрыть встроенные игры</string>
   <string name="morphe_hide_playables_summary_on">Встроенные игры в ленте скрыты</string>
   <string name="morphe_hide_playables_summary_off">Встроенные игры в ленте показаны</string>
+  <string name="morphe_hide_search_suggestions_title">Скрыть подсказки поиска</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Предложения поиска скрыты</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Предложения поиска показаны</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Скрыть кнопку \"Показать еще\"</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Скрыть подписи кнопок навигации</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Подписи кнопок навигации скрыты</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Подписи кнопок навигации показаны</string>
+  <string name="morphe_narrow_navigation_buttons_title">Включить узкие кнопки навигации</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Расстояние между кнопками навигации небольшое</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Расстояние между кнопками навигации нормальное</string>
   <string name="morphe_navigation_bar_animations_title">Включить анимацию панели навигации</string>
   <string name="morphe_navigation_bar_animations_summary_on">Переходы навигации анимированы</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходы навигации не анимированы</string>

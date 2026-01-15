@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Οι σημαίες αποθηκεύτηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Οι σημαίες επαναφέρθηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Οι σημαίες αντιγράφηκαν στο πρόχειρο</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτή τη λειτουργία</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Άνοιγμα των ρυθμίσεων MicroG</string>

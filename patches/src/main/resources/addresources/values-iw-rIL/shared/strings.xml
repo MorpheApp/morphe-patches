@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">הדגלים נשמרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">הדגלים אופסו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">התחל את האפליקציה כדי להשתמש בתכונה זו</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">פתח את הגדרות MicroG</string>

@@ -103,6 +103,7 @@ Não será notificado de quaisquer eventos inesperados."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores salvos</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores redefinidos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores copiados para a área de transferência</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o aplicativo para usar essa funcionalidade</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>

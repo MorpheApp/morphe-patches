@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">הסתר משחקייה</string>
   <string name="morphe_hide_playables_summary_on">המשחקייה מוסתרת</string>
   <string name="morphe_hide_playables_summary_off">המשחקייה מוצגת</string>
+  <string name="morphe_hide_search_suggestions_title">הסתר הצעות חיפוש</string>
+  <string name="morphe_hide_search_suggestions_summary_on">הצעות חיפוש מוסתרות</string>
+  <string name="morphe_hide_search_suggestions_summary_off">הצעות חיפוש מוצגות</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">הסתר לחצן \'הצג עוד\'</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">התוויות מוסתרות</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">התוויות מוצגות</string>
+  <string name="morphe_narrow_navigation_buttons_title">הפעלת כפתורי ניווט צרים</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">הפרש בין כפתורי ניווט צר</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">הפרש בין כפתורי ניווט רגיל</string>
   <string name="morphe_navigation_bar_animations_title">הפעלת אנימציות של שורת הניווט</string>
   <string name="morphe_navigation_bar_animations_summary_on">מעברי ניווט מונפשים</string>
   <string name="morphe_navigation_bar_animations_summary_off">מעברי ניווט אינם מונפשים</string>

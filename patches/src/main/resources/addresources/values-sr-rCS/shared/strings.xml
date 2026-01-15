@@ -103,6 +103,7 @@ Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice sačuvane</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice resetovane</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice kopirane u međumemoriju</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ponovo pokrenite aplikaciju da biste koristili ovu funkciju</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvori postavke MicroG</string>

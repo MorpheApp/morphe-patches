@@ -95,6 +95,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_playables_title">Nascondi Sala Giochi</string>
   <string name="morphe_hide_playables_summary_on">I giochi sono nascosti</string>
   <string name="morphe_hide_playables_summary_off">I giochi sono visibili</string>
+  <string name="morphe_hide_search_suggestions_title">Nascondi i suggerimenti di ricerca</string>
+  <string name="morphe_hide_search_suggestions_summary_on">I suggerimenti di ricerca sono nascosti</string>
+  <string name="morphe_hide_search_suggestions_summary_off">I suggerimenti di ricerca sono visibili</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Nascondi il pulsante \'Mostra di più\'</string>
@@ -582,6 +585,9 @@ Se la modifica di questa impostazione non ha effetto, prova a passare alla modal
   <string name="morphe_hide_navigation_button_labels_title">Nascondi etichette dei pulsanti di navigazione</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Le etichette sono nascoste</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Le etichette sono visibili</string>
+  <string name="morphe_narrow_navigation_buttons_title">Attiva pulsanti di navigazione stretti</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Spaziatura tra i pulsanti di navigazione stretta</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Spaziatura tra i pulsanti di navigazione normale</string>
   <string name="morphe_navigation_bar_animations_title">Abilita animazioni della barra di navigazione</string>
   <string name="morphe_navigation_bar_animations_summary_on">Le transizioni di navigazione sono animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Le transizioni di navigazione non sono animate</string>

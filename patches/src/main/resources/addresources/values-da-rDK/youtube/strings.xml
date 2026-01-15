@@ -95,6 +95,9 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_playables_title">Skjul Spilleobjekter</string>
   <string name="morphe_hide_playables_summary_on">Spilleobjekter er skjult</string>
   <string name="morphe_hide_playables_summary_off">Afspilningstabeller vises</string>
+  <string name="morphe_hide_search_suggestions_title">Skjul søgeforslag</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Søgeforslag er skjult</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Søgeforslag er vist</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Skjul knappen \'Vis mere\'</string>
@@ -582,6 +585,9 @@ Hvis ændring af denne indstilling ikke træder i kraft, kan du prøve at skifte
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigationsknappens etiketter</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Etiketter er skjult</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Etiketter er vist</string>
+  <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Afstanden mellem navigationsknapperne er smal</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Afstanden mellem navigationsknapperne er normal</string>
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationsovergange animeres</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationsovergange animeres ikke</string>

@@ -104,6 +104,7 @@ You will not be notified of any unexpected events."</string>
     <string name="morphe_debug_feature_flags_manager_toast_saved">Flags saved</string>
     <string name="morphe_debug_feature_flags_manager_toast_reset">Flags reset</string>
     <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copied to clipboard</string>
+    <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this feature</string>
 
     <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
     <!-- misc.gms.gmsCoreSupportResourcePatch -->

@@ -95,6 +95,9 @@ Mar sin féin, logálfaidh sé seo roinnt sonraí úsáideora freisin, mar shamp
   <string name="morphe_hide_playables_title">Folaigh na heilimintí inseinnte</string>
   <string name="morphe_hide_playables_summary_on">Tá na heilimintí inseinnte i bhfolach</string>
   <string name="morphe_hide_playables_summary_off">Taispeántar na heilimintí inseinnte</string>
+  <string name="morphe_hide_search_suggestions_title">Folaigh moltaí cuardaigh</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Tá moltaí cuardaigh i bhfolach</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Taispeántar moltaí cuardaigh</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Folaigh an cnaipe \'Taispeáin níos mó\'</string>
@@ -580,6 +583,9 @@ Mura dtagann aon athrú ar an socrú seo, bain triail as mód Incognito a chur a
   <string name="morphe_hide_navigation_button_labels_title">Folaigh lipéid cnaipe nascleanú</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Tá lipéid i bhfolach</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Taispeántar lipéid</string>
+  <string name="morphe_narrow_navigation_buttons_title">Gníomhú ar na botóin tana</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Spreagadh idir na botóin tana náir</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Spreagadh idir na botóin tana normal</string>
   <string name="morphe_navigation_bar_animations_title">Cumasaigh beochan barra nascleanúna</string>
   <string name="morphe_navigation_bar_animations_summary_on">Déantar aistrithe nascleanúna a bheochan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ní dhéantar aistrithe nascleanúna a bheochan</string>

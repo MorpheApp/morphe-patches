@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Sobre</string>
   <string name="morphe_settings_screen_01_ads_title">Anúncios</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniaturas alternativas</string>
-  <string name="morphe_settings_screen_03_feed_title">Alimentar</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Geral</string>
   <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra de busca</string>
@@ -95,6 +95,9 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_playables_title">Ocultar Playables</string>
   <string name="morphe_hide_playables_summary_on">Os Playables estão ocultos</string>
   <string name="morphe_hide_playables_summary_off">Os Playables são mostrados</string>
+  <string name="morphe_hide_search_suggestions_title">Ocultar sugestões de busca</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Sugestões de pesquisa estão ocultas</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Sugestões de pesquisa são mostradas</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ocultar botão \'Mostrar mais\'</string>
@@ -582,6 +585,9 @@ Se alterar esta configuração não fizer efeito, tente mudar para o modo anôni
   <string name="morphe_hide_navigation_button_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Rótulos são ocultos</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Rótulos são mostrados</string>
+  <string name="morphe_narrow_navigation_buttons_title">Habilitar botões de navegação estreitos</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">O espaçamento entre os botões de navegação é estreito</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">O espaçamento entre os botões de navegação é normal</string>
   <string name="morphe_navigation_bar_animations_title">Habilitar animações da barra de navegação</string>
   <string name="morphe_navigation_bar_animations_summary_on">Transições de navegação são animadas</string>
   <string name="morphe_navigation_bar_animations_summary_off">Transições de navegação não são animadas</string>

@@ -103,6 +103,7 @@ Nem fog értesülni semmilyen váratlan eseményről."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Jelzők mentve</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Jelzők visszaállítva</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Jelzők vágólapra másolva</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Üjraindítsd az alkalmazást, hogy használhass a funkciót</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Nyisson a MicroG beállításokat</string>

@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">旗標已儲存</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">旗標已重設</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">旗標已複製到剪貼簿</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新启动应用以使用此功能</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">打開 MicroG 設定</string>

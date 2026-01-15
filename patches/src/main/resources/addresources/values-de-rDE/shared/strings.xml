@@ -103,6 +103,7 @@ Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags gespeichert</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags zurückgesetzt</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags in die Zwischenablage kopiert</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bitte starten Sie die App neu, um diese Funktion zu nutzen.</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Öffne die MicroG-Einstellungen</string>

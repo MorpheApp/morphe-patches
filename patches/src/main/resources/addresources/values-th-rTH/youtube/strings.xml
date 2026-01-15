@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ซ่อน Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables ถูกซ่อนไว้</string>
   <string name="morphe_hide_playables_summary_off">Playables แสดงอยู่</string>
+  <string name="morphe_hide_search_suggestions_title">ซ่อนคำแนะนำในการค้นหา</string>
+  <string name="morphe_hide_search_suggestions_summary_on">ซ่อนคำแนะนำในการค้นหา</string>
+  <string name="morphe_hide_search_suggestions_summary_off">แสดงคำแนะนำในการค้นหา</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">ซ่อนปุ่ม \"แสดงเพิ่มเติม\"</string>
@@ -580,6 +583,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">ป้ายกำกับถูกซ่อน</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">ป้ายกำกับถูกแสดง</string>
+  <string name="morphe_narrow_navigation_buttons_title">เปิดใช้งานปุ่มนำทางที่แคบ</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">ระยะห่างระหว่างปุ่มนำทางเป็นระยะแคบ</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">ระยะห่างระหว่างปุ่มนำทางเป็นระยะปกติ</string>
   <string name="morphe_navigation_bar_animations_title">เปิดใช้งานภาพเคลื่อนไหวแถบนำทาง</string>
   <string name="morphe_navigation_bar_animations_summary_on">การเปลี่ยนภาพเคลื่อนไหวจะถูกทำให้เป็นภาพเคลื่อนไหว</string>
   <string name="morphe_navigation_bar_animations_summary_off">การเปลี่ยนภาพเคลื่อนไหวจะไม่ถูกทำให้เป็นภาพเคลื่อนไหว</string>

@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/MorpheApp/morphe-patches/compare/v1.4.0...v1.5.0) (2026-01-15)
+
+
+### Features
+
+* **YouTube - Navigation buttons:** Add setting to use narrow navigation bar buttons ([1074c6a](https://github.com/MorpheApp/morphe-patches/commit/1074c6a6f70199ef8173524246be23bddcbb46d2))
+* **YouTube:** Add "Hide search box trending results" setting ([#40](https://github.com/MorpheApp/morphe-patches/issues/40)) ([dc1a898](https://github.com/MorpheApp/morphe-patches/commit/dc1a898924f1cf4eaa94a29e967d7e966ae7a243))
+
 # [1.5.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.5.0-dev.1...v1.5.0-dev.2) (2026-01-13)
 
 

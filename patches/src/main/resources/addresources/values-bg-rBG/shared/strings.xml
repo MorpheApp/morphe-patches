@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Флаговете са запазени</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Флаговете са изтрити</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Флаговете са копирани в клипборда</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Повторете приложението, за да използвате тази функционалност</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Отвори настройките на MicroG</string>

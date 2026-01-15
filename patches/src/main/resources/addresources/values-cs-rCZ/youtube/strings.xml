@@ -96,6 +96,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_playables_title">Skrýt Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables jsou skryté</string>
   <string name="morphe_hide_playables_summary_off">Playables jsou zobrazené</string>
+  <string name="morphe_hide_search_suggestions_title">Skrýt návrhy vyhledávání</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Návrhy vyhledávání jsou skryté</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Návrhy vyhledávání jsou zobrazeny</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Skrýt tlačítko „Zobrazit více“</string>
@@ -583,6 +586,9 @@ Pokud změna tohoto nastavení nemá žádný účinek, zkuste přepnout do rež
   <string name="morphe_hide_navigation_button_labels_title">Skrýt štítky navigačních tlačítek</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Štítky jsou skryty</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Štítky jsou zobrazeny</string>
+  <string name="morphe_narrow_navigation_buttons_title">Povolit úzké tlačítka na navigaci</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Mezi tlačítky na navigaci je úzký odstup</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Mezi tlačítky na navigaci je normální odstup</string>
   <string name="morphe_navigation_bar_animations_title">Povolit animace navigační lišty</string>
   <string name="morphe_navigation_bar_animations_summary_on">Přechody navigace jsou animované</string>
   <string name="morphe_navigation_bar_animations_summary_off">Přechody navigace nejsou animované</string>

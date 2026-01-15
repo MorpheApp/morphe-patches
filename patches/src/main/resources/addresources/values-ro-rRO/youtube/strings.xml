@@ -95,6 +95,9 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_playables_title">Ascunde Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables sunt ascunse</string>
   <string name="morphe_hide_playables_summary_off">Playables sunt afișate</string>
+  <string name="morphe_hide_search_suggestions_title">Ascunde sugestiile de căutare</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Sugestiile de căutare sunt ascunse</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Sugestiile de căutare sunt afișate</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ascunderea butonului „Afișează mai multe”</string>
@@ -580,6 +583,9 @@ Dacă modificarea acestei setări nu are efect, încercați să comutați la mod
   <string name="morphe_hide_navigation_button_labels_title">Ascunde etichetele butoanelor de navigare</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Etichetele sunt ascunse</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Etichetele sunt afișate</string>
+  <string name="morphe_narrow_navigation_buttons_title">Activează butoane de navigare înguste</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Spatiul între butoane de navigare este îngust</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Spatiul între butoane de navigare este normal</string>
   <string name="morphe_navigation_bar_animations_title">Activare animații bară de navigare</string>
   <string name="morphe_navigation_bar_animations_summary_on">Tranzițiile de navigare sunt animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Tranzițiile de navigare nu sunt animate</string>

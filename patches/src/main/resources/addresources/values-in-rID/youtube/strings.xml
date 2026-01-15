@@ -95,6 +95,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_hide_playables_title">Sembunyikan Permainan</string>
   <string name="morphe_hide_playables_summary_on">Permainan disembunyikan</string>
   <string name="morphe_hide_playables_summary_off">Permainan ditampilkan</string>
+  <string name="morphe_hide_search_suggestions_title">Sembunyikan saran pencarian</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Saran pencarian disembunyikan</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Saran pencarian ditampilkan</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Sembunyikan tombol \'Tampilkan selengkapnya\'</string>
@@ -213,9 +216,9 @@ Jika Doodle saat ini ditampilkan di wilayah Anda dan pengaturan penyembunyi ini 
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Sembunyikan di video terkait</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_on">Disembunyikan di video terkait</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_off">Ditampilkan di video terkait</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Sembunyikan di hasil penelusuran</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_summary_on">Disembunyikan di hasil penelusuran</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_summary_off">Ditampilkan di hasil penelusuran</string>
+  <string name="morphe_hide_filter_bar_feed_in_search_title">Sembunyikan di hasil pencarian</string>
+  <string name="morphe_hide_filter_bar_feed_in_search_summary_on">Disembunyikan di hasil pencarian</string>
+  <string name="morphe_hide_filter_bar_feed_in_search_summary_off">Ditampilkan di hasil pencarian</string>
   <string name="morphe_hide_filter_bar_feed_in_history_title">Sembunyikan di riwayat tontonan</string>
   <string name="morphe_hide_filter_bar_feed_in_history_summary_on">Disembunyikan di riwayat tontonan</string>
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">Ditampilkan di riwayat tontonan</string>
@@ -296,11 +299,11 @@ Jika Doodle saat ini ditampilkan di wilayah Anda dan pengaturan penyembunyi ini 
 • Rak Shorts, halaman saluran, dan hasil pencarian mungkin masih menampilkan jumlah penayangan
 • Fitur ini tidak berfungsi dengan faktor bentuk otomotif"</string>
   <string name="morphe_hide_upload_time_title">Sembunyikan waktu unggah</string>
-  <string name="morphe_hide_upload_time_summary_on">Waktu unggah disembunyikan di umpan dan hasil penelusuran</string>
-  <string name="morphe_hide_upload_time_summary_off">Waktu unggah ditampilkan di umpan dan hasil penelusuran</string>
+  <string name="morphe_hide_upload_time_summary_on">Waktu unggah disembunyikan di umpan dan hasil pencarian</string>
+  <string name="morphe_hide_upload_time_summary_off">Waktu unggah ditampilkan di umpan dan hasil pencarian</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Keterbatasan:
-• Rak Shorts, halaman saluran, dan hasil penelusuran mungkin masih menampilkan waktu unggah
+• Rak Shorts, halaman saluran, dan hasil pencarian mungkin masih menampilkan waktu unggah
 • Fitur ini tidak berfungsi dengan faktor bentuk otomotif"</string>
   <string name="morphe_hide_keyword_content_screen_title">Sembunyikan kata kunci konten</string>
   <string name="morphe_hide_keyword_content_screen_summary">Sembunyikan pencarian dan feed video menggunakan penyaring kata kunci</string>
@@ -582,6 +585,9 @@ Jika mengubah setelan ini tidak berpengaruh, coba beralih ke mode Penyamaran."</
   <string name="morphe_hide_navigation_button_labels_title">Sembunyikan label tombol navigasi</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Label disembunyikan</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Label ditampilkan</string>
+  <string name="morphe_narrow_navigation_buttons_title">Aktifkan tombol navigasi sempit</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on"> Jarak antara tombol navigasi cukup sempit</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off"> Jarak antara tombol navigasi cukup normal</string>
   <string name="morphe_navigation_bar_animations_title">Aktifkan animasi bilah navigasi</string>
   <string name="morphe_navigation_bar_animations_summary_on">Transisi navigasi dianimasikan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Transisi navigasi tidak dianimasikan</string>
@@ -710,8 +716,8 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_shorts_home_summary_on">Disembunyikan di umpan Beranda dan video terkait</string>
   <string name="morphe_hide_shorts_home_summary_off">Ditampilkan di umpan Beranda dan video terkait</string>
   <string name="morphe_hide_shorts_search_title">Sembunyikan Shorts di hasil pencarian</string>
-  <string name="morphe_hide_shorts_search_summary_on">Disembunyikan dalam hasil penelusuran</string>
-  <string name="morphe_hide_shorts_search_summary_off">Ditampilkan dalam hasil penelusuran</string>
+  <string name="morphe_hide_shorts_search_summary_on">Disembunyikan dalam hasil pencarian</string>
+  <string name="morphe_hide_shorts_search_summary_off">Ditampilkan dalam hasil pencarian</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">Sembunyikan Shorts di umpan Langganan</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Disembunyikan di umpan Langganan</string>
@@ -756,9 +762,9 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_shorts_save_sound_button_title">Sembunyikan tombol \'Simpan musik\'</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Tombol simpan musik disembunyikan</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Tombol simpan musik ditampilkan</string>
-  <string name="morphe_hide_shorts_search_suggestions_title">Sembunyikan saran penelusuran</string>
-  <string name="morphe_hide_shorts_search_suggestions_summary_on">Saran penelusuran disembunyikan</string>
-  <string name="morphe_hide_shorts_search_suggestions_summary_off">Saran penelusuran ditampilkan</string>
+  <string name="morphe_hide_shorts_search_suggestions_title">Sembunyikan saran pencarian</string>
+  <string name="morphe_hide_shorts_search_suggestions_summary_on">Saran pencarian disembunyikan</string>
+  <string name="morphe_hide_shorts_search_suggestions_summary_off">Saran pencarian ditampilkan</string>
   <string name="morphe_hide_shorts_shop_button_title">Sembunyikan tombol Belanja</string>
   <string name="morphe_hide_shorts_shop_button_summary_on">Tombol belanja disembunyikan</string>
   <string name="morphe_hide_shorts_shop_button_summary_off">Tombol belanja ditampilkan</string>

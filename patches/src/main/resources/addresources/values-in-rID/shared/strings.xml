@@ -103,6 +103,7 @@ Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Tanda disimpan</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Tanda diatur ulang</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda disalin ke papan klip</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Mulai ulang aplikasi untuk menggunakan fitur ini</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buka pengaturan MicroG</string>

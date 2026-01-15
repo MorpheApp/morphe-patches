@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Сакриј салу за игру</string>
   <string name="morphe_hide_playables_summary_on">Сала за игру је скривена</string>
   <string name="morphe_hide_playables_summary_off">Сала за игру је приказана</string>
+  <string name="morphe_hide_search_suggestions_title">Сакриј предлоге за претрагу</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Предлози за претрагу су скривени</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Предлози за претрагу су приказани</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Сакриј дугме „Прикажи још”</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Сакриј ознаке дугмади за навигацију</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Ознаке дугмади за навигацију су скривене</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Ознаке дугмади за навигацију су приказане</string>
+  <string name="morphe_narrow_navigation_buttons_title">Omogući uske dugmad za navigaciju</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između dugmada za navigaciju je usak</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između dugmada za navigaciju je normalan</string>
   <string name="morphe_navigation_bar_animations_title">Омогући анимације траке за навигацију</string>
   <string name="morphe_navigation_bar_animations_summary_on">Анимације прелаза у навигацији су укључене</string>
   <string name="morphe_navigation_bar_animations_summary_off">Анимације прелаза у навигацији су искључене</string>

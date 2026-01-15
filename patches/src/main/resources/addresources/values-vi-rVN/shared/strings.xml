@@ -47,14 +47,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Lịch sử tìm kiếm đang trống</string>
   <string name="morphe_settings_search_empty_history_summary">Để lưu lịch sử tìm kiếm, nhập từ khoá tìm kiếm và nhấn Enter</string>
   <string name="morphe_settings_search_history_title">Hiện lịch sử tìm kiếm cài đặt</string>
-  <string name="morphe_settings_search_history_summary_on">Lịch sử tìm kiếm cài đặt đang hiển thị</string>
-  <string name="morphe_settings_search_history_summary_off">Lịch sử tìm kiếm cài đặt đang không hiển thị</string>
+  <string name="morphe_settings_search_history_summary_on">Lịch sử tìm kiếm cài đặt được hiển thị</string>
+  <string name="morphe_settings_search_history_summary_off">Lịch sử tìm kiếm cài đặt không được hiển thị</string>
   <string name="morphe_settings_disable_bold_icons_title">Tắt biểu tượng đậm</string>
   <string name="morphe_settings_disable_bold_icons_summary_on">Biểu tượng không đậm</string>
   <string name="morphe_settings_disable_bold_icons_summary_off">Biểu tượng đậm</string>
   <string name="morphe_show_menu_icons_title">Hiện biểu tượng cài đặt Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Các biểu tượng cài đặt đang hiển thị</string>
-  <string name="morphe_show_menu_icons_summary_off">Các biểu tượng cài đặt đang không hiển thị</string>
+  <string name="morphe_show_menu_icons_summary_on">Các biểu tượng cài đặt được hiển thị</string>
+  <string name="morphe_show_menu_icons_summary_off">Các biểu tượng cài đặt không được hiển thị</string>
   <string name="morphe_language_title">Ngôn ngữ thiết lập Morphe</string>
   <string name="morphe_language_user_dialog_message">"Có thể bị thiếu một số ngôn ngữ hoặc chưa hoàn thiện.
 
@@ -103,6 +103,7 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ vào bảng nhớ tạm</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Khởi động lại ứng dụng để dùng tính năng này</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Mở cài đặt MicroG</string>

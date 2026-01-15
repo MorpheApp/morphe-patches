@@ -95,6 +95,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_playables_title">Oynadılan elementləri gizlət</string>
   <string name="morphe_hide_playables_summary_on">Oynadılanlar gizlidir</string>
   <string name="morphe_hide_playables_summary_off">Oynadılanlar göstərilir</string>
+  <string name="morphe_hide_search_suggestions_title">Axtarış təkliflərini gizlət</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Axtarış təklifləri gizlədilib</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Axtarış təklifləri göstərilir</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Daha çox göstər\' düyməsini gizlət</string>
@@ -582,6 +585,9 @@ Bu seçimi dəyişdirmə işə düşmürsə, Gizli rejimə keçməyə çalışı
   <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Etiketlər gizlidir</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Etiketlər göstərilir</string>
+  <string name="morphe_narrow_navigation_buttons_title">Nəzarət düymələri ucqar olsun</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Nəzarət düymələri arasında boşluq ucqardır</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Nəzarət düymələri arasında boşluq normaldır</string>
   <string name="morphe_navigation_bar_animations_title">Naviqasiya paneli animasiyalarını aktivləşdirin</string>
   <string name="morphe_navigation_bar_animations_summary_on">Naviqasiya keçidləri animasiyalıdır</string>
   <string name="morphe_navigation_bar_animations_summary_off">Naviqasiya keçidləri animasiyalı deyil</string>

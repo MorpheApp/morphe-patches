@@ -103,6 +103,7 @@ Você não será notificado sobre nenhum evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags salvas</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags redefinidas</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copiadas para a área de transferência</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o app para usar esta funcionalidade</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>

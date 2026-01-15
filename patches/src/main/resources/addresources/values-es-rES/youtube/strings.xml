@@ -95,6 +95,9 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <string name="morphe_hide_playables_title">Ocultar jugables</string>
   <string name="morphe_hide_playables_summary_on">Los jugables están ocultos</string>
   <string name="morphe_hide_playables_summary_off">Los jugables están visibles</string>
+  <string name="morphe_hide_search_suggestions_title">Ocultar sugerencias de búsqueda</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Las sugerencias de búsqueda están ocultas</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Las sugerencias de búsqueda están visibles</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ocultar botón \"Mostrar más\"</string>
@@ -582,6 +585,9 @@ Si al cambiar este ajuste no se aplica, intenta cambiar al modo incógnito."</st
   <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas de botones de navegación</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Las etiquetas están ocultas</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Las etiquetas están visibles</string>
+  <string name="morphe_narrow_navigation_buttons_title">Activar botones de navegación estrechos</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">El espaciado entre los botones de navegación es estrecho</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">El espaciado entre los botones de navegación es normal</string>
   <string name="morphe_navigation_bar_animations_title">Activar animaciones de barra de navegación</string>
   <string name="morphe_navigation_bar_animations_summary_on">Las transiciones de navegación están animadas</string>
   <string name="morphe_navigation_bar_animations_summary_off">Las transiciones de navegación no están animadas</string>

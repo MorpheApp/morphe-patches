@@ -95,6 +95,9 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_playables_title">Piilota Pelattavat</string>
   <string name="morphe_hide_playables_summary_on">Pelattavat piilotetaan</string>
   <string name="morphe_hide_playables_summary_off">Pelattavat näytetään</string>
+  <string name="morphe_hide_search_suggestions_title">Piilota hakuehdotukset</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Hakuehdotukset piilotetaan</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Hakuehdotukset näytetään</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Piilota \"Näytä lisää\" -painike</string>
@@ -582,6 +585,9 @@ Jos tämän asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa Incognito-til
   <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Tunnisteet piilotetaan</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Tunnisteet näytetään</string>
+  <string name="morphe_narrow_navigation_buttons_title">Ota käytönä käytönappien käytön</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Navigaatiopainikkeiden välitila on käytän</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Navigaatiopainikkeiden välitila on normaali</string>
   <string name="morphe_navigation_bar_animations_title">Ota käyttöön kuvatekstien animaatiot</string>
   <string name="morphe_navigation_bar_animations_summary_on">Siirtymiä animoidaan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Siirtymiä ei animoida</string>

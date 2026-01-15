@@ -48,13 +48,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_summary">Aby zapisać historię wyszukiwania, wpisz zapytanie i naciśnij Enter</string>
   <string name="morphe_settings_search_history_title">Historia wyszukiwania ustawień</string>
   <string name="morphe_settings_search_history_summary_on">Widoczna</string>
-  <string name="morphe_settings_search_history_summary_off">Niewidoczna</string>
+  <string name="morphe_settings_search_history_summary_off">Ukryta</string>
   <string name="morphe_settings_disable_bold_icons_title">Pogrubione ikony</string>
   <string name="morphe_settings_disable_bold_icons_summary_on">Nie</string>
   <string name="morphe_settings_disable_bold_icons_summary_off">Tak</string>
   <string name="morphe_show_menu_icons_title">Ikony ustawień Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Widoczne</string>
-  <string name="morphe_show_menu_icons_summary_off">Niewidoczne</string>
+  <string name="morphe_show_menu_icons_summary_off">Ukryte</string>
   <string name="morphe_language_title">Język Morphe</string>
   <string name="morphe_language_user_dialog_message">"Tłumaczenia dla niektórych języków mogą być brakujące lub niekompletne.
 
@@ -82,7 +82,7 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_debug_stacktrace_summary_off">Wyłączone</string>
   <string name="morphe_debug_toast_on_error_title">Komunikaty o błędach Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Widoczne</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Niewidoczne</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Ukryte</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie komunikatów o błędach ukrywa wszystkie komunikaty o błędach Morphe.
 
 Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
@@ -103,6 +103,7 @@ Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flagi zapisane</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flagi zresetowane</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flagi skopiowane do schowka</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uruchom ponownie aplikację, aby użyć tej funkcji</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otwórz ustawienia MicroG</string>

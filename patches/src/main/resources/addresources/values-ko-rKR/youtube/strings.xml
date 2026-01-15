@@ -98,6 +98,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">게임 룸 숨기기</string>
   <string name="morphe_hide_playables_summary_on">게임 룸이 숨겨집니다</string>
   <string name="morphe_hide_playables_summary_off">게임 룸이 표시됩니다</string>
+  <string name="morphe_hide_search_suggestions_title">추천 콘텐츠 숨기기</string>
+  <string name="morphe_hide_search_suggestions_summary_on">추천 콘텐츠가 숨겨집니다</string>
+  <string name="morphe_hide_search_suggestions_summary_off">추천 콘텐츠가 표시됩니다</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'자세히 보기\' 버튼 숨기기</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">하단바 버튼 라벨 숨기기</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">라벨이 숨겨집니다</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">라벨이 표시됩니다</string>
+  <string name="morphe_narrow_navigation_buttons_title">좁은 하단바 버튼 활성화하기</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">하단바 버튼 사이의 간격이 좁아집니다</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">하단바 버튼 사이의 간격이 좁아지지 않습니다</string>
   <string name="morphe_navigation_bar_animations_title">하단바 애니메이션 활성화하기</string>
   <string name="morphe_navigation_bar_animations_summary_on">하단바 전환 애니메이션을 활성화합니다</string>
   <string name="morphe_navigation_bar_animations_summary_off">하단바 전환 애니메이션을 비활성화합니다</string>

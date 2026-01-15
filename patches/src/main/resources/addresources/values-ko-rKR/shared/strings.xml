@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">플래그를 저장하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">플래그를 초기화하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">플래그를 클립보드에 복사하였습니다</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">이 기능을 사용하려면 앱을 다시 시작하세요</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG 설정을 실행할 수 있습니다</string>

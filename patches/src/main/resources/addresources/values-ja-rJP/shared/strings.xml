@@ -103,6 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">flag を保存しました</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">flag をリセットしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">flag をクリップボードにコピーしました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を使用するには再起動してください</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>

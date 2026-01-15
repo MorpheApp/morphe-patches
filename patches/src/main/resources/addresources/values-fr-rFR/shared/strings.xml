@@ -104,6 +104,7 @@ Vous ne serez plus averti en cas d’événements inattendus."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Drapeaux enregistrés</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Drapeaux réinitialisés</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Drapeaux copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour utiliser cette fonctionnalité</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres MicroG</string>

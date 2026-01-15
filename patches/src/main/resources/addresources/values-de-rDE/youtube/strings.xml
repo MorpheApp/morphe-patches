@@ -95,6 +95,9 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_playables_title">Playables ausblenden</string>
   <string name="morphe_hide_playables_summary_on">Playables sind ausgeblendet</string>
   <string name="morphe_hide_playables_summary_off">Playables werden angezeigt</string>
+  <string name="morphe_hide_search_suggestions_title">Suchvorschläge ausblenden</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Suchvorschläge sind ausgeblendet</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Suchvorschläge werden angezeigt</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Schaltfläche \'Mehr anzeigen\' ausblenden</string>
@@ -579,6 +582,9 @@ Wenn diese Änderung nicht wirksam wird, versuchen Sie, in den Inkognito-Modus z
   <string name="morphe_hide_navigation_button_labels_title">Navigationstastenbezeichnungen ausblenden</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Labels sind ausgeblendet</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Labels werden angezeigt</string>
+  <string name="morphe_narrow_navigation_buttons_title">Schmale Navigationsknöpfe aktivieren</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Abstand zwischen Navigationsknöpfen ist schmal</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Abstand zwischen Navigationsknöpfen ist normal</string>
   <string name="morphe_navigation_bar_animations_title">Navigation bar animations aktivieren</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationen werden animiert</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationen werden nicht animiert</string>

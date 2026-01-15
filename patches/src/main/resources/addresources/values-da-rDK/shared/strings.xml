@@ -103,6 +103,7 @@ Du modtager ikke notifikationer om uventede hændelser."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flag gemt</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flag nulstillet</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flag kopieret til udklipsholder</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Genstart appen for at bruge denne funktion</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Åbn MicroG-indstillingerne</string>

@@ -103,6 +103,7 @@ Et saa ilmoituksia odottamattomista tapahtumista."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Liput tallennettu</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Liput nollattu</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Käynnistä sovellus uudelleen käyttääkseen tätä ominaisuutta</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Avaa MicroG-asetukset</string>

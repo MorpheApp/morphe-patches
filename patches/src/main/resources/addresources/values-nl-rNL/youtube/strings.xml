@@ -95,6 +95,9 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_playables_title">Speelbare items verbergen</string>
   <string name="morphe_hide_playables_summary_on">Speelbare items zijn verborgen</string>
   <string name="morphe_hide_playables_summary_off">Spellen worden getoond</string>
+  <string name="morphe_hide_search_suggestions_title">Verberg zoeksuggesties</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Zoeksuggesties zijn verborgen</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Zoeksuggesties zijn zichtbaar</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Verberg knop \'Meer weergeven\'</string>
@@ -582,6 +585,9 @@ Als het wijzigen van deze instelling geen effect heeft, probeer dan over te scha
   <string name="morphe_hide_navigation_button_labels_title">Navigatieknoppenlabels verbergen</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Labels zijn verborgen</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Labels worden weergegeven</string>
+  <string name="morphe_narrow_navigation_buttons_title">Schakel smalle navigatieknoppen in</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Afstand tussen navigatieknoppen is smal</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Afstand tussen navigatieknoppen is normaal</string>
   <string name="morphe_navigation_bar_animations_title">Navigatiebalkanimaties inschakelen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigatieovergangen worden geanimeerd</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigatieovergangen worden niet geanimeerd</string>

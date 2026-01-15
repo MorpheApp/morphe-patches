@@ -91,6 +91,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">খেলার উপযুক্ত লুকান</string>
   <string name="morphe_hide_playables_summary_on">খেলার উপযুক্ত লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_playables_summary_off">খেলার উপযুক্ত প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_search_suggestions_title">অনুসন্ধান পরামর্শগুলি লুকান</string>
+  <string name="morphe_hide_search_suggestions_summary_on">অনুসন্ধান পরামর্শগুলি লুকিয়ে রয়েছে</string>
+  <string name="morphe_hide_search_suggestions_summary_off">অনুসন্ধান পরামর্শগুলি প্রদর্শিত হয়েছে</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'আরও দেখান\' বোতাম লুকান</string>
@@ -578,6 +581,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">নেভিগেশন বোতাম লেবেল লুকান</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">লেবেল লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">লেবেল প্রদর্শিত হয়েছে</string>
+  <string name="morphe_narrow_navigation_buttons_title">নেভিগেশন বাটনগুলোকে সংকুচিত করুন</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">নেভিগেশন বাটনগুলোর মাঝে দূরত্ব সংকুচিত</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">নেভিগেশন বাটনগুলোর মাঝে দূরত্ব স্বাভাবিক</string>
   <string name="morphe_navigation_bar_animations_title">নেভিগেশন বার অ্যানিমেশন সক্ষম করুন</string>
   <string name="morphe_navigation_bar_animations_summary_on">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড</string>
   <string name="morphe_navigation_bar_animations_summary_off">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড নয়</string>

@@ -103,6 +103,7 @@ Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">İşaretçiler kaydedildi</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">İşaretçiler sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">İşaretçiler panoya kopyalandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uygulamayı yeniden başlatın bu özelliği kullanmak için</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG ayarlarını açın</string>

@@ -103,6 +103,7 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Steaguri salvate</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Steaguri resetate</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Steaguri copiate în clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reiniţializaţi aplicaţia pentru a utiliza această funcţie</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Deschide setârii MicroG</string>

@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary_on">تم إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary_off">يتم عرض هيّا نلعب</string>
+  <string name="morphe_hide_search_suggestions_title">إخفاء اقتراحات البحث</string>
+  <string name="morphe_hide_search_suggestions_summary_on">تم إخفاء اقتراحات البحث</string>
+  <string name="morphe_hide_search_suggestions_summary_off">يتم عرض اقتراحات البحث</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">إخفاء زر \'عرض المزيد\'</string>
@@ -582,6 +585,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">تم إخفاء التسميات</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">يتم عرض التسميات</string>
+  <string name="morphe_narrow_navigation_buttons_title">تمكين أزرار التنقل الضيقة</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">التباعد بين أزرار التنقل ضيق</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">التباعد بين أزرار التنقل عادي</string>
   <string name="morphe_navigation_bar_animations_title">تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary_on">تم تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary_off">تم تعطيل تأثير حركة التنقل في شريط التنقل</string>

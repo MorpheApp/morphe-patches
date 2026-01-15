@@ -95,6 +95,9 @@ Cependant, activer cette option entraînera également l’enregistrement de cer
   <string name="morphe_hide_playables_title">Masquer \'Jeux intégrés\'</string>
   <string name="morphe_hide_playables_summary_on">Les jeux intégrés sont masqués</string>
   <string name="morphe_hide_playables_summary_off">Les jeux intégrés sont affichés</string>
+  <string name="morphe_hide_search_suggestions_title">Masquer les recherches suggérées</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Les recherches suggérées sont masquées</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Les recherches suggérées sont affichées</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Masquer le bouton \'Voir plus\'</string>
@@ -586,6 +589,9 @@ Si la modification de ce paramètre ne prend pas effet, essayez de passer en nav
   <string name="morphe_hide_navigation_button_labels_title">Masquer le nom des boutons de navigation</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Les noms sont masqués</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Les noms sont affichés</string>
+  <string name="morphe_narrow_navigation_buttons_title">Activer les boutons de navigation compacts</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">L\'espacement entre les boutons de navigation sont réduit</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">L\'espacement entre les boutons de navigation sont normaux</string>
   <string name="morphe_navigation_bar_animations_title">Activer les animations de la barre de navigation</string>
   <string name="morphe_navigation_bar_animations_summary_on">Les transitions de navigation sont animées</string>
   <string name="morphe_navigation_bar_animations_summary_off">Les transitions de navigation ne sont pas animées</string>

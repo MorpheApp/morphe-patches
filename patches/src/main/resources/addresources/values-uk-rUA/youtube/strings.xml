@@ -96,6 +96,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Приховати \"ігрові елементи\"</string>
   <string name="morphe_hide_playables_summary_on">Розділ \"ігрові елементи\" приховано</string>
   <string name="morphe_hide_playables_summary_off">Розділ \"ігрові елементи\" показується</string>
+  <string name="morphe_hide_search_suggestions_title">Приховати пропозиції пошуку</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Пропозиції пошуку приховано</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Пропозиції пошуку показуються</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Приховати кнопку \"Показати більше\"</string>
@@ -583,6 +586,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Підписи кнопок навігації приховано</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Підписи кнопок навігації показуються</string>
+  <string name="morphe_narrow_navigation_buttons_title">Увімкнути вузькі кнопки навігації</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Відстань між кнопками навігації невелика</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Відстань між кнопками навігації є нормальною</string>
   <string name="morphe_navigation_bar_animations_title">Увімкнути анімації панелі навігації</string>
   <string name="morphe_navigation_bar_animations_summary_on">Переходи навігації анімовані</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходи навігації не анімовані</string>

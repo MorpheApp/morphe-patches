@@ -95,6 +95,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Игри в YouTube</string>
   <string name="morphe_hide_playables_summary_on">Игри в YouTube са скрити</string>
   <string name="morphe_hide_playables_summary_off">Игрите в YouTube се показват</string>
+  <string name="morphe_hide_search_suggestions_title">Скриване на предлагането за търсене</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Предлагането за търсене е скрито</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Предлагането за търсене е показано</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Скриване на бутона \"Покажи още\"</string>
@@ -568,6 +571,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Етикетите са скрити</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Етикетите се показват</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Включи анимации на лентата за навигация</string>
+  <string name="morphe_narrow_navigation_buttons_title">Включи тесни навигационни бутони</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Разстоянието между навигационните бутони е тесно</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Разстоянието между навигационните бутони е нормално</string>
   <string name="morphe_navigation_bar_animations_title">Превключванията на навигацията са анимирани</string>
   <string name="morphe_navigation_bar_animations_summary_on">Превключванията на навигацията не са анимирани</string>
   <string name="morphe_navigation_bar_animations_summary_off">Изключи прозрачна лента за статус</string>
