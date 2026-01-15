@@ -513,11 +513,15 @@ public final class app/morphe/patches/youtube/layout/formfactor/ChangeFormFactor
 	public static final fun getChangeFormFactorPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
+public final class app/morphe/patches/youtube/layout/hide/autoplaypreview/HideAutoplayPreviewPatchKt {
+	public static final fun getHideAutoplayPreviewPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
+}
+
 public final class app/morphe/patches/youtube/layout/hide/endscreencards/HideEndScreenCardsPatchKt {
 	public static final fun getHideEndScreenCardsPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
-public final class app/morphe/patches/youtube/layout/hide/endscreensuggestion/HideEndScreenSuggestedVideoPatchKt {
+public final class app/morphe/patches/youtube/layout/hide/endscreensuggestedvideo/HideEndScreenSuggestedVideoPatchKt {
 	public static final fun getHideEndScreenSuggestedVideoPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 

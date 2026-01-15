@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.hide.endscreensuggestion
+package app.morphe.patches.youtube.layout.hide.endscreensuggestedvideo
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
