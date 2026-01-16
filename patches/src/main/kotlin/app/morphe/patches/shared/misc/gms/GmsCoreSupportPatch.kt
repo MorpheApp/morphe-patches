@@ -58,9 +58,7 @@ fun gmsCoreSupportPatch(
     executeBlock: BytecodePatchContext.() -> Unit = {},
     block: BytecodePatchBuilder.() -> Unit = {},
 ) = bytecodePatch(
-    name = "GmsCore support",
-    description = "Allows the app to work without root by using a different package name when patched " +
-        "using a GmsCore instead of Google Play Services.",
+    name = "GmsCore support"
 ) {
 
     dependsOn(

@@ -20,8 +20,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableResumingStartupShortsPlayerPatch;"
 
 val disableResumingShortsOnStartupPatch = bytecodePatch(
-    name = "Disable resuming Shorts on startup",
-    description = "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
+    name = "Disable resuming Shorts on startup"
 ) {
     dependsOn(
         sharedExtensionPatch,

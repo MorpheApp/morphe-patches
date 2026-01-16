@@ -72,20 +72,20 @@ private fun generatePatchList(version: String, patches: Set<Patch<*>>) {
 
     val patchesMap = patches.sortedBy { it.name }.map {
         JsonPatch(
-            it.name!!,
-            it.description,
+            it.nameLocalized!!,
+            it.descriptionLocalized,
             it.use,
             it.dependencies.map { dependency -> dependency.javaClass.simpleName },
             it.compatiblePackages?.associate { (packageName, versions) -> packageName to versions },
             it.options.values.map { option ->
                 JsonPatch.Option(
                     option.key,
-                    option.title,
-                    option.description,
+                    option.titleLocalized, // FIXME
+                    option.descriptionLocalized, // FIXME
                     option.required,
                     option.type.toString(),
                     option.default,
-                    option.values,
+                    option.valuesLocalized,
                 )
             },
         )

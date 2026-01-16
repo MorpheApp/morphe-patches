@@ -44,8 +44,7 @@ private const val FILTER_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/components/ReturnYouTubeDislikeFilter;"
 
 val returnYouTubeDislikePatch = bytecodePatch(
-    name = "Return YouTube Dislike",
-    description = "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
+    name = "Return YouTube Dislike"
 ) {
     dependsOn(
         settingsPatch,

@@ -19,8 +19,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/pa
 
 @Suppress("unused")
 val changeFormFactorPatch = bytecodePatch(
-    name = "Change form factor",
-    description = "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+    name = "Change form factor"
 ) {
     dependsOn(
         sharedExtensionPatch,

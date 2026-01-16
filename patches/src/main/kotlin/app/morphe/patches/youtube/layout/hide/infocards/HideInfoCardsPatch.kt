@@ -36,8 +36,7 @@ private val hideInfocardsResourcePatch = resourcePatch {
 
 @Suppress("unused")
 val hideInfoCardsPatch = bytecodePatch(
-    name = "Hide info cards",
-    description = "Adds an option to hide info cards that creators add in the video player.",
+    name = "Hide info cards"
 ) {
     dependsOn(
         sharedExtensionPatch,

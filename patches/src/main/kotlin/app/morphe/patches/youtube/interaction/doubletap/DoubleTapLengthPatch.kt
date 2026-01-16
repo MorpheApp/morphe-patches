@@ -9,8 +9,7 @@ import org.w3c.dom.Element
 
 @Suppress("unused")
 val doubleTapLengthPatch = resourcePatch(
-    name = "Double tap to seek",
-    description = "Adds additional double-tap to seek values to the YouTube settings menu."
+    name = "Double tap to seek"
 ) {
     dependsOn(
         sharedExtensionPatch,

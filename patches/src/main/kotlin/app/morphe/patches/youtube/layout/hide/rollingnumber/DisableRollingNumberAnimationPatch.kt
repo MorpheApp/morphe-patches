@@ -16,8 +16,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableRollingNumberAnimationsPatch;"
 
 val disableRollingNumberAnimationPatch = bytecodePatch(
-    name = "Disable rolling number animations",
-    description = "Adds an option to disable rolling number animations of video view count, user likes, and upload time.",
+    name = "Disable rolling number animations"
 ) {
     dependsOn(
         sharedExtensionPatch,

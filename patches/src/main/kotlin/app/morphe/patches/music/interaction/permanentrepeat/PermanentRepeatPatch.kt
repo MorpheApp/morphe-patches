@@ -14,8 +14,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patc
 
 @Suppress("unused")
 val permanentRepeatPatch = bytecodePatch(
-    name = "Permanent repeat",
-    description = "Adds an option to always repeat even if the playlist ends or another track is played."
+    name = "Permanent repeat"
 ) {
     dependsOn(
         sharedExtensionPatch,

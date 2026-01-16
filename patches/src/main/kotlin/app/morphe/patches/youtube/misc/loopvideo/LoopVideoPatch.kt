@@ -14,8 +14,7 @@ import com.android.tools.smali.dexlib2.Opcode
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LoopVideoPatch;"
 
 val loopVideoPatch = bytecodePatch(
-    name = "Loop video",
-    description = "Adds an option to loop videos and display loop video button in the video player.",
+    name = "Loop video"
 ) {
     dependsOn(
         sharedExtensionPatch,

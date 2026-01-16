@@ -16,8 +16,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableFullscreenAmbientModePatch;"
 
 val disableFullscreenAmbientModePatch = bytecodePatch(
-    name = "Disable fullscreen ambient mode",
-    description = "Adds an option to disable the ambient mode when in fullscreen.",
+    name = "Disable fullscreen ambient mode"
 ) {
     dependsOn(
         settingsPatch,

@@ -33,8 +33,7 @@ internal fun enableDebuggingPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     additionalDebugPreferences: List<BasePreference> = emptyList()
 ) = bytecodePatch(
-    name = "Enable debugging",
-    description = "Adds options for debugging and exporting Morphe logs to the clipboard.",
+    name = "Enable debugging"
 ) {
 
     dependsOn(

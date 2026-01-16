@@ -12,8 +12,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
 
 val announcementsPatch = bytecodePatch(
     // FIXME: Change this to an "Update is available" patch
-    //name = "Announcements",
-    description = "Adds an option to show announcements from Morphe on app startup.",
+    //name = "Announcements"
 ) {
     dependsOn(
         settingsPatch,

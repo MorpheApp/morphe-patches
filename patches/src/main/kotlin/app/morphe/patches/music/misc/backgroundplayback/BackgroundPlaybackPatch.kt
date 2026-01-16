@@ -6,8 +6,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.util.returnEarly
 
 val backgroundPlaybackPatch = bytecodePatch(
-    name = "Remove background playback restrictions",
-    description = "Removes restrictions on background playback, including playing kids videos in the background.",
+    name = "Remove background playback restrictions"
 ) {
     dependsOn(
         sharedExtensionPatch,
