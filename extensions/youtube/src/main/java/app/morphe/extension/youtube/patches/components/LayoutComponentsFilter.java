@@ -118,6 +118,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "subscriptions_chip_bar"
         );
 
+        final var subscribedChannelsBar = new StringFilterGroup(
+                Settings.HIDE_SUBSCRIBED_CHANNELS_BAR,
+                "subscriptions_channel_bar"
+        );
+
         chipBar = new StringFilterGroup(
                 Settings.HIDE_FILTER_BAR_FEED_IN_HISTORY,
                 "chip_bar"
@@ -329,6 +334,7 @@ public final class LayoutComponentsFilter extends Filter {
                 quickActions,
                 relatedVideos,
                 singleItemInformationPanel,
+                subscribedChannelsBar,
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,

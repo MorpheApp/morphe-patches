@@ -226,6 +226,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_playables"),
             SwitchPreference("morphe_hide_search_suggestions"),
             SwitchPreference("morphe_hide_show_more_button"),
+            SwitchPreference("morphe_hide_subscribed_channels_bar"),
             SwitchPreference("morphe_hide_surveys"),
             SwitchPreference("morphe_hide_ticket_shelf"),
             SwitchPreference("morphe_hide_upload_time"),
