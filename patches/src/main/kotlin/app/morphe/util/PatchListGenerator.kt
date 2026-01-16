@@ -80,8 +80,8 @@ private fun generatePatchList(version: String, patches: Set<Patch<*>>) {
             it.options.values.map { option ->
                 JsonPatch.Option(
                     option.key,
-                    option.titleLocalized, // FIXME
-                    option.descriptionLocalized, // FIXME
+                    option.titleLocalized,
+                    option.descriptionLocalized,
                     option.required,
                     option.type.toString(),
                     option.default,
