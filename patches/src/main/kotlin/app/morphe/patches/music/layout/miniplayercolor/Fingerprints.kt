@@ -8,9 +8,9 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object MiniPlayerConstructorFingerprint : Fingerprint(
-    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "mpp_player_bottom_sheet")
+        resourceLiteral(ResourceType.ID, "music_playback_controls")
     ),
     strings = listOf ("sharedToggleMenuItemMutations")
 )
