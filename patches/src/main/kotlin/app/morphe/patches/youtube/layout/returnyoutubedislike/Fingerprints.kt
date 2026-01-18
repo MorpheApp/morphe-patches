@@ -101,10 +101,14 @@ internal object RollingNumberTextViewFingerprint : Fingerprint(
 )
 
 internal object TextComponentConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.CONSTRUCTOR, AccessFlags.PRIVATE),
     filters = listOf(
         string("TextComponent")
-    )
+    ),
+    custom = { method, _ ->
+        // 20.23+ is public.
+        // 20.22 and lower is private.
+        AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+    }
 )
 
 internal object TextComponentDataFingerprint : Fingerprint(
