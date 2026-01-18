@@ -5,6 +5,7 @@ package app.morphe.patches.youtube.layout.miniplayer
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -150,8 +151,14 @@ internal object MiniplayerMinimumSizeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         resourceLiteral(ResourceType.DIMEN, "miniplayer_max_size"),
-        literal(192), // Default miniplayer width constant.
-        literal(128)  // Default miniplayer height constant.
+        anyInstruction( // Default miniplayer width constant.
+            literal(192),
+            literal(192.0f), // 21.03+
+        ),
+        anyInstruction( // Default miniplayer height constant.
+            literal(128),
+            literal(128.0f), // 21.03+
+        )
     )
 )
 

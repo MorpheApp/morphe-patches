@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-01-17T12:16:43",
-  "description": "# [1.6.0](https://github.com/MorpheApp/morphe-patches/compare/v1.5.0...v1.6.0) (2026-01-17)\n\n\n### Bug Fixes\n\n* **YouTube - Hide Shorts components:** Hide new type of sound metadata label ([35931e6](https://github.com/MorpheApp/morphe-patches/commit/35931e6ddf287790c6a405b58e7b7d46c718bb0a))\n\n\n### Features\n\n* **YouTube - Hide layout components:** Add \"Hide subscribed channels bar\" setting ([#226](https://github.com/MorpheApp/morphe-patches/issues/226)) ([bbaad3a](https://github.com/MorpheApp/morphe-patches/commit/bbaad3af85b43a7addc0e984a5a13e12986f6263))\n* **YouTube Music:** Add experimental support for `9.02.50` ([977cb8b](https://github.com/MorpheApp/morphe-patches/commit/977cb8bfcdfb193b035b62ae2660d20eccdc6702))\n* **YouTube:** Add `Hide autoplay preview` patch ([#218](https://github.com/MorpheApp/morphe-patches/issues/218)) ([4d105bd](https://github.com/MorpheApp/morphe-patches/commit/4d105bd3d1a54ad0c59520156b0d88c68ea007ae))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.6.0/patches-1.6.0.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.6.0/patches-1.6.0.mpp.asc",
-  "version": "1.6.0"
+  "created_at": "2026-01-18T11:18:02",
+  "description": "# [1.7.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.6.0...v1.7.0-dev.1) (2026-01-18)\n\n\n### Features\n\n* **YouTube:** Add experimental support for `21.03.34` ([#233](https://github.com/MorpheApp/morphe-patches/issues/233)) ([4b9d7a6](https://github.com/MorpheApp/morphe-patches/commit/4b9d7a6c8769e87e80727aa64dbc7d761513a259))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.7.0-dev.1/patches-1.7.0-dev.1.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.7.0-dev.1/patches-1.7.0-dev.1.mpp.asc",
+  "version": "1.7.0-dev.1"
 }

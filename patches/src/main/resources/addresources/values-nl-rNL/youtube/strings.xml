@@ -18,10 +18,10 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">Info</string>
+  <string name="morphe_settings_screen_00_about_title">Over</string>
   <string name="morphe_settings_screen_01_ads_title">Advertenties</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternatieve miniaturen</string>
-  <string name="morphe_settings_screen_03_feed_title">Voeden</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Algemeen</string>
   <string name="morphe_settings_screen_05_player_title">Speler</string>
   <string name="morphe_settings_screen_07_seekbar_title">Zoekbalk</string>
@@ -980,7 +980,7 @@ Beperking: Vind ik niet leuk verschijnen mogelijk niet in de incognitomodus"</st
   <string name="morphe_sb_general_min_duration">Minimale segmentduur</string>
   <string name="morphe_sb_general_min_duration_sum">Segmenten die korter zijn dan deze waarde (in seconden) worden niet weergegeven of overgeslagen</string>
   <string name="morphe_sb_general_min_duration_invalid">Ongeldige tijdduur</string>
-  <string name="morphe_sb_general_uuid">Uw persoonlijke gebruikers-ID</string>
+  <string name="morphe_sb_general_uuid">Je persoonlijke gebruikers-ID</string>
   <string name="morphe_sb_general_uuid_sum">Deze moet privé worden gehouden. Dit is als een wachtwoord en moet niet met iemand worden gedeeld. Als iemand dit heeft, kan hij zich voordoen als u</string>
   <string name="morphe_sb_general_uuid_invalid">Uw persoonlijke gebruikers-ID moet minimaal 30 tekens lang zijn</string>
   <string name="morphe_sb_general_api_url">Verander API-URL</string>
@@ -1135,7 +1135,7 @@ Klaar om in te dienen?"</string>
   <string name="morphe_change_form_factor_entry_1">Standaard</string>
   <string name="morphe_change_form_factor_entry_2">Telefoon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
-  <string name="morphe_change_form_factor_entry_4">Automobiel</string>
+  <string name="morphe_change_form_factor_entry_4">Auto</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Wijzigingen omvatten:
 
 Tablet lay-out
@@ -1169,7 +1169,7 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_change_start_page_entry_history">Geschiedenis</string>
   <string name="morphe_change_start_page_entry_library">Bibliotheek</string>
   <string name="morphe_change_start_page_entry_liked_videos">Gelikte video\'s</string>
-  <string name="morphe_change_start_page_entry_live">Leven</string>
+  <string name="morphe_change_start_page_entry_live">Live</string>
   <string name="morphe_change_start_page_entry_movies">Films</string>
   <string name="morphe_change_start_page_entry_music">Muziek</string>
   <string name="morphe_change_start_page_entry_news">Nieuws</string>
@@ -1178,7 +1178,7 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_change_start_page_entry_search">Zoeken</string>
   <string name="morphe_change_start_page_entry_shopping">Winkelen</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Abonnements</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Abonnementen</string>
   <string name="morphe_change_start_page_entry_trending">Trends</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Virtuele realiteit</string>
   <string name="morphe_change_start_page_entry_watch_later">Later bekijken</string>

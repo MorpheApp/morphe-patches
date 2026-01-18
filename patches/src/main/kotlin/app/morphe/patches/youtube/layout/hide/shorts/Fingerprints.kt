@@ -16,7 +16,8 @@ import com.android.tools.smali.dexlib2.Opcode
 internal object ComponentContextParserFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(
-        string("Number of bits must be positive")
+        string("Failed to parse Element proto."),
+        string("Cannot read theme key from model.")
     )
 )
 

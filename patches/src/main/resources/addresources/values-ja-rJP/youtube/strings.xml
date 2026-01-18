@@ -673,9 +673,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_button_summary_on">自動再生ボタンはプレーヤー オーバーレイに表示されません</string>
   <string name="morphe_hide_autoplay_button_summary_off">自動再生ボタンはプレーヤー オーバーレイに表示されます</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">自動再生プレビューを非表示</string>
-  <string name="morphe_hide_autoplay_preview_summary_on">自動再生プレビューは表示されません</string>
-  <string name="morphe_hide_autoplay_preview_summary_off">自動再生プレビューは表示されます</string>
+  <string name="morphe_hide_autoplay_preview_title">自動再生のプレビューを非表示</string>
+  <string name="morphe_hide_autoplay_preview_summary_on">自動再生の「次の動画」のプレビューは表示されません</string>
+  <string name="morphe_hide_autoplay_preview_summary_off">自動再生の「次の動画」のプレビューは表示されます</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">字幕ボタンを非表示</string>
   <string name="morphe_hide_captions_button_summary_on">字幕ボタンはプレーヤー オーバーレイに表示されません</string>
@@ -896,9 +896,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_title">高評価の推定値を表示</string>
   <string name="morphe_ryd_estimated_like_summary_on">高評価数が非公開の動画には推定値が表示されます</string>
   <string name="morphe_ryd_estimated_like_summary_off">高評価の推定値は表示されません</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">API 利用不可時にトーストを表示</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary_on">Return YouTube Dislike が利用できない場合にトースト通知が表示されます</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary_off">Return YouTube Dislike が利用できない場合にトースト通知は表示されません</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">API 利用不可時に通知を表示</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary_on">Return YouTube Dislike が利用できない場合に通知が表示されます</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary_off">Return YouTube Dislike が利用できない場合に通知は表示されません</string>
   <string name="morphe_ryd_attribution_summary">データは Return YouTube Dislike API によって提供されています。詳細は、ここをタップしてください</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">このデバイスの ReturnYouTubeDislike API 統計情報</string>
@@ -940,11 +940,11 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">スキップボタンは、セグメントの開始から終了まで表示されます</string>
   <string name="morphe_sb_auto_hide_skip_button_duration">スキップボタンの表示時間</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_sum">「ハイライトまでスキップ」ボタンと「スキップボタンを自動的に非表示」がオンのときのその他のスキップボタンが、自動的に非表示になるまでの時間の長さ</string>
-  <string name="morphe_sb_general_skiptoast">自動スキップ時にトーストを表示</string>
-  <string name="morphe_sb_general_skiptoast_sum_on">セグメントが自動的にスキップされたときにトースト通知が表示されます。このトースト通知をタップすると、スキップを取り消すことができます</string>
-  <string name="morphe_sb_general_skiptoast_sum_off">セグメントが自動的にスキップされたときにトースト通知は表示されません。このトースト通知をタップすると、スキップを取り消すことができます</string>
-  <string name="morphe_sb_toast_on_skip_duration">スキップ トーストの表示時間</string>
-  <string name="morphe_sb_toast_on_skip_duration_sum">セグメントが自動的にスキップされたときに表示されるトースト通知が、自動的に非表示になるまでの時間の長さ</string>
+  <string name="morphe_sb_general_skiptoast">スキップ通知を表示</string>
+  <string name="morphe_sb_general_skiptoast_sum_on">セグメントが自動的にスキップされたときに通知が表示されます。この通知をタップすると、スキップを取り消すことができます</string>
+  <string name="morphe_sb_general_skiptoast_sum_off">セグメントが自動的にスキップされたときに通知は表示されません。この通知をタップすると、スキップを取り消すことができます</string>
+  <string name="morphe_sb_toast_on_skip_duration">スキップ通知の表示時間</string>
+  <string name="morphe_sb_toast_on_skip_duration_sum">セグメントが自動的にスキップされたときに表示される通知が自動的に非表示になるまでの時間の長さ</string>
   <string name="morphe_sb_duration_1s">1 秒</string>
   <string name="morphe_sb_duration_2s">2 秒</string>
   <string name="morphe_sb_duration_3s">3 秒</string>
@@ -972,9 +972,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">既読</string>
   <string name="morphe_sb_guidelines_popup_open">表示する</string>
   <string name="morphe_sb_general">その他</string>
-  <string name="morphe_sb_toast_on_connection_error">API 利用不可時にトーストを表示</string>
-  <string name="morphe_sb_toast_on_connection_error_sum_on">SponsorBlock が利用できない場合にトースト通知が表示されます</string>
-  <string name="morphe_sb_toast_on_connection_error_sum_off">SponsorBlock が利用できない場合にトースト通知は表示されません</string>
+  <string name="morphe_sb_toast_on_connection_error">API 利用不可時に通知を表示</string>
+  <string name="morphe_sb_toast_on_connection_error_sum_on">SponsorBlock が利用できない場合に通知が表示されます</string>
+  <string name="morphe_sb_toast_on_connection_error_sum_off">SponsorBlock が利用できない場合に通知は表示されません</string>
   <string name="morphe_sb_general_skipcount">スキップデータの収集を有効化</string>
   <string name="morphe_sb_general_skipcount_sum_on">SponsorBlock リーダーボード にスキップによって節約した時間を送信します。セグメントをスキップする度にデータが送信されます</string>
   <string name="morphe_sb_general_skipcount_sum_off">スキップデータの収集は無効です</string>
@@ -1300,9 +1300,9 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow は、YouTube 動画のサムネイルをクラウドソーシングで提供する機能です。DeArrow のサムネイルは、YouTube が提供するサムネイルよりも適切なことが多いです。これを有効にすると、動画の URL が API サーバーに送信されますが、他のデータは送信されません。動画に DeArrow サムネイルがない場合は、オリジナルのサムネイルまたは静止画サムネイルが表示されます
 
 詳細については、ここをタップしてください"</string>
-  <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">API 利用不可時にトーストを表示</string>
-  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_on">DeArrow が利用できない場合にトースト通知が表示されます</string>
-  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">DeArrow が利用できない場合にトースト通知は表示されません</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">API 利用不可時に通知を表示</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_on">DeArrow が利用できない場合に通知が表示されます</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">DeArrow が利用できない場合に通知は表示されません</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API のエンドポイント</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow がサムネイルのキャッシュを取得するエンドポイントの URL</string>
   <string name="morphe_alt_thumbnail_stills_about_title">静止画サムネイル</string>
@@ -1368,20 +1368,20 @@ Automotive レイアウト
   <string name="morphe_remember_video_quality_last_selected_title">画質の変更を保存</string>
   <string name="morphe_remember_video_quality_last_selected_summary_on">画質の変更はすべての動画に適用されます</string>
   <string name="morphe_remember_video_quality_last_selected_summary_off">画質の変更は現在の動画にのみ適用されます</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">画質の変更時にトーストを表示</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary_on">デフォルトの画質が変更された場合にトースト通知が表示されます</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary_off">デフォルトの画質が変更された場合にトースト通知は表示されません</string>
-  <string name="morphe_video_quality_default_wifi_title">Wi-Fiネットワークでのデフォルトの動画品質</string>
-  <string name="morphe_video_quality_default_mobile_title">モバイルネットワークでのデフォルトの動画品質</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">画質の変更時に通知を表示</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary_on">デフォルトの画質が変更されたときに通知が表示されます</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary_off">デフォルトの画質が変更されたときに通知は表示されません</string>
+  <string name="morphe_video_quality_default_wifi_title">デフォルトの画質 (Wi-Fi)</string>
+  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (携帯回線)</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質の変更を保存</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_on">画質の変更はすべてのショート動画に適用されます</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_off">画質の変更は現在のショート動画にのみ適用されます</string>
-  <string name="morphe_shorts_quality_default_wifi_title">Wi-FiネットワークでのデフォルトのShorts品質</string>
-  <string name="morphe_shorts_quality_default_mobile_title">モバイルネットワークでのデフォルトのShorts品質</string>
+  <string name="morphe_shorts_quality_default_wifi_title">デフォルトのショートの画質 (Wi-Fi)</string>
+  <string name="morphe_shorts_quality_default_mobile_title">デフォルトのショートの画質 (携帯回線)</string>
   <string name="morphe_remember_video_quality_mobile">携帯回線</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">デフォルトの%1$sの品質を%2$sに変更しました</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Shortsの%1$sの品質を%2$sに変更しました</string>
+  <string name="morphe_remember_video_quality_toast">デフォルトの画質の変更 (%1$s): %2$s</string>
+  <string name="morphe_remember_video_quality_toast_shorts">ショートの画質の変更 (%1$s): %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">再生速度設定ボタンを表示</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">再生速度設定ボタンがプレーヤー オーバーレイに表示されます。長押しすると、再生速度がデフォルトの値にリセットされます</string>
@@ -1408,9 +1408,9 @@ Automotive レイアウト
   <string name="morphe_remember_playback_speed_last_selected_title">再生速度の変更を保存</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">再生速度の変更はすべての動画に適用されます</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">再生速度の変更は現在の動画にのみ適用されます</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_title">再生速度の変更時にトーストを表示</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">デフォルトの再生速度が変更されたときにトースト通知が表示されます</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">デフォルトの再生速度が変更されたときにトースト通知は表示されません</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_title">再生速度の変更時に通知を表示</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">デフォルトの再生速度が変更されたときに通知が表示されます</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">デフォルトの再生速度が変更されたときに通知は表示されません</string>
   <string name="morphe_playback_speed_default_title">デフォルトの再生速度</string>
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
@@ -1421,13 +1421,13 @@ Automotive レイアウト
   <string name="morphe_force_avc_codec_summary_on">ビデオ コーデックは強制的に AVC (H.264) になります</string>
   <string name="morphe_force_avc_codec_summary_off">ビデオ コーデックは自動的に決定されます</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"利点:
-• バッテリー寿命が延びる可能性がある
-• 古いデバイスで失われた動画解像度を復元できる可能性がある
+• バッテリー消費が良くなる可能性がある
+• 古いデバイスで失われた動画解像度を復元できる場合がある
 
 制限事項:
 • 最大解像度が 1080p
 • 動画再生時に VP9 または AV1 よりも多くの通信量を使用する
-• HDR 動画では AVC が使用されない
+• HDR 動画では AVC は使用されない
 • 一部のデバイスでは AVC を強制できない"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを表示</string>

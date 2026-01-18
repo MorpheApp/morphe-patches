@@ -105,8 +105,6 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flaggor kopierade till urklipp</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore-inställningar</string>
-  <string name="microg_settings_summary">Inställningar för GmsCore</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG är inte installerat. Installera det.</string>
   <string name="gms_core_dialog_title">Åtgärd krävs</string>

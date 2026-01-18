@@ -89,7 +89,7 @@ internal object SeekFingerprint : Fingerprint(
             // 20.xx
             string("Attempting to seek during an ad"),
             // 21.02+
-            string("Attempting to seek during an ad or non-seekable video")
+            string("currentPositionMs.")
         )
     )
 )

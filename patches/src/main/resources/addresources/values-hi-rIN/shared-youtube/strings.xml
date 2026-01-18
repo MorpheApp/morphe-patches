@@ -17,16 +17,84 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">एप्प नैम</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
+  <string name="morphe_custom_branding_icon_title">एप्प आइकॉन</string>
+  <string name="morphe_custom_branding_icon_entry_1">ओरिजिनल</string>
+  <string name="morphe_custom_branding_icon_entry_2">मorphe ब्लैक</string>
+  <string name="morphe_custom_branding_icon_entry_3">मorphe डार्क</string>
+  <string name="morphe_custom_branding_icon_entry_4">मorphe लाइट</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">कस्टम</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">मorphe नोटिस</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा दिखाएं मत</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
+  <string name="morphe_spoof_video_streams_screen_summary">क्लायंट वीडियो स्ट्रीम्स को फर्ज़ करके प्लेबैक समस्याओं को हल करें</string>
+  <string name="morphe_spoof_video_streams_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
+  <string name="morphe_spoof_video_streams_summary_on">"वीडियो स्ट्रीम्स को फर्ज़ किया गया है
+
+यदि आप यूट्यूब प्रीमियम उपयोगकर्ता हैं, तो इस सेटिंग की आवश्यकता नहीं हो सकती है"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"वीडियो स्ट्रीम्स को फर्ज़ नहीं किया गया है
+
+प्लेबैक काम नहीं सकता है"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">कोई क्लायंट स्ट्रीम्स प्राप्त नहीं किए गए</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">इस सेटिंग को बंद करना प्लेबैक समस्याओं को उत्पन्न कर सकता है।</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">सुझाव: वीडियो स्ट्रीम्स को फर्ज़ करें > एंड्रॉइड वीआर साइन इन करें</string>
+  <string name="morphe_spoof_video_streams_client_type_title">डिफ़ॉल्ट क्लायंट</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">एंड्रॉइड वीआर साइन इन करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">एंड्रॉइड वीआर में साइन इन नहीं किया गया है। यहां क्लिक करें साइन इन करने के लिए</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">वर्तमान में एंड्रॉइड वीआर में साइन इन किया गया है</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">इस सुविधा का उपयोग करने के लिए, \'डिफ़ॉल्ट क्लायंट\' को एंड्रॉइड वीआर पर बदलें</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">एंड्रॉइड वीआर में साइन इन करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"एंड्रॉइड वीआर में साइन इन करना कुछ उपयोगकर्ताओं के लिए प्लेबैक समस्याओं को हल कर सकता है
+
+साइन इन करने के लिए, नीचे दिए गए बटन पर क्लिक करें"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">जारी रखें</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">साइन आउट</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">इंस्ट्रक्शंस</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"एक्टिवेशन कोड: %s
+
+1. 'कनेक्ट ए डिवाइस' वेबसाइट खोलने के लिए नीचे दिए गए बटन पर क्लिक करें
+2. ऊपर दिए गए एक्टिवेशन कोड को क्लिपबोर्ड से पेस्ट करें (या टाइप करें)
+3. यदि आपके पास मल्टीपल अकाउंट हैं, तो इस यूट्यूब अकाउंट को चुनें
+4. 'यूट्यूब वीआर' तक्सेस अनुमति दें
+5. 'डिवाइस कनेक्टेड' संदेश दिखने पर इस एप्लिकेशन पर वापस आएं"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">वेबसाइट खोलें</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">एक्टिवेशन कोड जारी करना असमर्थित हुआ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">एथेंटिकेशन टोकन जारी करना असमर्थित हुआ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">सफलतापूर्वक साइन इन किया गया</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"अथेंटिकेशन सहेजा गया है
+
+• आपकी मोरफ सेटिंग्स एंड्रॉइड वीआर अथेंटिकेशन को आयात/निर्यात नहीं करती हैं
+• यदि यह एप्लिकेशन छह महीने के लिए अनुपयोग में रहा, तो गूगल यह अथेंटिकेशन हटा देगा
+• यदि आप अपनी गूगल पासवर्ड बदलते हैं या अपने गूगल सेटिंग्स में इस डिवाइस को डेरेजिस्टर करते हैं, तो आपको फिर से साइन इन करना पड़ेगा"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है (एपीआई टाइम आउट)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">एंड्रॉइड वीआर साइन इन समाप्त हो गया, वीआर में फिर से साइन इन करें</string>
+  <string name="morphe_oauth2_connection_failure_status">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है (स्टेटस %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">वीआर में साइन इन नहीं किया जा सकता है, वेबसाइट अथेंटिकेशन मंजूरी नहीं दी गई</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">वीआर में साइन इन नहीं किया जा सकता है: %s</string>
+  <string name="morphe_oauth2_toast_reset">एंड्रॉइड वीआर से लॉग आउट किया गया</string>
+  <string name="morphe_oauth2_toast_invalid">अमान्य वीआर साइन इन टोकन, वीआर में फिर से साइन इन करें</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">ओरिजिनल ऑडियो भाषा को मजबूर करें</string>
+  <string name="morphe_force_original_audio_summary_on">ओरिजिनल ऑडियो भाषा का उपयोग किया जा रहा है</string>
+  <string name="morphe_force_original_audio_summary_off">डिफ़ॉल्ट ऑडियो का उपयोग किया जा रहा है</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम्स को फर्ज़ करें\' को एंड्रॉइड स्टूडियो के अलावा किसी भी क्लायंट पर बदलें</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">शेयरिंग लिंक्स को साफ़ करें</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">ट्रैकिंग क्वेरी पैरामीटर को शेयर किए गए लिंक्स से हटा दिया गया है</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">ट्रैकिंग क्वेरी पैरामीटर को शेयर किए गए लिंक्स से हटा नहीं दिया गया है</string>
+  <string name="morphe_replace_music_with_youtube_title">शेयर लिंक्स को यूट्यूब कॉम पर बदलें</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">शेयर किए गए लिंक्स यूट्यूब कॉम का उपयोग करते हैं</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">शेयर किए गए लिंक्स म्यूज़िक.यूट्यूब कॉम का उपयोग करते हैं</string>
 </resources>
