@@ -22,9 +22,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofAppVersionPatch;"
 
 val spoofAppVersionPatch = bytecodePatch(
-    name = "Spoof app version",
-    description = "Adds an option to trick YouTube into thinking you are running an older version of the app. " +
-            "This can be used to restore old UI elements and features."
+    name = "Spoof app version"
 ) {
     dependsOn(
         resourceMappingPatch,

@@ -12,8 +12,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableSignInToTvPopupPatch;"
 
 val disableSignInToTvPopupPatch = bytecodePatch(
-    name = "Disable sign in to TV popup",
-    description = "Adds an option to disable the popup asking to sign into a TV on the same local network.",
+    name = "Disable sign in to TV popup"
 ) {
     dependsOn(
         settingsPatch,

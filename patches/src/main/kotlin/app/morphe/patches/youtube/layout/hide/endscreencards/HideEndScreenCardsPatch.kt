@@ -47,8 +47,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
 
 @Suppress("unused")
 val hideEndScreenCardsPatch = bytecodePatch(
-    name = "Hide end screen cards",
-    description = "Adds an option to hide suggested video cards at the end of videos.",
+    name = "Hide end screen cards"
 ) {
     dependsOn(
         sharedExtensionPatch,

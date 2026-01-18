@@ -56,9 +56,7 @@ internal const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplaye
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
-    name = "Downloads",
-    description = "Adds support to download videos with an external downloader app " +
-        "using the in-app download button or a video player action button.",
+    name = "Downloads"
 ) {
     dependsOn(
         downloadsResourcePatch,

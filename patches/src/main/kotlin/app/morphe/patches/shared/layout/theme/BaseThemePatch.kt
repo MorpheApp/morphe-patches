@@ -70,8 +70,7 @@ internal val darkThemeBackgroundColorOption = stringOption(
         "Dark orange" to "#291800",
         "Dark red" to "#290000",
     ),
-    title = "Dark theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION
+    title = "Dark theme background color"
 )
 
 /**
@@ -82,9 +81,7 @@ internal fun baseThemePatch(
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
-    name = "Theme",
-    description = "Adds options for theming and applies a custom background theme " +
-            "(dark background theme defaults to pure black).",
+    name = "Theme"
 ) {
     darkThemeBackgroundColorOption()
 

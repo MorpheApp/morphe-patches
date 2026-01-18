@@ -14,8 +14,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/BypassURLRedirectsPatch;"
 
 val bypassURLRedirectsPatch = bytecodePatch(
-    name = "Bypass URL redirects",
-    description = "Adds an option to bypass URL redirects and open the original URL directly.",
+    name = "Bypass URL redirects"
 ) {
     dependsOn(
         sharedExtensionPatch,

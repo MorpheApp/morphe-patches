@@ -90,8 +90,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/pa
 
 @Suppress("unused")
 val miniplayerPatch = bytecodePatch(
-    name = "Miniplayer",
-    description = "Adds options to change the in-app minimized player."
+    name = "Miniplayer"
 ) {
     dependsOn(
         sharedExtensionPatch,

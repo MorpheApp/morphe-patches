@@ -18,8 +18,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patc
 
 @Suppress("unused")
 val navigationBarPatch = bytecodePatch(
-    name = "Navigation bar",
-    description = "Adds options to hide navigation bar, labels and buttons."
+    name = "Navigation bar"
 ) {
     dependsOn(
         resourceMappingPatch,

@@ -16,8 +16,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ChangeStartPagePatch;"
 
 val changeStartPagePatch = bytecodePatch(
-    name = "Change start page",
-    description = "Adds an option to set which page the app opens in instead of the homepage.",
+    name = "Change start page"
 ) {
     dependsOn(
         sharedExtensionPatch,

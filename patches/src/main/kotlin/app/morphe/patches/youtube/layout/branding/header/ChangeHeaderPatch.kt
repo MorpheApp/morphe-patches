@@ -89,8 +89,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
 
 @Suppress("unused")
 val changeHeaderPatch = resourcePatch(
-    name = "Change header",
-    description = "Adds an option to change the header logo in the top left corner of the app.",
+    name = "Change header"
 ) {
     dependsOn(
         changeHeaderBytecodePatch,

@@ -13,8 +13,7 @@ internal val settingsMenuVideoQualityGroup = mutableSetOf<BasePreference>()
 
 @Suppress("unused")
 val videoQualityPatch = bytecodePatch(
-    name = "Video quality",
-    description = "Adds options to set default video qualities and always use the advanced video quality menu."
+    name = "Video quality"
 ) {
     dependsOn(
         rememberVideoQualityPatch,

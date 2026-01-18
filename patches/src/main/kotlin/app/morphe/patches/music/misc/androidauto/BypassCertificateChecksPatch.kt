@@ -7,8 +7,7 @@ import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val bypassCertificateChecksPatch = bytecodePatch(
-    name = "Bypass certificate checks",
-    description = "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
+    name = "Bypass certificate checks"
 ) {
     dependsOn(
         sharedExtensionPatch,

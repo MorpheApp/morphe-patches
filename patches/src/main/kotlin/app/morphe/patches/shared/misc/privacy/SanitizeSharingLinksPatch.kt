@@ -28,8 +28,7 @@ internal fun sanitizeSharingLinksPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     replaceMusicLinksWithYouTube: Boolean = false
 ) = bytecodePatch(
-    name = PATCH_NAME_SANITIZE_SHARING_LINKS,
-    description = PATCH_DESCRIPTION_SANITIZE_SHARING_LINKS,
+    name = PATCH_NAME_SANITIZE_SHARING_LINKS
 ) {
     block()
 

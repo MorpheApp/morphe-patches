@@ -92,8 +92,7 @@ private const val KEYWORD_FILTER_CLASS_NAME =
     "Lapp/morphe/extension/youtube/patches/components/KeywordContentFilter;"
 
 val hideLayoutComponentsPatch = bytecodePatch(
-    name = "Hide layout components",
-    description = "Adds options to hide general layout components.",
+    name = "Hide layout components"
 
 ) {
     dependsOn(

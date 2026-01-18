@@ -32,8 +32,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patc
 
 @Suppress("unused")
 val hideButtons = bytecodePatch(
-    name = "Hide buttons",
-    description = "Adds options to hide the cast, history, notification, and search buttons."
+    name = "Hide buttons"
 ) {
     dependsOn(
         sharedExtensionPatch,

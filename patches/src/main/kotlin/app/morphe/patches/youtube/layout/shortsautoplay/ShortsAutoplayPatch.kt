@@ -31,8 +31,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ShortsAutoplayPatch;"
 
 val shortsAutoplayPatch = bytecodePatch(
-    name = "Shorts autoplay",
-    description = "Adds options to automatically play the next Short.",
+    name = "Shorts autoplay"
 ) {
     dependsOn(
         sharedExtensionPatch,

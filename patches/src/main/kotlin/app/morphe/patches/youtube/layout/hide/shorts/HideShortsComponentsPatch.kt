@@ -37,15 +37,13 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 internal val hideShortsAppShortcutOption = booleanOption(
     key = "hideShortsAppShortcut",
     default = false,
-    title = "Hide Shorts app shortcut",
-    description = "Permanently hides the shortcut to open Shorts when long pressing the app icon in your launcher.",
+    title = "Hide Shorts app shortcut"
 )
 
 internal val hideShortsWidgetOption = booleanOption(
     key = "hideShortsWidget",
     default = false,
-    title = "Hide Shorts widget",
-    description = "Permanently hides the launcher widget Shorts button.",
+    title = "Hide Shorts widget"
 )
 
 private val hideShortsComponentsResourcePatch = resourcePatch {
@@ -146,9 +144,7 @@ private const val FILTER_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patch
 
 @Suppress("unused")
 val hideShortsComponentsPatch = bytecodePatch(
-    name = "Hide Shorts components",
-    description = "Adds options to hide components related to Shorts. " +
-            "Patching version 20.21.37 or lower can hide more Shorts player button types."
+    name = "Hide Shorts components"
 ) {
     dependsOn(
         sharedExtensionPatch,

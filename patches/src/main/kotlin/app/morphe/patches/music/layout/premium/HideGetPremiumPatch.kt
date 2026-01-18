@@ -15,8 +15,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patc
 
 @Suppress("unused")
 val hideGetPremiumPatch = bytecodePatch(
-    name = "Hide 'Get Music Premium'",
-    description = "Adds an option to hide the \"Get Music Premium\" label in the settings and account menu.",
+    name = "Hide 'Get Music Premium'"
 ) {
     dependsOn(
         sharedExtensionPatch,

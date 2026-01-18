@@ -18,8 +18,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patc
 
 @Suppress("unused")
 val hideCategoryBar = bytecodePatch(
-    name = "Hide category bar",
-    description = "Adds an option to hide the category bar at the top of the homepage."
+    name = "Hide category bar"
 ) {
     dependsOn(
         sharedExtensionPatch,

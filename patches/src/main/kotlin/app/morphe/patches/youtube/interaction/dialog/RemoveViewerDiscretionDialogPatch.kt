@@ -18,9 +18,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
 
 val removeViewerDiscretionDialogPatch = bytecodePatch(
-    name = "Remove viewer discretion dialog",
-    description = "Adds an option to remove the dialog that appears when opening a video that has been age-restricted " +
-        "by accepting it automatically. This does not bypass the age restriction.",
+    name = "Remove viewer discretion dialog"
 ) {
     dependsOn(
         sharedExtensionPatch,

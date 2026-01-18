@@ -10,8 +10,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
 val videoAdsPatch = bytecodePatch(
-    name = "Video ads",
-    description = "Adds an option to remove ads in the video player.",
+    name = "Video ads"
 ) {
     dependsOn(
         sharedExtensionPatch,

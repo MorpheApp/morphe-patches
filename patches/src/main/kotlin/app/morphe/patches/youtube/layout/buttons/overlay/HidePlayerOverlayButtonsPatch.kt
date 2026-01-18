@@ -29,9 +29,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HidePlayerOverlayButtonsPatch;"
 
 val hidePlayerOverlayButtonsPatch = bytecodePatch(
-    name = "Hide player overlay buttons",
-    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player " +
-        "control buttons background.",
+    name = "Hide player overlay buttons"
 ) {
     dependsOn(
         sharedExtensionPatch,
