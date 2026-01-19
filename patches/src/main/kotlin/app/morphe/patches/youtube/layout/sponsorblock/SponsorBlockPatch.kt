@@ -214,7 +214,7 @@ val sponsorBlockPatch = bytecodePatch(
         injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
 
         // Show skip button when player overlay is active.
-        injectVisibilityCheckCall(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR)
+        injectVisibilityCheckCall(EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR)
 
         // Append the new time to the player layout.
         AppendTimeFingerprint.let {

@@ -78,11 +78,13 @@ public class SkipSponsorButton extends FrameLayout {
 
         updateLayout();
 
-        skipSponsorBtnContainer.setOnClickListener(v -> {
-            // The view controller handles hiding this button, but hide it here as well just in case something goofs.
-            setVisibility(View.GONE);
-            SegmentPlaybackController.onSkipSegmentClicked(segment);
-        });
+        skipSponsorBtnContainer.setOnClickListener(v -> skipButtonClicked());
+    }
+
+    public void skipButtonClicked() {
+        // The view controller handles hiding this button, but hide it here as well just in case something goofs.
+        setVisibility(View.GONE);
+        SegmentPlaybackController.onSkipSegmentClicked(segment);
     }
 
     @Override  // android.view.ViewGroup
