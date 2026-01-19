@@ -270,11 +270,9 @@ public class SponsorBlockViewController {
      */
     public static void setVisibilityNegatedImmediate() {
         if (SegmentPlaybackController.shouldNotFadeOutPlayerOverlaySkipButton()) {
-            Logger.printDebug(() -> "Ignoring setVisibilityNegatedImmediate because player overlay is active");
             return;
         }
 
-        Logger.printDebug(() -> "setVisibilityNegatedImmediate()");
         if (skipSponsorPlayerButton != null) {
             skipSponsorPlayerButton.setVisibilityNegatedImmediate();
         }
@@ -286,11 +284,9 @@ public class SponsorBlockViewController {
      */
     public static void setVisibilityImmediate(boolean visible) {
         if (!visible && SegmentPlaybackController.shouldNotFadeOutPlayerOverlaySkipButton()) {
-            Logger.printDebug(() -> "Ignoring visibilityImmediate because player overlay is active");
             return;
         }
 
-        Logger.printDebug(() -> "setVisibilityImmediate(): " + visible);
         if (skipSponsorPlayerButton != null) {
             skipSponsorPlayerButton.setVisibilityImmediate(visible);
         }
@@ -301,11 +297,9 @@ public class SponsorBlockViewController {
      */
     public static void setVisibility(boolean visible, boolean animated) {
         if (!visible && SegmentPlaybackController.shouldNotFadeOutPlayerOverlaySkipButton()) {
-            Logger.printDebug(() -> "Ignoring setVisibility(animated) because player overlay is active");
             return;
         }
 
-        Logger.printDebug(() -> "setVisibility(animated): " + visible);
         if (skipSponsorPlayerButton != null) {
             skipSponsorPlayerButton.setVisibility(visible, animated);
         }

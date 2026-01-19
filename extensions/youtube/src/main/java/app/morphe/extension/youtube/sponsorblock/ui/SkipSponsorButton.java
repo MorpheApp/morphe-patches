@@ -88,7 +88,7 @@ public class SkipSponsorButton extends FrameLayout {
     }
 
     @Override  // android.view.ViewGroup
-    protected final void dispatchDraw(Canvas canvas) {
+    protected final void dispatchDraw(@NonNull Canvas canvas) {
         final int left = skipSponsorBtnContainer.getLeft();
         final int top = skipSponsorBtnContainer.getTop();
         final int right = left + skipSponsorBtnContainer.getWidth();
