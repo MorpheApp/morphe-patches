@@ -35,6 +35,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour;
@@ -602,12 +603,12 @@ public class SegmentPlaybackController {
                         }
                     }, delayUntilSkip);
                 }
-            }
 
-            // Clear undo range if video time is outside the segment.  Must check last.
-            if (undoAutoSkipRange != null && !undoAutoSkipRange.contains(millis)) {
-                Logger.printDebug(() -> "Clearing undo range as current time is now outside range: " + undoAutoSkipRange);
-                undoAutoSkipRange = null;
+                // Clear undo range if video time is outside the segment.  Must check last.
+                if (undoAutoSkipRange != null && !undoAutoSkipRange.contains(millis)) {
+                    Logger.printDebug(() -> "Clearing undo range as current time is now outside range: " + undoAutoSkipRange);
+                    undoAutoSkipRange = null;
+                }
             }
         } catch (Exception e) {
             Logger.printException(() -> "setVideoTime failure", e);
@@ -629,7 +630,9 @@ public class SegmentPlaybackController {
 
     private static void setSegmentCurrentlyPlaying(@Nullable SponsorSegment segment) {
         if (segment == null) {
-            if (segmentCurrentlyPlaying != null) Logger.printDebug(() -> "Hiding segment: " + segmentCurrentlyPlaying);
+            if (segmentCurrentlyPlaying != null) {
+                Logger.printDebug(() -> "Hiding segment: " + segmentCurrentlyPlaying);
+            }
             segmentCurrentlyPlaying = null;
             skipSegmentButtonEndTime = 0;
             SponsorBlockViewController.hideSkipSegmentButton();
@@ -650,6 +653,90 @@ public class SegmentPlaybackController {
         }
         Logger.printDebug(() -> "Showing segment: " + segment);
         SponsorBlockViewController.showSkipSegmentButton(segment);
+    }
+
+    /**
+     * Injection point.
+     */
+    @SuppressWarnings("unused")
+    public static void setVisibility(boolean visible, boolean animated) {
+        onPlayerControlsVisibilityChanged(visible, false);
+    }
+
+    /**
+     * Injection point.
+     */
+    @SuppressWarnings("unused")
+    public static void setVisibilityImmediate(boolean visible) {
+        onPlayerControlsVisibilityChanged(visible, true);
+    }
+
+    /**
+     * Injection point.
+     */
+    @SuppressWarnings("unused")
+    public static void setVisibilityNegatedImmediate() {
+        if (PlayerControlsVisibility.getCurrent() == PlayerControlsVisibility.PLAYER_CONTROLS_VISIBILITY_HIDDEN)
+            onPlayerControlsVisibilityChanged(false, true);
+    }
+
+    /**
+     * Handles changes in player control visibility and manages the skip segment button accordingly.
+     *
+     * <p>This method is called whenever the visibility state of the player controls changes.
+     * If auto-hide is enabled and there is a currently playing sponsor segment, it will show
+     * the skip segment button when the controls are visible and schedule recursive checks
+     * to hide the button after a defined duration.</p>
+     *
+     * @param visible   if true, player controls are visible (The user touched the player when the player controls were invisible)
+     * @param immediate if true, player controls are invisible (The user touched the player when the player controls were visible)
+     */
+    private static void onPlayerControlsVisibilityChanged(boolean visible, boolean immediate) {
+        if (!Settings.SB_ENABLED.get()
+                || !Settings.SB_AUTO_HIDE_SKIP_BUTTON.get()
+                || segmentCurrentlyPlaying == null
+                || isAdProgressTextVisible()
+                // When the player button appears after the skip button is hidden
+                || !hiddenSkipSegmentsForCurrentVideoTime.contains(segmentCurrentlyPlaying)) {
+            return;
+        }
+
+        if (visible) {
+            SponsorBlockViewController.showSkipSegmentButton(segmentCurrentlyPlaying);
+            skipSegmentButtonEndTime = System.currentTimeMillis() + 2000; // Player buttons are hidden after 2000ms
+            checkPlayerControlsVisibilityRecursive(segmentCurrentlyPlaying);
+        } else if (immediate) {
+            // Hide the skip segment button and reset the end time
+            skipSegmentButtonEndTime = 0;
+            SponsorBlockViewController.hideSkipSegmentButton();
+        }
+    }
+
+    /**
+     * Recursively checks whether the skip segment button should remain visible or be hidden.
+     *
+     * <p>This method continues checking at a fixed interval (500 milliseconds) if the button
+     * should be hidden. The recursion stops if the current segment changes or the duration
+     * to show the button has expired.</p>
+     *
+     * @param segment the sponsor segment associated with the current check
+     */
+    private static void checkPlayerControlsVisibilityRecursive(SponsorSegment segment) {
+        if (skipSegmentButtonEndTime == 0
+                // Stop recursion if the current segment has changed
+                || segment != segmentCurrentlyPlaying) {
+            return;
+        }
+
+        // Continue recursion if the button's visibility duration has not expired
+        if (skipSegmentButtonEndTime > System.currentTimeMillis()) {
+            Utils.runOnMainThreadDelayed(() -> checkPlayerControlsVisibilityRecursive(segment), 500);
+        } else {
+            // Hide the skip segment button and reset the end time
+            skipSegmentButtonEndTime = 0;
+            hiddenSkipSegmentsForCurrentVideoTime.add(segment);
+            SponsorBlockViewController.hideSkipSegmentButton();
+        }
     }
 
     private static void skipSegment(SponsorSegment segmentToSkip, boolean userManuallySkipped) {
@@ -994,7 +1081,7 @@ public class SegmentPlaybackController {
     @SuppressWarnings("unused")
     public static void drawSegmentTimeBars(final Canvas canvas, final float posY) {
         try {
-            if (segments == null) return;
+            if (segments == null || isAdProgressTextVisible()) return;
             final long videoLength = VideoInformation.getVideoLength();
             if (videoLength <= 0) return;
 
