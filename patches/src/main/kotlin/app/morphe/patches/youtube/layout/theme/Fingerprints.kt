@@ -4,7 +4,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -35,55 +34,6 @@ internal object SplashScreenStyleFingerprint : Fingerprint(
  * Matches to the same method as [SplashScreenStyleFingerprint].
  */
 internal object ShowSplashScreen1Fingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("I"),
-            returnType = "Z",
-        ),
-        opcode(
-            opcode = Opcode.MOVE_RESULT,
-            location = MatchAfterImmediately()
-        ),
-        anyInstruction(
-            opcode(Opcode.CONST_4),
-            opcode(Opcode.CONST_16),
-            location = MatchAfterWithin(10)
-        ),
-        opcode(
-            opcode = Opcode.IF_NEZ,
-            location = MatchAfterImmediately()
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "Ljava/lang/Object;",
-            location = MatchAfterImmediately()
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "Ljava/lang/Object;",
-            location = MatchAfterImmediately()
-        ),
-        methodCall(
-            smali = "Ljava/lang/Object;->getClass()Ljava/lang/Class;",
-            location = MatchAfterWithin(10),
-        ),
-        methodCall(
-            smali = "Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V",
-            location = MatchAfterWithin(10),
-        )
-    ),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-    }
-)
-
-/**
- * Matches to the same method as [SplashScreenStyleFingerprint].
- */
-internal object ShowSplashScreen2Fingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
@@ -136,7 +86,7 @@ internal object ShowSplashScreen2Fingerprint : Fingerprint(
 /**
  * Matches to the same method as [SplashScreenStyleFingerprint].
  */
-internal object ShowSplashScreen3Fingerprint : Fingerprint(
+internal object ShowSplashScreen2Fingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(

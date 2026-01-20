@@ -218,29 +218,23 @@ val themePatch = baseThemePatch(
                 )
             }
 
-            // Legacy changes that no longer seem necessary.
-            arrayOf(
-                ShowSplashScreen1Fingerprint to 1,
-                ShowSplashScreen2Fingerprint to 8,
-            ).forEach { (fingerprint, matchIndex) ->
-                fingerprint.let {
-                    it.method.apply {
-                        val index = it.instructionMatches[matchIndex].index
-                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+            ShowSplashScreen1Fingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                        addInstructions(
-                            index + 1,
-                            """
-                                invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(Z)Z
-                                move-result v$register
-                            """
-                        )
-                    }
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(Z)Z
+                            move-result v$register
+                        """
+                    )
                 }
             }
 
             if (is_20_02_or_greater) {
-                ShowSplashScreen3Fingerprint.let {
+                ShowSplashScreen2Fingerprint.let {
                     val insertIndex = it.instructionMatches[1].index
                     it.method.apply {
                         val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
