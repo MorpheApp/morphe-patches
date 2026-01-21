@@ -16,6 +16,7 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -224,7 +225,8 @@ internal fun spoofVideoStreamsPatch(
         // A proper fix may include modifying the request body to match the platforms expected body.
 
         BuildMediaDataSourceFingerprint.method.apply {
-            val targetIndex = instructions.lastIndex
+            val targetIndex =
+                indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
 
             // Instructions are added just before the method returns,
             // so there's no concern of clobbering in-use registers.
@@ -280,7 +282,7 @@ internal fun spoofVideoStreamsPatch(
         // If SABR is disabled, it seems 'MediaFetchHotConfig' may no longer need an override (not confirmed).
 
         val (mediaFetchEnumClass, sabrFieldReference) = with(MediaFetchEnumConstructorFingerprint.method) {
-            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches!!.first {
+            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches.first {
                 it.string == DISABLED_BY_SABR_STREAMING_URI_STRING
             }.index
 

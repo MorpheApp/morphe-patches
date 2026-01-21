@@ -116,6 +116,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
 
 internal object BuildMediaDataSourceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
     parameters = listOf(
         "Landroid/net/Uri;",
         "J",
