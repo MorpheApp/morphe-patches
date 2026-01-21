@@ -1,6 +1,5 @@
 package app.morphe.extension.shared.spoof;
 
-import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.os.Build;
@@ -63,8 +62,7 @@ public enum ClientType {
             "Android VR 1.47"
     ),
     /**
-     * Video not playable in YouTube: None.
-     * Video not playable in YouTube Music: Paid, Movie, Private, Age-restricted.
+     * Video not playable: Paid, Movie, Private, Age-restricted.
      * Uses adaptive bitrate.
      */
     ANDROID_NO_SDK(
@@ -76,9 +74,7 @@ public enum ClientType {
             Build.VERSION.RELEASE,
             "20.05.46",
             "com.google.android.youtube/20.05.46 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
-            // Due to Google API changes in September 2025, Authorization issued with a different 'client_sig' can no longer be used.
-            // That is, this client must use an OAuth2 token issued by Android YouTube (com.google.android.youtube).
-            IS_YOUTUBE,
+            false,
             false,
             true,
             false,
