@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-01-21T15:37:45",
-  "description": "# [1.7.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.7.0-dev.4...v1.7.0-dev.5) (2026-01-21)\n\n\n### Bug Fixes\n\n* **YouTube - SponsorBlock:** Show correct nested skip segment in overlay controls when seeking to an earlier video time ([1e13236](https://github.com/MorpheApp/morphe-patches/commit/1e1323670c1265466532919424c52016cd661492))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.7.0-dev.5/patches-1.7.0-dev.5.mpp",
-  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.7.0-dev.5/patches-1.7.0-dev.5.mpp.asc",
-  "version": "1.7.0-dev.5"
+  "created_at": "2026-01-22T09:29:53",
+  "description": "# [1.7.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.7.0-dev.5...v1.7.0-dev.6) (2026-01-22)\n\n\n### Features\n\n* **Spoof video streams:** Default client maintenance ([#249](https://github.com/MorpheApp/morphe-patches/issues/249)) ([ea01bfc](https://github.com/MorpheApp/morphe-patches/commit/ea01bfca9afdf0592f0486795047ef5b0abcb5ff))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.7.0-dev.6/patches-1.7.0-dev.6.mpp",
+  "signature_download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.7.0-dev.6/patches-1.7.0-dev.6.mpp.asc",
+  "version": "1.7.0-dev.6"
 }
