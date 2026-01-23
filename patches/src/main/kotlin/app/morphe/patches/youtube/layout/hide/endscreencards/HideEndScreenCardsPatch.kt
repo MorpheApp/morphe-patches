@@ -85,7 +85,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         }
 
         if (is_19_43_or_greater) {
-            ShowEndscreenCardsFingerprint.match(ShowEndscreenCardsParentFingerprint.classDef).method.addInstructionsWithLabels(
+            ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z
