@@ -639,6 +639,24 @@ public final class app/morphe/patches/youtube/misc/backgroundplayback/Background
 	public static final fun getBackgroundPlaybackPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
 
+public final class app/morphe/patches/youtube/misc/contexthook/ClientContextHookPatchKt {
+	public static final fun addClientVersionHook (Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;Ljava/lang/String;)V
+	public static final fun addOSNameHook (Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;Ljava/lang/String;)V
+	public static final fun getClientContextHookPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
+}
+
+public final class app/morphe/patches/youtube/misc/contexthook/Endpoint : java/lang/Enum {
+	public static final field BROWSE Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;
+	public static final field GUIDE Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;
+	public static final field REEL Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getParentFingerprints ()[Lapp/morphe/patcher/Fingerprint;
+	public final fun getSmaliInstructions ()Ljava/lang/String;
+	public final fun setSmaliInstructions (Ljava/lang/String;)V
+	public static fun valueOf (Ljava/lang/String;)Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;
+	public static fun values ()[Lapp/morphe/patches/youtube/misc/contexthook/Endpoint;
+}
+
 public final class app/morphe/patches/youtube/misc/debugging/EnableDebuggingPatchKt {
 	public static final fun getEnableDebuggingPatch ()Lapp/morphe/patcher/patch/BytecodePatch;
 }
