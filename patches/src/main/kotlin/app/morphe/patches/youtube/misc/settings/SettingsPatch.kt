@@ -29,6 +29,7 @@ import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.check.checkEnvironmentPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
+import app.morphe.patches.youtube.misc.fix.likebutton.fIxLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -182,6 +183,7 @@ val settingsPatch = bytecodePatch(
         addResourcesPatch,
         versionCheckPatch,
         fixPlaybackSpeedWhilePlayingPatch,
+        fIxLikeButtonPatch,
         fixContentProviderPatch,
         // Currently there is no easy way to make a mandatory patch,
         // so for now this is a dependent of this patch.
