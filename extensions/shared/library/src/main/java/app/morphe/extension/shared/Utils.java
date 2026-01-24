@@ -34,10 +34,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.text.Bidi;
 import java.text.Collator;
 import java.text.Normalizer;
@@ -63,6 +65,7 @@ import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("NewApi")
 public class Utils {
+    private static WeakReference<Activity> activityRef = new WeakReference<>(null);
 
     @SuppressLint("StaticFieldLeak")
     static volatile Context context;
@@ -410,11 +413,37 @@ public class Utils {
         System.exit(0);
     }
 
+    public static Activity getActivity() {
+        return activityRef.get();
+    }
+
     public static Context getContext() {
         if (context == null) {
             Logger.printException(() -> "Context is not set by extension hook, returning null",  null);
         }
         return context;
+    }
+
+    public static Resources getResources() {
+        return getResources(true);
+    }
+
+    public static Resources getResources(boolean useContext) {
+        if (useContext) {
+            if (context != null) {
+                return context.getResources();
+            }
+            Activity mActivity = activityRef.get();
+            if (mActivity != null) {
+                return mActivity.getResources();
+            }
+        }
+
+        return Resources.getSystem();
+    }
+
+    public static void setActivity(Activity mainActivity) {
+        activityRef = new WeakReference<>(mainActivity);
     }
 
     public static void setContext(Context appContext) {
@@ -1196,5 +1225,13 @@ public class Utils {
                 return size() > maxSize;
             }
         };
+    }
+
+    /**
+     * @return whether the device's API level is higher than a specific SDK version.
+     */
+    @ChecksSdkIntAtLeast(parameter = 0)
+    public static boolean isSDKAbove(int sdk) {
+        return Build.VERSION.SDK_INT >= sdk;
     }
 }
