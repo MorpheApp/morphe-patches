@@ -68,6 +68,8 @@ public final class ShortsFilter extends Filter {
     private final ByteArrayFilterGroup useSoundButtonBuffer;
     private final StringFilterGroup useTemplateButton;
     private final ByteArrayFilterGroup useTemplateButtonBuffer;
+    private final StringFilterGroup reelCarousel;
+    private final ByteArrayFilterGroup reelCarouselBuffer;
 
     private final StringFilterGroup autoDubbedLabel;
     private final StringFilterGroup subscribeButton;
@@ -145,8 +147,7 @@ public final class ShortsFilter extends Filter {
 
         StringFilterGroup reelSoundMetadata = new StringFilterGroup(
                 Settings.HIDE_SHORTS_SOUND_METADATA_LABEL,
-                "reel_sound_metadata",
-                "reel_carousel.e"
+                "reel_sound_metadata"
         );
 
         StringFilterGroup soundButton = new StringFilterGroup(
@@ -224,6 +225,16 @@ public final class ShortsFilter extends Filter {
                 "reel_action_bar.e"
         );
 
+        reelCarousel = new StringFilterGroup(
+                Settings.HIDE_SHORTS_SOUND_METADATA_LABEL,
+                "reel_carousel.e"
+        );
+
+        reelCarouselBuffer = new ByteArrayFilterGroup(
+                null,
+                "FEsfv_audio_pivot"
+        );
+
         useSoundButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
                 // First filter needed for "Use this sound" that can appear when viewing Shorts
@@ -267,8 +278,8 @@ public final class ShortsFilter extends Filter {
         addPathCallbacks(
                 shortsCompactFeedVideo, joinButton, subscribeButton, paidPromotionLabel, livePreview,
                 suggestedAction, pausedOverlayButtons, channelBar, previewComment, autoDubbedLabel,
-                fullVideoLinkLabel, videoTitle, useSoundButton, reelSoundMetadata, soundButton, infoPanel,
-                stickers, likeFountain, likeButton, dislikeButton
+                fullVideoLinkLabel, videoTitle, useSoundButton, reelSoundMetadata, soundButton, reelCarousel,
+                infoPanel, stickers, likeFountain, likeButton, dislikeButton
         );
 
         // Legacy hiding of Shorts action buttons. Because of 20.31+ buffer changes
@@ -396,6 +407,10 @@ public final class ShortsFilter extends Filter {
                 // Selectively filter to avoid false positive filtering of other subscribe/join buttons.
                 return path.startsWith(REEL_CHANNEL_BAR_PATH) || path.startsWith(REEL_METAPANEL_PATH)
                         || path.startsWith(REEL_PLAYER_OVERLAY_PATH);
+            }
+
+            if (matchedGroup == reelCarousel) {
+                return reelCarouselBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == useSoundButton) {
