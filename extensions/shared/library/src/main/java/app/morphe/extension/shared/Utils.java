@@ -374,12 +374,13 @@ public class Utils {
     }
 
     public static void setActivity(Activity mainActivity) {
+        Logger.printInfo(() -> "Set activity: " + mainActivity);
         activityRef = new WeakReference<>(mainActivity);
     }
 
     public static Context getContext() {
         if (context == null) {
-            Logger.printException(() -> "Context is not set by extension hook, returning null",  null);
+            Logger.printException(() -> "Context is not set by extension hook, returning null");
         }
         return context;
     }

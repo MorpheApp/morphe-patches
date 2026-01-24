@@ -3,6 +3,7 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.settings.preference.RedditMorpheAboutPreference;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.SettingsStatus;
 import app.morphe.extension.reddit.settings.preference.TogglePreference;
@@ -21,6 +22,8 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public void addPreferences(Context context) {
+        addPreference(new RedditMorpheAboutPreference(getContext()));
+
         if (SettingsStatus.openLinksDirectlyEnabled) {
             addPreference(new TogglePreference(
                     context,

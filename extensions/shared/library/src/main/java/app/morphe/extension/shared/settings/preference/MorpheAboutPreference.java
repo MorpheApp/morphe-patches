@@ -40,6 +40,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
@@ -425,9 +427,13 @@ class WebLink {
      */
     private static final Map<String, String> webLinkNameReplacements = new HashMap<>() {
         {
-            put("website", "morphe_settings_about_links_website");
-            put("donate", "morphe_settings_about_links_donate");
-            put("translations", "morphe_settings_about_links_translations");
+            // Handle no string resources available, and use the original untranslated tet.
+            var websiteStringKey = "morphe_settings_about_links_website";
+            if (ResourceUtils.getIdentifier(ResourceType.STRING, websiteStringKey) != 0) {
+                put("website", websiteStringKey);
+                put("donate", "morphe_settings_about_links_donate");
+                put("translations", "morphe_settings_about_links_translations");
+            }
         }
     };
 

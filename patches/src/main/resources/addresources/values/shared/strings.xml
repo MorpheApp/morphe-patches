@@ -62,7 +62,7 @@ To translate new languages or improve the existing translations, visit translate
     <string name="morphe_language_DEFAULT">App language</string>
     <string name="morphe_pref_import_export_title">Import / Export</string>
     <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
-    <!-- Settings about dialog. -->
+    <!-- Settings about dialog. If this is changed then also update hard coded values in Reddit about screen. -->
     <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
     <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
     <string name="morphe_settings_about_links_dev_header">Note</string>
