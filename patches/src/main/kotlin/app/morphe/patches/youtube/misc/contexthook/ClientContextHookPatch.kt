@@ -93,16 +93,15 @@ val clientContextHookPatch = bytecodePatch(
             it.smaliInstructions.isNotEmpty()
         }.forEach { endpoint ->
             endpoint.parentFingerprints.forEach { parentFingerprint ->
-                // For some reason, declaring this in Fingerprints.kt always returns the same class.
-                // This seems to be due to the method cache in Patcher.
-                // As a workaround, declare the fingerprint in the patch.
-                val EndpointRequestBodyFingerprint = Fingerprint(
+                // Use locally declared fingerprint because internally fingerprint caches the match.
+                // Could use Fingerprint.clearMatch() but creating a new instance also works.
+                val endpointRequestBodyFingerprint = Fingerprint(
                     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
                     returnType = "V",
                     parameters = listOf(),
                 )
 
-                EndpointRequestBodyFingerprint.match(
+                endpointRequestBodyFingerprint.match(
                     parentFingerprint.originalClassDef
                 ).let {
                     it.method.apply {
