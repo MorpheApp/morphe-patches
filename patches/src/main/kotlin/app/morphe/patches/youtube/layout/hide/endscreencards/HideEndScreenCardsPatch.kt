@@ -63,6 +63,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
             "20.26.46",
             "20.31.42",
             "20.37.48",
+            "20.40.45",
         )
     )
 
@@ -85,7 +86,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         }
 
         if (is_19_43_or_greater) {
-            ShowEndscreenCardsFingerprint.match(ShowEndscreenCardsParentFingerprint.classDef).method.addInstructionsWithLabels(
+            ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z

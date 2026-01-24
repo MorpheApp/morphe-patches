@@ -37,9 +37,10 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
             "20.26.46",
             "20.31.42",
             "20.37.48",
-            // This patch is obsolete with 20.03 because YT seems to have
+            "20.40.45",
+            // This patch is obsolete with 21.03 because YT seems to have
             // removed resuming Shorts functionality.
-            // TODO: Before adding 20.03+, merge this patch into `Hide Shorts component`
+            // TODO: Before adding 21.03+, merge this patch into `Hide Shorts component`
         )
     )
 

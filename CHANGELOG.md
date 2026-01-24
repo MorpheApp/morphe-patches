@@ -1,3 +1,39 @@
+# [1.8.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.4...v1.8.0-dev.5) (2026-01-24)
+
+
+### Features
+
+* Skip publishing to GitHub packages ([#275](https://github.com/MorpheApp/morphe-patches/issues/275)) ([71b7db4](https://github.com/MorpheApp/morphe-patches/commit/71b7db4d38ac44ce6d0b9de111599485e1de015a))
+
+# [1.8.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.3...v1.8.0-dev.4) (2026-01-24)
+
+
+### Features
+
+* **Enable debugging:** Allow overriding String/long/double flags in debug flag manager ([11b61b5](https://github.com/MorpheApp/morphe-patches/commit/11b61b5a509a4d659e69e9cfd9c3cdcad70dd9cb))
+
+# [1.8.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.2...v1.8.0-dev.3) (2026-01-23)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Disable client flag that breaks playback with experimental app targets ([8cace8b](https://github.com/MorpheApp/morphe-patches/commit/8cace8b442d32c07b2fcd4da3b596497608e626c))
+
+# [1.8.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-01-23)
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.04.221` ([ba2e581](https://github.com/MorpheApp/morphe-patches/commit/ba2e581bfbe1ebe9fb10fa49b33df43726c966f2))
+
+# [1.8.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.7.0...v1.8.0-dev.1) (2026-01-23)
+
+
+### Features
+
+* **YouTube Music:** Support version `8.40.54` ([639819d](https://github.com/MorpheApp/morphe-patches/commit/639819de0bec5f06fee4ff11c33f149521117d2b))
+* **YouTube:** Support version `20.40.45` ([9514870](https://github.com/MorpheApp/morphe-patches/commit/9514870fba460f21627ebfd6f849510c01321d91))
+
 # [1.7.0](https://github.com/MorpheApp/morphe-patches/compare/v1.6.0...v1.7.0) (2026-01-22)
 
 

@@ -632,7 +632,7 @@ Als het wijzigen van deze instelling geen effect heeft, probeer dan over te scha
   <string name="morphe_hide_player_flyout_stable_volume_summary_off">Stabiel volume-menu wordt weergegeven</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_on">Stabiel volume-menu is verborgen</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">Verberg Hulp &amp; feedback</string>
+  <string name="morphe_hide_player_flyout_help_title">Hulp en feedback verbergen</string>
   <string name="morphe_hide_player_flyout_help_summary_on">Hulp &amp; feedback-menu is verborgen</string>
   <string name="morphe_hide_player_flyout_help_summary_off">Hulp &amp; feedback-menu wordt getoond</string>
   <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1109,12 +1109,12 @@ Klaar om in te dienen?"</string>
   <string name="morphe_sb_stats_connection_failure">Statistieken zijn tijdelijk niet beschikbaar (API is down)</string>
   <string name="morphe_sb_stats_loading">Bezig met laden...</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock is uitgeschakeld</string>
-  <string name="morphe_sb_stats_username">Uw gebruikersnaam: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username">Je gebruikersnaam: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Tik hier om uw gebruikersnaam te wijzigen</string>
   <string name="morphe_sb_stats_username_change_unknown_error">Kan gebruikersnaam niet wijzigen: Status: %1$d %2$s</string>
   <string name="morphe_sb_stats_username_changed">Gebruikersnaam succesvol gewijzigd</string>
-  <string name="morphe_sb_stats_reputation">Uw reputatie is &lt;b&gt;%.2f&lt;/b&gt;</string>
-  <string name="morphe_sb_stats_submissions">U heeft &lt;b&gt;%s&lt;/b&gt; segmenten gemaakt</string>
+  <string name="morphe_sb_stats_reputation">Je reputatie is &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">Je hebt &lt;b&gt;%s&lt;/b&gt; segmenten gemaakt</string>
   <string name="morphe_sb_stats_submissions_sum">Tik hier om uw segmenten te bekijken</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock-klassement</string>
   <string name="morphe_sb_stats_saved">U heeft mensen van &lt;b&gt;%s&lt;/b&gt; segmenten gered</string>
@@ -1164,7 +1164,7 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_change_start_page_entry_browse">Kanalen browsen</string>
   <string name="morphe_change_start_page_entry_courses">Cursussen / Leren</string>
   <string name="morphe_change_start_page_entry_explore">Verkennen</string>
-  <string name="morphe_change_start_page_entry_fashion">Mode &amp; Beauty</string>
+  <string name="morphe_change_start_page_entry_fashion">Mode en beauty</string>
   <string name="morphe_change_start_page_entry_gaming">Gamen</string>
   <string name="morphe_change_start_page_entry_history">Geschiedenis</string>
   <string name="morphe_change_start_page_entry_library">Bibliotheek</string>
@@ -1289,10 +1289,10 @@ Het inschakelen hiervan kan ontbrekende afbeeldingen oplossen die in sommige reg
   <string name="morphe_alt_thumbnail_subscription_title">Tabblad Abonnementen</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_library_title">\"Jij\"-tabblad</string>
-  <string name="morphe_alt_thumbnail_player_title">Afspeellijsten &amp; aanbevelingen van speler</string>
+  <string name="morphe_alt_thumbnail_player_title">Afspeellijsten en aanbevelingen van speler</string>
   <string name="morphe_alt_thumbnail_search_title">Zoekresultaten</string>
   <string name="morphe_alt_thumbnail_options_entry_1">Oorspronkelijke miniaturen</string>
-  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Oorspronkelijke miniaturen</string>
+  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow en oorspronkelijke miniaturen</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Stilstaande opnames</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stilstaande opnames</string>
   <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow biedt door de menigte gecrowdsourcede miniaturen voor YouTube-video's. Deze miniaturen zijn vaak relevanter dan die van YouTube.

@@ -22,7 +22,6 @@ internal object ReelEnumConstructorFingerprint : Fingerprint(
 
 internal object ReelPlaybackRepeatParentFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("Ljava/lang/String;", "J"),
     filters = listOf(
         string("Reels[%s] Playback Time: %d ms")
     )

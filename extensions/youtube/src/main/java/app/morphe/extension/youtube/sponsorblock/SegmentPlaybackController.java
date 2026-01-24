@@ -821,7 +821,7 @@ public class SegmentPlaybackController {
         if (PlayerType.getCurrent() == PlayerType.INLINE_MINIMAL) {
             // Cannot easily show a toast since there is no layout view context.
             // Probably better to not show a toast here anyway.
-            Logger.printException(() -> "Not showing undo toast for feed playback");
+            Logger.printDebug(() -> "Not showing undo toast for feed playback");
             return;
         }
 

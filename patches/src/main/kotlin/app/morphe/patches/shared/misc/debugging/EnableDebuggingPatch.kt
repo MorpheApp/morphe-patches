@@ -1,7 +1,8 @@
 package app.morphe.patches.shared.misc.debugging
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
@@ -13,12 +14,12 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.ResourceGroup
+import app.morphe.util.cloneMutable
 import app.morphe.util.copyResources
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
@@ -101,20 +102,57 @@ internal fun enableDebuggingPatch(
 
         // Hook the methods that look up if a feature flag is active.
         ExperimentalBooleanFeatureFlagFingerprint.match(
-            ExperimentalFeatureFlagParentFingerprint.originalClassDef
-        ).method.apply {
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+            ExperimentFlagUtilFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                // In some versions, freeRegister is not available.
+                // The easiest workaround is to copy the method to minimize modifications to the instructions.
+                val helperMethodName = "patch_getBooleanFeatureFlag"
+
+                // Copy the method.
+                val helperMethod = cloneMutable(name = helperMethodName)
+
+                // Add the method.
+                it.classDef.methods.add(helperMethod)
 
                 addInstructions(
-                    index,
+                    0,
                     """
-                        invoke-static { v$register, p1 }, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZLjava/lang/Long;)Z
-                        move-result v$register
+                        # Invoke the copied method (helper method).
+                        invoke-static {p0, p1, p2, p3}, $helperMethod
+                        move-result p0
+                        
+                        # Convert the flag value to 'Long' format to pass it to the extension.
+                        invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+                        move-result-object p1
+                        
+                        # Redefine boolean in the extension.
+                        invoke-static {p0, p1}, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZLjava/lang/Long;)Z
+                        move-result p0
+                        
+                        # Since the copied method (helper method) has already been invoked, it just returns.
+                        return p0
                     """
                 )
             }
         }
+
+        // In some versions, the classes for 'ExperimentalBooleanFeatureFlagFingerprint' and
+        // 'ExperimentalDoubleFeatureFlagFingerprint, ExperimentalLongFeatureFlagFingerprint, ExperimentalStringFeatureFlagFingerprint'
+        // are different.
+        // To handle this, declare parent fingerprints.
+        val ExperimentalFeatureFlagParentFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "Z",
+            parameters = listOf("J", "Z"),
+            filters = listOf(
+                methodCall(
+                    // Due to the structure of the patcher, once a fingerprint is solved, it is cached.
+                    // This means there is no need to refer to the parent fingerprint (ExperimentFlagUtilFingerprint).
+                    reference = ExperimentalBooleanFeatureFlagFingerprint.method,
+                )
+            )
+        )
 
         ExperimentalDoubleFeatureFlagFingerprint.match(
             ExperimentalFeatureFlagParentFingerprint.originalClassDef

@@ -197,6 +197,14 @@ internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
+    parameters = listOf(),
+    returnType = "Z",
+    filters = listOf(
+        literal(45640404L)
+    )
+)
+
 internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
     val reference = getReference<MethodReference>()
     opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == "Lorg/chromium/net/CronetEngine;"
