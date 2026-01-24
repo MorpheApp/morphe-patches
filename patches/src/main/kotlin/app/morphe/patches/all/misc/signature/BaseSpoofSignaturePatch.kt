@@ -23,13 +23,12 @@ fun baseSpoofSignaturePatch(appInfoSupplier: () -> AppInfo) = bytecodePatch {
         }
     }
 
-    val logger = Logger.getLogger(this::class.java.name)
-
     extendWith("extensions/spoof-signature.mpe")
 
     execute {
         if (replacements.size != 2) {
-            logger.warning("Invalid package name or certificate data, skipping patch")
+            Logger.getLogger(this::class.java.name)
+                .warning("Invalid package name or certificate data, skipping patch")
 
             return@execute
         }
