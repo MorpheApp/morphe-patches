@@ -26,6 +26,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_restart_title">Restart required</string>
     <string name="morphe_settings_restart_dialog_message">Restart the app for this change to take effect.</string>
     <string name="morphe_settings_restart">Restart</string>
+    <!-- String is also duplicated in Reddit import / export preference -->
     <string name="morphe_settings_import">Import</string>
     <string name="morphe_settings_import_copy">Copy</string>
     <string name="morphe_settings_import_reset">Morphe settings reset to default</string>
@@ -62,7 +63,7 @@ To translate new languages or improve the existing translations, visit translate
     <string name="morphe_language_DEFAULT">App language</string>
     <string name="morphe_pref_import_export_title">Import / Export</string>
     <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
-    <!-- Settings about dialog. If this is changed then also update hard coded values in Reddit about screen. -->
+    <!-- String is also duplicated in Reddit about preference -->
     <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
     <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
     <string name="morphe_settings_about_links_dev_header">Note</string>
