@@ -52,16 +52,3 @@ kotlin {
         freeCompilerArgs = listOf("-Xcontext-receivers")
     }
 }
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/MorpheApp/morphe-patches")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-}
