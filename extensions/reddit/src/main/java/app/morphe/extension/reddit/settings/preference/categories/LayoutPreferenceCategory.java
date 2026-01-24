@@ -5,7 +5,7 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.SettingsStatus;
-import app.morphe.extension.reddit.settings.preference.TogglePreference;
+import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
@@ -22,109 +22,109 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     @Override
     public void addPreferences(Context context) {
         if (SettingsStatus.screenshotPopupEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.DISABLE_SCREENSHOT_POPUP,
                     "Disable screenshot popup",
-                    "Disables the popup that appears when taking a screenshot.",
-                    Settings.DISABLE_SCREENSHOT_POPUP
+                    "Disables the popup that appears when taking a screenshot."
             ));
         }
         if (SettingsStatus.navigationButtonsEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_CHAT_BUTTON,
                     "Hide Chat button",
-                    "Hides the Chat button in the navigation bar.",
-                    Settings.HIDE_CHAT_BUTTON
+                    "Hides the Chat button in the navigation bar."
             ));
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_CREATE_BUTTON,
                     "Hide Create button",
-                    "Hides the Create button in the navigation bar.",
-                    Settings.HIDE_CREATE_BUTTON
+                    "Hides the Create button in the navigation bar."
             ));
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_DISCOVER_BUTTON,
                     "Hide Discover or Communities button",
-                    "Hides the Discover or Communities button in the navigation bar.",
-                    Settings.HIDE_DISCOVER_BUTTON
+                    "Hides the Discover or Communities button in the navigation bar."
             ));
         }
         if (SettingsStatus.aboutShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_ABOUT_SHELF,
                     "Hide About shelf",
-                    "Hides the About shelf in the sidebar.",
-                    Settings.HIDE_ABOUT_SHELF
+                    "Hides the About shelf in the sidebar."
             ));
         }
         if (SettingsStatus.gamesOnRedditShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_GAMES_ON_REDDIT_SHELF,
                     "Hide Games on Reddit shelf",
-                    "Hides the Games on Reddit shelf in the sidebar.",
-                    Settings.HIDE_GAMES_ON_REDDIT_SHELF
+                    "Hides the Games on Reddit shelf in the sidebar."
             ));
         }
         if (SettingsStatus.recentlyVisitedShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_RECENTLY_VISITED_SHELF,
                     "Hide Recently Visited shelf",
-                    "Hides the Recently Visited shelf in the sidebar.",
-                    Settings.HIDE_RECENTLY_VISITED_SHELF
+                    "Hides the Recently Visited shelf in the sidebar."
             ));
         }
         if (SettingsStatus.resourcesShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_RESOURCES_SHELF,
                     "Hide Resources shelf",
-                    "Hides the Resources shelf in the sidebar.",
-                    Settings.HIDE_RESOURCES_SHELF
+                    "Hides the Resources shelf in the sidebar."
             ));
         }
         if (SettingsStatus.redditProShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_REDDIT_PRO_SHELF,
                     "Hide Reddit Pro shelf",
-                    "Hides the Reddit Pro shelf in the sidebar.",
-                    Settings.HIDE_REDDIT_PRO_SHELF
+                    "Hides the Reddit Pro shelf in the sidebar."
             ));
         }
         if (SettingsStatus.recommendedCommunitiesShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_RECOMMENDED_COMMUNITIES_SHELF,
                     "Hide recommended communities",
-                    "Hides the recommended communities shelves in subreddits.",
-                    Settings.HIDE_RECOMMENDED_COMMUNITIES_SHELF
+                    "Hides the recommended communities shelves in subreddits."
             ));
         }
         if (SettingsStatus.toolBarButtonEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_TOOLBAR_BUTTON,
                     "Hide toolbar button",
-                    "Hide toolbar button",
-                    Settings.HIDE_TOOLBAR_BUTTON
+                    "Hide toolbar button"
             ));
         }
         if (SettingsStatus.trendingTodayShelfEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_TRENDING_TODAY_SHELF,
                     "Hide Trending Today shelf",
-                    "Hides the Trending Today shelf from search suggestions.\n\nLimitation: Visual spacers are not hidden.",
-                    Settings.HIDE_TRENDING_TODAY_SHELF
+                    "Hides the Trending Today shelf from search suggestions.\n\nLimitation: Visual spacers are not hidden."
             ));
         }
         if (SettingsStatus.subRedditDialogEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.REMOVE_NSFW_DIALOG,
                     "Remove NSFW warning dialog",
-                    "Removes the NSFW warning dialog that appears when visiting a subreddit by accepting it automatically.",
-                    Settings.REMOVE_NSFW_DIALOG
+                    "Removes the NSFW warning dialog that appears when visiting a subreddit by accepting it automatically."
             ));
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.REMOVE_NOTIFICATION_DIALOG,
                     "Remove notification suggestion dialog",
-                    "Removes the notifications suggestion dialog that appears when visiting a subreddit by dismissing it automatically.",
-                    Settings.REMOVE_NOTIFICATION_DIALOG
+                    "Removes the notifications suggestion dialog that appears when visiting a subreddit by dismissing it automatically."
             ));
         }
     }

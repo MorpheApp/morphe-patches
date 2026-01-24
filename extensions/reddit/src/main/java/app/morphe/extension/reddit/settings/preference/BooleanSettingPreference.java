@@ -6,8 +6,8 @@ import android.preference.SwitchPreference;
 import app.morphe.extension.shared.settings.BooleanSetting;
 
 @SuppressWarnings("deprecation")
-public class TogglePreference extends SwitchPreference {
-    public TogglePreference(Context context, String title, String summary, BooleanSetting setting) {
+public class BooleanSettingPreference extends SwitchPreference {
+    public BooleanSettingPreference(Context context, BooleanSetting setting, String title, String summary) {
         super(context);
         this.setTitle(title);
         this.setSummary(summary);

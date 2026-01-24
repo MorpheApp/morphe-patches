@@ -5,7 +5,7 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.SettingsStatus;
-import app.morphe.extension.reddit.settings.preference.TogglePreference;
+import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 
 @SuppressWarnings("deprecation")
 public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
@@ -21,23 +21,20 @@ public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
-        addPreference(new TogglePreference(
+        addPreference(new BooleanSettingPreference(
                 context,
-                "Hide comment ads",
-                "Hides ads in the comments section.",
-                Settings.HIDE_COMMENT_ADS
+                Settings.HIDE_COMMENT_ADS, "Hide comment ads",
+                "Hides ads in the comments section."
         ));
-        addPreference(new TogglePreference(
+        addPreference(new BooleanSettingPreference(
                 context,
-                "Hide feed ads",
-                "Hides ads in the feed (old method).",
-                Settings.HIDE_OLD_POST_ADS
+                Settings.HIDE_OLD_POST_ADS, "Hide feed ads",
+                "Hides ads in the feed (old method)."
         ));
-        addPreference(new TogglePreference(
+        addPreference(new BooleanSettingPreference(
                 context,
-                "Hide feed ads",
-                "Hides ads in the feed (new method).",
-                Settings.HIDE_NEW_POST_ADS
+                Settings.HIDE_NEW_POST_ADS, "Hide feed ads",
+                "Hides ads in the feed (new method)."
         ));
     }
 }

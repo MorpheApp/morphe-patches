@@ -86,7 +86,7 @@ val settingsPatch = bytecodePatch(
 
             replaceInstruction(
                 stringIndex,
-                "const-string v$stringRegister, \"reddit_rvx_morphed\""
+                "const-string v$stringRegister, \"reddit_morphe\""
             )
         }
 

@@ -19,13 +19,6 @@ import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragmen
 public class RedditPreferenceFragment extends AbstractPreferenceFragment {
 
     @Override
-    protected void syncSettingWithPreference(@NonNull Preference pref,
-                                             @NonNull Setting<?> setting,
-                                             boolean applySettingToPreference) {
-        super.syncSettingWithPreference(pref, setting, applySettingToPreference);
-    }
-
-    @Override
     protected void initialize() {
         final Context context = getContext();
 

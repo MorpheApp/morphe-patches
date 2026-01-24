@@ -7,7 +7,7 @@ import app.morphe.extension.reddit.settings.preference.RedditImportExportPrefere
 import app.morphe.extension.reddit.settings.preference.RedditMorpheAboutPreference;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.SettingsStatus;
-import app.morphe.extension.reddit.settings.preference.TogglePreference;
+import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 
 @SuppressWarnings("deprecation")
 public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCategory {
@@ -27,27 +27,27 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         addPreference(new RedditImportExportPreference(getContext()));
 
         if (SettingsStatus.openLinksDirectlyEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.OPEN_LINKS_DIRECTLY,
                     "Open links directly",
-                    "Skips over redirection URLs in external links.",
-                    Settings.OPEN_LINKS_DIRECTLY
+                    "Skips over redirection URLs in external links."
             ));
         }
         if (SettingsStatus.openLinksExternallyEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.OPEN_LINKS_EXTERNALLY,
                     "Open links externally",
-                    "Opens links in your browser instead of in the in-app-browser.",
-                    Settings.OPEN_LINKS_EXTERNALLY
+                    "Opens links in your browser instead of in the in-app-browser."
             ));
         }
         if (SettingsStatus.sanitizeUrlQueryEnabled) {
-            addPreference(new TogglePreference(
+            addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.SANITIZE_URL_QUERY,
                     "Sanitize sharing links",
-                    "Sanitizes sharing links by removing tracking query parameters.",
-                    Settings.SANITIZE_URL_QUERY
+                    "Sanitizes sharing links by removing tracking query parameters."
             ));
         }
     }
