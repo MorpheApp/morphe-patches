@@ -9,8 +9,8 @@ import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 import org.w3c.dom.Element
 
 private const val PACKAGE_NAME_REDDIT = "com.reddit.frontpage"
-private const val CLONE_PACKAGE_NAME_REDDIT = "$PACKAGE_NAME_REDDIT.rvxmorphed"
-private const val DEFAULT_PACKAGE_NAME_REDDIT = "$PACKAGE_NAME_REDDIT.rvx"
+private const val CLONE_PACKAGE_NAME_REDDIT = "$PACKAGE_NAME_REDDIT.morphe.clone"
+private const val DEFAULT_PACKAGE_NAME_REDDIT = "$PACKAGE_NAME_REDDIT.morphe"
 
 private var redditPackageName = PACKAGE_NAME_REDDIT
 

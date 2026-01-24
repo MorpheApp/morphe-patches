@@ -12,6 +12,8 @@ public class RedditMorpheAboutPreference extends MorpheAboutPreference {
     private static final Map<String, String> stringMap = new HashMap<>();
 
     static {
+        // Resource patching is not available due to apktool limitations.
+        // Strings must be hard coded with no localization.
         stringMap.put("morphe_settings_about_links_body_version_current",
                 "You are using the latest Morphe Patches version <i>%s</i>");
         stringMap.put("morphe_settings_about_links_body_version_outdated",

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import app.morphe.extension.reddit.settings.preference.RVXMorphedPreferenceFragment;
+import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.shared.ResourceUtils;
 
 @SuppressWarnings("all")
@@ -18,7 +18,7 @@ public class ActivityHook {
 
     public static boolean hook(Activity activity) {
         Intent intent = activity.getIntent();
-        if ("RVX".equals(intent.getStringExtra("com.reddit.extra.initial_url"))) {
+        if ("Morphe".equals(intent.getStringExtra("com.reddit.extra.initial_url"))) {
             initialize(activity);
             return true;
         }
@@ -44,7 +44,7 @@ public class ActivityHook {
 
         activity.getFragmentManager()
                 .beginTransaction()
-                .replace(fragmentId, new RVXMorphedPreferenceFragment())
+                .replace(fragmentId, new RedditPreferenceFragment())
                 .commit();
     }
 
@@ -55,7 +55,7 @@ public class ActivityHook {
     public static Intent initializeByIntent(Context context) {
         Intent intent = new Intent();
         intent.setClassName(context, "com.reddit.webembed.browser.WebBrowserActivity");
-        intent.putExtra("com.reddit.extra.initial_url", "RVX");
+        intent.putExtra("com.reddit.extra.initial_url", "Morphe");
         return intent;
     }
 }

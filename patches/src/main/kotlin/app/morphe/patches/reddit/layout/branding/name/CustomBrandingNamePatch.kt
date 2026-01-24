@@ -10,7 +10,7 @@ import java.io.FileWriter
 import java.nio.file.Files
 
 private const val ORIGINAL_APP_NAME = "Reddit"
-private const val APP_NAME = "RVX Reddit"
+private const val APP_NAME = "Reddit Morphe"
 
 /*
 // FIXME: Cannot use this patch due to apktool being unable to decode resources.

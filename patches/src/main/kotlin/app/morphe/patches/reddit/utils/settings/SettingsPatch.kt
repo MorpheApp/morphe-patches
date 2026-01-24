@@ -44,7 +44,7 @@ var is_2025_52_or_greater = false
 var is_2026_03_or_greater = false
     private set
 
-private const val DEFAULT_LABEL = "RVX"
+private const val DEFAULT_LABEL = "Morphe"
 
 val settingsPatch = bytecodePatch(
     SETTINGS_FOR_REDDIT.title,
@@ -55,18 +55,6 @@ val settingsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         spoofSignaturePatch
-    )
-
-    val rvxSettingsLabel = stringOption(
-        key = "rvxSettingsLabel",
-        default = DEFAULT_LABEL,
-        values = mapOf(
-            "RVX Morphed" to "RVX Morphed",
-            "RVX" to DEFAULT_LABEL,
-        ),
-        title = "RVX settings menu name",
-        description = "The name of the RVX settings menu.",
-        required = true
     )
 
     execute {
@@ -109,7 +97,7 @@ val settingsPatch = bytecodePatch(
         acknowledgementsLabelBuilderMethod = preferenceManagerFingerprint.match(
             mutableClassDefBy(preferenceManagerParentFingerprint.classDef)
         ).method
-        updateSettingsLabel(rvxSettingsLabel.value!!)
+        updateSettingsLabel(DEFAULT_LABEL)
 
         /**
          * Initialize settings activity
@@ -135,7 +123,8 @@ val settingsPatch = bytecodePatch(
                     getInstruction<OneRegisterInstruction>(freeIndex).registerA
 
                 addInstructionsWithLabels(
-                    targetIndex, """
+                    targetIndex,
+                    """
                         invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAcknowledgment(Ljava/lang/Enum;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :ignore
@@ -147,7 +136,7 @@ val settingsPatch = bytecodePatch(
                         return-void
                         :ignore
                         nop
-                        """
+                    """
                 )
             }
         }
@@ -163,14 +152,15 @@ val settingsPatch = bytecodePatch(
                 }
 
                 addInstructionsWithLabels(
-                    insertIndex, """
+                    insertIndex,
+                    """
                         invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->hook(Landroid/app/Activity;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :ignore
                         return-void
                         :ignore
                         nop
-                        """
+                    """
                 )
             }
         }
@@ -205,11 +195,14 @@ internal fun updateSettingsLabel(label: String) =
         val iconRegister =
             getInstruction<OneRegisterInstruction>(iconIndex).registerA
 
+        // TODO: Change this to modify the drawable with a Morphe logo.
+        //       Must be done with Java code without resources because no resource patching yet.
         addInstructions(
-            iconIndex + 1, """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->getIcon()I
-                        move-result v$iconRegister
-                        """
+            iconIndex + 1,
+            """
+                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->getIcon()I
+                move-result v$iconRegister
+            """
         )
 
         insertIndex =

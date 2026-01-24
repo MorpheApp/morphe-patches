@@ -4,7 +4,7 @@ import android.content.Context;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
-import org.jetbrains.annotations.NotNull;
+import androidx.annotation.NonNull;
 
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
@@ -13,14 +13,14 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**
- * Preference fragment for RVX Morphed settings
+ * Preference fragment for Reddit Morphe settings
  */
 @SuppressWarnings("deprecation")
-public class RVXMorphedPreferenceFragment extends AbstractPreferenceFragment {
+public class RedditPreferenceFragment extends AbstractPreferenceFragment {
 
     @Override
-    protected void syncSettingWithPreference(@NotNull Preference pref,
-                                             @NotNull Setting<?> setting,
+    protected void syncSettingWithPreference(@NonNull Preference pref,
+                                             @NonNull Setting<?> setting,
                                              boolean applySettingToPreference) {
         super.syncSettingWithPreference(pref, setting, applySettingToPreference);
     }
@@ -29,8 +29,8 @@ public class RVXMorphedPreferenceFragment extends AbstractPreferenceFragment {
     protected void initialize() {
         final Context context = getContext();
 
-        // Currently no resources can be compiled for Reddit (fails with aapt error).
-        // So all Reddit Strings are hard coded in integrations.
+        // Currently no resources can be compiled for Reddit due to apktool limitations.
+        // So all Reddit Strings are hard coded in extensions.
         restartDialogTitle = "Restart required";
         restartDialogMessage = "Restart the app for this change to take effect.";
         restartDialogButtonText = "Restart";
