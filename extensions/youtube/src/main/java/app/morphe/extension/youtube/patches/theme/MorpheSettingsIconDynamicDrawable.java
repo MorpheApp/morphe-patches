@@ -9,9 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-
-import java.util.Objects;
 
 /**
  * Dynamic drawable that is either the regular or bolded Morphe preference icon.
@@ -47,7 +46,7 @@ public class MorpheSettingsIconDynamicDrawable extends Drawable {
                     ? (isDarkMode ? "morphe_settings_icon_bold_dark" : "morphe_settings_icon_bold_light")
                     : (isDarkMode ? "morphe_settings_icon_dark" : "morphe_settings_icon_light");
 
-            final int resId = Utils.getResourceIdentifier(ResourceType.DRAWABLE, iconName);
+            final int resId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
             Drawable newIcon = Utils.getContext().getDrawable(resId);
 
             if (newIcon == null) {

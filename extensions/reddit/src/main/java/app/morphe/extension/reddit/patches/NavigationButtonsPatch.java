@@ -15,6 +15,7 @@ import java.util.Objects;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
@@ -99,7 +100,7 @@ public final class NavigationButtonsPatch {
             this.index = index;
 
             // FIXME: This is returning invalid resource IDs for some reason.
-            this.id = ResourceUtils.getIdentifier(label, ResourceUtils.ResourceType.STRING, Utils.getContext());
+            this.id = ResourceUtils.getIdentifier(Utils.getContext(), ResourceType.STRING, label);
 
             if (this.id == 0) {
                 throw new IllegalArgumentException(Utils.getContext().getPackageName() + ": Unable to find navigation button corresponding to label " + label);

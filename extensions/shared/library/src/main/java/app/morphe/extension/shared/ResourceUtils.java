@@ -2,12 +2,12 @@ package app.morphe.extension.shared;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
@@ -23,178 +23,208 @@ public class ResourceUtils {
     private ResourceUtils() {
     } // utility class
 
-    public static int getIdentifier(@NonNull String str, @NonNull ResourceType resourceType) {
+    private static Context getActivityOrContext() {
         Activity mActivity = Utils.getActivity();
-        Context mContext = mActivity != null
+        return mActivity != null
                 ? mActivity
                 : Utils.getContext();
-        if (mContext == null) {
-            handleException(str, resourceType);
-            return 0;
-        }
-        return getIdentifier(str, resourceType, mContext);
     }
 
-    public static int getIdentifier(@NonNull String str, @NonNull ResourceType resourceType,
-                                    @NonNull Context context) {
+    /**
+     * @param type Resource type, or <code>null</code> to search all types for the first declaration.
+     * @return zero, if the resource is not found.
+     */
+    public static int getIdentifier(@Nullable ResourceType type, String name) {
+        Context mContext = getActivityOrContext();
+        if (mContext == null) {
+            handleException(type, name);
+            return 0;
+        }
+        return getIdentifier(mContext, type, name);
+    }
+
+    /**
+     * @return the resource identifier, or throws an exception if not found.
+     * @param type Resource type, or <code>null</code> to search all types for the first declaration.
+     * @see #getIdentifier(ResourceType, String)
+     */
+    public static int getIdentifierOrThrow(@Nullable ResourceType type, String name) {
+        return getIdentifierOrThrow(getActivityOrContext(), type, name);
+    }
+
+    /**
+     * @return zero if the resource is not found.
+     * @param type Resource type, or <code>null</code> to search all types for the first declaration.
+     */
+    public static int getIdentifier(Context context, @Nullable ResourceType type, String name) {
         try {
-            return context.getResources().getIdentifier(str, resourceType.getType(), context.getPackageName());
+            return context.getResources().getIdentifier(name,
+                    type == null ? null : type.type,
+                    context.getPackageName());
         } catch (Exception ex) {
-            handleException(str, resourceType);
+            handleException(type, name);
         }
         return 0;
     }
 
-    public static int getAnimIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.ANIM);
-    }
-
-    public static int getArrayIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.ARRAY);
-    }
-
-    public static int getAttrIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.ATTR);
-    }
-
-    public static int getColorIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.COLOR);
-    }
-
-    public static int getDimenIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.DIMEN);
-    }
-
-    public static int getDrawableIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.DRAWABLE);
-    }
-
-    public static int getFontIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.FONT);
-    }
-
-    public static int getIdIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.ID);
-    }
-
-    public static int getIntegerIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.INTEGER);
-    }
-
-    public static int getLayoutIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.LAYOUT);
-    }
-
-    public static int getMenuIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.MENU);
-    }
-
-    public static int getMipmapIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.MIPMAP);
-    }
-
-    public static int getRawIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.RAW);
-    }
-
-    public static int getStringIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.STRING);
-    }
-
-    public static int getStyleIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.STYLE);
-    }
-
-    public static int getXmlIdentifier(@NonNull String str) {
-        return getIdentifier(str, ResourceType.XML);
-    }
-
-    @Nullable
-    public static Animation getAnimation(@NonNull String str) {
-        try {
-            int identifier = getAnimIdentifier(str);
-            if (identifier == 0) {
-                handleException(str, ResourceType.ANIM);
-                identifier = android.R.anim.fade_in;
-            }
-            return AnimationUtils.loadAnimation(Utils.getContext(), identifier);
-        } catch (Exception ex) {
-            handleException(str, ResourceType.ANIM);
+    public static int getIdentifierOrThrow(Context context, @Nullable ResourceType type, String name) {
+        final int resourceId = getIdentifier(context, type, name);
+        if (resourceId == 0) {
+            throw new Resources.NotFoundException("No resource id exists with name: " + name
+                    + " type: " + type);
         }
-        return null;
+        return resourceId;
     }
 
-    public static int getColor(@NonNull String str) {
-        if (str.startsWith("#")) {
-            return Color.parseColor(str);
+    public static int getAnimIdentifier(String name) {
+        return getIdentifier(ResourceType.ANIM, name);
+    }
+
+    public static int getArrayIdentifier(String name) {
+        return getIdentifier(ResourceType.ARRAY, name);
+    }
+
+    public static int getAttrIdentifier(String name) {
+        return getIdentifier(ResourceType.ATTR, name);
+    }
+
+    public static int getColorIdentifier(String name) {
+        return getIdentifier(ResourceType.COLOR, name);
+    }
+
+    public static int getColor(String name) throws Resources.NotFoundException {
+        if (name.startsWith("#")) {
+            return Color.parseColor(name);
         }
-        final int identifier = getColorIdentifier(str);
+        final int identifier = getColorIdentifier(name);
         if (identifier == 0) {
-            handleException(str, ResourceType.COLOR);
+            handleException(ResourceType.COLOR, name);
             return 0;
         }
         return Utils.getResources().getColor(identifier);
     }
 
-    public static int getDimension(@NonNull String str) {
-        final int identifier = getDimenIdentifier(str);
-        if (identifier == 0) {
-            handleException(str, ResourceType.DIMEN);
-            return 0;
-        }
-        return Utils.getResources().getDimensionPixelSize(identifier);
+    public static int getDimenIdentifier(String name) {
+        return getIdentifier(ResourceType.DIMEN, name);
     }
 
-    public static Drawable getDrawable(@NonNull String str) {
-        final int identifier = getDrawableIdentifier(str);
+    public static int getDrawableIdentifier(String name) {
+        return getIdentifier(ResourceType.DRAWABLE, name);
+    }
+
+    public static int getFontIdentifier(String name) {
+        return getIdentifier(ResourceType.FONT, name);
+    }
+
+    public static int getIdIdentifier(String name) {
+        return getIdentifier(ResourceType.ID, name);
+    }
+
+    public static int getIntegerIdentifier(String name) {
+        return getIdentifier(ResourceType.INTEGER, name);
+    }
+
+    public static int getLayoutIdentifier(String name) {
+        return getIdentifier(ResourceType.LAYOUT, name);
+    }
+
+    public static int getMenuIdentifier(String name) {
+        return getIdentifier(ResourceType.MENU, name);
+    }
+
+    public static int getMipmapIdentifier(String name) {
+        return getIdentifier(ResourceType.MIPMAP, name);
+    }
+
+    public static int getRawIdentifier(String name) {
+        return getIdentifier(ResourceType.RAW, name);
+    }
+
+    public static int getStringIdentifier(String name) {
+        return getIdentifier(ResourceType.STRING, name);
+    }
+
+    public static int getStyleIdentifier(String name) {
+        return getIdentifier(ResourceType.STYLE, name);
+    }
+
+    public static int getXmlIdentifier(String name) {
+        return getIdentifier(ResourceType.XML, name);
+    }
+
+    public static Animation getAnimation(String name) {
+        int identifier = getAnimIdentifier(name);
         if (identifier == 0) {
-            handleException(str, ResourceType.DRAWABLE);
+            handleException(ResourceType.ANIM, name);
+            identifier = android.R.anim.fade_in;
+        }
+        return AnimationUtils.loadAnimation(getActivityOrContext(), identifier);
+    }
+
+    public static float getDimension(String name) throws Resources.NotFoundException {
+        return getActivityOrContext().getResources().getDimension(getIdentifierOrThrow(ResourceType.DIMEN, name));
+    }
+
+    public static int getDimensionPixelSize(String name) throws Resources.NotFoundException {
+        return getActivityOrContext().getResources().getDimensionPixelSize(getIdentifierOrThrow(ResourceType.DIMEN, name));
+    }
+
+    @Nullable
+    public static Drawable getDrawable(String name) {
+        final int identifier = getDrawableIdentifier(name);
+        if (identifier == 0) {
+            handleException(ResourceType.DRAWABLE, name);
             return null;
         }
-        return Utils.getResources().getDrawable(identifier);
+        return getActivityOrContext().getDrawable(identifier);
     }
 
-    public static String getString(@NonNull String str) {
-        final int identifier = getStringIdentifier(str);
+    public static Drawable getDrawableOrThrow(String name) {
+        return checkResourceNotNull(getDrawable(name), ResourceType.DRAWABLE, name);
+    }
+
+    @Nullable
+    public static String getString(String name) {
+        final int identifier = getStringIdentifier(name);
         if (identifier == 0) {
-            handleException(str, ResourceType.STRING);
-            return str;
+            handleException(ResourceType.STRING, name);
+            return name;
         }
-        return Utils.getResources().getString(identifier);
+        return getActivityOrContext().getString(identifier);
     }
 
-    public static String[] getStringArray(@NonNull String str) {
-        final int identifier = getArrayIdentifier(str);
+    public static String getStringOrThrow(String name) {
+        return checkResourceNotNull(getString(name), ResourceType.STRING, name);
+    }
+
+    public static String[] getStringArray(String name) {
+        final int identifier = getArrayIdentifier(name);
         if (identifier == 0) {
-            handleException(str, ResourceType.ARRAY);
+            handleException(ResourceType.ARRAY, name);
             return new String[0];
         }
         return Utils.getResources().getStringArray(identifier);
     }
 
-    public static String[] getStringArray(@NonNull Setting<?> setting, @NonNull String suffix) {
+    public static String[] getStringArray(Setting<?> setting, String suffix) {
         return getStringArray(setting.key + suffix);
     }
 
-    public static int getInteger(@NonNull String str) {
-        final int identifier = getIntegerIdentifier(str);
+    /**
+     * @return zero if the resource is not found.
+     */
+    public static int getInteger(String name) {
+        final int identifier = getIntegerIdentifier(name);
         if (identifier == 0) {
-            handleException(str, ResourceType.INTEGER);
+            handleException(ResourceType.INTEGER, name);
             return 0;
         }
         return Utils.getResources().getInteger(identifier);
     }
 
-    public static String[] getEntry(@NonNull Setting<?> setting) {
-        return getStringArray(setting, "_entries");
-    }
-
-    public static String[] getEntryValue(@NonNull Setting<?> setting) {
-        return getStringArray(setting, "_entry_values");
-    }
-
-    public static String getRawResource(@NonNull String str) {
-        final InputStream is = openRawResource(str);
+    @Nullable
+    public static String getRawResource(String name) {
+        final InputStream is = openRawResource(name);
         if (is != null) {
             try {
                 InputStreamReader inputStream = new InputStreamReader(is);
@@ -203,51 +233,30 @@ public class ResourceUtils {
                 reader.close();
                 return readText;
             } catch (Exception ignored) {
-                handleException(str, ResourceType.RAW);
+                handleException(ResourceType.RAW, name);
             }
         }
         return null;
     }
 
-    private static InputStream openRawResource(@NonNull String str) {
-        final int identifier = getRawIdentifier(str);
+    @Nullable
+    private static InputStream openRawResource(String name) {
+        final int identifier = getRawIdentifier(name);
         if (identifier == 0) {
-            handleException(str, ResourceType.RAW);
+            handleException(ResourceType.RAW, name);
             return null;
         }
         return Utils.getResources().openRawResource(identifier);
     }
 
-    private static void handleException(@NonNull String str, ResourceType resourceType) {
-        Logger.printException(() -> "R." + resourceType.getType() + "." + str + " is null");
+    private static void handleException(ResourceType type, String name) {
+        Logger.printException(() -> "R." + type.type + "." + name + " is null");
     }
 
-    public enum ResourceType {
-        ANIM("anim"),
-        ARRAY("array"),
-        ATTR("attr"),
-        COLOR("color"),
-        DIMEN("dimen"),
-        DRAWABLE("drawable"),
-        FONT("font"),
-        ID("id"),
-        INTEGER("integer"),
-        LAYOUT("layout"),
-        MENU("menu"),
-        MIPMAP("mipmap"),
-        RAW("raw"),
-        STRING("string"),
-        STYLE("style"),
-        XML("xml");
-
-        private final String type;
-
-        ResourceType(String type) {
-            this.type = type;
+    private static <T> T checkResourceNotNull(T resource, ResourceType type, String name) {
+        if (resource == null) {
+            throw new IllegalArgumentException("Could not find: " + type + " name: " + name);
         }
-
-        public final String getType() {
-            return type;
-        }
+        return resource;
     }
 }

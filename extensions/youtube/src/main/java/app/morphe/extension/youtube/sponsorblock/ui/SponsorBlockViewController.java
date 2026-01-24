@@ -1,7 +1,6 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
-import static app.morphe.extension.shared.Utils.getResourceIdentifier;
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,6 +15,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -70,7 +70,7 @@ public class SponsorBlockViewController {
             RelativeLayout layout = new RelativeLayout(context);
             layout.setLayoutParams(new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-            LayoutInflater.from(context).inflate(getResourceIdentifierOrThrow(
+            LayoutInflater.from(context).inflate(getIdentifierOrThrow(
                     ResourceType.LAYOUT, "morphe_sb_inline_sponsor_overlay"), layout);
             inlineSponsorOverlayRef = new WeakReference<>(layout);
 
@@ -91,10 +91,10 @@ public class SponsorBlockViewController {
             youtubeOverlaysLayoutRef = new WeakReference<>(viewGroup);
 
             skipHighlightButtonRef = new WeakReference<>(Objects.requireNonNull(layout.findViewById(
-                    getResourceIdentifier(ResourceType.ID, "morphe_sb_skip_highlight_button"))));
+                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_highlight_button"))));
 
             skipSponsorButtonRef = new WeakReference<>(Objects.requireNonNull(layout.findViewById(
-                    getResourceIdentifier(ResourceType.ID, "morphe_sb_skip_sponsor_button"))));
+                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_sponsor_button"))));
 
             // Handles fading in/out with the player overlay.
             skipSponsorPlayerButton = new PlayerControlButton(
@@ -112,7 +112,7 @@ public class SponsorBlockViewController {
             );
 
             NewSegmentLayout newSegmentLayout = Objects.requireNonNull(layout.findViewById(
-                    getResourceIdentifier(ResourceType.ID, "morphe_sb_new_segment_view")));
+                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_new_segment_view")));
             newSegmentLayoutRef = new WeakReference<>(newSegmentLayout);
             newSegmentLayout.updateLayout();
 

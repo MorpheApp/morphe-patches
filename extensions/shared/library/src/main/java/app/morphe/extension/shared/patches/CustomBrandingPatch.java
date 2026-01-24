@@ -16,6 +16,7 @@ import java.util.Locale;
 import app.morphe.extension.shared.GmsCoreSupport;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 
@@ -77,7 +78,7 @@ public class CustomBrandingPatch {
                     iconName += "_custom";
                 }
 
-                notificationSmallIcon = Utils.getResourceIdentifier(ResourceType.DRAWABLE, iconName);
+                notificationSmallIcon = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
                 if (notificationSmallIcon == 0) {
                     Logger.printException(() -> "Could not load notification small icon");
                 }

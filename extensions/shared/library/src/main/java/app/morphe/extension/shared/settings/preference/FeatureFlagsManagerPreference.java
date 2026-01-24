@@ -1,7 +1,7 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -53,19 +53,19 @@ import app.morphe.extension.shared.ui.Dim;
 public class FeatureFlagsManagerPreference extends Preference {
 
     private static final int DRAWABLE_MORPHE_SETTINGS_SELECT_ALL =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_select_all");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_select_all");
     private static final int DRAWABLE_MORPHE_SETTINGS_DESELECT_ALL =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_deselect_all");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_deselect_all");
     private static final int DRAWABLE_MORPHE_SETTINGS_COPY_ALL =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_copy_all");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_copy_all");
     private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_RIGHT_ONE =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_right_one");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_right_one");
     private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_RIGHT_DOUBLE =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_right_double");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_right_double");
     private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_LEFT_ONE =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_left_one");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_left_one");
     private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_LEFT_DOUBLE =
-            getResourceIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_left_double");
+            getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_left_double");
 
     /**
      * Flags to hide from the UI.

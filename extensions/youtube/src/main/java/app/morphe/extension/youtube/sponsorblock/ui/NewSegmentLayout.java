@@ -1,8 +1,8 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
-import static app.morphe.extension.shared.Utils.getResourceColor;
-import static app.morphe.extension.shared.Utils.getResourceDimensionPixelSize;
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getColor;
+import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -46,7 +47,7 @@ public final class NewSegmentLayout extends FrameLayout {
                             final int defStyleAttr, final int defStyleRes) {
         super(context, attributeSet, defStyleAttr, defStyleRes);
 
-        LayoutInflater.from(context).inflate(getResourceIdentifierOrThrow(context,
+        LayoutInflater.from(context).inflate(ResourceUtils.getIdentifierOrThrow(context,
                 ResourceType.LAYOUT,  "morphe_sb_new_segment"), this, true
         );
 
@@ -92,8 +93,8 @@ public final class NewSegmentLayout extends FrameLayout {
                 "Publish button clicked"
         );
 
-        defaultBottomMargin = getResourceDimensionPixelSize("brand_interaction_default_bottom_margin");
-        ctaBottomMargin = getResourceDimensionPixelSize("brand_interaction_cta_bottom_margin");
+        defaultBottomMargin = getDimensionPixelSize("brand_interaction_default_bottom_margin");
+        ctaBottomMargin = getDimensionPixelSize("brand_interaction_cta_bottom_margin");
     }
 
     /**
@@ -106,7 +107,7 @@ public final class NewSegmentLayout extends FrameLayout {
      */
     private void initializeButton(final Context context, final String resourceIdentifierName,
                                   final ButtonOnClickHandlerFunction handler, final String debugMessage) {
-        ImageButton button = findViewById(getResourceIdentifierOrThrow(context, ResourceType.ID, resourceIdentifierName));
+        ImageButton button = findViewById(ResourceUtils.getIdentifierOrThrow(context, ResourceType.ID, resourceIdentifierName));
 
         // Add ripple effect
         RippleDrawable rippleDrawable = new RippleDrawable(
@@ -133,7 +134,7 @@ public final class NewSegmentLayout extends FrameLayout {
         setLayoutParams(params);
 
         GradientDrawable backgroundDrawable = new GradientDrawable();
-        backgroundDrawable.setColor(getResourceColor("skip_ad_button_background_color"));
+        backgroundDrawable.setColor(getColor("skip_ad_button_background_color"));
         final float cornerRadius = squareLayout ? 0f : Dim.dp16;
         backgroundDrawable.setCornerRadius(cornerRadius);
         setBackground(backgroundDrawable);

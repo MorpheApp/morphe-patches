@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
@@ -15,7 +16,7 @@ import app.morphe.extension.youtube.videoplayer.PlayerControlButton;
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
 
-    private static final int DRAWABLE_SB_LOGO = Utils.getResourceIdentifierOrThrow(
+    private static final int DRAWABLE_SB_LOGO = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, Utils.appIsUsingBoldIcons()
                     ? "morphe_sb_logo_bold"
                     : "morphe_sb_logo"

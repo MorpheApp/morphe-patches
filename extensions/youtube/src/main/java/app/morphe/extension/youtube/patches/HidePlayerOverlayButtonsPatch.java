@@ -1,6 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,10 +49,10 @@ public final class HidePlayerOverlayButtonsPatch {
     private static final boolean HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS_ENABLED
             = Settings.HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS.get();
 
-    private static final int PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID = getResourceIdentifierOrThrow(
+    private static final int PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID = getIdentifierOrThrow(
             ResourceType.ID, "player_control_previous_button_touch_area");
 
-    private static final int PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID = getResourceIdentifierOrThrow(
+    private static final int PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID = getIdentifierOrThrow(
             ResourceType.ID, "player_control_next_button_touch_area");
 
     /**

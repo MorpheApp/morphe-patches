@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
@@ -138,8 +139,8 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
         } else if (preference instanceof EditTextPreference editPref) {
             editPref.setText(setting.get().toString());
         } else if (preference instanceof ListPreference listPref) {
-            listPref.setEntries(Utils.getResourceStringArray(key + "_entries"));
-            listPref.setEntryValues(Utils.getResourceStringArray(key + "_entry_values"));
+            listPref.setEntries(ResourceUtils.getStringArray(key + "_entries"));
+            listPref.setEntryValues(ResourceUtils.getStringArray(key + "_entry_values"));
             listPref.setValue(setting.get().toString());
 
             if (preference instanceof CustomDialogListPreference dialogPref) {

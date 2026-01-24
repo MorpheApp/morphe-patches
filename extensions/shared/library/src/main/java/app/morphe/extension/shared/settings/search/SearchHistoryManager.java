@@ -1,7 +1,7 @@
 package app.morphe.extension.shared.settings.search;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 import static app.morphe.extension.shared.settings.BaseSettings.SETTINGS_SEARCH_ENTRIES;
 import static app.morphe.extension.shared.settings.BaseSettings.SETTINGS_SEARCH_HISTORY;
 
@@ -38,35 +38,35 @@ public class SearchHistoryManager {
      */
     private static final int MAX_HISTORY_SIZE = 5;  // Maximum history items stored.
 
-    private static final int ID_CLEAR_HISTORY_BUTTON = getResourceIdentifierOrThrow(
+    private static final int ID_CLEAR_HISTORY_BUTTON = getIdentifierOrThrow(
             ResourceType.ID, "clear_history_button");
-    private static final int ID_HISTORY_TEXT = getResourceIdentifierOrThrow(
+    private static final int ID_HISTORY_TEXT = getIdentifierOrThrow(
             ResourceType.ID, "history_text");
-    private static final int ID_HISTORY_ICON = getResourceIdentifierOrThrow(
+    private static final int ID_HISTORY_ICON = getIdentifierOrThrow(
             ResourceType.ID, "history_icon");
-    private static final int ID_DELETE_ICON = getResourceIdentifierOrThrow(
+    private static final int ID_DELETE_ICON = getIdentifierOrThrow(
             ResourceType.ID, "delete_icon");
-    private static final int ID_EMPTY_HISTORY_TITLE = getResourceIdentifierOrThrow(
+    private static final int ID_EMPTY_HISTORY_TITLE = getIdentifierOrThrow(
             ResourceType.ID, "empty_history_title");
-    private static final int ID_EMPTY_HISTORY_SUMMARY = getResourceIdentifierOrThrow(
+    private static final int ID_EMPTY_HISTORY_SUMMARY = getIdentifierOrThrow(
             ResourceType.ID, "empty_history_summary");
-    private static final int ID_SEARCH_HISTORY_HEADER = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_HISTORY_HEADER = getIdentifierOrThrow(
             ResourceType.ID, "search_history_header");
-    private static final int ID_SEARCH_TIPS_SUMMARY = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_TIPS_SUMMARY = getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_search_tips_summary");
-    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_SCREEN = getResourceIdentifierOrThrow(
+    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_SCREEN = getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_preference_search_history_screen");
-    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_ITEM = getResourceIdentifierOrThrow(
+    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_ITEM = getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_preference_search_history_item");
-    private static final int ID_SEARCH_HISTORY_LIST = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_HISTORY_LIST = getIdentifierOrThrow(
             ResourceType.ID, "search_history_list");
-    private static final int ID_SEARCH_REMOVE_ICON = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_REMOVE_ICON = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_remove");
-    private static final int ID_SEARCH_REMOVE_ICON_BOLD = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_REMOVE_ICON_BOLD = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_remove_bold");
-    private static final int ID_SEARCH_ARROW_TIME_ICON = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_ARROW_TIME_ICON = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_arrow_time");
-    private static final int ID_SEARCH_ARROW_TIME_ICON_BOLD = getResourceIdentifierOrThrow(
+    private static final int ID_SEARCH_ARROW_TIME_ICON_BOLD = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_arrow_time_bold");
 
     private final Deque<String> searchHistory;
