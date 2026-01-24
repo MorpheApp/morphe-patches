@@ -10,9 +10,8 @@ public class FIxLikeButtonPatch {
 
     private static final String THEMED_LIKE_ANIMATIONS_PREFIX =
             "https://www.gstatic.com/youtube/img/lottie/custom_animated_like_icon/";
-    // FIXME: Before merging to the dev branch, change this value to 'https://cdn.jsdelivr.net/gh/MorpheApp/morphe-patches@dev/patches/src/main/resources/actionbar/assets/'
     private static final String THEMED_LIKE_ANIMATIONS_LEGACY_ICON_RESIZED_URL_PREFIX =
-            "https://cdn.jsdelivr.net/gh/MorpheApp/morphe-patches@refs/heads/fix/like-button/patches/src/main/resources/actionbar/assets/";
+            "https://cdn.jsdelivr.net/gh/MorpheApp/morphe-patches@dev/patches/src/main/resources/actionbar/assets/";
     private static final String THEMED_LIKE_ANIMATIONS_LEGACY_DARK_ICON_RESIZED_URL =
             THEMED_LIKE_ANIMATIONS_LEGACY_ICON_RESIZED_URL_PREFIX + "animated_like_icon_dark_v4.json";
     private static final String THEMED_LIKE_ANIMATIONS_LEGACY_LIGHT_ICON_RESIZED_URL =
