@@ -51,6 +51,7 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.Opcode.CONST_STRING
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_OBJECT
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_WIDE
@@ -162,7 +163,7 @@ internal fun Int.toPublicAccessFlags(): Int {
  * @param method The [Method] to find.
  * @return The [MutableMethod].
  */
-fun MutableClass.findMutableMethodOf(method: Method) = this.methods.first {
+fun MutableClass.findMutableMethodOf(method: MethodReference) = this.methods.first {
     MethodUtil.methodSignaturesMatch(it, method)
 }
 
@@ -502,6 +503,21 @@ fun Method.indexOfFirstInstructionOrThrow(startIndex: Int = 0, filter: Instructi
     val index = indexOfFirstInstruction(startIndex, filter)
     if (index < 0) {
         throw PatchException("Could not find instruction index")
+    }
+
+    return index
+}
+
+fun Method.indexOfFirstStringInstruction(str: String) =
+    indexOfFirstInstruction {
+        opcode == CONST_STRING &&
+                getReference<StringReference>()?.string == str
+    }
+
+fun Method.indexOfFirstStringInstructionOrThrow(str: String): Int {
+    val index = indexOfFirstStringInstruction(str)
+    if (index < 0) {
+        throw PatchException("Found string value for: '$str' but method does not contain the id: $this")
     }
 
     return index
@@ -1122,3 +1138,12 @@ fun customLiteral(literalSupplier: () -> Long): ((method: Method, classDef: Clas
     { method, _ ->
         method.containsLiteralInstruction(literalSupplier())
     }
+
+internal fun MutableMethod.methodSignature(): String {
+    var methodCall = "$definingClass->$name("
+    for (i in 0 until parameters.size) {
+        methodCall += parameterTypes[i]
+    }
+    methodCall += ")$returnType"
+    return methodCall
+}
