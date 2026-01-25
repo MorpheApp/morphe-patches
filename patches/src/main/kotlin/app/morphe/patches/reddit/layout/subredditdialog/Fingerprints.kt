@@ -2,6 +2,7 @@ package app.morphe.patches.reddit.layout.subredditdialog
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.string
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -37,7 +38,9 @@ internal fun listOfUserIsSubscriberInstruction(method: Method) =
 internal val nsfwAlertEmitFingerprint = Fingerprint(
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    strings = listOf("nsfwAlertDelegate"),
+    filters = listOf(
+        string("nsfwAlertDelegate")
+    ),
     custom = { method, classDef ->
         classDef.type.startsWith("Lcom/reddit/screens/pager/v2/") &&
                 method.name == "emit" &&
@@ -47,6 +50,7 @@ internal val nsfwAlertEmitFingerprint = Fingerprint(
     }
 )
 
+// TODO: Replace with methodCall() instruction filter usage
 internal fun indexOfGetOver18Instruction(methodDef: Method) =
     methodDef.indexOfFirstInstruction {
         val reference = getReference<MethodReference>()
@@ -55,6 +59,7 @@ internal fun indexOfGetOver18Instruction(methodDef: Method) =
                 reference.returnType == "Ljava/lang/Boolean;"
     }
 
+// TODO: Replace with methodCall() instruction filter usage
 internal fun indexOfIsIncognitoInstruction(methodDef: Method) =
     methodDef.indexOfFirstInstruction {
         val reference = getReference<MethodReference>()
@@ -63,6 +68,7 @@ internal fun indexOfIsIncognitoInstruction(methodDef: Method) =
                 reference.returnType == "Z"
     }
 
+// TODO: Replace with methodCall() instruction filter usage
 internal fun indexOfHasBeenVisitedInstruction(method: Method) =
     method.indexOfFirstInstruction {
         val reference = getReference<MethodReference>()

@@ -13,7 +13,6 @@ import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -54,34 +53,33 @@ val adsPatch = bytecodePatch(
             }
         }
 
-        val immutableListBuilderReference =
-            with (immutableListBuilderFingerprint.method) {
-                val index = indexOfImmutableListBuilderInstruction(this)
-
-                getInstruction<ReferenceInstruction>(index).reference
-            }
+        val immutableListBuilderReference = immutableListBuilderFingerprint.instructionMatches
+            .last().getInstruction<ReferenceInstruction>().reference
 
         adPostSectionConstructorFingerprint.match(
             mutableClassDefBy(adPostSectionToStringFingerprint.classDef)
-        ).method.apply {
-            val sectionIndex =
-                indexOfFirstStringInstructionOrThrow("sections")
-            val sectionRegister =
-                getInstruction<FiveRegisterInstruction>(sectionIndex + 1).registerC
+        ).let {
+            it.method.apply {
+                val sectionIndex = it.instructionMatches.first().index
+                val sectionRegister = getInstruction<FiveRegisterInstruction>(
+                    sectionIndex + 1
+                ).registerC
 
-            addInstructionsWithLabels(
-                sectionIndex, """
-                        invoke-static {v$sectionRegister}, $EXTENSION_CLASS_DESCRIPTOR->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
+                addInstructionsWithLabels(
+                    sectionIndex,
+                    """
+                        invoke-static { v$sectionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
                         move-result-object v$sectionRegister
                         if-nez v$sectionRegister, :ignore
                         new-instance v$sectionRegister, Ljava/util/ArrayList;
-                        invoke-direct {v$sectionRegister}, Ljava/util/ArrayList;-><init>()V
-                        invoke-static {v$sectionRegister}, $immutableListBuilderReference
+                        invoke-direct { v$sectionRegister }, Ljava/util/ArrayList;-><init>()V
+                        invoke-static { v$sectionRegister }, $immutableListBuilderReference
                         move-result-object v$sectionRegister
                         :ignore
                         nop
-                        """
-            )
+                    """
+                )
+            }
         }
 
         // region Filter comment ads

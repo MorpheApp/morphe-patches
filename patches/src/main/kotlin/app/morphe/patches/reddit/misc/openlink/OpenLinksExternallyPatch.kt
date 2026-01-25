@@ -50,16 +50,17 @@ val openLinksExternallyPatch = bytecodePatch(
 
             articleConstructorFingerprint.match(
                 this.mutableClassDefBy(articleToStringFingerprint.classDef)
-            ).method.apply {
-                val stringIndex = indexOfFirstStringInstructionOrThrow("url")
-                val nullCheckIndex = indexOfNullCheckInstruction(this, stringIndex)
-                val stringRegister = getInstruction<FiveRegisterInstruction>(nullCheckIndex).registerC
+            ).let {
+                it.method.apply {
+                    val nullCheckIndex = it.instructionMatches.last().index
+                    val stringRegister = getInstruction<FiveRegisterInstruction>(nullCheckIndex).registerC
 
-                addInstruction(
-                    nullCheckIndex + 1,
-                    "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                            "openLinksExternally(Ljava/lang/String;)V"
-                )
+                    addInstruction(
+                        nullCheckIndex + 1,
+                        "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                                "openLinksExternally(Ljava/lang/String;)V"
+                    )
+                }
             }
         }
 

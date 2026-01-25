@@ -2,6 +2,7 @@ package app.morphe.patches.reddit.layout.trendingtoday
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -17,7 +18,9 @@ internal val searchTypeaheadListDefaultPresentationToStringFingerprint = Fingerp
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = emptyList(),
-    strings = listOf("OnSearchTypeaheadListDefaultPresentation(title="),
+    filters = listOf(
+        string("OnSearchTypeaheadListDefaultPresentation(title=")
+    ),
     custom = { methodDef, _ ->
         methodDef.name == "toString"
     }
@@ -34,7 +37,9 @@ internal val trendingTodayTitleFingerprint = Fingerprint(
 
 internal val trendingTodayItemFingerprint = Fingerprint(
     returnType = "V",
-    strings = listOf("search_trending_item"),
+    filters = listOf(
+        string("search_trending_item")
+    ),
     custom = { _, classDef ->
         classDef.type.startsWith("Lcom/reddit/search/combined/ui/composables")
     },
@@ -42,7 +47,9 @@ internal val trendingTodayItemFingerprint = Fingerprint(
 
 internal val trendingTodayItemLegacyFingerprint = Fingerprint(
     returnType = "V",
-    strings = listOf("search_trending_item"),
+    filters = listOf(
+        string("search_trending_item")
+    ),
     custom = { _, classDef ->
         classDef.type.startsWith("Lcom/reddit/typeahead/ui/zerostate/composables")
     },

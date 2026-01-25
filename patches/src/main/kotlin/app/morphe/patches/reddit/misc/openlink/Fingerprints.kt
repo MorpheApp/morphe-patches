@@ -2,23 +2,26 @@ package app.morphe.patches.reddit.misc.openlink
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.util.getReference
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal val customReportsFingerprint = Fingerprint(
     returnType = "V",
-    strings = listOf("https://www.crisistextline.org/"),
+    filters = listOf(
+        string("https://www.crisistextline.org/")
+    ),
     custom = { methodDef, classDef ->
         classDef.type.contains("/customreports/") &&
                 indexOfScreenNavigatorInstruction(methodDef) >= 0
     }
 )
 
+// TODO: Replace with methodCall() instruction filter usage
 fun indexOfScreenNavigatorInstruction(method: Method) =
     method.indexOfFirstInstruction {
         (this as? ReferenceInstruction)?.reference?.toString()
@@ -41,15 +44,24 @@ internal val screenNavigatorFingerprint = Fingerprint(
 internal val articleConstructorFingerprint = Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    strings = listOf("url"),
-    custom = { methodDef, _ ->
-        indexOfNullCheckInstruction(methodDef) >= 0
-    }
+    filters = listOf(
+        string("url"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "V",
+            parameters = listOf(
+                "L",
+                "Ljava/lang/String;"
+            )
+        )
+    )
 )
 
 internal val articleToStringFingerprint = Fingerprint(
     returnType = "Ljava/lang/String;",
-    strings = listOf("Article(postId="),
+    filters = listOf(
+        string("Article(postId=")
+    ),
     custom = { methodDef, _ ->
         methodDef.name == "toString"
     }
@@ -62,12 +74,3 @@ internal val fbpActivityOnCreateFingerprint = Fingerprint(
                 methodDef.name == "onCreate"
     }
 )
-
-internal fun indexOfNullCheckInstruction(methodDef: Method, startIndex: Int = 0) =
-    methodDef.indexOfFirstInstruction(startIndex) {
-        val reference = getReference<MethodReference>()
-        opcode == Opcode.INVOKE_STATIC &&
-                reference?.returnType == "V" &&
-                reference.parameterTypes.size == 2 &&
-                reference.parameterTypes[1] == "Ljava/lang/String;"
-    }

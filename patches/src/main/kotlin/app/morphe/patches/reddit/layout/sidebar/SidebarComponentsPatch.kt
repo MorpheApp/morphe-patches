@@ -165,11 +165,12 @@ val sidebarComponentsPatch = bytecodePatch(
                     val collectionRegister = collectionInstruction.registerD
 
                     addInstructions(
-                        collectionIndex, """
-                        invoke-static {v$iterableRegister}, $EXTENSION_CLASS_DESCRIPTOR->${methodNamePrefix}Divider(Ljava/lang/Iterable;)Ljava/lang/Iterable;
-                        move-result-object v$iterableRegister
-                        invoke-static {v$collectionRegister}, $EXTENSION_CLASS_DESCRIPTOR->${methodNamePrefix}Shelf(Ljava/util/Collection;)Ljava/util/Collection;
-                        move-result-object v$collectionRegister
+                        collectionIndex,
+                        """
+                            invoke-static { v$iterableRegister }, $EXTENSION_CLASS_DESCRIPTOR->${methodNamePrefix}Divider(Ljava/lang/Iterable;)Ljava/lang/Iterable;
+                            move-result-object v$iterableRegister
+                            invoke-static { v$collectionRegister }, $EXTENSION_CLASS_DESCRIPTOR->${methodNamePrefix}Shelf(Ljava/util/Collection;)Ljava/util/Collection;
+                            move-result-object v$collectionRegister
                         """
                     )
                 }

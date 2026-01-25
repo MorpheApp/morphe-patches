@@ -2,6 +2,8 @@ package app.morphe.patches.reddit.layout.sidebar
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.opcode
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -11,17 +13,17 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal val communityDrawerPresenterConstructorFingerprint = Fingerprint(
-    returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    strings = listOf("communityDrawerSettings"),
-    custom = { methodDef, _ ->
-        indexOfHeaderItemInstruction(methodDef) >= 0
-    }
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(name = "RECENTLY_VISITED")
+    ),
+    strings = listOf("communityDrawerSettings")
 )
 
 internal val communityDrawerPresenterFingerprint = Fingerprint(
-    returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     parameters = emptyList(),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.XOR_INT_2ADDR,
@@ -33,6 +35,7 @@ internal val communityDrawerPresenterFingerprint = Fingerprint(
     }
 )
 
+// TODO: Convert this to methodCall() instruction filter
 internal fun indexOfKotlinCollectionInstruction(
     methodDef: Method,
     startIndex: Int = 0
@@ -47,27 +50,23 @@ internal fun indexOfKotlinCollectionInstruction(
 }
 
 internal val redditProLoaderFingerprint = Fingerprint(
-    returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        fieldAccess(name = "REDDIT_PRO"),
+        opcode(Opcode.IPUT_OBJECT)
+    ),
     custom = { methodDef, _ ->
-        methodDef.parameterTypes.firstOrNull() == "Ljava/lang/Object;" &&
-                indexOfHeaderItemInstruction(methodDef, "REDDIT_PRO") >= 0
+        methodDef.parameterTypes.firstOrNull() == "Ljava/lang/Object;"
     }
 )
 
-internal fun indexOfHeaderItemInstruction(
-    methodDef: Method,
-    fieldName: String = "RECENTLY_VISITED",
-) = methodDef.indexOfFirstInstruction {
-    getReference<FieldReference>()?.name == fieldName
-}
-
 internal val sidebarComponentsPatchFingerprint = Fingerprint(
-    returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    custom = { methodDef, _ ->
-        methodDef.definingClass.endsWith("/SidebarComponentsPatch;") &&
-                methodDef.name == "getHeaderItemName"
+    returnType = "Ljava/lang/String;",
+    custom = { methodDef, classDef ->
+        methodDef.name == "getHeaderItemName" &&
+                classDef.type.endsWith("/SidebarComponentsPatch;")
     }
 )
 
@@ -81,3 +80,11 @@ internal val headerItemUiModelToStringFingerprint = Fingerprint(
         methodDef.name == "toString"
     }
 )
+
+// TODO: Replace with fieldAccess() instruction filter usage.
+internal fun indexOfHeaderItemInstruction(
+    methodDef: Method,
+    fieldName: String = "RECENTLY_VISITED",
+) = methodDef.indexOfFirstInstruction {
+    getReference<FieldReference>()?.name == fieldName
+}
