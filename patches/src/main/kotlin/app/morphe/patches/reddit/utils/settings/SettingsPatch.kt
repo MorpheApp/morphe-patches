@@ -5,6 +5,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
@@ -16,6 +18,7 @@ import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.methodSignature
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.iface.Method
@@ -210,9 +213,20 @@ internal fun updateSettingsLabel(label: String) =
         )
     }
 
+context(BytecodePatchContext)
 internal fun enableExtensionPatch(patchExtension: String) {
+    val methodName = "setPatchEnabled"
+    val returnType = "V"
+    val methodCall = "$patchExtension->$methodName()$returnType"
+
+    // Verify the extension class has the expected method.
+    classDefBy(patchExtension).methods.firstOrNull() {
+        AccessFlags.STATIC.isSet(it.accessFlags) && it.name == methodName
+                && it.parameters.isEmpty() && it.returnType == returnType
+    } ?: throw PatchException("Could not find required extension method: $methodCall")
+
     activityOnCreateMethod.addInstruction(
         0,
-        "invoke-static {}, $patchExtension->setPatchEnabled()V"
+        "invoke-static {}, $methodCall"
     )
 }
