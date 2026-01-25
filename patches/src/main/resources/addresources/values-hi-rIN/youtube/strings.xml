@@ -544,7 +544,9 @@ Second \"item\" text"</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_switch_create_with_notifications_button_summary_on">बटन क्रिएट स्विच्ड है नोटिफिकेशन बटन से</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Hide \'Key concepts\'</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं पड़ता है, तो इंकोग्नितो मोड में स्विच करने की कोशिश करें।</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">कुछ डिवाइसों पर इस सुविधा को सक्रिय करना सिस्टम नेविगेशन बार को ट्रांस्परेंट बना सकता है।</string>

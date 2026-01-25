@@ -578,13 +578,9 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_notifications_button_summary_off">Bildirişlər düyməsi görünür</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">\"Yarat\"ı \"Bildirişlər\" ilə dəyişdir</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"Yarat düyməsi Bildirişlər düyməsi ilə dəyişdirilir
-
-Qeyd: Bunu aktivləşdirmə video reklamları da məcburi olaraq gizlədir"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Yarat düyməsi, Bildirişlər düyməsi ilə əvəzlənir</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">\"Yarat\" düyməsi, \"Bildirişlər\" düyməsi ilə əvəzlənmir</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Bu seçimin qapanması Shorts reklam əngəllənməsin də qapadacaq.
-
-Bu seçimi dəyişdirmə işə düşmürsə, Gizli rejimə keçməyə çalışın."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Əgər bu parametri dəyişdirmə effektiv deyil olsa, Gizli Modda sınamaq cəhd edin.</string>
   <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Etiketlər gizlidir</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Etiketlər göstərilir</string>

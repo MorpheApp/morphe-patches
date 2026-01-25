@@ -7,6 +7,7 @@ import app.morphe.patches.music.playservice.is_7_16_or_greater
 import app.morphe.patches.music.playservice.is_7_33_or_greater
 import app.morphe.patches.music.playservice.is_8_11_or_greater
 import app.morphe.patches.music.playservice.is_8_15_or_greater
+import app.morphe.patches.music.playservice.is_8_40_or_greater
 import app.morphe.patches.music.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -21,6 +22,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixMediaFetchHotConfig = { is_7_16_or_greater },
     fixMediaFetchHotConfigAlternative = { is_8_11_or_greater && !is_8_15_or_greater },
     fixParsePlaybackResponseFeatureFlag = { is_7_33_or_greater },
+    fixMediaSessionFeatureFlag = { is_8_40_or_greater },
 
     block = {
         dependsOn(
@@ -35,6 +37,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                 "7.29.52",
                 "8.10.52",
                 "8.37.56",
+                "8.40.54"
             )
         )
     },

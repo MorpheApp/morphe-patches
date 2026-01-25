@@ -578,13 +578,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">לחצן עדכונים מוצג</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">החלף יצירה עם עדכונים</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"לחצן יצירה מוחלף בלחצן עדכונים
-
-הערה: הפעלת אפשרות זו גם מסתירה באופן כפוי מודעות סרטון"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">לחצן יצירה מוחלף עם לחצן התראות</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">לחצן יצירה לא יוחלף עם לחצן עדכונים</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"השבתת הגדרה זו תשבית גם את חסימת המודעות של Shorts.
-
-אם שינוי הגדרה זו אינו נכנס לתוקף, נסה לעבור למצב פרטי."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">אם שינוי הגדרון זה לא יפעל, נסה לשנות למוד אינקוגניטו.</string>
   <string name="morphe_hide_navigation_button_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">התוויות מוסתרות</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">התוויות מוצגות</string>

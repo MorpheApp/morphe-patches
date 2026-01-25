@@ -1,3 +1,67 @@
+# [1.8.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.8...v1.8.0-dev.9) (2026-01-24)
+
+
+### Bug Fixes
+
+* **Custom branding:** Resolve background playback crash with custom branded root installation ([3039650](https://github.com/MorpheApp/morphe-patches/commit/3039650460fdd2731b9ac1622127aa04a2b8a322))
+
+# [1.8.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.7...v1.8.0-dev.8) (2026-01-24)
+
+
+### Bug Fixes
+
+* **YouTube - Hide Shorts components:** Fix "Hide sound metadata label" hiding other components ([#277](https://github.com/MorpheApp/morphe-patches/issues/277)) ([b55ebe4](https://github.com/MorpheApp/morphe-patches/commit/b55ebe4f0fac71905ce8c02185a174c661627b70))
+
+# [1.8.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.6...v1.8.0-dev.7) (2026-01-24)
+
+
+### Bug Fixes
+
+* **YouTube:** Replace themed like animation applied from wrong version due to server-side fault ([#261](https://github.com/MorpheApp/morphe-patches/issues/261)) ([556dbb6](https://github.com/MorpheApp/morphe-patches/commit/556dbb68839d5c73dea20e23079d91b20f02d109))
+
+# [1.8.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.5...v1.8.0-dev.6) (2026-01-24)
+
+
+### Bug Fixes
+
+* **YouTube - Hide ads:** `Hide video ads` does not hide Shorts ads ([#260](https://github.com/MorpheApp/morphe-patches/issues/260)) ([9078d92](https://github.com/MorpheApp/morphe-patches/commit/9078d92c444d1d6abe095a3a694a518e7fb078e9))
+
+# [1.8.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.4...v1.8.0-dev.5) (2026-01-24)
+
+
+### Features
+
+* Skip publishing to GitHub packages ([#275](https://github.com/MorpheApp/morphe-patches/issues/275)) ([71b7db4](https://github.com/MorpheApp/morphe-patches/commit/71b7db4d38ac44ce6d0b9de111599485e1de015a))
+
+# [1.8.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.3...v1.8.0-dev.4) (2026-01-24)
+
+
+### Features
+
+* **Enable debugging:** Allow overriding String/long/double flags in debug flag manager ([11b61b5](https://github.com/MorpheApp/morphe-patches/commit/11b61b5a509a4d659e69e9cfd9c3cdcad70dd9cb))
+
+# [1.8.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.2...v1.8.0-dev.3) (2026-01-23)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Disable client flag that breaks playback with experimental app targets ([8cace8b](https://github.com/MorpheApp/morphe-patches/commit/8cace8b442d32c07b2fcd4da3b596497608e626c))
+
+# [1.8.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-01-23)
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.04.221` ([ba2e581](https://github.com/MorpheApp/morphe-patches/commit/ba2e581bfbe1ebe9fb10fa49b33df43726c966f2))
+
+# [1.8.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.7.0...v1.8.0-dev.1) (2026-01-23)
+
+
+### Features
+
+* **YouTube Music:** Support version `8.40.54` ([639819d](https://github.com/MorpheApp/morphe-patches/commit/639819de0bec5f06fee4ff11c33f149521117d2b))
+* **YouTube:** Support version `20.40.45` ([9514870](https://github.com/MorpheApp/morphe-patches/commit/9514870fba460f21627ebfd6f849510c01321d91))
+
 # [1.7.0](https://github.com/MorpheApp/morphe-patches/compare/v1.6.0...v1.7.0) (2026-01-22)
 
 

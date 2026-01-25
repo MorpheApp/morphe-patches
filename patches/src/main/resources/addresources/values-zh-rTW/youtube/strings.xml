@@ -578,13 +578,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">已顯示「通知」按鈕</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"「建立」按鈕與「通知」按鈕對調
-
-注意：啟用此功能也會強制隱藏影片廣告"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">「建立」按鈕已與「通知」按鈕對調</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">「建立」按鈕不與「通知」按鈕對調</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"停用此設定也會停用 Shorts 的廣告攔截功能。
-
-如果變更此設定沒有生效，請試試看切換到無痕模式。"</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">如果更改此設定沒有生效，請嘗試切換到無痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">已隱藏「標籤」</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">已顯示「標籤」</string>

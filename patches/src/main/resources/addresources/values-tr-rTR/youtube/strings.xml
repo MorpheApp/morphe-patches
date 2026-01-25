@@ -578,13 +578,9 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_hide_notifications_button_summary_off">Bildirimler düğmesi görünür</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Oluştur ve Bildirimleri yer değiştir</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"Oluştur düğmesi ile Bildirimler düğmesinin yerleri değiştirilir
-
-Not: Bunu etkinleştirmek aynı zamanda video reklamlarını zorla gizler"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Oluştur düğmesi ile Bildirimler düğmesinin yerleri değiştirilmez</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Oluştur düğmesi ile Bildirimler düğmesinin yerleri değiştirilmez</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Bu ayarın devre dışı bırakılması, Shorts reklam engellemeyi de devre dışı bırakır.
-
-Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Bu ayar değiştirilmezse, Incognito moduna geçiş yapın.</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Etiketler gizli</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Etiketler görünür</string>

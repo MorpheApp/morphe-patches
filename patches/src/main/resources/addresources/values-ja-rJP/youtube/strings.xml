@@ -443,8 +443,8 @@ Second \"item\" text"</string>
 画面右側を縦にスワイプして音量を調節します"</string>
   <string name="morphe_swipe_volume_summary_off">全画面表示中の音量ジェスチャーは無効です</string>
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
-  <string name="morphe_swipe_press_to_engage_summary_on">長押しスワイプは有効です\n\n画面を長押ししてから縦にスワイプすると、明るさ / 音量ジェスチャーとして認識されます</string>
-  <string name="morphe_swipe_press_to_engage_summary_off">長押しスワイプは無効です\n\n画面を縦にスワイプすると、明るさ / 音量ジェスチャーとして認識されます</string>
+  <string name="morphe_swipe_press_to_engage_summary_on">長押しスワイプは有効です\n\n明るさ / 音量ジェスチャーの開始には、画面の長押しが必要です</string>
+  <string name="morphe_swipe_press_to_engage_summary_off">長押しスワイプは無効です\n\n明るさ / 音量ジェスチャーの開始には、画面の長押しは必要ありません</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
   <string name="morphe_swipe_haptic_feedback_summary_on">触覚フィードバックは有効です</string>
   <string name="morphe_swipe_haptic_feedback_summary_off">触覚フィードバックは無効です</string>
@@ -579,13 +579,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">通知ボタンは表示されます</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">「作成」と「通知」を入れ替え</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"作成ボタンと通知ボタンが入れ替わります
-
-注: これにより、動画広告も強制的に非表示になります"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">作成ボタンと通知ボタンが入れ替わります</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">作成ボタンと通知ボタンは入れ替わりません</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"この設定をオフにすると、ショート動画の広告ブロックも無効になります。
-
-この設定を変更しても効果がない場合は、シークレット モードに切り替えてみてください。"</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">この設定を変更しても効果がない場合は、シークレット モードに切り替えてみてください。</string>
   <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">ナビゲーション ボタンはアイコンのみで表示されます</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">ナビゲーション ボタンはアイコンと文字で表示されます</string>

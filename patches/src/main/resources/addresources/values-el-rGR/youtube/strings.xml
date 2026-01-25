@@ -580,13 +580,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">Εμφανίζεται</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Εναλλαγή κουμπιού «Δημιουργία» με κουμπί «Ειδοποιήσεις»</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"Γίνεται εναλλαγή θέσεων των κουμπιών «Δημιουργία» και «Ειδοποιήσεις»
-
-Σημείωση: Η ενεργοποίηση αυτής της ρύθμισης εξαναγκάζει επίσης την απόκρυψη των διαφημίσεων βίντεο"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Δε γίνεται εναλλαγή του κουμπιού δημιουργίας σε κουμπί ειδοποιήσεων</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Δε γίνεται εναλλαγή του κουμπιού δημιουργίας σε κουμπί ειδοποιήσεων</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Η απενεργοποίηση αυτής της ρύθμισης θα έχει ως αποτέλεσμα την εμφάνιση διαφημίσεων Shorts.
-
-Εάν η αλλαγή αυτής της ρύθμισης δεν έχει αποτέλεσμα, δοκιμάστε να μεταβείτε σε λειτουργία ανώνυμης περιήγησης."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Εάν η αλλαγή αυτής της ρύθμισης δεν εφαρμόζεται, δοκιμάστε να μεταβείτε σε λειτουργία Incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Εμφανίζονται</string>

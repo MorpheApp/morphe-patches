@@ -7,6 +7,9 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.contexthook.Endpoint
+import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
+import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -30,7 +33,8 @@ val navigationButtonsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         navigationBarHookPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        clientContextHookPatch,
     )
 
     compatibleWith(
@@ -40,6 +44,7 @@ val navigationButtonsPatch = bytecodePatch(
             "20.26.46",
             "20.31.42",
             "20.37.48",
+            "20.40.45",
         )
     )
 
@@ -77,21 +82,10 @@ val navigationButtonsPatch = bytecodePatch(
         )
 
         // Switch create with notifications button.
-        AddCreateButtonViewFingerprint.let {
-            it.method.apply {
-                val conditionalCheckIndex = it.instructionMatches[1].index
-                val conditionRegister =
-                    getInstruction<OneRegisterInstruction>(conditionalCheckIndex).registerA
-
-                addInstructions(
-                    conditionalCheckIndex,
-                    """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->switchCreateWithNotificationButton()Z
-                        move-result v$conditionRegister
-                    """,
-                )
-            }
-        }
+        addOSNameHook(
+            Endpoint.GUIDE,
+            "$EXTENSION_CLASS_DESCRIPTOR->switchCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;",
+        )
 
         // Hide navigation button labels.
         CreatePivotBarFingerprint.let {

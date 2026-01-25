@@ -579,13 +579,9 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_hide_notifications_button_summary_off">Nút thông báo được hiển thị</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Chuyển vị nút Tạo với nút Thông báo</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"Nút Tạo được đổi với nút Thông báo
-
-Lưu ý: Bật tính năng này cũng ẩn video quảng cáo"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Nút Tạo đã được chuyển đổi với nút Thông báo</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Nút Tạo không đổi với nút Thông báo</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Tắt cài đặt này cũng sẽ tắt chặn quảng cáo trên Shorts.
-
-Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển sang chế độ Ẩn danh."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển sang chế độ Incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Các tên nút đã bị ẩn</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Các tên nút được hiển thị</string>

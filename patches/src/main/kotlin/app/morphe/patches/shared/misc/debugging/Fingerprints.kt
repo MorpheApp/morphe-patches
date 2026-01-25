@@ -4,25 +4,30 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal object ExperimentalFeatureFlagParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+internal object ExperimentFlagUtilFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(
         string("Unable to parse proto typed experiment flag: ")
     ),
     custom = { method, _ ->
-        // Early targets is: "L", "J", "[B"
-        // Later targets is: "L", "J"
-        method.parameters.let {
-            (it.size == 2 || it.size == 3) && it[1].type == "J"
-        }
+        // 'public static' or 'public static final'
+        AccessFlags.STATIC.isSet(method.accessFlags)
+                && AccessFlags.PUBLIC.isSet(method.accessFlags)
+                // listOf("L", "J", "[B") or listOf("L", "J")
+                && method.parameters.let {
+                    (it.size == 2 || it.size == 3) && it[1].type == "J"
+                }
     }
 )
 
 internal object ExperimentalBooleanFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Z",
-    parameters = listOf("L", "J", "Z")
+    parameters = listOf("L", "J", "Z"),
+    custom = { method, _ ->
+        // 'public static' or 'public static final'
+        AccessFlags.STATIC.isSet(method.accessFlags)
+                && AccessFlags.PUBLIC.isSet(method.accessFlags)
+    }
 )
 
 internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(

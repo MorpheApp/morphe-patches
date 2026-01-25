@@ -577,14 +577,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">알림 버튼이 표시됩니다</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">만들기와 알림 위치 교환하기</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"만들기 버튼과 알림 버튼의 위치를 교환합니다
-
-알림: 
-• 동영상 광고가 강제로 숨겨집니다"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">만들기 버튼과 알림 버튼의 위치를 교환합니다</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">만들기 버튼과 알림 버튼의 위치를 교환하지 않습니다</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"이 설정을 비활성화하면 Shorts 광고가 차단되지 않습니다.
-
-이 설정을 변경해도 적용되지 않는다면 시크릿 모드로 전환해 보세요."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">이 설정을 변경해도 적용되지 않는 경우에는 시크릿 모드로 전환해 보세요.</string>
   <string name="morphe_hide_navigation_button_labels_title">하단바 버튼 라벨 숨기기</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">라벨이 숨겨집니다</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">라벨이 표시됩니다</string>

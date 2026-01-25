@@ -578,13 +578,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">يتم عرض زر الإشعارات</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">تبديل الإنشاء بالإشعارات</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"تم تبديل زر الإنشاء بـزر الإشعارات
-
-ملاحظة: يؤدي تمكين هذا أيضًا إلى إخفاء إعلانات الفيديو بالقوة"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">يتم تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">لا يتم تبديل زر الإنشاء بزر الإشعارات</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"سيؤدي تعطيل هذا الإعداد أيضًا إلى تعطيل حظر إعلانات Shorts.
-
-إذا لم يُؤدِّ تغيير هذا الإعداد إلى أي نتيجة، جرب التبديل إلى وضع التصفّح المتخفي."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">إذا لم يتغير هذا الإعداد، جرِّب التبديل إلى وضع التصفّح المتخفي.</string>
   <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">تم إخفاء التسميات</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">يتم عرض التسميات</string>

@@ -576,13 +576,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">ปุ่มการแจ้งเตือนแสดงอยู่</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">สลับสร้างด้วยการแจ้งเตือน</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"ปุ่มสร้างถูกสลับกับปุ่มการแจ้งเตือน
-
-หมายเหตุ: การเปิดใช้งานสิ่งนี้จะซ่อนโฆษณาวิดีโอด้วย"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">ปุ่มสร้างถูกสลับกับปุ่มการแจ้งเตือน</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">ปุ่มสร้างไม่ได้ถูกสลับกับปุ่มการแจ้งเตือน</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"การปิดใช้งานการตั้งค่านี้จะปิดใช้งานการบล็อกโฆษณา Shorts ด้วย
-
-หากการเปลี่ยนการตั้งค่านี้ไม่มีผล ให้ลองสลับไปใช้โหมดไม่ระบุตัวตน"</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">ถ้าเปลี่ยนการตั้งค่านี้ยังไม่มีผล กรุณาลองสลับไปยังโหมดไม่แสดงตัวตน</string>
   <string name="morphe_hide_navigation_button_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">ป้ายกำกับถูกซ่อน</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">ป้ายกำกับถูกแสดง</string>

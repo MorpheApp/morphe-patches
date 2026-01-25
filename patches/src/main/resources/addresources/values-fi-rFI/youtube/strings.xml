@@ -578,13 +578,9 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_hide_notifications_button_summary_off">Ilmoitukset-painike näytetään</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Vaihda Luo ja Ilmoitukset</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"Luo- ja Ilmoitukset-painikkeet vaihdetaan
-
-Huomaa: Tämä piilottaa väkisin myös videomainokset"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Luo- ja Ilmoitukset-painikkeita ei vaihdeta</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Luo- ja Ilmoitukset-painikkeita ei vaihdeta</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Tämän asetuksen poistaminen käytöstä poistaa myös Shorts-mainosten eston käytöstä.
-
-Jos tämän asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa Incognito-tilaan."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Jos asetuksen muuttaminen ei ole vaikutusta, yritä vaihtaa Yksityisnäkymä-tilaan.</string>
   <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Tunnisteet piilotetaan</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Tunnisteet näytetään</string>

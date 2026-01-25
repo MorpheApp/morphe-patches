@@ -578,13 +578,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">Кнопка \"Уведомления\" в панели навигации показана</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Поменять местами кнопки \"Создать\" и \"Уведомления\"</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"Кнопка \"Создать\" поменяна местами с кнопкой \"Уведомления\"
-
-Примечание: активация данной опции также принудительно скроет видеорекламу"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Кнопка \"Создать\" поменяна местами с кнопкой \"Уведомления\"</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Кнопка \"Создать\" не поменяна местами с кнопкой \"Уведомления\"</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Отключение этого параметра также отключит блокировку рекламы в Shorts.
-
-Если изменение этого параметра не вступило в силу, попробуйте перейти в режим инкогнито."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Если изменение этого параметра не вступило в силу, попробуйте переключиться в режим Инкогнито.</string>
   <string name="morphe_hide_navigation_button_labels_title">Скрыть подписи кнопок навигации</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Подписи кнопок навигации скрыты</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Подписи кнопок навигации показаны</string>

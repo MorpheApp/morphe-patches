@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">Rólunk</string>
+  <string name="morphe_settings_screen_00_about_title">Névjegy</string>
   <string name="morphe_settings_screen_01_ads_title">Hirdetések</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternatív indexképek</string>
   <string name="morphe_settings_screen_03_feed_title">Hírfolyam</string>
@@ -578,13 +578,9 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_hide_notifications_button_summary_off">Az értesítések gomb megjelenik</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Létrehozás felcserélése az értesítésekkel</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"A Létrehozás gomb kicserélve az Értesítések gombbal
-
-Megjegyzés: Ez a beállítás a videóhirdetések kényszerű elrejtését is magában foglalja"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">A létrehozás gomb felcserélve van a értesítések gombbal</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">A létrehozás gomb nincs felcserélve az értesítések gombbal</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Ennek a beállításnak a letiltása a Shorts hirdetések blokkolását is letiltja.
-
-Ha a beállítás módosítása nem lép életbe, próbáljon meg Inkognitó módra váltani."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Ha ez a beállítás nem lép hatást, próbálj Incognito módba váltani.</string>
   <string name="morphe_hide_navigation_button_labels_title">A navigációs gombok címkéinek elrejtése</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">A címke el vannak rejtve</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">A címke meg vannak jelenítve</string>

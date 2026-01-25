@@ -70,6 +70,8 @@ fun gmsCoreSupportPatch(
     )
 
     execute {
+        // TODO: use patcher getAllClassesWithStrings()
+//        fun transformStringReferences(transform: (str: String) -> String?) = getAllClassesWithStrings().forEach {
         fun transformStringReferences(transform: (str: String) -> String?) = classDefForEach {
             val mutableClass by lazy {
                 mutableClassDefBy(it)

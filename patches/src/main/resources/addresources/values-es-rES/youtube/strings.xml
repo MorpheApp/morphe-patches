@@ -578,13 +578,9 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_hide_notifications_button_summary_off">El botón \"Notificaciones\" está visible</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Cambiar \"Crear\" con \"Notificaciones\"</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"El botón \"Crear\" se cambia por el botón \"Notificaciones\"
-
-Nota: Activar esto también ocultará forzosamente los anuncios de vídeo"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">El botón \"Crear\" se cambia por el botón \"Notificaciones\"</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">El botón \"Crear\" no se cambia por el botón \"Notificaciones\"</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Al desactivar este ajuste, también se desactivará el bloqueo de anuncios de Shorts.
-
-Si al cambiar este ajuste no se aplica, intenta cambiar al modo incógnito."</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Si cambiar este ajuste no tiene efecto, intenta cambiar al modo incógnito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas de botones de navegación</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Las etiquetas están ocultas</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Las etiquetas están visibles</string>
