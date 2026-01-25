@@ -60,14 +60,15 @@ public final class RestoreOldSearchFiltersPatch {
 
                     // If the 'Prioritize' group is found, add old search filters.
                     if (isPrioritizeGroup) {
-                        for (String[] optData : OLD_SEARCH_FILTERS) {
+                        for (String[] searchFilter : OLD_SEARCH_FILTERS) {
+                            String simpleText = searchFilter[0];
+                            String formValue = searchFilter[1];
+
                             boolean exists = groupBuilder.getSearchFilterOptionsList().stream()
-                                    .anyMatch(o -> o.getFormValue().equals(optData[1]));
+                                    .anyMatch(o -> formValue.equals(o.getFormValue()));
 
                             // Add old search filters only if they do not exist in the 'Prioritize' group.
                             if (!exists) {
-                                var simpleText = optData[0];
-                                var formValue = optData[1];
                                 var label = SearchResponseOuterClass.Label.newBuilder()
                                         .setSimpleText(simpleText)
                                         .build();
@@ -78,7 +79,7 @@ public final class RestoreOldSearchFiltersPatch {
                                         .setFormValue(formValue)
                                         .build());
 
-                                Logger.printDebug(() -> "Added filter option: " + simpleText);
+                                Logger.printDebug(() -> "Added search filter: " + simpleText);
                             }
                         }
 
