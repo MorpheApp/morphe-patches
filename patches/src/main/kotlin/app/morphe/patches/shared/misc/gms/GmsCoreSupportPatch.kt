@@ -32,6 +32,9 @@ import org.w3c.dom.Node
 
 internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/GmsCoreSupport;"
 
+/**
+ * Old vendor id for maximum backwards compatibility.
+ */
 internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
 
 /**
