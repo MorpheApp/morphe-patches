@@ -20,9 +20,9 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return OpenLinksDirectlyPatch.patchEnabled ||
-                OpenLinksExternallyPatch.patchEnabled ||
-                SanitizeUrlQueryPatch.patchEnabled;
+        return OpenLinksDirectlyPatch.isPatchIncluded() ||
+                OpenLinksExternallyPatch.isPatchIncluded() ||
+                SanitizeUrlQueryPatch.isPatchIncluded();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         addPreference(new RedditMorpheAboutPreference(getContext()));
         addPreference(new RedditImportExportPreference(getContext()));
 
-        if (OpenLinksDirectlyPatch.patchEnabled) {
+        if (OpenLinksDirectlyPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_DIRECTLY,
@@ -38,7 +38,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     "Skips over redirection URLs in external links."
             ));
         }
-        if (OpenLinksExternallyPatch.patchEnabled) {
+        if (OpenLinksExternallyPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_EXTERNALLY,
@@ -46,7 +46,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     "Opens links in your browser instead of in the in-app-browser."
             ));
         }
-        if (SanitizeUrlQueryPatch.patchEnabled) {
+        if (SanitizeUrlQueryPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SANITIZE_URL_QUERY,

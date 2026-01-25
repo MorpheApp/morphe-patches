@@ -25,19 +25,19 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public boolean getSettingsStatus() {
-        return ScreenshotPopupPatch.patchEnabled ||
-                //NavigationButtonsPatch.patchEnabled || // FIXME
-                SidebarComponentsPatch.patchEnabled ||
-                RecentlyVisitedShelfPatch.patchEnabled ||
-                RecommendedCommunitiesPatch.patchEnabled ||
-                ToolBarButtonPatch.patchEnabled ||
-                TrendingTodayShelfPatch.patchEnabled ||
-                RemoveSubRedditDialogPatch.patchEnabled;
+        return ScreenshotPopupPatch.isPatchIncluded() ||
+                //NavigationButtonsPatch.isPatchIncluded() || // FIXME
+                SidebarComponentsPatch.isPatchIncluded() ||
+                RecentlyVisitedShelfPatch.isPatchIncluded() ||
+                RecommendedCommunitiesPatch.isPatchIncluded() ||
+                ToolBarButtonPatch.isPatchIncluded() ||
+                TrendingTodayShelfPatch.isPatchIncluded() ||
+                RemoveSubRedditDialogPatch.isPatchIncluded();
     }
 
     @Override
     public void addPreferences(Context context) {
-        if (ScreenshotPopupPatch.patchEnabled) {
+        if (ScreenshotPopupPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_SCREENSHOT_POPUP,
@@ -47,7 +47,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         }
 
         // FIXME: Navigation buttons patch not yet supported.
-        if (false && NavigationButtonsPatch.patchEnabled) {
+        if (false && NavigationButtonsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_CHAT_BUTTON,
@@ -68,7 +68,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (SidebarComponentsPatch.patchEnabled) {
+        if (SidebarComponentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_GAMES_ON_REDDIT_SHELF,
@@ -98,7 +98,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             }
         }
 
-        if (RecentlyVisitedShelfPatch.patchEnabled) {
+        if (RecentlyVisitedShelfPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_RECENTLY_VISITED_SHELF,
@@ -107,7 +107,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (RecommendedCommunitiesPatch.patchEnabled) {
+        if (RecommendedCommunitiesPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_RECOMMENDED_COMMUNITIES_SHELF,
@@ -116,7 +116,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (ToolBarButtonPatch.patchEnabled) {
+        if (ToolBarButtonPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_TOOLBAR_BUTTON,
@@ -125,7 +125,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (TrendingTodayShelfPatch.patchEnabled) {
+        if (TrendingTodayShelfPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_TRENDING_TODAY_SHELF,
@@ -134,7 +134,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (RemoveSubRedditDialogPatch.patchEnabled) {
+        if (RemoveSubRedditDialogPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMOVE_NSFW_DIALOG,

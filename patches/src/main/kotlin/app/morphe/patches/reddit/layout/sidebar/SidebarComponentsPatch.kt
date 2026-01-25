@@ -9,7 +9,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
@@ -199,8 +199,6 @@ val sidebarComponentsPatch = bytecodePatch(
             }
         }
 
-        enableExtensionPatch(
-            EXTENSION_CLASS_DESCRIPTOR
-        )
+        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
     }
 }

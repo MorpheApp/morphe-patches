@@ -43,12 +43,3 @@ internal object OpenVideosFullscreenPortraitLegacyFingerprint : Fingerprint(
         Opcode.MOVE_RESULT  // Conditional check to modify.
     )
 )
-
-internal object OpenVideosFullscreenHookPatchExtensionFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    returnType = "Z",
-    parameters = listOf(),
-    custom = { methodDef, classDef ->
-        methodDef.name == "isFullScreenPatchIncluded" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
-    }
-)

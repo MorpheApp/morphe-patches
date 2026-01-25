@@ -7,8 +7,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
-import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.patches.reddit.utils.settings.settingsPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
@@ -64,8 +64,6 @@ val openLinksExternallyPatch = bytecodePatch(
             }
         }
 
-        enableExtensionPatch(
-            EXTENSION_CLASS_DESCRIPTOR
-        )
+        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
     }
 }

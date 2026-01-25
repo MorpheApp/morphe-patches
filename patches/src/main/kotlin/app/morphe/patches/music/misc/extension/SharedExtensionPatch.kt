@@ -8,3 +8,4 @@ val sharedExtensionPatch = sharedExtensionPatch(
     "music",
     applicationInitHook, applicationInitOnCreateHook
 )
+

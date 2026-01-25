@@ -16,7 +16,7 @@ public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public boolean getSettingsStatus() {
-        return GeneralAdsPatch.patchEnabled;
+        return GeneralAdsPatch.isPatchIncluded();
     }
 
     @Override

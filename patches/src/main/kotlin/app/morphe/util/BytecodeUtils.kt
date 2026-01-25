@@ -32,6 +32,7 @@
 
 package app.morphe.util
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -1128,6 +1129,30 @@ internal fun BytecodePatchContext.addStaticFieldToExtension(
     }
 }
 
+context(BytecodePatchContext)
+internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
+    val methodName = "isPatchIncluded"
+    val returnType = "Z"
+
+    val fingerprint = Fingerprint(
+        returnType = returnType,
+        parameters = listOf(),
+        custom = { method, classDef ->
+            AccessFlags.STATIC.isSet(method.accessFlags) && method.name == methodName
+        }
+    )
+
+    fingerprint.match(classDefBy(patchExtensionClassType))
+
+    if (fingerprint.methodOrNull == null) {
+        throw PatchException(
+            "Could not find required extension method: $patchExtensionClassType->$methodName()$returnType"
+        )
+    }
+
+    fingerprint.method.returnEarly(true)
+}
+
 /**
  * Set the custom condition for this fingerprint to check for a literal value.
  *
@@ -1138,12 +1163,3 @@ fun customLiteral(literalSupplier: () -> Long): ((method: Method, classDef: Clas
     { method, _ ->
         method.containsLiteralInstruction(literalSupplier())
     }
-
-internal fun MutableMethod.methodSignature(): String {
-    var methodCall = "$definingClass->$name("
-    for (i in 0 until parameters.size) {
-        methodCall += parameterTypes[i]
-    }
-    methodCall += ")$returnType"
-    return methodCall
-}

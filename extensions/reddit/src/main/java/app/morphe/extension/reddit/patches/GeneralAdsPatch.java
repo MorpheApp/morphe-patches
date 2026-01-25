@@ -11,10 +11,11 @@ import app.morphe.extension.reddit.settings.Settings;
 @SuppressWarnings("unused")
 public final class GeneralAdsPatch {
 
-    public static boolean patchEnabled;
-
-    public static void setPatchEnabled() {
-        patchEnabled = true;
+    /**
+     * @return If this patch was included during patching.
+     */
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
     }
 
     private static List<?> filterChildren(final Iterable<?> links) {

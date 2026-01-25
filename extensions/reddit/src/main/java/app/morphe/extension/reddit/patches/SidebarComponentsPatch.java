@@ -13,10 +13,11 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 public final class SidebarComponentsPatch {
     private static final List<?> emptyList = Collections.emptyList();
 
-    public static boolean patchEnabled;
-
-    public static void setPatchEnabled() {
-        patchEnabled = true;
+    /**
+     * @return If this patch was included during patching.
+     */
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
     }
 
     public static Collection<?> hideComponents(Collection<?> c, Object headerItemUiModel) {

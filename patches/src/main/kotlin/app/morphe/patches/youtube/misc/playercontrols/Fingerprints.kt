@@ -59,7 +59,7 @@ internal object PlayerControlsExtensionHookFingerprint : Fingerprint(
     parameters = listOf("Z"),
     custom = { methodDef, classDef ->
         methodDef.name == "fullscreenButtonVisibilityChanged" &&
-            classDef.type == EXTENSION_CLASS_DESCRIPTOR
+                classDef.type == EXTENSION_CLASS_DESCRIPTOR
     }
 )
 

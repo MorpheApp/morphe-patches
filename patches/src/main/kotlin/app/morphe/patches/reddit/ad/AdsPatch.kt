@@ -7,8 +7,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.patches.reddit.utils.settings.settingsPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -130,8 +130,6 @@ val adsPatch = bytecodePatch(
                 }
         }
 
-        enableExtensionPatch(
-            EXTENSION_CLASS_DESCRIPTOR
-        )
+        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
     }
 }

@@ -29,10 +29,11 @@ import app.morphe.extension.shared.Utils;
 // https://github.com/L-JINBIN/ApkSignatureKillerEx/blob/3e6a8dc7de1b108dc70647f62bc499d7b68852b2/killer/src/main/java/bin/mt/signature/KillerApplication.java
 public class SpoofSignaturePatchReddit extends Application {
 
-    public static boolean patchEnabled;
-
-    public static void setPatchEnabled() {
-        patchEnabled = true;
+    /**
+     * @return If this patch was included during patching.
+     */
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
     }
 
     static {

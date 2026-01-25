@@ -4,7 +4,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.returnEarly
+import app.morphe.util.setExtensionIsPatchIncluded
 
 @Suppress("unused")
 val openVideosFullscreenPatch = bytecodePatch(
@@ -32,7 +32,6 @@ val openVideosFullscreenPatch = bytecodePatch(
             SwitchPreference("morphe_open_videos_fullscreen_portrait")
         )
 
-        // Enable the logic for the user Setting to open regular videos fullscreen.
-        OpenVideosFullscreenHookPatchExtensionFingerprint.method.returnEarly(true)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
     }
 }

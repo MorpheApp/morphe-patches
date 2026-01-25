@@ -16,10 +16,11 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public class RemoveSubRedditDialogPatch {
 
-    public static boolean patchEnabled;
-
-    public static void setPatchEnabled() {
-        patchEnabled = true;
+    /**
+     * @return If this patch was included during patching.
+     */
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
     }
 
     public static void confirmDialog(@NonNull TextView textView) {

@@ -65,15 +65,6 @@ internal val webBrowserActivityOnCreateFingerprint = Fingerprint(
     }
 )
 
-//internal val redditActivityHookInitializeFingerprint = Fingerprint(
-//    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-//    returnType = "V",
-//    parameters = listOf("Landroid/app/Activity;"),
-//    custom = { methodDef, classDef ->
-//        methodDef.name == "initialize" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
-//    }
-//)
-
 internal val sharedSettingFingerprint = Fingerprint(
     returnType = "V",
     custom = { method, _ ->
