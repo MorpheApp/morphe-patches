@@ -55,3 +55,20 @@ jobs:
         with:
           subject-name: 'Morphe Patches ${{ steps.release.outputs.new_release_git_tag }}'
           subject-path: patches/build/libs/patches-*.mpp
+
+      - name: Trigger website deploy
+        if: steps.release.outputs.NEW_TAG != ''
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.repos.createDispatchEvent({
+              owner: 'MorpheApp',
+              repo: 'morphe-website',
+              event_type: 'trigger-deploy',
+              client_payload: {
+                source_repo: context.repo.repo,
+                tag: '${{ steps.release.outputs.NEW_TAG }}',
+                ref: context.ref
+              }
+            })
