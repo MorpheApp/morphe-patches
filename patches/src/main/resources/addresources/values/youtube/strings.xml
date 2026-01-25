@@ -960,6 +960,13 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_wide_searchbar_summary_on">Wide search bar is enabled</string>
     <string name="morphe_wide_searchbar_summary_off">Wide search bar is disabled</string>
 
+    <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+    <string name="morphe_restore_old_search_filters_title">Restore old search filters</string>
+    <string name="morphe_restore_old_search_filters_summary_on">Sort by rating and sort by upload date are available in the search filter</string>
+    <string name="morphe_restore_old_search_filters_summary_off">Sort by rating and sort by upload date are not available in the search filter</string>
+    <string name="morphe_old_search_filters_sort_by_rating">Rating</string>
+    <string name="morphe_old_search_filters_sort_by_upload_date">Upload date</string>
+
     <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
     <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>
     <string name="morphe_sb_enable_sb">Enable SponsorBlock</string>
