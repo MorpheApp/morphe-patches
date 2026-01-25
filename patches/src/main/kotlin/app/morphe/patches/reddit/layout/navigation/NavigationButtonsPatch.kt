@@ -1,23 +1,31 @@
 package app.morphe.patches.reddit.layout.navigation
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/reddit/patches/NavigationButtonsPatch;"
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
+import app.morphe.patches.reddit.utils.settings.settingsPatch
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-/*
-// FIXME: Figure out the reason why the extension code is getting invalid resource IDs.
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/patches/NavigationButtonsPatch;"
+
 @Suppress("unused")
 val navigationButtonsPatch = bytecodePatch(
-    HIDE_NAVIGATION_BUTTONS.title,
-    HIDE_NAVIGATION_BUTTONS.summary,
+    // FIXME: Figure out the reason why the extension code is getting invalid resource IDs.
+//    name = "Hide navigation buttons",
+    description = "Adds options to hide buttons in the navigation bar."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 
     execute {
-        bottomNavScreenFingerprint
-            .method.
-            .apply {
+        bottomNavScreenFingerprint.method.apply {
                 implementation!!.instructions
                     .withIndex()
                     .filter { (_, instruction) ->
@@ -30,8 +38,7 @@ val navigationButtonsPatch = bytecodePatch(
                     .map { (index, _) -> index }
                     .reversed()
                     .forEach { index ->
-                        val instruction =
-                            getInstruction<FiveRegisterInstruction>(index)
+                        val instruction = getInstruction<FiveRegisterInstruction>(index)
 
                         val listRegister = instruction.registerC
                         val objectRegister = instruction.registerD
@@ -47,8 +54,7 @@ val navigationButtonsPatch = bytecodePatch(
                 implementation!!.instructions
                     .withIndex()
                     .filter { (_, instruction) ->
-                        val reference =
-                            (instruction as? ReferenceInstruction)?.reference
+                        val reference = (instruction as? ReferenceInstruction)?.reference
                         instruction.opcode == Opcode.INVOKE_DIRECT &&
                                 reference is MethodReference &&
                                 reference.definingClass.startsWith("Lcom/reddit/widget/bottomnav/") &&
@@ -58,8 +64,7 @@ val navigationButtonsPatch = bytecodePatch(
                     .map { (index, _) -> index }
                     .reversed()
                     .forEach { index ->
-                        val instruction =
-                            getInstruction<FiveRegisterInstruction>(index)
+                        val instruction = getInstruction<FiveRegisterInstruction>(index)
 
                         val objectRegister = instruction.registerC
                         val labelRegister = instruction.registerD
@@ -79,10 +84,8 @@ val navigationButtonsPatch = bytecodePatch(
                 )
             }
 
-        updatePatchStatus(
-            "enableNavigationButtons",
-            HIDE_NAVIGATION_BUTTONS
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
     }
 }
-*/
