@@ -4,21 +4,18 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.HIDE_RECOMMENDED_COMMUNITIES_SHELF
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 
-private const val EXTENSION_METHOD_DESCRIPTOR =
-    "$PATCHES_PATH/RecommendedCommunitiesPatch;->hideRecommendedCommunitiesShelf()Z"
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/patches/RecommendedCommunitiesPatch;"
 
 @Suppress("unused")
 val recommendedCommunitiesPatch = bytecodePatch(
-    HIDE_RECOMMENDED_COMMUNITIES_SHELF.title,
-    HIDE_RECOMMENDED_COMMUNITIES_SHELF.summary,
+    name = "Hide recommended communities shelf",
+    description = "Adds an option to hide the recommended communities shelves in subreddits."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 
@@ -29,7 +26,7 @@ val recommendedCommunitiesPatch = bytecodePatch(
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static {}, $EXTENSION_METHOD_DESCRIPTOR
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideRecommendedCommunitiesShelf()Z
                     move-result v0
                     if-eqz v0, :off
                     return-void
@@ -37,9 +34,8 @@ val recommendedCommunitiesPatch = bytecodePatch(
             )
         }
 
-        updatePatchStatus(
-            "enableRecommendedCommunitiesShelf",
-            HIDE_RECOMMENDED_COMMUNITIES_SHELF
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
     }
 }

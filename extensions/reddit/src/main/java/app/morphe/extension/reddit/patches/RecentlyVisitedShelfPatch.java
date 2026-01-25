@@ -8,6 +8,12 @@ import app.morphe.extension.reddit.settings.Settings;
 @SuppressWarnings("unused")
 public final class RecentlyVisitedShelfPatch {
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     public static List<?> hideRecentlyVisitedShelf(List<?> list) {
         return Settings.HIDE_RECENTLY_VISITED_SHELF.get() ? Collections.emptyList() : list;
     }

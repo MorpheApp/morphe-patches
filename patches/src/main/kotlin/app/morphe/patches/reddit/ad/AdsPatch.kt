@@ -6,11 +6,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.HIDE_ADS
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -24,14 +22,14 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "$PATCHES_PATH/GeneralAdsPatch;"
+    "Lapp/morphe/extension/reddit/patches/GeneralAdsPatch;"
 
 @Suppress("unused")
 val adsPatch = bytecodePatch(
-    HIDE_ADS.title,
-    HIDE_ADS.summary,
+    name = "Hide ads",
+    description = "Adds options to hide ads."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 
@@ -134,9 +132,8 @@ val adsPatch = bytecodePatch(
                 }
         }
 
-        updatePatchStatus(
-            "enableGeneralAds",
-            HIDE_ADS
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
     }
 }

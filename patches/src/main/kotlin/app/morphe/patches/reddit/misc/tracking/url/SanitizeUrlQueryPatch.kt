@@ -4,21 +4,18 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.SANITIZE_SHARING_LINKS
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 
-private const val SANITIZE_METHOD_DESCRIPTOR =
-    "$PATCHES_PATH/SanitizeUrlQueryPatch;->stripQueryParameters()Z"
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/patches/SanitizeUrlQueryPatch;"
 
 @Suppress("unused")
 val sanitizeUrlQueryPatch = bytecodePatch(
-    SANITIZE_SHARING_LINKS.title,
-    SANITIZE_SHARING_LINKS.summary,
+    name = "Sanitize sharing links",
+    description = "Adds an option to sanitize sharing links by removing tracking query parameters."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 
@@ -27,7 +24,7 @@ val sanitizeUrlQueryPatch = bytecodePatch(
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static {}, $SANITIZE_METHOD_DESCRIPTOR
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->stripQueryParameters()Z
                     move-result v0
                     if-eqz v0, :off
                     return-object p0
@@ -35,9 +32,8 @@ val sanitizeUrlQueryPatch = bytecodePatch(
             )
         }
 
-        updatePatchStatus(
-            "enableSanitizeUrlQuery",
-            SANITIZE_SHARING_LINKS
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
     }
 }

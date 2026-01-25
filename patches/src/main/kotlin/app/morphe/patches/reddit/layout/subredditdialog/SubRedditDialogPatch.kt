@@ -5,11 +5,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.REMOVE_SUBREDDIT_DIALOG
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -21,14 +19,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "$PATCHES_PATH/RemoveSubRedditDialogPatch;"
+    "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;"
 
 @Suppress("unused")
 val subRedditDialogPatch = bytecodePatch(
-    REMOVE_SUBREDDIT_DIALOG.title,
-    REMOVE_SUBREDDIT_DIALOG.summary,
+    name = "Remove subreddit dialog",
+    description = "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(
         settingsPatch
@@ -114,9 +112,8 @@ val subRedditDialogPatch = bytecodePatch(
                 }
             }
 
-        updatePatchStatus(
-            "enableSubRedditDialog",
-            REMOVE_SUBREDDIT_DIALOG
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
     }
 }

@@ -16,6 +16,12 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public class RemoveSubRedditDialogPatch {
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     public static void confirmDialog(@NonNull TextView textView) {
         if (!Settings.REMOVE_NSFW_DIALOG.get())
             return;

@@ -1,21 +1,7 @@
 package app.morphe.patches.reddit.layout.navigation
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.HIDE_NAVIGATION_BUTTONS
-import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "$PATCHES_PATH/NavigationButtonsPatch;"
+    "Lapp/morphe/extension/reddit/patches/NavigationButtonsPatch;"
 
 /*
 // FIXME: Figure out the reason why the extension code is getting invalid resource IDs.

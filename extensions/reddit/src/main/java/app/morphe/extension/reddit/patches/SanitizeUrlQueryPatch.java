@@ -5,8 +5,13 @@ import app.morphe.extension.reddit.settings.Settings;
 @SuppressWarnings("unused")
 public final class SanitizeUrlQueryPatch {
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     public static boolean stripQueryParameters() {
         return Settings.SANITIZE_URL_QUERY.get();
     }
-
 }

@@ -2,7 +2,6 @@ package app.morphe.patches.reddit.utils.settings
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patches.reddit.utils.extension.Constants.EXTENSION_PATH
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -66,12 +65,14 @@ internal val webBrowserActivityOnCreateFingerprint = Fingerprint(
     }
 )
 
-internal val settingsStatusLoadFingerprint = Fingerprint(
-    custom = { methodDef, _ ->
-        methodDef.definingClass.endsWith("$EXTENSION_PATH/settings/SettingsStatus;") &&
-                methodDef.name == "load"
-    }
-)
+//internal val redditActivityHookInitializeFingerprint = Fingerprint(
+//    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+//    returnType = "V",
+//    parameters = listOf("Landroid/app/Activity;"),
+//    custom = { methodDef, classDef ->
+//        methodDef.name == "initialize" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+//    }
+//)
 
 internal val sharedSettingFingerprint = Fingerprint(
     returnType = "V",

@@ -11,6 +11,12 @@ import app.morphe.extension.reddit.settings.Settings;
 @SuppressWarnings("unused")
 public final class GeneralAdsPatch {
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     private static List<?> filterChildren(final Iterable<?> links) {
         final List<Object> filteredList = new ArrayList<>();
 

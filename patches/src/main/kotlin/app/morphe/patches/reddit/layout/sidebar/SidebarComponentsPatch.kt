@@ -6,13 +6,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.HIDE_SIDEBAR_COMPONENTS
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
-import app.morphe.patches.reddit.utils.settings.is_2025_52_or_greater
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
@@ -27,14 +24,14 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "$PATCHES_PATH/SidebarComponentsPatch;"
+    "Lapp/morphe/extension/reddit/patches/SidebarComponentsPatch;"
 
 @Suppress("unused")
 val sidebarComponentsPatch = bytecodePatch(
-    HIDE_SIDEBAR_COMPONENTS.title,
-    HIDE_SIDEBAR_COMPONENTS.summary,
+    name = "Hide sidebar components",
+    description = "Adds options to hide the sidebar components."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 
@@ -201,21 +198,8 @@ val sidebarComponentsPatch = bytecodePatch(
             }
         }
 
-        updatePatchStatus(
-            "enableRecentlyVisitedShelf",
-            HIDE_SIDEBAR_COMPONENTS
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
-
-        updatePatchStatus(
-            "enableGamesOnRedditShelf"
-        )
-        updatePatchStatus(
-            "enableRedditProShelf"
-        )
-
-        if (is_2025_52_or_greater) {
-            updatePatchStatus("enableAboutShelf")
-            updatePatchStatus("enableResourcesShelf")
-        }
     }
 }

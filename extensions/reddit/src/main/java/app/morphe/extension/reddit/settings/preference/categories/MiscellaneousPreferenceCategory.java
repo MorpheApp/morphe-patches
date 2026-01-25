@@ -3,10 +3,12 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
+import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
+import app.morphe.extension.reddit.patches.SanitizeUrlQueryPatch;
 import app.morphe.extension.reddit.settings.preference.RedditImportExportPreference;
 import app.morphe.extension.reddit.settings.preference.RedditMorpheAboutPreference;
 import app.morphe.extension.reddit.settings.Settings;
-import app.morphe.extension.reddit.settings.SettingsStatus;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 
 @SuppressWarnings("deprecation")
@@ -18,7 +20,9 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return SettingsStatus.miscellaneousCategoryEnabled();
+        return OpenLinksDirectlyPatch.patchEnabled ||
+                OpenLinksExternallyPatch.patchEnabled ||
+                SanitizeUrlQueryPatch.patchEnabled;
     }
 
     @Override
@@ -26,7 +30,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         addPreference(new RedditMorpheAboutPreference(getContext()));
         addPreference(new RedditImportExportPreference(getContext()));
 
-        if (SettingsStatus.openLinksDirectlyEnabled) {
+        if (OpenLinksDirectlyPatch.patchEnabled) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_DIRECTLY,
@@ -34,7 +38,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     "Skips over redirection URLs in external links."
             ));
         }
-        if (SettingsStatus.openLinksExternallyEnabled) {
+        if (OpenLinksExternallyPatch.patchEnabled) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_EXTERNALLY,
@@ -42,7 +46,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     "Opens links in your browser instead of in the in-app-browser."
             ));
         }
-        if (SettingsStatus.sanitizeUrlQueryEnabled) {
+        if (SanitizeUrlQueryPatch.patchEnabled) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SANITIZE_URL_QUERY,

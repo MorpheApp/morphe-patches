@@ -5,25 +5,23 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.PATCHES_PATH
-import app.morphe.patches.reddit.utils.patch.PatchList.HIDE_TRENDING_TODAY_SHELF
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
+import app.morphe.patches.reddit.utils.settings.enableExtensionPatch
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "$PATCHES_PATH/TrendingTodayShelfPatch;"
+    "Lapp/morphe/extension/reddit/patches/TrendingTodayShelfPatch;"
 
 @Suppress("unused")
 val trendingTodayShelfPatch = bytecodePatch(
-    HIDE_TRENDING_TODAY_SHELF.title,
-    HIDE_TRENDING_TODAY_SHELF.summary,
+    name = "Hide Trending Today shelf",
+    description =  "Adds an option to hide the Trending Today shelf from search suggestions."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 
@@ -92,9 +90,8 @@ val trendingTodayShelfPatch = bytecodePatch(
 
         // endregion
 
-        updatePatchStatus(
-            "enableTrendingTodayShelf",
-            HIDE_TRENDING_TODAY_SHELF
+        enableExtensionPatch(
+            EXTENSION_CLASS_DESCRIPTOR
         )
     }
 }

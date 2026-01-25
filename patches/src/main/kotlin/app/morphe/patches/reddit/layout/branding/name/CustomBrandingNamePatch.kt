@@ -2,25 +2,23 @@ package app.morphe.patches.reddit.layout.branding.name
 
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
-import app.morphe.patches.reddit.utils.patch.PatchList.CUSTOM_BRANDING_NAME_FOR_REDDIT
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 import java.io.FileWriter
 import java.nio.file.Files
+import java.util.logging.Logger
 
 private const val ORIGINAL_APP_NAME = "Reddit"
 private const val APP_NAME = "Reddit Morphe"
 
-/*
-// FIXME: Cannot use this patch due to apktool being unable to decode resources.
 @Suppress("unused")
 val customBrandingNamePatch = resourcePatch(
-    CUSTOM_BRANDING_NAME_FOR_REDDIT.title,
-    CUSTOM_BRANDING_NAME_FOR_REDDIT.summary,
-    false,
+    // FIXME: Cannot use this patch due to apktool being unable to decode resources.
+//    name = "Custom branding name for Reddit",
+    description = "Changes the Reddit app name to the name specified in patch options.",
+    use = false,
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(spoofSignaturePatch)
 
@@ -37,11 +35,12 @@ val customBrandingNamePatch = resourcePatch(
     )
 
     execute {
-        val appName = appNameOption
-            .valueOrThrow()
+        val appName = appNameOption.value!!
 
         if (appName == ORIGINAL_APP_NAME) {
-            printInfo("App name will remain unchanged as it matches the original.")
+            Logger.getLogger(this::class.java.name).info(
+                "App name will remain unchanged as it matches the original."
+            )
             return@execute
         }
 
@@ -71,8 +70,5 @@ val customBrandingNamePatch = resourcePatch(
                 document.getElementsByTagName("resources").item(0).appendChild(stringElement)
             }
         }
-
-        updatePatchStatus(CUSTOM_BRANDING_NAME_FOR_REDDIT)
     }
 }
-*/

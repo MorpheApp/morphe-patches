@@ -4,10 +4,8 @@ import app.morphe.patcher.patch.PackageName
 import app.morphe.patcher.patch.VersionName
 
 internal object Constants {
-    internal const val REDDIT_PACKAGE_NAME = "com.reddit.frontpage"
-
-    val COMPATIBLE_PACKAGE: Pair<PackageName, Set<VersionName>?> = Pair(
-        REDDIT_PACKAGE_NAME,
+    val COMPATIBILITY_REDDIT: Pair<PackageName, Set<VersionName>?> = Pair(
+        "com.reddit.frontpage",
         setOf(
             "2025.40.0",
             "2025.43.0",

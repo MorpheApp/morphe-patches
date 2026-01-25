@@ -6,14 +6,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.morphe.patches.reddit.utils.extension.Constants.EXTENSION_PATH
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.utils.extension.hooks.redditActivityOnCreateFingerprint
 import app.morphe.patches.reddit.utils.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
-import app.morphe.patches.reddit.utils.patch.PatchList
-import app.morphe.patches.reddit.utils.patch.PatchList.SETTINGS_FOR_REDDIT
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -29,11 +26,10 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
-    "$EXTENSION_PATH/settings/ActivityHook;"
+internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
 private lateinit var acknowledgementsLabelBuilderMethod: MutableMethod
-private lateinit var settingsStatusLoadMethod: MutableMethod
+private lateinit var activityOnCreateMethod: MutableMethod
 
 var is_2025_45_or_greater = false
     private set
@@ -47,10 +43,10 @@ var is_2026_03_or_greater = false
 private const val DEFAULT_LABEL = "Morphe"
 
 val settingsPatch = bytecodePatch(
-    SETTINGS_FOR_REDDIT.title,
-    SETTINGS_FOR_REDDIT.summary,
+    name = "Settings for Reddit",
+    description = "Applies mandatory patches to implement Morphe settings into the application."
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(
         sharedExtensionPatch,
@@ -58,7 +54,6 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
-
         /**
          * Set version info
          */
@@ -165,9 +160,7 @@ val settingsPatch = bytecodePatch(
             }
         }
 
-        settingsStatusLoadMethod = settingsStatusLoadFingerprint.method
-
-        updatePatchStatus(SETTINGS_FOR_REDDIT)
+        activityOnCreateMethod = redditActivityOnCreateFingerprint.method
     }
 }
 
@@ -196,7 +189,7 @@ internal fun updateSettingsLabel(label: String) =
             getInstruction<OneRegisterInstruction>(iconIndex).registerA
 
         // TODO: Change this to modify the drawable with a Morphe logo.
-        //       Must be done with Java code without resources because no resource patching yet.
+        //       Must be done with Java code without resources because cannot resource patch yet.
         addInstructions(
             iconIndex + 1,
             """
@@ -217,20 +210,9 @@ internal fun updateSettingsLabel(label: String) =
         )
     }
 
-internal fun updatePatchStatus(description: String) =
-    settingsStatusLoadMethod.addInstruction(
+internal fun enableExtensionPatch(patchExtension: String) {
+    activityOnCreateMethod.addInstruction(
         0,
-        "invoke-static {}, $EXTENSION_PATH/settings/SettingsStatus;->$description()V"
+        "invoke-static {}, $patchExtension->setPatchEnabled()V"
     )
-
-internal fun updatePatchStatus(patch: PatchList) {
-    patch.included = true
-}
-
-internal fun updatePatchStatus(
-    description: String,
-    patch: PatchList
-) {
-    updatePatchStatus(description)
-    updatePatchStatus(patch)
 }

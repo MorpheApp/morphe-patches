@@ -2,11 +2,10 @@ package app.morphe.patches.reddit.layout.branding.packagename
 
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBLE_PACKAGE
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
-import app.morphe.patches.reddit.utils.patch.PatchList.CHANGE_PACKAGE_NAME
-import app.morphe.patches.reddit.utils.settings.updatePatchStatus
 import org.w3c.dom.Element
+import java.util.logging.Logger
 
 private const val PACKAGE_NAME_REDDIT = "com.reddit.frontpage"
 private const val CLONE_PACKAGE_NAME_REDDIT = "$PACKAGE_NAME_REDDIT.morphe.clone"
@@ -14,15 +13,14 @@ private const val DEFAULT_PACKAGE_NAME_REDDIT = "$PACKAGE_NAME_REDDIT.morphe"
 
 private var redditPackageName = PACKAGE_NAME_REDDIT
 
-/*
-// FIXME: Cannot use this patch due to apktool being unable to decode resources.
 @Suppress("unused")
 val changePackageNamePatch = resourcePatch(
-    CHANGE_PACKAGE_NAME.title,
-    CHANGE_PACKAGE_NAME.summary,
-    false,
+    // FIXME: Cannot use this patch due to apktool being unable to decode resources.
+//    name = "Change package name",
+    description = "Changes the package name for Reddit to the name specified in patch options.",
+    use = false,
 ) {
-    compatibleWith(COMPATIBLE_PACKAGE)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(spoofSignaturePatch)
 
@@ -71,11 +69,12 @@ val changePackageNamePatch = resourcePatch(
             }
         }
 
-        redditPackageName = packageNameRedditOption
-            .valueOrThrow()
+        redditPackageName = packageNameRedditOption.value!!
 
         if (redditPackageName == PACKAGE_NAME_REDDIT) {
-            printInfo("Package name will remain unchanged as it matches the original.")
+            Logger.getLogger(this::class.java.name).info(
+                "Package name will remain unchanged as it matches the original."
+            )
             return@execute
         }
 
@@ -90,8 +89,6 @@ val changePackageNamePatch = resourcePatch(
             // CLI
             replacePackageName()
         }
-
-        updatePatchStatus(CHANGE_PACKAGE_NAME)
     }
 
     finalize {
@@ -112,4 +109,3 @@ val changePackageNamePatch = resourcePatch(
         }
     }
 }
-*/

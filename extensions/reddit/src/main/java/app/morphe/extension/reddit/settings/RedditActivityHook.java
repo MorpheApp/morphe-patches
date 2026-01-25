@@ -11,7 +11,8 @@ import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.shared.ResourceUtils;
 
 @SuppressWarnings("all")
-public class ActivityHook {
+public class RedditActivityHook {
+
     public static int getIcon() {
         return ResourceUtils.getDrawableIdentifier("icon_ai");
     }
@@ -26,8 +27,6 @@ public class ActivityHook {
     }
 
     public static void initialize(Activity activity) {
-        SettingsStatus.load();
-
         final int fragmentId = View.generateViewId();
         final FrameLayout fragment = new FrameLayout(activity);
         fragment.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));

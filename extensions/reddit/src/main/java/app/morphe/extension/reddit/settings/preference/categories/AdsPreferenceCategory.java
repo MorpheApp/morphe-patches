@@ -3,8 +3,8 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.GeneralAdsPatch;
 import app.morphe.extension.reddit.settings.Settings;
-import app.morphe.extension.reddit.settings.SettingsStatus;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 
 @SuppressWarnings("deprecation")
@@ -16,7 +16,7 @@ public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public boolean getSettingsStatus() {
-        return SettingsStatus.adsCategoryEnabled();
+        return GeneralAdsPatch.patchEnabled;
     }
 
     @Override

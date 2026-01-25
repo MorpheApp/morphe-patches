@@ -14,6 +14,12 @@ import app.morphe.extension.shared.Utils;
 public class OpenLinksExternallyPatch {
     private static WeakReference<Activity> activityRef = new WeakReference<>(null);
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     /**
      * Override 'CustomTabsIntent', in order to open links in the default browser.
      * Instead of doing CustomTabsActivity,

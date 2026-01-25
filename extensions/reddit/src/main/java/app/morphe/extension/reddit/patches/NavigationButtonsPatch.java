@@ -28,6 +28,12 @@ public final class NavigationButtonsPatch {
         mResources = resources;
     }
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void setNavigationMap(Object object, String label) {
         for (NavigationButton button : NavigationButton.values()) {

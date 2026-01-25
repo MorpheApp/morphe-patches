@@ -8,6 +8,12 @@ import app.morphe.extension.shared.Logger;
 @SuppressWarnings("unused")
 public final class OpenLinksDirectlyPatch {
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     /**
      * Parses the given Reddit redirect uri by extracting the redirect query.
      *

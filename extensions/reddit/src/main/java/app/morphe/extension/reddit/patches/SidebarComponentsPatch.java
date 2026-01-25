@@ -13,6 +13,12 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 public final class SidebarComponentsPatch {
     private static final List<?> emptyList = Collections.emptyList();
 
+    public static boolean patchEnabled;
+
+    public static void setPatchEnabled() {
+        patchEnabled = true;
+    }
+
     public static Collection<?> hideComponents(Collection<?> c, Object headerItemUiModel) {
         if (headerItemUiModel != null && !c.isEmpty()) {
             String headerItemName = getHeaderItemName(headerItemUiModel);
