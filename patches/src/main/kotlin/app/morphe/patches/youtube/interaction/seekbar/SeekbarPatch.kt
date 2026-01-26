@@ -4,10 +4,7 @@ import app.morphe.patcher.patch.bytecodePatch
 
 @Suppress("unused")
 val seekbarPatch = bytecodePatch(
-    name = "Seekbar",
-    description = "Adds options to disable precise seeking when swiping up on the seekbar, " +
-            "slide to seek instead of playing at 2x speed when pressing and holding, " +
-            "tapping the player seekbar to seek, and hiding the video player seekbar."
+    name = "Seekbar"
 ) {
     dependsOn(
         disablePreciseSeekingGesturePatch,
@@ -26,4 +23,9 @@ val seekbarPatch = bytecodePatch(
             "20.40.45",
         )
     )
+
+    execute {
+        // Empty execute, required for patcher to easily
+        // figure out what jar file to look in to load the localied strings.
+    }
 }

@@ -26,8 +26,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/NavigationButtonsPatch;"
 
 val navigationButtonsPatch = bytecodePatch(
-    name = "Navigation buttons",
-    description = "Adds options to hide and change navigation buttons (such as the Shorts button).",
+    name = "Navigation buttons"
 ) {
     dependsOn(
         sharedExtensionPatch,

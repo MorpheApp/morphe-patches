@@ -15,8 +15,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
 
 @Suppress("unused")
 val hideRelatedVideoOverlayPatch = bytecodePatch(
-    name = "Hide related video overlay",
-    description = "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",
+    name = "Hide related video overlay"
 ) {
     dependsOn(
         settingsPatch,

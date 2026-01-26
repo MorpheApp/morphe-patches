@@ -16,8 +16,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/VideoAdsPatch;"
 
 val videoAdsPatch = bytecodePatch(
-    name = "Video ads",
-    description = "Adds an option to remove ads in the video player.",
+    name = "Video ads"
 ) {
     dependsOn(
         sharedExtensionPatch,

@@ -110,8 +110,7 @@ private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR =
 
 @Suppress("unused")
 val sponsorBlockPatch = bytecodePatch(
-    name = "SponsorBlock",
-    description = "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content.",
+    name = "SponsorBlock"
 ) {
     dependsOn(
         sharedExtensionPatch,

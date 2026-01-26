@@ -15,8 +15,7 @@ import com.android.tools.smali.dexlib2.Opcode
 
 @Suppress("unused")
 internal val exitFullscreenPatch = bytecodePatch(
-    name = "Exit fullscreen mode",
-    description = "Adds options to automatically exit fullscreen mode when a video reaches the end."
+    name = "Exit fullscreen mode"
 ) {
 
     compatibleWith(

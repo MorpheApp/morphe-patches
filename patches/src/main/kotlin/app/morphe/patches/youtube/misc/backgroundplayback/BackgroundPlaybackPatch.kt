@@ -33,8 +33,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/BackgroundPlaybackPatch;"
 
 val backgroundPlaybackPatch = bytecodePatch(
-    name = "Remove background playback restrictions",
-    description = "Removes restrictions on background playback, including playing kids videos in the background.",
+    name = "Remove background playback restrictions"
 ) {
     dependsOn(
         resourceMappingPatch,
