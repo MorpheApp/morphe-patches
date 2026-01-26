@@ -35,7 +35,8 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/pa
 
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
-    description = "Adds options to hide and change navigation bar (such as the Shorts button).",
+    description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
+            + " and the upper navigation toolbar. Patching version 20.21.37 and lower also adds a setting to use a wide searchbar."
 ) {
     dependsOn(
         sharedExtensionPatch,
