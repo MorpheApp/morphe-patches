@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.searchbar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object SetWordmarkHeaderFingerprint : Fingerprint(
@@ -16,7 +17,7 @@ internal object SetWordmarkHeaderFingerprint : Fingerprint(
 )
 
 /**
- * Matches the same method as [yoodlesImageViewFingerprint].
+ * Matches the same method as [YouTubeDoodlesImageViewFingerprint].
  */
 internal object WideSearchbarLayoutFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
