@@ -47,13 +47,11 @@ val restoreOldSearchFiltersPatch = bytecodePatch(
 
         // region Replace the search filter group renderer with the replacement renderer
 
-        val searchFilterGroupRendererField = with (SearchResponseParserFingerprint) {
-            val index = instructionMatches.last().index
-            method.getInstruction<ReferenceInstruction>(index).reference
-        }
-        val parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
-
         SearchFilterDialogFingerprint.let {
+            val searchFilterGroupRendererField = SearchResponseParserFingerprint.instructionMatches
+                .last().getInstruction<ReferenceInstruction>().reference
+            val parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
+
             it.method.apply {
                 val insertIndex = it.instructionMatches[1].index
                 val rendererRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA

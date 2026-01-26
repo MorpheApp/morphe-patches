@@ -45,7 +45,7 @@ public final class RestoreOldSearchFiltersPatch {
                         SearchResponseOuterClass.SimpleSearchFilterGroupRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
                 boolean modified = false;
 
-                for (int i = 0; i < rootBuilder.getSearchFilterGroupsCount(); i++) {
+                for (int i = 0, rootCount = rootBuilder.getSearchFilterGroupsCount(); i < rootCount; i++) {
                     var groupBuilder = rootBuilder.getSearchFilterGroups(i).toBuilder();
                     boolean isPrioritizeGroup = false;
 
@@ -86,7 +86,7 @@ public final class RestoreOldSearchFiltersPatch {
                         // Since the original renderer is derived from the endpoint response, the selected filter may be incorrect.
                         // Change the filter's selection state based on the last used formValue.
                         if (!lastFormValue.isEmpty()) {
-                            for (int j = 0; j < groupBuilder.getSearchFilterOptionsCount(); j++) {
+                            for (int j = 0, groupCount = groupBuilder.getSearchFilterOptionsCount(); j < groupCount; j++) {
                                 var optionBuilder = groupBuilder.getSearchFilterOptions(j).toBuilder();
                                 String formValue = optionBuilder.getFormValue();
 
