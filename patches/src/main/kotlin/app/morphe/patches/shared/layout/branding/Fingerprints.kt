@@ -7,8 +7,8 @@ internal object NumberOfPresetAppNamesExtensionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "I",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "numberOfPresetAppNames" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { method, _ ->
+        method.name == "numberOfPresetAppNames"
     }
 )
 
@@ -16,8 +16,8 @@ internal object UserProvidedCustomNameExtensionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "userProvidedCustomName" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { method, _ ->
+        method.name == "userProvidedCustomName"
     }
 )
 
@@ -25,8 +25,8 @@ internal object UserProvidedCustomIconExtensionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "userProvidedCustomIcon" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { method, _ ->
+        method.name == "userProvidedCustomIcon"
     }
 )
 
