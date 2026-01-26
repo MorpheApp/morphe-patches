@@ -46,10 +46,11 @@ val subRedditDialogPatch = bytecodePatch(
                             getInstruction<OneRegisterInstruction>(index).registerA
 
                         addInstructions(
-                            index, """
-                                invoke-static {v$register}, $EXTENSION_CLASS_DESCRIPTOR->spoofLoggedInStatus(Z)Z
+                            index,
+                            """
+                                invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->spoofLoggedInStatus(Z)Z
                                 move-result v$register
-                                """
+                            """
                         )
                     }
             }
@@ -62,10 +63,11 @@ val subRedditDialogPatch = bytecodePatch(
                     getInstruction<OneRegisterInstruction>(hasBeenVisitedIndex + 1).registerA
 
                 addInstructions(
-                    hasBeenVisitedIndex + 2, """
-                            invoke-static {v$hasBeenVisitedRegister}, $EXTENSION_CLASS_DESCRIPTOR->spoofHasBeenVisitedStatus(Z)Z
-                            move-result v$hasBeenVisitedRegister
-                            """
+                    hasBeenVisitedIndex + 2,
+                    """
+                        invoke-static { v$hasBeenVisitedRegister }, $EXTENSION_CLASS_DESCRIPTOR->spoofHasBeenVisitedStatus(Z)Z
+                        move-result v$hasBeenVisitedRegister
+                    """
                 )
 
                 val isIncognitoIndex = indexOfIsIncognitoInstruction(this)

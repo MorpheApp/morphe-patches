@@ -68,14 +68,14 @@ val screenshotPopupPatch = bytecodePatch(
                         .apply {
                             val showBannerIndex = indexOfShowBannerInstruction(this)
                             val booleanIndex = indexOfBooleanInstruction(this, showBannerIndex)
-                            val booleanRegister =
-                                getInstruction<OneRegisterInstruction>(booleanIndex).registerA
+                            val booleanRegister = getInstruction<OneRegisterInstruction>(booleanIndex).registerA
 
                             addInstructions(
-                                booleanIndex + 1, """
+                                booleanIndex + 1,
+                                """
                                     invoke-static { v$booleanRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableScreenshotPopup(Ljava/lang/Boolean;)Ljava/lang/Boolean;
                                     move-result-object v$booleanRegister
-                                    """
+                                """
                             )
                             hookCount++
                         }

@@ -54,15 +54,16 @@ val sidebarComponentsPatch = bytecodePatch(
                             MutableMethodImplementation(2)
                         ).toMutable().apply {
                             addInstructionsWithLabels(
-                                0, """
-                                iget-object v0, p0, $headerItemField
-                                if-nez v0, :name
-                                const-string v0, ""
-                                return-object v0
-                                :name
-                                invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
-                                move-result-object v0
-                                return-object v0
+                                0,
+                                """
+                                    iget-object v0, p0, $headerItemField
+                                    if-nez v0, :name
+                                    const-string v0, ""
+                                    return-object v0
+                                    :name
+                                    invoke-virtual { v0 }, Ljava/lang/Enum;->name()Ljava/lang/String;
+                                    move-result-object v0
+                                    return-object v0
                                 """
                             )
                         }
@@ -75,12 +76,13 @@ val sidebarComponentsPatch = bytecodePatch(
 
             sidebarComponentsPatchFingerprint.method.apply {
                 addInstructions(
-                    0, """
+                    0,
+                    """
                         check-cast p0, $headerItemUiModelClass
-                        invoke-virtual {p0}, $headerItemUiModelClass->$helperMethodName()Ljava/lang/String;
+                        invoke-virtual { p0 }, $headerItemUiModelClass->$helperMethodName()Ljava/lang/String;
                         move-result-object v0
                         return-object v0
-                        """
+                    """
                 )
             }
 
@@ -101,10 +103,11 @@ val sidebarComponentsPatch = bytecodePatch(
                         mutableClassDefBy(classDef)
                             .findMutableMethodOf(method)
                             .addInstructions(
-                                0, """
+                                0,
+                                """
                                     invoke-static/range { p2 .. p3 }, $EXTENSION_CLASS_DESCRIPTOR->hideComponents(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/Collection;
                                     move-result-object p2
-                                    """
+                                """
                             )
 
                         return@handler

@@ -31,6 +31,7 @@ val trendingTodayShelfPatch = bytecodePatch(
         if (!is_2025_45_or_greater) {
             trendingTodayTitleFingerprint.match().let {
                 it.method.apply {
+                    // TODO: Change this to use instruction filters.
                     val stringIndex = it.stringMatches.first().index
                     val relativeIndex =
                         indexOfFirstInstructionReversedOrThrow(stringIndex, Opcode.AND_INT_LIT8)
@@ -47,11 +48,12 @@ val trendingTodayShelfPatch = bytecodePatch(
                     }
 
                     addInstructionsWithLabels(
-                        insertIndex, """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideTrendingTodayShelf()Z
-                        move-result v$insertRegister
-                        if-nez v$insertRegister, :hidden
-                        """, ExternalLabel("hidden", getInstruction(jumpIndex))
+                        insertIndex,
+                        """
+                            invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideTrendingTodayShelf()Z
+                            move-result v$insertRegister
+                            if-nez v$insertRegister, :hidden
+                        """,ExternalLabel("hidden", getInstruction(jumpIndex))
                     )
                 }
             }

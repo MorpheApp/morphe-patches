@@ -2,6 +2,7 @@ package app.morphe.patches.reddit.utils.settings
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.methodCall
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -58,6 +59,9 @@ internal val redditInternalFeaturesFingerprint = Fingerprint(
 
 internal val webBrowserActivityOnCreateFingerprint = Fingerprint(
     returnType = "V",
+    filters = listOf(
+        methodCall(smali = "Landroid/app/Activity;->getIntent()Landroid/content/Intent;")
+    ),
     strings = listOf("com.reddit.extra.initial_url"),
     custom = { methodDef, _ ->
         methodDef.definingClass.endsWith("/WebBrowserActivity;") &&

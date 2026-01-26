@@ -30,7 +30,7 @@ val recommendedCommunitiesPatch = bytecodePatch(
                     move-result v0
                     if-eqz v0, :off
                     return-void
-                    """, ExternalLabel("off", getInstruction(0))
+                """, ExternalLabel("off", getInstruction(0))
             )
         }
 

@@ -11,6 +11,7 @@ import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_RED
 import app.morphe.patches.reddit.utils.extension.hooks.redditActivityOnCreateFingerprint
 import app.morphe.patches.reddit.utils.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
+import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -99,6 +100,7 @@ val settingsPatch = bytecodePatch(
         val context = this
         preferenceDestinationFingerprint.match().let {
             it.method.apply {
+                // TODO: Change this to instruction filters.
                 val targetIndex = it.instructionMatches.first().index + 2
                 val targetRegister =
                     getInstruction<FiveRegisterInstruction>(targetIndex).registerC
@@ -126,11 +128,11 @@ val settingsPatch = bytecodePatch(
                         invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAcknowledgment(Ljava/lang/Enum;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :ignore
-                        invoke-virtual {v$targetRegister}, $getActivityReference
+                        invoke-virtual { v$targetRegister }, $getActivityReference
                         move-result-object v$freeRegister
-                        invoke-static {v$freeRegister}, $EXTENSION_CLASS_DESCRIPTOR->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
+                        invoke-static { v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
                         move-result-object v$freeRegister
-                        invoke-virtual {v$targetRegister, v$freeRegister}, $targetClass->startActivity(Landroid/content/Intent;)V
+                        invoke-virtual { v$targetRegister, v$freeRegister }, $targetClass->startActivity(Landroid/content/Intent;)V
                         return-void
                         :ignore
                         nop
@@ -139,15 +141,10 @@ val settingsPatch = bytecodePatch(
             }
         }
 
-        webBrowserActivityOnCreateFingerprint.method.let {
-            it.apply {
-                val stringIndex = indexOfFirstInstructionOrThrow(Opcode.CONST_STRING)
-                val freeRegister =
-                    getInstruction<OneRegisterInstruction>(stringIndex).registerA
-
-                val insertIndex = indexOfFirstInstructionOrThrow {
-                    getReference<MethodReference>()?.toString() == "Landroid/app/Activity;->getIntent()Landroid/content/Intent;"
-                }
+        webBrowserActivityOnCreateFingerprint.let {
+            it.method.apply {
+                val insertIndex = it.instructionMatches.first().index
+                val freeRegister = findFreeRegister(insertIndex)
 
                 addInstructionsWithLabels(
                     insertIndex,
