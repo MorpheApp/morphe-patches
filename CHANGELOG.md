@@ -1,3 +1,10 @@
+# [1.9.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-01-26)
+
+
+### Features
+
+* **YouTube:** Add `Restore old search filters` patch ([#285](https://github.com/MorpheApp/morphe-patches/issues/285)) ([c088723](https://github.com/MorpheApp/morphe-patches/commit/c0887234612bb24ad8184fe211af14cf0640d8ec))
+
 # [1.8.0](https://github.com/MorpheApp/morphe-patches/compare/v1.7.0...v1.8.0) (2026-01-25)
 
 

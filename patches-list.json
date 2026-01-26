@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0-dev.1",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1338,6 +1338,28 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.14.43",
+          "20.21.37",
+          "20.26.46",
+          "20.31.42",
+          "20.37.48",
+          "20.40.45"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Restore old search filters",
+      "description": "Adds an option to restore the old search filters.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
