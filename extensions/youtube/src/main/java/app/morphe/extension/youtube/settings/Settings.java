@@ -273,7 +273,6 @@ public class Settings extends BaseSettings {
             "morphe_remove_viewer_discretion_dialog_user_dialog_message");
     public static final BooleanSetting RESTORE_OLD_SEARCH_FILTERS = new BooleanSetting("morphe_restore_old_search_filters", FALSE, true);
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
-    public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting CHANGE_START_PAGE_ALWAYS = new BooleanSetting("morphe_change_start_page_always", FALSE, true,
             new ChangeStartPageTypeAvailability());
@@ -298,6 +297,13 @@ public class Settings extends BaseSettings {
             "morphe_disable_translucent_status_bar_user_dialog_message");
     public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = new BooleanSetting("morphe_disable_translucent_navigation_bar_light", FALSE, true);
     public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE, true);
+
+    // Toolbar
+    public static final BooleanSetting HIDE_TOOLBAR_CAST_BUTTON = new BooleanSetting("morphe_hide_toolbar_cast_button", TRUE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_hide_toolbar_create_button", FALSE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("morphe_hide_toolbar_notification_button", FALSE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_SEARCH_BUTTON = new BooleanSetting("morphe_hide_toolbar_search_button", FALSE, true);
+    public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 
     // Shorts
     public static final BooleanSetting DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("morphe_disable_resuming_shorts_player", FALSE);
