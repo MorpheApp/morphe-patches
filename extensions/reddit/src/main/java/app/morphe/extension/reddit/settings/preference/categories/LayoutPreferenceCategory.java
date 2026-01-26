@@ -46,8 +46,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        // FIXME: Navigation buttons patch not yet supported.
-        if (false && NavigationButtonsPatch.isPatchIncluded()) {
+        if (NavigationButtonsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ANSWERS_BUTTON,
+                    "Hide Answers button",
+                    "Hides the Answers button in the navigation bar."
+            ));
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_CHAT_BUTTON,

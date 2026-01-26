@@ -2,7 +2,9 @@ package app.morphe.patches.reddit.layout.navigation
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.settingsPatch
@@ -16,8 +18,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/pat
 
 @Suppress("unused")
 val navigationButtonsPatch = bytecodePatch(
-    // FIXME: Figure out the reason why the extension code is getting invalid resource IDs.
-//    name = "Hide navigation buttons",
+    name = "Hide navigation buttons",
     description = "Adds options to hide buttons in the navigation bar."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
@@ -76,6 +77,27 @@ val navigationButtonsPatch = bytecodePatch(
                                     "setNavigationMap(Ljava/lang/Object;Ljava/lang/String;)V"
                         )
                     }
+
+                val getResStringFilter = methodCall(
+                    smali = "Landroid/content/res/Resources;->getString(I)Ljava/lang/String;",
+                    opcode = Opcode.INVOKE_VIRTUAL
+                )
+                val matchingInstructions = instructions.mapIndexedNotNull { index, instruction ->
+                    if (getResStringFilter.matches(this, instruction)) {
+                        return@mapIndexedNotNull index to instruction
+                    }
+                    return@mapIndexedNotNull null
+                }
+
+                matchingInstructions.reversed().forEach { value ->
+                    val (index, instruction) = value
+                    val idReg = (instruction as FiveRegisterInstruction).registerD
+                    addInstruction(
+                        index,
+                        "invoke-static { v$idReg }, " +
+                                "$EXTENSION_CLASS_DESCRIPTOR->mapResourceId(I)V"
+                    )
+                }
 
                 addInstruction(
                     0,
