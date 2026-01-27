@@ -176,3 +176,30 @@ internal object SearchBoxTypingStringFingerprint : Fingerprint(
     )
 )
 
+internal object LatestVideosContentPillFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Z"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "content_pill"),
+        methodCall(
+            smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object LatestVideosBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Z"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "bar"),
+        methodCall(
+            smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+
