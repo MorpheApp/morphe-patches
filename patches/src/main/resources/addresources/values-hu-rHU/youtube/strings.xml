@@ -554,7 +554,7 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_hide_save_button_title">Mentés elrejtése</string>
   <string name="morphe_hide_save_button_summary_on">A mentés gomb rejtett</string>
   <string name="morphe_hide_save_button_summary_off">A mentés gomb látható</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigációs gombok</string>
   <string name="morphe_navigation_buttons_screen_summary">Gombok elrejtése vagy módosítása a navigációs sávon</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Sötét áttetsző sáv letiltása</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Sötét módban az átlátszó navigációs sáv átlátszatlan</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A sötét módú navigációs sáv nem áttetsző vagy áttetsző</string>
+  <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
+  <string name="morphe_toolbar_screen_summary">Eszközevek elrejtése vagy módosítása</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Küldés gomb elrejtése</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Az átküldés gomb rejtve van</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Az átküldés gomb látható</string>
+  <string name="morphe_hide_toolbar_create_button_title">Elrejtés a Létrehozás gomb</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">A létrehozás gomb el van rejtve</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">A létrehozás gomb látható</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Elrejtés a Megosztás gomb</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Az értesítések gomb rejtve van</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Az értesítések gomb megjelenik</string>
+  <string name="morphe_hide_toolbar_search_button_title">Elrejtés a Keresés gomb</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">A keresés gomb el van rejtve</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">A keresés gomb látható</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Előugró menü</string>
   <string name="morphe_hide_player_flyout_summary">A lejátszó előugró menüpontjainak elrejtése vagy megjelenítése</string>
@@ -916,6 +930,12 @@ Korlátozás: A nem tetszések inkognitómódban nem jelenhetnek meg"</string>
   <string name="morphe_wide_searchbar_title">Széles keresősáv bekapcsolása</string>
   <string name="morphe_wide_searchbar_summary_on">Széles keresősáv bekapcsolva</string>
   <string name="morphe_wide_searchbar_summary_off">Széles keresősáv kikapcsolva</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Régi keresési szűrők visszaállítása</string>
+  <string name="morphe_restore_old_search_filters_summary_on">A keresési szűrőben a népszerűség szerinti és feltöltés dátum szerinti rendezés elérhető</string>
+  <string name="morphe_restore_old_search_filters_summary_off">A keresési szűrőben a népszerűség szerinti és feltöltés dátum szerinti rendezés nem elérhető</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Értékelés</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Feltöltés dátuma</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock bekapcsolása</string>
   <string name="morphe_sb_enable_sb_sum">A SponsorBlock egy közösségi finanszírozású rendszer, amellyel kihagyhatod a YouTube videók idegesítő részeit</string>

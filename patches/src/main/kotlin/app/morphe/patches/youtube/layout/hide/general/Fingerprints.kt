@@ -12,7 +12,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
-import app.morphe.patches.youtube.layout.searchbar.WideSearchbarLayoutFingerprint
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode

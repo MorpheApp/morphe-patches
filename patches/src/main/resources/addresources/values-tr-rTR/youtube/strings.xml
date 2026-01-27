@@ -554,7 +554,7 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_hide_save_button_title">Kaydet\'i Gizle</string>
   <string name="morphe_hide_save_button_summary_on">Kaydet düğmesi gizli</string>
   <string name="morphe_hide_save_button_summary_off">Kaydet düğmesi görünür</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Gezinme düğmeleri</string>
   <string name="morphe_navigation_buttons_screen_summary">Gezinme çubuğundaki düğmeleri gizle veya değiştir</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Koyu temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Koyu temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Koyu temada gezinti çubuğu opak veya yarı saydam</string>
+  <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
+  <string name="morphe_toolbar_screen_summary">Araç çubuğu bileşenlerini gizle veya değiştir</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Yayınla düğmesini gizle</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Yayınla düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Yayınla düğmesi görünür</string>
+  <string name="morphe_hide_toolbar_create_button_title">Oluştur düğmesini gizle</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Oluştur düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Oluştur düğmesi görünür</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Bildirim düğmesini gizle</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Bildirimler düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirimler düğmesi görünür</string>
+  <string name="morphe_hide_toolbar_search_button_title">Arama düğmesini gizle</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Arama düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Arama düğmesi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılır menü</string>
   <string name="morphe_hide_player_flyout_summary">Oynatıcı açılır menü öğelerini gizle veya göster</string>
@@ -916,6 +930,12 @@ Kısıtlama: Beğenilmeme sayıları gizli modda görünmeyebilir"</string>
   <string name="morphe_wide_searchbar_title">Geniş arama çubuğunu etkinleştir</string>
   <string name="morphe_wide_searchbar_summary_on">Geniş arama çubuğu etkin</string>
   <string name="morphe_wide_searchbar_summary_off">Geniş arama çubuğu devre dışı</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Eski arama filtrelerini geri yükle</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Arama filtresinde derecelendirme ve yükleme tarihi sıralaması mevcuttur</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Arama filtresinde derecelendirme ve yükleme tarihi sıralaması mevcut değildir</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Puanlama</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Yüklenen Tarih</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock\'u etkinleştir</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock, YouTube videolarının can sıkıcı kısımlarını atlamaya yarayan kitle kaynaklı bir sistemdir</string>

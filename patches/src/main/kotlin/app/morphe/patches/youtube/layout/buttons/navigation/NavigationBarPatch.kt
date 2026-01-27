@@ -7,6 +7,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.toolbar.hookToolBar
+import app.morphe.patches.youtube.layout.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
@@ -15,19 +17,26 @@ import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_15_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/NavigationButtonsPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
-val navigationButtonsPatch = bytecodePatch(
-    name = "Navigation buttons",
-    description = "Adds options to hide and change navigation buttons (such as the Shorts button).",
+val navigationBarPatch = bytecodePatch(
+    name = "Navigation bar",
+    description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
+            + " and the upper navigation toolbar. Patching version 20.21.37 and lower also adds a setting to use a wide searchbar."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -35,6 +44,7 @@ val navigationButtonsPatch = bytecodePatch(
         navigationBarHookPatch,
         versionCheckPatch,
         clientContextHookPatch,
+        toolBarHookPatch
     )
 
     compatibleWith(
@@ -49,7 +59,7 @@ val navigationButtonsPatch = bytecodePatch(
     )
 
     execute {
-        val preferences = mutableSetOf(
+        val navPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_home_button"),
             SwitchPreference("morphe_hide_shorts_button"),
             SwitchPreference("morphe_hide_create_button"),
@@ -61,15 +71,15 @@ val navigationButtonsPatch = bytecodePatch(
         )
 
         if (is_19_25_or_greater) {
-            preferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light")
-            preferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark")
+            navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light")
+            navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark")
 
             PreferenceScreen.GENERAL_LAYOUT.addPreferences(
                 SwitchPreference("morphe_disable_translucent_status_bar")
             )
 
             if (is_20_15_or_greater) {
-                preferences += SwitchPreference("morphe_navigation_bar_animations")
+                navPreferences += SwitchPreference("morphe_navigation_bar_animations")
             }
         }
 
@@ -77,7 +87,7 @@ val navigationButtonsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_navigation_buttons_screen",
                 sorting = Sorting.UNSORTED,
-                preferences = preferences
+                preferences = navPreferences
             )
         )
 
@@ -152,6 +162,84 @@ val navigationButtonsPatch = bytecodePatch(
                             invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->enableNarrowNavigationButton(Z)Z
                             move-result v$register
                         """
+                    )
+                }
+            }
+        }
+
+
+        //
+        // Toolbar
+        //
+
+        val toolbarPreferences = mutableSetOf(
+            SwitchPreference("morphe_hide_toolbar_cast_button"),
+            SwitchPreference("morphe_hide_toolbar_create_button"),
+            SwitchPreference("morphe_hide_toolbar_notification_button"),
+            SwitchPreference("morphe_hide_toolbar_search_button")
+        )
+        if (!is_20_31_or_greater) {
+            toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
+        }
+
+        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+            PreferenceScreenPreference(
+                key = "morphe_toolbar_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = toolbarPreferences
+            )
+        )
+
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideCreateButton")
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
+
+
+        //
+        // Wide searchbar
+        //
+
+        // YT removed the legacy text search text field all code required to use it.
+        // This functionality could be restored by adding a search text field to the toolbar
+        // with a listener that artificially clicks the toolbar search button.
+        if (!is_20_31_or_greater) {
+            SetWordmarkHeaderFingerprint.let {
+                // Navigate to the method that checks if the YT logo is shown beside the search bar.
+                val shouldShowLogoMethod = with(it.originalMethod) {
+                    val invokeStaticIndex = indexOfFirstInstructionOrThrow {
+                        opcode == Opcode.INVOKE_STATIC &&
+                                getReference<MethodReference>()?.returnType == "Z"
+                    }
+                    navigate(this).to(invokeStaticIndex).stop()
+                }
+
+                shouldShowLogoMethod.apply {
+                    findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                            invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->enableWideSearchbar(Z)Z
+                            move-result v$register
+                        """
+                        )
+                    }
+                }
+            }
+
+            // Fix missing left padding when using wide searchbar.
+            WideSearchbarLayoutFingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow {
+                    val reference = getReference<MethodReference>()
+                    reference?.definingClass == "Landroid/view/LayoutInflater;"
+                            && reference.name == "inflate"
+                }.forEach { inflateIndex ->
+                    val register = getInstruction<OneRegisterInstruction>(inflateIndex + 1).registerA
+
+                    addInstruction(
+                        inflateIndex + 2,
+                        "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->setActionBar(Landroid/view/View;)V"
                     )
                 }
             }

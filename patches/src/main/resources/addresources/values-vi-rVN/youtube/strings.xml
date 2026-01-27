@@ -337,7 +337,7 @@ Hạn chế:
 • Tìm kiếm từ khóa có thể không hiện kết quả nào"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Khớp toàn bộ từ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">Đặt từ/cụm từ cần lọc trong dấu ngoặc kép sẽ ngăn chặn các kết quả chỉ trùng một phần với tiêu đề video và tên kênh&lt;br&gt;&lt;br&gt;Ví dụ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sẽ ẩn video: &lt;b&gt;AI hoạt động ra sao?&lt;/b&gt;&lt;br&gt;nhưng sẽ không ẩn: &lt;b&gt;Hai lai nghĩa là gì?&lt;/b&gt;</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Đặt từ hoặc cụm từ cần lọc trong dấu ngoặc kép sẽ ngăn chặn các kết quả chỉ trùng một phần với tiêu đề video và tên kênh&lt;br&gt;&lt;br&gt;Ví dụ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sẽ ẩn video: &lt;b&gt;AI hoạt động ra sao?&lt;/b&gt;&lt;br&gt;nhưng sẽ không ẩn: &lt;b&gt;Hai lai nghĩa là gì?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_keyword_toast_invalid_common">Không thể dùng từ khóa: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Hãy thêm dấu ngoặc kép để sử dụng từ khoá: %s</string>
@@ -555,7 +555,7 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_hide_save_button_title">Ẩn Lưu</string>
   <string name="morphe_hide_save_button_summary_on">Nút Lưu đã bị ẩn</string>
   <string name="morphe_hide_save_button_summary_off">Nút Lưu được hiển thị</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nút điều hướng</string>
   <string name="morphe_navigation_buttons_screen_summary">Ẩn hoặc thay đổi các nút ở thanh điều hướng</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -578,10 +578,10 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_hide_notifications_button_summary_on">Nút thông báo đã bị ẩn</string>
   <string name="morphe_hide_notifications_button_summary_off">Nút thông báo được hiển thị</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">Chuyển vị nút Tạo với nút Thông báo</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">Nút Tạo đã được chuyển đổi với nút Thông báo</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">Nút Tạo không đổi với nút Thông báo</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Nếu thay đổi cài đặt này không có hiệu lực, hãy thử chuyển sang chế độ Incognito.</string>
+  <string name="morphe_switch_create_with_notifications_button_title">Đổi chỗ nút Tạo với nút Thông báo</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Nút Tạo đã được đổi chỗ với nút Thông báo</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_off">Nút Tạo không đuợc đổi chỗ với nút Thông báo</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Nếu bật hoặc tắt cài đặt này cũng không có hiệu lực, bạn có thể thử chuyển sang chế độ Ẩn danh.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Các tên nút đã bị ẩn</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Các tên nút được hiển thị</string>
@@ -601,6 +601,20 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Vô hiệu hoá thanh điều hướng trong suốt ở giao diện tối</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Thanh điều hướng sẽ không còn trong suốt ở giao diện tối</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Thanh điều hướng sẽ trở nên mờ hoặc trong suốt ở giao diện tối</string>
+  <string name="morphe_toolbar_screen_title">Thanh toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Ẩn hoặc thay đổi các thành phần của thanh toolbar</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ẩn nút truyền</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Nút truyền đang ẩn</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Nút truyền đang hiển thị</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ẩn nút Tạo</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Nút tạo đang ẩn</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Nút tạo đang hiển thị</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ẩn nút Thông báo</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Nút thông báo đang ẩn</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Nút thông báo đang hiển thị</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ẩn nút Tìm kiếm</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Nút tìm kiếm đang ẩn</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Nút tìm kiếm đang hiển thị</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu tuỳ chọn</string>
   <string name="morphe_hide_player_flyout_summary">Ẩn hoặc hiện các mục menu tuỳ chọn trên trình phát</string>
@@ -917,6 +931,12 @@ Hạn chế: Số lượt không thích có thể không xuất hiện ở chế
   <string name="morphe_wide_searchbar_title">Phóng to thanh tìm kiếm</string>
   <string name="morphe_wide_searchbar_summary_on">Thanh tìm kiếm sẽ lớn hơn</string>
   <string name="morphe_wide_searchbar_summary_off">Thanh tìm kiếm như bình thường</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Khôi phục bộ lọc tìm kiếm cũ</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sắp xếp theo đánh giá và sắp xếp theo ngày tải lên có sẵn trong bộ lọc tìm kiếm</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sắp xếp theo đánh giá và sắp xếp theo ngày tải lên không có sẵn trong bộ lọc tìm kiếm</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Đánh giá</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Ngày tải lên</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Bật SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock là một hệ thống dựa trên đóng góp bởi cộng đồng để bỏ qua các phần gây khó chịu trong video YouTube</string>

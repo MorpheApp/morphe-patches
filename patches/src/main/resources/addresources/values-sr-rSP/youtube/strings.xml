@@ -554,7 +554,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Сакриј дугме „Сачувај”</string>
   <string name="morphe_hide_save_button_summary_on">Дугме „Сачувај” је скривено</string>
   <string name="morphe_hide_save_button_summary_off">Дугме „Сачувај” је приказано</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Дугмад навигације</string>
   <string name="morphe_navigation_buttons_screen_summary">Сакријте или промените дугмад на траци за навигацију</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Онемогући тамну прозирну траку за навигацију</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Трака за навигацију у тамном режиму је непрозирна</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Трака за навигацију у тамном режиму је непрозирна или прозирна</string>
+  <string name="morphe_toolbar_screen_title">Traka za alatke</string>
+  <string name="morphe_toolbar_screen_summary">Sakrijte ili promenite komponente trake za alatke</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Сакриј дугме „Пребацуј”</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Дугме „Пребацуј” је скривено</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Дугме „Пребацуј” је приказано</string>
+  <string name="morphe_hide_toolbar_create_button_title">Сакриј дугме \"Кreiraj\"</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Дугме „Направи” је скривено</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Дугме „Направи” је приказано</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Сакриј дугме \"Обавештења\"</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Дугме „Обавештења” је скривено</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Дугме „Обавештења” је приказано</string>
+  <string name="morphe_hide_toolbar_search_button_title">Сакриј дугме \"Претрага\"</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Дугме „Претрага” је скривено</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Дугме „Претрага” је приказано</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Падајући мени</string>
   <string name="morphe_hide_player_flyout_summary">Сакријте или прикажите предмете у падајућем менију плејера</string>
@@ -916,6 +930,12 @@ Da bi prikazali meni sa audio stazom, promenite 'Spoof video streams' u 'Android
   <string name="morphe_wide_searchbar_title">Омогући широку траку за претрагу</string>
   <string name="morphe_wide_searchbar_summary_on">Широка трака за претрагу је омогућена</string>
   <string name="morphe_wide_searchbar_summary_off">Широка трака за претрагу је онемогућена</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Врати старе филтер опције за претрагу</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Можете да сортирате по рејтингу и да сортирате по датуму објављивања у претрази</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Можете да сортирате по рејтингу и да сортирате по датуму објављивања у претрази</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Оцена</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Датум отпремања</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Омогући SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock је систем заснован на доприносима корисника и служи за прескакање досадних делова YouTube видеа</string>

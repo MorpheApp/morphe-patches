@@ -554,7 +554,7 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
   <string name="morphe_hide_save_button_title">Opslaan verbergen</string>
   <string name="morphe_hide_save_button_summary_on">Knop \"Opslaan\" is verborgen</string>
   <string name="morphe_hide_save_button_summary_off">Knop \"Opslaan\" is zichtbaar</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigatieknoppen</string>
   <string name="morphe_navigation_buttons_screen_summary">Knoppen in de navigatiebalk verbergen of wijzigen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Schakel de donkere doorschijnende balk uit</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">De donkere navigatiebalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">De donkermodus navigatiebalk is ondoorzichtig of doorschijnend</string>
+  <string name="morphe_toolbar_screen_title">Balkon</string>
+  <string name="morphe_toolbar_screen_summary">Verberg of verander balkononderdelen</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Verberg Cast-knop</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Castknop is verborgen</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Castknop wordt weergegeven</string>
+  <string name="morphe_hide_toolbar_create_button_title">Verberg de knop \"Aanmaken\"</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Maak-knop is verborgen</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Maak-knop wordt weergegeven</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Verberg de knop \"Meldingen\"</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Meldingsknop is verborgen</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Meldingsknop wordt weergegeven</string>
+  <string name="morphe_hide_toolbar_search_button_title">Verberg de knop \"Zoeken\"</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Zoekknop is verborgen</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Zoekknop is weergegeven</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Uitklapmenu</string>
   <string name="morphe_hide_player_flyout_summary">Items in het uitklapmenu van de speler verbergen of weergeven</string>
@@ -916,6 +930,12 @@ Beperking: Vind ik niet leuk verschijnen mogelijk niet in de incognitomodus"</st
   <string name="morphe_wide_searchbar_title">Schakel de brede zoekbalk in</string>
   <string name="morphe_wide_searchbar_summary_on">De brede zoekbalk is ingeschakeld</string>
   <string name="morphe_wide_searchbar_summary_off">De brede zoekbalk is uitgeschakeld</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Oude zoekfilters herstellen</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sorteren op beoordeling en sorteren op uploaddatum zijn beschikbaar in het zoekfilter</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sorteren op beoordeling en sorteren op uploaddatum zijn niet beschikbaar in het zoekfilter</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Beoordeling</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Upload datum</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Schakel SponsorBlock in</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock is een crowdsourced systeem om vervelende delen van YouTube-video\'s over te slaan</string>

@@ -555,7 +555,7 @@ Upravte hlasitost svislým přejetím po pravé straně obrazovky"</string>
   <string name="morphe_hide_save_button_title">Skrýt Uložit</string>
   <string name="morphe_hide_save_button_summary_on">Tlačítko Uložit je skryté</string>
   <string name="morphe_hide_save_button_summary_off">Tlačítko Uložit je zobrazeno</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigační tlačítka</string>
   <string name="morphe_navigation_buttons_screen_summary">Skrýt nebo změnit tlačítka na navigačním panelu</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -601,6 +601,20 @@ Upravte hlasitost svislým přejetím po pravé straně obrazovky"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktivovat tmavý průsvitný navigační panel</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Navigační panel v tmavém režimu je neprůhledný</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Navigační lišta v tmavém režimu je neprůhledná nebo průsvitná</string>
+  <string name="morphe_toolbar_screen_title">Nárazovka</string>
+  <string name="morphe_toolbar_screen_summary">Skrýt nebo změnit součástky nárazovky</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Skrýt tlačítko Odeslat</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Tlačítko pro odesílání je skryto</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Tlačítko vysílání je viditelné</string>
+  <string name="morphe_hide_toolbar_create_button_title">Skrýt tlačítko Vytvořit</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Tlačítko Vytvořit je skryto</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Tlačítko Vytvořit je zobrazeno</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Skrýt tlačítko Notifikace</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Tlačítko oznámení je skryto</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Tlačítko oznámení je zobrazeno</string>
+  <string name="morphe_hide_toolbar_search_button_title">Skrýt tlačítko Hledat</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Tlačítko vyhledávání je skryté</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Tlačítko vyhledávání je zobrazené</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Vyskakovací menu</string>
   <string name="morphe_hide_player_flyout_summary">Skrýt nebo zobrazit položky vyskakovacího menu přehrávače</string>
@@ -917,6 +931,12 @@ Omezení: Nelíbí se mi se nemusí zobrazit v anonymním režimu"</string>
   <string name="morphe_wide_searchbar_title">Povolit široký vyhledávací panel</string>
   <string name="morphe_wide_searchbar_summary_on">Široký vyhledávací panel je povolen</string>
   <string name="morphe_wide_searchbar_summary_off">Široký vyhledávací panel je zakázán</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Obnovit staré filtry hledání</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Řadit podle hodnocení a řadit podle data nahrání je dostupné v filtru hledání</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Řadit podle hodnocení a řadit podle data nahrání není dostupné v filtru hledání</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Hodnocení</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Datum nahrání</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Povolit SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock je systém s participací komunity pro přeskakování otravných částí videí na YouTube</string>

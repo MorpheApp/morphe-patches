@@ -552,7 +552,7 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_hide_save_button_title">Ascunde Salvare</string>
   <string name="morphe_hide_save_button_summary_on">Butonul Salvare este ascuns</string>
   <string name="morphe_hide_save_button_summary_off">Butonul Salvare este afișat</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Butoane de navigare</string>
   <string name="morphe_navigation_buttons_screen_summary">Ascunde sau modifică butoanele din bara de navigare</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -598,6 +598,20 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Dezactivați bara translucidă închisă la culoare</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Bara de navigare în modul întunecat este opacă</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bara de navigare în modul întunecat este opaca sau translucida</string>
+  <string name="morphe_toolbar_screen_title">Bara de navigare</string>
+  <string name="morphe_toolbar_screen_summary">Ascunde sau schimbă componentele barei de navigare</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ascunde butonul Distribuție</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Butonul de distribuție este ascuns</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Butonul de execuție este afișat</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ascunde butonul Creează</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Butonul de creare este ascuns</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Butonul Creare este afișat</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ascunde butonul Notificări</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Butonul Notificări este ascuns</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Butonul Notificări este afișat</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ascunde butonul Căutare</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Butonul de căutare este ascuns</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Butonul de căutare este afișat</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Ascunde sau arată elementele de meniu Flyout ale jucătorului</string>
@@ -914,6 +928,12 @@ Limitare: Este posibil ca aprecierile negative să nu apară în modul incognito
   <string name="morphe_wide_searchbar_title">Activează bara de căutare largă</string>
   <string name="morphe_wide_searchbar_summary_on">Bara de căutare largă este activată</string>
   <string name="morphe_wide_searchbar_summary_off">Bara de căutare largă este dezactivată</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Restaurează filtrele vechi de căutare</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sortare după rating și sortare după data de încărcare sunt disponibile în filtrele de căutare</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sortare după rating și sortare după data de încărcare nu sunt disponibile în filtrele de căutare</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Calitate</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Data incarcare</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Activează SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock este un sistem bazat pe crowdsourcing pentru a sări peste părțile enervante din videoclipurile de pe YouTube</string>

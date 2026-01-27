@@ -552,7 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">ซ่อนบันทึก</string>
   <string name="morphe_hide_save_button_summary_on">ปุ่มบันทึกถูกซ่อน</string>
   <string name="morphe_hide_save_button_summary_off">ปุ่มบันทึกถูกแสดง</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">ปุ่มนำทาง</string>
   <string name="morphe_navigation_buttons_screen_summary">ซ่อนหรือเปลี่ยนปุ่มในแถบนำทาง</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -598,6 +598,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">ปิดใช้แถบโปร่งแสงสีเข้ม</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">แถบนำทางโหมดมืดเป็นแบบทึบแสง</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">แถบนำทางโหมดมืดโปร่งแสงหรือไม่โปร่งแสง</string>
+  <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
+  <string name="morphe_toolbar_screen_summary">ซ่อนหรือเปลี่ยนส่วนประกอบแถบเครื่องมือ</string>
+  <string name="morphe_hide_toolbar_cast_button_title">ซ่อนปุ่มส่ง</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">ปุ่มแคสต์ซ่อนอยู่</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">ปุ่มแคสต์แสดงอยู่</string>
+  <string name="morphe_hide_toolbar_create_button_title">ซ่อนปุ่มสร้าง</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">ปุ่มสร้างถูกซ่อน</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">ปุ่มสร้างถูกแสดง</string>
+  <string name="morphe_hide_toolbar_notification_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">ปุ่มการแจ้งเตือนถูกซ่อนอยู่</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">ปุ่มการแจ้งเตือนแสดงอยู่</string>
+  <string name="morphe_hide_toolbar_search_button_title">ซ่อนปุ่มค้นหา</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">ซ่อนปุ่มค้นหาแล้ว</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">แสดงปุ่มค้นหาแล้ว</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">เมนูแบบเลื่อนลง</string>
   <string name="morphe_hide_player_flyout_summary">ซ่อนหรือแสดงรายการเมนูแบบเลื่อนลงของเครื่องเล่น</string>
@@ -914,6 +928,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">ทั้งหละเย้ยนตะโรกเลียด</string>
   <string name="morphe_wide_searchbar_summary_on">ทั้งละเย้ยนตะโรกเลียด รตรอกลาดต้อง</string>
   <string name="morphe_wide_searchbar_summary_off">ทั้งหละเย้ยนตะโรกเลียด รบกใหม่ยเทศไทย</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">คืนค่าฟิลเตอร์ค้นหาเก่า</string>
+  <string name="morphe_restore_old_search_filters_summary_on">จัดลำดับตามคะแนนและจัดลำดับตามวันที่อัปโหลดพร้อมใช้งานในฟิลเตอร์ค้นหา</string>
+  <string name="morphe_restore_old_search_filters_summary_off">จัดลำดับตามคะแนนและจัดลำดับตามวันที่อัปโหลดไม่อยู่ในฟิลเตอร์ค้นหา</string>
+  <string name="morphe_old_search_filters_sort_by_rating">คะแนน</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">วันที่อัปโหลด</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">เปิดใช้งาน SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock เป็นระบบ crowdsourced สำหรับการข้ามส่วนที่น่ารำคาญของวิดีโอ YouTube</string>

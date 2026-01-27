@@ -126,9 +126,10 @@ internal fun baseCustomBrandingPatch(
                     "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->setBranding()V"
                 )
 
-                NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
-                UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
-                UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
+                val extensionClassDef = classDefBy(EXTENSION_CLASS_DESCRIPTOR)
+                NumberOfPresetAppNamesExtensionFingerprint.match(extensionClassDef).method.returnEarly(numberOfPresetAppNames)
+                UserProvidedCustomNameExtensionFingerprint.match(extensionClassDef).method.returnEarly(customName != null)
+                UserProvidedCustomIconExtensionFingerprint.match(extensionClassDef).method.returnEarly(customIcon != null)
 
                 NotificationFingerprint.method.apply {
                     val getBuilderIndex = if (isYouTubeMusic) {

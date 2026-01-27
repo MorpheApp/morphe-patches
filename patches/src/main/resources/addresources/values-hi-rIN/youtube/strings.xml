@@ -538,7 +538,7 @@ Second \"item\" text"</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
@@ -550,6 +550,10 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">कुछ डिवाइसों पर इस सुविधा को सक्रिय करना सिस्टम नेविगेशन बार को ट्रांस्परेंट बना सकता है।</string>
+  <string name="morphe_toolbar_screen_title">टूलबार</string>
+  <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या बदलें</string>
+  <string name="morphe_hide_toolbar_cast_button_title">कास्ट बटन को छुपाएं</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">कास्ट बटन छुपा हुआ है</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -614,6 +618,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_compact_layout_summary_on">लाइक बटन मिनिमम वाइड्थ के लिए स्टाइल किया गया</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">पुराने खोज फ़िल्टर पुनर्स्थापित करें</string>
+  <string name="morphe_restore_old_search_filters_summary_on">खोज फ़िल्टर में रेटिंग द्वारा और अपलोड तारीख़ द्वारा सॉर्ट करना उपलब्ध है</string>
+  <string name="morphe_restore_old_search_filters_summary_off">खोज फ़िल्टर में रेटिंग द्वारा और अपलोड तारीख़ द्वारा सॉर्ट करना उपलब्ध नहीं है</string>
+  <string name="morphe_old_search_filters_sort_by_rating">रेटिंग</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">अपलोड तारीख</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

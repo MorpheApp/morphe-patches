@@ -554,7 +554,7 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_hide_save_button_title">Piilota Tallenna</string>
   <string name="morphe_hide_save_button_summary_on">Tallenna-painike piilotetaan</string>
   <string name="morphe_hide_save_button_summary_off">Tallenna-painike näytetään</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigointipainikkeet</string>
   <string name="morphe_navigation_buttons_screen_summary">Piilota tai muuta navigointipalkin painikkeita</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Poista tumma läpikuultava palkki käytöstä</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Tumman tilan navigointipalkki on läpinäkymätön</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tumman tilan navigointipalkki on läpinäkymätön tai läpikuultava</string>
+  <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
+  <string name="morphe_toolbar_screen_summary">Piilota tai muuta työkalupalkin osia</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Cast-painike piilotetaan</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Cast-painike näytetään</string>
+  <string name="morphe_hide_toolbar_create_button_title">Piilota Luo-painike</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Luo-painike piilotetaan</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Luo-painike näytetään</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Piilota Ilmoitukset-painike</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Ilmoitukset-painike piilotetaan</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Ilmoitukset-painike näytetään</string>
+  <string name="morphe_hide_toolbar_search_button_title">Piilota Haku-painike</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Hakupainike piilotetaan</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Hakupainike näytetään</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-valikko</string>
   <string name="morphe_hide_player_flyout_summary">Piilota tai näytä soittimen flyout-valikon kohteita</string>
@@ -916,6 +930,12 @@ Rajoitus: Ei-tykkäykset eivät välttämättä näy incognito-tilassa"</string>
   <string name="morphe_wide_searchbar_title">Ota leveä hakupalkki käyttöön</string>
   <string name="morphe_wide_searchbar_summary_on">Leveä hakupalkki on käytössä</string>
   <string name="morphe_wide_searchbar_summary_off">Leveä hakupalkki ei ole käytössä</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Palauta vanhat hakukriteerit</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Arvostelun ja lähetysajan mukaan lajittelu on käytettävissä hakukriteereissä</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Arvostelun ja lähetysajan mukaan lajittelu ei ole käytettävissä hakukriteereissä</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Arvostelu</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Lähetyspäivä</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ota SponsorBlock käyttöön</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock on joukkoistettu järjestelmä, jolla voidaan ohittaa YouTube-videoiden ärsyttäviä osia</string>

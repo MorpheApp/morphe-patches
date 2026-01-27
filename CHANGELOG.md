@@ -1,3 +1,10 @@
+# [1.9.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-01-27)
+
+
+### Features
+
+* **YouTube - Navigation bar:** Add settings to hide toolbar buttons ([#298](https://github.com/MorpheApp/morphe-patches/issues/298)) ([73fd722](https://github.com/MorpheApp/morphe-patches/commit/73fd722c0d76148323ae60ddc64ae05c8d95b5d4))
+
 # [1.9.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-01-26)
 
 

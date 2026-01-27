@@ -551,7 +551,7 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_hide_save_button_title">Speichern ausblenden</string>
   <string name="morphe_hide_save_button_summary_on">Schaltfläche \"Speichern\" ist ausgeblendet</string>
   <string name="morphe_hide_save_button_summary_off">Schaltfläche \"Speichern\" ist sichtbar</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigationstasten</string>
   <string name="morphe_navigation_buttons_screen_summary">Verstecke oder ändere Schaltflächen in der Navigationsleiste</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -597,6 +597,20 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiviere die dunkle, durchscheinende Leiste</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Dunkler Navigationsbalken ist opak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Die Navigationsleiste im dunklen Modus ist undurchsichtig oder durchscheinend</string>
+  <string name="morphe_toolbar_screen_title">Leiste</string>
+  <string name="morphe_toolbar_screen_summary">Leistenkomponenten ausblenden oder ändern</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Cast-Button ausblenden</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Der Cast button ist ausgeblendet</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Der Cast button wird angezeigt</string>
+  <string name="morphe_hide_toolbar_create_button_title">Erstellen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Erstellen-Button ist ausgeblendet</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Erstelle Schaltfläche wird angezeigt</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Benachrichtigungen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Benachrichtigungs-Button ist ausgeblendet</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Benachrichtigungs-Button wird angezeigt</string>
+  <string name="morphe_hide_toolbar_search_button_title">Suchen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Suchschaltfläche wird ausgeblendet</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Suchschaltfläche wird angezeigt</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Einblendmenü</string>
   <string name="morphe_hide_player_flyout_summary">Verstecke oder zeige Player-Flyout-Menüeinträge</string>
@@ -913,6 +927,12 @@ Einschränkung: Dislikes werden möglicherweise nicht im Inkognito-Modus angezei
   <string name="morphe_wide_searchbar_title">breite Suchleiste aktivieren</string>
   <string name="morphe_wide_searchbar_summary_on">Breite Suchleiste ist aktiviert</string>
   <string name="morphe_wide_searchbar_summary_off">Breite Suchleiste ist deaktiviert</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Alte Suchfilter wiederherstellen</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sortieren nach Bewertung und hochgeladenem Datum ist in Suchfilter verfügbar</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sortieren nach Bewertung und hochgeladenem Datum ist in Suchfilter nicht verfügbar</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Bewertung</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Hochladedatum</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock aktivieren</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock ist ein Crowdsourcing-System zum Überspringen von nervigen Segmenten von YouTube-Videos</string>

@@ -554,7 +554,7 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_save_button_title">Ocultar Salvar</string>
   <string name="morphe_hide_save_button_summary_on">O botão Salvar está oculto</string>
   <string name="morphe_hide_save_button_summary_off">O botão Salvar é exibido</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botões de navegação</string>
   <string name="morphe_navigation_buttons_screen_summary">Ocultar ou alterar botões na barra de navegação</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Desabilitar barra translúcida escura</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">A barra de navegação no modo escuro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A barra de navegação do modo escuro é opaca ou translúcida</string>
+  <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
+  <string name="morphe_toolbar_screen_summary">Ocultar ou alterar componentes da barra de ferramentas</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ocultar botão Transmitir</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Botão transmitir está oculto</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Botão transmitir não está oculto</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ocultar botão Criar</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Botão criar está oculto</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">O botão criar é mostrado</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ocultar botão Notificações</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">O botão de notificações está oculto</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">O botão de notificações está visível</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ocultar botão Pesquisar</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Botão de pesquisa está oculto</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Botão de pesquisa está visível</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu flutuante</string>
   <string name="morphe_hide_player_flyout_summary">Ocultar ou mostrar itens no menu suspenso do reprodutor</string>
@@ -916,6 +930,12 @@ Limitação: \"Não gostei\" podem não aparecer no modo anônimo"</string>
   <string name="morphe_wide_searchbar_title">Ativar barra de busca ampla</string>
   <string name="morphe_wide_searchbar_summary_on">Barra de busca ampla está ativada</string>
   <string name="morphe_wide_searchbar_summary_off">Barra de busca ampla está desativada</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Restaurar filtros de busca antigos</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Ordenar por avaliação e por data de upload está disponível no filtro de busca</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Ordenar por avaliação e por data de upload não está disponível no filtro de busca</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Avaliação</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Data de upload</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ativar SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock é um sistema de crowdsourcing para pular partes irritantes de vídeos do YouTube</string>

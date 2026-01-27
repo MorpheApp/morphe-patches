@@ -556,7 +556,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Κουμπί «Αποθήκευση»</string>
   <string name="morphe_hide_save_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_save_button_summary_off">Εμφανίζεται</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Κουμπιά γραμμής πλοήγησης</string>
   <string name="morphe_navigation_buttons_screen_summary">Απόκρυψη ή αλλαγή κουμπιών στη γραμμή πλοήγησης</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -602,6 +602,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Απενεργοποίηση διαφανούς γραμμής στο σκούρο θέμα</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Η γραμμή πλοήγησης στο σκούρο θέμα δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο σκούρο θέμα ορίζεται αυτόματα</string>
+  <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
+  <string name="morphe_toolbar_screen_summary">Απόκρυψη ή αλλαγή στοιχείων της γραμμής εργαλείων</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Κουμπί μετάδοσης</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_toolbar_create_button_title">Κρύψε κουμπί Δημιουργία</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Κρύψε κουμπί Ειδοποιήσεις</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_toolbar_search_button_title">Κρύψε κουμπί Αναζήτηση</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Εμφανίζεται</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Αναδυόμενο μενού ρυθμίσεων</string>
   <string name="morphe_hide_player_flyout_summary">Απόκρυψη ή εμφάνιση στοιχείων του αναδυόμενου μενού στην οθόνη αναπαραγωγής</string>
@@ -918,6 +932,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">Ευρεία γραμμή αναζήτησης</string>
   <string name="morphe_wide_searchbar_summary_on">Η ευρεία γραμμή αναζήτησης είναι ενεργοποιημένη</string>
   <string name="morphe_wide_searchbar_summary_off">Η ευρεία γραμμή αναζήτησης είναι απενεργοποιημένη</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Επαναφορά παλίων φίλτρων αναζήτησης</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Τα \"Ταξινόμηση με βαθμολογία\" και \"Ταξινόμηση με ημερομηνία ανεβάσματος\" είναι διαθέσιμα στο φίλτρο αναζήτησης</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Τα \"Ταξινόμηση με βαθμολογία\" και \"Ταξινόμηση με ημερομηνία ανεβάσματος\" δεν είναι διαθέσιμα στο φίλτρο αναζήτησης</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Βαθμολόγηση</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Ημερομηνία ανεβάσματος</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ενεργοποίηση του SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">Το SponsorBlock είναι ένα σύστημα που προέρχεται από το κοινό για παράλειψη ενοχλητικών τμημάτων σε βίντεο YouTube</string>

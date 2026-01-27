@@ -555,7 +555,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Приховати \"Зберегти\"</string>
   <string name="morphe_hide_save_button_summary_on">Кнопку \"Зберегти\" приховано</string>
   <string name="morphe_hide_save_button_summary_off">Кнопка \"Зберегти\" показується</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Кнопки панелі навігації</string>
   <string name="morphe_navigation_buttons_screen_summary">Приховати або змінити кнопки на панелі навігації</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -579,9 +579,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">Кнопка \"Сповіщення\" показується на панелі навігації</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_switch_create_with_notifications_button_title">Замінити \"Створити\" на \"Сповіщення\"</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">Кнопка \"Створити\" замінена на кнопку \"Сповіщення\"</string>
+  <string name="morphe_switch_create_with_notifications_button_summary_on">Кнопка Створити замінена на кнопку Сповіщення</string>
   <string name="morphe_switch_create_with_notifications_button_summary_off">Кнопку \"Створити\" не замінено кнопкою \"Сповіщення\"</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Якщо зміни в налаштуваннях не впливають, спробуйте переключитись на Інкогніто режим.</string>
+  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Якщо зміна цього налаштування не набула ефекту, спробуйте перемкнути в режим Інкогніто.</string>
   <string name="morphe_hide_navigation_button_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Підписи кнопок навігації приховано</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Підписи кнопок навігації показуються</string>
@@ -601,6 +601,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Вимкнути напівпрозорість темної панелі</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Панель навігації темного режиму непрозора</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Панель навігації темного режиму непрозора або напівпрозора</string>
+  <string name="morphe_toolbar_screen_title">Панель інструментів</string>
+  <string name="morphe_toolbar_screen_summary">Приховати або змінити компоненти панелі інструментів</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Приховати кнопку \"Трансляція\"</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Кнопку \"Трансляція\" у відеоплеєрі приховано</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Кнопка \"Трансляція\" у відеоплеєрі показується</string>
+  <string name="morphe_hide_toolbar_create_button_title">Приховати кнопку \"Створити\"</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Кнопку \"Створити\" приховано на панелі навігації</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Створити\" показується на панелі навігації</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Приховати кнопку сповіщень</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопку \"Сповіщення\" приховано на панелі навігації</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Сповіщення\" показується на панелі навігації</string>
+  <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку пошуку</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Кнопку пошуку приховано</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка пошуку показується</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
   <string name="morphe_hide_player_flyout_summary">Приховати або показувати пункти висувного меню плеєра</string>
@@ -917,6 +931,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">Широка панель пошуку</string>
   <string name="morphe_wide_searchbar_summary_on">Широку панель пошуку ввімкнено\n\nПримітка: Це також приховує значок YouTube та кнопку пошуку</string>
   <string name="morphe_wide_searchbar_summary_off">Широку панель пошуку вимкнено</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Відновити старі фільтри пошуку</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Сортування за рейтингом та за датою завантаження доступно у фільтрі пошуку</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Сортування за рейтингом та за датою завантаження не доступно у фільтрі пошуку</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Рейтинг</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Дата завантаження</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Увімкнути SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock - це краудсорсингова система для пропускання дратівливих частин відео на YouTube</string>

@@ -554,7 +554,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">הסתר \'שמירה\'</string>
   <string name="morphe_hide_save_button_summary_on">הלחצן \'שמירה\' מוסתר</string>
   <string name="morphe_hide_save_button_summary_off">הלחצן שמירה\' מוצג</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">לחצני ניווט</string>
   <string name="morphe_navigation_buttons_screen_summary">הסתר או שנה לחצנים בסרגל הניווט</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">השבת סרגל כהה שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">סרגל ניווט במצב כהה הוא אטום</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">סרגל ניווט במצב כהה הוא אטום או שקוף</string>
+  <string name="morphe_toolbar_screen_title">תּוּר</string>
+  <string name="morphe_toolbar_screen_summary">הסתר או שנה רכיבי תּוּר</string>
+  <string name="morphe_hide_toolbar_cast_button_title">הסתר לחצן העברה</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">לחצן העברה מוסתר</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">לחצן העברה מוצג</string>
+  <string name="morphe_hide_toolbar_create_button_title">הסתר לחצן יצירה</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">לחצן יצירה מוסתר</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">לחצן יצירה מוצג</string>
+  <string name="morphe_hide_toolbar_notification_button_title">הסתר לחצן התראות</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">לחצן עדכונים מוסתר</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">לחצן עדכונים מוצג</string>
+  <string name="morphe_hide_toolbar_search_button_title">הסתר לחצן חיפוש</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">לחצן החיפוש מוסתר</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">לחצן החיפוש מוצג</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">תפריט נשלף</string>
   <string name="morphe_hide_player_flyout_summary">הסתר או הצג פריטי תפריט נשלף של נגן</string>
@@ -917,6 +931,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">הפעל סרגל חיפוש רחב</string>
   <string name="morphe_wide_searchbar_summary_on">סרגל חיפוש רחב מופעל</string>
   <string name="morphe_wide_searchbar_summary_off">סרגל חיפוש רחב מושבת</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">שחזר סינון חיפוש ישן</string>
+  <string name="morphe_restore_old_search_filters_summary_on">סידור לפי דירוג וסידור לפי תאריך העלאה זמינים בסינון החיפוש</string>
+  <string name="morphe_restore_old_search_filters_summary_off">סידור לפי דירוג וסידור לפי תאריך העלאה לא זמינים בסינון החיפוש</string>
+  <string name="morphe_old_search_filters_sort_by_rating">דירוג</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">תאריך העלאה</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">הפעל את SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">המערכת SponsorBlock היא מערכת מיקור המונים לדילוג על חלקים מעצבנים של סרטוני YouTube</string>

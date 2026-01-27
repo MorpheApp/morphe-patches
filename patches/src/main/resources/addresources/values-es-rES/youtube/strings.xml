@@ -554,7 +554,7 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_hide_save_button_title">Ocultar \"Guardar\"</string>
   <string name="morphe_hide_save_button_summary_on">El botón \"Guardar\" está oculto</string>
   <string name="morphe_hide_save_button_summary_off">El botón \"Guardar\" está visible</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botones de navegación</string>
   <string name="morphe_navigation_buttons_screen_summary">Ocultar o cambiar botones en la barra de navegación</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Desactivar barra translúcida oscura</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">La barra de navegación en modo oscuro es opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">La barra de navegación en modo oscuro es opaca o translúcida</string>
+  <string name="morphe_toolbar_screen_title">Barra de herramientas</string>
+  <string name="morphe_toolbar_screen_summary">Ocultar o cambiar los componentes de la barra de herramientas</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ocultar botón \"Transmitir\"</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">El botón \"Transmitir\" está oculto</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">El botón \"Transmitir\" está visible</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ocultar botón \"Crear\"</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">El botón \"Crear\" está oculto</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">El botón \"Crear\" está visible</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ocultar botón \"Notificaciones\"</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">El botón \"Notificaciones\" está oculto</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">El botón \"Notificaciones\" está visible</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ocultar botón \"Búsqueda\"</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">El botón de búsqueda está oculto</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Se muestra el botón de búsqueda</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menú desplegable</string>
   <string name="morphe_hide_player_flyout_summary">Ocultar o mostrar elementos del menú desplegable del reproductor</string>
@@ -916,6 +930,12 @@ Limitación: Es posible que los \"No me gusta\" no aparezcan en modo incógnito"
   <string name="morphe_wide_searchbar_title">Activar barra de búsqueda amplia</string>
   <string name="morphe_wide_searchbar_summary_on">La barra de búsqueda amplia está activada</string>
   <string name="morphe_wide_searchbar_summary_off">La barra de búsqueda amplia está desactivada</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Restaurar filtros de búsqueda antiguos</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Ordenar por calificación y ordenar por fecha de carga están disponibles en el filtro de búsqueda</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Ordenar por calificación y ordenar por fecha de carga no están disponibles en el filtro de búsqueda</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Calificación</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Fecha de carga</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Activar SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock es un sistema de colaboración abierta para omitir partes molestas de los vídeos de YouTube</string>

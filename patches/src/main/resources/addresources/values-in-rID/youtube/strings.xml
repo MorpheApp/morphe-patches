@@ -554,7 +554,7 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_hide_save_button_title">Sembunyikan Simpan</string>
   <string name="morphe_hide_save_button_summary_on">Tombol Simpan disembunyikan</string>
   <string name="morphe_hide_save_button_summary_off">Tombol Simpan ditampilkan</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Tombol navigasi</string>
   <string name="morphe_navigation_buttons_screen_summary">Sembunyikan atau ganti tombol di bilah navigasi</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Nonaktifkan bilah tembus pandang gelap</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Bilah navigasi mode gelap adalah buram</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bilah navigasi mode gelap buram atau tembus pandang</string>
+  <string name="morphe_toolbar_screen_title">Bar</string>
+  <string name="morphe_toolbar_screen_summary">Sembunyikan atau ubah komponen bilah toolbar</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Sembunyikan tombol Transmisi</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Tombol transmisi disembunyikan</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Tombol transmisi ditampilkan</string>
+  <string name="morphe_hide_toolbar_create_button_title">Sembunyikan tombol Buat</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Tombol buat disembunyikan</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Tombol buat ditampilkan</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan tombol Pemberitahuan</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Tombol notifikasi disembunyikan</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Tombol notifikasi ditampilkan</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol pencarian</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Tombol pencarian disembunyikan</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Tombol pencarian ditampilkan</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Sembunyikan atau tampilkan item menu pemutar flyout</string>
@@ -916,6 +930,12 @@ Batasan: Dislike mungkin tidak muncul dalam mode penyamaran"</string>
   <string name="morphe_wide_searchbar_title">Aktifkan bilah pencarian lebar</string>
   <string name="morphe_wide_searchbar_summary_on">Bilah pencarian lebar diaktifkan</string>
   <string name="morphe_wide_searchbar_summary_off">Bilah pencarian lebar dinonaktifkan</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Pulihkan penyaring pencarian lama</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Urutkan berdasarkan peringkat dan urutkan berdasarkan tanggal unggah tersedia di penyaring pencarian</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Urutkan berdasarkan peringkat dan urutkan berdasarkan tanggal unggah tidak tersedia di penyaring pencarian</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Peringkat</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Tanggal unggah</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Aktifkan SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock adalah sistem yang bersumber dari banyak orang untuk melewatkan bagian video YouTube yang mengganggu</string>

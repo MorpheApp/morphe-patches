@@ -26,11 +26,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_05_player_title">Odtwarzacz</string>
   <string name="morphe_settings_screen_07_seekbar_title">Pasek postępu filmu</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Sterowanie przesuwaniem</string>
-  <string name="morphe_settings_screen_11_misc_title">Pozostałe</string>
+  <string name="morphe_settings_screen_11_misc_title">Inne</string>
   <string name="morphe_settings_screen_12_video_title">Film</string>
-  <string name="morphe_restore_old_settings_menus_title">Stare menu ustawień</string>
-  <string name="morphe_restore_old_settings_menus_summary_on">Widoczne</string>
-  <string name="morphe_restore_old_settings_menus_summary_off">Ukryte</string>
+  <string name="morphe_restore_old_settings_menus_title">Przywróć stare menu ustawień</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">Tak</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">Nie</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Odtwarzanie Shortsów w tle</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Wyłączone</string>
@@ -554,7 +554,7 @@ Dostosuj głośność, przesuwając pionowo po prawej stronie ekranu"</string>
   <string name="morphe_hide_save_button_title">Przycisk od zapisywania do playlisty</string>
   <string name="morphe_hide_save_button_summary_on">Ukryty</string>
   <string name="morphe_hide_save_button_summary_off">Widoczny</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Przyciski nawigacji</string>
   <string name="morphe_navigation_buttons_screen_summary">Ukryj lub zmień przyciski na pasku nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Dostosuj głośność, przesuwając pionowo po prawej stronie ekranu"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Półprzezroczysty pasek w trybie ciemnym</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Nie</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tak</string>
+  <string name="morphe_toolbar_screen_title">Pasek narzÄ™dzi</string>
+  <string name="morphe_toolbar_screen_summary">Ukryj lub zmień elementy paseku narzÄ™dzi</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Przycisk od castowania</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Widoczny</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ukryj przycisk Tworzenia</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Widoczny</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ukryj przycisk Powiadomień</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Widoczny</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ukryj przycisk Wyszukiwania</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Widoczny</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu ustawień filmów</string>
   <string name="morphe_hide_player_flyout_summary">Ukryj lub pokazuj elementy menu ustawień filmów</string>
@@ -916,6 +930,12 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."
   <string name="morphe_wide_searchbar_title">Szeroki pasek wyszukiwania</string>
   <string name="morphe_wide_searchbar_summary_on">Włączony</string>
   <string name="morphe_wide_searchbar_summary_off">Wyłączony</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Przywróć stare filtry wyszukiwania</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Tak</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Nie</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Ocena</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Data przesłania</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock to system pomijania denerwujących fragmentów w filmach na YouTube.</string>
@@ -1392,7 +1412,7 @@ Włączenie tej opcji może odblokować wyższe jakości wideo"</string>
   <string name="morphe_custom_speed_menu_title">Niestandardowa prędkość odtwarzania</string>
   <string name="morphe_custom_speed_menu_summary_on">Włączona</string>
   <string name="morphe_custom_speed_menu_summary_off">Wyłączona</string>
-  <string name="morphe_restore_old_speed_menu_title">Stare menu od prędkości odtwarzania</string>
+  <string name="morphe_restore_old_speed_menu_title">Przywróć stare menu od prędkości odtwarzania</string>
   <string name="morphe_restore_old_speed_menu_summary_on">Tak</string>
   <string name="morphe_restore_old_speed_menu_summary_off">Nie</string>
   <string name="morphe_custom_playback_speeds_title">Niestandardowe prędkości odtwarzania</string>

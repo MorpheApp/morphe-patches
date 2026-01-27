@@ -554,7 +554,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">隱藏「儲存」</string>
   <string name="morphe_hide_save_button_summary_on">「儲存」按鈕已隱藏</string>
   <string name="morphe_hide_save_button_summary_off">「儲存」按鈕已顯示</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
   <string name="morphe_navigation_buttons_screen_summary">隱藏或變更導覽列中的按鈕</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">停用深色半透明狀態列</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">深色模式導覽列為不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">深色模式導覽列為不透明或半透明</string>
+  <string name="morphe_toolbar_screen_title">工具欄</string>
+  <string name="morphe_toolbar_screen_summary">隱藏或更改工具欄組件</string>
+  <string name="morphe_hide_toolbar_cast_button_title">隱藏「投放」按鈕</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">已隱藏「投放」按鈕</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">已顯示「投放」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_title">隱藏「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">已隱藏「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">已顯示「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_notification_button_title">隱藏「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">已隱藏「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">已顯示「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_search_button_title">隱藏「搜尋」按鈕</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">「搜尋」按鈕已隱藏</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">「搜尋」按鈕已顯示</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
   <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單</string>
@@ -916,6 +930,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">啟用寬搜尋列</string>
   <string name="morphe_wide_searchbar_summary_on">已啟用寬搜尋列</string>
   <string name="morphe_wide_searchbar_summary_off">已停用寬搜尋列</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">恢復舊版搜尋過濾器</string>
+  <string name="morphe_restore_old_search_filters_summary_on">搜尋過濾器中提供「依評分排序」和「依上傳日期排序」選項</string>
+  <string name="morphe_restore_old_search_filters_summary_off">搜尋過濾器中不提供「依評分排序」和「依上傳日期排序」選項</string>
+  <string name="morphe_old_search_filters_sort_by_rating">評分</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">上傳日期</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">啟用 SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock 是一個眾包系統，用於跳過 YouTube 影片中惱人的部分</string>

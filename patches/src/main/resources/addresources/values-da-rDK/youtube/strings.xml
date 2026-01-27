@@ -554,7 +554,7 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_hide_save_button_title">Skjul Gem</string>
   <string name="morphe_hide_save_button_summary_on">Knappen \"Gem\" er skjult</string>
   <string name="morphe_hide_save_button_summary_off">Knappen \"Gem\" vises</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigationsknapper</string>
   <string name="morphe_navigation_buttons_screen_summary">Skjul eller skift knapper i navigationsbjælken</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiver mørk gennemsigtig linje</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Navigationslinjen i mørk tilstand er ikke gennemsigtig</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Mørk tilstand navigationslinjen er opak eller gennemsigtig</string>
+  <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
+  <string name="morphe_toolbar_screen_summary">Skjul eller ændre værktøjslinje-komponenter</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Skjul Cast-knappen</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Cast-knappen er skjult</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Cast knap er vist</string>
+  <string name="morphe_hide_toolbar_create_button_title">Skjul \"Opret\"-knappen</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Opret knap er skjult</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Opret knap vises</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Skjul \"Notifikationer\"-knappen</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Notifikationsknappen er skjult</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Notifikationsknappen vises</string>
+  <string name="morphe_hide_toolbar_search_button_title">Skjul \"Søg\"-knappen</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Søgeknappen er skjult</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Søgeknappen vises</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
   <string name="morphe_hide_player_flyout_summary">Skjul eller vis spiller flyout menupunkter</string>
@@ -916,6 +930,12 @@ Begrænsning: Synes ikke godt om vises muligvis ikke i inkognitotilstand"</strin
   <string name="morphe_wide_searchbar_title">Aktiver bred søgelinje</string>
   <string name="morphe_wide_searchbar_summary_on">Bred søgelinje er aktiveret</string>
   <string name="morphe_wide_searchbar_summary_off">Bred søgelinje er deaktiveret</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Gendan gamle søgefiltre</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sorter efter vurdering og opladningsdato er tilgængelige i søgefiltren</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sorter efter vurdering og opladningsdato er ikke tilgængelige i søgefiltren</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Bedømømelse</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Upload-dato</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Aktiver SponsorBloker</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock er et crowdsourcet system, der springer irriterende dele af YouTube-videoer over</string>

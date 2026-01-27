@@ -554,7 +554,7 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_hide_save_button_title">Sakrij dugme „Sačuvaj”</string>
   <string name="morphe_hide_save_button_summary_on">Dugme „Sačuvaj” je skriveno</string>
   <string name="morphe_hide_save_button_summary_off">Dugme „Sačuvaj” je prikazano</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Dugmad navigacije</string>
   <string name="morphe_navigation_buttons_screen_summary">Sakrijte ili promenite dugmad na traci za navigaciju</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,17 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Onemogući tamnu prozirnu traku za navigaciju</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Traka za navigaciju u tamnom režimu je neprozirna</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Traka za navigaciju u tamnom režimu je neprozirna ili prozirna</string>
+  <string name="morphe_toolbar_screen_title">Traka za alatke</string>
+  <string name="morphe_toolbar_screen_summary">Sakrijte ili promenite komponente trake za alatke</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Sakrij dugme „Prebacuj”</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Dugme „Prebacuj” je skriveno</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Dugme „Prebacuj” je prikazano</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Dugme „Napravi” je skriveno</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Dugme „Napravi” je prikazano</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Dugme „Obaveštenja” je skriveno</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Dugme „Obaveštenja” je prikazano</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Dugme „Pretraga” je skriveno</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Dugme „Pretraga” je prikazano</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Padajući meni</string>
   <string name="morphe_hide_player_flyout_summary">Sakrijte ili prikažite predmete u padajućem meniju plejera</string>
@@ -916,6 +927,12 @@ Ograničenje: Nesviđanja se možda neće pojaviti u režimu bez arhiviranja"</
   <string name="morphe_wide_searchbar_title">Omogući široku traku za pretragu</string>
   <string name="morphe_wide_searchbar_summary_on">Široka traka za pretragu je omogućena</string>
   <string name="morphe_wide_searchbar_summary_off">Široka traka za pretragu je onemogućena</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Vrati stare pretrage</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sortiranje po oceni i po datumu objave je dostupno u pretraživanju</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sortiranje po oceni i po datumu objave nije dostupno u pretraživanju</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Rejting</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Datum objave</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Omogući SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock je sistem zasnovan na doprinosima korisnika i služi za preskakanje dosadnih delova YouTube videa</string>

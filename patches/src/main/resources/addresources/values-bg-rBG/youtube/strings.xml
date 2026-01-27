@@ -544,7 +544,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Скриване на бутон \"Save\"</string>
   <string name="morphe_hide_save_button_summary_on">Бутонът \"Save\" е скрит</string>
   <string name="morphe_hide_save_button_summary_off">Бутонът \"Save\" е показан</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Думиращи бутони</string>
   <string name="morphe_navigation_buttons_screen_summary">Скриване или промяна на бутоните на лентата за навигация</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -590,6 +590,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Лентата за навигация в тъмен режим е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Скрий или покажи бутоните в панела за плеер</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Бутонът за коментари е скрит</string>
+  <string name="morphe_toolbar_screen_title">Тойбър</string>
+  <string name="morphe_toolbar_screen_summary">Скриване или промяна на компонентите на toolbar</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Скриване на бутонът за предаване</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Бутонът за предаване е скрит</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Бутонът за предаване се показва</string>
+  <string name="morphe_hide_toolbar_create_button_title">Скриване на бутона за Създаване</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Бутона за Създаване е скрит</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Бутона за Създаване е виден</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Скриване на бутона за Известия</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Бутона за Известия е скрит</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Бутона за Известия е виден</string>
+  <string name="morphe_hide_toolbar_search_button_title">Скриване на бутона за Търсене</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Бутона за Търсене е скрит</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Бутона за Търсене се показва</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Бутонът за коментари се показва</string>
   <string name="morphe_hide_player_flyout_summary">Скрий дублиране на видеа</string>
@@ -901,6 +915,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">Скрий дублиране на видеа</string>
   <string name="morphe_wide_searchbar_summary_on">Дублирането на видеа е скрито</string>
   <string name="morphe_wide_searchbar_summary_off">Дублирането на видеа се показва</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Възстанови старите филтри за търсене</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Сортиране по рейтинг и сортиране по дата на качване са налице в филтъра за търсене</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Сортиране по рейтинг и сортиране по дата на качване не са налице в филтъра за търсене</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Рейтинг</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Дата на качване</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Дублирането на видеа е скрито</string>
   <string name="morphe_sb_enable_sb_sum">Дублирането на видеа се показва</string>

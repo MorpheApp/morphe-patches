@@ -554,7 +554,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">إخفاء حفظ</string>
   <string name="morphe_hide_save_button_summary_on">تم إخفاء زر حفظ</string>
   <string name="morphe_hide_save_button_summary_off">يتم عرض زر حفظ</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">أزرار التنقل</string>
   <string name="morphe_navigation_buttons_screen_summary">إخفاء أو تغيير الأزرار في شريط التنقل</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,20 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">تعطيل الشريط الشفاف الداكن</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">شريط التنقل في الوضع الداكن غير شفاف</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">شريط التنقل في الوضع الداكن معتم او شفاف</string>
+  <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
+  <string name="morphe_toolbar_screen_summary">إخفاء أو تغيير مكونات شريط الأدوات</string>
+  <string name="morphe_hide_toolbar_cast_button_title">إخفاء زر البث</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">تم إخفاء زر البث</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">يتم عرض زر البث</string>
+  <string name="morphe_hide_toolbar_create_button_title">إخفاء زر الإنشاء</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">تم إخفاء زر الإنشاء</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">يتم عرض زر الإنشاء</string>
+  <string name="morphe_hide_toolbar_notification_button_title">إخفاء زر الإشعارات</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">تم إخفاء زر الإشعارات</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">يتم عرض زر الإشعارات</string>
+  <string name="morphe_hide_toolbar_search_button_title">إخفاء زر البحث</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">تم إخفاء زر البحث</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">يتم عرض زر البحث</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
   <string name="morphe_hide_player_flyout_summary">إخفاء أو عرض عناصر قائمة المشغل المنبثقة</string>
@@ -916,6 +930,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">تمكين شريط البحث العريض</string>
   <string name="morphe_wide_searchbar_summary_on">تم تمكين شريط البحث العريض</string>
   <string name="morphe_wide_searchbar_summary_off">تم تعطيل شريط البحث العريض</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">استعادة فلاتر البحث القديمة</string>
+  <string name="morphe_restore_old_search_filters_summary_on">الترتيب حسب التقييم و الترتيب حسب تاريخ التحميل متاحان في فلتر البحث</string>
+  <string name="morphe_restore_old_search_filters_summary_off">الترتيب حسب التقييم و الترتيب حسب تاريخ التحميل غير متاحان في فلتر البحث</string>
+  <string name="morphe_old_search_filters_sort_by_rating">التقييم</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">تاريخ التحميل</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">تمكين SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">مانع الرُعَاة هو نظام جماعي لتخطي الأجزاء المزعجة من فيديوهات YouTube</string>

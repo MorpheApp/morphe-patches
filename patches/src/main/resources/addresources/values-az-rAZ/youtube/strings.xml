@@ -554,7 +554,7 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_save_button_title">Saxlayın-ı Gizlət</string>
   <string name="morphe_hide_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
   <string name="morphe_hide_save_button_summary_off">Saxlayın düyməsi görünür</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_navigation_buttons_screen_summary">Fəaliyyət cərgəsindəki düymələri gizlət və ya dəyiş</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +600,17 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Qaranlıq rejimdə şəffaf cərgəni qapat</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Qaranlıq rejimdə fəaliyyət cərgəsi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Qaranlıq rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
+  <string name="morphe_toolbar_screen_title">Alətlər çubuğu</string>
+  <string name="morphe_toolbar_screen_summary">Alətlər çubuğunun komponentlərini gizlət və ya dəyiş</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Yayımla düyməsini gizlət</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Yayım düyməsi gizlidir</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Yayım düyməsi göstərilir</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Yarat düyməsi gizlidir</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Yarat düyməsi göstərilir</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Bildirişlər düyməsi gizlidir</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirişlər düyməsi görünür</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Axtarış düyməsi gizlidir</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Axtarış düyməsi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılan menyu</string>
   <string name="morphe_hide_player_flyout_summary">Oynadıcı açılan menyu elementlərini gizlət və ya göstər</string>
@@ -915,6 +926,12 @@ Məhdudiyyət: Bəyənməmələr gizli rejimdə görünməyə bilər"</string>
   <string name="morphe_wide_searchbar_title">Geniş axtarış cizgisin aktivləşdir</string>
   <string name="morphe_wide_searchbar_summary_on">Geniş axtarış cizgisi aktivdir</string>
   <string name="morphe_wide_searchbar_summary_off">Geniş axtarış cizgisi qeyri-aktivdir</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Eski axtarış filtrelərinin bərpası</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Axtarış filtresində reytinqə görə və yüklənmə tarixi üzrə sıralama mümkündür</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Axtarış filtresində reytinqə görə və yüklənmə tarixi üzrə sıralama mümkün deyil</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Reytinq</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Yüklənmə tarixi</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">\"SponsorBlock\"u aktivləşdir</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock YouTube videolarının cansıxıcı hissələrini ötürmək üçün toplu sistemdir</string>

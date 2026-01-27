@@ -6,6 +6,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.branding.addLicensePatch
+import app.morphe.patches.shared.misc.extension.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -31,11 +32,12 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
 
 private val settingsColorPatch = bytecodePatch {
     finalize {
+        val extensionClassDef = mutableClassDefBy(EXTENSION_CLASS_DESCRIPTOR)
         if (lightThemeColor != null) {
-            ThemeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor!!)
+            ThemeLightColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(lightThemeColor!!)
         }
         if (darkThemeColor != null) {
-            ThemeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor!!)
+            ThemeDarkColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(darkThemeColor!!)
         }
     }
 }
