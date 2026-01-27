@@ -475,7 +475,6 @@ public final class LayoutComponentsFilter extends Filter {
         Utils.hideViewUnderCondition(Settings.HIDE_LATEST_VIDEOS_BUTTON.get(), view);
     }
 
-
     /**
      * Injection point.
      */
