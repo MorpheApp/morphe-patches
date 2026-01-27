@@ -25,6 +25,10 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+//
+// Adapted from:
+// https://github.com/L-JINBIN/ApkSignatureKillerEx/blob/3e6a8dc7de1b108dc70647f62bc499d7b68852b2/killer/src/main/java/bin/mt/signature/KillerApplication.java
+//
 @SuppressWarnings("unused")
 public class SpoofSignaturePatch extends Application {
     static {
