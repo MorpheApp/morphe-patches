@@ -55,12 +55,12 @@ private val settingsResourcePatch = resourcePatch {
         )!!.let { inputStream ->
             "resources".copyXmlNode(
                 document(inputStream),
-                document("res/$targetResource"),
+                document("resources/package_1/res/$targetResource"),
             ).close()
         }
 
         // Remove horizontal dividers from the music settings.
-        val styleFile = get("res/values/styles.xml")
+        val styleFile = get("resources/package_1/res/values/styles.xml")
         styleFile.writeText(
             styleFile.readText()
                 .replace(

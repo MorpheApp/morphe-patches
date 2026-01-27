@@ -24,6 +24,8 @@ import app.morphe.extension.shared.Utils;
 public final class NavigationButtonsPatch {
     private static Resources mResources;
     private static final Map<Object, String> navigationMap = new LinkedHashMap<>(NavigationButton.values().length);
+
+    // Map labels back to their resource names. eg. "Chat" -> "label_chat"
     private static final Map<String, String> labelMap = new HashMap<>();
 
     public static void setResources(Resources resources) {
@@ -60,10 +62,10 @@ public final class NavigationButtonsPatch {
     }
 
     private enum NavigationButton {
-        ANSWERS(Settings.HIDE_ANSWERS_BUTTON.get(),  "answers_label"),
-        CHAT(Settings.HIDE_CHAT_BUTTON.get(),  "label_chat"),
-        CREATE(Settings.HIDE_CREATE_BUTTON.get(),  "action_create"),
-        DISCOVER(Settings.HIDE_DISCOVER_BUTTON.get(),  "communities_label");
+        ANSWERS(Settings.HIDE_ANSWERS_BUTTON.get(), "answers_label"),
+        CHAT(Settings.HIDE_CHAT_BUTTON.get(), "label_chat"),
+        CREATE(Settings.HIDE_CREATE_BUTTON.get(), "action_create"),
+        DISCOVER(Settings.HIDE_DISCOVER_BUTTON.get(), "communities_label");
         private final boolean enabled;
         private final String label;
 

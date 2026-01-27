@@ -117,7 +117,7 @@ val resourceMappingPatch = resourcePatch {
     execute {
         // Use a stream of the file, since no modifications are done
         // and using a File parameter causes the file to be re-wrote when closed.
-        document(get("res/values/public.xml").inputStream()).use { document ->
+        document(get("resources/package_1/res/values/public.xml").inputStream()).use { document ->
             val resources = document.documentElement.childNodes
             val resourcesLength = resources.length
             resourceMappings = HashMap(2 * resourcesLength)

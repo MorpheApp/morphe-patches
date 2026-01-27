@@ -17,7 +17,7 @@ val overrideCertificatePinningPatch = resourcePatch(
     use = false,
 ) {
     execute {
-        val resXmlDirectory = get("res/xml")
+        val resXmlDirectory = get("resources/package_1/res/xml")
         var networkSecurityFileName = "network_security_config.xml"
 
         // Add android:networkSecurityConfig="@xml/network_security_config" and the "networkSecurityConfig" attribute if it does not exist.
@@ -36,7 +36,7 @@ val overrideCertificatePinningPatch = resourcePatch(
         }
 
         if (resXmlDirectory.resolve(networkSecurityFileName).exists()) {
-            document("res/xml/$networkSecurityFileName").use { document ->
+            document("resources/package_1/res/xml/$networkSecurityFileName").use { document ->
                 arrayOf(
                     "base-config",
                     "debug-overrides"

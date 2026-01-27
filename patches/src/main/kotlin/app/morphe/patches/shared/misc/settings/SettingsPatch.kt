@@ -119,7 +119,7 @@ fun settingsPatch (
             var modified = false
 
             it.forEach { (intent, fileName) ->
-                val preferenceFileName = "res/xml/$fileName.xml"
+                val preferenceFileName = "resources/package_1/res/xml/$fileName.xml"
                 if (get(preferenceFileName).exists()) {
                     document(preferenceFileName).use { document ->
                         document.getNode("PreferenceScreen").addPreference(intent)
@@ -132,7 +132,7 @@ fun settingsPatch (
         }
 
         // Add all preferences to the Morphe fragment.
-        document("res/xml/morphe_prefs_icons.xml").use { document ->
+        document("resources/package_1/res/xml/morphe_prefs_icons.xml").use { document ->
             val morphePreferenceScreenNode = document.getNode("PreferenceScreen")
             preferences.forEach { morphePreferenceScreenNode.addPreference(it) }
         }
@@ -159,14 +159,14 @@ fun settingsPatch (
 
         // Bold icons.
         removeIconsAndLayout(preferences, false)
-        document("res/xml/morphe_prefs_icons_bold.xml").use { document ->
+        document("resources/package_1/res/xml/morphe_prefs_icons_bold.xml").use { document ->
             val morphePreferenceScreenNode = document.getNode("PreferenceScreen")
             preferences.forEach { morphePreferenceScreenNode.addPreference(it) }
         }
 
         removeIconsAndLayout(preferences, true)
 
-        document("res/xml/morphe_prefs.xml").use { document ->
+        document("resources/package_1/res/xml/morphe_prefs.xml").use { document ->
             val morphePreferenceScreenNode = document.getNode("PreferenceScreen")
             preferences.forEach { morphePreferenceScreenNode.addPreference(it) }
         }

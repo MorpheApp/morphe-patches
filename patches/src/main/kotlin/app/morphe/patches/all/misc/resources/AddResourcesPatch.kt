@@ -2,9 +2,11 @@ package app.morphe.patches.all.misc.resources
 
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.util.forEachChildElement
+import app.morphe.util.getLastAttributeId
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.resource.StringResource.Companion.sanitizeAndroidResourceString
+import org.w3c.dom.Node
 import java.util.Locale
 import java.util.logging.Level
 import java.util.logging.Logger
@@ -89,7 +91,7 @@ internal val locales = listOf(
     AppLocale("zh-rTW", "zh-rTW"),
     AppLocale("zu-rZA", "zu"),
     // Languages not found in YouTube.
-    AppLocale("ga-rIE", "ga", isBuiltInLanguage = false)
+    //AppLocale("ga-rIE", "ga", isBuiltInLanguage = false)
 )
 
 internal class AppLocale(
@@ -148,6 +150,8 @@ internal val addResourcesPatch = resourcePatch(
     finalize {
         fun getLogger(): Logger = Logger.getLogger(AppLocale.javaClass.name)
 
+        val alreadyAddedResources = mutableSetOf<String>()
+
         fun addResourcesFromFile(
             appId: String,
             locale: AppLocale,
@@ -156,7 +160,7 @@ internal val addResourcesPatch = resourcePatch(
             val isDefaultLocale = locale.isDefaultLocale()
             val srcFolderName = locale.getSrcLocaleFolderName()
             val srcSubPath = "$srcFolderName/$appId/$resourceType.xml"
-            val destSubPath = "res/${locale.getDestLocaleFolderName()}/$resourceType.xml"
+            val destSubPath = "resources/package_1/res/${locale.getDestLocaleFolderName()}/$resourceType.xml"
 
             val srcStream = inputStreamFromBundledResource(
                 "addresources", srcSubPath
@@ -187,49 +191,75 @@ internal val addResourcesPatch = resourcePatch(
                 }
 
                 document(destSubPath).use { destDoc ->
-                    val destResourceNode = destDoc.getNode("resources")
+                    document("resources/package_1/res/values/public.xml").use { publicDoc ->
+                        val publicNode = publicDoc.getNode("resources")
+                        val androidResourceType = when (resourceType) {
+                            BundledResourceType.STRINGS -> "string"
+                            BundledResourceType.ARRAYS -> "array"
+                        }
+                        var attributeId = publicNode.getLastAttributeId(androidResourceType) + 1
 
-                    document(srcStream).use { srcDoc ->
-                        // Check for bad localized files with duplicate strings.
-                        val localeStringsAdded = mutableSetOf<String>()
+                        val destResourceNode = destDoc.getNode("resources")
 
-                        srcDoc.getElementsByTagName(
-                            "resources"
-                        ).item(0)?.forEachChildElement { srcNode ->
-                            val resourceName = srcNode.getAttributeNode("name").value
-                            if (resourceType == BundledResourceType.STRINGS) {
-                                // Check for bad text strings that will fail resource compilation.
-                                val textContent = srcNode.textContent
-                                val sanitized = sanitizeAndroidResourceString(
-                                    resourceName, textContent, destSubPath
-                                )
-                                if (textContent != sanitized) {
-                                    srcNode.textContent = sanitized
+                        document(srcStream).use { srcDoc ->
+                            // Check for bad localized files with duplicate strings.
+                            val localeStringsAdded = mutableSetOf<String>()
+
+                            srcDoc.getElementsByTagName(
+                                "resources"
+                            ).item(0)?.forEachChildElement { srcNode ->
+                                val resourceName = srcNode.getAttributeNode("name").value
+                                if (resourceType == BundledResourceType.STRINGS) {
+                                    // Check for bad text strings that will fail resource compilation.
+                                    val textContent = srcNode.textContent
+                                    val sanitized = sanitizeAndroidResourceString(
+                                        resourceName, textContent, destSubPath
+                                    )
+                                    if (textContent != sanitized) {
+                                        srcNode.textContent = sanitized
+                                    }
+                                }
+
+                                if (!localeStringsAdded.add(resourceName)) {
+                                    getLogger().warning(
+                                        "Duplicate string resource is declared: $srcFolderName " +
+                                                "resource: $resourceName"
+                                    )
+                                    return@forEachChildElement
+                                }
+
+                                if (isDefaultLocale) {
+                                    // Duplicate check alreday handled above.
+                                    defaultResourcesAdded.add(resourceName)
+                                } else if (!defaultResourcesAdded.contains(resourceName)) {
+                                    // TODO: Enable when patcher/CLI supports debug/dev logging.
+                                    if (false) getLogger().log(Level.INFO) {
+                                        "Ignoring removed default resource for locale (Issue will be fixed after next Crowdin sync): " +
+                                                "$srcFolderName resource: $resourceName"
+                                    }
+                                    return@forEachChildElement
+                                }
+
+                                val importedSrcNode = destDoc.importNode(srcNode, true)
+                                destResourceNode.appendChild(importedSrcNode)
+
+                                /*
+                                                val item = document.createElement("public")
+                item.setAttribute("id", "0x${id.toString(16)}")
+                item.setAttribute("type", "attr")
+                item.setAttribute("name", logoName)
+                resources.appendChild(item)
+                                 */
+                                if (!alreadyAddedResources.contains(resourceName)) {
+                                    val item = publicDoc.createElement("public")
+                                    item.setAttribute("id", "0x${attributeId.toString(16)}")
+                                    item.setAttribute("type", androidResourceType)
+                                    item.setAttribute("name", resourceName)
+                                    publicNode.appendChild(item)
+                                    attributeId++
+                                    alreadyAddedResources.add(resourceName)
                                 }
                             }
-
-                            if (!localeStringsAdded.add(resourceName)) {
-                                getLogger().warning(
-                                    "Duplicate string resource is declared: $srcFolderName " +
-                                            "resource: $resourceName"
-                                )
-                                return@forEachChildElement
-                            }
-
-                            if (isDefaultLocale) {
-                                // Duplicate check alreday handled above.
-                                defaultResourcesAdded.add(resourceName)
-                            } else if (!defaultResourcesAdded.contains(resourceName)) {
-                                // TODO: Enable when patcher/CLI supports debug/dev logging.
-                                if (false) getLogger().log(Level.INFO) {
-                                    "Ignoring removed default resource for locale (Issue will be fixed after next Crowdin sync): " +
-                                            "$srcFolderName resource: $resourceName"
-                                }
-                                return@forEachChildElement
-                            }
-
-                            val importedSrcNode = destDoc.importNode(srcNode, true)
-                            destResourceNode.appendChild(importedSrcNode)
                         }
                     }
                 }

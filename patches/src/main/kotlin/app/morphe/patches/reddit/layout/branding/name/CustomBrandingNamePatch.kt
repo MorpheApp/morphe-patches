@@ -14,7 +14,7 @@ private const val APP_NAME = "Reddit Morphe"
 @Suppress("unused")
 val customBrandingNamePatch = resourcePatch(
     // FIXME: Cannot use this patch due to apktool being unable to decode resources.
-//    name = "Custom branding name for Reddit",
+    name = "Custom branding name for Reddit",
     description = "Changes the Reddit app name to the name specified in patch options.",
     use = false,
 ) {
@@ -44,7 +44,7 @@ val customBrandingNamePatch = resourcePatch(
             return@execute
         }
 
-        val resDirectory = get("res")
+        val resDirectory = get("resources/package_1/res")
 
         val valuesV24Directory = resDirectory.resolve("values-v24")
         if (!valuesV24Directory.isDirectory)
@@ -58,7 +58,7 @@ val customBrandingNamePatch = resourcePatch(
             }
         }
 
-        document("res/values-v24/strings.xml").use { document ->
+        document("resources/package_1/res/values-v24/strings.xml").use { document ->
             mapOf(
                 "app_name" to appName
             ).forEach { (k, v) ->

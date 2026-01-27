@@ -36,7 +36,7 @@ val doubleTapLengthPatch = resourcePatch(
             .split(",")
         if (doubleTapLengths.isEmpty()) throw PatchException("Invalid double-tap length elements")
 
-        document("res/values/arrays.xml").use { document ->
+        document("resources/package_1/res/values/arrays.xml").use { document ->
             fun Element.removeAllChildren() {
                 val children = childNodes // Calling childNodes creates a new list.
                 for (i in children.length - 1 downTo 0) {

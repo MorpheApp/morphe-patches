@@ -103,21 +103,43 @@ fun ResourcePatchContext.copyResources(
     sourceResourceDirectory: String,
     vararg resources: ResourceGroup,
 ) {
-    val targetResourceDirectory = this["res", false]
+    val targetResourceDirectory = this["resources/package_1/res", false]
 
-    for (resourceGroup in resources) {
-        resourceGroup.resources.forEach { resource ->
-            val resourceFile = "${resourceGroup.resourceDirectoryName}/$resource"
-            val stream = inputStreamFromBundledResource(sourceResourceDirectory, resourceFile)
-            if (stream == null) {
-                throw IllegalArgumentException("Could not find resource: $resourceFile " +
-                        "in directory: $sourceResourceDirectory")
+    document("resources/package_1/res/values/public.xml").use { publicDoc ->
+        val alreadyAddedResources = mutableSetOf<String>()
+        val publicNode = publicDoc.getNode("resources")
+        val resourceIds = mutableMapOf<String, Int>()
+        for (resourceGroup in resources) {
+            val resourceType = resourceGroup.resourceDirectoryName.split("-")[0]
+            if (!resourceIds.containsKey(resourceType)) {
+                resourceIds[resourceType] = publicNode.getLastAttributeId(resourceType)
             }
-            Files.copy(
-                stream,
-                targetResourceDirectory.resolve(resourceFile).toPath(),
-                StandardCopyOption.REPLACE_EXISTING,
-            )
+
+            resourceGroup.resources.forEach { resource ->
+                val resourceFile = "${resourceGroup.resourceDirectoryName}/$resource"
+                val stream = inputStreamFromBundledResource(sourceResourceDirectory, resourceFile)
+                if (stream == null) {
+                    throw IllegalArgumentException("Could not find resource: $resourceFile " +
+                            "in directory: $sourceResourceDirectory")
+                }
+                Files.copy(
+                    stream,
+                    targetResourceDirectory.resolve(resourceFile).toPath(),
+                    StandardCopyOption.REPLACE_EXISTING,
+                )
+
+                val resourceName = resource.split(".")[0]
+                if (!alreadyAddedResources.contains(resourceName)) {
+                    val resourceId = resourceIds[resourceType]!! + 1
+                    resourceIds[resourceType] = resourceId
+                    val item = publicDoc.createElement("public")
+                    item.setAttribute("id", "0x${resourceId.toString(16)}")
+                    item.setAttribute("type", resourceType)
+                    item.setAttribute("name", resourceName)
+                    publicNode.appendChild(item)
+                    alreadyAddedResources.add(resourceName)
+                }
+            }
         }
     }
 }
@@ -232,10 +254,37 @@ internal fun Element.copyAttributesFrom(oldContainer: Element) {
  * @return The play store services version.
  */
 internal fun ResourcePatchContext.findPlayStoreServicesVersion(): Int =
-    document("res/values/integers.xml").use { document ->
+    document("resources/package_1/res/values/integers.xml").use { document ->
         document.documentElement.childNodes.findElementByAttributeValueOrThrow(
             "name",
             "google_play_services_version",
         ).textContent.toInt()
     }
 
+fun Node.getLastAttributeId(desiredType: String): Int {
+    var highestId = 0
+    val numChildren = childNodes.length
+    for (i in 0 until numChildren) {
+        val childNode = childNodes.item(i)
+        if (childNode.nodeType != Node.ELEMENT_NODE) continue
+
+        val element = childNode as Element
+        val elemType = element.getAttribute("type")
+
+        if (!elemType.equals(desiredType)) {
+            continue
+        }
+
+        val idString = element.getAttribute("id")
+        if (idString.startsWith("0x")) {
+            val id = idString.substring(2).toInt(16)
+            if (id > highestId) {
+                highestId = id
+            }
+        }
+    }
+    if (highestId == 0) {
+        throw PatchException("Could not find any resource of type: $desiredType")
+    }
+    return highestId
+}

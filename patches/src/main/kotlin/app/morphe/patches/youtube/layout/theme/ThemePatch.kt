@@ -24,6 +24,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_02_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.forEachChildElement
+import app.morphe.util.getLastAttributeId
+import app.morphe.util.getNode
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -62,42 +64,59 @@ val themePatch = baseThemePatch(
                     darkThemeBackgroundColorOption.value!!
                 )
 
+                val alreadyAddedResources = mutableSetOf<String>()
+
                 fun addColorResource(
                     resourceFile: String,
                     colorName: String,
                     colorValue: String,
                 ) {
-                    document(resourceFile).use { document ->
-                        val resourcesNode =
-                            document.getElementsByTagName("resources").item(0) as Element
+                    document("resources/package_1/res/values/public.xml").use { publicDoc ->
+                        val publicNode = publicDoc.getNode("resources")
+                        var attributeId = publicNode.getLastAttributeId("color") + 1
 
-                        resourcesNode.appendChild(
-                            document.createElement("color").apply {
-                                setAttribute("name", colorName)
-                                setAttribute("category", "color")
-                                textContent = colorValue
+                        document(resourceFile).use { document ->
+                            val resourcesNode =
+                                document.getElementsByTagName("resources").item(0) as Element
+
+                            resourcesNode.appendChild(
+                                document.createElement("color").apply {
+                                    setAttribute("name", colorName)
+                                    setAttribute("category", "color")
+                                    textContent = colorValue
+                                }
+                            )
+
+                            if (!alreadyAddedResources.contains(colorName)) {
+                                val item = publicDoc.createElement("public")
+                                item.setAttribute("id", "0x${attributeId.toString(16)}")
+                                item.setAttribute("type", "color")
+                                item.setAttribute("name", colorName)
+                                publicNode.appendChild(item)
+                                attributeId++
+                                alreadyAddedResources.add(colorName)
                             }
-                        )
+                        }
                     }
                 }
 
                 // Add a dynamic background color to the colors.xml file.
                 val splashBackgroundColorKey = "morphe_splash_background_color"
                 addColorResource(
-                    "res/values/colors.xml",
+                    "resources/package_1/res/values/colors.xml",
                     splashBackgroundColorKey,
                     lightThemeBackgroundColor!!
                 )
                 addColorResource(
-                    "res/values-night/colors.xml",
+                    "resources/package_1/res/values-night/colors.xml",
                     splashBackgroundColorKey,
                     darkThemeBackgroundColorOption.value!!
                 )
 
                 // Edit splash screen files and change the background color.
                 arrayOf(
-                    "res/drawable/quantum_launchscreen_youtube.xml",
-                    "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
+                    "resources/package_1/res/drawable/quantum_launchscreen_youtube.xml",
+                    "resources/package_1/res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
                 ).forEach editSplashScreen@{ resourceFileName ->
                     document(resourceFileName).use { document ->
                         document.getElementsByTagName(
@@ -118,7 +137,7 @@ val themePatch = baseThemePatch(
 
                 // Fix the splash screen dark mode background color.
                 // In 19.32+ the dark mode splash screen is white and fades to black.
-                document("res/values-night/styles.xml").use { document ->
+                document("resources/package_1/res/values-night/styles.xml").use { document ->
                     // Create a night mode specific override for the splash screen background.
                     val style = document.createElement("style")
                     style.setAttribute("name", "Theme.YouTube.Home")

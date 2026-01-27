@@ -29,7 +29,7 @@ val navigationBarPatch = bytecodePatch(
             execute {
                 // Ensure the first ImageView has 'layout_weight' to stay properly sized
                 // when the TextView is hidden.
-                document("res/layout/image_with_text_tab.xml").use { document ->
+                document("resources/package_1/res/layout/image_with_text_tab.xml").use { document ->
                     val imageView = document.getElementsByTagName("ImageView").item(0)
                     imageView?.let {
                         if (it.attributes.getNamedItem("android:layout_weight") == null) {

@@ -127,7 +127,7 @@ private val settingsResourcePatch = resourcePatch {
 
         // Remove horizontal divider from the settings Preferences
         // To better match the appearance of the stock YouTube settings.
-        document("res/values/styles.xml").use { document ->
+        document("resources/package_1/res/values/styles.xml").use { document ->
             val childNodes = document.childNodes
 
             arrayOf(

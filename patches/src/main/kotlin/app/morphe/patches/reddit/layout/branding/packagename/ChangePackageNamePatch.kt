@@ -4,6 +4,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
+import app.morphe.util.getNode
 import org.w3c.dom.Element
 import java.util.logging.Logger
 
@@ -16,7 +17,7 @@ private var redditPackageName = PACKAGE_NAME_REDDIT
 @Suppress("unused")
 val changePackageNamePatch = resourcePatch(
     // FIXME: Cannot use this patch due to apktool being unable to decode resources.
-//    name = "Change package name",
+    name = "Change Reddit package name",
     description = "Changes the package name for Reddit to the name specified in patch options.",
     use = false,
 ) {
@@ -40,7 +41,7 @@ val changePackageNamePatch = resourcePatch(
     execute {
         fun replacePackageName() {
             // replace strings
-            document("res/values/strings.xml").use { document ->
+            document("resources/package_1/res/values/strings.xml").use { document ->
                 val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
 
                 val children = resourcesNode.childNodes

@@ -118,7 +118,7 @@ internal fun baseThemeResourcePatch(
             throw PatchException("Invalid light theme color: $lightColor")
         }
 
-        document("res/values/colors.xml").use { document ->
+        document("resources/package_1/res/values/colors.xml").use { document ->
             val resourcesNode = document.getElementsByTagName("resources").item(0)
 
             resourcesNode.childElementsSequence().forEach { node ->

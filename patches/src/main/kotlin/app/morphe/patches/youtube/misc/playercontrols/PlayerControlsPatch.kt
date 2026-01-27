@@ -60,7 +60,7 @@ internal val playerControlsResourcePatch = resourcePatch {
     execute {
         val targetResourceName = "youtube_controls_bottom_ui_container.xml"
 
-        bottomTargetDocument = document("res/layout/$targetResourceName")
+        bottomTargetDocument = document("resources/package_1/res/layout/$targetResourceName")
 
         val bottomTargetElement: Node = bottomTargetDocument.getElementsByTagName(
             "android.support.constraint.ConstraintLayout",
@@ -91,7 +91,7 @@ internal val playerControlsResourcePatch = resourcePatch {
                 resourceFileName,
             ) ?: throw PatchException("Could not find $resourceFileName")
 
-            val document = document("res/layout/youtube_controls_layout.xml")
+            val document = document("resources/package_1/res/layout/youtube_controls_layout.xml")
 
             "RelativeLayout".copyXmlNode(
                 document(hostingResourceStream),

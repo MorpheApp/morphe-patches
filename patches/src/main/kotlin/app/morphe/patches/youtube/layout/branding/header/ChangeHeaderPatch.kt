@@ -19,6 +19,7 @@ import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import org.w3c.dom.Node
 import java.io.File
 
 private val variants = arrayOf("light", "dark")
@@ -165,12 +166,12 @@ val changeHeaderPatch = resourcePatch(
         }
 
         // Logo is replaced using an attribute reference.
-        document("res/values/attrs.xml").use { document ->
+        document("resources/package_1/res/values/attrs.xml").use { document ->
             val resources = document.childNodes.item(0)
 
             fun addAttributeReference(logoName: String) {
                 val item = document.createElement("attr")
-                item.setAttribute("format", "reference")
+                item.setAttribute("formats", "reference")
                 item.setAttribute("name", logoName)
                 resources.appendChild(item)
             }
@@ -182,8 +183,51 @@ val changeHeaderPatch = resourcePatch(
             addAttributeReference(CUSTOM_HEADER_RESOURCE_NAME)
         }
 
+        fun getLastAttributeId(parentNode: Node, type: String): Int {
+            var highestId = 0
+            val numChildren = parentNode.childNodes.length
+            for (i in 0 until numChildren) {
+                val childNode = parentNode.childNodes.item(i)
+                if (childNode.nodeType != Node.ELEMENT_NODE) continue
+
+                val element = childNode as org.w3c.dom.Element
+                val elemType = element.getAttribute("type")
+                if (!elemType.equals(type)) continue
+
+                val idString = element.getAttribute("id")
+                if (idString.startsWith("0x")) {
+                    val id = idString.substring(2).toInt(16)
+                    if (id > highestId) {
+                        highestId = id
+                    }
+                }
+            }
+            return highestId
+        }
+
+        document("resources/package_1/res/values/public.xml").use { document ->
+            val resources = document.childNodes.item(0)
+
+            // 0x7f040b24
+            val startingId = getLastAttributeId(resources, "attr") + 1
+
+            fun addAttributeReference(logoName: String, id: Int) {
+                val item = document.createElement("public")
+                item.setAttribute("id", "0x${id.toString(16)}")
+                item.setAttribute("type", "attr")
+                item.setAttribute("name", logoName)
+                resources.appendChild(item)
+            }
+
+            logoResourceNames.forEachIndexed { index, logoName ->
+                addAttributeReference(logoName, startingId + 1 + index)
+            }
+
+            addAttributeReference(CUSTOM_HEADER_RESOURCE_NAME, startingId)
+        }
+
         // Add custom drawables to all styles that use the regular and premium logo.
-        document("res/values/styles.xml").use { document ->
+        document("resources/package_1/res/values/styles.xml").use { document ->
             arrayOf(
                 "Base.Theme.YouTube.Light" to "light",
                 "Base.Theme.YouTube.Dark" to "dark",

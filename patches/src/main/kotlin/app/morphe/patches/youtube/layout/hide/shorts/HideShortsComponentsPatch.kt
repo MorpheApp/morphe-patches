@@ -118,7 +118,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         )
 
         // Verify the file has the expected node, even if the patch option is off.
-        document("res/xml/main_shortcuts.xml").use { document ->
+        document("resources/package_1/res/xml/main_shortcuts.xml").use { document ->
             val shortsItem = document.childNodes.findElementByAttributeValueOrThrow(
                 "android:shortcutId",
                 "shorts-shortcut",
@@ -129,7 +129,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
             }
         }
 
-        document("res/layout/appwidget_two_rows.xml").use { document ->
+        document("resources/package_1/res/layout/appwidget_two_rows.xml").use { document ->
             val shortsItem = document.childNodes.findElementByAttributeValueOrThrow(
                 "android:id",
                 "@id/button_shorts_container",
