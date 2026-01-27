@@ -4,3 +4,9 @@ dependencies {
     compileOnly(libs.annotation)
     implementation(libs.hiddenapi)
 }
+
+android {
+    defaultConfig {
+        minSdk = 28
+    }
+}
