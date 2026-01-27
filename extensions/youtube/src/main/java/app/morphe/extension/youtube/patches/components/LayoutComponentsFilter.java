@@ -472,7 +472,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static void hideLatestVideosButton(View view) {
-        Utils.hideViewUnderCondition(Settings.HIDE_LATEST_VIDEOS_BUTTON, view);
+        Utils.hideViewUnderCondition(Settings.HIDE_LATEST_VIDEOS_BUTTON.get(), view);
     }
 
 

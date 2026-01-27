@@ -392,7 +392,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
                 addInstruction(
                     moveIndex + 1,
-                    "invoke-static { v$viewRegister }, + $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
+                    "invoke-static { v$viewRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
                             "->hideLatestVideosButton(Landroid/view/View;)V"
                 )
             }
