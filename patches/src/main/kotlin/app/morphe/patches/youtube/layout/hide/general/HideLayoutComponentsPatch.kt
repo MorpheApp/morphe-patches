@@ -167,6 +167,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_related_videos"),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_timed_reactions"),
+            SwitchPreference("morphe_hide_video_title"),
         )
 
         PreferenceScreen.FEED.addPreferences(
