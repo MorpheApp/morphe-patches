@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-01-27T10:19:24",
-  "description": "# [1.9.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-01-27)\n\n\n### Bug Fixes\n\n* **YouTube:** Show a more descriptive error message if attempting to patch a region specific APKM that does not contain languages for all regions ([0f2700d](https://github.com/MorpheApp/morphe-patches/commit/0f2700db110a2e8d041e1213e0d95ed50f6d54ac))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.9.0-dev.3/patches-1.9.0-dev.3.mpp",
+  "created_at": "2026-01-27T18:47:51",
+  "description": "# [1.9.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-01-27)\n\n\n### Bug Fixes\n\n* **YouTube:** Consolidate toolbar \"Hide cast button\" into existing hide cast button setting ([c22a2a1](https://github.com/MorpheApp/morphe-patches/commit/c22a2a1c7a74b6370bad7b47ce79cab9b49846ad))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.9.0-dev.4/patches-1.9.0-dev.4.mpp",
   "signature_download_url": "",
-  "version": "1.9.0-dev.3"
+  "version": "1.9.0-dev.4"
 }

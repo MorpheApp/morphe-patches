@@ -1,3 +1,10 @@
+# [1.9.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-01-27)
+
+
+### Bug Fixes
+
+* **YouTube:** Consolidate toolbar "Hide cast button" into existing hide cast button setting ([c22a2a1](https://github.com/MorpheApp/morphe-patches/commit/c22a2a1c7a74b6370bad7b47ce79cab9b49846ad))
+
 # [1.9.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-01-27)
 
 
