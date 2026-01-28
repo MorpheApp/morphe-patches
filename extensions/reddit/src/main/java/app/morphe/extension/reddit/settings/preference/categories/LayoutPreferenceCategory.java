@@ -6,7 +6,6 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.NavigationButtonsPatch;
-import app.morphe.extension.reddit.patches.RecentlyVisitedShelfPatch;
 import app.morphe.extension.reddit.patches.RecommendedCommunitiesPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ScreenshotPopupPatch;
@@ -28,7 +27,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         return ScreenshotPopupPatch.isPatchIncluded() ||
                 //NavigationButtonsPatch.isPatchIncluded() || // FIXME
                 SidebarComponentsPatch.isPatchIncluded() ||
-                RecentlyVisitedShelfPatch.isPatchIncluded() ||
                 RecommendedCommunitiesPatch.isPatchIncluded() ||
                 ToolBarButtonPatch.isPatchIncluded() ||
                 TrendingTodayShelfPatch.isPatchIncluded() ||
@@ -76,6 +74,12 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         if (SidebarComponentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
+                    Settings.HIDE_RECENTLY_VISITED_SHELF,
+                    "Hide Recently Visited shelf",
+                    "Hides the Recently Visited shelf in the sidebar."
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
                     Settings.HIDE_GAMES_ON_REDDIT_SHELF,
                     "Hide Games on Reddit shelf",
                     "Hides the Games on Reddit shelf in the sidebar."
@@ -101,15 +105,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                         "Hides the Resources shelf in the sidebar."
                 ));
             }
-        }
-
-        if (RecentlyVisitedShelfPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_RECENTLY_VISITED_SHELF,
-                    "Hide Recently Visited shelf",
-                    "Hides the Recently Visited shelf in the sidebar."
-            ));
         }
 
         if (RecommendedCommunitiesPatch.isPatchIncluded()) {
