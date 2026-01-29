@@ -81,6 +81,11 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_latest_posts_title">Piilota uusimmat postaukset</string>
   <string name="morphe_hide_latest_posts_summary_on">Uusimmat postaukset piilotetaan</string>
   <string name="morphe_hide_latest_posts_summary_off">Uusimmat postaukset näytetään</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Piilota \"Uusimmat videot\" -nappi</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Uusimmat videot -nappi on piilotettu</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Uusimmat videot -nappi näytetään</string>
   <string name="morphe_hide_mix_playlists_title">Piilota mix-soittolistat</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix-soittolistat piilotetaan</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix-soittolistat näytetään</string>
@@ -88,7 +93,7 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_movies_section_summary_on">Elokuvat-osio piilotetaan</string>
   <string name="morphe_hide_movies_section_summary_off">Elokuvat-osio näytetään</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Piilota \"Ilmoita minulle\" -painike</string>
   <string name="morphe_hide_notify_me_button_summary_on">Ilmoita minulle -painike piilotetaan</string>
   <string name="morphe_hide_notify_me_button_summary_off">Ilmoita minulle -painike näytetään</string>
@@ -161,6 +166,9 @@ Jos Doodle näkyy tällä hetkellä alueellasi ja tämä piilotusasetus on käyt
   <string name="morphe_hide_timed_reactions_title">Piilota ajoitetut reaktiot</string>
   <string name="morphe_hide_timed_reactions_summary_on">Ajoitetut reaktiot piilotetaan</string>
   <string name="morphe_hide_timed_reactions_summary_off">Ajoitetut reaktiot näytetään</string>
+  <string name="morphe_hide_video_title_title">Piilota videon otsikko</string>
+  <string name="morphe_hide_video_title_summary_on">Videotitlen piilotus pelin ylälaajennuksessa on piilotettu</string>
+  <string name="morphe_hide_video_title_summary_off">Videotitlen näkyvyys pelin ylälaajennuksessa on näytetty</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Piilota \"tekoälyn luoma videoyhteenveto\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Tekoälyn luoma videon yhteenveto-osio piilotetaan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Tekoälyn luoma videon yhteenveto-osio näytetään</string>
@@ -602,9 +610,6 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tumman tilan navigointipalkki on läpinäkymätön tai läpikuultava</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Piilota tai muuta työkalupalkin osia</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Cast-painike piilotetaan</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Cast-painike näytetään</string>
   <string name="morphe_hide_toolbar_create_button_title">Piilota Luo-painike</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Luo-painike piilotetaan</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Luo-painike näytetään</string>

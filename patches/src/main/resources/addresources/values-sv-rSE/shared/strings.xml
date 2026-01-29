@@ -26,9 +26,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Omstart krävs</string>
   <string name="morphe_settings_restart_dialog_message">Starta om appen för att denna ändring ska träda i kraft.</string>
   <string name="morphe_settings_restart">Starta om</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importera</string>
   <string name="morphe_settings_import_copy">Kopiera</string>
-  <string name="morphe_settings_import_reset">Morphe-inställningarna återställda till standard</string>
+  <string name="morphe_settings_import_reset">Morphe-inställningarna återställdes till standard</string>
   <string name="morphe_settings_import_success">Importerade %d inställningar</string>
   <string name="morphe_settings_import_failure_parse">Importen misslyckades: %s</string>
   <string name="morphe_settings_search_hint">Sök i inställningar</string>
@@ -49,9 +50,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Visa sökhistorik för inställningar</string>
   <string name="morphe_settings_search_history_summary_on">Sökhistorik för inställningar visas</string>
   <string name="morphe_settings_search_history_summary_off">Sökhistorik för inställningar visas inte</string>
-  <string name="morphe_settings_disable_bold_icons_title">Inaktivera fetstilta ikoner</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Ikoner är inte fetstilta</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Ikoner är fetstilta</string>
+  <string name="morphe_settings_disable_bold_icons_title">Inaktivera ikoner i fet stil</string>
+  <string name="morphe_settings_disable_bold_icons_summary_on">Ikoner är inte i fet stil</string>
+  <string name="morphe_settings_disable_bold_icons_summary_off">Ikoner är i fet stil</string>
   <string name="morphe_show_menu_icons_title">Visa ikoner för Morphe-inställningar</string>
   <string name="morphe_show_menu_icons_summary_on">Inställningsikoner visas</string>
   <string name="morphe_show_menu_icons_summary_off">Inställningsikoner visas inte</string>
@@ -62,8 +63,8 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_language_DEFAULT">Appspråk</string>
   <string name="morphe_pref_import_export_title">Importera/exportera</string>
   <string name="morphe_pref_import_export_summary">Importera/exportera Morphe-inställningar</string>
-  <!-- Settings about dialog. -->
-  <string name="morphe_settings_about_links_body_version_current">Du använder den senaste Morphe Patches version &lt;i&gt;%s&lt;/i&gt;</string>
+  <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Du använder det senaste Morphe Patches version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Du använder Morphe Patches version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uppdatering tillgänglig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;För att uppdatera dina patches, använd Morphe för att patcha om den här appen</string>
   <string name="morphe_settings_about_links_dev_header">Obs!</string>
   <string name="morphe_settings_about_links_dev_body">Den här versionen är en förhandsversion och du kan uppleva oväntade problem</string>
@@ -116,11 +117,11 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
 Följ guiden \"Don't kill my app\" för din telefon och tillämpa instruktionerna på din MicroG-installation.
 
 Detta krävs för att appen ska fungera."</string>
-  <string name="gms_core_dialog_open_website_text">Öppna hemsida</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG:s batterioptimeringar måste inaktiveras för att förhindra problem.
+  <string name="gms_core_dialog_open_website_text">Öppna webbplats</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Batterioptimeringar för MicroG måste inaktiveras för att förhindra problem.
 
-Inaktivering av batterioptimeringar för MicroG kommer inte att påverka batteritiden negativt.
+Om du inaktiverar batterioptimeringar för MicroG påverkas inte batteritiden negativt.
 
-Tryck på Fortsätt-knappen och tillåt optimeringsändringar."</string>
+Tryck på knappen Fortsätt och tillåt optimeringsändringar."</string>
   <string name="gms_core_dialog_continue_text">Fortsätt</string>
 </resources>

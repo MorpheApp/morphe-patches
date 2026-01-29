@@ -37,6 +37,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">La reproducció en segon pla de Shorts està activada</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_mix_playlists_title">Amaga llistes de reproducció de Mix</string>
   <string name="morphe_hide_mix_playlists_summary_on">Les llistes de reproducció de Mix estan amagades</string>
   <string name="morphe_hide_mix_playlists_summary_off">Es mostren les llistes de reproducció de Mix</string>
@@ -44,7 +46,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">La secció de pel·lícules està amagada</string>
   <string name="morphe_hide_movies_section_summary_off">Es mostra la secció de pel·lícules</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Amaga el botó \"Notifica\'m\"</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->

@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Potrebno je restartovanje</string>
   <string name="morphe_settings_restart_dialog_message">Restartujte aplikaciju da bi ova promena stupila na snagu.</string>
   <string name="morphe_settings_restart">Restartuj</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Uvoz</string>
   <string name="morphe_settings_import_copy">Kopiraj</string>
   <string name="morphe_settings_import_reset">Podešavanja Morphea su vraćena na podrazumevane vrednosti</string>
@@ -62,7 +63,7 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite transl
   <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
   <string name="morphe_pref_import_export_title">Uvoz / Izvoz</string>
   <string name="morphe_pref_import_export_summary">Uvoz / Izvoz podešavanja Morphea</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Koristite najnoviju verziju &lt;i&gt;%s&lt;/i&gt; Morphe pečeva</string>
   <string name="morphe_settings_about_links_body_version_outdated">Koristite verziju &lt;i&gt;%1$s&lt;/i&gt; Morphe pečeva&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupna je ažurirana verzija: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Da biste ažurirali svoje pečeve, upotrebite Morphe da biste ponovo zakrpali ovu aplikaciju</string>
   <string name="morphe_settings_about_links_dev_header">Napomena</string>

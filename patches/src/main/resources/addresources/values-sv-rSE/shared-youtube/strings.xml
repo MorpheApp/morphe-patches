@@ -45,30 +45,30 @@ Uppspelning kanske inte fungerar"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Försök aktivera: Förfalska videoströmmar > Logga in på Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Testa att aktivera: Förfalska videoströmmar &gt; Logga in på Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logga in på Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Inte inloggad på Android VR. Tryck här för att logga in</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">För närvarande inloggad på Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">För att använda den här funktionen, ändra \"Standard klient\" till Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logga in på Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Inloggning på Android VR kan lösa uppspelningsproblem för vissa användare
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Att logga in på Android VR kan lösa uppspelningsproblem för vissa användare
 
-Tryck på fortsätt nedan för att logga in"</string>
+Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsätt</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logga ut</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruktioner</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktiveringskod: %s
 
-1. Tryck på \"Öppna hemsida\" nedan för att öppna webbplatsen \"Anslut en enhet\"
+1. Tryck på \"Öppna webbplats\" nedan för att öppna webbplatsen \"Anslut en enhet\"
 2. Klistra in (eller skriv in) aktiveringskoden som visas ovan
 3. Logga in på Google om du blir ombedd. Om du har flera konton, välj det här YouTube-kontot
 4. Tryck på \"Tillåt YouTube VR\"-åtkomst
 5. Återgå till den här appen när du når meddelandet \"Enhet ansluten\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Öppna hemsida</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Öppna webbplats</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Det gick inte att utfärda en aktiveringskod</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Det gick inte att utfärda en autentiseringstoken</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Inloggning lyckades</string>
@@ -77,12 +77,12 @@ Tryck på fortsätt nedan för att logga in"</string>
 • Dina Morphe-inställningar kommer inte att importera/exportera Android VR-autentisering
 • Om den här appen inte används på 6 månader kommer Google att ta bort den här autentiseringen
 • Du behöver logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten från dina Google-inställningar"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är tillfälligt inte tillgängligt (API-tidsgräns nådd)</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är för tillfället inte tillgängligt (API-tidsgräns nådd)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Inloggningen på Android VR har gått ut, försök logga in på VR igen</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 är tillfälligt inte tillgängligt (status %d)</string>
-  <string name="morphe_oauth2_connection_failure_generic">OAuth2 är tillfälligt inte tillgängligt</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan inte logga in på VR, webbautentisering godkändes inte</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Kan inte logga in på VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 är för tillfället inte tillgängligt (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 är för tillfället inte tillgängligt</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Det går inte att logga in på VR, webbautentiseringen godkändes inte</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in på VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken, försök logga in på VR igen</string>
   <!-- misc.audio.forceOriginalAudioPatch -->

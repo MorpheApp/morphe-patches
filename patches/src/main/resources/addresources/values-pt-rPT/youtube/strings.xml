@@ -81,6 +81,11 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_hide_latest_posts_title">Esconder as últimas publicações</string>
   <string name="morphe_hide_latest_posts_summary_on">Últimas publicações estão escondidas</string>
   <string name="morphe_hide_latest_posts_summary_off">Últimas publicações são visíveis</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Ocultar botão \'Vídeos recentes\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Botão \'Vídeos recentes\' está oculto</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Botão \'Vídeos recentes\' está visível</string>
   <string name="morphe_hide_mix_playlists_title">Esconder mistura de playlists</string>
   <string name="morphe_hide_mix_playlists_summary_on">Playlists mistas estão escondidas</string>
   <string name="morphe_hide_mix_playlists_summary_off">Playlists misturadas são visíveis</string>
@@ -88,7 +93,7 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_hide_movies_section_summary_on">Secção de filmes está escondida</string>
   <string name="morphe_hide_movies_section_summary_off">Secção de filmes está visível</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botão \'Notificar-me\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">O botão Notificar-me está oculto</string>
   <string name="morphe_hide_notify_me_button_summary_off">O botão Notificar-me está visível</string>
@@ -161,6 +166,9 @@ Se um Doodle estiver a ser exibido na sua região e esta definição de ocultaç
   <string name="morphe_hide_timed_reactions_title">Esconder reações cronometradas</string>
   <string name="morphe_hide_timed_reactions_summary_on">Reações temporizadas estão escondidas</string>
   <string name="morphe_hide_timed_reactions_summary_off">Reações temporizadas são visíveis</string>
+  <string name="morphe_hide_video_title_title">Ocultar título do vídeo</string>
+  <string name="morphe_hide_video_title_summary_on">Título do vídeo na sobreposição do reprodutor está oculto</string>
+  <string name="morphe_hide_video_title_summary_off">Título do vídeo na sobreposição do reprodutor está exibido</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar \"Resumo de vídeo gerado por IA\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Seção de resumo de vídeo gerada por IA está oculta</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Seção de resumo de vídeo gerado por IA está visível</string>
@@ -369,8 +377,8 @@ Limitações:
   <string name="morphe_hide_shopping_links_summary_on">Links de compra na descrição do vídeo estão ocultos</string>
   <string name="morphe_hide_shopping_links_summary_off">Links de compras na descrição do vídeo são exibidos</string>
   <string name="morphe_hide_view_products_banner_title">Ocultar banner \'Ver produtos\'</string>
-  <string name="morphe_hide_view_products_banner_summary_on">O banner de visualização de produtos na sobreposição de vídeo está oculto</string>
-  <string name="morphe_hide_view_products_banner_summary_off">O banner de visualização de produtos na sobreposição de vídeo está exibido</string>
+  <string name="morphe_hide_view_products_banner_summary_on">O banner de visualização de produtos na sobreposição do player está oculto</string>
+  <string name="morphe_hide_view_products_banner_summary_off">O banner de visualização de produtos na sobreposição do player está exibido</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Esconder promoções Premium do YouTube</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promoções do YouTube Premium são ocultadas
 
@@ -602,9 +610,6 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A barra de navegação em modo escuro é opaca ou translúcida</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Ocultar ou alterar componentes da barra de ferramentas</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ocultar botão Transmitir</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Botão \"Transmitir\" está escondido</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Botão \"Transmitir\" é visível</string>
   <string name="morphe_hide_toolbar_create_button_title">Ocultar botão de criar</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">O botão criar está escondido</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Botão criar é visível</string>

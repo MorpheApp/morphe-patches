@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Reinicio necesario</string>
   <string name="morphe_settings_restart_dialog_message">Reinicia la aplicación para que este cambio surta efecto.</string>
   <string name="morphe_settings_restart">Reiniciar</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importar</string>
   <string name="morphe_settings_import_copy">Copiar</string>
   <string name="morphe_settings_import_reset">Ajustes de Morphe restablecidos a los valores predeterminados</string>
@@ -62,7 +63,7 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita trans
   <string name="morphe_language_DEFAULT">Idioma de la aplicación</string>
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar ajustes de Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>

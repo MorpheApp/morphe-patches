@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Нужен е рестарт</string>
   <string name="morphe_settings_restart_dialog_message">Рестартирайте приложението, за да влязат в сила тези промени.</string>
   <string name="morphe_settings_restart">Рестарт</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортиране</string>
   <string name="morphe_settings_import_copy">Копиране</string>
   <string name="morphe_settings_import_reset">Настройките на Morphe са възстановени по подразбиране.</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Език на приложението</string>
   <string name="morphe_pref_import_export_title">Импорт / Експорт</string>
   <string name="morphe_pref_import_export_summary">Импорт / Експор на настройките на Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Вие използвате последната версия на Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Използвате Morphe Patches версия &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Достъпна е нова версия: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;За да актуализирате пачовете си, използвайте Morphe, за да направите повторен пач на това приложение.</string>
   <string name="morphe_settings_about_links_dev_header">Бележка</string>

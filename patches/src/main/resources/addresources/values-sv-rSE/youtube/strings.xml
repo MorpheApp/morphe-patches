@@ -82,6 +82,8 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_latest_posts_title">Dölj senaste inlägg</string>
   <string name="morphe_hide_latest_posts_summary_on">Senaste inlägg är dolda</string>
   <string name="morphe_hide_latest_posts_summary_off">Senaste inlägg visas</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_mix_playlists_title">Dölj mix-spellistor</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix-spellistor är dolda</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix-spellistor visas</string>
@@ -89,7 +91,7 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_movies_section_summary_on">Filmsektionen är dold</string>
   <string name="morphe_hide_movies_section_summary_off">Filmsektionen visas</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Dölj knappen Meddela mig</string>
   <string name="morphe_hide_notify_me_button_summary_on">Knappen Meddela mig är dold</string>
   <string name="morphe_hide_notify_me_button_summary_off">Knappen Meddela mig visas</string>
@@ -162,6 +164,9 @@ Om en doodle visas för närvarande i din region och den här döljningsinställ
   <string name="morphe_hide_timed_reactions_title">Dölj tidsbaserade reaktioner</string>
   <string name="morphe_hide_timed_reactions_summary_on">Tidsbaserade reaktioner är dolda</string>
   <string name="morphe_hide_timed_reactions_summary_off">Tidsbaserade reaktioner visas</string>
+  <string name="morphe_hide_video_title_title">Dölj videotitel</string>
+  <string name="morphe_hide_video_title_summary_on">Videotiteln i spelaröverlägget är dold</string>
+  <string name="morphe_hide_video_title_summary_off">Videotiteln i spelaröverlägget visas</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Dölj AI-genererad videoöversikt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Avsnittet AI-genererad videoöversikt är dolt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Avsnittet AI-genererad videoöversikt visas</string>
@@ -370,8 +375,8 @@ Begränsningar:
   <string name="morphe_hide_shopping_links_summary_on">Butikslänkar i videobeskrivningen är dolda</string>
   <string name="morphe_hide_shopping_links_summary_off">Butikslänkar i videobeskrivningen visas</string>
   <string name="morphe_hide_view_products_banner_title">Dölj bannern Visa produkter</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Bannern Visa produkter i videoöverlägget är dold</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Bannern Visa produkter i videoöverlägget visas</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Bannern Visa produkter i spelaröverlägget är dold</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Bannern Visa produkter i spelaröverlägget visas</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Dölj YouTube Premium-kampanjer</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-kampanjer är dolda
 
@@ -601,13 +606,15 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Inaktivera mörkt genomskinligt fält</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Navigeringsfältet i mörkt läge är ogenomskinligt</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Navigeringsfältet i mörkt läge är ogenomskinligt eller genomskinligt</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Dölj knappen Casta</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Knappen Casta är dold</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Knappen Casta visas</string>
+  <string name="morphe_toolbar_screen_title">Verktygsfält</string>
+  <string name="morphe_toolbar_screen_summary">Dölj eller ändra komponenter i verktygsfältet</string>
+  <string name="morphe_hide_toolbar_create_button_title">Dölj skapa-knappen</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Knappen Skapa är dold</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Knappen Skapa visas</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Dölj aviseringar-knappen</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Knappen Aviseringar är dold</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Knappen Aviseringar visas</string>
+  <string name="morphe_hide_toolbar_search_button_title">Dölj sökknappen</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Sökknappen är dold</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Sökknappen visas</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->

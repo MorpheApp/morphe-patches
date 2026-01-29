@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Требуется перезапуск</string>
   <string name="morphe_settings_restart_dialog_message">Перезапустите приложение, чтобы изменения вступили в силу.</string>
   <string name="morphe_settings_restart">Перезапустить</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортировать</string>
   <string name="morphe_settings_import_copy">Копировать</string>
   <string name="morphe_settings_import_reset">Настройки Morphe восстановлены до значений по умолчанию</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Язык приложения YouTube</string>
   <string name="morphe_pref_import_export_title">Резервное копирование настроек</string>
   <string name="morphe_pref_import_export_summary">Создание и восстановление резервной копии настроек Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Вы используете последнюю версию Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Вы используете Morphe Patches версии &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступно обновление: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Чтобы обновить ваши патчи, используйте Morphe для повторной установки этого приложения</string>
   <string name="morphe_settings_about_links_dev_header">Примечание</string>

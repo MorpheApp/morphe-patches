@@ -81,6 +81,11 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_latest_posts_title">Son elanları gizlət</string>
   <string name="morphe_hide_latest_posts_summary_on">Ən son elanlar gizlədilib</string>
   <string name="morphe_hide_latest_posts_summary_off">Ən son elanlar göstərilir</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Gizlət \'Son videolar\' düyməsini</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Son videolar düyməsi gizlidir</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Son videolar düyməsi göstərilir</string>
   <string name="morphe_hide_mix_playlists_title">Qarışıq pleylistləri gizlət</string>
   <string name="morphe_hide_mix_playlists_summary_on">Qarışıq oynatma siyahıları gizlədilir</string>
   <string name="morphe_hide_mix_playlists_summary_off">Qarışıq oynatma siyahıları göstərilir</string>
@@ -88,7 +93,7 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_movies_section_summary_on">Filmlər bölməsi gizlidir</string>
   <string name="morphe_hide_movies_section_summary_off">Filmlər bölməsi göstərilir</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Mənə bildir\" düyməsini gizlət</string>
   <string name="morphe_hide_notify_me_button_summary_on">Mənə bildir düyməsi gizlidir</string>
   <string name="morphe_hide_notify_me_button_summary_off">Mənə bildir düyməsi görünür</string>
@@ -161,6 +166,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_timed_reactions_title">Vaxtlı reaksiyaları gizlət</string>
   <string name="morphe_hide_timed_reactions_summary_on">Zamanlanmış reaksiyalar gizlədilir</string>
   <string name="morphe_hide_timed_reactions_summary_off">Zamanlanmış reaksiyalar göstərilir</string>
+  <string name="morphe_hide_video_title_title">Video başlığını gizlət</string>
+  <string name="morphe_hide_video_title_summary_on">Video başlığı oynatma örtüsündə gizlidir</string>
+  <string name="morphe_hide_video_title_summary_off">Video başlığı oynatma örtüsündə göstərilir</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\"AI ilə yaradılan video xülasəsini\" gizlət</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Sİ ilə yaradılan video xülasə bölməsi gizlədilib</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sİ ilə yaradılan video xülasə bölməsi görünür</string>
@@ -369,8 +377,8 @@ Məhdudiyyətlər
   <string name="morphe_hide_shopping_links_summary_on">Alış-veriş linkləri video təsvirdə gizlidir</string>
   <string name="morphe_hide_shopping_links_summary_off">Alış-veriş linkləri video təsvirdə görünür</string>
   <string name="morphe_hide_view_products_banner_title">“Məhsullara baxın” afişasın gizlət</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Məhsullara baxış etiketi video örtüyündə gizlidir</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Məhsullara baxış etiketi video örtüyündə görünür</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Video ötürüyündə məhsullara baxış etiketinin göstərilməsi gizlədilir</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Video ötürüyündə məhsullara baxış etiketinin göstərilməsi göstərilir</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium reklamları gizlənir
 
@@ -602,13 +610,13 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Qaranlıq rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
   <string name="morphe_toolbar_screen_title">Alətlər çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Alətlər çubuğunun komponentlərini gizlət və ya dəyiş</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Yayımla düyməsini gizlət</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Yayım düyməsi gizlidir</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Yayım düyməsi göstərilir</string>
+  <string name="morphe_hide_toolbar_create_button_title">Yazı Paylaş düyməsini gizlət</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Yarat düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Yarat düyməsi göstərilir</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Yazı Bildiriş düyməsini gizlət</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Bildirişlər düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirişlər düyməsi görünür</string>
+  <string name="morphe_hide_toolbar_search_button_title">Yazı Axtarış düyməsini gizlət</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Axtarış düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Axtarış düyməsi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->

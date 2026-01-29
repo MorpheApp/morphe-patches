@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Genstart kræves</string>
   <string name="morphe_settings_restart_dialog_message">Genstart appen for at denne ændring træder i kraft.</string>
   <string name="morphe_settings_restart">Genstart</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Kopier</string>
   <string name="morphe_settings_import_reset">Morphe-indstillinger nulstillet til standard</string>
@@ -62,7 +63,7 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_language_DEFAULT">App-sprog</string>
   <string name="morphe_pref_import_export_title">Importér/Eksportér</string>
   <string name="morphe_pref_import_export_summary">Importér/Eksportér Morphe-indstillinger</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Du bruger den nyeste Morphe Patches-version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Du bruger Morphe Patches-versionen &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Opdatering tilgængelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For at opdatere dine patches, brug Morphe til at genpatche denne app</string>
   <string name="morphe_settings_about_links_dev_header">Bemærk</string>

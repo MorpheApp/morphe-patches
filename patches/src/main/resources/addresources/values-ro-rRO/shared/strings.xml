@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Repornire necesară</string>
   <string name="morphe_settings_restart_dialog_message">Reporniți aplicația pentru ca această modificare să aibă efect.</string>
   <string name="morphe_settings_restart">Repornire</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importare</string>
   <string name="morphe_settings_import_copy">Copiere</string>
   <string name="morphe_settings_import_reset">Setările Morphe au fost resetate la valorile implicite</string>
@@ -62,7 +63,7 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_language_DEFAULT">Limba aplicației</string>
   <string name="morphe_pref_import_export_title">Importă / Exportă</string>
   <string name="morphe_pref_import_export_summary">Import/Export setări Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Utilizați cea mai recentă versiune a patch-urilor Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Utilizați versiunea patch-urilor Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualizare disponibilă: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pentru a actualiza patch-urile, folosiți Morphe pentru a repatcha această aplicație</string>
   <string name="morphe_settings_about_links_dev_header">Notă</string>

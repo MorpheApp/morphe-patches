@@ -81,6 +81,11 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_latest_posts_title">Neueste Beiträge ausblenden</string>
   <string name="morphe_hide_latest_posts_summary_on">Neueste Beiträge werden ausgeblendet</string>
   <string name="morphe_hide_latest_posts_summary_off">Neueste Beiträge werden angezeigt</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Verbergen der Schaltfläche \'Letzte Videos\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Schaltfläche \'Letzte Videos\' ist versteckt</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Schaltfläche \'Letzte Videos\' ist angezeigt</string>
   <string name="morphe_hide_mix_playlists_title">Mix-Wiedergabelisten ausblenden</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix-Wiedergabelisten werden ausgeblendet</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix-Wiedergabelisten werden angezeigt</string>
@@ -88,7 +93,7 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_movies_section_summary_on">Film-Bereich wird ausgeblendet</string>
   <string name="morphe_hide_movies_section_summary_off">Film-Bereich wird angezeigt</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Schaltfläche \'Benachrichtige mich\' ausblenden</string>
   <string name="morphe_hide_notify_me_button_summary_on">\'Benachrichtige mich\' wird ausgeblendet</string>
   <string name="morphe_hide_notify_me_button_summary_off">\'Benachrichtige mich\' wird angezeigt</string>
@@ -160,6 +165,9 @@ Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum
   <string name="morphe_hide_timed_reactions_title">Zeitliche Reaktionen ausblenden</string>
   <string name="morphe_hide_timed_reactions_summary_on">Zeitgesteuerte Reaktionen sind ausgeblendet</string>
   <string name="morphe_hide_timed_reactions_summary_off">Zeitgesteuerte Reaktionen werden angezeigt</string>
+  <string name="morphe_hide_video_title_title">Videotitel ausblenden</string>
+  <string name="morphe_hide_video_title_summary_on">Video-Titel im Player-Overlay ist ausgeblendet</string>
+  <string name="morphe_hide_video_title_summary_off">Video-Titel im Player-Overlay wird angezeigt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'KI-generierte Videozusammenfassung\' ausblenden</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">KI-generierter Videozusammenfassungsbereich ist ausgeblendet</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Abschnitt mit KI-generierter Videozusammenfassung wird angezeigt</string>
@@ -599,9 +607,6 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Die Navigationsleiste im dunklen Modus ist undurchsichtig oder durchscheinend</string>
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Leistenkomponenten ausblenden oder ändern</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Cast-Button ausblenden</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Der Cast button ist ausgeblendet</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Der Cast button wird angezeigt</string>
   <string name="morphe_hide_toolbar_create_button_title">Erstellen-Schaltfläche ausblenden</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Erstellen-Button ist ausgeblendet</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Erstelle Schaltfläche wird angezeigt</string>

@@ -49,7 +49,7 @@ Có thể gặp lỗi khi phát."</string>
   <string name="morphe_spoof_video_streams_client_type_title">Ứng dụng khách mặc định</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Đăng nhập Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Chưa đăng nhập Android VR. Ấn vào đây để đăng nhập</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Chưa đăng nhập Android VR. Bấm vào đây để đăng nhập</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Đã đăng nhập vào Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Để dùng tính năng này, thay đổi \'Ứng dụng khách mặc định\' thành Android VR</string>
@@ -63,10 +63,10 @@ Có thể gặp lỗi khi phát."</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Mã kích hoạt: %s
 
-1. Ấn 'Mở trang web' dưới đây để mở trang web 'Kết nối thiết bị'
+1. Bấm 'Mở trang web' dưới đây để mở trang web 'Kết nối thiết bị'
 2. Dán từ bảng nhớ tạm (hoặc gõ trực tiếp) mã kích hoạt được hiển thị ở trên
 3. Đăng nhập vào Google nếu được yêu cầu. Nếu bạn có nhiều tài khoản thì chọn tài khoản YouTube này
-4. Ấn 'Cho phép' YouTube VR truy cập
+4. Bấm 'Cho phép' YouTube VR truy cập
 5. Quay lại ứng dụng sau khi nhận được thông báo 'Kết nối thiết bị thành công'"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Mở trang web</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Thất bại khi cấp mã kích hoạt</string>

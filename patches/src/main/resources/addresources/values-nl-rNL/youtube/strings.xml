@@ -81,6 +81,11 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_latest_posts_title">Nieuwste berichten verbergen</string>
   <string name="morphe_hide_latest_posts_summary_on">Nieuwste berichten zijn verborgen</string>
   <string name="morphe_hide_latest_posts_summary_off">Nieuwste berichten worden weergegeven</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Verberg \'Laatste video\'s\' knop</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Knop \'Laatste video\'s\' is verborgen</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Knop \'Laatste video\'s\' is zichtbaar</string>
   <string name="morphe_hide_mix_playlists_title">Mix-afspeellijsten verbergen</string>
   <string name="morphe_hide_mix_playlists_summary_on">De mix-afspeellijsten zijn verborgen</string>
   <string name="morphe_hide_mix_playlists_summary_off">De mix-afspeellijsten worden weergegeven</string>
@@ -88,7 +93,7 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_movies_section_summary_on">Films sectie is verborgen</string>
   <string name="morphe_hide_movies_section_summary_off">De sectie Films wordt weergegeven</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Herinnering sturen\' knop verbergen</string>
   <string name="morphe_hide_notify_me_button_summary_on">Meld mij-knop is verborgen</string>
   <string name="morphe_hide_notify_me_button_summary_off">Meld mij-knop wordt getoond</string>
@@ -161,6 +166,9 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_hide_timed_reactions_title">Verberg getimede reacties</string>
   <string name="morphe_hide_timed_reactions_summary_on">Gectimed reacties worden verborgen</string>
   <string name="morphe_hide_timed_reactions_summary_off">Gectimed reacties worden getoond</string>
+  <string name="morphe_hide_video_title_title">Verberg de videotitel</string>
+  <string name="morphe_hide_video_title_summary_on">Video titel in de afspeelbalk is verborgen</string>
+  <string name="morphe_hide_video_title_summary_off">Video titel in de afspeelbalk is zichtbaar</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'AI-gegenereerde videosamenvatting\' verbergen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-gegenereerde videosamenvattingssectie is verborgen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sectie met door AI gegenereerde videosamenvatting wordt getoond</string>
@@ -369,8 +377,8 @@ Beperkingen:
   <string name="morphe_hide_shopping_links_summary_on">Winkellinks in videobeschrijving zijn verborgen</string>
   <string name="morphe_hide_shopping_links_summary_off">Winkellinks in videobeschrijving worden getoond</string>
   <string name="morphe_hide_view_products_banner_title">Banner \'Producten bekijken\' verbergen</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Producten bekijken-banner in video-overlay is verborgen</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Producten bekijken-banner in video-overlay wordt getoond</string>
+  <string name="morphe_hide_view_products_banner_summary_on">View products banner in video overlay is hidden</string>
+  <string name="morphe_hide_view_products_banner_summary_off">View products banner in video overlay is shown</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promoties verbergen</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-promoties worden verborgen
 
@@ -602,9 +610,6 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">De donkermodus navigatiebalk is ondoorzichtig of doorschijnend</string>
   <string name="morphe_toolbar_screen_title">Balkon</string>
   <string name="morphe_toolbar_screen_summary">Verberg of verander balkononderdelen</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Verberg Cast-knop</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Castknop is verborgen</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Castknop wordt weergegeven</string>
   <string name="morphe_hide_toolbar_create_button_title">Verberg de knop \"Aanmaken\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Maak-knop is verborgen</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Maak-knop wordt weergegeven</string>

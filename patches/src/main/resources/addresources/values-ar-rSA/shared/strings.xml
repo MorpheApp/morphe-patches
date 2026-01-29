@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">إعادة التشغيل مطلوبة</string>
   <string name="morphe_settings_restart_dialog_message">أعد تشغيل التطبيق لكي يسري هذا التغيير.</string>
   <string name="morphe_settings_restart">إعادة التشغيل</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">استيراد</string>
   <string name="morphe_settings_import_copy">نسخ</string>
   <string name="morphe_settings_import_reset">إعادة تعيين إعدادات Morphe إلى الوضع الافتراضي</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">لغة التطبيق</string>
   <string name="morphe_pref_import_export_title">استيراد / تصدير</string>
   <string name="morphe_pref_import_export_summary">استيراد / تصدير إعدادات Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">أنت تستخدم أحدث إصدار من Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">أنت تستخدم إصدار Morphe Patches&lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;تحديث متاح: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;لتحديث التعديلات الخاصة بك، استخدم Morphe لإعادة تعديل هذا التطبيق</string>
   <string name="morphe_settings_about_links_dev_header">ملاحظة</string>

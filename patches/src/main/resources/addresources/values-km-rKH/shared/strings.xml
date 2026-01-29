@@ -17,8 +17,40 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <!-- Settings about dialog. -->
+  <string name="morphe_settings_submenu_title">ការកំណត់</string>
+  <string name="morphe_settings_confirm_user_dialog_title">តើអ្នកពិតជាចង់ដំណើរការមែនឬ?</string>
+  <string name="morphe_settings_save">រក្សាទុក</string>
+  <string name="morphe_settings_reset">កំណត់សាថ្មី</string>
+  <string name="morphe_settings_reset_color">កំណត់ពណ៌សាថ្មី</string>
+  <string name="morphe_settings_color_invalid">ពណ៌មិនត្រឹមត្រូវ</string>
+  <string name="morphe_settings_restart_title">ត្រូវការចាប់ផ្តើមសាជាថ្មី</string>
+  <string name="morphe_settings_restart_dialog_message">ចាប់ផ្តើមកម្មវិធីសាជាថ្មី ដើម្បីឱ្យការផ្លាស់ប្តូរនេះមានប្រសិទ្ធភាព។</string>
+  <string name="morphe_settings_restart">ចាប់ផ្តើមសាថ្មី</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">នាំចូល</string>
+  <string name="morphe_settings_import_copy">ចម្លង</string>
+  <string name="morphe_settings_import_reset">ការកំណត់របស់ Morphe ត្រូវស្ដារទៅបុរេជម្រើស</string>
+  <string name="morphe_settings_import_success">បាននាំចូលការកំណត់ %d</string>
+  <string name="morphe_settings_import_failure_parse">ការនាំចូលបានបរាជ័យ៖ %s</string>
+  <string name="morphe_settings_search_hint">ស្វែងរកការកំណត់</string>
+  <string name="morphe_settings_search_no_results_title">គ្មានលទ្ធផលឡើយ សម្រាប់ \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">សាកល្បងពាក្យគន្លឹះដទៃ</string>
+  <string name="morphe_settings_search_recent_searches">ការស្វែងរកថ្មីៗ</string>
+  <string name="morphe_settings_search_remove_message">ដកចេញពីប្រវត្តិស្វែងរកមែនឬដកចេញពីប្រវត្តិស្វែងរកមែន</string>
+  <string name="morphe_settings_search_clear_history">ជម្រះប្រវត្តិស្វែងរក</string>
+  <string name="morphe_settings_search_empty_history_title">ប្រវត្តិស្វែងរក ទទេរ</string>
+  <string name="morphe_language_DEFAULT">ភាសាកម្មវិធី</string>
+  <string name="morphe_pref_import_export_title">នាំចូល / នាំចេញ</string>
+  <string name="morphe_pref_import_export_summary">ការកំណត់នាំចូល / នាំចេញរបស់ Morphe</string>
+  <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_header">បញ្ជាប់ផ្លូវការ</string>
+  <string name="morphe_settings_about_links_website">វេបសាយ</string>
+  <string name="morphe_settings_about_links_translations">ការបកប្រែ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">ការបំបាត់កំហុស</string>
+  <string name="morphe_debug_screen_summary">បើកឬផ្ដាច់ជម្រើសការកែកំហុស</string>
+  <string name="morphe_debug_title">ការកត់ត្រាកែកំហុស</string>
+  <string name="morphe_debug_summary_on">កំណត់ត្រាកែកំហុសត្រូវបានបើក</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

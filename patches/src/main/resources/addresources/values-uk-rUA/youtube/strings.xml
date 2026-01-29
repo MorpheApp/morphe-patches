@@ -82,6 +82,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">Приховати останні публікації</string>
   <string name="morphe_hide_latest_posts_summary_on">Останні публікації приховано</string>
   <string name="morphe_hide_latest_posts_summary_off">Останні публікації показуються</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Приховати кнопку \"Останні відео\"</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Кнопка \"Останні відео\" прихована</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Кнопка \"Останні відео\" показана</string>
   <string name="morphe_hide_mix_playlists_title">Приховати \"Мікс плейлисти\"</string>
   <string name="morphe_hide_mix_playlists_summary_on">\"Мікс плейлисти\" приховано</string>
   <string name="morphe_hide_mix_playlists_summary_off">\"Мікс плейлисти\" показуються</string>
@@ -89,7 +94,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">Секцію фільмів приховано</string>
   <string name="morphe_hide_movies_section_summary_off">Секція фільмів показується</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Приховати кнопку \"Сповістити мене\"</string>
   <string name="morphe_hide_notify_me_button_summary_on">Кнопку \"Сповістити мене\" приховано</string>
   <string name="morphe_hide_notify_me_button_summary_off">Кнопка \"Сповістити мене\" показується</string>
@@ -162,6 +167,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">Приховати тимчасові реакції</string>
   <string name="morphe_hide_timed_reactions_summary_on">Тимчасові реакції приховано</string>
   <string name="morphe_hide_timed_reactions_summary_off">Тимчасові реакції показуються</string>
+  <string name="morphe_hide_video_title_title">Приховати назву відео</string>
+  <string name="morphe_hide_video_title_summary_on">Надпис відео в панелі відтворення приховано</string>
+  <string name="morphe_hide_video_title_summary_off">Надпис відео в панелі відтворення показано</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Приховати секцію \"Короткий переказ від ШІ\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Секцію короткого переказу відео, згенерованого ШІ, приховано</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Секція короткого переказу відео, згенерованого ШІ, показується</string>
@@ -370,8 +378,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">Посилання на покупки в описі відео приховано</string>
   <string name="morphe_hide_shopping_links_summary_off">Посилання на покупки в описі відео показуються</string>
   <string name="morphe_hide_view_products_banner_title">Приховати банер \"Перегляд товарів\"</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Банер перегляду товарів у інтерфейсі відеоплеєра приховано</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Банер перегляду товарів у інтерфейсі відеоплеєра показується</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Банер \"Переглянути товари\" в панелі відтворення приховано</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Банер \"Переглянути товари\" в панелі відтворення показано</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Приховати рекламу YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Реклама YouTube Premium прихована
 
@@ -603,18 +611,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Панель навігації темного режиму непрозора або напівпрозора</string>
   <string name="morphe_toolbar_screen_title">Панель інструментів</string>
   <string name="morphe_toolbar_screen_summary">Приховати або змінити компоненти панелі інструментів</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Приховати кнопку \"Трансляція\"</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Кнопку \"Трансляція\" у відеоплеєрі приховано</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Кнопка \"Трансляція\" у відеоплеєрі показується</string>
   <string name="morphe_hide_toolbar_create_button_title">Приховати кнопку \"Створити\"</string>
-  <string name="morphe_hide_toolbar_create_button_summary_on">Кнопку \"Створити\" приховано на панелі навігації</string>
-  <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Створити\" показується на панелі навігації</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Приховати кнопку сповіщень</string>
-  <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопку \"Сповіщення\" приховано на панелі навігації</string>
-  <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Сповіщення\" показується на панелі навігації</string>
-  <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку пошуку</string>
-  <string name="morphe_hide_toolbar_search_button_summary_on">Кнопку пошуку приховано</string>
-  <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка пошуку показується</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Кнопка \"Створити\" прихована</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Створити\" показана</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Приховати кнопку \"Повідомлення\"</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопка \"Повідомлень\" прихована</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Повідомлень\" показана</string>
+  <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку \"Пошук\"</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Кнопку \"Пошук\" приховано</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка \"Пошук\" показана</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
   <string name="morphe_hide_player_flyout_summary">Приховати або показувати пункти висувного меню плеєра</string>

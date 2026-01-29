@@ -81,6 +81,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">ซ่อนโพสต์ล่าสุด</string>
   <string name="morphe_hide_latest_posts_summary_on">โพสต์ล่าสุดถูกซ่อนไว้</string>
   <string name="morphe_hide_latest_posts_summary_off">โพสต์ล่าสุดแสดงอยู่</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">ซ่อนปุ่ม \'วิดีโอล่าสุด\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">ปุ่มวิดีโอล่าสุดถูกซ่อน</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">ปุ่มวิดีโอล่าสุดถูกแสดง</string>
   <string name="morphe_hide_mix_playlists_title">ซ่อนเพลย์ลิสต์แบบผสม</string>
   <string name="morphe_hide_mix_playlists_summary_on">เพลย์ลิสต์แบบผสมถูกซ่อนไว้</string>
   <string name="morphe_hide_mix_playlists_summary_off">เพลย์ลิสต์แบบผสมแสดงอยู่</string>
@@ -88,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">ส่วนภาพยนตร์ถูกซ่อนไว้</string>
   <string name="morphe_hide_movies_section_summary_off">ส่วนภาพยนตร์แสดงอยู่</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">ซ่อนปุ่ม \"แจ้งเตือนฉัน\"</string>
   <string name="morphe_hide_notify_me_button_summary_on">ปุ่มแจ้งเตือนฉันถูกซ่อนไว้</string>
   <string name="morphe_hide_notify_me_button_summary_off">ปุ่มแจ้งเตือนฉันแสดงอยู่</string>
@@ -161,6 +166,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">ซ่อนปฏิกิริยาตามเวลา</string>
   <string name="morphe_hide_timed_reactions_summary_on">ปฏิกิริยาตามเวลาถูกซ่อน</string>
   <string name="morphe_hide_timed_reactions_summary_off">ปฏิกิริยาตามเวลาถูกแสดง</string>
+  <string name="morphe_hide_video_title_title">ซ่อนชื่อวิดีโอ</string>
+  <string name="morphe_hide_video_title_summary_on">ชื่อวิดีโอในโอเวอร์เลย์เครื่องเล่นซ่อนอยู่</string>
+  <string name="morphe_hide_video_title_summary_off">ชื่อวิดีโอในโอเวอร์เลย์เครื่องเล่นแสดงอยู่</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">ซ่อน \",สรุปวิดีโอที่สร้างโดย AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">ส่วนสรุปวิดีโอที่สร้างโดย AI ถูกซ่อนอยู่</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">แสดงส่วนสรุปวิดีโอที่สร้างโดย AI</string>
@@ -600,9 +608,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">แถบนำทางโหมดมืดโปร่งแสงหรือไม่โปร่งแสง</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">ซ่อนหรือเปลี่ยนส่วนประกอบแถบเครื่องมือ</string>
-  <string name="morphe_hide_toolbar_cast_button_title">ซ่อนปุ่มส่ง</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">ปุ่มแคสต์ซ่อนอยู่</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">ปุ่มแคสต์แสดงอยู่</string>
   <string name="morphe_hide_toolbar_create_button_title">ซ่อนปุ่มสร้าง</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">ปุ่มสร้างถูกซ่อน</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">ปุ่มสร้างถูกแสดง</string>

@@ -81,6 +81,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">إخفاء آخر المشاركات</string>
   <string name="morphe_hide_latest_posts_summary_on">تم إخفاء أحدث المشاركات</string>
   <string name="morphe_hide_latest_posts_summary_off">يتم عرض أحدث المشاركات</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">إخفاء زر \'أحدث الفيديوهات\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">تم إخفاء زر \'أحدث الفيديوهات\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">تم عرض زر \'أحدث الفيديوهات\'</string>
   <string name="morphe_hide_mix_playlists_title">إخفاء قوائم تشغيل التشكيلة</string>
   <string name="morphe_hide_mix_playlists_summary_on">تم إخفاء قوائم تشغيل التشكيلة</string>
   <string name="morphe_hide_mix_playlists_summary_off">يتم عرض قوائم تشغيل التشكيلة</string>
@@ -88,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">تم إخفاء قسم الأفلام</string>
   <string name="morphe_hide_movies_section_summary_off">يتم عرض قسم الأفلام</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">إخفاء زر \'تنبيهي\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">تم إخفاء زر تنبيهي</string>
   <string name="morphe_hide_notify_me_button_summary_off">يتم عرض زر تنبيهي</string>
@@ -161,6 +166,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary_on">تم إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary_off">يتم عرض ردود الفعل المؤقتة</string>
+  <string name="morphe_hide_video_title_title">إخفاء عنوان الفيديو</string>
+  <string name="morphe_hide_video_title_summary_on">تم إخفاء عنوان الفيديو في واجهة المشغل</string>
+  <string name="morphe_hide_video_title_summary_off">يتم عرض عنوان الفيديو في واجهة المشغل</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">إخفاء \'ملخص الفيديو الذي تم إنشاؤه بواسطة الذكاء الاصطناعي\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">تم إخفاء قسم ملخص الفيديو الذي تم إنشاؤه بواسطة AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">يتم عرض قسم ملخص الفيديو الذي تم إنشاؤه بواسطة AI</string>
@@ -369,8 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">تم إخفاء روابط التسوق في وصف الفيديو</string>
   <string name="morphe_hide_shopping_links_summary_off">يتم عرض روابط التسوق في وصف الفيديو</string>
   <string name="morphe_hide_view_products_banner_title">إخفاء لافتة \'عرض المنتجات\'</string>
-  <string name="morphe_hide_view_products_banner_summary_on">تم إخفاء لافتة عرض المنتجات في واجهة الفيديو</string>
-  <string name="morphe_hide_view_products_banner_summary_off">يتم عرض لافتة عرض المنتجات في واجهة الفيديو</string>
+  <string name="morphe_hide_view_products_banner_summary_on">تم إخفاء لافتة عرض المنتجات في واجهة المشغل</string>
+  <string name="morphe_hide_view_products_banner_summary_off">يتم عرض لافتة عرض المنتجات في واجهة المشغل</string>
   <string name="morphe_hide_youtube_premium_promotions_title">إخفاء ترقية YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"تم إخفاء ترويج YouTube Premium
 
@@ -602,9 +610,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">شريط التنقل في الوضع الداكن معتم او شفاف</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">إخفاء أو تغيير مكونات شريط الأدوات</string>
-  <string name="morphe_hide_toolbar_cast_button_title">إخفاء زر البث</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">تم إخفاء زر البث</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">يتم عرض زر البث</string>
   <string name="morphe_hide_toolbar_create_button_title">إخفاء زر الإنشاء</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">تم إخفاء زر الإنشاء</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">يتم عرض زر الإنشاء</string>

@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Uudelleenkäynnistys vaaditaan</string>
   <string name="morphe_settings_restart_dialog_message">Käynnistä sovellus uudelleen, jotta muutos tulee voimaan.</string>
   <string name="morphe_settings_restart">Käynnistä uudelleen</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Tuo</string>
   <string name="morphe_settings_import_copy">Kopioi</string>
   <string name="morphe_settings_import_reset">Morphe-asetukset nollattiin</string>
@@ -62,7 +63,7 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_language_DEFAULT">Sovelluksen kieli</string>
   <string name="morphe_pref_import_export_title">Tuonti/vienti</string>
   <string name="morphe_pref_import_export_summary">Tuo/vie Morphe-asetukset</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Käytät uusinta Morphe Patchesin versiota &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Käytät Morphe Patchesin versiota &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Päivitys saatavilla: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Päivittääksesi korjaukset, käytä Morphea korjataksesi tämä sovellus uudelleen</string>
   <string name="morphe_settings_about_links_dev_header">Huomautus</string>

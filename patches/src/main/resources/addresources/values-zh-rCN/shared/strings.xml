@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">需要重启</string>
   <string name="morphe_settings_restart_dialog_message">重启应用以使更改生效。</string>
   <string name="morphe_settings_restart">重启</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">导入</string>
   <string name="morphe_settings_import_copy">复制</string>
   <string name="morphe_settings_import_reset">Morphe 设置重置为默认</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">应用语言</string>
   <string name="morphe_pref_import_export_title">导入/导出</string>
   <string name="morphe_pref_import_export_summary">导入/导出 Morphe 设置</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">您正在使用最新的Morphe Patches版本 &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用Morphe Patches版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;可用更新版本: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;要更新您的补丁,请使用Morphe重新修补此应用程序</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>

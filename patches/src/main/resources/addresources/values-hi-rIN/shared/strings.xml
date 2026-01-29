@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">रीस्टार्ट आवश्यक है</string>
   <string name="morphe_settings_restart_dialog_message">इस बदलाव के प्रभावकारी होने के लिए ऐप को रीस्टार्ट करें।</string>
   <string name="morphe_settings_restart">रीस्टार्ट करें</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">आयात करें</string>
   <string name="morphe_settings_import_copy">कॉपी करें</string>
   <string name="morphe_settings_import_reset">मorphe सेटिंग्स डिफ़ॉल्ट पर वापस लाएं</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">एप्लिकेशन भाषा</string>
   <string name="morphe_pref_import_export_title">आयात / निर्यात</string>
   <string name="morphe_pref_import_export_summary">Morphe सेटिंग्स आयात करें / निर्यात करें</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">आप Morphe Patches की नवीनतम संस्करण &lt;i&gt;%s&lt;/i&gt; का उपयोग कर रहे हैं</string>
   <string name="morphe_settings_about_links_body_version_outdated">आप Morphe Patches संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध है: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;अपडेट करने के लिए, इस ऐप को पुनपटच करें</string>
   <string name="morphe_settings_about_links_dev_header">नोट</string>

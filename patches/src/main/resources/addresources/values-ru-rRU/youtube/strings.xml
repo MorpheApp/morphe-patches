@@ -81,6 +81,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">Скрыть последние публикации</string>
   <string name="morphe_hide_latest_posts_summary_on">Последние публикации в ленте скрыты</string>
   <string name="morphe_hide_latest_posts_summary_off">Последние публикации в ленте показаны</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Скрыть кнопку \"Последние видео\"</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Кнопка \"Последние видео\" скрыта</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Кнопка \"Последние видео\" показана</string>
   <string name="morphe_hide_mix_playlists_title">Скрыть плейлисты \"Джем\"</string>
   <string name="morphe_hide_mix_playlists_summary_on">Плейлисты \"Джем\" в ленте и плеере скрыты</string>
   <string name="morphe_hide_mix_playlists_summary_off">Плейлисты \"Джем\" в ленте и плеере показаны</string>
@@ -88,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">Раздел фильмов в поиске скрыт</string>
   <string name="morphe_hide_movies_section_summary_off">Раздел фильмов в поиске показан</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Скрыть кнопку \"Прислать уведомление\"</string>
   <string name="morphe_hide_notify_me_button_summary_on">Кнопка \"Прислать уведомление\" в ленте скрыта</string>
   <string name="morphe_hide_notify_me_button_summary_off">Кнопка \"Прислать уведомление\" в ленте показана</string>
@@ -161,6 +166,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">Скрыть временные реакции</string>
   <string name="morphe_hide_timed_reactions_summary_on">Временные реакции в комментариях и живом чате скрыты</string>
   <string name="morphe_hide_timed_reactions_summary_off">Временные реакции в комментариях и живом чате показаны</string>
+  <string name="morphe_hide_video_title_title">Скрыть название видео</string>
+  <string name="morphe_hide_video_title_summary_on">Надпись видео в панели воспроизведения скрыта</string>
+  <string name="morphe_hide_video_title_summary_off">Надпись видео в панели просмотра показана</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Скрыть секцию AI-резюме видео</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Сгенерированный ИИ раздел сводки видео скрыт</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Сгенерированный ИИ раздел сводки видео показан</string>
@@ -369,8 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">Ссылки на товары в описании видео скрыты</string>
   <string name="morphe_hide_shopping_links_summary_off">Ссылки на товары в описании видео показаны</string>
   <string name="morphe_hide_view_products_banner_title">Скрыть баннер просмотра товаров</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Баннер просмотра товаров в плеере скрыт</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Баннер просмотра товаров в плеере показан</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Баннер \"Просмотр товаров\" в панели воспроизведения скрыт</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Баннер \"Просмотр товаров\" в панели воспроизведения показан</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Скрыть рекламу YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Промоакции YouTube Premium скрыты
 
@@ -602,18 +610,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Панель навигации при темной теме непрозрачная или полупрозрачная</string>
   <string name="morphe_toolbar_screen_title">Панель инструментов</string>
   <string name="morphe_toolbar_screen_summary">Скрыть или изменить компоненты панели инструментов</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Скрыть кнопку \"Трансляция\"</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Кнопка \"Трансляция\" в плеере скрыта</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Кнопка \"Трансляция\" в плеере показана</string>
   <string name="morphe_hide_toolbar_create_button_title">Скрыть кнопку \"Создать\"</string>
-  <string name="morphe_hide_toolbar_create_button_summary_on">Кнопка \"Создать\" в панели навигации скрыта</string>
-  <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Создать\" в панели навигации показана</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Скрыть кнопку \"Уведомления\"</string>
-  <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопка \"Уведомления\" в панели навигации скрыта</string>
-  <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Уведомления\" в панели навигации показана</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Кнопка \"Создать\" скрыта</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Создать\" показана</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Скрыть кнопку \"Уведомлений\"</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопка \"Уведомлений\" скрыта</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Уведомлений\" показана</string>
   <string name="morphe_hide_toolbar_search_button_title">Скрыть кнопку \"Поиск\"</string>
-  <string name="morphe_hide_toolbar_search_button_summary_on">Кнопка поиска скрыта</string>
-  <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка поиска показана</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Кнопка \"Поиск\" скрыта</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка \"Поиск\" показана</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Выдвижное меню плеера</string>
   <string name="morphe_hide_player_flyout_summary">Скрыть или показать пункты выдвижного меню плеера</string>

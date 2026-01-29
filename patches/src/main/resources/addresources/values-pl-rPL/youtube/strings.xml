@@ -81,6 +81,11 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_latest_posts_title">Najnowsze posty</string>
   <string name="morphe_hide_latest_posts_summary_on">Ukryte</string>
   <string name="morphe_hide_latest_posts_summary_off">Widoczne</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Ukryj przycisk \'Ostatnie wideo\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Przycisk \'Ostatnie wideo\' ukryty</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Przycisk \'Ostatnie wideo\' wyświetlony</string>
   <string name="morphe_hide_mix_playlists_title">Playlisty mix</string>
   <string name="morphe_hide_mix_playlists_summary_on">Ukryte</string>
   <string name="morphe_hide_mix_playlists_summary_off">Widoczne</string>
@@ -88,7 +93,7 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_movies_section_summary_on">Ukryta</string>
   <string name="morphe_hide_movies_section_summary_off">Widoczna</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Przycisk \'Powiadom mnie\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">Ukryty</string>
   <string name="morphe_hide_notify_me_button_summary_off">Widoczny</string>
@@ -161,6 +166,9 @@ Jeśli Doodle jest obecnie wyświetlany w Twoim regionie, a to ustawienie jest w
   <string name="morphe_hide_timed_reactions_title">Reakcje czasowe</string>
   <string name="morphe_hide_timed_reactions_summary_on">Ukryte</string>
   <string name="morphe_hide_timed_reactions_summary_off">Widoczne</string>
+  <string name="morphe_hide_video_title_title">Tytuł filmu</string>
+  <string name="morphe_hide_video_title_summary_on">Ukryty w odtwarzaczu</string>
+  <string name="morphe_hide_video_title_summary_off">Widoczny w odtwarzaczu</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Podsumowanie filmów wygenerowane przez AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Ukryte</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Widoczne</string>
@@ -369,8 +377,8 @@ Ograniczenia:
   <string name="morphe_hide_shopping_links_summary_on">Ukryte w opisie filmów</string>
   <string name="morphe_hide_shopping_links_summary_off">Widoczne w opisie filmów</string>
   <string name="morphe_hide_view_products_banner_title">Banery produktów</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Ukryte na końcu filmów</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Widoczne na końcu filmów</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Ukryte w odtwarzaczu</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Widoczne w odtwarzaczu</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Promocje YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Ukryte
 
@@ -600,18 +608,15 @@ Dostosuj głośność, przesuwając pionowo po prawej stronie ekranu"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Półprzezroczysty pasek w trybie ciemnym</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Nie</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tak</string>
-  <string name="morphe_toolbar_screen_title">Pasek narzÄ™dzi</string>
-  <string name="morphe_toolbar_screen_summary">Ukryj lub zmień elementy paseku narzÄ™dzi</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Przycisk od castowania</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Ukryty</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_create_button_title">Ukryj przycisk Tworzenia</string>
+  <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
+  <string name="morphe_toolbar_screen_summary">Ukryj lub pokazuj komponenty paska narzędzi</string>
+  <string name="morphe_hide_toolbar_create_button_title">Przycisk od przesyłania</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Ukryj przycisk Powiadomień</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Przycisk do powiadomień</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_search_button_title">Ukryj przycisk Wyszukiwania</string>
+  <string name="morphe_hide_toolbar_search_button_title">Przycisk od wyszukiwania</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Widoczny</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -932,8 +937,8 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."
   <string name="morphe_wide_searchbar_summary_off">Wyłączony</string>
   <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
   <string name="morphe_restore_old_search_filters_title">Przywróć stare filtry wyszukiwania</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Tak</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Nie</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Jest dostępne sortowanie według oceny i daty dodania w filtrach wyszukiwania</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Nie jest dostępne sortowanie według oceny i daty dodania w filtrach wyszukiwania</string>
   <string name="morphe_old_search_filters_sort_by_rating">Ocena</string>
   <string name="morphe_old_search_filters_sort_by_upload_date">Data przesłania</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->

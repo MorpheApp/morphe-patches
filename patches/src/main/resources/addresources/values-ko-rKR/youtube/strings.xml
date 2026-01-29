@@ -84,6 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">최신 게시물 숨기기</string>
   <string name="morphe_hide_latest_posts_summary_on">최신 게시물이 숨겨집니다</string>
   <string name="morphe_hide_latest_posts_summary_off">최신 게시물이 표시됩니다</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">최신 동영상 버튼 숨기기</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">최신 동영상 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">최신 동영상 버튼을 표시합니다</string>
   <string name="morphe_hide_mix_playlists_title">믹스 재생목록 숨기기</string>
   <string name="morphe_hide_mix_playlists_summary_on">믹스 재생목록이 숨겨집니다</string>
   <string name="morphe_hide_mix_playlists_summary_off">믹스 재생목록이 표시됩니다</string>
@@ -91,7 +96,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">영화 선반이 숨겨집니다</string>
   <string name="morphe_hide_movies_section_summary_off">영화 선반이 표시됩니다</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'알림 받기\' 버튼 숨기기</string>
   <string name="morphe_hide_notify_me_button_summary_on">예정 동영상 하단에서 \'알림 받기\' 버튼이 숨겨집니다</string>
   <string name="morphe_hide_notify_me_button_summary_off">예정 동영상 하단에서 \'알림 받기\' 버튼이 표시됩니다</string>
@@ -164,6 +169,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
   <string name="morphe_hide_timed_reactions_summary_on">실시간 이모티콘 리액션이 숨겨집니다</string>
   <string name="morphe_hide_timed_reactions_summary_off">실시간 이모티콘 리액션이 표시됩니다</string>
+  <string name="morphe_hide_video_title_title">동영상 제목 숨기기</string>
+  <string name="morphe_hide_video_title_summary_on">전체 화면에서 동영상 제목이 숨겨집니다</string>
+  <string name="morphe_hide_video_title_summary_off">전체 화면에서 동영상 제목이 표시됩니다</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">AI 생성 동영상 요약 숨기기</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI 생성 동영상 요약 섹션이 숨겨집니다</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI 생성 동영상 요약 섹션이 표시됩니다</string>
@@ -347,8 +355,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">키워드가 모든 동영상을 숨길 것입니다: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
   <string name="morphe_hide_creator_store_shelf_title">판매자 스토어 선반 숨기기</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">판매자(크리에이터명) 스토어 선반이 숨겨집니다</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">판매자(크리에이터명) 스토어 선반이 표시됩니다</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">판매자(크리에이터) 스토어 선반이 숨겨집니다</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">판매자(크리에이터) 스토어 선반이 표시됩니다</string>
   <string name="morphe_hide_end_screen_store_banner_title">최종 화면 스토어 배너 숨기기</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">최종 화면에서 스토어 배너가 숨겨집니다</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">최종 화면에서 스토어 배너가 표시됩니다</string>
@@ -371,8 +379,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">동영상 설명에서 쇼핑 링크가 숨겨집니다</string>
   <string name="morphe_hide_shopping_links_summary_off">동영상 설명에서 쇼핑 링크가 표시됩니다</string>
   <string name="morphe_hide_view_products_banner_title">\'제품 보기\' 배너 숨기기</string>
-  <string name="morphe_hide_view_products_banner_summary_on">플레이어에서 제품 보기 배너가 숨겨집니다</string>
-  <string name="morphe_hide_view_products_banner_summary_off">플레이어에서 제품 보기 배너가 표시됩니다</string>
+  <string name="morphe_hide_view_products_banner_summary_on">플레이어 오버레이에서 \'제품 보기\' 배너가 숨겨집니다</string>
+  <string name="morphe_hide_view_products_banner_summary_off">플레이어 오버레이에서 \'제품 보기\' 배너가 표시됩니다</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium 프로모션 숨기기</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium 프로모션이 숨겨집니다
 
@@ -600,11 +608,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">어두운 테마에서 하단바가 불투명합니다</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">어두운 테마에서 하단바가 불투명하거나 반투명합니다</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
-  <string name="morphe_toolbar_screen_summary">툴바 구성요소를 숨기거나 변경하세요</string>
-  <string name="morphe_hide_toolbar_cast_button_title">크롬캐스트 버튼 숨기기</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">크롬캐스트 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">크롬캐스트 버튼이 표시됩니다</string>
-  <string name="morphe_hide_toolbar_create_button_title">생성 버튼 숨기기</string>
+  <string name="morphe_toolbar_screen_summary">툴바 구성요소를 숨기거나 변경할 수 있습니다</string>
+  <string name="morphe_hide_toolbar_create_button_title">만들기 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">만들기 버튼이 숨겨집니다</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">만들기 버튼이 표시됩니다</string>
   <string name="morphe_hide_toolbar_notification_button_title">알림 버튼 숨기기</string>
@@ -932,7 +937,7 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_summary_off">넓은 검색창을 비활성화합니다</string>
   <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
   <string name="morphe_restore_old_search_filters_title">이전 검색 필터 복원하기</string>
-  <string name="morphe_restore_old_search_filters_summary_on">검색 필터에서 평점순 정렬 및 업로드 날짜순 정렬 기능을 사용할 수 있습니다\n\n• 우선순위 목록에 평점 및 업로드 날짜가 추가됩니다</string>
+  <string name="morphe_restore_old_search_filters_summary_on">검색 필터에서 평점순 정렬 및 업로드 날짜순 정렬 기능을 사용할 수 있습니다</string>
   <string name="morphe_restore_old_search_filters_summary_off">검색 필터에서 평점순 정렬 및 업로드 날짜순 정렬 기능을 사용할 수 없습니다</string>
   <string name="morphe_old_search_filters_sort_by_rating">평점</string>
   <string name="morphe_old_search_filters_sort_by_upload_date">업로드 날짜</string>
