@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Neustart erforderlich</string>
   <string name="morphe_settings_restart_dialog_message">Starte die App neu, damit diese Änderung wirksam wird.</string>
   <string name="morphe_settings_restart">Neustart</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importieren</string>
   <string name="morphe_settings_import_copy">Kopieren</string>
   <string name="morphe_settings_import_reset">Morphe-Einstellungen auf Standardwerte zurückgesetzt</string>
@@ -62,7 +63,7 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_language_DEFAULT">App-Sprache</string>
   <string name="morphe_pref_import_export_title">Import/Export</string>
   <string name="morphe_pref_import_export_summary">Morphe-Einstellungen importieren/exportieren</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Sie verwenden die neueste Morphe-Patches-Version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Sie verwenden die Morphe-Patches-Version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Update verfügbar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Um Ihre Patches zu aktualisieren, verwenden Sie Morphe, um diese App erneut zu patchen.</string>
   <string name="morphe_settings_about_links_dev_header">Hinweis</string>

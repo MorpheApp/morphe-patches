@@ -7,7 +7,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.youtube.layout.buttons.navigation.navigationButtonsPatch
+import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -25,7 +25,7 @@ val changeFormFactorPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        navigationButtonsPatch
+//        navigationBarPatch
     )
 
     compatibleWith(

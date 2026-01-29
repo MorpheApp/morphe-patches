@@ -25,6 +25,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
@@ -124,7 +125,7 @@ public final class MiniplayerPatch {
      * Resource is not present in older targets, and this field will be zero.
      */
     private static final int MODERN_OVERLAY_SUBTITLE_TEXT
-            = Utils.getResourceIdentifier(ResourceType.ID, "modern_miniplayer_subtitle_text");
+            = ResourceUtils.getIdentifier(ResourceType.ID, "modern_miniplayer_subtitle_text");
 
     private static final MiniplayerType CURRENT_TYPE = Settings.MINIPLAYER_TYPE.get();
 

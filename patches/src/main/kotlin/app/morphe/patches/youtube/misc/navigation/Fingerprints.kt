@@ -8,7 +8,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
-import app.morphe.patches.youtube.layout.buttons.navigation.navigationButtonsPatch
+import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -54,7 +54,7 @@ internal object InitializeButtonsFingerprint : Fingerprint(
 
 /**
  * Extension method, used for callback into to other patches.
- * Specifically, [navigationButtonsPatch].
+ * Specifically, [navigationBarPatch].
  */
 internal object NavigationBarHookCallbackFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),

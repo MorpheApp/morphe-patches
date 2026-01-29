@@ -16,6 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -79,6 +80,8 @@ val spoofAppVersionPatch = bytecodePatch(
          * toolbar when the enum name is UNKNOWN.
          */
         ToolBarButtonFingerprint.apply {
+            clearMatch() // Fingerprint is shared and indexes may no longer be correct.
+
             val imageResourceIndex = instructionMatches[2].index
             val register = method.getInstruction<OneRegisterInstruction>(imageResourceIndex).registerA
             val jumpIndex = instructionMatches.last().index + 1

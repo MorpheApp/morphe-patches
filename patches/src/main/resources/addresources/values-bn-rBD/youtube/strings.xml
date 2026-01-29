@@ -81,6 +81,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">সর্বশেষ পোস্ট লুকান</string>
   <string name="morphe_hide_latest_posts_summary_on">সর্বশেষ পোস্ট লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_latest_posts_summary_off">সর্বশেষ পোস্ট প্রদর্শিত হয়েছে</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">লুকান \'সর্বশেষ ভিডিও\' বোতাম</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">সর্বশেষ ভিডিও বোতাম লুকানো আছে</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">সর্বশেষ ভিডিও বোতাম দেখানো হচ্ছে</string>
   <string name="morphe_hide_mix_playlists_title">মিক্স প্লেলিস্ট লুকান</string>
   <string name="morphe_hide_mix_playlists_summary_on">মিক্স প্লেলিস্ট লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_mix_playlists_summary_off">মিক্স প্লেলিস্ট প্রদর্শিত হয়েছে</string>
@@ -88,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">চলচ্চিত্র বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_movies_section_summary_off">চলচ্চিত্র বিভাগ প্রদর্শিত হয়েছে</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'আমাকে জানান\' বোতাম লুকান</string>
   <string name="morphe_hide_notify_me_button_summary_on">আমাকে জানান বোতামটি লুকানো আছে</string>
   <string name="morphe_hide_notify_me_button_summary_off">আমাকে জানান বোতামটি দেখানো হয়েছে</string>
@@ -161,6 +166,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">সময় অনুযায়ী প্রতিক্রিয়া লুকান</string>
   <string name="morphe_hide_timed_reactions_summary_on">সময় অনুযায়ী প্রতিক্রিয়া লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_timed_reactions_summary_off">সময় অনুযায়ী প্রতিক্রিয়া প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_video_title_title">ভিডিওর শিরোনাম লুকান</string>
+  <string name="morphe_hide_video_title_summary_on">ভিডিও খেলার ওভারলে ভিডিও শিরোনাম লুকানো</string>
+  <string name="morphe_hide_video_title_summary_off">ভিডিও খেলার ওভারলে ভিডিও শিরোনাম প্রদর্শিত</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'AI-জেনারেটেড ভিডিও সারসংক্ষেপ\' লুকান</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">এআই-জেনারেটেড ভিডিও সারাংশ বিভাগ লুকানো আছে</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">এআই-জেনারেটেড ভিডিও সারাংশ বিভাগ দেখানো হয়েছে</string>
@@ -554,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">সংরক্ষণ লুকান</string>
   <string name="morphe_hide_save_button_summary_on">সংরক্ষণ বোতাম লুকানো আছে</string>
   <string name="morphe_hide_save_button_summary_off">সংরক্ষণ বোতাম দেখানো হচ্ছে</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">নেভিগেশন বোতাম</string>
   <string name="morphe_navigation_buttons_screen_summary">নেভিগেশন বারে বোতাম লুকান বা পরিবর্তন করুন</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +608,17 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">গাঢ় স্বচ্ছ বার অক্ষম করুন</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">গাঢ় মোড নেভিগেশন বার অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">গাঢ় মোড ন্যাভিগেশন বারটি অস্বচ্ছ বা স্বচ্ছ</string>
+  <string name="morphe_toolbar_screen_title">টুলবার</string>
+  <string name="morphe_toolbar_screen_summary">টুলবার উপাদান লুকান বা পরিবর্তন করুন</string>
+  <string name="morphe_hide_toolbar_create_button_title">লুকান সৃষ্টি বোতাম</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">তৈরি বোতাম লুকানো আছে</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">ক্রিয়েট বাটন প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_toolbar_notification_button_title">লুকান বিজ্ঞপ্তি বাটন</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">বিজ্ঞপ্তি বোতাম লুকানো আছে</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">বিজ্ঞপ্তি বোতাম দেখানো হয়েছে</string>
+  <string name="morphe_hide_toolbar_search_button_title">লুকান অনুসন্ধান বাটন</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">অনুসন্ধান বাটন লুকানো আছে</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়েছে</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">ফ্লাইআউট মেনু</string>
   <string name="morphe_hide_player_flyout_summary">ফ্লাইআউট মেনুর আইটেম দেখান বা লুকান</string>
@@ -916,6 +935,12 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
   <string name="morphe_wide_searchbar_title">প্রশস্ত অনুসন্ধান বার সক্রিয় করুন</string>
   <string name="morphe_wide_searchbar_summary_on">প্রশস্ত অনুসন্ধান বার সক্রিয় হয়েছে</string>
   <string name="morphe_wide_searchbar_summary_off">প্রশস্ত অনুসন্ধান বার নিষ্ক্রিয় হয়েছে</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">পুরনো সার্চ ফিল্টার পুনরুদ্ধার করুন</string>
+  <string name="morphe_restore_old_search_filters_summary_on">সার্চ ফিল্টারে রেটিং অনুযায়ী এবং আপলোড তারিখ অনুযায়ী সর্ট করা পাওয়া যাবে</string>
+  <string name="morphe_restore_old_search_filters_summary_off">সার্চ ফিল্টারে রেটিং অনুযায়ী এবং আপলোড তারিখ অনুযায়ী সর্ট করা পাওয়া যাবে না</string>
+  <string name="morphe_old_search_filters_sort_by_rating">রেটিং</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">আপলোডের তারিখ</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock সক্রিয় করুন</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock হল YouTube ভিডিওর বিরক্তিকর অংশগুলি স্কিপ করার জন্য একটি ক্রাউডসোর্সড সিস্টেম</string>

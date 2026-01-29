@@ -143,3 +143,23 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
         fieldAccess(type = "I", opcode = Opcode.IGET, location = MatchAfterImmediately()), // Video resolution (human readable).
     )
 )
+
+internal object ToolBarButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "menu_item_view"),
+        methodCall(returnType = "I", opcode = Opcode.INVOKE_INTERFACE),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        fieldAccess(type = "Landroid/widget/ImageView;", opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
+        methodCall("Landroid/content/res/Resources;", "getDrawable", location = MatchAfterWithin(8)),
+        methodCall("Landroid/widget/ImageView;", "setImageDrawable", location = MatchAfterWithin(4))
+    ),
+    custom = { method, _ ->
+        // 20.37+ has second parameter of "Landroid/content/Context;"
+        val parameterCount = method.parameterTypes.count()
+        (parameterCount == 1 || parameterCount == 2)
+                && method.parameterTypes.firstOrNull() == "Landroid/view/MenuItem;"
+    }
+)
+

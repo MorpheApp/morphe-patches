@@ -10,9 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StringRef {
-    private static Resources resources;
-    private static String packageName;
-
     // must use a thread safe map, as this class is used both on and off the main thread
     private static final Map<String, StringRef> strings = Collections.synchronizedMap(new HashMap<>());
 
@@ -89,7 +86,6 @@ public class StringRef {
     @NonNull
     public static final StringRef empty = constant("");
 
-    @NonNull
     private String value;
     private boolean resolved;
 
@@ -99,23 +95,11 @@ public class StringRef {
 
     @Override
     @NonNull
-    public String toString() {
+    public synchronized String toString() {
         if (!resolved) {
-            if (resources == null || packageName == null) {
-                Context context = Utils.getContext();
-                resources = context.getResources();
-                packageName = context.getPackageName();
-            }
+            String resolvedValue = ResourceUtils.getString(value);
+            value = resolvedValue == null ? "Unknown string" : resolvedValue;
             resolved = true;
-            if (resources != null) {
-                final int identifier = resources.getIdentifier(value, "string", packageName);
-                if (identifier == 0)
-                    Logger.printException(() -> "Resource not found: " + value);
-                else
-                    value = resources.getString(identifier);
-            } else {
-                Logger.printException(() -> "Could not resolve resources!");
-            }
         }
         return value;
     }

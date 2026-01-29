@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Потрібен перезапуск</string>
   <string name="morphe_settings_restart_dialog_message">Перезапустіть застосунок, щоб зміни набули чинності.</string>
   <string name="morphe_settings_restart">Перезавантажити</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Імпорт</string>
   <string name="morphe_settings_import_copy">Копіювати</string>
   <string name="morphe_settings_import_reset">Налаштування Morphe скинуто до стандартних</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Мова застосунку</string>
   <string name="morphe_pref_import_export_title">Імпорт / Експорт налаштувань</string>
   <string name="morphe_pref_import_export_summary">Імпорт / Експорт налаштувань Morphe\n\nДля збереження налаштувань скопіюйте текст у вікні кнопкою \"Копіювати\" та збережіть його в текстовому файлі.\nДля відновлення налаштувань вставте у вікно збережений раніше текст та натисніть кнопку \"Імпортувати\"</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Ви використовуєте останню версію Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчінгу цього додатка</string>
   <string name="morphe_settings_about_links_dev_header">Примітка</string>

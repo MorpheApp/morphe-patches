@@ -31,6 +31,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -863,9 +864,9 @@ public class SegmentPlaybackController {
         mainLayout.addView(textView);
         mainLayout.setAlpha(0.8f); // Opacity for the entire dialog.
 
-        final int fadeDurationFast = Utils.getResourceInteger("fade_duration_fast");
-        Animation fadeIn = Utils.getResourceAnimation("fade_in");
-        Animation fadeOut = Utils.getResourceAnimation("fade_out");
+        final int fadeDurationFast = ResourceUtils.getInteger("fade_duration_fast");
+        Animation fadeIn = ResourceUtils.getAnimation("fade_in");
+        Animation fadeOut = ResourceUtils.getAnimation("fade_out");
         fadeIn.setDuration(fadeDurationFast);
         fadeOut.setDuration(fadeDurationFast);
         fadeOut.setAnimationListener(new Animation.AnimationListener() {

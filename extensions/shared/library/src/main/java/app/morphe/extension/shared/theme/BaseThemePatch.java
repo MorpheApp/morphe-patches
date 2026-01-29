@@ -2,13 +2,14 @@ package app.morphe.extension.shared.theme;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public abstract class BaseThemePatch {
     // Background colors.
-    protected static final int BLACK_COLOR = Utils.getResourceColor("yt_black1");
-    protected static final int WHITE_COLOR = Utils.getResourceColor("yt_white1");
+    protected static final int BLACK_COLOR = ResourceUtils.getColor("yt_black1");
+    protected static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
 
     /**
      * Check if a value matches any of the provided values.

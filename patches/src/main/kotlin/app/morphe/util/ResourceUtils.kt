@@ -107,6 +107,11 @@ fun ResourcePatchContext.copyResources(
 
     for (resourceGroup in resources) {
         resourceGroup.resources.forEach { resource ->
+            // Create the target directory if it doesn't exist.
+            Files.createDirectories(
+                targetResourceDirectory.resolve(resourceGroup.resourceDirectoryName).toPath()
+            )
+
             val resourceFile = "${resourceGroup.resourceDirectoryName}/$resource"
             val stream = inputStreamFromBundledResource(sourceResourceDirectory, resourceFile)
             if (stream == null) {
@@ -188,6 +193,12 @@ internal fun Node.addResource(
 }
 
 internal fun Document.getNode(tagName: String) = getElementsByTagName(tagName).item(0)
+
+internal fun Node.adoptChild(tagName: String, block: Element.() -> Unit) {
+    val child = ownerDocument.createElement(tagName)
+    child.block()
+    appendChild(child)
+}
 
 internal fun NodeList.findElementByAttributeValue(attributeName: String, value: String): Element? {
     for (i in 0 until length) {

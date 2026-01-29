@@ -81,6 +81,11 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_latest_posts_title">Piilota uusimmat postaukset</string>
   <string name="morphe_hide_latest_posts_summary_on">Uusimmat postaukset piilotetaan</string>
   <string name="morphe_hide_latest_posts_summary_off">Uusimmat postaukset näytetään</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Piilota \"Uusimmat videot\" -nappi</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Uusimmat videot -nappi on piilotettu</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Uusimmat videot -nappi näytetään</string>
   <string name="morphe_hide_mix_playlists_title">Piilota mix-soittolistat</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix-soittolistat piilotetaan</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix-soittolistat näytetään</string>
@@ -88,7 +93,7 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_movies_section_summary_on">Elokuvat-osio piilotetaan</string>
   <string name="morphe_hide_movies_section_summary_off">Elokuvat-osio näytetään</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Piilota \"Ilmoita minulle\" -painike</string>
   <string name="morphe_hide_notify_me_button_summary_on">Ilmoita minulle -painike piilotetaan</string>
   <string name="morphe_hide_notify_me_button_summary_off">Ilmoita minulle -painike näytetään</string>
@@ -161,6 +166,9 @@ Jos Doodle näkyy tällä hetkellä alueellasi ja tämä piilotusasetus on käyt
   <string name="morphe_hide_timed_reactions_title">Piilota ajoitetut reaktiot</string>
   <string name="morphe_hide_timed_reactions_summary_on">Ajoitetut reaktiot piilotetaan</string>
   <string name="morphe_hide_timed_reactions_summary_off">Ajoitetut reaktiot näytetään</string>
+  <string name="morphe_hide_video_title_title">Piilota videon otsikko</string>
+  <string name="morphe_hide_video_title_summary_on">Videotitlen piilotus pelin ylälaajennuksessa on piilotettu</string>
+  <string name="morphe_hide_video_title_summary_off">Videotitlen näkyvyys pelin ylälaajennuksessa on näytetty</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Piilota \"tekoälyn luoma videoyhteenveto\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Tekoälyn luoma videon yhteenveto-osio piilotetaan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Tekoälyn luoma videon yhteenveto-osio näytetään</string>
@@ -554,7 +562,7 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_hide_save_button_title">Piilota Tallenna</string>
   <string name="morphe_hide_save_button_summary_on">Tallenna-painike piilotetaan</string>
   <string name="morphe_hide_save_button_summary_off">Tallenna-painike näytetään</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigointipainikkeet</string>
   <string name="morphe_navigation_buttons_screen_summary">Piilota tai muuta navigointipalkin painikkeita</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -600,6 +608,17 @@ Säädä äänenvoimakkuutta pyyhkäisemällä pystysuoraan näytön oikealta pu
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Poista tumma läpikuultava palkki käytöstä</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Tumman tilan navigointipalkki on läpinäkymätön</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tumman tilan navigointipalkki on läpinäkymätön tai läpikuultava</string>
+  <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
+  <string name="morphe_toolbar_screen_summary">Piilota tai muuta työkalupalkin osia</string>
+  <string name="morphe_hide_toolbar_create_button_title">Piilota Luo-painike</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Luo-painike piilotetaan</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Luo-painike näytetään</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Piilota Ilmoitukset-painike</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Ilmoitukset-painike piilotetaan</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Ilmoitukset-painike näytetään</string>
+  <string name="morphe_hide_toolbar_search_button_title">Piilota Haku-painike</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Hakupainike piilotetaan</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Hakupainike näytetään</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-valikko</string>
   <string name="morphe_hide_player_flyout_summary">Piilota tai näytä soittimen flyout-valikon kohteita</string>
@@ -916,6 +935,12 @@ Rajoitus: Ei-tykkäykset eivät välttämättä näy incognito-tilassa"</string>
   <string name="morphe_wide_searchbar_title">Ota leveä hakupalkki käyttöön</string>
   <string name="morphe_wide_searchbar_summary_on">Leveä hakupalkki on käytössä</string>
   <string name="morphe_wide_searchbar_summary_off">Leveä hakupalkki ei ole käytössä</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Palauta vanhat hakukriteerit</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Arvostelun ja lähetysajan mukaan lajittelu on käytettävissä hakukriteereissä</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Arvostelun ja lähetysajan mukaan lajittelu ei ole käytettävissä hakukriteereissä</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Arvostelu</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Lähetyspäivä</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ota SponsorBlock käyttöön</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock on joukkoistettu järjestelmä, jolla voidaan ohittaa YouTube-videoiden ärsyttäviä osia</string>

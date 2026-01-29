@@ -81,6 +81,11 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_latest_posts_title">Neueste Beiträge ausblenden</string>
   <string name="morphe_hide_latest_posts_summary_on">Neueste Beiträge werden ausgeblendet</string>
   <string name="morphe_hide_latest_posts_summary_off">Neueste Beiträge werden angezeigt</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Verbergen der Schaltfläche \'Letzte Videos\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Schaltfläche \'Letzte Videos\' ist versteckt</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Schaltfläche \'Letzte Videos\' ist angezeigt</string>
   <string name="morphe_hide_mix_playlists_title">Mix-Wiedergabelisten ausblenden</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix-Wiedergabelisten werden ausgeblendet</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix-Wiedergabelisten werden angezeigt</string>
@@ -88,7 +93,7 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_movies_section_summary_on">Film-Bereich wird ausgeblendet</string>
   <string name="morphe_hide_movies_section_summary_off">Film-Bereich wird angezeigt</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Schaltfläche \'Benachrichtige mich\' ausblenden</string>
   <string name="morphe_hide_notify_me_button_summary_on">\'Benachrichtige mich\' wird ausgeblendet</string>
   <string name="morphe_hide_notify_me_button_summary_off">\'Benachrichtige mich\' wird angezeigt</string>
@@ -160,6 +165,9 @@ Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum
   <string name="morphe_hide_timed_reactions_title">Zeitliche Reaktionen ausblenden</string>
   <string name="morphe_hide_timed_reactions_summary_on">Zeitgesteuerte Reaktionen sind ausgeblendet</string>
   <string name="morphe_hide_timed_reactions_summary_off">Zeitgesteuerte Reaktionen werden angezeigt</string>
+  <string name="morphe_hide_video_title_title">Videotitel ausblenden</string>
+  <string name="morphe_hide_video_title_summary_on">Video-Titel im Player-Overlay ist ausgeblendet</string>
+  <string name="morphe_hide_video_title_summary_off">Video-Titel im Player-Overlay wird angezeigt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'KI-generierte Videozusammenfassung\' ausblenden</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">KI-generierter Videozusammenfassungsbereich ist ausgeblendet</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Abschnitt mit KI-generierter Videozusammenfassung wird angezeigt</string>
@@ -551,7 +559,7 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_hide_save_button_title">Speichern ausblenden</string>
   <string name="morphe_hide_save_button_summary_on">Schaltfläche \"Speichern\" ist ausgeblendet</string>
   <string name="morphe_hide_save_button_summary_off">Schaltfläche \"Speichern\" ist sichtbar</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigationstasten</string>
   <string name="morphe_navigation_buttons_screen_summary">Verstecke oder ändere Schaltflächen in der Navigationsleiste</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -597,6 +605,17 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiviere die dunkle, durchscheinende Leiste</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Dunkler Navigationsbalken ist opak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Die Navigationsleiste im dunklen Modus ist undurchsichtig oder durchscheinend</string>
+  <string name="morphe_toolbar_screen_title">Leiste</string>
+  <string name="morphe_toolbar_screen_summary">Leistenkomponenten ausblenden oder ändern</string>
+  <string name="morphe_hide_toolbar_create_button_title">Erstellen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Erstellen-Button ist ausgeblendet</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">Erstelle Schaltfläche wird angezeigt</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Benachrichtigungen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Benachrichtigungs-Button ist ausgeblendet</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Benachrichtigungs-Button wird angezeigt</string>
+  <string name="morphe_hide_toolbar_search_button_title">Suchen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Suchschaltfläche wird ausgeblendet</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Suchschaltfläche wird angezeigt</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Einblendmenü</string>
   <string name="morphe_hide_player_flyout_summary">Verstecke oder zeige Player-Flyout-Menüeinträge</string>
@@ -913,6 +932,12 @@ Einschränkung: Dislikes werden möglicherweise nicht im Inkognito-Modus angezei
   <string name="morphe_wide_searchbar_title">breite Suchleiste aktivieren</string>
   <string name="morphe_wide_searchbar_summary_on">Breite Suchleiste ist aktiviert</string>
   <string name="morphe_wide_searchbar_summary_off">Breite Suchleiste ist deaktiviert</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Alte Suchfilter wiederherstellen</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Sortieren nach Bewertung und hochgeladenem Datum ist in Suchfilter verfügbar</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Sortieren nach Bewertung und hochgeladenem Datum ist in Suchfilter nicht verfügbar</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Bewertung</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Hochladedatum</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock aktivieren</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock ist ein Crowdsourcing-System zum Überspringen von nervigen Segmenten von YouTube-Videos</string>

@@ -32,6 +32,8 @@
 
 package app.morphe.util
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -51,6 +53,7 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.Opcode.CONST_STRING
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_OBJECT
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_WIDE
@@ -73,6 +76,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 import com.android.tools.smali.dexlib2.util.MethodUtil
+import kotlin.text.matches
 
 /**
  * Find the instruction index used for a toString() StringBuilder write of a given String name.
@@ -162,7 +166,7 @@ internal fun Int.toPublicAccessFlags(): Int {
  * @param method The [Method] to find.
  * @return The [MutableMethod].
  */
-fun MutableClass.findMutableMethodOf(method: Method) = this.methods.first {
+fun MutableClass.findMutableMethodOf(method: MethodReference) = this.methods.first {
     MethodUtil.methodSignaturesMatch(it, method)
 }
 
@@ -507,6 +511,21 @@ fun Method.indexOfFirstInstructionOrThrow(startIndex: Int = 0, filter: Instructi
     return index
 }
 
+fun Method.indexOfFirstStringInstruction(str: String) =
+    indexOfFirstInstruction {
+        opcode == CONST_STRING &&
+                getReference<StringReference>()?.string == str
+    }
+
+fun Method.indexOfFirstStringInstructionOrThrow(str: String): Int {
+    val index = indexOfFirstStringInstruction(str)
+    if (index < 0) {
+        throw PatchException("Found string value for: '$str' but method does not contain the id: $this")
+    }
+
+    return index
+}
+
 /**
  * Get the index of matching instruction,
  * starting from and [startIndex] and searching down.
@@ -589,7 +608,7 @@ fun Method.indexOfFirstInstructionReversedOrThrow(startIndex: Int? = null, filte
 }
 
 /**
- * @return An immutable list of indices of the instructions in reverse order.
+ * @return A list of indices of the instructions in reverse order.
  *  _Returns an empty list if no indices are found_
  *  @see findInstructionIndicesReversedOrThrow
  */
@@ -600,7 +619,7 @@ fun Method.findInstructionIndicesReversed(filter: Instruction.() -> Boolean): Li
     .asReversed()
 
 /**
- * @return An immutable list of indices of the instructions in reverse order.
+ * @return A list of indices of the instructions in reverse order.
  * @throws PatchException if no matching indices are found.
  */
 fun Method.findInstructionIndicesReversedOrThrow(filter: Instruction.() -> Boolean): List<Int> {
@@ -611,7 +630,7 @@ fun Method.findInstructionIndicesReversedOrThrow(filter: Instruction.() -> Boole
 }
 
 /**
- * @return An immutable list of indices of the opcode in reverse order.
+ * @return A list of indices of the opcode in reverse order.
  *  _Returns an empty list if no indices are found_
  * @see findInstructionIndicesReversedOrThrow
  */
@@ -619,7 +638,7 @@ fun Method.findInstructionIndicesReversed(opcode: Opcode): List<Int> =
     findInstructionIndicesReversed { this.opcode == opcode }
 
 /**
- * @return An immutable list of indices of the opcode in reverse order.
+ * @return A list of indices of the opcode in reverse order.
  * @throws PatchException if no matching indices are found.
  */
 fun Method.findInstructionIndicesReversedOrThrow(opcode: Opcode): List<Int> {
@@ -627,6 +646,29 @@ fun Method.findInstructionIndicesReversedOrThrow(opcode: Opcode): List<Int> {
     if (instructions.isEmpty()) throw PatchException("Could not find opcode: $opcode in: $this")
 
     return instructions
+}
+
+/**
+ * @return A list of indices of the instructions in reverse order.
+ * _Returns an empty list if no indices are found_
+ * @throws PatchException if no matching indices are found.
+ */
+fun Method.findInstructionIndicesReversed(filter: InstructionFilter): List<Int> {
+    val method = this
+    return findInstructionIndicesReversed {
+        filter.matches(method, this)
+    }
+}
+
+/**
+ * @return A list of indices of the instructions in reverse order.
+ * @throws PatchException if no matching indices are found.
+ */
+fun Method.findInstructionIndicesReversedOrThrow(filter: InstructionFilter): List<Int> {
+    val indexes = findInstructionIndicesReversed(filter)
+    if (indexes.isEmpty()) throw PatchException("No matching instructions found in: $this")
+
+    return indexes
 }
 
 /**
@@ -1110,6 +1152,30 @@ internal fun BytecodePatchContext.addStaticFieldToExtension(
             )
         }
     }
+}
+
+context(BytecodePatchContext)
+internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
+    val methodName = "isPatchIncluded"
+    val returnType = "Z"
+
+    val fingerprint = Fingerprint(
+        returnType = returnType,
+        parameters = listOf(),
+        custom = { method, classDef ->
+            AccessFlags.STATIC.isSet(method.accessFlags) && method.name == methodName
+        }
+    )
+
+    fingerprint.match(classDefBy(patchExtensionClassType))
+
+    if (fingerprint.methodOrNull == null) {
+        throw PatchException(
+            "Could not find required extension method: $patchExtensionClassType->$methodName()$returnType"
+        )
+    }
+
+    fingerprint.method.returnEarly(true)
 }
 
 /**

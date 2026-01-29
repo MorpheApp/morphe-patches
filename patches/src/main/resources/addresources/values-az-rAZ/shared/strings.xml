@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Yenidən başlatma tələb olunur</string>
   <string name="morphe_settings_restart_dialog_message">Bu dəyişikliyin təsir etməsi üçün tətbiqi yenidən başladın.</string>
   <string name="morphe_settings_restart">Yenidən başlat</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">İdxal et</string>
   <string name="morphe_settings_import_copy">Köçür</string>
   <string name="morphe_settings_import_reset">Morphe tənzimləmələr standarta təyin edildi</string>
@@ -62,7 +63,7 @@ Yeni dilləri tərcümə etmək və ya mövcud tərcümələri təkmilləşdirm�
   <string name="morphe_language_DEFAULT">Tətbiq dili</string>
   <string name="morphe_pref_import_export_title">İdxal/İxrac et</string>
   <string name="morphe_pref_import_export_summary">Morphe tənzimləmələrin idxal/ixrac et</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Siz ən son Morphe Patches versiyası &lt;i&gt;%s&lt;/i&gt; istifadə edirsiniz</string>
   <string name="morphe_settings_about_links_body_version_outdated">Siz Morphe Patches versiyası &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Yenilənmə mövcuddur: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Yamaqlarnızı yeniləmək üçün Morphe tətbiqinizə yenidən yamaq verin</string>
   <string name="morphe_settings_about_links_dev_header">Qeyd</string>

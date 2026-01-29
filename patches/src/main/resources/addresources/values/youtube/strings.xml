@@ -87,6 +87,11 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_latest_posts_title">Hide latest posts</string>
     <string name="morphe_hide_latest_posts_summary_on">Latest posts are hidden</string>
     <string name="morphe_hide_latest_posts_summary_off">Latest posts are shown</string>
+    <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+    <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
+    <string name="morphe_hide_latest_videos_button_summary_on">Latest videos button is hidden</string>
+    <string name="morphe_hide_latest_videos_button_summary_off">Latest videos button is shown</string>
     <string name="morphe_hide_mix_playlists_title">Hide mix playlists</string>
     <string name="morphe_hide_mix_playlists_summary_on">Mix playlists are hidden</string>
     <string name="morphe_hide_mix_playlists_summary_off">Mix playlists are shown</string>
@@ -94,7 +99,7 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_movies_section_summary_on">Movies section is hidden</string>
     <string name="morphe_hide_movies_section_summary_off">Movies section is shown</string>
     <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
     <string name="morphe_hide_notify_me_button_title">Hide \'Notify me\' button</string>
     <string name="morphe_hide_notify_me_button_summary_on">Notify me button is hidden</string>
     <string name="morphe_hide_notify_me_button_summary_off">Notify me button is shown</string>
@@ -167,6 +172,9 @@ If a Doodle is currently showing in your region and this hide setting is on, the
     <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_timed_reactions_summary_on">Timed reactions are hidden</string>
     <string name="morphe_hide_timed_reactions_summary_off">Timed reactions are shown</string>
+    <string name="morphe_hide_video_title_title">Hide video title</string>
+    <string name="morphe_hide_video_title_summary_on">Video title in player overlay is hidden</string>
+    <string name="morphe_hide_video_title_summary_off">Video title in player overlay is shown</string>
     <string name="morphe_hide_ai_generated_video_summary_section_title">Hide \'AI-generated video summary\'</string>
     <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-generated video summary section is hidden</string>
     <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI-generated video summary section is shown</string>
@@ -379,8 +387,8 @@ Limitations:
     <string name="morphe_hide_shopping_links_summary_on">Shopping links in video description are hidden</string>
     <string name="morphe_hide_shopping_links_summary_off">Shopping links in video description are shown</string>
     <string name="morphe_hide_view_products_banner_title">Hide view products banner</string>
-    <string name="morphe_hide_view_products_banner_summary_on">View products banner in video overlay is hidden</string>
-    <string name="morphe_hide_view_products_banner_summary_off">View products banner in video overlay is shown</string>
+    <string name="morphe_hide_view_products_banner_summary_on">View products banner in player overlay is hidden</string>
+    <string name="morphe_hide_view_products_banner_summary_off">View products banner in player overlay is shown</string>
     <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
     <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium promotions are hidden
 
@@ -577,7 +585,7 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_save_button_summary_on">Save button is hidden</string>
     <string name="morphe_hide_save_button_summary_off">Save button is shown</string>
 
-    <!-- layout.buttons.navigation.navigationButtonsPatch -->
+    <!-- layout.buttons.navigation.navigationBarPatch -->
     <string name="morphe_navigation_buttons_screen_title">Navigation buttons</string>
     <string name="morphe_navigation_buttons_screen_summary">Hide or change navigation bar buttons</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -623,6 +631,18 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_disable_translucent_navigation_bar_dark_title">Disable dark translucent bar</string>
     <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Dark mode navigation bar is opaque</string>
     <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Dark mode navigation bar is opaque or translucent</string>
+
+    <string name="morphe_toolbar_screen_title">Toolbar</string>
+    <string name="morphe_toolbar_screen_summary">Hide or change toolbar components</string>
+    <string name="morphe_hide_toolbar_create_button_title">Hide Create button</string>
+    <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
+    <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>
+    <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications button</string>
+    <string name="morphe_hide_toolbar_notification_button_summary_on">Notifications button is hidden</string>
+    <string name="morphe_hide_toolbar_notification_button_summary_off">Notifications button is shown</string>
+    <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
+    <string name="morphe_hide_toolbar_search_button_summary_on">Search button is hidden</string>
+    <string name="morphe_hide_toolbar_search_button_summary_off">Search button is shown</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -959,6 +979,13 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_wide_searchbar_title">Enable wide search bar</string>
     <string name="morphe_wide_searchbar_summary_on">Wide search bar is enabled</string>
     <string name="morphe_wide_searchbar_summary_off">Wide search bar is disabled</string>
+
+    <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+    <string name="morphe_restore_old_search_filters_title">Restore old search filters</string>
+    <string name="morphe_restore_old_search_filters_summary_on">Sort by rating and sort by upload date are available in the search filter</string>
+    <string name="morphe_restore_old_search_filters_summary_off">Sort by rating and sort by upload date are not available in the search filter</string>
+    <string name="morphe_old_search_filters_sort_by_rating">Rating</string>
+    <string name="morphe_old_search_filters_sort_by_upload_date">Upload date</string>
 
     <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
     <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>

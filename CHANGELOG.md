@@ -1,3 +1,64 @@
+# [1.9.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.7...v1.9.0-dev.8) (2026-01-29)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide Latest videos button" setting ([#305](https://github.com/MorpheApp/morphe-patches/issues/305)) ([aed3e34](https://github.com/MorpheApp/morphe-patches/commit/aed3e343885732bb86647ddf626efdc173ca2ed6))
+
+# [1.9.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.6...v1.9.0-dev.7) (2026-01-28)
+
+
+### Bug Fixes
+
+* **Reddit:** Fix Recently Visited Shelf patch not being usable ([#316](https://github.com/MorpheApp/morphe-patches/issues/316)) ([49bab2b](https://github.com/MorpheApp/morphe-patches/commit/49bab2becde7f1adf593266b88abba0b876925ba))
+
+
+### Features
+
+* **Reddit:** Add ability to hide Games button on nav bar ([#315](https://github.com/MorpheApp/morphe-patches/issues/315)) ([07b9fc2](https://github.com/MorpheApp/morphe-patches/commit/07b9fc250b24c0219e8f650883f3c22ea7dfa23f))
+
+# [1.9.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.5...v1.9.0-dev.6) (2026-01-27)
+
+
+### Features
+
+* **Reddit:** Add support for Reddit `2026.04.0` ([#276](https://github.com/MorpheApp/morphe-patches/issues/276)) ([0203cf6](https://github.com/MorpheApp/morphe-patches/commit/0203cf62d7214fe79b42a804fc51111e805f2afd))
+
+# [1.9.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.4...v1.9.0-dev.5) (2026-01-27)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide video title" setting ([#309](https://github.com/MorpheApp/morphe-patches/issues/309)) ([2c7a973](https://github.com/MorpheApp/morphe-patches/commit/2c7a973d73644d81da1dd4a82a3b10056863ac70))
+
+# [1.9.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-01-27)
+
+
+### Bug Fixes
+
+* **YouTube:** Consolidate toolbar "Hide cast button" into existing hide cast button setting ([c22a2a1](https://github.com/MorpheApp/morphe-patches/commit/c22a2a1c7a74b6370bad7b47ce79cab9b49846ad))
+
+# [1.9.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-01-27)
+
+
+### Bug Fixes
+
+* **YouTube:** Show a more descriptive error message if attempting to patch a region specific APKM that does not contain languages for all regions ([0f2700d](https://github.com/MorpheApp/morphe-patches/commit/0f2700db110a2e8d041e1213e0d95ed50f6d54ac))
+
+# [1.9.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-01-27)
+
+
+### Features
+
+* **YouTube - Navigation bar:** Add settings to hide toolbar buttons ([#298](https://github.com/MorpheApp/morphe-patches/issues/298)) ([73fd722](https://github.com/MorpheApp/morphe-patches/commit/73fd722c0d76148323ae60ddc64ae05c8d95b5d4))
+
+# [1.9.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-01-26)
+
+
+### Features
+
+* **YouTube:** Add `Restore old search filters` patch ([#285](https://github.com/MorpheApp/morphe-patches/issues/285)) ([c088723](https://github.com/MorpheApp/morphe-patches/commit/c0887234612bb24ad8184fe211af14cf0640d8ec))
+
 # [1.8.0](https://github.com/MorpheApp/morphe-patches/compare/v1.7.0...v1.8.0) (2026-01-25)
 
 

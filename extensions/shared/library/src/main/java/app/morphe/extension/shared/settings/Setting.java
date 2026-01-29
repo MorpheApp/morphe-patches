@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.SharedPrefCategory;
@@ -482,19 +484,27 @@ public abstract class Setting<T> {
                 callback.settingsImported(alertDialogContext);
             }
 
+            // Check if patch resource strings are available.
+            String resetKey = "morphe_settings_import_reset";
             // Use a delay, otherwise the toast can move about on screen from the dismissing dialog.
-            final int numberOfSettingsImportedFinal = numberOfSettingsImported;
-            Utils.runOnMainThreadDelayed(() -> Utils.showToastLong(numberOfSettingsImportedFinal == 0
-                            ? str("morphe_settings_import_reset")
-                            : str("morphe_settings_import_success", numberOfSettingsImportedFinal)),
-                    150);
+            if (ResourceUtils.getIdentifier(ResourceType.STRING, resetKey) != 0) {
+                final int numberOfSettingsImportedFinal = numberOfSettingsImported;
+                Utils.runOnMainThreadDelayed(() -> Utils.showToastLong(numberOfSettingsImportedFinal == 0
+                                ? str(resetKey)
+                                : str("morphe_settings_import_success", numberOfSettingsImportedFinal)),
+                        150);
+            }
 
             return rebootSettingChanged;
         } catch (JSONException | IllegalArgumentException ex) {
-            Utils.showToastLong(str("morphe_settings_import_failure_parse", ex.getMessage()));
+            String failureKey = "morphe_settings_import_failure_parse";
+            String toastFormat = ResourceUtils.getIdentifier(ResourceType.STRING, failureKey) != 0
+                    ? str(failureKey)
+                    : "Import failed: %s";
+            Utils.showToastLong(String.format(toastFormat, ex.getMessage()));
             Logger.printInfo(() -> "", ex);
         } catch (Exception ex) {
-            Logger.printException(() -> "Import failure: " + ex.getMessage(), ex); // should never happen
+            Logger.printException(() -> "Import failure: " + ex.getMessage(), ex); // Should never happen.
         }
         return false;
     }

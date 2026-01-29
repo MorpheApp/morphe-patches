@@ -15,8 +15,9 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.RelativeLayout
 import app.morphe.extension.shared.ResourceType
+import app.morphe.extension.shared.ResourceUtils.getIdentifier
+import app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow
 import app.morphe.extension.shared.StringRef.str
-import app.morphe.extension.shared.Utils
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
 import kotlin.math.max
@@ -54,7 +55,7 @@ class SwipeControlsOverlayLayout(
     // Function to retrieve drawable resources by name.
     private fun getDrawable(name: String): Drawable {
         val drawable = resources.getDrawable(
-            Utils.getResourceIdentifier(context, ResourceType.DRAWABLE, name),
+            getIdentifierOrThrow(context, ResourceType.DRAWABLE, name),
             context.theme,
         )
         drawable.setTint(config.overlayTextColor)

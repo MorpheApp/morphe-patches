@@ -159,14 +159,6 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     )
 )
 
-internal object PatchIncludedExtensionMethodFingerprint : Fingerprint(
-    returnType = "Z",
-    parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "isPatchIncluded" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
-    }
-)
-
 // Feature flag that turns on Platypus programming language code compiled to native C++.
 // This code appears to replace the player config after the streams are loaded.
 // Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.

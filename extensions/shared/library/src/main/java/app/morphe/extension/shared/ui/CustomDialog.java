@@ -20,9 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -390,7 +389,7 @@ public class CustomDialog {
         buttonContainer.addView(rowContainer);
     }
 
-    @NotNull
+    @NonNull
     private Button getButton(List<Button> buttons, List<Integer> buttonWidths, int i) {
         Button button = buttons.get(i);
         ViewGroup parent = (ViewGroup) button.getParent();

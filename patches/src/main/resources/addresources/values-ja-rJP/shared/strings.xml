@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">再起動が必要です</string>
   <string name="morphe_settings_restart_dialog_message">この変更を反映するには、アプリを再起動してください。</string>
   <string name="morphe_settings_restart">再起動</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">インポート</string>
   <string name="morphe_settings_import_copy">コピー</string>
   <string name="morphe_settings_import_reset">Morphe の設定をデフォルトにリセットしました</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">アプリの言語</string>
   <string name="morphe_pref_import_export_title">インポート / エクスポート</string>
   <string name="morphe_pref_import_export_summary">Morphe の設定をインポート / エクスポートします</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches の最新バージョン &lt;i&gt;%s&lt;/i&gt; を使用しています</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches のバージョン &lt;i&gt;%1$s&lt;/i&gt; を使用しています&lt;br&gt;&lt;br&gt;&lt;b&gt;更新が利用可能です: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;パッチを更新するには、Morphe を使ってアプリを再パッチしてください</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>

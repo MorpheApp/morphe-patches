@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Memerlukan mulai ulang</string>
   <string name="morphe_settings_restart_dialog_message">Mulai ulang aplikasi agar perubahan ini dapat diterapkan.</string>
   <string name="morphe_settings_restart">Mulai ulang</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Pengaturan Morphe diatur ke bawaan</string>
@@ -62,7 +63,7 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_language_DEFAULT">Bahasa aplikasi</string>
   <string name="morphe_pref_import_export_title">Impor / Ekspor</string>
   <string name="morphe_pref_import_export_summary">Impor / Ekspor setelan Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Anda menggunakan Tambalan Morphe terbaru versi &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Anda menggunakan Tambalan Morphe versi &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Pembaruan tersedia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Untuk memperbarui tambalan Anda, gunakan Morphe untuk memasang ulang aplikasi ini</string>
   <string name="morphe_settings_about_links_dev_header">Catatan</string>

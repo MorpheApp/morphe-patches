@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.ui.Dim;
@@ -134,11 +135,10 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
      */
     @SuppressLint("UseCompatLoadingForDrawables")
     public static Drawable getBackButtonDrawable() {
-        final int backButtonResource = Utils.getResourceIdentifierOrThrow(ResourceType.DRAWABLE,
+        Drawable drawable = ResourceUtils.getDrawableOrThrow(
                 Utils.appIsUsingBoldIcons()
                         ? "morphe_settings_toolbar_arrow_left_bold"
                         : "morphe_settings_toolbar_arrow_left");
-        Drawable drawable = Utils.getContext().getResources().getDrawable(backButtonResource);
         customizeBackButtonDrawable(drawable);
         return drawable;
     }

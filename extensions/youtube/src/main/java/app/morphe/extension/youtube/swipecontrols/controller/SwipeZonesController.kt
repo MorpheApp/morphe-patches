@@ -4,7 +4,7 @@ import android.app.Activity
 import android.util.TypedValue
 import android.view.ViewGroup
 import app.morphe.extension.shared.ResourceType
-import app.morphe.extension.shared.Utils
+import app.morphe.extension.shared.ResourceUtils.getIdentifier
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
 import kotlin.math.min
@@ -57,8 +57,9 @@ class SwipeZonesController(
     /**
      * id for R.id.player_view
      */
-    private val playerViewId = Utils.getResourceIdentifier(
-        host, ResourceType.ID, "player_view")
+    private val playerViewId = getIdentifier(
+        host, ResourceType.ID, "player_view"
+    )
 
     /**
      * current bounding rectangle of the player

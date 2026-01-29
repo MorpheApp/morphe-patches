@@ -25,6 +25,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -114,7 +115,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             preferenceResourceName = "morphe_prefs";
         }
 
-        final var identifier = Utils.getResourceIdentifier(ResourceType.XML, preferenceResourceName);
+        final var identifier = ResourceUtils.getIdentifier(ResourceType.XML, preferenceResourceName);
         if (identifier == 0) return;
         addPreferencesFromResource(identifier);
 

@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Απαιτείται επανεκκίνηση</string>
   <string name="morphe_settings_restart_dialog_message">Επανεκκινήστε την εφαρμογή για να εφαρμοστεί αυτή η αλλαγή.</string>
   <string name="morphe_settings_restart">Επανεκκίνηση</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Εισαγωγή</string>
   <string name="morphe_settings_import_copy">Αντιγραφή</string>
   <string name="morphe_settings_import_reset">Επαναφέρθηκαν οι προεπιλεγμένες ρυθμίσεις Morphe</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Γλώσσα εφαρμογής</string>
   <string name="morphe_pref_import_export_title">Εισαγωγή / Εξαγωγή</string>
   <string name="morphe_pref_import_export_summary">Εισαγωγή / Εξαγωγή ρυθμίσεων Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Χρησιμοποιείτε την πιο πρόσφατη έκδοση του Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Χρησιμοποιείτε την έκδοση Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Διαθέσιμη ενημέρωση: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Για να ενημερώσετε τις τροποποιήσεις σας, χρησιμοποιήστε το Morphe για να επανατροποποιήσετε αυτήν την εφαρμογή</string>
   <string name="morphe_settings_about_links_dev_header">Σημείωση</string>

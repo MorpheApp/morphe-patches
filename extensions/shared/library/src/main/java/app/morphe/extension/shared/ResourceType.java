@@ -1,5 +1,7 @@
 package app.morphe.extension.shared;
 
+import androidx.annotation.NonNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,11 +39,11 @@ public enum ResourceType {
         VALUE_MAP = new HashMap<>(2 * values.length);
 
         for (ResourceType type : values) {
-            VALUE_MAP.put(type.value, type);
+            VALUE_MAP.put(type.type, type);
         }
     }
 
-    public final String value;
+    public final String type;
 
     public static ResourceType fromValue(String value) {
         ResourceType type = VALUE_MAP.get(value);
@@ -51,7 +53,7 @@ public enum ResourceType {
         return type;
     }
 
-    ResourceType(String value) {
-        this.value = value;
+    ResourceType(String type) {
+        this.type = type;
     }
 }

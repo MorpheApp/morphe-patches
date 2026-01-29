@@ -47,9 +47,8 @@ internal object PlayerControlsExtensionHookListenersExistFingerprint : Fingerpri
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf(),
-    custom = { methodDef, classDef ->
-        methodDef.name == "fullscreenButtonVisibilityCallbacksExist" &&
-                classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { methodDef, _ ->
+        methodDef.name == "fullscreenButtonVisibilityCallbacksExist"
     }
 )
 
@@ -57,9 +56,8 @@ internal object PlayerControlsExtensionHookFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("Z"),
-    custom = { methodDef, classDef ->
-        methodDef.name == "fullscreenButtonVisibilityChanged" &&
-            classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { methodDef, _ ->
+        methodDef.name == "fullscreenButtonVisibilityChanged"
     }
 )
 

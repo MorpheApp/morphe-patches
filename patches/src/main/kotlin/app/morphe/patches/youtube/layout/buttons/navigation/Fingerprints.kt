@@ -5,6 +5,9 @@ import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -83,3 +86,26 @@ internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Finge
         literal(45632194L) // Translucent system buttons feature flag.
     )
 )
+
+internal object SetWordmarkHeaderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/widget/ImageView;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
+        resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
+    )
+)
+
+/**
+ * Matches the same method as [YouTubeDoodlesImageViewFingerprint].
+ */
+internal object WideSearchbarLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo"),
+    )
+)
+

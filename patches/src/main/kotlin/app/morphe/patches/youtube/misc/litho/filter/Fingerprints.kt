@@ -11,12 +11,6 @@ import app.morphe.util.containsLiteralInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
-
-internal const val EXTENSION_FILER_ARRAY_DESCRIPTOR =
-    "[Lapp/morphe/extension/youtube/patches/components/Filter;"
-
 internal object AccessibilityIdFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
@@ -43,10 +37,7 @@ internal object LithoFilterFingerprint : Fingerprint(
             definingClass = "this",
             type = EXTENSION_FILER_ARRAY_DESCRIPTOR
         )
-    ),
-    custom = { _, classDef ->
-        classDef.type == EXTENSION_CLASS_DESCRIPTOR
-    }
+    )
 )
 
 internal object ProtobufBufferReferenceFingerprint : Fingerprint(

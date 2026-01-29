@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -26,8 +27,17 @@ public class PlayerControlButton {
         boolean buttonEnabled();
     }
 
-    public static final int fadeInDuration = Utils.getResourceInteger("fade_duration_fast");
-    private static final int fadeOutDuration = Utils.getResourceInteger("fade_duration_scheduled");
+    public static final int fadeInDuration;
+
+    static {
+        fadeInDuration = ResourceUtils.getInteger("fade_duration_fast");
+    }
+
+    private static final int fadeOutDuration;
+
+    static {
+        fadeOutDuration = ResourceUtils.getInteger("fade_duration_scheduled");
+    }
 
     private final WeakReference<View> containerRef;
     private final WeakReference<View> buttonRef;
@@ -286,7 +296,7 @@ public class PlayerControlButton {
      * Returns the appropriate dialog background color depending on the current theme.
      */
     public static int getDialogBackgroundColor() {
-        return Utils.getResourceColor(
+        return ResourceUtils.getColor(
                 Utils.isDarkModeEnabled() ? "yt_black1" : "yt_white1"
         );
     }

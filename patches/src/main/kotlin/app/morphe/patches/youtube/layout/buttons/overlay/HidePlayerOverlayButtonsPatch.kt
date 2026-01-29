@@ -92,7 +92,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         if (is_20_28_or_greater) {
             arrayOf(
                 CastButtonPlayerFeatureFlagFingerprint,
-                CastButtonActionFeatureFlagFingerprint
+                CastButtonActionFeatureFlagFingerprint // Cast button in the feed.
             ).forEach { fingerprint ->
                 fingerprint.let {
                     it.method.insertLiteralOverride(

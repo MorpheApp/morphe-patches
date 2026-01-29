@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -17,9 +18,9 @@ public class LoopVideoButton {
     @Nullable
     private static PlayerControlButton instance;
 
-    private static final int LOOP_VIDEO_ON = Utils.getResourceIdentifierOrThrow(
+    private static final int LOOP_VIDEO_ON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_loop_video_button_on");
-    private static final int LOOP_VIDEO_OFF = Utils.getResourceIdentifierOrThrow(
+    private static final int LOOP_VIDEO_OFF = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE,"morphe_loop_video_button_off");
 
     /**

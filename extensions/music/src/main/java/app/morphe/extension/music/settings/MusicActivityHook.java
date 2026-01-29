@@ -13,6 +13,7 @@ import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
 import app.morphe.extension.music.settings.search.MusicSearchViewController;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.BaseSettings;
@@ -55,7 +56,7 @@ public class MusicActivityHook extends BaseActivityHook {
     protected void customizeActivityTheme(Activity activity) {
         // Override the default YouTube Music theme to increase start padding of list items.
         // Custom style located in resources/music/values/style.xml
-        activity.setTheme(Utils.getResourceIdentifierOrThrow(
+        activity.setTheme(ResourceUtils.getIdentifierOrThrow(
                 ResourceType.STYLE, "Theme.Morphe.YouTubeMusic.Settings"));
     }
 
@@ -64,7 +65,7 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected int getToolbarBackgroundColor() {
-        return Utils.getResourceColor("ytm_color_black");
+        return ResourceUtils.getColor("ytm_color_black");
     }
 
     /**

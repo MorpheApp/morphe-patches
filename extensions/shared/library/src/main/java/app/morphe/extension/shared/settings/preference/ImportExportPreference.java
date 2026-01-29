@@ -56,6 +56,15 @@ public class ImportExportPreference extends EditTextPreference implements Prefer
         init();
     }
 
+    /**
+     * Apps that do not support bundling resources must override this.
+     *
+     * @return A localized string to display for the key.
+     */
+    protected String getString(String key, Object... args) {
+        return str(key, args);
+    }
+
     @Override
     public boolean onPreferenceClick(Preference preference) {
         try {
@@ -78,13 +87,13 @@ public class ImportExportPreference extends EditTextPreference implements Prefer
             // Create a custom dialog with the EditText.
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_pref_import_export_title"), // Title.
+                    getString("morphe_pref_import_export_title"), // Title.
                     null,     // No message (EditText replaces it).
                     editText, // Pass the EditText.
-                    str("morphe_settings_import"), // OK button text.
+                    getString("morphe_settings_import"), // OK button text.
                     () -> importSettings(context, editText.getText().toString()), // OK button action.
                     () -> {}, // Cancel button action (dismiss only).
-                    str("morphe_settings_import_copy"), // Neutral button (Copy) text.
+                    getString("morphe_settings_import_copy"), // Neutral button (Copy) text.
                     () -> {
                         // Neutral button (Copy) action. Show the user the settings in JSON format.
                         Utils.setClipboard(editText.getText());

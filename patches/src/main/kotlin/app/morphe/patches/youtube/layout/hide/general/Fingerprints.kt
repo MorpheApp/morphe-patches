@@ -66,7 +66,7 @@ internal object ShowWatermarkFingerprint : Fingerprint(
 )
 
 /**
- * Matches same method as [wideSearchbarLayoutFingerprint].
+ * Matches same method as [WideSearchbarLayoutFingerprint].
  */
 internal object YouTubeDoodlesImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -175,4 +175,31 @@ internal object SearchBoxTypingStringFingerprint : Fingerprint(
         opcode(Opcode.IF_NEZ, location = MatchAfterImmediately())
     )
 )
+
+internal object LatestVideosContentPillFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Z"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "content_pill"),
+        methodCall(
+            smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object LatestVideosBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Z"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "bar"),
+        methodCall(
+            smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 
