@@ -1,6 +1,5 @@
 package app.morphe.patches.reddit.layout.navigation
 
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
@@ -8,11 +7,13 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.settingsPatch
+import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -48,38 +49,50 @@ val navigationButtonsPatch = bytecodePatch(
                 )
             }
 
-            findInstructionIndicesReversedOrThrow {
+            val instructionMatch = fun Instruction.(): Boolean {
                 // TODO: Add StringComparisonType to defining class parameter of methodCall and fieldAccess.
                 val reference = getReference<MethodReference>()
-                this.opcode == Opcode.INVOKE_DIRECT &&
+                return this.opcode == Opcode.INVOKE_DIRECT &&
                         reference?.name == "<init>" &&
                         reference.definingClass.startsWith("Lcom/reddit/widget/bottomnav/") &&
-                        reference.parameterTypes.firstOrNull() == "Ljava/lang/String;"
-            }.forEach { index ->
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-
-                val objectRegister = instruction.registerC
-                val labelRegister = instruction.registerD
-
-                addInstruction(
-                    index + 1,
-                    "invoke-static { v$objectRegister, v$labelRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->" +
-                            "setNavigationMap(Ljava/lang/Object;Ljava/lang/String;)V"
-                )
+                        reference.parameterTypes.firstOrNull() == "Ljava/lang/String;" &&
+                        reference.parameterTypes.lastOrNull()?.startsWith("Landroidx/compose/runtime/") == true
             }
 
-            findInstructionIndicesReversedOrThrow(
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    smali = "Landroid/content/res/Resources;->getString(I)Ljava/lang/String;"
-                )
-            ).forEach { index ->
-                val idReg = getInstruction<FiveRegisterInstruction>(index).registerD
-                addInstruction(
-                    index,
-                    "invoke-static { v$idReg }, $EXTENSION_CLASS_DESCRIPTOR->mapResourceId(I)V"
-                )
+            // The game navigation button is behind a feature flag and thus also in a different method.
+            // To handle this and other future changes, apply the patch to all methods in this class
+            // instead of just the one matching bottomNavScreenFingerprint.
+            bottomNavScreenFingerprint.classDef.apply {
+                methods.forEach { method ->
+                    method.apply {
+                        findInstructionIndicesReversed(instructionMatch).forEach { index ->
+                            val instruction = getInstruction<FiveRegisterInstruction>(index)
+
+                            val objectRegister = instruction.registerC
+                            val labelRegister = instruction.registerD
+
+                            addInstruction(
+                                index + 1,
+                                "invoke-static { v$objectRegister, v$labelRegister }, " +
+                                        "$EXTENSION_CLASS_DESCRIPTOR->" +
+                                        "setNavigationMap(Ljava/lang/Object;Ljava/lang/String;)V"
+                            )
+                        }
+
+                        findInstructionIndicesReversed(
+                            methodCall(
+                                opcode = Opcode.INVOKE_VIRTUAL,
+                                smali = "Landroid/content/res/Resources;->getString(I)Ljava/lang/String;"
+                            )
+                        ).forEach { index ->
+                            val idReg = getInstruction<FiveRegisterInstruction>(index).registerD
+                            addInstruction(
+                                index,
+                                "invoke-static { v$idReg }, $EXTENSION_CLASS_DESCRIPTOR->mapResourceId(I)V"
+                            )
+                        }
+                    }
+                }
             }
 
             addInstruction(
