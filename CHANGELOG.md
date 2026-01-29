@@ -1,3 +1,10 @@
+# [1.9.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.8...v1.9.0-dev.9) (2026-01-29)
+
+
+### Bug Fixes
+
+* **Reddit:** Handle navigation bar buttons hidden behind feature flags ([#328](https://github.com/MorpheApp/morphe-patches/issues/328)) ([2b8c337](https://github.com/MorpheApp/morphe-patches/commit/2b8c33702293acfbd859cdfbdf1342e5f9e96bc2))
+
 # [1.9.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.7...v1.9.0-dev.8) (2026-01-29)
 
 
