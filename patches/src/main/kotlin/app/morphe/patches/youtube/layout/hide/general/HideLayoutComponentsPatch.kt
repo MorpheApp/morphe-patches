@@ -162,6 +162,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_emergency_box"),
             SwitchPreference("morphe_hide_info_panels"),
             SwitchPreference("morphe_hide_join_membership_button"),
+            SwitchPreference("morphe_hide_live_chat_replay_button"),
             SwitchPreference("morphe_hide_medical_panels"),
             SwitchPreference("morphe_hide_quick_actions"),
             SwitchPreference("morphe_hide_related_videos"),

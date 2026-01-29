@@ -69,8 +69,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "chips_shelf"
         );
 
+        final var liveChatReplay = new StringFilterGroup(
+                Settings.HIDE_LIVE_CHAT_REPLAY_BUTTON,
+                "live_chat_ep_entrypoint.e"
+        );
+
         addIdentifierCallbacks(
-                chipsShelf
+                chipsShelf,
+                liveChatReplay
         );
 
         // Paths.
