@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">পুনরায় আরম্ভ করা আবশ্যক</string>
   <string name="morphe_settings_restart_dialog_message">এই পরিবর্তন কার্যকর করার জন্য অ্যাপটি পুনরায় চালু করুন।</string>
   <string name="morphe_settings_restart">আবার চালু করুন</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">আমদানি করুন</string>
   <string name="morphe_settings_import_copy">অনুলিপি করুন</string>
   <string name="morphe_settings_import_reset">Morphe সেটিং ডিফল্ট সেট করা হয়েছে</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">অ্যাপ্লিকেশনের ভাষা</string>
   <string name="morphe_pref_import_export_title">আমদানি এবং রপ্তানি</string>
   <string name="morphe_pref_import_export_summary">Morphe সেটিং আমদানি বা রপ্তানি করুন</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%s&lt;/i&gt; ব্যবহার করছেন</string>
   <string name="morphe_settings_about_links_body_version_outdated">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;আপডেট উপলব্ধ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;আপনার প্যাচগুলি আপডেট করতে, Morphe ব্যবহার করে এই অ্যাপ্লিকেশনটিকে পুনরায় প্যাচ করুন</string>
   <string name="morphe_settings_about_links_dev_header">দ্রষ্টব্য</string>

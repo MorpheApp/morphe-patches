@@ -81,6 +81,11 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_latest_posts_title">Ascunde cele mai recente postări</string>
   <string name="morphe_hide_latest_posts_summary_on">Ultimele postări sunt ascunse</string>
   <string name="morphe_hide_latest_posts_summary_off">Ultimele postări sunt afișate</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Ascunde butonul \'Ultimul video\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Butonul \'Ultimul video\' este ascuns</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Butonul \'Ultimul video\' este aratat</string>
   <string name="morphe_hide_mix_playlists_title">Ascunde amestecul playlisturilor</string>
   <string name="morphe_hide_mix_playlists_summary_on">Listele de redare mixte sunt ascunse</string>
   <string name="morphe_hide_mix_playlists_summary_off">Amestecul listelor de redare este afișat</string>
@@ -88,7 +93,7 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_movies_section_summary_on">Secțiunea filmelor este ascunsă</string>
   <string name="morphe_hide_movies_section_summary_off">Se afișează secțiunea Filme</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ascunde butonul \'Notifică-mă\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">Butonul \"Anunță-mă\" este ascuns.</string>
   <string name="morphe_hide_notify_me_button_summary_off">Butonul \"Anunță-mă\" este afișat.</string>
@@ -161,6 +166,9 @@ Dacă un Doodle este afișat în prezent în regiunea dvs. și această setare d
   <string name="morphe_hide_timed_reactions_title">Ascunde reacţiile cronologie </string>
   <string name="morphe_hide_timed_reactions_summary_on">Reacţiile cronologice sunt ascunse</string>
   <string name="morphe_hide_timed_reactions_summary_off">Reacţiile cronologice sunt evidenţiate</string>
+  <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
+  <string name="morphe_hide_video_title_summary_on">Titlul video-ului în superpunere de player este ascuns</string>
+  <string name="morphe_hide_video_title_summary_off">Titlul video-ului în superpunere de player este afișat</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ascundeți \"Rezumat video generat de AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Secțiunea de rezumat video generată de AI este ascunsă</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Secțiunea de rezumat video generată de AI este afișată</string>
@@ -600,9 +608,6 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bara de navigare în modul întunecat este opaca sau translucida</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde sau schimbă componentele barei de navigare</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ascunde butonul Distribuție</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Butonul de distribuție este ascuns</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Butonul de execuție este afișat</string>
   <string name="morphe_hide_toolbar_create_button_title">Ascunde butonul Creează</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Butonul de creare este ascuns</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Butonul Creare este afișat</string>

@@ -81,6 +81,11 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_latest_posts_title">Son gönderileri gizle</string>
   <string name="morphe_hide_latest_posts_summary_on">Son gönderiler gizli</string>
   <string name="morphe_hide_latest_posts_summary_off">Son gönderiler görünür</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Son videolar düğmesini gizle</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Son videolar düğmesi gizli</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Son videolar düğmesi görünür</string>
   <string name="morphe_hide_mix_playlists_title">Mix oynatma listelerini gizle</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix oynatma listeleri gizli</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix oynatma listeleri görünür</string>
@@ -88,7 +93,7 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_movies_section_summary_on">Filmler kısmı gizli</string>
   <string name="morphe_hide_movies_section_summary_off">Filmler kısmı görünür</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Hatırlatma oluştur\' düğmesini gizle</string>
   <string name="morphe_hide_notify_me_button_summary_on">Hatırlatma oluştur düğmesi gizli</string>
   <string name="morphe_hide_notify_me_button_summary_off">Hatırlatma oluştur düğmesi görünür</string>
@@ -161,6 +166,9 @@ Bir Doodle şu anda bölgenizde gösteriliyorsa ve bu gizleme ayarı açıksa, a
   <string name="morphe_hide_timed_reactions_title">Süreli tepkileri gizle</string>
   <string name="morphe_hide_timed_reactions_summary_on">Süreli tepkiler gizli</string>
   <string name="morphe_hide_timed_reactions_summary_off">Süreli tepkiler görünür</string>
+  <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
+  <string name="morphe_hide_video_title_summary_on">Oynatıcı yuvası üzerindeki video başlığı gizlidir</string>
+  <string name="morphe_hide_video_title_summary_off">Oynatıcı yuvası üzerindeki video başlığı gösterilir</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulan video özeti\'ni gizle</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Yapay zeka tarafından oluşturulan video özet kısmı gizli</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Yapay zeka tarafından oluşturulan video özet kısmı görünür</string>
@@ -486,7 +494,7 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_auto_captions_style_entry_1">Sessiz ve sessiz olmayan durumda göster</string>
   <string name="morphe_auto_captions_style_entry_2">Asla gösterme</string>
   <string name="morphe_auto_captions_style_entry_3">Sessiz olmayan durumda göster</string>
-  <string name="morphe_auto_captions_style_entry_4">Sessizkenalog göster</string>
+  <string name="morphe_auto_captions_style_entry_4">Sessizken göster</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Otomatik altyazıları göster</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Otomatik altyazıları gizle</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
@@ -602,9 +610,6 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Koyu temada gezinti çubuğu opak veya yarı saydam</string>
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğu bileşenlerini gizle veya değiştir</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Yayınla düğmesini gizle</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Yayınla düğmesi gizli</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Yayınla düğmesi görünür</string>
   <string name="morphe_hide_toolbar_create_button_title">Oluştur düğmesini gizle</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Oluştur düğmesi gizli</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Oluştur düğmesi görünür</string>
@@ -932,10 +937,10 @@ Kısıtlama: Beğenilmeme sayıları gizli modda görünmeyebilir"</string>
   <string name="morphe_wide_searchbar_summary_off">Geniş arama çubuğu devre dışı</string>
   <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
   <string name="morphe_restore_old_search_filters_title">Eski arama filtrelerini geri yükle</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Arama filtresinde derecelendirme ve yükleme tarihi sıralaması mevcuttur</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Arama filtresinde derecelendirme ve yükleme tarihi sıralaması mevcut değildir</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Puanlama</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Yüklenen Tarih</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Arama filtresinde derecelendirme ve yüklenme tarihine göre sıralama mevcuttur</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Arama filtresinde derecelendirme ve yüklenme tarihine göre sıralama mevcut değildir</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Derecelendirme</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Yüklenme tarihi</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock\'u etkinleştir</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock, YouTube videolarının can sıkıcı kısımlarını atlamaya yarayan kitle kaynaklı bir sistemdir</string>

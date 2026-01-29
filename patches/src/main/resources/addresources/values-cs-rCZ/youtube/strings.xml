@@ -82,6 +82,11 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_latest_posts_title">Skrýt nejnovější příspěvky</string>
   <string name="morphe_hide_latest_posts_summary_on">Nejnovější příspěvky jsou skryté</string>
   <string name="morphe_hide_latest_posts_summary_off">Nejnovější příspěvky jsou zobrazené</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Skrýt tlačítko \'Nejnovější videa\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Tlačítko \'Nejnovější videa\' je skryto</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Tlačítko \'Nejnovější videa\' je zobrazeno</string>
   <string name="morphe_hide_mix_playlists_title">Skrýt smíšené seznamy přehrávání</string>
   <string name="morphe_hide_mix_playlists_summary_on">Smíšené seznamy přehrávání jsou skryté</string>
   <string name="morphe_hide_mix_playlists_summary_off">Smíšené seznamy přehrávání jsou zobrazené</string>
@@ -89,7 +94,7 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_movies_section_summary_on">Sekce Filmy je skrytá</string>
   <string name="morphe_hide_movies_section_summary_off">Sekce Filmy je viditelná</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skrýt tlačítko „Upozornit mě“</string>
   <string name="morphe_hide_notify_me_button_summary_on">Tlačítko „Upozornit mě“ je skryté</string>
   <string name="morphe_hide_notify_me_button_summary_off">Tlačítko „Upozornit mě“ je zobrazené</string>
@@ -162,6 +167,9 @@ Pokud se Doodle v současné době zobrazuje ve vaší oblasti a toto nastavení
   <string name="morphe_hide_timed_reactions_title">Skrýt reakce zobrazené po čase</string>
   <string name="morphe_hide_timed_reactions_summary_on">Reakce zobrazené po čase jsou skryty</string>
   <string name="morphe_hide_timed_reactions_summary_off">Reakce se zobrazují po čase</string>
+  <string name="morphe_hide_video_title_title">Skrýt název videa</string>
+  <string name="morphe_hide_video_title_summary_on">Nadpis videa v přehrávači je skryt</string>
+  <string name="morphe_hide_video_title_summary_off">Nadpis videa v přehrávači je zobrazen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skrýt „Souhrn videa generovaný pomocí AI“</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Sekce souhrnu videa generovaná AI je skrytá</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sekce souhrnu videa generovaného AI je zobrazena</string>
@@ -603,9 +611,6 @@ Upravte hlasitost svislým přejetím po pravé straně obrazovky"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Navigační lišta v tmavém režimu je neprůhledná nebo průsvitná</string>
   <string name="morphe_toolbar_screen_title">Nárazovka</string>
   <string name="morphe_toolbar_screen_summary">Skrýt nebo změnit součástky nárazovky</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Skrýt tlačítko Odeslat</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Tlačítko pro odesílání je skryto</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Tlačítko vysílání je viditelné</string>
   <string name="morphe_hide_toolbar_create_button_title">Skrýt tlačítko Vytvořit</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tlačítko Vytvořit je skryto</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tlačítko Vytvořit je zobrazeno</string>

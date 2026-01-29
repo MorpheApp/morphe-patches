@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Yêu cầu khởi động lại</string>
   <string name="morphe_settings_restart_dialog_message">Khởi động lại ứng dụng để thay đổi này có hiệu lực.</string>
   <string name="morphe_settings_restart">Khởi động lại</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Nhập</string>
   <string name="morphe_settings_import_copy">Sao chép</string>
   <string name="morphe_settings_import_reset">Đặt lại cài đặt Morphe về mặc định</string>
@@ -39,13 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_clear_history">Xóa lịch sử tìm kiếm</string>
   <string name="morphe_settings_search_clear_history_message">Bạn có chắc chắn muốn xóa toàn bộ lịch sử tìm kiếm không?</string>
   <string name="morphe_settings_search_tips_title">Mẹo tìm kiếm</string>
-  <string name="morphe_settings_search_tips_summary">"• Nhấn vào một đường dẫn để đi đến đó
-• Nhấn giữ một cài đặt để đi đến đó
-• Nhấn Enter để lưu từ khoá tìm kiếm vào lịch sử
+  <string name="morphe_settings_search_tips_summary">"• Bấm vào một đường dẫn để đi đến đó
+• Bấm giữ một cài đặt để đi đến đó
+• Bấm Enter để lưu từ khoá tìm kiếm vào lịch sử
 • Tìm kiếm bỏ qua chữ hoa/thường và dấu câu
 • Cài đặt lớn nằm phía trên cài đặt nhỏ bị vô hiệu hóa"</string>
   <string name="morphe_settings_search_empty_history_title">Lịch sử tìm kiếm đang trống</string>
-  <string name="morphe_settings_search_empty_history_summary">Để lưu lịch sử tìm kiếm, nhập từ khoá tìm kiếm và nhấn Enter</string>
+  <string name="morphe_settings_search_empty_history_summary">Để lưu lịch sử tìm kiếm, nhập từ khoá tìm kiếm và bấm Enter</string>
   <string name="morphe_settings_search_history_title">Hiện lịch sử tìm kiếm cài đặt</string>
   <string name="morphe_settings_search_history_summary_on">Lịch sử tìm kiếm cài đặt được hiển thị</string>
   <string name="morphe_settings_search_history_summary_off">Lịch sử tìm kiếm cài đặt không được hiển thị</string>
@@ -62,7 +63,7 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_language_DEFAULT">Ngôn ngữ ứng dụng</string>
   <string name="morphe_pref_import_export_title">Nhập hoặc Xuất</string>
   <string name="morphe_pref_import_export_summary">Nhập hoặc xuất các cài đặt Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Đã có bản cập nhật mới: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Để cập nhật các bản vá của bạn, hãy dùng Morphe để vá lại ứng dụng này</string>
   <string name="morphe_settings_about_links_dev_header">Lưu ý</string>
@@ -113,6 +114,6 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don't kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nNhấn tiếp tục để tắt tối ưu hóa."</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
 </resources>

@@ -82,6 +82,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">लेटेस्ट पोस्ट छुपाएं</string>
   <string name="morphe_hide_latest_posts_summary_on">नवीन पोस्ट छिपाई गई हैं</string>
   <string name="morphe_hide_latest_posts_summary_off">नवीन पोस्ट दिखाई जाती हैं</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">छुपाएं \'नवीन वीडियो\' बटन</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">नवीन वीडियो बटन छुपा हुआ है</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">नवीन वीडियो बटन दिखाया जाता है</string>
   <string name="morphe_hide_mix_playlists_title">छुपाएं मिश्रित प्लेलिस्ट</string>
   <string name="morphe_hide_mix_playlists_summary_on">मिक्स प्लेलिस्टें छुपाई गई हैं</string>
   <string name="morphe_hide_mix_playlists_summary_off">मिक्स प्लेलिस्टें दिखाई जाती हैं</string>
@@ -89,7 +94,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">मूवीز सैक्शन छुपा हुआ है</string>
   <string name="morphe_hide_movies_section_summary_off">मूवीज़ सैक्शन दिखाया गया है</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">छुपाएं \'मुझे सूचित करें\' बटन</string>
   <string name="morphe_hide_notify_me_button_summary_on">अलर्ट मुझे बटन छुपा हुआ है</string>
   <string name="morphe_hide_notify_me_button_summary_off">अलर्ट मुझे बटन दिखाया जाता है</string>
@@ -162,6 +167,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">छुपाएं समयबद्ध प्रतिक्रियाएं</string>
   <string name="morphe_hide_timed_reactions_summary_on">टाइम्ड रिएक्शंस छुपाए गए हैं</string>
   <string name="morphe_hide_timed_reactions_summary_off">टाइम्ड रिएक्शंस दिखाई दिए जाते हैं</string>
+  <string name="morphe_hide_video_title_title">छुपाएं वीडियो शीर्षक</string>
+  <string name="morphe_hide_video_title_summary_on">प्लेयर ओवरले में वीडियो शीर्षक छुपा हुआ है</string>
+  <string name="morphe_hide_video_title_summary_off">प्लेयर ओवरले में वीडियो शीर्षक दिखाया गया है</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">छिपाएं \'AI-जनित वीडियो सारांश\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-जनित वीडियो सारांश अनुभाग छिपा हुआ है</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI-जनित वीडियो सारांश अनुभाग दिखाया जाता है</string>
@@ -369,8 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">वीडियो विवरण में शॉपिंग लिंक छिपे हुए हैं</string>
   <string name="morphe_hide_shopping_links_summary_off">वीडियो विवरण में शॉपिंग लिंक दिखाए जाते हैं</string>
   <string name="morphe_hide_view_products_banner_title">छुपाएं मॉर्फे देखें उत्पादों बैनर</string>
-  <string name="morphe_hide_view_products_banner_summary_on">वीडियो ओवरले में उत्पादों के बैनर को देखने के लिए छिपा हुआ है</string>
-  <string name="morphe_hide_view_products_banner_summary_off">वीडियो ओवरले में उत्पादों के बैनर को देखने के लिए दिखाई देता है</string>
+  <string name="morphe_hide_view_products_banner_summary_on">प्लेयर ओवरले में उत्पादों के बैनर को देखने के लिए छिपा हुआ है</string>
+  <string name="morphe_hide_view_products_banner_summary_off">प्लेयर ओवरले में उत्पादों के बैनर को देखने के लिए दिखाई देता है</string>
   <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"यूट्यूब प्रीमियम प्रोमोशन छुपा हुआ है
 
@@ -552,8 +560,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">कुछ डिवाइसों पर इस सुविधा को सक्रिय करना सिस्टम नेविगेशन बार को ट्रांस्परेंट बना सकता है।</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या बदलें</string>
-  <string name="morphe_hide_toolbar_cast_button_title">कास्ट बटन को छुपाएं</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">कास्ट बटन छुपा हुआ है</string>
+  <string name="morphe_hide_toolbar_create_button_title">छुपाएं \'सृजना\' बटन</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">सृजना बटन छुपा हुआ है</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">सृजना बटन दिखाया जाता है</string>
+  <string name="morphe_hide_toolbar_notification_button_title">छुपाएं \'सूचनाएं\' बटन</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">सूचनाएं बटन छुपा हुआ है</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">सूचनाएं बटन दिखाया जाता है</string>
+  <string name="morphe_hide_toolbar_search_button_title">छुपाएं \'खोज\' बटन</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">खोज बटन छुपा हुआ है</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">सर्च बटन दिखाया गया है</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->

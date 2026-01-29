@@ -81,6 +81,11 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_hide_latest_posts_title">Sembunyikan postingan terbaru</string>
   <string name="morphe_hide_latest_posts_summary_on">Postingan terbaru disembunyikan</string>
   <string name="morphe_hide_latest_posts_summary_off">Postingan terbaru ditampilkan</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Sembunyikan tombol \'Video terbaru\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Tombol \'Video terbaru\' disembunyikan</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Tombol \'Video terbaru\' ditampilkan</string>
   <string name="morphe_hide_mix_playlists_title">Sembunyikan daftar putar campuran</string>
   <string name="morphe_hide_mix_playlists_summary_on">Daftar putar campuran disembunyikan</string>
   <string name="morphe_hide_mix_playlists_summary_off">Daftar putar campuran ditampilkan</string>
@@ -88,7 +93,7 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_hide_movies_section_summary_on">Bagian film disembunyikan</string>
   <string name="morphe_hide_movies_section_summary_off">Bagian film ditampilkan</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sembunyikan \'Beri tahu saya\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">Tombol beri tahu saya disembunyikan</string>
   <string name="morphe_hide_notify_me_button_summary_off">Tombol beri tahu saya ditampilkan</string>
@@ -161,6 +166,9 @@ Jika Doodle saat ini ditampilkan di wilayah Anda dan pengaturan penyembunyi ini 
   <string name="morphe_hide_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
   <string name="morphe_hide_timed_reactions_summary_on">Reaksi terjadwal disembunyikan</string>
   <string name="morphe_hide_timed_reactions_summary_off">Reaksi terjadwal ditampilkan</string>
+  <string name="morphe_hide_video_title_title">Sembunyikan judul video</string>
+  <string name="morphe_hide_video_title_summary_on">Judul video di player overlay disembunyikan</string>
+  <string name="morphe_hide_video_title_summary_off">Judul video di player overlay ditampilkan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sembunyikan \'Ringkasan video yang dibuat AI\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Bagian ringkasan video buatan AI disembunyikan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Bagian ringkasan video buatan AI ditampilkan</string>
@@ -600,18 +608,15 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Nonaktifkan bilah tembus pandang gelap</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Bilah navigasi mode gelap adalah buram</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bilah navigasi mode gelap buram atau tembus pandang</string>
-  <string name="morphe_toolbar_screen_title">Bar</string>
-  <string name="morphe_toolbar_screen_summary">Sembunyikan atau ubah komponen bilah toolbar</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Sembunyikan tombol Transmisi</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Tombol transmisi disembunyikan</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Tombol transmisi ditampilkan</string>
+  <string name="morphe_toolbar_screen_title">Bilah alat</string>
+  <string name="morphe_toolbar_screen_summary">Sembunyikan atau ubah komponen bilah alat</string>
   <string name="morphe_hide_toolbar_create_button_title">Sembunyikan tombol Buat</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tombol buat disembunyikan</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tombol buat ditampilkan</string>
   <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan tombol Pemberitahuan</string>
-  <string name="morphe_hide_toolbar_notification_button_summary_on">Tombol notifikasi disembunyikan</string>
-  <string name="morphe_hide_toolbar_notification_button_summary_off">Tombol notifikasi ditampilkan</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol pencarian</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">Tombol pemberitahuan disembunyikan</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">Tombol pemberitahuan ditampilkan</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Pencarian</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tombol pencarian disembunyikan</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Tombol pencarian ditampilkan</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->

@@ -76,8 +76,7 @@ Pour vous connecter, appuyez sur Continuer ci-dessous"</string>
 
 • Vos paramètres Morphe n’importeront/exportent pas l’authentification Android VR
 • Si cette application reste inutilisée pendant 6 mois, Google supprimera cette authentification
-• Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google
-"</string>
+• Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d’attente de l’API dépassé)</string>
   <string name="morphe_oauth2_connection_failure_status_400">La connexion à Android VR a expiré, réessayez de vous connecter à VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 est temporairement indisponible (statut %d)</string>

@@ -81,6 +81,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">Сакриј најновије објаве</string>
   <string name="morphe_hide_latest_posts_summary_on">Најновије објаве су скривене</string>
   <string name="morphe_hide_latest_posts_summary_off">Најновије објаве су приказане</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Сакриј дугме \'Најновије видео\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Дугме \'Најновије видео\' је скривено</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Дугме \'Најновије видео\' је приказано</string>
   <string name="morphe_hide_mix_playlists_title">Сакриј микс плејлисте</string>
   <string name="morphe_hide_mix_playlists_summary_on">Микс плејлисте су скривене</string>
   <string name="morphe_hide_mix_playlists_summary_off">Микс плејлисте су приказане</string>
@@ -88,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">Одељак за филмове је скривен</string>
   <string name="morphe_hide_movies_section_summary_off">Одељак за филмове је приказан</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Сакриј дугме „Обавести ме”</string>
   <string name="morphe_hide_notify_me_button_summary_on">Дугме „Обавести ме” је скривено</string>
   <string name="morphe_hide_notify_me_button_summary_off">Дугме „Обавести ме” је приказано</string>
@@ -161,6 +166,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">Сакриј временске реакције</string>
   <string name="morphe_hide_timed_reactions_summary_on">Временске реакције су скривене</string>
   <string name="morphe_hide_timed_reactions_summary_off">Временске реакције су приказане</string>
+  <string name="morphe_hide_video_title_title">Сакриј наслов Shorts видеа</string>
+  <string name="morphe_hide_video_title_summary_on">Наслов видеа у прегледном прегледу је скривен</string>
+  <string name="morphe_hide_video_title_summary_off">Наслов видеа у прегледном прегледу је приказан</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Сакриј „Резиме видеа који је генерисала вештачка интелигенција”</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Одељак „Резиме видеа који је генерисала вештачка интелигенција” је скривен</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Одељак „Резиме видеа који је генерисала вештачка интелигенција” је приказан</string>
@@ -369,8 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">Линкови за куповину у опису видеа су скривени</string>
   <string name="morphe_hide_shopping_links_summary_off">Линкови за куповину у опису видеа су приказани</string>
   <string name="morphe_hide_view_products_banner_title">Сакриј банер „Погледајте производе”</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Банер „Погледајте производе” у видео плејеру је скривен</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Банер „Погледајте производе” у видео плејеру је приказан</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Банер \"Погледајте производе\" у видео плејеру је скривен</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Банер \"Погледајте производе\" у видео плејеру је приказан</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Сакриј промоције за YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Промоције YouTube Премијума су сакривене
 
@@ -602,9 +610,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Трака за навигацију у тамном режиму је непрозирна или прозирна</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Sakrijte ili promenite komponente trake za alatke</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Сакриј дугме „Пребацуј”</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Дугме „Пребацуј” је скривено</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Дугме „Пребацуј” је приказано</string>
   <string name="morphe_hide_toolbar_create_button_title">Сакриј дугме \"Кreiraj\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Дугме „Направи” је скривено</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Дугме „Направи” је приказано</string>

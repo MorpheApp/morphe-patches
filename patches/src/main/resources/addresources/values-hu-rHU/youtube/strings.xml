@@ -81,6 +81,11 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_latest_posts_title">Legutóbbi bejegyzések elrejtése</string>
   <string name="morphe_hide_latest_posts_summary_on">A legutóbbi bejegyzések rejtve vannak</string>
   <string name="morphe_hide_latest_posts_summary_off">A legutóbbi bejegyzések láthatóak</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Rejt \'Legfrissebb videók\' gombot</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">A \'Legfrissebb videók\' gomb rejtve van</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">A \'Legfrissebb videók\' gomb látható</string>
   <string name="morphe_hide_mix_playlists_title">Egyveleg lejátszási listák elrejtése</string>
   <string name="morphe_hide_mix_playlists_summary_on">Az egyveleg lejátszási listák el vannak rejtve</string>
   <string name="morphe_hide_mix_playlists_summary_off">Az egyveleg lejátszási listák megjelennek</string>
@@ -88,7 +93,7 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_movies_section_summary_on">A filmek szakasz el van rejtve</string>
   <string name="morphe_hide_movies_section_summary_off">A filmek szakasz látható</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Értesítést kérek\" gomb elrejtése</string>
   <string name="morphe_hide_notify_me_button_summary_on">Az „Értesíts” gomb elrejtve</string>
   <string name="morphe_hide_notify_me_button_summary_off">Az „Értesíts” gomb látható</string>
@@ -161,6 +166,9 @@ Ha a Doodle jelenleg a régiódában látható, és ez a rejtés beállítás be
   <string name="morphe_hide_timed_reactions_title">Időzített reakciók elrejtése</string>
   <string name="morphe_hide_timed_reactions_summary_on">Az időzített reakciók elrejtve</string>
   <string name="morphe_hide_timed_reactions_summary_off">Az időzített reakciók megjelenítve</string>
+  <string name="morphe_hide_video_title_title">Videó címének elrejtése</string>
+  <string name="morphe_hide_video_title_summary_on">A videó lejátszó felirata el van rejtve</string>
+  <string name="morphe_hide_video_title_summary_off">A videó lejátszó felirata megjelenik</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">„AI-generált videó összefoglaló” elrejtése</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Az MI által generált videó összefoglaló szakasz elrejtve</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI által generált videó összefoglaló szakasz megjelenítve</string>
@@ -369,8 +377,8 @@ Korlátozások
   <string name="morphe_hide_shopping_links_summary_on">A vásárlási linkek a videó leírásában elrejtve</string>
   <string name="morphe_hide_shopping_links_summary_off">Vásárlási linkek láthatók a videó leírásában</string>
   <string name="morphe_hide_view_products_banner_title">A „Termékek megtekintése” szalaghirdetés elrejtése</string>
-  <string name="morphe_hide_view_products_banner_summary_on">A „Termékek megtekintése” banner a videó átfedésében elrejtve</string>
-  <string name="morphe_hide_view_products_banner_summary_off">A „Termékek megtekintése” banner a videó átfedésében látható</string>
+  <string name="morphe_hide_view_products_banner_summary_on">A \"Termékek megtekintése\" banner a videó átfedésében elrejtve</string>
+  <string name="morphe_hide_view_products_banner_summary_off">A \"Termékek megtekintése\" banner a videó átfedésében látható</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium reklámok elrejtve
 
@@ -602,9 +610,6 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A sötét módú navigációs sáv nem áttetsző vagy áttetsző</string>
   <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
   <string name="morphe_toolbar_screen_summary">Eszközevek elrejtése vagy módosítása</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Küldés gomb elrejtése</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Az átküldés gomb rejtve van</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Az átküldés gomb látható</string>
   <string name="morphe_hide_toolbar_create_button_title">Elrejtés a Létrehozás gomb</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">A létrehozás gomb el van rejtve</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">A létrehozás gomb látható</string>

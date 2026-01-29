@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">다시 시작하세요</string>
   <string name="morphe_settings_restart_dialog_message">이 변경 사항을 적용하려면 앱을 다시 시작하세요.</string>
   <string name="morphe_settings_restart">다시 시작</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">가져오기</string>
   <string name="morphe_settings_import_copy">복사하기</string>
   <string name="morphe_settings_import_reset">Morphe 설정을 기본값으로 초기화합니다</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">앱 언어</string>
   <string name="morphe_pref_import_export_title">가져오기 / 내보내기</string>
   <string name="morphe_pref_import_export_summary">Morphe 설정을 가져오거나 내보낼 수 있습니다</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches &lt;i&gt;%s&lt;/i&gt;&lt;br&gt;최신 버전을 사용 중입니다</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;버전을 사용 중입니다&lt;br&gt;&lt;br&gt;&lt;b&gt;업데이트 사용 가능: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;패치를 업데이트하려면&lt;br&gt;Morphe를 사용하여&lt;br&gt;이 앱을 다시 패치하세요</string>
   <string name="morphe_settings_about_links_dev_header">알림</string>

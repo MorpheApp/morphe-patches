@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">需要重新啟動</string>
   <string name="morphe_settings_restart_dialog_message">重新啟動應用程式以使此變更生效。</string>
   <string name="morphe_settings_restart">重新啟動</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">匯入</string>
   <string name="morphe_settings_import_copy">複製</string>
   <string name="morphe_settings_import_reset">將 Morphe 設定重設為預設值</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">應用程式語言</string>
   <string name="morphe_pref_import_export_title">匯入/匯出</string>
   <string name="morphe_pref_import_export_summary">匯入/匯出 Morphe 設定</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 <i>%s</i></string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式,請使用 Morphe 重新修補此應用程式</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>

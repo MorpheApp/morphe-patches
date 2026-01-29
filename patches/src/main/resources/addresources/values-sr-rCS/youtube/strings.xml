@@ -81,6 +81,11 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_latest_posts_title">Sakrij najnovije objave</string>
   <string name="morphe_hide_latest_posts_summary_on">Najnovije objave su skrivene</string>
   <string name="morphe_hide_latest_posts_summary_off">Najnovije objave su prikazane</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Sakrij dugme \"Najnovije video\"</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Dugme \"Najnovije video\" je sakriveno</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Dugme \"Najnovije video\" je prikazano</string>
   <string name="morphe_hide_mix_playlists_title">Sakrij miks plejliste</string>
   <string name="morphe_hide_mix_playlists_summary_on">Miks plejliste su skrivene</string>
   <string name="morphe_hide_mix_playlists_summary_off">Miks plejliste su prikazane</string>
@@ -88,7 +93,7 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_movies_section_summary_on">Odeljak za filmove je skriven</string>
   <string name="morphe_hide_movies_section_summary_off">Odeljak za filmove je prikazan</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sakrij dugme „Obavesti me”</string>
   <string name="morphe_hide_notify_me_button_summary_on">Dugme „Obavesti me” je skriveno</string>
   <string name="morphe_hide_notify_me_button_summary_off">Dugme „Obavesti me” je prikazano</string>
@@ -161,6 +166,9 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_timed_reactions_title">Sakrij vremenske reakcije</string>
   <string name="morphe_hide_timed_reactions_summary_on">Vremenske reakcije su skrivene</string>
   <string name="morphe_hide_timed_reactions_summary_off">Vremenske reakcije su prikazane</string>
+  <string name="morphe_hide_video_title_title">Sakrij naslov Shorts videa</string>
+  <string name="morphe_hide_video_title_summary_on">Naslov videa u preklapnom okviru je sakriven</string>
+  <string name="morphe_hide_video_title_summary_off">Naslov videa u preklapnom okviru je prikazan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sakrij „Rezime videa koji je generisala veštačka inteligencija”</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Odeljak „Rezime videa koji je generisala veštačka inteligencija” je skriven</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Odeljak „Rezime videa koji je generisala veštačka inteligencija” je prikazan</string>
@@ -369,8 +377,8 @@ Ograničenja:
   <string name="morphe_hide_shopping_links_summary_on">Linkovi za kupovinu u opisu videa su skriveni</string>
   <string name="morphe_hide_shopping_links_summary_off">Linkovi za kupovinu u opisu videa su prikazani</string>
   <string name="morphe_hide_view_products_banner_title">Sakrij baner „Pogledajte proizvode”</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Baner „Pogledajte proizvode” u video plejeru je skriven</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Baner „Pogledajte proizvode” u video plejeru je prikazan</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Baner \"Pogledajte proizvode\" u video plejeru je skriven</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Baner \"Pogledajte proizvode\" u video plejeru je prikazan</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sakrij promocije za YouTube Premium</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"Ponude YouTube Premium su sakrivene
 
@@ -602,13 +610,13 @@ Podesite jačinu zvuka prevlačenjem vertikalno na desnoj strani ekrana"</string
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Traka za navigaciju u tamnom režimu je neprozirna ili prozirna</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Sakrijte ili promenite komponente trake za alatke</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Sakrij dugme „Prebacuj”</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Dugme „Prebacuj” je skriveno</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Dugme „Prebacuj” je prikazano</string>
+  <string name="morphe_hide_toolbar_create_button_title">Sakrij dugme \"Stvori\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Dugme „Napravi” je skriveno</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Dugme „Napravi” je prikazano</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Sakrij dugme \"Obaveštenja\"</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Dugme „Obaveštenja” je skriveno</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Dugme „Obaveštenja” je prikazano</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sakrij dugme \"Pretraga\"</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Dugme „Pretraga” je skriveno</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Dugme „Pretraga” je prikazano</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->

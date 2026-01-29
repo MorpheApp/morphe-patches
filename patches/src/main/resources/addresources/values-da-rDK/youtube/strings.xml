@@ -81,6 +81,11 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_latest_posts_title">Skjul seneste indlæg</string>
   <string name="morphe_hide_latest_posts_summary_on">Seneste indlæg er skjult</string>
   <string name="morphe_hide_latest_posts_summary_off">Seneste indlæg vises</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Skjul knappen \'Seneste videoer\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Knappen \'Seneste videoer\' er skjult</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Knappen \'Seneste videoer\' er vist</string>
   <string name="morphe_hide_mix_playlists_title">Skjul miks afspilningslister</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix afspilningslister er skjult</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix afspilningslister vises</string>
@@ -88,7 +93,7 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_movies_section_summary_on">Afsnittet Film er skjult</string>
   <string name="morphe_hide_movies_section_summary_off">Afsnittet Film vises</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul knappen \'Underret mig\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">Giv mig besked-knap er skjult</string>
   <string name="morphe_hide_notify_me_button_summary_off">Giv mig besked-knap vises</string>
@@ -161,6 +166,9 @@ Hvis et Doodle vises i øjeblikket i din region, og denne skjuleindstilling er a
   <string name="morphe_hide_timed_reactions_title">Skjul tidsreaktioner</string>
   <string name="morphe_hide_timed_reactions_summary_on">Tidsreaktioner skjules</string>
   <string name="morphe_hide_timed_reactions_summary_off">Tidsreaktioner vises</string>
+  <string name="morphe_hide_video_title_title">Skjul videotitel</string>
+  <string name="morphe_hide_video_title_summary_on">Videooverskrift i afspilleroverskrift er skjult</string>
+  <string name="morphe_hide_video_title_summary_off">Videooverskrift i afspilleroverskrift er vist</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skjul \"AI-genereret videooversigt\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-genereret videooversigt er skjult</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI-genereret videooversigtssektion vises</string>
@@ -369,8 +377,8 @@ Begrænsninger:
   <string name="morphe_hide_shopping_links_summary_on">Shoppinglinks i videobeskrivelse er skjult</string>
   <string name="morphe_hide_shopping_links_summary_off">Shoppinglinks i videobeskrivelsen vises</string>
   <string name="morphe_hide_view_products_banner_title">Skjul banneret \"Se produkter\"</string>
-  <string name="morphe_hide_view_products_banner_summary_on">Se produkter-banner i videooverlay er skjult</string>
-  <string name="morphe_hide_view_products_banner_summary_off">Se produkter-banner i videooverlay vises</string>
+  <string name="morphe_hide_view_products_banner_summary_on">Produktbanner i spilleroverskrift er skjult</string>
+  <string name="morphe_hide_view_products_banner_summary_off">Produktbanner i spilleroverskrift er vist</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium kampagner</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium-tilbud skjules
 
@@ -602,9 +610,6 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Mørk tilstand navigationslinjen er opak eller gennemsigtig</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Skjul eller ændre værktøjslinje-komponenter</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Skjul Cast-knappen</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_on">Cast-knappen er skjult</string>
-  <string name="morphe_hide_toolbar_cast_button_summary_off">Cast knap er vist</string>
   <string name="morphe_hide_toolbar_create_button_title">Skjul \"Opret\"-knappen</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Opret knap er skjult</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Opret knap vises</string>

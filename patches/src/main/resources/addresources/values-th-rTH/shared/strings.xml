@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">ต้องรีสตาร์ท</string>
   <string name="morphe_settings_restart_dialog_message">รีสตาร์ทแอปเพื่อให้การเปลี่ยนแปลงนี้มีผล</string>
   <string name="morphe_settings_restart">เริ่มต้นใหม่</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">นำเข้า</string>
   <string name="morphe_settings_import_copy">คัดลอก</string>
   <string name="morphe_settings_import_reset">การตั้งค่า Morphe ถูกตั้งค่าเป็นค่าเริ่มต้น</string>
@@ -62,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">ภาษาของแอป</string>
   <string name="morphe_pref_import_export_title">นำเข้า / ส่งออก</string>
   <string name="morphe_pref_import_export_summary">นำเข้า / ส่งออกการตั้งค่า Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;อัพเดตใหม่พร้อมให้ใช้: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;เพื่ออัพเดตแพทช์ของคุณ ให้ใช้ Morphe เพื่อแพทช์แอปพลิเคชันนี้ใหม่</string>
   <string name="morphe_settings_about_links_dev_header">หมายเหตุ</string>
