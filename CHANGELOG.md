@@ -1,3 +1,10 @@
+# [1.9.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.9...v1.9.0-dev.10) (2026-01-30)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide live chat replay button" setting ([#330](https://github.com/MorpheApp/morphe-patches/issues/330)) ([7a6c697](https://github.com/MorpheApp/morphe-patches/commit/7a6c69791cafc9247a55ac4c6ad30dcabba96d70))
+
 # [1.9.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.8...v1.9.0-dev.9) (2026-01-29)
 
 
