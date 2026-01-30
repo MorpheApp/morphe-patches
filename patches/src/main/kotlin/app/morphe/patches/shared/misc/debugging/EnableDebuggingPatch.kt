@@ -5,6 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -30,7 +31,9 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
 internal fun enableDebuggingPatch(
     block: BytecodePatchBuilder.() -> Unit = {},
     executeBlock: BytecodePatchContext.() -> Unit = {},
-    hookStringFeatureFlag: Boolean,
+    hookStringFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    hookLongFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    hookDoubleFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     preferenceScreen: BasePreferenceScreen.Screen,
     additionalDebugPreferences: List<BasePreference> = emptyList()
 ) = bytecodePatch(
@@ -107,10 +110,9 @@ internal fun enableDebuggingPatch(
             it.method.apply {
                 // In some versions, freeRegister is not available.
                 // The easiest workaround is to copy the method to minimize modifications to the instructions.
-                val helperMethodName = "patch_getBooleanFeatureFlag"
 
                 // Copy the method.
-                val helperMethod = cloneMutable(name = helperMethodName)
+                val helperMethod = cloneMutable(name = "patch_getBooleanFeatureFlag")
 
                 // Add the method.
                 it.classDef.methods.add(helperMethod)
@@ -119,15 +121,15 @@ internal fun enableDebuggingPatch(
                     0,
                     """
                         # Invoke the copied method (helper method).
-                        invoke-static {p0, p1, p2, p3}, $helperMethod
+                        invoke-static { p0, p1, p2, p3 }, $helperMethod
                         move-result p0
                         
                         # Convert the flag value to 'Long' format to pass it to the extension.
-                        invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+                        invoke-static { p1, p2 }, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
                         move-result-object p1
                         
                         # Redefine boolean in the extension.
-                        invoke-static {p0, p1}, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZLjava/lang/Long;)Z
+                        invoke-static { p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZLjava/lang/Long;)Z
                         move-result p0
                         
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -141,7 +143,7 @@ internal fun enableDebuggingPatch(
         // 'ExperimentalDoubleFeatureFlagFingerprint, ExperimentalLongFeatureFlagFingerprint, ExperimentalStringFeatureFlagFingerprint'
         // are different.
         // To handle this, declare parent fingerprints.
-        val ExperimentalFeatureFlagParentFingerprint = Fingerprint(
+        val experimentalFeatureFlagParentFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "Z",
             parameters = listOf("J", "Z"),
@@ -154,40 +156,82 @@ internal fun enableDebuggingPatch(
             )
         )
 
-        ExperimentalDoubleFeatureFlagFingerprint.match(
-            ExperimentalFeatureFlagParentFingerprint.originalClassDef
-        ).method.apply {
-            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_WIDE)
+        if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.match(
+            experimentalFeatureFlagParentFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                // In some versions, freeRegister is not available.
+                // The easiest workaround is to copy the method to minimize modifications to the instructions.
+                if (implementation!!.registerCount < 8) {
+                    throw PatchException("Target method has less than 8 registers")
+                }
 
-            addInstructions(
-                insertIndex,
-                """
-                    move-result-wide v0     # Also clobbers v1 (p0) since result is wide.
-                    invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isDoubleFeatureFlagEnabled(DJD)D
-                    move-result-wide v0
-                    return-wide v0
-                """
-            )
+                // Copy the method.
+                val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
+
+                // Add the method.
+                it.classDef.methods.add(helperMethod)
+
+                addInstructions(
+                    0,
+                    """
+                        # Invoke the copied method (helper method).
+                        invoke-static/range { p0 .. p4 }, $helperMethod
+                        move-result-wide v0
+                        
+                        # Move parameter registers to lower register range to use invoke-static/range.
+                        move-wide v2, p1
+                        move-wide v4, p3
+
+                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isDoubleFeatureFlagEnabled(DJD)D
+                        move-result-wide v0
+
+                        # Since the copied method (helper method) has already been invoked, it just returns.
+                        return-wide v0
+                    """
+                )
+            }
         }
 
-        ExperimentalLongFeatureFlagFingerprint.match(
-            ExperimentalFeatureFlagParentFingerprint.originalClassDef
-        ).method.apply {
-            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_WIDE)
+        if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.match(
+            experimentalFeatureFlagParentFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                // In some versions, freeRegister is not available.
+                // The easiest workaround is to copy the method to minimize modifications to the instructions.
+                if (implementation!!.registerCount < 8) {
+                    throw PatchException("Target method has less than 8 registers")
+                }
 
-            addInstructions(
-                insertIndex,
-                """
-                    move-result-wide v0
-                    invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isLongFeatureFlagEnabled(JJJ)J
-                    move-result-wide v0
-                    return-wide v0
-                """
-            )
+                // Copy the method.
+                val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
+
+                // Add the method.
+                it.classDef.methods.add(helperMethod)
+
+                addInstructions(
+                    0,
+                    """
+                        # Invoke the copied method (helper method).
+                        invoke-static/range { p0 .. p4 }, $helperMethod
+                        move-result-wide v0
+                        
+                        # Move parameter registers to lower register range to use invoke-static/range.
+                        move-wide v2, p1
+                        move-wide v4, p3
+
+                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isLongFeatureFlagEnabled(JJJ)J
+                        move-result-wide v0
+
+                        # Since the copied method (helper method) has already been invoked, it just returns.
+                        return-wide v0
+                    """
+                )
+            }
         }
 
-        if (hookStringFeatureFlag) ExperimentalStringFeatureFlagFingerprint.match(
-            ExperimentalFeatureFlagParentFingerprint.originalClassDef
+        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.match(
+            experimentalFeatureFlagParentFingerprint.originalClassDef
         ).method.apply {
             val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.MOVE_RESULT_OBJECT)
 
