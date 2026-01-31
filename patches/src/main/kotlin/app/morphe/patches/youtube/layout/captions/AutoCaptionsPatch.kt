@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.autocaptions
+package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
@@ -6,16 +6,13 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.SubtitleButtonControllerFingerprint
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
 
-@Suppress("unused")
-val autoCaptionsPatch = bytecodePatch(
-    name = "Auto captions",
+internal val autoCaptionsPatch = bytecodePatch(
     description = "Adds an option to disable captions from being automatically enabled.",
 ) {
     dependsOn(
@@ -24,19 +21,8 @@ val autoCaptionsPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-        )
-    )
-
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        settingsMenuCaptionGroup.add(
             if (is_20_26_or_greater) {
                 ListPreference("morphe_auto_captions_style")
             } else {

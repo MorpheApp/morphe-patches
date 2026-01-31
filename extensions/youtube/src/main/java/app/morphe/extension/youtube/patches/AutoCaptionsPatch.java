@@ -34,7 +34,7 @@ public class AutoCaptionsPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Note: 'captionsButtonStatus' field check is not needed here
      * because it's only related to 'disableAutoCaptions()' method
      * in order to prevent auto-captioning with volume enabled
