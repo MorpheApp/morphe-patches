@@ -417,6 +417,10 @@ public class Utils {
         clipboard.setPrimaryClip(clip);
     }
 
+    public static boolean isNotEmpty(final String str) {
+        return str != null && !str.isEmpty();
+    }
+
     public static boolean isTablet() {
         return context.getResources().getConfiguration().smallestScreenWidthDp >= 600;
     }

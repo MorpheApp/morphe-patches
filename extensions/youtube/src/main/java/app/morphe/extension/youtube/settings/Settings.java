@@ -148,7 +148,6 @@ public class Settings extends BaseSettings {
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
     public static final BooleanSetting COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("morphe_copy_video_url_timestamp", TRUE);
-    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", TRUE, true);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
@@ -181,6 +180,12 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
     public static final BooleanSetting PLAYER_POPUP_PANELS = new BooleanSetting("morphe_hide_player_popup_panels", FALSE);
+
+    // Captions
+    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
+    public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
+    public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
+    public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", FALSE, true);
 
     // Miniplayer
     public static final EnumSetting<MiniplayerType> MINIPLAYER_TYPE = new EnumSetting<>("morphe_miniplayer_type", MiniplayerType.DEFAULT, true);
