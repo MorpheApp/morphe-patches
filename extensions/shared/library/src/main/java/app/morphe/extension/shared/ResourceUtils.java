@@ -10,12 +10,10 @@ import android.view.animation.AnimationUtils;
 
 import androidx.annotation.Nullable;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import app.morphe.extension.shared.settings.Setting;
-import kotlin.io.TextStreamsKt;
 
 @SuppressWarnings({"unused", "deprecation", "DiscouragedApi"})
 public class ResourceUtils {
@@ -224,29 +222,18 @@ public class ResourceUtils {
 
     @Nullable
     public static String getRawResource(String name) {
-        final InputStream is = openRawResource(name);
-        if (is != null) {
-            try {
-                InputStreamReader inputStream = new InputStreamReader(is);
-                BufferedReader reader = new BufferedReader(inputStream, 8192);
-                String readText = TextStreamsKt.readText(reader);
-                reader.close();
-                return readText;
-            } catch (Exception ignored) {
-                handleException(ResourceType.RAW, name);
-            }
-        }
-        return null;
-    }
-
-    @Nullable
-    private static InputStream openRawResource(String name) {
         final int identifier = getRawIdentifier(name);
         if (identifier == 0) {
             handleException(ResourceType.RAW, name);
             return null;
         }
-        return Utils.getResources().openRawResource(identifier);
+        try (InputStream is = Utils.getResources().openRawResource(identifier)) {
+            //noinspection CharsetObjectCanBeUsed
+            return new Scanner(is, "UTF-8").useDelimiter("\\A").next();
+        } catch (Exception ex) {
+            Logger.printException(() -> "getRawResource failed", ex);
+            return null;
+        }
     }
 
     private static void handleException(ResourceType type, String name) {

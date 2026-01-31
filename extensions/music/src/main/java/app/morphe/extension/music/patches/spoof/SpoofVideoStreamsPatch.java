@@ -1,8 +1,6 @@
 package app.morphe.extension.music.patches.spoof;
 
 import static app.morphe.extension.music.settings.Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_MUSIC_NO_SDK;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_NO_SDK;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_47_48;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_54_20;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS;

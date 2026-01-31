@@ -13,12 +13,13 @@ import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 
 final class PlayerRoutes {
     static final Route.CompiledRoute GET_STREAMING_DATA = new Route(
             Route.Method.POST,
             "player" +
-                    "?fields=streamingData" +
+                    "?fields=playabilityStatus,streamingData" +
                     "&alt=proto"
     ).compile();
 
@@ -56,6 +57,9 @@ final class PlayerRoutes {
             if (clientType.androidSdkVersion != null) {
                 client.put("androidSdkVersion", clientType.androidSdkVersion);
             }
+            if (clientType.clientPlatform != null) {
+                client.put("platform", clientType.clientPlatform);
+            }
             client.put("hl", streamLocale.getLanguage());
             client.put("gl", streamLocale.getCountry());
             context.put("client", client);
@@ -64,6 +68,37 @@ final class PlayerRoutes {
             innerTubeBody.put("contentCheckOk", true);
             innerTubeBody.put("racyCheckOk", true);
             innerTubeBody.put("videoId", videoId);
+
+            if (clientType.requireJS) {
+                JSONObject configInfo = new JSONObject();
+                configInfo.put("appInstallData", "");
+                client.put("configInfo", configInfo);
+
+                JSONObject user = new JSONObject();
+                user.put("lockedSafetyMode", false);
+                context.put("user", user);
+
+                JSONObject contentPlaybackContext = new JSONObject();
+                contentPlaybackContext.put(
+                        "referer",
+                        String.format("https://www.youtube.com/tv#/watch?v=%s", videoId)
+                );
+                contentPlaybackContext.put("html5Preference", "HTML5_PREF_WANTS");
+                Integer signatureTimestamp = JavaScriptManager.getSignatureTimestamp();
+                if (signatureTimestamp != null) {
+                    contentPlaybackContext.put("signatureTimestamp", signatureTimestamp);
+                }
+
+                JSONObject devicePlaybackCapabilities = new JSONObject();
+                devicePlaybackCapabilities.put("supportsVp9Encoding", true);
+                devicePlaybackCapabilities.put("supportXhr", false);
+
+                JSONObject playbackContext = new JSONObject();
+                playbackContext.put("contentPlaybackContext", contentPlaybackContext);
+                playbackContext.put("devicePlaybackCapabilities", devicePlaybackCapabilities);
+
+                innerTubeBody.put("playbackContext", playbackContext);
+            }
         } catch (JSONException e) {
             Logger.printException(() -> "Failed to create innerTubeBody", e);
         }

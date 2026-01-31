@@ -1565,10 +1565,10 @@ Playback may stutter or drop frames"</string>
 Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_title">Spoofing side effects</string>
     <string name="morphe_spoof_video_streams_about_experimental">• Experimental client and may stop working anytime</string>
-    <string name="morphe_spoof_video_streams_about_playback_failure">• Video may stop at 1:00, or may not be available in some regions</string>
     <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audio track menu is missing</string>
     <string name="morphe_spoof_video_streams_about_no_av1">• No AV1 video codec</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
+    <string name="morphe_spoof_video_streams_about_js">• Video may start late</string>
     <string name="morphe_spoof_video_streams_about_kids_videos">• Kids videos may not play when logged out or in incognito mode</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>

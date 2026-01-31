@@ -41,6 +41,10 @@ public class SharedPrefCategory {
         preferences.edit().putString(key, (value == null ? null : value.toString())).commit();
     }
 
+    public void clear() {
+        preferences.edit().clear().apply();
+    }
+
     /**
      * Removes any preference data type that has the specified key.
      */
