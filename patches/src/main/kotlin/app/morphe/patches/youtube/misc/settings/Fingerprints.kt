@@ -10,12 +10,11 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object LicenseActivityOnCreateFingerprint : Fingerprint(
+    definingClass = "/LicenseActivity;",
+    name = "onCreate",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.endsWith("/LicenseActivity;")
-    }
+    parameters = listOf("Landroid/os/Bundle;")
 )
 
 internal object SetThemeFingerprint : Fingerprint(

@@ -42,38 +42,35 @@ internal val submittedListingFingerprint = Fingerprint(
 )
 
 internal val adPostSectionConstructorFingerprint = Fingerprint(
+    name = "<init>",
     returnType = "V",
     filters = listOf(
         string("sections")
-    ),
-    custom = { methodDef, _ ->
-        methodDef.name == "<init>"
-    }
+    )
 )
 
 internal val adPostSectionToStringFingerprint = Fingerprint(
+    name = "toString",
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = emptyList(),
     strings = listOf(
         "AdPostSection(linkId=",
         ", sections=",
-    ),
-    custom = { methodDef, _ ->
-        methodDef.name == "toString"
-    }
+    )
 )
 
 internal val commentsViewModelConstructorFingerprint = Fingerprint(
+    definingClass = "/CommentsViewModel;",
+    name = "<init>",
     returnType = "V",
-    custom = { methodDef, classDef ->
-        classDef.superclass == "Lcom/reddit/screen/presentation/CompositionViewModel;" &&
-                methodDef.definingClass.endsWith("/CommentsViewModel;") &&
-                methodDef.name == "<init>"
-    },
+    custom = { _, classDef ->
+        classDef.superclass == "Lcom/reddit/screen/presentation/CompositionViewModel;"
+    }
 )
 
 internal val immutableListBuilderFingerprint = Fingerprint(
+    name = "<clinit>",
     returnType = "V",
     parameters = emptyList(),
     filters = listOf(
@@ -86,18 +83,13 @@ internal val immutableListBuilderFingerprint = Fingerprint(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("Ljava/lang/Iterable;")
         )
-    ),
-    custom = { methodDef, _ ->
-        methodDef.name == "<clinit>"
-    }
+    )
 )
 
 internal val postDetailAdLoaderFingerprint = Fingerprint(
+    definingClass = "/RedditPostDetailAdLoader\$loadPostDetailAds$",
+    name = "invokeSuspend",
     returnType = "L",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf("L"),
-    custom = { methodDef, classDef ->
-        methodDef.name == "invokeSuspend" &&
-            classDef.type.contains("/RedditPostDetailAdLoader\$loadPostDetailAds$")
-    }
+    parameters = listOf("L")
 )

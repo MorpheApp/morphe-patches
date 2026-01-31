@@ -20,7 +20,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
+internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
 
 private lateinit var toolbarMethod: MutableMethod
 
@@ -69,7 +69,7 @@ val toolBarHookPatch = bytecodePatch(
             removeInstruction(enumOrdinalIndex)
         }
 
-        toolbarMethod = ToolBarPatchFingerprint.match(classDefBy(EXTENSION_CLASS_DESCRIPTOR)).method
+        toolbarMethod = ToolBarPatchFingerprint.method
     }
 }
 

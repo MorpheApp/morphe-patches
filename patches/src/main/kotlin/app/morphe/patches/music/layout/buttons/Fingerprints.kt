@@ -48,12 +48,12 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
 )
 
 internal object SearchActionViewFingerprint : Fingerprint(
+    definingClass = "/SearchActionProvider;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.containsLiteralInstruction(searchButton) &&
-                classDef.type.endsWith("/SearchActionProvider;")
+    custom = { method, _ ->
+        method.containsLiteralInstruction(searchButton)
     }
 )
 

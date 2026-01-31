@@ -18,6 +18,7 @@ import com.android.tools.smali.dexlib2.Opcode
 internal const val YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;"
 
 internal object ConversionContextFingerprintToString : Fingerprint(
+    name = "toString",
     parameters = listOf(),
     strings = listOf(
         "ConversionContext{", // Partial string match.
@@ -26,10 +27,7 @@ internal object ConversionContextFingerprintToString : Fingerprint(
         ", templateLoggerFactory=",
         ", rootDisposableContainer=",
         ", identifierProperty="
-    ),
-    custom = { method, _ ->
-        method.name == "toString"
-    }
+    )
 )
 
 internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
@@ -61,20 +59,18 @@ internal object MainActivityConstructorFingerprint : Fingerprint(
 )
 
 internal object MainActivityOnBackPressedFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onBackPressed",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "onBackPressed" && classDef.type == YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-    }
 )
 
 internal object YouTubeActivityOnCreateFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-    }
 )
 
 internal object RollingNumberTextViewAnimationUpdateFingerprint : Fingerprint(
@@ -111,11 +107,11 @@ internal object SeekbarFingerprint : Fingerprint(
 )
 
 internal object SeekbarOnDrawFingerprint : Fingerprint(
+    name = "onDraw",
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
-    ),
-    custom = { method, _ -> method.name == "onDraw" }
+    )
 )
 
 internal object SubtitleButtonControllerFingerprint : Fingerprint(
@@ -152,8 +148,8 @@ internal object ToolBarButtonFingerprint : Fingerprint(
         methodCall(returnType = "I", opcode = Opcode.INVOKE_INTERFACE),
         opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
         fieldAccess(type = "Landroid/widget/ImageView;", opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
-        methodCall("Landroid/content/res/Resources;", "getDrawable", location = MatchAfterWithin(8)),
-        methodCall("Landroid/widget/ImageView;", "setImageDrawable", location = MatchAfterWithin(4))
+        methodCall(definingClass = "Landroid/content/res/Resources;", name = "getDrawable", location = MatchAfterWithin(8)),
+        methodCall(definingClass = "Landroid/widget/ImageView;", name = "setImageDrawable", location = MatchAfterWithin(4))
     ),
     custom = { method, _ ->
         // 20.37+ has second parameter of "Landroid/content/Context;"

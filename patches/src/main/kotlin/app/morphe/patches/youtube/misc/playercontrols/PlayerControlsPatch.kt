@@ -209,7 +209,7 @@ fun injectVisibilityCheckCall(descriptor: String) {
     )
 }
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/PlayerControlsPatch;"
+internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/PlayerControlsPatch;"
 
 private lateinit var inflateTopControlMethod: MutableMethod
 private var inflateTopControlInsertIndex = -1
@@ -282,11 +282,8 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        val extensionClassDef = mutableClassDefBy(EXTENSION_CLASS_DESCRIPTOR)
-        visibilityImmediateCallbacksExistMethod =
-            PlayerControlsExtensionHookListenersExistFingerprint.match(extensionClassDef).method
-        visibilityImmediateMethod = PlayerControlsExtensionHookFingerprint
-            .match(extensionClassDef).method
+        visibilityImmediateCallbacksExistMethod = PlayerControlsExtensionHookListenersExistFingerprint.method
+        visibilityImmediateMethod = PlayerControlsExtensionHookFingerprint.method
 
         MotionEventFingerprint.match(YoutubeControlsOverlayFingerprint.originalClassDef).let {
             visibilityNegatedImmediateMethod = it.method

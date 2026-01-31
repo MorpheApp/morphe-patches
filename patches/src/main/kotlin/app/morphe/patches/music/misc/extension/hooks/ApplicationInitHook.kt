@@ -8,12 +8,12 @@ import app.morphe.patches.shared.misc.extension.activityOnCreateExtensionHook
 
 internal val applicationInitHook = ExtensionHook(
     Fingerprint(
+        name = "onCreate",
         returnType = "V",
         parameters = listOf(),
         filters = listOf(
             string("activity")
-        ),
-        custom = { method, _ -> method.name == "onCreate" }
+        )
     )
 )
 

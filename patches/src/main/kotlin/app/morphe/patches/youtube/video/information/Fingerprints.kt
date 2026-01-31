@@ -46,12 +46,10 @@ internal object OnPlaybackSpeedItemClickParentFingerprint : Fingerprint(
  * Resolves using the method found in [OnPlaybackSpeedItemClickParentFingerprint].
  */
 internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
+    name = "onItemClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "L", "I", "J"),
-    custom = { method, _ ->
-        method.name == "onItemClick"
-    }
+    parameters = listOf("L", "L", "I", "J")
 )
 
 internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
@@ -202,6 +200,7 @@ internal object VideoQualityLegacyFingerprint : Fingerprint(
 )
 
 internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
+    name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     filters = listOf(
@@ -209,10 +208,7 @@ internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
         // First method call after Locale is the video id.
         methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
         string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
-    ),
-    custom = { method, _ ->
-        method.name == "toString"
-    }
+    )
 )
 
 // Class name is un-obfuscated in targets before 21.01

@@ -18,16 +18,14 @@ internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
  * Resolves to class found in [videoQualityItemOnClickFingerprint].
  */
 internal object VideoQualityItemOnClickFingerprint : Fingerprint(
+    name = "onItemClick",
     returnType = "V",
     parameters = listOf(
         "Landroid/widget/AdapterView;",
         "Landroid/view/View;",
         "I",
         "J"
-    ),
-    custom = { method, _ ->
-        method.name == "onItemClick"
-    }
+    )
 )
 
 internal object VideoQualityMenuOptionsFingerprint : Fingerprint(

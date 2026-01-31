@@ -30,7 +30,7 @@ import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringRefere
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/GmsCoreSupport;"
+internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/GmsCoreSupport;"
 
 /**
  * Old vendor id for maximum backwards compatibility.
@@ -208,11 +208,8 @@ fun gmsCoreSupportPatch(
             GooglePlayUtilityFingerprint.method.returnEarly(0)
         }
 
-        // Speed up resolving by lookup up class from map.
-        val extensionClassDef = classDefBy(EXTENSION_CLASS_DESCRIPTOR)
-
         // Set original and patched package names for extension to use.
-        OriginalPackageNameExtensionFingerprint.match(extensionClassDef).method.returnEarly(fromPackageName)
+        OriginalPackageNameExtensionFingerprint.method.returnEarly(fromPackageName)
 
         // Verify GmsCore is installed and whitelisted for power optimizations and background usage.
         mainActivityOnCreateFingerprint.method.addInstruction(
@@ -222,8 +219,7 @@ fun gmsCoreSupportPatch(
         )
 
         // Change the vendor of GmsCore in the extension.
-
-        GmsCoreSupportFingerprint.match(extensionClassDef).method.returnEarly(GMS_CORE_VENDOR_GROUP_ID!!)
+        GmsCoreSupportFingerprint.method.returnEarly(GMS_CORE_VENDOR_GROUP_ID)
 
         executeBlock()
     }

@@ -5,9 +5,8 @@ import app.morphe.patcher.Fingerprint
 internal const val YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/music/activities/MusicActivity;"
 
 internal object MusicActivityOnCreateFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
     returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE
-    }
+    parameters = listOf("Landroid/os/Bundle;")
 )

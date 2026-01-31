@@ -57,13 +57,11 @@ internal object InitializeButtonsFingerprint : Fingerprint(
  * Specifically, [navigationBarPatch].
  */
 internal object NavigationBarHookCallbackFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name ="navigationTabCreatedCallback",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
-    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;"),
-    custom = { method, _ ->
-        method.name == "navigationTabCreatedCallback" &&
-            method.definingClass == EXTENSION_CLASS_DESCRIPTOR
-    }
+    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;")
 )
 
 /**
@@ -87,47 +85,43 @@ internal object NavigationEnumFingerprint : Fingerprint(
 )
 
 internal object PivotBarButtonsCreateDrawableViewFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     custom = { method, _ ->
-        method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;" &&
-            // Only one view creation method has a Drawable parameter.
-            method.parameterTypes.firstOrNull() == "Landroid/graphics/drawable/Drawable;"
+        // Only one view creation method has a Drawable parameter.
+        method.parameterTypes.firstOrNull() == "Landroid/graphics/drawable/Drawable;"
     }
 )
 
 internal object PivotBarButtonsCreateResourceStyledViewFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
-    parameters = listOf("L", "Z", "I", "L"),
-    custom = { method, _ ->
-        method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
-    }
+    parameters = listOf("L", "Z", "I", "L")
 )
 
 /**
  * 20.21+
  */
 internal object PivotBarButtonsCreateResourceIntViewFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     custom = { method, _ ->
-        method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;" &&
-            // Only one view creation method has an int first parameter.
-            method.parameterTypes.firstOrNull() == "I"
+        // Only one view creation method has an int first parameter.
+        method.parameterTypes.firstOrNull() == "I"
     }
 )
 
 internal object PivotBarButtonsViewSetSelectedFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "Z"),
     filters = listOf(
         methodCall(name = "setSelected")
-    ),
-    custom = { method, _ ->
-        method.definingClass == "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
-    }
+    )
 )
 
 internal object PivotBarConstructorFingerprint : Fingerprint(
