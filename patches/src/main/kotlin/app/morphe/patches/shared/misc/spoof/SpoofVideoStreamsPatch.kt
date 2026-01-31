@@ -8,15 +8,22 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.rawResourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.ProtobufClassParseByteArrayFingerprint
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -28,12 +35,22 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
+import java.nio.file.Files
+import org.w3c.dom.Element
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
 private lateinit var buildRequestMethod: MutableMethod
 private var buildRequestMethodUrlRegister = -1
+
+private lateinit var context: ResourcePatchContext
+
+private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
+    execute {
+        context = this
+    }
+}
 
 internal fun spoofVideoStreamsPatch(
     extensionClassDescriptor: String,
@@ -49,6 +66,11 @@ internal fun spoofVideoStreamsPatch(
     description = "Adds options to spoof the client video streams to fix playback.",
 ) {
     block()
+
+    dependsOn(
+        fixProtoLibraryPatch,
+        spoofVideoStreamsRawResourcePatch,
+    )
 
     execute {
         mainActivityOnCreateFingerprint.method.addInstructions(
@@ -141,7 +163,7 @@ internal fun spoofVideoStreamsPatch(
                     "$resultMethodType->$setStreamDataMethodName($videoDetailsClass)V",
             )
 
-            val protobufClass = ProtobufClassParseByteBufferFingerprint.method.definingClass
+            val parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
             val setStreamingDataIndex = CreateStreamingDataFingerprint.instructionMatches.first().index
 
             val playerProtoClass = getInstruction(setStreamingDataIndex + 1)
@@ -179,13 +201,13 @@ internal fun spoofVideoStreamsPatch(
                             if-eqz v2, :disabled
     
                             # Get streaming data.
-                            invoke-static { v2 }, $EXTENSION_CLASS_DESCRIPTOR->getStreamingData(Ljava/lang/String;)Ljava/nio/ByteBuffer;
+                            invoke-static { v2 }, $EXTENSION_CLASS_DESCRIPTOR->getStreamingData(Ljava/lang/String;)[B
                             move-result-object v3
                             if-eqz v3, :disabled
     
                             # Parse streaming data.
                             sget-object v4, $playerProtoClass->a:$playerProtoClass
-                            invoke-static { v4, v3 }, $protobufClass->parseFrom(${protobufClass}Ljava/nio/ByteBuffer;)$protobufClass
+                            invoke-static { v4, v3 }, $parseByteArrayMethod
                             move-result-object v5
                             check-cast v5, $playerProtoClass
     
@@ -358,6 +380,56 @@ internal fun spoofVideoStreamsPatch(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useMediaSessionFeatureFlag(Z)Z"
                 )
+            }
+        }
+
+        // endregion
+
+        // region copy the j2v8 library.
+
+        with(context) {
+            setOf(
+                "arm64-v8a",
+                "armeabi-v7a",
+                "x86",
+                "x86_64"
+            ).forEach { arch ->
+                val architectureDirectory = get("lib/$arch")
+
+                // For YouTube Music, there is only one architecture in the app.
+                // Copy only if the architecture folder exists.
+                if (architectureDirectory.exists()) {
+                    val inputStream = inputStreamFromBundledResource(
+                        "spoof/jniLibs",
+                        "$arch/libj2v8.so"
+                    )
+                    if (inputStream != null) {
+                        Files.copy(
+                            inputStream,
+                            architectureDirectory.resolve("libj2v8.so").toPath(),
+                        )
+                    }
+                }
+            }
+
+            copyResources(
+                "spoof",
+                ResourceGroup(
+                    "raw",
+                    "astring-1.9.0.min.js",
+                    "meriyah-6.1.4.min.js",
+                    "polyfill.js",
+                    "yt.solver.core.js", // yt-dlp-ejs 0.4.0
+                )
+            )
+
+            // Fix compile error in YouTube Music.
+            document("AndroidManifest.xml").use { document ->
+                val applicationNode =
+                    document
+                        .getElementsByTagName("application")
+                        .item(0) as Element
+                applicationNode.setAttribute("android:extractNativeLibs", "true")
             }
         }
 
