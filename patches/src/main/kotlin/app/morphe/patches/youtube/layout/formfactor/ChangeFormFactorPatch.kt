@@ -10,6 +10,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
+import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -25,7 +26,7 @@ val changeFormFactorPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-//        navigationBarPatch
+        navigationBarHookPatch
     )
 
     compatibleWith(
