@@ -27,12 +27,12 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
-import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
+import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.spoof.ClientType;
 
 
 /**

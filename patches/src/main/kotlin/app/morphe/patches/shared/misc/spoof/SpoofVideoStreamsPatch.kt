@@ -8,7 +8,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.rawResourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -35,8 +34,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
-import java.nio.file.Files
 import org.w3c.dom.Element
+import java.nio.file.Files
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
@@ -44,11 +43,56 @@ internal const val EXTENSION_CLASS_DESCRIPTOR =
 private lateinit var buildRequestMethod: MutableMethod
 private var buildRequestMethodUrlRegister = -1
 
-private lateinit var context: ResourcePatchContext
-
 private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
     execute {
-        context = this
+
+        // region copy the j2v8 library.
+
+        setOf(
+            "arm64-v8a",
+            "armeabi-v7a",
+            "x86",
+            "x86_64"
+        ).forEach { arch ->
+            val architectureDirectory = get("lib/$arch")
+
+            // For YouTube Music, there is only one architecture in the app.
+            // Copy only if the architecture folder exists.
+            if (architectureDirectory.exists()) {
+                val inputStream = inputStreamFromBundledResource(
+                    "spoof/jniLibs",
+                    "$arch/libj2v8.so"
+                )
+                if (inputStream != null) {
+                    Files.copy(
+                        inputStream,
+                        architectureDirectory.resolve("libj2v8.so").toPath(),
+                    )
+                }
+            }
+        }
+
+        copyResources(
+            "spoof",
+            ResourceGroup(
+                "raw",
+                "astring-1.9.0.min.js",
+                "meriyah-6.1.4.min.js",
+                "polyfill.js",
+                "yt.solver.core.js", // yt-dlp-ejs 0.4.0
+            )
+        )
+
+        // Fix compile error in YouTube Music.
+        document("AndroidManifest.xml").use { document ->
+            val applicationNode =
+                document
+                    .getElementsByTagName("application")
+                    .item(0) as Element
+            applicationNode.setAttribute("android:extractNativeLibs", "true")
+        }
+
+        // endregion
     }
 }
 
@@ -380,56 +424,6 @@ internal fun spoofVideoStreamsPatch(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->useMediaSessionFeatureFlag(Z)Z"
                 )
-            }
-        }
-
-        // endregion
-
-        // region copy the j2v8 library.
-
-        with(context) {
-            setOf(
-                "arm64-v8a",
-                "armeabi-v7a",
-                "x86",
-                "x86_64"
-            ).forEach { arch ->
-                val architectureDirectory = get("lib/$arch")
-
-                // For YouTube Music, there is only one architecture in the app.
-                // Copy only if the architecture folder exists.
-                if (architectureDirectory.exists()) {
-                    val inputStream = inputStreamFromBundledResource(
-                        "spoof/jniLibs",
-                        "$arch/libj2v8.so"
-                    )
-                    if (inputStream != null) {
-                        Files.copy(
-                            inputStream,
-                            architectureDirectory.resolve("libj2v8.so").toPath(),
-                        )
-                    }
-                }
-            }
-
-            copyResources(
-                "spoof",
-                ResourceGroup(
-                    "raw",
-                    "astring-1.9.0.min.js",
-                    "meriyah-6.1.4.min.js",
-                    "polyfill.js",
-                    "yt.solver.core.js", // yt-dlp-ejs 0.4.0
-                )
-            )
-
-            // Fix compile error in YouTube Music.
-            document("AndroidManifest.xml").use { document ->
-                val applicationNode =
-                    document
-                        .getElementsByTagName("application")
-                        .item(0) as Element
-                applicationNode.setAttribute("android:extractNativeLibs", "true")
             }
         }
 
