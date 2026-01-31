@@ -3,25 +3,23 @@ package app.morphe.patches.shared.misc.audio
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.cloneMutable
 import app.morphe.util.findMethodFromToString
-import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/patches/ForceOriginalAudioPatch;"
@@ -89,60 +87,81 @@ internal fun forceOriginalAudioPatch(
                     ).toMutable()
                 )
 
-                // Add a helper method because the isDefaultAudioTrack() has only 2 registers and 3 are needed.
+
+                // Add a helper method because the isDefaultAudioTrack() has only 1 or 2 registers and 3 are needed.
                 val helperMethodClass = type
-                val helperMethodName = "patch_isDefaultAudioTrack"
-                val helperMethod = ImmutableMethod(
-                    helperMethodClass,
-                    helperMethodName,
-                    listOf(ImmutableMethodParameter("Z", null, null)),
-                    "Z",
-                    AccessFlags.PRIVATE.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(6),
-                ).toMutable().apply {
-                    addInstructionsWithLabels(
+
+                val originalRegisterCount = isDefaultAudioTrackMethod.implementation!!.registerCount
+                if (originalRegisterCount > 3) {
+                    // Patch could work if more than 3 registers are present but needs additional changes.
+                    throw PatchException("Target method has more than 3 registers")
+                }
+
+                // Copy the method to add additional registers.
+                val helperMethod = isDefaultAudioTrackMethod.cloneMutable(
+                    name = "patch_isDefaultAudioTrack",
+                    registerCount = 7
+                )
+
+                // Add the method.
+                it.classDef.methods.add(helperMethod)
+
+                helperMethod.apply {
+                    val thisRegister = 3
+
+                    // Copied method doesn't have correct registers for p0+
+                    // Fix parameters registers by copying from new p0 to effectively the old p0.
+                    addInstructions(
                         0,
                         """
-                            iget-object v0, p0, $helperMethodClass->$helperFieldName:Ljava/lang/Boolean;
-                            if-eqz v0, :call_extension            
-                            invoke-virtual { v0 }, Ljava/lang/Boolean;->booleanValue()Z
-                            move-result v3
-                            return v3
+                            # Copy old p0 to new first register.
+                            move-object v${originalRegisterCount - 1} , p0
+                            
+                            # Save off p0 to a new high register.
+                            move-object v$thisRegister, p0
+                        """
+                    )
+
+                    val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN)
+                    val originalResultRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+                    helperMethod.addInstructionsAtControlFlowLabel(
+                        insertIndex,
+                        """
+                            iget-object v4, v$thisRegister, $helperMethodClass->$helperFieldName:Ljava/lang/Boolean;
+                            if-eqz v4, :call_extension            
+                            invoke-virtual { v4 }, Ljava/lang/Boolean;->booleanValue()Z
+                            move-result v4
+                            return v4
                             
                             :call_extension
-                            invoke-virtual { p0 }, $audioTrackIdMethod
-                            move-result-object v1
+                            invoke-virtual { v$thisRegister }, $audioTrackIdMethod
+                            move-result-object v4
                             
-                            invoke-virtual { p0 }, $audioTrackDisplayNameMethod
-                            move-result-object v2
+                            invoke-virtual { v$thisRegister }, $audioTrackDisplayNameMethod
+                            move-result-object v5
         
-                            invoke-static { p1, v1, v2 }, $EXTENSION_CLASS_DESCRIPTOR->isDefaultAudioStream(ZLjava/lang/String;Ljava/lang/String;)Z
-                            move-result v3
+                            invoke-static { v$originalResultRegister, v4, v5 }, $EXTENSION_CLASS_DESCRIPTOR->isDefaultAudioStream(ZLjava/lang/String;Ljava/lang/String;)Z
+                            move-result v4
                             
-                            invoke-static { v3 }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-                            move-result-object v0
-                            iput-object v0, p0, $helperMethodClass->$helperFieldName:Ljava/lang/Boolean;
-                            return v3
+                            invoke-static { v4 }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+                            move-result-object v5
+                            iput-object v5, v$thisRegister, $helperMethodClass->$helperFieldName:Ljava/lang/Boolean;
+                            return v4
                         """
                     )
                 }
-                methods.add(helperMethod)
 
-                // Modify isDefaultAudioTrack() to call extension helper method.
-                isDefaultAudioTrackMethod.apply {
-                    val index = indexOfFirstInstructionOrThrow(Opcode.RETURN)
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                    addInstructions(
-                        index,
-                        """
-                            invoke-direct { p0, v$register }, $helperMethodClass->$helperMethodName(Z)Z
-                            move-result v$register
-                        """
-                    )
-                }
+                // Call new method.
+                isDefaultAudioTrackMethod.addInstructions(
+                    0,
+                    """
+                        invoke-direct { p0 }, $helperMethod
+                        move-result p0
+                        return p0
+                    """
+                )
             }
         }
 

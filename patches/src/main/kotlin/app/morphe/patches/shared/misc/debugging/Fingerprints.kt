@@ -31,15 +31,19 @@ internal object ExperimentalBooleanFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "D",
-    parameters = listOf("J", "D")
+    parameters = listOf("L", "J", "D"),
+    custom = { method, _ ->
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object ExperimentalLongFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "J",
-    parameters = listOf("J", "J")
+    parameters = listOf("L", "J", "J"),
+    custom = { method, _ ->
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object ExperimentalStringFeatureFlagFingerprint : Fingerprint(
