@@ -22,19 +22,17 @@ internal object ServiceCheckFingerprint : Fingerprint(
 )
 
 internal object GmsCoreSupportFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "getGmsCoreVendorGroupId",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    custom = { method, _ ->
-        method.name == "getGmsCoreVendorGroupId"
-    }
+    parameters = listOf()
 )
 
 internal object OriginalPackageNameExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "getOriginalPackageName",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    custom = { methodDef, _ ->
-        methodDef.name == "getOriginalPackageName"
-    }
+    parameters = listOf()
 )

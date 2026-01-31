@@ -42,22 +42,22 @@ internal val fIxLikeButtonPatch = bytecodePatch{
 
                 Pair(
                     Fingerprint(
+                        name = lottieAnimationUrlMethodName,
                         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                         returnType = "Ljava/lang/String;",
                         parameters = listOf(),
                         custom = { method, classDef ->
                             classDef.interfaces.contains(abstractClass) &&
-                                    method.name == lottieAnimationUrlMethodName &&
                                     method.implementation!!.instructions.count() > 7
                         }
                     ),
                     Fingerprint(
+                        name = lottieAnimationUrlMethodName,
                         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                         returnType = "Ljava/lang/String;",
                         parameters = listOf(),
                         custom = { method, classDef ->
                             classDef.interfaces.contains(abstractClass) &&
-                                    method.name == lottieAnimationUrlMethodName &&
                                     method.implementation!!.instructions.count() < 7
                         }
                     )

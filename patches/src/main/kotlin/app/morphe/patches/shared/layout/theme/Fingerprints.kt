@@ -9,6 +9,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object LithoOnBoundsChangeFingerprint : Fingerprint(
+    name = "onBoundsChange",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/graphics/Rect;"),
@@ -36,8 +37,5 @@ internal object LithoOnBoundsChangeFingerprint : Fingerprint(
             smali = "Landroid/graphics/Paint;->setColor(I)V",
             location = MatchAfterImmediately()
         )
-    ),
-    custom = { method, _ ->
-        method.name == "onBoundsChange"
-    }
+    )
 )

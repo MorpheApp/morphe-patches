@@ -8,10 +8,9 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object MediaRouteButtonFingerprint : Fingerprint(
-    parameters = listOf("I"),
-    custom = { methodDef, _ ->
-        methodDef.definingClass.endsWith("/MediaRouteButton;") && methodDef.name == "setVisibility"
-    }
+    definingClass = "/MediaRouteButton;",
+    name = "setVisibility",
+    parameters = listOf("I")
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(

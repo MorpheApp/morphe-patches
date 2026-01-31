@@ -1160,10 +1160,11 @@ internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
     val returnType = "Z"
 
     val fingerprint = Fingerprint(
+        name = methodName,
         returnType = returnType,
         parameters = listOf(),
-        custom = { method, classDef ->
-            AccessFlags.STATIC.isSet(method.accessFlags) && method.name == methodName
+        custom = { method, _ ->
+            AccessFlags.STATIC.isSet(method.accessFlags)
         }
     )
 

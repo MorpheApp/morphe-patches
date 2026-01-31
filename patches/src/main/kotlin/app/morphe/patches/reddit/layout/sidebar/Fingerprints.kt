@@ -62,23 +62,19 @@ internal val redditProLoaderFingerprint = Fingerprint(
 )
 
 internal val sidebarComponentsPatchFingerprint = Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "getHeaderItemName",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    returnType = "Ljava/lang/String;",
-    custom = { methodDef, classDef ->
-        methodDef.name == "getHeaderItemName" &&
-                classDef.type.endsWith("/SidebarComponentsPatch;")
-    }
+    returnType = "Ljava/lang/String;"
 )
 
 internal val headerItemUiModelToStringFingerprint = Fingerprint(
+    name = "toString",
     returnType = "Ljava/lang/String;",
     strings = listOf(
         "HeaderItemUiModel(uniqueId=",
         ", type="
-    ),
-    custom = { methodDef, _ ->
-        methodDef.name == "toString"
-    }
+    )
 )
 
 // TODO: Replace with fieldAccess() instruction filter usage.

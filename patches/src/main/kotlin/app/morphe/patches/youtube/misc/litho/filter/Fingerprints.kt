@@ -30,6 +30,7 @@ internal object ComponentCreateFingerprint : Fingerprint(
 )
 
 internal object LithoFilterFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         fieldAccess(

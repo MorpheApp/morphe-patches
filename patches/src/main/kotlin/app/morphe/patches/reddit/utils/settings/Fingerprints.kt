@@ -14,6 +14,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 const val EXTENSION_SETTING_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/settings/Setting;"
 
 internal val preferenceDestinationFingerprint = Fingerprint(
+    definingClass = "Lcom/reddit/screen/settings/preferences/",
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Lcom/reddit/domain/settings/Destination;"),
@@ -23,10 +24,7 @@ internal val preferenceDestinationFingerprint = Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
     ),
-    strings = listOf("settingIntentProvider"),
-    custom = { methodDef, _ ->
-        methodDef.definingClass.startsWith("Lcom/reddit/screen/settings/preferences/")
-    }
+    strings = listOf("settingIntentProvider")
 )
 
 internal val preferenceManagerFingerprint = Fingerprint(
@@ -58,21 +56,17 @@ internal val redditInternalFeaturesFingerprint = Fingerprint(
 )
 
 internal val webBrowserActivityOnCreateFingerprint = Fingerprint(
+    definingClass = "/WebBrowserActivity;",
+    name = "onCreate",
     returnType = "V",
     filters = listOf(
         methodCall(smali = "Landroid/app/Activity;->getIntent()Landroid/content/Intent;")
     ),
-    strings = listOf("com.reddit.extra.initial_url"),
-    custom = { methodDef, _ ->
-        methodDef.definingClass.endsWith("/WebBrowserActivity;") &&
-                methodDef.name == "onCreate"
-    }
+    strings = listOf("com.reddit.extra.initial_url")
 )
 
 internal val sharedSettingFingerprint = Fingerprint(
-    returnType = "V",
-    custom = { method, _ ->
-        method.definingClass == EXTENSION_SETTING_CLASS_DESCRIPTOR &&
-                method.name == "<clinit>"
-    }
+    definingClass = EXTENSION_SETTING_CLASS_DESCRIPTOR,
+    name = "<clinit>",
+    returnType = "V"
 )

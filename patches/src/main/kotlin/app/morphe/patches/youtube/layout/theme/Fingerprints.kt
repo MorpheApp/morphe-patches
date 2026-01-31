@@ -17,6 +17,8 @@ internal object UseGradientLoadingScreenFingerprint : Fingerprint(
 )
 
 internal object SplashScreenStyleFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
@@ -24,16 +26,15 @@ internal object SplashScreenStyleFingerprint : Fingerprint(
             literal(1074339245), // 20.30+
             literal(269032877L) // 20.29 and lower.
         )
-    ),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-    }
+    )
 )
 
 /**
  * Matches to the same method as [SplashScreenStyleFingerprint].
  */
 internal object ShowSplashScreen1Fingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
@@ -77,16 +78,15 @@ internal object ShowSplashScreen1Fingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT,
             location = MatchAfterImmediately()
         )
-    ),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-    }
+    )
 )
 
 /**
  * Matches to the same method as [SplashScreenStyleFingerprint].
  */
 internal object ShowSplashScreen2Fingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
@@ -101,8 +101,5 @@ internal object ShowSplashScreen2Fingerprint : Fingerprint(
         methodCall(
             smali = "Landroid/graphics/drawable/AnimatedVectorDrawable;->start()V"
         )
-    ),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-    }
+    )
 )

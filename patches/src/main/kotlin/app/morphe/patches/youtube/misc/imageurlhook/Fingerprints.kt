@@ -6,20 +6,19 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object OnFailureFingerprint : Fingerprint(
+    name = "onFailed",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(
         "Lorg/chromium/net/UrlRequest;",
         "Lorg/chromium/net/UrlResponseInfo;",
         "Lorg/chromium/net/CronetException;"
-    ),
-    custom = { method, _ ->
-        method.name == "onFailed"
-    }
+    )
 )
 
 // Acts as a parent fingerprint.
 internal object OnResponseStartedFingerprint : Fingerprint(
+    name ="onResponseStarted",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;"),
@@ -28,19 +27,14 @@ internal object OnResponseStartedFingerprint : Fingerprint(
         "Content-Type",
         "identity",
         "application/x-protobuf",
-    ),
-    custom = { method, _ ->
-        method.name == "onResponseStarted"
-    }
+    )
 )
 
 internal object OnSucceededFingerprint : Fingerprint(
+    name = "onSucceeded",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;"),
-    custom = { method, _ ->
-        method.name == "onSucceeded"
-    }
+    parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;")
 )
 
 internal const val CRONET_URL_REQUEST_CLASS_DESCRIPTOR = "Lorg/chromium/net/impl/CronetUrlRequest;"
