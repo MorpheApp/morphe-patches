@@ -1,3 +1,10 @@
+# [1.10.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.3...v1.10.0-dev.4) (2026-02-01)
+
+
+### Features
+
+* **YouTube - Downloads:** Add "Seal Plus" as a hidden preset downloader ([#357](https://github.com/MorpheApp/morphe-patches/issues/357)) ([077128c](https://github.com/MorpheApp/morphe-patches/commit/077128c9115ae0f168c9710fc2d1bb8f1a5ee236))
+
 # [1.10.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.2...v1.10.0-dev.3) (2026-02-01)
 
 
