@@ -60,7 +60,7 @@ jobs:
       - name: Generate website deploy token
         if: steps.release.outputs.new_release_published == 'true'
         id: app-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ vars.MORPHE_AAMATT_APP_ID }}
           private-key: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
