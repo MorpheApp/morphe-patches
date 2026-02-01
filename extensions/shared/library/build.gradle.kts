@@ -1,5 +1,6 @@
 plugins {
-    alias(libs.plugins.android.library) 
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.protobuf)
 }
 
 android {
@@ -18,4 +19,24 @@ android {
 
 dependencies {
     compileOnly(libs.annotation)
+
+    implementation(libs.gson)
+    //noinspection UseTomlInstead
+    implementation("com.github.ynab:J2V8:6.2.1-16kb.2@aar")
+    implementation(libs.protobuf.javalite)
+}
+
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

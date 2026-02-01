@@ -281,7 +281,7 @@ public class SpoofVideoStreamsPatch {
      * Called after {@link #fetchStreams(String, Map)}.
      */
     @Nullable
-    public static ByteBuffer getStreamingData(String videoId) {
+    public static byte[] getStreamingData(String videoId) {
         if (SPOOF_STREAMING_DATA) {
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);

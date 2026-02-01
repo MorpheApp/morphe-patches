@@ -1,7 +1,6 @@
 package app.morphe.extension.youtube.patches.spoof;
 
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_CREATOR;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_NO_SDK;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_47_48;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_54_20;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS;
