@@ -2,11 +2,9 @@ package app.morphe.patches.shared.misc.audio
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -87,81 +85,51 @@ internal fun forceOriginalAudioPatch(
                     ).toMutable()
                 )
 
-
-                // Add a helper method because the isDefaultAudioTrack() has only 1 or 2 registers and 3 are needed.
-                val helperMethodClass = type
-
-                val originalRegisterCount = isDefaultAudioTrackMethod.implementation!!.registerCount
-                if (originalRegisterCount > 3) {
-                    // Patch could work if more than 3 registers are present but needs additional changes.
-                    throw PatchException("Target method has more than 3 registers")
-                }
-
-                // Copy the method to add additional registers.
-                val helperMethod = isDefaultAudioTrackMethod.cloneMutable(
-                    name = "patch_isDefaultAudioTrack",
-                    registerCount = 7
+                // Clone the method to add additional registers because the
+                // isDefaultAudioTrack() has only 1 or 2 registers and 3 are needed.
+                val clonedMethod = isDefaultAudioTrackMethod.cloneMutable(
+                    additionalRegisters = 4
                 )
 
-                // Add the method.
-                it.classDef.methods.add(helperMethod)
+                // Replace existing method with cloned with more registers.
+                it.classDef.methods.apply {
+                    remove(isDefaultAudioTrackMethod)
+                    add(clonedMethod)
+                }
 
-                helperMethod.apply {
-                    val thisRegister = 3
-
-                    // Copied method doesn't have correct registers for p0+
-                    // Fix parameters registers by copying from new p0 to effectively the old p0.
-                    addInstructions(
-                        0,
-                        """
-                            # Copy old p0 to new first register.
-                            move-object v${originalRegisterCount - 1} , p0
-                            
-                            # Save off p0 to a new high register.
-                            move-object v$thisRegister, p0
-                        """
-                    )
-
+                clonedMethod.apply {
+                    // Free registers are added
+                    val free1 = isDefaultAudioTrackMethod.implementation!!.registerCount + 1
+                    val free2 = free1 + 1
                     val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN)
                     val originalResultRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
-                    helperMethod.addInstructionsAtControlFlowLabel(
+                    clonedMethod.addInstructionsAtControlFlowLabel(
                         insertIndex,
                         """
-                            iget-object v4, v$thisRegister, $helperMethodClass->$helperFieldName:Ljava/lang/Boolean;
-                            if-eqz v4, :call_extension            
-                            invoke-virtual { v4 }, Ljava/lang/Boolean;->booleanValue()Z
-                            move-result v4
-                            return v4
+                            iget-object v$free1, p0, $type->$helperFieldName:Ljava/lang/Boolean;
+                            if-eqz v$free1, :call_extension            
+                            invoke-virtual { v$free1 }, Ljava/lang/Boolean;->booleanValue()Z
+                            move-result v$free1
+                            return v$free1
                             
                             :call_extension
-                            invoke-virtual { v$thisRegister }, $audioTrackIdMethod
-                            move-result-object v4
+                            invoke-virtual { p0 }, $audioTrackIdMethod
+                            move-result-object v$free1
                             
-                            invoke-virtual { v$thisRegister }, $audioTrackDisplayNameMethod
-                            move-result-object v5
+                            invoke-virtual { p0 }, $audioTrackDisplayNameMethod
+                            move-result-object v$free2
         
-                            invoke-static { v$originalResultRegister, v4, v5 }, $EXTENSION_CLASS_DESCRIPTOR->isDefaultAudioStream(ZLjava/lang/String;Ljava/lang/String;)Z
-                            move-result v4
+                            invoke-static { v$originalResultRegister, v$free1, v$free2 }, $EXTENSION_CLASS_DESCRIPTOR->isDefaultAudioStream(ZLjava/lang/String;Ljava/lang/String;)Z
+                            move-result v$free1
                             
-                            invoke-static { v4 }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-                            move-result-object v5
-                            iput-object v5, v$thisRegister, $helperMethodClass->$helperFieldName:Ljava/lang/Boolean;
-                            return v4
+                            invoke-static { v$free1 }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+                            move-result-object v$free2
+                            iput-object v$free2, p0, $type->$helperFieldName:Ljava/lang/Boolean;
+                            return v$free1
                         """
                     )
                 }
-
-
-                // Call new method.
-                isDefaultAudioTrackMethod.addInstructions(
-                    0,
-                    """
-                        invoke-direct { p0 }, $helperMethod
-                        move-result p0
-                        return p0
-                    """
-                )
             }
         }
 
