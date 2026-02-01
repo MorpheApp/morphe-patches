@@ -772,6 +772,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_bypass_ambient_mode_restrictions_title">Bypass Ambient mode restrictions</string>
     <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Ambient mode restrictions for power saving are bypassed</string>
     <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Ambient mode restrictions for power saving are not bypassed</string>
+    <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Enabling this can cause worse battery life.</string>
     <string name="morphe_disable_ambient_mode_title">Disable Ambient mode</string>
     <string name="morphe_disable_ambient_mode_summary_on">Ambient mode is disabled</string>
     <string name="morphe_disable_ambient_mode_summary_off">Ambient mode is enabled</string>
