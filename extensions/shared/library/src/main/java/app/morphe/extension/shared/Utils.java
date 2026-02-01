@@ -417,7 +417,7 @@ public class Utils {
         clipboard.setPrimaryClip(clip);
     }
 
-    public static boolean isNotEmpty(final String str) {
+    public static boolean isNotEmpty(@Nullable String str) {
         return str != null && !str.isEmpty();
     }
 

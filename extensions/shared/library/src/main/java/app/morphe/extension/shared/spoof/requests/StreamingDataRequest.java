@@ -372,7 +372,12 @@ public class StreamingDataRequest {
 
         lastSpoofedClientType = null;
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
-        handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
+
+        var preferredClient = clientOrderToUse[0];
+        if (preferredClient != ClientType.ANDROID_VR_1_47_48 && preferredClient != ClientType.ANDROID_VR_1_54_20
+                && !BaseSettings.OAUTH2_REFRESH_TOKEN.get().isBlank()) {
+            handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
+        }
         return null;
     }
 
