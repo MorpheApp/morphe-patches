@@ -1,5 +1,5 @@
 [versions]
-morphe-patcher = "1.1.0"
+morphe-patcher = "1.1.0-dev.1" # TODO: Change to 1.1.0 stable when releases
 # Tracking https://github.com/google/smali/issues/100.
 smali = "b6365a84f4"
 agp = "8.2.2"
