@@ -1,5 +1,5 @@
 {
-  "version": "1.10.0-dev.1",
+  "version": "1.10.0-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -10,27 +10,6 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.youtube": [
-          "20.14.43",
-          "20.21.37",
-          "20.26.46",
-          "20.31.42",
-          "20.37.48",
-          "20.40.45"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Auto captions",
-      "description": "Adds an option to disable captions from being automatically enabled.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -85,6 +64,27 @@
     {
       "name": "Bypass image region restrictions",
       "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.14.43",
+          "20.21.37",
+          "20.26.46",
+          "20.31.42",
+          "20.37.48",
+          "20.40.45"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Captions",
+      "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
       "use": true,
       "dependencies": [
         "BytecodePatch",

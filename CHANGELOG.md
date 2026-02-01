@@ -1,3 +1,10 @@
+# [1.10.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.1...v1.10.0-dev.2) (2026-02-01)
+
+
+### Features
+
+* **YouTube - Captions:** Add "Set caption cookies" and "Fix transcript" settings ([#341](https://github.com/MorpheApp/morphe-patches/issues/341)) ([0e50fc7](https://github.com/MorpheApp/morphe-patches/commit/0e50fc7de9b667f6f9b1e61cec2cfd2f6011e126))
+
 # [1.10.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0...v1.10.0-dev.1) (2026-02-01)
 
 
