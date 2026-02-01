@@ -138,15 +138,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         TextComponentLookupFingerprint.match(TextComponentConstructorFingerprint.originalClassDef).let {
             // 21.05 clobbers p0 (this) register.
             // Add additional registers so all parameters including p0 are free to use anywhere in the method.
-            val clonedMethod = it.method.cloneMutableAndPreserveParameters()
-
-            // Replace existing method with cloned with more registers.
-            it.classDef.methods.apply {
-                remove(it.method)
-                add(clonedMethod)
-            }
-
-            clonedMethod.apply {
+            cloneMutableAndPreserveParameters(it.classDef, it.method).apply {
                 // Find the instruction for creating the text data object.
                 val textDataClassType = TextComponentDataFingerprint.originalClassDef.type
 

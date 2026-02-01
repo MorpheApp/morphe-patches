@@ -755,17 +755,32 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
 }
 
 /**
- * Calls [cloneMutable] with the same number of parameters registers as the original.
- * Effectively this makes all parameters registers (including p0) of the cloned method
+ * Effectively this makes all method parameters registers (including p0) of the cloned method
  * unchanged for all indexes in the method, and these parameters can be referenced directly
- * or used as free registers.
+ * or used as free registers. Only suitable for static methods with zero parameters.
  */
-fun Method.cloneMutableAndPreserveParameters(
+fun cloneMutableAndPreserveParameters(
+    mutableClass : MutableClass,
+    method: Method,
     indexZeroInstructionsToAdd: String? = null,
-) = cloneMutable(
-    additionalRegisters = numberOfParameterRegisters,
-    indexZeroInstructionsToAdd = indexZeroInstructionsToAdd,
-)
+) : MutableMethod {
+    check (!AccessFlags.STATIC.isSet(method.accessFlags) || method.parameters.isNotEmpty()) {
+        "Static methods have no parameter registers to preserve"
+    }
+
+    val clonedMethod = method.cloneMutable(
+        additionalRegisters = method.numberOfParameterRegisters,
+        indexZeroInstructionsToAdd = indexZeroInstructionsToAdd,
+    )
+
+    // Replace existing method with cloned with more registers.
+    mutableClass.methods.apply {
+        remove(method)
+        add(clonedMethod)
+    }
+
+    return clonedMethod
+}
 
 /**
  * Adapted from BiliRoamingX:
