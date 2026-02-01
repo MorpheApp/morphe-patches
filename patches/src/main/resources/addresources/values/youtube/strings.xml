@@ -766,10 +766,18 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
     <string name="morphe_hide_endscreen_cards_summary_on">End screen cards are hidden</string>
     <string name="morphe_hide_endscreen_cards_summary_off">End screen cards are shown</string>
 
-    <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+    <!-- layout.hide.ambientmode.ambientModePatch -->
+    <string name="morphe_ambient_mode_screen_title">Ambient mode</string>
+    <string name="morphe_ambient_mode_screen_summary">Bypasses power-save restrictions for Ambient mode and disable it entirely or in fullscreen</string>
+    <string name="morphe_bypass_ambient_mode_restrictions_title">Bypass Ambient mode restrictions</string>
+    <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Ambient mode restrictions for power saving are bypassed</string>
+    <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Ambient mode restrictions for power saving are not bypassed</string>
+    <string name="morphe_disable_ambient_mode_title">Disable Ambient mode</string>
+    <string name="morphe_disable_ambient_mode_summary_on">Ambient mode is disabled</string>
+    <string name="morphe_disable_ambient_mode_summary_off">Ambient mode is enabled</string>
     <string name="morphe_disable_fullscreen_ambient_mode_title">Disable Ambient mode in fullscreen</string>
-    <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Ambient mode disabled</string>
-    <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Ambient mode enabled</string>
+    <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Ambient mode in fullscreen is disabled</string>
+    <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Ambient mode in fullscreen is enabled</string>
 
     <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
     <string name="morphe_hide_info_cards_title">Hide info cards</string>
