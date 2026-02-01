@@ -33,7 +33,8 @@ enum class Endpoint(
         ReelCreateItemsEndpointConstructorFingerprint,
         ReelItemWatchEndpointConstructorFingerprint,
         ReelWatchSequenceEndpointConstructorFingerprint,
-    );
+    ),
+    TRANSCRIPT(TranscriptEndpointConstructorFingerprint);
 }
 
 val clientContextHookPatch = bytecodePatch(

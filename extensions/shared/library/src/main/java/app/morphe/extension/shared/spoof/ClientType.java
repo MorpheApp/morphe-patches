@@ -1,7 +1,5 @@
 package app.morphe.extension.shared.spoof;
 
-import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
-
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -32,10 +30,12 @@ public enum ClientType {
             "UP1A.231005.007.A1",
             "122.0.6238.3",
             "1.54.20",
+            null,
             false,
             false,
             false,
             true,
+            false,
             "Android VR 1.54"
     ),
     /**
@@ -55,52 +55,13 @@ public enum ClientType {
             "QQ3A.200805.001",
             "113.0.5672.24",
             "1.47.48",
+            ANDROID_VR_1_54_20.clientPlatform,
             ANDROID_VR_1_54_20.canLogin,
             ANDROID_VR_1_54_20.requireLogin,
             ANDROID_VR_1_54_20.supportsMultiAudioTracks,
             ANDROID_VR_1_54_20.supportsOAuth2,
+            ANDROID_VR_1_54_20.requireJS,
             "Android VR 1.47"
-    ),
-    /**
-     * Video not playable: Paid, Movie, Private, Age-restricted.
-     * Uses adaptive bitrate.
-     */
-    ANDROID_NO_SDK(
-            3,
-            "ANDROID",
-            "",
-            "",
-            "Android",
-            Build.VERSION.RELEASE,
-            "20.05.46",
-            "com.google.android.youtube/20.05.46 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
-            false,
-            false,
-            true,
-            false,
-            "Android No SDK"
-    ),
-    /**
-     * Video not playable in YouTube: All videos (This client requires login, but cannot log in with YouTube's access token).
-     * Video not playable in YouTube Music: None.
-     * Uses non adaptive bitrate.
-     */
-    ANDROID_MUSIC_NO_SDK(
-            21,
-            "ANDROID_MUSIC",
-            ANDROID_NO_SDK.deviceMake,
-            ANDROID_NO_SDK.deviceModel,
-            ANDROID_NO_SDK.osName,
-            ANDROID_NO_SDK.osVersion,
-            "7.12.52",
-            "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
-            // Due to Google API changes in September 2025, Authorization issued with a different 'client_sig' can no longer be used.
-            // That is, this client must use an OAuth2 token issued by Android YouTube Music (com.google.android.apps.youtube.music).
-            IS_YOUTUBE_MUSIC,
-            true,
-            false,
-            false,
-            "Android Music No SDK"
     ),
     /**
      * Video not playable: Livestream.
@@ -120,11 +81,57 @@ public enum ClientType {
             "AP3A.241005.015.A2",
             "132.0.6779.0",
             "23.47.101",
+            null,
             true,
             true,
+            false,
             false,
             false,
             "Android Studio"
+    ),
+    /**
+     * Video not playable: None.
+     * Uses non adaptive bitrate.
+     * AV1 codec available.
+     */
+    TV(7,
+            "TVHTML5",
+            "Samsung",
+            "SmartTV",
+            "Tizen",
+            "4.0.0.2",
+            "5.20150304",
+            "TV",
+            // Currently, it is the only User-Agent available for signed out among TV clients, but sign in is still required for certain IP bands or countries.
+            "Mozilla/5.0 (SMART-TV; Linux; Tizen 4.0.0.2) AppleWebkit/605.1.15 (KHTML, like Gecko) SamsungBrowser/9.2 TV Safari/605.1.15",
+            true,
+            false,
+            true,
+            false,
+            true,
+            "TV"
+    ),
+    /**
+     * Video not playable: None.
+     * Uses non adaptive bitrate.
+     * AV1 codec available.
+     */
+    TV_SIMPLY(75,
+            "TVHTML5_SIMPLY",
+            "Microsoft",
+            "Xbox 360",
+            "Xbox",
+            "6.1",
+            "1.0",
+            "GAME_CONSOLE",
+            "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)",
+            true,
+            // PoToken is required to play videos while signed out.
+            true,
+            true,
+            false,
+            true,
+            "TV Simply"
     ),
     /**
      * Internal YT client for an unreleased YT client. May stop working at any time.
@@ -136,7 +143,9 @@ public enum ClientType {
             "visionOS",
             "1.3.21O771",
             "0.1",
+            null,
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+            false,
             false,
             false,
             false,
@@ -196,6 +205,11 @@ public enum ClientType {
     public final String clientVersion;
 
     /**
+     * Client platform enum.
+     */
+    public final String clientPlatform;
+
+    /**
      * If the client can access the API logged in.
      */
     public final boolean canLogin;
@@ -216,6 +230,12 @@ public enum ClientType {
     public final boolean supportsMultiAudioTracks;
 
     /**
+     * The streaming url has an obfuscated 'n' parameter.
+     * If true, javascript must be fetched to decrypt the 'n' parameter.
+     */
+    public final boolean requireJS;
+
+    /**
      * Friendly name displayed in stats for nerds.
      */
     public final String friendlyName;
@@ -234,10 +254,12 @@ public enum ClientType {
                @NonNull String buildId,
                @NonNull String cronetVersion,
                String clientVersion,
+               String clientPlatform,
                boolean canLogin,
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
+               boolean requireJS,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -248,10 +270,12 @@ public enum ClientType {
         this.osVersion = osVersion;
         this.androidSdkVersion = androidSdkVersion;
         this.clientVersion = clientVersion;
+        this.clientPlatform = clientPlatform;
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
+        this.requireJS = requireJS;
         this.friendlyName = friendlyName;
 
         Locale defaultLocale = Locale.getDefault();
@@ -275,11 +299,13 @@ public enum ClientType {
                String osName,
                String osVersion,
                String clientVersion,
+               String clientPlatform,
                String userAgent,
                boolean canLogin,
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
+               boolean requireJS,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -288,11 +314,13 @@ public enum ClientType {
         this.osName = osName;
         this.osVersion = osVersion;
         this.clientVersion = clientVersion;
+        this.clientPlatform = clientPlatform;
         this.userAgent = userAgent;
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
+        this.requireJS = requireJS;
         this.friendlyName = friendlyName;
         this.packageName = null;
         this.androidSdkVersion = null;

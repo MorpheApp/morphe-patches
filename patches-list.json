@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0-dev.10",
+  "version": "1.10.0-dev.3",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -10,27 +10,6 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.youtube": [
-          "20.14.43",
-          "20.21.37",
-          "20.26.46",
-          "20.31.42",
-          "20.37.48",
-          "20.40.45"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Auto captions",
-      "description": "Adds an option to disable captions from being automatically enabled.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -104,10 +83,32 @@
       "options": []
     },
     {
+      "name": "Captions",
+      "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.14.43",
+          "20.21.37",
+          "20.26.46",
+          "20.31.42",
+          "20.37.48",
+          "20.40.45"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Change form factor",
       "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -521,8 +522,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -849,8 +849,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -870,8 +869,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1074,8 +1072,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1138,8 +1135,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1180,8 +1176,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1353,8 +1348,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1375,8 +1369,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1516,8 +1509,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1621,8 +1613,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1685,8 +1676,7 @@
           "2025.52.0",
           "2026.01.0",
           "2026.02.0",
-          "2026.03.0",
-          "2026.04.0"
+          "2026.03.0"
         ]
       },
       "options": []
@@ -1817,7 +1807,9 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "BytecodePatch"
+        "BytecodePatch",
+        "BytecodePatch",
+        "RawResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.apps.youtube.music": [
@@ -1836,7 +1828,9 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "ResourcePatch",
+        "BytecodePatch",
+        "RawResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [

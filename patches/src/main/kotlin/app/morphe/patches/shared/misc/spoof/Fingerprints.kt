@@ -84,19 +84,6 @@ internal object BuildRequestFingerprint : Fingerprint(
     }
 )
 
-internal object ProtobufClassParseByteBufferFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.STATIC),
-    returnType = "L",
-    parameters = listOf("L", "Ljava/nio/ByteBuffer;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.SGET_OBJECT,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.RETURN_OBJECT,
-    ),
-    custom = { method, _ -> method.name == "parseFrom" }
-)
-
 internal object CreateStreamingDataFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("L"),
@@ -107,7 +94,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.fields.any { field ->
             field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
         }

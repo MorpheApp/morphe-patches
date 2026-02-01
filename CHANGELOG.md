@@ -1,3 +1,53 @@
+# [1.10.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.2...v1.10.0-dev.3) (2026-02-01)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide course progress" setting ([#351](https://github.com/MorpheApp/morphe-patches/issues/351)) ([4a83b54](https://github.com/MorpheApp/morphe-patches/commit/4a83b54c292a66f5ca2825c0f4a45a5650c528d4))
+
+# [1.10.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.1...v1.10.0-dev.2) (2026-02-01)
+
+
+### Features
+
+* **YouTube - Captions:** Add "Set caption cookies" and "Fix transcript" settings ([#341](https://github.com/MorpheApp/morphe-patches/issues/341)) ([0e50fc7](https://github.com/MorpheApp/morphe-patches/commit/0e50fc7de9b667f6f9b1e61cec2cfd2f6011e126))
+
+# [1.10.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0...v1.10.0-dev.1) (2026-02-01)
+
+
+### Features
+
+* **Spoof video streams:** Default client maintenance ([#340](https://github.com/MorpheApp/morphe-patches/issues/340)) ([d72cfbe](https://github.com/MorpheApp/morphe-patches/commit/d72cfbe5ccad91ca4527a23da9aa8a55bfb161f1))
+
+# [1.9.0](https://github.com/MorpheApp/morphe-patches/compare/v1.8.0...v1.9.0) (2026-01-31)
+
+
+### Bug Fixes
+
+* **Reddit:** Change recommended app target to `2026.03.0` ([7a5cda5](https://github.com/MorpheApp/morphe-patches/commit/7a5cda571d4ec5e6324cc2905d0c8dec3b0c8f52))
+* **Reddit:** Fix Recently Visited Shelf patch not being usable ([#316](https://github.com/MorpheApp/morphe-patches/issues/316)) ([49bab2b](https://github.com/MorpheApp/morphe-patches/commit/49bab2becde7f1adf593266b88abba0b876925ba))
+* **Reddit:** Handle navigation bar buttons hidden behind feature flags ([#328](https://github.com/MorpheApp/morphe-patches/issues/328)) ([2b8c337](https://github.com/MorpheApp/morphe-patches/commit/2b8c33702293acfbd859cdfbdf1342e5f9e96bc2))
+* **YouTube:** Consolidate toolbar "Hide cast button" into existing hide cast button setting ([c22a2a1](https://github.com/MorpheApp/morphe-patches/commit/c22a2a1c7a74b6370bad7b47ce79cab9b49846ad))
+* **YouTube:** Show a more descriptive error message if attempting to patch a region specific APKM that does not contain languages for all regions ([0f2700d](https://github.com/MorpheApp/morphe-patches/commit/0f2700db110a2e8d041e1213e0d95ed50f6d54ac))
+
+
+### Features
+
+* **Reddit:** Add ability to hide Games button on nav bar ([#315](https://github.com/MorpheApp/morphe-patches/issues/315)) ([07b9fc2](https://github.com/MorpheApp/morphe-patches/commit/07b9fc250b24c0219e8f650883f3c22ea7dfa23f))
+* **Reddit:** Add support for Reddit `2026.04.0` ([#276](https://github.com/MorpheApp/morphe-patches/issues/276)) ([0203cf6](https://github.com/MorpheApp/morphe-patches/commit/0203cf62d7214fe79b42a804fc51111e805f2afd))
+* **YouTube - Hide layout components:** Add "Hide Latest videos button" setting ([#305](https://github.com/MorpheApp/morphe-patches/issues/305)) ([aed3e34](https://github.com/MorpheApp/morphe-patches/commit/aed3e343885732bb86647ddf626efdc173ca2ed6))
+* **YouTube - Hide layout components:** Add "Hide live chat replay button" setting ([#330](https://github.com/MorpheApp/morphe-patches/issues/330)) ([7a6c697](https://github.com/MorpheApp/morphe-patches/commit/7a6c69791cafc9247a55ac4c6ad30dcabba96d70))
+* **YouTube - Hide layout components:** Add "Hide video title" setting ([#309](https://github.com/MorpheApp/morphe-patches/issues/309)) ([2c7a973](https://github.com/MorpheApp/morphe-patches/commit/2c7a973d73644d81da1dd4a82a3b10056863ac70))
+* **YouTube - Navigation bar:** Add settings to hide toolbar buttons ([#298](https://github.com/MorpheApp/morphe-patches/issues/298)) ([73fd722](https://github.com/MorpheApp/morphe-patches/commit/73fd722c0d76148323ae60ddc64ae05c8d95b5d4))
+* **YouTube:** Add `Restore old search filters` patch ([#285](https://github.com/MorpheApp/morphe-patches/issues/285)) ([c088723](https://github.com/MorpheApp/morphe-patches/commit/c0887234612bb24ad8184fe211af14cf0640d8ec))
+
+# [1.9.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.10...v1.9.0-dev.11) (2026-01-30)
+
+
+### Bug Fixes
+
+* **Reddit:** Change recommended app target to `2026.03.0` ([7a5cda5](https://github.com/MorpheApp/morphe-patches/commit/7a5cda571d4ec5e6324cc2905d0c8dec3b0c8f52))
+
 # [1.9.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0-dev.9...v1.9.0-dev.10) (2026-01-30)
 
 

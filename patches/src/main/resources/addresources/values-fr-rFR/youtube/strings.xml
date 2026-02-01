@@ -154,9 +154,9 @@ Si un Doodle est actuellement visible dans votre région et que cette option de 
   <string name="morphe_hide_join_membership_button_summary_off">Le bouton \'Rejoindre\' est affiché</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Cacher le bouton \'Replay chat en direct\'</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">Le bouton \'Replay chat en direct\' dans l\'overlay du lecteur est masqué</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">Le bouton \'Replay chat en direct\' dans l\'overlay du lecteur est affiché</string>
+  <string name="morphe_hide_live_chat_replay_button_title">Masquer le bouton \'Rediffusion du chat en direct\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Le bouton \'Rediffusion du chat en direct\' dans l\'overlay vidéo est masqué</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Le bouton \'Rediffusion du chat en direct\' dans l\'overlay vidéo est affiché</string>
   <string name="morphe_hide_medical_panels_title">Masquer les panneaux d\'infos médicaux</string>
   <string name="morphe_hide_medical_panels_summary_on">Les panneaux d\'infos médicaux sont masqués</string>
   <string name="morphe_hide_medical_panels_summary_off">Les panneaux d\'infos médicaux sont affichés</string>

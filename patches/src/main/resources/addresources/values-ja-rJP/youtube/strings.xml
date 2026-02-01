@@ -46,8 +46,8 @@ Second \"item\" text"</string>
 ただし、有効にすると、IP アドレスなどの一部のユーザーデータもログに記録されるようになります。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">アルバムカードを非表示</string>
-  <string name="morphe_hide_album_cards_summary_on">アーティストの概要欄下のアルバムカードは表示されません</string>
-  <string name="morphe_hide_album_cards_summary_off">アーティストの概要欄下のアルバムカードは表示されます</string>
+  <string name="morphe_hide_album_cards_summary_on">アルバムカードはアーティストの概要欄の下に表示されません</string>
+  <string name="morphe_hide_album_cards_summary_off">アルバムカードはアーティストの概要欄の下に表示されます</string>
   <string name="morphe_hide_artist_cards_title">アーティスト カードを非表示</string>
   <string name="morphe_hide_artist_cards_summary_on">アーティスト カードは表示されません</string>
   <string name="morphe_hide_artist_cards_summary_off">アーティスト カードは表示されます</string>
@@ -154,9 +154,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_join_membership_button_summary_off">「メンバーになる」ボタンは表示されます</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">「ライブチャット再生」ボタンを非表示にする</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">プレーヤー オーバーレイのライブチャット再生ボタンが非表示になりました</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">プレーヤー オーバーレイのライブチャット再生ボタンが表示されました</string>
+  <string name="morphe_hide_live_chat_replay_button_title">「チャットのリプレイ」ボタンを非表示</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">プレーヤー オーバーレイの「チャットのリプレイ」ボタンは表示されません</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">プレーヤー オーバーレイの「チャットのリプレイ」ボタンは表示されます</string>
   <string name="morphe_hide_medical_panels_title">医療情報パネルを非表示</string>
   <string name="morphe_hide_medical_panels_summary_on">医療情報パネルは表示されません</string>
   <string name="morphe_hide_medical_panels_summary_off">医療情報パネルは表示されます</string>

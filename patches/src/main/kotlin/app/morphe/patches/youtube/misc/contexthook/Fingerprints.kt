@@ -115,3 +115,9 @@ internal object ReelWatchSequenceEndpointConstructorFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("reel/reel_watch_sequence"),
 )
+
+internal object TranscriptEndpointConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    strings = listOf("get_transcript"),
+)

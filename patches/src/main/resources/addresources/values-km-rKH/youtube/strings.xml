@@ -18,6 +18,14 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">អំពីកម្មវិធីនេះ</string>
+  <string name="morphe_settings_screen_01_ads_title">ពាណិជ្ជកម្ម</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">រូបតូចៗបន្ទាប់បន្សំ</string>
+  <string name="morphe_settings_screen_03_feed_title">ព័ត៌មាន</string>
+  <string name="morphe_settings_screen_04_general_title">ជាទូទៅ</string>
+  <string name="morphe_settings_screen_05_player_title">ការីចាក់</string>
+  <string name="morphe_settings_screen_11_misc_title">ផ្សេងៗទៀត</string>
+  <string name="morphe_settings_screen_12_video_title">វីដេអូ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->

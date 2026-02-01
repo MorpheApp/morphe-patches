@@ -153,9 +153,9 @@ Si un Doodle está actualmente mostrándose en tu región y este ajuste de ocult
   <string name="morphe_hide_join_membership_button_summary_off">El botón \"Unirme\" está visible</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Ocultar el botón \"Reproducción en vivo\"</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">El botón de reproducción en vivo en la superposición del jugador está oculto</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">El botón de reproducción en vivo en la superposición del jugador está visible</string>
+  <string name="morphe_hide_live_chat_replay_button_title">Ocultar botón \"Repetición del chat en directo\"</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">El botón \"Repetición del chat en directo\" en la superposición del reproductor está oculto</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">El botón \"Repetición del chat en directo\" en la superposición del reproductor está visible</string>
   <string name="morphe_hide_medical_panels_title">Ocultar paneles médicos</string>
   <string name="morphe_hide_medical_panels_summary_on">Los paneles médicos están ocultos</string>
   <string name="morphe_hide_medical_panels_summary_off">Los paneles médicos están visibles</string>

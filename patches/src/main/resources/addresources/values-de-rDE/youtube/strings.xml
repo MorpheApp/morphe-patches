@@ -85,7 +85,7 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Verbergen der Schaltfläche \'Letzte Videos\'</string>
   <string name="morphe_hide_latest_videos_button_summary_on">Schaltfläche \'Letzte Videos\' ist versteckt</string>
-  <string name="morphe_hide_latest_videos_button_summary_off">Schaltfläche \'Letzte Videos\' ist angezeigt</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Schaltfläche \"Letzte Videos\" wird angezeigt</string>
   <string name="morphe_hide_mix_playlists_title">Mix-Wiedergabelisten ausblenden</string>
   <string name="morphe_hide_mix_playlists_summary_on">Mix-Wiedergabelisten werden ausgeblendet</string>
   <string name="morphe_hide_mix_playlists_summary_off">Mix-Wiedergabelisten werden angezeigt</string>
@@ -110,7 +110,7 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_show_more_button_summary_off">\'Mehr anzeigen\' in den Suchergebnissen wird angezeigt</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Versteckte Abonnementskanalleiste</string>
   <string name="morphe_hide_subscribed_channels_bar_summary_on">Abonnementskanalleiste ist versteckt</string>
-  <string name="morphe_hide_subscribed_channels_bar_summary_off">Abonnementskanalleiste ist angezeigt</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_off">Abonnementskanalleiste wird angezeigt</string>
   <string name="morphe_hide_surveys_title">Umfragen ausblenden</string>
   <string name="morphe_hide_surveys_summary_on">Umfragen werden ausgeblendet</string>
   <string name="morphe_hide_surveys_summary_off">Umfragen werden angezeigt</string>
@@ -154,7 +154,7 @@ Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Verbergen der Schaltfläche \'Live-Chat-Wiedergabe\'</string>
   <string name="morphe_hide_live_chat_replay_button_summary_on">Schaltfläche \'Live-Chat-Wiedergabe\' im Player-Overlay ist versteckt</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">Schaltfläche \'Live-Chat-Wiedergabe\' im Player-Overlay ist angezeigt</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Schaltfläche \'Live-Chat-Wiedergabe\' im Player-Overlay wird angezeigt</string>
   <string name="morphe_hide_medical_panels_title">Verstecke medizinische Panels</string>
   <string name="morphe_hide_medical_panels_summary_on">Medizinische Panels sind ausgeblendet</string>
   <string name="morphe_hide_medical_panels_summary_off">Medizinische Panels werden angezeigt</string>
@@ -625,12 +625,12 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_hide_player_flyout_title">Einblendmenü</string>
   <string name="morphe_hide_player_flyout_summary">Verstecke oder zeige Player-Flyout-Menüeinträge</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_captions_title">Bildunterschriften ausblenden</string>
-  <string name="morphe_hide_player_flyout_captions_summary_on">Unterlagen-Menü ist ausgeblendet</string>
-  <string name="morphe_hide_player_flyout_captions_summary_off">Unterlagen-Menü wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_captions_title">Untertitel ausblenden</string>
+  <string name="morphe_hide_player_flyout_captions_summary_on">Menü \"Untertitel\" ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_captions_summary_off">Menü \"Untertitel\" wird angezeigt</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Ausblenden \"Zusätzliche Einstellungen / Mehr\"</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menü \"Zusätzliche Einstellungen / Mehr\" ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_additional_settings_title">\"Mehr\" Ausblenden</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menü \"Mehr\" (Zusätzliche Einstellungen) ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_off">Menü \"Zusätzliche Einstellungen / Mehr\" ist angezeigt</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">Sleep-Timer ausblenden</string>

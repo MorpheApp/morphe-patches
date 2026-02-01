@@ -66,6 +66,9 @@ var is_20_03_or_greater : Boolean by Delegates.notNull()
 var is_20_05_or_greater : Boolean by Delegates.notNull()
     private set
 @Deprecated("20.14.43 is the lowest supported version")
+var is_20_06_or_greater : Boolean by Delegates.notNull()
+    private set
+@Deprecated("20.14.43 is the lowest supported version")
 var is_20_07_or_greater : Boolean by Delegates.notNull()
     private set
 @Deprecated("20.14.43 is the lowest supported version")
@@ -152,6 +155,7 @@ val versionCheckPatch = resourcePatch(
         is_20_02_or_greater = 250299000 <= playStoreServicesVersion
         is_20_03_or_greater = 250405000 <= playStoreServicesVersion
         is_20_05_or_greater = 250605000 <= playStoreServicesVersion
+        is_20_06_or_greater = 250705000 <= playStoreServicesVersion
         is_20_07_or_greater = 250805000 <= playStoreServicesVersion
         is_20_09_or_greater = 251006000 <= playStoreServicesVersion
         is_20_10_or_greater = 251105000 <= playStoreServicesVersion
