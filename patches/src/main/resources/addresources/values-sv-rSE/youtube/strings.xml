@@ -151,6 +151,9 @@ Om en doodle visas för närvarande i din region och den här döljningsinställ
   <string name="morphe_hide_join_membership_button_summary_off">Knappen Bli medlem visas</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Dölj knappen Återuppspelning av livechatt</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Knappen Återuppspelning av livechatt i spelaröverlägget är dold</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Knappen Återuppspelning av livechatt i spelaröverlägget visas</string>
   <string name="morphe_hide_medical_panels_title">Dölj hälsoinformationspaneler</string>
   <string name="morphe_hide_medical_panels_summary_on">Hälsoinformationspanelerna är dolda</string>
   <string name="morphe_hide_medical_panels_summary_off">Hälsoinformationspanelerna visas</string>
