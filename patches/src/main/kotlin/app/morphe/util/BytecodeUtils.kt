@@ -755,29 +755,46 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
 }
 
 /**
+ * Calls [cloneMutable] with the same number of parameters registers as the original.
+ * Effectively this makes all parameters registers (including p0) of the cloned method
+ * unchanged for all indexes in the method, and these parameters can be referenced directly
+ * or used as free registers.
+ */
+fun Method.cloneMutableAndPreserveParameters(
+    indexZeroInstructionsToAdd: String? = null,
+) = cloneMutable(
+    additionalRegisters = numberOfParameterRegisters,
+    indexZeroInstructionsToAdd = indexZeroInstructionsToAdd,
+)
+
+/**
  * Adapted from BiliRoamingX:
  * https://github.com/BiliRoamingX/BiliRoamingX/blob/ae58109f3acdd53ec2d2b3fb439c2a2ef1886221/patches/src/main/kotlin/app/revanced/patches/bilibili/utils/Extenstions.kt#L51
  *
  * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc) before
- * adding to additional new parameters before p0.
+ * adding to additional new parameters before p0. Added registers always start at index:
+ * `method.implementation!!.registerCount`
  *
- * Calling this method with an additional registers of [Method.numberOfParameterRegisters]
- * effectively makes all parameters of the cloned method unchanged for all indexes in the method,
- * and these parameters can be referenced directly for their original value or used as free registers.
+ * Be aware that any match indexes of the method will now be offset positively by the
+ * number of additional registers added.
+ *
+ * @param indexZeroInstructionsToAdd Instructions to add at the effective index zero,
+ * which is immediately after the required register moves to preserve old registers.
  */
 fun Method.cloneMutable(
-    additionalRegisters: Int = 0,
     name: String = this.name,
     accessFlags: Int = this.accessFlags,
     parameters: List<MethodParameter> = this.parameters,
-    returnType: String = this.returnType
+    returnType: String = this.returnType,
+    additionalRegisters: Int = 0,
+    indexZeroInstructionsToAdd: String? = null,
 ): MutableMethod {
     check(additionalRegisters >= 0) {
         "Additional registers cannot be negative"
     }
 
     val implementationExists = implementation != null
-    val oldFirstParameterRegister = if (implementationExists) p0Register() else 0
+    val oldFirstParameterRegister = if (implementationExists) p0Register else 0
 
     val clonedImplementation = implementation?.let {
         ImmutableMethodImplementation(
@@ -798,9 +815,7 @@ fun Method.cloneMutable(
         hiddenApiRestrictions,
         clonedImplementation
     ).toMutable().apply {
-        // Additional registers are added and become the new parameter registers,
-        // but the existing instructions still reference the old registers.
-        // Copy the new parameter registers to the old register locations.
+        var insertIndex = 0
         val isNotStatic = !AccessFlags.STATIC.isSet(accessFlags)
         if (implementationExists && additionalRegisters > 0 && (parameters.isNotEmpty() || isNotStatic)) {
             var destReg = oldFirstParameterRegister
@@ -808,26 +823,32 @@ fun Method.cloneMutable(
             var parameterCount = parameters.count()
             if (isNotStatic) parameterCount++
 
+            // Additional registers are added and become the new parameter registers,
+            // but the existing instructions still reference the old registers.
+            // Copy the new parameter registers to the old register locations.
             for (i in 0 until parameterCount) {
                 val opcode = when {
                     // p0 of a non-static method is always 'this' object.
                     i == 0 && isNotStatic -> "move-object/from16"
 
                     else -> {
-                        when (parameters[i].type) {
+                        val parameter = parameters[if (isNotStatic) i - 1 else i]
+                        when (parameter.type) {
                             "J", "D" -> "move-wide/from16"
-                            else -> if (parameters[i].type.startsWith('L') ||
-                                parameters[i].type.startsWith('[')
-                            ) {
-                                "move-object/from16"
-                            } else {
-                                "move/from16"
+                            else -> {
+                                if (parameter.type.startsWith('L') ||
+                                    parameter.type.startsWith('[')
+                                ) {
+                                    "move-object/from16"
+                                } else {
+                                    "move/from16"
+                                }
                             }
                         }
                     }
                 }
 
-                addInstructions(0, "$opcode v$destReg, p$i")
+                addInstructions(insertIndex++, "$opcode v$destReg, p$i")
 
                 // Advance dest register (wide types take 2).
                 destReg += when {
@@ -836,49 +857,58 @@ fun Method.cloneMutable(
                 }
             }
         }
-    }
-}
 
-fun Method.numberOfParameterRegisters(): Int {
-    var count = 0
-
-    if (!AccessFlags.STATIC.isSet(accessFlags)) {
-        count += 1
-    }
-
-    for (param in parameters) {
-        count += when (param.type) {
-            "J", "D" -> 2   // wide
-            else -> 1       // normal
+        if (indexZeroInstructionsToAdd != null) {
+            addInstructionsWithLabels(insertIndex, indexZeroInstructionsToAdd)
         }
     }
-
-    return count
 }
 
 /**
- * Returns the actual register index of p0 for this method.
+ * @return The number of registers for all parameters, including p0.
+ * This includes 2 registers for each wide parameter.
+ */
+val Method.numberOfParameterRegisters: Int
+    get() {
+        var count = 0
+
+        if (!AccessFlags.STATIC.isSet(accessFlags)) {
+            count += 1
+        }
+
+        for (param in parameters) {
+            count += when (param.type) {
+                "J", "D" -> 2   // wide
+                else -> 1       // normal
+            }
+        }
+
+        return count
+    }
+
+/**
+ * @return the actual register number of p0 for this method.
  * Throws if the method has no implementation.
  */
-internal fun Method.p0Register(): Int {
-    val impl = implementation ?: throw IllegalStateException("Method has no implementation: $this")
+val Method.p0Register: Int
+    get() {
+        val impl = implementation ?: throw IllegalStateException("Method has no implementation: $this")
+        var paramRegs = 0
 
-    var paramRegs = 0
+        // Count explicit parameters (wide types take 2 registers).
+        for (type in this.parameterTypes) {
+            paramRegs += if (type == "J" || type == "D") 2 else 1
+        }
 
-    // Count explicit parameters (wide types take 2 registers).
-    for (type in this.parameterTypes) {
-        paramRegs += if (type == "J" || type == "D") 2 else 1
+        // Add implicit 'this' for non-static methods.
+        if (!AccessFlags.STATIC.isSet(this.accessFlags)) {
+            paramRegs += 1
+        }
+
+        val totalRegs = impl.registerCount
+
+        return totalRegs - paramRegs
     }
-
-    // Add implicit 'this' for non-static methods.
-    if (!AccessFlags.STATIC.isSet(this.accessFlags)) {
-        paramRegs += 1
-    }
-
-    val totalRegs = impl.registerCount
-
-    return totalRegs - paramRegs
-}
 
 private const val RETURN_TYPE_MISMATCH = "Mismatch between override type and Method return type"
 

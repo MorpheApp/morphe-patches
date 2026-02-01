@@ -17,7 +17,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneMutable
 import app.morphe.util.copyResources
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
