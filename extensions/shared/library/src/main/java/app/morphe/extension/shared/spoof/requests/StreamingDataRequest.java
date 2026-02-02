@@ -267,6 +267,11 @@ public class StreamingDataRequest {
                 handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientType);
                 return null;
             }
+
+            // Android Studio only supports the HLS protocol for live streams.
+            // HLS protocol can theoretically be played with ExoPlayer,
+            // but the related code has not yet been implemented.
+            // If DASH protocol is not available, the client will be skipped.
             StreamingData streamingData = playerResponse.getStreamingData();
             if (streamingData.getAdaptiveFormatsCount() == 0) {
                 handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType);
