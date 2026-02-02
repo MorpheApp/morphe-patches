@@ -64,7 +64,6 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
-  <!-- layout.autocaptions.autoCaptionsPatch -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -82,12 +81,18 @@ Second \"item\" text"</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <!-- layout.captions.autoCaptionsPatch -->
+  <!-- layout.captions.captionCookiesPatch -->
+  <!-- layout.captions.transcriptPatch -->
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_toolbar_search_button_summary_on">ប៊ូតុងស្វែងរកត្រូវបានលាក់</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">ប៊ូតុងស្វែងរកត្រូវបានបង្ហាញ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -108,7 +113,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
@@ -148,9 +153,11 @@ Second \"item\" text"</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">បានផ្ដាច់</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">ផ្ទាល់ខ្លួន</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->

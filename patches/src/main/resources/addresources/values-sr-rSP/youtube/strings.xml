@@ -186,6 +186,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">Сакриј поглавља</string>
   <string name="morphe_hide_chapters_section_summary_on">Одељак за поглавља је скривен</string>
   <string name="morphe_hide_chapters_section_summary_off">Одељак за поглавља је приказан</string>
+  <string name="morphe_hide_course_progress_section_title">Скриј \'Напредак курса\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">Одељак за напредак курса је скривен</string>
+  <string name="morphe_hide_course_progress_section_summary_off">Одељак за напредак курса је приказан</string>
   <string name="morphe_hide_explore_podcast_section_title">Сакриј одељак „Истражите подкаст”</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Одељак „Истражите подкаст” је скривен</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Одељак „Истражите подкаст” је приказан</string>
@@ -283,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_title">Сакриј одељак за коментаре</string>
   <string name="morphe_hide_comments_section_summary_on">Одељак за коментаре је скривен</string>
   <string name="morphe_hide_comments_section_summary_off">Одељак за коментаре је приказан</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Сакриј одељак за коментаре у Хом фуд</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Одељак за коментаре у Хом фуд је скривен</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Одељак за коментаре у Хом фуд је приказан</string>
   <string name="morphe_hide_comments_community_guidelines_title">Сакриј смернице заједнице</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Смернице заједнице су скривене</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Смернице заједнице су приказане</string>
@@ -385,9 +391,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_summary_on">Банер \"Погледајте производе\" у видео плејеру је скривен</string>
   <string name="morphe_hide_view_products_banner_summary_off">Банер \"Погледајте производе\" у видео плејеру је приказан</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Сакриј промоције за YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Промоције YouTube Премијума су сакривене
-
-Ограничење: страница YouTube Дудлса није доступна"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">Промоције за YouTube Premium су скривене испод видео плејера</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Промоције за YouTube Premium су приказане</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Сакриј видео огласе</string>
@@ -494,14 +498,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">Омогући превлачење за промену видеа</string>
   <string name="morphe_swipe_change_video_summary_on">Превлачење у режиму целог екрана ће променити на следећи/претходни видео</string>
   <string name="morphe_swipe_change_video_summary_off">Превлачење у режиму целог екрана неће променити на следећи/претходни видео</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">Видивост аутоматских натписа</string>
-  <string name="morphe_auto_captions_style_entry_1">Прикажи када је мутиран и немутиран</string>
-  <string name="morphe_auto_captions_style_entry_2">Никада не приказуј</string>
-  <string name="morphe_auto_captions_style_entry_3">Прикажи када није мутиран</string>
-  <string name="morphe_auto_captions_style_entry_4">Прикажи када је утишано</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Прикажи аутоматске титлове</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Сакриј аутоматске титлове</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Дугмад радњи</string>
   <string name="morphe_hide_buttons_screen_summary">Сакријте или прикажите дугмад испод видеа</string>
@@ -567,7 +563,37 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Сакриј дугме „Сачувај”</string>
   <string name="morphe_hide_save_button_summary_on">Дугме „Сачувај” је скривено</string>
   <string name="morphe_hide_save_button_summary_off">Дугме „Сачувај” је приказано</string>
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">Наслов</string>
+  <string name="morphe_captions_screen_summary">Онемогутити аутоматско омогућавање наслова или постављање кукија за наслове</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">Видивост аутоматских натписа</string>
+  <string name="morphe_auto_captions_style_entry_1">Прикажи када је мутиран и немутиран</string>
+  <string name="morphe_auto_captions_style_entry_2">Никада не приказуј</string>
+  <string name="morphe_auto_captions_style_entry_3">Прикажи када није мутиран</string>
+  <string name="morphe_auto_captions_style_entry_4">Прикажи када је утишано</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Прикажи аутоматске титлове</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Сакриј аутоматске титлове</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">Постави кукије за наслове</string>
+  <string name="morphe_set_caption_cookies_summary_on">Caption cookies su setirane ako su priložene</string>
+  <string name="morphe_set_caption_cookies_summary_off">"Caption cookies nisu setirane
+
+Auto-translate captions možda nisu dostupni"</string>
+  <string name="morphe_caption_cookies_title">Caption cookies</string>
+  <string name="morphe_caption_cookies_summary">Cookies da se koriste u zahtjevima za Timed Text API</string>
+  <string name="morphe_get_caption_cookies_title">Dohvati caption cookies</string>
+  <string name="morphe_get_caption_cookies_summary">"Kliknite da dohvatite cookies
+
+Cookies će biti automatski sačuvani ako su ispravni"</string>
+  <string name="morphe_get_caption_cookies_failed">Neuspešno dohvatanje cookies</string>
+  <string name="morphe_get_caption_cookies_duplicate">Cookies već postoje</string>
+  <string name="morphe_get_caption_cookies_success">Cookies su uspješno ažurirani</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">Popravi transkript</string>
+  <string name="morphe_fix_transcript_summary_on">Transkript je dostupan</string>
+  <string name="morphe_fix_transcript_summary_off">Transkript možda nije dostupan zbog pogreške preuslova</string>
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Дугмад навигације</string>
   <string name="morphe_navigation_buttons_screen_summary">Сакријте или промените дугмад на траци за навигацију</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -586,14 +612,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscriptions_button_title">Сакриј дугме „Праћења”</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Дугме „Праћења” је скривено</string>
   <string name="morphe_hide_subscriptions_button_summary_off">Дугме „Праћења” је приказано</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Сакриј обавештења</string>
   <string name="morphe_hide_notifications_button_summary_on">Дугме „Обавештења” је скривено</string>
   <string name="morphe_hide_notifications_button_summary_off">Дугме „Обавештења” је приказано</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">Замени дугме „Направи” дугметом „Обавештења”</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">Дугме „Направи” је замењено дугметом „Обавештења”</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">Дугме „Направи” није замењено дугметом „Обавештења”</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Ако промена ове поставке не утиче, покушајте да пребаците у Инкогнито режим.</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Замени дугме „Направи” дугметом „Обавештења”</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Дугме „Направи” је замењено дугметом „Обавештења”</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Дугме „Направи” није замењено дугметом „Обавештења”</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Ако промена ове поставке не утиче, покушајте да пребаците у Инкогнито режим.</string>
   <string name="morphe_hide_navigation_button_labels_title">Сакриј ознаке дугмади за навигацију</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Ознаке дугмади за навигацију су скривене</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Ознаке дугмади за навигацију су приказане</string>
@@ -712,10 +738,19 @@ Da bi prikazali meni sa audio stazom, promenite 'Spoof video streams' u 'Android
   <string name="morphe_hide_endscreen_cards_title">Сакриј картице завршног екрана</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Картице завршног екрана су скривене</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Картице завршног екрана су приказане</string>
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Режим амбијента</string>
+  <string name="morphe_ambient_mode_screen_summary">Изабери да биш прескочио ограничења енергетске ефикасности за режим амбијента и искључи га у потпуности или у пуном екранском режиму</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Прескочи ограничења режима амбијента</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Ограничења режима амбијента за уштевање енергије су премоштена</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Ограничења режима амбијента за уштевање енергије нису премоштена</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Омогућавање тога може да доведе до горег трајања батерије.</string>
+  <string name="morphe_disable_ambient_mode_title">Искључи режим амбијента</string>
+  <string name="morphe_disable_ambient_mode_summary_on">Режим амбијента је искључен</string>
+  <string name="morphe_disable_ambient_mode_summary_off">Режим амбијента је укључен</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Онемогући „Амбијентални режим” у режиму преко целог екрана</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Амбијентални режим у режиму целог екрана је онемогућен</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Амбијентални режим у режиму целог екрана је омогућен</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Режим амбијента у режиму целог екрана је искључен</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Режим амбијента у режиму целог екрана је укључен</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Сакриј картице са информацијама</string>
   <string name="morphe_hide_info_cards_summary_on">Картице са информацијама су скривене</string>
@@ -1180,9 +1215,8 @@ Da bi prikazali meni sa audio stazom, promenite 'Spoof video streams' u 'Android
 
 Ако се касније искључи, препоручује се да избришете податке апликације да бисте спречили грешке у корисничком интерфејсу."</string>
   <string name="morphe_spoof_app_version_target_title">Циљна верзија апликације за лажирање</string>
-  <string name="morphe_spoof_app_version_target_entry_1">20.13.41 - Врати нескупљену траку радњи видеа</string>
-  <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Врати функционалност транскрипта</string>
-  <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Враћа старе иконице Shorts плејера</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Враћа старе иконице Shorts плејера</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Врати нескупљену траку радњи видеа</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промена полазне странице</string>
   <string name="morphe_change_start_page_entry_default">Подразумевана</string>
@@ -1476,11 +1510,10 @@ Da bi prikazali meni sa audio stazom, promenite 'Spoof video streams' u 'Android
 Репродукција видеа с AV1 може застајкивати или прескакати кадрове."</string>
   <string name="morphe_spoof_video_streams_about_title">Нежељени ефекти лажирања</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Експериментални клијент и може престати да ради било када</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Видео се може зауставити на 1:00 или можда неће бити доступан у неким регионима</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Мени „Аудио снимак” недостаје</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодека AV1</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Опција „Уједначена јачина звука” није доступна</string>
-  <string name="morphe_spoof_video_streams_about_kids_videos">• Видеи за децу се можда неће пуштати када сте одјављени или у режиму без архивирања</string>
+  <string name="morphe_spoof_video_streams_about_js">• Видео може да почне касно</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Присиљавање оригиналног звука није доступно</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Прикажи у „Статистици за зналце”</string>

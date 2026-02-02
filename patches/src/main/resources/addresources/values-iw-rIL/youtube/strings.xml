@@ -186,6 +186,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">הסתר פרקים</string>
   <string name="morphe_hide_chapters_section_summary_on">מדור הפרקים מוסתר</string>
   <string name="morphe_hide_chapters_section_summary_off">מדור הפרקים מוצג</string>
+  <string name="morphe_hide_course_progress_section_title">הסתר \'התקדמות בקורס\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">מדור התקדמות בקורס מוסתר</string>
+  <string name="morphe_hide_course_progress_section_summary_off">מדור התקדמות בקורס מוצג</string>
   <string name="morphe_hide_explore_podcast_section_title">הסתר את \'גלה את הפודקאסט\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">מדור \'גלה את הפודקאסט\' מוסתר</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">מדור \'גלה את הפודקאסט\' מוצג</string>
@@ -283,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_title">הסתר מדור תגובות</string>
   <string name="morphe_hide_comments_section_summary_on">מדור התגובות מוסתר</string>
   <string name="morphe_hide_comments_section_summary_off">מדור התגובות מוצג</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">הסתר את מדור התגובות בפיד</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">מדור התגובות בפיד מוסתר</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">מדור התגובות בפיד מוצג</string>
   <string name="morphe_hide_comments_community_guidelines_title">הסתר הנחיות קהילה</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">הנחיות הקהילה מוסתרות</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">הנחיות הקהילה מוצגות</string>
@@ -385,9 +391,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_summary_on">באנר צפייה במוצרים בשכבת-על של וידאו מוסתר</string>
   <string name="morphe_hide_view_products_banner_summary_off">באנר צפייה במוצרים בשכבת-על של וידאו מוצג</string>
   <string name="morphe_hide_youtube_premium_promotions_title">הסתר קידומי YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"הטענות של YouTube Premium מוסתרות
-
-מגבלה: הדף של YouTube Doodles אינו זמין"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">פרסומות YouTube Premium מוסתרות</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">קידומי YouTube Premium מוצגים</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">הסתר מודעות סרטון</string>
@@ -494,14 +498,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">הפעל החלקה כדי לשנות סרטונים</string>
   <string name="morphe_swipe_change_video_summary_on">החלקה במצב מסך מלא תשנה לסרטון הבא/הקודם</string>
   <string name="morphe_swipe_change_video_summary_off">החלקה במצב מסך מלא לא תשנה לסרטון הבא/הקודם</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">הצגת כתוביות אוטומטיות</string>
-  <string name="morphe_auto_captions_style_entry_1">הצג כשהוא/היא און/אוף</string>
-  <string name="morphe_auto_captions_style_entry_2">אל תהצג</string>
-  <string name="morphe_auto_captions_style_entry_3">הצג כשהוא/היא און</string>
-  <string name="morphe_auto_captions_style_entry_4">הצג בעת שתק</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">הצג כתוביות אוטומטיות</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">הסתר כתוביות אוטומטיות</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">פעולות לחצנים</string>
   <string name="morphe_hide_buttons_screen_summary">הסתר או הצג לחצנים תחת סרטונים</string>
@@ -567,7 +563,37 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">הסתר \'שמירה\'</string>
   <string name="morphe_hide_save_button_summary_on">הלחצן \'שמירה\' מוסתר</string>
   <string name="morphe_hide_save_button_summary_off">הלחצן שמירה\' מוצג</string>
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">כותבים</string>
+  <string name="morphe_captions_screen_summary">השבת כתוביות מלהיות מופעלות אוטומטית או הגדרת קובץ כתוביות</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">הצגת כתוביות אוטומטיות</string>
+  <string name="morphe_auto_captions_style_entry_1">הצג כשהוא/היא און/אוף</string>
+  <string name="morphe_auto_captions_style_entry_2">אל תהצג</string>
+  <string name="morphe_auto_captions_style_entry_3">הצג כשהוא/היא און</string>
+  <string name="morphe_auto_captions_style_entry_4">הצג בעת שתק</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">הצג כתוביות אוטומטיות</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">הסתר כתוביות אוטומטיות</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">הגדרת קובץ כתוביות</string>
+  <string name="morphe_set_caption_cookies_summary_on">קוקיס תיאור מותאמים יוצאים אם סופרים</string>
+  <string name="morphe_set_caption_cookies_summary_off">"קוקיס תיאור לא מותאמים
+
+התרגום אוטומטי של תיאורים עשויים לא להיות זמין"</string>
+  <string name="morphe_caption_cookies_title">קוקיס תיאור</string>
+  <string name="morphe_caption_cookies_summary">קוקיס להשתמש בתוך בקשות API טקסט מותאמים</string>
+  <string name="morphe_get_caption_cookies_title">קבל קוקיס תיאור</string>
+  <string name="morphe_get_caption_cookies_summary">"לחץ לקבל קוקיס
+
+קוקיס יישמרו אוטומטית אם הם תקינים"</string>
+  <string name="morphe_get_caption_cookies_failed">שגיאה בהפקת קוקיס</string>
+  <string name="morphe_get_caption_cookies_duplicate">קוקיס קיימים כבר</string>
+  <string name="morphe_get_caption_cookies_success">קוקיס עודכנו בהצלחה</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">תיקון תמליל</string>
+  <string name="morphe_fix_transcript_summary_on">תמליל זמין</string>
+  <string name="morphe_fix_transcript_summary_off">תמליל עשוי לא להיות זמין עקב בדיקה מוקדמת של תנאים</string>
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">לחצני ניווט</string>
   <string name="morphe_navigation_buttons_screen_summary">הסתר או שנה לחצנים בסרגל הניווט</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -586,14 +612,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscriptions_button_title">הסתר מינויים</string>
   <string name="morphe_hide_subscriptions_button_summary_on">לחצן מינויים מוסתר</string>
   <string name="morphe_hide_subscriptions_button_summary_off">לחצן מינויים מוצג</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">הסתר עדכונים</string>
   <string name="morphe_hide_notifications_button_summary_on">לחצן עדכונים מוסתר</string>
   <string name="morphe_hide_notifications_button_summary_off">לחצן עדכונים מוצג</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">החלף יצירה עם עדכונים</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">לחצן יצירה מוחלף עם לחצן התראות</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">לחצן יצירה לא יוחלף עם לחצן עדכונים</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">אם שינוי הגדרון זה לא יפעל, נסה לשנות למוד אינקוגניטו.</string>
+  <string name="morphe_swap_create_with_notifications_button_title">החלף יצירה עם עדכונים</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">לחצן יצירה יוחלף עם לחצן עדכונים</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">לחצן יצירה לא יוחלף עם לחצן עדכונים</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">אם שינוי הגדרון זה לא יפעל, נסה לשנות למוד אינקוגניטו.</string>
   <string name="morphe_hide_navigation_button_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">התוויות מוסתרות</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">התוויות מוצגות</string>
@@ -712,10 +738,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_endscreen_cards_title">הסתר כרטיסי מסך סיום</string>
   <string name="morphe_hide_endscreen_cards_summary_on">כרטיסי מסך מסיום מוסתרים</string>
   <string name="morphe_hide_endscreen_cards_summary_off">כרטיסי מסך מסיום מוצגים</string>
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">מצב אטמוספירה</string>
+  <string name="morphe_ambient_mode_screen_summary">עקוף הגבלות חסכון אנרגיה עבור מצב אטמוספירה ומנע אותו לחלוטין או במלואו</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">עקוף מגבלות מצב אטמוספירה</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">הסרת הגבלות של תאורת אווירה לשמירה על כוח חשמלי</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">הסרת הגבלות של תאורת אווירה לשמירה על כוח חשמלי אינה פעילה</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">הפעלת תאורת אווירה תגרום לריצוי סוללה גרוע יותר.</string>
+  <string name="morphe_disable_ambient_mode_title">הסתר תאורת אווירה</string>
+  <string name="morphe_disable_ambient_mode_summary_on">תאורת אווירה מושבתת</string>
+  <string name="morphe_disable_ambient_mode_summary_off">תאורת אווירה מופעלת</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">השבת תאורת אווירה במסך מלא</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">תאורת אווירה מושבתת</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">תאורת אווירה מופעלת</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">תאורת אווירה מלאה- מסך מושבתת</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">תאורת אווירה מלאה- מסך מופעלת</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">הסתר כרטיסי מידע</string>
   <string name="morphe_hide_info_cards_summary_on">כרטיסי המידע מוסתרים</string>
@@ -1180,9 +1215,8 @@ Second \"item\" text"</string>
 
 אם נכבה מאוחר יותר, מומלץ לנקות את נתוני היישום כדי למנוע באגים של ממשק המשתמש."</string>
   <string name="morphe_spoof_app_version_target_title">יעד גרסת יישום מזויפת</string>
-  <string name="morphe_spoof_app_version_target_entry_1">20.13.41 - שחזור סרגל פעולות וידאו לא מכווץ</string>
-  <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - שחזור פונקציונליות תמלול</string>
-  <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - שחזר סמלי נגן Shorts ישנים</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - שחזר סמלי נגן Shorts ישנים</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - שחזור סרגל פעולות וידאו לא מכווץ</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>
@@ -1475,11 +1509,10 @@ Second \"item\" text"</string>
 הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים."</string>
   <string name="morphe_spoof_video_streams_about_title">תופעות לוואי של התחזות</string>
   <string name="morphe_spoof_video_streams_about_experimental">• לקוח ניסיוני ועשוי להפסיק לפעול בכל עת</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• הווידאו עשוי להיעצר בדקה 1:00, או ייתכן שלא יהיה זמין באזורים מסוימים</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• תפריט ערוץ השמע חסר</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
-  <string name="morphe_spoof_video_streams_about_kids_videos">• ייתכן שסרטוני Kids לא יופעלו כשאתה מנותק או במצב פרטי</string>
+  <string name="morphe_spoof_video_streams_about_js">• הווידאו עשוי להתחיל מאוחר</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• כפיית שמע מקורי אינה זמינה</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">הצג בנתונים לגיקים</string>

@@ -19,6 +19,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -178,22 +179,24 @@ val hideShortsComponentsPatch = bytecodePatch(
 
         // region Hide sound button.
 
-        forEachLiteralValueInstruction(
-            getResourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
-        ) { literalInstructionIndex ->
-            val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
-                getReference<MethodReference>()?.name == "getDimensionPixelSize"
-            } + 1
+        if (!is_21_05_or_greater) {
+            forEachLiteralValueInstruction(
+                getResourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
+            ) { literalInstructionIndex ->
+                val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
+                    getReference<MethodReference>()?.name == "getDimensionPixelSize"
+                } + 1
 
-            val sizeRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+                val sizeRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
-            addInstructions(
-                targetIndex + 1,
-                """
-                    invoke-static { v$sizeRegister }, $FILTER_CLASS_DESCRIPTOR->getSoundButtonSize(I)I
-                    move-result v$sizeRegister
-                """
-            )
+                addInstructions(
+                    targetIndex + 1,
+                    """
+                        invoke-static { v$sizeRegister }, $FILTER_CLASS_DESCRIPTOR->getSoundButtonSize(I)I
+                        move-result v$sizeRegister
+                    """
+                )
+            }
         }
 
         // endregion

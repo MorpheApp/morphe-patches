@@ -10,6 +10,9 @@ import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.contexthook.Endpoint
+import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
+import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -41,6 +44,7 @@ private val hideAdsResourcePatch = resourcePatch {
         lithoFilterPatch,
         settingsPatch,
         resourceMappingPatch,
+        clientContextHookPatch,
     )
 
     execute {
@@ -205,6 +209,16 @@ val hideAdsPatch = bytecodePatch(
                     }
                 }
             }
+        }
+
+        setOf(
+            Endpoint.BROWSE,
+            Endpoint.SEARCH,
+        ).forEach { endpoint ->
+            addOSNameHook(
+                endpoint,
+                "$EXTENSION_CLASS_DESCRIPTOR->hideAds(Ljava/lang/String;)Ljava/lang/String;",
+            )
         }
     }
 }

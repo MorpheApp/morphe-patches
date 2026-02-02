@@ -186,6 +186,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">隐藏章节</string>
   <string name="morphe_hide_chapters_section_summary_on">「章节」部分已隐藏</string>
   <string name="morphe_hide_chapters_section_summary_off">「章节」部分已显示</string>
+  <string name="morphe_hide_course_progress_section_title">隐藏“课程进度”</string>
+  <string name="morphe_hide_course_progress_section_summary_on">课程进度部分已隐藏</string>
+  <string name="morphe_hide_course_progress_section_summary_off">课程进度部分已显示</string>
   <string name="morphe_hide_explore_podcast_section_title">隐藏“浏览播客”</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">“浏览播客”部分已隐藏</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">“浏览播客”部分已显示</string>
@@ -283,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_title">隐藏评论区</string>
   <string name="morphe_hide_comments_section_summary_on">评论区已隐藏</string>
   <string name="morphe_hide_comments_section_summary_off">评论区已显示</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">隐藏主页动态的评论区</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">主页动态的评论区已隐藏</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">主页动态的评论区已显示</string>
   <string name="morphe_hide_comments_community_guidelines_title">隐藏社区准则</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">社区准则已隐藏</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">社区准则已显示</string>
@@ -385,9 +391,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_summary_on">视频叠加层中的查看商品横幅已隐藏</string>
   <string name="morphe_hide_view_products_banner_summary_off">视频叠加层中的查看商品横幅已显示</string>
   <string name="morphe_hide_youtube_premium_promotions_title">隐藏 YouTube Premium 促销推广</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium 促销已隐藏
-
-限制：YouTube 涂鸦页面不可用"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">YouTube Premium 促销已隐藏</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube Premium推广已显示</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
@@ -494,14 +498,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">启用滑动切换视频</string>
   <string name="morphe_swipe_change_video_summary_on">在全屏模式下滑动将切换到下一个/上一个视频</string>
   <string name="morphe_swipe_change_video_summary_off">在全屏模式下滑动将不会切换到下一个/上一个视频</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">自动字幕可见性</string>
-  <string name="morphe_auto_captions_style_entry_1">静音时显示，非静音时显示</string>
-  <string name="morphe_auto_captions_style_entry_2">从不显示</string>
-  <string name="morphe_auto_captions_style_entry_3">非静音时显示</string>
-  <string name="morphe_auto_captions_style_entry_4">显示静音时的字幕</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">显示自动字幕</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">隐藏自动字幕</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">操作按钮</string>
   <string name="morphe_hide_buttons_screen_summary">隐藏或显示视频下的按钮</string>
@@ -567,7 +563,37 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">隐藏保存</string>
   <string name="morphe_hide_save_button_summary_on">保存按钮已隐藏</string>
   <string name="morphe_hide_save_button_summary_off">保存按钮已显示</string>
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">字幕</string>
+  <string name="morphe_captions_screen_summary">禁用自动启用字幕或设置字幕cookie</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">自动字幕可见性</string>
+  <string name="morphe_auto_captions_style_entry_1">静音时显示，非静音时显示</string>
+  <string name="morphe_auto_captions_style_entry_2">从不显示</string>
+  <string name="morphe_auto_captions_style_entry_3">非静音时显示</string>
+  <string name="morphe_auto_captions_style_entry_4">显示静音时的字幕</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">显示自动字幕</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">隐藏自动字幕</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">设置字幕cookie</string>
+  <string name="morphe_set_caption_cookies_summary_on">如果提供，则设置字幕cookie</string>
+  <string name="morphe_set_caption_cookies_summary_off">"字幕cookie未设置
+
+自动翻译字幕可能无法使用"</string>
+  <string name="morphe_caption_cookies_title">字幕cookie</string>
+  <string name="morphe_caption_cookies_summary">用于时序文本API请求的cookie</string>
+  <string name="morphe_get_caption_cookies_title">获取字幕cookie</string>
+  <string name="morphe_get_caption_cookies_summary">"点击获取cookie
+
+如果有效，cookie将自动保存"</string>
+  <string name="morphe_get_caption_cookies_failed">无法获取cookie</string>
+  <string name="morphe_get_caption_cookies_duplicate">cookie已存在</string>
+  <string name="morphe_get_caption_cookies_success">cookie已成功更新</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">修复文本</string>
+  <string name="morphe_fix_transcript_summary_on">文本可用</string>
+  <string name="morphe_fix_transcript_summary_off">由于预检失败，文本可能无法使用</string>
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">导航栏按钮</string>
   <string name="morphe_navigation_buttons_screen_summary">隐藏或更改导航栏中的按钮</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -586,14 +612,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscriptions_button_title">隐藏「订阅」按钮</string>
   <string name="morphe_hide_subscriptions_button_summary_on">订阅按钮已隐藏</string>
   <string name="morphe_hide_subscriptions_button_summary_off">订阅按钮已显示</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">隐藏通知</string>
   <string name="morphe_hide_notifications_button_summary_on">通知按钮已隐藏</string>
   <string name="morphe_hide_notifications_button_summary_off">通知按钮已显示</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">将「创作」改成「通知」按钮</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">创建按钮已切换为通知按钮</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">创作按钮未切换成通知按钮</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">如果更改此设置无法生效，请尝试切换到无痕模式。</string>
+  <string name="morphe_swap_create_with_notifications_button_title">切换「创作」为「通知」按钮</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">「创作」按钮已切换为「通知」按钮</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">「创作」按钮未切换为「通知」按钮</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">如果更改此设置无法生效，请尝试切换到无痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隐藏导航栏按钮标签</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">标签已隐藏</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">标签已显示</string>
@@ -712,10 +738,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_endscreen_cards_title">隐藏片尾卡</string>
   <string name="morphe_hide_endscreen_cards_summary_on">片尾卡已隐藏</string>
   <string name="morphe_hide_endscreen_cards_summary_off">片尾卡已显示</string>
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">氛围模式</string>
+  <string name="morphe_ambient_mode_screen_summary">绕过节能模式限制，完全或全屏禁用氛围模式</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">绕过氛围模式限制</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">已绕过电源节能的氛围模式限制</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">未绕过电源节能的氛围模式限制</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">启用此选项可能会导致电池寿命变差。</string>
+  <string name="morphe_disable_ambient_mode_title">禁用氛围模式</string>
+  <string name="morphe_disable_ambient_mode_summary_on">氛围模式已禁用</string>
+  <string name="morphe_disable_ambient_mode_summary_off">氛围模式已启用</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">在全屏时禁用氛围模式</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">氛围模式已禁用</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">氛围模式已启用</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">全屏氛围模式已禁用</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">全屏氛围模式已启用</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">隐藏信息卡片</string>
   <string name="morphe_hide_info_cards_summary_on">信息卡片已隐藏</string>
@@ -1184,9 +1219,8 @@ Second \"item\" text"</string>
 
 如果稍后关闭，建议清除应用程序数据以防止 UI 错误。"</string>
   <string name="morphe_spoof_app_version_target_title">伪装应用程序版本为</string>
-  <string name="morphe_spoof_app_version_target_entry_1">20.13.41 - 恢复未折叠的视频操作栏</string>
-  <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - 恢复字幕功能</string>
-  <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - 恢复旧的 Shorts 播放器图标</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - 恢复旧的 Shorts 播放器图标</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 恢复未折叠的视频操作栏</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">更改起始页</string>
   <string name="morphe_change_start_page_entry_default">默认</string>
@@ -1480,11 +1514,10 @@ Second \"item\" text"</string>
 使用 AV1 播放视频可能会卡顿或丢帧。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺骗的副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 实验性客户端，可能随时停止工作</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• 视频可能会在 1:00 停止，或者在某些地区可能无法播放</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 音轨菜单缺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 不支持 AV1 视频编解码器</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 稳定音量不可用</string>
-  <string name="morphe_spoof_video_streams_about_kids_videos">• 注销或使用无痕模式时，儿童视频可能无法播放</string>
+  <string name="morphe_spoof_video_streams_about_js">视频可能会延迟开始</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 强制原始音频不可用</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">显示在 Stats for nerds 中</string>

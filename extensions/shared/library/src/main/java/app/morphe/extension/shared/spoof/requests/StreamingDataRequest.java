@@ -9,7 +9,6 @@ import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_STREAM
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -33,7 +32,6 @@ import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingD
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.ClientType;
-
 
 /**
  * Video streaming data.  Fetching is tied to the behavior YT uses,
@@ -263,66 +261,65 @@ public class StreamingDataRequest {
                 return null;
             }
 
-            if (clientType.requireJS) {
-                PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
-
-                if (playerResponse.hasStreamingData()) {
-                    StreamingData streamingData = playerResponse.getStreamingData();
-                    StreamingData.Builder streamingDataBuilder = streamingData.toBuilder();
-
-                    String serverAbrStreamingUrl = streamingData.getServerAbrStreamingUrl();
-                    if (isNotEmpty(serverAbrStreamingUrl)) {
-                        String deobfuscatedAbrUrl = deobfuscateStreamingUrl(
-                                videoId,
-                                serverAbrStreamingUrl,
-                                null
-                        );
-                        if (isNotEmpty(deobfuscatedAbrUrl)) {
-                            streamingDataBuilder.setServerAbrStreamingUrl(deobfuscatedAbrUrl);
-                        } else {
-                            streamingDataBuilder.setServerAbrStreamingUrl("");
-                        }
-                    }
-
-                    streamingDataBuilder.clearFormats();
-                    for (Format format : streamingData.getFormatsList()) {
-                        var newFormat = processFormat(videoId, format);
-                        if (newFormat != null) {
-                            streamingDataBuilder.addFormats(newFormat);
-                        } else {
-                            handleDebugToast("Debug: Ignoring failure to deobfuscate in format (%s)", clientType);
-                            return null;
-                        }
-                    }
-
-                    streamingDataBuilder.clearAdaptiveFormats();
-                    for (Format format : streamingData.getAdaptiveFormatsList()) {
-                        var newFormat = processFormat(videoId, format);
-                        if (newFormat != null) {
-                            streamingDataBuilder.addAdaptiveFormats(newFormat);
-                        } else {
-                            handleDebugToast("Debug: Ignoring failure to deobfuscate in adaptiveFormat (%s)", clientType);
-                            return null;
-                        }
-                    }
-
-                    responseBuilder.setStreamingData(streamingDataBuilder);
-                } else {
-                    handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType);
-                    return null;
-                }
-
-                return responseBuilder.build().toByteArray();
-            } else {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-                byte[] buffer = new byte[2048];
-                int bytesRead;
-                while ((bytesRead = inputStream.read(buffer)) >= 0) {
-                    baos.write(buffer, 0, bytesRead);
-                }
-                return baos.toByteArray();
+            PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
+            if (!playerResponse.hasStreamingData()) {
+                handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientType);
+                return null;
             }
+
+            // Android Studio only supports the HLS protocol for live streams.
+            // HLS protocol can theoretically be played with ExoPlayer,
+            // but the related code has not yet been implemented.
+            // If DASH protocol is not available, the client will be skipped.
+            StreamingData streamingData = playerResponse.getStreamingData();
+            if (streamingData.getAdaptiveFormatsCount() == 0) {
+                handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType);
+                return null;
+            }
+
+            if (clientType.requireJS) {
+                StreamingData.Builder streamingDataBuilder = streamingData.toBuilder();
+
+                String serverAbrStreamingUrl = streamingData.getServerAbrStreamingUrl();
+                if (isNotEmpty(serverAbrStreamingUrl)) {
+                    String deobfuscatedAbrUrl = deobfuscateStreamingUrl(
+                            videoId,
+                            serverAbrStreamingUrl,
+                            null
+                    );
+                    if (isNotEmpty(deobfuscatedAbrUrl)) {
+                        streamingDataBuilder.setServerAbrStreamingUrl(deobfuscatedAbrUrl);
+                    } else {
+                        streamingDataBuilder.setServerAbrStreamingUrl("");
+                    }
+                }
+
+                streamingDataBuilder.clearFormats();
+                for (Format format : streamingData.getFormatsList()) {
+                    var newFormat = processFormat(videoId, format);
+                    if (newFormat != null) {
+                        streamingDataBuilder.addFormats(newFormat);
+                    } else {
+                        handleDebugToast("Debug: Ignoring failure to deobfuscate in format (%s)", clientType);
+                        return null;
+                    }
+                }
+
+                streamingDataBuilder.clearAdaptiveFormats();
+                for (Format format : streamingData.getAdaptiveFormatsList()) {
+                    var newFormat = processFormat(videoId, format);
+                    if (newFormat != null) {
+                        streamingDataBuilder.addAdaptiveFormats(newFormat);
+                    } else {
+                        handleDebugToast("Debug: Ignoring failure to deobfuscate in adaptiveFormat (%s)", clientType);
+                        return null;
+                    }
+                }
+
+                responseBuilder.setStreamingData(streamingDataBuilder);
+            }
+
+            return responseBuilder.build().toByteArray();
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to write player response to buffer array", ex);
             return null;

@@ -1,3 +1,90 @@
+# [1.11.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.1...v1.11.0-dev.2) (2026-02-02)
+
+
+### Bug Fixes
+
+* **YouTube - Hide ads:** Empty space is left when ads are hidden on tablets ([#377](https://github.com/MorpheApp/morphe-patches/issues/377)) ([da12960](https://github.com/MorpheApp/morphe-patches/commit/da12960ceb4d93490b8d41f0ea616d686eb609eb))
+* **YouTube - Navigation bar:** Rename "Switch Create with Notifications" to "Swap Create with Notifications" ([#384](https://github.com/MorpheApp/morphe-patches/issues/384)) ([6472dee](https://github.com/MorpheApp/morphe-patches/commit/6472dee35dae7d3b0ba08dd2b4348b535ce48da7))
+
+
+### Features
+
+* **YouTube - Spoof app version:** Add target version `20.28.41` ([#375](https://github.com/MorpheApp/morphe-patches/issues/375)) ([3793689](https://github.com/MorpheApp/morphe-patches/commit/3793689be432ee1643e27670e2c845d4462a80b3))
+* **YouTube:** Add `Ambient mode` patch ([#367](https://github.com/MorpheApp/morphe-patches/issues/367)) ([91a68f5](https://github.com/MorpheApp/morphe-patches/commit/91a68f5200d1f4061821aaba9f955a0fc9ec2cf1))
+
+# [1.11.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.10.1-dev.2...v1.11.0-dev.1) (2026-02-02)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide comments section in Home feed" setting ([#382](https://github.com/MorpheApp/morphe-patches/issues/382)) ([b20f629](https://github.com/MorpheApp/morphe-patches/commit/b20f6294236cad32b1be29b73e761659193e464b))
+
+## [1.10.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2026-02-02)
+
+
+### Bug Fixes
+
+* **YouTube:** Resolve experimental `21.05.264` video description crash ([90a7fae](https://github.com/MorpheApp/morphe-patches/commit/90a7faeb5adf0eb60cb519d7ae455102236e9e2d))
+
+## [1.10.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0...v1.10.1-dev.1) (2026-02-02)
+
+
+### Bug Fixes
+
+* **YouTube:** Resolve experimental `21.05.264` Shorts crash ([eda285a](https://github.com/MorpheApp/morphe-patches/commit/eda285a096024cc262eaf2233e6fbdc4ce77d275))
+
+# [1.10.0](https://github.com/MorpheApp/morphe-patches/compare/v1.9.0...v1.10.0) (2026-02-02)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Spoofing does not work if the default client is not `TV` ([#373](https://github.com/MorpheApp/morphe-patches/issues/373)) ([8a40c96](https://github.com/MorpheApp/morphe-patches/commit/8a40c96bdcb13d20f2f2c2055735f9678fc92bce))
+* **YouTube - Downloads:** Change Seal to hidden preset and add Seal pre-release ([#371](https://github.com/MorpheApp/morphe-patches/issues/371)) ([0406aee](https://github.com/MorpheApp/morphe-patches/commit/0406aee91b0bf14430ce33dc39d3a06b4434ce0c))
+* **YouTube - Hide ads:** Fix "Hide YouTube Premium promotions" hiding YouTube Doodles ([#370](https://github.com/MorpheApp/morphe-patches/issues/370)) ([61860b7](https://github.com/MorpheApp/morphe-patches/commit/61860b7784a2ad4946fd71fb211ae2d2c56d4d1b))
+
+
+### Features
+
+* **Spoof video streams:** Default client maintenance ([#340](https://github.com/MorpheApp/morphe-patches/issues/340)) ([d72cfbe](https://github.com/MorpheApp/morphe-patches/commit/d72cfbe5ccad91ca4527a23da9aa8a55bfb161f1))
+* **YouTube - Captions:** Add "Set caption cookies" and "Fix transcript" settings ([#341](https://github.com/MorpheApp/morphe-patches/issues/341)) ([0e50fc7](https://github.com/MorpheApp/morphe-patches/commit/0e50fc7de9b667f6f9b1e61cec2cfd2f6011e126))
+* **YouTube - Downloads:** Add "Seal Plus" as a hidden preset downloader ([#357](https://github.com/MorpheApp/morphe-patches/issues/357)) ([077128c](https://github.com/MorpheApp/morphe-patches/commit/077128c9115ae0f168c9710fc2d1bb8f1a5ee236))
+* **YouTube - Hide layout components:** Add "Hide course progress" setting ([#351](https://github.com/MorpheApp/morphe-patches/issues/351)) ([4a83b54](https://github.com/MorpheApp/morphe-patches/commit/4a83b54c292a66f5ca2825c0f4a45a5650c528d4))
+* **YouTube:** Add experimental support for `21.05.264` ([#335](https://github.com/MorpheApp/morphe-patches/issues/335)) ([a3f1a5c](https://github.com/MorpheApp/morphe-patches/commit/a3f1a5c1a6fc21d2d6b1e30a600c0d5eaf0c2bf5))
+
+# [1.10.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.5...v1.10.0-dev.6) (2026-02-02)
+
+
+### Bug Fixes
+
+* **YouTube - Downloads:** Change Seal to hidden preset and add Seal pre-release ([#371](https://github.com/MorpheApp/morphe-patches/issues/371)) ([0406aee](https://github.com/MorpheApp/morphe-patches/commit/0406aee91b0bf14430ce33dc39d3a06b4434ce0c))
+* **YouTube - Hide ads:** Fix "Hide YouTube Premium promotions" hiding YouTube Doodles ([#370](https://github.com/MorpheApp/morphe-patches/issues/370)) ([61860b7](https://github.com/MorpheApp/morphe-patches/commit/61860b7784a2ad4946fd71fb211ae2d2c56d4d1b))
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.05.264` ([#335](https://github.com/MorpheApp/morphe-patches/issues/335)) ([a3f1a5c](https://github.com/MorpheApp/morphe-patches/commit/a3f1a5c1a6fc21d2d6b1e30a600c0d5eaf0c2bf5))
+
+# [1.10.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.4...v1.10.0-dev.5) (2026-02-02)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Spoofing does not work if the default client is not `TV` ([#373](https://github.com/MorpheApp/morphe-patches/issues/373)) ([8a40c96](https://github.com/MorpheApp/morphe-patches/commit/8a40c96bdcb13d20f2f2c2055735f9678fc92bce))
+
+# [1.10.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.3...v1.10.0-dev.4) (2026-02-01)
+
+
+### Features
+
+* **YouTube - Downloads:** Add "Seal Plus" as a hidden preset downloader ([#357](https://github.com/MorpheApp/morphe-patches/issues/357)) ([077128c](https://github.com/MorpheApp/morphe-patches/commit/077128c9115ae0f168c9710fc2d1bb8f1a5ee236))
+
+# [1.10.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.2...v1.10.0-dev.3) (2026-02-01)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide course progress" setting ([#351](https://github.com/MorpheApp/morphe-patches/issues/351)) ([4a83b54](https://github.com/MorpheApp/morphe-patches/commit/4a83b54c292a66f5ca2825c0f4a45a5650c528d4))
+
 # [1.10.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.1...v1.10.0-dev.2) (2026-02-01)
 
 

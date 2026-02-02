@@ -187,6 +187,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">छिपाएं अध्याय</string>
   <string name="morphe_hide_chapters_section_summary_on">चैप्टर्स सैक्शन छुपा हुआ है</string>
   <string name="morphe_hide_chapters_section_summary_off">चैप्टर्स सैक्शन दिखाया जाता है</string>
+  <string name="morphe_hide_course_progress_section_title">छुपाएं \'कोर्स प्रोग्रेस\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">कोर्स प्रोग्रेस अनुभाग छुपा हुआ है</string>
+  <string name="morphe_hide_course_progress_section_summary_off">कोर्स प्रोग्रेस अनुभाग दिखाया गया है</string>
   <string name="morphe_hide_explore_podcast_section_title">छुपाएं \'पॉडकास्ट को खोजें\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">पॉडकास्ट खोजने का क्षेत्र छुपा हुआ है</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">पॉडकास्ट खोजने का क्षेत्र दिखाया गया है</string>
@@ -284,6 +287,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_title">छुपाएं टिप्पणियों का अनुभाग</string>
   <string name="morphe_hide_comments_section_summary_on">टिप्पणियों का विभाग छुपा हुआ है</string>
   <string name="morphe_hide_comments_section_summary_off">टिप्पणियों का अनुभाग दिखाया गया है</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">होम फ़ीड में टिप्पणियों का अनुभाग छुपाएं</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">होम फ़ीड में टिप्पणियों का विभाग छुपा हुआ है</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">होम फ़ीड में टिप्पणियों का विभाग दिखाया गया है</string>
   <string name="morphe_hide_comments_community_guidelines_title">छुपाएं समुदाय निदेशिका</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">कम्युनिटी गाइडलाइनें छुपाई गई हैं</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">कम्युनिटी गाइडलाइनें दिखाई जाती हैं</string>
@@ -385,9 +391,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_products_banner_summary_on">प्लेयर ओवरले में उत्पादों के बैनर को देखने के लिए छिपा हुआ है</string>
   <string name="morphe_hide_view_products_banner_summary_off">प्लेयर ओवरले में उत्पादों के बैनर को देखने के लिए दिखाई देता है</string>
   <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"यूट्यूब प्रीमियम प्रोमोशन छुपा हुआ है
-
-मुसीबत: यूट्यूब डुडल्स पेज उपलब्ध नहीं है"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">YouTube प्रीमियम प्रचार छुपाए गए हैं</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">YouTube प्रीमियम प्रचार दिखाए जाते हैं</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
@@ -493,14 +497,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">वीडियो बदलने के लिए स्वाइप एनबॉल करें</string>
   <string name="morphe_swipe_change_video_summary_on">फुलस्क्रीन मोड में स्वाइप करना अगले/पिछले वीडियो पर जाएगी</string>
   <string name="morphe_swipe_change_video_summary_off">फुलस्क्रीन मोड में ஸ्लाइड करना अगले/पिछले वीडियो को बदलने के लिए नहीं जाएगा।</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">ऑटो कैप्शंस दृश्यता</string>
-  <string name="morphe_auto_captions_style_entry_1">म्यूट और म्यूट किए बिना दिखाएं</string>
-  <string name="morphe_auto_captions_style_entry_2">कभी भी नहीं दिखाएं</string>
-  <string name="morphe_auto_captions_style_entry_3">म्यूट किए बिना दिखाएं</string>
-  <string name="morphe_auto_captions_style_entry_4">म्यूट किए हुए दिखाएं</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शंस दिखाएं</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शंस छुपाएं</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">क्रिया बटन</string>
   <string name="morphe_hide_buttons_screen_summary">वीडियो के नीचे बटन छुपाएं या दिखाएं</string>
@@ -551,15 +547,48 @@ Second \"item\" text"</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">शीर्षक</string>
+  <string name="morphe_captions_screen_summary">शीर्षकों को स्वचालित रूप से सक्षम होने से रोकें या कप्शन कुकीज़ सेट करें</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">ऑटो कैप्शंस दृश्यता</string>
+  <string name="morphe_auto_captions_style_entry_1">म्यूट और म्यूट किए बिना दिखाएं</string>
+  <string name="morphe_auto_captions_style_entry_2">कभी भी नहीं दिखाएं</string>
+  <string name="morphe_auto_captions_style_entry_3">म्यूट किए बिना दिखाएं</string>
+  <string name="morphe_auto_captions_style_entry_4">म्यूट किए हुए दिखाएं</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शंस दिखाएं</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शंस छुपाएं</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">कप्शन कुकीज़ सेट करें</string>
+  <string name="morphe_set_caption_cookies_summary_on">कैप्शन कुकीज़ सेट किए जाते हैं यदि प्रदान किए गए हों</string>
+  <string name="morphe_set_caption_cookies_summary_off">"कैप्शन कुकीज़ सेट नहीं किए गए हैं
+
+ऑटो-ट्रांसलेट कैप्शन उपलब्ध हो सकते हैं नहीं"</string>
+  <string name="morphe_caption_cookies_title">कैप्शन कुकीज़</string>
+  <string name="morphe_caption_cookies_summary">टाइम्ड टेक्स्ट एपीआई रिक्वेस्ट्स में उपयोग किए जाने वाले कुकीज़</string>
+  <string name="morphe_get_caption_cookies_title">कैप्शन कुकीज़ प्राप्त करें</string>
+  <string name="morphe_get_caption_cookies_summary">"क्लिक करें कुकीज़ प्राप्त करने के लिए
+
+यदि वे मान्य होंगे, तो कुकीज़ स्वचालित रूप से सहेजे जाएंगे"</string>
+  <string name="morphe_get_caption_cookies_failed">कुकीज़ प्राप्त करने में विफल रहा</string>
+  <string name="morphe_get_caption_cookies_duplicate">कुकीज़ पहले से ही मौजूद हैं</string>
+  <string name="morphe_get_caption_cookies_success">कुकीज़ सफलतापूर्वक अपडेट किए गए थे</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">ट्रांसक्रिप्ट को ठीक करें</string>
+  <string name="morphe_fix_transcript_summary_on">ट्रांसक्रिप्ट उपलब्ध है</string>
+  <string name="morphe_fix_transcript_summary_off">एक पूर्व शर्त जांच विफल होने के कारण ट्रांसक्रिप्ट उपलब्ध हो सकता है नहीं</string>
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_summary_on">बटन क्रिएट स्विच्ड है नोटिफिकेशन बटन से</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">Hide \'Key concepts\'</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं पड़ता है, तो इंकोग्नितो मोड में स्विच करने की कोशिश करें।</string>
+  <string name="morphe_swap_create_with_notifications_button_title">स्वाप करें क्रिएट के साथ नोटिफिकेशन</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">क्रिएट बटन नोटिफिकेशन बटन के साथ स्वाप किया गया है</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">क्रिएट बटन नोटिफिकेशन बटन के साथ स्वाप नहीं किया गया है</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं पड़ता है, तो इंकोग्नितो मोड में स्विच करने की कोशिश करें।</string>
+  <string name="morphe_narrow_navigation_buttons_title">नarrow नैविगेशन बटनें सक्षम करें</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">नैविगेशन बटनें के बीच अंतर नarrow है</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">कुछ डिवाइसों पर इस सुविधा को सक्रिय करना सिस्टम नेविगेशन बार को ट्रांस्परेंट बना सकता है।</string>
@@ -577,6 +606,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">अतिरिक्त सेटिंग्स छुपाएं / अधिक</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">\'अधिकारी सेटिंग्स / अधिक\' मेनू छुपा हुआ है</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_off">\'अधिकारी सेटिंग्स / अधिक\' मेनू दिखाया गया है</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -592,6 +622,9 @@ Second \"item\" text"</string>
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android No SDK' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"ऐडियो ट्रैक मेनू छिपा हुआ है
+
+ऐडियो ट्रैक मेनू दिखाने के लिए, 'स्पूफ वीडियो स्ट्रीम्स' को 'एंड्रॉइड नो एसडीके' पर बदलें"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Create a Short button is shown</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -608,7 +641,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary_off">ऑटोप्ले प्रीव्यू दिखाया गया है</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">अंकित मोड</string>
+  <string name="morphe_ambient_mode_screen_summary">अंकित मोड के लिए शक्ति बचत प्रतिबंधों को उल्लंघन करें और उसे पूर्णतः या पूर्ण स्क्रीन में अक्षम करें</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">अंकित मोड के प्रतिबंधों को उल्लंघन करें</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">अंबरेंट मोड की शक्ति बचत के लिए प्रतिबंध बुलेटप्रूफ किए गए हैं</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">अंबरेंट मोड की शक्ति बचत के लिए प्रतिबंध बुलेटप्रूफ नहीं किए गए हैं</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">इसका एनब्ल करना बटरी की जीवनशक्ति को बिगाड़ सकता है।</string>
+  <string name="morphe_disable_ambient_mode_title">अंबरेंट मोड को डिसेबल करें</string>
+  <string name="morphe_disable_ambient_mode_summary_on">अंबरेंट मोड डिसेबल किया गया है</string>
+  <string name="morphe_disable_ambient_mode_summary_off">अंबरेंट मोड एनब्ल किया गया है</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">फुलस्क्रीन में अंबरेंट मोड डिसेबल किया गया है</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">फुलस्क्रीन में अंबरेंट मोड एनब्ल किया गया है</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">इन्फो कार्ड्स को छुपाएं</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -618,8 +662,19 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">शॉर्ट्स \'ऑटो-डब्ब्ड\' लेबल छुपाएं</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">ऑटो-डब्ब्ड लेबल छिपा हुआ है</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">ऑटो-डब्ब्ड लेबल दिखाई देता है</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">छुपाएं \'खरीदें सुपर धन्यवाद\' बटन</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'ग्रीन स्क्रीन\' बटन छुपाएं</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_live_preview_title">शॉर्ट्स लाइव पूर्वावलोकन छुपाएं</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">शॉर्ट्स लाइव पूर्वावलोकन छिपा हुआ है</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">शॉर्ट्स लाइव पूर्वावलोकन दिखाई देता है</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">छुपाएं \'नए पोस्ट\' बटन</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">छुपाएं \'साउंड सहेजें\' बटन</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">छुपाएं \'इस साउंड का उपयोग करें\' बटन</string>
+  <string name="morphe_hide_shorts_use_template_button_title">छुपाएं \'इस टेम्पलेट का उपयोग करें\' बटन</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -646,6 +701,15 @@ Second \"item\" text"</string>
   <string name="morphe_old_search_filters_sort_by_upload_date">अपलोड तारीख</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"आपकी सेटिंग्स में एक निजी स्पॉन्सरब्लॉक यूजरआईडी है।
+
+आपका यूजरआईडी प्वाइंट जैसा है और कभी भी साझा नहीं किया जाना चाहिए।"</string>
+  <string name="morphe_sb_segments_sponsor_sum">पेयी प्रचार, पेयी संदर्भ और सीधे विज्ञापन. स्वयं प्रचार या मुक्त शाउट-आउट्स के लिए नहीं</string>
+  <string name="morphe_sb_segments_selfpromo_sum">समान है स्पॉन्सर के अलावा अदा / स्वयं प्रचार। इसमें सेक्शंस शामिल हैं मर्चेंडाइज़, दान, या उनसे मिले हुए साथियों के बारे में जानकारी</string>
+  <string name="morphe_sb_segments_nomusic_sum">म्यूजिक वीडियो में ही उपयोग करें। म्यूजिक के बिना वीडियो के हिस्से जो पहले किसी अन्य श्रेणी द्वारा कवर नहीं किए गए हैं</string>
+  <string name="morphe_sb_submit_failed_forbidden">सीकमेंट सबमिट नहीं किया जा सकता: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"सीकमेंट सबमिट नहीं किया जा सकता।
+ पहले से मौजूद है"</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <!-- Shown in the settings preferences, and translations can be any text length. -->
@@ -661,16 +725,23 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">कस्टम</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_alt_thumbnail_stills_about_summary">स्टिल कैप्चर वीडियो के शुरुआत / मिडिल / अंत से ली गई हैं। ये इमेजेज यूट्यूब में शामिल हैं और कोई बाहरी एपीआई का उपयोग नहीं किया जाता है</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.loopvideo.loopVideoPatch -->
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_summary_on">वीडियो लूप बटन दिखाई देता है</string>
+  <string name="morphe_loop_video_button_summary_off">वीडियो लूप बटन दिखाई नहीं देता है</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
+  <string name="morphe_spoof_device_dimensions_summary_on">"डिवाइस डिमेंशन स्पॉफ किया जाता है
+
+विदियो गुणवत्ता अधिक हो सकती है, लेकिन आप वीडियो प्लेबैक स्टटरिंग, बटरी लाइफ बिगड़ना, और अनजान साइड इफेक्ट्स का अनुभव कर सकते हैं"</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassURLRedirectsPatch -->
@@ -678,12 +749,17 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
+  <string name="morphe_playback_speed_dialog_button_summary_on">प्लेबैक स्पीड डायलॉग बटन दिखाई देता है। टैप और होल्ड करें प्लेबैक स्पीड को डिफ़ॉल्ट पर वापस लाएं</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">प्लेबैक स्पीड डायलॉग बटन दिखाई नहीं देता है</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
+  <string name="morphe_video_quality_dialog_button_summary_on">वीडियो गुणवत्ता बटन दिखाई देता है। टैप और होल्ड करें गुणवत्ता को डिफ़ॉल्ट पर वापस लाएं</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">वीडियो गुणवत्ता बटन दिखाई नहीं देता है</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_about_js">• वीडियो शुरू होने में देर हो सकती है</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
 </resources>

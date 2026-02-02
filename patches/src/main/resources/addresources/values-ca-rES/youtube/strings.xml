@@ -79,7 +79,6 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
-  <!-- layout.autocaptions.autoCaptionsPatch -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -97,7 +96,11 @@ Second \"item\" text"</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <!-- layout.captions.autoCaptionsPatch -->
+  <!-- layout.captions.captionCookiesPatch -->
+  <!-- layout.captions.transcriptPatch -->
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
@@ -123,7 +126,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <!-- layout.hide.seekbar.hideSeekbarPatch -->

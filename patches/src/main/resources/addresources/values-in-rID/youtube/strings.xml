@@ -186,6 +186,9 @@ Jika Doodle saat ini ditampilkan di wilayah Anda dan pengaturan penyembunyi ini 
   <string name="morphe_hide_chapters_section_title">Sembunyikan Bab</string>
   <string name="morphe_hide_chapters_section_summary_on">Bagian Bab disembunyikan</string>
   <string name="morphe_hide_chapters_section_summary_off">Bagian Bab ditampilkan</string>
+  <string name="morphe_hide_course_progress_section_title">Sembunyikan \'Kemajuan kursus\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">Bagian kemajuan kursus disembunyikan</string>
+  <string name="morphe_hide_course_progress_section_summary_off">Bagian kemajuan kursus ditampilkan</string>
   <string name="morphe_hide_explore_podcast_section_title">Sembunyikan \'Jelajahi podcast\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Bagian Jelajahi podcast disembunyikan</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Bagian Jelajahi podcast ditampilkan</string>
@@ -283,6 +286,9 @@ Jika Doodle saat ini ditampilkan di wilayah Anda dan pengaturan penyembunyi ini 
   <string name="morphe_hide_comments_section_title">Sembunyikan bagian komentar</string>
   <string name="morphe_hide_comments_section_summary_on">Bagian komentar disembunyikan</string>
   <string name="morphe_hide_comments_section_summary_off">Bagian komentar ditampilkan</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Sembunyikan bagian komentar di feed rumah</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Bagian komentar di feed rumah disembunyikan</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Bagian komentar di feed rumah ditampilkan</string>
   <string name="morphe_hide_comments_community_guidelines_title">Sembunyikan pedoman komunitas</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Pedoman komunitas disembunyikan</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Pedoman komunitas ditampilkan</string>
@@ -385,9 +391,7 @@ Keterbatasan
   <string name="morphe_hide_view_products_banner_summary_on">Spanduk lihat produk di hamparan pemutar disembunyikan</string>
   <string name="morphe_hide_view_products_banner_summary_off">Spanduk lihat produk di hamparan pemutar ditampilkan</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promosi YouTube Premium disembunyikan
-
-Keterbatasan: Halaman YouTube Doodles tidak tersedia"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">Promosi YouTube Premium disembunyikan</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Promosi YouTube Premium ditampilkan</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
@@ -494,14 +498,6 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_swipe_change_video_title">Aktifkan usapan untuk beralih video</string>
   <string name="morphe_swipe_change_video_summary_on">Mengusap dalam mode layar penuh akan beralih ke video berikutnya/sebelumnya</string>
   <string name="morphe_swipe_change_video_summary_off">Mengusap dalam mode layar penuh tidak akan beralih ke video berikutnya/sebelumnya</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">Visibilitas teks otomatis</string>
-  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat dibisukan dan tidak dibisukan</string>
-  <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
-  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak dibisukan</string>
-  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat dibisukan</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Tampilkan teks otomatis</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_hide_buttons_screen_summary">Sembunyikan atau tampilkan tombol di bawah video</string>
@@ -567,7 +563,37 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_hide_save_button_title">Sembunyikan Simpan</string>
   <string name="morphe_hide_save_button_summary_on">Tombol Simpan disembunyikan</string>
   <string name="morphe_hide_save_button_summary_off">Tombol Simpan ditampilkan</string>
-  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">Teks</string>
+  <string name="morphe_captions_screen_summary">Nonaktifkan teks untuk mencegah diaktifkan secara otomatis atau atur cookie teks</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">Ketentuan teks otomatis</string>
+  <string name="morphe_auto_captions_style_entry_1">Tampilkan saat dibisukan dan tidak dibisukan</string>
+  <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
+  <string name="morphe_auto_captions_style_entry_3">Tampilkan saat tidak dibisukan</string>
+  <string name="morphe_auto_captions_style_entry_4">Tampilkan saat dibisukan</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Tampilkan teks otomatis</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">Atur cookie teks</string>
+  <string name="morphe_set_caption_cookies_summary_on">Cookie teks diatur jika disediakan</string>
+  <string name="morphe_set_caption_cookies_summary_off">"Cookie teks tidak diatur
+
+Mungkin teks terjemahan otomatis tidak tersedia"</string>
+  <string name="morphe_caption_cookies_title">Cookie teks</string>
+  <string name="morphe_caption_cookies_summary">Cookie untuk digunakan dalam permintaan API Timed Text</string>
+  <string name="morphe_get_caption_cookies_title">Dapatkan cookie teks</string>
+  <string name="morphe_get_caption_cookies_summary">"Klik untuk mendapatkan kukis
+
+Kukis akan disimpan secara otomatis jika valid"</string>
+  <string name="morphe_get_caption_cookies_failed">Gagal mendapatkan cookie</string>
+  <string name="morphe_get_caption_cookies_duplicate">Cookie sudah ada</string>
+  <string name="morphe_get_caption_cookies_success">Cookie berhasil diperbarui</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">Perbaiki transkrip</string>
+  <string name="morphe_fix_transcript_summary_on">Transkrip tersedia</string>
+  <string name="morphe_fix_transcript_summary_off">Transkrip mungkin tidak tersedia karena gagal memenuhi syarat</string>
+  <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Tombol navigasi</string>
   <string name="morphe_navigation_buttons_screen_summary">Sembunyikan atau ganti tombol di bilah navigasi</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -586,14 +612,14 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_hide_subscriptions_button_title">Sembunyikan Langganan</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Tombol langganan disembunyikan</string>
   <string name="morphe_hide_subscriptions_button_summary_off">Tombol langganan ditampilkan</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Sembunyikan Notifikasi</string>
   <string name="morphe_hide_notifications_button_summary_on">Tombol notifikasi disembunyikan</string>
   <string name="morphe_hide_notifications_button_summary_off">Tombol notifikasi ditampilkan</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">Ganti Buat dengan Notifikasi</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">Tombol buat diganti dengan tombol Pemberitahuan</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">Tombol buat tidak diganti dengan tombol Notifikasi</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">Jika mengubah pengaturan ini tidak berhasil, coba beralih ke mode Penyamaran.</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Ganti Tombol Buat dengan Notifikasi</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Tombol buat diganti dengan tombol Pemberitahuan</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Tombol buat tidak diganti dengan tombol Notifikasi</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Jika mengubah pengaturan ini tidak berhasil, coba beralih ke mode Penyamaran.</string>
   <string name="morphe_hide_navigation_button_labels_title">Sembunyikan label tombol navigasi</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Label disembunyikan</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Label ditampilkan</string>
@@ -712,10 +738,19 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_endscreen_cards_title">Sembunyikan kartu layar akhir</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Kartu layar akhir disembunyikan</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Kartu layar akhir ditampilkan</string>
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Mode Sinematik</string>
+  <string name="morphe_ambient_mode_screen_summary">Lewati batasan penghematan daya untuk Mode Sinematik dan nonaktifkannya seluruh atau layar penuh</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Lewati batasan Mode Sinematik</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Batasan mode sinematik untuk menghemat daya listrik diabaikan</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Batasan mode sinematik untuk menghemat daya listrik tidak diabaikan</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Mengaktifkan ini dapat menyebabkan penggunaan baterai lebih buruk.</string>
+  <string name="morphe_disable_ambient_mode_title">Nonaktifkan mode sinematik</string>
+  <string name="morphe_disable_ambient_mode_summary_on">Mode sinematik dinonaktifkan</string>
+  <string name="morphe_disable_ambient_mode_summary_off">Mode sinematik diaktifkan</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Nonaktifkan mode Senematik dalam layar penuh</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Mode sinematik dinonaktifkan</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Mode sinematik diaktifkan</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Mode sinematik penuh dinonaktifkan</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Mode sinematik penuh diaktifkan</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Sembunyikan kartu info</string>
   <string name="morphe_hide_info_cards_summary_on">Kartu info disembunyikan</string>
@@ -1180,9 +1215,8 @@ Ini akan mengubah tampilan dan fitur aplikasi, tetapi efek samping yang tidak di
 
 Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah bug UI."</string>
   <string name="morphe_spoof_app_version_target_title">Target versi app yang dipalsukan</string>
-  <string name="morphe_spoof_app_version_target_entry_1">20.13.41 - Pulihkan bilah tindakan video yang tidak diciutkan</string>
-  <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Pulihkan fungsionalitas transkrip</string>
-  <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Pulihkan ikon pemutar Shorts lama</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Pulihkan ikon pemutar Shorts lama</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Pulihkan bilah tindakan video yang tidak diciutkan</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Ubah halaman awal</string>
   <string name="morphe_change_start_page_entry_default">Bawaan</string>
@@ -1476,11 +1510,10 @@ Pemutaran mungkin tersendat atau kehilangan bingkai"</string>
 Pemutaran video dengan AV1 mungkin tersendat atau kehilangan bingkai."</string>
   <string name="morphe_spoof_video_streams_about_title">Efek samping pemalsuan</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Klien eksperimental dan dapat berhenti berfungsi kapan saja</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video mungkin berhenti pada 1:00, atau mungkin tidak tersedia di beberapa wilayah</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu trek audio hilang</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Tidak ada codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume stabil tidak tersedia</string>
-  <string name="morphe_spoof_video_streams_about_kids_videos">• Video anak-anak mungkin tidak dapat diputar saat keluar atau dalam mode penyamaran</string>
+  <string name="morphe_spoof_video_streams_about_js">• Video mungkin mulai terlambat</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asli tidak tersedia</string>
   <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Tampilkan di Statistik untuk nerds</string>

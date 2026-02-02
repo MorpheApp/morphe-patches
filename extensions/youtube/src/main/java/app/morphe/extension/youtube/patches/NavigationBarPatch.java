@@ -29,8 +29,8 @@ public final class NavigationBarPatch {
         }
     };
 
-    private static final boolean SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON
-            = Settings.SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+    private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
+            = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
 
     private static final boolean DISABLE_TRANSLUCENT_STATUS_BAR
             = Settings.DISABLE_TRANSLUCENT_STATUS_BAR.get();
@@ -47,8 +47,8 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static String switchCreateWithNotificationButton(String osName) {
-        return SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON
+    public static String swapCreateWithNotificationButton(String osName) {
+        return SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
                 ? "Android Automotive"
                 : osName;
     }
