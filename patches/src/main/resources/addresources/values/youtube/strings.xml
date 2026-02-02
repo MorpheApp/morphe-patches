@@ -1596,7 +1596,8 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_av1">• No AV1 video codec</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
     <string name="morphe_spoof_video_streams_about_js">• Video may start late</string>
-    <string name="morphe_spoof_video_streams_about_kids_videos">• Kids videos may not play when logged out or in incognito mode</string>
+    <string name="morphe_spoof_video_streams_about_kids_videos_incognito">• Kids videos may not play when logged out or in incognito mode</string>
+    <string name="morphe_spoof_video_streams_about_kids_videos_live">• Kids live videos may not play</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Show in Stats for nerds</string>
