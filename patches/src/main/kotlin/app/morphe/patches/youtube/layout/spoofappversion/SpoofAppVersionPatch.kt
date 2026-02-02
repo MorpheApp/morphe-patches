@@ -13,6 +13,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -55,8 +56,14 @@ val spoofAppVersionPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
                     SwitchPreference("morphe_spoof_app_version"),
-                    if (is_20_14_or_greater) {
+                    if (is_20_31_or_greater) {
                         ListPreference("morphe_spoof_app_version_target")
+                    } else if (is_20_14_or_greater) {
+                        ListPreference(
+                            key = "morphe_spoof_app_version_target",
+                            entriesKey = "morphe_spoof_app_version_target_legacy_20_30_entries",
+                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_30_entry_values"
+                        )
                     } else if (is_19_43_or_greater) {
                         ListPreference(
                             key = "morphe_spoof_app_version_target",

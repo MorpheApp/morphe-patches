@@ -16,7 +16,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 /**
  * Hooks GoogleApiActivity to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
@@ -26,8 +25,17 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
 
+    /**
+     * How much time has passed since the first launch of the app. Simple check to prevent
+     * forcing bold icons on first launch where the settings menu is partially broken
+     * due to missing icon resources the client has not yet received.
+     */
+    private static final long MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS = 30 * 1000; // 30 seconds.
+
+    // TODO: Implement a 'Spoof app version' patch for YouTube Music.
     private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_8_40_OR_GREATER
-            && !BaseSettings.SETTINGS_DISABLE_BOLD_ICONS.get();
+            && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
+                > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS;
 
     static {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);

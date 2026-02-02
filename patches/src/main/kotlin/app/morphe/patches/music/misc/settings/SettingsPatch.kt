@@ -100,12 +100,6 @@ val settingsPatch = bytecodePatch(
             SwitchPreference("morphe_settings_search_history"),
         )
 
-        if (is_8_40_or_greater) {
-            PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("morphe_settings_disable_bold_icons")
-            )
-        }
-
         PreferenceScreen.MISC.addPreferences(
             TextPreference(
                 key = null,
@@ -123,6 +117,7 @@ val settingsPatch = bytecodePatch(
             true
         )
 
+        // TODO: Implement a 'Spoof app version' patch for YouTube Music.
         if (is_8_40_or_greater) {
             BoldIconsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
