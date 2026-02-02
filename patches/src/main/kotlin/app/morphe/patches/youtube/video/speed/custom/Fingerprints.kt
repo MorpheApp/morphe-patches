@@ -25,6 +25,7 @@ internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
 )
 
 internal object ShowOldPlaybackSpeedMenuExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
     name = "showOldPlaybackSpeedMenu"
 )
 

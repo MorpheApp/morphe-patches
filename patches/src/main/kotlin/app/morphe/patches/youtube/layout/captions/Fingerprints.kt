@@ -41,6 +41,7 @@ internal object NoVolumeCaptionsFeatureFlagFingerprint : Fingerprint(
 internal object TimedTextUrlFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
+    parameters = listOf("L"),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

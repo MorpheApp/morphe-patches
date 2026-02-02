@@ -91,6 +91,9 @@ internal object PipInputConsumerFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object NewPlayerTypeEnumFeatureFlag : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
     filters = listOf(
         literal(45698813L)
     )

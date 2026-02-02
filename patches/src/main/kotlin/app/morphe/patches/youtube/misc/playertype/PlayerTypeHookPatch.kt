@@ -22,14 +22,12 @@ val playerTypeHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch, resourceMappingPatch)
 
     execute {
-        val PlayerOverlaysSetPlayerTypeFingerprint = Fingerprint(
+        Fingerprint(
             definingClass = "/YouTubePlayerOverlaysLayout;",
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
-        )
-
-        PlayerOverlaysSetPlayerTypeFingerprint.method.addInstruction(
+        ).method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setPlayerType(Ljava/lang/Enum;)V",
         )

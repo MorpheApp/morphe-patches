@@ -12,6 +12,7 @@ import com.android.tools.smali.dexlib2.Opcode
 internal object PlayerTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
+        "WATCH_WHILE_PICTURE_IN_PICTURE",
         "NONE",
         "HIDDEN",
         "WATCH_WHILE_MINIMIZED",
@@ -22,7 +23,6 @@ internal object PlayerTypeEnumFingerprint : Fingerprint(
         "WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED",
         "INLINE_MINIMAL",
         "VIRTUAL_REALITY_FULLSCREEN",
-        "WATCH_WHILE_PICTURE_IN_PICTURE",
     )
 )
 
