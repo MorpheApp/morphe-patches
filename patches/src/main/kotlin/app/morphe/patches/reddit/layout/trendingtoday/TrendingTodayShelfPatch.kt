@@ -8,8 +8,8 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -60,12 +60,13 @@ val trendingTodayShelfPatch = bytecodePatch(
         }
 
         searchTypeaheadListDefaultPresentationConstructorFingerprint.match(
-            mutableClassDefBy(searchTypeaheadListDefaultPresentationToStringFingerprint.classDef)
+            searchTypeaheadListDefaultPresentationToStringFingerprint.classDef
         ).method.addInstructions(
-            1, """
+            1,
+            """
                 invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->removeTrendingLabel(Ljava/lang/String;)Ljava/lang/String;
                 move-result-object p1
-                """
+            """
         )
 
         // endregion

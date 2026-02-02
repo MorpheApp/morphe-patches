@@ -9,11 +9,11 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -121,7 +121,7 @@ val sidebarComponentsPatch = bytecodePatch(
         } else {
             val communityDrawerPresenterMethod =
                 communityDrawerPresenterFingerprint.match(
-                    mutableClassDefBy(communityDrawerPresenterConstructorFingerprint.classDef)
+                    communityDrawerPresenterConstructorFingerprint.classDef
                 ).method
 
             fun getDrawerField(

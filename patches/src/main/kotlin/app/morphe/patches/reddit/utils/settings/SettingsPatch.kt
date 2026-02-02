@@ -90,7 +90,7 @@ val settingsPatch = bytecodePatch(
          */
 
         acknowledgementsLabelBuilderMethod = preferenceManagerFingerprint.match(
-            mutableClassDefBy(preferenceManagerParentFingerprint.classDef)
+            preferenceManagerParentFingerprint.classDef
         ).method
         updateSettingsLabel(DEFAULT_LABEL)
 

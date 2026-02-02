@@ -1314,6 +1314,7 @@ internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
     val returnType = "Z"
 
     val fingerprint = Fingerprint(
+        definingClass = patchExtensionClassType,
         name = methodName,
         returnType = returnType,
         parameters = listOf(),
@@ -1321,8 +1322,6 @@ internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
             AccessFlags.STATIC.isSet(method.accessFlags)
         }
     )
-
-    fingerprint.match(classDefBy(patchExtensionClassType))
 
     if (fingerprint.methodOrNull == null) {
         throw PatchException(
