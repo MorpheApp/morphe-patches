@@ -768,7 +768,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK
 
     <!-- layout.hide.ambientmode.ambientModePatch -->
     <string name="morphe_ambient_mode_screen_title">Ambient mode</string>
-    <string name="morphe_ambient_mode_screen_summary">Bypasses power-save restrictions for Ambient mode and disable it entirely or in fullscreen</string>
+    <string name="morphe_ambient_mode_screen_summary">Bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen</string>
     <string name="morphe_bypass_ambient_mode_restrictions_title">Bypass Ambient mode restrictions</string>
     <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Ambient mode restrictions for power saving are bypassed</string>
     <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Ambient mode restrictions for power saving are not bypassed</string>
