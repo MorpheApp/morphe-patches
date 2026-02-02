@@ -8,6 +8,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal val listingFingerprint = Fingerprint(
+    definingClass = "/Listing;",
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
@@ -18,13 +19,11 @@ internal val listingFingerprint = Fingerprint(
     strings = listOf(
         "children",
         "uxExperiences"
-    ),
-    custom = { _, classDef ->
-        classDef.type.endsWith("/Listing;")
-    },
+    )
 )
 
 internal val submittedListingFingerprint = Fingerprint(
+    definingClass = "/SubmittedListing;",
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = OpcodesFilter.opcodesToFilters(
@@ -35,10 +34,7 @@ internal val submittedListingFingerprint = Fingerprint(
     strings = listOf(
         "children",
         "videoUploads"
-    ),
-    custom = { _, classDef ->
-        classDef.type.endsWith("/SubmittedListing;")
-    },
+    )
 )
 
 internal val adPostSectionConstructorFingerprint = Fingerprint(

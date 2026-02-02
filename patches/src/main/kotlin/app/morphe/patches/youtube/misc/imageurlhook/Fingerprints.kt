@@ -40,10 +40,8 @@ internal object OnSucceededFingerprint : Fingerprint(
 internal const val CRONET_URL_REQUEST_CLASS_DESCRIPTOR = "Lorg/chromium/net/impl/CronetUrlRequest;"
 
 internal object RequestFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    custom = { _, classDef ->
-        classDef.type == CRONET_URL_REQUEST_CLASS_DESCRIPTOR
-    }
+    definingClass = CRONET_URL_REQUEST_CLASS_DESCRIPTOR,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
 )
 
 internal object MessageDigestImageUrlFingerprint : Fingerprint(

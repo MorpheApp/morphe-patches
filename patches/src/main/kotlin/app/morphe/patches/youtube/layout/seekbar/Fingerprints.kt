@@ -100,15 +100,13 @@ internal object PlayerLinearGradientLegacyFingerprint : Fingerprint(
 internal const val LOTTIE_ANIMATION_VIEW_CLASS_TYPE = "Lcom/airbnb/lottie/LottieAnimationView;"
 
 internal object LottieAnimationViewSetAnimationIntFingerprint : Fingerprint(
+    definingClass = LOTTIE_ANIMATION_VIEW_CLASS_TYPE,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("I"),
     returnType = "V",
     filters = listOf(
         methodCall(definingClass = "this", name = "isInEditMode")
-    ),
-    custom = { _, classDef ->
-        classDef.type == LOTTIE_ANIMATION_VIEW_CLASS_TYPE
-    }
+    )
 )
 
 internal object LottieCompositionFactoryZipFingerprint : Fingerprint(

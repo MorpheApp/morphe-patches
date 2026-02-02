@@ -23,12 +23,10 @@ val playerTypeHookPatch = bytecodePatch(
 
     execute {
         val PlayerOverlaysSetPlayerTypeFingerprint = Fingerprint(
+            definingClass = "/YouTubePlayerOverlaysLayout;",
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
-            parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type),
-            custom = { _, classDef ->
-                classDef.endsWith("/YouTubePlayerOverlaysLayout;")
-            }
+            parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
         )
 
         PlayerOverlaysSetPlayerTypeFingerprint.method.addInstruction(

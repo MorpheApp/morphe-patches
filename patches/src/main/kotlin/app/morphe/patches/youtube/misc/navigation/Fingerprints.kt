@@ -33,12 +33,10 @@ internal object ToolbarLayoutFingerprint : Fingerprint(
  * Matches to https://android.googlesource.com/platform/frameworks/support/+/9eee6ba/v7/appcompat/src/android/support/v7/widget/Toolbar.java#963
  */
 internal object AppCompatToolbarBackButtonFingerprint : Fingerprint(
+    definingClass = "Landroid/support/v7/widget/Toolbar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/graphics/drawable/Drawable;",
-    parameters = listOf(),
-    custom = { _, classDef ->
-        classDef.type == "Landroid/support/v7/widget/Toolbar;"
-    }
+    parameters = listOf()
 )
 
 /**
