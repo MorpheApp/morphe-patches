@@ -217,19 +217,7 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
-            if (is_20_31_or_greater) {
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = setOf(
-                        SwitchPreference("morphe_show_menu_icons"),
-                        SwitchPreference("morphe_settings_disable_bold_icons")
-                    )
-                )
-            } else {
-                SwitchPreference("morphe_show_menu_icons")
-            }
+            SwitchPreference("morphe_show_menu_icons")
         )
 
         PreferenceScreen.MISC.addPreferences(

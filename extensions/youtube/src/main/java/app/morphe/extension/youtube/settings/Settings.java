@@ -501,14 +501,6 @@ public class Settings extends BaseSettings {
             SPOOF_APP_VERSION.resetToDefault();
         }
 
-        if (!BaseSettings.SETTINGS_DISABLE_BOLD_ICONS.get() && SPOOF_APP_VERSION.get()
-                && SPOOF_APP_VERSION_TARGET.get().compareTo("19.35.00") <= 0) {
-            Logger.printInfo(() -> "Temporarily disabling bold icons that don't work with old spoof targets");
-            // Don't save and only temporarily overwrite the value so
-            // if spoofing is turned off the old setting value is used.
-            BooleanSetting.privateSetValue(BaseSettings.SETTINGS_DISABLE_BOLD_ICONS, false);
-        }
-
         // VR 1.54 is not selectable in the settings, and it's selected by spoof stream patch if needed.
         if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.ANDROID_VR_1_54_20) {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();

@@ -27,10 +27,6 @@ public class BaseSettings {
      * Use the icons declared in the preferences created during patching. If no icons or styles are declared then this setting does nothing.
      */
     public static final BooleanSetting SHOW_MENU_ICONS = new BooleanSetting("morphe_show_menu_icons", TRUE, true);
-    /**
-     * Do not use this setting directly. Instead use {@link app.morphe.extension.shared.Utils#appIsUsingBoldIcons()}
-     */
-    public static final BooleanSetting SETTINGS_DISABLE_BOLD_ICONS = new BooleanSetting("morphe_settings_disable_bold_icons", FALSE, true);
 
     public static final BooleanSetting SETTINGS_SEARCH_HISTORY = new BooleanSetting("morphe_settings_search_history", TRUE, true);
     public static final StringSetting SETTINGS_SEARCH_ENTRIES = new StringSetting("morphe_settings_search_entries", "");

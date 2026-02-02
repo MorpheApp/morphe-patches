@@ -1,5 +1,6 @@
 package app.morphe.extension.youtube.shared;
 
+import static app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton.CREATE;
 
 import android.app.Activity;
@@ -282,9 +283,11 @@ public final class NavigationBar {
     /**
      * Custom cairo notification filled icon to fix unpatched app missing resource.
      */
-    private static final int fillBellCairoBlack = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, VersionCheckPatch.IS_20_31_OR_GREATER && !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
-            ? "yt_fill_experimental_bell_vd_theme_24"
-            : "morphe_fill_bell_cairo_black_24");
+    private static final int fillBellCairoBlack = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
+            VersionCheckPatch.IS_20_31_OR_GREATER && !isSpoofingToLessThan("20.31.00")
+                    ? "yt_fill_experimental_bell_vd_theme_24"
+                    : "morphe_fill_bell_cairo_black_24"
+    );
 
     /**
      * Injection point.
