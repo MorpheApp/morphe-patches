@@ -14,6 +14,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -118,8 +119,11 @@ val spoofAppVersionPatch = bytecodePatch(
          * Flag is present in YT 20.23, but bold icons are missing and forcing them crashes the app.
          * 20.31 is the first target with all the bold icons present.
          * Fix: https://github.com/MorpheApp/morphe-patches/issues/183.
+         *
+         * 21.05+ these flags are no longer present.
+         *
          */
-        if (is_20_31_or_greater) {
+        if (is_20_31_or_greater && !is_21_05_or_greater) {
             listOf(
                 ShortsBoldIconsPrimaryFeatureFlagFingerprint,
                 ShortsBoldIconsSecondaryFeatureFlagFingerprint,
