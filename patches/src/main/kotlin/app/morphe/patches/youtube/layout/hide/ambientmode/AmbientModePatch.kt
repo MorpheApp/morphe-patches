@@ -58,20 +58,25 @@ val ambientModePatch = bytecodePatch(
         //
         // Bypass ambient mode restrictions.
         //
-        val syntheticClasses = mutableSetOf<String>()
+        val syntheticClasses = HashSet<String>()
         mapOf(
             PowerSaveModeBroadcastReceiverFingerprint to false,
             PowerSaveModeSyntheticFingerprint to true,
         ).forEach { (fingerprint, reversed) ->
             fingerprint.method.apply {
                 val stringIndex = indexOfFirstStringInstructionOrThrow(
-                    "android.os.action.POWER_SAVE_MODE_CHANGED")
-                val targetIndex = if (reversed) indexOfFirstInstructionReversedOrThrow(
-                    stringIndex, Opcode.INVOKE_DIRECT)
-                    else indexOfFirstInstructionOrThrow(
-                    stringIndex, Opcode.INVOKE_DIRECT)
-                val definingClass = (
-                        getInstruction<ReferenceInstruction>(targetIndex).reference as MethodReference).definingClass
+                    "android.os.action.POWER_SAVE_MODE_CHANGED"
+                )
+                val targetIndex =
+                    if (reversed) { indexOfFirstInstructionReversedOrThrow(
+                        stringIndex,
+                        Opcode.INVOKE_DIRECT)
+                    } else { indexOfFirstInstructionOrThrow(
+                        stringIndex,
+                        Opcode.INVOKE_DIRECT)
+                    }
+                val definingClass =
+                    (getInstruction<ReferenceInstruction>(targetIndex).reference as MethodReference).definingClass
 
                 syntheticClasses += definingClass
             }
@@ -79,41 +84,32 @@ val ambientModePatch = bytecodePatch(
 
         syntheticClasses.forEach { classDescriptor ->
             val mutableClass = mutableClassDefBy(classDescriptor)
+            mutableClass.methods
+                .firstOrNull { it.name == "accept" || it.name == "invoke" }
+                ?.apply {
+                    implementation!!.instructions
+                        .withIndex()
+                        .filter { (_, instruction) ->
+                            val reference = (instruction as? ReferenceInstruction)?.reference
 
-            mutableClass.methods.forEach { method ->
-                val impl = method.implementation ?: return@forEach
-                val instructions = impl.instructions
-
-                instructions
-                    .withIndex()
-                    .filter { (_, instruction) ->
-                        val refInstr = instruction as? ReferenceInstruction ?: return@filter false
-                        val methodRef = refInstr.reference as? MethodReference ?: return@filter false
-
-                        methodRef.returnType == "Z" &&
-                                instruction.opcode.name.startsWith("INVOKE")
-                    }
-                    .map { (index, _) -> index }
-                    .asReversed()
-                    .forEach { index ->
-                        val moveResultInstr = instructions.getOrNull(index + 1)
-                            ?: return@forEach
-                        if (!moveResultInstr.opcode.name.startsWith("MOVE_RESULT"))
-                            return@forEach
-                        val register = when (moveResultInstr) {
-                            is OneRegisterInstruction -> moveResultInstr.registerA
-                            else -> return@forEach
+                            instruction.opcode == Opcode.INVOKE_VIRTUAL &&
+                                    reference is MethodReference &&
+                                    reference.name == "isPowerSaveMode"
                         }
+                        .map { (index, _) -> index }
+                        .asReversed()
+                        .forEach { index ->
+                            val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
-                        method.addInstructions(
-                            index + 2,
-                            """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
-                        move-result v$register
-                    """
-                        )
-                    }
-            }
+                            addInstructions(
+                                index + 2,
+                                """
+                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
+                            move-result v$register
+                        """
+                            )
+                        }
+                }
         }
 
         //
