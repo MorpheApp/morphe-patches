@@ -758,6 +758,8 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
  * Effectively this makes all method parameters registers (including p0) of the cloned method
  * unchanged for all indexes in the method, and the method parameters can be referenced directly
  * or used as free registers. Only suitable for static methods with zero parameters.
+ *
+ * **Fingerprint match indexes will be positively offset by [numberOfParameterRegisters]**.
  */
 context(BytecodePatchContext)
 fun Method.cloneMutableAndPreserveParameters(
@@ -771,6 +773,8 @@ fun Method.cloneMutableAndPreserveParameters(
  * Effectively this makes all method parameters registers (including p0) of the cloned method
  * unchanged for all indexes in the method, and the method parameters can be referenced directly
  * or used as free registers. Only suitable for static methods with zero parameters.
+ *
+ * **Fingerprint match indexes will be positively offset by [numberOfParameterRegisters]**.
  */
 fun Method.cloneMutableAndPreserveParameters(
     mutableClass : MutableClass,
@@ -802,8 +806,7 @@ fun Method.cloneMutableAndPreserveParameters(
  * adding to additional new parameters before p0. Added registers always start at index:
  * `method.implementation!!.registerCount`
  *
- * Be aware that any match indexes of the method will now be offset positively by the
- * number of additional registers added.
+ * **Fingerprint match indexes will be positively offset by [numberOfParameterRegisters]**.
  *
  * @param indexZeroInstructionsToAdd Instructions to add at the effective index zero,
  * which is immediately after the required register moves to preserve old registers.

@@ -30,6 +30,7 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -202,8 +203,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
                         "->" + textComponentConversionContextField.name +
                         ":" + textComponentConversionContextField.type
 
-                it.method.apply {
-                    val insertIndex = it.instructionMatches[1].index
+                // 21.05+ clobbers p0 and must clone to preserve it.
+                it.method.cloneMutableAndPreserveParameters().apply {
+                    // Must offset match indexes since cloning adds additional move instructions.
+                    val insertIndex = it.instructionMatches[1].index + numberOfParameterRegisters
                     val charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
                     val conversionContextPathRegister = findFreeRegister(insertIndex, charSequenceRegister)
 
