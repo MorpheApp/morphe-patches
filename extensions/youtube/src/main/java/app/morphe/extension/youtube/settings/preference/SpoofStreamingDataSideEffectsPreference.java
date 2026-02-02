@@ -101,15 +101,6 @@ public class SpoofStreamingDataSideEffectsPreference extends Preference {
             default -> Logger.printException(() -> "Unknown client: " + clientType);
         }
 
-        // Only TV can play children videos in incognito mode.
-        // List the side effect for other clients since they will not fallback to TV.
-        if (clientType != ClientType.TV) {
-            if (clientType != ClientType.TV_SIMPLY) {
-                summary += '\n' + str("morphe_spoof_video_streams_about_kids_videos_live");
-            }
-            summary += '\n' + str("morphe_spoof_video_streams_about_kids_videos_incognito");
-        }
-
         // Use better formatting for bullet points.
         setSummary(BulletPointPreference.formatIntoBulletPoints(summary));
     }
