@@ -315,7 +315,7 @@ public final class NavigationBar {
         SUBSCRIPTIONS("PIVOT_SUBSCRIPTIONS", "TAB_SUBSCRIPTIONS_CAIRO"),
         /**
          * Notifications tab.  Only present when
-         * {@link Settings#SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON} is active.
+         * {@link Settings#SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON} is active.
          */
         NOTIFICATIONS("TAB_ACTIVITY", "TAB_ACTIVITY_CAIRO"),
         /**

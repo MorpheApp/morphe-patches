@@ -293,14 +293,14 @@ public class Settings extends BaseSettings {
 
     // Navigation buttons
     public static final BooleanSetting HIDE_HOME_BUTTON = new BooleanSetting("morphe_hide_home_button", FALSE, true);
-    public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", TRUE, true);
     public static final BooleanSetting HIDE_SHORTS_BUTTON = new BooleanSetting("morphe_hide_shorts_button", TRUE, true);
     public static final BooleanSetting HIDE_SUBSCRIPTIONS_BUTTON = new BooleanSetting("morphe_hide_subscriptions_button", FALSE, true);
     public static final BooleanSetting HIDE_NAVIGATION_BUTTON_LABELS = new BooleanSetting("morphe_hide_navigation_button_labels", FALSE, true);
     public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("morphe_narrow_navigation_buttons", FALSE, true);
     public static final BooleanSetting HIDE_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_hide_notifications_button", FALSE, true);
-    public static final BooleanSetting SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_switch_create_with_notifications_button", TRUE, true,
-            "morphe_switch_create_with_notifications_button_user_dialog_message");
+    public static final BooleanSetting SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_swap_create_with_notifications_button", TRUE, true,
+            "morphe_swap_create_with_notifications_button_user_dialog_message");
+    public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true, parentNot(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON));
     public static final BooleanSetting NAVIGATION_BAR_ANIMATIONS = new BooleanSetting("morphe_navigation_bar_animations", FALSE);
     public static final BooleanSetting DISABLE_TRANSLUCENT_STATUS_BAR = new BooleanSetting("morphe_disable_translucent_status_bar", FALSE, true,
             "morphe_disable_translucent_status_bar_user_dialog_message");
