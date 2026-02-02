@@ -7,6 +7,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -105,7 +106,8 @@ val clientContextHookPatch = bytecodePatch(
                 endpointRequestBodyFingerprint.match(
                     parentFingerprint.originalClassDef
                 ).let {
-                    it.method.apply {
+                    // 21.05+ clobbers p0 register.
+                    it.method.cloneMutableAndPreserveParameters().apply {
                         it.classDef.methods.add(
                             ImmutableMethod(
                                 definingClass,
