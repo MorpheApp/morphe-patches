@@ -1,3 +1,16 @@
+# [1.10.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.5...v1.10.0-dev.6) (2026-02-02)
+
+
+### Bug Fixes
+
+* **YouTube - Downloads:** Change Seal to hidden preset and add Seal pre-release ([#371](https://github.com/MorpheApp/morphe-patches/issues/371)) ([0406aee](https://github.com/MorpheApp/morphe-patches/commit/0406aee91b0bf14430ce33dc39d3a06b4434ce0c))
+* **YouTube - Hide ads:** Fix "Hide YouTube Premium promotions" hiding YouTube Doodles ([#370](https://github.com/MorpheApp/morphe-patches/issues/370)) ([61860b7](https://github.com/MorpheApp/morphe-patches/commit/61860b7784a2ad4946fd71fb211ae2d2c56d4d1b))
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.05.264` ([#335](https://github.com/MorpheApp/morphe-patches/issues/335)) ([a3f1a5c](https://github.com/MorpheApp/morphe-patches/commit/a3f1a5c1a6fc21d2d6b1e30a600c0d5eaf0c2bf5))
+
 # [1.10.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.4...v1.10.0-dev.5) (2026-02-02)
 
 

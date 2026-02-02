@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-02-02T07:16:52",
-  "description": "# [1.10.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.4...v1.10.0-dev.5) (2026-02-02)\n\n\n### Bug Fixes\n\n* **Spoof video streams:** Spoofing does not work if the default client is not `TV` ([#373](https://github.com/MorpheApp/morphe-patches/issues/373)) ([8a40c96](https://github.com/MorpheApp/morphe-patches/commit/8a40c96bdcb13d20f2f2c2055735f9678fc92bce))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.10.0-dev.5/patches-1.10.0-dev.5.mpp",
+  "created_at": "2026-02-02T07:38:35",
+  "description": "# [1.10.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0-dev.5...v1.10.0-dev.6) (2026-02-02)\n\n\n### Bug Fixes\n\n* **YouTube - Downloads:** Change Seal to hidden preset and add Seal pre-release ([#371](https://github.com/MorpheApp/morphe-patches/issues/371)) ([0406aee](https://github.com/MorpheApp/morphe-patches/commit/0406aee91b0bf14430ce33dc39d3a06b4434ce0c))\n* **YouTube - Hide ads:** Fix \"Hide YouTube Premium promotions\" hiding YouTube Doodles ([#370](https://github.com/MorpheApp/morphe-patches/issues/370)) ([61860b7](https://github.com/MorpheApp/morphe-patches/commit/61860b7784a2ad4946fd71fb211ae2d2c56d4d1b))\n\n\n### Features\n\n* **YouTube:** Add experimental support for `21.05.264` ([#335](https://github.com/MorpheApp/morphe-patches/issues/335)) ([a3f1a5c](https://github.com/MorpheApp/morphe-patches/commit/a3f1a5c1a6fc21d2d6b1e30a600c0d5eaf0c2bf5))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.10.0-dev.6/patches-1.10.0-dev.6.mpp",
   "signature_download_url": "",
-  "version": "1.10.0-dev.5"
+  "version": "1.10.0-dev.6"
 }
