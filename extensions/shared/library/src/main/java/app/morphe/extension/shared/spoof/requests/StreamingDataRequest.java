@@ -262,7 +262,6 @@ public class StreamingDataRequest {
             }
 
             PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
-
             if (!playerResponse.hasStreamingData()) {
                 handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientType);
                 return null;
