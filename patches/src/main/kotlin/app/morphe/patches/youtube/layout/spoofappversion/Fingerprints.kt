@@ -5,6 +5,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -25,4 +26,22 @@ internal object SpoofAppVersionFingerprint : Fingerprint(
     // manually set the desired version string as this keyed value in the SharedPreferences.
     // But, this bytecode patch is simple and it works.
     strings = listOf("pref_override_build_version_name")
+)
+
+internal object ShortsBoldIconsPrimaryFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45632000L)
+    )
+)
+
+internal object ShortsBoldIconsSecondaryFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45632045L)
+    )
 )

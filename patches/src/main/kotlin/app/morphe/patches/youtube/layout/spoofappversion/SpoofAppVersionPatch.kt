@@ -18,6 +18,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -107,10 +108,30 @@ val spoofAppVersionPatch = bytecodePatch(
             method.addInstructions(
                 index + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getYouTubeVersionOverride(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$register
                 """
             )
         }
+
+        /**
+         * Flag is present in YT 20.23, but bold icons are missing and forcing them crashes the app.
+         * 20.31 is the first target with all the bold icons present.
+         * Fix: https://github.com/MorpheApp/morphe-patches/issues/183.
+         */
+        if (is_20_31_or_greater) {
+            listOf(
+                ShortsBoldIconsPrimaryFeatureFlagFingerprint,
+                ShortsBoldIconsSecondaryFeatureFlagFingerprint,
+            ).forEach { fingerprint ->
+                fingerprint.let {
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        "$EXTENSION_CLASS_DESCRIPTOR->disableShortsBoldIcons(Z)Z"
+                    )
+                }
+            }
+        }
+
     }
 }
