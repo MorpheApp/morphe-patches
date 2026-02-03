@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.MainActivityConstructorFingerprint
+import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.insertLiteralOverride
@@ -97,7 +97,7 @@ val swipeControlsPatch = bytecodePatch(
 
     execute {
         val wrapperClass = SwipeControlsHostActivityFingerprint.classDef
-        val targetClass = MainActivityConstructorFingerprint.classDef
+        val targetClass = YouTubeMainActivityConstructorFingerprint.classDef
 
         // Inject the wrapper class from the extension into the class hierarchy of MainActivity.
         wrapperClass.setSuperClass(targetClass.superclass)

@@ -9,6 +9,6 @@ internal val redditActivityOnCreateFingerprint = Fingerprint(
     }
 )
 
-internal val applicationInitHook = ExtensionHook(
+internal val redditApplicationInitHook = ExtensionHook(
     fingerprint = redditActivityOnCreateFingerprint
 )
