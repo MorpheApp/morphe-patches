@@ -56,69 +56,36 @@ val ambientModePatch = bytecodePatch(
         )
 
         //
-        // Bypass ambient mode restrictions.
+        // Bypass Ambient mode restrictions.
         //
-        val syntheticClasses = HashSet<String>()
-        mapOf(
-            PowerSaveModeBroadcastReceiverFingerprint to false,
-            PowerSaveModeSyntheticFingerprint to true,
-        ).forEach { (fingerprint, reversed) ->
-            fingerprint.method.apply {
-                val stringIndex = indexOfFirstStringInstructionOrThrow(
-                    "android.os.action.POWER_SAVE_MODE_CHANGED"
-                )
-                val targetIndex =
-                    if (reversed) { indexOfFirstInstructionReversedOrThrow(
-                        stringIndex,
-                        Opcode.INVOKE_DIRECT
-                    )
-                    } else { indexOfFirstInstructionOrThrow(
-                        stringIndex,
-                        Opcode.INVOKE_DIRECT
-                    )
-                    }
+        PowerSaveModeReceiverFingerprint.methodOrNull?.apply {
+            val instructions = implementation?.instructions ?: return@apply
 
-                val definingClass =
-                    (getInstruction<ReferenceInstruction>(targetIndex).reference as MethodReference).definingClass
+            val callIndex = instructions
+                .withIndex()
+                .firstOrNull { (_, instruction) ->
+                    val ref = (instruction as? ReferenceInstruction)?.reference
+                    instruction.opcode in setOf(
+                        Opcode.INVOKE_VIRTUAL,
+                        Opcode.INVOKE_INTERFACE,
+                    ) &&
+                            ref is MethodReference &&
+                            ref.definingClass == "Landroid/os/PowerManager;" &&
+                            ref.name == "isPowerSaveMode"
+                }
+                ?.index
+                ?: return@apply
 
-                syntheticClasses += definingClass
-            }
-        }
+            val moveResultIndex = indexOfFirstInstructionOrThrow(callIndex, Opcode.MOVE_RESULT)
+            val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-        syntheticClasses.forEach { classDescriptor ->
-            val mutableClass = mutableClassDefBy(classDescriptor)
-            val targetMethod = mutableClass.methods.firstOrNull { method ->
-                method.implementation?.instructions?.any { instruction ->
-                    val reference = (instruction as? ReferenceInstruction)?.reference
-                    instruction.opcode == Opcode.INVOKE_VIRTUAL &&
-                            reference is MethodReference &&
-                            reference.name == "isPowerSaveMode"
-                } == true
-            }
-
-            targetMethod?.apply {
-                implementation!!.instructions
-                    .withIndex()
-                    .filter { (_, instruction) ->
-                        val reference = (instruction as? ReferenceInstruction)?.reference
-                        instruction.opcode == Opcode.INVOKE_VIRTUAL &&
-                                reference is MethodReference &&
-                                reference.name == "isPowerSaveMode"
-                    }
-                    .map { (index, _) -> index }
-                    .asReversed()
-                    .forEach { index ->
-                        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
-
-                        addInstructions(
-                            index + 2,
-                            """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
-                    move-result v$register
-                    """
-                        )
-                    }
-            }
+            addInstructions(
+                moveResultIndex + 1,
+                """
+        invoke-static {v$register}, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
+        move-result v$register
+        """
+            )
         }
 
         //

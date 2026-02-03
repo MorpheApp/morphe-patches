@@ -2,9 +2,6 @@ package app.morphe.patches.youtube.layout.hide.ambientmode
 
 import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
     returnType = "V",
@@ -16,34 +13,13 @@ internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
     }
 )
 
-internal object PowerSaveModeBroadcastReceiverFingerprint : Fingerprint(
+internal object PowerSaveModeReceiverFingerprint : Fingerprint(
     returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf(
-        "Landroid/content/Context;",
-        "Landroid/content/Intent;",
-    ),
-    strings = listOf(
-        "android.os.action.POWER_SAVE_MODE_CHANGED",
-    ),
-    custom = { _, classDef ->
-        classDef.superclass == "Landroid/content/BroadcastReceiver;" &&
-                classDef.methods.count() == 2
-    }
-)
-
-internal object PowerSaveModeSyntheticFingerprint : Fingerprint(
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL,),
+    parameters = listOf("Landroid/content/Context;", "Landroid/content/Intent;"),
     strings = listOf("android.os.action.POWER_SAVE_MODE_CHANGED"),
-    custom = { _, classDef ->
-        classDef.methods.any { method ->
-            method.implementation?.instructions?.any { inst ->
-                val reference = (inst as? ReferenceInstruction)?.reference
-                inst.opcode == Opcode.INVOKE_VIRTUAL &&
-                        reference is MethodReference &&
-                        reference.name == "isPowerSaveMode"
-            } == true
-        }
+    custom = { method, classDef ->
+        classDef.superclass == "Landroid/content/BroadcastReceiver;" &&
+                method.name == "onReceive"
     }
 )
