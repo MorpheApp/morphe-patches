@@ -15,6 +15,7 @@ internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
 
 internal object PowerSaveModeBroadcastReceiverFingerprint : Fingerprint(
     returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(
         "Landroid/content/Context;",
         "Landroid/content/Intent;",
@@ -23,18 +24,18 @@ internal object PowerSaveModeBroadcastReceiverFingerprint : Fingerprint(
         "android.os.action.POWER_SAVE_MODE_CHANGED",
     ),
     custom = { _, classDef ->
-        classDef.superclass == "Landroid/content/BroadcastReceiver;"
+        classDef.superclass == "Landroid/content/BroadcastReceiver;" &&
+                classDef.methods.count() == 2
     }
 )
 
 internal object PowerSaveModeSyntheticFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("Ljava/lang/Object;"),
-    strings = listOf(
-        "android.os.action.POWER_SAVE_MODE_CHANGED"
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(
+        "Ljava/lang/Object;",
     ),
-    custom = { method, classDef ->
-        ((method.accessFlags and AccessFlags.SYNTHETIC.value) != 0) ||
-                ((classDef.accessFlags and AccessFlags.SYNTHETIC.value) != 0)
-    }
+    strings = listOf(
+        "android.os.action.POWER_SAVE_MODE_CHANGED",
+    )
 )
