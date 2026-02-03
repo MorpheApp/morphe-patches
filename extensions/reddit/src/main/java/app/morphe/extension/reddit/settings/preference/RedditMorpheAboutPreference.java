@@ -1,11 +1,11 @@
 package app.morphe.extension.reddit.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.StringKeyLookup;
+
 import android.content.Context;
 
 import java.util.Map;
-import java.util.Objects;
 
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
 
 public class RedditMorpheAboutPreference extends MorpheAboutPreference {
@@ -41,18 +41,3 @@ public class RedditMorpheAboutPreference extends MorpheAboutPreference {
     }
 }
 
-record StringKeyLookup(Map<String, String> stringMap) {
-    StringKeyLookup(Map<String, String> stringMap) {
-        this.stringMap = Objects.requireNonNull(stringMap);
-    }
-
-    public String getString(String key, Object... args) {
-        String str = stringMap.get(key);
-        if (str == null) {
-            Logger.printException(() -> "Unknown string key: " + key);
-            return key;
-        }
-
-        return String.format(str, args);
-    }
-}

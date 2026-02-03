@@ -9,8 +9,11 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.extension.hooks.redditActivityOnCreateFingerprint
+import app.morphe.patches.reddit.utils.extension.hooks.redditMainActivityOnCreateFingerprint
 import app.morphe.patches.reddit.utils.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
+import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.settings.setRecommendedAppVersion
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -50,12 +53,17 @@ val settingsPatch = bytecodePatch(
 
     dependsOn(
         sharedExtensionPatch,
-        spoofSignaturePatch
+        spoofSignaturePatch,
+        experimentalAppNoticePatch(
+            mainActivityFingerprint = redditMainActivityOnCreateFingerprint
+        )
     )
 
     execute {
+        setRecommendedAppVersion(COMPATIBILITY_REDDIT.second.last())
+
         /**
-         * Set version info
+         * Set version info.
          */
         redditInternalFeaturesFingerprint.method.apply {
             val versionIndex = indexOfFirstInstructionOrThrow {

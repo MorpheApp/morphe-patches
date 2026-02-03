@@ -28,6 +28,18 @@ Second \"item\" text"</string>
     <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
     <string name="morphe_custom_branding_icon_entry_5">Custom</string>
 
+    <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+    <!-- misc.checks.experimentalAppNoticePatch -->
+    <string name="morphe_experimental_app_version_dialog_message">"&lt;b>🔬️ This app version is experimental&lt;/b>️
+&lt;br/>&lt;br/>
+You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>.
+&lt;br/>&lt;br/>
+You may experience unusual app behavior or unidentified bugs.
+&lt;br/>&lt;br/>
+If you want the most trouble free experience, then uninstall this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
+    <string name="morphe_experimental_app_version_dialog_ignore">⚠️ I am brave</string>
+    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Exit</string>
+
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
     <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
     <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>

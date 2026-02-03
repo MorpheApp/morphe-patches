@@ -8,8 +8,28 @@ import androidx.annotation.NonNull;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class StringRef {
+    /**
+     * Simple class to assist with apps that currently cannot use resource patches.
+     */
+    public record StringKeyLookup(Map<String, String> stringMap) {
+        public StringKeyLookup(Map<String, String> stringMap) {
+            this.stringMap = Objects.requireNonNull(stringMap);
+        }
+
+        public String getString(String key, Object... args) {
+            String str = stringMap.get(key);
+            if (str == null) {
+                Logger.printException(() -> "Unknown string key: " + key);
+                return key;
+            }
+
+            return String.format(str, args);
+        }
+    }
+
     // must use a thread safe map, as this class is used both on and off the main thread
     private static final Map<String, StringRef> strings = Collections.synchronizedMap(new HashMap<>());
 

@@ -10,8 +10,10 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.layout.branding.addLicensePatch
+import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -25,6 +27,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.setRecommendedAppVersion
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.check.checkEnvironmentPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -34,6 +37,7 @@ import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePl
 import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -48,10 +52,8 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private const val BASE_ACTIVITY_HOOK_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/shared/settings/BaseActivityHook;"
-private const val YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/settings/YouTubeActivityHook;"
+private const val BASE_ACTIVITY_HOOK_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/settings/BaseActivityHook;"
+private const val YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/settings/YouTubeActivityHook;"
 
 private val preferences = mutableSetOf<BasePreference>()
 
@@ -188,12 +190,17 @@ val settingsPatch = bytecodePatch(
         // Currently there is no easy way to make a mandatory patch,
         // so for now this is a dependent of this patch.
         checkEnvironmentPatch,
-        addLicensePatch
+        addLicensePatch,
+        experimentalAppNoticePatch(
+            mainActivityFingerprint = YouTubeActivityOnCreateFingerprint
+        )
     )
 
     execute {
         addAppResources("shared-youtube")
         addAppResources("youtube")
+
+        setRecommendedAppVersion(COMPATIBILITY_YOUTUBE.second.last())
 
         // Add an "About" preference to the top.
         preferences += NonInteractivePreference(

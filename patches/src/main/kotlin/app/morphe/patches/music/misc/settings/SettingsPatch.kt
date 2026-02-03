@@ -5,11 +5,14 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.music.misc.extension.hooks.youTubeMusicApplicationInitOnCreateHook
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.playservice.is_8_40_or_greater
 import app.morphe.patches.music.playservice.versionCheckPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -19,6 +22,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.setRecommendedAppVersion
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjection
 import app.morphe.util.copyXmlNode
@@ -81,12 +85,17 @@ val settingsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsResourcePatch,
         addResourcesPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        experimentalAppNoticePatch(
+            mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint
+        )
     )
 
     execute {
         addAppResources("shared-youtube")
         addAppResources("music")
+
+        setRecommendedAppVersion(COMPATIBILITY_YOUTUBE_MUSIC.second.last())
 
         // Add an "About" preference to the top.
         preferences += NonInteractivePreference(
