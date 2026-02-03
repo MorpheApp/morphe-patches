@@ -12,17 +12,12 @@ public final class AmbientModePatch {
 
     /**
      * Bypass Ambient mode restrictions.
+     *
+     * @param original Original isPowerSaveMode() result
      */
-    public static boolean bypassAmbientModeRestrictions(boolean isPowerSaveMode) {
-        if (Settings.BYPASS_AMBIENT_MODE_RESTRICTIONS.get()) {
-            return false;
-        }
-
-        if (Settings.DISABLE_AMBIENT_MODE.get()) {
-            return true;
-        }
-
-        return isPowerSaveMode;
+    public static boolean bypassAmbientModeRestrictions(boolean original) {
+        return (!Settings.BYPASS_AMBIENT_MODE_RESTRICTIONS.get() && original)
+                || Settings.DISABLE_AMBIENT_MODE.get();
     }
 
     /**

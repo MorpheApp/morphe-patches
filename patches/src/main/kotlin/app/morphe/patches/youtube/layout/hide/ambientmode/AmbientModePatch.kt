@@ -58,8 +58,7 @@ val ambientModePatch = bytecodePatch(
         //
         // Bypass ambient mode restrictions.
         //
-        val syntheticClasses = mutableSetOf<String>()
-
+        val syntheticClasses = HashSet<String>()
         mapOf(
             PowerSaveModeBroadcastReceiverFingerprint to false,
             PowerSaveModeSyntheticFingerprint to true,
@@ -68,7 +67,6 @@ val ambientModePatch = bytecodePatch(
                 val stringIndex = indexOfFirstStringInstructionOrThrow(
                     "android.os.action.POWER_SAVE_MODE_CHANGED"
                 )
-
                 val targetIndex =
                     if (reversed) { indexOfFirstInstructionReversedOrThrow(
                         stringIndex,
@@ -89,34 +87,38 @@ val ambientModePatch = bytecodePatch(
 
         syntheticClasses.forEach { classDescriptor ->
             val mutableClass = mutableClassDefBy(classDescriptor)
+            val targetMethod = mutableClass.methods.firstOrNull { method ->
+                method.implementation?.instructions?.any { instruction ->
+                    val reference = (instruction as? ReferenceInstruction)?.reference
+                    instruction.opcode == Opcode.INVOKE_VIRTUAL &&
+                            reference is MethodReference &&
+                            reference.name == "isPowerSaveMode"
+                } == true
+            }
 
-            mutableClass.methods
-                .firstOrNull { it.name == "accept" }
-                ?.apply {
-                    implementation!!.instructions
-                        .withIndex()
-                        .filter { (_, instruction) ->
-                            val reference =
-                                (instruction as? ReferenceInstruction)?.reference
+            targetMethod?.apply {
+                implementation!!.instructions
+                    .withIndex()
+                    .filter { (_, instruction) ->
+                        val reference = (instruction as? ReferenceInstruction)?.reference
+                        instruction.opcode == Opcode.INVOKE_VIRTUAL &&
+                                reference is MethodReference &&
+                                reference.name == "isPowerSaveMode"
+                    }
+                    .map { (index, _) -> index }
+                    .asReversed()
+                    .forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
-                            instruction.opcode == Opcode.INVOKE_VIRTUAL &&
-                                    reference is MethodReference &&
-                                    reference.name == "isPowerSaveMode"
-                        }
-                        .map { (index, _) -> index }
-                        .asReversed()
-                        .forEach { index ->
-                            val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
-
-                            addInstructions(
-                                index + 2,
-                                """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
-                            move-result v$register
-                        """
-                            )
-                        }
-                }
+                        addInstructions(
+                            index + 2,
+                            """
+                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
+                    move-result v$register
+                    """
+                        )
+                    }
+            }
         }
 
         //
