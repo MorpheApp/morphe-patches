@@ -58,7 +58,7 @@ val ambientModePatch = bytecodePatch(
         //
         // Bypass ambient mode restrictions.
         //
-        val syntheticClasses = HashSet<String>()
+        val syntheticClasses = mutableSetOf<String>()
 
         mapOf(
             PowerSaveModeBroadcastReceiverFingerprint to false,
