@@ -30,15 +30,16 @@ Second \"item\" text"</string>
 
     <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
     <!-- misc.checks.experimentalAppNoticePatch -->
-    <string name="morphe_experimental_app_version_dialog_message">"&lt;b>🔬️ This app version is experimental&lt;/b>️
+    <!-- If the translation is much longer than the original text, then do not include the second 🚨 emoji -->
+    <string name="morphe_experimental_app_version_dialog_message">"&lt;b>🚨 Experimental Alert! 🚨&lt;/b>️
 &lt;br/>&lt;br/>
 You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
 &lt;br/>&lt;br/>
-You may experience unusual app behavior or unidentified bugs
+🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
 &lt;br/>&lt;br/>
-If you want the most trouble free experience, then uninstall this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
-    <string name="morphe_experimental_app_version_dialog_ignore">⚠️ I am brave</string>
-    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Exit</string>
+If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
+    <string name="morphe_experimental_app_version_dialog_ignore">⚠️ I want experimental</string>
+    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
     <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>

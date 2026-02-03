@@ -13,7 +13,6 @@ import app.morphe.patches.reddit.utils.extension.hooks.redditMainActivityOnCreat
 import app.morphe.patches.reddit.utils.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
-import app.morphe.patches.shared.misc.settings.setRecommendedAppVersion
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -55,13 +54,12 @@ val settingsPatch = bytecodePatch(
         sharedExtensionPatch,
         spoofSignaturePatch,
         experimentalAppNoticePatch(
-            mainActivityFingerprint = redditMainActivityOnCreateFingerprint
+            mainActivityFingerprint = redditMainActivityOnCreateFingerprint,
+            recommendedAppVersion = COMPATIBILITY_REDDIT.second.last()
         )
     )
 
     execute {
-        setRecommendedAppVersion(COMPATIBILITY_REDDIT.second.last())
-
         /**
          * Set version info.
          */

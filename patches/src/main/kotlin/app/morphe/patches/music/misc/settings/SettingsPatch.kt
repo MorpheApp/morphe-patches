@@ -22,7 +22,6 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.shared.misc.settings.setRecommendedAppVersion
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjection
 import app.morphe.util.copyXmlNode
@@ -87,15 +86,14 @@ val settingsPatch = bytecodePatch(
         addResourcesPatch,
         versionCheckPatch,
         experimentalAppNoticePatch(
-            mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint
+            mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
+            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.last()
         )
     )
 
     execute {
         addAppResources("shared-youtube")
         addAppResources("music")
-
-        setRecommendedAppVersion(COMPATIBILITY_YOUTUBE_MUSIC.second.last())
 
         // Add an "About" preference to the top.
         preferences += NonInteractivePreference(

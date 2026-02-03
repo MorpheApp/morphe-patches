@@ -20,8 +20,6 @@ import org.w3c.dom.Node
 private var lightThemeColor : String? = null
 private var darkThemeColor : String? = null
 
-private var recommendedAppVersion : String? = null
-
 /**
  * Sets the default theme colors used in various Morphe specific settings menus.
  * By default these colors are white and black, but instead can be set to the
@@ -32,13 +30,6 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
     darkThemeColor = darkThemeColorString
 }
 
-/**
- * Sets Utils method of the currently recommended version of the app.
- */
-fun setRecommendedAppVersion(recommendedAppVersionString: String) {
-    recommendedAppVersion = recommendedAppVersionString
-}
-
 private val settingsColorPatch = bytecodePatch {
     finalize {
         val extensionClassDef = mutableClassDefBy(EXTENSION_CLASS_DESCRIPTOR)
@@ -47,9 +38,6 @@ private val settingsColorPatch = bytecodePatch {
         }
         if (darkThemeColor != null) {
             ThemeDarkColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(darkThemeColor!!)
-        }
-        if (recommendedAppVersion != null) {
-            RecommendedAppVersionUtilsFingerprint.match(extensionClassDef).method.returnEarly(recommendedAppVersion!!)
         }
     }
 }
