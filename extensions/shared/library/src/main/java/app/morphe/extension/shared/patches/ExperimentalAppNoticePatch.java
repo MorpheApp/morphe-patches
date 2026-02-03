@@ -28,13 +28,13 @@ public class ExperimentalAppNoticePatch {
     private static final StringKeyLookup strings = new StringKeyLookup(
             Map.of("morphe_experimental_app_version_dialog_message",
                     """
-                        <b>🔬️ This app version is experimental</b>️
-                        <br/><br/>
-                        You are using an experimental app version of ⚠️ <b>%1$s</b>.
-                        <br/><br/>
-                        You may experience unusual app behavior or unidentified bugs.
-                        <br/><br/>
-                        If you want the most trouble free experience, then uninstall this and patch the recommended app version of ✅ <b>%2$s</b>""",
+                    <b>🔬️ This app version is experimental</b>️
+                    <br/><br/>
+                    You are using an experimental app version of ⚠️ <b>%1$s</b>
+                    <br/><br/>
+                    You may experience unusual app behavior or unidentified bugs
+                    <br/><br/>
+                    If you want the most trouble free experience, then uninstall this and patch the recommended app version of ✅ <b>%2$s</b>""",
 
                     "morphe_experimental_app_version_dialog_ignore",
                     "⚠️ I am brave",
