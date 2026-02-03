@@ -108,7 +108,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_NOTIFY_ME_BUTTON = new BooleanSetting("morphe_hide_notify_me_button", TRUE);
     public static final BooleanSetting HIDE_PLAYABLES = new BooleanSetting("morphe_hide_playables", TRUE);
     public static final BooleanSetting HIDE_SHOW_MORE_BUTTON = new BooleanSetting("morphe_hide_show_more_button", TRUE, true);
-    public static final BooleanSetting HIDE_SUBSCRIBED_CHANNELS_BAR = new BooleanSetting("morphe_hide_subscribed_channels_bar", FALSE);
+    public static final BooleanSetting HIDE_SUBSCRIBED_CHANNELS_BAR = new BooleanSetting("morphe_hide_subscribed_channels_bar", FALSE, true);
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);
     public static final BooleanSetting HIDE_TICKET_SHELF = new BooleanSetting("morphe_hide_ticket_shelf", FALSE);
     public static final BooleanSetting HIDE_SEARCH_SUGGESTIONS = new BooleanSetting("morphe_hide_search_suggestions", FALSE);
