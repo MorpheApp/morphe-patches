@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.Match
+import app.morphe.patcher.Match.InstructionMatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -331,7 +331,44 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
+        // region Subscribed channels bar
+
+        // Tablet
+        HideSubscribedChannelsBarConstructorFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
+                            "->hideSubscribedChannelsBar(Landroid/view/View;)V",
+                )
+            }
+        }
+
+        // Phone (landscape mode)
+        HideSubscribedChannelsBarLandscapeFingerprint.match(
+            HideSubscribedChannelsBarConstructorFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSubscribedChannelsBar(I)I
+                        move-result v$register
+                    """
+                )
+            }
+        }
+
+        // endregion
+
         // region crowdfunding box
+
         CrowdfundingBoxFingerprint.let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index
@@ -462,7 +499,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
          * Patch a [Method] with a given [instructions].
          *
          * @param RegisterInstruction The type of instruction to get the register from.
-         * @param insertIndexOffset The offset to add to the end index of the [Match.patternMatch].
+         * @param insertIndexOffset The offset to add to the end index of the [InstructionMatch].
          * @param hookRegisterOffset The offset to add to the register of the hook.
          * @param instructions The instructions to add with the register as a parameter.
          */

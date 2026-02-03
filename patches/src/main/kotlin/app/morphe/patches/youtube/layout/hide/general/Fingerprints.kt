@@ -8,10 +8,12 @@ import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.buttons.navigation.WideSearchbarLayoutFingerprint
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -36,6 +38,24 @@ internal object HideShowMoreLegacyButtonFingerprint : Fingerprint(
         resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
         methodCall(smali = "Landroid/view/View;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;"),
         opcode(Opcode.MOVE_RESULT_OBJECT)
+    )
+)
+
+internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "parent_container"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+    )
+)
+
+internal object HideSubscribedChannelsBarLandscapeFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "parent_view_width_in_wide_mode"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(3)),
     )
 )
 
