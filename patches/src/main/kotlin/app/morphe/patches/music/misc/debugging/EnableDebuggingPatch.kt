@@ -5,6 +5,7 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.playservice.is_8_40_or_greater
 import app.morphe.patches.music.playservice.is_8_41_or_greater
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.debugging.enableDebuggingPatch
 
 @Suppress("unused")
@@ -15,14 +16,7 @@ val enableDebuggingPatch = enableDebuggingPatch(
             settingsPatch,
         )
 
-        compatibleWith(
-            "com.google.android.apps.youtube.music"(
-                "7.29.52",
-                "8.10.52",
-                "8.37.56",
-                "8.40.54",
-            )
-        )
+        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
     // String feature flag does not appear to be present with YT Music.
     hookStringFeatureFlag = { false },

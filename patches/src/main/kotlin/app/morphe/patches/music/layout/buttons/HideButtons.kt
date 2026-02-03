@@ -7,6 +7,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -41,14 +42,7 @@ val hideButtons = bytecodePatch(
         resourceMappingPatch
     )
 
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.10.52",
-            "8.37.56",
-            "8.40.54",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         playerOverlayChip = getResourceId(ResourceType.ID, "player_overlay_chip")

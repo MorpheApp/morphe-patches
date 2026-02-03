@@ -7,6 +7,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findFreeRegister
 
@@ -22,14 +23,7 @@ val permanentRepeatPatch = bytecodePatch(
         settingsPatch,
     )
 
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.10.52",
-            "8.37.56",
-            "8.40.54",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(

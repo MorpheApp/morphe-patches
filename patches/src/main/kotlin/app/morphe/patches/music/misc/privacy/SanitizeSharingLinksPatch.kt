@@ -3,6 +3,7 @@ package app.morphe.patches.music.misc.privacy
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.privacy.sanitizeSharingLinksPatch
 
 @Suppress("unused")
@@ -13,14 +14,7 @@ val sanitizeSharingLinksPatch = sanitizeSharingLinksPatch(
             settingsPatch,
         )
 
-        compatibleWith(
-            "com.google.android.apps.youtube.music"(
-                "7.29.52",
-                "8.10.52",
-                "8.37.56",
-                "8.40.54",
-            )
-        )
+        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
     preferenceScreen = PreferenceScreen.MISC,
     replaceMusicLinksWithYouTube = true
