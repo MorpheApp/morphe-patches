@@ -86,24 +86,22 @@ val ambientModePatch = bytecodePatch(
 
                 instructions
                     .withIndex()
-                    .filter { (_, instruction) ->
-                        val refInstr = instruction as? ReferenceInstruction ?: return@filter false
-                        val methodRef = refInstr.reference as? MethodReference ?: return@filter false
+                    .filter { (index, instruction) ->
+                        if (instruction !is ReferenceInstruction) return@filter false
 
-                        methodRef.returnType == "Z" &&
+                        val reference = instruction.reference as? MethodReference ?: return@filter false
+
+                        reference.returnType == "Z" &&
+                                reference.name.contains("PowerSave", ignoreCase = true) &&
                                 instruction.opcode.name.startsWith("INVOKE")
                     }
                     .map { (index, _) -> index }
                     .asReversed()
                     .forEach { index ->
-                        val moveResultInstr = instructions.getOrNull(index + 1)
-                            ?: return@forEach
-                        if (!moveResultInstr.opcode.name.startsWith("MOVE_RESULT"))
-                            return@forEach
-                        val register = when (moveResultInstr) {
-                            is OneRegisterInstruction -> moveResultInstr.registerA
-                            else -> return@forEach
-                        }
+                        val moveResult = instructions.getOrNull(index + 1) as? OneRegisterInstruction
+                                ?: return@forEach
+
+                        val register = moveResult.registerA
 
                         method.addInstructions(
                             index + 2,
