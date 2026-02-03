@@ -30,15 +30,13 @@ Second \"item\" text"</string>
 
     <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
     <!-- misc.checks.experimentalAppNoticePatch -->
-    <!-- If the translation is much longer than the original text, then do not include the second 🚨 emoji -->
-    <string name="morphe_experimental_app_version_dialog_message">"&lt;b>🚨 Experimental Alert! 🚨&lt;/b>️
-&lt;br/>&lt;br/>
-You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
+    <string name="morphe_experimental_app_version_dialog_title">🚨 Experimental Alert! 🚨</string>
+    <string name="morphe_experimental_app_version_dialog_message">"You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
 &lt;br/>&lt;br/>
 🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
 &lt;br/>&lt;br/>
 If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
-    <string name="morphe_experimental_app_version_dialog_ignore">⚠️ I want experimental</string>
+    <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
     <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->

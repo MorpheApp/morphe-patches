@@ -23,17 +23,18 @@ public class ExperimentalAppNoticePatch {
 
     // Backup strings for Reddit. Remove this when Reddit gets resource patching or localized strings.
     private static final StringKeyLookup strings = new StringKeyLookup(
-            Map.of("morphe_experimental_app_version_dialog_message",
+            Map.of("morphe_experimental_app_version_dialog_title",
+                    "🚨 Experimental Alert! 🚨",
+
+                    "morphe_experimental_app_version_dialog_message",
                     """
-                    <b>🚨 Experimental Alert! 🚨</b>️
-                    <br/><br/>
                     You are using an experimental app version of ⚠️ <b>%s</b>
                     <br/><br/>
                     🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
                     <br/><br/>
                     If you want the most trouble free experience, then <b>uninstall</b> this and patch the recommended app version of ✅ <b>%s</b>""",
 
-                    "morphe_experimental_app_version_dialog_ignore",
+                    "morphe_experimental_app_version_dialog_confirm",
                     "⚠️ I want experimental",
 
                     "morphe_experimental_app_version_dialog_open_homepage",
@@ -70,7 +71,7 @@ public class ExperimentalAppNoticePatch {
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     activity,
-                    null, // Title.
+                    getString("morphe_experimental_app_version_dialog_title"), // Title.
                     Html.fromHtml(getString("morphe_experimental_app_version_dialog_message", appVersionName, recommendedAppVersion)), // Message.
                     null, // No EditText.
                     getString("morphe_experimental_app_version_dialog_open_homepage"), // OK button text.
@@ -79,7 +80,7 @@ public class ExperimentalAppNoticePatch {
                         activity.finishAndRemoveTask(); // Shutdown the app. More proper than calling System.exit().
                     }, // OK button action.
                     null, // Cancel button action.
-                    getString("morphe_experimental_app_version_dialog_ignore"), // Neutral button text.
+                    getString("morphe_experimental_app_version_dialog_confirm"), // Neutral button text.
                     () -> BaseSettings.EXPERIMENTAL_APP_CONFIRMED.save(appVersionName), // Neutral button action.
                     true // Dismiss dialog on Neutral button click.
             );
