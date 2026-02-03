@@ -37,6 +37,7 @@ public final class LayoutComponentsFilter extends Filter {
     );
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
+    private final StringFilterGroup cellDivider;
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup surveys;
     private final StringFilterGroup notifyMe;
@@ -64,6 +65,11 @@ public final class LayoutComponentsFilter extends Filter {
 
         // Identifiers.
 
+        cellDivider = new StringFilterGroup(
+                null,
+                "cell_divider"
+        );
+
         final var chipsShelf = new StringFilterGroup(
                 Settings.HIDE_CHIPS_SHELF,
                 "chips_shelf"
@@ -75,6 +81,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         addIdentifierCallbacks(
+                cellDivider,
                 chipsShelf,
                 liveChatReplay
         );
@@ -365,6 +372,10 @@ public final class LayoutComponentsFilter extends Filter {
         // Therefore, this identifier does not filter when the search bar is activated.
         if (matchedGroup == singleItemInformationPanel) {
             return PlayerType.getCurrent().isMaximizedOrFullscreen() || !NavigationBar.isSearchBarActive();
+        }
+
+        if (matchedGroup == cellDivider) {
+            return true;
         }
 
         // The groups are excluded from the filter due to the exceptions list below.
