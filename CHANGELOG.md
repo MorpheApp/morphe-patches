@@ -1,3 +1,10 @@
+# [1.11.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.8...v1.11.0-dev.9) (2026-02-04)
+
+
+### Bug Fixes
+
+* **Custom branding:** Show user provided custom icon everywhere ([c0433ab](https://github.com/MorpheApp/morphe-patches/commit/c0433abbd8be4797c085d6637aa4ebe8ae20f9a6))
+
 # [1.11.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.7...v1.11.0-dev.8) (2026-02-04)
 
 
