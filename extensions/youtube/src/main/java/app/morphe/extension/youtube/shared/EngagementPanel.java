@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
-@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted"})
+@SuppressWarnings("unused")
 public final class EngagementPanel {
     private static final AtomicReference<String> lastEngagementPanelId = new AtomicReference<>("");
 
