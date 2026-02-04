@@ -4,9 +4,8 @@ import static app.morphe.extension.youtube.patches.VideoInformation.isPremiumVid
 
 import java.util.Arrays;
 
-import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
-
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
