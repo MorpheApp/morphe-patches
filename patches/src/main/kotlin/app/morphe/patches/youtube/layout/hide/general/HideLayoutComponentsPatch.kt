@@ -21,6 +21,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -101,6 +102,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
     dependsOn(
         lithoFilterPatch,
         settingsPatch,
+        engagementPanelHookPatch,
         hideLayoutComponentsResourcePatch,
         navigationBarHookPatch,
         versionCheckPatch,
