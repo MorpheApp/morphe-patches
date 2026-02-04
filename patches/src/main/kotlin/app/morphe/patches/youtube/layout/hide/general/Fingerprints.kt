@@ -41,7 +41,27 @@ internal object HideShowMoreLegacyButtonFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 20.21+
+ */
 internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "parent_container"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+    ),
+    custom = { _, classDef ->
+        classDef.fields.any { field ->
+            field.type == "Landroid/support/v7/widget/RecyclerView;"
+        }
+    }
+)
+
+/**
+ * ~ 20.21
+ */
+internal object HideSubscribedChannelsBarConstructorLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "parent_container"),
@@ -55,7 +75,8 @@ internal object HideSubscribedChannelsBarLandscapeFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.DIMEN, "parent_view_width_in_wide_mode"),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(3)),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "getDimensionPixelSize"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
     )
 )
 

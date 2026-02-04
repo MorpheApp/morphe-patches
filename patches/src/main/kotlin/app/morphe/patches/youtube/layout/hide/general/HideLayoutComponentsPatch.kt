@@ -328,7 +328,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region Subscribed channels bar
 
         // Tablet
-        HideSubscribedChannelsBarConstructorFingerprint.let {
+        val constructorFingerprint = if (is_20_21_or_greater)
+            HideSubscribedChannelsBarConstructorFingerprint
+        else HideSubscribedChannelsBarConstructorLegacyFingerprint
+
+        constructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[1].index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -343,7 +347,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // Phone (landscape mode)
         HideSubscribedChannelsBarLandscapeFingerprint.match(
-            HideSubscribedChannelsBarConstructorFingerprint.originalClassDef
+            constructorFingerprint.originalClassDef
         ).let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
