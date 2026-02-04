@@ -31,6 +31,7 @@ internal val preferenceManagerFingerprint = Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     custom = { methodDef, _ ->
+        // TODO: Change this to an instruction filter.
         fun indexOfPreferencesPresenterInstruction(methodDef: Method) =
             methodDef.indexOfFirstInstruction {
                 opcode == Opcode.NEW_INSTANCE &&

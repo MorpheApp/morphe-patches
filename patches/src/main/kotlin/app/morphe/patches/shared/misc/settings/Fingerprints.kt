@@ -21,10 +21,9 @@ internal object ThemeDarkColorResourceNameFingerprint : Fingerprint(
 )
 
 internal object RecommendedAppVersionUtilsFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "getRecommendedAppVersion",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "getRecommendedAppVersion" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
-    }
+    parameters = listOf()
 )

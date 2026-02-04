@@ -22,8 +22,7 @@ internal object AmbientModeFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object IntentActionBroadcastReceiverFingerprint : Fingerprint(
-    definingClass = "/YouTubePlayerViewNotForReflection;",
-    name = "onLayout",
+    name = "onReceive",
     returnType = "V",
     parameters = listOf(
         "Landroid/content/Context;",
@@ -34,9 +33,8 @@ internal object IntentActionBroadcastReceiverFingerprint : Fingerprint(
         methodCall(smali = GET_ACTION_METHOD_CALL),
         opcode(Opcode.INVOKE_DIRECT)
     ),
-    custom = { method, classDef ->
-        method.name == "onReceive"
-                && classDef.superclass == "Landroid/content/BroadcastReceiver;"
+    custom = { _, classDef ->
+        classDef.superclass == "Landroid/content/BroadcastReceiver;"
                 // There are two classes that inherit [BroadcastReceiver].
                 // Check the method count to find the correct class.
                 && classDef.methods.count() == 2
@@ -47,6 +45,7 @@ internal object IntentActionBroadcastReceiverFingerprint : Fingerprint(
  * YT 21.02+
  */
 internal object IntentActionBroadcastReceiverAlternativeFingerprint : Fingerprint(
+    name = "onReceive",
     returnType = "V",
     parameters = listOf(
         "Landroid/content/Context;",
@@ -57,9 +56,8 @@ internal object IntentActionBroadcastReceiverAlternativeFingerprint : Fingerprin
         string(POWER_SAVE_MODE_CHANGED),
         opcode(Opcode.INVOKE_DIRECT)
     ),
-    custom = { method, classDef ->
-        method.name == "onReceive"
-                && classDef.superclass == "Landroid/content/BroadcastReceiver;"
+    custom = { _, classDef ->
+        classDef.superclass == "Landroid/content/BroadcastReceiver;"
                 // There are two classes that inherit [BroadcastReceiver].
                 // Check the method count to find the correct class.
                 && classDef.methods.count() == 2
@@ -67,8 +65,8 @@ internal object IntentActionBroadcastReceiverAlternativeFingerprint : Fingerprin
 )
 
 internal object IntentActionSyntheticFingerprint : Fingerprint(
-    returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
         opcode(Opcode.CHECK_CAST),
@@ -85,8 +83,8 @@ internal object IntentActionSyntheticFingerprint : Fingerprint(
  * YT 21.03+
  */
 internal object IntentActionSyntheticAlternativeFingerprint : Fingerprint(
-    returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
         string("power"),
@@ -99,19 +97,17 @@ internal object IntentActionSyntheticAlternativeFingerprint : Fingerprint(
 )
 
 internal object PowerSaveModeSyntheticFingerprint : Fingerprint(
-    returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     filters = listOf(
         methodCall(smali = IS_POWER_SAVE_MODE_METHOD_CALL)
     )
 )
 
 internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
-    returnType = "V",
+    definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
+    name = "onLayout",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
-    parameters = listOf("Z", "I", "I", "I", "I"),
-    custom = { method, classDef ->
-        classDef.type.endsWith("/YouTubePlayerViewNotForReflection;")
-                && method.name == "onLayout"
-    }
+    returnType = "V",
+    parameters = listOf("Z", "I", "I", "I", "I")
 )

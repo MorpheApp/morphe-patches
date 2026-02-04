@@ -1,15 +1,12 @@
 package app.morphe.patches.reddit.utils.extension.hooks
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.StringComparisonType
-import app.morphe.patches.shared.misc.extension.ExtensionHook
 
 internal val redditMainActivityOnCreateFingerprint = Fingerprint(
+    definingClass = "Lcom/reddit/launch/main/MainActivity;",
+    name = "onCreate",
     returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
-    custom = { method, classDef ->
-        method.name == "onCreate" && classDef.type == "Lcom/reddit/launch/main/MainActivity;"
-    }
+    parameters = listOf("Landroid/os/Bundle;")
 )
 
 internal val redditActivityOnCreateFingerprint = Fingerprint(
