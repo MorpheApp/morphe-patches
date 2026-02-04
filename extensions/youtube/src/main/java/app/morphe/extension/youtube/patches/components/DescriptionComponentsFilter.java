@@ -148,7 +148,7 @@ final class DescriptionComponentsFilter extends Filter {
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUIZZES_SECTION,
-                        "PAposts_by_host"
+                        "post_base_wrapper_slim"
                 )
         );
 
