@@ -87,7 +87,7 @@ internal object LithoThreadExecutorFingerprint : Fingerprint(
     filters = listOf(
         literal(1L) // 1L = default thread timeout.
     ),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.superclass == "Ljava/util/concurrent/ThreadPoolExecutor;"
     }
 )

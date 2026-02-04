@@ -19,6 +19,7 @@ internal object FullScreenEngagementAdContainerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     custom = { method, _ ->
+        // TODO: Convert these to instruction filters
         method.containsLiteralInstruction(fullScreenEngagementAdContainer)
                 && indexOfAddListInstruction(method) >= 0
     }

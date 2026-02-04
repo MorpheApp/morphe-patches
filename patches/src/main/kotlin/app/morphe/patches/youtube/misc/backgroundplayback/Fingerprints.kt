@@ -53,7 +53,7 @@ internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
         Opcode.IF_NEZ,
         Opcode.GOTO,
     ),
-    custom = customLiteral { prefBackgroundAndOfflineCategoryId }
+    custom = customLiteral { prefBackgroundAndOfflineCategoryId } // TODO: Convert this to an instruction filter
 )
 
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
@@ -70,7 +70,7 @@ internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
         Opcode.IF_NE,
         Opcode.IGET_OBJECT,
     ),
-    custom = customLiteral { 5 }
+    custom = customLiteral { 5 } // TODO: Convert this to an instruction filter
 )
 
 internal object ShortsBackgroundPlaybackFeatureFlagFingerprint : Fingerprint(

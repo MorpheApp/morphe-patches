@@ -42,7 +42,8 @@ internal val nsfwAlertEmitFingerprint = Fingerprint(
         string("nsfwAlertDelegate")
     ),
     custom = { method, _ ->
-                indexOfGetOver18Instruction(method) >= 0 &&
+        // TODO: Convert these to instruction filters
+        indexOfGetOver18Instruction(method) >= 0 &&
                 indexOfHasBeenVisitedInstruction(method) >= 0 &&
                 indexOfIsIncognitoInstruction(method) >= 0
     }

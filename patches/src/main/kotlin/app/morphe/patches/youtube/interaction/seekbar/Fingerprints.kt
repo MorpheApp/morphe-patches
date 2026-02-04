@@ -57,7 +57,7 @@ internal object DisableFastForwardLegacyFingerprint : Fingerprint(
         Opcode.MOVE_RESULT
     ),
     // Intent start flag only used in the subscription activity
-    custom = customLiteral { 45411330 }
+    custom = customLiteral { 45411330 } // TODO: Convert this to an instruction filter
 )
 
 internal object DisableFastForwardGestureFingerprint : Fingerprint(
@@ -157,7 +157,7 @@ internal object SlideToSeekFingerprint : Fingerprint(
         Opcode.IF_EQZ,
         Opcode.GOTO_16,
     ),
-    custom = customLiteral { 67108864 }
+    custom = customLiteral { 67108864 } // TODO: Convert this to an instruction filter
 )
 
 internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(

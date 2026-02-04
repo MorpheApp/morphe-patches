@@ -11,16 +11,16 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object CurrentVideoFormatToStringFingerprint : Fingerprint(
+    name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    strings = listOf("currentVideoFormat="),
-    custom = { method, _ ->
-        method.name == "toString"
-    }
+    strings = listOf("currentVideoFormat=")
 )
 
 internal object DefaultOverflowOverlayOnClickFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/player/features/overlay/overflow/ui/DefaultOverflowOverlay;",
+    name = "onClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;"),
@@ -31,28 +31,25 @@ internal object DefaultOverflowOverlayOnClickFingerprint : Fingerprint(
             definingClass = "this",
             location = MatchAfterWithin(2)
         ),
-    ),
-    custom = { method, classDef ->
-        classDef.type == "Lcom/google/android/libraries/youtube/player/features/overlay/overflow/ui/DefaultOverflowOverlay;"
-                && method.name == "onClick"
-    }
+    )
 )
 
 internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
+    // Cannot use patch declaration of class because this is starts_with matching of the synthetic method.
+    definingClass = "Lapp/morphe/extension/youtube/patches/playback/quality/HidePremiumVideoQualityPatch",
+    name = "apply",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/Object;",
     parameters = listOf("I"),
-    custom = { method, classDef ->
-        classDef.type.startsWith("Lapp/morphe/extension/youtube/patches/playback/quality/HidePremiumVideoQualityPatch")
-                && AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
-                && method.name == "apply"
+    custom = { _, classDef ->
+        AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
     }
 )
 
 internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT"),
+        string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT")
     )
 )
 
@@ -81,7 +78,7 @@ internal object VideoQualityMenuOptionsFingerprint : Fingerprint(
         Opcode.IGET_BOOLEAN, // Use the quality menu, that contains the advanced menu.
         Opcode.IF_NEZ,
     ),
-    custom = customLiteral { videoQualityQuickMenuAdvancedMenuDescription }
+    custom = customLiteral { videoQualityQuickMenuAdvancedMenuDescription } // TODO: Convert this to an instruction filter
 )
 
 internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
@@ -104,5 +101,5 @@ internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
     ),
-    custom = customLiteral { videoQualityBottomSheetListFragmentTitle }
+    custom = customLiteral { videoQualityBottomSheetListFragmentTitle } // TODO: Convert this to an instruction filter
 )

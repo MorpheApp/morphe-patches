@@ -31,6 +31,7 @@ internal val communityDrawerPresenterFingerprint = Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
     ),
     custom = { methodDef, _ ->
+        // TODO: Convert this to an instruction filter
         indexOfKotlinCollectionInstruction(methodDef) >= 0
     }
 )

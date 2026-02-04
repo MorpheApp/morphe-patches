@@ -16,7 +16,8 @@ internal val customReportsFingerprint = Fingerprint(
     filters = listOf(
         string("https://www.crisistextline.org/")
     ),
-    custom = { methodDef, classDef ->
+    custom = { methodDef, _ ->
+        // TODO: Convert this to an instruction filter
         indexOfScreenNavigatorInstruction(methodDef) >= 0
     }
 )

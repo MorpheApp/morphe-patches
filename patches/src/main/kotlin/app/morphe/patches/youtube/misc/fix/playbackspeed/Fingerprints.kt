@@ -28,7 +28,7 @@ internal object PlaybackSpeedInFeedsFingerprint : Fingerprint(
         Opcode.SUB_LONG_2ADDR,
     ),
     custom = { method, _ ->
-        // TODO: Change this to an instruction filter.
+        // TODO: Convert this to an instruction filter
         indexOfGetPlaybackSpeedInstruction(method) >= 0
     }
 )
