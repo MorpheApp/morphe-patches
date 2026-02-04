@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.interaction.swipecontrols
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -15,7 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.MainActivityConstructorFingerprint
+import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.insertLiteralOverride
@@ -92,20 +93,11 @@ val swipeControlsPatch = bytecodePatch(
         swipeControlsResourcePatch,
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val wrapperClass = SwipeControlsHostActivityFingerprint.classDef
-        val targetClass = MainActivityConstructorFingerprint.classDef
+        val targetClass = YouTubeMainActivityConstructorFingerprint.classDef
 
         // Inject the wrapper class from the extension into the class hierarchy of MainActivity.
         wrapperClass.setSuperClass(targetClass.superclass)

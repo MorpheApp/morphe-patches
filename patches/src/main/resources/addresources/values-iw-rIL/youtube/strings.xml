@@ -128,9 +128,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">הסתר YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">הנפשת YouTube Doodles על הלוגו מוסתרת</string>
   <string name="morphe_hide_doodles_summary_off">הנפשת YouTube Doodles על הלוגו מוצגת</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"Doodles של YouTube מוצגים מספר ימים בכל שנה.
-
-אם Doodle מוצג כעת באזור שלך והגדרת הסתרה זו מופעלת, גם פס הסינון מתחת לשורת החיפוש יוסתר."</string>
   <string name="morphe_hide_channel_bar_title">הסתר סרגל ערוץ</string>
   <string name="morphe_hide_channel_bar_summary_on">סרגל הערוץ מוסתר</string>
   <string name="morphe_hide_channel_bar_summary_off">סרגל הערוץ מוצג</string>
@@ -189,6 +186,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">הסתר \'התקדמות בקורס\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">מדור התקדמות בקורס מוסתר</string>
   <string name="morphe_hide_course_progress_section_summary_off">מדור התקדמות בקורס מוצג</string>
+  <string name="morphe_hide_explore_section_title">הסתר גלו</string>
+  <string name="morphe_hide_explore_section_summary_on"> part of the course and part of the podcast are hidden</string>
+  <string name="morphe_hide_explore_section_summary_off"> part of the course and part of the podcast are shown</string>
+  <string name="morphe_hide_explore_course_section_title">Hide \' part of the course\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on"> Part of the course is hidden</string>
+  <string name="morphe_hide_explore_course_section_summary_off"> Part of the course is shown</string>
   <string name="morphe_hide_explore_podcast_section_title">הסתר את \'גלה את הפודקאסט\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">מדור \'גלה את הפודקאסט\' מוסתר</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">מדור \'גלה את הפודקאסט\' מוצג</string>
@@ -287,8 +290,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">מדור התגובות מוסתר</string>
   <string name="morphe_hide_comments_section_summary_off">מדור התגובות מוצג</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">הסתר את מדור התגובות בפיד</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">מדור התגובות בפיד מוסתר</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">מדור התגובות בפיד מוצג</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Comments section under videos in Home feed is hidden</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Comments section under videos in Home feed is shown</string>
   <string name="morphe_hide_comments_community_guidelines_title">הסתר הנחיות קהילה</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">הנחיות הקהילה מוסתרות</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">הנחיות הקהילה מוצגות</string>
@@ -317,16 +320,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_summary_on">ספירת הצפיות מוסתרת בפיד ובתוצאות החיפוש</string>
   <string name="morphe_hide_view_count_summary_off">ספירת הצפיות מוצגת בפיד ובתוצאות החיפוש</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"מגבלות:
-• מדפי Shorts, דפי ערוצים ותוצאות חיפוש עשויים עדיין להציג ספירות צפיות
-• תכונה זו אינה פועלת עם גורם צורה לרכב"</string>
+  <string name="morphe_hide_view_count_user_dialog_message">"Limitations:
+• Shorts shelves, channel pages, and search results may still show view counts.
+• This feature does not work with automotive form factor."</string>
   <string name="morphe_hide_upload_time_title">הסתר זמן העלאה</string>
   <string name="morphe_hide_upload_time_summary_on">זמן ההעלאה מוסתר בפיד ובעמודי תוצאות חיפוש</string>
   <string name="morphe_hide_upload_time_summary_off">זמן ההעלאה מוצג בפיד ובעמודי תוצאות חיפוש</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-  <string name="morphe_hide_upload_time_user_dialog_message">"הגבלות:
-• מדפי Shorts, דפי ערוץ ותוצאות חיפוש עדיין עשויים להציג זמני העלאה
-• תכונה זו אינה פועלת עם גורם צורה לרכב"</string>
+  <string name="morphe_hide_upload_time_user_dialog_message">"Limitations:
+• Shorts shelves, channel pages, and search results may still show upload times.
+• This feature does not work with automotive form factor."</string>
   <string name="morphe_hide_keyword_content_screen_title">הסתר תוכן מילiת מפתח</string>
   <string name="morphe_hide_keyword_content_screen_summary">הסתר סרטוני פיד וחיפוש באמצעות מסנני מילות מפתח</string>
   <string name="morphe_hide_keyword_content_home_title">הסתר סרטוני בית לפי מילות מפתח</string>
@@ -632,7 +635,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">בחלק מהמכשירים, הפעלת תכונה זו עשויה לשנות את סרגל הניווט של המערכת לשקוף.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
+• A black bar may appear at the top of the video player.
+• On some devices, enabling this feature can change the system navigation bar to transparent."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">השבת סרגל בהיר שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">סרגל ניווט במצב בהיר הוא אטום</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">סרגל ניווט במצב בהיר הוא אטום או שקוף</string>
@@ -1215,8 +1220,10 @@ Second \"item\" text"</string>
 
 אם נכבה מאוחר יותר, מומלץ לנקות את נתוני היישום כדי למנוע באגים של ממשק המשתמש."</string>
   <string name="morphe_spoof_app_version_target_title">יעד גרסת יישום מזויפת</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - שחזר סמלי נגן Shorts ישנים</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר שפופרות ישנות לפלייליסט</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20:28:41 - עכבה סמלים מודגשים</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - שחזור סרגל פעולות וידאו לא מכווץ</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - שחזר סמלי נגן Shorts ישנים</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>

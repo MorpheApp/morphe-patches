@@ -52,7 +52,7 @@ internal object LayoutConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object MainActivityConstructorFingerprint : Fingerprint(
+internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(),
     custom = { _, classDef ->
@@ -60,7 +60,7 @@ internal object MainActivityConstructorFingerprint : Fingerprint(
     }
 )
 
-internal object MainActivityOnBackPressedFingerprint : Fingerprint(
+internal object YouTubeMainActivityOnBackPressedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),

@@ -129,9 +129,6 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_hide_doodles_title">Ẩn YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Hoạt ảnh YouTube Doodles trên logo đã bị ẩn</string>
   <string name="morphe_hide_doodles_summary_off">Hoạt ảnh YouTube Doodles trên logo được hiển thị</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles chỉ xuất hiện vào một số ngày nhất định trong năm.
-
-Nếu cài đặt này đang bật và Doodle cũng được hiển thị tại khu vực của bạn, thì thanh bộ lọc bên dưới thanh tìm kiếm cũng sẽ ẩn theo."</string>
   <string name="morphe_hide_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_channel_bar_summary_on">Nút kênh đã bị ẩn</string>
   <string name="morphe_hide_channel_bar_summary_off">Nút kênh được hiển thị</string>
@@ -190,6 +187,12 @@ Nếu cài đặt này đang bật và Doodle cũng được hiển thị tại 
   <string name="morphe_hide_course_progress_section_title">Ẩn \'Tiến độ học tập\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Phần tiến độ học tập đã bị ẩn</string>
   <string name="morphe_hide_course_progress_section_summary_off">Phần tiến độ học tập được hiển thị</string>
+  <string name="morphe_hide_explore_section_title">Ẩn Khám phá</string>
+  <string name="morphe_hide_explore_section_summary_on">Các phần khám phá khóa học và khám phá podcast đã bị ẩn</string>
+  <string name="morphe_hide_explore_section_summary_off">Các phần khám phá khóa học và khám phá podcast được hiển thị</string>
+  <string name="morphe_hide_explore_course_section_title">Ẩn \'Khám phá khóa học này\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Phần khám phá khóa học này đã bị ẩn</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Phần khám phá khóa học này được hiển thị</string>
   <string name="morphe_hide_explore_podcast_section_title">Ẩn \'Khám phá podcast\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Phần khám phá podcast đã bị ẩn</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Phần khám phá podcast được hiển thị</string>
@@ -287,9 +290,9 @@ Nếu cài đặt này đang bật và Doodle cũng được hiển thị tại 
   <string name="morphe_hide_comments_section_title">Ẩn phần bình luận</string>
   <string name="morphe_hide_comments_section_summary_on">Phần bình luận đã bị ẩn</string>
   <string name="morphe_hide_comments_section_summary_off">Phần bình luận được hiển thị</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Ẩn phần bình luận trong Feed nhà</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Phần bình luận trong Feed nhà đã bị ẩn</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Phần bình luận trong Feed nhà đã được hiển thị</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Ẩn phần bình luận trong thẻ Trang chủ</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Phần bình luận dưới video trong thẻ Trang chủ đã bị ẩn</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Phần bình luận dưới video trong thẻ Trang chủ được hiển thị</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ẩn nguyên tắc cộng đồng</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Nguyên tắc cộng đồng đã bị ẩn</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Nguyên tắc cộng đồng được hiển thị</string>
@@ -320,14 +323,14 @@ Nếu cài đặt này đang bật và Doodle cũng được hiển thị tại 
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Hạn chế:
 • Trên kệ Shorts, trang kênh và kết quả tìm kiếm vẫn có thể thấy số lượt xem
-• Tính năng này không hoạt động với bố cục màn hình ô tô"</string>
+• Tính năng này không hoạt động với bố cục màn hình ô tô."</string>
   <string name="morphe_hide_upload_time_title">Ẩn ngày tải lên</string>
   <string name="morphe_hide_upload_time_summary_on">Ngày tải lên đã bị ẩn trên trang video và kết quả tìm kiếm</string>
   <string name="morphe_hide_upload_time_summary_off">Ngày tải lên được hiển thị trên trang video và kết quả tìm kiếm</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Hạn chế:
 • Trên kệ Shorts, trang kênh và kết quả tìm kiếm có thể vẫn thấy ngày tải lên
-• Tính năng này không hoạt động với bố cục màn hình ô tô"</string>
+• Tính năng này không hoạt động với bố cục màn hình ô tô."</string>
   <string name="morphe_hide_keyword_content_screen_title">Ẩn nội dung theo từ khóa</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ẩn video trong trang video và tìm kiếm bằng bộ lọc từ khóa</string>
   <string name="morphe_hide_keyword_content_home_title">Ẩn video Trang chủ theo từ khóa</string>
@@ -617,9 +620,9 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_notifications_button_title">Ẩn Thông báo</string>
   <string name="morphe_hide_notifications_button_summary_on">Nút thông báo đã bị ẩn</string>
   <string name="morphe_hide_notifications_button_summary_off">Nút thông báo được hiển thị</string>
-  <string name="morphe_swap_create_with_notifications_button_title">Đổi chỗ Tạo với Thông báo</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Đổi chỗ nút Tạo với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Nút Tạo đã được đổi chỗ với nút Thông báo</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_off">Nút Tạo không được đổi chỗ với nút Thông báo</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Nút Tạo không đổi chỗ với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Nếu bật hoặc tắt cài đặt này cũng không có hiệu lực, bạn có thể thử chuyển sang chế độ Ẩn danh.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Các tên nút đã bị ẩn</string>
@@ -633,7 +636,9 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_disable_translucent_status_bar_title">Vô hiệu hóa thanh trạng thái trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Thanh trạng thái sẽ không còn trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Thanh trạng thái sẽ trở nên mờ hoặc trong suốt</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Trên một số thiết bị, bật tính năng này có thể khiến thanh điều hướng hệ thống trở nên trong suốt.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Hạn chế:
+• Một thanh đen có thể xuất hiện trên đầu trình phát video
+• Trên một số thiết bị, bật tính năng này có thể thay đổi thanh điều hướng hệ thống thành trong suốt."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Vô hiệu hóa thanh điều hướng trong suốt ở giao diện sáng</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Thanh điều hướng sẽ không còn trong suốt ở giao diện sáng</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Thanh điều hướng sẽ trở nên mờ hoặc trong suốt ở giao diện sáng</string>
@@ -741,17 +746,17 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Thẻ màn hình kết thúc được hiển thị</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Chế độ môi trường xung quanh</string>
-  <string name="morphe_ambient_mode_screen_summary">Bỏ qua hạn chế tiết kiệm năng lượng cho Chế độ môi trường xung quanh và tắt nó hoàn toàn hoặc toàn màn hình</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Bỏ qua hạn chế Chế độ môi trường xung quanh</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Giới hạn chế độ môi trường cho tiết kiệm năng lượng đã bị bỏ qua</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Giới hạn chế độ môi trường cho tiết kiệm năng lượng chưa bị bỏ qua</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Cho phép điều này có thể làm giảm độ dài pin.</string>
+  <string name="morphe_ambient_mode_screen_summary">Cho phép chế độ môi trường xung quanh không bị hạn chế bởi chế độ tiết kiệm pin, tắt hoàn toàn hoặc tắt trong chế độ toàn màn hình</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Bỏ qua hạn chế cho chế độ môi trường xung quanh</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Các hạn chế tiết kiệm pin của chế độ môi trường xung quanh đã được bỏ qua</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Các hạn chế tiết kiệm pin của chế độ môi trường xung quanh chưa bị bỏ qua</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Bật tuỳ chọn này có thể làm pin hao nhanh hơn.</string>
   <string name="morphe_disable_ambient_mode_title">Tắt chế độ môi trường xung quanh</string>
-  <string name="morphe_disable_ambient_mode_summary_on">Chế độ môi trường đã tắt</string>
-  <string name="morphe_disable_ambient_mode_summary_off">Chế độ môi trường đã bật</string>
+  <string name="morphe_disable_ambient_mode_summary_on">Chế độ môi trường xung quanh đã tắt</string>
+  <string name="morphe_disable_ambient_mode_summary_off">Chế độ môi trường xung quanh đã bật</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Tắt Chế độ môi trường khi toàn màn hình</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Chế độ môi trường toàn màn hình đã tắt</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Chế độ môi trường toàn màn hình đã bật</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Chế độ môi trường xung quanh trong chế độ toàn màn hình đã tắt</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Chế độ môi trường xung quanh trong chế độ toàn màn hình đã bật</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Ẩn thẻ thông tin</string>
   <string name="morphe_hide_info_cards_summary_on">Thẻ thông tin đã bị ẩn</string>
@@ -1215,8 +1220,10 @@ Bố cục màn hình ô tô
 
 Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh phát sinh lỗi giao diện."</string>
   <string name="morphe_spoof_app_version_target_title">Mục tiêu phiên bản giả mạo</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Khôi phục biểu tượng trình phát Shorts cũ</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Khôi phục ‘Lưu vào danh sách phát’ kiểu cũ</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Vô hiệu hóa biểu tượng đậm</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Khôi phục thanh thao tác video mở rộng</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Khôi phục biểu tượng trình phát Shorts cũ</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Thay đổi trang bắt đầu</string>
   <string name="morphe_change_start_page_entry_default">Mặc định</string>

@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Jasny Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Własna</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Experimentalne ostrzeżenie! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji aplikacji ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🛠️ Oczekujesz nieprzewidywalnego zachowania aplikacji lub nieidentyfikowanych błędów, ponieważ dopracowujemy łaty dla tej wersji aplikacji.
+<br/>
+<br/>
+Jeśli chcesz najbardziej stabilną wersję, to <b>odinstaluj</b> tę i zaimplementuj zalecaną wersję aplikacji ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcę wersji eksperymentalnej</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcę wersji stabilnej</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Powiadomienie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Twoja historia oglądania nie jest zapisywana.&lt;br&gt;&lt;br&gt;Najprawdopodobniej jest to spowodowane blokadą reklam DNS lub przez serwer proxy.&lt;br&gt;&lt;br&gt;Aby to naprawić, dodaj do białej listy&lt;b&gt;s.youtube.com&lt;/b&gt; lub wyłącz wszystkie blokady DNS i proxy.</string>

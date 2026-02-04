@@ -128,9 +128,6 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_doodles_title">Ocultar Doodles do YouTube</string>
   <string name="morphe_hide_doodles_summary_on">A animação de Doodles do YouTube no logotipo está oculta</string>
   <string name="morphe_hide_doodles_summary_off">A animação dos Doodles do YouTube no logotipo é exibida</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"Os Doodles do YouTube são exibidos alguns dias por ano.
-
-Se um Doodle estiver sendo exibido atualmente em sua região e esta configuração de ocultação estiver ativada, a barra de filtros abaixo da barra de pesquisa também será ocultada."</string>
   <string name="morphe_hide_channel_bar_title">Ocultar barra de canais</string>
   <string name="morphe_hide_channel_bar_summary_on">Barra de canal está oculta</string>
   <string name="morphe_hide_channel_bar_summary_off">A barra de canal é mostrada</string>
@@ -189,6 +186,12 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_course_progress_section_title">Ocultar \'Progresso do curso\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Seção de progresso do curso está oculta</string>
   <string name="morphe_hide_course_progress_section_summary_off">Seção de progresso do curso está visível</string>
+  <string name="morphe_hide_explore_section_title">Ocultar Explorar</string>
+  <string name="morphe_hide_explore_section_summary_on">Explorar este curso e Explorar o podcast seções estão ocultas</string>
+  <string name="morphe_hide_explore_section_summary_off">Explorar este curso e Explorar o podcast seções estão visíveis</string>
+  <string name="morphe_hide_explore_course_section_title">Ocultar \'Explorar este curso\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Esta seção do curso está oculta</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Esta seção do curso está visível</string>
   <string name="morphe_hide_explore_podcast_section_title">Ocultar \"Explore o podcast\"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">A seção Explore o podcast está oculta</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">A seção Explore o podcast é mostrada</string>
@@ -287,8 +290,8 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_comments_section_summary_on">Seção de comentários está oculta</string>
   <string name="morphe_hide_comments_section_summary_off">A seção de comentários é mostrada</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Esconder seção de comentários no feed de casa</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Seção de comentários no feed de casa está escondida</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Seção de comentários no feed de casa está visível</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">A seção de comentários sob os vídeos na Feed de Início está oculta</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">A seção de comentários sob os vídeos na Feed de Início está visível</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ocultar diretrizes da comunidade</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Diretrizes da comunidade estão ocultas</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Diretrizes da comunidade estão exibidas</string>
@@ -318,15 +321,15 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_view_count_summary_off">A contagem de visualizações é mostrada no feed e nos resultados da pesquisa</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Limitações:
-• As prateleiras de Shorts, páginas de canal e resultados de pesquisa ainda podem mostrar as contagens de visualizações
-• Este recurso não funciona com o fator de forma automotivo"</string>
+• As prateleiras de Shorts, páginas de canal e resultados de pesquisa ainda podem mostrar as contagens de visualização.
+• Este recurso não funciona com o fator de forma automotivo."</string>
   <string name="morphe_hide_upload_time_title">Ocultar tempo de upload</string>
   <string name="morphe_hide_upload_time_summary_on">O tempo de upload está oculto no feed e nos resultados da pesquisa</string>
   <string name="morphe_hide_upload_time_summary_off">O tempo de upload é mostrado no feed e nos resultados da pesquisa</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitações:
-• As prateleiras de Shorts, páginas de canais e resultados da pesquisa ainda podem mostrar os tempos de upload
-• Este recurso não funciona com o fator de forma automotivo"</string>
+• As prateleiras de Shorts, páginas de canal e resultados de pesquisa ainda podem mostrar os tempos de upload.
+• Este recurso não funciona com o fator de forma automotivo."</string>
   <string name="morphe_hide_keyword_content_screen_title">Ocultar conteúdo usando palavra-chave</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ocultar pesquisa e vídeos na tela inicial usando palavras-chave como filtros</string>
   <string name="morphe_hide_keyword_content_home_title">Ocultar vídeos na tela inicial com palavras-chave</string>
@@ -632,7 +635,9 @@ Os cookies serão salvos automaticamente se forem válidos"</string>
   <string name="morphe_disable_translucent_status_bar_title">Desabilitar barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Em alguns dispositivos, ativar este recurso pode alterar a barra de navegação do sistema para transparente.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitações:
+• Uma barra preta pode aparecer no topo do player de vídeo.
+• Em alguns dispositivos, ativar este recurso pode tornar a barra de navegação do sistema transparente."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desabilitar barra de navegação translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">A barra de navegação no modo claro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A barra de navegação do modo claro é opaca ou translúcida</string>
@@ -1215,8 +1220,10 @@ Isso mudará a aparência e os recursos do aplicativo, mas podem ocorrer efeitos
 
 Se posteriormente desativado, é recomendável limpar os dados do aplicativo para evitar bugs na IU."</string>
   <string name="morphe_spoof_app_version_target_title">Versão de spoofing alvo</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurar ícones antigos do player dos Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar velho save para playlist</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desativar ícones em negrito</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar barra de ações de vídeo não recolhida</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurar ícones antigos do player dos Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Alterar página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>

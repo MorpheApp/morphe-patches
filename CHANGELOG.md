@@ -1,3 +1,31 @@
+# [1.11.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.6...v1.11.0-dev.7) (2026-02-04)
+
+
+### Features
+
+* Show an experimental user on the first launch of an experimental app target ([#414](https://github.com/MorpheApp/morphe-patches/issues/414)) ([d52b9c9](https://github.com/MorpheApp/morphe-patches/commit/d52b9c97bc581a67708a0c9efe01472b24e0df5d))
+
+# [1.11.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.5...v1.11.0-dev.6) (2026-02-03)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide explore this course" setting ([#410](https://github.com/MorpheApp/morphe-patches/issues/410)) ([42eaca0](https://github.com/MorpheApp/morphe-patches/commit/42eaca0d04c51ff5ae30b418ed8d2b9dd771ccc5))
+
+# [1.11.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2026-02-03)
+
+
+### Features
+
+* **YouTube - Spoof app version:** Add target version `20.39.41` ([9ef0d22](https://github.com/MorpheApp/morphe-patches/commit/9ef0d2211aab5d5cb2d274678b2707ae0296499e))
+
+# [1.11.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-02-03)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** `Hide subscribed channels bar` leaves empty space ([#404](https://github.com/MorpheApp/morphe-patches/issues/404)) ([6b68416](https://github.com/MorpheApp/morphe-patches/commit/6b6841626d76c9679b4b9bebfa98ccab9d617fd2))
+
 # [1.11.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2026-02-02)
 
 

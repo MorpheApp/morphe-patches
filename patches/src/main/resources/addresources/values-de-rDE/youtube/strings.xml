@@ -128,8 +128,6 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_doodles_title">YouTube Doodles ausblenden</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-Animation auf dem Logo ist ausgeblendet</string>
   <string name="morphe_hide_doodles_summary_off">YouTube Doodles Animation auf dem Logo wird angezeigt</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube-Doodles werden ein paar Tage im Jahr angezeigt.
-Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum Ausblenden aktiviert ist, wird auch die Filterleiste unterhalb der Suchleiste ausgeblendet."</string>
   <string name="morphe_hide_channel_bar_title">Senderleiste ausblenden</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalleiste ist ausgeblendet</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalleiste wird angezeigt</string>
@@ -188,6 +186,12 @@ Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum
   <string name="morphe_hide_course_progress_section_title">Verbergen \'Fortschritt im Kurs\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Abschnitt \'Fortschritt im Kurs\' ist versteckt</string>
   <string name="morphe_hide_course_progress_section_summary_off">Abschnitt \'Fortschritt im Kurs\' ist angezeigt</string>
+  <string name="morphe_hide_explore_section_title">Erkunden ausblenden</string>
+  <string name="morphe_hide_explore_section_summary_on">Entdecken Sie diesen Kurs und den Podcast-Bereich sind versteckt</string>
+  <string name="morphe_hide_explore_section_summary_off">Entdecken Sie diesen Kurs und den Podcast-Bereich sind gezeigt</string>
+  <string name="morphe_hide_explore_course_section_title">Verbergen Sie \'Entdecken Sie diesen Kurs\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Dieser Kursabschnitt ist ausgeblendet</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Dieser Kursabschnitt wird angezeigt</string>
   <string name="morphe_hide_explore_podcast_section_title">\'Podcast entdecken\' ausblenden</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Der Abschnitt \'Podcast entdecken\' ist ausgeblendet</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Der Abschnitt \'Podcast entdecken\' wird angezeigt</string>
@@ -286,8 +290,8 @@ Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum
   <string name="morphe_hide_comments_section_summary_on">Kommentarbereich ist ausgeblendet</string>
   <string name="morphe_hide_comments_section_summary_off">Kommentarbereich wird angezeigt</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Kommentare ausblenden</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Kommentarbereich ist ausgeblendet</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Kommentarbereich wird angezeigt</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Kommentare unter Videos im Home-Feed sind ausgeblendet</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Kommentare unter Videos im Home-Feed werden angezeigt</string>
   <string name="morphe_hide_comments_community_guidelines_title">Community-Richtlinien ausblenden</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Community-Richtlinien sind ausgeblendet</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Community-Richtlinien werden angezeigt</string>
@@ -317,15 +321,15 @@ Wenn ein Doodle zurzeit in Ihrer Region angezeigt wird und diese Einstellung zum
   <string name="morphe_hide_view_count_summary_off">Aufrufe werden im Feed und in den Suchergebnissen angezeigt</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Einschränkungen:
-• Shorts Reihen, Kanalseiten und Suchergebnisse können weiterhin Aufrufe anzeigen
-• Diese Funktion funktioniert nicht mit dem Automotive-Formfaktor"</string>
+• Shorts-Regale, Kanalseiten und Suchergebnisse können weiterhin Aufrufe anzeigen
+• Diese Funktion funktioniert nicht mit dem Automobil-Formfaktor."</string>
   <string name="morphe_hide_upload_time_title">Upload-Zeit ausblenden</string>
   <string name="morphe_hide_upload_time_summary_on">Die Upload-Zeit ist im Feed und in den Suchergebnissen ausgeblendet</string>
   <string name="morphe_hide_upload_time_summary_off">Die Upload-Zeit wird im Feed und in den Suchergebnissen angezeigt</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Einschränkungen:
-• Shorts Reihen, Kanalseiten und Suchergebnisse können weiterhin Upload-Zeiten anzeigen
-• Diese Funktion funktioniert nicht mit dem Automobil-Formfaktor"</string>
+• Shorts-Regale, Kanalseiten und Suchergebnisse können weiterhin Upload-Zeiten anzeigen
+• Diese Funktion funktioniert nicht mit dem Automobil-Formfaktor."</string>
   <string name="morphe_hide_keyword_content_screen_title">Keyword-Inhalt ausblenden</string>
   <string name="morphe_hide_keyword_content_screen_summary">Verstecke Such- und Feed-Videos mit Schlüsselwortfilter</string>
   <string name="morphe_hide_keyword_content_home_title">Home-Videos nach Schlüsselwörtern ausblenden</string>
@@ -629,7 +633,9 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_disable_translucent_status_bar_title">Transluzente Statusleiste deaktivieren</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusleiste ist undurchsichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Die Statusleiste ist undurchsichtig oder durchscheinend</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Auf einigen Geräten kann die Aktivierung dieser Funktion die Systemnavigationsleiste in transparent ändern.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Einschränkungen:
+• Ein schwarzer Balken kann oben im Video-Player erscheinen.
+• Auf einigen Geräten kann das Aktivieren dieser Funktion die System-Navigationsleiste transparent machen."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Hellen, lichtdurchlässigen Balken deaktivieren</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Heller Navigationsbalken ist opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Die Navigationsleiste im hellen Modus ist undurchsichtig oder durchscheinend</string>
@@ -1212,8 +1218,10 @@ Dadurch ändert sich das Erscheinungsbild und die Funktionen der App, es können
 
 Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu löschen, um UI-Fehler zu vermeiden."</string>
   <string name="morphe_spoof_app_version_target_title">Spoof-App-Versionsziel</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Alte Shorts Spielersymbole wiederherstellen</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Alte Shorts Spielersymbole wiederherstellen</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Deaktiviere fette Icons</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Nicht eingeklappte Video-Aktionsleiste wiederherstellen</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Alte Shorts Spielersymbole wiederherstellen</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startseite ändern</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>

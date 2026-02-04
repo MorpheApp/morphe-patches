@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe แสง</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">กำหนดเอง</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 การทดลอง! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"คุณกำลังใช้เวอร์ชันแอปทดลองของ ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🔧 ตัวอักษรผิดปกติหรือบัคที่ยังไม่ได้แก้ไขอาจเกิดขึ้นเนื่องจากเรากำลังปรับปรุงปัญหาสำหรับเวอร์ชันนี้
+<br/>
+<br/>
+หากคุณต้องการประสบการณ์ที่ไม่มีปัญหาให้ <b>ถอดอินสตอล</b> แล้วปรับปรุงเวอร์ชันแอปแนะนำของ ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ฉันต้องการทดลอง</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ฉันต้องการเสถียร</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">ประกาศ Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">ประวัติการรับชมของคุณไม่ได้ถูกบันทึก&lt;br&gt;&lt;br&gt;สาเหตุที่เป็นไปได้มากที่สุดคือตัวบล็อกโฆษณา DNS หรือพร็อกซีเครือข่าย&lt;br&gt;&lt;br&gt;เพื่อแก้ไขปัญหานี้ ให้เพิ่ม &lt;b&gt;s.youtube.com&lt;/b&gt; ในรายการที่อนุญาต หรือปิดตัวบล็อกโฆษณา DNS และพร็อกซีทั้งหมด</string>

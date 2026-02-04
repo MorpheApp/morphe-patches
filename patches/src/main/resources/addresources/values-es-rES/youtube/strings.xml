@@ -128,9 +128,6 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <string name="morphe_hide_doodles_title">Ocultar Doodles de YouTube</string>
   <string name="morphe_hide_doodles_summary_on">La animación de los Doodles de YouTube en el logo está oculta</string>
   <string name="morphe_hide_doodles_summary_off">La animación de los Doodles de YouTube en el logo está visible</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"Los Doodles de YouTube aparecen unos pocos días al año.
-
-Si un Doodle está actualmente mostrándose en tu región y este ajuste de ocultar está activado, entonces la barra de filtros debajo de la barra de búsqueda también estará oculta."</string>
   <string name="morphe_hide_channel_bar_title">Ocultar barra de canales</string>
   <string name="morphe_hide_channel_bar_summary_on">La barra de canales está oculta</string>
   <string name="morphe_hide_channel_bar_summary_off">La barra de canales está visible</string>
@@ -189,6 +186,12 @@ Si un Doodle está actualmente mostrándose en tu región y este ajuste de ocult
   <string name="morphe_hide_course_progress_section_title">Ocultar \"Progreso del curso\"</string>
   <string name="morphe_hide_course_progress_section_summary_on">La sección \"Progreso del curso\" está oculta</string>
   <string name="morphe_hide_course_progress_section_summary_off">La sección \"Progreso del curso\" está visible</string>
+  <string name="morphe_hide_explore_section_title">Ocultar \"Explorar\"</string>
+  <string name="morphe_hide_explore_section_summary_on">Las secciones \"Explorar este curso\" y \"Explorar el pódcast\" están ocultas</string>
+  <string name="morphe_hide_explore_section_summary_off">Las secciones \"Explorar este curso\" y \"Explorar el pódcast\" están visibles</string>
+  <string name="morphe_hide_explore_course_section_title">Ocultar \"Explorar este curso\"</string>
+  <string name="morphe_hide_explore_course_section_summary_on">La sección \"Explorar este curso\" está oculta</string>
+  <string name="morphe_hide_explore_course_section_summary_off">La sección \"Explorar este curso\" está visible</string>
   <string name="morphe_hide_explore_podcast_section_title">Ocultar \"Investiga el pódcast\"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">La sección \"Investiga el pódcast\" está oculta</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">La sección \"Investiga el pódcast\" está visible</string>
@@ -287,8 +290,8 @@ Si un Doodle está actualmente mostrándose en tu región y este ajuste de ocult
   <string name="morphe_hide_comments_section_summary_on">La sección \"Comentarios\" está oculta</string>
   <string name="morphe_hide_comments_section_summary_off">La sección \"Comentarios\" está visible</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Ocultar sección \"Comentarios\" en el feed de inicio</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">La sección \"Comentarios\" está oculta en el feed de inicio</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">La sección \"Comentarios\" está visible en el feed de inicio</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">La sección de comentarios debajo de los vídeos en el feed de Inicio está oculta</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">La sección de comentarios debajo de los vídeos en el feed de Inicio está visible</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ocultar normas de la comunidad</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Las normas de la comunidad están ocultas</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Las normas de la comunidad están visibles</string>
@@ -318,15 +321,15 @@ Si un Doodle está actualmente mostrándose en tu región y este ajuste de ocult
   <string name="morphe_hide_view_count_summary_off">El recuento de visualizaciones está visible en el feed y los resultados de búsqueda</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Limitaciones:
-• Las estanterías de Shorts, las páginas de canal y los resultados de búsqueda aún pueden mostrar el recuento de visualizaciones
-• Esta característica no funciona con el factor de forma automotriz"</string>
+• Los estantes de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando el número de visualizaciones.
+• Esta función no funciona con el factor de forma automotriz."</string>
   <string name="morphe_hide_upload_time_title">Ocultar hora de subida</string>
   <string name="morphe_hide_upload_time_summary_on">La hora de subida está oculta en el feed y los resultados de búsqueda</string>
   <string name="morphe_hide_upload_time_summary_off">La hora de subida está visible en el feed y los resultados de búsqueda</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitaciones:
-• Las estanterías de Shorts, las páginas del canal y los resultados de búsqueda aún pueden mostrar los tiempos de subida
-• Esta característica no funciona con el factor de forma automotriz"</string>
+• Los estantes de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando los tiempos de subida.
+• Esta función no funciona con el factor de forma automotriz."</string>
   <string name="morphe_hide_keyword_content_screen_title">Ocultar contenido de palabra clave</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ocultar videos de búsqueda y feed usando filtros de palabras clave</string>
   <string name="morphe_hide_keyword_content_home_title">Ocultar vídeos de inicio por palabras clave</string>
@@ -632,7 +635,9 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_disable_translucent_status_bar_title">Desactivar barra de estado translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra de estado es opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra de estado es opaca o translúcida</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">En algunos dispositivos, habilitar esta función puede cambiar la barra de navegación del sistema a transparente.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitaciones:
+• Puede aparecer una barra negra en la parte superior del reproductor de vídeo.
+• En algunos dispositivos, activar esta función puede cambiar la barra de navegación del sistema a transparente."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desactivar barra translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">La barra de navegación en modo claro es opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">La barra de navegación en modo claro es opaca o translúcida</string>
@@ -740,17 +745,17 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_endscreen_cards_summary_off">Las tarjetas de pantalla final están visibles</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Modo ambiente</string>
-  <string name="morphe_ambient_mode_screen_summary">Omitir restricciones de ahorro de energía para Modo ambiente y desactivarlo completamente o en pantalla completa</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Omitir restricciones de Modo ambiente</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Las restricciones de modo ambiente para ahorro de energía están bypass.</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Las restricciones de modo ambiente para ahorro de energía no están bypass.</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Habilitar esto puede causar una peor vida de la batería.</string>
-  <string name="morphe_disable_ambient_mode_title">Deshabilitar modo ambiente</string>
-  <string name="morphe_disable_ambient_mode_summary_on">Modo ambiente está deshabilitado</string>
-  <string name="morphe_disable_ambient_mode_summary_off">Modo ambiente está habilitado</string>
+  <string name="morphe_ambient_mode_screen_summary">Omite las restricciones de ahorro de energía para el modo ambiente y lo desactiva por completo o en pantalla completa</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Omitir restricciones del modo ambiente</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Las restricciones del modo ambiente para ahorro de energía están omitidas</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Las restricciones del modo ambiente para ahorro de energía no están omitidas</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Activar esto puede causar una peor vida de la batería.</string>
+  <string name="morphe_disable_ambient_mode_title">Desactivar modo ambiente</string>
+  <string name="morphe_disable_ambient_mode_summary_on">El modo ambiente está desactivado</string>
+  <string name="morphe_disable_ambient_mode_summary_off">El modo ambiente está activado</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desactivar modo ambiente en pantalla completa</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Modo ambiente en pantalla completa está deshabilitado</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Modo ambiente en pantalla completa está habilitado</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">El modo ambiente en pantalla completa está desactivado</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">El modo ambiente en pantalla completa está activado</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Ocultar tarjetas de información</string>
   <string name="morphe_hide_info_cards_summary_on">Las tarjetas de información están ocultas</string>
@@ -1215,8 +1220,10 @@ Esto cambiará la apariencia y las características de la aplicación, pero pued
 
 Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación para evitar errores en la interfaz de usuario."</string>
   <string name="morphe_spoof_app_version_target_title">Versión a falsificar de la app</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaura los iconos antiguos del reproductor de Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desactivar iconos en negrita</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaura la barra de acciones de vídeo no contraída</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaura los iconos antiguos del reproductor de Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambiar página de inicio</string>
   <string name="morphe_change_start_page_entry_default">Predeterminado</string>

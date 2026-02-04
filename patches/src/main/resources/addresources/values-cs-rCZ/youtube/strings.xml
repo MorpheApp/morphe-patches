@@ -129,9 +129,6 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_doodles_title">Skrýt YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skrytá</string>
   <string name="morphe_hide_doodles_summary_off">Animace YouTube Doodles na logu je zobrazena</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles se zobrazují několik dní v roce.
-
-Pokud se Doodle v současné době zobrazuje ve vaší oblasti a toto nastavení skrytí je zapnuto, bude také skrytý panel s filtry pod vyhledávacím panelem."</string>
   <string name="morphe_hide_channel_bar_title">Skrýt kanálový panel</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanálový panel je skrytý</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanálový panel je zobrazen</string>
@@ -190,6 +187,12 @@ Pokud se Doodle v současné době zobrazuje ve vaší oblasti a toto nastavení
   <string name="morphe_hide_course_progress_section_title">Skrýt \'Průběh kurzu\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Sekce \'Průběh kurzu\' je skryta</string>
   <string name="morphe_hide_course_progress_section_summary_off">Sekce \'Průběh kurzu\' je zobrazená</string>
+  <string name="morphe_hide_explore_section_title">Skrýt Prozkoumat</string>
+  <string name="morphe_hide_explore_section_summary_on">Prozkoumání kurzu a Prozkoumání podcastu jsou skryty</string>
+  <string name="morphe_hide_explore_section_summary_off">Prozkoumání kurzu a Prozkoumání podcastu jsou zobrazeny</string>
+  <string name="morphe_hide_explore_course_section_title">Skrýt \'Prozkoumání kurzu\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Tato sekce kurzu je skryta</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Tato sekce kurzu je zobrazená</string>
   <string name="morphe_hide_explore_podcast_section_title">Skrýt „Prozkoumat podcast“</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Sekce Prozkoumat podcast je skrytá</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Sekce Prozkoumat podcast je zobrazena</string>
@@ -288,8 +291,8 @@ Pokud se Doodle v současné době zobrazuje ve vaší oblasti a toto nastavení
   <string name="morphe_hide_comments_section_summary_on">Sekce komentářů je skrytá</string>
   <string name="morphe_hide_comments_section_summary_off">Sekce komentářů je zobrazena</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skrýt sekci komentářů v Home feed</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Sekce komentářů v Home feed je skrytá</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Sekce komentářů v Home feed je zobrazena</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Sekce komentářů pod videy v domovském přehledu je skryta</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Sekce komentářů pod videy v domovském přehledu je zobrazená</string>
   <string name="morphe_hide_comments_community_guidelines_title">Skrýt pokyny pro komunitu</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Pravidla komunity jsou skryta</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Pravidla komunity jsou zobrazena</string>
@@ -319,15 +322,15 @@ Pokud se Doodle v současné době zobrazuje ve vaší oblasti a toto nastavení
   <string name="morphe_hide_view_count_summary_off">Počet zhlédnutí je zobrazený ve zdroji a výsledcích vyhledávání</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Omezení:
-• Regály Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat počty zhlédnutí
-• Tato funkce nefunguje s automobilovým formátem"</string>
+• Police Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat počty zhlédnutí
+• Tato funkce nefunguje s automobilovým provedením."</string>
   <string name="morphe_hide_upload_time_title">Skrýt čas nahrání</string>
   <string name="morphe_hide_upload_time_summary_on">Čas nahrání je skryt ve feedu a výsledcích vyhledávání</string>
   <string name="morphe_hide_upload_time_summary_off">Čas nahrání je zobrazen ve feedu a výsledcích vyhledávání</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Omezení:
 • Police Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat časy nahrání
-• Tato funkce nefunguje s automobilovým provedením"</string>
+• Tato funkce nefunguje s automobilovým provedením."</string>
   <string name="morphe_hide_keyword_content_screen_title">Skrýt obsah s klíčovými slovy</string>
   <string name="morphe_hide_keyword_content_screen_summary">Skrýt videa ve vyhledávání a feedu pomocí filtrů klíčových slov</string>
   <string name="morphe_hide_keyword_content_home_title">Skrýt domovská videa podle klíčových slov</string>
@@ -633,7 +636,9 @@ Cookies budou automaticky uloženy, pokud jsou platné."</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktivovat průsvitný stavový řádek</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Stavový řádek je neprůhledný</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Stavový řádek je neprůhledný nebo průsvitný</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Na některých zařízeních může aktivace této funkce změnit navigační lištu systému na průhlednou.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Omezení:
+• Černý pruh může být vidět v horní části videopřehrávače.
+• Na některých zařízeních může zapnutí této funkce změnit systémovou navigaci na průhlednou."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktivovat světlý průsvitný navigační panel</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigační panel v světlém režimu je neprůhledný</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Navigační lišta v světlém režimu je neprůhledná nebo průsvitná</string>
@@ -1216,8 +1221,10 @@ To změní vzhled a funkce aplikace, ale mohou se objevit neznámé vedlejší e
 
 Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabránilo chybám uživatelského rozhraní."</string>
   <string name="morphe_spoof_app_version_target_title">Cíl napodobení verze aplikace</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 – Obnovit staré ikony přehrávače Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré uložení zpět do seznamu přehrávání</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Vypnout tučné ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 – Obnovit nerozbalený panel akcí videa</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 – Obnovit staré ikony přehrávače Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Změnit úvodní stránku</string>
   <string name="morphe_change_start_page_entry_default">Výchozí</string>

@@ -128,9 +128,6 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_doodles_title">Sakrij YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animacija YouTube Doodlesa na logotipu je skrivena</string>
   <string name="morphe_hide_doodles_summary_off">Animacija YouTube Doodlesa na logotipu je prikazana</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles se prikazuje nekoliko dana svake godine.
-
-Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uključena, traka filtera ispod trake za pretragu takođe će biti skrivena."</string>
   <string name="morphe_hide_channel_bar_title">Sakrij traku kanala</string>
   <string name="morphe_hide_channel_bar_summary_on">Traka kanala je skrivena</string>
   <string name="morphe_hide_channel_bar_summary_off">Traka kanala je prikazana</string>
@@ -189,6 +186,12 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_course_progress_section_title">Sakrij \'Napredak kursa\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Odeljak \'Napredak kursa\' je sakriven</string>
   <string name="morphe_hide_course_progress_section_summary_off">Odeljak \'Napredak kursa\' je prikazan</string>
+  <string name="morphe_hide_explore_section_title">Sakrij dugme „Istražite”</string>
+  <string name="morphe_hide_explore_section_summary_on">Odeljci \'Istražite ovaj kurs\' i \'Istražite podkast\' su sakriveni</string>
+  <string name="morphe_hide_explore_section_summary_off">Odeljci \'Istražite ovaj kurs\' i \'Istražite podkast\' su vidljivi</string>
+  <string name="morphe_hide_explore_course_section_title">Sakrij \'Istražite ovaj kurs\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Odeljak „Istražite ovu sekciju kursa” je skriven</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Odeljak „Istražite ovu sekciju kursa” je prikazan</string>
   <string name="morphe_hide_explore_podcast_section_title">Sakrij odeljak „Istražite podkast”</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Odeljak „Istražite podkast” je skriven</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Odeljak „Istražite podkast” je prikazan</string>
@@ -287,8 +290,8 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <string name="morphe_hide_comments_section_summary_on">Odeljak za komentare je skriven</string>
   <string name="morphe_hide_comments_section_summary_off">Odeljak za komentare je prikazan</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Sakrij odeljak za komentare u Feed-u</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Odeljak za komentare u Feed-u je sakriven</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Odeljak za komentare u Feed-u je prikazan</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Odeljak „Komentari ispod videa u Feed-u” je skriven</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Odeljak „Komentari ispod videa u Feed-u” je prikazan</string>
   <string name="morphe_hide_comments_community_guidelines_title">Sakrij smernice zajednice</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Smernice zajednice su skrivene</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Smernice zajednice su prikazane</string>
@@ -319,14 +322,14 @@ Ako se Doodle trenutno prikazuje u vašem regionu i ova opcija skrivanja je uklj
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Ograničenja:
 • Police Shorts, stranice kanala i rezultati pretrage mogu i dalje prikazivati broj pregleda
-• Ova funkcija ne radi sa automobilskim faktorom forme"</string>
+• Ova funkcija ne radi sa automobilskim faktorom forme."</string>
   <string name="morphe_hide_upload_time_title">Sakrij vreme otpremanja</string>
   <string name="morphe_hide_upload_time_summary_on">Vreme otpremanja je skriveno u fidu i rezultatima pretrage</string>
   <string name="morphe_hide_upload_time_summary_off">Vreme otpremanja je prikazano u fidu i rezultatima pretrage</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Ograničenja:
 • Police Shorts, stranice kanala i rezultati pretrage mogu i dalje prikazivati vreme otpremanja
-• Ova funkcija ne radi sa automobilskim faktorom forme"</string>
+• Ova funkcija ne radi sa automobilskim faktorom forme."</string>
   <string name="morphe_hide_keyword_content_screen_title">Sakrij sadržaj ključne reči</string>
   <string name="morphe_hide_keyword_content_screen_summary">Sakrijte videe iz rezultata pretrage i fida koristeći filtere ključnih reči</string>
   <string name="morphe_hide_keyword_content_home_title">Sakrij videe na kartici „Početna” prema ključnim rečima</string>
@@ -632,7 +635,9 @@ Cookies will be saved automatically if they are valid"</string>
   <string name="morphe_disable_translucent_status_bar_title">Onemogući prozirnu statusnu traku</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusna traka je neprozirna</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusna traka je neprozirna ili prozirna</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Na nekim uređajima, omogućavanje ove funkcije može da promeni traku za navigaciju kroz sistem u prozirnu.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograničenja:
+• Crna traka može da se pojavi na vrhu igrača videa.
+• Na nekim uređajima, omogućavanje ove funkcije može promeniti sistemsku traku navigacije u prozirnu."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Onemogući svetlu prozirnu traku za navigaciju</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Traka za navigaciju u svetlom režimu je neprozirna</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Traka za navigaciju u svetlom režimu je neprozirna ili prozirna</string>
@@ -1215,8 +1220,10 @@ Ovo će promeniti izgled i funkcije aplikacije, ali se mogu pojaviti i nepoznati
 
 Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da biste sprečili greške u korisničkom interfejsu."</string>
   <string name="morphe_spoof_app_version_target_title">Ciljna verzija aplikacije za lažiranje</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Vraća stare ikonice Shorts plejera</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vraća stare ikonice Shorts plejera</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Izgubi bold ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Vraća neskupljenu traku radnji videa</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Vraća stare ikonice Shorts plejera</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promena polazne stranice</string>
   <string name="morphe_change_start_page_entry_default">Podrazumevana</string>

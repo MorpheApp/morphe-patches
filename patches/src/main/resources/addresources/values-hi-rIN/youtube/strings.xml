@@ -129,9 +129,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">YouTube के डुडल्स को छुपाएं</string>
   <string name="morphe_hide_doodles_summary_on">YouTube के लोगो पर छिपा हुआ डुडल्स एनिमेशन है</string>
   <string name="morphe_hide_doodles_summary_off">YouTube के लोगो पर डुडल्स एनिमेशन दिखाई देता है</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube डुडल्स कुछ दिनों में दिखाई देते हैं।
-
-अगर आपकी क्षेत्र में डुडल दिखाई दे रहा है और यह छुपाने का सेटिंग ऑन है, तो खोज बॉर के नीचे फ़िल्टर बार भी छुपा दिया जाएगा।"</string>
   <string name="morphe_hide_channel_bar_title">चैनल बार को छुपाएं</string>
   <string name="morphe_hide_channel_bar_summary_on">चैनल बार छुपा हुआ है</string>
   <string name="morphe_hide_channel_bar_summary_off">चैनल बार दिखाया गया है</string>
@@ -190,6 +187,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">छुपाएं \'कोर्स प्रोग्रेस\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">कोर्स प्रोग्रेस अनुभाग छुपा हुआ है</string>
   <string name="morphe_hide_course_progress_section_summary_off">कोर्स प्रोग्रेस अनुभाग दिखाया गया है</string>
+  <string name="morphe_hide_explore_section_title">छुपाएं खोजें</string>
+  <string name="morphe_hide_explore_section_summary_on">इस कोर्स को खोजें और पॉडकास्ट खोजें अनुभाग छुपाए गए हैं</string>
+  <string name="morphe_hide_explore_section_summary_off">इस कोर्स को खोजें और पॉडकास्ट खोजें अनुभाग दिखाए गए हैं</string>
+  <string name="morphe_hide_explore_course_section_title">छुपाएं \'इस कोर्स को खोजें\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">इस कोर्स सेक्शन को छिपाएं</string>
+  <string name="morphe_hide_explore_course_section_summary_off">इस कोर्स सेक्शन को दिखाएं</string>
   <string name="morphe_hide_explore_podcast_section_title">छुपाएं \'पॉडकास्ट को खोजें\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">पॉडकास्ट खोजने का क्षेत्र छुपा हुआ है</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">पॉडकास्ट खोजने का क्षेत्र दिखाया गया है</string>
@@ -288,8 +291,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">टिप्पणियों का विभाग छुपा हुआ है</string>
   <string name="morphe_hide_comments_section_summary_off">टिप्पणियों का अनुभाग दिखाया गया है</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">होम फ़ीड में टिप्पणियों का अनुभाग छुपाएं</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">होम फ़ीड में टिप्पणियों का विभाग छुपा हुआ है</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">होम फ़ीड में टिप्पणियों का विभाग दिखाया गया है</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">होम फीड में वीडियो के नीचे კომैंट्स सेक्शन को छिपाएं</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">होम फीड में वीडियो के नीचे कॉमैंट्स सेक्शन को दिखाएं</string>
   <string name="morphe_hide_comments_community_guidelines_title">छुपाएं समुदाय निदेशिका</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">कम्युनिटी गाइडलाइनें छुपाई गई हैं</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">कम्युनिटी गाइडलाइनें दिखाई जाती हैं</string>
@@ -326,7 +329,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_summary_off">अपलोड समय फीड और खोज परिणामों में दिखाई देता है</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"सीमाएँ:
-• शॉर्ट्स शेल्फ्स, चैनल पेज्स, और खोज परिणामें अभी भी देखे गए गिनती दिखा सकते हैं
+• शॉर्ट्स शेल्फ्स, चैनल पेज्स, और खोज परिणामें अभी भी अपलोड किए गए समय दिखा सकते हैं
 • यह सुविधा ऑटोमोबाइल फॉर्म फैक्टर के साथ काम नहीं करती है"</string>
   <string name="morphe_hide_keyword_content_screen_title">छुपाएं कीवर्ड सामग्री</string>
   <string name="morphe_hide_keyword_content_screen_summary">छुपाएं कीवर्ड फ़िल्टर का उपयोग करके फ़ीड और खोज वीडियो</string>
@@ -542,9 +545,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_promote_button_summary_off">प्रोमोट बटन दिखाई देता है</string>
   <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_thanks_button_title">छिपाएं धन्यवाद</string>
+  <string name="morphe_hide_thanks_button_summary_on">थैंक्यू बटन छुपा हुआ है</string>
+  <string name="morphe_hide_thanks_button_summary_off">थैंक्यू बटन दिखाया जाता है</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_summary_on">क्लिप बटन छुपा हुआ है</string>
+  <string name="morphe_hide_clip_button_summary_off">क्लिप बटन दिखाया गया है</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.captions.captionsPatch -->
@@ -591,7 +598,9 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">नैविगेशन बटनें के बीच अंतर नarrow है</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">कुछ डिवाइसों पर इस सुविधा को सक्रिय करना सिस्टम नेविगेशन बार को ट्रांस्परेंट बना सकता है।</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"सीमाएँ:
+• वीडियो प्लेयर के शीर्ष पर काला बार दिखाई सकता है
+• कुछ डिवाइस पर इस सुविधा को एनब्ल करने से सिस्टम नैविगेशन बार को ट्रांस्पैरेंट बनाया जा सकता है"</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या बदलें</string>
   <string name="morphe_hide_toolbar_create_button_title">छुपाएं \'सृजना\' बटन</string>
@@ -715,6 +724,8 @@ Second \"item\" text"</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - डिसेबल बॉल्ड आइकॉन</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

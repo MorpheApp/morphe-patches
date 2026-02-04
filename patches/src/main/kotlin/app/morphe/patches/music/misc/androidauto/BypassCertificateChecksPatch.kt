@@ -3,6 +3,7 @@ package app.morphe.patches.music.misc.androidauto
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.returnEarly
 
 @Suppress("unused")
@@ -15,14 +16,7 @@ val bypassCertificateChecksPatch = bytecodePatch(
         settingsPatch
     )
 
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.10.52",
-            "8.37.56",
-            "8.40.54",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         CheckCertificateFingerprint.method.returnEarly(true)

@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.Match
+import app.morphe.patcher.Match.InstructionMatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -106,16 +107,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         resourceMappingPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
@@ -127,6 +119,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_attributes_section"),
                     SwitchPreference("morphe_hide_chapters_section"),
                     SwitchPreference("morphe_hide_course_progress_section"),
+                    SwitchPreference("morphe_hide_explore_section"),
+                    SwitchPreference("morphe_hide_explore_course_section"),
                     SwitchPreference("morphe_hide_explore_podcast_section"),
                     SwitchPreference("morphe_hide_featured_links_section"),
                     SwitchPreference("morphe_hide_featured_places_section"),
@@ -331,7 +325,44 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
+        // region Subscribed channels bar
+
+        // Tablet
+        HideSubscribedChannelsBarConstructorFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
+                            "->hideSubscribedChannelsBar(Landroid/view/View;)V",
+                )
+            }
+        }
+
+        // Phone (landscape mode)
+        HideSubscribedChannelsBarLandscapeFingerprint.match(
+            HideSubscribedChannelsBarConstructorFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSubscribedChannelsBar(I)I
+                        move-result v$register
+                    """
+                )
+            }
+        }
+
+        // endregion
+
         // region crowdfunding box
+
         CrowdfundingBoxFingerprint.let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index
@@ -462,7 +493,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
          * Patch a [Method] with a given [instructions].
          *
          * @param RegisterInstruction The type of instruction to get the register from.
-         * @param insertIndexOffset The offset to add to the end index of the [Match.patternMatch].
+         * @param insertIndexOffset The offset to add to the end index of the [InstructionMatch].
          * @param hookRegisterOffset The offset to add to the register of the hook.
          * @param instructions The instructions to add with the register as a parameter.
          */

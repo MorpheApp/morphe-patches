@@ -128,9 +128,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">YouTube Doodles छिपाएँ</string>
   <string name="morphe_hide_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
   <string name="morphe_hide_doodles_summary_off">লোগোতে YouTube Doodles অ্যানিমেশন দেখানো হয়</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles প্রতি বছর কয়েক দিনের জন্য দেখানো হয়।
-
-আপনার অঞ্চলে যদি কোনও Doodle বর্তমানে দেখানো হচ্ছে এবং এই লুকানো সেটিং চালু থাকে, তাহলে সার্চ বারের নীচে ফিল্টার বারটিও লুকানো থাকবে।"</string>
   <string name="morphe_hide_channel_bar_title">চ্যানেল বার লুকান</string>
   <string name="morphe_hide_channel_bar_summary_on">চ্যানেল বার লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_channel_bar_summary_off">চ্যানেল বার প্রদর্শিত হয়েছে</string>
@@ -189,6 +186,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">লুকান \'কোর্স প্রগ্রেস\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">কোর্স প্রগ্রেস বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_course_progress_section_summary_off">কোর্স প্রগ্রেস বিভাগ প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_explore_section_title">এক্সপ্লোর লুকান</string>
+  <string name="morphe_hide_explore_section_summary_on">এই কোর্স এবং পডকাস্ট বিভাগ লুকানো হয়েছে</string>
+  <string name="morphe_hide_explore_section_summary_off">এই কোর্স এবং পডকাস্ট বিভাগ দেখানো হয়েছে</string>
+  <string name="morphe_hide_explore_course_section_title">\'এই কোর্স\' লুকান</string>
+  <string name="morphe_hide_explore_course_section_summary_on">এই কোর্স বিভাগটি লুকানো আছে</string>
+  <string name="morphe_hide_explore_course_section_summary_off">এই কোর্স বিভাগটি দেখানো হয়েছে</string>
   <string name="morphe_hide_explore_podcast_section_title">\'Explore the podcast\' লুকান</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Explore the podcast বিভাগটি লুকানো আছে</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Explore the podcast বিভাগটি দেখানো হয়েছে</string>
@@ -287,8 +290,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">মন্তব্য বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_comments_section_summary_off">মন্তব্য বিভাগ প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">মন্তব্য বিভাগ লুকান</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">মন্তব্য বিভাগ লুকিয়ে রয়েছে</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">মন্তব্য বিভাগ প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">হোম ফিডে ভিডিওগুলির নীচে কমেন্টস বিভাগটি লুকানো আছে</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">হোম ফিডে ভিডিওগুলির নীচে কমেন্টস বিভাগটি দেখানো হয়েছে</string>
   <string name="morphe_hide_comments_community_guidelines_title">কমিউনিটি নির্দেশিকা লুকান</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">কমিউনিটি নির্দেশিকা লুকানো আছে</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">কমিউনিটি নির্দেশিকা দেখানো আছে</string>
@@ -318,14 +321,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_summary_off">ফিড এবং অনুসন্ধানের ফলাফলে দেখার সংখ্যা দেখানো আছে</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"সীমাবদ্ধতা:
-• Shorts শেল্ফ, চ্যানেল পেজ এবং অনুসন্ধানের ফলাফলে এখনও দেখার সংখ্যা দেখানো হতে পারে
+• শর্টস শেল্ফ, চ্যানেল পেজ এবং অনুসন্ধানের ফলাফলে এখনও দেখার সংখ্যা দেখানো হতে পারে
 • এই বৈশিষ্ট্যটি অটোমোটিভ ফর্ম ফ্যাক্টরের সাথে কাজ করে না"</string>
   <string name="morphe_hide_upload_time_title">আপলোডের সময় লুকান</string>
   <string name="morphe_hide_upload_time_summary_on">আপলোডের সময় ফিড এবং সার্চ ফলাফলে লুকানো আছে</string>
   <string name="morphe_hide_upload_time_summary_off">আপলোডের সময় ফিড এবং সার্চ ফলাফলে দেখানো আছে</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"সীমাবদ্ধতা:
-• Shorts শেলফ, চ্যানেল পেজ এবং সার্চ ফলাফলে এখনও আপলোডের সময় দেখানো হতে পারে
+• শর্টস শেল্ফ, চ্যানেল পেজ এবং সার্চ ফলাফলে এখনও আপলোডের সময় দেখানো হতে পারে
 • এই বৈশিষ্ট্যটি অটোমোটিভ ফর্ম ফ্যাক্টরের সাথে কাজ করে না"</string>
   <string name="morphe_hide_keyword_content_screen_title">কীওয়ার্ড কনটেন্ট লুকান</string>
   <string name="morphe_hide_keyword_content_screen_summary">কীওয়ার্ড ফিল্টার ব্যবহার করে অনুসন্ধান এবং ফিড ভিডিও লুকান</string>
@@ -632,7 +635,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">অর্ধস্বচ্ছ স্থিতি বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">স্ট্যাটাস বারটি অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">স্ট্যাটাস বারটি অস্বচ্ছ বা স্বচ্ছ</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">কিছু ডিভাইসে, এই বৈশিষ্ট্যটি সক্ষম করলে সিস্টেম নেভিগেশন বার স্বচ্ছ হয়ে যেতে পারে।</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"সীমাবদ্ধতা:
+• ভিডিও প্লেয়ারের শীর্ষে কালো বরটি প্রদর্শিত হতে পারে
+• কিছু ডিভাইসে, এই বৈশিষ্ট্যটি সিস্টেম নেভিগেশন বারকে স্বচ্ছ করে তোলা করতে পারে"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">অর্ধস্বচ্ছ হালকা বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">হালকা মোড নেভিগেশন বার অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">লাইট মোড ন্যাভিগেশন বারটি অস্বচ্ছ বা স্বচ্ছ</string>
@@ -1216,8 +1221,10 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
 
 পরে যদি বন্ধ করা হয়, UI বাগ এড়াতে অ্যাপ্লিকেশন ডেটা পরিষ্কার করার পরামর্শ দেওয়া হয়।"</string>
   <string name="morphe_spoof_app_version_target_title">স্পুফ অ্যাপ সংস্করণ লক্ষ্য</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - পুরনো Shorts প্লেয়ার আইকন পুনরুদ্ধার করুন</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">২০.৩৯.৪১ - পুরনো সেভ পুনরুদ্ধার করুন প্লেলিস্টে</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">২০.২৮.৪১ - বোল্ড আইকন ডিসএবল</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - প্রসারিত নয় এমন ভিডিও অ্যাকশন বার পুনরুদ্ধার করুন</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - পুরনো Shorts প্লেয়ার আইকন পুনরুদ্ধার করুন</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">শুরুর পৃষ্ঠা পরিবর্তন করুন</string>
   <string name="morphe_change_start_page_entry_default">পূর্ব-নির্ধারিত</string>

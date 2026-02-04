@@ -128,9 +128,6 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_doodles_title">Skjul YouTube-Doudler</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
   <string name="morphe_hide_doodles_summary_off">YouTube Doodles-animation på logoet vises</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube-doodles vises et par dage om året.
-
-Hvis et Doodle vises i øjeblikket i din region, og denne skjuleindstilling er aktiveret, skjules filterfeltet under søgefeltet også."</string>
   <string name="morphe_hide_channel_bar_title">Skjul kanallinje</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalbjælken er skjult</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalbjælken vises</string>
@@ -189,6 +186,12 @@ Hvis et Doodle vises i øjeblikket i din region, og denne skjuleindstilling er a
   <string name="morphe_hide_course_progress_section_title">Skjul \'Kursforgang\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Kursforgangssektion er skjult</string>
   <string name="morphe_hide_course_progress_section_summary_off">Kursforgangssektion er vist</string>
+  <string name="morphe_hide_explore_section_title">Skjul Udforsk</string>
+  <string name="morphe_hide_explore_section_summary_on">Udforsk dette kursus og Udforsk podcasts afsnit er skjult</string>
+  <string name="morphe_hide_explore_section_summary_off">Udforsk dette kursus og Udforsk podcasts afsnit er vist</string>
+  <string name="morphe_hide_explore_course_section_title">Skjul \'Udforsk dette kursus\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Denne kursusafsnit er skjult</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Denne kursusafsnit vises</string>
   <string name="morphe_hide_explore_podcast_section_title">Skjul \"Udforsk podcasten\"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Sektionen Udforsk podcasten er skjult</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Sektionen Udforsk podcasten vises</string>
@@ -287,8 +290,8 @@ Hvis et Doodle vises i øjeblikket i din region, og denne skjuleindstilling er a
   <string name="morphe_hide_comments_section_summary_on">Kommentarer sektion er skjult</string>
   <string name="morphe_hide_comments_section_summary_off">Kommentarer sektion er vist</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarer i Home-feed</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Kommentarer i Home-feed er skjult</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Kommentarer i Home-feed er vist</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Kommentarer under videoer i Home-feed er skjult</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Kommentarer under videoer i Home-feed vises</string>
   <string name="morphe_hide_comments_community_guidelines_title">Skjul fællesskabsretningslinjer</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Fællesskabsretningslinjer er skjult</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Fællesskabsretningslinjer er vist</string>
@@ -318,15 +321,15 @@ Hvis et Doodle vises i øjeblikket i din region, og denne skjuleindstilling er a
   <string name="morphe_hide_view_count_summary_off">Antal visninger vises i feed og søgeresultater</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Begrænsninger:
-• Shorts-hylder, kanalsider og søgeresultater kan stadig vise antal visninger
-• Denne funktion virker ikke med bilformat"</string>
+• Shorts hylder, kanalsider og søgeresultater kan stadig vise antal visninger
+• Denne funktion virker ikke med bilformat."</string>
   <string name="morphe_hide_upload_time_title">Skjul uploadtid</string>
   <string name="morphe_hide_upload_time_summary_on">Uploadtid er skjult i feed og søgeresultater</string>
   <string name="morphe_hide_upload_time_summary_off">Uploadtid vises i feed og søgeresultater</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Begrænsninger:
 • Shorts hylder, kanalsider og søgeresultater kan stadig vise uploadtider
-• Denne funktion virker ikke med bilformat"</string>
+• Denne funktion virker ikke med bilformat."</string>
   <string name="morphe_hide_keyword_content_screen_title">Skjul nøgleordsindhold</string>
   <string name="morphe_hide_keyword_content_screen_summary">Skjul søge- og feed videoer ved hjælp af søgeordsfiltre</string>
   <string name="morphe_hide_keyword_content_home_title">Skjul hjemmevideoer med søgeord</string>
@@ -632,7 +635,9 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">På nogle enheder kan aktivering af denne funktion ændre systemets navigationslinje til gennemsigtig.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begrænsninger:
+• En sort streg kan dukke op øverst på videoafspilleren.
+• På nogle enheder kan det ændre systemets navigationsbar til gennemsigtig, når man aktiverer denne funktion."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver lys gennemsigtig linje</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigationslinjen i lys tilstand er ikke gennemsigtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Lys tilstand navigationslinjen er opak eller gennemsigtig</string>
@@ -1215,8 +1220,10 @@ Dette ændrer appens udseende og funktioner, men ukendte bivirkninger kan foreko
 
 Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre UI-fejl."</string>
   <string name="morphe_spoof_app_version_target_title">Spoof app version mål</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Gendan gamle Shorts player ikoner</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Genenfå old save til spilleliste</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Deaktiver fed bogstaver</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Gendan ikke-kollapset videohandlingslinje</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Gendan gamle Shorts player ikoner</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Skift startside</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>

@@ -17,8 +17,10 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
-// In later targets this feature flag does nothing and is dead code.
-internal const val MINIPLAYER_MODERN_FEATURE_LEGACY_KEY = 45630429L
+internal const val MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY = 45623000L
+internal const val MINIPLAYER_MODERN_TYPE_2_FEATURE_KEY = 45623273L
+internal const val MINIPLAYER_MODERN_TYPE_3_FEATURE_KEY = 45623076L
+internal const val MINIPLAYER_MODERN_TYPE_4_FEATURE_KEY = 45674402L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
 internal const val MINIPLAYER_DRAG_DROP_FEATURE_KEY = 45628752L
 internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
@@ -26,11 +28,13 @@ internal const val MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY = 45652224L
 internal const val MINIPLAYER_INITIAL_SIZE_FEATURE_KEY = 45640023L
 internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
+// In later targets this feature flag does nothing and is dead code.
+internal const val MINIPLAYER_MODERN_FEATURE_LEGACY_KEY = 45630429L
 
 internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        literal(45623000L) // Magic number found in the constructor.
+        literal(MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY)
     )
 )
 

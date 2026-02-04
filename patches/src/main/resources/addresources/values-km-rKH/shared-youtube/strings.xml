@@ -27,6 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe ភ្លឺ</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">ផ្ទាល់ខ្លួន</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">កំណត់សម្គាល់ Morphe</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->

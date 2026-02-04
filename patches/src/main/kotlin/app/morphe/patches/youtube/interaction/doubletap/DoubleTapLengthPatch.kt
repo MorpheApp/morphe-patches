@@ -2,6 +2,7 @@ package app.morphe.patches.youtube.interaction.doubletap
 
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.removeFromParent
@@ -16,16 +17,7 @@ val doubleTapLengthPatch = resourcePatch(
         sharedExtensionPatch,
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         // Values are hard coded to keep patching simple.

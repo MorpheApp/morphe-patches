@@ -130,9 +130,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
   <string name="morphe_hide_doodles_summary_off">Εμφανίζεται\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"Τα YouTube Doodles εμφανίζονται για μερικές μέρες κάθε χρόνο.
-
-Αν ένα YouTube Doodle εμφανίζεται αυτή τη στιγμή στην περιοχή σας και αυτή η ρύθμιση είναι ενεργοποιημένη, τότε η γραμμή φίλτρων κάτω από τη γραμμή αναζήτησης θα είναι κρυμμένη επίσης."</string>
   <string name="morphe_hide_channel_bar_title">Γραμμή καναλιού</string>
   <string name="morphe_hide_channel_bar_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_channel_bar_summary_off">Εμφανίζεται</string>
@@ -191,6 +188,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">Απόκρυψη \'Πρόοδος μαθήματος\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Η ενότητα πρόοδος μαθήματος είναι κρυμμένη</string>
   <string name="morphe_hide_course_progress_section_summary_off">Η ενότητα πρόοδος μαθήματος είναι ορατή</string>
+  <string name="morphe_hide_explore_section_title">Κουμπί «Εξερεύνηση»</string>
+  <string name="morphe_hide_explore_section_summary_on">Διάβασέ τα σε αυτό το μάθημα και Διάβασέ τα στο podcast είναι κρυμμένα</string>
+  <string name="morphe_hide_explore_section_summary_off">Διάβασέ τα σε αυτό το μάθημα και Διάβασέ τα στο podcast είναι ορατές</string>
+  <string name="morphe_hide_explore_course_section_title">Απόκρυψη \'Διάβασέ τα σε αυτό το μάθημα\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Η ενότητα αυτού του μαθήματος είναι κρυμμένη</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Η ενότητα αυτού του μαθήματος εμφανίζεται</string>
   <string name="morphe_hide_explore_podcast_section_title">Ενότητα «Εξερευνήστε το podcast»</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Εμφανίζεται</string>
@@ -289,8 +292,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_comments_section_summary_off">Εμφανίζεται</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Απόκρυψη ενότητας σχολίων στο Home feed</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Η ενότητα σχολίων στο Home feed είναι κρυμμένη</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Η ενότητα σχολίων στο Home feed εμφανίζεται</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Η ενότητα σχολίων κάτω από βίντεο στη βίβλο του σπιτιού είναι κρυμμένη</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Η ενότητα σχολίων κάτω από βίντεο στη βίβλο του σπιτιού εμφανίζεται</string>
   <string name="morphe_hide_comments_community_guidelines_title">Οδηγίες κοινότητας</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Εμφανίζονται</string>
@@ -320,15 +323,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_summary_off">Εμφανίζεται</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
-• Αυτή η λειτουργία δεν λειτουργεί με την διάταξη αυτοκινήτου"</string>
+• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχονται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
+• Αυτή η λειτουργία δεν λειτουργεί με την διάταξη αυτοκινήτου."</string>
   <string name="morphe_hide_upload_time_title">Χρόνος μεταμόρφωσης στη ροή και στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_upload_time_summary_on">Κρυμμένος</string>
   <string name="morphe_hide_upload_time_summary_off">Εμφανίζεται</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταμόρφωσης
-• Αυτή η λειτουργία δεν λειτουργεί με την διάταξη αυτοκινήτου"</string>
+• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχονται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωση
+• Αυτή η λειτουργία δεν λειτουργεί με την διάταξη αυτοκινήτου."</string>
   <string name="morphe_hide_keyword_content_screen_title">Απόκρυψη περιεχομένου λέξεων-κλειδιών</string>
   <string name="morphe_hide_keyword_content_screen_summary">Απόκρυψη βίντεο ροής και αναζήτησης χρησιμοποιώντας φίλτρα λέξεων-κλειδιών</string>
   <string name="morphe_hide_keyword_content_home_title">Φιλτράρισμα αρχικής ροής</string>
@@ -634,7 +637,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">Απενεργοποίηση διαφανούς γραμμής κατάστασης</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Σε ορισμένες συσκευές, η ενεργοποίηση αυτής της λειτουργίας μπορεί να αλλάξει τη γραμμή πλοήγησης του συστήματος σε διαφανή.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Περιορισμοί:
+• Μήκος μαύρο μπορεί να εμφανιστεί στην κορυφή του παίκτη βίντεο.
+• Σε ορισμένα συστήματα, η ενεργοποίηση αυτής της λειτουργίας μπορεί να αλλάξει τη συστήματος ναυσιπλοΐα μπαρ σε διαφανές."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Απενεργοποίηση διαφανούς γραμμής στο φωτεινό θέμα</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Η γραμμή πλοήγησης στο φωτεινό θέμα δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο φωτεινό θέμα ορίζεται αυτόματα</string>
@@ -1217,8 +1222,10 @@ Second \"item\" text"</string>
 
 Αν αργότερα απενεργοποιηθεί, συνιστάται η εκκαθάριση δεδομένων της εφαρμογής για την αποφυγή σφαλμάτων UI."</string>
   <string name="morphe_spoof_app_version_target_title">Έκδοση παραποίησης της εφαρμογής</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Επαναφορά των παλιών εικονιδίων της οθόνης αναπαραγωγής Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Επαναφορά παλιών σωζημάτων σε αναπαραγωγή</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Αποκλείσε έντονα εικονίδια</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Επαναφορά της μη συμπτυγμένης γραμμής ενεργειών βίντεο</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Επαναφορά των παλιών εικονιδίων της οθόνης αναπαραγωγής Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αλλαγή αρχικής σελίδας</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>

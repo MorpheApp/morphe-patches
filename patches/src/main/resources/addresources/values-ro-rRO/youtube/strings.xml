@@ -128,9 +128,6 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_doodles_title">Ascunde Doodle-urile YouTube</string>
   <string name="morphe_hide_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
   <string name="morphe_hide_doodles_summary_off">Animația Doodles YouTube pe logo este afișată</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles sunt afișate câteva zile în fiecare an.
-
-Dacă un Doodle este afișat în prezent în regiunea dvs. și această setare de ascundere este activată, atunci bara de filtre de sub bara de căutare va fi de asemenea ascunsă."</string>
   <string name="morphe_hide_channel_bar_title">Ascunde bara de canal</string>
   <string name="morphe_hide_channel_bar_summary_on">Bara de canal este ascunsă</string>
   <string name="morphe_hide_channel_bar_summary_off">Bara de canal este afișată</string>
@@ -189,6 +186,12 @@ Dacă un Doodle este afișat în prezent în regiunea dvs. și această setare d
   <string name="morphe_hide_course_progress_section_title">Ascunde \'Progresul cursului\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Secţiunea progresului cursului este ascunsă</string>
   <string name="morphe_hide_course_progress_section_summary_off">Secţiunea progresului cursului este afișată</string>
+  <string name="morphe_hide_explore_section_title">Ascundeți Explorare</string>
+  <string name="morphe_hide_explore_section_summary_on">Explorează acest curs și Explorează podcastul secțiunile sunt ascunse</string>
+  <string name="morphe_hide_explore_section_summary_off">Explorează acest curs și Explorează podcastul secțiunile sunt vizibile</string>
+  <string name="morphe_hide_explore_course_section_title">Ascunde \'Explorează acest curs\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Secțiunea Explorează acest curs este ascunsă</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Secțiunea Explorează acest curs este afișată</string>
   <string name="morphe_hide_explore_podcast_section_title">Ascunde „Explorează podcastul”</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Secțiunea Explorează podcastul este ascunsă</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Secțiunea Explorează podcastul este afișată</string>
@@ -287,8 +290,8 @@ Dacă un Doodle este afișat în prezent în regiunea dvs. și această setare d
   <string name="morphe_hide_comments_section_summary_on">Secţiunea de comentarii este ascunsă</string>
   <string name="morphe_hide_comments_section_summary_off">Secțiunea comentariilor este afișată</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Ascunde secţiunea comentarii în fluxul principal</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Secţiunea de comentarii este ascunsă în fluxul principal</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Secţiunea de comentarii este afișată în fluxul principal</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Secțiunea comentarii sub video în alimentarea Acasă este ascunsă</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Secțiunea comentarii sub video în alimentarea Acasă este afișată</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ascunde regulile comunității</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Ghidurile comunității sunt ascunse</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Ghidurile comunității sunt afișate</string>
@@ -317,14 +320,12 @@ Dacă un Doodle este afișat în prezent în regiunea dvs. și această setare d
   <string name="morphe_hide_view_count_summary_on">Numărul de vizualizări este ascuns în feed și în rezultatele căutării</string>
   <string name="morphe_hide_view_count_summary_off">Numărul de vizualizări este afișat în feed și în rezultatele căutării</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"Limitări:\n• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare numărul de vizualizări\n• Această funcție nu funcționează cu factorul de formă auto"</string>
+  <string name="morphe_hide_view_count_user_dialog_message">"Limitări:\n• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare numărul de vizualizări\n• Această funcție nu funcționează cu factorul de formă auto."</string>
   <string name="morphe_hide_upload_time_title">Ascunde ora de încărcare</string>
   <string name="morphe_hide_upload_time_summary_on">Ora de încărcare este ascunsă în feed și în rezultatele căutării</string>
   <string name="morphe_hide_upload_time_summary_off">Ora de încărcare este afișată în feed și în rezultatele căutării</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-  <string name="morphe_hide_upload_time_user_dialog_message">"Limitări:
-• rafturile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare orele de încărcare
-• Această funcție nu funcționează cu factorul de formă auto"</string>
+  <string name="morphe_hide_upload_time_user_dialog_message">"Limitări:\n• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare orele de încărcare\n• Această funcție nu funcționează cu factorul de formă auto."</string>
   <string name="morphe_hide_keyword_content_screen_title">Ascundeți conținutul cuvântului cheie</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ascundeți căutarea și hrănirea videoclipurilor folosind filtre de cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_home_title">Ascunde videoclipurile de acasă după cuvintele cheie</string>
@@ -630,7 +631,7 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Pe unele dispozitive, activarea acestei funcții poate schimba bara de navigare a sistemului în una transparentă.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitări:\n• O bare neagră poate apărea în partea superioară a jucătorului video.\n• Pe unele dispozitive, activarea acestei funcții poate schimba bara de navigare a sistemului în transparent."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Dezactivează bara de navigare translucidă deschisă</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Bara de navigare în modul deschis este opacă</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Bara de navigare în modul deschis este opaca sau translucida</string>
@@ -1213,8 +1214,10 @@ Acest lucru va schimba aspectul și caracteristicile aplicației, dar pot apăre
 
 Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației pentru a preveni erorile UI."</string>
   <string name="morphe_spoof_app_version_target_title">Țintă versiune falsificată a aplicației</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurează pictogramele vechi ale playerului Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Dezactiva­te icoanele ­bold</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restabiliți bara de acțiune video necolapsată</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurează pictogramele vechi ale playerului Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Schimbă pagina de start</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>

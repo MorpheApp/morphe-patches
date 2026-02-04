@@ -128,9 +128,6 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_doodles_title">YouTube Doodles elrejtése</string>
   <string name="morphe_hide_doodles_summary_on">A YouTube Doodles animáció a logón elrejtve</string>
   <string name="morphe_hide_doodles_summary_off">YouTube Doodles animáció látható a logón</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles minden évben néhány napig láthatóak.
-
-Ha a Doodle jelenleg a régiódában látható, és ez a rejtés beállítás be van kapcsolva, akkor a keresősáv alatti szűrősáv is el lesz rejtve."</string>
   <string name="morphe_hide_channel_bar_title">Csatornasáv elrejtése</string>
   <string name="morphe_hide_channel_bar_summary_on">A csatornasáv el van rejtve</string>
   <string name="morphe_hide_channel_bar_summary_off">A csatornasáv megjelenik</string>
@@ -189,6 +186,12 @@ Ha a Doodle jelenleg a régiódában látható, és ez a rejtés beállítás be
   <string name="morphe_hide_course_progress_section_title">Rejt \'Tanfolyam előrehaladás\' szakaszt</string>
   <string name="morphe_hide_course_progress_section_summary_on">A tanfolyam előrehaladás szakasza el van rejtve</string>
   <string name="morphe_hide_course_progress_section_summary_off">A tanfolyam előrehaladás szakasza látható</string>
+  <string name="morphe_hide_explore_section_title">Felfedezés elrejtése</string>
+  <string name="morphe_hide_explore_section_summary_on">Ez a kurzus és a podcast szakaszok megtekintése elrejtve</string>
+  <string name="morphe_hide_explore_section_summary_off">Ez a kurzus és a podcast szakaszok megtekintése mutatva</string>
+  <string name="morphe_hide_explore_course_section_title">Rejt \'Ez a kurzus\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Ez a kurzus szakasz rejtett</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Ez a kurzus szakasz látható</string>
   <string name="morphe_hide_explore_podcast_section_title">A „Podcast felfedezése” elrejtése</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">A Podcast felfedezése szakasz rejtett</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">A Podcast felfedezése szakasz látható</string>
@@ -287,8 +290,8 @@ Ha a Doodle jelenleg a régiódában látható, és ez a rejtés beállítás be
   <string name="morphe_hide_comments_section_summary_on">A komment szekció el van rejtve</string>
   <string name="morphe_hide_comments_section_summary_off">A megjegyzések szekció megjelenik</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Elrejtjük a Home feedben a megjegyzések szakaszát</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">A Home feedben a megjegyzések szakusza el van rejtve</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">A Home feedben a megjegyzések szakusza látható</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">A hozzászólások szakasz rejtett a Honlap áramlat alatt a videók alatt</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">A hozzászólások szakasz látható a Honlap áramlat alatt a videók alatt</string>
   <string name="morphe_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">A közösségi irányelvek el vannak rejtve</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">A közösségi irányelvek meg vannak jelenítve</string>
@@ -318,15 +321,15 @@ Ha a Doodle jelenleg a régiódában látható, és ez a rejtés beállítás be
   <string name="morphe_hide_view_count_summary_off">A megtekintések száma látható a hírfolyamban és a keresési eredményekben</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Korlátozások:
-• Shorts polcok, csatornaoldalak és a keresési eredmények továbbra is mutathatják a megtekintések számát
-• Ez a funkció nem működik autóipari formátummal"</string>
+• A Shorts polcok, csatornaoldalak és a keresési eredmények továbbra is mutathatják a megtekintések számát
+• Ez a funkció nem működik az autós formátummal."</string>
   <string name="morphe_hide_upload_time_title">Feltöltési idő elrejtése</string>
   <string name="morphe_hide_upload_time_summary_on">A feltöltési idő el van rejtve a hírfolyamban és a keresési eredményekben</string>
   <string name="morphe_hide_upload_time_summary_off">A feltöltési idő megjelenik a hírfolyamban és a keresési eredményekben</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Korlátozások:
-• Shorts polcokon, csatornaoldalakon és keresési eredményekben továbbra is megjelenhetnek a feltöltési idők
-• Ez a funkció nem működik az autós formátummal"</string>
+• A Shorts polcokon, csatornaoldalakon és keresési eredményekben továbbra is megjelenhetnek a feltöltési idők
+• Ez a funkció nem működik az autós formátummal."</string>
   <string name="morphe_hide_keyword_content_screen_title">Kulcsszó alapú tartalom elrejtés</string>
   <string name="morphe_hide_keyword_content_screen_summary">Kulcsszó alapú videó elrejtés keresésnél és a feedekben</string>
   <string name="morphe_hide_keyword_content_home_title">Videók elrejtése a kezdőlapon kulcsszavak alapján</string>
@@ -632,7 +635,9 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Az állapotsor nem áttetsző</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Az állapotsor nem áttetsző vagy áttetsző</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Egyes eszközökön ennek a funkciónak az engedélyezése átlátszóvá teheti a rendszer navigációs sávját.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Korlátozások:
+• Egy fekete sáv jelenthethet fel a videólejátszó tetején
+• Egyes eszközöknél ez a funkció lehetővé teszi a rendszer navigációs sáv átlátszatlanságának megváltoztatását."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Világos, átlátszó sáv letiltása</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Világos módban az átlátszó navigációs sáv átlátszatlan</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A világos módú navigációs sáv nem áttetsző vagy áttetsző</string>
@@ -1215,8 +1220,10 @@ Ez megváltoztatja az alkalmazás megjelenését és funkcióit, de előfordulha
 
 Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy megakadályozza a felhasználói felület hibáit."</string>
   <string name="morphe_spoof_app_version_target_title">Hamisított alkalmazásverzió célja</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - A régi Shorts lejátszó ikonok visszaállítása</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Visszaállítjuk az régi mentést a lejátslóba</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20:28:41 - Törölje a félkövér ikonokat</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Nem összecsukott videó műveletsáv visszaállítása</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - A régi Shorts lejátszó ikonok visszaállítása</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>

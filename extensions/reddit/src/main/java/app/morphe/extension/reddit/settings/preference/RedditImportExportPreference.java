@@ -1,5 +1,7 @@
 package app.morphe.extension.reddit.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.StringKeyLookup;
+
 import android.content.Context;
 
 import java.util.Map;

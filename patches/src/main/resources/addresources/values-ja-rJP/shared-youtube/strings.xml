@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe（ライト）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">カスタム</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 実験的バージョンの警告！ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"あなたは現在、実験的アプリ バージョンである ⚠️ &lt;b&gt;%1$s&lt;/b&gt; を使用しています。
+&lt;br/&gt;&lt;br/&gt;
+🔧 このバージョン用のパッチは調整中のため、動作が不安定になったり未確認の不具合が発生する可能性があります。
+&lt;br/&gt;&lt;br/&gt;
+できるだけ問題の少ない環境を希望する場合は、このアプリを &lt;b&gt;アンインストール&lt;/b&gt; して推奨アプリ バージョンである ✅ &lt;b&gt;%2$s&lt;/b&gt; にパッチを適用してください"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 実験版を希望</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 安定版を希望</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>

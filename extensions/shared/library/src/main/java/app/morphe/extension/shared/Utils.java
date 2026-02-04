@@ -785,6 +785,14 @@ public class Utils {
     }
 
     /**
+     * The recommended app version of this app to patch. Set during patching.
+     * Returns an empty string if not set.
+     */
+    public static String getRecommendedAppVersion() {
+        return "";
+    }
+
+    /**
      * @return If the unpatched app is currently using bold icons.
      */
     public static boolean appIsUsingBoldIcons() {

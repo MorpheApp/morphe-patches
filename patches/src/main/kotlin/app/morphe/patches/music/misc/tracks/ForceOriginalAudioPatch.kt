@@ -6,6 +6,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.playservice.is_8_05_or_greater
 import app.morphe.patches.music.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.audio.forceOriginalAudioPatch
 
 @Suppress("unused")
@@ -17,14 +18,7 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
             versionCheckPatch
         )
 
-        compatibleWith(
-            "com.google.android.apps.youtube.music"(
-                "7.29.52",
-                "8.10.52",
-                "8.37.56",
-                "8.40.54",
-            )
-        )
+        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
     fixUseLocalizedAudioTrackFlag = { is_8_05_or_greater },
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
