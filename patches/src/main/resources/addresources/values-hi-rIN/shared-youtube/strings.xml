@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">मorphe लाइट</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">कस्टम</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 प्रयोगशील अलर्ट! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"आप एक प्रयोगशील ऐप संस्करण का उपयोग कर रहे हैं ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 अपेक्षित है कि ऐप व्यवहार में अजीबोगरीबता होगी या अनदेखा बग आएंगे क्योंकि हम इस ऐप संस्करण के लिए पैच को सटीक बनाते हैं
+&lt;br/&gt;&lt;br/&gt;
+अगर आप सबसे अधिक समस्या मुक्त अनुभव चाहते हैं, तो &lt;b&gt;इसका अनइंस्टॉल करें&lt;/b&gt; और सिफारिशित ऐप संस्करण का पैच करें ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मैं प्रयोगशील चाहता हूँ</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मैं स्थिर चाहता हूँ</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मorphe नोटिस</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा दिखाएं मत</string>

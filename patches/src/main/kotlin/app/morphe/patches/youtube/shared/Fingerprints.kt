@@ -50,13 +50,13 @@ internal object LayoutConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object MainActivityConstructorFingerprint : Fingerprint(
+internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf()
 )
 
-internal object MainActivityOnBackPressedFingerprint : Fingerprint(
+internal object YouTubeMainActivityOnBackPressedFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     name = "onBackPressed",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

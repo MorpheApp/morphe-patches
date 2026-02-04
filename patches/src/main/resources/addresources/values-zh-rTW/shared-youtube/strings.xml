@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe 輕</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">自訂</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 實驗警告！ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用實驗版本的 ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🔧 可能會遇到奇怪的應用程序行為或未識別的錯誤，因為我們正在調整此應用程序版本的補丁。
+<br/>
+<br/>
+如果您想體驗最平順的使用環境，則請卸載此版本並補丁推薦的應用程序版本： ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要實驗版本</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要穩定版本</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由於 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>

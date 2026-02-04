@@ -50,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Tampilkan pengaturan riwayat pencarian</string>
   <string name="morphe_settings_search_history_summary_on">Pengaturan riwayat pencarian ditampilkan</string>
   <string name="morphe_settings_search_history_summary_off">Pengaturan riwayat pencarian tidak ditampilkan</string>
-  <string name="morphe_settings_disable_bold_icons_title">Nonaktifkan ikon tebal</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Ikon tidak tebal</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Ikon tebal</string>
   <string name="morphe_show_menu_icons_title">Tampilkan ikon pengaturan Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Ikon pengaturan ditampilkan</string>
   <string name="morphe_show_menu_icons_summary_off">Ikon pengaturan tidak ditampilkan</string>
@@ -84,7 +81,7 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Pesan timbul ditampilkan jika terjadi kesalahan</string>
   <string name="morphe_debug_toast_on_error_summary_off">Pesan timbul tidak ditampilkan jika terjadi kesalahan</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan notifikasi kesalahan menyembunyikan semua notifikasi kesalahan Morphe.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
 Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">Ekspor catatan debug</string>

@@ -128,9 +128,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_doodles_title">YouTube Doodle-ları gizlət</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
   <string name="morphe_hide_doodles_summary_off">YouTube Doodles animasiyası simvolda görünür</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodle-ları hər il bir neçə gün görünür.
-
-Əgər hazırda bölgənizdə Doodle göstərilirsə və bu gizlətmə seçimi aktivdirsə, axtarış cizgisi aşağısındakı filtr sahəsi də gizlədiləcək."</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizlət</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanal çubuğu gizlidir</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanal çubuğu göstərilir</string>
@@ -186,6 +183,7 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_chapters_section_title">Fəsilləri Gizlət</string>
   <string name="morphe_hide_chapters_section_summary_on">Bölümlər bölməsi gizlidir</string>
   <string name="morphe_hide_chapters_section_summary_off">Bölümlər bölməsi göstərilir</string>
+  <string name="morphe_hide_explore_section_title">Kəşf edin-i gizlət</string>
   <string name="morphe_hide_explore_podcast_section_title">\'Podkastı araşdırın\"-ı Gizlət</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Podkast bölməsin araşdırın gizlidir</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Podkast bölməsin araşdırın görünür</string>
@@ -311,16 +309,10 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_view_count_summary_on">Baxış sayı axın və axtarış nəticələrində gizlidir</string>
   <string name="morphe_hide_view_count_summary_off">Baxış sayı axın və axtarış nəticələrində görünür</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"Məhdudiyyətlər:
-• Shorts bölmələri, kanal səhifələri və axtarış nəticələri yenə də baxış sayını göstərə bilər
-• Bu xüsusiyyət avtomobil forma göstərici ilə işləmir"</string>
   <string name="morphe_hide_upload_time_title">Yüklənilmə vaxtını gizlət</string>
   <string name="morphe_hide_upload_time_summary_on">Yüklənilmə vaxtı axın və axtarış nəticələrində gizlidir</string>
   <string name="morphe_hide_upload_time_summary_off">Yüklənilmə vaxtı axın və axtarış nəticələrində göstərilir</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-  <string name="morphe_hide_upload_time_user_dialog_message">"Məhdudiyyətlər:
-• Shorts bölmələri, kanal səhifələri və axtarış nəticələri yüklənilən vaxtı yenə də göstərə bilər
-• Bu xüsusiyyət avtomobil forma göstərici ilə işləmir"</string>
   <string name="morphe_hide_keyword_content_screen_title">Açar söz məzmununu gizlət</string>
   <string name="morphe_hide_keyword_content_screen_summary">Açar söz filtrləri ilə axtarış və axın videolarını gizlət</string>
   <string name="morphe_hide_keyword_content_home_title">Ev videolarını açar sözlərə görə gizlət</string>
@@ -603,7 +595,6 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_disable_translucent_status_bar_title">Yarımşəffaf mövqe cizgisin qapat</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Mövqe cizgisi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Mövqe cizgisi qeyri-şəffaf və ya şəffafdır</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Bəzi cihazlarda bu xüsusiyyət aktivləşməsi sistem fəaliyyət cərgəsini şəffaf-a dəyişə bilər.</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Açıq temada şəffaf cizgini qapat</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">İşıqlı rejim fəaliyyət cərgəsi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">İşıqlı rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
@@ -1175,8 +1166,8 @@ Bu tətbiqin görünüşün və xüsusiyyətlərin dəyişdirəcək, lakin bilin
 
 Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların silmək tövsiyə olunur."</string>
   <string name="morphe_spoof_app_version_target_title">Saxta tətbiq versiyası hədəfi</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Köhnə Shorts oynadıcı işarələrin bərpa et</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Yığılmayan video fəaliyyət cizgisin bərpa et</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Köhnə Shorts oynadıcı işarələrin bərpa et</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlatma səhifəsini dəyişdir</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>

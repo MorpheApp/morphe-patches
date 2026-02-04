@@ -128,9 +128,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">ซ่อน Doodles ของ YouTube</string>
   <string name="morphe_hide_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
   <string name="morphe_hide_doodles_summary_off">แสดงแอนิเมชัน Doodles ของ YouTube บนโลโก้</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles ภาษาไทยจะปรากฏให้เห็นเพียงไม่กี่วันในแต่ละปี
-
-หาก Doodle กำลังแสดงอยู่ในภูมิภาคของคุณและการตั้งค่าการซ่อนนี้เปิดอยู่ แถบตัวกรองด้านล่างแถบค้นหาจะถูกซ่อนเช่นกัน"</string>
   <string name="morphe_hide_channel_bar_title">ซ่อนแถบช่อง</string>
   <string name="morphe_hide_channel_bar_summary_on">แถบช่องถูกซ่อนไว้</string>
   <string name="morphe_hide_channel_bar_summary_off">แถบช่องแสดงอยู่</string>
@@ -189,6 +186,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">ซ่อน \'ความคืบหน้าในคอร์ส\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">ส่วนความคืบหน้าในคอร์สถูกซ่อนไว้</string>
   <string name="morphe_hide_course_progress_section_summary_off">ส่วนความคืบหน้าในคอร์สแสดงอยู่</string>
+  <string name="morphe_hide_explore_section_title">ซ่อนสำรวจ</string>
+  <string name="morphe_hide_explore_section_summary_on">ซ่อนส่วน \'สำรวจคอร์ส\' และ \'สำรวจพอดแคสต์\'</string>
+  <string name="morphe_hide_explore_section_summary_off">แสดงส่วน \'สำรวจคอร์ส\' และ \'สำรวจพอดแคสต์\'</string>
+  <string name="morphe_hide_explore_course_section_title">ซ่อน \'สำรวจคอร์ส\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">ส่วนสำรวจส่วนนี้ซ่อนอยู่</string>
+  <string name="morphe_hide_explore_course_section_summary_off">ส่วนสำรวจส่วนนี้แสดงอยู่</string>
   <string name="morphe_hide_explore_podcast_section_title">ซ่อน \'สำรวจพอดแคสต์\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">ส่วนสำรวจพอดแคสต์ถูกซ่อน</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">ส่วนสำรวจพอดแคสต์แสดงอยู่</string>
@@ -287,8 +290,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">ส่วนความคิดเห็นถูกซ่อนไว้</string>
   <string name="morphe_hide_comments_section_summary_off">ส่วนความคิดเห็นแสดงอยู่</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ซ่อนส่วนความคิดเห็นในหน้าแชทหลัก</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">ส่วนความคิดเห็นถูกซ่อนไว้ในหน้าแชทหลัก</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">ส่วนความคิดเห็นแสดงอยู่ในหน้าแชทหลัก</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">ส่วนความคิดเห็นใต้วิดีโอในหน้าแรกซ่อนอยู่</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">ส่วนความคิดเห็นใต้วิดีโอในหน้าแรกแสดงอยู่</string>
   <string name="morphe_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">แนวทางปฏิบัติของชุมชนถูกซ่อนไว้</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">แนวทางปฏิบัติของชุมชนแสดงอยู่</string>
@@ -318,15 +321,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_summary_off">จำนวนการดูแสดงอยู่ในฟีดและผลการค้นหา</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"ข้อจำกัด:
-• ชั้นวาง Shorts, หน้าช่อง และผลการค้นหาอาจยังคงแสดงจำนวนการดู
+• แถบ Shorts, หน้าช่อง และผลการค้นหาอาจยังคงแสดงจำนวนการดู
 • ฟีเจอร์นี้ไม่สามารถใช้งานได้กับรูปแบบที่ใช้ในยานยนต์"</string>
   <string name="morphe_hide_upload_time_title">ซ่อนเวลาอัปโหลด</string>
   <string name="morphe_hide_upload_time_summary_on">เวลาอัปโหลดถูกซ่อนอยู่ในฟีดและผลการค้นหา</string>
   <string name="morphe_hide_upload_time_summary_off">เวลาอัปโหลดจะแสดงในฟีดและผลการค้นหา</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"ข้อจำกัด:
-• แถบ Shorts, หน้าช่อง และผลการค้นหา อาจยังคงแสดงเวลาอัปโหลด
-• คุณสมบัตินี้ไม่ทำงานกับฟอร์มแฟกเตอร์ยานยนต์"</string>
+• แถบ Shorts, หน้าช่อง และผลการค้นหาอาจยังคงแสดงเวลาอัปโหลด
+• ฟีเจอร์นี้ไม่ทำงานกับฟอร์มแฟกเตอร์ยานยนต์"</string>
   <string name="morphe_hide_keyword_content_screen_title">ซ่อนเนื้อหาคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_screen_summary">ซ่อนวิดีโอการค้นหาและฟีดโดยใช้ตัวกรองคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_home_title">ซ่อนวิดีโอหน้าแรกตามคำสำคัญ</string>
@@ -630,7 +633,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">ปิดใช้งานแถบสถานะแบบโปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">ในอุปกรณ์บางรุ่น การเปิดใช้งานคุณสมบัตินี้อาจเปลี่ยนแถบนำทางระบบให้โปร่งใสได้</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"ข้อจำกัด:
+• บาร์สีดำอาจปรากฏที่ด้านบนของตัวเล่นวิดีโอ
+• บางอุปกรณ์ที่เปิดใช้งานฟีเจอร์นี้อาจเปลี่ยนแถบนำทางระบบเป็นโปร่งใส"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ปิดใช้งานแถบนำทางแบบโปร่งแสงสีอ่อน</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">แถบนำทางโหมดสว่างเป็นแบบทึบแสง</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">แถบนำทางโหมดสว่างโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -1213,8 +1218,10 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 
 ถ้าปิดในภายหลัง ขอแนะนําให้ล้างข้อมูลแอปเพื่อป้องกันข้อผิดพลาดของ UI"</string>
   <string name="morphe_spoof_app_version_target_title">เป้าหมายการปลอมแปลงเวอร์ชันแอป</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ปิดไอคอนตัวหนา</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - กู้คืนแถบการทำงานของวิดีโอที่ไม่ได้ยุบ</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">เปลี่ยนหน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>

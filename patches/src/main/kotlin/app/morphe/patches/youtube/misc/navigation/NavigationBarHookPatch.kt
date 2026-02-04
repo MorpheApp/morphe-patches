@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.MainActivityOnBackPressedFingerprint
+import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
@@ -130,7 +130,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
 
         // Hook onto back button pressed.  Needed to fix race problem with
         // Litho filtering based on navigation tab before the tab is updated.
-        MainActivityOnBackPressedFingerprint.method.addInstruction(
+        YouTubeMainActivityOnBackPressedFingerprint.method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V",
         )

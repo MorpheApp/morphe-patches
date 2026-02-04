@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphein valo</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Mukautettu</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Kokeellinen varoitus! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovelluksen versiota ⚠️ <b>%1$s</b>
+<br/><br/>
+🔧 Odota epätavallista sovelluksen käyttäytymistä tai tunnistamattomia virheitä kun me hienosäädämme tälle sovelluksen versiolle tarkoitetut korjaukset.
+<br/><br/>
+Jos haluat ongelmatöntä kokemusta, niin <b>poista</b> tämä ja korjaa suositeltu sovelluksen versio ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellista</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaa</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ilmoitus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Kellon historiaa ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä todennäköisesti johtuu DNS mainosten estäjä tai verkkovälityspalvelin.&lt;br&gt;&lt;br&gt;Korjataksesi tämän, valkoiselle listalle &lt;b&gt;s.youtube.com&lt;/b&gt; tai poistaaksesi kaikki DNS-estäjät ja -profiilit.</string>

@@ -2,21 +2,26 @@ package app.morphe.patches.youtube.layout.hide.ambientmode
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.indexOfFirstStringInstructionOrThrow
+import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AmbientModePatch;"
@@ -29,18 +34,10 @@ val ambientModePatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
+        versionCheckPatch,
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
@@ -58,65 +55,57 @@ val ambientModePatch = bytecodePatch(
         //
         // Bypass ambient mode restrictions.
         //
-        val syntheticClasses = HashSet<String>()
+        fun MutableMethod.hook() {
+            findInstructionIndicesReversedOrThrow {
+                opcode == Opcode.INVOKE_VIRTUAL &&
+                        getReference<MethodReference>()?.toString() == IS_POWER_SAVE_MODE_METHOD_CALL
+            }.forEach { index ->
+                val register = getInstruction<FiveRegisterInstruction>(index).registerC
 
-        mapOf(
-            PowerSaveModeBroadcastReceiverFingerprint to false,
-            PowerSaveModeSyntheticFingerprint to true,
-        ).forEach { (fingerprint, reversed) ->
-            fingerprint.method.apply {
-                val stringIndex = indexOfFirstStringInstructionOrThrow(
-                    "android.os.action.POWER_SAVE_MODE_CHANGED"
+                replaceInstruction(
+                    index,
+                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            "bypassAmbientModeRestrictions(Landroid/os/PowerManager;)Z",
                 )
-
-                val targetIndex =
-                    if (reversed) { indexOfFirstInstructionReversedOrThrow(
-                        stringIndex,
-                        Opcode.INVOKE_DIRECT
-                    )
-                    } else { indexOfFirstInstructionOrThrow(
-                        stringIndex,
-                        Opcode.INVOKE_DIRECT
-                    )
-                    }
-
-                val definingClass =
-                    (getInstruction<ReferenceInstruction>(targetIndex).reference as MethodReference).definingClass
-
-                syntheticClasses += definingClass
             }
         }
 
-        syntheticClasses.forEach { classDescriptor ->
-            val mutableClass = mutableClassDefBy(classDescriptor)
+        val intentActionFingerprints = mutableListOf(
+            IntentActionBroadcastReceiverFingerprint,
+            IntentActionSyntheticFingerprint
+        )
+        if (is_21_02_or_greater) {
+            intentActionFingerprints += IntentActionBroadcastReceiverAlternativeFingerprint
+        }
+        intentActionFingerprints.forEach { fingerprint ->
+            fingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches[2].index
+                    val reference =
+                        getInstruction<ReferenceInstruction>(index).reference as MethodReference
 
-            mutableClass.methods
-                .firstOrNull { it.name == "accept" }
-                ?.apply {
-                    implementation!!.instructions
-                        .withIndex()
-                        .filter { (_, instruction) ->
-                            val reference =
-                                (instruction as? ReferenceInstruction)?.reference
+                    // This fingerprint is used multiple times.
+                    PowerSaveModeSyntheticFingerprint.clearMatch()
 
-                            instruction.opcode == Opcode.INVOKE_VIRTUAL &&
-                                    reference is MethodReference &&
-                                    reference.name == "isPowerSaveMode"
-                        }
-                        .map { (index, _) -> index }
-                        .asReversed()
-                        .forEach { index ->
-                            val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
-
-                            addInstructions(
-                                index + 2,
-                                """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->bypassAmbientModeRestrictions(Z)Z
-                            move-result v$register
-                        """
-                            )
-                        }
+                    // Match may be null, as it may have already been replaced by another fingerprint.
+                    PowerSaveModeSyntheticFingerprint.matchOrNull(
+                                        mutableClassDefBy(reference.definingClass)
+                                    )?.method?.hook()
                 }
+            }
+        }
+        if (is_21_03_or_greater) {
+            IntentActionSyntheticAlternativeFingerprint.method.hook()
+        }
+
+        //
+        // Disable ambient mode.
+        //
+        AmbientModeFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS_DESCRIPTOR->disableAmbientMode(Z)Z"
+            )
         }
 
         //

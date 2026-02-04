@@ -6,7 +6,7 @@ import app.morphe.patches.music.shared.YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.patches.shared.misc.extension.ExtensionHook
 import app.morphe.patches.shared.misc.extension.activityOnCreateExtensionHook
 
-internal val applicationInitHook = ExtensionHook(
+internal val youTubeMusicApplicationInitHook = ExtensionHook(
     Fingerprint(
         name = "onCreate",
         returnType = "V",
@@ -17,6 +17,6 @@ internal val applicationInitHook = ExtensionHook(
     )
 )
 
-internal val applicationInitOnCreateHook = activityOnCreateExtensionHook(
+internal val youTubeMusicApplicationInitOnCreateHook = activityOnCreateExtensionHook(
     YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE
 )

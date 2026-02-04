@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Мorphe светло</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Пользовательский</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Experimental warning! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"You are using an experimental app version of ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🛠️ Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
+<br/>
+<br/>
+If you want the most trouble free experience, then <b>uninstall</b> this and patch the recommended app version of ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу экспериментальное</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабильное</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt;Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt;Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси.</string>

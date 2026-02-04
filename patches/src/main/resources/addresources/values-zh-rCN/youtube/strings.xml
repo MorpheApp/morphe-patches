@@ -128,9 +128,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">隐藏 YouTube 涂鸦</string>
   <string name="morphe_hide_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
   <string name="morphe_hide_doodles_summary_off">YouTube 徽标上的 Doodles 动画已显示</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles 每年都会显示几天。
-
-如果您的地区当前正在显示 Doodle 并且此隐藏设置已开启，则搜索栏下方的筛选栏也将隐藏。"</string>
   <string name="morphe_hide_channel_bar_title">隐藏频道栏</string>
   <string name="morphe_hide_channel_bar_summary_on">频道栏已隐藏</string>
   <string name="morphe_hide_channel_bar_summary_off">频道栏已显示</string>
@@ -189,6 +186,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">隐藏“课程进度”</string>
   <string name="morphe_hide_course_progress_section_summary_on">课程进度部分已隐藏</string>
   <string name="morphe_hide_course_progress_section_summary_off">课程进度部分已显示</string>
+  <string name="morphe_hide_explore_section_title">隐藏探索</string>
+  <string name="morphe_hide_explore_section_summary_on">浏览课程和播客部分已隐藏</string>
+  <string name="morphe_hide_explore_section_summary_off">浏览课程和播客部分已显示</string>
+  <string name="morphe_hide_explore_course_section_title">隐藏“浏览课程”</string>
+  <string name="morphe_hide_explore_course_section_summary_on">本节课程部分已隐藏</string>
+  <string name="morphe_hide_explore_course_section_summary_off">本节课程部分已显示</string>
   <string name="morphe_hide_explore_podcast_section_title">隐藏“浏览播客”</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">“浏览播客”部分已隐藏</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">“浏览播客”部分已显示</string>
@@ -287,8 +290,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">评论区已隐藏</string>
   <string name="morphe_hide_comments_section_summary_off">评论区已显示</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">隐藏主页动态的评论区</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">主页动态的评论区已隐藏</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">主页动态的评论区已显示</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">主页feed中视频下方的评论部分已隐藏</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">主页feed中视频下方的评论部分已显示</string>
   <string name="morphe_hide_comments_community_guidelines_title">隐藏社区准则</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">社区准则已隐藏</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">社区准则已显示</string>
@@ -317,16 +320,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_summary_on">观看次数已在动态和搜索结果中隐藏</string>
   <string name="morphe_hide_view_count_summary_off">观看次数已在动态和搜索结果中显示</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"限制:
+  <string name="morphe_hide_view_count_user_dialog_message">"限制：
 • Shorts 栏目、频道页面和搜索结果可能仍会显示观看次数
-• 此功能不适用于车载设备"</string>
+• 此功能不适用于车载设备。"</string>
   <string name="morphe_hide_upload_time_title">隐藏上传时间</string>
   <string name="morphe_hide_upload_time_summary_on">上传时间在动态和搜索结果中已隐藏</string>
   <string name="morphe_hide_upload_time_summary_off">上传时间在动态和搜索结果中显示</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"限制：
 • Shorts 专区、频道页面和搜索结果可能仍会显示上传时间
-• 此功能不适用于车载设备"</string>
+• 此功能不适用于车载设备。"</string>
   <string name="morphe_hide_keyword_content_screen_title">隐藏关键字内容</string>
   <string name="morphe_hide_keyword_content_screen_summary">使用关键字过滤隐藏搜索和动态消息中的视频</string>
   <string name="morphe_hide_keyword_content_home_title">过滤首页视频</string>
@@ -632,7 +635,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">禁用半透明状态栏</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">在某些设备上，启用此功能可能会将系统导航栏更改为透明。</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"限制：
+• 视频播放器顶部可能会出现黑条
+• 在某些设备上，启用此功能可能会使系统导航栏变为透明。"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">禁用浅色半透明导航栏</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">浅色模式的导航栏不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">浅色模式导航栏为不透明或半透明</string>
@@ -1219,8 +1224,10 @@ Second \"item\" text"</string>
 
 如果稍后关闭，建议清除应用程序数据以防止 UI 错误。"</string>
   <string name="morphe_spoof_app_version_target_title">伪装应用程序版本为</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - 恢复旧的 Shorts 播放器图标</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 禁用粗体图标</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 恢复未折叠的视频操作栏</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - 恢复旧的 Shorts 播放器图标</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">更改起始页</string>
   <string name="morphe_change_start_page_entry_default">默认</string>

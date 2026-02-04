@@ -111,6 +111,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         final var compactBanner = new StringFilterGroup(
                 Settings.HIDE_COMPACT_BANNER,
+                "cell_divider", // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
                 "compact_banner"
         );
 
@@ -550,6 +551,22 @@ public final class LayoutComponentsFilter extends Filter {
             //        but an empty space remains that can be clicked.
             Utils.hideViewByLayoutParams(view);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideSubscribedChannelsBar(View view) {
+        Utils.hideViewByRemovingFromParentUnderCondition(Settings.HIDE_SUBSCRIBED_CHANNELS_BAR, view);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static int hideSubscribedChannelsBar(int original) {
+        return Settings.HIDE_SUBSCRIBED_CHANNELS_BAR.get()
+                ? 0
+                : original;
     }
 
     private static boolean hideShelves() {

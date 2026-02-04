@@ -1,8 +1,10 @@
 package app.morphe.extension.youtube.patches;
 
+import android.os.PowerManager;
+
 import app.morphe.extension.youtube.settings.Settings;
 
-/** @noinspection unused */
+@SuppressWarnings("unused")
 public final class AmbientModePatch {
 
     /**
@@ -12,12 +14,17 @@ public final class AmbientModePatch {
 
     /**
      * Bypass Ambient mode restrictions.
-     *
-     * @param original Original isPowerSaveMode() result
+     * @return {@link PowerManager#isPowerSaveMode()}
      */
-    public static boolean bypassAmbientModeRestrictions(boolean original) {
-        return (!Settings.BYPASS_AMBIENT_MODE_RESTRICTIONS.get() && original)
-                || Settings.DISABLE_AMBIENT_MODE.get();
+    public static boolean bypassAmbientModeRestrictions(PowerManager powerManager) {
+        return !Settings.BYPASS_AMBIENT_MODE_RESTRICTIONS.get() && powerManager.isPowerSaveMode();
+    }
+
+    /**
+     * Disable Ambient mode.
+     */
+    public static boolean disableAmbientMode(boolean original) {
+        return !Settings.DISABLE_AMBIENT_MODE.get() && original;
     }
 
     /**

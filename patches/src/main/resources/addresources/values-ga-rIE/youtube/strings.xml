@@ -128,9 +128,6 @@ Mar sin féin, logálfaidh sé seo roinnt sonraí úsáideora freisin, mar shamp
   <string name="morphe_hide_doodles_title">Folaigh YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
   <string name="morphe_hide_doodles_summary_off">Taispeántar beochan YouTube Doodles ar an lógó</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"Taispeántar Doodles ó YouTube cúpla lá gach bliain.
-
-Má tá Doodle á thaispeáint faoi láthair i do réigiún agus má tá an tsuíomh seo a chumasc, ansin cuirfear an barra scagaire faoin bharra cuardaigh i bhfolach freisin."</string>
   <string name="morphe_hide_channel_bar_title">Folaigh barra cainéal</string>
   <string name="morphe_hide_channel_bar_summary_on">Tá an barra Cainéal i bhfolach</string>
   <string name="morphe_hide_channel_bar_summary_off">Taispeántar barra an chainéil</string>
@@ -189,6 +186,12 @@ Má tá Doodle á thaispeáint faoi láthair i do réigiún agus má tá an tsu�
   <string name="morphe_hide_course_progress_section_title">Folaigh \'Taispeántas Curacla\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Tá \'Taispeántas Curacla\' i bhfolach</string>
   <string name="morphe_hide_course_progress_section_summary_off">Taispeántar \'Taispeántas Curacla\'</string>
+  <string name="morphe_hide_explore_section_title">Folaigh Iniúchadh</string>
+  <string name="morphe_hide_explore_section_summary_on">Tá an tseomra \'Taispeáin an gcró\' agus \'Taispeáin an phodchraoladh\' ar an dteach tasc faoi</string>
+  <string name="morphe_hide_explore_section_summary_off">Tá an tseomra \'Taispeáin an gcró\' agus \'Taispeáin an phodchraoladh\' ar an dteach tasc faoi</string>
+  <string name="morphe_hide_explore_course_section_title">Folaigh \'Taispeáin an gcró\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Tá an chuid Déan iniúchadh ar an gcoirse i bhfolach</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Taispeántar an chuid Déan iniúchadh ar an gcoirse</string>
   <string name="morphe_hide_explore_podcast_section_title">Folaigh \'Déan iniúchadh ar an bpodchraoladh\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Tá an chuid Déan iniúchadh ar an bpodchraoladh i bhfolach</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Taispeántar an chuid Déan iniúchadh ar an bpodchraoladh</string>
@@ -287,8 +290,8 @@ Má tá Doodle á thaispeáint faoi láthair i do réigiún agus má tá an tsu�
   <string name="morphe_hide_comments_section_summary_on">Tá an chuid tuairimí i bhfolach</string>
   <string name="morphe_hide_comments_section_summary_off">Taispeántar an chuid tuairimí</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Folaigh an roinn tuairimí sa Home feed</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Tá an roinn tuairimí sa Home feed i bhfolach</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Taispeánfar an roinn tuairimí sa Home feed</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Tá an chuid commentáin faoi vídioí sa fhíseán baile i bhfolach</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Taispeántar an chuid commentáin faoi vídioí sa fhíseán baile</string>
   <string name="morphe_hide_comments_community_guidelines_title">Folaigh treoirlínte an chomhphobail</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Tá treoirlínte an phobail i bhfolach</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Taispeántar treoirlínte an phobail</string>
@@ -318,15 +321,15 @@ Má tá Doodle á thaispeáint faoi láthair i do réigiún agus má tá an tsu�
   <string name="morphe_hide_view_count_summary_off">Taispeántar líon radharcanna sa fhotha agus sna torthaí cuardaigh</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Teorainneacha:
-• Is féidir le seilfeanna Shorts, leathanaigh cainéil, agus torthaí cuardaigh líon na radharcanna a thaispeáint fós
-• Ní oibríonn an ghné seo le fachtóir foirme feithicleach"</string>
+• Is féidir le seilfeanna Shorts, leathanaigh chainéal, agus torthaí cuardaigh fós líon na radharcanna a thaispeáint
+• Ní oibríonn an ghné seo le fachtóir foirme feithicleach."</string>
   <string name="morphe_hide_upload_time_title">Folaigh am uaslódála</string>
   <string name="morphe_hide_upload_time_summary_on">Tá am uaslódála folaithe i bhfotha agus i dtorthaí cuardaigh</string>
   <string name="morphe_hide_upload_time_summary_off">Tá am uaslódála le feiceáil i bhfotha agus i dtorthaí cuardaigh</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Teorainneacha:
 • Is féidir le seilfeanna Shorts, leathanaigh chainéal, agus torthaí cuardaigh fós amanna uaslódála a thaispeáint
-• Ní oibríonn an ghné seo le fachtóir foirme feithicleach"</string>
+• Ní oibríonn an ghné seo le fachtóir foirme feithicleach."</string>
   <string name="morphe_hide_keyword_content_screen_title">Folaigh ábhair eochairfhocal</string>
   <string name="morphe_hide_keyword_content_screen_summary">Folaigh físeáin chuardaigh agus fotha ag baint úsáide as scagairí eochairfhocail</string>
   <string name="morphe_hide_keyword_content_home_title">Folaigh físeáin bhaile de réir eochair</string>
@@ -630,7 +633,9 @@ Tá sé seo ag tairgfí cookies áiríonna seachtracha"</string>
   <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tá an barra stádais teimhneach</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tá an barra stádais teimhneach nó tréshoilseach</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Ar roinnt gléasanna, is féidir leis an ngné seo a chumasú barra nascleanúna an chórais a athrú go trédhearcach.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Teorainneacha:
+• Is féidir le bar dubh seo a thaispeáint ag an uachtar den leathán vídio
+• Ar ghnólacha gáirte, is féidir an ghné seo a chur i gcrích chugainn an bar náisiúnta an chórais a threorú."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Díchumasaigh barra tréshoilseach solais</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Tá an barra nascleanúna i mód solais teimhneach</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Tá barra nascleanúna mód solais teimhneach nó tréshoilseach</string>
@@ -1214,8 +1219,10 @@ Athróidh sé seo cuma agus gnéithe na haipe, ach d'fhéadfadh fo-iarsmaí anai
 
 Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtanna UI a chosc."</string>
   <string name="morphe_spoof_app_version_target_title">Sprioc leagan aip bréagach</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Athchóirigh deilbhíní sean-imreoir Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh seanchomhaidí seinnte go liosta</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Atualizar ícóin béalach</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Barra gníomhaíochta físe neamh-fhillte a athchóiriú</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Athchóirigh deilbhíní sean-imreoir Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Athraigh an leathanach tosaigh</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>

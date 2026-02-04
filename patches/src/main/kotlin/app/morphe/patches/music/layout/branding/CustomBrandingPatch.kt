@@ -8,6 +8,7 @@ import app.morphe.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -69,13 +70,6 @@ val customBrandingPatch = baseCustomBrandingPatch(
     block = {
         dependsOn(sharedExtensionPatch, disableSplashAnimationPatch)
 
-        compatibleWith(
-            "com.google.android.apps.youtube.music"(
-                "7.29.52",
-                "8.10.52",
-                "8.37.56",
-                "8.40.54",
-            )
-        )
+        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     }
 )

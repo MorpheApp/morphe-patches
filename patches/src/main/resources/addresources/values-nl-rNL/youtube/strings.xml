@@ -128,9 +128,6 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_doodles_title">YouTube Doodles verbergen</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animatie op het logo is verborgen</string>
   <string name="morphe_hide_doodles_summary_off">YouTube Doodles-animatie op het logo wordt getoond</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles worden een paar dagen per jaar getoond.
-
-Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor verbergen is ingeschakeld, dan wordt de filterbalk onder de zoekbalk ook verborgen."</string>
   <string name="morphe_hide_channel_bar_title">Kanaalbalk verbergen</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanaalbalk is verborgen</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanaalbalk wordt getoond</string>
@@ -189,6 +186,12 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_hide_course_progress_section_title">Verberg \'Course progress\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Course progress sectie is verborgen</string>
   <string name="morphe_hide_course_progress_section_summary_off">Course progress sectie is getoond</string>
+  <string name="morphe_hide_explore_section_title">Verberg Ontdekken</string>
+  <string name="morphe_hide_explore_section_summary_on">De secties \'Ontdek deze cursus\' en \'Ontdek de podcast\' zijn verborgen</string>
+  <string name="morphe_hide_explore_section_summary_off">De secties \'Ontdek deze cursus\' en \'Ontdek de podcast\' zijn zichtbaar</string>
+  <string name="morphe_hide_explore_course_section_title">\'Ontdek deze cursus\' verbergen</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Deze cursussectie is verborgen</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Deze cursussectie is zichtbaar</string>
   <string name="morphe_hide_explore_podcast_section_title">\'Ontdek de podcast\' verbergen</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Het gedeelte \'Ontdek de podcast\' is verborgen</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Het gedeelte \'Ontdek de podcast\' wordt weergegeven</string>
@@ -287,8 +290,8 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <string name="morphe_hide_comments_section_summary_on">Reacties sectie is verborgen</string>
   <string name="morphe_hide_comments_section_summary_off">Reacties sectie is getoond</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Verberg reactiessectie in Home-feed</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Reactiessectie in Home-feed is verborgen</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Reactiessectie in Home-feed is zichtbaar</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Reacties onder video\'s in de Homefeed zijn verborgen</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Reacties onder video\'s in de Homefeed zijn zichtbaar</string>
   <string name="morphe_hide_comments_community_guidelines_title">Communityrichtlijnen verbergen</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Communityrichtlijnen zijn verborgen</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Communityrichtlijnen zijn getoond</string>
@@ -319,14 +322,14 @@ Als er momenteel een Doodle wordt getoond in je regio en deze instelling voor ve
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Beperkingen:
 • Shorts-planken, kanaalpagina's en zoekresultaten kunnen nog steeds het aantal weergaven tonen
-• Deze functie werkt niet met de automotive form factor"</string>
+• Deze functie werkt niet met de automotive vormfactor."</string>
   <string name="morphe_hide_upload_time_title">Verberg uploadtijd</string>
   <string name="morphe_hide_upload_time_summary_on">Uploadtijd is verborgen in feed en zoekresultaten</string>
   <string name="morphe_hide_upload_time_summary_off">Uploadtijd wordt getoond in feed en zoekresultaten</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Beperkingen:
 • Shorts-schappen, kanaalpagina's en zoekresultaten kunnen nog steeds uploadtijden tonen
-• Deze functie werkt niet met de automotive vormfactor"</string>
+• Deze functie werkt niet met de automotive vormfactor."</string>
   <string name="morphe_hide_keyword_content_screen_title">Keyword content verbergen</string>
   <string name="morphe_hide_keyword_content_screen_summary">Zoek- en feed-video\'s verbergen met behulp van keyword filters</string>
   <string name="morphe_hide_keyword_content_home_title">Home-video\'s verbergen door keywords</string>
@@ -632,7 +635,9 @@ Cookies worden automatisch opgeslagen als ze geldig zijn"</string>
   <string name="morphe_disable_translucent_status_bar_title">Transparante statusbalk uitschakelen</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusbalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusbalk is ondoorzichtig of doorschijnend</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Op sommige apparaten kan het inschakelen van deze functie de systeemnavigatiebalk transparant maken.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Beperkingen:
+• Een zwarte streep kan bovenaan de videospeler verschijnen.
+• Op sommige apparaten kan het inschakelen van deze functie de systeemnavigatiebalk transparant maken."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Transparante lichte navigatiebalk uitschakelen</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">De lichte navigatiebalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">De lichtmodus navigatiebalk is ondoorzichtig of doorschijnend</string>
@@ -1215,8 +1220,10 @@ Dit zal het uiterlijk en de functies van de app veranderen, maar er kunnen onbek
 
 Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen om UI-fouten te voorkomen."</string>
   <string name="morphe_spoof_app_version_target_title">Doel voor vervalsen app-versie</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Herstel oude pictogrammen voor Shorts-speler</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Uitschakelen van vetgedrukte pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Herstel niet-ingeklapte videobalk</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Herstel oude pictogrammen voor Shorts-speler</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startpagina wijzigen</string>
   <string name="morphe_change_start_page_entry_default">Standaard</string>

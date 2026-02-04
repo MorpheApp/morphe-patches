@@ -41,7 +41,7 @@ fun checkEnvironmentPatch(
     extensionPatch: Patch<*>,
     vararg compatiblePackages: String,
 ) = bytecodePatch(
-    description = "Checks, if the application was patched by, otherwise warns the user.",
+    description = "Checks, where the application was patched by, otherwise warns the user.",
 ) {
     compatibleWith(*compatiblePackages)
 

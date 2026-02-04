@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-02-02T12:55:24",
-  "description": "# [1.11.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.1...v1.11.0-dev.2) (2026-02-02)\n\n\n### Bug Fixes\n\n* **YouTube - Hide ads:** Empty space is left when ads are hidden on tablets ([#377](https://github.com/MorpheApp/morphe-patches/issues/377)) ([da12960](https://github.com/MorpheApp/morphe-patches/commit/da12960ceb4d93490b8d41f0ea616d686eb609eb))\n* **YouTube - Navigation bar:** Rename \"Switch Create with Notifications\" to \"Swap Create with Notifications\" ([#384](https://github.com/MorpheApp/morphe-patches/issues/384)) ([6472dee](https://github.com/MorpheApp/morphe-patches/commit/6472dee35dae7d3b0ba08dd2b4348b535ce48da7))\n\n\n### Features\n\n* **YouTube - Spoof app version:** Add target version `20.28.41` ([#375](https://github.com/MorpheApp/morphe-patches/issues/375)) ([3793689](https://github.com/MorpheApp/morphe-patches/commit/3793689be432ee1643e27670e2c845d4462a80b3))\n* **YouTube:** Add `Ambient mode` patch ([#367](https://github.com/MorpheApp/morphe-patches/issues/367)) ([91a68f5](https://github.com/MorpheApp/morphe-patches/commit/91a68f5200d1f4061821aaba9f955a0fc9ec2cf1))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.11.0-dev.2/patches-1.11.0-dev.2.mpp",
+  "created_at": "2026-02-04T09:39:26",
+  "description": "# [1.11.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.7...v1.11.0-dev.8) (2026-02-04)\n\n\n### Bug Fixes\n\n* **YouTube - Ambient mode:** Resolve \"Bypass Ambient mode restrictions\" not bypassing ([#392](https://github.com/MorpheApp/morphe-patches/issues/392)) ([f5b71b2](https://github.com/MorpheApp/morphe-patches/commit/f5b71b2582f3919ee02cc58b40ce0a1a49c50b91))\n* **YouTube - Miniplayer:** Minimal miniplayer has wrong play icon ([2eddce0](https://github.com/MorpheApp/morphe-patches/commit/2eddce052761c6e7cd519ef3f57e098ca4044c3e))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.11.0-dev.8/patches-1.11.0-dev.8.mpp",
   "signature_download_url": "",
-  "version": "1.11.0-dev.2"
+  "version": "1.11.0-dev.8"
 }

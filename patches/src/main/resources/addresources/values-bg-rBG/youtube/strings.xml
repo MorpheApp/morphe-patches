@@ -128,9 +128,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Анимацията \"Doodles\" на логото на YouTube е скрита</string>
   <string name="morphe_hide_doodles_summary_off">YouTube Doodles се показват няколко дни на година.</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles се показват няколко дни на година.
-
-Ако в момента се показва Doodle в вашата област и това скриване е активирано, тогава филтерът над полетата за търсене ще бъде скрит."</string>
   <string name="morphe_hide_channel_bar_title">Скриване на лентата на канала</string>
   <string name="morphe_hide_channel_bar_summary_on">Лентата на канала е скрита</string>
   <string name="morphe_hide_channel_bar_summary_off">Лентата на канала е показана</string>
@@ -189,6 +186,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">Скриване на \'Прогрес на курс\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Раздел \'Прогрес на курс\' е скрит</string>
   <string name="morphe_hide_course_progress_section_summary_off">Раздел \'Прогрес на курс\' е показан</string>
+  <string name="morphe_hide_explore_section_title">Скриване на „Разглеждане“</string>
+  <string name="morphe_hide_explore_section_summary_on">Разкрийте този курс и Разкрийте подкаст раздели са скрити</string>
+  <string name="morphe_hide_explore_section_summary_off">Разкрийте този курс и Разкрийте подкаст раздели са показани</string>
+  <string name="morphe_hide_explore_course_section_title">Скрийте \'Разкрийте този курс\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Този раздел на курса е скрит</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Този раздел на курса е виден</string>
   <string name="morphe_hide_explore_podcast_section_title">Скриване на \'Исчезване на подкаст\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Подкаст сеcció е скрита</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Подкаст сеcció е показана</string>
@@ -287,8 +290,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">Разделът за коментари е скрит</string>
   <string name="morphe_hide_comments_section_summary_off">Разделът за коментари е показан</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Скриване на коментарите в лентата</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Коментарите в лентата са скрити</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Коментарите в лентата са видими</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Раздел с коментари под видеата в домашна лента е скрит</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Раздел с коментари под видеата в домашна лента е виден</string>
   <string name="morphe_hide_comments_community_guidelines_title">Скрийте общи указания</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Общите указания са скрити</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Общите указания са показани</string>
@@ -317,12 +320,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_summary_on">Ключовото има противоположни декларации: %s</string>
   <string name="morphe_hide_view_count_summary_off">Ключовото е твърде късо и изисква кавички: %s</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"Ключовото ще скрие всички видеоклипове: %s"</string>
+  <string name="morphe_hide_view_count_user_dialog_message">"Ограничения:
+• Полетата с кратки видеоклипове, страниците на каналите и резултатите от търсенето все още могат да показват броя на прегледите.
+• Тази функционалност не работи с форм-фактора за автомобили."</string>
   <string name="morphe_hide_upload_time_title">Скрийте информационни карти</string>
   <string name="morphe_hide_upload_time_summary_on">Информационните карти са скрити</string>
   <string name="morphe_hide_upload_time_summary_off">Информационните карти са показани</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-  <string name="morphe_hide_upload_time_user_dialog_message">"Скрийте филтри за видеоописание"</string>
+  <string name="morphe_hide_upload_time_user_dialog_message">"Ограничения:
+• Полетата с кратки видеоклипове, страниците на каналите и резултатите от търсенето все още могат да показват времето на качване.
+• Тази функционалност не работи с форм-фактора за автомобили."</string>
   <string name="morphe_hide_keyword_content_screen_title">Филтрите за видеоописание са включени</string>
   <string name="morphe_hide_keyword_content_screen_summary">Филтрите за видеоописание са изключени</string>
   <string name="morphe_hide_keyword_content_home_title">Скрийте видеоклипове в домакинството по ключови</string>
@@ -622,7 +629,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">Лентата за статус е непрозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Лентата за статус е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Изключи светла прозрачна лента за навигация</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">На някои устройства включването на тази функционалност може да промени системната панела за навигация на прозрачна. </string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничения:
+• Може да се появи черен лент в горната част на играча на видеото.
+• На някои уреди, включването на тази функционалност може да промени системната лента за навигация на прозрачна."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Лентата за навигация в светъл режим е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Изключи тъмна прозрачна лента за навигация</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Лентата за навигация в тъмен режим е непрозрачна</string>
@@ -1199,8 +1208,10 @@ Second \"item\" text"</string>
 
 Ако по-късно бъде изключено, препоръбването на данните на приложението е препоръба"</string>
   <string name="morphe_spoof_app_version_target_title">Цел на фалшира версия на приложението</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Възстановите старите икони на Коротки видеа</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Възстанови старите запазвания в списъка</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Изключване на удебеляване на иконите</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Възстановите неколапсирания видеоплеерски бар</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Възстановите старите икони на Коротки видеа</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промянете стартова страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>

@@ -10,6 +10,7 @@ import app.morphe.patches.music.playservice.is_8_15_or_greater
 import app.morphe.patches.music.playservice.is_8_40_or_greater
 import app.morphe.patches.music.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -32,14 +33,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
             userAgentClientSpoofPatch
         )
 
-        compatibleWith(
-            "com.google.android.apps.youtube.music"(
-                "7.29.52",
-                "8.10.52",
-                "8.37.56",
-                "8.40.54"
-            )
-        )
+        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
 
     executeBlock = {
