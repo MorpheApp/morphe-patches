@@ -18,26 +18,38 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * 20.26+
- */
-internal object HideShowMoreButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
+internal object HideShowMoreButtonSetViewFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", "Ljava/lang/Object;"),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
-        methodCall(smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+        resourceLiteral(ResourceType.ID, "link_text_start"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/widget/TextView;"
+        ),
+        resourceLiteral(ResourceType.ID, "expand_button_container"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/view/View;"
+        )
     )
 )
 
-internal object HideShowMoreLegacyButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+internal object HideShowMoreButtonGetParentViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf()
+)
+
+internal object HideShowMoreButtonFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/lang/Object;"),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
-        methodCall(smali = "Landroid/view/View;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT)
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V"
+        )
     )
 )
 
