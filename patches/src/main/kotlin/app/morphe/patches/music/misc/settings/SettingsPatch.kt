@@ -87,7 +87,7 @@ val settingsPatch = bytecodePatch(
         versionCheckPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.last()
+            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.first()
         )
     )
 

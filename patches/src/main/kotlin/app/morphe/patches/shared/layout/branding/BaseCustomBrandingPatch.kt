@@ -166,7 +166,7 @@ internal fun baseCustomBrandingPatch(
                     }
                 }
             }
-        },
+        }
     )
 
     finalize {
@@ -323,13 +323,30 @@ internal fun baseCustomBrandingPatch(
                 activityAliasNameWithIntents
             ).childNodes
 
-            // The YT application name can appear in some places along side the system
-            // YouTube app, such as the settings app list and in the "open with" file picker.
-            // Because the YouTube app cannot be completely uninstalled and only disabled,
-            // use a custom name for this situation to disambiguate which app is which.
+            // If user provides a custom icon, then change the application icon ('static' icon)
+            // which shows as the push notification for some devices, in the app settings,
+            // and as the icon for the apk before installing.
+            // This icon cannot be dynamically selected and this change must only be done if the
+            // user provides an icon otherwise there is no way to restore the original YouTube icon.
+            if (useCustomIcon) {
+                application.setAttribute(
+                    "android:icon",
+                    "@mipmap/morphe_launcher_custom"
+                )
+            }
+
             application.setAttribute(
                 "android:label",
-                "@string/morphe_custom_branding_name_entry_2"
+                if (useCustomName) {
+                    // Use custom name everywhere.
+                    customName!!
+                } else {
+                    // The YT application name can appear in some places along side the system
+                    // YouTube app, such as the settings app list and in the "open with" file picker.
+                    // Because the YouTube app cannot be completely uninstalled and only disabled,
+                    // use a custom name for this situation to disambiguate which app is which.
+                    "@string/morphe_custom_branding_name_entry_2"
+                }
             )
 
             val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing

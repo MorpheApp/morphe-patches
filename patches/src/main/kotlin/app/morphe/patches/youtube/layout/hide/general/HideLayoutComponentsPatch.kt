@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -25,7 +26,6 @@ import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -33,12 +33,16 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 
 internal var albumCardId = -1L
     private set
@@ -309,17 +313,57 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region Show more button
 
-        (if (is_20_26_or_greater) HideShowMoreButtonFingerprint else HideShowMoreLegacyButtonFingerprint).let {
-            it.method.apply {
-                val moveRegisterIndex = it.instructionMatches.last().index
-                val viewRegister = getInstruction<OneRegisterInstruction>(moveRegisterIndex).registerA
+        val (textViewField, buttonContainerField) = with (HideShowMoreButtonSetViewFingerprint) {
+            val textViewIndex = instructionMatches[1].index
+            val buttonContainerIndex = instructionMatches[3].index
 
-                val insertIndex = moveRegisterIndex + 1
-                addInstruction(
-                    insertIndex,
-                    "invoke-static { v$viewRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
-                            "->hideShowMoreButton(Landroid/view/View;)V",
-                )
+            Pair(
+                method.getInstruction<ReferenceInstruction>(textViewIndex).reference,
+                method.getInstruction<ReferenceInstruction>(buttonContainerIndex).reference
+            )
+        }
+
+        val parentViewMethod = HideShowMoreButtonGetParentViewFingerprint.match(
+            HideShowMoreButtonSetViewFingerprint.originalClassDef
+        ).method
+
+        HideShowMoreButtonFingerprint.clearMatch()
+        HideShowMoreButtonFingerprint.match(
+            HideShowMoreButtonSetViewFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val helperMethod = ImmutableMethod(
+                    definingClass,
+                    "patch_hideShowMoreButton",
+                    listOf(),
+                    "V",
+                    AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(7),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            move-object/from16 v0, p0
+                            invoke-virtual { v0 }, $parentViewMethod
+                            move-result-object v1
+                            iget-object v2, v0, $buttonContainerField
+                            iget-object v3, v0, $textViewField
+                            invoke-static { v1, v2, v3 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideShowMoreButton(Landroid/view/View;Landroid/view/View;Landroid/widget/TextView;)V
+                            return-void
+                        """
+                    )
+                }
+
+                it.classDef.methods.add(helperMethod)
+
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                    addInstruction(
+                        index,
+                        "invoke-direct/range { p0 .. p0 }, $helperMethod"
+                    )
+                }
             }
         }
 
@@ -328,7 +372,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region Subscribed channels bar
 
         // Tablet
-        HideSubscribedChannelsBarConstructorFingerprint.let {
+        val constructorFingerprint = if (is_20_21_or_greater)
+            HideSubscribedChannelsBarConstructorFingerprint
+        else HideSubscribedChannelsBarConstructorLegacyFingerprint
+
+        constructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[1].index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -343,7 +391,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // Phone (landscape mode)
         HideSubscribedChannelsBarLandscapeFingerprint.match(
-            HideSubscribedChannelsBarConstructorFingerprint.originalClassDef
+            constructorFingerprint.originalClassDef
         ).let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
