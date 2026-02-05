@@ -1,3 +1,31 @@
+# [1.11.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.14...v1.11.0-dev.15) (2026-02-05)
+
+
+### Features
+
+* **YouTube - Hide Shorts components:** Add "Hide AI button" setting ([#436](https://github.com/MorpheApp/morphe-patches/issues/436)) ([eea4657](https://github.com/MorpheApp/morphe-patches/commit/eea4657c94887d4e5f1e59a0392ee1f477bcd72b))
+
+# [1.11.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.13...v1.11.0-dev.14) (2026-02-05)
+
+
+### Bug Fixes
+
+* **YouTube - SponsorBlock:** Resolve segments not fetching on experimental app targets ([46a5d9a](https://github.com/MorpheApp/morphe-patches/commit/46a5d9a0de18231b5dd4e664d6992b36663386ee))
+
+# [1.11.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.12...v1.11.0-dev.13) (2026-02-05)
+
+
+### Features
+
+* **YouTube - Hide Shorts components:** Add "Hide in video description" setting ([#426](https://github.com/MorpheApp/morphe-patches/issues/426)) ([7c01227](https://github.com/MorpheApp/morphe-patches/commit/7c01227b49f3feb4382e895fe768cd1cc3e6afd4))
+
+# [1.11.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.11...v1.11.0-dev.12) (2026-02-05)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide Quizzes" setting ([#425](https://github.com/MorpheApp/morphe-patches/issues/425)) ([c843c32](https://github.com/MorpheApp/morphe-patches/commit/c843c32e69c078a6b8da2d1c3045f0b31898c53e))
+
 # [1.11.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.10...v1.11.0-dev.11) (2026-02-05)
 
 

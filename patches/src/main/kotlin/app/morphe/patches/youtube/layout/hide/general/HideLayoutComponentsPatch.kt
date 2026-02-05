@@ -139,6 +139,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_music_section"),
                     SwitchPreference("morphe_hide_subscribe_button"),
                     SwitchPreference("morphe_hide_transcript_section"),
+                    SwitchPreference("morphe_hide_quizzes_section"),
                 ),
             ),
             PreferenceScreenPreference(

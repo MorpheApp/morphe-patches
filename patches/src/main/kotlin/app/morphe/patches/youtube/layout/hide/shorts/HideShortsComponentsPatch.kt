@@ -12,6 +12,7 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -65,6 +66,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_shorts_home"),
             SwitchPreference("morphe_hide_shorts_search"),
             SwitchPreference("morphe_hide_shorts_subscriptions"),
+            SwitchPreference("morphe_hide_shorts_video_description"),
             SwitchPreference("morphe_hide_shorts_history"),
 
             PreferenceScreenPreference(
@@ -107,6 +109,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_stickers"),
 
                     // Bottom of the screen.
+                    SwitchPreference("morphe_hide_shorts_ai_button"),
                     SwitchPreference("morphe_hide_shorts_auto_dubbed_label"),
                     SwitchPreference("morphe_hide_shorts_location_label"),
                     SwitchPreference("morphe_hide_shorts_channel_bar"),
@@ -153,11 +156,12 @@ val hideShortsComponentsPatch = bytecodePatch(
             "Patching version 20.21.37 or lower can hide more Shorts player button types."
 ) {
     dependsOn(
-        sharedExtensionPatch,
-        lithoFilterPatch,
+        engagementPanelHookPatch,
         hideShortsComponentsResourcePatch,
-        resourceMappingPatch,
+        lithoFilterPatch,
         navigationBarHookPatch,
+        resourceMappingPatch,
+        sharedExtensionPatch,
         versionCheckPatch,
     )
 

@@ -17,6 +17,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -68,14 +69,15 @@ public final class ShortsFilter extends Filter {
     private final ByteArrayFilterGroup useSoundButtonBuffer;
     private final StringFilterGroup useTemplateButton;
     private final ByteArrayFilterGroup useTemplateButtonBuffer;
-    private final StringFilterGroup reelCarousel;
-    private final ByteArrayFilterGroup reelCarouselBuffer;
 
     private final StringFilterGroup autoDubbedLabel;
     private final StringFilterGroup subscribeButton;
     private final StringFilterGroup joinButton;
     private final StringFilterGroup paidPromotionLabel;
     private final StringFilterGroup shelfHeader;
+
+    private final StringFilterGroup reelCarousel;
+    private final ByteArrayFilterGroupList reelCarouselBuffer = new ByteArrayFilterGroupList();
 
     private final StringFilterGroup suggestedAction;
     private final ByteArrayFilterGroupList suggestedActionsBuffer = new ByteArrayFilterGroupList();
@@ -226,13 +228,21 @@ public final class ShortsFilter extends Filter {
         );
 
         reelCarousel = new StringFilterGroup(
-                Settings.HIDE_SHORTS_SOUND_METADATA_LABEL,
+                null,
                 "reel_carousel.e"
         );
 
-        reelCarouselBuffer = new ByteArrayFilterGroup(
-                null,
-                "FEsfv_audio_pivot"
+        reelCarouselBuffer.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_AI_BUTTON,
+                        "yt_outline_info_circle",
+                        "yt_outline_experimental_info_circle"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_SOUND_METADATA_LABEL,
+                        "yt_outline_audio", // Doesn't seem to be needed as v20.14.43 uses 'yt_outline_experimental_audio' as well. But still just in case.
+                        "yt_outline_experimental_audio"
+                )
         );
 
         useSoundButton = new StringFilterGroup(
@@ -467,19 +477,21 @@ public final class ShortsFilter extends Filter {
         final boolean hideHome = Settings.HIDE_SHORTS_HOME.get();
         final boolean hideSubscriptions = Settings.HIDE_SHORTS_SUBSCRIPTIONS.get();
         final boolean hideSearch = Settings.HIDE_SHORTS_SEARCH.get();
+        final boolean hideVideoDescription = Settings.HIDE_SHORTS_VIDEO_DESCRIPTION.get();
         final boolean hideHistory = Settings.HIDE_SHORTS_HISTORY.get();
 
-        if (!hideHome && !hideSubscriptions && !hideSearch && !hideHistory) {
+        if (!hideHome && !hideSubscriptions && !hideSearch && !hideVideoDescription && !hideHistory) {
             return false;
         }
-        if (hideHome && hideSubscriptions && hideSearch && hideHistory) {
+        if (hideHome && hideSubscriptions && hideSearch && hideVideoDescription && hideHistory) {
             return true;
         }
 
         // Must check player type first, as search bar can be active behind the player.
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            // For now, consider the under video results the same as the home feed.
-            return hideHome;
+            return EngagementPanel.isDescription()
+                    ? hideVideoDescription // Player video description panel opened.
+                    : hideHome; // For now, consider Shorts under video player the same as the home feed.
         }
 
         // Must check second, as search can be from any tab.
