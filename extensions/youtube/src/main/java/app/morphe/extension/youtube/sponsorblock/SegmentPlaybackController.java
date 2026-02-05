@@ -38,6 +38,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
 import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour;
 import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
@@ -313,7 +314,10 @@ public class SegmentPlaybackController {
             if (videoId == null || !Settings.SB_ENABLED.get()) {
                 return;
             }
-            if (PlayerType.getCurrent().isNoneOrHidden()) {
+            // Cannot use PlayerType to check because on some newer targets
+            // the player type can be updated out of order and incorrectly
+            // is "none" when the regular player is open
+            if (ShortsPlayerState.isOpen()) {
                 Logger.printDebug(() -> "Ignoring Short");
                 return;
             }
