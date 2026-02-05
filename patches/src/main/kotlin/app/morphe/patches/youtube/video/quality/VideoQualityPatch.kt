@@ -20,6 +20,7 @@ val videoQualityPatch = bytecodePatch(
     dependsOn(
         rememberVideoQualityPatch,
         advancedVideoQualityMenuPatch,
+        hidePremiumVideoQualityPatch,
         videoQualityDialogButtonPatch
     )
 

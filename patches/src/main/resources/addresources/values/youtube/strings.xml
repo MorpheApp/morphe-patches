@@ -234,6 +234,9 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_transcript_section_title">Hide Transcript</string>
     <string name="morphe_hide_transcript_section_summary_on">Transcript section is hidden</string>
     <string name="morphe_hide_transcript_section_summary_off">Transcript section is shown</string>
+    <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
+    <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
+    <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
     <string name="morphe_hide_description_components_screen_title">Video description</string>
     <string name="morphe_hide_description_components_screen_summary">Hide or show video description components</string>
 
@@ -1595,6 +1598,11 @@ Limitations:
     <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
     <string name="morphe_advanced_video_quality_menu_summary_on">Advanced video quality menu is shown</string>
     <string name="morphe_advanced_video_quality_menu_summary_off">Advanced video quality menu is not shown</string>
+
+    <!-- video.quality.hidePremiumVideoQualityPatch -->
+    <string name="morphe_hide_premium_video_quality_title">Hide Premium quality options</string>
+    <string name="morphe_hide_premium_video_quality_summary_on">Premium quality options are hidden</string>
+    <string name="morphe_hide_premium_video_quality_summary_off">Premium quality options are shown</string>
 
     <!-- interaction.seekbar.enableSlideToSeekPatch -->
     <string name="morphe_slide_to_seek_title">Enable slide to seek</string>

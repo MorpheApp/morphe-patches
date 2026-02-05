@@ -55,7 +55,7 @@ val settingsPatch = bytecodePatch(
         spoofSignaturePatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditMainActivityOnCreateFingerprint,
-            recommendedAppVersion = COMPATIBILITY_REDDIT.second.last()
+            recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
         )
     )
 
