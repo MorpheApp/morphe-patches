@@ -47,8 +47,8 @@ internal val fIxLikeButtonPatch = bytecodePatch{
                         returnType = "Ljava/lang/String;",
                         parameters = listOf(),
                         custom = { method, classDef ->
-                            classDef.interfaces.contains(abstractClass) &&
-                                    method.implementation!!.instructions.count() > 7
+                            method.implementation!!.instructions.count() > 7 &&
+                                classDef.interfaces.contains(abstractClass)
                         }
                     ),
                     Fingerprint(
@@ -57,8 +57,8 @@ internal val fIxLikeButtonPatch = bytecodePatch{
                         returnType = "Ljava/lang/String;",
                         parameters = listOf(),
                         custom = { method, classDef ->
-                            classDef.interfaces.contains(abstractClass) &&
-                                    method.implementation!!.instructions.count() < 7
+                            method.implementation!!.instructions.count() < 7 &&
+                                    classDef.interfaces.contains(abstractClass)
                         }
                     )
                 )
