@@ -482,7 +482,7 @@ public final class ShortsFilter extends Filter {
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
             return EngagementPanel.isDescription()
                     ? hideVideoDescription // Player video description panel opened.
-                    : hideHome; // For now, consider related videos the same as the home feed.
+                    : hideHome; // For now, consider video player related videos the same as the home feed.
         }
 
         // Must check second, as search can be from any tab.
