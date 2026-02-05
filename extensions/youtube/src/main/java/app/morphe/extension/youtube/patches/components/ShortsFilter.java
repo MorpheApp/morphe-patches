@@ -234,7 +234,7 @@ public final class ShortsFilter extends Filter {
 
         reelCarouselBuffer.addAll(
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_SHORTS_AI_DISCLOSURE_BUTTON,
+                        Settings.HIDE_SHORTS_AI_BUTTON,
                         "yt_outline_info_circle",
                         "yt_outline_experimental_info_circle"
                 ),

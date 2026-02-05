@@ -109,7 +109,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_stickers"),
 
                     // Bottom of the screen.
-                    SwitchPreference("morphe_hide_shorts_ai_disclosure_button"),
+                    SwitchPreference("morphe_hide_shorts_ai_button"),
                     SwitchPreference("morphe_hide_shorts_auto_dubbed_label"),
                     SwitchPreference("morphe_hide_shorts_location_label"),
                     SwitchPreference("morphe_hide_shorts_channel_bar"),
