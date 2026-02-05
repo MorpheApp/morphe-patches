@@ -18,30 +18,62 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * 20.26+
- */
+internal object HideShowMoreButtonSetViewFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "link_text_start"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/widget/TextView;"
+        ),
+        resourceLiteral(ResourceType.ID, "expand_button_container"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/view/View;"
+        )
+    )
+)
+
+internal object HideShowMoreButtonGetParentViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf()
+)
+
 internal object HideShowMoreButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
     returnType = "V",
     parameters = listOf("L", "Ljava/lang/Object;"),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
-        methodCall(smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V"
+        )
     )
 )
 
-internal object HideShowMoreLegacyButtonFingerprint : Fingerprint(
+/**
+ * 20.21+
+ */
+internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
-        methodCall(smali = "Landroid/view/View;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT)
-    )
+        resourceLiteral(ResourceType.ID, "parent_container"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+    ),
+    custom = { _, classDef ->
+        classDef.fields.any { field ->
+            field.type == "Landroid/support/v7/widget/RecyclerView;"
+        }
+    }
 )
 
-internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
+/**
+ * ~ 20.21
+ */
+internal object HideSubscribedChannelsBarConstructorLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "parent_container"),
@@ -55,7 +87,8 @@ internal object HideSubscribedChannelsBarLandscapeFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.DIMEN, "parent_view_width_in_wide_mode"),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(3)),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "getDimensionPixelSize"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
     )
 )
 
