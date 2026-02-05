@@ -474,7 +474,7 @@ public final class ShortsFilter extends Filter {
         if (!hideHome && !hideSubscriptions && !hideSearch && !hideVideoDescription && !hideHistory) {
             return false;
         }
-        if (hideHome && hideSubscriptions && hideSearch && hideVideoDescription  && hideHistory) {
+        if (hideHome && hideSubscriptions && hideSearch && hideVideoDescription && hideHistory) {
             return true;
         }
 
