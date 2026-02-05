@@ -133,6 +133,10 @@ final class DescriptionComponentsFilter extends Filter {
                         Settings.HIDE_MUSIC_SECTION,
                         "yt_outline_audio",
                         "yt_outline_experimental_audio"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_QUIZZES_SECTION,
+                        "post_base_wrapper_slim"
                 )
         );
 
