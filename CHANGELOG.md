@@ -1,3 +1,23 @@
+# [1.11.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.10...v1.11.0-dev.11) (2026-02-05)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** `Hide Featured places` also hide watch history shelf ([#420](https://github.com/MorpheApp/morphe-patches/issues/420)) ([fcb6758](https://github.com/MorpheApp/morphe-patches/commit/fcb675828b3465e5ea7b88cc659bbad284f6daa1))
+
+# [1.11.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.9...v1.11.0-dev.10) (2026-02-04)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** `Hide Show more button` leaves empty space ([#422](https://github.com/MorpheApp/morphe-patches/issues/422)) ([d44862d](https://github.com/MorpheApp/morphe-patches/commit/d44862d81dc8d4b07cfcf1af7109e3dd6feae414))
+* **YouTube - Hide layout components:** Resolve "Hide subscribed channels bar" leaves empty space in landscape mode ([#421](https://github.com/MorpheApp/morphe-patches/issues/421)) ([83230a6](https://github.com/MorpheApp/morphe-patches/commit/83230a61bc7b9909af87869456580927047a5aac))
+
+
+### Features
+
+* **YouTube - Video quality:** Add `Hide Premium video quality` setting ([#423](https://github.com/MorpheApp/morphe-patches/issues/423)) ([fb3cb36](https://github.com/MorpheApp/morphe-patches/commit/fb3cb368ea0bb9a05cefacf0509a35acbded5ae5))
+
 # [1.11.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.8...v1.11.0-dev.9) (2026-02-04)
 
 
