@@ -1,3 +1,10 @@
+# [1.11.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.14...v1.11.0-dev.15) (2026-02-05)
+
+
+### Features
+
+* **YouTube - Hide Shorts components:** Add "Hide AI button" setting ([#436](https://github.com/MorpheApp/morphe-patches/issues/436)) ([eea4657](https://github.com/MorpheApp/morphe-patches/commit/eea4657c94887d4e5f1e59a0392ee1f477bcd72b))
+
 # [1.11.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.13...v1.11.0-dev.14) (2026-02-05)
 
 
