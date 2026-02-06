@@ -228,6 +228,9 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_transcript_section_title">Ocultar transcrição</string>
   <string name="morphe_hide_transcript_section_summary_on">Seção de transcrição está oculta</string>
   <string name="morphe_hide_transcript_section_summary_off">A seção de transcrição é mostrada</string>
+  <string name="morphe_hide_quizzes_section_title">Ocultar Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Seção de Quiz está oculto</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Seção de Quiz é mostrada</string>
   <string name="morphe_hide_description_components_screen_title">Descrição do vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Ocultar ou mostrar componentes de descrição do vídeo</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra de filtro</string>
@@ -789,9 +792,15 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
   <string name="morphe_hide_shorts_subscriptions_title">Ocultar Shorts no feed de Inscrições</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Oculto no feed de Inscrições</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Exibido no feed de Inscrições</string>
+  <string name="morphe_hide_shorts_video_description_title">Esconder os Shorts na descrição do vídeo</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Escondido na descrição do vídeo</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mostrado na descrição do vídeo</string>
   <string name="morphe_hide_shorts_history_title">Ocultar Shorts no histórico de exibição</string>
   <string name="morphe_hide_shorts_history_summary_on">Oculto no histórico de exibições</string>
   <string name="morphe_hide_shorts_history_summary_off">Mostrado no histórico de exibição</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ocultar botão AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Botão AI oculto</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Botão AI exibido</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ocultar rótulo \'Auto-dublado\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Rótulo de dublagem automática está oculto</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Rótulo de dublagem automática está visível</string>
@@ -1502,6 +1511,10 @@ Limitações:
   <string name="morphe_advanced_video_quality_menu_title">Mostrar menu de qualidade de vídeo avançado</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">O menu de qualidade de vídeo avançado é exibido</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">O menu de qualidade de vídeo avançado não é exibido</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Ocultar opções de qualidade premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Opções de qualidade premium estão ocultas</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Opções de alta qualidade são exibidas</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ativar gesto na barra de busca</string>
   <string name="morphe_slide_to_seek_summary_on">Gesto na barra de busca está ativado</string>

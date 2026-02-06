@@ -56,7 +56,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 "com.junkfood.seal.preview",
                 "https://github.com/JunkFood02/Seal/releases"),
         SEAL_PLUS("Seal Plus",
-                "com.junkfood.sealplus",
+                "com.maheshtechnicals.sealplus",
                 "https://github.com/MaheshTechnicals/Sealplus/releases/latest"),
         GRAYJAY("Grayjay",
                 "com.futo.platformplayer",

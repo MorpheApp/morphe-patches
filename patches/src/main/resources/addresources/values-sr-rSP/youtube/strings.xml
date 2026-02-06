@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Сакриј транскрипт</string>
   <string name="morphe_hide_transcript_section_summary_on">Одељак за транскрипцију је скривен</string>
   <string name="morphe_hide_transcript_section_summary_off">Одељак за транскрипцију је приказан</string>
+  <string name="morphe_hide_quizzes_section_title">Сакриј квизове</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Одељак за квизове је скривен</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Одељак за квизове је приказан</string>
   <string name="morphe_hide_description_components_screen_title">Опис видеа</string>
   <string name="morphe_hide_description_components_screen_summary">Сакријте или прикажите компоненте описа видеа</string>
   <string name="morphe_hide_filter_bar_screen_title">Трака филтера</string>
@@ -789,9 +792,15 @@ Da bi prikazali meni sa audio stazom, promenite 'Spoof video streams' u 'Android
   <string name="morphe_hide_shorts_subscriptions_title">Сакриј Shorts у фиду „Праћења”</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Скривено у фиду „Праћења”</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Приказано у фиду „Праћења”</string>
+  <string name="morphe_hide_shorts_video_description_title">Sakrij Shorts u opisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Sakriveno u opisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Prikaženo u opisu videa</string>
   <string name="morphe_hide_shorts_history_title">Сакриј Shorts у историји гледања</string>
   <string name="morphe_hide_shorts_history_summary_on">Скривено у историји гледања</string>
   <string name="morphe_hide_shorts_history_summary_off">Приказано у историји гледања</string>
+  <string name="morphe_hide_shorts_ai_button_title">Сакриј дугме \"АИ\"</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Дугме \"АИ\" је скривено</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Дугме \"АИ\" је приказано</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Сакриј етикету \'Авто-дублирањ\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Ознака аутоматског дублажа је скривена</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Ознака аутоматског дублажа је приказана</string>
@@ -1502,6 +1511,10 @@ Da bi prikazali meni sa audio stazom, promenite 'Spoof video streams' u 'Android
   <string name="morphe_advanced_video_quality_menu_title">Прикажи напредни мени квалитета видеа</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Напредни мени квалитета видеа је приказан</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Напредни мени квалитета видеа није приказан</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Sakrij opcije premium kvaliteta</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Opcije premium kvaliteta su sakrivene</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Prikazane su opcije visokog kvaliteta</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Омогући превлачење за премотавање</string>
   <string name="morphe_slide_to_seek_summary_on">Превлачење за премотавање је омогућено</string>

@@ -228,6 +228,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_hide_transcript_section_title">Sembunyikan Transkrip</string>
   <string name="morphe_hide_transcript_section_summary_on">Bagian transkrip disembunyikan</string>
   <string name="morphe_hide_transcript_section_summary_off">Bagian transkrip ditampilkan</string>
+  <string name="morphe_hide_quizzes_section_title">Sembunyikan Kuis</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Bagian Kuis disembunyikan</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Bagian Kuis ditampilkan</string>
   <string name="morphe_hide_description_components_screen_title">Keterangan video</string>
   <string name="morphe_hide_description_components_screen_summary">Sembunyikan atau tampilkan komponen keterangan video</string>
   <string name="morphe_hide_filter_bar_screen_title">Bilah saring</string>
@@ -586,9 +589,9 @@ Mungkin teks terjemahan otomatis tidak tersedia"</string>
   <string name="morphe_caption_cookies_title">Cookie teks</string>
   <string name="morphe_caption_cookies_summary">Cookie untuk digunakan dalam permintaan API Timed Text</string>
   <string name="morphe_get_caption_cookies_title">Dapatkan cookie teks</string>
-  <string name="morphe_get_caption_cookies_summary">"Klik untuk mendapatkan kukis
+  <string name="morphe_get_caption_cookies_summary">"Klik untuk mendapatkan cookie
 
-Kukis akan disimpan secara otomatis jika valid"</string>
+Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_get_caption_cookies_failed">Gagal mendapatkan cookie</string>
   <string name="morphe_get_caption_cookies_duplicate">Cookie sudah ada</string>
   <string name="morphe_get_caption_cookies_success">Cookie berhasil diperbarui</string>
@@ -789,9 +792,15 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_shorts_subscriptions_title">Sembunyikan Shorts di umpan Langganan</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Disembunyikan di umpan Langganan</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Ditampilkan di umpan Langganan</string>
+  <string name="morphe_hide_shorts_video_description_title">Sembunyikan Shorts di deskripsi video</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Disembunyikan di deskripsi video</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Ditampilkan di deskripsi video</string>
   <string name="morphe_hide_shorts_history_title">Sembunyikan Shorts dalam riwayat tontonan</string>
   <string name="morphe_hide_shorts_history_summary_on">Disembunyikan dalam riwayat tontonan</string>
   <string name="morphe_hide_shorts_history_summary_off">Ditampilkan dalam riwayat tontonan</string>
+  <string name="morphe_hide_shorts_ai_button_title">Sembunyikan tombol AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Tombol AI disembunyikan</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Tombol AI ditampilkan</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Sembunyikan label \'Sulih suara Otomatis\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Label sulih suara otomatis disembunyikan</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Label sulih suara otomatis ditampilkan</string>
@@ -1502,6 +1511,10 @@ Batasan:
   <string name="morphe_advanced_video_quality_menu_title">Tampilkan menu kualitas video lanjutan</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Menu kualitas video lanjutan ditampilkan</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Menu kualitas video lanjutan tidak ditampilkan</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Sembunyikan opsi kualitas premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Opsi kualitas premium disembunyikan</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Pilihan kualitas Premium ditampilkan</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktifkan geser untuk mencari</string>
   <string name="morphe_slide_to_seek_summary_on">Geser untuk mencari diaktifkan</string>

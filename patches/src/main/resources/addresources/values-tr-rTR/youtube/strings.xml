@@ -228,6 +228,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_transcript_section_title">Transkripti gizle</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript kısmı gizli</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript kısmı görünür</string>
+  <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
   <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
   <string name="morphe_hide_description_components_screen_summary">Video açıklamasındaki öğeleri gizle veya göster</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtreleme çubuğu</string>
@@ -789,9 +792,15 @@ Ses izleme menüsünü görüntülemek için, 'Video akışları sahteleştir'yi
   <string name="morphe_hide_shorts_subscriptions_title">Abonelikler akışında Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Abonelikler akışında gizli</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Abonelikler akışında görünür</string>
+  <string name="morphe_hide_shorts_video_description_title">Kısa videoları video açıklamasında gizle</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Video açıklamasında gizli</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Video açıklamasında gösteriliyor</string>
   <string name="morphe_hide_shorts_history_title">İzleme geçmişinde Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_history_summary_on">İzleme geçmişinde gizli</string>
   <string name="morphe_hide_shorts_history_summary_off">İzleme geçmişinde görünür</string>
+  <string name="morphe_hide_shorts_ai_button_title">AI düğmesini gizle</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI düğmesi gizli</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI düğmesi görünür</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Otomatik seslendirme etiketi\'yi gizle</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Otomatik seslendirme etiketi gizlidir</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Otomatik seslendirme etiketi görünür</string>
@@ -1502,6 +1511,10 @@ Sınırlamalar:
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş video kalitesi menüsünü göster</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Gelişmiş video kalitesi menüsü gösterilir</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Gelişmiş video kalitesi menüsü gösterilmez</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium kalite seçenekleri gizlendi</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kaliteli seçenekler gösteriliyor</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Kaydırarak sardırmayı etkinleştir</string>
   <string name="morphe_slide_to_seek_summary_on">Kaydırarak sardırma etkin</string>

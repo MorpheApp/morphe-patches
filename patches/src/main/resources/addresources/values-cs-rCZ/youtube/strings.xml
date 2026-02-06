@@ -229,6 +229,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_transcript_section_title">Skrýt přepis</string>
   <string name="morphe_hide_transcript_section_summary_on">Sekce přepisu je skrytá</string>
   <string name="morphe_hide_transcript_section_summary_off">Sekce přepisu je zobrazena</string>
+  <string name="morphe_hide_quizzes_section_title">Skrýt testy</string>
+  <string name="morphe_hide_quizzes_section_summary_on"> Sekce testů je skryta.</string>
+  <string name="morphe_hide_quizzes_section_summary_off"> Sekce testů je zobrazená.</string>
   <string name="morphe_hide_description_components_screen_title">Popis videa</string>
   <string name="morphe_hide_description_components_screen_summary">Skrýt nebo zobrazit komponenty popisu videa</string>
   <string name="morphe_hide_filter_bar_screen_title">Lišta filtrů</string>
@@ -790,9 +793,15 @@ Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Andro
   <string name="morphe_hide_shorts_subscriptions_title">Skrýt Shorts v liště odběrů</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Skryto v liště odběrů</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Zobrazeno v liště odběrů</string>
+  <string name="morphe_hide_shorts_video_description_title">Skrýt \"Shorts\" v popisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Skryto v popisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Zobrazeno v popisu videa</string>
   <string name="morphe_hide_shorts_history_title">Skrýt Shorts z historie sledování</string>
   <string name="morphe_hide_shorts_history_summary_on">Skryté v historii sledování</string>
   <string name="morphe_hide_shorts_history_summary_off">Zobrazené v historii sledování</string>
+  <string name="morphe_hide_shorts_ai_button_title">Skrýt tlačítko AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Tlačítko AI je skryté</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Tlačítko AI je zobrazeno</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Skrýt označení \'Automaticky dabován\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Štítek umístění je skrytý</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Štítek umístění je zobrazen</string>
@@ -1503,6 +1512,10 @@ Omezení:
   <string name="morphe_advanced_video_quality_menu_title">Zobrazit rozšířené menu kvality videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Zobrazuje se rozšířené menu kvality videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Nezobrazuje se rozšířené menu kvality videa</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Skrýt možnosti Premium kvality</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Možnosti Premium kvality jsou skryty</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kvalita je zobrazená</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Povolit posun pro hledání</string>
   <string name="morphe_slide_to_seek_summary_on">Posun pro hledání je povolen</string>

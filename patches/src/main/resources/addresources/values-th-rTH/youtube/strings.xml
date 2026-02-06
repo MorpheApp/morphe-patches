@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">ซ่อนบทถอดเสียง</string>
   <string name="morphe_hide_transcript_section_summary_on">ส่วนคำอธิบายถูกซ่อนไว้</string>
   <string name="morphe_hide_transcript_section_summary_off">ส่วนคำอธิบายแสดงอยู่</string>
+  <string name="morphe_hide_quizzes_section_title">ซ่อนคำถาม</string>
+  <string name="morphe_hide_quizzes_section_summary_on">ส่วนคำถามถูกซ่อนไว้</string>
+  <string name="morphe_hide_quizzes_section_summary_off">ส่วนคำถามแสดงอยู่</string>
   <string name="morphe_hide_description_components_screen_title">คำอธิบายวิดีโอ</string>
   <string name="morphe_hide_description_components_screen_summary">ซ่อนหรือแสดงส่วนประกอบของคำอธิบายวิดีโอ</string>
   <string name="morphe_hide_filter_bar_screen_title">แถบตัวกรอง</string>
@@ -787,9 +790,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">ซ่อน Shorts ในฟีดการติดตาม</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">ซ่อนในฟีดการติดตาม</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">แสดงในฟีดการติดตาม</string>
+  <string name="morphe_hide_shorts_video_description_title">ซ่อน Shorts ในคำอธิบายวิดีโอ</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">ซ่อนในคำอธิบายวิดีโอ</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">แสดงในคำอธิบายวิดีโอ</string>
   <string name="morphe_hide_shorts_history_title">ซ่อน \"shorts\" ในประวัติการรับชม</string>
   <string name="morphe_hide_shorts_history_summary_on">ซ่อนอยู่ในประวัติการรับชม</string>
   <string name="morphe_hide_shorts_history_summary_off">แสดงในการค้นหา</string>
+  <string name="morphe_hide_shorts_ai_button_title">ซ่อนปุ่ม AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">ปุ่ม AI ถูกซ่อนอยู่</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">ปุ่ม AI แสดงอยู่</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">ซ่อนป้าย \'Auto-dubbed\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">ป้ายกำกับสถานที่ถูกซ่อน</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">ป้ายกำกับสถานที่แสดงอยู่</string>
@@ -1500,6 +1509,10 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_advanced_video_quality_menu_title">แสดงเมนูคุณภาพวิดีโอขั้นสูง</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">เมนูคุณภาพวิดีโอขั้นสูงปรากฏขึ้น</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">เมนูคุณภาพวิดีโอขั้นสูงไม่ปรากฏ</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">ซ่อนตัวเลือกคุณภาพสูงสุด</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">ตัวเลือกคุณภาพสูงสุดถูกซ่อน</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">คุณภาพสูงสุดคือสิ่งที่แสดง</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">เปิดใช้งานเลื่อนเพื่อค้นหา</string>
   <string name="morphe_slide_to_seek_summary_on">เลื่อนเพื่อค้นหาเปิดใช้งาน</string>

@@ -228,6 +228,9 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_transcript_section_title">Transkript ausblenden</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript-Abschnitt ist ausgeblendet</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript-Abschnitt wird angezeigt</string>
+  <string name="morphe_hide_quizzes_section_title">Quizze ausblenden</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizze Bereich ist ausgeblendet</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizze Bereich ist angezeigt</string>
   <string name="morphe_hide_description_components_screen_title">Videobeschreibung</string>
   <string name="morphe_hide_description_components_screen_summary">Komponenten der Videobeschreibung ausblenden oder anzeigen</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterleiste</string>
@@ -787,9 +790,15 @@ Um das Menü anzuzeigen, ändern Sie „Video-Streams fingieren“ in „Android
   <string name="morphe_hide_shorts_subscriptions_title">Shorts im Abos-Feed ausblenden</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Im Abos-Feed ausgeblendet</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Im Abos-Feed angezeigt</string>
+  <string name="morphe_hide_shorts_video_description_title">Verbergen von Shorts in der Videobeschreibung</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Verborgen in der Videobeschreibung</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Zeigen in der Videobeschreibung</string>
   <string name="morphe_hide_shorts_history_title">Shorts im Verlauf verstecken</string>
   <string name="morphe_hide_shorts_history_summary_on">Im Verlauf versteckt</string>
   <string name="morphe_hide_shorts_history_summary_off">Im Verlauf angezeigt</string>
+  <string name="morphe_hide_shorts_ai_button_title">AI-Button ausblenden</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI-Button ist ausgeblendet</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI-Button wird angezeigt</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Verbergen des \'Auto-dubbed\'-Labels</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Label \"Automatisch synchronisiert\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Label \"Automatisch synchronisiert\" ist angezeigt</string>
@@ -1500,6 +1509,10 @@ Einschränkungen:
   <string name="morphe_advanced_video_quality_menu_title">Erweitertes Videoqualitätsmenü anzeigen</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Erweitertes Videoqualitätsmenü wird angezeigt</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Erweitertes Videoqualitätsmenü wird nicht angezeigt</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Verstecken von Premium-Qualitätsoptionen</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium-Qualitätsoptionen sind versteckt</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Hochwertige Optionen werden angezeigt</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Folie zum Suchen aktivieren</string>
   <string name="morphe_slide_to_seek_summary_on">Slide zum Suchen ist aktiviert</string>

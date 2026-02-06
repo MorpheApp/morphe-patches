@@ -23,13 +23,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Fógraí</string>
   <string name="morphe_settings_music_screen_2_general_title">Ginearálta</string>
   <string name="morphe_settings_music_screen_3_player_title">Seinnteoir</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Ilchineálach</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Ilghnéitheach</string>
   <!-- ad.video.hideVideoAdsPatch -->
-  <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físeáin</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Tá fógraí físeáin i bhfolach</string>
-  <string name="morphe_music_hide_video_ads_summary_off">Taispeántar fógraí físeáin</string>
+  <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físe</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Tá fógraí físe i bhfolach</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Taispeántar fógraí físe</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-  <string name="morphe_music_play_permanent_repeat_title">Cumasaigh athdhéanamh buan</string>
+  <string name="morphe_music_play_permanent_repeat_title">Cumasaigh athrá buan</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Tá athrá buan cumasaithe</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Tá athrá buan díchumasaithe</string>
   <!-- layout.buttons.hideButtons -->
@@ -50,9 +50,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_summary_on">Tá an barra catagóirí i bhfolach</string>
   <string name="morphe_music_hide_category_bar_summary_off">Taispeántar an barra catagóirí</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
-  <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreoir</string>
+  <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreora</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Tá dath an mhion-imreoir ag teacht leis an imreoir lánscáileáin</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">Úsáideann an mion-imreoir an dath réamhshocraithe</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Úsáideann an mhion-imreoir an dath réamhshocraithe</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra nascleanúna</string>
   <string name="morphe_music_navigation_bar_screen_summary">Folaigh nó athraigh cnaipí an bharra nascleanúna</string>
@@ -83,7 +83,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Tá lipéid i bhfolach</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Taispeántar lipéid</string>
   <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Folaigh an lipéad \'Faigh Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_title">Folaigh an lipéad \'Faigh Ceoil Préimhe\'</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Tá an lipéad i bhfolach</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Taispeántar an lipéad</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->

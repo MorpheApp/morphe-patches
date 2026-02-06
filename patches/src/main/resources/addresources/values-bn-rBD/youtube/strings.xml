@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">নথি লুকান</string>
   <string name="morphe_hide_transcript_section_summary_on">ট্রান্সস্ক্রিপ্ট বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_transcript_section_summary_off">ট্রান্সস্ক্রিপ্ট বিভাগ প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_quizzes_section_title">লুকান কুইজ</string>
+  <string name="morphe_hide_quizzes_section_summary_on">কুইজ বিভাগ লুকিয়ে রয়েছে</string>
+  <string name="morphe_hide_quizzes_section_summary_off">কুইজ বিভাগ প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_description_components_screen_title">ভিডিওর বিবরণ</string>
   <string name="morphe_hide_description_components_screen_summary">ভিডিও বিবরণ এর উপাদান লুকান বা প্রদর্শন করুন</string>
   <string name="morphe_hide_filter_bar_screen_title">ফিল্টার বার</string>
@@ -789,9 +792,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">সাবস্ক্রিপশনস ফিডে Shorts লুকান</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">সাবস্ক্রিপশনস ফিডে লুকানো আছে</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">সাবস্ক্রিপশনস ফিডে দেখানো হয়েছে</string>
+  <string name="morphe_hide_shorts_video_description_title">হাইড শর্টস ভিডিও বর্ণনায়</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">ভিডিও বর্ণনায় গোপিত</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">ভিডিও বর্ণনায় দেখানো</string>
   <string name="morphe_hide_shorts_history_title">Shortsগুলিকে ওয়াচ ইতিহাসে লুকান</string>
   <string name="morphe_hide_shorts_history_summary_on">ওয়াচ হিস্ট্রিতে লুকানো</string>
   <string name="morphe_hide_shorts_history_summary_off">ওয়াচ ইতিহাসে দেখানো</string>
+  <string name="morphe_hide_shorts_ai_button_title">এআই বোতাম লুকান</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">এআই বোতাম লুকানো আছে</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">এআই বোতাম দেখানো হয়েছে</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">লুকান \'অটো-ডাব\' লেবেল</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">অবস্থান লেবেল লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">অবস্থান লেবেল প্রদর্শিত হয়েছে</string>
@@ -1503,6 +1512,10 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_advanced_video_quality_menu_title">উন্নত ভিডিও গুণমান মেনু দেখান</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">উন্নত ভিডিও গুণমান মেনু দেখানো হয়েছে</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">উন্নত ভিডিও গুণমান মেনু দেখানো হয়নি</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">প্রিমিয়াম গুণমান বিকল্প গোপন করুন</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">প্রিমিয়াম গুণমান বিকল্প গোপন করা হয়েছে</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">প্রিমিয়াম গুণমান বিকল্পগুলি দেখানো হয়েছে</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করুন</string>
   <string name="morphe_slide_to_seek_summary_on">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করা হয়েছে</string>

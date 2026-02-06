@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Скрийте \'Транскрипт\'</string>
   <string name="morphe_hide_transcript_section_summary_on">Разделът \'Транскрипт\' е скрит</string>
   <string name="morphe_hide_transcript_section_summary_off">Разделът \'Транскрипт\' е показан</string>
+  <string name="morphe_hide_quizzes_section_title">Скриване на тестовете</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Разделът за тестове е скрит</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Разделът за тестове е показан</string>
   <string name="morphe_hide_description_components_screen_title">Видеоописание</string>
   <string name="morphe_hide_description_components_screen_summary">Скрийте или покажете компоненти за видеоописание</string>
   <string name="morphe_hide_filter_bar_screen_title">Филтрите филтрите и търсенето в домакинството</string>
@@ -783,9 +786,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Дублирането на видеа се показва</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_shorts_video_description_title">Скриване на \"Shorts\" в описанието на видеото</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Скрито в описанието на видеото</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Показано в описанието на видеото</string>
   <string name="morphe_hide_shorts_history_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_shorts_history_summary_on">Дублирането на видеа се показва</string>
   <string name="morphe_hide_shorts_history_summary_off">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_shorts_ai_button_title">Скриване на бутона \"AI\"</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Бутона \"AI\" е скрит</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Бутона \"AI\" се показва</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Скриване на етикета \'Автоматично дублиране\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Етикетът \'Автоматично дублиране\' е скрит</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Етикетът \'Автоматично дублиране\' е показан</string>
@@ -1486,6 +1495,10 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">Непрозрачност на миниплеера трябва да бъде между 0-100</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Включете градиентен заряд за зареждане</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Зареждаването ще има градиентен фон</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Скриване на премиум опции за качество</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Премиум опции за качество са скрити</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Вижте опции за премиум качество</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
   <string name="morphe_slide_to_seek_summary_on">Стил на екрана</string>

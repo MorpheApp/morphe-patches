@@ -228,6 +228,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_transcript_section_title">Átirat elrejtése</string>
   <string name="morphe_hide_transcript_section_summary_on">Az átirat rész el van rejtve</string>
   <string name="morphe_hide_transcript_section_summary_off">Az átirat rész megjelenik</string>
+  <string name="morphe_hide_quizzes_section_title">Rejtett kérdések</string>
+  <string name="morphe_hide_quizzes_section_summary_on">A kérdések szakasza el van rejtve</string>
+  <string name="morphe_hide_quizzes_section_summary_off">A kérdések szakasza látható</string>
   <string name="morphe_hide_description_components_screen_title">Videóleírás</string>
   <string name="morphe_hide_description_components_screen_summary">A videóleírás komponenseinek elrejtése vagy megjelenítése</string>
   <string name="morphe_hide_filter_bar_screen_title">Szűrősáv</string>
@@ -789,9 +792,15 @@ A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállí
   <string name="morphe_hide_shorts_subscriptions_title">Shorts videók elrejtése a Feliratkozások hírcsatornából</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Elrejtve a Feliratkozások hírcsatornából</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Látható a Feliratkozások hírcsatornában</string>
+  <string name="morphe_hide_shorts_video_description_title">Rejtjük el a Shorts-t a videó leírásában</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Rejtve a videó leírásában</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mutatva a videó leírásában</string>
   <string name="morphe_hide_shorts_history_title">Shorts elrejtése a megtekintési előzményekben</string>
   <string name="morphe_hide_shorts_history_summary_on">Elrejtve a megtekintési előzményekben</string>
   <string name="morphe_hide_shorts_history_summary_off">Megjelenik a megtekintési előzményekben</string>
+  <string name="morphe_hide_shorts_ai_button_title">Elrejtett az AI gomb</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Elrejtve van az AI gomb</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Látható az AI gomb</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Rejtélyezd el az \'Automatikus szinkronizálás\' címkét</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">A helycízke címke el van rejtve</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">A helycízke címke meg van jelenítve</string>
@@ -1500,6 +1509,10 @@ Korlátozások:
   <string name="morphe_advanced_video_quality_menu_title">Speciális videóminőség menü megjelenítése</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">A speciális videóminőség menü látható</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">A speciális videóminőség menü nem látható</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium minőség opciók elrejtve</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Felső minőségű opciók mutatódnak</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
   <string name="morphe_slide_to_seek_summary_on">A csúsztatás a kereséshez engedélyezve van</string>

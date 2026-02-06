@@ -228,6 +228,9 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <string name="morphe_hide_transcript_section_title">Ocultar \"Transcripción\"</string>
   <string name="morphe_hide_transcript_section_summary_on">La sección \"Transcripción\" está oculta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sección \"Transcripción\" está visible</string>
+  <string name="morphe_hide_quizzes_section_title">Ocultar \"Cuestionarios\"</string>
+  <string name="morphe_hide_quizzes_section_summary_on">La sección \"Cuestionarios\" está oculta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">La sección \"Cuestionarios\" está visible</string>
   <string name="morphe_hide_description_components_screen_title">Descripción del vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Ocultar o mostrar componentes de la descripción del vídeo</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra de filtros</string>
@@ -789,9 +792,15 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_shorts_subscriptions_title">Ocultar Shorts en feed \"Suscripciones\"</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Ocultos en el feed \"Suscripciones\"</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Visibles en el feed \"Suscripciones\"</string>
+  <string name="morphe_hide_shorts_video_description_title">Ocultar Shorts en la descripción del vídeo</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Oculto en la descripción del vídeo</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mostrado en la descripción del vídeo</string>
   <string name="morphe_hide_shorts_history_title">Ocultar Shorts en historial de reproducciones</string>
   <string name="morphe_hide_shorts_history_summary_on">Ocultos en el historial de reproducciones</string>
   <string name="morphe_hide_shorts_history_summary_off">Visibles en el historial de reproducciones</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ocultar botón \"AI\"</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">El botón \"AI\" está oculto</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">El botón \"AI\" está visible</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ocultar etiqueta \"Doblaje automático\"</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">La etiqueta \"Doblaje automático\" está oculta</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">La etiqueta \"Doblaje automático\" está visible</string>
@@ -1502,6 +1511,10 @@ Limitaciones:
   <string name="morphe_advanced_video_quality_menu_title">Mostrar menú avanzado de calidad de vídeo</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">El menú avanzado de calidad de vídeo está visible</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">El menú avanzado de calidad de vídeo está oculto</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Ocultar opciones de calidad premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Las opciones de calidad premium están ocultas</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Se muestran opciones de calidad premium</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activar deslizar para buscar</string>
   <string name="morphe_slide_to_seek_summary_on">Deslizar para buscar está activado</string>

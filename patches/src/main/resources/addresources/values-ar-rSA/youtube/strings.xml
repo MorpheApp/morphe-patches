@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">إخفاء النص</string>
   <string name="morphe_hide_transcript_section_summary_on">تم إخفاء قسم النص</string>
   <string name="morphe_hide_transcript_section_summary_off">يتم عرض قسم النص</string>
+  <string name="morphe_hide_quizzes_section_title">إخفاء الاختبارات</string>
+  <string name="morphe_hide_quizzes_section_summary_on">تم إخفاء قسم الاختبارات</string>
+  <string name="morphe_hide_quizzes_section_summary_off">يتم عرض قسم الاختبارات</string>
   <string name="morphe_hide_description_components_screen_title">وصف الفيديو</string>
   <string name="morphe_hide_description_components_screen_summary">إخفاء أو عرض مكونات وصف الفيديو</string>
   <string name="morphe_hide_filter_bar_screen_title">شريط التصفية</string>
@@ -789,9 +792,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">إخفاء Shorts في موجز الاشتراكات</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">مخفي في موجز الاشتراكات</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">يُعرض في موجز الاشتراكات</string>
+  <string name="morphe_hide_shorts_video_description_title">إخفاء Shorts في وصف الفيديو</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">مخفي في وصف الفيديو</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">تُعرض في وصف الفيديو</string>
   <string name="morphe_hide_shorts_history_title">إخفاء Shorts في السجلّ</string>
   <string name="morphe_hide_shorts_history_summary_on">مخفي في السجلّ</string>
   <string name="morphe_hide_shorts_history_summary_off">يُعرض في السجلّ</string>
+  <string name="morphe_hide_shorts_ai_button_title">إخفاء زر الذكاء الاصطناعي</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">تم إخفاء زر الذكاء الاصطناعي</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">يتم عرض زر الذكاء الاصطناعي</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">إخفاء علامة \'مُدبلج تلقائيًا\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">تم إخفاء علامة \'مُدبلج تلقائيًا\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">يتم عرض علامة \'مُدبلج تلقائيًا\'</string>
@@ -1503,6 +1512,10 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">عرض قائمة جودة الفيديو المتقدمة</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">يتم عرض قائمة جودة الفيديو المتقدمة</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">لا يتم عرض قائمة جودة الفيديو المتقدمة</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">إخفاء خيارات جودة Premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">تم إخفاء خيارات جودة Premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">يتم عرض خيارات جودة Premium</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary_on">تم تمكين التمرير للتقديم أو الترجيع</string>

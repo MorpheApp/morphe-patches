@@ -228,6 +228,9 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_transcript_section_title">Piilota transkriptio</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkriptio-osio piilotetaan</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkriptio-osio näytetään</string>
+  <string name="morphe_hide_quizzes_section_title">Piilota tarrat</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Elokuvat-osio piilotetaan</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Elokuvat-osio näytetään</string>
   <string name="morphe_hide_description_components_screen_title">Videon kuvaus</string>
   <string name="morphe_hide_description_components_screen_summary">Piilota tai näytä videon kuvauksen osia</string>
   <string name="morphe_hide_filter_bar_screen_title">Suodatinpalkki</string>
@@ -789,9 +792,15 @@ Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"<
   <string name="morphe_hide_shorts_subscriptions_title">Piilota Shortsit Tilaukset-syötteessä</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Piilotetaan Tilaukset-syötteessä</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Näytetään tilaukset-syötteessä</string>
+  <string name="morphe_hide_shorts_video_description_title">Piilota lyhytvideo kuvauksesta</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Piilotettu kuvauksessa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Näytetty kuvauksessa</string>
   <string name="morphe_hide_shorts_history_title">Piilota Shortsit katseluhistoriassa</string>
   <string name="morphe_hide_shorts_history_summary_on">Piilotetaan katseluhistoriassa</string>
   <string name="morphe_hide_shorts_history_summary_off">Näytetään katseluhistoriassa</string>
+  <string name="morphe_hide_shorts_ai_button_title">Piilota AI-painike</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI-painike on piilotettu</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI-painike näytetään</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Piilota \'Automaattisesti dubattu\' -merkki</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Sijaintitieto piilotetaan</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Sijaintitieto näytetään</string>
@@ -1503,6 +1512,8 @@ Rajoitukset:
   <string name="morphe_advanced_video_quality_menu_title">Näytä edistynyt videolaatuvalikko</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Edistynyt videolaatuvalikko näytetään</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Edistynyttä videolaatuvalikkoa ei näytetä</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_summary_off">Korkealaatuisia valintoja näytetään</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ota kelaus liu\'uttamalla käyttöön</string>
   <string name="morphe_slide_to_seek_summary_on">Kelaus liu\'uttamalla on käytössä</string>

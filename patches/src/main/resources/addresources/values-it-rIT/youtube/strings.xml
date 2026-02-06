@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">Informazioni</string>
+  <string name="morphe_settings_screen_00_about_title">A proposito</string>
   <string name="morphe_settings_screen_01_ads_title">Pubblicità</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniature alternative</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
@@ -228,6 +228,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_transcript_section_title">Nascondi Trascrizione</string>
   <string name="morphe_hide_transcript_section_summary_on">La sezione Trascrizione è nascosta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sezione Trascrizione è visibile</string>
+  <string name="morphe_hide_quizzes_section_title">Nascondi Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">La sezione Quiz è nascosta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">La sezione Quiz è visibile</string>
   <string name="morphe_hide_description_components_screen_title">Descrizione del video</string>
   <string name="morphe_hide_description_components_screen_summary">Mostra o nascondi i componenti della descrizione del video</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra dei filtri</string>
@@ -789,9 +792,15 @@ Per visualizzare il menu delle tracce audio, impostare 'Spoof video streams' su 
   <string name="morphe_hide_shorts_subscriptions_title">Nascondi Shorts nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Nascosto nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Mostrato nel feed Iscrizioni</string>
+  <string name="morphe_hide_shorts_video_description_title">Nascondi i Shorts nella descrizione del video</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Nascosto nella descrizione del video</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mostrato nella descrizione del video</string>
   <string name="morphe_hide_shorts_history_title">Nascondi Shorts nella cronologia</string>
   <string name="morphe_hide_shorts_history_summary_on">Nascosti nella cronologia di visualizzazione</string>
   <string name="morphe_hide_shorts_history_summary_off">Mostrato nella cronologia</string>
+  <string name="morphe_hide_shorts_ai_button_title">Nascondi pulsante AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Pulsante AI è nascosto</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Pulsante AI è visibile</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Nascondi l\'etichetta \'Auto-dubbed\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">L\'etichetta di posizione è nascosta</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">L\'etichetta di posizione è visibile</string>
@@ -1502,6 +1511,10 @@ Limitazioni:
   <string name="morphe_advanced_video_quality_menu_title">Mostra il menu avanzato della qualità video</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Viene mostrato il menu avanzato della qualità video</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Il menu avanzato della qualità video non viene mostrato</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Nascondi opzioni di qualità premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Le opzioni di qualità premium sono nascoste</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Opzioni di qualità premium visualizzate</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Abilita scorri per avanzare</string>
   <string name="morphe_slide_to_seek_summary_on">Scorri per avanzare è abilitato</string>

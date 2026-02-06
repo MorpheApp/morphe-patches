@@ -228,6 +228,9 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_transcript_section_title">Sekcja z transkrypcjami</string>
   <string name="morphe_hide_transcript_section_summary_on">Ukryta</string>
   <string name="morphe_hide_transcript_section_summary_off">Widoczna</string>
+  <string name="morphe_hide_quizzes_section_title">Sekcja z quizami</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Widoczna</string>
   <string name="morphe_hide_description_components_screen_title">Opis filmu</string>
   <string name="morphe_hide_description_components_screen_summary">Ukryj lub pokazuj elementy opisu filmu</string>
   <string name="morphe_hide_filter_bar_screen_title">Pasek filtrowania</string>
@@ -620,8 +623,8 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_notifications_button_summary_on">Ukryty</string>
   <string name="morphe_hide_notifications_button_summary_off">Widoczny</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamień przyciski przesyłania i powiadomień</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_on">Zamienione</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_off">Niezamienione</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Tak</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Nie</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Jeśli zmiana tego ustawienia nie przyniesie efektu, spróbuj przełączyć się w tryb incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Etykiety przycisków nawigacji</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Ukryte</string>
@@ -745,8 +748,8 @@ Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie fi
   <string name="morphe_hide_endscreen_cards_summary_off">Widoczne</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Oświetlenie kinowe</string>
-  <string name="morphe_ambient_mode_screen_summary">Pomiń ograniczenia oszczędzania energii dla oświetlenia kinowego i wyłącz je całkowicie lub w trybie pełnoekranowym</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Pomiń ograniczenia oświetlenia kinowego</string>
+  <string name="morphe_ambient_mode_screen_summary">Omiń ograniczenia oszczędzania energii dla oświetlenia kinowego i wyłącz je całkowicie lub w trybie pełnoekranowym</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Ograniczenia oświetlenia kinowego</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Ograniczenia oświetlenia kinowego dla oszczędności energii są omijane</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Ograniczenia oświetlenia kinowego dla oszczędności energii nie są omijane</string>
   <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Włączenie tej opcji może skrócić czas pracy na baterii.</string>
@@ -789,9 +792,15 @@ Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie fi
   <string name="morphe_hide_shorts_subscriptions_title">Shortsy na stronie subskrypcji</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Ukryte</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Widoczne</string>
+  <string name="morphe_hide_shorts_video_description_title">Shortsy w opisie filmów</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Ukryte</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Widoczne</string>
   <string name="morphe_hide_shorts_history_title">Shortsy w historii oglądania</string>
   <string name="morphe_hide_shorts_history_summary_on">Ukryte</string>
   <string name="morphe_hide_shorts_history_summary_off">Widoczne</string>
+  <string name="morphe_hide_shorts_ai_button_title">Przycisk od AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Widoczny</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Etykieta automatycznego dubbingu</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Ukryta</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Widoczna</string>
@@ -1502,6 +1511,10 @@ Ograniczenia:
   <string name="morphe_advanced_video_quality_menu_title">Zaawansowane menu od jakości filmu</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Widoczne</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Ukryte</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Opcje jakości Premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Ukryte</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Widoczne</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Przesuń, by przewinąć</string>
   <string name="morphe_slide_to_seek_summary_on">Włączone</string>

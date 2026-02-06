@@ -228,6 +228,9 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_transcript_section_title">Sakrij transkript</string>
   <string name="morphe_hide_transcript_section_summary_on">Odeljak za transkripciju je skriven</string>
   <string name="morphe_hide_transcript_section_summary_off">Odeljak za transkripciju je prikazan</string>
+  <string name="morphe_hide_quizzes_section_title">Sakrij kvizove</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Odeljak kvizovi je skriven</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Odeljak kvizovi je prikazan</string>
   <string name="morphe_hide_description_components_screen_title">Opis videa</string>
   <string name="morphe_hide_description_components_screen_summary">Sakrijte ili prikažite komponente opisa videa</string>
   <string name="morphe_hide_filter_bar_screen_title">Traka filtera</string>
@@ -789,9 +792,15 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'Andr
   <string name="morphe_hide_shorts_subscriptions_title">Sakrij Shorts u fidu „Praćenja”</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Skriveno u fidu „Praćenja”</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Prikazano u fidu „Praćenja”</string>
+  <string name="morphe_hide_shorts_video_description_title">Sakrij Shorts u opisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Sakriveno u opisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Prikaženo u opisu videa</string>
   <string name="morphe_hide_shorts_history_title">Sakrij Shorts u istoriji gledanja</string>
   <string name="morphe_hide_shorts_history_summary_on">Skriveno u istoriji gledanja</string>
   <string name="morphe_hide_shorts_history_summary_off">Prikazano u istoriji gledanja</string>
+  <string name="morphe_hide_shorts_ai_button_title">Sakrij dugme \"AI\"</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Dugme \"AI\" je sakriveno</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Dugme \"AI\" je prikazano</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Sakrij oznaku \'Automatski dubiran\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Oznaka lokacije je skrivena</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Oznaka lokacije je prikazana</string>
@@ -1502,6 +1511,10 @@ Ograničenja:
   <string name="morphe_advanced_video_quality_menu_title">Prikaži napredni meni kvaliteta videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Napredni meni kvaliteta videa je prikazan</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Napredni meni kvaliteta videa nije prikazan</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Sakrij opcije Premium kvaliteta</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Opcije Premium kvaliteta su sakrivene</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kvalitetni opcije su prikazane</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogući prevlačenje za premotavanje</string>
   <string name="morphe_slide_to_seek_summary_on">Prevlačenje za premotavanje je omogućeno</string>

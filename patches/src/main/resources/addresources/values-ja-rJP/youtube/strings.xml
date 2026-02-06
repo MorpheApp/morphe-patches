@@ -161,8 +161,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_summary_on">全画面表示モードのクイック アクションは表示されません</string>
   <string name="morphe_hide_quick_actions_summary_off">全画面表示モードのクイック アクションは表示されます</string>
   <string name="morphe_hide_related_videos_title">関連動画を非表示</string>
-  <string name="morphe_hide_related_videos_summary_on">クイック アクション内の関連動画は表示されません</string>
-  <string name="morphe_hide_related_videos_summary_off">クイック アクション内の関連動画は表示されます</string>
+  <string name="morphe_hide_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
+  <string name="morphe_hide_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">チャンネル登録者のガイドラインを非表示</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">チャンネル登録者のコミュニティ ガイドラインは表示されません</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">チャンネル登録者のコミュニティ ガイドラインは表示されます</string>
@@ -229,6 +229,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">文字起こしを非表示</string>
   <string name="morphe_hide_transcript_section_summary_on">文字起こしセクションは表示されません</string>
   <string name="morphe_hide_transcript_section_summary_off">文字起こしセクションは表示されます</string>
+  <string name="morphe_hide_quizzes_section_title">クイズを非表示</string>
+  <string name="morphe_hide_quizzes_section_summary_on">クイズ セクションは表示されません</string>
+  <string name="morphe_hide_quizzes_section_summary_off">クイズ セクションは表示されます</string>
   <string name="morphe_hide_description_components_screen_title">概要欄</string>
   <string name="morphe_hide_description_components_screen_summary">概要欄のコンポーネントを表示または非表示にします</string>
   <string name="morphe_hide_filter_bar_screen_title">フィルタバー</string>
@@ -790,9 +793,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">登録チャンネル フィードでショートを非表示</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">登録チャンネル フィードにはショート動画は表示されません</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">登録チャンネル フィードにはショート動画が表示されます</string>
+  <string name="morphe_hide_shorts_video_description_title">動画の概要欄でショートを非表示</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">動画の概要欄にはショート動画は表示されません</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">動画の概要にはショート動画が表示されます</string>
   <string name="morphe_hide_shorts_history_title">再生履歴でショートを非表示</string>
   <string name="morphe_hide_shorts_history_summary_on">再生履歴にはショート動画は表示されません</string>
   <string name="morphe_hide_shorts_history_summary_off">再生履歴にはショート動画が表示されます</string>
+  <string name="morphe_hide_shorts_ai_button_title">AI ボタンを非表示</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI ボタンは表示されません</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI ボタンは表示されます</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">「オートダビング」ラベルを非表示</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">「オートダビング」ラベルは表示されません</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">「オートダビング」ラベルは表示されます</string>
@@ -920,7 +929,7 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_1">無効</string>
   <string name="morphe_exit_fullscreen_entry_2">縦画面</string>
   <string name="morphe_exit_fullscreen_entry_3">横画面</string>
-  <string name="morphe_exit_fullscreen_entry_4">縦画面および横画面</string>
+  <string name="morphe_exit_fullscreen_entry_4">縦画面 &amp; 横画面</string>
   <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">縦画面の全画面表示で動画を開く</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">縦画面の全画面表示で動画を開きます</string>
@@ -1501,6 +1510,10 @@ Automotive レイアウト
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを表示</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">詳細設定メニューが画質メニューとして表示されます</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">通常の画質メニューが表示されます</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Premium 画質を非表示</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium 画質は画質設定メニューに表示されません</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium 画質は画質設定メニューに表示されます</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary_on">スライドによるシークは有効です。プレーヤー画面を左右にスライドすると、前後にシークします</string>

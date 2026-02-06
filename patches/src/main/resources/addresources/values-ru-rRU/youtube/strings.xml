@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Скрыть раздел расшифровки</string>
   <string name="morphe_hide_transcript_section_summary_on">Раздел расшифровки в описании видео скрыт</string>
   <string name="morphe_hide_transcript_section_summary_off">Раздел расшифровки в описании видео показан</string>
+  <string name="morphe_hide_quizzes_section_title">Скрыть Викторины</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Раздел Викторин скрыт</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Раздел Викторин показан</string>
   <string name="morphe_hide_description_components_screen_title">Описание видео</string>
   <string name="morphe_hide_description_components_screen_summary">Скрыть или показать компоненты описания видео</string>
   <string name="morphe_hide_filter_bar_screen_title">Панель фильтров</string>
@@ -789,9 +792,15 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_subscriptions_title">Скрыть Shorts в ленте \"Подписок\"</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Shorts в ленте \"Подписок\" скрыты</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Shorts в ленте \"Подписок\" показаны</string>
+  <string name="morphe_hide_shorts_video_description_title">Скрыть \"Шорты\" в описании видео</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Скрыто в описании видео</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Показано в описании видео</string>
   <string name="morphe_hide_shorts_history_title">Скрыть Shorts в истории просмотров</string>
   <string name="morphe_hide_shorts_history_summary_on">Shorts в истории просмотров скрыты</string>
   <string name="morphe_hide_shorts_history_summary_off">Shorts в истории просмотров показаны</string>
+  <string name="morphe_hide_shorts_ai_button_title">Скрыть кнопку \"AI\"</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Кнопка \"AI\" скрыта</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Кнопка \"AI\" показана</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Скрыть метку \"Автодубль\"</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Метка местоположения в Shorts скрыта</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Метка местоположения в Shorts показана</string>
@@ -1220,7 +1229,7 @@ Cookies будут сохраняться автоматически, если �
 
 Если позже данный параметр будет отключен, рекомендуется очистить данные приложения для предотвращения проблем с пользовательским интерфейсом."</string>
   <string name="morphe_spoof_app_version_target_title">Подменить версию приложения на</string>
-  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Восстановить старые сохранения в плейлист</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Восстановить старое сохранение в список воспроизведения</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Отключить жирные значки</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Восстановить не свернутую панель действий видео</string>
   <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Восстановление старых иконок плеера Shorts</string>
@@ -1502,6 +1511,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_advanced_video_quality_menu_title">Показать расширенное меню качества видео</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Расширенное меню качества видео показано</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Расширенное меню качества видео скрыто</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Скрыть параметры Premium качества</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Параметры Premium качества скрыты</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Параметры Premium качества показаны</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Включить перемотку видео слайдом</string>
   <string name="morphe_slide_to_seek_summary_on">Перемотка видео слайдом включена</string>

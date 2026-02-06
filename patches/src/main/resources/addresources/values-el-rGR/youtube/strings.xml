@@ -230,6 +230,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Ενότητα «Μεταγραφή»</string>
   <string name="morphe_hide_transcript_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_transcript_section_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_quizzes_section_title">Απόκρυψη Ερωτήσεων</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Η ενότητα Ερωτήσεων είναι κρυμμένη</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Η ενότητα Ερωτήσεων είναι ορατή</string>
   <string name="morphe_hide_description_components_screen_title">Περιγραφή βίντεο</string>
   <string name="morphe_hide_description_components_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων περιγραφής βίντεο</string>
   <string name="morphe_hide_filter_bar_screen_title">Γραμμή φίλτρων</string>
@@ -791,9 +794,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Shorts στην καρτέλα «Εγγραφές»</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Κρυμμένα</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_shorts_video_description_title">Απόκρυψη Shorts στην περιγραφή βίντεο</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Απόκρυψη στην περιγραφή βίντεο</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Εμφάνιση στην περιγραφή βίντεο</string>
   <string name="morphe_hide_shorts_history_title">Shorts στο ιστορικό παρακολούθησης</string>
   <string name="morphe_hide_shorts_history_summary_on">Κρυμμένα</string>
   <string name="morphe_hide_shorts_history_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_shorts_ai_button_title">Κρυφή κουμπί AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Το κουμπί AI είναι κρυμμένο</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Το κουμπί AI εμφανίζεται</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Απόκρυψη ετικέτας \'Αυτόματη μεταγλώττιση\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Η ετικέτα «Αυτο-φωνοδύναμη» είναι κρυμμένη</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Η ετικέτα «Αυτο-φωνοδύναμη» εμφανίζεται</string>
@@ -1502,6 +1511,10 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">Εμφάνιση προχωρημένου μενού ποιότητας βίντεο</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Εμφανίζεται το προχωρημένο μενού ποιότητας βίντεο</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Δεν εμφανίζεται το προχωρημένο μενού ποιότητας βίντεο</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Απόκρυψη επιλογών υψηλής ποιότητας</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Οι επιλογές υψηλής ποιότητας είναι απόκρυπες</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Προσθήκες υψηλής ποιότητας εμφανίζονται</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Χειρονομία συρσίματος για αναζήτηση</string>
   <string name="morphe_slide_to_seek_summary_on">Η χειρονομία συρσίματος για αναζήτηση στη γραμμή προόδου είναι ενεργοποιημένη</string>

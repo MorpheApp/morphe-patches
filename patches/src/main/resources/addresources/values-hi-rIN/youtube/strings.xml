@@ -229,6 +229,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">ट्रांसक्रिप्ट को छुपाएं</string>
   <string name="morphe_hide_transcript_section_summary_on">ट्रांसक्रिप्ट सैक्शन छुपा हुआ है</string>
   <string name="morphe_hide_transcript_section_summary_off">ट्रांसक्रिप्ट सैक्शन दिखाया गया है</string>
+  <string name="morphe_hide_quizzes_section_title"> छुपाएं क्विज़</string>
+  <string name="morphe_hide_quizzes_section_summary_on">क्विज़ सैक्शन छुपा हुआ है</string>
+  <string name="morphe_hide_quizzes_section_summary_off">क्विज़ सैक्शन दिखाया गया है</string>
   <string name="morphe_hide_description_components_screen_title">वीडियो विवरण</string>
   <string name="morphe_hide_description_components_screen_summary">वीडियो विवरण घटकों को छुपाएं या दिखाएं</string>
   <string name="morphe_hide_filter_bar_screen_title">फ़िल्टर बार</string>
@@ -671,6 +674,12 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_video_description_title">छुपाएं वीडियो विवरण में शॉर्ट्स</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">वीडियो विवरण में छुपा हुआ</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">वीडियो विवरण में दिखाया गया</string>
+  <string name="morphe_hide_shorts_ai_button_title">छुपाएं AI बटन</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI बटन छुपा हुआ है</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI बटन दिखाया गया है</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">शॉर्ट्स \'ऑटो-डब्ब्ड\' लेबल छुपाएं</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">ऑटो-डब्ब्ड लेबल छिपा हुआ है</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">ऑटो-डब्ब्ड लेबल दिखाई देता है</string>
@@ -769,6 +778,10 @@ Second \"item\" text"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">छुपाएं प्रीमियम गुणवत्ता विकल्प</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">प्रीमियम गुणवत्ता विकल्प छुपाए गए हैं</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">प्रीमियम गुणवत्ता विकल्प दिखाए गए हैं</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_about_js">• वीडियो शुरू होने में देर हो सकती है</string>

@@ -29,16 +29,14 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Kustom</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Ekperimental! 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi eksperimental ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 Harap diharapkan perilaku aplikasi aneh atau bug yang tidak teridentifikasi karena kita sedang menyesuaikan patch untuk versi aplikasi ini.
-<br/>
-<br/>
-Jika Anda ingin mendapatkan pengalaman paling bebas masalah, maka <b>hapus</b> ini dan patch versi aplikasi yang direkomendasikan ✅ <b>%2$s</b>"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin eksperimental</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin stabil</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi saat kami menyempurnakan tambalan untuk versi aplikasi ini.
+&lt;br/&gt;&lt;br/&gt;
+Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi uji coba</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>

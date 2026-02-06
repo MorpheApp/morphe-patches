@@ -30,6 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Avviso sperimentale! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Stai utilizzando una versione sperimentale di ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Aspettati comportamenti strani dell'app o bug non identificati mentre affiniamo le patch per questa versione dell'app.
+&lt;br/&gt;&lt;br/&gt;
+Se vuoi l'esperienza con meno problemi, allora &lt;b&gt;disinstalla&lt;/b&gt; questo e patcha la versione consigliata dell'applicazione ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Voglio sperimentare</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Voglio stabile</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -50,10 +55,10 @@ La riproduzione potrebbe non funzionare"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prova a abilitare: Falsificare video streams > accesso Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prova ad abilitare: Falsificare video streams > accesso Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client predefinito</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">accesso Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Accesso ad Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Non sei connesso ad Android VR. Premere qui per accedere</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Attualmente connesso ad Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->

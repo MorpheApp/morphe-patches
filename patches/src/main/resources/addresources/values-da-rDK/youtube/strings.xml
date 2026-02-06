@@ -228,6 +228,9 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_transcript_section_title">Skjul udskrift</string>
   <string name="morphe_hide_transcript_section_summary_on">Afsnittet er skjult</string>
   <string name="morphe_hide_transcript_section_summary_off">Afsnittet er vist</string>
+  <string name="morphe_hide_quizzes_section_title">Skjul quizzer</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizzer-sektion er skjult</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizzer-sektion er vist</string>
   <string name="morphe_hide_description_components_screen_title">Video beskrivelse</string>
   <string name="morphe_hide_description_components_screen_summary">Skjul eller vis komponenter til videobeskrivelse</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtrer bjælke</string>
@@ -789,9 +792,15 @@ For at vise Lydspor-menuen, ændr 'Spoof video streams' til 'Android No SDK'"</s
   <string name="morphe_hide_shorts_subscriptions_title">Skjul Shorts i \'Abonnementer\'-feed</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Skjult i \'Abonnementer\'-feed</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Vises i \'Abonnementer\'-feed</string>
+  <string name="morphe_hide_shorts_video_description_title">Skjul Shorts i video-beskrivelse</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Skjult i video-beskrivelse</string>
+  <string name="morphe_hide_shorts_video_description_summary_off"> vist i video-beskrivelse</string>
   <string name="morphe_hide_shorts_history_title">Skjul shorts i historik</string>
   <string name="morphe_hide_shorts_history_summary_on">Skjult i historikken</string>
   <string name="morphe_hide_shorts_history_summary_off">Vises i historik</string>
+  <string name="morphe_hide_shorts_ai_button_title">Skjul AI-knappen</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI-knappen er skjult</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI-knappen er vist</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Skjul \'Auto-dubbed\' label</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Placeringsetiket er skjult</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Placeringsetiket er vist</string>
@@ -1502,6 +1511,10 @@ Begrænsninger:
   <string name="morphe_advanced_video_quality_menu_title">Vis avanceret menu for videokvalitet</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Avanceret menu for videokvalitet vises</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Avanceret menu for videokvalitet vises ikke</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Skjul Premium kvalitetsindstillinger</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium kvalitetsindstillinger er skjult</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kvalitetsmuligheder vises</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
   <string name="morphe_slide_to_seek_summary_on">Dias for at søge er aktiveret</string>

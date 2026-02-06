@@ -29,16 +29,14 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Własna</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Experimentalne ostrzeżenie! ⚠️</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji aplikacji ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🛠️ Oczekujesz nieprzewidywalnego zachowania aplikacji lub nieidentyfikowanych błędów, ponieważ dopracowujemy łaty dla tej wersji aplikacji.
-<br/>
-<br/>
-Jeśli chcesz najbardziej stabilną wersję, to <b>odinstaluj</b> tę i zaimplementuj zalecaną wersję aplikacji ✅ <b>%2$s</b>"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcę wersji eksperymentalnej</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcę wersji stabilnej</string>
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Wersja Eksperymentalna! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Oczekuj nieprzewidywalnego zachowania aplikacji lub niezidentyfikowanych błędów, ponieważ dopracowujemy modyfikacje dla tej wersji aplikacji.
+&lt;br/&gt;&lt;br/&gt;
+Jeśli chcesz najbardziej stabilną wersję to &lt;b&gt;odinstaluj&lt;/b&gt; tą i zmodyfikuj zalecaną wersję aplikacji ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcę eksperymentalną wersję</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcę stabilną wersję</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Powiadomienie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Twoja historia oglądania nie jest zapisywana.&lt;br&gt;&lt;br&gt;Najprawdopodobniej jest to spowodowane blokadą reklam DNS lub przez serwer proxy.&lt;br&gt;&lt;br&gt;Aby to naprawić, dodaj do białej listy&lt;b&gt;s.youtube.com&lt;/b&gt; lub wyłącz wszystkie blokady DNS i proxy.</string>

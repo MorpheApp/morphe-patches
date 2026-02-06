@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">הסתר תמליל</string>
   <string name="morphe_hide_transcript_section_summary_on">מדור התמליל מוסתר</string>
   <string name="morphe_hide_transcript_section_summary_off">מדור התמליל מוצג</string>
+  <string name="morphe_hide_quizzes_section_title">הסתר חידות</string>
+  <string name="morphe_hide_quizzes_section_summary_on">המחלקה חידות מוסתר</string>
+  <string name="morphe_hide_quizzes_section_summary_off">המחלקה חידות מוצג</string>
   <string name="morphe_hide_description_components_screen_title">תיאור סרטון</string>
   <string name="morphe_hide_description_components_screen_summary">הסתר או הצג רכיבי תיאור סרטון</string>
   <string name="morphe_hide_filter_bar_screen_title">סרגל סינון</string>
@@ -789,9 +792,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">להסתיר Shorts בפיד המינויים</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">מוסתר בפיד המנויים</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">מוצג בפיד המינויים</string>
+  <string name="morphe_hide_shorts_video_description_title">הסתר קצרים בתיאור וידאו</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">נעלם בתיאור וידאו</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">נראה בתיאור וידאו</string>
   <string name="morphe_hide_shorts_history_title">הסתר Shorts בהיסטוריית הצפייה</string>
   <string name="morphe_hide_shorts_history_summary_on">מוסתר בהיסטוריית הצפייה</string>
   <string name="morphe_hide_shorts_history_summary_off">מוצג בהיסטוריית הצפייה</string>
+  <string name="morphe_hide_shorts_ai_button_title">הסתר כפתור AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">כפתור AI מוסתר</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">כפתור AI מוצג</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">הסתר את הלאabel \'אוטו-דובב\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">תווית מיקום מוסתרת</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">תווית מיקום מוצגת</string>
@@ -1501,6 +1510,10 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">הצג תפריט איכות סרטון מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">תפריט איכות סרטון מתקדם מוצג</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">תפריט איכות סרטון מתקדם אינו מוצג</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">הסתר אפשרויות איכות וידאו פרימיום</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">אפשרויות איכות וידאו פרימיום מוסתרות</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">אפשרויות איכות премиום מוצגות</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
   <string name="morphe_slide_to_seek_summary_on">החלק כדי לדלג מופעל</string>
