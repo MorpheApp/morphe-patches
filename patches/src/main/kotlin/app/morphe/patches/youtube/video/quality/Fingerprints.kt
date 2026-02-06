@@ -74,16 +74,18 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
 internal object VideoStreamingDataToStringFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("VideoStreamingData(itags=")
+    ),
     custom = { method, _ ->
         method.name == "toString"
-    },
-    strings = listOf("VideoStreamingData(itags=")
+    }
 )
 
 internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT"),
+        string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT")
     )
 )
 
