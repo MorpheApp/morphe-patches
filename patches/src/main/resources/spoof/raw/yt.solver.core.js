@@ -157,124 +157,212 @@ var jsc = (function (meriyah, astring) {
     ],
   };
   function extract$1(node) {
-    if (!matchesStructure(node, identifier$1)) {
-      return null;
-    }
-    let block;
-    if (
+    const blocks = [];
+    if (matchesStructure(node, identifier$1)) {
+      if (
+        node.type === 'ExpressionStatement' &&
+        node.expression.type === 'AssignmentExpression' &&
+        node.expression.right.type === 'FunctionExpression' &&
+        node.expression.right.params.length === 3
+      ) {
+        blocks.push({
+          name: astring.generate(node.expression.left),
+          body: node.expression.right.body,
+          params: node.expression.right.params
+            .filter((p) => p.type === 'Identifier')
+            .map((p) => p.name),
+        });
+      } else if (node.type === 'VariableDeclaration') {
+        for (const decl of node.declarations) {
+          if (
+            _optionalChain$2([
+              decl,
+              'access',
+              (_) => _.init,
+              'optionalAccess',
+              (_2) => _2.type,
+            ]) === 'FunctionExpression' &&
+            decl.init.params.length === 3
+          ) {
+            const name = decl.id.type === 'Identifier' ? decl.id.name : '?';
+            blocks.push({
+              name: name,
+              body: decl.init.body,
+              params: decl.init.params
+                .filter((p) => p.type === 'Identifier')
+                .map((p) => p.name),
+            });
+          }
+        }
+      } else if (
+        node.type === 'FunctionDeclaration' &&
+        node.params.length === 3
+      ) {
+        const name =
+          _optionalChain$2([
+            node,
+            'access',
+            (_3) => _3.id,
+            'optionalAccess',
+            (_4) => _4.name,
+          ]) || '?';
+        blocks.push({
+          name: name,
+          body: node.body,
+          params: node.params
+            .filter((p) => p.type === 'Identifier')
+            .map((p) => p.name),
+        });
+      } else {
+        return null;
+      }
+    } else if (
       node.type === 'ExpressionStatement' &&
-      node.expression.type === 'AssignmentExpression' &&
-      node.expression.right.type === 'FunctionExpression'
+      node.expression.type === 'SequenceExpression'
     ) {
-      block = node.expression.right.body;
-    } else if (node.type === 'VariableDeclaration') {
-      for (const decl of node.declarations) {
+      for (const expr of node.expression.expressions) {
         if (
-          decl.type === 'VariableDeclarator' &&
-          _optionalChain$2([
-            decl,
-            'access',
-            (_) => _.init,
-            'optionalAccess',
-            (_2) => _2.type,
-          ]) === 'FunctionExpression' &&
-          _optionalChain$2([
-            decl,
-            'access',
-            (_3) => _3.init,
-            'optionalAccess',
-            (_4) => _4.params,
-            'access',
-            (_5) => _5.length,
-          ]) === 3
+          expr.type === 'AssignmentExpression' &&
+          expr.right.type === 'FunctionExpression' &&
+          expr.right.params.length === 3
         ) {
-          block = decl.init.body;
-          break;
+          blocks.push({
+            name: astring.generate(expr.left),
+            body: expr.right.body,
+            params: expr.right.params
+              .filter((p) => p.type === 'Identifier')
+              .map((p) => p.name),
+          });
         }
       }
-    } else if (node.type === 'FunctionDeclaration') {
-      block = node.body;
     } else {
       return null;
     }
-    const relevantExpression = _optionalChain$2([
-      block,
-      'optionalAccess',
-      (_6) => _6.body,
-      'access',
-      (_7) => _7.at,
-      'call',
-      (_8) => _8(-2),
-    ]);
-    let call = null;
-    if (matchesStructure(relevantExpression, logicalExpression)) {
+    for (const { body: block, params: params, name: funcName } of blocks) {
+      let call = null;
+      let sigVarName = null;
+      const thirdParam = params[2];
+      for (const stmt of block.body) {
+        if (matchesStructure(stmt, logicalExpression)) {
+          if (
+            stmt.type === 'ExpressionStatement' &&
+            stmt.expression.type === 'LogicalExpression' &&
+            stmt.expression.right.type === 'SequenceExpression' &&
+            stmt.expression.right.expressions[0].type ===
+              'AssignmentExpression' &&
+            stmt.expression.right.expressions[0].right.type === 'CallExpression'
+          ) {
+            call = stmt.expression.right.expressions[0].right;
+            if (stmt.expression.left.type === 'Identifier') {
+              sigVarName = stmt.expression.left.name;
+            }
+            break;
+          }
+        } else if (stmt.type === 'IfStatement') {
+          let consequent = stmt.consequent;
+          while (consequent.type === 'LabeledStatement') {
+            consequent = consequent.body;
+          }
+          if (consequent.type === 'BlockStatement') {
+            for (const n of consequent.body) {
+              if (!matchesStructure(n, nsigExpression)) {
+                continue;
+              }
+              if (
+                n.type === 'VariableDeclaration' &&
+                _optionalChain$2([
+                  n,
+                  'access',
+                  (_5) => _5.declarations,
+                  'access',
+                  (_6) => _6[0],
+                  'optionalAccess',
+                  (_7) => _7.init,
+                  'optionalAccess',
+                  (_8) => _8.type,
+                ]) === 'CallExpression'
+              ) {
+                call = n.declarations[0].init;
+                break;
+              }
+            }
+          }
+          if (call) break;
+        }
+      }
       if (
         _optionalChain$2([
-          relevantExpression,
+          call,
           'optionalAccess',
-          (_9) => _9.type,
-        ]) !== 'ExpressionStatement' ||
-        relevantExpression.expression.type !== 'LogicalExpression' ||
-        relevantExpression.expression.right.type !== 'SequenceExpression' ||
-        relevantExpression.expression.right.expressions[0].type !==
-          'AssignmentExpression' ||
-        relevantExpression.expression.right.expressions[0].right.type !==
-          'CallExpression'
+          (_9) => _9.callee,
+          'access',
+          (_10) => _10.type,
+        ]) !== 'Identifier'
       ) {
-        return null;
+        continue;
       }
-      call = relevantExpression.expression.right.expressions[0].right;
-    } else if (
-      _optionalChain$2([
-        relevantExpression,
-        'optionalAccess',
-        (_10) => _10.type,
-      ]) === 'IfStatement' &&
-      relevantExpression.consequent.type === 'BlockStatement'
-    ) {
-      for (const n of relevantExpression.consequent.body) {
-        if (!matchesStructure(n, nsigExpression)) {
-          continue;
+      const name = call.callee.name;
+      const targetParam = sigVarName || thirdParam;
+      let usesSig = false;
+      let args = call.arguments.map((arg) => {
+        if (
+          targetParam &&
+          arg.type === 'Identifier' &&
+          arg.name === targetParam
+        ) {
+          usesSig = true;
+          return { type: 'Identifier', name: 'sig' };
         }
         if (
-          n.type !== 'VariableDeclaration' ||
+          targetParam &&
+          arg.type === 'CallExpression' &&
+          arg.callee.type === 'Identifier' &&
+          arg.callee.name === 'decodeURIComponent' &&
           _optionalChain$2([
-            n,
+            arg,
             'access',
-            (_11) => _11.declarations,
+            (_11) => _11.arguments,
             'access',
             (_12) => _12[0],
-            'access',
-            (_13) => _13.init,
             'optionalAccess',
-            (_14) => _14.type,
-          ]) !== 'CallExpression'
+            (_13) => _13.type,
+          ]) === 'Identifier' &&
+          arg.arguments[0].name === targetParam
         ) {
-          continue;
+          usesSig = true;
+          return {
+            type: 'CallExpression',
+            callee: { type: 'Identifier', name: 'decodeURIComponent' },
+            arguments: [{ type: 'Identifier', name: 'sig' }],
+            optional: false,
+          };
         }
-        call = n.declarations[0].init;
-        break;
-      }
-    }
-    if (call === null) {
-      return null;
-    }
-    return {
-      type: 'ArrowFunctionExpression',
-      params: [{ type: 'Identifier', name: 'sig' }],
-      body: {
-        type: 'CallExpression',
-        callee: { type: 'Identifier', name: call.callee.name },
-        arguments:
+        return arg;
+      });
+      if (!usesSig) {
+        args =
           call.arguments.length === 1
             ? [{ type: 'Identifier', name: 'sig' }]
-            : [call.arguments[0], { type: 'Identifier', name: 'sig' }],
-        optional: false,
-      },
-      async: false,
-      expression: false,
-      generator: false,
-    };
+            : [call.arguments[0], { type: 'Identifier', name: 'sig' }];
+      }
+      return {
+        name: funcName,
+        expression: {
+          type: 'ArrowFunctionExpression',
+          params: [{ type: 'Identifier', name: 'sig' }],
+          body: {
+            type: 'CallExpression',
+            callee: { type: 'Identifier', name: name },
+            arguments: args,
+            optional: false,
+          },
+          async: false,
+          expression: false,
+          generator: false,
+        },
+      };
+    }
+    return null;
   }
   function _optionalChain$1(ops) {
     let lastAccessLHS = undefined;
@@ -514,7 +602,7 @@ var jsc = (function (meriyah, astring) {
       }
       const sig = extract$1(node);
       if (sig) {
-        found.sig.push(sig);
+        found.sig.push(sig.expression);
       }
       if (node.type === 'ExpressionStatement') {
         if (node.expression.type === 'AssignmentExpression') {

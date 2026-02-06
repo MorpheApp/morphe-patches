@@ -512,6 +512,12 @@ public class Settings extends BaseSettings {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();
         }
 
+        // TV Simply may require PoToken
+        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.TV_SIMPLY) {
+            Logger.printInfo(() -> "Migrating from TV Simply to TV");
+            SPOOF_VIDEO_STREAMS_CLIENT_TYPE.save(ClientType.TV);
+        }
+
         // endregion
 
         // region SB import/export callbacks

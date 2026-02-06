@@ -4,6 +4,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.parent;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
@@ -38,4 +39,16 @@ public class Settings extends BaseSettings {
             ClientType.ANDROID_VR_1_47_48, true, parent(SPOOF_VIDEO_STREAMS));
 
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
+
+    static {
+        // region Migration
+
+        // TV Simply may require PoToken
+        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.TV_SIMPLY) {
+            Logger.printInfo(() -> "Migrating from TV Simply to TV");
+            SPOOF_VIDEO_STREAMS_CLIENT_TYPE.save(ClientType.TV);
+        }
+
+        // endregion
+    }
 }

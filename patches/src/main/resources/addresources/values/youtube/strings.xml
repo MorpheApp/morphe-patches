@@ -734,10 +734,10 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_on">Audio track menu is hidden</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_off">Audio track menu is shown</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is hidden
 
-To show the Audio track menu, change \'Spoof video streams\' to \'Android No SDK\'"</string>
+To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
@@ -1623,13 +1623,16 @@ Playback may stutter or drop frames"</string>
 Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_title">Spoofing side effects</string>
     <string name="morphe_spoof_video_streams_about_experimental">• Experimental client and may stop working anytime</string>
+    <string name="morphe_spoof_video_streams_about_playback_failure">• Video may stop at 1:00, or may not be available in some regions</string>
     <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audio track menu is missing</string>
     <string name="morphe_spoof_video_streams_about_no_av1">• No AV1 video codec</string>
+    <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersive mode is not available</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
-    <string name="morphe_spoof_video_streams_about_js">• Video may start late</string>
+    <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
-    <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Show in Stats for nerds</string>
-    <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Client type is shown in Stats for nerds</string>
-    <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Client is hidden in Stats for nerds</string>
+    <string name="morphe_spoof_video_streams_js_variant_title">Player JavaScript variant</string>
+    <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show in Stats for nerds</string>
+    <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Client type is shown in Stats for nerds</string>
+    <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Client is hidden in Stats for nerds</string>
 </resources>
