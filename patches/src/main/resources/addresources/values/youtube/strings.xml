@@ -1607,6 +1607,11 @@ Limitations:
     <string name="morphe_hide_premium_video_quality_summary_on">Premium quality options are hidden</string>
     <string name="morphe_hide_premium_video_quality_summary_off">Premium quality options are shown</string>
 
+    <!-- video.quality.prioritizeVideoQualityPatch -->
+    <string name="morphe_prioritize_video_quality_title">Prioritize video quality</string>
+    <string name="morphe_prioritize_video_quality_summary_on">Video quality is prioritized</string>
+    <string name="morphe_prioritize_video_quality_summary_off">Video codecs are prioritized</string>
+
     <!-- interaction.seekbar.enableSlideToSeekPatch -->
     <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
     <string name="morphe_slide_to_seek_summary_on">Slide to seek is enabled</string>
