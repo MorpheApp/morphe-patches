@@ -24,9 +24,7 @@ internal object PlayerSeekbarColorFingerprint : Fingerprint(
 
 // class is ControlsOverlayStyle in 20.32 and lower, and obfuscated in 20.33+
 internal object SetSeekbarClickedColorFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-Opcode.CONST_HIGH16
-    ),
+    filters = OpcodesFilter.opcodesToFilters(Opcode.CONST_HIGH16),
     strings = listOf("YOUTUBE", "PREROLL", "POSTROLL", "REMOTE_LIVE", "AD_LARGE_CONTROLS")
 )
 
@@ -59,7 +57,7 @@ internal object WatchHistoryMenuUseProgressDrawableFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall("Landroid/widget/ProgressBar;", "setMax"),
+        methodCall(definingClass = "Landroid/widget/ProgressBar;", name = "setMax"),
         opcode(Opcode.MOVE_RESULT),
         literal(-1712394514)
     )
@@ -102,15 +100,13 @@ internal object PlayerLinearGradientLegacyFingerprint : Fingerprint(
 internal const val LOTTIE_ANIMATION_VIEW_CLASS_TYPE = "Lcom/airbnb/lottie/LottieAnimationView;"
 
 internal object LottieAnimationViewSetAnimationIntFingerprint : Fingerprint(
+    definingClass = LOTTIE_ANIMATION_VIEW_CLASS_TYPE,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("I"),
     returnType = "V",
     filters = listOf(
-        methodCall("this", "isInEditMode")
-    ),
-    custom = { _, classDef ->
-        classDef.type == LOTTIE_ANIMATION_VIEW_CLASS_TYPE
-    }
+        methodCall(definingClass = "this", name = "isInEditMode")
+    )
 )
 
 internal object LottieCompositionFactoryZipFingerprint : Fingerprint(

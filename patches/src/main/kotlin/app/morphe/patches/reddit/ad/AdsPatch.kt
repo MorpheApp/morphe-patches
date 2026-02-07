@@ -8,11 +8,11 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -57,7 +57,7 @@ val adsPatch = bytecodePatch(
             .last().getInstruction<ReferenceInstruction>().reference
 
         adPostSectionConstructorFingerprint.match(
-            mutableClassDefBy(adPostSectionToStringFingerprint.classDef)
+            adPostSectionToStringFingerprint.classDef
         ).let {
             it.method.apply {
                 val sectionIndex = it.instructionMatches.first().index

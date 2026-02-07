@@ -30,6 +30,7 @@ internal object RemoveOnLayoutChangeListenerFingerprint : Fingerprint(
     ),
     // This is the only reference present in the entire smali.,
     custom = { method, _ ->
+        // TODO: Convert this to an instruction filter
         method.indexOfFirstInstruction {
             val reference = getReference<MethodReference>()
             reference?.name == "removeOnLayoutChangeListener" &&

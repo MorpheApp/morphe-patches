@@ -30,6 +30,7 @@ internal object ComponentCreateFingerprint : Fingerprint(
 )
 
 internal object LithoFilterFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         fieldAccess(
@@ -83,9 +84,11 @@ internal object EmptyComponentFingerprint : Fingerprint(
 internal object LithoThreadExecutorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("I", "I", "I"),
-    custom = { method, classDef ->
-        classDef.superclass == "Ljava/util/concurrent/ThreadPoolExecutor;" &&
-            method.containsLiteralInstruction(1L) // 1L = default thread timeout.
+    filters = listOf(
+        literal(1L) // 1L = default thread timeout.
+    ),
+    custom = { _, classDef ->
+        classDef.superclass == "Ljava/util/concurrent/ThreadPoolExecutor;"
     }
 )
 

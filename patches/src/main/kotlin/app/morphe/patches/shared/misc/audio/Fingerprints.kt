@@ -5,11 +5,9 @@ import app.morphe.patcher.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object FormatStreamModelToStringFingerprint : Fingerprint(
+    name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
-    custom = { method, _ ->
-        method.name == "toString"
-    },
     strings = listOf(
         // Strings are partial matches.
         "isDefaultAudioTrack=",

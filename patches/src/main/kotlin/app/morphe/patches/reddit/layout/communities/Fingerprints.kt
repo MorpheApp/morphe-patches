@@ -13,15 +13,12 @@ internal val communityRecommendationSectionFingerprint = Fingerprint(
 )
 
 internal val communityRecommendationSectionParentFingerprint = Fingerprint(
+    definingClass = "Lcom/reddit/onboardingfeedscomponents/communityrecommendation/impl/",
+    name = "key",
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = emptyList(),
     filters = listOf(
         string("community_recomendation_section_")
-    ),
-    custom = { method, classDef ->
-        method.name == "key" &&
-                classDef.type.startsWith("Lcom/reddit/onboardingfeedscomponents/communityrecommendation/impl/")
-
-    }
+    )
 )

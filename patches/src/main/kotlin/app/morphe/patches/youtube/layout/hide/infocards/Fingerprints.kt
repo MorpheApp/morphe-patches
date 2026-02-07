@@ -31,5 +31,5 @@ internal object InfocardsMethodCallFingerprint : Fingerprint(
         Opcode.INVOKE_INTERFACE,
     ),
     strings = listOf ("Missing ControlsOverlayPresenter for InfoCards to work."),
-    custom = customLiteral { drawerResourceId }
+    custom = customLiteral { drawerResourceId } // TODO: Convert this to an instruction filter
 )

@@ -13,5 +13,5 @@ internal object ChipCloudFingerprint : Fingerprint(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT_OBJECT
     ),
-    custom = customLiteral { chipCloud }
+    custom = customLiteral { chipCloud } // TODO: Convert this to an instruction filter
 )

@@ -3,13 +3,10 @@ package app.morphe.patches.youtube.layout.hide.endscreencards
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -25,7 +22,7 @@ internal object LayoutCircleFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
     ),
-    custom = customLiteral { layoutCircle }
+    custom = customLiteral { layoutCircle } // TODO: Convert this to an instruction filter
 )
 
 internal object LayoutIconFingerprint : Fingerprint(
@@ -38,7 +35,7 @@ internal object LayoutIconFingerprint : Fingerprint(
         Opcode.CHECK_CAST,
 
         ),
-    custom = customLiteral { layoutIcon }
+    custom = customLiteral { layoutIcon } // TODO: Convert this to an instruction filter
 )
 
 internal object LayoutVideoFingerprint : Fingerprint(
@@ -52,7 +49,7 @@ internal object LayoutVideoFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
     ),
-    custom = customLiteral { layoutVideo }
+    custom = customLiteral { layoutVideo } // TODO: Convert this to an instruction filter
 )
 
 internal object ShowEndscreenCardsFingerprint : Fingerprint(

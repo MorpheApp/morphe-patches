@@ -25,7 +25,8 @@ internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
 )
 
 internal object ShowOldPlaybackSpeedMenuExtensionFingerprint : Fingerprint(
-    custom = { method, _ -> method.name == "showOldPlaybackSpeedMenu" }
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "showOldPlaybackSpeedMenu"
 )
 
 internal object ServerSideMaxSpeedFeatureFlagFingerprint : Fingerprint(

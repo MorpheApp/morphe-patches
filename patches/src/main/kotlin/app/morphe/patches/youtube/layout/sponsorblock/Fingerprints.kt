@@ -52,6 +52,7 @@ internal object AdProgressTextViewVisibilityFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Z"),
     custom = { method, _ ->
+        // TODO: Convert this to an instruction filter
         indexOfAdProgressTextViewVisibilityInstruction(method) >= 0
     }
 )

@@ -12,13 +12,11 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal val frequentUpdatesHandlerFingerprint = Fingerprint(
+    definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler${'$'}handleFrequentUpdates$",
+    name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    filters = OpcodesFilter.opcodesToFilters(Opcode.CONST_STRING),
-    custom = { method, classDef ->
-        classDef.type.startsWith("Lcom/reddit/screens/pager/FrequentUpdatesHandler${'$'}handleFrequentUpdates$") &&
-                method.name == "invokeSuspend"
-    }
+    filters = OpcodesFilter.opcodesToFilters(Opcode.CONST_STRING)
 )
 
 internal fun listOfUserIsSubscriberInstruction(method: Method) =
@@ -36,15 +34,16 @@ internal fun listOfUserIsSubscriberInstruction(method: Method) =
         ?: emptyList()
 
 internal val nsfwAlertEmitFingerprint = Fingerprint(
+    definingClass = "Lcom/reddit/screens/pager/v2/",
+    name = "emit",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
         string("nsfwAlertDelegate")
     ),
-    custom = { method, classDef ->
-        classDef.type.startsWith("Lcom/reddit/screens/pager/v2/") &&
-                method.name == "emit" &&
-                indexOfGetOver18Instruction(method) >= 0 &&
+    custom = { method, _ ->
+        // TODO: Convert these to instruction filters
+        indexOfGetOver18Instruction(method) >= 0 &&
                 indexOfHasBeenVisitedInstruction(method) >= 0 &&
                 indexOfIsIncognitoInstruction(method) >= 0
     }

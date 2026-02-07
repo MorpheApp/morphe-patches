@@ -13,13 +13,11 @@ internal val applicationFingerprint = Fingerprint(
 )
 
 internal val spoofSignatureFingerprint = Fingerprint(
+    definingClass = "Lapp/morphe/extension/all/misc/signature/SpoofSignaturePatch;",
+    name = "<clinit>",
     returnType = "V",
     strings = listOf(
         PACKAGE_NAME,
         CERTIFICATE_BASE64
-    ),
-    custom = { method, _ ->
-        method.definingClass.endsWith("/SpoofSignaturePatch;") &&
-                method.name == "<clinit>"
-    }
+    )
 )

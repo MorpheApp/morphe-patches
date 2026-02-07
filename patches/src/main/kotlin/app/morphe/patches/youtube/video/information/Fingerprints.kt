@@ -46,12 +46,10 @@ internal object OnPlaybackSpeedItemClickParentFingerprint : Fingerprint(
  * Resolves using the method found in [OnPlaybackSpeedItemClickParentFingerprint].
  */
 internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
+    name = "onItemClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "L", "I", "J"),
-    custom = { method, _ ->
-        method.name == "onItemClick"
-    }
+    parameters = listOf("L", "L", "I", "J")
 )
 
 internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
@@ -189,19 +187,18 @@ internal object PlaybackSpeedClassFingerprint : Fingerprint(
  * YouTube 20.19 and lower.
  */
 internal object VideoQualityLegacyFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
         "I", // Resolution.
         "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
         "Z",
         "L"
-    ),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;"
-    }
+    )
 )
 
 internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
+    name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     filters = listOf(
@@ -209,10 +206,7 @@ internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
         // First method call after Locale is the video id.
         methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
         string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
-    ),
-    custom = { method, _ ->
-        method.name == "toString"
-    }
+    )
 )
 
 // Class name is un-obfuscated in targets before 21.01

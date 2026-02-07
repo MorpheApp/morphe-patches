@@ -119,19 +119,14 @@ fun activityOnCreateExtensionHook(activityClassType: String, targetBundleMethod:
         "Class type must end with a semicolon: $activityClassType"
     }
 
-    val fullClassType = activityClassType.startsWith('L')
-
     val fingerprint = Fingerprint(
+        definingClass = activityClassType,
+        name = "onCreate",
         returnType = "V",
         parameters = if (targetBundleMethod) {
             listOf("Landroid/os/Bundle;")
         } else {
             listOf()
-        },
-        custom = { method, classDef ->
-            method.name == "onCreate" &&
-                    if (fullClassType) classDef.type == activityClassType
-                    else classDef.type.endsWith(activityClassType)
         }
     )
 

@@ -210,11 +210,9 @@ val seekbarColorPatch = bytecodePatch(
             }
 
             val lottieAnimationViewSetAnimationStreamFingerprint = Fingerprint(
+                definingClass = LottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type,
                 returnType = "V",
-                parameters = listOf(factoryStreamReturnType.toString()),
-                custom = { _, classDef ->
-                    classDef.type == LottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type
-                }
+                parameters = listOf(factoryStreamReturnType.toString())
             )
 
             val setAnimationStreamName = lottieAnimationViewSetAnimationStreamFingerprint.method.name

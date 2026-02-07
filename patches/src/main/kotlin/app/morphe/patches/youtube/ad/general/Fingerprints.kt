@@ -19,6 +19,7 @@ internal object FullScreenEngagementAdContainerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     custom = { method, _ ->
+        // TODO: Convert these to instruction filters
         method.containsLiteralInstruction(fullScreenEngagementAdContainer)
                 && indexOfAddListInstruction(method) >= 0
     }
@@ -30,6 +31,8 @@ internal fun indexOfAddListInstruction(method: Method) =
     }
 
 internal object GetPremiumViewFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/red/presenter/CompactYpcOfferModuleView;",
+    name = "onMeasure",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "I"),
@@ -38,11 +41,7 @@ internal object GetPremiumViewFingerprint : Fingerprint(
         Opcode.ADD_INT_2ADDR,
         Opcode.INVOKE_VIRTUAL,
         Opcode.RETURN_VOID,
-    ),
-    custom = { method, _ ->
-        method.name == "onMeasure" &&
-                method.definingClass == "Lcom/google/android/apps/youtube/app/red/presenter/CompactYpcOfferModuleView;"
-    }
+    )
 )
 
 internal object LithoDialogBuilderFingerprint : Fingerprint(

@@ -34,7 +34,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
+internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
 
 internal const val EXTENSION_FILER_ARRAY_DESCRIPTOR = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
 
@@ -97,7 +97,7 @@ val lithoFilterPatch = bytecodePatch(
     execute {
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
-        LithoFilterFingerprint.match(classDefBy(EXTENSION_CLASS_DESCRIPTOR)).let {
+        LithoFilterFingerprint.let {
             it.method.apply {
                 // Add a helper method to avoid finding multiple free registers.
                 // This fixes an issue with extension compiled with Android Gradle Plugin 8.3.0+.
