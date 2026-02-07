@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">Informazioni</string>
+  <string name="morphe_settings_screen_00_about_title">A proposito</string>
   <string name="morphe_settings_screen_01_ads_title">Pubblicità</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniature alternative</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
@@ -228,6 +228,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_hide_transcript_section_title">Nascondi Trascrizione</string>
   <string name="morphe_hide_transcript_section_summary_on">La sezione Trascrizione è nascosta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sezione Trascrizione è visibile</string>
+  <string name="morphe_hide_quizzes_section_title">Nascondi Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">La sezione Quiz è nascosta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">La sezione Quiz è visibile</string>
   <string name="morphe_hide_description_components_screen_title">Descrizione del video</string>
   <string name="morphe_hide_description_components_screen_summary">Mostra o nascondi i componenti della descrizione del video</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra dei filtri</string>
@@ -703,10 +706,10 @@ I cookie verranno salvati automaticamente se sono validi"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Il menu Traccia audio è nascosto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Il menu Traccia audio è visibile</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu delle tracce audio nascosto
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu audio traccia nascosto
 
-Per visualizzare il menu delle tracce audio, impostare 'Spoof video streams' su 'Android No SDK'"</string>
+Per visualizzare il menu audio traccia, cambia 'Spoof video streams' in 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Nascondi Guarda in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Il menu Guarda in VR è nascosto</string>
@@ -789,9 +792,15 @@ Per visualizzare il menu delle tracce audio, impostare 'Spoof video streams' su 
   <string name="morphe_hide_shorts_subscriptions_title">Nascondi Shorts nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Nascosto nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Mostrato nel feed Iscrizioni</string>
+  <string name="morphe_hide_shorts_video_description_title">Nascondi i Shorts nella descrizione del video</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Nascosto nella descrizione del video</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mostrato nella descrizione del video</string>
   <string name="morphe_hide_shorts_history_title">Nascondi Shorts nella cronologia</string>
   <string name="morphe_hide_shorts_history_summary_on">Nascosti nella cronologia di visualizzazione</string>
   <string name="morphe_hide_shorts_history_summary_off">Mostrato nella cronologia</string>
+  <string name="morphe_hide_shorts_ai_button_title">Nascondi pulsante AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Pulsante AI è nascosto</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Pulsante AI è visibile</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Nascondi l\'etichetta \'Auto-dubbed\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">L\'etichetta di posizione è nascosta</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">L\'etichetta di posizione è visibile</string>
@@ -1502,6 +1511,14 @@ Limitazioni:
   <string name="morphe_advanced_video_quality_menu_title">Mostra il menu avanzato della qualità video</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Viene mostrato il menu avanzato della qualità video</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Il menu avanzato della qualità video non viene mostrato</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Nascondi opzioni di qualità premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Le opzioni di qualità premium sono nascoste</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Opzioni di qualità premium visualizzate</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritizza la qualità del video</string>
+  <string name="morphe_prioritize_video_quality_summary_on">La qualità del video è prioritizzata</string>
+  <string name="morphe_prioritize_video_quality_summary_off">I codec video sono prioritizzati</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Abilita scorri per avanzare</string>
   <string name="morphe_slide_to_seek_summary_on">Scorri per avanzare è abilitato</string>
@@ -1517,13 +1534,16 @@ La riproduzione potrebbe subire interruzioni o perdere fotogrammi"</string>
 La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi."</string>
   <string name="morphe_spoof_video_streams_about_title">Effetti collaterali della falsificazione</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Client sperimentale e potrebbe smettere di funzionare in qualsiasi momento</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Il video potrebbe interrompersi all\'1:00, o potrebbe non essere disponibile in alcune regioni</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Manca il menu delle tracce audio</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nessun codec video AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modalità immersiva 360° VR non disponibile</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Il volume stabile non è disponibile</string>
-  <string name="morphe_spoof_video_streams_about_js">• Il video potrebbe iniziare in ritardo</string>
+  <string name="morphe_spoof_video_streams_about_js">• In caso di fallimento della deobfuscazione, la riproduzione potrebbe fallire</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• L\'audio originale forzato non è disponibile</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Mostra nelle statistiche per nerd</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Il tipo di client è mostrato nelle statistiche per nerd</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Il client è nascosto nelle statistiche per nerd</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Variante JavaScript del lettore</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostra nelle statistiche per nerd</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Il tipo di client è mostrato nelle statistiche per nerd</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Il client è nascosto nelle statistiche per nerd</string>
 </resources>

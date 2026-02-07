@@ -228,6 +228,9 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_transcript_section_title">Ascunde Transcriere</string>
   <string name="morphe_hide_transcript_section_summary_on">Secțiunea de transcriere este ascunsă</string>
   <string name="morphe_hide_transcript_section_summary_off">Secțiunea de Transcriere este afișată</string>
+  <string name="morphe_hide_quizzes_section_title">Ascunde Quizuri</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Secțiunea Quizuri este ascunsă</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Secțiunea Quizuri este afișată</string>
   <string name="morphe_hide_description_components_screen_title">Descriere video</string>
   <string name="morphe_hide_description_components_screen_summary">Ascunde sau afișează componentele descrierii video</string>
   <string name="morphe_hide_filter_bar_screen_title">Bară de filtrare</string>
@@ -697,10 +700,10 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Meniul piesei audio este ascuns</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Meniul piesei audio este afișat</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meniul de traiectorie audio este ascuns
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meniu audio este ascuns
 
-Pentru a afişa meniul de traiectorie audio, schimbați 'Falsificarea streamurilor video' la 'Android No SDK'"</string>
+Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ascunde ceas în VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Vizionarea în meniul VR este ascunsă</string>
@@ -783,9 +786,15 @@ Pentru a afişa meniul de traiectorie audio, schimbați 'Falsificarea streamuril
   <string name="morphe_hide_shorts_subscriptions_title">Ascunde Shorts-urile din feedul Abonamente.</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Ascunse în feedul Abonamente.</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Afișate în feedul Abonamente.</string>
+  <string name="morphe_hide_shorts_video_description_title">Ascunde scurte în descriere video</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Ascuns în descriere video</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Arătat în descriere video</string>
   <string name="morphe_hide_shorts_history_title">Ascunde Shorts în istoricul vizionărilor</string>
   <string name="morphe_hide_shorts_history_summary_on">Ascuns în istoricul vizionărilor</string>
   <string name="morphe_hide_shorts_history_summary_off">Afișate în istoricul vizionărilor</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ascunde butonul AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Butonul AI este ascuns</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Butonul AI este arătat</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ascunde etichetă \'Auto-dubbed\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Eticheta \'Auto-dubbed/\' este ascunsă</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Eticheta \'Auto-dubbed/\' este afișată</string>
@@ -1496,6 +1505,14 @@ Limitări:
   <string name="morphe_advanced_video_quality_menu_title">Afișează meniul avansat de calitate video</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Se afișează meniul avansat de calitate video</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Nu se afișează meniul avansat de calitate video</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Ascunde opţiunile calitătă premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Opţiunile calitătă premium sunt ascunse</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">AfÃ§iÃ¢ de calitate premium sunt arÃ¢tate</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorize calitatea video-ului</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Calitatea video-ului este prioritizată</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Codec-urile video sunt prioritizate</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activează diapozitivul pentru a căuta</string>
   <string name="morphe_slide_to_seek_summary_on">Slide pentru căutare este activat</string>
@@ -1511,13 +1528,16 @@ Redarea poate sacada sau pierde cadre"</string>
 Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_title">Efecte secundare ale simulării</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Client experimental și se poate opri din funcționare oricând</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Videoclipul se poate opri la 1:00, sau poate să nu fie disponibil în unele regiuni</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meniul pistei audio lipsește</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Fara codec video AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mod 360° VR immersiv nu este disponibil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumul stabil nu este disponibil</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video poate fi retras</string>
+  <string name="morphe_spoof_video_streams_about_js">• Dacă deobfuscarea eșuează, reproducerea poate eșua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forțarea sunetului original nu este disponibilă</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Afișează în Statistici pentru pasionați</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Tipul clientului este afișat în Statistici pentru pasionați</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Clientul este ascuns în Statistici pentru pasionați</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Varianta JavaScript a playerului</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afișează în Statistici pentru pasionați</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Tipul clientului este afișat în Statistici pentru pasionați</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Clientul este ascuns în Statistici pentru pasionați</string>
 </resources>

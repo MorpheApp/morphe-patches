@@ -37,18 +37,18 @@ internal object ShowSplashScreen1Fingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
+        anyInstruction(
+            opcode(Opcode.CONST_4),
+            opcode(Opcode.CONST_16)
+        ),
         methodCall(
             parameters = listOf("L", "Ljava/lang/Runnable;"),
             returnType = "V",
-        ),
-        anyInstruction(
-            opcode(Opcode.CONST_4),
-            opcode(Opcode.CONST_16),
-            location = MatchAfterWithin(10)
+            location = MatchAfterWithin(20)
         ),
         opcode(
             opcode = Opcode.APUT_OBJECT,
-            location = MatchAfterWithin(5)
+            location = MatchAfterWithin(10)
         ),
         methodCall(
             parameters = listOf("[L"),

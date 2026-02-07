@@ -17,10 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">Назва додатку</string>
+  <string name="morphe_custom_branding_name_title">Назва застосунку</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
   <string name="morphe_custom_branding_name_entry_5">Користувацька</string>
-  <string name="morphe_custom_branding_icon_title">Іконка додатку</string>
+  <string name="morphe_custom_branding_icon_title">Значок застосунку</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригінальна</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe чорна</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe темна</string>
@@ -29,12 +29,12 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Користувацька</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚡ Експериментальний попередження! ⚡</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Використовуєте експериментальну версію ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментальне сповіщення! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Ви використовуєте експериментальну версію застосунку ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Очікуйте дивні помилки або невизначені баги, оскільки ми налаштовуємо патчі для цієї версії.
+🔧 Очікуйте дивної поведінки застосунку або невиявлених помилок, поки ми вдосконалюємо патчі для цієї версії.
 &lt;br/&gt;&lt;br/&gt;
-Якщо хочете найстійкішу роботу, тоді &lt;b&gt;деінсталюйте&lt;/b&gt; це та патчуйте рекомендовану версію ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Якщо ви хочете отримати максимально безпроблемний досвід, тоді &lt;b&gt;видаліть&lt;/b&gt; це і пропатчіть рекомендовану версію застосунку ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу експериментальну</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабільну</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -77,7 +77,7 @@ Second \"item\" text"</string>
 2. Вставте код активації з буфера обміну (або введіть його вручну), показаний вище
 3. За потреби увійдіть у Google. Якщо у вас декілька акаунтів, оберіть цей акаунт YouTube
 4. Натисніть \"Дозволити доступ YouTube VR\"
-5. Поверніться в цей додаток після повідомлення \"Пристрій підключено\""</string>
+5. Поверніться в цей застосунок після повідомлення \"Пристрій підключено\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Відкрити вебсайт</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Не вдалося створити код активації</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Не вдалося створити токен автентифікації</string>
@@ -85,7 +85,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Автентифікацію збережено
 
 • Налаштування Morphe не імпортують і не експортують автентифікацію Android VR
-• Якщо цим додатком не користуватися протягом 6 місяців, Google видалить цю автентифікацію
+• Якщо цим застосунком не користуватися протягом 6 місяців, Google видалить цю автентифікацію
 • Вам потрібно буде авторизуватися знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 тимчасово недоступний (тайм-аут API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Термін дії авторизації в Android VR минув. Спробуйте авторизуватися в VR ще раз</string>

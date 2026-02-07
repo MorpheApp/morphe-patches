@@ -228,6 +228,9 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_hide_transcript_section_title">Piilota transkriptio</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkriptio-osio piilotetaan</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkriptio-osio näytetään</string>
+  <string name="morphe_hide_quizzes_section_title">Piilota tarrat</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Elokuvat-osio piilotetaan</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Elokuvat-osio näytetään</string>
   <string name="morphe_hide_description_components_screen_title">Videon kuvaus</string>
   <string name="morphe_hide_description_components_screen_summary">Piilota tai näytä videon kuvauksen osia</string>
   <string name="morphe_hide_filter_bar_screen_title">Suodatinpalkki</string>
@@ -703,10 +706,10 @@ Kuvatekstit tallennetaan automaattisesti, jos ne ovat validit"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ääniraitavalikko piilotetaan</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Ääniraitavalikko näytetään</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track valikko on piilotettu
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audiokappale-valikko on piilotettu
 
-Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"</string>
+Näytäksesi Audiokappale-valikon, muuta 'Spoof video streams' 'TV':ksi"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Piilota Katso VR-tilassa</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Katso VR-tilassa -valinta piilotetaan</string>
@@ -789,9 +792,15 @@ Toistaa Audio track valikon, vaihda 'Spoof video streams' 'Android No SDK':ksi"<
   <string name="morphe_hide_shorts_subscriptions_title">Piilota Shortsit Tilaukset-syötteessä</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Piilotetaan Tilaukset-syötteessä</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Näytetään tilaukset-syötteessä</string>
+  <string name="morphe_hide_shorts_video_description_title">Piilota lyhytvideo kuvauksesta</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Piilotettu kuvauksessa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Näytetty kuvauksessa</string>
   <string name="morphe_hide_shorts_history_title">Piilota Shortsit katseluhistoriassa</string>
   <string name="morphe_hide_shorts_history_summary_on">Piilotetaan katseluhistoriassa</string>
   <string name="morphe_hide_shorts_history_summary_off">Näytetään katseluhistoriassa</string>
+  <string name="morphe_hide_shorts_ai_button_title">Piilota AI-painike</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI-painike on piilotettu</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI-painike näytetään</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Piilota \'Automaattisesti dubattu\' -merkki</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Sijaintitieto piilotetaan</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Sijaintitieto näytetään</string>
@@ -1503,6 +1512,12 @@ Rajoitukset:
   <string name="morphe_advanced_video_quality_menu_title">Näytä edistynyt videolaatuvalikko</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Edistynyt videolaatuvalikko näytetään</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Edistynyttä videolaatuvalikkoa ei näytetä</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_summary_off">Korkealaatuisia valintoja näytetään</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorisoida video-laatu</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Video-laatua on priorisoitu</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video-koodaukset on priorisoitu</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ota kelaus liu\'uttamalla käyttöön</string>
   <string name="morphe_slide_to_seek_summary_on">Kelaus liu\'uttamalla on käytössä</string>
@@ -1518,13 +1533,16 @@ Toisto saattaa pätkiä tai pudottaa kuvakehyksiä"</string>
 AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_title">Naamioimisen sivuvaikutukset</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Kokeellinen asiakasohjelma, joka saattaa lakata toimimasta milloin tahansa</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video saattaa pysähtyä aikaan 1:00, tai ei välttämättä ole saatavilla joillakin alueilla</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ääniraitavalikko puuttuu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ei AV1-videokoodekkia</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiivinen tila ei ole käytettävissä</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Tasainen äänenvoimakkuus ei ole käytettävissä</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video saattaa aloittaa myöhässä</string>
+  <string name="morphe_spoof_video_streams_about_js">• Jos deobfuskointi epäonnistuu, toistaminen saattaa epäonnistua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Pakota alkuperäinen ääni ei ole käytettävissä</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Näytä teknisissä tiedoissa</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Asiakastyyppi näytetään teknisissä tiedoissa</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Asiakastyyppi piilotetaan teknisissä tiedoissa</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Pelaajan JavaScript-versio</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Näytä teknisissä tiedoissa</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Asiakastyyppi näytetään teknisissä tiedoissa</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Asiakastyyppi piilotetaan teknisissä tiedoissa</string>
 </resources>

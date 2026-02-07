@@ -229,6 +229,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_transcript_section_title">Skrýt přepis</string>
   <string name="morphe_hide_transcript_section_summary_on">Sekce přepisu je skrytá</string>
   <string name="morphe_hide_transcript_section_summary_off">Sekce přepisu je zobrazena</string>
+  <string name="morphe_hide_quizzes_section_title">Skrýt testy</string>
+  <string name="morphe_hide_quizzes_section_summary_on"> Sekce testů je skryta.</string>
+  <string name="morphe_hide_quizzes_section_summary_off"> Sekce testů je zobrazená.</string>
   <string name="morphe_hide_description_components_screen_title">Popis videa</string>
   <string name="morphe_hide_description_components_screen_summary">Skrýt nebo zobrazit komponenty popisu videa</string>
   <string name="morphe_hide_filter_bar_screen_title">Lišta filtrů</string>
@@ -704,10 +707,10 @@ Cookies budou automaticky uloženy, pokud jsou platné."</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Nabídka zvukové stopy je skryta</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Nabídka zvukové stopy je zobrazena</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu zvukové stopy je skrytý
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu s zvukovou stopou je skryt
 
-Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Android No SDK'"</string>
+Abyste zobrazili menu s zvukovou stopou, změňte 'Falešné video proudy' na 'TV'."</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Skrýt Sledovat ve VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Nabídka Sledovat ve VR je skryta</string>
@@ -790,9 +793,15 @@ Chcete zobrazit menu zvukové stopy, změňte 'Falešné video proudy' na 'Andro
   <string name="morphe_hide_shorts_subscriptions_title">Skrýt Shorts v liště odběrů</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Skryto v liště odběrů</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Zobrazeno v liště odběrů</string>
+  <string name="morphe_hide_shorts_video_description_title">Skrýt \"Shorts\" v popisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Skryto v popisu videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Zobrazeno v popisu videa</string>
   <string name="morphe_hide_shorts_history_title">Skrýt Shorts z historie sledování</string>
   <string name="morphe_hide_shorts_history_summary_on">Skryté v historii sledování</string>
   <string name="morphe_hide_shorts_history_summary_off">Zobrazené v historii sledování</string>
+  <string name="morphe_hide_shorts_ai_button_title">Skrýt tlačítko AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Tlačítko AI je skryté</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Tlačítko AI je zobrazeno</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Skrýt označení \'Automaticky dabován\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Štítek umístění je skrytý</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Štítek umístění je zobrazen</string>
@@ -1503,6 +1512,14 @@ Omezení:
   <string name="morphe_advanced_video_quality_menu_title">Zobrazit rozšířené menu kvality videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Zobrazuje se rozšířené menu kvality videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Nezobrazuje se rozšířené menu kvality videa</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Skrýt možnosti Premium kvality</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Možnosti Premium kvality jsou skryty</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kvalita je zobrazená</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitu videa</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Kvalita videa je prioritizována</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video kódek jsou prioritizovány</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Povolit posun pro hledání</string>
   <string name="morphe_slide_to_seek_summary_on">Posun pro hledání je povolen</string>
@@ -1518,13 +1535,16 @@ Přehrávání se může zasekávat nebo přeskakovat snímky"</string>
 Přehrávání videa s AV1 se může sekat nebo vypadávat snímky."</string>
   <string name="morphe_spoof_video_streams_about_title">Vedlejší účinky maskování</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Experimentální klient a může kdykoli přestat fungovat</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video se může zastavit v 1:00 nebo nemusí být dostupné v některých oblastech</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Chybí nabídka zvukových stop</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Žádný video kodek AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Režim 360° VR prohlížení není k dispozici</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilní hlasitost není k dispozici</string>
-  <string name="morphe_spoof_video_streams_about_js">Video může začít pozdě</string>
+  <string name="morphe_spoof_video_streams_about_js">• Pokud selže deobfuskace, může se také selhat přehrávání</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Vynutit původní zvuk není k dispozici</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Zobrazit ve statistikách pro nadšence</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Typ klienta se zobrazuje ve statistikách pro nadšence</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Klient je skrytý ve statistikách pro nadšence</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Varianta JavaScript pro přehrávač</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Zobrazit ve statistikách pro nadšence</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Typ klienta se zobrazuje ve statistikách pro nadšence</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klient je skrytý ve statistikách pro nadšence</string>
 </resources>

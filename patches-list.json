@@ -1,5 +1,5 @@
 {
-  "version": "1.11.0-dev.13",
+  "version": "1.12.0-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -195,7 +195,7 @@
     },
     {
       "name": "Change package name",
-      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
+      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues. This patch does not work with Reddit.",
       "use": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1741,7 +1741,8 @@
         "ResourcePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "ResourcePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -2000,6 +2001,7 @@
       "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",

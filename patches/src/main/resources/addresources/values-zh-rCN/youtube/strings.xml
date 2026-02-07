@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">隐藏文字记录</string>
   <string name="morphe_hide_transcript_section_summary_on">「转写文稿」部分已隐藏</string>
   <string name="morphe_hide_transcript_section_summary_off">「转写文稿」部分已显示</string>
+  <string name="morphe_hide_quizzes_section_title">隐藏问答</string>
+  <string name="morphe_hide_quizzes_section_summary_on">问答部分已隐藏</string>
+  <string name="morphe_hide_quizzes_section_summary_off">问答部分已显示</string>
   <string name="morphe_hide_description_components_screen_title">视频说明</string>
   <string name="morphe_hide_description_components_screen_summary">隐藏或显示视频说明组件</string>
   <string name="morphe_hide_filter_bar_screen_title">筛选栏</string>
@@ -703,10 +706,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">音轨菜单已隐藏</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">音轨菜单已显示</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"音频轨道菜单已隐藏
 
-要显示音频轨道菜单，请将'欺骗视频流'更改为'Android No SDK'"</string>
+要显示音频轨道菜单，请将'Spoof video streams'更改为'电视'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">隐藏「在 VR 模式下观看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">在 VR 模式下观看已隐藏</string>
@@ -789,9 +792,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">在订阅内容流中隐藏Shorts</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">已在订阅内容流中隐藏</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">已在订阅内容流中显示</string>
+  <string name="morphe_hide_shorts_video_description_title">隐藏视频描述中的Shorts</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">在视频描述中隐藏</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">在视频描述中显示</string>
   <string name="morphe_hide_shorts_history_title">在观看历史中隐藏 Shorts</string>
   <string name="morphe_hide_shorts_history_summary_on">隐藏在观看历史记录中</string>
   <string name="morphe_hide_shorts_history_summary_off">显示在观看历史中</string>
+  <string name="morphe_hide_shorts_ai_button_title">隐藏AI按钮</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI按钮已隐藏</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI按钮已显示</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">隐藏“自动配音”标签</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">位置标签已隐藏</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">位置标签已显示</string>
@@ -1506,6 +1515,14 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">显示高级视频质量菜单</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">显示高级视频质量菜单</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">不显示高级视频质量菜单</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">隐藏高级质量选项</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">已隐藏高级质量选项</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">高品质选项已显示</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">优先视频质量</string>
+  <string name="morphe_prioritize_video_quality_summary_on">视频质量已优先</string>
+  <string name="morphe_prioritize_video_quality_summary_off">视频编解码器已优先</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">启用滑动拖动进度条</string>
   <string name="morphe_slide_to_seek_summary_on">滑动拖动进度条已启用</string>
@@ -1521,13 +1538,16 @@ Second \"item\" text"</string>
 使用 AV1 播放视频可能会卡顿或丢帧。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺骗的副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 实验性客户端，可能随时停止工作</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• 视频可能会在 1:00 停止，或者在某些地区可能无法播放</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 音轨菜单缺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 不支持 AV1 视频编解码器</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360°VR全景模式不可用</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 稳定音量不可用</string>
-  <string name="morphe_spoof_video_streams_about_js">视频可能会延迟开始</string>
+  <string name="morphe_spoof_video_streams_about_js">• 如果去混淆失败，播放可能会失败</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 强制原始音频不可用</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">显示在 Stats for nerds 中</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">客户端类型显示在 Stats for nerds 中</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">客户端隐藏在 Stats for nerds 中</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">播放器JavaScript变种</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">显示在 Stats for nerds 中</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">客户端类型显示在 Stats for nerds 中</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">客户端隐藏在 Stats for nerds 中</string>
 </resources>

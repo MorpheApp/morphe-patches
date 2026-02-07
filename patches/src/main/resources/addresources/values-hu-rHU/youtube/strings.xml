@@ -228,6 +228,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_transcript_section_title">Átirat elrejtése</string>
   <string name="morphe_hide_transcript_section_summary_on">Az átirat rész el van rejtve</string>
   <string name="morphe_hide_transcript_section_summary_off">Az átirat rész megjelenik</string>
+  <string name="morphe_hide_quizzes_section_title">Rejtett kérdések</string>
+  <string name="morphe_hide_quizzes_section_summary_on">A kérdések szakasza el van rejtve</string>
+  <string name="morphe_hide_quizzes_section_summary_off">A kérdések szakasza látható</string>
   <string name="morphe_hide_description_components_screen_title">Videóleírás</string>
   <string name="morphe_hide_description_components_screen_summary">A videóleírás komponenseinek elrejtése vagy megjelenítése</string>
   <string name="morphe_hide_filter_bar_screen_title">Szűrősáv</string>
@@ -703,10 +706,10 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_hide_player_flyout_audio_track_summary_on">A hangsáv menü el van rejtve</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">A hangsáv menü megjelenik</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Hangos menü elrejtve
 
-A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállítását 'Android No SDK'-re"</string>
+A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'TV'-re"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"Megtekintés VR-módban\" elrejtése</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">A megtekintés VR-módban menü el van rejtve</string>
@@ -789,9 +792,15 @@ A Hangos menü megjelenítéséhez állítsa át a 'Videó álstreamok' beállí
   <string name="morphe_hide_shorts_subscriptions_title">Shorts videók elrejtése a Feliratkozások hírcsatornából</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Elrejtve a Feliratkozások hírcsatornából</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Látható a Feliratkozások hírcsatornában</string>
+  <string name="morphe_hide_shorts_video_description_title">Rejtjük el a Shorts-t a videó leírásában</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Rejtve a videó leírásában</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mutatva a videó leírásában</string>
   <string name="morphe_hide_shorts_history_title">Shorts elrejtése a megtekintési előzményekben</string>
   <string name="morphe_hide_shorts_history_summary_on">Elrejtve a megtekintési előzményekben</string>
   <string name="morphe_hide_shorts_history_summary_off">Megjelenik a megtekintési előzményekben</string>
+  <string name="morphe_hide_shorts_ai_button_title">Elrejtett az AI gomb</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Elrejtve van az AI gomb</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Látható az AI gomb</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Rejtélyezd el az \'Automatikus szinkronizálás\' címkét</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">A helycízke címke el van rejtve</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">A helycízke címke meg van jelenítve</string>
@@ -1500,6 +1509,14 @@ Korlátozások:
   <string name="morphe_advanced_video_quality_menu_title">Speciális videóminőség menü megjelenítése</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">A speciális videóminőség menü látható</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">A speciális videóminőség menü nem látható</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium minőség opciók elrejtve</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Felső minőségű opciók mutatódnak</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Videóminőség előnyben részesítése</string>
+  <string name="morphe_prioritize_video_quality_summary_on">A videóminőség előnyben részesítve van</string>
+  <string name="morphe_prioritize_video_quality_summary_off">A videó-kódolások előnyben részesítve vannak</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
   <string name="morphe_slide_to_seek_summary_on">A csúsztatás a kereséshez engedélyezve van</string>
@@ -1515,13 +1532,16 @@ A lejátszás akadozhat vagy képkockákat ejthet"</string>
 Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_title">Hamisítás mellékhatásai</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Kísérleti kliens, és bármikor leállhat</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• A videó megállhat 1:00-nál, vagy előfordulhat, hogy egyes régiókban nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Hiányzik az hangsáv menü</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil hangerő nem elérhető</string>
-  <string name="morphe_spoof_video_streams_about_js">• A videó leálláskor is elindulhat</string>
+  <string name="morphe_spoof_video_streams_about_js">• Ha a deobfuszkálás sikertelen, a lejátszás is megbomolhat</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Eredeti hang kényszerítése nem érhető el</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Megjelenítés a Statisztikákban</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">A kliens típusa a Statisztikákban látható</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">A kliens el van rejtve a Statisztikákban</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Lejátszó JavaScript változata</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Megjelenítés a Statisztikákban</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">A kliens típusa a Statisztikákban látható</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">A kliens el van rejtve a Statisztikákban</string>
 </resources>

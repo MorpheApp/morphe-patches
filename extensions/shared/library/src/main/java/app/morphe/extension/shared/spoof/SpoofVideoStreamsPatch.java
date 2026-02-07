@@ -1,5 +1,7 @@
 package app.morphe.extension.shared.spoof;
 
+import static app.morphe.extension.shared.spoof.ClientType.TV;
+
 import android.app.Activity;
 import android.app.Application;
 import android.net.Uri;
@@ -8,7 +10,6 @@ import android.text.TextUtils;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -17,10 +18,23 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
+
+    public static final class SpoofClientJavaScriptVariantAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return BaseSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(BaseSettings.SPOOF_VIDEO_STREAMS);
+        }
+    }
 
     /**
      * Domain used for internet connectivity verification.
@@ -37,7 +51,7 @@ public class SpoofVideoStreamsPatch {
     private static final String INTERNET_CONNECTION_CHECK_URI_STRING = "https://www.google.com/gen_204";
     private static final Uri INTERNET_CONNECTION_CHECK_URI = Uri.parse(INTERNET_CONNECTION_CHECK_URI_STRING);
 
-    private static final boolean SPOOF_STREAMING_DATA = BaseSettings.SPOOF_VIDEO_STREAMS.get();
+    private static final boolean SPOOF_VIDEO_STREAMS = BaseSettings.SPOOF_VIDEO_STREAMS.get();
 
     @Nullable
     private static volatile AppLanguage languageOverride;
@@ -87,7 +101,7 @@ public class SpoofVideoStreamsPatch {
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {
         return isPatchIncluded()
-                && SPOOF_STREAMING_DATA
+                && SPOOF_VIDEO_STREAMS
                 && !preferredClient.supportsMultiAudioTracks;
     }
 
@@ -99,7 +113,7 @@ public class SpoofVideoStreamsPatch {
      * @return An unreachable URI if the request is a /get_watch request, otherwise the original URI.
      */
     public static Uri blockGetWatchRequest(Uri playerRequestUri) {
-        if (SPOOF_STREAMING_DATA) {
+        if (SPOOF_VIDEO_STREAMS) {
             try {
                 String path = playerRequestUri.getPath();
 
@@ -118,7 +132,7 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Blocks /get_watch requests by returning an unreachable URI.
      * /att/get requests are used to obtain a PoToken challenge.
      * See: <a href="https://github.com/FreeTubeApp/FreeTube/blob/4b7208430bc1032019a35a35eb7c8a84987ddbd7/src/botGuardScript.js#L15">botGuardScript.js#L15</a>
@@ -127,7 +141,7 @@ public class SpoofVideoStreamsPatch {
      * Blocking /att/get requests are not a problem.
      */
     public static String blockGetAttRequest(String originalUrlString) {
-        if (SPOOF_STREAMING_DATA) {
+        if (SPOOF_VIDEO_STREAMS) {
             try {
                 var originalUri = Uri.parse(originalUrlString);
                 String path = originalUri.getPath();
@@ -151,7 +165,7 @@ public class SpoofVideoStreamsPatch {
      * Blocks /initplayback requests.
      */
     public static String blockInitPlaybackRequest(String originalUrlString) {
-        if (SPOOF_STREAMING_DATA) {
+        if (SPOOF_VIDEO_STREAMS) {
             try {
                 var originalUri = Uri.parse(originalUrlString);
                 String path = originalUri.getPath();
@@ -173,7 +187,7 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      */
     public static boolean isSpoofingEnabled() {
-        return SPOOF_STREAMING_DATA;
+        return SPOOF_VIDEO_STREAMS;
     }
 
     /**
@@ -181,7 +195,7 @@ public class SpoofVideoStreamsPatch {
      * Only invoked when playing a livestream on an Apple client.
      */
     public static boolean fixHLSCurrentTime(boolean original) {
-        if (!SPOOF_STREAMING_DATA) {
+        if (!SPOOF_VIDEO_STREAMS) {
             return original;
         }
         return false;
@@ -192,7 +206,7 @@ public class SpoofVideoStreamsPatch {
      * Fix audio stuttering in YouTube Music.
      */
     public static boolean disableSABR() {
-        return SPOOF_STREAMING_DATA;
+        return SPOOF_VIDEO_STREAMS;
     }
 
     /**
@@ -204,7 +218,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaFetchHotConfigReplacement is set on");
         }
 
-        if (!SPOOF_STREAMING_DATA) {
+        if (!SPOOF_VIDEO_STREAMS) {
             return original;
         }
         return false;
@@ -219,7 +233,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "usePlaybackStartFeatureFlag is set on");
         }
 
-        if (!SPOOF_STREAMING_DATA) {
+        if (!SPOOF_VIDEO_STREAMS) {
             return original;
         }
         return false;
@@ -234,7 +248,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
         }
 
-        if (!SPOOF_STREAMING_DATA) {
+        if (!SPOOF_VIDEO_STREAMS) {
             return original;
         }
         return false;
@@ -244,7 +258,7 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      */
     public static void fetchStreams(String url, Map<String, String> requestHeaders) {
-        if (SPOOF_STREAMING_DATA) {
+        if (SPOOF_VIDEO_STREAMS) {
             try {
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
@@ -282,7 +296,7 @@ public class SpoofVideoStreamsPatch {
      */
     @Nullable
     public static byte[] getStreamingData(String videoId) {
-        if (SPOOF_STREAMING_DATA) {
+        if (SPOOF_VIDEO_STREAMS) {
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
@@ -317,7 +331,7 @@ public class SpoofVideoStreamsPatch {
      */
     @Nullable
     public static byte[] removeVideoPlaybackPostBody(Uri uri, int method, byte[] postData) {
-        if (SPOOF_STREAMING_DATA) {
+        if (SPOOF_VIDEO_STREAMS) {
             try {
                 final int methodPost = 2;
                 if (method == methodPost) {
@@ -339,7 +353,7 @@ public class SpoofVideoStreamsPatch {
      */
     public static String appendSpoofedClient(String videoFormat) {
         try {
-            if (SPOOF_STREAMING_DATA && BaseSettings.SPOOF_STREAMING_DATA_STATS_FOR_NERDS.get()
+            if (SPOOF_VIDEO_STREAMS && BaseSettings.SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS.get()
                     && !TextUtils.isEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override

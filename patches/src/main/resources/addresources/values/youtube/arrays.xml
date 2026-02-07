@@ -34,15 +34,31 @@
         <item>Android Studio</item>
         <item>Android VR</item>
         <item>TV</item>
-        <item>TV Simply</item>
         <item>visionOS</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_CREATOR</item>
         <item>ANDROID_VR_1_47_48</item>
         <item>TV</item>
-        <item>TV_SIMPLY</item>
         <item>VISIONOS</item>
+    </string-array>
+    <string-array name="morphe_spoof_video_streams_js_variant_entries">
+        <item>House Brand</item>
+        <item>Phone</item>
+        <item>TV</item>
+        <item>TV ES6</item>
+        <item>Web</item>
+        <item>Web ES6</item>
+        <item>Web Embed</item>
+    </string-array>
+    <string-array name="morphe_spoof_video_streams_js_variant_entry_values">
+        <item>HOUSE_BRAND</item>
+        <item>PHONE</item>
+        <item>TV</item>
+        <item>TV_ES6</item>
+        <item>WEB</item>
+        <item>WEB_ES6</item>
+        <item>WEB_EMBED</item>
     </string-array>
 
     <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
@@ -70,42 +86,30 @@
         <item>@string/morphe_spoof_app_version_target_entry_20_39</item>
         <item>@string/morphe_spoof_app_version_target_entry_20_28</item>
         <item>@string/morphe_spoof_app_version_target_entry_20_13</item>
-        <item>@string/morphe_spoof_app_version_target_entry_19_35</item>
     </string-array>
     <string-array name="morphe_spoof_app_version_target_entry_values">
         <item>20.39.41</item>
         <item>20.28.41</item>
         <item>20.13.41</item>
-        <item>19.35.36</item>
     </string-array>
     <string-array name="morphe_spoof_app_version_target_legacy_20_31_entries">
         <item>@string/morphe_spoof_app_version_target_entry_20_28</item>
         <item>@string/morphe_spoof_app_version_target_entry_20_13</item>
-        <item>@string/morphe_spoof_app_version_target_entry_19_35</item>
     </string-array>
     <string-array name="morphe_spoof_app_version_target_legacy_20_31_entry_values">
         <item>20.28.41</item>
         <item>20.13.41</item>
-        <item>19.35.36</item>
     </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_20_30_entries">
+    <string-array name="morphe_spoof_app_version_target_legacy_20_14_entries">
         <item>@string/morphe_spoof_app_version_target_entry_20_13</item>
-        <item>@string/morphe_spoof_app_version_target_entry_19_35</item>
     </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_20_30_entry_values">
+    <string-array name="morphe_spoof_app_version_target_legacy_20_14_entry_values">
         <item>20.13.41</item>
-        <item>19.35.36</item>
     </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_20_13_entries">
-        <item>@string/morphe_spoof_app_version_target_entry_19_35</item>
-    </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_20_13_entry_values">
-        <item>19.35.36</item>
-    </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_34_entries">
+    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entries">
         <item>19.01.34</item>
     </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_34_entry_values">
+    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entry_values">
         <item>19.01.34</item>
     </string-array>
 

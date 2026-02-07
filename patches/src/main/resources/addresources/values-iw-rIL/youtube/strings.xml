@@ -228,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">הסתר תמליל</string>
   <string name="morphe_hide_transcript_section_summary_on">מדור התמליל מוסתר</string>
   <string name="morphe_hide_transcript_section_summary_off">מדור התמליל מוצג</string>
+  <string name="morphe_hide_quizzes_section_title">הסתר חידות</string>
+  <string name="morphe_hide_quizzes_section_summary_on">המחלקה חידות מוסתר</string>
+  <string name="morphe_hide_quizzes_section_summary_off">המחלקה חידות מוצג</string>
   <string name="morphe_hide_description_components_screen_title">תיאור סרטון</string>
   <string name="morphe_hide_description_components_screen_summary">הסתר או הצג רכיבי תיאור סרטון</string>
   <string name="morphe_hide_filter_bar_screen_title">סרגל סינון</string>
@@ -703,10 +706,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">תפריט טראק אודיו מוסתר</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">תפריט טראק אודיו מוצג</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"תפריט מסלול אודיו מוסתר
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"תפריט רצועת אודיו מוסתר
 
-כדי להראות את תפריט מסלול האודיו, שנה את 'מיסוך סטרימים וידאו' ל-'אנדרואיד ללא SDK'"</string>
+כדי להראה את תפריט הרצועת אודיו, שנה את 'מילוי סטריאו וידאו' ל'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">הסתר \'צפה ב-VR\'</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">תפריט \'צפה ב-VR\' מוסתר</string>
@@ -789,9 +792,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">להסתיר Shorts בפיד המינויים</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">מוסתר בפיד המנויים</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">מוצג בפיד המינויים</string>
+  <string name="morphe_hide_shorts_video_description_title">הסתר קצרים בתיאור וידאו</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">נעלם בתיאור וידאו</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">נראה בתיאור וידאו</string>
   <string name="morphe_hide_shorts_history_title">הסתר Shorts בהיסטוריית הצפייה</string>
   <string name="morphe_hide_shorts_history_summary_on">מוסתר בהיסטוריית הצפייה</string>
   <string name="morphe_hide_shorts_history_summary_off">מוצג בהיסטוריית הצפייה</string>
+  <string name="morphe_hide_shorts_ai_button_title">הסתר כפתור AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">כפתור AI מוסתר</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">כפתור AI מוצג</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">הסתר את הלאabel \'אוטו-דובב\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">תווית מיקום מוסתרת</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">תווית מיקום מוצגת</string>
@@ -1501,6 +1510,14 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">הצג תפריט איכות סרטון מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">תפריט איכות סרטון מתקדם מוצג</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">תפריט איכות סרטון מתקדם אינו מוצג</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">הסתר אפשרויות איכות וידאו פרימיום</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">אפשרויות איכות וידאו פרימיום מוסתרות</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">אפשרויות איכות премиום מוצגות</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">העדיפו איכות וידאו</string>
+  <string name="morphe_prioritize_video_quality_summary_on">איכות וידאו מועדפת</string>
+  <string name="morphe_prioritize_video_quality_summary_off">קודקים וידאו מועדפים</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
   <string name="morphe_slide_to_seek_summary_on">החלק כדי לדלג מופעל</string>
@@ -1516,13 +1533,16 @@ Second \"item\" text"</string>
 הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים."</string>
   <string name="morphe_spoof_video_streams_about_title">תופעות לוואי של התחזות</string>
   <string name="morphe_spoof_video_streams_about_experimental">• לקוח ניסיוני ועשוי להפסיק לפעול בכל עת</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• הווידאו עשוי להיעצר בדקה 1:00, או ייתכן שלא יהיה זמין באזורים מסוימים</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• תפריט ערוץ השמע חסר</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
-  <string name="morphe_spoof_video_streams_about_js">• הווידאו עשוי להתחיל מאוחר</string>
+  <string name="morphe_spoof_video_streams_about_js">• אם הדהוד נכשל, ייתכן שהפלייבק יהיה כושל</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• כפיית שמע מקורי אינה זמינה</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">הצג בנתונים לגיקים</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">סוג הלקוח מוצג בנתונים לגיקים</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">הלקוח מוסתר בנתונים לגיקים</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">גירסת JavaScript של השחקן</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">הצג בנתונים לגיקים</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">סוג הלקוח מוצג בנתונים לגיקים</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">הלקוח מוסתר בנתונים לגיקים</string>
 </resources>

@@ -228,6 +228,9 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_transcript_section_title">Transcript verbergen</string>
   <string name="morphe_hide_transcript_section_summary_on">Transcriptgedeelte is verborgen</string>
   <string name="morphe_hide_transcript_section_summary_off">Transcriptgedeelte is zichtbaar</string>
+  <string name="morphe_hide_quizzes_section_title">Verberg Quizzen</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizzen sectie is verborgen</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizzen sectie is zichtbaar</string>
   <string name="morphe_hide_description_components_screen_title">Videobeschrijving</string>
   <string name="morphe_hide_description_components_screen_summary">Skjul eller vis komponentene i videoens beskrivelse</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbaren</string>
@@ -703,10 +706,10 @@ Cookies worden automatisch opgeslagen als ze geldig zijn"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu Audiotrack is verborgen</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu Audiotrack wordt weergegeven</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audiobaantje-menu is verborgen
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is verborgen
 
-Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android No SDK'"</string>
+Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Verberg Bekijk in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu Bekijk in VR is verborgen</string>
@@ -789,9 +792,15 @@ Om het Audiobaantje-menu weer te tonen, verander 'Video's spoofen' naar 'Android
   <string name="morphe_hide_shorts_subscriptions_title">Shorts verbergen in Abonnementen-feed</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Verborgen in Abonnementen-feed</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Getoond in Abonnementen-feed</string>
+  <string name="morphe_hide_shorts_video_description_title">Verberg \"Shorts\" in videobeschrijving</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Verborgen in videobeschrijving</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Getoond in videobeschrijving</string>
   <string name="morphe_hide_shorts_history_title">Verberg Shorts in geschiedenis bekijken</string>
   <string name="morphe_hide_shorts_history_summary_on">Verborgen in de kijkgeschiedenis</string>
   <string name="morphe_hide_shorts_history_summary_off">Getoond in geschiedenis bekijken</string>
+  <string name="morphe_hide_shorts_ai_button_title">AI-knop verbergen</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI-knop is verborgen</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI-knop wordt weergegeven</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Verberg \'Auto-vertalen\' label</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Locatie-etiket is verborgen</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Locatie-etiket wordt weergegeven</string>
@@ -1500,6 +1509,14 @@ Beperkingen:
   <string name="morphe_advanced_video_quality_menu_title">Geavanceerd menu voor videokwaliteit weergeven</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Geavanceerd menu voor videokwaliteit wordt weergegeven</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Geavanceerd menu voor videokwaliteit wordt niet weergegeven</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Verberg Premiumkwaliteitopties</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premiumkwaliteitopties zijn verborgen</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kwaliteit opties worden getoond</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Videokwaliteit wordt prioriteit gegeven</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Videokwaliteit wordt prioriteit gegeven</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video-codecs worden prioriteit gegeven</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Schuiven om te zoeken inschakelen</string>
   <string name="morphe_slide_to_seek_summary_on">Schuiven om te zoeken is ingeschakeld</string>
@@ -1515,13 +1532,16 @@ Afspelen kan haperen of frames overslaan"</string>
 Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing-neveneffecten</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Experimentele client en kan elk moment stoppen met werken</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video kan stoppen om 1:00, of is mogelijk niet beschikbaar in sommige regio\'s</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audiotrack-menu ontbreekt</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiel volume is niet beschikbaar</string>
-  <string name="morphe_spoof_video_streams_about_js">• Het videobeeld kan vertraagd starten</string>
+  <string name="morphe_spoof_video_streams_about_js">• Als deontminering mislukt, kan afspelen mislukken</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Oorspronkelijke audio forceren is niet beschikbaar</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Weergeven in Stats for nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Het clienttype wordt getoond in Stats for nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Client is verborgen in Stats for nerds</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Player JavaScript variant</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Weergeven in Stats for nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Het clienttype wordt getoond in Stats for nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Client is verborgen in Stats for nerds</string>
 </resources>

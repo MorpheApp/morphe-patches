@@ -3,7 +3,9 @@ package app.morphe.extension.shared.spoof.requests;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 import static app.morphe.extension.shared.spoof.js.J2V8Support.supportJ2V8;
-import static app.morphe.extension.shared.spoof.js.JavaScriptManager.deobfuscateStreamingUrl;
+import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
+import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
+import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_STREAMING_DATA;
 
 import androidx.annotation.NonNull;
@@ -26,7 +28,6 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
@@ -237,7 +238,6 @@ public class StreamingDataRequest {
 
     @Nullable
     private static byte[] buildPlayerResponseBuffer(ClientType clientType,
-                                                    String videoId,
                                                     HttpURLConnection connection) {
         // gzip encoding doesn't response with content length (-1),
         // but empty response body does.
@@ -278,45 +278,9 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                StreamingData.Builder streamingDataBuilder = streamingData.toBuilder();
-
-                String serverAbrStreamingUrl = streamingData.getServerAbrStreamingUrl();
-                if (isNotEmpty(serverAbrStreamingUrl)) {
-                    String deobfuscatedAbrUrl = deobfuscateStreamingUrl(
-                            videoId,
-                            serverAbrStreamingUrl,
-                            null
-                    );
-                    if (isNotEmpty(deobfuscatedAbrUrl)) {
-                        streamingDataBuilder.setServerAbrStreamingUrl(deobfuscatedAbrUrl);
-                    } else {
-                        streamingDataBuilder.setServerAbrStreamingUrl("");
-                    }
-                }
-
-                streamingDataBuilder.clearFormats();
-                for (Format format : streamingData.getFormatsList()) {
-                    var newFormat = processFormat(videoId, format);
-                    if (newFormat != null) {
-                        streamingDataBuilder.addFormats(newFormat);
-                    } else {
-                        handleDebugToast("Debug: Ignoring failure to deobfuscate in format (%s)", clientType);
-                        return null;
-                    }
-                }
-
-                streamingDataBuilder.clearAdaptiveFormats();
-                for (Format format : streamingData.getAdaptiveFormatsList()) {
-                    var newFormat = processFormat(videoId, format);
-                    if (newFormat != null) {
-                        streamingDataBuilder.addAdaptiveFormats(newFormat);
-                    } else {
-                        handleDebugToast("Debug: Ignoring failure to deobfuscate in adaptiveFormat (%s)", clientType);
-                        return null;
-                    }
-                }
-
-                responseBuilder.setStreamingData(streamingDataBuilder);
+                responseBuilder.setStreamingData(
+                        getDeobfuscatedStreamingData(streamingData)
+                );
             }
 
             return responseBuilder.build().toByteArray();
@@ -326,28 +290,9 @@ public class StreamingDataRequest {
         }
     }
 
-    @Nullable
-    private static Format processFormat(String videoId, Format format) {
-        Format.Builder formatBuilder = format.toBuilder();
-
-        String deobfuscatedUrl = deobfuscateStreamingUrl(
-                videoId,
-                format.getUrl(),
-                format.getSignatureCipher()
-        );
-
-        if (isNotEmpty(deobfuscatedUrl)) {
-            formatBuilder.setUrl(deobfuscatedUrl);
-            formatBuilder.clearSignatureCipher();
-        } else {
-            return null;
-        }
-
-        return formatBuilder.build();
-    }
-
     private static byte[] fetch(String videoId, Map<String, String> playerHeaders) {
         final boolean debugEnabled = BaseSettings.DEBUG.get();
+        final long fetchStartTime = System.currentTimeMillis();
 
         // Retry with different client if empty response body is received.
         int i = 0;
@@ -357,10 +302,18 @@ public class StreamingDataRequest {
 
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
             if (connection != null) {
-                byte[] playerResponseBuffer = buildPlayerResponseBuffer(clientType, videoId, connection);
+                byte[] playerResponseBuffer = buildPlayerResponseBuffer(clientType, connection);
 
                 if (playerResponseBuffer != null) {
                     lastSpoofedClientType = clientType;
+
+                    if (clientType.requireJS) {
+                        Logger.printDebug(() -> "End of fetch for JavaScript required client" +
+                                ", video: " + videoId +
+                                ", hash: " + getJavaScriptHash() +
+                                ", variant: " + getJavaScriptVariant() +
+                                ", took: " + (System.currentTimeMillis() - fetchStartTime) + "ms");
+                    }
 
                     return playerResponseBuffer;
                 }

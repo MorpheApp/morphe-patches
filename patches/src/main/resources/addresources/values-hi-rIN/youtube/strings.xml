@@ -229,6 +229,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">ट्रांसक्रिप्ट को छुपाएं</string>
   <string name="morphe_hide_transcript_section_summary_on">ट्रांसक्रिप्ट सैक्शन छुपा हुआ है</string>
   <string name="morphe_hide_transcript_section_summary_off">ट्रांसक्रिप्ट सैक्शन दिखाया गया है</string>
+  <string name="morphe_hide_quizzes_section_title"> छुपाएं क्विज़</string>
+  <string name="morphe_hide_quizzes_section_summary_on">क्विज़ सैक्शन छुपा हुआ है</string>
+  <string name="morphe_hide_quizzes_section_summary_off">क्विज़ सैक्शन दिखाया गया है</string>
   <string name="morphe_hide_description_components_screen_title">वीडियो विवरण</string>
   <string name="morphe_hide_description_components_screen_summary">वीडियो विवरण घटकों को छुपाएं या दिखाएं</string>
   <string name="morphe_hide_filter_bar_screen_title">फ़िल्टर बार</string>
@@ -630,10 +633,10 @@ Second \"item\" text"</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"ऐडियो ट्रैक मेनू छिपा हुआ है
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"ऑडियो ट्रैक मेनू छुपा हुआ है
 
-ऐडियो ट्रैक मेनू दिखाने के लिए, 'स्पूफ वीडियो स्ट्रीम्स' को 'एंड्रॉइड नो एसडीके' पर बदलें"</string>
+'स्पोफ वीडियो स्ट्रीम्स' को 'टीवी' पर बदलकर ऑडियो ट्रैक मेनू दिखाएं।"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Create a Short button is shown</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -671,6 +674,12 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_video_description_title">छुपाएं वीडियो विवरण में शॉर्ट्स</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">वीडियो विवरण में छुपा हुआ</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">वीडियो विवरण में दिखाया गया</string>
+  <string name="morphe_hide_shorts_ai_button_title">छुपाएं AI बटन</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI बटन छुपा हुआ है</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI बटन दिखाया गया है</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">शॉर्ट्स \'ऑटो-डब्ब्ड\' लेबल छुपाएं</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">ऑटो-डब्ब्ड लेबल छिपा हुआ है</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">ऑटो-डब्ब्ड लेबल दिखाई देता है</string>
@@ -769,8 +778,22 @@ Second \"item\" text"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">छुपाएं प्रीमियम गुणवत्ता विकल्प</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">प्रीमियम गुणवत्ता विकल्प छुपाए गए हैं</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">प्रीमियम गुणवत्ता विकल्प दिखाए गए हैं</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">वीडियो की गुणवत्ता को प्राथमिकता दी जाएगी</string>
+  <string name="morphe_prioritize_video_quality_summary_on">वीडियो की गुणवत्ता प्राथमिकता प्राप्त हुई है</string>
+  <string name="morphe_prioritize_video_quality_summary_off">वीडियो कोडेक्स को प्राथमिकता दी जाएगी</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_about_js">• वीडियो शुरू होने में देर हो सकती है</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• वीडियो 1:00 पर रुक सकता है या कुछ क्षेत्रों में उपलब्ध नहीं हो सकता है।</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>
+  <string name="morphe_spoof_video_streams_about_js">• अगर डीक्रिप्शन विफल हो जाता है, तो प्लेबैक भी विफल हो सकता है।</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
+  <string name="morphe_spoof_video_streams_js_variant_title">प्लेयर जावास्क्रिप्ट वैरिएंट</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">स्टेट्स के लिए नरड्स में दिखाएं</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">स्टेट्स के लिए नरड्स में क्लाइंट टाइप दिखाया जाता है।</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">स्टेट्स के लिए नरड्स में क्लाइंट छुपा हुआ है।</string>
 </resources>

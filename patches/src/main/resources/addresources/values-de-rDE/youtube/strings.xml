@@ -228,6 +228,9 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_transcript_section_title">Transkript ausblenden</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript-Abschnitt ist ausgeblendet</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript-Abschnitt wird angezeigt</string>
+  <string name="morphe_hide_quizzes_section_title">Quizze ausblenden</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizze Bereich ist ausgeblendet</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizze Bereich ist angezeigt</string>
   <string name="morphe_hide_description_components_screen_title">Videobeschreibung</string>
   <string name="morphe_hide_description_components_screen_summary">Komponenten der Videobeschreibung ausblenden oder anzeigen</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterleiste</string>
@@ -701,10 +704,10 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menü „Autdiotrack“ ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menü „Autdiotrack“ wird angezeigt</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menü „Autdiotrack“ ist ausgeblendet
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio-Track-Menü ist ausgeblendet
 
-Um das Menü anzuzeigen, ändern Sie „Video-Streams fingieren“ in „Android No SDK“"</string>
+Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">„In VR ansehen“ ausblenden</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Schaltfläche „In VR ansehen“ ist ausgeblendet</string>
@@ -787,9 +790,15 @@ Um das Menü anzuzeigen, ändern Sie „Video-Streams fingieren“ in „Android
   <string name="morphe_hide_shorts_subscriptions_title">Shorts im Abos-Feed ausblenden</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Im Abos-Feed ausgeblendet</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Im Abos-Feed angezeigt</string>
+  <string name="morphe_hide_shorts_video_description_title">Verbergen von Shorts in der Videobeschreibung</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Verborgen in der Videobeschreibung</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Zeigen in der Videobeschreibung</string>
   <string name="morphe_hide_shorts_history_title">Shorts im Verlauf verstecken</string>
   <string name="morphe_hide_shorts_history_summary_on">Im Verlauf versteckt</string>
   <string name="morphe_hide_shorts_history_summary_off">Im Verlauf angezeigt</string>
+  <string name="morphe_hide_shorts_ai_button_title">AI-Button ausblenden</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI-Button ist ausgeblendet</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI-Button wird angezeigt</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Verbergen des \'Auto-dubbed\'-Labels</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Label \"Automatisch synchronisiert\" ist ausgeblendet</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Label \"Automatisch synchronisiert\" ist angezeigt</string>
@@ -1500,6 +1509,14 @@ Einschränkungen:
   <string name="morphe_advanced_video_quality_menu_title">Erweitertes Videoqualitätsmenü anzeigen</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Erweitertes Videoqualitätsmenü wird angezeigt</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Erweitertes Videoqualitätsmenü wird nicht angezeigt</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Verstecken von Premium-Qualitätsoptionen</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium-Qualitätsoptionen sind versteckt</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Hochwertige Optionen werden angezeigt</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">VideountertÃ¼tung priorisieren</string>
+  <string name="morphe_prioritize_video_quality_summary_on">VideountertÃ¼tung wird priorisiert</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video-Codecs werden priorisiert</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Folie zum Suchen aktivieren</string>
   <string name="morphe_slide_to_seek_summary_on">Slide zum Suchen ist aktiviert</string>
@@ -1515,13 +1532,16 @@ Die Wiedergabe kann stottern oder Frames verlieren"</string>
 Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_about_title">Nebenwirkungen des Spoofings</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Experimenteller Client und kann jederzeit aufhören zu funktionieren</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video kann um 1:00 Uhr stoppen oder ist möglicherweise in einigen Regionen nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audiotrack-Menü fehlt</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kein AV1-Videocodec</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiver Modus ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile Lautstärke ist nicht verfügbar</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video kann möglicherweise verzögert starten</string>
+  <string name="morphe_spoof_video_streams_about_js">• Wenn die Deobfuskation fehlschlägt, kann die Wiedergabe fehlschlagen</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Originalton erzwingen ist nicht verfügbar</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">In Statistiken für Nerds anzeigen</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Der Client-Typ wird in den Statistiken für Nerds angezeigt</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Der Client wird in den Statistiken für Nerds ausgeblendet</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Player-JavaScript-Variante</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">In Statistiken für Nerds anzeigen</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Der Client-Typ wird in den Statistiken für Nerds angezeigt</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Der Client wird in den Statistiken für Nerds ausgeblendet</string>
 </resources>

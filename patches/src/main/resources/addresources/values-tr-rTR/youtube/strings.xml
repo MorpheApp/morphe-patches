@@ -228,6 +228,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_transcript_section_title">Transkripti gizle</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript kısmı gizli</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript kısmı görünür</string>
+  <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
   <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
   <string name="morphe_hide_description_components_screen_summary">Video açıklamasındaki öğeleri gizle veya göster</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtreleme çubuğu</string>
@@ -703,10 +706,10 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ses parçası menüsü gizli</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Ses parçası menüsü görünür</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ses izleme menüsü gizlenmiş
 
-Ses izleme menüsünü görüntülemek için, 'Video akışları sahteleştir'yi 'Android No SDK' olarak değiştirin"</string>
+Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' olarak değiştirin"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR modunda izlemeyi gizle</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR modunda izle menüsü gizli</string>
@@ -789,9 +792,15 @@ Ses izleme menüsünü görüntülemek için, 'Video akışları sahteleştir'yi
   <string name="morphe_hide_shorts_subscriptions_title">Abonelikler akışında Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Abonelikler akışında gizli</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Abonelikler akışında görünür</string>
+  <string name="morphe_hide_shorts_video_description_title">Kısa videoları video açıklamasında gizle</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Video açıklamasında gizli</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Video açıklamasında gösteriliyor</string>
   <string name="morphe_hide_shorts_history_title">İzleme geçmişinde Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_history_summary_on">İzleme geçmişinde gizli</string>
   <string name="morphe_hide_shorts_history_summary_off">İzleme geçmişinde görünür</string>
+  <string name="morphe_hide_shorts_ai_button_title">AI düğmesini gizle</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">AI düğmesi gizli</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">AI düğmesi görünür</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Otomatik seslendirme etiketi\'yi gizle</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Otomatik seslendirme etiketi gizlidir</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Otomatik seslendirme etiketi görünür</string>
@@ -1502,6 +1511,14 @@ Sınırlamalar:
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş video kalitesi menüsünü göster</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Gelişmiş video kalitesi menüsü gösterilir</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Gelişmiş video kalitesi menüsü gösterilmez</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium kalite seçenekleri gizlendi</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium kaliteli seçenekler gösteriliyor</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video kalitesini öncelikle</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Video kalitesi önceliklendirildi</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video kodçerleri önceliklendirildi</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Kaydırarak sardırmayı etkinleştir</string>
   <string name="morphe_slide_to_seek_summary_on">Kaydırarak sardırma etkin</string>
@@ -1517,13 +1534,16 @@ Oynatma takılabilir veya kare atlayabilir"</string>
 AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Deneysel istemci ve her an çalışmayı durdurabilir</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video 1:00\'da durabilir veya bazı bölgelerde kullanılamayabilir</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ses parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video muhtemelen gecikmeyle başlayabilir</string>
+  <string name="morphe_spoof_video_streams_about_js">• Eşleştirme başarısız olursa oynatma da başarısız olabilir</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal sesi zorlama mevcut değil</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Meraklısı için istatistiklerde göster</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">İstemci tipi meraklısı için istatistiklerde gösterilir</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">İstemci, meraklısı için istatistiklerde gizli</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Oynatıcı JavaScript varyantı</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Meraklısı için istatistiklerde göster</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">İstemci tipi meraklısı için istatistiklerde gösterilir</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">İstemci, meraklısı için istatistiklerde gizli</string>
 </resources>

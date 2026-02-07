@@ -191,8 +191,8 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_hide_explore_section_summary_on">Các phần khám phá khóa học và khám phá podcast đã bị ẩn</string>
   <string name="morphe_hide_explore_section_summary_off">Các phần khám phá khóa học và khám phá podcast được hiển thị</string>
   <string name="morphe_hide_explore_course_section_title">Ẩn \'Khám phá khóa học này\'</string>
-  <string name="morphe_hide_explore_course_section_summary_on">Phần khám phá khóa học này đã bị ẩn</string>
-  <string name="morphe_hide_explore_course_section_summary_off">Phần khám phá khóa học này được hiển thị</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Phần khám phá khóa học đã bị ẩn</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Phần khám phá khóa học được hiển thị</string>
   <string name="morphe_hide_explore_podcast_section_title">Ẩn \'Khám phá podcast\'</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Phần khám phá podcast đã bị ẩn</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Phần khám phá podcast được hiển thị</string>
@@ -229,6 +229,9 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_hide_transcript_section_title">Ẩn Bản chép lời</string>
   <string name="morphe_hide_transcript_section_summary_on">Phần bản chép lời đã bị ẩn</string>
   <string name="morphe_hide_transcript_section_summary_off">Phần bản chép lời được hiển thị</string>
+  <string name="morphe_hide_quizzes_section_title">Ẩn Đố vui</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Phần đố vui đã bị ẩn</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Phần đố vui được hiển thị</string>
   <string name="morphe_hide_description_components_screen_title">Mô tả video</string>
   <string name="morphe_hide_description_components_screen_summary">Ẩn hoặc hiện các thành phần mô tả video</string>
   <string name="morphe_hide_filter_bar_screen_title">Thanh bộ lọc</string>
@@ -704,10 +707,10 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu bản âm thanh đã bị ẩn</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu bản âm thanh được hiển thị</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu bản âm thanh bị ẩn
 
-Để hiển thị menu bản âm thanh, hãy đổi 'Giả mạo luồng phát video' thành 'Android No SDK'"</string>
+Để hiển thị menu bản âm thanh, hãy đổi 'Giả mạo luồng phát video' thành 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ẩn Xem ở chế độ thực tế ảo</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu xem ở chế độ thực tế ảo đã bị ẩn</string>
@@ -790,9 +793,15 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Ẩn Shorts trong thẻ Kênh đăng ký</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Đã ẩn trong thẻ Kênh đăng ký</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Đã hiển thị trong thẻ Kênh đăng ký</string>
+  <string name="morphe_hide_shorts_video_description_title">Ẩn Shorts trong mô tả video</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Đã ẩn trong mô tả video.</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Đã hiển thị trong mô tả video.</string>
   <string name="morphe_hide_shorts_history_title">Ẩn Shorts trong nhật ký xem</string>
   <string name="morphe_hide_shorts_history_summary_on">Đã ẩn trong nhật ký xem</string>
   <string name="morphe_hide_shorts_history_summary_off">Đã hiển thị trong nhật ký xem</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ẩn nút AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Nút AI ở góc dưới cùng bên trái đã bị ẩn</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Nút AI ở góc dưới cùng bên trái được hiển thị</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ẩn nhãn \'Bản lồng tiếng\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Nhãn bản lồng tiếng đã bị ẩn</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Nhãn bản lồng tiếng được hiển thị</string>
@@ -1502,6 +1511,14 @@ Hạn chế:
   <string name="morphe_advanced_video_quality_menu_title">Hiện menu chất lượng video nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Menu chất lượng video nâng cao được hiển thị</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Menu chất lượng video nâng cao không được hiển thị</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Ẩn tùy chọn chất lượng Premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Tùy chọn chất lượng Premium đã bị ẩn</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Tùy chọn chất lượng Premium được hiển thị</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Đưa video chất lượng lên hàng đầu</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Chất lượng video đã được đưa lên hàng đầu</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Mã video được đưa lên hàng đầu</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
   <string name="morphe_slide_to_seek_summary_on">Vuốt để tua đã được bật</string>
@@ -1517,13 +1534,16 @@ Quá trình phát có thể bị giật hoặc tụt khung hình"</string>
 Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_title">Hạn chế khi giả mạo</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Ứng dụng khách đang trong giai đoạn thử nghiệm và có thể ngừng hoạt động bất cứ lúc nào</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video có thể dừng ở 1:00, hoặc có thể không khả dụng ở một số khu vực</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu bản âm thanh bị thiếu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Chế độ 360° VR trải nghiệm không có sẵn</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Âm lượng ổn định không khả dụng</string>
-  <string name="morphe_spoof_video_streams_about_js">• Phát video có thể chậm hơn bình thường</string>
+  <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, phát lại có thể thất bại</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Buộc âm thanh gốc không khả dụng</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Hiện trong Thống kê chi tiết</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Ứng dụng khách được hiển thị trong Thống kê chi tiết</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Ứng dụng khách đã bị ẩn trong Thống kê chi tiết</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Biến thể JavaScript của trình phát</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện trong Thống kê chi tiết</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Ứng dụng khách được hiển thị trong Thống kê chi tiết</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Ứng dụng khách đã bị ẩn trong Thống kê chi tiết</string>
 </resources>

@@ -29,16 +29,14 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Morphe tỉ lệ</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Thông Báo Kiểm Thử! ⚠️</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Bạn đang sử dụng phiên bản ứng dụng thử nghiệm của ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🛠️ Có thể xảy ra hành vi ứng dụng kỳ lạ hoặc lỗi chưa được nhận biết khi chúng tôi điều chỉnh các bản vá cho phiên bản này.
-<br/>
-<br/>
-Nếu bạn muốn trải nghiệm ít gặp vấn đề nhất, thì <b>xóa bỏ</b> phiên bản này và cài đặt phiên bản ứng dụng khuyến nghị của ✅ <b>%2$s</b>"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử nghiệm</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Tôi muốn ổn định</string>
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Cảnh báo thử nghiệm! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Bạn đang dùng phiên bản thử nghiệm là &lt;b&gt;%1$s&lt;/b&gt; ⚠️
+&lt;br/&gt;&lt;br/&gt;
+🔧 Ứng dụng có thể hoạt động không ổn định hoặc gặp lỗi không xác định, vì các bản vá chưa được tinh chỉnh cho phiên bản này.
+&lt;br/&gt;&lt;br/&gt;
+Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt;b&gt;gỡ cài đặt&lt;/b&gt; phiên bản này và  vá phiên bản đề xuất là &lt;b&gt;%2$s&lt;/b&gt; ✅"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân có thể là do trình chặn quảng cáo DNS hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Để khắc phục, hãy thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả trình chặn DNS và proxy.</string>
