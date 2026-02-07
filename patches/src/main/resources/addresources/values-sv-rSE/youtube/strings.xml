@@ -669,10 +669,7 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menyn Ljudspår är dold</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menyn Ljudspår visas</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menyn Ljudspår är dold
-
-Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\" till \"Android No SDK\""</string>
+          'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Dölj Titta i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menyn Titta i VR är dold</string>
@@ -1463,6 +1460,7 @@ Begränsningar:
   <string name="morphe_advanced_video_quality_menu_summary_on">Avancerad videokvalitetsmeny visas</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Avancerad videokvalitetsmeny visas inte</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
   <string name="morphe_slide_to_seek_summary_on">Dra för att söka är aktiverat</string>
@@ -1478,13 +1476,13 @@ Uppspelningen kan hacka eller tappa bildrutor"</string>
 Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_about_title">Bieffekter av förfalskning</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Experimentell klient och kan sluta fungera när som helst</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Videor kan stanna vid 1:00 eller kanske inte är tillgängliga i vissa regioner</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menyn Ljudspår saknas</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ingen AV1-videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil volym är inte tillgängligt</string>
-  <string name="morphe_spoof_video_streams_about_js">• Videon kan starta sent</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tvinga ursprungligt ljud är inte tillgängligt</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Visa i Statistik för nördar</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Klienttypen visas i Statistik för nördar</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Klienten är dold i Statistik för nördar</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Visa i Statistik för nördar</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Klienttypen visas i Statistik för nördar</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klienten är dold i Statistik för nördar</string>
 </resources>

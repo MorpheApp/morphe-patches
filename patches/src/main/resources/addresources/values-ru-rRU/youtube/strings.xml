@@ -706,10 +706,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Пункт \"Звуковая дорожка\" в выдвижном меню плеера скрыт</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Пункт \"Звуковая дорожка\" в выдвижном меню плеера показан</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню дорожки аудио скрыто
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню дорожек аудио спрятано
 
-Чтобы показать меню дорожки аудио, измените 'Поддельные видеопотоки' на 'Android No SDK'"</string>
+Чтобы показать меню дорожек аудио, измените 'Подделывать потоки видео' на 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Скрыть пункт \"Смотреть в VR-режиме\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Пункт \"Смотреть в VR-режиме\" в выдвижном меню плеера скрыт</string>
@@ -1515,6 +1515,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_premium_video_quality_title">Скрыть параметры Premium качества</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Параметры Premium качества скрыты</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Параметры Premium качества показаны</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Приоритет видео</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Качество видео приоритетно</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Кодеки видео приоритетны</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Включить перемотку видео слайдом</string>
   <string name="morphe_slide_to_seek_summary_on">Перемотка видео слайдом включена</string>
@@ -1530,13 +1534,16 @@ Cookies будут сохраняться автоматически, если �
 Воспроизведение видео с AV1 может прерываться или пропускать кадры."</string>
   <string name="morphe_spoof_video_streams_about_title">Побочные эффекты подмены</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Клиент экспериментальный и может перестать работать в любое время</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Видео может остановиться на 1:00 или может быть недоступно в некоторых регионах</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Пункт \"Звуковая дорожка\" отсутствует</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсутствует видеокодек AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим погружения 360° VR недоступен</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Постоянный уровень громкости недоступен </string>
-  <string name="morphe_spoof_video_streams_about_js">• Видео может начаться с задержкой</string>
+  <string name="morphe_spoof_video_streams_about_js">• Если деобфускация провалится, воспроизведение может провалиться</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Принудительная оригинальная звуковая дорожка недоступна</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Показать в \"Статистике для сисадминов\"</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Тип клиента в \"Статистике для сисадминов\" показан</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Тип клиента в \"Статистике для сисадминов\" скрыт</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Вариант JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показать в \"Статистике для сисадминов\"</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Тип клиента в \"Статистике для сисадминов\" показан</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Тип клиента в \"Статистике для сисадминов\" скрыт</string>
 </resources>

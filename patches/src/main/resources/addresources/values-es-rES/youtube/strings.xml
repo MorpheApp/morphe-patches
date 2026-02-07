@@ -706,10 +706,10 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">El menú \"Pista de audio\" está oculto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">El menú \"Pista de audio\" está visible</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"El menú \"Pista de audio\" está oculto
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"El menú de pistas de audio está oculto
 
-Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de vídeo\" a \"Android sin SDK\""</string>
+Para mostrar el menú de pistas de audio, cambia \"Falsificar transmisiones de vídeo\" a \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ocultar \"Ver en realidad virtual\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">El menú \"Ver en realidad virtual\" está oculto</string>
@@ -1515,6 +1515,10 @@ Limitaciones:
   <string name="morphe_hide_premium_video_quality_title">Ocultar opciones de calidad premium</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Las opciones de calidad premium están ocultas</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Se muestran opciones de calidad premium</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizar la calidad del vídeo</string>
+  <string name="morphe_prioritize_video_quality_summary_on">La calidad del vídeo está priorizada</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Los codecs de vídeo están priorizados</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activar deslizar para buscar</string>
   <string name="morphe_slide_to_seek_summary_on">Deslizar para buscar está activado</string>
@@ -1530,13 +1534,16 @@ La reproducción se puede atascar o perder fotogramas"</string>
 La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</string>
   <string name="morphe_spoof_video_streams_about_title">Efectos secundarios de la falsificación</string>
   <string name="morphe_spoof_video_streams_about_experimental">• El cliente es experimental y puede dejar de funcionar en cualquier momento</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• El vídeo puede detenerse en 1:00, o puede no estar disponible en algunas regiones</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Falta el menú de la pista de audio</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sin códec de vídeo AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• El modo inmersivo 360° VR no está disponible</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumen estable no disponible</string>
-  <string name="morphe_spoof_video_streams_about_js">• El vídeo puede comenzar tarde</string>
+  <string name="morphe_spoof_video_streams_about_js">• Si el descifrado falla, la reproducción puede fallar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forzar audio original no está disponible</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Mostrar en \"Estadísticas para nerds\"</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">El tipo de cliente se muestra en \"Estadísticas para nerds\"</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">El cliente está oculto en \"Estadísticas para nerds\"</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Variante de JavaScript del reproductor</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar en \"Estadísticas para nerds\"</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">El tipo de cliente se muestra en \"Estadísticas para nerds\"</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">El cliente está oculto en \"Estadísticas para nerds\"</string>
 </resources>

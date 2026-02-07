@@ -1,13 +1,15 @@
 package app.morphe.extension.shared.spoof.js.nsigsolver.provider;
 
-public class ChallengeInput {
-    private final String challenge;
+import java.util.List;
 
-    public ChallengeInput(String challenge) {
-        this.challenge = challenge;
+public class ChallengeInput {
+    private final List<String> challenges;
+
+    public ChallengeInput(List<String> challenges) {
+        this.challenges = challenges;
     }
 
-    public String getChallenge() {
-        return challenge;
+    public List<String> getChallenges() {
+        return challenges;
     }
 }

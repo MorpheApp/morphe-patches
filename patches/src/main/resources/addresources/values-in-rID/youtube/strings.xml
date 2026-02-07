@@ -706,10 +706,10 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu trek audio disembunyikan</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu trek audio ditampilkan</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu trek audio disembunyikan
 
-Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android No SDK'"</string>
+Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sembunyikan Tonton di VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu tonton di VR disembunyikan</string>
@@ -1512,9 +1512,13 @@ Batasan:
   <string name="morphe_advanced_video_quality_menu_summary_on">Menu kualitas video lanjutan ditampilkan</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Menu kualitas video lanjutan tidak ditampilkan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
-  <string name="morphe_hide_premium_video_quality_title">Sembunyikan opsi kualitas premium</string>
-  <string name="morphe_hide_premium_video_quality_summary_on">Opsi kualitas premium disembunyikan</string>
+  <string name="morphe_hide_premium_video_quality_title">Sembunyikan pilihan kualitas premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Pilihan kualitas premium disembunyikan</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Pilihan kualitas Premium ditampilkan</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritaskan kualitas video</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Kualitas video diprioritaskan</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Kodek video diprioritaskan</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktifkan geser untuk mencari</string>
   <string name="morphe_slide_to_seek_summary_on">Geser untuk mencari diaktifkan</string>
@@ -1530,13 +1534,16 @@ Pemutaran mungkin tersendat atau kehilangan bingkai"</string>
 Pemutaran video dengan AV1 mungkin tersendat atau kehilangan bingkai."</string>
   <string name="morphe_spoof_video_streams_about_title">Efek samping pemalsuan</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Klien eksperimental dan dapat berhenti berfungsi kapan saja</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video mungkin berhenti pada 1:00, atau mungkin tidak tersedia di beberapa wilayah</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu trek audio hilang</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Tidak ada codec video AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mode imersif 360° VR tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume stabil tidak tersedia</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video mungkin mulai terlambat</string>
+  <string name="morphe_spoof_video_streams_about_js">• Jika deobfuskasi gagal, mungkin playbacks juga gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asli tidak tersedia</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Tampilkan di Statistik untuk nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Jenis klien ditampilkan di Statistik untuk nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Klien disembunyikan di Statistik untuk nerds</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Variasi JavaScript Pemain</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tampilkan di Statistik untuk nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Jenis klien ditampilkan di Statistik untuk nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klien disembunyikan di Statistik untuk nerds</string>
 </resources>

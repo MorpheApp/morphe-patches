@@ -706,10 +706,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">تم إخفاء قائمة المقطع الصوتي</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">يتم عرض قائمة المقطع الصوتي</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"تم إخفاء قائمة المقطع الصوتي
 
-لعرض قائمة المقطع الصوتي، غيّر 'Spoof Video Streams' إلى 'Android No SDK'"</string>
+لعرض قائمة المقطع الصوتي، غيّر 'تضليل تيار فيديو' إلى 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء المشاهدة في VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">تم إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
@@ -1516,6 +1516,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">إخفاء خيارات جودة Premium</string>
   <string name="morphe_hide_premium_video_quality_summary_on">تم إخفاء خيارات جودة Premium</string>
   <string name="morphe_hide_premium_video_quality_summary_off">يتم عرض خيارات جودة Premium</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">أفضل جودة فيديو</string>
+  <string name="morphe_prioritize_video_quality_summary_on">جودة الفيديو مرتفعة</string>
+  <string name="morphe_prioritize_video_quality_summary_off">كوديكس فيديو مرتفعة</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary_on">تم تمكين التمرير للتقديم أو الترجيع</string>
@@ -1531,13 +1535,16 @@ Second \"item\" text"</string>
 قد يتسبب تشغيل الفيديو باستخدام AV1 في التقطيع أو إسقاط الإطارات."</string>
   <string name="morphe_spoof_video_streams_about_title">التأثيرات الجانبية للتزييف</string>
   <string name="morphe_spoof_video_streams_about_experimental">• عميل تجريبي وقد يتوقف عن العمل في أي وقت</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• قد يتوقف الفيديو عند 1:00، أو قد لا يكون متاحًا في بعض المناطق</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• قائمة المقطع الصوتي مفقودة</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• لا يوجد ترميز الفيديو AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR غمرته غير متاحة</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• مستوى الصوت الثابت غير متاح</string>
-  <string name="morphe_spoof_video_streams_about_js">• الفيديو قد يبدأ متأخرًا</string>
+  <string name="morphe_spoof_video_streams_about_js">• إذا فشل فك التشفير، قد يفشل التشغيل</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• فرض الصوت الأصلي غير متاح</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">عرض في إحصاءات تقنية</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">يتم عرض نوع العميل في إحصاءات تقنية</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">تم إخفاء نوع العميل في إحصاءات تقنية</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">مثيل JavaScript للاعب</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">عرض في إحصاءات تقنية</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">يتم عرض نوع العميل في إحصاءات تقنية</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">تم إخفاء نوع العميل في إحصاءات تقنية</string>
 </resources>

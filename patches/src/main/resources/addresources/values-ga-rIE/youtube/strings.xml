@@ -704,10 +704,10 @@ Tá sé seo ag tairgfí cookies áiríonna seachtracha"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Tá roghchlár rian fuaime i bhfolach</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Taispeántar roghchlár rian fuaime</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Tá menú an t-áite seo ar fhágáil
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Tá meáin an scannáin audio faoi seo
 
-Chugainn an menú an t-áite seo, athraigh 'Spoof video streams' go 'Android No SDK'"</string>
+Tá an meáin an scannáin audio faoi seo"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Folaigh Watch i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Tá an roghchlár Féach i VR i bhfolach</string>
@@ -1514,6 +1514,10 @@ Teorainneacha:
   <string name="morphe_hide_premium_video_quality_title">Folaigh Oiphealltáisí Sreabhán</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Tá Oiphealltáisí Sreabhán Folaite</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Taispeánfar tairgfí premium do ghnólachtaí ar an gclár</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Tairgfí gualacht físe</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Tairgfí gualacht físe</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Tairgfí cóid físe</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
   <string name="morphe_slide_to_seek_summary_on">Tá sleamhnán le lorg cumasaithe</string>
@@ -1529,13 +1533,16 @@ D'fhéadfadh go mbeadh fadhbanna le hathsheinm nó go gcaillfí frámaí"</strin
 D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe le AV1."</string>
   <string name="morphe_spoof_video_streams_about_title">Fo-éifeachtaí a fhalsúa</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Cliant turgnamhach é seo agus féadfaidh sé stop a chur ag obair ag am ar bith</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Is féidir go stopfaidh an físeán ag 1:00, nó b\'fhéidir nach mbeidh sé ar fáil i réigiúin áirithe</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Tá an roghchlár rian fuaime in easnamh</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Níl aon cóideac físe AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Ní fheidir an modh VR 360°</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Níl toirt chobhsaí ar fáil</string>
-  <string name="morphe_spoof_video_streams_about_js">• Tairgfí an video thar am</string>
+  <string name="morphe_spoof_video_streams_about_js">• Mura gcuirfidh an deobscúradh, is féidir go mbeidh an tseoladh faoi bhréagracht</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Níl an fuaim bhunaidh iallach ar fáil</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Taispeáin i Staitisticí do nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Taispeántar cineál an chliaint i Staitisticí do nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Tá an cliant curtha i bhfolach i Staitisticí do nerds</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Seo an tseoladh JavaScript an chraolta</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Taispeáin i Staitisticí do nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Taispeántar cineál an chliaint i Staitisticí do nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Tá an cliant curtha i bhfolach i Staitisticí do nerds</string>
 </resources>

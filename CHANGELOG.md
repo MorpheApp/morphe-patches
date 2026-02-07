@@ -1,3 +1,42 @@
+# [1.12.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-02-07)
+
+
+### Features
+
+* **Spoof video streams:** Default client maintenance ([#448](https://github.com/MorpheApp/morphe-patches/issues/448)) ([36817a3](https://github.com/MorpheApp/morphe-patches/commit/36817a35c0f337f7d988624d8aebac418424a5f2))
+* **YouTube - Video quality:** Add "Prioritize video quality" setting ([#449](https://github.com/MorpheApp/morphe-patches/issues/449)) ([9819078](https://github.com/MorpheApp/morphe-patches/commit/98190781e890e56eeb0771496af43ce710e8443d))
+
+# [1.11.0](https://github.com/MorpheApp/morphe-patches/compare/v1.10.0...v1.11.0) (2026-02-06)
+
+
+### Bug Fixes
+
+* **Custom branding:** Show user provided custom icon everywhere ([c0433ab](https://github.com/MorpheApp/morphe-patches/commit/c0433abbd8be4797c085d6637aa4ebe8ae20f9a6))
+* **YouTube - Ambient mode:** Resolve "Bypass Ambient mode restrictions" not bypassing ([#392](https://github.com/MorpheApp/morphe-patches/issues/392)) ([f5b71b2](https://github.com/MorpheApp/morphe-patches/commit/f5b71b2582f3919ee02cc58b40ce0a1a49c50b91))
+* **YouTube - Hide ads:** Empty space is left when ads are hidden on tablets ([#377](https://github.com/MorpheApp/morphe-patches/issues/377)) ([da12960](https://github.com/MorpheApp/morphe-patches/commit/da12960ceb4d93490b8d41f0ea616d686eb609eb))
+* **YouTube - Hide layout components:** "Hide Featured places" also hide watch history shelf ([#420](https://github.com/MorpheApp/morphe-patches/issues/420)) ([fcb6758](https://github.com/MorpheApp/morphe-patches/commit/fcb675828b3465e5ea7b88cc659bbad284f6daa1))
+* **YouTube - Hide layout components:** "Hide Show more button" leaves empty space ([#422](https://github.com/MorpheApp/morphe-patches/issues/422)) ([d44862d](https://github.com/MorpheApp/morphe-patches/commit/d44862d81dc8d4b07cfcf1af7109e3dd6feae414))
+* **YouTube - Hide layout components:** "Hide subscribed channels bar" leaves empty space ([#404](https://github.com/MorpheApp/morphe-patches/issues/404)) ([6b68416](https://github.com/MorpheApp/morphe-patches/commit/6b6841626d76c9679b4b9bebfa98ccab9d617fd2))
+* **YouTube - Hide layout components:** Resolve "Hide subscribed channels bar" leaves empty space in landscape mode ([#421](https://github.com/MorpheApp/morphe-patches/issues/421)) ([83230a6](https://github.com/MorpheApp/morphe-patches/commit/83230a61bc7b9909af87869456580927047a5aac))
+* **YouTube - Miniplayer:** Minimal miniplayer has wrong play icon ([2eddce0](https://github.com/MorpheApp/morphe-patches/commit/2eddce052761c6e7cd519ef3f57e098ca4044c3e))
+* **YouTube - Navigation bar:** Rename "Switch Create with Notifications" to "Swap Create with Notifications" ([#384](https://github.com/MorpheApp/morphe-patches/issues/384)) ([6472dee](https://github.com/MorpheApp/morphe-patches/commit/6472dee35dae7d3b0ba08dd2b4348b535ce48da7))
+* **YouTube - SponsorBlock:** Resolve segments not fetching on experimental app targets ([46a5d9a](https://github.com/MorpheApp/morphe-patches/commit/46a5d9a0de18231b5dd4e664d6992b36663386ee))
+
+
+### Features
+
+* Show an experimental user on the first launch of an experimental app target ([#414](https://github.com/MorpheApp/morphe-patches/issues/414)) ([d52b9c9](https://github.com/MorpheApp/morphe-patches/commit/d52b9c97bc581a67708a0c9efe01472b24e0df5d))
+* **YouTube - Hide layout components:** Add "Hide comments section in Home feed" setting ([#382](https://github.com/MorpheApp/morphe-patches/issues/382)) ([b20f629](https://github.com/MorpheApp/morphe-patches/commit/b20f6294236cad32b1be29b73e761659193e464b))
+* **YouTube - Hide layout components:** Add "Hide explore this course" setting ([#410](https://github.com/MorpheApp/morphe-patches/issues/410)) ([42eaca0](https://github.com/MorpheApp/morphe-patches/commit/42eaca0d04c51ff5ae30b418ed8d2b9dd771ccc5))
+* **YouTube - Hide layout components:** Add "Hide Quizzes" setting ([#425](https://github.com/MorpheApp/morphe-patches/issues/425)) ([c843c32](https://github.com/MorpheApp/morphe-patches/commit/c843c32e69c078a6b8da2d1c3045f0b31898c53e))
+* **YouTube - Hide Shorts components:** Add "Hide AI button" setting ([#436](https://github.com/MorpheApp/morphe-patches/issues/436)) ([eea4657](https://github.com/MorpheApp/morphe-patches/commit/eea4657c94887d4e5f1e59a0392ee1f477bcd72b))
+* **YouTube - Hide Shorts components:** Add "Hide in video description" setting ([#426](https://github.com/MorpheApp/morphe-patches/issues/426)) ([7c01227](https://github.com/MorpheApp/morphe-patches/commit/7c01227b49f3feb4382e895fe768cd1cc3e6afd4))
+* **YouTube - Spoof app version:** Add target version `20.28.41` ([#375](https://github.com/MorpheApp/morphe-patches/issues/375)) ([3793689](https://github.com/MorpheApp/morphe-patches/commit/3793689be432ee1643e27670e2c845d4462a80b3))
+* **YouTube - Spoof app version:** Add target version `20.39.41` ([9ef0d22](https://github.com/MorpheApp/morphe-patches/commit/9ef0d2211aab5d5cb2d274678b2707ae0296499e))
+* **YouTube - Video quality:** Add `Hide Premium video quality` setting ([#423](https://github.com/MorpheApp/morphe-patches/issues/423)) ([fb3cb36](https://github.com/MorpheApp/morphe-patches/commit/fb3cb368ea0bb9a05cefacf0509a35acbded5ae5))
+* **YouTube:** Add `Ambient mode` patch ([#367](https://github.com/MorpheApp/morphe-patches/issues/367)) ([91a68f5](https://github.com/MorpheApp/morphe-patches/commit/91a68f5200d1f4061821aaba9f955a0fc9ec2cf1))
+* **YouTube:** Add experimental support for `21.06.251` ([3872f34](https://github.com/MorpheApp/morphe-patches/commit/3872f34adf76b7b20c554d3c9af4890ba06f38e6))
+
 # [1.11.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0-dev.15...v1.11.0-dev.16) (2026-02-06)
 
 

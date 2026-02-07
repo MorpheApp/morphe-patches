@@ -27,7 +27,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
     private static final Type SOLVER_OUTPUT_TYPE = new TypeToken<SolverOutput>() {}.getType();
 
     private String playerJS = "";
-    private String playerJSIdentifier = "";
+    private String playerJSHash = "";
     private final String repository = "yt-dlp/ejs";
 
     private final Map<ScriptType, String> scriptFilenames;
@@ -67,9 +67,9 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
 
     protected abstract String runJsRuntime(String stdin) throws JsChallengeProviderError;
 
-    public void setPlayerJS(String jsCode, String jsIdentifier) {
+    public void setPlayerJS(String jsCode, String playerJSHash) {
         this.playerJS = jsCode;
-        this.playerJSIdentifier = jsIdentifier;
+        this.playerJSHash = playerJSHash;
     }
 
     @Override
@@ -77,7 +77,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         List<JsChallengeProviderResponse> responses = new ArrayList<>();
 
         try {
-            CachedData data = cacheService.get(CACHE_SECTION, "player:" + playerJSIdentifier);
+            CachedData data = cacheService.get(CACHE_SECTION, "player:" + playerJSHash);
             String player = (data != null) ? data.getCode() : null;
             boolean cached;
 
@@ -107,7 +107,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
 
             String preprocessed = output.getPreprocessedPlayer();
             if (preprocessed != null) {
-                cacheService.save(CACHE_SECTION, "player:" + playerJSIdentifier, new CachedData(preprocessed));
+                cacheService.save(CACHE_SECTION, "player:" + playerJSHash, new CachedData(preprocessed));
             }
 
             List<ResponseData> outputResponses = output.getResponses();
@@ -147,7 +147,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         for (JsChallengeRequest request : requests) {
             Map<String, Object> reqMap = new HashMap<>();
             reqMap.put("type", request.getType().getValue());
-            reqMap.put("challenges", Collections.singletonList(request.getInput().getChallenge()));
+            reqMap.put("challenges", request.getInput().getChallenges());
             jsonRequests.add(reqMap);
         }
 

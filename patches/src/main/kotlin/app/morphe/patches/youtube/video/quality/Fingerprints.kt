@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.customLiteral
@@ -44,6 +45,36 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     custom = { _, classDef ->
         AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
     }
+)
+
+internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        newInstance("Ljava/util/ArrayList;"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+        )
+    ),
+)
+
+internal object VideoStreamingDataToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("VideoStreamingData(itags=")
+    )
 )
 
 internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(

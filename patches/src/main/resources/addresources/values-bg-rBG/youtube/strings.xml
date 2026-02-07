@@ -700,10 +700,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Скрий дублиране на видеа</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Менюто за аудио трак е скрито
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню за аудио трак е скрито
 
-За да покажете менюто за аудио трак, променете 'Споф в видеоклипове' на 'Android No SDK'"</string>
+За да покажете менюто за аудио трак, променете 'Спофай видео потоки' на 'ТВ'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Скрий дублиране на видеа</string>
@@ -1499,6 +1499,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">Скриване на премиум опции за качество</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Премиум опции за качество са скрити</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Вижте опции за премиум качество</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Приоритизирайте качество на видеото</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Качеството на видеото е приоритизирано</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Видео кодековете са приоритизирани</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
   <string name="morphe_slide_to_seek_summary_on">Стил на екрана</string>
@@ -1512,13 +1516,16 @@ Second \"item\" text"</string>
 Видео преглед с AV1 може да се качне или да има падане на кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Манипулиране на ефекти на видео</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Експериментално клиент и може да престане да работи в произволно време</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Видеото може да спира на 1:00, или може да не е налично в някои региони</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Меню за аудио трак не е налично</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсъства AV1 кодек на видео</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR иммерсивен режим не е наличен</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Не е налична стабилна звук</string>
-  <string name="morphe_spoof_video_streams_about_js">• Видеото може да започне с закъснение</string>
+  <string name="morphe_spoof_video_streams_about_js">• Ако деобфускацията провали, възпроизвеждането може да провали</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Не е налично \"Принудително оригинално аудио\"</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Показване в \"Статисти за геки\"</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Тип на клиент е показан в \"Статисти за геки\"</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Клиентът е скрит в \"Статисти за геки\"</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Вариант на Player JavaScript</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Покажи в Статистики за гики</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Тип клиент е показан в Статистики за гики</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Клиентът е скрит в Статистики за гики</string>
 </resources>

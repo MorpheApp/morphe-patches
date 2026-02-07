@@ -1,5 +1,5 @@
 {
-  "version": "1.11.0-dev.16",
+  "version": "1.12.0-dev.1",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -2000,6 +2000,7 @@
       "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",

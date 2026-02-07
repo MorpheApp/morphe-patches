@@ -34,15 +34,31 @@
         <item>Android Studio</item>
         <item>Android VR</item>
         <item>TV</item>
-        <item>TV Simply</item>
         <item>visionOS</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_CREATOR</item>
         <item>ANDROID_VR_1_47_48</item>
         <item>TV</item>
-        <item>TV_SIMPLY</item>
         <item>VISIONOS</item>
+    </string-array>
+    <string-array name="morphe_spoof_video_streams_js_variant_entries">
+        <item>House Brand</item>
+        <item>Phone</item>
+        <item>TV</item>
+        <item>TV ES6</item>
+        <item>Web</item>
+        <item>Web ES6</item>
+        <item>Web Embed</item>
+    </string-array>
+    <string-array name="morphe_spoof_video_streams_js_variant_entry_values">
+        <item>HOUSE_BRAND</item>
+        <item>PHONE</item>
+        <item>TV</item>
+        <item>TV_ES6</item>
+        <item>WEB</item>
+        <item>WEB_ES6</item>
+        <item>WEB_EMBED</item>
     </string-array>
 
     <!-- interaction.swipecontrols.swipeControlsResourcePatch -->

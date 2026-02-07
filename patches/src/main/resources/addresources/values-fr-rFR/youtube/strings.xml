@@ -706,10 +706,10 @@ Les cookies seront enregistrés automatiquement s'ils sont valides"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Le menu \'Piste audio\' est masqué</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Le menu \'Piste audio\' est affiché</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Le menu 'Piste audio' est masqué
 
-Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'Android No SDK'"</string>
+Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Masquer \'Regarder en RV\'</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Le menu \'Regarder en RV\' est masqué</string>
@@ -1519,6 +1519,10 @@ Limitations :
   <string name="morphe_hide_premium_video_quality_title">Masquer les options de qualité Premium</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Les options de qualité Premium sont masquées</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Les options de qualité Premium sont affichées</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioriser la qualité vidéo</string>
+  <string name="morphe_prioritize_video_quality_summary_on">La qualité vidéo est priorisée</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Les codecs vidéo sont priorisés</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activer \'Faites glisser pour rechercher\'</string>
   <string name="morphe_slide_to_seek_summary_on">Faites glisser pour rechercher est activé</string>
@@ -1535,13 +1539,16 @@ La lecture peut présenter des saccades ou des pertes d’images
 La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d’images."</string>
   <string name="morphe_spoof_video_streams_about_title">Effets secondaires de la falsification</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Client expérimental qui peut cesser de fonctionner à tout moment</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• La vidéo peut s’arrêter à 1:00, ou ne pas être disponible dans certaines régions</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Le menu \'Piste Audio\' est manquant</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Codec vidéo AV1 indisponible</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Le mode 360° VR immersif n\'est pas disponible</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Le volume stable n\'est pas disponible</string>
-  <string name="morphe_spoof_video_streams_about_js">• La vidéo peut démarrer en retard</string>
+  <string name="morphe_spoof_video_streams_about_js">• Si la désobfuscation échoue, la lecture peut échouer</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forcer la langue audio d\'origine n\'est pas disponible</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Afficher dans les \'Statistiques avancées\'</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Le type de client est affiché dans \'Statistiques avancées\'</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Le client est masqué dans \'Statistiques avancées\'</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Variante du lecteur JavaScript</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afficher dans les \'Statistiques avancées\'</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Le type de client est affiché dans \'Statistiques avancées\'</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Le client est masqué dans \'Statistiques avancées\'</string>
 </resources>

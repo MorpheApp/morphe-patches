@@ -112,28 +112,6 @@ public enum ClientType {
             "TV"
     ),
     /**
-     * Video not playable: None.
-     * Uses non adaptive bitrate.
-     * AV1 codec available.
-     */
-    TV_SIMPLY(75,
-            "TVHTML5_SIMPLY",
-            "Microsoft",
-            "Xbox 360",
-            "Xbox",
-            "6.1",
-            "1.0",
-            "GAME_CONSOLE",
-            "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)",
-            true,
-            // PoToken is required to play videos while signed out.
-            true,
-            true,
-            false,
-            true,
-            "TV Simply"
-    ),
-    /**
      * Internal YT client for an unreleased YT client. May stop working at any time.
      */
     VISIONOS(101,
@@ -151,6 +129,27 @@ public enum ClientType {
             false,
             false,
             "visionOS"
+    ),
+    /**
+     * Here only to migrate data.
+     */
+    @Deprecated
+    TV_SIMPLY(75,
+            "TVHTML5_SIMPLY",
+            "Microsoft",
+            "Xbox 360",
+            "Xbox",
+            "6.1",
+            "1.0",
+            "GAME_CONSOLE",
+            "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)",
+            true,
+            // PoToken is required to play videos while signed out.
+            true,
+            true,
+            false,
+            true,
+            "TV Simply"
     );
 
     /**

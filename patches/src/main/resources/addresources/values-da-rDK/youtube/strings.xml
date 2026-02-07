@@ -706,10 +706,10 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menuen for lydspor er skjult</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menuen Lydspor vises</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Lydspor-menuen er skjult
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Lydspor-menu er skjult
 
-For at vise Lydspor-menuen, ændr 'Spoof video streams' til 'Android No SDK'"</string>
+For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul vagt i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Se i VR-menuen er skjult</string>
@@ -1515,6 +1515,10 @@ Begrænsninger:
   <string name="morphe_hide_premium_video_quality_title">Skjul Premium kvalitetsindstillinger</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Premium kvalitetsindstillinger er skjult</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Premium kvalitetsmuligheder vises</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritiser video kvalitet</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Video kvalitet er prioritiseret</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video kodeker er prioritiseret</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
   <string name="morphe_slide_to_seek_summary_on">Dias for at søge er aktiveret</string>
@@ -1530,13 +1534,16 @@ Afspilning kan hakke eller miste billeder"</string>
 Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger ved spoofing</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Eksperimentel klient og kan stoppe med at fungere når som helst</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Videoen kan stoppe ved 1:00, eller er muligvis ikke tilgængelig i visse regioner</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Lydspormenu mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videokodek</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv modus er ikke tilgængelig</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil lydstyrke er ikke tilgængelig</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video kan starte sent</string>
+  <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Vis i Statistik for nørder</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Klienttypen vises i Statistik for nørder</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Klienten er skjult i Statistik for nørder</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Spiller JavaScript-variant</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis i Statistik for nørder</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Klienttypen vises i Statistik for nørder</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klienten er skjult i Statistik for nørder</string>
 </resources>

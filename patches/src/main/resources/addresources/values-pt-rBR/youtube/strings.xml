@@ -706,10 +706,10 @@ Os cookies serão salvos automaticamente se forem válidos"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu faixa de áudio está oculto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu faixa de áudio não está oculto</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu de faixas de áudio está oculto
 
-Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Android No SDK'"</string>
+Para mostrar o menu de faixas de áudio, mude 'Falsificar fluxos de vídeo' para 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ocultar Assistir no VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu assistir no VR está oculto</string>
@@ -1515,6 +1515,7 @@ Limitações:
   <string name="morphe_hide_premium_video_quality_title">Ocultar opções de qualidade premium</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Opções de qualidade premium estão ocultas</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Opções de alta qualidade são exibidas</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ativar gesto na barra de busca</string>
   <string name="morphe_slide_to_seek_summary_on">Gesto na barra de busca está ativado</string>
@@ -1530,13 +1531,16 @@ A reprodução pode engasgar ou perder quadros"</string>
 A reprodução de vídeo com AV1 pode gaguejar ou perder quadros."</string>
   <string name="morphe_spoof_video_streams_about_title">Efeitos colaterais da falsificação</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Cliente experimental e pode parar de funcionar a qualquer momento</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• O vídeo pode parar em 1:00, ou pode não estar disponível em algumas regiões</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• O menu da faixa de áudio está faltando</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sem codec de vídeo AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modo imersivo 360° VR não está disponível</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume estável não está disponível</string>
-  <string name="morphe_spoof_video_streams_about_js">• O vídeo pode começar com atraso</string>
+  <string name="morphe_spoof_video_streams_about_js">• Se a desobfuscação falhar, a reprodução pode falhar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar áudio original não está disponível</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Mostrar em Estatísticas para nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">O tipo de cliente é mostrado em Estatísticas para nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">O cliente está oculto em Estatísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Variante de JavaScript do player</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar em Estatísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">O tipo de cliente é mostrado em Estatísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">O cliente está oculto em Estatísticas para nerds</string>
 </resources>

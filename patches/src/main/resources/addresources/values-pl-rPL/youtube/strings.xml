@@ -94,7 +94,7 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_movies_section_summary_off">Widoczna</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
-  <string name="morphe_hide_notify_me_button_title">Przycisk \'Powiadom mnie\'</string>
+  <string name="morphe_hide_notify_me_button_title">Przycisk \"Powiadom mnie\"</string>
   <string name="morphe_hide_notify_me_button_summary_on">Ukryty</string>
   <string name="morphe_hide_notify_me_button_summary_off">Widoczny</string>
   <string name="morphe_hide_playables_title">Pokój gier</string>
@@ -105,7 +105,7 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_search_suggestions_summary_off">Widoczne</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
-  <string name="morphe_hide_show_more_button_title">Przycisk \'Pokaż więcej\'</string>
+  <string name="morphe_hide_show_more_button_title">Przycisk \"Pokaż więcej\"</string>
   <string name="morphe_hide_show_more_button_summary_on">Ukryty w wynikach wyszukiwania</string>
   <string name="morphe_hide_show_more_button_summary_off">Widoczny w wynikach wyszukiwania</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Pasek z subskrybowanymi kanałami</string>
@@ -183,16 +183,16 @@ Włączenie tej opcji spowoduje również rejestrowanie niektórych danych użyt
   <string name="morphe_hide_chapters_section_title">Rozdziały nad opisami</string>
   <string name="morphe_hide_chapters_section_summary_on">Ukryta</string>
   <string name="morphe_hide_chapters_section_summary_off">Widoczna</string>
-  <string name="morphe_hide_course_progress_section_title">Sekcja \'Postępy w kursie\'</string>
+  <string name="morphe_hide_course_progress_section_title">Sekcja \"Postępy w kursie\"</string>
   <string name="morphe_hide_course_progress_section_summary_on">Ukryta</string>
   <string name="morphe_hide_course_progress_section_summary_off">Widoczna</string>
   <string name="morphe_hide_explore_section_title">Sekcje odkrywania</string>
   <string name="morphe_hide_explore_section_summary_on">Ukryte są sekcje Poznaj ten kurs i Poznaj podcast</string>
   <string name="morphe_hide_explore_section_summary_off">Widoczne są sekcje Poznaj ten kurs i Poznaj podcast</string>
-  <string name="morphe_hide_explore_course_section_title">Sekcja \'Poznaj ten kurs\'</string>
+  <string name="morphe_hide_explore_course_section_title">Sekcja \"Poznaj ten kurs\"</string>
   <string name="morphe_hide_explore_course_section_summary_on">Ukryta</string>
   <string name="morphe_hide_explore_course_section_summary_off">Widoczna</string>
-  <string name="morphe_hide_explore_podcast_section_title">Sekcja \'Poznaj podcast\'</string>
+  <string name="morphe_hide_explore_podcast_section_title">Sekcja \"Poznaj podcast\"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Ukryta</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Widoczna</string>
   <string name="morphe_hide_featured_links_section_title">Sekcja z polecanymi linkami</string>
@@ -408,10 +408,10 @@ Ograniczenia:
   <string name="morphe_share_copy_url_timestamp_success">Skopiowano URL z czasem</string>
   <string name="morphe_copy_video_url_title">Przycisk od kopiowania URL filmu</string>
   <string name="morphe_copy_video_url_summary_on">Widoczny. Stuknij, by skopiować adres URL filmu. Stuknij i przytrzymaj, by skopiować adres URL filmu z czasem</string>
-  <string name="morphe_copy_video_url_summary_off">Niewidoczny</string>
+  <string name="morphe_copy_video_url_summary_off">Ukryty</string>
   <string name="morphe_copy_video_url_timestamp_title">Przycisk od kopiowania URL filmu z czasem</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">Widoczny. Stuknij, by skopiować adres URL filmu z czasem. Stuknij i przytrzymaj, aby skopiować adres URL filmu bez czasu</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Niewidoczny</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Ukryty</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Okno dialogowe treści ograniczonej do oglądania</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Usunięte</string>
@@ -430,7 +430,7 @@ Ograniczenia:
   <string name="morphe_external_downloader_screen_summary">Ustawienia dla zewnętrznej aplikacji od pobierania</string>
   <string name="morphe_external_downloader_title">Przycisk zewnętrznego pobierania</string>
   <string name="morphe_external_downloader_summary_on">Widoczny</string>
-  <string name="morphe_external_downloader_summary_off">Niewidoczny</string>
+  <string name="morphe_external_downloader_summary_off">Ukryty</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Metoda pobierania filmów</string>
   <string name="morphe_external_downloader_action_button_summary_on">Zewnętrzna aplikacja</string>
@@ -706,10 +706,10 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ukryte</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Widoczne</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ukryte
 
-Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie filmu' na 'Android No SDK'"</string>
+Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\" na \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Menu od oglądania w VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Ukryte</string>
@@ -804,7 +804,7 @@ Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie fi
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Etykieta automatycznego dubbingu</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Ukryta</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Widoczna</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Przycisk \'Kup Super Podziękowanie\'</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Przycisk \"Kup Super Podziękowanie\"</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_super_thanks_button_summary_off">Widoczny</string>
   <string name="morphe_hide_shorts_effect_button_title">Przycisk do efektów</string>
@@ -826,7 +826,7 @@ Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie fi
   <string name="morphe_hide_shorts_location_label_title">Etykieta lokalizacji</string>
   <string name="morphe_hide_shorts_location_label_summary_on">Ukryta</string>
   <string name="morphe_hide_shorts_location_label_summary_off">Widoczna</string>
-  <string name="morphe_hide_shorts_new_posts_button_title">Przycisk \'Nowe posty\'</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Przycisk \"Nowe posty\"</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">Widoczny</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Zatrzymane przyciski w odtwarzaczu</string>
@@ -835,7 +835,7 @@ Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie fi
   <string name="morphe_hide_shorts_preview_comment_title">Wyróżnione komentarze</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">Ukryte</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">Widoczne</string>
-  <string name="morphe_hide_shorts_save_sound_button_title">Przycisk \'Zapisz muzykę\'</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Przycisk \"Zapisz muzykę\"</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_save_sound_button_summary_off">Widoczny</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Sugestie wyszukiwań</string>
@@ -856,10 +856,10 @@ Aby menu od ścieżki dźwiękowej było widoczne, zmień 'Oszukuj strumienie fi
   <string name="morphe_hide_shorts_upcoming_button_title">Przycisk do nadchodzących treści</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_upcoming_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_shorts_use_sound_button_title">Przycisk \'Użyj tego dźwięku\'</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Przycisk \"Użyj tego dźwięku\"</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_shorts_use_template_button_title">Przycisk \'Użyj tego szablonu\'</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Przycisk \"Użyj tego szablonu\"</string>
   <string name="morphe_hide_shorts_use_template_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_use_template_button_summary_off">Widoczny</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
@@ -953,7 +953,7 @@ Ustawienia → Odtwarzanie → Autoodtwarzanie następnego filmu"</string>
   <string name="morphe_ryd_shorts_summary_on">"Widoczna
 
 Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."</string>
-  <string name="morphe_ryd_shorts_summary_off">Niewidoczna</string>
+  <string name="morphe_ryd_shorts_summary_off">Ukryta</string>
   <string name="morphe_ryd_dislike_percentage_title">Łapki w dół wyświetlane jako procent</string>
   <string name="morphe_ryd_dislike_percentage_summary_on">Tak</string>
   <string name="morphe_ryd_dislike_percentage_summary_off">Liczba</string>
@@ -963,10 +963,10 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."
   <string name="morphe_ryd_compact_layout_summary_off">Przycisk łapki w górę ładnie wygląda</string>
   <string name="morphe_ryd_estimated_like_title">Szacowana ilość polubień</string>
   <string name="morphe_ryd_estimated_like_summary_on">Widoczna dla filmów z wyłączonymi łapkami w dół</string>
-  <string name="morphe_ryd_estimated_like_summary_off">Niewidoczna</string>
+  <string name="morphe_ryd_estimated_like_summary_off">Ukryta</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Komunikat o niedostępności API</string>
   <string name="morphe_ryd_toast_on_connection_error_summary_on">Widoczny</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary_off">Niewidoczny</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary_off">Ukryty</string>
   <string name="morphe_ryd_attribution_summary">Dane są dostarczane przez API Return YouTube Dislike. Stuknij tutaj by dowiedzieć się więcej.</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statystyki API Return YouTube Dislike tego urządzenia</string>
@@ -1001,7 +1001,7 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."
   <string name="morphe_sb_appearance_category">Wygląd</string>
   <string name="morphe_sb_enable_voting">Przycisk od głosowania</string>
   <string name="morphe_sb_enable_voting_sum_on">Widoczny</string>
-  <string name="morphe_sb_enable_voting_sum_off">Niewidoczny</string>
+  <string name="morphe_sb_enable_voting_sum_off">Ukryty</string>
   <string name="morphe_sb_square_layout">Kwadratowy układ</string>
   <string name="morphe_sb_square_layout_sum_on">Włączony</string>
   <string name="morphe_sb_square_layout_sum_off">Wyłączony</string>
@@ -1035,7 +1035,7 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."
   <string name="morphe_sb_create_segment_category">Tworzenie nowych segmentów</string>
   <string name="morphe_sb_enable_create_segment">Przycisk od tworzenia nowych segmentów</string>
   <string name="morphe_sb_enable_create_segment_sum_on">Widoczny</string>
-  <string name="morphe_sb_enable_create_segment_sum_off">Niewidoczny</string>
+  <string name="morphe_sb_enable_create_segment_sum_off">Ukryty</string>
   <string name="morphe_sb_general_adjusting">Dokładność tworzenia nowego segmentu</string>
   <string name="morphe_sb_general_adjusting_sum">Ilość milisekund, o którą przeskakuje czas podczas używania przycisków od tworzenia segmentów</string>
   <string name="morphe_sb_general_adjusting_invalid">Wartość musi być liczbą dodatnią</string>
@@ -1048,7 +1048,7 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."
   <string name="morphe_sb_general">Ogólne</string>
   <string name="morphe_sb_toast_on_connection_error">Komunikat o niedostępności API</string>
   <string name="morphe_sb_toast_on_connection_error_sum_on">Widoczny</string>
-  <string name="morphe_sb_toast_on_connection_error_sum_off">Niewidoczny</string>
+  <string name="morphe_sb_toast_on_connection_error_sum_off">Ukryty</string>
   <string name="morphe_sb_general_skipcount">Śledzenie liczby pominięć</string>
   <string name="morphe_sb_general_skipcount_sum_on">To pozwala systemowi wyników SponsorBlock wiedzieć, ile czasu zostało zaoszczędzone. Rozszerzenie wysyła wiadomość do serwera za każdym razem, gdy pominięty jest segment</string>
   <string name="morphe_sb_general_skipcount_sum_off">Wyłączone</string>
@@ -1380,7 +1380,7 @@ Jeśli opcja ta jest włączona, adresy URL filmów będą wysyłane do serwera 
 Stuknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Komunikat o niedostępności API</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_on">Widoczny</string>
-  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">Niewidoczny</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">Ukryty</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Punkt końcowy API DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">Adres URL punktu końcowego do miniaturek DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Miniaturki przechwycone z filmu</string>
@@ -1403,7 +1403,7 @@ Stuknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Przycisk od zapętlania filmu</string>
   <string name="morphe_loop_video_button_summary_on">Widoczny</string>
-  <string name="morphe_loop_video_button_summary_off">Niewidoczny</string>
+  <string name="morphe_loop_video_button_summary_off">Ukryty</string>
   <string name="morphe_loop_video_button_toast_on">Włączone jest zapętlanie filmu</string>
   <string name="morphe_loop_video_button_toast_off">Wyłączone jest zapętlanie filmu</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
@@ -1488,7 +1488,7 @@ Włączenie tej opcji może odblokować wyższe jakości wideo"</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_off">Zmiany prędkości odtwarzania dotyczą tylko bieżącego filmu</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Komunikat przy zmianach domyślnej szybkości odtwarzania</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">Widoczny</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Niewidoczny</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Ukryty</string>
   <string name="morphe_playback_speed_default_title">Domyślna prędkość odtwarzania</string>
   <string name="morphe_remember_playback_speed_toast">Zmieniono domyślną prędkość na: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
@@ -1515,6 +1515,10 @@ Ograniczenia:
   <string name="morphe_hide_premium_video_quality_title">Opcje jakości Premium</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Ukryte</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Widoczne</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorytet w filmie</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Jakość filmu</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Kodeki filmu</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Przesuń, by przewinąć</string>
   <string name="morphe_slide_to_seek_summary_on">Włączone</string>
@@ -1530,13 +1534,16 @@ Odtwarzanie może się zacinać lub gubić klatki"</string>
 Odtwarzanie wideo z AV1 może powodować zacinanie się lub gubienie klatek."</string>
   <string name="morphe_spoof_video_streams_about_title">Efekty uboczne oszukiwania</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Jest to eksperymentalny klient i może przestać działać w każdej chwili</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Film może zatrzymać się po pierwszej minucie lub może być niedostępny w niektórych regionach</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Brakuje menu od ścieżki dźwiękowej</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Brak kodeka filmu AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Tryb immersyjny 360° VR nie jest dostępny</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilna głośność nie jest dostępna</string>
-  <string name="morphe_spoof_video_streams_about_js">• Filmy mogą zacząć się z opóźnieniem</string>
+  <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie się nie powiedzie, odtwarzanie może się nie powieść</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki audio nie działa</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Informacja w statystykach dla nerdów</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Widoczna</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Niewidoczna</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Wariant JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Informacja w statystykach dla nerdów</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Widoczna</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Ukryta</string>
 </resources>

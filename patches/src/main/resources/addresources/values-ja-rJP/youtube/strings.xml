@@ -707,10 +707,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">「音声トラック」は表示されません</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">「音声トラック」は表示されます</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」は表示されません
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」メニューは表示されません
 
-「音声トラック」を表示するには、[動画ストリームを偽装] を「Android No SDK」に変更してください"</string>
+「音声トラック」メニューを表示するには、[動画ストリームを偽装] を「TV」に変更してください"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">「VR で見る」を非表示</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>
@@ -1514,6 +1514,10 @@ Automotive レイアウト
   <string name="morphe_hide_premium_video_quality_title">Premium 画質を非表示</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Premium 画質は画質設定メニューに表示されません</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Premium 画質は画質設定メニューに表示されます</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">動画の品質を優先します</string>
+  <string name="morphe_prioritize_video_quality_summary_on">動画の品質が優先されています</string>
+  <string name="morphe_prioritize_video_quality_summary_off">動画コーデックが優先されています</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary_on">スライドによるシークは有効です。プレーヤー画面を左右にスライドすると、前後にシークします</string>
@@ -1529,13 +1533,16 @@ Automotive レイアウト
 AV1 での動画再生は、カクつくまたはコマ落ちが発生する可能性があります。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽装による副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 実験的なクライアントであり、いつでも動作しなくなる可能性がある</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• 動画が 01:00 で停止する、または一部の地域で利用できない可能性がある</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">•「音声トラック」がフライアウト メニューに表示されない</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR インマーシブモードは利用できません</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
-  <string name="morphe_spoof_video_streams_about_js">• 動画の再生開始に時間がかかる可能性がある</string>
+  <string name="morphe_spoof_video_streams_about_js">• デオバフューセーションに失敗した場合、再生に失敗する可能性があります</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">•「オリジナルの音声を強制的に使用」が利用できない</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">統計情報にクライアントを表示</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">統計情報には現在のクライアントが表示されます</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">統計情報には現在のクライアントは表示されません</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">プレイヤー JavaScript 変種</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">統計情報にクライアントを表示</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">統計情報には現在のクライアントが表示されます</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">統計情報には現在のクライアントは表示されません</string>
 </resources>

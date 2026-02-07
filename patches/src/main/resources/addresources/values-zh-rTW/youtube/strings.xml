@@ -706,10 +706,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">已隱藏「音軌」選單</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">已顯示「音軌」選單</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"音频轨道菜单已隐藏
 
-要显示音频轨道菜单，请将'Spoof video streams'更改为'Android No SDK'"</string>
+要显示音频轨道菜单，请将'Spoof video streams'更改为'电视'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">隱藏「以 VR 模式觀看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">已隱藏「以 VR 模式觀看」</string>
@@ -1520,6 +1520,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">隱藏高品質選項</string>
   <string name="morphe_hide_premium_video_quality_summary_on">高品質選項已隱藏</string>
   <string name="morphe_hide_premium_video_quality_summary_off">高品質選項顯示</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">優先視頻質量</string>
+  <string name="morphe_prioritize_video_quality_summary_on">視頻質量已優先</string>
+  <string name="morphe_prioritize_video_quality_summary_off">視頻編碼已優先</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
   <string name="morphe_slide_to_seek_summary_on">已啟用滑動預覽</string>
@@ -1535,13 +1539,16 @@ Second \"item\" text"</string>
 AV1 視訊播放可能會卡頓或掉幀。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺騙的副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 實驗性用戶端，隨時可能停止運作</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• 影片可能會在 1:00 停止，或在某些地區無法播放</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 音軌選單遺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR全景模式不可用</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 穩定音量無法使用</string>
-  <string name="morphe_spoof_video_streams_about_js">• 視頻可能會延遲開始</string>
+  <string name="morphe_spoof_video_streams_about_js">• 如果解密失败，播放可能会失败</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 強制原始音訊不可用</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">顯示統計資料</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">已在統計資料中顯示用戶端類型</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">已在統計資料中隱藏用戶端類型</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">播放器JavaScript变种</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">顯示統計資料</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">已在統計資料中顯示用戶端類型</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">已在統計資料中隱藏用戶端類型</string>
 </resources>

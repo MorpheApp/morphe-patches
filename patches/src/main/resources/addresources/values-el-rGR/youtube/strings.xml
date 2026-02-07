@@ -708,10 +708,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Εμφανίζεται</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Μενού κομμάτι ήχου είναι κρυμμένο
+          'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Διαλογή ήχου είναι κρυμμένη
 
-Για να δείτε το μενού κομμάτι ήχου, αλλάξτε 'Συμμορφώνηση ρεύματος βίντεο' σε 'Android No SDK'"</string>
+Για να δείτε τη διαλογή ήχου, αλλάξτε 'Spoof video streams' σε 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Μενού «Προβολή σε VR»</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Κρυμμένο</string>
@@ -1515,6 +1515,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">Απόκρυψη επιλογών υψηλής ποιότητας</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Οι επιλογές υψηλής ποιότητας είναι απόκρυπες</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Προσθήκες υψηλής ποιότητας εμφανίζονται</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Προτεραιότητα ποιότητας βίντεο</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Η ποιότητα του βίντεο προτεραιώνεται</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Οι κωδικοί του βίντεο προτεραιώνονται</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Χειρονομία συρσίματος για αναζήτηση</string>
   <string name="morphe_slide_to_seek_summary_on">Η χειρονομία συρσίματος για αναζήτηση στη γραμμή προόδου είναι ενεργοποιημένη</string>
@@ -1530,13 +1534,16 @@ Second \"item\" text"</string>
 Η αναπαραγωγή βίντεο μπορεί να κομπιάζει ή να χάνει καρέ."</string>
   <string name="morphe_spoof_video_streams_about_title">Παρενέργειες παραποίησης</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Πειραματικός πελάτης και μπορεί να σταματήσει να λειτουργεί ανά πάσα στιγμή</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Το βίντεο μπορεί να σταματήσει στο 1:00 ή να μην είναι διαθέσιμο σε ορισμένες περιοχές</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Το μενού «Κομμάτι ήχου» λείπει</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Δεν υπάρχει ο κωδικοποιητής βίντεο AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Η 360° VR βιωματική λειτουργία δεν είναι διαθέσιμη</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Η λειτουργία «Σταθερή ένταση» δεν είναι διαθέσιμη</string>
-  <string name="morphe_spoof_video_streams_about_js">• Το βίντεο μπορεί να ξεκινήσει καθυστερημένο</string>
+  <string name="morphe_spoof_video_streams_about_js">• Εάν η αποπερικοπή αποτύχει, η αναπαραγωγή μπορεί να αποτύχει</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ο εξαναγκασμός αρχικής γλώσσας ήχου δεν είναι διαθέσιμος</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Εμφάνιση στο μενού «Στατιστικά για σπασίκλες»</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">Το πρόγραμμα πελάτη εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">Το πρόγραμμα πελάτη δεν εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Παραλλαγή JavaScript του παίκτη</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Εμφάνιση στο μενού «Στατιστικά για σπασίκλες»</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Το πρόγραμμα πελάτη εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Το πρόγραμμα πελάτη δεν εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
 </resources>

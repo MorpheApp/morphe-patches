@@ -706,10 +706,10 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ses parçası menüsü gizli</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Ses parçası menüsü görünür</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ses izleme menüsü gizlenmiş
 
-Ses izleme menüsünü görüntülemek için, 'Video akışları sahteleştir'yi 'Android No SDK' olarak değiştirin"</string>
+Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' olarak değiştirin"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR modunda izlemeyi gizle</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR modunda izle menüsü gizli</string>
@@ -1515,6 +1515,10 @@ Sınırlamalar:
   <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>
   <string name="morphe_hide_premium_video_quality_summary_on">Premium kalite seçenekleri gizlendi</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Premium kaliteli seçenekler gösteriliyor</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video kalitesini öncelikle</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Video kalitesi önceliklendirildi</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video kodçerleri önceliklendirildi</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Kaydırarak sardırmayı etkinleştir</string>
   <string name="morphe_slide_to_seek_summary_on">Kaydırarak sardırma etkin</string>
@@ -1530,13 +1534,16 @@ Oynatma takılabilir veya kare atlayabilir"</string>
 AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Deneysel istemci ve her an çalışmayı durdurabilir</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• Video 1:00\'da durabilir veya bazı bölgelerde kullanılamayabilir</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ses parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>
-  <string name="morphe_spoof_video_streams_about_js">• Video muhtemelen gecikmeyle başlayabilir</string>
+  <string name="morphe_spoof_video_streams_about_js">• Eşleştirme başarısız olursa oynatma da başarısız olabilir</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal sesi zorlama mevcut değil</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Meraklısı için istatistiklerde göster</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">İstemci tipi meraklısı için istatistiklerde gösterilir</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">İstemci, meraklısı için istatistiklerde gizli</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Oynatıcı JavaScript varyantı</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Meraklısı için istatistiklerde göster</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">İstemci tipi meraklısı için istatistiklerde gösterilir</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">İstemci, meraklısı için istatistiklerde gizli</string>
 </resources>

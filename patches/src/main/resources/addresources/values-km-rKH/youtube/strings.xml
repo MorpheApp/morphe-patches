@@ -107,7 +107,7 @@ Second \"item\" text"</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
@@ -182,6 +182,7 @@ Second \"item\" text"</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->

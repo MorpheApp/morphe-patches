@@ -92,13 +92,21 @@ public class SpoofStreamingDataSideEffectsPreference extends Preference {
             case ANDROID_VR_1_47_48, ANDROID_VR_1_54_20 ->
                     summary = str("morphe_spoof_video_streams_about_no_audio_tracks")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume");
-            case TV, TV_SIMPLY ->
+            case TV ->
                     summary = str("morphe_spoof_video_streams_about_js");
+            case TV_SIMPLY ->
+                    summary = str("morphe_spoof_video_streams_about_js")
+                            + '\n' + str("morphe_spoof_video_streams_about_playback_failure");
             case VISIONOS ->
                     summary = str("morphe_spoof_video_streams_about_experimental")
                             + '\n' + str("morphe_spoof_video_streams_about_no_audio_tracks")
                             + '\n' + str("morphe_spoof_video_streams_about_no_av1");
             default -> Logger.printException(() -> "Unknown client: " + clientType);
+        }
+
+        // Only Android VR supports 360° VR immersive mode.
+        if (clientType != ClientType.ANDROID_VR_1_47_48 && clientType != ClientType.ANDROID_VR_1_54_20) {
+            summary += '\n' + str("morphe_spoof_video_streams_about_no_immersive_mode");
         }
 
         // Use better formatting for bullet points.
