@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
@@ -31,7 +30,7 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.numberOfParameterRegisters
+import app.morphe.util.numberOfParameterRegistersLogical
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -198,7 +197,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 // 21.05+ clobbers p0 and must clone to preserve it.
                 it.method.cloneMutableAndPreserveParameters().apply {
                     // Must offset match indexes since cloning adds additional move instructions.
-                    val insertIndex = it.instructionMatches[1].index + numberOfParameterRegisters
+                    val insertIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
                     val charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
                     val conversionContextPathRegister = findFreeRegister(insertIndex, charSequenceRegister)
 
