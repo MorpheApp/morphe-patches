@@ -7,6 +7,7 @@ import static app.morphe.extension.shared.settings.Setting.parent;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.CustomBrandingPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.SpoofClientJavaScriptVariantAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
 
 /**
@@ -43,7 +44,7 @@ public class BaseSettings {
 
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
-    public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_js_variant", JavaScriptVariant.TV, true, parent(SPOOF_VIDEO_STREAMS));
+    public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_js_variant", JavaScriptVariant.TV, true, new SpoofClientJavaScriptVariantAvailability());
 
     public static final StringSetting SPOOF_VIDEO_STREAMS_JS_HASH = new StringSetting("morphe_spoof_video_streams_js_hash", "", false);
     public static final LongSetting SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_js_saved_milliseconds", -1L, false);
