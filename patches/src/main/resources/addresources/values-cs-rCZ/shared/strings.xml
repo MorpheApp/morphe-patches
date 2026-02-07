@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Je vyžadován restart</string>
   <string name="morphe_settings_restart_dialog_message">Aby se tato změna projevila, restartujte aplikaci.</string>
   <string name="morphe_settings_restart">Restartovat</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importovat</string>
   <string name="morphe_settings_import_copy">Kopírovat</string>
   <string name="morphe_settings_import_reset">Nastavení Morphe obnoveno do výchozího stavu</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Zobrazit historii vyhledávání v nastavení</string>
   <string name="morphe_settings_search_history_summary_on">Historie vyhledávání v nastavení je zobrazena</string>
   <string name="morphe_settings_search_history_summary_off">Historie vyhledávání nastavení se nezobrazuje</string>
-  <string name="morphe_settings_disable_bold_icons_title">Zakázat tučné ikony</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Ikony nejsou tučné</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Ikony jsou tučné</string>
   <string name="morphe_show_menu_icons_title">Zobrazit ikony nastavení Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Ikony nastavení se zobrazují</string>
   <string name="morphe_show_menu_icons_summary_off">Ikony nastavení se nezobrazují</string>
@@ -62,7 +60,7 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_language_DEFAULT">Jazyk aplikace</string>
   <string name="morphe_pref_import_export_title">Importovat / Exportovat</string>
   <string name="morphe_pref_import_export_summary">Importovat / exportovat nastavení Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Používáte nejnovější verzi Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Používáte verzi Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Je dostupná aktualizace: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pro aktualizaci vašich patchů použijte aplikaci Morphe k opětovnému patchování této aplikace</string>
   <string name="morphe_settings_about_links_dev_header">Poznámka</string>
@@ -103,10 +101,10 @@ Nebudete informováni o žádné neočekávané události."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Příznaky uloženy</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Příznaky resetovány</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Příznaky zkopírovány do schránky</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Zahlašte aplikaci pro použití této funkce</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Nastavení GmsCore</string>
-  <string name="microg_settings_summary">Nastavení pro GmsCore</string>
+  <string name="microg_settings_summary">Otevřte nastavení MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG není nainstalován. Nainstalujte jej.</string>
   <string name="gms_core_dialog_title">Požadovaná akce</string>

@@ -66,6 +66,9 @@ var is_20_03_or_greater : Boolean by Delegates.notNull()
 var is_20_05_or_greater : Boolean by Delegates.notNull()
     private set
 @Deprecated("20.14.43 is the lowest supported version")
+var is_20_06_or_greater : Boolean by Delegates.notNull()
+    private set
+@Deprecated("20.14.43 is the lowest supported version")
 var is_20_07_or_greater : Boolean by Delegates.notNull()
     private set
 @Deprecated("20.14.43 is the lowest supported version")
@@ -101,7 +104,11 @@ var is_20_34_or_greater : Boolean by Delegates.notNull()
     private set
 var is_20_37_or_greater : Boolean by Delegates.notNull()
     private set
+var is_20_38_or_greater : Boolean by Delegates.notNull()
+    private set
 var is_20_39_or_greater : Boolean by Delegates.notNull()
+    private set
+var is_20_40_or_greater : Boolean by Delegates.notNull()
     private set
 var is_20_41_or_greater : Boolean by Delegates.notNull()
     private set
@@ -115,7 +122,10 @@ var is_20_49_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_02_or_greater : Boolean by Delegates.notNull()
     private set
-
+var is_21_03_or_greater : Boolean by Delegates.notNull()
+    private set
+var is_21_05_or_greater : Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = resourcePatch(
     description = "Uses the Play Store service version to find the major/minor version of the YouTube target app.",
@@ -145,6 +155,7 @@ val versionCheckPatch = resourcePatch(
         is_20_02_or_greater = 250299000 <= playStoreServicesVersion
         is_20_03_or_greater = 250405000 <= playStoreServicesVersion
         is_20_05_or_greater = 250605000 <= playStoreServicesVersion
+        is_20_06_or_greater = 250705000 <= playStoreServicesVersion
         is_20_07_or_greater = 250805000 <= playStoreServicesVersion
         is_20_09_or_greater = 251006000 <= playStoreServicesVersion
         is_20_10_or_greater = 251105000 <= playStoreServicesVersion
@@ -161,12 +172,16 @@ val versionCheckPatch = resourcePatch(
         is_20_31_or_greater = 253205000 <= playStoreServicesVersion
         is_20_34_or_greater = 253505000 <= playStoreServicesVersion
         is_20_37_or_greater = 253805000 <= playStoreServicesVersion
+        is_20_38_or_greater = 253905000 <= playStoreServicesVersion
         is_20_39_or_greater = 253980000 <= playStoreServicesVersion
+        is_20_40_or_greater = 254105000 <= playStoreServicesVersion
         is_20_41_or_greater = 254205000 <= playStoreServicesVersion
         is_20_43_or_greater = 254405000 <= playStoreServicesVersion
         is_20_45_or_greater = 254605000 <= playStoreServicesVersion
         is_20_46_or_greater = 254705000 <= playStoreServicesVersion
         is_20_49_or_greater = 255005000 <= playStoreServicesVersion
         is_21_02_or_greater = 260305000 <= playStoreServicesVersion
+        is_21_03_or_greater = 260405000 <= playStoreServicesVersion
+        is_21_05_or_greater = 260605000 <= playStoreServicesVersion
     }
 }

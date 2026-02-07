@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe clair</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Personnalisé</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerte expérimentale ! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l’application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Attendez-vous à des comportements inhabituels ou à des bugs non identifiés pendant que nous peaufinons les patchs pour cette version de l’application.
+&lt;br/&gt;&lt;br/&gt;
+Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l’application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Je veux l\'expérimentale</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Je veux la stable</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avis Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Les vidéos que vous regardez ne sont pas enregistrées dans votre historique.&lt;br&gt;&lt;br&gt;La cause la plus probable est l\'utilisation d\'un serveur DNS bloqueur de publicités ou d\'un proxy.&lt;br&gt;&lt;br&gt;Pour résoudre ce problème, autorisez l\'accès à &lt;b&gt;s.youtube.com&lt;/b&gt; ou désactivez tous vos bloqueurs DNS et proxys.</string>
@@ -76,8 +86,7 @@ Pour vous connecter, appuyez sur Continuer ci-dessous"</string>
 
 • Vos paramètres Morphe n’importeront/exportent pas l’authentification Android VR
 • Si cette application reste inutilisée pendant 6 mois, Google supprimera cette authentification
-• Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google
-"</string>
+• Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d’attente de l’API dépassé)</string>
   <string name="morphe_oauth2_connection_failure_status_400">La connexion à Android VR a expiré, réessayez de vous connecter à VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 est temporairement indisponible (statut %d)</string>

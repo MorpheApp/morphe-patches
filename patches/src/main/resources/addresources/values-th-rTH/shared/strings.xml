@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">ต้องรีสตาร์ท</string>
   <string name="morphe_settings_restart_dialog_message">รีสตาร์ทแอปเพื่อให้การเปลี่ยนแปลงนี้มีผล</string>
   <string name="morphe_settings_restart">เริ่มต้นใหม่</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">นำเข้า</string>
   <string name="morphe_settings_import_copy">คัดลอก</string>
   <string name="morphe_settings_import_reset">การตั้งค่า Morphe ถูกตั้งค่าเป็นค่าเริ่มต้น</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">แสดงประวัติการค้นหาในการตั้งค่า</string>
   <string name="morphe_settings_search_history_summary_on">ประวัติการค้นหาในการตั้งค่าจะปรากฏ</string>
   <string name="morphe_settings_search_history_summary_off">ไม่แสดงประวัติการค้นหาการตั้งค่า</string>
-  <string name="morphe_settings_disable_bold_icons_title">ปิดใช้งานไอคอนหนา</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">ไอคอนไม่หนา</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">ไอคอนเป็นแบบหนา</string>
   <string name="morphe_show_menu_icons_title">แสดงไอคอนการตั้งค่า Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">ไอคอนการตั้งค่าจะปรากฏขึ้น</string>
   <string name="morphe_show_menu_icons_summary_off">ไม่แสดงไอคอนการตั้งค่า</string>
@@ -62,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">ภาษาของแอป</string>
   <string name="morphe_pref_import_export_title">นำเข้า / ส่งออก</string>
   <string name="morphe_pref_import_export_summary">นำเข้า / ส่งออกการตั้งค่า Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;อัพเดตใหม่พร้อมให้ใช้: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;เพื่ออัพเดตแพทช์ของคุณ ให้ใช้ Morphe เพื่อแพทช์แอปพลิเคชันนี้ใหม่</string>
   <string name="morphe_settings_about_links_dev_header">หมายเหตุ</string>
@@ -103,10 +101,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กไปยังคลิปบอร์ดแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">รีสตาร์ตแอปเพื่อใช้คุณสมบัตินี้</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">การตั้งค่า GmsCore</string>
-  <string name="microg_settings_summary">การตั้งค่าสำหรับ GmsCore</string>
+  <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ไม่ได้ติดตั้ง ติดตั้ง</string>
   <string name="gms_core_dialog_title">ต้องดำเนินการ</string>

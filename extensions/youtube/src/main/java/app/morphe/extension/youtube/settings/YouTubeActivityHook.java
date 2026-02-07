@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toolbar;
 
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
@@ -30,7 +31,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
     private static final long MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS = 30 * 1000; // 30 seconds.
 
     private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
-            && !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
             && !Settings.RESTORE_OLD_SETTINGS_MENUS.get()
             && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
                 > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS
@@ -64,7 +64,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
         final var theme = Utils.isDarkModeEnabled()
                 ? "Theme.YouTube.Settings.Dark"
                 : "Theme.YouTube.Settings";
-        activity.setTheme(Utils.getResourceIdentifierOrThrow(ResourceType.STYLE, theme));
+        activity.setTheme(ResourceUtils.getIdentifierOrThrow(ResourceType.STYLE, theme));
     }
 
     /**

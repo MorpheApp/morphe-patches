@@ -174,8 +174,14 @@ internal val addResourcesPatch = resourcePatch(
                 val destFile = this@finalize[destSubPath]
                 if (!destFile.exists()) {
                     if (locale.isBuiltInLanguage) {
+                        // Either the user provided a bad APKM that doesn't have all languages,
+                        // or something changed and YouTube removed a language from the universal APK releases.
                         throw IllegalStateException(
-                            "Expected to find locale: $locale but file does not exist in target app: $destFile"
+                            "\n\n!!!\n" +
+                                    "!!! User provided APKM / unsplit file does not contain all region localizations and is not suitable for patching.\n" +
+                                    "!!! Please provide an original universal APK file.\n" +
+                                    "!!!\n\n" +
+                                    "locale: $locale does not exist in provided app file: $destFile"
                         )
                     }
 

@@ -5,6 +5,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/HideVideoAdsPatch;"
@@ -19,13 +20,7 @@ val hideVideoAdsPatch = bytecodePatch(
         settingsPatch,
     )
 
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.10.52",
-            "8.37.56",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         PreferenceScreen.ADS.addPreferences(

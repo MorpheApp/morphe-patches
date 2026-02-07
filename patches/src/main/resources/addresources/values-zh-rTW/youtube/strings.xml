@@ -81,6 +81,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_posts_title">隱藏最新貼文</string>
   <string name="morphe_hide_latest_posts_summary_on">已隱藏最新貼文</string>
   <string name="morphe_hide_latest_posts_summary_off">已顯示最新貼文</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">隱藏「最新視頻」按鈕</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">「最新視頻」按鈕已隱藏</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">「最新視頻」按鈕已顯示</string>
   <string name="morphe_hide_mix_playlists_title">隱藏合輯</string>
   <string name="morphe_hide_mix_playlists_summary_on">已隱藏合輯</string>
   <string name="morphe_hide_mix_playlists_summary_off">已顯示合輯</string>
@@ -88,18 +93,24 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_on">已隱藏電影版面</string>
   <string name="morphe_hide_movies_section_summary_off">已顯示電影版面</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">隱藏「通知我」按鈕</string>
   <string name="morphe_hide_notify_me_button_summary_on">「提醒我」按鈕已隱藏</string>
   <string name="morphe_hide_notify_me_button_summary_off">「提醒我」按鈕已顯示</string>
   <string name="morphe_hide_playables_title">隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_on">已隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_off">已顯示遊戲角落</string>
+  <string name="morphe_hide_search_suggestions_title">隱藏搜尋建議</string>
+  <string name="morphe_hide_search_suggestions_summary_on">已隱藏搜尋建議</string>
+  <string name="morphe_hide_search_suggestions_summary_off">已顯示搜尋建議</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">隱藏「顯示更多」按鈕</string>
   <string name="morphe_hide_show_more_button_summary_on">搜尋結果中的「顯示更多」按鈕已隱藏</string>
   <string name="morphe_hide_show_more_button_summary_off">搜尋結果中的「顯示更多」按鈕已顯示</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">隱藏訂閱頻道列</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_on">已隱藏訂閱頻道列</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_off">已顯示訂閱頻道列</string>
   <string name="morphe_hide_surveys_title">隱藏問卷調查</string>
   <string name="morphe_hide_surveys_summary_on">問卷調查已隱藏</string>
   <string name="morphe_hide_surveys_summary_off">問卷調查已顯示</string>
@@ -117,9 +128,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_doodles_title">隱藏 YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">YouTube 標誌上的 Doodles 動畫已隱藏</string>
   <string name="morphe_hide_doodles_summary_off">YouTube 標誌上的 Doodles 動畫已顯示</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"YouTube Doodles 每年會顯示幾天。
-
-如果塗鴉目前在你所在國家/地區顯示，而且此隱藏設定處於啟用狀態，搜尋列下方顯示的篩選列也會隱藏。"</string>
   <string name="morphe_hide_channel_bar_title">隱藏頻道欄</string>
   <string name="morphe_hide_channel_bar_summary_on">已隱藏頻道欄</string>
   <string name="morphe_hide_channel_bar_summary_off">已顯示頻道欄</string>
@@ -136,10 +144,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_info_panels_summary_on">已隱藏資訊面板</string>
   <string name="morphe_hide_info_panels_summary_off">已顯示資訊面板</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This appears in the video player for certain videos. -->
+          This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">隱藏「加入」按鈕</string>
   <string name="morphe_hide_join_membership_button_summary_on">「加入」按鈕已隱藏</string>
   <string name="morphe_hide_join_membership_button_summary_off">「加入」按鈕已顯示</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">隱藏「直播聊天回放」按鈕</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">播放器覆蓋層中的直播聊天回放按鈕已隱藏</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">播放器覆蓋層中的直播聊天回放按鈕已顯示</string>
   <string name="morphe_hide_medical_panels_title">隱藏醫療資訊面板</string>
   <string name="morphe_hide_medical_panels_summary_on">已隱藏醫療資訊面板</string>
   <string name="morphe_hide_medical_panels_summary_off">已顯示醫療資訊面板</string>
@@ -155,6 +168,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">隱藏直播即時反應</string>
   <string name="morphe_hide_timed_reactions_summary_on">已隱藏直播即時反應</string>
   <string name="morphe_hide_timed_reactions_summary_off">已顯示直播即時反應</string>
+  <string name="morphe_hide_video_title_title">隱藏影片標題</string>
+  <string name="morphe_hide_video_title_summary_on">播放器覆蓋層視頻標題已隱藏</string>
+  <string name="morphe_hide_video_title_summary_off">播放器覆蓋層視頻標題已顯示</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">隱藏「AI 產生的影片摘要」</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI 生成的影片摘要區塊已隱藏</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI 生成的影片摘要區塊已顯示</string>
@@ -167,6 +183,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">隱藏章節</string>
   <string name="morphe_hide_chapters_section_summary_on">已隱藏章節區塊</string>
   <string name="morphe_hide_chapters_section_summary_off">已顯示章節區塊</string>
+  <string name="morphe_hide_course_progress_section_title">隱藏 \'課程進度\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">已隱藏課程進度區域</string>
+  <string name="morphe_hide_course_progress_section_summary_off">已顯示課程進度區域</string>
+  <string name="morphe_hide_explore_section_title">隱藏探索</string>
+  <string name="morphe_hide_explore_section_summary_on">隱藏「探索本課程」和「探索播客」區段</string>
+  <string name="morphe_hide_explore_section_summary_off">顯示「探索本課程」和「探索播客」區段</string>
+  <string name="morphe_hide_explore_course_section_title">隱藏「探索本課程」</string>
+  <string name="morphe_hide_explore_course_section_summary_on">已隱藏探索本課程區塊</string>
+  <string name="morphe_hide_explore_course_section_summary_off">已顯示探索本課程區塊</string>
   <string name="morphe_hide_explore_podcast_section_title">隱藏「探索 Podcast」</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">已隱藏探索 Podcast 區塊</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">已顯示探索 Podcast 區塊</string>
@@ -203,6 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">隱藏轉錄稿</string>
   <string name="morphe_hide_transcript_section_summary_on">已隱藏轉錄稿區塊</string>
   <string name="morphe_hide_transcript_section_summary_off">已顯示轉錄稿區塊</string>
+  <string name="morphe_hide_quizzes_section_title">隱藏測驗</string>
+  <string name="morphe_hide_quizzes_section_summary_on">已隱藏測驗版面</string>
+  <string name="morphe_hide_quizzes_section_summary_off">已顯示測驗版面</string>
   <string name="morphe_hide_description_components_screen_title">影片說明</string>
   <string name="morphe_hide_description_components_screen_summary">隱藏或顯示影片說明元件</string>
   <string name="morphe_hide_filter_bar_screen_title">篩選列</string>
@@ -264,6 +292,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_title">隱藏留言區</string>
   <string name="morphe_hide_comments_section_summary_on">已隱藏留言區</string>
   <string name="morphe_hide_comments_section_summary_off">已顯示留言區</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">隱藏主頁動態中的留言區</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">首頁動態中視頻下方的評論區塊已隱藏</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">首頁動態中視頻下方的評論區塊已顯示</string>
   <string name="morphe_hide_comments_community_guidelines_title">隱藏社群守則</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">社群守則已隱藏</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">社群守則已顯示</string>
@@ -294,14 +325,14 @@ Second \"item\" text"</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"限制：
 • Shorts 專區、頻道頁面和搜尋結果可能仍會顯示觀看次數
-• 此功能不適用於汽車外型規格"</string>
+• 此功能不適用於汽車外型規格。"</string>
   <string name="morphe_hide_upload_time_title">隱藏「上傳時間」</string>
   <string name="morphe_hide_upload_time_summary_on">上傳時間已在資訊提供和搜尋結果中隱藏</string>
   <string name="morphe_hide_upload_time_summary_off">上傳時間顯示在資訊提供和搜尋結果中</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"限制：
 • Shorts 專區、頻道頁面和搜尋結果可能仍會顯示上傳時間
-• 此功能不適用於車載模式"</string>
+• 此功能不適用於車載模式。"</string>
   <string name="morphe_hide_keyword_content_screen_title">隱藏關鍵字內容</string>
   <string name="morphe_hide_keyword_content_screen_summary">透過關鍵字篩選，隱藏搜尋結果與推薦內容中的影片</string>
   <string name="morphe_hide_keyword_content_home_title">依關鍵字隱藏首頁影片</string>
@@ -363,12 +394,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_summary_on">已隱藏影片說明中的購物連結</string>
   <string name="morphe_hide_shopping_links_summary_off">已顯示影片說明中的購物連結</string>
   <string name="morphe_hide_view_products_banner_title">隱藏「查看商品」橫幅</string>
-  <string name="morphe_hide_view_products_banner_summary_on">已隱藏影片畫面上的「查看商品」橫幅</string>
-  <string name="morphe_hide_view_products_banner_summary_off">已顯示影片畫面上的「查看商品」橫幅</string>
+  <string name="morphe_hide_view_products_banner_summary_on">已隱藏播放器覆蓋層上的「查看商品」橫幅</string>
+  <string name="morphe_hide_view_products_banner_summary_off">已顯示播放器覆蓋層上的「查看商品」橫幅</string>
   <string name="morphe_hide_youtube_premium_promotions_title">隱藏 YouTube Premium 促銷內容</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"YouTube Premium 促銷會被隱藏
-
-限制：YouTube Doodles 頁面無法使用"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">YouTube Premium 促銷已被隱藏</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">已顯示影片播放器下方 YouTube Premium 促銷內容</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">隱藏影片廣告</string>
@@ -475,14 +504,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_title">啟用滑動切換影片</string>
   <string name="morphe_swipe_change_video_summary_on">在全螢幕模式下滑動將切換到下一部/上一部影片</string>
   <string name="morphe_swipe_change_video_summary_off">在全螢幕模式下滑動將不會切換到下一部/上一部影片</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">自動字幕可見性</string>
-  <string name="morphe_auto_captions_style_entry_1">靜音時顯示</string>
-  <string name="morphe_auto_captions_style_entry_2">從不顯示</string>
-  <string name="morphe_auto_captions_style_entry_3">非靜音時顯示</string>
-  <string name="morphe_auto_captions_style_entry_4">顯示靜音時</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">顯示自動字幕</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">隱藏自動字幕</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">動作按鈕</string>
   <string name="morphe_hide_buttons_screen_summary">隱藏或顯示影片下方的按鈕</string>
@@ -505,7 +526,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_button_summary_on">留言按鈕已隱藏</string>
   <string name="morphe_hide_comments_button_summary_off">留言按鈕已顯示</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually only shows on live streams. -->
+          This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">隱藏檢舉</string>
   <string name="morphe_hide_report_button_summary_on">已隱藏「檢舉」按鈕</string>
   <string name="morphe_hide_report_button_summary_off">已顯示「檢舉」按鈕</string>
@@ -518,7 +539,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_download_button_summary_on">已隱藏「下載」按鈕</string>
   <string name="morphe_hide_download_button_summary_off">已顯示「下載」按鈕</string>
   <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button only shows on videos uploaded by the logged-in user. -->
+          This button usually appears on videos uploaded by the logged-in user. -->
   <string name="morphe_hide_hype_button_title">隱藏「熱推」</string>
   <string name="morphe_hide_hype_button_summary_on">「熱推」按鈕已隱藏</string>
   <string name="morphe_hide_hype_button_summary_off">「熱推」按鈕已顯示</string>
@@ -531,7 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_thanks_button_summary_on">已隱藏「感謝」按鈕</string>
   <string name="morphe_hide_thanks_button_summary_off">已顯示「感謝」按鈕</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button only shows if the user ip is from specific region such as the USA or EU. -->
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">隱藏詢問</string>
   <string name="morphe_hide_ask_button_summary_on">詢問按鈕已隱藏</string>
   <string name="morphe_hide_ask_button_summary_off">詢問按鈕已顯示</string>
@@ -548,6 +569,36 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">隱藏「儲存」</string>
   <string name="morphe_hide_save_button_summary_on">「儲存」按鈕已隱藏</string>
   <string name="morphe_hide_save_button_summary_off">「儲存」按鈕已顯示</string>
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">字幕</string>
+  <string name="morphe_captions_screen_summary">禁用自動啟用字幕或設定字幕cookie</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">自動字幕可見性</string>
+  <string name="morphe_auto_captions_style_entry_1">靜音時顯示</string>
+  <string name="morphe_auto_captions_style_entry_2">從不顯示</string>
+  <string name="morphe_auto_captions_style_entry_3">非靜音時顯示</string>
+  <string name="morphe_auto_captions_style_entry_4">顯示靜音時</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">顯示自動字幕</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">隱藏自動字幕</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">設定字幕cookie</string>
+  <string name="morphe_set_caption_cookies_summary_on">已提供的話，會設定字幕Cookies</string>
+  <string name="morphe_set_caption_cookies_summary_off">"字幕Cookies未設定
+
+自動轉譯字幕可能無法使用"</string>
+  <string name="morphe_caption_cookies_title">字幕Cookies</string>
+  <string name="morphe_caption_cookies_summary">在定時文字API請求中使用的Cookies</string>
+  <string name="morphe_get_caption_cookies_title">取得字幕Cookies</string>
+  <string name="morphe_get_caption_cookies_summary">"點擊取得Cookies
+
+如果有效，Cookies會自動儲存"</string>
+  <string name="morphe_get_caption_cookies_failed">無法取得Cookies</string>
+  <string name="morphe_get_caption_cookies_duplicate">Cookies已存在</string>
+  <string name="morphe_get_caption_cookies_success">Cookies成功更新</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">修正轉錄稿</string>
+  <string name="morphe_fix_transcript_summary_on">轉錄稿可用</string>
+  <string name="morphe_fix_transcript_summary_off">轉錄稿可能無法使用，因為條件檢查失敗</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
   <string name="morphe_navigation_buttons_screen_summary">隱藏或變更導覽列中的按鈕</string>
@@ -567,34 +618,46 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscriptions_button_title">隱藏訂閱內容</string>
   <string name="morphe_hide_subscriptions_button_summary_on">已隱藏「訂閱內容」按鈕</string>
   <string name="morphe_hide_subscriptions_button_summary_off">已顯示「訂閱內容」按鈕</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">隱藏「通知」</string>
   <string name="morphe_hide_notifications_button_summary_on">已隱藏「通知」按鈕</string>
   <string name="morphe_hide_notifications_button_summary_off">已顯示「通知」按鈕</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"「建立」按鈕與「通知」按鈕對調
-
-注意：啟用此功能也會強制隱藏影片廣告"</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">「建立」按鈕不與「通知」按鈕對調</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"停用此設定也會停用 Shorts 的廣告攔截功能。
-
-如果變更此設定沒有生效，請試試看切換到無痕模式。"</string>
+  <string name="morphe_swap_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">「建立」按鈕已與「通知」按鈕對調</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">「建立」按鈕未與「通知」按鈕對調</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">如果更改此設定沒有生效，請嘗試切換到無痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">已隱藏「標籤」</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">已顯示「標籤」</string>
+  <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">導航按鈕間距離狹窄</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">導航按鈕間距離正常</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary_on">導覽轉換會進行動畫</string>
   <string name="morphe_navigation_bar_animations_summary_off">導覽轉換不會進行動畫</string>
   <string name="morphe_disable_translucent_status_bar_title">停用半透明狀態列</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">狀態列為不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">狀態列為不透明或半透明</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">在部分裝置上，啟用這項功能可能會使系統導覽列變成透明。</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"限制：
+• 視頻播放器頂部可能會出現黑色條
+• 在某些設備上，啟用此功能可能會將系統導航欄改為透明。"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">停用淺色半透明狀態列</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">淺色模式導覽列為不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">淺色模式導覽列為不透明或半透明</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">停用深色半透明狀態列</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">深色模式導覽列為不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">深色模式導覽列為不透明或半透明</string>
+  <string name="morphe_toolbar_screen_title">工具欄</string>
+  <string name="morphe_toolbar_screen_summary">隱藏或更改工具欄組件</string>
+  <string name="morphe_hide_toolbar_create_button_title">隱藏「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">已隱藏「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">已顯示「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_notification_button_title">隱藏「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">已隱藏「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">已顯示「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_search_button_title">隱藏「搜尋」按鈕</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">「搜尋」按鈕已隱藏</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">「搜尋」按鈕已顯示</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
   <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單</string>
@@ -643,10 +706,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">已隱藏「音軌」選單</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">已顯示「音軌」選單</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"音频轨道菜单已隐藏
 
-要显示音频轨道菜单，请将'Spoof video streams'更改为'Android No SDK'"</string>
+要显示音频轨道菜单，请将'Spoof video streams'更改为'电视'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">隱藏「以 VR 模式觀看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">已隱藏「以 VR 模式觀看」</string>
@@ -662,6 +725,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_button_title">隱藏「自動播放」按鈕</string>
   <string name="morphe_hide_autoplay_button_summary_on">已隱藏「自動播放」按鈕</string>
   <string name="morphe_hide_autoplay_button_summary_off">已顯示「自動播放」按鈕</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">隱藏自動播放預覽</string>
+  <string name="morphe_hide_autoplay_preview_summary_on">已隱藏自動播放預覽</string>
+  <string name="morphe_hide_autoplay_preview_summary_off">已顯示自動播放預覽</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">隱藏「字幕」按鈕</string>
   <string name="morphe_hide_captions_button_summary_on">已隱藏「字幕」按鈕</string>
@@ -679,10 +746,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_endscreen_cards_title">隱藏片尾資訊卡</string>
   <string name="morphe_hide_endscreen_cards_summary_on">已隱藏片尾資訊卡</string>
   <string name="morphe_hide_endscreen_cards_summary_off">已顯示片尾資訊卡</string>
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">微光模式</string>
+  <string name="morphe_ambient_mode_screen_summary">繞過省電限制以啟用微光模式，或完全關閉或關閉全螢幕</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">繞過微光模式限制</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">為了省電，已忽略微光效果限制</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">為了省電，已啟用微光效果限制</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">啟用此功能可能會導致電池續航時間變差。</string>
+  <string name="morphe_disable_ambient_mode_title">停用微光效果</string>
+  <string name="morphe_disable_ambient_mode_summary_on">已停用微光效果</string>
+  <string name="morphe_disable_ambient_mode_summary_off">已啟用微光效果</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">在全螢幕狀態下停用微光效果</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">已停用微光效果</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">已啟用微光效果</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">全螢幕微光效果已停用</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">全螢幕微光效果已啟用</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">隱藏資訊卡</string>
   <string name="morphe_hide_info_cards_summary_on">已隱藏資訊卡</string>
@@ -716,9 +792,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">隱藏訂閱內容中的 Shorts</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">已在訂閱內容中隱藏</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">已在訂閱內容中顯示</string>
+  <string name="morphe_hide_shorts_video_description_title">隱藏短片在視頻說明中</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">已隱藏在視頻說明中</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">已顯示在視頻說明中</string>
   <string name="morphe_hide_shorts_history_title">隱藏觀看記錄中的 Shorts</string>
   <string name="morphe_hide_shorts_history_summary_on">已在觀看記錄中隱藏</string>
   <string name="morphe_hide_shorts_history_summary_off">已在觀看記錄中顯示</string>
+  <string name="morphe_hide_shorts_ai_button_title">隱藏人工智慧按鈕</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">人工智慧按鈕已隱藏</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">人工智慧按鈕已顯示</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">隱藏「自動配音」標籤</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">已隱藏地點標籤</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">已顯示地點標籤</string>
@@ -822,7 +904,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_title">隱藏導覽列</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">已隱藏導覽列</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">已顯示導覽列</string>
-  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
+  <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">隱藏片尾推薦影片</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"當自動播放關閉時，片尾推薦影片會被隱藏。
 
@@ -907,6 +989,12 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">啟用寬搜尋列</string>
   <string name="morphe_wide_searchbar_summary_on">已啟用寬搜尋列</string>
   <string name="morphe_wide_searchbar_summary_off">已停用寬搜尋列</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">恢復舊版搜尋過濾器</string>
+  <string name="morphe_restore_old_search_filters_summary_on">搜尋過濾器中提供「依評分排序」和「依上傳日期排序」選項</string>
+  <string name="morphe_restore_old_search_filters_summary_off">搜尋過濾器中不提供「依評分排序」和「依上傳日期排序」選項</string>
+  <string name="morphe_old_search_filters_sort_by_rating">評分</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">上傳日期</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">啟用 SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock 是一個眾包系統，用於跳過 YouTube 影片中惱人的部分</string>
@@ -1142,9 +1230,10 @@ Second \"item\" text"</string>
 
 如果之後關閉此設定，建議清除應用程式資料以避免 UI 錯誤。"</string>
   <string name="morphe_spoof_app_version_target_title">應用程式偽裝目標版本</string>
-  <string name="morphe_spoof_app_version_target_entry_1">20.13.41 - 還原未收合的影片操作列</string>
-  <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - 恢復轉錄功能</string>
-  <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - 還原舊版 Shorts 播放圖示</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢復舊版播放清單</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 禁用粗體圖示</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 還原未收合的影片操作列</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - 還原舊版 Shorts 播放圖示</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">變更起始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>
@@ -1248,8 +1337,9 @@ Second \"item\" text"</string>
   <string name="morphe_gradient_loading_screen_summary_on">載入畫面將具有漸層背景</string>
   <string name="morphe_gradient_loading_screen_summary_off">載入畫面將具有純色背景</string>
   <string name="morphe_splash_screen_animation_style_title">啟動畫面樣式</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">顏色</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">黑白</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">停用</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">顏色</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">黑白</string>
   <string name="morphe_seekbar_custom_color_title">啟用自訂跳轉列顏色</string>
   <string name="morphe_seekbar_custom_color_summary_on">已顯示自訂跳轉列顏色</string>
   <string name="morphe_seekbar_custom_color_summary_off">已顯示原版跳轉列顏色</string>
@@ -1426,6 +1516,14 @@ Second \"item\" text"</string>
   <string name="morphe_advanced_video_quality_menu_title">顯示進階影片畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">已顯示進階影片畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">不顯示進階影片畫質選單</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">隱藏高品質選項</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">高品質選項已隱藏</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">高品質選項顯示</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">優先視頻質量</string>
+  <string name="morphe_prioritize_video_quality_summary_on">視頻質量已優先</string>
+  <string name="morphe_prioritize_video_quality_summary_off">視頻編碼已優先</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
   <string name="morphe_slide_to_seek_summary_on">已啟用滑動預覽</string>
@@ -1444,11 +1542,13 @@ AV1 視訊播放可能會卡頓或掉幀。"</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• 影片可能會在 1:00 停止，或在某些地區無法播放</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 音軌選單遺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR全景模式不可用</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 穩定音量無法使用</string>
-  <string name="morphe_spoof_video_streams_about_kids_videos">• 在登出或無痕模式下，兒童影片可能無法播放</string>
+  <string name="morphe_spoof_video_streams_about_js">• 如果解密失败，播放可能会失败</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 強制原始音訊不可用</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">顯示統計資料</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">已在統計資料中顯示用戶端類型</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">已在統計資料中隱藏用戶端類型</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">播放器JavaScript变种</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">顯示統計資料</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">已在統計資料中顯示用戶端類型</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">已在統計資料中隱藏用戶端類型</string>
 </resources>

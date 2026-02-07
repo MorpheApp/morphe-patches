@@ -7,11 +7,11 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.Document
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.youtube.layout.searchbar.wideSearchbarPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.util.ResourceGroup
 import app.morphe.util.Utils.trimIndentMultiline
@@ -93,19 +93,10 @@ val changeHeaderPatch = resourcePatch(
     description = "Adds an option to change the header logo in the top left corner of the app.",
 ) {
     dependsOn(
-        changeHeaderBytecodePatch,
-        wideSearchbarPatch
+        changeHeaderBytecodePatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     val custom by stringOption(
         key = "custom",

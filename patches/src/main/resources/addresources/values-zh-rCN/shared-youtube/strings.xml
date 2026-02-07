@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe 暗色调</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">自定义</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 实验警告！ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用实验版本的⚠️ <b>%1$s</b>
+
+🔧 请期待app行为怪异或未识别的bug，因为我们正在调整此版本的修补程序。
+
+如果您想获得最顺畅的体验，请卸载此版本并安装推荐版本的✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要实验版本</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要稳定版本</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">您的观看历史记录未保存。&lt;br&gt;&lt;br&gt;这很可能是由 DNS 广告拦截器或网络代理造成的。&lt;br&gt;&lt;br&gt;要解决此问题，请将 &lt;b&gt;s.youtube.com&lt;/b&gt; 添加到白名单或关闭所有 DNS 广告拦截器和代理。</string>

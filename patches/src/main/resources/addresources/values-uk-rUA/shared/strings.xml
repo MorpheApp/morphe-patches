@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Потрібен перезапуск</string>
   <string name="morphe_settings_restart_dialog_message">Перезапустіть застосунок, щоб зміни набули чинності.</string>
   <string name="morphe_settings_restart">Перезавантажити</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Імпорт</string>
   <string name="morphe_settings_import_copy">Копіювати</string>
   <string name="morphe_settings_import_reset">Налаштування Morphe скинуто до стандартних</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Показувати історію пошуку налаштувань</string>
   <string name="morphe_settings_search_history_summary_on">Історія пошуку налаштувань показується</string>
   <string name="morphe_settings_search_history_summary_off">Історія пошуку налаштувань не показується</string>
-  <string name="morphe_settings_disable_bold_icons_title">Вимкнути товсті іконки</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Іконки не товсті</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Іконки товсті</string>
   <string name="morphe_show_menu_icons_title">Показувати іконки в налаштуваннях Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Іконки в налаштуваннях показуються</string>
   <string name="morphe_show_menu_icons_summary_off">Іконки в налаштуваннях не показуються</string>
@@ -62,9 +60,9 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Мова застосунку</string>
   <string name="morphe_pref_import_export_title">Імпорт / Експорт налаштувань</string>
   <string name="morphe_pref_import_export_summary">Імпорт / Експорт налаштувань Morphe\n\nДля збереження налаштувань скопіюйте текст у вікні кнопкою \"Копіювати\" та збережіть його в текстовому файлі.\nДля відновлення налаштувань вставте у вікно збережений раніше текст та натисніть кнопку \"Імпортувати\"</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Ви використовуєте останню версію Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчінгу цього додатка</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчінгу цього застосунку</string>
   <string name="morphe_settings_about_links_dev_header">Примітка</string>
   <string name="morphe_settings_about_links_dev_body">Ця версія є попередньою, тому у вас можуть виникати несподівані проблеми</string>
   <string name="morphe_settings_about_links_header">Офіційні посилання</string>
@@ -103,10 +101,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Прапорці збережено</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Прапорці скинуто</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Прапорці скопійовано до буфера обміну</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустіть застосунок, щоб скористатися цією функцією</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Налаштування GmsCore</string>
-  <string name="microg_settings_summary">Налаштування для GmsCore</string>
+  <string name="microg_settings_summary">Відкриває налаштування MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG не встановлено. Встановіть його.</string>
   <string name="gms_core_dialog_title">Потрібна дія</string>

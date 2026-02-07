@@ -8,8 +8,8 @@ internal object ThemeLightColorResourceNameFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "getThemeLightColorResourceName" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { method, _ ->
+        method.name == "getThemeLightColorResourceName"
     }
 )
 
@@ -17,7 +17,16 @@ internal object ThemeDarkColorResourceNameFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
+    custom = { method, _ ->
+        method.name == "getThemeDarkColorResourceName"
+    }
+)
+
+internal object RecommendedAppVersionUtilsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
     custom = { method, classDef ->
-        method.name == "getThemeDarkColorResourceName" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+        method.name == "getRecommendedAppVersion" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
     }
 )

@@ -10,7 +10,7 @@ body:
 
         Before creating a new feature request, please keep the following in mind:
 
-        - We are currently only accept feature requests for YouTube and YT Music patches.
+        - We are currently only accept feature requests for YouTube, YT Music, and Reddit.
         - **Do not submit a duplicate feature request**: Search for existing feature requests, including closed issues, [here](https://github.com/MorpheApp/morphe-patches/issues?q=is%3Aissue).
   - type: textarea
     attributes:
@@ -37,5 +37,5 @@ body:
       options:
         - label: I have checked all open and closed feature requests and this is not a duplicate
           required: true
-        - label: This is a feature request for YouTube or YT Music
+        - label: This is a feature request for YouTube, YT Music, or Reddit
           required: true

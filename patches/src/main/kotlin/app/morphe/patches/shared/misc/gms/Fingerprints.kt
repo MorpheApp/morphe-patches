@@ -25,8 +25,8 @@ internal object GmsCoreSupportFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "getGmsCoreVendorGroupId" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { method, _ ->
+        method.name == "getGmsCoreVendorGroupId"
     }
 )
 
@@ -34,7 +34,7 @@ internal object OriginalPackageNameExtensionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    custom = { methodDef, classDef ->
-        methodDef.name == "getOriginalPackageName" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
+    custom = { methodDef, _ ->
+        methodDef.name == "getOriginalPackageName"
     }
 )

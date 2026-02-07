@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
@@ -50,7 +51,7 @@ public abstract class BaseSearchResultItem {
 
         private static int getResourceIdentifier(String name) {
             // Placeholder for actual resource identifier retrieval.
-            return Utils.getResourceIdentifierOrThrow(ResourceType.LAYOUT, name);
+            return ResourceUtils.getIdentifierOrThrow(ResourceType.LAYOUT, name);
         }
     }
 

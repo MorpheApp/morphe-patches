@@ -9,6 +9,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -27,6 +28,9 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag = {
         is_20_03_or_greater
     },
+    fixMediaSessionFeatureFlag = {
+        is_20_39_or_greater
+     },
 
     block = {
         compatibleWith(
@@ -36,6 +40,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                 "20.26.46",
                 "20.31.42",
                 "20.37.48",
+                "20.40.45",
             )
         )
 
@@ -67,7 +72,8 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1"),
-                    SwitchPreference("morphe_spoof_streaming_data_stats_for_nerds"),
+                    ListPreference("morphe_spoof_video_streams_js_variant"),
+                    SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),
                 )
             )
         )

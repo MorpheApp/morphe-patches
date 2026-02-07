@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe ljuti</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Prilagođeno</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentalna opomena! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🔧 Očekujte neobično ponašanje aplikacije ili neidentificirane greške dok se ne popravi za ovu verziju.
+<br/>
+<br/>
+Da bi imali najstabilniju verziju, deinstalirajte ovu i popravite preporučenu verziju ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalnu verziju</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilnu verziju</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije.</string>

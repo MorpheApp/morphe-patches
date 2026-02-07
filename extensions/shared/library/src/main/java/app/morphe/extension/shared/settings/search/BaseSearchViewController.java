@@ -1,7 +1,7 @@
 package app.morphe.extension.shared.settings.search;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.app.Activity;
 import android.content.Context;
@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
@@ -72,19 +73,19 @@ public abstract class BaseSearchViewController {
 
     protected static final int MAX_SEARCH_RESULTS = 50; // Maximum number of search results displayed.
 
-    protected static final int ID_MORPHE_SEARCH_VIEW = getResourceIdentifierOrThrow(
+    protected static final int ID_MORPHE_SEARCH_VIEW = getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view");
-    protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = getResourceIdentifierOrThrow(
+    protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view_container");
-    protected static final int ID_ACTION_SEARCH = getResourceIdentifierOrThrow(
+    protected static final int ID_ACTION_SEARCH = getIdentifierOrThrow(
             ResourceType.ID, "action_search");
-    protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = getResourceIdentifierOrThrow(
+    protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_fragments");
-    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON = getResourceIdentifierOrThrow(
+    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_icon");
-    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON_BOLD = getResourceIdentifierOrThrow(
+    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON_BOLD = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
-    protected static final int MENU_MORPHE_SEARCH_MENU = getResourceIdentifierOrThrow(
+    protected static final int MENU_MORPHE_SEARCH_MENU = getIdentifierOrThrow(
             ResourceType.MENU, "morphe_search_menu");
 
     /**
@@ -128,7 +129,7 @@ public abstract class BaseSearchViewController {
     private void initializeSearchView() {
         // Retrieve SearchView and container from XML.
         searchView = activity.findViewById(ID_MORPHE_SEARCH_VIEW);
-        EditText searchEditText = searchView.findViewById(Utils.getResourceIdentifierOrThrow(
+        EditText searchEditText = searchView.findViewById(ResourceUtils.getIdentifierOrThrow(
                 null, "android:id/search_src_text"));
         // Disable fullscreen keyboard mode.
         searchEditText.setImeOptions(searchEditText.getImeOptions() | EditorInfo.IME_FLAG_NO_EXTRACT_UI);

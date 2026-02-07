@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Repornire necesară</string>
   <string name="morphe_settings_restart_dialog_message">Reporniți aplicația pentru ca această modificare să aibă efect.</string>
   <string name="morphe_settings_restart">Repornire</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importare</string>
   <string name="morphe_settings_import_copy">Copiere</string>
   <string name="morphe_settings_import_reset">Setările Morphe au fost resetate la valorile implicite</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Afișează istoricul căutărilor în setări</string>
   <string name="morphe_settings_search_history_summary_on">Se afișează istoricul căutărilor în setări</string>
   <string name="morphe_settings_search_history_summary_off">Istoricul căutărilor în setări nu este afișat</string>
-  <string name="morphe_settings_disable_bold_icons_title">Dezactivează pictogramele aldine</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Pictogramele nu sunt aldine</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Pictogramele sunt aldine</string>
   <string name="morphe_show_menu_icons_title">Afișați pictogramele de setări Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Pictogramele de setări sunt afișate</string>
   <string name="morphe_show_menu_icons_summary_off">Pictogramele setărilor nu sunt afișate</string>
@@ -62,7 +60,7 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_language_DEFAULT">Limba aplicației</string>
   <string name="morphe_pref_import_export_title">Importă / Exportă</string>
   <string name="morphe_pref_import_export_summary">Import/Export setări Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Utilizați cea mai recentă versiune a patch-urilor Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Utilizați versiunea patch-urilor Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualizare disponibilă: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pentru a actualiza patch-urile, folosiți Morphe pentru a repatcha această aplicație</string>
   <string name="morphe_settings_about_links_dev_header">Notă</string>
@@ -103,10 +101,10 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Steaguri salvate</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Steaguri resetate</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Steaguri copiate în clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reiniţializaţi aplicaţia pentru a utiliza această funcţie</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Setări GmsCore</string>
-  <string name="microg_settings_summary">Setări pentru GmsCore</string>
+  <string name="microg_settings_summary">Deschide setârii MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nu este instalat. Instalati-l.</string>
   <string name="gms_core_dialog_title">Acțiune necesară</string>

@@ -6,11 +6,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -19,6 +21,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -63,6 +66,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_shorts_home"),
             SwitchPreference("morphe_hide_shorts_search"),
             SwitchPreference("morphe_hide_shorts_subscriptions"),
+            SwitchPreference("morphe_hide_shorts_video_description"),
             SwitchPreference("morphe_hide_shorts_history"),
 
             PreferenceScreenPreference(
@@ -105,6 +109,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_stickers"),
 
                     // Bottom of the screen.
+                    SwitchPreference("morphe_hide_shorts_ai_button"),
                     SwitchPreference("morphe_hide_shorts_auto_dubbed_label"),
                     SwitchPreference("morphe_hide_shorts_location_label"),
                     SwitchPreference("morphe_hide_shorts_channel_bar"),
@@ -151,23 +156,16 @@ val hideShortsComponentsPatch = bytecodePatch(
             "Patching version 20.21.37 or lower can hide more Shorts player button types."
 ) {
     dependsOn(
-        sharedExtensionPatch,
-        lithoFilterPatch,
+        engagementPanelHookPatch,
         hideShortsComponentsResourcePatch,
-        resourceMappingPatch,
+        lithoFilterPatch,
         navigationBarHookPatch,
+        resourceMappingPatch,
+        sharedExtensionPatch,
         versionCheckPatch,
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     hideShortsAppShortcutOption()
     hideShortsWidgetOption()
@@ -177,22 +175,24 @@ val hideShortsComponentsPatch = bytecodePatch(
 
         // region Hide sound button.
 
-        forEachLiteralValueInstruction(
-            getResourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
-        ) { literalInstructionIndex ->
-            val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
-                getReference<MethodReference>()?.name == "getDimensionPixelSize"
-            } + 1
+        if (!is_21_05_or_greater) {
+            forEachLiteralValueInstruction(
+                getResourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
+            ) { literalInstructionIndex ->
+                val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
+                    getReference<MethodReference>()?.name == "getDimensionPixelSize"
+                } + 1
 
-            val sizeRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+                val sizeRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
-            addInstructions(
-                targetIndex + 1,
-                """
-                    invoke-static { v$sizeRegister }, $FILTER_CLASS_DESCRIPTOR->getSoundButtonSize(I)I
-                    move-result v$sizeRegister
-                """
-            )
+                addInstructions(
+                    targetIndex + 1,
+                    """
+                        invoke-static { v$sizeRegister }, $FILTER_CLASS_DESCRIPTOR->getSoundButtonSize(I)I
+                        move-result v$sizeRegister
+                    """
+                )
+            }
         }
 
         // endregion

@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe luz</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Personalizado</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 ¡Alerta experimental! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Estás usando una versión experimental de la app: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Puede que la app se comporte de forma extraña o que se produzcan errores no identificados mientras afinamos los parches para esta versión de la app.
+&lt;br/&gt;&lt;br/&gt;
+Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la app a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quiero experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quiero estable</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso de Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Tu historial no está siendo guardado.&lt;br&gt;&lt;br&gt;Esto puede ser por un bloqueador de anuncios DNS o Proxy.&lt;br&gt;&lt;br&gt;Para arreglarlo, permita el dominio &lt;b&gt;s.youtube.com&lt;/b&gt; o desactive el bloqueador DNS o Proxy.</string>
@@ -46,7 +56,7 @@ La reproducción podría no funcionar"</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prueba a activar: Falsificar transmisiones de vídeo &gt; Inicio de sesión de Android VR</string>
-  <string name="morphe_spoof_video_streams_client_type_title">Cliente por defecto</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Cliente predeterminado</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inicio de sesión de Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">No has iniciado sesión en Android VR. Pulsa aquí para iniciar sesión</string>

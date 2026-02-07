@@ -31,6 +31,8 @@ public final class AdsFilter extends Filter {
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
+    private final StringFilterGroup promotionBanner;
+    private final ByteArrayFilterGroup promotionBannerBuffer;
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
 
@@ -84,7 +86,7 @@ public final class AdsFilter extends Filter {
                 "video_display_full_buttoned_short_dr_layout",
                 "video_display_full_layout",
                 "watch_metadata_app_promo",
-                "shopping_timely_shelf."
+                "shopping_timely_shelf." // Injection point below hides the empty space.
         );
 
         final var movieAds = new StringFilterGroup(
@@ -125,9 +127,16 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
-        final var promotionBanner = new StringFilterGroup(
+        promotionBanner = new StringFilterGroup(
                 Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
                 "statement_banner"
+        );
+
+        promotionBannerBuffer = new ByteArrayFilterGroup(
+                null,
+                // YouTube Doodles uses https://www.gstatic.com/youtube/img/promos/ only.
+                // So, https://www.gstatic.com/youtube/img/promos/growth/ should hide the ad.
+                "img/promos/growth/"
         );
 
         final var selfSponsor = new StringFilterGroup(
@@ -152,6 +161,10 @@ public final class AdsFilter extends Filter {
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == promotionBanner) {
+            return contentIndex == 0 && promotionBannerBuffer.check(buffer).isFiltered();
         }
 
         return !exceptions.matches(path);
@@ -226,6 +239,22 @@ public final class AdsFilter extends Filter {
      */
     public static boolean hideGetPremiumView() {
         return Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideAds() {
+        return Settings.HIDE_GENERAL_ADS.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static String hideAds(String osName) {
+        return Settings.HIDE_GENERAL_ADS.get()
+                ? "Android Automotive"
+                : osName;
     }
 
     /**

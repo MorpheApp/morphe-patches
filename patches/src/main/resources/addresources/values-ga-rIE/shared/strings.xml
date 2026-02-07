@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Atosú ag teastáil</string>
   <string name="morphe_settings_restart_dialog_message">Atosaigh an aip chun go mbeidh an t-athrú seo i bhfeidhm.</string>
   <string name="morphe_settings_restart">Atosaigh</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Iompórtáil</string>
   <string name="morphe_settings_import_copy">Cóipeáil</string>
   <string name="morphe_settings_import_reset">Athshocraigh socruithe Morphe go réamhshocrú</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Taispeáin stair cuardaigh na socruithe</string>
   <string name="morphe_settings_search_history_summary_on">Taispeántar stair cuardaigh na socruithe</string>
   <string name="morphe_settings_search_history_summary_off">Ní thaispeántar stair cuardaigh na socruithe</string>
-  <string name="morphe_settings_disable_bold_icons_title">Díchumasaigh deilbhíní troma</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Níl deilbhíní troma</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Tá deilbhíní troma</string>
   <string name="morphe_show_menu_icons_title">Taispeáin deilbhíní socruithe Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Taispeántar deilbhíní socruithe</string>
   <string name="morphe_show_menu_icons_summary_off">Ní thaispeántar deilbhíní socraithe</string>
@@ -62,7 +60,7 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_language_DEFAULT">Teanga aip</string>
   <string name="morphe_pref_import_export_title">Iompórtáil / Easpórtáil</string>
   <string name="morphe_pref_import_export_summary">Iompórtáil / Easpórtáil socruithe Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Tá tú ag baint úsáide as an leagan is déanaí de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Tá tú ag baint úsáide as leagan &lt;i&gt;%1$s&lt;/i&gt; Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Nuashonrú ar fáil: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Chun do phaisteanna a nuashonrú, bain úsáid as Morphe chun an aip seo a athphaisteáil</string>
   <string name="morphe_settings_about_links_dev_header">Nóta</string>
@@ -103,10 +101,10 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha sábháilte</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Bratacha athshocraithe</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha cóipeáilte chuig an ngearrthaisce</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Cuir an app ar tÃ¡thairgint chugainn an seirbhÃ­ seo a úsÃ¡id</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Socruithe GmsCore</string>
-  <string name="microg_settings_summary">Socruithe le haghaidh GmsCore</string>
+  <string name="microg_settings_summary">Aithní an tSeirbhís MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">Níl MicroG suiteáilte. Suiteáil é.</string>
   <string name="gms_core_dialog_title">Gníomh riachtanach</string>

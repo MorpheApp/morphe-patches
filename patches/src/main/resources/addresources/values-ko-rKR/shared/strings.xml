@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">다시 시작하세요</string>
   <string name="morphe_settings_restart_dialog_message">이 변경 사항을 적용하려면 앱을 다시 시작하세요.</string>
   <string name="morphe_settings_restart">다시 시작</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">가져오기</string>
   <string name="morphe_settings_import_copy">복사하기</string>
   <string name="morphe_settings_import_reset">Morphe 설정을 기본값으로 초기화합니다</string>
@@ -49,28 +50,25 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">설정 검색 기록 표시하기</string>
   <string name="morphe_settings_search_history_summary_on">설정 검색 기록을 표시합니다</string>
   <string name="morphe_settings_search_history_summary_off">설정 검색 기록을 표시하지 않습니다</string>
-  <string name="morphe_settings_disable_bold_icons_title">굵은 아이콘 비활성화하기</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">아이콘을 굵게 표시하지 않습니다</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">아이콘을 굵게 표시합니다</string>
   <string name="morphe_show_menu_icons_title">Morphe 설정 아이콘 표시하기</string>
   <string name="morphe_show_menu_icons_summary_on">설정 아이콘을 표시합니다</string>
   <string name="morphe_show_menu_icons_summary_off">설정 아이콘을 표시하지 않습니다</string>
   <string name="morphe_language_title">Morphe 언어</string>
   <string name="morphe_language_user_dialog_message">"일부 언어의 번역이 누락되었거나 완료되지 않았을 수 있습니다.
 
-새로운 언어를 번역하거나 기존 번역을 개선하려면 translate.morphe.software를 방문하세요."</string>
+새 언어를 번역하거나 기존 번역을 개선하려면 translate.morphe.software를 방문하세요."</string>
   <string name="morphe_language_DEFAULT">앱 언어</string>
   <string name="morphe_pref_import_export_title">가져오기 / 내보내기</string>
   <string name="morphe_pref_import_export_summary">Morphe 설정을 가져오거나 내보낼 수 있습니다</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches &lt;i&gt;%s&lt;/i&gt;&lt;br&gt;최신 버전을 사용 중입니다</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;버전을 사용 중입니다&lt;br&gt;&lt;br&gt;&lt;b&gt;업데이트 사용 가능: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;패치를 업데이트하려면&lt;br&gt;Morphe를 사용하여&lt;br&gt;이 앱을 다시 패치하세요</string>
   <string name="morphe_settings_about_links_dev_header">알림</string>
   <string name="morphe_settings_about_links_dev_body">Pre-release 버전이므로&lt;br&gt;알려지지 않은 문제점이&lt;br&gt;발생할 수 있습니다</string>
   <string name="morphe_settings_about_links_header">공식 링크</string>
   <string name="morphe_settings_about_links_website">웹사이트</string>
-  <string name="morphe_settings_about_links_donate">기부하기</string>
-  <string name="morphe_settings_about_links_translations">번역에 참여하기</string>
+  <string name="morphe_settings_about_links_donate">후원하기</string>
+  <string name="morphe_settings_about_links_translations">번역에 도움주기</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버그</string>
   <string name="morphe_debug_screen_summary">디버그 옵션을 활성화하거나 비활성화할 수 있습니다</string>
@@ -103,10 +101,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">플래그를 저장하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">플래그를 초기화하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">플래그를 클립보드에 복사하였습니다</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">이 기능을 사용하려면 앱을 다시 시작하세요</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore 설정</string>
-  <string name="microg_settings_summary">알림 수신을 위한 클라우드 메시징을 설정할 수 있습니다</string>
+  <string name="microg_settings_summary">MicroG 설정을 실행할 수 있습니다</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG가 설치되어 있지 않습니다. 설치하세요.</string>
   <string name="gms_core_dialog_title">필수 조치</string>

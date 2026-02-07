@@ -6,6 +6,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -40,15 +41,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
@@ -91,7 +84,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
         if (is_20_28_or_greater) {
             arrayOf(
                 CastButtonPlayerFeatureFlagFingerprint,
-                CastButtonActionFeatureFlagFingerprint
+                CastButtonActionFeatureFlagFingerprint // Cast button in the feed.
             ).forEach { fingerprint ->
                 fingerprint.let {
                     it.method.insertLiteralOverride(
@@ -134,7 +127,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             addInstructionsWithLabels(
                 constIndex,
                 """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideAutoPlayButton()Z
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideAutoplayButton()Z
                     move-result v$constRegister
                     if-nez v$constRegister, :hidden
                 """,

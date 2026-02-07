@@ -16,6 +16,7 @@ import java.util.Locale;
 import app.morphe.extension.shared.GmsCoreSupport;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 
@@ -62,6 +63,11 @@ public class CustomBrandingPatch {
         // Cannot use static initialization block otherwise cyclic references exist
         // between Settings initialization and this class.
         if (notificationSmallIcon == null) {
+            if (GmsCoreSupport.isPackageNameOriginal()) {
+                Logger.printDebug(() -> "App is root mounted. Not overriding small notification icon");
+                return notificationSmallIcon = 0;
+            }
+
             BrandingTheme branding = BaseSettings.CUSTOM_BRANDING_ICON.get();
             if (branding == BrandingTheme.ORIGINAL) {
                 notificationSmallIcon = 0;
@@ -72,7 +78,7 @@ public class CustomBrandingPatch {
                     iconName += "_custom";
                 }
 
-                notificationSmallIcon = Utils.getResourceIdentifier(ResourceType.DRAWABLE, iconName);
+                notificationSmallIcon = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
                 if (notificationSmallIcon == 0) {
                     Logger.printException(() -> "Could not load notification small icon");
                 }

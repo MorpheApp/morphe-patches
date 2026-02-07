@@ -30,14 +30,14 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.text.Bidi;
 import java.text.Collator;
 import java.text.Normalizer;
@@ -63,6 +63,7 @@ import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("NewApi")
 public class Utils {
+    private static WeakReference<Activity> activityRef = new WeakReference<>(null);
 
     @SuppressLint("StaticFieldLeak")
     static volatile Context context;
@@ -282,66 +283,6 @@ public class Utils {
         return -1;
     }
 
-    /**
-     * @return zero, if the resource is not found.
-     */
-    @SuppressLint("DiscouragedApi")
-    public static int getResourceIdentifier(Context context, @Nullable ResourceType type, String resourceIdentifierName) {
-        return context.getResources().getIdentifier(resourceIdentifierName,
-                type == null ? null : type.value, context.getPackageName());
-    }
-
-    public static int getResourceIdentifierOrThrow(Context context, @Nullable ResourceType type, String resourceIdentifierName) {
-        final int resourceId = getResourceIdentifier(context, type, resourceIdentifierName);
-        if (resourceId == 0) {
-            throw new Resources.NotFoundException("No resource id exists with name: " + resourceIdentifierName
-                    + " type: " + type);
-        }
-        return resourceId;
-    }
-
-    /**
-     * @return zero, if the resource is not found.
-     * @see #getResourceIdentifierOrThrow(ResourceType, String)
-     */
-    public static int getResourceIdentifier(@Nullable ResourceType type, String resourceIdentifierName) {
-        return getResourceIdentifier(getContext(), type, resourceIdentifierName);
-    }
-
-    /**
-     * @return zero, if the resource is not found.
-     * @see #getResourceIdentifier(ResourceType, String)
-     */
-    public static int getResourceIdentifierOrThrow(@Nullable ResourceType type, String resourceIdentifierName) {
-        return getResourceIdentifierOrThrow(getContext(), type, resourceIdentifierName);
-    }
-
-    public static int getResourceInteger(String resourceIdentifierName) throws Resources.NotFoundException {
-        return getContext().getResources().getInteger(getResourceIdentifierOrThrow(ResourceType.INTEGER, resourceIdentifierName));
-    }
-
-    public static Animation getResourceAnimation(String resourceIdentifierName) throws Resources.NotFoundException {
-        return AnimationUtils.loadAnimation(getContext(), getResourceIdentifierOrThrow(ResourceType.ANIM, resourceIdentifierName));
-    }
-
-    @ColorInt
-    public static int getResourceColor(String resourceIdentifierName) throws Resources.NotFoundException {
-        //noinspection deprecation
-        return getContext().getResources().getColor(getResourceIdentifierOrThrow(ResourceType.COLOR, resourceIdentifierName));
-    }
-
-    public static int getResourceDimensionPixelSize(String resourceIdentifierName) throws Resources.NotFoundException {
-        return getContext().getResources().getDimensionPixelSize(getResourceIdentifierOrThrow(ResourceType.DIMEN, resourceIdentifierName));
-    }
-
-    public static float getResourceDimension(String resourceIdentifierName) throws Resources.NotFoundException {
-        return getContext().getResources().getDimension(getResourceIdentifierOrThrow(ResourceType.DIMEN, resourceIdentifierName));
-    }
-
-    public static String[] getResourceStringArray(String resourceIdentifierName) throws Resources.NotFoundException {
-        return getContext().getResources().getStringArray(getResourceIdentifierOrThrow(ResourceType.ARRAY, resourceIdentifierName));
-    }
-
     public interface MatchFilter<T> {
         boolean matches(T object);
     }
@@ -350,7 +291,7 @@ public class Utils {
      * Includes sub children.
      */
     public static <R extends View> R getChildViewByResourceName(View view, String str) {
-        var child = view.findViewById(Utils.getResourceIdentifierOrThrow(ResourceType.ID, str));
+        var child = view.findViewById(ResourceUtils.getIdentifierOrThrow(ResourceType.ID, str));
         //noinspection unchecked
         return (R) child;
     }
@@ -410,9 +351,36 @@ public class Utils {
         System.exit(0);
     }
 
+    public static Resources getResources() {
+        return getResources(true);
+    }
+
+    public static Resources getResources(boolean useContext) {
+        if (useContext) {
+            if (context != null) {
+                return context.getResources();
+            }
+            Activity mActivity = activityRef.get();
+            if (mActivity != null) {
+                return mActivity.getResources();
+            }
+        }
+
+        return Resources.getSystem();
+    }
+
+    public static Activity getActivity() {
+        return activityRef.get();
+    }
+
+    public static void setActivity(Activity mainActivity) {
+        Logger.printInfo(() -> "Set activity: " + mainActivity);
+        activityRef = new WeakReference<>(mainActivity);
+    }
+
     public static Context getContext() {
         if (context == null) {
-            Logger.printException(() -> "Context is not set by extension hook, returning null",  null);
+            Logger.printException(() -> "Context is not set by extension hook, returning null");
         }
         return context;
     }
@@ -423,6 +391,11 @@ public class Utils {
         Logger.printInfo(() -> "Set context: " + appContext);
         // Must initially set context to check the app language.
         context = appContext;
+
+        // Set activity if not already set.
+        if (appContext instanceof Activity activity && getActivity() == null) {
+            setActivity(activity);
+        }
 
         AppLanguage language = BaseSettings.MORPHE_LANGUAGE.get();
         if (language != AppLanguage.DEFAULT) {
@@ -442,6 +415,10 @@ public class Utils {
                 .getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Morphe", text);
         clipboard.setPrimaryClip(clip);
+    }
+
+    public static boolean isNotEmpty(@Nullable String str) {
+        return str != null && !str.isEmpty();
     }
 
     public static boolean isTablet() {
@@ -808,6 +785,14 @@ public class Utils {
     }
 
     /**
+     * The recommended app version of this app to patch. Set during patching.
+     * Returns an empty string if not set.
+     */
+    public static String getRecommendedAppVersion() {
+        return "";
+    }
+
+    /**
      * @return If the unpatched app is currently using bold icons.
      */
     public static boolean appIsUsingBoldIcons() {
@@ -1123,7 +1108,7 @@ public class Utils {
         if (colorString.startsWith("#")) {
             return Color.parseColor(colorString);
         }
-        return getResourceColor(colorString);
+        return ResourceUtils.getColor(colorString);
     }
 
     /**
@@ -1196,5 +1181,13 @@ public class Utils {
                 return size() > maxSize;
             }
         };
+    }
+
+    /**
+     * @return whether the device's API level is higher than a specific SDK version.
+     */
+    @ChecksSdkIntAtLeast(parameter = 0)
+    public static boolean isSDKAbove(int sdk) {
+        return Build.VERSION.SDK_INT >= sdk;
     }
 }

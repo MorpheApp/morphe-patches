@@ -17,7 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit import / export preference -->
+  <!-- String is also duplicated in Reddit about preference -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->

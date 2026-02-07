@@ -5,6 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -56,15 +57,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         listOf(
@@ -85,7 +78,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         }
 
         if (is_19_43_or_greater) {
-            ShowEndscreenCardsFingerprint.match(ShowEndscreenCardsParentFingerprint.classDef).method.addInstructionsWithLabels(
+            ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z

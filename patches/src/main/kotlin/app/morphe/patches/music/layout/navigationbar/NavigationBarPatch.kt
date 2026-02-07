@@ -7,6 +7,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -43,13 +44,7 @@ val navigationBarPatch = bytecodePatch(
         }
     )
 
-    compatibleWith(
-        "com.google.android.apps.youtube.music"(
-            "7.29.52",
-            "8.10.52",
-            "8.37.56",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(

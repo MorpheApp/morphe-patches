@@ -1,6 +1,6 @@
 package app.morphe.extension.shared.settings.preference;
 
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -31,17 +31,17 @@ import app.morphe.extension.shared.ui.CustomDialog;
 @SuppressWarnings({"unused", "deprecation"})
 public class CustomDialogListPreference extends ListPreference {
 
-    public static final int ID_MORPHE_CHECK_ICON = getResourceIdentifierOrThrow(
+    public static final int ID_MORPHE_CHECK_ICON = getIdentifierOrThrow(
             ResourceType.ID, "morphe_check_icon");
-    public static final int ID_MORPHE_CHECK_ICON_PLACEHOLDER = getResourceIdentifierOrThrow(
+    public static final int ID_MORPHE_CHECK_ICON_PLACEHOLDER = getIdentifierOrThrow(
             ResourceType.ID, "morphe_check_icon_placeholder");
-    public static final int ID_MORPHE_ITEM_TEXT = getResourceIdentifierOrThrow(
+    public static final int ID_MORPHE_ITEM_TEXT = getIdentifierOrThrow(
             ResourceType.ID, "morphe_item_text");
-    public static final int LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED = getResourceIdentifierOrThrow(
+    public static final int LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED = getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_custom_list_item_checked");
-    public static final int DRAWABLE_CHECKMARK = getResourceIdentifierOrThrow(
+    public static final int DRAWABLE_CHECKMARK = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark");
-    public static final int DRAWABLE_CHECKMARK_BOLD = getResourceIdentifierOrThrow(
+    public static final int DRAWABLE_CHECKMARK_BOLD = getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark_bold");
 
     private String staticSummary = null;

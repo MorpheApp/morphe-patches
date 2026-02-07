@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">По избор</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Експериментално предупреждение! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Използвате експериментална версия на приложението ⚠️ <b>%1$s</b>
+<br/><br/>
+🔧 Очаквайте неочаквани поведения или неидентифицирани грешки, тъй като минаваме към финалните патчове за тази версия на приложението.
+<br/><br/>
+Ако искате най-стабилен опит, тогава <b>деинсталирайте</b> това и патчете препоръчаната версия на приложението ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Избирам експериментално</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Избирам стабилно</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>

@@ -1,9 +1,9 @@
 package app.morphe.extension.youtube.patches.spoof;
 
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_CREATOR;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_NO_SDK;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_47_48;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_54_20;
+import static app.morphe.extension.shared.spoof.ClientType.TV;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS;
 
 import java.util.List;
@@ -45,6 +45,7 @@ public class SpoofVideoStreamsPatch {
         // For some users No SDK can fail at 1 minute. Only use it if the user has explicitly set it.
         List<ClientType> availableClients = List.of(
                 VISIONOS,
+                TV,
                 ANDROID_VR_1_47_48,
                 ANDROID_CREATOR
         );

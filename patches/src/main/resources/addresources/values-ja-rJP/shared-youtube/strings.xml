@@ -27,8 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe（ライト）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">カスタム</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 実験的バージョンの警告！ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"あなたは現在、実験的アプリ バージョンである ⚠️ &lt;b&gt;%1$s&lt;/b&gt; を使用しています。
+&lt;br/&gt;&lt;br/&gt;
+🔧 このバージョンへのパッチの適用は調整中のため、動作が不安定になったり未確認の不具合が発生する可能性があります。
+&lt;br/&gt;&lt;br/&gt;
+できるだけ問題の少ない環境を希望する場合は、このアプリを &lt;b&gt;アンインストール&lt;/b&gt; して推奨アプリ バージョンである ✅ &lt;b&gt;%2$s&lt;/b&gt; にパッチを適用してください。"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 実験版にします</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 安定版にします</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からのお知らせ</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
@@ -40,12 +50,12 @@ Second \"item\" text"</string>
 YouTube Premium ユーザーの場合、この設定が必要ない場合があります"</string>
   <string name="morphe_spoof_video_streams_summary_off">"動画ストリームは偽装されていません
 
-再生に失敗する場合があります"</string>
+再生に失敗する可能性があります"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">クライアントの動画ストリームを取得できませんでした</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生に失敗するようになる場合があります。</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生に失敗するようになる可能性があります。</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">設定オン: [動画ストリームを偽装] &gt; [Android VR (ログイン)]</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">有効にしてみてください: [動画ストリームを偽装] &gt; [Android VR (ログイン)]</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR (ログイン)</string>
@@ -81,8 +91,8 @@ YouTube Premium ユーザーの場合、この設定が必要ない場合があ�
   <string name="morphe_oauth2_connection_failure_status_400">Android VR へのログインが期限切れです。再度ログインしてください</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 は一時的に利用できません (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 は一時的に利用できません</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR へのログインに失敗しました。ウェブサイトの認証が承認されませんでした</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">VR へのログインに失敗しました: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR にログインできません。ウェブサイトの認証が承認されませんでした</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
   <!-- misc.audio.forceOriginalAudioPatch -->

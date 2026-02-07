@@ -8,10 +8,27 @@ import androidx.annotation.NonNull;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class StringRef {
-    private static Resources resources;
-    private static String packageName;
+    /**
+     * Simple class to assist with apps that currently cannot use resource patches.
+     */
+    public record StringKeyLookup(Map<String, String> stringMap) {
+        public StringKeyLookup(Map<String, String> stringMap) {
+            this.stringMap = Objects.requireNonNull(stringMap);
+        }
+
+        public String getString(String key, Object... args) {
+            String str = stringMap.get(key);
+            if (str == null) {
+                Logger.printException(() -> "Unknown string key: " + key);
+                return key;
+            }
+
+            return String.format(str, args);
+        }
+    }
 
     // must use a thread safe map, as this class is used both on and off the main thread
     private static final Map<String, StringRef> strings = Collections.synchronizedMap(new HashMap<>());
@@ -89,7 +106,6 @@ public class StringRef {
     @NonNull
     public static final StringRef empty = constant("");
 
-    @NonNull
     private String value;
     private boolean resolved;
 
@@ -99,23 +115,11 @@ public class StringRef {
 
     @Override
     @NonNull
-    public String toString() {
+    public synchronized String toString() {
         if (!resolved) {
-            if (resources == null || packageName == null) {
-                Context context = Utils.getContext();
-                resources = context.getResources();
-                packageName = context.getPackageName();
-            }
+            String resolvedValue = ResourceUtils.getString(value);
+            value = resolvedValue == null ? "Unknown string" : resolvedValue;
             resolved = true;
-            if (resources != null) {
-                final int identifier = resources.getIdentifier(value, "string", packageName);
-                if (identifier == 0)
-                    Logger.printException(() -> "Resource not found: " + value);
-                else
-                    value = resources.getString(identifier);
-            } else {
-                Logger.printException(() -> "Could not resolve resources!");
-            }
         }
         return value;
     }

@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Sobre</string>
   <string name="morphe_settings_screen_01_ads_title">Anúncios</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniaturas alternativas</string>
-  <string name="morphe_settings_screen_03_feed_title">Alimentar</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Geral</string>
   <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra de busca</string>
@@ -81,6 +81,11 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_latest_posts_title">Ocultar últimas publicações</string>
   <string name="morphe_hide_latest_posts_summary_on">Últimas publicações estão ocultas</string>
   <string name="morphe_hide_latest_posts_summary_off">Últimas publicações não estão ocultas</string>
+  <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Ocultar botão \'Vídeos recentes\'</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Botão de vídeos recentes está oculto</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Botão de vídeos recentes está visível</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar playlists de mix</string>
   <string name="morphe_hide_mix_playlists_summary_on">Playlists de mix estão ocultas</string>
   <string name="morphe_hide_mix_playlists_summary_off">As playlists de mix são mostradas</string>
@@ -88,18 +93,24 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_movies_section_summary_on">Seção de filmes está oculto</string>
   <string name="morphe_hide_movies_section_summary_off">A seção de filmes é mostrada</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This item appear in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botão \'Notificar-me\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">O botão Notificar-me está oculto</string>
   <string name="morphe_hide_notify_me_button_summary_off">O botão Notificar-me é exibido</string>
   <string name="morphe_hide_playables_title">Ocultar Playables</string>
   <string name="morphe_hide_playables_summary_on">Os Playables estão ocultos</string>
   <string name="morphe_hide_playables_summary_off">Os Playables são mostrados</string>
+  <string name="morphe_hide_search_suggestions_title">Ocultar sugestões de busca</string>
+  <string name="morphe_hide_search_suggestions_summary_on">Sugestões de pesquisa estão ocultas</string>
+  <string name="morphe_hide_search_suggestions_summary_off">Sugestões de pesquisa são mostradas</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ocultar botão \'Mostrar mais\'</string>
   <string name="morphe_hide_show_more_button_summary_on">O botão Mostrar mais nos resultados da pesquisa está oculto</string>
   <string name="morphe_hide_show_more_button_summary_off">O botão Mostrar mais nos resultados da pesquisa é exibido</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">Esconder a barra de canais assinados</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_on">A barra de canais assinados está escondida</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_off">A barra de canais assinados está visível</string>
   <string name="morphe_hide_surveys_title">Ocultar pesquisas</string>
   <string name="morphe_hide_surveys_summary_on">Pesquisas estão ocultas</string>
   <string name="morphe_hide_surveys_summary_off">Pesquisas estão visíveis</string>
@@ -117,9 +128,6 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_doodles_title">Ocultar Doodles do YouTube</string>
   <string name="morphe_hide_doodles_summary_on">A animação de Doodles do YouTube no logotipo está oculta</string>
   <string name="morphe_hide_doodles_summary_off">A animação dos Doodles do YouTube no logotipo é exibida</string>
-  <string name="morphe_hide_doodles_user_dialog_message">"Os Doodles do YouTube são exibidos alguns dias por ano.
-
-Se um Doodle estiver sendo exibido atualmente em sua região e esta configuração de ocultação estiver ativada, a barra de filtros abaixo da barra de pesquisa também será ocultada."</string>
   <string name="morphe_hide_channel_bar_title">Ocultar barra de canais</string>
   <string name="morphe_hide_channel_bar_summary_on">Barra de canal está oculta</string>
   <string name="morphe_hide_channel_bar_summary_off">A barra de canal é mostrada</string>
@@ -136,10 +144,15 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_info_panels_summary_on">Painel de informações está oculto</string>
   <string name="morphe_hide_info_panels_summary_off">O painel de informações é mostrado</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This appears in the video player for certain videos. -->
+          This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Ocultar botão \"Participar\"</string>
   <string name="morphe_hide_join_membership_button_summary_on">O botão \'Seja membro\' está oculto</string>
   <string name="morphe_hide_join_membership_button_summary_off">O botão \'Seja membro\' é exibido</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Ocultar botão \'Reproduzir chat ao vivo\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Botão de reprodução do chat ao vivo no overlay do player está oculto</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Botão de reprodução do chat ao vivo no overlay do player está visível</string>
   <string name="morphe_hide_medical_panels_title">Ocultar painel médico</string>
   <string name="morphe_hide_medical_panels_summary_on">Painel médico está oculto</string>
   <string name="morphe_hide_medical_panels_summary_off">Os painéis médicos são mostrados</string>
@@ -155,6 +168,9 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_timed_reactions_title">Ocultar reações cronometradas</string>
   <string name="morphe_hide_timed_reactions_summary_on">Reações cronometradas estão ocultas</string>
   <string name="morphe_hide_timed_reactions_summary_off">Reações cronometradas não estão ocultas</string>
+  <string name="morphe_hide_video_title_title">Ocultar título do vídeo</string>
+  <string name="morphe_hide_video_title_summary_on">Título do vídeo na sobreposição do player está oculto</string>
+  <string name="morphe_hide_video_title_summary_off">Título do vídeo na sobreposição do player está exibido</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar \"Resumo de vídeo gerado por IA\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">A seção de resumo de vídeo gerada por IA está oculta</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">A seção de resumo de vídeo gerado por IA é exibida</string>
@@ -167,6 +183,15 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_chapters_section_title">Ocultar capítulos</string>
   <string name="morphe_hide_chapters_section_summary_on">Seção de capítulos está oculta</string>
   <string name="morphe_hide_chapters_section_summary_off">Seção de capítulos é mostrada</string>
+  <string name="morphe_hide_course_progress_section_title">Ocultar \'Progresso do curso\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">Seção de progresso do curso está oculta</string>
+  <string name="morphe_hide_course_progress_section_summary_off">Seção de progresso do curso está visível</string>
+  <string name="morphe_hide_explore_section_title">Ocultar Explorar</string>
+  <string name="morphe_hide_explore_section_summary_on">Explorar este curso e Explorar o podcast seções estão ocultas</string>
+  <string name="morphe_hide_explore_section_summary_off">Explorar este curso e Explorar o podcast seções estão visíveis</string>
+  <string name="morphe_hide_explore_course_section_title">Ocultar \'Explorar este curso\'</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Esta seção do curso está oculta</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Esta seção do curso está visível</string>
   <string name="morphe_hide_explore_podcast_section_title">Ocultar \"Explore o podcast\"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">A seção Explore o podcast está oculta</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">A seção Explore o podcast é mostrada</string>
@@ -203,6 +228,9 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_transcript_section_title">Ocultar transcrição</string>
   <string name="morphe_hide_transcript_section_summary_on">Seção de transcrição está oculta</string>
   <string name="morphe_hide_transcript_section_summary_off">A seção de transcrição é mostrada</string>
+  <string name="morphe_hide_quizzes_section_title">Ocultar Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Seção de Quiz está oculto</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Seção de Quiz é mostrada</string>
   <string name="morphe_hide_description_components_screen_title">Descrição do vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Ocultar ou mostrar componentes de descrição do vídeo</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra de filtro</string>
@@ -264,6 +292,9 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_comments_section_title">Ocultar seção de comentários</string>
   <string name="morphe_hide_comments_section_summary_on">Seção de comentários está oculta</string>
   <string name="morphe_hide_comments_section_summary_off">A seção de comentários é mostrada</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Esconder seção de comentários no feed de casa</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">A seção de comentários sob os vídeos na Feed de Início está oculta</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">A seção de comentários sob os vídeos na Feed de Início está visível</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ocultar diretrizes da comunidade</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Diretrizes da comunidade estão ocultas</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Diretrizes da comunidade estão exibidas</string>
@@ -293,15 +324,15 @@ Se um Doodle estiver sendo exibido atualmente em sua região e esta configuraç�
   <string name="morphe_hide_view_count_summary_off">A contagem de visualizações é mostrada no feed e nos resultados da pesquisa</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Limitações:
-• As prateleiras de Shorts, páginas de canal e resultados de pesquisa ainda podem mostrar as contagens de visualizações
-• Este recurso não funciona com o fator de forma automotivo"</string>
+• As prateleiras de Shorts, páginas de canal e resultados de pesquisa ainda podem mostrar as contagens de visualização.
+• Este recurso não funciona com o fator de forma automotivo."</string>
   <string name="morphe_hide_upload_time_title">Ocultar tempo de upload</string>
   <string name="morphe_hide_upload_time_summary_on">O tempo de upload está oculto no feed e nos resultados da pesquisa</string>
   <string name="morphe_hide_upload_time_summary_off">O tempo de upload é mostrado no feed e nos resultados da pesquisa</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitações:
-• As prateleiras de Shorts, páginas de canais e resultados da pesquisa ainda podem mostrar os tempos de upload
-• Este recurso não funciona com o fator de forma automotivo"</string>
+• As prateleiras de Shorts, páginas de canal e resultados de pesquisa ainda podem mostrar os tempos de upload.
+• Este recurso não funciona com o fator de forma automotivo."</string>
   <string name="morphe_hide_keyword_content_screen_title">Ocultar conteúdo usando palavra-chave</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ocultar pesquisa e vídeos na tela inicial usando palavras-chave como filtros</string>
   <string name="morphe_hide_keyword_content_home_title">Ocultar vídeos na tela inicial com palavras-chave</string>
@@ -363,12 +394,10 @@ Limitações:
   <string name="morphe_hide_shopping_links_summary_on">Links de compras na descrição do vídeo estão ocultos</string>
   <string name="morphe_hide_shopping_links_summary_off">Links de compras na descrição do vídeo são exibidos</string>
   <string name="morphe_hide_view_products_banner_title">Ocultar banner \"Ver produtos\"</string>
-  <string name="morphe_hide_view_products_banner_summary_on">O banner Ver produtos na sobreposição do vídeo está oculto</string>
-  <string name="morphe_hide_view_products_banner_summary_off">O banner Ver produtos na sobreposição do vídeo é exibido</string>
+  <string name="morphe_hide_view_products_banner_summary_on">O banner Ver produtos na sobreposição do player está oculto</string>
+  <string name="morphe_hide_view_products_banner_summary_off">O banner Ver produtos na sobreposição do player é exibido</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ocultar promoções do YouTube Premium</string>
-  <string name="morphe_hide_youtube_premium_promotions_summary_on">"Promoções do YouTube Premium estão ocultas
-
-Limitação: A página de YouTube Doodles não está disponível"</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">Promoções do YouTube Premium estão ocultas sob o reprodutor de vídeo</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">As promoções do YouTube Premium são exibidas</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ocultar anúncios do vídeo</string>
@@ -475,14 +504,6 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_swipe_change_video_title">Ativar deslize para mudar os vídeos</string>
   <string name="morphe_swipe_change_video_summary_on">Deslizar no modo tela cheia mudará para o vídeo anterior/seguinte</string>
   <string name="morphe_swipe_change_video_summary_off">Deslizar no modo tela cheia não mudará para o próximo/vídeo anterior</string>
-  <!-- layout.autocaptions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">Visibilidade de legendas automáticas</string>
-  <string name="morphe_auto_captions_style_entry_1">Mostrar quando mudo e não mudo</string>
-  <string name="morphe_auto_captions_style_entry_2">Não mostrar nunca</string>
-  <string name="morphe_auto_captions_style_entry_3">Mostrar quando não mudo</string>
-  <string name="morphe_auto_captions_style_entry_4">Mostrar quando silenciado</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Mostrar legendas automáticas</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Esconder legendas automáticas</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Botões de ação</string>
   <string name="morphe_hide_buttons_screen_summary">Ocultar ou mostrar botões sob vídeos</string>
@@ -505,7 +526,7 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_comments_button_summary_on">Botão de comentários está oculto</string>
   <string name="morphe_hide_comments_button_summary_off">Botão de comentários está visível</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually only shows on live streams. -->
+          This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Ocultar Denúncia</string>
   <string name="morphe_hide_report_button_summary_on">Botão de denúncia está oculto</string>
   <string name="morphe_hide_report_button_summary_off">O botão de denúncia é mostrado</string>
@@ -518,7 +539,7 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_download_button_summary_on">Botão download está oculto</string>
   <string name="morphe_hide_download_button_summary_off">O botão download é mostrado</string>
   <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button only shows on videos uploaded by the logged-in user. -->
+          This button usually appears on videos uploaded by the logged-in user. -->
   <string name="morphe_hide_hype_button_title">Ocultar Hype</string>
   <string name="morphe_hide_hype_button_summary_on">Botão Hype está oculto</string>
   <string name="morphe_hide_hype_button_summary_off">O botão Hype é exibido</string>
@@ -531,7 +552,7 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_thanks_button_summary_on">Botão valeu está oculto</string>
   <string name="morphe_hide_thanks_button_summary_off">O botão valeu é mostrado</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button only shows if the user ip is from specific region such as the USA or EU. -->
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Ocultar \"Perguntar\"</string>
   <string name="morphe_hide_ask_button_summary_on">Botão \"Perguntar\" oculto</string>
   <string name="morphe_hide_ask_button_summary_off">O botão \"Perguntar\" é mostrado</string>
@@ -548,6 +569,36 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_save_button_title">Ocultar Salvar</string>
   <string name="morphe_hide_save_button_summary_on">O botão Salvar está oculto</string>
   <string name="morphe_hide_save_button_summary_off">O botão Salvar é exibido</string>
+  <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">Legendas</string>
+  <string name="morphe_captions_screen_summary">Desativar legendas autom├íticas ou definir cookies de legenda</string>
+  <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">Visibilidade de legendas automáticas</string>
+  <string name="morphe_auto_captions_style_entry_1">Mostrar quando mudo e não mudo</string>
+  <string name="morphe_auto_captions_style_entry_2">Não mostrar nunca</string>
+  <string name="morphe_auto_captions_style_entry_3">Mostrar quando não mudo</string>
+  <string name="morphe_auto_captions_style_entry_4">Mostrar quando silenciado</string>
+  <string name="morphe_auto_captions_style_legacy_entry_1">Mostrar legendas automáticas</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">Esconder legendas automáticas</string>
+  <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">Definir cookies de legenda</string>
+  <string name="morphe_set_caption_cookies_summary_on">Cookies de legenda são definidos se fornecidos</string>
+  <string name="morphe_set_caption_cookies_summary_off">"Cookies de legenda não são definidos
+
+A tradução automática das legendas pode não estar disponível"</string>
+  <string name="morphe_caption_cookies_title">Cookies de legenda</string>
+  <string name="morphe_caption_cookies_summary">Cookies a serem usados nas solicitações da API de Texto Marcado</string>
+  <string name="morphe_get_caption_cookies_title">Obter cookies de legenda</string>
+  <string name="morphe_get_caption_cookies_summary">"Clique para obter cookies
+
+Os cookies serão salvos automaticamente se forem válidos"</string>
+  <string name="morphe_get_caption_cookies_failed">Falha ao buscar cookies</string>
+  <string name="morphe_get_caption_cookies_duplicate">Cookies já existem</string>
+  <string name="morphe_get_caption_cookies_success">Cookies foram atualizados com sucesso</string>
+  <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">Corrigir transcrição</string>
+  <string name="morphe_fix_transcript_summary_on">Transcrição está disponível</string>
+  <string name="morphe_fix_transcript_summary_off">A transcrição pode não estar disponível devido a uma falha na verificação prévia</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botões de navegação</string>
   <string name="morphe_navigation_buttons_screen_summary">Ocultar ou alterar botões na barra de navegação</string>
@@ -567,34 +618,46 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_subscriptions_button_title">Ocultar Inscrições</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Botão inscrições está oculto</string>
   <string name="morphe_hide_subscriptions_button_summary_off">O botão inscrições é mostrado</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ocultar notificações</string>
   <string name="morphe_hide_notifications_button_summary_on">O botão de notificações está oculto</string>
   <string name="morphe_hide_notifications_button_summary_off">O botão de notificações está visível</string>
-  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_switch_create_with_notifications_button_title">Mudar botão Criar por Notificações</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_on">"O botão Criar é trocado com o botão Notificações
-
-Nota: Habilitar isso também oculta os anúncios em vídeo"</string>
-  <string name="morphe_switch_create_with_notifications_button_summary_off">Botão criar não está alternado com o botão notificações</string>
-  <string name="morphe_switch_create_with_notifications_button_user_dialog_message">"Desativar esta configuração também desativará o bloqueio de anúncios do Shorts.
-
-Se alterar esta configuração não fizer efeito, tente mudar para o modo anônimo."</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Trocar Criar por Notificações</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Botão criar está trocado com o botão notificações</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Botão criar não está trocado com o botão notificações</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Se alterar essa configuração não tiver efeito, tente alternar para o modo de navegação anônima.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Rótulos são ocultos</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Rótulos são mostrados</string>
+  <string name="morphe_narrow_navigation_buttons_title">Habilitar botões de navegação estreitos</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">O espaçamento entre os botões de navegação é estreito</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">O espaçamento entre os botões de navegação é normal</string>
   <string name="morphe_navigation_bar_animations_title">Habilitar animações da barra de navegação</string>
   <string name="morphe_navigation_bar_animations_summary_on">Transições de navegação são animadas</string>
   <string name="morphe_navigation_bar_animations_summary_off">Transições de navegação não são animadas</string>
   <string name="morphe_disable_translucent_status_bar_title">Desabilitar barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">Em alguns dispositivos, ativar este recurso pode alterar a barra de navegação do sistema para transparente.</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitações:
+• Uma barra preta pode aparecer no topo do player de vídeo.
+• Em alguns dispositivos, ativar este recurso pode tornar a barra de navegação do sistema transparente."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desabilitar barra de navegação translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">A barra de navegação no modo claro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A barra de navegação do modo claro é opaca ou translúcida</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Desabilitar barra translúcida escura</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">A barra de navegação no modo escuro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A barra de navegação do modo escuro é opaca ou translúcida</string>
+  <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
+  <string name="morphe_toolbar_screen_summary">Ocultar ou alterar componentes da barra de ferramentas</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ocultar botão Criar</string>
+  <string name="morphe_hide_toolbar_create_button_summary_on">Botão criar está oculto</string>
+  <string name="morphe_hide_toolbar_create_button_summary_off">O botão criar é mostrado</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ocultar botão Notificações</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_on">O botão de notificações está oculto</string>
+  <string name="morphe_hide_toolbar_notification_button_summary_off">O botão de notificações está visível</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ocultar botão Pesquisar</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Botão de pesquisa está oculto</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Botão de pesquisa está visível</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu flutuante</string>
   <string name="morphe_hide_player_flyout_summary">Ocultar ou mostrar itens no menu suspenso do reprodutor</string>
@@ -643,10 +706,10 @@ Se alterar esta configuração não fizer efeito, tente mudar para o modo anôni
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu faixa de áudio está oculto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu faixa de áudio não está oculto</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android No SDK' must be kept untranslated. -->
+          'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu de faixas de áudio está oculto
 
-Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Android No SDK'"</string>
+Para mostrar o menu de faixas de áudio, mude 'Falsificar fluxos de vídeo' para 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ocultar Assistir no VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu assistir no VR está oculto</string>
@@ -662,6 +725,10 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
   <string name="morphe_hide_autoplay_button_title">Ocultar botão Reprodução automática</string>
   <string name="morphe_hide_autoplay_button_summary_on">Botão de reprodução automática está oculto</string>
   <string name="morphe_hide_autoplay_button_summary_off">Botão de reprodução automática não está oculto</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">Ocultar visualização automática</string>
+  <string name="morphe_hide_autoplay_preview_summary_on">Visualização automática está oculta</string>
+  <string name="morphe_hide_autoplay_preview_summary_off">Visualização automática não está oculta</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ocultar botão Legendas</string>
   <string name="morphe_hide_captions_button_summary_on">Botão legendas está oculto</string>
@@ -679,10 +746,19 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
   <string name="morphe_hide_endscreen_cards_title">Ocultar cartões de tela final</string>
   <string name="morphe_hide_endscreen_cards_summary_on">Cartões de tela final estão ocultos</string>
   <string name="morphe_hide_endscreen_cards_summary_off">Cartões de tela final não estão ocultos</string>
-  <!-- layout.hide.fullscreenambientmode.disableFullscreenAmbientModePatch -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Modo ambiente</string>
+  <string name="morphe_ambient_mode_screen_summary">Ignorar restrições de economia de energia para o Modo ambiente e desativá-lo completamente ou em tela cheia</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Ignorar restrições do Modo ambiente</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_on">Restrições de modo ambiente para economia de energia são ignoradas</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary_off">Restrições de modo ambiente para economia de energia não são ignoradas</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Habilitar isso pode piorar a vida útil da bateria.</string>
+  <string name="morphe_disable_ambient_mode_title">Desativar modo ambiente</string>
+  <string name="morphe_disable_ambient_mode_summary_on">Modo ambiente desativado</string>
+  <string name="morphe_disable_ambient_mode_summary_off">Modo ambiente ativado</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desativar modo Ambiente em tela cheia</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Modo ambiente desativado</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Modo ambiente ativado</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Modo ambiente em tela cheia desativado</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Modo ambiente em tela cheia ativado</string>
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
   <string name="morphe_hide_info_cards_title">Ocultar cartões de informações</string>
   <string name="morphe_hide_info_cards_summary_on">Cartões de informações estão ocultos</string>
@@ -716,9 +792,15 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
   <string name="morphe_hide_shorts_subscriptions_title">Ocultar Shorts no feed de Inscrições</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">Oculto no feed de Inscrições</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">Exibido no feed de Inscrições</string>
+  <string name="morphe_hide_shorts_video_description_title">Esconder os Shorts na descrição do vídeo</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Escondido na descrição do vídeo</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Mostrado na descrição do vídeo</string>
   <string name="morphe_hide_shorts_history_title">Ocultar Shorts no histórico de exibição</string>
   <string name="morphe_hide_shorts_history_summary_on">Oculto no histórico de exibições</string>
   <string name="morphe_hide_shorts_history_summary_off">Mostrado no histórico de exibição</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ocultar botão AI</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Botão AI oculto</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Botão AI exibido</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ocultar rótulo \'Auto-dublado\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Rótulo de dublagem automática está oculto</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Rótulo de dublagem automática está visível</string>
@@ -822,7 +904,7 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
   <string name="morphe_hide_shorts_navigation_bar_title">Ocultar barra de navegação</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Barra de navegação está oculta</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Barra de navegação não está oculta</string>
-  <!-- layout.hide.endscreensuggestion.hideEndScreenSuggestedVideoPatch -->
+  <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ocultar o vídeo sugerido na tela final</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"O vídeo sugerido na tela final fica oculto quando a reprodução automática está desativada
 
@@ -907,6 +989,12 @@ Limitação: \"Não gostei\" podem não aparecer no modo anônimo"</string>
   <string name="morphe_wide_searchbar_title">Ativar barra de busca ampla</string>
   <string name="morphe_wide_searchbar_summary_on">Barra de busca ampla está ativada</string>
   <string name="morphe_wide_searchbar_summary_off">Barra de busca ampla está desativada</string>
+  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
+  <string name="morphe_restore_old_search_filters_title">Restaurar filtros de busca antigos</string>
+  <string name="morphe_restore_old_search_filters_summary_on">Ordenar por avaliação e por data de upload está disponível no filtro de busca</string>
+  <string name="morphe_restore_old_search_filters_summary_off">Ordenar por avaliação e por data de upload não está disponível no filtro de busca</string>
+  <string name="morphe_old_search_filters_sort_by_rating">Avaliação</string>
+  <string name="morphe_old_search_filters_sort_by_upload_date">Data de upload</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ativar SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock é um sistema de crowdsourcing para pular partes irritantes de vídeos do YouTube</string>
@@ -1141,9 +1229,10 @@ Isso mudará a aparência e os recursos do aplicativo, mas podem ocorrer efeitos
 
 Se posteriormente desativado, é recomendável limpar os dados do aplicativo para evitar bugs na IU."</string>
   <string name="morphe_spoof_app_version_target_title">Versão de spoofing alvo</string>
-  <string name="morphe_spoof_app_version_target_entry_1">20.13.41 - Restaurar barra de ações de vídeo não recolhida</string>
-  <string name="morphe_spoof_app_version_target_entry_2">20.05.46 - Restaurar funcionalidade de transcrição</string>
-  <string name="morphe_spoof_app_version_target_entry_3">19.35.36 - Restaurar ícones antigos do player dos Shorts</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar velho save para playlist</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desativar ícones em negrito</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar barra de ações de vídeo não recolhida</string>
+  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurar ícones antigos do player dos Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Alterar página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>
@@ -1247,8 +1336,9 @@ Deslize para expandir ou fechar"</string>
   <string name="morphe_gradient_loading_screen_summary_on">Tela de carregamento terá um fundo em gradiente</string>
   <string name="morphe_gradient_loading_screen_summary_off">Tela de carregamento terá um fundo sólido</string>
   <string name="morphe_splash_screen_animation_style_title">Estilo da tela inicial</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Cor</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Preto e branco</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Desativado</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Cor</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Preto e branco</string>
   <string name="morphe_seekbar_custom_color_title">Ativar cor personalizada da barra de busca</string>
   <string name="morphe_seekbar_custom_color_summary_on">Cor personalizada da barra de busca é mostrada</string>
   <string name="morphe_seekbar_custom_color_summary_off">Cor original da barra de busca é mostrada</string>
@@ -1421,6 +1511,11 @@ Limitações:
   <string name="morphe_advanced_video_quality_menu_title">Mostrar menu de qualidade de vídeo avançado</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">O menu de qualidade de vídeo avançado é exibido</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">O menu de qualidade de vídeo avançado não é exibido</string>
+  <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Ocultar opções de qualidade premium</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Opções de qualidade premium estão ocultas</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Opções de alta qualidade são exibidas</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ativar gesto na barra de busca</string>
   <string name="morphe_slide_to_seek_summary_on">Gesto na barra de busca está ativado</string>
@@ -1439,11 +1534,13 @@ A reprodução de vídeo com AV1 pode gaguejar ou perder quadros."</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• O vídeo pode parar em 1:00, ou pode não estar disponível em algumas regiões</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• O menu da faixa de áudio está faltando</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sem codec de vídeo AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modo imersivo 360° VR não está disponível</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume estável não está disponível</string>
-  <string name="morphe_spoof_video_streams_about_kids_videos">• Vídeos infantis podem não ser reproduzidos quando estiver desconectado ou no modo de navegação anônima</string>
+  <string name="morphe_spoof_video_streams_about_js">• Se a desobfuscação falhar, a reprodução pode falhar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar áudio original não está disponível</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_title">Mostrar em Estatísticas para nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_on">O tipo de cliente é mostrado em Estatísticas para nerds</string>
-  <string name="morphe_spoof_streaming_data_stats_for_nerds_summary_off">O cliente está oculto em Estatísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Variante de JavaScript do player</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar em Estatísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">O tipo de cliente é mostrado em Estatísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">O cliente está oculto em Estatísticas para nerds</string>
 </resources>

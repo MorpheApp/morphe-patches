@@ -1,10 +1,11 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.returnEarly
+import app.morphe.util.setExtensionIsPatchIncluded
 
 @Suppress("unused")
 val openVideosFullscreenPatch = bytecodePatch(
@@ -16,22 +17,13 @@ val openVideosFullscreenPatch = bytecodePatch(
         settingsPatch,
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_open_videos_fullscreen_portrait")
         )
 
-        // Enable the logic for the user Setting to open regular videos fullscreen.
-        OpenVideosFullscreenHookPatchExtensionFingerprint.method.returnEarly(true)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
     }
 }

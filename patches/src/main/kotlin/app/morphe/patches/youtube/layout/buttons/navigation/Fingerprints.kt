@@ -1,21 +1,15 @@
 package app.morphe.patches.youtube.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-internal object AddCreateButtonViewFingerprint : Fingerprint(
-    filters = listOf(
-        string("Android Wear"),
-        opcode(Opcode.IF_EQZ),
-        string("Android Automotive", location = MatchAfterImmediately()),
-    )
-)
 
 internal object CreatePivotBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -36,6 +30,31 @@ internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45680008L)
     )
+)
+
+internal object PivotBarStyleFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.INVOKE_STATIC,
+        Opcode.MOVE_RESULT,
+        Opcode.XOR_INT_2ADDR
+    ),
+    custom = { method, _ ->
+        method.definingClass.endsWith("/PivotBar;")
+    }
+)
+
+internal object PivotBarChangedFingerprint : Fingerprint(
+    returnType = "V",
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.INVOKE_STATIC,
+        Opcode.MOVE_RESULT
+    ),
+    custom = { method, _ ->
+        method.definingClass.endsWith("/PivotBar;")
+                && method.name == "onConfigurationChanged"
+    }
 )
 
 internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerprint(
@@ -67,3 +86,26 @@ internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Finge
         literal(45632194L) // Translucent system buttons feature flag.
     )
 )
+
+internal object SetWordmarkHeaderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/widget/ImageView;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
+        resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
+    )
+)
+
+/**
+ * Matches the same method as [YouTubeDoodlesImageViewFingerprint].
+ */
+internal object WideSearchbarLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo"),
+    )
+)
+

@@ -31,9 +31,13 @@ internal object ComponentCreateFingerprint : Fingerprint(
 
 internal object LithoFilterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    custom = { _, classDef ->
-        classDef.endsWith("/LithoFilterPatch;")
-    }
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SPUT_OBJECT,
+            definingClass = "this",
+            type = EXTENSION_FILER_ARRAY_DESCRIPTOR
+        )
+    )
 )
 
 internal object ProtobufBufferReferenceFingerprint : Fingerprint(

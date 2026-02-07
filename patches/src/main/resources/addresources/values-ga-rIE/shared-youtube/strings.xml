@@ -27,6 +27,16 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe Lacht</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Saincheaptha</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Taispeántas Alartha! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Tá tú ag úsáid ar chóip tarsna tairbhe experimental den ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Tá tairbheanna tairbheacha ag tarlú nó buganna neamhfhios agam mar táimid ag déanamh leathanna do chóip seo.
+&lt;br/&gt;&lt;br/&gt;
+Má tá tú ag iarraidh an tairbhe is fearr, déan &lt;b&gt;de réir na tairbheanna&lt;/b&gt; seo agus cóipeáil an chóip tairbheach &lt;b&gt;%2$s&lt;/b&gt;."</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tá mé ag iarraidh tairbheanna tairbheacha</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Tá mé ag iarraidh tairbheanna tairbheacha</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is é is dóichí gur seachfhreastalaí fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt; Chun é seo a réiteach, déan liosta bán &lt;b&gt;s.youtube.com&lt;/b&gt; nó gach seachfhreastalaí DNS a mhúchadh.</string>

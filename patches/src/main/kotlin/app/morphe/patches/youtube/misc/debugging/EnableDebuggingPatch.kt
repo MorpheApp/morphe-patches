@@ -3,6 +3,9 @@ package app.morphe.patches.youtube.misc.debugging
 import app.morphe.patches.shared.misc.debugging.enableDebuggingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_41_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
@@ -12,6 +15,7 @@ val enableDebuggingPatch = enableDebuggingPatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
+            versionCheckPatch
         )
 
         compatibleWith(
@@ -21,12 +25,15 @@ val enableDebuggingPatch = enableDebuggingPatch(
                 "20.26.46",
                 "20.31.42",
                 "20.37.48",
+                "20.40.45",
             )
         )
     },
-    executeBlock = {
-    },
-    hookStringFeatureFlag = true,
+    executeBlock = { },
+    hookStringFeatureFlag = { true },
+    // 20.40 has changes not worth supporting.
+    hookLongFeatureFlag = { !is_20_40_or_greater || is_20_41_or_greater},
+    hookDoubleFeatureFlag = { !is_20_40_or_greater || is_20_41_or_greater},
     preferenceScreen = PreferenceScreen.MISC,
     additionalDebugPreferences = listOf(SwitchPreference("morphe_debug_protobuffer"))
 )

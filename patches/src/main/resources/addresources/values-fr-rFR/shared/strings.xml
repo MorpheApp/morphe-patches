@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Redémarrage requis</string>
   <string name="morphe_settings_restart_dialog_message">Redémarrez l\'application pour que cette modification prenne effet.</string>
   <string name="morphe_settings_restart">Redémarrer</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Copier</string>
   <string name="morphe_settings_import_reset">Réinitialisation des paramètres Morphe aux valeurs par défaut</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Afficher l\'historique des recherches dans les paramètres</string>
   <string name="morphe_settings_search_history_summary_on">L\'historique des recherches dans les paramètres est affiché</string>
   <string name="morphe_settings_search_history_summary_off">L\'historique des recherches dans les paramètres n\'est pas affiché</string>
-  <string name="morphe_settings_disable_bold_icons_title">Désactiver les icônes en gras</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Les icônes ne sont pas en gras</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Les icônes sont en gras</string>
   <string name="morphe_show_menu_icons_title">Afficher les icônes des paramètres Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Les icônes des paramètres sont affichées</string>
   <string name="morphe_show_menu_icons_summary_off">Les icônes des paramètres ne sont pas affichées</string>
@@ -63,7 +61,7 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_language_DEFAULT">Langue de l\'application</string>
   <string name="morphe_pref_import_export_title">Importer / Exporter</string>
   <string name="morphe_pref_import_export_summary">Importer / Exporter les paramètres Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Vous utilisez la dernière version des Patchs Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Vous utilisez la version des Patchs Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Mise à jour disponible : &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pour mettre à jour vos patchs, utilisez Morphe pour repatcher cette application</string>
   <string name="morphe_settings_about_links_dev_header">Remarque</string>
@@ -104,10 +102,10 @@ Vous ne serez plus averti en cas d’événements inattendus."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Drapeaux enregistrés</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Drapeaux réinitialisés</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Drapeaux copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour utiliser cette fonctionnalité</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Paramètres GmsCore</string>
-  <string name="microg_settings_summary">Paramètres pour GmsCore</string>
+  <string name="microg_settings_summary">Ouvrir les paramètres MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le.</string>
   <string name="gms_core_dialog_title">Action requise</string>

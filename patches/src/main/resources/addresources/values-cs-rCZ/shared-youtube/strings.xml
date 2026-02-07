@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe světlo</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Vlastní</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentální varování! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Používáte experimentální verzi aplikace ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🔧 Očekávejte nepravidelné chování aplikace nebo neidentifikované chyby, protože jsme stále pracovali na úpravách pro tuto verzi aplikace.
+<br/>
+<br/>
+Pokud chcete mít nejbezpečnější zážitek, pak <b>odinstalujte</b> tuto a nainstalujte doporučenou verzi aplikace ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chci experimentální</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chci stabilní</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornění Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Toto je s největší pravděpodobností způsobeno blokátorem reklam DNS nebo síťovým proxy.&lt;br&gt;&lt;br&gt;Pro opravu toho přidejte na bílý seznam &lt;b&gt;s.youtube.com&lt;/b&gt; nebo vypněte všechny blokátory DNS a proxy.</string>

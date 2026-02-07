@@ -1,6 +1,6 @@
 package app.morphe.extension.shared.settings.search;
 
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
@@ -53,15 +53,15 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     protected static final int BLINK_DURATION = 400;
     protected static final int PAUSE_BETWEEN_BLINKS = 100;
 
-    protected static final int ID_PREFERENCE_TITLE = getResourceIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_TITLE = getIdentifierOrThrow(
             ResourceType.ID, "preference_title");
-    protected static final int ID_PREFERENCE_SUMMARY = getResourceIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_SUMMARY = getIdentifierOrThrow(
             ResourceType.ID, "preference_summary");
-    protected static final int ID_PREFERENCE_PATH = getResourceIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_PATH = getIdentifierOrThrow(
             ResourceType.ID, "preference_path");
-    protected static final int ID_PREFERENCE_SWITCH = getResourceIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_SWITCH = getIdentifierOrThrow(
             ResourceType.ID, "preference_switch");
-    protected static final int ID_PREFERENCE_COLOR_DOT = getResourceIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_COLOR_DOT = getIdentifierOrThrow(
             ResourceType.ID, "preference_color_dot");
 
     protected static class RegularViewHolder {

@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">需要重新啟動</string>
   <string name="morphe_settings_restart_dialog_message">重新啟動應用程式以使此變更生效。</string>
   <string name="morphe_settings_restart">重新啟動</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">匯入</string>
   <string name="morphe_settings_import_copy">複製</string>
   <string name="morphe_settings_import_reset">將 Morphe 設定重設為預設值</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">顯示設定搜尋記錄</string>
   <string name="morphe_settings_search_history_summary_on">顯示設定搜尋記錄</string>
   <string name="morphe_settings_search_history_summary_off">不顯示設定搜尋記錄</string>
-  <string name="morphe_settings_disable_bold_icons_title">停用粗體圖示</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">圖示不是粗體</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">圖示是粗體</string>
   <string name="morphe_show_menu_icons_title">顯示 Morphe 設定圖示</string>
   <string name="morphe_show_menu_icons_summary_on">已顯示設定圖示</string>
   <string name="morphe_show_menu_icons_summary_off">未顯示設定圖示</string>
@@ -62,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">應用程式語言</string>
   <string name="morphe_pref_import_export_title">匯入/匯出</string>
   <string name="morphe_pref_import_export_summary">匯入/匯出 Morphe 設定</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 <i>%s</i></string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式,請使用 Morphe 重新修補此應用程式</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>
@@ -103,10 +101,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">旗標已儲存</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">旗標已重設</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">旗標已複製到剪貼簿</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新启动应用以使用此功能</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore 設定</string>
-  <string name="microg_settings_summary">GmsCore 設定</string>
+  <string name="microg_settings_summary">打開 MicroG 設定</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG尚未安裝。請安裝它。</string>
   <string name="gms_core_dialog_title">需要採取行動</string>

@@ -41,6 +41,27 @@ internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
     )
 )
 
+internal object EngagementPanelControllerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L", "L", "Z", "Z"),
+    filters = listOf(
+        string("EngagementPanelController: cannot show EngagementPanel before EngagementPanelController.init() has been called."),
+        methodCall(smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
+        methodCall(smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
+        opcode(opcode = Opcode.CHECK_CAST, location = MatchAfterWithin(4)),
+        opcode(opcode = Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        literal(45615449L),
+        methodCall(smali = "Ljava/util/ArrayDeque;->iterator()Ljava/util/Iterator;"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
 internal object LayoutConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -52,7 +73,7 @@ internal object LayoutConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object MainActivityConstructorFingerprint : Fingerprint(
+internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(),
     custom = { _, classDef ->
@@ -60,7 +81,7 @@ internal object MainActivityConstructorFingerprint : Fingerprint(
     }
 )
 
-internal object MainActivityOnBackPressedFingerprint : Fingerprint(
+internal object YouTubeMainActivityOnBackPressedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -103,6 +124,21 @@ internal object RollingNumberTextViewAnimationUpdateFingerprint : Fingerprint(
     }
 )
 
+internal object SearchRequestBuildParametersFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("searchFormData"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "toByteArray",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+    )
+)
+
 internal object SeekbarFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
@@ -143,3 +179,23 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
         fieldAccess(type = "I", opcode = Opcode.IGET, location = MatchAfterImmediately()), // Video resolution (human readable).
     )
 )
+
+internal object ToolBarButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "menu_item_view"),
+        methodCall(returnType = "I", opcode = Opcode.INVOKE_INTERFACE),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        fieldAccess(type = "Landroid/widget/ImageView;", opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
+        methodCall("Landroid/content/res/Resources;", "getDrawable", location = MatchAfterWithin(8)),
+        methodCall("Landroid/widget/ImageView;", "setImageDrawable", location = MatchAfterWithin(4))
+    ),
+    custom = { method, _ ->
+        // 20.37+ has second parameter of "Landroid/content/Context;"
+        val parameterCount = method.parameterTypes.count()
+        (parameterCount == 1 || parameterCount == 2)
+                && method.parameterTypes.firstOrNull() == "Landroid/view/MenuItem;"
+    }
+)
+

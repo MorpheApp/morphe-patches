@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.layout.buttons.action
 
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -9,7 +10,6 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import java.util.logging.Logger
 
 @Suppress("unused")
 val hideVideoActionButtonsPatch = resourcePatch(
@@ -23,15 +23,7 @@ val hideVideoActionButtonsPatch = resourcePatch(
         versionCheckPatch,
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val preferences = mutableSetOf(
@@ -45,17 +37,8 @@ val hideVideoActionButtonsPatch = resourcePatch(
             SwitchPreference("morphe_hide_share_button"),
         )
 
-        if (is_20_22_or_greater) {
-            // 20.22+ filtering of the action buttons doesn't work because
-            // the buffer is the same for all buttons.
-            // TODO: Eventually remove this warning.
-            Logger.getLogger(this::class.java.name).warning(
-                "\n!!!" +
-                        "\n!!! Not all player action buttons can be set hidden when patching 20.22+" +
-                        "\n!!! Patch 20.21.37 if you want to hide more player action buttons" +
-                        "\n!!!"
-            )
-        } else {
+        // 20.22+ cannot hide all action buttons because of buffer changes.
+        if (!is_20_22_or_greater) {
             preferences.addAll(
                 listOf(
                     SwitchPreference("morphe_hide_hype_button"),

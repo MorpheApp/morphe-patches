@@ -17,6 +17,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -74,6 +75,9 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup joinButton;
     private final StringFilterGroup paidPromotionLabel;
     private final StringFilterGroup shelfHeader;
+
+    private final StringFilterGroup reelCarousel;
+    private final ByteArrayFilterGroupList reelCarouselBuffer = new ByteArrayFilterGroupList();
 
     private final StringFilterGroup suggestedAction;
     private final ByteArrayFilterGroupList suggestedActionsBuffer = new ByteArrayFilterGroupList();
@@ -223,6 +227,24 @@ public final class ShortsFilter extends Filter {
                 "reel_action_bar.e"
         );
 
+        reelCarousel = new StringFilterGroup(
+                null,
+                "reel_carousel.e"
+        );
+
+        reelCarouselBuffer.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_AI_BUTTON,
+                        "yt_outline_info_circle",
+                        "yt_outline_experimental_info_circle"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_SOUND_METADATA_LABEL,
+                        "yt_outline_audio", // Doesn't seem to be needed as v20.14.43 uses 'yt_outline_experimental_audio' as well. But still just in case.
+                        "yt_outline_experimental_audio"
+                )
+        );
+
         useSoundButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
                 // First filter needed for "Use this sound" that can appear when viewing Shorts
@@ -266,12 +288,13 @@ public final class ShortsFilter extends Filter {
         addPathCallbacks(
                 shortsCompactFeedVideo, joinButton, subscribeButton, paidPromotionLabel, livePreview,
                 suggestedAction, pausedOverlayButtons, channelBar, previewComment, autoDubbedLabel,
-                fullVideoLinkLabel, videoTitle, useSoundButton, reelSoundMetadata, soundButton, infoPanel,
-                stickers, likeFountain, likeButton, dislikeButton
+                fullVideoLinkLabel, videoTitle, useSoundButton, reelSoundMetadata, soundButton, reelCarousel,
+                infoPanel, stickers, likeFountain, likeButton, dislikeButton
         );
 
-        // FIXME: The Shorts buffer is very different with 20.22+ and if any of these filters
-        //        are enabled then all Shorts player vertical buttons are hidden.
+        // Legacy hiding of Shorts action buttons. Because of 20.31+ buffer changes
+        // it's currently not possible to hide these using buffer filtering.
+        // See alternative hiding strategy in hideActionButtons().
         if (!VersionCheckPatch.IS_20_22_OR_GREATER) {
             addPathCallbacks(shortsActionBar);
 
@@ -396,6 +419,10 @@ public final class ShortsFilter extends Filter {
                         || path.startsWith(REEL_PLAYER_OVERLAY_PATH);
             }
 
+            if (matchedGroup == reelCarousel) {
+                return reelCarouselBuffer.check(buffer).isFiltered();
+            }
+
             if (matchedGroup == useSoundButton) {
                 return useSoundButtonBuffer.check(buffer).isFiltered();
             }
@@ -450,19 +477,21 @@ public final class ShortsFilter extends Filter {
         final boolean hideHome = Settings.HIDE_SHORTS_HOME.get();
         final boolean hideSubscriptions = Settings.HIDE_SHORTS_SUBSCRIPTIONS.get();
         final boolean hideSearch = Settings.HIDE_SHORTS_SEARCH.get();
+        final boolean hideVideoDescription = Settings.HIDE_SHORTS_VIDEO_DESCRIPTION.get();
         final boolean hideHistory = Settings.HIDE_SHORTS_HISTORY.get();
 
-        if (!hideHome && !hideSubscriptions && !hideSearch && !hideHistory) {
+        if (!hideHome && !hideSubscriptions && !hideSearch && !hideVideoDescription && !hideHistory) {
             return false;
         }
-        if (hideHome && hideSubscriptions && hideSearch && hideHistory) {
+        if (hideHome && hideSubscriptions && hideSearch && hideVideoDescription && hideHistory) {
             return true;
         }
 
         // Must check player type first, as search bar can be active behind the player.
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            // For now, consider the under video results the same as the home feed.
-            return hideHome;
+            return EngagementPanel.isDescription()
+                    ? hideVideoDescription // Player video description panel opened.
+                    : hideHome; // For now, consider Shorts under video player the same as the home feed.
         }
 
         // Must check second, as search can be from any tab.

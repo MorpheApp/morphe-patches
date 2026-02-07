@@ -1,5 +1,7 @@
 package app.morphe.patches.youtube.layout.theme
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
@@ -18,10 +20,13 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_02_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -141,6 +146,7 @@ val themePatch = baseThemePatch(
                 }
             }
         }
+
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
@@ -158,12 +164,12 @@ val themePatch = baseThemePatch(
                 "20.26.46",
                 "20.31.42",
                 "20.37.48",
+                "20.40.45",
             )
         )
     },
 
     executeBlock = {
-
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             SwitchPreference("morphe_gradient_loading_screen")
         )
@@ -211,6 +217,40 @@ val themePatch = baseThemePatch(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I"
                 )
+            }
+
+            ShowSplashScreen1Fingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(Z)Z
+                            move-result v$register
+                        """
+                    )
+                }
+            }
+
+            if (is_20_02_or_greater) {
+                ShowSplashScreen2Fingerprint.let {
+                    val insertIndex = it.instructionMatches[1].index
+                    it.method.apply {
+                        val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
+                        val registerA = insertInstruction.registerA
+                        val registerB = insertInstruction.registerB
+
+                        addInstructions(
+                            insertIndex,
+                            """
+                                invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(II)I
+                                move-result v$registerA
+                            """
+                        )
+                    }
+                }
             }
         }
     }

@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe claro</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Personalizado</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Alerta experimental! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do app ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🛠️ Espere comportamento estranho ou bugs não identificados enquanto afinamos os patches para esta versão do app.
+<br/>
+<br/>
+Se você quiser a experiência mais livre de problemas, então <b>desinstale</b> este e faça o patch da versão recomendada do app ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quero experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quero estável</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Seu histórico de exibição não está sendo salvo.&lt;br&gt;&lt;br&gt;Na maioria dos casos isso é causado por um bloqueador de anúncios por DNS ou proxy de rede.&lt;br&gt;&lt;br&gt;Para corrigir isso, permita &lt;b&gt;s.youtube.com&lt;/b&gt; na sua lista ou desative todos os bloqueadores de DNS e proxies.</string>

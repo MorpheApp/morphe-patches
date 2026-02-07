@@ -53,6 +53,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true, "morphe_force_avc_codec_user_dialog_message");
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
+    public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
+    public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("morphe_prioritize_video_quality", TRUE, true);
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_MOBILE = new IntegerSetting("morphe_video_quality_default_mobile", -2);
     public static final BooleanSetting REMEMBER_VIDEO_QUALITY_LAST_SELECTED = new BooleanSetting("morphe_remember_video_quality_last_selected", FALSE);
@@ -78,7 +80,6 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_END_SCREEN_STORE_BANNER = new BooleanSetting("morphe_hide_end_screen_store_banner", TRUE, true);
     public static final BooleanSetting HIDE_FULLSCREEN_ADS = new BooleanSetting("morphe_hide_fullscreen_ads", TRUE);
     public static final BooleanSetting HIDE_GENERAL_ADS = new BooleanSetting("morphe_hide_general_ads", TRUE);
-    public static final BooleanSetting HIDE_LATEST_POSTS = new BooleanSetting("morphe_hide_latest_posts", TRUE);
     public static final BooleanSetting HIDE_MERCHANDISE_BANNERS = new BooleanSetting("morphe_hide_merchandise_banners", TRUE);
     public static final BooleanSetting HIDE_PAID_PROMOTION_LABEL = new BooleanSetting("morphe_hide_paid_promotion_label", TRUE);
     public static final BooleanSetting HIDE_SELF_SPONSOR = new BooleanSetting("morphe_hide_self_sponsor_ads", TRUE);
@@ -93,7 +94,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_CHIPS_SHELF = new BooleanSetting("morphe_hide_chips_shelf", TRUE);
     public static final BooleanSetting HIDE_COMMUNITY_POSTS = new BooleanSetting("morphe_hide_community_posts", FALSE);
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE);
-    public static final BooleanSetting HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE, true, "morphe_hide_doodles_user_dialog_message");
+    public static final BooleanSetting HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE, true);
     public static final BooleanSetting HIDE_EXPANDABLE_CARD = new BooleanSetting("morphe_hide_expandable_card", TRUE);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_HISTORY = new BooleanSetting("morphe_hide_filter_bar_feed_in_history", FALSE);
@@ -102,13 +103,17 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_FLOATING_MICROPHONE_BUTTON = new BooleanSetting("morphe_hide_floating_microphone_button", TRUE, true);
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_hide_horizontal_shelves", TRUE);
     public static final BooleanSetting HIDE_IMAGE_SHELF = new BooleanSetting("morphe_hide_image_shelf", TRUE);
+    public static final BooleanSetting HIDE_LATEST_POSTS = new BooleanSetting("morphe_hide_latest_posts", TRUE);
+    public static final BooleanSetting HIDE_LATEST_VIDEOS_BUTTON = new BooleanSetting("morphe_hide_latest_videos_button", FALSE);
     public static final BooleanSetting HIDE_MIX_PLAYLISTS = new BooleanSetting("morphe_hide_mix_playlists", FALSE);
     public static final BooleanSetting HIDE_MOVIES_SECTION = new BooleanSetting("morphe_hide_movies_section", TRUE);
     public static final BooleanSetting HIDE_NOTIFY_ME_BUTTON = new BooleanSetting("morphe_hide_notify_me_button", TRUE);
     public static final BooleanSetting HIDE_PLAYABLES = new BooleanSetting("morphe_hide_playables", TRUE);
     public static final BooleanSetting HIDE_SHOW_MORE_BUTTON = new BooleanSetting("morphe_hide_show_more_button", TRUE, true);
+    public static final BooleanSetting HIDE_SUBSCRIBED_CHANNELS_BAR = new BooleanSetting("morphe_hide_subscribed_channels_bar", FALSE, true);
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);
     public static final BooleanSetting HIDE_TICKET_SHELF = new BooleanSetting("morphe_hide_ticket_shelf", FALSE);
+    public static final BooleanSetting HIDE_SEARCH_SUGGESTIONS = new BooleanSetting("morphe_hide_search_suggestions", FALSE);
     public static final BooleanSetting HIDE_UPLOAD_TIME = new BooleanSetting("morphe_hide_upload_time", FALSE, "morphe_hide_upload_time_user_dialog_message");
     public static final BooleanSetting HIDE_VIDEO_RECOMMENDATION_LABELS = new BooleanSetting("morphe_hide_video_recommendation_labels", TRUE);
     public static final BooleanSetting HIDE_VIEW_COUNT = new BooleanSetting("morphe_hide_view_count", FALSE, "morphe_hide_view_count_user_dialog_message");
@@ -145,12 +150,11 @@ public class Settings extends BaseSettings {
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
     public static final BooleanSetting COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("morphe_copy_video_url_timestamp", TRUE);
-    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
-    public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", TRUE, true);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
     public static final EnumSetting<FullscreenMode> EXIT_FULLSCREEN = new EnumSetting<>("morphe_exit_fullscreen", FullscreenMode.DISABLED);
     public static final BooleanSetting HIDE_AUTOPLAY_BUTTON = new BooleanSetting("morphe_hide_autoplay_button", TRUE, true);
+    public static final BooleanSetting HIDE_AUTOPLAY_PREVIEW = new BooleanSetting("morphe_hide_autoplay_preview", FALSE, true);
     public static final BooleanSetting HIDE_CAPTIONS_BUTTON = new BooleanSetting("morphe_hide_captions_button", FALSE);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_hide_cast_button", TRUE, true);
     public static final BooleanSetting HIDE_CHANNEL_BAR = new BooleanSetting("morphe_hide_channel_bar", FALSE);
@@ -161,7 +165,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_END_SCREEN_SUGGESTED_VIDEO = new BooleanSetting("morphe_end_screen_suggested_video", FALSE, true);
     public static final BooleanSetting HIDE_INFO_CARDS = new BooleanSetting("morphe_hide_info_cards", FALSE);
     public static final BooleanSetting HIDE_INFO_PANELS = new BooleanSetting("morphe_hide_info_panels", TRUE);
-    public static final BooleanSetting HIDE_JOIN_MEMBERSHIP_BUTTON = new BooleanSetting("morphe_hide_join_membership_button", TRUE);
+    public static final BooleanSetting HIDE_JOIN_MEMBERSHIP_BUTTON = new BooleanSetting("morphe_hide_join_membership_button", TRUE, parentNot(HIDE_CHANNEL_BAR));
+    public static final BooleanSetting HIDE_LIVE_CHAT_REPLAY_BUTTON = new BooleanSetting("morphe_hide_live_chat_replay_button", FALSE);
     public static final BooleanSetting HIDE_MEDICAL_PANELS = new BooleanSetting("morphe_hide_medical_panels", TRUE);
     public static final BooleanSetting HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND = new BooleanSetting("morphe_hide_player_control_buttons_background", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS = new BooleanSetting("morphe_hide_player_previous_next_buttons", FALSE, true);
@@ -170,11 +175,23 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_RELATED_VIDEOS = new BooleanSetting("morphe_hide_related_videos", FALSE);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
+    public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("morphe_open_videos_fullscreen_portrait", FALSE);
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
     public static final BooleanSetting PLAYER_POPUP_PANELS = new BooleanSetting("morphe_hide_player_popup_panels", FALSE);
+
+    // Ambient mode
+    public static final BooleanSetting DISABLE_AMBIENT_MODE = new BooleanSetting("morphe_disable_ambient_mode", FALSE, true);
+    public static final BooleanSetting BYPASS_AMBIENT_MODE_RESTRICTIONS = new BooleanSetting("morphe_bypass_ambient_mode_restrictions", FALSE, false, "morphe_bypass_ambient_mode_restrictions_user_dialog_message", parentNot(DISABLE_AMBIENT_MODE));
+    public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", FALSE, true, parentNot(DISABLE_AMBIENT_MODE));
+
+    // Captions
+    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
+    public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
+    public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
+    public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", FALSE, true);
 
     // Miniplayer
     public static final EnumSetting<MiniplayerType> MINIPLAYER_TYPE = new EnumSetting<>("morphe_miniplayer_type", MiniplayerType.DEFAULT, true);
@@ -204,25 +221,30 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_comments_preview_comment", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS = new BooleanSetting("morphe_hide_comments_emoji_and_timestamp_buttons", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION = new BooleanSetting("morphe_hide_comments_section", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_HOME_FEED = new BooleanSetting("morphe_hide_comments_section_in_home_feed", FALSE, parentNot(HIDE_COMMENTS_SECTION));
     public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("morphe_hide_comments_thanks_button", TRUE);
 
     // Description
     public static final BooleanSetting HIDE_AI_GENERATED_VIDEO_SUMMARY_SECTION = new BooleanSetting("morphe_hide_ai_generated_video_summary_section", FALSE);
     public static final BooleanSetting HIDE_ASK_SECTION = new BooleanSetting("morphe_hide_ask_section", FALSE);
     public static final BooleanSetting HIDE_ATTRIBUTES_SECTION = new BooleanSetting("morphe_hide_attributes_section", FALSE);
-    public static final BooleanSetting HIDE_CHAPTERS_SECTION = new BooleanSetting("morphe_hide_chapters_section", TRUE);
-    public static final BooleanSetting HIDE_EXPLORE_PODCAST_SECTION = new BooleanSetting("morphe_hide_explore_podcast_section", TRUE);
+    public static final BooleanSetting HIDE_CHAPTERS_SECTION = new BooleanSetting("morphe_hide_chapters_section", FALSE);
+    public static final BooleanSetting HIDE_COURSE_PROGRESS_SECTION = new BooleanSetting("morphe_hide_course_progress_section", FALSE);
+    public static final BooleanSetting HIDE_EXPLORE_SECTION = new BooleanSetting("morphe_hide_explore_section", FALSE);
+    public static final BooleanSetting HIDE_EXPLORE_COURSE_SECTION = new BooleanSetting("morphe_hide_explore_course_section", FALSE, parentNot(HIDE_EXPLORE_SECTION));
+    public static final BooleanSetting HIDE_EXPLORE_PODCAST_SECTION = new BooleanSetting("morphe_hide_explore_podcast_section", FALSE, parentNot(HIDE_EXPLORE_SECTION));
     public static final BooleanSetting HIDE_FEATURED_PLACES_SECTION = new BooleanSetting("morphe_hide_featured_places_section", FALSE);
     public static final BooleanSetting HIDE_GAMING_SECTION = new BooleanSetting("morphe_hide_gaming_section", FALSE);
     public static final BooleanSetting HIDE_HOW_THIS_WAS_MADE_SECTION = new BooleanSetting("morphe_hide_how_this_was_made_section", FALSE);
     public static final BooleanSetting HIDE_HYPE_POINTS = new BooleanSetting("morphe_hide_hype_points", FALSE);
-    public static final BooleanSetting HIDE_INFO_CARDS_SECTION = new BooleanSetting("morphe_hide_info_cards_section", TRUE);
+    public static final BooleanSetting HIDE_INFO_CARDS_SECTION = new BooleanSetting("morphe_hide_info_cards_section", FALSE);
     public static final BooleanSetting HIDE_FEATURED_LINKS_SECTION = new BooleanSetting("morphe_hide_featured_links_section", FALSE, parentNot(HIDE_INFO_CARDS_SECTION));
     public static final BooleanSetting HIDE_FEATURED_VIDEOS_SECTION = new BooleanSetting("morphe_hide_featured_videos_section", FALSE, parentNot(HIDE_INFO_CARDS_SECTION));
     public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON = new BooleanSetting("morphe_hide_subscribe_button", FALSE, parentNot(HIDE_INFO_CARDS_SECTION));
     public static final BooleanSetting HIDE_KEY_CONCEPTS_SECTION = new BooleanSetting("morphe_hide_key_concepts_section", FALSE);
     public static final BooleanSetting HIDE_MUSIC_SECTION = new BooleanSetting("morphe_hide_music_section", FALSE);
-    public static final BooleanSetting HIDE_TRANSCRIPT_SECTION = new BooleanSetting("morphe_hide_transcript_section", TRUE);
+    public static final BooleanSetting HIDE_TRANSCRIPT_SECTION = new BooleanSetting("morphe_hide_transcript_section", FALSE);
+    public static final BooleanSetting HIDE_QUIZZES_SECTION = new BooleanSetting("morphe_hide_quizzes_section", FALSE);
 
     // Action buttons
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("morphe_disable_like_subscribe_glow", FALSE);
@@ -243,7 +265,7 @@ public class Settings extends BaseSettings {
 
     // Player flyout menu items
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS = new BooleanSetting("morphe_hide_player_flyout_additional_settings", FALSE);
-    public static final BooleanSetting HIDE_PLAYER_FLYOUT_AMBIENT_MODE = new BooleanSetting("morphe_hide_player_flyout_ambient_mode", FALSE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_AMBIENT_MODE = new BooleanSetting("morphe_hide_player_flyout_ambient_mode", FALSE, parentNot(DISABLE_AMBIENT_MODE));
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_AUDIO_TRACK = new BooleanSetting("morphe_hide_player_flyout_audio_track", FALSE, new HideAudioFlyoutMenuAvailability());
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_CAPTIONS = new BooleanSetting("morphe_hide_player_flyout_captions", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_HELP = new BooleanSetting("morphe_hide_player_flyout_help", FALSE);
@@ -268,8 +290,8 @@ public class Settings extends BaseSettings {
 
     public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE,
             "morphe_remove_viewer_discretion_dialog_user_dialog_message");
+    public static final BooleanSetting RESTORE_OLD_SEARCH_FILTERS = new BooleanSetting("morphe_restore_old_search_filters", FALSE, true);
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
-    public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting CHANGE_START_PAGE_ALWAYS = new BooleanSetting("morphe_change_start_page_always", FALSE, true,
             new ChangeStartPageTypeAvailability());
@@ -281,23 +303,31 @@ public class Settings extends BaseSettings {
 
     // Navigation buttons
     public static final BooleanSetting HIDE_HOME_BUTTON = new BooleanSetting("morphe_hide_home_button", FALSE, true);
-    public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", TRUE, true);
     public static final BooleanSetting HIDE_SHORTS_BUTTON = new BooleanSetting("morphe_hide_shorts_button", TRUE, true);
     public static final BooleanSetting HIDE_SUBSCRIPTIONS_BUTTON = new BooleanSetting("morphe_hide_subscriptions_button", FALSE, true);
     public static final BooleanSetting HIDE_NAVIGATION_BUTTON_LABELS = new BooleanSetting("morphe_hide_navigation_button_labels", FALSE, true);
+    public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("morphe_narrow_navigation_buttons", FALSE, true);
     public static final BooleanSetting HIDE_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_hide_notifications_button", FALSE, true);
-    public static final BooleanSetting SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_switch_create_with_notifications_button", TRUE, true,
-            "morphe_switch_create_with_notifications_button_user_dialog_message");
+    public static final BooleanSetting SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_swap_create_with_notifications_button", TRUE, true,
+            "morphe_swap_create_with_notifications_button_user_dialog_message");
+    public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true, parentNot(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON));
     public static final BooleanSetting NAVIGATION_BAR_ANIMATIONS = new BooleanSetting("morphe_navigation_bar_animations", FALSE);
     public static final BooleanSetting DISABLE_TRANSLUCENT_STATUS_BAR = new BooleanSetting("morphe_disable_translucent_status_bar", FALSE, true,
             "morphe_disable_translucent_status_bar_user_dialog_message");
     public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = new BooleanSetting("morphe_disable_translucent_navigation_bar_light", FALSE, true);
     public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE, true);
 
+    // Toolbar
+    public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_hide_toolbar_create_button", FALSE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("morphe_hide_toolbar_notification_button", FALSE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_SEARCH_BUTTON = new BooleanSetting("morphe_hide_toolbar_search_button", FALSE, true);
+    public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
+
     // Shorts
     public static final BooleanSetting DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("morphe_disable_resuming_shorts_player", FALSE);
     public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("morphe_shorts_disable_background_playback", FALSE);
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("morphe_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
+    public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("morphe_hide_shorts_ai_button", FALSE);
     public static final BooleanSetting HIDE_SHORTS_AUTO_DUBBED_LABEL = new BooleanSetting("morphe_hide_shorts_auto_dubbed_label", FALSE);
     public static final BooleanSetting HIDE_SHORTS_CHANNEL_BAR = new BooleanSetting("morphe_hide_shorts_channel_bar", FALSE);
     public static final BooleanSetting HIDE_SHORTS_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_shorts_comments_button", FALSE);
@@ -334,6 +364,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_SHORTS_UPCOMING_BUTTON = new BooleanSetting("morphe_hide_shorts_upcoming_button", TRUE);
     public static final BooleanSetting HIDE_SHORTS_USE_SOUND_BUTTON = new BooleanSetting("morphe_hide_shorts_use_sound_button", TRUE);
     public static final BooleanSetting HIDE_SHORTS_USE_TEMPLATE_BUTTON = new BooleanSetting("morphe_hide_shorts_use_template_button", TRUE);
+    public static final BooleanSetting HIDE_SHORTS_VIDEO_DESCRIPTION = new BooleanSetting("morphe_hide_shorts_video_description", FALSE);
     public static final BooleanSetting HIDE_SHORTS_VIDEO_TITLE = new BooleanSetting("morphe_hide_shorts_video_title", FALSE);
     public static final BooleanSetting SHORTS_AUTOPLAY = new BooleanSetting("morphe_shorts_autoplay", FALSE);
     public static final BooleanSetting SHORTS_AUTOPLAY_BACKGROUND = new BooleanSetting("morphe_shorts_autoplay_background", TRUE);
@@ -477,17 +508,15 @@ public class Settings extends BaseSettings {
             SPOOF_APP_VERSION.resetToDefault();
         }
 
-        if (!BaseSettings.SETTINGS_DISABLE_BOLD_ICONS.get() && SPOOF_APP_VERSION.get()
-                && SPOOF_APP_VERSION_TARGET.get().compareTo("19.35.00") <= 0) {
-            Logger.printInfo(() -> "Temporarily disabling bold icons that don't work with old spoof targets");
-            // Don't save and only temporarily overwrite the value so
-            // if spoofing is turned off the old setting value is used.
-            BooleanSetting.privateSetValue(BaseSettings.SETTINGS_DISABLE_BOLD_ICONS, false);
-        }
-
         // VR 1.54 is not selectable in the settings, and it's selected by spoof stream patch if needed.
         if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.ANDROID_VR_1_54_20) {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();
+        }
+
+        // TV Simply may require PoToken
+        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.TV_SIMPLY) {
+            Logger.printInfo(() -> "Migrating from TV Simply to TV");
+            SPOOF_VIDEO_STREAMS_CLIENT_TYPE.save(ClientType.TV);
         }
 
         // endregion

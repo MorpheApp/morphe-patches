@@ -84,19 +84,6 @@ internal object BuildRequestFingerprint : Fingerprint(
     }
 )
 
-internal object ProtobufClassParseByteBufferFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.STATIC),
-    returnType = "L",
-    parameters = listOf("L", "Ljava/nio/ByteBuffer;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.SGET_OBJECT,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.RETURN_OBJECT,
-    ),
-    custom = { method, _ -> method.name == "parseFrom" }
-)
-
 internal object CreateStreamingDataFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("L"),
@@ -107,7 +94,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.fields.any { field ->
             field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
         }
@@ -116,6 +103,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
 
 internal object BuildMediaDataSourceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
     parameters = listOf(
         "Landroid/net/Uri;",
         "J",
@@ -158,14 +146,6 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     )
 )
 
-internal object PatchIncludedExtensionMethodFingerprint : Fingerprint(
-    returnType = "Z",
-    parameters = listOf(),
-    custom = { method, classDef ->
-        method.name == "isPatchIncluded" && classDef.type == EXTENSION_CLASS_DESCRIPTOR
-    }
-)
-
 // Feature flag that turns on Platypus programming language code compiled to native C++.
 // This code appears to replace the player config after the streams are loaded.
 // Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
@@ -193,6 +173,14 @@ internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
     returnType = "Z",
     filters = listOf(
         literal(45665455L)
+    )
+)
+
+internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
+    parameters = listOf(),
+    returnType = "Z",
+    filters = listOf(
+        literal(45640404L)
     )
 )
 

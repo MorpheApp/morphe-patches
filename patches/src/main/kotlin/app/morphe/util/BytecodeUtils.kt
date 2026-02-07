@@ -32,6 +32,8 @@
 
 package app.morphe.util
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -44,12 +46,14 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.Opcode.CONST_STRING
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_OBJECT
 import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_WIDE
@@ -58,6 +62,7 @@ import com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT
 import com.android.tools.smali.dexlib2.Opcode.RETURN_WIDE
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.MethodParameter
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -68,6 +73,8 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.Reference
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 /**
@@ -158,7 +165,7 @@ internal fun Int.toPublicAccessFlags(): Int {
  * @param method The [Method] to find.
  * @return The [MutableMethod].
  */
-fun MutableClass.findMutableMethodOf(method: Method) = this.methods.first {
+fun MutableClass.findMutableMethodOf(method: MethodReference) = this.methods.first {
     MethodUtil.methodSignaturesMatch(it, method)
 }
 
@@ -503,6 +510,21 @@ fun Method.indexOfFirstInstructionOrThrow(startIndex: Int = 0, filter: Instructi
     return index
 }
 
+fun Method.indexOfFirstStringInstruction(str: String) =
+    indexOfFirstInstruction {
+        opcode == CONST_STRING &&
+                getReference<StringReference>()?.string == str
+    }
+
+fun Method.indexOfFirstStringInstructionOrThrow(str: String): Int {
+    val index = indexOfFirstStringInstruction(str)
+    if (index < 0) {
+        throw PatchException("Found string value for: '$str' but method does not contain the id: $this")
+    }
+
+    return index
+}
+
 /**
  * Get the index of matching instruction,
  * starting from and [startIndex] and searching down.
@@ -585,7 +607,7 @@ fun Method.indexOfFirstInstructionReversedOrThrow(startIndex: Int? = null, filte
 }
 
 /**
- * @return An immutable list of indices of the instructions in reverse order.
+ * @return A list of indices of the instructions in reverse order.
  *  _Returns an empty list if no indices are found_
  *  @see findInstructionIndicesReversedOrThrow
  */
@@ -596,7 +618,7 @@ fun Method.findInstructionIndicesReversed(filter: Instruction.() -> Boolean): Li
     .asReversed()
 
 /**
- * @return An immutable list of indices of the instructions in reverse order.
+ * @return A list of indices of the instructions in reverse order.
  * @throws PatchException if no matching indices are found.
  */
 fun Method.findInstructionIndicesReversedOrThrow(filter: Instruction.() -> Boolean): List<Int> {
@@ -607,7 +629,7 @@ fun Method.findInstructionIndicesReversedOrThrow(filter: Instruction.() -> Boole
 }
 
 /**
- * @return An immutable list of indices of the opcode in reverse order.
+ * @return A list of indices of the opcode in reverse order.
  *  _Returns an empty list if no indices are found_
  * @see findInstructionIndicesReversedOrThrow
  */
@@ -615,7 +637,7 @@ fun Method.findInstructionIndicesReversed(opcode: Opcode): List<Int> =
     findInstructionIndicesReversed { this.opcode == opcode }
 
 /**
- * @return An immutable list of indices of the opcode in reverse order.
+ * @return A list of indices of the opcode in reverse order.
  * @throws PatchException if no matching indices are found.
  */
 fun Method.findInstructionIndicesReversedOrThrow(opcode: Opcode): List<Int> {
@@ -623,6 +645,29 @@ fun Method.findInstructionIndicesReversedOrThrow(opcode: Opcode): List<Int> {
     if (instructions.isEmpty()) throw PatchException("Could not find opcode: $opcode in: $this")
 
     return instructions
+}
+
+/**
+ * @return A list of indices of the instructions in reverse order.
+ * _Returns an empty list if no indices are found_
+ * @throws PatchException if no matching indices are found.
+ */
+fun Method.findInstructionIndicesReversed(filter: InstructionFilter): List<Int> {
+    val method = this
+    return findInstructionIndicesReversed {
+        filter.matches(method, this)
+    }
+}
+
+/**
+ * @return A list of indices of the instructions in reverse order.
+ * @throws PatchException if no matching indices are found.
+ */
+fun Method.findInstructionIndicesReversedOrThrow(filter: InstructionFilter): List<Int> {
+    val indexes = findInstructionIndicesReversed(filter)
+    if (indexes.isEmpty()) throw PatchException("No matching instructions found in: $this")
+
+    return indexes
 }
 
 /**
@@ -708,6 +753,197 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
     }
 
 }
+
+/**
+ * Effectively this makes all method parameters registers (including p0) of the cloned method
+ * unchanged for all indexes in the method, and the method parameters can be referenced directly
+ * or used as free registers. Only suitable for static methods with zero parameters.
+ *
+ * **Fingerprint match indexes will be positively by [numberOfParameterRegistersLogical]**.
+ */
+context(BytecodePatchContext)
+fun Method.cloneMutableAndPreserveParameters(
+    indexZeroInstructionsToAdd: String? = null,
+) = cloneMutableAndPreserveParameters(
+    mutableClassDefBy(definingClass),
+    indexZeroInstructionsToAdd
+)
+
+/**
+ * Effectively this makes all method parameters registers (including p0) of the cloned method
+ * unchanged for all indexes in the method, and the method parameters can be referenced directly
+ * or used as free registers. Only suitable for static methods with zero parameters.
+ *
+ * **Fingerprint match indexes will be positively by [numberOfParameterRegistersLogical]**.
+ */
+fun Method.cloneMutableAndPreserveParameters(
+    mutableClass : MutableClass,
+    indexZeroInstructionsToAdd: String? = null,
+) : MutableMethod {
+    check (!AccessFlags.STATIC.isSet(accessFlags) || parameters.isNotEmpty()) {
+        "Static methods have no parameter registers to preserve"
+    }
+
+    val clonedMethod = cloneMutable(
+        additionalRegisters = numberOfParameterRegisters
+    )
+
+    // Replace existing method with cloned with more registers.
+    mutableClass.methods.apply {
+        remove(this@cloneMutableAndPreserveParameters)
+        add(clonedMethod)
+    }
+
+    return clonedMethod
+}
+
+/**
+ * Adapted from BiliRoamingX:
+ * https://github.com/BiliRoamingX/BiliRoamingX/blob/ae58109f3acdd53ec2d2b3fb439c2a2ef1886221/patches/src/main/kotlin/app/revanced/patches/bilibili/utils/Extenstions.kt#L51
+ *
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc) before
+ * adding to additional new parameters before p0. Added registers always start at index:
+ * `method.implementation!!.registerCount`
+ *
+ * **Fingerprint match indexes will be positively by [numberOfParameterRegistersLogical]**.
+ */
+fun Method.cloneMutable(
+    name: String = this.name,
+    accessFlags: Int = this.accessFlags,
+    parameters: List<MethodParameter> = this.parameters,
+    returnType: String = this.returnType,
+    additionalRegisters: Int = 0,
+): MutableMethod {
+    check(additionalRegisters >= 0) {
+        "Additional registers cannot be negative"
+    }
+
+    val implementationExists = implementation != null
+    val oldFirstParameterRegister = if (implementationExists) p0Register else 0
+
+    val clonedImplementation = implementation?.let {
+        ImmutableMethodImplementation(
+            it.registerCount + additionalRegisters,
+            it.instructions,
+            it.tryBlocks,
+            it.debugItems,
+        )
+    }
+
+    return ImmutableMethod(
+        definingClass,
+        name,
+        parameters,
+        returnType,
+        accessFlags,
+        annotations,
+        hiddenApiRestrictions,
+        clonedImplementation
+    ).toMutable().apply {
+        var insertIndex = 0
+        var addedInstructions = 0
+        val isNotStatic = !AccessFlags.STATIC.isSet(accessFlags)
+
+        if (implementationExists && additionalRegisters > 0 && (parameters.isNotEmpty() || isNotStatic)) {
+            var destReg = oldFirstParameterRegister
+            var pReg = 0
+
+            // Handle `this`.
+            if (isNotStatic) {
+                addInstructions(insertIndex++, "move-object/from16 v$destReg, p$pReg")
+                addedInstructions++
+                destReg += 1
+                pReg += 1
+            }
+
+            // Handle method parameters.
+            for (parameter in parameters) {
+                val opcode = when (parameter.type) {
+                    "J", "D" -> "move-wide/from16"
+                    else -> {
+                        if (parameter.type.startsWith('L') || parameter.type.startsWith('[')) {
+                            "move-object/from16"
+                        } else {
+                            "move/from16"
+                        }
+                    }
+                }
+
+                addInstructions(insertIndex++, "$opcode v$destReg, p$pReg")
+                addedInstructions++
+
+                val width = if (opcode.startsWith("move-wide")) 2 else 1
+                destReg += width
+                pReg += width
+            }
+
+            if (addedInstructions != numberOfParameterRegistersLogical) {
+                throw IllegalStateException(
+                    "Added instructions do not match additional registers " +
+                            "addedInstructions: $addedInstructions " +
+                            "numberOfParameterRegistersLogical: $numberOfParameterRegistersLogical"
+                )
+            }
+        }
+    }
+}
+
+/**
+ * @return The number of registers for all parameters, including p0.
+ * This includes 2 registers for each wide parameter.
+ */
+val Method.numberOfParameterRegisters: Int
+    get() {
+        var count = 0
+
+        if (!AccessFlags.STATIC.isSet(accessFlags)) {
+            count += 1
+        }
+
+        for (param in parameters) {
+            count += when (param.type) {
+                "J", "D" -> 2   // wide
+                else -> 1       // normal
+            }
+        }
+
+        return count
+    }
+
+/**
+ * @return The number of parameter registers, including p0 as 'this' if method is not static.
+ *   This differs from [numberOfParameterRegisters] in that long/double parameters are counted only once each.
+ */
+val Method.numberOfParameterRegistersLogical: Int
+    get() = parameters.count() + if (AccessFlags.STATIC.isSet(accessFlags)) {
+        0
+    } else {
+        1
+    }
+
+/**
+ * @return the actual register number of p0 for this method.
+ * Throws if the method has no implementation.
+ */
+val Method.p0Register: Int
+    get() {
+        val impl = implementation ?: throw IllegalStateException("Method has no implementation: $this")
+        var paramRegs = 0
+
+        // Count explicit parameters (wide types take 2 registers).
+        for (type in this.parameterTypes) {
+            paramRegs += if (type == "J" || type == "D") 2 else 1
+        }
+
+        // Add implicit 'this' for non-static methods.
+        if (!AccessFlags.STATIC.isSet(this.accessFlags)) {
+            paramRegs += 1
+        }
+
+        val totalRegs = impl.registerCount
+
+        return totalRegs - paramRegs
+    }
 
 private const val RETURN_TYPE_MISMATCH = "Mismatch between override type and Method return type"
 
@@ -1075,6 +1311,30 @@ internal fun BytecodePatchContext.addStaticFieldToExtension(
             )
         }
     }
+}
+
+context(BytecodePatchContext)
+internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
+    val methodName = "isPatchIncluded"
+    val returnType = "Z"
+
+    val fingerprint = Fingerprint(
+        returnType = returnType,
+        parameters = listOf(),
+        custom = { method, classDef ->
+            AccessFlags.STATIC.isSet(method.accessFlags) && method.name == methodName
+        }
+    )
+
+    fingerprint.match(classDefBy(patchExtensionClassType))
+
+    if (fingerprint.methodOrNull == null) {
+        throw PatchException(
+            "Could not find required extension method: $patchExtensionClassType->$methodName()$returnType"
+        )
+    }
+
+    fingerprint.method.returnEarly(true)
 }
 
 /**

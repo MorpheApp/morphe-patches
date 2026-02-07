@@ -22,9 +22,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
@@ -124,7 +126,7 @@ public final class MiniplayerPatch {
      * Resource is not present in older targets, and this field will be zero.
      */
     private static final int MODERN_OVERLAY_SUBTITLE_TEXT
-            = Utils.getResourceIdentifier(ResourceType.ID, "modern_miniplayer_subtitle_text");
+            = ResourceUtils.getIdentifier(ResourceType.ID, "modern_miniplayer_subtitle_text");
 
     private static final MiniplayerType CURRENT_TYPE = Settings.MINIPLAYER_TYPE.get();
 
@@ -289,10 +291,48 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static int getModernMiniplayerOverrideType(int original) {
+        if (CURRENT_TYPE == MINIMAL) {
+            // In newer app targets the minimal player can show the wrong icon if modern 4 is allowed.
+            // Forcing to modern 1 seems to work.
+            return Objects.requireNonNull(MODERN_1.modernPlayerType);
+        }
+
         Integer modernValue = CURRENT_TYPE.modernPlayerType;
         return modernValue == null
                 ? original
                 : modernValue;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean isMiniplayerType1Active(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) return original;
+        return CURRENT_TYPE == MODERN_1;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean isMiniplayerType2Active(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) return original;
+        return CURRENT_TYPE == MODERN_2;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean isMiniplayerType3Active(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) return original;
+        return CURRENT_TYPE == MODERN_3;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean isMiniplayerType4Active(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) return original;
+        return CURRENT_TYPE == MODERN_4;
     }
 
     /**

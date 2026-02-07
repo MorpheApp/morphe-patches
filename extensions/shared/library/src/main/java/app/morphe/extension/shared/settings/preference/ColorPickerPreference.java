@@ -1,7 +1,7 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.getResourceIdentifierOrThrow;
+import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -82,13 +82,13 @@ public class ColorPickerPreference extends EditTextPreference {
     private boolean opacitySliderEnabled = false;
 
     public static final int ID_MORPHE_COLOR_PICKER_VIEW =
-            getResourceIdentifierOrThrow(ResourceType.ID, "morphe_color_picker_view");
+            getIdentifierOrThrow(ResourceType.ID, "morphe_color_picker_view");
     public static final int ID_PREFERENCE_COLOR_DOT =
-            getResourceIdentifierOrThrow(ResourceType.ID, "preference_color_dot");
+            getIdentifierOrThrow(ResourceType.ID, "preference_color_dot");
     public static final int LAYOUT_MORPHE_COLOR_DOT_WIDGET =
-            getResourceIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_dot_widget");
+            getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_dot_widget");
     public static final int LAYOUT_MORPHE_COLOR_PICKER =
-            getResourceIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_picker");
+            getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_picker");
 
     /**
      * Removes non valid hex characters, converts to all uppercase,

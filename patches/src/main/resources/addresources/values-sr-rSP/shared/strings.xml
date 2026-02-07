@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Потребно је рестартовање</string>
   <string name="morphe_settings_restart_dialog_message">Рестартујте апликацију да би ова промена ступила на снагу.</string>
   <string name="morphe_settings_restart">Рестартуј</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Увоз</string>
   <string name="morphe_settings_import_copy">Копирај</string>
   <string name="morphe_settings_import_reset">Подешавања Morphe-а су враћена на подразумеване вредности</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Прикажи историју претраге подешавања</string>
   <string name="morphe_settings_search_history_summary_on">Историја претраге подешавања је приказана</string>
   <string name="morphe_settings_search_history_summary_off">Историја претраге подешавања није приказана</string>
-  <string name="morphe_settings_disable_bold_icons_title">Онемогући подебљане иконе</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Иконе нису подебљане</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Иконе су подебљане</string>
   <string name="morphe_show_menu_icons_title">Прикажи иконице подешавања Morphe-а</string>
   <string name="morphe_show_menu_icons_summary_on">Иконице подешавања су приказане</string>
   <string name="morphe_show_menu_icons_summary_off">Иконице подешавања нису приказане</string>
@@ -62,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Језик апликације</string>
   <string name="morphe_pref_import_export_title">Увоз / Извоз</string>
   <string name="morphe_pref_import_export_summary">Увоз / Извоз подешавања Morphe-а</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Користите последњу верзију Morphe печева &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Користите Morphe печеве верзије &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступно је ажурирање: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Да бисте ажурирали печеве, користите Morphe да бисте поново закрпили ову апликацију</string>
   <string name="morphe_settings_about_links_dev_header">Напомена</string>
@@ -103,10 +101,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Заставице сачуване</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Заставице ресетоване</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Заставице копиране у оставу</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Поново покрените апликацију да бисте користили ову функцију</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Подешавања GmsCore-а</string>
-  <string name="microg_settings_summary">Подешавања за GmsCore</string>
+  <string name="microg_settings_summary">Otvorite postavke MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nije инсталиран. Инсталируйте га.</string>
   <string name="gms_core_dialog_title">Неопходна радња</string>

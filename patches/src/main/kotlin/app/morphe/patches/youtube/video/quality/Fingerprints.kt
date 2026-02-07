@@ -1,21 +1,96 @@
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.newInstance
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal object CurrentVideoFormatToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    strings = listOf("currentVideoFormat="),
+    custom = { method, _ ->
+        method.name == "toString"
+    }
+)
+
+internal object DefaultOverflowOverlayOnClickFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        opcode(Opcode.IF_NE),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterWithin(2)
+        ),
+    ),
+    custom = { method, classDef ->
+        classDef.type == "Lcom/google/android/libraries/youtube/player/features/overlay/overflow/ui/DefaultOverflowOverlay;"
+                && method.name == "onClick"
+    }
+)
+
+internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("I"),
+    custom = { method, classDef ->
+        classDef.type.startsWith("Lapp/morphe/extension/youtube/patches/playback/quality/HidePremiumVideoQualityPatch")
+                && AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
+                && method.name == "apply"
+    }
+)
+
+internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        newInstance("Ljava/util/ArrayList;"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+        )
+    ),
+)
+
+internal object VideoStreamingDataToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("VideoStreamingData(itags=")
+    ),
+    custom = { method, _ ->
+        method.name == "toString"
+    }
+)
+
 internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT"),
+        string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT")
     )
 )
 
 /**
- * Resolves to class found in [videoQualityItemOnClickFingerprint].
+ * Resolves to class found in [VideoQualityItemOnClickFingerprint].
  */
 internal object VideoQualityItemOnClickFingerprint : Fingerprint(
     returnType = "V",

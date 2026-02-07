@@ -50,7 +50,7 @@ private const val EXTENSION_PLAYER_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$PlaybackController;"
 private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityMenuInterface;"
-private const val EXTENSION_VIDEO_QUALITY_INTERFACE =
+internal const val EXTENSION_VIDEO_QUALITY_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityInterface;"
 
 private lateinit var playerInitMethod: MutableMethod

@@ -9,7 +9,10 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -77,8 +80,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "chips_shelf"
         );
 
+        final var liveChatReplay = new StringFilterGroup(
+                Settings.HIDE_LIVE_CHAT_REPLAY_BUTTON,
+                "live_chat_ep_entrypoint.e"
+        );
+
         addIdentifierCallbacks(
-                chipsShelf
+                chipsShelf,
+                liveChatReplay
         );
 
         // Paths.
@@ -113,6 +122,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         final var compactBanner = new StringFilterGroup(
                 Settings.HIDE_COMPACT_BANNER,
+                "cell_divider", // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
                 "compact_banner"
         );
 
@@ -124,6 +134,11 @@ public final class LayoutComponentsFilter extends Filter {
         final var subscriptionsChipBar = new StringFilterGroup(
                 Settings.HIDE_FILTER_BAR_FEED_IN_FEED,
                 "subscriptions_chip_bar"
+        );
+
+        final var subscribedChannelsBar = new StringFilterGroup(
+                Settings.HIDE_SUBSCRIBED_CHANNELS_BAR,
+                "subscriptions_channel_bar"
         );
 
         chipBar = new StringFilterGroup(
@@ -267,6 +282,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "endorsement_header_footer.e"
         );
 
+        final var videoTitle = new StringFilterGroup(
+                Settings.HIDE_VIDEO_TITLE,
+                "player_overlay_video_heading.e"
+        );
+
         final var webLinkPanel = new StringFilterGroup(
                 Settings.HIDE_WEB_SEARCH_RESULTS,
                 "web_link_panel",
@@ -326,6 +346,7 @@ public final class LayoutComponentsFilter extends Filter {
                 new Pair<>(Settings.HIDE_GAMING_SECTION, "yt_outline_experimental_gaming"),
                 new Pair<>(Settings.HIDE_MUSIC_SECTION, "yt_outline_audio"),
                 new Pair<>(Settings.HIDE_MUSIC_SECTION, "yt_outline_experimental_audio"),
+                new Pair<>(Settings.HIDE_QUIZZES_SECTION, "post_base_wrapper_slim"),
                 // May no longer work on v20.31+, even though the component is still there.
                 new Pair<>(Settings.HIDE_ATTRIBUTES_SECTION, "cell_video_attribute")
         ).forEach(pair ->
@@ -366,10 +387,12 @@ public final class LayoutComponentsFilter extends Filter {
                 quickActions,
                 relatedVideos,
                 singleItemInformationPanel,
+                subscribedChannelsBar,
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
                 timedReactions,
+                videoTitle,
                 videoRecommendationLabels,
                 webLinkPanel
         );
@@ -521,6 +544,13 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideLatestVideosButton(View view) {
+        Utils.hideViewUnderCondition(Settings.HIDE_LATEST_VIDEOS_BUTTON.get(), view);
+    }
+
+    /**
+     * Injection point.
+     */
     public static int hideInFeed(final int height) {
         return Settings.HIDE_FILTER_BAR_FEED_IN_FEED.get()
                 ? 0
@@ -567,20 +597,109 @@ public final class LayoutComponentsFilter extends Filter {
         imageView.setImageDrawable(replacement);
     }
 
+    private static final FrameLayout.LayoutParams EMPTY_LAYOUT_PARAMS = new FrameLayout.LayoutParams(0, 0);
     private static final boolean HIDE_SHOW_MORE_BUTTON_ENABLED = Settings.HIDE_SHOW_MORE_BUTTON.get();
+
+    /**
+     * The ShowMoreButton should not always be hidden.
+     * According to the preference summary, only the ShowMoreButton in search results is hidden.
+     * Since the ShowMoreButton should be visible on other pages, such as channels,
+     * the original values of the Views are saved in fields.
+     */
+    private static FrameLayout.LayoutParams cachedLayoutParams;
+    private static int cachedButtonContainerMinimumHeight = -1;
+    private static int cachedPlaceHolderMinimumHeight = -1;
+    private static int cachedRootViewMinimumHeight = -1;
 
     /**
      * Injection point.
      */
-    public static void hideShowMoreButton(View view) {
+    public static void hideShowMoreButton(View view, View buttonContainer, TextView textView) {
         if (HIDE_SHOW_MORE_BUTTON_ENABLED
-                && NavigationBar.isSearchBarActive()
-                // Search bar can be active but behind the player.
-                && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            // FIXME: "Show more" button is visible hidden,
-            //        but an empty space remains that can be clicked.
-            Utils.hideViewByLayoutParams(view);
+                && view instanceof ViewGroup rootView
+                && buttonContainer != null
+                && textView != null
+                && buttonContainer.getLayoutParams() instanceof FrameLayout.LayoutParams lp
+        ) {
+            View placeHolder = rootView.getChildAt(0);
+
+            // For some users, ShowMoreButton has a PlaceHolder ViewGroup (A/B tests).
+            // When a PlaceHolder is present, a different method is used to hide or show the ViewGroup.
+            boolean hasPlaceHolder = placeHolder instanceof FrameLayout;
+
+            // Only in search results, the content description of RootView and the text of TextView match.
+            // Hide ShowMoreButton in search results, but show ShowMoreButton in other pages (e.g. channels).
+            boolean isSearchResults = TextUtils.equals(rootView.getContentDescription(), textView.getText());
+
+            if (hasPlaceHolder) {
+                hideShowMoreButtonWithPlaceHolder(placeHolder, isSearchResults);
+            } else {
+                hideShowMoreButtonWithOutPlaceHolder(buttonContainer, lp, isSearchResults);
+            }
+
+            if (cachedRootViewMinimumHeight == -1) {
+                cachedRootViewMinimumHeight = rootView.getMinimumHeight();
+            }
+
+            if (isSearchResults) {
+                rootView.setMinimumHeight(0);
+                rootView.setVisibility(View.GONE);
+            } else {
+                rootView.setMinimumHeight(cachedRootViewMinimumHeight);
+                rootView.setVisibility(View.VISIBLE);
+            }
         }
+    }
+
+    private static void hideShowMoreButtonWithPlaceHolder(View placeHolder, boolean isSearchResults) {
+        if (cachedPlaceHolderMinimumHeight == -1) {
+            cachedPlaceHolderMinimumHeight = placeHolder.getMinimumHeight();
+        }
+
+        if (isSearchResults) {
+            placeHolder.setMinimumHeight(0);
+            placeHolder.setVisibility(View.GONE);
+        } else {
+            placeHolder.setMinimumHeight(cachedPlaceHolderMinimumHeight);
+            placeHolder.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private static void hideShowMoreButtonWithOutPlaceHolder(View buttonContainer, FrameLayout.LayoutParams lp,
+                                                             boolean isSearchResults) {
+        if (cachedButtonContainerMinimumHeight == -1) {
+            cachedButtonContainerMinimumHeight = buttonContainer.getMinimumHeight();
+        }
+
+        if (cachedLayoutParams == null) {
+            cachedLayoutParams = lp;
+        }
+
+        if (isSearchResults) {
+            buttonContainer.setMinimumHeight(0);
+            buttonContainer.setLayoutParams(EMPTY_LAYOUT_PARAMS);
+            buttonContainer.setVisibility(View.GONE);
+        } else {
+            buttonContainer.setMinimumHeight(cachedButtonContainerMinimumHeight);
+            buttonContainer.setLayoutParams(cachedLayoutParams);
+            buttonContainer.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideSubscribedChannelsBar(View view) {
+        Utils.hideViewByRemovingFromParentUnderCondition(Settings.HIDE_SUBSCRIBED_CHANNELS_BAR, view);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static int hideSubscribedChannelsBar(int original) {
+        return Settings.HIDE_SUBSCRIBED_CHANNELS_BAR.get()
+                ? 0
+                : original;
     }
 
     private static boolean hideShelves() {
@@ -664,5 +783,12 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideSearchSuggestions(String typingString) {
+        return Settings.HIDE_SEARCH_SUGGESTIONS.get() && typingString.isEmpty();
     }
 }

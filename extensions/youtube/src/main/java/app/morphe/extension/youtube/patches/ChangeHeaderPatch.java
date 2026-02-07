@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -44,7 +45,7 @@ public class ChangeHeaderPatch {
                 return null;
             }
 
-            final int identifier = Utils.getResourceIdentifier(ResourceType.ATTR, attributeName);
+            final int identifier = ResourceUtils.getIdentifier(ResourceType.ATTR, attributeName);
             if (identifier == 0) {
                 // Should never happen.
                 Logger.printException(() -> "Could not find attribute: " + drawableName);
@@ -65,7 +66,7 @@ public class ChangeHeaderPatch {
                     ? "_dark"
                     : "_light");
 
-            final int identifier = Utils.getResourceIdentifier(ResourceType.DRAWABLE, drawableFullName);
+            final int identifier = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, drawableFullName);
             if (identifier != 0) {
                 return Utils.getContext().getDrawable(identifier);
             }

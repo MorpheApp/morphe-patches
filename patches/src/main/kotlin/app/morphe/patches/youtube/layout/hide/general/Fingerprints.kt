@@ -6,35 +6,89 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.buttons.navigation.WideSearchbarLayoutFingerprint
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * 20.26+
- */
-internal object HideShowMoreButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
+internal object HideShowMoreButtonSetViewFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", "Ljava/lang/Object;"),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
-        methodCall(smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+        resourceLiteral(ResourceType.ID, "link_text_start"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/widget/TextView;"
+        ),
+        resourceLiteral(ResourceType.ID, "expand_button_container"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/view/View;"
+        )
     )
 )
 
-internal object HideShowMoreLegacyButtonFingerprint : Fingerprint(
+internal object HideShowMoreButtonGetParentViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf()
+)
+
+internal object HideShowMoreButtonFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V"
+        )
+    )
+)
+
+/**
+ * 20.21+
+ */
+internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "expand_button_down"),
-        methodCall(smali = "Landroid/view/View;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT)
+        resourceLiteral(ResourceType.ID, "parent_container"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+    ),
+    custom = { _, classDef ->
+        classDef.fields.any { field ->
+            field.type == "Landroid/support/v7/widget/RecyclerView;"
+        }
+    }
+)
+
+/**
+ * ~ 20.21
+ */
+internal object HideSubscribedChannelsBarConstructorLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "parent_container"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+    )
+)
+
+internal object HideSubscribedChannelsBarLandscapeFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "parent_view_width_in_wide_mode"),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "getDimensionPixelSize"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
     )
 )
 
@@ -65,7 +119,7 @@ internal object ShowWatermarkFingerprint : Fingerprint(
 )
 
 /**
- * Matches same method as [wideSearchbarLayoutFingerprint].
+ * Matches same method as [WideSearchbarLayoutFingerprint].
  */
 internal object YouTubeDoodlesImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -156,3 +210,49 @@ internal object HideViewCountFingerprint : Fingerprint(
         "Has attachmentRuns but drawableRequester is missing.",
     )
 )
+
+internal object SearchBoxTypingMethodFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "suggestion_category_divider_height")
+    )
+)
+
+internal object SearchBoxTypingStringFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;"),
+        methodCall(smali = "Ljava/lang/String;->isEmpty()Z", location = MatchAfterWithin(5)),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately())
+    )
+)
+
+internal object LatestVideosContentPillFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Z"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "content_pill"),
+        methodCall(
+            smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object LatestVideosBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Z"),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "bar"),
+        methodCall(
+            smali = "Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+

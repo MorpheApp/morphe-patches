@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe प्रकाश</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">কাস্টম</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 পরীক্ষামূলক সতর্কতা! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"আপনি পরীক্ষামূলক অ্যাপ ভার্সন ব্যবহার করছেন ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🔧 অ্যাপ ভার্সনের প্যাচগুলি চূড়ান্ত করার সময় কুইর্কি অ্যাপ আচরণ বা অপরিচিত বাগ থাকতে পারে।
+<br/>
+<br/>
+তুমি সবচেয়ে সমস্যা মুক্ত অভিজ্ঞতা চাও, তাহলে <b>ইনস্টলেশন বাতিল</b> করুন এবং রেকমেন্ডেড অ্যাপ ভার্সন ✅ <b>%2$s</b> প্যাচ করুন।"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ আমি পরীক্ষামূলক চাচ্ছি</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ আমি স্থিতিশীল চাচ্ছি</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe নোটিশ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>

@@ -1,5 +1,6 @@
 package app.morphe.extension.youtube.shared;
 
+import static app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton.CREATE;
 
 import android.app.Activity;
@@ -20,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
@@ -281,12 +283,11 @@ public final class NavigationBar {
     /**
      * Custom cairo notification filled icon to fix unpatched app missing resource.
      */
-    private static final int fillBellCairoBlack = Utils.getResourceIdentifier(ResourceType.DRAWABLE,
-            // The bold cairo notification filled icon is present,
-            // but YT still has not fixed the icon not associated to the enum.
-            VersionCheckPatch.IS_20_31_OR_GREATER && !Settings.SETTINGS_DISABLE_BOLD_ICONS.get()
+    private static final int fillBellCairoBlack = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
+            VersionCheckPatch.IS_20_31_OR_GREATER && !isSpoofingToLessThan("20.31.00")
                     ? "yt_fill_experimental_bell_vd_theme_24"
-                    : "morphe_fill_bell_cairo_black_24");
+                    : "morphe_fill_bell_cairo_black_24"
+    );
 
     /**
      * Injection point.
@@ -317,7 +318,7 @@ public final class NavigationBar {
         SUBSCRIPTIONS("PIVOT_SUBSCRIPTIONS", "TAB_SUBSCRIPTIONS_CAIRO"),
         /**
          * Notifications tab.  Only present when
-         * {@link Settings#SWITCH_CREATE_WITH_NOTIFICATIONS_BUTTON} is active.
+         * {@link Settings#SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON} is active.
          */
         NOTIFICATIONS("TAB_ACTIVITY", "TAB_ACTIVITY_CAIRO"),
         /**

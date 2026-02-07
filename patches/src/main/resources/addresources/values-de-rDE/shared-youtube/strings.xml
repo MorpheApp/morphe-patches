@@ -27,6 +27,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe\u0020Helligkeit</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Benutzerdefiniert</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Experimentelles Alert! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Sie verwenden eine experimentelle App-Version von ⚠️ <b>%1$s</b>
+<br/>
+<br/>
+🔧 Erwarten Sie eigenartiges App-Verhalten oder unbekannte Fehler, da wir die Patches für diese App-Version verfeinern.
+<br/>
+<br/>
+Wenn Sie die stabilste Erfahrung wünschen, dann <b>deinstallieren</b> Sie dies und patchen Sie die empfohlene App-Version von ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ich möchte experimentell</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ich möchte stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Hinweis</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setze &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>

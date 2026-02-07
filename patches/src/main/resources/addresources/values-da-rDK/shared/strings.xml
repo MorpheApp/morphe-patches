@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Genstart kræves</string>
   <string name="morphe_settings_restart_dialog_message">Genstart appen for at denne ændring træder i kraft.</string>
   <string name="morphe_settings_restart">Genstart</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Kopier</string>
   <string name="morphe_settings_import_reset">Morphe-indstillinger nulstillet til standard</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Vis indstillingssøgehistorik</string>
   <string name="morphe_settings_search_history_summary_on">Indstillingssøgehistorik vises</string>
   <string name="morphe_settings_search_history_summary_off">Søgehistorik for indstillinger vises ikke</string>
-  <string name="morphe_settings_disable_bold_icons_title">Deaktiver fede ikoner</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Ikoner er ikke fede</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Ikoner er fede</string>
   <string name="morphe_show_menu_icons_title">Vis Morphe-indstillingsikoner</string>
   <string name="morphe_show_menu_icons_summary_on">Indstillingsikoner vises</string>
   <string name="morphe_show_menu_icons_summary_off">Indstillingsikoner vises ikke</string>
@@ -62,7 +60,7 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_language_DEFAULT">App-sprog</string>
   <string name="morphe_pref_import_export_title">Importér/Eksportér</string>
   <string name="morphe_pref_import_export_summary">Importér/Eksportér Morphe-indstillinger</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Du bruger den nyeste Morphe Patches-version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Du bruger Morphe Patches-versionen &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Opdatering tilgængelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For at opdatere dine patches, brug Morphe til at genpatche denne app</string>
   <string name="morphe_settings_about_links_dev_header">Bemærk</string>
@@ -103,10 +101,10 @@ Du modtager ikke notifikationer om uventede hændelser."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flag gemt</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flag nulstillet</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flag kopieret til udklipsholder</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Genstart appen for at bruge denne funktion</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">GmsCore Indstillinger</string>
-  <string name="microg_settings_summary">Indstillinger for GmsCore</string>
+  <string name="microg_settings_summary">Åbn MicroG-indstillingerne</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG er ikke installeret. Install det.</string>
   <string name="gms_core_dialog_title">Handling påkrævet</string>

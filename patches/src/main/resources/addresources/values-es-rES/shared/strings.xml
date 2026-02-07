@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Reinicio necesario</string>
   <string name="morphe_settings_restart_dialog_message">Reinicia la aplicación para que este cambio surta efecto.</string>
   <string name="morphe_settings_restart">Reiniciar</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importar</string>
   <string name="morphe_settings_import_copy">Copiar</string>
   <string name="morphe_settings_import_reset">Ajustes de Morphe restablecidos a los valores predeterminados</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Mostrar el historial de búsqueda de ajustes</string>
   <string name="morphe_settings_search_history_summary_on">El historial de búsqueda de los ajustes es visible</string>
   <string name="morphe_settings_search_history_summary_off">El historial de búsqueda de ajustes está oculto</string>
-  <string name="morphe_settings_disable_bold_icons_title">Desactivar iconos en negrita</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Los iconos no están en negrita</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Los iconos están en negrita</string>
   <string name="morphe_show_menu_icons_title">Mostrar iconos de configuración de Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Se muestran los iconos de configuración</string>
   <string name="morphe_show_menu_icons_summary_off">No se muestran los iconos de configuración</string>
@@ -62,7 +60,7 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita trans
   <string name="morphe_language_DEFAULT">Idioma de la aplicación</string>
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar ajustes de Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
@@ -103,10 +101,10 @@ No se le notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Banderas guardadas</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Banderas restablecidas</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Banderas copiadas al portapapeles</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la aplicación para usar esta característica</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Ajustes de GmsCore</string>
-  <string name="microg_settings_summary">Configuración de GmsCore</string>
+  <string name="microg_settings_summary">Abrir la configuración de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG no está instalado. Instálalo.</string>
   <string name="gms_core_dialog_title">Acción necesaria</string>

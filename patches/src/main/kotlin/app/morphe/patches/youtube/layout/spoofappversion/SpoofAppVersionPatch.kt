@@ -5,6 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -13,9 +14,14 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -33,15 +39,7 @@ val spoofAppVersionPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-        )
-    )
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
@@ -53,8 +51,20 @@ val spoofAppVersionPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
                     SwitchPreference("morphe_spoof_app_version"),
-                    if (is_20_14_or_greater) {
+                    if (is_20_40_or_greater) {
                         ListPreference("morphe_spoof_app_version_target")
+                    } else if (is_20_31_or_greater) {
+                        ListPreference(
+                            key = "morphe_spoof_app_version_target",
+                            entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
+                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
+                        )
+                    } else if (is_20_14_or_greater) {
+                        ListPreference(
+                            key = "morphe_spoof_app_version_target",
+                            entriesKey = "morphe_spoof_app_version_target_legacy_20_30_entries",
+                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_30_entry_values"
+                        )
                     } else if (is_19_43_or_greater) {
                         ListPreference(
                             key = "morphe_spoof_app_version_target",
@@ -78,6 +88,8 @@ val spoofAppVersionPatch = bytecodePatch(
          * toolbar when the enum name is UNKNOWN.
          */
         ToolBarButtonFingerprint.apply {
+            clearMatch() // Fingerprint is shared and indexes may no longer be correct.
+
             val imageResourceIndex = instructionMatches[2].index
             val register = method.getInstruction<OneRegisterInstruction>(imageResourceIndex).registerA
             val jumpIndex = instructionMatches.last().index + 1
@@ -96,10 +108,32 @@ val spoofAppVersionPatch = bytecodePatch(
             method.addInstructions(
                 index + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getYouTubeVersionOverride(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$register
                 """
             )
         }
+
+        /**
+         * Flag is present in YT 20.23, but bold icons are missing and forcing them crashes the app.
+         * 20.31 is the first target with all the bold icons present.
+         * Fix: https://github.com/MorpheApp/morphe-patches/issues/183.
+         *
+         * 21.05+ these flags are no longer present.
+         */
+        if (is_20_31_or_greater && !is_21_05_or_greater) {
+            listOf(
+                ShortsBoldIconsPrimaryFeatureFlagFingerprint,
+                ShortsBoldIconsSecondaryFeatureFlagFingerprint,
+            ).forEach { fingerprint ->
+                fingerprint.let {
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        "$EXTENSION_CLASS_DESCRIPTOR->disableShortsBoldIcons(Z)Z"
+                    )
+                }
+            }
+        }
+
     }
 }

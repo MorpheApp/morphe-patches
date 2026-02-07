@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Απαιτείται επανεκκίνηση</string>
   <string name="morphe_settings_restart_dialog_message">Επανεκκινήστε την εφαρμογή για να εφαρμοστεί αυτή η αλλαγή.</string>
   <string name="morphe_settings_restart">Επανεκκίνηση</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Εισαγωγή</string>
   <string name="morphe_settings_import_copy">Αντιγραφή</string>
   <string name="morphe_settings_import_reset">Επαναφέρθηκαν οι προεπιλεγμένες ρυθμίσεις Morphe</string>
@@ -49,9 +50,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Εμφάνιση ιστορικού αναζήτησης ρυθμίσεων</string>
   <string name="morphe_settings_search_history_summary_on">Το ιστορικό αναζήτησης ρυθμίσεων εμφανίζεται</string>
   <string name="morphe_settings_search_history_summary_off">Το ιστορικό αναζήτησης ρυθμίσεων δεν εμφανίζεται</string>
-  <string name="morphe_settings_disable_bold_icons_title">Απενεργοποίηση έντονων εικονιδίων</string>
-  <string name="morphe_settings_disable_bold_icons_summary_on">Τα εικονίδια δεν είναι έντονα</string>
-  <string name="morphe_settings_disable_bold_icons_summary_off">Τα εικονίδια είναι έντονα</string>
   <string name="morphe_show_menu_icons_title">Εμφάνιση εικονιδίων στις ρυθμίσεις Morphe</string>
   <string name="morphe_show_menu_icons_summary_on">Τα εικονίδια ρυθμίσεων εμφανίζονται</string>
   <string name="morphe_show_menu_icons_summary_off">Τα εικονίδια ρυθμίσεων δεν εμφανίζονται</string>
@@ -62,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Γλώσσα εφαρμογής</string>
   <string name="morphe_pref_import_export_title">Εισαγωγή / Εξαγωγή</string>
   <string name="morphe_pref_import_export_summary">Εισαγωγή / Εξαγωγή ρυθμίσεων Morphe</string>
-  <!-- Settings about dialog. -->
+  <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Χρησιμοποιείτε την πιο πρόσφατη έκδοση του Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Χρησιμοποιείτε την έκδοση Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Διαθέσιμη ενημέρωση: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Για να ενημερώσετε τις τροποποιήσεις σας, χρησιμοποιήστε το Morphe για να επανατροποποιήσετε αυτήν την εφαρμογή</string>
   <string name="morphe_settings_about_links_dev_header">Σημείωση</string>
@@ -103,10 +101,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Οι σημαίες αποθηκεύτηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Οι σημαίες επαναφέρθηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Οι σημαίες αντιγράφηκαν στο πρόχειρο</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτή τη λειτουργία</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_title">Ρυθμίσεις GmsCore</string>
-  <string name="microg_settings_summary">Ρυθμίσεις για το MicroG GmsCore</string>
+  <string name="microg_settings_summary">Άνοιγμα των ρυθμίσεων MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG δεν είναι εγκατεστημένο. Εγκαταστήστε το.</string>
   <string name="gms_core_dialog_title">Απαιτείται ενέργεια</string>

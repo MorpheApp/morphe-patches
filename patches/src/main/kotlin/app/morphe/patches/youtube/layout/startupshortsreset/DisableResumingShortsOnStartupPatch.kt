@@ -5,6 +5,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -36,10 +37,17 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
             "20.26.46",
             "20.31.42",
             "20.37.48",
+            "20.40.45",
+            // This patch is obsolete with 21.03 because YT seems to have
+            // removed resuming Shorts functionality.
+            // TODO: Before adding 21.03+, merge this patch into `Hide Shorts component`
         )
     )
 
     execute {
+        // 21.03+ seems to no longer have resuming Shorts functionality.
+        if (is_21_03_or_greater) return@execute
+
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_disable_resuming_shorts_player"),
         )
