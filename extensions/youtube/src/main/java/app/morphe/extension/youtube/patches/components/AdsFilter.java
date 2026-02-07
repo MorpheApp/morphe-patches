@@ -33,8 +33,6 @@ public final class AdsFilter extends Filter {
 
     private final StringFilterGroup promotionBanner;
     private final ByteArrayFilterGroup promotionBannerBuffer;
-    private final StringFilterGroup playerShoppingShelf;
-    private final ByteArrayFilterGroup playerShoppingShelfBuffer;
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
 
@@ -123,16 +121,6 @@ public final class AdsFilter extends Filter {
                 "shopping_description_shelf.e"
         );
 
-        playerShoppingShelf = new StringFilterGroup(
-                Settings.HIDE_CREATOR_STORE_SHELF,
-                "horizontal_shelf.e"
-        );
-
-        playerShoppingShelfBuffer = new ByteArrayFilterGroup(
-                null,
-                "shopping_item_card_list"
-        );
-
         final var merchandise = new StringFilterGroup(
                 Settings.HIDE_MERCHANDISE_BANNERS,
                 "product_carousel",
@@ -161,7 +149,6 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
-                playerShoppingShelf,
                 promotionBanner,
                 selfSponsor,
                 shoppingLinks,
@@ -172,10 +159,6 @@ public final class AdsFilter extends Filter {
     @Override
     boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        if (matchedGroup == playerShoppingShelf) {
-            return contentIndex == 0 && playerShoppingShelfBuffer.check(buffer).isFiltered();
-        }
-
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
         }
