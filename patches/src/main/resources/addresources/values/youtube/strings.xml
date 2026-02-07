@@ -295,6 +295,9 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_on">Channel guidelines are hidden</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_off">Channel guidelines are shown</string>
+    <string name="morphe_hide_comments_prompts_title">Hide comment prompts</string>
+    <string name="morphe_hide_comments_prompts_summary_on">Comment prompts are hidden</string>
+    <string name="morphe_hide_comments_prompts_summary_off">Comment prompts are shown</string>
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_by_members_header_summary_on">Comments by members header is hidden</string>
     <string name="morphe_hide_comments_by_members_header_summary_off">Comments by members header is shown</string>
@@ -307,9 +310,6 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_comments_community_guidelines_title">Hide community guidelines</string>
     <string name="morphe_hide_comments_community_guidelines_summary_on">Community guidelines are hidden</string>
     <string name="morphe_hide_comments_community_guidelines_summary_off">Community guidelines are shown</string>
-    <string name="morphe_hide_comments_context_messages_title">Hide context messages</string>
-    <string name="morphe_hide_comments_context_messages_summary_on">Context messages are hidden</string>
-    <string name="morphe_hide_comments_context_messages_summary_off">Context messages are shown</string>
     <string name="morphe_hide_comments_create_a_short_button_title">Hide \'Create a Short\' button</string>
     <string name="morphe_hide_comments_create_a_short_button_summary_on">Create a Short button is hidden</string>
     <string name="morphe_hide_comments_create_a_short_button_summary_off">Create a Short button is shown</string>

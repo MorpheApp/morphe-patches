@@ -52,8 +52,8 @@ final class CommentsFilter extends Filter {
                 "community_guidelines"
         );
 
-        var contextMessages = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_CONTEXT_MESSAGES,
+        var commentsPrompts = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PROMPTS,
                 "comment_filter_context.e",
                 "timed_comments_welcome.e",
                 "timed_comments_end.e"
@@ -88,7 +88,7 @@ final class CommentsFilter extends Filter {
                 commentsByMembers,
                 comments,
                 communityGuidelines,
-                contextMessages,
+                commentsPrompts,
                 createAShort,
                 emojiAndTimestampButtons,
                 previewComment,
