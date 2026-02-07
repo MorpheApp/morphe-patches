@@ -217,10 +217,10 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_COMMENTS_BY_MEMBERS_HEADER = new BooleanSetting("morphe_hide_comments_by_members_header", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_CHANNEL_GUIDELINES = new BooleanSetting("morphe_hide_comments_channel_guidelines", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_comments_community_guidelines", TRUE);
-    public static final BooleanSetting HIDE_COMMENTS_PROMPTS = new BooleanSetting("morphe_hide_comments_prompts", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_CREATE_A_SHORT_BUTTON = new BooleanSetting("morphe_hide_comments_create_a_short_button", TRUE);
-    public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_comments_preview_comment", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS = new BooleanSetting("morphe_hide_comments_emoji_and_timestamp_buttons", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_comments_preview_comment", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_PROMPTS = new BooleanSetting("morphe_hide_comments_prompts", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION = new BooleanSetting("morphe_hide_comments_section", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_HOME_FEED = new BooleanSetting("morphe_hide_comments_section_in_home_feed", FALSE, parentNot(HIDE_COMMENTS_SECTION));
     public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("morphe_hide_comments_thanks_button", TRUE);
