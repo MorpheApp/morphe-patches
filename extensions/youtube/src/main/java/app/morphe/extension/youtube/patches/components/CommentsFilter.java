@@ -52,6 +52,13 @@ final class CommentsFilter extends Filter {
                 "community_guidelines"
         );
 
+        var contextMessages = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_CONTEXT_MESSAGES,
+                "comment_filter_context.e",
+                "timed_comments_welcome.e",
+                "timed_comments_end.e"
+        );
+
         var createAShort = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_CREATE_A_SHORT_BUTTON,
                 "composer_short_creation_button.e"
@@ -81,6 +88,7 @@ final class CommentsFilter extends Filter {
                 commentsByMembers,
                 comments,
                 communityGuidelines,
+                contextMessages,
                 createAShort,
                 emojiAndTimestampButtons,
                 previewComment,

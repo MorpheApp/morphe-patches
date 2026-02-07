@@ -152,6 +152,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_section"),
                     SwitchPreference("morphe_hide_comments_section_in_home_feed"),
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
+                    SwitchPreference("morphe_hide_comments_context_messages"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
                     SwitchPreference("morphe_hide_comments_preview_comment"),
