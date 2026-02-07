@@ -463,8 +463,11 @@ public final class LayoutComponentsFilter extends Filter {
             // If filtering reaches this point then there are no more shelves that could be in the player.
             // If shopping shelves are set to hidden and the player is active, then assume
             // its the shopping shelf.
-            if (hidePlayerShoppingShelf && PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MAXIMIZED) {
-                return true;
+            if (hidePlayerShoppingShelf) {
+                PlayerType type = PlayerType.getCurrent();
+                if (type == PlayerType.WATCH_WHILE_MAXIMIZED || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN) {
+                    return true;
+                }
             }
 
             return hideShelves && hideShelves();
