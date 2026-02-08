@@ -12,7 +12,7 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
 import app.morphe.util.Utils.trimIndentMultiline
 import app.morphe.util.copyResources
@@ -96,7 +96,7 @@ val changeHeaderPatch = resourcePatch(
         changeHeaderBytecodePatch
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     val custom by stringOption(
         key = "custom",

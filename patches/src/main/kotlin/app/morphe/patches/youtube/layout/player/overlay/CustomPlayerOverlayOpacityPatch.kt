@@ -8,7 +8,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -23,7 +23,7 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
         resourceMappingPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(

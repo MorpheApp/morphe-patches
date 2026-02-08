@@ -10,7 +10,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateFingerprint
 import app.morphe.patches.reddit.misc.extension.hooks.redditMainActivityOnCreateFingerprint
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -48,13 +48,13 @@ val settingsPatch = bytecodePatch(
     name = "Settings for Reddit",
     description = "Applies mandatory patches to implement Morphe settings into the application."
 ) {
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(
         sharedExtensionPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditMainActivityOnCreateFingerprint,
-            recommendedAppVersion = COMPATIBILITY.second.first()
+            recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
         )
     )
 

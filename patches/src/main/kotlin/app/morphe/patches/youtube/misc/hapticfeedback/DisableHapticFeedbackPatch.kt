@@ -8,7 +8,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
@@ -22,7 +22,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
         settingsPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(

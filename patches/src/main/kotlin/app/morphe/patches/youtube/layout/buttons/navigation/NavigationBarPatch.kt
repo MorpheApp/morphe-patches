@@ -21,7 +21,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -48,7 +48,7 @@ val navigationBarPatch = bytecodePatch(
         toolBarHookPatch
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val navPreferences = mutableSetOf(

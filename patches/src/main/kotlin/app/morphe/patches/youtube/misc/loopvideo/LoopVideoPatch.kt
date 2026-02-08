@@ -6,7 +6,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loopvideo.button.loopVideoButtonPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.playerStatusMethod
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -24,7 +24,7 @@ val loopVideoPatch = bytecodePatch(
         videoInformationPatch
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(

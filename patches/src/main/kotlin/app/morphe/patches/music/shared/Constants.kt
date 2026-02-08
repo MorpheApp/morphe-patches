@@ -4,7 +4,7 @@ import app.morphe.patcher.patch.PackageName
 import app.morphe.patcher.patch.VersionName
 
 internal object Constants {
-    val COMPATIBILITY: Pair<PackageName, Set<VersionName>> = Pair(
+    val COMPATIBILITY_YOUTUBE_MUSIC: Pair<PackageName, Set<VersionName>> = Pair(
         "com.google.android.apps.youtube.music",
         setOf(
             "8.40.54",

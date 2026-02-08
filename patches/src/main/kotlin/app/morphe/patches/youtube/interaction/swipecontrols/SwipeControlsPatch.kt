@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
@@ -93,7 +93,7 @@ val swipeControlsPatch = bytecodePatch(
         swipeControlsResourcePatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val wrapperClass = SwipeControlsHostActivityFingerprint.classDef

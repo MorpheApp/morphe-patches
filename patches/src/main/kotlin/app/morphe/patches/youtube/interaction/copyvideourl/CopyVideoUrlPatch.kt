@@ -9,7 +9,7 @@ import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
@@ -50,7 +50,7 @@ val copyVideoUrlPatch = bytecodePatch(
         videoInformationPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val extensionPlayerPackage = "Lapp/morphe/extension/youtube/videoplayer"

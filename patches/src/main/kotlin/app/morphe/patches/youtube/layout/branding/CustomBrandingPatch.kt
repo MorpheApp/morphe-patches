@@ -5,7 +5,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_MAIN_ACTIVITY_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 @Suppress("unused")
@@ -23,6 +23,6 @@ val customBrandingPatch = baseCustomBrandingPatch(
     block = {
         dependsOn(sharedExtensionPatch)
 
-        compatibleWith(COMPATIBILITY)
+        compatibleWith(COMPATIBILITY_YOUTUBE)
     }
 )

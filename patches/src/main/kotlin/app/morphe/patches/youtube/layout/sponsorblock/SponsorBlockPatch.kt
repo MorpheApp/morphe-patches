@@ -17,7 +17,7 @@ import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
@@ -126,7 +126,7 @@ val sponsorBlockPatch = bytecodePatch(
         sponsorBlockResourcePatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         // Hook the video time methods.

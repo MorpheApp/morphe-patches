@@ -6,7 +6,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -24,7 +24,7 @@ val navigationButtonsPatch = bytecodePatch(
     name = "Hide navigation buttons",
     description = "Adds options to hide buttons in the navigation bar."
 ) {
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 

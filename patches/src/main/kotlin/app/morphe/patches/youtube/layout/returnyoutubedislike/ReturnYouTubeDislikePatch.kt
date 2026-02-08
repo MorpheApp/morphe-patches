@@ -18,7 +18,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
 import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
@@ -59,7 +59,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         versionCheckPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(

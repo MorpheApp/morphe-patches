@@ -10,7 +10,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import java.util.logging.Logger
@@ -29,7 +29,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         if (!is_20_14_or_greater) {

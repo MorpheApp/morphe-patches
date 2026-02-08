@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/VideoAdsPatch;"
@@ -26,7 +26,7 @@ val videoAdsPatch = bytecodePatch(
         clientContextHookPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.ADS.addPreferences(

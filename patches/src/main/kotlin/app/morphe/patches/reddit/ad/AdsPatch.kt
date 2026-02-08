@@ -7,7 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -28,7 +28,7 @@ val adsPatch = bytecodePatch(
     name = "Hide ads",
     description = "Adds options to hide ads."
 ) {
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 

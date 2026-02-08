@@ -8,7 +8,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 @Suppress("unused")
 val enableDebuggingPatch = enableDebuggingPatch(
@@ -19,7 +19,7 @@ val enableDebuggingPatch = enableDebuggingPatch(
             versionCheckPatch
         )
 
-        compatibleWith(COMPATIBILITY)
+        compatibleWith(COMPATIBILITY_YOUTUBE)
     },
     executeBlock = { },
     hookStringFeatureFlag = { true },

@@ -5,7 +5,7 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.speed.button.playbackSpeedButtonPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.remember.rememberPlaybackSpeedPatch
@@ -27,7 +27,7 @@ val playbackSpeedPatch = bytecodePatch(
         playbackSpeedButtonPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.VIDEO.addPreferences(

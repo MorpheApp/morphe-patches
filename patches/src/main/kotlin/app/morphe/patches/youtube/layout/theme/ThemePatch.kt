@@ -23,7 +23,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_02_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -158,7 +158,7 @@ val themePatch = baseThemePatch(
             themeResourcePatch
         )
 
-        compatibleWith(COMPATIBILITY)
+        compatibleWith(COMPATIBILITY_YOUTUBE)
     },
 
     executeBlock = {

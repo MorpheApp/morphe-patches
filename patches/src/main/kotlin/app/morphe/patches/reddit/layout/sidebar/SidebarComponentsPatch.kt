@@ -8,7 +8,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.is_2025_45_or_greater
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
@@ -31,7 +31,7 @@ val sidebarComponentsPatch = bytecodePatch(
     name = "Hide sidebar components",
     description = "Adds options to hide the sidebar components."
 ) {
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 

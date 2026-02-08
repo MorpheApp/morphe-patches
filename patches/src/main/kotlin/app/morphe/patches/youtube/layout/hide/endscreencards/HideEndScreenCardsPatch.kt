@@ -14,7 +14,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 internal var layoutCircle = -1L
@@ -57,7 +57,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         listOf(

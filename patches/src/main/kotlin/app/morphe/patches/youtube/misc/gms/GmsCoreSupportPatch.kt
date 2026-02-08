@@ -10,7 +10,7 @@ import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.spoof.spoofVideoStreamsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 @Suppress("unused")
@@ -30,7 +30,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
         spoofVideoStreamsPatch,
     )
 
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 }
 
 private fun gmsCoreSupportResourcePatch() =

@@ -1,7 +1,7 @@
 package app.morphe.patches.music.layout.theme
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.shared.Constants.COMPATIBILITY
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
@@ -27,7 +27,7 @@ val themePatch = baseThemePatch(
             )
         )
 
-        compatibleWith(COMPATIBILITY)
+        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
 
     executeBlock = {

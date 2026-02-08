@@ -5,7 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -23,7 +23,7 @@ val screenshotPopupPatch = bytecodePatch(
     name = "Disable screenshot popup",
     description = "Adds an option to disable the popup that appears when taking a screenshot."
 ) {
-    compatibleWith(COMPATIBILITY)
+    compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)
 

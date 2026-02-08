@@ -4,7 +4,7 @@ import app.morphe.patcher.patch.PackageName
 import app.morphe.patcher.patch.VersionName
 
 internal object Constants {
-    val COMPATIBILITY: Pair<PackageName, Set<VersionName>> = Pair(
+    val COMPATIBILITY_YOUTUBE: Pair<PackageName, Set<VersionName>> = Pair(
         "com.google.android.youtube",
         setOf(
             "20.40.45",
