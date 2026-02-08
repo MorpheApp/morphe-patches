@@ -5,11 +5,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
-import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
+import app.morphe.patches.reddit.misc.settings.is_2025_45_or_greater
+import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -21,7 +21,7 @@ val trendingTodayShelfPatch = bytecodePatch(
     name = "Hide Trending Today shelf",
     description =  "Adds an option to hide the Trending Today shelf from search suggestions."
 ) {
-    compatibleWith(COMPATIBILITY_REDDIT)
+    compatibleWith(COMPATIBILITY)
 
     dependsOn(settingsPatch)
 

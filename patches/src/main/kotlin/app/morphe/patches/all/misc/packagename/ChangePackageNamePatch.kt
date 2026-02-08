@@ -72,11 +72,6 @@ val changePackageNamePatch = resourcePatch(
         val incompatibleAppPackages = setOf(
             // Cannot log in, settings menu is broken.
             "com.reddit.frontpage",
-
-            // Patches and installs but crashes on launch.
-            "com.duolingo",
-            "com.twitter.android",
-            "tv.twitch.android.app",
         )
 
         document("AndroidManifest.xml").use { document ->

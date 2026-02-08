@@ -6,14 +6,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
-import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
+import app.morphe.patches.reddit.misc.settings.is_2025_45_or_greater
+import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -31,7 +31,7 @@ val sidebarComponentsPatch = bytecodePatch(
     name = "Hide sidebar components",
     description = "Adds options to hide the sidebar components."
 ) {
-    compatibleWith(COMPATIBILITY_REDDIT)
+    compatibleWith(COMPATIBILITY)
 
     dependsOn(settingsPatch)
 

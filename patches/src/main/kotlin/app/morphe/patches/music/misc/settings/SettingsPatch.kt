@@ -8,9 +8,9 @@ import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.hooks.youTubeMusicApplicationInitOnCreateHook
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
-import app.morphe.patches.music.playservice.is_8_40_or_greater
-import app.morphe.patches.music.playservice.versionCheckPatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -87,7 +87,7 @@ val settingsPatch = bytecodePatch(
         versionCheckPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.first()
+            recommendedAppVersion = COMPATIBILITY.second.first()
         )
     )
 

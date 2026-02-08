@@ -1,13 +1,13 @@
 package app.morphe.patches.youtube.layout.thumbnails
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.imageurlhook.addImageUrlHook
 import app.morphe.patches.youtube.misc.imageurlhook.cronetImageUrlHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/BypassImageRegionRestrictionsPatch;"
@@ -23,7 +23,7 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
         cronetImageUrlHookPatch,
     )
 
-    compatibleWith(COMPATIBILITY_YOUTUBE)
+    compatibleWith(COMPATIBILITY)
 
     execute {
         PreferenceScreen.MISC.addPreferences(

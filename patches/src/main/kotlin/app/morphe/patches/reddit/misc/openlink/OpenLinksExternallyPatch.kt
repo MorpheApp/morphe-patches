@@ -5,11 +5,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.reddit.utils.settings.is_2025_45_or_greater
-import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
+import app.morphe.patches.reddit.misc.settings.is_2025_45_or_greater
+import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -20,7 +20,7 @@ val openLinksExternallyPatch = bytecodePatch(
     name = "Open links externally",
     description = "Adds an option to always open links in your browser instead of in the in-app-browser."
 ) {
-    compatibleWith(COMPATIBILITY_REDDIT)
+    compatibleWith(COMPATIBILITY)
 
     dependsOn(
         settingsPatch,

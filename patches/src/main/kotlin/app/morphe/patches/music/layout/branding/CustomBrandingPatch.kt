@@ -7,8 +7,8 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -70,6 +70,6 @@ val customBrandingPatch = baseCustomBrandingPatch(
     block = {
         dependsOn(sharedExtensionPatch, disableSplashAnimationPatch)
 
-        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
+        compatibleWith(COMPATIBILITY)
     }
 )

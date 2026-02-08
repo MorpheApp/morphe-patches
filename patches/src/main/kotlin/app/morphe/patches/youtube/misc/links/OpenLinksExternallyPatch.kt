@@ -3,9 +3,9 @@ package app.morphe.patches.youtube.misc.links
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
@@ -39,7 +39,7 @@ val openLinksExternallyPatch = bytecodePatch(
         ),
     )
 
-    compatibleWith(COMPATIBILITY_YOUTUBE)
+    compatibleWith(COMPATIBILITY)
 
     execute {
         PreferenceScreen.MISC.addPreferences(

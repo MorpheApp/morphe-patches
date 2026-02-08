@@ -8,7 +8,6 @@ import app.morphe.util.resource.StringResource.Companion.sanitizeAndroidResource
 import java.util.Locale
 import java.util.logging.Level
 import java.util.logging.Logger
-import kotlin.jvm.javaClass
 
 internal val locales = listOf(
     AppLocale("", ""), // Default English locale. Must be first.

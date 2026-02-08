@@ -4,12 +4,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -17,7 +17,6 @@ import app.morphe.util.indexOfFirstResourceIdOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import kotlin.collections.first
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HideAutoplayPreviewPatch;"
@@ -33,7 +32,7 @@ val hideAutoplayPreviewPatch = bytecodePatch(
         resourceMappingPatch
     )
 
-    compatibleWith(COMPATIBILITY_YOUTUBE)
+    compatibleWith(COMPATIBILITY)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
