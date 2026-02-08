@@ -4,6 +4,7 @@ import app.morphe.patches.shared.misc.privacy.sanitizeSharingLinksPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY
 
 @Suppress("unused")
 val sanitizeSharingLinksPatch = sanitizeSharingLinksPatch(
@@ -13,16 +14,7 @@ val sanitizeSharingLinksPatch = sanitizeSharingLinksPatch(
             settingsPatch,
         )
 
-        compatibleWith(
-            "com.google.android.youtube"(
-                "20.14.43",
-                "20.21.37",
-                "20.26.46",
-                "20.31.42",
-                "20.37.48",
-                "20.40.45",
-            )
-        )
+        compatibleWith(COMPATIBILITY)
     },
     preferenceScreen = PreferenceScreen.MISC
 )
