@@ -42,7 +42,7 @@ final class CommentsFilter extends Filter {
         );
 
         comments = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_SECTION,
+                null,
                 "video_metadata_carousel",
                 "_comments"
         );
