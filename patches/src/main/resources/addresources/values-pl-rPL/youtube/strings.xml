@@ -28,9 +28,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Sterowanie przesuwaniem</string>
   <string name="morphe_settings_screen_11_misc_title">Inne</string>
   <string name="morphe_settings_screen_12_video_title">Film</string>
-  <string name="morphe_restore_old_settings_menus_title">Przywróć stare menu ustawień</string>
-  <string name="morphe_restore_old_settings_menus_summary_on">Tak</string>
-  <string name="morphe_restore_old_settings_menus_summary_off">Nie</string>
+  <string name="morphe_restore_old_settings_menus_title">Stare menu ustawień</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">Włączone</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">Wyłączone</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Odtwarzanie Shortsów w tle</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Wyłączone</string>
@@ -413,7 +413,7 @@ Ograniczenia:
   <string name="morphe_copy_video_url_timestamp_summary_on">Widoczny. Stuknij, by skopiować adres URL filmu z czasem. Stuknij i przytrzymaj, aby skopiować adres URL filmu bez czasu</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">Niewidoczny</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Okno dialogowe treści ograniczonej do oglądania</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Ostrzeżenie o treściach wrażliwych</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Usunięte</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Widoczne</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Nie pomija to ograniczeń wiekowych, lecz akceptuje je automatycznie.</string>
@@ -622,9 +622,9 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_notifications_button_title">Przycisk do powiadomień</string>
   <string name="morphe_hide_notifications_button_summary_on">Ukryty</string>
   <string name="morphe_hide_notifications_button_summary_off">Widoczny</string>
-  <string name="morphe_swap_create_with_notifications_button_title">Zamień przyciski przesyłania i powiadomień</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_on">Tak</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_off">Nie</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Przyciski przesyłania i powiadomień</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Zamienione</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Niezamienione</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Jeśli zmiana tego ustawienia nie przyniesie efektu, spróbuj przełączyć się w tryb incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Etykiety przycisków nawigacji</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Ukryte</string>
@@ -733,7 +733,7 @@ Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\
   <string name="morphe_hide_captions_button_title">Przycisk od napisów</string>
   <string name="morphe_hide_captions_button_summary_on">Ukryty</string>
   <string name="morphe_hide_captions_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_cast_button_title">Przycisk od castowania</string>
+  <string name="morphe_hide_cast_button_title">Przycisk od przesyłania</string>
   <string name="morphe_hide_cast_button_summary_on">Ukryty</string>
   <string name="morphe_hide_cast_button_summary_off">Widoczny</string>
   <string name="morphe_hide_player_control_buttons_background_title">Tło przycisków w odtwarzaczu</string>
@@ -952,7 +952,7 @@ Ustawienia → Odtwarzanie → Autoodtwarzanie następnego filmu"</string>
   <string name="morphe_ryd_shorts_title">Liczba łapek w dół w odtwarzaczu Shortsów</string>
   <string name="morphe_ryd_shorts_summary_on">"Widoczna
 
-Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito."</string>
+Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito"</string>
   <string name="morphe_ryd_shorts_summary_off">Niewidoczna</string>
   <string name="morphe_ryd_dislike_percentage_title">Łapki w dół wyświetlane jako procent</string>
   <string name="morphe_ryd_dislike_percentage_summary_on">Tak</string>
@@ -1297,8 +1297,8 @@ Ograniczenie: Użycie przycisku wstecz na pasku narzędzi może nie działać"</
   <string name="morphe_miniplayer_double_tap_action_title">Gest zmiany rozmiaru miniodtwarzacza</string>
   <string name="morphe_miniplayer_double_tap_action_summary_on">"Włączony
 
-• Kliknij podwójnie, by zwiększyć rozmiar miniodtwarzacza
-• Ponownie kliknij podwójnie, by przywrócić oryginalny rozmiar"</string>
+• Stuknij dwukrotnie, by zwiększyć rozmiar miniodtwarzacza
+• Ponownie stuknij dwukrotnie, by przywrócić oryginalny rozmiar"</string>
   <string name="morphe_miniplayer_double_tap_action_summary_off">Wyłączony</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Gest przeciągnięcia i upuszczenia</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Wyłączony</string>
