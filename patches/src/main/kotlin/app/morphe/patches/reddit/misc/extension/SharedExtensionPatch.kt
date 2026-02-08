@@ -1,7 +1,7 @@
-package app.morphe.patches.reddit.utils.extension
+package app.morphe.patches.reddit.misc.extension
 
-import app.morphe.patches.reddit.utils.extension.hooks.redditActivityOnCreateFingerprint
-import app.morphe.patches.reddit.utils.extension.hooks.redditMainActivityOnCreateFingerprint
+import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateFingerprint
+import app.morphe.patches.reddit.misc.extension.hooks.redditMainActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.extension.ExtensionHook
 import app.morphe.patches.shared.misc.extension.sharedExtensionPatch
 

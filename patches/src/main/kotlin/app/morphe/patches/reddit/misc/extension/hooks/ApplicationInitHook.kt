@@ -1,7 +1,6 @@
-package app.morphe.patches.reddit.utils.extension.hooks
+package app.morphe.patches.reddit.misc.extension.hooks
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.shared.misc.extension.ExtensionHook
 
 internal val redditMainActivityOnCreateFingerprint = Fingerprint(
     returnType = "V",

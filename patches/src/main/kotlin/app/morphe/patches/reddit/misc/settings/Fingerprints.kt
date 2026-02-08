@@ -1,4 +1,4 @@
-package app.morphe.patches.reddit.utils.settings
+package app.morphe.patches.reddit.misc.settings
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
@@ -9,7 +9,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
-
 
 const val EXTENSION_SETTING_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/settings/Setting;"
 

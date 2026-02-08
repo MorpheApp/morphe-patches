@@ -1,4 +1,4 @@
-package app.morphe.patches.reddit.utils.settings
+package app.morphe.patches.reddit.misc.settings
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -7,11 +7,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.reddit.utils.extension.hooks.redditActivityOnCreateFingerprint
-import app.morphe.patches.reddit.utils.extension.hooks.redditMainActivityOnCreateFingerprint
-import app.morphe.patches.reddit.utils.extension.sharedExtensionPatch
-import app.morphe.patches.reddit.utils.fix.signature.spoofSignaturePatch
+import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateFingerprint
+import app.morphe.patches.reddit.misc.extension.hooks.redditMainActivityOnCreateFingerprint
+import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -28,7 +27,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
+internal const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
 private lateinit var acknowledgementsLabelBuilderMethod: MutableMethod
 private lateinit var activityOnCreateMethod: MutableMethod
@@ -48,14 +48,13 @@ val settingsPatch = bytecodePatch(
     name = "Settings for Reddit",
     description = "Applies mandatory patches to implement Morphe settings into the application."
 ) {
-    compatibleWith(COMPATIBILITY_REDDIT)
+    compatibleWith(COMPATIBILITY)
 
     dependsOn(
         sharedExtensionPatch,
-        spoofSignaturePatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditMainActivityOnCreateFingerprint,
-            recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
+            recommendedAppVersion = COMPATIBILITY.second.first()
         )
     )
 
