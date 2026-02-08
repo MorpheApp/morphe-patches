@@ -3,7 +3,7 @@ package app.morphe.patches.music.audio.exclusiveaudio
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.settingsPatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY
 import app.morphe.util.returnEarly
 
 @Suppress("unused")
@@ -16,7 +16,7 @@ val enableExclusiveAudioPlaybackPatch = bytecodePatch(
         settingsPatch,
     )
 
-    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
+    compatibleWith(COMPATIBILITY)
 
     execute {
         AllowExclusiveAudioPlaybackFingerprint.method.returnEarly(true)

@@ -7,8 +7,8 @@ import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
@@ -27,7 +27,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
 ) {
     dependsOn(spoofVideoStreamsPatch)
 
-    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
+    compatibleWith(COMPATIBILITY)
 }
 
 private fun gmsCoreSupportResourcePatch() =

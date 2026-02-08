@@ -7,7 +7,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -44,7 +44,7 @@ val navigationBarPatch = bytecodePatch(
         }
     )
 
-    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
+    compatibleWith(COMPATIBILITY)
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(

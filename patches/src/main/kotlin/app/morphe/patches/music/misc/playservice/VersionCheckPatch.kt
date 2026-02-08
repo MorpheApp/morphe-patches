@@ -1,6 +1,6 @@
 @file:Suppress("ktlint:standard:property-naming")
 
-package app.morphe.patches.music.playservice
+package app.morphe.patches.music.misc.playservice
 
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.util.findPlayStoreServicesVersion
