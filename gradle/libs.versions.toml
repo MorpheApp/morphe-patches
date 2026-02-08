@@ -6,7 +6,6 @@ agp = "8.2.2"
 annotation = "1.9.1"
 gson = "2.13.2"
 guava = "33.5.0-jre"
-kotlin-reflect = "2.0.21"
 protobuf = "0.9.5"
 protoc = "3.25.2"
 hiddenapi = "6.1"
@@ -15,7 +14,6 @@ hiddenapi = "6.1"
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin-reflect" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
 hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
