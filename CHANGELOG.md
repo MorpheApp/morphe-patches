@@ -1,3 +1,10 @@
+# [1.13.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2026-02-08)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve "Hide comments section in Home feed" not hiding comments ([#473](https://github.com/MorpheApp/morphe-patches/issues/473)) ([915849b](https://github.com/MorpheApp/morphe-patches/commit/915849b888ff66007af4051cdb307573047285fa))
+
 # [1.13.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.12.0...v1.13.0-dev.1) (2026-02-08)
 
 
