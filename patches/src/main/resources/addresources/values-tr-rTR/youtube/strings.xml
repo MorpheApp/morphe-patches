@@ -286,6 +286,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_comments_channel_guidelines_title">Kanal yönergelerini gizle</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanal yönergeleri gizli</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanal yönergeleri görünür</string>
+  <string name="morphe_hide_comments_prompts_title">Yorum teşcillerini gizle</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Yorum teşcilleri gizli</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Yorum teşcilleri görünür</string>
   <string name="morphe_hide_comments_by_members_header_title">\'Üyelerin yorumları\' başlığını gizle</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Üyelerin yorumları başlığı gizli</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Üyelerin yorumları başlığı görünür</string>
@@ -639,8 +642,8 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sınırlamalar:
-• Bir siyah çubuğu video oynatıcıın üstünde görünebilir
-• Bazı cihazlarda, bu özellik etkinleştirildiğinde sistem navigasyon çubuğunu sayfaya göre saydam yapabilir."</string>
+• Video oynatıcıın üstünde siyah bir çubuğu görülebilir.
+• Sistem navigasyon çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Aydınlık temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Aydınlık temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Aydınlık temada gezinti çubuğu opak veya yarı saydam</string>
@@ -1232,7 +1235,6 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Eski kaydı çalma listesine geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Etiketsiz simgeleri devre dışı bırak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Daraltılmamış video eylem çubuğunu geri getir</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Eski Shorts oynatıcı simgelerini geri getir</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlangıç sayfasını değiştir</string>
   <string name="morphe_change_start_page_entry_default">Varsayılan</string>

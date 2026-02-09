@@ -40,11 +40,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_clear_history">Wyczyść historię wyszukiwania</string>
   <string name="morphe_settings_search_clear_history_message">Czy na pewno chcesz wyczyścić całą historię wyszukiwania?</string>
   <string name="morphe_settings_search_tips_title">Wskazówki dotyczące wyszukiwania</string>
-  <string name="morphe_settings_search_tips_summary">"• Dotknij ścieżki, aby do niej przejść
-• Długo naciśnij ustawienie, aby do niego przejść
-• Naciśnij Enter, aby zapisać wyszukiwane hasło w historii
+  <string name="morphe_settings_search_tips_summary">"• Stuknij ścieżkę, aby do niej przejść
+• Przytrzymaj ustawienie, aby do niego przejść
+• Naciśnij Enter, aby zapisać wyszukiwanie w historii
 • Wyszukiwanie ignoruje wielkość liter i interpunkcję
-• Ustawienia nadrzędne pojawiają się powyżej wyłączonych ustawień podrzędnych"</string>
+• Ustawienia nadrzędne pojawiają się nad wyłączonymi ustawieniami podrzędnymi"</string>
   <string name="morphe_settings_search_empty_history_title">Historia wyszukiwania jest pusta</string>
   <string name="morphe_settings_search_empty_history_summary">Aby zapisać historię wyszukiwania, wpisz zapytanie i naciśnij Enter</string>
   <string name="morphe_settings_search_history_title">Historia wyszukiwania ustawień</string>
@@ -119,6 +119,6 @@ To jest wymagane, aby aplikacja mogła funkcjonować."</string>
 
 Wyłączenie optymalizacji baterii MicroG nie będzie negatywnie wpływało na zużycie baterii.
 
-Kliknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
+Stuknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
   <string name="gms_core_dialog_continue_text">Kontynuuj</string>
 </resources>

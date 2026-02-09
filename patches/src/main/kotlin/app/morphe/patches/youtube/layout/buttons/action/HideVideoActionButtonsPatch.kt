@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.layout.buttons.action
 
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -10,6 +9,7 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 @Suppress("unused")
 val hideVideoActionButtonsPatch = resourcePatch(

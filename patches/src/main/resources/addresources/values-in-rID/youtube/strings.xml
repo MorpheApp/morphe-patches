@@ -286,6 +286,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_hide_comments_channel_guidelines_title">Sembunyikan pedoman saluran</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Pedoman saluran disembunyikan</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Pedoman saluran ditampilkan</string>
+  <string name="morphe_hide_comments_prompts_title">Sembunyikan prompsi komentar</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Prompsi komentar disembunyikan</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Prompsi komentar ditampilkan</string>
   <string name="morphe_hide_comments_by_members_header_title">Sembunyikan header \'Komentar oleh anggota\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Header Komentar oleh anggota disembunyikan</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Header Komentar oleh anggota ditampilkan</string>
@@ -639,8 +642,8 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bilah status buram</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bilah status buram atau tembus pandang</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Batasan:
-• Bilah hitam mungkin muncul di bagian atas pemutar video.
-• Pada beberapa perangkat, mengaktifkan fitur ini dapat mengubah navigasi sistem menjadi transparan."</string>
+• Sebaris hitam mungkin muncul di bagian atas pemain video.
+• Bilah navigasi sistem dapat berubah menjadi transparan dan tidak mungkin untuk mengomentari video."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Nonaktifkan bilah tembus cahaya terang</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Bilah navigasi mode terang adalah buram</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Bilah navigasi mode terang buram atau tembus pandang</string>
@@ -709,7 +712,7 @@ Cookie akan disimpan secara otomatis jika sah"</string>
           'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu trek audio disembunyikan
 
-Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'TV'"</string>
+Untuk menampilkan menu trek Audio, ubah 'Palsukan aliran video' menjadi 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sembunyikan Tonton di VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu tonton di VR disembunyikan</string>
@@ -1232,7 +1235,6 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Pulihkan simpanan lama ke daftar putar</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Nonaktifkan ikon tebal</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Pulihkan bilah tindakan video yang tidak diciutkan</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Pulihkan ikon pemutar Shorts lama</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Ubah halaman awal</string>
   <string name="morphe_change_start_page_entry_default">Bawaan</string>
@@ -1518,7 +1520,7 @@ Batasan:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioritaskan kualitas video</string>
   <string name="morphe_prioritize_video_quality_summary_on">Kualitas video diprioritaskan</string>
-  <string name="morphe_prioritize_video_quality_summary_off">Kodek video diprioritaskan</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Codec video diprioritaskan</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktifkan geser untuk mencari</string>
   <string name="morphe_slide_to_seek_summary_on">Geser untuk mencari diaktifkan</string>
@@ -1539,10 +1541,10 @@ Pemutaran video dengan AV1 mungkin tersendat atau kehilangan bingkai."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Tidak ada codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mode imersif 360° VR tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume stabil tidak tersedia</string>
-  <string name="morphe_spoof_video_streams_about_js">• Jika deobfuskasi gagal, mungkin playbacks juga gagal</string>
+  <string name="morphe_spoof_video_streams_about_js">• Jika proses pembukaan kode terenkripsi gagal, pemutaran mungkin gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asli tidak tersedia</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Variasi JavaScript Pemain</string>
+  <string name="morphe_spoof_video_streams_js_variant_title">Varian pemutar JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tampilkan di Statistik untuk nerds</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Jenis klien ditampilkan di Statistik untuk nerds</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klien disembunyikan di Statistik untuk nerds</string>

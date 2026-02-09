@@ -287,6 +287,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_hide_comments_channel_guidelines_title">Skrýt pravidla kanálu</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Pokyny ke kanálu jsou skryty</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Pokyny ke kanálu jsou zobrazeny</string>
+  <string name="morphe_hide_comments_prompts_title">Skrýt upozornění na komentáře</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Upozornění na komentáře jsou skryta</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Upozornění na komentáře jsou zobrazeny</string>
   <string name="morphe_hide_comments_by_members_header_title">Skrýt záhlaví \"Komentáře od členů\"</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Záhlaví Komentáře od členů je skryto</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Záhlaví Komentáře od členů je zobrazeno</string>
@@ -641,7 +644,7 @@ Cookies budou automaticky uloženy, pokud jsou platné."</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Stavový řádek je neprůhledný nebo průsvitný</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Omezení:
 • Černý pruh může být vidět v horní části videopřehrávače.
-• Na některých zařízeních může zapnutí této funkce změnit systémovou navigaci na průhlednou."</string>
+• Systémová navigace může být transparentní a není možné komentovat videa."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktivovat světlý průsvitný navigační panel</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigační panel v světlém režimu je neprůhledný</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Navigační lišta v světlém režimu je neprůhledná nebo průsvitná</string>
@@ -1233,7 +1236,6 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré uložení zpět do seznamu přehrávání</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Vypnout tučné ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 – Obnovit nerozbalený panel akcí videa</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 – Obnovit staré ikony přehrávače Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Změnit úvodní stránku</string>
   <string name="morphe_change_start_page_entry_default">Výchozí</string>

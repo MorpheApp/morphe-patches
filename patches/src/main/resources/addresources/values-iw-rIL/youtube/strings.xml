@@ -286,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">הסתר הנחיות ערוץ</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">הנחיות הערוץ מוסתרות</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">הנחיות הערוץ מוצגות</string>
+  <string name="morphe_hide_comments_prompts_title">הסתר הודעות תגובה</string>
+  <string name="morphe_hide_comments_prompts_summary_on">הודעות תגובה מוסתרות</string>
+  <string name="morphe_hide_comments_prompts_summary_off">הודעות תגובה מוצגות</string>
   <string name="morphe_hide_comments_by_members_header_title">הסתר כותרת \'תגובות של חברי מועדון\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">כותרת \'תגובות של חברי מועדון\' מוסתרת</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">כותרת \'תגובות של חברי מועדון\' מוצגת</string>
@@ -638,9 +641,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
-• A black bar may appear at the top of the video player.
-• On some devices, enabling this feature can change the system navigation bar to transparent."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"הגבלות:
+• סרגל שחור עשוי להופיע наверח של שחקת הסרט
+• סרגל הניווט של המערכת עשוי להשתנות ל شفוף ואין אפשרות להגיב לסרטים."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">השבת סרגל בהיר שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">סרגל ניווט במצב בהיר הוא אטום</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">סרגל ניווט במצב בהיר הוא אטום או שקוף</string>
@@ -1232,7 +1235,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר שפופרות ישנות לפלייליסט</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20:28:41 - עכבה סמלים מודגשים</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - שחזור סרגל פעולות וידאו לא מכווץ</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - שחזר סמלי נגן Shorts ישנים</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>

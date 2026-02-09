@@ -288,6 +288,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Οδηγίες καναλιού</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_comments_prompts_title">Δancock prompts</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Δancock prompts are hidden</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Δancock prompts are shown</string>
   <string name="morphe_hide_comments_by_members_header_title">Κεφαλίδα «Σχόλια από μέλη»</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Εμφανίζεται</string>
@@ -641,8 +644,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Περιορισμοί:
-• Μήκος μαύρο μπορεί να εμφανιστεί στην κορυφή του παίκτη βίντεο.
-• Σε ορισμένα συστήματα, η ενεργοποίηση αυτής της λειτουργίας μπορεί να αλλάξει τη συστήματος ναυσιπλοΐα μπαρ σε διαφανές."</string>
+• Μήκος μαύρου μπάρου μπορεί να εμφανιστεί στην κορυφή του παίκτη βίντεο.
+• Η συστοιχία διασύνδεσης του συστήματος μπορεί να αλλάξει σε διαφανές και δεν είναι δυνατός σχολιασμός βίντεο."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Απενεργοποίηση διαφανούς γραμμής στο φωτεινό θέμα</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Η γραμμή πλοήγησης στο φωτεινό θέμα δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο φωτεινό θέμα ορίζεται αυτόματα</string>
@@ -1234,7 +1237,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Επαναφορά παλιών σωζημάτων σε αναπαραγωγή</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Αποκλείσε έντονα εικονίδια</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Επαναφορά της μη συμπτυγμένης γραμμής ενεργειών βίντεο</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Επαναφορά των παλιών εικονιδίων της οθόνης αναπαραγωγής Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αλλαγή αρχικής σελίδας</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>

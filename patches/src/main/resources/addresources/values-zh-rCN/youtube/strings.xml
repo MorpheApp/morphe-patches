@@ -286,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隐藏频道准则</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">频道准则已隐藏</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">频道准则已显示</string>
+  <string name="morphe_hide_comments_prompts_title">隐藏评论提示</string>
+  <string name="morphe_hide_comments_prompts_summary_on">评论提示已隐藏</string>
+  <string name="morphe_hide_comments_prompts_summary_off">评论提示已显示</string>
   <string name="morphe_hide_comments_by_members_header_title">隐藏「会员的评论」标题</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">成员评论标题已隐藏</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">成员评论标题已显示</string>
@@ -639,8 +642,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"限制：
-• 视频播放器顶部可能会出现黑条
-• 在某些设备上，启用此功能可能会使系统导航栏变为透明。"</string>
+• 视频播放器顶部可能会出现黑条。
+• 系统导航栏可能会变为透明，无法评论视频。"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">禁用浅色半透明导航栏</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">浅色模式的导航栏不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">浅色模式导航栏为不透明或半透明</string>
@@ -1236,7 +1239,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 禁用粗体图标</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 恢复未折叠的视频操作栏</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - 恢复旧的 Shorts 播放器图标</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">更改起始页</string>
   <string name="morphe_change_start_page_entry_default">默认</string>

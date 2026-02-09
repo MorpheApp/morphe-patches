@@ -286,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Сакриј смернице канала</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Смернице канала су скривене</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Смернице канала су приказане</string>
+  <string name="morphe_hide_comments_prompts_title">Сакриј коментаре</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Коментари су скривени</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Коментари су приказани</string>
   <string name="morphe_hide_comments_by_members_header_title">Сакриј заглавље „Коментари од чланова”</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Заглавље „Коментари чланова” је скривено</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Заглавље „Коментари чланова” је приказано</string>
@@ -638,9 +641,9 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_disable_translucent_status_bar_title">Онемогући прозирну статусну траку</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Статусна трака је непрозирна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Статусна трака је непрозирна или прозирна</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничења:
-• Црни трака може да се појави на врху играча за видео.
-• На неким уређајима, омогућавање ове функције може да промени системску траку за пребацивање у провидну."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograničenja:
+• Moguće je da se na vrhu video plejera pojavi crna traka.
+• Sistemske navigacijske trake mogu postati prozirne i nije moguće komentarisati videozapise."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Онемогући светлу прозирну траку за навигацију</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Трака за навигацију у светлом режиму је непрозирна</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Трака за навигацију у светлом режиму је непрозирна или прозирна</string>
@@ -1232,7 +1235,6 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Враћа старе иконице плејера</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Искључи жирне иконе</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Врати нескупљену траку радњи видеа</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Враћа старе иконице Shorts плејера</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промена полазне странице</string>
   <string name="morphe_change_start_page_entry_default">Подразумевана</string>

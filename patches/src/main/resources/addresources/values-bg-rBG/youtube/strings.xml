@@ -286,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Скрийте или покажете канал указания</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Канал указания са скрити</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Канал указания са показани</string>
+  <string name="morphe_hide_comments_prompts_title">Скриване на коментарни подсказки</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Коментарните подсказки са скрити</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Коментарните подсказки са показани</string>
   <string name="morphe_hide_comments_by_members_header_title">Скрийте или покажете \'Коментари от членове\' заглавие</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Заглавието \'Коментари от членове\' е скрито</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Заглавието \'Коментари от членове\' е показано</string>
@@ -633,8 +636,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Лентата за статус е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Изключи светла прозрачна лента за навигация</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничения:
-• Може да се появи черен лент в горната част на играча на видеото.
-• На някои уреди, включването на тази функционалност може да промени системната лента за навигация на прозрачна."</string>
+• Може да се появи черна лента в горната част на видеоплеера.
+• Навигационната лента на системата може да промени на прозрачна и не е възможно да се коментира на видеа."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Лентата за навигация в светъл режим е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Изключи тъмна прозрачна лента за навигация</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Лентата за навигация в тъмен режим е непрозрачна</string>
@@ -1220,7 +1223,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Възстанови старите запазвания в списъка</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Изключване на удебеляване на иконите</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Възстановите неколапсирания видеоплеерски бар</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Възстановите старите икони на Коротки видеа</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промянете стартова страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>

@@ -12,7 +12,7 @@ private const val NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME =
 
 @Suppress("unused")
 val overrideCertificatePinningPatch = resourcePatch(
-//    name = "Override certificate pinning",
+    name = "Override certificate pinning",
     description = "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
     use = false,
 ) {

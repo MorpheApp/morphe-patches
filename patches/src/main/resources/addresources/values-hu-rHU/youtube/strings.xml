@@ -286,6 +286,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_comments_channel_guidelines_title">Csatorna irányelveinek elrejtése</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">A csatorna irányelvei rejtve vannak</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">A csatorna irányelvei láthatók</string>
+  <string name="morphe_hide_comments_prompts_title">Közösségi hozzászólás promptok elrejtése</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Közösségi hozzászólás promptok elrejtve</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Közösségi hozzászólás promptok megjelenítése</string>
   <string name="morphe_hide_comments_by_members_header_title">A „Tagok megjegyzései” fejléc elrejtése</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">A tagok hozzászólásainak fejléce rejtett</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">A tagok hozzászólásainak fejléce látható</string>
@@ -638,9 +641,9 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Az állapotsor nem áttetsző</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Az állapotsor nem áttetsző vagy áttetsző</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Korlátozások:
-• Egy fekete sáv jelenthethet fel a videólejátszó tetején
-• Egyes eszközöknél ez a funkció lehetővé teszi a rendszer navigációs sáv átlátszatlanságának megváltoztatását."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitációk:
+• A videólejátszó tetején fekete sáv jelenhet meg.
+• A rendszer navigációs sávja átlátszóvá válhat, és nem lehet megjegyzésként írni a videókra."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Világos, átlátszó sáv letiltása</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Világos módban az átlátszó navigációs sáv átlátszatlan</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A világos módú navigációs sáv nem áttetsző vagy áttetsző</string>
@@ -1232,7 +1235,6 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Visszaállítjuk az régi mentést a lejátslóba</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20:28:41 - Törölje a félkövér ikonokat</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Nem összecsukott videó műveletsáv visszaállítása</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - A régi Shorts lejátszó ikonok visszaállítása</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>

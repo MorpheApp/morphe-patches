@@ -25,7 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_04_general_title">ทั่วไป</string>
   <string name="morphe_settings_screen_05_player_title">เครื่องเล่น</string>
   <string name="morphe_settings_screen_07_seekbar_title">แถบเลื่อน</string>
-  <string name="morphe_settings_screen_08_swipe_controls_title">ปัดเพื่อควบคุม</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">ตัวปัดควบคุม</string>
   <string name="morphe_settings_screen_11_misc_title">เบ็ดเตล็ด</string>
   <string name="morphe_settings_screen_12_video_title">วิดีโอ</string>
   <string name="morphe_restore_old_settings_menus_title">กู้คืนเมนูการตั้งค่าแบบเก่า</string>
@@ -286,6 +286,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">ซ่อนแนวทางปฏิบัติของช่อง</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">ซ่อนแนวทางช่องแล้ว</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">แสดงแนวทางช่องแล้ว</string>
+  <string name="morphe_hide_comments_prompts_title">ซ่อนคำถามความคิดเห็น</string>
+  <string name="morphe_hide_comments_prompts_summary_on">คำถามความคิดเห็นถูกซ่อนไว้</string>
+  <string name="morphe_hide_comments_prompts_summary_off">คำถามความคิดเห็นแสดงอยู่</string>
   <string name="morphe_hide_comments_by_members_header_title">ซ่อนส่วนหัว \'ความคิดเห็นโดยสมาชิก\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">ส่วนหัวความคิดเห็นโดยสมาชิกถูกซ่อน</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">ส่วนหัวความคิดเห็นโดยสมาชิกแสดงอยู่</string>
@@ -637,8 +640,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"ข้อจำกัด:
-• บาร์สีดำอาจปรากฏที่ด้านบนของตัวเล่นวิดีโอ
-• บางอุปกรณ์ที่เปิดใช้งานฟีเจอร์นี้อาจเปลี่ยนแถบนำทางระบบเป็นโปร่งใส"</string>
+• บาร์สีดำอาจปรากฏขึ้นด้านบนของตัวเล่นวิดีโอ
+• แถบการนำทางของระบบอาจเปลี่ยนเป็นโปร่งใสและไม่สามารถแสดงความคิดเห็นในวิดีโอได้"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ปิดใช้งานแถบนำทางแบบโปร่งแสงสีอ่อน</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">แถบนำทางโหมดสว่างเป็นแบบทึบแสง</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">แถบนำทางโหมดสว่างโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -1230,7 +1233,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ปิดไอคอนตัวหนา</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - กู้คืนแถบการทำงานของวิดีโอที่ไม่ได้ยุบ</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">เปลี่ยนหน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>

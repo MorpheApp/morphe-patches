@@ -29,11 +29,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_summary_on">Ukryte</string>
   <string name="morphe_music_hide_video_ads_summary_off">Widoczne</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-  <string name="morphe_music_play_permanent_repeat_title">Stałe powtarzanie</string>
+  <string name="morphe_music_play_permanent_repeat_title">Ciągłe zapętlanie</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Włączone</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Wyłączone</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Przycisk od castowania</string>
+  <string name="morphe_music_hide_cast_button_title">Przycisk od przesyłania</string>
   <string name="morphe_music_hide_cast_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_cast_button_summary_off">Widoczny</string>
   <string name="morphe_music_hide_history_button_title">Przycisk do historii</string>
@@ -50,9 +50,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_summary_on">Ukryty</string>
   <string name="morphe_music_hide_category_bar_summary_off">Widoczny</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
-  <string name="morphe_music_change_miniplayer_color_title">Zmień kolor miniodtwarzacza</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">Kolor miniodtwarzacza dopasowany do odtwarzacza pełnoekranowego</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">Miniodtwarzacz używa domyślnego koloru</string>
+  <string name="morphe_music_change_miniplayer_color_title">Kolor miniodtwarzacza</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Dopasowany do odtwarzacza pełnoekranowego</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Domyślny</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Pasek nawigacji</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ukryj lub zmień przyciski paska nawigacji</string>

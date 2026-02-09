@@ -286,6 +286,9 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalretningslinjer</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalretningslinjer er skjult</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalretningslinjer er vist</string>
+  <string name="morphe_hide_comments_prompts_title">Skjul kommentar-prompt</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Kommentar-prompt er skjult</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Kommentar-prompt er vist</string>
   <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\' header</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Kommentarer fra medlemmers overskrift er skjult</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Kommentarer fra medlemmers overskrift vises</string>
@@ -638,9 +641,9 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begrænsninger:
-• En sort streg kan dukke op øverst på videoafspilleren.
-• På nogle enheder kan det ændre systemets navigationsbar til gennemsigtig, når man aktiverer denne funktion."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">" Begrænsninger:
+• En sort streg kan dukke op i toppen af videoafspilleren.
+• Systemnavigationsbaren kan blive gennemsigtig, og det er ikke muligt at kommentere videoer."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver lys gennemsigtig linje</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigationslinjen i lys tilstand er ikke gennemsigtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Lys tilstand navigationslinjen er opak eller gennemsigtig</string>
@@ -1232,7 +1235,6 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Genenfå old save til spilleliste</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Deaktiver fed bogstaver</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Gendan ikke-kollapset videohandlingslinje</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Gendan gamle Shorts player ikoner</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Skift startside</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>

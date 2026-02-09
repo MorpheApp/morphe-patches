@@ -287,6 +287,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">छुपाएं चैनल निदेशिका</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">चैनल गाइडलाइनें छुपाई गई हैं</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">चैनल गाइडलाइनें दिखाई जाती हैं</string>
+  <string name="morphe_hide_comments_prompts_title">अक्सर टिप्पणियों को छुपाएं</string>
+  <string name="morphe_hide_comments_prompts_summary_on">टिप्पणियों को छुपाया गया है</string>
+  <string name="morphe_hide_comments_prompts_summary_off">टिप्पणियों को दिखाया गया है</string>
   <string name="morphe_hide_comments_by_members_header_title">छुपाएं \'सदस्य के टिप्पणियां\' शीर्षक</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">सदस्यों के टिप्पणियों के शीर्षक छुपा हुआ है</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">सदस्यों के टिप्पणियों के शीर्षक दिखाया जाता है</string>
@@ -602,8 +605,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"सीमाएँ:
-• वीडियो प्लेयर के शीर्ष पर काला बार दिखाई सकता है
-• कुछ डिवाइस पर इस सुविधा को एनब्ल करने से सिस्टम नैविगेशन बार को ट्रांस्पैरेंट बनाया जा सकता है"</string>
+• वीडियो प्लेयर के शीर्ष पर काला बैंड हो सकता है।
+• नैविगेशन बार सिस्टम ट्रांसल्यूसेंट हो सकता है और वीडियो पर टिप्पणी करना संभव नहीं हो सकता।"</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या बदलें</string>
   <string name="morphe_hide_toolbar_create_button_title">छुपाएं \'सृजना\' बटन</string>

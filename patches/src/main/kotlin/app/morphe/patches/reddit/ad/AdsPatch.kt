@@ -6,13 +6,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.reddit.utils.settings.settingsPatch
-import app.morphe.util.setExtensionIsPatchIncluded
+import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction

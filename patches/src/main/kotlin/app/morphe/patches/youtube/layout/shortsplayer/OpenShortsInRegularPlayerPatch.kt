@@ -6,7 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
@@ -15,6 +14,7 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel

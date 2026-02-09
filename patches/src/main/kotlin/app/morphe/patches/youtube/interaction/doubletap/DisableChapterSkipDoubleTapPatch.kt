@@ -4,13 +4,13 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import java.util.logging.Logger

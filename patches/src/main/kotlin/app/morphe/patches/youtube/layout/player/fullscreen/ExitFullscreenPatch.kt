@@ -2,13 +2,13 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.playerStatusMethod
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.indexOfFirstInstructionOrThrow

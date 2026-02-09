@@ -286,6 +286,9 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_comments_channel_guidelines_title">Sakrij smernice kanala</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Smernice kanala su skrivene</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Smernice kanala su prikazane</string>
+  <string name="morphe_hide_comments_prompts_title">Sakrij komentare</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Komentari su skriveni</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Komentari su prikazani</string>
   <string name="morphe_hide_comments_by_members_header_title">Sakrij zaglavlje „Komentari od članova”</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Zaglavlje „Komentari članova” je skriveno</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Zaglavlje „Komentari članova” je prikazano</string>
@@ -639,8 +642,8 @@ Cookies will be saved automatically if they are valid"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusna traka je neprozirna</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusna traka je neprozirna ili prozirna</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograničenja:
-• Crna traka može da se pojavi na vrhu igrača videa.
-• Na nekim uređajima, omogućavanje ove funkcije može promeniti sistemsku traku navigacije u prozirnu."</string>
+• Moguće je da se na vrhu video plejera pojavi crna traka.
+• Sistemske navigacione trake mogu postati prozirne i nije moguće komentarisati videozapise."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Onemogući svetlu prozirnu traku za navigaciju</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Traka za navigaciju u svetlom režimu je neprozirna</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Traka za navigaciju u svetlom režimu je neprozirna ili prozirna</string>
@@ -1232,7 +1235,6 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vraća stare ikonice Shorts plejera</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Izgubi bold ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Vraća neskupljenu traku radnji videa</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Vraća stare ikonice Shorts plejera</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promena polazne stranice</string>
   <string name="morphe_change_start_page_entry_default">Podrazumevana</string>

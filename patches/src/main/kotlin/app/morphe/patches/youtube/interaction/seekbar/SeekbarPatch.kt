@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.interaction.seekbar
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 @Suppress("unused")
 val seekbarPatch = bytecodePatch(

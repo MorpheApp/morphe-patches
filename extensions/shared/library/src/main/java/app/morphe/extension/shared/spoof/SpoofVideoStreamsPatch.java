@@ -1,5 +1,7 @@
 package app.morphe.extension.shared.spoof;
 
+import static app.morphe.extension.shared.spoof.ClientType.TV;
+
 import android.app.Activity;
 import android.app.Application;
 import android.net.Uri;
@@ -16,10 +18,23 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
+
+    public static final class SpoofClientJavaScriptVariantAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return BaseSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(BaseSettings.SPOOF_VIDEO_STREAMS);
+        }
+    }
 
     /**
      * Domain used for internet connectivity verification.
