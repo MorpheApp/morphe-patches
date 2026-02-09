@@ -24,6 +24,8 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -349,15 +351,17 @@ public final class LayoutComponentsFilter extends Filter {
                 new Pair<>(Settings.HIDE_QUIZZES_SECTION, "post_base_wrapper_slim"),
                 // May no longer work on v20.31+, even though the component is still there.
                 new Pair<>(Settings.HIDE_ATTRIBUTES_SECTION, "cell_video_attribute")
-        ).forEach(pair ->
-                descriptionSearch.addPattern(pair.second.getBytes(StandardCharsets.UTF_8),
-                        (textSearched, matchedStartIndex, matchedLength, callbackParameter) -> {
-                            //noinspection unchecked
-                            AtomicReference<Boolean> hide = (AtomicReference<Boolean>) callbackParameter;
-                            hide.set(pair.first.get());
-                            return true;
-                        }
-                )
+        ).forEach(pair -> {
+                    BooleanSetting setting = pair.first;
+                    descriptionSearch.addPattern(pair.second.getBytes(StandardCharsets.UTF_8),
+                            (textSearched, matchedStartIndex, matchedLength, callbackParameter) -> {
+                                //noinspection unchecked
+                                AtomicReference<Boolean> hide = (AtomicReference<Boolean>) callbackParameter;
+                                hide.set(setting.get());
+                                return true;
+                            }
+                    );
+                }
         );
 
         addPathCallbacks(
@@ -465,7 +469,8 @@ public final class LayoutComponentsFilter extends Filter {
             // its the shopping shelf.
             if (hidePlayerShoppingShelf) {
                 PlayerType type = PlayerType.getCurrent();
-                if (type == PlayerType.WATCH_WHILE_MAXIMIZED || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN) {
+                if (type == PlayerType.WATCH_WHILE_MAXIMIZED || type == PlayerType.WATCH_WHILE_FULLSCREEN
+                        || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN) {
                     return true;
                 }
             }
