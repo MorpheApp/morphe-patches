@@ -1,3 +1,10 @@
+# [1.13.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.5...v1.13.0-dev.6) (2026-02-10)
+
+
+### Bug Fixes
+
+* **YouTube - Theme:** Adjust black color overrides ([b779c12](https://github.com/MorpheApp/morphe-patches/commit/b779c1245e241b2ad2929cc01767e86ea814cfc4))
+
 # [1.13.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.4...v1.13.0-dev.5) (2026-02-10)
 
 
