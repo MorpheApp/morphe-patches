@@ -23,7 +23,6 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public class MorpheSettingsIconDynamicDrawable extends Drawable {
 
-    @NonNull
     private Drawable icon;
     private Boolean lastKnownDarkMode;
 
@@ -43,8 +42,8 @@ public class MorpheSettingsIconDynamicDrawable extends Drawable {
             lastKnownDarkMode = isDarkMode;
 
             String iconName = Utils.appIsUsingBoldIcons()
-                    ? (isDarkMode ? "morphe_settings_icon_bold_dark" : "morphe_settings_icon_bold_light")
-                    : (isDarkMode ? "morphe_settings_icon_dark" : "morphe_settings_icon_light");
+                    ? "morphe_settings_icon_bold"
+                    : "morphe_settings_icon";
 
             final int resId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
             Drawable newIcon = Utils.getContext().getDrawable(resId);
@@ -54,9 +53,7 @@ public class MorpheSettingsIconDynamicDrawable extends Drawable {
             }
 
             // Preserve bounds when switching icons.
-            if (getBounds() != null) {
-                newIcon.setBounds(getBounds());
-            }
+            newIcon.setBounds(getBounds());
 
             icon = newIcon;
         }
