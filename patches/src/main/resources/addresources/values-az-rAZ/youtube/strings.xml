@@ -44,7 +44,11 @@ Second \"item\" text"</string>
 Bu, xüsusi filtrlər yaradarkən quruluşları müəyyən etməyə kömək edə bilər.
 
 Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlumatın da daxil edəcək."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Yaradıcı mağaza bölümün gizlət</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Yaradıcı alış-veriş cərgəsi video oynadıcı altında gizlidir</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Yaradıcı alış-veriş cərgəsi video oynadıcı altında görünür</string>
   <string name="morphe_hide_album_cards_title">Albom kartlarını gizlət</string>
   <string name="morphe_hide_album_cards_summary_on">Albom kartları gizlidir</string>
   <string name="morphe_hide_album_cards_summary_off">Albom kartları göstərilir</string>
@@ -349,9 +353,6 @@ Məhdudiyyətlər
   <string name="morphe_hide_keyword_toast_invalid_length">Açar söz çox qısadır və istinad tələb edir: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Açar söz, bütün videoları gizlədəcək: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Yaradıcı mağaza bölümün gizlət</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Yaradıcı alış-veriş cərgəsi video oynadıcı altında gizlidir</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Yaradıcı alış-veriş cərgəsi video oynadıcı altında görünür</string>
   <string name="morphe_hide_end_screen_store_banner_title">Son ekran mağaza afişasın gizlət</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Son ekran mağaza afişası gizlidir</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Son ekran mağaza afişası görünür</string>
@@ -922,12 +923,6 @@ Məhdudiyyət: Bəyənməmələr gizli rejimdə görünməyə bilər"</string>
   <string name="morphe_wide_searchbar_title">Geniş axtarış cizgisin aktivləşdir</string>
   <string name="morphe_wide_searchbar_summary_on">Geniş axtarış cizgisi aktivdir</string>
   <string name="morphe_wide_searchbar_summary_off">Geniş axtarış cizgisi qeyri-aktivdir</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Eski axtarış filtrelərinin bərpası</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Axtarış filtresində reytinqə görə və yüklənmə tarixi üzrə sıralama mümkündür</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Axtarış filtresində reytinqə görə və yüklənmə tarixi üzrə sıralama mümkün deyil</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Reytinq</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Yüklənmə tarixi</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">\"SponsorBlock\"u aktivləşdir</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock YouTube videolarının cansıxıcı hissələrini ötürmək üçün toplu sistemdir</string>
@@ -1164,7 +1159,6 @@ Bu tətbiqin görünüşün və xüsusiyyətlərin dəyişdirəcək, lakin bilin
 Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların silmək tövsiyə olunur."</string>
   <string name="morphe_spoof_app_version_target_title">Saxta tətbiq versiyası hədəfi</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Yığılmayan video fəaliyyət cizgisin bərpa et</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Köhnə Shorts oynadıcı işarələrin bərpa et</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlatma səhifəsini dəyişdir</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>

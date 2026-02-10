@@ -17,18 +17,95 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Naziv aplikacije</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
+  <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
+  <string name="morphe_custom_branding_icon_entry_1">Originalne APK datoteke</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">Prilagođeno</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentalna upozorenja! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Očekujte neobično ponašanje aplikacije ili neidentificirane greške dok se ne popravljaju patch-ovi za ovu verziju aplikacije.
+&lt;br/&gt;&lt;br/&gt;
+Ako želite najstabilniju korisničku iskustvu, deinstalirajte ovu i patch-ujte preporučenu verziju aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalnu</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilnu</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe patches</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša povijest gledanja nije spremljena.&lt;br&gt;&lt;br&gt;Ovo je vjerojatno uzrokovano DNS ad blokerom ili mrežnim proxyjem.&lt;br&gt;&lt;br&gt;Da bi to popravili, dodajte u bjelu listu \"s.youtube.com\" ili isključite sve DNS blokere i proxyje.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovno</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Falsificiraj video toke</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Falsificiraj klijentske video toke da bi se spriječili problemi pri reprodukciji</string>
+  <string name="morphe_spoof_video_streams_title">Falsificiraj video toke</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Video toke su falsificirane
+
+Ako ste korisnik YouTube Premium, ovaj postavka nije potrebna"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Video toke nisu falsificirane
+
+Reprodukcija možda neće funkcionirati"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Nije moguće dohvatiti niti jedan klijentski tok</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ove postavke može uzrokovati probleme pri reprodukciji.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušajte omogućiti: Falsificiraj video toke > Prijava u Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Standardni klijent</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava u Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nije prijavljeni u Android VR. Pritisnite ovdje za prijavu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutačno prijavljeni u Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Da bi koristili ovu značajku, promijenite \"Standardni klijent\" u Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava u Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava u Android VR može popraviti probleme pri reprodukciji za neka korisnika
+
+Da bi se prijavili, pritisnite nastavi ispod"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Nastavi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjava</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Upute</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod za aktivaciju: %s
+
+1. Pritisnite \"Otvori web stranicu\" ispod da bi se otvorila stranica \"Poveži uređaj\"
+2. Iz klipiraj ili upišite kod za aktivaciju prikazan iznad
+3. Prijavite se na Google ako vam je to zapovijeđeno. Ako imate više računa, odaberite ovaj YouTube račun
+4. Pritisnite \"Dozvoli YouTube VR\" pristup
+5. Vratite se u ovu aplikaciju nakon što se pojavi poruka \"Uređaj povezan\""</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Dijeli web stranicu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nije moguće izdati kod za aktivaciju</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nije moguće izdati autentikacijski token</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uspješno prijavljeni</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentikacija je spremljena
+
+• Vaši Morphe postavki neće uvoziti/izvoziti Android VR autentikaciju
+• Ako se ova aplikacija ne koristi 6 mjeseci, Google će ukloniti ovu autentikaciju
+• Morat ćete se ponovno prijaviti ako promijenite svoju Google lozinku ili deregistrirate ovaj uređaj iz postavki Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je privremeno nedostupan (API vremenski istekao)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Prijava u Android VR je istekla, pokušajte ponovno prijaviti se u VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 je privremeno nedostupan (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 je privremeno nedostupan</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nije moguće prijaviti se u VR, web autentikacija nije odobrena</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nije moguće prijaviti se u VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Odjavljeni s Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu u VR, pokušajte ponovno prijaviti se u VR</string>
   <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Sili originalni jezik zvuka</string>
+  <string name="morphe_force_original_audio_summary_on">Koristi se originalni jezik zvuka</string>
+  <string name="morphe_force_original_audio_summary_off">Koristi se standardni jezik zvuka</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Da bi koristili ovu značajku, promijenite \"Falsificiraj video toke\" u bilo koji klijent osim Android Studio</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Čisti dijeljljive poveznice</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parametar slijeda je uklonjen iz dijeljenih poveznica</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parametar slijeda nije uklonjen iz dijeljenih poveznica</string>
+  <string name="morphe_replace_music_with_youtube_title">Promijenite dijeljene poveznice u youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Dijeljene poveznice koriste youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Dijeljene poveznice koriste music.youtube.com</string>
 </resources>

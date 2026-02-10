@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
@@ -23,6 +24,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_02_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -61,25 +63,6 @@ val themePatch = baseThemePatch(
                     lightThemeBackgroundColor!!,
                     darkThemeBackgroundColorOption.value!!
                 )
-
-                fun addColorResource(
-                    resourceFile: String,
-                    colorName: String,
-                    colorValue: String,
-                ) {
-                    document(resourceFile).use { document ->
-                        val resourcesNode =
-                            document.getElementsByTagName("resources").item(0) as Element
-
-                        resourcesNode.appendChild(
-                            document.createElement("color").apply {
-                                setAttribute("name", colorName)
-                                setAttribute("category", "color")
-                                textContent = colorValue
-                            }
-                        )
-                    }
-                }
 
                 // Add a dynamic background color to the colors.xml file.
                 val splashBackgroundColorKey = "morphe_splash_background_color"
@@ -157,16 +140,7 @@ val themePatch = baseThemePatch(
             themeResourcePatch
         )
 
-        compatibleWith(
-            "com.google.android.youtube"(
-                "20.14.43",
-                "20.21.37",
-                "20.26.46",
-                "20.31.42",
-                "20.37.48",
-                "20.40.45",
-            )
-        )
+        compatibleWith(COMPATIBILITY_YOUTUBE)
     },
 
     executeBlock = {
@@ -255,3 +229,24 @@ val themePatch = baseThemePatch(
         }
     }
 )
+
+
+context(ResourcePatchContext)
+internal fun addColorResource(
+    resourceFile: String,
+    colorName: String,
+    colorValue: String,
+) {
+    document(resourceFile).use { document ->
+        val resourcesNode =
+            document.getElementsByTagName("resources").item(0) as Element
+
+        resourcesNode.appendChild(
+            document.createElement("color").apply {
+                setAttribute("name", colorName)
+                setAttribute("category", "color")
+                textContent = colorValue
+            }
+        )
+    }
+}

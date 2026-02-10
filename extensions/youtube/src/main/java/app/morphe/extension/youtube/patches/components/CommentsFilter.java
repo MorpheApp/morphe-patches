@@ -42,7 +42,7 @@ final class CommentsFilter extends Filter {
         );
 
         comments = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_SECTION,
+                null,
                 "video_metadata_carousel",
                 "_comments"
         );
@@ -50,6 +50,13 @@ final class CommentsFilter extends Filter {
         var communityGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
                 "community_guidelines"
+        );
+
+        var commentsPrompts = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PROMPTS,
+                "comment_filter_context.e",
+                "timed_comments_welcome.e",
+                "timed_comments_end.e"
         );
 
         var createAShort = new StringFilterGroup(
@@ -78,8 +85,9 @@ final class CommentsFilter extends Filter {
                 channelGuidelines,
                 chatSummary,
                 chipBar,
-                commentsByMembers,
                 comments,
+                commentsByMembers,
+                commentsPrompts,
                 communityGuidelines,
                 createAShort,
                 emojiAndTimestampButtons,

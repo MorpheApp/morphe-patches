@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Αυτό μπορεί να βοηθήσει στον εντοπισμό στοιχείων κατά τη δημιουργία προσαρμοσμένων φίλτρων.
 
 Ωστόσο, η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επίσης ορισμένα δεδομένα χρήστη, όπως τη διεύθυνση IP σας."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Απενεργοποίηση ενημερώσεων διάταξης</string>
+  <string name="morphe_disable_layout_updates_summary_on">Η διάταξη δεν θα ενημερώνεται από τον διακομιστή</string>
+  <string name="morphe_disable_layout_updates_summary_off">Η διάταξη θα ενημερώνεται από τον διακομιστή</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Η διάταξη της εφαρμογής επιστρέφει στη διάταξη που χρησιμοποιήθηκε όταν εγκαταστάθηκε για πρώτη φορά.
+
+Διάταξεις από τον διακομιστή μπορεί να μην επιστρέψουν.
+
+Οι αλλαγές περιλαμβάνουν:
+• Οι συστατικές του μενού πλαισίου του παίκτη (ή τις σχετικές ρυθμίσεις) μπορεί να μην λειτουργούν.
+• Οι αναλυτικοί αριθμοί δεν είναι εικονοποιημένοι.
+• Η καρτέλα βιβλιοθήκης εμφανίζεται.
+• Η μουσική ενότητα της περιγραφής του βίντεο μπορεί να μην λειτουργεί.
+• Ο κουμπί αλλαγής λογαριασμού μπορεί να μην εμφανιστεί στην καρτέλα Βιβλιοθήκη."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Ενότητα καταστήματος δημιουργού</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Κρυμμένη\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Εμφανίζεται\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
   <string name="morphe_hide_album_cards_title">Κάρτες άλμπουμ</string>
   <string name="morphe_hide_album_cards_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_album_cards_summary_off">Εμφανίζονται</string>
@@ -288,6 +305,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Οδηγίες καναλιού</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_comments_prompts_title">Δancock prompts</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Δancock prompts are hidden</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Δancock prompts are shown</string>
   <string name="morphe_hide_comments_by_members_header_title">Κεφαλίδα «Σχόλια από μέλη»</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Εμφανίζεται</string>
@@ -371,9 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Η λέξη-κλειδί είναι πολύ σύντομη και απαιτεί εισαγωγικά: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Θα κρυφτούν όλα τα βίντεο με την λέξη-κλειδί: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Ενότητα καταστήματος δημιουργού</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Κρυμμένη\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Εμφανίζεται\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ετικέτα καταστήματος στην τελική οθόνη</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Εμφανίζεται</string>
@@ -641,8 +658,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Περιορισμοί:
-• Μήκος μαύρο μπορεί να εμφανιστεί στην κορυφή του παίκτη βίντεο.
-• Σε ορισμένα συστήματα, η ενεργοποίηση αυτής της λειτουργίας μπορεί να αλλάξει τη συστήματος ναυσιπλοΐα μπαρ σε διαφανές."</string>
+• Μήκος μαύρου μπάρου μπορεί να εμφανιστεί στην κορυφή του παίκτη βίντεο.
+• Η συστοιχία διασύνδεσης του συστήματος μπορεί να αλλάξει σε διαφανές και δεν είναι δυνατός σχολιασμός βίντεο."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Απενεργοποίηση διαφανούς γραμμής στο φωτεινό θέμα</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Η γραμμή πλοήγησης στο φωτεινό θέμα δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο φωτεινό θέμα ορίζεται αυτόματα</string>
@@ -991,12 +1008,6 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">Ευρεία γραμμή αναζήτησης</string>
   <string name="morphe_wide_searchbar_summary_on">Η ευρεία γραμμή αναζήτησης είναι ενεργοποιημένη</string>
   <string name="morphe_wide_searchbar_summary_off">Η ευρεία γραμμή αναζήτησης είναι απενεργοποιημένη</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Επαναφορά παλίων φίλτρων αναζήτησης</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Τα \"Ταξινόμηση με βαθμολογία\" και \"Ταξινόμηση με ημερομηνία ανεβάσματος\" είναι διαθέσιμα στο φίλτρο αναζήτησης</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Τα \"Ταξινόμηση με βαθμολογία\" και \"Ταξινόμηση με ημερομηνία ανεβάσματος\" δεν είναι διαθέσιμα στο φίλτρο αναζήτησης</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Βαθμολόγηση</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Ημερομηνία ανεβάσματος</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ενεργοποίηση του SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">Το SponsorBlock είναι ένα σύστημα που προέρχεται από το κοινό για παράλειψη ενοχλητικών τμημάτων σε βίντεο YouTube</string>
@@ -1234,7 +1245,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Επαναφορά παλιών σωζημάτων σε αναπαραγωγή</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Αποκλείσε έντονα εικονίδια</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Επαναφορά της μη συμπτυγμένης γραμμής ενεργειών βίντεο</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Επαναφορά των παλιών εικονιδίων της οθόνης αναπαραγωγής Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αλλαγή αρχικής σελίδας</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>

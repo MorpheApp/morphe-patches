@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Ez segíthet azonosítani az összetevőket egyedi szűrők létrehozásakor.
 
 Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP-címét."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Minta frissítés letiltása</string>
+  <string name="morphe_disable_layout_updates_summary_on">A szerver nem frissíti a minta</string>
+  <string name="morphe_disable_layout_updates_summary_off">A szerver frissíti a minta</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Az alkalmazás felépítése visszakerül az első telepítéskor használt felépítéshez.
+
+Néhány szerveroldali felépítés nem visszakerül.
+
+Változások:
+• A lejátszó repülőablakban (vagy kapcsolódó beállítások) található komponensek nem működhetnek.
+• A forgó számok nem animálódnak.
+• A könyvtár tab is megjelenik.
+• A videó leírásának zene szakasza nem működhet.
+• A könyvtár tab-on a fiókváltó gomb nem jelenhet meg."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Alkotói áruház polcának elrejtése</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Az alkotói bolt polc a videólejátszó alatt elrejtve</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Alkotói bolti polc látható a videólejátszó alatt</string>
   <string name="morphe_hide_album_cards_title">Album kártyák elrejtése</string>
   <string name="morphe_hide_album_cards_summary_on">Az album kártyák el vannak rejtve</string>
   <string name="morphe_hide_album_cards_summary_off">Az album kártyák láthatóak</string>
@@ -286,6 +303,9 @@ Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP
   <string name="morphe_hide_comments_channel_guidelines_title">Csatorna irányelveinek elrejtése</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">A csatorna irányelvei rejtve vannak</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">A csatorna irányelvei láthatók</string>
+  <string name="morphe_hide_comments_prompts_title">Közösségi hozzászólás promptok elrejtése</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Közösségi hozzászólás promptok elrejtve</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Közösségi hozzászólás promptok megjelenítése</string>
   <string name="morphe_hide_comments_by_members_header_title">A „Tagok megjegyzései” fejléc elrejtése</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">A tagok hozzászólásainak fejléce rejtett</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">A tagok hozzászólásainak fejléce látható</string>
@@ -369,9 +389,6 @@ Korlátozások
   <string name="morphe_hide_keyword_toast_invalid_length">A kulcsszó túl rövid, és idézőjeleket igényel: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">A kulcsszó elrejti az összes videót: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Alkotói áruház polcának elrejtése</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Az alkotói bolt polc a videólejátszó alatt elrejtve</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Alkotói bolti polc látható a videólejátszó alatt</string>
   <string name="morphe_hide_end_screen_store_banner_title">A befejező képernyőn lévő üzletbanner elrejtése</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">A végképernyő bolt banner elrejtve</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">A végképernyő bolt banner látható</string>
@@ -638,9 +655,9 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Az állapotsor nem áttetsző</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Az állapotsor nem áttetsző vagy áttetsző</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Korlátozások:
-• Egy fekete sáv jelenthethet fel a videólejátszó tetején
-• Egyes eszközöknél ez a funkció lehetővé teszi a rendszer navigációs sáv átlátszatlanságának megváltoztatását."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitációk:
+• A videólejátszó tetején fekete sáv jelenhet meg.
+• A rendszer navigációs sávja átlátszóvá válhat, és nem lehet megjegyzésként írni a videókra."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Világos, átlátszó sáv letiltása</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Világos módban az átlátszó navigációs sáv átlátszatlan</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A világos módú navigációs sáv nem áttetsző vagy áttetsző</string>
@@ -989,12 +1006,6 @@ Korlátozás: A nem tetszések inkognitómódban nem jelenhetnek meg"</string>
   <string name="morphe_wide_searchbar_title">Széles keresősáv bekapcsolása</string>
   <string name="morphe_wide_searchbar_summary_on">Széles keresősáv bekapcsolva</string>
   <string name="morphe_wide_searchbar_summary_off">Széles keresősáv kikapcsolva</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Régi keresési szűrők visszaállítása</string>
-  <string name="morphe_restore_old_search_filters_summary_on">A keresési szűrőben a népszerűség szerinti és feltöltés dátum szerinti rendezés elérhető</string>
-  <string name="morphe_restore_old_search_filters_summary_off">A keresési szűrőben a népszerűség szerinti és feltöltés dátum szerinti rendezés nem elérhető</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Értékelés</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Feltöltés dátuma</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock bekapcsolása</string>
   <string name="morphe_sb_enable_sb_sum">A SponsorBlock egy közösségi finanszírozású rendszer, amellyel kihagyhatod a YouTube videók idegesítő részeit</string>
@@ -1232,7 +1243,6 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Visszaállítjuk az régi mentést a lejátslóba</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20:28:41 - Törölje a félkövér ikonokat</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Nem összecsukott videó műveletsáv visszaállítása</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - A régi Shorts lejátszó ikonok visszaállítása</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>

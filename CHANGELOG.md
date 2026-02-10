@@ -1,3 +1,64 @@
+# [1.13.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.4...v1.13.0-dev.5) (2026-02-10)
+
+
+### Bug Fixes
+
+* **YouTube - Theme:** Use correct theme color for settings icon ([a6d472d](https://github.com/MorpheApp/morphe-patches/commit/a6d472d35c19ad3aa3a6aa1b2544d61d4070b78e))
+
+# [1.13.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.3...v1.13.0-dev.4) (2026-02-10)
+
+
+### Bug Fixes
+
+* **YouTube - Theme:** Apply dark color to 21.06+ experimental app targets ([#495](https://github.com/MorpheApp/morphe-patches/issues/495)) ([62ca1be](https://github.com/MorpheApp/morphe-patches/commit/62ca1bed0f3cc4713420b3299872ce2fb285c03e))
+
+
+### Features
+
+* **YouTube:** Add `Disable layout updates` patch ([#493](https://github.com/MorpheApp/morphe-patches/issues/493)) ([0399388](https://github.com/MorpheApp/morphe-patches/commit/039938837397317471e676e9608e4fcbc25f46ec))
+
+# [1.13.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.2...v1.13.0-dev.3) (2026-02-09)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve "Hide community posts" not working in search results ([#485](https://github.com/MorpheApp/morphe-patches/issues/485)) ([9083a16](https://github.com/MorpheApp/morphe-patches/commit/9083a16bd3f0098acabebee91e660f15b676d1fb))
+
+# [1.13.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2026-02-08)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve "Hide comments section in Home feed" not hiding comments ([#473](https://github.com/MorpheApp/morphe-patches/issues/473)) ([915849b](https://github.com/MorpheApp/morphe-patches/commit/915849b888ff66007af4051cdb307573047285fa))
+
+# [1.13.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.12.0...v1.13.0-dev.1) (2026-02-08)
+
+
+### Bug Fixes
+
+* **YouTube - Navigation bar:** Resolve experimental player black bar when "Disable translucent status bar" is enabled ([#464](https://github.com/MorpheApp/morphe-patches/issues/464)) ([1a9dd11](https://github.com/MorpheApp/morphe-patches/commit/1a9dd1128b13161318157e632e8e4125140081b3))
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide comment prompts" setting ([#463](https://github.com/MorpheApp/morphe-patches/issues/463)) ([3ca9551](https://github.com/MorpheApp/morphe-patches/commit/3ca95517f45acbc34a25c569e975e903e6eafa1f))
+
+# [1.12.0](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0...v1.12.0) (2026-02-07)
+
+
+### Features
+
+* **Spoof video streams:** Default client maintenance ([#448](https://github.com/MorpheApp/morphe-patches/issues/448)) ([36817a3](https://github.com/MorpheApp/morphe-patches/commit/36817a35c0f337f7d988624d8aebac418424a5f2))
+* **YouTube - Spoof app version:** Remove target version `19.35.36` ([#458](https://github.com/MorpheApp/morphe-patches/issues/458)) ([8c87a2c](https://github.com/MorpheApp/morphe-patches/commit/8c87a2ccb529fa7b69dc98eaa6fcd4741e05508b))
+* **YouTube - Video quality:** Add "Prioritize video quality" setting ([#449](https://github.com/MorpheApp/morphe-patches/issues/449)) ([9819078](https://github.com/MorpheApp/morphe-patches/commit/98190781e890e56eeb0771496af43ce710e8443d))
+
+# [1.12.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2026-02-07)
+
+
+### Features
+
+* **YouTube - Spoof app version:** Remove target version `19.35.36` ([#458](https://github.com/MorpheApp/morphe-patches/issues/458)) ([8c87a2c](https://github.com/MorpheApp/morphe-patches/commit/8c87a2ccb529fa7b69dc98eaa6fcd4741e05508b))
+
 # [1.12.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-02-07)
 
 

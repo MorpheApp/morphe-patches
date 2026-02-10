@@ -49,7 +49,25 @@ This can help identify components when creating custom filters.
 
 However, enabling this will also log some user data such as your IP address."</string>
 
+    <!-- layout.disableLayoutUpdatesPatch -->
+    <string name="morphe_disable_layout_updates_title">Disable layout updates</string>
+    <string name="morphe_disable_layout_updates_summary_on">Layout will not be updated by the server</string>
+    <string name="morphe_disable_layout_updates_summary_off">Layout will be updated by the server</string>
+    <string name="morphe_disable_layout_updates_user_dialog_message">"App layout reverts to the layout used when first installed.
+
+Some server-side layouts may not revert.
+
+Changes include:
+• Components in player flyout menu (or related settings) may not work.
+• Rolling numbers are not animated.
+• Library tab is shown.
+• Music section of video description may not work.
+• Account switch button may not appear on the Library tab."</string>
+
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
+    <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
+    <string name="morphe_hide_creator_store_shelf_summary_on">Creator store shelf under video player is hidden</string>
+    <string name="morphe_hide_creator_store_shelf_summary_off">Creator store shelf under video player is shown</string>
     <string name="morphe_hide_album_cards_title">Hide album cards</string>
     <string name="morphe_hide_album_cards_summary_on">Album cards are hidden</string>
     <string name="morphe_hide_album_cards_summary_off">Album cards are shown</string>
@@ -295,6 +313,9 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_on">Channel guidelines are hidden</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_off">Channel guidelines are shown</string>
+    <string name="morphe_hide_comments_prompts_title">Hide comment prompts</string>
+    <string name="morphe_hide_comments_prompts_summary_on">Comment prompts are hidden</string>
+    <string name="morphe_hide_comments_prompts_summary_off">Comment prompts are shown</string>
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_by_members_header_summary_on">Comments by members header is hidden</string>
     <string name="morphe_hide_comments_by_members_header_summary_off">Comments by members header is shown</string>
@@ -379,9 +400,6 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
     <!-- ad.general.hideAdsResourcePatch -->
-    <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
-    <string name="morphe_hide_creator_store_shelf_summary_on">Creator store shelf under video player is hidden</string>
-    <string name="morphe_hide_creator_store_shelf_summary_off">Creator store shelf under video player is shown</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_end_screen_store_banner_summary_on">End screen store banner is hidden</string>
     <string name="morphe_hide_end_screen_store_banner_summary_off">End screen store banner is shown</string>
@@ -666,7 +684,7 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
     <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
 • A black bar may appear at the top of the video player.
-• On some devices, enabling this feature can change the system navigation bar to transparent."</string>
+• The system navigation bar can change to transparent and it's not possible to comment on videos."</string>
     <string name="morphe_disable_translucent_navigation_bar_light_title">Disable light translucent bar</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Light mode navigation bar is opaque</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Light mode navigation bar is opaque or translucent</string>
@@ -1037,13 +1055,6 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_wide_searchbar_summary_on">Wide search bar is enabled</string>
     <string name="morphe_wide_searchbar_summary_off">Wide search bar is disabled</string>
 
-    <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-    <string name="morphe_restore_old_search_filters_title">Restore old search filters</string>
-    <string name="morphe_restore_old_search_filters_summary_on">Sort by rating and sort by upload date are available in the search filter</string>
-    <string name="morphe_restore_old_search_filters_summary_off">Sort by rating and sort by upload date are not available in the search filter</string>
-    <string name="morphe_old_search_filters_sort_by_rating">Rating</string>
-    <string name="morphe_old_search_filters_sort_by_upload_date">Upload date</string>
-
     <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
     <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>
     <string name="morphe_sb_enable_sb">Enable SponsorBlock</string>
@@ -1284,7 +1295,6 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
     <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Disable bold icons</string>
     <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restore non collapsed video action bar</string>
-    <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restore old Shorts player icons</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Change start page</string>

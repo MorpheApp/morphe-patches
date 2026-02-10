@@ -38,20 +38,20 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">다시 보지 않기</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">동영상 스트림 변경하기</string>
-  <string name="morphe_spoof_video_streams_screen_summary">클라이언트 동영상 스트림을 변경하여 재생 문제를 방지할 수 있습니다</string>
-  <string name="morphe_spoof_video_streams_title">동영상 스트림 변경하기</string>
-  <string name="morphe_spoof_video_streams_summary_on">"동영상 스트림를 변경합니다
+  <string name="morphe_spoof_video_streams_screen_title">동영상 스트림 속이기</string>
+  <string name="morphe_spoof_video_streams_screen_summary">클라이언트 동영상 스트림을 속여서 재생 문제를 방지할 수 있습니다</string>
+  <string name="morphe_spoof_video_streams_title">동영상 스트림 속이기</string>
+  <string name="morphe_spoof_video_streams_summary_on">"동영상 스트림이 속여집니다
 
 YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니다"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"동영상 스트림을 변경하지 않습니다
+  <string name="morphe_spoof_video_streams_summary_off">"동영상 스트림이 속여지지 않습니다
 
 재생 문제가 발생할 수 있습니다"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">클라이언트 스트림을 가져올 수 없습니다</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 변경하기 &gt; Android VR에 로그인하기</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 속이기 &gt; Android VR에 로그인하기</string>
   <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR에 로그인하기</string>
@@ -96,7 +96,7 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
   <string name="morphe_force_original_audio_summary_on">원본 오디오 언어를 사용 중입니다</string>
   <string name="morphe_force_original_audio_summary_off">기본 오디오 언어를 사용 중입니다</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">이 기능을 사용하려면, \'동영상 스트림 변경하기\'에서 기본 클라이언트를 Android Studio를 제외한 다른 클라이언트로 변경하세요</string>
+  <string name="morphe_force_original_audio_not_available">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 기본 클라이언트를 Android Studio를 제외한 다른 클라이언트로 변경하세요</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">추적 쿼리를 제거한 링크 공유하기</string>
   <string name="morphe_sanitize_sharing_links_summary_on">링크를 공유할 경우에 URL에서 추적 쿼리 매개변수를 삭제합니다</string>

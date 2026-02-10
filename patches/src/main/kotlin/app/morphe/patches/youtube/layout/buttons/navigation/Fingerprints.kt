@@ -32,6 +32,15 @@ internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object CollapsingToolbarLayoutFeatureFlag : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45736608L)
+    )
+)
+
 internal object PivotBarStyleFingerprint : Fingerprint(
     definingClass = "/PivotBar;",
     returnType = "V",

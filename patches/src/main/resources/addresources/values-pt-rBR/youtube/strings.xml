@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Isso pode ajudar a identificar componentes ao criar filtros personalizados.
 
 No entanto, ativar isso também registrará alguns dados do usuário, como seu endereço IP."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Desativar atualizações de layout</string>
+  <string name="morphe_disable_layout_updates_summary_on">O layout não será atualizado pelo servidor</string>
+  <string name="morphe_disable_layout_updates_summary_off">O layout será atualizado pelo servidor</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"A layout do app volta para a layout utilizada quando foi instalado pela primeira vez.
+
+Algumas layouts do lado do servidor podem não voltar.
+
+As mudanças incluem:
+• Os componentes no menu de voo do jogador (ou as configurações relacionadas) podem não funcionar.
+• Os números rolantes não são animados.
+• A guia da biblioteca é exibida.
+• A seção de música da descrição do vídeo pode não funcionar.
+• O botão de alternância de conta pode não aparecer na guia da biblioteca."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Ocultar prateleira da loja do criador</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">A prateleira da loja do criador sob o player de vídeo está oculta</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Prateleira da loja do criador sob o reprodutor de vídeo é exibida</string>
   <string name="morphe_hide_album_cards_title">Ocultar cartões de álbum</string>
   <string name="morphe_hide_album_cards_summary_on">Cartões de álbum estão ocultos</string>
   <string name="morphe_hide_album_cards_summary_off">Cartões de álbum não estão ocultos</string>
@@ -286,6 +303,9 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_hide_comments_channel_guidelines_title">Ocultar diretrizes do canal</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Diretrizes do canal estão ocultas</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Diretrizes do canal são mostradas</string>
+  <string name="morphe_hide_comments_prompts_title">Ocultar prompts de comentários</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Prompts de comentários estão ocultos</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Prompts de comentários estão visíveis</string>
   <string name="morphe_hide_comments_by_members_header_title">Ocultar cabeçalho \'Comentários por membros\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">O cabeçalho de comentários por membros está oculto</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">O cabeçalho de comentários por membros é mostrado</string>
@@ -369,9 +389,6 @@ Limitações:
   <string name="morphe_hide_keyword_toast_invalid_length">A palavra-chave é muito curta e requer aspas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">A palavra-chave irá ocultar todos os vídeos: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Ocultar prateleira da loja do criador</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">A prateleira da loja do criador sob o player de vídeo está oculta</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Prateleira da loja do criador sob o reprodutor de vídeo é exibida</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ocultar banners da loja na tela final</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">O banner da loja na tela final está oculto</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">O banner da loja na tela final é exibido</string>
@@ -639,8 +656,8 @@ Os cookies serão salvos automaticamente se forem válidos"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitações:
-• Uma barra preta pode aparecer no topo do player de vídeo.
-• Em alguns dispositivos, ativar este recurso pode tornar a barra de navegação do sistema transparente."</string>
+• Uma barra preta pode aparecer na parte superior do reprodutor de vídeo.
+• A barra de navegação do sistema pode mudar para transparente e não será possível comentar em vídeos."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desabilitar barra de navegação translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">A barra de navegação no modo claro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A barra de navegação do modo claro é opaca ou translúcida</string>
@@ -989,12 +1006,6 @@ Limitação: \"Não gostei\" podem não aparecer no modo anônimo"</string>
   <string name="morphe_wide_searchbar_title">Ativar barra de busca ampla</string>
   <string name="morphe_wide_searchbar_summary_on">Barra de busca ampla está ativada</string>
   <string name="morphe_wide_searchbar_summary_off">Barra de busca ampla está desativada</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Restaurar filtros de busca antigos</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Ordenar por avaliação e por data de upload está disponível no filtro de busca</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Ordenar por avaliação e por data de upload não está disponível no filtro de busca</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Avaliação</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Data de upload</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Ativar SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock é um sistema de crowdsourcing para pular partes irritantes de vídeos do YouTube</string>
@@ -1232,7 +1243,6 @@ Se posteriormente desativado, é recomendável limpar os dados do aplicativo par
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar velho save para playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desativar ícones em negrito</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar barra de ações de vídeo não recolhida</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurar ícones antigos do player dos Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Alterar página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>
@@ -1516,6 +1526,9 @@ Limitações:
   <string name="morphe_hide_premium_video_quality_summary_on">Opções de qualidade premium estão ocultas</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Opções de alta qualidade são exibidas</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorize a qualidade do vídeo.</string>
+  <string name="morphe_prioritize_video_quality_summary_on">A qualidade do vídeo é priorizada.</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Os codecs de vídeo têm prioridade.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ativar gesto na barra de busca</string>
   <string name="morphe_slide_to_seek_summary_on">Gesto na barra de busca está ativado</string>

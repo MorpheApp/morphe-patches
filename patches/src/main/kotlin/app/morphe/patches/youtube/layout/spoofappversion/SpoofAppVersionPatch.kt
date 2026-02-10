@@ -5,14 +5,15 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.contexthook.Endpoint
+import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
+import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
@@ -20,6 +21,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -36,7 +38,8 @@ val spoofAppVersionPatch = bytecodePatch(
         resourceMappingPatch,
         sharedExtensionPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        clientContextHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -62,20 +65,14 @@ val spoofAppVersionPatch = bytecodePatch(
                     } else if (is_20_14_or_greater) {
                         ListPreference(
                             key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_20_30_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_30_entry_values"
-                        )
-                    } else if (is_19_43_or_greater) {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_20_13_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_13_entry_values"
+                            entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
+                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
                         )
                     } else {
                         ListPreference(
                             key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_19_34_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_19_34_entry_values"
+                            entriesKey = "morphe_spoof_app_version_target_legacy_19_02_entries",
+                            entryValuesKey = "morphe_spoof_app_version_target_legacy_19_02_entry_values"
                         )
                     }
                 )
@@ -108,20 +105,26 @@ val spoofAppVersionPatch = bytecodePatch(
             method.addInstructions(
                 index + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getUniversalAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$register
                 """
             )
         }
 
         /**
-         * Flag is present in YT 20.23, but bold icons are missing and forcing them crashes the app.
-         * 20.31 is the first target with all the bold icons present.
-         * Fix: https://github.com/MorpheApp/morphe-patches/issues/183.
-         *
-         * 21.05+ these flags are no longer present.
+         * Fix Shorts no overlay.
+         * See: https://github.com/MorpheApp/morphe-patches/issues/183.
          */
-        if (is_20_31_or_greater && !is_21_05_or_greater) {
+        if (is_21_05_or_greater) {
+            // YouTube 20.05+ has removed the code for the old Shorts overlay.
+            // If the app version is spoofed as 20.29 or earlier,
+            // the Shorts endpoint will use app version 20.30.40 to fix the Shorts no overlay.
+            addClientVersionHook(
+                Endpoint.REEL,
+                "$EXTENSION_CLASS_DESCRIPTOR->getShortsAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
+            )
+        } else if (is_20_31_or_greater) {
+            // There are an experimental flags in YouTube 20.31 to 21.04, so simply turn it off.
             listOf(
                 ShortsBoldIconsPrimaryFeatureFlagFingerprint,
                 ShortsBoldIconsSecondaryFeatureFlagFingerprint,

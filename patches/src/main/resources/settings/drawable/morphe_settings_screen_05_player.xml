@@ -23,6 +23,6 @@
     android:viewportHeight="24">
 
     <path
-        android:fillColor="?android:attr/textColorPrimary"
+        android:fillColor="@color/morphe_settings_foreground_color"
         android:pathData="M9,5.87L18.2,12L9,18.13V5.87M8,4v16l12,-8L8,4L8,4z" />
 </vector>
