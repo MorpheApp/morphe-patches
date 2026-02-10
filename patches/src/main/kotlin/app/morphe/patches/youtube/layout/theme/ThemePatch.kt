@@ -3,7 +3,6 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
@@ -63,6 +62,25 @@ val themePatch = baseThemePatch(
                     lightThemeBackgroundColor!!,
                     darkThemeBackgroundColorOption.value!!
                 )
+
+                fun addColorResource(
+                    resourceFile: String,
+                    colorName: String,
+                    colorValue: String,
+                ) {
+                    document(resourceFile).use { document ->
+                        val resourcesNode =
+                            document.getElementsByTagName("resources").item(0) as Element
+
+                        resourcesNode.appendChild(
+                            document.createElement("color").apply {
+                                setAttribute("name", colorName)
+                                setAttribute("category", "color")
+                                textContent = colorValue
+                            }
+                        )
+                    }
+                }
 
                 // Add a dynamic background color to the colors.xml file.
                 val splashBackgroundColorKey = "morphe_splash_background_color"
@@ -229,24 +247,3 @@ val themePatch = baseThemePatch(
         }
     }
 )
-
-
-context(ResourcePatchContext)
-internal fun addColorResource(
-    resourceFile: String,
-    colorName: String,
-    colorValue: String,
-) {
-    document(resourceFile).use { document ->
-        val resourcesNode =
-            document.getElementsByTagName("resources").item(0) as Element
-
-        resourcesNode.appendChild(
-            document.createElement("color").apply {
-                setAttribute("name", colorName)
-                setAttribute("category", "color")
-                textContent = colorValue
-            }
-        )
-    }
-}
