@@ -1,3 +1,10 @@
+# [1.13.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.7...v1.13.0-dev.8) (2026-02-10)
+
+
+### Bug Fixes
+
+* **YouTube - Theme:** Show correct icon light/dark mode if using YouTube light/dark manual override ([3f5d75a](https://github.com/MorpheApp/morphe-patches/commit/3f5d75a39a7450262207bc26e43ef2c3862c9e47))
+
 # [1.13.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.6...v1.13.0-dev.7) (2026-02-10)
 
 
