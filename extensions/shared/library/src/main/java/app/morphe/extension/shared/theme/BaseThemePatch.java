@@ -50,8 +50,7 @@ public abstract class BaseThemePatch {
 
         for (int color : originalColors) {
             if (originalValue == color) {
-                // Use same alpha value of the original color.
-                return (replacementColor & 0x00FFFFFF) | (color & 0xFF000000);
+                return replacementColor;
             }
         }
 
