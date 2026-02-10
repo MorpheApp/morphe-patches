@@ -1,3 +1,10 @@
+# [1.13.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.4...v1.13.0-dev.5) (2026-02-10)
+
+
+### Bug Fixes
+
+* **YouTube - Theme:** Use correct theme color for settings icon ([a6d472d](https://github.com/MorpheApp/morphe-patches/commit/a6d472d35c19ad3aa3a6aa1b2544d61d4070b78e))
+
 # [1.13.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.3...v1.13.0-dev.4) (2026-02-10)
 
 
