@@ -116,6 +116,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        PreferenceScreen.ADS.addPreferences(
+            // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
+            // to ensure the generic "hide horizontal shelves" doesn't hide when it should show.
+            SwitchPreference("morphe_hide_creator_store_shelf")
+        )
+
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",
