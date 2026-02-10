@@ -1,3 +1,10 @@
+# [1.13.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.9...v1.13.0-dev.10) (2026-02-10)
+
+
+### Bug Fixes
+
+* **YouTube - Theme:** Resolve theme color incorrectly applying to player overlay ([bbf94ec](https://github.com/MorpheApp/morphe-patches/commit/bbf94ec0b24a1684d8c565a5eec4bf4aefd6bf57))
+
 # [1.13.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.8...v1.13.0-dev.9) (2026-02-10)
 
 
