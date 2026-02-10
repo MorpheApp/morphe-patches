@@ -14,20 +14,29 @@ internal const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB
 internal val THEME_DEFAULT_DARK_COLOR_NAMES = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
     "yt_black1_opacity95", "yt_black1_opacity98",
-    "yt_status_bar_background_dark", "material_grey_850",
     "yt_black_pure_opacity5", "yt_black_pure_opacity10", "yt_black_pure_opacity15",
     "yt_black_pure_opacity30", "yt_black_pure_opacity60", "yt_black_pure_opacity80",
+    "yt_status_bar_background_dark", "material_grey_850",
     // YT 21.06+
-    "yt_ref_color_constants_baseline_black_black0", "yt_ref_color_constants_baseline_black_black1",
-    "yt_ref_color_constants_baseline_black_black2", "yt_ref_color_constants_baseline_black_black3",
-    "yt_ref_color_constants_baseline_black_black4", "yt_ref_color_constants_baseline_black_blackpure",
+    // yt_ref_color_constants_baseline_black_black0
+    "yt_sys_color_baseline_dark_menu_background",
+    // yt_ref_color_constants_baseline_black_black1
+    "yt_sys_color_baseline_dark_static_black",
+    "yt_sys_color_baseline_dark_raised_background",
+    // yt_ref_color_constants_baseline_black_black3
+    "yt_sys_color_baseline_dark_base_background",
+    "yt_sys_color_baseline_dark_static_black",
+    "yt_sys_color_baseline_light_inverted_background",
+    "yt_sys_color_baseline_light_static_black",
 )
 
 internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
     "yt_white1", "yt_white2", "yt_white3", "yt_white4",
     "yt_white1_opacity95", "yt_white1_opacity98",
-    "yt_ref_color_constants_baseline_white_white1", "yt_ref_color_constants_baseline_white_white2",
-    "yt_ref_color_constants_baseline_white_white3", "yt_ref_color_constants_baseline_white_white4",
+
+    // Overrides not needed?
+//    "yt_ref_color_constants_baseline_white_white1", "yt_ref_color_constants_baseline_white_white2",
+//    "yt_ref_color_constants_baseline_white_white3", "yt_ref_color_constants_baseline_white_white4",
 )
 
 /**
