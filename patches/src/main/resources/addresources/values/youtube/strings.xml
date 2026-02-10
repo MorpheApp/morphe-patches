@@ -49,6 +49,21 @@ This can help identify components when creating custom filters.
 
 However, enabling this will also log some user data such as your IP address."</string>
 
+    <!-- layout.disableLayoutUpdatesPatch -->
+    <string name="morphe_disable_layout_updates_title">Disable layout updates</string>
+    <string name="morphe_disable_layout_updates_summary_on">Layout will not be updated by the server</string>
+    <string name="morphe_disable_layout_updates_summary_off">Layout will be updated by the server</string>
+    <string name="morphe_disable_layout_updates_user_dialog_message">"App layout reverts to the layout used when first installed.
+
+Some server-side layouts may not revert.
+
+Changes include:
+• Components in player flyout menu (or related settings) may not work.
+• Rolling numbers are not animated.
+• Library tab is shown.
+• Music section of video description may not work.
+• Account switch button may not appear on the Library tab."</string>
+
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_creator_store_shelf_summary_on">Creator store shelf under video player is hidden</string>
