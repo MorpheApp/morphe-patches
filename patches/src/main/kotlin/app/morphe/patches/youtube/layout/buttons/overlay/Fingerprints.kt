@@ -37,3 +37,12 @@ internal object InflateControlsGroupLayoutStubFingerprint : Fingerprint(
         methodCall(name = "inflate")
     )
 )
+
+internal object FullscreenButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Landroid/view/View;"),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "fullscreen_button"),
+    )
+)

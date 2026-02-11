@@ -64,11 +64,26 @@ public final class HidePlayerOverlayButtonsPatch {
         }
 
         // Must use a deferred call to main thread to hide the button.
-        // Otherwise the layout crashes if set to hidden now.
+        // Otherwise, the layout crashes if set to hidden now.
         Utils.runOnMainThread(() -> {
             hideView(parentView, PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID);
             hideView(parentView, PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID);
         });
+    }
+
+    /**
+     * Injection point.
+     */
+    public static ImageView hideFullscreenButton(ImageView imageView) {
+        if (!Settings.HIDE_FULLSCREEN_BUTTON.get()) {
+            return imageView;
+        }
+
+        if (imageView != null) {
+            imageView.setVisibility(View.GONE);
+        }
+
+        return null;
     }
 
     /**

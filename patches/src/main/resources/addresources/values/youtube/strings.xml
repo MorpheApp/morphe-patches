@@ -768,15 +768,15 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
     <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
 
-    <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-    <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
-    <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
-    <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
-
     <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
     <string name="morphe_hide_autoplay_preview_title">Hide autoplay preview</string>
     <string name="morphe_hide_autoplay_preview_summary_on">Autoplay preview is hidden</string>
     <string name="morphe_hide_autoplay_preview_summary_off">Autoplay preview is shown</string>
+
+    <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+    <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
+    <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
+    <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
     <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
     <string name="morphe_hide_captions_button_summary_on">Captions button is hidden</string>
@@ -784,6 +784,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <string name="morphe_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_hide_cast_button_summary_on">Cast button is hidden</string>
     <string name="morphe_hide_cast_button_summary_off">Cast button is shown</string>
+    <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
+    <string name="morphe_hide_fullscreen_button_summary_on">Fullscreen button is hidden</string>
+    <string name="morphe_hide_fullscreen_button_summary_off">Fullscreen button is shown</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary_on">Player controls background is hidden</string>
     <string name="morphe_hide_player_control_buttons_background_summary_off">Player controls background is shown</string>

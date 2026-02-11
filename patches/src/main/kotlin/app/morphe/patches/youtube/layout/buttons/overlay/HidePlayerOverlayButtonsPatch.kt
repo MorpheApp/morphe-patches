@@ -45,11 +45,12 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_player_previous_next_buttons"),
-            SwitchPreference("morphe_hide_cast_button"),
-            SwitchPreference("morphe_hide_captions_button"),
             SwitchPreference("morphe_hide_autoplay_button"),
+            SwitchPreference("morphe_hide_captions_button"),
+            SwitchPreference("morphe_hide_cast_button"),
+            SwitchPreference("morphe_hide_fullscreen_button"),
             SwitchPreference("morphe_hide_player_control_buttons_background"),
+            SwitchPreference("morphe_hide_player_previous_next_buttons"),
         )
 
         // region Hide player next/previous button.
@@ -132,6 +133,28 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                     if-nez v$constRegister, :hidden
                 """,
                 ExternalLabel("hidden", getInstruction(gotoIndex)),
+            )
+        }
+
+        // endregion
+
+        // region Hide fullscreen button.
+
+        FullscreenButtonFingerprint.method.apply {
+            val constIndex = indexOfFirstResourceIdOrThrow("fullscreen_button")
+            val castIndex = indexOfFirstInstructionOrThrow(constIndex, Opcode.CHECK_CAST)
+            val insertIndex = castIndex + 1
+            val insertRegister = getInstruction<OneRegisterInstruction>(castIndex).registerA
+
+            addInstructionsWithLabels(
+                insertIndex,
+                """
+                    invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideFullscreenButton(Landroid/widget/ImageView;)Landroid/widget/ImageView;
+                    move-result-object v$insertRegister
+                    if-nez v$insertRegister, :show
+                    return-void
+                """,
+                ExternalLabel("show", getInstruction(insertIndex))
             )
         }
 
