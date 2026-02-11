@@ -176,6 +176,23 @@ public final class NavigationBarPatch {
                 || "SEARCH_BOLD".equals(enumString); // Search button (Shorts).
     }
 
+    // Hide voice search button
+    private static final boolean HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_VOICE_SEARCH_BUTTON.get();
+
+    /**
+     * Injection point.
+     */
+    public static void hideVoiceSearchButton(View view) {
+        hideViewUnderCondition(HIDE_TOOLBAR_VOICE_SEARCH_BUTTON, view);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideVoiceSearchButton(View view, int visibility) {
+        view.setVisibility(HIDE_TOOLBAR_VOICE_SEARCH_BUTTON ? View.GONE : visibility);
+    }
+
     // Wide searchbar
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
 

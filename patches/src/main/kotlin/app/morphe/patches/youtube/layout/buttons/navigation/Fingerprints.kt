@@ -2,14 +2,18 @@ package app.morphe.patches.youtube.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object CreatePivotBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -116,5 +120,60 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo"),
     )
+)
+
+internal object SearchBarFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.IF_EQZ,
+        Opcode.IGET_BOOLEAN,
+        Opcode.IF_EQZ
+    ),
+    custom = { method, _ ->
+        method.instructions.any {
+            it.opcode == Opcode.INVOKE_VIRTUAL &&
+                    it.getReference<MethodReference>()?.name == "isEmpty"
+        }
+    }
+)
+
+internal object SearchBarParentFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "voice_search"),
+        string("voz-target-id")
+    )
+)
+
+internal object SearchResultFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "voice_search"),
+        string("search_filter_chip_applied"),
+        string("search_original_chip_query")
+    )
+)
+
+internal object VoiceInputControllerParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("[B", "Z"),
+    filters = listOf(
+        string("VoiceInputController")
+    )
+)
+
+internal object VoiceInputControllerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = emptyList(),
+    custom = { method, _ ->
+        method.instructions.any {
+            it.opcode == Opcode.INVOKE_VIRTUAL &&
+                    it.getReference<MethodReference>()?.name == "resolveActivity"
+        }
+    }
 )
 
