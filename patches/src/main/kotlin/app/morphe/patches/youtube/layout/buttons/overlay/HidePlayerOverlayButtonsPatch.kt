@@ -48,6 +48,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_autoplay_button"),
             SwitchPreference("morphe_hide_captions_button"),
             SwitchPreference("morphe_hide_cast_button"),
+            SwitchPreference("morphe_hide_collapse_button"),
             SwitchPreference("morphe_hide_fullscreen_button"),
             SwitchPreference("morphe_hide_player_control_buttons_background"),
             SwitchPreference("morphe_hide_player_previous_next_buttons"),
@@ -133,6 +134,30 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                     if-nez v$constRegister, :hidden
                 """,
                 ExternalLabel("hidden", getInstruction(gotoIndex)),
+            )
+        }
+
+        // endregion
+
+        // region Hide collapse button.
+
+        TitleAnchorFingerprint.method.apply {
+            val titleAnchorConstIndex = indexOfFirstResourceIdOrThrow("title_anchor")
+            val titleAnchorIndex = indexOfFirstInstructionOrThrow(titleAnchorConstIndex, Opcode.MOVE_RESULT_OBJECT)
+            val titleAnchorRegister = getInstruction<OneRegisterInstruction>(titleAnchorIndex).registerA
+
+            addInstruction(
+                titleAnchorIndex + 1,
+                "invoke-static { v$titleAnchorRegister }, $EXTENSION_CLASS_DESCRIPTOR->setTitleAnchorStartMargin(Landroid/view/View;)V"
+            )
+
+            val playerCollapseButtonConstIndex = indexOfFirstResourceIdOrThrow("player_collapse_button")
+            val playerCollapseButtonIndex = indexOfFirstInstructionOrThrow(playerCollapseButtonConstIndex, Opcode.CHECK_CAST)
+            val playerCollapseButtonRegister = getInstruction<OneRegisterInstruction>(playerCollapseButtonIndex).registerA
+
+            addInstruction(
+                playerCollapseButtonIndex + 1,
+                "invoke-static { v$playerCollapseButtonRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideCollapseButton(Landroid/widget/ImageView;)V"
             )
         }
 

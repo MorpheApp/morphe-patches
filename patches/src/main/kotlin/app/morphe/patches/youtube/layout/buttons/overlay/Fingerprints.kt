@@ -46,3 +46,11 @@ internal object FullscreenButtonFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "fullscreen_button"),
     )
 )
+
+internal object TitleAnchorFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "player_collapse_button"),
+        resourceLiteral(ResourceType.ID, "title_anchor")
+    )
+)
