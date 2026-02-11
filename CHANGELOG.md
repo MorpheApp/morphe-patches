@@ -1,3 +1,10 @@
+# [1.13.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.10...v1.13.0-dev.11) (2026-02-11)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve community posts sometimes showing in the player suggestions ([0d0886a](https://github.com/MorpheApp/morphe-patches/commit/0d0886a1d45cb33bb9b43542009b14849fd47849))
+
 # [1.13.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.9...v1.13.0-dev.10) (2026-02-10)
 
 
