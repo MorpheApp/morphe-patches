@@ -74,8 +74,8 @@ public final class HidePlayerOverlayButtonsPatch {
         if (!Settings.HIDE_COLLAPSE_BUTTON.get()) return;
 
         var layoutParams = titleAnchorView.getLayoutParams();
-        if (layoutParams instanceof android.widget.RelativeLayout.LayoutParams) {
-            ((android.widget.RelativeLayout.LayoutParams) layoutParams).setMarginStart(0);
+        if (layoutParams instanceof android.widget.RelativeLayout.LayoutParams relativeParams) {
+            relativeParams.setMarginStart(0);
         } else {
             Logger.printDebug(() -> "Unknown title anchor layout params: " + layoutParams);
         }
