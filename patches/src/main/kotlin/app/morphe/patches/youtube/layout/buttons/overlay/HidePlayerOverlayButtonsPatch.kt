@@ -141,46 +141,47 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide collapse button.
 
-        TitleAnchorFingerprint.method.apply {
-            val titleAnchorConstIndex = indexOfFirstResourceIdOrThrow("title_anchor")
-            val titleAnchorIndex = indexOfFirstInstructionOrThrow(titleAnchorConstIndex, Opcode.MOVE_RESULT_OBJECT)
-            val titleAnchorRegister = getInstruction<OneRegisterInstruction>(titleAnchorIndex).registerA
+        TitleAnchorFingerprint.let {
+            it.method.apply {
+                val titleAnchorIndex = it.instructionMatches.last().index
+                val titleAnchorRegister = getInstruction<OneRegisterInstruction>(titleAnchorIndex).registerA
 
-            addInstruction(
-                titleAnchorIndex + 1,
-                "invoke-static { v$titleAnchorRegister }, $EXTENSION_CLASS_DESCRIPTOR->setTitleAnchorStartMargin(Landroid/view/View;)V"
-            )
+                addInstruction(
+                    titleAnchorIndex + 1,
+                    "invoke-static { v$titleAnchorRegister }, $EXTENSION_CLASS_DESCRIPTOR->setTitleAnchorStartMargin(Landroid/view/View;)V"
+                )
 
-            val playerCollapseButtonConstIndex = indexOfFirstResourceIdOrThrow("player_collapse_button")
-            val playerCollapseButtonIndex = indexOfFirstInstructionOrThrow(playerCollapseButtonConstIndex, Opcode.CHECK_CAST)
-            val playerCollapseButtonRegister = getInstruction<OneRegisterInstruction>(playerCollapseButtonIndex).registerA
+                val playerCollapseButtonIndex = it.instructionMatches[1].index
+                val playerCollapseButtonRegister = getInstruction<OneRegisterInstruction>(playerCollapseButtonIndex).registerA
 
-            addInstruction(
-                playerCollapseButtonIndex + 1,
-                "invoke-static { v$playerCollapseButtonRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideCollapseButton(Landroid/widget/ImageView;)V"
-            )
+                addInstruction(
+                    playerCollapseButtonIndex + 1,
+                    "invoke-static { v$playerCollapseButtonRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideCollapseButton(Landroid/widget/ImageView;)V"
+                )
+            }
         }
 
         // endregion
 
         // region Hide fullscreen button.
 
-        FullscreenButtonFingerprint.method.apply {
-            val constIndex = indexOfFirstResourceIdOrThrow("fullscreen_button")
-            val castIndex = indexOfFirstInstructionOrThrow(constIndex, Opcode.CHECK_CAST)
-            val insertIndex = castIndex + 1
-            val insertRegister = getInstruction<OneRegisterInstruction>(castIndex).registerA
+        FullscreenButtonFingerprint.let {
+            it.method.apply {
+                val castIndex = it.instructionMatches[1].index
+                val insertIndex = castIndex + 1
+                val insertRegister = getInstruction<OneRegisterInstruction>(castIndex).registerA
 
-            addInstructionsWithLabels(
-                insertIndex,
-                """
-                    invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideFullscreenButton(Landroid/widget/ImageView;)Landroid/widget/ImageView;
-                    move-result-object v$insertRegister
-                    if-nez v$insertRegister, :show
-                    return-void
-                """,
-                ExternalLabel("show", getInstruction(insertIndex))
-            )
+                addInstructionsWithLabels(
+                    insertIndex,
+                    """
+                        invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideFullscreenButton(Landroid/widget/ImageView;)Landroid/widget/ImageView;
+                        move-result-object v$insertRegister
+                        if-nez v$insertRegister, :show
+                        return-void
+                    """,
+                    ExternalLabel("show", getInstruction(insertIndex))
+                )
+            }
         }
 
         // endregion

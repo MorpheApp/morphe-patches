@@ -3,9 +3,11 @@ package app.morphe.patches.youtube.layout.buttons.overlay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 internal object MediaRouteButtonFingerprint : Fingerprint(
     parameters = listOf("I"),
@@ -44,6 +46,7 @@ internal object FullscreenButtonFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "fullscreen_button"),
+        opcode(Opcode.CHECK_CAST)
     )
 )
 
@@ -51,6 +54,9 @@ internal object TitleAnchorFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "player_collapse_button"),
-        resourceLiteral(ResourceType.ID, "title_anchor")
+        opcode(Opcode.CHECK_CAST),
+
+        resourceLiteral(ResourceType.ID, "title_anchor"),
+        opcode(Opcode.MOVE_RESULT_OBJECT)
     )
 )
