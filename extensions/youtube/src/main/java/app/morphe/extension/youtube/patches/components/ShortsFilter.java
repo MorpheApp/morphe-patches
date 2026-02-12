@@ -125,7 +125,8 @@ public final class ShortsFilter extends Filter {
         // Path components.
         //
 
-        shortsCompactFeedVideo = new StringFilterGroup(null,
+        shortsCompactFeedVideo = new StringFilterGroup(
+                null,
                 // Shorts that appear in the feed/search when the device is using tablet layout.
                 "compact_video.e",
                 // 'video_lockup_with_attachment.e' is shown instead of 'compact_video.e' for some users
@@ -136,7 +137,9 @@ public final class ShortsFilter extends Filter {
         // Filter out items that use the 'frame0' thumbnail.
         // This is a valid thumbnail for both regular videos and Shorts,
         // but it appears these thumbnails are used only for Shorts.
-        shortsCompactFeedVideoBuffer = new ByteArrayFilterGroup(null, "/frame0.jpg");
+        shortsCompactFeedVideoBuffer = new ByteArrayFilterGroup(
+                null,
+                "/frame0.jpg");
 
         shelfHeaderPath = new StringFilterGroup(
                 null,
@@ -428,6 +431,21 @@ public final class ShortsFilter extends Filter {
     @Override
     boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+        if (contentType == FilterContentType.IDENTIFIER) {
+            if (matchedGroup == shelfHeaderIdentifier) {
+                // Avoid hiding shelf header inside channel page.
+                // Channel page header does NOT contain this identifier.
+                if (identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER)) {
+                    return false;
+                }
+            }
+            if (matchedGroup == channelProfile) {
+                return true;
+            }
+
+            return shouldHideShortsFeedItems();
+        }
+
         if (contentType == FilterContentType.PATH) {
             if (matchedGroup == subscribeButton || matchedGroup == joinButton
                     || matchedGroup == paidPromotionLabel || matchedGroup == autoDubbedLabel) {
@@ -462,7 +480,7 @@ public final class ShortsFilter extends Filter {
                     return false;
                 }
 
-                return shouldHideShortsFeedItems();
+                return identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER);
             }
 
             // Video action buttons (comment, share, remix) have the same path.
@@ -486,22 +504,6 @@ public final class ShortsFilter extends Filter {
             return true;
         }
 
-        if (contentType == FilterContentType.IDENTIFIER) {
-            if (matchedGroup == shelfHeaderIdentifier) {
-                // Avoid hiding shelf header inside channel page.
-                // Channel page header does NOT contain this identifier.
-                if (identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER)) {
-                    return false;
-                }
-
-                return shouldHideShortsFeedItems();
-            }
-            if (matchedGroup == channelProfile) {
-                return Settings.HIDE_SHORTS_CHANNEL.get();
-            }
-
-            return shouldHideShortsFeedItems();
-        }
         return false;
     }
 
