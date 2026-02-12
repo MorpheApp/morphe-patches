@@ -288,7 +288,7 @@ val hideShortsComponentsPatch = bytecodePatch(
         // region Disable experimental Shorts flags.
 
         // Flags might be present in earlier targets, but they are not found in 19.47.53.
-        // If these flags are forced on, the experimental layout is still not used and
+        // If these flags are forced on, the experimental layout is still not used, and
         // it appears the features requires additional server side data to fully use.
         if (is_20_07_or_greater) {
             // Experimental Shorts player uses Android native buttons and not Litho,
