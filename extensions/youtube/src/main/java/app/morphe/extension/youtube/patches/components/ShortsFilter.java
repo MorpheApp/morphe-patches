@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
@@ -63,7 +62,6 @@ public final class ShortsFilter extends Filter {
      */
     public static final int HIDDEN_NAVIGATION_BAR_VERTICAL_HEIGHT = 100;
 
-    private static final StringTrieSearch feedGroup = new StringTrieSearch();
     private static WeakReference<PivotBar> pivotBarRef = new WeakReference<>(null);
 
     private final StringFilterGroup shortsCompactFeedVideo;
@@ -90,8 +88,6 @@ public final class ShortsFilter extends Filter {
     private final ByteArrayFilterGroupList videoActionButtonBuffer = new ByteArrayFilterGroupList();
 
     public ShortsFilter() {
-        feedGroup.addPattern(CONVERSATION_CONTEXT_FEED_IDENTIFIER);
-
         //
         // Identifier components.
         //
@@ -471,7 +467,7 @@ public final class ShortsFilter extends Filter {
 
             // Do not hide shelf header in channel page.
             // Channel page shelf header does not contain the feed conversation context.
-            if (identifier == null || !feedGroup.matches(identifier)) {
+            if (identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER)) {
                 return false;
             }
         }
