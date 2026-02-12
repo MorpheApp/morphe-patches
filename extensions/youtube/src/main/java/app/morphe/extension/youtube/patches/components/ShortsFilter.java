@@ -75,7 +75,8 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup subscribeButton;
     private final StringFilterGroup joinButton;
     private final StringFilterGroup paidPromotionLabel;
-    private final StringFilterGroup shelfHeader;
+    private final StringFilterGroup shelfHeaderIdentifier;
+    private final StringFilterGroup shelfHeaderPath;
 
     private final StringFilterGroup reelCarousel;
     private final ByteArrayFilterGroupList reelCarouselBuffer = new ByteArrayFilterGroupList();
@@ -87,6 +88,12 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup videoActionButton;
     private final ByteArrayFilterGroupList videoActionButtonBuffer = new ByteArrayFilterGroupList();
 
+    private final StringFilterGroup channelProfile;
+    private final ByteArrayFilterGroup channelProfileShelfHeaderBuffer = new ByteArrayFilterGroup(
+                    Settings.HIDE_SHORTS_CHANNEL,
+                    "Shorts"
+            );
+
     public ShortsFilter() {
         //
         // Identifier components.
@@ -97,18 +104,22 @@ public final class ShortsFilter extends Filter {
                 "shorts_shelf",
                 "inline_shorts",
                 "shorts_grid",
-                "shorts_video_cell",
+                "shorts_video_cell"
+        );
+
+        channelProfile = new StringFilterGroup(
+                Settings.HIDE_SHORTS_CHANNEL,
                 "shorts_pivot_item"
         );
 
         // Feed Shorts shelf header.
         // Use a different filter group for this pattern, as it requires an additional check after matching.
-        shelfHeader = new StringFilterGroup(
+        shelfHeaderIdentifier = new StringFilterGroup(
                 null,
                 "shelf_header.e"
         );
 
-        addIdentifierCallbacks(shortsIdentifiers, shelfHeader);
+        addIdentifierCallbacks(shortsIdentifiers, channelProfile, shelfHeaderIdentifier);
 
         //
         // Path components.
@@ -126,6 +137,11 @@ public final class ShortsFilter extends Filter {
         // This is a valid thumbnail for both regular videos and Shorts,
         // but it appears these thumbnails are used only for Shorts.
         shortsCompactFeedVideoBuffer = new ByteArrayFilterGroup(null, "/frame0.jpg");
+
+        shelfHeaderPath = new StringFilterGroup(
+                null,
+                "shelf_header.e"
+        );
 
         // Shorts player components.
         StringFilterGroup pausedOverlayButtons = new StringFilterGroup(
@@ -287,10 +303,10 @@ public final class ShortsFilter extends Filter {
         );
 
         addPathCallbacks(
-                shortsCompactFeedVideo, joinButton, subscribeButton, paidPromotionLabel, livePreview,
-                suggestedAction, pausedOverlayButtons, channelBar, previewComment, autoDubbedLabel,
-                fullVideoLinkLabel, videoTitle, useSoundButton, reelSoundMetadata, soundButton, reelCarousel,
-                infoPanel, stickers, likeFountain, likeButton, dislikeButton
+                shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
+                livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
+                autoDubbedLabel, fullVideoLinkLabel, videoTitle, useSoundButton, soundButton, stickers,
+                reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton
         );
 
         // Legacy hiding of Shorts action buttons. Because of 20.31+ buffer changes
@@ -436,6 +452,19 @@ public final class ShortsFilter extends Filter {
                 return shouldHideShortsFeedItems() && shortsCompactFeedVideoBuffer.check(buffer).isFiltered();
             }
 
+            if (matchedGroup == shelfHeaderPath) {
+                // Shelf header reused in history/channel/etc.
+                // Shorts header is always index 0
+                if (contentIndex != 0) {
+                    return false;
+                }
+                if (!channelProfileShelfHeaderBuffer.check(buffer).isFiltered()) {
+                    return false;
+                }
+
+                return shouldHideShortsFeedItems();
+            }
+
             // Video action buttons (comment, share, remix) have the same path.
             // Like and dislike are separate path filters and don't require buffer searching.
             if (matchedGroup == shortsActionBar) {
@@ -457,25 +486,26 @@ public final class ShortsFilter extends Filter {
             return true;
         }
 
-        // Feed/search identifier components.
-        if (matchedGroup == shelfHeader) {
-            // Shelf header is used in multiple places (history, channel, etc.)
-            // Shorts shelf header has index 0
-            if (contentIndex != 0) {
-                return false;
+        if (contentType == FilterContentType.IDENTIFIER) {
+            if (matchedGroup == shelfHeaderIdentifier) {
+                // Avoid hiding shelf header inside channel page.
+                // Channel page header does NOT contain this identifier.
+                if (identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER)) {
+                    return false;
+                }
+
+                return shouldHideShortsFeedItems();
+            }
+            if (matchedGroup == channelProfile) {
+                return Settings.HIDE_SHORTS_CHANNEL.get();
             }
 
-            // Do not hide shelf header in channel page.
-            // Channel page shelf header does not contain the feed conversation context.
-            if (identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER)) {
-                return false;
-            }
+            return shouldHideShortsFeedItems();
         }
-
-        return shouldHideShortsFeedItems();
+        return false;
     }
 
-    private boolean shouldHideShortsFeedItems() {
+        private boolean shouldHideShortsFeedItems() {
         // Known issue if hide home is on but at least one other hide is off:
         //
         // Shorts suggestions will load in the background if a video is opened and
