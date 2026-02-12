@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
@@ -29,6 +30,7 @@ public final class ShortsFilter extends Filter {
             "reel_action_bar.", // Regular Shorts.
             "reels_player_overlay_layout." // Shorts ads.
     };
+    private static final String CONVERSATION_CONTEXT_FEED_IDENTIFIER = "horizontalCollectionSwipeProtector=null";
     private static final Map<Integer, BooleanSetting> REEL_ACTION_BUTTONS_MAP = new HashMap<>() {
         {
             // Like button and Dislike button can be hidden with Litho filter.
@@ -61,6 +63,7 @@ public final class ShortsFilter extends Filter {
      */
     public static final int HIDDEN_NAVIGATION_BAR_VERTICAL_HEIGHT = 100;
 
+    private static final StringTrieSearch feedGroup = new StringTrieSearch();
     private static WeakReference<PivotBar> pivotBarRef = new WeakReference<>(null);
 
     private final StringFilterGroup shortsCompactFeedVideo;
@@ -87,6 +90,8 @@ public final class ShortsFilter extends Filter {
     private final ByteArrayFilterGroupList videoActionButtonBuffer = new ByteArrayFilterGroupList();
 
     public ShortsFilter() {
+        feedGroup.addPattern(CONVERSATION_CONTEXT_FEED_IDENTIFIER);
+
         //
         // Identifier components.
         //
@@ -338,7 +343,7 @@ public final class ShortsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_SHORTS_TAGGED_PRODUCTS,
                         // Product buttons show pictures of the products, and does not have any unique icons to identify.
-                        // Instead use a unique identifier found in the buffer.
+                        // Instead, use a unique identifier found in the buffer.
                         "PAproduct_listZ"
                 ),
                 new ByteArrayFilterGroup(
@@ -458,9 +463,17 @@ public final class ShortsFilter extends Filter {
 
         // Feed/search identifier components.
         if (matchedGroup == shelfHeader) {
-            // Because the header is used in watch history and possibly other places, check for the index,
-            // which is 0 when the shelf header is used for Shorts.
-            if (contentIndex != 0) return false;
+            // Shelf header is used in multiple places (history, channel, etc.)
+            // Shorts shelf header has index 0
+            if (contentIndex != 0) {
+                return false;
+            }
+
+            // Do not hide shelf header in channel page.
+            // Channel page shelf header does not contain the feed conversation context.
+            if (identifier == null || !feedGroup.matches(identifier)) {
+                return false;
+            }
         }
 
         return shouldHideShortsFeedItems();
@@ -473,7 +486,7 @@ public final class ShortsFilter extends Filter {
         // immediately minimized before any suggestions are loaded.
         // In this state the player type will show minimized, which cannot
         // distinguish between Shorts suggestions loading in the player and between
-        // scrolling thru search/home/subscription tabs while a player is minimized.
+        // scrolling through search/home/subscription tabs while a player is minimized.
         final boolean hideHome = Settings.HIDE_SHORTS_HOME.get();
         final boolean hideSubscriptions = Settings.HIDE_SHORTS_SUBSCRIPTIONS.get();
         final boolean hideSearch = Settings.HIDE_SHORTS_SEARCH.get();
