@@ -1,11 +1,8 @@
 package app.morphe.patches.shared.misc.debugging
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -16,13 +13,10 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneMutable
+import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.copyResources
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
 
 /**
  * Patch shared with YouTube and YT Music.
@@ -107,8 +101,8 @@ internal fun enableDebuggingPatch(
             ExperimentFlagUtilFingerprint.originalClassDef
         ).let {
             it.method.apply {
-                // In some versions, freeRegister is not available.
-                // The easiest workaround is to copy the method to minimize modifications to the instructions.
+                // Not enough registers in the method. Clone the method and use the
+                // original method as an intermediate to call extension code.
 
                 // Copy the method.
                 val helperMethod = cloneMutable(name = "patch_getBooleanFeatureFlag")
@@ -123,12 +117,8 @@ internal fun enableDebuggingPatch(
                         invoke-static { p0, p1, p2, p3 }, $helperMethod
                         move-result p0
                         
-                        # Convert the flag value to 'Long' format to pass it to the extension.
-                        invoke-static { p1, p2 }, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
-                        move-result-object p1
-                        
                         # Redefine boolean in the extension.
-                        invoke-static { p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZLjava/lang/Long;)Z
+                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZJ)Z
                         move-result p0
                         
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -138,37 +128,13 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        // In some versions, the classes for 'ExperimentalBooleanFeatureFlagFingerprint' and
-        // 'ExperimentalDoubleFeatureFlagFingerprint, ExperimentalLongFeatureFlagFingerprint, ExperimentalStringFeatureFlagFingerprint'
-        // are different.
-        // To handle this, declare parent fingerprints.
-        val experimentalFeatureFlagParentFingerprint = Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "Z",
-            parameters = listOf("J", "Z"),
-            filters = listOf(
-                methodCall(
-                    // Due to the structure of the patcher, once a fingerprint is solved, it is cached.
-                    // This means there is no need to refer to the parent fingerprint (ExperimentFlagUtilFingerprint).
-                    reference = ExperimentalBooleanFeatureFlagFingerprint.method,
-                )
-            )
-        )
-
         if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
+            ExperimentFlagUtilFingerprint.originalClassDef
         ).let {
-            it.method.apply {
-                // In some versions, freeRegister is not available.
-                // The easiest workaround is to copy the method to minimize modifications to the instructions.
-                if (implementation!!.registerCount < 8) {
-                    throw PatchException("Target method has less than 8 registers")
-                }
-
-                // Copy the method.
+            // 21.06+ doesn't have enough registers and needs to also clone.
+            it.method.cloneMutableAndPreserveParameters().apply {
                 val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
 
-                // Add the method.
                 it.classDef.methods.add(helperMethod)
 
                 addInstructions(
@@ -193,15 +159,9 @@ internal fun enableDebuggingPatch(
         }
 
         if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
+            ExperimentFlagUtilFingerprint.originalClassDef
         ).let {
-            it.method.apply {
-                // In some versions, freeRegister is not available.
-                // The easiest workaround is to copy the method to minimize modifications to the instructions.
-                if (implementation!!.registerCount < 8) {
-                    throw PatchException("Target method has less than 8 registers")
-                }
-
+            it.method.cloneMutableAndPreserveParameters().apply {
                 // Copy the method.
                 val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
 
@@ -230,19 +190,26 @@ internal fun enableDebuggingPatch(
         }
 
         if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.match(
-            experimentalFeatureFlagParentFingerprint.originalClassDef
-        ).method.apply {
-            val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.MOVE_RESULT_OBJECT)
+            ExperimentFlagUtilFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val helperMethod = cloneMutable(name = "patch_getStringFeatureFlag")
 
-            addInstructions(
-                insertIndex,
-                """
-                    move-result-object v0
-                    invoke-static { v0, p1, p2, p3 }, $EXTENSION_CLASS_DESCRIPTOR->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
-                    move-result-object v0
-                    return-object v0
-                """
-            )
+                it.classDef.methods.add(helperMethod)
+
+                addInstructions(
+                    0,
+                    """
+                        invoke-static { p0, p1, p2, p3 }, $helperMethod
+                        move-result-object p0
+                        
+                        invoke-static { p0, p1, p2, p3 }, $EXTENSION_CLASS_DESCRIPTOR->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
+                        move-result-object p0
+                        
+                        return-object p0
+                    """
+                )
+            }
         }
 
         // There exists other experimental accessor methods for byte[]
