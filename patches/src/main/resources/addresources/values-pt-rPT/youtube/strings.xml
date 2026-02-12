@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Isto pode ajudar a identificar componentes ao criar filtros personalizados.
 
 No entanto, ativar isto também irá registar alguns dados do utilizador, como o seu endereço IP."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Desativar atualizações de layout</string>
+  <string name="morphe_disable_layout_updates_summary_on">O layout não será atualizado pelo servidor</string>
+  <string name="morphe_disable_layout_updates_summary_off">O layout será atualizado pelo servidor</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"A disposição do aplicativo volta para a disposição usada quando foi instalado pela primeira vez.
+
+Algumas disposições do servidor podem não voltar.
+
+As alterações incluem:
+• Os componentes no menu suspenso do player (ou as configurações relacionadas) podem não funcionar.
+• Os números rodantes não são animados.
+• A guia da biblioteca é exibida.
+• A seção de música da descrição do vídeo pode não funcionar.
+• O botão de alternar de conta pode não aparecer na guia da biblioteca."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Ocultar prateleira da loja do criador</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">A prateleira da loja do criador sob o reprodutor de vídeo está oculta</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Prateleira da loja do criador sob o leitor de vídeo é exibida</string>
   <string name="morphe_hide_album_cards_title">Esconder cartões de álbuns</string>
   <string name="morphe_hide_album_cards_summary_on">Cartões de álbuns estão escondidos</string>
   <string name="morphe_hide_album_cards_summary_off">Cartões de álbum são visíveis</string>
@@ -286,6 +303,9 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_hide_comments_channel_guidelines_title">Ocultar diretrizes do canal</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Diretrizes do canal estão ocultas</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Diretrizes do canal são mostradas</string>
+  <string name="morphe_hide_comments_prompts_title">Ocultar prompts de comentários</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Os prompts de comentários estão ocultos</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Os prompts de comentários estão visíveis</string>
   <string name="morphe_hide_comments_by_members_header_title">Ocultar cabeçalho \'Comentários por membros\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">O cabeçalho Comentários de membros está oculto</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">O cabeçalho Comentários de membros é mostrado</string>
@@ -369,9 +389,6 @@ Limitações:
   <string name="morphe_hide_keyword_toast_invalid_length">A palavra-chave é muito curta e requer citações: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Palavra-chave irá ocultar todos os vídeos: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Ocultar prateleira da loja do criador</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">A prateleira da loja do criador sob o reprodutor de vídeo está oculta</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Prateleira da loja do criador sob o leitor de vídeo é exibida</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ocultar banner da loja na tela final</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">O banner da loja de tela final está oculto</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">O banner da loja de tela final está exibido</string>
@@ -638,9 +655,9 @@ Os cookies serão salvos automaticamente se forem válidos"</string>
   <string name="morphe_disable_translucent_status_bar_title">Desativar a barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitações:
-• Uma barra preta pode aparecer no topo do reprodutor de vídeo.
-• Em alguns dispositivos, ativar este recurso pode tornar a barra de navegação do sistema transparente."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
+• Uma barra preta pode aparecer na parte superior do reprodutor de vídeo.
+• A barra de navegação do sistema pode mudar para transparente e não é possível comentar em vídeos."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desativar a barra translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">A barra de navegação no modo claro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">A barra de navegação em modo claro é opaca ou translúcida</string>
@@ -721,14 +738,14 @@ Para exibir o menu de faixa de áudio, altere 'Spoof video streams' para 'TV'"</
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ocultar rodapé do menu de qualidade</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Rodapé do menu de qualidade está oculto</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Rodapé do menu de qualidade está visível</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ocultar botão de reprodução automática</string>
-  <string name="morphe_hide_autoplay_button_summary_on">O botão de reprodução automática está escondido</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Botão de reprodução automática é visível</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ocultar prévia de reprodução automática</string>
   <string name="morphe_hide_autoplay_preview_summary_on">A prévia de reprodução automática está oculta</string>
   <string name="morphe_hide_autoplay_preview_summary_off">A prévia de reprodução automática está visível</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Ocultar botão de reprodução automática</string>
+  <string name="morphe_hide_autoplay_button_summary_on">O botão de reprodução automática está escondido</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Botão de reprodução automática é visível</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ocultar botão de legendas</string>
   <string name="morphe_hide_captions_button_summary_on">O botão de legendas está escondido</string>
@@ -736,6 +753,12 @@ Para exibir o menu de faixa de áudio, altere 'Spoof video streams' para 'TV'"</
   <string name="morphe_hide_cast_button_title">Ocultar botão Transmitir</string>
   <string name="morphe_hide_cast_button_summary_on">Botão \"Transmitir\" está escondido</string>
   <string name="morphe_hide_cast_button_summary_off">Botão \"Transmitir\" é visível</string>
+  <string name="morphe_hide_collapse_button_title">Ocultar botão Recuar</string>
+  <string name="morphe_hide_collapse_button_summary_on">Botão Recuar está oculto</string>
+  <string name="morphe_hide_collapse_button_summary_off">Botão Recuar está visível</string>
+  <string name="morphe_hide_fullscreen_button_title">Ocultar botão de tela cheia</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Botão de tela cheia está oculto</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Botão de tela cheia está visível</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar fundo dos controles do player</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">O fundo dos controles do reprodutor está oculto</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">O fundo dos controles do player é exibido</string>
@@ -781,6 +804,9 @@ Para exibir o menu de faixa de áudio, altere 'Spoof video streams' para 'TV'"</
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Reprodutor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ocultar ou mostrar componentes do player de Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Esconder Shorts na página do canal</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Oculto na página do canal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Mostrado na página do canal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ocultar Shorts no feed inicial</string>
   <string name="morphe_hide_shorts_home_summary_on">Oculto no feed inicial e vídeos relacionados</string>
@@ -989,12 +1015,6 @@ Limitação: As não gostos podem não aparecer no modo anônimo"</string>
   <string name="morphe_wide_searchbar_title">Ativar barra de pesquisa ampla</string>
   <string name="morphe_wide_searchbar_summary_on">Barra de pesquisa ampla está ativada</string>
   <string name="morphe_wide_searchbar_summary_off">Barra de pesquisa ampla está desativada</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Restaurar filtros de busca antigos</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Ordenar por avaliação e por data de upload está disponível no filtro de busca</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Ordenar por avaliação e por data de upload não está disponível no filtro de busca</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Classificação</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Data de envio</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Habilitar Patrocínio</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock é um sistema de crowdsourcing para saltar partes irritantes de vídeos do YouTube</string>

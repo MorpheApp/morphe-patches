@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_0_about_title">Sobre</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anúncios</string>
   <string name="morphe_settings_music_screen_2_general_title">Geral</string>
-  <string name="morphe_settings_music_screen_3_player_title">Reprodutor</string>
+  <string name="morphe_settings_music_screen_3_player_title">Player</string>
   <string name="morphe_settings_music_screen_4_misc_title">Diversos</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ocultar anúncios em vídeo</string>
@@ -50,9 +50,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_summary_on">Barra de categoria está oculta</string>
   <string name="morphe_music_hide_category_bar_summary_off">Barra de categoria é exibida</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
-  <string name="morphe_music_change_miniplayer_color_title">Alterar cor do minirreprodutor</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">A cor do minirreprodutor corresponde à do reprodutor em tela cheia</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">O minirreprodutor usa a cor padrão</string>
+  <string name="morphe_music_change_miniplayer_color_title">Mudar a cor do miniplayer</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">A cor do miniplayer corresponde à do player em tela cheia</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">O miniplayer usa a cor padrão</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra de navegação</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ocultar ou alterar botões da barra de navegação</string>

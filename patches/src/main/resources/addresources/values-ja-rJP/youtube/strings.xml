@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 このデータは、カスタム フィルタを作成する際にコンポーネントを識別するのに役立ちます。
 
 ただし、有効にすると、IP アドレスなどの一部のユーザーデータもログに記録されるようになります。"</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">レイアウトの更新を無効化</string>
+  <string name="morphe_disable_layout_updates_summary_on">レイアウトはサーバーから更新されません</string>
+  <string name="morphe_disable_layout_updates_summary_off">レイアウトはサーバーから更新されます</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されていたレイアウトに戻ります。
+
+一部のサーバー側からのレイアウトの更新が初回インストールの状態に戻らない場合があります。
+
+以下の変更を伴います:
+• プレイヤーのフライアウト メニュー (または関連設定) 内のコンポーネントが動作しない場合がある。
+• 数字の回転アニメーションが表示されない。
+• マイページタブがライブラリタブに戻る。
+• 動画の概要欄の音楽セクションが動作しない場合がある。
+• ライブラリタブに「アカウントを切り替える」ボタンが表示されない場合がある。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">クリエイターのストア欄を非表示</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下のクリエイターのストア欄は表示されません</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">動画プレーヤー下のクリエイターのストア欄は表示されます</string>
   <string name="morphe_hide_album_cards_title">アルバムカードを非表示</string>
   <string name="morphe_hide_album_cards_summary_on">アルバムカードはアーティストの概要欄の下に表示されません</string>
   <string name="morphe_hide_album_cards_summary_off">アルバムカードはアーティストの概要欄の下に表示されます</string>
@@ -282,11 +299,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI による「チャットの要約」は表示されません</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI による「チャットの要約」は表示されます</string>
   <string name="morphe_hide_comments_ai_summary_title">AI によるコメントの要約を非表示</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI によるコメントの要約は表示されません</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI によるコメントの要約は表示されます</string>
+  <string name="morphe_hide_comments_ai_summary_summary_on">AI によるコメントの要約は表示されません\n\nコメント欄のヘッダーにはトピックボタンは表示されません</string>
+  <string name="morphe_hide_comments_ai_summary_summary_off">AI によるコメントの要約は表示されます\n\nコメント欄のヘッダーにはトピックボタンが表示されます</string>
   <string name="morphe_hide_comments_channel_guidelines_title">チャンネルのガイドラインを非表示</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">チャンネルのガイドラインは表示されません</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">チャンネルのガイドラインは表示されます</string>
+  <string name="morphe_hide_comments_prompts_title">コメントの表示方法のヒントを非表示</string>
+  <string name="morphe_hide_comments_prompts_summary_on">コメントの表示方法のヒントは表示されません</string>
+  <string name="morphe_hide_comments_prompts_summary_off">コメントの表示方法のヒントは表示されます</string>
   <string name="morphe_hide_comments_by_members_header_title">「メンバーによるコメント」ヘッダーを非表示</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">「メンバーによるコメント」ヘッダーは表示されません</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">「メンバーによるコメント」ヘッダーは表示されます</string>
@@ -370,9 +390,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">クリエイターのストア欄を非表示</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下のクリエイターのストア欄は表示されません</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">動画プレーヤー下のクリエイターのストア欄は表示されます</string>
   <string name="morphe_hide_end_screen_store_banner_title">終了画面のストアバナーを非表示</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">終了画面のストアバナーは表示されません</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">終了画面のストアバナーは表示されます</string>
@@ -456,22 +473,22 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_tapping_summary_off">タップによるシークは無効です。シークバーをタップしても、タップした位置に移動しません</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">明るさジェスチャーを有効化</string>
-  <string name="morphe_swipe_brightness_summary_on">"全画面表示中の明るさジェスチャーは有効です
+  <string name="morphe_swipe_brightness_summary_on">"全画面表示モードの明るさジェスチャーは有効です
 
 画面左側を縦にスワイプして明るさを調節します"</string>
-  <string name="morphe_swipe_brightness_summary_off">全画面表示中の明るさジェスチャーは無効です</string>
+  <string name="morphe_swipe_brightness_summary_off">全画面表示モードの明るさジェスチャーは無効です</string>
   <string name="morphe_swipe_volume_title">音量ジェスチャーを有効化</string>
-  <string name="morphe_swipe_volume_summary_on">"全画面表示中の音量ジェスチャーは有効です
+  <string name="morphe_swipe_volume_summary_on">"全画面表示モードの音量ジェスチャーは有効です
 
 画面右側を縦にスワイプして音量を調節します"</string>
-  <string name="morphe_swipe_volume_summary_off">全画面表示中の音量ジェスチャーは無効です</string>
+  <string name="morphe_swipe_volume_summary_off">全画面表示モードの音量ジェスチャーは無効です</string>
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
   <string name="morphe_swipe_press_to_engage_summary_on">長押しスワイプは有効です\n\n明るさ / 音量ジェスチャーの開始には、画面の長押しが必要です</string>
   <string name="morphe_swipe_press_to_engage_summary_off">長押しスワイプは無効です\n\n明るさ / 音量ジェスチャーの開始には、画面の長押しは必要ありません</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
   <string name="morphe_swipe_haptic_feedback_summary_on">触覚フィードバックは有効です</string>
   <string name="morphe_swipe_haptic_feedback_summary_off">触覚フィードバックは無効です</string>
-  <string name="morphe_swipe_save_and_restore_brightness_title">明るさを保存＆復元</string>
+  <string name="morphe_swipe_save_and_restore_brightness_title">明るさを保存 &amp; 復元</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_on">全画面表示を終了 / 開始するときに明るさを保存 / 復元します</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_off">全画面表示を終了 / 開始するときに明るさを保存 / 復元しません</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">明るさジェスチャーの自動調節を有効化</string>
@@ -639,9 +656,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"制限事項:
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"制限事項：
 • 動画プレーヤーの上部に黒いバーが表示される場合がある
-• 一部のデバイスでは、この機能を有効にすると、システムのナビゲーション バーが半透明になりアプリ内のコンポーネントに重なってしまう場合がある"</string>
+• システムのナビゲーション バーが半透明になり、動画にコメントできなくなる場合がある"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ライトモードの半透明バーを無効化</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">ライトモードではナビゲーション バーは透けません</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">ライトモードではナビゲーション バーが状況に応じて透けます</string>
@@ -722,14 +739,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">画質メニューの脚注を非表示</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">画質メニューの脚注は表示されません</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">画質メニューの脚注は表示されます</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">自動再生ボタンを非表示</string>
-  <string name="morphe_hide_autoplay_button_summary_on">自動再生ボタンはプレーヤー オーバーレイに表示されません</string>
-  <string name="morphe_hide_autoplay_button_summary_off">自動再生ボタンはプレーヤー オーバーレイに表示されます</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">自動再生のプレビューを非表示</string>
   <string name="morphe_hide_autoplay_preview_summary_on">自動再生の「次の動画」のプレビューは表示されません</string>
   <string name="morphe_hide_autoplay_preview_summary_off">自動再生の「次の動画」のプレビューは表示されます</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">自動再生ボタンを非表示</string>
+  <string name="morphe_hide_autoplay_button_summary_on">自動再生ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_hide_autoplay_button_summary_off">自動再生ボタンはプレーヤー オーバーレイに表示されます</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">字幕ボタンを非表示</string>
   <string name="morphe_hide_captions_button_summary_on">字幕ボタンはプレーヤー オーバーレイに表示されません</string>
@@ -737,6 +754,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_hide_cast_button_summary_on">キャストボタンはプレーヤー オーバーレイに表示されません</string>
   <string name="morphe_hide_cast_button_summary_off">キャストボタンはプレーヤー オーバーレイに表示されます</string>
+  <string name="morphe_hide_collapse_button_title">最小化ボタンを非表示</string>
+  <string name="morphe_hide_collapse_button_summary_on">最小化ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_hide_collapse_button_summary_off">最小化ボタンはプレーヤー オーバーレイに表示されます</string>
+  <string name="morphe_hide_fullscreen_button_title">全画面表示ボタンを非表示</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">全画面表示ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">全画面表示ボタンはプレーヤー オーバーレイに表示されます</string>
   <string name="morphe_hide_player_control_buttons_background_title">プレーヤー コントロールの背景を非表示</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">プレーヤー コントロールの背景は表示されません</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">プレーヤー コントロールの背景は表示されます</string>
@@ -774,14 +797,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_summary_off">動画プレーヤーのシークバーは表示されます</string>
   <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_hide_seekbar_thumbnail_title">サムネイルのシークバーを非表示</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary_on">フィードや再生履歴などに表示される動画のサムネイルのシークバーは表示されません</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary_off">フィードや再生履歴などに表示される動画のサムネイルのシークバーは表示されます</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary_on">フィードや再生履歴などの動画のサムネイルのシークバーは表示されません</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary_off">フィードや再生履歴などの動画のサムネイルのシークバーは表示されます</string>
   <string name="morphe_fullscreen_large_seekbar_title">フルスクリーンでシークバーを大きくする</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">フルスクリーンシークバーが大きなサイズです</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">フルスクリーンシークバーが通常サイズです</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
   <string name="morphe_shorts_player_screen_summary">ショート プレーヤーのコンポーネントを表示または非表示にします</string>
+  <string name="morphe_hide_shorts_channel_title">チャンネルページでショートを非表示</string>
+  <string name="morphe_hide_shorts_channel_summary_on">チャンネルページで非表示</string>
+  <string name="morphe_hide_shorts_channel_summary_off">チャンネルページで表示</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">ホームフィードでショートを非表示</string>
   <string name="morphe_hide_shorts_home_summary_on">ホームフィードおよび関連動画にはショート動画は表示されません</string>
@@ -990,12 +1016,6 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">ワイド検索バーを有効化</string>
   <string name="morphe_wide_searchbar_summary_on">ワイド検索バーは有効です</string>
   <string name="morphe_wide_searchbar_summary_off">ワイド検索バーは無効です</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">古い検索フィルタを復元</string>
-  <string name="morphe_restore_old_search_filters_summary_on">検索結果を「評価」順または「アップロード日」順に並び替えることができます\n\n検索フィルタの優先設定の選択肢に「評価」および「アップロード日」が追加されます</string>
-  <string name="morphe_restore_old_search_filters_summary_off">検索結果を「評価」順および「アップロード日」順のどちらにも並び替えることはできません\n\n検索フィルタの優先設定の選択肢に「評価」および「アップロード日」のどちらも追加されません</string>
-  <string name="morphe_old_search_filters_sort_by_rating">評価</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">アップロード日</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock を有効化</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock は、ユーザーからの情報提供により YouTube 動画のわずらわしい部分をスキップする機能です</string>
@@ -1535,7 +1555,7 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_spoof_video_streams_about_playback_failure">• 動画が 01:00 で停止する、または一部の地域で利用できない可能性がある</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">•「音声トラック」がフライアウト メニューに表示されない</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
-  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 没入モードは利用できない</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 没入モードが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->

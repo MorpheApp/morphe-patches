@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-02-07T21:18:44",
-  "description": "# [1.12.0](https://github.com/MorpheApp/morphe-patches/compare/v1.11.0...v1.12.0) (2026-02-07)\n\n\n### Features\n\n* **Spoof video streams:** Default client maintenance ([#448](https://github.com/MorpheApp/morphe-patches/issues/448)) ([36817a3](https://github.com/MorpheApp/morphe-patches/commit/36817a35c0f337f7d988624d8aebac418424a5f2))\n* **YouTube - Spoof app version:** Remove target version `19.35.36` ([#458](https://github.com/MorpheApp/morphe-patches/issues/458)) ([8c87a2c](https://github.com/MorpheApp/morphe-patches/commit/8c87a2ccb529fa7b69dc98eaa6fcd4741e05508b))\n* **YouTube - Video quality:** Add \"Prioritize video quality\" setting ([#449](https://github.com/MorpheApp/morphe-patches/issues/449)) ([9819078](https://github.com/MorpheApp/morphe-patches/commit/98190781e890e56eeb0771496af43ce710e8443d))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.12.0/patches-1.12.0.mpp",
+  "created_at": "2026-02-12T22:52:19",
+  "description": "# [1.13.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0-dev.14...v1.13.0-dev.15) (2026-02-12)\n\n\n### Bug Fixes\n\n* **YouTube - Hide Shorts components:** Resolve hiding Shorts also hiding channel page headers ([#518](https://github.com/MorpheApp/morphe-patches/issues/518)) ([966232b](https://github.com/MorpheApp/morphe-patches/commit/966232b6e7bd610b09b2b7ce40ade735115f7748))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.13.0-dev.15/patches-1.13.0-dev.15.mpp",
   "signature_download_url": "",
-  "version": "1.12.0"
+  "version": "1.13.0-dev.15"
 }

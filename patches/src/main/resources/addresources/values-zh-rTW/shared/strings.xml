@@ -62,12 +62,12 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_summary">匯入/匯出 Morphe 設定</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 <i>%s</i></string>
-  <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式,請使用 Morphe 重新修補此應用程式</string>
+  <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式，請使用 Morphe 重新修補此應用程式</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>
   <string name="morphe_settings_about_links_dev_body">這個版本為預先發布版，你可能會遇到非預期的問題</string>
   <string name="morphe_settings_about_links_header">官方連結</string>
   <string name="morphe_settings_about_links_website">網站</string>
-  <string name="morphe_settings_about_links_donate">捐贈</string>
+  <string name="morphe_settings_about_links_donate">贊助</string>
   <string name="morphe_settings_about_links_translations">翻譯</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
@@ -86,39 +86,39 @@ Second \"item\" text"</string>
 你將不會收到任何非預期的事件通知。"</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">匯出偵錯記錄</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">將 Morphe 偵錯記錄複製到剪貼簿</string>
-  <string name="morphe_debug_logs_disabled">偵錯記錄已停用</string>
+  <string name="morphe_debug_logs_disabled">已停用偵錯記錄</string>
   <string name="morphe_debug_logs_none_found">找不到記錄</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">記錄已複製</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">已複製記錄</string>
   <string name="morphe_debug_logs_failed_to_export">匯出記錄失敗：%s</string>
   <string name="morphe_debug_logs_clear_buffer_title">清除偵錯記錄</string>
   <string name="morphe_debug_logs_clear_buffer_summary">清除所有儲存的 Morphe 偵錯記錄</string>
-  <string name="morphe_debug_logs_clear_toast">記錄已清除</string>
+  <string name="morphe_debug_logs_clear_toast">已清除記錄</string>
   <string name="morphe_debug_feature_flags_manager_title">功能旗標 Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">管理布林功能旗標</string>
   <string name="morphe_debug_feature_flags_manager_active_header">啟用的旗標 (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">已封鎖的旗標 (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">搜尋旗標...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">旗標已儲存</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">旗標已重設</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">旗標已複製到剪貼簿</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新启动应用以使用此功能</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">已儲存旗標</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">已重設旗標</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">已複製旗標到剪貼簿</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新啟動應用程式以使用此功能</string>
   <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">打開 MicroG 設定</string>
+  <string name="microg_settings_summary">開啟 MicroG 設定</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG尚未安裝。請安裝它。</string>
+  <string name="gms_core_toast_not_installed_message">MicroG 尚未安裝。請安裝它。</string>
   <string name="gms_core_dialog_title">需要採取行動</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG未獲得在後台運行的許可權。
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG 未獲得在後台執行的許可權。
 
-請依照適用於您手機版本的「Do Not Kill My App」指南，並將其中指示應用於MicroG的安裝目錄。
+請依照適用於您手機版本的「Do Not Kill My App」指南，並將其中指示應用於 MicroG 的安裝目錄。
 
 這項設定對於應用程式正常運作為必要條件。"</string>
   <string name="gms_core_dialog_open_website_text">開啟網站</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"必須停用MicroG的電池優化設定，以防後續出現問題。
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"必須停用 MicroG 的電池最佳化設定，以防後續出現問題。
 
-停用MicroG的電池優化並不會增加電池消耗，對使用情況亦無負面影響。
+停用 MicroG 的電池最佳化並不會增加電池消耗，對使用情況亦無負面影響。
 
-點擊繼續鈕以允許調整相關優化設定。"</string>
+點擊繼續鈕以允許調整相關最佳化設定。"</string>
   <string name="gms_core_dialog_continue_text">繼續</string>
 </resources>

@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Dies kann helfen, Komponenten bei der Erstellung benutzerdefinierter Filter zu identifizieren.
 
 Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokolliert."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Layoutaktualisierungen deaktivieren</string>
+  <string name="morphe_disable_layout_updates_summary_on">Der Server aktualisiert das Layout nicht.</string>
+  <string name="morphe_disable_layout_updates_summary_off">Der Server aktualisiert das Layout.</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Layout der App wird auf den bei der ersten Installation verwendeten Layout zurückgesetzt.
+
+Manche serverseitigen Layouts können nicht zurückgesetzt werden.
+
+Folgende Änderungen werden vorgenommen:
+• Komponenten im Player-Flyout-Menü (oder verwandte Einstellungen) können möglicherweise nicht funktionieren.
+• Rollende Zahlen werden nicht animiert.
+• Die Bibliothek Registerkarte wird angezeigt.
+• Musikabteilung der Video-Beschreibung kann möglicherweise nicht funktionieren.
+• Schaltfläche zum Wechseln des Kontos kann auf der Bibliothek Registerkarte nicht angezeigt werden."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Creator-Shop-Regal ausblenden</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Creator Store-Regal unter dem Videoplayer ist ausgeblendet</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Creator Store-Regal unter dem Videoplayer wird angezeigt</string>
   <string name="morphe_hide_album_cards_title">Albumkarten ausblenden</string>
   <string name="morphe_hide_album_cards_summary_on">Albumkarten werden ausgeblendet</string>
   <string name="morphe_hide_album_cards_summary_off">Albumkarten werden angezeigt</string>
@@ -286,6 +303,9 @@ Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokollie
   <string name="morphe_hide_comments_channel_guidelines_title">Kanalrichtlinien ausblenden</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalrichtlinien sind ausgeblendet</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalrichtlinien werden angezeigt</string>
+  <string name="morphe_hide_comments_prompts_title">Kommentarprompts ausblenden</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Kommentarprompts sind ausgeblendet</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Kommentarprompts werden angezeigt</string>
   <string name="morphe_hide_comments_by_members_header_title">\'Kommentare von Mitgliedern\' im Kopfbereich ausblenden</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Kopfzeile \'Kommentare von Mitgliedern\' ist ausgeblendet</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Kopfzeile \'Kommentare von Mitgliedern\' wird angezeigt</string>
@@ -369,9 +389,6 @@ Einschränkungen:
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword ist zu kurz und erfordert Anführungszeichen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Stichwort wird alle Videos ausblenden: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Creator-Shop-Regal ausblenden</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Creator Store-Regal unter dem Videoplayer ist ausgeblendet</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Creator Store-Regal unter dem Videoplayer wird angezeigt</string>
   <string name="morphe_hide_end_screen_store_banner_title">Endbild-Banner ausblenden</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Endbildschirm-Shop-Banner ist ausgeblendet</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Endbildschirm-Shop-Banner wird angezeigt</string>
@@ -637,8 +654,8 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusleiste ist undurchsichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Die Statusleiste ist undurchsichtig oder durchscheinend</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Einschränkungen:
-• Ein schwarzer Balken kann oben im Video-Player erscheinen.
-• Auf einigen Geräten kann das Aktivieren dieser Funktion die System-Navigationsleiste transparent machen."</string>
+• Ein schwarzer Balken kann oben im Video-Player angezeigt werden.
+• Die System-Navigationsleiste kann transparent werden und es ist nicht möglich, Videos zu kommentieren."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Hellen, lichtdurchlässigen Balken deaktivieren</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Heller Navigationsbalken ist opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Die Navigationsleiste im hellen Modus ist undurchsichtig oder durchscheinend</string>
@@ -719,14 +736,14 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in 
   <string name="morphe_hide_player_flyout_video_quality_footer_title">„Qualität“-Fußzeile Ausblenden</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Fußzeile im Menü „Qualität“ ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Fußzeile im Menü „Qualität“ wird angezeigt</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Autoplay-Button ausblenden</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Autoplay Button ist ausgeblendet</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Autoplay Button wird angezeigt</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Autoplay-Vorschau ausblenden</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay-Vorschau ist ausgeblendet</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Autoplay-Vorschau wird angezeigt</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Autoplay-Button ausblenden</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Autoplay Button ist ausgeblendet</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Autoplay Button wird angezeigt</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Untertitel-Button ausblenden</string>
   <string name="morphe_hide_captions_button_summary_on">Beschriftungs-Button ist ausgeblendet</string>
@@ -734,6 +751,12 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in 
   <string name="morphe_hide_cast_button_title">Cast-Button ausblenden</string>
   <string name="morphe_hide_cast_button_summary_on">Der Cast button ist ausgeblendet</string>
   <string name="morphe_hide_cast_button_summary_off">Der Cast button wird angezeigt</string>
+  <string name="morphe_hide_collapse_button_title">Verbergen \"Collapse\"-Schaltfläche</string>
+  <string name="morphe_hide_collapse_button_summary_on">Die \"Collapse\"-Schaltfläche ist versteckt</string>
+  <string name="morphe_hide_collapse_button_summary_off">Die \"Collapse\"-Schaltfläche ist angezeigt</string>
+  <string name="morphe_hide_fullscreen_button_title">Vollbildschirm-Button ausblenden</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Vollbildschirm-Button ist ausgeblendet</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Vollbildschirm-Button wird angezeigt</string>
   <string name="morphe_hide_player_control_buttons_background_title">Hintergrund der Player-Steuerelemente ausblenden</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Hintergrund der Wiedergabesteuerung ist ausgeblendet</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Hintergrund der Player-Steuerelemente wird angezeigt</string>
@@ -779,6 +802,9 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in 
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts Spieler</string>
   <string name="morphe_shorts_player_screen_summary">Shorts-Player-Komponenten aus- oder einblenden</string>
+  <string name="morphe_hide_shorts_channel_title">Kürzfilme im Kanal verstecken</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Versteckt im Kanal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Angezeigt im Kanal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Shorts im Startseiten-Feed ausblenden</string>
   <string name="morphe_hide_shorts_home_summary_on">Im Startseiten-Feed und verwandten Videos ausgeblendet</string>
@@ -987,12 +1013,6 @@ Einschränkung: Dislikes werden möglicherweise nicht im Inkognito-Modus angezei
   <string name="morphe_wide_searchbar_title">breite Suchleiste aktivieren</string>
   <string name="morphe_wide_searchbar_summary_on">Breite Suchleiste ist aktiviert</string>
   <string name="morphe_wide_searchbar_summary_off">Breite Suchleiste ist deaktiviert</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Alte Suchfilter wiederherstellen</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Sortieren nach Bewertung und hochgeladenem Datum ist in Suchfilter verfügbar</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Sortieren nach Bewertung und hochgeladenem Datum ist in Suchfilter nicht verfügbar</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Bewertung</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Hochladedatum</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock aktivieren</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock ist ein Crowdsourcing-System zum Überspringen von nervigen Segmenten von YouTube-Videos</string>

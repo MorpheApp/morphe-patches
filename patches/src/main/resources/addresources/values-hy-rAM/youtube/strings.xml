@@ -20,6 +20,7 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
+  <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
@@ -99,8 +100,8 @@ Second \"item\" text"</string>
           'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <!-- layout.hide.ambientmode.ambientModePatch -->
@@ -129,7 +130,6 @@ Second \"item\" text"</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

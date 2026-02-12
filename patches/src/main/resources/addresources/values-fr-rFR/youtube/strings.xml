@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Cela peut aider à identifier les composants lors de la création de filtres personnalisés.
 
 Cependant, activer cette option entraînera également l’enregistrement de certaines données utilisateur, telles que votre adresse IP."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Désactiver les mises à jour de la mise en page</string>
+  <string name="morphe_disable_layout_updates_summary_on">La mise en page ne sera pas mise à jour par le serveur</string>
+  <string name="morphe_disable_layout_updates_summary_off">La mise en page sera mise à jour par le serveur</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"La mise en page de l'application revient à la mise en page utilisée lors de la première installation.
+
+Certaines mises en page côté serveur peuvent ne pas revenir à leur état d'origine.
+
+Les changements incluent :
+• Les composants du menu déroulant du lecteur (ou des paramètres associés) peuvent ne pas fonctionner.
+• Les statistiques en temps réel ne sont pas animés.
+• L'onglet 'Bibliothèque' est affiché.
+• La section 'Musique' de la description vidéo peut ne pas fonctionner.
+• Le bouton de 'Changer de compte' peut ne pas apparaître dans l'onglet 'Bibliothèque'."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Masquer l\'étagère de boutique du créateur</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">L\'étagère de boutique du créateur sous la vidéo est masquée</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">L\'étagère de boutique du créateur sous la vidéo est affichée</string>
   <string name="morphe_hide_album_cards_title">Masquer les fiches d\'album</string>
   <string name="morphe_hide_album_cards_summary_on">Les fiches d\'album sont masquées</string>
   <string name="morphe_hide_album_cards_summary_off">Les fiches d\'album sont affichées</string>
@@ -228,7 +245,7 @@ Cependant, activer cette option entraînera également l’enregistrement de cer
   <string name="morphe_hide_transcript_section_title">Masquer \'Transcription\'</string>
   <string name="morphe_hide_transcript_section_summary_on">La section \'Transcription\' est masquée</string>
   <string name="morphe_hide_transcript_section_summary_off">La section \'Transcription\' est affichée</string>
-  <string name="morphe_hide_quizzes_section_title">Masquer Quiz</string>
+  <string name="morphe_hide_quizzes_section_title">Masquer \'Quiz\'</string>
   <string name="morphe_hide_quizzes_section_summary_on">La section \'Quiz\' est masquée</string>
   <string name="morphe_hide_quizzes_section_summary_off">La section \'Quiz\' est affichée</string>
   <string name="morphe_hide_description_components_screen_title">Description vidéo</string>
@@ -286,6 +303,9 @@ Cependant, activer cette option entraînera également l’enregistrement de cer
   <string name="morphe_hide_comments_channel_guidelines_title">Masquer les règles de la chaîne</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Les règles de la chaîne sont masquées</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Les règles de la chaîne sont affichées</string>
+  <string name="morphe_hide_comments_prompts_title">Masquer les messages liés aux commentaires</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Les messages liés aux commentaires sont masqués</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Les messages liés aux commentaires sont affichés</string>
   <string name="morphe_hide_comments_by_members_header_title">Masquer l\'en tête \'Commentaires postés par des membres\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">L\'en-tête \'Commentaires postés par des membres\' est masqué</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">L\'en-tête \'Commentaires postés par des membres\' est affiché</string>
@@ -369,9 +389,6 @@ Limitations :
   <string name="morphe_hide_keyword_toast_invalid_length">Le mot-clé est trop court et nécessite des guillemets : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ce mot-clé va masquer toutes les vidéos : %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Masquer l\'étagère de boutique du créateur</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">L\'étagère de boutique du créateur sous la vidéo est masquée</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">L\'étagère de boutique du créateur sous la vidéo est affichée</string>
   <string name="morphe_hide_end_screen_store_banner_title">Masquer la bannière de boutique de l\'écran de fin</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">La bannière de boutique à l\'écran de fin est masquée</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">La bannière de boutique à l\'écran de fin est affichée</string>
@@ -384,7 +401,7 @@ Limitations :
   <string name="morphe_hide_merchandise_banners_title">Masquer les bannières \'Effectuer des achats...\'</string>
   <string name="morphe_hide_merchandise_banners_summary_on">Les bannières \'Effectuer des achats...\'  sont masquées</string>
   <string name="morphe_hide_merchandise_banners_summary_off">Les bannières \'Effectuer des achats...\' sont affichées</string>
-  <string name="morphe_hide_paid_promotion_label_title">Masquer la bannière de promotion rémunérée</string>
+  <string name="morphe_hide_paid_promotion_label_title">Masquer la bannière \'Inclut une promotion rémunérée\'</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">La bannière \'Inclut une promotion rémunérée\' est masquée</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">La bannière \'Inclut une promotion rémunérée\' est affichée</string>
   <string name="morphe_hide_self_sponsor_ads_title">Masquer les cartes d\'autopromotion</string>
@@ -418,9 +435,9 @@ Limitations :
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Le message sera affiché</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Cela ne contourne pas la restriction d’âge. Cela accepte simplement la confirmation automatiquement</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Désactiver le pop-up \'Regardez sur un téléviseur\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Le pop-up \'Regardez sur un téléviseur\' est désactivé</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Le pop-up \'Regardez sur un téléviseur\' est activé</string>
+  <string name="morphe_disable_signin_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_on">Le pop-up \'Connectez-vous à la TV\' est désactivé</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_off">Le pop-up \'Connectez-vous à la TV\' est activé</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Désactiver le double appui pour passer un chapitre</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Le double appui ne peut jamais déclencher un saut au chapitre suivant/précédent</string>
@@ -640,7 +657,7 @@ Les cookies seront enregistrés automatiquement s'ils sont valides"</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barre de notification est opaque ou translucide</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations :
 • Une barre noire peut apparaître en haut du lecteur vidéo.
-• Sur certains appareils, l'activation de cette fonctionnalité peut rendre la barre de navigation du système transparente."</string>
+• La barre de navigation système peut devenir transparente et il est impossible de commenter les vidéos."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Désactiver la barre claire translucide</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">La barre de navigation en mode clair est opaque</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">La barre de navigation en mode clair est opaque ou translucide</string>
@@ -721,14 +738,14 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Masquer le message du menu \'Qualité\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Le message du menu \'Qualité vidéo\' est masqué</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Le message du menu \'Qualité vidéo\' est affiché</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Masquer le bouton \'Lecture automatique\'</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Le bouton \'Lecture automatique\' est masqué</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Le bouton \'Lecture automatique\' est affiché</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Masquer l\'aperçu de lecture automatique</string>
   <string name="morphe_hide_autoplay_preview_summary_on">L\'aperçu de lecture automatique est masqué</string>
   <string name="morphe_hide_autoplay_preview_summary_off">L\'aperçu de lecture automatique est affiché</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Masquer le bouton \'Lecture automatique\'</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Le bouton \'Lecture automatique\' est masqué</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Le bouton \'Lecture automatique\' est affiché</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Masquer le bouton \'Sous-titres\'</string>
   <string name="morphe_hide_captions_button_summary_on">Le bouton \'Sous-titres\' est masqué</string>
@@ -736,6 +753,12 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <string name="morphe_hide_cast_button_title">Masquer le bouton \'Caster\'</string>
   <string name="morphe_hide_cast_button_summary_on">Le bouton \'Caster\' est masqué</string>
   <string name="morphe_hide_cast_button_summary_off">Le bouton \'Caster\' est affiché</string>
+  <string name="morphe_hide_collapse_button_title">Masquer le bouton \'Réduire\'</string>
+  <string name="morphe_hide_collapse_button_summary_on">Le bouton \'Réduire\' est masqué</string>
+  <string name="morphe_hide_collapse_button_summary_off">Le bouton \'Réduire\' est affiché</string>
+  <string name="morphe_hide_fullscreen_button_title">Masquer le bouton \'Plein écran\'</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Le bouton \'Plein écran\' est masqué</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Le bouton \'Plein écran\' est affiché</string>
   <string name="morphe_hide_player_control_buttons_background_title">Masquer l\'arrière-plan des commandes du lecteur</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">L\'arrière-plan des commandes du lecteur est masqué</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">L\'arrière-plan des commandes du lecteur est affiché</string>
@@ -781,6 +804,9 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Lecteur Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Masquer ou afficher des composants du lecteur Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Masquer les Shorts dans la page du canal</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Masqué dans la page du canal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Affiché dans la page du canal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Masquer les Shorts dans le flux \'Accueil\'</string>
   <string name="morphe_hide_shorts_home_summary_on">Masqués dans les flux \'Accueil\' et \'Vidéos similaires\'</string>
@@ -905,11 +931,11 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <string name="morphe_hide_shorts_navigation_bar_summary_on">La barre de navigation est masquée</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barre de navigation est affichée</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Masquer l\'écran de fin suggérant une vidéo</string>
+  <string name="morphe_end_screen_suggested_video_title">Masquer \'Vidéo suggéréé\' à l\'écran de fin</string>
   <string name="morphe_end_screen_suggested_video_summary_on">"L'écran de fin suggérant une vidéo est masqué lorsque la lecture automatique est désactivée.
 
 La lecture automatique peut être modifiée dans les paramètres de YouTube :
-Paramètres → Lecture → Lecture auto. de la prochaine vidéo"</string>
+Paramètres → Lecture → Lecture auto. de la vidéo suivante"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">L\'écran de fin suggérant une vidéo est affiché</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Masquer l\'overlay des vidéos similaires</string>
@@ -989,12 +1015,6 @@ Limitation : Il se peut que les 'Je n'aime pas' n'apparaissent pas en navigatio
   <string name="morphe_wide_searchbar_title">Activer la barre de recherche large</string>
   <string name="morphe_wide_searchbar_summary_on">La barre de recherche large est activée</string>
   <string name="morphe_wide_searchbar_summary_off">La barre de recherche large est désactivée</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Restaurer les anciens filtres de recherche</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Le tri par notation et par date de mise en ligne sont disponibles dans les filtres de recherche</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Le tri par notation et par date de mise en ligne ne sont pas disponibles dans le filtre de recherche</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Notation</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Date de mise en ligne</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Activer SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock est un service d\'entraide permettant de passer des parties gênantes des vidéos YouTube</string>
@@ -1013,7 +1033,7 @@ Limitation : Il se peut que les 'Je n'aime pas' n'apparaissent pas en navigatio
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_on">Le bouton \'Passer\' est masqué après quelques secondes</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">Le bouton \'Passer\' est affiché pendant toute la durée du segment</string>
   <string name="morphe_sb_auto_hide_skip_button_duration">Durée du bouton \'Passer\'</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_sum">Durée d\'affichage des boutons \'Passer\' et \'Passer au point clé\' avant masquage automatique</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_sum">Durée d\'affichage des boutons \'Passer\' et \'Point clé\' avant masquage automatique</string>
   <string name="morphe_sb_general_skiptoast">Afficher une notification d\'annulation de saut</string>
   <string name="morphe_sb_general_skiptoast_sum_on">Une notification est affichée lorsqu\'un segment est automatiquement passé. Appuyez sur la notification pour annuler le saut</string>
   <string name="morphe_sb_general_skiptoast_sum_off">La notification n\'est pas affichée</string>
@@ -1400,7 +1420,7 @@ Appuyez ici pour en savoir plus sur DeArrow"</string>
   <string name="morphe_loop_video_summary_on">La vidéo sera lue en boucle</string>
   <string name="morphe_loop_video_summary_off">La vidéo ne sera pas lue en boucle</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Afficher le bouton \'Lecture en boucle\'</string>
+  <string name="morphe_loop_video_button_title">Afficher un bouton \'Lecture en boucle\'</string>
   <string name="morphe_loop_video_button_summary_on">Le bouton \'Lecture en boucle\' est affiché</string>
   <string name="morphe_loop_video_button_summary_off">Le bouton \'Lecture en boucle\' n\'est pas affiché</string>
   <string name="morphe_loop_video_button_toast_on">La lecture en boucle est activée</string>

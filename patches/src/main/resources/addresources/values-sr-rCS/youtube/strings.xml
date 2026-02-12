@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Ovo može pomoći u identifikaciji komponenti prilikom pravljenja prilagođenih filtera.
 
 Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke, kao što je vaša IP adresa."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Onemárišáje ažuriranja razmára</string>
+  <string name="morphe_disable_layout_updates_summary_on">Razmár neće biti ažuriran sa servera</string>
+  <string name="morphe_disable_layout_updates_summary_off">Razmár će biti ažuriran sa servera</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Layaut aplikacije se vraća na onaj koji je korišćen prilikom prvog instaliranja.
+
+Neke server-side layauti mogu da ne vraćaju.
+
+Promene uključuju:
+• Komponenti u izvučnom meniju igrača (ili povezanih postavki) mogu da ne funkcionišu.
+• Brojevi u toku nisu animirani.
+• Tab za biblioteku je prikazan.
+• Muzička sekcija opisa videa može da ne funkcioniše.
+• Dugme za prelazak računa možda neće biti prikazano na tabu za biblioteku."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Sakrij policu prodavnice kreatora</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Polica prodavnice kreatora ispod video plejera je skrivena</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Polica prodavnice kreatora ispod video plejera je prikazana</string>
   <string name="morphe_hide_album_cards_title">Sakrij kartice albuma</string>
   <string name="morphe_hide_album_cards_summary_on">Kartice albuma su skrivene</string>
   <string name="morphe_hide_album_cards_summary_off">Kartice albuma su prikazane</string>
@@ -286,6 +303,9 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <string name="morphe_hide_comments_channel_guidelines_title">Sakrij smernice kanala</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Smernice kanala su skrivene</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Smernice kanala su prikazane</string>
+  <string name="morphe_hide_comments_prompts_title">Sakrij komentare</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Komentari su skriveni</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Komentari su prikazani</string>
   <string name="morphe_hide_comments_by_members_header_title">Sakrij zaglavlje „Komentari od članova”</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Zaglavlje „Komentari članova” je skriveno</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Zaglavlje „Komentari članova” je prikazano</string>
@@ -369,9 +389,6 @@ Ograničenja:
   <string name="morphe_hide_keyword_toast_invalid_length">Ključna reč je prekratka i zahteva navodnike: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ključna reč će sakriti sve videe: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Sakrij policu prodavnice kreatora</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Polica prodavnice kreatora ispod video plejera je skrivena</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Polica prodavnice kreatora ispod video plejera je prikazana</string>
   <string name="morphe_hide_end_screen_store_banner_title">Sakrij baner prodavnice na završnom ekranu</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Baner prodavnice na završnom ekranu je skriven</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Baner prodavnice na završnom ekranu je prikazan</string>
@@ -639,8 +656,8 @@ Cookies will be saved automatically if they are valid"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusna traka je neprozirna</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusna traka je neprozirna ili prozirna</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograničenja:
-• Crna traka može da se pojavi na vrhu igrača videa.
-• Na nekim uređajima, omogućavanje ove funkcije može promeniti sistemsku traku navigacije u prozirnu."</string>
+• Moguće je da se na vrhu video plejera pojavi crna traka.
+• Sistemske navigacione trake mogu postati prozirne i nije moguće komentarisati videozapise."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Onemogući svetlu prozirnu traku za navigaciju</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Traka za navigaciju u svetlom režimu je neprozirna</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Traka za navigaciju u svetlom režimu je neprozirna ili prozirna</string>
@@ -721,14 +738,14 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija kvaliteta videa</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija kvaliteta videa je skriveno</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija kvaliteta videa je prikazano</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Sakrij dugme „Autoplej”</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Dugme „Autoplej” je skriveno</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Dugme „Autoplej” je prikazano</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sakrij prikazu automatskog reproduciranja</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Prikaz automatskog reproduciranja je sakriven</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Prikaz automatskog reproduciranja je prikazan</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Sakrij dugme „Autoplej”</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Dugme „Autoplej” je skriveno</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Dugme „Autoplej” je prikazano</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sakrij dugme „Titl”</string>
   <string name="morphe_hide_captions_button_summary_on">Dugme „Titl” je skriveno</string>
@@ -736,6 +753,12 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'
   <string name="morphe_hide_cast_button_title">Sakrij dugme „Prebacuj”</string>
   <string name="morphe_hide_cast_button_summary_on">Dugme „Prebacuj” je skriveno</string>
   <string name="morphe_hide_cast_button_summary_off">Dugme „Prebacuj” je prikazano</string>
+  <string name="morphe_hide_collapse_button_title">Sakrij dugme \"Smanji\"</string>
+  <string name="morphe_hide_collapse_button_summary_on">Dugme \"Smanji\" je sakriveno</string>
+  <string name="morphe_hide_collapse_button_summary_off">Dugme \"Smanji\" je prikazano</string>
+  <string name="morphe_hide_fullscreen_button_title">Sakrij dugme \"Puni ekran\"</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Dugme \"Puni ekran\" je sakriveno</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Dugme \"Puni ekran\" je prikazano</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sakrij pozadinu kontrola plejera</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Pozadina kontrola plejera je skrivena</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Pozadina kontrola plejera je prikazana</string>
@@ -781,6 +804,9 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts plejer</string>
   <string name="morphe_shorts_player_screen_summary">Sakrijte ili prikažite komponente Shorts plejera</string>
+  <string name="morphe_hide_shorts_channel_title">Sakrij Shorts na stranici kanala</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Skriveno na stranici kanala</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Prikaženo na stranici kanala</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Sakrij Shorts u fidu „Početna”</string>
   <string name="morphe_hide_shorts_home_summary_on">Skriveno u fidu „Početna” i srodnim videima</string>
@@ -989,12 +1015,6 @@ Ograničenje: Nesviđanja se možda neće pojaviti u režimu bez arhiviranja"</
   <string name="morphe_wide_searchbar_title">Omogući široku traku za pretragu</string>
   <string name="morphe_wide_searchbar_summary_on">Široka traka za pretragu je omogućena</string>
   <string name="morphe_wide_searchbar_summary_off">Široka traka za pretragu je onemogućena</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Vrati stare pretrage</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Sortiranje po oceni i po datumu objave je dostupno u pretraživanju</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Sortiranje po oceni i po datumu objave nije dostupno u pretraživanju</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Rejting</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Datum objave</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Omogući SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock je sistem zasnovan na doprinosima korisnika i služi za preskakanje dosadnih delova YouTube videa</string>

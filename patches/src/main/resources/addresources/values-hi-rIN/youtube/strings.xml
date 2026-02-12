@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 यह कस्टम फ़िल्टर बनाने के लिए घटकों को पहचानने में मदद करेगा।
 
 लेकिन, इसका सक्षम करना भी कुछ उपयोगकर्ता डेटा जैसे आपके आईपी पता को रिकॉर्ड करेगा।"</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">अपडेट लेआउट को अक्षम करना</string>
+  <string name="morphe_disable_layout_updates_summary_on">सर्वर से लेआउट को अपडेट नहीं किया जाएगा</string>
+  <string name="morphe_disable_layout_updates_summary_off">सर्वर से लेआउट को अपडेट किया जाएगा</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"एप्लिकेशन का लेआउट पहली बार स्थापित किए जाने पर उपयोग किए जाने वाले लेआउट पर वापस चला जाता है।
+
+कुछ सर्वर-साइड लेआउट वापस नहीं चल सकते हैं।
+
+परिवर्तन शामिल हैं:
+• प्लेयर फ्लाईआउट मेनू (या संबंधित सेटिंग्स) में कंपोनेंट्स काम नहीं करना सकते हैं।
+• रोलिंग नंबर्स एनिमेट नहीं होते हैं।
+• लाइब्रेरी टैब दिखाई देता है।
+• वीडियो विवरण में म्यूजिक सैक्शन काम नहीं करना सकता है।
+• लाइब्रेरी टैब पर अकाउंट स्विच बटन दिखाई नहीं देता है।"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">छुपाएं क्रिएटर स्टोर शेल्फ</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">क्रिएटर स्टोर शेल्फ वीडियो प्लेयर के नीचे छिपा हुआ है</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">क्रिएटर स्टोर शेल्फ वीडियो प्लेयर के नीचे दिखाई देता है</string>
   <string name="morphe_hide_album_cards_title">अल्बम कार्ड छुपाएं</string>
   <string name="morphe_hide_album_cards_summary_on">एल्बम कार्ड छिपे हुए हैं</string>
   <string name="morphe_hide_album_cards_summary_off">एल्बम कार्ड्स दिखाए जाते हैं</string>
@@ -287,6 +304,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">छुपाएं चैनल निदेशिका</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">चैनल गाइडलाइनें छुपाई गई हैं</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">चैनल गाइडलाइनें दिखाई जाती हैं</string>
+  <string name="morphe_hide_comments_prompts_title">अक्सर टिप्पणियों को छुपाएं</string>
+  <string name="morphe_hide_comments_prompts_summary_on">टिप्पणियों को छुपाया गया है</string>
+  <string name="morphe_hide_comments_prompts_summary_off">टिप्पणियों को दिखाया गया है</string>
   <string name="morphe_hide_comments_by_members_header_title">छुपाएं \'सदस्य के टिप्पणियां\' शीर्षक</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">सदस्यों के टिप्पणियों के शीर्षक छुपा हुआ है</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">सदस्यों के टिप्पणियों के शीर्षक दिखाया जाता है</string>
@@ -369,9 +389,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड बहुत छोटा है और क्वोटेस की आवश्यकता है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सभी वीडियो को छुपाएगा: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">छुपाएं क्रिएटर स्टोर शेल्फ</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">क्रिएटर स्टोर शेल्फ वीडियो प्लेयर के नीचे छिपा हुआ है</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">क्रिएटर स्टोर शेल्फ वीडियो प्लेयर के नीचे दिखाई देता है</string>
   <string name="morphe_hide_end_screen_store_banner_title">छुपाएं अंत पर्दे स्टोर बैनर</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">एंड स्क्रीन स्टोर बैनर छुपा हुआ है</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">एंड स्क्रीन स्टोर बैनर छुपा हुआ है</string>
@@ -602,8 +619,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"सीमाएँ:
-• वीडियो प्लेयर के शीर्ष पर काला बार दिखाई सकता है
-• कुछ डिवाइस पर इस सुविधा को एनब्ल करने से सिस्टम नैविगेशन बार को ट्रांस्पैरेंट बनाया जा सकता है"</string>
+• वीडियो प्लेयर के शीर्ष पर काला बैंड हो सकता है।
+• नैविगेशन बार सिस्टम ट्रांसल्यूसेंट हो सकता है और वीडियो पर टिप्पणी करना संभव नहीं हो सकता।"</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या बदलें</string>
   <string name="morphe_hide_toolbar_create_button_title">छुपाएं \'सृजना\' बटन</string>
@@ -646,12 +663,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">क्वालिटी मेनू फुटर छुपाएं</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">क्वालिटी मेनू फुटर छुपा हुआ है</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">क्वालिटी मेनू फुटर दिखाया गया है</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ऑटोप्ले प्रीव्यू छुपाएं</string>
   <string name="morphe_hide_autoplay_preview_summary_on">ऑटोप्ले प्रीव्यू छुपा हुआ है</string>
   <string name="morphe_hide_autoplay_preview_summary_off">ऑटोप्ले प्रीव्यू दिखाया गया है</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_collapse_button_title">छुपाएं झुका बटन</string>
+  <string name="morphe_hide_collapse_button_summary_on">झुका बटन छुपा हुआ है</string>
+  <string name="morphe_hide_collapse_button_summary_off">झुका बटन दिखाया गया है</string>
+  <string name="morphe_hide_fullscreen_button_title">छुपाएं फुलस्क्रीन बटन</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">फुलस्क्रीन बटन छुपा हुआ है</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">फुलस्क्रीन बटन दिखाया गया है</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">अंकित मोड</string>
@@ -672,6 +695,9 @@ Second \"item\" text"</string>
   <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_fullscreen_large_seekbar_summary_on">Create a Short button is hidden</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <string name="morphe_hide_shorts_channel_title">छुपाएं शॉर्ट्स चैनल पेज पर</string>
+  <string name="morphe_hide_shorts_channel_summary_on">चैनल पेज पर छुपा हुआ</string>
+  <string name="morphe_hide_shorts_channel_summary_off">चैनल पेज पर दिखाया गया</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_video_description_title">छुपाएं वीडियो विवरण में शॉर्ट्स</string>
@@ -711,12 +737,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_compact_layout_summary_on">लाइक बटन मिनिमम वाइड्थ के लिए स्टाइल किया गया</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">पुराने खोज फ़िल्टर पुनर्स्थापित करें</string>
-  <string name="morphe_restore_old_search_filters_summary_on">खोज फ़िल्टर में रेटिंग द्वारा और अपलोड तारीख़ द्वारा सॉर्ट करना उपलब्ध है</string>
-  <string name="morphe_restore_old_search_filters_summary_off">खोज फ़िल्टर में रेटिंग द्वारा और अपलोड तारीख़ द्वारा सॉर्ट करना उपलब्ध नहीं है</string>
-  <string name="morphe_old_search_filters_sort_by_rating">रेटिंग</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">अपलोड तारीख</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"आपकी सेटिंग्स में एक निजी स्पॉन्सरब्लॉक यूजरआईडी है।

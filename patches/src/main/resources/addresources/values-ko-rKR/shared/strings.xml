@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_no_results_title">\'%s\'에 대한 검색 결과가 없습니다</string>
   <string name="morphe_settings_search_no_results_summary">다른 키워드를 검색해 보세요</string>
   <string name="morphe_settings_search_recent_searches">최근 검색어</string>
-  <string name="morphe_settings_search_remove_message">검색 기록에서 삭제하시겠습니까?</string>
+  <string name="morphe_settings_search_remove_message">검색 기록에서 제거하시겠습니까?</string>
   <string name="morphe_settings_search_clear_history">검색 기록 지우기</string>
   <string name="morphe_settings_search_clear_history_message">모든 검색 기록을 지우시겠습니까?</string>
   <string name="morphe_settings_search_tips_title">검색 팁</string>
@@ -97,7 +97,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_summary">부울 기능 플래그를 관리할 수 있습니다</string>
   <string name="morphe_debug_feature_flags_manager_active_header">허용된 플래그 (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">차단된 플래그 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">플래그 검색 ...</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">플래그 검색...</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">플래그를 저장하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">플래그를 초기화하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">플래그를 클립보드에 복사하였습니다</string>

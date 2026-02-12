@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 这有助于在创建自定义过滤器时识别组件。
 
 但是，启用此设置也会记录一些用户数据，例如您的 IP 地址。"</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">禁用布局更新</string>
+  <string name="morphe_disable_layout_updates_summary_on">服务器不会更新布局</string>
+  <string name="morphe_disable_layout_updates_summary_off">服务器会更新布局</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"应用布局恢复到首次安装时使用的布局。
+
+某些服务器端布局可能不会恢复。
+
+更改包括：
+• 播放器飞出菜单（或相关设置）中的组件可能无法工作。
+• 滚动数字没有动画。
+• 图书馆标签已显示。
+• 视频描述中的音乐部分可能无法工作。
+• 帐户切换按钮可能不会出现在图书馆标签上。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">隐藏创作者商店专区</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">视频播放器下方的创作者商店内容架已隐藏</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">视频播放器下方的创作者商店货架已显示</string>
   <string name="morphe_hide_album_cards_title">隐藏专辑卡片</string>
   <string name="morphe_hide_album_cards_summary_on">专辑卡片已隐藏</string>
   <string name="morphe_hide_album_cards_summary_off">专辑卡片已显示</string>
@@ -286,6 +303,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隐藏频道准则</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">频道准则已隐藏</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">频道准则已显示</string>
+  <string name="morphe_hide_comments_prompts_title">隐藏评论提示</string>
+  <string name="morphe_hide_comments_prompts_summary_on">评论提示已隐藏</string>
+  <string name="morphe_hide_comments_prompts_summary_off">评论提示已显示</string>
   <string name="morphe_hide_comments_by_members_header_title">隐藏「会员的评论」标题</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">成员评论标题已隐藏</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">成员评论标题已显示</string>
@@ -369,9 +389,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">关键词过短，需要加上引号：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">关键词将隐藏所有影片：%s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">隐藏创作者商店专区</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">视频播放器下方的创作者商店内容架已隐藏</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">视频播放器下方的创作者商店货架已显示</string>
   <string name="morphe_hide_end_screen_store_banner_title">商店横幅已隐藏</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">结束画面商店横幅已隐藏</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">结束画面商店横幅已显示</string>
@@ -639,8 +656,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"限制：
-• 视频播放器顶部可能会出现黑条
-• 在某些设备上，启用此功能可能会使系统导航栏变为透明。"</string>
+• 视频播放器顶部可能会出现黑条。
+• 系统导航栏可能会变为透明，无法评论视频。"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">禁用浅色半透明导航栏</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">浅色模式的导航栏不透明</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">浅色模式导航栏为不透明或半透明</string>
@@ -721,14 +738,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">隐藏「画质」选单下的提示页脚</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">「画质」选单页脚已隐藏</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">「画质」选单页脚已显示</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">隐藏「自动播放」按钮</string>
-  <string name="morphe_hide_autoplay_button_summary_on">自动播放按钮已隐藏</string>
-  <string name="morphe_hide_autoplay_button_summary_off">自动播放按钮已显示</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">隐藏自动播放预览</string>
   <string name="morphe_hide_autoplay_preview_summary_on">自动播放预览已隐藏</string>
   <string name="morphe_hide_autoplay_preview_summary_off">自动播放预览已显示</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">隐藏「自动播放」按钮</string>
+  <string name="morphe_hide_autoplay_button_summary_on">自动播放按钮已隐藏</string>
+  <string name="morphe_hide_autoplay_button_summary_off">自动播放按钮已显示</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">隐藏「字幕」按钮</string>
   <string name="morphe_hide_captions_button_summary_on">字幕按钮已隐藏</string>
@@ -736,6 +753,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">隐藏「投屏」按钮</string>
   <string name="morphe_hide_cast_button_summary_on">投屏按钮已隐藏</string>
   <string name="morphe_hide_cast_button_summary_off">投屏按钮已显示</string>
+  <string name="morphe_hide_collapse_button_title">隐藏「折叠」按钮</string>
+  <string name="morphe_hide_collapse_button_summary_on">「折叠」按钮已隐藏</string>
+  <string name="morphe_hide_collapse_button_summary_off">「折叠」按钮已显示</string>
+  <string name="morphe_hide_fullscreen_button_title">隐藏全屏按钮</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">全屏按钮已隐藏</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">全屏按钮已显示</string>
   <string name="morphe_hide_player_control_buttons_background_title">隐藏播放器控件背景</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">播放器控件背景已隐藏</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">播放器控件背景已显示</string>
@@ -781,6 +804,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts 播放器</string>
   <string name="morphe_shorts_player_screen_summary">隐藏或显示 Shorts 播放器组件</string>
+  <string name="morphe_hide_shorts_channel_title">在频道页面隐藏Shorts</string>
+  <string name="morphe_hide_shorts_channel_summary_on">在频道页面隐藏</string>
+  <string name="morphe_hide_shorts_channel_summary_off">在频道页面显示</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">在首页信息流中隐藏Shorts</string>
   <string name="morphe_hide_shorts_home_summary_on">已在首页信息流和相关视频中隐藏</string>
@@ -989,12 +1015,6 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">启用宽搜索栏</string>
   <string name="morphe_wide_searchbar_summary_on">宽搜索栏已启用</string>
   <string name="morphe_wide_searchbar_summary_off">宽搜索栏已禁用</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">恢复旧的搜索过滤器</string>
-  <string name="morphe_restore_old_search_filters_summary_on">搜索过滤器中可用排序方式：按评分排序和按上传日期排序</string>
-  <string name="morphe_restore_old_search_filters_summary_off">搜索过滤器中不可用排序方式：按评分排序和按上传日期排序</string>
-  <string name="morphe_old_search_filters_sort_by_rating">评分</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">上传日期</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">启用 SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock 是一个众包平台，旨在帮助人们跳过 YouTube 视频中烦人的部分</string>

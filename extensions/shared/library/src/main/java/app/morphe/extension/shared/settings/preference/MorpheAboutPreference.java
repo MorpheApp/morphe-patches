@@ -215,9 +215,7 @@ public class MorpheAboutPreference extends Preference {
                          </style>
                         """, backgroundColorHex, foregroundColorHex,
                 morpheBlue, morpheTeal,
-                backgroundColorHex,
-                morpheBlue, morpheTeal,
-                foregroundColorHex
+                backgroundColorHex, foregroundColorHex
         ));
 
         // Logo with Morphe gradient border.

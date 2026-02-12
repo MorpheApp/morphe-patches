@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Dette kan hjælpe med at identificere komponenter, når der oprettes brugerdefinerede filtre.
 
 Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Deaktiver opdateringer af layout</string>
+  <string name="morphe_disable_layout_updates_summary_on">Layout vil ikke blive opdateret af serveren</string>
+  <string name="morphe_disable_layout_updates_summary_off">Layout vil blive opdateret af serveren</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Appens udseende går tilbage til det udseende, der blev brugt ved første installation.
+
+Nogle server-side udseender kan ikke gå tilbage.
+
+Ændringer inkluderer:
+• Komponenter i spillerflydervinduesmenu (eller relaterede indstillinger) kan ikke fungere.
+• Rullende tal er ikke animerede.
+• Biblioteksfladen vises.
+• Musiksektionen af videobeskrivelse kan ikke fungere.
+• Kontobytteskнопка kan ikke vises på Biblioteksfladen."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Skjul butikshylde for skabere</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Opretterbutikshylde under videoafspiller er skjult</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Butikshylde for skaber under videoafspiller vises</string>
   <string name="morphe_hide_album_cards_title">Skjul albumkort</string>
   <string name="morphe_hide_album_cards_summary_on">Albumkort er skjult</string>
   <string name="morphe_hide_album_cards_summary_off">Albumkort vises</string>
@@ -286,6 +303,9 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalretningslinjer</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalretningslinjer er skjult</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalretningslinjer er vist</string>
+  <string name="morphe_hide_comments_prompts_title">Skjul kommentar-prompt</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Kommentar-prompt er skjult</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Kommentar-prompt er vist</string>
   <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\' header</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Kommentarer fra medlemmers overskrift er skjult</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Kommentarer fra medlemmers overskrift vises</string>
@@ -369,9 +389,6 @@ Begrænsninger:
   <string name="morphe_hide_keyword_toast_invalid_length">Søgeordet er for kort og kræver anførselstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøgleord vil skjule alle videoer: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Skjul butikshylde for skabere</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Opretterbutikshylde under videoafspiller er skjult</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Butikshylde for skaber under videoafspiller vises</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skjul banner fra butikken på slutskærmen</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Slutskærmsbutiksbanner er skjult</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Slutskærmsbutiksbanner vises</string>
@@ -638,9 +655,9 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begrænsninger:
-• En sort streg kan dukke op øverst på videoafspilleren.
-• På nogle enheder kan det ændre systemets navigationsbar til gennemsigtig, når man aktiverer denne funktion."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">" Begrænsninger:
+• En sort streg kan dukke op i toppen af videoafspilleren.
+• Systemnavigationsbaren kan blive gennemsigtig, og det er ikke muligt at kommentere videoer."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver lys gennemsigtig linje</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Navigationslinjen i lys tilstand er ikke gennemsigtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Lys tilstand navigationslinjen er opak eller gennemsigtig</string>
@@ -721,14 +738,14 @@ For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Skjul \'Kvalitet\' menu sidefod</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Videokvalitetsmenuens sidefod er skjult</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Videokvalitetsmenuens sidefod er vist</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Skjul knappen Automatisk afspilning</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Automatisk spil-knap er skjult</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Automatisk afspilningsknap vises</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skjul forhådsvisning af autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Forhådsvisning af autoplay er skjult</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Forhådsvisning af autoplay er vist</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Skjul knappen Automatisk afspilning</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Automatisk spil-knap er skjult</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Automatisk afspilningsknap vises</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skjul undertekstknappen</string>
   <string name="morphe_hide_captions_button_summary_on">Undertekster knappen er skjult</string>
@@ -736,6 +753,12 @@ For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <string name="morphe_hide_cast_button_title">Skjul Cast-knappen</string>
   <string name="morphe_hide_cast_button_summary_on">Cast-knappen er skjult</string>
   <string name="morphe_hide_cast_button_summary_off">Cast knap er vist</string>
+  <string name="morphe_hide_collapse_button_title">Skjul Collapse-knappen</string>
+  <string name="morphe_hide_collapse_button_summary_on">Collapse-knappen er skjult</string>
+  <string name="morphe_hide_collapse_button_summary_off">Collapse-knappen er vist</string>
+  <string name="morphe_hide_fullscreen_button_title">Skjul Fullskærm-knap</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Fullskærm-knap er skjult</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Fullskærm-knap er vist</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skjul baggrund for afspillerkontroller</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Baggrund for afspilningskontroller er skjult</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Baggrund for afspillerkontroller vises</string>
@@ -781,6 +804,9 @@ For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts-afspiller</string>
   <string name="morphe_shorts_player_screen_summary">Skjul eller vis Shorts-afspillerkomponenter</string>
+  <string name="morphe_hide_shorts_channel_title">Skjul Shorts i sidekanal</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Skjult i sidekanal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Vist i sidekanal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Skjul Shorts i \'Hjem\'-feed</string>
   <string name="morphe_hide_shorts_home_summary_on">Skjult i \'Hjem\'-feed og relaterede videoer</string>
@@ -989,12 +1015,6 @@ Begrænsning: Synes ikke godt om vises muligvis ikke i inkognitotilstand"</strin
   <string name="morphe_wide_searchbar_title">Aktiver bred søgelinje</string>
   <string name="morphe_wide_searchbar_summary_on">Bred søgelinje er aktiveret</string>
   <string name="morphe_wide_searchbar_summary_off">Bred søgelinje er deaktiveret</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Gendan gamle søgefiltre</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Sorter efter vurdering og opladningsdato er tilgængelige i søgefiltren</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Sorter efter vurdering og opladningsdato er ikke tilgængelige i søgefiltren</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Bedømømelse</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Upload-dato</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Aktiver SponsorBloker</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock er et crowdsourcet system, der springer irriterende dele af YouTube-videoer over</string>

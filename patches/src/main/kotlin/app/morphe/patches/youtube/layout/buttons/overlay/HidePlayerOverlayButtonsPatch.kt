@@ -6,7 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -14,6 +13,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.patches.youtube.shared.SubtitleButtonControllerFingerprint
 import app.morphe.util.findFreeRegister
@@ -45,11 +45,13 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_player_previous_next_buttons"),
-            SwitchPreference("morphe_hide_cast_button"),
-            SwitchPreference("morphe_hide_captions_button"),
             SwitchPreference("morphe_hide_autoplay_button"),
+            SwitchPreference("morphe_hide_captions_button"),
+            SwitchPreference("morphe_hide_cast_button"),
+            SwitchPreference("morphe_hide_collapse_button"),
+            SwitchPreference("morphe_hide_fullscreen_button"),
             SwitchPreference("morphe_hide_player_control_buttons_background"),
+            SwitchPreference("morphe_hide_player_previous_next_buttons"),
         )
 
         // region Hide player next/previous button.
@@ -133,6 +135,53 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 """,
                 ExternalLabel("hidden", getInstruction(gotoIndex)),
             )
+        }
+
+        // endregion
+
+        // region Hide collapse button.
+
+        TitleAnchorFingerprint.let {
+            it.method.apply {
+                val titleAnchorIndex = it.instructionMatches.last().index
+                val titleAnchorRegister = getInstruction<OneRegisterInstruction>(titleAnchorIndex).registerA
+
+                addInstruction(
+                    titleAnchorIndex + 1,
+                    "invoke-static { v$titleAnchorRegister }, $EXTENSION_CLASS_DESCRIPTOR->setTitleAnchorStartMargin(Landroid/view/View;)V"
+                )
+
+                val playerCollapseButtonIndex = it.instructionMatches[1].index
+                val playerCollapseButtonRegister = getInstruction<OneRegisterInstruction>(playerCollapseButtonIndex).registerA
+
+                addInstruction(
+                    playerCollapseButtonIndex + 1,
+                    "invoke-static { v$playerCollapseButtonRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideCollapseButton(Landroid/widget/ImageView;)V"
+                )
+            }
+        }
+
+        // endregion
+
+        // region Hide fullscreen button.
+
+        FullscreenButtonFingerprint.let {
+            it.method.apply {
+                val castIndex = it.instructionMatches[1].index
+                val insertIndex = castIndex + 1
+                val insertRegister = getInstruction<OneRegisterInstruction>(castIndex).registerA
+
+                addInstructionsWithLabels(
+                    insertIndex,
+                    """
+                        invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideFullscreenButton(Landroid/widget/ImageView;)Landroid/widget/ImageView;
+                        move-result-object v$insertRegister
+                        if-nez v$insertRegister, :show
+                        return-void
+                    """,
+                    ExternalLabel("show", getInstruction(insertIndex))
+                )
+            }
         }
 
         // endregion

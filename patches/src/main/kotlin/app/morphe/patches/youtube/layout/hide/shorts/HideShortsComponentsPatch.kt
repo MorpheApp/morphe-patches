@@ -6,7 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -25,6 +24,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -63,6 +63,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         val hideShortsWidget by hideShortsWidgetOption
 
         PreferenceScreen.SHORTS.addPreferences(
+            SwitchPreference("morphe_hide_shorts_channel"),
             SwitchPreference("morphe_hide_shorts_home"),
             SwitchPreference("morphe_hide_shorts_search"),
             SwitchPreference("morphe_hide_shorts_subscriptions"),
@@ -287,7 +288,7 @@ val hideShortsComponentsPatch = bytecodePatch(
         // region Disable experimental Shorts flags.
 
         // Flags might be present in earlier targets, but they are not found in 19.47.53.
-        // If these flags are forced on, the experimental layout is still not used and
+        // If these flags are forced on, the experimental layout is still not used, and
         // it appears the features requires additional server side data to fully use.
         if (is_20_07_or_greater) {
             // Experimental Shorts player uses Android native buttons and not Litho,

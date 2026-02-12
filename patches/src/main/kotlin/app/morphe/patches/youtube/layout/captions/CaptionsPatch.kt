@@ -1,10 +1,10 @@
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 /**
  * Caption settings.  Used to organize all caption related settings together.

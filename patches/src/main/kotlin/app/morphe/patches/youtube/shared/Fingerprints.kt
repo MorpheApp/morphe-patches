@@ -124,21 +124,6 @@ internal object RollingNumberTextViewAnimationUpdateFingerprint : Fingerprint(
     }
 )
 
-internal object SearchRequestBuildParametersFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        string("searchFormData"),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "toByteArray",
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-    )
-)
-
 internal object SeekbarFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
