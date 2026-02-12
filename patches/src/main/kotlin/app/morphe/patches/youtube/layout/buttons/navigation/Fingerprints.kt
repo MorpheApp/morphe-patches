@@ -114,7 +114,7 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     returnType = "Landroid/view/View;",
     parameters = listOf("L", "L"),
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo"),
+        resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo")
     )
 )
 
@@ -129,26 +129,24 @@ internal object SearchBarFingerprint : Fingerprint(
     ),
     custom = { method, _ ->
         method.instructions.any {
-            it.opcode == Opcode.INVOKE_VIRTUAL &&
-                    it.getReference<MethodReference>()?.name == "isEmpty"
+            it.getReference<MethodReference>()?.name == "isEmpty"
         }
     }
 )
 
 internal object SearchBarParentFingerprint : Fingerprint(
     returnType = "Landroid/view/View;",
+    strings = listOf("voz-target-id"),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "voice_search"),
-        string("voz-target-id")
+        resourceLiteral(ResourceType.ID, "voice_search")
     )
 )
 
 internal object SearchResultFingerprint : Fingerprint(
     returnType = "Landroid/view/View;",
+    strings = listOf("search_filter_chip_applied", "search_original_chip_query"),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "voice_search"),
-        string("search_filter_chip_applied"),
-        string("search_original_chip_query")
+        resourceLiteral(ResourceType.ID, "voice_search")
     )
 )
 
@@ -156,9 +154,7 @@ internal object VoiceInputControllerParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("[B", "Z"),
-    filters = listOf(
-        string("VoiceInputController")
-    )
+    strings = listOf("VoiceInputController")
 )
 
 internal object VoiceInputControllerFingerprint : Fingerprint(
