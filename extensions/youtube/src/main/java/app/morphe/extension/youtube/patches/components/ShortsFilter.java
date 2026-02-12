@@ -505,7 +505,7 @@ public final class ShortsFilter extends Filter {
         return false;
     }
 
-        private boolean shouldHideShortsFeedItems() {
+    private boolean shouldHideShortsFeedItems() {
         // Known issue if hide home is on but at least one other hide is off:
         //
         // Shorts suggestions will load in the background if a video is opened and
