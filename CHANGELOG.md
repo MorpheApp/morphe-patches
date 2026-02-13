@@ -1,3 +1,10 @@
+# [1.14.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.13.1-dev.1...v1.14.0-dev.1) (2026-02-13)
+
+
+### Features
+
+* Use Morphe patcher 1.1.1 ([#347](https://github.com/MorpheApp/morphe-patches/issues/347)) ([f0178c3](https://github.com/MorpheApp/morphe-patches/commit/f0178c3048a001f7aa4ffae4cccbdb756b64553c))
+
 ## [1.13.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0...v1.13.1-dev.1) (2026-02-13)
 
 
