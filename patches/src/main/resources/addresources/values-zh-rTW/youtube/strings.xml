@@ -39,25 +39,25 @@ Second \"item\" text"</string>
   <string name="morphe_debug_protobuffer_title">記錄檔協定緩衝區</string>
   <string name="morphe_debug_protobuffer_summary_on">除錯記錄檔會包含協定緩衝資訊</string>
   <string name="morphe_debug_protobuffer_summary_off">除錯記錄檔不會包含協定緩衝資訊</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"啟用此設定將會記錄額外的佈局資料，包括部分使用者介面元件的畫面文字。
+  <string name="morphe_debug_protobuffer_user_dialog_message">"啟用這項設定將會記錄額外的版面配置資料，包括部分使用者介面元件上的螢幕文字。
 
-這有助於在建立自訂過濾器時識別元件。
+這有助於在建立自訂篩選器時識別元件。
 
-不過，啟用此功能也會記錄部分使用者資料，例如您的 IP 位址。"</string>
+然而，啟用這項功能也會記錄部分使用者資料，例如你的 IP 位址。"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">禁用布局更新</string>
-  <string name="morphe_disable_layout_updates_summary_on">服务器不会更新布局</string>
-  <string name="morphe_disable_layout_updates_summary_off">服务器会更新布局</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"應用程序佈局將恢復到首次安裝時使用的佈局。
+  <string name="morphe_disable_layout_updates_title">停用版面配置更新</string>
+  <string name="morphe_disable_layout_updates_summary_on">伺服器不會更新版面配置</string>
+  <string name="morphe_disable_layout_updates_summary_off">伺服器會更新版面配置</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"應用程式版面回溯至初次安裝時的版面配置。
 
-一些伺服器端佈局可能無法恢復。
+部分伺服器端的版面可能不會回溯。
 
-變更包括：
-• 播放器飛出菜單中的組件（或相關設定）可能無法工作。
-• 滾動數字未動畫。
-• 圖書館標籤顯示。
-• 視頻描述中的音樂部分可能無法工作。
-• 圖書館標籤上可能看不到帳號切換按鈕。"</string>
+變更內容包括：
+• 播放器彈出選單中的元件（或相關設定）可能無法運作。
+• 滾動數字動畫消失（未呈現動畫效果）。
+• 顯示「媒體庫」分頁。
+• 影片說明的「音樂」區塊可能無法運作。
+• 「媒體庫」分頁中可能不會出現帳戶切換按鈕。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">隱藏創作者商店區塊</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">已隱藏影片播放器下方的創作者商店區塊</string>
