@@ -1,10 +1,10 @@
 package app.morphe.extension.shared.patches;
 
-import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
 public final class DisableDRCAudioPatch {
-    private static final boolean DISABLE_DRC_AUDIO = BaseSettings.DISABLE_DRC_AUDIO.get();
+    private static final boolean DISABLE_DRC_AUDIO = SharedYouTubeSettings.DISABLE_DRC_AUDIO.get();
 
     /**
      * Checks if DRC audio should be disabled according to user settings.
