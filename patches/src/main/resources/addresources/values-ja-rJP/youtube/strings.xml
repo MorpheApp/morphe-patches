@@ -805,9 +805,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
   <string name="morphe_shorts_player_screen_summary">ショート プレーヤーのコンポーネントを表示または非表示にします</string>
-  <string name="morphe_hide_shorts_channel_title">チャンネルページでショートを非表示</string>
-  <string name="morphe_hide_shorts_channel_summary_on">チャンネルページで非表示</string>
-  <string name="morphe_hide_shorts_channel_summary_off">チャンネルページで表示</string>
+  <string name="morphe_hide_shorts_channel_title">チャンネル ページでショートを非表示</string>
+  <string name="morphe_hide_shorts_channel_summary_on">チャンネル ページにはショート動画は表示されません</string>
+  <string name="morphe_hide_shorts_channel_summary_off">チャンネル ページにはショート動画が表示されます</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">ホームフィードでショートを非表示</string>
   <string name="morphe_hide_shorts_home_summary_on">ホームフィードおよび関連動画にはショート動画は表示されません</string>

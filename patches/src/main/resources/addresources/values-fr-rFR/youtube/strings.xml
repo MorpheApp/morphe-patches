@@ -804,9 +804,9 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Lecteur Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Masquer ou afficher des composants du lecteur Shorts</string>
-  <string name="morphe_hide_shorts_channel_title">Masquer les Shorts dans la page du canal</string>
-  <string name="morphe_hide_shorts_channel_summary_on">Masqué dans la page du canal</string>
-  <string name="morphe_hide_shorts_channel_summary_off">Affiché dans la page du canal</string>
+  <string name="morphe_hide_shorts_channel_title">Masquer les Shorts dans la page de chaîne</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Masqué dans la page de chaîne</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Affiché dans la page de chaîne</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Masquer les Shorts dans le flux \'Accueil\'</string>
   <string name="morphe_hide_shorts_home_summary_on">Masqués dans les flux \'Accueil\' et \'Vidéos similaires\'</string>

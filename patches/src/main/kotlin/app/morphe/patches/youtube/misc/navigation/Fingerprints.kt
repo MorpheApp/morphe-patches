@@ -42,13 +42,13 @@ internal object AppCompatToolbarBackButtonFingerprint : Fingerprint(
 )
 
 /**
- * Matches to the class found in [pivotBarConstructorFingerprint].
+ * Matches to the class found in [PivotBarConstructorFingerprint].
  */
 internal object InitializeButtonsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "image_only_tab")
+        string("FEvideo_picker")
     )
 )
 

@@ -19,18 +19,11 @@ internal object LithoOnBoundsChangeFingerprint : Fingerprint(
             type = "Landroid/graphics/Path;"
         ),
 
-        methodCall(
-            definingClass = "this",
-            name = "isStateful",
-            returnType = "Z",
-            location = MatchAfterWithin(5)
-        ),
-
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             definingClass = "this",
             type = "Landroid/graphics/Paint",
-            location = MatchAfterWithin(5)
+            location = MatchAfterWithin(10)
         ),
         methodCall(
             smali = "Landroid/graphics/Paint;->setColor(I)V",
