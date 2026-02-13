@@ -8,7 +8,7 @@ import android.text.Html;
 import android.util.AttributeSet;
 
 /**
- * Allows using basic html for the summary text.
+ * Allows using basic HTML for the summary text.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class HtmlPreference extends Preference {

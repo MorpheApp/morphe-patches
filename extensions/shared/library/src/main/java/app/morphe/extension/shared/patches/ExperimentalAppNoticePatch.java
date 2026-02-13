@@ -51,7 +51,7 @@ public class ExperimentalAppNoticePatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Checks if YouTube watch history endpoint cannot be reached.
      */
     public static void showExperimentalNoticeIfNeeded(Activity activity) {

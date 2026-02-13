@@ -1,15 +1,11 @@
 package app.morphe.extension.reddit.settings.preference;
 
 import android.content.Context;
-import android.preference.Preference;
 import android.preference.PreferenceScreen;
-
-import androidx.annotation.NonNull;
 
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousPreferenceCategory;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**

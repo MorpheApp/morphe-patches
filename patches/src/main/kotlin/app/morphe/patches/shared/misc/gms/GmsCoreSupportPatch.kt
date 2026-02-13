@@ -30,7 +30,8 @@ import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringRefere
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/GmsCoreSupport;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/shared/patches/GmsCoreSupportPatch;"
 
 /**
  * Old vendor id for maximum backwards compatibility.
@@ -114,7 +115,7 @@ fun gmsCoreSupportPatch(
             in PERMISSIONS,
             in ACTIONS,
             in AUTHORITIES,
-            -> referencedString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID!!)
+            -> referencedString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)
 
             // No vendor prefix for whatever reason...
             "subscribedfeeds" -> "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds"
@@ -130,7 +131,7 @@ fun gmsCoreSupportPatch(
                     if (str.startsWith(uriPrefix)) {
                         return str.replace(
                             uriPrefix,
-                            "content://${authority.replace("com.google", GMS_CORE_VENDOR_GROUP_ID!!)}",
+                            "content://${authority.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)}",
                         )
                     }
                 }
@@ -223,7 +224,9 @@ fun gmsCoreSupportPatch(
 
         // Change the vendor of GmsCore in the extension.
 
-        GmsCoreSupportFingerprint.match(extensionClassDef).method.returnEarly(GMS_CORE_VENDOR_GROUP_ID!!)
+        GmsCoreSupportFingerprint.match(extensionClassDef).method.returnEarly(
+            GMS_CORE_VENDOR_GROUP_ID
+        )
 
         executeBlock()
     }

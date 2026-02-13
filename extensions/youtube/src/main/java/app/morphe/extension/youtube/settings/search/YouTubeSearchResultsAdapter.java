@@ -12,7 +12,6 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 /**
  * YouTube-specific search results adapter.
  */
-@SuppressWarnings("deprecation")
 public class YouTubeSearchResultsAdapter extends BaseSearchResultsAdapter {
 
     public YouTubeSearchResultsAdapter(Context context, List<BaseSearchResultItem> items,

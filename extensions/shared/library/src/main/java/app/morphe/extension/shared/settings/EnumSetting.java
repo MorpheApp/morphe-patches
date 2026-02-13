@@ -15,7 +15,7 @@ import app.morphe.extension.shared.Logger;
  * If an Enum value is removed or changed, any saved or imported data using the
  * non-existent value will be reverted to the default value
  * (the event is logged, but no user error is displayed).
- *
+ * <p>
  * All saved JSON text is converted to lowercase to keep the output less obnoxious.
  */
 @SuppressWarnings("unused")

@@ -200,7 +200,7 @@ fun MutableMethod.injectHideViewCall(
 
 /**
  * Inserts instructions at a given index, using the existing control flow label at that index.
- * Inserted instructions can have it's own control flow labels as well.
+ * Inserted instructions can have its own control flow labels as well.
  *
  * Effectively this changes the code from:
  * :label
@@ -1318,7 +1318,7 @@ internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
     val fingerprint = Fingerprint(
         returnType = returnType,
         parameters = listOf(),
-        custom = { method, classDef ->
+        custom = { method, _ ->
             AccessFlags.STATIC.isSet(method.accessFlags) && method.name == methodName
         }
     )

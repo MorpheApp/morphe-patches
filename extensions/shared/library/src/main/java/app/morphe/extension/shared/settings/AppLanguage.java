@@ -97,7 +97,7 @@ public enum AppLanguage {
     }
 
     /**
-     * @return The 2 letter ISO 639_1 language code.
+     * @return The 2-letter ISO 639_1 language code.
      */
     public String getLanguage() {
         // Changing the app language does not force the app to completely restart,

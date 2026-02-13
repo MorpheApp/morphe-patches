@@ -1,9 +1,6 @@
 package app.morphe.extension.reddit.patches;
 
 import android.content.res.Resources;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +31,6 @@ public final class NavigationButtonsPatch {
         labelMap.put(label, resourceName);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void setNavigationMap(Object object, String label) {
         String labelName = labelMap.get(label);
         for (NavigationButton button : NavigationButton.values()) {
