@@ -1,11 +1,11 @@
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 /**
  * Video quality settings.  Used to organize all speed related settings together.

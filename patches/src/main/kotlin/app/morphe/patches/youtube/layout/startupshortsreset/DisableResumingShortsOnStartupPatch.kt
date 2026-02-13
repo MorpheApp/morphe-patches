@@ -9,6 +9,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -30,19 +31,10 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    compatibleWith(
-        "com.google.android.youtube"(
-            "20.14.43",
-            "20.21.37",
-            "20.26.46",
-            "20.31.42",
-            "20.37.48",
-            "20.40.45",
-            // This patch is obsolete with 21.03 because YT seems to have
-            // removed resuming Shorts functionality.
-            // TODO: Before adding 21.03+, merge this patch into `Hide Shorts component`
-        )
-    )
+    // This patch is obsolete with 21.03 because YT seems to have
+    // removed resuming Shorts functionality.
+    // TODO: Before adding 21.03+, merge this patch into `Hide Shorts component`
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         // 21.03+ seems to no longer have resuming Shorts functionality.

@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.
 
 Активирането на тази настройка обаче ще регистрира и някои потребителски данни, като например вашия IP адрес."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Изключи актуализацията на макета</string>
+  <string name="morphe_disable_layout_updates_summary_on">Макетът няма да бъде актуализиран от сървъра</string>
+  <string name="morphe_disable_layout_updates_summary_off">Макетът ще бъде актуализиран от сървъра</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Разместването на приложението се връща към това, което се използвало при първоначалната инсталиране.
+
+Некато сървърно-странично разместване може да не се връща.
+
+Промени включват:
+• Компонентите в менюто за полети на играча (или свързани настройки) може да не работят.
+• Броятки не са анимирани.
+• Табът за библиотека се показва.
+• Музикалния раздел на описанието на видеото може да не работи.
+• Кнопката за превключване на сметка може да не се показва на таба за библиотека."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Скрийте магазинни банера</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Магазинните банера са скрити</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Магазинните банера са показани</string>
   <string name="morphe_hide_album_cards_title">\"Карти на албумите\"</string>
   <string name="morphe_hide_album_cards_summary_on">Албумните карти са скрити</string>
   <string name="morphe_hide_album_cards_summary_off">Албумните карти се показват.</string>
@@ -286,6 +303,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Скрийте или покажете канал указания</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Канал указания са скрити</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Канал указания са показани</string>
+  <string name="morphe_hide_comments_prompts_title">Скриване на коментарни подсказки</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Коментарните подсказки са скрити</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Коментарните подсказки са показани</string>
   <string name="morphe_hide_comments_by_members_header_title">Скрийте или покажете \'Коментари от членове\' заглавие</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Заглавието \'Коментари от членове\' е скрито</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Заглавието \'Коментари от членове\' е показано</string>
@@ -369,9 +389,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключовото е твърде късо и изисква кавички: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключовото ще скрие всички видеоклипове: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Скрийте магазинни банера</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Магазинните банера са скрити</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Магазинните банера са показани</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скрийте банера за крайни екрани</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Банерата за крайни екрани са скрити</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Банерата за крайни екрани са показани</string>
@@ -633,8 +650,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Лентата за статус е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Изключи светла прозрачна лента за навигация</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничения:
-• Може да се появи черен лент в горната част на играча на видеото.
-• На някои уреди, включването на тази функционалност може да промени системната лента за навигация на прозрачна."</string>
+• Може да се появи черна лента в горната част на видеоплеера.
+• Навигационната лента на системата може да промени на прозрачна и не е възможно да се коментира на видеа."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Лентата за навигация в светъл режим е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Изключи тъмна прозрачна лента за навигация</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Лентата за навигация в тъмен режим е непрозрачна</string>
@@ -715,14 +732,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Скриване на подножката на менюто \'Качества\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Подножката на менюто \'Качества\' е скрита</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Подножката на менюто \'Качества\' е показана</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Дублирането на видеа се показва</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Скрий дублиране на видеа</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Дублирането на видеа е скрито</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Скриване на прегледът за автозапускване</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Прегледът за автозапускване е скрит</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Прегледът за автозапускване е показан</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Дублирането на видеа се показва</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Дублирането на видеа е скрито</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_captions_button_summary_on">Скрий дублиране на видеа</string>
@@ -730,6 +747,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_cast_button_summary_on">Скрий дублиране на видеа</string>
   <string name="morphe_hide_cast_button_summary_off">Дублирането на видеа е скрито</string>
+  <string name="morphe_hide_collapse_button_title">Скриване на бутона за колапс</string>
+  <string name="morphe_hide_collapse_button_summary_on">Бутонът за колапс е скрит</string>
+  <string name="morphe_hide_collapse_button_summary_off">Бутонът за колапс се показва</string>
+  <string name="morphe_hide_fullscreen_button_title">Скриване на бутона за пълноекранен режим</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Бутонът за пълноекранен режим е скрит</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Бутонът за пълноекранен режим е показан</string>
   <string name="morphe_hide_player_control_buttons_background_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Скрий дублиране на видеа</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Дублирането на видеа е скрито</string>
@@ -775,6 +798,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Дублирането на видеа се показва</string>
   <string name="morphe_shorts_player_screen_summary">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_shorts_channel_title">Скриване на \"Shorts\" в страницата на канала</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Скрит в страницата на канала</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Показан в страницата на канала</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_shorts_home_summary_on">Дублирането на видеа се показва</string>
@@ -978,12 +1004,6 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">Скрий дублиране на видеа</string>
   <string name="morphe_wide_searchbar_summary_on">Дублирането на видеа е скрито</string>
   <string name="morphe_wide_searchbar_summary_off">Дублирането на видеа се показва</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Възстанови старите филтри за търсене</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Сортиране по рейтинг и сортиране по дата на качване са налице в филтъра за търсене</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Сортиране по рейтинг и сортиране по дата на качване не са налице в филтъра за търсене</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Рейтинг</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Дата на качване</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Дублирането на видеа е скрито</string>
   <string name="morphe_sb_enable_sb_sum">Дублирането на видеа се показва</string>
@@ -1220,7 +1240,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Възстанови старите запазвания в списъка</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Изключване на удебеляване на иконите</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Възстановите неколапсирания видеоплеерски бар</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Възстановите старите икони на Коротки видеа</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промянете стартова страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>

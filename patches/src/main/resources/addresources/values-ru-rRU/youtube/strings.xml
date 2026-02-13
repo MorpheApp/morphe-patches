@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Это может помочь определить компоненты при создании пользовательских фильтров.
 
 Однако включение этой функции также приведет к регистрации некоторых пользовательских данных, таких как ваш IP-адрес."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Отключить обновление макета</string>
+  <string name="morphe_disable_layout_updates_summary_on">Макет не будет обновляться сервером</string>
+  <string name="morphe_disable_layout_updates_summary_off">Макет будет обновляться сервером</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Размещение приложения возвращается к тому, которое использовалось при первой установке.
+
+Некоторые серверные размещения могут не вернуться.
+
+Изменения включают:
+• Компоненты в выпадающем меню плеера (или связанные настройки) могут не работать.
+• Скроллинг не анимирован.
+• Вкладка библиотеки отображается.
+• Раздел музыки в описании видео может не работать.
+• Кнопка переключения аккаунта может не появиться на вкладке Библиотека."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Скрыть секцию магазина автора</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Секция магазина автора под плеером скрыта</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Секция магазина автора под плеером показана</string>
   <string name="morphe_hide_album_cards_title">Скрыть карточки альбомов</string>
   <string name="morphe_hide_album_cards_summary_on">Карточки альбомов под описанием артистов скрыты</string>
   <string name="morphe_hide_album_cards_summary_off">Карточки альбомов под описанием артистов показаны</string>
@@ -286,6 +303,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Скрыть правила канала</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Правила канала в комментариях скрыты</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Правила канала в комментариях показаны</string>
+  <string name="morphe_hide_comments_prompts_title">Скрыть подсказки комментариев</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Подсказки комментариев скрыты</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Подсказки комментариев показаны</string>
   <string name="morphe_hide_comments_by_members_header_title">Скрыть заголовок \"Комментарии спонсоров\"</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Заголовок \"Комментарии спонсоров\" в комментариях скрыт</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Заголовок \"Комментарии спонсоров\" в комментариях показан</string>
@@ -369,9 +389,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключевое слово слишком короткое и требует кавычки: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключевое слово скроет все видео: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Скрыть секцию магазина автора</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Секция магазина автора под плеером скрыта</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Секция магазина автора под плеером показана</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скрыть баннер магазина</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Баннер магазина в конце просмотра скрыт</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Баннер магазина в конце просмотра показан</string>
@@ -639,8 +656,8 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_disable_translucent_status_bar_summary_on">Строка состояния непрозрачная</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Строка состояния непрозрачная или полупрозрачная</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничения:
-• Черная полоса может появиться в верхней части плеера видео
-• На некоторых устройствах включение этой функции может сделать панель навигации системы прозрачной."</string>
+• На видео проигрывателе может появиться черная полоса вверху.
+• Системная навигационная панель может стать прозрачной, и комментирование видео станет невозможным."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Отключить полупрозрачность светлой панели навигации</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Панель навигации при светлой теме непрозрачная</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Панель навигации при светлой теме непрозрачная или полупрозрачная</string>
@@ -721,14 +738,14 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Скрыть колонтитул меню качества видео</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Нижний колонтитул старого меню качества видео в выдвижном меню плеера скрыт</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Нижний колонтитул старого меню качества видео в выдвижном меню плеера показан</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Скрыть кнопку \"Автовоспроизведение\"</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Кнопка \"Автовоспроизведение\" в плеере скрыта</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Кнопка \"Автовоспроизведение\" в плеере показана</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Скрыть предварительный просмотр автовоспроизведения</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Предварительный просмотр автовоспроизведения скрыт</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Предварительный просмотр автовоспроизведения показан</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Скрыть кнопку \"Автовоспроизведение\"</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Кнопка \"Автовоспроизведение\" в плеере скрыта</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Кнопка \"Автовоспроизведение\" в плеере показана</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Скрыть кнопку \"Субтитры\"</string>
   <string name="morphe_hide_captions_button_summary_on">Кнопка \"Субтитры\" в плеере скрыта</string>
@@ -736,6 +753,12 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_cast_button_title">Скрыть кнопку \"Трансляция\"</string>
   <string name="morphe_hide_cast_button_summary_on">Кнопка \"Трансляция\" в плеере скрыта</string>
   <string name="morphe_hide_cast_button_summary_off">Кнопка \"Трансляция\" в плеере показана</string>
+  <string name="morphe_hide_collapse_button_title">Скрыть кнопку \"Свернуть\"</string>
+  <string name="morphe_hide_collapse_button_summary_on">Кнопка \"Свернуть\" скрыта</string>
+  <string name="morphe_hide_collapse_button_summary_off">Кнопка \"Свернуть\" показана</string>
+  <string name="morphe_hide_fullscreen_button_title">Скрыть кнопку \"Полный экран\"</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Кнопка \"Полноэкранный режим\" скрыта</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Кнопка \"Полный экран\" показана</string>
   <string name="morphe_hide_player_control_buttons_background_title">Скрыть фон кнопок управления плеера</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Фон кнопок управления плеера скрыт</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Фон кнопок управления плеера показан</string>
@@ -781,6 +804,9 @@ Cookies будут сохраняться автоматически, если �
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Компоненты плеера Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Скрыть или показать компоненты плеера Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Скрыть Shorts на странице канала</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Скрыто на странице канала</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Показано на странице канала</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Скрыть Shorts в ленте \"Главной\"</string>
   <string name="morphe_hide_shorts_home_summary_on">Shorts в ленте \"Главной\" и похожих видео скрыты</string>
@@ -989,12 +1015,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_wide_searchbar_title">Включить широкую панель поиска</string>
   <string name="morphe_wide_searchbar_summary_on">Широкая панель поиска включена</string>
   <string name="morphe_wide_searchbar_summary_off">Широкая панель поиска отключена</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Восстановить старые фильтры поиска</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Сортировка по рейтингу и дате загрузки доступна в фильтре поиска</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Сортировка по рейтингу и дате загрузки недоступна в фильтре поиска</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Рейтинг</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Дата загрузки</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Включить SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock – это краудсорсинговая система для пропуска раздражающих фрагментов видео YouTube</string>
@@ -1232,7 +1252,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Восстановить старое сохранение в список воспроизведения</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Отключить жирные значки</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Восстановить не свернутую панель действий видео</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Восстановление старых иконок плеера Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Изменить начальную страницу</string>
   <string name="morphe_change_start_page_entry_default">По умолчанию</string>

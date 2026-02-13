@@ -23,7 +23,6 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public class MorpheSettingsIconDynamicDrawable extends Drawable {
 
-    @NonNull
     private Drawable icon;
     private Boolean lastKnownDarkMode;
 
@@ -54,9 +53,7 @@ public class MorpheSettingsIconDynamicDrawable extends Drawable {
             }
 
             // Preserve bounds when switching icons.
-            if (getBounds() != null) {
-                newIcon.setBounds(getBounds());
-            }
+            newIcon.setBounds(getBounds());
 
             icon = newIcon;
         }

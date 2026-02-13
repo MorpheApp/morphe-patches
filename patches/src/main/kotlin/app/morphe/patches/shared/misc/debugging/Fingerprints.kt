@@ -47,7 +47,9 @@ internal object ExperimentalLongFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object ExperimentalStringFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
-    parameters = listOf("J", "Ljava/lang/String;")
+    parameters = listOf("L", "J", "Ljava/lang/String;"),
+    custom = { method, _ ->
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )

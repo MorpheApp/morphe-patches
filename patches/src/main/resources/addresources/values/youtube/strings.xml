@@ -49,7 +49,25 @@ This can help identify components when creating custom filters.
 
 However, enabling this will also log some user data such as your IP address."</string>
 
+    <!-- layout.disableLayoutUpdatesPatch -->
+    <string name="morphe_disable_layout_updates_title">Disable layout updates</string>
+    <string name="morphe_disable_layout_updates_summary_on">Layout will not be updated by the server</string>
+    <string name="morphe_disable_layout_updates_summary_off">Layout will be updated by the server</string>
+    <string name="morphe_disable_layout_updates_user_dialog_message">"App layout reverts to the layout used when first installed.
+
+Some server-side layouts may not revert.
+
+Changes include:
+• Components in player flyout menu (or related settings) may not work.
+• Rolling numbers are not animated.
+• Library tab is shown.
+• Music section of video description may not work.
+• Account switch button may not appear on the Library tab."</string>
+
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
+    <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
+    <string name="morphe_hide_creator_store_shelf_summary_on">Creator store shelf under video player is hidden</string>
+    <string name="morphe_hide_creator_store_shelf_summary_off">Creator store shelf under video player is shown</string>
     <string name="morphe_hide_album_cards_title">Hide album cards</string>
     <string name="morphe_hide_album_cards_summary_on">Album cards are hidden</string>
     <string name="morphe_hide_album_cards_summary_off">Album cards are shown</string>
@@ -295,6 +313,9 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_on">Channel guidelines are hidden</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_off">Channel guidelines are shown</string>
+    <string name="morphe_hide_comments_prompts_title">Hide comment prompts</string>
+    <string name="morphe_hide_comments_prompts_summary_on">Comment prompts are hidden</string>
+    <string name="morphe_hide_comments_prompts_summary_off">Comment prompts are shown</string>
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_by_members_header_summary_on">Comments by members header is hidden</string>
     <string name="morphe_hide_comments_by_members_header_summary_off">Comments by members header is shown</string>
@@ -379,9 +400,6 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
     <!-- ad.general.hideAdsResourcePatch -->
-    <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
-    <string name="morphe_hide_creator_store_shelf_summary_on">Creator store shelf under video player is hidden</string>
-    <string name="morphe_hide_creator_store_shelf_summary_off">Creator store shelf under video player is shown</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_end_screen_store_banner_summary_on">End screen store banner is hidden</string>
     <string name="morphe_hide_end_screen_store_banner_summary_off">End screen store banner is shown</string>
@@ -666,7 +684,7 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
     <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
 • A black bar may appear at the top of the video player.
-• On some devices, enabling this feature can change the system navigation bar to transparent."</string>
+• The system navigation bar can change to transparent and it's not possible to comment on videos."</string>
     <string name="morphe_disable_translucent_navigation_bar_light_title">Disable light translucent bar</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Light mode navigation bar is opaque</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Light mode navigation bar is opaque or translucent</string>
@@ -750,15 +768,15 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
     <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
 
-    <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-    <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
-    <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
-    <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
-
     <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
     <string name="morphe_hide_autoplay_preview_title">Hide autoplay preview</string>
     <string name="morphe_hide_autoplay_preview_summary_on">Autoplay preview is hidden</string>
     <string name="morphe_hide_autoplay_preview_summary_off">Autoplay preview is shown</string>
+
+    <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+    <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
+    <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
+    <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
     <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
     <string name="morphe_hide_captions_button_summary_on">Captions button is hidden</string>
@@ -766,6 +784,12 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <string name="morphe_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_hide_cast_button_summary_on">Cast button is hidden</string>
     <string name="morphe_hide_cast_button_summary_off">Cast button is shown</string>
+    <string name="morphe_hide_collapse_button_title">Hide Collapse button</string>
+    <string name="morphe_hide_collapse_button_summary_on">Collapse button is hidden</string>
+    <string name="morphe_hide_collapse_button_summary_off">Collapse button is shown</string>
+    <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
+    <string name="morphe_hide_fullscreen_button_summary_on">Fullscreen button is hidden</string>
+    <string name="morphe_hide_fullscreen_button_summary_off">Fullscreen button is shown</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary_on">Player controls background is hidden</string>
     <string name="morphe_hide_player_control_buttons_background_summary_off">Player controls background is shown</string>
@@ -817,6 +841,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Hide or show Shorts player components</string>
+    <string name="morphe_hide_shorts_channel_title">Hide Shorts in channel page</string>
+    <string name="morphe_hide_shorts_channel_summary_on">Hidden in channel page</string>
+    <string name="morphe_hide_shorts_channel_summary_off">Shown in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_home_title">Hide Shorts in Home feed</string>
     <string name="morphe_hide_shorts_home_summary_on">Hidden in Home feed and related videos</string>
@@ -1036,13 +1063,6 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_wide_searchbar_title">Enable wide search bar</string>
     <string name="morphe_wide_searchbar_summary_on">Wide search bar is enabled</string>
     <string name="morphe_wide_searchbar_summary_off">Wide search bar is disabled</string>
-
-    <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-    <string name="morphe_restore_old_search_filters_title">Restore old search filters</string>
-    <string name="morphe_restore_old_search_filters_summary_on">Sort by rating and sort by upload date are available in the search filter</string>
-    <string name="morphe_restore_old_search_filters_summary_off">Sort by rating and sort by upload date are not available in the search filter</string>
-    <string name="morphe_old_search_filters_sort_by_rating">Rating</string>
-    <string name="morphe_old_search_filters_sort_by_upload_date">Upload date</string>
 
     <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
     <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>

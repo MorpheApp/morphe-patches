@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Bu, özel filtreler oluştururken bileşenlerin belirlenmesine yardımcı olabilir.
 
 Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydeder."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Yerleşim güncellemelerini devre dışı bırak</string>
+  <string name="morphe_disable_layout_updates_summary_on">Sunucu, yerleşimi güncellemeyecektir</string>
+  <string name="morphe_disable_layout_updates_summary_off">Sunucu, yerleşimi güncelleyecektir</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Uygulama ilk kurulduğu zaman kullanılan düzeni geri alır.
+
+Bazı sunucu tarafı düzenler geri alınmayabilir.
+
+Değişiklikler şunlardır:
+• Çalar flyout menüsü bileşenleri (ve ilgili ayarlar) işlevsiz kalabilir.
+• Yürüyen numaralar animasyonlu değildir.
+• Kütüphane sekmesi gösterilir.
+• Video açıklaması müzik bölümünde sorun yaşanabilir.
+• Kütüphane sekesinde hesap değiştirme düğmesi görüntülenmeyebilir."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">İçerik oluşturucu mağaza rafını gizle</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Video oynatıcısının altındaki içerik üreticisi mağazası rafı gizli</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Video oynatıcının altındaki içerik üreticisi mağaza rafı görünür</string>
   <string name="morphe_hide_album_cards_title">Albüm kartlarını gizle</string>
   <string name="morphe_hide_album_cards_summary_on">Albüm kartları gizli</string>
   <string name="morphe_hide_album_cards_summary_off">Albüm kartları görünür</string>
@@ -286,6 +303,9 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <string name="morphe_hide_comments_channel_guidelines_title">Kanal yönergelerini gizle</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanal yönergeleri gizli</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanal yönergeleri görünür</string>
+  <string name="morphe_hide_comments_prompts_title">Yorum teşcillerini gizle</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Yorum teşcilleri gizli</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Yorum teşcilleri görünür</string>
   <string name="morphe_hide_comments_by_members_header_title">\'Üyelerin yorumları\' başlığını gizle</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Üyelerin yorumları başlığı gizli</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Üyelerin yorumları başlığı görünür</string>
@@ -369,9 +389,6 @@ Sınırlamalar
   <string name="morphe_hide_keyword_toast_invalid_length">Kelime kısa, tırnak içine alın: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kelime bütün videoları gizler: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">İçerik oluşturucu mağaza rafını gizle</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Video oynatıcısının altındaki içerik üreticisi mağazası rafı gizli</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Video oynatıcının altındaki içerik üreticisi mağaza rafı görünür</string>
   <string name="morphe_hide_end_screen_store_banner_title">Bitiş ekranındaki mağaza afişini gizle</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Bitiş ekranı mağaza afişi gizli</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Bitiş ekranı mağaza afişi görünür</string>
@@ -639,8 +656,8 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sınırlamalar:
-• Bir siyah çubuğu video oynatıcıın üstünde görünebilir
-• Bazı cihazlarda, bu özellik etkinleştirildiğinde sistem navigasyon çubuğunu sayfaya göre saydam yapabilir."</string>
+• Video oynatıcıın üstünde siyah bir çubuğu görülebilir.
+• Sistem navigasyon çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Aydınlık temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Aydınlık temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Aydınlık temada gezinti çubuğu opak veya yarı saydam</string>
@@ -721,14 +738,14 @@ Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' o
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Video Kalitesi Menüsü Alt Bilgisini Gizle</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video Kalitesi Menüsü Alt Bilgisi Gizli</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video Kalitesi Menüsü Alt Bilgisi Görünür</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Otomatik oynatma düğmesini gizle</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Otomatik oynatma düğmesi gizli</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Otomatik oynatma düğmesi görünür</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Otomatik önizlemeyi gizle</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Otomatik önizleme gizli</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Otomatik önizleme görünür</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Otomatik oynatma düğmesini gizle</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Otomatik oynatma düğmesi gizli</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Otomatik oynatma düğmesi görünür</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Altyazı düğmesini gizle</string>
   <string name="morphe_hide_captions_button_summary_on">Altyazı düğmesi gizli</string>
@@ -736,6 +753,12 @@ Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' o
   <string name="morphe_hide_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_hide_cast_button_summary_on">Yayınla düğmesi gizli</string>
   <string name="morphe_hide_cast_button_summary_off">Yayınla düğmesi görünür</string>
+  <string name="morphe_hide_collapse_button_title">Gizle Düşür düğmesini</string>
+  <string name="morphe_hide_collapse_button_summary_on">Düşür düğmesi gizli</string>
+  <string name="morphe_hide_collapse_button_summary_off">Düşür düğmesi görünür</string>
+  <string name="morphe_hide_fullscreen_button_title">Tam ekran düğmesini gizle</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Tam ekran düğmesi gizli</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Tam ekran düğmesi görünür</string>
   <string name="morphe_hide_player_control_buttons_background_title">Oynatıcı kontrolleri arka planını gizle</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Oynatıcı kontrolleri arka planı gizli</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Oynatıcı kontrolleri arka planı görünür</string>
@@ -781,6 +804,9 @@ Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' o
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts oynatıcı</string>
   <string name="morphe_shorts_player_screen_summary">Shorts oynatıcı bileşenlerini gizle veya göster</string>
+  <string name="morphe_hide_shorts_channel_title">Kanal sayfasında Shorts\'ları gizle</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Kanal sayfasında gizli</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Kanal sayfasında gösteriliyor</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ana Sayfa akışında Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_home_summary_on">Ana Sayfa akışında ve ilgili videolarda gizli</string>
@@ -989,12 +1015,6 @@ Kısıtlama: Beğenilmeme sayıları gizli modda görünmeyebilir"</string>
   <string name="morphe_wide_searchbar_title">Geniş arama çubuğunu etkinleştir</string>
   <string name="morphe_wide_searchbar_summary_on">Geniş arama çubuğu etkin</string>
   <string name="morphe_wide_searchbar_summary_off">Geniş arama çubuğu devre dışı</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Eski arama filtrelerini geri yükle</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Arama filtresinde derecelendirme ve yüklenme tarihine göre sıralama mevcuttur</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Arama filtresinde derecelendirme ve yüklenme tarihine göre sıralama mevcut değildir</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Derecelendirme</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Yüklenme tarihi</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock\'u etkinleştir</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock, YouTube videolarının can sıkıcı kısımlarını atlamaya yarayan kitle kaynaklı bir sistemdir</string>
@@ -1232,7 +1252,6 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Eski kaydı çalma listesine geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Etiketsiz simgeleri devre dışı bırak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Daraltılmamış video eylem çubuğunu geri getir</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Eski Shorts oynatıcı simgelerini geri getir</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlangıç sayfasını değiştir</string>
   <string name="morphe_change_start_page_entry_default">Varsayılan</string>

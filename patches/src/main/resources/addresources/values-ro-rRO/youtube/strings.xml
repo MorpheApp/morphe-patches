@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Acest lucru poate ajuta la identificarea componentelor atunci când creați filtre personalizate.
 
 Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Dezactivaţi actualizările layout-ului</string>
+  <string name="morphe_disable_layout_updates_summary_on">Layout-ul nu va fi actualizat de server</string>
+  <string name="morphe_disable_layout_updates_summary_off">Layout-ul va fi actualizat de server</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Dispozitivul se reface la dispozitivul folosit la instalare.
+
+Unele dispozitive server-side pot nu se reface.
+
+Schimbari includ:
+• Componentele din meniul de zbor al jucătorului (sau setările asociate) pot nu funcționa.
+• Cifrele rotative nu sunt animate.
+• Tabulă de bibliotecă este arătată.
+• Secțiunea muzică a descrierii video poate nu funcționa.
+• Butonul de comutare a contului poate nu apare pe tabulă de bibliotecă."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Ascunde raftul magazinului creatorului</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Raftul magazinului creatorului de sub playerul video este ascuns.</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Raftul magazinului creatorului sub playerul video este afișat</string>
   <string name="morphe_hide_album_cards_title">Ascundeți cardurile de album</string>
   <string name="morphe_hide_album_cards_summary_on">Cardurile de album sunt ascunse</string>
   <string name="morphe_hide_album_cards_summary_off">Cardurile de album sunt afișate</string>
@@ -286,6 +303,9 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_hide_comments_channel_guidelines_title">Ascunde ghidurile canalului</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Regulile canalului sunt ascunse</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Regulile canalului sunt afișate</string>
+  <string name="morphe_hide_comments_prompts_title">Ascunde prompturile comentarii</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Prompturile comentarii sunt ascunse</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Prompturile comentarii sunt afișate</string>
   <string name="morphe_hide_comments_by_members_header_title">Ascunde antetul \"Comentarii de la membri\"</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Antetul Comentarii de la membri este ascuns</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Antetul Comentarii de la membri este afișat</string>
@@ -365,9 +385,6 @@ Limitări:
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul cheie este prea scurt și necesită oferte: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul cheie va ascunde toate videoclipurile: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Ascunde raftul magazinului creatorului</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Raftul magazinului creatorului de sub playerul video este ascuns.</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Raftul magazinului creatorului sub playerul video este afișat</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ascunde bannerul magazinului de la finalul ecranului</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Bannerul magazinului de pe ecranul final este ascuns.</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Bannerul magazinului de pe ecranul final este afișat.</string>
@@ -634,7 +651,9 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitări:\n• O bare neagră poate apărea în partea superioară a jucătorului video.\n• Pe unele dispozitive, activarea acestei funcții poate schimba bara de navigare a sistemului în transparent."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitâri:
+• O barâ neagrâ poate apârâ la partea superioarâ a jucâtorului video.
+• bara de navigare a sistemului poate fi transparentâ, iar comentariile pe video nu sunt posibile."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Dezactivează bara de navigare translucidă deschisă</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Bara de navigare în modul deschis este opacă</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Bara de navigare în modul deschis este opaca sau translucida</string>
@@ -715,14 +734,14 @@ Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ascunde subsol meniu calitate video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Subsol meniu calitate video este ascuns</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Subsol meniu calitate video este afișat</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ascunde butonul Redare automată</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Butonul Autoplay este ascuns</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Butonul Auto-redare este afișat</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ascunde previzualizarea autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Previzualizarea autoplay este ascunsă</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Previzualizarea autoplay este afișată</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Ascunde butonul Redare automată</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Butonul Autoplay este ascuns</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Butonul Auto-redare este afișat</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ascunderea butonului Subtitrări</string>
   <string name="morphe_hide_captions_button_summary_on">Butonul subtitrari este ascuns</string>
@@ -730,6 +749,12 @@ Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string
   <string name="morphe_hide_cast_button_title">Ascunde butonul Distribuție</string>
   <string name="morphe_hide_cast_button_summary_on">Butonul de distribuție este ascuns</string>
   <string name="morphe_hide_cast_button_summary_off">Butonul de execuție este afișat</string>
+  <string name="morphe_hide_collapse_button_title">Ascunde butonul Colapse</string>
+  <string name="morphe_hide_collapse_button_summary_on">Butonul Colapse este ascuns</string>
+  <string name="morphe_hide_collapse_button_summary_off">Butonul Colapse este afișat</string>
+  <string name="morphe_hide_fullscreen_button_title">Ascunde butonul ecranân</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Butonul ecranân este ascuns</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Butonul ecranân este afièat</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ascunde fundalul controalelor playerului</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Fundalul comenzilor playerului este ascuns</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Fundalul comenzilor playerului este afișat</string>
@@ -775,6 +800,9 @@ Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ascunde sau afișează componentele playerului Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Ascunde Shorts-urile din pagina canalului.</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Ascuns în pagina canalului.</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Arătat în pagina canalului.</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ascunde Shorts-urile din feedul Acasă.</string>
   <string name="morphe_hide_shorts_home_summary_on">Ascunse în feedul Acasă și în videoclipurile similare.</string>
@@ -983,12 +1011,6 @@ Limitare: Este posibil ca aprecierile negative să nu apară în modul incognito
   <string name="morphe_wide_searchbar_title">Activează bara de căutare largă</string>
   <string name="morphe_wide_searchbar_summary_on">Bara de căutare largă este activată</string>
   <string name="morphe_wide_searchbar_summary_off">Bara de căutare largă este dezactivată</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Restaurează filtrele vechi de căutare</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Sortare după rating și sortare după data de încărcare sunt disponibile în filtrele de căutare</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Sortare după rating și sortare după data de încărcare nu sunt disponibile în filtrele de căutare</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Calitate</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Data incarcare</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Activează SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock este un sistem bazat pe crowdsourcing pentru a sări peste părțile enervante din videoclipurile de pe YouTube</string>
@@ -1226,7 +1248,6 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Dezactiva­te icoanele ­bold</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restabiliți bara de acțiune video necolapsată</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Restaurează pictogramele vechi ale playerului Shorts</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Schimbă pagina de start</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>

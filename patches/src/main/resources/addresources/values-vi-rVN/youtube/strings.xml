@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Điều này có thể giúp xác định các thành phần khi tạo bộ lọc tùy chỉnh.
 
 Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu người dùng, chẳng hạn như địa chỉ IP của bạn."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Tắt cập nhật giao diện</string>
+  <string name="morphe_disable_layout_updates_summary_on">Giao diện sẽ không còn được máy chủ cập nhật</string>
+  <string name="morphe_disable_layout_updates_summary_off">Giao diện sẽ được máy chủ cập nhật</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Giao diện ứng dụng sẽ trở về như lúc mới cài đặt.
+
+Một số bố cục do máy chủ áp dụng có thể không quay trở lại hoàn toàn.
+
+Ví dụ:
+• Một số mục trong menu tùy chọn có thể không hoạt động.
+• Không có hiệu ứng số cuộn.
+• Thẻ Thư viện có thể hiện lại.
+• Phần âm nhạc trong mô tả video có thể không hoạt động.
+• Nút chuyển đổi tài khoản có thể biến mất trong thẻ Thư viện."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Ẩn kệ cửa hàng của nhà sáng tạo</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Kệ cửa hàng của nhà sáng tạo bên dưới trình phát video đã bị ẩn</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Kệ cửa hàng của người sáng tạo dưới trình phát video được hiển thị</string>
   <string name="morphe_hide_album_cards_title">Ẩn thẻ đĩa nhạc</string>
   <string name="morphe_hide_album_cards_summary_on">Các thẻ đĩa nhạc đã bị ẩn</string>
   <string name="morphe_hide_album_cards_summary_off">Các thẻ đĩa nhạc được hiển thị</string>
@@ -287,6 +304,9 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_hide_comments_channel_guidelines_title">Ẩn nguyên tắc kênh</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Nguyên tắc kênh đã bị ẩn</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Nguyên tắc kênh được hiển thị</string>
+  <string name="morphe_hide_comments_prompts_title">Ẩn nhắc nhở trong bình luận</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Lời nhắc nhở trong bình luận đã bị ẩn</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Lời nhắc nhở trong bình luận được hiển thị</string>
   <string name="morphe_hide_comments_by_members_header_title">Ẩn tiêu đề \'Bình luận của hội viên\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Tiêu đề bình luận của hội viên đã bị ẩn</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Tiêu đề bình luận của hội viên được hiển thị</string>
@@ -370,9 +390,6 @@ Hạn chế:
   <string name="morphe_hide_keyword_toast_invalid_length">Từ khóa quá ngắn và cần phải có dấu ngoặc kép: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Từ khóa sẽ ẩn tất cả video: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Ẩn kệ cửa hàng của nhà sáng tạo</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Kệ cửa hàng của nhà sáng tạo bên dưới trình phát video đã bị ẩn</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Kệ cửa hàng của người sáng tạo dưới trình phát video được hiển thị</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ẩn biểu ngữ cửa hàng trên màn hình kết thúc</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Biểu ngữ cửa hàng trên màn hình kết thúc đã bị ẩn</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Biểu ngữ cửa hàng trên màn hình kết thúc được hiển thị</string>
@@ -640,8 +657,8 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Thanh trạng thái sẽ không còn trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Thanh trạng thái sẽ trở nên mờ hoặc trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Hạn chế:
-• Một thanh đen có thể xuất hiện trên đầu trình phát video
-• Trên một số thiết bị, bật tính năng này có thể thay đổi thanh điều hướng hệ thống thành trong suốt."</string>
+• Có thể xuất hiện một thanh màu đen trên cùng của trình phát video.
+• Thanh điều hướng của hệ thống có thể trở nên trong suốt và không thể bình luận trên video."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Vô hiệu hóa thanh điều hướng trong suốt ở giao diện sáng</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Thanh điều hướng sẽ không còn trong suốt ở giao diện sáng</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Thanh điều hướng sẽ trở nên mờ hoặc trong suốt ở giao diện sáng</string>
@@ -722,14 +739,14 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ẩn chân menu Chất lượng video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Chân menu chất lượng video đã bị ẩn</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Chân menu chất lượng video được hiển thị</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ẩn nút Tự động phát</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Nút tự động phát đã bị ẩn</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Nút tự động phát được hiển thị</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ẩn phần xem trước tự động phát</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Phần xem trước tự động phát xuất hiện ở cuối video (khung ở góc trên bên trái) đã bị ẩn.</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Phần xem trước tự động phát xuất hiện ở cuối video (khung ở góc trên bên trái) được hiển thị.</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Ẩn nút Tự động phát</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Nút tự động phát đã bị ẩn</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Nút tự động phát được hiển thị</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ẩn nút Chú thích</string>
   <string name="morphe_hide_captions_button_summary_on">Nút phụ đề đã bị ẩn</string>
@@ -737,6 +754,12 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_cast_button_title">Ẩn nút truyền</string>
   <string name="morphe_hide_cast_button_summary_on">Nút Truyền đã bị ẩn</string>
   <string name="morphe_hide_cast_button_summary_off">Nút Truyền được hiển thị</string>
+  <string name="morphe_hide_collapse_button_title">Ẩn nút thu nhỏ trình phát</string>
+  <string name="morphe_hide_collapse_button_summary_on">Nút thu nhỏ đã bị ẩn</string>
+  <string name="morphe_hide_collapse_button_summary_off">Nút thu nhỏ được hiển thị</string>
+  <string name="morphe_hide_fullscreen_button_title">Ẩn nút Phóng to toàn màn hình</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Nút toàn màn hình đã bị ẩn</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Nút toàn màn hình được hiển thị</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ẩn nền điều khiển trình phát</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Nền điều khiển trình phát đã bị ẩn</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Nền điều khiển trình phát được hiển thị</string>
@@ -782,6 +805,9 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Trình phát Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ẩn hoặc hiện các thành phần của trình phát Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Ẩn Shorts trong trang kênh</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Ẩn trong trang kênh</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Hiển thị trong trang kênh</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ẩn Shorts trong thẻ Trang chủ</string>
   <string name="morphe_hide_shorts_home_summary_on">Đã ẩn trong thẻ Trang chủ và video liên quan</string>
@@ -990,12 +1016,6 @@ Hạn chế: Số lượt không thích có thể không xuất hiện ở chế
   <string name="morphe_wide_searchbar_title">Phóng to thanh tìm kiếm</string>
   <string name="morphe_wide_searchbar_summary_on">Thanh tìm kiếm sẽ lớn hơn</string>
   <string name="morphe_wide_searchbar_summary_off">Thanh tìm kiếm như bình thường</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Khôi phục bộ lọc tìm kiếm cũ</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Sắp xếp theo đánh giá và sắp xếp theo ngày tải lên có sẵn trong bộ lọc tìm kiếm</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Sắp xếp theo đánh giá và sắp xếp theo ngày tải lên không có sẵn trong bộ lọc tìm kiếm</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Đánh giá</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Ngày tải lên</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Bật SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock là một hệ thống dựa trên đóng góp bởi cộng đồng để bỏ qua các phần gây khó chịu trong video YouTube</string>
@@ -1232,7 +1252,6 @@ Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh 
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Khôi phục ‘Lưu vào danh sách phát’ kiểu cũ</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Vô hiệu hóa biểu tượng đậm</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Khôi phục thanh thao tác video mở rộng</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Khôi phục biểu tượng trình phát Shorts cũ</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Thay đổi trang bắt đầu</string>
   <string name="morphe_change_start_page_entry_default">Mặc định</string>
@@ -1516,9 +1535,9 @@ Hạn chế:
   <string name="morphe_hide_premium_video_quality_summary_on">Tùy chọn chất lượng Premium đã bị ẩn</string>
   <string name="morphe_hide_premium_video_quality_summary_off">Tùy chọn chất lượng Premium được hiển thị</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Đưa video chất lượng lên hàng đầu</string>
-  <string name="morphe_prioritize_video_quality_summary_on">Chất lượng video đã được đưa lên hàng đầu</string>
-  <string name="morphe_prioritize_video_quality_summary_off">Mã video được đưa lên hàng đầu</string>
+  <string name="morphe_prioritize_video_quality_title">Ưu tiên chất lượng video</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Chất lượng video đã được ưu tiên</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Codec video được ưu tiên</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
   <string name="morphe_slide_to_seek_summary_on">Vuốt để tua đã được bật</string>
@@ -1533,17 +1552,17 @@ Quá trình phát có thể bị giật hoặc tụt khung hình"</string>
 
 Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_title">Hạn chế khi giả mạo</string>
-  <string name="morphe_spoof_video_streams_about_experimental">• Ứng dụng khách đang trong giai đoạn thử nghiệm và có thể ngừng hoạt động bất cứ lúc nào</string>
+  <string name="morphe_spoof_video_streams_about_experimental">• Client đang trong giai đoạn thử nghiệm và có thể ngừng hoạt động bất cứ lúc nào</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Video có thể dừng ở 1:00, hoặc có thể không khả dụng ở một số khu vực</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu bản âm thanh bị thiếu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
-  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Chế độ 360° VR trải nghiệm không có sẵn</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Âm lượng ổn định không khả dụng</string>
-  <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, phát lại có thể thất bại</string>
+  <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, video có thể không phát được</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Buộc âm thanh gốc không khả dụng</string>
   <string name="morphe_spoof_video_streams_js_variant_title">Biến thể JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện trong Thống kê chi tiết</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Ứng dụng khách được hiển thị trong Thống kê chi tiết</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Ứng dụng khách đã bị ẩn trong Thống kê chi tiết</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Client đã được hiển thị trong Thống kê chi tiết</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Client đã bị ẩn trong Thống kê chi tiết</string>
 </resources>

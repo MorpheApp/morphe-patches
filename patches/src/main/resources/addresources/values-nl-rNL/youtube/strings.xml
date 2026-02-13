@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 Dit kan helpen bij het identificeren van componenten bij het maken van aangepaste filters.
 
 Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP-adres, vastgelegd."</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Layout-updates uitschakelen</string>
+  <string name="morphe_disable_layout_updates_summary_on">Layout wordt niet bijgewerkt door de server</string>
+  <string name="morphe_disable_layout_updates_summary_off">Layout wordt bijgewerkt door de server</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"De lay-out van de app wordt teruggezet naar de lay-out die bij de eerste installatie werd gebruikt.
+
+Enkele server-side lay-outs kunnen niet worden teruggezet.
+
+Wijzigingen zijn:
+• Componenten in het vliegmenu van de speler (of gerelateerde instellingen) kunnen niet werken.
+• Rollende nummers zijn niet geanimeerd.
+• De bibliotheektab is zichtbaar.
+• De muzieksectie van de videobeschrijving kan niet werken.
+• De accountwisseling knop kan niet zichtbaar zijn op de bibliotheektab."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">Makerswinkelplank verbergen</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Creator store-plank onder videospeler is verborgen</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Creator-winkelplank onder videospeler wordt getoond</string>
   <string name="morphe_hide_album_cards_title">Verberg albumkaarten</string>
   <string name="morphe_hide_album_cards_summary_on">Albumkaarten zijn verborgen</string>
   <string name="morphe_hide_album_cards_summary_off">Albumkaarten worden getoond</string>
@@ -286,6 +303,9 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_hide_comments_channel_guidelines_title">Kanaalrichtlijnen verbergen</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanaalrichtlijnen zijn verborgen</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanaalrichtlijnen worden weergegeven</string>
+  <string name="morphe_hide_comments_prompts_title">Verberg commentaarprompten</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Commentaarprompten zijn verborgen</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Commentaarprompten worden weergegeven</string>
   <string name="morphe_hide_comments_by_members_header_title">Verberg kop \'Comments by members\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Koptekst \'Reacties van leden\' is verborgen</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Koptekst \'Reacties van leden\' wordt weergegeven</string>
@@ -369,9 +389,6 @@ Beperkingen:
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword is te kort en vereist aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Keyword verbergt alle video\'s: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Makerswinkelplank verbergen</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Creator store-plank onder videospeler is verborgen</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Creator-winkelplank onder videospeler wordt getoond</string>
   <string name="morphe_hide_end_screen_store_banner_title">Verberg de Store-banner op het eindscherm</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Eindscherm winkelbanner is verborgen</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Eindscherm winkelbanner wordt getoond</string>
@@ -639,8 +656,8 @@ Cookies worden automatisch opgeslagen als ze geldig zijn"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusbalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusbalk is ondoorzichtig of doorschijnend</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Beperkingen:
-• Een zwarte streep kan bovenaan de videospeler verschijnen.
-• Op sommige apparaten kan het inschakelen van deze functie de systeemnavigatiebalk transparant maken."</string>
+• Een zwarte streep kan aan de bovenkant van de videospeler verschijnen.
+• De systeemnavigatiebalk kan transparant worden en het is niet mogelijk om op videos te reageren."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Transparante lichte navigatiebalk uitschakelen</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">De lichte navigatiebalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">De lichtmodus navigatiebalk is ondoorzichtig of doorschijnend</string>
@@ -721,14 +738,14 @@ Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"<
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Verberg voettekst van menu \'Kwaliteit\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Voettekst van menu \'Kwaliteit\' is verborgen</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Voettekst van menu \'Kwaliteit\' wordt weergegeven</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Verberg knop voor automatisch afspelen</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Automatische afspeelknop is verborgen</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Automatische afspeelknop wordt weergegeven</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Verberg voorbeeld autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay voorbeeld is verborgen</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Autoplay voorbeeld wordt weergegeven</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Verberg knop voor automatisch afspelen</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Automatische afspeelknop is verborgen</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Automatische afspeelknop wordt weergegeven</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Verberg ondertitelknop</string>
   <string name="morphe_hide_captions_button_summary_on">Ondertitelingknop is verborgen</string>
@@ -736,6 +753,12 @@ Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"<
   <string name="morphe_hide_cast_button_title">Verberg Cast-knop</string>
   <string name="morphe_hide_cast_button_summary_on">Castknop is verborgen</string>
   <string name="morphe_hide_cast_button_summary_off">Castknop wordt weergegeven</string>
+  <string name="morphe_hide_collapse_button_title">Verberg knop samenvouwen</string>
+  <string name="morphe_hide_collapse_button_summary_on">Knop samenvouwen is verborgen</string>
+  <string name="morphe_hide_collapse_button_summary_off">Knop samenvouwen is zichtbaar</string>
+  <string name="morphe_hide_fullscreen_button_title">Verberg Volledscherm knop</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Volledscherm knop is verborgen</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Volledscherm knop is zichtbaar</string>
   <string name="morphe_hide_player_control_buttons_background_title">Achtergrond van spelerbediening verbergen</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Achtergrond van spelerbediening is verborgen</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Achtergrond van spelerbediening wordt weergegeven</string>
@@ -781,6 +804,9 @@ Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"<
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts-speler</string>
   <string name="morphe_shorts_player_screen_summary">Shorts-spelercomponenten verbergen of tonen</string>
+  <string name="morphe_hide_shorts_channel_title">Verbergen van Shorts in kanaalpagina</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Verborgen in kanaalpagina</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Getoond in kanaalpagina</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Shorts verbergen in Home-feed</string>
   <string name="morphe_hide_shorts_home_summary_on">Verborgen in Home-feed en gerelateerde video\'s</string>
@@ -989,12 +1015,6 @@ Beperking: Vind ik niet leuk verschijnen mogelijk niet in de incognitomodus"</st
   <string name="morphe_wide_searchbar_title">Schakel de brede zoekbalk in</string>
   <string name="morphe_wide_searchbar_summary_on">De brede zoekbalk is ingeschakeld</string>
   <string name="morphe_wide_searchbar_summary_off">De brede zoekbalk is uitgeschakeld</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">Oude zoekfilters herstellen</string>
-  <string name="morphe_restore_old_search_filters_summary_on">Sorteren op beoordeling en sorteren op uploaddatum zijn beschikbaar in het zoekfilter</string>
-  <string name="morphe_restore_old_search_filters_summary_off">Sorteren op beoordeling en sorteren op uploaddatum zijn niet beschikbaar in het zoekfilter</string>
-  <string name="morphe_old_search_filters_sort_by_rating">Beoordeling</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">Upload datum</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">Schakel SponsorBlock in</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock is een crowdsourced systeem om vervelende delen van YouTube-video\'s over te slaan</string>
@@ -1232,7 +1252,6 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Uitschakelen van vetgedrukte pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Herstel niet-ingeklapte videobalk</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - Herstel oude pictogrammen voor Shorts-speler</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startpagina wijzigen</string>
   <string name="morphe_change_start_page_entry_default">Standaard</string>

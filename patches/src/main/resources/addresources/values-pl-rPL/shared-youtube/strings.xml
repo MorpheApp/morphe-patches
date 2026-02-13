@@ -19,14 +19,14 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nazwa aplikacji</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
-  <string name="morphe_custom_branding_name_entry_5">Własna</string>
+  <string name="morphe_custom_branding_name_entry_5">Niestandardowa</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacji</string>
   <string name="morphe_custom_branding_icon_entry_1">Oryginalna</string>
   <string name="morphe_custom_branding_icon_entry_2">Czarny Morphe</string>
   <string name="morphe_custom_branding_icon_entry_3">Ciemny Morphe</string>
   <string name="morphe_custom_branding_icon_entry_4">Jasny Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Własna</string>
+  <string name="morphe_custom_branding_icon_entry_5">Niestandardowa</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja Eksperymentalna! 🚨</string>
@@ -34,7 +34,7 @@ Second \"item\" text"</string>
 &lt;br/&gt;&lt;br/&gt;
 🔧 Oczekuj nieprzewidywalnego zachowania aplikacji lub niezidentyfikowanych błędów, ponieważ dopracowujemy modyfikacje dla tej wersji aplikacji.
 &lt;br/&gt;&lt;br/&gt;
-Jeśli chcesz najbardziej stabilną wersję to &lt;b&gt;odinstaluj&lt;/b&gt; tą i zmodyfikuj zalecaną wersję aplikacji ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Jeśli chcesz najbardziej stabilną wersję, to &lt;b&gt;odinstaluj&lt;/b&gt; tę i zmodyfikuj zalecaną wersję aplikacji ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcę eksperymentalną wersję</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcę stabilną wersję</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -73,19 +73,19 @@ By się zalogować, naciśnij kontynuuj poniżej"</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod aktywacyjny: %s
 
-1. Stuknij 'Otwórz stronę' poniżej, aby przejść do strony 'Połącz urządzenie'
+1. Stuknij \"Otwórz stronę\" poniżej, aby przejść do strony \"Połącz urządzenie\"
 2. Wklej (lub wpisz) kod aktywacyjny wyświetlony powyżej
-3. Zaloguj się na konto Google, jeśli zostaniesz o to poroszony. Jeśli masz wiele kont Google, użyj tego, którego używasz w YouTube.
-4. Stuknij 'Zezwól' na dostęp YouTube VR
-5. Wróć do aplikacji po zobaczeniu 'Urządzenie połączone'"</string>
+3. Zaloguj się na konto Google, jeśli zostaniesz o to poproszony. Jeśli masz wiele kont Google, użyj tego, którego używasz w YouTube
+4. Stuknij \"Zezwól\" na dostęp YouTube VR
+5. Wróć do aplikacji po zobaczeniu \"Urządzenie połączone\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otwórz stronę</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nie udało się wygenerować kodu aktywacyjnego</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nie udało się wygenerować tokenu uwierzytelniającego</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Zalogowano pomyślnie</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Uwierzytelnienie zapisane
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autoryzacja zapisana
 
-• Przy eksporcie/imporcie ustawień Morphe uwierzytelnienie Android VR jest pomijane
-• Jeśli nie będziesz używać aplikacji przez 6 miesięcy, Google usunie uwirzytelnienie
+• Przy imporcie/eksporcie ustawień Morphe autoryzacja Android VR jest pomijana
+• Jeśli nie będziesz używać aplikacji przez 6 miesięcy, Google usunie autoryzację
 • W przypadku zmiany hasła lub wyrejestrowania urządzenia w ustawieniach konta Google konieczne będzie ponowne zalogowanie się"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 jest tymczasowo niedostępny (API nie reaguje)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Sesja Android VR wygasła, spróbuj zalogować się do VR ponownie</string>

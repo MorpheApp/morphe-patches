@@ -19,17 +19,75 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">O aplikaciji</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
+  <string name="morphe_settings_music_screen_2_general_title">Općenito</string>
+  <string name="morphe_settings_music_screen_3_player_title">Player</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Razno</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Sakrij video oglase</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Video oglasi su skriveni</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Video oglasi se prikazuju</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Omogući stalno ponavljanje</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Omogućeno je trajno ponavljanje</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Onemogućeno je trajno ponavljanje</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Sakrij tipku za emitiranje</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Tipka za emitiranje je skrivena</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Tipka za emitiranje je prikazana</string>
+  <string name="morphe_music_hide_history_button_title">Sakrij tipku za povijest</string>
+  <string name="morphe_music_hide_history_button_summary_on">Tipka za povijest je skrivena</string>
+  <string name="morphe_music_hide_history_button_summary_off">Tipka za povijest je prikazana</string>
+  <string name="morphe_music_hide_notification_button_title">Skrij tipku obavijesti</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Tipka za obavijesti je skrivena</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Tipka za obavijesti je prikazana</string>
+  <string name="morphe_music_hide_search_button_title">Sakrij tipku za pretraživanje</string>
+  <string name="morphe_music_hide_search_button_summary_on">Tipka za pretraživanje je skrivena</string>
+  <string name="morphe_music_hide_search_button_summary_off">Tipka za pretraživanje je prikazana</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Sakrij traku kategorije</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Traka kategorija je skrivena</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Traka kategorija je prikazana</string>
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Promijeni boju miniplayera</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Boja miniplayera odgovara boji playera preko cijelog zaslona</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer koristi zadanu boju</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Traka navigacije</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Sakrijte ili promijenite tipke na navigacijskoj traci</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Sakrij Početna</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Tipka Početna je skrivena</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Tipka Početna je prikazana</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Sakrij uzorke</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Tipka za uzorke je skrivena</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Tipka za uzorke je prikazana</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Sakrij Istraži</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Tipka Istraži  je skrivena</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Tipka Istraži je prikazana</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Sakrij Knjižnicu</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Tipka Knjižnica je skrivena</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Tipka Knjižnica je prikazana</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Sakrij nadogradnju</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Tipka za nadogradnju je skrivena</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Tipka za nadogradnju je prikazana</string>
+  <string name="morphe_music_hide_navigation_bar_title">Sakrij traku navigacije</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Traka navigacije je skrivena</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Traka navigacije je prikazana</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Sakrij oznake navigacijskih tipki</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Oznake su skrivene</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Oznake su prikazane</string>
   <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Sakrij oznaku \'Nabavi Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Oznaka je skrivena</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Oznaka je prikazana</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Sakrij tipku za nadogradnju</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Tipka je skrivena</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Tipka je prikazana</string>
 </resources>

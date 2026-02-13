@@ -4,7 +4,6 @@ morphe-patcher = "1.0.1"
 smali = "b6365a84f4"
 agp = "8.2.2"
 annotation = "1.9.1"
-desugar = "2.1.5"
 gson = "2.13.2"
 guava = "33.5.0-jre"
 protobuf = "0.9.5"
@@ -13,7 +12,6 @@ hiddenapi = "6.1"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
-desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }

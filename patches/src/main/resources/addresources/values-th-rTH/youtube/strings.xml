@@ -25,7 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_04_general_title">ทั่วไป</string>
   <string name="morphe_settings_screen_05_player_title">เครื่องเล่น</string>
   <string name="morphe_settings_screen_07_seekbar_title">แถบเลื่อน</string>
-  <string name="morphe_settings_screen_08_swipe_controls_title">ปัดเพื่อควบคุม</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">ตัวปัดควบคุม</string>
   <string name="morphe_settings_screen_11_misc_title">เบ็ดเตล็ด</string>
   <string name="morphe_settings_screen_12_video_title">วิดีโอ</string>
   <string name="morphe_restore_old_settings_menus_title">กู้คืนเมนูการตั้งค่าแบบเก่า</string>
@@ -44,7 +44,24 @@ Second \"item\" text"</string>
 ซึ่งจะช่วยระบุส่วนประกอบเมื่อสร้างตัวกรองที่กำหนดเองได้
 
 อย่างไรก็ตาม การเปิดใช้งานนี้จะบันทึกข้อมูลผู้ใช้บางอย่าง เช่น ที่อยู่ IP ของคุณด้วย"</string>
+  <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">ปิดการอัปเดตรูปแบบ</string>
+  <string name="morphe_disable_layout_updates_summary_on">รูปแบบจะไม่ได้รับการอัปเดตจากเซิร์ฟเวอร์</string>
+  <string name="morphe_disable_layout_updates_summary_off">รูปแบบจะได้รับการอัปเดตจากเซิร์ฟเวอร์</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"การจัดวางแอปพลิเคชันจะกลับไปใช้งานที่ใช้เมื่อติดตั้งครั้งแรก
+
+บางการจัดวางจากเซิร์ฟเวอร์อาจไม่กลับไป
+
+การเปลี่ยนแปลงรวมไปถึง:
+• ส่วนประกอบในเมนูตัวเลือกของผู้เล่น (หรือการตั้งค่าเกี่ยวข้อง) อาจไม่ทำงาน
+• เลขหมุนไม่ได้รับการแอนิเมชัน
+• แท็บไลบรารีจะแสดง
+• ส่วนเพลงของคำอธิบายวิดีโออาจไม่ทำงาน
+• ปุ่มสลับบัญชีอาจไม่ปรากฏบนแท็บไลบรารี"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_creator_store_shelf_title">ซ่อนชั้นวางร้านค้าของผู้สร้าง</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">ชั้นวางร้านค้าของครีเอเตอร์ใต้โปรแกรมเล่นวิดีโอถูกซ่อนไว้</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">แสดงชั้นวางร้านค้าของผู้สร้างใต้เครื่องเล่นวิดีโอ</string>
   <string name="morphe_hide_album_cards_title">ซ่อนการ์ดอัลบั้ม</string>
   <string name="morphe_hide_album_cards_summary_on">การ์ดอัลบั้มถูกซ่อน</string>
   <string name="morphe_hide_album_cards_summary_off">การ์ดอัลบั้มถูกแสดง</string>
@@ -286,6 +303,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_channel_guidelines_title">ซ่อนแนวทางปฏิบัติของช่อง</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">ซ่อนแนวทางช่องแล้ว</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">แสดงแนวทางช่องแล้ว</string>
+  <string name="morphe_hide_comments_prompts_title">ซ่อนคำถามความคิดเห็น</string>
+  <string name="morphe_hide_comments_prompts_summary_on">คำถามความคิดเห็นถูกซ่อนไว้</string>
+  <string name="morphe_hide_comments_prompts_summary_off">คำถามความคิดเห็นแสดงอยู่</string>
   <string name="morphe_hide_comments_by_members_header_title">ซ่อนส่วนหัว \'ความคิดเห็นโดยสมาชิก\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">ส่วนหัวความคิดเห็นโดยสมาชิกถูกซ่อน</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">ส่วนหัวความคิดเห็นโดยสมาชิกแสดงอยู่</string>
@@ -369,9 +389,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">คำสำคัญสั้นเกินไปและต้องใช้เครื่องหมายคำพูด: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">คำสำคัญจะซ่อนวิดีโอทั้งหมด: %s</string>
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_creator_store_shelf_title">ซ่อนชั้นวางร้านค้าของผู้สร้าง</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">ชั้นวางร้านค้าของครีเอเตอร์ใต้โปรแกรมเล่นวิดีโอถูกซ่อนไว้</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">แสดงชั้นวางร้านค้าของผู้สร้างใต้เครื่องเล่นวิดีโอ</string>
   <string name="morphe_hide_end_screen_store_banner_title">ซ่อนแบนเนอร์ร้านค้าท้ายจอ</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">แบนเนอร์ร้านค้าท้ายหน้าจอถูกซ่อนไว้</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">แบนเนอร์ร้านค้าท้ายหน้าจอแสดงอยู่</string>
@@ -637,8 +654,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"ข้อจำกัด:
-• บาร์สีดำอาจปรากฏที่ด้านบนของตัวเล่นวิดีโอ
-• บางอุปกรณ์ที่เปิดใช้งานฟีเจอร์นี้อาจเปลี่ยนแถบนำทางระบบเป็นโปร่งใส"</string>
+• บาร์สีดำอาจปรากฏขึ้นด้านบนของตัวเล่นวิดีโอ
+• แถบการนำทางของระบบอาจเปลี่ยนเป็นโปร่งใสและไม่สามารถแสดงความคิดเห็นในวิดีโอได้"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ปิดใช้งานแถบนำทางแบบโปร่งแสงสีอ่อน</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">แถบนำทางโหมดสว่างเป็นแบบทึบแสง</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">แถบนำทางโหมดสว่างโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -719,14 +736,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">ซ่อนส่วนท้ายเมนูคุณภาพวิดีโอ</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">ส่วนท้ายเมนูคุณภาพวิดีโอซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">ส่วนท้ายเมนูคุณภาพวิดีโอแสดงอยู่</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">ซ่อนปุ่มเล่นอัตโนมัติ</string>
-  <string name="morphe_hide_autoplay_button_summary_on">ปุ่มเล่นอัตโนมัติซ่อนอยู่</string>
-  <string name="morphe_hide_autoplay_button_summary_off">ปุ่มเล่นอัตโนมัติแสดงอยู่</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ซ่อนตัวอย่างเล่นอัตโนมัติ</string>
   <string name="morphe_hide_autoplay_preview_summary_on">ตัวอย่างเล่นอัตโนมัติถูกซ่อน</string>
   <string name="morphe_hide_autoplay_preview_summary_off">ตัวอย่างเล่นอัตโนมัติถูกแสดง</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">ซ่อนปุ่มเล่นอัตโนมัติ</string>
+  <string name="morphe_hide_autoplay_button_summary_on">ปุ่มเล่นอัตโนมัติซ่อนอยู่</string>
+  <string name="morphe_hide_autoplay_button_summary_off">ปุ่มเล่นอัตโนมัติแสดงอยู่</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ซ่อนปุ่มคำบรรยาย</string>
   <string name="morphe_hide_captions_button_summary_on">ปุ่มคำบรรยายซ่อนอยู่</string>
@@ -734,6 +751,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">ซ่อนปุ่มส่ง</string>
   <string name="morphe_hide_cast_button_summary_on">ปุ่มแคสต์ซ่อนอยู่</string>
   <string name="morphe_hide_cast_button_summary_off">ปุ่มแคสต์แสดงอยู่</string>
+  <string name="morphe_hide_collapse_button_title">ซ่อนปุ่มย่อ</string>
+  <string name="morphe_hide_collapse_button_summary_on">ปุ่มย่อซ่อนอยู่</string>
+  <string name="morphe_hide_collapse_button_summary_off">ปุ่มย่อแสดงอยู่</string>
+  <string name="morphe_hide_fullscreen_button_title">ซ่อนปุ่มเต็มหน้าจอ</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">ปุ่มเต็มหน้าจอถูกซ่อน</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">ปุ่มเต็มหน้าจอแสดงขึ้น</string>
   <string name="morphe_hide_player_control_buttons_background_title">ซ่อนพื้นหลังส่วนควบคุมเครื่องเล่น</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">ซ่อนพื้นหลังส่วนควบคุมเครื่องเล่น</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">แสดงพื้นหลังส่วนควบคุมเครื่องเล่น</string>
@@ -779,6 +802,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts Player</string>
   <string name="morphe_shorts_player_screen_summary">ซ่อนหรือแสดงส่วนประกอบเครื่องเล่น Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">ซ่อน Shorts ในหน้าแชนแนล</string>
+  <string name="morphe_hide_shorts_channel_summary_on">ซ่อนอยู่ในหน้าแชนแนล</string>
+  <string name="morphe_hide_shorts_channel_summary_off">แสดงอยู่ในหน้าแชนแนล</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">ซ่อน Shorts ในหน้าแรก</string>
   <string name="morphe_hide_shorts_home_summary_on">ซ่อนในหน้าแรกและวิดีโอที่เกี่ยวข้อง</string>
@@ -987,12 +1013,6 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">ทั้งหละเย้ยนตะโรกเลียด</string>
   <string name="morphe_wide_searchbar_summary_on">ทั้งละเย้ยนตะโรกเลียด รตรอกลาดต้อง</string>
   <string name="morphe_wide_searchbar_summary_off">ทั้งหละเย้ยนตะโรกเลียด รบกใหม่ยเทศไทย</string>
-  <!-- layout.searchfilter.restoreOldSearchFiltersPatch -->
-  <string name="morphe_restore_old_search_filters_title">คืนค่าฟิลเตอร์ค้นหาเก่า</string>
-  <string name="morphe_restore_old_search_filters_summary_on">จัดลำดับตามคะแนนและจัดลำดับตามวันที่อัปโหลดพร้อมใช้งานในฟิลเตอร์ค้นหา</string>
-  <string name="morphe_restore_old_search_filters_summary_off">จัดลำดับตามคะแนนและจัดลำดับตามวันที่อัปโหลดไม่อยู่ในฟิลเตอร์ค้นหา</string>
-  <string name="morphe_old_search_filters_sort_by_rating">คะแนน</string>
-  <string name="morphe_old_search_filters_sort_by_upload_date">วันที่อัปโหลด</string>
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <string name="morphe_sb_enable_sb">เปิดใช้งาน SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock เป็นระบบ crowdsourced สำหรับการข้ามส่วนที่น่ารำคาญของวิดีโอ YouTube</string>
@@ -1230,7 +1250,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ปิดไอคอนตัวหนา</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - กู้คืนแถบการทำงานของวิดีโอที่ไม่ได้ยุบ</string>
-  <string name="morphe_spoof_app_version_target_entry_19_35">19.35.36 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">เปลี่ยนหน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
