@@ -29,7 +29,7 @@ public abstract class Setting<T> {
 
     /**
      * Indicates if a {@link Setting} is available to edit and use.
-     * Typically this is dependent upon other BooleanSetting(s) set to 'true',
+     * Typically, this is dependent upon other BooleanSetting(s) set to 'true',
      * but this can be used to call into extension code and check other conditions.
      */
     public interface Availability {
@@ -200,7 +200,7 @@ public abstract class Setting<T> {
 
     /**
      * If this setting is available to edit and use.
-     * Not to be confused with it's status returned from {@link #get()}.
+     * Not to be confused with its status returned from {@link #get()}.
      */
     @Nullable
     private final Availability availability;
@@ -287,7 +287,7 @@ public abstract class Setting<T> {
         setting.setValueFromString(newValue);
 
         // Clear the preference value since default is used, to allow changing
-        // the changing the default for a future release.  Without this after upgrading
+        // the default for a future release.  Without this after upgrading
         // the saved value will be whatever was the default when the app was first installed.
         if (setting.isSetToDefault()) {
             setting.removeFromPreferences();
@@ -387,7 +387,7 @@ public abstract class Setting<T> {
     private static final String OPTIONAL_MORPHE_SETTINGS_PREFIX = "morphe_";
 
     /**
-     * The path, minus any 'morphe' prefix to keep json concise.
+     * The path, minus any 'morphe' prefix to keep JSON concise.
      */
     private String getImportExportKey() {
         if (key.startsWith(OPTIONAL_MORPHE_SETTINGS_PREFIX)) {
@@ -424,7 +424,7 @@ public abstract class Setting<T> {
                     throw new IllegalArgumentException("duplicate key found: " + importExportKey);
                 }
 
-                final boolean exportDefaultValues = false; // Enable to see what all settings looks like in the UI.
+                final boolean exportDefaultValues = false; // Enable to see what all settings look like in the UI.
                 //noinspection ConstantValue
                 if (setting.includeWithImportExport && (!setting.isSetToDefault() || exportDefaultValues)) {
                     setting.writeToJSON(json, importExportKey);

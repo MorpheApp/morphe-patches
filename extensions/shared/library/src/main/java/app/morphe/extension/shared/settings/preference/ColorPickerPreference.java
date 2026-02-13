@@ -91,7 +91,7 @@ public class ColorPickerPreference extends EditTextPreference {
             getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_picker");
 
     /**
-     * Removes non valid hex characters, converts to all uppercase,
+     * Removes non-valid hex characters, converts to all uppercase,
      * and adds # character to the start if not present.
      */
     public static String cleanupColorCodeString(String colorString, boolean includeAlpha) {
@@ -200,7 +200,7 @@ public class ColorPickerPreference extends EditTextPreference {
                 colorChangeListener.onColorChanged(getKey(), currentColor);
             }
         } catch (IllegalArgumentException ex) {
-            // This code is reached if the user pastes settings json with an invalid color
+            // This code is reached if the user pastes settings JSON with an invalid color
             // since this preference is updated with the new setting text.
             Logger.printDebug(() -> "Parse color error: " + colorString, ex);
             Utils.showToastShort(str("morphe_settings_color_invalid"));

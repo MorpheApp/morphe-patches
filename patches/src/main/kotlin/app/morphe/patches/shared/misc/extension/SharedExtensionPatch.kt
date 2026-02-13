@@ -15,12 +15,14 @@ internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/Ut
  * A patch to extend with an extension shared with multiple patches.
  *
  * @param extensionName The name of the extension to extend with.
+ * @param isYouTubeOrYouTubeMusic Whether the patch targets YouTube and YouTube Music.
  */
 fun sharedExtensionPatch(
     extensionName: String,
+    isYouTubeOrYouTubeMusic: Boolean,
     vararg hooks: ExtensionHook,
 ) = bytecodePatch {
-    dependsOn(sharedExtensionPatch(*hooks))
+    dependsOn(sharedExtensionPatch(isYouTubeOrYouTubeMusic, *hooks))
 
     extendWith("extensions/$extensionName.mpe")
 }
@@ -32,9 +34,11 @@ fun sharedExtensionPatch(
  * commonly for the onCreate method of exported activities.
  */
 fun sharedExtensionPatch(
+    isYouTubeOrYouTubeMusic: Boolean,
     vararg hooks: ExtensionHook,
 ) = bytecodePatch {
-    extendWith("extensions/shared.mpe")
+    val extensionName = if (isYouTubeOrYouTubeMusic) "shared-youtube" else "shared"
+    extendWith("extensions/$extensionName.mpe")
 
     execute {
         // Verify the extension class exists.
@@ -82,7 +86,7 @@ fun sharedExtensionPatch(
 }
 
 /**
- * Handles passing the application context to the extension code. Typically the main activity
+ * Handles passing the application context to the extension code. Typically, the main activity
  * onCreate() method is hooked, but sometimes additional hooks are required if extension code
  * can be reached before the main activity is fully created.
  */

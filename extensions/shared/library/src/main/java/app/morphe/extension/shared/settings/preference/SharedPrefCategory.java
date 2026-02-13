@@ -15,10 +15,10 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * Shared categories, and helper methods.
- *
+ * <p>
  * The various save methods store numbers as Strings,
  * which is required if using {@link PreferenceFragment}.
- *
+ * <p>
  * If saved numbers will not be used with a preference fragment,
  * then store the primitive numbers using the {@link #preferences} itself.
  */

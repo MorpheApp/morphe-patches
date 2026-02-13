@@ -36,6 +36,7 @@ import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.DeArrowAvailability;
@@ -47,7 +48,7 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 
-public class Settings extends BaseSettings {
+public class Settings extends SharedYouTubeSettings {
     // Video
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
@@ -444,7 +445,7 @@ public class Settings extends BaseSettings {
 
     // SponsorBlock
     public static final BooleanSetting SB_ENABLED = new BooleanSetting("sb_enabled", TRUE);
-    /** Do not use id setting directly. Instead use {@link SponsorBlockSettings}. */
+    /** Do not use id setting directly. Instead, use {@link SponsorBlockSettings}. */
     public static final StringSetting SB_PRIVATE_USER_ID = new StringSetting("sb_private_user_id_Do_Not_Share", "", parent(SB_ENABLED));
     public static final IntegerSetting SB_CREATE_NEW_SEGMENT_STEP = new IntegerSetting("sb_create_new_segment_step", 150, parent(SB_ENABLED));
     public static final BooleanSetting SB_VOTING_BUTTON = new BooleanSetting("sb_voting_button", FALSE, parent(SB_ENABLED));

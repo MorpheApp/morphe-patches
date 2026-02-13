@@ -14,10 +14,10 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
-import app.morphe.util.Utils.trimIndentMultiline
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
+import app.morphe.util.trimIndentMultiline
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.io.File
 

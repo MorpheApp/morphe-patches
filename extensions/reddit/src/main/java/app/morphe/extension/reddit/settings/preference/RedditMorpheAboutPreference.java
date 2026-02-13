@@ -8,6 +8,7 @@ import java.util.Map;
 
 import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
 
+@SuppressWarnings("deprecation")
 public class RedditMorpheAboutPreference extends MorpheAboutPreference {
     private static final StringKeyLookup strings = new StringKeyLookup(
             Map.of("morphe_settings_about_links_body_version_current",

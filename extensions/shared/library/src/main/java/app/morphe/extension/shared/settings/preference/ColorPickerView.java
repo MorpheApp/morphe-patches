@@ -42,6 +42,7 @@ import app.morphe.extension.shared.ui.Dim;
  * The selected color can be retrieved using {@link #getColor()} and can be set using {@link #setColor(int)}.
  * An {@link OnColorChangedListener} can be registered to receive notifications when the selected color changes.
  */
+@SuppressLint("DrawAllocation")
 public class ColorPickerView extends View {
     /**
      * Interface definition for a callback to be invoked when the selected color changes.
@@ -82,7 +83,7 @@ public class ColorPickerView extends View {
 
     /**
      * Hue and opacity fill radius. Use slightly smaller radius for the selector handle fill,
-     * otherwise the anti-aliasing causes the fill color to bleed past the selector outline.
+     * otherwise the antialiasing causes the fill color to bleed past the selector outline.
      */
     private static final float SELECTOR_FILL_RADIUS = SELECTOR_RADIUS - SELECTOR_STROKE_WIDTH / 2;
 
@@ -305,6 +306,7 @@ public class ColorPickerView extends View {
     /**
      * Updates the shader for the saturation-value selector to reflect the current hue.
      */
+    @SuppressWarnings("ExtractMethodRecommender")
     private void updateSaturationValueShader() {
         // Create a saturation-value gradient based on the current hue.
         // Calculate the start color (white with the selected hue) for the saturation gradient.

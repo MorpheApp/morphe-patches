@@ -27,7 +27,7 @@
  *
  * All other terms of the Morphe Patches LICENSE, including Section 7c
  * (Project Name Restriction) and the GPLv3 itself, remain fully
-  * applicable to this file.
+ * applicable to this file.
  */
 
 package app.morphe.util
@@ -200,7 +200,7 @@ fun MutableMethod.injectHideViewCall(
 
 /**
  * Inserts instructions at a given index, using the existing control flow label at that index.
- * Inserted instructions can have it's own control flow labels as well.
+ * Inserted instructions can have its own control flow labels as well.
  *
  * Effectively this changes the code from:
  * :label
@@ -884,6 +884,8 @@ fun Method.cloneMutable(
         }
     }
 }
+
+fun Boolean.toHexString(): String = if (this) "0x1" else "0x0"
 
 /**
  * @return The number of registers for all parameters, including p0.

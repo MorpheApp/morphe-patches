@@ -14,7 +14,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 /**
  * Manages a buffer for storing debug logs from {@link Logger}.
  * Stores just under 1MB of the most recent log data.
- *
+ * <p>
  * All methods are thread-safe.
  */
 public final class LogBufferManager {
@@ -42,7 +42,7 @@ public final class LogBufferManager {
         logBuffer.addLast(message);
         int newSize = logBufferByteSize.addAndGet(message.length());
 
-        // Remove oldest entries if over the log size limits.
+        // Remove the oldest entries if over the log size limits.
         while (newSize > BUFFER_MAX_BYTES || logBuffer.size() > BUFFER_MAX_SIZE) {
             String removed = logBuffer.pollFirst();
             if (removed == null) {
@@ -88,7 +88,7 @@ public final class LogBufferManager {
     private static void clearLogBufferData() {
         // Cannot simply clear the log buffer because there is no
         // write lock for both the deque and the atomic int.
-        // Instead pop off log entries and decrement the size one by one.
+        // Instead, pop off log entries and decrement the size one by one.
         while (!logBuffer.isEmpty()) {
             String removed = logBuffer.pollFirst();
             if (removed != null) {

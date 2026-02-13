@@ -27,7 +27,7 @@
  *
  * All other terms of the Morphe Patches LICENSE, including Section 7c
  * (Project Name Restriction) and the GPLv3 itself, remain fully
-  * applicable to this file.
+ * applicable to this file.
  */
 package app.morphe.util
 
@@ -243,4 +243,9 @@ internal fun ResourcePatchContext.findPlayStoreServicesVersion(): Int =
             "google_play_services_version",
         ).textContent.toInt()
     }
+
+internal fun String.trimIndentMultiline() =
+    this.split("\n")
+        .joinToString("\n") { it.trimIndent() } // Remove the leading whitespace from each line.
+        .trimIndent() // Remove the leading newline.
 

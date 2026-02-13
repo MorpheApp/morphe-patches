@@ -4,10 +4,10 @@ import android.app.Dialog;
 import android.preference.PreferenceScreen;
 import android.widget.Toolbar;
 
-import app.morphe.extension.shared.GmsCoreSupport;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 
@@ -36,12 +36,12 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
             // Clunky work around until preferences are custom classes that manage themselves.
             // Custom branding only works with non-root install. But the preferences must be
             // added during patched because of difficulties detecting during patching if it's
-            // a root install. So instead the non-functional preferences are removed during
+            // a root installation. So instead the non-functional preferences are removed during
             // runtime if the app is mount (root) installation.
-            if (GmsCoreSupport.isPackageNameOriginal()) {
+            if (GmsCoreSupportPatch.isPackageNameOriginal()) {
                 removePreferences(
-                        BaseSettings.CUSTOM_BRANDING_ICON.key,
-                        BaseSettings.CUSTOM_BRANDING_NAME.key);
+                        SharedYouTubeSettings.CUSTOM_BRANDING_ICON.key,
+                        SharedYouTubeSettings.CUSTOM_BRANDING_NAME.key);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);

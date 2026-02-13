@@ -41,7 +41,7 @@ public class BooleanSetting extends Setting<Boolean> {
     /**
      * Sets, but does _not_ persistently save the value.
      * This method is only to be used by the Settings preference code.
-     *
+     * <p>
      * This intentionally is a static method to deter
      * accidental usage when {@link #save(Boolean)} was intnded.
      */
