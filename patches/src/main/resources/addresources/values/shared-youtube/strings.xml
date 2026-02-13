@@ -100,9 +100,9 @@ To sign in, press continue below"</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign-in token, try signing into VR again</string>
 
     <!-- misc.drc.drcAudioPatch -->
-    <string name="morphe_drc_audio_title">Disable DRC audio</string>
-    <string name="morphe_drc_audio_summary_on">DRC audio is disabled</string>
-    <string name="morphe_drc_audio_summary_off">DRC audio is enabled</string>
+    <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
+    <string name="morphe_disable_drc_audio_summary_on">DRC audio is disabled</string>
+    <string name="morphe_disable_drc_audio_summary_off">DRC audio is enabled</string>
 
     <!-- misc.audio.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>
