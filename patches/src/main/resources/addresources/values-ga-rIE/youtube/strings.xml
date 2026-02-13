@@ -728,14 +728,14 @@ Tá an meáin an scannáin audio faoi seo"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Folaigh buntásc roghchlár cáilíochta físe</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Tá buntásc roghchláir cáilíochta físe i bhfolach</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Taispeántar buntásc roghchlár cáilíochta físeáin</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Folaigh an cnaipe Uath-imirt</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Tá an cnaipe uath-sheinm i bhfolach</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Taispeántar cnaipe Autoplay</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Folaigh an tseanmá</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Tá an tseanmá i bhfolach</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Taispeántar an tseanmá</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Folaigh an cnaipe Uath-imirt</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Tá an cnaipe uath-sheinm i bhfolach</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Taispeántar cnaipe Autoplay</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Folaigh cnaipe fotheidil</string>
   <string name="morphe_hide_captions_button_summary_on">Tá cnaipe fotheidil i bhfolach</string>
@@ -743,6 +743,12 @@ Tá an meáin an scannáin audio faoi seo"</string>
   <string name="morphe_hide_cast_button_title">Folaigh cnaipe Cast</string>
   <string name="morphe_hide_cast_button_summary_on">Tá cnaipe Cast i bhfolach</string>
   <string name="morphe_hide_cast_button_summary_off">Taispeántar cnaipe Cast</string>
+  <string name="morphe_hide_collapse_button_title">Folaigh cnaipe gcló</string>
+  <string name="morphe_hide_collapse_button_summary_on">Tá cnaipe gcló i bhfolach</string>
+  <string name="morphe_hide_collapse_button_summary_off">Taispeántar cnaipe gcló</string>
+  <string name="morphe_hide_fullscreen_button_title">Folaigh cnaipe Scáileáin Láir</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Tá cnaipe Scáileáin Láir i bhfolach</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Taispeántar cnaipe Scáileáin Láir</string>
   <string name="morphe_hide_player_control_buttons_background_title">Folaigh cúlra rialuithe an imreora</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Tá cúlra rialuithe an imreora i bhfolach</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Taispeántar cúlra rialuithe an imreora</string>
@@ -788,6 +794,9 @@ Tá an meáin an scannáin audio faoi seo"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts seinnteoir</string>
   <string name="morphe_shorts_player_screen_summary">Folaigh nó taispeáin comhpháirteanna seinnteora Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Folaigh Shorts sa leathanach canálach</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Folaite sa leathanach canálach</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Táirgeadh sa leathanach canálach</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Folaigh Shorts sa fhotha Baile</string>
   <string name="morphe_hide_shorts_home_summary_on">I bhfolach sa fhotha Baile agus físeáin ghaolmhara</string>

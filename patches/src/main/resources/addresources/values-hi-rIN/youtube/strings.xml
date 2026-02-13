@@ -663,12 +663,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">क्वालिटी मेनू फुटर छुपाएं</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">क्वालिटी मेनू फुटर छुपा हुआ है</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">क्वालिटी मेनू फुटर दिखाया गया है</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ऑटोप्ले प्रीव्यू छुपाएं</string>
   <string name="morphe_hide_autoplay_preview_summary_on">ऑटोप्ले प्रीव्यू छुपा हुआ है</string>
   <string name="morphe_hide_autoplay_preview_summary_off">ऑटोप्ले प्रीव्यू दिखाया गया है</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_collapse_button_title">छुपाएं झुका बटन</string>
+  <string name="morphe_hide_collapse_button_summary_on">झुका बटन छुपा हुआ है</string>
+  <string name="morphe_hide_collapse_button_summary_off">झुका बटन दिखाया गया है</string>
+  <string name="morphe_hide_fullscreen_button_title">छुपाएं फुलस्क्रीन बटन</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">फुलस्क्रीन बटन छुपा हुआ है</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">फुलस्क्रीन बटन दिखाया गया है</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">अंकित मोड</string>
@@ -689,6 +695,9 @@ Second \"item\" text"</string>
   <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_fullscreen_large_seekbar_summary_on">Create a Short button is hidden</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <string name="morphe_hide_shorts_channel_title">छुपाएं शॉर्ट्स चैनल पेज पर</string>
+  <string name="morphe_hide_shorts_channel_summary_on">चैनल पेज पर छुपा हुआ</string>
+  <string name="morphe_hide_shorts_channel_summary_off">चैनल पेज पर दिखाया गया</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_video_description_title">छुपाएं वीडियो विवरण में शॉर्ट्स</string>

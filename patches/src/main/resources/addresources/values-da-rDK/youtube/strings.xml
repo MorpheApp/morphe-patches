@@ -738,14 +738,14 @@ For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Skjul \'Kvalitet\' menu sidefod</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Videokvalitetsmenuens sidefod er skjult</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Videokvalitetsmenuens sidefod er vist</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Skjul knappen Automatisk afspilning</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Automatisk spil-knap er skjult</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Automatisk afspilningsknap vises</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skjul forhådsvisning af autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Forhådsvisning af autoplay er skjult</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Forhådsvisning af autoplay er vist</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Skjul knappen Automatisk afspilning</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Automatisk spil-knap er skjult</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Automatisk afspilningsknap vises</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skjul undertekstknappen</string>
   <string name="morphe_hide_captions_button_summary_on">Undertekster knappen er skjult</string>
@@ -753,6 +753,12 @@ For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <string name="morphe_hide_cast_button_title">Skjul Cast-knappen</string>
   <string name="morphe_hide_cast_button_summary_on">Cast-knappen er skjult</string>
   <string name="morphe_hide_cast_button_summary_off">Cast knap er vist</string>
+  <string name="morphe_hide_collapse_button_title">Skjul Collapse-knappen</string>
+  <string name="morphe_hide_collapse_button_summary_on">Collapse-knappen er skjult</string>
+  <string name="morphe_hide_collapse_button_summary_off">Collapse-knappen er vist</string>
+  <string name="morphe_hide_fullscreen_button_title">Skjul Fullskærm-knap</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Fullskærm-knap er skjult</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Fullskærm-knap er vist</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skjul baggrund for afspillerkontroller</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Baggrund for afspilningskontroller er skjult</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Baggrund for afspillerkontroller vises</string>
@@ -798,6 +804,9 @@ For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts-afspiller</string>
   <string name="morphe_shorts_player_screen_summary">Skjul eller vis Shorts-afspillerkomponenter</string>
+  <string name="morphe_hide_shorts_channel_title">Skjul Shorts i sidekanal</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Skjult i sidekanal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Vist i sidekanal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Skjul Shorts i \'Hjem\'-feed</string>
   <string name="morphe_hide_shorts_home_summary_on">Skjult i \'Hjem\'-feed og relaterede videoer</string>

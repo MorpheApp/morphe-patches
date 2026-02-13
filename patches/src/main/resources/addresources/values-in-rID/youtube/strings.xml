@@ -48,16 +48,16 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_disable_layout_updates_title">Nonaktifkan pembaruan tata letak</string>
   <string name="morphe_disable_layout_updates_summary_on">Tata letak tidak akan diperbarui oleh server</string>
   <string name="morphe_disable_layout_updates_summary_off">Tata letak akan diperbarui oleh server</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Tata letak aplikasi kembali ke tata letak yang digunakan saat pertama kali diinstal.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Tata letak aplikasi kembali ke tata letak yang digunakan saat pertama kali dipasang.
 
 Beberapa tata letak sisi server mungkin tidak kembali.
 
 Perubahan termasuk:
-• Komponen di player flyout menu (atau pengaturan terkait) mungkin tidak berfungsi.
-• Angka berputar tidak dianimasi.
-• Tab perpustakaan ditampilkan.
+• Komponen di menu flyout pemutar (atau pengaturan terkait) mungkin tidak berfungsi.
+• Angka yang bergulir tidak dianimasi.
+• Tab pustaka ditampilkan.
 • Bagian musik dari deskripsi video mungkin tidak berfungsi.
-• Tombol berganti akun mungkin tidak muncul di tab perpustakaan."</string>
+• Tombol beralih akun mungkin tidak muncul di tab Pustaka."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Sembunyikan rak toko kreator</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Rak toko kreator di bawah pemutar video disembunyikan</string>
@@ -303,9 +303,9 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_channel_guidelines_title">Sembunyikan pedoman saluran</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Pedoman saluran disembunyikan</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Pedoman saluran ditampilkan</string>
-  <string name="morphe_hide_comments_prompts_title">Sembunyikan prompt komentar</string>
-  <string name="morphe_hide_comments_prompts_summary_on">Prompt komentar disembunyikan</string>
-  <string name="morphe_hide_comments_prompts_summary_off">Prompt komentar ditampilkan</string>
+  <string name="morphe_hide_comments_prompts_title">Sembunyikan permintaan komentar</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Permintaan komentar disembunyikan</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Permintaan komentar ditampilkan</string>
   <string name="morphe_hide_comments_by_members_header_title">Sembunyikan header \'Komentar oleh anggota\'</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Header Komentar oleh anggota disembunyikan</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Header Komentar oleh anggota ditampilkan</string>
@@ -656,7 +656,7 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bilah status buram</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bilah status buram atau tembus pandang</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Batasan:
-• Baris hitam mungkin muncul di bagian atas pemutar video.
+• Garis hitam mungkin muncul di bagian atas pemutar video.
 • Bilah navigasi sistem dapat berubah menjadi transparan dan tidak mungkin untuk mengomentari video."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Nonaktifkan bilah tembus cahaya terang</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Bilah navigasi mode terang adalah buram</string>
@@ -738,14 +738,14 @@ Untuk menampilkan menu trek Audio, ubah 'Palsukan aliran video' menjadi 'TV'"</s
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Sembunyikan footer menu kualitas video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Footer menu kualitas video disembunyikan</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Footer menu kualitas video ditampilkan</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Sembunyikan tombol Putar Otomatis</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Tombol putar otomatis disembunyikan</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Tombol putar otomatis ditampilkan</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sembunyikan pratinjau putar otomatis</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Pratinjau putar otomatis disembunyikan</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Pratinjau putar otomatis ditampilkan</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Sembunyikan tombol Putar Otomatis</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Tombol putar otomatis disembunyikan</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Tombol putar otomatis ditampilkan</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sembunyikan tombol Teks</string>
   <string name="morphe_hide_captions_button_summary_on">Tombol teks disembunyikan</string>
@@ -753,6 +753,12 @@ Untuk menampilkan menu trek Audio, ubah 'Palsukan aliran video' menjadi 'TV'"</s
   <string name="morphe_hide_cast_button_title">Sembunyikan tombol Transmisi</string>
   <string name="morphe_hide_cast_button_summary_on">Tombol transmisi disembunyikan</string>
   <string name="morphe_hide_cast_button_summary_off">Tombol transmisi ditampilkan</string>
+  <string name="morphe_hide_collapse_button_title">Sembunyikan tombol Ciutkan</string>
+  <string name="morphe_hide_collapse_button_summary_on">Tombol Ciutkan disembunyikan</string>
+  <string name="morphe_hide_collapse_button_summary_off">Tombol Ciutkan ditampilkan</string>
+  <string name="morphe_hide_fullscreen_button_title">Sembunyikan tombol Layar Penuh</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Tombol Layar Penuh disembunyikan</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Tombol Layar Penuh ditampilkan</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sembunyikan latar belakang kontrol pemutar</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Latar belakang kontrol pemutar disembunyikan</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Latar belakang kontrol pemutar ditampilkan</string>
@@ -798,6 +804,9 @@ Untuk menampilkan menu trek Audio, ubah 'Palsukan aliran video' menjadi 'TV'"</s
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Pemutar Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Sembunyikan atau tampilkan komponen pemutar Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Sembunyikan Shorts di halaman saluran</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Disembunyikan di halaman saluran</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Ditampilkan di halaman saluran</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Sembunyikan Shorts di umpan Beranda</string>
   <string name="morphe_hide_shorts_home_summary_on">Disembunyikan di umpan Beranda dan video terkait</string>

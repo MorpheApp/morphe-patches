@@ -1,5 +1,5 @@
 {
-  "version": "1.13.0-dev.5",
+  "version": "1.13.1-dev.1",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -799,7 +799,8 @@
       "dependencies": [
         "ResourcePatch",
         "BytecodePatch",
-        "BytecodePatch"
+        "BytecodePatch",
+        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1254,7 +1255,7 @@
     },
     {
       "name": "Override certificate pinning",
-      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
+      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy. This patch does not work with Reddit.",
       "use": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1566,7 +1567,7 @@
     {
       "name": "Spoof video streams",
       "description": "Adds options to spoof the client video streams to fix playback.",
-      "use": true,
+      "use": false,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
@@ -1587,7 +1588,7 @@
     {
       "name": "Spoof video streams",
       "description": "Adds options to spoof the client video streams to fix playback.",
-      "use": true,
+      "use": false,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
@@ -1669,6 +1670,7 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
+        "ResourcePatch",
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch"

@@ -46,18 +46,18 @@ Second \"item\" text"</string>
 ومع ذلك، سيؤدي تمكين هذا أيضًا إلى تسجيل بعض بيانات المستخدم مثل عنوان IP الخاص بك."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">تعطيل تحديثات المظهر</string>
-  <string name="morphe_disable_layout_updates_summary_on">سيتم تعطيل تحديثات المظهر بواسطة الخادم</string>
+  <string name="morphe_disable_layout_updates_summary_on">لن يتم تحديث المظهر بواسطة الخادم</string>
   <string name="morphe_disable_layout_updates_summary_off">سيتم تحديث المظهر بواسطة الخادم</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"تغييرات في التطبيق تعود إلى الوضع المستخدم عند التثبيت الأول.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"يعود تصميم التطبيق إلى التصميم المستخدم عند التثبيت الأَوّلي.
 
-قد لا تعود بعض الإعدادات الخدمية.
+قد لا تعود بعض تصميمات جانب الخادم إلى وضعها السابق.
 
-تغييرات تشمل:
-• قد لا يعمل بعض المكونات في قائمة اللاعب (أو الإعدادات ذات الصلة).
-• لا يتم تحريك الأرقام المتداولة.
-• يتم عرض علامة التبويب المكتبة.
+تشمل التغييرات ما يلي:
+• قد لا تعمل عناصر قائمة المشغل المنبثقة (أو الإعدادات ذات الصلة).
+• الأرقام لا تُحدَّث لحظيًا.
+• يتم عرض علامة تبويب المكتبة.
 • قد لا يعمل قسم الموسيقى في وصف الفيديو.
-• قد لا يظهر زر التبديل بين الحسابات في علامة التبويب المكتبة."</string>
+• قد لا يظهر زر تبديل الحساب في علامة تبويب المكتبة."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">إخفاء رف متجر المنشئ</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">تم إخفاء رف متجر المنشئ أسفل مشغل الفيديو</string>
@@ -738,14 +738,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">إخفاء تذييل قائمة جودة الفيديو</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">تم إخفاء تذييل قائمة جودة الفيديو</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">يتم عرض تذييل قائمة جودة الفيديو</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">إخفاء زر التشغيل التلقائي</string>
-  <string name="morphe_hide_autoplay_button_summary_on">تم إخفاء زر التشغيل التلقائي</string>
-  <string name="morphe_hide_autoplay_button_summary_off">يتم عرض زر التشغيل التلقائي</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">إخفاء معاينة التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_preview_summary_on">تم إخفاء معاينة التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_preview_summary_off">يتم عرض معاينة التشغيل التلقائي</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">إخفاء زر التشغيل التلقائي</string>
+  <string name="morphe_hide_autoplay_button_summary_on">تم إخفاء زر التشغيل التلقائي</string>
+  <string name="morphe_hide_autoplay_button_summary_off">يتم عرض زر التشغيل التلقائي</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_hide_captions_button_summary_on">تم إخفاء زر الترجمة</string>
@@ -753,6 +753,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">إخفاء زر البث</string>
   <string name="morphe_hide_cast_button_summary_on">تم إخفاء زر البث</string>
   <string name="morphe_hide_cast_button_summary_off">يتم عرض زر البث</string>
+  <string name="morphe_hide_collapse_button_title">إخفاء زر الطَيّ</string>
+  <string name="morphe_hide_collapse_button_summary_on">تم إخفاء زر الطَيّ</string>
+  <string name="morphe_hide_collapse_button_summary_off">يتم عرض زر الطَيّ</string>
+  <string name="morphe_hide_fullscreen_button_title">إخفاء زر ملء الشاشة</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">تم إخفاء زر ملء الشاشة</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">يتم عرض زر ملء الشاشة</string>
   <string name="morphe_hide_player_control_buttons_background_title">إخفاء خلفية عناصر التحكم بالمشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">تم إخفاء خلفية عناصر تحكم المشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">يتم عرض خلفية عناصر تحكم المشغل</string>
@@ -798,6 +804,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">مشغل Shorts</string>
   <string name="morphe_shorts_player_screen_summary">إخفاء أو عرض مكونات مشغل Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">إخفاء فيديوهات Shorts في صفحة القناة</string>
+  <string name="morphe_hide_shorts_channel_summary_on">مخفية في صفحة القناة</string>
+  <string name="morphe_hide_shorts_channel_summary_off">تُعرض في صفحة القناة</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">إخفاء Shorts في الصفحة الرئيسية</string>
   <string name="morphe_hide_shorts_home_summary_on">مخفي في موجز الصفحة الرئيسية والفيديوهات ذات الصلة</string>

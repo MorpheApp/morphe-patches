@@ -738,14 +738,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">ভিডিও গুণমান মেনুর ফুটার লুকান</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">ভিডিও গুণমান মেনু ফুটার লুকানো আছে</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">ভিডিও গুণমান মেনু ফুটার দেখানো হচ্ছে</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">অটোপ্লে বোতামটি লুকান</string>
-  <string name="morphe_hide_autoplay_button_summary_on">autoplay বোতাম লুকানো আছে</string>
-  <string name="morphe_hide_autoplay_button_summary_off">autoplay বোতাম দেখানো হচ্ছে</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">অটোপ্লে প্রিভিউ লুকান</string>
   <string name="morphe_hide_autoplay_preview_summary_on">অটোপ্লে প্রিভিউ লুকানো আছে</string>
   <string name="morphe_hide_autoplay_preview_summary_off">অটোপ্লে প্রিভিউ দেখানো হচ্ছে</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">অটোপ্লে বোতামটি লুকান</string>
+  <string name="morphe_hide_autoplay_button_summary_on">autoplay বোতাম লুকানো আছে</string>
+  <string name="morphe_hide_autoplay_button_summary_off">autoplay বোতাম দেখানো হচ্ছে</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ক্যাপশন বোতামটি লুকান</string>
   <string name="morphe_hide_captions_button_summary_on">ক্যাপশন বোতাম লুকানো আছে</string>
@@ -753,6 +753,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">কাস্ট বোতামটি লুকান</string>
   <string name="morphe_hide_cast_button_summary_on">কাস্ট বাটন লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_cast_button_summary_off">কাস্ট বাটন প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_collapse_button_title">লুকানCollapse বোতাম</string>
+  <string name="morphe_hide_collapse_button_summary_on">Collapse বোতাম লুকিয়ে রয়েছে</string>
+  <string name="morphe_hide_collapse_button_summary_off">Collapse বোতাম প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_fullscreen_button_title">ফুলস্ক্রিন বাটন লুকান</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">ফুলস্ক্রিন বাটন লুকানো আছে</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">ফুলস্ক্রিন বাটন দেখানো হচ্ছে</string>
   <string name="morphe_hide_player_control_buttons_background_title">প্লেয়ার কন্ট্রোল ব্যাকগ্রাউন্ড লুকান</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">প্লেয়ার নিয়ন্ত্রণের পটভূমি লুকানো আছে</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">প্লেয়ার কন্ট্রোল ব্যাকগ্রাউন্ড দেখানো হয়েছে</string>
@@ -798,6 +804,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts প্লেয়ার</string>
   <string name="morphe_shorts_player_screen_summary">Shorts প্লেয়ারের উপাদান লুকান বা দেখান</string>
+  <string name="morphe_hide_shorts_channel_title">চ্যানেল পেজে Shorts লুকান</string>
+  <string name="morphe_hide_shorts_channel_summary_on">চ্যানেল পেজে লুকানো</string>
+  <string name="morphe_hide_shorts_channel_summary_off">চ্যানেল পেজে দেখানো</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">হোম ফিডে Shorts লুকান</string>
   <string name="morphe_hide_shorts_home_summary_on">হোম ফিড এবং সম্পর্কিত ভিডিওতে লুকানো আছে</string>

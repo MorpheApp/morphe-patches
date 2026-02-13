@@ -740,14 +740,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Κρύψε Οδηγίες του μενού ποιότητας βίντεο</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Οι οδηγίες του μενού ποιότητας βίντεο είναι κρυμμένες</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Οι οδηγίες του μενού ποιότητας βίντεο εμφανίζονται</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Κουμπί αυτόματης αναπαραγωγής</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Κρυμμένο</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Εμφανίζεται</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Απόκρυψη προεπισκόπισης αυτόματης αναπαραγωγής</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Η προεπισκόπιση αυτόματης αναπαραγωγής είναι απόκρυφη</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Η προεπισκόπιση αυτόματης αναπαραγωγής είναι ορατή</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Κουμπί αυτόματης αναπαραγωγής</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Εμφανίζεται</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Κουμπί υπότιτλων</string>
   <string name="morphe_hide_captions_button_summary_on">Κρυμμένο</string>
@@ -755,6 +755,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">Κουμπί μετάδοσης</string>
   <string name="morphe_hide_cast_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_cast_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_collapse_button_title">Κρυφή κουμπή συρρίκνωσης</string>
+  <string name="morphe_hide_collapse_button_summary_on">Η κουμπή συρρίκνωσης είναι κρυμμένη</string>
+  <string name="morphe_hide_collapse_button_summary_off">Η κουμπή συρρίκνωσης εμφανίζεται</string>
+  <string name="morphe_hide_fullscreen_button_title">Κρυφή κουμπί πλήρους οθόνης</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Κρυμμένη κουμπή πλήρους οθόνης</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Εμφανίζεται κουμπή πλήρους οθόνης</string>
   <string name="morphe_hide_player_control_buttons_background_title">Φόντο κουμπιών ελέγχου οθόνης αναπαραγωγής</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Εμφανίζεται</string>
@@ -800,6 +806,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Οθόνη αναπαραγωγής Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων στην οθόνη αναπαραγωγής Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Απόκρυψη Shorts στην σελίδα καναλιού</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Απόκρυψη στην σελίδα καναλιού</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Εμφάνιση στην σελίδα καναλιού</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Shorts στην αρχική ροή και στα σχετικά βίντεο</string>
   <string name="morphe_hide_shorts_home_summary_on">Κρυμμένα</string>

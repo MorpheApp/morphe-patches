@@ -108,6 +108,7 @@ internal fun spoofVideoStreamsPatch(
 ) = bytecodePatch(
     name = "Spoof video streams",
     description = "Adds options to spoof the client video streams to fix playback.",
+    use = false // Patch is default included with GmsCore but not for root installs.
 ) {
     block()
 

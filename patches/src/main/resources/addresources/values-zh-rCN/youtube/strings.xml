@@ -738,14 +738,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">隐藏「画质」选单下的提示页脚</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">「画质」选单页脚已隐藏</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">「画质」选单页脚已显示</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">隐藏「自动播放」按钮</string>
-  <string name="morphe_hide_autoplay_button_summary_on">自动播放按钮已隐藏</string>
-  <string name="morphe_hide_autoplay_button_summary_off">自动播放按钮已显示</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">隐藏自动播放预览</string>
   <string name="morphe_hide_autoplay_preview_summary_on">自动播放预览已隐藏</string>
   <string name="morphe_hide_autoplay_preview_summary_off">自动播放预览已显示</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">隐藏「自动播放」按钮</string>
+  <string name="morphe_hide_autoplay_button_summary_on">自动播放按钮已隐藏</string>
+  <string name="morphe_hide_autoplay_button_summary_off">自动播放按钮已显示</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">隐藏「字幕」按钮</string>
   <string name="morphe_hide_captions_button_summary_on">字幕按钮已隐藏</string>
@@ -753,6 +753,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">隐藏「投屏」按钮</string>
   <string name="morphe_hide_cast_button_summary_on">投屏按钮已隐藏</string>
   <string name="morphe_hide_cast_button_summary_off">投屏按钮已显示</string>
+  <string name="morphe_hide_collapse_button_title">隐藏「折叠」按钮</string>
+  <string name="morphe_hide_collapse_button_summary_on">「折叠」按钮已隐藏</string>
+  <string name="morphe_hide_collapse_button_summary_off">「折叠」按钮已显示</string>
+  <string name="morphe_hide_fullscreen_button_title">隐藏全屏按钮</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">全屏按钮已隐藏</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">全屏按钮已显示</string>
   <string name="morphe_hide_player_control_buttons_background_title">隐藏播放器控件背景</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">播放器控件背景已隐藏</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">播放器控件背景已显示</string>
@@ -798,6 +804,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts 播放器</string>
   <string name="morphe_shorts_player_screen_summary">隐藏或显示 Shorts 播放器组件</string>
+  <string name="morphe_hide_shorts_channel_title">在频道页面隐藏Shorts</string>
+  <string name="morphe_hide_shorts_channel_summary_on">在频道页面隐藏</string>
+  <string name="morphe_hide_shorts_channel_summary_off">在频道页面显示</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">在首页信息流中隐藏Shorts</string>
   <string name="morphe_hide_shorts_home_summary_on">已在首页信息流和相关视频中隐藏</string>

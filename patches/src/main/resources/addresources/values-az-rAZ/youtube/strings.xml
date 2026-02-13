@@ -673,14 +673,14 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Video keyfiyyət menyusu alt məlumatını gizlət</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video keyfiyyət menyusu alt məlumatı gizlidir</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video keyfiyyət menyusu alt məlumatı göstərilir</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Avtomatik oynatma düyməsini gizlət</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Avtomatik oynatma düyməsi gizlidir</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Avtomatik oynatma düyməsi göstərilir</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Avtomatik önizləmə önizlənməsini gizlət</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Avtomatik önizləmə önizlənməsi gizlidir</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Avtomatik önizləmə önizlənməsi göstərilir</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Avtomatik oynatma düyməsini gizlət</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Avtomatik oynatma düyməsi gizlidir</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Avtomatik oynatma düyməsi göstərilir</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Titrlər Düyməsin Gizlət</string>
   <string name="morphe_hide_captions_button_summary_on">Titrlər düyməsi gizlidir</string>

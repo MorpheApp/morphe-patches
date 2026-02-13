@@ -734,14 +734,14 @@ Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ascunde subsol meniu calitate video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Subsol meniu calitate video este ascuns</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Subsol meniu calitate video este afișat</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ascunde butonul Redare automată</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Butonul Autoplay este ascuns</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Butonul Auto-redare este afișat</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ascunde previzualizarea autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Previzualizarea autoplay este ascunsă</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Previzualizarea autoplay este afișată</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Ascunde butonul Redare automată</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Butonul Autoplay este ascuns</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Butonul Auto-redare este afișat</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ascunderea butonului Subtitrări</string>
   <string name="morphe_hide_captions_button_summary_on">Butonul subtitrari este ascuns</string>
@@ -749,6 +749,12 @@ Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string
   <string name="morphe_hide_cast_button_title">Ascunde butonul Distribuție</string>
   <string name="morphe_hide_cast_button_summary_on">Butonul de distribuție este ascuns</string>
   <string name="morphe_hide_cast_button_summary_off">Butonul de execuție este afișat</string>
+  <string name="morphe_hide_collapse_button_title">Ascunde butonul Colapse</string>
+  <string name="morphe_hide_collapse_button_summary_on">Butonul Colapse este ascuns</string>
+  <string name="morphe_hide_collapse_button_summary_off">Butonul Colapse este afișat</string>
+  <string name="morphe_hide_fullscreen_button_title">Ascunde butonul ecranân</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Butonul ecranân este ascuns</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Butonul ecranân este afièat</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ascunde fundalul controalelor playerului</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Fundalul comenzilor playerului este ascuns</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Fundalul comenzilor playerului este afișat</string>
@@ -794,6 +800,9 @@ Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ascunde sau afișează componentele playerului Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Ascunde Shorts-urile din pagina canalului.</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Ascuns în pagina canalului.</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Arătat în pagina canalului.</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ascunde Shorts-urile din feedul Acasă.</string>
   <string name="morphe_hide_shorts_home_summary_on">Ascunse în feedul Acasă și în videoclipurile similare.</string>

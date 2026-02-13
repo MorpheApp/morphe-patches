@@ -755,31 +755,27 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
 }
 
 /**
- * Effectively this makes all method parameters registers (including p0) of the cloned method
- * unchanged for all indexes in the method, and the method parameters can be referenced directly
- * or used as free registers. Only suitable for static methods with zero parameters.
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * and contain the original contents of the method parameters.
+ * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
+ * original uncloned method.
  *
- * **Fingerprint match indexes will be positively by [numberOfParameterRegistersLogical]**.
+ * **Fingerprint match indexes will be increased positively by [numberOfParameterRegistersLogical]**.
  */
 context(BytecodePatchContext)
-fun Method.cloneMutableAndPreserveParameters(
-    indexZeroInstructionsToAdd: String? = null,
-) = cloneMutableAndPreserveParameters(
-    mutableClassDefBy(definingClass),
-    indexZeroInstructionsToAdd
+fun Method.cloneMutableAndPreserveParameters() = cloneMutableAndPreserveParameters(
+    mutableClassDefBy(definingClass)
 )
 
 /**
- * Effectively this makes all method parameters registers (including p0) of the cloned method
- * unchanged for all indexes in the method, and the method parameters can be referenced directly
- * or used as free registers. Only suitable for static methods with zero parameters.
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * and contain the original contents of the method parameters.
+ * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
+ * original uncloned method.
  *
- * **Fingerprint match indexes will be positively by [numberOfParameterRegistersLogical]**.
+ * **Fingerprint match indexes will be increased positively by [numberOfParameterRegistersLogical]**.
  */
-fun Method.cloneMutableAndPreserveParameters(
-    mutableClass : MutableClass,
-    indexZeroInstructionsToAdd: String? = null,
-) : MutableMethod {
+fun Method.cloneMutableAndPreserveParameters(mutableClass : MutableClass) : MutableMethod {
     check (!AccessFlags.STATIC.isSet(accessFlags) || parameters.isNotEmpty()) {
         "Static methods have no parameter registers to preserve"
     }
@@ -801,11 +797,12 @@ fun Method.cloneMutableAndPreserveParameters(
  * Adapted from BiliRoamingX:
  * https://github.com/BiliRoamingX/BiliRoamingX/blob/ae58109f3acdd53ec2d2b3fb439c2a2ef1886221/patches/src/main/kotlin/app/revanced/patches/bilibili/utils/Extenstions.kt#L51
  *
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc) before
- * adding to additional new parameters before p0. Added registers always start at index:
- * `method.implementation!!.registerCount`
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * and contain the original contents of the method parameters.
+ * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
+ * original uncloned method.
  *
- * **Fingerprint match indexes will be positively by [numberOfParameterRegistersLogical]**.
+ * **Fingerprint match indexes will be increased positively by [additionalRegisters]**.
  */
 fun Method.cloneMutable(
     name: String = this.name,

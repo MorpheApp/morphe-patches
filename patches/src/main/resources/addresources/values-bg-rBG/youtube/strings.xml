@@ -732,14 +732,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Скриване на подножката на менюто \'Качества\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Подножката на менюто \'Качества\' е скрита</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Подножката на менюто \'Качества\' е показана</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Дублирането на видеа се показва</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Скрий дублиране на видеа</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Дублирането на видеа е скрито</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Скриване на прегледът за автозапускване</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Прегледът за автозапускване е скрит</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Прегледът за автозапускване е показан</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Дублирането на видеа се показва</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Дублирането на видеа е скрито</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_captions_button_summary_on">Скрий дублиране на видеа</string>
@@ -747,6 +747,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_cast_button_summary_on">Скрий дублиране на видеа</string>
   <string name="morphe_hide_cast_button_summary_off">Дублирането на видеа е скрито</string>
+  <string name="morphe_hide_collapse_button_title">Скриване на бутона за колапс</string>
+  <string name="morphe_hide_collapse_button_summary_on">Бутонът за колапс е скрит</string>
+  <string name="morphe_hide_collapse_button_summary_off">Бутонът за колапс се показва</string>
+  <string name="morphe_hide_fullscreen_button_title">Скриване на бутона за пълноекранен режим</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Бутонът за пълноекранен режим е скрит</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Бутонът за пълноекранен режим е показан</string>
   <string name="morphe_hide_player_control_buttons_background_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Скрий дублиране на видеа</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Дублирането на видеа е скрито</string>
@@ -792,6 +798,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Дублирането на видеа се показва</string>
   <string name="morphe_shorts_player_screen_summary">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_shorts_channel_title">Скриване на \"Shorts\" в страницата на канала</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Скрит в страницата на канала</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Показан в страницата на канала</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_shorts_home_summary_on">Дублирането на видеа се показва</string>

@@ -738,14 +738,14 @@ Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"<
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Verberg voettekst van menu \'Kwaliteit\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Voettekst van menu \'Kwaliteit\' is verborgen</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Voettekst van menu \'Kwaliteit\' wordt weergegeven</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Verberg knop voor automatisch afspelen</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Automatische afspeelknop is verborgen</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Automatische afspeelknop wordt weergegeven</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Verberg voorbeeld autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay voorbeeld is verborgen</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Autoplay voorbeeld wordt weergegeven</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Verberg knop voor automatisch afspelen</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Automatische afspeelknop is verborgen</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Automatische afspeelknop wordt weergegeven</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Verberg ondertitelknop</string>
   <string name="morphe_hide_captions_button_summary_on">Ondertitelingknop is verborgen</string>
@@ -753,6 +753,12 @@ Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"<
   <string name="morphe_hide_cast_button_title">Verberg Cast-knop</string>
   <string name="morphe_hide_cast_button_summary_on">Castknop is verborgen</string>
   <string name="morphe_hide_cast_button_summary_off">Castknop wordt weergegeven</string>
+  <string name="morphe_hide_collapse_button_title">Verberg knop samenvouwen</string>
+  <string name="morphe_hide_collapse_button_summary_on">Knop samenvouwen is verborgen</string>
+  <string name="morphe_hide_collapse_button_summary_off">Knop samenvouwen is zichtbaar</string>
+  <string name="morphe_hide_fullscreen_button_title">Verberg Volledscherm knop</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Volledscherm knop is verborgen</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Volledscherm knop is zichtbaar</string>
   <string name="morphe_hide_player_control_buttons_background_title">Achtergrond van spelerbediening verbergen</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Achtergrond van spelerbediening is verborgen</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Achtergrond van spelerbediening wordt weergegeven</string>
@@ -798,6 +804,9 @@ Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"<
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts-speler</string>
   <string name="morphe_shorts_player_screen_summary">Shorts-spelercomponenten verbergen of tonen</string>
+  <string name="morphe_hide_shorts_channel_title">Verbergen van Shorts in kanaalpagina</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Verborgen in kanaalpagina</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Getoond in kanaalpagina</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Shorts verbergen in Home-feed</string>
   <string name="morphe_hide_shorts_home_summary_on">Verborgen in Home-feed en gerelateerde video\'s</string>

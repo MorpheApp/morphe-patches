@@ -45,19 +45,19 @@ Second \"item\" text"</string>
 
 Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu người dùng, chẳng hạn như địa chỉ IP của bạn."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">Tắt cập nhật bố cục</string>
-  <string name="morphe_disable_layout_updates_summary_on">Bố cục sẽ không được cập nhật bởi máy chủ</string>
-  <string name="morphe_disable_layout_updates_summary_off">Bố cục sẽ được cập nhật bởi máy chủ</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Giao diện ứng dụng sẽ quay trở lại giao diện được sử dụng khi lần đầu cài đặt.
+  <string name="morphe_disable_layout_updates_title">Tắt cập nhật giao diện</string>
+  <string name="morphe_disable_layout_updates_summary_on">Giao diện sẽ không còn được máy chủ cập nhật</string>
+  <string name="morphe_disable_layout_updates_summary_off">Giao diện sẽ được máy chủ cập nhật</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Giao diện ứng dụng sẽ trở về như lúc mới cài đặt.
 
-Một số giao diện từ phía máy chủ có thể không quay trở lại.
+Một số bố cục do máy chủ áp dụng có thể không quay trở lại hoàn toàn.
 
-Thay đổi bao gồm:
-• Phần tử trong menu bay của người chơi (hoặc cài đặt liên quan) có thể không hoạt động.
-• Số lượng cuộn không được hoạt hình.
-• Tab thư viện được hiển thị.
+Ví dụ:
+• Một số mục trong menu tùy chọn có thể không hoạt động.
+• Không có hiệu ứng số cuộn.
+• Thẻ Thư viện có thể hiện lại.
 • Phần âm nhạc trong mô tả video có thể không hoạt động.
-• Nút chuyển tài khoản có thể không xuất hiện trên tab Thư viện."</string>
+• Nút chuyển đổi tài khoản có thể biến mất trong thẻ Thư viện."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ẩn kệ cửa hàng của nhà sáng tạo</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Kệ cửa hàng của nhà sáng tạo bên dưới trình phát video đã bị ẩn</string>
@@ -739,14 +739,14 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ẩn chân menu Chất lượng video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Chân menu chất lượng video đã bị ẩn</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Chân menu chất lượng video được hiển thị</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ẩn nút Tự động phát</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Nút tự động phát đã bị ẩn</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Nút tự động phát được hiển thị</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ẩn phần xem trước tự động phát</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Phần xem trước tự động phát xuất hiện ở cuối video (khung ở góc trên bên trái) đã bị ẩn.</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Phần xem trước tự động phát xuất hiện ở cuối video (khung ở góc trên bên trái) được hiển thị.</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Ẩn nút Tự động phát</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Nút tự động phát đã bị ẩn</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Nút tự động phát được hiển thị</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ẩn nút Chú thích</string>
   <string name="morphe_hide_captions_button_summary_on">Nút phụ đề đã bị ẩn</string>
@@ -754,6 +754,12 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_cast_button_title">Ẩn nút truyền</string>
   <string name="morphe_hide_cast_button_summary_on">Nút Truyền đã bị ẩn</string>
   <string name="morphe_hide_cast_button_summary_off">Nút Truyền được hiển thị</string>
+  <string name="morphe_hide_collapse_button_title">Ẩn nút thu nhỏ trình phát</string>
+  <string name="morphe_hide_collapse_button_summary_on">Nút thu nhỏ đã bị ẩn</string>
+  <string name="morphe_hide_collapse_button_summary_off">Nút thu nhỏ được hiển thị</string>
+  <string name="morphe_hide_fullscreen_button_title">Ẩn nút Phóng to toàn màn hình</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Nút toàn màn hình đã bị ẩn</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Nút toàn màn hình được hiển thị</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ẩn nền điều khiển trình phát</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Nền điều khiển trình phát đã bị ẩn</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Nền điều khiển trình phát được hiển thị</string>
@@ -799,6 +805,9 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Trình phát Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ẩn hoặc hiện các thành phần của trình phát Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Ẩn Shorts trong trang kênh</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Ẩn trong trang kênh</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Hiển thị trong trang kênh</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ẩn Shorts trong thẻ Trang chủ</string>
   <string name="morphe_hide_shorts_home_summary_on">Đã ẩn trong thẻ Trang chủ và video liên quan</string>

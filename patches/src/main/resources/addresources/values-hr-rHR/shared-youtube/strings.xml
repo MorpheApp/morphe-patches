@@ -100,12 +100,12 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_force_original_audio_summary_on">Koristi se originalni jezik zvuka</string>
   <string name="morphe_force_original_audio_summary_off">Koristi se standardni jezik zvuka</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Da bi koristili ovu značajku, promijenite \"Falsificiraj video toke\" u bilo koji klijent osim Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Da biste koristili ovu značajku, promijenite \'Spoof video streamova\' u bilo koji klijent osim Android Studija</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Čisti dijeljljive poveznice</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Parametar slijeda je uklonjen iz dijeljenih poveznica</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Parametar slijeda nije uklonjen iz dijeljenih poveznica</string>
-  <string name="morphe_replace_music_with_youtube_title">Promijenite dijeljene poveznice u youtube.com</string>
+  <string name="morphe_sanitize_sharing_links_title">Očisti poveznice za dijeljenje</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parametar upita za praćenje uklonjen je iz dijeljenih poveznica</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parametar upita za praćenje nije uklonjen iz dijeljenih poveznica</string>
+  <string name="morphe_replace_music_with_youtube_title">Promijenite poveznice za dijeljenje na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Dijeljene poveznice koriste youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Dijeljene poveznice koriste music.youtube.com</string>
 </resources>

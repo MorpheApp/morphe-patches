@@ -45,6 +45,19 @@ Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filt
 
 Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress, att loggas."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Inaktivera layoutuppdateringar</string>
+  <string name="morphe_disable_layout_updates_summary_on">Layouten uppdateras inte av servern</string>
+  <string name="morphe_disable_layout_updates_summary_off">Layouten uppdateras av servern</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Appens layout återställs till den layout som användes när den installerades.
+
+Vissa layouter på serversidan kanske inte återställs.
+
+Ändringar:
+• Komponenter i spelarens flyout-meny (eller relaterade inställningar) kanske inte fungerar.
+• Rullande siffror animeras inte.
+• Fliken Bibliotek visas.
+• Avsnittet Musik i videobeskrivningen kanske inte fungerar.
+• Knappen Byt konto kanske inte visas i fliken Bibliotek."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Dölj butikshylla för kreatörer</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Butikshylla för kreatörer under videospelaren är dold</string>
@@ -192,6 +205,11 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_course_progress_section_summary_on">Avsnittet Kursförlopp är dolt</string>
   <string name="morphe_hide_course_progress_section_summary_off">Avsnittet Kursförlopp visas</string>
   <string name="morphe_hide_explore_section_title">Dölj Utforska</string>
+  <string name="morphe_hide_explore_section_summary_on">Avsnitten Utforska kursen och Utforska podden är dolda</string>
+  <string name="morphe_hide_explore_section_summary_off">Avsnitten Utforska kursen och Utforska podden visas</string>
+  <string name="morphe_hide_explore_course_section_title">Dölj Utforska kursen</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Avsnittet Utforska kursen är dolt</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Avsnittet Utforska kursen visas</string>
   <string name="morphe_hide_explore_podcast_section_title">Dölj Utforska podden</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Avsnittet Utforska podden är dolt</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Avsnittet Utforska podden visas</string>
@@ -228,6 +246,9 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_transcript_section_title">Dölj Manuskript</string>
   <string name="morphe_hide_transcript_section_summary_on">Avsnittet Manuskript är dolt</string>
   <string name="morphe_hide_transcript_section_summary_off">Avsnittet Manuskript visas</string>
+  <string name="morphe_hide_quizzes_section_title">Dölj Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Avsnittet Quiz är dolt</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Avsnittet Quiz visas</string>
   <string name="morphe_hide_description_components_screen_title">Videobeskrivning</string>
   <string name="morphe_hide_description_components_screen_summary">Dölj eller visa komponenter i videobeskrivningen</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterfält</string>
@@ -283,12 +304,18 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_comments_channel_guidelines_title">Dölj kanalriktlinjer</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalriktlinjer är dolda</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalriktlinjer visas</string>
+  <string name="morphe_hide_comments_prompts_title">Dölj ledtexter i kommentarerna</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Ledtexter i kommentarerna är dolda</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Ledtexter i kommentarerna visas</string>
   <string name="morphe_hide_comments_by_members_header_title">Dölj rubriken Kommentarer från medlemmar</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Rubriken Kommentarer från medlemmar är dold</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Rubriken Kommentarer från medlemmar visas</string>
   <string name="morphe_hide_comments_section_title">Dölj kommentarsfältet</string>
   <string name="morphe_hide_comments_section_summary_on">Kommentarsfältet är dolt</string>
   <string name="morphe_hide_comments_section_summary_off">Kommentarsfältet visas</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Dölj kommentarsfältet i hemflödet</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Kommentarsfältet under videor i hemflödet är dolt</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Kommentarsfältet under videor i hemflödet visas</string>
   <string name="morphe_hide_comments_community_guidelines_title">Dölj riktlinjerna för communityn</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Riktlinjerna för communityn är dolda</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Riktlinjerna för communityn visas</string>
@@ -317,10 +344,16 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_view_count_summary_on">Antal visningar är dolt i flödet och sökresultaten</string>
   <string name="morphe_hide_view_count_summary_off">Antal visningar visas i flödet och sökresultaten</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
+  <string name="morphe_hide_view_count_user_dialog_message">"Begränsningar:
+• Shorts-hyllor, kanalsidor och sökresultat kan fortfarande visa antalet visningar.
+• Det här funktionen fungerar inte med bilformfaktorn."</string>
   <string name="morphe_hide_upload_time_title">Dölj uppladdningstid</string>
   <string name="morphe_hide_upload_time_summary_on">Uppladdningstid är dold i flödet och sökresultaten</string>
   <string name="morphe_hide_upload_time_summary_off">Uppladdningstid visas i flödet och sökresultaten</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
+  <string name="morphe_hide_upload_time_user_dialog_message">"Begränsningar:
+• Shorts-hyllor, kanalsidor och sökresultat kan fortfarande visa uppladdningstider.
+• Det här funktionen fungerar inte med bilformfaktorn."</string>
   <string name="morphe_hide_keyword_content_screen_title">Dölj innehåll med nyckelord</string>
   <string name="morphe_hide_keyword_content_screen_summary">Dölj videor i flöden och i sökning med hjälp av nyckelordsfilter</string>
   <string name="morphe_hide_keyword_content_home_title">Dölj videor i Hem med nyckelord</string>
@@ -706,14 +739,14 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Dölj sidfot för menyn Kvalitet</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Sidfot för menyn Kvalitet är dold</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Sidfot för menyn Kvalitet visas</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Dölj knappen för automatisk uppspelning</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Knappen för automatisk uppspelning är dold</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Knappen för automatisk uppspelning visas</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Dölj förhandsgranskning för automatisk uppspelning</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Förhandsgranskning för automatisk uppspelning är dold</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Förhandsgranskning för automatisk uppspelning visas</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Dölj knappen för automatisk uppspelning</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Knappen för automatisk uppspelning är dold</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Knappen för automatisk uppspelning visas</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Dölj knappen Textning</string>
   <string name="morphe_hide_captions_button_summary_on">Knappen Textning är dold</string>

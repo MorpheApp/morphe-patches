@@ -738,14 +738,14 @@ Para mostrar el menú de pistas de audio, cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Ocultar pie de página del menú \"Calidad\"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">El pie de página del menú \"Calidad\" está oculto</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">El pie de página del menú \"Calidad\" está visible</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ocultar botón \"Reproducción automática\"</string>
-  <string name="morphe_hide_autoplay_button_summary_on">El botón \"Reproducción automática\" está oculto</string>
-  <string name="morphe_hide_autoplay_button_summary_off">El botón \"Reproducción automática\" está visible</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ocultar vista previa automática</string>
   <string name="morphe_hide_autoplay_preview_summary_on">La vista previa automática está oculta</string>
   <string name="morphe_hide_autoplay_preview_summary_off">La vista previa automática está visible</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Ocultar botón \"Reproducción automática\"</string>
+  <string name="morphe_hide_autoplay_button_summary_on">El botón \"Reproducción automática\" está oculto</string>
+  <string name="morphe_hide_autoplay_button_summary_off">El botón \"Reproducción automática\" está visible</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ocultar botón \"Subtítulos\"</string>
   <string name="morphe_hide_captions_button_summary_on">El botón \"Subtítulos\" está oculto</string>
@@ -753,6 +753,12 @@ Para mostrar el menú de pistas de audio, cambia \"Falsificar transmisiones de v
   <string name="morphe_hide_cast_button_title">Ocultar botón \"Transmitir\"</string>
   <string name="morphe_hide_cast_button_summary_on">El botón \"Transmitir\" está oculto</string>
   <string name="morphe_hide_cast_button_summary_off">El botón \"Transmitir\" está visible</string>
+  <string name="morphe_hide_collapse_button_title">Ocultar botón de contraer</string>
+  <string name="morphe_hide_collapse_button_summary_on">El botón de contraer está oculto</string>
+  <string name="morphe_hide_collapse_button_summary_off">El botón de contraer está visible</string>
+  <string name="morphe_hide_fullscreen_button_title">Ocultar botón de pantalla completa</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">El botón de pantalla completa está oculto</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">El botón de pantalla completa está visible</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar fondo de controles del reproductor</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">El fondo de los controles del reproductor está oculto</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">El fondo de los controles del reproductor está visible</string>
@@ -798,6 +804,9 @@ Para mostrar el menú de pistas de audio, cambia \"Falsificar transmisiones de v
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ocultar o mostrar componentes del reproductor de Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Ocultar Shorts en la página del canal</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Ocultos en la página del canal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Visibles en la página del canal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ocultar Shorts en feed \"Inicio\"</string>
   <string name="morphe_hide_shorts_home_summary_on">Ocultos en el feed \"Inicio\" y vídeos relacionados</string>

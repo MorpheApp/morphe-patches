@@ -42,8 +42,8 @@ public class MorpheSettingsIconDynamicDrawable extends Drawable {
             lastKnownDarkMode = isDarkMode;
 
             String iconName = Utils.appIsUsingBoldIcons()
-                    ? "morphe_settings_icon_bold"
-                    : "morphe_settings_icon";
+                    ? (isDarkMode ? "morphe_settings_icon_bold_dark" : "morphe_settings_icon_bold_light")
+                    : (isDarkMode ? "morphe_settings_icon_dark" : "morphe_settings_icon_light");
 
             final int resId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
             Drawable newIcon = Utils.getContext().getDrawable(resId);

@@ -738,14 +738,14 @@ Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' o
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Video Kalitesi Menüsü Alt Bilgisini Gizle</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video Kalitesi Menüsü Alt Bilgisi Gizli</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video Kalitesi Menüsü Alt Bilgisi Görünür</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Otomatik oynatma düğmesini gizle</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Otomatik oynatma düğmesi gizli</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Otomatik oynatma düğmesi görünür</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Otomatik önizlemeyi gizle</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Otomatik önizleme gizli</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Otomatik önizleme görünür</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Otomatik oynatma düğmesini gizle</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Otomatik oynatma düğmesi gizli</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Otomatik oynatma düğmesi görünür</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Altyazı düğmesini gizle</string>
   <string name="morphe_hide_captions_button_summary_on">Altyazı düğmesi gizli</string>
@@ -753,6 +753,12 @@ Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' o
   <string name="morphe_hide_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_hide_cast_button_summary_on">Yayınla düğmesi gizli</string>
   <string name="morphe_hide_cast_button_summary_off">Yayınla düğmesi görünür</string>
+  <string name="morphe_hide_collapse_button_title">Gizle Düşür düğmesini</string>
+  <string name="morphe_hide_collapse_button_summary_on">Düşür düğmesi gizli</string>
+  <string name="morphe_hide_collapse_button_summary_off">Düşür düğmesi görünür</string>
+  <string name="morphe_hide_fullscreen_button_title">Tam ekran düğmesini gizle</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Tam ekran düğmesi gizli</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Tam ekran düğmesi görünür</string>
   <string name="morphe_hide_player_control_buttons_background_title">Oynatıcı kontrolleri arka planını gizle</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Oynatıcı kontrolleri arka planı gizli</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Oynatıcı kontrolleri arka planı görünür</string>
@@ -798,6 +804,9 @@ Ses izleme menüsünü görüntülemek için, 'Spoof video akışları'yi 'TV' o
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts oynatıcı</string>
   <string name="morphe_shorts_player_screen_summary">Shorts oynatıcı bileşenlerini gizle veya göster</string>
+  <string name="morphe_hide_shorts_channel_title">Kanal sayfasında Shorts\'ları gizle</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Kanal sayfasında gizli</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Kanal sayfasında gösteriliyor</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ana Sayfa akışında Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_home_summary_on">Ana Sayfa akışında ve ilgili videolarda gizli</string>

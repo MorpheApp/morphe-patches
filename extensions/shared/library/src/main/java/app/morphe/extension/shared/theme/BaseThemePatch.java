@@ -36,23 +36,12 @@ public abstract class BaseThemePatch {
      * @return The new or original color value.
      */
     protected static int processColorValue(int originalValue, int[] darkValues, @Nullable int[] lightValues) {
-        int[] originalColors;
-        int replacementColor;
-
         if (Utils.isDarkModeEnabled()) {
-            originalColors = darkValues;
-            replacementColor = BLACK_COLOR;
-        } else {
-            if (lightValues == null) return originalValue;
-            originalColors = lightValues;
-            replacementColor = WHITE_COLOR;
-        }
-
-        for (int color : originalColors) {
-            if (originalValue == color) {
-                // Use same alpha value of the original color.
-                return (replacementColor & 0x00FFFFFF) | (color & 0xFF000000);
+            if (anyEquals(originalValue, darkValues)) {
+                return BLACK_COLOR;
             }
+        } else if (lightValues != null && anyEquals(originalValue, lightValues)) {
+            return WHITE_COLOR;
         }
 
         return originalValue;

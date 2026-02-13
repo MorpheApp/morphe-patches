@@ -10,7 +10,6 @@ import app.morphe.patches.shared.misc.extension.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
-import app.morphe.patches.youtube.layout.theme.addColorResource
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.getNode
@@ -18,8 +17,8 @@ import app.morphe.util.insertFirst
 import app.morphe.util.returnEarly
 import org.w3c.dom.Node
 
-private var lightThemeColor : String = "#FFFFFFFF"
-private var darkThemeColor : String = "#FF000000"
+private var lightThemeColor : String? = null
+private var darkThemeColor : String? = null
 
 /**
  * Sets the default theme colors used in various Morphe specific settings menus.
@@ -27,33 +26,19 @@ private var darkThemeColor : String = "#FF000000"
  * same color the target app uses for it's own settings.
  */
 fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: String) {
-    if (lightThemeColorString != null) {
-        lightThemeColor = lightThemeColorString
-    }
+    lightThemeColor = lightThemeColorString
     darkThemeColor = darkThemeColorString
 }
 
-private val settingsColorBytecodePatch = bytecodePatch {
+private val settingsColorPatch = bytecodePatch {
     finalize {
-        ThemeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor)
-        ThemeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor)
-    }
-}
-
-private val settingsColorResourcePatch = resourcePatch {
-    finalize {
-        // Used by settings icon xml files.
-        val foregroundColorKey = "morphe_settings_foreground_color"
-        addColorResource(
-            "res/values/colors.xml",
-            foregroundColorKey,
-            darkThemeColor
-        )
-        addColorResource(
-            "res/values-night/colors.xml",
-            foregroundColorKey,
-            lightThemeColor
-        )
+        val extensionClassDef = mutableClassDefBy(EXTENSION_CLASS_DESCRIPTOR)
+        if (lightThemeColor != null) {
+            ThemeLightColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(lightThemeColor!!)
+        }
+        if (darkThemeColor != null) {
+            ThemeDarkColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(darkThemeColor!!)
+        }
     }
 }
 
@@ -70,8 +55,7 @@ fun settingsPatch (
 ) = resourcePatch {
     dependsOn(
         addResourcesPatch,
-        settingsColorBytecodePatch,
-        settingsColorResourcePatch,
+        settingsColorPatch,
         addLicensePatch
     )
 

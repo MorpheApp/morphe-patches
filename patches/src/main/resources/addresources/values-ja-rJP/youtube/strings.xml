@@ -45,19 +45,19 @@ Second \"item\" text"</string>
 
 ただし、有効にすると、IP アドレスなどの一部のユーザーデータもログに記録されるようになります。"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">レイアウトの更新を無効化する</string>
-  <string name="morphe_disable_layout_updates_summary_on">サーバーからレイアウトが更新されません</string>
-  <string name="morphe_disable_layout_updates_summary_off">サーバーからレイアウトが更新されます</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されたレイアウトに戻ります。
+  <string name="morphe_disable_layout_updates_title">レイアウトの更新を無効化</string>
+  <string name="morphe_disable_layout_updates_summary_on">レイアウトはサーバーから更新されません</string>
+  <string name="morphe_disable_layout_updates_summary_off">レイアウトはサーバーから更新されます</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されていたレイアウトに戻ります。
 
-一部のサーバー側レイアウトは戻りません。
+一部のサーバー側からのレイアウトの更新が初回インストールの状態に戻らない場合があります。
 
-以下の変更が行われます：
-• プレイヤー・フライアウト・メニューのコンポーネント（または関連設定）は機能しない場合があります。
-• ローリング・ナンバはアニメーションされません。
-• ライブラリ・タブが表示されます。
-• ビデオ・説明のミュージック・セクションが機能しない場合があります。
-• ライブラリ・タブにアカウント・スイッチ・ボタンが表示されない場合があります。"</string>
+以下の変更を伴います:
+• プレイヤーのフライアウト メニュー (または関連設定) 内のコンポーネントが動作しない場合がある。
+• 数字の回転アニメーションが表示されない。
+• マイページタブがライブラリタブに戻る。
+• 動画の概要欄の音楽セクションが動作しない場合がある。
+• ライブラリタブに「アカウントを切り替える」ボタンが表示されない場合がある。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">クリエイターのストア欄を非表示</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下のクリエイターのストア欄は表示されません</string>
@@ -473,22 +473,22 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_tapping_summary_off">タップによるシークは無効です。シークバーをタップしても、タップした位置に移動しません</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">明るさジェスチャーを有効化</string>
-  <string name="morphe_swipe_brightness_summary_on">"全画面表示中の明るさジェスチャーは有効です
+  <string name="morphe_swipe_brightness_summary_on">"全画面表示モードの明るさジェスチャーは有効です
 
 画面左側を縦にスワイプして明るさを調節します"</string>
-  <string name="morphe_swipe_brightness_summary_off">全画面表示中の明るさジェスチャーは無効です</string>
+  <string name="morphe_swipe_brightness_summary_off">全画面表示モードの明るさジェスチャーは無効です</string>
   <string name="morphe_swipe_volume_title">音量ジェスチャーを有効化</string>
-  <string name="morphe_swipe_volume_summary_on">"全画面表示中の音量ジェスチャーは有効です
+  <string name="morphe_swipe_volume_summary_on">"全画面表示モードの音量ジェスチャーは有効です
 
 画面右側を縦にスワイプして音量を調節します"</string>
-  <string name="morphe_swipe_volume_summary_off">全画面表示中の音量ジェスチャーは無効です</string>
+  <string name="morphe_swipe_volume_summary_off">全画面表示モードの音量ジェスチャーは無効です</string>
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
   <string name="morphe_swipe_press_to_engage_summary_on">長押しスワイプは有効です\n\n明るさ / 音量ジェスチャーの開始には、画面の長押しが必要です</string>
   <string name="morphe_swipe_press_to_engage_summary_off">長押しスワイプは無効です\n\n明るさ / 音量ジェスチャーの開始には、画面の長押しは必要ありません</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
   <string name="morphe_swipe_haptic_feedback_summary_on">触覚フィードバックは有効です</string>
   <string name="morphe_swipe_haptic_feedback_summary_off">触覚フィードバックは無効です</string>
-  <string name="morphe_swipe_save_and_restore_brightness_title">明るさを保存＆復元</string>
+  <string name="morphe_swipe_save_and_restore_brightness_title">明るさを保存 &amp; 復元</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_on">全画面表示を終了 / 開始するときに明るさを保存 / 復元します</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_off">全画面表示を終了 / 開始するときに明るさを保存 / 復元しません</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">明るさジェスチャーの自動調節を有効化</string>
@@ -739,14 +739,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">画質メニューの脚注を非表示</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">画質メニューの脚注は表示されません</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">画質メニューの脚注は表示されます</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">自動再生ボタンを非表示</string>
-  <string name="morphe_hide_autoplay_button_summary_on">自動再生ボタンはプレーヤー オーバーレイに表示されません</string>
-  <string name="morphe_hide_autoplay_button_summary_off">自動再生ボタンはプレーヤー オーバーレイに表示されます</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">自動再生のプレビューを非表示</string>
   <string name="morphe_hide_autoplay_preview_summary_on">自動再生の「次の動画」のプレビューは表示されません</string>
   <string name="morphe_hide_autoplay_preview_summary_off">自動再生の「次の動画」のプレビューは表示されます</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">自動再生ボタンを非表示</string>
+  <string name="morphe_hide_autoplay_button_summary_on">自動再生ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_hide_autoplay_button_summary_off">自動再生ボタンはプレーヤー オーバーレイに表示されます</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">字幕ボタンを非表示</string>
   <string name="morphe_hide_captions_button_summary_on">字幕ボタンはプレーヤー オーバーレイに表示されません</string>
@@ -754,6 +754,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_hide_cast_button_summary_on">キャストボタンはプレーヤー オーバーレイに表示されません</string>
   <string name="morphe_hide_cast_button_summary_off">キャストボタンはプレーヤー オーバーレイに表示されます</string>
+  <string name="morphe_hide_collapse_button_title">最小化ボタンを非表示</string>
+  <string name="morphe_hide_collapse_button_summary_on">最小化ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_hide_collapse_button_summary_off">最小化ボタンはプレーヤー オーバーレイに表示されます</string>
+  <string name="morphe_hide_fullscreen_button_title">全画面表示ボタンを非表示</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">全画面表示ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">全画面表示ボタンはプレーヤー オーバーレイに表示されます</string>
   <string name="morphe_hide_player_control_buttons_background_title">プレーヤー コントロールの背景を非表示</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">プレーヤー コントロールの背景は表示されません</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">プレーヤー コントロールの背景は表示されます</string>
@@ -799,6 +805,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
   <string name="morphe_shorts_player_screen_summary">ショート プレーヤーのコンポーネントを表示または非表示にします</string>
+  <string name="morphe_hide_shorts_channel_title">チャンネル ページでショートを非表示</string>
+  <string name="morphe_hide_shorts_channel_summary_on">チャンネル ページにはショート動画は表示されません</string>
+  <string name="morphe_hide_shorts_channel_summary_off">チャンネル ページにはショート動画が表示されます</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">ホームフィードでショートを非表示</string>
   <string name="morphe_hide_shorts_home_summary_on">ホームフィードおよび関連動画にはショート動画は表示されません</string>

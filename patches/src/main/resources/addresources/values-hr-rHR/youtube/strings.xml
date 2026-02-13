@@ -72,6 +72,7 @@ Promjene uključuju:
   <string name="morphe_hide_chips_shelf_summary_on">Čipove polje su skriveni</string>
   <string name="morphe_hide_chips_shelf_summary_off">Čipove polje su prikazane</string>
   <string name="morphe_hide_community_posts_title">Sakrij horizontalne polje</string>
+  <string name="morphe_hide_community_posts_summary_on">Prikazi se u zajednici</string>
   <string name="morphe_hide_community_posts_summary_off">Horizontalne polje su prikazane</string>
   <string name="morphe_hide_compact_banner_title">Sakrij polje slike</string>
   <string name="morphe_hide_compact_banner_summary_on">Polje slike u rezultatima pretrage je skriveno</string>
@@ -731,14 +732,14 @@ Da biste prikazali meni za audio traku, promijenite 'Spoof video streams' u 'TV'
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija \'Kvaliteta\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija \'Kvaliteta\' je skriveno</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija \'Kvaliteta\' je prikazano</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Tipka za Autoplay je skrivena</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Tipka za Autoplay je prikazana</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Tipka za automatsko odjavljanje je prikazana</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sakrij pregladu automatskog puštanja</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Automatska preglada je sakrivena</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Automatska preglada je prikazana</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Tipka za Autoplay je skrivena</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Tipka za Autoplay je prikazana</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Tipka za automatsko odjavljanje je prikazana</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Tipka za Captions je skrivena</string>
   <string name="morphe_hide_captions_button_summary_on">Tipka za Captions je prikazana</string>
@@ -746,6 +747,12 @@ Da biste prikazali meni za audio traku, promijenite 'Spoof video streams' u 'TV'
   <string name="morphe_hide_cast_button_title">Tipka za Cast je prikazana</string>
   <string name="morphe_hide_cast_button_summary_on">Tipka za Cast je skrivena</string>
   <string name="morphe_hide_cast_button_summary_off">Tipka za Cast je prikazana</string>
+  <string name="morphe_hide_collapse_button_title">Sakrij dugme za sužavanje</string>
+  <string name="morphe_hide_collapse_button_summary_on">Dugme za sužavanje je sakriveno</string>
+  <string name="morphe_hide_collapse_button_summary_off">Dugme za sužavanje je prikazano</string>
+  <string name="morphe_hide_fullscreen_button_title">Sakrij dugme za cijeli zaslon</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Dugme za cijeli zaslon je sakriveno</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Dugme za cijeli zaslon je prikazano</string>
   <string name="morphe_hide_player_control_buttons_background_title">Tipka za Cast je skrivena</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Tipka za Cast je prikazana</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Tipka za Cast je skrivena</string>
@@ -791,6 +798,9 @@ Da biste prikazali meni za audio traku, promijenite 'Spoof video streams' u 'TV'
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Tipka za Cast je prikazana</string>
   <string name="morphe_shorts_player_screen_summary">Tipka za Cast je skrivena</string>
+  <string name="morphe_hide_shorts_channel_title">Skrijte Shorts na stranici kanala</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Skriveno na stranici kanala</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Prikaženo na stranici kanala</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Tipka za Cast je prikazana</string>
   <string name="morphe_hide_shorts_home_summary_on">Tipka za Cast je skrivena</string>
@@ -1327,6 +1337,7 @@ Wipe za širenje ili zatvaranje"</string>
   <string name="morphe_miniplayer_hide_rewind_forward_summary_off">Dugmice za pomicanje naprijed i nazad su prikazane</string>
   <string name="morphe_miniplayer_width_dip_title">Bypasiraj ograničenja slike</string>
   <string name="morphe_miniplayer_width_dip_summary">Korištenjem slike hosta yt4.ggpht.com</string>
+  <string name="morphe_miniplayer_width_dip_invalid_toast">Veličina piksela mora biti između %1$s i %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Inicijalna veličina</string>
   <string name="morphe_miniplayer_opacity_summary">Inicijalna veličina na zaslonu, u pikselima</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Veličina miniplayera mora biti između %1$s i %2$s</string>

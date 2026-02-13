@@ -738,14 +738,14 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Сакриј подножје менија квалитета видеа</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Подножје менија квалитета видеа је скривено</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Подножје менија квалитета видеа је приказано</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Сакриј дугме „Аутоплеј”</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Дугме „Аутоплеј” је скривено</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Дугме „Аутоплеј” је приказано</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Сакриј преглед аутоматског пуштања</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Преглед аутоматског пуштања је скривен</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Преглед аутоматског пуштања је приказан</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Сакриј дугме „Аутоплеј”</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Дугме „Аутоплеј” је скривено</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Дугме „Аутоплеј” је приказано</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Сакриј дугме „Титл”</string>
   <string name="morphe_hide_captions_button_summary_on">Дугме „Титл” је скривено</string>
@@ -753,6 +753,12 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_hide_cast_button_title">Сакриј дугме „Пребацуј”</string>
   <string name="morphe_hide_cast_button_summary_on">Дугме „Пребацуј” је скривено</string>
   <string name="morphe_hide_cast_button_summary_off">Дугме „Пребацуј” је приказано</string>
+  <string name="morphe_hide_collapse_button_title">Сакриј дугме за скрштавање</string>
+  <string name="morphe_hide_collapse_button_summary_on">Дугме за скрштавање је скривено</string>
+  <string name="morphe_hide_collapse_button_summary_off">Дугме за скрштавање је приказано</string>
+  <string name="morphe_hide_fullscreen_button_title">Сакриј дугме „Пуни екран”</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Дугме „Пуни екран” је скривено</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Дугме „Пуни екран” је приказано</string>
   <string name="morphe_hide_player_control_buttons_background_title">Сакриј позадину контрола плејера</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Позадина контрола плејера је скривена</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Позадина контрола плејера је приказана</string>
@@ -798,6 +804,9 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts плејер</string>
   <string name="morphe_shorts_player_screen_summary">Сакријте или прикажите компоненте Shorts плејера</string>
+  <string name="morphe_hide_shorts_channel_title">Сакриј Shorts у каналу</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Сакријено у каналу</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Приказано у каналу</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Сакриј Shorts у фиду „Почетна”</string>
   <string name="morphe_hide_shorts_home_summary_on">Скривено у фиду „Почетна” и сродним видеима</string>

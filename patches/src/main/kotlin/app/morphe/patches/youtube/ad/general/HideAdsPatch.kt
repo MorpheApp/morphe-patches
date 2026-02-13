@@ -16,6 +16,8 @@ import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -77,6 +79,7 @@ val hideAdsPatch = bytecodePatch(
         hideAdsResourcePatch,
         verticalScrollPatch,
         fixBackToExitGesturePatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -152,17 +155,19 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide player overlay view. This can be hidden with a regular litho filter
         // but an empty space remains.
-        PlayerOverlayTimelyShelfFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideAds()Z
-                move-result v0
-                if-eqz v0, :show
-                return-void
-                :show
-                nop
-            """
-        )
+        if (is_20_14_or_greater) {
+            PlayerOverlayTimelyShelfFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideAds()Z
+                    move-result v0
+                    if-eqz v0, :show
+                    return-void
+                    :show
+                    nop
+                """
+            )
+        }
 
         // Hide ad views
 

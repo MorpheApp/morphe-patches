@@ -768,15 +768,15 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
     <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
 
-    <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-    <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
-    <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
-    <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
-
     <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
     <string name="morphe_hide_autoplay_preview_title">Hide autoplay preview</string>
     <string name="morphe_hide_autoplay_preview_summary_on">Autoplay preview is hidden</string>
     <string name="morphe_hide_autoplay_preview_summary_off">Autoplay preview is shown</string>
+
+    <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+    <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
+    <string name="morphe_hide_autoplay_button_summary_on">Autoplay button is hidden</string>
+    <string name="morphe_hide_autoplay_button_summary_off">Autoplay button is shown</string>
     <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
     <string name="morphe_hide_captions_button_summary_on">Captions button is hidden</string>
@@ -784,6 +784,12 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <string name="morphe_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_hide_cast_button_summary_on">Cast button is hidden</string>
     <string name="morphe_hide_cast_button_summary_off">Cast button is shown</string>
+    <string name="morphe_hide_collapse_button_title">Hide Collapse button</string>
+    <string name="morphe_hide_collapse_button_summary_on">Collapse button is hidden</string>
+    <string name="morphe_hide_collapse_button_summary_off">Collapse button is shown</string>
+    <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
+    <string name="morphe_hide_fullscreen_button_summary_on">Fullscreen button is hidden</string>
+    <string name="morphe_hide_fullscreen_button_summary_off">Fullscreen button is shown</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary_on">Player controls background is hidden</string>
     <string name="morphe_hide_player_control_buttons_background_summary_off">Player controls background is shown</string>
@@ -835,6 +841,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
     <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Hide or show Shorts player components</string>
+    <string name="morphe_hide_shorts_channel_title">Hide Shorts in channel page</string>
+    <string name="morphe_hide_shorts_channel_summary_on">Hidden in channel page</string>
+    <string name="morphe_hide_shorts_channel_summary_off">Shown in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_home_title">Hide Shorts in Home feed</string>
     <string name="morphe_hide_shorts_home_summary_on">Hidden in Home feed and related videos</string>

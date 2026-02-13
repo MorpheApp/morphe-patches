@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Névjegy</string>
   <string name="morphe_settings_screen_01_ads_title">Hirdetések</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternatív indexképek</string>
-  <string name="morphe_settings_screen_03_feed_title">Hírfolyam</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Általános</string>
   <string name="morphe_settings_screen_05_player_title">Lejátszó</string>
   <string name="morphe_settings_screen_07_seekbar_title">Keresősáv</string>
@@ -29,16 +29,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Egyéb</string>
   <string name="morphe_settings_screen_12_video_title">Videó</string>
   <string name="morphe_restore_old_settings_menus_title">Régi beállítási menük visszaállítása</string>
-  <string name="morphe_restore_old_settings_menus_summary_on">A régi beállítások menüpontok megjelennek</string>
-  <string name="morphe_restore_old_settings_menus_summary_off">A régi beállítások menüpontok nem jelennek meg</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">A régi beállítások menü jelenik meg</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">A régi beállítások menü nem jelenik meg</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">A Shorts háttérben történő lejátszásának letiltása</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">A Shorts háttérben történő lejátszása le van tiltva</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">A Shorts háttérben történő lejátszása engedélyezve van</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Napló protokoll puffer</string>
-  <string name="morphe_debug_protobuffer_summary_on">A hibakeresési naplók protopuffert tartalmaznak</string>
-  <string name="morphe_debug_protobuffer_summary_off">A hibakeresési naplók nem tartalmaznak protopuffert</string>
+  <string name="morphe_debug_protobuffer_title">Naplózási protokoll puffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">A hibakeresési naplók protobuffert tartalmaznak</string>
+  <string name="morphe_debug_protobuffer_summary_off">A hibakeresési naplók nem tartalmaznak protobuffert</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Ennek a beállításnak az engedélyezése további elrendezési adatokat fog naplózni, beleértve néhány felhasználói felületi komponens képernyőn megjelenő szövegét.
 
 Ez segíthet azonosítani az összetevőket egyedi szűrők létrehozásakor.
@@ -62,27 +62,27 @@ Változások:
   <string name="morphe_hide_creator_store_shelf_title">Alkotói áruház polcának elrejtése</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Az alkotói bolt polc a videólejátszó alatt elrejtve</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Alkotói bolti polc látható a videólejátszó alatt</string>
-  <string name="morphe_hide_album_cards_title">Album kártyák elrejtése</string>
-  <string name="morphe_hide_album_cards_summary_on">Az album kártyák el vannak rejtve</string>
+  <string name="morphe_hide_album_cards_title">Albumkártyák elrejtése</string>
+  <string name="morphe_hide_album_cards_summary_on">Albumkártyák elrejtve</string>
   <string name="morphe_hide_album_cards_summary_off">Az album kártyák láthatóak</string>
   <string name="morphe_hide_artist_cards_title">Előadó kártyák elrejtése</string>
-  <string name="morphe_hide_artist_cards_summary_on">Az előadó kártyák rejtve vannak</string>
+  <string name="morphe_hide_artist_cards_summary_on">Előadó kártyák elrejtve</string>
   <string name="morphe_hide_artist_cards_summary_off">A előadó kártyák láthatók</string>
   <string name="morphe_hide_chips_shelf_title">Vágások polc elrejtése</string>
   <string name="morphe_hide_chips_shelf_summary_on">A vágások polc el van rejtve</string>
   <string name="morphe_hide_chips_shelf_summary_off">A részletek polc meg van jelenítve</string>
   <string name="morphe_hide_community_posts_title">Közösségi posztok elrejtése</string>
-  <string name="morphe_hide_community_posts_summary_on">A közösségi bejegyzések el vannak rejtve</string>
-  <string name="morphe_hide_community_posts_summary_off">A közösségi bejegyzések meg vannak jelenítve</string>
+  <string name="morphe_hide_community_posts_summary_on">Közösségi bejegyzések elrejtve</string>
+  <string name="morphe_hide_community_posts_summary_off">A közösségi bejegyzések megjelennek</string>
   <string name="morphe_hide_compact_banner_title">Kompakt szalagképek elrejtése</string>
   <string name="morphe_hide_compact_banner_summary_on">A kompakt bannerek el vannak rejtve</string>
   <string name="morphe_hide_compact_banner_summary_off">A kompakt bannerek meg vannak jelenítve</string>
   <string name="morphe_hide_expandable_card_title">Kibontható kártya elrejtése</string>
-  <string name="morphe_hide_expandable_card_summary_on">A videók alatti kibontható kártya el van rejtve</string>
-  <string name="morphe_hide_expandable_card_summary_off">A videók alatti kibontható kártya meg van jelenítve</string>
+  <string name="morphe_hide_expandable_card_summary_on">Videók alatti kibontható kártya elrejtve</string>
+  <string name="morphe_hide_expandable_card_summary_off">A videók alatti kibontható kártya megjelenik</string>
   <string name="morphe_hide_floating_microphone_button_title">Lebegő mikrofon gomb elrejtése</string>
-  <string name="morphe_hide_floating_microphone_button_summary_on">A lebegő mikrofon gomb a keresésben elrejtve</string>
-  <string name="morphe_hide_floating_microphone_button_summary_off">Lebegő mikrofon gomb megjelenik a keresésben</string>
+  <string name="morphe_hide_floating_microphone_button_summary_on">Lebegő mikrofon gomb a keresésben elrejtve</string>
+  <string name="morphe_hide_floating_microphone_button_summary_off">A lebegő mikrofon gomb megjelenik a keresésben</string>
   <string name="morphe_hide_horizontal_shelves_title">Vízszintes polcok elrejtése</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"A vízszintes polcok rejtettek, mint például:
 • Friss hírek
@@ -96,7 +96,7 @@ Változások:
   <string name="morphe_hide_image_shelf_summary_on">A keresési eredményekben lévő képpolc el van rejtve</string>
   <string name="morphe_hide_image_shelf_summary_off">A keresési eredményekben lévő képpolc meg van jelenítve</string>
   <string name="morphe_hide_latest_posts_title">Legutóbbi bejegyzések elrejtése</string>
-  <string name="morphe_hide_latest_posts_summary_on">A legutóbbi bejegyzések rejtve vannak</string>
+  <string name="morphe_hide_latest_posts_summary_on">A legutóbbi bejegyzések elrejtve</string>
   <string name="morphe_hide_latest_posts_summary_off">A legutóbbi bejegyzések láthatóak</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
@@ -130,7 +130,7 @@ Változások:
   <string name="morphe_hide_subscribed_channels_bar_summary_off">A feliratkozott csatornák sávja látható</string>
   <string name="morphe_hide_surveys_title">Felmérések elrejtése</string>
   <string name="morphe_hide_surveys_summary_on">Felmérések elrejtve</string>
-  <string name="morphe_hide_surveys_summary_off">Felmérések megjelenítve</string>
+  <string name="morphe_hide_surveys_summary_off">A felmérések megjelennek</string>
   <string name="morphe_hide_ticket_shelf_title">Jegyek polcának elrejtése</string>
   <string name="morphe_hide_ticket_shelf_summary_on">A jegyek polca el van rejtve</string>
   <string name="morphe_hide_ticket_shelf_summary_off">A jegyek polca látható</string>
@@ -163,8 +163,8 @@ Változások:
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Csatlakozás gomb elrejtése</string>
-  <string name="morphe_hide_join_membership_button_summary_on">A „Csatlakozás” gomb elrejtve</string>
-  <string name="morphe_hide_join_membership_button_summary_off">A „Csatlakozás” gomb látható</string>
+  <string name="morphe_hide_join_membership_button_summary_on">Csatlakozás gomb elrejtve</string>
+  <string name="morphe_hide_join_membership_button_summary_off">A Csatlakozás gomb látható</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Rejtélyeszd a \'Live chat replay\' gombot</string>
@@ -186,8 +186,8 @@ Változások:
   <string name="morphe_hide_timed_reactions_summary_on">Az időzített reakciók elrejtve</string>
   <string name="morphe_hide_timed_reactions_summary_off">Az időzített reakciók megjelenítve</string>
   <string name="morphe_hide_video_title_title">Videó címének elrejtése</string>
-  <string name="morphe_hide_video_title_summary_on">A videó lejátszó felirata el van rejtve</string>
-  <string name="morphe_hide_video_title_summary_off">A videó lejátszó felirata megjelenik</string>
+  <string name="morphe_hide_video_title_summary_on">A videó címe a lejátszó felületén elrejtve</string>
+  <string name="morphe_hide_video_title_summary_off">A videó címe a lejátszó felületén megjelenik</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">„AI-generált videó összefoglaló” elrejtése</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Az MI által generált videó összefoglaló szakasz elrejtve</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI által generált videó összefoglaló szakasz megjelenítve</string>
@@ -198,8 +198,8 @@ Változások:
   <string name="morphe_hide_attributes_section_summary_on">A kiemelt helyek, játékok, zene és említett személyek szakaszai rejtettek</string>
   <string name="morphe_hide_attributes_section_summary_off">A kiemelt helyek, játékok, zene és említett személyek szakaszai láthatók</string>
   <string name="morphe_hide_chapters_section_title">Fejezetek elrejtése</string>
-  <string name="morphe_hide_chapters_section_summary_on">A fejezetcó szakasz el van rejtve</string>
-  <string name="morphe_hide_chapters_section_summary_off">A fejezetcó szakasz meg van jelenítve</string>
+  <string name="morphe_hide_chapters_section_summary_on">Fejezetek szekció elrejtve</string>
+  <string name="morphe_hide_chapters_section_summary_off">A Fejezetek szekció megjelenik</string>
   <string name="morphe_hide_course_progress_section_title">Rejt \'Tanfolyam előrehaladás\' szakaszt</string>
   <string name="morphe_hide_course_progress_section_summary_on">A tanfolyam előrehaladás szakasza el van rejtve</string>
   <string name="morphe_hide_course_progress_section_summary_off">A tanfolyam előrehaladás szakasza látható</string>
@@ -227,12 +227,12 @@ Változások:
   <string name="morphe_hide_how_this_was_made_section_title">A „Hogyan készült ez a tartalom” elrejtése</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">A Hogyan készült ez a tartalom szakasz rejtett</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">A Hogyan készült ez a tartalom szakasz látható</string>
-  <string name="morphe_hide_hype_points_title">Hype pontok elrejtése</string>
-  <string name="morphe_hide_hype_points_summary_on">A Hype pontok el vannak rejtve</string>
-  <string name="morphe_hide_hype_points_summary_off">A Hype pontok láthatóak</string>
+  <string name="morphe_hide_hype_points_title">Hájp pontok elrejtése</string>
+  <string name="morphe_hide_hype_points_summary_on">Hájp pontok elrejtve</string>
+  <string name="morphe_hide_hype_points_summary_off">A hájp pontok megjelennek</string>
   <string name="morphe_hide_info_cards_section_title">Infó kártyák elrejtése</string>
-  <string name="morphe_hide_info_cards_section_summary_on">Az infó kártyák rész el van rejtve</string>
-  <string name="morphe_hide_info_cards_section_summary_off">Az infó kártyák rész látható</string>
+  <string name="morphe_hide_info_cards_section_summary_on">Infó kártyák szekció elrejtve</string>
+  <string name="morphe_hide_info_cards_section_summary_off">Az infó kártyák szekció megjelenik</string>
   <string name="morphe_hide_key_concepts_section_title">A „Főbb fogalmak” elrejtése</string>
   <string name="morphe_hide_key_concepts_section_summary_on">A Főbb fogalmak szakasz rejtett</string>
   <string name="morphe_hide_key_concepts_section_summary_off">A Főbb fogalmak szakasz látható</string>
@@ -252,9 +252,9 @@ Változások:
   <string name="morphe_hide_description_components_screen_summary">A videóleírás komponenseinek elrejtése vagy megjelenítése</string>
   <string name="morphe_hide_filter_bar_screen_title">Szűrősáv</string>
   <string name="morphe_hide_filter_bar_screen_summary">A szűrősáv elrejtése vagy megjelenítése a feedekben, kapcsolódó videókban, keresési eredményekben és a megtekintési előzményekben</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Elrejtés a hírcsatornákban</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">Elrejtve a hírcsatornákban</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">Megjelenítve a hírcsatornákban</string>
+  <string name="morphe_hide_filter_bar_feed_in_feed_title">Elrejtés a feedekben</string>
+  <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">Elrejtve a feedekben</string>
+  <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">Megjelenítve a feedekben</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Elrejtés a kapcsolódó videók között</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_on">Elrejtve a kapcsolódó videók között</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_off">Megjelenik a kapcsolódó videók között</string>
@@ -276,11 +276,11 @@ Változások:
   <string name="morphe_hide_for_you_shelf_summary_off">Az Önnek polc meg van jelenítve</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Csatlakozás gomb elrejtése</string>
-  <string name="morphe_hide_join_button_summary_on">A csatlakozás gomb el van rejtve</string>
-  <string name="morphe_hide_join_button_summary_off">A csatlakozás gomb meg van jelenítve</string>
+  <string name="morphe_hide_join_button_summary_on">Csatlakozás gomb elrejtve</string>
+  <string name="morphe_hide_join_button_summary_off">A Csatlakozás gomb megjelenik</string>
   <string name="morphe_hide_links_preview_title">Hivatkozások előnézetének elrejtése</string>
-  <string name="morphe_hide_links_preview_summary_on">A hivatkozások előnézete el van rejtve</string>
-  <string name="morphe_hide_links_preview_summary_off">A hivatkozások előnézete meg van jelenítve</string>
+  <string name="morphe_hide_links_preview_summary_on">Hivatkozások előnézete elrejtve</string>
+  <string name="morphe_hide_links_preview_summary_off">A hivatkozások előnézete megjelenik</string>
   <string name="morphe_hide_members_shelf_title">Tagok polcának elrejtése</string>
   <string name="morphe_hide_members_shelf_summary_on">A tagok polca el van rejtve</string>
   <string name="morphe_hide_members_shelf_summary_off">Tagok polca látható</string>
@@ -290,10 +290,10 @@ Változások:
   <string name="morphe_hide_store_button_summary_off">A fiók gomb megvan jelenítve</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Feliratkozás gomb elrejtése</string>
-  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">A feliratkozás gomb el van rejtve</string>
-  <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">A feliratkozás gomb látható</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Feliratkozás gomb elrejtve</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">A feliratkozás gomb megjelenik</string>
   <string name="morphe_comments_screen_title">Megjegyzések</string>
-  <string name="morphe_comments_screen_summary">Megjegyzések rész elrejtése vagy megjelenítése</string>
+  <string name="morphe_comments_screen_summary">Megjegyzések szekció elrejtése vagy megjelenítése</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">MI csevegés összefoglaló elrejtése</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Az MI csevegés összefoglaló elrejtve</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Az MI csevegés összefoglaló megjelenítve</string>
@@ -310,14 +310,14 @@ Változások:
   <string name="morphe_hide_comments_by_members_header_summary_on">A tagok hozzászólásainak fejléce rejtett</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">A tagok hozzászólásainak fejléce látható</string>
   <string name="morphe_hide_comments_section_title">A megjegyzések szekció elrejtése</string>
-  <string name="morphe_hide_comments_section_summary_on">A komment szekció el van rejtve</string>
+  <string name="morphe_hide_comments_section_summary_on">Megjegyzések szekció elrejtve</string>
   <string name="morphe_hide_comments_section_summary_off">A megjegyzések szekció megjelenik</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Elrejtjük a Home feedben a megjegyzések szakaszát</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">A hozzászólások szakasz rejtett a Honlap áramlat alatt a videók alatt</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">A hozzászólások szakasz látható a Honlap áramlat alatt a videók alatt</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Megjegyzések szekció elrejtése a Home feedben</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Megjegyzések szekció elrejtve a Home feed videók alatt</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">A megjegyzések szekció megjelenik a Home feed videók alatt</string>
   <string name="morphe_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
-  <string name="morphe_hide_comments_community_guidelines_summary_on">A közösségi irányelvek el vannak rejtve</string>
-  <string name="morphe_hide_comments_community_guidelines_summary_off">A közösségi irányelvek meg vannak jelenítve</string>
+  <string name="morphe_hide_comments_community_guidelines_summary_on">Közösségi irányelvek elrejtve</string>
+  <string name="morphe_hide_comments_community_guidelines_summary_off">A közösségi irányelvek megjelennek</string>
   <string name="morphe_hide_comments_create_a_short_button_title">A „Rövid létrehozása” gomb elrejtése</string>
   <string name="morphe_hide_comments_create_a_short_button_summary_on">A Rövidfilm létrehozása gomb rejtett</string>
   <string name="morphe_hide_comments_create_a_short_button_summary_off">A Rövidfilm létrehozása gomb látható</string>
@@ -392,11 +392,11 @@ Korlátozások
   <string name="morphe_hide_end_screen_store_banner_title">A befejező képernyőn lévő üzletbanner elrejtése</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">A végképernyő bolt banner elrejtve</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">A végképernyő bolt banner látható</string>
-  <string name="morphe_hide_fullscreen_ads_title">Teljes képernyős hirdetések elrejtése</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">A teljes képernyős hirdetések elrejtve</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">A teljes képernyős hirdetések láthatók</string>
+  <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Teljesképernyős-hirdetések elrejtve</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">A teljesképernyős-hirdetések megjelennek</string>
   <string name="morphe_hide_general_ads_title">Általános hirdetések elrejtése</string>
-  <string name="morphe_hide_general_ads_summary_on">Az általános hirdetések el vannak rejtve</string>
+  <string name="morphe_hide_general_ads_summary_on">Általános hirdetések elrejtve</string>
   <string name="morphe_hide_general_ads_summary_off">Az általános hirdetések megjelennek</string>
   <string name="morphe_hide_merchandise_banners_title">Áruszalaghirdetések elrejtése</string>
   <string name="morphe_hide_merchandise_banners_summary_on">Az áruszalaghirdetések el vannak rejtve</string>
@@ -417,18 +417,18 @@ Korlátozások
   <string name="morphe_hide_youtube_premium_promotions_summary_on">YouTube Premium promóciók rejtve vannak</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">A YouTube Premium promóciók láthatók</string>
   <!-- ad.video.videoAdsPatch -->
-  <string name="morphe_hide_video_ads_title">Videó hirdetések elrejtése</string>
-  <string name="morphe_hide_video_ads_summary_on">A videó hirdetések el vannak rejtve</string>
-  <string name="morphe_hide_video_ads_summary_off">A videó hirdetések láthatók</string>
+  <string name="morphe_hide_video_ads_title">Videóhirdetések elrejtése</string>
+  <string name="morphe_hide_video_ads_summary_on">Videóhirdetések elrejtve</string>
+  <string name="morphe_hide_video_ads_summary_off">A videóhirdetések megjelennek</string>
   <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
-  <string name="morphe_share_copy_url_success">Az URL a vágólapra másolva</string>
-  <string name="morphe_share_copy_url_timestamp_success">Az URL időbélyeggel a vágólapra másolva</string>
-  <string name="morphe_copy_video_url_title">A videó URL másolása gomb megjelenítése</string>
+  <string name="morphe_share_copy_url_success">URL a vágólapra másolva</string>
+  <string name="morphe_share_copy_url_timestamp_success">URL időbélyeggel a vágólapra másolva</string>
+  <string name="morphe_copy_video_url_title">Videó URL másolása gomb megjelenítése</string>
   <string name="morphe_copy_video_url_summary_on">A gomb látható. Koppintson a videó URL-jének másolásához. Tartsa nyomva az időbélyeggel való másoláshoz</string>
-  <string name="morphe_copy_video_url_summary_off">Videó URL másolási gombja el van rejtve</string>
-  <string name="morphe_copy_video_url_timestamp_title">A videó URL másolása időbélyeggel gomb megjelenítése</string>
+  <string name="morphe_copy_video_url_summary_off">A vdeó URL másolási gombja elrejtve</string>
+  <string name="morphe_copy_video_url_timestamp_title">Videó URL másolása időbélyeggel gomb megjelenítése</string>
   <string name="morphe_copy_video_url_timestamp_summary_on">A gomb látható. Koppintson a videó URL-jének másolásához időbélyeggel. Tartsa nyomva az időbélyeg nélküli másoláshoz</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Videó URL másolási gombja el van rejtve</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">A vdeó URL másolási gombja elrejtve</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Távolítsa el a nézői diszkréciós párbeszédpanelt</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">A párbeszédpanel el lesz rejtve</string>
@@ -452,13 +452,13 @@ Korlátozások
   <string name="morphe_external_downloader_action_button_title">A Letöltés művelet gomb felülírása</string>
   <string name="morphe_external_downloader_action_button_summary_on">A letöltés gomb a külső letöltőt nyitja meg</string>
   <string name="morphe_external_downloader_action_button_summary_off">A letöltés gomb az alkalmazáson belüli letöltőt használja</string>
-  <string name="morphe_external_downloader_name_title">Letöltő csomag neve</string>
-  <string name="morphe_external_downloader_name_summary">A telepített külső letöltő alkalmazásod csomagneve</string>
+  <string name="morphe_external_downloader_name_title">Letöltő csomagneve</string>
+  <string name="morphe_external_downloader_name_summary">A telepített külső letöltő alkalmazása csomagneve</string>
   <string name="morphe_external_downloader_other_item_hint">Adja meg a csomagnevet</string>
   <string name="morphe_external_downloader_other_item">Egyéb</string>
   <string name="morphe_external_downloader_not_found_title">Az alkalmazás nincs telepítve</string>
   <string name="morphe_external_downloader_not_installed_warning">%s nincs telepítve. Kérjük telepítse.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Nem található telepített alkalmazás a következő csomagnevével: %s
+  <string name="morphe_external_downloader_package_not_found_warning">"Nem található telepített alkalmazás a következő csomagnévvel: %s
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
   <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres</string>
@@ -524,9 +524,9 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_buttons_screen_title">Művelet gombok</string>
   <string name="morphe_hide_buttons_screen_summary">Gombok megjelenítése vagy elrejtése a videók alatt</string>
-  <string name="morphe_disable_like_subscribe_glow_title">A Tetszik és Iratkozz fel gomb fényének kikapcsolása</string>
-  <string name="morphe_disable_like_subscribe_glow_summary_on">A Tetszik és Iratkozz fel gombok nem világítanak, ha megemlítik őket</string>
-  <string name="morphe_disable_like_subscribe_glow_summary_off">A Tetszik és Iratkozz fel gombok világítanak, ha megemlítik őket</string>
+  <string name="morphe_disable_like_subscribe_glow_title">A tetszik és feliratkozás gomb fényének kikapcsolása</string>
+  <string name="morphe_disable_like_subscribe_glow_summary_on">A tetszik és feliratkozás gombok nem világítanak, ha megemlítik őket</string>
+  <string name="morphe_disable_like_subscribe_glow_summary_off">A tetszik és feliratkozás gombok világítanak, ha megemlítik őket</string>
   <string name="morphe_hide_like_dislike_button_title">Tetszik és nem tetszik elrejtése</string>
   <string name="morphe_hide_like_dislike_button_summary_on">A tetszik és nem tetszik gombok rejtve vannak</string>
   <string name="morphe_hide_like_dislike_button_summary_off">A tetszik és nem tetszik gombok láthatóak</string>
@@ -738,14 +738,14 @@ A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'T
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Videóminőség menü láblécének elrejtése</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">A videóminőség menü lábléce el van rejtve</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Megjelenik a videóminőség menü lábléce</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Automatikus lejátszás gomb elrejtése</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Az automatikus lejátszás gomb el van rejtve</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Az automatikus lejátszás gomb látható</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Automatikus előnézet elrejtése</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Az automatikus előnézet el van rejtve</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Az automatikus előnézet látható</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Automatikus lejátszás gomb elrejtése</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Az automatikus lejátszás gomb el van rejtve</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Az automatikus lejátszás gomb látható</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Felirat gomb elrejtése</string>
   <string name="morphe_hide_captions_button_summary_on">A feliratok gomb el van rejtve</string>
@@ -753,6 +753,12 @@ A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'T
   <string name="morphe_hide_cast_button_title">Küldés gomb elrejtése</string>
   <string name="morphe_hide_cast_button_summary_on">Az átküldés gomb rejtve van</string>
   <string name="morphe_hide_cast_button_summary_off">Az átküldés gomb látható</string>
+  <string name="morphe_hide_collapse_button_title">Elrejtés gomb elrejtése</string>
+  <string name="morphe_hide_collapse_button_summary_on">Elrejtés gomb elrejtve</string>
+  <string name="morphe_hide_collapse_button_summary_off">Elrejtés gomb látható</string>
+  <string name="morphe_hide_fullscreen_button_title">Elrejtett teljes képernyő gomb</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Teljes képernyő gomb elrejtve</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Teljes képernyő gomb látható</string>
   <string name="morphe_hide_player_control_buttons_background_title">Lejátszóvezérlők hátterének elrejtése</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">A lejátszóvezérlők háttere rejtett</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">A lejátszóvezérlők háttere látható</string>
@@ -798,6 +804,9 @@ A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'T
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts lejátszó</string>
   <string name="morphe_shorts_player_screen_summary">A Shorts lejátszó komponensek elrejtése vagy megjelenítése</string>
+  <string name="morphe_hide_shorts_channel_title">Elrejtés a csatorna oldalon</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Elrejtve a csatorna oldalon</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Megjelenik a csatorna oldalon</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Shorts videók elrejtése a Főoldali hírcsatornából</string>
   <string name="morphe_hide_shorts_home_summary_on">Elrejtve a Főoldali hírcsatornából és a kapcsolódó videókból</string>

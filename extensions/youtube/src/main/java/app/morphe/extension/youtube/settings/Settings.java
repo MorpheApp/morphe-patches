@@ -157,12 +157,14 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_AUTOPLAY_PREVIEW = new BooleanSetting("morphe_hide_autoplay_preview", FALSE, true);
     public static final BooleanSetting HIDE_CAPTIONS_BUTTON = new BooleanSetting("morphe_hide_captions_button", FALSE);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_hide_cast_button", TRUE, true);
+    public static final BooleanSetting HIDE_COLLAPSE_BUTTON = new BooleanSetting("morphe_hide_collapse_button", FALSE, true);
     public static final BooleanSetting HIDE_CHANNEL_BAR = new BooleanSetting("morphe_hide_channel_bar", FALSE);
     public static final BooleanSetting HIDE_CHANNEL_WATERMARK = new BooleanSetting("morphe_hide_channel_watermark", TRUE);
     public static final BooleanSetting HIDE_CROWDFUNDING_BOX = new BooleanSetting("morphe_hide_crowdfunding_box", FALSE, true);
     public static final BooleanSetting HIDE_EMERGENCY_BOX = new BooleanSetting("morphe_hide_emergency_box", TRUE);
     public static final BooleanSetting HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
     public static final BooleanSetting HIDE_END_SCREEN_SUGGESTED_VIDEO = new BooleanSetting("morphe_end_screen_suggested_video", FALSE, true);
+    public static final BooleanSetting HIDE_FULLSCREEN_BUTTON = new BooleanSetting("morphe_hide_fullscreen_button", FALSE, true);
     public static final BooleanSetting HIDE_INFO_CARDS = new BooleanSetting("morphe_hide_info_cards", FALSE);
     public static final BooleanSetting HIDE_INFO_PANELS = new BooleanSetting("morphe_hide_info_panels", TRUE);
     public static final BooleanSetting HIDE_JOIN_MEMBERSHIP_BUTTON = new BooleanSetting("morphe_hide_join_membership_button", TRUE, parentNot(HIDE_CHANNEL_BAR));
@@ -330,6 +332,7 @@ public class Settings extends BaseSettings {
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("morphe_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
     public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("morphe_hide_shorts_ai_button", FALSE);
     public static final BooleanSetting HIDE_SHORTS_AUTO_DUBBED_LABEL = new BooleanSetting("morphe_hide_shorts_auto_dubbed_label", FALSE);
+    public static final BooleanSetting HIDE_SHORTS_CHANNEL = new BooleanSetting("morphe_hide_shorts_channel", FALSE);
     public static final BooleanSetting HIDE_SHORTS_CHANNEL_BAR = new BooleanSetting("morphe_hide_shorts_channel_bar", FALSE);
     public static final BooleanSetting HIDE_SHORTS_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_shorts_comments_button", FALSE);
     public static final BooleanSetting HIDE_SHORTS_DISLIKE_BUTTON = new BooleanSetting("morphe_hide_shorts_dislike_button", FALSE);

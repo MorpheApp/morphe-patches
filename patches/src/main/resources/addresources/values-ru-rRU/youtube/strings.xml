@@ -738,14 +738,14 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Скрыть колонтитул меню качества видео</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Нижний колонтитул старого меню качества видео в выдвижном меню плеера скрыт</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Нижний колонтитул старого меню качества видео в выдвижном меню плеера показан</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Скрыть кнопку \"Автовоспроизведение\"</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Кнопка \"Автовоспроизведение\" в плеере скрыта</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Кнопка \"Автовоспроизведение\" в плеере показана</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Скрыть предварительный просмотр автовоспроизведения</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Предварительный просмотр автовоспроизведения скрыт</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Предварительный просмотр автовоспроизведения показан</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Скрыть кнопку \"Автовоспроизведение\"</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Кнопка \"Автовоспроизведение\" в плеере скрыта</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Кнопка \"Автовоспроизведение\" в плеере показана</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Скрыть кнопку \"Субтитры\"</string>
   <string name="morphe_hide_captions_button_summary_on">Кнопка \"Субтитры\" в плеере скрыта</string>
@@ -753,6 +753,12 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_cast_button_title">Скрыть кнопку \"Трансляция\"</string>
   <string name="morphe_hide_cast_button_summary_on">Кнопка \"Трансляция\" в плеере скрыта</string>
   <string name="morphe_hide_cast_button_summary_off">Кнопка \"Трансляция\" в плеере показана</string>
+  <string name="morphe_hide_collapse_button_title">Скрыть кнопку \"Свернуть\"</string>
+  <string name="morphe_hide_collapse_button_summary_on">Кнопка \"Свернуть\" скрыта</string>
+  <string name="morphe_hide_collapse_button_summary_off">Кнопка \"Свернуть\" показана</string>
+  <string name="morphe_hide_fullscreen_button_title">Скрыть кнопку \"Полный экран\"</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Кнопка \"Полноэкранный режим\" скрыта</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Кнопка \"Полный экран\" показана</string>
   <string name="morphe_hide_player_control_buttons_background_title">Скрыть фон кнопок управления плеера</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Фон кнопок управления плеера скрыт</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Фон кнопок управления плеера показан</string>
@@ -798,6 +804,9 @@ Cookies будут сохраняться автоматически, если �
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Компоненты плеера Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Скрыть или показать компоненты плеера Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Скрыть \"Шорты\" на странице канала</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Скрыто на странице канала</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Показано на странице канала</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Скрыть Shorts в ленте \"Главной\"</string>
   <string name="morphe_hide_shorts_home_summary_on">Shorts в ленте \"Главной\" и похожих видео скрыты</string>

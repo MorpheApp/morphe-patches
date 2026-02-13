@@ -738,14 +738,14 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija kvaliteta videa</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija kvaliteta videa je skriveno</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija kvaliteta videa je prikazano</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Sakrij dugme „Autoplej”</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Dugme „Autoplej” je skriveno</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Dugme „Autoplej” je prikazano</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sakrij prikazu automatskog reproduciranja</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Prikaz automatskog reproduciranja je sakriven</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Prikaz automatskog reproduciranja je prikazan</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Sakrij dugme „Autoplej”</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Dugme „Autoplej” je skriveno</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Dugme „Autoplej” je prikazano</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sakrij dugme „Titl”</string>
   <string name="morphe_hide_captions_button_summary_on">Dugme „Titl” je skriveno</string>
@@ -753,6 +753,12 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'
   <string name="morphe_hide_cast_button_title">Sakrij dugme „Prebacuj”</string>
   <string name="morphe_hide_cast_button_summary_on">Dugme „Prebacuj” je skriveno</string>
   <string name="morphe_hide_cast_button_summary_off">Dugme „Prebacuj” je prikazano</string>
+  <string name="morphe_hide_collapse_button_title">Sakrij dugme \"Smanji\"</string>
+  <string name="morphe_hide_collapse_button_summary_on">Dugme \"Smanji\" je sakriveno</string>
+  <string name="morphe_hide_collapse_button_summary_off">Dugme \"Smanji\" je prikazano</string>
+  <string name="morphe_hide_fullscreen_button_title">Sakrij dugme \"Puni ekran\"</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Dugme \"Puni ekran\" je sakriveno</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Dugme \"Puni ekran\" je prikazano</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sakrij pozadinu kontrola plejera</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Pozadina kontrola plejera je skrivena</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Pozadina kontrola plejera je prikazana</string>
@@ -798,6 +804,9 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts plejer</string>
   <string name="morphe_shorts_player_screen_summary">Sakrijte ili prikažite komponente Shorts plejera</string>
+  <string name="morphe_hide_shorts_channel_title">Sakrij Shorts na stranici kanala</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Skriveno na stranici kanala</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Prikaženo na stranici kanala</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Sakrij Shorts u fidu „Početna”</string>
   <string name="morphe_hide_shorts_home_summary_on">Skriveno u fidu „Početna” i srodnim videima</string>

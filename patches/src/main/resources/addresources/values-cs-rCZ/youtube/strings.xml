@@ -739,14 +739,14 @@ Abyste zobrazili menu s zvukovou stopou, změňte 'Falešné video proudy' na 'T
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Skrýt zápatí menu kvality videa</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Zápatí menu kvality videa je skryto</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Zápatí menu kvality videa je zobrazeno</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Skrýt tlačítko automatického přehrávání</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Tlačítko automatického přehrávání je skryté</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Tlačítko automatického přehrávání je zobrazeno</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skrýt náhled automatického přehrávání</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Náhled automatického přehrávání je skryt</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Náhled automatického přehrávání je zobrazen</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Skrýt tlačítko automatického přehrávání</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Tlačítko automatického přehrávání je skryté</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Tlačítko automatického přehrávání je zobrazeno</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skrýt tlačítko Titulky</string>
   <string name="morphe_hide_captions_button_summary_on">Tlačítko titulků je skryto</string>
@@ -754,6 +754,12 @@ Abyste zobrazili menu s zvukovou stopou, změňte 'Falešné video proudy' na 'T
   <string name="morphe_hide_cast_button_title">Skrýt tlačítko Cast</string>
   <string name="morphe_hide_cast_button_summary_on">Tlačítko Cast je skryto</string>
   <string name="morphe_hide_cast_button_summary_off">Tlačítko Cast je zobrazeno</string>
+  <string name="morphe_hide_collapse_button_title">Skrýt tlačítko Zpět</string>
+  <string name="morphe_hide_collapse_button_summary_on">Tlačítko Zpět je skryto</string>
+  <string name="morphe_hide_collapse_button_summary_off">Tlačítko Zpět je zobrazeno</string>
+  <string name="morphe_hide_fullscreen_button_title">Skrýt tlačítko plná obrazovka</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Tlačítko plná obrazovka je skryté</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Tlačítko plná obrazovka je zobrazeno</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skrýt pozadí ovládacích prvků přehrávače</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Pozadí ovládacích prvků přehrávače je skryto</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Pozadí ovládacích prvků přehrávače je zobrazeno</string>
@@ -799,6 +805,9 @@ Abyste zobrazili menu s zvukovou stopou, změňte 'Falešné video proudy' na 'T
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Přehrávač Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Skrýt nebo zobrazit komponenty přehrávače Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Skrýt Shorts v kanálu</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Skryto v kanálu</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Zobrazeno v kanálu</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Skrýt Shorts v domovské liště</string>
   <string name="morphe_hide_shorts_home_summary_on">Skryto v domovské liště a souvisejících videích</string>

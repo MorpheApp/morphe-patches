@@ -45,19 +45,19 @@ Cela peut aider à identifier les composants lors de la création de filtres per
 
 Cependant, activer cette option entraînera également l’enregistrement de certaines données utilisateur, telles que votre adresse IP."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">Désactiver les mises à jour de la disposition</string>
-  <string name="morphe_disable_layout_updates_summary_on">La disposition ne sera pas mise à jour par le serveur</string>
-  <string name="morphe_disable_layout_updates_summary_off">La disposition sera mise à jour par le serveur</string>
+  <string name="morphe_disable_layout_updates_title">Désactiver les mises à jour de la mise en page</string>
+  <string name="morphe_disable_layout_updates_summary_on">La mise en page ne sera pas mise à jour par le serveur</string>
+  <string name="morphe_disable_layout_updates_summary_off">La mise en page sera mise à jour par le serveur</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"La mise en page de l'application revient à la mise en page utilisée lors de la première installation.
 
-Certaines mises en page côté serveur peuvent ne pas revenir à leur état initial.
+Certaines mises en page côté serveur peuvent ne pas revenir à leur état d'origine.
 
 Les changements incluent :
-• Les composants du menu contextuel du lecteur (ou des paramètres associés) peuvent ne pas fonctionner.
-• Les numéros défilants ne sont pas animés.
-• L'onglet Bibliothèque est affiché.
-• La section Musique de la description de la vidéo peut ne pas fonctionner.
-• Le bouton de changement de compte peut ne pas apparaître sur l'onglet Bibliothèque."</string>
+• Les composants du menu déroulant du lecteur (ou des paramètres associés) peuvent ne pas fonctionner.
+• Les statistiques en temps réel ne sont pas animés.
+• L'onglet 'Bibliothèque' est affiché.
+• La section 'Musique' de la description vidéo peut ne pas fonctionner.
+• Le bouton de 'Changer de compte' peut ne pas apparaître dans l'onglet 'Bibliothèque'."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Masquer l\'étagère de boutique du créateur</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">L\'étagère de boutique du créateur sous la vidéo est masquée</string>
@@ -435,9 +435,9 @@ Limitations :
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Le message sera affiché</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Cela ne contourne pas la restriction d’âge. Cela accepte simplement la confirmation automatiquement</string>
   <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Désactiver le pop-up \'Regardez sur un téléviseur\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Le pop-up \'Regardez sur un téléviseur\' est désactivé</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Le pop-up \'Regardez sur un téléviseur\' est activé</string>
+  <string name="morphe_disable_signin_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_on">Le pop-up \'Connectez-vous à la TV\' est désactivé</string>
+  <string name="morphe_disable_signin_to_tv_popup_summary_off">Le pop-up \'Connectez-vous à la TV\' est activé</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Désactiver le double appui pour passer un chapitre</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Le double appui ne peut jamais déclencher un saut au chapitre suivant/précédent</string>
@@ -738,14 +738,14 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Masquer le message du menu \'Qualité\'</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Le message du menu \'Qualité vidéo\' est masqué</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Le message du menu \'Qualité vidéo\' est affiché</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Masquer le bouton \'Lecture automatique\'</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Le bouton \'Lecture automatique\' est masqué</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Le bouton \'Lecture automatique\' est affiché</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Masquer l\'aperçu de lecture automatique</string>
   <string name="morphe_hide_autoplay_preview_summary_on">L\'aperçu de lecture automatique est masqué</string>
   <string name="morphe_hide_autoplay_preview_summary_off">L\'aperçu de lecture automatique est affiché</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Masquer le bouton \'Lecture automatique\'</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Le bouton \'Lecture automatique\' est masqué</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Le bouton \'Lecture automatique\' est affiché</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Masquer le bouton \'Sous-titres\'</string>
   <string name="morphe_hide_captions_button_summary_on">Le bouton \'Sous-titres\' est masqué</string>
@@ -753,6 +753,12 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <string name="morphe_hide_cast_button_title">Masquer le bouton \'Caster\'</string>
   <string name="morphe_hide_cast_button_summary_on">Le bouton \'Caster\' est masqué</string>
   <string name="morphe_hide_cast_button_summary_off">Le bouton \'Caster\' est affiché</string>
+  <string name="morphe_hide_collapse_button_title">Masquer le bouton \'Réduire\'</string>
+  <string name="morphe_hide_collapse_button_summary_on">Le bouton \'Réduire\' est masqué</string>
+  <string name="morphe_hide_collapse_button_summary_off">Le bouton \'Réduire\' est affiché</string>
+  <string name="morphe_hide_fullscreen_button_title">Masquer le bouton \'Plein écran\'</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Le bouton \'Plein écran\' est masqué</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Le bouton \'Plein écran\' est affiché</string>
   <string name="morphe_hide_player_control_buttons_background_title">Masquer l\'arrière-plan des commandes du lecteur</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">L\'arrière-plan des commandes du lecteur est masqué</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">L\'arrière-plan des commandes du lecteur est affiché</string>
@@ -798,6 +804,9 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Lecteur Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Masquer ou afficher des composants du lecteur Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Masquer les Shorts dans la page de chaîne</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Masqué dans la page de chaîne</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Affiché dans la page de chaîne</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Masquer les Shorts dans le flux \'Accueil\'</string>
   <string name="morphe_hide_shorts_home_summary_on">Masqués dans les flux \'Accueil\' et \'Vidéos similaires\'</string>
@@ -926,7 +935,7 @@ Pour afficher le menu Piste audio, modifier 'Falsifier les flux vidéo' en 'TV'"
   <string name="morphe_end_screen_suggested_video_summary_on">"L'écran de fin suggérant une vidéo est masqué lorsque la lecture automatique est désactivée.
 
 La lecture automatique peut être modifiée dans les paramètres de YouTube :
-Paramètres → Lecture → Lecture auto. de la prochaine vidéo"</string>
+Paramètres → Lecture → Lecture auto. de la vidéo suivante"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">L\'écran de fin suggérant une vidéo est affiché</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Masquer l\'overlay des vidéos similaires</string>

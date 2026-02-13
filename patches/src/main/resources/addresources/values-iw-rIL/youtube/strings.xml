@@ -738,14 +738,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_title">הסתר כותרת תחתונה של תפריט איכות סרטון</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">כותרת תחתונה של תפריט איכות סרטון מוסתרת</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">כותרת תחתונה של תפריט איכות סרטון מוצגת</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">הסתר לחצן הפעלה אוטומטית</string>
-  <string name="morphe_hide_autoplay_button_summary_on">לחצן הפעלה אוטומטית מוסתר</string>
-  <string name="morphe_hide_autoplay_button_summary_off">לחצן הפעלה אוטומטית מוצג</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">הסתר תצוגה מקדימה אוטומטית</string>
   <string name="morphe_hide_autoplay_preview_summary_on">תצוגה מקדימה אוטומטית מוסתרת</string>
   <string name="morphe_hide_autoplay_preview_summary_off">תצוגה מקדימה אוטומטית מוצגת</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">הסתר לחצן הפעלה אוטומטית</string>
+  <string name="morphe_hide_autoplay_button_summary_on">לחצן הפעלה אוטומטית מוסתר</string>
+  <string name="morphe_hide_autoplay_button_summary_off">לחצן הפעלה אוטומטית מוצג</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">הסתר לחצן כתוביות</string>
   <string name="morphe_hide_captions_button_summary_on">לחצן כתוביות מוסתר</string>
@@ -753,6 +753,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">הסתר לחצן העברה</string>
   <string name="morphe_hide_cast_button_summary_on">לחצן העברה מוסתר</string>
   <string name="morphe_hide_cast_button_summary_off">לחצן העברה מוצג</string>
+  <string name="morphe_hide_collapse_button_title">הסתר כפתור תכנס</string>
+  <string name="morphe_hide_collapse_button_summary_on">כפתור תכנס מוסתר</string>
+  <string name="morphe_hide_collapse_button_summary_off">כפתור תכנס מוצג</string>
+  <string name="morphe_hide_fullscreen_button_title">הסתר כפתור מסך מלא</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">כפתור מסך מלא מוסתר</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">כפתור מסך מלא מוצג</string>
   <string name="morphe_hide_player_control_buttons_background_title">הסתר רקע פקדי הנגן</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">רקע פקדי הנגן מוסתר</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">רקע פקדי הנגן מוצג</string>
@@ -798,6 +804,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">נגן Shorts</string>
   <string name="morphe_shorts_player_screen_summary">הסתר או הצג רכיבי נגן Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">הסתרו Shorts בעמוד התעמולה</string>
+  <string name="morphe_hide_shorts_channel_summary_on">נעלם בעמוד התעמולה</string>
+  <string name="morphe_hide_shorts_channel_summary_off">נראה בעמוד התעמולה</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">להסתיר Shorts בפיד הבית</string>
   <string name="morphe_hide_shorts_home_summary_on">מוסתר בפיד הבית ובסרטונים קשורים</string>

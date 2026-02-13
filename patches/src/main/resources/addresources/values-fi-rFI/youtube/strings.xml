@@ -738,14 +738,14 @@ Näytäksesi Audiokappale-valikon, muuta 'Spoof video streams' 'TV':ksi"</string
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Piilota videolaatuvalikon alatunniste</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Videolaatuvalikon alatunniste piilotetaan</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Videolaatuvalikon alatunniste näytetään</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Piilota Automaattinen toisto -painike</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Automaattinen toisto -painike piilotetaan</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Automaattinen toisto -painike näytetään</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Piilota esikatselu-automaattinen</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Esikatselu-automaattinen on piilotettu</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Esikatselu-automaattinen on näkyvissä</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Piilota Automaattinen toisto -painike</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Automaattinen toisto -painike piilotetaan</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Automaattinen toisto -painike näytetään</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Piilota Tekstitykset -painike</string>
   <string name="morphe_hide_captions_button_summary_on">Tekstitykset-painike piilotetaan</string>
@@ -753,6 +753,12 @@ Näytäksesi Audiokappale-valikon, muuta 'Spoof video streams' 'TV':ksi"</string
   <string name="morphe_hide_cast_button_title">Piilota Cast-painike</string>
   <string name="morphe_hide_cast_button_summary_on">Cast-painike piilotetaan</string>
   <string name="morphe_hide_cast_button_summary_off">Cast-painike näytetään</string>
+  <string name="morphe_hide_collapse_button_title">Piilota sulkea-nappula</string>
+  <string name="morphe_hide_collapse_button_summary_on">Sulkea-nappula on piilotettu</string>
+  <string name="morphe_hide_collapse_button_summary_off">Sulkea-nappula on näkyvillä</string>
+  <string name="morphe_hide_fullscreen_button_title">Piilota kokoruutunappula</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Kokoruutunappula on piilotettu</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Kokoruutunappula on näkyvillä</string>
   <string name="morphe_hide_player_control_buttons_background_title">Piilota soittimen ohjainten tausta</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Soittimen ohjainten tausta piilotetaan</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Soittimen ohjainten tausta näytetään</string>
@@ -798,6 +804,9 @@ Näytäksesi Audiokappale-valikon, muuta 'Spoof video streams' 'TV':ksi"</string
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts-soitin</string>
   <string name="morphe_shorts_player_screen_summary">Piilota tai näytä Shorts-soittimen osia</string>
+  <string name="morphe_hide_shorts_channel_title">Piilota lyhytvideot kanavansivulla</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Piilotettu kanavansivulla</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Näytetty kanavansivulla</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Piilota Shortsit Koti-syötteessä</string>
   <string name="morphe_hide_shorts_home_summary_on">Piilotetaan Koti-syötteessä ja liittyvissä videoissa</string>

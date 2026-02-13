@@ -736,14 +736,14 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in 
   <string name="morphe_hide_player_flyout_video_quality_footer_title">„Qualität“-Fußzeile Ausblenden</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Fußzeile im Menü „Qualität“ ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Fußzeile im Menü „Qualität“ wird angezeigt</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Autoplay-Button ausblenden</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Autoplay Button ist ausgeblendet</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Autoplay Button wird angezeigt</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Autoplay-Vorschau ausblenden</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay-Vorschau ist ausgeblendet</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Autoplay-Vorschau wird angezeigt</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Autoplay-Button ausblenden</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Autoplay Button ist ausgeblendet</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Autoplay Button wird angezeigt</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Untertitel-Button ausblenden</string>
   <string name="morphe_hide_captions_button_summary_on">Beschriftungs-Button ist ausgeblendet</string>
@@ -751,6 +751,12 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in 
   <string name="morphe_hide_cast_button_title">Cast-Button ausblenden</string>
   <string name="morphe_hide_cast_button_summary_on">Der Cast button ist ausgeblendet</string>
   <string name="morphe_hide_cast_button_summary_off">Der Cast button wird angezeigt</string>
+  <string name="morphe_hide_collapse_button_title">Verbergen \"Collapse\"-Schaltfläche</string>
+  <string name="morphe_hide_collapse_button_summary_on">Die \"Collapse\"-Schaltfläche ist versteckt</string>
+  <string name="morphe_hide_collapse_button_summary_off">Die \"Collapse\"-Schaltfläche ist angezeigt</string>
+  <string name="morphe_hide_fullscreen_button_title">Vollbildschirm-Button ausblenden</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Vollbildschirm-Button ist ausgeblendet</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Vollbildschirm-Button wird angezeigt</string>
   <string name="morphe_hide_player_control_buttons_background_title">Hintergrund der Player-Steuerelemente ausblenden</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Hintergrund der Wiedergabesteuerung ist ausgeblendet</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Hintergrund der Player-Steuerelemente wird angezeigt</string>
@@ -796,6 +802,9 @@ Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in 
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Shorts Spieler</string>
   <string name="morphe_shorts_player_screen_summary">Shorts-Player-Komponenten aus- oder einblenden</string>
+  <string name="morphe_hide_shorts_channel_title">Kürzfilme im Kanal verstecken</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Versteckt im Kanal</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Angezeigt im Kanal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Shorts im Startseiten-Feed ausblenden</string>
   <string name="morphe_hide_shorts_home_summary_on">Im Startseiten-Feed und verwandten Videos ausgeblendet</string>

@@ -738,14 +738,14 @@ Per visualizzare il menu audio traccia, cambia 'Spoof video streams' in 'TV'"</s
   <string name="morphe_hide_player_flyout_video_quality_footer_title">Nascondi piè di pagina del menu qualità video</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Il piè di pagina del menu di qualità video è nascosto</string>
   <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Il piè di pagina del menu di qualità video è visibile</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Nascondi il pulsante Riproduzione Automatica</string>
-  <string name="morphe_hide_autoplay_button_summary_on">Il pulsante Riproduzione Automatica è nascosto</string>
-  <string name="morphe_hide_autoplay_button_summary_off">Il pulsante Riproduzione Automatica è visibile</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Nascondi anteprima autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Anteprima autoplay nascosta</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Anteprima autoplay visibile</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Nascondi il pulsante Riproduzione Automatica</string>
+  <string name="morphe_hide_autoplay_button_summary_on">Il pulsante Riproduzione Automatica è nascosto</string>
+  <string name="morphe_hide_autoplay_button_summary_off">Il pulsante Riproduzione Automatica è visibile</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Nascondi il pulsante Sottotitoli</string>
   <string name="morphe_hide_captions_button_summary_on">Il pulsante Sottotitoli è nascosto</string>
@@ -753,6 +753,12 @@ Per visualizzare il menu audio traccia, cambia 'Spoof video streams' in 'TV'"</s
   <string name="morphe_hide_cast_button_title">Nascondi il pulsante Trasmetti</string>
   <string name="morphe_hide_cast_button_summary_on">Il pulsante Trasmetti è nascosto</string>
   <string name="morphe_hide_cast_button_summary_off">Il pulsante Trasmetti è visibile</string>
+  <string name="morphe_hide_collapse_button_title">Nascondi pulsante Collapse</string>
+  <string name="morphe_hide_collapse_button_summary_on">Pulsante Collapse nascosto</string>
+  <string name="morphe_hide_collapse_button_summary_off">Pulsante Collapse visibile</string>
+  <string name="morphe_hide_fullscreen_button_title">Nascondi pulsante schermo intero</string>
+  <string name="morphe_hide_fullscreen_button_summary_on">Pulsante schermo intero nascosto</string>
+  <string name="morphe_hide_fullscreen_button_summary_off">Pulsante schermo intero visibile</string>
   <string name="morphe_hide_player_control_buttons_background_title">Nascondi lo sfondo dei controlli del player</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Lo sfondo dei controlli del player è nascosto</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Lo sfondo dei controlli del player è mostrato</string>
@@ -798,6 +804,9 @@ Per visualizzare il menu audio traccia, cambia 'Spoof video streams' in 'TV'"</s
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Nascondi o mostra i componenti del lettore Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Nascondi Shorts nella pagina del canale</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Nascosto nella pagina del canale</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Visualizzato nella pagina del canale</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Nascondi Shorts nel feed Home</string>
   <string name="morphe_hide_shorts_home_summary_on">Nascosto nel feed Home e nei video correlati</string>
