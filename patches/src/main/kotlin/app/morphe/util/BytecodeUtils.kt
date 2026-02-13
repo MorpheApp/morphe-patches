@@ -885,6 +885,8 @@ fun Method.cloneMutable(
     }
 }
 
+fun Boolean.toHexString(): String = if (this) "0x1" else "0x0"
+
 /**
  * @return The number of registers for all parameters, including p0.
  * This includes 2 registers for each wide parameter.
