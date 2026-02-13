@@ -1,11 +1,9 @@
 package app.morphe.patches.shared
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 internal object CastContextFetchFingerprint : Fingerprint(
     filters = listOf(
@@ -40,26 +38,4 @@ internal object ProtobufClassParseByteArrayFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L", "[B"),
     custom = { method, _ -> method.name == "parseFrom" }
-)
-
-//
-// On YouTube, this class is:
-// Lcom/google/android/libraries/youtube/innertube/model/media/FormatStreamModel;
-// On YouTube Music, class names are obfuscated.
-//
-internal object FormatStreamModelConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(
-        AccessFlags.PUBLIC,
-        AccessFlags.CONSTRUCTOR
-    ),
-    returnType = "V",
-    filters = buildList {
-        addAll(
-            OpcodesFilter.opcodesToFilters(
-                Opcode.IGET_WIDE,
-                Opcode.IPUT_WIDE
-            )
-        )
-        add(literal(45374643L))
-    }
 )

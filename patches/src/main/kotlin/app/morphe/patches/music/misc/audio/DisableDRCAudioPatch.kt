@@ -1,19 +1,17 @@
-package app.morphe.patches.music.misc.tracks
+package app.morphe.patches.music.misc.audio
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
-import app.morphe.patches.music.playservice.versionCheckPatch
-import app.morphe.patches.shared.misc.drc.drcAudioPatch
-import app.morphe.patches.reddit.utils.compatibility.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.misc.audio.drc.disableDRCAudioPatch
 
 @Suppress("unused")
-val drcAudioPatch = drcAudioPatch(
+val disableDRCAudioPatch = disableDRCAudioPatch(
     block = {
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-            versionCheckPatch
         )
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)

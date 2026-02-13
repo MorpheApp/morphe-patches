@@ -1,4 +1,4 @@
-package app.morphe.patches.shared.misc.audio
+package app.morphe.patches.shared.misc.audio.tracks
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction

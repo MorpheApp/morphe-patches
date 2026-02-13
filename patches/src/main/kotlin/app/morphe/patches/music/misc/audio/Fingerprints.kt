@@ -1,4 +1,4 @@
-package app.morphe.patches.music.audio.exclusiveaudio
+package app.morphe.patches.music.misc.audio
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
