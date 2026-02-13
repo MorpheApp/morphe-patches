@@ -4,6 +4,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -11,6 +12,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -19,6 +21,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -83,6 +86,50 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
         // Fix issue with back button exiting the app instead of minimizing the player.
         ExitVideoPlayerFingerprint.method.apply {
+            // TODO: Check if this logic works for older app targets as well.
+            if (is_21_07_or_greater) {
+                findInstructionIndicesReversedOrThrow(
+                    methodCall(name = "finish", parameters = listOf())
+                ).forEach {index ->
+                    val returnIndex = indexOfFirstInstructionOrThrow(
+                        index, Opcode.RETURN_VOID
+                    )
+
+                    if (returnIndex == this.implementation!!.instructions.lastIndex) {
+                        val freeRegister = findFreeRegister(index)
+
+                        // Jumps to last index
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                                move-result v$freeRegister      
+                                if-eqz v$freeRegister, :doNotCallActivityFinish
+                                return-void   
+                                :doNotCallActivityFinish
+                                nop      
+                            """
+                        )
+                    } else {
+                        // Must check free register after the return index.
+                        val freeRegister = findFreeRegister(returnIndex + 1)
+
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                                move-result v$freeRegister      
+                                if-eqz v$freeRegister, :doNotCallActivityFinish
+                            """, ExternalLabel(
+                                "doNotCallActivityFinish",
+                                getInstruction(returnIndex + 1)
+                            )
+                        )
+                    }
+                }
+                return@apply
+            }
+
             // Method call for Activity.finish()
             val finishIndexFirst = indexOfFirstInstructionOrThrow {
                 val reference = getReference<MethodReference>()

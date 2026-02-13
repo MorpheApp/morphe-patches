@@ -5,12 +5,12 @@ import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.parent;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
-public class Settings extends BaseSettings {
+public class Settings extends SharedYouTubeSettings {
 
     // Ads
     public static final BooleanSetting HIDE_VIDEO_ADS = new BooleanSetting("morphe_music_hide_video_ads", TRUE, true);

@@ -7,6 +7,7 @@ import app.morphe.patches.shared.misc.extension.sharedExtensionPatch
 
 val sharedExtensionPatch = sharedExtensionPatch(
     "reddit",
+    false,
     ExtensionHook(fingerprint = redditActivityOnCreateFingerprint),
     ExtensionHook(fingerprint = redditMainActivityOnCreateFingerprint)
 )

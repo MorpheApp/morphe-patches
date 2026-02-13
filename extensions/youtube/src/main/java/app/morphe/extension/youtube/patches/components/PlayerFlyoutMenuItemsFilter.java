@@ -2,8 +2,8 @@ package app.morphe.extension.youtube.patches.components;
 
 import java.util.List;
 
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -19,7 +19,7 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
 
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(BaseSettings.SPOOF_VIDEO_STREAMS);
+            return List.of(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS);
         }
     }
 

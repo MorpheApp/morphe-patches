@@ -57,10 +57,11 @@ internal object DisableFastForwardLegacyFingerprint : Fingerprint(
         Opcode.MOVE_RESULT
     ),
     // Intent start flag only used in the subscription activity
-    custom = customLiteral { 45411330 }
+    custom = customLiteral { 45411330 } // TODO: Convert this to an instruction filter
 )
 
 internal object DisableFastForwardGestureFingerprint : Fingerprint(
+    definingClass = "/NextGenWatchLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -69,13 +70,13 @@ internal object DisableFastForwardGestureFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
     ),
-    custom = { methodDef, classDef ->
-        methodDef.implementation!!.instructions.count() > 30 &&
-                classDef.type.endsWith("/NextGenWatchLayout;")
+    custom = { methodDef, _ ->
+        methodDef.implementation!!.instructions.count() > 30
     }
 )
 
 internal object CustomTapAndHoldFingerprint : Fingerprint(
+    name = "run",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -87,7 +88,7 @@ internal object CustomTapAndHoldFingerprint : Fingerprint(
         val findSearchLandingKey = (is_19_34_or_greater && !is_19_47_or_greater)
                 || (is_20_19_or_greater && !is_20_20_or_greater) || is_20_31_or_greater
 
-        method.name == "run" && method.indexOfFirstInstruction {
+        method.indexOfFirstInstruction {
             val string = getReference<StringReference>()?.string
             string == "Failed to easy seek haptics vibrate."
                     || (findSearchLandingKey && string == "search_landing_cache_key")
@@ -96,6 +97,7 @@ internal object CustomTapAndHoldFingerprint : Fingerprint(
 )
 
 internal object OnTouchEventHandlerFingerprint : Fingerprint(
+    name = "onTouchEvent",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.PUBLIC),
     returnType = "Z",
     parameters = listOf("L"),
@@ -114,11 +116,11 @@ internal object OnTouchEventHandlerFingerprint : Fingerprint(
         Opcode.IF_EQZ,
         Opcode.INVOKE_VIRTUAL,
         Opcode.INVOKE_VIRTUAL, // oMethodReference
-    ),
-    custom = { method, _ -> method.name == "onTouchEvent" }
+    )
 )
 
 internal object SeekbarTappingFingerprint : Fingerprint(
+    name = "onTouchEvent",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf("Landroid/view/MotionEvent;"),
@@ -142,8 +144,7 @@ internal object SeekbarTappingFingerprint : Fingerprint(
         ),
 
         opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(10))
-    ),
-    custom = { method, _ -> method.name == "onTouchEvent" }
+    )
 )
 
 internal object SlideToSeekFingerprint : Fingerprint(
@@ -156,7 +157,7 @@ internal object SlideToSeekFingerprint : Fingerprint(
         Opcode.IF_EQZ,
         Opcode.GOTO_16,
     ),
-    custom = customLiteral { 67108864 }
+    custom = customLiteral { 67108864 } // TODO: Convert this to an instruction filter
 )
 
 internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(

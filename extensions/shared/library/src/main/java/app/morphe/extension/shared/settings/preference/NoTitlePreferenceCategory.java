@@ -32,7 +32,7 @@ public class NoTitlePreferenceCategory extends PreferenceCategory {
     @Override
     @SuppressLint("MissingSuperCall")
     protected View onCreateView(ViewGroup parent) {
-        // Return an zero-height view to eliminate empty title space.
+        // Return a zero-height view to eliminate empty title space.
         return new View(getContext());
     }
 

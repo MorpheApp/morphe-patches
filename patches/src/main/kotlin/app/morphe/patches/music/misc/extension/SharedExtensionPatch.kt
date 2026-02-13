@@ -6,6 +6,8 @@ import app.morphe.patches.shared.misc.extension.sharedExtensionPatch
 
 val sharedExtensionPatch = sharedExtensionPatch(
     "music",
-    youTubeMusicApplicationInitHook, youTubeMusicApplicationInitOnCreateHook
+    true,
+    youTubeMusicApplicationInitHook,
+    youTubeMusicApplicationInitOnCreateHook
 )
 

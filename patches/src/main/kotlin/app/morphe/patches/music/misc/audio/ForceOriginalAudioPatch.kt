@@ -1,4 +1,4 @@
-package app.morphe.patches.music.misc.audio
+package app.morphe.patches.music.misc.tracks
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_8_05_or_greater
@@ -7,7 +7,7 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
-import app.morphe.patches.shared.misc.audio.tracks.forceOriginalAudioPatch
+import app.morphe.patches.shared.misc.audio.forceOriginalAudioPatch
 
 @Suppress("unused")
 val forceOriginalAudioPatch = forceOriginalAudioPatch(

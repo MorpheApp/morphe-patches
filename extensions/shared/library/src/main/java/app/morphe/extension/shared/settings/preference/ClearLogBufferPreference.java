@@ -8,7 +8,7 @@ import android.util.AttributeSet;
  * A custom preference that clears the Morphe debug log buffer when clicked.
  * Invokes the {@link LogBufferManager#clearLogBuffer} method.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "deprecation"})
 public class ClearLogBufferPreference extends Preference {
 
     {

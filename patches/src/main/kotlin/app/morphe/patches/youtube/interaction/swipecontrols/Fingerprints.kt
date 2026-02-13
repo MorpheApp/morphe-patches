@@ -5,11 +5,9 @@ import app.morphe.patcher.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object SwipeControlsHostActivityFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(),
-    custom = { method, _ ->
-        method.definingClass == EXTENSION_CLASS_DESCRIPTOR
-    }
+    parameters = listOf()
 )
 
 internal object SwipeChangeVideoFingerprint : Fingerprint(

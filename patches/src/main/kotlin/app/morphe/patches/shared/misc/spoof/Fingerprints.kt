@@ -94,7 +94,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = { _, classDef ->
+    custom = { method, classDef ->
         classDef.fields.any { field ->
             field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
         }

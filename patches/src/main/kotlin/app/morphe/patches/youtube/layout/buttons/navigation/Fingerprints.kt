@@ -42,28 +42,24 @@ internal object CollapsingToolbarLayoutFeatureFlag : Fingerprint(
 )
 
 internal object PivotBarStyleFingerprint : Fingerprint(
+    definingClass = "/PivotBar;",
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT,
         Opcode.XOR_INT_2ADDR
-    ),
-    custom = { method, _ ->
-        method.definingClass.endsWith("/PivotBar;")
-    }
+    )
 )
 
 internal object PivotBarChangedFingerprint : Fingerprint(
+    definingClass = "/PivotBar;",
+    name = "onConfigurationChanged",
     returnType = "V",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT
-    ),
-    custom = { method, _ ->
-        method.definingClass.endsWith("/PivotBar;")
-                && method.name == "onConfigurationChanged"
-    }
+    )
 )
 
 internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerprint(

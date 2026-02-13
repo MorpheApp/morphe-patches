@@ -9,12 +9,10 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/reddit/patches/NavigationButtonsPatch;"
@@ -49,23 +47,20 @@ val navigationButtonsPatch = bytecodePatch(
                 )
             }
 
-            val instructionMatch = fun Instruction.(): Boolean {
-                // TODO: Add StringComparisonType to defining class parameter of methodCall and fieldAccess.
-                val reference = getReference<MethodReference>()
-                return this.opcode == Opcode.INVOKE_DIRECT &&
-                        reference?.name == "<init>" &&
-                        reference.definingClass.startsWith("Lcom/reddit/widget/bottomnav/") &&
-                        reference.parameterTypes.firstOrNull() == "Ljava/lang/String;" &&
-                        reference.parameterTypes.lastOrNull()?.startsWith("Landroidx/compose/runtime/") == true
-            }
-
             // The game navigation button is behind a feature flag and thus also in a different method.
             // To handle this and other future changes, apply the patch to all methods in this class
             // instead of just the one matching bottomNavScreenFingerprint.
             bottomNavScreenFingerprint.classDef.apply {
                 methods.forEach { method ->
                     method.apply {
-                        findInstructionIndicesReversed(instructionMatch).forEach { index ->
+                        findInstructionIndicesReversed(
+                            methodCall(
+                                opcode = Opcode.INVOKE_DIRECT,
+                                definingClass = "Lcom/reddit/widget/bottomnav/",
+                                name = "<init>",
+                                parameters = listOf("Ljava/lang/String;", "Landroidx/compose/runtime/")
+                            )
+                        ).forEach { index ->
                             val instruction = getInstruction<FiveRegisterInstruction>(index)
 
                             val objectRegister = instruction.registerC

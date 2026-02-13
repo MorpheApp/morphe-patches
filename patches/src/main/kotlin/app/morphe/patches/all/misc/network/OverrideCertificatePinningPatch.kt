@@ -1,9 +1,9 @@
 package app.morphe.patches.all.misc.network
 
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.util.Utils.trimIndentMultiline
 import app.morphe.util.adoptChild
 import app.morphe.util.getNode
+import app.morphe.util.trimIndentMultiline
 import org.w3c.dom.Element
 import java.io.File
 

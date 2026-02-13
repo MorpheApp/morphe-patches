@@ -95,7 +95,7 @@ val settingsPatch = bytecodePatch(
          */
 
         acknowledgementsLabelBuilderMethod = preferenceManagerFingerprint.match(
-            mutableClassDefBy(preferenceManagerParentFingerprint.classDef)
+            preferenceManagerParentFingerprint.classDef
         ).method
         updateSettingsLabel(DEFAULT_LABEL)
 
@@ -112,9 +112,7 @@ val settingsPatch = bytecodePatch(
                 val targetReference =
                     getInstruction<ReferenceInstruction>(targetIndex).reference as MethodReference
                 val targetClass = targetReference.definingClass
-                val find = context.mutableClassDefBy { classDef ->
-                    classDef.type == targetClass
-                }.methods.find { methodDef ->
+                val find = context.mutableClassDefBy(targetClass).methods.find { methodDef ->
                     methodDef.name == "getActivity"
                 }!!
                 var getActivityReference = "${find.definingClass}->${find.name}("
