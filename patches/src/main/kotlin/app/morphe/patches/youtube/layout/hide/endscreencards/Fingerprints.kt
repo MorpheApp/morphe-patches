@@ -22,7 +22,7 @@ internal object LayoutCircleFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
     ),
-    custom = customLiteral { layoutCircle }
+    custom = customLiteral { layoutCircle } // TODO: Convert this to an instruction filter
 )
 
 internal object LayoutIconFingerprint : Fingerprint(
@@ -35,7 +35,7 @@ internal object LayoutIconFingerprint : Fingerprint(
         Opcode.CHECK_CAST,
 
         ),
-    custom = customLiteral { layoutIcon }
+    custom = customLiteral { layoutIcon } // TODO: Convert this to an instruction filter
 )
 
 internal object LayoutVideoFingerprint : Fingerprint(
@@ -49,7 +49,7 @@ internal object LayoutVideoFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
     ),
-    custom = customLiteral { layoutVideo }
+    custom = customLiteral { layoutVideo } // TODO: Convert this to an instruction filter
 )
 
 internal object ShowEndscreenCardsFingerprint : Fingerprint(

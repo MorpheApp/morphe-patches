@@ -49,7 +49,7 @@ val openLinksExternallyPatch = bytecodePatch(
             )
 
             articleConstructorFingerprint.match(
-                this.mutableClassDefBy(articleToStringFingerprint.classDef)
+                articleToStringFingerprint.classDef
             ).let {
                 it.method.apply {
                     val nullCheckIndex = it.instructionMatches.last().index

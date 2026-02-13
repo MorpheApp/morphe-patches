@@ -34,9 +34,13 @@ package app.morphe.patches.shared.misc.mapping
 
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.LiteralFilter
-import app.morphe.patcher.literal
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.Instruction
+import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
 import org.w3c.dom.Element
 import java.util.Collections
 
@@ -100,17 +104,54 @@ fun getResourceElements() = Collections.unmodifiableCollection(resourceMappings.
  */
 fun hasResourceId(type: ResourceType, name: String) = resourceMappings[type.value + name] != null
 
+class ResourceLiteralFilter(
+    type: ResourceType,
+    name: String,
+    exceptionIfResourceNotFound: Boolean = true,
+    location : InstructionLocation
+) : OpcodesFilter(null as List<Opcode>?, location) {
+
+    private val literalValue: Long? by lazy {
+        if (exceptionIfResourceNotFound || hasResourceId(type, name)) {
+            getResourceId(type, name)
+        } else {
+            null
+        }
+    }
+
+    override fun matches(
+        enclosingMethod: Method,
+        instruction: Instruction
+    ): Boolean {
+        if (!super.matches(enclosingMethod, instruction)) {
+            return false
+        }
+
+        if (instruction !is WideLiteralInstruction) return false
+
+        if (literalValue == null) return false
+
+        return instruction.wideLiteral == literalValue
+    }
+}
+
 /**
  * Identical to [LiteralFilter] except uses a decoded resource literal value.
  *
  * Any patch with fingerprints of this filter must
  * also declare [resourceMappingPatch] as a dependency.
+ *
+ * @param exceptionIfResourceNotFound If false and the resource does not exist,
+ *   then this filter effectively never matches anything. This should only be used
+ *   with [app.morphe.patcher.anyInstruction] where one of the resource filters
+ *   may not exist in all app versions.
  */
 fun resourceLiteral(
     type: ResourceType,
     name: String,
+    exceptionIfResourceNotFound: Boolean = true,
     location : InstructionLocation = InstructionLocation.MatchAfterAnywhere()
-) = literal({ getResourceId(type, name) }, null, location)
+) = ResourceLiteralFilter(type, name, exceptionIfResourceNotFound, location)
 
 
 val resourceMappingPatch = resourcePatch {

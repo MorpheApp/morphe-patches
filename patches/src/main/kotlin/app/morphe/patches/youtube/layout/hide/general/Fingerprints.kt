@@ -137,7 +137,7 @@ internal object CrowdfundingBoxFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = customLiteral { crowdfundingBoxId }
+    custom = customLiteral { crowdfundingBoxId } // TODO: Convert this to an instruction filter
 )
 
 internal object AlbumCardsFingerprint : Fingerprint(
@@ -150,7 +150,7 @@ internal object AlbumCardsFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
     ),
-    custom = customLiteral { albumCardId }
+    custom = customLiteral { albumCardId } // TODO: Convert this to an instruction filter
 )
 
 internal object FilterBarHeightFingerprint : Fingerprint(
@@ -161,7 +161,7 @@ internal object FilterBarHeightFingerprint : Fingerprint(
         Opcode.MOVE_RESULT,
         Opcode.IPUT,
     ),
-    custom = customLiteral { filterBarHeightId }
+    custom = customLiteral { filterBarHeightId } // TODO: Convert this to an instruction filter
 )
 
 internal object RelatedChipCloudFingerprint : Fingerprint(
@@ -171,7 +171,7 @@ internal object RelatedChipCloudFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
     ),
-    custom = customLiteral { relatedChipCloudMarginId }
+    custom = customLiteral { relatedChipCloudMarginId } // TODO: Convert this to an instruction filter
 )
 
 internal object SearchResultsChipBarFingerprint : Fingerprint(
@@ -183,7 +183,7 @@ internal object SearchResultsChipBarFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
     ),
-    custom = customLiteral { barContainerHeightId }
+    custom = customLiteral { barContainerHeightId } // TODO: Convert this to an instruction filter
 )
 
 internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(

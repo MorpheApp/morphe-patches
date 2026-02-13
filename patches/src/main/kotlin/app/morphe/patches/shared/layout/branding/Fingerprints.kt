@@ -4,30 +4,27 @@ import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object NumberOfPresetAppNamesExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "numberOfPresetAppNames",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "I",
-    parameters = listOf(),
-    custom = { method, _ ->
-        method.name == "numberOfPresetAppNames"
-    }
+    parameters = listOf()
 )
 
 internal object UserProvidedCustomNameExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "userProvidedCustomName",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
-    parameters = listOf(),
-    custom = { method, _ ->
-        method.name == "userProvidedCustomName"
-    }
+    parameters = listOf()
 )
 
 internal object UserProvidedCustomIconExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "userProvidedCustomIcon",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
-    parameters = listOf(),
-    custom = { method, _ ->
-        method.name == "userProvidedCustomIcon"
-    }
+    parameters = listOf()
 )
 
 // A much simpler fingerprint exists that can set the small icon (contains string "414843287017"),
