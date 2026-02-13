@@ -1,3 +1,10 @@
+## [1.13.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0...v1.13.1-dev.1) (2026-02-13)
+
+
+### Bug Fixes
+
+* **YouTube:** Add experimental support for `21.07.240` ([015d66a](https://github.com/MorpheApp/morphe-patches/commit/015d66a3d9fb352f5be47af59139d736fe43b26b))
+
 # [1.13.0](https://github.com/MorpheApp/morphe-patches/compare/v1.12.0...v1.13.0) (2026-02-12)
 
 
