@@ -111,9 +111,9 @@ Değişiklikler şunlardır:
   <string name="morphe_hide_movies_section_summary_off">Filmler kısmı görünür</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
-  <string name="morphe_hide_notify_me_button_title">\'Hatırlatma oluştur\' düğmesini gizle</string>
-  <string name="morphe_hide_notify_me_button_summary_on">Hatırlatma oluştur düğmesi gizli</string>
-  <string name="morphe_hide_notify_me_button_summary_off">Hatırlatma oluştur düğmesi görünür</string>
+  <string name="morphe_hide_notify_me_button_title">\'Bana hatırlat\' düğmesini gizle</string>
+  <string name="morphe_hide_notify_me_button_summary_on">Bana hatırlat düğmesi gizli</string>
+  <string name="morphe_hide_notify_me_button_summary_off">Bana hatırlat düğmesi görünür</string>
   <string name="morphe_hide_playables_title">Hazır Oyunlar\'ı gizle</string>
   <string name="morphe_hide_playables_summary_on">Hazır Oyunlar gizli</string>
   <string name="morphe_hide_playables_summary_off">Hazır Oyunlar görünür</string>
@@ -188,9 +188,9 @@ Değişiklikler şunlardır:
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
   <string name="morphe_hide_video_title_summary_on">Oynatıcıdaki video başlığı gizli</string>
   <string name="morphe_hide_video_title_summary_off">Oynatıcıdaki video başlığı görünür</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulan video özeti\'ni gizle</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Yapay zeka tarafından oluşturulan video özet kısmı gizli</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Yapay zeka tarafından oluşturulan video özet kısmı görünür</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulmuş video özeti\'ni gizle</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Yapay zeka tarafından oluşturulmuş video özeti kısmı gizli</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Yapay zeka tarafından oluşturulmuş video özeti kısmı görünür</string>
   <string name="morphe_hide_ask_section_title">\'Sor\'u gizle</string>
   <string name="morphe_hide_ask_section_summary_on">Sor kısmı gizli</string>
   <string name="morphe_hide_ask_section_summary_off">Sor kısmı görünür</string>
@@ -221,12 +221,17 @@ Değişiklikler şunlardır:
   <string name="morphe_hide_featured_videos_section_title">Öne Çıkan Videoları Gizle</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Öne Çıkan Videolar Bölümü Gizlidir</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Öne Çıkan Videolar Bölümü Görünür</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Besleme akış menüsü filtresini etkinleştirin</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Besleme akış menüsü filtresi etkinleştirildi</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Besleme akış menüsü filtresi devre dışı bırakıldı</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Besleme akış menüsü filtresi</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Filtrelenecek uçuş menü adları, yeni satırla ayrılmış şekilde listesi</string>
   <string name="morphe_hide_gaming_section_title">Oyunları Gizle</string>
   <string name="morphe_hide_gaming_section_summary_on">Oyunlar Bölümü Gizlidir</string>
   <string name="morphe_hide_gaming_section_summary_off">Oyunlar Bölümü Görünür</string>
-  <string name="morphe_hide_how_this_was_made_section_title">\'Bu içerik nasıl yapıldı\'yı gizle</string>
-  <string name="morphe_hide_how_this_was_made_section_summary_on">Bu içerik nasıl yapıldı kısmı gizli</string>
-  <string name="morphe_hide_how_this_was_made_section_summary_off">Bu içerik nasıl yapıldı kısmı görünür</string>
+  <string name="morphe_hide_how_this_was_made_section_title">\'Bu içerik nasıl oluşturuldu\'yu gizle</string>
+  <string name="morphe_hide_how_this_was_made_section_summary_on">Bu içerik nasıl oluşturuldu kısmı gizli</string>
+  <string name="morphe_hide_how_this_was_made_section_summary_off">Bu içerik nasıl oluşturuldu kısmı görünür</string>
   <string name="morphe_hide_hype_points_title">Hype puanlarını gizle</string>
   <string name="morphe_hide_hype_points_summary_on">Hype puanları gizli</string>
   <string name="morphe_hide_hype_points_summary_off">Hype puanları görünür</string>
@@ -267,9 +272,9 @@ Değişiklikler şunlardır:
   <string name="morphe_channel_screen_title">Kanal sayfası</string>
   <string name="morphe_channel_screen_summary">Kanal sayfası bileşenlerini gizle veya göster</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Topluluğu Gizle</string>
-  <string name="morphe_hide_community_button_summary_on">Topluluk Düğmesi Gizlidir</string>
-  <string name="morphe_hide_community_button_summary_off">Topluluk Düğmesi Görünür</string>
+  <string name="morphe_hide_community_button_title">Topluluk düğmesini gizle</string>
+  <string name="morphe_hide_community_button_summary_on">Topluluk düğmesi gizli</string>
+  <string name="morphe_hide_community_button_summary_off">Topluluk düğmesi görünür</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <string name="morphe_hide_for_you_shelf_title">\'Sizin için\' rafını gizle</string>
   <string name="morphe_hide_for_you_shelf_summary_on">Sizin İçin rafı gizli</string>
@@ -285,9 +290,9 @@ Değişiklikler şunlardır:
   <string name="morphe_hide_members_shelf_summary_on">Üyeler rafı gizli</string>
   <string name="morphe_hide_members_shelf_summary_off">Üyeler rafı görünür</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Mağazayı Gizle</string>
-  <string name="morphe_hide_store_button_summary_on">Mağaza Düğmesi Gizlidir</string>
-  <string name="morphe_hide_store_button_summary_off">Mağaza Düğmesi Görünür</string>
+  <string name="morphe_hide_store_button_title">Mağaza düğmesini gizle</string>
+  <string name="morphe_hide_store_button_summary_on">Mağaza düğmesi gizli</string>
+  <string name="morphe_hide_store_button_summary_off">Mağaza düğmesi görünür</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Abone ol düğmesini gizle</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Abone ol düğmesi gizli</string>
@@ -683,9 +688,9 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Altyazılar menüsü gizli</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Altyazılar menüsü görünür</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Ek Ayarları / Daha Fazla Gizle</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Ek Ayarlar / Daha Fazla Menüsü Gizlidir</string>
-  <string name="morphe_hide_player_flyout_additional_settings_summary_off">Ek Ayarlar / Daha Fazla Menüsü Görünür</string>
+  <string name="morphe_hide_player_flyout_additional_settings_title">Ek ayarlar / Diğer menüsünü gizle</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Ek ayarlar / Diğer menüsü gizli</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_off">Ek ayarlar / Diğer menüsü görünür</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">Uyku zamanlayıcısını gizle</string>
   <string name="morphe_hide_player_flyout_sleep_timer_summary_on">Uyku zamanlayıcısı menüsü gizli</string>

@@ -222,6 +222,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">おすすめ動画を非表示</string>
   <string name="morphe_hide_featured_videos_section_summary_on">情報カード セクション内のおすすめ動画セクションは表示されません</string>
   <string name="morphe_hide_featured_videos_section_summary_off">情報カード セクション内のおすすめ動画セクションは表示されます</string>
+  <string name="morphe_hide_feed_flyout_menu_title">フィード フライアウト メニュー フィルターを有効化する</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">フィード フライアウト メニュー フィルターが有効化されています</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">フィード フライアウト メニュー フィルターが無効化されています</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">フィード フライアウト メニュー フィルター</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">非表示にするコンポーネントの path builder string のリスト (改行区切り)</string>
   <string name="morphe_hide_gaming_section_title">ゲームを非表示</string>
   <string name="morphe_hide_gaming_section_summary_on">ゲーム セクションは表示されません</string>
   <string name="morphe_hide_gaming_section_summary_off">ゲーム セクションは表示されます</string>
