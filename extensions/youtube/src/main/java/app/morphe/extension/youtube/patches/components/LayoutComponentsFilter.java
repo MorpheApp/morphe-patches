@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -25,7 +26,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -46,6 +46,21 @@ public final class LayoutComponentsFilter extends Filter {
             null,
             "&list="
     );
+
+    private static final List<String> flyoutMenuFilterStrings;
+    static {
+        String[] flyoutFilters = Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS.get().split("\\n");
+        List<String> filters = new ArrayList<>(flyoutFilters.length);
+
+        for (String line : flyoutFilters) {
+            String trimmed = line.trim();
+            if (!trimmed.isEmpty()) {
+                filters.add(trimmed);
+            }
+        }
+
+        flyoutMenuFilterStrings = filters;
+    }
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;
@@ -813,15 +828,17 @@ public final class LayoutComponentsFilter extends Filter {
      */
     @Nullable
     public static CharSequence hideFlyoutMenu(@Nullable CharSequence menuTitleCharSequence) {
-        if (menuTitleCharSequence != null && Settings.HIDE_FEED_FLYOUT_MENU.get()) {
-            String[] blockList = Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS.get().split("\\n");
-            String menuTitleString = menuTitleCharSequence.toString();
+        if (menuTitleCharSequence == null || !Settings.HIDE_FEED_FLYOUT_MENU.get()
+                || flyoutMenuFilterStrings.isEmpty()) {
+            return menuTitleCharSequence;
+        }
 
-            for (String filter : blockList) {
-                if (!filter.isEmpty()) {
-                    if (menuTitleString.equalsIgnoreCase(filter)) {
-                        return null;
-                    }
+        String menuTitleString = menuTitleCharSequence.toString();
+
+        for (String filter : flyoutMenuFilterStrings) {
+            if (!filter.isEmpty()) {
+                if (menuTitleString.equalsIgnoreCase(filter)) {
+                    return null;
                 }
             }
         }
@@ -838,7 +855,8 @@ public final class LayoutComponentsFilter extends Filter {
      * @param menuTitleCharSequence raw text
      */
     public static void hideFlyoutMenu(TextView menuTextView, CharSequence menuTitleCharSequence) {
-        if (menuTitleCharSequence == null || !Settings.HIDE_FEED_FLYOUT_MENU.get()) {
+        if (menuTitleCharSequence == null || !Settings.HIDE_FEED_FLYOUT_MENU.get()
+                || flyoutMenuFilterStrings.isEmpty()) {
             return;
         }
 
@@ -846,10 +864,9 @@ public final class LayoutComponentsFilter extends Filter {
             return;
         }
 
-        String[] blockList = Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS.get().split("\\n");
         String menuTitleString = menuTitleCharSequence.toString();
 
-        for (String filter : blockList) {
+        for (String filter : flyoutMenuFilterStrings) {
             if (menuTitleString.equalsIgnoreCase(filter) && !filter.isEmpty()) {
                 Utils.hideViewByLayoutParams(parentView);
             }
