@@ -902,7 +902,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         for (String filter : blockList) {
             String trimmed = filter.trim();
-            if (!trimmed.isEmpty() && channelTabText.equals(trimmed)) {
+            if (!trimmed.isEmpty() && channelTabText.equalsIgnoreCase(trimmed)) {
                 return true;
             }
         }
