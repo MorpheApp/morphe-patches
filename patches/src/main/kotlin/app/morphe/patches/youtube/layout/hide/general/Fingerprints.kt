@@ -255,4 +255,32 @@ internal object LatestVideosBarFingerprint : Fingerprint(
     )
 )
 
+internal object BottomSheetMenuItemBuilderFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_STATIC,
+            returnType = "Ljava/lang/CharSequence;",
+            parameters = listOf("L")
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        string("Text missing for BottomSheetMenuItem.")
+    )
+)
+
+internal object ContextualMenuItemBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
+    returnType = "V",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        checkCast("Landroid/widget/TextView;"),
+        methodCall(
+            smali = "Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V",
+            location = MatchAfterWithin(5)
+        ),
+        resourceLiteral(ResourceType.DIMEN, "poster_art_width_default"),
+    )
+)
+
+
 

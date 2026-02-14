@@ -97,6 +97,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE);
     public static final BooleanSetting HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE, true);
     public static final BooleanSetting HIDE_EXPANDABLE_CARD = new BooleanSetting("morphe_hide_expandable_card", TRUE);
+    public static final BooleanSetting HIDE_FEED_FLYOUT_MENU = new BooleanSetting("morphe_hide_feed_flyout_menu", FALSE);
+    public static final StringSetting  HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS = new StringSetting("morphe_hide_feed_flyout_menu_filter_strings", "", true, parent(HIDE_FEED_FLYOUT_MENU));
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_HISTORY = new BooleanSetting("morphe_hide_filter_bar_feed_in_history", FALSE);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_feed_in_related_videos", FALSE, true);
@@ -119,6 +121,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_VIDEO_RECOMMENDATION_LABELS = new BooleanSetting("morphe_hide_video_recommendation_labels", TRUE);
     public static final BooleanSetting HIDE_VIEW_COUNT = new BooleanSetting("morphe_hide_view_count", FALSE, "morphe_hide_view_count_user_dialog_message");
     public static final BooleanSetting HIDE_WEB_SEARCH_RESULTS = new BooleanSetting("morphe_hide_web_search_results", TRUE);
+
 
     // Alternative thumbnails
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);

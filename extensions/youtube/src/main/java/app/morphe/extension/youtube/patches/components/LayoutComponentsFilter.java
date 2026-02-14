@@ -802,4 +802,58 @@ public final class LayoutComponentsFilter extends Filter {
     public static boolean hideSearchSuggestions(String typingString) {
         return Settings.HIDE_SEARCH_SUGGESTIONS.get() && typingString.isEmpty();
     }
+
+    /**
+     *
+     * Injection point.
+     *
+     * Hide feed flyout menu for phone
+     *
+     * @param menuTitleCharSequence menu title
+     */
+    @Nullable
+    public static CharSequence hideFlyoutMenu(@Nullable CharSequence menuTitleCharSequence) {
+        if (menuTitleCharSequence != null && Settings.HIDE_FEED_FLYOUT_MENU.get()) {
+            String[] blockList = Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS.get().split("\\n");
+            String menuTitleString = menuTitleCharSequence.toString();
+
+            for (String filter : blockList) {
+                if (!filter.isEmpty()) {
+                    if (menuTitleString.equalsIgnoreCase(filter)) {
+                        return null;
+                    }
+                }
+            }
+        }
+
+        return menuTitleCharSequence;
+    }
+
+    /**
+     * Injection point.
+     *
+     * hide feed flyout panel for tablet
+     *
+     * @param menuTextView          flyout text view
+     * @param menuTitleCharSequence raw text
+     */
+    public static void hideFlyoutMenu(TextView menuTextView, CharSequence menuTitleCharSequence) {
+        if (menuTitleCharSequence == null || !Settings.HIDE_FEED_FLYOUT_MENU.get()) {
+            return;
+        }
+
+        if (!(menuTextView.getParent() instanceof View parentView)) {
+            return;
+        }
+
+        String[] blockList = Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS.get().split("\\n");
+        String menuTitleString = menuTitleCharSequence.toString();
+
+        for (String filter : blockList) {
+            if (menuTitleString.equalsIgnoreCase(filter) && !filter.isEmpty()) {
+                Utils.hideViewByLayoutParams(parentView);
+            }
+        }
+    }
+
 }
