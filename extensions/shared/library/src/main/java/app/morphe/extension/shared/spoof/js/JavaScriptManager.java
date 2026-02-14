@@ -426,11 +426,12 @@ public final class JavaScriptManager {
                 //noinspection ReadWriteStringCanBeUsed
                 return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
             } else {
-                FileInputStream fis = new FileInputStream(file);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line).append("\n");
+                try (FileInputStream fis = new FileInputStream(file);
+                     BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        sb.append(line).append("\n");
+                    }
                 }
                 return sb.toString();
             }
