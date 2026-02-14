@@ -19,7 +19,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SETTINGS_SEARCH_HISTORY = new BooleanSetting("morphe_settings_search_history", TRUE, true);
     public static final StringSetting SETTINGS_SEARCH_ENTRIES = new StringSetting("morphe_settings_search_entries", "");
 
-    public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", TRUE, true);
+    public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
 
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
