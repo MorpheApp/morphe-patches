@@ -873,4 +873,40 @@ public final class LayoutComponentsFilter extends Filter {
         }
     }
 
+    /**
+     *
+     * Injection point.
+     *
+     * Rather than simply hiding the channel tab view, completely removes channel tab from list.
+     * If a channel tab is removed from the list, users will not be able to open it by swiping.
+     *
+     * @param channelTabText Text assigned to the channel tab, such as "Shorts", "Playlists",
+     *                       "Community", "Store". This text follows the user's language.
+     * @return Whether to remove the channel tab from the list.
+     */
+    public static boolean hideChannelTab(@Nullable String channelTabText) {
+        if (!Settings.HIDE_CHANNEL_TAB.get()) {
+            return false;
+        }
+
+        if (TextUtils.isEmpty(channelTabText)) {
+            return false;
+        }
+
+        String rawFilters = Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS.get();
+        if (TextUtils.isEmpty(rawFilters)) {
+            return false;
+        }
+
+        String[] blockList = rawFilters.split("\\n");
+
+        for (String filter : blockList) {
+            String trimmed = filter.trim();
+            if (!trimmed.isEmpty() && channelTabText.equals(trimmed)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

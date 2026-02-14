@@ -280,6 +280,11 @@ Changes include:
 
     <string name="morphe_channel_screen_title">Channel page</string>
     <string name="morphe_channel_screen_summary">Hide or show channel page components</string>
+    <string name="morphe_hide_channel_tab_title">Enable channel tab filter</string>
+    <string name="morphe_hide_channel_tab_summary_on">Channel tab filter is enabled</string>
+    <string name="morphe_hide_channel_tab_summary_off">Channel tab filter is disabled</string>
+    <string name="morphe_hide_channel_tab_filter_strings_title">Channel tab filter</string>
+    <string name="morphe_hide_channel_tab_filter_strings_summary">List of channel tab names to filter, separated by new lines</string>
     <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_community_button_title">Hide Community button</string>
     <string name="morphe_hide_community_button_summary_on">Community button is hidden</string>

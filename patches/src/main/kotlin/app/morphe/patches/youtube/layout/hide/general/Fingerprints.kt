@@ -282,5 +282,26 @@ internal object ContextualMenuItemBuilderFingerprint : Fingerprint(
     )
 )
 
+internal object ChannelTabBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Ljava/lang/CharSequence;",
+        "Ljava/lang/CharSequence;",
+        "Z",
+        "L"
+    )
+)
 
-
+internal object ChannelTabRendererFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Ljava/util/List;",
+        "I"
+    ),
+    strings = listOf(
+        "TabRenderer.content contains SectionListRenderer but the tab does not have a section list controller."
+    )
+)
