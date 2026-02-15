@@ -1,3 +1,7 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
 package app.morphe.extension.reddit.settings.preference.categories;
 
 import android.content.Context;

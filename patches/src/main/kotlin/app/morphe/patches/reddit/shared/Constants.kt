@@ -1,3 +1,7 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
 package app.morphe.patches.reddit.shared
 
 import app.morphe.patcher.patch.PackageName
@@ -8,7 +12,7 @@ internal object Constants {
         "com.reddit.frontpage",
         setOf(
             "2026.03.0",
-            "2025.43.0",
+            "2025.48.0",
         )
     )
 }

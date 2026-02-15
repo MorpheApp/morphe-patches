@@ -1,4 +1,8 @@
-package app.morphe.patches.reddit.misc.tracking.url
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+package app.morphe.patches.reddit.misc.privacy
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
@@ -6,7 +10,8 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/patches/SanitizeUrlQueryPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/reddit/patches/SanitizeUrlQueryPatch;"
 
 @Suppress("unused")
 val sanitizeUrlQueryPatch = bytecodePatch(
@@ -18,7 +23,7 @@ val sanitizeUrlQueryPatch = bytecodePatch(
     dependsOn(settingsPatch)
 
     execute {
-        shareLinkFormatterFingerprint.method.addInstructionsWithLabels(
+        ShareLinkFormatterFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->stripQueryParameters()Z

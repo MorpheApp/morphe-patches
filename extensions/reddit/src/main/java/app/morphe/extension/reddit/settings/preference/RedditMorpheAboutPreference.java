@@ -1,3 +1,7 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
 package app.morphe.extension.reddit.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.StringKeyLookup;
@@ -34,7 +38,7 @@ public class RedditMorpheAboutPreference extends MorpheAboutPreference {
         super(context);
 
         this.setTitle("About");
-        this.setSummary("About Reddit Morphe.");
+        this.setSummary("About Reddit Morphe");
     }
 
     protected String getString(String key, Object... args) {

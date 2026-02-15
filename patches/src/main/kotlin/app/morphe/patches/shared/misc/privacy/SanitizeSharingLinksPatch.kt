@@ -6,8 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.PATCH_DESCRIPTION_SANITIZE_SHARING_LINKS
-import app.morphe.patches.shared.PATCH_NAME_SANITIZE_SHARING_LINKS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -28,8 +26,8 @@ internal fun sanitizeSharingLinksPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     replaceMusicLinksWithYouTube: Boolean = false
 ) = bytecodePatch(
-    name = PATCH_NAME_SANITIZE_SHARING_LINKS,
-    description = PATCH_DESCRIPTION_SANITIZE_SHARING_LINKS,
+    name = "Sanitize sharing links",
+    description = "Removes the tracking query parameters from shared links.",
 ) {
     block()
 

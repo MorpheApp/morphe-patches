@@ -1,3 +1,7 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
 package app.morphe.patches.reddit.misc.fix.signature
 
 import app.morphe.patcher.patch.bytecodePatch

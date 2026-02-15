@@ -1,3 +1,7 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
 package app.morphe.patches.reddit.misc.openlink
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -6,12 +10,13 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/reddit/patches/OpenLinksDirectlyPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/reddit/patches/OpenLinksDirectlyPatch;"
 
 @Suppress("unused")
 val openLinksDirectlyPatch = bytecodePatch(
     name = "Open links directly",
-    description =  "Adds an option to skip over redirection URLs in external links."
+    description = "Adds an option to skip over redirection URLs in external links."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 

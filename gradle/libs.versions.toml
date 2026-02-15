@@ -4,19 +4,21 @@ morphe-patcher = "1.1.1"
 smali = "b6365a84f4"
 agp = "8.2.2"
 annotation = "1.9.1"
+androidx-core = "1.16.0"
 gson = "2.13.2"
 guava = "33.5.0-jre"
+hiddenapi = "6.1"
 protobuf = "0.9.5"
 protoc = "3.25.2"
-hiddenapi = "6.1"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
+hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
-hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 
 [plugins]
 android-library = { id = "com.android.library" }

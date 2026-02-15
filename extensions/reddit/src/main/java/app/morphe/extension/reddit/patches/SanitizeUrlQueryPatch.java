@@ -1,3 +1,7 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
 package app.morphe.extension.reddit.patches;
 
 import app.morphe.extension.reddit.settings.Settings;
@@ -12,6 +16,9 @@ public final class SanitizeUrlQueryPatch {
         return false;  // Modified during patching.
     }
 
+    /**
+     * Injection point.
+     */
     public static boolean stripQueryParameters() {
         return Settings.SANITIZE_URL_QUERY.get();
     }
