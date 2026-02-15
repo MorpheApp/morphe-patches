@@ -109,7 +109,7 @@ val hideAdsPatch = bytecodePatch(
                 filters = listOf(
                     fieldAccess(
                         opcode = Opcode.IPUT_BOOLEAN,
-                        smali = adsLoadCompletedField.toString()
+                        reference = adsLoadCompletedField
                     )
                 )
             )
