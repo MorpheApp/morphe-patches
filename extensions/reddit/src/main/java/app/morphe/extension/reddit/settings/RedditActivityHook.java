@@ -3,36 +3,55 @@ package app.morphe.extension.reddit.settings;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
-import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"deprecation", "unused"})
 public class RedditActivityHook {
+    private static final Drawable MORPHE_ICON = MorpheSettingsIconVectorDrawable.getIcon();
+    private static final String MORPHE_LABEL = "Morphe";
 
-    public static int getIcon() {
-        return ResourceUtils.getDrawableIdentifier("icon_ai");
+    /**
+     * Injection point.
+     */
+    public static Drawable getSettingIcon() {
+        return MORPHE_ICON;
     }
 
+    /**
+     * Injection point.
+     */
+    public static String getSettingLabel() {
+        return MORPHE_LABEL;
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean hook(Activity activity) {
         Intent intent = activity.getIntent();
-        if ("Morphe".equals(intent.getStringExtra("com.reddit.extra.initial_url"))) {
+        if (MORPHE_LABEL.equals(intent.getStringExtra("com.reddit.extra.initial_url"))) {
             initialize(activity);
             return true;
         }
         return false;
     }
 
+    /**
+     * Injection point.
+     */
     public static void initialize(Activity activity) {
-        final int fragmentId = View.generateViewId();
-        final FrameLayout fragment = new FrameLayout(activity);
+        int fragmentId = View.generateViewId();
+        FrameLayout fragment = new FrameLayout(activity);
         fragment.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
         fragment.setId(fragmentId);
 
-        final LinearLayout linearLayout = new LinearLayout(activity);
+        LinearLayout linearLayout = new LinearLayout(activity);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setFitsSystemWindows(true);
@@ -47,14 +66,20 @@ public class RedditActivityHook {
                 .commit();
     }
 
+    /**
+     * Injection point.
+     */
     public static boolean isAcknowledgment(Enum<?> e) {
         return e != null && "ACKNOWLEDGMENTS".equals(e.name());
     }
 
+    /**
+     * Injection point.
+     */
     public static Intent initializeByIntent(Context context) {
         Intent intent = new Intent();
         intent.setClassName(context, "com.reddit.webembed.browser.WebBrowserActivity");
-        intent.putExtra("com.reddit.extra.initial_url", "Morphe");
+        intent.putExtra("com.reddit.extra.initial_url", MORPHE_LABEL);
         return intent;
     }
 }

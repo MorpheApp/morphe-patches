@@ -2,21 +2,23 @@ package app.morphe.extension.reddit.patches;
 
 import android.content.res.Resources;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class NavigationButtonsPatch {
-    private static Resources mResources;
-    private static final Map<Object, String> hiddenButtonMap = new HashMap<>(NavigationButton.values().length);
-    private static final Map<String, String> labelMap = new HashMap<>();
-
-    public static void setResources(Resources resources) {
-        mResources = resources;
+public final class HideNavigationButtonsPatch {
+    /**
+     * Interface to use obfuscated methods.
+     */
+    public interface NavigationButtonInterface {
+        // Methods are added during patching.
+        String patch_getLabel();
     }
+
+    private static final List<String> labels = new ArrayList<>(10);
+    private static Resources mResources;
 
     /**
      * @return If this patch was included during patching.
@@ -25,23 +27,37 @@ public final class NavigationButtonsPatch {
         return false;  // Modified during patching.
     }
 
-    public static void mapResourceId(int id) {
-        String resourceName = mResources.getResourceEntryName(id);
-        String label = mResources.getString(id);
-        labelMap.put(label, resourceName);
+    /**
+     * Injection point.
+     */
+    public static void setResources(Resources resources) {
+        labels.clear();
+        mResources = resources;
     }
 
-    public static void setNavigationMap(Object object, String label) {
-        String labelName = labelMap.get(label);
+    /**
+     * Injection point.
+     */
+    public static void mapResourceId(int id) {
+        String resourceName = mResources.getResourceEntryName(id);
         for (NavigationButton button : NavigationButton.values()) {
-            if (button.label.equals(labelName) && button.shouldHide) {
-                hiddenButtonMap.putIfAbsent(object, label);
+            if (button.label.equals(resourceName) && button.shouldHide) {
+                labels.add(mResources.getString(id));
             }
         }
     }
 
+    /**
+     * Injection point.
+     */
     public static void hideNavigationButtons(List<Object> list, Object object) {
-        if (list != null && !hiddenButtonMap.containsKey(object)) {
+        if (list != null) {
+            if (object instanceof NavigationButtonInterface button) {
+                String label = button.patch_getLabel();
+                if (label != null && labels.contains(label)) {
+                    return;
+                }
+            }
             list.add(object);
         }
     }

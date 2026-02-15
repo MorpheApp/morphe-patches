@@ -1,87 +1,43 @@
 package app.morphe.patches.reddit.layout.sidebar
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.opcode
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val communityDrawerPresenterConstructorFingerprint = Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+internal object CommunityDrawerBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "V",
+    parameters = listOf(
+        "L",
+        "Ljava/util/List;",
+        "Ljava/util/Collection;",
+        "L",
+        "L",
+        "Z",
+        "I"
+    ),
     filters = listOf(
-        fieldAccess(name = "RECENTLY_VISITED")
-    ),
-    strings = listOf("communityDrawerSettings")
-)
-
-internal val communityDrawerPresenterFingerprint = Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = emptyList(),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.XOR_INT_2ADDR,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT_OBJECT,
-    ),
-    custom = { methodDef, _ ->
-        // TODO: Convert this to an instruction filter
-        indexOfKotlinCollectionInstruction(methodDef) >= 0
-    }
-)
-
-// TODO: Convert this to methodCall() instruction filter
-internal fun indexOfKotlinCollectionInstruction(
-    methodDef: Method,
-    startIndex: Int = 0
-) = methodDef.indexOfFirstInstruction(startIndex) {
-    val reference = getReference<MethodReference>()
-    opcode == Opcode.INVOKE_STATIC &&
-            reference?.returnType == "Ljava/util/ArrayList;" &&
-            reference.definingClass.startsWith("Lkotlin/collections/") &&
-            reference.parameterTypes.size == 2 &&
-            reference.parameterTypes[0].toString() == "Ljava/lang/Iterable;" &&
-            reference.parameterTypes[1].toString() == "Ljava/util/Collection;"
-}
-
-internal val redditProLoaderFingerprint = Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/Object;",
-    filters = listOf(
-        fieldAccess(name = "REDDIT_PRO"),
-        opcode(Opcode.IPUT_OBJECT)
-    ),
-    custom = { methodDef, _ ->
-        methodDef.parameterTypes.firstOrNull() == "Ljava/lang/Object;"
-    }
-)
-
-internal val sidebarComponentsPatchFingerprint = Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
-    name = "getHeaderItemName",
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    returnType = "Ljava/lang/String;"
-)
-
-internal val headerItemUiModelToStringFingerprint = Fingerprint(
-    name = "toString",
-    returnType = "Ljava/lang/String;",
-    strings = listOf(
-        "HeaderItemUiModel(uniqueId=",
-        ", type="
+        methodCall("Ljava/util/Collection;->isEmpty()Z"),
     )
 )
 
-// TODO: Replace with fieldAccess() instruction filter usage.
-internal fun indexOfHeaderItemInstruction(
-    methodDef: Method,
-    fieldName: String = "RECENTLY_VISITED",
-) = methodDef.indexOfFirstInstruction {
-    getReference<FieldReference>()?.name == fieldName
-}
+internal object CommunityDrawerBuilderParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;",
+    parameters = listOf("Lcom/reddit/screens/drawer/community/HeaderItem;"),
+    filters = listOf(
+        string("<this>"),
+        methodCall("Ljava/lang/Enum;->ordinal()I"),
+        fieldAccess("Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;->ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;")
+    )
+)
+
+internal object HeaderItemUiModelToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("HeaderItemUiModel(uniqueId=")
+    )
+)

@@ -12,6 +12,9 @@ public final class SanitizeUrlQueryPatch {
         return false;  // Modified during patching.
     }
 
+    /**
+     * Injection point.
+     */
     public static boolean stripQueryParameters() {
         return Settings.SANITIZE_URL_QUERY.get();
     }

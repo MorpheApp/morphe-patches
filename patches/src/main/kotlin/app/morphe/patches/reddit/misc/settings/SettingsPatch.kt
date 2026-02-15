@@ -1,48 +1,25 @@
 package app.morphe.patches.reddit.misc.settings
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateFingerprint
-import app.morphe.patches.reddit.misc.extension.hooks.redditMainActivityOnCreateFingerprint
+import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.findFreeRegister
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
-private lateinit var acknowledgementsLabelBuilderMethod: MutableMethod
-private lateinit var activityOnCreateMethod: MutableMethod
-
-var is_2025_45_or_greater = false
+var is_2026_04_or_greater = false
     private set
-
-var is_2025_52_or_greater = false
-    private set
-
-var is_2026_03_or_greater = false
-    private set
-
-private const val DEFAULT_LABEL = "Morphe"
 
 val settingsPatch = bytecodePatch(
     name = "Settings for Reddit",
@@ -53,89 +30,75 @@ val settingsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         experimentalAppNoticePatch(
-            mainActivityFingerprint = redditMainActivityOnCreateFingerprint,
+            mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
         )
     )
 
     execute {
         /**
-         * Set version info.
+         * Set version info
          */
-        redditInternalFeaturesFingerprint.method.apply {
-            val versionIndex = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.CONST_STRING
-                        && (this as? BuilderInstruction21c)?.reference.toString().startsWith("202")
+        val versionNumber = RedditInternalFeaturesFingerprint.instructionMatches[1].instruction
+            .getReference<StringReference>()!!.string.replace(".", "").toInt()
+
+        is_2026_04_or_greater = 2026040 <= versionNumber
+
+        /**
+         * Replace settings label and icon
+         */
+        PreferenceManagerFingerprint.let {
+            it.method.apply {
+                val labelIndex = it.instructionMatches[5].index
+                val labelRegister =
+                    getInstruction<OneRegisterInstruction>(labelIndex).registerA
+
+                addInstructions(
+                    labelIndex + 1,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getSettingLabel()Ljava/lang/String;
+                        move-result-object v$labelRegister
+                    """
+                )
+
+                val iconIndex = it.instructionMatches[2].index
+                val iconRegister =
+                    getInstruction<OneRegisterInstruction>(iconIndex).registerA
+
+                addInstructions(
+                    iconIndex + 1,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getSettingIcon()Landroid/graphics/drawable/Drawable;
+                        move-result-object v$iconRegister
+                    """
+                )
             }
-
-            val versionNumber =
-                getInstruction<BuilderInstruction21c>(versionIndex).reference.toString()
-                    .replace(".", "").toInt()
-
-            is_2025_45_or_greater = 2025450 <= versionNumber
-            is_2025_52_or_greater = 2025520 <= versionNumber
-            is_2026_03_or_greater = 2026030 <= versionNumber
         }
-
-        /**
-         * Set SharedPrefCategory
-         */
-        sharedSettingFingerprint.method.apply {
-            val stringIndex = indexOfFirstInstructionOrThrow(Opcode.CONST_STRING)
-            val stringRegister = getInstruction<OneRegisterInstruction>(stringIndex).registerA
-
-            replaceInstruction(
-                stringIndex,
-                "const-string v$stringRegister, \"reddit_morphe\""
-            )
-        }
-
-        /**
-         * Replace settings label
-         */
-
-        acknowledgementsLabelBuilderMethod = preferenceManagerFingerprint.match(
-            preferenceManagerParentFingerprint.classDef
-        ).method
-        updateSettingsLabel(DEFAULT_LABEL)
 
         /**
          * Initialize settings activity
          */
-        val context = this
-        preferenceDestinationFingerprint.match().let {
+        val getActivityMethod = FragmentHostCallbackFingerprint.method
+        PreferenceDestinationFingerprint.let {
             it.method.apply {
-                // TODO: Change this to instruction filters.
-                val targetIndex = it.instructionMatches.first().index + 2
-                val targetRegister =
-                    getInstruction<FiveRegisterInstruction>(targetIndex).registerC
-                val targetReference =
-                    getInstruction<ReferenceInstruction>(targetIndex).reference as MethodReference
-                val targetClass = targetReference.definingClass
-                val find = context.mutableClassDefBy(targetClass).methods.find { methodDef ->
-                    methodDef.name == "getActivity"
-                }!!
-                var getActivityReference = "${find.definingClass}->${find.name}("
-                for (i in 0 until find.parameters.size) {
-                    getActivityReference += find.parameterTypes[i]
-                }
-                getActivityReference += ")${find.returnType}"
-
-                val freeIndex = targetIndex + 1
-                val freeRegister =
-                    getInstruction<OneRegisterInstruction>(freeIndex).registerA
+                val fragmentIndex = it.instructionMatches[1].index
+                val fragmentRegister =
+                    getInstruction<FiveRegisterInstruction>(fragmentIndex).registerC
+                val registerProvider =
+                    getFreeRegisterProvider(fragmentIndex, 1)
+                val freeRegister = registerProvider.getFreeRegister()
 
                 addInstructionsWithLabels(
-                    targetIndex,
+                    fragmentIndex,
                     """
                         invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAcknowledgment(Ljava/lang/Enum;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :ignore
-                        invoke-virtual { v$targetRegister }, $getActivityReference
+                        invoke-virtual { v$fragmentRegister }, $getActivityMethod
                         move-result-object v$freeRegister
                         invoke-static { v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
                         move-result-object v$freeRegister
-                        invoke-virtual { v$targetRegister, v$freeRegister }, $targetClass->startActivity(Landroid/content/Intent;)V
+                        invoke-virtual { v$fragmentRegister, v$freeRegister }, ${getActivityMethod.definingClass}->startActivity(Landroid/content/Intent;)V
                         return-void
                         :ignore
                         nop
@@ -144,7 +107,7 @@ val settingsPatch = bytecodePatch(
             }
         }
 
-        webBrowserActivityOnCreateFingerprint.let {
+        WebBrowserActivityOnCreateFingerprint.let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.first().index
                 val freeRegister = findFreeRegister(insertIndex)
@@ -162,53 +125,5 @@ val settingsPatch = bytecodePatch(
                 )
             }
         }
-
-        activityOnCreateMethod = redditActivityOnCreateFingerprint.method
     }
 }
-
-internal fun updateSettingsLabel(label: String) =
-    acknowledgementsLabelBuilderMethod.apply {
-        fun indexOfPreferencesPresenterInstruction(methodDef: Method) =
-            methodDef.indexOfFirstInstruction {
-                opcode == Opcode.NEW_INSTANCE &&
-                        getReference<TypeReference>()?.type?.contains("checkIfShouldShowImpressumOption") == true
-            }
-
-        val predicate: Instruction.() -> Boolean = {
-            opcode == Opcode.INVOKE_VIRTUAL &&
-                    getReference<MethodReference>()?.name == "getString"
-        }
-        var insertIndex: Int
-
-        val preferencesPresenterIndex =
-            indexOfPreferencesPresenterInstruction(this)
-
-        val stringIndex =
-            indexOfFirstInstructionReversedOrThrow(preferencesPresenterIndex, predicate)
-        val iconIndex =
-            indexOfFirstInstructionReversedOrThrow(stringIndex - 2, Opcode.CONST)
-        val iconRegister =
-            getInstruction<OneRegisterInstruction>(iconIndex).registerA
-
-        // TODO: Change this to modify the drawable with a Morphe logo.
-        //       Must be done with Java code without resources because cannot resource patch yet.
-        addInstructions(
-            iconIndex + 1,
-            """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->getIcon()I
-                move-result v$iconRegister
-            """
-        )
-
-        insertIndex =
-            indexOfFirstInstructionReversedOrThrow(preferencesPresenterIndex, predicate) + 2
-
-        val insertRegister =
-            getInstruction<OneRegisterInstruction>(insertIndex - 1).registerA
-
-        addInstruction(
-            insertIndex,
-            "const-string v$insertRegister, \"$label\""
-        )
-    }

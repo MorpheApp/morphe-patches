@@ -1,20 +1,16 @@
 package app.morphe.extension.reddit.patches;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.app.Dialog;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 
 import app.morphe.extension.reddit.settings.Settings;
-import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class RemoveSubRedditDialogPatch {
+    private static final boolean REMOVE_NSFW_DIALOG = Settings.REMOVE_NSFW_DIALOG.get();
+    private static final boolean REMOVE_NOTIFICATION_DIALOG = Settings.REMOVE_NOTIFICATION_DIALOG.get();
 
     /**
      * @return If this patch was included during patching.
@@ -23,30 +19,18 @@ public class RemoveSubRedditDialogPatch {
         return false;  // Modified during patching.
     }
 
-    public static void confirmDialog(@NonNull TextView textView) {
-        if (!Settings.REMOVE_NSFW_DIALOG.get())
-            return;
-
-        if (!textView.getText().toString().equals(str("nsfw_continue_non_anonymously")))
-            return;
-
-        clickViewDelayed(textView);
-    }
-
-    public static void dismissDialog(View cancelButtonView) {
-        if (!Settings.REMOVE_NOTIFICATION_DIALOG.get())
-            return;
-
-        clickViewDelayed(cancelButtonView);
-    }
-
+    /**
+     * Injection point.
+     */
     public static boolean spoofHasBeenVisitedStatus(boolean hasBeenVisited) {
-        return Settings.REMOVE_NSFW_DIALOG.get() || hasBeenVisited;
+        return REMOVE_NSFW_DIALOG || hasBeenVisited;
     }
 
+    /**
+     * Injection point.
+     */
     public static void dismissNSFWDialog(Object customDialog) {
-        if (Settings.REMOVE_NSFW_DIALOG.get() &&
-                customDialog instanceof Dialog dialog) {
+        if (REMOVE_NSFW_DIALOG && customDialog instanceof Dialog dialog) {
             Window window = dialog.getWindow();
             if (window != null) {
                 WindowManager.LayoutParams params = window.getAttributes();
@@ -69,20 +53,10 @@ public class RemoveSubRedditDialogPatch {
         }
     }
 
-    public static boolean removeNSFWDialog() {
-        return Settings.REMOVE_NSFW_DIALOG.get();
-    }
-
+    /**
+     * Injection point.
+     */
     public static boolean spoofLoggedInStatus(boolean isLoggedIn) {
-        return !Settings.REMOVE_NOTIFICATION_DIALOG.get() && isLoggedIn;
-    }
-
-    private static void clickViewDelayed(View view) {
-        Utils.runOnMainThreadDelayed(() -> {
-            if (view != null) {
-                view.setSoundEffectsEnabled(false);
-                view.performClick();
-            }
-        }, 0);
+        return !REMOVE_NOTIFICATION_DIALOG && isLoggedIn;
     }
 }

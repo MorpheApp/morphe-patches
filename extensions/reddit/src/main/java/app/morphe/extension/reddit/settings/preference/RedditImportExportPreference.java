@@ -26,7 +26,7 @@ public class RedditImportExportPreference extends ImportExportPreference {
         super(context);
 
         this.setTitle("Import / Export");
-        this.setSummary("Import / Export Morphe settings.");
+        this.setSummary("Import / Export Morphe settings");
     }
 
     protected String getString(String key, Object... args) {
