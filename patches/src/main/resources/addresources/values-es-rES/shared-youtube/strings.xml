@@ -95,7 +95,11 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">No se puede iniciar sesión en VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Desconectado de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de inicio de sesión de VR no válido, intenta iniciar sesión en VR de nuevo</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Desactivar audio DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">El audio DRC está desactivado</string>
+  <string name="morphe_disable_drc_audio_summary_off">El audio DRC está activado</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forzar idioma de audio original</string>
   <string name="morphe_force_original_audio_summary_on">Usar el idioma de audio original</string>
   <string name="morphe_force_original_audio_summary_off">Utilizando audio predeterminado</string>

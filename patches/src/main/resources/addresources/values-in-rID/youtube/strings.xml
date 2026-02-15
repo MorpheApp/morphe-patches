@@ -221,11 +221,11 @@ Perubahan termasuk:
   <string name="morphe_hide_featured_videos_section_title">Sembunyikan video Unggulan</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Bagian video unggulan disembunyikan</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Bagian video unggulan ditampilkan</string>
-  <string name="morphe_hide_feed_flyout_menu_title">Aktifkan saringan menu flyout berita</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_on">Saringan menu flyout berita diaktifkan</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_off">Saringan menu flyout berita dinonaktifkan</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Saringan menu flyout berita</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Daftar nama menu flyout untuk difilter, dipisahkan oleh baris baru</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu umpan flyout</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Penyaring menu umpan flyout diaktifkan</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Penyaring menu umpan flyout dinonaktifkan</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu umpan flyout</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Daftar nama menu flyout untuk disaring, dipisahkan oleh baris baru</string>
   <string name="morphe_hide_gaming_section_title">Sembunyikan Gaming</string>
   <string name="morphe_hide_gaming_section_summary_on">Bagian Gaming disembunyikan</string>
   <string name="morphe_hide_gaming_section_summary_off">Bagian Gaming ditampilkan</string>
@@ -468,9 +468,9 @@ Keterbatasan
 Verifikasi nama paket sudah benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_external_downloader_empty_warning">Nama paket tidak boleh kosong</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
-  <string name="morphe_disable_precise_seeking_gesture_title">Matikan gerakan pencarian presisi</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary_on">Gerakan dinonaktifkan</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary_off">Gerakan diaktifkan</string>
+  <string name="morphe_disable_precise_seeking_gesture_title">Nonaktifkan gerakan pencarian presisi</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary_on">Gerakan pencarian yang presisi dinonaktifkan</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary_off">Gerakan pencarian yang presisi diaktifkan</string>
   <!-- interaction.seekbar.enableSeekbarTappingPatch -->
   <string name="morphe_seekbar_tapping_title">Aktifkan ketuk untuk mencari</string>
   <string name="morphe_seekbar_tapping_summary_on">Ketuk untuk mencari diaktifkan</string>
@@ -956,7 +956,7 @@ Pengaturan → Pemutaran → Putar otomatis video berikutnya"</string>
   <string name="morphe_hide_player_popup_panels_summary_off">Panel pesan timbul pemutar ditampilkan</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Keluar dari mode layar penuh di akhir video</string>
-  <string name="morphe_exit_fullscreen_entry_1">Nonaktif</string>
+  <string name="morphe_exit_fullscreen_entry_1">Dinonaktifkan</string>
   <string name="morphe_exit_fullscreen_entry_2">Potret</string>
   <string name="morphe_exit_fullscreen_entry_3">Lanskap</string>
   <string name="morphe_exit_fullscreen_entry_4">Potret dan lanskap</string>
@@ -1289,7 +1289,7 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
 Batasan: Menggunakan tombol kembali pada toolbar mungkin tidak berfungsi"</string>
   <string name="morphe_change_start_page_always_summary_off">Halaman awal hanya diubah saat aplikasi dimulai</string>
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Matikan melanjutkan pemutar video Shorts</string>
+  <string name="morphe_disable_resuming_shorts_player_title">Nonaktifkan melanjutkan memutar video Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Pemutaran Shorts tidak akan dilanjutkan saat aplikasi dimulai</string>
   <string name="morphe_disable_resuming_shorts_player_summary_off">Pemutaran Shorts akan dilanjutkan saat aplikasi dimulai</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
@@ -1308,7 +1308,7 @@ Batasan: Menggunakan tombol kembali pada toolbar mungkin tidak berfungsi"</strin
   <string name="morphe_miniplayer_screen_title">Pemutar Mini</string>
   <string name="morphe_miniplayer_screen_summary">Ubah gaya pemutar mini dalam aplikasi</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>
-  <string name="morphe_miniplayer_type_entry_0">Nonaktif</string>
+  <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
   <string name="morphe_miniplayer_type_entry_3">Tablet</string>
@@ -1360,7 +1360,7 @@ Gesek untuk memperluas atau menutup"</string>
   <string name="morphe_gradient_loading_screen_summary_on">Layar pemuatan akan memiliki latar belakang gradien</string>
   <string name="morphe_gradient_loading_screen_summary_off">Layar pemuatan akan memiliki latar belakang yang solid</string>
   <string name="morphe_splash_screen_animation_style_title">Gaya layar pembuka</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Nonaktif</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Dinonaktifkan</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Berwarna</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Hitam dan putih</string>
   <string name="morphe_seekbar_custom_color_title">Aktifkan warna seekbar khusus</string>
@@ -1451,7 +1451,7 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Nonaktifkan sentuh getar urungkan pencarian</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Sentuh getar urungkan pencarian dinonaktifkan</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Sentuh getar urungkan pencarian diaktifkan</string>
-  <string name="morphe_disable_haptic_feedback_zoom_title">Matikan sentuh getar zoom</string>
+  <string name="morphe_disable_haptic_feedback_zoom_title">Nonaktifkan sentuh getar zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Sentuh getar zoom dinonaktifkan</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Sentuh getar zoom diaktifkan</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->

@@ -92,10 +92,14 @@ Pour vous connecter, appuyez sur Continuer ci-dessous"</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 est temporairement indisponible (statut %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 est temporairement indisponible</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Impossible de vous connecter à VR : l\'authentification a été refusée</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Impossible de vous connecter à VR : %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Impossible de se connecter à VR : %s</string>
   <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Désactiver l\'audio DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">L\'audio DRC est désactivé</string>
+  <string name="morphe_disable_drc_audio_summary_off">L\'audio DRC est activé</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forcer la langue audio d\'origine</string>
   <string name="morphe_force_original_audio_summary_on">Utilisation de la langue audio d\'origine</string>
   <string name="morphe_force_original_audio_summary_off">Utilisation de l\'audio par défaut</string>

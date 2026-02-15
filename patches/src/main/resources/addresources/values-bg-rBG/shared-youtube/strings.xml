@@ -95,7 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Излезли сте от Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за VR, опитайте се да се влезете в VR отново</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Изключете DRC аудио</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC аудио е изключено</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC аудио е включено</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудително оригинален аудио език</string>
   <string name="morphe_force_original_audio_summary_on">Използване на оригиналния език на аудиото</string>
   <string name="morphe_force_original_audio_summary_off">Използване на аудио по подразбиране</string>

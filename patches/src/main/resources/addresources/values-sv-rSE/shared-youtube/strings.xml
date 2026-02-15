@@ -64,9 +64,6 @@ Uppspelning kanske inte fungerar"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logga in på Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Att logga in på Android VR kan lösa uppspelningsproblem för vissa användare
-
-Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsätt</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logga ut</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruktioner</string>
@@ -88,14 +85,11 @@ Tryck på Fortsätt nedan för att logga in"</string>
 • Om den här appen inte används på 6 månader kommer Google att ta bort den här autentiseringen
 • Du behöver logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten från dina Google-inställningar"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är för tillfället inte tillgängligt (API-tidsgräns nådd)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Inloggningen på Android VR har gått ut, försök logga in på VR igen</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 är för tillfället inte tillgängligt (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 är för tillfället inte tillgängligt</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Det går inte att logga in på VR, webbautentiseringen godkändes inte</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in på VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken, försök logga in på VR igen</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tvinga ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary_on">Använder ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary_off">Använder standardljud</string>

@@ -66,9 +66,9 @@ Redarea poate să nu funcționeze"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pentru a utiliza această funcție, schimbă \'Default client\' în Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Autentificare la Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Autentificarea la Android VR poate corrigenționa problemele de reproducere pentru unii utilizator
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Apăsarea la Android VR poate rezolva problema reproducerii pentru unii utilizatori
 
-Apasă Continua mai jos pentru a te autentifica"</string>
+Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continua</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Dezautentificare</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instrucțiuni</string>
@@ -90,14 +90,18 @@ Apasă Continua mai jos pentru a te autentifica"</string>
 • Dacă această aplicație nu este folosită timp de 6 luni, Google va șterge această autentificare
 • Dacă schimbi parola Google sau deblochezi acest dispozitiv din setări Google, vei avea nevoie să te autentifici din nou"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 este momentan indisponibil (API a expirat)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Autentificare la VR Android expirată, încearcați să vă autentificați din nou la VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Apărarea la Android VR a expirat, încearcă din nou</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 este momentan indisponibil (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 este momentan indisponibil</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nu se poate autentifica la VR, autentificarea web nu a fost aprobată</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Nu se poate autentifica la VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nu se poate apăra la VR, autentificarea website-ului nu a fost aprobată</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Token de autentificare VR invalid, încearcați să vă autentificați din nou la VR</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Dezactivați sunetul DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Sunetul DRC este dezactivat</string>
+  <string name="morphe_disable_drc_audio_summary_off">Sunetul DRC este activat</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary_on">Folosind limba audio originală</string>
   <string name="morphe_force_original_audio_summary_off">Utilizează audio implicit</string>

@@ -68,7 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登入 Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登入 Android VR 可解決部分使用者的播放問題
 
- 若要登入，請點擊下方的「繼續」按鈕"</string>
+若要登入，請點擊下方的「繼續」按鈕"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">繼續</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">說明</string>
@@ -90,14 +90,18 @@ Second \"item\" text"</string>
 • 若此應用程式半年未使用，Google 將移除此認證
 • 若您更改 Google 密碼或從 Google 設定中註銷此裝置，您將需要重新登入"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暫時不可用（API 已逾時）</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR 登入已到期，嘗試重新登入 VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR 登入已過期，請重新登入 VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 暫時不可用（狀態 %d）</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暫時不可用</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">無法登入 VR，網站認證未獲批准</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">無法登入 VR：%s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">無法登入 VR，網站驗證未獲批准</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">無法登錄 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已從 Android VR 中登出</string>
-  <string name="morphe_oauth2_toast_invalid">無效的 VR 登入令牌，嘗試重新登入 VR</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">無效的 VR 登錄權杖，請重新登錄 VR</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">停用 DRC 音效</string>
+  <string name="morphe_disable_drc_audio_summary_on">已停用 DRC 音效</string>
+  <string name="morphe_disable_drc_audio_summary_off">已啟用 DRC 音效</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">強制使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary_on">正在使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary_off">使用預設音訊</string>

@@ -66,9 +66,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">এই বৈশিষ্ট্যটি ব্যবহার করতে \'ডিফল্ট ক্লায়েন্ট\' অ্যান্ড্রয়েড ভিআর এ পরিবর্তন করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">অ্যান্ড্রয়েড ভিআরে সাইন ইন করুন</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"কিছু ব্যবহারকারীদের জন্য প্লেব্যাক সমস্যা সংশ্লেষণ করতে অ্যান্ড্রয়েড ভিআরে সাইন ইন করা সাহায্য করতে পারে
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"আন্ড্রয়েড ভিআরতে সাইন ইন করলে কিছু ব্যবহারকারীদের জন্য প্লে ব্যাকের সমস্যা সমাধান হতে পারে
 
-সাইন ইন করতে, নিচে কন্টিনিউ ট্যাপ করুন"</string>
+সাইন ইন করতে, নিচে কন্টিনিউ প্রেস করুন"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">এগিয়ে যান</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">সাইন আউট করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">নির্দেশনা</string>
@@ -90,14 +90,18 @@ Second \"item\" text"</string>
 • যদি এই অ্যাপটি ৬ মাসের জন্য অব্যবহৃত থাকে তাহলে গুগল এই প্রমাণীকরণ সরিয়ে দেবে
 • যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইস আনয়ন করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাবে উপলব্ধ নয় (API সময় শেষ হয়েছে)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">অ্যান্ড্রয়েড ভিআর সাইন ইন সময় শেষ হয়েছে, আবার ভিআরে সাইন ইন করার চেষ্টা করুন</string>
+  <string name="morphe_oauth2_connection_failure_status_400">আন্ড্রয়েড ভিআর সাইন ইন মেয়াদোত্তীর্ণ, ভিআরতে পুনরায় সাইন ইন করার চেষ্টা করুন</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাবে উপলব্ধ নয় (অবস্থা %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 সাময়িকভাবে উপলব্ধ নয়</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">ভিআরে সাইন ইন করতে পারছেন না, ওয়েবসাইট প্রমাণীকরণ অনুমোদিত হয়নি</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">ভিআরে সাইন ইন করতে পারছেন না: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">ভিআরতে সাইন ইন করতে পারছেন না, ওয়েবসাইট অথেন্টিকেশন অনুমোদিত হয়নি</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR এ প্রবেশ করতে ব্যর্থ হয়েছে: %s</string>
   <string name="morphe_oauth2_toast_reset">অ্যান্ড্রয়েড ভিআর থেকে লগ আউট করা হয়েছে</string>
-  <string name="morphe_oauth2_toast_invalid">ভিআর সাইন-ইন টোকেন বলগা, আবার ভিআরে সাইন ইন করার চেষ্টা করুন</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">VR প্রবেশের জন্য অকার্যকর টোকেন, আবার VR এ প্রবেশ করুন</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">ডিআরসি অডিও নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_drc_audio_summary_on">ডিআরসি অডিও নিষ্ক্রিয় করা হয়েছে</string>
+  <string name="morphe_disable_drc_audio_summary_off">ডিআরসি অডিও সক্রিয় হয়েছে</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
   <string name="morphe_force_original_audio_summary_on">মূল অডিও ভাষা ব্যবহার করা হচ্ছে</string>
   <string name="morphe_force_original_audio_summary_off">ডিফল্ট অডিও ব্যবহার করছে</string>

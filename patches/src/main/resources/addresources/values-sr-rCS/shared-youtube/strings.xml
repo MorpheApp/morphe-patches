@@ -66,9 +66,9 @@ Reprodukcija možda neće raditi"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Da biste koristili ovu funkciju, promijenite \'Zadani klijent\' u Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava na Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijavom na Android VR može se reš  iti problem pri prikazivanju za neke korisnike
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijavljivanje na Android VR može popraviti problema sa reprodukcijom za neka korisnika
 
-Za prijavu, pritisn  i Nastai ispod"</string>
+Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Nastai</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjavi se</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Upute</string>
@@ -90,14 +90,18 @@ Za prijavu, pritisn  i Nastai ispod"</string>
 • Ako aplikacija nije korišćena u roku od 6 meseci, Google će ukloniti ovu autentikaciju
 • Ako promijenite lozinku za Google ili uklonite ovaj uređaj iz postavki Google, trebate ponovno prijaviti"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 privremeno nije dostupan (API istekao)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Prijava na Android VR istekla, pokušaj ponovno prijava na VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Prijavljivanje na Android VR je isteklo, pokušajte ponovo da se prijavite na VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 privremeno nije dostupan (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 privremeno nije dostupan</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Korisnik nije mogao biti prijavljen na VR jer je web-autentikacija odbijena</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Korisnik nije mogao biti prijavljen na VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nije moguće se prijaviti na VR, web autentifikacija nije odobrena</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljen sa Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušaj ponovno prijava na VR</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte se ponovno prijaviti na VR</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Onemogući DRC audio</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC audio je onemogućen</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC audio je omogućen</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Prisili originalni jezik zvuka</string>
   <string name="morphe_force_original_audio_summary_on">Korišćenje originalnog jezika zvuka</string>
   <string name="morphe_force_original_audio_summary_off">Korišćenje podrazumevanog zvuka</string>

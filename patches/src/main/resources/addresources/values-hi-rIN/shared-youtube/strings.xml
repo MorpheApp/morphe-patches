@@ -63,9 +63,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">इस सुविधा का उपयोग करने के लिए, \'डिफ़ॉल्ट क्लायंट\' को एंड्रॉइड वीआर पर बदलें</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">एंड्रॉइड वीआर में साइन इन करें</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"एंड्रॉइड वीआर में साइन इन करना कुछ उपयोगकर्ताओं के लिए प्लेबैक समस्याओं को हल कर सकता है
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"एंड्रॉइड VR में साइन इन करना कुछユज़र्स के प्लेबैक प्रॉब्लम को ठीक कर सकता है
 
-साइन इन करने के लिए, नीचे दिए गए बटन पर क्लिक करें"</string>
+साइन इन करने के लिए, नीचे दिए गए बटन पर प्रेस करें"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">जारी रखें</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">साइन आउट</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">इंस्ट्रक्शंस</string>
@@ -87,14 +87,18 @@ Second \"item\" text"</string>
 • यदि यह एप्लिकेशन छह महीने के लिए अनुपयोग में रहा, तो गूगल यह अथेंटिकेशन हटा देगा
 • यदि आप अपनी गूगल पासवर्ड बदलते हैं या अपने गूगल सेटिंग्स में इस डिवाइस को डेरेजिस्टर करते हैं, तो आपको फिर से साइन इन करना पड़ेगा"</string>
   <string name="morphe_oauth2_connection_failure_timeout">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है (एपीआई टाइम आउट)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">एंड्रॉइड वीआर साइन इन समाप्त हो गया, वीआर में फिर से साइन इन करें</string>
+  <string name="morphe_oauth2_connection_failure_status_400">एंड्रॉइड VR साइन इन की तारीख समाप्त हो गई है, VR में फिर से साइन इन करें</string>
   <string name="morphe_oauth2_connection_failure_status">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है (स्टेटस %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">वीआर में साइन इन नहीं किया जा सकता है, वेबसाइट अथेंटिकेशन मंजूरी नहीं दी गई</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">वीआर में साइन इन नहीं किया जा सकता है: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR में साइन इन नहीं हो पा रहा है, वेबसाइट प्रमाणीकरण मंजूर नहीं किया गया था</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR में प्रवेश नहीं किया जा सकता: %s</string>
   <string name="morphe_oauth2_toast_reset">एंड्रॉइड वीआर से लॉग आउट किया गया</string>
-  <string name="morphe_oauth2_toast_invalid">अमान्य वीआर साइन इन टोकन, वीआर में फिर से साइन इन करें</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">VR प्रवेश टोकन अमान्य है, कृपया VR में पुनः प्रवेश करें</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">DRC ध्वनि बंद करें</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC ध्वनि बंद है</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC ध्वनि सक्षम है</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">ओरिजिनल ऑडियो भाषा को मजबूर करें</string>
   <string name="morphe_force_original_audio_summary_on">ओरिजिनल ऑडियो भाषा का उपयोग किया जा रहा है</string>
   <string name="morphe_force_original_audio_summary_off">डिफ़ॉल्ट ऑडियो का उपयोग किया जा रहा है</string>

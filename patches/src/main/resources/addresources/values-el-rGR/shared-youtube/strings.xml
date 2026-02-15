@@ -95,7 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Έξοδος από το Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Δεν έγκειται το κωδικό εισόδου VR, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Απενεργοποίηση ήχου DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Ο ήχος DRC είναι απενεργοποιημένος</string>
+  <string name="morphe_disable_drc_audio_summary_off">Ο ήχος DRC είναι ενεργοποιημένος</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
   <string name="morphe_force_original_audio_summary_on">Χρησιμοποιείται η αρχική γλώσσα ήχου</string>
   <string name="morphe_force_original_audio_summary_off">Χρησιμοποιείται ο προεπιλεγμένος ήχος</string>

@@ -64,7 +64,7 @@ YouTube Premium ユーザーの場合、この設定が必要ない場合があ�
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Android VR に変更してください</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR にログイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、一部のユーザーの再生に関する問題が解決する場合があります。
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、一部のユーザーの再生に関する問題が解消する場合があります。
 
 ログインするには、[続行] をタップしてください"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">続行</string>
@@ -95,7 +95,11 @@ YouTube Premium ユーザーの場合、この設定が必要ない場合があ�
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">DRC オーディオを無効化</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC オーディオは無効です</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC オーディオは有効です</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">オリジナルの音声を強制的に使用</string>
   <string name="morphe_force_original_audio_summary_on">オリジナルの音声トラック (言語) を使用します\n\nオートダビングを含む吹き替えの音声トラックは使用されません</string>
   <string name="morphe_force_original_audio_summary_off">アプリが選択した音声トラック (言語) を使用します\n\nオートダビングを含む吹き替えの音声トラックが使用される場合があります</string>

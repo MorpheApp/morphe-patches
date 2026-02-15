@@ -95,7 +95,11 @@ By się zalogować, naciśnij kontynuuj poniżej"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się do VR ponownie</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Wyłącz dźwięk DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Dźwięk DRC jest wyłączony</string>
+  <string name="morphe_disable_drc_audio_summary_off">Dźwięk DRC jest włączony</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Wymuś oryginalny język audio</string>
   <string name="morphe_force_original_audio_summary_on">Włączone</string>
   <string name="morphe_force_original_audio_summary_off">Wyłączone</string>

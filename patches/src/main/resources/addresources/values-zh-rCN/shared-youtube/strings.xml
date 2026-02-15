@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将 \'默认客户端\' 更改至 Google VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登录 Google VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录 Google VR 可以解决部分用户的播放问题
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录Android VR可以解决一些用户的播放问题
 
-点击'继续'进行登录"</string>
+要登录，请按下面的“继续”按钮"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">继续</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出 Google VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">说明</string>
@@ -88,14 +88,18 @@ Second \"item\" text"</string>
 • 长期未使用时，该认证可能被 Google 移除
 • 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暂时不可用（API 超时）</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Google VR 登录已过期，请再次尝试登录</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR登录已过期，请重新登录VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 暂时不可用（状态：%d）</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暂时不可用</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">无法登录 VR，网页授权未通过</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">无法登录VR，网站认证未批准</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已从 Google VR 登出</string>
-  <string name="morphe_oauth2_toast_invalid">Google VR 登录令牌无效，请重新尝试登录</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">禁用 DRC 音频</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC 音频已禁用</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC 音频已启用</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary_on">使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary_off">正在使用默认音频</string>

@@ -66,9 +66,9 @@ A reprodução pode não funcionar"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Para usar esta funcionalidade, altere \'Default client\' para Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Conectar ao Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Conectar ao Android VR pode corrigir problemas de reprodução para alguns usuários
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Entrar na conta Android VR pode resolver problemas de reprodução para alguns usuários
 
-Para conectar, pressione continuar abaixo"</string>
+Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Desconectar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruções</string>
@@ -90,14 +90,18 @@ Para conectar, pressione continuar abaixo"</string>
 • Se este aplicativo não for usado por 6 meses, o Google removerá esta autenticação
 • Você precisará conectar-se novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">O OAuth2 está temporariamente indisponível (API expirou)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Conexão expirada para o Android VR, tente conectar-se ao VR novamente</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Entrada Android VR expirou, tente entrar novamente na VR</string>
   <string name="morphe_oauth2_connection_failure_status">O OAuth2 está temporariamente indisponível (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">O OAuth2 está temporariamente indisponível</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Falha ao conectar ao VR, a autenticação no site não foi aprovada</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Falha ao conectar ao VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Não é possível entrar na VR, a autenticação do site não foi aprovada</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Desconectado do Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Token de conexão VR inválido, tente conectar-se ao VR novamente</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Desativar áudio DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Áudio DRC desativado</string>
+  <string name="morphe_disable_drc_audio_summary_off">Áudio DRC ativado</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forçar idioma original do áudio</string>
   <string name="morphe_force_original_audio_summary_on">Usando o idioma de áudio original</string>
   <string name="morphe_force_original_audio_summary_off">Usando o áudio predefinido</string>

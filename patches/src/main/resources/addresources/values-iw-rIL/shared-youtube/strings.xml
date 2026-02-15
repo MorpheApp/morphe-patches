@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Чтобы использовать эту функцию, измените \'Default client\' на Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Войти в Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Войти в Android VR можно решить проблемы воспроизведения для некоторых пользователей
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"התחברות לאנדרואיד VR תוכל לתקן בעיות תצוגה עבור כמה משתמשים
 
-Чтобы войти, нажмите «Продолжить» ниже"</string>
+להתחברות, לחץ על המשך למטה"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продолжить</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Выйти</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
@@ -88,14 +88,18 @@ Second \"item\" text"</string>
 • Если это приложение не используется в течение 6 месяцев, Google удалит эту аутентификацию
 • Если вы измените пароль Google или снимете регистрацию этого устройства, вам придется войти снова"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Очнення (способность  временно недоступен (время вышло)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Срок действия Android VR истек, попробуйте войти в VR снова</string>
+  <string name="morphe_oauth2_connection_failure_status_400">התחברות לאנדרואיד VR פגה, נסה להתחבר ל-VR שוב</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступен (статус %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">Очнення временно недоступен</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Не удалось войти в VR, проверка сайта не была одобрена</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Не удалось войти в VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">לא ניתן להתחבר ל-VR, אישור אימות אתר לא אושר</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">לא ניתן להתחבר ל-VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Недействительный токен входа VR, попробуйте войти в VR снова</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">טוקן התחברות ל-VR לא חוקי, נסה להתחבר ל-VR שוב</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">השבת אודיו DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">אודיו DRC מושבת</string>
+  <string name="morphe_disable_drc_audio_summary_off">אודיו DRC מופעל</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary_on">שימוש בשפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary_off">שימוש בשמע ברירת מחדל</string>

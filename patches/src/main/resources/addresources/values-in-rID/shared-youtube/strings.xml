@@ -95,7 +95,11 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Nonaktifkan suara DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Suara DRC dinonaktifkan</string>
+  <string name="morphe_disable_drc_audio_summary_off">Suara DRC diaktifkan</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_off">Menggunakan audio bawaan</string>
