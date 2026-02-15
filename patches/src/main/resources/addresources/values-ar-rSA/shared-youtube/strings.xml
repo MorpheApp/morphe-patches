@@ -66,7 +66,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"تسجيل الدخول إلى Android VR يمكنه إصلاح مشكلات التشغيل لبعض المستخدمين
 
-لتسجيل الدخول. اضغط على 'متابعة' بالأسفل"</string>
+لتسجيل الدخول، اضغط على 'متابعة' بالأسفل"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">متابعة</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">تسجيل خروج</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">تعليمات</string>
@@ -95,7 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
   <string name="morphe_oauth2_toast_reset">تم تسجيل خروج Android VR</string>
   <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">تعطيل صوت DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">تم تعطيل صوت DRC</string>
+  <string name="morphe_disable_drc_audio_summary_off">تم تمكين صوت DRC</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_on">استخدام لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_off">استخدام الصوت الافتراضي</string>

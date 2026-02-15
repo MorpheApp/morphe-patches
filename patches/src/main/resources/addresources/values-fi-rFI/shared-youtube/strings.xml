@@ -64,7 +64,7 @@ Toisto ei välttämättä toimi"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Käytä tätä ominaisuutta, kun muuttaa \'Oletussovellus\' Android VR:ksi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Kirjaudu Android VR:hen</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kirjautuminen Android VR:oon saattaa korjata toistoproblemit joillekin käyttäjille
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR -kirjautuminen saattaa korjata toistoproblemit joillekin käyttäjille
 
 Kirjautumista varten paina \"Jatka\" alapuolella"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Jatka</string>
@@ -88,14 +88,18 @@ Kirjautumista varten paina \"Jatka\" alapuolella"</string>
 • Jos sovellus on kuusi kuukautta epäkäytössä, Google poistaa tämän tunnisteen
 • Sinun täytyy kirjautua uudelleen, jos muutat Googlen salasanasi tai poistat laite Googlen asetuksista"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 on väliaikaisesti epäkäytännöllinen (API-aika-out)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-kirjautuminen vanhentunut, yritä kirjautua uudelleen VR:hen</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR -kirjautuminen vanhentui, yritä kirjautua uudelleen VR:öön</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 on väliaikaisesti epäkäytännöllinen (tila %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 on väliaikaisesti epäkäytännöllinen</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ei voida kirjautua VR:hen, verkkosivun tunnistus ei ole hyväksytty</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Ei voida kirjautua VR:hen: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ei voida kirjautua VR:öön, verkkosivun tunnistus ei hyväksytty</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Ei voida kirjautua VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Kirjautuminen poistettu Android VR:stä</string>
-  <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumistunniste, yritä kirjautua uudelleen VR:hen</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumismerkki, yritä kirjautua uudelleen VR:ään</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Poista DRC-ääni käytöstä</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC-ääni on poistettu käytöstä</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC-ääni on käytössä</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
   <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä ääntä</string>
   <string name="morphe_force_original_audio_summary_off">Käytetään oletusääntä</string>

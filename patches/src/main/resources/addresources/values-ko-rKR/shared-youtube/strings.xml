@@ -60,7 +60,7 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">이 기능을 사용하려면, \'기본 클라이언트\'를 Android VR로 변경하세요</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR에 로그인하기</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR에 로그인하면 일부 사용자의 재생 문제가 해결될 수 있습니다
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR에 로그인하면 일부 사용자의 재생 문제가 해결될 수 있습니다.
 
 로그인하려면 아래에 있는 계속하기를 탭하세요"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">계속하기</string>
@@ -90,8 +90,12 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR에 로그인할 수 없습니다. 웹사이트 인증이 승인되지 않았습니다</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR에서 로그아웃되었습니다</string>
-  <string name="morphe_oauth2_toast_invalid">잘못된 VR 로그인 토큰입니다. VR에 다시 로그인하세요</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">VR 로그인 토큰이 유효하지 않습니다. 다시 VR에 로그인하세요</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">DRC 오디오 비활성화</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC 오디오가 비활성화되었습니다</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC 오디오가 활성화되었습니다</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">원본 오디오 언어 강제로 활성화하기</string>
   <string name="morphe_force_original_audio_summary_on">원본 오디오 언어를 사용 중입니다</string>
   <string name="morphe_force_original_audio_summary_off">기본 오디오 언어를 사용 중입니다</string>

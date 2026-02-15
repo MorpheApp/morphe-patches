@@ -64,7 +64,7 @@ Có thể gặp lỗi khi phát."</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Để dùng tính năng này, thay đổi \'Client mặc định\' thành Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Đăng nhập vào Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Đăng nhập vào Android VR có thể khắc phục sự cố phát cho một số người dùng 
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Đăng nhập vào Android VR có thể khắc phục sự cố phát cho một số người dùng
 
 Để đăng nhập, ấn tiếp tục ở bên dưới"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Tiếp tục</string>
@@ -94,8 +94,12 @@ Có thể gặp lỗi khi phát."</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Không thể đăng nhập vào VR, xác thực trang web đã không được chấp thuận</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Token đăng nhập VR không hợp lệ, hãy thử đăng nhập vào VR lại</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, vui lòng thử đăng nhập vào VR lại</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Tắt âm thanh DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Âm thanh DRC đã bị tắt</string>
+  <string name="morphe_disable_drc_audio_summary_off">Âm thanh DRC đã được bật</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Buộc ngôn ngữ âm thanh gốc</string>
   <string name="morphe_force_original_audio_summary_on">Đang dùng ngôn ngữ âm thanh gốc</string>
   <string name="morphe_force_original_audio_summary_off">Đang dùng âm thanh mặc định</string>

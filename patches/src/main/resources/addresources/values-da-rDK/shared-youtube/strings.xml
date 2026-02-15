@@ -66,9 +66,9 @@ Afspilning fungerer muligvis ikke"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">For at bruge denne funktion, ændr \'Standardklient\' til Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log ind i Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"At logge ind i Android VR kan reparere afspilningsproblemer for nogle brugere
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Indlogging på Android VR kan fiksere afspilningsproblemer for nogle brugere
 
-For at logge ind, tryk på fortsæt nedenfor"</string>
+For at indlogge, tryk på fortsæt nedenfor"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsæt</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Log ud</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Anvisninger</string>
@@ -90,14 +90,18 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
 • Hvis denne app ikke bruges i 6 måneder, vil Google fjerne denne autentificering
 • Du skal logge ind igen, hvis du ændrer din Google-adgangskode eller deautoriserer denne enhed fra dine Google-instillinger"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er midlertidigt utilgængelig (API timeout)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR login udløbet - prøv at logge ind til VR igen</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR-indlogging er udløbet, prøv at indlogge på VR igen</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidigt utilgængelig (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 er midlertidigt utilgængelig</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan ikke logge ind i VR, webstedet GODKENDET ikke authentificering</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan ikke indlogge på VR, website-forfattering blev ikke godkendt</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logged ud fra Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Ugyldigt VR login token - prøv at logge ind til VR igen</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Deaktiver DRC lyd</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC lyd er deaktiveret</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC lyd er aktiveret</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary_on">Bruger originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary_off">Brug standard lyd</string>

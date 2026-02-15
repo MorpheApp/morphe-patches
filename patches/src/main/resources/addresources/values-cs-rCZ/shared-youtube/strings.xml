@@ -66,9 +66,9 @@ Přehrávání nemusí fungovat"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pro použití této funkce změňte výchozího klienta na Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Přihlášení do Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Na přihlášení do Android VR může dojít problémy s přehráváním některých uživatelů.
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Přihlášení do Android VR může vyřešit problémy s přehráváním pro některé uživatele
 
-Pro přihlášení stiskněte Pokračovat níže"</string>
+Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Pokračovat</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásit se</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Nálepky</string>
@@ -90,14 +90,18 @@ Pro přihlášení stiskněte Pokračovat níže"</string>
 • Pokud tento aplikace nepoužijete během 6 měsíců, odstraní Google toto ověření
 • Jestliže změníte své heslo Googlu nebo odstraníte toto zařízení z Vašich nastavení Googlu, budete muset znovu se přihlásit."</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 dočasně není k dispozici (Časový limit API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Čas přihlášení do VR vypršel, zkuste znovu se přihlásit do VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Přihlášení do Android VR vypršelo, zkuste se přihlásit do VR znovu</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 dočasně není k dispozici (stav %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 dočasně není k dispozici</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nelze se přihlásit do VR, ověření na webovém serveru nebylo schváleno</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Nelze se přihlásit do VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nelze se přihlásit do VR, autentizace webové stránky nebyla schválena</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Nesprávný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Vypnout zvuk DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Zvuk DRC je vypnutý</string>
+  <string name="morphe_disable_drc_audio_summary_off">Zvuk DRC je zapnutý</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary_on">Používá se původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary_off">Používá se výchozí zvuk</string>

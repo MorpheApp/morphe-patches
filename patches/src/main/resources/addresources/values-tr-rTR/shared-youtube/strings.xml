@@ -64,7 +64,9 @@ Oynatma çalışmayabilir"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Android VR olarak değiştirin.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR\'da oturum aç</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'da oturum açmak, bazı kullanıcılar için oynatma sorunlarını çözebilir."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'de oturum açmak, bazı kullanıcılar için oynatma sorunlarını çözebilir.
+
+Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Devam et</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıkış yap</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Talimatlar</string>
@@ -90,10 +92,14 @@ Oynatma çalışmayabilir"</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 geçici olarak kullanılamıyor (durum %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 geçici olarak kullanılamıyor</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR oturumu açılamadı, web sitesi kimlik doğrulaması onaylanmadı</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">\"VR oturumu açılamadı: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR oturumu açılamadı: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR oturumu kapatıldı</string>
   <string name="morphe_oauth2_toast_invalid">Geçersiz VR oturum açma belirteci, VR\'da tekrar oturum açmayı deneyin</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">DRC sesi devre dışı bırak</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC sesi devre dışı</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC sesi etkin</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal ses dilini zorla</string>
   <string name="morphe_force_original_audio_summary_on">Orijinal ses dili kullanılıyor</string>
   <string name="morphe_force_original_audio_summary_off">Varsayılan ses kullanılıyor</string>

@@ -66,8 +66,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">เปลี่ยน \'Default client\' เป็น Android VR เพื่อใช้งานคุณสมบัติ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">เข้าสู่ระบบ Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"เข้าสู่ระบบ Android VR อาจช่วยแก้ไขปัญหาการเล่นสตรีมวิดีโอบางอย่างให้ดีขึ้น
-กดดำเนินการต่อด้านล่างเพื่อดပលย์เข้าสู่ระบบ"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"กดต่อไปเพื่อลงชื่อเข้าใช้ใน Android VR เพื่อแก้ปัญหาการเล่นกลับบางครั้ง
+
+ลงชื่อเข้าใช้เพื่อลงชื่อเข้าใช้"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">ดำเนินการต่อ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ออกจากระบบ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">คำแนะนำ</string>
@@ -89,14 +90,18 @@ Second \"item\" text"</string>
 • ถ้าแอปนี้มิได้ใช้เป็นระยะเวลา 6 เดือน Google จะลบทोเค็นนี้ไป
 • ถ้าคุณเปลี่ยนรหัสผ่าน Google หรือลบที่นี้ออกจากตั้งค่า Google คุณก็ต้องเข้าสู่ระบบอีกครั้ง"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 นั้นล่าช้าชั่วคราว (API หมดเวลา)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">เข้าสู่ระบบ Android VR หมดอายุ เคาะรีเซ็ตอีกครั้งได้แล้ว</string>
+  <string name="morphe_oauth2_connection_failure_status_400">การลงชื่อเข้าใช้ Android VR หมดอายุแล้ว กรุณาลงชื่อเข้าใช้ VR อีกครั้ง</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 นั้นล่าช้าชั่วคราว (%d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 นั้นล่าช้าชั่วคราว</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">ล้มเหลวในการเข้าสู่ระบบ VR เพราะเว็บไซต์ไม่อนุมัติการเข้าสู่ระบบ</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">ล้มเหลวในการเข้าสู่ระบบ VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">ไม่สามารถลงชื่อเข้าใช้ VR ได้ เว็บไซต์ยังไม่ได้อนุมัติการรับรอง</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">ไม่สามารถเข้าสู่ระบบ VR: %s</string>
   <string name="morphe_oauth2_toast_reset">ออกจากระบสเวล VR</string>
-  <string name="morphe_oauth2_toast_invalid">โทเค็นเข้าสู่ระบบ VR เสียหาย ลองเข้าสู่ระบบ VR อีกครั้ง</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">โทเค็นเข้าสู่ระบบ VR ไม่ถูกต้อง กรุณาลองเข้าสู่ระบบ VR อีกครั้ง</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">ปิดเสียง DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">เสียง DRC ถูกปิด</string>
+  <string name="morphe_disable_drc_audio_summary_off">เสียง DRC ถูกเปิด</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">บังคับใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary_on">กำลังใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary_off">กำลังใช้ออดิโอเริ่มต้น</string>

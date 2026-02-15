@@ -222,11 +222,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">Приховати \"Рекомендовані відео\"</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Секцію \"Рекомендованих відео\" приховано</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Секція \"Рекомендованих відео\" показується</string>
-  <string name="morphe_hide_feed_flyout_menu_title">Увімкнути фільтр випадаючого меню стрічки</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_on">Фільтр випадаючого меню стрічки увімкнено</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_off">Фільтр випадаючого меню стрічки вимкнено</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Фільтр випадаючого меню стрічки</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Список назвів флайаут меню для фільтрування, розділених новими рядками</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Увімкнути фільтр спливаючого меню стрічки</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Фільтр спливаючого меню стрічки увімкнено</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Фільтр спливаючого меню стрічки вимкнено</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Фільтр спливаючого меню стрічки</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Список спливаючих назв меню для фільтрації, розділених новими рядками</string>
   <string name="morphe_hide_gaming_section_title">Приховати \"Геймінг\"</string>
   <string name="morphe_hide_gaming_section_summary_on">Секцію \"Геймінгу\" приховано</string>
   <string name="morphe_hide_gaming_section_summary_off">Секція \"Геймінгу\" показується</string>
@@ -812,7 +812,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_player_screen_summary">Приховати або показувати компоненти плеєра Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Приховати Shorts на сторінці каналу</string>
   <string name="morphe_hide_shorts_channel_summary_on">Приховано на сторінці каналу</string>
-  <string name="morphe_hide_shorts_channel_summary_off">Показано на сторінці каналу</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Показуються на сторінці каналу</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Приховати Shorts у стрічці</string>
   <string name="morphe_hide_shorts_home_summary_on">Приховано в домашній стрічці та пов’язаних відео</string>

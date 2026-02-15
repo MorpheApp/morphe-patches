@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Чтобы использовать эту функцию, изменить значение \'Default client\' на Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Войти в Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вход во в Android VR может исправить проблемы воспроизведения для некоторых пользователей
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вход в Android VR может исправить проблемы воспроизведения для некоторых пользователей
 
-Чтобы войти, нажмите \"Продолжить\" ниже"</string>
+Для входа нажмите кнопку \"Продолжить\" ниже"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продолжить</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Выйти из Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
@@ -88,14 +88,18 @@ Second \"item\" text"</string>
 • Если это приложение не использовалось в течение 6 месяцев, то Google удалят эту аутентификацию
 • Вам потребуется войти снова, если вы измените пароль Google или деактивируете в настройках этого устройства из Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 временно недоступна (API таймаут)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR вход истек срок, попробуйте войти во VR еще раз</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Вход в Android VR истек, попробуйте войти в VR снова</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступна (статус %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 временно недоступна</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Не удалось войти во VR, веб-аутентификация не была одобрена</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Не удалось войти во VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Невозможно войти в VR, веб-авторизация не была одобрена</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Невозможно войти в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из войти Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Недопустимый VR токен входа, попробуйте войти во VR еще раз</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Недействительный токен входа в VR, попробуйте войти в VR снова</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">Отключить звук DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Звук DRC отключен</string>
+  <string name="morphe_disable_drc_audio_summary_off">Звук DRC включен</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудительно оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary_on">Используется оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary_off">Используется звуковая дорожка по умолчанию</string>

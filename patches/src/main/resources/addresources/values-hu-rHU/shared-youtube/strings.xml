@@ -64,9 +64,9 @@ A lejátszás nem működhet"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ehhez a funkcionálisitásért, változtassa meg a \"Default client\" (alap ügyfél) beállítás lehetőséget az Android VR-ba</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bejelentkezés az Android VR-ba</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Bejelentkezés az Android VR-ba lehet megoldhatja a lejátszási problémákat valamennyi felhasználó számára
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-ba belépéssel megoldhatók a lejátszás problémái
 
-A bejelentkezéshez kérjük, nyomja meg a folytatás gombot a fenti szöveg után"</string>
+Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Folytatás</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Kijelentkezés</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Utasítások</string>
@@ -88,14 +88,18 @@ A bejelentkezéshez kérjük, nyomja meg a folytatás gombot a fenti szöveg ut�
 • Ha ez az alkalmazás 6 hónapig nem használatos, a Google eltávolítja ezt az elérési jogkivonatot
 • Ha megváltoztatja a Google jelszavát vagy eltávolítja ezt az eszközt a Google beállításairól, újra be kell jelentkeznie"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Az OAuth2 átmenetileg nem elérhető (az API időtúllépés miatt)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Az Android VR bejelentkezési időtűz lejárt, próbálja megint a VR-ben bejelentkezni</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR belépés lejárt, próbáld meg újra belépni a VR-ba</string>
   <string name="morphe_oauth2_connection_failure_status">Az OAuth2 átmenetileg nem elérhető (állapot %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">Az OAuth2 átmenetileg nem elérhető</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nem lehet bejelentkezni a VR-be, a weboldali bejelentkezés nem került jóváhagyásra</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Nem lehet bejelentkezni a VR-be: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nem lehetséges a VR-ba belépni, a webhely hitelesítése nem lett jóváhagyva</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nem tud bejelentkezni a VR-ba: %s</string>
   <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
-  <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja megint a VR-ben bejelentkezni</string>
-  <!-- misc.audio.forceOriginalAudioPatch -->
+  <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
+  <!-- misc.audio.drc.drcAudioPatch -->
+  <string name="morphe_disable_drc_audio_title">DRC hang letiltása</string>
+  <string name="morphe_disable_drc_audio_summary_on">A DRC hang letiltva van</string>
+  <string name="morphe_disable_drc_audio_summary_off">A DRC hang engedélyezve van</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
   <string name="morphe_force_original_audio_summary_on">Eredeti hang használata a hang nyelvén</string>
   <string name="morphe_force_original_audio_summary_off">Alapértelmezett hang használata</string>
