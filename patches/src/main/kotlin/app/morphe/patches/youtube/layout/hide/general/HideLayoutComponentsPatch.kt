@@ -214,6 +214,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_channel_screen",
                 preferences = setOf(
+                    PreferenceCategory(
+                        titleKey = null,
+                        sorting = Sorting.UNSORTED,
+                        tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                        preferences = setOf(
+                            SwitchPreference("morphe_hide_channel_tab"),
+                            TextPreference(
+                                "morphe_hide_channel_tab_filter_strings",
+                                inputType = InputType.TEXT_MULTI_LINE
+                            ),
+                        )
+                    ),
                     SwitchPreference("morphe_hide_community_button"),
                     SwitchPreference("morphe_hide_for_you_shelf"),
                     SwitchPreference("morphe_hide_join_button"),
@@ -287,7 +299,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         addLithoFilter(KEYWORD_FILTER_CLASS_NAME)
         addLithoFilter(CUSTOM_FILTER_CLASS_NAME)
 
-        // region Mix playlists
+        // region hide mix playlists
 
         ParseElementFromBufferFingerprint.method.apply {
             val startIndex = ParseElementFromBufferFingerprint.instructionMatches.first().index
@@ -316,7 +328,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region Watermark (legacy code for old versions of YouTube)
+        // region hide watermark (legacy code for old versions of YouTube)
 
         ShowWatermarkFingerprint.match(
             PlayerOverlayFingerprint.originalClassDef,
@@ -335,7 +347,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region Show more button
+        // region hide show more button
 
         val (textViewField, buttonContainerField) = with (HideShowMoreButtonSetViewFingerprint) {
             val textViewIndex = instructionMatches[1].index
@@ -393,7 +405,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region Subscribed channels bar
+        // region hide subscribed channels bar
 
         // Tablet
         val constructorFingerprint = if (is_20_21_or_greater)
@@ -433,7 +445,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region crowdfunding box
+        // region hide crowdfunding box
 
         CrowdfundingBoxFingerprint.let {
             it.method.apply {
@@ -507,7 +519,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region 'Doodles'
+        // region hide YouTube Doodles
 
         YouTubeDoodlesImageViewFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow {
@@ -525,7 +537,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
         }
 
         // endregion
-
 
         // region hide view count
 
@@ -600,7 +611,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
         }
 
-        // Hide search suggestions
+        // endregion
+
+        // region hide search suggestions
 
         if (is_20_21_or_greater) {
             SearchBoxTypingStringFingerprint.match(
@@ -629,7 +642,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        // Hide flyout menu items
+        // endregion
+
+        // region hide flyout menu items
 
         BottomSheetMenuItemBuilderFingerprint.let {
             it.method.apply {
@@ -655,6 +670,46 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     index + 1,
                     "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
                             "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFlyoutMenu(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
+                )
+            }
+        }
+
+        // endregion
+
+        // region hide channel tab
+
+        val channelTabBuilderMethod = ChannelTabBuilderFingerprint.method
+        ChannelTabRendererFingerprint.match().let { match ->
+            match.method.apply {
+                val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
+                    getReference<MethodReference>()?.name == "hasNext"
+                }
+
+                val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
+                val targetIndex = indexOfFirstInstructionReversedOrThrow {
+                    val reference = (this as? ReferenceInstruction)?.reference as? MethodReference
+
+                    opcode == Opcode.INVOKE_INTERFACE &&
+                            reference?.returnType == channelTabBuilderMethod.returnType &&
+                            reference.parameterTypes == channelTabBuilderMethod.parameterTypes
+                }
+
+                val objectIndex = indexOfFirstInstructionReversedOrThrow(targetIndex, Opcode.IGET_OBJECT)
+                val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
+                val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
+
+                addInstructionsWithLabels(
+                    objectIndex + 1,
+                    """
+                invoke-static { v${objectInstruction.registerA} }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideChannelTab(Ljava/lang/String;)Z
+                move-result v${objectInstruction.registerA}
+                if-eqz v${objectInstruction.registerA}, :ignore
+                invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                goto :next_iterator
+                :ignore
+                iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
+                """,
+                    ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
             }
         }
