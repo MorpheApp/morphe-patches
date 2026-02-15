@@ -6,10 +6,10 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.SanitizeUrlQueryPatch;
-import app.morphe.extension.reddit.settings.preference.RedditImportExportPreference;
-import app.morphe.extension.reddit.settings.preference.RedditMorpheAboutPreference;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.reddit.settings.preference.RedditImportExportPreference;
+import app.morphe.extension.reddit.settings.preference.RedditMorpheAboutPreference;
 
 @SuppressWarnings("deprecation")
 public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCategory {
@@ -35,7 +35,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.OPEN_LINKS_DIRECTLY,
                     "Open links directly",
-                    "Skips over redirection URLs in external links."
+                    "Skips over redirection URLs in external links"
             ));
         }
         if (OpenLinksExternallyPatch.isPatchIncluded()) {
@@ -43,7 +43,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.OPEN_LINKS_EXTERNALLY,
                     "Open links externally",
-                    "Opens links in your browser instead of in the in-app-browser."
+                    "Opens links in your browser instead of in the in-app-browser"
             ));
         }
         if (SanitizeUrlQueryPatch.isPatchIncluded()) {
@@ -51,7 +51,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.SANITIZE_URL_QUERY,
                     "Sanitize sharing links",
-                    "Sanitizes sharing links by removing tracking query parameters."
+                    "Sanitizes sharing links by removing tracking query parameters"
             ));
         }
     }

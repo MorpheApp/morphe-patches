@@ -1,11 +1,13 @@
 dependencies {
     compileOnly(project(":extensions:shared:library"))
     compileOnly(project(":extensions:reddit:stub"))
-    compileOnly(libs.annotation)
+    implementation(libs.androidx.core)
     implementation(libs.hiddenapi)
 }
 
 android {
+    compileSdk = 35
+
     defaultConfig {
         minSdk = 28
     }

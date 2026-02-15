@@ -1,77 +1,94 @@
 package app.morphe.patches.reddit.layout.subredditdialog
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal val frequentUpdatesHandlerFingerprint = Fingerprint(
-    definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler${'$'}handleFrequentUpdates$",
+private val SHOW_DIALOG_FILTERS = listOf(
+    methodCall(
+        opcode = Opcode.INVOKE_VIRTUAL,
+        name = "show"
+    ),
+    opcode(
+        Opcode.MOVE_RESULT_OBJECT,
+        location = MatchAfterImmediately()
+    ),
+)
+
+internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler\$handleFrequentUpdates$",
     name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    filters = OpcodesFilter.opcodesToFilters(Opcode.CONST_STRING)
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        opcode(
+            Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            Opcode.IF_NEZ,
+            location = MatchAfterWithin(3)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Lcom/reddit/domain/model/Subreddit;->getUserIsSubscriber()Ljava/lang/Boolean;",
+            location = MatchAfterWithin(3)
+        )
+    )
 )
 
-internal fun listOfUserIsSubscriberInstruction(method: Method) =
-    method.implementation?.instructions
-        ?.withIndex()
-        ?.filter { (_, instruction) ->
-            val reference = (instruction as? ReferenceInstruction)?.reference
-            instruction.opcode == Opcode.INVOKE_INTERFACE &&
-                    reference is MethodReference &&
-                    reference.name == "getUserIsSubscriber" &&
-                    reference.returnType == "Ljava/lang/Boolean;"
-        }
-        ?.map { (index, _) -> index }
-        ?.reversed()
-        ?: emptyList()
-
-internal val nsfwAlertEmitFingerprint = Fingerprint(
+internal object NSFWAlertEmitFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/screens/pager/v2/",
     name = "emit",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
-        string("nsfwAlertDelegate")
-    ),
-    custom = { method, _ ->
-        // TODO: Convert these to instruction filters
-        indexOfGetOver18Instruction(method) >= 0 &&
-                indexOfHasBeenVisitedInstruction(method) >= 0 &&
-                indexOfIsIncognitoInstruction(method) >= 0
-    }
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Lcom/reddit/domain/model/Subreddit;->getOver18()Ljava/lang/Boolean;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Lcom/reddit/domain/model/Subreddit;->getHasBeenVisited()Z"
+        ),
+        opcode(
+            Opcode.IF_NEZ,
+            location = MatchAfterWithin(3)
+        ),
+        string("nsfwAlertDelegate"),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Lcom/reddit/session/Session;->isIncognito()Z"
+        ),
+    )
 )
 
-// TODO: Replace with methodCall() instruction filter usage
-internal fun indexOfGetOver18Instruction(methodDef: Method) =
-    methodDef.indexOfFirstInstruction {
-        val reference = getReference<MethodReference>()
-        opcode == Opcode.INVOKE_VIRTUAL &&
-                reference?.name == "getOver18" &&
-                reference.returnType == "Ljava/lang/Boolean;"
-    }
+internal object NSFWAlertDialogBuilderFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = SHOW_DIALOG_FILTERS
+)
 
-// TODO: Replace with methodCall() instruction filter usage
-internal fun indexOfIsIncognitoInstruction(methodDef: Method) =
-    methodDef.indexOfFirstInstruction {
-        val reference = getReference<MethodReference>()
-        opcode == Opcode.INVOKE_INTERFACE &&
-                reference?.name == "isIncognito" &&
-                reference.returnType == "Z"
-    }
+internal object NSFWAlertDialogInstanceFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = SHOW_DIALOG_FILTERS
+)
 
-// TODO: Replace with methodCall() instruction filter usage
-internal fun indexOfHasBeenVisitedInstruction(method: Method) =
-    method.indexOfFirstInstruction {
-        val reference = getReference<MethodReference>()
-        opcode == Opcode.INVOKE_VIRTUAL &&
-                reference?.name == "getHasBeenVisited" &&
-                reference.returnType == "Z"
-    }
+internal object NSFWAlertDialogParentFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("NsfwAlertDialogScreenDelegate")
+    )
+)

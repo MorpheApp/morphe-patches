@@ -8,7 +8,6 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class OpenLinksExternallyPatch {
@@ -22,6 +21,28 @@ public class OpenLinksExternallyPatch {
     }
 
     /**
+     * Injection point.
+     */
+    public static void openLinksExternally(String uri) {
+        if (uri != null && Settings.OPEN_LINKS_EXTERNALLY.get()) {
+            Activity activity = activityRef.get();
+            if (activity != null && !activity.isDestroyed()) {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(uri));
+                    activity.startActivity(intent);
+                    activity.finish();
+                    activityRef = new WeakReference<>(null);
+                } catch (Exception e) {
+                    Logger.printException(() -> "Can not open URL: " + uri, e);
+                }
+            }
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Override 'CustomTabsIntent', in order to open links in the default browser.
      * Instead of doing CustomTabsActivity,
      *
@@ -42,25 +63,9 @@ public class OpenLinksExternallyPatch {
         return false;
     }
 
-    public static void openLinksExternally(String uri) {
-        if (uri != null && Settings.OPEN_LINKS_EXTERNALLY.get()) {
-            Activity activity = activityRef.get();
-            if (activity != null && !activity.isDestroyed()) {
-                try {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(uri));
-                    activity.startActivity(intent);
-                    Utils.runOnMainThreadDelayed(() -> {
-                        activity.finish();
-                        activityRef = new WeakReference<>(null);
-                    }, 100);
-                } catch (Exception e) {
-                    Logger.printException(() -> "Can not open URL: " + uri, e);
-                }
-            }
-        }
-    }
-
+    /**
+     * Injection point.
+     */
     public static void setActivity(Activity activity) {
         activityRef = new WeakReference<>(activity);
     }

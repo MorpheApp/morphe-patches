@@ -2,6 +2,8 @@ package app.morphe.extension.reddit.settings.preference;
 
 import android.content.Context;
 import android.preference.PreferenceScreen;
+import android.view.View;
+import android.widget.ListView;
 
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
@@ -31,5 +33,20 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         new AdsPreferenceCategory(context, preferenceScreen);
         new LayoutPreferenceCategory(context, preferenceScreen);
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        View rootView = getView();
+        if (rootView == null) return;
+
+        ListView listView = rootView.findViewById(android.R.id.list);
+        if (listView == null) return;
+
+        // Hide divider.
+        listView.setDivider(null);
+        listView.setDividerHeight(0);
     }
 }

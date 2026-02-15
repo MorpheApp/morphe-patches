@@ -4,8 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.reddit.misc.settings.is_2025_45_or_greater
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
@@ -32,35 +30,37 @@ val openLinksExternallyPatch = bytecodePatch(
             val insertIndex = indexOfFirstStringInstructionOrThrow("uri") + 2
 
             addInstructionsWithLabels(
-                insertIndex, """
-                    invoke-static {p1, p2}, $EXTENSION_CLASS_DESCRIPTOR->openLinksExternally(Landroid/app/Activity;Landroid/net/Uri;)Z
+                insertIndex,
+                """
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS_DESCRIPTOR->openLinksExternally(Landroid/app/Activity;Landroid/net/Uri;)Z
                     move-result v0
-                    if-eqz v0, :dismiss
+                    if-eqz v0, :ignore
                     return-void
-                    """, ExternalLabel("dismiss", getInstruction(insertIndex))
+                    :ignore
+                    nop
+                """
             )
         }
 
-        if (is_2025_45_or_greater) {
-            fbpActivityOnCreateFingerprint.method.addInstruction(
-                0,
-                "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                        "setActivity(Landroid/app/Activity;)V"
-            )
+        FbpActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "setActivity(Landroid/app/Activity;)V"
+        )
 
-            articleConstructorFingerprint.match(
-                articleToStringFingerprint.classDef
-            ).let {
-                it.method.apply {
-                    val nullCheckIndex = it.instructionMatches.last().index
-                    val stringRegister = getInstruction<FiveRegisterInstruction>(nullCheckIndex).registerC
+        ArticleConstructorFingerprint.match(
+            ArticleToStringFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val nullCheckIndex = it.instructionMatches.last().index
+                val stringRegister =
+                    getInstruction<FiveRegisterInstruction>(nullCheckIndex).registerC
 
-                    addInstruction(
-                        nullCheckIndex + 1,
-                        "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                                "openLinksExternally(Ljava/lang/String;)V"
-                    )
-                }
+                addInstruction(
+                    nullCheckIndex + 1,
+                    "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            "openLinksExternally(Ljava/lang/String;)V"
+                )
             }
         }
 

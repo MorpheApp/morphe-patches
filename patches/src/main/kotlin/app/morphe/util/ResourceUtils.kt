@@ -2,7 +2,7 @@
  * Copyright 2025 Morphe.
  * https://github.com/morpheapp/morphe-patches
  *
- * File-Specific License Notice (GPLv3 Section 7 Additional Permission).
+ * File-Specific License Notice (GPLv3 Section 7 Terms)
  *
  * This file is part of the Morphe patches project and is licensed under
  * the GNU General Public License version 3 (GPLv3), with the Additional
@@ -29,6 +29,7 @@
  * (Project Name Restriction) and the GPLv3 itself, remain fully
  * applicable to this file.
  */
+
 package app.morphe.util
 
 import app.morphe.patcher.patch.PatchException

@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class OpenLinksDirectlyPatch {
@@ -16,6 +17,8 @@ public final class OpenLinksDirectlyPatch {
     }
 
     /**
+     * Injection point.
+     * <p>
      * Parses the given Reddit redirect uri by extracting the redirect query.
      *
      * @param uri The Reddit redirect uri.
@@ -25,8 +28,9 @@ public final class OpenLinksDirectlyPatch {
         try {
             if (Settings.OPEN_LINKS_DIRECTLY.get()) {
                 final String parsedUri = uri.getQueryParameter("url");
-                if (parsedUri != null && !parsedUri.isEmpty())
+                if (Utils.isNotEmpty(parsedUri)) {
                     return Uri.parse(parsedUri);
+                }
             }
         } catch (Exception e) {
             Logger.printException(() -> "Can not parse URL: " + uri, e);

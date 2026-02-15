@@ -34,7 +34,7 @@ public class RedditMorpheAboutPreference extends MorpheAboutPreference {
         super(context);
 
         this.setTitle("About");
-        this.setSummary("About Reddit Morphe.");
+        this.setSummary("About Reddit Morphe");
     }
 
     protected String getString(String key, Object... args) {
