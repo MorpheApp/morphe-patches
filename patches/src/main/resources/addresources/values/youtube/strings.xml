@@ -689,7 +689,7 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
     <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
 • A black bar may appear at the top of the video player.
-• The system navigation bar can change to transparent and it's not possible to comment on videos."</string>
+• The system navigation bar can change to transparent, and it's not possible to comment on videos."</string>
     <string name="morphe_disable_translucent_navigation_bar_light_title">Disable light translucent bar</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Light mode navigation bar is opaque</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Light mode navigation bar is opaque or translucent</string>
@@ -708,6 +708,9 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
     <string name="morphe_hide_toolbar_search_button_summary_on">Search button is hidden</string>
     <string name="morphe_hide_toolbar_search_button_summary_off">Search button is shown</string>
+    <string name="morphe_hide_toolbar_voice_search_button_title">Hide Voice search button</string>
+    <string name="morphe_hide_toolbar_voice_search_button_summary_on">Voice search button is hidden</string>
+    <string name="morphe_hide_toolbar_voice_search_button_summary_off">Voice search button is shown</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>

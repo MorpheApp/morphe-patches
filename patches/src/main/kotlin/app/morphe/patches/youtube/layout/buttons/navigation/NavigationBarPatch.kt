@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.buttons.navigation
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -84,7 +85,7 @@ val navigationBarPatch = bytecodePatch(
             )
         )
 
-        // Switch create with notifications button.
+        // Swap create with notifications button.
         addOSNameHook(
             Endpoint.GUIDE,
             "$EXTENSION_CLASS_DESCRIPTOR->swapCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;",
@@ -178,7 +179,8 @@ val navigationBarPatch = bytecodePatch(
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_toolbar_create_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button"),
-            SwitchPreference("morphe_hide_toolbar_search_button")
+            SwitchPreference("morphe_hide_toolbar_search_button"),
+            SwitchPreference("morphe_hide_toolbar_voice_search_button")
         )
         if (!is_20_31_or_greater) {
             toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
@@ -196,6 +198,50 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
 
+
+        //
+        // Hide voice search button.
+        //
+        SearchBarFingerprint.match(SearchBarParentFingerprint.originalClassDef).method.let { method ->
+            val startIndex = SearchBarFingerprint.instructionMatches.first().index
+
+            val setVisibilityIndex = method.indexOfFirstInstructionOrThrow(startIndex) {
+                opcode == Opcode.INVOKE_VIRTUAL &&
+                        getReference<MethodReference>()?.name == "setVisibility"
+            }
+
+            val instruction = method.getInstruction<FiveRegisterInstruction>(setVisibilityIndex)
+
+            method.replaceInstruction(
+                setVisibilityIndex,
+                "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
+                        "$EXTENSION_CLASS_DESCRIPTOR->hideVoiceSearchButton(Landroid/view/View;I)V"
+            )
+        }
+
+        SearchResultFingerprint.match(VoiceInputControllerParentFingerprint.originalClassDef).method.let { method ->
+            val voiceInputControllerCall = VoiceInputControllerFingerprint.originalMethod.run {
+                "${definingClass}->${name}(${parameters.joinToString(",") { it.type }})${returnType}"
+            }
+
+            val controllerIndex = method.indexOfFirstInstructionOrThrow {
+                opcode == Opcode.INVOKE_VIRTUAL &&
+                        getReference<MethodReference>()?.toString() == voiceInputControllerCall
+            }
+
+            val setOnClickListenerIndex = method.indexOfFirstInstructionOrThrow(controllerIndex) {
+                opcode == Opcode.INVOKE_VIRTUAL &&
+                        getReference<MethodReference>()?.name == "setOnClickListener"
+            }
+
+            val viewRegister = method.getInstruction<FiveRegisterInstruction>(setOnClickListenerIndex).registerC
+
+            method.addInstruction(
+                setOnClickListenerIndex + 1,
+                "invoke-static { v$viewRegister }, " +
+                        "$EXTENSION_CLASS_DESCRIPTOR->hideVoiceSearchButton(Landroid/view/View;)V"
+            )
+        }
 
         //
         // Wide searchbar
