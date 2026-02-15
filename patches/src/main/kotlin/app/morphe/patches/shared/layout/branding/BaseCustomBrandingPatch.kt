@@ -15,7 +15,6 @@ import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.util.ResourceGroup
-import app.morphe.util.Utils.trimIndentMultiline
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -25,6 +24,7 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
+import app.morphe.util.trimIndentMultiline
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -126,10 +126,9 @@ internal fun baseCustomBrandingPatch(
                     "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->setBranding()V"
                 )
 
-                val extensionClassDef = classDefBy(EXTENSION_CLASS_DESCRIPTOR)
-                NumberOfPresetAppNamesExtensionFingerprint.match(extensionClassDef).method.returnEarly(numberOfPresetAppNames)
-                UserProvidedCustomNameExtensionFingerprint.match(extensionClassDef).method.returnEarly(customName != null)
-                UserProvidedCustomIconExtensionFingerprint.match(extensionClassDef).method.returnEarly(customIcon != null)
+                NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
+                UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
+                UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
 
                 NotificationFingerprint.method.apply {
                     val getBuilderIndex = if (isYouTubeMusic) {

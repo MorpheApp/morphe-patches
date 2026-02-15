@@ -222,6 +222,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">फ़ीचर्ड वीडियो छुपाएं</string>
   <string name="morphe_hide_featured_videos_section_summary_on">फ़ीचर्ड वीडियो का क्षेत्र छुपा हुआ है</string>
   <string name="morphe_hide_featured_videos_section_summary_off">फ़ीचर्ड वीडियो का क्षेत्र दिखाया गया है</string>
+  <string name="morphe_hide_feed_flyout_menu_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर को सक्षम करें</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">फ़ीड फ़्लाईआउट मेनू फ़िल्टर सक्षम है</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">फ़ीड फ़्लाईआउट मेनू फ़िल्टर अक्षम है</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">फ्लाईआउट मेनू नामों की सूची फ़िल्टर करें, नई लाइन पर विभाजित करें</string>
   <string name="morphe_hide_gaming_section_title">गेमिंग छुपाएं</string>
   <string name="morphe_hide_gaming_section_summary_on">गेमिंग का क्षेत्र छुपा हुआ है</string>
   <string name="morphe_hide_gaming_section_summary_off">गेमिंग का क्षेत्र दिखाया गया है</string>
@@ -569,11 +574,22 @@ Second \"item\" text"</string>
   <string name="morphe_hide_thanks_button_summary_off">थैंक्यू बटन दिखाया जाता है</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">पूछ ताछ छुपाएं </string>
+  <string name="morphe_hide_ask_button_summary_on">पूछ ताछ बटन छुपा हुआ है</string>
+  <string name="morphe_hide_ask_button_summary_off">पूछ ताछ बटन दिख रहा है</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">क्लिप छिपाएं</string>
   <string name="morphe_hide_clip_button_summary_on">क्लिप बटन छुपा हुआ है</string>
   <string name="morphe_hide_clip_button_summary_off">क्लिप बटन दिखाया गया है</string>
+  <string name="morphe_hide_clip_button_user_dialog_message">यह गुप्त फ़ंक्शन कुछ उपयोगकर्ता खातों के लिए काम नहीं करेगा।</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">शॉप छिपाएं</string>
+  <string name="morphe_hide_shop_button_summary_on">शॉप बटन छिपा है</string>
+  <string name="morphe_hide_shop_button_summary_off">शॉप बटन दिख रहा है</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">सेव छिपाएं</string>
+  <string name="morphe_hide_save_button_summary_on">सेव बटन छिपा है</string>
+  <string name="morphe_hide_save_button_summary_off">सेव बटन दिख रहा है</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">शीर्षक</string>
   <string name="morphe_captions_screen_summary">शीर्षकों को स्वचालित रूप से सक्षम होने से रोकें या कप्शन कुकीज़ सेट करें</string>
@@ -605,8 +621,16 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_summary_on">ट्रांसक्रिप्ट उपलब्ध है</string>
   <string name="morphe_fix_transcript_summary_off">एक पूर्व शर्त जांच विफल होने के कारण ट्रांसक्रिप्ट उपलब्ध हो सकता है नहीं</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <string name="morphe_navigation_buttons_screen_title">नविगेशन बटन</string>
+  <string name="morphe_navigation_buttons_screen_summary">नविगेशन बार बटनों को छुपाएं या बदलें</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_home_button_title">होम बटन छिपाएं</string>
+  <string name="morphe_hide_home_button_summary_on">होम बटन छिपा है </string>
+  <string name="morphe_hide_home_button_summary_off">होम बटन दिख रहा है </string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">Shorts बटन छिपाएं</string>
+  <string name="morphe_hide_shorts_button_summary_on">Shorts बटन छिपा है </string>
+  <string name="morphe_hide_shorts_button_summary_off">Shorts बटन दिख रहा है</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->

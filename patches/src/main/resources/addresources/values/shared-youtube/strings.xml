@@ -67,7 +67,7 @@ Playback may not work"</string>
     <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to Android VR</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing into Android VR can fix playback issues for some users
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to Android VR can fix playback issues for some users
 
 To sign in, press continue below"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
@@ -91,15 +91,20 @@ To sign in, press continue below"</string>
 • If this app is unused for 6 months then Google will remove this authentication
 • You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
-    <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing into VR again</string>
+    <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing in to VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
     <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
-    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign into VR, website authentication was not approved</string>
-    <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign into VR: %s</string>
+    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign in to VR, website authentication was not approved</string>
+    <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
     <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
-    <string name="morphe_oauth2_toast_invalid">Invalid VR sign-in token, try signing into VR again</string>
+    <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
 
-    <!-- misc.audio.forceOriginalAudioPatch -->
+    <!-- misc.audio.drc.drcAudioPatch -->
+    <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
+    <string name="morphe_disable_drc_audio_summary_on">DRC audio is disabled</string>
+    <string name="morphe_disable_drc_audio_summary_off">DRC audio is enabled</string>
+
+    <!-- misc.audio.tracks.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>
     <string name="morphe_force_original_audio_summary_on">Using original audio language</string>
     <string name="morphe_force_original_audio_summary_off">Using default audio</string>

@@ -36,6 +36,7 @@ import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.DeArrowAvailability;
@@ -47,7 +48,7 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 
-public class Settings extends BaseSettings {
+public class Settings extends SharedYouTubeSettings {
     // Video
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
@@ -96,6 +97,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE);
     public static final BooleanSetting HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE, true);
     public static final BooleanSetting HIDE_EXPANDABLE_CARD = new BooleanSetting("morphe_hide_expandable_card", TRUE);
+    public static final BooleanSetting HIDE_FEED_FLYOUT_MENU = new BooleanSetting("morphe_hide_feed_flyout_menu", FALSE);
+    public static final StringSetting  HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS = new StringSetting("morphe_hide_feed_flyout_menu_filter_strings", "", true, parent(HIDE_FEED_FLYOUT_MENU));
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_HISTORY = new BooleanSetting("morphe_hide_filter_bar_feed_in_history", FALSE);
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_feed_in_related_videos", FALSE, true);
@@ -118,6 +121,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_VIDEO_RECOMMENDATION_LABELS = new BooleanSetting("morphe_hide_video_recommendation_labels", TRUE);
     public static final BooleanSetting HIDE_VIEW_COUNT = new BooleanSetting("morphe_hide_view_count", FALSE, "morphe_hide_view_count_user_dialog_message");
     public static final BooleanSetting HIDE_WEB_SEARCH_RESULTS = new BooleanSetting("morphe_hide_web_search_results", TRUE);
+
 
     // Alternative thumbnails
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
@@ -444,7 +448,7 @@ public class Settings extends BaseSettings {
 
     // SponsorBlock
     public static final BooleanSetting SB_ENABLED = new BooleanSetting("sb_enabled", TRUE);
-    /** Do not use id setting directly. Instead use {@link SponsorBlockSettings}. */
+    /** Do not use id setting directly. Instead, use {@link SponsorBlockSettings}. */
     public static final StringSetting SB_PRIVATE_USER_ID = new StringSetting("sb_private_user_id_Do_Not_Share", "", parent(SB_ENABLED));
     public static final IntegerSetting SB_CREATE_NEW_SEGMENT_STEP = new IntegerSetting("sb_create_new_segment_step", 150, parent(SB_ENABLED));
     public static final BooleanSetting SB_VOTING_BUTTON = new BooleanSetting("sb_voting_button", FALSE, parent(SB_ENABLED));

@@ -358,7 +358,7 @@ public final class ShortsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_SHORTS_TAGGED_PRODUCTS,
                         // Product buttons show pictures of the products, and does not have any unique icons to identify.
-                        // Instead, use a unique identifier found in the buffer.
+                        // Instead use a unique identifier found in the buffer.
                         "PAproduct_listZ"
                 ),
                 new ByteArrayFilterGroup(

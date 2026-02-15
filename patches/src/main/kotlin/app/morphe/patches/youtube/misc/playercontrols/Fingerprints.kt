@@ -13,16 +13,14 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
+    name = "getPlayerControlsVisibility",
     accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "L",
     parameters = listOf(),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET,
         Opcode.INVOKE_STATIC
-    ),
-    custom = { method, _ ->
-        method.name == "getPlayerControlsVisibility"
-    }
+    )
 )
 
 internal object YoutubeControlsOverlayFingerprint : Fingerprint(
@@ -44,21 +42,19 @@ internal object MotionEventFingerprint : Fingerprint(
 )
 
 internal object PlayerControlsExtensionHookListenersExistFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "fullscreenButtonVisibilityCallbacksExist",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
-    parameters = listOf(),
-    custom = { methodDef, _ ->
-        methodDef.name == "fullscreenButtonVisibilityCallbacksExist"
-    }
+    parameters = listOf()
 )
 
 internal object PlayerControlsExtensionHookFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "fullscreenButtonVisibilityChanged",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("Z"),
-    custom = { methodDef, _ ->
-        methodDef.name == "fullscreenButtonVisibilityChanged"
-    }
 )
 
 internal object PlayerTopControlsInflateFingerprint : Fingerprint(
@@ -67,7 +63,7 @@ internal object PlayerTopControlsInflateFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "controls_layout_stub"),
-        methodCall("Landroid/view/ViewStub;", "inflate"),
+        methodCall(definingClass = "Landroid/view/ViewStub;", name = "inflate"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
     )
 )
@@ -77,7 +73,7 @@ internal object PlayerBottomControlsInflateFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "bottom_ui_container_stub"),
-        methodCall("Landroid/view/ViewStub;", "inflate"),
+        methodCall(definingClass = "Landroid/view/ViewStub;", name = "inflate"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
     )
 )

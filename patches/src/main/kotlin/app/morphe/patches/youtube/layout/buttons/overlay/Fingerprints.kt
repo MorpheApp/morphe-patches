@@ -10,10 +10,9 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object MediaRouteButtonFingerprint : Fingerprint(
-    parameters = listOf("I"),
-    custom = { methodDef, _ ->
-        methodDef.definingClass.endsWith("/MediaRouteButton;") && methodDef.name == "setVisibility"
-    }
+    definingClass = "/MediaRouteButton;",
+    name = "setVisibility",
+    parameters = listOf("I")
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(

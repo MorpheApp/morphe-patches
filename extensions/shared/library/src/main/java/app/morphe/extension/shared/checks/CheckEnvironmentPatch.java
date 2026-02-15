@@ -214,7 +214,7 @@ public final class CheckEnvironmentPatch {
                 PackageManager packageManager = context.getPackageManager();
                 PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
 
-                // Duration since initial install or last update, which ever is sooner.
+                // Duration since initial install or last update, whichever is sooner.
                 durationBetweenPatchingAndInstallation = packageInfo.lastUpdateTime - PatchInfo.PATCH_TIME;
                 Logger.printInfo(() -> "App was installed/updated: "
                         + (durationBetweenPatchingAndInstallation / (60 * 1000) + " minutes after patching"));

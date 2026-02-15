@@ -57,7 +57,7 @@ val adsPatch = bytecodePatch(
             .last().getInstruction<ReferenceInstruction>().reference
 
         adPostSectionConstructorFingerprint.match(
-            mutableClassDefBy(adPostSectionToStringFingerprint.classDef)
+            adPostSectionToStringFingerprint.classDef
         ).let {
             it.method.apply {
                 val sectionIndex = it.instructionMatches.first().index

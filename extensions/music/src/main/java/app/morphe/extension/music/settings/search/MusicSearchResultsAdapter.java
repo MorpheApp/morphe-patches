@@ -12,7 +12,6 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 /**
  * Music-specific search results adapter.
  */
-@SuppressWarnings("deprecation")
 public class MusicSearchResultsAdapter extends BaseSearchResultsAdapter {
 
     public MusicSearchResultsAdapter(Context context, List<BaseSearchResultItem> items,

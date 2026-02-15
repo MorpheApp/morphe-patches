@@ -101,8 +101,8 @@ public class ImportExportPreference extends EditTextPreference implements Prefer
                     true // Dismiss dialog when onNeutralClick.
             );
 
-            // If there are no settings yet, then show the on screen keyboard and bring focus to
-            // the edit text. This makes it easier to paste saved settings after a reinstall.
+            // If there are no settings yet, then show the on-screen keyboard and bring focus to
+            // the edit text. This makes it easier to paste saved settings after a reinstallation.
              dialogPair.first.setOnShowListener(dialogInterface -> {
                  if (existingSettings.isEmpty()) {
                      editText.postDelayed(() -> {

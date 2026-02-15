@@ -11,13 +11,14 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 internal val customReportsFingerprint = Fingerprint(
+    definingClass = "/customreports/",
     returnType = "V",
     filters = listOf(
         string("https://www.crisistextline.org/")
     ),
-    custom = { methodDef, classDef ->
-        classDef.type.contains("/customreports/") &&
-                indexOfScreenNavigatorInstruction(methodDef) >= 0
+    custom = { methodDef, _ ->
+        // TODO: Convert this to an instruction filter
+        indexOfScreenNavigatorInstruction(methodDef) >= 0
     }
 )
 
@@ -58,19 +59,15 @@ internal val articleConstructorFingerprint = Fingerprint(
 )
 
 internal val articleToStringFingerprint = Fingerprint(
+    name = "toString",
     returnType = "Ljava/lang/String;",
     filters = listOf(
         string("Article(postId=")
-    ),
-    custom = { methodDef, _ ->
-        methodDef.name == "toString"
-    }
+    )
 )
 
 internal val fbpActivityOnCreateFingerprint = Fingerprint(
-    returnType = "V",
-    custom = { methodDef, _ ->
-        methodDef.definingClass.endsWith("/FbpActivity;") &&
-                methodDef.name == "onCreate"
-    }
+    definingClass = "/FbpActivity;",
+    name = "onCreate",
+    returnType = "V"
 )

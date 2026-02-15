@@ -8,6 +8,7 @@ import java.util.Map;
 
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
 
+@SuppressWarnings("deprecation")
 public class RedditImportExportPreference extends ImportExportPreference {
     private static final StringKeyLookup strings = new StringKeyLookup(
             Map.of(

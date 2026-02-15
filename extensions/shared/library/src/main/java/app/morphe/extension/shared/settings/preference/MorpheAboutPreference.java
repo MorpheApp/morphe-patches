@@ -54,7 +54,7 @@ import app.morphe.extension.shared.ui.Dim;
 public class MorpheAboutPreference extends Preference {
 
     private static String useNonBreakingHyphens(String text) {
-        // Replace any dashes with non breaking dashes, so the English text 'pre-release'
+        // Replace any dashes with non-breaking dashes, so the English text 'pre-release'
         // and the dev release number does not break and cover two lines.
         return text.replace("-", "&#8209;"); // #8209 = non breaking hyphen.
     }
@@ -351,7 +351,7 @@ public class MorpheAboutPreference extends Preference {
 }
 
 /**
- * Displays html content as a dialog. Any links a user taps on are opened in an external browser.
+ * Displays HTML content as a dialog. Any links a user taps on are opened in an external browser.
  */
 class WebViewDialog extends Dialog {
 
@@ -362,7 +362,7 @@ class WebViewDialog extends Dialog {
         this.htmlContent = htmlContent;
     }
 
-    // JS required to hide any broken images. No remote javascript is ever loaded.
+    // JS required to hide any broken images. No remote JavaScript is ever loaded.
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

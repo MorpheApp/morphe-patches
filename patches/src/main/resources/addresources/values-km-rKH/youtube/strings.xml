@@ -26,10 +26,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_05_player_title">ការីចាក់</string>
   <string name="morphe_settings_screen_11_misc_title">ផ្សេងៗទៀត</string>
   <string name="morphe_settings_screen_12_video_title">វីដេអូ</string>
+  <string name="morphe_restore_old_settings_menus_title">ស្ដារម៉ឺនុយនៃការកំណត់ចាស់ៗឡើងវិញ</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">ម៉ឺនុយនៃការកំណត់ចាស់ៗត្រូវបានបង្ហាញ</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">ម៉ឺនុយនៃការកំណត់ចាស់ៗមិនត្រូវបានបង្ហាញទេ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_album_cards_title">លាក់កាតអាល់ប៊ុម</string>
+  <string name="morphe_hide_album_cards_summary_on">ការអាល់ប៊ុមត្រូវបានលាក់</string>
+  <string name="morphe_hide_album_cards_summary_off">កាតអាល់ប៊ុមត្រូវបានបង្ហាញ</string>
+  <string name="morphe_hide_artist_cards_title">លាក់កាតសិល្បករ</string>
+  <string name="morphe_hide_artist_cards_summary_on">កាតសិល្បករត្រូវបានលាក់</string>
+  <string name="morphe_hide_artist_cards_summary_off">កាតសិល្បករត្រូវបានបង្ហាញ</string>
+  <string name="morphe_hide_community_posts_title">លាក់សារបង្ហោះសហគមន៍</string>
+  <string name="morphe_hide_community_posts_summary_on">សារបង្ហោះសហគមន៍ត្រូវបានលាក់</string>
+  <string name="morphe_hide_community_posts_summary_off">សារបង្ហោះសហគមន៍ត្រូវបានបង្ហាញ</string>
+  <string name="morphe_hide_compact_banner_title">លាក់ផ្ទាំងបដាតូចៗ</string>
+  <string name="morphe_hide_compact_banner_summary_on">ផ្ទាំងបដាតូចៗ ត្រូវបានលាក់</string>
+  <string name="morphe_hide_compact_banner_summary_off">ផ្ទាំងបដាតូចៗ ត្រូវបានបង្ហាញ</string>
+  <string name="morphe_hide_latest_posts_title">លាក់សារបង្ហោះចុងក្រោយ</string>
+  <string name="morphe_hide_latest_posts_summary_on">សារបង្ហោះចុងក្រោយត្រូវបានលាក់</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
@@ -98,6 +115,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">លាក់ការកំណត់បន្ថែម / ច្រើនទៀត</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">ម៉ឺនុយនៃការកំណត់បន្ថែម / ច្រើនទៀតត្រូវបានលាក់</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_off">ម៉ឺនុយនៃការកំណត់បន្ថែម / ច្រើនទៀតត្រូវបានបង្ហាញ</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->

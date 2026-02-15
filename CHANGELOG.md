@@ -1,3 +1,31 @@
+# [1.14.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.14.0-dev.2...v1.14.0-dev.3) (2026-02-14)
+
+
+### Bug Fixes
+
+* Use jsdelivr for patch bundle hosting ([3b8b3f0](https://github.com/MorpheApp/morphe-patches/commit/3b8b3f087859ebb17b9beffd4c2ce3fdca627a4a))
+
+# [1.14.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.14.0-dev.1...v1.14.0-dev.2) (2026-02-14)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide feed flyout menu filter" setting ([#535](https://github.com/MorpheApp/morphe-patches/issues/535)) ([06c8215](https://github.com/MorpheApp/morphe-patches/commit/06c8215d4320b38ad5f168eabcb5fc29a6ce4640))
+
+# [1.14.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.13.1-dev.1...v1.14.0-dev.1) (2026-02-13)
+
+
+### Features
+
+* Use Morphe patcher 1.1.1 ([#347](https://github.com/MorpheApp/morphe-patches/issues/347)) ([f0178c3](https://github.com/MorpheApp/morphe-patches/commit/f0178c3048a001f7aa4ffae4cccbdb756b64553c))
+
+## [1.13.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0...v1.13.1-dev.1) (2026-02-13)
+
+
+### Bug Fixes
+
+* **YouTube:** Add experimental support for `21.07.240` ([015d66a](https://github.com/MorpheApp/morphe-patches/commit/015d66a3d9fb352f5be47af59139d736fe43b26b))
+
 # [1.13.0](https://github.com/MorpheApp/morphe-patches/compare/v1.12.0...v1.13.0) (2026-02-12)
 
 

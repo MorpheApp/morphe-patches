@@ -221,6 +221,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">Скрыть рекомендуемые видео</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Раздел рекомендуемых видео скрыт</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Раздел рекомендуемых видео показан</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Включить фильтр бокового меню ленты</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Фильтр бокового меню ленты включен</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Фильтр бокового меню ленты отключен</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Фильтр бокового меню ленты</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Список названий выпадающего меню для фильтрации, разделенных новой строкой</string>
   <string name="morphe_hide_gaming_section_title">Скрыть \"Игры\"</string>
   <string name="morphe_hide_gaming_section_summary_on">Раздел игр скрыт</string>
   <string name="morphe_hide_gaming_section_summary_off">Раздел игр показан</string>
@@ -804,7 +809,7 @@ Cookies будут сохраняться автоматически, если �
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">Компоненты плеера Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Скрыть или показать компоненты плеера Shorts</string>
-  <string name="morphe_hide_shorts_channel_title">Скрыть Shorts на странице канала</string>
+  <string name="morphe_hide_shorts_channel_title">Скрыть \"Шорты\" на странице канала</string>
   <string name="morphe_hide_shorts_channel_summary_on">Скрыто на странице канала</string>
   <string name="morphe_hide_shorts_channel_summary_off">Показано на странице канала</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->

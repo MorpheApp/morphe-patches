@@ -18,7 +18,9 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -36,6 +38,7 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -43,7 +46,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 
 internal var albumCardId = -1L
     private set
@@ -227,6 +229,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner"),
             SwitchPreference("morphe_hide_expandable_card"),
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_feed_flyout_menu"),
+                    TextPreference(
+                        "morphe_hide_feed_flyout_menu_filter_strings",
+                        inputType = InputType.TEXT_MULTI_LINE
+                    ),
+                )
+            ),
             SwitchPreference("morphe_hide_floating_microphone_button"),
             SwitchPreference(
                 key = "morphe_hide_horizontal_shelves",
@@ -493,7 +507,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region 'Yoodles'
+        // region 'Doodles'
 
         YouTubeDoodlesImageViewFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow {
@@ -612,6 +626,36 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         """
                     )
                 }
+            }
+        }
+
+        // Hide flyout menu items
+
+        BottomSheetMenuItemBuilderFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        move-result-object v$register      
+                    """
+                )
+            }
+        }
+
+        ContextualMenuItemBuilderFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val targetInstruction = getInstruction<FiveRegisterInstruction>(index)
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                            "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFlyoutMenu(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
+                )
             }
         }
     }

@@ -1,6 +1,6 @@
 package app.morphe.patches.youtube.video.audio
 
-import app.morphe.patches.shared.misc.audio.forceOriginalAudioPatch
+import app.morphe.patches.shared.misc.audio.tracks.forceOriginalAudioPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch

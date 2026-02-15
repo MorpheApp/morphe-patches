@@ -56,11 +56,11 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         // Requires a key and title but the actual text is chosen at runtime.
                         key = "morphe_spoof_video_streams_about",
                         summaryKey = null,
-                        tag = "app.morphe.extension.youtube.settings.preference.SpoofStreamingDataSideEffectsPreference"
+                        tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsSideEffectsPreference"
                     ),
                     NonInteractivePreference(
                         key = "morphe_spoof_video_streams_sign_in_android_vr_about",
-                        tag = "app.morphe.extension.youtube.settings.preference.SpoofStreamingDataSignInPreference",
+                        tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1"),

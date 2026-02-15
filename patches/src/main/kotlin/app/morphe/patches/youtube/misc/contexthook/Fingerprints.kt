@@ -22,6 +22,7 @@ internal object AuthenticationChangeListenerFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("Authentication changed while request was being made"),
     custom = { method, _ ->
+        // TODO: Convert this to an instruction filter
         indexOfMessageLiteBuilderReference(method) >= 0
     }
 )

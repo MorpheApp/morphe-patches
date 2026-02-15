@@ -16,7 +16,7 @@ internal object MediaRouteButtonFingerprint : Fingerprint(
 internal object PlayerOverlayChipFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
-    custom = customLiteral { playerOverlayChip }
+    custom = customLiteral { playerOverlayChip } // TODO: Convert this to an instruction filter
 )
 
 internal object HistoryMenuItemFingerprint : Fingerprint(
@@ -28,6 +28,7 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
         Opcode.RETURN_VOID
     ),
     custom = { method, classDef ->
+        // TODO: Convert this to an instruction filter
         method.containsLiteralInstruction(historyMenuItem) &&
                 (classDef.methods.count() == 5 || classDef.methods.count() == 4)
     }
@@ -42,18 +43,20 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
         Opcode.RETURN_VOID
     ),
     custom = { method, _ ->
+        // TODO: Convert this to instruction filters
         method.containsLiteralInstruction(historyMenuItem) &&
             method.containsLiteralInstruction(offlineSettingsMenuItem)
     }
 )
 
 internal object SearchActionViewFingerprint : Fingerprint(
+    definingClass = "/SearchActionProvider;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
-    custom = { method, classDef ->
-        method.containsLiteralInstruction(searchButton) &&
-                classDef.type.endsWith("/SearchActionProvider;")
+    custom = { method, _ ->
+        // TODO: Convert this to an instruction filter
+        method.containsLiteralInstruction(searchButton)
     }
 )
 
@@ -61,5 +64,5 @@ internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
-    custom = customLiteral { topBarMenuItemImageView }
+    custom = customLiteral { topBarMenuItemImageView } // TODO: Convert this to an instruction filter
 )

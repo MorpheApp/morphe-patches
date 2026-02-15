@@ -222,6 +222,11 @@ Ví dụ:
   <string name="morphe_hide_featured_videos_section_title">Ẩn Video nổi bật</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Phần video nổi bật đã bị ẩn</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Phần video nổi bật được hiển thị</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Bật lọc menu bay nhảy</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Lọc menu bay nhảy đã được bật</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Lọc menu bay nhảy đã bị tắt</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Lọc menu bay nhảy</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Danh sách tên menu bay lướt để lọc, được ngăn cách bởi dòng mới</string>
   <string name="morphe_hide_gaming_section_title">Ẩn Gaming</string>
   <string name="morphe_hide_gaming_section_summary_on">Phần Gaming đã bị ẩn</string>
   <string name="morphe_hide_gaming_section_summary_off">Phần Gaming được hiển thị</string>
@@ -806,8 +811,8 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_shorts_player_screen_title">Trình phát Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ẩn hoặc hiện các thành phần của trình phát Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Ẩn Shorts trong trang kênh</string>
-  <string name="morphe_hide_shorts_channel_summary_on">Ẩn trong trang kênh</string>
-  <string name="morphe_hide_shorts_channel_summary_off">Hiển thị trong trang kênh</string>
+  <string name="morphe_hide_shorts_channel_summary_on">Đã ẩn trong trang kênh</string>
+  <string name="morphe_hide_shorts_channel_summary_off">Đã hiển thị trong trang kênh</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Ẩn Shorts trong thẻ Trang chủ</string>
   <string name="morphe_hide_shorts_home_summary_on">Đã ẩn trong thẻ Trang chủ và video liên quan</string>
