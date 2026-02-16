@@ -8,7 +8,6 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
-import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.SanitizeUrlQueryPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -25,7 +24,6 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return OpenLinksDirectlyPatch.isPatchIncluded() ||
-                OpenLinksExternallyPatch.isPatchIncluded() ||
                 SanitizeUrlQueryPatch.isPatchIncluded();
     }
 
@@ -40,14 +38,6 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     Settings.OPEN_LINKS_DIRECTLY,
                     "Open links directly",
                     "Skips over redirection URLs in external links"
-            ));
-        }
-        if (OpenLinksExternallyPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.OPEN_LINKS_EXTERNALLY,
-                    "Open links externally",
-                    "Opens links in your browser instead of in the in-app-browser"
             ));
         }
         if (SanitizeUrlQueryPatch.isPatchIncluded()) {
