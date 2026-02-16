@@ -4,9 +4,11 @@
  */
 package app.morphe.extension.reddit.patches;
 
-import static app.morphe.extension.shared.StringRef.str;
+import androidx.annotation.Nullable;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class HideTrendingTodayShelfPatch {
@@ -18,7 +20,17 @@ public final class HideTrendingTodayShelfPatch {
      * Use a hardcoded string as a fallback.
      */
     private static final String TRENDING_LABEL = "Trending";
-    private static final String TRENDING_LABEL_LOCALIZED = str("home_revamp_tab_popular");
+
+    @Nullable
+    private static String TRENDING_LABEL_LOCALIZED;
+
+    // Must be lazy loaded otherwise context may not be set.
+    private static String getTrendingLabelLocalized() {
+        if (TRENDING_LABEL_LOCALIZED == null) {
+            TRENDING_LABEL_LOCALIZED = ResourceUtils.getString("home_revamp_tab_popular");
+        }
+        return TRENDING_LABEL_LOCALIZED;
+    }
 
     /**
      * @return If this patch was included during patching.
@@ -39,7 +51,7 @@ public final class HideTrendingTodayShelfPatch {
      */
     public static String removeTrendingLabel(String label) {
         if (HIDE_TRENDING_TODAY_SHELF && label != null) {
-            if (label.startsWith(TRENDING_LABEL) || label.startsWith(TRENDING_LABEL_LOCALIZED)) {
+            if (label.startsWith(TRENDING_LABEL) || label.startsWith(getTrendingLabelLocalized())) {
                 return "";
             }
         }
