@@ -22,12 +22,14 @@ import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStr
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -64,7 +66,11 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
         val playbackStartVideoIdMethodName : String
         PlaybackStartDescriptorToStringFingerprint.let {
-            playbackStartVideoIdMethodName = navigate(it.method).to(it.instructionMatches[1].index).stop().name
+            playbackStartVideoIdMethodName = it.instructionMatches[1]
+                .getInstruction<ReferenceInstruction>()
+                .getReference<MethodReference>()!!
+                .getMutableMethod()
+                .name
         }
 
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(

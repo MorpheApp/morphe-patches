@@ -8,6 +8,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -35,7 +36,8 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
         )
 
         RemoveOnLayoutChangeListenerFingerprint.let {
-            val endScreenMethod = navigate(it.originalMethod).to(it.instructionMatches.last().index).stop()
+            val endScreenMethod = it.instructionMatches.last().getInstruction<ReferenceInstruction>()
+                .getReference<MethodReference>()!!.getMutableMethod()
 
             endScreenMethod.apply {
                 val autoNavStatusMethodName = AutoNavStatusFingerprint.match(

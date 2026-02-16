@@ -4,9 +4,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/FixBackToExitGesturePatch;"
@@ -24,9 +26,11 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
         }
 
         ScrollPositionFingerprint.let {
-            navigate(it.originalMethod)
-                .to(it.instructionMatches.first().index + 1)
-                .stop().apply {
+            it.instructionMatches[1]
+                .getInstruction<ReferenceInstruction>()
+                .getReference<MethodReference>()!!
+                .getMutableMethod()
+                .apply {
                     val index = indexOfFirstInstructionOrThrow {
                         opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.definingClass ==
                                 "Landroid/support/v7/widget/RecyclerView;"

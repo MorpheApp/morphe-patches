@@ -37,6 +37,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
@@ -46,6 +47,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -262,14 +264,17 @@ val miniplayerPatch = bytecodePatch(
 
             // region Legacy tablet miniplayer hooks.
             MiniplayerOverrideFingerprint.let {
-                val appNameStringIndex = it.instructionMatches.last().index
-                navigate(it.originalMethod).to(appNameStringIndex).stop().apply {
-                    findReturnIndicesReversed().forEach { index ->
-                        insertLegacyTabletMiniplayerOverride(
-                            index
-                        )
+                it.instructionMatches.last()
+                    .getInstruction<ReferenceInstruction>()
+                    .getReference<MethodReference>()!!
+                    .getMutableMethod()
+                    .apply {
+                        findReturnIndicesReversed().forEach { index ->
+                            insertLegacyTabletMiniplayerOverride(
+                                index
+                            )
+                        }
                     }
-                }
             }
 
             MiniplayerResponseModelSizeCheckFingerprint.let {

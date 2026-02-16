@@ -441,6 +441,16 @@ fun BytecodePatchContext.traverseClassHierarchy(targetClass: MutableClass, callb
 inline fun <reified T : Reference> Instruction.getReference() = (this as? ReferenceInstruction)?.reference as? T
 
 /**
+ * @return The mutable method for this method call reference.
+ */
+context(BytecodePatchContext)
+fun MethodReference.getMutableMethod(): MutableMethod {
+    return mutableClassDefBy(this.definingClass).methods.first { classMethod ->
+        MethodUtil.methodSignaturesMatch(classMethod, this@getMutableMethod)
+    }
+}
+
+/**
  * @return The index of the first opcode specified, or -1 if not found.
  * @see indexOfFirstInstructionOrThrow
  */
