@@ -47,7 +47,7 @@ val spoofAppVersionPatch = bytecodePatch(
     execute {
         PreferenceScreen.GENERAL_LAYOUT.addPreferences(
             // Group the switch and list preference together, since General menu is sorted by name
-            // and the preferences can be scattered apart with non English languages.
+            // and the preferences can be scattered apart with non-English languages.
             PreferenceCategory(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,
@@ -84,18 +84,19 @@ val spoofAppVersionPatch = bytecodePatch(
          * missing image resources. As a workaround, do not set an image in the
          * toolbar when the enum name is UNKNOWN.
          */
-        ToolBarButtonFingerprint.apply {
-            clearMatch() // Fingerprint is shared and indexes may no longer be correct.
+        ToolBarButtonFingerprint.let {
+            it.clearMatch() // Fingerprint is shared and indexes may no longer be correct.
+            it.method.apply {
+                val resourceIdIndex = it.instructionMatches[5].index
+                val register = getInstruction<OneRegisterInstruction>(resourceIdIndex).registerA
+                val jumpIndex = it.instructionMatches.last().index + 1
 
-            val imageResourceIndex = instructionMatches[2].index
-            val register = method.getInstruction<OneRegisterInstruction>(imageResourceIndex).registerA
-            val jumpIndex = instructionMatches.last().index + 1
-
-            method.addInstructionsWithLabels(
-                imageResourceIndex + 1,
-                "if-eqz v$register, :ignore",
-                ExternalLabel("ignore", method.getInstruction(jumpIndex))
-            )
+                addInstructionsWithLabels(
+                    resourceIdIndex + 1,
+                    "if-eqz v$register, :ignore",
+                    ExternalLabel("ignore", getInstruction(jumpIndex))
+                )
+            }
         }
 
         SpoofAppVersionFingerprint.apply {
