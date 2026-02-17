@@ -165,13 +165,7 @@ var jsc = (function (meriyah, astring) {
         node.expression.right.type === 'FunctionExpression' &&
         node.expression.right.params.length === 3
       ) {
-        blocks.push({
-          name: astring.generate(node.expression.left),
-          body: node.expression.right.body,
-          params: node.expression.right.params
-            .filter((p) => p.type === 'Identifier')
-            .map((p) => p.name),
-        });
+        blocks.push(node.expression.right.body);
       } else if (node.type === 'VariableDeclaration') {
         for (const decl of node.declarations) {
           if (
@@ -184,35 +178,14 @@ var jsc = (function (meriyah, astring) {
             ]) === 'FunctionExpression' &&
             decl.init.params.length === 3
           ) {
-            const name = decl.id.type === 'Identifier' ? decl.id.name : '?';
-            blocks.push({
-              name: name,
-              body: decl.init.body,
-              params: decl.init.params
-                .filter((p) => p.type === 'Identifier')
-                .map((p) => p.name),
-            });
+            blocks.push(decl.init.body);
           }
         }
       } else if (
         node.type === 'FunctionDeclaration' &&
         node.params.length === 3
       ) {
-        const name =
-          _optionalChain$2([
-            node,
-            'access',
-            (_3) => _3.id,
-            'optionalAccess',
-            (_4) => _4.name,
-          ]) || '?';
-        blocks.push({
-          name: name,
-          body: node.body,
-          params: node.params
-            .filter((p) => p.type === 'Identifier')
-            .map((p) => p.name),
-        });
+        blocks.push(node.body);
       } else {
         return null;
       }
@@ -226,22 +199,14 @@ var jsc = (function (meriyah, astring) {
           expr.right.type === 'FunctionExpression' &&
           expr.right.params.length === 3
         ) {
-          blocks.push({
-            name: astring.generate(expr.left),
-            body: expr.right.body,
-            params: expr.right.params
-              .filter((p) => p.type === 'Identifier')
-              .map((p) => p.name),
-          });
+          blocks.push(expr.right.body);
         }
       }
     } else {
       return null;
     }
-    for (const { body: block, params: params, name: funcName } of blocks) {
+    for (const block of blocks) {
       let call = null;
-      let sigVarName = null;
-      const thirdParam = params[2];
       for (const stmt of block.body) {
         if (matchesStructure(stmt, logicalExpression)) {
           if (
@@ -253,9 +218,6 @@ var jsc = (function (meriyah, astring) {
             stmt.expression.right.expressions[0].right.type === 'CallExpression'
           ) {
             call = stmt.expression.right.expressions[0].right;
-            if (stmt.expression.left.type === 'Identifier') {
-              sigVarName = stmt.expression.left.name;
-            }
             break;
           }
         } else if (stmt.type === 'IfStatement') {
@@ -273,13 +235,13 @@ var jsc = (function (meriyah, astring) {
                 _optionalChain$2([
                   n,
                   'access',
-                  (_5) => _5.declarations,
+                  (_3) => _3.declarations,
                   'access',
-                  (_6) => _6[0],
+                  (_4) => _4[0],
                   'optionalAccess',
-                  (_7) => _7.init,
+                  (_5) => _5.init,
                   'optionalAccess',
-                  (_8) => _8.type,
+                  (_6) => _6.type,
                 ]) === 'CallExpression'
               ) {
                 call = n.declarations[0].init;
@@ -294,72 +256,43 @@ var jsc = (function (meriyah, astring) {
         _optionalChain$2([
           call,
           'optionalAccess',
-          (_9) => _9.callee,
+          (_7) => _7.callee,
           'access',
-          (_10) => _10.type,
+          (_8) => _8.type,
         ]) !== 'Identifier'
       ) {
         continue;
       }
-      const name = call.callee.name;
-      const targetParam = sigVarName || thirdParam;
-      let usesSig = false;
-      let args = call.arguments.map((arg) => {
-        if (
-          targetParam &&
-          arg.type === 'Identifier' &&
-          arg.name === targetParam
-        ) {
-          usesSig = true;
-          return { type: 'Identifier', name: 'sig' };
-        }
-        if (
-          targetParam &&
-          arg.type === 'CallExpression' &&
-          arg.callee.type === 'Identifier' &&
-          arg.callee.name === 'decodeURIComponent' &&
-          _optionalChain$2([
-            arg,
-            'access',
-            (_11) => _11.arguments,
-            'access',
-            (_12) => _12[0],
-            'optionalAccess',
-            (_13) => _13.type,
-          ]) === 'Identifier' &&
-          arg.arguments[0].name === targetParam
-        ) {
-          usesSig = true;
-          return {
-            type: 'CallExpression',
-            callee: { type: 'Identifier', name: 'decodeURIComponent' },
-            arguments: [{ type: 'Identifier', name: 'sig' }],
-            optional: false,
-          };
-        }
-        return arg;
-      });
-      if (!usesSig) {
-        args =
-          call.arguments.length === 1
-            ? [{ type: 'Identifier', name: 'sig' }]
-            : [call.arguments[0], { type: 'Identifier', name: 'sig' }];
-      }
       return {
-        name: funcName,
-        expression: {
-          type: 'ArrowFunctionExpression',
-          params: [{ type: 'Identifier', name: 'sig' }],
-          body: {
-            type: 'CallExpression',
-            callee: { type: 'Identifier', name: name },
-            arguments: args,
-            optional: false,
-          },
-          async: false,
-          expression: false,
-          generator: false,
+        type: 'ArrowFunctionExpression',
+        params: [{ type: 'Identifier', name: 'sig' }],
+        body: {
+          type: 'CallExpression',
+          callee: { type: 'Identifier', name: call.callee.name },
+          arguments: call.arguments.map((arg) => {
+            if (
+              arg.type === 'CallExpression' &&
+              arg.callee.type === 'Identifier' &&
+              arg.callee.name === 'decodeURIComponent' &&
+              _optionalChain$2([
+                arg,
+                'access',
+                (_9) => _9.arguments,
+                'access',
+                (_10) => _10[0],
+                'optionalAccess',
+                (_11) => _11.type,
+              ]) === 'Identifier'
+            ) {
+              return { type: 'Identifier', name: 'sig' };
+            }
+            return arg;
+          }),
+          optional: false,
         },
+        async: false,
+        expression: false,
+        generator: false,
       };
     }
     return null;
@@ -560,8 +493,31 @@ var jsc = (function (meriyah, astring) {
     return value;
   }
   function preprocessPlayer(data) {
-    const ast = meriyah.parse(data);
-    const body = ast.body;
+    const program = meriyah.parse(data);
+    const plainStatements = modifyPlayer(program);
+    const solutions = getSolutions(plainStatements);
+    for (const [name, options] of Object.entries(solutions)) {
+      plainStatements.push({
+        type: 'ExpressionStatement',
+        expression: {
+          type: 'AssignmentExpression',
+          operator: '=',
+          left: {
+            type: 'MemberExpression',
+            computed: false,
+            object: { type: 'Identifier', name: '_result' },
+            property: { type: 'Identifier', name: name },
+            optional: false,
+          },
+          right: multiTry(options),
+        },
+      });
+    }
+    program.body.splice(0, 0, ...setupNodes);
+    return astring.generate(program);
+  }
+  function modifyPlayer(program) {
+    const body = program.body;
     const block = (() => {
       switch (body.length) {
         case 1: {
@@ -594,16 +550,7 @@ var jsc = (function (meriyah, astring) {
       }
       throw 'unexpected structure';
     })();
-    const found = { n: [], sig: [] };
-    const plainExpressions = block.body.filter((node) => {
-      const n = extract(node);
-      if (n) {
-        found.n.push(n);
-      }
-      const sig = extract$1(node);
-      if (sig) {
-        found.sig.push(sig.expression);
-      }
+    block.body = block.body.filter((node) => {
       if (node.type === 'ExpressionStatement') {
         if (node.expression.type === 'AssignmentExpression') {
           return true;
@@ -612,40 +559,240 @@ var jsc = (function (meriyah, astring) {
       }
       return true;
     });
-    block.body = plainExpressions;
-    for (const [name, options] of Object.entries(found)) {
-      const unique = new Set(options.map((x) => JSON.stringify(x)));
-      if (unique.size !== 1) {
-        const message = `found ${unique.size} ${name} function possibilities`;
-        throw (
-          message +
-          (unique.size
-            ? `: ${options.map((x) => astring.generate(x)).join(', ')}`
-            : '')
-        );
+    return block.body;
+  }
+  function getSolutions(statements) {
+    const found = { n: [], sig: [] };
+    for (const statement of statements) {
+      const n = extract(statement);
+      if (n) {
+        found.n.push(n);
       }
-      plainExpressions.push({
-        type: 'ExpressionStatement',
-        expression: {
-          type: 'AssignmentExpression',
-          operator: '=',
-          left: {
-            type: 'MemberExpression',
-            computed: false,
-            object: { type: 'Identifier', name: '_result' },
-            property: { type: 'Identifier', name: name },
-          },
-          right: options[0],
-        },
-      });
+      const sig = extract$1(statement);
+      if (sig) {
+        found.sig.push(sig);
+      }
     }
-    ast.body.splice(0, 0, ...setupNodes);
-    return astring.generate(ast);
+    return found;
   }
   function getFromPrepared(code) {
     const resultObj = { n: null, sig: null };
     Function('_result', code)(resultObj);
     return resultObj;
+  }
+  function multiTry(generators) {
+    return {
+      type: 'ArrowFunctionExpression',
+      params: [{ type: 'Identifier', name: '_input' }],
+      body: {
+        type: 'BlockStatement',
+        body: [
+          {
+            type: 'VariableDeclaration',
+            kind: 'const',
+            declarations: [
+              {
+                type: 'VariableDeclarator',
+                id: { type: 'Identifier', name: '_results' },
+                init: {
+                  type: 'NewExpression',
+                  callee: { type: 'Identifier', name: 'Set' },
+                  arguments: [],
+                },
+              },
+            ],
+          },
+          {
+            type: 'ForOfStatement',
+            left: {
+              type: 'VariableDeclaration',
+              kind: 'const',
+              declarations: [
+                {
+                  type: 'VariableDeclarator',
+                  id: { type: 'Identifier', name: '_generator' },
+                  init: null,
+                },
+              ],
+            },
+            right: { type: 'ArrayExpression', elements: generators },
+            body: {
+              type: 'BlockStatement',
+              body: [
+                {
+                  type: 'TryStatement',
+                  block: {
+                    type: 'BlockStatement',
+                    body: [
+                      {
+                        type: 'ExpressionStatement',
+                        expression: {
+                          type: 'CallExpression',
+                          callee: {
+                            type: 'MemberExpression',
+                            object: { type: 'Identifier', name: '_results' },
+                            computed: false,
+                            property: { type: 'Identifier', name: 'add' },
+                            optional: false,
+                          },
+                          arguments: [
+                            {
+                              type: 'CallExpression',
+                              callee: {
+                                type: 'Identifier',
+                                name: '_generator',
+                              },
+                              arguments: [
+                                { type: 'Identifier', name: '_input' },
+                              ],
+                              optional: false,
+                            },
+                          ],
+                          optional: false,
+                        },
+                      },
+                    ],
+                  },
+                  handler: {
+                    type: 'CatchClause',
+                    param: null,
+                    body: { type: 'BlockStatement', body: [] },
+                  },
+                  finalizer: null,
+                },
+              ],
+            },
+            await: false,
+          },
+          {
+            type: 'IfStatement',
+            test: {
+              type: 'UnaryExpression',
+              operator: '!',
+              argument: {
+                type: 'MemberExpression',
+                object: { type: 'Identifier', name: '_results' },
+                computed: false,
+                property: { type: 'Identifier', name: 'size' },
+                optional: false,
+              },
+              prefix: true,
+            },
+            consequent: {
+              type: 'BlockStatement',
+              body: [
+                {
+                  type: 'ThrowStatement',
+                  argument: {
+                    type: 'TemplateLiteral',
+                    expressions: [],
+                    quasis: [
+                      {
+                        type: 'TemplateElement',
+                        value: { cooked: 'no solutions', raw: 'no solutions' },
+                        tail: true,
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            alternate: null,
+          },
+          {
+            type: 'IfStatement',
+            test: {
+              type: 'BinaryExpression',
+              left: {
+                type: 'MemberExpression',
+                object: { type: 'Identifier', name: '_results' },
+                computed: false,
+                property: { type: 'Identifier', name: 'size' },
+                optional: false,
+              },
+              right: { type: 'Literal', value: 1 },
+              operator: '!==',
+            },
+            consequent: {
+              type: 'BlockStatement',
+              body: [
+                {
+                  type: 'ThrowStatement',
+                  argument: {
+                    type: 'TemplateLiteral',
+                    expressions: [
+                      {
+                        type: 'CallExpression',
+                        callee: {
+                          type: 'MemberExpression',
+                          object: { type: 'Identifier', name: '_results' },
+                          computed: false,
+                          property: { type: 'Identifier', name: 'join' },
+                          optional: false,
+                        },
+                        arguments: [{ type: 'Literal', value: ', ' }],
+                        optional: false,
+                      },
+                    ],
+                    quasis: [
+                      {
+                        type: 'TemplateElement',
+                        value: {
+                          cooked: 'invalid solutions: ',
+                          raw: 'invalid solutions: ',
+                        },
+                        tail: false,
+                      },
+                      {
+                        type: 'TemplateElement',
+                        value: { cooked: '', raw: '' },
+                        tail: true,
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            alternate: null,
+          },
+          {
+            type: 'ReturnStatement',
+            argument: {
+              type: 'MemberExpression',
+              object: {
+                type: 'CallExpression',
+                callee: {
+                  type: 'MemberExpression',
+                  object: {
+                    type: 'CallExpression',
+                    callee: {
+                      type: 'MemberExpression',
+                      object: { type: 'Identifier', name: '_results' },
+                      computed: false,
+                      property: { type: 'Identifier', name: 'values' },
+                      optional: false,
+                    },
+                    arguments: [],
+                    optional: false,
+                  },
+                  computed: false,
+                  property: { type: 'Identifier', name: 'next' },
+                  optional: false,
+                },
+                arguments: [],
+                optional: false,
+              },
+              computed: false,
+              property: { type: 'Identifier', name: 'value' },
+              optional: false,
+            },
+          },
+        ],
+      },
+      async: false,
+      expression: false,
+      generator: false,
+    };
   }
   function main(input) {
     const preprocessedPlayer =
