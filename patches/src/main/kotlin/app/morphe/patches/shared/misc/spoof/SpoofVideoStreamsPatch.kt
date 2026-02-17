@@ -79,7 +79,7 @@ private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
                 "astring-1.9.0.min.js",
                 "meriyah-6.1.4.min.js",
                 "polyfill.js",
-                "yt.solver.core.js", // yt-dlp-ejs 0.4.0.r2: https://github.com/yt-dlp/ejs/pull/48
+                "yt.solver.core.js", // yt-dlp-ejs 0.4.0+: https://github.com/yt-dlp/ejs/commit/1b648c34c134c3adf599416457ee307f059ad016
             )
         )
 
@@ -106,9 +106,9 @@ internal fun spoofVideoStreamsPatch(
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
-    name = "Spoof video streams",
-    description = "Adds options to spoof the client video streams to fix playback.",
-    use = false // Patch is default included with GmsCore but not for root installations.
+    // This patch is part of the 'GmsCore support' patch.
+    // name = "Spoof video streams",
+    description = "Adds options to spoof the client video streams to fix playback."
 ) {
     block()
 
