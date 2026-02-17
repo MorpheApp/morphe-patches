@@ -99,11 +99,11 @@ public enum ClientType {
             "Samsung",
             "SmartTV",
             "Tizen",
-            "4.0.0.2",
+            "2.4.0",
             "5.20150304",
             "TV",
             // Currently, it is the only User-Agent available for signed out among TV clients, but sign in is still required for certain IP bands or countries.
-            "Mozilla/5.0 (SMART-TV; Linux; Tizen 4.0.0.2) AppleWebkit/605.1.15 (KHTML, like Gecko) SamsungBrowser/9.2 TV Safari/605.1.15",
+            "Mozilla/5.0 (SMART-TV; Linux; Tizen 2.4.0) AppleWebKit/538.1 (KHTML, like Gecko) Version/2.4.0 TV Safari/538.1",
             true,
             false,
             true,

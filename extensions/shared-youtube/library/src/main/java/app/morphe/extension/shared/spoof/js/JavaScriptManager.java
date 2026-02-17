@@ -85,10 +85,10 @@ public final class JavaScriptManager {
      */
     private static final long PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS = 3 * 24 * 60 * 60 * 1000L; // 3 days.
     /**
-     * User-agent of the TV client.
+     * User-agent of the Mobile client.
      */
     private static final String USER_AGENT =
-            "Mozilla/5.0 (SMART-TV; Linux; Tizen 8.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/7.0 Chrome/108.0.5359.1 TV Safari/537.36";
+            "Mozilla/5.0 (Android 13; Mobile; rv:100.0) Gecko/100.0 Firefox/100.0";
     /**
      * Class used to deobfuscate, powered by SmartTube.
      */

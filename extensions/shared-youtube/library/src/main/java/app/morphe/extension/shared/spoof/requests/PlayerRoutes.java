@@ -90,7 +90,7 @@ final class PlayerRoutes {
 
                 JSONObject devicePlaybackCapabilities = new JSONObject();
                 devicePlaybackCapabilities.put("supportsVp9Encoding", true);
-                devicePlaybackCapabilities.put("supportXhr", false);
+                devicePlaybackCapabilities.put("supportXhr", true);
 
                 JSONObject playbackContext = new JSONObject();
                 playbackContext.put("contentPlaybackContext", contentPlaybackContext);
