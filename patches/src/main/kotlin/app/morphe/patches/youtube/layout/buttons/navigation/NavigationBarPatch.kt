@@ -199,6 +199,26 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
 
+        // Hide old search button
+        //
+        // Old search button appears in the Library tab when the app is first installed,
+        // or when 'Disable layout update' is enabled
+        // This button cannot be hidden with [toolBarHookPatch]
+        OldSearchButtonVisibilityFingerprint.match(
+            OldSearchButtonAccessibilityLabelFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+
+                replaceInstruction(
+                    index,
+                    "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
+                            "$EXTENSION_CLASS_DESCRIPTOR->hideOldSearchButton(Landroid/view/MenuItem;I)V"
+                )
+            }
+        }
+
         // Hide voice search button in the search bar while typing.
         SearchButtonsVisibilityFingerprint.match(
             SearchFragmentFingerprint.originalClassDef

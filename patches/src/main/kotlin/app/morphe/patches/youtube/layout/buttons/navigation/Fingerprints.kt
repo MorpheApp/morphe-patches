@@ -120,6 +120,29 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     )
 )
 
+internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/CharSequence;",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "menu_search")
+    )
+)
+
+/**
+ * Matches to class found in [OldSearchButtonAccessibilityLabelFingerprint].
+ */
+internal object OldSearchButtonVisibilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Landroid/view/MenuItem;->setShowAsAction(I)V"
+        )
+    )
+)
+
 internal object SearchResultButtonVisibilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
