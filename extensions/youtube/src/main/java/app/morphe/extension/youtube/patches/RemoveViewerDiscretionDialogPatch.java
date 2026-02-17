@@ -97,6 +97,6 @@ public class RemoveViewerDiscretionDialogPatch {
      */
     private static boolean shouldConfirmDialog() {
         return Settings.REMOVE_VIEWER_DISCRETION_DIALOG.get()
-                && Utils.containsAny(playabilityStatus, VIEWER_DISCRETION_DIALOG_PLAYABILITY_STATUS);
+                && Utils.equalsAny(playabilityStatus, VIEWER_DISCRETION_DIALOG_PLAYABILITY_STATUS);
     }
 }
