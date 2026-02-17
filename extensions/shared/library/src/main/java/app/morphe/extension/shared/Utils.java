@@ -283,6 +283,17 @@ public class Utils {
         return -1;
     }
 
+    public static boolean equalsAny(String value, String...targets) {
+        if (isNotEmpty(value)) {
+            for (String string : targets) {
+                if (value.equals(string)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public interface MatchFilter<T> {
         boolean matches(T object);
     }

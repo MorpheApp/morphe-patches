@@ -2,7 +2,6 @@ package app.morphe.patches.youtube.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -10,10 +9,13 @@ import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+
+private val SET_VISIBILITY_METHOD_CALL = methodCall(
+    opcode = Opcode.INVOKE_VIRTUAL,
+    smali = "Landroid/view/View;->setVisibility(I)V"
+)
 
 internal object CreatePivotBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -118,54 +120,40 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     )
 )
 
-internal object SearchBarFingerprint : Fingerprint(
+internal object SearchResultButtonVisibilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        literal(45423782L), // lens search button feature flags.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V"
+        ),
+    )
+)
+
+/**
+ * Matches to class found in [SearchFragmentFingerprint].
+ */
+internal object SearchButtonsVisibilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/String;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET_OBJECT,
-        Opcode.IF_EQZ,
-        Opcode.IGET_BOOLEAN,
-        Opcode.IF_EQZ
-    ),
-    custom = { method, _ ->
-        method.instructions.any {
-            it.getReference<MethodReference>()?.name == "isEmpty"
-        }
-    }
-)
-
-internal object SearchBarParentFingerprint : Fingerprint(
-    returnType = "Landroid/view/View;",
-    strings = listOf("voz-target-id"),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "voice_search")
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
+        ),
+        SET_VISIBILITY_METHOD_CALL, // clear button.
+        SET_VISIBILITY_METHOD_CALL, // voice search button.
+        SET_VISIBILITY_METHOD_CALL  // lens search button.
     )
 )
 
-internal object SearchResultFingerprint : Fingerprint(
+internal object SearchFragmentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
-    strings = listOf("search_filter_chip_applied", "search_original_chip_query"),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "voice_search")
+        string("search-lens-button")
     )
 )
-
-internal object VoiceInputControllerParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("[B", "Z"),
-    strings = listOf("VoiceInputController")
-)
-
-internal object VoiceInputControllerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = emptyList(),
-    custom = { method, _ ->
-        method.instructions.any {
-            it.opcode == Opcode.INVOKE_VIRTUAL &&
-                    it.getReference<MethodReference>()?.name == "resolveActivity"
-        }
-    }
-)
-

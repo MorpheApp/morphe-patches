@@ -1,5 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.Utils.equalsAny;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
@@ -130,54 +131,61 @@ public final class NavigationBarPatch {
     }
 
     // Toolbar
+    private static final String[] CREATE_BUTTON_ENUMS = {
+            "CREATION_ENTRY", // Phone layout.
+            "FAB_CAMERA" // Tablet layout.
+    };
 
-    public static void hideCreateButton(String enumString, View view) {
-        if (!Settings.HIDE_TOOLBAR_CREATE_BUTTON.get())
-            return;
+    private static final String[] NOTIFICATION_BUTTON_ENUMS = {
+            "TAB_ACTIVITY_CAIRO", // New layout.
+            "TAB_ACTIVITY" // Old layout.
+    };
 
-        hideViewUnderCondition(isCreateButton(enumString), view);
+    private static final String[] SEARCH_BUTTON_ENUMS = {
+            "SEARCH_CAIRO", // New layout.
+            "SEARCH_BOLD", // Shorts.
+            "SEARCH" // Old layout.
+    };
+
+    private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_NOTIFICATION_BUTTON = Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_VOICE_SEARCH_BUTTON .get();
+
+    /**
+     * Injection point.
+     */
+    public static void hideCreateButton(String enumName, View view) {
+        boolean shouldHide = HIDE_TOOLBAR_CREATE_BUTTON && equalsAny(enumName, CREATE_BUTTON_ENUMS);
+        hideViewUnderCondition(shouldHide, view);
     }
 
-    public static void hideNotificationButton(String enumString, View view) {
-        if (!Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get())
-            return;
-
-        hideViewUnderCondition(isNotificationButton(enumString), view);
+    /**
+     * Injection point.
+     */
+    public static void hideNotificationButton(String enumName, View view) {
+        boolean shouldHide = HIDE_TOOLBAR_NOTIFICATION_BUTTON && equalsAny(enumName, NOTIFICATION_BUTTON_ENUMS);
+        hideViewUnderCondition(shouldHide, view);
     }
 
-    public static void hideSearchButton(String enumString, View view) {
-        if (!Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get())
-            return;
-
-        hideViewUnderCondition(isSearchButton(enumString), view);
+    /**
+     * Injection point.
+     */
+    public static void hideSearchButton(String enumName, View view) {
+        boolean shouldHide = HIDE_TOOLBAR_SEARCH_BUTTON && equalsAny(enumName, SEARCH_BUTTON_ENUMS);
+        hideViewUnderCondition(shouldHide, view);
     }
 
-    public static void hideSearchButton(MenuItem menuItem, int original) {
-        menuItem.setShowAsAction(
-                Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get()
-                        ? MenuItem.SHOW_AS_ACTION_NEVER
-                        : original
-        );
+    /**
+     * Injection point.
+     */
+    public static void hideOldSearchButton(MenuItem menuItem, int original) {
+        int actionEnum = HIDE_TOOLBAR_SEARCH_BUTTON ? MenuItem.SHOW_AS_ACTION_NEVER : original;
+        menuItem.setShowAsAction(actionEnum);
     }
-
-    private static boolean isCreateButton(String enumString) {
-        return "CREATION_ENTRY".equals(enumString) // Create button for Phone layout.
-                || "FAB_CAMERA".equals(enumString); // Create button for Tablet layout.
-    }
-
-    private static boolean isNotificationButton(String enumString) {
-        return "TAB_ACTIVITY".equals(enumString) // Notification button.
-                || "TAB_ACTIVITY_CAIRO".equals(enumString); // Notification button (New layout).
-    }
-
-    private static boolean isSearchButton(String enumString) {
-        return "SEARCH".equals(enumString) // Search button.
-                || "SEARCH_CAIRO".equals(enumString) // Search button (New layout).
-                || "SEARCH_BOLD".equals(enumString); // Search button (Shorts).
-    }
-
-    // Hide voice search button
-    private static final boolean HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_VOICE_SEARCH_BUTTON.get();
 
     /**
      * Injection point.

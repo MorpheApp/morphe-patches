@@ -34,7 +34,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
@@ -198,49 +199,34 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
 
+        // Hide voice search button in the search bar while typing.
+        SearchButtonsVisibilityFingerprint.match(
+            SearchFragmentFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches[2].index
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
 
-        //
-        // Hide voice search button.
-        //
-        SearchBarFingerprint.match(SearchBarParentFingerprint.originalClassDef).method.let { method ->
-            val startIndex = SearchBarFingerprint.instructionMatches.first().index
-
-            val setVisibilityIndex = method.indexOfFirstInstructionOrThrow(startIndex) {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.name == "setVisibility"
+                replaceInstruction(
+                    index,
+                    "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
+                            "$EXTENSION_CLASS_DESCRIPTOR->hideVoiceSearchButton(Landroid/view/View;I)V"
+                )
             }
-
-            val instruction = method.getInstruction<FiveRegisterInstruction>(setVisibilityIndex)
-
-            method.replaceInstruction(
-                setVisibilityIndex,
-                "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->hideVoiceSearchButton(Landroid/view/View;I)V"
-            )
         }
 
-        SearchResultFingerprint.match(VoiceInputControllerParentFingerprint.originalClassDef).method.let { method ->
-            val voiceInputControllerCall = VoiceInputControllerFingerprint.originalMethod.run {
-                "${definingClass}->${name}(${parameters.joinToString(",") { it.type }})${returnType}"
+        // Hide voice search button in the search bar in search results.
+        SearchResultButtonVisibilityFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            "hideVoiceSearchButton(Landroid/view/View;)V"
+                )
             }
-
-            val controllerIndex = method.indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.toString() == voiceInputControllerCall
-            }
-
-            val setOnClickListenerIndex = method.indexOfFirstInstructionOrThrow(controllerIndex) {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.name == "setOnClickListener"
-            }
-
-            val viewRegister = method.getInstruction<FiveRegisterInstruction>(setOnClickListenerIndex).registerC
-
-            method.addInstruction(
-                setOnClickListenerIndex + 1,
-                "invoke-static { v$viewRegister }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->hideVoiceSearchButton(Landroid/view/View;)V"
-            )
         }
 
         //
