@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+
 package app.morphe.extension.shared.oauth2.requests;
 
 import static app.morphe.extension.shared.StringRef.str;

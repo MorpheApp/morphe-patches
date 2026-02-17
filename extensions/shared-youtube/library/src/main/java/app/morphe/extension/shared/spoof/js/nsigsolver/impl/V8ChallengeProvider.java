@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+
 package app.morphe.extension.shared.spoof.js.nsigsolver.impl;
 
 import com.eclipsesource.v8.V8;
@@ -10,6 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.js.nsigsolver.common.CacheError;
 import app.morphe.extension.shared.spoof.js.nsigsolver.common.ScriptUtils;
 import app.morphe.extension.shared.spoof.js.nsigsolver.provider.JsChallengeProviderError;
@@ -28,8 +34,9 @@ public class V8ChallengeProvider extends JsRuntimeChalBaseJCP {
             LIB_PREFIX + "astring-1.9.0.min.js"
     );
 
-    private final ExecutorService v8Executor = Executors.newSingleThreadExecutor();
+    private ExecutorService v8Executor = Executors.newSingleThreadExecutor();
     private V8 v8Runtime;
+    private int executeCount = 0;
 
     private V8ChallengeProvider() {}
 
@@ -66,21 +73,46 @@ public class V8ChallengeProvider extends JsRuntimeChalBaseJCP {
 
     private String runJS(String stdin, boolean warmup) throws JsChallengeProviderError {
         try {
-            String result = v8Executor.submit(() -> {
-                if (v8Runtime != null) {
-                    return v8Runtime.executeStringScript(stdin);
+            String results = v8Executor.submit(() -> {
+                // Null checking and setting in the v8 runtime are done on the same thread
+                if (v8Runtime == null) {
+                    v8Runtime = V8.createV8Runtime();
                 }
-                return null;
+
+                // Run js to get decipher results
+                String result = v8Runtime.executeStringScript(stdin);
+
+                // The decipher function and global functions are remembered by the V8 runtime's Bytecode Caching
+                // This ensures that the V8 runtime is faster than other runtimes, such as QuickJS,
+                // when deciphering dozens of formats simultaneously with yt-dlp-ejs
+                //
+                // To prevent memory leaks, the V8 runtime's cached bytecode must be periodically flushed
+                // The V8 runtime is reset every time the execution count exceeds 6
+                //
+                // Note: There is a delay of approximately 100-200ms when the runtime is regenerated
+                if (executeCount > 6 && !warmup && !v8Runtime.isReleased()) {
+                    v8Runtime.lowMemoryNotification();
+                    v8Runtime.release(false);
+                    v8Runtime = null;
+                    executeCount = 0;
+                    Logger.printDebug(() -> "Close the V8 runtime");
+                }
+                executeCount++;
+
+                return result;
             }).get();
 
+            // The results of the warmup are not used anywhere
             if (warmup) {
                 return "";
-            } else if (result == null || result.isEmpty()) {
+            }
+
+            if (Utils.isNotEmpty(results)) {
+                return results;
+            } else {
                 var message = "V8 runtime error: empty response";
                 Logger.printException(() -> message);
                 throw new JsChallengeProviderError(message);
-            } else {
-                return result;
             }
         } catch (InterruptedException | ExecutionException e) {
             Throwable cause = e.getCause();
@@ -92,9 +124,6 @@ public class V8ChallengeProvider extends JsRuntimeChalBaseJCP {
                         // ignore
                     }
                 }
-                if (!warmup) {
-                    shutDown();
-                }
                 Logger.printException(() -> "V8 runtime error, warmup: " + warmup, v8e);
                 throw new JsChallengeProviderError("V8 runtime error: " + v8e.getMessage(), v8e);
             }
@@ -103,30 +132,18 @@ public class V8ChallengeProvider extends JsRuntimeChalBaseJCP {
         }
     }
 
-    public void shutDown() {
-        v8Executor.submit(() -> {
-            if (v8Runtime != null) {
-                v8Runtime.release(false);
-                v8Runtime = null;
-            }
-        });
-        v8Executor.shutdown();
-    }
-
     public void warmup() {
-        // Check needs to be inside executor or safe thread-check, but simplified here
-        // We submit a task to check/create
-        try {
-            v8Executor.submit(() -> {
-                if (v8Runtime == null) {
-                    v8Runtime = V8.createV8Runtime();
-                }
-            }).get();
-        } catch (Exception e) {
-            // handle error
+        // If v8Executor terminates for an unexpected reason, it will be recreated
+        if (v8Executor.isShutdown() || v8Executor.isTerminated()) {
+            try {
+                v8Executor = Executors.newSingleThreadExecutor();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to create V8 executor", ex);
+            }
         }
 
         try {
+            // Declare a global function
             runJS(constructCommonStdin(), true);
         } catch (Exception e) {
             // ignore warmup errors
