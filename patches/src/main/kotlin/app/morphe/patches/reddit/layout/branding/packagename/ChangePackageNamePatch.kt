@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-cli
+ */
+
 package app.morphe.patches.reddit.layout.branding.packagename
 
 import app.morphe.patcher.patch.resourcePatch
