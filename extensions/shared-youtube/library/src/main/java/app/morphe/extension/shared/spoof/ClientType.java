@@ -28,7 +28,6 @@ public enum ClientType {
             "14",
             "34",
             "UP1A.231005.007.A1",
-            "122.0.6238.3",
             "1.54.20",
             null,
             false,
@@ -53,7 +52,6 @@ public enum ClientType {
             "10",
             "29",
             "QQ3A.200805.001",
-            "113.0.5672.24",
             "1.47.48",
             ANDROID_VR_1_54_20.clientPlatform,
             ANDROID_VR_1_54_20.canLogin,
@@ -79,7 +77,6 @@ public enum ClientType {
             "15",
             "35",
             "AP3A.241005.015.A2",
-            "132.0.6779.0",
             "23.47.101",
             null,
             true,
@@ -251,7 +248,6 @@ public enum ClientType {
                String osVersion,
                @NonNull String androidSdkVersion,
                @NonNull String buildId,
-               @NonNull String cronetVersion,
                String clientVersion,
                String clientPlatform,
                boolean canLogin,
@@ -279,14 +275,13 @@ public enum ClientType {
 
         Locale defaultLocale = Locale.getDefault();
         this.userAgent = String.format(Locale.ENGLISH,
-                "%s/%s (Linux; U; Android %s; %s; %s; Build/%s; Cronet/%s)",
+                "%s/%s (Linux; U; Android %s; %s; %s; Build/%s)",
                 packageName,
                 clientVersion,
                 osVersion,
                 defaultLocale,
                 deviceModel,
-                Objects.requireNonNull(buildId),
-                Objects.requireNonNull(cronetVersion)
+                buildId
         );
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
