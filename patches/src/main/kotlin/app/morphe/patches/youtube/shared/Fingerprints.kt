@@ -148,13 +148,31 @@ internal object ToolBarButtonFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.ID, "menu_item_view"),
         methodCall(smali = "Landroid/view/MenuItem;->setShowAsAction(I)V"),
-        fieldAccess(type = "I", opcode = Opcode.IGET),
+        fieldAccess(
+            type = "I",
+            opcode = Opcode.IGET
+        ),
         opcode(Opcode.SGET_OBJECT),
-        methodCall(returnType = "I", opcode = Opcode.INVOKE_INTERFACE),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "I"
+        ),
         opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
-        fieldAccess(type = "Landroid/widget/ImageView;", opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
-        methodCall(definingClass = "Landroid/content/res/Resources;", name = "getDrawable", location = MatchAfterWithin(8)),
-        methodCall(definingClass = "Landroid/widget/ImageView;", name = "setImageDrawable", location = MatchAfterWithin(4))
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/widget/ImageView;",
+            location = MatchAfterWithin(6)
+        ),
+        methodCall(
+            definingClass = "Landroid/content/res/Resources;",
+            name = "getDrawable",
+            location = MatchAfterWithin(8)
+        ),
+        methodCall(
+            definingClass = "Landroid/widget/ImageView;",
+            name = "setImageDrawable",
+            location = MatchAfterWithin(4)
+        )
     )
 )
 
@@ -163,13 +181,21 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
     filters = listOf(
-        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchFirst()),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            type = "I",
+            location = MatchFirst()
+        ),
         literal(2, location = MatchAfterImmediately()),
         opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
         opcode(Opcode.NEW_INSTANCE, location = MatchAfterImmediately()), // Obfuscated VideoQuality
 
         opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
         opcode(Opcode.CHECK_CAST),
-        fieldAccess(type = "I", opcode = Opcode.IGET, location = MatchAfterImmediately()), // Video resolution (human-readable).
+        fieldAccess( // Video resolution (human-readable).
+            opcode = Opcode.IGET,
+            type = "I",
+            location = MatchAfterImmediately()
+        )
     )
 )
