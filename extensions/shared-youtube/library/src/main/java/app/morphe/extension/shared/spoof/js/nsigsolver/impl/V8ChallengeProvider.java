@@ -87,10 +87,10 @@ public class V8ChallengeProvider extends JsRuntimeChalBaseJCP {
                 // when deciphering dozens of formats simultaneously with yt-dlp-ejs
                 //
                 // To prevent memory leaks, the V8 runtime's cached bytecode must be periodically flushed
-                // The V8 runtime is reset every time the execution count exceeds 6
+                // The V8 runtime is reset every time the execution count exceeds 12
                 //
                 // Note: There is a delay of approximately 100-200ms when the runtime is regenerated
-                if (executeCount > 6 && !warmup && !v8Runtime.isReleased()) {
+                if (executeCount > 12 && !warmup && !v8Runtime.isReleased()) {
                     v8Runtime.lowMemoryNotification();
                     v8Runtime.release(false);
                     v8Runtime = null;
