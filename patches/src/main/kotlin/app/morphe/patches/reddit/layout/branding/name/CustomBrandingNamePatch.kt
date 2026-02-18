@@ -6,9 +6,7 @@ import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import java.io.FileWriter
 import java.nio.file.Files
-import java.util.logging.Logger
 
-private const val ORIGINAL_APP_NAME = "Reddit"
 private const val APP_NAME = "Reddit Morphe"
 
 @Suppress("unused")
@@ -33,13 +31,6 @@ val customBrandingNamePatch = resourcePatch(
 
     execute {
         val appName = appNameOption.value!!
-
-        if (appName == ORIGINAL_APP_NAME) {
-            Logger.getLogger(this::class.java.name).info(
-                "App name will remain unchanged as it matches the original."
-            )
-            return@execute
-        }
 
         val resDirectory = get("res")
 
