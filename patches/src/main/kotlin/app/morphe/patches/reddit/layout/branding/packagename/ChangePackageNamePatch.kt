@@ -17,6 +17,7 @@ import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import org.w3c.dom.Element
 
 private const val PACKAGE_NAME_REDDIT = "com.reddit.frontpage"
 
@@ -60,5 +61,24 @@ val changePackageNamePatch = baseChangePackageNamePatch(
     block = {
         compatibleWith(COMPATIBILITY_REDDIT)
         dependsOn(spoofSignaturePatch, recaptchaPatch)
+    },
+    executeBlock = { newPackageName ->
+        // replace strings
+        document("res/values/strings.xml").use { document ->
+            val resourcesNode = document.documentElement
+
+            val children = resourcesNode.childNodes
+            for (i in 0 until children.length) {
+                val node = children.item(i) as? Element ?: continue
+
+                node.textContent = when (node.getAttribute("name")) {
+                    "provider_authority_appdata", "provider_authority_file",
+                    "provider_authority_userdata", "provider_workmanager_init"
+                        -> node.textContent.replace(PACKAGE_NAME_REDDIT, newPackageName)
+
+                    else -> continue
+                }
+            }
+        }
     }
 )

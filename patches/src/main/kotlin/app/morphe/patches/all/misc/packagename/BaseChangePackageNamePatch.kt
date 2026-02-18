@@ -5,15 +5,24 @@
 
 package app.morphe.patches.all.misc.packagename
 
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstructions
 import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.OptionException
 import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.booleanOption
+import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.util.asSequence
+import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getNode
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstruction
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Element
 import java.util.logging.Logger
 
@@ -37,13 +46,43 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
     }
 }
 
+private fun getPackageNamePatch(newPackageName: String) = bytecodePatch {
+    execute {
+        classDefForEach { classDef ->
+            classDef.methods.forEach { method ->
+                val index = method.indexOfFirstInstruction {
+                    if (opcode != Opcode.INVOKE_VIRTUAL) return@indexOfFirstInstruction false
+
+                    val methodReference = getReference<MethodReference>()!!
+                    if (methodReference.definingClass != "Landroid/content/Context;") return@indexOfFirstInstruction false
+                    return@indexOfFirstInstruction methodReference.name == "getPackageName"
+                }
+
+                if (index == -1) return@forEach
+
+                val register = (method.getInstruction(index + 1) as OneRegisterInstruction).registerA
+                mutableClassDefBy(method.definingClass)
+                    .findMutableMethodOf(method)
+                    .replaceInstructions(
+                        index,
+                        """
+                            nop
+                            const-string v$register, "$newPackageName"
+                        """
+                    )
+            }
+        }
+    }
+}
+
 fun baseChangePackageNamePatch(
     name: String,
     description: String,
     shouldUpdatePermissions: Boolean? = null,
     shouldUpdateProviders: Boolean? = null,
+    shouldPatchGetPackageName: Boolean? = null,
     block: ResourcePatchBuilder.() -> Unit = {},
-    executeBlock: ResourcePatchContext.() -> Unit = {},
+    executeBlock: ResourcePatchContext.(newPackageName: String) -> Unit = {},
     finalizeBlock: ResourcePatchContext.() -> Unit = {},
 ) = resourcePatch(
     name = name,
@@ -77,10 +116,20 @@ fun baseChangePackageNamePatch(
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
     ).value
 
+    /*
+    val patchGetPackage = shouldPatchGetPackageName ?: booleanOption(
+        key = "patchGetPackageName",
+        default = false,
+        title = "Patch get package name calls",
+        description = "Patch usages of Context.getPackageName(). " +
+                "Enabling this can fix runtime errors, but this can also break features in certain apps.",
+    ).value
+    */
+
     block()
 
     execute {
-        executeBlock()
+        executeBlock(packageNameOption.value!!)
     }
 
     finalize {
