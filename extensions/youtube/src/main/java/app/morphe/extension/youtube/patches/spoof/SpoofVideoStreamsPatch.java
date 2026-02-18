@@ -44,9 +44,9 @@ public class SpoofVideoStreamsPatch {
 
         // For some users No SDK can fail at 1 minute. Only use it if the user has explicitly set it.
         List<ClientType> availableClients = List.of(
-                VISIONOS,
                 TV,
                 ANDROID_VR_1_47_48,
+                VISIONOS,
                 ANDROID_CREATOR
         );
 
