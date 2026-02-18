@@ -46,8 +46,10 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
     }
 }
 
-private fun getPackageNamePatch(newPackageName: String) = bytecodePatch {
+private fun getPackageNamePatch() = bytecodePatch {
     execute {
+        val originalPackageName = packageMetadata.packageName
+
         classDefForEach { classDef ->
             classDef.methods.forEach { method ->
                 val index = method.indexOfFirstInstruction {
@@ -67,7 +69,7 @@ private fun getPackageNamePatch(newPackageName: String) = bytecodePatch {
                         index,
                         """
                             nop
-                            const-string v$register, "$newPackageName"
+                            const-string v$register, "$originalPackageName"
                         """
                     )
             }
@@ -116,7 +118,6 @@ fun baseChangePackageNamePatch(
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
     ).value
 
-    /*
     val patchGetPackage = shouldPatchGetPackageName ?: booleanOption(
         key = "patchGetPackageName",
         default = false,
@@ -124,7 +125,10 @@ fun baseChangePackageNamePatch(
         description = "Patch usages of Context.getPackageName(). " +
                 "Enabling this can fix runtime errors, but this can also break features in certain apps.",
     ).value
-    */
+
+    if (patchGetPackage == true) {
+        dependsOn(getPackageNamePatch())
+    }
 
     block()
 
@@ -140,9 +144,10 @@ fun baseChangePackageNamePatch(
          */
         val incompatibleAppPackages = setOf<String>()
 
+        val packageName = packageMetadata.packageName
+
         document("AndroidManifest.xml").use { document ->
             val manifest = document.getNode("manifest") as Element
-            val packageName = manifest.getAttribute("package")
 
             if (incompatibleAppPackages.contains(packageName)) {
                 return@finalize Logger.getLogger(this::class.java.name).severe(

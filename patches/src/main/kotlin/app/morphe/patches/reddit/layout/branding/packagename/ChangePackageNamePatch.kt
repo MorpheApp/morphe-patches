@@ -58,6 +58,7 @@ val changePackageNamePatch = baseChangePackageNamePatch(
     description = "Changes the package name for Reddit to the name specified in patch options.",
     shouldUpdatePermissions = true,
     shouldUpdateProviders = true,
+    shouldPatchGetPackageName = false,
     block = {
         compatibleWith(COMPATIBILITY_REDDIT)
         dependsOn(spoofSignaturePatch, recaptchaPatch)
