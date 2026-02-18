@@ -3,7 +3,7 @@
  * https://github.com/MorpheApp/morphe-patches
  */
 
-package app.morphe.patches.youtube.layout.toolbar
+package app.morphe.patches.youtube.misc.toolbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
