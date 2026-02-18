@@ -1,7 +1,14 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-cli
+ */
+
 package app.morphe.patches.all.misc.packagename
 
 import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.OptionException
+import app.morphe.patcher.patch.ResourcePatchBuilder
+import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
@@ -30,11 +37,18 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
     }
 }
 
-val changePackageNamePatch = resourcePatch(
-    name = "Change package name",
-    description = "Appends \".morphe\" to the package name by default. " +
-        "Changing the package name of the app can lead to unexpected issues. This patch does not work with Reddit.",
-    use = false,
+fun baseChangePackageNamePatch(
+    name: String,
+    description: String,
+    shouldUpdatePermissions: Boolean? = null,
+    shouldUpdateProviders: Boolean? = null,
+    block: ResourcePatchBuilder.() -> Unit = {},
+    executeBlock: ResourcePatchContext.() -> Unit = {},
+    finalizeBlock: ResourcePatchContext.() -> Unit = {},
+) = resourcePatch(
+    name = name,
+    description = description,
+    use = false
 ) {
     packageNameOption = stringOption(
         key = "packageName",
@@ -47,21 +61,27 @@ val changePackageNamePatch = resourcePatch(
         it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+\$"))
     }
 
-    val updatePermissions by booleanOption(
+    val updatePermissions = shouldUpdatePermissions ?: booleanOption(
         key = "updatePermissions",
         default = false,
         title = "Update permissions",
         description = "Update compatibility receiver permissions. " +
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    )
+    ).value
 
-    val updateProviders by booleanOption(
+    val updateProviders = shouldUpdateProviders ?: booleanOption(
         key = "updateProviders",
         default = false,
         title = "Update providers",
         description = "Update provider names declared by the app. " +
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    )
+    ).value
+
+    block()
+
+    execute {
+        executeBlock()
+    }
 
     finalize {
         /**
@@ -69,10 +89,7 @@ val changePackageNamePatch = resourcePatch(
          * This is not an exhaustive list, and is only the apps with
          * Morphe specific patches and are confirmed incompatible with this patch.
          */
-        val incompatibleAppPackages = setOf(
-            // Cannot log in, settings menu is broken.
-            "com.reddit.frontpage",
-        )
+        val incompatibleAppPackages = setOf<String>()
 
         document("AndroidManifest.xml").use { document ->
             val manifest = document.getNode("manifest") as Element
@@ -118,5 +135,7 @@ val changePackageNamePatch = resourcePatch(
                 }
             }
         }
+
+        finalizeBlock()
     }
 }
