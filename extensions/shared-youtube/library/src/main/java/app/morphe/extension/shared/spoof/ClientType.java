@@ -22,7 +22,7 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("ConstantLocale")
 public enum ClientType {
     /**
-     * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
+     * Video not playable: Paid, Movie, Private, Age-restricted.
      * Uses non-adaptive bitrate.
      * AV1 codec available.
      */
