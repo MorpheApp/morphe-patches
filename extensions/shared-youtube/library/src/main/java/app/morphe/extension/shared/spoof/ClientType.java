@@ -23,7 +23,7 @@ import app.morphe.extension.shared.Utils;
 public enum ClientType {
     /**
      * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
-     * Uses adaptive bitrate.
+     * Uses non-adaptive bitrate.
      * AV1 codec available.
      */
     ANDROID_REEL(
@@ -151,7 +151,7 @@ public enum ClientType {
             "TV"
     ),
     /**
-     * Internal YT client for an unreleased YT client. May stop working at any time.
+     * May stop working at any time.
      */
     VISIONOS(101,
             "VISIONOS",
