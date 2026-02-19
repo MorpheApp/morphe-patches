@@ -26,6 +26,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -47,19 +48,25 @@ public final class LayoutComponentsFilter extends Filter {
             "&list="
     );
 
+    private static final List<String> channelTabFilterStrings;
     private static final List<String> flyoutMenuFilterStrings;
     static {
-        String[] flyoutFilters = Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS.get().split("\\n");
-        List<String> filters = new ArrayList<>(flyoutFilters.length);
+        channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
+        flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+    }
 
-        for (String line : flyoutFilters) {
+    private static List<String> getFilterStrings(StringSetting setting) {
+        String[] filterArray = setting.get().split("\\n");
+        List<String> filters = new ArrayList<>(filterArray.length);
+
+        for (String line : filterArray) {
             String trimmed = line.trim();
             if (!trimmed.isEmpty()) {
                 filters.add(trimmed);
             }
         }
 
-        flyoutMenuFilterStrings = filters;
+        return filters;
     }
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
@@ -421,7 +428,7 @@ public final class LayoutComponentsFilter extends Filter {
     boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         // This identifier is used not only in players but also in search results:
-        // Until 2024, medical information panels such as Covid 19 also used this identifier and were shown in the search results.
+        // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
         // From 2025, the medical information panel is no longer shown in the search results.
         // Therefore, this identifier does not filter when the search bar is activated.
         if (matchedGroup == singleItemInformationPanel) {
@@ -458,7 +465,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         // Horizontal shelves are used everywhere in the app. And to prevent the generic "hide shelves"
-        // from incorrectly hiding other stuff that has it's own hide filters,
+        // from incorrectly hiding other stuff that has its own hide filters,
         // the more specific shelf filters must check first _and_ they must halt falling over
         // to other filters if the buffer matches but the setting is off.
         if (matchedGroup == horizontalShelves) {
@@ -484,7 +491,7 @@ public final class LayoutComponentsFilter extends Filter {
             // then sometimes the buffer isn't correct and the player shopping shelf is shown.
             // If filtering reaches this point then there are no more shelves that could be in the player.
             // If shopping shelves are set to hidden and the player is active, then assume
-            // its the shopping shelf.
+            // it's the shopping shelf.
             if (hidePlayerShoppingShelf) {
                 PlayerType type = PlayerType.getCurrent();
                 if (type == PlayerType.WATCH_WHILE_MAXIMIZED || type == PlayerType.WATCH_WHILE_FULLSCREEN
@@ -814,7 +821,7 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      *
      * Injection point.
-     *
+     * <p>
      * Hide feed flyout menu for phone
      *
      * @param menuTitleCharSequence menu title
@@ -829,10 +836,8 @@ public final class LayoutComponentsFilter extends Filter {
         String menuTitleString = menuTitleCharSequence.toString();
 
         for (String filter : flyoutMenuFilterStrings) {
-            if (!filter.isEmpty()) {
-                if (menuTitleString.equalsIgnoreCase(filter)) {
-                    return null;
-                }
+            if (menuTitleString.equalsIgnoreCase(filter)) {
+                return null;
             }
         }
 
@@ -841,7 +846,7 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
-     *
+     * <p>
      * hide feed flyout panel for tablet
      *
      * @param menuTextView          flyout text view
@@ -849,18 +854,15 @@ public final class LayoutComponentsFilter extends Filter {
      */
     public static void hideFlyoutMenu(TextView menuTextView, CharSequence menuTitleCharSequence) {
         if (menuTitleCharSequence == null || !Settings.HIDE_FEED_FLYOUT_MENU.get()
-                || flyoutMenuFilterStrings.isEmpty()) {
-            return;
-        }
-
-        if (!(menuTextView.getParent() instanceof View parentView)) {
+                || flyoutMenuFilterStrings.isEmpty()
+                || !(menuTextView.getParent() instanceof View parentView)) {
             return;
         }
 
         String menuTitleString = menuTitleCharSequence.toString();
 
         for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter) && !filter.isEmpty()) {
+            if (menuTitleString.equalsIgnoreCase(filter)) {
                 Utils.hideViewByLayoutParams(parentView);
             }
         }
@@ -869,7 +871,7 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      *
      * Injection point.
-     *
+     * <p>
      * Rather than simply hiding the channel tab view, completely removes channel tab from list.
      * If a channel tab is removed from the list, users will not be able to open it by swiping.
      *
@@ -878,24 +880,13 @@ public final class LayoutComponentsFilter extends Filter {
      * @return Whether to remove the channel tab from the list.
      */
     public static boolean hideChannelTab(@Nullable String channelTabText) {
-        if (!Settings.HIDE_CHANNEL_TAB.get()) {
+        if (!Utils.isNotEmpty(channelTabText) || !Settings.HIDE_CHANNEL_TAB.get()
+                || channelTabFilterStrings.isEmpty()) {
             return false;
         }
 
-        if (TextUtils.isEmpty(channelTabText)) {
-            return false;
-        }
-
-        String rawFilters = Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS.get();
-        if (TextUtils.isEmpty(rawFilters)) {
-            return false;
-        }
-
-        String[] blockList = rawFilters.split("\\n");
-
-        for (String filter : blockList) {
-            String trimmed = filter.trim();
-            if (!trimmed.isEmpty() && channelTabText.equalsIgnoreCase(trimmed)) {
+        for (String filter : channelTabFilterStrings) {
+            if (channelTabText.equalsIgnoreCase(filter)) {
                 return true;
             }
         }
