@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
 package app.morphe.extension.shared.spoof.requests;
 
 import org.json.JSONException;
@@ -16,10 +23,17 @@ import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 
 final class PlayerRoutes {
-    static final Route.CompiledRoute GET_STREAMING_DATA = new Route(
+    static final Route.CompiledRoute GET_PLAYER_STREAMING_DATA = new Route(
             Route.Method.POST,
             "player" +
                     "?fields=playabilityStatus,streamingData" +
+                    "&alt=proto"
+    ).compile();
+
+    static final Route.CompiledRoute GET_REEL_STREAMING_DATA = new Route(
+            Route.Method.POST,
+            "reel/reel_item_watch" +
+                    "?fields=playerResponse.playabilityStatus,playerResponse.streamingData" +
                     "&alt=proto"
     ).compile();
 
@@ -64,9 +78,19 @@ final class PlayerRoutes {
             context.put("client", client);
 
             innerTubeBody.put("context", context);
-            innerTubeBody.put("contentCheckOk", true);
-            innerTubeBody.put("racyCheckOk", true);
-            innerTubeBody.put("videoId", videoId);
+
+            if (clientType.usePlayerEndpoint) {
+                innerTubeBody.put("contentCheckOk", true);
+                innerTubeBody.put("racyCheckOk", true);
+                innerTubeBody.put("videoId", videoId);
+            } else {
+                JSONObject playerRequest = new JSONObject();
+                playerRequest.put("contentCheckOk", true);
+                playerRequest.put("racyCheckOk", true);
+                playerRequest.put("videoId", videoId);
+                innerTubeBody.put("playerRequest", playerRequest);
+                innerTubeBody.put("disablePlayerResponse", false);
+            }
 
             if (clientType.requireJS) {
                 JSONObject configInfo = new JSONObject();

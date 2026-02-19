@@ -766,10 +766,10 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_on">Audio track menu is hidden</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_off">Audio track menu is shown</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is hidden
 
-To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
+To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\' or \'TV\'"</string>
     <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
