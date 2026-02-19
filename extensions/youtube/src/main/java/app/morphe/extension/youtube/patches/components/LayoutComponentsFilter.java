@@ -812,13 +812,6 @@ public final class LayoutComponentsFilter extends Filter {
     }
 
     /**
-     * Injection point.
-     */
-    public static boolean hideSearchSuggestions(String typingString) {
-        return Settings.HIDE_SEARCH_SUGGESTIONS.get() && typingString.isEmpty();
-    }
-
-    /**
      *
      * Injection point.
      *
@@ -908,5 +901,37 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return false;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param typedString   Keywords typed in the search bar.
+     * @return              Whether the setting is enabled and the typed string is empty.
+     */
+    public static boolean hideYouMayLikeSection(String typedString) {
+        return Settings.HIDE_YOU_MAY_LIKE_SECTION.get()
+                // The 'You may like' section is only visible when no search terms are entered.
+                // To avoid unnecessary collection traversals, filtering is performed only when the typedString is empty.
+                && TextUtils.isEmpty(typedString);
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param searchTerm    This class contains information related to search terms.
+     *                      The {@code toString()} method of this class overrides the search term.
+     * @param endpoint      Endpoint related with the search term.
+     *                      For search history, this value is:
+     *                      '/complete/deleteitems?client=youtube-android-pb&delq=${searchTerm}&deltok=${token}'.
+     *                      For search suggestions, this value is null or empty.
+     * @return              Whether search term is a search history or not.
+     */
+    public static boolean isSearchHistory(Object searchTerm, String endpoint) {
+        boolean isSearchHistory = endpoint != null && endpoint.contains("/delete");
+        if (!isSearchHistory) {
+            Logger.printDebug(() -> "Remove search suggestion: " + searchTerm);
+        }
+        return isSearchHistory;
     }
 }

@@ -125,9 +125,6 @@ Changes include:
     <string name="morphe_hide_playables_title">Hide Playables</string>
     <string name="morphe_hide_playables_summary_on">Playables are hidden</string>
     <string name="morphe_hide_playables_summary_off">Playables are shown</string>
-    <string name="morphe_hide_search_suggestions_title">Hide search suggestions</string>
-    <string name="morphe_hide_search_suggestions_summary_on">Search suggestions are hidden</string>
-    <string name="morphe_hide_search_suggestions_summary_off">Search suggestions are shown</string>
     <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
     <string name="morphe_hide_show_more_button_title">Hide \'Show more\' button</string>
@@ -149,6 +146,9 @@ Changes include:
     <string name="morphe_hide_web_search_results_title">Hide web search results</string>
     <string name="morphe_hide_web_search_results_summary_on">Web search results are hidden</string>
     <string name="morphe_hide_web_search_results_summary_off">Web search results are shown</string>
+    <string name="morphe_hide_you_may_like_section_title">Hide You may like section</string>
+    <string name="morphe_hide_you_may_like_section_summary_on">You may like section is hidden</string>
+    <string name="morphe_hide_you_may_like_section_summary_off">You may like section is shown</string>
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
     <string name="morphe_hide_doodles_title">Hide YouTube Doodles</string>
     <string name="morphe_hide_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
