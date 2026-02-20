@@ -134,9 +134,8 @@ public final class AdsFilter extends Filter {
 
         promotionBannerBuffer = new ByteArrayFilterGroup(
                 null,
-                // YouTube Doodles uses https://www.gstatic.com/youtube/img/promos/ only.
-                // So, https://www.gstatic.com/youtube/img/promos/growth/ should hide the ad.
-                "img/promos/growth/"
+                "img/promos/growth/", // Link, https://www.gstatic.com/youtube/img/promos/growth/ is only used for ads.
+                "SPunlimited" // Word associated with Premium, should be unique to differentiate Doodle from ad banner.
         );
 
         final var selfSponsor = new StringFilterGroup(
