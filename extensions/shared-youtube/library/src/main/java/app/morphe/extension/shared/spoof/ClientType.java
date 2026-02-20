@@ -8,6 +8,8 @@
 
 package app.morphe.extension.shared.spoof;
 
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
+
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -36,7 +38,8 @@ public enum ClientType {
             Build.VERSION.RELEASE,
             String.valueOf(Build.VERSION.SDK_INT),
             Build.ID,
-            Utils.getAppVersionName(),
+            // A hardcoded client version is used for YouTube Music.
+            IS_YOUTUBE ? Utils.getAppVersionName() : "20.26.46",
             null,
             // This client has been used by most open-source YouTube stream extraction tools since 2024, including NewPipe Extractor, SmartTube, and Grayjay.
             // This client can log in, but if an access token is used in the request, GVS can more easily identify the request as coming from Morphe.
