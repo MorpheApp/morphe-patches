@@ -43,6 +43,8 @@ public final class HidePlayerOverlayButtonsPatch {
      * Injection point.
      */
     public static void hideCaptionsButton(ImageView imageView) {
+        if (imageView == null) return;
+
         imageView.setVisibility(Settings.HIDE_CAPTIONS_BUTTON.get() ? ImageView.GONE : ImageView.VISIBLE);
     }
 

@@ -132,16 +132,6 @@ internal object SeekbarOnDrawFingerprint : Fingerprint(
     )
 )
 
-internal object SubtitleButtonControllerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        resourceLiteral(ResourceType.STRING, "accessibility_captions_unavailable"),
-        resourceLiteral(ResourceType.STRING, "accessibility_captions_button_name"),
-    )
-)
-
 internal object ToolBarButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
