@@ -29,7 +29,7 @@ import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockPreferenceGroup;
 @SuppressWarnings("NewApi")
 public class SponsorBlockSettings {
     /**
-     * Minimum length a SB user id must be, as set by SB API.
+     * Minimum length an SB user ID must be, as set by SB API.
      */
     private static final int SB_PRIVATE_USER_ID_MINIMUM_LENGTH = 30;
 
@@ -80,7 +80,7 @@ public class SponsorBlockSettings {
                     Utils.showToastLong(categoryKey + " unknown behavior key: " + categoryKey);
                 } else if (category == SegmentCategory.HIGHLIGHT && behaviour == CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE) {
                     Utils.showToastLong("Skip-once behavior not allowed for " + category.keyValue);
-                    category.setBehaviour(CategoryBehaviour.SKIP_AUTOMATICALLY); // Use closest match.
+                    category.setBehaviour(CategoryBehaviour.SKIP_AUTOMATICALLY); // Use the closest match.
                 } else {
                     category.setBehaviour(behaviour);
                 }
@@ -183,7 +183,7 @@ public class SponsorBlockSettings {
     }
 
     /**
-     * Export the categories using flatten json (no embedded dictionaries or arrays).
+     * Export the categories using flatten JSON (no embedded dictionaries or arrays).
      */
     private static void showExportWarningIfNeeded(@Nullable Context dialogContext) {
         Utils.verifyOnMainThread();
@@ -219,7 +219,7 @@ public class SponsorBlockSettings {
     }
 
     /**
-     * A non comprehensive check if a SB api server address is valid.
+     * A non-comprehensive check if an SB API server address is valid.
      */
     public static boolean isValidSBServerAddress(@NonNull String serverAddress) {
         if (!Patterns.WEB_URL.matcher(serverAddress).matches()) {

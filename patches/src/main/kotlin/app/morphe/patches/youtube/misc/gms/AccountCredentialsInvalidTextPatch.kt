@@ -21,7 +21,7 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
         //
         // Change the error text to inform the user to uninstall and reinstall MicroG.
         // The user can also fix this by deleting the MicroG account but
-        // MicroG accounts look almost identical to Google device accounts
+        // MicroG accounts look almost identical to Google device accounts,
         // and it's more foolproof to instead uninstall/reinstall.
         arrayOf(
             SpecificNetworkErrorViewControllerFingerprint,

@@ -14,12 +14,12 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/FIxLikeButtonPatch;"
+    "Lapp/morphe/extension/youtube/patches/FixLikeButtonPatch;"
 
 /**
  * Fixes https://github.com/MorpheApp/morphe-patches/issues/113.
  */
-internal val fIxLikeButtonPatch = bytecodePatch{
+internal val fixLikeButtonPatch = bytecodePatch{
     dependsOn(
         sharedExtensionPatch,
         playerTypeHookPatch,

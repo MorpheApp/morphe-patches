@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BaseSettings;
-import app.morphe.extension.youtube.returnyoutubedislike.requests.ReturnYouTubeDislikeApi;
+import app.morphe.extension.youtube.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class ReturnYouTubeDislikeDebugStatsPreferenceCategory extends PreferenceCategory {
@@ -63,22 +63,22 @@ public class ReturnYouTubeDislikeDebugStatsPreferenceCategory extends Preference
 
             addStatisticPreference(
                     "morphe_ryd_statistics_getFetchCallResponseTimeAverage_title",
-                    createMillisecondStringFromNumber(ReturnYouTubeDislikeApi.getFetchCallResponseTimeAverage())
+                    createMillisecondStringFromNumber(ReturnYouTubeDislikeAPI.getFetchCallResponseTimeAverage())
             );
 
             addStatisticPreference(
                     "morphe_ryd_statistics_getFetchCallResponseTimeMin_title",
-                    createMillisecondStringFromNumber(ReturnYouTubeDislikeApi.getFetchCallResponseTimeMin())
+                    createMillisecondStringFromNumber(ReturnYouTubeDislikeAPI.getFetchCallResponseTimeMin())
             );
 
             addStatisticPreference(
                     "morphe_ryd_statistics_getFetchCallResponseTimeMax_title",
-                    createMillisecondStringFromNumber(ReturnYouTubeDislikeApi.getFetchCallResponseTimeMax())
+                    createMillisecondStringFromNumber(ReturnYouTubeDislikeAPI.getFetchCallResponseTimeMax())
             );
 
             String fetchCallTimeWaitingLastSummary;
-            final long fetchCallTimeWaitingLast = ReturnYouTubeDislikeApi.getFetchCallResponseTimeLast();
-            if (fetchCallTimeWaitingLast == ReturnYouTubeDislikeApi.FETCH_CALL_RESPONSE_TIME_VALUE_RATE_LIMIT) {
+            final long fetchCallTimeWaitingLast = ReturnYouTubeDislikeAPI.getFetchCallResponseTimeLast();
+            if (fetchCallTimeWaitingLast == ReturnYouTubeDislikeAPI.FETCH_CALL_RESPONSE_TIME_VALUE_RATE_LIMIT) {
                 fetchCallTimeWaitingLastSummary = str("morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary");
             } else {
                 fetchCallTimeWaitingLastSummary = createMillisecondStringFromNumber(fetchCallTimeWaitingLast);
@@ -90,7 +90,7 @@ public class ReturnYouTubeDislikeDebugStatsPreferenceCategory extends Preference
 
             addStatisticPreference(
                     "morphe_ryd_statistics_getFetchCallCount_title",
-                    createSummaryText(ReturnYouTubeDislikeApi.getFetchCallCount(),
+                    createSummaryText(ReturnYouTubeDislikeAPI.getFetchCallCount(),
                             "morphe_ryd_statistics_getFetchCallCount_zero_summary",
                             "morphe_ryd_statistics_getFetchCallCount_non_zero_summary"
                     )
@@ -98,7 +98,7 @@ public class ReturnYouTubeDislikeDebugStatsPreferenceCategory extends Preference
 
             addStatisticPreference(
                     "morphe_ryd_statistics_getFetchCallNumberOfFailures_title",
-                    createSummaryText(ReturnYouTubeDislikeApi.getFetchCallNumberOfFailures(),
+                    createSummaryText(ReturnYouTubeDislikeAPI.getFetchCallNumberOfFailures(),
                             "morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary",
                             "morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary"
                     )
@@ -106,7 +106,7 @@ public class ReturnYouTubeDislikeDebugStatsPreferenceCategory extends Preference
 
             addStatisticPreference(
                     "morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title",
-                    createSummaryText(ReturnYouTubeDislikeApi.getNumberOfRateLimitRequestsEncountered(),
+                    createSummaryText(ReturnYouTubeDislikeAPI.getNumberOfRateLimitRequestsEncountered(),
                             "morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary",
                             "morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary"
                     )

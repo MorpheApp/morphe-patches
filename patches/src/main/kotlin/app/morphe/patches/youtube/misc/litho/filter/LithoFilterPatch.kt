@@ -155,7 +155,7 @@ val lithoFilterPatch = bytecodePatch(
             }
         }
 
-        // Legacy Non native buffer.
+        // Legacy Non-native buffer.
         ProtobufBufferReferenceLegacyFingerprint.method.addInstruction(
             0,
             "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",

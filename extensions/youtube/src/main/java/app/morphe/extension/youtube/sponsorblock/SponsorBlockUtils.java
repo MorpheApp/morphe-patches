@@ -214,10 +214,10 @@ public class SponsorBlockUtils {
             Utils.verifyOnMainThread();
             final long start = newSponsorSegmentStartMillis;
             final long end = newSponsorSegmentEndMillis;
-            final String videoId = VideoInformation.getVideoId();
+            final String videoID = VideoInformation.getVideoID();
             final long videoLength = VideoInformation.getVideoLength();
             final SegmentCategory segmentCategory = newUserCreatedSegmentCategory;
-            if (start < 0 || end < 0 || start >= end || videoLength <= 0 || videoId.isEmpty() || segmentCategory == null) {
+            if (start < 0 || end < 0 || start >= end || videoLength <= 0 || videoID.isEmpty() || segmentCategory == null) {
                 Logger.printException(() -> "invalid parameters");
                 return;
             }
@@ -225,8 +225,8 @@ public class SponsorBlockUtils {
             clearUnsubmittedSegmentTimes();
             Utils.runOnBackgroundThread(() -> {
                 try {
-                    SBRequester.submitSegments(videoId, segmentCategory.keyValue, start, end, videoLength);
-                    SegmentPlaybackController.executeDownloadSegments(videoId);
+                    SBRequester.submitSegments(videoID, segmentCategory.keyValue, start, end, videoLength);
+                    SegmentPlaybackController.executeDownloadSegments(videoID);
                 } catch (Exception ex) {
                     Logger.printException(() -> "submitNewSegment failure", ex);
                 }
@@ -416,10 +416,10 @@ public class SponsorBlockUtils {
         if (!matcher.matches()) {
             return -1;
         }
-        String hoursStr = matcher.group(2); // Hours is optional.
+        String hoursStr = matcher.group(2); // Hours are optional.
         String minutesStr = matcher.group(3);
         String secondsStr = matcher.group(4);
-        String millisecondsStr = matcher.group(6); // Milliseconds is optional.
+        String millisecondsStr = matcher.group(6); // Milliseconds are optional.
 
         try {
             final int hours = (hoursStr != null) ? Integer.parseInt(hoursStr) : 0;
@@ -447,7 +447,7 @@ public class SponsorBlockUtils {
         // Use same time formatting as shown in the video player.
         final long videoLength = VideoInformation.getVideoLength();
 
-        // Cannot use DateFormatter, as videos over 24 hours will rollover and not display correctly.
+        // Cannot use DateFormatter, as videos over 24 hours will roll over and not display correctly.
         final long hours = TimeUnit.MILLISECONDS.toHours(segmentTime);
         final long minutes = TimeUnit.MILLISECONDS.toMinutes(segmentTime) % 60;
         final long seconds = TimeUnit.MILLISECONDS.toSeconds(segmentTime) % 60;

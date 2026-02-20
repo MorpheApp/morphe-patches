@@ -27,7 +27,7 @@ private var parameterIsShortAndOpeningOrPlaying = -1
 
 // Registers used to pass the parameters to the extension.
 private var playerResponseMethodCopyRegisters = false
-private lateinit var registerVideoId: String
+private lateinit var registerVideoID: String
 private lateinit var registerProtoBuffer: String
 private lateinit var registerIsShortAndOpeningOrPlaying: String
 
@@ -72,21 +72,21 @@ val playerResponseMethodHookPatch = bytecodePatch {
             playerResponseMethod.parameterTypes.size + parameterIsShortAndOpeningOrPlaying > 15
 
         if (playerResponseMethodCopyRegisters) {
-            registerVideoId = "v0"
+            registerVideoID = "v0"
             registerProtoBuffer = "v1"
             registerIsShortAndOpeningOrPlaying = "v2"
         } else {
-            registerVideoId = "p$PARAMETER_VIDEO_ID"
+            registerVideoID = "p$PARAMETER_VIDEO_ID"
             registerProtoBuffer = "p$PARAMETER_PROTO_BUFFER"
             registerIsShortAndOpeningOrPlaying = "p$parameterIsShortAndOpeningOrPlaying"
         }
     }
 
     finalize {
-        fun hookVideoId(hook: Hook) {
+        fun hookVideoID(hook: Hook) {
             playerResponseMethod.addInstruction(
                 0,
-                "invoke-static {$registerVideoId, $registerIsShortAndOpeningOrPlaying}, $hook",
+                "invoke-static {$registerVideoID, $registerIsShortAndOpeningOrPlaying}, $hook",
             )
             numberOfInstructionsAdded++
         }
@@ -95,7 +95,7 @@ val playerResponseMethodHookPatch = bytecodePatch {
             playerResponseMethod.addInstructions(
                 0,
                 """
-                    invoke-static {$registerProtoBuffer, $registerVideoId, $registerIsShortAndOpeningOrPlaying}, $hook
+                    invoke-static {$registerProtoBuffer, $registerVideoID, $registerIsShortAndOpeningOrPlaying}, $hook
                     move-result-object $registerProtoBuffer
             """,
             )
@@ -103,20 +103,20 @@ val playerResponseMethodHookPatch = bytecodePatch {
         }
 
         // Reverse the order in order to preserve insertion order of the hooks.
-        val beforeVideoIdHooks = hooks.filterIsInstance<Hook.ProtoBufferParameterBeforeVideoId>().asReversed()
-        val videoIdHooks = hooks.filterIsInstance<Hook.VideoId>().asReversed()
-        val afterVideoIdHooks = hooks.filterIsInstance<Hook.ProtoBufferParameter>().asReversed()
+        val beforeVideoIDHooks = hooks.filterIsInstance<Hook.ProtoBufferParameterBeforeVideoID>().asReversed()
+        val videoIDHooks = hooks.filterIsInstance<Hook.VideoID>().asReversed()
+        val afterVideoIDHooks = hooks.filterIsInstance<Hook.ProtoBufferParameter>().asReversed()
 
         // Add the hooks in this specific order as they insert instructions at the beginning of the method.
-        afterVideoIdHooks.forEach(::hookProtoBufferParameter)
-        videoIdHooks.forEach(::hookVideoId)
-        beforeVideoIdHooks.forEach(::hookProtoBufferParameter)
+        afterVideoIDHooks.forEach(::hookProtoBufferParameter)
+        videoIDHooks.forEach(::hookVideoID)
+        beforeVideoIDHooks.forEach(::hookProtoBufferParameter)
 
         if (playerResponseMethodCopyRegisters) {
             playerResponseMethod.addInstructions(
                 0,
                 """
-                    move-object/from16 $registerVideoId, p$PARAMETER_VIDEO_ID
+                    move-object/from16 $registerVideoID, p$PARAMETER_VIDEO_ID
                     move-object/from16 $registerProtoBuffer, p$PARAMETER_PROTO_BUFFER
                     move/from16        $registerIsShortAndOpeningOrPlaying, p$parameterIsShortAndOpeningOrPlaying
                 """,
@@ -133,10 +133,10 @@ val playerResponseMethodHookPatch = bytecodePatch {
 }
 
 sealed class Hook(private val methodDescriptor: String) {
-    class VideoId(methodDescriptor: String) : Hook(methodDescriptor)
+    class VideoID(methodDescriptor: String) : Hook(methodDescriptor)
 
     class ProtoBufferParameter(methodDescriptor: String) : Hook(methodDescriptor)
-    class ProtoBufferParameterBeforeVideoId(methodDescriptor: String) : Hook(methodDescriptor)
+    class ProtoBufferParameterBeforeVideoID(methodDescriptor: String) : Hook(methodDescriptor)
 
     override fun toString() = methodDescriptor
 }

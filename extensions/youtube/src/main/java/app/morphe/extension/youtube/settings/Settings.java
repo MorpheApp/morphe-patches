@@ -168,7 +168,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_CHANNEL_WATERMARK = new BooleanSetting("morphe_hide_channel_watermark", TRUE);
     public static final BooleanSetting HIDE_CROWDFUNDING_BOX = new BooleanSetting("morphe_hide_crowdfunding_box", FALSE, true);
     public static final BooleanSetting HIDE_EMERGENCY_BOX = new BooleanSetting("morphe_hide_emergency_box", TRUE);
-    public static final BooleanSetting HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
+    public static final BooleanSetting HIDE_END_SCREEN_CARDS = new BooleanSetting("morphe_hide_end_screen_cards", FALSE);
     public static final BooleanSetting HIDE_END_SCREEN_SUGGESTED_VIDEO = new BooleanSetting("morphe_end_screen_suggested_video", FALSE, true);
     public static final BooleanSetting HIDE_FULLSCREEN_BUTTON = new BooleanSetting("morphe_hide_fullscreen_button", FALSE, true);
     public static final BooleanSetting HIDE_INFO_CARDS = new BooleanSetting("morphe_hide_info_cards", FALSE);
@@ -296,7 +296,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting GRADIENT_LOADING_SCREEN = new BooleanSetting("morphe_gradient_loading_screen", FALSE, true);
     public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
     public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
-    public static final BooleanSetting DISABLE_SIGNIN_TO_TV_POPUP = new BooleanSetting("morphe_disable_signin_to_tv_popup", FALSE);
+    public static final BooleanSetting DISABLE_SIGN_IN_TO_TV_POPUP = new BooleanSetting("morphe_disable_sign_in_to_tv_popup", FALSE);
 
     public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE,
             "morphe_remove_viewer_discretion_dialog_user_dialog_message");
@@ -386,8 +386,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SEEKBAR_THUMBNAIL = new BooleanSetting("morphe_hide_seekbar_thumbnail", FALSE, true);
     public static final BooleanSetting FULLSCREEN_LARGE_SEEKBAR = new BooleanSetting("morphe_fullscreen_large_seekbar", FALSE);
     public static final BooleanSetting HIDE_TIMESTAMP = new BooleanSetting("morphe_hide_timestamp", FALSE);
-    public static final BooleanSetting SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("morphe_slide_to_seek", FALSE, true);
+    public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("morphe_tap_to_seek", FALSE);
     public static final BooleanSetting SEEKBAR_CUSTOM_COLOR = new BooleanSetting("morphe_seekbar_custom_color", FALSE, true);
     public static final StringSetting SEEKBAR_CUSTOM_COLOR_PRIMARY = new StringSetting("morphe_seekbar_custom_color_primary", "#FF0033", true, parent(SEEKBAR_CUSTOM_COLOR));
     public static final StringSetting SEEKBAR_CUSTOM_COLOR_ACCENT = new StringSetting("morphe_seekbar_custom_color_accent", "#FF2791", true, parent(SEEKBAR_CUSTOM_COLOR));

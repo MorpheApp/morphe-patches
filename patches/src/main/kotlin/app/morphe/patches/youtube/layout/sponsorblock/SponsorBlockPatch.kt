@@ -24,8 +24,8 @@ import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
-import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
-import app.morphe.patches.youtube.video.videoid.videoIdPatch
+import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoID
+import app.morphe.patches.youtube.video.videoid.videoIDPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -117,7 +117,7 @@ val sponsorBlockPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         resourceMappingPatch,
-        videoIdPatch,
+        videoIDPatch,
         // Required to skip segments on time.
         videoInformationPatch,
         // Used to prevent SponsorBlock from running on Shorts because SponsorBlock does not yet support Shorts.
@@ -135,9 +135,9 @@ val sponsorBlockPatch = bytecodePatch(
             "setVideoTime",
         )
 
-        hookBackgroundPlayVideoId(
+        hookBackgroundPlayVideoID(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR +
-                "->setCurrentVideoId(Ljava/lang/String;)V",
+                "->setCurrentVideoID(Ljava/lang/String;)V",
         )
 
         // Set seekbar draw rectangle.

@@ -15,46 +15,46 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Searches for video id's in the proto buffer of Shorts dislike.
+ * Searches for video IDs in the proto buffer of Shorts dislike.
  *
  * Because multiple litho dislike spans are created in the background
  * (and also anytime litho refreshes the components, which is somewhat arbitrary),
- * that makes the value of {@link VideoInformation#getVideoId()} and {@link VideoInformation#getPlayerResponseVideoId()}
- * unreliable to determine which video id a Shorts litho span belongs to.
+ * that makes the value of {@link VideoInformation#getVideoID()} and {@link VideoInformation#getPlayerResponseVideoID()}
+ * unreliable to determine which video ID a Shorts litho span belongs to.
  *
- * But the correct video id does appear in the protobuffer just before a Shorts litho span is created.
+ * But the correct video ID does appear in the protobuffer just before a Shorts litho span is created.
  *
  * Once a way to asynchronously update litho text is found, this strategy will no longer be needed.
  */
 public final class ReturnYouTubeDislikeFilter extends Filter {
 
     /**
-     * Last unique video id's loaded.  Value is ignored and Map is treated as a Set.
+     * Last unique video IDs loaded. Value is ignored and Map is treated as a Set.
      * Cannot use {@link LinkedHashSet} because it's missing #removeEldestEntry().
      */
     @GuardedBy("itself")
-    private static final Map<String, Boolean> lastVideoIds = Utils.createSizeRestrictedMap(5);
+    private static final Map<String, Boolean> lastVideoIDs = Utils.createSizeRestrictedMap(5);
 
     /**
      * Injection point.
      */
     @SuppressWarnings("unused")
-    public static void newPlayerResponseVideoId(String videoId, boolean isShortAndOpeningOrPlaying) {
+    public static void newPlayerResponseVideoID(String videoID, boolean isShortAndOpeningOrPlaying) {
         try {
             if (!isShortAndOpeningOrPlaying || !Settings.RYD_ENABLED.get() || !Settings.RYD_SHORTS.get()) {
                 return;
             }
-            synchronized (lastVideoIds) {
-                if (lastVideoIds.put(videoId, Boolean.TRUE) == null) {
-                    Logger.printDebug(() -> "New Short video id: " + videoId);
+            synchronized (lastVideoIDs) {
+                if (lastVideoIDs.put(videoID, Boolean.TRUE) == null) {
+                    Logger.printDebug(() -> "New Short video ID: " + videoID);
                 }
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "newPlayerResponseVideoId failure", ex);
+            Logger.printException(() -> "newPlayerResponseVideoID failure", ex);
         }
     }
 
-    private final ByteArrayFilterGroupList videoIdFilterGroup = new ByteArrayFilterGroupList();
+    private final ByteArrayFilterGroupList videoIDFilterGroup = new ByteArrayFilterGroupList();
 
     public ReturnYouTubeDislikeFilter() {
         // When a new Short is opened, the like buttons always seem to load before the dislike.
@@ -72,8 +72,8 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
                 )
         );
 
-        // After the button identifiers is binary data and then the video id for that specific short.
-        videoIdFilterGroup.addAll(
+        // After the button identifiers is binary data and then the video ID for that specific short.
+        videoIDFilterGroup.addAll(
                 new ByteArrayFilterGroup(
                         null,
                         "id.reel_like_button",
@@ -91,25 +91,25 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
             return false;
         }
 
-        FilterGroup.FilterGroupResult result = videoIdFilterGroup.check(buffer);
+        FilterGroup.FilterGroupResult result = videoIDFilterGroup.check(buffer);
         if (result.isFiltered()) {
-            String matchedVideoId = findVideoId(buffer);
+            String matchedVideoID = findVideoID(buffer);
             // Matched video will be null if in incognito mode.
-            // Must pass a null id to correctly clear out the current video data.
-            // Otherwise if a Short is opened in non-incognito, then incognito is enabled and another Short is opened,
+            // Must pass a null ID to correctly clear out the current video data.
+            // Otherwise, if a Short is opened in non-incognito, then incognito is enabled and another Short is opened,
             // the new incognito Short will show the old prior data.
-            ReturnYouTubeDislikePatch.setLastLithoShortsVideoId(matchedVideoId);
+            ReturnYouTubeDislikePatch.setLastLithoShortsVideoID(matchedVideoID);
         }
 
         return false;
     }
 
     @Nullable
-    private String findVideoId(byte[] protobufBufferArray) {
-        synchronized (lastVideoIds) {
-            for (String videoId : lastVideoIds.keySet()) {
-                if (byteArrayContainsString(protobufBufferArray, videoId)) {
-                    return videoId;
+    private String findVideoID(byte[] protobufBufferArray) {
+        synchronized (lastVideoIDs) {
+            for (String videoID : lastVideoIDs.keySet()) {
+                if (byteArrayContainsString(protobufBufferArray, videoID)) {
+                    return videoID;
                 }
             }
 

@@ -119,7 +119,7 @@ internal object OnTouchEventHandlerFingerprint : Fingerprint(
     )
 )
 
-internal object SeekbarTappingFingerprint : Fingerprint(
+internal object TapToSeekFingerprint : Fingerprint(
     name = "onTouchEvent",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",

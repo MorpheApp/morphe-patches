@@ -92,7 +92,7 @@ public class OpenShortsInRegularPlayerPatch {
             // Can use the application context and add intent flags of
             // FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TOP
             // But the activity context seems to fix random app crashes
-            // if Shorts urls are opened outside the app.
+            // if Shorts URLs are opened outside the app.
             var context = mainActivityRef.get();
 
             Intent videoPlayerIntent = new Intent(

@@ -769,7 +769,7 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
 }
 
 /**
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
  * and contain the original contents of the method parameters.
  * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
  * original uncloned method.
@@ -782,7 +782,7 @@ fun Method.cloneMutableAndPreserveParameters() = cloneMutableAndPreserveParamete
 )
 
 /**
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
  * and contain the original contents of the method parameters.
  * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
  * original uncloned method.
@@ -811,7 +811,7 @@ fun Method.cloneMutableAndPreserveParameters(mutableClass : MutableClass) : Muta
  * Adapted from BiliRoamingX:
  * https://github.com/BiliRoamingX/BiliRoamingX/blob/ae58109f3acdd53ec2d2b3fb439c2a2ef1886221/patches/src/main/kotlin/app/revanced/patches/bilibili/utils/Extenstions.kt#L51
  *
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
  * and contain the original contents of the method parameters.
  * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
  * original uncloned method.

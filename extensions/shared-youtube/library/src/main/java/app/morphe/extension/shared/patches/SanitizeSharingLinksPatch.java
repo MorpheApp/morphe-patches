@@ -19,7 +19,7 @@ public final class SanitizeSharingLinksPatch {
      */
     public static String sanitize(String url) {
         if (SharedYouTubeSettings.SANITIZE_SHARED_LINKS.get()) {
-            url = sanitizer.sanitizeUrlString(url);
+            url = sanitizer.sanitizeURLString(url);
         }
 
         if (SharedYouTubeSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {

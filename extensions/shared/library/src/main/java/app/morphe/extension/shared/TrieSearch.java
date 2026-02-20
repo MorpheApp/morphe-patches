@@ -109,7 +109,7 @@ public abstract class TrieSearch<T> {
          * Alternatively this array could be a sorted and densely packed array,
          * and lookup is done using binary search.
          * That would save a small amount of memory because there's no null children entries,
-         * but would give a worst case search of O(nlog(m)) where n is the number of
+         * but would give the worst case search of O(nlog(m)) where n is the number of
          * characters in the searched text and m is the maximum size of the sorted character arrays.
          * Using a hash table array always gives O(n) search time.
          * The memory usage here is very small (all Litho filters use ~10KB of memory),

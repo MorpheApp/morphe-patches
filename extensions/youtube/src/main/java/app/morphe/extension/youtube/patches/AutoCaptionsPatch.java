@@ -1,6 +1,5 @@
 package app.morphe.extension.youtube.patches;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.patches.VersionCheckPatch;
 
 @SuppressWarnings("unused")
 public class AutoCaptionsPatch {

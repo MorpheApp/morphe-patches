@@ -8,7 +8,7 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
-import app.morphe.extension.reddit.patches.SanitizeUrlQueryPatch;
+import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.RedditImportExportPreference;
@@ -24,7 +24,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return OpenLinksDirectlyPatch.isPatchIncluded() ||
-                SanitizeUrlQueryPatch.isPatchIncluded();
+                SanitizeSharingLinksPatch.isPatchIncluded();
     }
 
     @Override
@@ -40,10 +40,10 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     "Skips over redirection URLs in external links"
             ));
         }
-        if (SanitizeUrlQueryPatch.isPatchIncluded()) {
+        if (SanitizeSharingLinksPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.SANITIZE_URL_QUERY,
+                    Settings.SANITIZE_SHARING_LINKS,
                     "Sanitize sharing links",
                     "Sanitizes sharing links by removing tracking query parameters"
             ));

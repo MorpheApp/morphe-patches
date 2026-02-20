@@ -28,7 +28,7 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.youtube.settings.Settings;
 
-public class ReturnYouTubeDislikeApi {
+public class ReturnYouTubeDislikeAPI {
     /**
      * {@link #fetchVotes(String)} TCP connection timeout.
      */
@@ -43,7 +43,7 @@ public class ReturnYouTubeDislikeApi {
     /**
      * Default connection and response timeout for voting and registration.
      *
-     * Voting and user registration runs in the background and has has no urgency
+     * Voting and user registration runs in the background and has no urgency
      * so this can be a larger value.
      */
     private static final int API_REGISTER_VOTE_TIMEOUT_MILLISECONDS = 60 * 1000; // 60 Seconds.
@@ -79,7 +79,7 @@ public class ReturnYouTubeDislikeApi {
     private static final int BACKOFF_CONNECTION_ERROR_MILLISECONDS = 2 * 60 * 1000; // 2 Minutes.
 
     /**
-     * If non zero, then the system time of when API calls can resume.
+     * If non-zero, then the system time of when API calls can resume.
      */
     private static volatile long timeToResumeAPICalls;
 
@@ -109,7 +109,7 @@ public class ReturnYouTubeDislikeApi {
 
     /**
      * Total time spent waiting for {@link #fetchVotes(String)} network call to complete.
-     * Value does does not persist on app shut down.
+     * Value does not persist on app shut down.
      */
     private static volatile long fetchCallResponseTimeTotal;
 
@@ -147,7 +147,7 @@ public class ReturnYouTubeDislikeApi {
         return numberOfRateLimitRequestsEncountered;
     }
 
-    private ReturnYouTubeDislikeApi() {
+    private ReturnYouTubeDislikeAPI() {
     } // utility class
 
     /**
@@ -251,7 +251,7 @@ public class ReturnYouTubeDislikeApi {
         if (!lastApiCallFailed && Settings.RYD_TOAST_ON_CONNECTION_ERROR.get()) {
             if (responseCode != null && responseCode == HTTP_STATUS_CODE_UNAUTHORIZED) {
                 Logger.printInfo(() -> "Ignoring status code " + HTTP_STATUS_CODE_UNAUTHORIZED
-                        + " (API authorization erorr)");
+                        + " (API authorization error)");
                 return; // Do not set api failure field.
             } else if (toastDuration != null) {
                 Utils.showToast(toastMessage, toastDuration);
@@ -281,7 +281,7 @@ public class ReturnYouTubeDislikeApi {
             // request headers, as per https://returnyoutubedislike.com/docs/fetching
             // the documentation says to use 'Accept:text/html', but the RYD browser plugin uses 'Accept:application/json'
             connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Connection", "keep-alive"); // keep-alive is on by default with http 1.1, but specify anyways
+            connection.setRequestProperty("Connection", "keep-alive"); // keep-alive is on by default with http 1.1, but specify anyway
             connection.setRequestProperty("Pragma", "no-cache");
             connection.setRequestProperty("Cache-Control", "no-cache");
             connection.setUseCaches(false);
@@ -307,7 +307,7 @@ public class ReturnYouTubeDislikeApi {
                     return votingData;
                 } catch (JSONException ex) {
                     Logger.printException(() -> "Failed to parse video: " + videoId + " json: " + json, ex);
-                    // fall thru to update statistics
+                    // fall through to update statistics
                 }
             } else {
                 // Unexpected response code.  Most likely RYD is temporarily broken.

@@ -48,24 +48,24 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * The last litho based Shorts loaded.
-     * May be the same value as {@link #currentVideoData}, but usually is the next short to swipe to.
+     * Maybe the same value as {@link #currentVideoData}, but usually is the next short to swipe to.
      */
     @Nullable
     private static volatile ReturnYouTubeDislike lastLithoShortsVideoData;
 
     /**
      * Because litho Shorts spans are created offscreen after {@link ReturnYouTubeDislikeFilter}
-     * detects the video ids, but the current Short can arbitrarily reload the same span,
+     * detects the video IDs, but the current Short can arbitrarily reload the same span,
      * then use the {@link #lastLithoShortsVideoData} if this value is greater than zero.
      */
     @GuardedBy("ReturnYouTubeDislikePatch.class")
     private static int useLithoShortsVideoDataCount;
 
     /**
-     * Last video id prefetched. Field is to prevent prefetching the same video id multiple times in a row.
+     * Last video ID prefetched. Field is to prevent prefetching the same video ID multiple times in a row.
      */
     @Nullable
-    private static volatile String lastPrefetchedVideoId;
+    private static volatile String lastPrefetchedVideoID;
 
     private static void clearData() {
         currentVideoData = null;
@@ -124,7 +124,7 @@ public class ReturnYouTubeDislikePatch {
      * Called when a litho text component is initially created,
      * and also when a Span is later reused again (such as scrolling off/on screen).
      *
-     * This method is sometimes called on the main thread, but it usually is called _off_ the main thread.
+     * This method is sometimes called on the main thread, but it is usually called _off_ the main thread.
      * This method can be called multiple times for the same UI element (including after dislikes was added).
      *
      * @param original Original char sequence was created or reused by Litho.
@@ -191,14 +191,14 @@ public class ReturnYouTubeDislikePatch {
 
         final ReturnYouTubeDislike videoData;
         if (decrementUseLithoDataIfNeeded()) {
-            // New Short is loading off screen.
+            // New Short is loading off-screen.
             videoData = lastLithoShortsVideoData;
         } else {
             videoData = currentVideoData;
         }
 
         if (videoData == null) {
-            // The Shorts litho video id filter did not detect the video id.
+            // The Shorts litho video ID filter did not detect the video ID.
             // This is normal in incognito mode, but otherwise is abnormal.
             Logger.printDebug(() -> "Cannot modify Shorts litho span, data is null");
             return original;
@@ -297,7 +297,7 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * Remove Rolling Number text view modifications made by this patch.
-     * Required as it appears text views can be reused for other rolling numbers (view count, upload time, etc).
+     * Required as it appears text views can be reused for other rolling numbers (view count, upload time, etc.).
      */
     private static void removeRollingNumberPatchChanges(TextView view) {
         if (view.getCompoundDrawablePadding() != 0) {
@@ -319,7 +319,7 @@ public class ReturnYouTubeDislikePatch {
                 return original;
             }
             // Called for all instances of RollingNumber, so must check if text is for a dislikes.
-            // Text will already have the correct content but it's missing the drawable separators.
+            // Text will already have the correct content, but it's missing the drawable separators.
             if (!ReturnYouTubeDislike.isPreviouslyCreatedSegmentedSpan(original.toString())) {
                 // The text is the video view count, upload time, or some other text.
                 removeRollingNumberPatchChanges(view);
@@ -356,67 +356,67 @@ public class ReturnYouTubeDislikePatch {
     }
 
     //
-    // Video Id and voting hooks (all players).
+    // Video ID and voting hooks (all players).
     //
 
     private static volatile boolean lastPlayerResponseWasShort;
 
     /**
-     * Injection point.  Uses 'playback response' video id hook to preload RYD.
+     * Injection point.  Uses 'playback response' video ID hook to preload RYD.
      */
-    public static void preloadVideoId(String videoId, boolean isShortAndOpeningOrPlaying) {
+    public static void preloadVideoID(String videoID, boolean isShortAndOpeningOrPlaying) {
         try {
             if (!Settings.RYD_ENABLED.get()) {
                 return;
             }
-            if (videoId.equals(lastPrefetchedVideoId)) {
+            if (videoID.equals(lastPrefetchedVideoID)) {
                 return;
             }
             if (!Utils.isNetworkConnected()) {
                 Logger.printDebug(() -> "Cannot pre-fetch RYD, network is not connected");
-                lastPrefetchedVideoId = null;
+                lastPrefetchedVideoID = null;
                 return;
             }
 
-            final boolean videoIdIsShort = VideoInformation.lastPlayerResponseIsShort();
+            final boolean videoIDIsShort = VideoInformation.lastPlayerResponseIsShort();
             // Shorts shelf in home and subscription feed causes player response hook to be called,
             // and the 'is opening/playing' parameter will be false.
             // This hook will be called again when the Short is actually opened.
-            if (videoIdIsShort && (!isShortAndOpeningOrPlaying || !Settings.RYD_SHORTS.get())) {
+            if (videoIDIsShort && (!isShortAndOpeningOrPlaying || !Settings.RYD_SHORTS.get())) {
                 return;
             }
-            final boolean waitForFetchToComplete = videoIdIsShort && !lastPlayerResponseWasShort;
+            final boolean waitForFetchToComplete = videoIDIsShort && !lastPlayerResponseWasShort;
 
-            Logger.printDebug(() -> "Prefetching RYD for video: " + videoId);
-            ReturnYouTubeDislike fetch = ReturnYouTubeDislike.getFetchForVideoId(videoId);
+            Logger.printDebug(() -> "Prefetching RYD for video: " + videoID);
+            ReturnYouTubeDislike fetch = ReturnYouTubeDislike.getFetchForVideoID(videoID);
             if (waitForFetchToComplete && !fetch.fetchCompleted()) {
                 // This call is off the main thread, so wait until the RYD fetch completely finishes,
                 // otherwise if this returns before the fetch completes then the UI can
-                // become frozen when the main thread tries to modify the litho Shorts dislikes and
+                // become frozen when the main thread tries to modify the litho Shorts dislikes, and
                 // it must wait for the fetch.
                 // Only need to do this for the first Short opened, as the next Short to swipe to
                 // are preloaded in the background.
                 //
                 // If an asynchronous litho Shorts solution is found, then this blocking call should be removed.
-                Logger.printDebug(() -> "Waiting for prefetch to complete: " + videoId);
+                Logger.printDebug(() -> "Waiting for prefetch to complete: " + videoID);
                 fetch.getFetchData(20000); // Any arbitrarily large max wait time.
             }
 
             // Set the fields after the fetch completes, so any concurrent calls will also wait.
-            lastPlayerResponseWasShort = videoIdIsShort;
-            lastPrefetchedVideoId = videoId;
+            lastPlayerResponseWasShort = videoIDIsShort;
+            lastPrefetchedVideoID = videoID;
         } catch (Exception ex) {
-            Logger.printException(() -> "preloadVideoId failure", ex);
+            Logger.printException(() -> "preloadVideoID failure", ex);
         }
     }
 
     /**
-     * Injection point.  Uses 'current playing' video id hook.  Always called on main thread.
+     * Injection point. Uses 'current playing' video ID hook. Always called on main thread.
      */
-    public static void newVideoLoaded(String videoId) {
+    public static void newVideoLoaded(String videoID) {
         try {
             if (!Settings.RYD_ENABLED.get()) return;
-            Objects.requireNonNull(videoId);
+            Objects.requireNonNull(videoID);
 
             PlayerType currentPlayerType = PlayerType.getCurrent();
             final boolean isNoneHiddenOrSlidingMinimized = currentPlayerType.isNoneHiddenOrSlidingMinimized();
@@ -426,10 +426,10 @@ public class ReturnYouTubeDislikePatch {
                 return;
             }
 
-            if (videoIdIsSame(currentVideoData, videoId)) {
+            if (videoIDIsSame(currentVideoData, videoID)) {
                 return;
             }
-            Logger.printDebug(() -> "New video id: " + videoId + " playerType: " + currentPlayerType);
+            Logger.printDebug(() -> "New video ID: " + videoID + " playerType: " + currentPlayerType);
 
             if (!Utils.isNetworkConnected()) {
                 Logger.printDebug(() -> "Cannot fetch RYD, network is not connected");
@@ -437,11 +437,11 @@ public class ReturnYouTubeDislikePatch {
                 return;
             }
 
-            ReturnYouTubeDislike data = ReturnYouTubeDislike.getFetchForVideoId(videoId);
+            ReturnYouTubeDislike data = ReturnYouTubeDislike.getFetchForVideoID(videoID);
             // Pre-emptively set the data to short status.
             // Required to prevent Shorts data from being used on a minimized video in incognito mode.
             if (isNoneHiddenOrSlidingMinimized) {
-                data.setVideoIdIsShort(true);
+                data.setVideoIDIsShort(true);
             }
             currentVideoData = data;
         } catch (Exception ex) {
@@ -449,24 +449,24 @@ public class ReturnYouTubeDislikePatch {
         }
     }
 
-    public static void setLastLithoShortsVideoId(@Nullable String videoId) {
-        if (videoIdIsSame(lastLithoShortsVideoData, videoId)) {
+    public static void setLastLithoShortsVideoID(@Nullable String videoID) {
+        if (videoIDIsSame(lastLithoShortsVideoData, videoID)) {
             return;
         }
 
-        if (videoId == null) {
-            // Litho filter did not detect the video id.  App is in incognito mode,
-            // or the proto buffer structure was changed and the video id is no longer present.
+        if (videoID == null) {
+            // Litho filter did not detect the video ID.  App is in incognito mode,
+            // or the proto buffer structure was changed and the video ID is no longer present.
             // Must clear both currently playing and last litho data otherwise the
             // next regular video may use the wrong data.
-            Logger.printDebug(() -> "Litho filter did not find any video ids");
+            Logger.printDebug(() -> "Litho filter did not find any video IDs");
             clearData();
             return;
         }
 
-        Logger.printDebug(() -> "New litho Shorts video id: " + videoId);
-        ReturnYouTubeDislike videoData = ReturnYouTubeDislike.getFetchForVideoId(videoId);
-        videoData.setVideoIdIsShort(true);
+        Logger.printDebug(() -> "New litho Shorts video ID: " + videoID);
+        ReturnYouTubeDislike videoData = ReturnYouTubeDislike.getFetchForVideoID(videoID);
+        videoData.setVideoIDIsShort(true);
         lastLithoShortsVideoData = videoData;
         synchronized (ReturnYouTubeDislikePatch.class) {
             // Use litho Shorts data for the next like and dislike spans.
@@ -474,9 +474,9 @@ public class ReturnYouTubeDislikePatch {
         }
     }
 
-    private static boolean videoIdIsSame(@Nullable ReturnYouTubeDislike fetch, @Nullable String videoId) {
-        return (fetch == null && videoId == null)
-                || (fetch != null && fetch.getVideoId().equals(videoId));
+    private static boolean videoIDIsSame(@Nullable ReturnYouTubeDislike fetch, @Nullable String videoID) {
+        return (fetch == null && videoID == null)
+                || (fetch != null && fetch.getVideoID().equals(videoID));
     }
 
     /**

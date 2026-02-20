@@ -21,9 +21,9 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
 import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
-import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
-import app.morphe.patches.youtube.video.videoid.hookVideoId
-import app.morphe.patches.youtube.video.videoid.videoIdPatch
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoID
+import app.morphe.patches.youtube.video.videoid.hookVideoID
+import app.morphe.patches.youtube.video.videoid.videoIDPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.findFreeRegister
@@ -54,7 +54,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         lithoFilterPatch,
-        videoIdPatch,
+        videoIDPatch,
         playerTypeHookPatch,
         versionCheckPatch,
     )
@@ -84,10 +84,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Inject newVideoLoaded event handler to update dislikes when a new video is loaded.
 
-        hookVideoId("$EXTENSION_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
+        hookVideoID("$EXTENSION_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
 
-        // Hook the player response video id, to start loading RYD sooner in the background.
-        hookPlayerResponseVideoId("$EXTENSION_CLASS_DESCRIPTOR->preloadVideoId(Ljava/lang/String;Z)V")
+        // Hook the player response video ID, to start loading RYD sooner in the background.
+        hookPlayerResponseVideoID("$EXTENSION_CLASS_DESCRIPTOR->preloadVideoID(Ljava/lang/String;Z)V")
 
         // endregion
 
@@ -219,11 +219,11 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Hook Shorts
 
-        // Filter that parses the video id from the UI
+        // Filter that parses the video ID from the UI
         addLithoFilter(FILTER_CLASS_DESCRIPTOR)
 
-        // Player response video id is needed to search for the video ids in Shorts litho components.
-        hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
+        // Player response video ID is needed to search for the video IDs in Shorts litho components.
+        hookPlayerResponseVideoID("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoID(Ljava/lang/String;Z)V")
 
         // endregion
 

@@ -13,9 +13,9 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/SeekbarTappingPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/TapToSeekPatch;"
 
-val enableSeekbarTappingPatch = bytecodePatch(
+val enableTapToSeekPatch = bytecodePatch(
     description = "Adds an option to enable tap to seek on the seekbar of the video player.",
 ) {
     dependsOn(
@@ -25,11 +25,11 @@ val enableSeekbarTappingPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_seekbar_tapping"),
+            SwitchPreference("morphe_tap_to_seek"),
         )
 
         // Find the required methods to tap the seekbar.
-        val seekbarTappingMethods = OnTouchEventHandlerFingerprint.let {
+        val tapToSeekMethods = OnTouchEventHandlerFingerprint.let {
             fun getReference(index: Int) = it.method.getInstruction<ReferenceInstruction>(index)
                 .reference as MethodReference
 
@@ -39,7 +39,7 @@ val enableSeekbarTappingPatch = bytecodePatch(
             )
         }
 
-        SeekbarTappingFingerprint.let {
+        TapToSeekFingerprint.let {
             val insertIndex = it.instructionMatches.last().index + 1
 
             it.method.apply {
@@ -55,13 +55,13 @@ val enableSeekbarTappingPatch = bytecodePatch(
                     insertIndex, thisInstanceRegister, xAxisRegister
                 )
 
-                val oMethod = seekbarTappingMethods[0]
-                val nMethod = seekbarTappingMethods[1]
+                val oMethod = tapToSeekMethods[0]
+                val nMethod = tapToSeekMethods[1]
 
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->seekbarTappingEnabled()Z
+                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->tapToSeekEnabled()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :disabled
                         invoke-virtual { v$thisInstanceRegister, v$xAxisRegister }, $oMethod

@@ -44,12 +44,12 @@ internal object RequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
 )
 
-internal object MessageDigestImageUrlFingerprint : Fingerprint(
+internal object MessageDigestImageURLFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Ljava/lang/String;", "L")
 )
 
-internal object MessageDigestImageUrlParentFingerprint : Fingerprint(
+internal object MessageDigestImageURLParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),

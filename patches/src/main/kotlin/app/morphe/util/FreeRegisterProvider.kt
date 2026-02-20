@@ -143,7 +143,7 @@ class FreeRegisterProvider internal constructor(
      * (registers are read from by the original code), and all free registers previously provided
      * by this class using [getFreeRegister].
      *
-     * @return List of all registers that are un-safe to use at this time.
+     * @return List of all registers that are unsafe to use at this time.
      */
     fun getUsedAndUnAvailableRegisters(): List<Int> {
         val allRegisters = 0 until method.implementation!!.registerCount
@@ -374,7 +374,7 @@ private fun Method.findFreeRegistersInternal(
             // Check if this register is ONLY written to (not also read)
             // Count occurrences of writeRegister in instructionRegisters.
             val occurrences = instructionRegisters.count { it == writeRegister }
-            // If it appears only once, it's write-only (the write).
+            // If it appears only once, it's write-only (to write).
             // If it appears more than once, it's also read.
             if (occurrences <= 1) {
                 if (logFreeRegisterSearch) println("Found free register at $i: $writeRegister " +
@@ -412,7 +412,7 @@ private fun Method.findFreeRegistersInternal(
         if (instruction.isUnconditionalBranchInstruction) {
             if (logFreeRegisterSearch) println("encountered unconditional branch index: $i opcode: " + instruction.opcode)
 
-            // Continue searching from the goto index.
+            // Continue searching from the go-to index.
             return (freeRegisters + findFreeRegistersInternal(
                 startIndex = getBranchTargetInstructionIndex(instruction, i, offsetArray),
                 numberOfFreeRegistersNeeded = numberOfFreeRegistersNeeded,
@@ -453,7 +453,7 @@ private fun Method.findFreeRegistersInternal(
 
     // A return or branch instruction will be encountered before all instructions can be iterated.
     // Some methods have switch payload instructions after the last actual instruction,
-    // but these cannot be reached thru normal control flow.
+    // but these cannot be reached through normal control flow.
     throw IllegalArgumentException("Start index is outside normal control flow: $startIndex")
 }
 
@@ -486,7 +486,7 @@ private fun Method.buildInstructionOffsetArray(): IntArray {
 }
 
 /**
- * Returns a instruction index for a given branch instruction.
+ * Returns an instruction index for a given branch instruction.
  *
  * @param instruction The branch instruction
  * @param index Current instruction index

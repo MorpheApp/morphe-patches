@@ -42,7 +42,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.returnyoutubedislike.requests.RYDVoteData;
-import app.morphe.extension.youtube.returnyoutubedislike.requests.ReturnYouTubeDislikeApi;
+import app.morphe.extension.youtube.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -136,7 +136,7 @@ public class ReturnYouTubeDislike {
         leftSeparatorShape.setBounds(leftSeparatorBounds);
     }
 
-    private final String videoId;
+    private final String videoID;
 
     /**
      * Stores the results of the vote api fetch, and used as a barrier to wait until fetch completes.
@@ -206,8 +206,8 @@ public class ReturnYouTubeDislike {
             return newSpannableWithDislikes(oldSpannable, voteData);
         }
 
-        // Note: Some locales use right to left layout (Arabic, Hebrew, etc).
-        // If making changes to this code, change device settings to a RTL language and verify layout is correct.
+        // Note: Some locales use right to left layout (Arabic, Hebrew, etc.).
+        // If making changes to this code, change device settings to an RTL language and verify layout is correct.
         CharSequence oldLikes = oldSpannable;
 
         // YouTube creators can hide the like count on a video,
@@ -384,22 +384,22 @@ public class ReturnYouTubeDislike {
     }
 
     @NonNull
-    public static ReturnYouTubeDislike getFetchForVideoId(@Nullable String videoId) {
-        Objects.requireNonNull(videoId);
+    public static ReturnYouTubeDislike getFetchForVideoID(@Nullable String videoID) {
+        Objects.requireNonNull(videoID);
         synchronized (fetchCache) {
             // Remove any expired entries.
             final long now = System.currentTimeMillis();
             fetchCache.values().removeIf(value -> {
                 final boolean expired = value.isExpired(now);
                 if (expired)
-                    Logger.printDebug(() -> "Removing expired fetch: " + value.videoId);
+                    Logger.printDebug(() -> "Removing expired fetch: " + value.videoID);
                 return expired;
             });
 
-            ReturnYouTubeDislike fetch = fetchCache.get(videoId);
+            ReturnYouTubeDislike fetch = fetchCache.get(videoID);
             if (fetch == null) {
-                fetch = new ReturnYouTubeDislike(videoId);
-                fetchCache.put(videoId, fetch);
+                fetch = new ReturnYouTubeDislike(videoID);
+                fetchCache.put(videoID, fetch);
             }
             return fetch;
         }
@@ -416,10 +416,10 @@ public class ReturnYouTubeDislike {
         }
     }
 
-    private ReturnYouTubeDislike(@NonNull String videoId) {
-        this.videoId = Objects.requireNonNull(videoId);
+    private ReturnYouTubeDislike(@NonNull String videoID) {
+        this.videoID = Objects.requireNonNull(videoID);
         this.timeFetched = System.currentTimeMillis();
-        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeApi.fetchVotes(videoId));
+        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeAPI.fetchVotes(videoID));
     }
 
     private boolean isExpired(long now) {
@@ -455,20 +455,20 @@ public class ReturnYouTubeDislike {
 
     private synchronized void clearUICache() {
         if (replacementLikeDislikeSpan != null) {
-            Logger.printDebug(() -> "Clearing replacement span for: " + videoId);
+            Logger.printDebug(() -> "Clearing replacement span for: " + videoID);
         }
         replacementLikeDislikeSpan = null;
     }
 
     @NonNull
-    public String getVideoId() {
-        return videoId;
+    public String getVideoID() {
+        return videoID;
     }
 
     /**
      * Pre-emptively set this as a Short.
      */
-    public synchronized void setVideoIdIsShort(boolean isShort) {
+    public synchronized void setVideoIDIsShort(boolean isShort) {
         this.isShort = isShort;
     }
 
@@ -512,7 +512,7 @@ public class ReturnYouTubeDislike {
             if (votingData == null) {
                 // Method automatically prevents showing multiple toasts if the connection failed.
                 // This call is needed here in case the api call did succeed but took too long.
-                ReturnYouTubeDislikeApi.handleConnectionError(
+                ReturnYouTubeDislikeAPI.handleConnectionError(
                         str("morphe_ryd_failure_connection_timeout"),
                         null, null, Toast.LENGTH_SHORT);
                 Logger.printDebug(() -> "Cannot add dislike to UI (RYD data not available)");
@@ -532,9 +532,9 @@ public class ReturnYouTubeDislike {
                     // 1, opened a video
                     // 2. opened a short (without closing the regular video)
                     // 3. closed the short
-                    // 4. regular video is now present, but the videoId and RYD data is still for the short
+                    // 4. regular video is now present, but the videoID and RYD data is still for the short
                     Logger.printDebug(() -> "Ignoring regular video dislike span,"
-                            + " as data loaded was previously used for a Short: " + videoId);
+                            + " as data loaded was previously used for a Short: " + videoID);
                     return original;
                 }
 
@@ -549,7 +549,7 @@ public class ReturnYouTubeDislike {
                     }
 
                     // Scrolling Shorts does not cause the Spans to be reloaded,
-                    // so there is no need to cache the likes for this situations.
+                    // so there is no need to cache the likes for these situations.
                     Logger.printDebug(() -> "Creating likes span for: " + votingData.videoId);
                     return newSpannableWithLikes(original, votingData);
                 }
@@ -557,7 +557,7 @@ public class ReturnYouTubeDislike {
                 if (originalDislikeSpan != null && replacementLikeDislikeSpan != null
                         && spansHaveEqualTextAndColor(original, originalDislikeSpan)) {
                     Logger.printDebug(() -> "Replacing span: " + original + " with " +
-                            "previously created dislike span of data: " + videoId);
+                            "previously created dislike span of data: " + videoID);
                     return replacementLikeDislikeSpan;
                 }
 
@@ -569,7 +569,7 @@ public class ReturnYouTubeDislike {
                 originalDislikeSpan = original;
                 replacementLikeDislikeSpan = createDislikeSpan(original, isSegmentedButton, isRollingNumber, votingData);
                 Logger.printDebug(() -> "Replaced: '" + originalDislikeSpan + "' with: '"
-                        + replacementLikeDislikeSpan + "'" + " using video: " + videoId);
+                        + replacementLikeDislikeSpan + "'" + " using video: " + videoID);
 
                 return replacementLikeDislikeSpan;
             }
@@ -587,7 +587,7 @@ public class ReturnYouTubeDislike {
         try {
             PlayerType currentType = PlayerType.getCurrent();
             if (isShort != currentType.isNoneHiddenOrMinimized()) {
-                Logger.printDebug(() -> "Cannot vote for video: " + videoId
+                Logger.printDebug(() -> "Cannot vote for video: " + videoID
                         + " as current player type does not match: " + currentType);
 
                 // Shorts was loaded with regular video present, then Shorts was closed.
@@ -601,7 +601,7 @@ public class ReturnYouTubeDislike {
 
             voteSerialExecutor.execute(() -> {
                 try { // Must wrap in try/catch to properly log exceptions.
-                    ReturnYouTubeDislikeApi.sendVote(videoId, vote);
+                    ReturnYouTubeDislikeAPI.sendVote(videoID, vote);
                 } catch (Exception ex) {
                     Logger.printException(() -> "Failed to send vote", ex);
                 }
@@ -675,7 +675,7 @@ class VerticallyCenteredImageSpan extends ImageSpan {
 
     /**
      * @param useOriginalWidth Use the original layout width of the text this span is applied to,
-     * and not the bounds of the Drawable. Drawable is always displayed using it's own bounds,
+     * and not the bounds of the Drawable. Drawable is always displayed using its own bounds,
      * and this setting only affects the layout width of the entire span.
      */
     public VerticallyCenteredImageSpan(Drawable drawable, boolean useOriginalWidth) {

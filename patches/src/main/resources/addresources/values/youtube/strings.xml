@@ -146,7 +146,7 @@ Changes include:
     <string name="morphe_hide_web_search_results_title">Hide web search results</string>
     <string name="morphe_hide_web_search_results_summary_on">Web search results are hidden</string>
     <string name="morphe_hide_web_search_results_summary_off">Web search results are shown</string>
-    <string name="morphe_hide_you_may_like_section_title">Hide You may like section</string>
+    <string name="morphe_hide_you_may_like_section_title">Hide \'You may like\' section</string>
     <string name="morphe_hide_you_may_like_section_summary_on">You may like section is hidden</string>
     <string name="morphe_hide_you_may_like_section_summary_off">You may like section is shown</string>
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -460,10 +460,10 @@ Limitations:
     <string name="morphe_remove_viewer_discretion_dialog_summary_off">Dialog will be shown</string>
     <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">This does not bypass the age restriction. It just accepts it automatically.</string>
 
-    <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-    <string name="morphe_disable_signin_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
-    <string name="morphe_disable_signin_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
-    <string name="morphe_disable_signin_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
+    <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+    <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
+    <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
+    <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
 
     <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
     <string name="morphe_disable_chapter_skip_double_tap_title">Disable double tap chapter skip</string>
@@ -497,10 +497,15 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_on">Precise seeking gesture is disabled</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_off">Precise seeking gesture is enabled</string>
 
-    <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-    <string name="morphe_seekbar_tapping_title">Enable tap to seek</string>
-    <string name="morphe_seekbar_tapping_summary_on">Tap to seek is enabled</string>
-    <string name="morphe_seekbar_tapping_summary_off">Tap to seek is disabled</string>
+    <!-- interaction.seekbar.enableSlideToSeekPatch -->
+    <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
+    <string name="morphe_slide_to_seek_summary_on">Slide to seek is enabled</string>
+    <string name="morphe_slide_to_seek_summary_off">Slide to seek is not enabled</string>
+
+    <!-- interaction.seekbar.enableTapToSeekPatch -->
+    <string name="morphe_tap_to_seek_title">Enable tap to seek</string>
+    <string name="morphe_tap_to_seek_summary_on">Tap to seek is enabled</string>
+    <string name="morphe_tap_to_seek_summary_off">Tap to seek is disabled</string>
 
     <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
     <string name="morphe_swipe_brightness_title">Enable brightness gesture</string>
@@ -812,9 +817,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_player_previous_next_buttons_summary_off">Previous &amp; Next buttons are shown</string>
 
     <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-    <string name="morphe_hide_endscreen_cards_title">Hide end screen cards</string>
-    <string name="morphe_hide_endscreen_cards_summary_on">End screen cards are hidden</string>
-    <string name="morphe_hide_endscreen_cards_summary_off">End screen cards are shown</string>
+    <string name="morphe_hide_end_screen_cards_title">Hide end screen cards</string>
+    <string name="morphe_hide_end_screen_cards_summary_on">End screen cards are hidden</string>
+    <string name="morphe_hide_end_screen_cards_summary_off">End screen cards are shown</string>
 
     <!-- layout.hide.ambientmode.ambientModePatch -->
     <string name="morphe_ambient_mode_screen_title">Ambient mode</string>
@@ -1644,11 +1649,6 @@ Limitations:
     <string name="morphe_prioritize_video_quality_title">Prioritize video quality</string>
     <string name="morphe_prioritize_video_quality_summary_on">Video quality is prioritized</string>
     <string name="morphe_prioritize_video_quality_summary_off">Video codecs are prioritized</string>
-
-    <!-- interaction.seekbar.enableSlideToSeekPatch -->
-    <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
-    <string name="morphe_slide_to_seek_summary_on">Slide to seek is enabled</string>
-    <string name="morphe_slide_to_seek_summary_off">Slide to seek is not enabled</string>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
     <string name="morphe_spoof_video_streams_av1_title">Allow Android VR AV1</string>
