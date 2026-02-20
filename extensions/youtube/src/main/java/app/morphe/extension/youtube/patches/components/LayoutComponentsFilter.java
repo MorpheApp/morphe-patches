@@ -99,6 +99,12 @@ public final class LayoutComponentsFilter extends Filter {
 
         // Identifiers.
 
+        final var cellDivider = new StringFilterGroup(
+                Settings.HIDE_COMPACT_BANNER,
+                // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
+                "cell_divider"
+        );
+
         final var chipsShelf = new StringFilterGroup(
                 Settings.HIDE_CHIPS_SHELF,
                 "chips_shelf"
@@ -110,6 +116,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         addIdentifierCallbacks(
+                cellDivider,
                 chipsShelf,
                 liveChatReplay
         );
@@ -146,7 +153,6 @@ public final class LayoutComponentsFilter extends Filter {
 
         final var compactBanner = new StringFilterGroup(
                 Settings.HIDE_COMPACT_BANNER,
-                "cell_divider", // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
                 "compact_banner"
         );
 
