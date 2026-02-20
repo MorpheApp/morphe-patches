@@ -1,5 +1,7 @@
 package app.morphe.extension.youtube.patches;
 
+import android.os.Vibrator;
+
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -15,6 +17,13 @@ public class DisableHapticFeedbackPatch {
     /**
      * Injection point.
      */
+    public static boolean disablePreciseSeekingVibrate() {
+        return Settings.DISABLE_HAPTIC_FEEDBACK_PRECISE_SEEKING.get();
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean disableSeekUndoVibrate() {
         return Settings.DISABLE_HAPTIC_FEEDBACK_SEEK_UNDO.get();
     }
@@ -22,8 +31,10 @@ public class DisableHapticFeedbackPatch {
     /**
      * Injection point.
      */
-    public static boolean disablePreciseSeekingVibrate() {
-        return Settings.DISABLE_HAPTIC_FEEDBACK_PRECISE_SEEKING.get();
+    public static Vibrator disableTapAndHoldVibrate(Vibrator vibrator) {
+        return Settings.DISABLE_HAPTIC_FEEDBACK_TAP_AND_HOLD.get()
+                ? null
+                : vibrator;
     }
 
     /**
