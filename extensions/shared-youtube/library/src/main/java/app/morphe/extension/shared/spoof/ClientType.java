@@ -48,7 +48,7 @@ public enum ClientType {
             false,
             false,
             true,
-            true,
+            false,
             false,
             false,
             "Android Reel"
