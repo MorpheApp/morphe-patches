@@ -1,6 +1,5 @@
 package app.morphe.extension.youtube.patches;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.patches.VersionCheckPatch;
 
 @SuppressWarnings("unused")
 public class AutoCaptionsPatch {
@@ -17,7 +16,7 @@ public class AutoCaptionsPatch {
     /**
      * Injection point.
      */
-    public static boolean disableAutoCaptions() {
+    public static boolean disableAutoCaptions(boolean original) {
         AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
         final boolean withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED)
                 || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
@@ -26,10 +25,10 @@ public class AutoCaptionsPatch {
             // Disable auto-captioning only
             // when 'withVolumeAutoCaptioningEnabled'
             // field is false
-            return captionsButtonStatus;
+            return !captionsButtonStatus || original;
         }
 
-        return true;
+        return original;
     }
 
     /**
