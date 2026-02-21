@@ -47,7 +47,7 @@ final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(ClientType clientType, String videoID) {
+    static String createInnertubeBody(ClientType clientType, String videoId) {
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -82,12 +82,12 @@ final class PlayerRoutes {
             if (clientType.usePlayerEndpoint) {
                 innerTubeBody.put("contentCheckOk", true);
                 innerTubeBody.put("racyCheckOk", true);
-                innerTubeBody.put("videoID", videoID);
+                innerTubeBody.put("videoId", videoId);
             } else {
                 JSONObject playerRequest = new JSONObject();
                 playerRequest.put("contentCheckOk", true);
                 playerRequest.put("racyCheckOk", true);
-                playerRequest.put("videoID", videoID);
+                playerRequest.put("videoId", videoId);
                 innerTubeBody.put("playerRequest", playerRequest);
                 innerTubeBody.put("disablePlayerResponse", false);
             }
@@ -104,7 +104,7 @@ final class PlayerRoutes {
                 JSONObject contentPlaybackContext = new JSONObject();
                 contentPlaybackContext.put(
                         "referer",
-                        String.format("https://www.youtube.com/tv#/watch?v=%s", videoID)
+                        String.format("https://www.youtube.com/tv#/watch?v=%s", videoId)
                 );
                 contentPlaybackContext.put("html5Preference", "HTML5_PREF_WANTS");
                 Integer signatureTimestamp = JavaScriptManager.getSignatureTimestamp();
