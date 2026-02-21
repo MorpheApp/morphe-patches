@@ -64,9 +64,9 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
-        val playbackStartVideoIdMethodName : String
+        val playbackStartVideoIDMethodName : String
         PlaybackStartDescriptorToStringFingerprint.let {
-            playbackStartVideoIdMethodName = it.instructionMatches[1]
+            playbackStartVideoIDMethodName = it.instructionMatches[1]
                 .getInstruction<ReferenceInstruction>()
                 .getReference<MethodReference>()!!
                 .getMutableMethod()
@@ -78,7 +78,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
             """
                 move-object/from16 v0, p1
                 
-                invoke-virtual { v0 }, ${PlaybackStartDescriptorToStringFingerprint.classDef}->$playbackStartVideoIdMethodName()Ljava/lang/String;
+                invoke-virtual { v0 }, ${PlaybackStartDescriptorToStringFingerprint.classDef}->$playbackStartVideoIDMethodName()Ljava/lang/String;
                 move-result-object v1
                 invoke-static { v1 }, $EXTENSION_CLASS_DESCRIPTOR->openShort(Ljava/lang/String;)Z
                 move-result v1

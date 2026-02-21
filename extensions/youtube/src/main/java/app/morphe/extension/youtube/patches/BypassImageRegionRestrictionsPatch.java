@@ -15,15 +15,15 @@ public final class BypassImageRegionRestrictionsPatch {
     private static final String REPLACEMENT_IMAGE_DOMAIN = "https://yt4.ggpht.com";
 
     /**
-     * YouTube static images' domain.  Includes user and channel avatar images and community post images.
+     * YouTube static images' domain. Includes user and channel avatar images and community post images.
      */
     private static final Pattern YOUTUBE_STATIC_IMAGE_DOMAIN_PATTERN
             = Pattern.compile("^https://(yt3|lh[3-6]|play-lh)\\.(ggpht|googleusercontent)\\.com");
 
     /**
-     * Injection point.  Called off the main thread and by multiple threads at the same time.
+     * Injection point. Called off the main thread and by multiple threads at the same time.
      *
-     * @param originalURL Image url for all image URLs loaded.
+     * @param originalURL Image URL for all image URLs loaded.
      */
     public static String overrideImageURL(String originalURL) {
         try {

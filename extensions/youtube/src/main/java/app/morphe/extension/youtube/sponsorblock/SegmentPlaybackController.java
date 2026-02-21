@@ -87,7 +87,7 @@ public class SegmentPlaybackController {
     private static final int HIGHLIGHT_SEGMENT_DRAW_BAR_WIDTH = Dim.dp7;
 
     @Nullable
-    private static String currentVideoId;
+    private static String currentVideoID;
     @Nullable
     private static SponsorSegment[] segments;
 
@@ -269,7 +269,7 @@ public class SegmentPlaybackController {
      * Clear all data.
      */
     private static void clearData() {
-        currentVideoId = null;
+        currentVideoID = null;
         segments = null;
         highlightSegment = null;
         highlightSegmentInitialShowEndTime = 0;
@@ -305,13 +305,13 @@ public class SegmentPlaybackController {
     /**
      * Injection point.
      */
-    public static void setCurrentVideoId(@Nullable String videoId) {
+    public static void setCurrentVideoID(@Nullable String videoID) {
         try {
-            if (Objects.equals(currentVideoId, videoId)) {
+            if (Objects.equals(currentVideoID, videoID)) {
                 return;
             }
             clearData();
-            if (videoId == null || !Settings.SB_ENABLED.get()) {
+            if (videoID == null || !Settings.SB_ENABLED.get()) {
                 return;
             }
             // Cannot use PlayerType to check because on some newer targets
@@ -326,34 +326,34 @@ public class SegmentPlaybackController {
                 return;
             }
 
-            currentVideoId = videoId;
-            Logger.printDebug(() -> "New video ID: " + videoId);
+            currentVideoID = videoID;
+            Logger.printDebug(() -> "New video ID: " + videoID);
 
             Utils.runOnBackgroundThread(() -> {
                 try {
-                    executeDownloadSegments(videoId);
+                    executeDownloadSegments(videoID);
                 } catch (Exception e) {
                     Logger.printException(() -> "Failed to download segments", e);
                 }
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "setCurrentVideoId failure", ex);
+            Logger.printException(() -> "setCurrentVideoID failure", ex);
         }
     }
 
     /**
      * Must be called off main thread.
      */
-    static void executeDownloadSegments(String videoId) {
-        Objects.requireNonNull(videoId);
+    static void executeDownloadSegments(String videoID) {
+        Objects.requireNonNull(videoID);
         Utils.verifyOffMainThread();
 
-        SponsorSegment[] segments = SBRequester.getSegments(videoId);
+        SponsorSegment[] segments = SBRequester.getSegments(videoID);
 
         Utils.runOnMainThread(() -> {
-            if (!videoId.equals(currentVideoId)) {
+            if (!videoID.equals(currentVideoID)) {
                 // user changed videos before get segments network call could complete
-                Logger.printDebug(() -> "Ignoring segments for prior video: " + videoId);
+                Logger.printDebug(() -> "Ignoring segments for prior video: " + videoID);
                 return;
             }
             setSegments(segments);

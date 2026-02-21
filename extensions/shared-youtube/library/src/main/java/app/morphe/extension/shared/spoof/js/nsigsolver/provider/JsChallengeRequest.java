@@ -3,12 +3,12 @@ package app.morphe.extension.shared.spoof.js.nsigsolver.provider;
 public class JsChallengeRequest {
     private final JsChallengeType type;
     private final ChallengeInput input;
-    private final String videoId;
+    private final String videoID;
 
-    public JsChallengeRequest(JsChallengeType type, ChallengeInput input, String videoId) {
+    public JsChallengeRequest(JsChallengeType type, ChallengeInput input, String videoID) {
         this.type = type;
         this.input = input;
-        this.videoId = videoId;
+        this.videoID = videoID;
     }
 
     public JsChallengeRequest(JsChallengeType type, ChallengeInput input) {
@@ -24,6 +24,6 @@ public class JsChallengeRequest {
     }
 
     public String getVideoId() {
-        return videoId;
+        return videoID;
     }
 }

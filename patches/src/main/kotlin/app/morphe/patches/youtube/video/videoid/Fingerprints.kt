@@ -15,7 +15,7 @@ internal object VideoIDFingerprint : Fingerprint(
     parameters = listOf("L"),
     filters = listOf(
         methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "Ljava/lang/String;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()), // videoId
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()), // videoID
         methodCall(
             smali = "Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
             location = MatchAfterWithin(6)

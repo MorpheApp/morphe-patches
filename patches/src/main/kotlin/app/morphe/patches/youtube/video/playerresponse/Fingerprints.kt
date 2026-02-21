@@ -11,7 +11,7 @@ internal object PlayerParameterBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoId.
+        "Ljava/lang/String;",  // VideoID.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -23,7 +23,7 @@ internal object PlayerParameterBuilderFingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
         "Lj\$/time/Duration;"
@@ -37,7 +37,7 @@ internal object PlayerParameterBuilder2026Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoId.
+        "Ljava/lang/String;",  // VideoID.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -49,7 +49,7 @@ internal object PlayerParameterBuilder2026Fingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
         "Lj\$/time/Duration;"
@@ -66,7 +66,7 @@ internal object PlayerParameterBuilder2015Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoId.
+        "Ljava/lang/String;",  // VideoID.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -78,7 +78,7 @@ internal object PlayerParameterBuilder2015Fingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
     ),
@@ -94,7 +94,7 @@ internal object PlayerParameterBuilder2010Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoId.
+        "Ljava/lang/String;",  // VideoID.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -106,7 +106,7 @@ internal object PlayerParameterBuilder2010Fingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
         "Z"
@@ -123,7 +123,7 @@ internal object PlayerParameterBuilder2002Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;", // VideoId.
+        "Ljava/lang/String;", // VideoID.
         "[B",
         "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -134,7 +134,7 @@ internal object PlayerParameterBuilder2002Fingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
         "Z",
@@ -151,7 +151,7 @@ internal object PlayerParameterBuilder1925Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;", // VideoId.
+        "Ljava/lang/String;", // VideoID.
         "[B",
         "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -162,7 +162,7 @@ internal object PlayerParameterBuilder1925Fingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
     ),
@@ -178,7 +178,7 @@ internal object PlayerParameterBuilderLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;", // VideoId.
+        "Ljava/lang/String;", // VideoID.
         "[B",
         "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -188,7 +188,7 @@ internal object PlayerParameterBuilderLegacyFingerprint : Fingerprint(
         "Ljava/lang/String;",
         "Ljava/lang/String;",
         "L",
-        "Z", // Appears to indicate if the video id is being opened or is currently playing.
+        "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
     )

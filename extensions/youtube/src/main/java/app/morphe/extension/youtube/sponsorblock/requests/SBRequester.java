@@ -63,11 +63,11 @@ public class SBRequester {
     }
 
     @NonNull
-    public static SponsorSegment[] getSegments(String videoId) {
+    public static SponsorSegment[] getSegments(String videoID) {
         Utils.verifyOffMainThread();
         List<SponsorSegment> segments = new ArrayList<>();
         try {
-            HttpURLConnection connection = getConnectionFromRoute(SBRoutes.GET_SEGMENTS, videoId, SegmentCategory.sponsorBlockAPIFetchCategories);
+            HttpURLConnection connection = getConnectionFromRoute(SBRoutes.GET_SEGMENTS, videoID, SegmentCategory.sponsorBlockAPIFetchCategories);
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
@@ -99,7 +99,7 @@ public class SBRequester {
                 runVipCheckInBackgroundIfNeeded();
             } else if (responseCode == 404) {
                 // no segments are found.  a normal response
-                Logger.printDebug(() -> "No segments found for video: " + videoId);
+                Logger.printDebug(() -> "No segments found for video: " + videoID);
             } else {
                 handleConnectionError(str("morphe_sb_sponsorblock_connection_failure_status", responseCode), null);
                 connection.disconnect(); // something went wrong, might as well disconnect
@@ -163,18 +163,18 @@ public class SBRequester {
         return segments.toArray(new SponsorSegment[0]);
     }
 
-    public static void submitSegments(String videoId, String category,
+    public static void submitSegments(String videoID, String category,
                                       long startTime, long endTime, long videoLength) {
         Utils.verifyOffMainThread();
 
         try {
-            String privateUserId = SponsorBlockSettings.getSBPrivateUserID();
+            String privateUserID = SponsorBlockSettings.getSBPrivateUserID();
             String start = String.format(Locale.US, TIME_TEMPLATE, startTime / 1000f);
             String end = String.format(Locale.US, TIME_TEMPLATE, endTime / 1000f);
             String duration = String.format(Locale.US, TIME_TEMPLATE, videoLength / 1000f);
 
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.SUBMIT_SEGMENTS,
-                    privateUserId, videoId, category, start, end, duration);
+                    privateUserID, videoID, category, start, end, duration);
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
@@ -317,7 +317,7 @@ public class SBRequester {
     }
 
     public static void runVipCheckInBackgroundIfNeeded() {
-        if (!SponsorBlockSettings.userHasSBPrivateId()) {
+        if (!SponsorBlockSettings.userHasSBPrivateID()) {
             return; // User cannot be a VIP. User has never voted, created any segments, or has imported an SB user ID.
         }
         long now = System.currentTimeMillis();

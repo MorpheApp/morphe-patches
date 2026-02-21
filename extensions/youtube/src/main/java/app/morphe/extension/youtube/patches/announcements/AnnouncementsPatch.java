@@ -59,10 +59,10 @@ public final class AnnouncementsPatch {
         // Parse the ID. Fall-back to raw string if it fails.
         int id = Settings.ANNOUNCEMENT_LAST_ID.defaultValue;
         try {
-            final var announcementIds = new JSONArray(jsonString);
-            if (announcementIds.length() == 0) return true;
+            final var announcementIDs = new JSONArray(jsonString);
+            if (announcementIDs.length() == 0) return true;
             
-            id = announcementIds.getJSONObject(0).getInt("id");
+            id = announcementIDs.getJSONObject(0).getInt("id");
         } catch (Throwable ex) {
             Logger.printException(() -> "Failed to parse announcement ID", ex);
         }

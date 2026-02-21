@@ -90,7 +90,7 @@ public class SponsorBlockSettings {
             if (settingsJson.has("userID")) {
                 // User id does not exist if user never voted or created any segments.
                 String userID = settingsJson.getString("userID");
-                if (isValidSBUserId(userID)) {
+                if (isValidSBUserID(userID)) {
                     Settings.SB_PRIVATE_USER_ID.save(userID);
                 }
             }
@@ -159,7 +159,7 @@ public class SponsorBlockSettings {
                     categorySelectionsArray.put(behaviorObject);
                 }
             }
-            if (SponsorBlockSettings.userHasSBPrivateId()) {
+            if (SponsorBlockSettings.userHasSBPrivateID()) {
                 json.put("userID", Settings.SB_PRIVATE_USER_ID.get());
             }
             json.put("isVip", Settings.SB_USER_IS_VIP.get());
@@ -190,7 +190,7 @@ public class SponsorBlockSettings {
         initialize();
 
         // If user has a SponsorBlock user id then show a warning.
-        if (dialogContext != null && SponsorBlockSettings.userHasSBPrivateId()
+        if (dialogContext != null && SponsorBlockSettings.userHasSBPrivateID()
                 && !Settings.SB_HIDE_EXPORT_WARNING.get()) {
             // Create the custom dialog.
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
@@ -214,8 +214,8 @@ public class SponsorBlockSettings {
         }
     }
 
-    public static boolean isValidSBUserId(@NonNull String userId) {
-        return !userId.isEmpty() && userId.length() >= SB_PRIVATE_USER_ID_MINIMUM_LENGTH;
+    public static boolean isValidSBUserID(@NonNull String userID) {
+        return !userID.isEmpty() && userID.length() >= SB_PRIVATE_USER_ID_MINIMUM_LENGTH;
     }
 
     /**
@@ -237,7 +237,7 @@ public class SponsorBlockSettings {
     /**
      * @return if the user has ever voted, created a segment, or imported existing SB settings.
      */
-    public static boolean userHasSBPrivateId() {
+    public static boolean userHasSBPrivateID() {
         return !Settings.SB_PRIVATE_USER_ID.get().isEmpty();
     }
 

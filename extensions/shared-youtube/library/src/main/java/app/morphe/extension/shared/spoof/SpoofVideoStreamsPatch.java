@@ -265,10 +265,10 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                // 'get_drm_license' has no video id and appears to happen when waiting for a paid video to start.
-                // 'heartbeat' has no video id and appears to be only after playback has started.
-                // 'refresh' has no video id and appears to happen when waiting for a livestream to start.
-                // 'ad_break' has no video id.
+                // 'get_drm_license' has no video ID and appears to happen when waiting for a paid video to start.
+                // 'heartbeat' has no video  and appears to be only after playback has started.
+                // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
+                // 'ad_break' has no video ID.
                 if (path.contains("get_drm_license") || path.contains("heartbeat")
                         || path.contains("refresh") || path.contains("ad_break")) {
                     Logger.printDebug(() -> "Ignoring path: " + path);
@@ -277,7 +277,7 @@ public class SpoofVideoStreamsPatch {
 
                 String id = uri.getQueryParameter("id");
                 if (id == null) {
-                    Logger.printException(() -> "Ignoring request with no id: " + url);
+                    Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
 
@@ -294,13 +294,13 @@ public class SpoofVideoStreamsPatch {
      * Called after {@link #fetchStreams(String, Map)}.
      */
     @Nullable
-    public static byte[] getStreamingData(String videoId) {
+    public static byte[] getStreamingData(String videoID) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoID);
                 if (request != null) {
                     // This hook is always called off the main thread,
-                    // but this can later be called for the same video id from the main thread.
+                    // but this can later be called for the same video ID from the main thread.
                     // This is not a concern, since the fetch will always be finished
                     // and never block the main thread.
                     // But if debugging, then still verify this is the situation.
@@ -310,12 +310,12 @@ public class SpoofVideoStreamsPatch {
 
                     var stream = request.getStream();
                     if (stream != null) {
-                        Logger.printDebug(() -> "Overriding video stream: " + videoId);
+                        Logger.printDebug(() -> "Overriding video stream: " + videoID);
                         return stream;
                     }
                 }
 
-                Logger.printDebug(() -> "Not overriding streaming data (video stream is null): " + videoId);
+                Logger.printDebug(() -> "Not overriding streaming data (video stream is null): " + videoID);
             } catch (Exception ex) {
                 Logger.printException(() -> "getStreamingData failure", ex);
             }
