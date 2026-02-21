@@ -267,7 +267,7 @@ val playerControlsPatch = bytecodePatch(
             PlayerTopControlsInflateFingerprint.originalClassDef,
         ).method
 
-        // Hook the fullscreen close button.  Used to fix visibility
+        // Hook the fullscreen close button. Used to fix visibility
         // when seeking and other situations.
         OverlayViewInflateFingerprint.let {
             it.method.apply {

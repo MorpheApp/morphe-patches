@@ -7,7 +7,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 /**
- * Caption settings.  Used to organize all caption related settings together.
+ * Caption settings. Used to organize all caption related settings together.
  */
 internal val settingsMenuCaptionGroup = mutableSetOf<BasePreference>()
 

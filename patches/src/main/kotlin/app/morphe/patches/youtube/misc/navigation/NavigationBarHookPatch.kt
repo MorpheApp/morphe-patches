@@ -128,7 +128,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
         }
 
-        // Hook onto back button pressed.  Needed to fix race problem with
+        // Hook onto back button pressed. Needed to fix race problem with
         // Litho filtering based on navigation tab before the tab is updated.
         YouTubeMainActivityOnBackPressedFingerprint.method.addInstruction(
             0,

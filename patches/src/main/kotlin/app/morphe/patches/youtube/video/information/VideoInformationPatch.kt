@@ -21,10 +21,10 @@ import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
-import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoID
-import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoID
-import app.morphe.patches.youtube.video.videoid.hookVideoID
-import app.morphe.patches.youtube.video.videoid.videoIDPatch
+import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
+import app.morphe.patches.youtube.video.videoid.hookVideoId
+import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.addStaticFieldToExtension
 import app.morphe.util.getMutableMethod
@@ -65,7 +65,7 @@ private var mdxInitInsertRegister = -1
 private lateinit var timeMethod: MutableMethod
 private var timeInitInsertIndex = 2
 
-// Old speed menu, where speeds are entries in a list.  Method is also used by the player speed button.
+// Old speed menu, where speeds are entries in a list. Method is also used by the player speed button.
 private lateinit var legacySpeedSelectionInsertMethod: MutableMethod
 private var legacySpeedSelectionInsertIndex = -1
 private var legacySpeedSelectionValueRegister = -1
@@ -96,7 +96,7 @@ val videoInformationPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        videoIDPatch,
+        videoIdPatch,
         playerResponseMethodHookPatch,
         versionCheckPatch,
     )
@@ -177,16 +177,16 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Inject call for video IDs
          */
-        val videoIDMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoID(Ljava/lang/String;)V"
-        hookVideoID(videoIDMethodDescriptor)
-        hookBackgroundPlayVideoID(videoIDMethodDescriptor)
-        hookPlayerResponseVideoID(
-            "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoID(Ljava/lang/String;Z)V",
+        val videoIdMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoId(Ljava/lang/String;)V"
+        hookVideoId(videoIdMethodDescriptor)
+        hookBackgroundPlayVideoId(videoIdMethodDescriptor)
+        hookPlayerResponseVideoId(
+            "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
         )
         // Call before any other video ID hooks,
         // so they can use VideoInformation and check if the video ID is for a Short.
         addPlayerResponseMethodHook(
-            Hook.ProtoBufferParameterBeforeVideoID(
+            Hook.ProtoBufferParameterBeforeVideoId(
                 "$EXTENSION_CLASS_DESCRIPTOR->" +
                     "newPlayerResponseSignature(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;",
             ),
@@ -529,7 +529,7 @@ private fun MutableMethod.insertTimeHook(insertIndex: Int, descriptor: String) =
     insert(insertIndex, "p1, p2", descriptor)
 
 /**
- * Hook the player controller.  Called when a video is opened or the current video is changed.
+ * Hook the player controller. Called when a video is opened or the current video is changed.
  *
  * Note: This hook is called very early and is called before the video ID, video time, video length,
  * and many other data fields are set.

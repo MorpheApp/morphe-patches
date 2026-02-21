@@ -436,7 +436,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     }
 
     /**
-     * Normalizes string for comparison (removes extra characters, spaces etc).
+     * Normalizes string for comparison (removes extra characters, spaces etc.).
      */
     protected String normalizeString(String input) {
         if (TextUtils.isEmpty(input)) return "";

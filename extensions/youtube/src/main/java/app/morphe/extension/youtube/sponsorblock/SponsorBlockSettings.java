@@ -189,7 +189,7 @@ public class SponsorBlockSettings {
         Utils.verifyOnMainThread();
         initialize();
 
-        // If user has a SponsorBlock user id then show a warning.
+        // If user has a SponsorBlock user ID then show a warning.
         if (dialogContext != null && SponsorBlockSettings.userHasSBPrivateID()
                 && !Settings.SB_HIDE_EXPORT_WARNING.get()) {
             // Create the custom dialog.
@@ -242,7 +242,7 @@ public class SponsorBlockSettings {
     }
 
     /**
-     * Use this only if a user id is required (creating segments, voting).
+     * Use this only if a user ID is required (creating segments, voting).
      */
     @NonNull
     public static String getSBPrivateUserID() {

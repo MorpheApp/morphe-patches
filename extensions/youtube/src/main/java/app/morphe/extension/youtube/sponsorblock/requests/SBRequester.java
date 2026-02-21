@@ -63,11 +63,11 @@ public class SBRequester {
     }
 
     @NonNull
-    public static SponsorSegment[] getSegments(String videoID) {
+    public static SponsorSegment[] getSegments(String videoId) {
         Utils.verifyOffMainThread();
         List<SponsorSegment> segments = new ArrayList<>();
         try {
-            HttpURLConnection connection = getConnectionFromRoute(SBRoutes.GET_SEGMENTS, videoID, SegmentCategory.sponsorBlockAPIFetchCategories);
+            HttpURLConnection connection = getConnectionFromRoute(SBRoutes.GET_SEGMENTS, videoId, SegmentCategory.sponsorBlockAPIFetchCategories);
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
@@ -99,7 +99,7 @@ public class SBRequester {
                 runVipCheckInBackgroundIfNeeded();
             } else if (responseCode == 404) {
                 // no segments are found.  a normal response
-                Logger.printDebug(() -> "No segments found for video: " + videoID);
+                Logger.printDebug(() -> "No segments found for video: " + videoId);
             } else {
                 handleConnectionError(str("morphe_sb_sponsorblock_connection_failure_status", responseCode), null);
                 connection.disconnect(); // something went wrong, might as well disconnect
@@ -163,7 +163,7 @@ public class SBRequester {
         return segments.toArray(new SponsorSegment[0]);
     }
 
-    public static void submitSegments(String videoID, String category,
+    public static void submitSegments(String videoId, String category,
                                       long startTime, long endTime, long videoLength) {
         Utils.verifyOffMainThread();
 
@@ -174,7 +174,7 @@ public class SBRequester {
             String duration = String.format(Locale.US, TIME_TEMPLATE, videoLength / 1000f);
 
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.SUBMIT_SEGMENTS,
-                    privateUserID, videoID, category, start, end, duration);
+                    privateUserID, videoId, category, start, end, duration);
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {

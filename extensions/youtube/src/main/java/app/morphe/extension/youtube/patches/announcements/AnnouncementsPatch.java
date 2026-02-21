@@ -36,7 +36,7 @@ public final class AnnouncementsPatch {
         HttpURLConnection connection =
                 AnnouncementsRoutes.getAnnouncementsConnectionFromRoute(GET_LATEST_ANNOUNCEMENT_IDS);
 
-        Logger.printDebug(() -> "Get latest announcement IDs route connection url: " + connection.getURL());
+        Logger.printDebug(() -> "Get latest announcement IDs route connection URL: " + connection.getURL());
 
         try {
             // Do not show the announcement if the request failed.
@@ -84,7 +84,7 @@ public final class AnnouncementsPatch {
                 HttpURLConnection connection = AnnouncementsRoutes
                         .getAnnouncementsConnectionFromRoute(GET_LATEST_ANNOUNCEMENTS);
 
-                Logger.printDebug(() -> "Get latest announcements route connection url: " + connection.getURL());
+                Logger.printDebug(() -> "Get latest announcements route connection URL: " + connection.getURL());
 
                 var jsonString = Requester.parseStringAndDisconnect(connection);
 

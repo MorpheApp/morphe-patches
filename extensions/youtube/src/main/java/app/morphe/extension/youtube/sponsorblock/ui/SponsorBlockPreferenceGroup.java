@@ -86,7 +86,7 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
 
             if (!Settings.SB_ENABLED.get()) {
                 SponsorBlockViewController.hideAll();
-                SegmentPlaybackController.setCurrentVideoID(null);
+                SegmentPlaybackController.setCurrentVideoId(null);
             } else if (!Settings.SB_CREATE_NEW_SEGMENT.get()) {
                 SponsorBlockViewController.hideNewSegmentLayout();
             }

@@ -84,7 +84,7 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 /**
  * Find the instruction index used for a toString() StringBuilder write of a given String name.
  *
- * @param fieldName The name of the field to find.  Partial matches are allowed.
+ * @param fieldName The name of the field to find. Partial matches are allowed.
  */
 private fun Method.findInstructionIndexFromToString(fieldName: String) : Int {
     val stringIndex = indexOfFirstInstruction {
@@ -136,7 +136,7 @@ private fun Method.findInstructionIndexFromToString(fieldName: String) : Int {
 /**
  * Find the method used for a toString() StringBuilder write of a given String name.
  *
- * @param fieldName The name of the field to find.  Partial matches are allowed.
+ * @param fieldName The name of the field to find. Partial matches are allowed.
  */
 context(BytecodePatchContext)
 internal fun Method.findMethodFromToString(fieldName: String) : MutableMethod {
@@ -147,7 +147,7 @@ internal fun Method.findMethodFromToString(fieldName: String) : MutableMethod {
 /**
  * Find the field used for a toString() StringBuilder write of a given String name.
  *
- * @param fieldName The name of the field to find.  Partial matches are allowed.
+ * @param fieldName The name of the field to find. Partial matches are allowed.
  */
 internal fun Method.findFieldFromToString(fieldName: String) : FieldReference {
     val methodUsageIndex = findInstructionIndexFromToString(fieldName)

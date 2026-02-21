@@ -19,7 +19,7 @@ import app.morphe.extension.youtube.settings.Settings;
  *
  * Because multiple litho dislike spans are created in the background
  * (and also anytime litho refreshes the components, which is somewhat arbitrary),
- * that makes the value of {@link VideoInformation#getVideoID()} and {@link VideoInformation#getPlayerResponseVideoID()}
+ * that makes the value of {@link VideoInformation#getVideoId()} and {@link VideoInformation#getPlayerResponseVideoId()}
  * unreliable to determine which video ID a Shorts litho span belongs to.
  *
  * But the correct video ID does appear in the protobuffer just before a Shorts litho span is created.
@@ -33,28 +33,28 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
      * Cannot use {@link LinkedHashSet} because it's missing #removeEldestEntry().
      */
     @GuardedBy("itself")
-    private static final Map<String, Boolean> lastVideoIDs = Utils.createSizeRestrictedMap(5);
+    private static final Map<String, Boolean> lastVideoIds = Utils.createSizeRestrictedMap(5);
 
     /**
      * Injection point.
      */
     @SuppressWarnings("unused")
-    public static void newPlayerResponseVideoID(String videoID, boolean isShortAndOpeningOrPlaying) {
+    public static void newPlayerResponseVideoId(String videoId, boolean isShortAndOpeningOrPlaying) {
         try {
             if (!isShortAndOpeningOrPlaying || !Settings.RYD_ENABLED.get() || !Settings.RYD_SHORTS.get()) {
                 return;
             }
-            synchronized (lastVideoIDs) {
-                if (lastVideoIDs.put(videoID, Boolean.TRUE) == null) {
-                    Logger.printDebug(() -> "New Short video ID: " + videoID);
+            synchronized (lastVideoIds) {
+                if (lastVideoIds.put(videoId, Boolean.TRUE) == null) {
+                    Logger.printDebug(() -> "New Short video ID: " + videoId);
                 }
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "newPlayerResponseVideoID failure", ex);
+            Logger.printException(() -> "newPlayerResponseVideoId failure", ex);
         }
     }
 
-    private final ByteArrayFilterGroupList videoIDFilterGroup = new ByteArrayFilterGroupList();
+    private final ByteArrayFilterGroupList videoIdFilterGroup = new ByteArrayFilterGroupList();
 
     public ReturnYouTubeDislikeFilter() {
         // When a new Short is opened, the like buttons always seem to load before the dislike.
@@ -73,7 +73,7 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
         );
 
         // After the button identifiers is binary data and then the video ID for that specific short.
-        videoIDFilterGroup.addAll(
+        videoIdFilterGroup.addAll(
                 new ByteArrayFilterGroup(
                         null,
                         "id.reel_like_button",
@@ -91,25 +91,25 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
             return false;
         }
 
-        FilterGroup.FilterGroupResult result = videoIDFilterGroup.check(buffer);
+        FilterGroup.FilterGroupResult result = videoIdFilterGroup.check(buffer);
         if (result.isFiltered()) {
-            String matchedVideoID = findVideoID(buffer);
+            String matchedVideoId = findVideoId(buffer);
             // Matched video will be null if in incognito mode.
             // Must pass a null ID to correctly clear out the current video data.
             // Otherwise, if a Short is opened in non-incognito, then incognito is enabled and another Short is opened,
             // the new incognito Short will show the old prior data.
-            ReturnYouTubeDislikePatch.setLastLithoShortsVideoID(matchedVideoID);
+            ReturnYouTubeDislikePatch.setLastLithoShortsVideoId(matchedVideoId);
         }
 
         return false;
     }
 
     @Nullable
-    private String findVideoID(byte[] protobufBufferArray) {
-        synchronized (lastVideoIDs) {
-            for (String videoID : lastVideoIDs.keySet()) {
-                if (byteArrayContainsString(protobufBufferArray, videoID)) {
-                    return videoID;
+    private String findVideoId(byte[] protobufBufferArray) {
+        synchronized (lastVideoIds) {
+            for (String videoId : lastVideoIds.keySet()) {
+                if (byteArrayContainsString(protobufBufferArray, videoId)) {
+                    return videoId;
                 }
             }
 

@@ -339,7 +339,7 @@ public abstract class Setting<T> {
         setting.setValueFromString(newValue);
 
         // Clear the preference value since default is used, to allow changing
-        // the default for a future release.  Without this after upgrading
+        // the default for a future release. Without this after upgrading
         // the saved value will be whatever was the default when the app was first installed.
         if (setting.isSetToDefault()) {
             setting.removeFromPreferences();
@@ -450,7 +450,7 @@ public abstract class Setting<T> {
 
     /**
      * @param importExportKey The JSON key. The JSONObject parameter will contain data for this key.
-     * @return the value stored using the import/export key.  Do not set any values in this method.
+     * @return the value stored using the import/export key. Do not set any values in this method.
      */
     protected abstract T readFromJSON(JSONObject json, String importExportKey) throws JSONException;
 

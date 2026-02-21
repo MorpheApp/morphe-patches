@@ -34,7 +34,7 @@ public final class DownloadsPatch {
      * <p>
      * Appears to always be called from the main thread.
      */
-    public static boolean inAppDownloadButtonOnClick(String videoID) {
+    public static boolean inAppDownloadButtonOnClick(String videoId) {
         try {
             if (!Settings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
                 return false;
@@ -53,7 +53,7 @@ public final class DownloadsPatch {
                 isActivityContext = false;
             }
 
-            launchExternalDownloader(videoID, context, isActivityContext);
+            launchExternalDownloader(videoId, context, isActivityContext);
             return true;
         } catch (Exception ex) {
             Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
@@ -65,9 +65,9 @@ public final class DownloadsPatch {
      * @param isActivityContext If the context parameter is for an Activity.  If this is false, then
      *                          the downloader is opened as a new task (which forces YT to minimize).
      */
-    public static void launchExternalDownloader(String videoID, Context context, boolean isActivityContext) {
+    public static void launchExternalDownloader(String videoId, Context context, boolean isActivityContext) {
         try {
-            Objects.requireNonNull(videoID);
+            Objects.requireNonNull(videoId);
             Logger.printDebug(() -> "Launching external downloader with context: " + context);
 
             // Trim string to avoid any accidental whitespace.
@@ -78,7 +78,7 @@ public final class DownloadsPatch {
                 return;
             }
 
-            String content = "https://youtu.be/" + videoID;
+            String content = "https://youtu.be/" + videoId;
             Intent intent = new Intent("android.intent.action.SEND");
             intent.setType("text/plain");
             intent.setPackage(downloaderPackageName);

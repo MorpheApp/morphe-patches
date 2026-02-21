@@ -17,7 +17,7 @@ import app.morphe.extension.shared.Utils;
  * <p>
  * This is needed because the YouTube Morphe preference intent is an AndroidX preference,
  * and AndroidX classes are not built into Android which makes programmatically changing
- * the preference thru patching overly complex. This solves the problem by using a drawable
+ * the preference through patching overly complex. This solves the problem by using a drawable
  * wrapper to dynamically pick which icon drawable to use at runtime.
  */
 @SuppressWarnings("unused")

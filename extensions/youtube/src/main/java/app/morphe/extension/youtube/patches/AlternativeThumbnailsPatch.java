@@ -221,7 +221,7 @@ public final class AlternativeThumbnailsPatch {
     private static String buildYouTubeVideoStillURL(@NonNull DecodedThumbnailURL decodedURL,
                                                     @NonNull ThumbnailQuality qualityToUse) {
         String sanitizedReplacement = decodedURL.createStillsURL(qualityToUse, false);
-        if (VerifiedQualities.verifyAltThumbnailExist(decodedURL.videoID, qualityToUse, sanitizedReplacement)) {
+        if (VerifiedQualities.verifyAltThumbnailExist(decodedURL.videoId, qualityToUse, sanitizedReplacement)) {
             return sanitizedReplacement;
         }
 
@@ -231,17 +231,17 @@ public final class AlternativeThumbnailsPatch {
     /**
      * Build the alternative thumbnail URL using DeArrow thumbnail cache.
      *
-     * @param videoID ID of the video to get a thumbnail of.  Can be any video (regular or Short).
+     * @param videoId ID of the video to get a thumbnail of.  Can be any video (regular or Short).
      * @param fallbackURL URL to fall back to in case.
      * @return The alternative thumbnail URL, without tracking parameters.
      */
     @NonNull
-    private static String buildDeArrowThumbnailURL(String videoID, String fallbackURL) {
+    private static String buildDeArrowThumbnailURL(String videoId, String fallbackURL) {
         // Build thumbnail request URL.
         // See https://github.com/ajayyy/DeArrowThumbnailCache/blob/29eb4359ebdf823626c79d944a901492d760bbbc/app.py#L29.
         return dearrowAPIURI
                 .buildUpon()
-                .appendQueryParameter("videoID", videoID)
+                .appendQueryParameter("videoId", videoId)
                 .appendQueryParameter("redirectURL", fallbackURL)
                 .build()
                 .toString();
@@ -318,7 +318,7 @@ public final class AlternativeThumbnailsPatch {
                     fallbackURL = decodedURL.sanitizedURL;
                 }
 
-                sanitizedReplacementURL = buildDeArrowThumbnailURL(decodedURL.videoID, fallbackURL);
+                sanitizedReplacementURL = buildDeArrowThumbnailURL(decodedURL.videoId, fallbackURL);
             } else if (option.useStillImages) {
                 includeTracking = true; // Include view tracking parameters if present.
                 sanitizedReplacementURL = buildYouTubeVideoStillURL(decodedURL, qualityToUse);
@@ -383,11 +383,11 @@ public final class AlternativeThumbnailsPatch {
                 ThumbnailQuality quality = ThumbnailQuality.altImageNameToQuality(decodedURL.imageQuality);
                 if (quality == null) {
                     // Video is a short or a seekbar thumbnail, but somehow did not load.  Should not happen.
-                    Logger.printDebug(() -> "Failed to recognize image quality of url: " + decodedURL.sanitizedURL);
+                    Logger.printDebug(() -> "Failed to recognize image quality of URL: " + decodedURL.sanitizedURL);
                     return;
                 }
 
-                VerifiedQualities.setAltThumbnailDoesNotExist(decodedURL.videoID, quality);
+                VerifiedQualities.setAltThumbnailDoesNotExist(decodedURL.videoId, quality);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Callback success error", ex);
@@ -531,34 +531,34 @@ public final class AlternativeThumbnailsPatch {
          * Cache used to verify if an alternative thumbnails exists for a given video ID.
          */
         @GuardedBy("itself")
-        private static final Map<String, VerifiedQualities> altVideoIDLookup =
+        private static final Map<String, VerifiedQualities> altVideoIdLookup =
                 Utils.createSizeRestrictedMap(1000);
 
-        private static VerifiedQualities getVerifiedQualities(@NonNull String videoID, boolean returnNullIfDoesNotExist) {
-            synchronized (altVideoIDLookup) {
-                VerifiedQualities verified = altVideoIDLookup.get(videoID);
+        private static VerifiedQualities getVerifiedQualities(@NonNull String videoId, boolean returnNullIfDoesNotExist) {
+            synchronized (altVideoIdLookup) {
+                VerifiedQualities verified = altVideoIdLookup.get(videoId);
                 if (verified == null) {
                     if (returnNullIfDoesNotExist) {
                         return null;
                     }
                     verified = new VerifiedQualities();
-                    altVideoIDLookup.put(videoID, verified);
+                    altVideoIdLookup.put(videoId, verified);
                 }
                 return verified;
             }
         }
 
-        static boolean verifyAltThumbnailExist(@NonNull String videoID, @NonNull ThumbnailQuality quality,
+        static boolean verifyAltThumbnailExist(@NonNull String videoId, @NonNull ThumbnailQuality quality,
                                                @NonNull String imageURL) {
-            VerifiedQualities verified = getVerifiedQualities(videoID, Settings.ALT_THUMBNAIL_STILLS_FAST.get());
+            VerifiedQualities verified = getVerifiedQualities(videoId, Settings.ALT_THUMBNAIL_STILLS_FAST.get());
             if (verified == null) return true; // Fast alt thumbnails is enabled.
-            return verified.verifyYouTubeThumbnailExists(videoID, quality, imageURL);
+            return verified.verifyYouTubeThumbnailExists(videoId, quality, imageURL);
         }
 
-        static void setAltThumbnailDoesNotExist(@NonNull String videoID, @NonNull ThumbnailQuality quality) {
-            VerifiedQualities verified = getVerifiedQualities(videoID, false);
+        static void setAltThumbnailDoesNotExist(@NonNull String videoId, @NonNull ThumbnailQuality quality) {
+            VerifiedQualities verified = getVerifiedQualities(videoId, false);
             //noinspection ConstantConditions
-            verified.setQualityVerified(videoID, quality, false);
+            verified.setQualityVerified(videoId, quality, false);
         }
 
         /**
@@ -578,7 +578,7 @@ public final class AlternativeThumbnailsPatch {
          */
         private long timeToReVerifyLowestQuality;
 
-        private synchronized void setQualityVerified(String videoID, ThumbnailQuality quality, boolean isVerified) {
+        private synchronized void setQualityVerified(String videoId, ThumbnailQuality quality, boolean isVerified) {
             if (isVerified) {
                 if (highestQualityVerified == null || highestQualityVerified.ordinal() < quality.ordinal()) {
                     highestQualityVerified = quality;
@@ -588,14 +588,14 @@ public final class AlternativeThumbnailsPatch {
                     lowestQualityNotAvailable = quality;
                     timeToReVerifyLowestQuality = System.currentTimeMillis() + NOT_AVAILABLE_TIMEOUT_MILLISECONDS;
                 }
-                Logger.printDebug(() -> quality + " not available for video: " + videoID);
+                Logger.printDebug(() -> quality + " not available for video: " + videoId);
             }
         }
 
         /**
          * Verify if a video alt thumbnail exists.  Does so by making a minimal HEAD HTTP request.
          */
-        synchronized boolean verifyYouTubeThumbnailExists(@NonNull String videoID, @NonNull ThumbnailQuality quality,
+        synchronized boolean verifyYouTubeThumbnailExists(@NonNull String videoId, @NonNull ThumbnailQuality quality,
                                                           @NonNull String imageURL) {
             if (highestQualityVerified != null && highestQualityVerified.ordinal() >= quality.ordinal()) {
                 return true; // Previously verified as existing.
@@ -607,7 +607,7 @@ public final class AlternativeThumbnailsPatch {
                     return false; // Previously verified as not existing.
                 }
                 // Enough time has passed, and should re-verify again.
-                Logger.printDebug(() -> "Resetting lowest verified quality for: " + videoID);
+                Logger.printDebug(() -> "Resetting lowest verified quality for: " + videoId);
                 lowestQualityNotAvailable = null;
             }
 
@@ -635,17 +635,17 @@ public final class AlternativeThumbnailsPatch {
                         return (contentType != null && contentType.startsWith("image"));
                     }
                     if (responseCode != HttpURLConnection.HTTP_NOT_FOUND) {
-                        Logger.printDebug(() -> "Unexpected response code: " + responseCode + " for url: " + imageURL);
+                        Logger.printDebug(() -> "Unexpected response code: " + responseCode + " for URL: " + imageURL);
                     }
                     return false;
                 }).get();
                 Logger.printDebug(() -> "Verification took: " + (System.currentTimeMillis() - start) + "ms for image: " + imageURL);
             } catch (ExecutionException | InterruptedException ex) {
-                Logger.printInfo(() -> "Could not verify alt url: " + imageURL, ex);
+                Logger.printInfo(() -> "Could not verify alt URL: " + imageURL, ex);
                 imageFileFound = false;
             }
 
-            setQualityVerified(videoID, quality, imageFileFound);
+            setQualityVerified(videoId, quality, imageFileFound);
             return imageFileFound;
         }
     }
@@ -664,20 +664,20 @@ public final class AlternativeThumbnailsPatch {
             final int urlPathEndIndex = url.indexOf('/', urlPathStartIndex);
             if (urlPathEndIndex < 0) return null;
 
-            final int videoIDStartIndex = url.indexOf('/', urlPathEndIndex) + 1;
-            if (videoIDStartIndex <= 0) return null;
+            final int videoIdStartIndex = url.indexOf('/', urlPathEndIndex) + 1;
+            if (videoIdStartIndex <= 0) return null;
 
-            final int videoIDEndIndex = url.indexOf('/', videoIDStartIndex);
-            if (videoIDEndIndex < 0) return null;
+            final int videoIdEndIndex = url.indexOf('/', videoIdStartIndex);
+            if (videoIdEndIndex < 0) return null;
 
-            final int imageSizeStartIndex = videoIDEndIndex + 1;
+            final int imageSizeStartIndex = videoIdEndIndex + 1;
             final int imageSizeEndIndex = url.indexOf('.', imageSizeStartIndex);
             if (imageSizeEndIndex < 0) return null;
 
             int imageExtensionEndIndex = url.indexOf('?', imageSizeEndIndex);
             if (imageExtensionEndIndex < 0) imageExtensionEndIndex = url.length();
 
-            return new DecodedThumbnailURL(url, urlPathStartIndex, urlPathEndIndex, videoIDStartIndex, videoIDEndIndex,
+            return new DecodedThumbnailURL(url, urlPathStartIndex, urlPathEndIndex, videoIdStartIndex, videoIdEndIndex,
                     imageSizeStartIndex, imageSizeEndIndex, imageExtensionEndIndex);
         }
 
@@ -686,7 +686,7 @@ public final class AlternativeThumbnailsPatch {
         final String sanitizedURL;
         /** URL path, such as 'vi' or 'vi_webp' */
         final String urlPath;
-        final String videoID;
+        final String videoId;
         /** Quality, such as hq720 or sddefault. */
         final String imageQuality;
         /** JPG or WEBP */
@@ -694,12 +694,12 @@ public final class AlternativeThumbnailsPatch {
         /** User view tracking parameters, only present on some images. */
         final String viewTrackingParameters;
 
-        DecodedThumbnailURL(String fullURL, int urlPathStartIndex, int urlPathEndIndex, int videoIDStartIndex, int videoIDEndIndex,
+        DecodedThumbnailURL(String fullURL, int urlPathStartIndex, int urlPathEndIndex, int videoIdStartIndex, int videoIdEndIndex,
                             int imageSizeStartIndex, int imageSizeEndIndex, int imageExtensionEndIndex) {
             originalFullURL = fullURL;
             sanitizedURL = fullURL.substring(0, imageExtensionEndIndex);
             urlPath = fullURL.substring(urlPathStartIndex, urlPathEndIndex);
-            videoID = fullURL.substring(videoIDStartIndex, videoIDEndIndex);
+            videoId = fullURL.substring(videoIdStartIndex, videoIdEndIndex);
             imageQuality = fullURL.substring(imageSizeStartIndex, imageSizeEndIndex);
             imageExtension = fullURL.substring(imageSizeEndIndex + 1, imageExtensionEndIndex);
             viewTrackingParameters = (imageExtensionEndIndex == fullURL.length())
@@ -717,7 +717,7 @@ public final class AlternativeThumbnailsPatch {
             // but still captures are frequently not available on the other domains (especially newly uploaded videos).
             // So always use the primary domain for a higher success rate.
             builder.append(YOUTUBE_THUMBNAIL_DOMAIN).append(urlPath).append('/');
-            builder.append(videoID).append('/');
+            builder.append(videoId).append('/');
             builder.append(qualityToUse.getAltImageNameToUse());
             builder.append('.').append(imageExtension);
             if (includeViewTracking) {

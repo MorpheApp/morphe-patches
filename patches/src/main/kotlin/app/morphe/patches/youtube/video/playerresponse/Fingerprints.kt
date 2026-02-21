@@ -11,7 +11,7 @@ internal object PlayerParameterBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoID.
+        "Ljava/lang/String;",  // VideoId.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -37,7 +37,7 @@ internal object PlayerParameterBuilder2026Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoID.
+        "Ljava/lang/String;",  // VideoId.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -66,7 +66,7 @@ internal object PlayerParameterBuilder2015Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoID.
+        "Ljava/lang/String;",  // VideoId.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -94,7 +94,7 @@ internal object PlayerParameterBuilder2010Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;",  // VideoID.
+        "Ljava/lang/String;",  // VideoId.
         "[B",
         "Ljava/lang/String;",  // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -123,7 +123,7 @@ internal object PlayerParameterBuilder2002Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;", // VideoID.
+        "Ljava/lang/String;", // VideoId.
         "[B",
         "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -151,7 +151,7 @@ internal object PlayerParameterBuilder1925Fingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;", // VideoID.
+        "Ljava/lang/String;", // VideoId.
         "[B",
         "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",
@@ -178,7 +178,7 @@ internal object PlayerParameterBuilderLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(
-        "Ljava/lang/String;", // VideoID.
+        "Ljava/lang/String;", // VideoId.
         "[B",
         "Ljava/lang/String;", // Player parameters = listOf( proto buffer.),
         "Ljava/lang/String;",

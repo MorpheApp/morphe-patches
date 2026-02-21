@@ -117,7 +117,7 @@ public class SpoofVideoStreamsPatch {
                 String path = playerRequestUri.getPath();
 
                 if (path != null && path.contains("get_watch")) {
-                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check uri");
+                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
 
                     return INTERNET_CONNECTION_CHECK_URI;
                 }
@@ -146,7 +146,7 @@ public class SpoofVideoStreamsPatch {
                 String path = originalUri.getPath();
 
                 if (path != null && path.contains("att/get")) {
-                    Logger.printDebug(() -> "Blocking 'att/get' by returning internet connection check uri");
+                    Logger.printDebug(() -> "Blocking 'att/get' by returning internet connection check URI");
 
                     return INTERNET_CONNECTION_CHECK_URI_STRING;
                 }
@@ -170,7 +170,7 @@ public class SpoofVideoStreamsPatch {
                 String path = originalUri.getPath();
 
                 if (path != null && path.contains("initplayback")) {
-                    Logger.printDebug(() -> "Blocking 'initplayback' by returning internet connection check uri");
+                    Logger.printDebug(() -> "Blocking 'initplayback' by returning internet connection check URI");
 
                     return INTERNET_CONNECTION_CHECK_URI_STRING;
                 }
@@ -294,10 +294,10 @@ public class SpoofVideoStreamsPatch {
      * Called after {@link #fetchStreams(String, Map)}.
      */
     @Nullable
-    public static byte[] getStreamingData(String videoID) {
+    public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoID);
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
                     // This hook is always called off the main thread,
                     // but this can later be called for the same video ID from the main thread.
@@ -310,12 +310,12 @@ public class SpoofVideoStreamsPatch {
 
                     var stream = request.getStream();
                     if (stream != null) {
-                        Logger.printDebug(() -> "Overriding video stream: " + videoID);
+                        Logger.printDebug(() -> "Overriding video stream: " + videoId);
                         return stream;
                     }
                 }
 
-                Logger.printDebug(() -> "Not overriding streaming data (video stream is null): " + videoID);
+                Logger.printDebug(() -> "Not overriding streaming data (video stream is null): " + videoId);
             } catch (Exception ex) {
                 Logger.printException(() -> "getStreamingData failure", ex);
             }

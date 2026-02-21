@@ -16,7 +16,7 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
     execute {
         // If the user recently changed their account password,
         // the app can show "You're offline. Check your internet connection."
-        // even when the internet is available.  For this situation
+        // even when the internet is available. For this situation
         // YouTube + MicroG shows an offline error message.
         //
         // Change the error text to inform the user to uninstall and reinstall MicroG.

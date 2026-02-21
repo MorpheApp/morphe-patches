@@ -300,7 +300,7 @@ val hideShortsComponentsPatch = bytecodePatch(
             ShortsExperimentalPlayerFeatureFlagFingerprint.method.returnLate(false)
 
             // Experimental UI renderer must also be disabled since it requires the
-            // experimental Shorts player.  If this is enabled but Shorts player
+            // experimental Shorts player. If this is enabled but Shorts player
             // is disabled then the app crashes when the Shorts player is opened.
             RenderNextUIFeatureFlagFingerprint.method.returnLate(false)
         }

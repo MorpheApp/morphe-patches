@@ -241,7 +241,7 @@ internal fun spoofVideoStreamsPatch(
                             move-result v0
                             if-eqz v0, :disabled
     
-                            # Get video id.
+                            # Get video ID.
                             iget-object v2, p1, $videoDetailsClass->c:Ljava/lang/String;
                             if-eqz v2, :disabled
     

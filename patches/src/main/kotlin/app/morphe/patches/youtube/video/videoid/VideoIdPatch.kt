@@ -22,11 +22,11 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
  *
  * @param methodDescriptor which method to call. Params have to be `Ljava/lang/String;`
  */
-fun hookVideoID(
+fun hookVideoId(
     methodDescriptor: String,
-) = videoIDMethod.addInstruction(
-    videoIDInsertIndex++,
-    "invoke-static {v$videoIDRegister}, $methodDescriptor",
+) = videoIdMethod.addInstruction(
+    videoIdInsertIndex++,
+    "invoke-static {v$videoIdRegister}, $methodDescriptor",
 )
 
 /**
@@ -39,11 +39,11 @@ fun hookVideoID(
  *
  * @param methodDescriptor which method to call. Params have to be `Ljava/lang/String;`
  */
-fun hookBackgroundPlayVideoID(
+fun hookBackgroundPlayVideoId(
     methodDescriptor: String,
 ) = backgroundPlaybackMethod.addInstruction(
     backgroundPlaybackInsertIndex++, // move-result-object offset
-    "invoke-static {v$backgroundPlaybackVideoIDRegister}, $methodDescriptor",
+    "invoke-static {v$backgroundPlaybackVideoIdRegister}, $methodDescriptor",
 )
 
 /**
@@ -63,27 +63,27 @@ fun hookBackgroundPlayVideoID(
  * for the user swiping to the next Short.
  *
  * For most use cases, you probably want to use
- * [hookVideoID] or [hookBackgroundPlayVideoID] instead.
+ * [hookVideoId] or [hookBackgroundPlayVideoId] instead.
  *
  * Be aware, this can be called multiple times for the same video ID.
  *
  * @param methodDescriptor which method to call. Params must be `Ljava/lang/String;Z`
  */
-fun hookPlayerResponseVideoID(methodDescriptor: String) = addPlayerResponseMethodHook(
-    Hook.VideoID(
+fun hookPlayerResponseVideoId(methodDescriptor: String) = addPlayerResponseMethodHook(
+    Hook.VideoId(
         methodDescriptor,
     ),
 )
 
-private var videoIDRegister = 0
-private var videoIDInsertIndex = 0
-private lateinit var videoIDMethod: MutableMethod
+private var videoIdRegister = 0
+private var videoIdInsertIndex = 0
+private lateinit var videoIdMethod: MutableMethod
 
-private var backgroundPlaybackVideoIDRegister = 0
+private var backgroundPlaybackVideoIdRegister = 0
 private var backgroundPlaybackInsertIndex = 0
 private lateinit var backgroundPlaybackMethod: MutableMethod
 
-val videoIDPatch = bytecodePatch(
+val videoIdPatch = bytecodePatch(
     description = "Hooks to detect when the video ID changes.",
 ) {
     dependsOn(
@@ -92,20 +92,20 @@ val videoIDPatch = bytecodePatch(
     )
 
     execute {
-        VideoIDFingerprint.match(VideoIDParentFingerprint.originalClassDef).let {
+        VideoIdFingerprint.match(VideoIdParentFingerprint.originalClassDef).let {
             it.method.apply {
-                videoIDMethod = this
+                videoIdMethod = this
                 val index = it.instructionMatches[1].index
-                videoIDRegister = getInstruction<OneRegisterInstruction>(index).registerA
-                videoIDInsertIndex = index + 1
+                videoIdRegister = getInstruction<OneRegisterInstruction>(index).registerA
+                videoIdInsertIndex = index + 1
             }
         }
 
-        VideoIDBackgroundPlayFingerprint.let {
+        VideoIdBackgroundPlayFingerprint.let {
             it.method.apply {
                 backgroundPlaybackMethod = this
                 val index = it.instructionMatches.first().index
-                backgroundPlaybackVideoIDRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
+                backgroundPlaybackVideoIdRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
                 backgroundPlaybackInsertIndex = index + 2
             }
         }

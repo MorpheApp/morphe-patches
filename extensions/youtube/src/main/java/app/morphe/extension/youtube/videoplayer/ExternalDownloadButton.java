@@ -55,7 +55,7 @@ public class ExternalDownloadButton {
 
     private static void onDownloadClick(View view) {
         DownloadsPatch.launchExternalDownloader(
-                VideoInformation.getVideoID(),
+                VideoInformation.getVideoId(),
                 view.getContext(),
                 true);
     }

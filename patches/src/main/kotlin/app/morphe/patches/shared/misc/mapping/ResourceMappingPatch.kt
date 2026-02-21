@@ -99,7 +99,7 @@ fun getResourceId(type: ResourceType, name: String) = resourceMappings[type.valu
     ?: throw PatchException("Could not find resource type: $type name: $name")
 
 /**
- * @return All resource elements.  If a single resource id is needed instead use [getResourceId].
+ * @return All resource elements. If a single resource id is needed instead use [getResourceId].
  */
 fun getResourceElements() = Collections.unmodifiableCollection(resourceMappings.values)
 

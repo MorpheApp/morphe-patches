@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import app.morphe.extension.shared.Logger;
 
 /**
- * Simple preference that opens a url when clicked.
+ * Simple preference that opens a URL when clicked.
  */
 @SuppressWarnings("deprecation")
 public class UrlLinkPreference extends Preference {

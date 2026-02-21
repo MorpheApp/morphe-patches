@@ -91,7 +91,7 @@ public class ReturnYouTubeDislike {
     private static final char MIDDLE_SEPARATOR_CHARACTER = '◎'; // 'bullseye'
 
     /**
-     * Cached lookup of all video ids.
+     * Cached lookup of all video IDs.
      */
     @GuardedBy("itself")
     private static final Map<String, ReturnYouTubeDislike> fetchCache = new HashMap<>();
@@ -136,7 +136,7 @@ public class ReturnYouTubeDislike {
         leftSeparatorShape.setBounds(leftSeparatorBounds);
     }
 
-    private final String videoID;
+    private final String videoId;
 
     /**
      * Stores the results of the vote api fetch, and used as a barrier to wait until fetch completes.
@@ -384,22 +384,22 @@ public class ReturnYouTubeDislike {
     }
 
     @NonNull
-    public static ReturnYouTubeDislike getFetchForVideoID(@Nullable String videoID) {
-        Objects.requireNonNull(videoID);
+    public static ReturnYouTubeDislike getFetchForVideoId(@Nullable String videoId) {
+        Objects.requireNonNull(videoId);
         synchronized (fetchCache) {
             // Remove any expired entries.
             final long now = System.currentTimeMillis();
             fetchCache.values().removeIf(value -> {
                 final boolean expired = value.isExpired(now);
                 if (expired)
-                    Logger.printDebug(() -> "Removing expired fetch: " + value.videoID);
+                    Logger.printDebug(() -> "Removing expired fetch: " + value.videoId);
                 return expired;
             });
 
-            ReturnYouTubeDislike fetch = fetchCache.get(videoID);
+            ReturnYouTubeDislike fetch = fetchCache.get(videoId);
             if (fetch == null) {
-                fetch = new ReturnYouTubeDislike(videoID);
-                fetchCache.put(videoID, fetch);
+                fetch = new ReturnYouTubeDislike(videoId);
+                fetchCache.put(videoId, fetch);
             }
             return fetch;
         }
@@ -416,10 +416,10 @@ public class ReturnYouTubeDislike {
         }
     }
 
-    private ReturnYouTubeDislike(@NonNull String videoID) {
-        this.videoID = Objects.requireNonNull(videoID);
+    private ReturnYouTubeDislike(@NonNull String videoId) {
+        this.videoId = Objects.requireNonNull(videoId);
         this.timeFetched = System.currentTimeMillis();
-        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeAPI.fetchVotes(videoID));
+        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeAPI.fetchVotes(videoId));
     }
 
     private boolean isExpired(long now) {
@@ -455,20 +455,20 @@ public class ReturnYouTubeDislike {
 
     private synchronized void clearUICache() {
         if (replacementLikeDislikeSpan != null) {
-            Logger.printDebug(() -> "Clearing replacement span for: " + videoID);
+            Logger.printDebug(() -> "Clearing replacement span for: " + videoId);
         }
         replacementLikeDislikeSpan = null;
     }
 
     @NonNull
-    public String getVideoID() {
-        return videoID;
+    public String getVideoId() {
+        return videoId;
     }
 
     /**
      * Pre-emptively set this as a Short.
      */
-    public synchronized void setVideoIDIsShort(boolean isShort) {
+    public synchronized void setVideoIdIsShort(boolean isShort) {
         this.isShort = isShort;
     }
 
@@ -532,9 +532,9 @@ public class ReturnYouTubeDislike {
                     // 1, opened a video
                     // 2. opened a short (without closing the regular video)
                     // 3. closed the short
-                    // 4. regular video is now present, but the videoID and RYD data is still for the short
+                    // 4. regular video is now present, but the videoId and RYD data is still for the short
                     Logger.printDebug(() -> "Ignoring regular video dislike span,"
-                            + " as data loaded was previously used for a Short: " + videoID);
+                            + " as data loaded was previously used for a Short: " + videoId);
                     return original;
                 }
 
@@ -557,7 +557,7 @@ public class ReturnYouTubeDislike {
                 if (originalDislikeSpan != null && replacementLikeDislikeSpan != null
                         && spansHaveEqualTextAndColor(original, originalDislikeSpan)) {
                     Logger.printDebug(() -> "Replacing span: " + original + " with " +
-                            "previously created dislike span of data: " + videoID);
+                            "previously created dislike span of data: " + videoId);
                     return replacementLikeDislikeSpan;
                 }
 
@@ -569,7 +569,7 @@ public class ReturnYouTubeDislike {
                 originalDislikeSpan = original;
                 replacementLikeDislikeSpan = createDislikeSpan(original, isSegmentedButton, isRollingNumber, votingData);
                 Logger.printDebug(() -> "Replaced: '" + originalDislikeSpan + "' with: '"
-                        + replacementLikeDislikeSpan + "'" + " using video: " + videoID);
+                        + replacementLikeDislikeSpan + "'" + " using video: " + videoId);
 
                 return replacementLikeDislikeSpan;
             }
@@ -587,7 +587,7 @@ public class ReturnYouTubeDislike {
         try {
             PlayerType currentType = PlayerType.getCurrent();
             if (isShort != currentType.isNoneHiddenOrMinimized()) {
-                Logger.printDebug(() -> "Cannot vote for video: " + videoID
+                Logger.printDebug(() -> "Cannot vote for video: " + videoId
                         + " as current player type does not match: " + currentType);
 
                 // Shorts was loaded with regular video present, then Shorts was closed.
@@ -601,7 +601,7 @@ public class ReturnYouTubeDislike {
 
             voteSerialExecutor.execute(() -> {
                 try { // Must wrap in try/catch to properly log exceptions.
-                    ReturnYouTubeDislikeAPI.sendVote(videoID, vote);
+                    ReturnYouTubeDislikeAPI.sendVote(videoId, vote);
                 } catch (Exception ex) {
                     Logger.printException(() -> "Failed to send vote", ex);
                 }

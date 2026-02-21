@@ -22,8 +22,8 @@ private var darkThemeColor : String? = null
 
 /**
  * Sets the default theme colors used in various Morphe specific settings menus.
- * By default these colors are white and black, but instead can be set to the
- * same color the target app uses for it's own settings.
+ * By default, these colors are white and black, but instead can be set to the
+ * same color the target app uses for its own settings.
  */
 fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: String) {
     lightThemeColor = lightThemeColorString

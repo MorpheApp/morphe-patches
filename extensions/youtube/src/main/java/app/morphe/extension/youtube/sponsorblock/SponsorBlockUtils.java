@@ -214,10 +214,10 @@ public class SponsorBlockUtils {
             Utils.verifyOnMainThread();
             final long start = newSponsorSegmentStartMillis;
             final long end = newSponsorSegmentEndMillis;
-            final String videoID = VideoInformation.getVideoID();
+            final String videoId = VideoInformation.getVideoId();
             final long videoLength = VideoInformation.getVideoLength();
             final SegmentCategory segmentCategory = newUserCreatedSegmentCategory;
-            if (start < 0 || end < 0 || start >= end || videoLength <= 0 || videoID.isEmpty() || segmentCategory == null) {
+            if (start < 0 || end < 0 || start >= end || videoLength <= 0 || videoId.isEmpty() || segmentCategory == null) {
                 Logger.printException(() -> "invalid parameters");
                 return;
             }
@@ -225,8 +225,8 @@ public class SponsorBlockUtils {
             clearUnsubmittedSegmentTimes();
             Utils.runOnBackgroundThread(() -> {
                 try {
-                    SBRequester.submitSegments(videoID, segmentCategory.keyValue, start, end, videoLength);
-                    SegmentPlaybackController.executeDownloadSegments(videoID);
+                    SBRequester.submitSegments(videoId, segmentCategory.keyValue, start, end, videoLength);
+                    SegmentPlaybackController.executeDownloadSegments(videoId);
                 } catch (Exception ex) {
                     Logger.printException(() -> "submitNewSegment failure", ex);
                 }

@@ -54,8 +54,8 @@ public class ReturnYouTubeDislikeAPI {
     private static final int HTTP_STATUS_CODE_SUCCESS = 200;
 
     /**
-     * RYD API sometimes returns 401 (authorization error), even though the user id is valid.
-     * There is no known fix for this (resetting to a different user id does not fix it),
+     * RYD API sometimes returns 401 (authorization error), even though the user ID is valid.
+     * There is no known fix for this (resetting to a different user ID does not fix it),
      * so instead just quietly ignore the error.
      *
      * See <a href="https://github.com/Anarios/return-youtube-dislike/issues/1153">RYD bug report</a>.
@@ -306,7 +306,7 @@ public class ReturnYouTubeDislikeAPI {
                     Logger.printDebug(() -> "Voting data fetched: " + votingData);
                     return votingData;
                 } catch (JSONException ex) {
-                    Logger.printException(() -> "Failed to parse video: " + videoId + " json: " + json, ex);
+                    Logger.printException(() -> "Failed to parse video: " + videoId + " JSON: " + json, ex);
                     // fall through to update statistics
                 }
             } else {
@@ -329,7 +329,7 @@ public class ReturnYouTubeDislikeAPI {
     }
 
     /**
-     * @return The newly created and registered user id.  Returns NULL if registration failed.
+     * @return The newly created and registered user ID.  Returns NULL if registration failed.
      */
     @Nullable
     public static String registerAsNewUser() {
@@ -338,10 +338,10 @@ public class ReturnYouTubeDislikeAPI {
             if (checkIfRateLimitInEffect("registerAsNewUser")) {
                 return null;
             }
-            String userId = randomString(36);
+            String userID = randomString(36);
             Logger.printDebug(() -> "Trying to register new user");
 
-            HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.GET_REGISTRATION, userId);
+            HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.GET_REGISTRATION, userID);
             connection.setRequestProperty("Accept", "application/json");
             connection.setConnectTimeout(API_REGISTER_VOTE_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(API_REGISTER_VOTE_TIMEOUT_MILLISECONDS);
@@ -357,7 +357,7 @@ public class ReturnYouTubeDislikeAPI {
                 int difficulty = json.getInt("difficulty");
 
                 String solution = solvePuzzle(challenge, difficulty);
-                return confirmRegistration(userId, solution);
+                return confirmRegistration(userID, solution);
             }
 
             handleConnectionError(str("morphe_ryd_failure_connection_status_code", responseCode),
@@ -374,9 +374,9 @@ public class ReturnYouTubeDislikeAPI {
     }
 
     @Nullable
-    private static String confirmRegistration(String userId, String solution) {
+    private static String confirmRegistration(String userID, String solution) {
         Utils.verifyOffMainThread();
-        Objects.requireNonNull(userId);
+        Objects.requireNonNull(userID);
         Objects.requireNonNull(solution);
         try {
             if (checkIfRateLimitInEffect("confirmRegistration")) {
@@ -384,7 +384,7 @@ public class ReturnYouTubeDislikeAPI {
             }
             Logger.printDebug(() -> "Trying to confirm registration with solution: " + solution);
 
-            HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.CONFIRM_REGISTRATION, userId);
+            HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.CONFIRM_REGISTRATION, userID);
             applyCommonPostRequestSettings(connection);
 
             String jsonInputString = "{\"solution\": \"" + solution + "\"}";
@@ -401,12 +401,12 @@ public class ReturnYouTubeDislikeAPI {
             }
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
                 Logger.printDebug(() -> "Registration confirmation successful");
-                return userId;
+                return userID;
             }
 
             // Something went wrong, might as well disconnect.
             String response = Requester.parseStringAndDisconnect(connection);
-            Logger.printInfo(() -> "Failed to confirm registration for user: " + userId
+            Logger.printInfo(() -> "Failed to confirm registration for user: " + userID
                     + " solution: " + solution + " responseCode: " + responseCode + " response: '" + response + "''");
             handleConnectionError(str("morphe_ryd_failure_connection_status_code", responseCode),
                     responseCode, null, Toast.LENGTH_LONG);
@@ -416,7 +416,7 @@ public class ReturnYouTubeDislikeAPI {
             handleConnectionError(str("morphe_ryd_failure_generic", "confirm registration failed"),
                     null, ex, Toast.LENGTH_LONG);
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to confirm registration for user: " + userId
+            Logger.printException(() -> "Failed to confirm registration for user: " + userID
                     + "solution: " + solution, ex);
         }
         return null;
@@ -429,19 +429,19 @@ public class ReturnYouTubeDislikeAPI {
      * and the network call fails, this returns NULL.
      */
     @Nullable
-    private static String getUserId() {
+    private static String getUserID() {
         Utils.verifyOffMainThread();
 
-        String userId = Settings.RYD_USER_ID.get();
-        if (!userId.isEmpty()) {
-            return userId;
+        String userID = Settings.RYD_USER_ID.get();
+        if (!userID.isEmpty()) {
+            return userID;
         }
 
-        userId = registerAsNewUser();
-        if (userId != null) {
-            Settings.RYD_USER_ID.save(userId);
+        userID = registerAsNewUser();
+        if (userID != null) {
+            Settings.RYD_USER_ID.save(userID);
         }
-        return userId;
+        return userID;
     }
 
     public static boolean sendVote(String videoId, ReturnYouTubeDislike.Vote vote) {
@@ -450,8 +450,8 @@ public class ReturnYouTubeDislikeAPI {
         Objects.requireNonNull(vote);
 
         try {
-            String userId = getUserId();
-            if (userId == null) return false;
+            String userID = getUserID();
+            if (userID == null) return false;
 
             if (checkIfRateLimitInEffect("sendVote")) {
                 return false;
@@ -461,7 +461,7 @@ public class ReturnYouTubeDislikeAPI {
             HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.SEND_VOTE);
             applyCommonPostRequestSettings(connection);
 
-            String voteJsonString = "{\"userId\": \"" + userId + "\", \"videoId\": \"" + videoId + "\", \"value\": \"" + vote.value + "\"}";
+            String voteJsonString = "{\"userID\": \"" + userID + "\", \"videoId\": \"" + videoId + "\", \"value\": \"" + vote.value + "\"}";
             byte[] body = voteJsonString.getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(body.length);
             try (OutputStream os = connection.getOutputStream()) {
@@ -479,7 +479,7 @@ public class ReturnYouTubeDislikeAPI {
                 int difficulty = json.getInt("difficulty");
 
                 String solution = solvePuzzle(challenge, difficulty);
-                return confirmVote(videoId, userId, solution);
+                return confirmVote(videoId, userID, solution);
             }
 
             Logger.printInfo(() -> "Failed to send vote for video: " + videoId + " vote: " + vote
@@ -498,10 +498,10 @@ public class ReturnYouTubeDislikeAPI {
         return false;
     }
 
-    private static boolean confirmVote(String videoId, String userId, String solution) {
+    private static boolean confirmVote(String videoId, String userID, String solution) {
         Utils.verifyOffMainThread();
         Objects.requireNonNull(videoId);
-        Objects.requireNonNull(userId);
+        Objects.requireNonNull(userID);
         Objects.requireNonNull(solution);
 
         try {
@@ -512,7 +512,7 @@ public class ReturnYouTubeDislikeAPI {
             HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.CONFIRM_VOTE);
             applyCommonPostRequestSettings(connection);
 
-            String jsonInputString = "{\"userId\": \"" + userId + "\", \"videoId\": \"" + videoId + "\", \"solution\": \"" + solution + "\"}";
+            String jsonInputString = "{\"userID\": \"" + userID + "\", \"videoId\": \"" + videoId + "\", \"solution\": \"" + solution + "\"}";
             byte[] body = jsonInputString.getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(body.length);
             try (OutputStream os = connection.getOutputStream()) {

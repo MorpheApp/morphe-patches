@@ -8,7 +8,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 /**
- * Video quality settings.  Used to organize all speed related settings together.
+ * Video quality settings. Used to organize all speed related settings together.
  */
 internal val settingsMenuVideoQualityGroup = mutableSetOf<BasePreference>()
 

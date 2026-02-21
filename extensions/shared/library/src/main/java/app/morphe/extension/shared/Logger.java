@@ -16,7 +16,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.LogBufferManager;
 
 /**
- * Morphe specific logger.  Logging is done to standard device log (accessible through ADB),
+ * Morphe specific logger. Logging is done to standard device log (accessible through ADB),
  * and additionally accessible through {@link LogBufferManager}.
  *
  * All methods are thread safe, and are safe to call even

@@ -62,13 +62,13 @@ public final class VideoInformation {
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
 
-    private static String videoID = "";
+    private static String videoId = "";
     private static long videoLength = 0;
     private static long videoTime = -1;
 
-    private static volatile String playerResponseVideoID = "";
-    private static volatile boolean playerResponseVideoIDIsShort;
-    private static volatile boolean videoIDIsShort;
+    private static volatile String playerResponseVideoId = "";
+    private static volatile boolean playerResponseVideoIdIsShort;
+    private static volatile boolean videoIdIsShort;
 
     /**
      * The current playback speed
@@ -140,7 +140,7 @@ public final class VideoInformation {
      *
      * @param mdxPlayerDirector MDX player director object (casting mode).
      */
-    public static void initializeMdx(@NonNull PlaybackController mdxPlayerDirector) {
+    public static void initializeMDX(@NonNull PlaybackController mdxPlayerDirector) {
         try {
             mdxPlayerDirectorRef = new WeakReference<>(Objects.requireNonNull(mdxPlayerDirector));
         } catch (Exception ex) {
@@ -151,12 +151,12 @@ public final class VideoInformation {
     /**
      * Injection point.
      *
-     * @param newlyLoadedVideoID ID of the current video
+     * @param newlyLoadedVideoId ID of the current video
      */
-    public static void setVideoID(@NonNull String newlyLoadedVideoID) {
-        if (!videoID.equals(newlyLoadedVideoID)) {
-            Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoID);
-            videoID = newlyLoadedVideoID;
+    public static void setVideoId(@NonNull String newlyLoadedVideoId) {
+        if (!videoId.equals(newlyLoadedVideoId)) {
+            Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
+            videoId = newlyLoadedVideoId;
         }
     }
 
@@ -170,13 +170,13 @@ public final class VideoInformation {
     /**
      * Injection point.
      */
-    public static String newPlayerResponseSignature(@NonNull String signature, String videoID, boolean isShortAndOpeningOrPlaying) {
+    public static String newPlayerResponseSignature(@NonNull String signature, String videoId, boolean isShortAndOpeningOrPlaying) {
         final boolean isShort = playerParametersAreShort(signature);
-        playerResponseVideoIDIsShort = isShort;
+        playerResponseVideoIdIsShort = isShort;
         if (!isShort || isShortAndOpeningOrPlaying) {
-            if (videoIDIsShort != isShort) {
-                videoIDIsShort = isShort;
-                Logger.printDebug(() -> "videoIDIsShort: " + isShort);
+            if (videoIdIsShort != isShort) {
+                videoIdIsShort = isShort;
+                Logger.printDebug(() -> "videoIdIsShort: " + isShort);
             }
         }
         return signature; // Return the original value since we are observing and not modifying.
@@ -185,12 +185,12 @@ public final class VideoInformation {
     /**
      * Injection point.  Called off the main thread.
      *
-     * @param videoID The ID of the last video loaded.
+     * @param videoId The ID of the last video loaded.
      */
-    public static void setPlayerResponseVideoID(@NonNull String videoID, boolean isShortAndOpeningOrPlaying) {
-        if (!playerResponseVideoID.equals(videoID)) {
-            Logger.printDebug(() -> "New player response video ID: " + videoID);
-            playerResponseVideoID = videoID;
+    public static void setPlayerResponseVideoId(@NonNull String videoId, boolean isShortAndOpeningOrPlaying) {
+        if (!playerResponseVideoId.equals(videoId)) {
+            Logger.printDebug(() -> "New player response video ID: " + videoId);
+            playerResponseVideoId = videoId;
         }
     }
 
@@ -342,40 +342,40 @@ public final class VideoInformation {
      * @return The ID of the video, or an empty string if no videos have been opened yet.
      */
     @NonNull
-    public static String getVideoID() {
-        return videoID;
+    public static String getVideoId() {
+        return videoId;
     }
 
     /**
-     * Differs from {@link #videoID} as this is the video ID for the
+     * Differs from {@link #videoId} as this is the video ID for the
      * last player response received, which may not be the last video opened.
      * <p>
      * If Shorts are loading the background, this commonly will be
      * different from the Short that is currently on screen.
      * <p>
-     * For most use cases, you should instead use {@link #getVideoID()}.
+     * For most use cases, you should instead use {@link #getVideoId()}.
      *
      * @return The ID of the last video loaded, or an empty string if no videos have been loaded yet.
      */
     @NonNull
-    public static String getPlayerResponseVideoID() {
-        return playerResponseVideoID;
+    public static String getPlayerResponseVideoId() {
+        return playerResponseVideoId;
     }
 
     /**
      * @return If the last player response video ID was a Short.
      * Include Shorts shelf items appearing in the feed that are not opened.
-     * @see #lastVideoIDIsShort()
+     * @see #lastVideoIdIsShort()
      */
     public static boolean lastPlayerResponseIsShort() {
-        return playerResponseVideoIDIsShort;
+        return playerResponseVideoIdIsShort;
     }
 
     /**
      * @return If the last player response video ID _that was opened_ was a Short.
      */
-    public static boolean lastVideoIDIsShort() {
-        return videoIDIsShort;
+    public static boolean lastVideoIdIsShort() {
+        return videoIdIsShort;
     }
 
     /**

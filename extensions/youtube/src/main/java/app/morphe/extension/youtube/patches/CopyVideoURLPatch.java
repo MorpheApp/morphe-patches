@@ -12,7 +12,7 @@ public class CopyVideoURLPatch {
     public static void copyURL(boolean withTimestamp) {
         try {
             StringBuilder builder = new StringBuilder("https://youtu.be/");
-            builder.append(VideoInformation.getVideoID());
+            builder.append(VideoInformation.getVideoId());
             final long currentVideoTimeInSeconds = VideoInformation.getVideoTime() / 1000;
             if (withTimestamp && currentVideoTimeInSeconds > 0) {
                 final long hour = currentVideoTimeInSeconds / (60 * 60);
