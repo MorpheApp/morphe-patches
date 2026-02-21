@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.settings;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 import static app.morphe.extension.shared.settings.Setting.parentsAll;
@@ -499,8 +500,18 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_UNSUBMITTED = new StringSetting("sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
     public static final StringSetting SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
+    // Migration
+    private static final BooleanSetting DEPRECATED_DISABLE_SIGNIN_TO_TV_POPUP = new BooleanSetting("morphe_disable_signin_to_tv_popup", FALSE);
+    private static final BooleanSetting DEPRECATED_HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
+    private static final BooleanSetting DEPRECATED_SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
+
     static {
         // region Migration
+
+        migrateOldSettingToNew(DEPRECATED_HIDE_ENDSCREEN_CARDS, HIDE_END_SCREEN_CARDS);
+        migrateOldSettingToNew(DEPRECATED_DISABLE_SIGNIN_TO_TV_POPUP, DISABLE_SIGN_IN_TO_TV_POPUP);
+        migrateOldSettingToNew(DEPRECATED_SEEKBAR_TAPPING, TAP_TO_SEEK);
+
 
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.
         // This check must remain until the Tablet type is eventually removed.
