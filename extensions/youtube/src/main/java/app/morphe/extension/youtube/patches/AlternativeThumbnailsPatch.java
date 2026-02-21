@@ -14,9 +14,9 @@ import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.chromium.net.URLRequest;
-import org.chromium.net.URLResponseInfo;
-import org.chromium.net.impl.CronetURLRequest;
+import org.chromium.net.UrlRequest;
+import org.chromium.net.UrlResponseInfo;
+import org.chromium.net.impl.CronetUrlRequest;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -346,14 +346,14 @@ public final class AlternativeThumbnailsPatch {
      * <p>
      * Cronet considers all completed connections as a success, even if the response is 404 or 5xx.
      */
-    public static void handleCronetSuccess(URLRequest request, @NonNull URLResponseInfo responseInfo) {
+    public static void handleCronetSuccess(UrlRequest request, @NonNull UrlResponseInfo responseInfo) {
         try {
-            final int statusCode = responseInfo.getHTTPStatusCode();
+            final int statusCode = responseInfo.getHttpStatusCode();
             if (statusCode == 200) {
                 return;
             }
 
-            String url = responseInfo.getURL();
+            String url = responseInfo.getUrl();
 
             if (urlIsDeArrow(url)) {
                 Logger.printDebug(() -> "handleCronetSuccess, statusCode: " + statusCode);
@@ -405,15 +405,15 @@ public final class AlternativeThumbnailsPatch {
      * But this does not appear to be a problem, as the DeArrow API has not been observed to 'go silent'
      * Instead if there's a problem it returns an error code status response, which is handled in this patch.
      */
-    public static void handleCronetFailure(URLRequest request,
-                                           @Nullable URLResponseInfo responseInfo,
+    public static void handleCronetFailure(UrlRequest request,
+                                           @Nullable UrlResponseInfo responseInfo,
                                            IOException exception) {
         try {
-            String url = ((CronetURLRequest) request).getHookedURL();
+            String url = ((CronetUrlRequest) request).getHookedUrl();
             if (urlIsDeArrow(url)) {
                 Logger.printDebug(() -> "handleCronetFailure, exception: " + exception);
                 final int statusCode = (responseInfo != null)
-                        ? responseInfo.getHTTPStatusCode()
+                        ? responseInfo.getHttpStatusCode()
                         : 0;
                 handleDeArrowError(url, statusCode);
             }
