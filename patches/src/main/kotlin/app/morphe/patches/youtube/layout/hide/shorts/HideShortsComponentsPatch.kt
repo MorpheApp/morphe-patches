@@ -63,7 +63,6 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         val hideShortsWidget by hideShortsWidgetOption
 
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_hide_shorts_channel"),
             SwitchPreference("morphe_hide_shorts_home"),
             SwitchPreference("morphe_hide_shorts_search"),
             SwitchPreference("morphe_hide_shorts_subscriptions"),
