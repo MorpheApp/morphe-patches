@@ -265,10 +265,10 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                // 'get_drm_license' has no videoId and appears to happen when waiting for a paid video to start.
+                // 'get_drm_license' has no video ID and appears to happen when waiting for a paid video to start.
                 // 'heartbeat' has no video  and appears to be only after playback has started.
-                // 'refresh' has no videoId and appears to happen when waiting for a livestream to start.
-                // 'ad_break' has no videoId.
+                // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
+                // 'ad_break' has no video ID.
                 if (path.contains("get_drm_license") || path.contains("heartbeat")
                         || path.contains("refresh") || path.contains("ad_break")) {
                     Logger.printDebug(() -> "Ignoring path: " + path);
@@ -300,7 +300,7 @@ public class SpoofVideoStreamsPatch {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
                     // This hook is always called off the main thread,
-                    // but this can later be called for the same videoId from the main thread.
+                    // but this can later be called for the same video ID from the main thread.
                     // This is not a concern, since the fetch will always be finished
                     // and never block the main thread.
                     // But if debugging, then still verify this is the situation.

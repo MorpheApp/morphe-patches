@@ -91,7 +91,7 @@ public class ReturnYouTubeDislike {
     private static final char MIDDLE_SEPARATOR_CHARACTER = '◎'; // 'bullseye'
 
     /**
-     * Cached lookup of all videoIds.
+     * Cached lookup of all video IDs.
      */
     @GuardedBy("itself")
     private static final Map<String, ReturnYouTubeDislike> fetchCache = new HashMap<>();

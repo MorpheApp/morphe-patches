@@ -175,7 +175,7 @@ val videoInformationPatch = bytecodePatch(
             PlayerStatusFingerprint.match(PlayerInitFingerprint.originalClassDef).method
 
         /*
-         * Inject call for videoIds
+         * Inject call for video IDs
          */
         val videoIdMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoId(Ljava/lang/String;)V"
         hookVideoId(videoIdMethodDescriptor)
@@ -183,8 +183,8 @@ val videoInformationPatch = bytecodePatch(
         hookPlayerResponseVideoId(
             "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
         )
-        // Call before any other videoId hooks,
-        // so they can use VideoInformation and check if the videoId is for a Short.
+        // Call before any other video ID hooks,
+        // so they can use VideoInformation and check if the video ID is for a Short.
         addPlayerResponseMethodHook(
             Hook.ProtoBufferParameterBeforeVideoId(
                 "$EXTENSION_CLASS_DESCRIPTOR->" +
@@ -531,7 +531,7 @@ private fun MutableMethod.insertTimeHook(insertIndex: Int, descriptor: String) =
 /**
  * Hook the player controller. Called when a video is opened or the current video is changed.
  *
- * Note: This hook is called very early and is called before the videoId, video time, video length,
+ * Note: This hook is called very early and is called before the video ID, video time, video length,
  * and many other data fields are set.
  *
  * @param targetMethodClass The descriptor for the class to invoke when the player controller is created.

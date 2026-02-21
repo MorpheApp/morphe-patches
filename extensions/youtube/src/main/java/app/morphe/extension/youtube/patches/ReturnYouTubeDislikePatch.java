@@ -55,14 +55,14 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * Because litho Shorts spans are created offscreen after {@link ReturnYouTubeDislikeFilter}
-     * detects the videoIds, but the current Short can arbitrarily reload the same span,
+     * detects the video IDs, but the current Short can arbitrarily reload the same span,
      * then use the {@link #lastLithoShortsVideoData} if this value is greater than zero.
      */
     @GuardedBy("ReturnYouTubeDislikePatch.class")
     private static int useLithoShortsVideoDataCount;
 
     /**
-     * Last videoId prefetched. Field is to prevent prefetching the same videoId multiple times in a row.
+     * Last video ID prefetched. Field is to prevent prefetching the same video ID multiple times in a row.
      */
     @Nullable
     private static volatile String lastPrefetchedVideoId;
@@ -198,7 +198,7 @@ public class ReturnYouTubeDislikePatch {
         }
 
         if (videoData == null) {
-            // The Shorts litho videoId filter did not detect the videoId.
+            // The Shorts litho video ID filter did not detect the video ID.
             // This is normal in incognito mode, but otherwise is abnormal.
             Logger.printDebug(() -> "Cannot modify Shorts litho span, data is null");
             return original;
@@ -356,13 +356,13 @@ public class ReturnYouTubeDislikePatch {
     }
 
     //
-    // VideoId and voting hooks (all players).
+    // Video ID and voting hooks (all players).
     //
 
     private static volatile boolean lastPlayerResponseWasShort;
 
     /**
-     * Injection point.  Uses 'playback response' videoId hook to preload RYD.
+     * Injection point.  Uses 'playback response' video ID hook to preload RYD.
      */
     public static void preloadVideoId(String videoId, boolean isShortAndOpeningOrPlaying) {
         try {
@@ -411,7 +411,7 @@ public class ReturnYouTubeDislikePatch {
     }
 
     /**
-     * Injection point. Uses 'current playing' videoId hook. Always called on main thread.
+     * Injection point. Uses 'current playing' video ID hook. Always called on main thread.
      */
     public static void newVideoLoaded(String videoId) {
         try {
@@ -429,7 +429,7 @@ public class ReturnYouTubeDislikePatch {
             if (videoIdIsSame(currentVideoData, videoId)) {
                 return;
             }
-            Logger.printDebug(() -> "New videoId: " + videoId + " playerType: " + currentPlayerType);
+            Logger.printDebug(() -> "New video ID: " + videoId + " playerType: " + currentPlayerType);
 
             if (!Utils.isNetworkConnected()) {
                 Logger.printDebug(() -> "Cannot fetch RYD, network is not connected");
@@ -455,16 +455,16 @@ public class ReturnYouTubeDislikePatch {
         }
 
         if (videoId == null) {
-            // Litho filter did not detect the videoId.  App is in incognito mode,
-            // or the proto buffer structure was changed and the videoId is no longer present.
+            // Litho filter did not detect the video ID.  App is in incognito mode,
+            // or the proto buffer structure was changed and the video ID is no longer present.
             // Must clear both currently playing and last litho data otherwise the
             // next regular video may use the wrong data.
-            Logger.printDebug(() -> "Litho filter did not find any videoIds");
+            Logger.printDebug(() -> "Litho filter did not find any video IDs");
             clearData();
             return;
         }
 
-        Logger.printDebug(() -> "New litho Shorts videoId: " + videoId);
+        Logger.printDebug(() -> "New litho Shorts video ID: " + videoId);
         ReturnYouTubeDislike videoData = ReturnYouTubeDislike.getFetchForVideoId(videoId);
         videoData.setVideoIdIsShort(true);
         lastLithoShortsVideoData = videoData;

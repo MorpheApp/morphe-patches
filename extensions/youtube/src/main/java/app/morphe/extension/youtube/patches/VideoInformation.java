@@ -155,7 +155,7 @@ public final class VideoInformation {
      */
     public static void setVideoId(@NonNull String newlyLoadedVideoId) {
         if (!videoId.equals(newlyLoadedVideoId)) {
-            Logger.printDebug(() -> "New videoId: " + newlyLoadedVideoId);
+            Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             videoId = newlyLoadedVideoId;
         }
     }
@@ -189,7 +189,7 @@ public final class VideoInformation {
      */
     public static void setPlayerResponseVideoId(@NonNull String videoId, boolean isShortAndOpeningOrPlaying) {
         if (!playerResponseVideoId.equals(videoId)) {
-            Logger.printDebug(() -> "New player response videoId: " + videoId);
+            Logger.printDebug(() -> "New player response video ID: " + videoId);
             playerResponseVideoId = videoId;
         }
     }
@@ -347,7 +347,7 @@ public final class VideoInformation {
     }
 
     /**
-     * Differs from {@link #videoId} as this is the videoId for the
+     * Differs from {@link #videoId} as this is the video ID for the
      * last player response received, which may not be the last video opened.
      * <p>
      * If Shorts are loading the background, this commonly will be
@@ -363,7 +363,7 @@ public final class VideoInformation {
     }
 
     /**
-     * @return If the last player response videoId was a Short.
+     * @return If the last player response video ID was a Short.
      * Include Shorts shelf items appearing in the feed that are not opened.
      * @see #lastVideoIdIsShort()
      */
@@ -372,7 +372,7 @@ public final class VideoInformation {
     }
 
     /**
-     * @return If the last player response videoId _that was opened_ was a Short.
+     * @return If the last player response video ID _that was opened_ was a Short.
      */
     public static boolean lastVideoIdIsShort() {
         return videoIdIsShort;

@@ -86,7 +86,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         hookVideoId("$EXTENSION_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
 
-        // Hook the player response videoId, to start loading RYD sooner in the background.
+        // Hook the player response video ID, to start loading RYD sooner in the background.
         hookPlayerResponseVideoId("$EXTENSION_CLASS_DESCRIPTOR->preloadVideoId(Ljava/lang/String;Z)V")
 
         // endregion
@@ -219,10 +219,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Hook Shorts
 
-        // Filter that parses the videoId from the UI
+        // Filter that parses the video ID from the UI
         addLithoFilter(FILTER_CLASS_DESCRIPTOR)
 
-        // Player response videoId is needed to search for the videoIds in Shorts litho components.
+        // Player response video ID is needed to search for the video IDs in Shorts litho components.
         hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
 
         // endregion

@@ -47,7 +47,7 @@ internal val prioritizeVideoQualityPatch = bytecodePatch {
                 addInstructions(
                     insertIndex,
                     """
-                        # Get videoId.
+                        # Get video ID.
                         move-object/from16 v$videoIdRegister, p0
                         iget-object v$videoIdRegister, v$videoIdRegister, $videoIdField
                         
