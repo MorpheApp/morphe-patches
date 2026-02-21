@@ -43,9 +43,9 @@ private val recaptchaPatch = bytecodePatch {
                     .replaceInstructions(
                         index,
                         """
-                        nop
-                        const-string v$register, "$PACKAGE_NAME_REDDIT"
-                    """
+                            nop
+                            const-string v$register, "$PACKAGE_NAME_REDDIT"
+                        """
                 )
             }
         }
