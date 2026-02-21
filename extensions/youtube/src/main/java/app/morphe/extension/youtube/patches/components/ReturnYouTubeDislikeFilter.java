@@ -15,21 +15,21 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Searches for video IDs in the proto buffer of Shorts dislike.
+ * Searches for videoIds in the proto buffer of Shorts dislike.
  *
  * Because multiple litho dislike spans are created in the background
  * (and also anytime litho refreshes the components, which is somewhat arbitrary),
  * that makes the value of {@link VideoInformation#getVideoId()} and {@link VideoInformation#getPlayerResponseVideoId()}
- * unreliable to determine which video ID a Shorts litho span belongs to.
+ * unreliable to determine which videoId a Shorts litho span belongs to.
  *
- * But the correct video ID does appear in the protobuffer just before a Shorts litho span is created.
+ * But the correct videoId does appear in the protobuffer just before a Shorts litho span is created.
  *
  * Once a way to asynchronously update litho text is found, this strategy will no longer be needed.
  */
 public final class ReturnYouTubeDislikeFilter extends Filter {
 
     /**
-     * Last unique video IDs loaded. Value is ignored and Map is treated as a Set.
+     * Last unique videoIds loaded. Value is ignored and Map is treated as a Set.
      * Cannot use {@link LinkedHashSet} because it's missing #removeEldestEntry().
      */
     @GuardedBy("itself")
@@ -46,7 +46,7 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
             }
             synchronized (lastVideoIds) {
                 if (lastVideoIds.put(videoId, Boolean.TRUE) == null) {
-                    Logger.printDebug(() -> "New Short video ID: " + videoId);
+                    Logger.printDebug(() -> "New Short videoId: " + videoId);
                 }
             }
         } catch (Exception ex) {
@@ -72,7 +72,7 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
                 )
         );
 
-        // After the button identifiers is binary data and then the video ID for that specific short.
+        // After the button identifiers is binary data and then the videoId for that specific short.
         videoIdFilterGroup.addAll(
                 new ByteArrayFilterGroup(
                         null,

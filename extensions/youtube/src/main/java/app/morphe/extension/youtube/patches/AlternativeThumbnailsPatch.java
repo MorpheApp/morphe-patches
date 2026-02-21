@@ -528,7 +528,7 @@ public final class AlternativeThumbnailsPatch {
         private static final long NOT_AVAILABLE_TIMEOUT_MILLISECONDS = 10 * 60 * 1000; // 10 minutes.
 
         /**
-         * Cache used to verify if an alternative thumbnails exists for a given video ID.
+         * Cache used to verify if an alternative thumbnails exists for a given videoId.
          */
         @GuardedBy("itself")
         private static final Map<String, VerifiedQualities> altVideoIdLookup =

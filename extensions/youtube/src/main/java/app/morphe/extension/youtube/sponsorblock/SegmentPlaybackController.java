@@ -327,7 +327,7 @@ public class SegmentPlaybackController {
             }
 
             currentVideoId = videoId;
-            Logger.printDebug(() -> "New video ID: " + videoId);
+            Logger.printDebug(() -> "New videoId: " + videoId);
 
             Utils.runOnBackgroundThread(() -> {
                 try {
