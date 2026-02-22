@@ -1,9 +1,12 @@
-package app.morphe.patches.youtube.misc.hapticfeedback
+package app.morphe.patches.youtube.interaction.hapticfeedback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 internal object MarkerHapticsFingerprint : Fingerprint(
     returnType = "V",
@@ -28,6 +31,11 @@ internal object TapAndHoldHapticsHandlerFingerprint : Fingerprint(
     filters = listOf(
         string("vibrator"),
         checkCast("Landroid/os/Vibrator;"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Ljava/lang/Object;",
+            location = MatchAfterImmediately()
+        )
     )
 )
 

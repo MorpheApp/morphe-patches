@@ -31,7 +31,7 @@ public class DisableHapticFeedbackPatch {
     /**
      * Injection point.
      */
-    public static Vibrator disableTapAndHoldVibrate(Vibrator vibrator) {
+    public static Object disableTapAndHoldVibrate(Object vibrator) {
         return Settings.DISABLE_HAPTIC_FEEDBACK_TAP_AND_HOLD.get()
                 ? null
                 : vibrator;

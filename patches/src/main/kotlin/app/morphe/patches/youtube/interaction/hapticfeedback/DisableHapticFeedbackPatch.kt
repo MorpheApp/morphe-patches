@@ -1,15 +1,23 @@
-package app.morphe.patches.youtube.misc.hapticfeedback
+package app.morphe.patches.youtube.interaction.hapticfeedback
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import app.morphe.util.getReference
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
@@ -58,16 +66,36 @@ val disableHapticFeedbackPatch = bytecodePatch(
             )
         }
 
-        TapAndHoldHapticsHandlerFingerprint.let {
+        val vibratorField = TapAndHoldHapticsHandlerFingerprint.match()
+            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+
+        val tapAndHoldHapticsFingerprint = Fingerprint(
+            name = "run",
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf(),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    reference = vibratorField,
+                ),
+                checkCast("Landroid/os/Vibrator;"),
+                string("Failed to easy seek haptics vibrate.")
+            )
+        )
+
+        tapAndHoldHapticsFingerprint.let {
+            // clearMatch() is used because it can be the same method as [TapAndHoldSpeedFingerprint].
+            it.clearMatch()
             it.method.apply {
-                val vibratorIndex = it.instructionMatches.last().index
-                val vibratorRegister = getInstruction<OneRegisterInstruction>(vibratorIndex).registerA
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
                 addInstructions(
-                    vibratorIndex + 1,
+                    index + 1,
                     """
-                        invoke-static { v$vibratorRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldVibrate(Landroid/os/Vibrator;)Landroid/os/Vibrator;
-                        move-result-object v$vibratorRegister
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldVibrate(Ljava/lang/Object;)Ljava/lang/Object;
+                        move-result-object v$register
                     """
                 )
             }

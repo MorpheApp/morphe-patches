@@ -9,17 +9,9 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.util.customLiteral
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 internal object SwipingUpGestureParentFingerprint : Fingerprint(
     returnType = "Z",
@@ -72,27 +64,6 @@ internal object DisableFastForwardGestureFingerprint : Fingerprint(
     ),
     custom = { methodDef, _ ->
         methodDef.implementation!!.instructions.count() > 30
-    }
-)
-
-internal object CustomTapAndHoldFingerprint : Fingerprint(
-    name = "run",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        literal(2.0f)
-    ),
-    custom = { method, _ ->
-        // Code is found in different methods with different strings.
-        val findSearchLandingKey = (is_19_34_or_greater && !is_19_47_or_greater)
-                || (is_20_19_or_greater && !is_20_20_or_greater) || is_20_31_or_greater
-
-        method.indexOfFirstInstruction {
-            val string = getReference<StringReference>()?.string
-            string == "Failed to easy seek haptics vibrate."
-                    || (findSearchLandingKey && string == "search_landing_cache_key")
-        } >= 0
     }
 )
 
