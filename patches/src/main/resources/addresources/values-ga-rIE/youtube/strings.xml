@@ -118,9 +118,6 @@ Tá an t-áitréimh atá á n-úsáid agat:
   <string name="morphe_hide_playables_title">Folaigh na heilimintí inseinnte</string>
   <string name="morphe_hide_playables_summary_on">Tá na heilimintí inseinnte i bhfolach</string>
   <string name="morphe_hide_playables_summary_off">Taispeántar na heilimintí inseinnte</string>
-  <string name="morphe_hide_search_suggestions_title">Folaigh moltaí cuardaigh</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Tá moltaí cuardaigh i bhfolach</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Taispeántar moltaí cuardaigh</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Folaigh an cnaipe \'Taispeáin níos mó\'</string>
@@ -142,6 +139,9 @@ Tá an t-áitréimh atá á n-úsáid agat:
   <string name="morphe_hide_web_search_results_title">Folaigh torthaí cuardaigh gréasáin</string>
   <string name="morphe_hide_web_search_results_summary_on">Tá torthaí cuardaigh gréasáin i bhfolach</string>
   <string name="morphe_hide_web_search_results_summary_off">Taispeántar torthaí cuardaigh gréasáin</string>
+  <string name="morphe_hide_you_may_like_section_title">Folaigh an chuid scannán atá agat</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Tá an chuid scannán atá agat i bhfolach</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Taispeánfar an chuid scannán atá agat</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Folaigh YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
@@ -735,10 +735,10 @@ Tá sé seo ag tairgfí cookies áiríonna seachtracha"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Tá roghchlár rian fuaime i bhfolach</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Taispeántar roghchlár rian fuaime</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Tá meáin an scannáin audio faoi seo
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Tá an menú clár athrú áthrú
 
-Tá an meáin an scannáin audio faoi seo"</string>
+Chugainn an menú clár athrú a thaispeáint, athrú 'Spoof video streams' go 'Android Reel' nó 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Folaigh Watch i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Tá an roghchlár Féach i VR i bhfolach</string>

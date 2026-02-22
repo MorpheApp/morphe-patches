@@ -118,9 +118,6 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_playables_title">Playables ausblenden</string>
   <string name="morphe_hide_playables_summary_on">Playables sind ausgeblendet</string>
   <string name="morphe_hide_playables_summary_off">Playables werden angezeigt</string>
-  <string name="morphe_hide_search_suggestions_title">Suchvorschläge ausblenden</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Suchvorschläge sind ausgeblendet</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Suchvorschläge werden angezeigt</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Schaltfläche \'Mehr anzeigen\' ausblenden</string>
@@ -142,6 +139,9 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_web_search_results_title">Suchergebnisse ausblenden</string>
   <string name="morphe_hide_web_search_results_summary_on">Web-Suchergebnisse sind ausgeblendet</string>
   <string name="morphe_hide_web_search_results_summary_off">Web-Suchergebnisse werden angezeigt</string>
+  <string name="morphe_hide_you_may_like_section_title">Verbergen Sie den Bereich \'Sie mögen auch\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Der Bereich \'Sie mögen auch\' ist ausgeblendet</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Der Bereich \'Sie mögen auch\' wird angezeigt</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles ausblenden</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-Animation auf dem Logo ist ausgeblendet</string>
@@ -735,10 +735,10 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menü „Autdiotrack“ ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menü „Autdiotrack“ wird angezeigt</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio-Track-Menü ist ausgeblendet
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menü \"Audio-Track\" ist ausgeblendet
 
-Um das Audio-Track-Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in \"TV\""</string>
+Um das Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in \"Android Reel\" oder \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">„In VR ansehen“ ausblenden</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Schaltfläche „In VR ansehen“ ist ausgeblendet</string>

@@ -118,9 +118,6 @@ Promene uključuju:
   <string name="morphe_hide_playables_title">Sakrij salu za igru</string>
   <string name="morphe_hide_playables_summary_on">Sala za igru je skrivena</string>
   <string name="morphe_hide_playables_summary_off">Sala za igru je prikazana</string>
-  <string name="morphe_hide_search_suggestions_title">Sakrij predloge za pretragu</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Predlozi za pretragu su skriveni</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Predlozi za pretragu su prikazani</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Sakrij dugme „Prikaži još”</string>
@@ -142,6 +139,9 @@ Promene uključuju:
   <string name="morphe_hide_web_search_results_title">Sakrij rezultate veb-pretrage</string>
   <string name="morphe_hide_web_search_results_summary_on">Rezultati veb-pretrage su skriveni</string>
   <string name="morphe_hide_web_search_results_summary_off">Rezultati veb-pretrage su prikazani</string>
+  <string name="morphe_hide_you_may_like_section_title">Sakrij sekciju \"Mogu ti se sviđati\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Sekcija \"Mogu ti se sviđati\" je sakrivena</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Sekcija \"Mogu ti se sviđati\" je prikazana</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Sakrij YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animacija YouTube Doodlesa na logotipu je skrivena</string>
@@ -737,10 +737,10 @@ Cookies will be saved automatically if they are valid"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Meni „Audio snimak” je skriven</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Meni „Audio snimak” je prikazan</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni sa zvučnim stazama je sakriven
 
-Da bi prikazali meni sa zvučnim stazama, promenite 'Spoof video streams' u 'TV'."</string>
+Da bi prikazali meni sa zvučnim stazama, promenite 'Imitiraj video tokove' u 'Android Reel' ili 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sakrij dugme „Gledaj u VR”</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Dugme „Gledaj u VR” je skriveno</string>

@@ -118,9 +118,6 @@ Thay đổi bao gồm:
   <string name="morphe_hide_playables_title">Ẩn Chơi game trên Youtube</string>
   <string name="morphe_hide_playables_summary_on">Chơi game đã bị ẩn</string>
   <string name="morphe_hide_playables_summary_off">Chơi game được hiển thị</string>
-  <string name="morphe_hide_search_suggestions_title">Ẩn đề xuất tìm kiếm</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Đề xuất tìm kiếm đã bị ẩn</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Đề xuất tìm kiếm được hiển thị</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ẩn nút \'Hiện thêm\'</string>
@@ -142,6 +139,9 @@ Thay đổi bao gồm:
   <string name="morphe_hide_web_search_results_title">Ẩn kết quả tìm kiếm trên web</string>
   <string name="morphe_hide_web_search_results_summary_on">Kết quả tìm kiếm trên web đã bị ẩn</string>
   <string name="morphe_hide_web_search_results_summary_off">Kết quả tìm kiếm trên web được hiển thị</string>
+  <string name="morphe_hide_you_may_like_section_title">Ẩn phần \'Bạn có thể thích\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Phần \'Bạn có thể thích\' đã bị ẩn</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Phần \'Bạn có thể thích\' được hiển thị</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ẩn YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Hoạt ảnh YouTube Doodles trên logo đã bị ẩn</string>
@@ -737,10 +737,10 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu bản âm thanh đã bị ẩn</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu bản âm thanh được hiển thị</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu bản âm thanh bị ẩn
 
-Để hiển thị menu bản âm thanh, hãy đổi 'Giả mạo luồng phát video' thành 'TV'"</string>
+Để hiển thị menu bản âm thanh, hãy đổi 'Giả mạo luồng phát video' thành 'Android Reel' hoặc 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ẩn Xem ở chế độ thực tế ảo</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu xem ở chế độ thực tế ảo đã bị ẩn</string>

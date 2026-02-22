@@ -104,9 +104,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_playables_title">Oynadılan elementləri gizlət</string>
   <string name="morphe_hide_playables_summary_on">Oynadılanlar gizlidir</string>
   <string name="morphe_hide_playables_summary_off">Oynadılanlar göstərilir</string>
-  <string name="morphe_hide_search_suggestions_title">Axtarış təkliflərini gizlət</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Axtarış təklifləri gizlədilib</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Axtarış təklifləri göstərilir</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Daha çox göstər\' düyməsini gizlət</string>
@@ -661,7 +658,7 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Səs axını menyusu gizlidir</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Səs axını menyusu göstərilir</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"VR-da İzləni\" gizlət</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR menyusunda izləmə gizlidir</string>

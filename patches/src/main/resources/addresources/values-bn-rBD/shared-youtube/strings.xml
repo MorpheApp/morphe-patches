@@ -97,7 +97,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR এ প্রবেশ করতে ব্যর্থ হয়েছে: %s</string>
   <string name="morphe_oauth2_toast_reset">অ্যান্ড্রয়েড ভিআর থেকে লগ আউট করা হয়েছে</string>
   <string name="morphe_oauth2_toast_invalid">VR প্রবেশের জন্য অকার্যকর টোকেন, আবার VR এ প্রবেশ করুন</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">কিউআইসি প্রোটোকল বন্ধ করুন</string>
+  <string name="morphe_disable_quic_protocol_summary_on">কিউআইসি প্রোটোকল বন্ধ আছে</string>
+  <string name="morphe_disable_quic_protocol_summary_off">কিউআইসি প্রোটোকল চালু আছে</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">ডিআরসি অডিও নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_drc_audio_summary_on">ডিআরসি অডিও নিষ্ক্রিয় করা হয়েছে</string>
   <string name="morphe_disable_drc_audio_summary_off">ডিআরসি অডিও সক্রিয় হয়েছে</string>

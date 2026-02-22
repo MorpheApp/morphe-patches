@@ -121,9 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">게임 룸 숨기기</string>
   <string name="morphe_hide_playables_summary_on">게임 룸이 숨겨집니다</string>
   <string name="morphe_hide_playables_summary_off">게임 룸이 표시됩니다</string>
-  <string name="morphe_hide_search_suggestions_title">추천 콘텐츠 숨기기</string>
-  <string name="morphe_hide_search_suggestions_summary_on">추천 콘텐츠가 숨겨집니다</string>
-  <string name="morphe_hide_search_suggestions_summary_off">추천 콘텐츠가 표시됩니다</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'자세히 보기\' 버튼 숨기기</string>
@@ -145,6 +142,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">웹 검색 결과 숨기기</string>
   <string name="morphe_hide_web_search_results_summary_on">웹 검색 결과가 숨겨집니다</string>
   <string name="morphe_hide_web_search_results_summary_off">웹 검색 결과가 표시됩니다</string>
+  <string name="morphe_hide_you_may_like_section_title">추천 콘텐츠 섹션 숨기기</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">추천 콘텐츠 섹션이 숨겨집니다.</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">추천 콘텐츠 섹션이 표시됩니다.</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles 숨기기</string>
   <string name="morphe_hide_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
@@ -735,10 +735,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">오디오 트랙 메뉴가 숨겨집니다</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">오디오 트랙 메뉴가 표시됩니다</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨집니다
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨져 있습니다
 
-오디오 트랙 메뉴를 표시하려면, '동영상 스트림 속이기'에서 기본 클라이언트를 'TV'로 변경하세요"</string>
+오디오 트랙 메뉴를 표시하려면, '동영상 스트림 변경하기'를 'Android Reel'이나 'TV'로 변경하세요"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR로 보기 숨기기</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR로 보기 메뉴가 숨겨집니다</string>

@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_on">已隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_off">已顯示遊戲角落</string>
-  <string name="morphe_hide_search_suggestions_title">隱藏搜尋建議</string>
-  <string name="morphe_hide_search_suggestions_summary_on">已隱藏搜尋建議</string>
-  <string name="morphe_hide_search_suggestions_summary_off">已顯示搜尋建議</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">隱藏「顯示更多」按鈕</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">隱藏網頁搜尋結果</string>
   <string name="morphe_hide_web_search_results_summary_on">已隱藏網頁搜尋結果</string>
   <string name="morphe_hide_web_search_results_summary_off">已顯示網頁搜尋結果</string>
+  <string name="morphe_hide_you_may_like_section_title">隱藏您可能喜歡的區塊</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">已隱藏您可能喜歡的區塊</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">已顯示您可能喜歡的區塊</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">隱藏 YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">已隱藏 YouTube 標誌上的 Doodles 動畫</string>
@@ -737,7 +737,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">已隱藏「音軌」選單</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">已顯示「音軌」選單</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"已隱藏音訊軌道選單
 
 如要顯示「音軌」選單，請將「偽裝視訊串流」變更為「電視」"</string>
@@ -1569,7 +1569,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_av1_summary_off">視訊轉碼器為 AVC (H.264) 或 VP9</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"啟用此設定可能會使用軟體 AV1 解碼。
 
-AV1 視訊播放可能會卡頓或掉幀。"</string>
+AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺騙的副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 實驗性用戶端，隨時可能停止運作</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• 影片可能會在 1:00 停止，或在某些地區無法播放</string>

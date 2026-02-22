@@ -6,7 +6,8 @@
  *
  * This file is part of the Morphe patches project and is licensed under
  * the GNU General Public License version 3 (GPLv3), with the Additional
- * Terms under Section 7 described in the Morphe patches LICENSE file.
+ * Terms under Section 7 described in the Morphe patches
+ * LICENSE file: https://github.com/MorpheApp/morphe-patches/blob/main/NOTICE
  *
  * https://www.gnu.org/licenses/gpl-3.0.html
  *

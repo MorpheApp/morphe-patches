@@ -97,7 +97,11 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je vypnutý</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC je zapnutý</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Vypnout zvuk DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Zvuk DRC je vypnutý</string>
   <string name="morphe_disable_drc_audio_summary_off">Zvuk DRC je zapnutý</string>

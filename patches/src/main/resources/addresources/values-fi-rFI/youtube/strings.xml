@@ -118,9 +118,6 @@ Muutokset sisältävät:
   <string name="morphe_hide_playables_title">Piilota Pelattavat</string>
   <string name="morphe_hide_playables_summary_on">Pelattavat piilotetaan</string>
   <string name="morphe_hide_playables_summary_off">Pelattavat näytetään</string>
-  <string name="morphe_hide_search_suggestions_title">Piilota hakuehdotukset</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Hakuehdotukset piilotetaan</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Hakuehdotukset näytetään</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Piilota \"Näytä lisää\" -painike</string>
@@ -142,6 +139,9 @@ Muutokset sisältävät:
   <string name="morphe_hide_web_search_results_title">Piilota verkkohakutulokset</string>
   <string name="morphe_hide_web_search_results_summary_on">Verkkohakutulokset piilotetaan</string>
   <string name="morphe_hide_web_search_results_summary_off">Verkkohakutulokset näytetään</string>
+  <string name="morphe_hide_you_may_like_section_title">Piilota \"Mitä sinulta pitäisi\" -osa</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">\"Mitä sinulta pitäisi\" -osa on piilotettu</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">\"Mitä sinulta pitäisi\" -osa näytetään</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Piilota YouTube Doodlet</string>
   <string name="morphe_hide_doodles_summary_on">Logon YouTube Doodles -animaatio piilotetaan</string>
@@ -737,10 +737,10 @@ Kuvatekstit tallennetaan automaattisesti, jos ne ovat validit"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ääniraitavalikko piilotetaan</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Ääniraitavalikko näytetään</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audiokappale-valikko on piilotettu
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Ääniradamenua on piilotettu
 
-Näytäksesi Audiokappale-valikon, muuta 'Spoof video streams' 'TV':ksi"</string>
+Näytäksesi Ääniradamenun, muuta 'Spoof video streams' 'Android Reel' tai 'TV':n"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Piilota Katso VR-tilassa</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Katso VR-tilassa -valinta piilotetaan</string>

@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Игри в YouTube</string>
   <string name="morphe_hide_playables_summary_on">Игри в YouTube са скрити</string>
   <string name="morphe_hide_playables_summary_off">Игрите в YouTube се показват</string>
-  <string name="morphe_hide_search_suggestions_title">Скриване на предлагането за търсене</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Предлагането за търсене е скрито</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Предлагането за търсене е показано</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Скриване на бутона \"Покажи още\"</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">Резултати от търсене в мрежата</string>
   <string name="morphe_hide_web_search_results_summary_on">Резултатите от уеб търсенето са скрити</string>
   <string name="morphe_hide_web_search_results_summary_off">Резултатите от уеб търсенето са показани</string>
+  <string name="morphe_hide_you_may_like_section_title">Скриване на раздела \"Може би да ти се харесат\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Разделът \"Може би да ти се харесат\" е скрит</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Разделът \"Може би да ти се харесат\" е показан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Анимацията \"Doodles\" на логото на YouTube е скрита</string>
@@ -731,10 +731,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Скрий дублиране на видеа</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню за аудио трак е скрито
 
-За да покажете менюто за аудио трак, променете 'Спофай видео потоки' на 'ТВ'"</string>
+За да покажете менюто за аудио трак, промените 'Споф на видеопоток' на 'Андроид Рил' или 'ТВ'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Скрий дублиране на видеа</string>

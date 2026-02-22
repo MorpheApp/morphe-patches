@@ -120,9 +120,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Παιχνίδια YouTube</string>
   <string name="morphe_hide_playables_summary_on">Κρυμμένα</string>
   <string name="morphe_hide_playables_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_search_suggestions_title">Προτάσεις αναζήτησης</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Εμφανίζονται</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Κουμπί «Εμφάνιση περισσότερων»</string>
@@ -144,6 +141,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">Αποτελέσματα αναζήτησης στο διαδίκτυο</string>
   <string name="morphe_hide_web_search_results_summary_on">Κρυμμένα</string>
   <string name="morphe_hide_web_search_results_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_you_may_like_section_title">Απόκρυψη ενότητας που μπορείς να την προτιμήσεις</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Η ενότητα που μπορείς να την προτιμήσεις είναι κρυμμένη</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Η ενότητα που μπορείς να την προτιμήσεις εμφανίζεται</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
@@ -739,10 +739,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Εμφανίζεται</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Διαλογή ήχου είναι κρυμμένη
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Μενού κομματιών ήχου είναι κρυμμένο
 
-Για να δείτε τη διαλογή ήχου, αλλάξτε 'Spoof video streams' σε 'TV'"</string>
+Για να δείτε το μενού κομματιών ήχου, αλλάξτε 'Spoof video streams' σε 'Android Reel' ή 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Μενού «Προβολή σε VR»</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Κρυμμένο</string>

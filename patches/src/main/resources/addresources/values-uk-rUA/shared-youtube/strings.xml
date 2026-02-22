@@ -51,52 +51,56 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Відеопотоки не підмінено
 
 Відтворення може не працювати"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Не вдалося завантажити жодних потоків клієнтів</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Вимкнення цієї опції може спричинити проблеми з відтворенням.</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Не вдалося отримати жодних клієнтських потоків</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Вимкнення цього налаштування може спричинити проблеми з відтворенням.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з авторизацією</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з входом</string>
   <string name="morphe_spoof_video_streams_client_type_title">Клієнт за замовчуванням</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR з авторизацією</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ви не авторизувалися в Android VR. Натисніть тут, щоб авторизуватися</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі виконано авторизацію в Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR з входом</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ви не ввійшли в Android VR. Натисніть тут, щоб увійти</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі ви ввійшли в Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Клієнт за замовчуванням\" на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Авторизація в Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вхід в Android VR може розв'язувати проблеми з відтворенням для деяких користувачів
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Увійти в Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вхід в Android VR може виправити проблеми з відтворенням для деяких користувачів
 
-Щоб увійти, натисніть кнопку \"Продовжити\" нижче"</string>
+Щоб увійти, натисніть \"Продовжити\" нижче"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продовжити</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Вийти</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Інструкції</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код активації: %s
 
-1. Натисніть \"Відкрити вебсайт\" нижче, щоб перейти на сайт \"Підключити пристрій\"
-2. Вставте код активації з буфера обміну (або введіть його вручну), показаний вище
-3. За потреби увійдіть у Google. Якщо у вас декілька акаунтів, оберіть цей акаунт YouTube
-4. Натисніть \"Дозволити доступ YouTube VR\"
-5. Поверніться в цей застосунок після повідомлення \"Пристрій підключено\""</string>
+1. Натисніть \"Відкрити вебсайт\" нижче, щоб відкрити вебсайт \"Підключити пристрій\"
+2. Вставте з буфера обміну (або введіть) код активації, показаний вище
+3. Увійдіть до Google, за потреби. Якщо у вас є кілька облікових записів, виберіть цей обліковий запис YouTube
+4. Натисніть \"Дозволити доступ до YouTube VR\"
+5. Поверніться до застосунку після того, як побачите повідомлення \"Пристрій підключено\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Відкрити вебсайт</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Не вдалося створити код активації</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Не вдалося створити токен автентифікації</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Авторизацію виконано успішно</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Вхід виконано успішно</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Автентифікацію збережено
 
-• Налаштування Morphe не імпортують і не експортують автентифікацію Android VR
-• Якщо цим застосунком не користуватися протягом 6 місяців, Google видалить цю автентифікацію
-• Вам потрібно буде авторизуватися знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
+• Ваші налаштування Morphe не імпортуватимуть/експортуватимуть автентифікацію Android VR
+• Якщо цей застосунок не використовуватиметься протягом 6 місяців, Google видалить цю автентифікацію
+• Вам потрібно буде знову ввійти, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 тимчасово недоступний (тайм-аут API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Термін дії входу в Android VR закінчився. Спробуйте ввійти у VR ще раз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 тимчасово недоступний (статус %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 тимчасово недоступний</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не вдається ввійти у VR, автентифікацію вебсайту не схвалено</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Не вдається увійти до VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Не вдається ввійти до VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Ви вийшли з Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте увійти у VR ще раз</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
-  <string name="morphe_disable_drc_audio_title">Вимкнути DRC аудіо</string>
+  <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте ввійти у VR ще раз</string>
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Вимкнути протокол QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Протокол QUIC вимкнено</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Протокол QUIC увімкнено</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Вимкнути аудіо DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Аудіо DRC вимкнено</string>
   <string name="morphe_disable_drc_audio_summary_off">Аудіо DRC увімкнено</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

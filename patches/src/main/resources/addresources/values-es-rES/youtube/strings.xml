@@ -117,9 +117,6 @@ Los cambios incluyen:
   <string name="morphe_hide_playables_title">Ocultar jugables</string>
   <string name="morphe_hide_playables_summary_on">Los jugables están ocultos</string>
   <string name="morphe_hide_playables_summary_off">Los jugables están visibles</string>
-  <string name="morphe_hide_search_suggestions_title">Ocultar sugerencias de búsqueda</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Las sugerencias de búsqueda están ocultas</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Las sugerencias de búsqueda están visibles</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ocultar botón \"Mostrar más\"</string>
@@ -141,6 +138,9 @@ Los cambios incluyen:
   <string name="morphe_hide_web_search_results_title">Ocultar resultados de búsqueda web</string>
   <string name="morphe_hide_web_search_results_summary_on">Los resultados de búsqueda web están ocultos</string>
   <string name="morphe_hide_web_search_results_summary_off">Los resultados de la búsqueda web están visibles</string>
+  <string name="morphe_hide_you_may_like_section_title">Ocultar sección \"Quizá te guste\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">La sección \"Quizá te guste\" está oculta</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">La sección \"Quizá te guste\" está visible</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ocultar Doodles de YouTube</string>
   <string name="morphe_hide_doodles_summary_on">La animación de los Doodles de YouTube en el logo está oculta</string>
@@ -736,10 +736,10 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">El menú \"Pista de audio\" está oculto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">El menú \"Pista de audio\" está visible</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"El menú de pistas de audio está oculto
 
-Para mostrar el menú de pistas de audio, cambia \"Falsificar transmisiones de vídeo\" a \"TV\""</string>
+Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de vídeo' a 'Android Reel' o 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ocultar \"Ver en realidad virtual\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">El menú \"Ver en realidad virtual\" está oculto</string>

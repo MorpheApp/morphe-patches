@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">הסתר משחקייה</string>
   <string name="morphe_hide_playables_summary_on">המשחקייה מוסתרת</string>
   <string name="morphe_hide_playables_summary_off">המשחקייה מוצגת</string>
-  <string name="morphe_hide_search_suggestions_title">הסתר הצעות חיפוש</string>
-  <string name="morphe_hide_search_suggestions_summary_on">הצעות חיפוש מוסתרות</string>
-  <string name="morphe_hide_search_suggestions_summary_off">הצעות חיפוש מוצגות</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">הסתר לחצן \'הצג עוד\'</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">הסתר תוצאות חיפוש באינטרנט</string>
   <string name="morphe_hide_web_search_results_summary_on">תוצאות חיפוש באינטרנט מוסתרות</string>
   <string name="morphe_hide_web_search_results_summary_off">תוצאות חיפוש באינטרנט מוצגות</string>
+  <string name="morphe_hide_you_may_like_section_title">הסתר מדור \"אולי תעניק\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">מדור \"אולי תעניק\" מוסתר</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">מדור \"אולי תעניק\" מוצג</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">הסתר YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">הנפשת YouTube Doodles על הלוגו מוסתרת</string>
@@ -737,10 +737,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">תפריט טראק אודיו מוסתר</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">תפריט טראק אודיו מוצג</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"תפריט רצועת אודיו מוסתר
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"תפריט מסלול אודיו מוסתר
 
-כדי להראה את תפריט הרצועת אודיו, שנה את 'מילוי סטריאו וידאו' ל'TV'"</string>
+כדי להראות את תפריט מסלול האודיו, שנה את 'מילוי סטריאו וידאו' ל'ריל אנדרואיד' או 'טלוויזיה'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">הסתר \'צפה ב-VR\'</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">תפריט \'צפה ב-VR\' מוסתר</string>

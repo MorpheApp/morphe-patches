@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
 package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -6,7 +13,8 @@ import static app.morphe.extension.shared.spoof.js.J2V8Support.supportJ2V8;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
-import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_STREAMING_DATA;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_PLAYER_STREAMING_DATA;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_REEL_STREAMING_DATA;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +38,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
+import app.morphe.extension.shared.innertube.ReelItemWatchResponseOuterClass.ReelItemWatchResponse;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
+import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -165,7 +175,8 @@ public class StreamingDataRequest {
         final long startTime = System.currentTimeMillis();
 
         try {
-            HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(GET_STREAMING_DATA, clientType);
+            Route.CompiledRoute route = clientType.usePlayerEndpoint ? GET_PLAYER_STREAMING_DATA : GET_REEL_STREAMING_DATA;
+            HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(route, clientType);
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
@@ -248,7 +259,9 @@ public class StreamingDataRequest {
         }
 
         try (InputStream inputStream = connection.getInputStream()) {
-            PlayerResponse playerResponse = PlayerResponse.parseFrom(inputStream);
+            PlayerResponse playerResponse = clientType.usePlayerEndpoint
+                    ? PlayerResponse.parseFrom(inputStream)
+                    : ReelItemWatchResponse.parseFrom(inputStream).getPlayerResponse();
             var playabilityStatus = playerResponse.getPlayabilityStatus();
             String status = playabilityStatus.getStatus().name();
 

@@ -118,9 +118,6 @@ Zmiany obejmują:
   <string name="morphe_hide_playables_title">Pokój gier</string>
   <string name="morphe_hide_playables_summary_on">Ukryty</string>
   <string name="morphe_hide_playables_summary_off">Widoczny</string>
-  <string name="morphe_hide_search_suggestions_title">Sugestie wyszukiwań</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Ukryte</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Widoczne</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Przycisk \"Pokaż więcej\"</string>
@@ -142,6 +139,9 @@ Zmiany obejmują:
   <string name="morphe_hide_web_search_results_title">Wyniki wyszukiwania stron internetowych</string>
   <string name="morphe_hide_web_search_results_summary_on">Ukryte</string>
   <string name="morphe_hide_web_search_results_summary_off">Widoczne</string>
+  <string name="morphe_hide_you_may_like_section_title">Sekcja \"Może Cię zainteresować\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Widoczna</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Ukryte</string>
@@ -686,7 +686,7 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_toolbar_search_button_title">Przycisk Szukaj</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Przycisk \"Wyszukiwanie głosowe\"</string>
+  <string name="morphe_hide_toolbar_voice_search_button_title">Przycisk Wyszukiwanie głosowe</string>
   <string name="morphe_hide_toolbar_voice_search_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_voice_search_button_summary_off">Widoczny</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -737,10 +737,10 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ukryte</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Widoczne</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Ukryte
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu ścieżki dźwiękowej jest ukryty
 
-Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\" na \"TV\""</string>
+Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumień filmu\" na \"Android Reel\" lub \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Menu oglądania w VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Ukryte</string>

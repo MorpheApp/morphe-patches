@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ซ่อน Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables ถูกซ่อนไว้</string>
   <string name="morphe_hide_playables_summary_off">Playables แสดงอยู่</string>
-  <string name="morphe_hide_search_suggestions_title">ซ่อนคำแนะนำในการค้นหา</string>
-  <string name="morphe_hide_search_suggestions_summary_on">ซ่อนคำแนะนำในการค้นหา</string>
-  <string name="morphe_hide_search_suggestions_summary_off">แสดงคำแนะนำในการค้นหา</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">ซ่อนปุ่ม \"แสดงเพิ่มเติม\"</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">ซ่อนผลลัพธ์การค้นหาบนเว็บ</string>
   <string name="morphe_hide_web_search_results_summary_on">ผลลัพธ์การค้นหาบนเว็บถูกซ่อน</string>
   <string name="morphe_hide_web_search_results_summary_off">ผลลัพธ์การค้นหาบนเว็บจะแสดง</string>
+  <string name="morphe_hide_you_may_like_section_title">ซ่อนส่วนที่คุณอาจชอบ</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">ส่วนที่คุณอาจชอบถูกซ่อนอยู่</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">ส่วนที่คุณอาจชอบแสดงอยู่</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">ซ่อน Doodles ของ YouTube</string>
   <string name="morphe_hide_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
@@ -735,10 +735,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">เมนูแทร็กเสียงซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">เมนูแทร็กเสียงแสดงอยู่</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"เมนูแทร็กเสียงถูกซ่อน
 
-เพื่อแสดงเมนูแทร็กเสียงให้เห็น เปลี่ยน 'Spoof video streams' เป็น 'TV'"</string>
+เพื่อแสดงเมนูแทร็กเสียงให้เห็น ต้องเปลี่ยน 'Spoof video streams' เป็น 'Android Reel' หรือ 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">ซ่อนดูใน VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">เมนูดูใน VR ซ่อนอยู่</string>

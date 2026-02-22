@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">খেলার উপযুক্ত লুকান</string>
   <string name="morphe_hide_playables_summary_on">খেলার উপযুক্ত লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_playables_summary_off">খেলার উপযুক্ত প্রদর্শিত হয়েছে</string>
-  <string name="morphe_hide_search_suggestions_title">অনুসন্ধান পরামর্শগুলি লুকান</string>
-  <string name="morphe_hide_search_suggestions_summary_on">অনুসন্ধান পরামর্শগুলি লুকিয়ে রয়েছে</string>
-  <string name="morphe_hide_search_suggestions_summary_off">অনুসন্ধান পরামর্শগুলি প্রদর্শিত হয়েছে</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'আরও দেখান\' বোতাম লুকান</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">লোকেরা এইগুলিও সার্চ করছে লুকান</string>
   <string name="morphe_hide_web_search_results_summary_on">লোকেরা এইগুলিও সার্চ করছে লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_web_search_results_summary_off">লোকেরা এইগুলিও সার্চ করছে প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_you_may_like_section_title">আপনি পছন্দ করতে পারে বিভাগ লুকান</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">আপনি পছন্দ করতে পারে বিভাগ লুকিয়ে রয়েছে</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">আপনি পছন্দ করতে পারে বিভাগ প্রদর্শিত হয়েছে</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles छिपाएँ</string>
   <string name="morphe_hide_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
@@ -737,10 +737,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">অডিও ট্র্যাক মেনু লুকানো আছে</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">অডিও ট্র্যাক মেনু দেখানো হয়</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"অডিও ট্র্যাক মেনু লুকানো আছে
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"ওডিও ট্র্যাক মেন্যু লুকানো আছে
 
-অডিও ট্র্যাক মেনু দেখার জন্য, 'স্পুফ ভিডিও স্ট্রিম' কে 'টিভি' এ পরিবর্তন করুন"</string>
+ওডিও ট্র্যাক মেন্যু দেখানোর জন্য, 'স্ক্যাম ভিডিও স্ট্রিম' কে 'এন্ড্রয়েড রিল' বা 'টিভি' এ পরিবর্তন করুন।"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">ভিআর-এ ঘড়ি লুকান</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">ভিআর মেনুতে দেখুন লুকানো আছে</string>

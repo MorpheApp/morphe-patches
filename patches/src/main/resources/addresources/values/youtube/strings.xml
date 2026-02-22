@@ -426,6 +426,9 @@ Limitations:
     <string name="morphe_hide_paid_promotion_label_title">Hide paid promotion label</string>
     <string name="morphe_hide_paid_promotion_label_summary_on">Paid promotion label is hidden</string>
     <string name="morphe_hide_paid_promotion_label_summary_off">Paid promotion label is shown</string>
+    <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
+    <string name="morphe_hide_player_popup_ads_summary_on">Player popup ads are hidden</string>
+    <string name="morphe_hide_player_popup_ads_summary_off">Player popup ads are shown</string>
     <string name="morphe_hide_self_sponsor_ads_title">Hide self sponsored cards</string>
     <string name="morphe_hide_self_sponsor_ads_summary_on">Self sponsored cards are hidden</string>
     <string name="morphe_hide_self_sponsor_ads_summary_off">Self sponsored cards are shown</string>
@@ -766,10 +769,10 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_on">Audio track menu is hidden</string>
     <string name="morphe_hide_player_flyout_audio_track_summary_off">Audio track menu is shown</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is hidden
 
-To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
+To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\' or \'TV\'"</string>
     <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
@@ -1000,10 +1003,10 @@ Settings → Playback → Autoplay next video"</string>
     <string name="morphe_hide_timestamp_summary_on">Timestamp is hidden</string>
     <string name="morphe_hide_timestamp_summary_off">Timestamp is shown</string>
 
-    <!-- layout.panels.popup.playerPopupPanelsPatch -->
-    <string name="morphe_hide_player_popup_panels_title">Hide player popup panels</string>
-    <string name="morphe_hide_player_popup_panels_summary_on">Player popup panels are hidden</string>
-    <string name="morphe_hide_player_popup_panels_summary_off">Player popup panels are shown</string>
+    <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+    <string name="morphe_disable_player_popup_panels_title">Disable player popup panels</string>
+    <string name="morphe_disable_player_popup_panels_summary_on">Player popup panels are disabled</string>
+    <string name="morphe_disable_player_popup_panels_summary_off">Player popup panels are enabled</string>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string name="morphe_exit_fullscreen_title">Exit fullscreen mode at end of video</string>

@@ -119,9 +119,6 @@ Změny zahrnují:
   <string name="morphe_hide_playables_title">Skrýt Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables jsou skryté</string>
   <string name="morphe_hide_playables_summary_off">Playables jsou zobrazené</string>
-  <string name="morphe_hide_search_suggestions_title">Skrýt návrhy vyhledávání</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Návrhy vyhledávání jsou skryté</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Návrhy vyhledávání jsou zobrazeny</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Skrýt tlačítko „Zobrazit více“</string>
@@ -143,6 +140,9 @@ Změny zahrnují:
   <string name="morphe_hide_web_search_results_title">Skryté webové výsledky vyhledávání</string>
   <string name="morphe_hide_web_search_results_summary_on">Webové výsledky vyhledávání jsou skryté</string>
   <string name="morphe_hide_web_search_results_summary_off">Webové výsledky vyhledávání jsou zobrazeny</string>
+  <string name="morphe_hide_you_may_like_section_title">Skrýt sekci \"Můžete si přihlížet\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Sekce \"Můžete si přihlížet\" je skryta</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Sekce \"Můžete si přihlížet\" je zobrazená</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Skrýt YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skrytá</string>
@@ -738,10 +738,10 @@ Cookies budou automaticky uloženy, pokud jsou platné."</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Nabídka zvukové stopy je skryta</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Nabídka zvukové stopy je zobrazena</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu s zvukovou stopou je skryt
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu s zvukovými stopami je skrytý
 
-Abyste zobrazili menu s zvukovou stopou, změňte 'Falešné video proudy' na 'TV'."</string>
+Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy' na 'Android Reel' nebo 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Skrýt Sledovat ve VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Nabídka Sledovat ve VR je skryta</string>

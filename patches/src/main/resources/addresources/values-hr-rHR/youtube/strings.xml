@@ -20,74 +20,83 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_screen_00_about_title">O aplikaciji</string>
   <string name="morphe_settings_screen_01_ads_title">Oglasi</string>
-  <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternativni thumbnails</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternativne minijature</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Općenito</string>
-  <string name="morphe_settings_screen_05_player_title">Plejera</string>
-  <string name="morphe_settings_screen_07_seekbar_title">Swipe controls</string>
-  <string name="morphe_settings_screen_08_swipe_controls_title">Skriveni video oglasi</string>
-  <string name="morphe_settings_screen_11_misc_title">Video</string>
-  <string name="morphe_settings_screen_12_video_title">Vrati stvorenu</string>
-  <string name="morphe_restore_old_settings_menus_title">Vrati starije postavke menija</string>
-  <string name="morphe_restore_old_settings_menus_summary_on">Starije postavke menija su prikazane</string>
-  <string name="morphe_restore_old_settings_menus_summary_off">Starije postavke menija nisu prikazane</string>
+  <string name="morphe_settings_screen_05_player_title">Player</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Traka za traženje</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">Upravljanja povlačenjem</string>
+  <string name="morphe_settings_screen_11_misc_title">Razno</string>
+  <string name="morphe_settings_screen_12_video_title">Video</string>
+  <string name="morphe_restore_old_settings_menus_title">Vrati starije postavke izbornika</string>
+  <string name="morphe_restore_old_settings_menus_summary_on">Prikazuju se stari izbornici postavki</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">Ne prikazuju se stari izbornici postavki</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
-  <string name="morphe_shorts_disable_background_playback_title">Onemogućiti kratki odjavljanje za Shorte</string>
-  <string name="morphe_shorts_disable_background_playback_summary_on">Kratki odjavljanje za Shorte je onemogućeno</string>
-  <string name="morphe_shorts_disable_background_playback_summary_off">Kratki odjavljanje za Shorte je omogućeno</string>
+  <string name="morphe_shorts_disable_background_playback_title">Onemogući reprodukciju Shorts videozapisa u pozadini</string>
+  <string name="morphe_shorts_disable_background_playback_summary_on">Reprodukcija Shorts videozapisa u pozadini onemogućena </string>
+  <string name="morphe_shorts_disable_background_playback_summary_off">Reprodukcija Shorts videozapisa u pozadini omogućena </string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Logiraj protokolni buffer</string>
-  <string name="morphe_debug_protobuffer_summary_on">Logovi obuhvaćaju protokolni buffer</string>
-  <string name="morphe_debug_protobuffer_summary_off">Logovi ne obuhvaćaju protokolni buffer</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Aktivacija ovog postavke će logirati dodatne podatke o razmjеру, uključujući na ekranu prikazani tekst za neke UI komponente.
+  <string name="morphe_debug_protobuffer_title">Međuspremnik protokola zapisnika</string>
+  <string name="morphe_debug_protobuffer_summary_on">Zapisnici o otklanjanju pogrešaka uključuju proto međuspremnik</string>
+  <string name="morphe_debug_protobuffer_summary_off">Zapisnici o otklanjanju pogrešaka ne uključuju proto međuspremnik</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Omogućavanjem ove postavke zabilježit će se dodatni podaci o rasporedu, uključujući tekst na zaslonu za neke komponente korisničkog sučelja.
 
-Ovo može pomoći identificirati komponente kada se stvara prilagodni filteri.
+To može pomoći u identificiranju komponenti prilikom izrade prilagođenih filtera.
 
-Ali, aktivacija ove postavke će također logirati neke osobne podatke poput Vaše IP adrese."</string>
+Međutim, omogućavanjem ove postavke zabilježit će se i neki korisnički podaci poput vaše IP adrese."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">Onemori razlaga ažuriranja</string>
-  <string name="morphe_disable_layout_updates_summary_on">Razlog neće biti ažuriran sa servera</string>
-  <string name="morphe_disable_layout_updates_summary_off">Razlog će biti ažuriran sa servera</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Razlog je prebačen na razlog korišten u vrijeme prvog instaliranja.
+  <string name="morphe_disable_layout_updates_title">Onemogući ažuriranja izgleda</string>
+  <string name="morphe_disable_layout_updates_summary_on">Poslužitelj neće ažurirati izgled</string>
+  <string name="morphe_disable_layout_updates_summary_off">Poslužitelj će ažurirati izgled</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Izgled aplikacije vraća se na izgled koji je korišten prilikom prve instalacije.
 
-Neke server-side razloge mogu ne biti prebačene.
+Neki izgledi na strani poslužitelja možda se neće vratiti.
 
 Promjene uključuju:
-• Dijelovi u izvučenom meniju igrača (ili povezanih postavki) mogu ne funkcionirati.
-• Brojevi u kretanju nisu animirani.
-• Tab \"Biblioteke\" je prikazana.
-• Muzička sekcija opisa videa može ne funkcionirati.
-• Dijelovi u izvučenom meniju igrača ne mogu biti sakriveni.
-• Gumb za prebačavanje računa može ne biti prikazan na tabu \"Biblioteke\"."</string>
+
+• Komponente u skočnom izborniku playera (ili povezane postavke) možda neće raditi.
+• Brojevi koji se pomiču nisu animirani.
+• Prikazuje se kartica Knjižnica.
+• Odjeljak glazbe u opisu videozapisa možda neće raditi.
+• Stavke skočnog izbornika playera ne mogu se sakriti.
+• Tipka za promjenu računa možda se neće prikazivati ​​na kartici Knjižnica.
+"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Sakrij dugme za pretraživanje na tablici</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Dugme za pretraživanje na tablici je skriveno</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Dugme za pretraživanje na tablici je prikazano</string>
+  <string name="morphe_hide_creator_store_shelf_title">Sakrij policu trgovine autora</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Polica trgovine za autore ispod video playera je skrivena</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Polica trgovine za autore ispod video playera se prikazuje</string>
   <string name="morphe_hide_album_cards_title">Sakrij kartice albuma</string>
-  <string name="morphe_hide_album_cards_summary_on">Kartice albuma su skriveni</string>
+  <string name="morphe_hide_album_cards_summary_on">Kartice albuma su skrivene</string>
   <string name="morphe_hide_album_cards_summary_off">Kartice albuma su prikazane</string>
-  <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođa</string>
-  <string name="morphe_hide_artist_cards_summary_on">Kartice izvođa su skriveni</string>
-  <string name="morphe_hide_artist_cards_summary_off">Kartice izvođa su prikazane</string>
-  <string name="morphe_hide_chips_shelf_title">Sakrij čipove polje</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Čipove polje su skriveni</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Čipove polje su prikazane</string>
-  <string name="morphe_hide_community_posts_title">Sakrij horizontalne polje</string>
-  <string name="morphe_hide_community_posts_summary_on">Prikazi se u zajednici</string>
-  <string name="morphe_hide_community_posts_summary_off">Horizontalne polje su prikazane</string>
-  <string name="morphe_hide_compact_banner_title">Sakrij polje slike</string>
-  <string name="morphe_hide_compact_banner_summary_on">Polje slike u rezultatima pretrage je skriveno</string>
-  <string name="morphe_hide_compact_banner_summary_off">Polje slike u rezultatima pretrage je prikazano</string>
-  <string name="morphe_hide_expandable_card_title">Sakrij šifru za Crowdfunding</string>
-  <string name="morphe_hide_expandable_card_summary_on">Šifra za Crowdfunding je skrivena</string>
-  <string name="morphe_hide_expandable_card_summary_off">Šifra za Crowdfunding je prikazana</string>
-  <string name="morphe_hide_floating_microphone_button_title">Sakrij proširive kartice</string>
-  <string name="morphe_hide_floating_microphone_button_summary_on">Proširive kartice ispod videoa su skriveni</string>
-  <string name="morphe_hide_floating_microphone_button_summary_off">Proširive kartice ispod videoa su prikazane</string>
-  <string name="morphe_hide_horizontal_shelves_title">Sakrij tipku za obavijesti</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Tipka za obavijesti je skrivena"</string>
-  <string name="morphe_hide_horizontal_shelves_summary_off">Tipka za obavijesti je prikazana</string>
-  <string name="morphe_hide_image_shelf_title">Sakrij informativne kartice</string>
+  <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
+  <string name="morphe_hide_artist_cards_summary_on">Kartice izvođača su skrivene</string>
+  <string name="morphe_hide_artist_cards_summary_off">Kartice izvođača su prikazane</string>
+  <string name="morphe_hide_chips_shelf_title">Sakrij karticu čipovi</string>
+  <string name="morphe_hide_chips_shelf_summary_on">Kartice čipovi su skrivene</string>
+  <string name="morphe_hide_chips_shelf_summary_off">Kartice čipovi su prikazane</string>
+  <string name="morphe_hide_community_posts_title">Sakrij postove zajednice</string>
+  <string name="morphe_hide_community_posts_summary_on">Postovi zajednice su skriveni</string>
+  <string name="morphe_hide_community_posts_summary_off">Postovi zajednice su prikazani</string>
+  <string name="morphe_hide_compact_banner_title">Sakrij kompaktne banere</string>
+  <string name="morphe_hide_compact_banner_summary_on">Kompaktni banneri su skriveni</string>
+  <string name="morphe_hide_compact_banner_summary_off">Kompaktni banneri su prikazani</string>
+  <string name="morphe_hide_expandable_card_title">Sakrij karticu Proširi</string>
+  <string name="morphe_hide_expandable_card_summary_on">Kartica Proširi ispod videozapisa je skrivena</string>
+  <string name="morphe_hide_expandable_card_summary_off">Kartica Proširi ispod videozapisa je prikazana</string>
+  <string name="morphe_hide_floating_microphone_button_title">Sakrij tipku plivajući mikrofon</string>
+  <string name="morphe_hide_floating_microphone_button_summary_on">Plutajuća tipka mikrofona u pretraživanju je skrivena</string>
+  <string name="morphe_hide_floating_microphone_button_summary_off">Plutajuća tipka mikrofona u pretraživanju je prikazana</string>
+  <string name="morphe_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Vodoravne kartice su skrivene, kao što su:
+
+• Najnovije vijesti
+• Nastavak gledanja
+• Istraži više kanala
+• Najrelevantnije
+• Kupovina
+• Gledaj ponovno"</string>
+  <string name="morphe_hide_horizontal_shelves_summary_off">Prikazane su horizontalne police</string>
+  <string name="morphe_hide_image_shelf_title">Sakrij policu slika</string>
   <string name="morphe_hide_image_shelf_summary_on">Informativne kartice su skriveni</string>
   <string name="morphe_hide_image_shelf_summary_off">Informativne kartice su prikazane</string>
   <string name="morphe_hide_latest_posts_title">Sakrij \'Prikaži više\' tipku</string>
@@ -112,9 +121,6 @@ Promjene uključuju:
   <string name="morphe_hide_playables_title">Sakrij \'Playables\'</string>
   <string name="morphe_hide_playables_summary_on">Playables su skriveni</string>
   <string name="morphe_hide_playables_summary_off">Playables su prikazane</string>
-  <string name="morphe_hide_search_suggestions_title">Sakrij predloške pretrage</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Predloške pretrage su sakrivene</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Predloške pretrage su prikazane</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Sakrij \'Prikaži više\' tipku</string>
@@ -136,6 +142,9 @@ Promjene uključuju:
   <string name="morphe_hide_web_search_results_title">Sakrij web pretrage rezultate</string>
   <string name="morphe_hide_web_search_results_summary_on">Rezultati web pretrage su skriveni</string>
   <string name="morphe_hide_web_search_results_summary_off">Rezultati web pretrage su prikazani</string>
+  <string name="morphe_hide_you_may_like_section_title">Skrij \"Mogu ti se sviđati\" odjeljak</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Odjeljak \"Mogu ti se sviđati\" je skrio</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Odjeljak \"Mogu ti se sviđati\" je prikazan</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Sakrij \'YouTube Doodles\'</string>
   <string name="morphe_hide_doodles_summary_on">Animacija YouTube Doodles na logotipu je skrivena</string>
@@ -386,7 +395,7 @@ Ograničenja:
 • Pretraživanje za ključnu riječ možda neće prikazati rezultate"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Pokupljati cijeli ključ/frazu</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">Dodajte navlake za koristiti cijeli ključ/frazu: %s</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Stavljanje ključne riječi/fraze u dvostruke navodnike spriječit će djelomična podudaranja naslova videozapisa i naziva kanala&lt;br&gt;&lt;br&gt;Na primjer,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sakrit će videozapis: &lt;b&gt;Kako funkcionira umjetna inteligencija?&lt;/b&gt;&lt;br&gt;ali neće sakriti: &lt;b&gt;Što znači poštena upotreba?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_keyword_toast_invalid_common">Ne možete koristiti ključ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Dodajte navlake za koristiti ključ: %s</string>
@@ -731,10 +740,7 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Meni Audio track je skriven</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Meni Audio track je prikazan</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni za audio traku je sakriven
-
-Da biste prikazali meni za audio traku, promijenite 'Spoof video streams' u 'TV'"</string>
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Meni Watch in VR je skriven</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Meni Watch in VR je prikazan</string>

@@ -97,7 +97,11 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protocolul QUIC este dezactivat</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protocolul QUIC este activat</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Dezactivați sunetul DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Sunetul DRC este dezactivat</string>
   <string name="morphe_disable_drc_audio_summary_off">Sunetul DRC este activat</string>

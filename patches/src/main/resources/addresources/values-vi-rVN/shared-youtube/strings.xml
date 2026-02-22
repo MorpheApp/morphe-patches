@@ -95,7 +95,11 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Tắt gói tin QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Gói tin QUIC đã bị tắt</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Gói tin QUIC đã được bật</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Tắt âm thanh DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Tính năng nén dải động đã tắt</string>
   <string name="morphe_disable_drc_audio_summary_off">Tính năng nén dải động đã bật</string>

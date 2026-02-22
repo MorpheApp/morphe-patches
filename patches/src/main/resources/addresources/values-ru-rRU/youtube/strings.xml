@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Скрыть встроенные игры</string>
   <string name="morphe_hide_playables_summary_on">Встроенные игры в ленте скрыты</string>
   <string name="morphe_hide_playables_summary_off">Встроенные игры в ленте показаны</string>
-  <string name="morphe_hide_search_suggestions_title">Скрыть подсказки поиска</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Предложения поиска скрыты</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Предложения поиска показаны</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Скрыть кнопку \"Показать еще\"</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">Скрыть результаты веб-поиска</string>
   <string name="morphe_hide_web_search_results_summary_on">Результаты веб-поиска в ленте скрыты</string>
   <string name="morphe_hide_web_search_results_summary_off">Результаты веб-поиска в ленте показаны</string>
+  <string name="morphe_hide_you_may_like_section_title">Скрыть раздел Вам может понравиться</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Раздел Вам может понравиться скрыто</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Раздел Вам может понравиться показан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Скрыть YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Анимация YouTube Doodles на логотипе скрыта</string>
@@ -737,10 +737,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Пункт \"Звуковая дорожка\" в выдвижном меню плеера скрыт</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Пункт \"Звуковая дорожка\" в выдвижном меню плеера показан</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню дорожек аудио спрятано
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню дорожки аудио скрыто
 
-Чтобы показать меню дорожек аудио, измените 'Подделывать потоки видео' на 'TV'"</string>
+Чтобы показать меню дорожки аудио, измените 'Поддельные видео потоки' на 'Android Reel' или 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Скрыть пункт \"Смотреть в VR-режиме\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Пункт \"Смотреть в VR-режиме\" в выдвижном меню плеера скрыт</string>

@@ -2,11 +2,15 @@
  * Copyright 2025 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
+ * Original code hard forked from:
+ * https://github.com/ReVanced/revanced-patches/blob/bd2a939a72e0106b14bd67f46bec646b53a0a0d4/patches/src/main/kotlin/app/revanced/util/ResourceUtils.kt
+ *
  * File-Specific License Notice (GPLv3 Section 7 Terms)
  *
  * This file is part of the Morphe patches project and is licensed under
  * the GNU General Public License version 3 (GPLv3), with the Additional
- * Terms under Section 7 described in the Morphe patches LICENSE file.
+ * Terms under Section 7 described in the Morphe patches
+ * LICENSE file: https://github.com/MorpheApp/morphe-patches/blob/main/NOTICE
  *
  * https://www.gnu.org/licenses/gpl-3.0.html
  *

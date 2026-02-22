@@ -117,9 +117,6 @@ Perubahan termasuk:
   <string name="morphe_hide_playables_title">Sembunyikan Permainan</string>
   <string name="morphe_hide_playables_summary_on">Permainan disembunyikan</string>
   <string name="morphe_hide_playables_summary_off">Permainan ditampilkan</string>
-  <string name="morphe_hide_search_suggestions_title">Sembunyikan saran pencarian</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Saran pencarian disembunyikan</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Saran pencarian ditampilkan</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Sembunyikan tombol \'Tampilkan selengkapnya\'</string>
@@ -141,6 +138,9 @@ Perubahan termasuk:
   <string name="morphe_hide_web_search_results_title">Sembunyikan hasil pencarian web</string>
   <string name="morphe_hide_web_search_results_summary_on">Hasil pencarian web disembunyikan</string>
   <string name="morphe_hide_web_search_results_summary_off">Hasil pencarian web ditampilkan</string>
+  <string name="morphe_hide_you_may_like_section_title">Sembunyikan bagian Anda mungkin suka</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Bagian Anda mungkin suka disembunyikan</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Bagian Anda mungkin suka ditampilkan</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Sembunyikan YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Animasi YouTube Doodles pada logo disembunyikan</string>
@@ -736,10 +736,10 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu trek audio disembunyikan</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu trek audio ditampilkan</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu trek audio disembunyikan
 
-Untuk menampilkan menu trek Audio, ubah 'Palsukan aliran video' menjadi 'TV'"</string>
+Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android Reel' atau 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sembunyikan Tonton di VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu tonton di VR disembunyikan</string>

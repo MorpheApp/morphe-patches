@@ -97,9 +97,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_image_shelf_title">画像欄を非表示</string>
   <string name="morphe_hide_image_shelf_summary_on">検索結果の画像欄は表示されません</string>
   <string name="morphe_hide_image_shelf_summary_off">検索結果の画像欄は表示されます</string>
-  <string name="morphe_hide_latest_posts_title">最新の投稿を非表示</string>
-  <string name="morphe_hide_latest_posts_summary_on">最新の投稿は表示されません</string>
-  <string name="morphe_hide_latest_posts_summary_off">最新の投稿は表示されます</string>
+  <string name="morphe_hide_latest_posts_title">「最新の投稿」欄を非表示</string>
+  <string name="morphe_hide_latest_posts_summary_on">「最新の投稿」欄は表示されません</string>
+  <string name="morphe_hide_latest_posts_summary_off">「最新の投稿」欄は表示されます</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">「新着動画」ボタンを非表示</string>
@@ -119,9 +119,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ゲームルームを非表示</string>
   <string name="morphe_hide_playables_summary_on">ゲームルームは表示されません</string>
   <string name="morphe_hide_playables_summary_off">ゲームルームは表示されます</string>
-  <string name="morphe_hide_search_suggestions_title">検索候補を非表示</string>
-  <string name="morphe_hide_search_suggestions_summary_on">検索候補は表示されません</string>
-  <string name="morphe_hide_search_suggestions_summary_off">検索候補は表示されます</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">「もっと見る」ボタンを非表示</string>
@@ -143,6 +140,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">ウェブ検索結果を非表示</string>
   <string name="morphe_hide_web_search_results_summary_on">ウェブ検索結果は表示されません</string>
   <string name="morphe_hide_web_search_results_summary_off">ウェブ検索結果は表示されます</string>
+  <string name="morphe_hide_you_may_like_section_title">おすすめセクションを非表示</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">検索履歴のおすすめセクションは表示されません</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">検索履歴のおすすめセクションは表示されます</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodle を非表示</string>
   <string name="morphe_hide_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
@@ -668,8 +668,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"制限事項：
-• 動画プレーヤーの上部に黒いバーが表示される場合があります
-• システムのナビゲーション バーが半透明になり、動画にコメントできなくなる場合があります"</string>
+• 動画プレーヤーの上部に黒いバーが表示される場合がある。
+• システムのナビゲーション バーが半透明になり、動画にコメントできなくなる可能性がある。"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ライトモードの半透明バーを無効化</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">ライトモードではナビゲーション バーは透けません</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">ライトモードではナビゲーション バーが状況に応じて透けます</string>
@@ -687,9 +687,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">検索ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">検索ボタンは表示されます</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">検索ボタンを非表示</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">検索ボタンは表示されません</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">検索ボタンは表示されます</string>
+  <string name="morphe_hide_toolbar_voice_search_button_title">音声検索ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_voice_search_button_summary_on">音声検索ボタンは表示されません</string>
+  <string name="morphe_hide_toolbar_voice_search_button_summary_off">音声検索ボタンは表示されます</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
   <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューの項目を表示または非表示にします</string>
@@ -738,10 +738,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">「音声トラック」は表示されません</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">「音声トラック」は表示されます</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」は表示されません
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"「オーディオトラック」メニューは表示されません
 
-「音声トラック」を表示するには、[動画ストリームを偽装] を「TV」に変更してください"</string>
+「オーディオトラック」メニューを表示するには、['動画ストリームを偽装'] を 'Android Reel' または 'TV' に変更してください"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">「VR で見る」を非表示</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>

@@ -97,7 +97,11 @@ Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Deslogado do Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protocolo QUIC desativado</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protocolo QUIC ativado</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Desativar áudio DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Áudio DRC desativado</string>
   <string name="morphe_disable_drc_audio_summary_off">Áudio DRC ativado</string>

@@ -118,9 +118,6 @@ Változások:
   <string name="morphe_hide_playables_title">Lejátszható elemek elrejtése</string>
   <string name="morphe_hide_playables_summary_on">A játékszoba rejtett</string>
   <string name="morphe_hide_playables_summary_off">A játékszoba megjelenik</string>
-  <string name="morphe_hide_search_suggestions_title">Keresési javaslatok elrejtése</string>
-  <string name="morphe_hide_search_suggestions_summary_on">A keresési javaslatok el vannak rejtve</string>
-  <string name="morphe_hide_search_suggestions_summary_off">A keresési javaslatok meg vannak jelenítve</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Továbbiak megjelenítése\' gomb elrejtése</string>
@@ -142,6 +139,9 @@ Változások:
   <string name="morphe_hide_web_search_results_title">Webes keresési találatok elrejtése</string>
   <string name="morphe_hide_web_search_results_summary_on">A webes keresési találatok rejtve vannak</string>
   <string name="morphe_hide_web_search_results_summary_off">A webes keresési találatok megjelennek</string>
+  <string name="morphe_hide_you_may_like_section_title">Rejtetted a \"You may like\" szakaszt</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">A \"You may like\" szakasz elrejtve</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">A \"You may like\" szakasz látható</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles elrejtése</string>
   <string name="morphe_hide_doodles_summary_on">A YouTube Doodles animáció a logón elrejtve</string>
@@ -737,10 +737,10 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_hide_player_flyout_audio_track_summary_on">A hangsáv menü el van rejtve</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">A hangsáv menü megjelenik</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Hangos menü elrejtve
 
-A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'TV'-re"</string>
+A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et 'Android Reel'-re vagy 'TV'-re"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"Megtekintés VR-módban\" elrejtése</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">A megtekintés VR-módban menü el van rejtve</string>

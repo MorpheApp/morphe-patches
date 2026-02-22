@@ -97,7 +97,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ไม่สามารถเข้าสู่ระบบ VR: %s</string>
   <string name="morphe_oauth2_toast_reset">ออกจากระบสเวล VR</string>
   <string name="morphe_oauth2_toast_invalid">โทเค็นเข้าสู่ระบบ VR ไม่ถูกต้อง กรุณาลองเข้าสู่ระบบ VR อีกครั้ง</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">โพรโทคอล QUIC ถูกปิดใช้งาน</string>
+  <string name="morphe_disable_quic_protocol_summary_off">โพรโทคอล QUIC ถูกเปิดใช้งาน</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">ปิดเสียง DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">เสียง DRC ถูกปิด</string>
   <string name="morphe_disable_drc_audio_summary_off">เสียง DRC ถูกเปิด</string>

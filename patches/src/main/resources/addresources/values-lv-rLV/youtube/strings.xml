@@ -106,7 +106,7 @@ Second \"item\" text"</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
@@ -178,6 +178,7 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Atspējots</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">Atspējots</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->

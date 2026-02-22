@@ -118,9 +118,6 @@ Schimbari incluse:
   <string name="morphe_hide_playables_title">Ascunde Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables sunt ascunse</string>
   <string name="morphe_hide_playables_summary_off">Playables sunt afișate</string>
-  <string name="morphe_hide_search_suggestions_title">Ascunde sugestiile de căutare</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Sugestiile de căutare sunt ascunse</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Sugestiile de căutare sunt afișate</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Ascunderea butonului „Afișează mai multe”</string>
@@ -142,6 +139,9 @@ Schimbari incluse:
   <string name="morphe_hide_web_search_results_title">Ascunde rezultatele căutării web</string>
   <string name="morphe_hide_web_search_results_summary_on">Rezultatele căutării pe web sunt ascunse</string>
   <string name="morphe_hide_web_search_results_summary_off">Rezultatele căutării web sunt afișate</string>
+  <string name="morphe_hide_you_may_like_section_title">Ascunde secţiunea \"You may like\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Secţiunea \"You may like\" este ascunsă</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Secţiunea \"You may like\" este afișată</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Ascunde Doodle-urile YouTube</string>
   <string name="morphe_hide_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
@@ -733,10 +733,10 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Meniul piesei audio este ascuns</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Meniul piesei audio este afișat</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meniu audio este ascuns
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meniu de track-uri audio este ascuns
 
-Pentru a arăta meniul audio, schimbați 'Spoof video streams' în 'TV'"</string>
+Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'Android Reel' sau 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ascunde ceas în VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Vizionarea în meniul VR este ascunsă</string>

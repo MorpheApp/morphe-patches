@@ -95,7 +95,11 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Deacthair prótacal QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Tá prótacal QUIC deacthairte</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Tá prótacal QUIC gníomhach</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Díchumasaigh físeán DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Tá físeán DRC díchumasaithe</string>
   <string name="morphe_disable_drc_audio_summary_off">Tá físeán DRC cumasaithe</string>

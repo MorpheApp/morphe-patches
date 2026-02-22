@@ -118,9 +118,6 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_playables_title">Skjul Spilleobjekter</string>
   <string name="morphe_hide_playables_summary_on">Spilleobjekter er skjult</string>
   <string name="morphe_hide_playables_summary_off">Afspilningstabeller vises</string>
-  <string name="morphe_hide_search_suggestions_title">Skjul søgeforslag</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Søgeforslag er skjult</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Søgeforslag er vist</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Skjul knappen \'Vis mere\'</string>
@@ -142,6 +139,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_web_search_results_title">Skjul søgeresultater</string>
   <string name="morphe_hide_web_search_results_summary_on">Websøgeresultater er skjult</string>
   <string name="morphe_hide_web_search_results_summary_off">Websøgeresultater vises</string>
+  <string name="morphe_hide_you_may_like_section_title">Skjul \"Du kan like\" afsnit</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">\"Du kan like\" afsnit er skjult</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">\"Du kan like\" afsnit er vist</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Skjul YouTube-Doudler</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
@@ -737,10 +737,10 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menuen for lydspor er skjult</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menuen Lydspor vises</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Lydspor-menu er skjult
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Lydspor-menuen er skjult
 
-For at vise Lydspor-menu, ændre 'Simulere video strømme' til 'TV'"</string>
+For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' eller 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul vagt i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Se i VR-menuen er skjult</string>

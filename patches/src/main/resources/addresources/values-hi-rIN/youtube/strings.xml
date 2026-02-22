@@ -119,9 +119,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">छुपाएं प्लेबल्स</string>
   <string name="morphe_hide_playables_summary_on">गेम प्लेलिस्टें छुपाई गई हैं</string>
   <string name="morphe_hide_playables_summary_off">गेम प्लेलिस्टें दिखाई जाती हैं</string>
-  <string name="morphe_hide_search_suggestions_title">सर्च सुझीशन को छुपाएं</string>
-  <string name="morphe_hide_search_suggestions_summary_on">सर्च सुझीशन को छुपा दिया गया है</string>
-  <string name="morphe_hide_search_suggestions_summary_off">सर्च सुझीशन को दिखाया जाता है</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">छुपाएं \'और दिखाएं\' बटन</string>
@@ -143,6 +140,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">वेब खोज परिणाम छुपाएं</string>
   <string name="morphe_hide_web_search_results_summary_on">वेब खोज परिणाम छिपे हुए हैं</string>
   <string name="morphe_hide_web_search_results_summary_off">वेब खोज परिणाम दिखाए जाते हैं</string>
+  <string name="morphe_hide_you_may_like_section_title">छुपाएं \"आपको पसंद आ सकता है\" अनुभाग</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">\"आपको पसंद आ सकता है\" अनुभाग छुपा हुआ है</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">\"आपको पसंद आ सकता है\" अनुभाग दिखाया गया है</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube के डुडल्स को छुपाएं</string>
   <string name="morphe_hide_doodles_summary_on">YouTube के लोगो पर छिपा हुआ डुडल्स एनिमेशन है</string>
@@ -683,10 +683,10 @@ Second \"item\" text"</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"ऑडियो ट्रैक मेनू छुपा हुआ है
 
-'स्पोफ वीडियो स्ट्रीम्स' को 'टीवी' पर बदलकर ऑडियो ट्रैक मेनू दिखाएं।"</string>
+ऑडियो ट्रैक मेनू दिखाने के लिए, 'स्पॉफ वीडियो स्ट्रीम्स' को 'एंड्रॉइड रील' या 'टीवी' में बदलें"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Create a Short button is shown</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->

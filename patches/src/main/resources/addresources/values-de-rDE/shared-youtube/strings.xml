@@ -97,7 +97,11 @@ Um sich anzumelden, drücken Sie auf \"Weiter unten\"."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kann nicht in VR anmelden: %s</string>
   <string name="morphe_oauth2_toast_reset">Von Android VR abgemeldet</string>
   <string name="morphe_oauth2_toast_invalid">Ungültiges VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Deaktivieren Sie das QUIC-Protokoll</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC-Protokoll ist deaktiviert</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC-Protokoll ist aktiviert</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC-Audio deaktivieren</string>
   <string name="morphe_disable_drc_audio_summary_on">DRC-Audio ist deaktiviert</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC-Audio ist aktiviert</string>

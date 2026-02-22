@@ -118,9 +118,6 @@ Wijzigingen zijn:
   <string name="morphe_hide_playables_title">Speelbare items verbergen</string>
   <string name="morphe_hide_playables_summary_on">Speelbare items zijn verborgen</string>
   <string name="morphe_hide_playables_summary_off">Spellen worden getoond</string>
-  <string name="morphe_hide_search_suggestions_title">Verberg zoeksuggesties</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Zoeksuggesties zijn verborgen</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Zoeksuggesties zijn zichtbaar</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Verberg knop \'Meer weergeven\'</string>
@@ -142,6 +139,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_web_search_results_title">Webzoekresultaten verbergen</string>
   <string name="morphe_hide_web_search_results_summary_on">Webzoekresultaten zijn verborgen</string>
   <string name="morphe_hide_web_search_results_summary_off">Webzoekresultaten worden getoond</string>
+  <string name="morphe_hide_you_may_like_section_title">Verberg \'Je kunt misschien liken\' sectie</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">De \'Je kunt misschien liken\' sectie is verborgen</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">De \'Je kunt misschien liken\' sectie is zichtbaar</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles verbergen</string>
   <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animatie op het logo is verborgen</string>
@@ -737,10 +737,10 @@ Cookies worden automatisch opgeslagen als ze geldig zijn"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menu Audiotrack is verborgen</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menu Audiotrack wordt weergegeven</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is verborgen
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu voor audio-spoor is verborgen
 
-Om de Audio track menu weer te tonen, verander 'Spoof video streams' naar 'TV'"</string>
+Om het menu voor audio-spoor te tonen, verander 'Spoof video streams' naar 'Android Reel' of 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Verberg Bekijk in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu Bekijk in VR is verborgen</string>

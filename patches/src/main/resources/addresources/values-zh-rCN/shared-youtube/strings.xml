@@ -95,7 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已从 Google VR 登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC协议已禁用</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC协议已启用</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">禁用 DRC 音频</string>
   <string name="morphe_disable_drc_audio_summary_on">DRC 音频已禁用</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC 音频已启用</string>

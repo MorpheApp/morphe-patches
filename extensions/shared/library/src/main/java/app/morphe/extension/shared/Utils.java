@@ -274,10 +274,12 @@ public class Utils {
     }
 
     public static int indexOfFirstFound(String value, String... targets) {
-        for (String string : targets) {
-            if (!string.isEmpty()) {
-                final int indexOf = value.indexOf(string);
-                if (indexOf >= 0) return indexOf;
+        if (isNotEmpty(value)) {
+            for (String string : targets) {
+                if (!string.isEmpty()) {
+                    final int indexOf = value.indexOf(string);
+                    if (indexOf >= 0) return indexOf;
+                }
             }
         }
         return -1;
