@@ -8,6 +8,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.transformation.IMethodCall
+import app.morphe.patches.all.misc.transformation.filterMapInstruction35c
+import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -19,8 +22,10 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR_PREFIX =
+    "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch"
+
+private const val EXTENSION_CLASS_DESCRIPTOR = "$EXTENSION_CLASS_DESCRIPTOR_PREFIX;"
 
 @Suppress("unused")
 val disableHapticFeedbackPatch = bytecodePatch(
@@ -29,6 +34,25 @@ val disableHapticFeedbackPatch = bytecodePatch(
 ) {
     dependsOn(
         settingsPatch,
+        transformInstructionsPatch(
+            filterMap = { classDef, _, instruction, instructionIndex ->
+                filterMapInstruction35c<MethodCall>(
+                    EXTENSION_CLASS_DESCRIPTOR_PREFIX,
+                    classDef,
+                    instruction,
+                    instructionIndex,
+                )
+            },
+            transform = { method, entry ->
+                val (methodType, instruction, instructionIndex) = entry
+                methodType.replaceInvokeVirtualWithExtension(
+                    EXTENSION_CLASS_DESCRIPTOR,
+                    method,
+                    instruction,
+                    instructionIndex,
+                )
+            },
+        ),
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -101,4 +125,26 @@ val disableHapticFeedbackPatch = bytecodePatch(
             }
         }
     }
+}
+
+// Information about method calls we want to replace
+@Suppress("unused")
+private enum class MethodCall(
+    override val definedClassName: String,
+    override val methodName: String,
+    override val methodParams: Array<String>,
+    override val returnType: String,
+) : IMethodCall {
+    VibrationEffect(
+        "Landroid/os/Vibrator;",
+        "vibrate",
+        arrayOf("Landroid/os/VibrationEffect;"),
+        "V",
+    ),
+    VibrationMilliseconds(
+        "Landroid/os/Vibrator;",
+        "vibrate",
+        arrayOf("J"),
+        "V",
+    ),
 }
