@@ -1322,6 +1322,11 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Disable bold icons</string>
     <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restore non collapsed video action bar</string>
 
+    <!-- misc.share.changeShareSheetPatch -->
+    <string name="morphe_change_share_sheet_title">Change share sheet</string>
+    <string name="morphe_change_share_sheet_summary_on">Uses system share sheet</string>
+    <string name="morphe_change_share_sheet_summary_off">Uses in-app share sheet</string>
+
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Change start page</string>
     <string name="morphe_change_start_page_entry_default">Default</string>
