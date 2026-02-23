@@ -9,8 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Objects;
+
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.components.ChangeShareSheetFilter;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -23,80 +24,73 @@ public final class ChangeShareSheetPatch {
     private ChangeShareSheetPatch() {
     }
 
-    private static void clickSystemShareButton(final RecyclerView bottomSheetRecyclerView,
-                                               final RecyclerView appsContainerRecyclerView) {
-
-        if (!(appsContainerRecyclerView.getChildAt(appsContainerRecyclerView.getChildCount() - 1) instanceof ViewGroup parentView)) {
-            return;
-        }
-
-        if (!(parentView.getChildAt(0) instanceof ViewGroup shareWithOtherAppsView)) {
-            return;
-        }
-
-        if (!(Utils.getParentView(bottomSheetRecyclerView, 3) instanceof ViewGroup parentView3rd)) {
-            return;
-        }
-
-        if (!(parentView3rd.getParent() instanceof ViewGroup parentView4th)) {
-            return;
-        }
-
-        ChangeShareSheetFilter.isShareSheetVisible = false;
-
-        // Phone layout: dismiss overlay
-        View dismissView = parentView4th.getChildAt(0);
-        if (dismissView != null) {
-            dismissView.setSoundEffectsEnabled(false);
-            dismissView.performClick();
-        }
-
-        // Tablet layout fallback
-        parentView3rd.setVisibility(View.GONE);
-        parentView4th.setVisibility(View.GONE);
-
-        // Click "Share with other apps"
-        shareWithOtherAppsView.setSoundEffectsEnabled(false);
-        shareWithOtherAppsView.performClick();
-    }
-
     /**
      * Injection point.
      */
     public static void onFlyoutMenuCreate(final RecyclerView recyclerView) {
         if (!Settings.CHANGE_SHARE_SHEET.get()) return;
 
-        recyclerView.getViewTreeObserver().addOnDrawListener(() -> {
-            try {
-                if (!ChangeShareSheetFilter.isShareSheetVisible) return;
-                if (recyclerView.getChildCount() != 1) return;
+        recyclerView.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (!ChangeShareSheetFilter.isShareSheetVisible) {
 
-                if (!(recyclerView.getChildAt(0) instanceof ViewGroup parentView5th)) {
-                    return;
+                    recyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+                    return true;
                 }
 
-                if (!(parentView5th.getChildAt(1) instanceof ViewGroup parentView4th)) {
-                    return;
+                try {
+                    RecyclerView appsContainer = findNestedRecyclerView(recyclerView, recyclerView);
+
+                    if (appsContainer != null && appsContainer.getChildCount() > 0) {
+
+                        View lastChild = appsContainer.getChildAt(appsContainer.getChildCount() - 1);
+
+                        if (lastChild instanceof ViewGroup parentView) {
+                            View shareWithOtherAppsView = parentView.getChildAt(0);
+
+                            if (shareWithOtherAppsView != null) {
+                                ChangeShareSheetFilter.isShareSheetVisible = false;
+
+                                View rootView = recyclerView.getRootView();
+                                Objects.requireNonNullElse(rootView, recyclerView).setVisibility(View.GONE);
+
+                                recyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                                shareWithOtherAppsView.setSoundEffectsEnabled(false);
+                                shareWithOtherAppsView.performClick();
+
+                                return false;
+                            }
+                        }
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "onFlyoutMenuCreate failure", ex);
+                    recyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
                 }
 
-                // Case 1
-                if (parentView4th.getChildAt(0) instanceof ViewGroup parentView3rd &&
-                        parentView3rd.getChildAt(0) instanceof RecyclerView appsContainerRecyclerView) {
-
-                    clickSystemShareButton(recyclerView, appsContainerRecyclerView);
-                }
-
-                // Case 2 (layout variation)
-                else if (parentView4th.getChildAt(1) instanceof ViewGroup parentView3rd &&
-                        parentView3rd.getChildAt(0) instanceof RecyclerView appsContainerRecyclerView) {
-
-                    clickSystemShareButton(recyclerView, appsContainerRecyclerView);
-                }
-
-            } catch (Exception ex) {
-                Logger.printException(() -> "onFlyoutMenuCreate failure", ex);
+                return true;
             }
         });
+    }
+
+    /**
+     * Recursively searches the view hierarchy for a nested RecyclerView.
+     */
+    private static RecyclerView findNestedRecyclerView(View view, View root) {
+        if (view instanceof RecyclerView && view != root) {
+            return (RecyclerView) view;
+        }
+
+        if (view instanceof ViewGroup group) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                RecyclerView result = findNestedRecyclerView(group.getChildAt(i), root);
+                if (result != null) {
+                    return result;
+                }
+            }
+        }
+        return null;
     }
 
     /**
