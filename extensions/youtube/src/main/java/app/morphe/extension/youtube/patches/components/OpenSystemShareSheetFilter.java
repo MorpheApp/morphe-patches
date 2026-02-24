@@ -5,19 +5,19 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import app.morphe.extension.youtube.patches.ChangeShareSheetPatch;
+import app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * LithoFilter for {@link ChangeShareSheetPatch}.
+ * LithoFilter for {@link OpenSystemShareSheetPatch}.
  */
-public final class ChangeShareSheetFilter extends Filter {
+public final class OpenSystemShareSheetFilter extends Filter {
 
     public static volatile boolean isShareSheetVisible;
 
-    public ChangeShareSheetFilter() {
+    public OpenSystemShareSheetFilter() {
         addPathCallbacks(new StringFilterGroup(
-                Settings.CHANGE_SHARE_SHEET,
+                Settings.OPEN_SYSTEM_SHARE_SHEET,
                 "share_sheet_container."
         ));
     }

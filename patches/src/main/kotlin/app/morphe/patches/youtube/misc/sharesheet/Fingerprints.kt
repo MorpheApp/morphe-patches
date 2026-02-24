@@ -3,7 +3,7 @@
  * https://github.com/MorpheApp/morphe-patches
  */
 
-package app.morphe.patches.youtube.misc.share
+package app.morphe.patches.youtube.misc.sharesheet
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall

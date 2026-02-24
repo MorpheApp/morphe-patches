@@ -12,28 +12,28 @@ import android.view.ViewGroup;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.components.ChangeShareSheetFilter;
+import app.morphe.extension.youtube.patches.components.OpenSystemShareSheetFilter;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Replaces YouTube's in-app share sheet with the system share sheet.
  */
 @SuppressWarnings("unused")
-public final class ChangeShareSheetPatch {
+public final class OpenSystemShareSheetPatch {
 
-    private ChangeShareSheetPatch() {
+    private OpenSystemShareSheetPatch() {
     }
 
     /**
      * Injection point.
      */
     public static void onFlyoutMenuCreate(final RecyclerView recyclerView) {
-        if (!Settings.CHANGE_SHARE_SHEET.get()) return;
+        if (!Settings.OPEN_SYSTEM_SHARE_SHEET.get()) return;
 
         recyclerView.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
-                if (!ChangeShareSheetFilter.isShareSheetVisible) {
+                if (!OpenSystemShareSheetFilter.isShareSheetVisible) {
 
                     recyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
                     return true;
@@ -50,7 +50,7 @@ public final class ChangeShareSheetPatch {
                             View shareWithOtherAppsView = parentView.getChildAt(0);
 
                             if (shareWithOtherAppsView != null) {
-                                ChangeShareSheetFilter.isShareSheetVisible = false;
+                                OpenSystemShareSheetFilter.isShareSheetVisible = false;
 
                                 View rootView = recyclerView.getRootView();
                                 Objects.requireNonNullElse(rootView, recyclerView).setVisibility(View.GONE);
@@ -96,7 +96,7 @@ public final class ChangeShareSheetPatch {
     /**
      * Injection point.
      */
-    public static boolean changeShareSheetEnabled() {
-        return Settings.CHANGE_SHARE_SHEET.get();
+    public static boolean openSystemShareSheetEnabled() {
+        return Settings.OPEN_SYSTEM_SHARE_SHEET.get();
     }
 }

@@ -302,7 +302,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE,
             "morphe_remove_viewer_discretion_dialog_user_dialog_message");
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
-    public static final BooleanSetting CHANGE_SHARE_SHEET = new BooleanSetting("morphe_change_share_sheet", FALSE, true);
+    public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("morphe_open_system_share_sheet", FALSE, true);
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting CHANGE_START_PAGE_ALWAYS = new BooleanSetting("morphe_change_start_page_always", FALSE, true,
             new ChangeStartPageTypeAvailability());
