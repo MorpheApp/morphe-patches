@@ -15,6 +15,7 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch;"
@@ -35,6 +36,8 @@ internal fun openSystemShareSheetPatch(
         lithoFilterPatch,
         recyclerViewTreeHookPatch
     )
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.MISC.addPreferences(
