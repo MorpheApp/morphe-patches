@@ -3,15 +3,15 @@ package app.morphe.extension.youtube.settings.preference;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import app.morphe.extension.shared.settings.preference.UrlLinkPreference;
+import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 
 /**
  * Allows tapping the DeArrow about preference to open the DeArrow website.
  */
 @SuppressWarnings("unused")
-public class AlternativeThumbnailsAboutDeArrowPreference extends UrlLinkPreference {
+public class AlternativeThumbnailsAboutDeArrowPreference extends URLLinkPreference {
     {
-        externalUrl = "https://dearrow.ajay.app";
+        externalURL = "https://dearrow.ajay.app";
     }
 
     public AlternativeThumbnailsAboutDeArrowPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
