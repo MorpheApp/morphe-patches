@@ -5,6 +5,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -16,6 +17,20 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;"
+
+internal object ActionBarSearchResultsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "action_bar_search_results_view_mic"),
+        methodCall(smali = "Landroid/view/View;->setLayoutDirection(I)V"),
+        resourceLiteral(ResourceType.ID, "search_query"),
+        checkCast(
+            type = "Landroid/widget/TextView;",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
 
 internal object ConversionContextFingerprintToString : Fingerprint(
     name = "toString",

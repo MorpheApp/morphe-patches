@@ -194,19 +194,6 @@ internal object SearchFragmentFingerprint : Fingerprint(
 
 // region navigation search button
 
-internal object ActionBarSearchResultsFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "action_bar_search_results_view_mic"),
-        resourceLiteral(ResourceType.ID, "search_query"),
-        checkCast(
-            type = "Landroid/widget/TextView;",
-            location = MatchAfterWithin(5)
-        )
-    )
-)
-
 internal object PivotBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("L"),

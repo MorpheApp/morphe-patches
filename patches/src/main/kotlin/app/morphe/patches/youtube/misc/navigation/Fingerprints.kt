@@ -20,15 +20,6 @@ import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object ActionBarSearchResultsFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "action_bar_search_results_view_mic"),
-        methodCall(name = "setLayoutDirection")
-    )
-)
-
 internal object ToolbarLayoutFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.CONSTRUCTOR),
     filters = listOf(
