@@ -37,13 +37,13 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
         qualityMenuFooter = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
                 "quality_sheet_footer",
-                "|divider."
+                "|divider.e"
         );
 
         captionsMenuHeader = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
                 "bottom_sheet_header",
-                "|divider."
+                "|divider.e"
         );
 
         addPathCallbacks(
@@ -125,9 +125,15 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
     @Override
     boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        if (matchedGroup == qualityMenuFooter || matchedGroup == qualityMenuHeader || matchedGroup == captionsMenuHeader) {
+        if (matchedGroup == qualityMenuHeader)
             return true;
+
+        if (matchedGroup == qualityMenuFooter) {
+            return (path.startsWith("overflow_menu_item.e") || path.startsWith("quick_quality_sheet_content.e"));
         }
+
+        if (matchedGroup == captionsMenuHeader)
+            return true;
 
         if (contentIndex != 0) {
             return false; // Overflow menu is always the start of the path.
