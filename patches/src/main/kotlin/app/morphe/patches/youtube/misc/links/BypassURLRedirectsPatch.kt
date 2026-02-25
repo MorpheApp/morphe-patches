@@ -34,7 +34,7 @@ val bypassURLRedirectsPatch = bytecodePatch(
             HttpUriParserFingerprint to 0,
 
             if (is_20_49_or_greater) {
-                // Code has moved, and now seems to be an account url
+                // Code has moved, and now seems to be an account URL
                 // and may not be anything to do with sharing links.
                 null to -1
             } else if (is_20_37_or_greater) {

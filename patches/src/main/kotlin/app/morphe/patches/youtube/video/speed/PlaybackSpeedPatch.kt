@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.remember.rememberPlaybackSpeedPatch
 
 /**
- * Speed menu settings.  Used to organize all speed related settings together.
+ * Speed menu settings. Used to organize all speed related settings together.
  */
 internal val settingsMenuVideoSpeedGroup = mutableSetOf<BasePreference>()
 

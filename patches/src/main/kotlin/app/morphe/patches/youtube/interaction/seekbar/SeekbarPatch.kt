@@ -13,7 +13,7 @@ val seekbarPatch = bytecodePatch(
     dependsOn(
         disablePreciseSeekingGesturePatch,
         enableSlideToSeekPatch,
-        enableSeekbarTappingPatch,
+        enableTapToSeekPatch,
         hideSeekbarPatch,
     )
 

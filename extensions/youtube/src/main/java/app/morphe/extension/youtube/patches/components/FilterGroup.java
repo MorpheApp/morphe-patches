@@ -123,7 +123,7 @@ class StringFilterGroup extends FilterGroup<String> {
 
 /**
  * If you have more than 1 filter patterns, then all instances of
- * this class should filtered using {@link ByteArrayFilterGroupList#check(byte[])},
+ * this class should be filtered using {@link ByteArrayFilterGroupList#check(byte[])},
  * which uses a prefix tree to give better performance.
  */
 class ByteArrayFilterGroup extends FilterGroup<byte[]> {
@@ -150,7 +150,7 @@ class ByteArrayFilterGroup extends FilterGroup<byte[]> {
     }
 
     private static int[] createFailurePattern(byte[] pattern) {
-        // Computes the failure function using a boot-strapping process,
+        // Computes the failure function using a bootstrapping process,
         // where the pattern is matched against itself.
         final int patternLength = pattern.length;
         final int[] failure = new int[patternLength];

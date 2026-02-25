@@ -341,7 +341,7 @@ internal fun baseCustomBrandingPatch(
                     // Use custom name everywhere.
                     customName!!
                 } else {
-                    // The YT application name can appear in some places along side the system
+                    // The YT application name can appear in some places alongside the system
                     // YouTube app, such as the settings app list and in the "open with" file picker.
                     // Because the YouTube app cannot be completely uninstalled and only disabled,
                     // use a custom name for this situation to disambiguate which app is which.
@@ -387,7 +387,7 @@ internal fun baseCustomBrandingPatch(
                 //
                 // Must add all aliases even if the user did not provide a custom icon of their own.
                 // This is because if the user installs with an option, then repatches without the option,
-                // the alias must still exist because if it was previously enabled and then it's removed
+                // the alias must still exist because if it was previously enabled, and then it's removed
                 // the app will become broken and cannot launch. Even if the app data is cleared
                 // it still cannot be launched and the only fix is to uninstall the app.
                 // To prevent this, always include all aliases and use dummy data if needed.

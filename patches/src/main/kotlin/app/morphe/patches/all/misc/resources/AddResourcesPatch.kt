@@ -257,7 +257,7 @@ internal val addResourcesPatch = resourcePatch(
                             }
 
                             if (isDefaultLocale) {
-                                // Duplicate check alreday handled above.
+                                // Duplicate check already handled above.
                                 defaultResourcesAdded.add(resourceName)
                             } else if (!defaultResourcesAdded.contains(resourceName)) {
                                 // TODO: Enable when patcher/CLI supports debug/dev logging.

@@ -202,7 +202,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                     NonInteractivePreference(
                         key = "morphe_hide_keyword_content_about_whole_words",
-                        tag = "app.morphe.extension.youtube.settings.preference.HtmlPreference",
+                        tag = "app.morphe.extension.youtube.settings.preference.HTMLPreference",
                     ),
                 ),
             ),

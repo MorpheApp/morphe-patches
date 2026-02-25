@@ -5,11 +5,11 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.CopyVideoUrlPatch;
+import app.morphe.extension.youtube.patches.CopyVideoURLPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class CopyVideoUrlButton {
+public class CopyVideoURLTimestampButton {
     @Nullable
     private static PlayerControlButton instance;
 
@@ -20,12 +20,12 @@ public class CopyVideoUrlButton {
         try {
             instance = new PlayerControlButton(
                     controlsView,
-                    "morphe_copy_video_url_button",
+                    "morphe_copy_video_url_timestamp_button",
                     null,
-                    Settings.COPY_VIDEO_URL::get,
-                    view -> CopyVideoUrlPatch.copyUrl(false),
+                    Settings.COPY_VIDEO_URL_TIMESTAMP::get,
+                    view -> CopyVideoURLPatch.copyURL(true),
                     view -> {
-                        CopyVideoUrlPatch.copyUrl(true);
+                        CopyVideoURLPatch.copyURL(false);
                         return true;
                     }
             );
@@ -34,7 +34,7 @@ public class CopyVideoUrlButton {
         }
     }
 
-    /**`
+    /**
      * injection point.
      */
     public static void setVisibilityNegatedImmediate() {

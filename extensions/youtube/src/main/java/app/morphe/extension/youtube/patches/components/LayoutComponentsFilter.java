@@ -35,7 +35,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
     private static final StringTrieSearch mixPlaylistsContextExceptions = new StringTrieSearch(
-            "V.ED", // Playlist browse id.
+            "V.ED", // Playlist browseId.
             "java.lang.ref.WeakReference"
     );
     private static final ByteArrayFilterGroup mixPlaylistsBufferExceptions = new ByteArrayFilterGroup(

@@ -146,7 +146,7 @@ Changes include:
     <string name="morphe_hide_web_search_results_title">Hide web search results</string>
     <string name="morphe_hide_web_search_results_summary_on">Web search results are hidden</string>
     <string name="morphe_hide_web_search_results_summary_off">Web search results are shown</string>
-    <string name="morphe_hide_you_may_like_section_title">Hide You may like section</string>
+    <string name="morphe_hide_you_may_like_section_title">Hide \'You may like\' section</string>
     <string name="morphe_hide_you_may_like_section_summary_on">You may like section is hidden</string>
     <string name="morphe_hide_you_may_like_section_summary_off">You may like section is shown</string>
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -447,7 +447,7 @@ Limitations:
     <string name="morphe_hide_video_ads_summary_on">Video ads are hidden</string>
     <string name="morphe_hide_video_ads_summary_off">Video ads are shown</string>
 
-    <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+    <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
     <string name="morphe_share_copy_url_success">URL copied to clipboard</string>
     <string name="morphe_share_copy_url_timestamp_success">URL with timestamp copied</string>
     <string name="morphe_copy_video_url_title">Show copy video URL button</string>
@@ -463,10 +463,10 @@ Limitations:
     <string name="morphe_remove_viewer_discretion_dialog_summary_off">Dialog will be shown</string>
     <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">This does not bypass the age restriction. It just accepts it automatically.</string>
 
-    <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-    <string name="morphe_disable_signin_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
-    <string name="morphe_disable_signin_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
-    <string name="morphe_disable_signin_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
+    <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+    <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
+    <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Sign in to TV popup is disabled</string>
+    <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Sign in to TV popup is enabled</string>
 
     <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
     <string name="morphe_disable_chapter_skip_double_tap_title">Disable double tap chapter skip</string>
@@ -500,10 +500,15 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_on">Precise seeking gesture is disabled</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_off">Precise seeking gesture is enabled</string>
 
-    <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-    <string name="morphe_seekbar_tapping_title">Enable tap to seek</string>
-    <string name="morphe_seekbar_tapping_summary_on">Tap to seek is enabled</string>
-    <string name="morphe_seekbar_tapping_summary_off">Tap to seek is disabled</string>
+    <!-- interaction.seekbar.enableSlideToSeekPatch -->
+    <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
+    <string name="morphe_slide_to_seek_summary_on">Slide to seek is enabled</string>
+    <string name="morphe_slide_to_seek_summary_off">Slide to seek is not enabled</string>
+
+    <!-- interaction.seekbar.enableTapToSeekPatch -->
+    <string name="morphe_tap_to_seek_title">Enable tap to seek</string>
+    <string name="morphe_tap_to_seek_summary_on">Tap to seek is enabled</string>
+    <string name="morphe_tap_to_seek_summary_off">Tap to seek is disabled</string>
 
     <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
     <string name="morphe_swipe_brightness_title">Enable brightness gesture</string>
@@ -820,9 +825,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_player_previous_next_buttons_summary_off">Previous &amp; Next buttons are shown</string>
 
     <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-    <string name="morphe_hide_endscreen_cards_title">Hide end screen cards</string>
-    <string name="morphe_hide_endscreen_cards_summary_on">End screen cards are hidden</string>
-    <string name="morphe_hide_endscreen_cards_summary_off">End screen cards are shown</string>
+    <string name="morphe_hide_end_screen_cards_title">Hide end screen cards</string>
+    <string name="morphe_hide_end_screen_cards_summary_on">End screen cards are hidden</string>
+    <string name="morphe_hide_end_screen_cards_summary_off">End screen cards are shown</string>
 
     <!-- layout.hide.ambientmode.ambientModePatch -->
     <string name="morphe_ambient_mode_screen_title">Ambient mode</string>
@@ -1147,9 +1152,9 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_sb_general_min_duration">Minimum segment duration</string>
     <string name="morphe_sb_general_min_duration_sum">Segments shorter than this value (in seconds) will not be shown or skipped</string>
     <string name="morphe_sb_general_min_duration_invalid">Invalid time duration</string>
-    <string name="morphe_sb_general_uuid">Your private user id</string>
+    <string name="morphe_sb_general_uuid">Your private user ID</string>
     <string name="morphe_sb_general_uuid_sum">This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
-    <string name="morphe_sb_general_uuid_invalid">Private user id must be at least 30 characters long</string>
+    <string name="morphe_sb_general_uuid_invalid">Private user ID must be at least 30 characters long</string>
     <string name="morphe_sb_general_api_url">Change API URL</string>
     <string name="morphe_sb_general_api_url_sum">The address SponsorBlock uses to make calls to the server</string>
     <string name="morphe_sb_api_url_reset">API URL reset</string>
@@ -1158,11 +1163,11 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_sb_settings_ie">Import / Export settings</string>
     <string name="morphe_sb_settings_copy">Copy</string>
     <string name="morphe_sb_settings_ie_sum">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms</string>
-    <string name="morphe_sb_settings_ie_sum_warning">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms. This includes your private user id. Be sure to share this wisely</string>
+    <string name="morphe_sb_settings_ie_sum_warning">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms. This includes your private user ID. Be sure to share this wisely</string>
     <string name="morphe_sb_settings_import_successful">Settings imported successfully</string>
     <string name="morphe_sb_settings_import_failed">Failed to import: %s</string>
     <string name="morphe_sb_settings_export_failed">Failed to export: %s</string>
-    <string name="morphe_sb_settings_morphe_export_user_id_warning">"Your settings contain a private SponsorBlock userid.
+    <string name="morphe_sb_settings_morphe_export_user_id_warning">"Your settings contain a private SponsorBlock user ID.
 
 Your user ID is like a password, and it should never be shared."</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Do not show again</string>
@@ -1655,11 +1660,6 @@ Limitations:
     <string name="morphe_prioritize_video_quality_title">Prioritize video quality</string>
     <string name="morphe_prioritize_video_quality_summary_on">Video quality is prioritized</string>
     <string name="morphe_prioritize_video_quality_summary_off">Video codecs are prioritized</string>
-
-    <!-- interaction.seekbar.enableSlideToSeekPatch -->
-    <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
-    <string name="morphe_slide_to_seek_summary_on">Slide to seek is enabled</string>
-    <string name="morphe_slide_to_seek_summary_off">Slide to seek is not enabled</string>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
     <string name="morphe_spoof_video_streams_av1_title">Allow Android VR AV1</string>

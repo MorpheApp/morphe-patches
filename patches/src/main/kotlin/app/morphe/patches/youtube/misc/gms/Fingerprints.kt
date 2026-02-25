@@ -21,8 +21,8 @@ internal object SpecificNetworkErrorViewControllerFingerprint : Fingerprint(
     )
 )
 
-// It's not clear if this second class is ever used and it may be dead code,
-// but it the layout image/text is identical to the network error fingerprint above.
+// It's not clear if this second class is ever used, and it may be dead code,
+// but it is the layout image/text is identical to the network error fingerprint above.
 internal object LoadingFrameLayoutControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

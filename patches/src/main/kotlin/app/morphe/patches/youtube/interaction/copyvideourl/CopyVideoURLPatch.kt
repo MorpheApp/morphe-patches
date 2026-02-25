@@ -14,7 +14,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
-private val copyVideoUrlResourcePatch = resourcePatch {
+private val copyVideoURLResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         playerControlsPatch,
@@ -40,12 +40,12 @@ private val copyVideoUrlResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val copyVideoUrlPatch = bytecodePatch(
+val copyVideoURLPatch = bytecodePatch(
     name = "Copy video URL",
     description = "Adds options to display buttons in the video player to copy video URLs.",
 ) {
     dependsOn(
-        copyVideoUrlResourcePatch,
+        copyVideoURLResourcePatch,
         playerControlsPatch,
         videoInformationPatch,
     )
@@ -55,8 +55,8 @@ val copyVideoUrlPatch = bytecodePatch(
     execute {
         val extensionPlayerPackage = "Lapp/morphe/extension/youtube/videoplayer"
         val buttonsDescriptors = listOf(
-            "$extensionPlayerPackage/CopyVideoUrlButton;",
-            "$extensionPlayerPackage/CopyVideoUrlTimestampButton;",
+            "$extensionPlayerPackage/CopyVideoURLButton;",
+            "$extensionPlayerPackage/CopyVideoURLTimestampButton;",
         )
 
         buttonsDescriptors.forEach { descriptor ->

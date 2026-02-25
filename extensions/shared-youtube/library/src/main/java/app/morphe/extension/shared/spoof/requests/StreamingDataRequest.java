@@ -46,7 +46,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
 /**
- * Video streaming data.  Fetching is tied to the behavior YT uses,
+ * Video streaming data. Fetching is tied to the behavior YT uses,
  * where this class fetches the streams only when YT fetches.
  * <p>
  * Effectively the cache expiration of these fetches is the same as the stock app,
@@ -106,7 +106,7 @@ public class StreamingDataRequest {
      * Cache limit must be greater than the maximum number of videos open at once,
      * which theoretically is more than 4 (3 Shorts + one regular minimized video).
      * But instead use a much larger value, to handle if a video viewed a while ago
-     * is somehow still referenced.  Each stream is a small array of Strings
+     * is somehow still referenced. Each stream is a small array of Strings
      * so memory usage is not a concern.
      */
     private static final Map<String, StreamingDataRequest> cache = Collections.synchronizedMap(

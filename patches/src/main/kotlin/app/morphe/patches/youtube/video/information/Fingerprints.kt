@@ -203,7 +203,7 @@ internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     filters = listOf(
         methodCall(smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;"),
-        // First method call after Locale is the video id.
+        // First method call after Locale is the video ID.
         methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
         string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
     )

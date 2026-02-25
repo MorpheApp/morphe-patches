@@ -146,8 +146,8 @@ class ResourceGroup(val resourceDirectoryName: String, vararg val resources: Str
 
 /**
  * Iterate through the children of a node by its tag.
- * @param resource The xml resource.
- * @param targetTag The target xml node.
+ * @param resource The XML resource.
+ * @param targetTag The target XML node.
  * @param callback The callback to call when iterating over the nodes.
  */
 fun ResourcePatchContext.iterateXmlNodeChildren(

@@ -10,9 +10,9 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/DisableSignInToTvPopupPatch;"
+    "Lapp/morphe/extension/youtube/patches/DisableSignInToTVPopupPatch;"
 
-val disableSignInToTvPopupPatch = bytecodePatch(
+val disableSignInToTVPopupPatch = bytecodePatch(
     name = "Disable sign in to TV popup",
     description = "Adds an option to disable the popup asking to sign into a TV on the same local network.",
 ) {
@@ -26,13 +26,13 @@ val disableSignInToTvPopupPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_disable_signin_to_tv_popup"),
+            SwitchPreference("morphe_disable_sign_in_to_tv_popup"),
         )
 
-        SignInToTvPopupFingerprint.method.addInstructionsWithLabels(
+        SignInToTVPopupFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableSignInToTvPopup()Z
+                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableSignInToTVPopup()Z
                 move-result v0
                 if-eqz v0, :allow_sign_in_popup
                 const/4 v0, 0x0

@@ -54,7 +54,7 @@ val hideInfoCardsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_info_cards"),
         )
 
-        // Edit: This old non litho code may be obsolete and no longer used by any supported versions.
+        // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
         InfocardsIncognitoFingerprint.match(InfocardsIncognitoParentFingerprint.originalClassDef).method.apply {
             val invokeInstructionIndex = implementation!!.instructions.indexOfFirst {
                 it.opcode.ordinal == Opcode.INVOKE_VIRTUAL.ordinal &&
@@ -68,7 +68,7 @@ val hideInfoCardsPatch = bytecodePatch(
             )
         }
 
-        // Edit: This old non litho code may be obsolete and no longer used by any supported versions.
+        // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
         InfocardsMethodCallFingerprint.let {
             val invokeInterfaceIndex = it.instructionMatches.last().index
             it.method.apply {

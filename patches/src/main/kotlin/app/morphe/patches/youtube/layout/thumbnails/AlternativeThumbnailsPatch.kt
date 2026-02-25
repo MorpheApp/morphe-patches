@@ -6,10 +6,10 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.imageurlhook.addImageUrlErrorCallbackHook
-import app.morphe.patches.youtube.misc.imageurlhook.addImageUrlHook
-import app.morphe.patches.youtube.misc.imageurlhook.addImageUrlSuccessCallbackHook
-import app.morphe.patches.youtube.misc.imageurlhook.cronetImageUrlHookPatch
+import app.morphe.patches.youtube.misc.imageurlhook.addImageURLErrorCallbackHook
+import app.morphe.patches.youtube.misc.imageurlhook.addImageURLHook
+import app.morphe.patches.youtube.misc.imageurlhook.addImageURLSuccessCallbackHook
+import app.morphe.patches.youtube.misc.imageurlhook.cronetImageURLHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -26,7 +26,7 @@ val alternativeThumbnailsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         navigationBarHookPatch,
-        cronetImageUrlHookPatch,
+        cronetImageURLHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -73,8 +73,8 @@ val alternativeThumbnailsPatch = bytecodePatch(
             ListPreference("morphe_alt_thumbnail_stills_time"),
         )
 
-        addImageUrlHook(EXTENSION_CLASS_DESCRIPTOR)
-        addImageUrlSuccessCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
-        addImageUrlErrorCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLSuccessCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLErrorCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
     }
 }
