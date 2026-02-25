@@ -284,6 +284,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_AMBIENT_MODE = new BooleanSetting("morphe_hide_player_flyout_ambient_mode", FALSE, parentNot(DISABLE_AMBIENT_MODE));
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_AUDIO_TRACK = new BooleanSetting("morphe_hide_player_flyout_audio_track", FALSE, new HideAudioFlyoutMenuAvailability());
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_CAPTIONS = new BooleanSetting("morphe_hide_player_flyout_captions", FALSE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER = new BooleanSetting("morphe_hide_player_flyout_captions_header", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_HELP = new BooleanSetting("morphe_hide_player_flyout_help", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC = new BooleanSetting("morphe_hide_player_flyout_listen_with_youtube_music", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_LOCK_SCREEN = new BooleanSetting("morphe_hide_player_flyout_lock_screen", FALSE);
@@ -291,8 +292,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_SLEEP_TIMER = new BooleanSetting("morphe_hide_player_flyout_sleep_timer", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_SPEED = new BooleanSetting("morphe_hide_player_flyout_speed", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_STABLE_VOLUME = new BooleanSetting("morphe_hide_player_flyout_stable_volume", FALSE);
-    public static final BooleanSetting HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER = new BooleanSetting("morphe_hide_player_flyout_video_quality_footer", FALSE);
-    public static final BooleanSetting HIDE_PLAYER_FLYOUT_VIDEO_QUALITY = new BooleanSetting("morphe_hide_player_flyout_video_quality", FALSE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_QUALITY = new BooleanSetting("morphe_hide_player_flyout_quality", FALSE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_QUALITY_FOOTER = new BooleanSetting("morphe_hide_player_flyout_quality_footer", FALSE);
+    public static final BooleanSetting HIDE_PLAYER_FLYOUT_QUALITY_HEADER = new BooleanSetting("morphe_hide_player_flyout_quality_header", FALSE);
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_WATCH_IN_VR = new BooleanSetting("morphe_hide_player_flyout_watch_in_vr", FALSE);
 
     // General layout

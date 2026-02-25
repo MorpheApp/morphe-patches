@@ -32,6 +32,7 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
                 key = "morphe_hide_player_flyout",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_player_flyout_captions"),
+                    SwitchPreference("morphe_hide_player_flyout_captions_header"),
                     SwitchPreference("morphe_hide_player_flyout_listen_with_youtube_music"),
                     SwitchPreference("morphe_hide_player_flyout_help"),
                     SwitchPreference("morphe_hide_player_flyout_speed"),
@@ -40,8 +41,9 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
                         key = "morphe_hide_player_flyout_audio_track",
                         tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
                     ),
-                    SwitchPreference("morphe_hide_player_flyout_video_quality"),
-                    SwitchPreference("morphe_hide_player_flyout_video_quality_footer"),
+                    SwitchPreference("morphe_hide_player_flyout_quality"),
+                    SwitchPreference("morphe_hide_player_flyout_quality_footer"),
+                    SwitchPreference("morphe_hide_player_flyout_quality_header"),
                     SwitchPreference("morphe_hide_player_flyout_additional_settings"),
                     SwitchPreference("morphe_hide_player_flyout_ambient_mode"),
                     SwitchPreference("morphe_hide_player_flyout_stable_volume"),

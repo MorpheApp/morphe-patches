@@ -733,6 +733,9 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions</string>
     <string name="morphe_hide_player_flyout_captions_summary_on">Captions menu is hidden</string>
     <string name="morphe_hide_player_flyout_captions_summary_off">Captions menu is shown</string>
+    <string name="morphe_hide_player_flyout_captions_header_title">Hide Captions menu header</string>
+    <string name="morphe_hide_player_flyout_captions_header_summary_on">Captions menu header is hidden</string>
+    <string name="morphe_hide_player_flyout_captions_header_summary_off">Captions menu header is shown</string>
     <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings / More</string>
     <string name="morphe_hide_player_flyout_additional_settings_summary_on">Additional settings / More menu is hidden</string>
@@ -783,12 +786,15 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Watch in VR menu is shown</string>
     <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_video_quality_title">Hide Quality menu</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_on">Quality menu is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_off">Quality menu is shown</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_title">Hide Quality menu footer</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
+    <string name="morphe_hide_player_flyout_quality_title">Hide Quality</string>
+    <string name="morphe_hide_player_flyout_quality_summary_on">Quality menu is hidden</string>
+    <string name="morphe_hide_player_flyout_quality_summary_off">Quality menu is shown</string>
+    <string name="morphe_hide_player_flyout_quality_footer_title">Hide Quality menu footer</string>
+    <string name="morphe_hide_player_flyout_quality_footer_summary_on">Quality menu footer is hidden</string>
+    <string name="morphe_hide_player_flyout_quality_footer_summary_off">Quality menu footer is shown</string>
+    <string name="morphe_hide_player_flyout_quality_header_title">Hide Quality menu header</string>
+    <string name="morphe_hide_player_flyout_quality_header_summary_on">Quality menu header is hidden</string>
+    <string name="morphe_hide_player_flyout_quality_header_summary_off">Quality menu header is shown</string>
 
     <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
     <string name="morphe_hide_autoplay_preview_title">Hide autoplay preview</string>
