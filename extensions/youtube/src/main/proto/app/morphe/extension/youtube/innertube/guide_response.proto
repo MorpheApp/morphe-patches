@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+import "app/morphe/extension/youtube/innertube/icon.proto";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+message GuideResponse {
+    Items1 items = 4;
+}
+
+message Items1 {
+    PivotBarRenderer pivotBarRenderer = 117866661;
+}
+
+message PivotBarRenderer {
+    repeated Items2 items = 1;
+}
+
+message Items2 {
+    oneof data {
+        PivotBarIconOnlyItemRenderer pivotBarIconOnlyItemRenderer = 318370163;
+        PivotBarItemRenderer pivotBarItemRenderer = 117501096;
+    }
+}
+
+message PivotBarIconOnlyItemRenderer {
+    string pivotIdentifier = 1;
+    string targetId = 2;
+    NavigationType navigationType = 7;
+    Title title = 4;
+    Icon icon = 5;
+}
+
+enum NavigationType {
+    PIVOT_BAR_NAVIGATION_TYPE_UNKNOWN = 0;
+    PIVOT_BAR_NAVIGATION_TYPE_SELECT_TAB = 1;
+    PIVOT_BAR_NAVIGATION_TYPE_UNSELECTABLE_TAB = 2;
+    PIVOT_BAR_NAVIGATION_TYPE_OVERFLOW_TAB = 3;
+}
+
+message PivotBarItemRenderer {
+    string pivotIdentifier = 1;
+    NavigationEndPoint navigationEndPoint = 2;
+    Accessibility accessibility = 3;
+    Title title = 4;
+    Icon icon = 5;
+    PresentationStyle presentationStyle = 6;
+    string targetId = 10;
+}
+
+message PresentationStyle {
+    int32 pivotBarItemStyle = 1;
+}
+
+message Accessibility {
+    oneof data {
+        AccessibilityData accessibilityData = 1;
+    }
+}
+
+message AccessibilityData {
+    string label = 1;
+}
+
+message Title {
+    oneof data {
+        Runs runs = 75730170;
+    }
+}
+
+message Runs {
+    string text = 2;
+}
+
+message NavigationEndPoint {
+    optional BrowseEndPoint browseEndPoint = 48687626;
+    optional ReelWatchEndPoint reelWatchEndPoint = 139608561;
+}
+
+message BrowseEndPoint {
+    string browseId = 2;
+}
+
+message ReelWatchEndPoint {
+    string playlistId = 2;
+    string playerParams = 4;
+    string params = 11;
+    InputType inputType = 12; // or 15
+    int64 pageUiType = 27;
+    string parentTabIdentifier = 30;
+    VideoType videoType = 31;
+    string identifier = 53;
+}
+
+enum VideoType {
+    REEL_VIDEO_TYPE_UNKNOWN = 0;
+    REEL_VIDEO_TYPE_STORY = 1;
+    REEL_VIDEO_TYPE_VIDEO = 2;
+    REEL_VIDEO_TYPE_AD = 3;
+    REEL_VIDEO_TYPE_LIVE = 4;
+    REEL_VIDEO_TYPE_VOD_VIDEO = 5;
+    REEL_VIDEO_TYPE_STACKED_CARDS_PROMO = 6;
+    REEL_VIDEO_TYPE_LIVE_PREVIEW = 7;
+    REEL_VIDEO_TYPE_MUSIC_SAMPLES = 8;
+    REEL_VIDEO_TYPE_MINI_APP_AD = 9;
+    REEL_VIDEO_TYPE_POST = 10;
+}
+
+enum InputType {
+    REEL_WATCH_INPUT_TYPE_UNKNOWN = 0;
+    REEL_WATCH_INPUT_TYPE_DEFAULT = 1;
+    REEL_WATCH_INPUT_TYPE_SEEDLESS = 2;
+    REEL_WATCH_INPUT_TYPE_SEEDLESS_SEQUENCE = 3;
+}

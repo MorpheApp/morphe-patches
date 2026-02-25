@@ -29,6 +29,22 @@
         <item>5</item>
     </string-array>
 
+    <!-- layout.buttons.navigation.navigationBarPatch -->
+    <string-array name="morphe_search_button_index_entries">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="morphe_search_button_index_entry_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
     <string-array name="morphe_spoof_video_streams_client_type_entries">
         <item>Android Reel</item>

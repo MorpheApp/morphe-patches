@@ -680,6 +680,11 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_notifications_button_title">Hide Notifications</string>
     <string name="morphe_hide_notifications_button_summary_on">Notifications button is hidden</string>
     <string name="morphe_hide_notifications_button_summary_off">Notifications button is shown</string>
+    <string name="morphe_show_search_button_title">Show search button</string>
+    <string name="morphe_show_search_button_summary_on">Search button is shown</string>
+    <string name="morphe_show_search_button_summary_off">Search button is not shown</string>
+    <string name="morphe_search_button_index_title">Search button index</string>
+    <string name="morphe_search_button_index_invalid">Search button index must be less than %s</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
     <string name="morphe_swap_create_with_notifications_button_summary_on">Create button is swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary_off">Create button is not swapped with Notifications button</string>
