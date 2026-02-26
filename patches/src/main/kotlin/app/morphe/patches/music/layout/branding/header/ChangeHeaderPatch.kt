@@ -19,8 +19,6 @@ import app.morphe.util.trimIndentMultiline
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.io.File
 
-private val variants = arrayOf("light", "dark")
-
 private val targetResourceDirectoryNames = mapOf(
     "drawable-hdpi" to "121x36 px",
     "drawable-xhdpi" to "160x48 px",
@@ -29,14 +27,11 @@ private val targetResourceDirectoryNames = mapOf(
 )
 
 private val logoResourceNames = arrayOf(
-    "morphe_header"
+    "morphe_header_dark"
 )
 
-private const val CUSTOM_HEADER_RESOURCE_NAME = "morphe_header_custom"
-
-private val customHeaderResourceFileNames = variants.map { variant ->
-    "${CUSTOM_HEADER_RESOURCE_NAME}_$variant.png"
-}.toTypedArray()
+private const val CUSTOM_HEADER_RESOURCE_NAME = "morphe_header_custom_dark"
+private val customHeaderResourceFileNames = arrayOf("$CUSTOM_HEADER_RESOURCE_NAME.png")
 
 private val headerDrawableNames = arrayOf(
     "action_bar_logo_ringo2",
@@ -86,7 +81,7 @@ val changeHeaderPatch = resourcePatch(
             The folder must contain one or more of:
             ${targetResourceDirectoryNames.keys.joinToString("\n") { "- $it" }}
 
-            Each folder must contain:
+            Each folder must contain the file:
             ${customHeaderResourceFileNames.joinToString("\n") { "- $it" }}
 
             Required dimensions:
@@ -108,31 +103,24 @@ val changeHeaderPatch = resourcePatch(
         )
 
         logoResourceNames.forEach { logo ->
-            variants.forEach { variant ->
-                copyResources(
-                    "change-header",
-                    ResourceGroup(
-                        "drawable",
-                        "${logo}_$variant.xml"
-                    )
-                )
-            }
+            copyResources(
+                "change-header",
+                ResourceGroup("drawable", "$logo.xml")
+            )
         }
 
         targetResourceDirectoryNames.keys.forEach { dpi ->
-            variants.forEach { variant ->
-                copyResources(
-                    "change-header",
-                    ResourceGroup(
-                        dpi,
-                        *customHeaderResourceFileNames
-                    )
+            copyResources(
+                "change-header",
+                ResourceGroup(
+                    dpi,
+                    *customHeaderResourceFileNames
                 )
-            }
+            )
         }
 
-        if (custom != null) {
-            val customDir = File(custom!!.trim())
+        custom?.trim()?.let { customPath ->
+            val customDir = File(customPath)
             if (!customDir.exists())
                 throw PatchException("Custom header path not found: ${customDir.absolutePath}")
 
@@ -140,16 +128,17 @@ val changeHeaderPatch = resourcePatch(
                 throw PatchException("Custom header path must be a directory.")
 
             var copied = false
-            customDir.listFiles { file -> file.isDirectory && file.name in targetResourceDirectoryNames }!!
-                .forEach { dpiFolder ->
+            customDir.listFiles { file -> file.isDirectory && file.name in targetResourceDirectoryNames }
+                ?.forEach { dpiFolder ->
                     val targetFolder = get("res").resolve(dpiFolder.name)
+                    targetFolder.mkdirs()
 
                     val files = dpiFolder.listFiles { file ->
                         file.isFile && file.name in customHeaderResourceFileNames
-                    }!!
+                    } ?: emptyArray()
 
                     if (files.size != customHeaderResourceFileNames.size)
-                        throw PatchException("Missing required images in ${dpiFolder.name}")
+                        throw PatchException("Missing required image in ${dpiFolder.name}. Expected: ${customHeaderResourceFileNames[0]}")
 
                     files.forEach { source ->
                         source.copyTo(targetFolder.resolve(source.name), overwrite = true)

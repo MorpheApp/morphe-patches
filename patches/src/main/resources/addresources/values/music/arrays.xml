@@ -33,22 +33,18 @@
     <string-array name="morphe_header_logo_entries">
         <item>@string/morphe_header_logo_entry_1</item>
         <item>@string/morphe_header_logo_entry_2</item>
-        <item>@string/morphe_header_logo_entry_3</item>
     </string-array>
     <string-array name="morphe_header_logo_entry_values">
         <item>DEFAULT</item>
-        <item>REGULAR</item>
         <item>MORPHE</item>
     </string-array>
     <string-array name="morphe_header_logo_custom_entries">
         <item>@string/morphe_header_logo_entry_1</item>
         <item>@string/morphe_header_logo_entry_2</item>
         <item>@string/morphe_header_logo_entry_3</item>
-        <item>@string/morphe_header_logo_entry_4</item>
     </string-array>
     <string-array name="morphe_header_logo_custom_entry_values">
         <item>DEFAULT</item>
-        <item>REGULAR</item>
         <item>MORPHE</item>
         <item>CUSTOM</item>
     </string-array>
