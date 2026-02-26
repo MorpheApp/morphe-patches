@@ -26,10 +26,9 @@ private val targetResourceDirectoryNames = mapOf(
     "drawable-xxxhdpi" to "320x96 px"
 )
 
-private val variants = arrayOf("light", "dark")
+private val variants = arrayOf("dark")
 private val logoResourceNames = arrayOf("morphe_header_dark")
 private const val CUSTOM_HEADER_RESOURCE_NAME = "morphe_header_custom"
-
 private val customHeaderResourceFileNames = variants.map { variant ->
     "${CUSTOM_HEADER_RESOURCE_NAME}_$variant.png"
 }.toTypedArray()
@@ -82,7 +81,7 @@ val changeHeaderPatch = resourcePatch(
             The folder must contain one or more of:
             ${targetResourceDirectoryNames.keys.joinToString("\n") { "- $it" }}
 
-            Each folder must contain the file:
+            Each folder must contain the following file:
             ${customHeaderResourceFileNames.joinToString("\n") { "- $it" }}
 
             Required dimensions:
@@ -111,12 +110,10 @@ val changeHeaderPatch = resourcePatch(
         }
 
         targetResourceDirectoryNames.keys.forEach { dpi ->
-            variants.forEach { variant ->
-                copyResources(
-                    "change-header",
-                    ResourceGroup(dpi, "${CUSTOM_HEADER_RESOURCE_NAME}_$variant.png")
-                )
-            }
+            copyResources(
+                "change-header",
+                ResourceGroup(dpi, *customHeaderResourceFileNames)
+            )
         }
 
         custom?.trim()?.let { customPath ->
@@ -138,7 +135,7 @@ val changeHeaderPatch = resourcePatch(
                     } ?: emptyArray()
 
                     if (files.size != customHeaderResourceFileNames.size)
-                        throw PatchException("Missing required images in ${dpiFolder.name}. Expected both light and dark files.")
+                        throw PatchException("Missing required image in ${dpiFolder.name}. Expected: ${customHeaderResourceFileNames[0]}")
 
                     files.forEach { source ->
                         source.copyTo(targetFolder.resolve(source.name), overwrite = true)
