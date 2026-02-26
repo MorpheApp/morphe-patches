@@ -28,21 +28,12 @@ private val targetResourceDirectoryNames = mapOf(
     "drawable-xxxhdpi" to "320x96 px"
 )
 
-/**
- * Header logos built into this patch.
- */
 private val logoResourceNames = arrayOf(
-    "morphe_header",
+    "morphe_header"
 )
 
-/**
- * Custom header resource/file name.
- */
 private const val CUSTOM_HEADER_RESOURCE_NAME = "morphe_header_custom"
 
-/**
- * Custom header resource/file names.
- */
 private val customHeaderResourceFileNames = variants.map { variant ->
     "${CUSTOM_HEADER_RESOURCE_NAME}_$variant.png"
 }.toTypedArray()
@@ -55,9 +46,6 @@ private val headerDrawableNames = arrayOf(
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/music/patches/ChangeHeaderPatch;"
 
-/**
- * Replaces drawable literals with extension override.
- */
 private val changeHeaderBytecodePatch = bytecodePatch {
     dependsOn(resourceMappingPatch)
 
@@ -83,7 +71,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
 @Suppress("unused")
 val changeHeaderPatch = resourcePatch(
     name = "Change header",
-    description = "Adds an option to change the YouTube Music header logo.",
+    description = "Adds an option to change the YouTube Music header logo."
 ) {
 
     dependsOn(changeHeaderBytecodePatch)
@@ -94,22 +82,29 @@ val changeHeaderPatch = resourcePatch(
         title = "Custom header folder",
         description = """
             Folder with images to use as a custom header logo.
-            
+
             The folder must contain one or more of:
             ${targetResourceDirectoryNames.keys.joinToString("\n") { "- $it" }}
-            
+
             Each folder must contain:
             ${customHeaderResourceFileNames.joinToString("\n") { "- $it" }}
-            
+
             Required dimensions:
             ${targetResourceDirectoryNames.map { (dpi, dim) -> "- $dpi: $dim" }.joinToString("\n")}
         """.trimIndentMultiline()
     )
 
     execute {
-
         PreferenceScreen.GENERAL.addPreferences(
-            ListPreference("morphe_header_logo")
+            if (custom == null) {
+                ListPreference("morphe_header_logo")
+            } else {
+                ListPreference(
+                    key = "morphe_header_logo",
+                    entriesKey = "morphe_header_logo_custom_entries",
+                    entryValuesKey = "morphe_header_logo_custom_entry_values"
+                )
+            }
         )
 
         logoResourceNames.forEach { logo ->
@@ -125,58 +120,45 @@ val changeHeaderPatch = resourcePatch(
         }
 
         targetResourceDirectoryNames.keys.forEach { dpi ->
-            copyResources(
-                "change-header",
-                ResourceGroup(
-                    dpi,
-                    *customHeaderResourceFileNames
+            variants.forEach { variant ->
+                copyResources(
+                    "change-header",
+                    ResourceGroup(
+                        dpi,
+                        *customHeaderResourceFileNames
+                    )
                 )
-            )
+            }
         }
 
         if (custom != null) {
-
             val customDir = File(custom!!.trim())
-
             if (!customDir.exists())
-                throw PatchException(
-                    "Custom header path not found: ${customDir.absolutePath}"
-                )
+                throw PatchException("Custom header path not found: ${customDir.absolutePath}")
 
             if (!customDir.isDirectory)
-                throw PatchException(
-                    "Custom header path must be a directory."
-                )
+                throw PatchException("Custom header path must be a directory.")
 
             var copied = false
-
             customDir.listFiles { file -> file.isDirectory && file.name in targetResourceDirectoryNames }!!
                 .forEach { dpiFolder ->
-
                     val targetFolder = get("res").resolve(dpiFolder.name)
 
-                    val files = dpiFolder.listFiles { file -> file.isFile && file.name in customHeaderResourceFileNames }!!
+                    val files = dpiFolder.listFiles { file ->
+                        file.isFile && file.name in customHeaderResourceFileNames
+                    }!!
 
-                    if (files.size != customHeaderResourceFileNames.size) {
-                        throw PatchException(
-                            "Missing required images in ${dpiFolder.name}"
-                        )
-                    }
+                    if (files.size != customHeaderResourceFileNames.size)
+                        throw PatchException("Missing required images in ${dpiFolder.name}")
 
                     files.forEach { source ->
-                        source.copyTo(
-                            targetFolder.resolve(source.name),
-                            overwrite = true
-                        )
+                        source.copyTo(targetFolder.resolve(source.name), overwrite = true)
                         copied = true
                     }
                 }
 
-            if (!copied) {
-                throw PatchException(
-                    "No valid DPI folders found in: ${customDir.absolutePath}"
-                )
-            }
+            if (!copied)
+                throw PatchException("No valid DPI folders found in: ${customDir.absolutePath}")
         }
     }
 }
