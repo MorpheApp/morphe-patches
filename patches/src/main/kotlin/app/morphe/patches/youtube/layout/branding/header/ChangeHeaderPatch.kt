@@ -32,6 +32,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
     dependsOn(resourceMappingPatch)
 
     execute {
+        // Verify images exist. Resources are not used during patching but extension code does.
         arrayOf(
             "yt_ringo2_wordmark_header",
             "yt_ringo2_premium_wordmark_header"
