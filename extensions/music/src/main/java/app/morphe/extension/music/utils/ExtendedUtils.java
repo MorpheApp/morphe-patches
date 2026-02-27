@@ -13,11 +13,7 @@ public class ExtendedUtils {
     private static final String SETTINGS_ATTRIBUTION_HEADER_KEY = ":android:no_headers";
     private static final int SETTINGS_ATTRIBUTION_HEADER_VALUE = 1;
 
-    private static final String SHORTCUT_ACTION = "com.google.android.youtube.music.action.shortcut";
-    private static final String SHORTCUT_CLASS_DESCRIPTOR = "com.google.android.apps.youtube.music.activities.InternalMusicActivity";
-    private static final String SHORTCUT_TYPE = "com.google.android.youtube.music.action.shortcut_type";
-    private static final String SHORTCUT_ID_SEARCH = "Eh4IBRDTnQEYmgMiEwiZn+H0r5WLAxVV5OcDHcHRBmPqpd25AQA=";
-    private static final int SHORTCUT_TYPE_SEARCH = 1;
+    private static final String MUSIC_ACTIVITY_CLASS = "com.google.android.apps.youtube.music.activities.MusicActivity";
 
     public static void openSearch() {
         Activity mActivity = Utils.getActivity();
@@ -43,10 +39,12 @@ public class ExtendedUtils {
     }
 
     public static void setSearchIntent(Activity mActivity, Intent intent) {
-        intent.setAction(SHORTCUT_ACTION);
-        intent.setClassName(mActivity, SHORTCUT_CLASS_DESCRIPTOR);
+        intent.setAction(Intent.ACTION_SEARCH);
+        intent.setClassName(mActivity, MUSIC_ACTIVITY_CLASS);
         intent.setPackage(mActivity.getPackageName());
-        intent.putExtra(SHORTCUT_TYPE, SHORTCUT_TYPE_SEARCH);
-        intent.putExtra(SHORTCUT_ACTION, SHORTCUT_ID_SEARCH);
+
+        intent.putExtra("query", "");
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
 }

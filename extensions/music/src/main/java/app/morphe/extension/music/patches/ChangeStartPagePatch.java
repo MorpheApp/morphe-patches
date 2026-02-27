@@ -5,6 +5,8 @@ import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,7 +47,7 @@ public final class ChangeStartPagePatch {
         }
 
         private boolean isIntentAction() {
-            return FALSE.equals(isBrowseId);
+            return !FALSE.equals(isBrowseId);
         }
     }
 
@@ -72,24 +74,37 @@ public final class ChangeStartPagePatch {
     }
 
     public static void overrideIntentActionOnCreate(@NonNull Activity activity) {
-        overrideIntentAction(activity, activity.getIntent());
+        Intent intent = activity.getIntent();
+        if (intent == null) return;
+
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+        if (startPage.isIntentAction() || !ACTION_MAIN.equals(intent.getAction())) {
+            return;
+        }
+
+        if (startPage == StartPage.SEARCH) {
+            Logger.printDebug(() -> "Cold start: Delaying search intent until UI is ready");
+
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                try {
+                    ExtendedUtils.setSearchIntent(activity, intent);
+                } catch (Exception e) {
+                    Logger.printDebug(() -> "Failed to launch search intent on cold start");
+                }
+            }, 500);
+        }
     }
 
     public static void overrideIntentAction(@NonNull Activity activity, @Nullable Intent intent) {
         if (intent == null) return;
 
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
-
-        if (!startPage.isIntentAction()) {
-            return;
-        }
-
-        if (!ACTION_MAIN.equals(intent.getAction())) {
+        if (startPage.isIntentAction() || !ACTION_MAIN.equals(intent.getAction())) {
             return;
         }
 
         if (startPage == StartPage.SEARCH) {
-            Logger.printDebug(() -> "Changing intent action to: " + startPage.name());
+            Logger.printDebug(() -> "Foreground resume: Executing search intent immediately");
             ExtendedUtils.setSearchIntent(activity, intent);
         }
     }
