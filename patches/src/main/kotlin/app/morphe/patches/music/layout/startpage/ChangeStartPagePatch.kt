@@ -50,7 +50,6 @@ val changeStartPagePatch = bytecodePatch(
 
                 for (returnIndex in returnIndices.reversed()) {
                     val returnRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
-
                     addInstructions(
                         returnIndex,
                         "invoke-static/range {v$returnRegister .. v$returnRegister}, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
@@ -60,25 +59,14 @@ val changeStartPagePatch = bytecodePatch(
             }
         }
 
-        ColdStartIntentFingerprint.let {
+        MusicActivityOnCreateFingerprint.let {
             it.method.apply {
                 val p0 = implementation!!.registerCount - 2
                 val p1 = p0 + 1
 
                 addInstruction(
                     0,
-                    "invoke-static/range {v$p0 .. v$p1}, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentAction(Landroid/app/Activity;Landroid/content/Intent;)V"
-                )
-            }
-        }
-
-        MusicActivityOnCreateFingerprint.let {
-            it.method.apply {
-                val p0 = implementation!!.registerCount - 2
-
-                addInstruction(
-                    0,
-                    "invoke-static/range {v$p0 .. v$p0}, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentActionOnCreate(Landroid/app/Activity;)V"
+                    "invoke-static/range {v$p0 .. v$p1}, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentActionOnCreate(Landroid/app/Activity;Landroid/os/Bundle;)V"
                 )
             }
         }

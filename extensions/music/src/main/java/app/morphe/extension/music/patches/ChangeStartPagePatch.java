@@ -4,6 +4,7 @@ import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,7 +46,6 @@ public final class ChangeStartPagePatch {
     }
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
-    private static boolean intentLaunched = false;
 
     public static String overrideBrowseId(@Nullable String original) {
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
@@ -67,37 +67,17 @@ public final class ChangeStartPagePatch {
         return overrideBrowseId;
     }
 
-    public static void overrideIntentActionOnCreate(@NonNull Activity activity) {
-        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+    public static void overrideIntentActionOnCreate(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) return;
 
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
         if (startPage != StartPage.SEARCH) return;
 
         Intent originalIntent = activity.getIntent();
         if (originalIntent == null) return;
 
         if (ACTION_MAIN.equals(originalIntent.getAction())) {
-            if (intentLaunched) return;
-            intentLaunched = true;
-
             Logger.printDebug(() -> "Cold start: Firing search activity directly");
-            Intent searchIntent = new Intent();
-            ExtendedUtils.setSearchIntent(activity, searchIntent);
-            activity.startActivity(searchIntent);
-        }
-    }
-
-    public static void overrideIntentAction(@NonNull Activity activity, @Nullable Intent intent) {
-        StartPage startPage = Settings.CHANGE_START_PAGE.get();
-
-        if (startPage != StartPage.SEARCH) return;
-
-        if (intent == null) return;
-
-        if (ACTION_MAIN.equals(intent.getAction())) {
-            if (intentLaunched) return;
-            intentLaunched = true;
-
-            Logger.printDebug(() -> "Foreground resume: Firing search activity directly");
             Intent searchIntent = new Intent();
             ExtendedUtils.setSearchIntent(activity, searchIntent);
             activity.startActivity(searchIntent);
