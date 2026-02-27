@@ -23,9 +23,8 @@ public final class ChangeStartPagePatch {
         EXPLORE("FEmusic_explore", TRUE),
         HISTORY("FEmusic_history", TRUE),
         LIBRARY("FEmusic_library_landing", TRUE),
-        PLAYLISTS("FEmusic_liked_playlists", TRUE),
         PODCASTS("FEmusic_non_music_audio", TRUE),
-        SAMPLES("https://music.youtube.com/samples", false),
+        SAMPLES("FEmusic_immersive", TRUE),
         SUBSCRIPTIONS("FEmusic_library_corpus_artists", TRUE),
         EPISODES_FOR_LATER("VLSE", TRUE),
         LIKED_MUSIC("VLLM", TRUE),
@@ -73,8 +72,6 @@ public final class ChangeStartPagePatch {
         if (savedInstanceState != null) return;
 
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
-        if (startPage.isBrowseId() || startPage == StartPage.DEFAULT) return;
-
         Intent originalIntent = activity.getIntent();
         if (originalIntent == null) return;
 
@@ -87,8 +84,8 @@ public final class ChangeStartPagePatch {
                 activity.startActivity(searchIntent);
             }
             else if (startPage == StartPage.SAMPLES) {
-                Logger.printDebug(() -> "Cold start: Firing Samples deep link");
-                Intent samplesIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(startPage.id));
+                Logger.printDebug(() -> "Cold start: Firing Samples deep link to wake player");
+                Intent samplesIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://music.youtube.com/samples"));
                 samplesIntent.setPackage(activity.getPackageName());
                 samplesIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 activity.startActivity(samplesIntent);
