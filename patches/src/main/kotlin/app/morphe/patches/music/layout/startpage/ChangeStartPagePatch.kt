@@ -11,12 +11,8 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/ChangeStartPagePatch;"
 
@@ -48,15 +44,11 @@ val changeStartPagePatch = bytecodePatch(
 
         ColdStartUpFingerprint.let {
             it.method.apply {
-                val defaultBrowseIdIndex = indexOfFirstStringInstructionOrThrow("FEmusic_home")
-                val browseIdIndex = indexOfFirstInstructionReversedOrThrow(defaultBrowseIdIndex) {
-                    opcode == Opcode.IGET_OBJECT &&
-                            getReference<FieldReference>()?.type == "Ljava/lang/String;"
-                }
-                val browseIdRegister = getInstruction<TwoRegisterInstruction>(browseIdIndex).registerA
+                val homeStringIndex = indexOfFirstStringInstructionOrThrow("FEmusic_home")
+                val browseIdRegister = getInstruction<OneRegisterInstruction>(homeStringIndex).registerA
 
                 addInstructions(
-                    browseIdIndex + 1,
+                    homeStringIndex + 1,
                     """
                         invoke-static { v$browseIdRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$browseIdRegister

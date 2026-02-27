@@ -18,14 +18,7 @@ import app.morphe.extension.music.utils.ExtendedUtils;
 public final class ChangeStartPagePatch {
 
     public enum StartPage {
-        /**
-         * Unmodified type, same as un-patched.
-         */
         DEFAULT("", null),
-
-        /**
-         * Browse IDs.
-         */
         CHARTS("FEmusic_charts", TRUE),
         EXPLORE("FEmusic_explore", TRUE),
         HISTORY("FEmusic_history", TRUE),
@@ -33,16 +26,8 @@ public final class ChangeStartPagePatch {
         PODCASTS("FEmusic_non_music_audio", TRUE),
         SAMPLES("FEmusic_immersive", TRUE),
         SUBSCRIPTIONS("FEmusic_library_corpus_artists", TRUE),
-
-        /**
-         * Playlist IDs.
-         */
         EPISODES_FOR_LATER("VLSE", TRUE),
         LIKED_MUSIC("VLLM", TRUE),
-
-        /**
-         * Intent Action.
-         */
         SEARCH("", FALSE);
 
         @NonNull
@@ -67,16 +52,17 @@ public final class ChangeStartPagePatch {
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
 
-    private static final StartPage START_PAGE = Settings.CHANGE_START_PAGE.get();
-
     private static boolean appLaunched = false;
 
-    public static String overrideBrowseId(@NonNull String original) {
-        if (!START_PAGE.isBrowseId()) {
+    public static String overrideBrowseId(@Nullable String original) {
+        // Fetch dynamically so we get the actual current setting
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+
+        if (!startPage.isBrowseId()) {
             return original;
         }
 
-        if (!original.equals("FEmusic_home")) {
+        if (!"FEmusic_home".equals(original)) {
             return original;
         }
 
@@ -86,17 +72,19 @@ public final class ChangeStartPagePatch {
         }
         appLaunched = true;
 
-        String overrideBrowseId = START_PAGE.id;
+        String overrideBrowseId = startPage.id;
         if (overrideBrowseId.isEmpty()) {
             return original;
         }
 
-        Logger.printDebug(() -> "Changing browseId to: " + START_PAGE.name());
+        Logger.printDebug(() -> "Changing browseId to: " + startPage.name());
         return overrideBrowseId;
     }
 
     public static void overrideIntentAction(@NonNull Intent intent) {
-        if (!START_PAGE.isIntentAction()) {
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+
+        if (!startPage.isIntentAction()) {
             return;
         }
 
@@ -111,10 +99,10 @@ public final class ChangeStartPagePatch {
         }
         appLaunched = true;
 
-        if (START_PAGE == StartPage.SEARCH) {
+        if (startPage == StartPage.SEARCH) {
             Activity mActivity = Utils.getActivity();
             if (mActivity != null) {
-                Logger.printDebug(() -> "Changing intent action to: " + START_PAGE.name());
+                Logger.printDebug(() -> "Changing intent action to: " + startPage.name());
                 ExtendedUtils.setSearchIntent(mActivity, intent);
             }
         }
