@@ -95,7 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
   <string name="morphe_oauth2_toast_reset">تم تسجيل خروج Android VR</string>
   <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">تعطيل بروتوكول QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">تم تعطيل بروتوكول QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_off">تم تمكين بروتوكول QUIC</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">تعطيل صوت DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">تم تعطيل صوت DRC</string>
   <string name="morphe_disable_drc_audio_summary_off">تم تمكين صوت DRC</string>

@@ -108,9 +108,6 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_hide_playables_title">Dölj Spelhörna</string>
   <string name="morphe_hide_playables_summary_on">Spelhörna är dold</string>
   <string name="morphe_hide_playables_summary_off">Spelhörna visas</string>
-  <string name="morphe_hide_search_suggestions_title">Dölj sökförslag</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Sökförslag är dolda</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Sökförslag visas</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Dölj knappen Visa mer</string>
@@ -421,7 +418,7 @@ Begränsningar:
   <string name="morphe_hide_video_ads_title">Dölj videoannonser</string>
   <string name="morphe_hide_video_ads_summary_on">Videoannonser är dolda</string>
   <string name="morphe_hide_video_ads_summary_off">Videoannonser visas</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Videoadress kopierad till urklipp</string>
   <string name="morphe_share_copy_url_timestamp_success">Videoadress med tidsstämpel kopierad</string>
   <string name="morphe_copy_video_url_title">Visa knapp för att kopiera videoadress</string>
@@ -435,10 +432,10 @@ Begränsningar:
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialogrutan tas bort</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Dialogrutan visas</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Detta kringgår inte åldersbegränsningen. Det bara godkänner automatiskt.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Inaktivera popup-fönster om att logga in på TV:n</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Popup-fönster om att logga in på TV:n är inaktiverat</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Popup-fönster om att logga in på TV:n är aktiverat</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Inaktivera popup-fönster om att logga in på TV:n</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Popup-fönster om att logga in på TV:n är inaktiverat</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Popup-fönster om att logga in på TV:n är aktiverat</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Inaktivera dubbeltryck för att hoppa över kapitel</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Dubbeltryck kan aldrig utlösa ett hopp till nästa/föregående kapitel</string>
@@ -467,10 +464,14 @@ Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gesten är aktiverad</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Aktivera Tryck för att söka</string>
-  <string name="morphe_seekbar_tapping_summary_on">Tryck för att söka är aktiverat</string>
-  <string name="morphe_seekbar_tapping_summary_off">Tryck för att söka är inaktiverat</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
+  <string name="morphe_slide_to_seek_summary_on">Dra för att söka är aktiverat</string>
+  <string name="morphe_slide_to_seek_summary_off">Dra för att söka är inaktiverat</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Aktivera Tryck för att söka</string>
+  <string name="morphe_tap_to_seek_summary_on">Tryck för att söka är aktiverat</string>
+  <string name="morphe_tap_to_seek_summary_off">Tryck för att söka är inaktiverat</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Aktivera ljusstyrkegest</string>
   <string name="morphe_swipe_brightness_summary_on">"Svepgest för ljusstyrka i helskärm är aktiverad
@@ -640,6 +641,7 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_hide_notifications_button_title">Dölj Aviseringar</string>
   <string name="morphe_hide_notifications_button_summary_on">Knappen Aviseringar är dold</string>
   <string name="morphe_hide_notifications_button_summary_off">Knappen Aviseringar visas</string>
+  <string name="morphe_show_search_button_summary_on">Knappen Sök visas</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt ut Skapa mot Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Knappen Skapa byts ut mot knappen Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Knappen Skapa byts inte ut mot knappen Aviseringar</string>
@@ -721,10 +723,7 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Menyn Ljudspår är dold</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Menyn Ljudspår visas</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menyn Ljudspår är dold
-
-Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\" till TV"</string>
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Dölj Titta i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menyn Titta i VR är dold</string>
@@ -764,9 +763,9 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Knapparna Föregående &amp; Nästa är dolda</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Knapparna Föregående &amp; Nästa visas</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Dölj slutskärmskort</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">Slutskärmskort är dolda</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">Slutskärmskort visas</string>
+  <string name="morphe_hide_end_screen_cards_title">Dölj slutskärmskort</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">Slutskärmskort är dolda</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">Slutskärmskort visas</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Ambientljus</string>
   <string name="morphe_ambient_mode_screen_summary">Åsidosätt strömsparbegränsningar för ambientljus och inaktivera det helt eller i helskärm</string>
@@ -943,10 +942,7 @@ Inställningar → Uppspelning → Spela upp nästa video automatiskt"</string>
   <string name="morphe_hide_timestamp_title">Dölj videotidsstämpel</string>
   <string name="morphe_hide_timestamp_summary_on">Tidsstämpel är dold</string>
   <string name="morphe_hide_timestamp_summary_off">Tidsstämpel visas</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Dölj popup-paneler i spelaren</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">Popup-paneler i spelaren är dolda</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">Popup-paneler i spelaren visas</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Avsluta helskärmsläge i slutet av videon</string>
   <string name="morphe_exit_fullscreen_entry_1">Inaktiverat</string>
@@ -1073,9 +1069,7 @@ Begränsning: Ogilla-markeringar kanske inte visas i inkognitoläge"</string>
   <string name="morphe_sb_general_min_duration">Minsta segmentlängd</string>
   <string name="morphe_sb_general_min_duration_sum">Segment som är kortare än detta värde (i sekunder) kommer inte att visas eller hoppas över</string>
   <string name="morphe_sb_general_min_duration_invalid">Ogiltig tidslängd</string>
-  <string name="morphe_sb_general_uuid">Ditt privata användar-id</string>
   <string name="morphe_sb_general_uuid_sum">Detta bör hållas privat. Det fungerar som ett lösenord och ska inte delas med någon. Om någon får tag på det kan hen utge sig för att vara du</string>
-  <string name="morphe_sb_general_uuid_invalid">Privat användar-id måste vara minst 30 tecken långt</string>
   <string name="morphe_sb_general_api_url">Ändra API-webbadress</string>
   <string name="morphe_sb_general_api_url_sum">Adressen SponsorBlock använder för att göra anrop till servern</string>
   <string name="morphe_sb_api_url_reset">API-webbadress återställdes</string>
@@ -1084,13 +1078,9 @@ Begränsning: Ogilla-markeringar kanske inte visas i inkognitoläge"</string>
   <string name="morphe_sb_settings_ie">Importera/exportera inställningar</string>
   <string name="morphe_sb_settings_copy">Kopiera</string>
   <string name="morphe_sb_settings_ie_sum">Din JSON-konfiguration för SponsorBlock som kan importeras/exporteras till Morphe och andra SponsorBlock-plattformar</string>
-  <string name="morphe_sb_settings_ie_sum_warning">Din JSON-konfiguration för SponsorBlock som kan importeras/exporteras till Morphe och andra SponsorBlock-plattformar. Detta inkluderar ditt privata användar-id. Se till att dela detta klokt</string>
   <string name="morphe_sb_settings_import_successful">Inställningar har importerats</string>
   <string name="morphe_sb_settings_import_failed">Det gick inte att importera: %s</string>
   <string name="morphe_sb_settings_export_failed">Det gick inte att exportera: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Dina inställningar innehåller ett privat användar-id för SponsorBlock.
-
-Ditt användar-id fungerar som ett lösenord och det bör aldrig delas."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Visa inte igen</string>
   <string name="morphe_sb_diff_segments">Ändra beteende för segment</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
@@ -1536,10 +1526,6 @@ Begränsningar:
   <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
   <string name="morphe_prioritize_video_quality_summary_on">Videokvalitet prioriteras</string>
   <string name="morphe_prioritize_video_quality_summary_off">Videokodekar prioriteras</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
-  <string name="morphe_slide_to_seek_summary_on">Dra för att söka är aktiverat</string>
-  <string name="morphe_slide_to_seek_summary_off">Dra för att söka är inaktiverat</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Tillåt Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Videokodeken är AVC (H.264), VP9 eller AV1

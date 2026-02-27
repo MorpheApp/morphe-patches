@@ -121,7 +121,7 @@ fun gmsCoreSupportPatch(
         }
 
         fun contentUrisTransform(str: String): String? {
-            // only when content:// uri
+            // only when content:// URI
             if (str.startsWith("content://")) {
                 // check if matches any authority
                 for (authority in AUTHORITIES) {

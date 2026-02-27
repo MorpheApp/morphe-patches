@@ -22,24 +22,24 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_name_entry_5">Saincheaptha</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
   <string name="morphe_custom_branding_icon_entry_1">Bunaidh</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe Gorm</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe dubh</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dorcha</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe Lacht</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe solas</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Saincheaptha</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Taispeántas Alartha! 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Tá tú ag úsáid ar chóip tarsna tairbhe experimental den ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Foláireamh Turgnamhach! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Tá leagan turgnamhach den aip de ⚠️ &lt;b&gt;%1$s&lt;/b&gt; in úsáid agat
 &lt;br/&gt;&lt;br/&gt;
-🔧 Tá tairbheanna tairbheacha ag tarlú nó buganna neamhfhios agam mar táimid ag déanamh leathanna do chóip seo.
+🔧 Bí ag súil le hiompar aisteach nó fabhtanna anaithnid agus muid ag feabhsú na paistí don leagan seo den aip.
 &lt;br/&gt;&lt;br/&gt;
-Má tá tú ag iarraidh an tairbhe is fearr, déan &lt;b&gt;de réir na tairbheanna&lt;/b&gt; seo agus cóipeáil an chóip tairbheach &lt;b&gt;%2$s&lt;/b&gt;."</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tá mé ag iarraidh tairbheanna tairbheacha</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Tá mé ag iarraidh tairbheanna tairbheacha</string>
+Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo agus paisteáil an leagan molta den aip de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ba mhaith liom turgnamhach</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ba mhaith liom cobhsaíocht</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is é is dóichí gur seachfhreastalaí fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt; Chun é seo a réiteach, déan liosta bán &lt;b&gt;s.youtube.com&lt;/b&gt; nó gach seachfhreastalaí DNS a mhúchadh.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is dóichí gur bacadóir fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt;Chun seo a shocrú, cuir &lt;b&gt;s.youtube.com&lt;/b&gt; ar an liosta bán nó múch gach bacadóir agus seachfhreastalaí DNS.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ná taispeáin arís</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
@@ -48,11 +48,11 @@ Má tá tú ag iarraidh an tairbhe is fearr, déan &lt;b&gt;de réir na tairbhea
   <string name="morphe_spoof_video_streams_summary_on">"Déantar sruthanna físe a bhréagnú
 
 Mura bhfuil tú i d’úsáideoir YouTube Premium, b’fhéidir nach mbeidh an socrú seo ag teastáil"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Ní dhéantar sruthanna físeáin a bhréagnú
+  <string name="morphe_spoof_video_streams_summary_off">"Ní dhéantar bréagadóireacht ar shruthanna físe
 
-Seans nach n-oibreoidh an t-athsheinm"</string>
+B’fhéidir nach n-oibreoidh an athsheinm"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Níorbh fhéidir aon sruthanna cliant a fháil</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Má mhúchann tú an socrú seo, d\'fhéadfadh saincheisteanna athsheinm a theacht chun cinn.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">D’fhéadfadh fadhbanna athsheinm a bheith mar thoradh ar an socrú seo a mhúchadh.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bain triail as na nithe seo a leanas a chumasú: Sruthanna físe bréige &gt; Sínigh isteach Android VR</string>
@@ -95,21 +95,25 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
-  <string name="morphe_disable_drc_audio_title">Díchumasaigh físeán DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Tá físeán DRC díchumasaithe</string>
-  <string name="morphe_disable_drc_audio_summary_off">Tá físeán DRC cumasaithe</string>
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Díchumasaigh prótacal QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Tá prótacal QUIC díchumasaithe</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Tá prótacal QUIC cumasaithe</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Díchumasaigh fuaim DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Tá fuaim DRC díchumasaithe</string>
+  <string name="morphe_disable_drc_audio_summary_off">Tá fuaim DRC cumasaithe</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Fórsaigh teanga bhunaidh na fuaime</string>
-  <string name="morphe_force_original_audio_summary_on">Ag úsáid teanga bhunaidh na fuaime</string>
-  <string name="morphe_force_original_audio_summary_off">Ag úsáid fuaim réamhshocraithe</string>
+  <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
+  <string name="morphe_force_original_audio_summary_on">Ag baint úsáide as an teanga fuaime bhunaidh</string>
+  <string name="morphe_force_original_audio_summary_off">Ag baint úsáide as fuaim réamhshocraithe</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Bréag-sruthanna físeáin\' chuig aon chliant seachas Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Sruthanna físe bréige\' go haon chliant seachas Android Studio</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Glan na naisc roinnte</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Baintear an paraiméadar fiosrúcháin rianaithe de na naisc roinnte</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Ní bhaintear an paraiméadar fiosrúcháin rianaithe de na naisc roinnte</string>
-  <string name="morphe_replace_music_with_youtube_title">Athraigh na naisc comhroinnte go youtube.com</string>
+  <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Baintear paraiméadar fiosrúcháin rianaithe de naisc chomhroinnte</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Ní bhaintear paraiméadar fiosrúcháin rianaithe ó naisc chomhroinnte</string>
+  <string name="morphe_replace_music_with_youtube_title">Athraigh naisc chomhroinnte chuig youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Úsáideann naisc chomhroinnte youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Úsáideann naisc chomhroinnte music.youtube.com</string>
 </resources>

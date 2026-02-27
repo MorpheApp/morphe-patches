@@ -43,7 +43,7 @@ public final class VideoInformation {
     }
 
     /**
-     * Video resolution of the automatic quality option..
+     * Video resolution of the automatic quality option.
      */
     public static final int AUTOMATIC_VIDEO_QUALITY_VALUE = -2;
 
@@ -140,7 +140,7 @@ public final class VideoInformation {
      *
      * @param mdxPlayerDirector MDX player director object (casting mode).
      */
-    public static void initializeMdx(@NonNull PlaybackController mdxPlayerDirector) {
+    public static void initializeMDX(@NonNull PlaybackController mdxPlayerDirector) {
         try {
             mdxPlayerDirectorRef = new WeakReference<>(Objects.requireNonNull(mdxPlayerDirector));
         } catch (Exception ex) {
@@ -151,11 +151,11 @@ public final class VideoInformation {
     /**
      * Injection point.
      *
-     * @param newlyLoadedVideoId id of the current video
+     * @param newlyLoadedVideoId ID of the current video
      */
     public static void setVideoId(@NonNull String newlyLoadedVideoId) {
         if (!videoId.equals(newlyLoadedVideoId)) {
-            Logger.printDebug(() -> "New video id: " + newlyLoadedVideoId);
+            Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             videoId = newlyLoadedVideoId;
         }
     }
@@ -185,11 +185,11 @@ public final class VideoInformation {
     /**
      * Injection point.  Called off the main thread.
      *
-     * @param videoId The id of the last video loaded.
+     * @param videoId The ID of the last video loaded.
      */
     public static void setPlayerResponseVideoId(@NonNull String videoId, boolean isShortAndOpeningOrPlaying) {
         if (!playerResponseVideoId.equals(videoId)) {
-            Logger.printDebug(() -> "New player response video id: " + videoId);
+            Logger.printDebug(() -> "New player response video ID: " + videoId);
             playerResponseVideoId = videoId;
         }
     }
@@ -280,7 +280,7 @@ public final class VideoInformation {
             // The difference has to be a different second mark in order to avoid infinite skip loops
             // as the Lounge API only supports whole seconds.
             if (adjustedSeekTime / 1000 == videoTime / 1000) {
-                Logger.printDebug(() -> "Skipping seekTo for MDX because seek time is too small "
+                Logger.printDebug(() -> "Skipping seekTo for MDX because seek time is too small"
                         + "(" + (adjustedSeekTime - videoTime) + "ms)");
                 return false;
             }
@@ -308,7 +308,7 @@ public final class VideoInformation {
             Logger.printDebug(() -> "Seeking relative to: " + seekTime);
 
             // 19.39+ does not have a boolean return type for relative seek.
-            // But can call both methods and it works correctly for both situations.
+            // But can call both methods, and it works correctly for both situations.
             PlaybackController controller = playerControllerRef.get();
             if (controller == null) {
                 Logger.printDebug(() -> "Cannot seek relative as player controller is null");
@@ -317,7 +317,7 @@ public final class VideoInformation {
             }
 
             // Adjust the fine adjustment function so it's at least 1 second before/after.
-            // Otherwise the fine adjustment will do nothing when casting.
+            // Otherwise, the fine adjustment will do nothing when casting.
             final long adjustedSeekTime;
             if (seekTime < 0) {
                 adjustedSeekTime = Math.min(seekTime, -1000);
@@ -337,9 +337,9 @@ public final class VideoInformation {
     }
 
     /**
-     * Id of the last video opened.  Includes Shorts.
+     * ID of the last video opened. Includes Shorts.
      *
-     * @return The id of the video, or an empty string if no videos have been opened yet.
+     * @return The ID of the video, or an empty string if no videos have been opened yet.
      */
     @NonNull
     public static String getVideoId() {
@@ -347,7 +347,7 @@ public final class VideoInformation {
     }
 
     /**
-     * Differs from {@link #videoId} as this is the video id for the
+     * Differs from {@link #videoId} as this is the video ID for the
      * last player response received, which may not be the last video opened.
      * <p>
      * If Shorts are loading the background, this commonly will be
@@ -355,7 +355,7 @@ public final class VideoInformation {
      * <p>
      * For most use cases, you should instead use {@link #getVideoId()}.
      *
-     * @return The id of the last video loaded, or an empty string if no videos have been loaded yet.
+     * @return The ID of the last video loaded, or an empty string if no videos have been loaded yet.
      */
     @NonNull
     public static String getPlayerResponseVideoId() {
@@ -363,8 +363,8 @@ public final class VideoInformation {
     }
 
     /**
-     * @return If the last player response video id was a Short.
-     * Includes Shorts shelf items appearing in the feed that are not opened.
+     * @return If the last player response video ID was a Short.
+     * Include Shorts shelf items appearing in the feed that are not opened.
      * @see #lastVideoIdIsShort()
      */
     public static boolean lastPlayerResponseIsShort() {
@@ -372,7 +372,7 @@ public final class VideoInformation {
     }
 
     /**
-     * @return If the last player response video id _that was opened_ was a Short.
+     * @return If the last player response video ID _that was opened_ was a Short.
      */
     public static boolean lastVideoIdIsShort() {
         return videoIdIsShort;

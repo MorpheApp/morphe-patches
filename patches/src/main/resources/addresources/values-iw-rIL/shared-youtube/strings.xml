@@ -95,7 +95,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">לא ניתן להתחבר ל-VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из Android VR</string>
   <string name="morphe_oauth2_toast_invalid">טוקן התחברות ל-VR לא חוקי, נסה להתחבר ל-VR שוב</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">פרוטוקול QUIC מושבת</string>
+  <string name="morphe_disable_quic_protocol_summary_off">פרוטוקול QUIC פעיל</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">השבת אודיו DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">אודיו DRC מושבת</string>
   <string name="morphe_disable_drc_audio_summary_off">אודיו DRC מופעל</string>

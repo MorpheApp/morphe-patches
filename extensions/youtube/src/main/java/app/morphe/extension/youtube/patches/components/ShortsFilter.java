@@ -29,7 +29,6 @@ public final class ShortsFilter extends Filter {
             "reel_action_bar.", // Regular Shorts.
             "reels_player_overlay_layout." // Shorts ads.
     };
-    private static final String CONVERSATION_CONTEXT_FEED_IDENTIFIER = "horizontalCollectionSwipeProtector=null";
     private static final Map<Integer, BooleanSetting> REEL_ACTION_BUTTONS_MAP = new HashMap<>() {
         {
             // Like button and Dislike button can be hidden with Litho filter.
@@ -66,6 +65,8 @@ public final class ShortsFilter extends Filter {
 
     private final StringFilterGroup shortsCompactFeedVideo;
     private final ByteArrayFilterGroup shortsCompactFeedVideoBuffer;
+    private final StringFilterGroup channelProfile;
+    private final ByteArrayFilterGroup channelProfileShelfHeaderBuffer;
     private final StringFilterGroup useSoundButton;
     private final ByteArrayFilterGroup useSoundButtonBuffer;
     private final StringFilterGroup useTemplateButton;
@@ -88,12 +89,6 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup videoActionButton;
     private final ByteArrayFilterGroupList videoActionButtonBuffer = new ByteArrayFilterGroupList();
 
-    private final StringFilterGroup channelProfile;
-    private final ByteArrayFilterGroup channelProfileShelfHeaderBuffer = new ByteArrayFilterGroup(
-                    Settings.HIDE_SHORTS_CHANNEL,
-                    "Shorts"
-            );
-
     public ShortsFilter() {
         //
         // Identifier components.
@@ -110,6 +105,11 @@ public final class ShortsFilter extends Filter {
         channelProfile = new StringFilterGroup(
                 Settings.HIDE_SHORTS_CHANNEL,
                 "shorts_pivot_item"
+        );
+
+        channelProfileShelfHeaderBuffer = new ByteArrayFilterGroup(
+                Settings.HIDE_SHORTS_CHANNEL,
+                "Shorts"
         );
 
         // Feed Shorts shelf header.
@@ -358,7 +358,7 @@ public final class ShortsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_SHORTS_TAGGED_PRODUCTS,
                         // Product buttons show pictures of the products, and does not have any unique icons to identify.
-                        // Instead use a unique identifier found in the buffer.
+                        // Instead, use a unique identifier found in the buffer.
                         "PAproduct_listZ"
                 ),
                 new ByteArrayFilterGroup(
@@ -433,9 +433,9 @@ public final class ShortsFilter extends Filter {
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         if (contentType == FilterContentType.IDENTIFIER) {
             if (matchedGroup == shelfHeaderIdentifier) {
-                // Avoid hiding shelf header inside channel page.
-                // Channel page header does NOT contain this identifier.
-                if (identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER)) {
+                // Shelf header reused in history/channel/etc.
+                // Shorts header is always index 0
+                if (contentIndex != 0) {
                     return false;
                 }
             }
@@ -480,7 +480,7 @@ public final class ShortsFilter extends Filter {
                     return false;
                 }
 
-                return identifier == null || !identifier.contains(CONVERSATION_CONTEXT_FEED_IDENTIFIER);
+                return shouldHideShortsFeedItems();
             }
 
             // Video action buttons (comment, share, remix) have the same path.

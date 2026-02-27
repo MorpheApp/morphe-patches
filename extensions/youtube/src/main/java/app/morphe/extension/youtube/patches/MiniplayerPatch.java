@@ -99,9 +99,9 @@ public final class MiniplayerPatch {
         final int HORIZONTAL_PADDING_DIP = 15; // Estimated padding.
         // Round down to the nearest 5 pixels, to keep any error toasts easier to read.
         final int estimatedWidthDipMax = 5 * ((deviceDipWidth - HORIZONTAL_PADDING_DIP) / 5);
-        // On some ultra low end devices the pixel width and density are the same number,
+        // On some ultra-low-end devices the pixel width and density are the same number,
         // which causes the estimate to always give a value of 1.
-        // Fix this by using a fixed size of double the min width.
+        // Fix this by using a fixed size twice the minimum width.
         final int WIDTH_DIP_MAX = estimatedWidthDipMax <= WIDTH_DIP_MIN
                 ? 2 * WIDTH_DIP_MIN
                 : estimatedWidthDipMax;
@@ -150,8 +150,8 @@ public final class MiniplayerPatch {
             (CURRENT_TYPE == MODERN_1 || CURRENT_TYPE == MODERN_3 || CURRENT_TYPE == MODERN_4)
                     && Settings.MINIPLAYER_HIDE_SUBTEXT.get();
 
-    // 19.25 is last version that has forward/back buttons for phones,
-    // but buttons still show for tablets/foldable devices and they don't work well so always hide.
+    // 19.25 is last version that uses forward/back buttons for phones,
+    // but buttons still show for tablets/foldable devices, and they don't work well so always hide.
     private static final boolean HIDE_REWIND_FORWARD_ENABLED = CURRENT_TYPE == MODERN_1
             && (VersionCheckPatch.IS_19_34_OR_GREATER || Settings.MINIPLAYER_HIDE_REWIND_FORWARD.get());
 
@@ -401,7 +401,7 @@ public final class MiniplayerPatch {
     public static boolean allowBoldIcons(boolean original) {
         if (CURRENT_TYPE == MINIMAL) {
             // Minimal player does not have the correct pause/play icon (it's too large).
-            // Use the non bold icons instead.
+            // Use the non-bold icons instead.
             return false;
         }
 

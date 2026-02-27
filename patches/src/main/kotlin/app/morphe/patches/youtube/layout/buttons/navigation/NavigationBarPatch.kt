@@ -1,10 +1,22 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.buttons.navigation
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.ProtobufClassParseByteArrayFingerprint
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -23,16 +35,23 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.toolbar.hookToolBar
 import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
+import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
@@ -48,7 +67,8 @@ val navigationBarPatch = bytecodePatch(
         navigationBarHookPatch,
         versionCheckPatch,
         clientContextHookPatch,
-        toolBarHookPatch
+        toolBarHookPatch,
+        fixProtoLibraryPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -60,6 +80,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_create_button"),
             SwitchPreference("morphe_hide_subscriptions_button"),
             SwitchPreference("morphe_hide_notifications_button"),
+            SwitchPreference("morphe_show_search_button"),
+            ListPreference("morphe_search_button_index"),
             SwitchPreference("morphe_swap_create_with_notifications_button"),
             SwitchPreference("morphe_hide_navigation_button_labels"),
             SwitchPreference("morphe_narrow_navigation_buttons"),
@@ -169,6 +191,121 @@ val navigationBarPatch = bytecodePatch(
                         """
                     )
                 }
+            }
+        }
+
+
+        //
+        // Navigation search button
+        //
+
+        ActionBarSearchResultsFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            "searchQueryViewLoaded(Landroid/widget/TextView;)V"
+                )
+            }
+        }
+
+        val parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
+
+        PivotBarRendererFingerprint.let {
+            it.method.apply {
+                val pivotBarItemRendererType = it.instructionMatches[2]
+                    .instruction.getReference<TypeReference>()!!.type
+
+                val pivotBarRendererConstructorIndex = it.instructionMatches[3].index
+                val pivotBarRendererConstructorReference =
+                    getInstruction<ReferenceInstruction>(pivotBarRendererConstructorIndex).reference as MethodReference
+
+                val pivotBarRendererConstructorInstruction =
+                    getInstruction<RegisterRangeInstruction>(pivotBarRendererConstructorIndex)
+                val pivotBarRendererConstructorStartRegister = pivotBarRendererConstructorInstruction.startRegister
+                val pivotBarRendererConstructorEndRegister = pivotBarRendererConstructorStartRegister + pivotBarRendererConstructorInstruction.registerCount - 1
+
+                val messageLiteIndex =
+                    pivotBarRendererConstructorReference.parameterTypes.indexOfFirst { parameterType -> parameterType == "Lcom/google/protobuf/MessageLite;" }
+                val messageLiteRegister = pivotBarRendererConstructorStartRegister + messageLiteIndex + 1
+
+                val insertIndex = it.instructionMatches.last().index
+
+                addInstructionsAtControlFlowLabel(
+                    insertIndex,
+                    """
+                        # If the MessageLite class is for the home button, copy it.
+                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS_DESCRIPTOR->parsePivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
+                        move-result-object v$pivotBarRendererConstructorStartRegister
+                        if-eqz v$pivotBarRendererConstructorStartRegister, :ignore
+
+                        # Parse proto.
+                        sget-object v$messageLiteRegister, $pivotBarItemRendererType->a:$pivotBarItemRendererType
+                        invoke-static { v$messageLiteRegister, v$pivotBarRendererConstructorStartRegister }, $parseByteArrayMethod
+                        move-result-object v$messageLiteRegister
+                        check-cast v$messageLiteRegister, $pivotBarItemRendererType
+                        
+                        # A shallow copy of an object also applies changes to the original object.
+                        # To avoid this, we need to create a new object.
+                        new-instance v$pivotBarRendererConstructorStartRegister, ${pivotBarRendererConstructorReference.definingClass}
+                        invoke-direct/range { v$pivotBarRendererConstructorStartRegister .. v$pivotBarRendererConstructorEndRegister }, $pivotBarRendererConstructorReference
+                        
+                        # The newly created object is saved in the extension.
+                        invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS_DESCRIPTOR->setPivotBarRenderer(Ljava/lang/Object;)V
+                        :ignore
+                        nop
+                    """
+                )
+            }
+        }
+
+        PivotBarRendererListFingerprint.let {
+            it.method.apply {
+                val insertMatch = it.instructionMatches[2]
+                val insertIndex = insertMatch.index
+                val insertRegister =
+                    getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+
+                val protoListBuilderFingerprint = Fingerprint(
+                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+                    returnType = insertMatch.instruction.getReference<FieldReference>()!!.type,
+                    parameters = listOf("Ljava/util/Collection;")
+                )
+                val protoListBuilderMethod = protoListBuilderFingerprint.method
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        # If there are objects copied to the extension, they are added to the list.
+                        invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->getPivotBarRendererList(Ljava/util/List;)Ljava/util/List;
+                        move-result-object v$insertRegister
+                        
+                        # Convert to proto list.
+                        invoke-static { v$insertRegister }, $protoListBuilderMethod
+                        move-result-object v$insertRegister
+                    """
+                )
+            }
+        }
+
+        TopBarRendererFingerprint.let {
+            it.method.apply {
+                val onClickListenerIndex = it.instructionMatches[1].index
+                val onClickListenerRegister =
+                    getInstruction<FiveRegisterInstruction>(onClickListenerIndex).registerC
+                val messageLiteIndex = it.instructionMatches[2].index
+                val messageLiteRegister =
+                    getInstruction<OneRegisterInstruction>(messageLiteIndex).registerA
+
+                addInstruction(
+                    messageLiteIndex + 1,
+                    "invoke-static { v$messageLiteRegister, v$onClickListenerRegister }, " +
+                            "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
+                )
             }
         }
 

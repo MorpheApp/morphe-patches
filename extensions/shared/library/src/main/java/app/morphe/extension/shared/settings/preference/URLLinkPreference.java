@@ -9,36 +9,36 @@ import android.util.AttributeSet;
 import app.morphe.extension.shared.Logger;
 
 /**
- * Simple preference that opens a url when clicked.
+ * Simple preference that opens a URL when clicked.
  */
 @SuppressWarnings("deprecation")
-public class UrlLinkPreference extends Preference {
+public class URLLinkPreference extends Preference {
 
-    protected String externalUrl;
+    protected String externalURL;
 
     {
         setOnPreferenceClickListener(pref -> {
-            if (externalUrl == null) {
+            if (externalURL == null) {
                 Logger.printException(() -> "URL not set " + getClass().getSimpleName());
                 return false;
             }
             Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(externalUrl));
+            i.setData(Uri.parse(externalURL));
             pref.getContext().startActivity(i);
             return true;
         });
     }
 
-    public UrlLinkPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public URLLinkPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-    public UrlLinkPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public URLLinkPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-    public UrlLinkPreference(Context context, AttributeSet attrs) {
+    public URLLinkPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    public UrlLinkPreference(Context context) {
+    public URLLinkPreference(Context context) {
         super(context);
     }
 }

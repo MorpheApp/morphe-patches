@@ -47,7 +47,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_title">動画ストリームを偽装</string>
   <string name="morphe_spoof_video_streams_summary_on">"動画ストリームは偽装されています
 
-YouTube Premium ユーザーの場合、この設定が必要ない場合があります"</string>
+YouTube Premium ユーザーの場合、この設定は必要ない可能性があります"</string>
   <string name="morphe_spoof_video_streams_summary_off">"動画ストリームは偽装されていません
 
 再生に失敗する可能性があります"</string>
@@ -75,18 +75,18 @@ YouTube Premium ユーザーの場合、この設定が必要ない場合があ�
 
 1. 下記の [ウェブサイトを開く] をタップして「デバイスの接続」と表示されるウェブサイトを開く
 2. 上記のアクティベーション コードをクリップボードから貼り付け (もしくは手入力)
-3. 必要に応じて Google にログイン。複数のアカウントがある場合は、YouTube で使用するアカウントを選択
-4. [YouTube VR へのアクセスを許可する] をタップ
-5. 「デバイスが接続されました」というメッセージが表示された後にこのアプリに戻る"</string>
+3. Google にログイン (未ログインの場合)。複数のアカウントがある場合は、YouTube で使用するアカウントを選択する
+4. [許可] をタップして YouTube VR へのアクセスを許可する
+5. 「デバイスを接続しました」というメッセージが表示された後にこのアプリに戻る"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">ウェブサイトを開く</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">アクティベーション コードの発行に失敗しました</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">認証トークンの発行に失敗しました</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">ログインに成功しました</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"認証が保存されました
 
-• Morphe の設定のインポート / エクスポートには Android VR 認証は含まれない
-• このアプリが 6 ヶ月間使用されなかった場合、Google はこの認証を削除する
-• Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要がある"</string>
+• Morphe の設定のインポート / エクスポートには Android VR 認証は含まれません
+• このアプリが 6 ヶ月間使用されなかった場合、Google はこの認証を削除します
+• Google アカウントのパスワードを変更するか、Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 は一時的に利用できません (API タイムアウト)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR へのログインが期限切れです。再度ログインしてください</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 は一時的に利用できません (status %d)</string>
@@ -95,7 +95,11 @@ YouTube Premium ユーザーの場合、この設定が必要ない場合があ�
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC プロトコルを無効化</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC プロトコルは無効です</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC プロトコルは有効です</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
   <string name="morphe_disable_drc_audio_summary_on">オーディオ DRC は無効です</string>
   <string name="morphe_disable_drc_audio_summary_off">オーディオ DRC は有効です</string>

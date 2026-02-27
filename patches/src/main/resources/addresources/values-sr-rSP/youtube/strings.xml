@@ -118,9 +118,6 @@ Promene uključuju:
   <string name="morphe_hide_playables_title">Сакриј салу за игру</string>
   <string name="morphe_hide_playables_summary_on">Сала за игру је скривена</string>
   <string name="morphe_hide_playables_summary_off">Сала за игру је приказана</string>
-  <string name="morphe_hide_search_suggestions_title">Сакриј предлоге за претрагу</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Предлози за претрагу су скривени</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Предлози за претрагу су приказани</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Сакриј дугме „Прикажи још”</string>
@@ -142,6 +139,9 @@ Promene uključuju:
   <string name="morphe_hide_web_search_results_title">Сакриј резултате веб-претраге</string>
   <string name="morphe_hide_web_search_results_summary_on">Резултати веб-претраге су скривени</string>
   <string name="morphe_hide_web_search_results_summary_off">Резултати веб-претраге су приказани</string>
+  <string name="morphe_hide_you_may_like_section_title">Sakrij odeljak \'Moguće vam se sviđati\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Одељак за могуће лике је скривен</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Одељак за могуће лике је приказан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Сакриј YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Анимација YouTube Doodles-а на логотипу је скривена</string>
@@ -415,6 +415,9 @@ Promene uključuju:
   <string name="morphe_hide_paid_promotion_label_title">Сакриј ознаку плаћене промоције</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">Ознака плаћене промоције је скривена</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">Ознака плаћене промоције је приказана</string>
+  <string name="morphe_hide_player_popup_ads_title">Сакриј рекламе у плејеру</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">Рекламе у плејеру су скривене</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">Рекламе у плејеру су приказане</string>
   <string name="morphe_hide_self_sponsor_ads_title">Сакриј картице самоспонзорства</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">Картице самоспонзорства су скривене</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">Картице самоспонзорства су приказане</string>
@@ -431,7 +434,7 @@ Promene uključuju:
   <string name="morphe_hide_video_ads_title">Сакриј видео огласе</string>
   <string name="morphe_hide_video_ads_summary_on">Видео огласи су скривени</string>
   <string name="morphe_hide_video_ads_summary_off">Видео огласи су приказани</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Линк је копиран у привремену меморију</string>
   <string name="morphe_share_copy_url_timestamp_success">Линк с временском ознаком је копиран</string>
   <string name="morphe_copy_video_url_title">Прикажи дугме за копирање линка видеа</string>
@@ -445,10 +448,10 @@ Promene uključuju:
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Дијалог о дискрецији гледаоца ће бити уклоњен</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Дијалог о дискрецији гледаоца ће бити приказан</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Ово не заобилази старосно ограничење. Само га аутоматски прихвата.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Онемогући искачући прозор „Пријава на ТВ”</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Искачући прозор „Пријава на ТВ” је онемогућен</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Искачући прозор „Пријава на ТВ” је омогућен</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Онемогући искачући прозор „Пријава на ТВ”</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Искачући прозор „Пријава на ТВ” је онемогућен</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Искачући прозор „Пријава на ТВ” је омогућен</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Онемогући прескакање поглавља двоструким додиром</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Двоструки додир никада не може покренути прескакање на следеће/претходно поглавље</string>
@@ -477,10 +480,14 @@ Promene uključuju:
   <string name="morphe_disable_precise_seeking_gesture_title">Онемогући покрет прецизног премотавања</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Покрет прецизног премотавања је онемогућен</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Покрет прецизног премотавања је омогућен</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Омогући додир за премотавање</string>
-  <string name="morphe_seekbar_tapping_summary_on">Додир за премотавање је омогућен</string>
-  <string name="morphe_seekbar_tapping_summary_off">Додир за премотавање је онемогућен</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Омогући превлачење за премотавање</string>
+  <string name="morphe_slide_to_seek_summary_on">Превлачење за премотавање је омогућено</string>
+  <string name="morphe_slide_to_seek_summary_off">Превлачење за премотавање није омогућено</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Омогући додир за премотавање</string>
+  <string name="morphe_tap_to_seek_summary_on">Додир за премотавање је омогућен</string>
+  <string name="morphe_tap_to_seek_summary_off">Додир за премотавање је онемогућен</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Омогући покрет за осветљеност</string>
   <string name="morphe_swipe_brightness_summary_on">"Превлачење за осветљеност у режиму целог екрана је омогућено
@@ -650,6 +657,11 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_hide_notifications_button_title">Сакриј обавештења</string>
   <string name="morphe_hide_notifications_button_summary_on">Дугме „Обавештења” је скривено</string>
   <string name="morphe_hide_notifications_button_summary_off">Дугме „Обавештења” је приказано</string>
+  <string name="morphe_show_search_button_title">Прикажи дугме „Претрага“</string>
+  <string name="morphe_show_search_button_summary_on">Дугме „Претрага” је приказано</string>
+  <string name="morphe_show_search_button_summary_off">Дугме „Претрага“ није приказана</string>
+  <string name="morphe_search_button_index_title">Дугме за претрагу</string>
+  <string name="morphe_search_button_index_invalid">Индекс дугмета за претрагу мора бити мањи од %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Замени дугме „Направи” дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Дугме „Направи” је замењено дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Дугме „Направи” није замењено дугметом „Обавештења”</string>
@@ -737,10 +749,10 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Мени „Аудио снимак” је скривен</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Мени „Аудио снимак” је приказан</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni sa audio trakom je sakriven
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni sa zvučnim stazama je sakriven
 
-Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'."</string>
+Da bi prikazali meni sa zvučnim stazama, promenite 'Imitirati video tokove' u 'Android Reel' ili 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Сакриј дугме „Гледај у ВР”</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Дугме „Гледај у ВР” је скривено</string>
@@ -780,9 +792,9 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Дугмићи Претходни и Следећи су скривени</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Дугмад Претходно и Следеће се приказују</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Сакриј картице завршног екрана</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">Картице завршног екрана су скривене</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">Картице завршног екрана су приказане</string>
+  <string name="morphe_hide_end_screen_cards_title">Сакриј картице завршног екрана</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">Картице завршног екрана су скривене</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">Картице завршног екрана су приказане</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Режим амбијента</string>
   <string name="morphe_ambient_mode_screen_summary">Изабери да биш прескочио ограничења енергетске ефикасности за режим амбијента и искључи га у потпуности или у пуном екранском режиму</string>
@@ -959,10 +971,10 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_hide_timestamp_title">Сакриј временску ознаку видеа</string>
   <string name="morphe_hide_timestamp_summary_on">Временска ознака видеа је скривена</string>
   <string name="morphe_hide_timestamp_summary_off">Временска ознака видеа је приказана</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Сакриј искачуће табле у плејеру</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">Искачуће табле у плејеру су скривене</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">Искачуће табле у плејеру су приказане</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Онемогући рекламе у плејеру</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">Искачуће табле у плејеру су скривене</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">Искачуће табле у плејеру су приказане</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Излаз из режима целог екрана на крају видеа</string>
   <string name="morphe_exit_fullscreen_entry_1">Онемогућено</string>
@@ -1089,9 +1101,9 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_sb_general_min_duration">Минимално трајање сегмента</string>
   <string name="morphe_sb_general_min_duration_sum">Сегменти краћи од ове вредности (у секундама) неће бити приказани или прескочени</string>
   <string name="morphe_sb_general_min_duration_invalid">Неважеће временско трајање</string>
-  <string name="morphe_sb_general_uuid">Ваш приватни кориснички ID</string>
+  <string name="morphe_sb_general_uuid">Vaš privatni korisnički ID</string>
   <string name="morphe_sb_general_uuid_sum">Ово треба да остане приватно. Ово је као лозинка и не би требало да се дели ни са ким. Ако неко има ово, може да се лажно представља за вас</string>
-  <string name="morphe_sb_general_uuid_invalid">Приватни кориснички ID мора да има најмање 30 знакова</string>
+  <string name="morphe_sb_general_uuid_invalid">Privatni korisnički ID mora imati najmanje 30 znakova</string>
   <string name="morphe_sb_general_api_url">Промена URL-а API-ја</string>
   <string name="morphe_sb_general_api_url_sum">Адреса коју SponsorBlock користи за упућивање позива серверу</string>
   <string name="morphe_sb_api_url_reset">Ресетовање URL-а API-ја</string>
@@ -1100,13 +1112,13 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_sb_settings_ie">Увоз/Извоз подешавања</string>
   <string name="morphe_sb_settings_copy">Копирај</string>
   <string name="morphe_sb_settings_ie_sum">Ваша SponsorBlock JSON конфигурација која може да се увезе/извезе у Morphe и друге SponsorBlock платформе</string>
-  <string name="morphe_sb_settings_ie_sum_warning">Ваша SponsorBlock JSON конфигурација која може да се увезе/извезе у Morphe и друге SponsorBlock платформе. Ово укључује ваш приватни кориснички ID. Будите пажљиви при дељењу овога</string>
+  <string name="morphe_sb_settings_ie_sum_warning">Vaša SponsorBlock JSON konfiguracija koja može da se uveze/izveze u Morphe i druge SponsorBlock platforme. Ovo uključuje vaš privatni korisnički ID. Budite pažljivi pri deljenju ovoga</string>
   <string name="morphe_sb_settings_import_successful">Подешавања су успешно увезена</string>
   <string name="morphe_sb_settings_import_failed">Неуспешан увоз: %s</string>
   <string name="morphe_sb_settings_export_failed">Неуспешан извоз: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ваша подешавања садрже приватни SponsorBlock кориснички ID.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Vaša podešavanja sadrže privatni SponsorBlock korisnički ID.
 
-Ваш кориснички ID је као лозинка и никада га не треба делити."</string>
+Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Не приказуј поново</string>
   <string name="morphe_sb_diff_segments">Промена понашања сегмента</string>
   <string name="morphe_sb_segments_sponsor">Спонзор</string>
@@ -1460,6 +1472,9 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Онемогући вибрацију поништавања премотавања </string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Вибрација поништавања премотавања је онемогућена</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Вибрација поништавања премотавања је омогућена</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Онемогући вибрације при дугом притиску</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Вибрације при дугом притиску су онемогућене</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Вибрације при дугом притиску су омогућене</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Онемогући вибрацију при увеличавању</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Вибрација при увеличавању је онемогућена</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Вибрација при увеличавању је омогућена</string>
@@ -1552,10 +1567,6 @@ Da bi prikazali meni sa audio trakom, promenite 'Imitirati video tokove' u 'TV'.
   <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitet video-a</string>
   <string name="morphe_prioritize_video_quality_summary_on">Kvalitet video-a je prioritet</string>
   <string name="morphe_prioritize_video_quality_summary_off">Video kodici su prioritet</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Омогући превлачење за премотавање</string>
-  <string name="morphe_slide_to_seek_summary_on">Превлачење за премотавање је омогућено</string>
-  <string name="morphe_slide_to_seek_summary_off">Превлачење за премотавање није омогућено</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Дозволи Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Видео кодек је AVC (H.264), VP9 или AV1

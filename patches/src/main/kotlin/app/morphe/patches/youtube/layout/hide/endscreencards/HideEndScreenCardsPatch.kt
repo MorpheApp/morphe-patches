@@ -32,7 +32,7 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_endscreen_cards"),
+            SwitchPreference("morphe_hide_end_screen_cards"),
         )
 
         fun idOf(name: String) = getResourceId(ResourceType.LAYOUT, "endscreen_element_layout_$name")

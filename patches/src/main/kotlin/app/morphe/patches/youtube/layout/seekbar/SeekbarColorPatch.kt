@@ -153,7 +153,7 @@ val seekbarColorPatch = bytecodePatch(
             return@execute // 19.25 does not have a cairo launch animation.
         }
 
-        // Hook the splash animation to set the a seekbar color.
+        // Hook the splash animation to set the seekbar color.
         YouTubeActivityOnCreateFingerprint.method.apply {
             val setAnimationIntMethodName =
                 LottieAnimationViewSetAnimationIntFingerprint.originalMethod.name

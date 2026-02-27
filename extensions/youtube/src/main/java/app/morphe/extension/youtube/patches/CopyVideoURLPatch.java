@@ -7,9 +7,9 @@ import android.os.Build;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
-public class CopyVideoUrlPatch {
+public class CopyVideoURLPatch {
 
-    public static void copyUrl(boolean withTimestamp) {
+    public static void copyURL(boolean withTimestamp) {
         try {
             StringBuilder builder = new StringBuilder("https://youtu.be/");
             builder.append(VideoInformation.getVideoId());
@@ -31,7 +31,7 @@ public class CopyVideoUrlPatch {
             }
 
             Utils.setClipboard(builder.toString());
-            // Do not show a toast if using Android 13+ as it shows it's own toast.
+            // Do not show a toast if using Android 13+ as it shows its own toast.
             // But if the user copied with a timestamp then show a toast.
             // Unfortunately this will show 2 toasts on Android 13+, but no way around this.
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2 || (withTimestamp && currentVideoTimeInSeconds > 0)) {
@@ -40,7 +40,7 @@ public class CopyVideoUrlPatch {
                         : str("morphe_share_copy_url_success"));
             }
         } catch (Exception e) {
-            Logger.printException(() -> "Failed to generate video url", e);
+            Logger.printException(() -> "Failed to generate video URL", e);
         }
     }
 

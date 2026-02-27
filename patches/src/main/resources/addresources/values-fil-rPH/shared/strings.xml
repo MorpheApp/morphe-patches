@@ -17,11 +17,108 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Mga pagpipilian</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Sigurado ka bang nais mong magpatuloy?</string>
+  <string name="morphe_settings_save">I-save</string>
+  <string name="morphe_settings_reset">Ipawalang-bisa</string>
+  <string name="morphe_settings_reset_color">Ipawalang-bisa ang kulay</string>
+  <string name="morphe_settings_color_invalid">Imbalido na kulay</string>
+  <string name="morphe_settings_restart_title">Kailangan ng restart</string>
+  <string name="morphe_settings_restart_dialog_message">I-restart ang aplikasyon upang magkabisa ang pagbabagong ito.</string>
+  <string name="morphe_settings_restart">I-restart</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">I-import</string>
+  <string name="morphe_settings_import_copy">Kopyahin</string>
+  <string name="morphe_settings_import_reset">Ibinalik sa default ang mga pagpipilian sa Morphe</string>
+  <string name="morphe_settings_import_success">Na-import %d na mga pagpipilian</string>
+  <string name="morphe_settings_import_failure_parse">Nabigong ma-import: %s</string>
+  <string name="morphe_settings_search_hint">Maghanap sa mga pagpipilian</string>
+  <string name="morphe_settings_search_no_results_title">Walang mahanap na resulta para sa \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Subukan ang ibang keyword</string>
+  <string name="morphe_settings_search_recent_searches">Mga kamakailang mga paghahanap</string>
+  <string name="morphe_settings_search_remove_message">Alisin mula sa kasaysayan sa paghahanap?</string>
+  <string name="morphe_settings_search_clear_history">Alisin ang kasaysayan sa paghahanap</string>
+  <string name="morphe_settings_search_clear_history_message">Sigurado ka bang nais mong alisin ang lahat ng kasaysayan sa paghahanap?</string>
+  <string name="morphe_settings_search_tips_title">Mga Pahiwatig sa Paghahanap</string>
+  <string name="morphe_settings_search_tips_summary">"• Pindutin ang isang landas upang mag-navigate dito 
+• Pindutin nang matagal ang isang pagpipilian upang mag-navigate dito 
+• Pindutin ang Enter upang i-save ang isang paghahanap sa paghahanap sa kasaysayan 
+• Binabalewala ng paghahanap ang casing at bantas 
+• Lumalabas ang mga pagpipilian ng magulang sa itaas ng nakapatay na mga pagpipilian ng bata"</string>
+  <string name="morphe_settings_search_empty_history_title">Walang laman ang kasaysayan sa paghahanap</string>
+  <string name="morphe_settings_search_empty_history_summary">Upang i-save ang kasaysayan sa paghahanap, mag-type ng isang paghahanap at pindutin ang Enter</string>
+  <string name="morphe_settings_search_history_title">Ipakita ang pagpipilian ng kasaysayan sa paghahanap</string>
+  <string name="morphe_settings_search_history_summary_on">Ipinapakita ang pagpipilian ng kasaysayan sa paghahanap</string>
+  <string name="morphe_settings_search_history_summary_off">Hindi ipinapakita ang pagpipilian ng kasaysayan sa paghahanap</string>
+  <string name="morphe_show_menu_icons_title">Ipakita ang mga icon ng pagpipilian ng Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Ipinapakita ang mga icon ng pagpipilian</string>
+  <string name="morphe_show_menu_icons_summary_off">Hindi ipinapakita ang mga icon ng pagpipilian</string>
+  <string name="morphe_language_title">Wika ng Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Maaaring nawawala o hindi kumpleto ang mga pagsasalin-wika para sa ilang mga wika.
+
+Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, bisitahin ang morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Wika ng aplikasyon</string>
+  <string name="morphe_pref_import_export_title">I-import / I-export</string>
+  <string name="morphe_pref_import_export_summary">I-import / I-export ang mga pagpipilian sa Morphe</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Ginagamit mo ang pinakabagong bersyon ng Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Gumagamit ka ng Morphe Patches na may bersyon&lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Magagamit ang isang update:&lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Upang i-update ang iyong mga patch, gamitin ang Morphe upang ire-patch ang aplikasyong ito</string>
+  <string name="morphe_settings_about_links_dev_header">Paunawa</string>
+  <string name="morphe_settings_about_links_dev_body">Isang pre-release ang bersyon na ito at maaari kang makaranas ng hindi inaasahang mga isyu</string>
+  <string name="morphe_settings_about_links_header">Mga opisyal na link</string>
+  <string name="morphe_settings_about_links_website">Website</string>
+  <string name="morphe_settings_about_links_donate">Magbigay</string>
+  <string name="morphe_settings_about_links_translations">Mga Pagsasalin</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <string name="morphe_debug_screen_title">Debugging</string>
+  <string name="morphe_debug_screen_summary">Paganahin o patayin ang mga pagpipilian sa debugging</string>
+  <string name="morphe_debug_title">Tala ng debug</string>
+  <string name="morphe_debug_summary_on">Pinagana ang mga tala sa debug</string>
+  <string name="morphe_debug_summary_off">Nakapatay ang mga tala sa debug</string>
+  <string name="morphe_debug_stacktrace_title">Itala ang mga stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_on">Kasama sa mga tala ng debug ang stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_off">Hindi kasama sa mga tala ng debug ang stack trace</string>
+  <string name="morphe_debug_toast_on_error_title">Ipakita ang abiso sa pagkakamali sa Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Ipinapakita ang abiso kung may naganap na pagkakamali</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Hindi ipinapakita ang abiso kung may naganap na pagkakamali</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Itinatago ang lahat ng abiso ng pagkakamali sa Morphe kung nakapatay ang mga abiso ng pagkakamali.
+
+Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">I-export ang mga tala ng debug</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Kinokopya ang mga tala ng Morphe debug sa clipboard</string>
+  <string name="morphe_debug_logs_disabled">Nakapatay ang pagtatala sa debug</string>
+  <string name="morphe_debug_logs_none_found">Walang nahanap na mga tala</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Kinopya ang mga tala</string>
+  <string name="morphe_debug_logs_failed_to_export">Nabigong ma-export ang mga tala: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Alisin ang mga tala ng debug</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Tinatanggal ang lahat ng nakaimbak na mga tala ng Morphe debug</string>
+  <string name="morphe_debug_logs_clear_toast">Inalis ang lahat ng mga tala</string>
+  <string name="morphe_debug_feature_flags_manager_title">Tagapamahala ng mga feature flag</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Pamahalaan ang boolean ng mga feature flag</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Mga aktibong flag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Mga nakaharang na flag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Maghanap ng mga flag...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Na-save ang mga flag</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Ibinalik ang mga flag</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Kinopya ang mga flag sa clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">I-restart ang aplikasyon upang gamitin ang tampok na ito</string>
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Buksan ang mga pagpipilian sa MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">Hindi naka-install ang MicroG. I-install ito.</string>
+  <string name="gms_core_dialog_title">Kailangan ng aksyon</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Walang pahintulot ang MicroG na tumakbo sa likuran.
+
+Sundin ang gabay na \"Huwag patayin ang aking aplikasyon\" para sa iyong telepono, at ilapat ang mga tagubilin sa iyong pag-install ng MicroG.
+
+Kinakailangan ito upang gumana ang aplikasyon."</string>
+  <string name="gms_core_dialog_open_website_text">Buksan ang website</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Dapat nakapatay ang pag-optimize ng baterya sa MicroG upang maiwasan ang mga isyu. 
+
+Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng baterya para sa MicroG. 
+
+Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize."</string>
+  <string name="gms_core_dialog_continue_text">Magpatuloy</string>
 </resources>

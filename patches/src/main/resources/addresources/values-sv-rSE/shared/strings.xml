@@ -102,7 +102,7 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flaggor återställda</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flaggor kopierade till urklipp</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Starta om appen för att använda denna funktionalitet</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Öppna MicroG-inställningarna</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

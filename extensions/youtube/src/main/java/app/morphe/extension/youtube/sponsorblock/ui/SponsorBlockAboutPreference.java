@@ -3,12 +3,12 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import app.morphe.extension.shared.settings.preference.UrlLinkPreference;
+import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 
 @SuppressWarnings("unused")
-public class SponsorBlockAboutPreference extends UrlLinkPreference {
+public class SponsorBlockAboutPreference extends URLLinkPreference {
     {
-        externalUrl = "https://sponsor.ajay.app";
+        externalURL = "https://sponsor.ajay.app";
     }
 
     public SponsorBlockAboutPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {

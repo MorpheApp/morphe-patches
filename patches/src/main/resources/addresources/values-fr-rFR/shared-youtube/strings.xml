@@ -95,7 +95,11 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossible de se connecter à VR : %s</string>
   <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Désactiver le protocole QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Le protocole QUIC est désactivé</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Le protocole QUIC est activé</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Désactiver l\'audio DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">L\'audio DRC est désactivé</string>
   <string name="morphe_disable_drc_audio_summary_off">L\'audio DRC est activé</string>

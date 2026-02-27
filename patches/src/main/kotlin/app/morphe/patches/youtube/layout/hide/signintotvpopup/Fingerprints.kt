@@ -4,7 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 
-internal object SignInToTvPopupFingerprint : Fingerprint(
+internal object SignInToTVPopupFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("Ljava/lang/String;", "Z", "L"),
     filters = listOf(

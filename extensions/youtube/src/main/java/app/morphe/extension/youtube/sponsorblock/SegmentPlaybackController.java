@@ -131,7 +131,7 @@ public class SegmentPlaybackController {
 
     /**
      * Current segments that have been auto skipped.
-     * If field is non null then the range will always contain the current video time.
+     * If field is non-null then the range will always contain the current video time.
      * Range is used to prevent auto-skipping after undo.
      * Android Range object has inclusive end time, unlike {@link SponsorSegment}.
      */
@@ -139,7 +139,7 @@ public class SegmentPlaybackController {
     private static Range<Long> undoAutoSkipRange;
     /**
      * Range to undo if the toast is tapped.
-     * Is always null or identical to the last non null value of {@link #undoAutoSkipRange}.
+     * Is always null or identical to the last non-null value of {@link #undoAutoSkipRange}.
      */
     @Nullable
     private static Range<Long> undoAutoSkipRangeToast;
@@ -433,7 +433,7 @@ public class SegmentPlaybackController {
             // Amount of time to look ahead for the next segment,
             // and the threshold to determine if a scheduled show/hide is at the correct video time when it's run.
             //
-            // This value must be greater than largest time between calls to this method (1000ms),
+            // This value must be greater than the largest time between calls to this method (1000ms),
             // and must be adjusted for the video speed.
             //
             // To debug the stale skip logic, set this to a very large value (5000 or more)
@@ -501,7 +501,7 @@ public class SegmentPlaybackController {
 
                     // Only schedule, if the segment start time is not near the end time of the current segment.
                     // This check is needed to prevent scheduled hide and show from clashing with each other.
-                    // Instead the upcoming segment will be handled when the current segment scheduled hide calls back into this method.
+                    // Instead, the upcoming segment will be handled when the current segment scheduled hide calls back into this method.
                     final long minTimeBetweenStartEndOfSegments = 1000;
                     if (foundSegmentCurrentlyPlaying == null
                             || !foundSegmentCurrentlyPlaying.endIsNear(segment.start, minTimeBetweenStartEndOfSegments)) {
@@ -630,7 +630,7 @@ public class SegmentPlaybackController {
     }
 
     /**
-     * Removes all previously hidden segments that are not longer contained in the given video time.
+     * Removes all previously hidden segments that are no longer contained in the given video time.
      */
     private static void updateHiddenSegments(long currentVideoTime) {
         hiddenSkipSegmentsForCurrentVideoTime.removeIf((hiddenSegment) -> {
@@ -788,8 +788,8 @@ public class SegmentPlaybackController {
         final long delayToToastMilliseconds = 250;
         Utils.runOnMainThreadDelayed(() -> {
             try {
-                // Do not show a toast if the user is scrubbing thru a paused video.
-                // Cannot do this video state check in setTime or before calling this this method,
+                // Do not show a toast if the user is scrubbing through a paused video.
+                // Cannot do this video state check in setTime or before calling this method,
                 // as the video state may not be up to date. So instead, only ignore the toast
                 // just before it's about to show since the video state is up to date.
                 if (VideoState.getCurrent() == VideoState.PAUSED) {

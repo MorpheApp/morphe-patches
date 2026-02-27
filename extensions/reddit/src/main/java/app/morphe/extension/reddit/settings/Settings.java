@@ -7,6 +7,8 @@ package app.morphe.extension.reddit.settings;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
+import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
+
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
@@ -36,7 +38,9 @@ public class Settings extends BaseSettings {
 
     // Miscellaneous
     public static final BooleanSetting OPEN_LINKS_DIRECTLY = new BooleanSetting("morphe_open_links_directly", TRUE);
-    public static final BooleanSetting SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
+    public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
+
+    private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
 
     static {
         // region Migration
@@ -45,6 +49,8 @@ public class Settings extends BaseSettings {
         for (Setting<?> setting : Setting.allLoadedSettings()) {
             Setting.migrateFromOldPreferences(oldPrefs, setting);
         }
+
+        migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
 
         // endregion
     }

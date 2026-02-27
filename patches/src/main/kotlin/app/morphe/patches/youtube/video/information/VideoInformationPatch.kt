@@ -65,7 +65,7 @@ private var mdxInitInsertRegister = -1
 private lateinit var timeMethod: MutableMethod
 private var timeInitInsertIndex = 2
 
-// Old speed menu, where speeds are entries in a list.  Method is also used by the player speed button.
+// Old speed menu, where speeds are entries in a list. Method is also used by the player speed button.
 private lateinit var legacySpeedSelectionInsertMethod: MutableMethod
 private var legacySpeedSelectionInsertIndex = -1
 private var legacySpeedSelectionValueRegister = -1
@@ -132,7 +132,7 @@ val videoInformationPatch = bytecodePatch(
             mdxInitInsertIndex = initThisIndex + 1
 
             // Hook the MDX director for use through the extension.
-            onCreateHookMdx(EXTENSION_CLASS_DESCRIPTOR, "initializeMdx")
+            onCreateHookMDX(EXTENSION_CLASS_DESCRIPTOR, "initializeMDX")
 
             val MdxSeekFingerprintResultMethod = MdxSeekFingerprint.match(classDef).method
             val MdxSeekRelativeFingerprintResultMethod = MdxSeekRelativeFingerprint.match(classDef).method
@@ -175,7 +175,7 @@ val videoInformationPatch = bytecodePatch(
             PlayerStatusFingerprint.match(PlayerInitFingerprint.originalClassDef).method
 
         /*
-         * Inject call for video ids
+         * Inject call for video IDs
          */
         val videoIdMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoId(Ljava/lang/String;)V"
         hookVideoId(videoIdMethodDescriptor)
@@ -183,8 +183,8 @@ val videoInformationPatch = bytecodePatch(
         hookPlayerResponseVideoId(
             "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
         )
-        // Call before any other video id hooks,
-        // so they can use VideoInformation and check if the video id is for a Short.
+        // Call before any other video ID hooks,
+        // so they can use VideoInformation and check if the video ID is for a Short.
         addPlayerResponseMethodHook(
             Hook.ProtoBufferParameterBeforeVideoId(
                 "$EXTENSION_CLASS_DESCRIPTOR->" +
@@ -229,7 +229,7 @@ val videoInformationPatch = bytecodePatch(
 
             if (is_20_49_or_greater) {
                 // Only one class implements the interface. Patcher currently does not have a
-                // 'first' accessor for looking up classes, so do it ourself to verify
+                // 'first' accessor for looking up classes, so do it ourselves to verify
                 // we're using the expected class type.
                 var fieldReferenceType: ClassDef? = null
                 classDefForEach { def ->
@@ -529,9 +529,9 @@ private fun MutableMethod.insertTimeHook(insertIndex: Int, descriptor: String) =
     insert(insertIndex, "p1, p2", descriptor)
 
 /**
- * Hook the player controller.  Called when a video is opened or the current video is changed.
+ * Hook the player controller. Called when a video is opened or the current video is changed.
  *
- * Note: This hook is called very early and is called before the video id, video time, video length,
+ * Note: This hook is called very early and is called before the video ID, video time, video length,
  * and many other data fields are set.
  *
  * @param targetMethodClass The descriptor for the class to invoke when the player controller is created.
@@ -550,7 +550,7 @@ internal fun onCreateHook(targetMethodClass: String, targetMethodName: String) =
  * @param targetMethodClass The descriptor for the class to invoke when the player controller is created.
  * @param targetMethodName The name of the static method to invoke when the player controller is created.
  */
-internal fun onCreateHookMdx(targetMethodClass: String, targetMethodName: String) =
+internal fun onCreateHookMDX(targetMethodClass: String, targetMethodName: String) =
     mdxInitMethod.insert(
         mdxInitInsertIndex++,
         "v$mdxInitInsertRegister",

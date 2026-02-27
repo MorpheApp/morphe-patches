@@ -3,8 +3,8 @@ package app.morphe.patches.youtube.layout.thumbnails
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.imageurlhook.addImageUrlHook
-import app.morphe.patches.youtube.misc.imageurlhook.cronetImageUrlHookPatch
+import app.morphe.patches.youtube.misc.imageurlhook.addImageURLHook
+import app.morphe.patches.youtube.misc.imageurlhook.cronetImageURLHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -20,7 +20,7 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        cronetImageUrlHookPatch,
+        cronetImageURLHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -30,8 +30,8 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
             SwitchPreference("morphe_bypass_image_region_restrictions"),
         )
 
-        // A priority hook is not needed, as the image urls of interest are not modified
+        // A priority hook is not needed, as the image URLs of interest are not modified
         // by AlternativeThumbnails or any other patch in this repo.
-        addImageUrlHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLHook(EXTENSION_CLASS_DESCRIPTOR)
     }
 }

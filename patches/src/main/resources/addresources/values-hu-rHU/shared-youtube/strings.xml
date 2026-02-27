@@ -95,7 +95,11 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nem tud bejelentkezni a VR-ba: %s</string>
   <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
   <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC protokoll letiltva</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC protokoll engedélyezve</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC hang letiltása</string>
   <string name="morphe_disable_drc_audio_summary_on">A DRC hang letiltva van</string>
   <string name="morphe_disable_drc_audio_summary_off">A DRC hang engedélyezve van</string>

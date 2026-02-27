@@ -277,6 +277,19 @@ public abstract class Setting<T> {
     }
 
     /**
+     * Migrate a setting value if the path is renamed but otherwise the old and new settings are identical.
+     */
+    public static <T> void migrateOldSettingToNew(Setting<T> oldSetting, Setting<T> newSetting) {
+        if (oldSetting == newSetting) throw new IllegalArgumentException();
+
+        if (!oldSetting.isSetToDefault()) {
+            Logger.printInfo(() -> "Migrating old setting value: " + oldSetting + " into replacement setting: " + newSetting);
+            newSetting.save(oldSetting.value);
+            oldSetting.resetToDefault();
+        }
+    }
+
+    /**
      * Migrate an old Setting value previously stored in a different SharedPreference.
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -326,7 +339,7 @@ public abstract class Setting<T> {
         setting.setValueFromString(newValue);
 
         // Clear the preference value since default is used, to allow changing
-        // the default for a future release.  Without this after upgrading
+        // the default for a future release. Without this after upgrading
         // the saved value will be whatever was the default when the app was first installed.
         if (setting.isSetToDefault()) {
             setting.removeFromPreferences();
@@ -437,7 +450,7 @@ public abstract class Setting<T> {
 
     /**
      * @param importExportKey The JSON key. The JSONObject parameter will contain data for this key.
-     * @return the value stored using the import/export key.  Do not set any values in this method.
+     * @return the value stored using the import/export key. Do not set any values in this method.
      */
     protected abstract T readFromJSON(JSONObject json, String importExportKey) throws JSONException;
 

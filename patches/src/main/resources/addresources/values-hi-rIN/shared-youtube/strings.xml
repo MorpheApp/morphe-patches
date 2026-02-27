@@ -94,7 +94,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR में प्रवेश नहीं किया जा सकता: %s</string>
   <string name="morphe_oauth2_toast_reset">एंड्रॉइड वीआर से लॉग आउट किया गया</string>
   <string name="morphe_oauth2_toast_invalid">VR प्रवेश टोकन अमान्य है, कृपया VR में पुनः प्रवेश करें</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC प्रोटोकॉल को अक्षम करना</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC प्रोटोकॉल अक्षम है</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC प्रोटोकॉल सक्षम है</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC ध्वनि बंद करें</string>
   <string name="morphe_disable_drc_audio_summary_on">DRC ध्वनि बंद है</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC ध्वनि सक्षम है</string>

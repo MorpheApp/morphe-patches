@@ -95,7 +95,11 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljeni s Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte ponovno se prijaviti na VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Onemisliti protokol QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je onemogućen</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC je omogućan</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Onemogući DRC zvuk</string>
   <string name="morphe_disable_drc_audio_summary_on">DRC zvuk je onemogućen</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC zvuk je omogućeno</string>

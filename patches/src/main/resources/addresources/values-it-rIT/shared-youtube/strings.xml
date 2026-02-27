@@ -95,7 +95,11 @@ Per accedere, premi Continua di seguito"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossibile accedere a VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Disconnesso da Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token di accesso a VR non valido, prova ad accedere nuovamente a VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Disabilita il protocollo QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Il protocollo QUIC è disabilitato</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Il protocollo QUIC è abilitato</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Disabilita l\'audio DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">L\'audio DRC è disabilitato</string>
   <string name="morphe_disable_drc_audio_summary_off">L\'audio DRC è abilitato</string>

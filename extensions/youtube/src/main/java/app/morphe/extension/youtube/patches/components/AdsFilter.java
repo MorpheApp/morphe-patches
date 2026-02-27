@@ -24,6 +24,11 @@ public final class AdsFilter extends Filter {
 
     // endregion
 
+    private static final String[] PLAYER_POPUP_AD_PANEL_IDS = {
+            "PAproduct", // Shopping.
+            "jumpahead" // Premium promotion.
+    };
+
     // https://encrypted-tbn0.gstatic.com/shopping?q=abc
     private static final String STORE_BANNER_DOMAIN = "gstatic.com/shopping";
     private static final boolean HIDE_END_SCREEN_STORE_BANNER =
@@ -134,9 +139,8 @@ public final class AdsFilter extends Filter {
 
         promotionBannerBuffer = new ByteArrayFilterGroup(
                 null,
-                // YouTube Doodles uses https://www.gstatic.com/youtube/img/promos/ only.
-                // So, https://www.gstatic.com/youtube/img/promos/growth/ should hide the ad.
-                "img/promos/growth/"
+                "img/promos/growth/", // Link, https://www.gstatic.com/youtube/img/promos/growth/ is only used for ads.
+                "SPunlimited" // Word associated with Premium, should be unique to differentiate Doodle from ad banner.
         );
 
         final var selfSponsor = new StringFilterGroup(
@@ -221,6 +225,31 @@ public final class AdsFilter extends Filter {
 
     /**
      * Injection point.
+     */
+    public static boolean hideAds() {
+        return Settings.HIDE_GENERAL_ADS.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static String hideAds(String osName) {
+        return Settings.HIDE_GENERAL_ADS.get()
+                ? "Android Automotive"
+                : osName;
+    }
+
+    /**
+     * Hide the view, which shows ads in the homepage.
+     *
+     * @param view The view, which shows ads.
+     */
+    public static void hideAdAttributionView(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_GENERAL_ADS, view);
+    }
+
+    /**
+     * Injection point.
      *
      * @param elementsList List of components of the end screen container.
      * @param protobufList Component (ProtobufList).
@@ -244,25 +273,8 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static boolean hideAds() {
-        return Settings.HIDE_GENERAL_ADS.get();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static String hideAds(String osName) {
-        return Settings.HIDE_GENERAL_ADS.get()
-                ? "Android Automotive"
-                : osName;
-    }
-
-    /**
-     * Hide the view, which shows ads in the homepage.
-     *
-     * @param view The view, which shows ads.
-     */
-    public static void hideAdAttributionView(View view) {
-        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_GENERAL_ADS, view);
+    public static boolean hidePlayerPopupAds(String panelId) {
+        return Settings.HIDE_PLAYER_POPUP_ADS.get()
+                && Utils.containsAny(panelId, PLAYER_POPUP_AD_PANEL_IDS);
     }
 }

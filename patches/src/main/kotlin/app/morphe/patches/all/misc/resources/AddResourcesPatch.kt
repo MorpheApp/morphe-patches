@@ -1,10 +1,45 @@
+/*
+ * Copyright 2025 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * File-Specific License Notice (GPLv3 Section 7 Terms)
+ *
+ * This file is part of the Morphe patches project and is licensed under
+ * the GNU General Public License version 3 (GPLv3), with the Additional
+ * Terms under Section 7 described in the Morphe patches
+ * LICENSE file: https://github.com/MorpheApp/morphe-patches/blob/main/NOTICE
+ *
+ * https://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * File-Specific Exception to Section 7b:
+ * -------------------------------------
+ * Section 7b (Attribution Requirement) of the Morphe patches LICENSE
+ * does not apply to THIS FILE. Use of this file does NOT require any
+ * user-facing, in-application, or UI-visible attribution.
+ *
+ * For this file only, attribution under Section 7b is satisfied by
+ * retaining this comment block in the source code of this file.
+ *
+ * Distribution and Derivative Works:
+ * ----------------------------------
+ * This comment block MUST be preserved in all copies, distributions,
+ * and derivative works of this file, whether in source or modified
+ * form.
+ *
+ * All other terms of the Morphe Patches LICENSE, including Section 7c
+ * (Project Name Restriction) and the GPLv3 itself, remain fully
+ * applicable to this file.
+ */
+
 package app.morphe.patches.all.misc.resources
 
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
-import app.morphe.util.resource.StringResource.Companion.sanitizeAndroidResourceString
+import org.w3c.dom.Element
+import org.w3c.dom.Node
 import java.util.Locale
 import java.util.logging.Level
 import java.util.logging.Logger
@@ -120,8 +155,10 @@ internal class AppLocale(
 }
 
 private enum class BundledResourceType {
-    STRINGS,
-    ARRAYS;
+    // Add more resource xml files as needed.
+    ARRAYS,
+    COLORS,
+    STRINGS;
 
     override fun toString(): String {
         return super.toString().lowercase(Locale.US)
@@ -222,7 +259,7 @@ internal val addResourcesPatch = resourcePatch(
                             }
 
                             if (isDefaultLocale) {
-                                // Duplicate check alreday handled above.
+                                // Duplicate check already handled above.
                                 defaultResourcesAdded.add(resourceName)
                             } else if (!defaultResourcesAdded.contains(resourceName)) {
                                 // TODO: Enable when patcher/CLI supports debug/dev logging.
@@ -231,6 +268,28 @@ internal val addResourcesPatch = resourcePatch(
                                             "$srcFolderName resource: $resourceName"
                                 }
                                 return@forEachChildElement
+                            }
+
+                            // Remove existing resources with the same name.
+                            // ARSCLib doesn't check for duplicates and uses the last added,
+                            // but Apktool crashes if duplicates exist.
+                            val srcAttrName = srcNode.getAttribute("name")
+                            if (srcAttrName.isNotEmpty()) {
+                                val childNodes = destResourceNode.childNodes
+                                val tagName = srcNode.tagName
+
+                                for (i in 0 until childNodes.length) {
+                                    val node = childNodes.item(i)
+
+                                    if (node != null &&
+                                        node.nodeType == Node.ELEMENT_NODE &&
+                                        node.nodeName == tagName &&
+                                        (node as Element).getAttribute("name") == srcAttrName
+                                    ) {
+                                        destResourceNode.removeChild(node)
+                                        break
+                                    }
+                                }
                             }
 
                             val importedSrcNode = destDoc.importNode(srcNode, true)
@@ -243,9 +302,63 @@ internal val addResourcesPatch = resourcePatch(
 
         appsToInclude.forEach { app ->
             locales.forEach { locale ->
-                addResourcesFromFile(app, locale, BundledResourceType.STRINGS)
-                addResourcesFromFile(app, locale, BundledResourceType.ARRAYS)
+                BundledResourceType.entries.forEach { type ->
+                    addResourcesFromFile(app, locale, type)
+                }
             }
         }
     }
 }
+
+internal object StringResourceSanitizer {
+    // Matches unescaped double quotes.
+    private val UNESCAPED_DOUBLE_QUOTE = Regex("(?<!\\\\)\"")
+
+    // Matches unescaped single or double quotes.
+    private val UNESCAPED_QUOTE = Regex("(?<!\\\\)['\"]")
+
+    /**
+     * @param key String key
+     * @param value Text to validate and sanitize
+     * @param filePath Path to include in any exception thrown.
+     * @param throwException If true, will throw an exception on problems; otherwise, sanitizes.
+     * @return sanitized string
+     */
+    fun sanitizeAndroidResourceString(
+        key: String,
+        value: String,
+        filePath: String? = null,
+        throwException: Boolean = false
+    ): String {
+        val logger = Logger.getLogger(StringResourceSanitizer::class.java.name)
+        var sanitized = value
+
+        // Could check for other invalid strings, but for now just check quotes.
+        if (value.startsWith('"') && value.endsWith('"')) {
+            // Raw strings allow unescaped single quotes but not double quotes.
+            val inner = value.substring(1, value.length - 1)
+            if (UNESCAPED_DOUBLE_QUOTE.containsMatchIn(inner)) {
+                val message = "$filePath String $key contains unescaped double quotes: $value"
+                if (throwException) throw IllegalArgumentException(message)
+                logger.warning(message)
+                sanitized = "\"" + UNESCAPED_DOUBLE_QUOTE.replace(inner, "") + "\""
+            }
+        } else {
+            if (value.contains('\n')) {
+                val message = "$filePath String $key is not raw but contains newline characters: $value"
+                if (throwException) throw IllegalArgumentException(message)
+                logger.warning(message)
+            }
+
+            if (UNESCAPED_QUOTE.containsMatchIn(value)) {
+                val message = "$filePath String $key contains unescaped quotes: $value"
+                if (throwException) throw IllegalArgumentException(message)
+                logger.warning(message)
+                sanitized = UNESCAPED_QUOTE.replace(value, "")
+            }
+        }
+
+        return sanitized
+    }
+}
+

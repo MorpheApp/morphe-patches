@@ -1,5 +1,5 @@
 {
-  "version": "1.14.0",
+  "version": "1.16.0-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -369,7 +369,7 @@
     },
     {
       "name": "Disable DRC audio",
-      "description": "Adds an option to disable dynamic range compression (DRC).",
+      "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -386,7 +386,41 @@
     },
     {
       "name": "Disable DRC audio",
-      "description": "Adds an option to disable dynamic range compression (DRC).",
+      "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Disable QUIC protocol",
+      "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Disable QUIC protocol",
+      "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -424,6 +458,7 @@
       "description": "Adds an option to disable haptic feedback in the player for various actions.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1197,6 +1232,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1250,6 +1286,25 @@
       "description": "Adds an option to always open links in your browser instead of the in-app browser.",
       "use": true,
       "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Open system share sheet",
+      "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {

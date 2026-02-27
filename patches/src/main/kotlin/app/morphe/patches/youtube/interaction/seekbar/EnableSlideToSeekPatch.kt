@@ -35,7 +35,7 @@ val enableSlideToSeekPatch = bytecodePatch(
 
         var modifiedMethods = false
 
-        // Restore the behaviour to slide to seek.
+        // Restore the behavior to slide to seek.
 
         val checkIndex = SlideToSeekFingerprint.instructionMatches.first().index
         val checkReference = SlideToSeekFingerprint.method.getInstruction(checkIndex)

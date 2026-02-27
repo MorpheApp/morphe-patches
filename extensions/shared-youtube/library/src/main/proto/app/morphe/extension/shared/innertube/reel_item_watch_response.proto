@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "app/morphe/extension/shared/innertube/player_response.proto";
+
+package app.morphe.extension.shared.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+
+message ReelItemWatchResponse {
+    oneof data {
+      PlayerResponse player_response = 4;
+    }
+}

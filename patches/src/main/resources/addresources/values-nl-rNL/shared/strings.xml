@@ -102,7 +102,7 @@ U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen."</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Vlaggen gereset</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Vlaggen gekopieerd naar klembord</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Herstart de app om deze functie te gebruiken</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Open de MicroG-instellingen</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

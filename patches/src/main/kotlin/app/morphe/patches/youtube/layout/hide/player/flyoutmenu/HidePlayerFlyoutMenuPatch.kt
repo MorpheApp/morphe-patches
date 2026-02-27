@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.hide.player.flyoutmenupanel
+package app.morphe.patches.youtube.layout.hide.player.flyoutmenu
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -10,6 +10,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
+@Suppress("unused")
 val hidePlayerFlyoutMenuPatch = bytecodePatch(
     name = "Hide player flyout menu items",
     description = "Adds options to hide menu items that appear when pressing the gear icon in the video player.",

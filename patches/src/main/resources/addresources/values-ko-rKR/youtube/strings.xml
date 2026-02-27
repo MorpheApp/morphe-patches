@@ -121,9 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">게임 룸 숨기기</string>
   <string name="morphe_hide_playables_summary_on">게임 룸이 숨겨집니다</string>
   <string name="morphe_hide_playables_summary_off">게임 룸이 표시됩니다</string>
-  <string name="morphe_hide_search_suggestions_title">추천 콘텐츠 숨기기</string>
-  <string name="morphe_hide_search_suggestions_summary_on">추천 콘텐츠가 숨겨집니다</string>
-  <string name="morphe_hide_search_suggestions_summary_off">추천 콘텐츠가 표시됩니다</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'자세히 보기\' 버튼 숨기기</string>
@@ -145,6 +142,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">웹 검색 결과 숨기기</string>
   <string name="morphe_hide_web_search_results_summary_on">웹 검색 결과가 숨겨집니다</string>
   <string name="morphe_hide_web_search_results_summary_off">웹 검색 결과가 표시됩니다</string>
+  <string name="morphe_hide_you_may_like_section_title">추천 콘텐츠 섹션 숨기기</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">추천 콘텐츠 섹션이 숨겨집니다.</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">추천 콘텐츠 섹션이 표시됩니다.</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles 숨기기</string>
   <string name="morphe_hide_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
@@ -417,6 +417,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">유료 광고 포함 라벨 숨기기</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">유료 광고 포함 라벨이 숨겨집니다</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">유료 광고 포함 라벨이 표시됩니다</string>
+  <string name="morphe_hide_player_popup_ads_title">플레이어 팝업 광고 숨기기</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">플레이어 팝업 광고가 숨겨집니다</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">플레이어 팝업 광고가 표시됩니다</string>
   <string name="morphe_hide_self_sponsor_ads_title">셀프 스폰서 카드 숨기기</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">셀프 스폰서 카드가 숨겨집니다</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">셀프 스폰서 카드가 표시됩니다</string>
@@ -433,7 +436,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">동영상 광고 숨기기</string>
   <string name="morphe_hide_video_ads_summary_on">동영상 광고가 숨겨집니다</string>
   <string name="morphe_hide_video_ads_summary_off">동영상 광고가 표시됩니다</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_url_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_copy_video_url_title">동영상 URL 복사 버튼 표시하기</string>
@@ -447,10 +450,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">일부 동영상을 시청하기 전에 표시되는 시청 경고 다이얼로그를 제거합니다</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">일부 동영상을 시청하기 전에 표시되는 시청 경고 다이얼로그를 제거하지 않습니다</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">이 설정은 다이얼로그를 자동으로 허용하기만 하며 연령 제한(성인인증 절차)을 우회할 수 없습니다.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">\'TV에 로그인\' 팝업을 비활성화합니다</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">\'TV에 로그인\' 팝업을 활성화합니다</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">\'TV에 로그인\' 팝업을 비활성화합니다</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">\'TV에 로그인\' 팝업을 활성화합니다</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">두 번 탭하여 챕터 건너뛰기 비활성화하기</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">두 번 탭하여 다음/이전 챕터로 건너뛰기가 절대 트리거될 수 없습니다</string>
@@ -479,10 +482,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">세밀한 탐색 제스처를 비활성화합니다</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">세밀한 탐색 제스처를 활성화합니다</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">재생바 터치 조작 활성화하기</string>
-  <string name="morphe_seekbar_tapping_summary_on">재생바 터치 조작을 활성화합니다</string>
-  <string name="morphe_seekbar_tapping_summary_off">재생바 터치 조작을 비활성화합니다</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
+  <string name="morphe_slide_to_seek_summary_on">슬라이드하여 탐색을 활성화합니다</string>
+  <string name="morphe_slide_to_seek_summary_off">슬라이드하여 탐색을 비활성화합니다</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
+  <string name="morphe_tap_to_seek_summary_on">재생바 터치 조작을 활성화합니다</string>
+  <string name="morphe_tap_to_seek_summary_off">재생바 터치 조작을 비활성화합니다</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">스와이프 제스처로 밝기 조절 활성화하기</string>
   <string name="morphe_swipe_brightness_summary_on">"전체 화면 왼쪽에서 위로/아래로 스와이프하여 밝기 조절합니다"</string>
@@ -648,6 +655,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">알림 숨기기</string>
   <string name="morphe_hide_notifications_button_summary_on">알림 버튼이 숨겨집니다</string>
   <string name="morphe_hide_notifications_button_summary_off">알림 버튼이 표시됩니다</string>
+  <string name="morphe_show_search_button_title">검색 버튼 표시</string>
+  <string name="morphe_show_search_button_summary_on">검색 버튼이 표시됩니다</string>
+  <string name="morphe_show_search_button_summary_off">검색 버튼이 표시되지 않습니다</string>
+  <string name="morphe_search_button_index_title">검색 버튼 인덱스</string>
+  <string name="morphe_search_button_index_invalid">검색 버튼 인덱스는 %s보다 작아야 합니다</string>
   <string name="morphe_swap_create_with_notifications_button_title">만들기와 알림 위치 교환하기</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">만들기 버튼과 알림 버튼의 위치를 교환합니다</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">만들기 버튼과 알림 버튼의 위치를 교환하지 않습니다</string>
@@ -735,10 +747,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">오디오 트랙 메뉴가 숨겨집니다</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">오디오 트랙 메뉴가 표시됩니다</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨집니다
 
-오디오 트랙 메뉴를 표시하려면, '동영상 스트림 속이기'에서 기본 클라이언트를 'TV'로 변경하세요"</string>
+오디오 트랙 메뉴를 표시하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'Android Reel'이나 'TV'로 변경하세요"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR로 보기 숨기기</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR로 보기 메뉴가 숨겨집니다</string>
@@ -778,9 +790,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">이전 &amp; 다음 동영상 버튼이 숨겨집니다</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">이전 &amp; 다음 동영상 버튼이 표시됩니다</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">최종 화면 카드 숨기기</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">최종 화면 카드가 숨겨집니다</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">최종 화면 카드가 표시됩니다</string>
+  <string name="morphe_hide_end_screen_cards_title">최종 화면 카드 숨기기</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">최종 화면 카드가 숨겨집니다</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">최종 화면 카드가 표시됩니다</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">앰비언트 모드</string>
   <string name="morphe_ambient_mode_screen_summary">앰비언트 모드 제한을 우회하거나 앰비언트 모드를 비활성화할 수 있습니다</string>
@@ -868,8 +880,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">새로운 게시물 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">새로운 게시물 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">일시 정지 오버레이 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_on">일시 중지된 오버레이 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_off">일시 중지된 오버레이 버튼이 표시됩니다</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_on">일시 정지 오버레이 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_off">일시 정지 오버레이 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">댓글 미리보기가 숨겨집니다</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">댓글 미리보기가 표시됩니다</string>
@@ -957,10 +969,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">동영상 타임스탬프 숨기기</string>
   <string name="morphe_hide_timestamp_summary_on">타임스탬프가 숨겨집니다</string>
   <string name="morphe_hide_timestamp_summary_off">타임스탬프가 표시됩니다</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">플레이어 팝업 패널 숨기기</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">다음 플레이어 팝업 패널이 숨겨집니다:\n실시간 채팅, 재생목록, etc.</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">다음 플레이어 팝업 패널이 표시됩니다:\n실시간 채팅, 재생목록, etc.</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">플레이어 팝업 패널 비활성화하기</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">플레이어 팝업 패널이 숨겨집니다:\n실시간 채팅, 재생목록, etc.</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">플레이어 팝업 패널이 표시됩니다:\n실시간 채팅, 재생목록, etc.</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">동영상 종료 시 전체 화면에서 나가기</string>
   <string name="morphe_exit_fullscreen_entry_1">사용 안 함</string>
@@ -1310,7 +1322,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_title">Shorts 자동재생</string>
   <string name="morphe_shorts_autoplay_summary_on">Shorts가 자동넘김됩니다</string>
   <string name="morphe_shorts_autoplay_summary_off">Shorts가 반복재생됩니다</string>
-  <string name="morphe_shorts_autoplay_background_title">Shorts 백그라운드 재생 자동넘김</string>
+  <string name="morphe_shorts_autoplay_background_title">Shorts 백그라운드 재생 자동재생</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts 백그라운드 재생이 자동넘김됩니다</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts 백그라운드 재생이 반복재생됩니다</string>
   <!-- layout.miniplayer.miniplayerPatch -->
@@ -1460,6 +1472,9 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">탐색 취소 진동 피드백 비활성화하기</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">탐색 취소 진동 피드백을 비활성화합니다</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">탐색 취소 진동 피드백을 활성화합니다</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">길게 탭하기 진동 피드백 비활성화하기</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">길게 탭하기 진동 피드백을 비활성화합니다</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">길게 탭하기 진동 피드백을 활성화합니다</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">동영상 확대 진동 피드백 비활성화하기</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">동영상 확대 진동 피드백을 비활성화합니다</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">동영상 확대 진동 피드백을 활성화합니다</string>
@@ -1552,10 +1567,6 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_prioritize_video_quality_title">동영상 화질 우선순위 지정하기</string>
   <string name="morphe_prioritize_video_quality_summary_on">동영상 화질이 우선시됩니다</string>
   <string name="morphe_prioritize_video_quality_summary_off">동영상 코덱이 우선시됩니다</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
-  <string name="morphe_slide_to_seek_summary_on">슬라이드하여 탐색을 활성화합니다</string>
-  <string name="morphe_slide_to_seek_summary_off">슬라이드하여 탐색을 비활성화합니다</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 허용하기</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"동영상 코덱이 AVC (H.264), VP9 또는 AV1으로 결정됩니다

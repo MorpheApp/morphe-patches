@@ -479,8 +479,12 @@ class AboutRoutes {
 
     private static final String API_URL = "https://api.morphe.software/v2";
     private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
-    private static final Route.CompiledRoute API_ROUTE_PATCHES = new Route(GET,
-            (Utils.isPreReleasePatches() ? "/patches/prerelease" : "/patches")
+
+    private static final String GITHUB_URL = "https://raw.githubusercontent.com";
+    private static final Route.CompiledRoute GITHUB_ROUTE_PATCHES = new Route(GET,
+            (Utils.isPreReleasePatches()
+                    ? "/MorpheApp/morphe-patches/refs/heads/dev/patches-bundle.json"
+                    : "/MorpheApp/morphe-patches/refs/heads/main/patches-bundle.json")
     ).compile();
 
     @Nullable
@@ -502,7 +506,8 @@ class AboutRoutes {
         if (!Utils.isNetworkConnected()) return null;
 
         try {
-            HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(API_URL, API_ROUTE_PATCHES);
+            HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(
+                    GITHUB_URL, GITHUB_ROUTE_PATCHES);
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             Logger.printDebug(() -> "Fetching latest patches version links from: " + connection.getURL());

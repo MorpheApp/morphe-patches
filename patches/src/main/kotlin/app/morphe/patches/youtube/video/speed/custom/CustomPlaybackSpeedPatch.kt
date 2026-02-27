@@ -12,7 +12,6 @@ import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.youtube.interaction.seekbar.CustomTapAndHoldFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -166,16 +165,19 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // region Custom tap and hold 2x speed.
 
         if (is_19_47_or_greater) {
-            CustomTapAndHoldFingerprint.let {
+            TapAndHoldSpeedFingerprint.let {
+                // clearMatch() is used because it can be the same method as [tapAndHoldHapticsFingerprint].
+                it.clearMatch()
                 it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    val speedIndex = it.instructionMatches.last().index
+                    val speedRegister =
+                        getInstruction<OneRegisterInstruction>(speedIndex).registerA
 
                     addInstructions(
-                        index + 1,
+                        speedIndex + 1,
                         """
-                            invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->tapAndHoldSpeed()F
-                            move-result v$register
+                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getTapAndHoldSpeed()F
+                            move-result v$speedRegister
                         """
                     )
                 }

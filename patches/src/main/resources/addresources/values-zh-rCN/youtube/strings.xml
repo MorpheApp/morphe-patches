@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">隐藏可播放内容</string>
   <string name="morphe_hide_playables_summary_on">可播放内容已隐藏</string>
   <string name="morphe_hide_playables_summary_off">可播放内容已显示</string>
-  <string name="morphe_hide_search_suggestions_title">隐藏搜索建议</string>
-  <string name="morphe_hide_search_suggestions_summary_on">搜索建议已隐藏</string>
-  <string name="morphe_hide_search_suggestions_summary_off">搜索建议已显示</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">隐藏「显示更多」按钮</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">隐藏网页搜索结果</string>
   <string name="morphe_hide_web_search_results_summary_on">网页搜索结果已隐藏</string>
   <string name="morphe_hide_web_search_results_summary_off">网页搜索结果已显示</string>
+  <string name="morphe_hide_you_may_like_section_title">隐藏“您可能喜欢”的部分</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">“可能喜欢”部分已隐藏</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">“可能喜欢”部分已显示</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">隐藏 YouTube 涂鸦</string>
   <string name="morphe_hide_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
@@ -415,6 +415,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">隐藏付费推广标签</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">付费推广标签已隐藏</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">付费推广标签已显示</string>
+  <string name="morphe_hide_player_popup_ads_title">隐藏播放器弹出广告</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">播放器弹出广告已隐藏</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">播放器弹出广告已显示</string>
   <string name="morphe_hide_self_sponsor_ads_title">隐藏自我推广卡片</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">自我推广卡片已隐藏</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">自我推广卡片已显示</string>
@@ -431,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
   <string name="morphe_hide_video_ads_summary_on">视频广告已隐藏</string>
   <string name="morphe_hide_video_ads_summary_off">视频广告已显示</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL 已复制到剪贴板</string>
   <string name="morphe_share_copy_url_timestamp_success">URL 已复制，包含时间戳</string>
   <string name="morphe_copy_video_url_title">显示复制视频 URL 按钮</string>
@@ -445,10 +448,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">「观看须知」对话框将被移除</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">「观看须知」对话框将会显示</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">这并不会绕过年龄限制，只是自动按下接受按钮。</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">禁用登录电视弹出窗口</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">登录电视弹出窗口已禁用</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">登录电视弹出窗口已启用</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">登录电视弹出窗口已禁用</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">登录电视弹出窗口已启用</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">禁用双击章节跳过</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">双击永远不会触发跳到下一/上一章节</string>
@@ -477,10 +480,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">禁用上滑精确定位进度手势</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精准定位手势已禁用</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">精准定位手势已启用</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">启用点击以快进</string>
-  <string name="morphe_seekbar_tapping_summary_on">点击以启用搜寻</string>
-  <string name="morphe_seekbar_tapping_summary_off">点击以快进已禁用</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">启用滑动拖动进度条</string>
+  <string name="morphe_slide_to_seek_summary_on">滑动拖动进度条已启用</string>
+  <string name="morphe_slide_to_seek_summary_off">滑动拖动进度条未启用</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">启用点击以快进</string>
+  <string name="morphe_tap_to_seek_summary_on">点击以启用搜寻</string>
+  <string name="morphe_tap_to_seek_summary_off">点击以快进已禁用</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">启用亮度控制手势</string>
   <string name="morphe_swipe_brightness_summary_on">"已启用全屏亮度滑动
@@ -650,6 +657,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">隐藏通知</string>
   <string name="morphe_hide_notifications_button_summary_on">通知按钮已隐藏</string>
   <string name="morphe_hide_notifications_button_summary_off">通知按钮已显示</string>
+  <string name="morphe_show_search_button_title">显示搜索按钮</string>
+  <string name="morphe_show_search_button_summary_on">搜索按钮已显示</string>
+  <string name="morphe_show_search_button_summary_off">搜索按钮未显示</string>
+  <string name="morphe_search_button_index_title">搜索按钮索引</string>
+  <string name="morphe_search_button_index_invalid">搜索按钮索引必须小于 %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">切换「创作」为「通知」按钮</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">「创作」按钮已切换为「通知」按钮</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">「创作」按钮未切换为「通知」按钮</string>
@@ -737,10 +749,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">音轨菜单已隐藏</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">音轨菜单已显示</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"音频轨道菜单已隐藏
 
-要显示音频轨道菜单，请将'Spoof video streams'更改为'电视'"</string>
+要显示音频轨道菜单，将'伪装视频流'更改为'Android Reel'或'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">隐藏「在 VR 模式下观看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">在 VR 模式下观看已隐藏</string>
@@ -780,9 +792,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">上一项 &amp; 下一项按钮已隐藏</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">上一项 &amp; 下一项按钮已显示</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">隐藏片尾卡</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">片尾卡已隐藏</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">片尾卡已显示</string>
+  <string name="morphe_hide_end_screen_cards_title">隐藏片尾卡</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">片尾卡已隐藏</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">片尾卡已显示</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">氛围模式</string>
   <string name="morphe_ambient_mode_screen_summary">绕过节能模式限制，完全或全屏禁用氛围模式</string>
@@ -959,10 +971,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">隐藏视频时间戳</string>
   <string name="morphe_hide_timestamp_summary_on">时间戳已隐藏</string>
   <string name="morphe_hide_timestamp_summary_off">时间戳已显示</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">隐藏播放器弹出面板</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">播放器弹出面板已隐藏</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">播放器弹出面板已显示</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">禁用播放器弹出面板</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">播放器弹出面板已禁用</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">播放器弹出面板已启用</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">视频结尾时退出全屏模式</string>
   <string name="morphe_exit_fullscreen_entry_1">已禁用</string>
@@ -1104,9 +1116,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">设置导入成功</string>
   <string name="morphe_sb_settings_import_failed">导入失败：%s</string>
   <string name="morphe_sb_settings_export_failed">导出失败：%s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"你的设置包含一个私有的 SponsorBlock 用户ID。
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"您的设置包含一个私有的 SponsorBlock 用户ID。
 
-你的用户ID就像密码一样，不应该被分享。"</string>
+您的用户ID就像密码一样，不应该被分享。"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">不再显示</string>
   <string name="morphe_sb_diff_segments">更改片段行为</string>
   <string name="morphe_sb_segments_sponsor">赞助</string>
@@ -1464,6 +1476,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">禁用撤销查找触觉反馈</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">撤销查找触觉反馈已禁用</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">撤销查找触觉反馈已启用</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">禁用长按触觉反馈</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">长按触觉反馈已禁用</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">长按触觉反馈已启用</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">禁用缩放触觉反馈</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">缩放触觉反馈已禁用</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">缩放触觉反馈已启用</string>
@@ -1556,10 +1571,6 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_title">优先视频质量</string>
   <string name="morphe_prioritize_video_quality_summary_on">视频质量已优先</string>
   <string name="morphe_prioritize_video_quality_summary_off">视频编解码器已优先</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">启用滑动拖动进度条</string>
-  <string name="morphe_slide_to_seek_summary_on">滑动拖动进度条已启用</string>
-  <string name="morphe_slide_to_seek_summary_off">滑动拖动进度条未启用</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">允许 Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"视频编解码器为 AVC (H.264)、VP9 或 AV1

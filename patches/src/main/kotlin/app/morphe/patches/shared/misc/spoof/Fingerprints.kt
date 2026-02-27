@@ -165,7 +165,7 @@ internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
 )
 
 // Feature flag that enables different code for parsing and starting video playback,
-// but it's exact purpose is not known. If this flag is enabled while stream spoofing
+// but its exact purpose is not known. If this flag is enabled while stream spoofing
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
 internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(

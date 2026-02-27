@@ -211,21 +211,41 @@ internal object HideViewCountFingerprint : Fingerprint(
     )
 )
 
-internal object SearchBoxTypingMethodFingerprint : Fingerprint(
+internal object SearchBoxTypingStringFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/util/Collection;"),
+        methodCall(smali = "Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V", location = MatchAfterWithin(5)),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;"),
+        methodCall(smali = "Ljava/lang/String;->isEmpty()Z", location = MatchAfterWithin(5)),
         resourceLiteral(ResourceType.DIMEN, "suggestion_category_divider_height")
     )
 )
 
-internal object SearchBoxTypingStringFingerprint : Fingerprint(
+internal object SearchSuggestionEndpointConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
     filters = listOf(
-        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;"),
-        methodCall(smali = "Ljava/lang/String;->isEmpty()Z", location = MatchAfterWithin(5)),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately())
+        string("\u2026 ")
+    )
+)
+
+internal object SearchSuggestionEndpointFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
+        )
     )
 )
 
