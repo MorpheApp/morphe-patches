@@ -19,7 +19,6 @@ internal object AutoNavStatusFingerprint : Fingerprint(
     parameters = listOf()
 )
 
-
 internal object RemoveOnLayoutChangeListenerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
