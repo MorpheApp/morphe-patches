@@ -22,6 +22,7 @@ public final class ChangeStartPagePatch {
         EXPLORE("FEmusic_explore", TRUE),
         HISTORY("FEmusic_history", TRUE),
         LIBRARY("FEmusic_library_landing", TRUE),
+        PLAYLISTS("FEmusic_liked_playlists", TRUE),
         PODCASTS("FEmusic_non_music_audio", TRUE),
         SAMPLES("FEmusic_immersive", TRUE),
         SUBSCRIPTIONS("FEmusic_library_corpus_artists", TRUE),
