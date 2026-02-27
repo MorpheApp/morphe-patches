@@ -15,6 +15,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
 public final class LithoFilterPatch {
@@ -341,9 +342,11 @@ public final class LithoFilterPatch {
     /**
      * Injection point.
      */
-    public static boolean isFiltered(String identifier, @Nullable String accessibilityId,
-                                     @Nullable String accessibilityText, StringBuilder pathBuilder) {
+    public static boolean isFiltered(ContextInterface contextInterface, @Nullable String accessibilityId,
+                                     @Nullable String accessibilityText) {
         try {
+            String identifier = contextInterface.patch_getIdentifier();
+            StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;
             }

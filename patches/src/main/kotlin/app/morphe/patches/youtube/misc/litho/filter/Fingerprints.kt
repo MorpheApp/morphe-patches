@@ -21,10 +21,20 @@ internal object AccessibilityIdFingerprint : Fingerprint(
     )
 )
 
-internal object ComponentCreateFingerprint : Fingerprint(
+/**
+ * Resolves using the method found in [EmptyComponentParentFingerprint].
+ */
+internal object EmptyComponentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L")
+)
+
+internal object EmptyComponentParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(),
     filters = listOf(
-        string("Element missing correct type extension"),
-        string("Element missing type")
+        string("EmptyComponent")
     )
 )
 
@@ -67,17 +77,6 @@ internal object ProtobufBufferReferenceLegacyFingerprint : Fingerprint(
         Opcode.MOVE_RESULT,
         Opcode.SUB_INT_2ADDR,
     )
-)
-
-internal object EmptyComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(),
-    filters = listOf(
-        string("EmptyComponent")
-    ),
-    custom = { _, classDef ->
-        classDef.methods.filter { AccessFlags.STATIC.isSet(it.accessFlags) }.size == 1
-    }
 )
 
 internal object LithoThreadExecutorFingerprint : Fingerprint(
