@@ -4,7 +4,6 @@ import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ public final class ChangeStartPagePatch {
         HISTORY("FEmusic_history", TRUE),
         LIBRARY("FEmusic_library_landing", TRUE),
         PODCASTS("FEmusic_non_music_audio", TRUE),
-        SAMPLES("FEmusic_immersive", TRUE),
         SUBSCRIPTIONS("FEmusic_library_corpus_artists", TRUE),
         EPISODES_FOR_LATER("VLSE", TRUE),
         LIKED_MUSIC("VLLM", TRUE),
@@ -72,24 +70,16 @@ public final class ChangeStartPagePatch {
         if (savedInstanceState != null) return;
 
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
+        if (startPage != StartPage.SEARCH) return;
+
         Intent originalIntent = activity.getIntent();
         if (originalIntent == null) return;
 
         if (ACTION_MAIN.equals(originalIntent.getAction())) {
-
-            if (startPage == StartPage.SEARCH) {
-                Logger.printDebug(() -> "Cold start: Firing search activity directly");
-                Intent searchIntent = new Intent();
-                ExtendedUtils.setSearchIntent(activity, searchIntent);
-                activity.startActivity(searchIntent);
-            }
-            else if (startPage == StartPage.SAMPLES) {
-                Logger.printDebug(() -> "Cold start: Firing Samples deep link to wake player");
-                Intent samplesIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://music.youtube.com/samples"));
-                samplesIntent.setPackage(activity.getPackageName());
-                samplesIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                activity.startActivity(samplesIntent);
-            }
+            Logger.printDebug(() -> "Cold start: Firing search activity directly");
+            Intent searchIntent = new Intent();
+            ExtendedUtils.setSearchIntent(activity, searchIntent);
+            activity.startActivity(searchIntent);
         }
     }
 }
