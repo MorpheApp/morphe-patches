@@ -1,6 +1,5 @@
 package app.morphe.extension.music.patches;
 
-import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
@@ -27,7 +26,7 @@ public final class ChangeStartPagePatch {
         SUBSCRIPTIONS("FEmusic_library_corpus_artists", TRUE),
         EPISODES_FOR_LATER("VLSE", TRUE),
         LIKED_MUSIC("VLLM", TRUE),
-        SEARCH("", FALSE);
+        SEARCH("", false);
 
         @NonNull
         final String id;
@@ -43,13 +42,10 @@ public final class ChangeStartPagePatch {
         private boolean isBrowseId() {
             return TRUE.equals(isBrowseId);
         }
-
-        private boolean isIntentAction() {
-            return !FALSE.equals(isBrowseId);
-        }
     }
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
+    private static boolean intentLaunched = false;
 
     public static String overrideBrowseId(@Nullable String original) {
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
@@ -72,27 +68,39 @@ public final class ChangeStartPagePatch {
     }
 
     public static void overrideIntentActionOnCreate(@NonNull Activity activity) {
-        Intent intent = activity.getIntent();
-        if (intent == null) return;
-
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
-        if (startPage.isIntentAction()) return;
 
-        if (ACTION_MAIN.equals(intent.getAction()) && startPage == StartPage.SEARCH) {
-            Logger.printDebug(() -> "Cold start: Spoofing search intent immediately");
-            ExtendedUtils.setSearchIntent(activity, intent);
+        if (startPage != StartPage.SEARCH) return;
+
+        Intent originalIntent = activity.getIntent();
+        if (originalIntent == null) return;
+
+        if (ACTION_MAIN.equals(originalIntent.getAction())) {
+            if (intentLaunched) return;
+            intentLaunched = true;
+
+            Logger.printDebug(() -> "Cold start: Firing search activity directly");
+            Intent searchIntent = new Intent();
+            ExtendedUtils.setSearchIntent(activity, searchIntent);
+            activity.startActivity(searchIntent);
         }
     }
 
     public static void overrideIntentAction(@NonNull Activity activity, @Nullable Intent intent) {
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+
+        if (startPage != StartPage.SEARCH) return;
+
         if (intent == null) return;
 
-        StartPage startPage = Settings.CHANGE_START_PAGE.get();
-        if (startPage.isIntentAction()) return;
+        if (ACTION_MAIN.equals(intent.getAction())) {
+            if (intentLaunched) return;
+            intentLaunched = true;
 
-        if (ACTION_MAIN.equals(intent.getAction()) && startPage == StartPage.SEARCH) {
-            Logger.printDebug(() -> "Foreground resume: Spoofing search intent immediately");
-            ExtendedUtils.setSearchIntent(activity, intent);
+            Logger.printDebug(() -> "Foreground resume: Firing search activity directly");
+            Intent searchIntent = new Intent();
+            ExtendedUtils.setSearchIntent(activity, searchIntent);
+            activity.startActivity(searchIntent);
         }
     }
 }
