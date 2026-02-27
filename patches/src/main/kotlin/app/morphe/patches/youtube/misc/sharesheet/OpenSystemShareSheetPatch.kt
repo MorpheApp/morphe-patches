@@ -51,14 +51,14 @@ internal fun openSystemShareSheetPatch(
             addInstructions(
                 0,
                 """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->openSystemShareSheetEnabled()Z
-                move-result v0
-                if-eqz v0, :ignore
-                new-instance v0, Ljava/util/ArrayList;
-                invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-                return-object v0
-                :ignore
-                nop
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->openSystemShareSheetEnabled()Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    new-instance v0, Ljava/util/ArrayList;
+                    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+                    return-object v0
+                    :ignore
+                    nop
                 """
             )
         }
