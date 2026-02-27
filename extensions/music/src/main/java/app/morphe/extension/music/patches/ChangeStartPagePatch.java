@@ -80,7 +80,6 @@ public final class ChangeStartPagePatch {
         }
 
         if (!ACTION_MAIN.equals(intent.getAction())) {
-            Logger.printDebug(() -> "Ignore override intent action as the current activity is not the entry point");
             return;
         }
 
