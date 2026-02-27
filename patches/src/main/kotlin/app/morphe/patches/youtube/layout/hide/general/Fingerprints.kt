@@ -99,8 +99,13 @@ internal object ParseElementFromBufferFingerprint : Fingerprint(
         // IGET_BOOLEAN // 20.07+
         opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(1)),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-
-        string("Failed to parse Element", StringComparisonType.STARTS_WITH)
+        string("Failed to parse Element", StringComparisonType.STARTS_WITH),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L"),
+            returnType = "L"
+        ),
+        opcode(Opcode.RETURN_OBJECT, location = MatchAfterWithin(4))
     )
 )
 

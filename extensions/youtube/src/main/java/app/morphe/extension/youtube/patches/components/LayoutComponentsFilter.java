@@ -34,10 +34,6 @@ import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
-    private static final StringTrieSearch mixPlaylistsContextExceptions = new StringTrieSearch(
-            "V.ED", // Playlist browseId.
-            "java.lang.ref.WeakReference"
-    );
     private static final ByteArrayFilterGroup mixPlaylistsBufferExceptions = new ByteArrayFilterGroup(
             null,
             "cell_description_body",
@@ -520,7 +516,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      * Called from a different place then the other filters.
      */
-    public static boolean filterMixPlaylists(Object conversionContext, @Nullable byte[] buffer) {
+    public static boolean filterMixPlaylists(@Nullable byte[] buffer) {
         // Edit: This hook may no longer be needed, and mix playlist filtering
         //       might be possible using the existing litho filters.
         try {
@@ -535,13 +531,7 @@ public final class LayoutComponentsFilter extends Filter {
 
             if (mixPlaylists.check(buffer).isFiltered()
                     // Prevent hiding the description of some videos accidentally.
-                    && !mixPlaylistsBufferExceptions.check(buffer).isFiltered()
-                    // Prevent playlist items being hidden, if a mix playlist is present in it.
-                    // Check last since it requires creating a context string.
-                    //
-                    // FIXME: The conversion context passed in does not always generate a valid toString.
-                    //        This string check may no longer be needed, or the patch may be broken.
-                    && !mixPlaylistsContextExceptions.matches(conversionContext.toString())) {
+                    && !mixPlaylistsBufferExceptions.check(buffer).isFiltered()) {
                 Logger.printDebug(() -> "Filtered mix playlist");
                 return true;
             }
