@@ -3,7 +3,6 @@ package app.morphe.patches.music.layout.startpage
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -12,7 +11,6 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -46,7 +44,7 @@ val changeStartPagePatch = bytecodePatch(
 
         ColdStartUpFingerprint.let {
             it.method.apply {
-                val returnIndices = instructions.mapIndexedNotNull { index, instr ->
+                val returnIndices = implementation!!.instructions.mapIndexedNotNull { index, instr ->
                     if (instr.opcode == Opcode.RETURN_OBJECT) index else null
                 }
 
@@ -55,18 +53,34 @@ val changeStartPagePatch = bytecodePatch(
 
                     addInstructions(
                         returnIndex,
-                        """
-                            invoke-static { v$returnRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;
-                            move-result-object v$returnRegister
-                        """
+                        "invoke-static/range {v$returnRegister .. v$returnRegister}, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
+                                "move-result-object v$returnRegister"
                     )
                 }
             }
         }
 
-        ColdStartIntentFingerprint.method.addInstruction(
-            0,
-            "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentAction(Landroid/content/Intent;)V",
-        )
+        ColdStartIntentFingerprint.let {
+            it.method.apply {
+                val p0 = implementation!!.registerCount - 2
+                val p1 = p0 + 1
+
+                addInstruction(
+                    0,
+                    "invoke-static/range {v$p0 .. v$p1}, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentAction(Landroid/app/Activity;Landroid/content/Intent;)V"
+                )
+            }
+        }
+
+        MusicActivityOnCreateFingerprint.let {
+            it.method.apply {
+                val p0 = implementation!!.registerCount - 2
+
+                addInstruction(
+                    0,
+                    "invoke-static/range {v$p0 .. v$p0}, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentActionOnCreate(Landroid/app/Activity;)V"
+                )
+            }
+        }
     }
 }

@@ -4,6 +4,15 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
+internal object MusicActivityOnCreateFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/os/Bundle;"),
+    custom = { method, _ ->
+        method.definingClass == "Lcom/google/android/apps/youtube/music/activities/MusicActivity;" &&
+                method.name == "onCreate"
+    }
+)
+
 internal object ColdStartIntentFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/content/Intent;"),

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.utils.ExtendedUtils;
 
@@ -72,7 +71,13 @@ public final class ChangeStartPagePatch {
         return overrideBrowseId;
     }
 
-    public static void overrideIntentAction(@NonNull Intent intent) {
+    public static void overrideIntentActionOnCreate(@NonNull Activity activity) {
+        overrideIntentAction(activity, activity.getIntent());
+    }
+
+    public static void overrideIntentAction(@NonNull Activity activity, @Nullable Intent intent) {
+        if (intent == null) return;
+
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
 
         if (!startPage.isIntentAction()) {
@@ -84,11 +89,8 @@ public final class ChangeStartPagePatch {
         }
 
         if (startPage == StartPage.SEARCH) {
-            Activity mActivity = Utils.getActivity();
-            if (mActivity != null) {
-                Logger.printDebug(() -> "Changing intent action to: " + startPage.name());
-                ExtendedUtils.setSearchIntent(mActivity, intent);
-            }
+            Logger.printDebug(() -> "Changing intent action to: " + startPage.name());
+            ExtendedUtils.setSearchIntent(activity, intent);
         }
     }
 }
