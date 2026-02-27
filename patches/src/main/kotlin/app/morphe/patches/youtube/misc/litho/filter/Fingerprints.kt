@@ -50,10 +50,10 @@ internal object LithoFilterFingerprint : Fingerprint(
     )
 )
 
-internal object ProtobufBufferReferenceFingerprint : Fingerprint(
+internal object ProtobufBufferEncodeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("[B"),
+    returnType = "[B",
+    parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -62,12 +62,12 @@ internal object ProtobufBufferReferenceFingerprint : Fingerprint(
         ),
         methodCall(
             definingClass = "Lcom/google/android/libraries/elements/adl/UpbMessage;",
-            name = "jniDecode"
+            name = "jniEncode"
         )
     )
 )
 
-internal object ProtobufBufferReferenceLegacyFingerprint : Fingerprint(
+internal object ProtobufBufferReferenceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "Ljava/nio/ByteBuffer;"),

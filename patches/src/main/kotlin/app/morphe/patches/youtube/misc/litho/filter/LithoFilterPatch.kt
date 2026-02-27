@@ -143,23 +143,15 @@ val lithoFilterPatch = bytecodePatch(
 
         // region Pass the buffer into extension.
 
-        if (is_20_22_or_greater) {
-            // Hook method that bridges between UPB buffer native code and FB Litho.
-            // Method is found in 19.25+, but is forcefully turned off for 20.21 and lower.
-            ProtobufBufferReferenceFingerprint.let {
-                // Hook the buffer after the call to jniDecode().
-                it.method.addInstruction(
-                    it.instructionMatches.last().index + 1,
-                    "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer([B)V",
-                )
-            }
+        if (!is_20_22_or_greater) {
+            // Non-native buffer.
+            ProtobufBufferReferenceFingerprint.method.addInstruction(
+                0,
+                "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
+            )
         }
 
-        // Legacy Non-native buffer.
-        ProtobufBufferReferenceLegacyFingerprint.method.addInstruction(
-            0,
-            "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
-        )
+        val protoBufferEncodeMethod = ProtobufBufferEncodeFingerprint.method
 
         // endregion
 
@@ -247,6 +239,20 @@ val lithoFilterPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
+                        move-object/from16 v$bufferRegister, p3
+                        instance-of v$freeRegister, v$bufferRegister, ${protoBufferEncodeMethod.definingClass}
+                        if-eqz v$freeRegister, :empty_buffer
+
+                        check-cast v$bufferRegister, ${protoBufferEncodeMethod.definingClass}
+                        invoke-virtual { v$bufferRegister }, $protoBufferEncodeMethod
+                        move-result-object v$bufferRegister
+                        goto :hook
+
+                        :empty_buffer
+                        const/4 v$freeRegister, 0x0
+                        new-array v$bufferRegister, v$freeRegister, [B
+
+                        :hook
                         move-object/from16 v$contextRegister, p2
                         invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
                         move-result v$freeRegister
