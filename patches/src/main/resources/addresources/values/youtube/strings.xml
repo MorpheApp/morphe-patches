@@ -984,11 +984,12 @@ To show the Audio track menu, change \'Spoof video streams\' to \'TV\'"</string>
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
     <string name="morphe_end_screen_suggested_video_title">Hide end screen suggested video</string>
-    <string name="morphe_end_screen_suggested_video_summary_on">"End screen suggested video is hidden when autoplay is turned off
-
-Autoplay can be changed in YouTube settings:
-Settings → Playback → Autoplay next video"</string>
+    <string name="morphe_end_screen_suggested_video_summary_on">End screen suggested video is hidden when autoplay is turned off</string>
     <string name="morphe_end_screen_suggested_video_summary_off">End screen suggested video is shown</string>
+    <string name="morphe_end_screen_suggested_video_user_dialog_message">"This setting only works if 'Autoplay next video' is turned off.
+
+'Autoplay next video' can be changed in YouTube settings:
+Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
     <string name="morphe_hide_related_videos_overlay_title">Hide related videos overlay</string>
