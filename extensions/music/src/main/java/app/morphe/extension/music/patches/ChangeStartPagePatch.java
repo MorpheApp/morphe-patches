@@ -52,10 +52,7 @@ public final class ChangeStartPagePatch {
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
 
-    private static boolean appLaunched = false;
-
     public static String overrideBrowseId(@Nullable String original) {
-        // Fetch dynamically so we get the actual current setting
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
 
         if (!startPage.isBrowseId()) {
@@ -65,12 +62,6 @@ public final class ChangeStartPagePatch {
         if (!"FEmusic_home".equals(original)) {
             return original;
         }
-
-        if (appLaunched) {
-            Logger.printDebug(() -> "Ignore override browseId as the app already launched");
-            return original;
-        }
-        appLaunched = true;
 
         String overrideBrowseId = startPage.id;
         if (overrideBrowseId.isEmpty()) {
@@ -92,12 +83,6 @@ public final class ChangeStartPagePatch {
             Logger.printDebug(() -> "Ignore override intent action as the current activity is not the entry point");
             return;
         }
-
-        if (appLaunched) {
-            Logger.printDebug(() -> "Ignore override intent action as the app already launched");
-            return;
-        }
-        appLaunched = true;
 
         if (startPage == StartPage.SEARCH) {
             Activity mActivity = Utils.getActivity();
