@@ -5,8 +5,6 @@ import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,20 +76,11 @@ public final class ChangeStartPagePatch {
         if (intent == null) return;
 
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
-        if (startPage.isIntentAction() || !ACTION_MAIN.equals(intent.getAction())) {
-            return;
-        }
+        if (startPage.isIntentAction()) return;
 
-        if (startPage == StartPage.SEARCH) {
-            Logger.printDebug(() -> "Cold start: Delaying search intent until UI is ready");
-
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                try {
-                    ExtendedUtils.setSearchIntent(activity, intent);
-                } catch (Exception e) {
-                    Logger.printDebug(() -> "Failed to launch search intent on cold start");
-                }
-            }, 500);
+        if (ACTION_MAIN.equals(intent.getAction()) && startPage == StartPage.SEARCH) {
+            Logger.printDebug(() -> "Cold start: Spoofing search intent immediately");
+            ExtendedUtils.setSearchIntent(activity, intent);
         }
     }
 
@@ -99,12 +88,10 @@ public final class ChangeStartPagePatch {
         if (intent == null) return;
 
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
-        if (startPage.isIntentAction() || !ACTION_MAIN.equals(intent.getAction())) {
-            return;
-        }
+        if (startPage.isIntentAction()) return;
 
-        if (startPage == StartPage.SEARCH) {
-            Logger.printDebug(() -> "Foreground resume: Executing search intent immediately");
+        if (ACTION_MAIN.equals(intent.getAction()) && startPage == StartPage.SEARCH) {
+            Logger.printDebug(() -> "Foreground resume: Spoofing search intent immediately");
             ExtendedUtils.setSearchIntent(activity, intent);
         }
     }
