@@ -44,17 +44,44 @@ val changeStartPagePatch = bytecodePatch(
 
         ColdStartUpFingerprint.let {
             it.method.apply {
-                val returnIndices = implementation!!.instructions.mapIndexedNotNull { index, instr ->
-                    if (instr.opcode == Opcode.RETURN_OBJECT) index else null
+                val instructions = implementation!!.instructions.toList()
+                val defaultBrowseIdIndex = instructions.indexOfFirst { instr ->
+                    instr.opcode == Opcode.CONST_STRING &&
+                            (instr as? com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction)
+                                ?.reference.let { ref ->
+                                    (ref as? com.android.tools.smali.dexlib2.iface.reference.StringReference)?.string == "FEmusic_home"
+                                }
                 }
 
-                for (returnIndex in returnIndices.reversed()) {
-                    val returnRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+                val browseIdIndex = instructions.withIndex().reversed().firstOrNull { (index, instr) ->
+                    index < defaultBrowseIdIndex &&
+                            instr.opcode == Opcode.IGET_OBJECT &&
+                            (instr as? com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction)
+                                ?.reference.let { ref ->
+                                    (ref as? com.android.tools.smali.dexlib2.iface.reference.FieldReference)?.type == "Ljava/lang/String;"
+                                }
+                }?.index ?: -1
+
+                if (browseIdIndex != -1) {
+                    val browseIdRegister = (instructions[browseIdIndex] as com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction).registerA
                     addInstructions(
-                        returnIndex,
-                        "invoke-static/range {v$returnRegister .. v$returnRegister}, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
-                                "move-result-object v$returnRegister"
+                        browseIdIndex + 1,
+                        "invoke-static/range {v$browseIdRegister .. v$browseIdRegister}, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
+                                "move-result-object v$browseIdRegister"
                     )
+                } else {
+                    val returnIndices = instructions.mapIndexedNotNull { index, instr ->
+                        if (instr.opcode == Opcode.RETURN_OBJECT) index else null
+                    }
+
+                    for (returnIndex in returnIndices.reversed()) {
+                        val returnRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+                        addInstructions(
+                            returnIndex,
+                            "invoke-static/range {v$returnRegister .. v$returnRegister}, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
+                                    "move-result-object v$returnRegister"
+                        )
+                    }
                 }
             }
         }
