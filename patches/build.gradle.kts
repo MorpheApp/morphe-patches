@@ -9,6 +9,7 @@ patches {
         contact = "na"
         website = "https://morphe.software"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
+        patcherVersion = libs.versions.morphe.patcher.get()
     }
 }
 
