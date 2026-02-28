@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
@@ -22,6 +30,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
@@ -116,6 +125,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         navigationBarHookPatch,
         versionCheckPatch,
         resourceMappingPatch,
+        hideHorizontalShelvesPatch,
         hideUpdateScreenPatch
     )
 
@@ -231,7 +241,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         )
                     ),
                     SwitchPreference("morphe_hide_community_button"),
-                    SwitchPreference("morphe_hide_for_you_shelf"),
                     SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview"),
                     SwitchPreference("morphe_hide_members_shelf"),
