@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ซ่อน Playables</string>
   <string name="morphe_hide_playables_summary_on">Playables ถูกซ่อนไว้</string>
   <string name="morphe_hide_playables_summary_off">Playables แสดงอยู่</string>
-  <string name="morphe_hide_search_suggestions_title">ซ่อนคำแนะนำในการค้นหา</string>
-  <string name="morphe_hide_search_suggestions_summary_on">ซ่อนคำแนะนำในการค้นหา</string>
-  <string name="morphe_hide_search_suggestions_summary_off">แสดงคำแนะนำในการค้นหา</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">ซ่อนปุ่ม \"แสดงเพิ่มเติม\"</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">ซ่อนผลลัพธ์การค้นหาบนเว็บ</string>
   <string name="morphe_hide_web_search_results_summary_on">ผลลัพธ์การค้นหาบนเว็บถูกซ่อน</string>
   <string name="morphe_hide_web_search_results_summary_off">ผลลัพธ์การค้นหาบนเว็บจะแสดง</string>
+  <string name="morphe_hide_you_may_like_section_title">ซ่อนส่วน \'คุณอาจชอบ\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">ส่วนที่คุณอาจชอบถูกซ่อนอยู่</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">ส่วนที่คุณอาจชอบแสดงอยู่</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">ซ่อน Doodles ของ YouTube</string>
   <string name="morphe_hide_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
@@ -151,11 +151,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_bar_summary_off">แถบช่องแสดงอยู่</string>
   <string name="morphe_hide_channel_watermark_title">ซ่อนลายน้ำของช่อง</string>
   <string name="morphe_hide_channel_watermark_summary_on">ซ่อนตรรกน้ำช่อง</string>
-  <string name="morphe_hide_channel_watermark_summary_off">แสดงตรรกน้ำช่อง</string>
+  <string name="morphe_hide_channel_watermark_summary_off">ลายน้ำเจ้าของช่องแสดงอยู่</string>
   <string name="morphe_hide_crowdfunding_box_title">ซ่อนกล่องระดมทุน</string>
   <string name="morphe_hide_crowdfunding_box_summary_on">กล่องระดมทุนถูกซ่อน</string>
   <string name="morphe_hide_crowdfunding_box_summary_off">กล่องระดมทุนถูกแสดง</string>
-  <string name="morphe_hide_emergency_box_title">ซ่อนกล่องฉุกเฉิน</string>
+  <string name="morphe_hide_emergency_box_title">ซ่อนกล่องการเตือนฉุกเฉิน</string>
   <string name="morphe_hide_emergency_box_summary_on">กล่องฉุกเฉินถูกซ่อนไว้</string>
   <string name="morphe_hide_emergency_box_summary_off">กล่องฉุกเฉินแสดงอยู่</string>
   <string name="morphe_hide_info_panels_title">ซ่อนแผงข้อมูล</string>
@@ -415,6 +415,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">ซ่อนป้ายโฆษณาที่จ่ายเงิน</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">ป้ายโฆษณาที่จ่ายเงินถูกซ่อน</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">ป้ายโฆษณาที่จ่ายเงินจะแสดง</string>
+  <string name="morphe_hide_player_popup_ads_title">ซ่อนโปปอัพของผู้เล่น</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">โปปอัพของผู้เล่นถูกซ่อนอยู่</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">โปปอัพของผู้เล่นแสดงอยู่</string>
   <string name="morphe_hide_self_sponsor_ads_title">ซ่อนการ์ดที่สนับสนุนตัวเอง</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">การ์ดที่สนับสนุนตัวเองถูกซ่อน</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">การ์ดที่สนับสนุนตัวเองจะแสดง</string>
@@ -431,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <string name="morphe_hide_video_ads_summary_on">โฆษณาวิดีโอถูกซ่อน</string>
   <string name="morphe_hide_video_ads_summary_off">โฆษณาวิดีโอจะแสดง</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">คัดลอก URL ไปยังคลิปบอร์ด</string>
   <string name="morphe_share_copy_url_timestamp_success">คัดลอก URL พร้อมเวลาไปยังคลิปบอร์ด</string>
   <string name="morphe_copy_video_url_title">แสดงปุ่มคัดลอก URL วิดีโอ</string>
@@ -445,10 +448,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">กล่องโต้ตอบจะถูกลบ</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">กล่องโต้ตอบจะแสดง</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">สิ่งนี้ไม่ได้ข้ามข้อจำกัดอายุ มันแค่ยอมรับอายุโดยอัตโนมัติ</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวีแล้ว</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">เปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวีแล้ว</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวีแล้ว</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">เปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวีแล้ว</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">ปิดใช้งานการแตะสองครั้งเพื่อข้ามบท</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">การแตะสองครั้งจะไม่สามารถเรียกให้เกิดการข้ามไปยังบทถัดไป/ก่อนหน้าได้</string>
@@ -477,10 +480,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">ปิดใช้งานท่าทางการค้นหาแบบแม่นยำ</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">ท่าทางถูกปิดใช้งาน</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">ท่าทางถูกเปิดใช้งาน</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">เปิดใช้งานแตะเพื่อค้นหา</string>
-  <string name="morphe_seekbar_tapping_summary_on">แตะเพื่อค้นหาเปิดใช้งานอยู่</string>
-  <string name="morphe_seekbar_tapping_summary_off">ปิดใช้งานการแตะเพื่อค้นหา</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">เปิดใช้งานเลื่อนเพื่อค้นหา</string>
+  <string name="morphe_slide_to_seek_summary_on">เลื่อนเพื่อค้นหาเปิดใช้งาน</string>
+  <string name="morphe_slide_to_seek_summary_off">เลื่อนเพื่อค้นหาไม่ได้เปิดใช้งาน</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">เปิดใช้งานแตะเพื่อค้นหา</string>
+  <string name="morphe_tap_to_seek_summary_on">แตะเพื่อค้นหาเปิดใช้งานอยู่</string>
+  <string name="morphe_tap_to_seek_summary_off">ปิดใช้งานการแตะเพื่อค้นหา</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">เปิดใช้งานท่าทางความสว่าง</string>
   <string name="morphe_swipe_brightness_summary_on">"เปิดใช้งานการเลื่อนความสว่างแบบเต็มหน้าจอ
@@ -648,6 +655,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">ซ่อนการแจ้งเตือน</string>
   <string name="morphe_hide_notifications_button_summary_on">ปุ่มการแจ้งเตือนถูกซ่อนอยู่</string>
   <string name="morphe_hide_notifications_button_summary_off">ปุ่มการแจ้งเตือนแสดงอยู่</string>
+  <string name="morphe_show_search_button_title">แสดงปุ่มค้นหา</string>
+  <string name="morphe_show_search_button_summary_on">แสดงปุ่มค้นหาแล้ว</string>
+  <string name="morphe_show_search_button_summary_off">ปุ่มค้นหาไม่ได้แสดง</string>
+  <string name="morphe_search_button_index_title">คำสั่งค้นหา</string>
+  <string name="morphe_search_button_index_invalid">ค่าแท็บคำสั่งค้นหาไม่ควรเกิน %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">สลับสร้างด้วยการแจ้งเตือน</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">ปุ่มสร้างถูกสลับกับปุ่มการแจ้งเตือนแล้ว</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">ปุ่มสร้างยังไม่ถูกสลับกับปุ่มการแจ้งเตือน</string>
@@ -735,10 +747,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">เมนูแทร็กเสียงซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">เมนูแทร็กเสียงแสดงอยู่</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"เมนูแทร็กเสียงถูกซ่อน
 
-เพื่อแสดงเมนูแทร็กเสียงให้เห็น เปลี่ยน 'Spoof video streams' เป็น 'TV'"</string>
+เพื่อแสดงเมนูแทร็กเสียงให้เห็น ต้องเปลี่ยน 'Spoof video streams' เป็น 'Android Reel' หรือ 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">ซ่อนดูใน VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">เมนูดูใน VR ซ่อนอยู่</string>
@@ -778,9 +790,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">ปุ่มก่อนหน้า &amp; ถัดไปถูกซ่อน</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">ปุ่มก่อนหน้า &amp; ถัดไปแสดงอยู่</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">ซ่อนการ์ดหน้าจอสิ้นสุด</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">การ์ดหน้าจอสิ้นสุดซ่อนอยู่</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">การ์ดหน้าจอสิ้นสุดแสดงอยู่</string>
+  <string name="morphe_hide_end_screen_cards_title">ซ่อนการ์ดหน้าจอสิ้นสุด</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">การ์ดหน้าจอสิ้นสุดซ่อนอยู่</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">การ์ดหน้าจอสิ้นสุดแสดงอยู่</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">โหมดแสงอาทิตย์</string>
   <string name="morphe_ambient_mode_screen_summary">เลี่ยงข้อจำกัดการเซฟพลังงานสำหรับโหมดแสงอาทิตย์และปิดทั้งหมดหรือในหน้าจอเต็มจอ</string>
@@ -957,10 +969,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">ซ่อนเวลาของวิดีโอ</string>
   <string name="morphe_hide_timestamp_summary_on">เวลาถูกซ่อนอยู่</string>
   <string name="morphe_hide_timestamp_summary_off">เวลาแสดงอยู่</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">ซ่อนแผงป๊อปอัปของเครื่องเล่น</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">แผงป๊อปอัปของเครื่องเล่นถูกซ่อนอยู่</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">แผงป๊อปอัปของเครื่องเล่นแสดงอยู่</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">ปิดใช้งานโปปอัพของผู้เล่น</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">แผงป๊อปอัปของเครื่องเล่นถูกซ่อนอยู่</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">แผงป๊อปอัปของเครื่องเล่นเปิดอยู่</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">ออกจากโหมดเต็มหน้าจอเมื่อสิ้นสุดวิดีโอ</string>
   <string name="morphe_exit_fullscreen_entry_1">ปิดใช้งาน</string>
@@ -1102,10 +1114,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">การตั้งค่าถูกนำเข้าเรียบร้อยแล้ว</string>
   <string name="morphe_sb_settings_import_failed">ไม่สามารถนำเข้าได้: %s</string>
   <string name="morphe_sb_settings_export_failed">ไม่สามารถส่งออกได้: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมี SponsorBlock userid.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมี SponsorBlock userid ที่เป็นส่วนตัว
 
-User id ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์
-"</string>
+User id ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">อย่าแสดงอีก</string>
   <string name="morphe_sb_diff_segments">เปลี่ยนพฤติกรรมของส่วน</string>
   <string name="morphe_sb_segments_sponsor">สปอนเซอร์</string>
@@ -1458,6 +1469,9 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_disable_haptic_feedback_seek_undo_title">ปิดใช้งานแฮปติกยกเลิกการค้นหา</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">ปิดใช้งานแฮปติกยกเลิกการค้นหา</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">เปิดใช้งานแฮปติกยกเลิกการค้นหา</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">ปิดใช้งานแฮปติกการกดและถือ</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">ปิดใช้งานแฮปติกการกดและถือ</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">เปิดใช้งานแฮปติกการกดและถือ</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ปิดใช้งานแฮปติกซูม</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">ปิดใช้งานแฮปติกซูม</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">เปิดใช้งานแฮปติกซูม</string>
@@ -1550,10 +1564,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_prioritize_video_quality_title">ให้ความสำคัญกับคุณภาพวิดีโอ</string>
   <string name="morphe_prioritize_video_quality_summary_on">คุณภาพวิดีโอได้รับการให้ความสำคัญ</string>
   <string name="morphe_prioritize_video_quality_summary_off">รหัสวิดีโอได้รับการให้ความสำคัญ</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">เปิดใช้งานเลื่อนเพื่อค้นหา</string>
-  <string name="morphe_slide_to_seek_summary_on">เลื่อนเพื่อค้นหาเปิดใช้งาน</string>
-  <string name="morphe_slide_to_seek_summary_off">เลื่อนเพื่อค้นหาไม่ได้เปิดใช้งาน</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">อนุญาต Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"ตัวแปลงสัญญาณวิดีโอคือ AVC (H.264), VP9 หรือ AV1

@@ -102,7 +102,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">flag をリセットしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">flag をクリップボードにコピーしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">アプリを再起動してください</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

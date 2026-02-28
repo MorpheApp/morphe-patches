@@ -13,6 +13,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
+import app.morphe.patches.youtube.misc.engagement.addEngagementPanelIdHook
+import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -35,12 +37,11 @@ import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
+
 internal var adAttributionId = -1L
     private set
-internal var fullScreenEngagementAdContainer = -1L
-    private set
-
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
 
 private val hideAdsResourcePatch = resourcePatch {
     dependsOn(
@@ -48,6 +49,7 @@ private val hideAdsResourcePatch = resourcePatch {
         settingsPatch,
         resourceMappingPatch,
         clientContextHookPatch,
+        engagementPanelHookPatch,
     )
 
     execute {
@@ -57,16 +59,17 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_general_ads"),
             SwitchPreference("morphe_hide_merchandise_banners"),
             SwitchPreference("morphe_hide_paid_promotion_label"),
+            SwitchPreference("morphe_hide_player_popup_ads"),
             SwitchPreference("morphe_hide_self_sponsor_ads"),
             SwitchPreference("morphe_hide_shopping_links"),
             SwitchPreference("morphe_hide_view_products_banner"),
             SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
-        addLithoFilter("Lapp/morphe/extension/youtube/patches/components/AdsFilter;")
+        addLithoFilter(EXTENSION_CLASS_DESCRIPTOR)
+        addEngagementPanelIdHook("$EXTENSION_CLASS_DESCRIPTOR->hidePlayerPopupAds(Ljava/lang/String;)Z")
 
         adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
-        fullScreenEngagementAdContainer = getResourceId(ResourceType.ID, "fullscreen_engagement_ad_container")
     }
 }
 
@@ -87,17 +90,19 @@ val hideAdsPatch = bytecodePatch(
     execute {
         // Hide end screen store banner
 
-        FullScreenEngagementAdContainerFingerprint.method.apply {
-            val addListIndex = indexOfAddListInstruction(this)
-            val addListInstruction = getInstruction<FiveRegisterInstruction>(addListIndex)
-            val listRegister = addListInstruction.registerC
-            val objectRegister = addListInstruction.registerD
+        FullScreenEngagementAdContainerFingerprint.let {
+            it.method.apply {
+                val insertIndex = it.instructionMatches[3].index
+                val insertInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
+                val listRegister = insertInstruction.registerC
+                val objectRegister = insertInstruction.registerD
 
-            replaceInstruction(
-                addListIndex,
-                "invoke-static { v$listRegister, v$objectRegister }, $EXTENSION_CLASS_DESCRIPTOR" +
-                        "->hideEndScreenStoreBanner(Ljava/util/List;Ljava/lang/Object;)V"
-            )
+                replaceInstruction(
+                    insertIndex,
+                    "invoke-static { v$listRegister, v$objectRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            "hideEndScreenStoreBanner(Ljava/util/List;Ljava/lang/Object;)V"
+                )
+            }
         }
 
         // Hide fullscreen ad

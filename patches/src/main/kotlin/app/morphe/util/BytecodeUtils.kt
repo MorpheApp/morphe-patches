@@ -2,11 +2,15 @@
  * Copyright 2025 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
+ * Original code hard forked from:
+ * https://github.com/ReVanced/revanced-patches/blob/724e6d61b2ecd868c1a9a37d465a688e83a74799/patches/src/main/kotlin/app/revanced/util/BytecodeUtils.kt
+ *
  * File-Specific License Notice (GPLv3 Section 7 Terms)
  *
  * This file is part of the Morphe patches project and is licensed under
  * the GNU General Public License version 3 (GPLv3), with the Additional
- * Terms under Section 7 described in the Morphe patches LICENSE file.
+ * Terms under Section 7 described in the Morphe patches
+ * LICENSE file: https://github.com/MorpheApp/morphe-patches/blob/main/NOTICE
  *
  * https://www.gnu.org/licenses/gpl-3.0.html
  *
@@ -80,7 +84,7 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 /**
  * Find the instruction index used for a toString() StringBuilder write of a given String name.
  *
- * @param fieldName The name of the field to find.  Partial matches are allowed.
+ * @param fieldName The name of the field to find. Partial matches are allowed.
  */
 private fun Method.findInstructionIndexFromToString(fieldName: String) : Int {
     val stringIndex = indexOfFirstInstruction {
@@ -132,7 +136,7 @@ private fun Method.findInstructionIndexFromToString(fieldName: String) : Int {
 /**
  * Find the method used for a toString() StringBuilder write of a given String name.
  *
- * @param fieldName The name of the field to find.  Partial matches are allowed.
+ * @param fieldName The name of the field to find. Partial matches are allowed.
  */
 context(BytecodePatchContext)
 internal fun Method.findMethodFromToString(fieldName: String) : MutableMethod {
@@ -143,7 +147,7 @@ internal fun Method.findMethodFromToString(fieldName: String) : MutableMethod {
 /**
  * Find the field used for a toString() StringBuilder write of a given String name.
  *
- * @param fieldName The name of the field to find.  Partial matches are allowed.
+ * @param fieldName The name of the field to find. Partial matches are allowed.
  */
 internal fun Method.findFieldFromToString(fieldName: String) : FieldReference {
     val methodUsageIndex = findInstructionIndexFromToString(fieldName)
@@ -765,7 +769,7 @@ fun BytecodePatchContext.forEachLiteralValueInstruction(
 }
 
 /**
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
  * and contain the original contents of the method parameters.
  * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
  * original uncloned method.
@@ -778,7 +782,7 @@ fun Method.cloneMutableAndPreserveParameters() = cloneMutableAndPreserveParamete
 )
 
 /**
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
  * and contain the original contents of the method parameters.
  * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
  * original uncloned method.
@@ -807,7 +811,7 @@ fun Method.cloneMutableAndPreserveParameters(mutableClass : MutableClass) : Muta
  * Adapted from BiliRoamingX:
  * https://github.com/BiliRoamingX/BiliRoamingX/blob/ae58109f3acdd53ec2d2b3fb439c2a2ef1886221/patches/src/main/kotlin/app/revanced/patches/bilibili/utils/Extenstions.kt#L51
  *
- * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc)
+ * Additional registers effectively take the place of the pX parameters (p0, p1, p2, etc.)
  * and contain the original contents of the method parameters.
  * Added registers always start at index: `originalMethod.implementation!!.registerCount` of the
  * original uncloned method.

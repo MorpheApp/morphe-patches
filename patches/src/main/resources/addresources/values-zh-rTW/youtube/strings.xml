@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_on">已隱藏遊戲角落</string>
   <string name="morphe_hide_playables_summary_off">已顯示遊戲角落</string>
-  <string name="morphe_hide_search_suggestions_title">隱藏搜尋建議</string>
-  <string name="morphe_hide_search_suggestions_summary_on">已隱藏搜尋建議</string>
-  <string name="morphe_hide_search_suggestions_summary_off">已顯示搜尋建議</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">隱藏「顯示更多」按鈕</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">隱藏網頁搜尋結果</string>
   <string name="morphe_hide_web_search_results_summary_on">已隱藏網頁搜尋結果</string>
   <string name="morphe_hide_web_search_results_summary_off">已顯示網頁搜尋結果</string>
+  <string name="morphe_hide_you_may_like_section_title">隱藏 \"您可能會喜歡\" 區段</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">已隱藏您可能喜歡的區塊</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">已顯示您可能喜歡的區塊</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">隱藏 YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">已隱藏 YouTube 標誌上的 Doodles 動畫</string>
@@ -415,6 +415,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">隱藏付費推廣標籤</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">已隱藏付費推廣標籤</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">已顯示付費推廣標籤</string>
+  <string name="morphe_hide_player_popup_ads_title">隱藏播放器彈出廣告</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">已隱藏播放器彈出廣告</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">已顯示播放器彈出廣告</string>
   <string name="morphe_hide_self_sponsor_ads_title">隱藏自我贊助資訊卡</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">已隱藏自我贊助資訊卡</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">已顯示自我贊助資訊卡</string>
@@ -431,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">隱藏影片廣告</string>
   <string name="morphe_hide_video_ads_summary_on">已隱藏影片廣告</string>
   <string name="morphe_hide_video_ads_summary_off">已顯示影片廣告</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">已將網址複製到剪貼簿</string>
   <string name="morphe_share_copy_url_timestamp_success">已複製時間戳記網址</string>
   <string name="morphe_copy_video_url_title">顯示複製影片網址按鈕</string>
@@ -445,10 +448,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">將移除對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">將顯示對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">這不會繞過年齡限制，只會自動按下同意。</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">停用「登入電視」彈出視窗</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">已停用「登入電視」彈出視窗</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">已啟用「登入電視」彈出視窗</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">停用「登入電視」彈出視窗</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">已停用「登入電視」彈出視窗</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">已啟用「登入電視」彈出視窗</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">停用按兩下跳過章節功能</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">按兩下永遠不會觸發跳至下一／上一章節</string>
@@ -477,10 +480,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">已停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">已啟用精準跳轉手勢</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">啟用輕觸以跳轉</string>
-  <string name="morphe_seekbar_tapping_summary_on">已啟用輕觸以跳轉</string>
-  <string name="morphe_seekbar_tapping_summary_off">已停用輕觸以跳轉</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
+  <string name="morphe_slide_to_seek_summary_on">已啟用滑動預覽</string>
+  <string name="morphe_slide_to_seek_summary_off">未啟用滑動預覽</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">啟用輕觸以跳轉</string>
+  <string name="morphe_tap_to_seek_summary_on">已啟用輕觸以跳轉</string>
+  <string name="morphe_tap_to_seek_summary_off">已停用輕觸以跳轉</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">啟用亮度手勢</string>
   <string name="morphe_swipe_brightness_summary_on">"已啟用全螢幕亮度滑動調整
@@ -650,6 +657,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">隱藏「通知」</string>
   <string name="morphe_hide_notifications_button_summary_on">已隱藏「通知」按鈕</string>
   <string name="morphe_hide_notifications_button_summary_off">已顯示「通知」按鈕</string>
+  <string name="morphe_show_search_button_title">顯示搜尋按鈕</string>
+  <string name="morphe_show_search_button_summary_on">已顯示「搜尋」按鈕</string>
+  <string name="morphe_show_search_button_summary_off">未顯示搜尋按鈕</string>
+  <string name="morphe_search_button_index_title">搜尋按鈕索引</string>
+  <string name="morphe_search_button_index_invalid">搜尋按鈕索引必須小於 %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">「建立」按鈕已與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">「建立」按鈕未與「通知」按鈕對調</string>
@@ -737,7 +749,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">已隱藏「音軌」選單</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">已顯示「音軌」選單</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"已隱藏音訊軌道選單
 
 如要顯示「音軌」選單，請將「偽裝視訊串流」變更為「電視」"</string>
@@ -780,9 +792,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">已隱藏「上一部」和「下一部」按鈕</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">已顯示「上一部」和「下一部」按鈕</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">隱藏片尾資訊卡</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">已隱藏片尾資訊卡</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">已顯示片尾資訊卡</string>
+  <string name="morphe_hide_end_screen_cards_title">隱藏片尾資訊卡</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">已隱藏片尾資訊卡</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">已顯示片尾資訊卡</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">微光模式</string>
   <string name="morphe_ambient_mode_screen_summary">繞過省電限制以啟用微光模式，或完全關閉或關閉全螢幕</string>
@@ -959,10 +971,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">隱藏影片時間戳記</string>
   <string name="morphe_hide_timestamp_summary_on">已隱藏時間戳記</string>
   <string name="morphe_hide_timestamp_summary_off">已顯示時間戳記</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">隱藏播放器彈出面板</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">已隱藏播放器彈出面板</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">已顯示播放器彈出面板</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">禁用播放器彈出面板</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">已禁用播放器彈出面板</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">已啟用播放器彈出面板</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">視窗模式結束後退出全螢幕</string>
   <string name="morphe_exit_fullscreen_entry_1">停用</string>
@@ -1106,7 +1118,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_export_failed">無法匯出：%s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"您的設定中包含一組私人的 SponsorBlock 使用者 ID。
 
-您的使用者 ID 就像密碼一樣，絕對不應該分享。"</string>
+您的使用者 ID 就像密碼一樣，絕對不應該分享出去。"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">不再顯示</string>
   <string name="morphe_sb_diff_segments">變更片段操作</string>
   <string name="morphe_sb_segments_sponsor">贊助商廣告</string>
@@ -1465,6 +1477,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">停用拖曳還原觸覺回饋</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">已停用拖曳還原觸覺回饋</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">已啟用拖曳還原觸覺回饋</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">停用按住觸覺反饋</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">已停用按住觸覺反饋</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">已啟用按住觸覺反饋</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">停用縮放震動</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">已停用縮放觸覺回饋</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">已啟用縮放觸覺回饋</string>
@@ -1557,10 +1572,6 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_title">優先影片品質</string>
   <string name="morphe_prioritize_video_quality_summary_on">已優先影片品質</string>
   <string name="morphe_prioritize_video_quality_summary_off">已優先影片編碼</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
-  <string name="morphe_slide_to_seek_summary_on">已啟用滑動預覽</string>
-  <string name="morphe_slide_to_seek_summary_off">未啟用滑動預覽</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">允許 Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"視訊轉碼器為 AVC (H.264)、VP9 或 AV1
@@ -1569,7 +1580,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_av1_summary_off">視訊轉碼器為 AVC (H.264) 或 VP9</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"啟用此設定可能會使用軟體 AV1 解碼。
 
-AV1 視訊播放可能會卡頓或掉幀。"</string>
+AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺騙的副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 實驗性用戶端，隨時可能停止運作</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• 影片可能會在 1:00 停止，或在某些地區無法播放</string>

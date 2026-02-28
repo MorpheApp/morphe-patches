@@ -3,14 +3,13 @@ package app.morphe.extension.youtube.patches.theme;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ThemePatch extends BaseThemePatch {
     public enum SplashScreenAnimationStyle {
-        // 0 int style exists in target app as a fall thru default, but it's value is repurposed to be disabled.
+        // 0 int style exists in target app as a fall through default, but its value is repurposed to be disabled.
         DISABLED(0),
         FPS_60_ONE_SECOND(1),
         FPS_60_TWO_SECOND(2),
@@ -20,7 +19,7 @@ public class ThemePatch extends BaseThemePatch {
         FPS_30_TWO_SECOND(6),
         FPS_30_FIVE_SECOND(7),
         FPS_30_BLACK_AND_WHITE(8);
-        // There exists a 10th json style used as the switch statement default,
+        // There exists a 10th JSON style used as the switch statement default,
         // but visually it is identical to 60fps one second.
 
         @Nullable

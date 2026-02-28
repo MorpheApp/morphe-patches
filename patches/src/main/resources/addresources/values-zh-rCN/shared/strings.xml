@@ -102,7 +102,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">标志已重置</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">标志已复制到剪贴板</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">重启应用以使用此功能</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">打开 MicroG 设置</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

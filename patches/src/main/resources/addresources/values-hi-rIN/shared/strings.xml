@@ -102,7 +102,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">फ़्लैग्स रीसेट किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">फ़्लैग्स क्लिपबोर्ड में कॉपी किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सुविधा का उपयोग करने के लिए ऐप को पुनःारंभ करें</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोजी सेटिंग्स खोलें</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

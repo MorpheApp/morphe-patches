@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class HideTrendingTodayShelfPatch {

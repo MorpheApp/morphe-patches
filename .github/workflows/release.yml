@@ -50,26 +50,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Python for FCM
-        if: steps.release.outputs.new_release_published == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install FCM dependencies
-        if: steps.release.outputs.new_release_published == 'true'
-        run: pip install cryptography
-
-      - name: Send FCM push notification
-        if: steps.release.outputs.new_release_published == 'true'
-        env:
-          FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
-          FCM_SERVICE_ACCOUNT_JSON: ${{ secrets.FCM_SERVICE_ACCOUNT_JSON }}
-          FCM_TYPE: bundle_update
-          FCM_VERSION: ${{ steps.release.outputs.new_release_version }}
-          BRANCH: ${{ github.ref_name }}
-        run: python3 .github/scripts/send_fcm.py
-
       - name: Attest
         if: steps.release.outputs.new_release_published == 'true'
         uses: actions/attest-build-provenance@v3
@@ -97,3 +77,25 @@ jobs:
               repo: 'morphe-website',
               event_type: 'trigger-deploy'
             })
+
+      - name: Wait before sending FCM
+        if: steps.release.outputs.new_release_published == 'true'
+        run: sleep 300
+
+      - name: Setup Python for FCM
+        if: steps.release.outputs.new_release_published == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Send FCM push notification
+        if: steps.release.outputs.new_release_published == 'true'
+        env:
+          FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
+          FCM_SERVICE_ACCOUNT_JSON: ${{ secrets.FCM_SERVICE_ACCOUNT_JSON }}
+          FCM_TYPE: bundle_update
+          FCM_VERSION: ${{ steps.release.outputs.new_release_version }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          pip install cryptography
+          python3 .github/scripts/send_fcm.py

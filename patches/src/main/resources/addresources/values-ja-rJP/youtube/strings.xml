@@ -97,9 +97,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_image_shelf_title">画像欄を非表示</string>
   <string name="morphe_hide_image_shelf_summary_on">検索結果の画像欄は表示されません</string>
   <string name="morphe_hide_image_shelf_summary_off">検索結果の画像欄は表示されます</string>
-  <string name="morphe_hide_latest_posts_title">最新の投稿を非表示</string>
-  <string name="morphe_hide_latest_posts_summary_on">最新の投稿は表示されません</string>
-  <string name="morphe_hide_latest_posts_summary_off">最新の投稿は表示されます</string>
+  <string name="morphe_hide_latest_posts_title">「最新の投稿」欄を非表示</string>
+  <string name="morphe_hide_latest_posts_summary_on">「最新の投稿」欄は表示されません</string>
+  <string name="morphe_hide_latest_posts_summary_off">「最新の投稿」欄は表示されます</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">「新着動画」ボタンを非表示</string>
@@ -119,9 +119,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">ゲームルームを非表示</string>
   <string name="morphe_hide_playables_summary_on">ゲームルームは表示されません</string>
   <string name="morphe_hide_playables_summary_off">ゲームルームは表示されます</string>
-  <string name="morphe_hide_search_suggestions_title">検索候補を非表示</string>
-  <string name="morphe_hide_search_suggestions_summary_on">検索候補は表示されません</string>
-  <string name="morphe_hide_search_suggestions_summary_off">検索候補は表示されます</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">「もっと見る」ボタンを非表示</string>
@@ -143,6 +140,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">ウェブ検索結果を非表示</string>
   <string name="morphe_hide_web_search_results_summary_on">ウェブ検索結果は表示されません</string>
   <string name="morphe_hide_web_search_results_summary_off">ウェブ検索結果は表示されます</string>
+  <string name="morphe_hide_you_may_like_section_title">「おすすめ」セクションを非表示</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">検索履歴の「おすすめ」セクションは表示されません</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">検索履歴の「おすすめ」セクションは表示されます</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodle を非表示</string>
   <string name="morphe_hide_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
@@ -215,8 +215,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">「ポッドキャストを検索」セクションは表示されません</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">「ポッドキャストを検索」セクションは表示されます</string>
   <string name="morphe_hide_featured_links_section_title">おすすめリンクを非表示</string>
-  <string name="morphe_hide_featured_links_section_summary_on">情報カード セクション内のおすすめ動画セクションは表示されません</string>
-  <string name="morphe_hide_featured_links_section_summary_off">情報カード セクション内のおすすめ動画セクションは表示されます</string>
+  <string name="morphe_hide_featured_links_section_summary_on">情報カード セクション内のおすすめリンク セクションは表示されません</string>
+  <string name="morphe_hide_featured_links_section_summary_off">情報カード セクション内のおすすめリンク セクションは表示されます</string>
   <string name="morphe_hide_featured_places_section_title">「注目の場所」を非表示</string>
   <string name="morphe_hide_featured_places_section_summary_on">注目の場所セクションは表示されません</string>
   <string name="morphe_hide_featured_places_section_summary_off">注目の場所セクションは表示されます</string>
@@ -416,6 +416,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">「プロモーションを含みます」ラベルを非表示</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">「プロモーションを含みます」ラベルは表示されません</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">「プロモーションを含みます」ラベルは表示されます</string>
+  <string name="morphe_hide_player_popup_ads_title">プレーヤーのポップアップ広告を非表示</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">プレーヤーのポップアップ広告は表示されません</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">プレーヤーのポップアップ広告は表示されます</string>
   <string name="morphe_hide_self_sponsor_ads_title">自己宣伝カードを非表示</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">自己宣伝カードは表示されません</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">自己宣伝カードは表示されます</string>
@@ -432,7 +435,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
   <string name="morphe_hide_video_ads_summary_on">動画広告は表示されません</string>
   <string name="morphe_hide_video_ads_summary_off">動画広告は表示されます</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL をクリップボードにコピーしました</string>
   <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付きの URL がコピーされました</string>
   <string name="morphe_copy_video_url_title">「動画の URL をコピー」ボタンを表示</string>
@@ -446,10 +449,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">ダイアログは削除されます</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">ダイアログは表示されます</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">この機能によって年齢制限が回避される訳ではありません。自動的に承認するだけです。</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">「テレビでログイン」ポップアップは無効です</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">「テレビでログイン」ポップアップは有効です</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">「テレビでログイン」ポップアップは無効です</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">「テレビでログイン」ポップアップは有効です</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">ダブルタップによるチャプター スキップを無効化</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">ダブルタップしたときに、次または前のチャプターへスキップしてしまうことはありません</string>
@@ -478,10 +481,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精密シーク ジェスチャーは無効です。シークバーを上へスワイプしても、「再生位置の細かい調整」モードにはなりません</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">精密シーク ジェスチャーは有効です。シークバーを上へスワイプすると、「再生位置の細かい調整」モードになります</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">タップによるシークを有効化</string>
-  <string name="morphe_seekbar_tapping_summary_on">タップによるシークは有効です。シークバーをタップすると、タップした位置に移動します</string>
-  <string name="morphe_seekbar_tapping_summary_off">タップによるシークは無効です。シークバーをタップしても、タップした位置に移動しません</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
+  <string name="morphe_slide_to_seek_summary_on">スライドによるシークは有効です。プレーヤー画面を左右にスライドすると、前後にシークします</string>
+  <string name="morphe_slide_to_seek_summary_off">スライドによるシークは無効です。プレーヤー画面を左右にスライドしても、前後にシークしません</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
+  <string name="morphe_tap_to_seek_summary_on">タップによるシークは有効です。シークバーをタップすると、タップした位置に移動します</string>
+  <string name="morphe_tap_to_seek_summary_off">タップによるシークは無効です。シークバーをタップしても、タップした位置に移動しません</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">明るさジェスチャーを有効化</string>
   <string name="morphe_swipe_brightness_summary_on">"全画面表示モードの明るさジェスチャーは有効です
@@ -627,7 +634,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">文字起こしを修正</string>
   <string name="morphe_fix_transcript_summary_on">文字起こしは利用可能です</string>
-  <string name="morphe_fix_transcript_summary_off">Precondition check failure エラーによって文字起こしが利用できない場合があります</string>
+  <string name="morphe_fix_transcript_summary_off">前提条件チェックの失敗によって文字起こしが利用できない場合があります</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
   <string name="morphe_navigation_buttons_screen_summary">ナビゲーション バーのボタンを変更または非表示にします</string>
@@ -651,6 +658,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">「通知」を非表示</string>
   <string name="morphe_hide_notifications_button_summary_on">通知ボタンは表示されません</string>
   <string name="morphe_hide_notifications_button_summary_off">通知ボタンは表示されます</string>
+  <string name="morphe_show_search_button_title">検索ボタンを表示</string>
+  <string name="morphe_show_search_button_summary_on">検索ボタンは表示されます</string>
+  <string name="morphe_show_search_button_summary_off">検索ボタンは表示されません</string>
+  <string name="morphe_search_button_index_title">検索ボタンの表示位置</string>
+  <string name="morphe_search_button_index_invalid">検索ボタンの表示位置は %s 未満でなければなりません</string>
   <string name="morphe_swap_create_with_notifications_button_title">「作成」と「通知」を入れ替え</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">作成ボタンと通知ボタンが入れ替わります</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">作成ボタンと通知ボタンは入れ替わりません</string>
@@ -668,8 +680,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"制限事項：
-• 動画プレーヤーの上部に黒いバーが表示される場合があります
-• システムのナビゲーション バーが半透明になり、動画にコメントできなくなる場合があります"</string>
+• 動画プレーヤーの上部に黒いバーが表示される場合がある。
+• システムのナビゲーション バーが半透明になり、動画にコメントできなくなる可能性がある。"</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">ライトモードの半透明バーを無効化</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">ライトモードではナビゲーション バーは透けません</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">ライトモードではナビゲーション バーが状況に応じて透けます</string>
@@ -687,9 +699,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">検索ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">検索ボタンは表示されます</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">検索ボタンを非表示</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">検索ボタンは表示されません</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">検索ボタンは表示されます</string>
+  <string name="morphe_hide_toolbar_voice_search_button_title">音声検索ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_voice_search_button_summary_on">音声検索ボタンは表示されません</string>
+  <string name="morphe_hide_toolbar_voice_search_button_summary_off">音声検索ボタンは表示されます</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
   <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューの項目を表示または非表示にします</string>
@@ -738,10 +750,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">「音声トラック」は表示されません</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">「音声トラック」は表示されます</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」は表示されません
 
-「音声トラック」を表示するには、[動画ストリームを偽装] を「TV」に変更してください"</string>
+「音声トラック」を表示するには、[動画ストリームを偽装] を「Android Reel」または「TV」に変更してください"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">「VR で見る」を非表示</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>
@@ -781,12 +793,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">前の動画ボタンと次の動画ボタンは表示されません</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">前の動画ボタンと次の動画ボタンは表示されます</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">終了画面カードを非表示</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">終了画面カードは表示されません</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">終了画面カードは表示されます</string>
+  <string name="morphe_hide_end_screen_cards_title">終了画面カードを非表示</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">終了画面カードは表示されません</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">終了画面カードは表示されます</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">アンビエント モード</string>
-  <string name="morphe_ambient_mode_screen_summary">アンビエント モードの省電力制限を回避、または完全に / 全画面表示中のアンビエント モードを無効化します</string>
+  <string name="morphe_ambient_mode_screen_summary">アンビエント モードの省電力制限を回避します。また、アンビエント モードを完全にもしくは全画面表示中に無効化します</string>
   <string name="morphe_bypass_ambient_mode_restrictions_title">アンビエント モードの制限を回避</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary_on">アンビエント モードの省電力制限は回避されます</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary_off">アンビエント モードの省電力制限は回避されません</string>
@@ -960,10 +972,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">動画のタイムスタンプを非表示</string>
   <string name="morphe_hide_timestamp_summary_on">動画の現在位置を示すタイムスタンプは表示されません</string>
   <string name="morphe_hide_timestamp_summary_off">動画の現在位置を示すタイムスタンプは表示されます</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">プレーヤー ポップアップ パネルを非表示</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">プレーヤー ポップアップ パネルは表示されません\n\nプレイリストやライブ配信のチャット欄などを閉じた状態で動画を開きます</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">プレーヤー ポップアップ パネルは表示されます\n\nプレイリストやライブ配信のチャット欄などを展開した状態で動画を開きます</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">プレーヤー ポップアップ パネルを無効化</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">プレーヤー ポップアップ パネルは無効です\n\nプレイリストやライブ配信のチャット欄などを閉じた状態で動画を開きます</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">プレーヤー ポップアップ パネルは有効です\n\nプレイリストやライブ配信のチャット欄などを展開した状態で動画を開きます</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">再生終了時に全画面表示を解除</string>
   <string name="morphe_exit_fullscreen_entry_1">無効</string>
@@ -1459,6 +1471,9 @@ Automotive レイアウト
   <string name="morphe_disable_haptic_feedback_seek_undo_title">シーク取り消しの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">シーク取り消しの触覚フィードバックは無効です</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">シーク取り消しの触覚フィードバックは有効です</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">長押しの触覚フィードバックを無効化</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">長押しの触覚フィードバックは無効です</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">長押しの触覚フィードバックは有効です</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ズームの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">ズームの触覚フィードバックは無効です</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">ズームの触覚フィードバックは有効です</string>
@@ -1551,10 +1566,6 @@ Automotive レイアウト
   <string name="morphe_prioritize_video_quality_title">画質を優先</string>
   <string name="morphe_prioritize_video_quality_summary_on">画質が優先されます</string>
   <string name="morphe_prioritize_video_quality_summary_off">ビデオ コーデックが優先されます</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
-  <string name="morphe_slide_to_seek_summary_on">スライドによるシークは有効です。プレーヤー画面を左右にスライドすると、前後にシークします</string>
-  <string name="morphe_slide_to_seek_summary_off">スライドによるシークは無効です。プレーヤー画面を左右にスライドしても、前後にシークしません</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR で AV1 を許可</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"ビデオ コーデックは AVC (H.264)、VP9、AV1 のいずれかになります

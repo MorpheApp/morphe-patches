@@ -118,9 +118,6 @@ Zmiany obejmują:
   <string name="morphe_hide_playables_title">Pokój gier</string>
   <string name="morphe_hide_playables_summary_on">Ukryty</string>
   <string name="morphe_hide_playables_summary_off">Widoczny</string>
-  <string name="morphe_hide_search_suggestions_title">Sugestie wyszukiwań</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Ukryte</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Widoczne</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Przycisk \"Pokaż więcej\"</string>
@@ -142,6 +139,9 @@ Zmiany obejmują:
   <string name="morphe_hide_web_search_results_title">Wyniki wyszukiwania stron internetowych</string>
   <string name="morphe_hide_web_search_results_summary_on">Ukryte</string>
   <string name="morphe_hide_web_search_results_summary_off">Widoczne</string>
+  <string name="morphe_hide_you_may_like_section_title">Sekcja \"Może Cię zainteresować\"</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Widoczna</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Ukryte</string>
@@ -415,6 +415,9 @@ Ograniczenia:
   <string name="morphe_hide_paid_promotion_label_title">Etykiety płatnej promocji</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">Ukryte</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">Widoczne</string>
+  <string name="morphe_hide_player_popup_ads_title">Wyskakujące reklamy w odtwarzaczu</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">Ukryte</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">Widoczne</string>
   <string name="morphe_hide_self_sponsor_ads_title">Karty z autopromocją</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">Ukryte</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">Widoczne</string>
@@ -431,7 +434,7 @@ Ograniczenia:
   <string name="morphe_hide_video_ads_title">Reklamy filmu</string>
   <string name="morphe_hide_video_ads_summary_on">Ukryte</string>
   <string name="morphe_hide_video_ads_summary_off">Widoczne</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Skopiowano link do schowka</string>
   <string name="morphe_share_copy_url_timestamp_success">Skopiowano link z czasem</string>
   <string name="morphe_copy_video_url_title">Przycisk kopiowania linku do filmu</string>
@@ -445,10 +448,10 @@ Ograniczenia:
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Usunięte</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Widoczne</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Nie pomija to ograniczeń wiekowych, lecz akceptuje je automatycznie.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Komunikat o zalogowaniu się do TV</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Wyłączony</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Włączony</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Komunikat o zalogowaniu się do TV</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Wyłączony</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Włączony</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Pominięcie rozdziału dwukrotnym stuknięciem</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Wyłączone</string>
@@ -477,10 +480,14 @@ Sprawdź, czy nazwa pakietu jest prawidłowa i czy aplikacja jest zainstalowana"
   <string name="morphe_disable_precise_seeking_gesture_title">Gest precyzyjnego przewijania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Wyłączony</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Włączony</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Stuknięcie, aby przewinąć film</string>
-  <string name="morphe_seekbar_tapping_summary_on">Włączone</string>
-  <string name="morphe_seekbar_tapping_summary_off">Wyłączone</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Przesuń, by przewinąć</string>
+  <string name="morphe_slide_to_seek_summary_on">Włączone</string>
+  <string name="morphe_slide_to_seek_summary_off">Wyłączone</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Stuknięcie, aby przewinąć film</string>
+  <string name="morphe_tap_to_seek_summary_on">Włączone</string>
+  <string name="morphe_tap_to_seek_summary_off">Wyłączone</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Zmienianie jasności przesuwaniem</string>
   <string name="morphe_swipe_brightness_summary_on">"Włączone w trybie pełnoekranowym
@@ -650,6 +657,11 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_notifications_button_title">Przycisk Powiadomienia</string>
   <string name="morphe_hide_notifications_button_summary_on">Ukryty</string>
   <string name="morphe_hide_notifications_button_summary_off">Widoczny</string>
+  <string name="morphe_show_search_button_title">Przycisk wyszukiwania</string>
+  <string name="morphe_show_search_button_summary_on">Widoczny</string>
+  <string name="morphe_show_search_button_summary_off">Ukryty</string>
+  <string name="morphe_search_button_index_title">Indeks przycisku wyszukiwania</string>
+  <string name="morphe_search_button_index_invalid">Indeks przycisku wyszukiwania musi być mniejszy niż %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Przyciski Utwórz i Powiadomienia</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Zamienione</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Niezamienione</string>
@@ -686,7 +698,7 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_toolbar_search_button_title">Przycisk Szukaj</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Przycisk \"Wyszukiwanie głosowe\"</string>
+  <string name="morphe_hide_toolbar_voice_search_button_title">Przycisk Wyszukiwanie głosowe</string>
   <string name="morphe_hide_toolbar_voice_search_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_voice_search_button_summary_off">Widoczny</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -737,10 +749,10 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Ukryte</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Widoczne</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ukryte
 
-Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\" na \"TV\""</string>
+Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\" na \"Android Reel\" lub \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Menu oglądania w VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Ukryte</string>
@@ -780,9 +792,9 @@ Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Ukryte</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Widoczne</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Karty końcowe w filmach</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">Ukryte</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">Widoczne</string>
+  <string name="morphe_hide_end_screen_cards_title">Karty końcowe w filmach</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">Ukryte</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">Widoczne</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Oświetlenie kinowe</string>
   <string name="morphe_ambient_mode_screen_summary">Omiń ograniczenia oszczędzania energii dla oświetlenia kinowego i wyłącz je całkowicie lub w trybie pełnoekranowym</string>
@@ -959,10 +971,10 @@ Ustawienia → Odtwarzanie → Autoodtwarzanie następnego filmu"</string>
   <string name="morphe_hide_timestamp_title">Czas filmu</string>
   <string name="morphe_hide_timestamp_summary_on">Ukryty</string>
   <string name="morphe_hide_timestamp_summary_off">Widoczny</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Wyskakujące panele w odtwarzaczu</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">Ukryte</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">Widoczne</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Wyskakujące panele w odtwarzaczu</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">Wyłączone</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">Włączone</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Wychodzenie z trybu pełnoekranowego po zakończeniu filmu</string>
   <string name="morphe_exit_fullscreen_entry_1">Wyłączone</string>
@@ -1091,7 +1103,7 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito"<
   <string name="morphe_sb_general_min_duration_invalid">Nieprawidłowy czas trwania</string>
   <string name="morphe_sb_general_uuid">Twój prywatny identyfikator użytkownika</string>
   <string name="morphe_sb_general_uuid_sum">Nie należy go udostępniać, gdyż działa jak hasło. Jeżeli ktoś go posiada, może korzystać ze SponsorBlocka w Twoim imieniu, np. może wysyłać segmenty</string>
-  <string name="morphe_sb_general_uuid_invalid">Prywatny identyfikator użytkownika musi mieć przynajmniej 30 znaków</string>
+  <string name="morphe_sb_general_uuid_invalid">Prywatny identyfikator użytkownika musi mieć co najmniej 30 znaków</string>
   <string name="morphe_sb_general_api_url">Zmień adres URL API</string>
   <string name="morphe_sb_general_api_url_sum">Adres, którego SponsorBlock używa do komunikacji z serwerem</string>
   <string name="morphe_sb_api_url_reset">Adres URL API został zresetowany</string>
@@ -1100,7 +1112,7 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito"<
   <string name="morphe_sb_settings_ie">Zaimportuj / Wyeksportuj ustawienia</string>
   <string name="morphe_sb_settings_copy">Kopiuj</string>
   <string name="morphe_sb_settings_ie_sum">Twoja konfiguracja JSON SponsorBlock może zostać zaimportowana / wyeksportowana do Morphe i innych platform SponsorBlocka</string>
-  <string name="morphe_sb_settings_ie_sum_warning">Twoja konfiguracja JSON SponsorBlock, która może zostać zaimportowana / wyeksportowana do Morphe i innych platform SponsorBlocka. Zawiera twój prywatny identyfikator użytkownika. Dziel się nią mądrze.</string>
+  <string name="morphe_sb_settings_ie_sum_warning">Twoja konfiguracja JSON SponsorBlock, którą możesz importować/eksportować do Morphe oraz innych platform SponsorBlock. Zawiera ona Twój prywatny identyfikator użytkownika. Udostępniaj ją z rozwagą</string>
   <string name="morphe_sb_settings_import_successful">Ustawienia zostały pomyślnie zaimportowane</string>
   <string name="morphe_sb_settings_import_failed">Nie udało się zaimportować: %s</string>
   <string name="morphe_sb_settings_export_failed">Nie udało się wyeksportować: %s</string>
@@ -1460,6 +1472,9 @@ Włączenie tej opcji może odblokować wyższe jakości wideo"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Wibracje podczas cofania przewijania</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Wyłączone</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Włączone</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Wibracje przy stuknięciu i przytrzymaniu</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Wyłączone</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Włączone</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Wibracje podczas przybliżania filmu</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Wyłączone</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Włączone</string>
@@ -1513,7 +1528,7 @@ Włączenie tej opcji może odblokować wyższe jakości wideo"</string>
   <string name="morphe_custom_playback_speeds_invalid">Prędkości niestandardowe muszą być mniejsze niż %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe prędkości odtwarzania niestandardowego</string>
   <string name="morphe_custom_playback_speeds_auto">Automatyczna</string>
-  <string name="morphe_speed_tap_and_hold_title">Szybkość dostosowywana dotknięciem i przytrzymaniem</string>
+  <string name="morphe_speed_tap_and_hold_title">Szybkość dostosowywana stuknięciem i przytrzymaniem</string>
   <string name="morphe_speed_tap_and_hold_summary">Prędkość odtwarzania w granicach od 0 do 8</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapamiętuj zmiany prędkości odtwarzania</string>
@@ -1552,10 +1567,6 @@ Ograniczenia:
   <string name="morphe_prioritize_video_quality_title">Priorytet w filmie</string>
   <string name="morphe_prioritize_video_quality_summary_on">Jakość</string>
   <string name="morphe_prioritize_video_quality_summary_off">Kodeki</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Przesuń, by przewinąć</string>
-  <string name="morphe_slide_to_seek_summary_on">Włączone</string>
-  <string name="morphe_slide_to_seek_summary_off">Wyłączone</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Zezwól na Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Kodek filmu to AVC (H.264), VP9 lub AV1

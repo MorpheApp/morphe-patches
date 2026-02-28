@@ -102,7 +102,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">تم إعادة تعيين Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Flags إلى الحافظة</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">إعادة تشغيل التطبيق لاستخدام هذه الميزة</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">فتح إعدادات microG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

@@ -83,3 +83,32 @@ internal object SpeedLimiterLegacyFingerprint : Fingerprint(
         Opcode.INVOKE_STATIC,
     )
 )
+
+internal object TapAndHoldSpeedFingerprint : Fingerprint(
+    name = "run",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/os/Handler;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        opcode(Opcode.IF_EQZ),
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            type = "Z"
+        ),
+        opcode(Opcode.IF_NEZ),
+        literal(2.0f)
+    )
+)

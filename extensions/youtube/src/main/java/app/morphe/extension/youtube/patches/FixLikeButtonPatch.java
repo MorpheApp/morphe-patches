@@ -6,7 +6,7 @@ import app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
-public class FIxLikeButtonPatch {
+public class FixLikeButtonPatch {
 
     private static final String THEMED_LIKE_ANIMATIONS_PREFIX =
             "https://www.gstatic.com/youtube/img/lottie/custom_animated_like_icon/";
@@ -31,7 +31,7 @@ public class FIxLikeButtonPatch {
      */
     public static String fixThemedLikeAnimations(String url) {
         if (USE_LEGACY_ICON && url != null && url.startsWith(THEMED_LIKE_ANIMATIONS_PREFIX)) {
-            String finalUrl =
+            String finalURL =
                     // Fullscreen quick actions always use a white icon (animated_like_icon_dark_v4.json)
                     PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN
                             // If not fullscreen, follows the app theme.
@@ -39,9 +39,9 @@ public class FIxLikeButtonPatch {
                             ? THEMED_LIKE_ANIMATIONS_LEGACY_DARK_ICON_RESIZED_URL
                             : THEMED_LIKE_ANIMATIONS_LEGACY_LIGHT_ICON_RESIZED_URL;
 
-            Logger.printDebug(() -> "Fix themed like animation from " + url + "\n to " + finalUrl);
+            Logger.printDebug(() -> "Fix themed like animation from " + url + "\n to " + finalURL);
 
-            return finalUrl;
+            return finalURL;
         }
 
         return url;

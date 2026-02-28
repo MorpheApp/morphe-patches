@@ -113,7 +113,7 @@ public final class LithoFilterPatch {
 
     /**
      * 20.22+ cannot use the thread buffer, because frequently the buffer is not correct,
-     * especially for components that are recreated such as dragging off screen then back on screen.
+     * especially for components that are recreated such as dragging off-screen then back on screen.
      * Instead, parse the identifier found near the start of the buffer and use that to
      * identify the correct buffer to use when filtering.
      */
@@ -134,7 +134,7 @@ public final class LithoFilterPatch {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
 
     /**
-     * Because litho filtering is multi-threaded and the buffer is passed in from a different injection point,
+     * Because litho filtering is multithreaded and the buffer is passed in from a different injection point,
      * the buffer is saved to a ThreadLocal so each calling thread does not interfere with other threads.
      * Used for 20.21 and lower.
      */
@@ -142,7 +142,7 @@ public final class LithoFilterPatch {
 
     /**
      * Identifier to protocol buffer mapping.  Only used for 20.22+.
-     * Thread local is needed because filtering is multi-threaded and each thread can load
+     * Thread local is needed because filtering is multithreaded and each thread can load
      * a different component with the same identifier.
      */
     private static final ThreadLocal<Map<String, byte[]>> identifierToBufferThread = new ThreadLocal<>();
@@ -212,7 +212,7 @@ public final class LithoFilterPatch {
 
     /**
      * Helper function that differs from {@link Character#isDigit(char)}
-     * as this only matches ascii and not unicode numbers.
+     * as this only matches ascii and not Unicode numbers.
      */
     private static boolean isAsciiNumber(byte character) {
         return '0' <= character && character <= '9';
@@ -353,7 +353,7 @@ public final class LithoFilterPatch {
                 final int pipeIndex = identifier.indexOf('|');
                 if (pipeIndex >= 0) {
                     // If the identifier contains no pipe, then it's not an ".eml" identifier
-                    // and the buffer is not uniquely identified. Typically this only happens
+                    // and the buffer is not uniquely identified. Typically, this only happens
                     // for subcomponents where buffer filtering is not used.
                     String identifierKey = identifier.substring(0, pipeIndex);
 

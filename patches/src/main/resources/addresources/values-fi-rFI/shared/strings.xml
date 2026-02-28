@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_show_menu_icons_title">Näytä Morphe-asetuskuvakkeet</string>
   <string name="morphe_show_menu_icons_summary_on">Asetuskuvakkeet näytetään</string>
   <string name="morphe_show_menu_icons_summary_off">Asetuskuvakkeita ei näytetä</string>
-  <string name="morphe_language_title">Morphein kieli</string>
+  <string name="morphe_language_title">Morphen kieli</string>
   <string name="morphe_language_user_dialog_message">"Joidenkin kielten käännökset saattavat puuttua tai olla puutteellisia.
 
 Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä, vieraile osoitteessa morphe.software/translate"</string>
@@ -62,7 +62,7 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_pref_import_export_summary">Tuo/vie Morphe-asetukset</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Käytät uusinta Morphe Patchesin versiota &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Käytät Morphe Patchesin versiota &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Päivitys saatavilla: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Päivittääksesi korjaukset, käytä Morphea korjataksesi tämä sovellus uudelleen</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Käytät Morphe Patchesin versiota &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Päivitys saatavilla: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Päivittääksesi muokkaukset, käytä Morphea muokataksesi tämän sovelluksen uudelleen</string>
   <string name="morphe_settings_about_links_dev_header">Huomautus</string>
   <string name="morphe_settings_about_links_dev_body">Tämä versio on ennakkojulkaisuversio, joten voit kokea odottamattomia ongelmia</string>
   <string name="morphe_settings_about_links_header">Viralliset linkit</string>
@@ -75,17 +75,17 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_debug_title">Virheenkorjauksen kirjaaminen</string>
   <string name="morphe_debug_summary_on">Virheenkorjauslokit ovat käytössä</string>
   <string name="morphe_debug_summary_off">Virheenkorjauslokit eivät ole käytössä</string>
-  <string name="morphe_debug_stacktrace_title">Loki pinojäljet</string>
+  <string name="morphe_debug_stacktrace_title">Kirjaa pinon jäljitykset</string>
   <string name="morphe_debug_stacktrace_summary_on">Vianetsintälokit sisältävät pinojäljet</string>
   <string name="morphe_debug_stacktrace_summary_off">Vianetsintälokit eivät sisällä pinojälkiä</string>
-  <string name="morphe_debug_toast_on_error_title">Näytä ponnahdusilmoitus Morphe-virheen tapahtuessa</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Ponnahdusilmoitus näytetään virheen tapahtuessa</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Ponnahdusilmoitusta ei näytetä virheen tapahtuessa</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Virheilmoitusten poistaminen käytöstä piilottaa kaikki Morphein virheilmoitukset.
+  <string name="morphe_debug_toast_on_error_title">Näytä toast-ilmoitus Morphen virhetilanteissa</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Toast-ilmoitus näytetään virheen tapahtuessa</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Toast-ilmoitusta ei näytetä virheen tapahtuessa</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Virheilmoitusten poistaminen käytöstä piilottaa kaikki Morphe-virheilmoitukset.
 
-Et saa ilmoituksia odottamattomista tapahtumista."</string>
+Et saa ilmoituksia mistään odottamattomista tapahtumista."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">Vie virheenkorjauslokit</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopioi Morphein virheenkorjauslokit leikepöydälle</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopioi Morphen virheenkorjauslokit leikepöydälle</string>
   <string name="morphe_debug_logs_disabled">Virheenkorjausloki ei ole käytössä</string>
   <string name="morphe_debug_logs_none_found">Lokeja ei löytynyt</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Lokit kopioitu</string>
@@ -102,23 +102,23 @@ Et saa ilmoituksia odottamattomista tapahtumista."</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Liput nollattu</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Käynnistä sovellus uudelleen käyttääkseen tätä ominaisuutta</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Avaa MicroG-asetukset</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ei ole asennettu. Asenna se.</string>
   <string name="gms_core_dialog_title">Vaatii toimenpiteitä</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG:llä ei ole lupaa pysyä käynnissä taustalla.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG:llä ei ole lupaa toimia taustalla.
 
-Aseta sopiva \"Don't kill my app\" -ohje käyttäjän ohjeistukseen ja sovella sitä MicroG-toiminnalle.
+Noudata puhelimesi kohdalla ”Don't kill my app” -opasta ja sovella ohjeita MicroG-asennukseesi.
 
-Tämä on välttämätöntä sovelluksen toiminnalle."</string>
+Tämä on välttämätöntä sovelluksen toiminnan kannalta."</string>
   <string name="gms_core_dialog_open_website_text">Avaa verkkosivusto</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG:n akun optimoinneista on poistettava käytöstä ongelmien välttämiseksi.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG-palveluiden akun optimointi on poistettava käytöstä ongelmien välttämiseksi.
 
-MicroG:n optimoijien poistaminen Akun käyttöä ei vaikuta negatiivisesti.
+Akun optimoinnin poistamisella ei ole kielteistä vaikutusta akun kestoon.
 
-Painamme jatka-painiketta ja sallimme optimoinnin muutokset."</string>
+Napauta Jatka-painiketta ja salli muutokset optimointiin."</string>
   <string name="gms_core_dialog_continue_text">Jatka</string>
 </resources>

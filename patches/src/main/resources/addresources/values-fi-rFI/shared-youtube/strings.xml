@@ -22,24 +22,24 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_name_entry_5">Mukautettu</string>
   <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe-mustapainike</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe musta</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tumma</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphein valo</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe vaalea</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">Mukautettu</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Kokeellinen varoitus! 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovelluksen versiota ⚠️ <b>%1$s</b>
-<br/><br/>
-🔧 Odota epätavallista sovelluksen käyttäytymistä tai tunnistamattomia virheitä kun me hienosäädämme tälle sovelluksen versiolle tarkoitetut korjaukset.
-<br/><br/>
-Jos haluat ongelmatöntä kokemusta, niin <b>poista</b> tämä ja korjaa suositeltu sovelluksen versio ✅ <b>%2$s</b>"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellista</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaa</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Varoitus: Kokeellinen! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovellusversiota: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Varaudu erikoiseen käytökseen tai tunnistamattomiin virheisiin, sillä hienosäädämme parhaillaan muokkauksia tälle sovellusversiolle.
+&lt;br/&gt;&lt;br/&gt;
+Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; tämä asennus ja muokkaa suositeltu sovellusversio: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellisen</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaan</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ilmoitus</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Kellon historiaa ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä todennäköisesti johtuu DNS mainosten estäjä tai verkkovälityspalvelin.&lt;br&gt;&lt;br&gt;Korjataksesi tämän, valkoiselle listalle &lt;b&gt;s.youtube.com&lt;/b&gt; tai poistaaksesi kaikki DNS-estäjät ja -profiilit.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Älä näytä uudelleen</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
@@ -51,57 +51,61 @@ Jos olet YouTube Premium -käyttäjä, tätä asetusta ei välttämättä tarvit
   <string name="morphe_spoof_video_streams_summary_off">"Videovirtoja ei naamioida
 
 Toisto ei välttämättä toimi"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Ei saatu asiakasvirtoja</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Asiakasvirtoja ei voitu hakea</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile otta: Välttää videoputkistot &gt; Android VR kirjautuminen</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile ottaa käyttöön: Naamioi videovirrat &gt; Android VR -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-kirjautuminen</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ei ole kirjautunut Android VR:ään. Paina tästä kirjautumaan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Nykyään kirjautuneena Android VR:hen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR -kirjautuminen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ei kirjautuneena Android VR -tilaan. Kirjaudu sisään napauttamalla tästä</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kirjautuneena Android VR -tilaan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Käytä tätä ominaisuutta, kun muuttaa \'Oletussovellus\' Android VR:ksi</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Kirjaudu Android VR:hen</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR -kirjautuminen saattaa korjata toistoproblemit joillekin käyttäjille
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Käyttääksesi tätä ominaisuutta, aseta Android VR \'Oletusasiakasohjelma\'\'-asetukseksi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Kirjaudu Android VR -tilaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kirjautuminen Android VR -tilaan voi korjata toisto-ongelmia joillakin käyttäjillä.
 
-Kirjautumista varten paina \"Jatka\" alapuolella"</string>
+Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Jatka</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Kirjaudu ulos</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Ohjeet</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivaatiokoodi: %s
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivointikoodi: %s
 
-1. Paina 'Avaa verkkosivusto' alla avataksesi 'Liitä laite' -sivun
-2. Liitä leikepöydältä (tai kirjoita) yllä oleva aktivaatiokoodi
-3. Kirjaudu Googleiin, jos tarvitsee. Jos sinulla on useita tilitiliä, valitse tämä YouTube-tili
-4. Paina 'Salli YouTube VR -pääsy'
-5. Palaa tähän sovellukseen saavuttuaan 'Laite liitetty' -viestiin"</string>
+1. Napauta alta ”Avaa verkkosivusto” avataksesi ”Yhdistä laite” -sivun
+2. Liitä leikepöydältä (tai kirjoita) yllä näkyvä aktivointikoodi
+3. Kirjaudu sisään Google-tilillesi, jos sitä pyydetään. Jos sinulla on useita tilejä, valitse tämä YouTube-tili
+4. Napauta ”Salli YouTube VR -pääsy”
+5. Palaa tähän sovellukseen, kun olet päässyt ”Laite yhdistetty” -ilmoitukseen"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Avaa verkkosivusto</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ei onnistunut aktivaatiokoodin antamisessa</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ei onnistunut tunnuskoodin antamisessa</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Aktivointikoodin luominen epäonnistui</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Tunnistautumistunnuksen luominen epäonnistui</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Kirjautuminen onnistui</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Tunniste tallennettu
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Tunnistautuminen tallennettu
 
-• Morphe-asetuksesi ei tueta Android VR-tunnisteiden tuonnissa tai viedyssä
-• Jos sovellus on kuusi kuukautta epäkäytössä, Google poistaa tämän tunnisteen
-• Sinun täytyy kirjautua uudelleen, jos muutat Googlen salasanasi tai poistat laite Googlen asetuksista"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 on väliaikaisesti epäkäytännöllinen (API-aika-out)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR -kirjautuminen vanhentui, yritä kirjautua uudelleen VR:öön</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 on väliaikaisesti epäkäytännöllinen (tila %d)</string>
-  <string name="morphe_oauth2_connection_failure_generic">OAuth2 on väliaikaisesti epäkäytännöllinen</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ei voida kirjautua VR:öön, verkkosivun tunnistus ei hyväksytty</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Ei voida kirjautua VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Kirjautuminen poistettu Android VR:stä</string>
-  <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumismerkki, yritä kirjautua uudelleen VR:ään</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+• Morphe-asetuksesi tuonti/vienti ei sisällä Android VR -tunnistautumista
+• Jos tätä sovellusta ei käytetä 6 kuukauteen, Google poistaa tämän tunnistautumisen
+• Sinun on kirjauduttava uudelleen sisään, jos vaihdat Google-salasanasi tai poistat tämän laitteen rekisteröinnin Google-asetuksistasi"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ei ole tilapäisesti käytettävissä (API-aikakatkaisu)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR -kirjautuminen vanhentui, yritä kirjautua uudelleen VR-tilaan</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 ei ole tilapäisesti käytettävissä (tila: %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 ei ole tilapäisesti käytettävissä</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kirjautuminen VR-tilaan epäonnistui, verkkosivuston tunnistautumista ei hyväksytty</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Kirjautuminen VR-tilaan epäonnistui: %s</string>
+  <string name="morphe_oauth2_toast_reset">Kirjauduttu ulos Android VR -tilasta</string>
+  <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumistunniste, yritä kirjautua uudelleen VR-tilaan</string>
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokolla on poistettu käytöstä</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokolla on käytössä</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Poista DRC-ääni käytöstä</string>
   <string name="morphe_disable_drc_audio_summary_on">DRC-ääni on poistettu käytöstä</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC-ääni on käytössä</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
-  <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä ääntä</string>
+  <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä äänen kieltä</string>
   <string name="morphe_force_original_audio_summary_off">Käytetään oletusääntä</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, muuta \"Naamioi videovirrat\" mihin tahansa asiakasohjelmaan paitsi Android Studioon</string>

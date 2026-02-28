@@ -1,3 +1,99 @@
+# [1.16.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.1...v1.16.0-dev.2) (2026-02-27)
+
+
+### Features
+
+* **YouTube:** Add `Open system share sheet` patch ([#625](https://github.com/MorpheApp/morphe-patches/issues/625)) ([64ff907](https://github.com/MorpheApp/morphe-patches/commit/64ff9079777a2b935886c35eae0e454984d56b52))
+
+# [1.16.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0...v1.16.0-dev.1) (2026-02-26)
+
+
+### Features
+
+* **YouTube - Navigation bar:** Add `Show search button` setting ([#634](https://github.com/MorpheApp/morphe-patches/issues/634)) ([b46e492](https://github.com/MorpheApp/morphe-patches/commit/b46e4923592ce5f752d6e2db156a3838c25f4f4f))
+
+# [1.15.0](https://github.com/MorpheApp/morphe-patches/compare/v1.14.0...v1.15.0) (2026-02-25)
+
+
+### Bug Fixes
+
+* **YouTube - Captions:** Captions are not available in Shorts when `Auto captions visibility` is `Never show` ([#591](https://github.com/MorpheApp/morphe-patches/issues/591)) ([e386664](https://github.com/MorpheApp/morphe-patches/commit/e3866641aa544598174e5a65ef22654410b3e5c5))
+* **YouTube - Hide ads:** Hide new type of ad ([#594](https://github.com/MorpheApp/morphe-patches/issues/594)) ([87c2d24](https://github.com/MorpheApp/morphe-patches/commit/87c2d24725e4ceccb9a000c95e1b7487ff9fc6b6))
+* **YouTube - Hide layout components:** Replace "Hide search suggestions" with "Hide You may like section" ([#581](https://github.com/MorpheApp/morphe-patches/issues/581)) ([29d891c](https://github.com/MorpheApp/morphe-patches/commit/29d891c63c6b5c937420f7e9fb796b530c45847f))
+* **YouTube - Hide Shorts components:** Resolve hiding Shorts not working ([#610](https://github.com/MorpheApp/morphe-patches/issues/610)) ([dbef1c4](https://github.com/MorpheApp/morphe-patches/commit/dbef1c419e6b871e5587e9c6f800ff622e962c2c))
+
+
+### Features
+
+* Add `Disable QUIC protocol` patch ([#586](https://github.com/MorpheApp/morphe-patches/issues/586)) ([41fac61](https://github.com/MorpheApp/morphe-patches/commit/41fac61cfdfeb0e469f13eb8d4e54e7cb054f34d))
+* **Spoof video streams:** Add `Android Reel` client ([#580](https://github.com/MorpheApp/morphe-patches/issues/580)) ([01bbde3](https://github.com/MorpheApp/morphe-patches/commit/01bbde3dfea162eedf9af36dddffaba5d750db73))
+* **YouTube - Disable haptic feedback:** Add `Disable tap and hold haptics` setting ([#592](https://github.com/MorpheApp/morphe-patches/issues/592)) ([279722a](https://github.com/MorpheApp/morphe-patches/commit/279722a153573cc4d93bbe8becef31aa930cf0aa))
+* **YouTube - Hide ads:** Add `Hide player popup ads` setting ([#583](https://github.com/MorpheApp/morphe-patches/issues/583)) ([82c9f29](https://github.com/MorpheApp/morphe-patches/commit/82c9f29f0903416bade9613a6672822003968893))
+* **YouTube:** Add experimental support for `21.08.261` ([#582](https://github.com/MorpheApp/morphe-patches/issues/582)) ([87d3ac9](https://github.com/MorpheApp/morphe-patches/commit/87d3ac955fc1f0a777b785e4294401d6451de330))
+
+# [1.15.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.8...v1.15.0-dev.9) (2026-02-24)
+
+
+### Bug Fixes
+
+* **YouTube - Hide ads:** Hide new type of ad ([#594](https://github.com/MorpheApp/morphe-patches/issues/594)) ([87c2d24](https://github.com/MorpheApp/morphe-patches/commit/87c2d24725e4ceccb9a000c95e1b7487ff9fc6b6))
+
+# [1.15.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.7...v1.15.0-dev.8) (2026-02-23)
+
+
+### Features
+
+* **YouTube - Disable haptic feedback:** Add `Disable tap and hold haptics` setting ([#592](https://github.com/MorpheApp/morphe-patches/issues/592)) ([279722a](https://github.com/MorpheApp/morphe-patches/commit/279722a153573cc4d93bbe8becef31aa930cf0aa))
+
+# [1.15.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.6...v1.15.0-dev.7) (2026-02-22)
+
+
+### Bug Fixes
+
+* **YouTube - Hide Shorts components:** Resolve hiding Shorts not working ([#610](https://github.com/MorpheApp/morphe-patches/issues/610)) ([dbef1c4](https://github.com/MorpheApp/morphe-patches/commit/dbef1c419e6b871e5587e9c6f800ff622e962c2c))
+
+# [1.15.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.5...v1.15.0-dev.6) (2026-02-22)
+
+
+### Bug Fixes
+
+* **YouTube - Captions:** Captions are not available in Shorts when `Auto captions visibility` is `Never show` ([#591](https://github.com/MorpheApp/morphe-patches/issues/591)) ([e386664](https://github.com/MorpheApp/morphe-patches/commit/e3866641aa544598174e5a65ef22654410b3e5c5))
+
+# [1.15.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.4...v1.15.0-dev.5) (2026-02-21)
+
+
+### Features
+
+* **YouTube - Hide ads:** Add `Hide player popup ads` setting ([#583](https://github.com/MorpheApp/morphe-patches/issues/583)) ([82c9f29](https://github.com/MorpheApp/morphe-patches/commit/82c9f29f0903416bade9613a6672822003968893))
+
+# [1.15.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.3...v1.15.0-dev.4) (2026-02-20)
+
+
+### Features
+
+* **Spoof video streams:** Add `Android Reel` client ([#580](https://github.com/MorpheApp/morphe-patches/issues/580)) ([01bbde3](https://github.com/MorpheApp/morphe-patches/commit/01bbde3dfea162eedf9af36dddffaba5d750db73))
+
+# [1.15.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.2...v1.15.0-dev.3) (2026-02-20)
+
+
+### Features
+
+* Add `Disable QUIC protocol` patch ([#586](https://github.com/MorpheApp/morphe-patches/issues/586)) ([41fac61](https://github.com/MorpheApp/morphe-patches/commit/41fac61cfdfeb0e469f13eb8d4e54e7cb054f34d))
+
+# [1.15.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0-dev.1...v1.15.0-dev.2) (2026-02-19)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Replace "Hide search suggestions" with "Hide You may like section" ([#581](https://github.com/MorpheApp/morphe-patches/issues/581)) ([29d891c](https://github.com/MorpheApp/morphe-patches/commit/29d891c63c6b5c937420f7e9fb796b530c45847f))
+
+# [1.15.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.14.0...v1.15.0-dev.1) (2026-02-19)
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.08.261` ([#582](https://github.com/MorpheApp/morphe-patches/issues/582)) ([87d3ac9](https://github.com/MorpheApp/morphe-patches/commit/87d3ac955fc1f0a777b785e4294401d6451de330))
+
 # [1.14.0](https://github.com/MorpheApp/morphe-patches/compare/v1.13.0...v1.14.0) (2026-02-18)
 
 

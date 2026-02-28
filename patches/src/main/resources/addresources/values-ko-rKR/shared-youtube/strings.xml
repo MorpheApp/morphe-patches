@@ -91,7 +91,11 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
   <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR에서 로그아웃되었습니다</string>
   <string name="morphe_oauth2_toast_invalid">잘못된 VR 로그인 토큰입니다. 다시 VR에 로그인하세요</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC 프로토콜 비활성화하기</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC 프로토콜을 비활성화합니다</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC 프로토콜을 활성화합니다</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC 오디오 비활성화하기</string>
   <string name="morphe_disable_drc_audio_summary_on">DRC 오디오를 비활성화합니다</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC 오디오를 활성화합니다</string>

@@ -118,9 +118,6 @@ Változások:
   <string name="morphe_hide_playables_title">Lejátszható elemek elrejtése</string>
   <string name="morphe_hide_playables_summary_on">A játékszoba rejtett</string>
   <string name="morphe_hide_playables_summary_off">A játékszoba megjelenik</string>
-  <string name="morphe_hide_search_suggestions_title">Keresési javaslatok elrejtése</string>
-  <string name="morphe_hide_search_suggestions_summary_on">A keresési javaslatok el vannak rejtve</string>
-  <string name="morphe_hide_search_suggestions_summary_off">A keresési javaslatok meg vannak jelenítve</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Továbbiak megjelenítése\' gomb elrejtése</string>
@@ -142,6 +139,9 @@ Változások:
   <string name="morphe_hide_web_search_results_title">Webes keresési találatok elrejtése</string>
   <string name="morphe_hide_web_search_results_summary_on">A webes keresési találatok rejtve vannak</string>
   <string name="morphe_hide_web_search_results_summary_off">A webes keresési találatok megjelennek</string>
+  <string name="morphe_hide_you_may_like_section_title">Rejtélyeszd el a \'Talán tetszik\' szakaszt</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">A \"You may like\" szakasz elrejtve</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">A \"You may like\" szakasz látható</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles elrejtése</string>
   <string name="morphe_hide_doodles_summary_on">A YouTube Doodles animáció a logón elrejtve</string>
@@ -415,6 +415,9 @@ Korlátozások
   <string name="morphe_hide_paid_promotion_label_title">Fizetett promóció címke elrejtése</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">A fizetett promóciós címke el van rejtve</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">A fizetett promóciós címke meg van jelenítve</string>
+  <string name="morphe_hide_player_popup_ads_title">Elrejtés a lejátszó előugró reklámok</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">A lejátszó előugró reklámok elrejtve</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">A lejátszó előugró reklámok megjelennek</string>
   <string name="morphe_hide_self_sponsor_ads_title">Önpromóciós kártyák elrejtése</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">Az önpromóciós kártyák rejtve vannak</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">Az önpromóciós kártyák megjelennek</string>
@@ -431,7 +434,7 @@ Korlátozások
   <string name="morphe_hide_video_ads_title">Videóhirdetések elrejtése</string>
   <string name="morphe_hide_video_ads_summary_on">Videóhirdetések elrejtve</string>
   <string name="morphe_hide_video_ads_summary_off">A videóhirdetések megjelennek</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL a vágólapra másolva</string>
   <string name="morphe_share_copy_url_timestamp_success">URL időbélyeggel a vágólapra másolva</string>
   <string name="morphe_copy_video_url_title">Videó URL másolása gomb megjelenítése</string>
@@ -445,10 +448,10 @@ Korlátozások
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">A párbeszédpanel el lesz rejtve</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">A párbeszédpanel megjelenik</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Ez nem kerüli meg a korhatárt, csak automatikusan elfogadja.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">A TV-bejelentkezési előugró ablak le van tiltva</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">A TV-bejelentkezési előugró ablak engedélyezve van</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">A TV-bejelentkezési előugró ablak le van tiltva</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">A TV-bejelentkezési előugró ablak engedélyezve van</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Dupla koppintásos fejezetátugrás letiltása</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">A dupla koppintás soha nem indíthatja el a következő/előző fejezetre való ugrást</string>
@@ -477,10 +480,14 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_disable_precise_seeking_gesture_title">Pontos keresési kézmozdulat letiltása</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">A kézmozdulat letiltva</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">A kézmozdulat engedélyezve</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Érintésre keresés engedélyezése</string>
-  <string name="morphe_seekbar_tapping_summary_on">A koppintással történő keresés engedélyezve van</string>
-  <string name="morphe_seekbar_tapping_summary_off">Az érintésre keresés le van tiltva</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
+  <string name="morphe_slide_to_seek_summary_on">A csúsztatás a kereséshez engedélyezve van</string>
+  <string name="morphe_slide_to_seek_summary_off">A csúsztatás a kereséshez nincs engedélyezve</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Érintésre keresés engedélyezése</string>
+  <string name="morphe_tap_to_seek_summary_on">A koppintással történő keresés engedélyezve van</string>
+  <string name="morphe_tap_to_seek_summary_off">Az érintésre keresés le van tiltva</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Fényerő kézmozdulat engedélyezése</string>
   <string name="morphe_swipe_brightness_summary_on">"A teljes képernyős fényerő-húzás engedélyezve
@@ -650,6 +657,11 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_hide_notifications_button_title">Értesítések elrejtése</string>
   <string name="morphe_hide_notifications_button_summary_on">Az értesítések gomb rejtve van</string>
   <string name="morphe_hide_notifications_button_summary_off">Az értesítések gomb megjelenik</string>
+  <string name="morphe_show_search_button_title">Keresés gomb megjelenítése</string>
+  <string name="morphe_show_search_button_summary_on">A keresés gomb látható</string>
+  <string name="morphe_show_search_button_summary_off">A keresés gomb nem látható</string>
+  <string name="morphe_search_button_index_title">Keresés gomb indexe</string>
+  <string name="morphe_search_button_index_invalid">Keresés gomb indexe kisebbén kell lennién, mint %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Létrehozás és értesítések gombok cserélése</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">A létrehozás gombot cserélték az értesítések gombjával</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">A létrehozás gombot nem cserélték az értesítések gombjával</string>
@@ -737,10 +749,10 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_hide_player_flyout_audio_track_summary_on">A hangsáv menü el van rejtve</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">A hangsáv menü megjelenik</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Hangos menü elrejtve
 
-A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'TV'-re"</string>
+A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et 'Android Reel'-re vagy 'TV'-re"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"Megtekintés VR-módban\" elrejtése</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">A megtekintés VR-módban menü el van rejtve</string>
@@ -780,9 +792,9 @@ A hangos menü megjelenítéséhez állítsa 'Spoof video streams' értékét 'T
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Az Előző &amp; Következő gombok el vannak rejtve</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Az Előző &amp; Következő gombok megjelennek</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Záróképernyő kártyák elrejtése</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">A záróképernyő kártyák el vannak rejtve</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">A záróképernyő kártyák megjelennek</string>
+  <string name="morphe_hide_end_screen_cards_title">Záróképernyő kártyák elrejtése</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">A záróképernyő kártyák el vannak rejtve</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">A záróképernyő kártyák megjelennek</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Mozifilmes mód</string>
   <string name="morphe_ambient_mode_screen_summary">Mozifilmes mód korlátozásainak elkerülése és teljes mértékű letiltása vagy teljes képernyőn</string>
@@ -959,10 +971,10 @@ Beállítások → Lejátszás → Következő videó automatikus lejátszása"<
   <string name="morphe_hide_timestamp_title">Videó időbélyegzőjének elrejtése</string>
   <string name="morphe_hide_timestamp_summary_on">Az időbélyegző elrejtve</string>
   <string name="morphe_hide_timestamp_summary_off">Az időbélyegző megjelenik</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Lejátszó előugró paneleinek elrejtése</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">A lejátszó előugró panelei el vannak rejtve</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">A lejátszó előugró panelei megjelennek</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Lejátszó előugró panelek letiltása</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">A lejátszó előugró panelei lettek letiltva</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">A lejátszó előugró panelei engedélyezve</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Kilépés a teljes képernyőből</string>
   <string name="morphe_exit_fullscreen_entry_1">Letiltva</string>
@@ -1089,7 +1101,7 @@ Korlátozás: A nem tetszések inkognitómódban nem jelenhetnek meg"</string>
   <string name="morphe_sb_general_min_duration">Minimális szegmens időtartam</string>
   <string name="morphe_sb_general_min_duration_sum">A beállított értéknél (másodpercben) rövidebb szakaszokat nem hagyja ki vagy nem jeleníti meg</string>
   <string name="morphe_sb_general_min_duration_invalid">Érvénytelen időtartam</string>
-  <string name="morphe_sb_general_uuid">Az Ön privát felhasználói azonosítója</string>
+  <string name="morphe_sb_general_uuid">Privát felhasználói azonosítója</string>
   <string name="morphe_sb_general_uuid_sum">Ezt bizalmasan kell kezelni. Olyan mint egy jelszó és senkivel sem ajánlott megosztani. Ha valaki megszerzi, meg tudja személyesíteni önt</string>
   <string name="morphe_sb_general_uuid_invalid">A privát felhasználói azonosítónak legalább 30 karakter hosszúnak kell lennie</string>
   <string name="morphe_sb_general_api_url">API URL módosítása</string>
@@ -1106,8 +1118,7 @@ Korlátozás: A nem tetszések inkognitómódban nem jelenhetnek meg"</string>
   <string name="morphe_sb_settings_export_failed">Nem sikerült exportálni ezt: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"A beállítások tartalmaznak egy privát SponsorBlock felhasználói azonosítót.
 
-A felhasználói azonosítója olyan, mint egy jelszó, és soha nem szabad megosztani.
-"</string>
+A felhasználói azonosítója olyan, mint egy jelszó, és soha nem szabad megosztani."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ne jelenjen meg többet</string>
   <string name="morphe_sb_diff_segments">A szegmens viselkedésének módosítása</string>
   <string name="morphe_sb_segments_sponsor">Szponzor</string>
@@ -1458,6 +1469,9 @@ Ez a beállítás lehetővé teszi a magasabb videóminőségek feloldását"</s
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Keresés visszavonása haptikus visszajelzésének letiltása</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">A keresés visszavonása haptikus visszajelzése ki van kapcsolva</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">A keresés visszavonása haptikus visszajelzése be van kapcsolva</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Haptikus visszajelzések tap és tartás letiltása</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Tap és tartás haptikus visszajelzése letiltva</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Tap és tartás haptikus visszajelzése engedélyezve</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Haptikus zoom letiltása</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptikus zoom le van tiltva</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptikus zoom be van kapcsolva</string>
@@ -1550,10 +1564,6 @@ Korlátozások:
   <string name="morphe_prioritize_video_quality_title">Videóminőség előnyben részesítése</string>
   <string name="morphe_prioritize_video_quality_summary_on">A videóminőség előnyben részesítve van</string>
   <string name="morphe_prioritize_video_quality_summary_off">A videó-kódolások előnyben részesítve vannak</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
-  <string name="morphe_slide_to_seek_summary_on">A csúsztatás a kereséshez engedélyezve van</string>
-  <string name="morphe_slide_to_seek_summary_off">A csúsztatás a kereséshez nincs engedélyezve</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 engedélyezése</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"A videó kodek AVC (H.264), VP9 vagy AV1

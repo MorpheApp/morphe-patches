@@ -118,9 +118,6 @@ I cambiamenti includono:
   <string name="morphe_hide_playables_title">Nascondi Sala Giochi</string>
   <string name="morphe_hide_playables_summary_on">I giochi sono nascosti</string>
   <string name="morphe_hide_playables_summary_off">I giochi sono visibili</string>
-  <string name="morphe_hide_search_suggestions_title">Nascondi i suggerimenti di ricerca</string>
-  <string name="morphe_hide_search_suggestions_summary_on">I suggerimenti di ricerca sono nascosti</string>
-  <string name="morphe_hide_search_suggestions_summary_off">I suggerimenti di ricerca sono visibili</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Nascondi il pulsante \'Mostra di più\'</string>
@@ -142,6 +139,9 @@ I cambiamenti includono:
   <string name="morphe_hide_web_search_results_title">Nascondi i risultati della ricerca web</string>
   <string name="morphe_hide_web_search_results_summary_on">I risultati della ricerca web sono nascosti</string>
   <string name="morphe_hide_web_search_results_summary_off">I risultati della ricerca web sono visibili</string>
+  <string name="morphe_hide_you_may_like_section_title">Nascondi la sezione \'Potrebbe piacerti\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">La sezione \"Potrebbe piacerti\" è nascosta</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">La sezione \"Potrebbe piacerti\" è visibile</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">Nascondi Doodles di YouTube</string>
   <string name="morphe_hide_doodles_summary_on">L\'animazione YouTube Doodles sul logo è nascosta</string>
@@ -415,6 +415,9 @@ Limitazioni:
   <string name="morphe_hide_paid_promotion_label_title">Nascondi l\'etichetta della promozione a pagamento</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">L\'etichetta della promozione a pagamento è nascosta</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">L\'etichetta della promozione a pagamento è visibile</string>
+  <string name="morphe_hide_player_popup_ads_title">Nascondi gli annunci popup del giocatore</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">Gli annunci popup del giocatore sono nascosti</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">Gli annunci popup del giocatore sono visibili</string>
   <string name="morphe_hide_self_sponsor_ads_title">Nascondi le schede autopromozionali</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">Le schede autopromozionali sono nascoste</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">Le schede autopromozionali sono visibili</string>
@@ -431,7 +434,7 @@ Limitazioni:
   <string name="morphe_hide_video_ads_title">Nascondi le pubblicità del video</string>
   <string name="morphe_hide_video_ads_summary_on">Le pubblicità del video sono nascoste</string>
   <string name="morphe_hide_video_ads_summary_off">Le pubblicità del video sono visibili</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL copiato negli appunti</string>
   <string name="morphe_share_copy_url_timestamp_success">URL con timestamp copiato</string>
   <string name="morphe_copy_video_url_title">Mostra il pulsante Copia URL Video</string>
@@ -445,10 +448,10 @@ Limitazioni:
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">La finestra di dialogo verrà rimossa</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">La finestra di dialogo verrà mostrata </string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Questo non aggira la restrizione di età. Lo accetta solo automaticamente.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Disabilita il popup \"Accedi alla TV\"</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Il popup \"Accedi alla TV\" è disabilitato</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Il popup \"Accedi alla TV\" è abilitato</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Disabilita il popup \"Accedi alla TV\"</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Il popup \"Accedi alla TV\" è disabilitato</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Il popup \"Accedi alla TV\" è abilitato</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Disabilita salto capitolo con doppio tocco</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Il doppio tocco non può mai attivare il salto al capitolo successivo/precedente</string>
@@ -477,10 +480,14 @@ Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</str
   <string name="morphe_disable_precise_seeking_gesture_title">Disabilita il gesto di ricerca preciso</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Il gesto è disabilitato</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Il gesto è abilitato</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Abilita tocco per cercare</string>
-  <string name="morphe_seekbar_tapping_summary_on">Tocco per cercare è abilitato</string>
-  <string name="morphe_seekbar_tapping_summary_off">Tocco per cercare è disabilitato</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Abilita scorri per avanzare</string>
+  <string name="morphe_slide_to_seek_summary_on">Scorri per avanzare è abilitato</string>
+  <string name="morphe_slide_to_seek_summary_off">Scorri per avanzare non è abilitato</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Abilita tocco per cercare</string>
+  <string name="morphe_tap_to_seek_summary_on">Tocco per cercare è abilitato</string>
+  <string name="morphe_tap_to_seek_summary_off">Tocco per cercare è disabilitato</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Attiva il gesto per modificare la luminosità</string>
   <string name="morphe_swipe_brightness_summary_on">"Lo scorrimento per la luminosità a schermo intero è abilitato
@@ -650,6 +657,11 @@ I cookie verranno salvati automaticamente se sono validi"</string>
   <string name="morphe_hide_notifications_button_title">Nascondi Notifiche</string>
   <string name="morphe_hide_notifications_button_summary_on">Il pulsante Notifiche è nascosto</string>
   <string name="morphe_hide_notifications_button_summary_off">Il pulsante Notifiche è visibile</string>
+  <string name="morphe_show_search_button_title">Mostra pulsante di ricerca</string>
+  <string name="morphe_show_search_button_summary_on">Il pulsante di ricerca è mostrato</string>
+  <string name="morphe_show_search_button_summary_off">Pulsante di ricerca non mostrato</string>
+  <string name="morphe_search_button_index_title">Indice pulsante di ricerca</string>
+  <string name="morphe_search_button_index_invalid">L\'indice del pulsante di ricerca deve essere inferiore a %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Scambia Crea con Notifiche</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Il pulsante Crea è stato scambiato con il pulsante Notifiche</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Il pulsante Crea non è stato scambiato con il pulsante Notifiche</string>
@@ -737,10 +749,10 @@ I cookie verranno salvati automaticamente se sono validi"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Il menu Traccia audio è nascosto</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Il menu Traccia audio è visibile</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu audio traccia nascosto
+          'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu audio nascosto
 
-Per visualizzare il menu audio traccia, cambia 'Spoof video streams' in 'TV'"</string>
+Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel' o 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Nascondi Guarda in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Il menu Guarda in VR è nascosto</string>
@@ -780,9 +792,9 @@ Per visualizzare il menu audio traccia, cambia 'Spoof video streams' in 'TV'"</s
   <string name="morphe_hide_player_previous_next_buttons_summary_on">I pulsanti Precedente e Successivo sono nascosti.</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">I pulsanti Precedente e Successivo sono mostrati</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Nascondi le schede della schermata finale</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">Le schede della schermata finale sono nascoste</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">Le schede della schermata finale sono visibili</string>
+  <string name="morphe_hide_end_screen_cards_title">Nascondi le schede della schermata finale</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">Le schede della schermata finale sono nascoste</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">Le schede della schermata finale sono visibili</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Modalità ambiente</string>
   <string name="morphe_ambient_mode_screen_summary">Ignora le restrizioni di risparmio energetico per la modalità ambiente e disabilitala completamente o in modalità schermo intero</string>
@@ -959,10 +971,10 @@ Impostazioni → Riproduzione → Riproduzione automatica video successivo"</str
   <string name="morphe_hide_timestamp_title">Nascondi timestamp video</string>
   <string name="morphe_hide_timestamp_summary_on">Il timestamp è nascosto</string>
   <string name="morphe_hide_timestamp_summary_off">Il timestamp è visibile</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Nascondi i pannelli popup del player</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">I pannelli popup del player sono nascosti</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">I pannelli popup del player sono visibili</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Disabilita i pannelli popup del giocatore</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">I pannelli popup del player sono disabilitati</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">I pannelli popup del player sono abilitati</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Esci dalla modalità schermo intero al termine del video</string>
   <string name="morphe_exit_fullscreen_entry_1">Disabilitato</string>
@@ -1460,6 +1472,9 @@ Abilitare questa opzione può sbloccare qualità video più elevate"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Disabilita l\'aptica di annullamento della ricerca</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">L\'aptica di annullamento della ricerca è disabilitata</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">L\'aptica di annullamento della ricerca è abilitata</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Disabilita tap e hold aptica</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Tap e hold aptica disabilitata</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Tap e hold aptica abilitata</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Disabilita zoom aptico</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Lo zoom aptico è disabilitato</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Lo zoom aptico è abilitato</string>
@@ -1552,10 +1567,6 @@ Limitazioni:
   <string name="morphe_prioritize_video_quality_title">Prioritizza la qualità del video</string>
   <string name="morphe_prioritize_video_quality_summary_on">La qualità del video è prioritizzata</string>
   <string name="morphe_prioritize_video_quality_summary_off">I codec video sono prioritizzati</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Abilita scorri per avanzare</string>
-  <string name="morphe_slide_to_seek_summary_on">Scorri per avanzare è abilitato</string>
-  <string name="morphe_slide_to_seek_summary_off">Scorri per avanzare non è abilitato</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Consenti Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Il codec video è AVC (H.264), VP9 o AV1

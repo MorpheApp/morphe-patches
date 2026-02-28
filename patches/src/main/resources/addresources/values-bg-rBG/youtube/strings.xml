@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">Игри в YouTube</string>
   <string name="morphe_hide_playables_summary_on">Игри в YouTube са скрити</string>
   <string name="morphe_hide_playables_summary_off">Игрите в YouTube се показват</string>
-  <string name="morphe_hide_search_suggestions_title">Скриване на предлагането за търсене</string>
-  <string name="morphe_hide_search_suggestions_summary_on">Предлагането за търсене е скрито</string>
-  <string name="morphe_hide_search_suggestions_summary_off">Предлагането за търсене е показано</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Скриване на бутона \"Покажи още\"</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">Резултати от търсене в мрежата</string>
   <string name="morphe_hide_web_search_results_summary_on">Резултатите от уеб търсенето са скрити</string>
   <string name="morphe_hide_web_search_results_summary_off">Резултатите от уеб търсенето са показани</string>
+  <string name="morphe_hide_you_may_like_section_title">Скриване на раздела \'Може да се интересувате\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Разделът \"Може би да ти се харесат\" е скрит</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Разделът \"Може би да ти се харесат\" е показан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_doodles_summary_on">Анимацията \"Doodles\" на логото на YouTube е скрита</string>
@@ -415,6 +415,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">Скрийте отметка за платна реклама</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">Отметката за платна реклама е скрита</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">Отметката за платна реклама е показана</string>
+  <string name="morphe_hide_player_popup_ads_title">Скриване на поп-ап обяви за играч</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">Поп-ап обяви за играч са скрити</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">Поп-ап обяви за играч се показват</string>
   <string name="morphe_hide_self_sponsor_ads_title">Скрийте самопромотирани карти</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">Самопромотираните карти са скрити</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">Самопромотираните карти са показани</string>
@@ -431,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">Скрийте общни видеореклами</string>
   <string name="morphe_hide_video_ads_summary_on">Общните видеореклами са скрити</string>
   <string name="morphe_hide_video_ads_summary_off">Общните видеореклами са показани</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL е скопиран в клипборда</string>
   <string name="morphe_share_copy_url_timestamp_success">URL с времевамка е скопиран</string>
   <string name="morphe_copy_video_url_title">Покажете бутона за копиране на URL</string>
@@ -445,10 +448,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Диалогът за възраст ще бъде скрити</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">Диалогът за възраст ще бъде показан</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Това не обмишлява възрастните ограничения. То само ги приема автоматично.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Изключване на попъпа \'Въведете се в ТВ\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">Включване на входа за TV попъп</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">Входа за TV попъп е включен</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Изключване на попъпа \'Въведете се в ТВ\'</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">Включване на входа за TV попъп</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">Входа за TV попъп е включен</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Изключване на двойно натискане за прескачване на глава</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Двойното натискане никога не може да активира прескачване на следваща/предишна глава</string>
@@ -475,10 +478,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Изключи прецизно сваляне на позиция</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Прецизно сваляне на позиция е изключено</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Прецизно сваляне на позиция е включено</string>
-  <string name="morphe_seekbar_tapping_summary_on">Включи сваляне към позиция</string>
-  <string name="morphe_seekbar_tapping_summary_off">Сваляне към позиция е включено</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
+  <string name="morphe_slide_to_seek_summary_on">Стил на екрана</string>
+  <string name="morphe_slide_to_seek_summary_off">Цвят</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Прецизно сваляне на позиция е включено</string>
+  <string name="morphe_tap_to_seek_summary_on">Включи сваляне към позиция</string>
+  <string name="morphe_tap_to_seek_summary_off">Сваляне към позиция е включено</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Сваляне към позиция е изключено</string>
   <string name="morphe_swipe_brightness_summary_on">"Включи сваляне на яркост"</string>
@@ -644,6 +651,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Бутонът Notifications е скрит</string>
   <string name="morphe_hide_notifications_button_summary_on">Бутонът Notifications се показва</string>
   <string name="morphe_hide_notifications_button_summary_off">Променяй Create с Notifications бутон</string>
+  <string name="morphe_show_search_button_title">Покажи бутона за търсене</string>
+  <string name="morphe_show_search_button_summary_on">Бутона за Търсене се показва</string>
+  <string name="morphe_show_search_button_summary_off">Бутона за търсене не се показва</string>
+  <string name="morphe_search_button_index_title">Индекс на бутона за търсене</string>
+  <string name="morphe_search_button_index_invalid">Индексът на бутона за търсене трябва да е по-малък от %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Размени бутона „Създаване“ с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Бутона „Създаване“ е разменен с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Бутона „Създаване“ не е разменен с бутона „Известия“</string>
@@ -731,10 +743,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Скрий дублиране на видеа</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню за аудио трак е скрито
 
-За да покажете менюто за аудио трак, променете 'Спофай видео потоки' на 'ТВ'"</string>
+За да покажете менюто за аудио трак, промените 'Споф на видеопоток' на 'Андроид Рил' или 'ТВ'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Скрий дублиране на видеа</string>
@@ -774,9 +786,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Скрий дублиране на видеа</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Дублирането на видеа е скрито</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Дублирането на видеа се показва</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">Скрий дублиране на видеа</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">Дублирането на видеа е скрито</string>
+  <string name="morphe_hide_end_screen_cards_title">Дублирането на видеа се показва</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">Дублирането на видеа е скрито</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Режим на окружение</string>
   <string name="morphe_ambient_mode_screen_summary">Избягване на ограниченията за енергозбережение за режим на окружение и изключване му напълно или в пълноекранен режим</string>
@@ -950,10 +962,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_timestamp_summary_on">Дублирането на видеа се показва</string>
   <string name="morphe_hide_timestamp_summary_off">Скрий дублиране на видеа</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">Дублирането на видеа е скрито</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">Дублирането на видеа се показва</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">Скрий дублиране на видеа</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Изключване на поп-ап панели за играч</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">Панелите за играч са изключени</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">Панелите за играч са включени</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Дублирането на видеа е скрито</string>
   <string name="morphe_exit_fullscreen_entry_1">Дублирането на видеа се показва</string>
@@ -1078,9 +1090,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_general_min_duration">Дублирането на видеа се показва</string>
   <string name="morphe_sb_general_min_duration_sum">Скрий дублиране на видеа</string>
   <string name="morphe_sb_general_min_duration_invalid">Дублирането на видеа е скрито</string>
-  <string name="morphe_sb_general_uuid">Дублирането на видеа се показва</string>
+  <string name="morphe_sb_general_uuid">Ваш личен потребителски ID</string>
   <string name="morphe_sb_general_uuid_sum">Скрий дублиране на видеа</string>
-  <string name="morphe_sb_general_uuid_invalid">Дублирането на видеа е скрито</string>
+  <string name="morphe_sb_general_uuid_invalid">Личният потребителски ID трябва да бъде минимум 30 знака дълго</string>
   <string name="morphe_sb_general_api_url">Дублирането на видеа се показва</string>
   <string name="morphe_sb_general_api_url_sum">Скрий дублиране на видеа</string>
   <string name="morphe_sb_api_url_reset">Дублирането на видеа е скрито</string>
@@ -1089,13 +1101,13 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie">Дублирането на видеа е скрито</string>
   <string name="morphe_sb_settings_copy">Дублирането на видеа се показва</string>
   <string name="morphe_sb_settings_ie_sum">Скрий дублиране на видеа</string>
-  <string name="morphe_sb_settings_ie_sum_warning">Дублирането на видеа е скрито</string>
+  <string name="morphe_sb_settings_ie_sum_warning">Вашата SponsorBlock JSON конфигурация, която може да бъде импортирана / експортирана към Morphe и други SponsorBlock платформи. Това включва вашият личен потребителски ID. Бъдете внимателни при споделянето му.</string>
   <string name="morphe_sb_settings_import_successful">Дублирането на видеа се показва</string>
   <string name="morphe_sb_settings_import_failed">Скрий дублиране на видеа</string>
   <string name="morphe_sb_settings_export_failed">Дублирането на видеа е скрито</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Настройките ви съдържат частен ID на SponsorBlock.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Настройките ви съдържат личен SponsorBlock потребителски ID.
 
-Вашият ID е като парола и не трябва да се споделя."</string>
+Вашият потребителски ID е като парола и не трябва да се споделя."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Скрий дублиране на видеа</string>
   <string name="morphe_sb_diff_segments">Дублирането на видеа е скрито</string>
   <string name="morphe_sb_segments_sponsor">Дублирането на видеа се показва</string>
@@ -1444,6 +1456,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Музика</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Новини</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Известия</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Изключи вибрации при натискане и държане</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Вибрации при натискане и държане са изключени</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Вибрации при натискане и държане са включени</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Плейлисти</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Търсене</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Магазин</string>
@@ -1536,10 +1551,6 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_title">Приоритизирайте качество на видеото</string>
   <string name="morphe_prioritize_video_quality_summary_on">Качеството на видеото е приоритизирано</string>
   <string name="morphe_prioritize_video_quality_summary_off">Видео кодековете са приоритизирани</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
-  <string name="morphe_slide_to_seek_summary_on">Стил на екрана</string>
-  <string name="morphe_slide_to_seek_summary_off">Цвят</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Черно и бяло</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Включете personalised seekbar color"</string>

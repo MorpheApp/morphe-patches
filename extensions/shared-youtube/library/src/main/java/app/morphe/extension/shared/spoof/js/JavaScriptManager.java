@@ -270,9 +270,9 @@ public final class JavaScriptManager {
                 connection.disconnect();
                 return null;
             }).get();
-            Logger.printDebug(() -> "Download took: " + (System.currentTimeMillis() - start) + "ms for url: " + url);
+            Logger.printDebug(() -> "Download took: " + (System.currentTimeMillis() - start) + "ms for URL: " + url);
         } catch (ExecutionException | InterruptedException ex) {
-            Logger.printException(() -> "Could not download url: " + url, ex);
+            Logger.printException(() -> "Could not download URL: " + url, ex);
         }
 
         return content;

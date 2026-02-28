@@ -121,7 +121,7 @@ internal val playerControlsResourcePatch = resourcePatch {
                 "android.support.constraint.ConstraintLayout",
             ).item(0).childNodes
 
-            // Copy the patch layout xml into the target layout file.
+            // Copy the patch layout XML into the target layout file.
             for (index in sourceElements.length - 1 downTo 1) {
                 val element = sourceElements.item(index).cloneNode(true)
 
@@ -267,7 +267,7 @@ val playerControlsPatch = bytecodePatch(
             PlayerTopControlsInflateFingerprint.originalClassDef,
         ).method
 
-        // Hook the fullscreen close button.  Used to fix visibility
+        // Hook the fullscreen close button. Used to fix visibility
         // when seeking and other situations.
         OverlayViewInflateFingerprint.let {
             it.method.apply {

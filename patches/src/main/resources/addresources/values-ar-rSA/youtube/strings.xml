@@ -118,9 +118,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary_on">تم إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary_off">يتم عرض هيّا نلعب</string>
-  <string name="morphe_hide_search_suggestions_title">إخفاء اقتراحات البحث</string>
-  <string name="morphe_hide_search_suggestions_summary_on">تم إخفاء اقتراحات البحث</string>
-  <string name="morphe_hide_search_suggestions_summary_off">يتم عرض اقتراحات البحث</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">إخفاء زر \'عرض المزيد\'</string>
@@ -142,6 +139,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">إخفاء نتائج بحث الويب</string>
   <string name="morphe_hide_web_search_results_summary_on">تم إخفاء نتائج البحث على الويب</string>
   <string name="morphe_hide_web_search_results_summary_off">يتم عرض نتائج البحث على الويب</string>
+  <string name="morphe_hide_you_may_like_section_title">إخفاء قسم \'قد يعجبك\'</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">تم إخفاء قسم قد يعجبك</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">يتم عرض قسم قد يعجبك</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">إخفاء رسومات YouTube</string>
   <string name="morphe_hide_doodles_summary_on">تم إخفاء رسوم Doodles المتحركة على شعار YouTube</string>
@@ -415,6 +415,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_paid_promotion_label_title">إخفاء تسمية الترقية المدفوعة</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">تم إخفاء تسمية الترقية المدفوعة</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">يتم عرض تسمية الترقية المدفوعة</string>
+  <string name="morphe_hide_player_popup_ads_title">إخفاء إعلانات المشغل المنبثقة</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">تم إخفاء إعلانات المشغل المنبثقة</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">يتم عرض إعلانات المشغل المنبثقة</string>
   <string name="morphe_hide_self_sponsor_ads_title">إخفاء بطاقات الرعاية الذاتية</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">تم إخفاء بطاقات الرعاية الذاتية</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">يتم عرض بطاقات الرعاية الذاتية</string>
@@ -431,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">تم نسخ URL إلى الحافظة</string>
   <string name="morphe_share_copy_url_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني</string>
   <string name="morphe_copy_video_url_title">عرض زر نسخ عنوان URL للفيديو</string>
@@ -445,10 +448,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">سيتم إزالة مربع الحوار</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">سيتم عرض مربع الحوار</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">وهذا لا يتجاوز قيود السن. بل يقبلها تلقائيًا.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">تم تعطيل نافذة تسجيل الدخول إلى التلفزيون</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">تم تمكين نافذة تسجيل الدخول إلى التلفزيون</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">تم تعطيل نافذة تسجيل الدخول إلى التلفزيون</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">تم تمكين نافذة تسجيل الدخول إلى التلفزيون</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">تعطيل تخطي الفصل بالنقر المزدوج</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">لا يمكن للنقر المزدوج مطلقًا أن يؤدي إلى تخطي الفصل التالي/السابق</string>
@@ -477,10 +480,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">تم تمكين إيماءة التمرير الدقيقة</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">تمكين النقر للتمرير</string>
-  <string name="morphe_seekbar_tapping_summary_on">تم تمكين النقر للتمرير</string>
-  <string name="morphe_seekbar_tapping_summary_off">تم تعطيل النقر للتمرير</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
+  <string name="morphe_slide_to_seek_summary_on">تم تمكين التمرير للتقديم أو الترجيع</string>
+  <string name="morphe_slide_to_seek_summary_off">تم تعطيل التمرير للتقديم أو الترجيع</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
+  <string name="morphe_tap_to_seek_summary_on">تم تمكين النقر للتمرير</string>
+  <string name="morphe_tap_to_seek_summary_off">تم تعطيل النقر للتمرير</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">تمكين إيماءة السطوع</string>
   <string name="morphe_swipe_brightness_summary_on">"تم تمكين إيماءة مستوى السطوع في وضع ملء الشاشة
@@ -650,6 +657,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">إخفاء الإشعارات</string>
   <string name="morphe_hide_notifications_button_summary_on">تم إخفاء زر الإشعارات</string>
   <string name="morphe_hide_notifications_button_summary_off">يتم عرض زر الإشعارات</string>
+  <string name="morphe_show_search_button_title">عرض زر البحث</string>
+  <string name="morphe_show_search_button_summary_on">يتم عرض زر البحث</string>
+  <string name="morphe_show_search_button_summary_off">لا يتم عرض زر البحث</string>
+  <string name="morphe_search_button_index_title">ترتيب زر البحث</string>
+  <string name="morphe_search_button_index_invalid">يجب أن يكون مؤشر زر البحث أقل من %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">تبديل الإنشاء بالإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">تم تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">لا يتم تبديل زر الإنشاء بزر الإشعارات</string>
@@ -737,10 +749,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_on">تم إخفاء قائمة المقطع الصوتي</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">يتم عرض قائمة المقطع الصوتي</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'TV' must be kept untranslated. -->
+          'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"تم إخفاء قائمة المقطع الصوتي
 
-لعرض قائمة المقطع الصوتي، غيّر 'Spoof Video Streams' إلى 'TV'"</string>
+لعرض قائمة المقطع الصوتي، غيّر 'Spoof Video Streams' إلى 'Android Reel' أو 'TV'"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء المشاهدة في VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">تم إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
@@ -780,9 +792,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">تم إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">يتم عرض أزرار السابق &amp; التالي</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">إخفاء بطاقات شاشة النهاية</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">تم إخفاء بطاقات شاشة النهاية</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">يتم عرض بطاقات شاشة النهاية</string>
+  <string name="morphe_hide_end_screen_cards_title">إخفاء بطاقات شاشة النهاية</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">تم إخفاء بطاقات شاشة النهاية</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">يتم عرض بطاقات شاشة النهاية</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">وضع الإضاءة السينمائية</string>
   <string name="morphe_ambient_mode_screen_summary">تجاوز قيود توفير الطاقة لوضع الإضاءة السينمائية وقم بتعطيلها تمامًا أو في وضع ملء الشاشة</string>
@@ -959,10 +971,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">إخفاء الطابع الزمني للفيديو</string>
   <string name="morphe_hide_timestamp_summary_on">تم إخفاء الطابع الزمني</string>
   <string name="morphe_hide_timestamp_summary_off">يتم عرض الطابع الزمني</string>
-  <!-- layout.panels.popup.playerPopupPanelsPatch -->
-  <string name="morphe_hide_player_popup_panels_title">إخفاء لوحات المشغل المنبثقة</string>
-  <string name="morphe_hide_player_popup_panels_summary_on">تم إخفاء لوحات المشغل المنبثقة</string>
-  <string name="morphe_hide_player_popup_panels_summary_off">يتم عرض لوحات المشغل المنبثقة</string>
+  <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">تعطيل لوحات المشغل المنبثقة</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">تم تعطيل لوحات المشغل المنبثقة</string>
+  <string name="morphe_disable_player_popup_panels_summary_off">تم تمكين لوحات المشغل المنبثقة</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">الخروج من وضع ملء الشاشة عند انتهاء الفيديو</string>
   <string name="morphe_exit_fullscreen_entry_1">معطل</string>
@@ -1089,7 +1101,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_general_min_duration">الحد الأدنى لمدة المقطع</string>
   <string name="morphe_sb_general_min_duration_sum">لن يتم عرض المقاطع الأقصر من هذه القيمة (بالثواني) أو تخطيها</string>
   <string name="morphe_sb_general_min_duration_invalid">المدة الزمنية غير صالحة</string>
-  <string name="morphe_sb_general_uuid">معرف المستخدم User ID الفريد الخاص بك</string>
+  <string name="morphe_sb_general_uuid">معرف المستخدم الخاص بك User ID</string>
   <string name="morphe_sb_general_uuid_sum">يجب أن يبقى هذا خاصًا. انه مثل كلمة المرور ولا ينبغي مشاركته مع أي شخص. إذا كان شخص ما يملك هذا، فيمكنه انتحال شخصيتك</string>
   <string name="morphe_sb_general_uuid_invalid">يجب أن يكون معرف المستخدم الخاص 30 حرفًا على الأقل</string>
   <string name="morphe_sb_general_api_url">تغيير عنوان API</string>
@@ -1100,7 +1112,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie">إستيراد/تصدير الإعدادات</string>
   <string name="morphe_sb_settings_copy">نسخ</string>
   <string name="morphe_sb_settings_ie_sum">تكوين SponsorBlock JSON الخاص بك والذي يمكن استيراده/تصديره إلى Morphe ومنصات SponsorBlock الأخرى</string>
-  <string name="morphe_sb_settings_ie_sum_warning">تكوين SponsorBlock الخاص بك كتنسيق JSON الذي يمكن استيراده / تصديره إلى Morphe وغيره من منصات SponsorBlock الأخرى. يتضمن هذا معرف المستخدم الفريد الخاص بك. تأكد من مشاركته بحكمة</string>
+  <string name="morphe_sb_settings_ie_sum_warning">تكوين SponsorBlock الخاص بك كتنسيق JSON والذي يمكن استيراده / تصديره إلى Morphe وغيره من منصات SponsorBlock الأخرى. يتضمن هذا معرف المستخدم الفريد الخاص بك. تأكد من مشاركته بحكمة</string>
   <string name="morphe_sb_settings_import_successful">تم استيراد الإعدادات بنجاح</string>
   <string name="morphe_sb_settings_import_failed">فشل استيراد: %s</string>
   <string name="morphe_sb_settings_export_failed">فشل تصدير: %s</string>
@@ -1461,6 +1473,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">تعطيل اهتزاز التراجع عن التمرير</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">تم تعطيل اهتزاز التراجع عن التمرير</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">تم تمكين اهتزاز التراجع عن التمرير</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">تعطيل اهتزازات النقر والنقر المطول</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">تم تعطيل اهتزازات النقر والنقر المطول</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">تم تمكين اهتزازات النقر والنقر المطول</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">تعطيل الاهتزاز عند التكبير</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">تم تعطيل الاهتزاز عند التكبير</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">تم تمكين الاهتزاز عند التكبير</string>
@@ -1553,10 +1568,6 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_title">إعطاء الأولوية لجودة فيديو</string>
   <string name="morphe_prioritize_video_quality_summary_on">يتم إعطاء الأولوية لجودة الفيديو</string>
   <string name="morphe_prioritize_video_quality_summary_off">يتم إعطاء الأولوية لترميزات الفيديو</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
-  <string name="morphe_slide_to_seek_summary_on">تم تمكين التمرير للتقديم أو الترجيع</string>
-  <string name="morphe_slide_to_seek_summary_off">تم تعطيل التمرير للتقديم أو الترجيع</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">السماح بـ Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"برنامج ترميز الفيديو هو AVC (H.264)، VP9، أو AV1

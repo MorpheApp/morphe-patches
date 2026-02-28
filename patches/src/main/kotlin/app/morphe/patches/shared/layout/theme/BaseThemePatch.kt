@@ -107,7 +107,7 @@ internal fun baseThemeResourcePatch(
 
     execute {
         // Patch validators don't work here for unknown reason.
-        // This should changed to a patch option validator.
+        // This should be changed to a patch option validator.
         val darkColor by darkThemeBackgroundColorOption
         if (!validateColorName(darkColor!!)) {
             throw PatchException("Invalid dark theme color: $darkColor")

@@ -11,24 +11,24 @@ import android.util.AttributeSet;
  * Allows using basic HTML for the summary text.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class HtmlPreference extends Preference {
+public class HTMLPreference extends Preference {
     {
         setSummary(Html.fromHtml(getSummary().toString(), FROM_HTML_MODE_COMPACT));
     }
 
-    public HtmlPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public HTMLPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public HtmlPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HTMLPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public HtmlPreference(Context context, AttributeSet attrs) {
+    public HTMLPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public HtmlPreference(Context context) {
+    public HTMLPreference(Context context) {
         super(context);
     }
 }

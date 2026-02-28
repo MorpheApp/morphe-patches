@@ -7,7 +7,7 @@ package app.morphe.extension.reddit.patches;
 import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class SanitizeUrlQueryPatch {
+public final class SanitizeSharingLinksPatch {
 
     /**
      * @return If this patch was included during patching.
@@ -20,6 +20,6 @@ public final class SanitizeUrlQueryPatch {
      * Injection point.
      */
     public static boolean stripQueryParameters() {
-        return Settings.SANITIZE_URL_QUERY.get();
+        return Settings.SANITIZE_SHARING_LINKS.get();
     }
 }

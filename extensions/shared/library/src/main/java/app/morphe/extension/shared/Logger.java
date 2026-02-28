@@ -16,8 +16,8 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.LogBufferManager;
 
 /**
- * Morphe specific logger.  Logging is done to standard device log (accessible thru ADB),
- * and additionally accessible thru {@link LogBufferManager}.
+ * Morphe specific logger. Logging is done to standard device log (accessible through ADB),
+ * and additionally accessible through {@link LogBufferManager}.
  *
  * All methods are thread safe, and are safe to call even
  * if {@link Utils#getContext()} is not available.
@@ -202,7 +202,7 @@ public class Logger {
     /**
      * Logs exceptions under the outer class name of the code calling this method.
      * <p>
-     * If the calling code is showing it's own error toast,
+     * If the calling code is showing its own error toast,
      * instead use {@link #printInfo(LogMessage, Exception)}
      *
      * @param message          log message

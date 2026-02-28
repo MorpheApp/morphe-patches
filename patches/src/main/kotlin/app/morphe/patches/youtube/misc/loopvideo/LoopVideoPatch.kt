@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.misc.loopvideo
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -11,6 +12,7 @@ import app.morphe.patches.youtube.video.information.playerStatusMethod
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LoopVideoPatch;"
 
@@ -36,15 +38,19 @@ val loopVideoPatch = bytecodePatch(
             // to be reached if the video is looped.
             val insertIndex =
                 indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
+            // Since instructions are added just above Opcode.SGET_OBJECT, instead of calling findFreeRegister(),
+            // a register from Opcode.SGET_OBJECT is used.
+            val freeRegister =
+                getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
             // Since 'videoInformationPatch' is used as a dependency of this patch,
             // the loop is implemented through 'VideoInformation.seekTo(0)'.
             addInstructionsWithLabels(
                 insertIndex,
                 """
-                    invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->shouldLoopVideo(Ljava/lang/Enum;)Z
-                    move-result v0
-                    if-eqz v0, :do_not_loop
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->shouldLoopVideo(Ljava/lang/Enum;)Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :do_not_loop
                     return-void
                     :do_not_loop
                     nop

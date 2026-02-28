@@ -15,7 +15,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.SubtitleButtonControllerFingerprint
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -24,6 +23,7 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -101,13 +101,17 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide captions button.
 
-        SubtitleButtonControllerFingerprint.method.apply {
-            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.IGET_BOOLEAN) + 1
+        SubtitleButtonControllerFingerprint.let {
+            it.method.apply {
+                val viewIndex = it.instructionMatches.first().index
+                val viewRegister = getInstruction<TwoRegisterInstruction>(viewIndex).registerA
 
-            addInstruction(
-                insertIndex,
-                "invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->hideCaptionsButton(Landroid/widget/ImageView;)V",
-            )
+                addInstruction(
+                    viewIndex + 1,
+                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                            "hideCaptionsButton(Landroid/widget/ImageView;)V",
+                )
+            }
         }
 
         // endregion

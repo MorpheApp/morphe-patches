@@ -95,7 +95,11 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC dinonaktifkan</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC diaktifkan</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Nonaktifkan audio DRC</string>
   <string name="morphe_disable_drc_audio_summary_on">Audio DRC dinonaktifkan</string>
   <string name="morphe_disable_drc_audio_summary_off">Audio DRC diaktifkan</string>

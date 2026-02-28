@@ -31,8 +31,8 @@ private val disableSplashAnimationPatch = bytecodePatch {
         // causing the original YT Music logo to momentarily flash on screen as the animation starts.
         //
         // Could replace the lottie animation file with our own custom animation (app_launch.json),
-        // but the animation is not always the same size as the launch screen and it's still
-        // barely shown. Instead turn off the animation entirely (app will also launch a little faster).
+        // but the animation is not always the same size as the launch screen, and it's still
+        // barely shown. Instead, turn off the animation entirely (app will also launch a little faster).
         CairoSplashAnimationConfigFingerprint.method.apply {
             val literalIndex = indexOfFirstLiteralInstructionOrThrow(
                 getResourceId(ResourceType.LAYOUT, "main_activity_launch_animation")

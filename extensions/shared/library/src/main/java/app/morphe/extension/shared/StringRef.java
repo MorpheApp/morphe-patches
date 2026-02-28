@@ -1,8 +1,5 @@
 package app.morphe.extension.shared;
 
-import android.content.Context;
-import android.content.res.Resources;
-
 import androidx.annotation.NonNull;
 
 import java.util.Collections;
@@ -87,7 +84,7 @@ public class StringRef {
     }
 
     /**
-     * Creates a StringRef object that'll not change it's value
+     * Creates a StringRef object that'll not change its value
      *
      * @param value value which toString() method returns when invoked on returned object
      * @return Unique StringRef instance, its value will never change

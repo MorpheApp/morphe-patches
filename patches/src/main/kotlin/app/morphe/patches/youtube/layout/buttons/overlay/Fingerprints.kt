@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.layout.buttons.overlay
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -57,5 +58,19 @@ internal object TitleAnchorFingerprint : Fingerprint(
 
         resourceLiteral(ResourceType.ID, "title_anchor"),
         opcode(Opcode.MOVE_RESULT_OBJECT)
+    )
+)
+
+internal object SubtitleButtonControllerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;"
+        ),
+        resourceLiteral(ResourceType.STRING, "accessibility_captions_unavailable"),
+        resourceLiteral(ResourceType.STRING, "accessibility_captions_button_name"),
     )
 )

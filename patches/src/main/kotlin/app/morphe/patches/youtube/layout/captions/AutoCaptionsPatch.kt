@@ -1,13 +1,14 @@
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.SubtitleButtonControllerFingerprint
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
@@ -34,22 +35,26 @@ internal val autoCaptionsPatch = bytecodePatch(
             }
         )
 
-        SubtitleTrackFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions()Z
-                move-result v0
-                if-nez v0, :auto_captions_enabled
-                const/4 v0, 0x1
-                return v0
-                :auto_captions_enabled
-                nop
-            """
-        )
+        SubtitleManagerFingerprint.match(
+            SubtitleManagerConstructorFingerprint.originalClassDef
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         arrayOf(
             StartVideoInformerFingerprint to 0,
-            SubtitleButtonControllerFingerprint to 1
+            StoryboardRendererDecoderRecommendedLevelFingerprint to 1
         ).forEach { (fingerprint, enabled) ->
             fingerprint.method.addInstructions(
                 0,

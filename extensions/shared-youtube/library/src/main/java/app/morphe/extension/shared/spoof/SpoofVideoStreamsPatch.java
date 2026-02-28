@@ -117,7 +117,7 @@ public class SpoofVideoStreamsPatch {
                 String path = playerRequestUri.getPath();
 
                 if (path != null && path.contains("get_watch")) {
-                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check uri");
+                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
 
                     return INTERNET_CONNECTION_CHECK_URI;
                 }
@@ -146,7 +146,7 @@ public class SpoofVideoStreamsPatch {
                 String path = originalUri.getPath();
 
                 if (path != null && path.contains("att/get")) {
-                    Logger.printDebug(() -> "Blocking 'att/get' by returning internet connection check uri");
+                    Logger.printDebug(() -> "Blocking 'att/get' by returning internet connection check URI");
 
                     return INTERNET_CONNECTION_CHECK_URI_STRING;
                 }
@@ -170,7 +170,7 @@ public class SpoofVideoStreamsPatch {
                 String path = originalUri.getPath();
 
                 if (path != null && path.contains("initplayback")) {
-                    Logger.printDebug(() -> "Blocking 'initplayback' by returning internet connection check uri");
+                    Logger.printDebug(() -> "Blocking 'initplayback' by returning internet connection check URI");
 
                     return INTERNET_CONNECTION_CHECK_URI_STRING;
                 }
@@ -265,10 +265,10 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                // 'get_drm_license' has no video id and appears to happen when waiting for a paid video to start.
-                // 'heartbeat' has no video id and appears to be only after playback has started.
-                // 'refresh' has no video id and appears to happen when waiting for a livestream to start.
-                // 'ad_break' has no video id.
+                // 'get_drm_license' has no video ID and appears to happen when waiting for a paid video to start.
+                // 'heartbeat' has no video  and appears to be only after playback has started.
+                // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
+                // 'ad_break' has no video ID.
                 if (path.contains("get_drm_license") || path.contains("heartbeat")
                         || path.contains("refresh") || path.contains("ad_break")) {
                     Logger.printDebug(() -> "Ignoring path: " + path);
@@ -277,7 +277,7 @@ public class SpoofVideoStreamsPatch {
 
                 String id = uri.getQueryParameter("id");
                 if (id == null) {
-                    Logger.printException(() -> "Ignoring request with no id: " + url);
+                    Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
 
@@ -300,7 +300,7 @@ public class SpoofVideoStreamsPatch {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
                     // This hook is always called off the main thread,
-                    // but this can later be called for the same video id from the main thread.
+                    // but this can later be called for the same video ID from the main thread.
                     // This is not a concern, since the fetch will always be finished
                     // and never block the main thread.
                     // But if debugging, then still verify this is the situation.

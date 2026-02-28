@@ -97,7 +97,11 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">無法登錄 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已從 Android VR 中登出</string>
   <string name="morphe_oauth2_toast_invalid">無效的 VR 登錄權杖，請重新登錄 VR</string>
-  <!-- misc.audio.drc.drcAudioPatch -->
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">停用 QUIC 協定</string>
+  <string name="morphe_disable_quic_protocol_summary_on">已停用 QUIC 協定</string>
+  <string name="morphe_disable_quic_protocol_summary_off">已啟用 QUIC 協定</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">停用 DRC 音效</string>
   <string name="morphe_disable_drc_audio_summary_on">已停用 DRC 音效</string>
   <string name="morphe_disable_drc_audio_summary_off">已啟用 DRC 音效</string>

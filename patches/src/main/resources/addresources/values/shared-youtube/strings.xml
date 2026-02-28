@@ -99,7 +99,12 @@ To sign in, press continue below"</string>
     <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
 
-    <!-- misc.audio.drc.drcAudioPatch -->
+    <!-- misc.quic.disableQUICProtocolPatch -->
+    <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>
+    <string name="morphe_disable_quic_protocol_summary_on">QUIC protocol is disabled</string>
+    <string name="morphe_disable_quic_protocol_summary_off">QUIC protocol is enabled</string>
+
+    <!-- misc.audio.drc.disableDRCAudioPatch  -->
     <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
     <string name="morphe_disable_drc_audio_summary_on">DRC audio is disabled</string>
     <string name="morphe_disable_drc_audio_summary_off">DRC audio is enabled</string>

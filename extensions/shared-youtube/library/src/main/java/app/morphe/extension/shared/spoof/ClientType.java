@@ -1,4 +1,14 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.shared.spoof;
+
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
 
 import android.os.Build;
 
@@ -9,9 +19,40 @@ import java.util.Locale;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("ConstantLocale")
 public enum ClientType {
+    /**
+     * Video not playable: Paid, Movie, Private, Age-restricted.
+     * Uses non-adaptive bitrate.
+     * AV1 codec available.
+     */
+    ANDROID_REEL(
+            3,
+            "ANDROID",
+            "com.google.android.youtube",
+            Build.MANUFACTURER,
+            Build.MODEL,
+            "Android",
+            Build.VERSION.RELEASE,
+            String.valueOf(Build.VERSION.SDK_INT),
+            Build.ID,
+            // A hardcoded client version is used for YouTube Music.
+            IS_YOUTUBE ? Utils.getAppVersionName() : "20.26.46",
+            null,
+            // This client has been used by most open-source YouTube stream extraction tools since 2024, including NewPipe Extractor, SmartTube, and Grayjay.
+            // This client can log in, but if an access token is used in the request, GVS can more easily identify the request as coming from Morphe.
+            // This means that the GVS server can strengthen its validation of the ANDROID_REEL client.
+            // For this reason, ANDROID_REEL is used as a logout client.
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            "Android Reel"
+    ),
     /**
      * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
      * Uses non-adaptive bitrate.
@@ -35,6 +76,7 @@ public enum ClientType {
             false,
             true,
             false,
+            true,
             "Android VR 1.54"
     ),
     /**
@@ -59,6 +101,7 @@ public enum ClientType {
             ANDROID_VR_1_54_20.supportsMultiAudioTracks,
             ANDROID_VR_1_54_20.supportsOAuth2,
             ANDROID_VR_1_54_20.requireJS,
+            ANDROID_VR_1_54_20.usePlayerEndpoint,
             "Android VR 1.47"
     ),
     /**
@@ -84,6 +127,7 @@ public enum ClientType {
             false,
             false,
             false,
+            true,
             "Android Studio"
     ),
     /**
@@ -106,10 +150,11 @@ public enum ClientType {
             true,
             false,
             true,
+            true,
             "TV"
     ),
     /**
-     * Internal YT client for an unreleased YT client. May stop working at any time.
+     * May stop working at any time.
      */
     VISIONOS(101,
             "VISIONOS",
@@ -125,6 +170,7 @@ public enum ClientType {
             false,
             false,
             false,
+            true,
             "visionOS"
     ),
     /**
@@ -145,6 +191,7 @@ public enum ClientType {
             true,
             true,
             false,
+            true,
             true,
             "TV Simply"
     );
@@ -232,6 +279,11 @@ public enum ClientType {
     public final boolean requireJS;
 
     /**
+     * Whether to use the '/player' endpoint.
+     */
+    public final boolean usePlayerEndpoint;
+
+    /**
      * Friendly name displayed in stats for nerds.
      */
     public final String friendlyName;
@@ -255,6 +307,7 @@ public enum ClientType {
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
                boolean requireJS,
+               boolean usePlayerEndpoint,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -271,6 +324,7 @@ public enum ClientType {
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
         this.requireJS = requireJS;
+        this.usePlayerEndpoint = usePlayerEndpoint;
         this.friendlyName = friendlyName;
 
         Locale defaultLocale = Locale.getDefault();
@@ -300,6 +354,7 @@ public enum ClientType {
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
                boolean requireJS,
+               boolean usePlayerEndpoint,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -315,6 +370,7 @@ public enum ClientType {
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
         this.requireJS = requireJS;
+        this.usePlayerEndpoint = usePlayerEndpoint;
         this.friendlyName = friendlyName;
         this.packageName = null;
         this.androidSdkVersion = null;

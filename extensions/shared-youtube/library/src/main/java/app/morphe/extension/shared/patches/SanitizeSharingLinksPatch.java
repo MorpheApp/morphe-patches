@@ -18,8 +18,8 @@ public final class SanitizeSharingLinksPatch {
      * Injection point.
      */
     public static String sanitize(String url) {
-        if (SharedYouTubeSettings.SANITIZE_SHARED_LINKS.get()) {
-            url = sanitizer.sanitizeUrlString(url);
+        if (SharedYouTubeSettings.SANITIZE_SHARING_LINKS.get()) {
+            url = sanitizer.sanitizeURLString(url);
         }
 
         if (SharedYouTubeSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {

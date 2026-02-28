@@ -35,7 +35,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
                 // Remove A/B feature call that forces what this patch already does.
                 // Cannot use the A/B flag to accomplish the same goal because 19.50+
                 // Shorts fullscreen regular player does not use fullscreen
-                // if the player is minimized and it must be forced using other conditional check.
+                // if the player is minimized, and it must be forced using other conditional check.
                 it.method.insertLiteralOverride(
                     it.instructionMatches.last().index,
                     false

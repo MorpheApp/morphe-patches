@@ -36,7 +36,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
-import app.morphe.extension.shared.settings.preference.UrlLinkPreference;
+import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.ui.ColorDot;
 
 /**
@@ -436,7 +436,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     }
 
     /**
-     * Normalizes string for comparison (removes extra characters, spaces etc).
+     * Normalizes string for comparison (removes extra characters, spaces etc.).
      */
     protected String normalizeString(String input) {
         if (TextUtils.isEmpty(input)) return "";
@@ -609,8 +609,8 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     boolean hasNavigationCapability(Preference preference) {
         // PreferenceScreen always allows navigation.
         if (preference instanceof PreferenceScreen) return true;
-        // UrlLinkPreference does not navigate to a new screen, it opens an external URL.
-        if (preference instanceof UrlLinkPreference) return false;
+        // URLLinkPreference does not navigate to a new screen, it opens an external URL.
+        if (preference instanceof URLLinkPreference) return false;
         // Other group types that might have their own screens.
         if (preference instanceof PreferenceGroup) {
             // Check if it has its own fragment or intent.

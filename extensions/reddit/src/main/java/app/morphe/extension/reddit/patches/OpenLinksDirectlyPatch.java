@@ -25,7 +25,7 @@ public final class OpenLinksDirectlyPatch {
      * <p>
      * Parses the given Reddit redirect uri by extracting the redirect query.
      *
-     * @param uri The Reddit redirect uri.
+     * @param uri The Reddit redirect URI.
      * @return The redirect query.
      */
     public static Uri parseRedirectUri(Uri uri) {

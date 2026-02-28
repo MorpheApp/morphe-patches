@@ -102,7 +102,7 @@ Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flagi zresetowane</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flagi skopiowane do schowka</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uruchom ponownie aplikację, aby użyć tej funkcji</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otwórz ustawienia MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
