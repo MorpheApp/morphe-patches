@@ -139,9 +139,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_web_search_results_title">Web arama sonuçlarını gizle</string>
   <string name="morphe_hide_web_search_results_summary_on">Web arama sonuçları gizli</string>
   <string name="morphe_hide_web_search_results_summary_off">Web arama sonuçları görünür</string>
-  <string name="morphe_hide_you_may_like_section_title">Görünen \'Sen de beğenebileceğiniz\' bölmesini gizle</string>
-  <string name="morphe_hide_you_may_like_section_summary_on">Yorumlar kısmı gizli</string>
-  <string name="morphe_hide_you_may_like_section_summary_off">Yorumlar kısmı görünüyor</string>
+  <string name="morphe_hide_you_may_like_section_title">Aramadaki \'Hoşunuza gidebilecekler\' kısmını gizle</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">Hoşunuza gidebilecekler kısmı gizli</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Hoşunuza gidebilecekler kısmı görünüyor</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_doodles_title">YouTube Doodle\'larını gizle</string>
   <string name="morphe_hide_doodles_summary_on">Logodaki YouTube Doodles animasyonu gizli</string>
@@ -222,11 +222,11 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_featured_videos_section_title">Öne Çıkan Videoları Gizle</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Öne Çıkan Videolar Bölümü Gizlidir</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Öne Çıkan Videolar Bölümü Görünür</string>
-  <string name="morphe_hide_feed_flyout_menu_title">Besleme akış menüsü filtresini etkinleştirin</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_on">Besleme akış menüsü filtresi etkinleştirildi</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_off">Besleme akış menüsü filtresi devre dışı bırakıldı</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Besleme akış menüsü filtresi</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Uçak menü adlarını filtrelemek için, her satırda bir tane girin</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Akış açılır menü filtresini etkinleştir</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Akış açılır menü filtresi etkin</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Akış açılır menü filtresi devre dışı</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Akış açılır menü filtresi</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Açılır menü adlarını filtrelemek için her satıra bir tane olacak şekilde girin</string>
   <string name="morphe_hide_gaming_section_title">Oyunları Gizle</string>
   <string name="morphe_hide_gaming_section_summary_on">Oyunlar Bölümü Gizlidir</string>
   <string name="morphe_hide_gaming_section_summary_off">Oyunlar Bölümü Görünür</string>
@@ -272,11 +272,11 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">İzleme geçmişinde görünür</string>
   <string name="morphe_channel_screen_title">Kanal sayfası</string>
   <string name="morphe_channel_screen_summary">Kanal sayfası bileşenlerini gizle veya göster</string>
-  <string name="morphe_hide_channel_tab_title">Kanal sekmesinde filtre etkinleştir</string>
-  <string name="morphe_hide_channel_tab_summary_on">Kanal sekmesi filtresi etkinleştirildi</string>
-  <string name="morphe_hide_channel_tab_summary_off">Kanal sekmesi filtresi devre dışı bırakıldı</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">Kanal sekmesi filtre</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Filtrelemek için kanal sekme adlarını, her satırda birer, girin</string>
+  <string name="morphe_hide_channel_tab_title">Kanal sekmesi filtresini etkinleştir</string>
+  <string name="morphe_hide_channel_tab_summary_on">Kanal sekmesi filtresi etkin</string>
+  <string name="morphe_hide_channel_tab_summary_off">Kanal sekmesi filtresi devre dışı</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Kanal sekmesi filtresi</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Kanal sekmesi adlarını filtrelemek için her satıra bir tane olacak şekilde girin</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_community_button_title">Topluluk düğmesini gizle</string>
   <string name="morphe_hide_community_button_summary_on">Topluluk düğmesi gizli</string>
@@ -698,9 +698,9 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_toolbar_search_button_title">Arama düğmesini gizle</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Arama düğmesi gizli</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Arama düğmesi görünür</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Arama düğmesini gizle</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Arama düğmesi gizli</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Arama düğmesi görünür</string>
+  <string name="morphe_hide_toolbar_voice_search_button_title">Sesli arama düğmesini gizle</string>
+  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Sesli arama düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Sesli arama düğmesi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılır menü</string>
   <string name="morphe_hide_player_flyout_summary">Oynatıcı açılır menü öğelerini gizle veya göster</string>
@@ -745,14 +745,14 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_summary_on">YouTube Müzik ile dinle menüsü gizli</string>
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_summary_off">YouTube Müzik ile dinle menüsü görünür</string>
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Ses parçasını gizle</string>
-  <string name="morphe_hide_player_flyout_audio_track_summary_on">Ses parçası menüsü gizli</string>
-  <string name="morphe_hide_player_flyout_audio_track_summary_off">Ses parçası menüsü görünür</string>
+  <string name="morphe_hide_player_flyout_audio_track_title">Ses Parçası\'nı gizle</string>
+  <string name="morphe_hide_player_flyout_audio_track_summary_on">Ses Parçası menüsü gizli</string>
+  <string name="morphe_hide_player_flyout_audio_track_summary_off">Ses Parçası menüsü görünür</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Reel' and 'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Ses izleri menüsü gizlendi
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Ses Parçası menüsü gizlendi
 
-Ses izleri menüsünü görüntülemek için, 'Video akışları sahtekarlığı'yi 'Android Reel' veya 'TV' olarak değiştirin"</string>
+Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et'i 'Android Reel' veya 'TV' olarak değiştirin"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR modunda izlemeyi gizle</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR modunda izle menüsü gizli</string>
@@ -850,9 +850,9 @@ Ses izleri menüsünü görüntülemek için, 'Video akışları sahtekarlığı
   <string name="morphe_hide_shorts_history_title">İzleme geçmişinde Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_history_summary_on">İzleme geçmişinde gizli</string>
   <string name="morphe_hide_shorts_history_summary_off">İzleme geçmişinde görünür</string>
-  <string name="morphe_hide_shorts_ai_button_title">AI düğmesini gizle</string>
-  <string name="morphe_hide_shorts_ai_button_summary_on">AI düğmesi gizli</string>
-  <string name="morphe_hide_shorts_ai_button_summary_off">AI düğmesi görünür</string>
+  <string name="morphe_hide_shorts_ai_button_title">Yapay zeka düğmesini gizle</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">Yapay zeka düğmesi gizli</string>
+  <string name="morphe_hide_shorts_ai_button_summary_off">Yapay zeka düğmesi görünür</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Otomatik seslendirme etiketi\'yi gizle</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Otomatik seslendirme etiketi gizlidir</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Otomatik seslendirme etiketi görünür</string>
@@ -958,11 +958,12 @@ Ses izleri menüsünü görüntülemek için, 'Video akışları sahtekarlığı
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Gezinme çubuğu görünür</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Bitiş ekranı önerilen videosunu gizle</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Otomatik oynatma kapatıldığında bitiş ekranı önerilen videosu gizlenir
-
-Otomatik oynatma YouTube ayarlarından değiştirilebilir:
-Ayarlar → Oynatma → Sonraki videoyu otomatik oynat"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Bitiş ekranı önerilen video gizlenir otomatik oynatma kapatıldığında</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Bitiş ekranı önerilen videosu görünür</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Bu ayar otomatik sonraki video oynatma kapatıldığında çalışır.
+
+Otomatik sonraki video oynatma YouTube ayarlarından değiştirilebilir:
+Ayarlar → Oynatma (veya Otomatik) → Sonraki videoyu otomatik oynat"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">İlgili videolar katmanını gizle</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Tam ekrandaki ilgili videolar katmanı gizli</string>
@@ -1278,6 +1279,10 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Eski kaydı çalma listesine geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Etiketsiz simgeleri devre dışı bırak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Daraltılmamış video eylem çubuğunu geri getir</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım çubuğunu aç</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Sistem paylaşım çubuğunu açar</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Uygulama içi paylaşım çubuğunu açar</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlangıç sayfasını değiştir</string>
   <string name="morphe_change_start_page_entry_default">Varsayılan</string>
@@ -1579,7 +1584,7 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Deneysel istemci ve her an çalışmayı durdurabilir</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Video 1:00\'da durabilir veya bazı bölgelerde kullanılamayabilir</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ses parçası menüsü eksik</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ses Parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>

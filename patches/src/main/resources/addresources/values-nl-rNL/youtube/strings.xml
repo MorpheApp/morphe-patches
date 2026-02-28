@@ -958,11 +958,12 @@ Om het menu voor audio-spoor te tonen, verander 'Spoof video streams' naar 'Andr
   <string name="morphe_hide_shorts_navigation_bar_summary_off">De navigatiebalk is zichtbaar</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Voorgestelde video op eindscherm verbergen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"De voorgestelde video op het eindscherm is verborgen wanneer automatisch afspelen is uitgeschakeld.
-
-Automatisch afspelen kan worden gewijzigd in de YouTube-instellingen:
-Instellingen → Afspelen → Volgende video automatisch afspelen"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Het eindscherm voorgestelde video is verborgen als automatisch afspelen is uitgeschakeld</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Voorgestelde video op eindscherm wordt getoond</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Deze instelling werkt alleen als 'Volgende video automatisch afspelen' is uitgeschakeld.
+
+'Volgende video automatisch afspelen' kan worden gewijzigd in de YouTube-instellingen:
+Instellingen → Afspelen (of Autoplay) → Volgende video automatisch afspelen"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Overlay van gerelateerde video\'s verbergen</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Overlay van gerelateerde video\'s in volledig scherm is verborgen</string>
@@ -1278,6 +1279,10 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Uitschakelen van vetgedrukte pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Herstel niet-ingeklapte videobalk</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Open systeem delenblad</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Opent systeem delenblad</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Opent in-app delenblad</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startpagina wijzigen</string>
   <string name="morphe_change_start_page_entry_default">Standaard</string>

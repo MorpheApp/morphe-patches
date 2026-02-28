@@ -657,9 +657,9 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_hide_notifications_button_summary_on">El botón \"Notificaciones\" está oculto</string>
   <string name="morphe_hide_notifications_button_summary_off">El botón \"Notificaciones\" está visible</string>
   <string name="morphe_show_search_button_title">Mostrar botón de búsqueda</string>
-  <string name="morphe_show_search_button_summary_on">El botón \"Buscar\" está visible</string>
-  <string name="morphe_show_search_button_summary_off">El botón de búsqueda no está visible</string>
-  <string name="morphe_search_button_index_title">Botón de búsqueda índice</string>
+  <string name="morphe_show_search_button_summary_on">El botón de búsqueda está visible</string>
+  <string name="morphe_show_search_button_summary_off">El botón de búsqueda está oculto</string>
+  <string name="morphe_search_button_index_title">Índice del botón de búsqueda</string>
   <string name="morphe_search_button_index_invalid">El índice del botón de búsqueda debe ser menor que %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Intercambiar \"Crear\" con \"Notificaciones\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">El botón \"Crear\" se ha intercambiado con el botón \"Notificaciones\"</string>
@@ -957,11 +957,12 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barra de navegación está visible</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ocultar vídeo sugerido en pantalla final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"El vídeo sugerido en la pantalla final está oculto cuando la reproducción automática está desactivada
-
-La reproducción automática se puede cambiar en la configuración de YouTube:
-Configuración → Reproducción → Reproducción automática del siguiente vídeo"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">El vídeo sugerido en la pantalla final está oculto cuando la reproducción automática está desactivada</string>
   <string name="morphe_end_screen_suggested_video_summary_off">El vídeo sugerido en la pantalla final está visible</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Este ajuste solo funciona si \"Reproducción automática del siguiente vídeo\" está desactivada.
+
+\"Reproducción automática del siguiente vídeo\" se puede cambiar en la configuración de YouTube:
+Configuración → Reproducción → Reproducción automática del siguiente vídeo"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">La superposición de vídeos relacionados en pantalla completa está oculta</string>
@@ -1277,6 +1278,10 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desactivar iconos en negrita</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaura la barra de acciones de vídeo no contraída</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Abrir la hoja de compartir del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Abre la hoja de compartir del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Abre la hoja de compartir en la aplicación</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambiar página de inicio</string>
   <string name="morphe_change_start_page_entry_default">Predeterminado</string>

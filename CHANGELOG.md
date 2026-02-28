@@ -1,3 +1,10 @@
+# [1.16.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.2...v1.16.0-dev.3) (2026-02-28)
+
+
+### Bug Fixes
+
+* **YouTube - Hide end screen suggested video:** Add user dialogs to minimize user confusion ([#637](https://github.com/MorpheApp/morphe-patches/issues/637)) ([6d4af87](https://github.com/MorpheApp/morphe-patches/commit/6d4af87dd6880d6114c24815109da4149df3c3b8))
+
 # [1.16.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.1...v1.16.0-dev.2) (2026-02-27)
 
 

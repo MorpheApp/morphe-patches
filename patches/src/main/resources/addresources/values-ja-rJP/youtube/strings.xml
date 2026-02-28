@@ -959,11 +959,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"終了画面の「関連動画」は表示されませんが、自動再生がオンの場合は次の動画が自動で再生されます
-
-自動再生の設定は YouTube の設定で変更できます:
-[設定] > [再生] > [次の動画を自動再生]"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">終了画面の「関連動画」は、自動再生がオフのときには表示されません</string>
   <string name="morphe_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。
+
+[次の動画を自動再生] は、YouTube の設定で変更できます:
+[設定] > [再生] (または [自動再生]) > [次の動画を自動再生]"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
@@ -1222,7 +1223,7 @@ Second \"item\" text"</string>
 送信しますか？"</string>
   <string name="morphe_sb_new_segment_start_is_before_end">開始位置を終了位置よりも前にしてください</string>
   <string name="morphe_sb_new_segment_mark_locations_first">先に開始位置と終了位置を設定してください</string>
-  <string name="morphe_sb_new_segment_preview_segment_first">セグメントをテストしてスムーズにスキップすることを確認してください</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">セグメントのテスト機能でスムーズにスキップすることを確認してください</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">セグメントの範囲を手動で編集</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">セグメントの開始位置または終了位置を編集しますか？</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">時間 (位置) の値が無効です</string>
@@ -1279,6 +1280,10 @@ Automotive レイアウト
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 古い「再生リストに保存」を復元</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - アクション ボタンの文字表示を復元</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">システムの共有画面を開く</string>
+  <string name="morphe_open_system_share_sheet_summary_on">システムの共有画面を開きます</string>
+  <string name="morphe_open_system_share_sheet_summary_off">アプリ内の共有画面を開きます</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">スタート画面を変更</string>
   <string name="morphe_change_start_page_entry_default">デフォルト</string>

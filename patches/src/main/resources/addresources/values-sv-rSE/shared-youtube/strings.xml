@@ -96,6 +96,9 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken. Försök logga in i VR igen</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokollet</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokollet är inaktiverat</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokollet är aktiverat</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
   <string name="morphe_disable_drc_audio_summary_on">Dynamisk intervallkomprimering för ljud är inaktiverad</string>
