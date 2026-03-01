@@ -997,11 +997,11 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
     <string name="morphe_end_screen_suggested_video_title">Hide end screen suggested video</string>
-    <string name="morphe_end_screen_suggested_video_summary_on">End screen suggested video is hidden when autoplay is turned off</string>
+    <string name="morphe_end_screen_suggested_video_summary_on">End screen suggested video is hidden</string>
     <string name="morphe_end_screen_suggested_video_summary_off">End screen suggested video is shown</string>
-    <string name="morphe_end_screen_suggested_video_user_dialog_message">"This setting only works if 'Autoplay next video' is turned off.
+    <string name="morphe_end_screen_suggested_video_user_dialog_message">"This setting only works when “Autoplay next video” is turned off.
 
-'Autoplay next video' can be changed in YouTube settings:
+You can change this in YouTube:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
@@ -1337,6 +1337,13 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
     <string name="morphe_open_system_share_sheet_summary_on">Opens system share sheet</string>
     <string name="morphe_open_system_share_sheet_summary_off">Opens in-app share sheet</string>
+
+    <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+    <string name="morphe_override_youtube_music_button_title">Override YouTube Music button</string>
+    <string name="morphe_override_youtube_music_button_summary_on">YouTube Music button opens your target music app</string>
+    <string name="morphe_override_youtube_music_button_summary_off">YouTube Music button opens the native app</string>
+    <string name="morphe_music_package_name_title">Morphe Music package name</string>
+    <string name="morphe_music_package_name_summary">Package name of the target music app</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Change start page</string>
