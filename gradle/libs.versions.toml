@@ -9,7 +9,7 @@ gson = "2.13.2"
 guava = "33.5.0-jre"
 hiddenapi = "6.1"
 protobuf = "0.9.5"
-protoc = "3.25.2"
+protoc = "4.34.0"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
