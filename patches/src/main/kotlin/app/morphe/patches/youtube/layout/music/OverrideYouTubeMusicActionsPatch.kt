@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+
 package app.morphe.patches.youtube.layout.music
 
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
@@ -19,9 +24,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicActionsPatch;"
 
-private fun overrideYouTubeMusicManifestPatch() = resourcePatch(
-    description = "Internal patch to inject package visibility for Morphe Music."
-) {
+private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
@@ -68,7 +71,6 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
 
         classDefForEach { classDef ->
             if (classDef.type == EXTENSION_CLASS_DESCRIPTOR) return@classDefForEach
-
             var needsPatch = false
             classDef.methods.forEach { method ->
                 if (method.implementation?.instructions?.any {
@@ -86,13 +88,10 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
             if (needsPatch) {
                 val mutableClass = mutableClassDefBy(classDef.type)
                 classDef.methods.forEach { method ->
-                    val instructions =
-                        method.implementation?.instructions?.toList() ?: return@forEach
-
+                    val instructions = method.implementation?.instructions?.toList() ?: return@forEach
                     val targetIndices = instructions.mapIndexedNotNull { index, instruction ->
                         if (instruction.opcode == Opcode.INVOKE_VIRTUAL) {
-                            val ref =
-                                (instruction as? ReferenceInstruction)?.reference as? MethodReference
+                            val ref = (instruction as? ReferenceInstruction)?.reference as? MethodReference
                             if (ref?.definingClass == "Landroid/content/Intent;") {
                                 if (ref.name == "setPackage" && ref.parameterTypes == listOf("Ljava/lang/String;")) {
                                     index to "overrideSetPackage(Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;"
@@ -107,7 +106,6 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
                         val mutableMethod = mutableClass.findMutableMethodOf(method)
                         targetIndices.reversed().forEach { (index, methodDescriptor) ->
                             val instruction = instructions[index]
-
                             val invokeString = if (instruction is RegisterRangeInstruction) {
                                 "invoke-static/range {v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1}}"
                             } else {
