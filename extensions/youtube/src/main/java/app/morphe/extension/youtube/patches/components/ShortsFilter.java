@@ -66,7 +66,6 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup shortsCompactFeedVideo;
     private final ByteArrayFilterGroup shortsCompactFeedVideoBuffer;
     private final StringFilterGroup channelProfile;
-    private final ByteArrayFilterGroup channelProfileShelfHeaderBuffer;
     private final StringFilterGroup useSoundButton;
     private final ByteArrayFilterGroup useSoundButtonBuffer;
     private final StringFilterGroup useTemplateButton;
@@ -105,11 +104,6 @@ public final class ShortsFilter extends Filter {
         channelProfile = new StringFilterGroup(
                 Settings.HIDE_SHORTS_CHANNEL,
                 "shorts_pivot_item"
-        );
-
-        channelProfileShelfHeaderBuffer = new ByteArrayFilterGroup(
-                Settings.HIDE_SHORTS_CHANNEL,
-                "Shorts"
         );
 
         // Feed Shorts shelf header.
@@ -474,9 +468,6 @@ public final class ShortsFilter extends Filter {
                 // Shelf header reused in history/channel/etc.
                 // Shorts header is always index 0
                 if (contentIndex != 0) {
-                    return false;
-                }
-                if (!channelProfileShelfHeaderBuffer.check(buffer).isFiltered()) {
                     return false;
                 }
 

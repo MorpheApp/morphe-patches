@@ -951,7 +951,6 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Dugmice za prijavu se prikazuju</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Sakrij dugmice za kraj videoa</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Dugmice za kraj videoa su skrivena"</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Dugmice za kraj videoa se prikazuju</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Sakrij dugmice za povezane video</string>
@@ -1259,6 +1258,7 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vrati stari spremi u playlistu</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Onemogući deblji ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Vrati neiscrtane gumbe action bar</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promijenite početnu stranicu</string>
   <string name="morphe_change_start_page_entry_default">Zadano</string>

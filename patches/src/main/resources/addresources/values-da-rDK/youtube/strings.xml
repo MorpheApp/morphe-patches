@@ -958,11 +958,12 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigationsbjælken vises</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Skjul foreslået video på slutskærmen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Foreslået video på slutskærmen er skjult, når automatisk afspilning er slået fra
-
-Automatisk afspilning kan ændres i YouTube-indstillinger:
-Indstillinger → Afspilning → Afspil næste video automatisk"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Skærmforslagsvideo på slutskærm er skjult, når automatisk afspilning er slået fra</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Foreslået video på slutskærmen vises</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Denne indstilling fungerer kun, hvis 'Afspil næste video automatisk' er slået fra.
+
+'Afspil næste video automatisk' kan ændres i YouTube-indstillinger:
+Indstillinger → Afspilning → Afspil næste video automatisk"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
@@ -1278,6 +1279,10 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Genenfå old save til spilleliste</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Deaktiver fed bogstaver</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Gendan ikke-kollapset videohandlingslinje</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Åbne systemdelingsark</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Åbner systemdelingsark</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Åbner delingsark i appen</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Skift startside</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
