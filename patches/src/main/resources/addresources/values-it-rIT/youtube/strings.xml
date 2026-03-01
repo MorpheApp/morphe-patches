@@ -958,11 +958,12 @@ Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barra di navigazione è visibile</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Nascondi video suggerito nella schermata finale</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Il video suggerito nella schermata finale è nascosto quando l'autoplay è disattivato
-
-L'autoplay può essere modificato nelle impostazioni di YouTube:
-Impostazioni → Riproduzione → Riproduzione automatica video successivo"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Il video suggerito nella schermata finale è nascosto quando l\'autoplay è disattivato</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Questa impostazione funziona solo se 'Riproduci il video successivo' è disattivato.
+
+'Riproduci il video successivo' può essere modificato nelle impostazioni di YouTube:
+Impostazioni → Riproduzione → Riproduzione automatica video successivo"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Nascondi overlay video correlati</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">L\'overlay dei video correlati in modalità a schermo intero è nascosto</string>
@@ -1278,6 +1279,10 @@ Se in seguito verrà disattivato, si consiglia di cancellare i dati dell'app per
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ripristina le vecchie icone del player Shorts</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Disabilita icone in grassetto</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Ripristina la barra delle azioni video non compressa</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Apri il pannello di condivisione del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Apri il pannello di condivisione dell\'app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambia pagina iniziale</string>
   <string name="morphe_change_start_page_entry_default">Predefinito</string>

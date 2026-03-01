@@ -1,3 +1,31 @@
+# [1.16.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.4...v1.16.0-dev.5) (2026-03-01)
+
+
+### Bug Fixes
+
+* **YouTube - Double tap to seek:** Playback setting menu does not open when patched with CLI pre-release ([ba1784d](https://github.com/MorpheApp/morphe-patches/commit/ba1784df70cb4cbfe786e991e75bb1d8f97a6dbf))
+
+# [1.16.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.3...v1.16.0-dev.4) (2026-03-01)
+
+
+### Bug Fixes
+
+* **YouTube - Hide Shorts components:** Resolve Shorts header not being hidden ([#649](https://github.com/MorpheApp/morphe-patches/issues/649)) ([84901c2](https://github.com/MorpheApp/morphe-patches/commit/84901c261ea0808514cca24c5bd7687389acae5c))
+
+# [1.16.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.2...v1.16.0-dev.3) (2026-02-28)
+
+
+### Bug Fixes
+
+* **YouTube - Hide end screen suggested video:** Add user dialogs to minimize user confusion ([#637](https://github.com/MorpheApp/morphe-patches/issues/637)) ([6d4af87](https://github.com/MorpheApp/morphe-patches/commit/6d4af87dd6880d6114c24815109da4149df3c3b8))
+
+# [1.16.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.1...v1.16.0-dev.2) (2026-02-27)
+
+
+### Features
+
+* **YouTube:** Add `Open system share sheet` patch ([#625](https://github.com/MorpheApp/morphe-patches/issues/625)) ([64ff907](https://github.com/MorpheApp/morphe-patches/commit/64ff9079777a2b935886c35eae0e454984d56b52))
+
 # [1.16.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0...v1.16.0-dev.1) (2026-02-26)
 
 

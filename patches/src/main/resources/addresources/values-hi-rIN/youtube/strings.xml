@@ -765,6 +765,11 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <string name="morphe_end_screen_suggested_video_summary_on">एंड स्क्रीन सुझाई वीडियो ऑटोप्ले ऑफ होने पर छुपा होता है</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"यह सेटिंग केवल 'अन्योड वीडियो' ऑफ होने पर काम करती है।
+
+'अन्योड वीडियो' को बदलने के लिए यूट्यूब सेटिंग्स में जाए जा सकता है:
+सेटिंग्स → प्लेबैक (या ऑटोप्ले) → अन्योड वीडियो"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -803,6 +808,10 @@ Second \"item\" text"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - डिसेबल बॉल्ड आइकॉन</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">शेयरशीट खोलें</string>
+  <string name="morphe_open_system_share_sheet_summary_on">सिस्टम शेयरशीट खोलता है</string>
+  <string name="morphe_open_system_share_sheet_summary_off">अपनै शेयरशीट खोलता है</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

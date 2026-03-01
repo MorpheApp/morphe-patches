@@ -905,9 +905,9 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_shorts_tagged_products_title">Masquer les produits associés</string>
   <string name="morphe_hide_shorts_tagged_products_summary_on">Les produits associés sont masqués</string>
   <string name="morphe_hide_shorts_tagged_products_summary_off">Les produits associés sont affichés</string>
-  <string name="morphe_hide_shorts_upcoming_button_title">Masquer le bouton \'À venir\'</string>
-  <string name="morphe_hide_shorts_upcoming_button_summary_on">Le bouton \'À venir\' est masqué</string>
-  <string name="morphe_hide_shorts_upcoming_button_summary_off">Le bouton \'À venir\' est affiché</string>
+  <string name="morphe_hide_shorts_upcoming_button_title">Masquer le bouton \'Diffusion prévue\'</string>
+  <string name="morphe_hide_shorts_upcoming_button_summary_on">Le bouton \'Diffusion prévue\' est masqué</string>
+  <string name="morphe_hide_shorts_upcoming_button_summary_off">Le bouton \'Diffusion prévue\' est affiché</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Masquer le bouton \'Utiliser ce son\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">Le bouton \'Utiliser ce son\' est masqué</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">Le bouton \'Utiliser ce son\' est affiché</string>
@@ -958,11 +958,12 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barre de navigation est affichée</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Masquer \'Vidéo suggéréé\' à l\'écran de fin</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"L'écran de fin suggérant une vidéo est masqué lorsque la lecture automatique est désactivée.
-
-La lecture automatique peut être modifiée dans les paramètres de YouTube :
-Paramètres → Lecture → Lecture auto. de la vidéo suivante"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">La vidéo suggérée à l\'écran de fin est masquée lorsque la lecture automatique est désactivée</string>
   <string name="morphe_end_screen_suggested_video_summary_off">L\'écran de fin suggérant une vidéo est affiché</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ce paramètre ne fonctionne que si 'Lecture automatique de la vidéo suivante' est désactivée.
+
+'Lecture automatique de la vidéo suivante' peut être modifiée dans les paramètres de YouTube :
+Paramètres → Lecture (ou Lecture automatique)→ Lecture automatique de vidéo suivante"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Masquer l\'overlay des vidéos similaires</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">L\'overlay des vidéos similaires en mode plein écran est masqué</string>
@@ -1276,8 +1277,12 @@ Cela modifie l'apparence et les fonctionnalités de l'application, mais des effe
 Si cette option est désactivée ultérieurement, il est recommandé de vider les données de l’application pour éviter des bugs d’interface."</string>
   <string name="morphe_spoof_app_version_target_title">Choisir la version à falsifier</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaure l\'ancien enregistrement dans la playlist</string>
-  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Désactiver les icônes en gras</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Désactive les icônes en gras</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaure de la barre d\'action vidéo non réduite</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ouverture du menu \'Partager\' du système</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Ouverture du menu \'Partager\' du système</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Ouverture du menu \'Partager\' de l\'application</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Modifier la page de démarrage</string>
   <string name="morphe_change_start_page_entry_default">Par défaut</string>

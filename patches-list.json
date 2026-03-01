@@ -1,5 +1,5 @@
 {
-  "version": "1.16.0-dev.1",
+  "version": "1.16.0-dev.5",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1286,6 +1286,25 @@
       "description": "Adds an option to always open links in your browser instead of the in-app browser.",
       "use": true,
       "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Open system share sheet",
+      "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {

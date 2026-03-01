@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-02-26T10:16:53",
-  "description": "# [1.16.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0...v1.16.0-dev.1) (2026-02-26)\n\n\n### Features\n\n* **YouTube - Navigation bar:** Add `Show search button` setting ([#634](https://github.com/MorpheApp/morphe-patches/issues/634)) ([b46e492](https://github.com/MorpheApp/morphe-patches/commit/b46e4923592ce5f752d6e2db156a3838c25f4f4f))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.16.0-dev.1/patches-1.16.0-dev.1.mpp",
+  "created_at": "2026-03-01T08:21:03",
+  "description": "# [1.16.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.4...v1.16.0-dev.5) (2026-03-01)\n\n\n### Bug Fixes\n\n* **YouTube - Double tap to seek:** Playback setting menu does not open when patched with CLI pre-release ([ba1784d](https://github.com/MorpheApp/morphe-patches/commit/ba1784df70cb4cbfe786e991e75bb1d8f97a6dbf))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.16.0-dev.5/patches-1.16.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "1.16.0-dev.1"
+  "version": "1.16.0-dev.5"
 }

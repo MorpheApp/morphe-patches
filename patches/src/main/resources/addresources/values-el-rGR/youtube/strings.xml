@@ -960,11 +960,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Η γραμμή πλοήγησης εμφανίζεται κατά την αναπαραγωγή Shorts</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Κρυμμένο όταν η αυτόματη αναπαραγωγή είναι απενεργοποιημένη
-
-Η αυτόματη αναπαραγωγή μπορεί να αλλαχτεί στις ρυθμίσεις YouTube:
-Ρυθμίσεις → Αναπαραγωγή→ Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Διαφύγει το προτεινόμενο βίντεο στο τέλος του οθονίου όταν η αυτόματη αναπαραγωγή είναι απενεργοποιημένη</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Αυτή η ρύθμιση λειτουργεί μόνο αν η 'Αυτόματη αναπαραγωγή επόμενου βίντεο' είναι απενεργοποιημένη.
+
+Η 'Αυτόματη αναπαραγωγή επόμενου βίντεο' μπορεί να αλλάξει στις ρυθμίσεις YouTube:
+Ρυθμίσεις → Αναπαραγωγή (ή Αυτόματη αναπαραγωγή) → Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Κρυμμένα</string>
@@ -1280,6 +1281,10 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Επαναφορά παλιών σωζημάτων σε αναπαραγωγή</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Αποκλείσε έντονα εικονίδια</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Επαναφορά της μη συμπτυγμένης γραμμής ενεργειών βίντεο</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ανοίξτε το σύστημα μοιρασμένοι φύλλο</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Ανοίγει το σύστημα μοιρασμένοι φύλλο</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Ανοίγει το μοιρασμένοι φύλλο της εφαρμογής</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αλλαγή αρχικής σελίδας</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>

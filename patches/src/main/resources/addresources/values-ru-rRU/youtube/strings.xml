@@ -658,10 +658,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_notifications_button_summary_on">Кнопка \"Уведомления\" в панели навигации скрыта</string>
   <string name="morphe_hide_notifications_button_summary_off">Кнопка \"Уведомления\" в панели навигации показана</string>
   <string name="morphe_show_search_button_title">Показать кнопку поиска</string>
-  <string name="morphe_show_search_button_summary_on">Кнопка \"Поиск\" показана</string>
-  <string name="morphe_show_search_button_summary_off">Кнопка поиска не показана</string>
-  <string name="morphe_search_button_index_title">Поисковая кнопка индекс</string>
-  <string name="morphe_search_button_index_invalid">Индекс поисковой кнопки должен быть меньше %s</string>
+  <string name="morphe_show_search_button_summary_on">Кнопка поиска показана</string>
+  <string name="morphe_show_search_button_summary_off">Кнопка поиска скрыта</string>
+  <string name="morphe_search_button_index_title">Индекс кнопки поиска</string>
+  <string name="morphe_search_button_index_invalid">Индекс кнопки поиска должен быть меньше %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Переключить кнопки \"Создать\" и \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Кнопка \"Создать\" заменена кнопкой \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Кнопка \"Создать\" не поменяна местами с кнопкой \"Уведомления\"</string>
@@ -958,11 +958,12 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навигации в Shorts показана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Предлагаемые видео в конце просмотра скрыты при выключенном автовоспроизведении
-
-Автовоспроизведение можно изменить в настройках YouTube:
-Настройки → Фоновое воспроизведение → Следующее видео"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Видео на экране окончания воспроизведения скрыто, когда автовоспроизведение выключено</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Эта настройка работает только при выключенном \"Автовоспроизведение следующего видео\".
+
+\"Автовоспроизведение следующего видео\" можно изменить в настройках YouTube:
+Настройки → Воспроизведение → Автовоспроизведение следующего видео"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Скрыть похожие видео</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Похожие видео в полноэкранном режиме скрыты</string>
@@ -1279,6 +1280,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Восстановить старое сохранение в список воспроизведения</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Отключить жирные значки</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Восстановить не свернутую панель действий видео</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Открыть системное меню \"Поделиться\"</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Открывает системное меню \"Поделиться\"</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Открывает меню \"Поделиться\" в приложении</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Изменить начальную страницу</string>
   <string name="morphe_change_start_page_entry_default">По умолчанию</string>
