@@ -1,3 +1,31 @@
+# [1.16.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.5...v1.16.0-dev.6) (2026-03-01)
+
+
+### Features
+
+* **YouTube Music:** Add `Change header` patch ([#650](https://github.com/MorpheApp/morphe-patches/issues/650)) ([f6f03e5](https://github.com/MorpheApp/morphe-patches/commit/f6f03e55d01863f3d436e00108cc608d933ddbd9))
+
+# [1.16.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.4...v1.16.0-dev.5) (2026-03-01)
+
+
+### Bug Fixes
+
+* **YouTube - Double tap to seek:** Playback setting menu does not open when patched with CLI pre-release ([ba1784d](https://github.com/MorpheApp/morphe-patches/commit/ba1784df70cb4cbfe786e991e75bb1d8f97a6dbf))
+
+# [1.16.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.3...v1.16.0-dev.4) (2026-03-01)
+
+
+### Bug Fixes
+
+* **YouTube - Hide Shorts components:** Resolve Shorts header not being hidden ([#649](https://github.com/MorpheApp/morphe-patches/issues/649)) ([84901c2](https://github.com/MorpheApp/morphe-patches/commit/84901c261ea0808514cca24c5bd7687389acae5c))
+
+# [1.16.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.2...v1.16.0-dev.3) (2026-02-28)
+
+
+### Bug Fixes
+
+* **YouTube - Hide end screen suggested video:** Add user dialogs to minimize user confusion ([#637](https://github.com/MorpheApp/morphe-patches/issues/637)) ([6d4af87](https://github.com/MorpheApp/morphe-patches/commit/6d4af87dd6880d6114c24815109da4149df3c3b8))
+
 # [1.16.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.1...v1.16.0-dev.2) (2026-02-27)
 
 

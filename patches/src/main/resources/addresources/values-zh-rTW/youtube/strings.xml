@@ -958,11 +958,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">已顯示導覽列</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">隱藏片尾推薦影片</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"當自動播放關閉時，片尾推薦影片會被隱藏。
-
-你可以在 YouTube 設定中變更自動播放設定：
-設定 → 播放 → 自動播放下一個影片"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">片尾推薦影片在自動播放關閉時會被隱藏。</string>
   <string name="morphe_end_screen_suggested_video_summary_off">已顯示片尾推薦影片</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此設定僅在關閉「自動播放下一個影片」時有效。
+
+你可以在 YouTube 設定中變更「自動播放下一個影片」設定：
+設定 → 播放 → 自動播放下一個影片"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">已隱藏全螢幕中的相關影片覆蓋層</string>
@@ -1279,6 +1280,10 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 復原舊版播放清單</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 停用粗體圖示</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 還原未收合的影片操作列</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">打開系統分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary_on">打開系統分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary_off">在應用程序內打開分享面板</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">變更起始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>

@@ -47,7 +47,7 @@ val conversionContextPatch = bytecodePatch(
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_CONTEXT_INTERFACE)
 
-                setOf(
+                arrayOf(
                     Triple(
                         "patch_getIdentifier",
                         STRING_TYPE,
@@ -122,7 +122,7 @@ val conversionContextPatch = bytecodePatch(
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_CONTEXT_INTERFACE)
 
-                setOf(
+                arrayOf(
                     Triple(
                         "patch_getIdentifier",
                         STRING_TYPE,

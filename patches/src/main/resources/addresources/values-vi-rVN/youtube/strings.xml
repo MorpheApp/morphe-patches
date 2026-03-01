@@ -658,10 +658,10 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_notifications_button_summary_on">Nút thông báo đã bị ẩn</string>
   <string name="morphe_hide_notifications_button_summary_off">Nút thông báo được hiển thị</string>
   <string name="morphe_show_search_button_title">Hiện nút tìm kiếm</string>
-  <string name="morphe_show_search_button_summary_on">Nút tìm kiếm được hiển thị</string>
+  <string name="morphe_show_search_button_summary_on">Nút tìm kiếm đã được hiển thị</string>
   <string name="morphe_show_search_button_summary_off">Nút tìm kiếm không được hiển thị</string>
-  <string name="morphe_search_button_index_title">Nút tìm kiếm</string>
-  <string name="morphe_search_button_index_invalid">Chỉ số nút tìm kiếm phải nhỏ hơn %s</string>
+  <string name="morphe_search_button_index_title">Vị trí nút tìm kiếm</string>
+  <string name="morphe_search_button_index_invalid">Giá trị vị trí phải nhỏ hơn %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Đổi chỗ nút Tạo với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Nút Tạo đã được đổi chỗ với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Nút Tạo không đổi chỗ với nút Thông báo</string>
@@ -958,11 +958,12 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Thanh điều hướng được hiển thị</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ẩn video được đề xuất ở màn hình kết thúc</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Video được đề xuất ở màn hình kết thúc đã bị ẩn khi tắt tự động phát
+  <string name="morphe_end_screen_suggested_video_summary_on">Video đề xuất ở màn hình kết thúc sẽ bị ẩn khi tắt tự động phát</string>
+  <string name="morphe_end_screen_suggested_video_summary_off">Video đề xuất ở màn hình kết thúc được hiển thị</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Cài đặt này chỉ có hiệu lực khi 'Tự động phát video tiếp theo' đang tắt.
 
-Có thể thay đổi Tự động phát trong phần cài đặt YouTube:
-Cài đặt → Phát → Tự động phát video tiếp theo"</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Video được đề xuất ở màn hình kết thúc được hiển thị</string>
+Cách tắt 'Tự động phát video tiếp theo':
+Cài đặt → Phát ( hoặc Tự động phát) → Tự động phát video tiếp theo"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
@@ -1277,6 +1278,10 @@ Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh 
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Khôi phục ‘Lưu vào danh sách phát’ kiểu cũ</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Vô hiệu hóa biểu tượng đậm</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Khôi phục thanh thao tác video mở rộng</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Mở bảng chia sẻ hệ thống</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Khi bấm chia sẻ sẽ mở bảng chia sẻ của hệ thống</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Khi bấm chia sẻ sẽ mở bảng chia sẻ tích hợp trong ứng dụng</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Thay đổi trang bắt đầu</string>
   <string name="morphe_change_start_page_entry_default">Mặc định</string>

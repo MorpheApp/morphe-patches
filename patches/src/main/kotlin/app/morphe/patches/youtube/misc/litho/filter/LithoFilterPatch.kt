@@ -299,7 +299,7 @@ val lithoFilterPatch = bytecodePatch(
                     """
                         const-string v$accessibilityIdRegister, ""
                         const-string v$accessibilityTextRegister, ""
-                        """
+                    """
                 )
             }
         }

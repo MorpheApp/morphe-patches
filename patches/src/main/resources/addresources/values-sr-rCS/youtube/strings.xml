@@ -958,11 +958,12 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitiraj video tokove' u 'A
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Traka za navigaciju je prikazana</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Sakrij predloženi video na završnom ekranu</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"Predloženi video na završnom ekranu je skriven, kada je autoplej isključen
-
-Autoplej se može promeniti u podešavanjima YouTubea:
-Podešavanja → Reprodukcija → Automatski pusti sledeći video"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Predloženi video na završnom ekranu je skriven kada je automatsko puštanje isključeno</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Predloženi video na završnom ekranu je prikazan</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ova podešavanja radi samo ako je 'Automatski pusti sledeći video' isključen.
+
+'Automatski pusti sledeći video' se može promeniti u podešavanjima YouTubea:
+Podešavanja → Reprodukcija → Automatski pusti sledeći video"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Sakrij srodne videe</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Srodni videi u režimu celog ekrana su skriveni</string>
@@ -1278,6 +1279,10 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vraća stare ikonice Shorts plejera</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Izgubi bold ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Vraća neskupljenu traku radnji videa</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otvori okvir za deljenje sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Otvara okvir za deljenje sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Otvara okvir za deljenje unutar aplikacije</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promena polazne stranice</string>
   <string name="morphe_change_start_page_entry_default">Podrazumevana</string>

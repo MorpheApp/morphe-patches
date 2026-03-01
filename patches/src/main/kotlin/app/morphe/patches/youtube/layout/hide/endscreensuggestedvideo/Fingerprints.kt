@@ -1,12 +1,11 @@
 package app.morphe.patches.youtube.layout.hide.endscreensuggestedvideo
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object AutoNavConstructorFingerprint : Fingerprint(
     returnType = "V",
@@ -24,17 +23,22 @@ internal object RemoveOnLayoutChangeListenerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IPUT,
-        Opcode.INVOKE_VIRTUAL
-    ),
-    // This is the only reference present in the entire smali.,
-    custom = { method, _ ->
-        // TODO: Convert this to an instruction filter
-        method.indexOfFirstInstruction {
-            val reference = getReference<MethodReference>()
-            reference?.name == "removeOnLayoutChangeListener" &&
-            reference.definingClass.endsWith("/YouTubePlayerOverlaysLayout;")
-        } >= 0
-    }
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT,
+            type = "I"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "V",
+            location = MatchAfterWithin(3)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;",
+            name = "removeOnLayoutChangeListener",
+            returnType = "V"
+        )
+    )
 )
