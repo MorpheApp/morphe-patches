@@ -16,14 +16,15 @@ import org.w3c.dom.Element
 internal val disablePlayStoreUpdatesPatch = resourcePatch(
     name = "Disable Play Store updates",
     description = "Disables Play Store updates by setting the version code to the maximum allowed. " +
-            "This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
+            "This patch does not work if the app is installed by mounting and may cause unexpected " +
+            "issues with some apps.",
     use = false
 ) {
     finalize {
         document("AndroidManifest.xml").use { document ->
             val manifest = document.getNode("manifest") as Element
 
-            // set version code to max allowed by Play Store
+            //  Max allowed by Play Store is 2100000000, but Android allows max int value.
             manifest.setAttribute("android:versionCode", Int.MAX_VALUE.toString())
         }
     }
