@@ -24,7 +24,7 @@ internal val disablePlayStoreUpdatesPatch = resourcePatch(
             val manifest = document.getNode("manifest") as Element
 
             // set version code to max allowed by Play Store
-            manifest.setAttribute("android:versionCode", "2100000000")
+            manifest.setAttribute("android:versionCode", Int.MAX_VALUE.toString())
         }
     }
 }
