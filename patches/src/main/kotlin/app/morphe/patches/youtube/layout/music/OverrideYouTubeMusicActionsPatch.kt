@@ -20,7 +20,6 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicActionsPatch;"
 
 private fun overrideYouTubeMusicManifestPatch() = resourcePatch(
-    name = "Override YouTube Music Manifest (Internal)",
     description = "Internal patch to inject package visibility for Morphe Music."
 ) {
     compatibleWith(COMPATIBILITY_YOUTUBE)
