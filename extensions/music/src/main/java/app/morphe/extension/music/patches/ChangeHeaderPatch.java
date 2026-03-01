@@ -18,7 +18,7 @@ public class ChangeHeaderPatch {
     public enum HeaderLogo {
         DEFAULT(null),
         MORPHE("morphe_header_dark"),
-        CUSTOM("morphe_header_custom");
+        CUSTOM("morphe_header_custom_dark");
 
         private final String drawableName;
 
