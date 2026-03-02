@@ -13,11 +13,15 @@ import static app.morphe.extension.shared.Utils.equalsAny;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -321,7 +325,10 @@ public final class NavigationBarPatch {
 
     private static final boolean HIDE_TOOLBAR_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get();
 
-    private static final boolean HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_VOICE_SEARCH_BUTTON .get();
+    private static final boolean HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_VOICE_SEARCH_BUTTON.get();
+
+    private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON = Settings.REPLACE_TOOLBAR_CREATE_BUTTON.get();
+    private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
 
     /**
      * Injection point.
@@ -402,5 +409,84 @@ public final class NavigationBarPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setActionBar failure", ex);
         }
+    }
+
+    private static int settingsDrawableId = 0;
+    private static int settingsCairoDrawableId = 0;
+
+    /**
+     * Injection point.
+     */
+    public static int getCreateButtonDrawableId(int original) {
+        if (!REPLACE_TOOLBAR_CREATE_BUTTON) return original;
+
+        Context context = Utils.getContext();
+        if (context == null) return original;
+
+        if (settingsDrawableId == 0) {
+            settingsDrawableId = context.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", context.getPackageName());
+        }
+        if (settingsDrawableId == 0) return original;
+
+        if (settingsCairoDrawableId == 0) {
+            settingsCairoDrawableId = context.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", context.getPackageName());
+        }
+
+        return settingsCairoDrawableId == 0 ? settingsDrawableId : settingsCairoDrawableId;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void replaceCreateButton(String enumString, View toolbarView) {
+        if (!REPLACE_TOOLBAR_CREATE_BUTTON) return;
+        if (!equalsAny(enumString, CREATE_BUTTON_ENUMS)) return;
+
+        ImageView imageView = null;
+        if (toolbarView instanceof ViewGroup vg) {
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                if (vg.getChildAt(i) instanceof ImageView) {
+                    imageView = (ImageView) vg.getChildAt(i);
+                    break;
+                }
+            }
+        }
+
+        if (imageView == null) return;
+
+        ImageView finalImageView = imageView;
+        Utils.runOnMainThread(() -> {
+            if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
+                finalImageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
+                finalImageView.setOnLongClickListener(button -> {
+                    openYouTubeSettings(button);
+                    return true;
+                });
+            } else {
+                finalImageView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
+                finalImageView.setOnLongClickListener(button -> {
+                    openMorpheSettings(button);
+                    return true;
+                });
+            }
+        });
+    }
+
+    private static void openYouTubeSettings(View view) {
+        Context context = view.getContext();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setPackage(context.getPackageName());
+        intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        context.startActivity(intent);
+    }
+
+    private static void openMorpheSettings(View view) {
+        Context context = view.getContext();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setPackage(context.getPackageName());
+        intent.setData(Uri.parse("morphe_settings_intent"));
+        intent.setClassName(context.getPackageName(), "app.morphe.android.apps.youtube.app.settings.SettingsActivity");
+        context.startActivity(intent);
     }
 }

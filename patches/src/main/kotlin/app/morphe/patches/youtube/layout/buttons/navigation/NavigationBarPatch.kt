@@ -323,7 +323,9 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_toolbar_create_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
-            SwitchPreference("morphe_hide_toolbar_voice_search_button")
+            SwitchPreference("morphe_hide_toolbar_voice_search_button"),
+            SwitchPreference("morphe_replace_toolbar_create_button"),
+            SwitchPreference("morphe_replace_toolbar_create_button_type")
         )
         if (!is_20_31_or_greater) {
             toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
@@ -340,6 +342,7 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideCreateButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->replaceCreateButton")
 
         // Hide old search button
         //
@@ -438,6 +441,25 @@ val navigationBarPatch = bytecodePatch(
                         "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->setActionBar(Landroid/view/View;)V"
                     )
                 }
+            }
+        }
+
+        //
+        // Replace create button
+        //
+
+        CreateButtonDrawableFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getCreateButtonDrawableId(I)I
+                    move-result v$register
+                    """
+                )
             }
         }
     }

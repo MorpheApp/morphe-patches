@@ -329,7 +329,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SUBSCRIPTIONS_BUTTON = new BooleanSetting("morphe_hide_subscriptions_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting SHOW_SEARCH_BUTTON = new BooleanSetting("morphe_show_search_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final IntegerSetting SEARCH_BUTTON_INDEX = new IntegerSetting("morphe_search_button_index", 4, true, parent(SHOW_SEARCH_BUTTON));
-    public static final BooleanSetting SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_swap_create_with_notifications_button", TRUE, true,
+    public static final BooleanSetting SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_swap_create_with_notifications_button", FALSE, true,
             "morphe_swap_create_with_notifications_button_user_dialog_message", parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true, parentNot(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON));
     public static final BooleanSetting HIDE_NOTIFICATIONS_BUTTON = new BooleanSetting("morphe_hide_notifications_button", FALSE, true, parent(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON));
@@ -342,10 +342,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
 
     // Toolbar
-    public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_hide_toolbar_create_button", TRUE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_hide_toolbar_create_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("morphe_hide_toolbar_notification_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_SEARCH_BUTTON = new BooleanSetting("morphe_hide_toolbar_search_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = new BooleanSetting("morphe_hide_toolbar_voice_search_button", FALSE, true);
+    public static final BooleanSetting REPLACE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_replace_toolbar_create_button", FALSE, true);
+    public static final BooleanSetting REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = new BooleanSetting("morphe_replace_toolbar_create_button_type", FALSE, false, parent(REPLACE_TOOLBAR_CREATE_BUTTON));
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 
     // Shorts

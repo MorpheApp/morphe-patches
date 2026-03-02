@@ -192,8 +192,6 @@ internal object SearchFragmentFingerprint : Fingerprint(
     )
 )
 
-// region navigation search button
-
 internal object PivotBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("L"),
@@ -253,4 +251,8 @@ internal object TopBarRendererFingerprint : Fingerprint(
     )
 )
 
-// endregion
+internal object CreateButtonDrawableFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.DRAWABLE, "yt_outline_video_camera_black_24")
+    )
+)

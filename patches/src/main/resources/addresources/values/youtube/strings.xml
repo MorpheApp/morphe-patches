@@ -737,18 +737,26 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Hide or change toolbar components</string>
-    <string name="morphe_hide_toolbar_create_button_title">Hide Create button</string>
+    <string name="morphe_hide_toolbar_create_button_title">Hide Create</string>
     <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>
-    <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications button</string>
+    <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications</string>
     <string name="morphe_hide_toolbar_notification_button_summary_on">Notifications button is hidden</string>
     <string name="morphe_hide_toolbar_notification_button_summary_off">Notifications button is shown</string>
-    <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
+    <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
     <string name="morphe_hide_toolbar_search_button_summary_on">Search button is hidden</string>
     <string name="morphe_hide_toolbar_search_button_summary_off">Search button is shown</string>
-    <string name="morphe_hide_toolbar_voice_search_button_title">Hide Voice search button</string>
+    <string name="morphe_hide_toolbar_voice_search_button_title">Hide Voice search</string>
     <string name="morphe_hide_toolbar_voice_search_button_summary_on">Voice search button is hidden</string>
     <string name="morphe_hide_toolbar_voice_search_button_summary_off">Voice search button is shown</string>
+    <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
+    <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
+    <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings.
+Tap and hold to open YouTube settings."</string>
+    <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings.
+Tap and hold to open Morphe settings."</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
