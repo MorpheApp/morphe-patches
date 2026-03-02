@@ -69,6 +69,7 @@ private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: 
 
             method.findInstructionIndicesReversed(
                 methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
                     smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;"
                 )
             ).forEach { index ->
@@ -194,22 +195,19 @@ val changePackageNamePatch = resourcePatch(
         // Override user options with known working values for specific apps.
         when (packageName) {
             PACKAGE_NAME_REDDIT -> {
-                applyUpdateProviders = true
                 applyUpdatePermissions = true
+                applyUpdateProviders = true
                 applyUpdateProvidersStrings = true
             }
             else -> {
-                applyUpdateProviders = updateProviders!!
                 applyUpdatePermissions = updatePermissions!!
+                applyUpdateProviders = updateProviders!!
                 applyUpdateProvidersStrings = updateProvidersStrings!!
             }
         }
 
         if (applyUpdateProvidersStrings) {
-            applyProvidersStrings(
-                packageName,
-                newPackageName
-            )
+            applyProvidersStrings(packageName, newPackageName)
         }
 
         document("AndroidManifest.xml").use { document ->
@@ -221,7 +219,6 @@ val changePackageNamePatch = resourcePatch(
                 )
             }
 
-
             val newPackageName = getReplacementPackageName(packageName)
             manifest.setAttribute("package", newPackageName)
 
@@ -230,23 +227,35 @@ val changePackageNamePatch = resourcePatch(
                 val usesPermissions = manifest.getElementsByTagName("uses-permission").asSequence()
 
                 val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+                val androidName = "android:name"
+                val newName = "$packageName.$receiverNotExported"
 
                 (permissions + usesPermissions)
                     .map { it as Element }
-                    .filter { it.getAttribute("android:name") == "$packageName.$receiverNotExported" }
-                    .forEach { it.setAttribute("android:name", "$newPackageName.$receiverNotExported") }
+                    .filter {
+                        it.getAttribute(androidName) == newName
+                    }
+                    .forEach {
+                        it.setAttribute(androidName, newName)
+                    }
             }
 
             if (applyUpdateProviders) {
                 val providers = manifest.getElementsByTagName("provider").asSequence()
 
+                val androidAuthority = "android:authorities"
+                val authorityPrefix = "$packageName."
+
                 for (node in providers) {
                     val provider = node as Element
 
-                    val authorities = provider.getAttribute("android:authorities")
-                    if (!authorities.startsWith("$packageName.")) continue
-
-                    provider.setAttribute("android:authorities", authorities.replace(packageName, newPackageName))
+                    val authorities = provider.getAttribute(androidAuthority)
+                    if (authorities.startsWith(authorityPrefix)) {
+                        provider.setAttribute(
+                            androidAuthority,
+                            authorities.replace(packageName, newPackageName)
+                        )
+                    }
                 }
             }
         }
