@@ -411,9 +411,6 @@ public final class NavigationBarPatch {
         }
     }
 
-    private static int settingsDrawableId = 0;
-    private static int settingsCairoDrawableId = 0;
-
     /**
      * Injection point.
      */
@@ -423,16 +420,11 @@ public final class NavigationBarPatch {
         Context context = Utils.getContext();
         if (context == null) return original;
 
-        if (settingsDrawableId == 0) {
-            settingsDrawableId = context.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", context.getPackageName());
-        }
-        if (settingsDrawableId == 0) return original;
+        int settingsDrawableId = context.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", context.getPackageName());
+        int settingsCairoDrawableId = context.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", context.getPackageName());
 
-        if (settingsCairoDrawableId == 0) {
-            settingsCairoDrawableId = context.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", context.getPackageName());
-        }
-
-        return settingsCairoDrawableId == 0 ? settingsDrawableId : settingsCairoDrawableId;
+        int finalId = settingsCairoDrawableId != 0 ? settingsCairoDrawableId : settingsDrawableId;
+        return finalId != 0 ? finalId : original;
     }
 
     /**
@@ -456,6 +448,13 @@ public final class NavigationBarPatch {
 
         ImageView finalImageView = imageView;
         Utils.runOnMainThread(() -> {
+            toolbarView.setOnClickListener(null);
+            toolbarView.setClickable(false);
+            toolbarView.setLongClickable(false);
+
+            finalImageView.setClickable(true);
+            finalImageView.setLongClickable(true);
+
             if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
                 finalImageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
                 finalImageView.setOnLongClickListener(button -> {
@@ -475,18 +474,17 @@ public final class NavigationBarPatch {
     private static void openYouTubeSettings(View view) {
         Context context = view.getContext();
         Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setPackage(context.getPackageName());
         intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         context.startActivity(intent);
     }
 
     private static void openMorpheSettings(View view) {
         Context context = view.getContext();
         Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setPackage(context.getPackageName());
         intent.setData(Uri.parse("morphe_settings_intent"));
-        intent.setClassName(context.getPackageName(), "app.morphe.android.apps.youtube.app.settings.SettingsActivity");
+        intent.setClassName(context.getPackageName(), "com.google.android.libraries.social.licenses.LicenseActivity");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         context.startActivity(intent);
     }
 }
