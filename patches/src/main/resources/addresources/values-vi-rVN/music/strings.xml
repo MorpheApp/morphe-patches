@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logo đầu trang</string>
+  <string name="morphe_header_logo_entry_1">Mặc định</string>
+  <string name="morphe_header_logo_entry_3">Tùy chỉnh</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Giới thiệu</string>
@@ -45,6 +49,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">Ẩn nút tìm kiếm</string>
   <string name="morphe_music_hide_search_button_summary_on">Nút tìm kiếm đã bị ẩn</string>
   <string name="morphe_music_hide_search_button_summary_off">Nút tìm kiếm được hiển thị</string>
+  <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Đổi trang khởi động</string>
+  <string name="morphe_change_start_page_entry_default">Mặc định</string>
+  <string name="morphe_change_start_page_entry_charts">Bảng xếp hạng</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Tập podcast để thưởng thức sau</string>
+  <string name="morphe_change_start_page_entry_explore">Khám phá</string>
+  <string name="morphe_change_start_page_entry_history">Lịch sử</string>
+  <string name="morphe_change_start_page_entry_library">Thư viện</string>
+  <string name="morphe_change_start_page_entry_liked_music">Nhạc đã thích</string>
+  <string name="morphe_change_start_page_entry_playlists">Danh sách phát</string>
+  <string name="morphe_change_start_page_entry_podcasts">Podcasts</string>
+  <string name="morphe_change_start_page_entry_search">Tìm kiếm</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Kênh đăng ký</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Ẩn thanh danh mục</string>
   <string name="morphe_music_hide_category_bar_summary_on">Thanh danh mục đã bị ẩn</string>

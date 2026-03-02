@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.shared.misc.spoof
 
 import app.morphe.patcher.Fingerprint
@@ -35,12 +43,13 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import org.w3c.dom.Element
+import java.lang.ref.WeakReference
 import java.nio.file.Files
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
-private lateinit var buildRequestMethod: MutableMethod
+private lateinit var buildRequestMethodRef : WeakReference<MutableMethod>
 private var buildRequestMethodURLRegister = -1
 
 private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
@@ -126,8 +135,6 @@ internal fun spoofVideoStreamsPatch(
             """
         )
 
-        // TODO?: Force off 45708738L ?
-
         // region Enable extension helper method used by other patches
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
@@ -176,7 +183,7 @@ internal fun spoofVideoStreamsPatch(
         // region Get replacement streams at player requests.
 
         BuildRequestFingerprint.method.apply {
-            buildRequestMethod = this
+            buildRequestMethodRef = WeakReference(this)
 
             val newRequestBuilderIndex = BuildRequestFingerprint.instructionMatches.first().index
             buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(newRequestBuilderIndex).registerD
@@ -273,7 +280,7 @@ internal fun spoofVideoStreamsPatch(
 
         // region block getAtt request
 
-        buildRequestMethod.apply {
+        buildRequestMethodRef.get()!!.apply {
             val insertIndex = indexOfNewUrlRequestBuilderInstruction(this)
 
             addInstructions(

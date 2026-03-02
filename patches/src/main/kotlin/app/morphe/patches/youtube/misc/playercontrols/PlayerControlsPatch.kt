@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -26,11 +34,10 @@ import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import org.w3c.dom.Node
+import java.lang.ref.WeakReference
 
 /**
  * Add a new top to the bottom of the YouTube player.
- *
- * @param resourceDirectoryName The name of the directory containing the hosting resource.
  */
 @Suppress("KDocUnresolvedReference")
 // Internal until this is modified to work with any patch (and not just SponsorBlock).
@@ -39,8 +46,6 @@ internal lateinit var addTopControl: (String) -> Unit
 
 /**
  * Add a new bottom to the bottom of the YouTube player.
- *
- * @param resourceDirectoryName The name of the directory containing the hosting resource.
  */
 @Suppress("KDocUnresolvedReference")
 lateinit var addBottomControl: (String) -> Unit
@@ -164,7 +169,7 @@ internal val playerControlsResourcePatch = resourcePatch {
  * @param descriptor The descriptor of the method which should be called.
  */
 internal fun initializeTopControl(descriptor: String) {
-    inflateTopControlMethod.addInstruction(
+    inflateTopControlMethodRef.get()!!.addInstruction(
         inflateTopControlInsertIndex++,
         "invoke-static { v$inflateTopControlRegister }, $descriptor->initialize(Landroid/view/View;)V",
     )
@@ -175,7 +180,7 @@ internal fun initializeTopControl(descriptor: String) {
  * @param descriptor The descriptor of the method which should be called.
  */
 fun initializeBottomControl(descriptor: String) {
-    inflateBottomControlMethod.addInstruction(
+    inflateBottomControlMethodRef.get()!!.addInstruction(
         inflateBottomControlInsertIndex++,
         "invoke-static { v$inflateBottomControlRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
     )
@@ -188,22 +193,22 @@ fun initializeBottomControl(descriptor: String) {
 fun injectVisibilityCheckCall(descriptor: String) {
     if (!visibilityImmediateCallbacksExistModified) {
         visibilityImmediateCallbacksExistModified = true
-        visibilityImmediateCallbacksExistMethod.returnEarly(true)
+        visibilityImmediateCallbacksExistMethodRef.get()!!.returnEarly(true)
     }
 
-    visibilityMethod.addInstruction(
+    visibilityMethodRef.get()!!.addInstruction(
         visibilityInsertIndex++,
         "invoke-static { p1 , p2 }, $descriptor->setVisibility(ZZ)V",
     )
 
-    visibilityImmediateMethod.addInstruction(
+    visibilityImmediateMethodRef.get()!!.addInstruction(
         visibilityImmediateInsertIndex++,
         "invoke-static { p0 }, $descriptor->setVisibilityImmediate(Z)V",
     )
 
     // Patch works without this hook, but it is needed to use the correct fade out animation
     // duration when tapping the overlay to dismiss.
-    visibilityNegatedImmediateMethod.addInstruction(
+    visibilityNegatedImmediateMethodRef.get()!!.addInstruction(
         visibilityNegatedImmediateInsertIndex++,
         "invoke-static { }, $descriptor->setVisibilityNegatedImmediate()V",
     )
@@ -211,24 +216,24 @@ fun injectVisibilityCheckCall(descriptor: String) {
 
 internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/PlayerControlsPatch;"
 
-private lateinit var inflateTopControlMethod: MutableMethod
+private lateinit var inflateTopControlMethodRef : WeakReference<MutableMethod>
 private var inflateTopControlInsertIndex = -1
 private var inflateTopControlRegister = -1
 
-private lateinit var inflateBottomControlMethod: MutableMethod
+private lateinit var inflateBottomControlMethodRef : WeakReference<MutableMethod>
 private var inflateBottomControlInsertIndex = -1
 private var inflateBottomControlRegister = -1
 
-private lateinit var visibilityImmediateCallbacksExistMethod : MutableMethod
+private lateinit var visibilityImmediateCallbacksExistMethodRef : WeakReference<MutableMethod>
 private var visibilityImmediateCallbacksExistModified = false
 
-private lateinit var visibilityMethod: MutableMethod
+private lateinit var visibilityMethodRef : WeakReference<MutableMethod>
 private var visibilityInsertIndex = 0
 
-private lateinit var visibilityImmediateMethod: MutableMethod
+private lateinit var visibilityImmediateMethodRef : WeakReference<MutableMethod>
 private var visibilityImmediateInsertIndex = 0
 
-private lateinit var visibilityNegatedImmediateMethod: MutableMethod
+private lateinit var visibilityNegatedImmediateMethodRef : WeakReference<MutableMethod>
 private var visibilityNegatedImmediateInsertIndex = 0
 
 val playerControlsPatch = bytecodePatch(
@@ -245,7 +250,7 @@ val playerControlsPatch = bytecodePatch(
     execute {
         PlayerBottomControlsInflateFingerprint.let {
             it.method.apply {
-                inflateBottomControlMethod = this
+                inflateBottomControlMethodRef = WeakReference(this)
 
                 val inflateReturnObjectIndex = it.instructionMatches.last().index
                 inflateBottomControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
@@ -255,7 +260,7 @@ val playerControlsPatch = bytecodePatch(
 
         PlayerTopControlsInflateFingerprint.let {
             it.method.apply {
-                inflateTopControlMethod = this
+                inflateTopControlMethodRef = WeakReference(this)
 
                 val inflateReturnObjectIndex = it.instructionMatches.last().index
                 inflateTopControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
@@ -263,9 +268,11 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        visibilityMethod = ControlsOverlayVisibilityFingerprint.match(
-            PlayerTopControlsInflateFingerprint.originalClassDef,
-        ).method
+        visibilityMethodRef = WeakReference(
+            ControlsOverlayVisibilityFingerprint.match(
+                PlayerTopControlsInflateFingerprint.originalClassDef,
+            ).method
+        )
 
         // Hook the fullscreen close button. Used to fix visibility
         // when seeking and other situations.
@@ -282,11 +289,13 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        visibilityImmediateCallbacksExistMethod = PlayerControlsExtensionHookListenersExistFingerprint.method
-        visibilityImmediateMethod = PlayerControlsExtensionHookFingerprint.method
+        visibilityImmediateCallbacksExistMethodRef = WeakReference(
+            PlayerControlsExtensionHookListenersExistFingerprint.method
+        )
+        visibilityImmediateMethodRef = WeakReference(PlayerControlsExtensionHookFingerprint.method)
 
         MotionEventFingerprint.match(YoutubeControlsOverlayFingerprint.originalClassDef).let {
-            visibilityNegatedImmediateMethod = it.method
+            visibilityNegatedImmediateMethodRef = WeakReference(it.method)
             visibilityNegatedImmediateInsertIndex = it.instructionMatches.first().index + 1
         }
 

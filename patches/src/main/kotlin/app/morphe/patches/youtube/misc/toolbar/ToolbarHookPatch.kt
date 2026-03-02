@@ -16,11 +16,12 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
 
-private lateinit var toolbarMethod: MutableMethod
+private lateinit var toolbarMethod : WeakReference<MutableMethod>
 
 val toolBarHookPatch = bytecodePatch(
     description = "toolBarHookPatch"
@@ -53,13 +54,11 @@ val toolBarHookPatch = bytecodePatch(
             }
         }
 
-        toolbarMethod = ToolBarPatchFingerprint.method
+        toolbarMethod = WeakReference(ToolBarPatchFingerprint.method)
     }
 }
 
-internal fun hookToolBar(descriptor: String) =
-    toolbarMethod.addInstructions(
-        0,
-        "invoke-static { p0, p1 }, $descriptor(Ljava/lang/String;Landroid/view/View;)V"
-    )
-
+internal fun hookToolBar(descriptor: String) = toolbarMethod.get()!!.addInstructions(
+    0,
+    "invoke-static { p0, p1 }, $descriptor(Ljava/lang/String;Landroid/view/View;)V"
+)

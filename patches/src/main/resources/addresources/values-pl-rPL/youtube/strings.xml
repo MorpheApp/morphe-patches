@@ -434,6 +434,7 @@ Ograniczenia:
   <string name="morphe_hide_video_ads_title">Reklamy filmu</string>
   <string name="morphe_hide_video_ads_summary_on">Ukryte</string>
   <string name="morphe_hide_video_ads_summary_off">Widoczne</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Skopiowano link do schowka</string>
   <string name="morphe_share_copy_url_timestamp_success">Skopiowano link z czasem</string>
@@ -1398,12 +1399,12 @@ Przesuń, by rozwinąć lub zamknąć"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Kolor akcentu paska postępu</string>
   <string name="morphe_seekbar_custom_color_invalid">Nieprawidłowa wartość koloru paska postępu</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
   <string name="morphe_header_logo_entry_2">Zwykłe</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
-  <string name="morphe_header_logo_entry_5">Niestandardowy</string>
+  <string name="morphe_header_logo_entry_5">Niestandardowe</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Host dla obrazów</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">yt4.ggpht.com</string>

@@ -434,6 +434,7 @@ Limitations :
   <string name="morphe_hide_video_ads_title">Masquer les publicités vidéo</string>
   <string name="morphe_hide_video_ads_summary_on">Les publicités vidéo sont masquées</string>
   <string name="morphe_hide_video_ads_summary_off">Les publicités vidéo sont affichées</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL copiée dans le presse-papiers</string>
   <string name="morphe_share_copy_url_timestamp_success">URL avec horodatage copiée</string>
@@ -853,7 +854,7 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_shorts_ai_button_title">Masquer le bouton \'IA\'</string>
   <string name="morphe_hide_shorts_ai_button_summary_on">Le bouton \'IA\' est masqué</string>
   <string name="morphe_hide_shorts_ai_button_summary_off">Le bouton \'IA\' est affiché</string>
-  <string name="morphe_hide_shorts_auto_dubbed_label_title">Masquer l\'étiquette \'Doublée automatiquement\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Masquer l\'étiquette \'Doublé automatiquement\'</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">L\'étiquette \'Doublé automatiquement\' est masquée</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">L\'étiquette \'Doublé automatiquement\' est affichée</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Masquer le bouton \'Acheter des Super Thanks\'</string>
@@ -1284,7 +1285,7 @@ Si cette option est désactivée ultérieurement, il est recommandé de vider le
   <string name="morphe_open_system_share_sheet_summary_on">Ouverture du menu \'Partager\' du système</string>
   <string name="morphe_open_system_share_sheet_summary_off">Ouverture du menu \'Partager\' de l\'application</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Modifier la page de démarrage</string>
+  <string name="morphe_change_start_page_title">Changer la page de démarrage</string>
   <string name="morphe_change_start_page_entry_default">Par défaut</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Tous les abonnements</string>
   <string name="morphe_change_start_page_entry_browse">Parcourir les chaînes</string>
@@ -1398,7 +1399,7 @@ Balayer le mini-lecteur pour agrandir ou fermer"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">La couleur d\'accentuation de la barre de progression</string>
   <string name="morphe_seekbar_custom_color_invalid">Valeur de couleur de la barre de progression invalide</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo d\'en-tête</string>
   <string name="morphe_header_logo_entry_1">Par défaut</string>
   <string name="morphe_header_logo_entry_2">Standard</string>

@@ -434,6 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">Скрийте общни видеореклами</string>
   <string name="morphe_hide_video_ads_summary_on">Общните видеореклами са скрити</string>
   <string name="morphe_hide_video_ads_summary_off">Общните видеореклами са показани</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL е скопиран в клипборда</string>
   <string name="morphe_share_copy_url_timestamp_success">URL с времевамка е скопиран</string>
@@ -1387,7 +1388,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">По подразбиране</string>
   <string name="morphe_seekbar_custom_color_invalid">Редовно</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Табло за Home</string>
   <string name="morphe_header_logo_entry_1">Табло за Abonations</string>
   <string name="morphe_header_logo_entry_2">Табло за You</string>

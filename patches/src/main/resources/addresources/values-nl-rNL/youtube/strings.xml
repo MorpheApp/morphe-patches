@@ -434,6 +434,7 @@ Beperkingen:
   <string name="morphe_hide_video_ads_title">Video-advertenties verbergen</string>
   <string name="morphe_hide_video_ads_summary_on">Video-advertenties zijn verborgen</string>
   <string name="morphe_hide_video_ads_summary_off">Video-advertenties worden getoond</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL gekopieerd naar klembord</string>
   <string name="morphe_share_copy_url_timestamp_success">URL met tijdstempel gekopieerd</string>
@@ -1396,7 +1397,7 @@ Veeg om uit te breiden of te sluiten"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">De accentkleur van de zoekbalk</string>
   <string name="morphe_seekbar_custom_color_invalid">Ongeldige waarde voor de kleur van de schuifregelaar</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Headerlogo</string>
   <string name="morphe_header_logo_entry_1">Standaard</string>
   <string name="morphe_header_logo_entry_2">Normaal</string>

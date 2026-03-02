@@ -1,5 +1,5 @@
 {
-  "version": "1.16.0-dev.6",
+  "version": "1.16.0-dev.8",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -233,6 +233,23 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Change start page",
+      "description": "Adds an option to set which page the app opens in instead of the homepage.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": []
     },
     {
       "name": "Change start page",

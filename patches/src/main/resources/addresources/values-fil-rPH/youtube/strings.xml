@@ -435,6 +435,7 @@ Mga Limitasyon:
   <string name="morphe_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <string name="morphe_hide_video_ads_summary_on">Nakatago ang mga patalastas sa video</string>
   <string name="morphe_hide_video_ads_summary_off">Ipinapakita ang mga patalastas sa video</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Nakopya ang URL sa clipboard</string>
   <string name="morphe_share_copy_url_timestamp_success">Nakopya ang URL na may timestamp</string>
@@ -550,7 +551,7 @@ Mga Limitasyon:
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->

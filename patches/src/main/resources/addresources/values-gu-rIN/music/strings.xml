@@ -17,11 +17,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_entry_1">ડિફૉલ્ટ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.video.hideVideoAdsPatch -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <!-- layout.buttons.hideButtons -->
+  <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_entry_default">ડિફૉલ્ટ</string>
+  <string name="morphe_change_start_page_entry_search">શોધો</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <!-- layout.navigationbar.navigationBarPatch -->

@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Лого на заглавието</string>
+  <string name="morphe_header_logo_entry_1">По подразбиране</string>
+  <string name="morphe_header_logo_entry_3">По избор</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Относно</string>
@@ -45,6 +49,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">Скриване на бутона за Търсене</string>
   <string name="morphe_music_hide_search_button_summary_on">Бутона за Търсене е скрит</string>
   <string name="morphe_music_hide_search_button_summary_off">Бутона за Търсене се показва</string>
+  <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Смени стартова страница</string>
+  <string name="morphe_change_start_page_entry_default">По подразбиране</string>
+  <string name="morphe_change_start_page_entry_charts">Графики</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Епизоди за по-късно</string>
+  <string name="morphe_change_start_page_entry_explore">Изискане</string>
+  <string name="morphe_change_start_page_entry_history">История</string>
+  <string name="morphe_change_start_page_entry_library">Библиотека</string>
+  <string name="morphe_change_start_page_entry_liked_music">Предпочитания</string>
+  <string name="morphe_change_start_page_entry_playlists">Списъци</string>
+  <string name="morphe_change_start_page_entry_podcasts">Подкасти</string>
+  <string name="morphe_change_start_page_entry_search">Търсене</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Абонаменти</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Скриване на панела с Категории</string>
   <string name="morphe_music_hide_category_bar_summary_on">Лентата с категории е скрита</string>

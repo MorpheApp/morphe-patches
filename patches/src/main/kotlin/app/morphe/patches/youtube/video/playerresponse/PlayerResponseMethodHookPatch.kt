@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.video.playerresponse
 
 import app.morphe.patcher.Fingerprint
@@ -13,6 +21,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import java.lang.ref.WeakReference
 
 private val hooks = mutableSetOf<Hook>()
 
@@ -31,7 +40,7 @@ private lateinit var registerVideoId: String
 private lateinit var registerProtoBuffer: String
 private lateinit var registerIsShortAndOpeningOrPlaying: String
 
-private lateinit var playerResponseMethod: MutableMethod
+private lateinit var playerResponseMethodRef : WeakReference<MutableMethod>
 private var numberOfInstructionsAdded = 0
 
 val playerResponseMethodHookPatch = bytecodePatch {
@@ -64,7 +73,8 @@ val playerResponseMethodHookPatch = bytecodePatch {
             parameterIsShortAndOpeningOrPlaying = 11
             fingerprint = PlayerParameterBuilderLegacyFingerprint
         }
-        playerResponseMethod = fingerprint.method
+        val playerResponseMethod = fingerprint.method
+        playerResponseMethodRef = WeakReference(playerResponseMethod)
 
         // On some app targets the method has too many registers pushing the parameters past v15.
         // If needed, move the parameters to 4-bit registers, so they can be passed to the extension.
@@ -84,20 +94,20 @@ val playerResponseMethodHookPatch = bytecodePatch {
 
     finalize {
         fun hookVideoId(hook: Hook) {
-            playerResponseMethod.addInstruction(
+            playerResponseMethodRef.get()!!.addInstruction(
                 0,
-                "invoke-static {$registerVideoId, $registerIsShortAndOpeningOrPlaying}, $hook",
+                "invoke-static { $registerVideoId, $registerIsShortAndOpeningOrPlaying }, $hook",
             )
             numberOfInstructionsAdded++
         }
 
         fun hookProtoBufferParameter(hook: Hook) {
-            playerResponseMethod.addInstructions(
+            playerResponseMethodRef.get()!!.addInstructions(
                 0,
                 """
-                    invoke-static {$registerProtoBuffer, $registerVideoId, $registerIsShortAndOpeningOrPlaying}, $hook
+                    invoke-static { $registerProtoBuffer, $registerVideoId, $registerIsShortAndOpeningOrPlaying }, $hook
                     move-result-object $registerProtoBuffer
-            """,
+                """
             )
             numberOfInstructionsAdded += 2
         }
@@ -113,22 +123,24 @@ val playerResponseMethodHookPatch = bytecodePatch {
         beforeVideoIdHooks.forEach(::hookProtoBufferParameter)
 
         if (playerResponseMethodCopyRegisters) {
-            playerResponseMethod.addInstructions(
+            playerResponseMethodRef.get()!!.addInstructions(
                 0,
                 """
                     move-object/from16 $registerVideoId, p$PARAMETER_VIDEO_ID
                     move-object/from16 $registerProtoBuffer, p$PARAMETER_PROTO_BUFFER
                     move/from16        $registerIsShortAndOpeningOrPlaying, p$parameterIsShortAndOpeningOrPlaying
-                """,
+                """
             )
             numberOfInstructionsAdded += 3
 
             // Move the modified register back.
-            playerResponseMethod.addInstruction(
+            playerResponseMethodRef.get()!!.addInstruction(
                 numberOfInstructionsAdded,
                 "move-object/from16 p$PARAMETER_PROTO_BUFFER, $registerProtoBuffer",
             )
         }
+
+        hooks.clear()
     }
 }
 

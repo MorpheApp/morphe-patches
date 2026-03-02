@@ -434,6 +434,7 @@ Hạn chế:
   <string name="morphe_hide_video_ads_title">Ẩn video quảng cáo</string>
   <string name="morphe_hide_video_ads_summary_on">Video quảng cáo đã bị ẩn</string>
   <string name="morphe_hide_video_ads_summary_off">Video quảng cáo được hiển thị</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Đã sao chép URL vào bảng nhớ tạm</string>
   <string name="morphe_share_copy_url_timestamp_success">Đã sao chép URL kèm dấu thời gian</string>
@@ -1397,7 +1398,7 @@ Vuốt để mở rộng hoặc đóng"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Màu sắc nổi bật của thanh tiến trình</string>
   <string name="morphe_seekbar_custom_color_invalid">Giá trị màu của thanh tiến trình không hợp lệ</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo đầu trang</string>
   <string name="morphe_header_logo_entry_1">Mặc định</string>
   <string name="morphe_header_logo_entry_2">Thông thường</string>

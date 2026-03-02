@@ -434,6 +434,7 @@ Promene uključuju:
   <string name="morphe_hide_video_ads_title">Сакриј видео огласе</string>
   <string name="morphe_hide_video_ads_summary_on">Видео огласи су скривени</string>
   <string name="morphe_hide_video_ads_summary_off">Видео огласи су приказани</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Линк је копиран у привремену меморију</string>
   <string name="morphe_share_copy_url_timestamp_success">Линк с временском ознаком је копиран</string>
@@ -1398,7 +1399,7 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Боја наглашавања траке за премотавање</string>
   <string name="morphe_seekbar_custom_color_invalid">Неважећа вредност боје траке за премотавање</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип у заглављу</string>
   <string name="morphe_header_logo_entry_1">Подразумевани</string>
   <string name="morphe_header_logo_entry_2">Обични</string>

@@ -434,6 +434,7 @@ Ograničenja:
   <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
   <string name="morphe_hide_video_ads_summary_on">Video oglasi su skriveni</string>
   <string name="morphe_hide_video_ads_summary_off">Video oglasi su prikazani</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Link je kopiran u privremenu memoriju</string>
   <string name="morphe_share_copy_url_timestamp_success">Link s vremenskom oznakom je kopiran</string>
@@ -1398,7 +1399,7 @@ Povucite za proširenje ili zatvaranje"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Boja naglašavanja trake za premotavanje</string>
   <string name="morphe_seekbar_custom_color_invalid">Nevažeća vrednost boje trake za premotavanje</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotip u zaglavlju</string>
   <string name="morphe_header_logo_entry_1">Podrazumevani</string>
   <string name="morphe_header_logo_entry_2">Obični</string>

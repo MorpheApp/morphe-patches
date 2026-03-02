@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logo záhlaví</string>
+  <string name="morphe_header_logo_entry_1">Výchozí</string>
+  <string name="morphe_header_logo_entry_3">Vlastní</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>
@@ -45,6 +49,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">Skrýt tlačítko vyhledávání</string>
   <string name="morphe_music_hide_search_button_summary_on">Tlačítko vyhledávání je skryté</string>
   <string name="morphe_music_hide_search_button_summary_off">Tlačítko vyhledávání je zobrazené</string>
+  <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Změnit úvodní stránku</string>
+  <string name="morphe_change_start_page_entry_default">Výchozí</string>
+  <string name="morphe_change_start_page_entry_charts">Grafy</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Dílky na později</string>
+  <string name="morphe_change_start_page_entry_explore">Prozkoumat</string>
+  <string name="morphe_change_start_page_entry_history">Historie</string>
+  <string name="morphe_change_start_page_entry_library">Knihovna</string>
+  <string name="morphe_change_start_page_entry_liked_music">Slyšelo hudbu</string>
+  <string name="morphe_change_start_page_entry_playlists">Playlisty</string>
+  <string name="morphe_change_start_page_entry_podcasts">Podcasty</string>
+  <string name="morphe_change_start_page_entry_search">Hledat</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Odběry</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Skrýt panel kategorií</string>
   <string name="morphe_music_hide_category_bar_summary_on">Panel kategorií je skryt</string>

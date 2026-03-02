@@ -433,6 +433,7 @@ Limitaciones:
   <string name="morphe_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <string name="morphe_hide_video_ads_summary_on">Los anuncios de vídeo están ocultos</string>
   <string name="morphe_hide_video_ads_summary_off">Los anuncios de vídeo están visibles</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL copiada al portapapeles</string>
   <string name="morphe_share_copy_url_timestamp_success">URL con marca de tiempo copiada</string>
@@ -1397,7 +1398,7 @@ Desliza para expandir o cerrar"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">El color de acento de la barra de progreso</string>
   <string name="morphe_seekbar_custom_color_invalid">Valor de color de la barra de progreso no válido</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo del encabezado</string>
   <string name="morphe_header_logo_entry_1">Predeterminado</string>
   <string name="morphe_header_logo_entry_2">Normal</string>

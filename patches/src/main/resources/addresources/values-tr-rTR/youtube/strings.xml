@@ -434,6 +434,7 @@ Sınırlamalar
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
   <string name="morphe_hide_video_ads_summary_on">Video reklamları gizli</string>
   <string name="morphe_hide_video_ads_summary_off">Video reklamları görünür</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL panoya kopyalandı</string>
   <string name="morphe_share_copy_url_timestamp_success">Zaman damgalı URL kopyalandı</string>
@@ -1398,7 +1399,7 @@ Genişletmek veya kapatmak için kaydırın"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Zaman çubuğunun vurgu rengi</string>
   <string name="morphe_seekbar_custom_color_invalid">Geçersiz zaman çubuğu renk değeri</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Başlık logosu</string>
   <string name="morphe_header_logo_entry_1">Varsayılan</string>
   <string name="morphe_header_logo_entry_2">Normal</string>

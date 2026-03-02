@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.video.videoid
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -10,6 +18,7 @@ import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import java.lang.ref.WeakReference
 
 /**
  * Hooks the new video ID when the video changes.
@@ -24,7 +33,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
  */
 fun hookVideoId(
     methodDescriptor: String,
-) = videoIdMethod.addInstruction(
+) = videoIdMethodRef.get()!!.addInstruction(
     videoIdInsertIndex++,
     "invoke-static {v$videoIdRegister}, $methodDescriptor",
 )
@@ -41,7 +50,7 @@ fun hookVideoId(
  */
 fun hookBackgroundPlayVideoId(
     methodDescriptor: String,
-) = backgroundPlaybackMethod.addInstruction(
+) = backgroundPlaybackMethodRef.get()!!.addInstruction(
     backgroundPlaybackInsertIndex++, // move-result-object offset
     "invoke-static {v$backgroundPlaybackVideoIdRegister}, $methodDescriptor",
 )
@@ -75,13 +84,13 @@ fun hookPlayerResponseVideoId(methodDescriptor: String) = addPlayerResponseMetho
     ),
 )
 
-private var videoIdRegister = 0
-private var videoIdInsertIndex = 0
-private lateinit var videoIdMethod: MutableMethod
+private lateinit var videoIdMethodRef : WeakReference<MutableMethod>
+private var videoIdRegister = -1
+private var videoIdInsertIndex = -1
 
-private var backgroundPlaybackVideoIdRegister = 0
-private var backgroundPlaybackInsertIndex = 0
-private lateinit var backgroundPlaybackMethod: MutableMethod
+private lateinit var backgroundPlaybackMethodRef : WeakReference<MutableMethod>
+private var backgroundPlaybackVideoIdRegister = -1
+private var backgroundPlaybackInsertIndex = -1
 
 val videoIdPatch = bytecodePatch(
     description = "Hooks to detect when the video ID changes.",
@@ -94,7 +103,7 @@ val videoIdPatch = bytecodePatch(
     execute {
         VideoIdFingerprint.match(VideoIdParentFingerprint.originalClassDef).let {
             it.method.apply {
-                videoIdMethod = this
+                videoIdMethodRef = WeakReference(this)
                 val index = it.instructionMatches[1].index
                 videoIdRegister = getInstruction<OneRegisterInstruction>(index).registerA
                 videoIdInsertIndex = index + 1
@@ -103,7 +112,7 @@ val videoIdPatch = bytecodePatch(
 
         VideoIdBackgroundPlayFingerprint.let {
             it.method.apply {
-                backgroundPlaybackMethod = this
+                backgroundPlaybackMethodRef = WeakReference(this)
                 val index = it.instructionMatches.first().index
                 backgroundPlaybackVideoIdRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
                 backgroundPlaybackInsertIndex = index + 2
