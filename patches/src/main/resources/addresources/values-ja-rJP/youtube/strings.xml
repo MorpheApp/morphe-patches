@@ -435,6 +435,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
   <string name="morphe_hide_video_ads_summary_on">動画広告は表示されません</string>
   <string name="morphe_hide_video_ads_summary_off">動画広告は表示されます</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL をクリップボードにコピーしました</string>
   <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付きの URL がコピーされました</string>
@@ -1399,7 +1400,7 @@ Automotive レイアウト
   <string name="morphe_seekbar_custom_color_accent_summary">シークバーのアクセント カラーを編集します</string>
   <string name="morphe_seekbar_custom_color_invalid">シークバーの色の値が無効です</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">ヘッダーロゴ</string>
   <string name="morphe_header_logo_entry_1">デフォルト</string>
   <string name="morphe_header_logo_entry_2">標準</string>

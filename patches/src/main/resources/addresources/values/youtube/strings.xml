@@ -447,6 +447,18 @@ Limitations:
     <string name="morphe_hide_video_ads_summary_on">Video ads are hidden</string>
     <string name="morphe_hide_video_ads_summary_off">Video ads are shown</string>
 
+    <!-- interaction.doubletap.doubleTapLengthPatch -->
+    <string name="morphe_double_tap_length_3s" translatable="false">3</string>
+    <string name="morphe_double_tap_length_5s" translatable="false">5</string>
+    <string name="morphe_double_tap_length_10s" translatable="false">10</string>
+    <string name="morphe_double_tap_length_15s" translatable="false">15</string>
+    <string name="morphe_double_tap_length_20s" translatable="false">20</string>
+    <string name="morphe_double_tap_length_30s" translatable="false">30</string>
+    <string name="morphe_double_tap_length_60s" translatable="false">60</string>
+    <string name="morphe_double_tap_length_120s" translatable="false">120</string>
+    <string name="morphe_double_tap_length_180s" translatable="false">180</string>
+    <string name="morphe_double_tap_length_240s" translatable="false">240</string>
+
     <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
     <string name="morphe_share_copy_url_success">URL copied to clipboard</string>
     <string name="morphe_share_copy_url_timestamp_success">URL with timestamp copied</string>
@@ -1464,7 +1476,7 @@ Swipe to expand or close"</string>
     <string name="morphe_custom_branding_name_entry_3" translatable="false">YT Morphe</string>
     <string name="morphe_custom_branding_name_entry_4" translatable="false">YT</string>
 
-    <!-- layout.branding.changeHeaderPatch -->
+    <!-- layout.branding.header.changeHeaderPatch -->
     <string name="morphe_header_logo_title">Header logo</string>
     <string name="morphe_header_logo_entry_1">Default</string>
     <string name="morphe_header_logo_entry_2">Regular</string>

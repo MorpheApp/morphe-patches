@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">헤더 로고</string>
+  <string name="morphe_header_logo_entry_1">기본값</string>
+  <string name="morphe_header_logo_entry_3">사용자 정의</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">정보</string>
@@ -45,6 +49,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_title">검색 버튼 숨기기</string>
   <string name="morphe_music_hide_search_button_summary_on">검색 버튼이 숨겨집니다</string>
   <string name="morphe_music_hide_search_button_summary_off">검색 버튼이 표시됩니다</string>
+  <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">앱 시작 페이지 변경하기</string>
+  <string name="morphe_change_start_page_entry_default">기본값</string>
+  <string name="morphe_change_start_page_entry_charts">차트</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">나중에 감상할 에피소드</string>
+  <string name="morphe_change_start_page_entry_explore">둘러보기</string>
+  <string name="morphe_change_start_page_entry_history">기록</string>
+  <string name="morphe_change_start_page_entry_library">보관함</string>
+  <string name="morphe_change_start_page_entry_liked_music">좋아요 표시한 음악</string>
+  <string name="morphe_change_start_page_entry_playlists">재생목록</string>
+  <string name="morphe_change_start_page_entry_podcasts">팟캐스트</string>
+  <string name="morphe_change_start_page_entry_search">검색</string>
+  <string name="morphe_change_start_page_entry_subscriptions">구독</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">카테고리 바 숨기기</string>
   <string name="morphe_music_hide_category_bar_summary_on">카테고리 바가 숨겨집니다</string>

@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.misc.litho.filter
@@ -33,6 +41,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
 
@@ -43,10 +52,20 @@ private const val REGISTER_FILTER_CLASS = 0
 private const val REGISTER_FILTER_COUNT = 1
 private const val REGISTER_FILTER_ARRAY = 2
 
-lateinit var addLithoFilter: (String) -> Unit
-    private set
+private lateinit var helperMethodRef : WeakReference<MutableMethod>
+private var addLithoFilterCount = 0
 
-private lateinit var helperMethod: MutableMethod
+fun addLithoFilter(classDescriptor: String) {
+    helperMethodRef.get()!!.addInstructions(
+        0,
+        """
+            new-instance v$REGISTER_FILTER_CLASS, $classDescriptor
+            invoke-direct { v$REGISTER_FILTER_CLASS }, $classDescriptor-><init>()V
+            const/16 v$REGISTER_FILTER_COUNT, ${addLithoFilterCount++}
+            aput-object v$REGISTER_FILTER_CLASS, v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT
+        """
+    )
+}
 
 val lithoFilterPatch = bytecodePatch(
     description = "Hooks the method which parses the bytes into a ComponentContext to filter components.",
@@ -55,8 +74,6 @@ val lithoFilterPatch = bytecodePatch(
         sharedExtensionPatch,
         versionCheckPatch,
     )
-
-    var filterCount = 0
 
     /**
      * The following patch inserts a hook into the method that parses the bytes into a ComponentContext.
@@ -104,7 +121,7 @@ val lithoFilterPatch = bytecodePatch(
                 val helperClass = definingClass
                 val helperName = "patch_getFilterArray"
                 val helperReturnType = EXTENSION_FILER_ARRAY_DESCRIPTOR
-                helperMethod = ImmutableMethod(
+                val helperMethod = ImmutableMethod(
                     helperClass,
                     helperName,
                     listOf(),
@@ -113,30 +130,20 @@ val lithoFilterPatch = bytecodePatch(
                     null,
                     null,
                     MutableMethodImplementation(3),
-                ).toMutable().apply {
-                    addLithoFilter = { classDescriptor ->
-                        addInstructions(
-                            0,
-                            """
-                                new-instance v$REGISTER_FILTER_CLASS, $classDescriptor
-                                invoke-direct { v$REGISTER_FILTER_CLASS }, $classDescriptor-><init>()V
-                                const/16 v$REGISTER_FILTER_COUNT, ${filterCount++}
-                                aput-object v$REGISTER_FILTER_CLASS, v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT
-                            """
-                        )
-                    }
-                }
+                ).toMutable()
                 it.classDef.methods.add(helperMethod)
+                helperMethodRef = WeakReference(helperMethod)
 
                 val insertIndex = it.instructionMatches.first().index
                 val insertRegister =
                     getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
                 addInstructions(
-                    insertIndex, """
+                    insertIndex,
+                    """
                         invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->$helperName()$EXTENSION_FILER_ARRAY_DESCRIPTOR
                         move-result-object v$insertRegister
-                        """
+                    """
                 )
             }
         }
@@ -349,7 +356,7 @@ val lithoFilterPatch = bytecodePatch(
     }
 
     finalize {
-        helperMethod.apply {
+        helperMethodRef.get()!!.apply {
             addInstruction(
                 implementation!!.instructions.size,
                 "return-object v$REGISTER_FILTER_ARRAY"
@@ -358,7 +365,7 @@ val lithoFilterPatch = bytecodePatch(
             addInstructions(
                 0,
                 """
-                    const/16 v$REGISTER_FILTER_COUNT, $filterCount
+                    const/16 v$REGISTER_FILTER_COUNT, $addLithoFilterCount
                     new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILER_ARRAY_DESCRIPTOR
                 """
             )

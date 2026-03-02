@@ -393,6 +393,7 @@ Məhdudiyyətlər
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
   <string name="morphe_hide_video_ads_summary_on">Video reklamlar gizlədilir</string>
   <string name="morphe_hide_video_ads_summary_off">Video reklamlar göstərilir</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL buferə köçürüldü</string>
   <string name="morphe_share_copy_url_timestamp_success">Vaxt möhürlü URL köçürüldü</string>
@@ -1277,7 +1278,7 @@ Genişləndirmək və ya bağlamaq üçün sürüşdürün"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">İrəliləyiş cizgisi vurğu rəngi</string>
   <string name="morphe_seekbar_custom_color_invalid">Etibarsız irəliləmə cizgisi rəng dəyəri</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Başlıq simvolu</string>
   <string name="morphe_header_logo_entry_1">İlkin</string>
   <string name="morphe_header_logo_entry_2">Müntəzəm</string>

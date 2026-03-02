@@ -434,6 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
   <string name="morphe_hide_video_ads_summary_on">视频广告已隐藏</string>
   <string name="morphe_hide_video_ads_summary_off">视频广告已显示</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL 已复制到剪贴板</string>
   <string name="morphe_share_copy_url_timestamp_success">URL 已复制，包含时间戳</string>
@@ -1402,7 +1403,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">进度条的强调色</string>
   <string name="morphe_seekbar_custom_color_invalid">无效的进度条颜色值</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">标题徽标</string>
   <string name="morphe_header_logo_entry_1">默认</string>
   <string name="morphe_header_logo_entry_2">常规</string>

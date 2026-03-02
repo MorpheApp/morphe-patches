@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.misc.imageurlhook
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -14,14 +22,15 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import java.lang.ref.WeakReference
 
-private lateinit var loadImageURLMethod: MutableMethod
+private lateinit var loadImageURLMethodRef : WeakReference<MutableMethod>
 private var loadImageURLIndex = 0
 
-private lateinit var loadImageSuccessCallbackMethod: MutableMethod
+private lateinit var loadImageSuccessCallbackMethodRef : WeakReference<MutableMethod>
 private var loadImageSuccessCallbackIndex = 0
 
-private lateinit var loadImageErrorCallbackMethod: MutableMethod
+private lateinit var loadImageErrorCallbackMethodRef : WeakReference<MutableMethod>
 private var loadImageErrorCallbackIndex = 0
 
 val cronetImageURLHookPatch = bytecodePatch(
@@ -30,14 +39,20 @@ val cronetImageURLHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch)
 
     execute {
-        loadImageURLMethod = MessageDigestImageURLFingerprint
-            .match(MessageDigestImageURLParentFingerprint.originalClassDef).method
+        loadImageURLMethodRef = WeakReference(
+            MessageDigestImageURLFingerprint
+                .match(MessageDigestImageURLParentFingerprint.originalClassDef).method
+        )
 
-        loadImageSuccessCallbackMethod = OnSucceededFingerprint
-            .match(OnResponseStartedFingerprint.originalClassDef).method
+        loadImageSuccessCallbackMethodRef = WeakReference(
+            OnSucceededFingerprint
+                .match(OnResponseStartedFingerprint.originalClassDef).method
+        )
 
-        loadImageErrorCallbackMethod = OnFailureFingerprint
-            .match(OnResponseStartedFingerprint.originalClassDef).method
+        loadImageErrorCallbackMethodRef = WeakReference(
+            OnFailureFingerprint
+                .match(OnResponseStartedFingerprint.originalClassDef).method
+        )
 
         // The URL is required for the failure callback hook, but the URL field is obfuscated.
         // Add a helper get method that returns the URL field.
@@ -61,10 +76,11 @@ val cronetImageURLHookPatch = bytecodePatch(
                 MutableMethodImplementation(2),
             ).toMutable().apply {
                 addInstructions(
+                    0,
                     """
                         iget-object v0, p0, $definingClass->$urlFieldName:Ljava/lang/String;
                         return-object v0
-                    """,
+                    """
                 )
             },
         )
@@ -75,7 +91,7 @@ val cronetImageURLHookPatch = bytecodePatch(
  * @param highPriority If the hook should be called before all other hooks.
  */
 fun addImageURLHook(targetMethodClass: String, highPriority: Boolean = false) {
-    loadImageURLMethod.addInstructions(
+    loadImageURLMethodRef.get()!!.addInstructions(
         if (highPriority) 0 else loadImageURLIndex,
         """
         invoke-static { p1 }, $targetMethodClass->overrideImageURL(Ljava/lang/String;)Ljava/lang/String;
@@ -90,7 +106,7 @@ fun addImageURLHook(targetMethodClass: String, highPriority: Boolean = false) {
  * status 404 and other error like http responses.
  */
 fun addImageURLSuccessCallbackHook(targetMethodClass: String) {
-    loadImageSuccessCallbackMethod.addInstruction(
+    loadImageSuccessCallbackMethodRef.get()!!.addInstruction(
         loadImageSuccessCallbackIndex++,
         "invoke-static { p1, p2 }, $targetMethodClass->handleCronetSuccess(" +
             "Lorg/chromium/net/UrlRequest;Lorg/chromium/net/UrlResponseInfo;)V",
@@ -101,7 +117,7 @@ fun addImageURLSuccessCallbackHook(targetMethodClass: String) {
  * If a connection outright failed to complete any connection.
  */
 fun addImageURLErrorCallbackHook(targetMethodClass: String) {
-    loadImageErrorCallbackMethod.addInstruction(
+    loadImageErrorCallbackMethodRef.get()!!.addInstruction(
         loadImageErrorCallbackIndex++,
         "invoke-static { p1, p2, p3 }, $targetMethodClass->handleCronetFailure(" +
             "Lorg/chromium/net/UrlRequest;Lorg/chromium/net/UrlResponseInfo;Ljava/io/IOException;)V",

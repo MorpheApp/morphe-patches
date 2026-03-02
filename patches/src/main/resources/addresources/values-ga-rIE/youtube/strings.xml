@@ -434,6 +434,7 @@ Teorainneacha:
   <string name="morphe_hide_video_ads_title">Folaigh fógraí físe</string>
   <string name="morphe_hide_video_ads_summary_on">Tá fógraí físe i bhfolach</string>
   <string name="morphe_hide_video_ads_summary_off">Taispeántar fógraí físe</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL cóipeáilte chuig an ghearrthaisce</string>
   <string name="morphe_share_copy_url_timestamp_success">URL le stampa ama cóipeáilte</string>
@@ -502,9 +503,9 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
   <string name="morphe_swipe_press_to_engage_title">Cumasaigh gotha ​​brúigh chun svaidhpeáil</string>
   <string name="morphe_swipe_press_to_engage_summary_on">Tá brúigh chun svaidhpeáil cumasaithe</string>
   <string name="morphe_swipe_press_to_engage_summary_off">Tá brúigh chun svaidhpeáil díchumasaithe</string>
-  <string name="morphe_swipe_haptic_feedback_title">Cumasaigh aiseolas haptic</string>
-  <string name="morphe_swipe_haptic_feedback_summary_on">Tá aiseolas haptic cumasaithe</string>
-  <string name="morphe_swipe_haptic_feedback_summary_off">Tá aiseolas haptic díchumasaithe</string>
+  <string name="morphe_swipe_haptic_feedback_title">Cumasaigh aiseolas haptaic</string>
+  <string name="morphe_swipe_haptic_feedback_summary_on">Tá aiseolas haptaic cumasaithe</string>
+  <string name="morphe_swipe_haptic_feedback_summary_off">Tá aiseolas haptaic díchumasaithe</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Sábháil agus athchóirigh gile</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_on">Sábháil agus athchóirigh gile agus tú ag imeacht nó ag dul isteach sa lánscáileán</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_off">Ná sábháil agus ná hathchóirigh gile agus tú ag imeacht nó ag dul isteach sa lánscáileán</string>
@@ -1057,9 +1058,9 @@ Teorainn: B’fhéidir nach dtaispeánfar 'Ní thaitníonn' i mód incognito"</s
   <string name="morphe_sb_enable_compact_skip_button_sum_on">Cnaipe Scipeáil stílithe don leithead íosta</string>
   <string name="morphe_sb_enable_compact_skip_button_sum_off">Cnaipe Scipeáil stílithe le haghaidh an chuma is fearr</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button">Folaigh an cnaipe Scipeáil go huathoibríoch</string>
-  <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_on">Folaítear an cnaipe Scipeáil tar éis cúpla soicind</string>
-  <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">Taispeántar an cnaipe Scipeáil don deighleog iomlán</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration">Fad an chnaipe Scipeáil</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_on">Folaítear an cnaipe scipeála tar éis cúpla soicind</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">Taispeántar an cnaipe scipeála don deighleog iomlán</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Fad an chnaipe scipeála</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_sum">Cá fhad a thaispeánfar na cnaipí scipeáil agus scipeáil chun aibhsiú sula bhfolachar go huathoibríoch iad</string>
   <string name="morphe_sb_general_skiptoast">Taispeáin an tósta cealaithe scipeáilte</string>
   <string name="morphe_sb_general_skiptoast_sum_on">Taispeántar tósta nuair a scipeáiltear deighleog go huathoibríoch. Tapáil an fógra tósta chun an scipeáil a chealú</string>
@@ -1247,7 +1248,7 @@ Réidh le cur isteach?"</string>
   <string name="morphe_sb_stats_self_saved_reset_title">Athshocrú cuntar deighleoga scipeáilte?</string>
   <string name="morphe_sb_stats_saved_hour_format">%1$s uaireanta %2$s nóiméad</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s nóiméad %2$s soicind</string>
-  <string name="morphe_sb_stats_saved_second_format">%s soicindí</string>
+  <string name="morphe_sb_stats_saved_second_format">%s soicind</string>
   <string name="morphe_sb_color_opacity_label">Teimhneacht:</string>
   <string name="morphe_sb_color_dot_label">Dath:</string>
   <string name="morphe_sb_about_title">Maidir</string>
@@ -1385,7 +1386,7 @@ Svaip chun leathnú nó dúnadh"</string>
   <string name="morphe_gradient_loading_screen_title">Cumasaigh scáileán luchtaithe</string>
   <string name="morphe_gradient_loading_screen_summary_on">Beidh cúlra grádáin ag an scáileán lódála</string>
   <string name="morphe_gradient_loading_screen_summary_off">Beidh cúlra láidir ag scáileán luchtaithe</string>
-  <string name="morphe_splash_screen_animation_style_title">Stíl scáileáin splancais</string>
+  <string name="morphe_splash_screen_animation_style_title">Stíl splancscáileáin</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Díchumasaithe</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Dath</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Dubh agus bán</string>
@@ -1398,7 +1399,7 @@ Svaip chun leathnú nó dúnadh"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Dath béime an bharra cuardaigh</string>
   <string name="morphe_seekbar_custom_color_invalid">Luach datha barra cuardaigh neamhbhailí</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Lógó ceanntásca</string>
   <string name="morphe_header_logo_entry_1">Réamhshocrú</string>
   <string name="morphe_header_logo_entry_2">Rialta</string>
@@ -1466,23 +1467,23 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
 D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’fhéadfadh go mbeadh stad ar athsheinm físe, saol ceallraí níos measa, agus fo-iarsmaí anaithnide agat"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Is féidir go mbeidh stad ar athsheinm físe, saolré na ceallraí níos measa, agus fo-iarsmaí anaithnide mar thoradh air seo.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
-  <string name="morphe_disable_haptic_feedback_title">Aiseolas haiptice</string>
-  <string name="morphe_disable_haptic_feedback_summary">Athraigh aiseolas haiptice</string>
-  <string name="morphe_disable_haptic_feedback_chapters_title">Díchumasaigh haiptice caibidlí</string>
-  <string name="morphe_disable_haptic_feedback_chapters_summary_on">Tá haiptice caibidlí díchumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_chapters_summary_off">Tá haiptice caibidlí cumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_precise_seeking_title">Díchumasaigh haiptice beacht cuardaigh</string>
-  <string name="morphe_disable_haptic_feedback_precise_seeking_summary_on">Tá haiptice cuardaigh chruinne díchumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_precise_seeking_summary_off">Tá haiptice cuardaigh chruinn cumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_seek_undo_title">Díchumasaigh haiptice cuardaigh agus cealaithe</string>
-  <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Tá haiptice cuardaigh cealaithe díchumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Tá haiptice cuardaigh cealaithe cumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Díchumasaigh haiptice tap agus cealaithe</string>
-  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Tá haiptice tap agus cealaithe díchumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Tá haiptice tap agus cealaithe cumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haiptice súmála</string>
-  <string name="morphe_disable_haptic_feedback_zoom_summary_on">Tá haiptice súmála díchumasaithe</string>
-  <string name="morphe_disable_haptic_feedback_zoom_summary_off">Tá haiptice súmála cumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_title">Aiseolas haptaic</string>
+  <string name="morphe_disable_haptic_feedback_summary">Athraigh aiseolas haptaic</string>
+  <string name="morphe_disable_haptic_feedback_chapters_title">Díchumasaigh haptaic caibidlí</string>
+  <string name="morphe_disable_haptic_feedback_chapters_summary_on">Tá haptaic caibidlí díchumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_chapters_summary_off">Tá haptaic caibidlí cumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_precise_seeking_title">Díchumasaigh haptaic beacht cuardaigh</string>
+  <string name="morphe_disable_haptic_feedback_precise_seeking_summary_on">Tá haptaic cuardaigh chruinne díchumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_precise_seeking_summary_off">Tá haptaic cuardaigh chruinn cumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_seek_undo_title">Díchumasaigh haptaic cuardaigh agus cealaithe</string>
+  <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Tá haptaic cuardaigh cealaithe díchumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Tá haptaic cuardaigh cealaithe cumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Díchumasaigh haptaic tapáil agus coinnigh</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Tá haptaic tapáil agus coinnigh díchumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Tá haptaic tapáil agus coinnigh cumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haptaic súmála</string>
+  <string name="morphe_disable_haptic_feedback_zoom_summary_on">Tá haptaic súmála díchumasaithe</string>
+  <string name="morphe_disable_haptic_feedback_zoom_summary_off">Tá haptaic súmála cumasaithe</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Má d’athraigh tú sonraí logála isteach do chuntais le déanaí, ansin díshuiteáil agus athshuiteáil MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->
@@ -1519,7 +1520,7 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_playback_speed_dialog_button_summary_off">Ní thaispeántar cnaipe vótála deighleog</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Taispeáin cnaipe cáilíochta físeáin</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">Taispeántar an cnaipe. Tapáil agus coinnigh síos chun an caighdeán a athshocrú go dtí an caighdeán réamhshocraithe</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">Taispeántar an cnaipe cáilíochta físe. Tapáil agus coinnigh síos chun an caighdeán réamhshocraithe a athshocrú.</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Taispeántar roghchlár cáilíochta físe</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Roghchlár luas athsheinm saincheaptha</string>
@@ -1549,8 +1550,8 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_disable_hdr_video_summary_on">Tá físeán HDR díchumasaithe</string>
   <string name="morphe_disable_hdr_video_summary_off">Tá físeán HDR cumasaithe</string>
   <string name="morphe_force_avc_codec_title">Fórsa AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_summary_on">Éigeantar an códóir físeáin go AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_summary_off">Cinntear an cóideac físe go huathoibríoch</string>
+  <string name="morphe_force_avc_codec_summary_on">Tá cóideic físe iallachaithe go AVC (H.264)</string>
+  <string name="morphe_force_avc_codec_summary_off">Cinntear an cóideic físe go huathoibríoch</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Sochair:
 • Féadfaidh sé saolré na ceallraí a fheabhsú
 • Féadfaidh sé réitigh físeáin atá in easnamh a chur ar ais ar ghléasanna níos sine
@@ -1571,13 +1572,13 @@ Teorainneacha:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Tabhair tús áite do cháilíocht físe</string>
   <string name="morphe_prioritize_video_quality_summary_on">Tugtar tús áite do cháilíocht an fhíseáin</string>
-  <string name="morphe_prioritize_video_quality_summary_off">Tugtar tús áite do chóidéic físe</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Tugtar tús áite do chóideic físe</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Ceadaigh Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary_on">"Is é an códac físe AVC (H.264), VP9, ​​nó AV1
+  <string name="morphe_spoof_video_streams_av1_summary_on">"Is é an cóideic físe AVC (H.264), VP9, ​​nó AV1
 
 D’fhéadfadh an t-athsheinm stad a chur air nó frámaí a chailleadh"</string>
-  <string name="morphe_spoof_video_streams_av1_summary_off">Is é AVC (H.264) nó VP9 an códac físe</string>
+  <string name="morphe_spoof_video_streams_av1_summary_off">Is é AVC (H.264) nó VP9 an cóideic físe</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"D’fhéadfadh sé go n-úsáidfí díchódú bogearraí AV1 agus an socrú seo á chumasú.
 
 D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe le AV1."</string>
@@ -1585,7 +1586,7 @@ D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe l
   <string name="morphe_spoof_video_streams_about_experimental">• Cliant turgnamhach é seo agus féadfaidh sé stop a chur ag obair ag am ar bith</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Is féidir go stopfaidh an físeán ag 1:00, nó b\'fhéidir nach mbeidh sé ar fáil i réigiúin áirithe</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Tá roghchlár na rianta fuaime ar iarraidh</string>
-  <string name="morphe_spoof_video_streams_about_no_av1">• Níl aon cóideac físe AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_av1">• Gan aon chóideic físe AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Níl mód tumtha VR 360° ar fáil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Níl toirt chobhsaí ar fáil</string>
   <string name="morphe_spoof_video_streams_about_js">• Má theipeann ar an dí-dhorchadas, d\'fhéadfadh teip a bheith ar an athsheinm</string>

@@ -435,6 +435,7 @@ Begränsningar:
   <string name="morphe_hide_video_ads_title">Dölj videoannonser</string>
   <string name="morphe_hide_video_ads_summary_on">Videoannonser är dolda</string>
   <string name="morphe_hide_video_ads_summary_off">Videoannonser visas</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Videoadress kopierad till urklipp</string>
   <string name="morphe_share_copy_url_timestamp_success">Videoadress med tidsstämpel kopierad</string>
@@ -1394,7 +1395,7 @@ Svep för att expandera eller stänga"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Accentfärgen på sökreglaget</string>
   <string name="morphe_seekbar_custom_color_invalid">Ogiltigt färgvärde för sökreglaget</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotyp i sidhuvudet</string>
   <string name="morphe_header_logo_entry_1">Standard</string>
   <string name="morphe_header_logo_entry_2">Vanlig</string>

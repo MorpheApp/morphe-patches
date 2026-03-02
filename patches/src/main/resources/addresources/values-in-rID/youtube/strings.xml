@@ -433,6 +433,7 @@ Keterbatasan
   <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
   <string name="morphe_hide_video_ads_summary_on">Iklan video disembunyikan</string>
   <string name="morphe_hide_video_ads_summary_off">Iklan video ditampilkan</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL disalin ke papan klip</string>
   <string name="morphe_share_copy_url_timestamp_success">URL dengan penanda waktu telah disalin</string>
@@ -959,10 +960,10 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_end_screen_suggested_video_title">Sembunyikan video yang disarankan di layar akhir</string>
   <string name="morphe_end_screen_suggested_video_summary_on">Layar akhir video yang disarankan disembunyikan ketika pemutaran otomatis dimatikan</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Pengaturan ini hanya berfungsi jika 'Putar video berikutnya' dimatikan.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Pengaturan ini hanya berfungsi jika 'Putar otomatis video berikutnya' dimatikan.
 
-'Putar video berikutnya' dapat diubah di pengaturan YouTube:
-Pengaturan → Pemutaran → Putar otomatis video berikutnya"</string>
+'Putar otomatis video berikutnya' dapat diubah di pengaturan YouTube:
+Pengaturan → Pemutaran (atau Putar otomatis) → Putar otomatis video berikutnya"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Hamparan video terkait dalam layar penuh disembunyikan</string>
@@ -1397,7 +1398,7 @@ Gesek untuk memperluas atau menutup"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Warna aksen seekbar</string>
   <string name="morphe_seekbar_custom_color_invalid">Nilai warna seekbar tidak sah</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
   <string name="morphe_header_logo_entry_2">Reguler</string>

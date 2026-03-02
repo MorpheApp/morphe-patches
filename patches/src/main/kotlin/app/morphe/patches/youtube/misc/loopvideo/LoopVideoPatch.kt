@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.misc.loopvideo
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -8,7 +16,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loopvideo.button.loopVideoButtonPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.video.information.playerStatusMethod
+import app.morphe.patches.youtube.video.information.playerStatusMethodRef
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -33,7 +41,7 @@ val loopVideoPatch = bytecodePatch(
             SwitchPreference("morphe_loop_video"),
         )
 
-        playerStatusMethod.apply {
+        playerStatusMethodRef.get()!!.apply {
             // Add call to start playback again, but must not allow exit fullscreen patch call
             // to be reached if the video is looped.
             val insertIndex =

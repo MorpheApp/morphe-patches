@@ -434,6 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">Скрыть видеорекламу</string>
   <string name="morphe_hide_video_ads_summary_on">Видеореклама в плеере скрыта</string>
   <string name="morphe_hide_video_ads_summary_off">Видеореклама в плеере показана</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL-адрес скопирован</string>
   <string name="morphe_share_copy_url_timestamp_success">URL-адрес с меткой времени скопирован</string>
@@ -958,12 +959,12 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навигации в Shorts показана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Видео на экране окончания воспроизведения скрыто, когда автовоспроизведение выключено</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Предлагаемое видео конечного экрана скрывается, когда авто воспроизведение выключено</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Эта настройка работает только при выключенном \"Автовоспроизведение следующего видео\".
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Этот параметр работает, только если отключена опция \"Авто воспроизведение следующего видео\".
 
-\"Автовоспроизведение следующего видео\" можно изменить в настройках YouTube:
-Настройки → Воспроизведение → Автовоспроизведение следующего видео"</string>
+\"Авто воспроизведение следующего видео\" можно изменить в настройках YouTube:
+Настройки → Воспроизведение (или Авто воспроизведение) → Авто воспроизведение следующего видео"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Скрыть похожие видео</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Похожие видео в полноэкранном режиме скрыты</string>
@@ -1399,7 +1400,7 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_seekbar_custom_color_accent_summary">Вторичный цвет полосы прогресса</string>
   <string name="morphe_seekbar_custom_color_invalid">Неверное значение цвета полосы прогресса</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип заголовка</string>
   <string name="morphe_header_logo_entry_1">По умолчанию</string>
   <string name="morphe_header_logo_entry_2">Обычный</string>

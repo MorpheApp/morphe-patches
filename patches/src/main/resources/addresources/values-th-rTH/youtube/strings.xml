@@ -434,6 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <string name="morphe_hide_video_ads_summary_on">โฆษณาวิดีโอถูกซ่อน</string>
   <string name="morphe_hide_video_ads_summary_off">โฆษณาวิดีโอจะแสดง</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">คัดลอก URL ไปยังคลิปบอร์ด</string>
   <string name="morphe_share_copy_url_timestamp_success">คัดลอก URL พร้อมเวลาไปยังคลิปบอร์ด</string>
@@ -1395,7 +1396,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_seekbar_custom_color_accent_summary">สีเน้นของ seekbar</string>
   <string name="morphe_seekbar_custom_color_invalid">ค่าสีแถบเลื่อนไม่ถูกต้อง</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">โลโก้ส่วนหัว</string>
   <string name="morphe_header_logo_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_header_logo_entry_2">ปกติ</string>

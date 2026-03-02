@@ -435,6 +435,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">Приховати відеорекламу</string>
   <string name="morphe_hide_video_ads_summary_on">Відеорекламу приховано</string>
   <string name="morphe_hide_video_ads_summary_off">Відеореклама показується</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL-адресу скопійовано до буфера</string>
   <string name="morphe_share_copy_url_timestamp_success">URL-адресу з міткою часу скопійовано до буфера</string>
@@ -658,11 +659,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Приховати \"Сповіщення\"</string>
   <string name="morphe_hide_notifications_button_summary_on">Кнопку \"Сповіщення\" приховано на панелі навігації</string>
   <string name="morphe_hide_notifications_button_summary_off">Кнопка \"Сповіщення\" показується на панелі навігації</string>
-  <string name="morphe_show_search_button_title">Показати кнопку пошуку</string>
-  <string name="morphe_show_search_button_summary_on">Кнопку пошуку показано</string>
-  <string name="morphe_show_search_button_summary_off">Кнопка пошуку приховано</string>
-  <string name="morphe_search_button_index_title">Індекс кнопки пошуку</string>
-  <string name="morphe_search_button_index_invalid">Індекс кнопки пошуку має бути меншим за %s</string>
+  <string name="morphe_show_search_button_title">Показати кнопку \"Пошук\"</string>
+  <string name="morphe_show_search_button_summary_on">Кнопка \"Пошук\" показується</string>
+  <string name="morphe_show_search_button_summary_off">Кнопка \"Пошук\" не показується</string>
+  <string name="morphe_search_button_index_title">Індекс кнопки \"Пошук\"</string>
+  <string name="morphe_search_button_index_invalid">Індекс кнопки \"Пошук\" має бути меншим за %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Замінити \"Створити\" на \"Сповіщення\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Кнопка \"Створити\" замінена на кнопку \"Сповіщення\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Кнопку \"Створити\" не замінено кнопкою \"Сповіщення\"</string>
@@ -959,11 +960,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навігації показується</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Приховати пропоноване відео на кінцевому екрані</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Кінцевий екран пропоноване відео приховано, коли автоматичне відтворення вимкнено</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Запропоноване відео кінцевого екрана приховується, коли автовідтворення вимкнено</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Пропоноване відео на кінцевому екрані показується</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Це налаштування працює лише тоді, коли 'Автовідтворення наступного відео' вимкнено.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Цей параметр працює, лише якщо вимкнено опцію \"Автовідтворення наступного відео\".
 
-'Автовідтворення наступного відео' можна змінити в налаштуваннях YouTube:
+Функцію \"Автовідтворення наступного відео\" можна змінити в налаштуваннях YouTube:
 Налаштування → Відтворення (або Автовідтворення) → Автовідтворення наступного відео"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
@@ -1105,7 +1106,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_general_min_duration_invalid">Неприпустима тривалість</string>
   <string name="morphe_sb_general_uuid">Ваш особистий ID користувача</string>
   <string name="morphe_sb_general_uuid_sum">Це повинно залишатися конфіденційним. Це як пароль, і його не можна нікому передавати. Якщо хтось отримає його, він зможе видавати себе за Вас</string>
-  <string name="morphe_sb_general_uuid_invalid">Особистий id користувача повинен мати довжину не менше 30 символів</string>
+  <string name="morphe_sb_general_uuid_invalid">Особистий ID користувача повинен мати довжину не менше 30 символів</string>
   <string name="morphe_sb_general_api_url">Змінити адресу API</string>
   <string name="morphe_sb_general_api_url_sum">URL-адреса, яку SponsorBlock використовує для звернень до сервера</string>
   <string name="morphe_sb_api_url_reset">Адресу API скинуто</string>
@@ -1114,13 +1115,13 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie">Імпорт / Експорт налаштувань</string>
   <string name="morphe_sb_settings_copy">Копіювати</string>
   <string name="morphe_sb_settings_ie_sum">Ваші налаштування SponsorBlock, які можуть бути імпортовані чи експортовані у Morphe та до інших платформ SponsorBlock</string>
-  <string name="morphe_sb_settings_ie_sum_warning">Ваші налаштування SponsorBlock, які можуть бути імпортовані чи експортовані у Morphe та до інших платформ SponsorBlock. Вони також містять Ваш особистий ідентифікатор користувача. Діліться ними розумно</string>
+  <string name="morphe_sb_settings_ie_sum_warning">Ваші налаштування SponsorBlock, які можуть бути імпортовані чи експортовані у Morphe та до інших платформ SponsorBlock. Вони також містять Ваш особистий ID. Діліться ними розумно</string>
   <string name="morphe_sb_settings_import_successful">Налаштування успішно імпортовано</string>
   <string name="morphe_sb_settings_import_failed">Не вдалося імпортувати: %s</string>
   <string name="morphe_sb_settings_export_failed">Не вдалося експортувати: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ваші налаштування містять особистий ідентифікатор користувача SponsorBlock.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ваші налаштування містять особистий ID користувача SponsorBlock.
 
-Ваш ідентифікатор користувача це як пароль і його не можна поширювати."</string>
+Ваш ID користувача це як пароль і його не можна поширювати."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Більше не показувати</string>
   <string name="morphe_sb_diff_segments">Змінити поведінку сегмента</string>
   <string name="morphe_sb_segments_sponsor">Спонсор</string>
@@ -1281,9 +1282,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Вимкнути товсті іконки</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Відновити розгорнуту панель дій відео</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Відкрити системний список розділення</string>
-  <string name="morphe_open_system_share_sheet_summary_on">Відкриває системний список розділення</string>
-  <string name="morphe_open_system_share_sheet_summary_off">Відкриває вбудований список розділення</string>
+  <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Відкриває системний діалог поширення</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Відкриває вбудований діалог поширення</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Змінити початкову сторінку</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>
@@ -1399,7 +1400,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Значення вторинного кольору смуги прогресу</string>
   <string name="morphe_seekbar_custom_color_invalid">Недійсне значення кольору смуги прогресу</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип заголовка</string>
   <string name="morphe_header_logo_entry_1">Стандартний</string>
   <string name="morphe_header_logo_entry_2">Звичайний</string>

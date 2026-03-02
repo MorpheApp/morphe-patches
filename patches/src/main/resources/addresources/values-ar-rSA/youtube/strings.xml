@@ -434,6 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">تم نسخ URL إلى الحافظة</string>
   <string name="morphe_share_copy_url_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني</string>
@@ -1399,7 +1400,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">لون تمييز شريط التقدم</string>
   <string name="morphe_seekbar_custom_color_invalid">لون شريط التقدم غير صالح</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">علامة الشعار</string>
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_2">القياسي</string>

@@ -434,6 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
   <string name="morphe_hide_video_ads_summary_on">वीडियो विज्ञापन छिपाए गए हैं</string>
   <string name="morphe_hide_video_ads_summary_off">वीडियो विज्ञापन दिखाई दिए जाते हैं</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL कॉपी किया गया है क्लिपबोर्ड में</string>
   <string name="morphe_share_copy_url_timestamp_success">URL के साथ टाइमस्टैम्प कॉपी किया गया</string>
@@ -820,7 +821,7 @@ Second \"item\" text"</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_animation_style_entry_1">निष्क्रिय</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
   <string name="morphe_header_logo_entry_5">कस्टम</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->

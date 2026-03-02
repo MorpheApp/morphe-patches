@@ -17,6 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">درباره</string>
@@ -36,6 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_cast_button_title">دکمه مخفی کردن کست</string>
   <string name="morphe_music_hide_cast_button_summary_on">دکمه Cast مخفی شده</string>
   <string name="morphe_music_hide_cast_button_summary_off">دکمه Cast نمایش داده می شود</string>
+  <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.compactheader.hideCategoryBar -->
   <!-- layout.miniplayercolor.changeMiniplayerColor -->
   <!-- layout.navigationbar.navigationBarPatch -->

@@ -436,6 +436,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">동영상 광고 숨기기</string>
   <string name="morphe_hide_video_ads_summary_on">동영상 광고가 숨겨집니다</string>
   <string name="morphe_hide_video_ads_summary_off">동영상 광고가 표시됩니다</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_url_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
@@ -1398,7 +1399,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">재생바 보조 색상을 지정할 수 있습니다</string>
   <string name="morphe_seekbar_custom_color_invalid">잘못된 재생바 색상입니다</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">헤더 로고</string>
   <string name="morphe_header_logo_entry_1">기본값</string>
   <string name="morphe_header_logo_entry_2">일반</string>

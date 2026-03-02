@@ -434,6 +434,7 @@ Rajoitukset:
   <string name="morphe_hide_video_ads_title">Piilota videomainokset</string>
   <string name="morphe_hide_video_ads_summary_on">Videomainokset piilotetaan</string>
   <string name="morphe_hide_video_ads_summary_off">Videomainokset näytetään</string>
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL-osoite kopioitiin leikepöydälle</string>
   <string name="morphe_share_copy_url_timestamp_success">Aikaleimattu URL-osoite kopioitiin</string>
@@ -1401,7 +1402,7 @@ Pyhkäise laajentaaksesi tai sulkeaksesi"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Etenemispalkin korostusväri</string>
   <string name="morphe_seekbar_custom_color_invalid">Virheellinen etenemispalkin väriarvo</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Ylätunnisteen logo</string>
   <string name="morphe_header_logo_entry_1">Oletus</string>
   <string name="morphe_header_logo_entry_2">Tavallinen</string>

@@ -1,27 +1,38 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.shared.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import java.lang.ref.WeakReference
 
-lateinit var lithoColorOverrideHook: (targetMethodClass: String, targetMethodName: String) -> Unit
-    private set
+private lateinit var lithoColorOverrideHookRef : WeakReference<MutableMethod>
+private var lithoColorOverrideHookInsertIndex = -1
+
+fun lithoColorOverrideHook(targetMethodClass: String, targetMethodName: String) {
+    lithoColorOverrideHookRef.get()!!.addInstructions(
+        lithoColorOverrideHookInsertIndex,
+        """
+            invoke-static { p1 }, $targetMethodClass->$targetMethodName(I)I
+            move-result p1
+        """
+    )
+    lithoColorOverrideHookInsertIndex += 2
+}
 
 val lithoColorHookPatch = bytecodePatch(
     description = "Adds a hook to set color of Litho components.",
 ) {
 
     execute {
-        var insertionIndex = LithoOnBoundsChangeFingerprint.instructionMatches.last().index - 1
-
-        lithoColorOverrideHook = { targetMethodClass, targetMethodName ->
-            LithoOnBoundsChangeFingerprint.method.addInstructions(
-                insertionIndex,
-                """
-                    invoke-static { p1 }, $targetMethodClass->$targetMethodName(I)I
-                    move-result p1
-                """
-            )
-            insertionIndex += 2
-        }
+        lithoColorOverrideHookRef = WeakReference(LithoOnBoundsChangeFingerprint.method)
+        lithoColorOverrideHookInsertIndex = LithoOnBoundsChangeFingerprint.instructionMatches.last().index - 1
     }
 }

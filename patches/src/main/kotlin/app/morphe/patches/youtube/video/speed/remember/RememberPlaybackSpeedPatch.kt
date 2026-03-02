@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.video.speed.remember
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -9,10 +17,10 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
-import app.morphe.patches.youtube.video.information.setPlaybackSpeedClassFieldReference
-import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReference
-import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceClassType
-import app.morphe.patches.youtube.video.information.setPlaybackSpeedMethodReference
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedClassFieldReferenceRef
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceRef
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceClassTypeRef
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedMethodReferenceRef
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
@@ -75,16 +83,16 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
                     iget-object v1, p0, $onItemClickListenerClassFieldReference
 
                     # Get the container class field.
-                    iget-object v1, v1, $setPlaybackSpeedContainerClassFieldReference 
+                    iget-object v1, v1, ${setPlaybackSpeedContainerClassFieldReferenceRef.get()}
                     
                     # Required cast for 20.49+
-                    check-cast v1, $setPlaybackSpeedContainerClassFieldReferenceClassType
+                    check-cast v1, ${setPlaybackSpeedContainerClassFieldReferenceClassTypeRef.get()}
                     
                     # Get the field from its class.
-                    iget-object v2, v1, $setPlaybackSpeedClassFieldReference
+                    iget-object v2, v1, ${setPlaybackSpeedClassFieldReferenceRef.get()}
                     
                     # Invoke setPlaybackSpeed on that class.
-                    invoke-virtual {v2, v0}, $setPlaybackSpeedMethodReference
+                    invoke-virtual {v2, v0}, ${setPlaybackSpeedMethodReferenceRef.get()}
                 """,
                 ExternalLabel("do_not_override", getInstruction(0)),
             )
