@@ -184,9 +184,9 @@ Changes include:
     <string name="morphe_hide_quick_actions_title">Hide quick actions</string>
     <string name="morphe_hide_quick_actions_summary_on">Quick actions in fullscreen are hidden</string>
     <string name="morphe_hide_quick_actions_summary_off">Quick actions in fullscreen  are shown</string>
-    <string name="morphe_hide_related_videos_title">Hide related videos</string>
-    <string name="morphe_hide_related_videos_summary_on">Related videos in quick actions are hidden</string>
-    <string name="morphe_hide_related_videos_summary_off">Related videos in quick actions are shown</string>
+    <string name="morphe_hide_quick_actions_related_videos_title">Hide quick actions related videos</string>
+    <string name="morphe_hide_quick_actions_related_videos_summary_on">Related videos in quick actions are hidden</string>
+    <string name="morphe_hide_quick_actions_related_videos_summary_off">Related videos in quick actions are shown</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
     <string name="morphe_hide_subscribers_community_guidelines_summary_on">Subscribers community guidelines are hidden</string>
     <string name="morphe_hide_subscribers_community_guidelines_summary_off">Subscribers community guidelines are shown</string>
@@ -1015,6 +1015,11 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
 
 'Autoplay next video' can be changed in YouTube settings:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
+
+    <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+    <string name="morphe_hide_related_videos_title">Hide related videos</string>
+    <string name="morphe_hide_related_videos_summary_on">Related videos are hidden</string>
+    <string name="morphe_hide_related_videos_summary_off">Related videos are shown</string>
 
     <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
     <string name="morphe_hide_related_videos_overlay_title">Hide related videos overlay</string>
