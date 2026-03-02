@@ -443,5 +443,24 @@ val navigationBarPatch = bytecodePatch(
                 }
             }
         }
+
+        //
+        // Replace create with settings button
+        //
+
+        CreateButtonDrawableFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getCreateButtonDrawableId(I)I
+                    move-result v$register
+                    """
+                )
+            }
+        }
     }
 }
