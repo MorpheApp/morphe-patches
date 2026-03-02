@@ -22,6 +22,7 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -42,6 +43,26 @@ private const val EXTENSION_TOOLBAR_INTERFACE =
     "Lapp/morphe/extension/youtube/shared/NavigationBar${'$'}AppCompatToolbarPatchInterface;"
 
 private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
+
+private lateinit var bottomBarContainerMethodRef: WeakReference<MutableMethod>
+private var bottomBarContainerOffset = 0
+
+fun addBottomBarContainerHook(descriptor: String) {
+    bottomBarContainerMethodRef.get()!!.apply {
+        val layoutChangeListenerIndex = indexOfFirstInstructionOrThrow {
+            opcode == Opcode.INVOKE_VIRTUAL &&
+                    getReference<MethodReference>()?.name == "addOnLayoutChangeListener"
+        }
+
+        val bottomBarContainerRegister =
+            getInstruction<FiveRegisterInstruction>(layoutChangeListenerIndex).registerC
+
+        addInstruction(
+            layoutChangeListenerIndex + bottomBarContainerOffset--,
+            "invoke-static { v$bottomBarContainerRegister }, $descriptor"
+        )
+    }
+}
 
 fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
     hookNavigationButtonCreatedMethodRef.get()!!.addInstruction(
@@ -214,6 +235,10 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         hookNavigationButtonCreatedMethodRef = WeakReference(
             NavigationBarHookCallbackFingerprint.method
         )
+
+        InitializeBottomBarContainerFingerprint.let {
+            bottomBarContainerMethodRef = WeakReference(it.method)
+        }
 
         // Fix YT bug of notification tab missing the filled icon.
         if (is_19_35_or_greater) {

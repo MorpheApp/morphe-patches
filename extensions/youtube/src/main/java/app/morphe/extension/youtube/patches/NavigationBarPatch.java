@@ -71,6 +71,9 @@ public final class NavigationBarPatch {
     private static final boolean NARROW_NAVIGATION_BUTTONS
             = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
+    private static final boolean HIDE_NAVIGATION_BAR
+            = Settings.HIDE_NAVIGATION_BAR.get();
+
     /**
      * Injection point.
      */
@@ -113,6 +116,13 @@ public final class NavigationBarPatch {
      */
     public static boolean enableNarrowNavigationButton(boolean original) {
         return NARROW_NAVIGATION_BUTTONS || original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideNavigationBar(View view) {
+        hideViewUnderCondition(HIDE_NAVIGATION_BAR, view);
     }
 
     /**

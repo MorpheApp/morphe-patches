@@ -24,6 +24,7 @@ import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
@@ -85,6 +86,7 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_swap_create_with_notifications_button"),
             SwitchPreference("morphe_hide_navigation_button_labels"),
             SwitchPreference("morphe_narrow_navigation_buttons"),
+            SwitchPreference("morphe_hide_navigation_bar"),
         )
 
         if (is_19_25_or_greater) {
@@ -130,6 +132,9 @@ val navigationBarPatch = bytecodePatch(
 
         // Hook navigation button created, in order to hide them.
         hookNavigationButtonCreated(EXTENSION_CLASS_DESCRIPTOR)
+
+        // Hide navigation bar
+        addBottomBarContainerHook("$EXTENSION_CLASS_DESCRIPTOR->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
         if (is_19_25_or_greater) {

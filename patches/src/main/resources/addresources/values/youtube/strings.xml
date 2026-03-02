@@ -707,8 +707,15 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_swap_create_with_notifications_button_summary_off">Create button is not swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_user_dialog_message">If changing this setting does not take effect, try switching to Incognito mode.</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
-    <string name="morphe_hide_navigation_button_labels_summary_on">Labels are hidden</string>
-    <string name="morphe_hide_navigation_button_labels_summary_off">Labels are shown</string>
+    <string name="morphe_hide_navigation_button_labels_summary_on">Navigation button labels are hidden</string>
+    <string name="morphe_hide_navigation_button_labels_summary_off">Navigation button labels are shown</string>
+    <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
+    <string name="morphe_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
+    <string name="morphe_hide_navigation_bar_summary_off">Navigation bar is shown</string>
+    <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including the 'You' tab.
+
+To access Settings:
+Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferences' at the bottom."</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary_on">Spacing between navigation buttons is narrow</string>
     <string name="morphe_narrow_navigation_buttons_summary_off">Spacing between navigation buttons is normal</string>
