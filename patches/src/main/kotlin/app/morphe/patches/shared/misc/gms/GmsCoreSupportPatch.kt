@@ -11,7 +11,7 @@ import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.packagename.genericChangePackageNamePatch
+import app.morphe.patches.all.misc.packagename.changePackageNamePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
 import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
@@ -68,7 +68,7 @@ fun gmsCoreSupportPatch(
 ) {
 
     dependsOn(
-        genericChangePackageNamePatch,
+        changePackageNamePatch,
         gmsCoreSupportResourcePatchFactory(),
         extensionPatch,
     )
@@ -515,7 +515,7 @@ fun gmsCoreSupportResourcePatch(
     block: ResourcePatchBuilder.() -> Unit = {},
 ) = resourcePatch {
     dependsOn(
-        genericChangePackageNamePatch
+        changePackageNamePatch
     )
 
     execute {
