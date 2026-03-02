@@ -60,23 +60,17 @@ public final class NavigationBarPatch {
         }
     };
 
-    private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
-            = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+    private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
 
-    private static final boolean DISABLE_TRANSLUCENT_STATUS_BAR
-            = Settings.DISABLE_TRANSLUCENT_STATUS_BAR.get();
+    private static final boolean DISABLE_TRANSLUCENT_STATUS_BAR = Settings.DISABLE_TRANSLUCENT_STATUS_BAR.get();
 
-    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT
-            = Settings.DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT.get();
+    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = Settings.DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT.get();
 
-    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK
-            = Settings.DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK.get();
+    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = Settings.DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK.get();
 
-    private static final boolean NARROW_NAVIGATION_BUTTONS
-            = Settings.NARROW_NAVIGATION_BUTTONS.get();
+    private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
-    private static final boolean HIDE_NAVIGATION_BAR
-            = Settings.HIDE_NAVIGATION_BAR.get();
+    private static final boolean HIDE_NAVIGATION_BAR = Settings.HIDE_NAVIGATION_BAR.get();
 
     /**
      * Injection point.
@@ -325,9 +319,10 @@ public final class NavigationBarPatch {
 
     private static final boolean HIDE_TOOLBAR_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get();
 
-    private static final boolean HIDE_TOOLBAR_VOICE_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_VOICE_SEARCH_BUTTON.get();
+    private static final boolean HIDE_TOOLBAR_MICROPHONE_BUTTON = Settings.HIDE_TOOLBAR_MICROPHONE_BUTTON.get();
 
     private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON = Settings.REPLACE_TOOLBAR_CREATE_BUTTON.get();
+
     private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
 
     /**
@@ -365,15 +360,15 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void hideVoiceSearchButton(View view) {
-        hideViewUnderCondition(HIDE_TOOLBAR_VOICE_SEARCH_BUTTON, view);
+    public static void hideMicrophoneButton(View view) {
+        hideViewUnderCondition(HIDE_TOOLBAR_MICROPHONE_BUTTON, view);
     }
 
     /**
      * Injection point.
      */
-    public static void hideVoiceSearchButton(View view, int visibility) {
-        view.setVisibility(HIDE_TOOLBAR_VOICE_SEARCH_BUTTON ? View.GONE : visibility);
+    public static void hideMicrophoneButton(View view, int visibility) {
+        view.setVisibility(HIDE_TOOLBAR_MICROPHONE_BUTTON ? View.GONE : visibility);
     }
 
     // Wide searchbar

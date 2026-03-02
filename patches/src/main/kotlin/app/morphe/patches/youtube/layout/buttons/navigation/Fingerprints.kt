@@ -179,7 +179,7 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
             smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
         ),
         SET_VISIBILITY_METHOD_CALL, // clear button.
-        SET_VISIBILITY_METHOD_CALL, // voice search button.
+        SET_VISIBILITY_METHOD_CALL, // microphone button.
         SET_VISIBILITY_METHOD_CALL  // lens search button.
     )
 )

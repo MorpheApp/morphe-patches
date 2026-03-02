@@ -321,9 +321,9 @@ val navigationBarPatch = bytecodePatch(
 
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_toolbar_create_button"),
+            SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
-            SwitchPreference("morphe_hide_toolbar_voice_search_button"),
             SwitchPreference("morphe_replace_toolbar_create_button"),
             SwitchPreference("morphe_replace_toolbar_create_button_type")
         )
@@ -364,7 +364,7 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        // Hide voice search button in the search bar while typing.
+        // Hide microphone button in the search bar while typing.
         SearchButtonsVisibilityFingerprint.match(
             SearchFragmentFingerprint.originalClassDef
         ).let {
@@ -375,12 +375,12 @@ val navigationBarPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->hideVoiceSearchButton(Landroid/view/View;I)V"
+                            "$EXTENSION_CLASS_DESCRIPTOR->hideMicrophoneButton(Landroid/view/View;I)V"
                 )
             }
         }
 
-        // Hide voice search button in the search bar in search results.
+        // Hide microphone button in the search bar in search results.
         SearchResultButtonVisibilityFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
@@ -389,7 +389,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     index + 1,
                     "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                            "hideVoiceSearchButton(Landroid/view/View;)V"
+                            "hideMicrophoneButton(Landroid/view/View;)V"
                 )
             }
         }
