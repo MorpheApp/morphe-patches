@@ -23,6 +23,7 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
@@ -157,12 +158,12 @@ private const val FILTER_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patch
 @Suppress("unused")
 val hideShortsComponentsPatch = bytecodePatch(
     name = "Hide Shorts components",
-    description = "Adds options to hide components related to Shorts. " +
-            "Patching version 20.21.37 or lower can hide more Shorts player button types."
+    description = "Adds options to hide components related to Shorts."
 ) {
     dependsOn(
         engagementPanelHookPatch,
         hideShortsComponentsResourcePatch,
+        layoutReloadObserverPatch,
         lithoFilterPatch,
         navigationBarHookPatch,
         resourceMappingPatch,

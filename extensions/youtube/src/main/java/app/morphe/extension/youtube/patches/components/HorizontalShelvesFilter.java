@@ -5,6 +5,8 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
+
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -12,7 +14,7 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
-public class HorizontalShelvesFilter extends Filter {
+final class HorizontalShelvesFilter extends Filter {
     private final ByteArrayFilterGroupList descriptionBuffers = new ByteArrayFilterGroupList();
     private final ByteArrayFilterGroupList generalBuffers = new ByteArrayFilterGroupList();
 
@@ -49,12 +51,12 @@ public class HorizontalShelvesFilter extends Filter {
 
         generalBuffers.addAll(
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYABLES,
-                        "FEmini_app_destination"
-                ),
-                new ByteArrayFilterGroup(
                         Settings.HIDE_CREATOR_STORE_SHELF,
                         "shopping_item_card_list"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYABLES,
+                        "FEmini_app_destination"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_TICKET_SHELF,
@@ -64,9 +66,14 @@ public class HorizontalShelvesFilter extends Filter {
     }
 
     private boolean hideShelves() {
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            return true;
+        if (!Settings.HIDE_HORIZONTAL_SHELVES.get()) {
+            return false;
         }
+        // Must check player type first, as search bar can be active behind the player.
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get()) {
+            return false;
+        }
+        // Must check second, as search can be from any tab.
         if (NavigationBar.isSearchBarActive()) {
             return true;
         }
@@ -84,11 +91,13 @@ public class HorizontalShelvesFilter extends Filter {
         }
         if (EngagementPanel.isDescription()) {
             PlayerType playerType = PlayerType.getCurrent();
-            if (!playerType.isNoneOrHidden() && !playerType.isMaximizedOrFullscreen()) {
+            // PlayerType when the description panel is opened: [NONE], [HIDDEN],
+            // [WATCH_WHILE_MAXIMIZED], [WATCH_WHILE_FULLSCREEN], [WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN].
+            if (!playerType.isMaximizedOrFullscreen() && !playerType.isNoneOrHidden()) {
                 return false;
             }
             return descriptionBuffers.check(buffer).isFiltered();
         }
-        return hideShelves() && Settings.HIDE_HORIZONTAL_SHELVES.get();
+        return hideShelves();
     }
 }

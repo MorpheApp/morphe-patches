@@ -296,6 +296,17 @@ public class Utils {
         return false;
     }
 
+    public static boolean startsWithAny(String value, String...targets) {
+        if (isNotEmpty(value)) {
+            for (String string : targets) {
+                if (isNotEmpty(string) && value.startsWith(string)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public interface MatchFilter<T> {
         boolean matches(T object);
     }

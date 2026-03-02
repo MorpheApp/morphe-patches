@@ -42,6 +42,7 @@ val conversionContextPatch = bytecodePatch(
             )
         }
 
+        // The conversionContext class can be used as is in most versions.
         if (conversionContextClassDef.superclass == "Ljava/lang/Object;") {
             conversionContextClassDef.apply {
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
@@ -81,7 +82,11 @@ val conversionContextPatch = bytecodePatch(
                     )
                 }
             }
-        } else { // YouTube 20.41
+        } else {
+            // In some special versions, such as YouTube 20.41, it inherits from an abstract class,
+            // in which case a helper method is added to the abstract class.
+
+            // Since fields cannot be accessed directly in an abstract class, abstract methods are linked.
             val conversionContextIdentifierFingerprint = Fingerprint(
                 parameters = listOf(),
                 returnType = STRING_TYPE,

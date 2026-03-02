@@ -10,6 +10,7 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 
@@ -23,6 +24,7 @@ internal val hideHorizontalShelvesPatch = bytecodePatch {
         playerTypeHookPatch,
         navigationBarHookPatch,
         engagementPanelHookPatch,
+        layoutReloadObserverPatch,
     )
 
     execute {

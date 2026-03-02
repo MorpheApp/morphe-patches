@@ -8,6 +8,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.view.View;
@@ -506,7 +507,7 @@ public final class ShortsFilter extends Filter {
         }
 
         // Must check player type first, as search bar can be active behind the player.
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get()) {
             return EngagementPanel.isDescription()
                     ? hideVideoDescription // Player video description panel opened.
                     : hideHome; // For now, consider Shorts under video player the same as the home feed.

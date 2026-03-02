@@ -248,6 +248,8 @@ val lithoFilterPatch = bytecodePatch(
                     insertIndex,
                     """
                         move-object/from16 v$bufferRegister, p3
+
+                        # Verify it's the expected subclass just in case.
                         instance-of v$freeRegister, v$bufferRegister, ${protoBufferEncodeMethod.definingClass}
                         if-eqz v$freeRegister, :empty_buffer
 
@@ -266,7 +268,7 @@ val lithoFilterPatch = bytecodePatch(
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :unfiltered
                         
-                        # Return an empty component
+                        # Return an empty component.
                         move-object/from16 v$freeRegister, p1
                         invoke-static { v$freeRegister }, $builderMethodDescriptor
                         move-result-object v$freeRegister
