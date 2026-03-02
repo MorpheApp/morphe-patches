@@ -420,7 +420,7 @@ public final class NavigationBarPatch {
         Context context = Utils.getContext();
         if (context == null) return original;
 
-        int gearId = context.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", context.getPackageName());
+        int gearId = context.getResources().getIdentifier("yt_outline_experimental_gear_black_24", "drawable", context.getPackageName());
         if (gearId == 0) gearId = context.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", context.getPackageName());
 
         return gearId != 0 ? gearId : original;
@@ -475,8 +475,8 @@ public final class NavigationBarPatch {
         Context context = activity != null ? activity : view.getContext();
 
         try {
-            Intent intent = new Intent("android.intent.action.MANAGE_NETWORK_USAGE");
-            intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.application.Shell_SettingsActivity");
 
             if (activity == null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
