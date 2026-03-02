@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+ 
 package app.morphe.extension.youtube.shared;
 
 public final class ConversionContext {
