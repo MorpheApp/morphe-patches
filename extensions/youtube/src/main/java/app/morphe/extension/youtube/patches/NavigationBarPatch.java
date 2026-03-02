@@ -419,65 +419,81 @@ public final class NavigationBarPatch {
         if (!REPLACE_TOOLBAR_CREATE_BUTTON) return;
         if (!equalsAny(enumString, CREATE_BUTTON_ENUMS)) return;
 
-        ImageView imageView = null;
-        if (toolbarView instanceof ViewGroup vg) {
+        if (!(toolbarView instanceof ViewGroup vg)) return;
+
+        Utils.runOnMainThread(() -> {
+            ImageView originalIcon = null;
+            ImageView customIcon = null;
+
             for (int i = 0; i < vg.getChildCount(); i++) {
-                if (vg.getChildAt(i) instanceof ImageView) {
-                    imageView = (ImageView) vg.getChildAt(i);
-                    break;
+                View child = vg.getChildAt(i);
+                if (child instanceof ImageView) {
+                    if ("morphe_settings_icon".equals(child.getTag())) {
+                        customIcon = (ImageView) child;
+                    } else {
+                        originalIcon = (ImageView) child;
+                    }
                 }
             }
-        }
 
-        if (imageView == null) return;
-        ImageView finalImageView = getImageView(imageView);
-        Utils.runOnMainThread(() -> {
-            toolbarView.setOnClickListener(null);
-            toolbarView.setClickable(false);
-            toolbarView.setLongClickable(false);
+            if (originalIcon == null) return;
+            originalIcon.setVisibility(View.GONE);
 
-            finalImageView.setClickable(true);
-            finalImageView.setLongClickable(true);
+            if (customIcon == null) {
+                Context ctx = vg.getContext();
+                customIcon = new ImageView(ctx);
+                customIcon.setTag("morphe_settings_icon");
+                customIcon.setLayoutParams(originalIcon.getLayoutParams());
+                vg.addView(customIcon);
 
-            if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
-                finalImageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
-                finalImageView.setOnLongClickListener(button -> {
-                    openYouTubeSettings(button);
-                    return true;
-                });
-            } else {
-                finalImageView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
-                finalImageView.setOnLongClickListener(button -> {
-                    openMorpheSettings(button);
-                    return true;
-                });
+                int gearId = ctx.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", ctx.getPackageName());
+                if (gearId == 0)
+                    gearId = ctx.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", ctx.getPackageName());
+                if (gearId != 0) customIcon.setImageResource(gearId);
+
+                android.content.res.ColorStateList originalTint = originalIcon.getImageTintList();
+                if (originalTint != null) {
+                    customIcon.setImageTintList(originalTint);
+                } else {
+                    customIcon.setColorFilter(Utils.getAppForegroundColor(), android.graphics.PorterDuff.Mode.SRC_IN);
+                }
+
+                customIcon.setClickable(true);
+                customIcon.setLongClickable(true);
+
+                if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
+                    customIcon.setOnClickListener(NavigationBarPatch::openMorpheSettings);
+                    customIcon.setOnLongClickListener(button -> {
+                        openYouTubeSettings(button);
+                        return true;
+                    });
+                } else {
+                    customIcon.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
+                    customIcon.setOnLongClickListener(button -> {
+                        openMorpheSettings(button);
+                        return true;
+                    });
+                }
             }
-        });
-    }
 
-    @NonNull
-    private static ImageView getImageView(ImageView finalImageView) {
-        finalImageView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
-            Context ctx = v.getContext();
-            int gearId = ctx.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", ctx.getPackageName());
-            if (gearId == 0) gearId = ctx.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", ctx.getPackageName());
-            if (gearId != 0) {
-                ((ImageView) v).setImageResource(gearId);
-            }
+            vg.setOnClickListener(null);
+            vg.setClickable(false);
+            vg.setLongClickable(false);
         });
-        return finalImageView;
     }
 
     private static void openYouTubeSettings(View view) {
-        Context context = view.getContext();
+        Activity activity = Utils.getActivity();
+        Context context = activity != null ? activity : view.getContext();
+
         try {
             Intent intent = new Intent();
             intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
-            intent.putExtra(":android:show_fragment", "com.google.android.apps.youtube.app.settings.GeneralPrefsFragment");
-            intent.putExtra(":android:no_headers", true);
-            if (!(context instanceof Activity)) {
+
+            if (activity == null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
+
             context.startActivity(intent);
         } catch (Exception e) {
             Utils.showToastShort("Failed to open YouTube settings");
@@ -486,12 +502,18 @@ public final class NavigationBarPatch {
     }
 
     private static void openMorpheSettings(View view) {
-        Context context = view.getContext();
+        Activity activity = Utils.getActivity();
+        Context context = activity != null ? activity : view.getContext();
+
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.setData(Uri.parse("morphe_settings_intent"));
             intent.setClassName(context.getPackageName(), "com.google.android.libraries.social.licenses.LicenseActivity");
-            if (!(context instanceof Activity)) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            if (activity == null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+
             context.startActivity(intent);
         } catch (Exception e) {
             Utils.showToastShort("Failed to open Morphe settings");
