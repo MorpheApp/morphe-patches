@@ -447,6 +447,13 @@ public final class NavigationBarPatch {
         ImageView finalImageView = imageView;
 
         Utils.runOnMainThreadDelayed(() -> {
+            toolbarView.setOnClickListener(null);
+            toolbarView.setClickable(false);
+            toolbarView.setLongClickable(false);
+
+            finalImageView.setClickable(true);
+            finalImageView.setLongClickable(true);
+
             if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
                 finalImageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
                 finalImageView.setOnLongClickListener(button -> {
@@ -464,21 +471,17 @@ public final class NavigationBarPatch {
     }
 
     private static void openYouTubeSettings(View view) {
-        Context context = view.getContext();
+        Activity activity = Utils.getActivity();
+        Context context = activity != null ? activity : view.getContext();
 
         try {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("https://www.youtube.com/settings"));
-            intent.setPackage(context.getPackageName());
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-            return;
-        } catch (Exception ignored) {}
-
-        try {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
+            Intent intent = new Intent("android.intent.action.MANAGE_NETWORK_USAGE");
             intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            if (activity == null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+
             context.startActivity(intent);
         } catch (Exception e) {
             Utils.showToastShort("Failed to open YouTube settings");
@@ -487,12 +490,18 @@ public final class NavigationBarPatch {
     }
 
     private static void openMorpheSettings(View view) {
-        Context context = view.getContext();
+        Activity activity = Utils.getActivity();
+        Context context = activity != null ? activity : view.getContext();
+
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.setData(Uri.parse("morphe_settings_intent"));
             intent.setClassName(context.getPackageName(), "com.google.android.libraries.social.licenses.LicenseActivity");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            if (activity == null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+
             context.startActivity(intent);
         } catch (Exception e) {
             Utils.showToastShort("Failed to open Morphe settings");

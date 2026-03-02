@@ -256,3 +256,9 @@ internal object CreateButtonDrawableFingerprint : Fingerprint(
         resourceLiteral(ResourceType.DRAWABLE, "yt_outline_video_camera_black_24")
     )
 )
+
+internal object CreateButtonExperimentalDrawableFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.DRAWABLE, "yt_outline_experimental_video_camera_black_24")
+    )
+)
