@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.MessageLite;
@@ -414,22 +415,6 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static int getCreateButtonDrawableId(int original) {
-        if (!REPLACE_TOOLBAR_CREATE_BUTTON) return original;
-
-        Context context = Utils.getContext();
-        if (context == null) return original;
-
-        int settingsDrawableId = context.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", context.getPackageName());
-        int settingsCairoDrawableId = context.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", context.getPackageName());
-
-        int finalId = settingsCairoDrawableId != 0 ? settingsCairoDrawableId : settingsDrawableId;
-        return finalId != 0 ? finalId : original;
-    }
-
-    /**
-     * Injection point.
-     */
     public static void replaceCreateButton(String enumString, View toolbarView) {
         if (!REPLACE_TOOLBAR_CREATE_BUTTON) return;
         if (!equalsAny(enumString, CREATE_BUTTON_ENUMS)) return;
@@ -445,8 +430,7 @@ public final class NavigationBarPatch {
         }
 
         if (imageView == null) return;
-
-        ImageView finalImageView = imageView;
+        ImageView finalImageView = getImageView(imageView);
         Utils.runOnMainThread(() -> {
             toolbarView.setOnClickListener(null);
             toolbarView.setClickable(false);
@@ -471,20 +455,47 @@ public final class NavigationBarPatch {
         });
     }
 
+    @NonNull
+    private static ImageView getImageView(ImageView finalImageView) {
+        finalImageView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            Context ctx = v.getContext();
+            int gearId = ctx.getResources().getIdentifier("yt_outline_gear_cairo_black_24", "drawable", ctx.getPackageName());
+            if (gearId == 0) gearId = ctx.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", ctx.getPackageName());
+            if (gearId != 0) {
+                ((ImageView) v).setImageResource(gearId);
+            }
+        });
+        return finalImageView;
+    }
+
     private static void openYouTubeSettings(View view) {
         Context context = view.getContext();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        context.startActivity(intent);
+        try {
+            Intent intent = new Intent();
+            intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.settings.SettingsActivity");
+            intent.putExtra(":android:show_fragment", "com.google.android.apps.youtube.app.settings.GeneralPrefsFragment");
+            intent.putExtra(":android:no_headers", true);
+            if (!(context instanceof Activity)) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Utils.showToastShort("Failed to open YouTube settings");
+            Logger.printException(() -> "YouTube Settings Intent Failed", e);
+        }
     }
 
     private static void openMorpheSettings(View view) {
         Context context = view.getContext();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setData(Uri.parse("morphe_settings_intent"));
-        intent.setClassName(context.getPackageName(), "com.google.android.libraries.social.licenses.LicenseActivity");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        context.startActivity(intent);
+        try {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setData(Uri.parse("morphe_settings_intent"));
+            intent.setClassName(context.getPackageName(), "com.google.android.libraries.social.licenses.LicenseActivity");
+            if (!(context instanceof Activity)) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Utils.showToastShort("Failed to open Morphe settings");
+            Logger.printException(() -> "Morphe Settings Intent Failed", e);
+        }
     }
 }

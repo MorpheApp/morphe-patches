@@ -250,9 +250,3 @@ internal object TopBarRendererFingerprint : Fingerprint(
         literal(120823052L),
     )
 )
-
-internal object CreateButtonDrawableFingerprint : Fingerprint(
-    filters = listOf(
-        resourceLiteral(ResourceType.DRAWABLE, "yt_outline_video_camera_black_24")
-    )
-)
