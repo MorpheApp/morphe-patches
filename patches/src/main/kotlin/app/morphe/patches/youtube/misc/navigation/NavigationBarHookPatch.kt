@@ -64,7 +64,7 @@ fun addBottomBarContainerHook(
         "invoke-static { v$bottomBarContainerRegister }, $descriptor"
     )
 
-    bottomBarContainerInsertIndex--
+    bottomBarContainerOffset--
 }
 
 fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
