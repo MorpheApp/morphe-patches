@@ -22,7 +22,6 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -64,7 +63,7 @@ fun addBottomBarContainerHook(
         "invoke-static { v$bottomBarContainerRegister }, $descriptor"
     )
 
-    bottomBarContainerOffset--
+    bottomBarContainerOffset++
 }
 
 fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
