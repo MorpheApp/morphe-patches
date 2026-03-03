@@ -350,6 +350,16 @@ public final class NavigationBarPatch {
     private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
 
     /**
+     * Interface to use obfuscated methods.
+     */
+    public interface SettingsController {
+        // Methods are added during patching.
+        void patch_openYouTubeSettings();
+    }
+
+    private static WeakReference<SettingsController> settingsControllerRef = new WeakReference<>(null);
+
+    /**
      * Injection point.
      */
     public static void hideCreateButton(String enumName, View parentView, ImageView imageView) {
@@ -393,6 +403,15 @@ public final class NavigationBarPatch {
      */
     public static void hideMicrophoneButton(View view, int visibility) {
         view.setVisibility(HIDE_TOOLBAR_MICROPHONE_BUTTON ? View.GONE : visibility);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setSettingsController(@NonNull SettingsController settingsController) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON) {
+            settingsControllerRef = new WeakReference<>(settingsController);
+        }
     }
 
     /**
@@ -453,6 +472,12 @@ public final class NavigationBarPatch {
     }
 
     private static void openYouTubeSettings(View view) {
+        SettingsController settingsController = settingsControllerRef.get();
+        if (settingsController != null) {
+            settingsController.patch_openYouTubeSettings();
+            return;
+        }
+
         Activity activity = Utils.getActivity();
         Context context = activity != null ? activity : view.getContext();
 

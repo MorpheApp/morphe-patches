@@ -57,9 +57,13 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
+import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
+
+private const val EXTENSION_SETTING_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/NavigationBarPatch\$SettingsController;"
 
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
@@ -399,60 +403,47 @@ val navigationBarPatch = bytecodePatch(
         }
 
         //
-        // Wide searchbar
-        //
-
-        // YT removed the legacy text search text field all code required to use it.
-        // This functionality could be restored by adding a search text field to the toolbar
-        // with a listener that artificially clicks the toolbar search button.
-        if (!is_20_31_or_greater) {
-            SetWordmarkHeaderFingerprint.let {
-                // Navigate to the method that checks if the YT logo is shown beside the search bar.
-                val shouldShowLogoMethod = with(it.originalMethod) {
-                    val invokeStaticIndex = indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.INVOKE_STATIC &&
-                                getReference<MethodReference>()?.returnType == "Z"
-                    }
-                    navigate(this).to(invokeStaticIndex).stop()
-                }
-
-                shouldShowLogoMethod.apply {
-                    findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                        val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                            invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->enableWideSearchbar(Z)Z
-                            move-result v$register
-                        """
-                        )
-                    }
-                }
-            }
-
-            // Fix missing left padding when using wide searchbar.
-            WideSearchbarLayoutFingerprint.method.apply {
-                findInstructionIndicesReversedOrThrow {
-                    val reference = getReference<MethodReference>()
-                    reference?.definingClass == "Landroid/view/LayoutInflater;"
-                            && reference.name == "inflate"
-                }.forEach { inflateIndex ->
-                    val register = getInstruction<OneRegisterInstruction>(inflateIndex + 1).registerA
-
-                    addInstruction(
-                        inflateIndex + 2,
-                        "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->setActionBar(Landroid/view/View;)V"
-                    )
-                }
-            }
-        }
-
-        //
         // Replace create with settings button
         //
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setCreateButtonOnClickListener")
 
+        SettingIntentFingerprint.let {
+            it.classDef.apply {
+                interfaces.add(EXTENSION_SETTING_INTERFACE)
+
+                val helperMethod = ImmutableMethod(
+                    type,
+                    "patch_openYouTubeSettings",
+                    listOf(),
+                    "V",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(2),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-virtual { p0 }, ${it.method}
+                            return-void
+                        """
+                    )
+                }
+
+                methods.add(helperMethod)
+
+                methods.first { method ->
+                    MethodUtil.isConstructor(method)
+                }.apply {
+                    val index = implementation!!.instructions.lastIndex
+
+                    addInstruction(
+                        index,
+                        "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->setSettingsController($EXTENSION_SETTING_INTERFACE)V"
+                    )
+                }
+            }
+        }
 
         TopBarRendererFingerprint.let {
             it.clearMatch()
@@ -510,6 +501,57 @@ val navigationBarPatch = bytecodePatch(
                         move-result-object v$originalButtonRendererRegister
                     """
                 )
+            }
+        }
+
+
+        //
+        // Wide searchbar
+        //
+
+        // YT removed the legacy text search text field all code required to use it.
+        // This functionality could be restored by adding a search text field to the toolbar
+        // with a listener that artificially clicks the toolbar search button.
+        if (!is_20_31_or_greater) {
+            SetWordmarkHeaderFingerprint.let {
+                // Navigate to the method that checks if the YT logo is shown beside the search bar.
+                val shouldShowLogoMethod = with(it.originalMethod) {
+                    val invokeStaticIndex = indexOfFirstInstructionOrThrow {
+                        opcode == Opcode.INVOKE_STATIC &&
+                                getReference<MethodReference>()?.returnType == "Z"
+                    }
+                    navigate(this).to(invokeStaticIndex).stop()
+                }
+
+                shouldShowLogoMethod.apply {
+                    findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                            invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->enableWideSearchbar(Z)Z
+                            move-result v$register
+                        """
+                        )
+                    }
+                }
+            }
+
+            // Fix missing left padding when using wide searchbar.
+            WideSearchbarLayoutFingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow {
+                    val reference = getReference<MethodReference>()
+                    reference?.definingClass == "Landroid/view/LayoutInflater;"
+                            && reference.name == "inflate"
+                }.forEach { inflateIndex ->
+                    val register = getInstruction<OneRegisterInstruction>(inflateIndex + 1).registerA
+
+                    addInstruction(
+                        inflateIndex + 2,
+                        "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->setActionBar(Landroid/view/View;)V"
+                    )
+                }
             }
         }
     }
