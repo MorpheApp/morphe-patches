@@ -181,7 +181,7 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
         ),
         SET_VISIBILITY_METHOD_CALL, // clear button.
         SET_VISIBILITY_METHOD_CALL, // microphone button.
-        SET_VISIBILITY_METHOD_CALL  // lens search button.
+        SET_VISIBILITY_METHOD_CALL  // lens button.
     )
 )
 
