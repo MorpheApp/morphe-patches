@@ -45,23 +45,26 @@ private const val EXTENSION_TOOLBAR_INTERFACE =
 private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
 
 private lateinit var bottomBarContainerMethodRef: WeakReference<MutableMethod>
+private var bottomBarContainerInsertIndex = -1
+private var bottomBarContainerRegister = -1
 private var bottomBarContainerOffset = 0
 
-fun addBottomBarContainerHook(descriptor: String) {
-    bottomBarContainerMethodRef.get()!!.apply {
-        val layoutChangeListenerIndex = indexOfFirstInstructionOrThrow {
-            opcode == Opcode.INVOKE_VIRTUAL &&
-                    getReference<MethodReference>()?.name == "addOnLayoutChangeListener"
-        }
-
-        val bottomBarContainerRegister =
-            getInstruction<FiveRegisterInstruction>(layoutChangeListenerIndex).registerC
-
-        addInstruction(
-            layoutChangeListenerIndex + bottomBarContainerOffset--,
-            "invoke-static { v$bottomBarContainerRegister }, $descriptor"
-        )
+fun addBottomBarContainerHook(
+    descriptor: String,
+    highPriority: Boolean = false
+) {
+    val insertIndex = if (highPriority) {
+        bottomBarContainerInsertIndex
+    } else {
+        bottomBarContainerInsertIndex + bottomBarContainerOffset
     }
+
+    bottomBarContainerMethodRef.get()!!.addInstruction(
+        insertIndex,
+        "invoke-static { v$bottomBarContainerRegister }, $descriptor"
+    )
+
+    bottomBarContainerInsertIndex--
 }
 
 fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
@@ -237,7 +240,12 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         )
 
         InitializeBottomBarContainerFingerprint.let {
-            bottomBarContainerMethodRef = WeakReference(it.method)
+            it.method.apply {
+                bottomBarContainerMethodRef = WeakReference(this)
+                bottomBarContainerInsertIndex = it.instructionMatches.last().index
+                bottomBarContainerRegister =
+                    getInstruction<FiveRegisterInstruction>(bottomBarContainerInsertIndex).registerC
+            }
         }
 
         // Fix YT bug of notification tab missing the filled icon.
