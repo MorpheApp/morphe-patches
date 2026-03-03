@@ -91,7 +91,7 @@ val navigationBarPatch = bytecodePatch(
             navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light")
             navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark")
 
-            PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+            PreferenceScreen.GENERAL.addPreferences(
                 SwitchPreference("morphe_disable_translucent_status_bar")
             )
 
@@ -100,7 +100,7 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_navigation_buttons_screen",
                 sorting = Sorting.UNSORTED,
@@ -324,7 +324,7 @@ val navigationBarPatch = bytecodePatch(
             toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
         }
 
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_toolbar_screen",
                 sorting = Sorting.UNSORTED,

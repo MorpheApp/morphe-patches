@@ -32,7 +32,7 @@ val changeFormFactorPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             ListPreference("morphe_change_form_factor")
         )
 

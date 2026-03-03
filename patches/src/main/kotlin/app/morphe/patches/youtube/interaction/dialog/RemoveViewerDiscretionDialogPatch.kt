@@ -31,7 +31,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_remove_viewer_discretion_dialog"),
         )
 
