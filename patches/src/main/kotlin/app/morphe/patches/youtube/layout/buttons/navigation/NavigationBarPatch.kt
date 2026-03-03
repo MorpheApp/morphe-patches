@@ -342,7 +342,6 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideCreateButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->replaceCreateButton")
 
         // Hide old search button
         //
@@ -447,6 +446,7 @@ val navigationBarPatch = bytecodePatch(
         //
         // Replace create with settings button
         //
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setCreateButtonOnClickListener")
 
         try {
             CreateButtonDrawableFingerprint.let {

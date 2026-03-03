@@ -20,12 +20,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
+import com.google.android.libraries.social.licenses.LicenseActivity;
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
@@ -346,25 +347,25 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void hideCreateButton(String enumName, View view) {
+    public static void hideCreateButton(String enumName, View parentView, ImageView imageView) {
         boolean shouldHide = HIDE_TOOLBAR_CREATE_BUTTON && equalsAny(enumName, CREATE_BUTTON_ENUMS);
-        hideViewUnderCondition(shouldHide, view);
+        hideViewUnderCondition(shouldHide, parentView);
     }
 
     /**
      * Injection point.
      */
-    public static void hideNotificationButton(String enumName, View view) {
+    public static void hideNotificationButton(String enumName, View parentView, ImageView imageView) {
         boolean shouldHide = HIDE_TOOLBAR_NOTIFICATION_BUTTON && equalsAny(enumName, NOTIFICATION_BUTTON_ENUMS);
-        hideViewUnderCondition(shouldHide, view);
+        hideViewUnderCondition(shouldHide, parentView);
     }
 
     /**
      * Injection point.
      */
-    public static void hideSearchButton(String enumName, View view) {
+    public static void hideSearchButton(String enumName, View parentView, ImageView imageView) {
         boolean shouldHide = HIDE_TOOLBAR_SEARCH_BUTTON && NavigationButton.SEARCH.ytEnumNames.contains(enumName);
-        hideViewUnderCondition(shouldHide, view);
+        hideViewUnderCondition(shouldHide, parentView);
     }
 
     /**
@@ -407,45 +408,24 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void replaceCreateButton(String enumString, View toolbarView) {
-        if (!REPLACE_TOOLBAR_CREATE_BUTTON) return;
-        if (!equalsAny(enumString, CREATE_BUTTON_ENUMS)) return;
-
-        ImageView imageView = null;
-        if (toolbarView instanceof ViewGroup vg) {
-            for (int i = 0; i < vg.getChildCount(); i++) {
-                if (vg.getChildAt(i) instanceof ImageView) {
-                    imageView = (ImageView) vg.getChildAt(i);
-                    break;
+    public static void setCreateButtonOnClickListener(String enumName, View parentView, ImageView imageView) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON && equalsAny(enumString, CREATE_BUTTON_ENUMS)) {
+            Utils.runOnMainThreadDelayed(() -> {
+                if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
+                    imageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
+                    imageView.setOnLongClickListener(button -> {
+                        openYouTubeSettings(button);
+                        return true;
+                    });
+                } else {
+                    imageView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
+                    imageView.setOnLongClickListener(button -> {
+                        openMorpheSettings(button);
+                        return true;
+                    });
                 }
-            }
+            }, 100);
         }
-
-        if (imageView == null) return;
-        ImageView finalImageView = imageView;
-
-        Utils.runOnMainThreadDelayed(() -> {
-            toolbarView.setOnClickListener(null);
-            toolbarView.setClickable(false);
-            toolbarView.setLongClickable(false);
-
-            finalImageView.setClickable(true);
-            finalImageView.setLongClickable(true);
-
-            if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
-                finalImageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
-                finalImageView.setOnLongClickListener(button -> {
-                    openYouTubeSettings(button);
-                    return true;
-                });
-            } else {
-                finalImageView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
-                finalImageView.setOnLongClickListener(button -> {
-                    openMorpheSettings(button);
-                    return true;
-                });
-            }
-        }, 50);
     }
 
     private static void openYouTubeSettings(View view) {
@@ -454,7 +434,8 @@ public final class NavigationBarPatch {
 
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.app.application.Shell_SettingsActivity");
+            intent.setPackage(context.getPackageName());
+            intent.setClass(context, Shell_SettingsActivity.class);
 
             if (activity == null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -462,8 +443,7 @@ public final class NavigationBarPatch {
 
             context.startActivity(intent);
         } catch (Exception e) {
-            Utils.showToastShort("Failed to open YouTube settings");
-            Logger.printException(() -> "YouTube Settings Intent Failed", e);
+            Logger.printException(() -> "Failed to open YouTube settings", e);
         }
     }
 
@@ -474,7 +454,8 @@ public final class NavigationBarPatch {
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.setData(Uri.parse("morphe_settings_intent"));
-            intent.setClassName(context.getPackageName(), "com.google.android.libraries.social.licenses.LicenseActivity");
+            intent.setPackage(context.getPackageName());
+            intent.setClass(context, LicenseActivity.class);
 
             if (activity == null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -482,8 +463,7 @@ public final class NavigationBarPatch {
 
             context.startActivity(intent);
         } catch (Exception e) {
-            Utils.showToastShort("Failed to open Morphe settings");
-            Logger.printException(() -> "Morphe Settings Intent Failed", e);
+            Logger.printException(() -> "Failed to open Morphe settings", e);
         }
     }
 
