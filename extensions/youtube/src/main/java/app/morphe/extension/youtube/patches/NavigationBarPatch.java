@@ -37,6 +37,7 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.ButtonRendererOuterClass.ButtonRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
@@ -49,6 +50,22 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
+
+    public static class ReplaceToolbarCreateButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get()
+                    && !Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON,
+                    Settings.HIDE_TOOLBAR_CREATE_BUTTON
+            );
+        }
+    }
 
     private static final Map<NavigationButton, Boolean> shouldHideMap = new EnumMap<>(NavigationButton.class) {
         {
@@ -321,7 +338,8 @@ public final class NavigationBarPatch {
 
     private static final boolean HIDE_TOOLBAR_MICROPHONE_BUTTON = Settings.HIDE_TOOLBAR_MICROPHONE_BUTTON.get();
 
-    private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON = Settings.REPLACE_TOOLBAR_CREATE_BUTTON.get();
+    private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON = SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
+            && !HIDE_TOOLBAR_CREATE_BUTTON && Settings.REPLACE_TOOLBAR_CREATE_BUTTON.get();
 
     private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
 
@@ -369,41 +387,6 @@ public final class NavigationBarPatch {
      */
     public static void hideMicrophoneButton(View view, int visibility) {
         view.setVisibility(HIDE_TOOLBAR_MICROPHONE_BUTTON ? View.GONE : visibility);
-    }
-
-    // Wide searchbar
-    private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
-
-    /**
-     * Injection point.
-     */
-    public static boolean enableWideSearchbar(boolean original) {
-        return WIDE_SEARCHBAR_ENABLED || original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setActionBar(View view) {
-        try {
-            if (!WIDE_SEARCHBAR_ENABLED) return;
-
-            View searchBarView = Utils.getChildViewByResourceName(view, "search_bar");
-
-            final int paddingLeft = searchBarView.getPaddingLeft();
-            final int paddingRight = searchBarView.getPaddingRight();
-            final int paddingTop = searchBarView.getPaddingTop();
-            final int paddingBottom = searchBarView.getPaddingBottom();
-            final int paddingStart = Dim.dp8;
-
-            if (Utils.isRightToLeftLocale()) {
-                searchBarView.setPadding(paddingLeft, paddingTop, paddingStart, paddingBottom);
-            } else {
-                searchBarView.setPadding(paddingStart, paddingTop, paddingRight, paddingBottom);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "setActionBar failure", ex);
-        }
     }
 
     /**
@@ -501,6 +484,41 @@ public final class NavigationBarPatch {
         } catch (Exception e) {
             Utils.showToastShort("Failed to open Morphe settings");
             Logger.printException(() -> "Morphe Settings Intent Failed", e);
+        }
+    }
+
+    // Wide searchbar
+    private static final boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
+
+    /**
+     * Injection point.
+     */
+    public static boolean enableWideSearchbar(boolean original) {
+        return WIDE_SEARCHBAR_ENABLED || original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setActionBar(View view) {
+        if (WIDE_SEARCHBAR_ENABLED) {
+            try {
+                View searchBarView = Utils.getChildViewByResourceName(view, "search_bar");
+
+                final int paddingLeft = searchBarView.getPaddingLeft();
+                final int paddingRight = searchBarView.getPaddingRight();
+                final int paddingTop = searchBarView.getPaddingTop();
+                final int paddingBottom = searchBarView.getPaddingBottom();
+                final int paddingStart = Dim.dp8;
+
+                if (Utils.isRightToLeftLocale()) {
+                    searchBarView.setPadding(paddingLeft, paddingTop, paddingStart, paddingBottom);
+                } else {
+                    searchBarView.setPadding(paddingStart, paddingTop, paddingRight, paddingBottom);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "setActionBar failure", ex);
+            }
         }
     }
 }
