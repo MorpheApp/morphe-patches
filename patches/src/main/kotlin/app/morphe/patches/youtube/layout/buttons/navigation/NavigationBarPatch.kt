@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.ProtobufClassParseByteArrayFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -45,6 +46,7 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -53,6 +55,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
@@ -299,16 +303,17 @@ val navigationBarPatch = bytecodePatch(
 
         TopBarRendererFingerprint.let {
             it.method.apply {
-                val onClickListenerIndex = it.instructionMatches[1].index
+                val onClickListenerIndex = it.instructionMatches[3].index
                 val onClickListenerRegister =
                     getInstruction<FiveRegisterInstruction>(onClickListenerIndex).registerC
-                val messageLiteIndex = it.instructionMatches[2].index
-                val messageLiteRegister =
-                    getInstruction<OneRegisterInstruction>(messageLiteIndex).registerA
+
+                val copiedButtonRendererIndex = it.instructionMatches[4].index
+                val copiedButtonRendererRegister =
+                    getInstruction<OneRegisterInstruction>(copiedButtonRendererIndex).registerA
 
                 addInstruction(
-                    messageLiteIndex + 1,
-                    "invoke-static { v$messageLiteRegister, v$onClickListenerRegister }, " +
+                    copiedButtonRendererIndex + 1,
+                    "invoke-static { v$copiedButtonRendererRegister, v$onClickListenerRegister }, " +
                             "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
                 )
             }
@@ -448,40 +453,64 @@ val navigationBarPatch = bytecodePatch(
         //
         hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setCreateButtonOnClickListener")
 
-        try {
-            CreateButtonDrawableFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
+        TopBarRendererFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                val originalButtonRendererIndex = it.instructionMatches[2].index
+                val originalButtonRendererRegister =
+                    getInstruction<OneRegisterInstruction>(originalButtonRendererIndex).registerA
+                val buttonRendererClass =
+                    getInstruction<ReferenceInstruction>(originalButtonRendererIndex).reference.toString()
+
+                val helperMethod = ImmutableMethod(
+                    definingClass,
+                    "patch_setToolbarIcon",
+                    listOf(
+                        ImmutableMethodParameter(
+                            buttonRendererClass,
+                            null,
+                            null
+                        )
+                    ),
+                    buttonRendererClass,
+                    AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(5),
+                ).toMutable().apply {
                     addInstructions(
-                        index + 1,
+                        0,
                         """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getCreateButtonDrawableId(I)I
-                        move-result v$register
+                            invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setCreateButtonIcon(Lcom/google/protobuf/MessageLite;)[B
+                            move-result-object v1
+                            if-eqz v1, :ignore
+                            sget-object v0, $buttonRendererClass->a:$buttonRendererClass
+                            invoke-static { v0, v1 }, $parseByteArrayMethod
+                            move-result-object p1
+                            check-cast p1, $buttonRendererClass
+                            :ignore
+                            return-object p1
                         """
                     )
                 }
-            }
-        } catch (_: Exception) {
-        }
 
-        try {
-            CreateButtonExperimentalDrawableFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                it.classDef.methods.add(helperMethod)
 
-                    addInstructions(
-                        index + 1,
-                        """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getCreateButtonDrawableId(I)I
-                        move-result v$register
-                        """
-                    )
-                }
+                val insertIndex = it.instructionMatches.first().index
+                val freeRegister =
+                    getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        move-object/from16 v$freeRegister, p0
+                        check-cast v$originalButtonRendererRegister, $buttonRendererClass
+                        invoke-direct { v$freeRegister, v$originalButtonRendererRegister }, $helperMethod
+                        move-result-object v$originalButtonRendererRegister
+                    """
+                )
             }
-        } catch (_: Exception) {
         }
     }
 }

@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
@@ -40,10 +41,10 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.innertube.ButtonRendererOuterClass.ButtonRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.settings.Settings;
@@ -234,11 +235,13 @@ public final class NavigationBarPatch {
         if (SHOW_SEARCH_BUTTON) {
             try {
                 var buttonRenderer = ButtonRenderer.parseFrom(messageLite.toByteArray());
-                var iconName = buttonRenderer.getIcon().getYtIconType().name();
+                if (buttonRenderer.hasIcon()) {
+                    var iconName = buttonRenderer.getIcon().getYtIconType().name();
 
-                // Check the icon name to see if it is the OnClickListener of the search button.
-                if (NavigationButton.SEARCH.ytEnumNames.contains(iconName)) {
-                    openSearchBar = listener;
+                    // Check the icon name to see if it is the OnClickListener of the search button.
+                    if (NavigationButton.SEARCH.ytEnumNames.contains(iconName)) {
+                        openSearchBar = listener;
+                    }
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to set search bar OnClickListener", ex);
@@ -331,6 +334,8 @@ public final class NavigationBarPatch {
             "TAB_ACTIVITY" // Old layout.
     };
 
+    private static final String SETTING_BUTTON_ENUM_NAME = "SETTINGS_CAIRO";
+
     private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_NOTIFICATION_BUTTON = Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get();
@@ -393,23 +398,42 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static int getCreateButtonDrawableId(int original) {
-        if (!REPLACE_TOOLBAR_CREATE_BUTTON) return original;
+    @Nullable
+    public static byte[] setCreateButtonIcon(MessageLite messageLite) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON) {
+            try {
+                var buttonRenderer = ButtonRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
+                if (buttonRenderer.hasIcon()) {
+                    var iconName = buttonRenderer.getIcon().getYtIconType().name();
 
-        Context context = Utils.getContext();
-        if (context == null) return original;
+                    if (Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS)) {
+                        var newIcon = Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build();
 
-        int gearId = context.getResources().getIdentifier("yt_outline_experimental_gear_black_24", "drawable", context.getPackageName());
-        if (gearId == 0) gearId = context.getResources().getIdentifier("yt_outline_gear_black_24", "drawable", context.getPackageName());
+                        // Remove accessibility labels and onclick listeners.
+                        buttonRenderer.clearButtonRendererAccessibilityData();
+                        buttonRenderer.clearRendererAccessibilityData();
+                        buttonRenderer.clearNavigationEndpoint();
 
-        return gearId != 0 ? gearId : original;
+                        // Replace icons.
+                        buttonRenderer.clearIcon();
+                        buttonRenderer.setIcon(newIcon);
+
+                        return buttonRenderer.build().toByteArray();
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to parse ButtonRenderer", ex);
+            }
+        }
+
+        return null;
     }
 
     /**
      * Injection point.
      */
     public static void setCreateButtonOnClickListener(String enumName, View parentView, ImageView imageView) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON && equalsAny(enumString, CREATE_BUTTON_ENUMS)) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON && SETTING_BUTTON_ENUM_NAME.equals(enumName)) {
             Utils.runOnMainThreadDelayed(() -> {
                 if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
                     imageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);

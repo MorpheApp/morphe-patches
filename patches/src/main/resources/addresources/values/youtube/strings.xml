@@ -752,6 +752,7 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
     <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
     <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in the You tab is also overridden.</string>
     <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
     <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings.
 Tap and hold to open YouTube settings."</string>

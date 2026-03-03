@@ -237,28 +237,24 @@ internal object TopBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        checkCast("Ljava/util/List;"),
+        fieldAccess(opcode = Opcode.SGET_OBJECT),
+        checkCast(
+            type = "Ljava/util/List;",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(
+            opcode = Opcode.CHECK_CAST,
+            location = MatchAfterWithin(3)
+        ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             returnType = "L",
-            location = MatchAfterWithin(5)
+            location = MatchAfterWithin(3)
         ),
         opcode(
             opcode = Opcode.CHECK_CAST,
             location = MatchAfterWithin(5)
         ),
         literal(120823052L),
-    )
-)
-
-internal object CreateButtonDrawableFingerprint : Fingerprint(
-    filters = listOf(
-        resourceLiteral(ResourceType.DRAWABLE, "yt_outline_video_camera_black_24")
-    )
-)
-
-internal object CreateButtonExperimentalDrawableFingerprint : Fingerprint(
-    filters = listOf(
-        resourceLiteral(ResourceType.DRAWABLE, "yt_outline_experimental_video_camera_black_24")
     )
 )
