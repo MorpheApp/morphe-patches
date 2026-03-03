@@ -48,7 +48,7 @@ val hideRelatedVideosPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_related_videos"),
+            SwitchPreference("morphe_hide_player_related_videos")
         )
 
         val continuationsField = with (WatchNextResponseParserFingerprint) {
@@ -114,7 +114,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                 fieldAccess(
                     opcode = Opcode.IGET_OBJECT,
                     type = sectionIdentifierField.definingClass
-                ),
+                )
             )
         )
 
@@ -133,12 +133,12 @@ val hideRelatedVideosPatch = bytecodePatch(
                     string("hint=%s,(%s=%s,cheatsheet=%b,key1=%s,w=%d,h=%d)"),
                     fieldAccess(
                         opcode = Opcode.IGET_OBJECT,
-                        definingClass = itemSectionRendererField.definingClass,
+                        definingClass = itemSectionRendererField.definingClass
                     ),
                     fieldAccess(
                         opcode = Opcode.IGET_OBJECT,
                         reference = itemSectionRendererField
-                    ),
+                    )
                 )
             )
 
@@ -230,7 +230,7 @@ val hideRelatedVideosPatch = bytecodePatch(
 
                             :ignore
                             return-void
-                        """,
+                        """
                     )
                 }
 

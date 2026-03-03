@@ -13,19 +13,19 @@ import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SecondaryCo
 
 @SuppressWarnings("unused")
 public class HideRelatedVideosPatch {
-    private static final boolean HIDE_RELATED_VIDEOS = Settings.HIDE_RELATED_VIDEOS.get();
+    private static final boolean HIDE_PLAYER_RELATED_VIDEOS = Settings.HIDE_PLAYER_RELATED_VIDEOS.get();
     private static final String COMMENTS = "comments"; // comments-entry-point
-    private static boolean isFiltered = false;
+    private static volatile boolean isFiltered = false;
 
     /**
      * Injection point.
      */
     public static boolean hideRelatedVideos() {
-        if (HIDE_RELATED_VIDEOS) {
+        if (HIDE_PLAYER_RELATED_VIDEOS) {
             isFiltered = false;
         }
 
-        return HIDE_RELATED_VIDEOS;
+        return HIDE_PLAYER_RELATED_VIDEOS;
     }
 
     /**
