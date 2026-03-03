@@ -409,8 +409,10 @@ val navigationBarPatch = bytecodePatch(
 
         SettingIntentFingerprint.let {
             it.classDef.apply {
+                // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_SETTING_INTERFACE)
 
+                // Internal method to open YouTube settings.
                 val helperMethod = ImmutableMethod(
                     type,
                     "patch_openYouTubeSettings",
@@ -454,6 +456,7 @@ val navigationBarPatch = bytecodePatch(
                 val buttonRendererClass =
                     getInstruction<ReferenceInstruction>(originalButtonRendererIndex).reference.toString()
 
+                // Since there are no free registers available, a helper method is used.
                 val helperMethod = ImmutableMethod(
                     definingClass,
                     "patch_setToolbarIcon",
@@ -473,13 +476,17 @@ val navigationBarPatch = bytecodePatch(
                     addInstructions(
                         0,
                         """
+                            # Replace the icon if it is a create button.
                             invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setCreateButtonIcon(Lcom/google/protobuf/MessageLite;)[B
                             move-result-object v1
                             if-eqz v1, :ignore
+
+                            # Parse butten renderer.
                             sget-object v0, $buttonRendererClass->a:$buttonRendererClass
                             invoke-static { v0, v1 }, $parseByteArrayMethod
                             move-result-object p1
                             check-cast p1, $buttonRendererClass
+
                             :ignore
                             return-object p1
                         """
