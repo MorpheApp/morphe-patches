@@ -1,5 +1,5 @@
 {
-  "version": "1.16.0-dev.8",
+  "version": "1.16.1-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -836,11 +836,12 @@
     },
     {
       "name": "Hide Shorts components",
-      "description": "Adds options to hide components related to Shorts. Patching version 20.21.37 or lower can hide more Shorts player button types.",
+      "description": "Adds options to hide components related to Shorts.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
@@ -1044,6 +1045,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1377,6 +1379,23 @@
       "options": []
     },
     {
+      "name": "Override YouTube Music actions",
+      "description": "Overrides the YouTube Music button to open Morphe Music directly.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Override certificate pinning",
       "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy. This patch does not work with Reddit.",
       "use": false,
@@ -1495,6 +1514,7 @@
       "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",

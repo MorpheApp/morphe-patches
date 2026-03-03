@@ -959,12 +959,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">导航栏已显示</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">隐藏片尾画面推荐视频</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">片尾画面推荐视频在自动播放关闭时隐藏</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">片尾画面推荐视频已隐藏</string>
   <string name="morphe_end_screen_suggested_video_summary_off">显示片尾画面推荐视频</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此设置仅在'自动播放下一个视频'关闭时有效。
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此设置仅在关闭\"自动播放下一个视频\"时有效。
 
-'自动播放下一个视频'可以在 YouTube 设置中更改：
-设置 → 播放 (或自动播放) → 自动播放下一个视频"</string>
+您可以在YouTube中更改此设置：
+设置 → 播放（或自动播放） → 自动播放下一个视频"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">隐藏相关视频叠加层</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">全屏模式下的相关视频叠加层已隐藏</string>
@@ -1288,6 +1288,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_on">打开系统分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_off">打开应用内分享面板</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">覆盖YouTube Music按钮</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music按钮打开您的目标音乐应用</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube 音乐按钮打开原生应用</string>
+  <string name="morphe_music_package_name_title">Morphe 音乐包名</string>
+  <string name="morphe_music_package_name_summary">目标音乐应用的包名</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">更改起始页</string>
   <string name="morphe_change_start_page_entry_default">默认</string>

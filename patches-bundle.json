@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-03-01T17:46:32",
-  "description": "# [1.16.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.7...v1.16.0-dev.8) (2026-03-01)\n\n\n### Bug Fixes\n\n* **YouTube Music - Change start page:** Hide Podcast option that shows an error message for users in unsupported countries ([b0a9fb6](https://github.com/MorpheApp/morphe-patches/commit/b0a9fb68ba2909889612165f1f1df5bff8fecd21))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.16.0-dev.8/patches-1.16.0-dev.8.mpp",
+  "created_at": "2026-03-03T09:42:37",
+  "description": "## [1.16.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.1-dev.1...v1.16.1-dev.2) (2026-03-03)\n\n\n### Bug Fixes\n\n* **YouTube - Hide layout components:** Resolve \"Hide Explore the podcast\" not working ([#691](https://github.com/MorpheApp/morphe-patches/issues/691)) ([fd50458](https://github.com/MorpheApp/morphe-patches/commit/fd504587cacaf665816c908b5db124f7a2e7bdd1))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.16.1-dev.2/patches-1.16.1-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.16.0-dev.8"
+  "version": "1.16.1-dev.2"
 }

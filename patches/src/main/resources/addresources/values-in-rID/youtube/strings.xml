@@ -958,11 +958,11 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Bilah navigasi ditampilkan</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Sembunyikan video yang disarankan di layar akhir</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Layar akhir video yang disarankan disembunyikan ketika pemutaran otomatis dimatikan</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Layar akhir video yang disarankan disembunyikan</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"Pengaturan ini hanya berfungsi jika 'Putar otomatis video berikutnya' dimatikan.
 
-'Putar otomatis video berikutnya' dapat diubah di pengaturan YouTube:
+Anda dapat mengubahnya di YouTube:
 Pengaturan → Pemutaran (atau Putar otomatis) → Putar otomatis video berikutnya"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>
@@ -1283,6 +1283,12 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_open_system_share_sheet_title">Buka lembar berbagi sistem</string>
   <string name="morphe_open_system_share_sheet_summary_on">Membuka lembar berbagi sistem</string>
   <string name="morphe_open_system_share_sheet_summary_off">Membuka lembar berbagi dalam aplikasi</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Gantikan tombol tindakan YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Tombol YouTube Music membuka aplikasi musik target Anda</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Tombol YouTube Music membuka aplikasi asli</string>
+  <string name="morphe_music_package_name_title">Nama paket Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Nama paket dari aplikasi musik target</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Ubah halaman awal</string>
   <string name="morphe_change_start_page_entry_default">Bawaan</string>

@@ -1,5 +1,14 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.view.View;
@@ -8,13 +17,9 @@ import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -28,16 +33,6 @@ public final class ShortsFilter extends Filter {
     private static final String[] REEL_ACTION_BAR_PATHS = {
             "reel_action_bar.", // Regular Shorts.
             "reels_player_overlay_layout." // Shorts ads.
-    };
-    private static final Map<Integer, BooleanSetting> REEL_ACTION_BUTTONS_MAP = new HashMap<>() {
-        {
-            // Like button and Dislike button can be hidden with Litho filter.
-            // put(0, Settings.HIDE_SHORTS_LIKE_BUTTON);
-            // put(1, Settings.HIDE_SHORTS_DISLIKE_BUTTON);
-            put(2, Settings.HIDE_SHORTS_COMMENTS_BUTTON);
-            put(3, Settings.HIDE_SHORTS_SHARE_BUTTON);
-            put(4, Settings.HIDE_SHORTS_REMIX_BUTTON);
-        }
     };
     private final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
@@ -85,8 +80,8 @@ public final class ShortsFilter extends Filter {
     private final ByteArrayFilterGroupList suggestedActionsBuffer = new ByteArrayFilterGroupList();
 
     private final StringFilterGroup shortsActionBar;
-    private final StringFilterGroup videoActionButton;
-    private final ByteArrayFilterGroupList videoActionButtonBuffer = new ByteArrayFilterGroupList();
+    private final StringFilterGroup shortsActionButton;
+    private final StringFilterGroupList shortsActionButtonGroupList = new StringFilterGroupList();
 
     public ShortsFilter() {
         //
@@ -284,7 +279,7 @@ public final class ShortsFilter extends Filter {
                 "yt_outline_template_add_"
         );
 
-        videoActionButton = new StringFilterGroup(
+        shortsActionButton = new StringFilterGroup(
                 null,
                 // Can be any of:
                 // button.eml
@@ -303,36 +298,26 @@ public final class ShortsFilter extends Filter {
                 shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
                 livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
                 autoDubbedLabel, fullVideoLinkLabel, videoTitle, useSoundButton, soundButton, stickers,
-                reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton
+                reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton, shortsActionBar
         );
 
-        // Legacy hiding of Shorts action buttons. Because of 20.31+ buffer changes
-        // it's currently not possible to hide these using buffer filtering.
-        // See alternative hiding strategy in hideActionButtons().
-        if (!VersionCheckPatch.IS_20_22_OR_GREATER) {
-            addPathCallbacks(shortsActionBar);
-
-            //
-            // All other action buttons.
-            //
-            videoActionButtonBuffer.addAll(
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_SHORTS_COMMENTS_BUTTON,
-                            "reel_comment_button",
-                            "youtube_shorts_comment_outline"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_SHORTS_SHARE_BUTTON,
-                            "reel_share_button",
-                            "youtube_shorts_share_outline"
-                    ),
-                    new ByteArrayFilterGroup(
-                            Settings.HIDE_SHORTS_REMIX_BUTTON,
-                            "reel_remix_button",
-                            "youtube_shorts_remix_outline"
-                    )
-            );
-        }
+        //
+        // All other action buttons.
+        //
+        shortsActionButtonGroupList.addAll(
+                new StringFilterGroup(
+                        Settings.HIDE_SHORTS_COMMENTS_BUTTON,
+                        "id.reel_comment_button"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_SHORTS_SHARE_BUTTON,
+                        "id.reel_share_button"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_SHORTS_REMIX_BUTTON,
+                        "id.reel_remix_button"
+                )
+        );
 
         //
         // Suggested actions.
@@ -477,8 +462,10 @@ public final class ShortsFilter extends Filter {
             // Video action buttons (comment, share, remix) have the same path.
             // Like and dislike are separate path filters and don't require buffer searching.
             if (matchedGroup == shortsActionBar) {
-                return videoActionButton.check(path).isFiltered()
-                        && videoActionButtonBuffer.check(buffer).isFiltered();
+                if (shortsActionButton.check(path).isFiltered()) {
+                    return shortsActionButtonGroupList.check(accessibility).isFiltered();
+                }
+                return false;
             }
 
             if (matchedGroup == suggestedAction) {
@@ -520,7 +507,7 @@ public final class ShortsFilter extends Filter {
         }
 
         // Must check player type first, as search bar can be active behind the player.
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get()) {
             return EngagementPanel.isDescription()
                     ? hideVideoDescription // Player video description panel opened.
                     : hideHome; // For now, consider Shorts under video player the same as the home feed.
@@ -548,58 +535,6 @@ public final class ShortsFilter extends Filter {
             case LIBRARY -> hideHistory;
             default -> false;
         };
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Hide action buttons by index.
-     * <p>
-     * Regular video action buttons vary in order by video, country, and account.
-     * Therefore, hiding buttons by index may hide unintended buttons.
-     * <p>
-     * Shorts action buttons are almost always in the same order.
-     * (From top to bottom: Like, Dislike, Comment, Share, Remix).
-     * Therefore, we can hide Shorts action buttons by index.
-     *
-     * @param pathBuilder Same as pathBuilder used in {@link LithoFilterPatch}.
-     * @param treeNodeResultList List containing Litho components.
-     */
-    public static void hideActionButtons(StringBuilder pathBuilder, List<Object> treeNodeResultList) {
-        try {
-            if (pathBuilder == null || pathBuilder.length() == 0 || treeNodeResultList == null) {
-                return;
-            }
-            int size = treeNodeResultList.size();
-
-            // The minimum size of the target List is 4.
-            if (size < 4) {
-                return;
-            }
-            String path = pathBuilder.toString();
-
-            if (!Utils.containsAny(path, REEL_ACTION_BAR_PATHS)
-                    // Regular Shorts: [ComponentType, ComponentType, ComponentType, ComponentType, ComponentType]
-                    // Shorts ads: [ComponentType, ComponentType, ComponentType, ComponentType] (No Remix button)
-                    || !COMPONENT_TYPE.equals(treeNodeResultList.get(0).toString())) {
-                return;
-            }
-            // Removing elements without iterating through the list in reverse order will throw an exception.
-            for (int i = size - 1; i > -1; i--) {
-                // treeNodeResult is each button.
-                Object treeNodeResult = treeNodeResultList.get(i);
-                if (treeNodeResult != null) {
-                    BooleanSetting setting = REEL_ACTION_BUTTONS_MAP.get(i);
-                    if (setting != null && setting.get()) {
-                        int finalI = i;
-                        Logger.printDebug(() -> "Hiding action button by index: " + finalI + ", key: " + setting.key);
-                        treeNodeResultList.remove(i);
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "hideActionButtons failed", ex);
-        }
     }
 
     /**

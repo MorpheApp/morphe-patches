@@ -959,12 +959,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Панель навігації приховано</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навігації показується</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Приховати пропоноване відео на кінцевому екрані</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Запропоноване відео кінцевого екрана приховується, коли автовідтворення вимкнено</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Пропоноване відео на кінцевому екрані показується</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Цей параметр працює, лише якщо вимкнено опцію \"Автовідтворення наступного відео\".
+  <string name="morphe_end_screen_suggested_video_title">Приховати рекомендоване відео наприкінці перегляду</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Рекомендоване відео наприкінці перегляду приховано</string>
+  <string name="morphe_end_screen_suggested_video_summary_off">Рекомендоване відео наприкінці перегляду показується</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Цей параметр працює, лише якщо вимкнено налаштування \"Автовідтворення наступного відео\".
 
-Функцію \"Автовідтворення наступного відео\" можна змінити в налаштуваннях YouTube:
+Ви можете змінити це в YouTube:
 Налаштування → Відтворення (або Автовідтворення) → Автовідтворення наступного відео"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
@@ -1285,6 +1285,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_on">Відкриває системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_off">Відкриває вбудований діалог поширення</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Замінити кнопку YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Кнопка YouTube Music відкриває ваш цільовий музичний застосунок</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Кнопка YouTube Music відкриває вбудований застосунок</string>
+  <string name="morphe_music_package_name_title">Назва пакета Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Назва пакета цільового музичного застосунку</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Змінити початкову сторінку</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>

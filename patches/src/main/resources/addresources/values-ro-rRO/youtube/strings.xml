@@ -955,12 +955,12 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Bara de navigare este afișată</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ascunde videoclipul sugerat de pe ecranul final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Ecranul final sugerează un videoclip ascuns când redarea automată este dezactivată</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Videoul sugerat de pe ecranul final este ascuns</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Videoclipul sugerat de pe ecranul final este afișat</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Acest setare funcționează doar dacă 'Redare automată video ulterior' este dezactivată.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Această configurare funcționează doar dacă 'Reproduceți următorul video' este dezactivat.
 
-Puteți schimba 'Redare automată video ulterior' în setările YouTube:
-Setări → Redare → Redare automată video ulterior"</string>
+Puteți schimba aceasta în YouTube:
+Setări → Reproducere (sau Autoreproducere) → Reproduceți următorul video"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Suprapunerea videoclipurilor similare în ecran complet este ascunsă.</string>
@@ -1280,6 +1280,12 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_open_system_share_sheet_title">Deschide meniul de partajare al sistemului</string>
   <string name="morphe_open_system_share_sheet_summary_on">Deschide meniul de partajare al sistemului</string>
   <string name="morphe_open_system_share_sheet_summary_off">Deschide meniul de partajare intern</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Suprascrie butonul YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Butonul YouTube Music deschide aplicația ta de muzică țintă</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Butonul YouTube Music deschide aplicația nativă</string>
+  <string name="morphe_music_package_name_title">Numele pachetului Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Numele pachetului aplicației de muzică țintă</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Schimbă pagina de start</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>

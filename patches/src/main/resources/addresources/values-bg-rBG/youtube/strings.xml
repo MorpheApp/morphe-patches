@@ -953,12 +953,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Скрий дублиране на видеа</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Дублирането на видеа е скрито</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Екрана на крайния екран препоръчвано видео е скрито, когато автопрегледът е изключен</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Скрития препоръчваната видеоклип на крайния екран</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Скрий дублиране на видеа</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Това настройка работи само ако 'Автопреглед на следващо видео' е изключен.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Това настройка работи само ако 'Автоматично следващо видео' е изключено.
 
-'Автопреглед на следващо видео' може да се промени в настройките на YouTube:
-Настройки → Воспроизведение (или Автопреглед) → Автопреглед на следващо видео"</string>
+Можете да промените това в YouTube:
+Настройки → Воспроизведение (или Автоматично) → Автоматично следващо видео"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Дублирането на видеа се показва</string>
@@ -1275,6 +1275,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Отвори общия табло за споделяне</string>
   <string name="morphe_open_system_share_sheet_summary_on">Отваря общия табло за споделяне</string>
   <string name="morphe_open_system_share_sheet_summary_off">Отваря вътрешно табло за споделяне</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Презапиши бутонът YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Бутонът YouTube Music отваря вашето целево приложение за музика</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Думата за YouTube Music отваря приложението</string>
+  <string name="morphe_music_package_name_title">Име на пакета на Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Име на пакета на целова музикалното приложение</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промянете стартова страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>

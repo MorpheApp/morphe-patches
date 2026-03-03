@@ -959,11 +959,11 @@ Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Widoczny</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Sugerowane filmy na końcu filmu</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Ukryte są sugerowane filmy na końcu filmu, gdy autoodtwarzanie jest wyłączone</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Ukryte</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Widoczne</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"To ustawienie działa tylko, gdy \"Autoodtwarzanie następnego filmu\" jest wyłączone.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ta opcja działa tylko wtedy, gdy opcja \"Autoodtwarzanie następnego filmu\" jest wyłączona.
 
-\"Autoodtwarzanie następnego filmu\" można zmienić w ustawieniach YouTube:
+Możesz to zmienić w YouTube:
 Ustawienia → Odtwarzanie (lub Autoodtwarzanie) → Autoodtwarzanie następnego filmu"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Rekomendacje YouTube na końcach filmów</string>
@@ -1284,6 +1284,12 @@ Jeśli później zostanie to wyłączone, rekomendowane jest usunięcie danych a
   <string name="morphe_open_system_share_sheet_title">Wygląd panelu udostępniania</string>
   <string name="morphe_open_system_share_sheet_summary_on">Systemowy</string>
   <string name="morphe_open_system_share_sheet_summary_off">Aplikacji</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Aplikacja otwierana przyciskiem YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Docelowa</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Natywna</string>
+  <string name="morphe_music_package_name_title">Nazwa pakietu Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Nazwa pakietu docelowej aplikacji muzycznej</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Zmień stronę startową</string>
   <string name="morphe_change_start_page_entry_default">Domyślna</string>

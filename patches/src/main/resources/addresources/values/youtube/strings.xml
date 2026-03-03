@@ -96,6 +96,7 @@ Changes include:
 • Breaking news
 • Continue watching
 • Explore more channels
+• For You
 • Most relevant
 • Shopping
 • Watch it again"</string>
@@ -290,10 +291,6 @@ Changes include:
     <string name="morphe_hide_community_button_title">Hide Community button</string>
     <string name="morphe_hide_community_button_summary_on">Community button is hidden</string>
     <string name="morphe_hide_community_button_summary_off">Community button is shown</string>
-    <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-    <string name="morphe_hide_for_you_shelf_title">Hide \'For You\' shelf</string>
-    <string name="morphe_hide_for_you_shelf_summary_on">For You shelf is hidden</string>
-    <string name="morphe_hide_for_you_shelf_summary_off">For You shelf is shown</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_join_button_title">Hide Join button</string>
     <string name="morphe_hide_join_button_summary_on">Join button is hidden</string>
@@ -1009,11 +1006,11 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
     <string name="morphe_end_screen_suggested_video_title">Hide end screen suggested video</string>
-    <string name="morphe_end_screen_suggested_video_summary_on">End screen suggested video is hidden when autoplay is turned off</string>
+    <string name="morphe_end_screen_suggested_video_summary_on">End screen suggested video is hidden</string>
     <string name="morphe_end_screen_suggested_video_summary_off">End screen suggested video is shown</string>
     <string name="morphe_end_screen_suggested_video_user_dialog_message">"This setting only works if 'Autoplay next video' is turned off.
 
-'Autoplay next video' can be changed in YouTube settings:
+You can change this in YouTube:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
@@ -1354,6 +1351,13 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
     <string name="morphe_open_system_share_sheet_summary_on">Opens system share sheet</string>
     <string name="morphe_open_system_share_sheet_summary_off">Opens in-app share sheet</string>
+
+    <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+    <string name="morphe_override_youtube_music_button_title">Override YouTube Music button</string>
+    <string name="morphe_override_youtube_music_button_summary_on">YouTube Music button opens your target music app</string>
+    <string name="morphe_override_youtube_music_button_summary_off">YouTube Music button opens the native app</string>
+    <string name="morphe_music_package_name_title">Morphe Music package name</string>
+    <string name="morphe_music_package_name_summary">Package name of the target music app</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Change start page</string>

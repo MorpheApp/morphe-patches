@@ -1,3 +1,43 @@
+## [1.16.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.1-dev.1...v1.16.1-dev.2) (2026-03-03)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve "Hide Explore the podcast" not working ([#691](https://github.com/MorpheApp/morphe-patches/issues/691)) ([fd50458](https://github.com/MorpheApp/morphe-patches/commit/fd504587cacaf665816c908b5db124f7a2e7bdd1))
+
+## [1.16.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0...v1.16.1-dev.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* **YouTube - LithoFilterPatch:** Use an encoded native byte array for buffer searching ([#654](https://github.com/MorpheApp/morphe-patches/issues/654)) ([bb5cc01](https://github.com/MorpheApp/morphe-patches/commit/bb5cc0198ee87f292795c3b03127a6a82ef72647))
+
+# [1.16.0](https://github.com/MorpheApp/morphe-patches/compare/v1.15.0...v1.16.0) (2026-03-03)
+
+
+### Bug Fixes
+
+* **YouTube - Double tap to seek:** Playback setting menu does not open when patched with CLI pre-release ([ba1784d](https://github.com/MorpheApp/morphe-patches/commit/ba1784df70cb4cbfe786e991e75bb1d8f97a6dbf))
+* **YouTube - Hide end screen suggested video:** Add user dialogs to minimize user confusion ([#637](https://github.com/MorpheApp/morphe-patches/issues/637)) ([6d4af87](https://github.com/MorpheApp/morphe-patches/commit/6d4af87dd6880d6114c24815109da4149df3c3b8))
+* **YouTube - Hide Shorts components:** Resolve Shorts header not being hidden ([#649](https://github.com/MorpheApp/morphe-patches/issues/649)) ([84901c2](https://github.com/MorpheApp/morphe-patches/commit/84901c261ea0808514cca24c5bd7687389acae5c))
+* **YouTube Music - Change start page:** Hide Podcast option that shows an error message for users in unsupported countries ([b0a9fb6](https://github.com/MorpheApp/morphe-patches/commit/b0a9fb68ba2909889612165f1f1df5bff8fecd21))
+
+
+### Features
+
+* **YouTube - Navigation bar:** Add `Show search button` setting ([#634](https://github.com/MorpheApp/morphe-patches/issues/634)) ([b46e492](https://github.com/MorpheApp/morphe-patches/commit/b46e4923592ce5f752d6e2db156a3838c25f4f4f))
+* **YouTube Music:** Add `Change header` patch ([#650](https://github.com/MorpheApp/morphe-patches/issues/650)) ([f6f03e5](https://github.com/MorpheApp/morphe-patches/commit/f6f03e55d01863f3d436e00108cc608d933ddbd9))
+* **YouTube Music:** Add `Change start page` patch ([#653](https://github.com/MorpheApp/morphe-patches/issues/653)) ([bc3c1bd](https://github.com/MorpheApp/morphe-patches/commit/bc3c1bda7afd3748f3bd7c7a9831ae4bad64b80f))
+* **YouTube:** Add `Open system share sheet` patch ([#625](https://github.com/MorpheApp/morphe-patches/issues/625)) ([64ff907](https://github.com/MorpheApp/morphe-patches/commit/64ff9079777a2b935886c35eae0e454984d56b52))
+* **YouTube:** Add `Override YouTube Music actions` patch ([#677](https://github.com/MorpheApp/morphe-patches/issues/677)) ([904dcda](https://github.com/MorpheApp/morphe-patches/commit/904dcda3f17faf26753529351d5c4b57cdbda162))
+
+# [1.16.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.8...v1.16.0-dev.9) (2026-03-02)
+
+
+### Features
+
+* **YouTube:** Add `Override YouTube Music actions` patch ([#677](https://github.com/MorpheApp/morphe-patches/issues/677)) ([904dcda](https://github.com/MorpheApp/morphe-patches/commit/904dcda3f17faf26753529351d5c4b57cdbda162))
+
 # [1.16.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.16.0-dev.7...v1.16.0-dev.8) (2026-03-01)
 
 

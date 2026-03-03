@@ -958,11 +958,11 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barra de navegación está visible</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ocultar vídeo sugerido en pantalla final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">El vídeo sugerido en la pantalla final está oculto cuando la reproducción automática está desactivada</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">El vídeo sugerido en la pantalla final está oculto</string>
   <string name="morphe_end_screen_suggested_video_summary_off">El vídeo sugerido en la pantalla final está visible</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"Este ajuste solo funciona si \"Reproducción automática del siguiente vídeo\" está desactivada.
 
-\"Reproducción automática del siguiente vídeo\" se puede cambiar en la configuración de YouTube:
+Puedes cambiar esto en YouTube: 
 Configuración → Reproducción → Reproducción automática del siguiente vídeo"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
@@ -1283,6 +1283,12 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_open_system_share_sheet_title">Abrir la hoja de compartir del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_on">Abre la hoja de compartir del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Abre la hoja de compartir en la aplicación</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Reemplazar botón de YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">El botón de YouTube Music abre tu app de música de destino</string>
+  <string name="morphe_override_youtube_music_button_summary_off">El botón de YouTube Music abre la app nativa</string>
+  <string name="morphe_music_package_name_title">Nombre del paquete de Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Nombre del paquete de la app de música de destino</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambiar página de inicio</string>
   <string name="morphe_change_start_page_entry_default">Predeterminado</string>

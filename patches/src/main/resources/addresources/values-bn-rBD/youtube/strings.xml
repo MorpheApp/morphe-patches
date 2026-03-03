@@ -959,12 +959,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">পনেভিগেশন বার প্রদর্শিত হয়েছে</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকানো হবে</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">এন্ড স্ক্রিন প্রস্তাবিত ভিডিও অটো প্লে বন্ধ থাকলে লুকায়ে যায়</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
   <string name="morphe_end_screen_suggested_video_summary_off">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"এই সেটিং 'অটো প্লে পরবর্তী ভিডিও' বন্ধ থাকলে কাজ করে।
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"এই সেটিং শুধুমাত্র 'অটোপ্লেয় পরবর্তী ভিডিও' বন্ধ হলে কাজ করে।
 
-'অটো প্লে পরবর্তী ভিডিও' পরিবর্তন করতে YouTube সেটিংসে যেতে পারেন:
-সেটিংস → প্লেব্যাক (অথবা অটো প্লে) → অটো প্লে পরবর্তী ভিডিও"</string>
+ইউটিউবে পরিবর্তন করতে পারেন:
+সেটিংস → প্লেয়ব্যাক (অথবা অটোপ্লেয়) → অটোপ্লেয় পরবর্তী ভিডিও"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">সম্পর্কিত ভিডিও ওভারলে লুকান</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে লুকানো আছে</string>
@@ -1285,6 +1285,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
   <string name="morphe_open_system_share_sheet_summary_on">সিস্টেম শেয়ার শিট খুলে</string>
   <string name="morphe_open_system_share_sheet_summary_off">অ্যাপের ভিতরে শেয়ার শিট খুলে</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">ইউটিউব মিউজিক বোতাম ওভাররাইড করুন</string>
+  <string name="morphe_override_youtube_music_button_summary_on">ইউটিউব মিউজিক বোতাম আপনার লক্ষ্য মিউজিক অ্যাপ খুলে ফেলবে</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube মিউজিক বাটন নেটিভ অ্যাপ খুলে</string>
+  <string name="morphe_music_package_name_title">মর্ফে মিউজিক প্যাকেজ নাম</string>
+  <string name="morphe_music_package_name_summary"> Target মিউজিক অ্যাপের প্যাকেজ নাম</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">শুরুর পৃষ্ঠা পরিবর্তন করুন</string>
   <string name="morphe_change_start_page_entry_default">পূর্ব-নির্ধারিত</string>

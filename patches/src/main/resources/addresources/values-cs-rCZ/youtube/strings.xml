@@ -960,12 +960,12 @@ Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy'
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigační panel je zobrazen</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Skrýt navrhované video na konci obrazovky</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Navrhované video na konci obrazovky je skryté, když je automatické přehrávání vypnuté.</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Navrhované video na konci obrazovky je skryto</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky se zobrazuje</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tato nastavení funguje pouze, když je 'Automatické přehrávání dalšího videa' vypnuto.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tato nastavení fungují pouze, když je 'Automatické přehrání dalšího videa' vypnuto.
 
-'Automatické přehrávání dalšího videa' lze změnit v nastavení YouTube:
-Nastavení → Přehrávání (nebo Automatické přehrávání) → Automatické přehrávání dalšího videa"</string>
+Můžete to změnit v YouTube:
+Nastavení → Přehrávání (nebo Automatické přehrávání) → Automatické přehrání dalšího videa"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Skrýt překrytí souvisejících videí</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Překrytí souvisejících videí v režimu celé obrazovky je skryto</string>
@@ -1285,6 +1285,12 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_open_system_share_sheet_title">Otevířet systémový panel sdílení</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otevírá systémový panel sdílení</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otevírá panel sdílení v aplikaci</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Přepsat tlačítko YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Tlačítko YouTube Music otevře váš cílový hudební aplikaci</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Tlačítko YouTube Music otevře nativní aplikaci</string>
+  <string name="morphe_music_package_name_title">Název balíku Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Název balíku cílové hudební aplikace</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Změnit úvodní stránku</string>
   <string name="morphe_change_start_page_entry_default">Výchozí</string>

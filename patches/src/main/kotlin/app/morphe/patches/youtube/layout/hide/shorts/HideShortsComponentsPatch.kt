@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.hide.shorts
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -15,21 +23,18 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
-import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.removeFromParent
@@ -153,12 +158,12 @@ private const val FILTER_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patch
 @Suppress("unused")
 val hideShortsComponentsPatch = bytecodePatch(
     name = "Hide Shorts components",
-    description = "Adds options to hide components related to Shorts. " +
-            "Patching version 20.21.37 or lower can hide more Shorts player button types."
+    description = "Adds options to hide components related to Shorts."
 ) {
     dependsOn(
         engagementPanelHookPatch,
         hideShortsComponentsResourcePatch,
+        layoutReloadObserverPatch,
         lithoFilterPatch,
         navigationBarHookPatch,
         resourceMappingPatch,
@@ -191,43 +196,6 @@ val hideShortsComponentsPatch = bytecodePatch(
                     """
                         invoke-static { v$sizeRegister }, $FILTER_CLASS_DESCRIPTOR->getSoundButtonSize(I)I
                         move-result v$sizeRegister
-                    """
-                )
-            }
-        }
-
-        // endregion
-
-        // region Hide action buttons.
-
-        if (is_20_22_or_greater) {
-            TreeNodeResultListFingerprint.match(
-                ComponentContextParserFingerprint.originalClassDef,
-            ).method.apply {
-                val conversionContextPathBuilderField = ConversionContextFingerprintToString.originalClassDef
-                    .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
-
-                val insertIndex = implementation!!.instructions.lastIndex
-                val listRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
-
-                val registerProvider = getFreeRegisterProvider(insertIndex, 2)
-                val freeRegister = registerProvider.getFreeRegister()
-                val pathRegister = registerProvider.getFreeRegister()
-
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
-                        move-object/from16 v$freeRegister, p2
-                        
-                        # 20.41 field is the abstract superclass.
-                        # Verify it's the expected subclass just in case.
-                        instance-of v$pathRegister, v$freeRegister, ${ConversionContextFingerprintToString.classDef.type}
-                        if-eqz v$pathRegister, :ignore
-                        
-                        iget-object v$pathRegister, v$freeRegister, $conversionContextPathBuilderField
-                        invoke-static { v$pathRegister, v$listRegister }, $FILTER_CLASS_DESCRIPTOR->hideActionButtons(Ljava/lang/StringBuilder;Ljava/util/List;)V
-                        :ignore
-                        nop
                     """
                 )
             }
