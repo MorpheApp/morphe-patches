@@ -32,6 +32,7 @@ import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
@@ -349,6 +351,9 @@ public final class NavigationBarPatch {
 
     private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
 
+    private static final boolean REARRANGE_TOOLBAR_BUTTONS = REPLACE_TOOLBAR_CREATE_BUTTON
+            && Settings.REARRANGE_TOOLBAR_BUTTONS.get();
+
     /**
      * Interface to use obfuscated methods.
      */
@@ -411,6 +416,35 @@ public final class NavigationBarPatch {
     public static void setSettingsController(@NonNull SettingsController settingsController) {
         if (REPLACE_TOOLBAR_CREATE_BUTTON) {
             settingsControllerRef = new WeakReference<>(settingsController);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void reRearrangeToolbarButtons(List<MessageLite> rawButtonList) {
+        if (REARRANGE_TOOLBAR_BUTTONS && rawButtonList != null && !rawButtonList.isEmpty()) {
+            try {
+                boolean containsCreateButton = false;
+
+                for (var rawButtons : rawButtonList) {
+                    var buttons = Buttons.parseFrom(rawButtons.toByteArray());
+                    if (buttons.hasButtonRenderer()) {
+                        var navigationEndpoint = buttons.getButtonRenderer().getNavigationEndpoint();
+                        // Rearrange only if there is a Create button.
+                        if (navigationEndpoint.hasCreationEntryEndpoint()) {
+                            containsCreateButton = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (containsCreateButton) {
+                    Collections.rotate(rawButtonList, -1);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to parse Buttons", ex);
+            }
         }
     }
 

@@ -11,6 +11,7 @@ package app.morphe.patches.youtube.layout.buttons.navigation
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -41,6 +42,7 @@ import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -305,7 +307,7 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        TopBarRendererFingerprint.let {
+        TopBarRendererPrimaryFilterFingerprint.let {
             it.method.apply {
                 val onClickListenerIndex = it.instructionMatches[3].index
                 val onClickListenerRegister =
@@ -334,7 +336,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_toolbar_notification_button"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
             SwitchPreference("morphe_replace_toolbar_create_button"),
-            SwitchPreference("morphe_replace_toolbar_create_button_type")
+            SwitchPreference("morphe_replace_toolbar_create_button_type"),
+            SwitchPreference("morphe_rearrange_toolbar_buttons")
         )
         if (!is_20_31_or_greater) {
             toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
@@ -447,7 +450,7 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        TopBarRendererFingerprint.let {
+        TopBarRendererPrimaryFilterFingerprint.let {
             it.clearMatch()
             it.method.apply {
                 val originalButtonRendererIndex = it.instructionMatches[2].index
@@ -506,6 +509,45 @@ val navigationBarPatch = bytecodePatch(
                         check-cast v$originalButtonRendererRegister, $buttonRendererClass
                         invoke-direct { v$freeRegister, v$originalButtonRendererRegister }, $helperMethod
                         move-result-object v$originalButtonRendererRegister
+                    """
+                )
+            }
+        }
+
+        val (immutableMethod, mutableCopyMethod) =
+            with (StreamingDataOuterClassFingerprint.instructionMatches) {
+                Pair(
+                    first().instruction.getReference<MethodReference>()!!,
+                    last().instruction.getReference<MethodReference>()!!
+                )
+            }
+
+        TopBarRendererSecondaryFilterFingerprint.let {
+            it.method.apply {
+                val protoListIndex = it.instructionMatches.first().index
+                val protoListRegister =
+                    getInstruction<FiveRegisterInstruction>(protoListIndex).registerC
+                val protoListFreeRegister =
+                    getFreeRegisterProvider(protoListIndex, 1).getFreeRegister()
+
+                addInstructionsWithLabels(
+                    protoListIndex,
+                    """
+                        invoke-interface { v$protoListRegister }, $immutableMethod
+                        move-result v$protoListFreeRegister
+                        
+                        # Check if ProtoList is immutable or not.
+                        if-nez v$protoListFreeRegister, :immutable
+                        
+                        # If mutable, copy the ProtoList.
+                        invoke-static { v$protoListRegister }, $mutableCopyMethod
+                        move-result-object v$protoListRegister
+                        
+                        # Rearrange buttons.
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->reRearrangeToolbarButtons(Ljava/util/List;)V
+                        
+                        :immutable
+                        nop
                     """
                 )
             }

@@ -234,7 +234,7 @@ internal object PivotBarRendererListFingerprint : Fingerprint(
     )
 )
 
-internal object TopBarRendererFingerprint : Fingerprint(
+internal object TopBarRendererPrimaryFilterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -255,6 +255,18 @@ internal object TopBarRendererFingerprint : Fingerprint(
         opcode(
             opcode = Opcode.CHECK_CAST,
             location = MatchAfterWithin(5)
+        ),
+        literal(120823052L),
+    )
+)
+
+internal object TopBarRendererSecondaryFilterFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Ljava/util/List;->iterator()Ljava/util/Iterator;"
         ),
         literal(120823052L),
     )
@@ -300,6 +312,25 @@ internal object SettingIntentFingerprint : Fingerprint(
             name = "<init>",
             parameters = listOf("I"),
             location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object StreamingDataOuterClassFingerprint : Fingerprint(
+    definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        opcode(Opcode.IF_NEZ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            name = "mutableCopy"
         )
     )
 )

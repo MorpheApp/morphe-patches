@@ -350,6 +350,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting REPLACE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_replace_toolbar_create_button", FALSE, true,
             "morphe_replace_toolbar_create_button_user_dialog_message", new ReplaceToolbarCreateButtonAvailability());
     public static final BooleanSetting REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = new BooleanSetting("morphe_replace_toolbar_create_button_type", FALSE, true, parent(REPLACE_TOOLBAR_CREATE_BUTTON));
+    public static final BooleanSetting REARRANGE_TOOLBAR_BUTTONS = new BooleanSetting("morphe_rearrange_toolbar_buttons", TRUE, true, parent(REPLACE_TOOLBAR_CREATE_BUTTON));
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 
     // Shorts
