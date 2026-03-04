@@ -694,11 +694,16 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_notifications_button_title">Hide Notifications</string>
     <string name="morphe_hide_notifications_button_summary_on">Notifications button is hidden</string>
     <string name="morphe_hide_notifications_button_summary_off">Notifications button is shown</string>
-    <string name="morphe_show_search_button_title">Show search button</string>
+    <string name="morphe_show_search_button_title">Show Search</string>
     <string name="morphe_show_search_button_summary_on">Search button is shown</string>
     <string name="morphe_show_search_button_summary_off">Search button is not shown</string>
     <string name="morphe_search_button_index_title">Search button index</string>
     <string name="morphe_search_button_index_invalid">Search button index must be less than %s</string>
+    <string name="morphe_show_settings_button_title">Show Settings</string>
+    <string name="morphe_show_settings_button_summary_on">Settings button is shown</string>
+    <string name="morphe_show_settings_button_summary_off">Settings button is not shown</string>
+    <string name="morphe_settings_button_index_title">Settings button index</string>
+    <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
     <string name="morphe_swap_create_with_notifications_button_summary_on">Create button is swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary_off">Create button is not swapped with Notifications button</string>
@@ -709,7 +714,7 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
     <string name="morphe_hide_navigation_bar_summary_off">Navigation bar is shown</string>
-    <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including the 'You' tab.
+    <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
 
 To access Settings:
 Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferences' at the bottom."</string>
@@ -749,7 +754,7 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
     <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
     <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
-    <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in the You tab is also overridden.</string>
+    <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in You tab is also overridden.</string>
     <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
     <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
 Tap and hold to open YouTube settings"</string>

@@ -111,6 +111,11 @@ public final class NavigationBarPatch {
             return;
         }
 
+        if (SHOW_SETTINGS_BUTTON && button == NavigationButton.SETTINGS) {
+            Utils.runOnMainThread(() -> tabView.setOnClickListener(openSettingsOnClickListener));
+            return;
+        }
+
         if (Boolean.TRUE.equals(shouldHideMap.get(button))) {
             tabView.setVisibility(View.GONE);
         }
@@ -190,7 +195,7 @@ public final class NavigationBarPatch {
                 : !DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT;
     }
 
-    // Navigation search button
+    // Navigation search and settings button
     private static final boolean SHOW_SEARCH_BUTTON = Settings.SHOW_SEARCH_BUTTON.get();
     private static final IntegerSetting SEARCH_BUTTON_INDEX = Settings.SEARCH_BUTTON_INDEX;
 
@@ -198,6 +203,12 @@ public final class NavigationBarPatch {
 
     private static Object pivotBarRenderer = null;
     private static View.OnClickListener openSearchBar = null;
+
+    private static final boolean SHOW_SETTINGS_BUTTON = Settings.SHOW_SETTINGS_BUTTON.get();
+    private static final IntegerSetting SETTINGS_BUTTON_INDEX = Settings.SETTINGS_BUTTON_INDEX;
+
+    private static Object pivotBarSettingsRenderer = null;
+    private static final View.OnClickListener openSettingsOnClickListener = NavigationBarPatch::openYouTubeSettings;
 
     private static final View.OnClickListener openSearchBarOnClickListener = v -> {
         if (NavigationBar.isSearchBarActive() && searchQueryRef.get() != null) {
@@ -306,23 +317,69 @@ public final class NavigationBarPatch {
      * @param list Proto list containing PivotBarRenderer.
      */
     public static List<Object> getPivotBarRendererList(List<Object> list) {
-        if (SHOW_SEARCH_BUTTON && pivotBarRenderer != null && list != null && !list.isEmpty()) {
-            int preferredIndex = SEARCH_BUTTON_INDEX.get();
-            int listSize = list.size();
+        if (list == null || list.isEmpty()) return list;
 
-            // Safely check if it can be added to the list.
-            if (preferredIndex < 0 || preferredIndex > listSize) {
-                Utils.showToastShort(str("morphe_search_button_index_invalid", listSize));
+        boolean addSearch = SHOW_SEARCH_BUTTON && pivotBarRenderer != null;
+        boolean addSettings = SHOW_SETTINGS_BUTTON && pivotBarSettingsRenderer != null;
+
+        if (!addSearch && !addSettings) return list;
+
+        List<Object> newList = new ArrayList<>(list);
+
+        if (addSearch) {
+            int preferredIndex = SEARCH_BUTTON_INDEX.get();
+            if (preferredIndex < 0 || preferredIndex > newList.size()) {
+                Utils.showToastShort(str("morphe_search_button_index_invalid", newList.size()));
                 SEARCH_BUTTON_INDEX.resetToDefault();
                 preferredIndex = SEARCH_BUTTON_INDEX.defaultValue;
             }
-
-            // Create a new list to avoid shallow copying of objects.
-            List<Object> newList = new ArrayList<>(list);
             newList.add(preferredIndex, pivotBarRenderer);
-            return newList;
         }
-        return list;
+
+        if (addSettings) {
+            int preferredIndex = SETTINGS_BUTTON_INDEX.get();
+            if (preferredIndex < 0 || preferredIndex > newList.size()) {
+                Utils.showToastShort(str("morphe_settings_button_index_invalid", newList.size()));
+                SETTINGS_BUTTON_INDEX.resetToDefault();
+                preferredIndex = SETTINGS_BUTTON_INDEX.defaultValue;
+            }
+            newList.add(preferredIndex, pivotBarSettingsRenderer);
+        }
+
+        return newList;
+    }
+
+    @Nullable
+    public static byte[] parseSettingsPivotBarItemRenderer(MessageLite messageLite) {
+        if (SHOW_SETTINGS_BUTTON) {
+            try {
+                var pivotBarItemBuilder = PivotBarItemRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
+                var iconName = pivotBarItemBuilder.getIcon().getYtIconType().name();
+
+                if (NavigationButton.HOME.ytEnumNames.contains(iconName)) {
+                    var newAccessibilityData = AccessibilityData.newBuilder().setLabel(str("menu_settings")).build();
+                    var newAccessibility = Accessibility.newBuilder().setAccessibilityData(newAccessibilityData).build();
+
+                    var newIcon = Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build();
+
+                    pivotBarItemBuilder.clearAccessibility();
+                    pivotBarItemBuilder.setAccessibility(newAccessibility);
+                    pivotBarItemBuilder.clearIcon();
+                    pivotBarItemBuilder.setIcon(newIcon);
+
+                    return pivotBarItemBuilder.build().toByteArray();
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to parse Settings PivotBarItemRenderer", ex);
+            }
+        }
+        return null;
+    }
+
+    public static void setPivotBarSettingsRenderer(Object object) {
+        if (SHOW_SETTINGS_BUTTON) {
+            pivotBarSettingsRenderer = object;
+        }
     }
 
     // Toolbar
@@ -414,7 +471,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void setSettingsController(@NonNull SettingsController settingsController) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON || SHOW_SETTINGS_BUTTON) {
             settingsControllerRef = new WeakReference<>(settingsController);
         }
     }

@@ -93,6 +93,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_notifications_button"),
             SwitchPreference("morphe_show_search_button"),
             ListPreference("morphe_search_button_index"),
+            SwitchPreference("morphe_show_settings_button"),
+            ListPreference("morphe_settings_button_index"),
             SwitchPreference("morphe_swap_create_with_notifications_button"),
             SwitchPreference("morphe_hide_navigation_button_labels"),
             SwitchPreference("morphe_narrow_navigation_buttons"),
@@ -211,7 +213,7 @@ val navigationBarPatch = bytecodePatch(
 
 
         //
-        // Navigation search button
+        // Navigation search and settings button
         //
 
         ActionBarSearchResultsFingerprint.let {
@@ -232,48 +234,62 @@ val navigationBarPatch = bytecodePatch(
 
         PivotBarRendererFingerprint.let {
             it.method.apply {
-                val pivotBarItemRendererType = it.instructionMatches[2]
-                    .instruction.getReference<TypeReference>()!!.type
-
+                val pivotBarItemRendererType = it.instructionMatches[2].instruction.getReference<TypeReference>()!!.type
                 val pivotBarRendererConstructorIndex = it.instructionMatches[3].index
-                val pivotBarRendererConstructorReference =
-                    getInstruction<ReferenceInstruction>(pivotBarRendererConstructorIndex).reference as MethodReference
-
-                val pivotBarRendererConstructorInstruction =
-                    getInstruction<RegisterRangeInstruction>(pivotBarRendererConstructorIndex)
+                val pivotBarRendererConstructorReference = getInstruction<ReferenceInstruction>(pivotBarRendererConstructorIndex).reference as MethodReference
+                val pivotBarRendererConstructorInstruction = getInstruction<RegisterRangeInstruction>(pivotBarRendererConstructorIndex)
                 val pivotBarRendererConstructorStartRegister = pivotBarRendererConstructorInstruction.startRegister
                 val pivotBarRendererConstructorEndRegister = pivotBarRendererConstructorStartRegister + pivotBarRendererConstructorInstruction.registerCount - 1
-
-                val messageLiteIndex =
-                    pivotBarRendererConstructorReference.parameterTypes.indexOfFirst { parameterType -> parameterType == "Lcom/google/protobuf/MessageLite;" }
+                val messageLiteIndex = pivotBarRendererConstructorReference.parameterTypes.indexOfFirst { parameterType -> parameterType == "Lcom/google/protobuf/MessageLite;" }
                 val messageLiteRegister = pivotBarRendererConstructorStartRegister + messageLiteIndex + 1
-
                 val insertIndex = it.instructionMatches.last().index
+                val backupRegister = getFreeRegisterProvider(insertIndex, 1).getFreeRegister()
 
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
-                        # If the MessageLite class is for the home button, copy it.
+                        # Backup original MessageLite register using /16 to avoid 4-bit register limits
+                        move-object/16 v$backupRegister, v$messageLiteRegister
+        
+                        # --- 1. SEARCH BUTTON ---
                         invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS_DESCRIPTOR->parsePivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
                         move-result-object v$pivotBarRendererConstructorStartRegister
-                        if-eqz v$pivotBarRendererConstructorStartRegister, :ignore
+                        if-eqz v$pivotBarRendererConstructorStartRegister, :ignore_search
 
-                        # Parse proto.
                         sget-object v$messageLiteRegister, $pivotBarItemRendererType->a:$pivotBarItemRendererType
                         invoke-static { v$messageLiteRegister, v$pivotBarRendererConstructorStartRegister }, $parseByteArrayMethod
                         move-result-object v$messageLiteRegister
                         check-cast v$messageLiteRegister, $pivotBarItemRendererType
-                        
-                        # A shallow copy of an object also applies changes to the original object.
-                        # To avoid this, we need to create a new object.
+        
                         new-instance v$pivotBarRendererConstructorStartRegister, ${pivotBarRendererConstructorReference.definingClass}
                         invoke-direct/range { v$pivotBarRendererConstructorStartRegister .. v$pivotBarRendererConstructorEndRegister }, $pivotBarRendererConstructorReference
-                        
-                        # The newly created object is saved in the extension.
+        
                         invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS_DESCRIPTOR->setPivotBarRenderer(Ljava/lang/Object;)V
-                        :ignore
+                        :ignore_search
+        
+                        # Restore MessageLite register for the next check
+                        move-object/16 v$messageLiteRegister, v$backupRegister
+
+                        # --- 2. SETTINGS BUTTON ---
+                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS_DESCRIPTOR->parseSettingsPivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
+                        move-result-object v$pivotBarRendererConstructorStartRegister
+                        if-eqz v$pivotBarRendererConstructorStartRegister, :ignore_settings
+
+                        sget-object v$messageLiteRegister, $pivotBarItemRendererType->a:$pivotBarItemRendererType
+                        invoke-static { v$messageLiteRegister, v$pivotBarRendererConstructorStartRegister }, $parseByteArrayMethod
+                        move-result-object v$messageLiteRegister
+                        check-cast v$messageLiteRegister, $pivotBarItemRendererType
+        
+                        new-instance v$pivotBarRendererConstructorStartRegister, ${pivotBarRendererConstructorReference.definingClass}
+                        invoke-direct/range { v$pivotBarRendererConstructorStartRegister .. v$pivotBarRendererConstructorEndRegister }, $pivotBarRendererConstructorReference
+        
+                        invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS_DESCRIPTOR->setPivotBarSettingsRenderer(Ljava/lang/Object;)V
+                        :ignore_settings
+        
+                        # Restore MessageLite register one last time for safety
+                        move-object/16 v$messageLiteRegister, v$backupRegister
                         nop
-                    """
+                        """
                 )
             }
         }
