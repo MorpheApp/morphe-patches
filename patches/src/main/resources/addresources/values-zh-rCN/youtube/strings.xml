@@ -85,7 +85,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">搜索中的浮动麦克风按钮已隐藏</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">搜索中的浮动麦克风按钮已显示</string>
   <string name="morphe_hide_horizontal_shelves_title">隐藏横排展示架</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"水平货架已隐藏，例如:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"水平货架已隐藏，例如：
 • 突发新闻
 • 继续观看
 • 探索更多频道
@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">隐藏快捷操作</string>
   <string name="morphe_hide_quick_actions_summary_on">全屏模式下的快捷操作已隐藏</string>
   <string name="morphe_hide_quick_actions_summary_off">全屏模式下的快捷操作已显示</string>
-  <string name="morphe_hide_related_videos_title">隐藏相关视频</string>
-  <string name="morphe_hide_related_videos_summary_on">快捷操作中的相关视频已隐藏</string>
-  <string name="morphe_hide_related_videos_summary_off">快捷操作中的相关视频已显示</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">隐藏相关视频快捷操作</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">快捷操作中的相关视频已隐藏</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">快捷操作中的相关视频已显示</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">隐藏订阅者指南</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">订阅者社区准则已隐藏</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">订阅者社区准则已显示</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">隐藏「社区」按钮</string>
   <string name="morphe_hide_community_button_summary_on">「社区」按钮已隐藏</string>
   <string name="morphe_hide_community_button_summary_off">「社区」按钮已显示</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">隐藏“为你推荐”内容</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">“为你推荐”专区已隐藏</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">“为你推荐”专区已显示</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">隐藏「加入」按钮</string>
   <string name="morphe_hide_join_button_summary_on">加入按钮已隐藏</string>
@@ -965,10 +961,14 @@ Second \"item\" text"</string>
 
 您可以在YouTube中更改此设置：
 设置 → 播放（或自动播放） → 自动播放下一个视频"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">隐藏相关视频</string>
+  <string name="morphe_hide_player_related_videos_summary_on">相关视频已隐藏</string>
+  <string name="morphe_hide_player_related_videos_summary_off">相关视频正在显示</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">隐藏相关视频叠加层</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">全屏模式下的相关视频叠加层已隐藏</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">全屏模式下的相关视频叠加层已显示</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">隐藏相关视频叠加层</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">全屏模式下的相关视频叠加层已隐藏</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">全屏模式下的相关视频叠加层已显示</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">隐藏视频时间戳</string>
   <string name="morphe_hide_timestamp_summary_on">时间戳已隐藏</string>

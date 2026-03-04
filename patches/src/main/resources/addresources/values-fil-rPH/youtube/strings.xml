@@ -85,14 +85,6 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_floating_microphone_button_summary_on">Nakatago ang button ng lumulutang na mikropono sa paghahanap</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Ipinapakita ang button ng lumulutang na mikropono sa paghahanap</string>
   <string name="morphe_hide_horizontal_shelves_title">Itago ang mga horizontal shelf</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Nakatago ang mga horizontal shelf, tulad ng: 
-
-• Nagbabagang balita 
-• Ipagpatuloy ang panonood 
-• Galugarin ng higit pang mga channel 
-• Pinaka-kaugnay 
-• Pagbili 
-• Panoorin ito muli"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Ipinapakita ang mga horizontal shelf</string>
   <string name="morphe_hide_image_shelf_title">Itago ang image shelf</string>
   <string name="morphe_hide_image_shelf_summary_on">Nakatago ang image shelf sa mga paghahanap</string>
@@ -178,9 +170,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_quick_actions_title">Itago ang mga mabilisang aksyon</string>
   <string name="morphe_hide_quick_actions_summary_on">Nakatago ang Mabilisang aksyon sa fullscreen</string>
   <string name="morphe_hide_quick_actions_summary_off">Ipinapakita ang Mabilisang aksyon sa fullscreen</string>
-  <string name="morphe_hide_related_videos_title">Itago ang mga kaugnay na video</string>
-  <string name="morphe_hide_related_videos_summary_on">Nakatago ang mga kaugnay na video sa mabilisang aksyon</string>
-  <string name="morphe_hide_related_videos_summary_off">Ipinapakita ang mga kaugnay na video sa mabilisang aksyon</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Nakatago ang mga kaugnay na video sa mabilisang aksyon</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Ipinapakita ang mga kaugnay na video sa mabilisang aksyon</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Itago ang mga alituntunin ng mga subscriber</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Nakatago ang mga alituntunin ng komunidad ng mga subscriber</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Ipinapakita ang mga alituntunin ng komunidad ng mga subscriber</string>
@@ -282,10 +273,6 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_community_button_title">Itago ang button na Komunidad</string>
   <string name="morphe_hide_community_button_summary_on">Nakatago ang button na Komunidad</string>
   <string name="morphe_hide_community_button_summary_off">Ipinapakita ang button na Komunidad</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Itago ang \"Para sayo\" shelf</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Nakatago ang Para sayo shelf</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Ipinapakita ang Para sayo shelf</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Itago ang button na Sumali</string>
   <string name="morphe_hide_join_button_summary_on">Nakatago ang button na Sumali</string>
@@ -490,9 +477,14 @@ Mga Limitasyon:
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_show_search_button_summary_on">Ipinapakita ang paghahanap na button</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Nakatago ang paghahanap na button</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Ipinapakita ang paghahanap na button</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Itago ang karagdagang mga setting / Higit pa</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_on">Nakatago ang menu ng karagdagang mga setting / Higit pa</string>
+  <string name="morphe_hide_player_flyout_additional_settings_summary_off">Ipinapakita ang menu ng karagdagang mga setting / Higit pa</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -506,6 +498,12 @@ Mga Limitasyon:
           'Android Reel' and 'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_video_quality_title">Itago ang menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_on">Nakatago ang menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_video_quality_summary_off">Ipinapakita ang menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_title">Itago ang footer ng menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Nakatago ang footer ng menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Ipinapakita ang footer ng menu ng kalidad</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
@@ -518,11 +516,23 @@ Mga Limitasyon:
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Itago ang label na \'Auto-dubbed\'</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">Nakatago ang label ng auto-dubbed</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_summary_off">Ipinapakita ang label ng auto-dubbed</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Itago ang button ng \'Magbayad ng Super Thanks\'</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Itago ang button ng \'Green screen\'</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_live_preview_title">Itago ang pasilip na preview</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">Nakatago ang pasilip na preview</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">Ipinapakita ang pasilip na preview</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Itago ang button ng \'Mga bagong post\'</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Itago ang button ng \'I-save ang musika\'</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Itago ang mga kaugnay na video</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -538,6 +548,8 @@ Mga Limitasyon:
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_segments_sponsor_sum">Mga promosyon na binayaran, mga referral na binayaran at direktang advertisement. Hindi para sa sariling promosyon o libreng shout-out sa mga dahilan/likha/website/produkto na gusto nila</string>
+  <string name="morphe_sb_segments_selfpromo_sum">Katulad ng Sponsor maliban sa hindi binayaran / sariling promosyon. Kasama ang mga seksyon tungkol sa merchandise, mga donasyon, o impormasyon kung sino ang kanilang kinompromiso</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <!-- Shown in the settings preferences, and translations can be any text length. -->
@@ -551,19 +563,27 @@ Mga Limitasyon:
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">Nakapatay</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">Pasadya</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_alt_thumbnail_stills_about_summary">Kinukuha pa rin ang mga grabing larawan mula sa simula / gitna / dulo ng bawat video. Ang mga larawang ito ay binuo sa YouTube at walang panlabas na API na ginagamit</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.loopvideo.loopVideoPatch -->
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_summary_on">Ipinapakita ang button ng loop ng video</string>
+  <string name="morphe_loop_video_button_summary_off">Hindi ipinapakita ang button ng loop ng video</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
+  <string name="morphe_spoof_device_dimensions_summary_on">"Sine-spoof ang sukat ng device
+
+Maaring i-unlock ang mas mataas na kalidad ng video, ngunit maaring makaranas ka ng pag-stutter ng pag-playback, mas mabilis na pagkaubos ng baterya, at hindi kilalang mga side effect"</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassURLRedirectsPatch -->
@@ -571,7 +591,11 @@ Mga Limitasyon:
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
+  <string name="morphe_playback_speed_dialog_button_summary_on">Ipinapakita ang button ng bilis ng pag-playback. I-tap at hawakan upang ibalik ang bilis ng pag-playback sa default</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Hindi ipinapakita ang button ng bilis ng pag-playback</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
+  <string name="morphe_video_quality_dialog_button_summary_on">Ipinapakita ang button ng kalidad ng video. I-tap at hawakan upang ibalik ang kalidad sa default</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Hindi ipinapakita ang button ng kalidad ng video</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->

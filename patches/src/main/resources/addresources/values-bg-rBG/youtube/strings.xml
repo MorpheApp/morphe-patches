@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Бързите действия в пълноекранен режим</string>
   <string name="morphe_hide_quick_actions_summary_on">Бързите действия в пълноекранен режим са скрити</string>
   <string name="morphe_hide_quick_actions_summary_off">Бързите действия в пълноекранен режим са показани</string>
-  <string name="morphe_hide_related_videos_title">Скриване в сродни видеоклипове</string>
-  <string name="morphe_hide_related_videos_summary_on">Видео в бързи действия са скрити</string>
-  <string name="morphe_hide_related_videos_summary_off">Видео в бързи действия се показват</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Скриване на бързи действия за свързани видеа</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Видео в бързи действия са скрити</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Видео в бързи действия се показват</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Скриване на указанията за абонатори</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Списъка с правилата на общността за абонати е скрита</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Списъка на общността за абонати са показани</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Скриване на бутона \'Общност\'</string>
   <string name="morphe_hide_community_button_summary_on">Бутона \'Общност\' е скрит</string>
   <string name="morphe_hide_community_button_summary_off">Бутона \'Общност\' е показан</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Скрийте \'За вас\' рафт</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Рафтът \'За вас\' е скрит</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Рафтът \'За вас\' е показан</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Скриване на бутона \'Присъедини се\'</string>
   <string name="morphe_hide_join_button_summary_on">Бутона за присъединяване е скрит</string>
@@ -959,10 +955,14 @@ Second \"item\" text"</string>
 
 Можете да промените това в YouTube:
 Настройки → Воспроизведение (или Автоматично) → Автоматично следващо видео"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Скриване в сродни видеоклипове</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Свързаните видеа са скрити</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Връзки към свързани видеа са показани</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Дублирането на видеа е скрито</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Дублирането на видеа се показва</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Дублирането на видеа е скрито</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Дублирането на видеа се показва</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Скрий дублиране на видеа</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_timestamp_summary_on">Дублирането на видеа се показва</string>

@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">দ্রুত অ্যাকশন লুকান</string>
   <string name="morphe_hide_quick_actions_summary_on">ফুলস্ক্রিনে দ্রুত অ্যাকশন লুকানো আছে</string>
   <string name="morphe_hide_quick_actions_summary_off">ফুলস্ক্রিনে দ্রুত অ্যাকশন দেখানো আছে</string>
-  <string name="morphe_hide_related_videos_title">সম্পর্কিত ভিডিও লুকান</string>
-  <string name="morphe_hide_related_videos_summary_on">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও লুকানো আছে</string>
-  <string name="morphe_hide_related_videos_summary_off">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও দেখানো আছে</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">সম্পর্কিত ভিডিওতে লুকান দ্রুত অ্যাকশন</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও লুকানো আছে</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">দ্রুত অ্যাকশনে সম্পর্কিত ভিডিও দেখানো আছে</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">সাবস্ক্রাইবার নির্দেশিকা লুকান</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">সাবস্ক্রাইবারদের সম্পদ্রায় নির্দেশিকা লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">সাবস্ক্রাইবারদের সম্পদ্রায় নির্দেশিকা প্রদর্শিত হয়েছে</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">\'কমিউনিটি\' বোতামটি লুকান</string>
   <string name="morphe_hide_community_button_summary_on">মন্তব্য বোতাম লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_community_button_summary_off">মন্তব্য বোতাম প্রদর্শিত হয়েছে</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">\'আপনার জন্য\' শেল্ফ লুকান</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">আপনার জন্য শেল্ফ লুকানো আছে</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">আপনার জন্য শেল্ফ দেখানো আছে</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">সামিল হও বোতামটি লুকান</string>
   <string name="morphe_hide_join_button_summary_on">জয়েন করুন বোতাম লুকিয়ে রয়েছে</string>
@@ -965,10 +961,14 @@ Second \"item\" text"</string>
 
 ইউটিউবে পরিবর্তন করতে পারেন:
 সেটিংস → প্লেয়ব্যাক (অথবা অটোপ্লেয়) → অটোপ্লেয় পরবর্তী ভিডিও"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">সম্পর্কিত ভিডিও লুকান</string>
+  <string name="morphe_hide_player_related_videos_summary_on">সম্পর্কিত ভিডিওগুলো লুকানো হয়েছে</string>
+  <string name="morphe_hide_player_related_videos_summary_off">সম্পর্কিত ভিডিও দেখানো হচ্ছে</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">সম্পর্কিত ভিডিও ওভারলে লুকান</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে লুকানো আছে</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে দেখানো হয়েছে</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">সম্পর্কিত ভিডিও ওভারলে লুকান</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে লুকানো আছে</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">ফুলস্ক্রিনে সম্পর্কিত ভিডিও ওভারলে দেখানো হয়েছে</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">ভিডিওর সময়স্ট্যাম্প লুকান</string>
   <string name="morphe_hide_timestamp_summary_on">সময়স্ট্যাম্প লুকিয়ে রয়েছে</string>

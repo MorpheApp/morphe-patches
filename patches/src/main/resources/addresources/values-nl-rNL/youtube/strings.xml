@@ -86,6 +86,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_floating_microphone_button_summary_off">Zwevende microfoonknop in zoeken wordt getoond</string>
   <string name="morphe_hide_horizontal_shelves_title">Horizontale planken verbergen</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontale planken zijn verborgen, zoals:
+
 • Breaking news
 • Verder kijken
 • Meer kanalen ontdekken
@@ -177,9 +178,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_quick_actions_title">Snelle acties verbergen</string>
   <string name="morphe_hide_quick_actions_summary_on">Snelle acties in volledig scherm zijn verborgen</string>
   <string name="morphe_hide_quick_actions_summary_off">Snelle acties in volledig scherm zijn getoond</string>
-  <string name="morphe_hide_related_videos_title">Gerelateerde video\'s verbergen</string>
-  <string name="morphe_hide_related_videos_summary_on">Gerelateerde video\'s in snelle acties zijn verborgen</string>
-  <string name="morphe_hide_related_videos_summary_off">Gerelateerde video\'s in snelle acties zijn getoond</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Verbergen snelle acties gerelateerde video\'s</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Gerelateerde video\'s in snelle acties zijn verborgen</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Gerelateerde video\'s in snelle acties zijn getoond</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Richtlijnen voor abonnees verbergen</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Abonnementsrichtlijnen voor de community zijn verborgen</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Abonnementsrichtlijnen voor de community worden getoond</string>
@@ -281,10 +282,6 @@ Wijzigingen zijn:
   <string name="morphe_hide_community_button_title">Verberg \'Community\' knop</string>
   <string name="morphe_hide_community_button_summary_on">Knop \'Community\' is verborgen</string>
   <string name="morphe_hide_community_button_summary_off">Knop \'Community\' is zichtbaar</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Verberg \"Voor jou\"-schap</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Voor jou-plank is verborgen</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Voor jou-plank is getoond</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Verberg de knop \"Word lid\"</string>
   <string name="morphe_hide_join_button_summary_on">Join-knop is verborgen</string>
@@ -965,10 +962,14 @@ Om het menu voor audio-spoor te tonen, verander 'Spoof video streams' naar 'Andr
 
 Je kunt dit in YouTube veranderen:
 Instellingen → Afspelen (of Automatisch) → Automatisch volgende video afspelen"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Gerelateerde video\'s verbergen</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Gerelateerde video\'s zijn verborgen</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Gerelateerde video\'s worden getoond</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Overlay van gerelateerde video\'s verbergen</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Overlay van gerelateerde video\'s in volledig scherm is verborgen</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Overlay van gerelateerde video\'s in volledig scherm wordt getoond</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Overlay van gerelateerde video\'s verbergen</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Overlay van gerelateerde video\'s in volledig scherm is verborgen</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Overlay van gerelateerde video\'s in volledig scherm wordt getoond</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Verberg de videotijd</string>
   <string name="morphe_hide_timestamp_summary_on">De tijd is verborgen</string>

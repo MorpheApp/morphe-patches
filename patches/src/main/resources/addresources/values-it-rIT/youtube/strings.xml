@@ -86,6 +86,7 @@ I cambiamenti includono:
   <string name="morphe_hide_floating_microphone_button_summary_off">Il pulsante del microfono fluttuante nella ricerca è mostrato</string>
   <string name="morphe_hide_horizontal_shelves_title">Nascondi sezioni orizzontali</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"I ripiani orizzontali sono nascosti, come:
+
 • Ultime notizie
 • Continua a guardare
 • Esplora altri canali
@@ -177,9 +178,9 @@ I cambiamenti includono:
   <string name="morphe_hide_quick_actions_title">Nascondi azioni rapide</string>
   <string name="morphe_hide_quick_actions_summary_on">Le azioni rapide a schermo intero sono nascoste</string>
   <string name="morphe_hide_quick_actions_summary_off">Le azioni rapide a schermo intero sono mostrate</string>
-  <string name="morphe_hide_related_videos_title">Nascondi video correlati</string>
-  <string name="morphe_hide_related_videos_summary_on">I video correlati nelle azioni rapide sono nascosti</string>
-  <string name="morphe_hide_related_videos_summary_off">I video correlati nelle azioni rapide sono mostrati</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Nascondi le azioni rapide nei video correlati</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">I video correlati nelle azioni rapide sono nascosti</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">I video correlati nelle azioni rapide sono mostrati</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Nascondi le linee guida per gli iscritti</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Le linee guida degli iscritti alla community sono nascoste</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Le linee guida degli iscritti alla community sono visibili</string>
@@ -281,10 +282,6 @@ I cambiamenti includono:
   <string name="morphe_hide_community_button_title">Nascondi il pulsante Commenti</string>
   <string name="morphe_hide_community_button_summary_on">Il pulsante Commenti è nascosto</string>
   <string name="morphe_hide_community_button_summary_off">Il pulsante Commenti è visibile</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Nascondi sezione \"Per te\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">La sezione Per Te è nascosta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">La sezione Per Te è mostrata</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Nascondi il pulsante Abbonati</string>
   <string name="morphe_hide_join_button_summary_on">Il pulsante Abbonati è nascosto</string>
@@ -965,10 +962,14 @@ Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel
 
 Puoi cambiarlo su YouTube:
 Impostazioni → Riproduzione (o Autoplay) → Autoplay next video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Nascondi video correlati</string>
+  <string name="morphe_hide_player_related_videos_summary_on">I video correlati sono nascosti</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Video correlati visualizzati</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Nascondi overlay video correlati</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">L\'overlay dei video correlati in modalità a schermo intero è nascosto</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">L\'overlay dei video correlati in modalità a schermo intero è mostrato</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Nascondi overlay video correlati</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">L\'overlay dei video correlati in modalità a schermo intero è nascosto</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">L\'overlay dei video correlati in modalità a schermo intero è mostrato</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Nascondi timestamp video</string>
   <string name="morphe_hide_timestamp_summary_on">Il timestamp è nascosto</string>

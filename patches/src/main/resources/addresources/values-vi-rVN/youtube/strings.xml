@@ -84,11 +84,12 @@ Thay đổi bao gồm:
   <string name="morphe_hide_floating_microphone_button_summary_on">Nút micro đã bị ẩn trong lúc tìm kiếm</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Nút micro được hiển thị trong lúc tìm kiếm</string>
   <string name="morphe_hide_horizontal_shelves_title">Ẩn kệ cá nhân hoá</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Các kệ cá nhân hoá đã bị ẩn, chẳng hạn như:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Các kệ cá nhân đã bị ẩn, chẳng hạn như:
 
 • Tin nổi bật
 • Tiếp tục xem
 • Khám phá các chủ đề khác
+• Dành cho bạn
 • Phù hợp nhất
 • Mua sắm
 • Xem lại"</string>
@@ -177,9 +178,9 @@ Thay đổi bao gồm:
   <string name="morphe_hide_quick_actions_title">Ẩn bảng thao tác nhanh</string>
   <string name="morphe_hide_quick_actions_summary_on">Bảng thao tác nhanh ở chế độ toàn màn hình đã bị ẩn</string>
   <string name="morphe_hide_quick_actions_summary_off">Bảng thao tác nhanh ở chế độ toàn màn hình được hiển thị</string>
-  <string name="morphe_hide_related_videos_title">Ẩn video liên quan</string>
-  <string name="morphe_hide_related_videos_summary_on">Video liên quan trong bảng thao tác nhanh đã bị ẩn</string>
-  <string name="morphe_hide_related_videos_summary_off">Video liên quan trong bảng thao tác nhanh được hiển thị</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ẩn video liên quan trong bảng nút thao tác nhanh</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Video liên quan trong bảng thao tác nhanh đã bị ẩn</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Video liên quan trong bảng thao tác nhanh được hiển thị</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ẩn nguyên tắc cộng đồng cho người đăng ký</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Nguyên tắc cộng đồng cho người đăng ký đã bị ẩn</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Nguyên tắc cộng đồng dành cho người đăng ký được hiển thị</string>
@@ -281,10 +282,6 @@ Thay đổi bao gồm:
   <string name="morphe_hide_community_button_title">Ẩn nút Cộng đồng</string>
   <string name="morphe_hide_community_button_summary_on">Nút Cộng đồng đã bị ẩn</string>
   <string name="morphe_hide_community_button_summary_off">Nút Cộng đồng được hiển thị</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ẩn kệ \'Dành cho bạn\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Kệ Dành cho bạn đã bị ẩn</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Kệ Dành cho bạn được hiển thị</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ẩn nút Tham gia</string>
   <string name="morphe_hide_join_button_summary_on">Nút tham gia đã bị ẩn</string>
@@ -965,10 +962,14 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
 
 Cách tắt 'Tự động phát video tiếp theo':
 Cài đặt → Phát (hoặc Tự động phát) → Tự động phát video tiếp theo"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ẩn video liên quan</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Các video liên quan đã bị ẩn</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Các video liên quan được hiển thị</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Lớp phủ video liên quan ở chế độ toàn màn hình được hiển thị</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Lớp phủ video liên quan ở chế độ toàn màn hình được hiển thị</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ẩn dấu thời gian video</string>
   <string name="morphe_hide_timestamp_summary_on">Dấu thời gian đã bị ẩn</string>

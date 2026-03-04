@@ -88,6 +88,7 @@ Perubahan termasuk:
 • Berita terkini
 • Lanjutkan menonton
 • Jelajahi lebih banyak saluran
+• Untuk Anda
 • Paling relevan
 • Belanja
 • Tonton lagi"</string>
@@ -176,9 +177,9 @@ Perubahan termasuk:
   <string name="morphe_hide_quick_actions_title">Sembunyikan tindakan cepat</string>
   <string name="morphe_hide_quick_actions_summary_on">Tindakan cepat dalam layar penuh disembunyikan</string>
   <string name="morphe_hide_quick_actions_summary_off">Tindakan cepat dalam layar penuh ditampilkan</string>
-  <string name="morphe_hide_related_videos_title">Sembunyikan video terkait</string>
-  <string name="morphe_hide_related_videos_summary_on">Video terkait dalam tindakan cepat disembunyikan</string>
-  <string name="morphe_hide_related_videos_summary_off">Video terkait dalam tindakan cepat ditampilkan</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Sembunyikan tindakan cepat video terkait</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Video terkait dalam tindakan cepat disembunyikan</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Video terkait dalam tindakan cepat ditampilkan</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sembunyikan panduan pelanggan</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Pedoman komunitas pelanggan disembunyikan</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Pedoman komunitas pelanggan ditampilkan</string>
@@ -280,10 +281,6 @@ Perubahan termasuk:
   <string name="morphe_hide_community_button_title">Sembunyikan tombol Komunitas</string>
   <string name="morphe_hide_community_button_summary_on">Tombol komunitas disembunyikan</string>
   <string name="morphe_hide_community_button_summary_off">Tombo komunitas ditampilkan</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Sembunyikan rak \'Untuk Anda\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Rak Untuk Anda disembunyikan</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Rak Untuk Anda ditampilkan</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Sembunyikan tombol Gabung</string>
   <string name="morphe_hide_join_button_summary_on">Tombol gabung disembunyikan</string>
@@ -964,10 +961,14 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
 
 Anda dapat mengubahnya di YouTube:
 Pengaturan → Pemutaran (atau Putar otomatis) → Putar otomatis video berikutnya"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Sembunyikan video terkait</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Video terkait disembunyikan</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Video terkait ditampilkan</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Hamparan video terkait dalam layar penuh disembunyikan</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Hamparan video terkait dalam layar penuh ditampilkan</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Sembunyikan hamparan video terkait</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Hamparan video terkait dalam layar penuh disembunyikan</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Hamparan video terkait dalam layar penuh ditampilkan</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Sembunyikan penanda waktu video</string>
   <string name="morphe_hide_timestamp_summary_on">Penanda waktu disembunyikan</string>

@@ -85,6 +85,7 @@ Los cambios incluyen:
   <string name="morphe_hide_floating_microphone_button_summary_off">El botón flotante del micrófono en la búsqueda está visible</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar estantes horizontales</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Los estantes horizontales están ocultos, como:
+
 • Noticias de última hora
 • Seguir viendo
 • Explorar más canales
@@ -176,9 +177,9 @@ Los cambios incluyen:
   <string name="morphe_hide_quick_actions_title">Ocultar acciones rápidas</string>
   <string name="morphe_hide_quick_actions_summary_on">Las acciones rápidas en pantalla completa están ocultas</string>
   <string name="morphe_hide_quick_actions_summary_off">Las acciones rápidas en pantalla completa están visibles</string>
-  <string name="morphe_hide_related_videos_title">Ocultar vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_summary_on">Los vídeos relacionados en acciones rápidas están ocultos</string>
-  <string name="morphe_hide_related_videos_summary_off">Los vídeos relacionados en acciones rápidas están visibles</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ocultar acciones rápidas relacionadas con vídeos</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Los vídeos relacionados en acciones rápidas están ocultos</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Los vídeos relacionados en acciones rápidas están visibles</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar normas para suscriptores</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Las normas de la comunidad de suscriptores están ocultas</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Las normas de la comunidad de suscriptores están visibles</string>
@@ -280,10 +281,6 @@ Los cambios incluyen:
   <string name="morphe_hide_community_button_title">Ocultar botón \"Comunidad\"</string>
   <string name="morphe_hide_community_button_summary_on">El botón \"Comunidad\" está oculto</string>
   <string name="morphe_hide_community_button_summary_off">El botón \"Comunidad\" está visible</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ocultar estantería \"Para tí\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">La pestaña \"Para tí\" está oculta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">La pestaña \"Para tí\" está visible</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ocultar botón \"Unirme\"</string>
   <string name="morphe_hide_join_button_summary_on">El botón \"Unirme\" está oculto</string>
@@ -964,10 +961,14 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
 
 Puedes cambiar esto en YouTube: 
 Configuración → Reproducción → Reproducción automática del siguiente vídeo"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ocultar vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Los vídeos relacionados están ocultos</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Los videos relacionados se muestran</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">La superposición de vídeos relacionados en pantalla completa está oculta</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">La superposición de vídeos relacionados en pantalla completa está visible</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">La superposición de vídeos relacionados en pantalla completa está oculta</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">La superposición de vídeos relacionados en pantalla completa está visible</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ocultar fecha y hora de vídeo</string>
   <string name="morphe_hide_timestamp_summary_on">La fecha y hora está oculta</string>

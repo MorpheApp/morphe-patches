@@ -86,6 +86,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_floating_microphone_button_summary_off">Flydende mikrofonknap i søgning vises</string>
   <string name="morphe_hide_horizontal_shelves_title">Skjul vandrette hylder</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Horisontale hylder er skjult, såsom:
+
 • Seneste nyheder
 • Fortsæt med at se
 • Udforsk flere kanaler
@@ -177,9 +178,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_quick_actions_title">Skjul hurtige handlinger</string>
   <string name="morphe_hide_quick_actions_summary_on">Hurtige handlinger i fuldskærm er skjult</string>
   <string name="morphe_hide_quick_actions_summary_off">Hurtige handlinger i fuldskærm er vist</string>
-  <string name="morphe_hide_related_videos_title">Skjul relaterede videoer</string>
-  <string name="morphe_hide_related_videos_summary_on">Relaterede videoer i hurtige handlinger er skjult</string>
-  <string name="morphe_hide_related_videos_summary_off">Relaterede videoer i hurtige handlinger er vist</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Skjul hurtige handlinger relaterede videoer</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Relaterede videoer i hurtige handlinger er skjult</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Relaterede videoer i hurtige handlinger er vist</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skjul retningslinjer for abonnenter</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Abonnenter community retningslinjer er skjult</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Abonnenter community retningslinjer er vist</string>
@@ -281,10 +282,6 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_community_button_title">Skjul \'Community\' knappen</string>
   <string name="morphe_hide_community_button_summary_on">Knappen \'Community\' er skjult</string>
   <string name="morphe_hide_community_button_summary_off">Knappen \'Community\' er vist</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Skjul hylden \"Til dig\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Til dig-hylden er skjult</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Til dig-hylden er vist</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Skjul knappen Deltag</string>
   <string name="morphe_hide_join_button_summary_on">Deltag-knappen er skjult</string>
@@ -965,10 +962,14 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
 
 Du kan ændre dette i YouTube:
 Indstillinger → Afspilning (eller Automatisk afspil) → Automatisk afspil næste video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Skjul relaterede videoer</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Relaterede videoer er skjult</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Relaterede videoer vises</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Overlay for relaterede videoer i fuldskærm vises</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Overlay for relaterede videoer i fuldskærm vises</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Skjul tidsstempel på video</string>
   <string name="morphe_hide_timestamp_summary_on">Tidsstempel er skjult</string>

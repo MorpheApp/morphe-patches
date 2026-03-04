@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">隱藏快速操作</string>
   <string name="morphe_hide_quick_actions_summary_on">已於全螢幕中隱藏快速操作</string>
   <string name="morphe_hide_quick_actions_summary_off">已於全螢幕中顯示快速操作</string>
-  <string name="morphe_hide_related_videos_title">隱藏相關影片</string>
-  <string name="morphe_hide_related_videos_summary_on">已隱藏快速操作中的相關影片</string>
-  <string name="morphe_hide_related_videos_summary_off">已顯示快速操作中的相關影片</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">隱藏相關影片的快速動作</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">已隱藏快速操作中的相關影片</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">已顯示快速操作中的相關影片</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">隱藏訂閱者規範</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">已隱藏《訂閱者社群規範》</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">已顯示《訂閱者社群規範》</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">隱藏「社群」按鈕</string>
   <string name="morphe_hide_community_button_summary_on">已隱藏「社群」按鈕</string>
   <string name="morphe_hide_community_button_summary_off">已顯示「社群」按鈕</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">隱藏「為你推薦」區塊</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">已隱藏「為您推薦」區塊</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">已顯示「為您推薦」區塊</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">隱藏「加入」按鈕</string>
   <string name="morphe_hide_join_button_summary_on">已隱藏「加入」按鈕</string>
@@ -965,10 +961,14 @@ Second \"item\" text"</string>
 
 您可以在YouTube中更改此設定：
 設定 → 播放（或自動播放） → 自動播放下一影片"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">隱藏相關影片</string>
+  <string name="morphe_hide_player_related_videos_summary_on">已隱藏相關影片</string>
+  <string name="morphe_hide_player_related_videos_summary_off">相關影片</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">已隱藏全螢幕中的相關影片覆蓋層</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">已顯示全螢幕中的相關影片覆蓋層</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">已隱藏全螢幕中的相關影片覆蓋層</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">已顯示全螢幕中的相關影片覆蓋層</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">隱藏影片時間戳記</string>
   <string name="morphe_hide_timestamp_summary_on">已隱藏時間戳記</string>

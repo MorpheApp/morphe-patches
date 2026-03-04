@@ -90,6 +90,7 @@ Second \"item\" text"</string>
 • Гарячі новини
 • Продовжити перегляд
 • Переглянути більше каналів
+• Для вас
 • Найдоречніші
 • Покупки
 • Дивитися знову"</string>
@@ -178,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Приховати швидкі дії</string>
   <string name="morphe_hide_quick_actions_summary_on">Швидкі дії в повноекранному режимі приховано</string>
   <string name="morphe_hide_quick_actions_summary_off">Швидкі дії в повноекранному режимі показуються</string>
-  <string name="morphe_hide_related_videos_title">Приховати пов\'язані відео</string>
-  <string name="morphe_hide_related_videos_summary_on">Пов\'язані відео у швидких діях приховано</string>
-  <string name="morphe_hide_related_videos_summary_off">Пов\'язані відео у швидких діях показуються</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Приховати швидкі дії, пов\'язані відео</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Пов\'язані відео у швидких діях приховано</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Пов\'язані відео у швидких діях показуються</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Приховати правила спільноти підписок</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Правила спільноти підписок приховано</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Правила спільноти підписок показуються</string>
@@ -282,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Приховати кнопку \"Спільнота\"</string>
   <string name="morphe_hide_community_button_summary_on">Кнопку \"Спільнота\" приховано</string>
   <string name="morphe_hide_community_button_summary_off">Кнопка \"Спільнота\" показується</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Приховати полицю \"Для вас\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Полицю \"Для вас\" приховано</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Полиця \"Для вас\" показується</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Приховати \"Підписатися +\"</string>
   <string name="morphe_hide_join_button_summary_on">Кнопку \"Підписатися +\" приховано</string>
@@ -966,10 +963,14 @@ Second \"item\" text"</string>
 
 Ви можете змінити це в YouTube:
 Налаштування → Відтворення (або Автовідтворення) → Автовідтворення наступного відео"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Приховати пов\'язані відео</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Пов’язані відео приховані</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Пов\'язані відео показані</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Накладення пов’язаних відео в повноекранному режимі приховано</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Накладення пов’язаних відео в повноекранному режимі показуються</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Накладення пов’язаних відео в повноекранному режимі приховано</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Накладення пов’язаних відео в повноекранному режимі показуються</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Приховати мітку часу відео</string>
   <string name="morphe_hide_timestamp_summary_on">Мітку часу відео над панеллю прогресу приховано</string>

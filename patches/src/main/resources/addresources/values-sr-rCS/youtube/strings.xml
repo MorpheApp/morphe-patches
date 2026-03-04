@@ -86,6 +86,7 @@ Promene uključuju:
   <string name="morphe_hide_floating_microphone_button_summary_off">Plutajuće dugme mikrofona u pretrazi je prikazano</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij horizontalne police</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontalne police su skrivene, kao što su:
+
 • Udarne vesti
 • Nastavite da gledate
 • Istražite više kanala
@@ -177,9 +178,9 @@ Promene uključuju:
   <string name="morphe_hide_quick_actions_title">Sakrij brze radnje</string>
   <string name="morphe_hide_quick_actions_summary_on">Brze radnje u režimu celog ekrana su skrivene</string>
   <string name="morphe_hide_quick_actions_summary_off">Brze radnje u režimu celog ekrana su prikazane</string>
-  <string name="morphe_hide_related_videos_title">Sakrij srodne videe</string>
-  <string name="morphe_hide_related_videos_summary_on">Srodni videi u brzim radnjama su skriveni</string>
-  <string name="morphe_hide_related_videos_summary_off">Srodni videi u brzim radnjama su prikazani</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Sakrij brze akcije u povezanim video snimcima</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Srodni videi u brzim radnjama su skriveni</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Srodni videi u brzim radnjama su prikazani</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sakrij smernice pratilaca</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Smernice zajednice pratilaca su skrivene</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Smernice zajednice pratilaca su prikazane</string>
@@ -281,10 +282,6 @@ Promene uključuju:
   <string name="morphe_hide_community_button_title">Sakrij dugme „Komentari”</string>
   <string name="morphe_hide_community_button_summary_on">Dugme „Komentari” je skriveno</string>
   <string name="morphe_hide_community_button_summary_off">Dugme „Komentari” je prikazano</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Sakrij policu „Za vas”</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Polica „Za vas” je skrivena</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Polica „Za vas” je prikazana</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Sakrij dugme „Učlani me”</string>
   <string name="morphe_hide_join_button_summary_on">Dugme „Učlani me” je skriveno</string>
@@ -965,10 +962,14 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitiraj video tokove' u 'A
 
 Mozete promeniti ovo u YouTube:
 Postavke → Prikaz (ili Autoplay) → Autoplay next video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Sakrij srodne videe</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Povezani video snimci su sakriveni</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Povezane video se prikazuju</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Sakrij srodne videe</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Srodni videi u režimu celog ekrana su skriveni</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Srodni videi u režimu celog ekrana su prikazani</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Sakrij srodne videe</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Srodni videi u režimu celog ekrana su skriveni</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Srodni videi u režimu celog ekrana su prikazani</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Sakrij vremensku oznaku videa</string>
   <string name="morphe_hide_timestamp_summary_on">Vremenska oznaka videa je skrivena</string>

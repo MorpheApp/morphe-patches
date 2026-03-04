@@ -1,3 +1,24 @@
+# [1.17.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.17.0-dev.2...v1.17.0-dev.3) (2026-03-04)
+
+
+### Features
+
+* **YouTube Music:** Add experimental support for `9.09.52` ([e42d9c1](https://github.com/MorpheApp/morphe-patches/commit/e42d9c1bbdd6985378be47c8f9138ccdb22ead1e))
+
+# [1.17.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.17.0-dev.1...v1.17.0-dev.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* **Custom branding:** Do not override base app name for root installation ([8eb6d48](https://github.com/MorpheApp/morphe-patches/commit/8eb6d483a53e99eaa5aece259f0d5a27d2ef5053))
+
+# [1.17.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.16.1-dev.2...v1.17.0-dev.1) (2026-03-04)
+
+
+### Features
+
+* **YouTube:** Add `Hide releated videos` patch ([#685](https://github.com/MorpheApp/morphe-patches/issues/685)) ([7a960e1](https://github.com/MorpheApp/morphe-patches/commit/7a960e1a9f52ee2dcaea84298a62e9e2867100b7))
+
 ## [1.16.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.16.1-dev.1...v1.16.1-dev.2) (2026-03-03)
 
 

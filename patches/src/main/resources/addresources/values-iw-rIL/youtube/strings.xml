@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">הסתר פעולות מהירות</string>
   <string name="morphe_hide_quick_actions_summary_on">פעולות מהירות במסך מלא מוסתרות</string>
   <string name="morphe_hide_quick_actions_summary_off">פעולות מהירות במסך מלא מוצגות</string>
-  <string name="morphe_hide_related_videos_title">הסתר סרטונים קשורים</string>
-  <string name="morphe_hide_related_videos_summary_on">סרטונים קשורים בפעולות מהירות מוסתרים</string>
-  <string name="morphe_hide_related_videos_summary_off">סרטונים קשורים בפעולות מהירות מוצגים</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">הסתר פעולות מהירות הקשורות לסרטונים</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">סרטונים קשורים בפעולות מהירות מוסתרים</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">סרטונים קשורים בפעולות מהירות מוצגים</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">הסתר את הנחיות המנויים</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">הנחיות קהילת המנויים מוסרת</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">הנחיות קהילת המנויים מוצגות</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">הסתר לחצן תגובות</string>
   <string name="morphe_hide_community_button_summary_on">לחצן תגובות מוסתר</string>
   <string name="morphe_hide_community_button_summary_off">לחצן תגובות מוצג</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">הסתר מדף \'בשבילך\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">המדף \'בשבילך\' מוסתר</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">המדף \'בשבילך\' מוצג</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">הסתר לחצן להצטרפות</string>
   <string name="morphe_hide_join_button_summary_on">לחצן להצטרפות מוסתר</string>
@@ -965,10 +961,14 @@ Second \"item\" text"</string>
 
 אתה יכול לשנות זאת ביוטיוב:
 הגדרות → נגינה (או התחלת נגינה אוטומטית) → התחלת נגינה אוטומטית הבאה"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">הסתר סרטונים קשורים</string>
+  <string name="morphe_hide_player_related_videos_summary_on">סרטונים קשורים מוצפנים</string>
+  <string name="morphe_hide_player_related_videos_summary_off">סרטונים קשורים מוצגים</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">הסתר חותמת זמן של סרטון</string>
   <string name="morphe_hide_timestamp_summary_on">חותמת זמן מוסתרת</string>

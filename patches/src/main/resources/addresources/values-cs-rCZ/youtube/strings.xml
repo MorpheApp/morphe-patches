@@ -87,12 +87,12 @@ Změny zahrnují:
   <string name="morphe_hide_horizontal_shelves_title">Skrýt horizontální police</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Vodorovné police jsou skryté, například:
 
-• Rozbíjející se zprávy
+• Nejnovější zprávy
 • Pokračovat ve sledování
-• Prozkoumat více kanálů
-• Nejrelevantnější
-• Nákupy
-• Znovu to sledovat"</string>
+• Prozkoumat další kanály
+• Nejvhodnější
+• Nakupování
+• Znovu zhlédnout"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Vodorovné police jsou zobrazeny</string>
   <string name="morphe_hide_image_shelf_title">Skrýt poličku s obrázky</string>
   <string name="morphe_hide_image_shelf_summary_on">Polička s obrázky ve výsledcích vyhledávání je skrytá</string>
@@ -178,9 +178,9 @@ Změny zahrnují:
   <string name="morphe_hide_quick_actions_title">Skrýt rychlé akce</string>
   <string name="morphe_hide_quick_actions_summary_on">Rychlé akce na celé obrazovce jsou skryty</string>
   <string name="morphe_hide_quick_actions_summary_off">Rychlé akce na celé obrazovce jsou zobrazeny</string>
-  <string name="morphe_hide_related_videos_title">Skrýt související videa</string>
-  <string name="morphe_hide_related_videos_summary_on">Související videa v rychlých akcích jsou skryta</string>
-  <string name="morphe_hide_related_videos_summary_off">Související videa v rychlých akcích jsou zobrazena</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Skrýt rychlé akce související videa</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Související videa v rychlých akcích jsou skryta</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Související videa v rychlých akcích jsou zobrazena</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skrýt pokyny pro odběratele</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Pokyny pro komunitu předplatitelů jsou skryté</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Pokyny pro komunitu odběratelů se zobrazují</string>
@@ -282,10 +282,6 @@ Změny zahrnují:
   <string name="morphe_hide_community_button_title">Skrýt tlačítko Spoluprace</string>
   <string name="morphe_hide_community_button_summary_on">Tlačítko Spoluprace je skryté</string>
   <string name="morphe_hide_community_button_summary_off">Tlačítko Spoluprace je zobrazeno</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Skrýt panel „Pro vás“</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Polička Pro vás je skryta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Polička Pro vás je zobrazena</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Skrýt tlačítko Připojit se</string>
   <string name="morphe_hide_join_button_summary_on">Tlačítko Připojit se je skryto</string>
@@ -966,10 +962,14 @@ Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy'
 
 Můžete to změnit v YouTube:
 Nastavení → Přehrávání (nebo Automatické přehrávání) → Automatické přehrání dalšího videa"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Skrýt související videa</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Související videa jsou skryta</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Související videa jsou zobrazena</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Skrýt překrytí souvisejících videí</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Překrytí souvisejících videí v režimu celé obrazovky je skryto</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Překrytí souvisejících videí v režimu celé obrazovky je zobrazeno</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Skrýt překrytí souvisejících videí</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Překrytí souvisejících videí v režimu celé obrazovky je skryto</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Překrytí souvisejících videí v režimu celé obrazovky je zobrazeno</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Skrýt čas videa</string>
   <string name="morphe_hide_timestamp_summary_on">Čas je skrytý</string>

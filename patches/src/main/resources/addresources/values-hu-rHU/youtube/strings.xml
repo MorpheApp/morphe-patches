@@ -85,10 +85,10 @@ Változások:
   <string name="morphe_hide_floating_microphone_button_summary_on">Lebegő mikrofon gomb a keresésben elrejtve</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">A lebegő mikrofon gomb megjelenik a keresésben</string>
   <string name="morphe_hide_horizontal_shelves_title">Vízszintes polcok elrejtése</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"A vízszintes polcok rejtettek, mint például:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Vízszintes polcok rejtettek, mint például:
 • Friss hírek
 • Folytassa a megtekintést
-• Fedezzen fel további csatornákat
+• Fedezzen fel további csatornakat
 • Legrelevánsabb
 • Vásárlás
 • Nézze meg újra"</string>
@@ -177,9 +177,9 @@ Változások:
   <string name="morphe_hide_quick_actions_title">Gyorsműveletek elrejtése</string>
   <string name="morphe_hide_quick_actions_summary_on">A teljes képernyős gyorsműveletek el vannak rejtve</string>
   <string name="morphe_hide_quick_actions_summary_off">A teljes képernyős gyorsműveletek meg vannak jelenítve</string>
-  <string name="morphe_hide_related_videos_title">Kapcsolódó videók elrejtése</string>
-  <string name="morphe_hide_related_videos_summary_on">A gyorsműveletekben lévő kapcsolódó videók el vannak rejtve</string>
-  <string name="morphe_hide_related_videos_summary_off">A gyorsműveletekben lévő kapcsolódó videók meg vannak jelenítve</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Elrejtés a kapcsolódó videók között</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">A gyorsműveletekben lévő kapcsolódó videók el vannak rejtve</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">A gyorsműveletekben lévő kapcsolódó videók meg vannak jelenítve</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Feliratkozók közösségi irányelveinek elrejtése</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">A feliratkozók közösségi irányelvei rejtettek</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">A feliratkozók közösségi irányelvei megjelennek</string>
@@ -281,10 +281,6 @@ Változások:
   <string name="morphe_hide_community_button_title">Közösség gomb elrejtése</string>
   <string name="morphe_hide_community_button_summary_on">A közösség gomb el van rejtve</string>
   <string name="morphe_hide_community_button_summary_off">A közösség gomb megvan jelenítve</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">\"Neked\" polc elrejtése</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Az Önnek polc el van rejtve</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Az Önnek polc meg van jelenítve</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Csatlakozás gomb elrejtése</string>
   <string name="morphe_hide_join_button_summary_on">Csatlakozás gomb elrejtve</string>
@@ -965,10 +961,14 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
 
 Ez megváltoztatható a YouTube-on:
 Beállítások → Lejátszás (vagy Autoplay) → Autoplay next video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Kapcsolódó videók elrejtése</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Videóhirdetések elrejtve</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Kapcsolatos videók megjelenítése</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Kapcsolódó videók átfedésének elrejtése</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">A kapcsolódó videók átfedése teljes képernyőn elrejtve</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">A kapcsolódó videók átfedése teljes képernyőn látható</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Kapcsolódó videók átfedésének elrejtése</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">A kapcsolódó videók átfedése teljes képernyőn elrejtve</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">A kapcsolódó videók átfedése teljes képernyőn látható</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Videó időbélyegzőjének elrejtése</string>
   <string name="morphe_hide_timestamp_summary_on">Az időbélyegző elrejtve</string>

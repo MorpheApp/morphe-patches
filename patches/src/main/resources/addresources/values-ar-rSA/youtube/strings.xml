@@ -91,7 +91,7 @@ Second \"item\" text"</string>
 • استكشاف المزيد من القنوات
 • الأكثر صلة
 • التسوق
-• أريد أن اشاهدها مرة أخرى"</string>
+• أريد أن أشاهدها مرة أخرى"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">يتم عرض الأرفف الأفقية</string>
   <string name="morphe_hide_image_shelf_title">إخفاء رف الصور</string>
   <string name="morphe_hide_image_shelf_summary_on">تم إخفاء رف الصور في نتائج البحث</string>
@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">إخفاء الإجراءات السريعة</string>
   <string name="morphe_hide_quick_actions_summary_on">تم إخفاء الإجراءات السريعة في ملء الشاشة</string>
   <string name="morphe_hide_quick_actions_summary_off">يتم عرض الإجراءات السريعة في ملء الشاشة</string>
-  <string name="morphe_hide_related_videos_title">إخفاء الفيديوهات ذات الصلة</string>
-  <string name="morphe_hide_related_videos_summary_on">تم إخفاء الفيديوهات ذات الصلة في الإجراءات السريعة</string>
-  <string name="morphe_hide_related_videos_summary_off">يتم عرض الفيديوهات ذات الصلة في الإجراءات السريعة</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">إخفاء الإجراءات السريعة المرتبطة بالفيديوهات</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">تم إخفاء الفيديوهات ذات الصلة في الإجراءات السريعة</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">يتم عرض الفيديوهات ذات الصلة في الإجراءات السريعة</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">إخفاء إرشادات المشتركين</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">تم إخفاء إرشادات مجتمع المشتركين</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">يتم عرض إرشادات مجتمع المشتركين</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">إخفاء زر المنتدى</string>
   <string name="morphe_hide_community_button_summary_on">تم إخفاء زر المنتدى</string>
   <string name="morphe_hide_community_button_summary_off">يتم عرض زر المنتدى</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">إخفاء رف \'مقترحات لك\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">تم إخفاء رف مقترح لك</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">يتم عرض رف مقترح لك</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_join_button_summary_on">تم إخفاء زر الانضمام</string>
@@ -965,10 +961,14 @@ Second \"item\" text"</string>
 
 يمكن تغيير 'تشغيل الفيديو التالي تلقائيًا' في إعدادات YouTube:
 الإعدادات ← التشغيل (أو التشغيل التلقائي) ← تشغيل الفيديو التالي تلقائيًا"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">إخفاء الفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_player_related_videos_summary_on">تم إخفاء الفيديوهات المرتبطة</string>
+  <string name="morphe_hide_player_related_videos_summary_off">مقاطع فيديو ذات صلة معروضة</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">إخفاء واجهة الفيديوهات ذات الصلة</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">تم إخفاء واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">يتم عرض واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">إخفاء واجهة الفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">تم إخفاء واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">يتم عرض واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">إخفاء الطابع الزمني للفيديو</string>
   <string name="morphe_hide_timestamp_summary_on">تم إخفاء الطابع الزمني</string>

@@ -86,6 +86,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_floating_microphone_button_summary_off">Taispeántar cnaipe micreafóin ar snámh sa chuardach</string>
   <string name="morphe_hide_horizontal_shelves_title">Folaigh seilfeanna cothrománacha</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Tá seilfeanna cothrománacha i bhfolach, amhail:
+
 • Nuacht is déanaí
 • Lean ar aghaidh ag féachaint
 • Déan iniúchadh ar níos mó cainéal
@@ -177,9 +178,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_quick_actions_title">Folaigh gníomhartha tapa</string>
   <string name="morphe_hide_quick_actions_summary_on">Tá gníomhartha tapa i lánscáileán i bhfolach</string>
   <string name="morphe_hide_quick_actions_summary_off">Taispeántar gníomhartha tapa i lánscáileán</string>
-  <string name="morphe_hide_related_videos_title">Folaigh físeáin ghaolmhara</string>
-  <string name="morphe_hide_related_videos_summary_on">Tá físeáin ghaolmhara i ngníomhartha tapa i bhfolach</string>
-  <string name="morphe_hide_related_videos_summary_off">Taispeántar físeáin ghaolmhara i ngníomhartha tapa</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Folaigh i bhfíseáin ghaolmhara</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Tá físeáin ghaolmhara i ngníomhartha tapa i bhfolach</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Taispeántar físeáin ghaolmhara i ngníomhartha tapa</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Folaigh treoirlínte síntiúsóirí</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Tá treoirlínte pobail síntiúsóirí i bhfolach</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Taispeántar treoirlínte pobail do shíntiúsóirí</string>
@@ -281,10 +282,6 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_community_button_title">Folaigh cnaipe Pobail</string>
   <string name="morphe_hide_community_button_summary_on">Tá an cnaipe pobail i bhfolach</string>
   <string name="morphe_hide_community_button_summary_off">Taispeántar cnaipe pobail</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Folaigh seilf \'Duitse\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Tá an seilf Duit i bhfolach</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Taispeántar seilf Duit</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Folaigh an cnaipe Glac páirt</string>
   <string name="morphe_hide_join_button_summary_on">Tá an cnaipe Glac páirt i bhfolach</string>
@@ -965,10 +962,14 @@ Chun an roghchlár rianta fuaime a thaispeáint, athraigh 'Sruthanna físe bréi
 
 Is féidir an t-athsheinnm seo a athrú i socruithe YouTube:
 Socruithe → Athsheinnm → Uathsheinnm an chéad fhíseán eile"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Folaigh físeáin ghaolmhara</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Tá fógraí físe i bhfolach</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Tá comhchreatharnacha físeáin ar fáil</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Folaigh forleagan físeáin ghaolmhara</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Tá forleagan físeáin ghaolmhara i lánscáileán i bhfolach</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Taispeántar forleagan físeáin ghaolmhara i lánscáileán</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Folaigh forleagan físeáin ghaolmhara</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Tá forleagan físeáin ghaolmhara i lánscáileán i bhfolach</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Taispeántar forleagan físeáin ghaolmhara i lánscáileán</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Folaigh stampa ama an fhíseáin</string>
   <string name="morphe_hide_timestamp_summary_on">Tá stampa ama i bhfolach</string>

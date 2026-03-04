@@ -87,12 +87,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"横スクロール欄は表示されません
 例:
-・ニュース速報
-・続きを見る
-・他のチャンネルを探す
-・関連が強い
-・ショッピング
-・もう一度見る"</string>
+• ニュース速報
+• 続きを見る
+• 他のチャンネルを探す
+• おすすめ
+• 関連が強い
+• ショッピング
+• もう一度見る"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">横スクロール欄は表示されます</string>
   <string name="morphe_hide_image_shelf_title">画像欄を非表示</string>
   <string name="morphe_hide_image_shelf_summary_on">検索結果の画像欄は表示されません</string>
@@ -178,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">クイック アクションを非表示</string>
   <string name="morphe_hide_quick_actions_summary_on">全画面表示モードのクイック アクションは表示されません</string>
   <string name="morphe_hide_quick_actions_summary_off">全画面表示モードのクイック アクションは表示されます</string>
-  <string name="morphe_hide_related_videos_title">関連動画を非表示</string>
-  <string name="morphe_hide_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
-  <string name="morphe_hide_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">クイック アクション内の関連動画を非表示</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">チャンネル登録者のガイドラインを非表示</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">チャンネル登録者のコミュニティ ガイドラインは表示されません</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">チャンネル登録者のコミュニティ ガイドラインは表示されます</string>
@@ -282,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">コミュニティ ボタンを非表示</string>
   <string name="morphe_hide_community_button_summary_on">コミュニティ ボタンは表示されません</string>
   <string name="morphe_hide_community_button_summary_off">コミュニティ ボタンは表示されます</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">「おすすめ」欄を非表示</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">「おすすめ」欄は表示されません</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">「おすすめ」欄は表示されます</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">「メンバーになる」ボタンを非表示</string>
   <string name="morphe_hide_join_button_summary_on">「メンバーになる」ボタンは表示されません</string>
@@ -966,10 +963,14 @@ Second \"item\" text"</string>
 
 [次の動画を自動再生] は、YouTube の設定で変更できます:
 [設定] > [再生] (または [自動再生]) > [次の動画を自動再生]"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">関連動画を非表示</string>
+  <string name="morphe_hide_player_related_videos_summary_on">関連動画は表示されません</string>
+  <string name="morphe_hide_player_related_videos_summary_off">関連動画は表示されます</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">全画面表示モードの関連動画オーバーレイは表示されます</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">全画面表示モードの関連動画オーバーレイは表示されます</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">動画のタイムスタンプを非表示</string>
   <string name="morphe_hide_timestamp_summary_on">動画の現在位置を示すタイムスタンプは表示されません</string>

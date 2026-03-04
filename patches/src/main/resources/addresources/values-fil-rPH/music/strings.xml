@@ -18,6 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Header logo</string>
   <string name="morphe_header_logo_entry_1">Panimula</string>
   <string name="morphe_header_logo_entry_3">Pasadya</string>
   <!-- misc.settings.settingsPatch -->
@@ -49,8 +50,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_search_button_summary_on">Nakatago ang paghahanap na button</string>
   <string name="morphe_music_hide_search_button_summary_off">Ipinapakita ang paghahanap na button</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Change start page</string>
   <string name="morphe_change_start_page_entry_default">Panimula</string>
+  <string name="morphe_change_start_page_entry_charts">Charts</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Episodes for later</string>
+  <string name="morphe_change_start_page_entry_explore">Explore</string>
+  <string name="morphe_change_start_page_entry_history">History</string>
+  <string name="morphe_change_start_page_entry_library">Library</string>
+  <string name="morphe_change_start_page_entry_liked_music">Liked music</string>
+  <string name="morphe_change_start_page_entry_playlists">Playlists</string>
   <string name="morphe_change_start_page_entry_search">Hanapin</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Itago ang category bar</string>
   <string name="morphe_music_hide_category_bar_summary_on">Nakatago ang Category bar</string>

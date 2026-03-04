@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">ซ่อนการดำเนินการด่วน</string>
   <string name="morphe_hide_quick_actions_summary_on">การดำเนินการด่วนในโหมดเต็มจอถูกซ่อนไว้</string>
   <string name="morphe_hide_quick_actions_summary_off">การดำเนินการด่วนในโหมดเต็มจอแสดงอยู่</string>
-  <string name="morphe_hide_related_videos_title">ซ่อนวิดีโอที่เกี่ยวข้อง</string>
-  <string name="morphe_hide_related_videos_summary_on">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนถูกซ่อนไว้</string>
-  <string name="morphe_hide_related_videos_summary_off">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนแสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">ซ่อนแอปพลิเคชันที่รวดเร็วที่เกี่ยวข้องกับวิดีโอ</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนแสดงอยู่</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">ซ่อนหลักเกณฑ์สำหรับผู้ติดตาม</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">แนวทางชุมชนสำหรับสมาชิกถูกซ่อนไว้</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">แนวทางชุมชนสำหรับสมาชิกแสดงอยู่</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
   <string name="morphe_hide_community_button_summary_on">ปุ่มความคิดเห็นถูกซ่อนอยู่</string>
   <string name="morphe_hide_community_button_summary_off">ปุ่มความคิดเห็นถูกแสดงอยู่</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">ซ่อนชั้นวาง \'สำหรับคุณ\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">ชั้นวาง \"สำหรับคุณ\" ถูกซ่อนไว้</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">ชั้นวาง \"สำหรับคุณ\" แสดงอยู่</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">ซ่อนปุ่มเข้าร่วม</string>
   <string name="morphe_hide_join_button_summary_on">ปุ่มเข้าร่วมซ่อนอยู่</string>
@@ -963,10 +959,14 @@ Second \"item\" text"</string>
 
 คุณสามารถเปลี่ยนได้ใน YouTube:
 ตั้งค่า → การเล่น (หรือเล่นอัตโนมัติ) → เล่นวิดีโอถัดไปอัตโนมัติ"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">ซ่อนวิดีโอที่เกี่ยวข้อง</string>
+  <string name="morphe_hide_player_related_videos_summary_on">วิดีโอที่เกี่ยวข้องถูกซ่อน</string>
+  <string name="morphe_hide_player_related_videos_summary_off">วิดีโอที่เกี่ยวข้องจะแสดง</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">ซ่อนโอเวอร์เลย์วิดีโอที่เกี่ยวข้อง</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอถูกซ่อนไว้</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอแสดงอยู่</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">ซ่อนโอเวอร์เลย์วิดีโอที่เกี่ยวข้อง</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอถูกซ่อนไว้</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอแสดงอยู่</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">ซ่อนเวลาของวิดีโอ</string>
   <string name="morphe_hide_timestamp_summary_on">เวลาถูกซ่อนอยู่</string>

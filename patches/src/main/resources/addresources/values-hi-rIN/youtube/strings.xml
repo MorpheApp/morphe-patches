@@ -178,9 +178,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">छुपाएं त्वरित कार्रवाई</string>
   <string name="morphe_hide_quick_actions_summary_on">फ़ुलस्क्रीन में त्वरित कार्यों को छुपा दिया गया है</string>
   <string name="morphe_hide_quick_actions_summary_off">फ़ुलस्क्रीन में त्वरित कार्यों को दिखाया जाता है</string>
-  <string name="morphe_hide_related_videos_title">छिपाएं संबंधित वीडियो</string>
-  <string name="morphe_hide_related_videos_summary_on">सम्बद्ध वीडियो को जल्दबाजी में छुपा दिया गया है</string>
-  <string name="morphe_hide_related_videos_summary_off">सम्बद्ध वीडियो को जल्दबाजी में दिखाया जाता है</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">छिपाएं त्वरित क्रियाओं से संबंधित वीडियो</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">सम्बद्ध वीडियो को जल्दबाजी में छुपा दिया गया है</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">सम्बद्ध वीडियो को जल्दबाजी में दिखाया जाता है</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">छुपाएं सदस्यगणितों की निदेशिका</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">सब्सक्राइबरर्स के समुदाय नियम छिपे हैं</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">सब्सक्राइबरर्स के समुदाय नियम दिखाए जाते हैं</string>
@@ -282,10 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">समुदाय बटन छुपाएं</string>
   <string name="morphe_hide_community_button_summary_on">सामुदायिक बटन छुपा हुआ है</string>
   <string name="morphe_hide_community_button_summary_off">कम्युनिटी बटन दिखाया गया है</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">छुपाएं \'आपके लिए\' शेल्फ</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">आपके लिए शेल्फ छुपा हुआ है</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">आपके लिए शेल्फ दिखाया जाता है</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">जॉइन बटन छुपाएं</string>
   <string name="morphe_hide_join_button_summary_on">जॉइन बटन छुपा हुआ है</string>
@@ -771,6 +767,10 @@ Second \"item\" text"</string>
 
 आप यूट्यूब पर इसे बदल सकते हैं:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">छिपाएं संबंधित वीडियो</string>
+  <string name="morphe_hide_player_related_videos_summary_on">शीर्षक वीडियो छिप गए हैं</string>
+  <string name="morphe_hide_player_related_videos_summary_off">संबंधित वीडियो दिखाए जा रहे हैं</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->

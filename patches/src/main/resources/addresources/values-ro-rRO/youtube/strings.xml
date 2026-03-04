@@ -86,6 +86,7 @@ Schimbari incluse:
   <string name="morphe_hide_floating_microphone_button_summary_off">Butonul microfonului plutitor din căutare este afișat</string>
   <string name="morphe_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Rafturile orizontale sunt ascunse, cum ar fi:
+
 • Știri de ultimă oră
 • Continuă vizionarea
 • Explorează mai multe canale
@@ -177,9 +178,9 @@ Schimbari incluse:
   <string name="morphe_hide_quick_actions_title">Ascunde acțiunile rapide</string>
   <string name="morphe_hide_quick_actions_summary_on">Acțiunile rapide în ecran complet sunt ascunse</string>
   <string name="morphe_hide_quick_actions_summary_off">Acțiunile rapide în ecran complet sunt afișate</string>
-  <string name="morphe_hide_related_videos_title">Ascunde videoclipurile similare</string>
-  <string name="morphe_hide_related_videos_summary_on">Videoclipurile similare în acțiunile rapide sunt ascunse</string>
-  <string name="morphe_hide_related_videos_summary_off">Videoclipurile similare în acțiunile rapide sunt afișate</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ascunde acțiunile rapide legate de videoclipuri</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Videoclipurile similare în acțiunile rapide sunt ascunse</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Videoclipurile similare în acțiunile rapide sunt afișate</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ascunde ghidurile comunității abonaților</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Instrucțiunile comunității abonaților sunt ascunse</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Recomandările comunității abonaților sunt afișate</string>
@@ -281,10 +282,6 @@ Schimbari incluse:
   <string name="morphe_hide_community_button_title">Ascunde butonul \'Comunitate\'</string>
   <string name="morphe_hide_community_button_summary_on">Butonul \'Comunitate\' este ascuns</string>
   <string name="morphe_hide_community_button_summary_off">Butonul \'Comunitate\' este afișat</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ascunde raftul „Pentru tine”</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Raftul Pentru Tine este ascuns</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Raftul Pentru Tine este afișat</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ascunde butonul Alătură-te</string>
   <string name="morphe_hide_join_button_summary_on">Butonul de alăturare este ascuns</string>
@@ -961,10 +958,14 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
 
 Puteți schimba aceasta în YouTube:
 Setări → Reproducere (sau Autoreproducere) → Reproduceți următorul video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ascunde videoclipurile similare</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Videoclipurile asociate sunt ascunse</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Videoclipuri similare sunt afișate</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Suprapunerea videoclipurilor similare în ecran complet este ascunsă.</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Suprapunerea videoclipurilor similare în ecran complet este afișată.</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Suprapunerea videoclipurilor similare în ecran complet este ascunsă.</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Suprapunerea videoclipurilor similare în ecran complet este afișată.</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ascunde marcajul temporal video</string>
   <string name="morphe_hide_timestamp_summary_on">Marcajul de timp este ascuns</string>

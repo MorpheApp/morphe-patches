@@ -86,7 +86,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_floating_microphone_button_summary_off">Kelluva mikrofonipainike näytetään haussa</string>
   <string name="morphe_hide_horizontal_shelves_title">Piilota vaakasuuntaiset hyllyt</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Vaakahyllyt piilotetaan:
-• Tuoreimmat uutiset
+
+• Uutiset
 • Jatka katselua
 • Tutustu muihin kanaviin
 • Osuvimmat
@@ -177,9 +178,9 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_quick_actions_title">Piilota pikatoiminnot</string>
   <string name="morphe_hide_quick_actions_summary_on">Pikatoiminnot piilotetaan kokoruututilassa</string>
   <string name="morphe_hide_quick_actions_summary_off">Pikatoiminnot näytetään kokoruututilassa</string>
-  <string name="morphe_hide_related_videos_title">Piilota liittyvät videot</string>
-  <string name="morphe_hide_related_videos_summary_on">Liittyvät videot piilotetaan pikatoiminnoissa</string>
-  <string name="morphe_hide_related_videos_summary_off">Liittyvät videot näytetään pikatoiminnoissa</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Piilota nopeat toiminnot liittyvissä videoissa</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Liittyvät videot piilotetaan pikatoiminnoissa</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Liittyvät videot näytetään pikatoiminnoissa</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Piilota tilaajien säännöt</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Tilaajien yhteisön säännöt piilotetaan</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Tilaajien yhteisön säännöt näytetään</string>
@@ -281,10 +282,6 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_community_button_title">Piilota Yhteisö-painike</string>
   <string name="morphe_hide_community_button_summary_on">Yhteisö-painike piilotetaan</string>
   <string name="morphe_hide_community_button_summary_off">Yhteisö-painike näytetään</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Piilota \"\'Sinulle\" -hylly</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Sinulle-hylly piilotetaan</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Sinulle-hylly näytetään</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Piilota Liity-painike</string>
   <string name="morphe_hide_join_button_summary_on">Liity-painike piilotetaan</string>
@@ -967,10 +964,14 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
 
 Voit muuttaa tätä YouTubessa:
 Asetukset → Toisto (tai Autoplay) → Toista seuraava video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Piilota liittyvät videot</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Littyvät videot on piilotettu</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Liittyvät videot näytetään</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Piilota liittyvät videot -peittokuva</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Liittyvät videot -peittokuva piilotetaan kokoruututilassa</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Liittyvät videot -peittokuva näytetään kokoruututilassa</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Piilota liittyvät videot -peittokuva</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Liittyvät videot -peittokuva piilotetaan kokoruututilassa</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Liittyvät videot -peittokuva näytetään kokoruututilassa</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Piilota videon aikaleima</string>
   <string name="morphe_hide_timestamp_summary_on">Aikaleima piilotetaan</string>

@@ -166,24 +166,46 @@ internal fun baseCustomBrandingPatch(
                     }
                 }
             }
-        }
-    )
+        },
+        resourcePatch {
+            finalize {
+                val useCustomName = customName != null
+                val useCustomIcon = customIcon != null
+                val isRootInstall = setOrGetFallbackPackageName(originalAppPackageName) == originalAppPackageName
 
-    finalize {
-        // Can only check if app is root installation by checking if change package name patch is in use.
-        // and can only do that in the finalize block here.
-        // The UI preferences cannot be selectively added here, because the settings finalize block
-        // may have already run and the settings are already wrote to file.
-        // Instead, show a warning if any patch option was used (A rooted device launcher ignores the manifest changes),
-        // and the non-functional in-app settings are removed on app startup by extension code.
-        if (customName != null || customIcon != null) {
-            if (setOrGetFallbackPackageName(originalAppPackageName) == originalAppPackageName) {
-                Logger.getLogger(this::class.java.name).warning(
-                    "Custom branding does not work with root installation. No changes applied."
-                )
+                // Can only check if app is root installation by checking if change package name patch is in use.
+                // and can only do that in the finalize block here.
+                // The UI preferences cannot be selectively added here, because the settings finalize block
+                // may have already run and the settings are already wrote to file.
+                // Instead, show a warning if any patch option was used (A rooted device launcher ignores the manifest changes),
+                // and the non-functional in-app settings are removed on app startup by extension code.
+                if (isRootInstall && (useCustomName || useCustomIcon)) {
+                    Logger.getLogger(this::class.java.name).warning(
+                        "Custom branding does not work with root installation. No changes applied."
+                    )
+                }
+
+                if (!isRootInstall || useCustomName) {
+                    document("AndroidManifest.xml").use { document ->
+                        val application = document.getElementsByTagName("application").item(0) as Element
+                        application.setAttribute(
+                            "android:label",
+                            if (useCustomName) {
+                                // Use custom name everywhere.
+                                customName!!
+                            } else {
+                                // The YT application name can appear in some places alongside the system
+                                // YouTube app, such as the settings app list and in the "open with" file picker.
+                                // Because the YouTube app cannot be completely uninstalled and only disabled,
+                                // use a custom name for this situation to disambiguate which app is which.
+                                "@string/morphe_custom_branding_name_entry_2"
+                            }
+                        )
+                    }
+                }
             }
         }
-    }
+    )
 
     execute {
         val useCustomName = customName != null
@@ -334,20 +356,6 @@ internal fun baseCustomBrandingPatch(
                     "@mipmap/morphe_launcher_custom"
                 )
             }
-
-            application.setAttribute(
-                "android:label",
-                if (useCustomName) {
-                    // Use custom name everywhere.
-                    customName!!
-                } else {
-                    // The YT application name can appear in some places alongside the system
-                    // YouTube app, such as the settings app list and in the "open with" file picker.
-                    // Because the YouTube app cannot be completely uninstalled and only disabled,
-                    // use a custom name for this situation to disambiguate which app is which.
-                    "@string/morphe_custom_branding_name_entry_2"
-                }
-            )
 
             val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
             val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else 0 // 0 indexing

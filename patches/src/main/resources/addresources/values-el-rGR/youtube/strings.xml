@@ -179,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Γρήγορες ενέργειες</string>
   <string name="morphe_hide_quick_actions_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_quick_actions_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_related_videos_title">Περισσότερα βίντεο στις γρήγορες ενέργειες</string>
-  <string name="morphe_hide_related_videos_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_related_videos_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Γραμμή φίλτρων στα σχετικά βίντεο</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Κρυμμένα</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Εμφανίζονται</string>
@@ -283,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Κρύψε Κουμπί Κοινότητας</string>
   <string name="morphe_hide_community_button_summary_on">Το κουμπί Κοινότητας είναι κρυμμένο</string>
   <string name="morphe_hide_community_button_summary_off">Το κουμπί Κοινότητας εμφανίζεται</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ενότητα «Για εσάς» στη σελίδα καναλιού</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Κρυμμένη</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Εμφανίζεται</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Κουμπί «Συμμετοχή»</string>
   <string name="morphe_hide_join_button_summary_on">Κρυμμένο</string>
@@ -967,10 +963,14 @@ Second \"item\" text"</string>
 
 Μπορείς να αλλάξεις αυτήν τη ρύθμιση στο YouTube:
 Ρύθμιση → Αναπαραγωγή (ή Αυτόματη αναπαραγωγή) → Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Περισσότερα βίντεο στις γρήγορες ενέργειες</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Κρυμμένα σχετικά βίντεο</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Σχετικοί βίντεο εμφανίζονται</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Κρυμμένα</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Εμφανίζονται</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Χρονική πρόοδος βίντεο</string>
   <string name="morphe_hide_timestamp_summary_on">Κρυμμένη</string>

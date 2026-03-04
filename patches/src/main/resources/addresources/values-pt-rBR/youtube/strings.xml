@@ -85,6 +85,7 @@ As mudanças incluem:
   <string name="morphe_hide_floating_microphone_button_summary_off">Botão flutuante do microfone na pesquisa é exibido</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar prateleiras horizontais</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"As prateleiras horizontais estão ocultas, como:
+
 • Notícias de última hora
 • Continuar assistindo
 • Explorar mais canais
@@ -176,9 +177,9 @@ As mudanças incluem:
   <string name="morphe_hide_quick_actions_title">Ocultar ações rápidas</string>
   <string name="morphe_hide_quick_actions_summary_on">Ações rápidas em tela cheia estão ocultas</string>
   <string name="morphe_hide_quick_actions_summary_off">Ações rápidas em tela cheia estão exibidas</string>
-  <string name="morphe_hide_related_videos_title">Ocultar vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_summary_on">Vídeos relacionados em ações rápidas estão ocultos</string>
-  <string name="morphe_hide_related_videos_summary_off">Vídeos relacionados em ações rápidas estão exibidos</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ocultar ações rápidas em vídeos relacionados</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Vídeos relacionados em ações rápidas estão ocultos</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Vídeos relacionados em ações rápidas estão exibidos</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar diretrizes de inscritos</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Diretrizes da comunidade de inscritos está oculto</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Diretrizes da comunidade de inscritos não está oculto</string>
@@ -280,10 +281,6 @@ As mudanças incluem:
   <string name="morphe_hide_community_button_title">Ocultar botão \'Comunidade\'</string>
   <string name="morphe_hide_community_button_summary_on">Botão \'Comunidade\' está oculto</string>
   <string name="morphe_hide_community_button_summary_off">Botão \'Comunidade\' está visível</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ocultar a estante \"Para você\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Prateleira Para você está oculta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Prateleira Para você está exibida</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ocultar botão Seja membro</string>
   <string name="morphe_hide_join_button_summary_on">Botão seja membro está oculto</string>
@@ -964,10 +961,14 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
 
 Você pode alterar isso no YouTube:
 Configurações → Reprodução (ou Reproduzir automaticamente) → Reproduzir próximo vídeo"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ocultar vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Vídeos relacionados estão ocultos</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Vídeos relacionados são mostrados</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia é exibida</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia é exibida</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ocultar tempo do vídeo</string>
   <string name="morphe_hide_timestamp_summary_on">Tempo está oculto</string>
