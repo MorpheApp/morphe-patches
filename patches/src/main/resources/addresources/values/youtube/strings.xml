@@ -96,6 +96,7 @@ Changes include:
 • Breaking news
 • Continue watching
 • Explore more channels
+• For You
 • Most relevant
 • Shopping
 • Watch it again"</string>
@@ -290,10 +291,6 @@ Changes include:
     <string name="morphe_hide_community_button_title">Hide Community button</string>
     <string name="morphe_hide_community_button_summary_on">Community button is hidden</string>
     <string name="morphe_hide_community_button_summary_off">Community button is shown</string>
-    <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-    <string name="morphe_hide_for_you_shelf_title">Hide \'For You\' shelf</string>
-    <string name="morphe_hide_for_you_shelf_summary_on">For You shelf is hidden</string>
-    <string name="morphe_hide_for_you_shelf_summary_off">For You shelf is shown</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_join_button_title">Hide Join button</string>
     <string name="morphe_hide_join_button_summary_on">Join button is hidden</string>

@@ -18,8 +18,8 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">A proposito</string>
-  <string name="morphe_settings_screen_01_ads_title">Pubblicità</string>
+  <string name="morphe_settings_screen_00_about_title">A proposito di</string>
+  <string name="morphe_settings_screen_01_ads_title">Annunci</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniature alternative</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Generale</string>
@@ -959,12 +959,12 @@ Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barra di navigazione è visibile</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Nascondi video suggerito nella schermata finale</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Il video suggerito nella schermata finale è nascosto quando l\'autoplay è disattivato</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Il video suggerito nella schermata finale è nascosto</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Questa impostazione funziona solo se 'Riproduci il video successivo' è disattivato.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Questa impostazione funziona solo se 'Autoplay next video' è disattivato.
 
-'Riproduci il video successivo' può essere modificato nelle impostazioni di YouTube:
-Impostazioni → Riproduzione → Riproduzione automatica video successivo"</string>
+Puoi cambiarlo su YouTube:
+Impostazioni → Riproduzione (o Autoplay) → Autoplay next video"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Nascondi overlay video correlati</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">L\'overlay dei video correlati in modalità a schermo intero è nascosto</string>
@@ -1284,6 +1284,12 @@ Se in seguito verrà disattivato, si consiglia di cancellare i dati dell'app per
   <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_on">Apri il pannello di condivisione del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Apri il pannello di condivisione dell\'app</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Sovrascrivi pulsante YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Il pulsante YouTube Music apre la tua app musicale target</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Pulsante YouTube Music apre l\'app nativa</string>
+  <string name="morphe_music_package_name_title">Nome pacchetto Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Nome pacchetto dell\'app musicale di destinazione</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambia pagina iniziale</string>
   <string name="morphe_change_start_page_entry_default">Predefinito</string>

@@ -766,11 +766,11 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_summary_on">एंड स्क्रीन सुझाई वीडियो ऑटोप्ले ऑफ होने पर छुपा होता है</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"यह सेटिंग केवल 'अन्योड वीडियो' ऑफ होने पर काम करती है।
+  <string name="morphe_end_screen_suggested_video_summary_on">एंड स्क्रीन सuggested वीडियो छुपा हुआ है</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"यह सेटिंग केवल तब काम करती है जब 'Autoplay next video' बंद किया गया हो।
 
-'अन्योड वीडियो' को बदलने के लिए यूट्यूब सेटिंग्स में जाए जा सकता है:
-सेटिंग्स → प्लेबैक (या ऑटोप्ले) → अन्योड वीडियो"</string>
+आप यूट्यूब पर इसे बदल सकते हैं:
+Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -813,6 +813,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">शेयरशीट खोलें</string>
   <string name="morphe_open_system_share_sheet_summary_on">सिस्टम शेयरशीट खोलता है</string>
   <string name="morphe_open_system_share_sheet_summary_off">अपनै शेयरशीट खोलता है</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">ओवरराइड यूट्यूब म्यूजिक बटन</string>
+  <string name="morphe_override_youtube_music_button_summary_on">यूट्यूब म्यूजिक बटन आपकी लक्षित म्यूजिक एप्प पर खुलता है</string>
+  <string name="morphe_override_youtube_music_button_summary_off">यूट्यूब म्यूज़िक बटन नेटिव एप्प को खोलता है</string>
+  <string name="morphe_music_package_name_title">मॉर्फ़ म्यूज़िक पैकेज नाम</string>
+  <string name="morphe_music_package_name_summary">टार्गेट म्यूज़िक एप्प के पैकेज नाम</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

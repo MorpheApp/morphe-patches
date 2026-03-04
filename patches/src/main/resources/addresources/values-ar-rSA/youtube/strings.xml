@@ -959,7 +959,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">يتم عرض شريط التنقل</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">إخفاء الفيديو المقترح في شاشة النهاية</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">تم إخفاء الفيديو المقترح في شاشة النهاية عند إيقاف التشغيل التلقائي</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">تم إخفاء الفيديو المقترح في شاشة النهاية</string>
   <string name="morphe_end_screen_suggested_video_summary_off">يتم عرض الفيديو المقترح في شاشة النهاية</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"يعمل هذا الإعداد فقط إذا كان 'تشغيل الفيديو التالي تلقائيًا' معطلًا.
 
@@ -1285,6 +1285,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">فتح قائمة مشاركة النظام</string>
   <string name="morphe_open_system_share_sheet_summary_on">يفتح قائمة مشاركة النظام</string>
   <string name="morphe_open_system_share_sheet_summary_off">يفتح في قائمة مشاركة الخاصة بالتطبيق</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">تجاوز زر YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">زر YouTube Music يفتح تطبيق الموسيقى المستهدف</string>
+  <string name="morphe_override_youtube_music_button_summary_off">زر موسيقى YouTube يفتح التطبيق الأصلي</string>
+  <string name="morphe_music_package_name_title">اسم حزمة Morphe Music</string>
+  <string name="morphe_music_package_name_summary">اسم الحزمة لتطبيق الموسيقى المستهدف</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">تغيير صفحة البداية</string>
   <string name="morphe_change_start_page_entry_default">الافتراضي</string>

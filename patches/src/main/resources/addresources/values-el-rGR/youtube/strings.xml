@@ -961,12 +961,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Η γραμμή πλοήγησης εμφανίζεται κατά την αναπαραγωγή Shorts</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Διαφύγει το προτεινόμενο βίντεο στο τέλος του οθονίου όταν η αυτόματη αναπαραγωγή είναι απενεργοποιημένη</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Διαφύγεται προτεινόμενο βίντεο στο τέλος οθόνης</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Αυτή η ρύθμιση λειτουργεί μόνο αν η 'Αυτόματη αναπαραγωγή επόμενου βίντεο' είναι απενεργοποιημένη.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Αυτή η ρύθμιση λειτουργεί μόνο αν η αυτόματη αναπαραγωγή του επόμενου βίντεο είναι απενεργοποιημένη.
 
-Η 'Αυτόματη αναπαραγωγή επόμενου βίντεο' μπορεί να αλλάξει στις ρυθμίσεις YouTube:
-Ρυθμίσεις → Αναπαραγωγή (ή Αυτόματη αναπαραγωγή) → Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
+Μπορείς να αλλάξεις αυτήν τη ρύθμιση στο YouTube:
+Ρύθμιση → Αναπαραγωγή (ή Αυτόματη αναπαραγωγή) → Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Κρυμμένα</string>
@@ -1286,6 +1286,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Ανοίξτε το σύστημα μοιρασμένοι φύλλο</string>
   <string name="morphe_open_system_share_sheet_summary_on">Ανοίγει το σύστημα μοιρασμένοι φύλλο</string>
   <string name="morphe_open_system_share_sheet_summary_off">Ανοίγει το μοιρασμένοι φύλλο της εφαρμογής</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Αλλαγή λειτουργίας κουμπιού YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Το κουμπί YouTube Music ανοίγει την εφαρμογή μουσικής που επιλέξατε</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Πulshtag YouTube Music button opens the native app</string>
+  <string name="morphe_music_package_name_title">Morphe Music package name</string>
+  <string name="morphe_music_package_name_summary">Package name of the target music app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αλλαγή αρχικής σελίδας</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>

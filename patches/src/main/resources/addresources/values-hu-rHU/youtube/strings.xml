@@ -959,12 +959,12 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_shorts_navigation_bar_summary_off">A navigációs sáv megjelenik</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Javasolt videó elrejtése a befejező képernyőn</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Befejező képernyőn lévő javasolt videó el van rejtve, ha az automatikus lejátszás ki van kapcsolva</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">A befejező képernyőn látható javasolt videó</string>
   <string name="morphe_end_screen_suggested_video_summary_off">A befejező képernyőn lévő javasolt videó látható</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ez a beállítás csak akkor működik, ha az 'Autoplay next video' ki van kapcsolva.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ez a beállítás csak akkor működik, ha 'Autoplay next video' ki van kapcsolva.
 
-Az 'Autoplay next video' a YouTube beállításai között módosítható:
-Beállítások → Lejátszás (vagy Autoplay) → Következő videó automatikus lejátszása"</string>
+Ez megváltoztatható a YouTube-on:
+Beállítások → Lejátszás (vagy Autoplay) → Autoplay next video"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Kapcsolódó videók átfedésének elrejtése</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">A kapcsolódó videók átfedése teljes képernyőn elrejtve</string>
@@ -1283,6 +1283,12 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_open_system_share_sheet_title">Nyissa meg a rendszerosztásos menüt</string>
   <string name="morphe_open_system_share_sheet_summary_on">Nyitja meg a rendszerosztásos menüt</string>
   <string name="morphe_open_system_share_sheet_summary_off">Nyitja meg az alkalmazásosztásos menüt</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">YouTube Music gomb felülírása</string>
+  <string name="morphe_override_youtube_music_button_summary_on">A YouTube Music gomb nyitja meg a célzási zenei alkalmazódat</string>
+  <string name="morphe_override_youtube_music_button_summary_off">A YouTube Music gomb a belső alkalmazást nyitja</string>
+  <string name="morphe_music_package_name_title">A Morphe Music csomagnév</string>
+  <string name="morphe_music_package_name_summary">A célzott zenei alkalmazás csomagnéve</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>

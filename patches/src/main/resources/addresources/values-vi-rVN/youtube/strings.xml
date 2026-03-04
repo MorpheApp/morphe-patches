@@ -959,12 +959,12 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Thanh điều hướng được hiển thị</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ẩn video được đề xuất ở màn hình kết thúc</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Video đề xuất ở màn hình kết thúc sẽ bị ẩn khi tắt tự động phát</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Video đề xuất ở màn hình kết thúc đã bị ẩn</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Video đề xuất ở màn hình kết thúc được hiển thị</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"Cài đặt này chỉ có hiệu lực khi 'Tự động phát video tiếp theo' đang tắt.
 
 Cách tắt 'Tự động phát video tiếp theo':
-Cài đặt → Phát ( hoặc Tự động phát) → Tự động phát video tiếp theo"</string>
+Cài đặt → Phát (hoặc Tự động phát) → Tự động phát video tiếp theo"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
@@ -1283,6 +1283,12 @@ Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh 
   <string name="morphe_open_system_share_sheet_title">Mở bảng chia sẻ hệ thống</string>
   <string name="morphe_open_system_share_sheet_summary_on">Khi bấm chia sẻ sẽ mở bảng chia sẻ của hệ thống</string>
   <string name="morphe_open_system_share_sheet_summary_off">Khi bấm chia sẻ sẽ mở bảng chia sẻ tích hợp trong ứng dụng</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Ghi đè nút YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Bấm nút YouTube Music sẽ mở ứng dụng âm nhạc của bạn</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Bấm nút YouTube Music sẽ mở ứng dụng gốc</string>
+  <string name="morphe_music_package_name_title">Tên gói Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Tên gói của ứng dụng nhạc mà bạn muốn chọn</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Thay đổi trang bắt đầu</string>
   <string name="morphe_change_start_page_entry_default">Mặc định</string>

@@ -959,7 +959,7 @@ Chun an roghchlár rianta fuaime a thaispeáint, athraigh 'Sruthanna físe bréi
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Folaigh físeán molta scáileáin deiridh</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Tá an físeán molta don scáileán deiridh i bhfolach nuair a bhíonn an t-uathsheinm múchta</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Taispeánadh físeán molta ar an scáileán deiridh</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Taispeántar físeán molta ar an scáileán deiridh</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tá an t-athsheinnm seo ag obair nuair a bhíonn 'Uathsheinnm an chéad fhíseán eile' múchta.
 
@@ -1284,6 +1284,12 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_open_system_share_sheet_title">Ainm clár comhroinnt an chórais</string>
   <string name="morphe_open_system_share_sheet_summary_on">Oscail clár comhroinnt an chórais</string>
   <string name="morphe_open_system_share_sheet_summary_off">Oscail clár comhroinnt sa chóras</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Sáraigh cnaipe gníomhaíochta YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Cnaipe YouTube Music a oscailte do do app ceol</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Gníomh YouTube Music atáirgeann an app dúchais</string>
+  <string name="morphe_music_package_name_title">Ainmhe an pacáiste Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Ainm an pacáiste an app ceol do tharlaíonn</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Athraigh an leathanach tosaigh</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>

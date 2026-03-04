@@ -9,6 +9,9 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
+import app.morphe.patches.youtube.misc.litho.context.conversionContextClassDef
+import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -19,7 +22,6 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.ConversionContextFingerprintToString
 import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
@@ -53,6 +55,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
+        conversionContextPatch,
         lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
@@ -116,15 +119,9 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // This hook handles all situations, as it's where the created Spans are stored and later reused.
 
         // Find the field name of the conversion context.
-        val conversionContextClass = ConversionContextFingerprintToString.originalClassDef
         val textComponentConversionContextField = TextComponentConstructorFingerprint.originalClassDef.fields.find {
-            it.type == conversionContextClass.type
-                    // 20.41+ uses superclass field type.
-                    || it.type == conversionContextClass.superclass
+            it.type == conversionContextClassDef.type
         } ?: throw PatchException("Could not find conversion context field")
-
-        val conversionContextPathBuilderField = ConversionContextFingerprintToString.originalClassDef
-            .fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
 
         // Old pre 20.40 and lower hook.
         TextComponentLookupFingerprint.match(TextComponentConstructorFingerprint.originalClassDef).let {
@@ -170,7 +167,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                         # Copy conversion context.
                         move-object/from16 v$conversionContext, p0
                         iget-object v$conversionContext, v$conversionContext, $textComponentConversionContextField
-                        invoke-static { v$conversionContext, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$conversionContext, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$charSequenceRegister
                         
                         :ignore
@@ -199,15 +196,14 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     // Must offset match indexes since cloning adds additional move instructions.
                     val insertIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
                     val charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
-                    val conversionContextPathRegister = findFreeRegister(insertIndex, charSequenceRegister)
+                    val conversionContextRegister = findFreeRegister(insertIndex, charSequenceRegister)
 
                     addInstructions(
                         insertIndex,
                         """
-                            move-object/from16 v$conversionContextPathRegister, p0
-                            iget-object v$conversionContextPathRegister, v$conversionContextPathRegister, $conversionContextField
-                            iget-object v$conversionContextPathRegister, v$conversionContextPathRegister, $conversionContextPathBuilderField
-                            invoke-static { v$conversionContextPathRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                            move-object/from16 v$conversionContextRegister, p0
+                            iget-object v$conversionContextRegister, v$conversionContextRegister, $conversionContextField
+                            invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                             move-result-object v$charSequenceRegister
                         """
                     )
@@ -245,7 +241,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 insertIndex,
                 """
                     iget-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
-                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberLoaded(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$freeRegister
                     iput-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
                 """

@@ -957,11 +957,11 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in \"Android Re
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigationsleiste wird angezeigt</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Vorgeschlagenes Video auf dem Endbildschirm ausblenden</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Endbildschirm-Vorschauvideo ist ausgeblendet, wenn die automatische Wiedergabe deaktiviert ist.</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Endbildschirm-Vorschauvideo ist ausgeblendet</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Das vorgeschlagene Video auf dem Endbildschirm wird angezeigt</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Diese Einstellung funktioniert nur, wenn 'Automatisch nächsten Video abspielen' deaktiviert ist.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Diese Einstellung funktioniert nur, wenn 'Automatisch nächsten Video abspielen' ausgeschaltet ist.
 
-'Automatisch nächsten Video abspielen' kann in den YouTube-Einstellungen geändert werden:
+Du kannst dies in YouTube ändern:
 Einstellungen → Wiedergabe (oder Automatisch abspielen) → Automatisch nächsten Video abspielen"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Overlay für verwandte Videos ausblenden</string>
@@ -1282,6 +1282,12 @@ Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu lö
   <string name="morphe_open_system_share_sheet_title">Systemfreigabe √∂ffnen</string>
   <string name="morphe_open_system_share_sheet_summary_on">√∂ffnet Systemfreigabe</string>
   <string name="morphe_open_system_share_sheet_summary_off">√∂ffnet Freigabe im App</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">YouTube Music-Button überschreiben</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music-Button öffnet deine Ziel-Musik-App</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube Musik-Button √∂ffnet die native App</string>
+  <string name="morphe_music_package_name_title">Paketname von Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Paketname der Ziel-Musik-App</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startseite ändern</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>

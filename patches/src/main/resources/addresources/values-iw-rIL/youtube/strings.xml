@@ -959,12 +959,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">סרגל ניווט מוצג</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">הסתר סרטון מוצע של מסך סיום</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">מסך סיום סרטון מומלץ מוסתר כאשר הפעלה אוטומטית כבויה</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">סרטון מוצע של מסך סיום מוסתר</string>
   <string name="morphe_end_screen_suggested_video_summary_off">סרטון מוצע של מסך סיום מוצג</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"ההגדרה הזו פועלת רק אם 'הפעלה אוטומטית של הסרטון הבא' כבויה.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"התצורה הזו תעבוד רק אם 'התחלת נגינה אוטומטית' מושבתת.
 
-'הפעלה אוטומטית של הסרטון הבא' ניתן לשנות בהגדרות YouTube:
-הגדרות → הפעלה (או אוטומטית) → הפעלה אוטומטית של הסרטון הבא"</string>
+אתה יכול לשנות זאת ביוטיוב:
+הגדרות → נגינה (או התחלת נגינה אוטומטית) → התחלת נגינה אוטומטית הבאה"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
@@ -1284,6 +1284,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">פתיחת תפריט שיתוף מערכת</string>
   <string name="morphe_open_system_share_sheet_summary_on">פתיחת תפריט שיתוף מערכת</string>
   <string name="morphe_open_system_share_sheet_summary_off">פתיחת תפריט שיתוף בתוך האפליקציה</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">עקוף כפתור יוטיוב מיוזיק</string>
+  <string name="morphe_override_youtube_music_button_summary_on">כפתור יוטיוב מיוזיק יפתח את אפליקציית המוזיקה שלך</string>
+  <string name="morphe_override_youtube_music_button_summary_off">כפתור YouTube Music נפתח את האפליקציה המקורית</string>
+  <string name="morphe_music_package_name_title">שם החבילה של Morphe Music</string>
+  <string name="morphe_music_package_name_summary">שם החבילה של האפליקציה המוזיקלית היעד</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>

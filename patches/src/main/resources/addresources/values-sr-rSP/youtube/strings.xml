@@ -959,12 +959,12 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitirati video tokove' u '
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Трака за навигацију је приказана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Сакриј предложени видео на завршном екрану</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Завршни екран предлогах видео је скривен када је аутоплеј искључен</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Предложени видео на завршном екрану је скривено</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Предложени видео на завршном екрану је приказан</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ова подешавања ради само ако је 'Аутоматски пусти следећи видео' искључен.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ова поставка ради само ако је 'Автоматско пуштање следећег видеа' искључено.
 
-'Аутоматски пусти следећи видео' се може променити у подешавањима YouTube-а:
-Подешавања → Репродукција (или Аутоматски пусти) → Аутоматски пусти следећи видео"</string>
+Можете да промените ово у Јутубу:
+Поставке → Промена (или Автоматско пуштање) → Автоматско пуштање следећег видеа"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Сакриј сродне видее</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">Сродни видеи у режиму целог екрана су скривени</string>
@@ -1284,6 +1284,12 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_open_system_share_sheet_title">Отвори системски спредшит</string>
   <string name="morphe_open_system_share_sheet_summary_on">Отвара системски спредшит</string>
   <string name="morphe_open_system_share_sheet_summary_off">Отвара у-ап спредшит</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Замени дугме Јутуб Мјузик</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Дугме Јутуб Мјузик отвара вашу циљану музичку апликацију</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Дугме YouTube Music отвара примарни андроид ап</string>
+  <string name="morphe_music_package_name_title">Назив пакета Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Назив пакета циљане музичке апликације</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промена полазне странице</string>
   <string name="morphe_change_start_page_entry_default">Подразумевана</string>

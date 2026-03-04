@@ -959,12 +959,12 @@ Para exibir o menu de trilha de áudio, altere 'Spoof video streams' para 'Andro
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Barra de navegação exibida</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ocultar o vídeo sugerido na tela final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Vídeo sugerido na tela final é oculto quando a reprodução automática está desativada</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Vídeo sugerido na tela final está oculto</string>
   <string name="morphe_end_screen_suggested_video_summary_off">O vídeo sugerido na tela final é exibido</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Esta configuração só funciona se a 'Reprodução automática do próximo vídeo' estiver desativada.
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Esta configuração só funciona se 'Reproduzir próximo vídeo automaticamente' estiver desligado.
 
-A 'Reprodução automática do próximo vídeo' pode ser alterada nas configurações do YouTube:
-Configurações → Reprodução → Reproduzir o próximo vídeo automaticamente"</string>
+Você pode alterar isso no YouTube:
+Configurações → Reprodução (ou Reproduzir automaticamente) → Reproduzir próximo vídeo automaticamente"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
@@ -1284,6 +1284,12 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
   <string name="morphe_open_system_share_sheet_title">Abrir painel de compartilhamento do sistema</string>
   <string name="morphe_open_system_share_sheet_summary_on">Abre o painel de compartilhamento do sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Abre o painel de compartilhamento interno</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Substituir botão de ação de YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Botão de YouTube Music abre seu aplicativo de música de destino</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Botão do YouTube Music abre o aplicativo nativo</string>
+  <string name="morphe_music_package_name_title">Nome do pacote do Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Nome do pacote do aplicativo de música de destino</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Alterar página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>

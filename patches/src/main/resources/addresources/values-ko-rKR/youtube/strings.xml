@@ -957,7 +957,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">하단바가 표시됩니다</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">자동 재생이 꺼져 있으면 최종 화면 추천 동영상이 숨겨집니다</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">최종 화면에서 추천 동영상이 숨겨집니다</string>
   <string name="morphe_end_screen_suggested_video_summary_off">최종 화면에서 추천 동영상이 표시됩니다</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"이 설정은 '다음 동영상 자동재생'이 꺼져 있을 경우에만 작동합니다.
 
@@ -1283,6 +1283,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
   <string name="morphe_open_system_share_sheet_summary_on">시스템 공유 시트를 사용합니다</string>
   <string name="morphe_open_system_share_sheet_summary_off">기본 공유 시트를 사용합니다</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">YouTube Music 버튼 재정의하기</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music 버튼으로 사용자가 지정한 Music 앱을 실행할 수 있습니다</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music 버튼으로 순정 YouTube Music 앱을 실행할 수 있습니다</string>
+  <string name="morphe_music_package_name_title">Morphe Music 패키지 이름</string>
+  <string name="morphe_music_package_name_summary">사용자가 사용할 Music 앱 패키지 이름을 지정하세요</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">앱 시작 페이지 변경하기</string>
   <string name="morphe_change_start_page_entry_default">기본값</string>

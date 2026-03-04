@@ -959,12 +959,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">已顯示導覽列</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">隱藏片尾推薦影片</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">片尾推薦影片在自動播放關閉時會被隱藏。</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">已隱藏片尾推薦影片</string>
   <string name="morphe_end_screen_suggested_video_summary_off">已顯示片尾推薦影片</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此設定僅在關閉「自動播放下一個影片」時有效。
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此設定僅在關閉「自動播放下一影片」時有效。
 
-你可以在 YouTube 設定中變更「自動播放下一個影片」設定：
-設定 → 播放 → 自動播放下一個影片"</string>
+您可以在YouTube中更改此設定：
+設定 → 播放（或自動播放） → 自動播放下一影片"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
   <string name="morphe_hide_related_videos_overlay_summary_on">已隱藏全螢幕中的相關影片覆蓋層</string>
@@ -1285,6 +1285,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">打開系統分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_on">打開系統分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_off">在應用程序內打開分享面板</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">覆蓋YouTube Music按鈕</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music按鈕會開啟您的目標音樂應用程序</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube 音樂按鈕開啟原生應用程序</string>
+  <string name="morphe_music_package_name_title">Morphe 音樂套件名稱</string>
+  <string name="morphe_music_package_name_summary">目標音樂應用程序的套件名稱</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">變更起始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>
