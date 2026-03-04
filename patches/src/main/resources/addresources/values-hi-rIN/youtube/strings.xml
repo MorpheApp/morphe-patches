@@ -140,7 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">वेब खोज परिणाम छुपाएं</string>
   <string name="morphe_hide_web_search_results_summary_on">वेब खोज परिणाम छिपे हुए हैं</string>
   <string name="morphe_hide_web_search_results_summary_off">वेब खोज परिणाम दिखाए जाते हैं</string>
-  <string name="morphe_hide_you_may_like_section_title">छुपाएं \"आपको पसंद आ सकता है\" अनुभाग</string>
+  <string name="morphe_hide_you_may_like_section_title">छुपाएं \'आपको पसंद हो सकता है\' अनुभाग</string>
   <string name="morphe_hide_you_may_like_section_summary_on">\"आपको पसंद आ सकता है\" अनुभाग छुपा हुआ है</string>
   <string name="morphe_hide_you_may_like_section_summary_off">\"आपको पसंद आ सकता है\" अनुभाग दिखाया गया है</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -178,9 +178,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">छुपाएं त्वरित कार्रवाई</string>
   <string name="morphe_hide_quick_actions_summary_on">फ़ुलस्क्रीन में त्वरित कार्यों को छुपा दिया गया है</string>
   <string name="morphe_hide_quick_actions_summary_off">फ़ुलस्क्रीन में त्वरित कार्यों को दिखाया जाता है</string>
-  <string name="morphe_hide_related_videos_title">छिपाएं संबंधित वीडियो</string>
-  <string name="morphe_hide_related_videos_summary_on">सम्बद्ध वीडियो को जल्दबाजी में छुपा दिया गया है</string>
-  <string name="morphe_hide_related_videos_summary_off">सम्बद्ध वीडियो को जल्दबाजी में दिखाया जाता है</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">छिपाएं त्वरित क्रियाओं से संबंधित वीडियो</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">सम्बद्ध वीडियो को जल्दबाजी में छुपा दिया गया है</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">सम्बद्ध वीडियो को जल्दबाजी में दिखाया जाता है</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">छुपाएं सदस्यगणितों की निदेशिका</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">सब्सक्राइबरर्स के समुदाय नियम छिपे हैं</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">सब्सक्राइबरर्स के समुदाय नियम दिखाए जाते हैं</string>
@@ -282,10 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">समुदाय बटन छुपाएं</string>
   <string name="morphe_hide_community_button_summary_on">सामुदायिक बटन छुपा हुआ है</string>
   <string name="morphe_hide_community_button_summary_off">कम्युनिटी बटन दिखाया गया है</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">छुपाएं \'आपके लिए\' शेल्फ</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">आपके लिए शेल्फ छुपा हुआ है</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">आपके लिए शेल्फ दिखाया जाता है</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">जॉइन बटन छुपाएं</string>
   <string name="morphe_hide_join_button_summary_on">जॉइन बटन छुपा हुआ है</string>
@@ -434,7 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
   <string name="morphe_hide_video_ads_summary_on">वीडियो विज्ञापन छिपाए गए हैं</string>
   <string name="morphe_hide_video_ads_summary_off">वीडियो विज्ञापन दिखाई दिए जाते हैं</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL कॉपी किया गया है क्लिपबोर्ड में</string>
   <string name="morphe_share_copy_url_timestamp_success">URL के साथ टाइमस्टैम्प कॉपी किया गया</string>
   <string name="morphe_copy_video_url_title">दर्शा करें वीडियो URL कॉपी बटन</string>
@@ -448,10 +445,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">इस डायलॉग को हटा दिया जाएगा</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">डायलॉग दिखाई दिया जाएगा</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">यह उम्र सीमा को नहीं उल्लंघन करता है। यह इसे स्वचालित रूप से स्वीकार करता है।</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">टीवी पर साइन इन पॉपअप को डिसेबल किया गया है</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">टीवी पर साइन इन पॉपअप को एनाबल किया गया है</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">टीवी पर साइन इन पॉपअप को डिसेबल किया गया है</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">टीवी पर साइन इन पॉपअप को एनाबल किया गया है</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">अपनाइये दับ दबाव अध्याय छलांग करना</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">डबल टेप कभी अगले/पिछले अध्याय के लिए स्किप ट्रिगर नहीं कर सकता है</string>
@@ -480,10 +477,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">प्रकृतिक खोज गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">प्रकृतिक खोज गेस्टर को सक्षम करना</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">टैप को सक्षम करें</string>
-  <string name="morphe_seekbar_tapping_summary_on">टैप करने के लिए सीखना सक्षम है</string>
-  <string name="morphe_seekbar_tapping_summary_off">टैप करने के लिए सीखना अक्षम है</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">टैप को सक्षम करें</string>
+  <string name="morphe_tap_to_seek_summary_on">टैप करने के लिए सीखना सक्षम है</string>
+  <string name="morphe_tap_to_seek_summary_off">टैप करने के लिए सीखना अक्षम है</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">ब्राइटनेस गेस्टर को एनब्ल करें</string>
   <string name="morphe_swipe_brightness_summary_on">"पूर्ण स्क्रीन ब्राइटनेस स्वाइप सक्षम है
@@ -643,6 +641,11 @@ Second \"item\" text"</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_show_search_button_title">खोज बटन दिखाएं</string>
+  <string name="morphe_show_search_button_summary_on">खोज बटन दिखाया गया है</string>
+  <string name="morphe_show_search_button_summary_off">खोज बटन दिखाया गया है नहीं</string>
+  <string name="morphe_search_button_index_title">खोज बटन इंडेक्स</string>
+  <string name="morphe_search_button_index_invalid">खोज बटन इंडेक्स %s से कम होना चाहिए</string>
   <string name="morphe_swap_create_with_notifications_button_title">स्वाप करें क्रिएट के साथ नोटिफिकेशन</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">क्रिएट बटन नोटिफिकेशन बटन के साथ स्वाप किया गया है</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">क्रिएट बटन नोटिफिकेशन बटन के साथ स्वाप नहीं किया गया है</string>
@@ -759,6 +762,15 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <string name="morphe_end_screen_suggested_video_summary_on">एंड स्क्रीन सuggested वीडियो छुपा हुआ है</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"यह सेटिंग केवल तब काम करती है जब 'Autoplay next video' बंद किया गया हो।
+
+आप यूट्यूब पर इसे बदल सकते हैं:
+Settings → Playback (or Autoplay) → Autoplay next video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">छिपाएं संबंधित वीडियो</string>
+  <string name="morphe_hide_player_related_videos_summary_on">शीर्षक वीडियो छिप गए हैं</string>
+  <string name="morphe_hide_player_related_videos_summary_off">संबंधित वीडियो दिखाए जा रहे हैं</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -778,9 +790,12 @@ Second \"item\" text"</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"आपकी सेटिंग्स में एक निजी स्पॉन्सरब्लॉक यूजरआईडी है।
+  <string name="morphe_sb_general_uuid">आपका निजी उपयोगकर्ता आईडी</string>
+  <string name="morphe_sb_general_uuid_invalid">निजी उपयोगकर्ता आईडी कम से कम 30 अक्षर लंबी होनी चाहिए</string>
+  <string name="morphe_sb_settings_ie_sum_warning">आपका स्पॉन्सरब्लॉक जेएसओन कॉन्फ़िगरेशन मॉर्फ और अन्य स्पॉन्सरब्लॉक प्लेटफॉर्म पर आयात/निर्यात किया जा सकता है। इसमें आपका निजी उपयोगकर्ता आईडी शामिल है। इसे बुद्धिमानी से साझा करें</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"आपकी सेटिंग्स में निजी स्पॉन्सरब्लॉक उपयोगकर्ता आईडी है।
 
-आपका यूजरआईडी प्वाइंट जैसा है और कभी भी साझा नहीं किया जाना चाहिए।"</string>
+आपका आईडी एक पासवर्ड की तरह है, और कभी भी साझा नहीं किया जाना चाहिए।"</string>
   <string name="morphe_sb_segments_sponsor_sum">पेयी प्रचार, पेयी संदर्भ और सीधे विज्ञापन. स्वयं प्रचार या मुक्त शाउट-आउट्स के लिए नहीं</string>
   <string name="morphe_sb_segments_selfpromo_sum">समान है स्पॉन्सर के अलावा अदा / स्वयं प्रचार। इसमें सेक्शंस शामिल हैं मर्चेंडाइज़, दान, या उनसे मिले हुए साथियों के बारे में जानकारी</string>
   <string name="morphe_sb_segments_nomusic_sum">म्यूजिक वीडियो में ही उपयोग करें। म्यूजिक के बिना वीडियो के हिस्से जो पहले किसी अन्य श्रेणी द्वारा कवर नहीं किए गए हैं</string>
@@ -794,6 +809,16 @@ Second \"item\" text"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - डिसेबल बॉल्ड आइकॉन</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">शेयरशीट खोलें</string>
+  <string name="morphe_open_system_share_sheet_summary_on">सिस्टम शेयरशीट खोलता है</string>
+  <string name="morphe_open_system_share_sheet_summary_off">अपनै शेयरशीट खोलता है</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">ओवरराइड यूट्यूब म्यूजिक बटन</string>
+  <string name="morphe_override_youtube_music_button_summary_on">यूट्यूब म्यूजिक बटन आपकी लक्षित म्यूजिक एप्प पर खुलता है</string>
+  <string name="morphe_override_youtube_music_button_summary_off">यूट्यूब म्यूज़िक बटन नेटिव एप्प को खोलता है</string>
+  <string name="morphe_music_package_name_title">मॉर्फ़ म्यूज़िक पैकेज नाम</string>
+  <string name="morphe_music_package_name_summary">टार्गेट म्यूज़िक एप्प के पैकेज नाम</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
@@ -802,7 +827,7 @@ Second \"item\" text"</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_animation_style_entry_1">निष्क्रिय</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
   <string name="morphe_header_logo_entry_5">कस्टम</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
@@ -848,7 +873,6 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_title">वीडियो की गुणवत्ता को प्राथमिकता दी जाएगी</string>
   <string name="morphe_prioritize_video_quality_summary_on">वीडियो की गुणवत्ता प्राथमिकता प्राप्त हुई है</string>
   <string name="morphe_prioritize_video_quality_summary_off">वीडियो कोडेक्स को प्राथमिकता दी जाएगी</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_about_playback_failure">• वीडियो 1:00 पर रुक सकता है या कुछ क्षेत्रों में उपलब्ध नहीं हो सकता है।</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "app/morphe/extension/youtube/innertube/icon.proto";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+message ButtonRenderer {
+    Icon icon = 8;
+}

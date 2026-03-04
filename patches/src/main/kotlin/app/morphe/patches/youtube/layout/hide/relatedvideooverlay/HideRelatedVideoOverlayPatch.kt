@@ -29,7 +29,7 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_related_videos_overlay")
+            SwitchPreference("morphe_hide_player_related_videos_overlay")
         )
 
         RelatedEndScreenResultsFingerprint.match(

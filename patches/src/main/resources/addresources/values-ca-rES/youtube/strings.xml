@@ -58,7 +58,6 @@ Second \"item\" text"</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
@@ -71,14 +70,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.general.hideAdsResourcePatch -->
   <!-- ad.video.videoAdsPatch -->
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsResourcePatch -->
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -140,6 +141,7 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -160,6 +162,8 @@ Second \"item\" text"</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
@@ -167,7 +171,7 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
@@ -193,7 +197,6 @@ Second \"item\" text"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
 </resources>

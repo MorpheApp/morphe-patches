@@ -85,8 +85,9 @@ As mudanças incluem:
   <string name="morphe_hide_floating_microphone_button_summary_on">O botão flutuante do microfone na pesquisa está oculto</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Botão flutuante do microfone na pesquisa é exibido</string>
   <string name="morphe_hide_horizontal_shelves_title">Esconder categorias horizontais</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Prateleiras horizontais estão ocultas, tais como:
-• Notícias de última hora
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Prateleiras horizontais estÃ£o ocultas, tais como:
+
+• NotÃ­cias de Ãºltima hora
 • Continuar a assistir
 • Explorar mais canais
 • Mais relevantes
@@ -139,7 +140,7 @@ As mudanças incluem:
   <string name="morphe_hide_web_search_results_title">Esconder resultados da pesquisa web</string>
   <string name="morphe_hide_web_search_results_summary_on">Resultados de pesquisa web estão escondidos</string>
   <string name="morphe_hide_web_search_results_summary_off">Resultados de pesquisa web são visíveis</string>
-  <string name="morphe_hide_you_may_like_section_title">Ocultar seção \"você pode gostar\"</string>
+  <string name="morphe_hide_you_may_like_section_title">Ocultar seção \'Você pode gostar\'</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Seção \"você pode gostar\" está oculta</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Seção \"você pode gostar\" está visível</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -177,9 +178,9 @@ As mudanças incluem:
   <string name="morphe_hide_quick_actions_title">Ocultar ações rápidas</string>
   <string name="morphe_hide_quick_actions_summary_on">As ações rápidas em tela cheia estão ocultas</string>
   <string name="morphe_hide_quick_actions_summary_off">As ações rápidas em tela cheia estão exibidas</string>
-  <string name="morphe_hide_related_videos_title">Ocultar vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_summary_on">Os vídeos relacionados nas ações rápidas estão ocultos</string>
-  <string name="morphe_hide_related_videos_summary_off">Os vídeos relacionados nas ações rápidas estão exibidos</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Esconder ações rápidas em vídeos relacionados</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Os vídeos relacionados nas ações rápidas estão ocultos</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Os vídeos relacionados nas ações rápidas estão exibidos</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar as diretrizes para subscritores</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">As diretrizes da comunidade de subscritores estão escondidas</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">As diretrizes da comunidade são visíveis</string>
@@ -281,10 +282,6 @@ As mudanças incluem:
   <string name="morphe_hide_community_button_title">Ocultar botão \'Comunidade\'</string>
   <string name="morphe_hide_community_button_summary_on">Botão \'Comunidade\' está oculto</string>
   <string name="morphe_hide_community_button_summary_off">Botão \'Comunidade\' está visível</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ocultar estante \"Para você\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">A prateleira \"Para você\" está oculta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">A prateleira \"Para você\" está exibida</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ocultar botão de ingressar</string>
   <string name="morphe_hide_join_button_summary_on">O botão \"Aderir\" está escondido</string>
@@ -434,7 +431,8 @@ Limitações:
   <string name="morphe_hide_video_ads_title">Esconder anúncios do vídeo</string>
   <string name="morphe_hide_video_ads_summary_on">Anúncios de vídeo estão escondidos</string>
   <string name="morphe_hide_video_ads_summary_off">Anúncios de vídeo são visíveis</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL copiado</string>
   <string name="morphe_share_copy_url_timestamp_success">URL com timestamp copiado</string>
   <string name="morphe_copy_video_url_title">Mostrar botão de URL de vídeo copiado</string>
@@ -448,10 +446,10 @@ Limitações:
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">A caixa de diálogo será removida</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">A caixa de diálogo será exibida</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Isto não ignora a restrição de idade, apenas a aceita automaticamente.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">Desativar pop-up \'Entrar na TV\'</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">O pop-up Entrar na TV está desativado</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">O pop-up Entrar na TV está ativado</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Desativar pop-up \'Entrar na TV\'</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">O pop-up Entrar na TV está desativado</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">O pop-up Entrar na TV está ativado</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Desativar o salto de capítulo com toque duplo</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">O toque duplo nunca acionará um salto para o capítulo seguinte/anterior</string>
@@ -480,10 +478,14 @@ Verifique se o nome do pacote está correto e se o aplicativo está instalado"</
   <string name="morphe_disable_precise_seeking_gesture_title">Desativar gesto de pesquisa precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesto está desativado </string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gesto ativado</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">Ativar tocar para procurar</string>
-  <string name="morphe_seekbar_tapping_summary_on">Toque para procurar está ativado</string>
-  <string name="morphe_seekbar_tapping_summary_off">Tocar para procurar está desativado</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Habilitar o slide para procurar</string>
+  <string name="morphe_slide_to_seek_summary_on">Deslize para procurar está ativado</string>
+  <string name="morphe_slide_to_seek_summary_off">Deslize para procurar não está habilitado</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Ativar tocar para procurar</string>
+  <string name="morphe_tap_to_seek_summary_on">Toque para procurar está ativado</string>
+  <string name="morphe_tap_to_seek_summary_off">Tocar para procurar está desativado</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">Ativar gesto de brilho</string>
   <string name="morphe_swipe_brightness_summary_on">"O deslize de brilho em tela cheia está ativado
@@ -653,6 +655,11 @@ Os cookies serão salvos automaticamente se forem válidos"</string>
   <string name="morphe_hide_notifications_button_title">Ocultar notificações</string>
   <string name="morphe_hide_notifications_button_summary_on">O botão de notificações está oculto</string>
   <string name="morphe_hide_notifications_button_summary_off">O botão de notificações está visível</string>
+  <string name="morphe_show_search_button_title">Mostrar botão de busca</string>
+  <string name="morphe_show_search_button_summary_on">O botão de pesquisa está visível</string>
+  <string name="morphe_show_search_button_summary_off">Botão de busca não está visível</string>
+  <string name="morphe_search_button_index_title">Índice do botão de pesquisa</string>
+  <string name="morphe_search_button_index_invalid">O índice do botão de pesquisa deve ser menor que %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trocar Criar com Notificações</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">O botão criar está alternado com o botão Notificações</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">O botão criar não está alternado com o botão Notificações</string>
@@ -783,9 +790,9 @@ Para exibir o menu de trilha de áudio, altere 'Spoof video streams' para 'Andro
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Os botões Anterior &amp; Próximo estão ocultos</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Os botões Anterior &amp; Próximo são exibidos</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">Esconder cartões de ecrã final</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">Cartões de fim de ecrã estão escondidos</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">Cartões de fim de ecrã são exibidos</string>
+  <string name="morphe_hide_end_screen_cards_title">Esconder cartões de ecrã final</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">Cartões de fim de ecrã estão escondidos</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">Cartões de fim de ecrã são exibidos</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Modo ambiente</string>
   <string name="morphe_ambient_mode_screen_summary">Ignorar restrições de economia de energia para o modo ambiente e desativá-lo completamente ou em tela cheia</string>
@@ -949,15 +956,20 @@ Para exibir o menu de trilha de áudio, altere 'Spoof video streams' para 'Andro
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Barra de navegação exibida</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Ocultar o vídeo sugerido na tela final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"O vídeo sugerido na tela final fica oculto quando a reprodução automática está desativada
-
-A reprodução automática pode ser alterada nas configurações do YouTube:
-Configurações → Reprodução → Reproduzir o próximo vídeo automaticamente"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Vídeo sugerido na tela final está oculto</string>
   <string name="morphe_end_screen_suggested_video_summary_off">O vídeo sugerido na tela final é exibido</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Esta configuração só funciona se 'Reproduzir próximo vídeo automaticamente' estiver desligado.
+
+Você pode alterar isso no YouTube:
+Configurações → Reprodução (ou Reproduzir automaticamente) → Reproduzir próximo vídeo automaticamente"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ocultar vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Vídeos relacionados estão escondidos</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Vídeos relacionados são mostrados</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia está visível</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar sobreposição de vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">A sobreposição de vídeos relacionados em tela cheia está oculta</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">A sobreposição de vídeos relacionados em tela cheia está visível</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Esconder timestamp do vídeo</string>
   <string name="morphe_hide_timestamp_summary_on">Timestamp está escondido</string>
@@ -1269,6 +1281,16 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar a versão antiga do Morphe Spoof para a playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desativar Ã­cones em negrito</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar barra de ação de vídeo não recolhida</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Abrir painel de compartilhamento do sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Abre o painel de compartilhamento do sistema</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Abre o painel de compartilhamento interno</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Substituir botão de ação de YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Botão de YouTube Music abre seu aplicativo de música de destino</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Botão do YouTube Music abre o aplicativo nativo</string>
+  <string name="morphe_music_package_name_title">Nome do pacote do Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Nome do pacote do aplicativo de música de destino</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Alterar página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>
@@ -1384,7 +1406,7 @@ Deslize para expandir ou fechar"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">A cor de destaque da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_invalid">Valor de cor de seekbar inválido</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotipo do cabeçalho</string>
   <string name="morphe_header_logo_entry_1">Padrão</string>
   <string name="morphe_header_logo_entry_2">Normal</string>
@@ -1558,10 +1580,6 @@ Limitações:
   <string name="morphe_prioritize_video_quality_title">Priorizar a qualidade do vídeo</string>
   <string name="morphe_prioritize_video_quality_summary_on">A qualidade do vídeo é prioritizada</string>
   <string name="morphe_prioritize_video_quality_summary_off">Os codecs de vídeo são prioritizados</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Habilitar o slide para procurar</string>
-  <string name="morphe_slide_to_seek_summary_on">Deslize para procurar está ativado</string>
-  <string name="morphe_slide_to_seek_summary_off">Deslize para procurar não está habilitado</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"O codec de vídeo é AVC (H.264), VP9 ou AV1

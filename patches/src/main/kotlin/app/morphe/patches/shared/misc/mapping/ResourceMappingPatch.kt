@@ -181,4 +181,8 @@ val resourceMappingPatch = resourcePatch {
             }
         }
     }
+
+    finalize {
+        resourceMappings.clear()
+    }
 }

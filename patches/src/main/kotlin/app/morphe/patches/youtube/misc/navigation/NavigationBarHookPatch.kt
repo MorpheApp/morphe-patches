@@ -16,6 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_19_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
@@ -31,6 +32,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
+import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/shared/NavigationBar;"
@@ -39,7 +41,15 @@ internal const val EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR =
 private const val EXTENSION_TOOLBAR_INTERFACE =
     "Lapp/morphe/extension/youtube/shared/NavigationBar${'$'}AppCompatToolbarPatchInterface;"
 
-lateinit var hookNavigationButtonCreated: (String) -> Unit
+private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
+
+fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
+    hookNavigationButtonCreatedMethodRef.get()!!.addInstruction(
+        0,
+        "invoke-static { p0, p1 }, $extensionClassDescriptor->navigationTabCreated" +
+                "(${EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
+    )
+}
 
 val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navigation or search bar.") {
     dependsOn(
@@ -141,8 +151,9 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         // Insert before the first ViewGroup method call after inflating,
         // so this works regardless which layout is used.
         ActionBarSearchResultsFingerprint.let {
+            it.clearMatch()
             it.method.apply {
-                val instructionIndex = it.instructionMatches.last().index
+                val instructionIndex = it.instructionMatches[1].index
                 val viewRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
 
                 addInstruction(
@@ -200,13 +211,9 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
         }
 
-        hookNavigationButtonCreated = { extensionClassDescriptor ->
-            NavigationBarHookCallbackFingerprint.method.addInstruction(
-                0,
-                "invoke-static { p0, p1 }, $extensionClassDescriptor->navigationTabCreated" +
-                    "(${EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
-            )
-        }
+        hookNavigationButtonCreatedMethodRef = WeakReference(
+            NavigationBarHookCallbackFingerprint.method
+        )
 
         // Fix YT bug of notification tab missing the filled icon.
         if (is_19_35_or_greater) {

@@ -1,6 +1,5 @@
 package app.morphe.patches.youtube.interaction.doubletap
 
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -20,37 +19,46 @@ val doubleTapLengthPatch = resourcePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        // Values are hard coded to keep patching simple.
-        val doubleTapLengthOptionsString = "3, 5, 10, 15, 20, 30, 60, 120, 180, 240"
-
-        val doubleTapLengths = doubleTapLengthOptionsString
-            .replace(" ", "")
-            .split(",")
-        if (doubleTapLengths.isEmpty()) throw PatchException("Invalid double-tap length elements")
+        val additionalDoubleTapLengths = arrayOf(
+            3,
+            5,
+            10,
+            15,
+            20,
+            30,
+            60,
+            120,
+            180,
+            240,
+        )
 
         document("res/values/arrays.xml").use { document ->
             fun Element.removeAllChildren() {
+                // noinspection CheckResult
                 val children = childNodes // Calling childNodes creates a new list.
                 for (i in children.length - 1 downTo 0) {
                     children.item(i).removeFromParent()
                 }
             }
 
-            val values = document.childNodes.findElementByAttributeValueOrThrow(
+            val childNodes = document.childNodes
+            val values = childNodes.findElementByAttributeValueOrThrow(
                 attributeName = "name",
                 value = "double_tap_length_values"
             )
             values.removeAllChildren()
 
-            val entries = document.childNodes.findElementByAttributeValueOrThrow(
+            val entries = childNodes.findElementByAttributeValueOrThrow(
                 attributeName = "name",
                 value = "double_tap_length_entries"
             )
             entries.removeAllChildren()
 
-            doubleTapLengths.forEach { length ->
+            additionalDoubleTapLengths.forEach { length ->
                 val item = document.createElement("item")
-                item.textContent = length
+                // ARSCLib gets confused if the existing array string values are replaced
+                // with literal numbers. Use untranslatable strings to avoid the issue.
+                item.textContent = "@string/morphe_double_tap_length_${length}s"
                 entries.appendChild(item)
                 values.appendChild(item.cloneNode(true))
             }

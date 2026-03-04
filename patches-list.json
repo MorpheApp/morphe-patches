@@ -1,5 +1,5 @@
 {
-  "version": "1.15.0",
+  "version": "1.17.0-dev.3",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -134,6 +134,32 @@
         "BytecodePatch"
       ],
       "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": [
+        {
+          "key": "custom",
+          "title": "Custom header logo",
+          "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain the following file(s):\n- morphe_header_custom_dark.png\n\nRequired dimensions:\n- drawable-hdpi: 121x36 px\n- drawable-xhdpi: 160x48 px\n- drawable-xxhdpi: 240x72 px\n- drawable-xxxhdpi: 320x96 px",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change header",
+      "description": "Adds an option to change the header logo in the top left corner of the app.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
         "com.google.android.youtube": [
           "20.40.45",
           "20.31.42",
@@ -144,7 +170,7 @@
         {
           "key": "custom",
           "title": "Custom header logo",
-          "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_header_custom_light.png\nmorphe_header_custom_dark.png \n\nThe image dimensions must be as follows:\n- drawable-hdpi: 194x72 px\n- drawable-xhdpi: 258x96 px\n- drawable-xxhdpi: 387x144 px\n- drawable-xxxhdpi: 512x192 px",
+          "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain the following file(s):\n- morphe_header_custom_light.png\n- morphe_header_custom_dark.png\n\nRequired dimensions:\n- drawable-hdpi: 194x72 px\n- drawable-xhdpi: 258x96 px\n- drawable-xxhdpi: 387x144 px\n- drawable-xxxhdpi: 512x192 px",
           "required": false,
           "type": "kotlin.String",
           "default": null,
@@ -207,6 +233,23 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Change start page",
+      "description": "Adds an option to set which page the app opens in instead of the homepage.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": []
     },
     {
       "name": "Change start page",
@@ -283,7 +326,8 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "BytecodePatch"
+        "BytecodePatch",
+        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.apps.youtube.music": [
@@ -320,7 +364,8 @@
       "dependencies": [
         "BytecodePatch",
         "ResourcePatch",
-        "BytecodePatch"
+        "BytecodePatch",
+        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -369,7 +414,7 @@
     },
     {
       "name": "Disable DRC audio",
-      "description": "Adds an option to disable dynamic range compression (DRC).",
+      "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -386,7 +431,7 @@
     },
     {
       "name": "Disable DRC audio",
-      "description": "Adds an option to disable dynamic range compression (DRC).",
+      "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -403,7 +448,7 @@
     },
     {
       "name": "Disable QUIC protocol",
-      "description": "Adds an option to disable the QUIC (Quick UDP Internet Connections) network protocol.",
+      "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -420,7 +465,7 @@
     },
     {
       "name": "Disable QUIC protocol",
-      "description": "Adds an option to disable the QUIC (Quick UDP Internet Connections) network protocol.",
+      "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -793,11 +838,12 @@
     },
     {
       "name": "Hide Shorts components",
-      "description": "Adds options to hide components related to Shorts. Patching version 20.21.37 or lower can hide more Shorts player button types.",
+      "description": "Adds options to hide components related to Shorts.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
@@ -1001,6 +1047,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1106,6 +1153,24 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Hide related videos",
+      "description": "Adds options to hide related videos.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1232,6 +1297,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1297,12 +1363,48 @@
       "options": []
     },
     {
+      "name": "Open system share sheet",
+      "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Open videos fullscreen",
       "description": "Adds an option to open videos in full screen portrait mode.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Override YouTube Music actions",
+      "description": "Overrides the YouTube Music button to open Morphe Music directly.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1432,6 +1534,7 @@
       "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",

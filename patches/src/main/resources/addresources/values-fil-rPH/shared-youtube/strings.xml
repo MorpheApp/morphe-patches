@@ -17,20 +17,102 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Pangalan ng aplikasyon</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">Pasadya</string>
+  <string name="morphe_custom_branding_icon_title">Icon ng aplikasyon</string>
+  <string name="morphe_custom_branding_icon_entry_1">Orihinal</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe na itim</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe na maitim</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe na maliwanag</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">Pasadya</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Pang-eksperimentong Alerto! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Gumagamit ka ng pang-eksperimentong bersyon ng aplikasyon ng ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Asahan ang kakaibang kilos ng aplikasyon o hindi natukoy na mga bug habang inaayos namin ang mga patch para sa bersyon ng aplikasyong ito.
+&lt;br/&gt;&lt;br/&gt; Kung gusto mo ang pinakawalang bagabag na karanasan, pagkatapos ay &lt;b&gt;burahin&lt;/b&gt; ito at i-patch ang inirerekomendang bersyon ng aplikasyon ng ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Gusto ko ng pang-eksperimento</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Gusto ko ng katatagan</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Huwag nang ipakita muli</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Gayahin ang mga video stream</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Gayahin ang mga video stream ng kliyente upang maiwasan ang mga isyu sa pag-playback</string>
+  <string name="morphe_spoof_video_streams_title">Gayahin ang mga video stream</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Ginaya ang mga video stream
+
+Hindi na ito kinakailangan kung isa kang YouTube Premium na tagagamit"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Hindi ginaya ang mga video stream
+
+Maaaring hindi gumana ang playback"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Hindi makuha ang anumang mga stream ng kliyente</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng isyu sa playback kung pinatay mo ang pagpipilian na ito</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Default na kliyente</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Pag-sign in sa Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Hindi naka-sign in sa Android VR. Pindutin dito upang mag-sign in</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kasalukuyang naka-sign in sa Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Upang gamitin ang tampok na ito, baguhin ang \'Default na kliyente\' sa Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Mag-sign in sa Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Maaaring ayusin ng pag-sign in sa Android VR ang mga isyu sa pag-playback para sa ilang user
+
+Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Magpatuloy</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Mag-sign out</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Mga Tagubilin</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Code ng pag-activate: %s 
+
+1. Pindutin ang 'Buksan ang website' sa ibaba upang buksan ang website na 'Ikonekta ang isang device' 
+2. Idikit mula sa clipboard (o i-type out) ang code ng pag-activate na ipinapakita sa itaas 
+3. Mag-sign in sa Google kung sinenyasan. Kung marami kang account, piliin ang YouTube account na ito 
+4. Pindutin ang 'Payagan ang YouTube VR' ng access 
+5. Bumalik sa app na ito pagkatapos maabot ang mensaheng 'Nakakonekta ang device'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Buksan ang website</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nabigong mag-isyu ng code ng pag-activate</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nabigong mag-isyu ng token ng pagpapatunay</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Matagumpay na na-sign in</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Na-save ang pagpapatunay
+
+• Hindi mag-i-import/mag-export ng pagpapatunay sa Android VR ang iyong mga pagpipilian
+• Kung hindi ginagamit ang aplikasyong ito sa loob ng 6 na buwan, aalisin ng Google ang pagpapatunay na ito 
+• Kakailanganin mong mag-sign in muli kung babaguhin mo ang iyong password sa Google o aalisin sa pagkakarehistro ang device na ito sa iyong mga pagpipilian sa Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">Pansamantalang hindi magagamit ang OAuth2 (Nag-time out ang API)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Natapos ang pag-sign in sa Android VR, subukang mag-sign muli sa VR</string>
+  <string name="morphe_oauth2_connection_failure_status">Pansamantalang hindi magagamit ang OAuth2 (kapalaran %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">Pansamantalang hindi magagamit ang OAuth2</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Hindi maka-sign in sa VR, hindi naaprubahan ang pagpapatunay sa website</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Nag-log out sa Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Imbalido ang sign in token ng VR, subukang mag-sign in muli sa VR</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Nakapatay ang QUIC protocol</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Pinagana ang QUIC protocol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Patayin ang tunog ng DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Nakapatay ang tunog ng DRC</string>
+  <string name="morphe_disable_drc_audio_summary_off">Pinagana ang tunog ng DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Puwersahan ang orihinal na tunog ng wika</string>
+  <string name="morphe_force_original_audio_summary_on">Ginagamit ang orihinal na tunog ng wika</string>
+  <string name="morphe_force_original_audio_summary_off">Ginagamit ang default na tunog</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Upang gamitin ang tampok na ito, baguhin ang \'Gayahin ang mga video stream\' sa anumang kliyente maliban sa Android Studio</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Inalis ang pagsubaybay sa query parameter mula sa nakabahaging link</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Hindi inaalis ang pagsubaybay sa query parameter sa mga nakabahaging link</string>
+  <string name="morphe_replace_music_with_youtube_title">Baguhin ang mga nakabahaging link sa youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Gumagamit ng youtube.com ang mga nakabahaging link</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Gumagamit ng music.youtube.com ang mga nakabahaging link</string>
 </resources>

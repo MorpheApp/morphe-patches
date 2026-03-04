@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
@@ -99,8 +107,13 @@ internal object ParseElementFromBufferFingerprint : Fingerprint(
         // IGET_BOOLEAN // 20.07+
         opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(1)),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-
-        string("Failed to parse Element", StringComparisonType.STARTS_WITH)
+        string("Failed to parse Element", StringComparisonType.STARTS_WITH),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L"),
+            returnType = "L"
+        ),
+        opcode(Opcode.RETURN_OBJECT, location = MatchAfterWithin(4))
     )
 )
 

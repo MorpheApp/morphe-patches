@@ -64,7 +64,7 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Esta versión es un pre-lanzamiento y podrías experimentar problemas inesperados</string>
+  <string name="morphe_settings_about_links_dev_body">Esta versión es preliminar y podrías experimentar problemas inesperados</string>
   <string name="morphe_settings_about_links_header">Enlaces oficiales</string>
   <string name="morphe_settings_about_links_website">Sitio web</string>
   <string name="morphe_settings_about_links_donate">Donar</string>
@@ -102,7 +102,7 @@ No se le notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Banderas restablecidas</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Banderas copiadas al portapapeles</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la aplicación para usar esta característica</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir la configuración de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

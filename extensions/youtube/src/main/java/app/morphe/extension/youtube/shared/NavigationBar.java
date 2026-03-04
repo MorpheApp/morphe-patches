@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.shared;
 
 import static app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
@@ -91,18 +99,18 @@ public final class NavigationBar {
     /**
      * How long to wait for the set nav button latch to be released.  Maximum wait time must
      * be as small as possible while still allowing enough time for the nav bar to update.
-     *
+     * <p>
      * YT calls it's back button handlers out of order, and litho starts filtering before the
      * navigation bar is updated. Fixing this situation and not needlessly waiting requires
      * somehow detecting if a back button key/gesture will not change the active tab.
-     *
+     * <p>
      * On average the time between pressing the back button and the first litho event is
      * about 10-20ms.  Waiting up to 75-150ms should be enough time to handle normal use cases
      * and not be noticeable, since YT typically takes 100-200ms (or more) to update the view.
-     *
+     * <p>
      * This delay is only noticeable when the device back button/gesture will not
      * change the current navigation tab, such as backing out of the watch history.
-     *
+     * <p>
      * This issue can also be avoided on a patch by patch basis, by avoiding calls to
      * {@link NavigationButton#getSelectedNavigationButton()} unless absolutely necessary.
      */
@@ -112,7 +120,7 @@ public final class NavigationBar {
      * Used as a workaround to fix the issue of YT calling back button handlers out of order.
      * Used to hold calls to {@link NavigationButton#getSelectedNavigationButton()}
      * until the current navigation button can be determined.
-     *
+     * <p>
      * Only used when the hardware back button is pressed.
      */
     @Nullable
@@ -222,7 +230,7 @@ public final class NavigationBar {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Unique hook just for the 'Create' and 'You' tab.
      */
     public static void navigationImageResourceTabLoaded(View view) {
@@ -315,6 +323,10 @@ public final class NavigationBar {
          * Only shown to automotive layout.
          */
         EXPLORE("TAB_EXPLORE"),
+        /**
+         * Only shown when 'Show search button' is turned on.
+         */
+        SEARCH("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO"),
         SUBSCRIPTIONS("PIVOT_SUBSCRIPTIONS", "TAB_SUBSCRIPTIONS_CAIRO"),
         /**
          * Notifications tab.  Only present when
@@ -349,9 +361,9 @@ public final class NavigationBar {
          * This will return null only if the currently selected tab is unknown.
          * This scenario will only happen if the UI has different tabs due to an A/B user test
          * or YT abruptly changes the navigation layout for some other reason.
-         *
+         * <p>
          * All code calling this method should handle a null return value.
-         *
+         * <p>
          * <b>Due to issues with how YT processes physical back button/gesture events,
          * this patch uses workarounds that can cause this method to take up to 120ms
          * if the device back button was recently pressed.</b>
@@ -369,7 +381,7 @@ public final class NavigationBar {
         /**
          * YouTube enum name for this tab.
          */
-        private final List<String> ytEnumNames;
+        public final List<String> ytEnumNames;
 
         NavigationButton(String... ytEnumNames) {
             this.ytEnumNames = Arrays.asList(ytEnumNames);

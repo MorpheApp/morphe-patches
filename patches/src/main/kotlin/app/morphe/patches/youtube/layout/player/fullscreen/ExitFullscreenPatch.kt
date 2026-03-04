@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -9,7 +17,7 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.video.information.playerStatusMethod
+import app.morphe.patches.youtube.video.information.playerStatusMethodRef
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -41,7 +49,7 @@ internal val exitFullscreenPatch = bytecodePatch(
             ListPreference("morphe_exit_fullscreen")
         )
 
-        playerStatusMethod.apply {
+        playerStatusMethodRef.get()!!.apply {
             val insertIndex =
                 indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT) + 1
 

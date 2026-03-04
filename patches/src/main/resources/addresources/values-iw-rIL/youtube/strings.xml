@@ -139,7 +139,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_title">הסתר תוצאות חיפוש באינטרנט</string>
   <string name="morphe_hide_web_search_results_summary_on">תוצאות חיפוש באינטרנט מוסתרות</string>
   <string name="morphe_hide_web_search_results_summary_off">תוצאות חיפוש באינטרנט מוצגות</string>
-  <string name="morphe_hide_you_may_like_section_title">הסתר מדור \"אולי תעניק\"</string>
+  <string name="morphe_hide_you_may_like_section_title">הסתר את \"אולי תהנה\"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">מדור \"אולי תעניק\" מוסתר</string>
   <string name="morphe_hide_you_may_like_section_summary_off">מדור \"אולי תעניק\" מוצג</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">הסתר פעולות מהירות</string>
   <string name="morphe_hide_quick_actions_summary_on">פעולות מהירות במסך מלא מוסתרות</string>
   <string name="morphe_hide_quick_actions_summary_off">פעולות מהירות במסך מלא מוצגות</string>
-  <string name="morphe_hide_related_videos_title">הסתר סרטונים קשורים</string>
-  <string name="morphe_hide_related_videos_summary_on">סרטונים קשורים בפעולות מהירות מוסתרים</string>
-  <string name="morphe_hide_related_videos_summary_off">סרטונים קשורים בפעולות מהירות מוצגים</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">הסתר פעולות מהירות הקשורות לסרטונים</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">סרטונים קשורים בפעולות מהירות מוסתרים</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">סרטונים קשורים בפעולות מהירות מוצגים</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">הסתר את הנחיות המנויים</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">הנחיות קהילת המנויים מוסרת</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">הנחיות קהילת המנויים מוצגות</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">הסתר לחצן תגובות</string>
   <string name="morphe_hide_community_button_summary_on">לחצן תגובות מוסתר</string>
   <string name="morphe_hide_community_button_summary_off">לחצן תגובות מוצג</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">הסתר מדף \'בשבילך\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">המדף \'בשבילך\' מוסתר</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">המדף \'בשבילך\' מוצג</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">הסתר לחצן להצטרפות</string>
   <string name="morphe_hide_join_button_summary_on">לחצן להצטרפות מוסתר</string>
@@ -434,7 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_title">הסתר מודעות סרטון</string>
   <string name="morphe_hide_video_ads_summary_on">מודעות סרטון מוסתרות</string>
   <string name="morphe_hide_video_ads_summary_off">מודעות סרטון מוצגות</string>
-  <!-- interaction.copyvideourl.copyVideoUrlResourcePatch -->
+  <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">כתובת URL הועתקה אל הלוח</string>
   <string name="morphe_share_copy_url_timestamp_success">כתובת URL עם חותמת זמן הועתקה</string>
   <string name="morphe_copy_video_url_title">הצג לחצן העתקת כתובת ה-URL של הסרטון</string>
@@ -448,10 +445,10 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">דו-שיח יוסר</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_off">דו-שיח יוצג</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">זה לא עוקף את מגבלת הגיל. זה רק מסכים לזה באופן אוטומטי.</string>
-  <!-- layout.hide.signintotv.disableSignInToTvPopupPatch -->
-  <string name="morphe_disable_signin_to_tv_popup_title">השבת חלון קופץ של כניסה לטלוויזיה</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_on">חלון קופץ של כניסה לטלוויזיה מושבת</string>
-  <string name="morphe_disable_signin_to_tv_popup_summary_off">חלון קופץ של כניסה לטלוויזיה מופעל</string>
+  <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">השבת חלון קופץ של כניסה לטלוויזיה</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_on">חלון קופץ של כניסה לטלוויזיה מושבת</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_summary_off">חלון קופץ של כניסה לטלוויזיה מופעל</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">השבת דילוג פרקים בהקשה כפולה</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">הקשה כפולה לעולם לא יכולה לגרום דילוג לפרק הבא/הקודם</string>
@@ -480,10 +477,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">מחווה מושבתת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">מחווה מופעלת</string>
-  <!-- interaction.seekbar.enableSeekbarTappingPatch -->
-  <string name="morphe_seekbar_tapping_title">הפעל הקשה כדי לדלג</string>
-  <string name="morphe_seekbar_tapping_summary_on">הקשה כדי לדלג מופעלת</string>
-  <string name="morphe_seekbar_tapping_summary_off">הקשה כדי לדלג מושבתת</string>
+  <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
+  <string name="morphe_slide_to_seek_summary_on">החלק כדי לדלג מופעל</string>
+  <string name="morphe_slide_to_seek_summary_off">החלק כדי לדלג אינו מופעל</string>
+  <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">הפעל הקשה כדי לדלג</string>
+  <string name="morphe_tap_to_seek_summary_on">הקשה כדי לדלג מופעלת</string>
+  <string name="morphe_tap_to_seek_summary_off">הקשה כדי לדלג מושבתת</string>
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
   <string name="morphe_swipe_brightness_title">הפעל מחוות בהירות</string>
   <string name="morphe_swipe_brightness_summary_on">"החלקת בהירות במסך מלא מופעלת
@@ -653,6 +654,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">הסתר עדכונים</string>
   <string name="morphe_hide_notifications_button_summary_on">לחצן עדכונים מוסתר</string>
   <string name="morphe_hide_notifications_button_summary_off">לחצן עדכונים מוצג</string>
+  <string name="morphe_show_search_button_title">הצג כפתור חיפוש</string>
+  <string name="morphe_show_search_button_summary_on">לחצן החיפוש מוצג</string>
+  <string name="morphe_show_search_button_summary_off">כפתור החיפוש אינו מוצג</string>
+  <string name="morphe_search_button_index_title">לחצן חיפוש</string>
+  <string name="morphe_search_button_index_invalid">ערך אינדקס לחצן חיפוש חייב להיות קטן מ-%s</string>
   <string name="morphe_swap_create_with_notifications_button_title">החלף יצירה עם עדכונים</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">לחצן יצירה יוחלף עם לחצן עדכונים</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">לחצן יצירה לא יוחלף עם לחצן עדכונים</string>
@@ -783,9 +789,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">כפתורי \'קודם\' ו-\'הבא\' מוסתרים</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">כפתורי \"קודם\" ו-\"הבא\" מוצגים</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
-  <string name="morphe_hide_endscreen_cards_title">הסתר כרטיסי מסך סיום</string>
-  <string name="morphe_hide_endscreen_cards_summary_on">כרטיסי מסך מסיום מוסתרים</string>
-  <string name="morphe_hide_endscreen_cards_summary_off">כרטיסי מסך מסיום מוצגים</string>
+  <string name="morphe_hide_end_screen_cards_title">הסתר כרטיסי מסך סיום</string>
+  <string name="morphe_hide_end_screen_cards_summary_on">כרטיסי מסך מסיום מוסתרים</string>
+  <string name="morphe_hide_end_screen_cards_summary_off">כרטיסי מסך מסיום מוצגים</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">מצב אטמוספירה</string>
   <string name="morphe_ambient_mode_screen_summary">עקוף הגבלות חסכון אנרגיה עבור מצב אטמוספירה ומנע אותו לחלוטין או במלואו</string>
@@ -949,16 +955,20 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">סרגל ניווט מוצג</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">הסתר סרטון מוצע של מסך סיום</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">"סרטון מוצע של מסך סיום מוסתר כאשר הפעלה אוטומטית כבויה
-
-
-הפעלה אוטומטית ניתנת לשינוי בהגדרות YouTube:
-הגדרות ← הפעלה ← הפעלה אוטומטית של הסרטון הבא"</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">סרטון מוצע של מסך סיום מוסתר</string>
   <string name="morphe_end_screen_suggested_video_summary_off">סרטון מוצע של מסך סיום מוצג</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"התצורה הזו תעבוד רק אם 'התחלת נגינה אוטומטית' מושבתת.
+
+אתה יכול לשנות זאת ביוטיוב:
+הגדרות → נגינה (או התחלת נגינה אוטומטית) → התחלת נגינה אוטומטית הבאה"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">הסתר סרטונים קשורים</string>
+  <string name="morphe_hide_player_related_videos_summary_on">סרטונים קשורים מוצפנים</string>
+  <string name="morphe_hide_player_related_videos_summary_off">סרטונים קשורים מוצגים</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">הסתר שכבת-על של סרטונים קשורים</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">שכבת-על של סרטונים קשורים במסך מלא מוסתרת</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">שכבת-על של סרטונים קשורים במסך מלא מוצגת</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">הסתר חותמת זמן של סרטון</string>
   <string name="morphe_hide_timestamp_summary_on">חותמת זמן מוסתרת</string>
@@ -1093,9 +1103,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_general_min_duration">משך מקטע מינימלי</string>
   <string name="morphe_sb_general_min_duration_sum">מקטעים קצרים יותר מערך זה (בשניות) לא יוצגו או ידולגו</string>
   <string name="morphe_sb_general_min_duration_invalid">משך זמן לא חוקי</string>
-  <string name="morphe_sb_general_uuid">מזהה המשתמש הפרטי שלך</string>
+  <string name="morphe_sb_general_uuid">מזהה משתמש פרטי</string>
   <string name="morphe_sb_general_uuid_sum">זה צריך להישמר פרטי. זה כמו סיסמה ולא צריך להיות משותף עם אף אחד. אם למישהו יש את זה, הוא יכול להתחזות אליך</string>
-  <string name="morphe_sb_general_uuid_invalid">מזהה משתמש פרטי חייב להיות באורך של לפחות 30 תווים </string>
+  <string name="morphe_sb_general_uuid_invalid">מזהה משתמש פרטי חייב להיות באורך של לפחות 30 תווים</string>
   <string name="morphe_sb_general_api_url">שנה כתובת API</string>
   <string name="morphe_sb_general_api_url_sum">הכתובת שבה SponsorBlock משתמש כדי לבצע קריאות לשרת</string>
   <string name="morphe_sb_api_url_reset">כתובת API אופסה</string>
@@ -1104,12 +1114,13 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie">ייבוא/ייצוא הגדרות</string>
   <string name="morphe_sb_settings_copy">העתק</string>
   <string name="morphe_sb_settings_ie_sum">תצורת JSON של ה-SponsorBlock שלך שניתן לייבא/לייצא אל Morphe ופלטפורמות SponsorBlock אחרות</string>
-  <string name="morphe_sb_settings_ie_sum_warning">תצורת JSON של ה-SponsorBlock שלך שניתן לייבא/לייצא אל Morphe ופלטפורמות SponsorBlock אחרות. זה כולל את מזהה המשתמש הפרטי שלך. הקפד לשתף את זה בתבונה</string>
+  <string name="morphe_sb_settings_ie_sum_warning">תצורת JSON שלך של SponsorBlock שניתן לייבא/לייצא אל Morphe ופלטפורמות SponsorBlock אחרות. זה כולל את מזהה המשתמש הפרטי שלך. הקפד לשתף את זה בתבונה</string>
   <string name="morphe_sb_settings_import_successful">ההגדרות יובאו בהצלחה</string>
   <string name="morphe_sb_settings_import_failed">נכשל לייבא את: %s</string>
   <string name="morphe_sb_settings_export_failed">נכשל לייצא את: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"ההגדרות שלך מכילות מזהה משתמש פרטי של SponsorBlock.
-• מזהה המשתמש שלך הוא כמו סיסמה ואסור לשתף אותו לעולם."</string>
+
+מזהה המשתמש שלך הוא כמו סיסמה ואסור לשתף אותו לעולם."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">אל תציג שוב</string>
   <string name="morphe_sb_diff_segments">שנה התנהגות מקטע</string>
   <string name="morphe_sb_segments_sponsor">נותן חסות</string>
@@ -1269,6 +1280,16 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר שפופרות ישנות לפלייליסט</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20:28:41 - עכבה סמלים מודגשים</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - שחזור סרגל פעולות וידאו לא מכווץ</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">פתיחת תפריט שיתוף מערכת</string>
+  <string name="morphe_open_system_share_sheet_summary_on">פתיחת תפריט שיתוף מערכת</string>
+  <string name="morphe_open_system_share_sheet_summary_off">פתיחת תפריט שיתוף בתוך האפליקציה</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">עקוף כפתור יוטיוב מיוזיק</string>
+  <string name="morphe_override_youtube_music_button_summary_on">כפתור יוטיוב מיוזיק יפתח את אפליקציית המוזיקה שלך</string>
+  <string name="morphe_override_youtube_music_button_summary_off">כפתור YouTube Music נפתח את האפליקציה המקורית</string>
+  <string name="morphe_music_package_name_title">שם החבילה של Morphe Music</string>
+  <string name="morphe_music_package_name_summary">שם החבילה של האפליקציה המוזיקלית היעד</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>
@@ -1384,7 +1405,7 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">צבע ההדגשה של סרגל הדילוג</string>
   <string name="morphe_seekbar_custom_color_invalid">ערך צבע סרגל דילוג לא חוקי</string>
   <!-- layout.branding.customBrandingPatch -->
-  <!-- layout.branding.changeHeaderPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">לוגו כותרת</string>
   <string name="morphe_header_logo_entry_1">ברירת מחדל</string>
   <string name="morphe_header_logo_entry_2">רגיל</string>
@@ -1557,10 +1578,6 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_title">העדיפו איכות וידאו</string>
   <string name="morphe_prioritize_video_quality_summary_on">איכות וידאו מועדפת</string>
   <string name="morphe_prioritize_video_quality_summary_off">קודקים וידאו מועדפים</string>
-  <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
-  <string name="morphe_slide_to_seek_summary_on">החלק כדי לדלג מופעל</string>
-  <string name="morphe_slide_to_seek_summary_off">החלק כדי לדלג אינו מופעל</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">אפשר Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"מקודד וידאו הוא AVC (H.264), VP9, או AV1

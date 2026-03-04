@@ -102,7 +102,7 @@ Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Nişançılar sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Nişançılar buferə köçürüldü</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uşağını yenidən başlatmaq üçün bu xüsusiyyətin istifadəsi mümkündür</string>
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG-nin əlavə parametrlərini açın</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

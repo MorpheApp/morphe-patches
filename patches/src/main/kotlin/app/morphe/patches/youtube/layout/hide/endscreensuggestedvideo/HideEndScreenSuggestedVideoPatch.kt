@@ -1,19 +1,20 @@
 package app.morphe.patches.youtube.layout.hide.endscreensuggestedvideo
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -24,9 +25,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
     name = "Hide end screen suggested video",
     description = "Adds an option to hide the suggested video at the end of videos.",
 ) {
-    dependsOn(
-        sharedExtensionPatch,
-    )
+    dependsOn(sharedExtensionPatch)
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
@@ -35,44 +34,56 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
             SwitchPreference("morphe_end_screen_suggested_video"),
         )
 
-        RemoveOnLayoutChangeListenerFingerprint.let {
-            val endScreenMethod = it.instructionMatches.last().getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!.getMutableMethod()
+        val autoNavStatusMethod = AutoNavStatusFingerprint.match(
+            AutoNavConstructorFingerprint.originalClassDef
+        ).method
 
-            endScreenMethod.apply {
-                val autoNavStatusMethodName = AutoNavStatusFingerprint.match(
-                    AutoNavConstructorFingerprint.classDef
-                ).originalMethod.name
+        val endScreenMethod = RemoveOnLayoutChangeListenerFingerprint.instructionMatches[1]
+            .instruction.getReference<MethodReference>()!!.getMutableMethod()
 
-                val invokeIndex = indexOfFirstInstructionOrThrow {
-                    val reference = getReference<MethodReference>()
-                    reference?.name == autoNavStatusMethodName &&
-                            reference.returnType == "Z" &&
-                            reference.parameterTypes.isEmpty()
-                }
-                val iGetObjectIndex = indexOfFirstInstructionReversedOrThrow(invokeIndex, Opcode.IGET_OBJECT)
-                val invokeReference = getInstruction<ReferenceInstruction>(invokeIndex).reference
-                val iGetObjectReference = getInstruction<ReferenceInstruction>(iGetObjectIndex).reference
-                val opcodeName = getInstruction(invokeIndex).opcode.name
+        val endScreenSuggestedVideoFingerprint = Fingerprint(
+            definingClass = endScreenMethod.definingClass,
+            name = endScreenMethod.name,
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf(),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    definingClass = "this",
+                    type = autoNavStatusMethod.definingClass
+                ),
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    smali = autoNavStatusMethod.toString(),
+                    location = MatchAfterWithin(3)
+                )
+            )
+        )
+
+        endScreenSuggestedVideoFingerprint.let {
+            it.method.apply {
+                val autoNavField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
 
                 addInstructionsWithLabels(
                     0,
                     """
                         invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenSuggestedVideo()Z
                         move-result v0
-                        if-eqz v0, :show_end_screen_recommendation
+                        if-eqz v0, :ignore
 
-                        iget-object v0, p0, $iGetObjectReference
+                        iget-object v0, p0, $autoNavField
 
                         # This reference checks whether autoplay is turned on.
-                        $opcodeName { v0 }, $invokeReference
+                        invoke-virtual { v0 }, $autoNavStatusMethod
                         move-result v0
 
                         # Hide suggested video end screen only when autoplay is turned off.
-                        if-nez v0, :show_end_screen_recommendation
+                        if-nez v0, :ignore
                         return-void
-                    """,
-                    ExternalLabel("show_end_screen_recommendation", getInstruction(0))
+                        :ignore
+                        nop
+                    """
                 )
             }
         }

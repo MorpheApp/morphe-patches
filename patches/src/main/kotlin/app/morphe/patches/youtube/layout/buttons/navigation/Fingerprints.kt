@@ -1,7 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -180,3 +191,66 @@ internal object SearchFragmentFingerprint : Fingerprint(
         string("search-lens-button")
     )
 )
+
+// region navigation search button
+
+internal object PivotBarRendererFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    parameters = listOf("L"),
+    returnType = "Lj\$/util/Optional;",
+    filters = listOf(
+        literal(117501096L),
+        opcode(Opcode.IF_NE),
+        opcode(Opcode.CHECK_CAST),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT_RANGE,
+            definingClass = "this",
+            name = "<init>",
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+internal object PivotBarRendererListFingerprint : Fingerprint(
+    parameters = listOf("L"),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "L"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L"),
+            returnType = "L"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "L"
+        ),
+        literal(45633821L),
+    )
+)
+
+internal object TopBarRendererFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        checkCast("Ljava/util/List;"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(
+            opcode = Opcode.CHECK_CAST,
+            location = MatchAfterWithin(5)
+        ),
+        literal(120823052L),
+    )
+)
+
+// endregion
