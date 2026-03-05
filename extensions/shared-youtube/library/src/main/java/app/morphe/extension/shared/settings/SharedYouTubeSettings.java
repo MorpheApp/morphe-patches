@@ -28,7 +28,8 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
     public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_js_variant", JavaScriptVariant.PHONE, true, new SpoofClientJavaScriptVariantAvailability());
 
-    public static final StringSetting SPOOF_VIDEO_STREAMS_JS_HASH = new StringSetting("morphe_spoof_video_streams_js_hash", "", false);
+    public static final BooleanSetting SPOOF_VIDEO_STREAMS_FORCE_JS_HASH = new BooleanSetting("morphe_spoof_video_streams_force_js_hash", FALSE, true, "morphe_spoof_video_streams_force_js_hash_user_dialog_message");
+    public static final StringSetting SPOOF_VIDEO_STREAMS_JS_HASH = new StringSetting("morphe_spoof_video_streams_js_hash", "", true, parent(SPOOF_VIDEO_STREAMS_FORCE_JS_HASH));
     public static final LongSetting SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_js_saved_milliseconds", -1L, false);
     public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
 

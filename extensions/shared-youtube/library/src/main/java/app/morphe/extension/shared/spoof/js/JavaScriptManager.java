@@ -27,7 +27,9 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -181,7 +183,8 @@ public final class JavaScriptManager {
             long lastSavedTime = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS.get();
 
             if (!SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.isSetToDefault()
-                    && currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS) {
+                    && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_JS_HASH.get()
+                    || currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS)) {
                 // There is a hash saved in the settings and it was saved within 3 days.
                 // Use the hash saved in the settings.
                 cachedPlayerJsHash = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.get();
@@ -196,7 +199,10 @@ public final class JavaScriptManager {
                     Matcher matcher = PLAYER_JS_HASH_PATTERN.matcher(iframeContent);
                     if (matcher.find()) {
                         cachedPlayerJsHash = matcher.group(1);
-                        SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.save(cachedPlayerJsHash);
+                        AbstractPreferenceFragment.settingImportInProgress = true;
+                        Setting.privateSetValueFromString(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH, cachedPlayerJsHash);
+                        SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.saveToPreferences();
+                        AbstractPreferenceFragment.settingImportInProgress = false;
                         SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS.save(currentTime);
                     } else {
                         Logger.printException(() -> "iframeContent not found");
