@@ -295,6 +295,7 @@ public final class JavaScriptManager {
      * @param streamingData StreamingData containing obfuscated parameters.
      * @return              StreamingData builder containing deobfuscated parameters.
      */
+    @Nullable
     public static StreamingData.Builder getDeobfuscatedStreamingData(StreamingData streamingData) {
         StreamingData.Builder streamingDataBuilder = streamingData.toBuilder();
         String serverAbrStreamingUrl = streamingData.getServerAbrStreamingUrl();
@@ -303,28 +304,36 @@ public final class JavaScriptManager {
         streamingDataBuilder.clearFormats();
 
         // Deobfuscate formats.
-        deobfuscateFormat(
+        boolean deobfuscateResult = deobfuscateFormat(
                 streamingDataBuilder,
                 streamingData.getFormatsList(),
                 serverAbrStreamingUrl,
                 false
         );
 
+        if (!deobfuscateResult) {
+            return null;
+        }
+
         // Initialize streamingDataBuilder before adding adaptiveFormats.
         streamingDataBuilder.clearAdaptiveFormats();
 
         // Deobfuscate adaptiveFormats.
-        deobfuscateFormat(
+        deobfuscateResult = deobfuscateFormat(
                 streamingDataBuilder,
                 streamingData.getAdaptiveFormatsList(),
                 serverAbrStreamingUrl,
                 true
         );
 
+        if (!deobfuscateResult) {
+            return null;
+        }
+
         return streamingDataBuilder;
     }
 
-    private static void deobfuscateFormat(StreamingData.Builder streamingDataBuilder,
+    private static boolean deobfuscateFormat(StreamingData.Builder streamingDataBuilder,
                                          List<Format> formats,
                                          String serverAbrStreamingUrl,
                                          boolean isAdaptiveFormats) {
@@ -380,8 +389,17 @@ public final class JavaScriptManager {
                 );
 
                 // Since there is only one obfuscated n-parameter, there is also only one deobfuscated n-parameter
-                String deobfuscatedNParameter = results.first.get(0);
+                List<String> deobfuscatedNParameters = results.first;
+                if (deobfuscatedNParameters.isEmpty()) {
+                    Logger.printException(() -> "Failed to deobfuscate n-parameter");
+                    return false;
+                }
+                String deobfuscatedNParameter = deobfuscatedNParameters.get(0);
                 List<String> deobfuscatedSParameters = results.second;
+                if (hasSignatureCipher && deobfuscatedSParameters.isEmpty()) {
+                    Logger.printException(() -> "Failed to deobfuscate signatureCipher");
+                    return false;
+                }
 
                 int i = 0;
                 for (Format format : formats) {
@@ -406,8 +424,12 @@ public final class JavaScriptManager {
                         ? serverAbrStreamingUrl.replace(obfuscatedNParameter, deobfuscatedNParameter)
                         : ""
                 );
+
+                return true;
             }
         }
+
+        return false;
     }
 
     private static String getNQueryParameter(String url) {
