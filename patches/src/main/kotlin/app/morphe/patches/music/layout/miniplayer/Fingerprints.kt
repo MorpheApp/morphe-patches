@@ -1,4 +1,4 @@
-package app.morphe.patches.music.layout.miniplayercolor
+package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
@@ -28,4 +28,11 @@ internal object SwitchToggleColorFingerprint : Fingerprint(
         Opcode.CHECK_CAST,
         Opcode.IGET
     )
+)
+
+internal object MinimizedPlayerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L"),
+    strings = listOf("w_st")
 )
