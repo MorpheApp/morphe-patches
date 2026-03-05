@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+
 package app.morphe.extension.shared.spoof.js;
 
 import static app.morphe.extension.shared.Utils.isNotEmpty;
@@ -183,6 +188,8 @@ public final class JavaScriptManager {
             long lastSavedTime = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS.get();
 
             if (!SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.isSetToDefault()
+                    // If 'Force player JavaScript hash' is enabled, the 'Player JavaScript hash' will always be used.
+                    // In other words, the cache expiration is not checked, and the YouTube iframe API is not fetched either.
                     && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_JS_HASH.get()
                     || currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS)) {
                 // There is a hash saved in the settings and it was saved within 3 days.
