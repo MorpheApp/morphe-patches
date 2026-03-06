@@ -14,11 +14,12 @@ public class MediaSessionBitmapMitigationPatch {
             Logger.printDebug(() -> "MediaSessionBitmapMitigation: Intercepted recycled bitmap");
             return Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
         }
+        
         try {
             Bitmap.Config config = original.getConfig();
             return original.copy(config != null ? config : Bitmap.Config.ARGB_8888, false);
         } catch (Exception e) {
-            Logger.printDebug(() -> "MediaSessionBitmapMitigation: Could not copy bitmap: " + e.getMessage());
+            Logger.printException(() -> "MediaSessionBitmapMitigation: Could not copy bitmap", e);
             return original; // Fallback
         }
     }
