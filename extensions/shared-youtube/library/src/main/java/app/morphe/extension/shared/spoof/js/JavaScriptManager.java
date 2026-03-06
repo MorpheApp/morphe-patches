@@ -32,8 +32,10 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 import java.io.File;
@@ -73,9 +75,20 @@ public final class JavaScriptManager {
     private static final Pattern PLAYER_JS_HASH_PATTERN =
             Pattern.compile("player\\\\/([a-z0-9]{8})\\\\/");
     /**
+     * JavaScript cached time setting.
+     */
+    private static final LongSetting PLAYER_JS_SAVED_MILLISECONDS =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_SAVED_MILLISECONDS;
+    /**
+     * JavaScript hash setting.
+     */
+    private static final StringSetting PLAYER_JS_HASH =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH;
+    /**
      * Variant of JavaScript url.
      */
-    private static final JavaScriptVariant PLAYER_JS_VARIANT = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_VARIANT.get();
+    private static final JavaScriptVariant PLAYER_JS_VARIANT =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT.get();
     /**
      * Format of JavaScript url.
      */
@@ -185,16 +198,16 @@ public final class JavaScriptManager {
     private static String getPlayerJsUrl() {
         if (cachedPlayerJsUrl == null) {
             long currentTime = System.currentTimeMillis();
-            long lastSavedTime = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS.get();
+            long lastSavedTime = PLAYER_JS_SAVED_MILLISECONDS.get();
 
-            if (!SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.isSetToDefault()
+            if (!PLAYER_JS_HASH.get().isEmpty()
                     // If 'Force player JavaScript hash' is enabled, the 'Player JavaScript hash' will always be used.
                     // In other words, the cache expiration is not checked, and the YouTube iframe API is not fetched either.
-                    && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_JS_HASH.get()
+                    && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_PLAYER_JS_HASH.get()
                     || currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS)) {
                 // There is a hash saved in the settings and it was saved within 3 days.
                 // Use the hash saved in the settings.
-                cachedPlayerJsHash = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.get();
+                cachedPlayerJsHash = PLAYER_JS_HASH.get();
                 String playerJsHash = cachedPlayerJsHash;
                 Logger.printDebug(() -> "Player js hash found in cache: " + playerJsHash);
             } else {
@@ -206,11 +219,14 @@ public final class JavaScriptManager {
                     Matcher matcher = PLAYER_JS_HASH_PATTERN.matcher(iframeContent);
                     if (matcher.find()) {
                         cachedPlayerJsHash = matcher.group(1);
+
+                        // The simplest way to prevent the restart dialog from showing.
                         AbstractPreferenceFragment.settingImportInProgress = true;
-                        Setting.privateSetValueFromString(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH, cachedPlayerJsHash);
-                        SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_HASH.saveToPreferences();
+                        Setting.privateSetValueFromString(PLAYER_JS_HASH, cachedPlayerJsHash);
+                        PLAYER_JS_HASH.saveToPreferences();
                         AbstractPreferenceFragment.settingImportInProgress = false;
-                        SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_JS_SAVED_MILLISECONDS.save(currentTime);
+
+                        PLAYER_JS_SAVED_MILLISECONDS.save(currentTime);
                     } else {
                         Logger.printException(() -> "iframeContent not found");
                     }
