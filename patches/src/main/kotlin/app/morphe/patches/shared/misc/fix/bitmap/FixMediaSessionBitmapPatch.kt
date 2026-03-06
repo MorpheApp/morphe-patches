@@ -14,12 +14,7 @@ private enum class MethodCall(
     override val methodParams: Array<String>,
     override val returnType: String,
 ) : IMethodCall {
-    PutBitmapCompat(
-        "Landroid/support/v4/media/MediaMetadataCompat\$Builder;",
-        "putBitmap",
-        arrayOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;"),
-        "Landroid/support/v4/media/MediaMetadataCompat\$Builder;",
-    ),
+
     PutBitmapFramework(
         "Landroid/media/MediaMetadata\$Builder;",
         "putBitmap",

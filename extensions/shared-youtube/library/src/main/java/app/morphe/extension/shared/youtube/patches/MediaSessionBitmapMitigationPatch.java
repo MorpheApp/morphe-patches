@@ -2,7 +2,6 @@ package app.morphe.extension.shared.youtube.patches;
 
 import android.graphics.Bitmap;
 import android.media.MediaMetadata;
-import android.support.v4.media.MediaMetadataCompat;
 
 import app.morphe.extension.shared.Logger;
 
@@ -22,16 +21,6 @@ public class MediaSessionBitmapMitigationPatch {
             Logger.printDebug(() -> "MediaSessionBitmapMitigation: Could not copy bitmap: " + e.getMessage());
             return original; // Fallback
         }
-    }
-
-    /**
-     * Injection point
-     */
-    public static MediaMetadataCompat.Builder putBitmap(
-            MediaMetadataCompat.Builder builder,
-            String key,
-            Bitmap bitmap) {
-        return builder.putBitmap(key, copyBitmapIfSafe(bitmap));
     }
 
     /**
