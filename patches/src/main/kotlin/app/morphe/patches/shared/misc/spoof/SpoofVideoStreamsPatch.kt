@@ -20,8 +20,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.rawResourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.ProtobufClassParseByteArrayFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
@@ -215,7 +215,6 @@ internal fun spoofVideoStreamsPatch(
                     "$resultMethodType->$setStreamDataMethodName($videoDetailsClass)V",
             )
 
-            val parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
             val setStreamingDataIndex = CreateStreamingDataFingerprint.instructionMatches.first().index
 
             val playerProtoClass = getInstruction(setStreamingDataIndex + 1)

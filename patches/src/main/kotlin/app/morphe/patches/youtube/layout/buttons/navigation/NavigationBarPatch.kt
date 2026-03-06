@@ -16,8 +16,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.ProtobufClassParseByteArrayFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
+import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -229,8 +231,6 @@ val navigationBarPatch = bytecodePatch(
                 )
             }
         }
-
-        val parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
 
         PivotBarRendererFingerprint.let {
             it.method.apply {
@@ -530,14 +530,6 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        val (immutableMethod, mutableCopyMethod) =
-            with (StreamingDataOuterClassFingerprint.instructionMatches) {
-                Pair(
-                    first().instruction.getReference<MethodReference>()!!,
-                    last().instruction.getReference<MethodReference>()!!
-                )
-            }
-
         TopBarRendererSecondaryFilterFingerprint.let {
             it.method.apply {
                 val protoListIndex = it.instructionMatches.first().index
@@ -549,14 +541,14 @@ val navigationBarPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     protoListIndex,
                     """
-                        invoke-interface { v$protoListRegister }, $immutableMethod
+                        invoke-interface { v$protoListRegister }, ${immutableMethodRef.get()}
                         move-result v$protoListFreeRegister
                         
                         # Check if ProtoList is immutable or not.
                         if-nez v$protoListFreeRegister, :immutable
                         
                         # If mutable, copy the ProtoList.
-                        invoke-static { v$protoListRegister }, $mutableCopyMethod
+                        invoke-static { v$protoListRegister }, ${mutableCopyMethodRef.get()}
                         move-result-object v$protoListRegister
                         
                         # Rearrange buttons.

@@ -32,10 +32,3 @@ internal object BoldIconsFeatureFlagFingerprint : Fingerprint(
         literal(45685201L)
     )
 )
-
-internal object ProtobufClassParseByteArrayFingerprint : Fingerprint(
-    name = "parseFrom",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "L",
-    parameters = listOf("L", "[B")
-)
