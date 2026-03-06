@@ -112,7 +112,15 @@ public final class NavigationBarPatch {
         }
 
         if (SHOW_SETTINGS_BUTTON && button == NavigationButton.SETTINGS) {
-            Utils.runOnMainThread(() -> tabView.setOnClickListener(openSettingsOnClickListener));
+            Utils.runOnMainThread(() -> {
+                tabView.setOnClickListener(v -> {
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openMorpheSettings(v);
+                    } else {
+                        openYouTubeSettings(v);
+                    }
+                });
+            });
             return;
         }
 
@@ -197,7 +205,7 @@ public final class NavigationBarPatch {
 
     // Navigation search and settings button
     private static final boolean SHOW_SEARCH_BUTTON = Settings.SHOW_SEARCH_BUTTON.get();
-    private static final IntegerSetting SEARCH_BUTTON_INDEX = Settings.SEARCH_BUTTON_INDEX;
+    private static final IntegerSetting SHOW_SEARCH_BUTTON_INDEX = Settings.SHOW_SEARCH_BUTTON_INDEX;
 
     private static volatile WeakReference<TextView> searchQueryRef = new WeakReference<>(null);
 
@@ -205,10 +213,10 @@ public final class NavigationBarPatch {
     private static View.OnClickListener openSearchBar = null;
 
     private static final boolean SHOW_SETTINGS_BUTTON = Settings.SHOW_SETTINGS_BUTTON.get();
-    private static final IntegerSetting SETTINGS_BUTTON_INDEX = Settings.SETTINGS_BUTTON_INDEX;
+    private static final IntegerSetting SHOW_SETTINGS_BUTTON_INDEX = Settings.SHOW_SETTINGS_BUTTON_INDEX;
+    private static final boolean SHOW_SETTINGS_BUTTON_TYPE = Settings.SHOW_SETTINGS_BUTTON_TYPE.get();
 
     private static Object pivotBarSettingsRenderer = null;
-    private static final View.OnClickListener openSettingsOnClickListener = NavigationBarPatch::openYouTubeSettings;
 
     private static final View.OnClickListener openSearchBarOnClickListener = v -> {
         if (NavigationBar.isSearchBarActive() && searchQueryRef.get() != null) {
@@ -327,22 +335,16 @@ public final class NavigationBarPatch {
         List<Object> newList = new ArrayList<>(list);
 
         if (addSearch) {
-            int preferredIndex = SEARCH_BUTTON_INDEX.get();
-            if (preferredIndex < 0 || preferredIndex > newList.size()) {
-                Utils.showToastShort(str("morphe_search_button_index_invalid", newList.size()));
-                SEARCH_BUTTON_INDEX.resetToDefault();
-                preferredIndex = SEARCH_BUTTON_INDEX.defaultValue;
-            }
+            int preferredIndex = SHOW_SEARCH_BUTTON_INDEX.get();
+            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
+
             newList.add(preferredIndex, pivotBarRenderer);
         }
 
         if (addSettings) {
-            int preferredIndex = SETTINGS_BUTTON_INDEX.get();
-            if (preferredIndex < 0 || preferredIndex > newList.size()) {
-                Utils.showToastShort(str("morphe_settings_button_index_invalid", newList.size()));
-                SETTINGS_BUTTON_INDEX.resetToDefault();
-                preferredIndex = SETTINGS_BUTTON_INDEX.defaultValue;
-            }
+            int preferredIndex = SHOW_SETTINGS_BUTTON_INDEX.get();
+            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
+
             newList.add(preferredIndex, pivotBarSettingsRenderer);
         }
 
