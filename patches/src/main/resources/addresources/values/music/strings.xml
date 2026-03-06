@@ -84,8 +84,8 @@ Second \"item\" text"</string>
 
     <!-- layout.miniplayer.enableForcedMiniplayer -->
     <string name="morphe_music_enable_forced_miniplayer_title">Enable forced miniplayer</string>
-    <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer is minimized when switching</string>
-    <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer opens fullscreen when switching</string>
+    <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer stays minimized when playback changes</string>
+    <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer expands to fullscreen when playback changes</string>
 
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
