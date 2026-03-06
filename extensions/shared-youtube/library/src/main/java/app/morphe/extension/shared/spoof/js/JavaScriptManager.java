@@ -414,13 +414,13 @@ public final class JavaScriptManager {
                 // Since there is only one obfuscated n-parameter, there is also only one deobfuscated n-parameter
                 List<String> deobfuscatedNParameters = results.first;
                 if (deobfuscatedNParameters.isEmpty()) {
-                    Logger.printException(() -> "Failed to deobfuscate n-parameter");
+                    Logger.printDebug(() -> "Failed to deobfuscate n-parameter");
                     return false;
                 }
                 String deobfuscatedNParameter = deobfuscatedNParameters.get(0);
                 List<String> deobfuscatedSParameters = results.second;
                 if (hasSignatureCipher && deobfuscatedSParameters.isEmpty()) {
-                    Logger.printException(() -> "Failed to deobfuscate signatureCipher");
+                    Logger.printDebug(() -> "Failed to deobfuscate signatureCipher");
                     return false;
                 }
 
