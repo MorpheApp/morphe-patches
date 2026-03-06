@@ -703,9 +703,8 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_show_settings_button_summary_off">Settings button is not shown</string>
     <string name="morphe_show_settings_button_index_title">Settings button index</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
-    <string name="morphe_settings_button_type_title">Settings button action</string>
-    <string name="morphe_settings_button_type_summary_on">Tap to open Morphe settings</string>
-    <string name="morphe_settings_button_type_summary_off">Tap to open YouTube settings</string>
+    <string name="morphe_show_settings_button_type_summary_on">Tap to open Morphe settings</string>
+    <string name="morphe_show_settings_button_type_summary_off">Tap to open YouTube settings</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
     <string name="morphe_swap_create_with_notifications_button_summary_on">Create button is swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary_off">Create button is not swapped with Notifications button</string>
@@ -761,6 +760,14 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
 Tap and hold to open YouTube settings"</string>
     <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+Tap and hold to open Morphe settings"</string>
+    <string name="morphe_replace_toolbar_notification_button_title">Replace Notifications with Settings</string>
+    <string name="morphe_replace_toolbar_notification_button_summary_on">Notifications button is replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_notification_button_summary_off">Notifications button is not replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_notification_button_type_title">Settings button action</string>
+    <string name="morphe_replace_toolbar_notification_button_type_summary_on">"Tap to open Morphe settings
+Tap and hold to open YouTube settings"</string>
+    <string name="morphe_replace_toolbar_notification_button_type_summary_off">"Tap to open YouTube settings
 Tap and hold to open Morphe settings"</string>
     <string name="morphe_rearrange_toolbar_buttons_title">Rearrange the replaced buttons</string>
     <string name="morphe_rearrange_toolbar_buttons_summary_on">Buttons are rearranged</string>

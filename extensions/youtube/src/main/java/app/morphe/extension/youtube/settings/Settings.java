@@ -46,6 +46,7 @@ import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.StillImag
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailOption;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailStillTime;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
+import app.morphe.extension.youtube.patches.NavigationBarPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
@@ -353,6 +354,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting REPLACE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_replace_toolbar_create_button", FALSE, true,
             "morphe_replace_toolbar_create_button_user_dialog_message", new ReplaceToolbarCreateButtonAvailability());
     public static final BooleanSetting REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = new BooleanSetting("morphe_replace_toolbar_create_button_type", FALSE, true, parent(REPLACE_TOOLBAR_CREATE_BUTTON));
+    public static final BooleanSetting REPLACE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("morphe_replace_toolbar_notification_button", FALSE, true, new NavigationBarPatch.ReplaceToolbarNotificationButtonAvailability());
+    public static final BooleanSetting REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE = new BooleanSetting("morphe_replace_toolbar_notification_button_type", FALSE, true, parent(REPLACE_TOOLBAR_NOTIFICATION_BUTTON));
     public static final BooleanSetting REARRANGE_TOOLBAR_BUTTONS = new BooleanSetting("morphe_rearrange_toolbar_buttons", TRUE, true, parent(REPLACE_TOOLBAR_CREATE_BUTTON));
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 

@@ -354,6 +354,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_toolbar_search_button"),
             SwitchPreference("morphe_replace_toolbar_create_button"),
             SwitchPreference("morphe_replace_toolbar_create_button_type"),
+            SwitchPreference("morphe_replace_toolbar_notification_button"),
+            SwitchPreference("morphe_replace_toolbar_notification_button_type"),
             SwitchPreference("morphe_rearrange_toolbar_buttons")
         )
         if (!is_20_31_or_greater) {
@@ -423,9 +425,9 @@ val navigationBarPatch = bytecodePatch(
         }
 
         //
-        // Replace create with settings button
+        // Replace create/notifications with settings button
         //
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setCreateButtonOnClickListener")
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setReplacedButtonOnClickListener")
 
         SettingIntentFingerprint.let {
             it.classDef.apply {
@@ -496,8 +498,8 @@ val navigationBarPatch = bytecodePatch(
                     addInstructions(
                         0,
                         """
-                            # Replace the icon if it is a create button.
-                            invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setCreateButtonIcon(Lcom/google/protobuf/MessageLite;)[B
+                            # Replace the icon if it is a create or notifications button.
+                            invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setReplacedButtonIcon(Lcom/google/protobuf/MessageLite;)[B
                             move-result-object v1
                             if-eqz v1, :ignore
 

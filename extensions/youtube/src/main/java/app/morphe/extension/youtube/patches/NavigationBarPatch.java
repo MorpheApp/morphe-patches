@@ -71,6 +71,22 @@ public final class NavigationBarPatch {
         }
     }
 
+    public static class ReplaceToolbarNotificationButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get()
+                    && !Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON,
+                    Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
+            );
+        }
+    }
+
     private static final Map<NavigationButton, Boolean> shouldHideMap = new EnumMap<>(NavigationButton.class) {
         {
             put(NavigationButton.HOME, Settings.HIDE_HOME_BUTTON.get());
@@ -410,8 +426,11 @@ public final class NavigationBarPatch {
 
     private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
 
-    private static final boolean REARRANGE_TOOLBAR_BUTTONS = REPLACE_TOOLBAR_CREATE_BUTTON
-            && Settings.REARRANGE_TOOLBAR_BUTTONS.get();
+    private static final boolean REPLACE_TOOLBAR_NOTIFICATION_BUTTON = !SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
+            && !HIDE_TOOLBAR_NOTIFICATION_BUTTON && Settings.REPLACE_TOOLBAR_NOTIFICATION_BUTTON.get();
+    private static final boolean REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE.get();
+
+    private static final boolean REARRANGE_TOOLBAR_BUTTONS = REPLACE_TOOLBAR_CREATE_BUTTON && Settings.REARRANGE_TOOLBAR_BUTTONS.get();
 
     /**
      * Interface to use obfuscated methods.
@@ -473,7 +492,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void setSettingsController(@NonNull SettingsController settingsController) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON || SHOW_SETTINGS_BUTTON) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON || SHOW_SETTINGS_BUTTON) {
             settingsControllerRef = new WeakReference<>(settingsController);
         }
     }
@@ -511,14 +530,17 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     @Nullable
-    public static byte[] setCreateButtonIcon(MessageLite messageLite) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON) {
+    public static byte[] setReplacedButtonIcon(MessageLite messageLite) {
+        if (REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON) {
             try {
                 var buttonRenderer = ButtonRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
                 if (buttonRenderer.hasIcon()) {
                     var iconName = buttonRenderer.getIcon().getYtIconType().name();
 
-                    if (Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS)) {
+                    boolean isCreate = REPLACE_TOOLBAR_CREATE_BUTTON && Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS);
+                    boolean isNotification = REPLACE_TOOLBAR_NOTIFICATION_BUTTON && Utils.equalsAny(iconName, NOTIFICATION_BUTTON_ENUMS);
+
+                    if (isCreate || isNotification) {
                         var newIcon = Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build();
 
                         // Remove accessibility labels and onclick listeners.
@@ -544,10 +566,11 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void setCreateButtonOnClickListener(String enumName, View parentView, ImageView imageView) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON && SETTING_BUTTON_ENUM_NAME.equals(enumName)) {
+    public static void setReplacedButtonOnClickListener(String enumName, View parentView, ImageView imageView) {
+        if ((REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON) && SETTING_BUTTON_ENUM_NAME.equals(enumName)) {
             Utils.runOnMainThreadDelayed(() -> {
-                if (REPLACE_TOOLBAR_CREATE_BUTTON_TYPE) {
+                boolean type = REPLACE_TOOLBAR_CREATE_BUTTON ? REPLACE_TOOLBAR_CREATE_BUTTON_TYPE : REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE;
+                if (type) {
                     imageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
                     imageView.setOnLongClickListener(button -> {
                         openYouTubeSettings(button);
