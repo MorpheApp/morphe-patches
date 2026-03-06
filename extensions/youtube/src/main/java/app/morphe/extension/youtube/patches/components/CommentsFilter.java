@@ -1,11 +1,25 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
+import androidx.annotation.NonNull;
+
+import java.util.List;
+
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
-final class CommentsFilter extends Filter {
+public class CommentsFilter extends Filter {
 
+    private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
 
@@ -97,5 +111,26 @@ final class CommentsFilter extends Filter {
         }
 
         return true;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void sanitizeCommentsCategoryBar(@NonNull String identifier,
+                                                   @NonNull List<Object> treeNodeResultList) {
+        try {
+            if (Settings.SANITIZE_COMMENTS_CATEGORY_BAR.get()
+                    && identifier.startsWith(CHIP_BAR_PATH_PREFIX)
+                    // Playlist sort button uses same components and must only filter if the player is opened.
+                    && PlayerType.getCurrent().isMaximizedOrFullscreen()
+            ) {
+                int treeNodeResultListSize = treeNodeResultList.size();
+                if (treeNodeResultListSize > 2) {
+                    treeNodeResultList.subList(1, treeNodeResultListSize - 1).clear();
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to sanitize comment category bar", ex);
+        }
     }
 }
