@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Пользовательский</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Экспериментальное оповещение! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Экспериментальное оповещение 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Вы используете экспериментальную версию программы⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Ожидайте странного поведения программы или необнаруженных ошибок, пока мы усовершенствуем исправление для этой версии программы.
@@ -95,6 +95,15 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не удается войти в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из войти Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недействительный токен входа в VR, попробуйте войти в VR еще раз</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_title">Принудительно включить хэширование JavaScript для плеера</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_summary_on">"Обновление хэша JavaScript плеера отключено
+
+• Требуется действительный хэш JavaScript плеера
+• Воспроизведение не удастся, если хэш JavaScript плеера отозван GVS"</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_summary_off">Обновление хэша JavaScript плеера включено</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_user_dialog_message">Хэши JavaScript плеера действительны приблизительно в течение месяца, и устаревшие хэши могут быть отозваны GVS.</string>
+  <string name="morphe_spoof_video_streams_js_hash_title">Хэш JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_js_hash_summary">Введите допустимый хэш JavaScript плеера</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Отключить протокол QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Протокол QUIC отключен</string>

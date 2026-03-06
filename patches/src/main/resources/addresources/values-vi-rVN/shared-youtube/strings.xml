@@ -29,7 +29,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Morphe tỉ lệ</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Cảnh báo thử nghiệm! ⚠️</string>
   <string name="morphe_experimental_app_version_dialog_message">"Bạn đang dùng phiên bản thử nghiệm là &lt;b&gt;%1$s&lt;/b&gt; ⚠️
 &lt;br/&gt;&lt;br/&gt;
 🔧 Ứng dụng có thể hoạt động không ổn định hoặc gặp lỗi không xác định, vì các bản vá chưa được tinh chỉnh cho phiên bản này.
@@ -95,6 +94,15 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_title">Buộc người chơi JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_summary_on">"Cập nhật hash JavaScript của trình phát bị tắt
+
+• Yêu cầu hash JavaScript của trình phát hợp lệ
+• Phát lại sẽ thất bại nếu hash JavaScript của trình phát bị thu hồi bởi GVS"</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_summary_off">Cập nhật hash JavaScript của trình phát bị bật</string>
+  <string name="morphe_spoof_video_streams_force_js_hash_user_dialog_message">Hash JavaScript của trình phát có giá trị khoảng một tháng, và các hash lỗi thời có thể bị GVS thu hồi.</string>
+  <string name="morphe_spoof_video_streams_js_hash_title">Băm JavaScript của người chơi</string>
+  <string name="morphe_spoof_video_streams_js_hash_summary">Nhập một băm JavaScript của người chơi hợp lệ</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Giao thức QUIC đã tắt</string>

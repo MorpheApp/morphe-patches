@@ -38,7 +38,6 @@ Second \"item\" text"</string>
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
   <string name="morphe_channel_screen_title">Kanāla lapa</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
@@ -131,6 +130,7 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->

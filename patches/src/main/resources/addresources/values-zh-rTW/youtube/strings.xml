@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">隱藏快速操作</string>
   <string name="morphe_hide_quick_actions_summary_on">已於全螢幕中隱藏快速操作</string>
   <string name="morphe_hide_quick_actions_summary_off">已於全螢幕中顯示快速操作</string>
-  <string name="morphe_hide_related_videos_title">隱藏相關影片</string>
-  <string name="morphe_hide_related_videos_summary_on">已隱藏快速操作中的相關影片</string>
-  <string name="morphe_hide_related_videos_summary_off">已顯示快速操作中的相關影片</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">隱藏相關影片的快速動作</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">已隱藏快速操作中的相關影片</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">已顯示快速操作中的相關影片</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">隱藏訂閱者規範</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">已隱藏《訂閱者社群規範》</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">已顯示《訂閱者社群規範》</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">隱藏「社群」按鈕</string>
   <string name="morphe_hide_community_button_summary_on">已隱藏「社群」按鈕</string>
   <string name="morphe_hide_community_button_summary_off">已顯示「社群」按鈕</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">隱藏「為你推薦」區塊</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">已隱藏「為您推薦」區塊</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">已顯示「為您推薦」區塊</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">隱藏「加入」按鈕</string>
   <string name="morphe_hide_join_button_summary_on">已隱藏「加入」按鈕</string>
@@ -658,18 +654,30 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">隱藏「通知」</string>
   <string name="morphe_hide_notifications_button_summary_on">已隱藏「通知」按鈕</string>
   <string name="morphe_hide_notifications_button_summary_off">已顯示「通知」按鈕</string>
-  <string name="morphe_show_search_button_title">顯示搜尋按鈕</string>
+  <string name="morphe_show_search_button_title">顯示搜尋</string>
   <string name="morphe_show_search_button_summary_on">已顯示「搜尋」按鈕</string>
   <string name="morphe_show_search_button_summary_off">未顯示搜尋按鈕</string>
   <string name="morphe_search_button_index_title">搜尋按鈕索引</string>
   <string name="morphe_search_button_index_invalid">搜尋按鈕索引必須小於 %s</string>
+  <string name="morphe_show_settings_button_title">顯示設定</string>
+  <string name="morphe_show_settings_button_summary_on">設定按鈕已顯示</string>
+  <string name="morphe_show_settings_button_summary_off">設定按鈕未顯示</string>
+  <string name="morphe_settings_button_index_title">Settings button index</string>
+  <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">「建立」按鈕已與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">「建立」按鈕未與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">如果變更這項設定沒有生效，請嘗試切換到無痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">已隱藏「標籤」</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">已顯示「標籤」</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Navigation button labels are hidden</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Navigation button labels are shown</string>
+  <string name="morphe_hide_navigation_bar_title">隱藏導覽列</string>
+  <string name="morphe_hide_navigation_bar_summary_on">已隱藏導覽列</string>
+  <string name="morphe_hide_navigation_bar_summary_off">已顯示導覽列</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
+
+To access Settings:
+Open any video → Open Quality menu → Tap 'Settings &gt; Video Quality Preferences' at the bottom."</string>
   <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">導航按鈕間距離狹窄</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">導航按鈕間距離正常</string>
@@ -690,18 +698,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">深色模式導覽列為不透明或半透明</string>
   <string name="morphe_toolbar_screen_title">工具列</string>
   <string name="morphe_toolbar_screen_summary">隱藏或變更工具列元件</string>
-  <string name="morphe_hide_toolbar_create_button_title">隱藏「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_title">隱藏建立</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">已隱藏「建立」按鈕</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">已顯示「建立」按鈕</string>
-  <string name="morphe_hide_toolbar_notification_button_title">隱藏「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Microphone button is hidden</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Microphone button is shown</string>
+  <string name="morphe_hide_toolbar_notification_button_title">隱藏「通知」</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">已隱藏「通知」按鈕</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">已顯示「通知」按鈕</string>
-  <string name="morphe_hide_toolbar_search_button_title">隱藏「搜尋」按鈕</string>
+  <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">已隱藏「搜尋」按鈕</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">已顯示「搜尋」按鈕</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">隱藏「搜尋」按鈕</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">已隱藏「搜尋」按鈕</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">已顯示「搜尋」按鈕</string>
+  <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in You tab is also overridden.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
+Tap and hold to open YouTube settings"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+Tap and hold to open Morphe settings"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Rearrange the replaced buttons</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Buttons are rearranged</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Buttons are not rearranged</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
   <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單</string>
@@ -965,10 +985,14 @@ Second \"item\" text"</string>
 
 您可以在YouTube中更改此設定：
 設定 → 播放（或自動播放） → 自動播放下一影片"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">隱藏相關影片</string>
+  <string name="morphe_hide_player_related_videos_summary_on">已隱藏相關影片</string>
+  <string name="morphe_hide_player_related_videos_summary_off">相關影片</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">已隱藏全螢幕中的相關影片覆蓋層</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">已顯示全螢幕中的相關影片覆蓋層</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">隱藏相關影片覆蓋層</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">已隱藏全螢幕中的相關影片覆蓋層</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">已顯示全螢幕中的相關影片覆蓋層</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">隱藏影片時間戳記</string>
   <string name="morphe_hide_timestamp_summary_on">已隱藏時間戳記</string>

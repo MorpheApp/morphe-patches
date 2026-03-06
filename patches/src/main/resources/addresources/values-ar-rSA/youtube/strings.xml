@@ -91,7 +91,7 @@ Second \"item\" text"</string>
 • استكشاف المزيد من القنوات
 • الأكثر صلة
 • التسوق
-• أريد أن اشاهدها مرة أخرى"</string>
+• أريد أن أشاهدها مرة أخرى"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">يتم عرض الأرفف الأفقية</string>
   <string name="morphe_hide_image_shelf_title">إخفاء رف الصور</string>
   <string name="morphe_hide_image_shelf_summary_on">تم إخفاء رف الصور في نتائج البحث</string>
@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">إخفاء الإجراءات السريعة</string>
   <string name="morphe_hide_quick_actions_summary_on">تم إخفاء الإجراءات السريعة في ملء الشاشة</string>
   <string name="morphe_hide_quick_actions_summary_off">يتم عرض الإجراءات السريعة في ملء الشاشة</string>
-  <string name="morphe_hide_related_videos_title">إخفاء الفيديوهات ذات الصلة</string>
-  <string name="morphe_hide_related_videos_summary_on">تم إخفاء الفيديوهات ذات الصلة في الإجراءات السريعة</string>
-  <string name="morphe_hide_related_videos_summary_off">يتم عرض الفيديوهات ذات الصلة في الإجراءات السريعة</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">إخفاء الإجراءات السريعة المرتبطة بالفيديوهات</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">تم إخفاء الفيديوهات ذات الصلة في الإجراءات السريعة</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">يتم عرض الفيديوهات ذات الصلة في الإجراءات السريعة</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">إخفاء إرشادات المشتركين</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">تم إخفاء إرشادات مجتمع المشتركين</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">يتم عرض إرشادات مجتمع المشتركين</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">إخفاء زر المنتدى</string>
   <string name="morphe_hide_community_button_summary_on">تم إخفاء زر المنتدى</string>
   <string name="morphe_hide_community_button_summary_off">يتم عرض زر المنتدى</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">إخفاء رف \'مقترحات لك\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">تم إخفاء رف مقترح لك</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">يتم عرض رف مقترح لك</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_join_button_summary_on">تم إخفاء زر الانضمام</string>
@@ -658,18 +654,30 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">إخفاء الإشعارات</string>
   <string name="morphe_hide_notifications_button_summary_on">تم إخفاء زر الإشعارات</string>
   <string name="morphe_hide_notifications_button_summary_off">يتم عرض زر الإشعارات</string>
-  <string name="morphe_show_search_button_title">عرض زر البحث</string>
+  <string name="morphe_show_search_button_title">عرض البحث</string>
   <string name="morphe_show_search_button_summary_on">يتم عرض زر البحث</string>
   <string name="morphe_show_search_button_summary_off">لا يتم عرض زر البحث</string>
   <string name="morphe_search_button_index_title">ترتيب زر البحث</string>
   <string name="morphe_search_button_index_invalid">يجب أن يكون مؤشر زر البحث أقل من %s</string>
+  <string name="morphe_show_settings_button_title">عرض الإعدادات</string>
+  <string name="morphe_show_settings_button_summary_on">يتم عرض زر الإعدادات</string>
+  <string name="morphe_show_settings_button_summary_off">لا يتم عرض زر الإعدادات</string>
+  <string name="morphe_settings_button_index_title">ترتيب زر البحث</string>
+  <string name="morphe_settings_button_index_invalid">يجب أن يكون مؤشر زر البحث أقل من %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">تبديل الإنشاء بالإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">تم تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">لا يتم تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">إذا لم يتغير هذا الإعداد، جرِّب التبديل إلى وضع التصفّح المتخفي.</string>
   <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">تم إخفاء التسميات</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">يتم عرض التسميات</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">تم إخفاء تسميات أزرار التنقل</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">يتم عرض تسميات زر التنقل</string>
+  <string name="morphe_hide_navigation_bar_title">إخفاء شريط التنقل</string>
+  <string name="morphe_hide_navigation_bar_summary_on">تم إخفاء شريط التنقل</string>
+  <string name="morphe_hide_navigation_bar_summary_off">يتم عرض شريط التنقل</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"هذا يخفي شريط التنقل بالكامل بما في ذلك علامة أنت.
+
+للوصول إلى الإعدادات:
+افتح أي فيديو ← افتح قائمة الجودة ← اضغط على 'الإعدادات &gt; تفضيلات جودة الفيديو' في الأسفل."</string>
   <string name="morphe_narrow_navigation_buttons_title">تمكين أزرار التنقل الضيقة</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">التباعد بين أزرار التنقل ضيق</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">التباعد بين أزرار التنقل عادي</string>
@@ -690,18 +698,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">شريط التنقل في الوضع الداكن معتم او شفاف</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">إخفاء أو تغيير مكونات شريط الأدوات</string>
-  <string name="morphe_hide_toolbar_create_button_title">إخفاء زر الإنشاء</string>
+  <string name="morphe_hide_toolbar_create_button_title">إخفاء إنشاء</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">تم إخفاء زر الإنشاء</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">يتم عرض زر الإنشاء</string>
-  <string name="morphe_hide_toolbar_notification_button_title">إخفاء زر الإشعارات</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">إخفاء الميكروفون</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">تم إخفاء زر الميكروفون</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">يتم عرض زر الميكروفون</string>
+  <string name="morphe_hide_toolbar_notification_button_title">إخفاء الإشعارات</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">تم إخفاء زر الإشعارات</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">يتم عرض زر الإشعارات</string>
-  <string name="morphe_hide_toolbar_search_button_title">إخفاء زر البحث</string>
+  <string name="morphe_hide_toolbar_search_button_title">إخفاء البحث</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">تم إخفاء زر البحث</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">يتم عرض زر البحث</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">إخفاء زر البحث الصوتي</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">تم إخفاء زر البحث الصوتي</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">يتم عرض زر البحث الصوتي</string>
+  <string name="morphe_replace_toolbar_create_button_title">استبدال إنشاء بـ الإعدادات</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">يتم تبديل زر إنشاء بزر الإعدادات</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">لا يتم تبديل زر إنشاء بزر الإعدادات</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">يتجاوز سلوك النقر على زر الإعدادات في علامة التبويب أنت أيضًا.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">إجراء زر الإعدادات</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"اضغط لفتح إعدادات Morphe
+اضغط مع الاستمرار لفتح إعدادات YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"اضغط لفتح إعدادات YouTube
+اضغط مع الاستمرار لفتح إعدادات Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">إعادة ترتيب الأزرار المستبدلة</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">تم إعادة ترتيب الأزرار</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">لم تتم إعادة ترتيب الأزرار</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
   <string name="morphe_hide_player_flyout_summary">إخفاء أو عرض عناصر قائمة المشغل المنبثقة</string>
@@ -965,10 +985,14 @@ Second \"item\" text"</string>
 
 يمكن تغيير 'تشغيل الفيديو التالي تلقائيًا' في إعدادات YouTube:
 الإعدادات ← التشغيل (أو التشغيل التلقائي) ← تشغيل الفيديو التالي تلقائيًا"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">إخفاء الفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_player_related_videos_summary_on">تم إخفاء الفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_player_related_videos_summary_off">يتم عرض الفيديوهات ذات الصلة</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">إخفاء واجهة الفيديوهات ذات الصلة</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">تم إخفاء واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">يتم عرض واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">إخفاء واجهة الفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">تم إخفاء واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">يتم عرض واجهة الفيديوهات ذات الصلة في ملء الشاشة</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">إخفاء الطابع الزمني للفيديو</string>
   <string name="morphe_hide_timestamp_summary_on">تم إخفاء الطابع الزمني</string>

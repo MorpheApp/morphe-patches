@@ -24,7 +24,7 @@ public class ExperimentalAppNoticePatch {
     // Backup strings for Reddit. Remove this when Reddit gets resource patching or localized strings.
     private static final StringKeyLookup strings = new StringKeyLookup(
             Map.of("morphe_experimental_app_version_dialog_title",
-                    "🚨 Experimental Alert! 🚨",
+                    "🚨 Experimental Alert 🚨",
 
                     "morphe_experimental_app_version_dialog_message",
                     """

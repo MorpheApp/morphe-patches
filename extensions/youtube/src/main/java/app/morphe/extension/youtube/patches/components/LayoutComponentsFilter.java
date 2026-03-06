@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
@@ -7,7 +15,6 @@ import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -16,16 +23,12 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
-import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -34,10 +37,6 @@ import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
-    private static final StringTrieSearch mixPlaylistsContextExceptions = new StringTrieSearch(
-            "V.ED", // Playlist browseId.
-            "java.lang.ref.WeakReference"
-    );
     private static final ByteArrayFilterGroup mixPlaylistsBufferExceptions = new ByteArrayFilterGroup(
             null,
             "cell_description_body",
@@ -81,11 +80,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
-    private final StringFilterGroup horizontalShelves;
-    private final ByteArrayFilterGroup playablesBuffer;
-    private final ByteArrayFilterGroup ticketShelfBuffer;
-    private final ByteArrayFilterGroup playerShoppingShelfBuffer;
-    private final ByteTrieSearch descriptionSearch;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -245,7 +239,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         final var relatedVideos = new StringFilterGroup(
-                Settings.HIDE_RELATED_VIDEOS,
+                Settings.HIDE_QUICK_ACTIONS_RELATED_VIDEOS,
                 "fullscreen_related_videos"
         );
 
@@ -253,12 +247,6 @@ public final class LayoutComponentsFilter extends Filter {
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
-        );
-
-        // Playable horizontal shelf header.
-        playablesBuffer = new ByteArrayFilterGroup(
-                null,
-                "FEmini_app_destination"
         );
 
         final var quickActions = new StringFilterGroup(
@@ -303,7 +291,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         final var forYouShelf = new StringFilterGroup(
-                Settings.HIDE_FOR_YOU_SHELF,
+                Settings.HIDE_HORIZONTAL_SHELVES,
                 "mixed_content_shelf"
         );
 
@@ -347,51 +335,6 @@ public final class LayoutComponentsFilter extends Filter {
                 )
         );
 
-        horizontalShelves = new StringFilterGroup(
-                null, // Setting is checked in isFiltered()
-                "horizontal_video_shelf.e",
-                "horizontal_shelf.e",
-                "horizontal_shelf_inline.e",
-                "horizontal_tile_shelf.e"
-        );
-
-        ticketShelfBuffer = new ByteArrayFilterGroup(
-                null,
-                "ticket_item.e"
-        );
-
-        playerShoppingShelfBuffer = new ByteArrayFilterGroup(
-                null,
-                "shopping_item_card_list"
-        );
-
-        // Work around for unique situation where filtering is based on the setting,
-        // but it must not fall over to other filters if the setting is _not_ enabled.
-        // This is only needed for the horizontal shelf that is used so extensively everywhere.
-        descriptionSearch = new ByteTrieSearch();
-        List.of(
-                new Pair<>(Settings.HIDE_FEATURED_PLACES_SECTION, "yt_fill_star"),
-                new Pair<>(Settings.HIDE_FEATURED_PLACES_SECTION, "yt_fill_experimental_star"),
-                new Pair<>(Settings.HIDE_GAMING_SECTION, "yt_outline_gaming"),
-                new Pair<>(Settings.HIDE_GAMING_SECTION, "yt_outline_experimental_gaming"),
-                new Pair<>(Settings.HIDE_MUSIC_SECTION, "yt_outline_audio"),
-                new Pair<>(Settings.HIDE_MUSIC_SECTION, "yt_outline_experimental_audio"),
-                new Pair<>(Settings.HIDE_QUIZZES_SECTION, "post_base_wrapper_slim"),
-                // May no longer work on v20.31+, even though the component is still there.
-                new Pair<>(Settings.HIDE_ATTRIBUTES_SECTION, "cell_video_attribute")
-        ).forEach(pair -> {
-                    BooleanSetting setting = pair.first;
-                    descriptionSearch.addPattern(pair.second.getBytes(StandardCharsets.UTF_8),
-                            (textSearched, matchedStartIndex, matchedLength, callbackParameter) -> {
-                                //noinspection unchecked
-                                AtomicReference<Boolean> hide = (AtomicReference<Boolean>) callbackParameter;
-                                hide.set(setting.get());
-                                return true;
-                            }
-                    );
-                }
-        );
-
         addPathCallbacks(
                 artistCard,
                 audioTrackButton,
@@ -408,7 +351,6 @@ public final class LayoutComponentsFilter extends Filter {
                 emergencyBox,
                 expandableMetadata,
                 forYouShelf,
-                horizontalShelves,
                 imageShelf,
                 infoPanel,
                 latestPosts,
@@ -470,45 +412,6 @@ public final class LayoutComponentsFilter extends Filter {
                     && joinMembershipButton.check(buffer).isFiltered();
         }
 
-        // Horizontal shelves are used everywhere in the app. And to prevent the generic "hide shelves"
-        // from incorrectly hiding other stuff that has its own hide filters,
-        // the more specific shelf filters must check first _and_ they must halt falling over
-        // to other filters if the buffer matches but the setting is off.
-        if (matchedGroup == horizontalShelves) {
-            if (contentIndex != 0) return false;
-
-            AtomicReference<Boolean> descriptionFilterResult = new AtomicReference<>(null);
-            if (descriptionSearch.matches(buffer, descriptionFilterResult)) {
-                return descriptionFilterResult.get();
-            }
-
-            // Check if others are off before searching.
-            final boolean hideShelves = Settings.HIDE_HORIZONTAL_SHELVES.get();
-            final boolean hideTickets = Settings.HIDE_TICKET_SHELF.get();
-            final boolean hidePlayables = Settings.HIDE_PLAYABLES.get();
-            final boolean hidePlayerShoppingShelf = Settings.HIDE_CREATOR_STORE_SHELF.get();
-            if (!hideShelves && !hideTickets && !hidePlayables && !hidePlayerShoppingShelf) return false;
-
-            if (ticketShelfBuffer.check(buffer).isFiltered()) return hideTickets;
-            if (playablesBuffer.check(buffer).isFiltered()) return hidePlayables;
-            if (playerShoppingShelfBuffer.check(buffer).isFiltered()) return hidePlayerShoppingShelf;
-
-            // 20.31+ when exiting fullscreen after watching for a while or when resuming the app,
-            // then sometimes the buffer isn't correct and the player shopping shelf is shown.
-            // If filtering reaches this point then there are no more shelves that could be in the player.
-            // If shopping shelves are set to hidden and the player is active, then assume
-            // it's the shopping shelf.
-            if (hidePlayerShoppingShelf) {
-                PlayerType type = PlayerType.getCurrent();
-                if (type == PlayerType.WATCH_WHILE_MAXIMIZED || type == PlayerType.WATCH_WHILE_FULLSCREEN
-                        || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN) {
-                    return true;
-                }
-            }
-
-            return hideShelves && hideShelves();
-        }
-
         if (matchedGroup == chipBar) {
             return contentIndex == 0 && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
         }
@@ -520,7 +423,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      * Called from a different place then the other filters.
      */
-    public static boolean filterMixPlaylists(Object conversionContext, @Nullable byte[] buffer) {
+    public static boolean filterMixPlaylists(@Nullable byte[] buffer) {
         // Edit: This hook may no longer be needed, and mix playlist filtering
         //       might be possible using the existing litho filters.
         try {
@@ -535,13 +438,7 @@ public final class LayoutComponentsFilter extends Filter {
 
             if (mixPlaylists.check(buffer).isFiltered()
                     // Prevent hiding the description of some videos accidentally.
-                    && !mixPlaylistsBufferExceptions.check(buffer).isFiltered()
-                    // Prevent playlist items being hidden, if a mix playlist is present in it.
-                    // Check last since it requires creating a context string.
-                    //
-                    // FIXME: The conversion context passed in does not always generate a valid toString.
-                    //        This string check may no longer be needed, or the patch may be broken.
-                    && !mixPlaylistsContextExceptions.matches(conversionContext.toString())) {
+                    && !mixPlaylistsBufferExceptions.check(buffer).isFiltered()) {
                 Logger.printDebug(() -> "Filtered mix playlist");
                 return true;
             }
@@ -739,31 +636,6 @@ public final class LayoutComponentsFilter extends Filter {
         return Settings.HIDE_SUBSCRIBED_CHANNELS_BAR.get()
                 ? 0
                 : original;
-    }
-
-    private static boolean hideShelves() {
-        // Horizontal shelves are used for music/game links in video descriptions,
-        // such as https://youtube.com/watch?v=W8kI1na3S2M
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            return false;
-        }
-
-        // Must check search bar after player type, since search results
-        // can be in the background behind an open player.
-        if (NavigationBar.isSearchBarActive()) {
-            return true;
-        }
-
-        // Do not hide if the navigation back button is visible,
-        // otherwise the content shelves in the explore/music/courses pages are hidden.
-        if (NavigationBar.isBackButtonVisible()) {
-            return false;
-        }
-
-        // Check navigation button last.
-        // Only filter if the library tab is not selected.
-        // This check is important as the shelf layout is used for the library tab playlists.
-        return NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
     }
 
     /**

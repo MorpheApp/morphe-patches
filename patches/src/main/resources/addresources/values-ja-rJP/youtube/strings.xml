@@ -87,12 +87,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"横スクロール欄は表示されません
 例:
-・ニュース速報
-・続きを見る
-・他のチャンネルを探す
-・関連が強い
-・ショッピング
-・もう一度見る"</string>
+• ニュース速報
+• 続きを見る
+• 他のチャンネルを探す
+• おすすめ
+• 関連が強い
+• ショッピング
+• もう一度見る"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">横スクロール欄は表示されます</string>
   <string name="morphe_hide_image_shelf_title">画像欄を非表示</string>
   <string name="morphe_hide_image_shelf_summary_on">検索結果の画像欄は表示されません</string>
@@ -178,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">クイック アクションを非表示</string>
   <string name="morphe_hide_quick_actions_summary_on">全画面表示モードのクイック アクションは表示されません</string>
   <string name="morphe_hide_quick_actions_summary_off">全画面表示モードのクイック アクションは表示されます</string>
-  <string name="morphe_hide_related_videos_title">関連動画を非表示</string>
-  <string name="morphe_hide_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
-  <string name="morphe_hide_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">クイック アクション内の関連動画を非表示</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">クイック アクション内の関連動画 (その他の動画) は表示されません</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">クイック アクション内の関連動画 (その他の動画) は表示されます</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">チャンネル登録者のガイドラインを非表示</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">チャンネル登録者のコミュニティ ガイドラインは表示されません</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">チャンネル登録者のコミュニティ ガイドラインは表示されます</string>
@@ -282,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">コミュニティ ボタンを非表示</string>
   <string name="morphe_hide_community_button_summary_on">コミュニティ ボタンは表示されません</string>
   <string name="morphe_hide_community_button_summary_off">コミュニティ ボタンは表示されます</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">「おすすめ」欄を非表示</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">「おすすめ」欄は表示されません</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">「おすすめ」欄は表示されます</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">「メンバーになる」ボタンを非表示</string>
   <string name="morphe_hide_join_button_summary_on">「メンバーになる」ボタンは表示されません</string>
@@ -659,11 +656,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">「通知」を非表示</string>
   <string name="morphe_hide_notifications_button_summary_on">通知ボタンは表示されません</string>
   <string name="morphe_hide_notifications_button_summary_off">通知ボタンは表示されます</string>
-  <string name="morphe_show_search_button_title">検索ボタンを表示</string>
+  <string name="morphe_show_search_button_title">検索を表示</string>
   <string name="morphe_show_search_button_summary_on">検索ボタンは表示されます</string>
   <string name="morphe_show_search_button_summary_off">検索ボタンは表示されません</string>
   <string name="morphe_search_button_index_title">検索ボタンの表示位置</string>
   <string name="morphe_search_button_index_invalid">検索ボタンの表示位置は %s 未満でなければなりません</string>
+  <string name="morphe_show_settings_button_title">設定を表示</string>
+  <string name="morphe_show_settings_button_summary_on">設定ボタンが表示されます</string>
+  <string name="morphe_show_settings_button_summary_off">設定ボタンは表示されません</string>
+  <string name="morphe_settings_button_index_title">Settings button index</string>
+  <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">「作成」と「通知」を入れ替え</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">作成ボタンと通知ボタンが入れ替わります</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">作成ボタンと通知ボタンは入れ替わりません</string>
@@ -671,12 +673,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">ナビゲーション ボタンはアイコンのみで表示されます</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">ナビゲーション ボタンはアイコンと文字で表示されます</string>
+  <string name="morphe_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
+  <string name="morphe_hide_navigation_bar_summary_on">ナビゲーション バーは表示されません</string>
+  <string name="morphe_hide_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
+
+To access Settings:
+Open any video → Open Quality menu → Tap 'Settings &gt; Video Quality Preferences' at the bottom."</string>
   <string name="morphe_narrow_navigation_buttons_title">ナビゲーション ボタンの間を詰める</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">ナビゲーション ボタンは狭い間隔で表示されます</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">ナビゲーション ボタンは通常の間隔で表示されます</string>
-  <string name="morphe_navigation_bar_animations_title">ナビゲーションバーのアニメーションを有効にする</string>
-  <string name="morphe_navigation_bar_animations_summary_on">ナビゲーション遷移がアニメーション表示されます</string>
-  <string name="morphe_navigation_bar_animations_summary_off">ナビゲーション遷移はアニメーション表示されません</string>
+  <string name="morphe_navigation_bar_animations_title">ナビゲーション バーのアニメーションを有効化</string>
+  <string name="morphe_navigation_bar_animations_summary_on">ナビゲーションの遷移がアニメーション表示されます</string>
+  <string name="morphe_navigation_bar_animations_summary_off">ナビゲーションの遷移はアニメーション表示されません</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
@@ -691,18 +700,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">ダークモードではナビゲーション バーが状況に応じて透けます</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">画面上部に表示されるツールバーのコンポーネントを変更または非表示にします</string>
-  <string name="morphe_hide_toolbar_create_button_title">作成ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_create_button_title">「作成」を非表示</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">作成ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">作成ボタンは表示されます</string>
-  <string name="morphe_hide_toolbar_notification_button_title">通知ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Microphone button is hidden</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Microphone button is shown</string>
+  <string name="morphe_hide_toolbar_notification_button_title">「通知」を非表示</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">通知ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">通知ボタンは表示されます</string>
-  <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">検索ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">検索ボタンは表示されます</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">音声検索ボタンを非表示</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">音声検索ボタンは表示されません</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">音声検索ボタンは表示されます</string>
+  <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in You tab is also overridden.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open You tab.
+Tap and hold to open YouTube settings"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+Tap and hold to open Morphe settings"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Rearrange the replaced buttons</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Buttons are rearranged</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Buttons are not rearranged</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
   <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューの項目を表示または非表示にします</string>
@@ -966,10 +987,14 @@ Second \"item\" text"</string>
 
 [次の動画を自動再生] は、YouTube の設定で変更できます:
 [設定] > [再生] (または [自動再生]) > [次の動画を自動再生]"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">関連動画を非表示</string>
+  <string name="morphe_hide_player_related_videos_summary_on">関連動画は表示されません</string>
+  <string name="morphe_hide_player_related_videos_summary_off">関連動画は表示されます</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">全画面表示モードの関連動画オーバーレイは表示されます</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">関連動画オーバーレイを非表示</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">全画面表示モードの関連動画オーバーレイは表示されません</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">全画面表示モードの関連動画オーバーレイは表示されます</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">動画のタイムスタンプを非表示</string>
   <string name="morphe_hide_timestamp_summary_on">動画の現在位置を示すタイムスタンプは表示されません</string>

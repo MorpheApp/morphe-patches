@@ -40,19 +40,6 @@ internal object ActionBarSearchResultsFingerprint : Fingerprint(
     )
 )
 
-internal object ConversionContextFingerprintToString : Fingerprint(
-    name = "toString",
-    parameters = listOf(),
-    strings = listOf(
-        "ConversionContext{", // Partial string match.
-        ", widthConstraint=",
-        ", heightConstraint=",
-        ", templateLoggerFactory=",
-        ", rootDisposableContainer=",
-        ", identifierProperty="
-    )
-)
-
 internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Z",

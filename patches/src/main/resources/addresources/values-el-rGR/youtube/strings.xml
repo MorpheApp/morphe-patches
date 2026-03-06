@@ -179,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Γρήγορες ενέργειες</string>
   <string name="morphe_hide_quick_actions_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_quick_actions_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_related_videos_title">Περισσότερα βίντεο στις γρήγορες ενέργειες</string>
-  <string name="morphe_hide_related_videos_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_related_videos_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Γραμμή φίλτρων στα σχετικά βίντεο</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Κρυμμένα</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Εμφανίζονται</string>
@@ -283,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Κρύψε Κουμπί Κοινότητας</string>
   <string name="morphe_hide_community_button_summary_on">Το κουμπί Κοινότητας είναι κρυμμένο</string>
   <string name="morphe_hide_community_button_summary_off">Το κουμπί Κοινότητας εμφανίζεται</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ενότητα «Για εσάς» στη σελίδα καναλιού</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Κρυμμένη</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Εμφανίζεται</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Κουμπί «Συμμετοχή»</string>
   <string name="morphe_hide_join_button_summary_on">Κρυμμένο</string>
@@ -660,18 +656,30 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Κουμπί «Ειδοποιήσεις»</string>
   <string name="morphe_hide_notifications_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_notifications_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_show_search_button_title">Εμφάνιση κουμπιού αναζήτησης</string>
+  <string name="morphe_show_search_button_title">Εμφάνιση Αναζήτησης</string>
   <string name="morphe_show_search_button_summary_on">Εμφανίζεται</string>
   <string name="morphe_show_search_button_summary_off">Δεν εμφανίζεται κουμπί αναζήτησης</string>
   <string name="morphe_search_button_index_title">Κουμπί αναζήτησης</string>
   <string name="morphe_search_button_index_invalid">Ο δείκτης του κουμπιού αναζήτησης πρέπει να είναι μικρότερος από %s</string>
+  <string name="morphe_show_settings_button_title">Εμφάνιση Ρυθμίσεων</string>
+  <string name="morphe_show_settings_button_summary_on">Εμφανίζεται το κουμπί Ρυθμίσεων</string>
+  <string name="morphe_show_settings_button_summary_off">Δεν εμφανίζεται το κουμπί Ρυθμίσεων</string>
+  <string name="morphe_settings_button_index_title">Settings button index</string>
+  <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Εναλλαγή κουμπιού «Δημιουργία» με κουμπί «Ειδοποιήσεις»</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Το κουμπί «Δημιουργία» έχει αλλάξει με το κουμπί «Ειδοποιήσεις»</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Το κουμπί «Δημιουργία» δεν έχει αλλάξει με το κουμπί «Ειδοποιήσεις»</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Εάν η αλλαγή αυτής της ρύθμισης δεν εφαρμόζεται, δοκιμάστε να μεταβείτε σε λειτουργία Incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Navigation button labels are hidden</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Navigation button labels are shown</string>
+  <string name="morphe_hide_navigation_bar_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Η γραμμή πλοήγησης θα είναι κρυμμένη κατά την αναπαραγωγή Shorts</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης εμφανίζεται κατά την αναπαραγωγή Shorts</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
+
+To access Settings:
+Open any video → Open Quality menu → Tap 'Settings &gt; Video Quality Preferences' at the bottom."</string>
   <string name="morphe_narrow_navigation_buttons_title">Ενεργοποίηση στενών κουμπιών πλοήγησης</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Το διάστημα μεταξύ των κουμπιών πλοήγησης είναι στενό</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Το διάστημα μεταξύ των κουμπιών πλοήγησης είναι κανονικό</string>
@@ -692,18 +700,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο σκούρο θέμα ορίζεται αυτόματα</string>
   <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
   <string name="morphe_toolbar_screen_summary">Απόκρυψη ή αλλαγή στοιχείων της γραμμής εργαλείων</string>
-  <string name="morphe_hide_toolbar_create_button_title">Κρύψε κουμπί Δημιουργία</string>
+  <string name="morphe_hide_toolbar_create_button_title">Κουμπί «Δημιουργία»</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Κρύψε κουμπί Ειδοποιήσεις</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Microphone button is hidden</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Microphone button is shown</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Κουμπί «Ειδοποιήσεις»</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_toolbar_search_button_title">Κρύψε κουμπί Αναζήτηση</string>
+  <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Απόκρυψη κουμπιού αναζήτησης φωνής</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Το κουμπί αναζήτησης φωνής είναι κρυμμένο</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Το κουμπί αναζήτησης φωνής εμφανίζεται</string>
+  <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in You tab is also overridden.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
+Tap and hold to open YouTube settings"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+Tap and hold to open Morphe settings"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Rearrange the replaced buttons</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Buttons are rearranged</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Buttons are not rearranged</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Αναδυόμενο μενού ρυθμίσεων</string>
   <string name="morphe_hide_player_flyout_summary">Απόκρυψη ή εμφάνιση στοιχείων του αναδυόμενου μενού στην οθόνη αναπαραγωγής</string>
@@ -967,10 +987,14 @@ Second \"item\" text"</string>
 
 Μπορείς να αλλάξεις αυτήν τη ρύθμιση στο YouTube:
 Ρύθμιση → Αναπαραγωγή (ή Αυτόματη αναπαραγωγή) → Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Περισσότερα βίντεο στις γρήγορες ενέργειες</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Κρυμμένα σχετικά βίντεο</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Σχετικοί βίντεο εμφανίζονται</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Σχετικά βίντεο στην πλήρη οθόνη</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Κρυμμένα</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Εμφανίζονται</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Χρονική πρόοδος βίντεο</string>
   <string name="morphe_hide_timestamp_summary_on">Κρυμμένη</string>

@@ -85,14 +85,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_floating_microphone_button_summary_on">Flytande mikrofonknapp i sökning är dold</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Flytande mikrofonknapp i sökning visas</string>
   <string name="morphe_hide_horizontal_shelves_title">Dölj horisontella hyllor</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Horisontella hyllor är dolda, till exempel:
-
-• Senaste nytt
-• Fortsätt att titta
-• Utforska fler kanaler
-• Mest relevanta
-• Shopping
-• Titta igen"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horisontella hyllor visas</string>
   <string name="morphe_hide_image_shelf_title">Dölj bildhylla</string>
   <string name="morphe_hide_image_shelf_summary_on">Bildhylla i sökresultat är dold</string>
@@ -178,9 +170,8 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_quick_actions_title">Dölj snabbåtgärder</string>
   <string name="morphe_hide_quick_actions_summary_on">Snabbåtgärder i helskärm är dolda</string>
   <string name="morphe_hide_quick_actions_summary_off">Snabbåtgärder i helskärm visas</string>
-  <string name="morphe_hide_related_videos_title">Dölj liknande videor</string>
-  <string name="morphe_hide_related_videos_summary_on">Liknande videor i snabbåtgärder är dolda</string>
-  <string name="morphe_hide_related_videos_summary_off">Liknande videor i snabbåtgärder visas</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Liknande videor i snabbåtgärder är dolda</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Liknande videor i snabbåtgärder visas</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Dölj riktlinjer för prenumeranter</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Community-riktlinjer för prenumeranter är dolda</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Community-riktlinjer för prenumeranter visas</string>
@@ -282,10 +273,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_community_button_title">Dölj knappen Community</string>
   <string name="morphe_hide_community_button_summary_on">Knappen Community är dold</string>
   <string name="morphe_hide_community_button_summary_off">Knappen Community visas</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Dölj hyllan För dig</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Hyllan För dig är dold</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Hyllan För dig visas</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Dölj knappen Bli medlem</string>
   <string name="morphe_hide_join_button_summary_on">Knappen Bli medlem är dold</string>
@@ -659,7 +646,6 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_hide_notifications_button_title">Dölj Aviseringar</string>
   <string name="morphe_hide_notifications_button_summary_on">Knappen Aviseringar är dold</string>
   <string name="morphe_hide_notifications_button_summary_off">Knappen Aviseringar visas</string>
-  <string name="morphe_show_search_button_title">Visa knappen Sök</string>
   <string name="morphe_show_search_button_summary_on">Knappen Sök visas</string>
   <string name="morphe_show_search_button_summary_off">Knappen Sök visas inte</string>
   <string name="morphe_search_button_index_title">Index för knappen Sök</string>
@@ -669,8 +655,9 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Knappen Skapa byts inte ut mot knappen Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Om den här inställningen inte träder i kraft kan du testa att byta till inkognitoläget.</string>
   <string name="morphe_hide_navigation_button_labels_title">Dölj etiketter för navigeringsknappar</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Etiketter är dolda</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Etiketter visas</string>
+  <string name="morphe_hide_navigation_bar_title">Dölj navigeringsfältet</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Navigeringsfältet är dolt</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Navigeringsfältet visas</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktivera smala navigeringsknappar</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Avståndet mellan navigeringsknapparna är smalt</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Avståndet mellan navigeringsknapparna är normalt</string>
@@ -691,18 +678,14 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Navigeringsfältet i mörkt läge är ogenomskinligt eller genomskinligt</string>
   <string name="morphe_toolbar_screen_title">Verktygsfält</string>
   <string name="morphe_toolbar_screen_summary">Dölj eller ändra komponenter i verktygsfältet</string>
-  <string name="morphe_hide_toolbar_create_button_title">Dölj knappen Skapa</string>
+  <string name="morphe_hide_toolbar_create_button_title">Dölj Skapa</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Knappen Skapa är dold</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Knappen Skapa visas</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Dölj knappen Aviseringar</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Dölj Aviseringar</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Knappen Aviseringar är dold</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Knappen Aviseringar visas</string>
-  <string name="morphe_hide_toolbar_search_button_title">Dölj knappen Sök</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Knappen Sök är dold</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Knappen Sök visas</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Dölj knappen för röstsökning</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Knappen för röstsökning är dold</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Knappen för röstsökning visas</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-meny</string>
   <string name="morphe_hide_player_flyout_summary">Dölj eller visa objekt i spelarens flyout-meny</string>
@@ -961,10 +944,12 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Dölj föreslagen video på slutskärmen</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Föreslagen video på slutskärmen visas</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Dölj liknande videor</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Dölj överlägg för liknande videor</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Överlägg för liknande videor i helskärm är dolt</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Överlägg för liknande videor i helskärm visas</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Dölj överlägg för liknande videor</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Överlägg för liknande videor i helskärm är dolt</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Överlägg för liknande videor i helskärm visas</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Dölj videotidsstämpel</string>
   <string name="morphe_hide_timestamp_summary_on">Tidsstämpel är dold</string>

@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
@@ -6,7 +14,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -23,6 +30,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
@@ -33,6 +41,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -116,6 +125,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         navigationBarHookPatch,
         versionCheckPatch,
         resourceMappingPatch,
+        hideHorizontalShelvesPatch,
         hideUpdateScreenPatch
     )
 
@@ -181,7 +191,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_live_chat_replay_button"),
             SwitchPreference("morphe_hide_medical_panels"),
             SwitchPreference("morphe_hide_quick_actions"),
-            SwitchPreference("morphe_hide_related_videos"),
+            SwitchPreference("morphe_hide_quick_actions_related_videos"),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_timed_reactions"),
             SwitchPreference("morphe_hide_video_title"),
@@ -231,7 +241,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         )
                     ),
                     SwitchPreference("morphe_hide_community_button"),
-                    SwitchPreference("morphe_hide_for_you_shelf"),
                     SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview"),
                     SwitchPreference("morphe_hide_members_shelf"),
@@ -286,7 +295,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             )
         }
 
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_custom_filter_screen",
                 sorting = Sorting.UNSORTED,
@@ -305,29 +314,30 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide mix playlists
 
-        ParseElementFromBufferFingerprint.method.apply {
-            val startIndex = ParseElementFromBufferFingerprint.instructionMatches.first().index
-            val insertIndex = startIndex + 1
+        ParseElementFromBufferFingerprint.let {
+            it.method.apply {
+                val insertIndex = it.instructionMatches.first().index
 
-            val byteArrayParameter = "p3"
-            val conversionContextRegister = getInstruction<TwoRegisterInstruction>(startIndex).registerA
-            val returnEmptyComponentInstruction = instructions.last { it.opcode == Opcode.INVOKE_STATIC }
-            val returnEmptyComponentRegister = (returnEmptyComponentInstruction as FiveRegisterInstruction).registerC
-            val freeRegister = findFreeRegister(insertIndex, conversionContextRegister, returnEmptyComponentRegister)
+                val byteArrayParameter = "p3"
+                val returnEmptyComponentIndex = it.instructionMatches[4].index
+                val returnEmptyComponentInstruction = getInstruction(returnEmptyComponentIndex)
+                val returnEmptyComponentRegister = (returnEmptyComponentInstruction as FiveRegisterInstruction).registerC
+                val freeRegister = findFreeRegister(insertIndex, returnEmptyComponentRegister)
 
-            addInstructionsWithLabels(
-                insertIndex,
-                """
-                    invoke-static { v$conversionContextRegister, $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->filterMixPlaylists(Ljava/lang/Object;[B)Z
-                    move-result v$freeRegister 
-                    if-eqz v$freeRegister, :show
-                    move-object v$returnEmptyComponentRegister, p1   # Required for 19.47
-                    goto :return_empty_component
-                    :show
-                    nop
-                """,
-                ExternalLabel("return_empty_component", returnEmptyComponentInstruction),
-            )
+                addInstructionsAtControlFlowLabel(
+                    insertIndex,
+                    """
+                        invoke-static { $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->filterMixPlaylists([B)Z
+                        move-result v$freeRegister 
+                        if-eqz v$freeRegister, :show
+                        move-object v$returnEmptyComponentRegister, p1   # Required for 19.47
+                        goto :return_empty_component
+                        :show
+                        nop
+                    """,
+                    ExternalLabel("return_empty_component", returnEmptyComponentInstruction),
+                )
+            }
         }
 
         // endregion

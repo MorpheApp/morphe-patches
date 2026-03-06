@@ -74,13 +74,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_floating_microphone_button_summary_on">Axtarışda üzən mikrofon düyməsi gizlidir</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Üzən mikrofon düyməsi axtarışda göstərilir</string>
   <string name="morphe_hide_horizontal_shelves_title">Üfüqi hissələri gizlət</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Üfüqi cərgələr gizlidir, məsələn:
-• Son xəbərlər
-• İzləməyə davam et
-• Daha çox kanal kəşf et
-• Ən uyğun
-• Alış-veriş
-• Yenidən izləyin"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Üfüqi cərgələr görünür</string>
   <string name="morphe_hide_image_shelf_title">Şəkil cərgəsin gizlət</string>
   <string name="morphe_hide_image_shelf_summary_on">Şəkil cərgəsi axtarış nəticələrində gizlidir</string>
@@ -165,9 +158,8 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_quick_actions_title">Cəld fəaliyyətləri gizlət</string>
   <string name="morphe_hide_quick_actions_summary_on">Tam ekranda cəld fəaliyyətlər gizlədilib</string>
   <string name="morphe_hide_quick_actions_summary_off">Tam ekranda cəld fəaliyyətlər görünür</string>
-  <string name="morphe_hide_related_videos_title">Əlaqəli videoları gizlət</string>
-  <string name="morphe_hide_related_videos_summary_on">Əlaqəli videolar cəld fəaliyyətlərdə gizlədilib</string>
-  <string name="morphe_hide_related_videos_summary_off">Əlaqəli videolar cəld fəaliyyətlərdə görünür</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Əlaqəli videolar cəld fəaliyyətlərdə gizlədilib</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Əlaqəli videolar cəld fəaliyyətlərdə görünür</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abunəçi təlimatlarını gizlət</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Abunəliklərin icma təlimatları gizlidir</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Abunəliklərin icma təlimatları göstərilir</string>
@@ -256,10 +248,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_community_button_title">Şərhlər düyməsin gizlət</string>
   <string name="morphe_hide_community_button_summary_on">Şərhlər düyməsi gizlidir</string>
   <string name="morphe_hide_community_button_summary_off">Şərhlər düyməsi göstərilir</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">\"Sizin üçün\" bölməsin gizlət</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Sizin üçün cərgəsi gizlidir</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Sizin üçün cərgəsi görünür</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Qoşul düyməsin gizlə</string>
   <string name="morphe_hide_join_button_summary_on">Qoşulma düyməsi gizlidir</string>
@@ -601,8 +589,9 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_show_search_button_summary_on">Axtarış düyməsi görünür</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Əgər bu parametri dəyişdirmə effektiv deyil olsa, Gizli Modda sınamaq cəhd edin.</string>
   <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Etiketlər gizlidir</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Etiketlər göstərilir</string>
+  <string name="morphe_hide_navigation_bar_title">Fəaliyyət çubuğunu gizlət</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Fəaliyyət çubuğu gizlidir</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Fəaliyyət çubuğu göstərilir</string>
   <string name="morphe_narrow_navigation_buttons_title">Nəzarət düymələri ucqar olsun</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Nəzarət düymələri arasında boşluq ucqardır</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Nəzarət düymələri arasında boşluq normaldır</string>
@@ -620,13 +609,12 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Qaranlıq rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
   <string name="morphe_toolbar_screen_title">Alətlər çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Alətlər çubuğunun komponentlərini gizlət və ya dəyiş</string>
-  <string name="morphe_hide_toolbar_create_button_title">Yazı Paylaş düyməsini gizlət</string>
+  <string name="morphe_hide_toolbar_create_button_title">\"Yarat\"ı gizlət</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Yarat düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Yarat düyməsi göstərilir</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Yazı Bildiriş düyməsini gizlət</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Bildirişləri Gizlət</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Bildirişlər düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirişlər düyməsi görünür</string>
-  <string name="morphe_hide_toolbar_search_button_title">Yazı Axtarış düyməsini gizlət</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Axtarış düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Axtarış düyməsi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -858,10 +846,12 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Son ekran bildirilən videonu gizlət</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Son ekranda bildirilən video göstərilir</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Əlaqəli videoları gizlət</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Əlaqəli videolar örtüyünü gizlət</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Əlaqəli videolar yerləşməsi tam ekranda gizlidir</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Əlaqəli videolar yerləşməsi tam ekranda görünür</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Əlaqəli videolar örtüyünü gizlət</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Əlaqəli videolar yerləşməsi tam ekranda gizlidir</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Əlaqəli videolar yerləşməsi tam ekranda görünür</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Video vaxt möhürünü gizlət</string>
   <string name="morphe_hide_timestamp_summary_on">Vaxt möhürü gizlidir</string>

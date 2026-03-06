@@ -212,16 +212,16 @@ val settingsPatch = bytecodePatch(
         )
 
         if (is_19_34_or_greater) {
-            PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+            PreferenceScreen.GENERAL.addPreferences(
                 SwitchPreference("morphe_restore_old_settings_menus")
             )
         }
 
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),
         )
 
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_show_menu_icons")
         )
 
@@ -394,7 +394,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_03_feed_bold",
         layout = "@layout/preference_with_icon",
     )
-    val GENERAL_LAYOUT = Screen(
+    val GENERAL = Screen(
         key = "morphe_settings_screen_04_general",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_04_general",
