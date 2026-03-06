@@ -23,7 +23,7 @@ val disableLayoutUpdatesPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_disable_layout_updates")
         )
 

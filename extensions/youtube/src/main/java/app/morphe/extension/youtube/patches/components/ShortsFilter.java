@@ -12,6 +12,7 @@ import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isA
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
 
@@ -20,11 +21,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import kotlin.Unit;
 
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 public final class ShortsFilter extends Filter {
@@ -56,7 +58,21 @@ public final class ShortsFilter extends Filter {
      */
     public static final int HIDDEN_NAVIGATION_BAR_VERTICAL_HEIGHT = 100;
 
+    /**
+     * BottomBarContainer is the parent view of {@link PivotBar},
+     * And can be hidden using {@link View#setVisibility} only when it is initialized.
+     * <p>
+     * If it was not hidden with {@link View#setVisibility} when it was initialized,
+     * it should be hidden with {@link FrameLayout.LayoutParams}.
+     * <p>
+     * When Shorts is opened, {@link FrameLayout.LayoutParams} should be changed to 0dp,
+     * When Shorts is closed, {@link FrameLayout.LayoutParams} should be changed to the original.
+     */
+    private static WeakReference<View> bottomBarContainerRef = new WeakReference<>(null);
     private static WeakReference<PivotBar> pivotBarRef = new WeakReference<>(null);
+
+    private static final FrameLayout.LayoutParams zeroLayoutParams = new FrameLayout.LayoutParams(0, 0);
+    private static FrameLayout.LayoutParams originalLayoutParams;
 
     private final StringFilterGroup shortsCompactFeedVideo;
     private final ByteArrayFilterGroup shortsCompactFeedVideoBuffer;
@@ -551,20 +567,49 @@ public final class ShortsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void setNavigationBar(PivotBar view) {
-        pivotBarRef = new WeakReference<>(view);
+    public static void setBottomBarContainer(View view) {
+        if (HIDE_SHORTS_NAVIGATION_BAR && view.getLayoutParams() instanceof FrameLayout.LayoutParams lp) {
+            bottomBarContainerRef = new WeakReference<>(view);
+            if (originalLayoutParams == null) {
+                originalLayoutParams = lp;
+
+                ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
+                    View navigationBar = bottomBarContainerRef.get();
+                    if (navigationBar != null && navigationBar.getLayoutParams() instanceof FrameLayout.LayoutParams) {
+                        FrameLayout.LayoutParams params;
+                        if (isOpen) {
+                            params = zeroLayoutParams;
+                            Logger.printDebug(() -> "Hiding bottom bar container by setting layout params");
+                        } else {
+                            params = originalLayoutParams;
+                        }
+                        navigationBar.setLayoutParams(params);
+                    }
+                    return Unit.INSTANCE;
+                });
+            }
+        }
     }
 
     /**
      * Injection point.
      */
-    public static void hideNavigationBar(String tag) {
+    public static void setPivotBar(PivotBar view) {
+        if (HIDE_SHORTS_NAVIGATION_BAR) {
+            pivotBarRef = new WeakReference<>(view);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hidePivotBar(String tag) {
         if (HIDE_SHORTS_NAVIGATION_BAR) {
             if (REEL_WATCH_FRAGMENT_INIT_PLAYBACK.contains(tag)) {
-                var pivotBar = pivotBarRef.get();
+                PivotBar pivotBar = pivotBarRef.get();
                 if (pivotBar == null) return;
 
-                Logger.printDebug(() -> "Hiding navbar by setting to GONE");
+                Logger.printDebug(() -> "Hiding pivot bar by setting to GONE");
                 pivotBar.setVisibility(View.GONE);
             } else {
                 Logger.printDebug(() -> "Ignoring tag: " + tag);
@@ -576,10 +621,8 @@ public final class ShortsFilter extends Filter {
      * Injection point.
      */
     public static int getNavigationBarHeight(int original) {
-        if (HIDE_SHORTS_NAVIGATION_BAR) {
-            return HIDDEN_NAVIGATION_BAR_VERTICAL_HEIGHT;
-        }
-
-        return original;
+        return HIDE_SHORTS_NAVIGATION_BAR
+                ? HIDDEN_NAVIGATION_BAR_VERTICAL_HEIGHT
+                : original;
     }
 }

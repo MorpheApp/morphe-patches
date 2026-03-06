@@ -15,6 +15,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
@@ -49,7 +50,9 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         key = "morphe_spoof_video_streams_sign_in_android_vr_about",
                         tag = "app.morphe.extension.music.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
-                    )
+                    ),
+                    SwitchPreference("morphe_spoof_video_streams_force_player_js_hash"),
+                    TextPreference("morphe_spoof_video_streams_player_js_hash"),
                 )
             )
         )

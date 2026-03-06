@@ -24,10 +24,9 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
+import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -35,6 +34,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.removeFromParent
@@ -205,34 +205,37 @@ val hideShortsComponentsPatch = bytecodePatch(
 
         // region Hide the navigation bar.
 
-        // Hook to get the pivotBar view.
+        // Set the bottom bar container view.
+        addBottomBarContainerHook(
+            descriptor = "$FILTER_CLASS_DESCRIPTOR->setBottomBarContainer(Landroid/view/View;)V",
+            highPriority = true
+        )
+
+        // Set the pivotBar view.
         SetPivotBarVisibilityFingerprint.match(
             SetPivotBarVisibilityParentFingerprint.originalClassDef,
         ).let { result ->
             result.method.apply {
                 val insertIndex = result.instructionMatches.last().index
                 val viewRegister = getInstruction<OneRegisterInstruction>(insertIndex - 1).registerA
+
                 addInstruction(
                     insertIndex,
                     "invoke-static {v$viewRegister}," +
-                        " $FILTER_CLASS_DESCRIPTOR->setNavigationBar(Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;)V",
+                            "$FILTER_CLASS_DESCRIPTOR->setPivotBar(Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;)V",
                 )
             }
         }
 
-        // Hook to hide the shared navigation bar when the Shorts player is opened.
-        RenderBottomNavigationBarFingerprint.match(
-            (if (is_20_45_or_greater) {
-                RenderBottomNavigationBarParentFingerprint
-            } else if (is_19_41_or_greater) {
-                RenderBottomNavigationBarLegacy1941ParentFingerprint
-            } else {
-                LegacyRenderBottomNavigationBarLegacyParentFingerprint
-            }).originalClassDef
-        ).method.addInstruction(
-            0,
-            "invoke-static { p1 }, $FILTER_CLASS_DESCRIPTOR->hideNavigationBar(Ljava/lang/String;)V",
-        )
+        // Hook to hide the pivotBar when the Shorts player is opened.
+        ReelWatchFragmentInitPlaybackFingerprint.instructionMatches.last()
+            .instruction
+            .getReference<MethodReference>()!!
+            .getMutableMethod()
+            .addInstruction(
+                0,
+                "invoke-static { p1 }, $FILTER_CLASS_DESCRIPTOR->hidePivotBar(Ljava/lang/String;)V",
+            )
 
         // Hide the bottom bar container of the Shorts player.
         ShortsBottomBarContainerFingerprint.let {

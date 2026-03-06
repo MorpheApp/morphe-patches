@@ -29,14 +29,14 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Anpassad</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Du använder en experimentell appversion av ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Förvänta dig lustigt beteende av appen eller okända fel medan vi finslipar korrigeringarna för den här appversionen.
 &lt;br/&gt;&lt;br/&gt;
 Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; du den här och korrigerar den rekommenderade appversionen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jag vill ha experimentell</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jag vill ha stabil</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jag vill ha experimentellt</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jag vill ha stabilt</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>
@@ -55,15 +55,15 @@ Uppspelning kanske inte fungerar"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Testa att aktivera: Förfalska videoströmmar &gt; Logga in på Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Testa att aktivera: Förfalska videoströmmar &gt; Logga in i Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logga in på Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Inte inloggad på Android VR. Tryck här för att logga in</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">För närvarande inloggad på Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logga in i Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Inte inloggad i Android VR. Tryck här för att logga in</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">För närvarande inloggad i Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logga in på Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logga in i Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Att logga in i Android VR kan åtgärda uppspelningsproblem för vissa användare
 
 Tryck på Fortsätt nedan för att logga in"</string>
@@ -95,6 +95,15 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken. Försök logga in i VR igen</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Tvinga JavaScript-hash för spelaren</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Uppdatering av JavaScript-hash för spelaren är inaktiverat
+
+• En giltig JavaScript-hash för spelaren krävs
+• Uppspelningen misslyckas om JavaScript-hashen för spelaren återkallas i GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Uppdatering av JavaScript-hash för spelaren är aktiverat</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript-hashar för spelaren är giltiga i ungefär en månad, och inaktuella hashar kan återkallas av GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">JavaScript-hash för spelaren</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Ange en giltig JavaScript-hash för spelaren</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokollet</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokollet är inaktiverat</string>

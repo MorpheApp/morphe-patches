@@ -661,6 +661,11 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_show_search_button_summary_off">Ukryty</string>
   <string name="morphe_search_button_index_title">Indeks przycisku wyszukiwania</string>
   <string name="morphe_search_button_index_invalid">Indeks przycisku wyszukiwania musi być mniejszy niż %s</string>
+  <string name="morphe_show_settings_button_title">Przycisk ustawień</string>
+  <string name="morphe_show_settings_button_summary_on">Widoczny</string>
+  <string name="morphe_show_settings_button_summary_off">Ukryty</string>
+  <string name="morphe_settings_button_index_title">Indeks przycisku ustawień</string>
+  <string name="morphe_settings_button_index_invalid">Indeks przycisku ustawień musi być mniejszy niż %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Przyciski Utwórz i Powiadomienia</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Zamienione</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Niezamienione</string>
@@ -668,6 +673,13 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_hide_navigation_button_labels_title">Etykiety przycisków nawigacji</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Ukryte</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Widoczne</string>
+  <string name="morphe_hide_navigation_bar_title">Pasek nawigacji</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Ukryty</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Widoczny</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"To całkowicie ukryje pasek nawigacji, w tym stronę \"Ty\".
+
+Aby przejść do ustawień:
+Otwórz dowolny film → Otwórz menu jakości → Kliknij \"Ustawienia > Preferencje dotyczące jakości filmu\" na dole."</string>
   <string name="morphe_narrow_navigation_buttons_title">Wąskie przyciski nawigacji</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Włączone</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Wyłączone</string>
@@ -688,18 +700,30 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Włączony</string>
   <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
   <string name="morphe_toolbar_screen_summary">Ukryj lub pokazuj komponenty paska narzędzi</string>
-  <string name="morphe_hide_toolbar_create_button_title">Przycisk Utwórz</string>
+  <string name="morphe_hide_toolbar_create_button_title">Przycisk przesyłania</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Przycisk Powiadomienia</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Przycisk mikrofonu</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Widoczny</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Przycisk powiadomień</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_search_button_title">Przycisk Szukaj</string>
+  <string name="morphe_hide_toolbar_search_button_title">Przycisk wyszukiwania</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Ukryty</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Przycisk Wyszukiwanie głosowe</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Ukryty</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Widoczny</string>
+  <string name="morphe_replace_toolbar_create_button_title">Przyciski przesyłania i ustawień</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Zamienione</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Niezamienione</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Działanie przycisku ustawień na stronie \"Ty\" również zostanie nadpisane.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Działanie przycisku ustawień</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Stuknij, aby otworzyć ustawienia Morphe
+Stuknij i przytrzymaj, aby otworzyć ustawienia YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Stuknij, aby otworzyć ustawienia YouTube
+Stuknij i przytrzymaj, aby otworzyć ustawienia Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Kolejność zastąpionych przycisków</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Zmieniona</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Niezmieniona</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu ustawień filmów</string>
   <string name="morphe_hide_player_flyout_summary">Ukryj lub pokazuj elementy menu ustawień filmów</string>
@@ -1600,7 +1624,7 @@ Odtwarzanie wideo z AV1 może powodować zacinanie się lub gubienie klatek."</s
   <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie się nie powiedzie, odtwarzanie może się nie powieść</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki audio nie działa</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Wariant JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Wariant JavaScript odtwarzacza</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Informacja w statystykach dla nerdów</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Widoczna</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Ukryta</string>

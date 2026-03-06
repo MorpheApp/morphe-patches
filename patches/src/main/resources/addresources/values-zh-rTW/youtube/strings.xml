@@ -654,18 +654,30 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">隱藏「通知」</string>
   <string name="morphe_hide_notifications_button_summary_on">已隱藏「通知」按鈕</string>
   <string name="morphe_hide_notifications_button_summary_off">已顯示「通知」按鈕</string>
-  <string name="morphe_show_search_button_title">顯示搜尋按鈕</string>
+  <string name="morphe_show_search_button_title">顯示搜尋</string>
   <string name="morphe_show_search_button_summary_on">已顯示「搜尋」按鈕</string>
   <string name="morphe_show_search_button_summary_off">未顯示搜尋按鈕</string>
   <string name="morphe_search_button_index_title">搜尋按鈕索引</string>
   <string name="morphe_search_button_index_invalid">搜尋按鈕索引必須小於 %s</string>
+  <string name="morphe_show_settings_button_title">顯示設定</string>
+  <string name="morphe_show_settings_button_summary_on">設定按鈕已顯示</string>
+  <string name="morphe_show_settings_button_summary_off">設定按鈕未顯示</string>
+  <string name="morphe_settings_button_index_title">設定按鈕索引</string>
+  <string name="morphe_settings_button_index_invalid">Settings 按鈕索引必須小於 %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">「建立」按鈕已與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">「建立」按鈕未與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">如果變更這項設定沒有生效，請嘗試切換到無痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">已隱藏「標籤」</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">已顯示「標籤」</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">導覽列標籤已隱藏</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">導覽列標籤已隱藏</string>
+  <string name="morphe_hide_navigation_bar_title">隱藏導覽列</string>
+  <string name="morphe_hide_navigation_bar_summary_on">已隱藏導覽列</string>
+  <string name="morphe_hide_navigation_bar_summary_off">已顯示導覽列</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"這會完全隱藏導航欄，包括「您」標籤。
+
+要存取設定：
+開啟任何影片 → 開啟「畫質」選單 → 點擊底部「設定 > 影片畫質偏好設定」。"</string>
   <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">導航按鈕間距離狹窄</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">導航按鈕間距離正常</string>
@@ -686,18 +698,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">深色模式導覽列為不透明或半透明</string>
   <string name="morphe_toolbar_screen_title">工具列</string>
   <string name="morphe_toolbar_screen_summary">隱藏或變更工具列元件</string>
-  <string name="morphe_hide_toolbar_create_button_title">隱藏「建立」按鈕</string>
+  <string name="morphe_hide_toolbar_create_button_title">隱藏建立</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">已隱藏「建立」按鈕</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">已顯示「建立」按鈕</string>
-  <string name="morphe_hide_toolbar_notification_button_title">隱藏「通知」按鈕</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">隱藏麥克風</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">麥克風按鈕已被隱藏</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">麥克風按鈕已顯示</string>
+  <string name="morphe_hide_toolbar_notification_button_title">隱藏「通知」</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">已隱藏「通知」按鈕</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">已顯示「通知」按鈕</string>
-  <string name="morphe_hide_toolbar_search_button_title">隱藏「搜尋」按鈕</string>
+  <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">已隱藏「搜尋」按鈕</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">已顯示「搜尋」按鈕</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">隱藏「搜尋」按鈕</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">已隱藏「搜尋」按鈕</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">已顯示「搜尋」按鈕</string>
+  <string name="morphe_replace_toolbar_create_button_title">取代「建立」為「設定」</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">「建立」按鈕已替換為「設定」按鈕</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">「建立」按鈕不與「通知」按鈕對調</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">You 分頁中，設定按鈕的點擊行為也會被覆寫。</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">設定按鈕動作</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"點擊以開啟 Morphe 設定
+長按以開啟 YouTube 設定"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"點擊以開啟 YouTube 設定
+長按以開啟 Morphe 設定"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">重新排列已取代的按鈕</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">按鈕已重新排列</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">按鈕未重新排列</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
   <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單</string>
@@ -1603,7 +1627,7 @@ AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果解密失敗，播放可能會失敗</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 強制原始音訊不可用</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">播放器 JavaScript 變種</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">播放器 JavaScript 變種</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">顯示統計資料</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">已在統計資料中顯示用戶端類型</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">已在統計資料中隱藏用戶端類型</string>

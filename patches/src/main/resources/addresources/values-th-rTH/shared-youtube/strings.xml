@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">กำหนดเอง</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 การทดลอง! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 คำเตือนทดลอง 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"คุณกำลังใช้เวอร์ชันแอปทดลองของ ⚠️ <b>%1$s</b>
 <br/>
 <br/>
@@ -97,6 +97,15 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ไม่สามารถเข้าสู่ระบบ VR: %s</string>
   <string name="morphe_oauth2_toast_reset">ออกจากระบสเวล VR</string>
   <string name="morphe_oauth2_toast_invalid">โทเค็นเข้าสู่ระบบ VR ไม่ถูกต้อง กรุณาลองเข้าสู่ระบบ VR อีกครั้ง</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">บังคับใช้ JavaScript hash ของผู้เล่น</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"การอัปเดต JavaScript hash ของผู้เล่นถูกปิดใช้งาน
+
+• จำเป็นต้องมี JavaScript hash ของผู้เล่นที่ถูกต้อง
+• การเล่นวิดีโอจะล้มเหลวหาก JavaScript hash ของผู้เล่นถูกเพิกถอนโดย GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">การอัปเดต JavaScript hash ของผู้เล่นถูกเปิดใช้งาน</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript hash ของผู้เล่นมีความถูกต้องประมาณหนึ่งเดือน และ JavaScript hash ที่หมดอายุอาจถูกเพิกถอนโดย GVS</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">ค่าแฮช JavaScript ของผู้เล่น</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">ป้อนค่าแฮช JavaScript ของผู้เล่นที่ถูกต้อง</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">โพรโทคอล QUIC ถูกปิดใช้งาน</string>

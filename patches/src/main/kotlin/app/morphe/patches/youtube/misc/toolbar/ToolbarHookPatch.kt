@@ -60,5 +60,5 @@ val toolBarHookPatch = bytecodePatch(
 
 internal fun hookToolBar(descriptor: String) = toolbarMethod.get()!!.addInstructions(
     0,
-    "invoke-static { p0, p1 }, $descriptor(Ljava/lang/String;Landroid/view/View;)V"
+    "invoke-static { p0, p1, p2 }, $descriptor(Ljava/lang/String;Landroid/view/View;Landroid/widget/ImageView;)V"
 )

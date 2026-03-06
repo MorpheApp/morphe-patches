@@ -654,18 +654,30 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_hide_notifications_button_title">Sembunyikan Pemberitahuan</string>
   <string name="morphe_hide_notifications_button_summary_on">Tombol pemberitahuan disembunyikan</string>
   <string name="morphe_hide_notifications_button_summary_off">Tombol pemberitahuan ditampilkan</string>
-  <string name="morphe_show_search_button_title">Tampilkan tombol pencarian</string>
+  <string name="morphe_show_search_button_title">Tampilkan Pencarian</string>
   <string name="morphe_show_search_button_summary_on">Tombol pencarian ditampilkan</string>
   <string name="morphe_show_search_button_summary_off">Tombol pencarian tidak ditampilkan</string>
   <string name="morphe_search_button_index_title">Indeks tombol pencarian</string>
   <string name="morphe_search_button_index_invalid">Indeks tombol pencarian harus kurang dari %s</string>
+  <string name="morphe_show_settings_button_title">Tampilkan Pengaturan</string>
+  <string name="morphe_show_settings_button_summary_on">Tombol Pengaturan ditampilkan</string>
+  <string name="morphe_show_settings_button_summary_off">Tombol Pengaturan tidak ditampilkan</string>
+  <string name="morphe_settings_button_index_title">Indeks tombol pengaturan</string>
+  <string name="morphe_settings_button_index_invalid">Indeks tombol pengaturan harus kurang dari %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tukar Buat dengan Pemberitahuan</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Tombol buat ditukar dengan tombol Pemberitahuan</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Tombol buat tidak ditukar dengan tombol Pemberitahuan</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Jika mengubah pengaturan ini tidak berhasil, coba beralih ke mode Penyamaran.</string>
   <string name="morphe_hide_navigation_button_labels_title">Sembunyikan label tombol navigasi</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Label disembunyikan</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Label ditampilkan</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Label tombol navigasi disembunyikan</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Label tombol navigasi ditampilkan</string>
+  <string name="morphe_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Bilah navigasi disembunyikan</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Bilah navigasi ditampilkan</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini sepenuhnya menyembunyikan bilah navigasi termasuk tab Anda.
+
+Untuk mengakses Pengaturan:
+Buka video apa pun → Buka menu Kualitas → Ketuk 'Pengaturan &gt; Preferensi Kualitas Video' di bagian bawah."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktifkan tombol navigasi sempit</string>
   <string name="morphe_narrow_navigation_buttons_summary_on"> Jarak antara tombol navigasi cukup sempit</string>
   <string name="morphe_narrow_navigation_buttons_summary_off"> Jarak antara tombol navigasi cukup normal</string>
@@ -686,18 +698,30 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bilah navigasi mode gelap buram atau tembus pandang</string>
   <string name="morphe_toolbar_screen_title">Bilah alat</string>
   <string name="morphe_toolbar_screen_summary">Sembunyikan atau ubah komponen bilah alat</string>
-  <string name="morphe_hide_toolbar_create_button_title">Sembunyikan tombol Buat</string>
+  <string name="morphe_hide_toolbar_create_button_title">Sembunyikan Buat</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tombol buat disembunyikan</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tombol buat ditampilkan</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan tombol Pemberitahuan</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan Mikrofon</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Tombol mikrofon disembunyikan</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Tombol mikrofon ditampilkan</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan Pemberitahuan</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Tombol pemberitahuan disembunyikan</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Tombol pemberitahuan ditampilkan</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Pencarian</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan Pencarian</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tombol pencarian disembunyikan</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Tombol pencarian ditampilkan</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Sembunyikan tombol pencarian Suara</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Tombol pencarian Suara disembunyikan</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Tombol pencarian Suara ditampilkan</string>
+  <string name="morphe_replace_toolbar_create_button_title">Ganti Buat dengan Pengaturan</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Tombol Buat diganti dengan tombol Pengaturan</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Tombol Buat tidak diganti dengan tombol Pengaturan</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Perilaku klik tombol Pengaturan di tab Anda juga ditimpa.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Tindakan tombol Pengaturan</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Ketuk untuk membuka pengaturan Morphe
+Ketuk dan tahan untuk membuka pengaturan YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Ketuk untuk membuka Pengaturan YouTube
+Ketuk dan tahan untuk membuka Pengaturan Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Atur ulang susunan tombol yang diganti</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Tombol disusun ulang</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Tombol tidak disusun ulang</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Sembunyikan atau tampilkan item menu pemutar flyout</string>
@@ -1598,7 +1622,7 @@ Pemutaran video dengan AV1 mungkin tersendat atau kehilangan bingkai."</string>
   <string name="morphe_spoof_video_streams_about_js">• Jika proses pembukaan kode terenkripsi gagal, pemutaran mungkin gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asli tidak tersedia</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Varian pemutar JavaScript</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Varian pemutar JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tampilkan di Statistik untuk nerds</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Jenis klien ditampilkan di Statistik untuk nerds</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klien disembunyikan di Statistik untuk nerds</string>

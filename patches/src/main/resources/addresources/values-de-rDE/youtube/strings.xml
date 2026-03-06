@@ -654,18 +654,30 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_hide_notifications_button_title">Benachrichtigungen ausblenden</string>
   <string name="morphe_hide_notifications_button_summary_on">Benachrichtigungs-Button ist ausgeblendet</string>
   <string name="morphe_hide_notifications_button_summary_off">Benachrichtigungs-Button wird angezeigt</string>
-  <string name="morphe_show_search_button_title">Suchschaltfeld anzeigen</string>
+  <string name="morphe_show_search_button_title">Suche anzeigen</string>
   <string name="morphe_show_search_button_summary_on">Suchschaltfläche wird angezeigt</string>
   <string name="morphe_show_search_button_summary_off">Suchschaltfeld wird nicht angezeigt</string>
   <string name="morphe_search_button_index_title">Suchschaltfeld-Index</string>
   <string name="morphe_search_button_index_invalid">Suchschaltfeld-Index muss kleiner als %s sein</string>
+  <string name="morphe_show_settings_button_title">Einstellungen anzeigen</string>
+  <string name="morphe_show_settings_button_summary_on">Einstellungen-Button wird angezeigt</string>
+  <string name="morphe_show_settings_button_summary_off">Einstellungen-Button wird nicht angezeigt</string>
+  <string name="morphe_settings_button_index_title">Einstellungen Schaltfläche Index</string>
+  <string name="morphe_settings_button_index_invalid">Bestimmen Sie, ob der Index des Einstellungen-Buttons kleiner als %s ist</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tausche \"Erstellen\" mit \"Benachrichtigungen\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Erstellen-Button ist mit Benachrichtigungs-Button getauscht</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Erstellen-Button ist nicht mit Benachrichtigungs-Button getauscht</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Wenn Über die Änderung dieser Einstellung keine Wirkung erzielt wird, versuchen Sie, in Inkognito-Modus zu wechseln.</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigationstastenbezeichnungen ausblenden</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Labels sind ausgeblendet</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Labels werden angezeigt</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Navigationsbuttons sind ausgeblendet</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Navigationsbuttons sind sichtbar</string>
+  <string name="morphe_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Navigationsleiste ist ausgeblendet</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Navigationsleiste wird angezeigt</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dadurch wird die gesamte Navigationsleiste einschließlich des Tab 'You' ausgeblendet.
+
+Um Einstellungen aufzurufen:
+Öffnen Sie jedes Video → Öffnen Sie das Menü 'Qualität' → Tippen Sie auf 'Einstellungen > Videoqualitätsprioritäten' am unteren Bildschirmrand."</string>
   <string name="morphe_narrow_navigation_buttons_title">Schmale Navigationsknöpfe aktivieren</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Abstand zwischen Navigationsknöpfen ist schmal</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Abstand zwischen Navigationsknöpfen ist normal</string>
@@ -686,18 +698,30 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Die Navigationsleiste im dunklen Modus ist undurchsichtig oder durchscheinend</string>
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Leistenkomponenten ausblenden oder ändern</string>
-  <string name="morphe_hide_toolbar_create_button_title">Erstellen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_create_button_title">Erstellen ausblenden</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Erstellen-Button ist ausgeblendet</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Erstelle Schaltfläche wird angezeigt</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Benachrichtigungen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon ausblenden</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofon-Button ist ausgeblendet</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofon-Button ist sichtbar</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Benachrichtigungen ausblenden</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Benachrichtigungs-Button ist ausgeblendet</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Benachrichtigungs-Button wird angezeigt</string>
-  <string name="morphe_hide_toolbar_search_button_title">Suchen-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_toolbar_search_button_title">Suche ausblenden</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Suchschaltfläche wird ausgeblendet</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Suchschaltfläche wird angezeigt</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Stummschaltknopf für die Sprachsuche ausblenden</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Stummschaltknopf für die Sprachsuche ist ausgeblendet</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Stummschaltknopf für die Sprachsuche ist angezeigt</string>
+  <string name="morphe_replace_toolbar_create_button_title">\'Erstellen\' durch \'Einstellungen\' ersetzen</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Der \'Erstellen\'-Button wird durch den \'Einstellungen\'-Button ersetzt</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Der \'Erstellen\'-Button wird nicht durch den \'Einstellungen\'-Button ersetzt</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Der Klickvorgang des \'Einstellungen\'-Buttons im Tab \'You\' wird ebenfalls überschrieben.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Aktion des Einstellungen-Buttons</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tippen Sie, um die Morphe-Einstellungen zu öffnen
+Tippen und halten Sie, um die YouTube-Einstellungen zu öffnen"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tippen Sie, um die YouTube-Einstellungen zu öffnen
+Tippen und halten Sie, um die Morphe-Einstellungen zu öffnen"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Ordnen Sie die ersetzten Schaltflächen neu an</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Schaltflächen wurden neu angeordnet</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Schaltflächen wurden nicht neu angeordnet</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Einstellungs-Menü</string>
   <string name="morphe_hide_player_flyout_summary">Einträge des Einstellungsmenüs ein- oder ausblenden</string>
@@ -1598,7 +1622,7 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_about_js">• Wenn die Deobfuskation fehlschlägt, kann die Wiedergabe fehlschlagen</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Originalton erzwingen ist nicht verfügbar</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Player-JavaScript-Variante</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Player-JavaScript-Variante</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">In Statistiken für Nerds anzeigen</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Der Client-Typ wird in den Statistiken für Nerds angezeigt</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Der Client wird in den Statistiken für Nerds ausgeblendet</string>

@@ -295,7 +295,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             )
         }
 
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_custom_filter_screen",
                 sorting = Sorting.UNSORTED,

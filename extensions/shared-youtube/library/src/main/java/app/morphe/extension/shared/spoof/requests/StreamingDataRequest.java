@@ -293,9 +293,12 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                responseBuilder.setStreamingData(
-                        getDeobfuscatedStreamingData(streamingData)
-                );
+                var deobfuscatedStreamingData = getDeobfuscatedStreamingData(streamingData);
+                if (deobfuscatedStreamingData == null) {
+                    handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
+                    return null;
+                }
+                responseBuilder.setStreamingData(deobfuscatedStreamingData);
             }
 
             return responseBuilder.build().toByteArray();

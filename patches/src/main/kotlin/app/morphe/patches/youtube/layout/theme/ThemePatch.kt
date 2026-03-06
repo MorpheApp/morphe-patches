@@ -190,7 +190,7 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_gradient_loading_screen")
         )
 
@@ -218,7 +218,7 @@ val themePatch = baseThemePatch(
         )
 
         if (is_19_47_or_greater) {
-            PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+            PreferenceScreen.GENERAL.addPreferences(
                 ListPreference("morphe_splash_screen_animation_style")
             )
         }

@@ -657,7 +657,6 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_hide_notifications_button_title">Sakrij Notifications</string>
   <string name="morphe_hide_notifications_button_summary_on">Tipka za obavijesti je skrivena</string>
   <string name="morphe_hide_notifications_button_summary_off">Tipka za obavijesti je prikazana</string>
-  <string name="morphe_show_search_button_title">Prikaži tipku za pretraživanje</string>
   <string name="morphe_show_search_button_summary_on">Tipka za pretraživanje je prikazana</string>
   <string name="morphe_show_search_button_summary_off">Tipka za pretraživanje nije prikazana</string>
   <string name="morphe_search_button_index_title">Indeks tipke za pretraživanje</string>
@@ -667,8 +666,6 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Dugme Stvori nije zamijenjeno s dugmom Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Ako promjena ovog postavke ne učinuje se, pokušajte preći u Incognito način.</string>
   <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake navigacijskih tipki</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Oznake su skrivene</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Oznake su prikazane</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske tipke za navigaciju</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između tipki za navigaciju je uska</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između tipki za navigaciju je normalan</string>
@@ -689,18 +686,12 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tamna moda navigacijska traka ili opaka</string>
   <string name="morphe_toolbar_screen_title">Traka</string>
   <string name="morphe_toolbar_screen_summary">Sakrij ili promijeni komponente trake</string>
-  <string name="morphe_hide_toolbar_create_button_title">Sakrij tipku \'Stvori\'</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tipka \'Stvori\' je sakrivena</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tipka \'Stvori\' je prikazana</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Sakrij tipku \'Obavijesti\'</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Tipka \'Obavijesti\' je sakrivena</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Tipka \'Obavijesti\' je prikazana</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sakrij tipku \'Pretraži\'</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tipka za pretraživanje je skrivena</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Tipka za pretraživanje je prikazana</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Sakrij tipku za glasovni pretragu</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Tipka za glasovni pretragu je skrivena</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Tipka za glasovni pretragu je prikazana</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
   <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži stavke flyout menija</string>
@@ -1599,7 +1590,7 @@ Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako neuspije deobfuskacija, reproducija može neuspjeti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Nema force original audio</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Varijanta JavaScript igrača</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript igrača</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži u Statistikama za nerdove</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Vrsta klijenta je prikazana u Statistikama za nerdove</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klijent je sakriven u Statistikama za nerdove</string>

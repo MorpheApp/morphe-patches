@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Personalizado</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Alerta experimental! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do app de ⚠️ <b>%1$s</b>
 <br/>
 <br/>
@@ -97,6 +97,15 @@ Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Desconectado do Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forçar hash JavaScript do jogador</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Atualização de hash JavaScript do jogador está desativada.
+
+• Um hash JavaScript do jogador válido é necessário.
+• A reprodução falha se o hash JavaScript do jogador for revogado pelo GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Atualização de hash JavaScript do jogador está ativada</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Os hashes JavaScript do jogador são válidos por aproximadamente um mês, e os hashes desatualizados podem ser revogados pelo GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript do jogador</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Insira um hash JavaScript do jogador válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protocolo QUIC desativado</string>
