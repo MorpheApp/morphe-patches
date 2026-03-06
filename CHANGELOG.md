@@ -1,3 +1,10 @@
+# [1.17.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.17.0-dev.6...v1.17.0-dev.7) (2026-03-06)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Show TV client deobfuscate toast only if debugging is enabled ([b9b685c](https://github.com/MorpheApp/morphe-patches/commit/b9b685c6aac6aac59aab04f6b5b28252bc424683))
+
 # [1.17.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.17.0-dev.5...v1.17.0-dev.6) (2026-03-05)
 
 

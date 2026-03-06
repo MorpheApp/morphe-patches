@@ -32,6 +32,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -141,6 +142,14 @@ public final class JavaScriptManager {
     private volatile static Integer cachedSignatureTimestamp = null;
 
     private JavaScriptManager() {
+    }
+
+    private static void handleDebugToast(String message) {
+        if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+            Utils.showToastShort(message);
+        } else {
+            Logger.printInfo(() -> message);
+        }
     }
 
     @Nullable
@@ -414,13 +423,13 @@ public final class JavaScriptManager {
                 // Since there is only one obfuscated n-parameter, there is also only one deobfuscated n-parameter
                 List<String> deobfuscatedNParameters = results.first;
                 if (deobfuscatedNParameters.isEmpty()) {
-                    Logger.printDebug(() -> "Failed to deobfuscate n-parameter");
+                    handleDebugToast("Debug: Failed to deobfuscate n-parameter");
                     return false;
                 }
                 String deobfuscatedNParameter = deobfuscatedNParameters.get(0);
                 List<String> deobfuscatedSParameters = results.second;
                 if (hasSignatureCipher && deobfuscatedSParameters.isEmpty()) {
-                    Logger.printDebug(() -> "Failed to deobfuscate signatureCipher");
+                    handleDebugToast("Debug: Failed to deobfuscate signatureCipher");
                     return false;
                 }
 
