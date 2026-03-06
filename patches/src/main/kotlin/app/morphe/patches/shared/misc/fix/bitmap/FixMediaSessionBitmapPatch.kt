@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.misc.fix.bitmap
+package app.morphe.patches.shared.misc.fix.bitmap
 
 import app.morphe.patches.all.misc.transformation.IMethodCall
 import app.morphe.patches.all.misc.transformation.filterMapInstruction35c
@@ -29,8 +29,7 @@ private enum class MethodCall(
 }
 
 val fixMediaSessionBitmapPatch = transformInstructionsPatch(
-    name = "Fix notification thumbnail crash",
-    description = "Fixes a crash that may occur caused by the notification thumbnail when a video is opened",
+    description = "Fixes a crash that may occur caused by the notification thumbnail when a video is opened.",
     filterMap = { classDef, _, instruction, instructionIndex ->
         filterMapInstruction35c<MethodCall>(
             "Lapp/morphe/extension",

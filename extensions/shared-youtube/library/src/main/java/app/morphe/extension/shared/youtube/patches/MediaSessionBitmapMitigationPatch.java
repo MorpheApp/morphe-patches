@@ -3,8 +3,10 @@ package app.morphe.extension.shared.youtube.patches;
 import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.support.v4.media.MediaMetadataCompat;
+
 import app.morphe.extension.shared.Logger;
 
+@SuppressWarnings("unused")
 public class MediaSessionBitmapMitigationPatch {
 
     private static Bitmap copyBitmapIfSafe(Bitmap original) {
@@ -22,6 +24,9 @@ public class MediaSessionBitmapMitigationPatch {
         }
     }
 
+    /**
+     * Injection point
+     */
     public static MediaMetadataCompat.Builder putBitmap(
             MediaMetadataCompat.Builder builder,
             String key,
@@ -29,6 +34,9 @@ public class MediaSessionBitmapMitigationPatch {
         return builder.putBitmap(key, copyBitmapIfSafe(bitmap));
     }
 
+    /**
+     * Injection point
+     */
     public static MediaMetadata.Builder putBitmap(
             MediaMetadata.Builder builder,
             String key,
