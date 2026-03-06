@@ -230,7 +230,6 @@ public class Settings extends SharedYouTubeSettings {
 
     // Comments
     public static final BooleanSetting HIDE_COMMENTS_AI_CHAT_SUMMARY = new BooleanSetting("morphe_hide_comments_ai_chat_summary", FALSE);
-    public static final BooleanSetting HIDE_COMMENTS_AI_SUMMARY = new BooleanSetting("morphe_hide_comments_ai_summary", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_BY_MEMBERS_HEADER = new BooleanSetting("morphe_hide_comments_by_members_header", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_CHANNEL_GUIDELINES = new BooleanSetting("morphe_hide_comments_channel_guidelines", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_comments_community_guidelines", TRUE);

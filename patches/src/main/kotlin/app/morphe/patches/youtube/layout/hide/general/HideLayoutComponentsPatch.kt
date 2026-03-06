@@ -168,7 +168,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 "morphe_comments_screen",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
-                    SwitchPreference("morphe_hide_comments_ai_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
                     SwitchPreference("morphe_hide_comments_prompts"),
                     SwitchPreference("morphe_hide_comments_by_members_header"),
