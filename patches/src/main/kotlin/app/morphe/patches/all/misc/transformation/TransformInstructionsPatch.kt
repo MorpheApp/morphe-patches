@@ -8,9 +8,11 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 
 fun <T> transformInstructionsPatch(
+    name: String? = null,
+    description: String? = null,
     filterMap: (ClassDef, Method, Instruction, Int) -> T?,
     transform: (MutableMethod, T) -> Unit,
-) = bytecodePatch {
+) = bytecodePatch(name = name, description = description) {
     // Returns the patch indices as a Sequence, which will execute lazily.
     fun findPatchIndices(classDef: ClassDef, method: Method): Sequence<T>? =
         method.implementation?.instructions?.asSequence()?.withIndex()?.mapNotNull { (index, instruction) ->
