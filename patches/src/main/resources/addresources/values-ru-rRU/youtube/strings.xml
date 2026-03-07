@@ -85,13 +85,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Плавающая кнопка микрофона в поиске скрыта</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Плавающая кнопка микрофона в поиске показана</string>
   <string name="morphe_hide_horizontal_shelves_title">Скрыть горизонтальные секции</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Данные горизонтальные секции скрыты:
-• Срочные новости
-• Продолжить просмотр
-• Исследовать больше каналов
-• Самые релевантные
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Горизонтальные полки скрыты:
+
+• Горячие новости
+• Продолжить, просмотр
+• Посмотреть, больше каналов
+• Для вас
+• Самые уместные
 • Покупки
-• Смотреть еще раз"</string>
+• Смотреть, снова"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Горизонтальные секции показаны</string>
   <string name="morphe_hide_image_shelf_title">Скрыть секцию изображений</string>
   <string name="morphe_hide_image_shelf_summary_on">Секция изображений в результатах поиска скрыта</string>
@@ -177,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Скрыть быстрые действия</string>
   <string name="morphe_hide_quick_actions_summary_on">Быстрые действия в полноэкранном режиме скрыты</string>
   <string name="morphe_hide_quick_actions_summary_off">Быстрые действия в полноэкранном режиме показаны</string>
-  <string name="morphe_hide_related_videos_title">Скрыть похожие видео</string>
-  <string name="morphe_hide_related_videos_summary_on">Похожие видео в быстрых действиях скрыты</string>
-  <string name="morphe_hide_related_videos_summary_off">Похожие видео в быстрых действиях показаны</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Скрыть быстрые действия, связанные видео</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Похожие видео в быстрых действиях скрыты</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Похожие видео в быстрых действиях показаны</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Скрыть правила сообщества подписчиков</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Правила сообщества подписчиков в комментариях скрыты</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Правила сообщества подписчиков в комментариях показаны</string>
@@ -281,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Скрыть кнопку \"Сообщество\"</string>
   <string name="morphe_hide_community_button_summary_on">Кнопка \"Сообщество\" скрыта</string>
   <string name="morphe_hide_community_button_summary_off">Кнопка \"Сообщество\" показана</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Скрыть секцию \"Для вас\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Секция \"Для вас\" на странице канала скрыта</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Секция \"Для вас\" на странице канала показана</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Скрыть кнопку \"Присоединиться\"</string>
   <string name="morphe_hide_join_button_summary_on">Кнопка \"Присоединиться\" в Shorts скрыта</string>
@@ -658,18 +656,30 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_notifications_button_title">Скрыть кнопку \"Уведомления\"</string>
   <string name="morphe_hide_notifications_button_summary_on">Кнопка \"Уведомления\" в панели навигации скрыта</string>
   <string name="morphe_hide_notifications_button_summary_off">Кнопка \"Уведомления\" в панели навигации показана</string>
-  <string name="morphe_show_search_button_title">Показать кнопку поиска</string>
+  <string name="morphe_show_search_button_title">Показать поиск</string>
   <string name="morphe_show_search_button_summary_on">Кнопка поиска показана</string>
   <string name="morphe_show_search_button_summary_off">Кнопка поиска скрыта</string>
   <string name="morphe_search_button_index_title">Индекс кнопки поиска</string>
   <string name="morphe_search_button_index_invalid">Индекс кнопки поиска должен быть меньше %s</string>
+  <string name="morphe_show_settings_button_title">Показать \"Настройки\"</string>
+  <string name="morphe_show_settings_button_summary_on">Кнопка \"Настройки\" показана</string>
+  <string name="morphe_show_settings_button_summary_off">Кнопка \"Настройки\" скрыта</string>
+  <string name="morphe_settings_button_index_title">Индекс кнопки настроек</string>
+  <string name="morphe_settings_button_index_invalid">Индекс кнопки настроек должен быть меньше %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Переключить кнопки \"Создать\" и \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Кнопка \"Создать\" заменена кнопкой \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Кнопка \"Создать\" не поменяна местами с кнопкой \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Если изменение этой настройки не получило эффекта, попробуйте переключиться в режим Инкогнито.</string>
   <string name="morphe_hide_navigation_button_labels_title">Скрыть подписи кнопок навигации</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Подписи кнопок навигации скрыты</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Подписи кнопок навигации показаны</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Надписи кнопок навигации скрыты</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Надписи кнопок навигации показана</string>
+  <string name="morphe_hide_navigation_bar_title">Скрыть панель навигации</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Панель навигации скрыта</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Панель навигации показана</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Этот параметр скрывает панель навигации полностью, включая вкладку «You».
+
+Чтобы получить доступ к настройкам:
+Откройте любое видео → Откройте меню Качество → Нажмите «Настройки > Настройки качества видео» внизу экрана."</string>
   <string name="morphe_narrow_navigation_buttons_title">Включить узкие кнопки навигации</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Расстояние между кнопками навигации небольшое</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Расстояние между кнопками навигации нормальное</string>
@@ -690,18 +700,30 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Панель навигации при темной теме непрозрачная или полупрозрачная</string>
   <string name="morphe_toolbar_screen_title">Панель инструментов</string>
   <string name="morphe_toolbar_screen_summary">Скрыть или изменить компоненты панели инструментов</string>
-  <string name="morphe_hide_toolbar_create_button_title">Скрыть кнопку \"Создать\"</string>
+  <string name="morphe_hide_toolbar_create_button_title">Скрыть \"Создать\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Кнопка \"Создать\" скрыта</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Создать\" показана</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Скрыть кнопку \"Уведомлений\"</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Скрыть \"Микрофон\"</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Кнопка \"Микрофона\" скрыта</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Кнопка \"Микрофона\" показана</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Скрыть \"Уведомления\"</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопка \"Уведомлений\" скрыта</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Уведомлений\" показана</string>
-  <string name="morphe_hide_toolbar_search_button_title">Скрыть кнопку \"Поиск\"</string>
+  <string name="morphe_hide_toolbar_search_button_title">Скрыть \"Поиск\"</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Кнопка \"Поиск\" скрыта</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка \"Поиск\" показана</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Скрыть кнопку Голосового поиска</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Кнопка Голосового поиска скрыта</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Кнопка Голосового поиска показана</string>
+  <string name="morphe_replace_toolbar_create_button_title">Заменить \"Создать\" на \"Настройки\"</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Кнопка \"Создать\" заменена кнопкой \"Настройки\"</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Кнопка «Создать» не заменяется кнопкой «Настройки»</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Поведение нажатия кнопки \"Настройки\" на вкладке \"Вы\" также переопределено.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Действие кнопки \"Настройки\"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Нажмите, чтобы открыть настройки Morphe
+Нажмите и удерживайте, чтобы открыть настройки YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Нажмите, чтобы открыть настройки YouTube
+Нажмите и удерживайте, чтобы открыть настройки Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Переместите замененные кнопки</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Кнопки перемещены</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Кнопки не перемещены</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Выдвижное меню плеера</string>
   <string name="morphe_hide_player_flyout_summary">Скрыть или показать пункты выдвижного меню плеера</string>
@@ -959,16 +981,20 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навигации в Shorts показана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Предлагаемое видео конечного экрана скрывается, когда авто воспроизведение выключено</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Рекомендуемое видео в конце просмотра скрыто</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Этот параметр работает, только если отключена опция \"Авто воспроизведение следующего видео\".
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Этот параметр работает только при отключении настройки \"Авто воспроизведение следующего видео\".
 
-\"Авто воспроизведение следующего видео\" можно изменить в настройках YouTube:
+Вы можете изменить это на YouTube:
 Настройки → Воспроизведение (или Авто воспроизведение) → Авто воспроизведение следующего видео"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Скрыть связанные видео</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Связанные видео скрыты</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Связанные видео показаны</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Скрыть похожие видео</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Похожие видео в полноэкранном режиме скрыты</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Похожие видео в полноэкранном режиме показаны</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Скрыть похожие видео</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Похожие видео в полноэкранном режиме скрыты</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Похожие видео в полноэкранном режиме показаны</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Скрыть метку времени видео</string>
   <string name="morphe_hide_timestamp_summary_on">Метка времени видео над полосой прогресса скрыта</string>
@@ -1285,6 +1311,12 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_open_system_share_sheet_title">Открыть системное меню \"Поделиться\"</string>
   <string name="morphe_open_system_share_sheet_summary_on">Открывает системное меню \"Поделиться\"</string>
   <string name="morphe_open_system_share_sheet_summary_off">Открывает меню \"Поделиться\" в приложении</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Переопределить кнопку YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Кнопка YouTube Music открывает ваше целевое приложение для воспроизведения музыки</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Кнопка YouTube Music открывает встроенное приложение</string>
+  <string name="morphe_music_package_name_title">Имя пакета Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Имя пакета целевого музыкального приложения</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Изменить начальную страницу</string>
   <string name="morphe_change_start_page_entry_default">По умолчанию</string>
@@ -1593,7 +1625,7 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_spoof_video_streams_about_js">• Если деобфускация провалится, воспроизведение может провалиться</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Принудительная оригинальная звуковая дорожка недоступна</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Вариант JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Вариант JavaScript плеера</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показать в \"Статистике для сисадминов\"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Тип клиента в \"Статистике для сисадминов\" показан</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Тип клиента в \"Статистике для сисадминов\" скрыт</string>

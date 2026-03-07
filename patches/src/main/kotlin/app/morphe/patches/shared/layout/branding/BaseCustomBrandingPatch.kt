@@ -2,6 +2,7 @@ package app.morphe.patches.shared.layout.branding
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatch
@@ -11,24 +12,18 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
+import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.util.ResourceGroup
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
 import app.morphe.util.trimIndentMultiline
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
 import java.io.File
@@ -119,6 +114,7 @@ internal fun baseCustomBrandingPatch(
 
     dependsOn(
         resourceMappingPatch,
+        fixRecycledBitmapPatch,
         bytecodePatch {
             execute {
                 mainActivityOnCreateFingerprint.method.addInstruction(
@@ -130,60 +126,81 @@ internal fun baseCustomBrandingPatch(
                 UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
                 UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
 
-                NotificationFingerprint.method.apply {
-                    val getBuilderIndex = if (isYouTubeMusic) {
-                        // YT Music the field is not a plain object type.
-                        indexOfFirstInstructionOrThrow {
-                            getReference<FieldReference>()?.type == "Landroid/app/Notification\$Builder;"
-                        }
-                    } else {
-                        // Find the field name of the notification builder. Field is an Object type.
-                        val builderCastIndex = indexOfFirstInstructionOrThrow {
-                            val reference = getReference<TypeReference>()
-                            opcode == Opcode.CHECK_CAST &&
-                                    reference?.type == "Landroid/app/Notification\$Builder;"
-                        }
-                        indexOfFirstInstructionReversedOrThrow(builderCastIndex) {
-                            getReference<FieldReference>()?.type == "Ljava/lang/Object;"
+                NotificationBuilderFingerprint.let {
+                    it.method.apply {
+                        mapOf(
+                            2 to "getColor",
+                            0 to "getSmallIcon"
+                        ).forEach { (offset, methodName) ->
+                            val index = it.instructionMatches[offset].index
+                            val register = getInstruction<FiveRegisterInstruction>(index).registerD
+
+                            addInstructions(
+                                index,
+                                """
+                                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$methodName(I)I
+                                    move-result v$register                                
+                                """
+                            )
                         }
                     }
+                }
 
-                    val builderFieldName = getInstruction<ReferenceInstruction>(getBuilderIndex)
-                        .getReference<FieldReference>()
+                NotificationIconFingerprint.let {
+                    it.method.apply {
+                        val index = it.instructionMatches.last().index
+                        val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                    findInstructionIndicesReversedOrThrow(
-                        Opcode.RETURN_VOID
-                    ).forEach { index ->
-                        addInstructionsAtControlFlowLabel(
+                        addInstructions(
                             index,
                             """
-                                move-object/from16 v0, p0
-                                iget-object v0, v0, $builderFieldName
-                                check-cast v0, Landroid/app/Notification${'$'}Builder;
-                                invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setNotificationIcon(Landroid/app/Notification${'$'}Builder;)V
+                                invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getSmallIcon(I)I
+                                move-result v$register                                
                             """
+                        )
+                    }
+                }
+            }
+        },
+        resourcePatch {
+            finalize {
+                val useCustomName = customName != null
+                val useCustomIcon = customIcon != null
+                val isRootInstall = setOrGetFallbackPackageName(originalAppPackageName) == originalAppPackageName
+
+                // Can only check if app is root installation by checking if change package name patch is in use.
+                // and can only do that in the finalize block here.
+                // The UI preferences cannot be selectively added here, because the settings finalize block
+                // may have already run and the settings are already wrote to file.
+                // Instead, show a warning if any patch option was used (A rooted device launcher ignores the manifest changes),
+                // and the non-functional in-app settings are removed on app startup by extension code.
+                if (isRootInstall && (useCustomName || useCustomIcon)) {
+                    Logger.getLogger(this::class.java.name).warning(
+                        "Custom branding does not work with root installation. No changes applied."
+                    )
+                }
+
+                if (!isRootInstall || useCustomName) {
+                    document("AndroidManifest.xml").use { document ->
+                        val application = document.getElementsByTagName("application").item(0) as Element
+                        application.setAttribute(
+                            "android:label",
+                            if (useCustomName) {
+                                // Use custom name everywhere.
+                                customName!!
+                            } else {
+                                // The YT application name can appear in some places alongside the system
+                                // YouTube app, such as the settings app list and in the "open with" file picker.
+                                // Because the YouTube app cannot be completely uninstalled and only disabled,
+                                // use a custom name for this situation to disambiguate which app is which.
+                                "@string/morphe_custom_branding_name_entry_2"
+                            }
                         )
                     }
                 }
             }
         }
     )
-
-    finalize {
-        // Can only check if app is root installation by checking if change package name patch is in use.
-        // and can only do that in the finalize block here.
-        // The UI preferences cannot be selectively added here, because the settings finalize block
-        // may have already run and the settings are already wrote to file.
-        // Instead, show a warning if any patch option was used (A rooted device launcher ignores the manifest changes),
-        // and the non-functional in-app settings are removed on app startup by extension code.
-        if (customName != null || customIcon != null) {
-            if (setOrGetFallbackPackageName(originalAppPackageName) == originalAppPackageName) {
-                Logger.getLogger(this::class.java.name).warning(
-                    "Custom branding does not work with root installation. No changes applied."
-                )
-            }
-        }
-    }
 
     execute {
         val useCustomName = customName != null
@@ -334,20 +351,6 @@ internal fun baseCustomBrandingPatch(
                     "@mipmap/morphe_launcher_custom"
                 )
             }
-
-            application.setAttribute(
-                "android:label",
-                if (useCustomName) {
-                    // Use custom name everywhere.
-                    customName!!
-                } else {
-                    // The YT application name can appear in some places alongside the system
-                    // YouTube app, such as the settings app list and in the "open with" file picker.
-                    // Because the YouTube app cannot be completely uninstalled and only disabled,
-                    // use a custom name for this situation to disambiguate which app is which.
-                    "@string/morphe_custom_branding_name_entry_2"
-                }
-            )
 
             val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
             val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else 0 // 0 indexing

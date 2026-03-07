@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Morphe tỉ lệ</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Cảnh báo thử nghiệm! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Cảnh báo thử nghiệm 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Bạn đang dùng phiên bản thử nghiệm là &lt;b&gt;%1$s&lt;/b&gt; ⚠️
 &lt;br/&gt;&lt;br/&gt;
 🔧 Ứng dụng có thể hoạt động không ổn định hoặc gặp lỗi không xác định, vì các bản vá chưa được tinh chỉnh cho phiên bản này.
@@ -95,6 +95,15 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Buộc dùng mã băm JavaScript của trình phát</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Cập nhật mã băm JavaScript của trình phát đã bị tắt
+
+• Cần có mã băm JavaScript hợp lệ
+• Video sẽ không phát được nếu mã băm này bị GVS thu hồi"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Cập nhật mã băm JavaScript của trình phát đã bật</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Mã băm JavaScript của trình phát thường có hiệu lực khoảng một tháng, và các mã băm quá hạn có thể bị GVS thu hồi.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Mã băm JavaScript của trình phát</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Nhập mã băm JavaScript hợp lệ của trình phát</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Giao thức QUIC đã tắt</string>

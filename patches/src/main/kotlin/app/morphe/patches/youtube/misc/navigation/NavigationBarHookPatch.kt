@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.misc.navigation
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -42,6 +50,29 @@ private const val EXTENSION_TOOLBAR_INTERFACE =
     "Lapp/morphe/extension/youtube/shared/NavigationBar${'$'}AppCompatToolbarPatchInterface;"
 
 private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
+
+private lateinit var bottomBarContainerMethodRef: WeakReference<MutableMethod>
+private var bottomBarContainerInsertIndex = -1
+private var bottomBarContainerRegister = -1
+private var bottomBarContainerOffset = 0
+
+fun addBottomBarContainerHook(
+    descriptor: String,
+    highPriority: Boolean = false
+) {
+    val insertIndex = if (highPriority) {
+        bottomBarContainerInsertIndex
+    } else {
+        bottomBarContainerInsertIndex + bottomBarContainerOffset
+    }
+
+    bottomBarContainerMethodRef.get()!!.addInstruction(
+        insertIndex,
+        "invoke-static { v$bottomBarContainerRegister }, $descriptor"
+    )
+
+    bottomBarContainerOffset++
+}
 
 fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
     hookNavigationButtonCreatedMethodRef.get()!!.addInstruction(
@@ -214,6 +245,15 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         hookNavigationButtonCreatedMethodRef = WeakReference(
             NavigationBarHookCallbackFingerprint.method
         )
+
+        InitializeBottomBarContainerFingerprint.let {
+            it.method.apply {
+                bottomBarContainerMethodRef = WeakReference(this)
+                bottomBarContainerInsertIndex = it.instructionMatches.last().index
+                bottomBarContainerRegister =
+                    getInstruction<FiveRegisterInstruction>(bottomBarContainerInsertIndex).registerC
+            }
+        }
 
         // Fix YT bug of notification tab missing the filled icon.
         if (is_19_35_or_greater) {

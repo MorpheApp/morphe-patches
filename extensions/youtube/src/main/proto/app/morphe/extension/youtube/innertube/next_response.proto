@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+message NextResponse {
+    PrimaryContents primaryContents = 7;
+}
+
+message PrimaryContents {
+    SingleColumnWatchNextResults singleColumnWatchNextResults = 51779735;
+}
+
+message SingleColumnWatchNextResults {
+    PrimaryResults primaryResults = 1;
+}
+
+message PrimaryResults {
+    SecondaryResults secondaryResults = 49399797;
+}
+
+message SecondaryResults {
+    repeated SecondaryContents secondaryContents = 1;
+}
+
+message SecondaryContents {
+    oneof data {
+        ItemSectionRenderer itemSectionRenderer = 50195462;
+        ShelfRenderer shelfRenderer = 51845067;
+    }
+}
+
+message ItemSectionRenderer {
+    string sectionIdentifier = 7;
+}
+
+message ShelfRenderer {
+}

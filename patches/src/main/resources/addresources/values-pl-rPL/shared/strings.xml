@@ -27,7 +27,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_dialog_message">Aby zmiany zostały wprowadzone, uruchom aplikację ponownie.</string>
   <string name="morphe_settings_restart">Uruchom ponownie</string>
   <!-- String is also duplicated in Reddit import / export preference -->
-  <string name="morphe_settings_import">Zaimportuj</string>
+  <string name="morphe_settings_import">Importuj</string>
   <string name="morphe_settings_import_copy">Skopiuj</string>
   <string name="morphe_settings_import_reset">Przywrócono domyślne ustawienia Morphe</string>
   <string name="morphe_settings_import_success">Zaimportowano %d ustawień</string>
@@ -58,8 +58,8 @@ Second \"item\" text"</string>
 
 Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwiedź morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Język aplikacji</string>
-  <string name="morphe_pref_import_export_title">Zaimportuj / Wyeksportuj</string>
-  <string name="morphe_pref_import_export_summary">Zaimportuj / Wyeksportuj ustawienia Morphe</string>
+  <string name="morphe_pref_import_export_title">Importuj / Eksportuj</string>
+  <string name="morphe_pref_import_export_summary">Importuj / Eksportuj ustawienia Morphe</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Używasz najnowszej wersji modyfikacji Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Używasz modyfikacji Morphe w wersji &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostępna aktualizacja: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aby zaktualizować modyfikacje, użyj Morphe, aby zmodyfikować tę aplikację ponownie</string>
@@ -72,7 +72,7 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
   <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>
-  <string name="morphe_debug_title">Logi do debugowania</string>
+  <string name="morphe_debug_title">Logi debugowania</string>
   <string name="morphe_debug_summary_on">Włączone</string>
   <string name="morphe_debug_summary_off">Wyłączone</string>
   <string name="morphe_debug_stacktrace_title">Logi śladów stosów</string>
@@ -84,17 +84,17 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie komunikatów o błędach ukrywa wszystkie komunikaty o błędach Morphe.
 
 Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Wyeksportuj logi do debugowania</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje logi do debugowania Morphe do schowka</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Wyeksportuj logi debugowania</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje logi debugowania Morphe do schowka</string>
   <string name="morphe_debug_logs_disabled">Wyłączone jest rejestrowanie debugowania</string>
   <string name="morphe_debug_logs_none_found">Nie znaleziono logów</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Logi skopiowane</string>
   <string name="morphe_debug_logs_failed_to_export">Nie udało się wyeksportować logów: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Wyczyść logi do debugowania</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Czyści wszystkie zapisane logi do debugowania Morphe</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Wyczyść logi debugowania</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Czyści wszystkie zapisane logi debugowania Morphe</string>
   <string name="morphe_debug_logs_clear_toast">Logi usunięte</string>
   <string name="morphe_debug_feature_flags_manager_title">Menedżer flag funkcji</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Zarządzaj flagami funkcji typu boolean</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Zarządzaj logicznymi flagami funkcji</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Aktywne flagi (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokowane flagi (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Szukaj flag...</string>

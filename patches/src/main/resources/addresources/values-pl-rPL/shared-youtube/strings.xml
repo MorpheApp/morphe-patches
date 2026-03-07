@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Niestandardowa</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja Eksperymentalna! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja Eksperymentalna 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Oczekuj nieprzewidywalnego zachowania aplikacji lub niezidentyfikowanych błędów, ponieważ dopracowujemy modyfikacje dla tej wersji aplikacji.
@@ -43,7 +43,7 @@ Jeśli chcesz najbardziej stabilną wersję, to &lt;b&gt;odinstaluj&lt;/b&gt; t�
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nie pokazuj ponownie</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Oszukuj strumienie filmu</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Oszukuje strumień filmu klienta, by zapobiec problemom z odtwarzaniem.</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Oszukuje strumień filmu klienta, aby zapobiec problemom z odtwarzaniem</string>
   <string name="morphe_spoof_video_streams_title">Oszukuj strumienie filmu</string>
   <string name="morphe_spoof_video_streams_summary_on">"Strumienie filmu są oszukiwane
 
@@ -59,7 +59,7 @@ Odtwarzanie może nie działać"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Domyślny klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie jesteś zalogowany do Android VR. Stuknij tutaj, by się zalogować</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie jesteś zalogowany do Android VR. Stuknij tutaj, aby się zalogować</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Obecnie zalogowany do Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">By używać tej funkcji, zmień \"Domyślny klient\" na Android VR</string>
@@ -95,6 +95,15 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Aktualizacja hash JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Wyłączona
+
+• Wymagany jest prawidłowy hash JavaScript odtwarzacza
+• Odtwarzanie nie powiedzie się, jeśli hash JavaScript zostanie unieważniony w GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Włączona</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Hashe JavaScript odtwarzacza są ważne przez około miesiąc, a nieaktualne hashe mogą zostać unieważnione przez GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Wprowadź poprawny hash JavaScript odtwarzacza</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protokół QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Wyłączony</string>
@@ -104,7 +113,7 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_disable_drc_audio_summary_on">Wyłączona</string>
   <string name="morphe_disable_drc_audio_summary_off">Włączona</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Wymuś oryginalny język audio</string>
+  <string name="morphe_force_original_audio_title">Wymuszenie oryginalnej ścieżki dźwiękowej</string>
   <string name="morphe_force_original_audio_summary_on">Włączone</string>
   <string name="morphe_force_original_audio_summary_off">Wyłączone</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

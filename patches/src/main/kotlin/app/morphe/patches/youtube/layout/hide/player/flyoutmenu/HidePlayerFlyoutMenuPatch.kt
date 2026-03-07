@@ -26,7 +26,6 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
     execute {
         val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuItemsFilter;"
 
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_player_flyout",
@@ -48,7 +47,7 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_player_flyout_loop_video"),
                     SwitchPreference("morphe_hide_player_flyout_sleep_timer"),
                     SwitchPreference("morphe_hide_player_flyout_watch_in_vr"),
-                ),
+                )
             )
         )
 

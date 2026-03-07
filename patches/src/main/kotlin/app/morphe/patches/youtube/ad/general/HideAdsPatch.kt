@@ -10,6 +10,7 @@ import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
@@ -50,6 +51,7 @@ private val hideAdsResourcePatch = resourcePatch {
         resourceMappingPatch,
         clientContextHookPatch,
         engagementPanelHookPatch,
+        hideHorizontalShelvesPatch,
     )
 
     execute {

@@ -23,7 +23,7 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
 
-    public static final class SpoofClientJavaScriptVariantAvailability implements Setting.Availability {
+    public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
             return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS;
@@ -32,6 +32,22 @@ public class SpoofVideoStreamsPatch {
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS);
+        }
+    }
+
+    public static final class JavaScriptHashAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS &&
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_PLAYER_JS_HASH.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_PLAYER_JS_HASH
+            );
         }
     }
 

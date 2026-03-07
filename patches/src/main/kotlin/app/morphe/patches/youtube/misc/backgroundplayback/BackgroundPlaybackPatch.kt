@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.misc.backgroundplayback
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -43,7 +44,8 @@ val backgroundPlaybackPatch = bytecodePatch(
         playerTypeHookPatch,
         videoInformationPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        fixRecycledBitmapPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

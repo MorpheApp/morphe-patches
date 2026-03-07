@@ -13,6 +13,32 @@ message GuideResponse {
 
 message Items1 {
     PivotBarRenderer pivotBarRenderer = 117866661;
+    MobileTopbarRenderer mobileTopbarRenderer = 123267149;
+}
+
+message MobileTopbarRenderer {
+    repeated Buttons buttons = 4;
+}
+
+message Buttons {
+    oneof data {
+        ButtonRenderer buttonRenderer = 65153809;
+    }
+}
+
+message ButtonRenderer {
+    optional Icon icon = 8;
+    NavigationEndpoint navigationEndpoint = 9;
+    optional ButtonRendererAccessibilityData buttonRendererAccessibilityData = 10;
+    optional RendererAccessibilityData rendererAccessibilityData = 16;
+}
+
+message RendererAccessibilityData {
+    ButtonRendererAccessibilityData buttonRendererAccessibilityData = 75730170;
+}
+
+message ButtonRendererAccessibilityData {
+    optional string label = 2;
 }
 
 message PivotBarRenderer {
@@ -43,7 +69,7 @@ enum NavigationType {
 
 message PivotBarItemRenderer {
     string pivotIdentifier = 1;
-    NavigationEndPoint navigationEndPoint = 2;
+    NavigationEndpoint navigationEndpoint = 2;
     Accessibility accessibility = 3;
     Title title = 4;
     Icon icon = 5;
@@ -75,16 +101,24 @@ message Runs {
     string text = 2;
 }
 
-message NavigationEndPoint {
-    optional BrowseEndPoint browseEndPoint = 48687626;
-    optional ReelWatchEndPoint reelWatchEndPoint = 139608561;
+message NavigationEndpoint {
+    optional BrowseEndpoint browseEndpoint = 48687626;
+    optional ReelWatchEndpoint reelWatchEndpoint = 139608561;
+    optional CreationEntryEndpoint creationEntryEndpoint = 324622913;
+    optional SearchEndpoint searchEndpoint = 48687709;
 }
 
-message BrowseEndPoint {
+message CreationEntryEndpoint {
+}
+
+message SearchEndpoint {
+}
+
+message BrowseEndpoint {
     string browseId = 2;
 }
 
-message ReelWatchEndPoint {
+message ReelWatchEndpoint {
     string playlistId = 2;
     string playerParams = 4;
     string params = 11;

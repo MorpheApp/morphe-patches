@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Personalizat</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Avertisment experimental! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alertă experimentală 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Folosiți o versiune experimentală a aplicației ⚠️ <b>%1$s</b>
 <br/>
 <br/>
@@ -97,6 +97,15 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forțează hash JavaScript al player-ului</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Actualizarea hash-ului JavaScript al player-ului este dezactivată
+
+• Este necesar un hash JavaScript al player-ului valid
+• Redarea eșuează dacă hash-ul JavaScript al player-ului este revocat în GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Actualizarea hash-ului JavaScript al player-ului este activată</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Hash-urile JavaScript ale player-ului sunt valide aproximativ o lună, iar hash-urile învechite pot fi revocate de GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript al juc\u00e3torului</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Introduceți un hash JavaScript al jucătorului valid</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protocolul QUIC este dezactivat</string>

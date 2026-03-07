@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.misc.litho.filter
 
 import app.morphe.patcher.Fingerprint
@@ -21,10 +29,20 @@ internal object AccessibilityIdFingerprint : Fingerprint(
     )
 )
 
-internal object ComponentCreateFingerprint : Fingerprint(
+/**
+ * Resolves using the method found in [EmptyComponentParentFingerprint].
+ */
+internal object EmptyComponentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L")
+)
+
+internal object EmptyComponentParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(),
     filters = listOf(
-        string("Element missing correct type extension"),
-        string("Element missing type")
+        string("EmptyComponent")
     )
 )
 
@@ -40,10 +58,10 @@ internal object LithoFilterFingerprint : Fingerprint(
     )
 )
 
-internal object ProtobufBufferReferenceFingerprint : Fingerprint(
+internal object ProtobufBufferEncodeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("[B"),
+    returnType = "[B",
+    parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -52,12 +70,12 @@ internal object ProtobufBufferReferenceFingerprint : Fingerprint(
         ),
         methodCall(
             definingClass = "Lcom/google/android/libraries/elements/adl/UpbMessage;",
-            name = "jniDecode"
+            name = "jniEncode"
         )
     )
 )
 
-internal object ProtobufBufferReferenceLegacyFingerprint : Fingerprint(
+internal object ProtobufBufferReferenceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "Ljava/nio/ByteBuffer;"),
@@ -67,17 +85,6 @@ internal object ProtobufBufferReferenceLegacyFingerprint : Fingerprint(
         Opcode.MOVE_RESULT,
         Opcode.SUB_INT_2ADDR,
     )
-)
-
-internal object EmptyComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(),
-    filters = listOf(
-        string("EmptyComponent")
-    ),
-    custom = { _, classDef ->
-        classDef.methods.filter { AccessFlags.STATIC.isSet(it.accessFlags) }.size == 1
-    }
 )
 
 internal object LithoThreadExecutorFingerprint : Fingerprint(

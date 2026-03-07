@@ -76,7 +76,7 @@ val changeHeaderPatch = baseChangeHeaderPatch(
     variants = variants,
     logoResourceNames = logoResourceNames,
     appendVariantToLogo = true,
-    preferenceScreen = PreferenceScreen.GENERAL_LAYOUT,
+    preferenceScreen = PreferenceScreen.GENERAL,
     block = {
         dependsOn(changeHeaderBytecodePatch)
         compatibleWith(COMPATIBILITY_YOUTUBE)

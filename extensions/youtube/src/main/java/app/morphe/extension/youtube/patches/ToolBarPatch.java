@@ -17,14 +17,14 @@ public class ToolBarPatch {
      * Injection point.
      */
     public static void hookToolBar(Enum<?> iconEnum, ImageView imageView) {
-        if (iconEnum != null && imageView.getParent() instanceof View view) {
+        if (iconEnum != null && imageView.getParent() instanceof View parentView) {
             String enumName = iconEnum.name();
             Logger.printDebug(() -> "enum: " + enumName);
-            hookToolBar(enumName, view);
+            hookToolBar(enumName, parentView, imageView);
         }
     }
 
-    private static void hookToolBar(String enumString, View parentView) {
+    private static void hookToolBar(String enumString, View parentView, ImageView imageView) {
         // Code added during patching.
     }
 }

@@ -10,6 +10,7 @@ public enum AppLanguage {
 
     // Languages codes not included with YouTube, but are translated on Crowdin
     GA,
+    KMR,
 
     // Language codes found in locale_config.xml
     // All region specific variants have been removed.

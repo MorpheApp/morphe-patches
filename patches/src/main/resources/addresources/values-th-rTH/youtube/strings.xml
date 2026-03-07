@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">ซ่อนการดำเนินการด่วน</string>
   <string name="morphe_hide_quick_actions_summary_on">การดำเนินการด่วนในโหมดเต็มจอถูกซ่อนไว้</string>
   <string name="morphe_hide_quick_actions_summary_off">การดำเนินการด่วนในโหมดเต็มจอแสดงอยู่</string>
-  <string name="morphe_hide_related_videos_title">ซ่อนวิดีโอที่เกี่ยวข้อง</string>
-  <string name="morphe_hide_related_videos_summary_on">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนถูกซ่อนไว้</string>
-  <string name="morphe_hide_related_videos_summary_off">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนแสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">ซ่อนแอปพลิเคชันที่รวดเร็วที่เกี่ยวข้องกับวิดีโอ</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">วิดีโอที่เกี่ยวข้องในการดำเนินการด่วนแสดงอยู่</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">ซ่อนหลักเกณฑ์สำหรับผู้ติดตาม</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">แนวทางชุมชนสำหรับสมาชิกถูกซ่อนไว้</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">แนวทางชุมชนสำหรับสมาชิกแสดงอยู่</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
   <string name="morphe_hide_community_button_summary_on">ปุ่มความคิดเห็นถูกซ่อนอยู่</string>
   <string name="morphe_hide_community_button_summary_off">ปุ่มความคิดเห็นถูกแสดงอยู่</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">ซ่อนชั้นวาง \'สำหรับคุณ\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">ชั้นวาง \"สำหรับคุณ\" ถูกซ่อนไว้</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">ชั้นวาง \"สำหรับคุณ\" แสดงอยู่</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">ซ่อนปุ่มเข้าร่วม</string>
   <string name="morphe_hide_join_button_summary_on">ปุ่มเข้าร่วมซ่อนอยู่</string>
@@ -656,18 +652,30 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">ซ่อนการแจ้งเตือน</string>
   <string name="morphe_hide_notifications_button_summary_on">ปุ่มการแจ้งเตือนถูกซ่อนอยู่</string>
   <string name="morphe_hide_notifications_button_summary_off">ปุ่มการแจ้งเตือนแสดงอยู่</string>
-  <string name="morphe_show_search_button_title">แสดงปุ่มค้นหา</string>
+  <string name="morphe_show_search_button_title">แสดงการค้นหา</string>
   <string name="morphe_show_search_button_summary_on">แสดงปุ่มค้นหาแล้ว</string>
   <string name="morphe_show_search_button_summary_off">ปุ่มค้นหาไม่ได้แสดง</string>
   <string name="morphe_search_button_index_title">คำสั่งค้นหา</string>
   <string name="morphe_search_button_index_invalid">ค่าแท็บคำสั่งค้นหาไม่ควรเกิน %s</string>
+  <string name="morphe_show_settings_button_title">แสดงการตั้งค่า</string>
+  <string name="morphe_show_settings_button_summary_on">ปุ่มการตั้งค่าแสดง</string>
+  <string name="morphe_show_settings_button_summary_off">ปุ่มการตั้งค่าไม่แสดง</string>
+  <string name="morphe_settings_button_index_title">ปุ่มตั้งค่า</string>
+  <string name="morphe_settings_button_index_invalid">ดัชนีปุ่มตั้งค่าต้องน้อยกว่า %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">สลับสร้างด้วยการแจ้งเตือน</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">ปุ่มสร้างถูกสลับกับปุ่มการแจ้งเตือนแล้ว</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">ปุ่มสร้างยังไม่ถูกสลับกับปุ่มการแจ้งเตือน</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">ถ้าเปลี่ยนการตั้งค่านี้ยังไม่มีผล กรุณาลองสลับไปยังโหมดไม่แสดงตัวตน</string>
   <string name="morphe_hide_navigation_button_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">ป้ายกำกับถูกซ่อน</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">ป้ายกำกับถูกแสดง</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">ป้ายกำกับปุ่มนำทางถูกซ่อน</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">ป้ายกำกับปุ่มนำทางแสดง</string>
+  <string name="morphe_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
+  <string name="morphe_hide_navigation_bar_summary_on">ซ่อนแถบนำทางแล้ว</string>
+  <string name="morphe_hide_navigation_bar_summary_off">ไม่ซ่อนแถบนำทาง</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"สิ่งนี้ซ่อนแถบนำทางทั้งหมด รวมถึงแท็บ You
+
+ในการเข้าถึงการตั้งค่า:
+เปิดวิดีโอใดๆ → เปิดเมนูคุณภาพ → แตะ 'การตั้งค่าและ > การตั้งค่าคุณภาพวิดีโอ' ที่ด้านล่าง"</string>
   <string name="morphe_narrow_navigation_buttons_title">เปิดใช้งานปุ่มนำทางที่แคบ</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">ระยะห่างระหว่างปุ่มนำทางเป็นระยะแคบ</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">ระยะห่างระหว่างปุ่มนำทางเป็นระยะปกติ</string>
@@ -688,18 +696,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">แถบนำทางโหมดมืดโปร่งแสงหรือไม่โปร่งแสง</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">ซ่อนหรือเปลี่ยนส่วนประกอบแถบเครื่องมือ</string>
-  <string name="morphe_hide_toolbar_create_button_title">ซ่อนปุ่มสร้าง</string>
+  <string name="morphe_hide_toolbar_create_button_title">ซ่อนสร้าง</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">ปุ่มสร้างถูกซ่อน</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">ปุ่มสร้างถูกแสดง</string>
-  <string name="morphe_hide_toolbar_notification_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">ซ่อนไมโครโฟน</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">ปุ่มไมโครโฟนถูกซ่อน</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">ปุ่มไมโครโฟนแสดง</string>
+  <string name="morphe_hide_toolbar_notification_button_title">ซ่อนการแจ้งเตือน</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">ปุ่มการแจ้งเตือนถูกซ่อนอยู่</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">ปุ่มการแจ้งเตือนแสดงอยู่</string>
-  <string name="morphe_hide_toolbar_search_button_title">ซ่อนปุ่มค้นหา</string>
+  <string name="morphe_hide_toolbar_search_button_title">ซ่อนการค้นหา</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">ซ่อนปุ่มค้นหาแล้ว</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">แสดงปุ่มค้นหาแล้ว</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">ซ่อนปุ่มค้นหาเสียง</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">ปุ่มค้นหาเสียงถูกซ่อนแล้ว</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">ปุ่มค้นหาเสียงถูกแสดงแล้ว</string>
+  <string name="morphe_replace_toolbar_create_button_title">แทนที่สร้างด้วยการตั้งค่า</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">ปุ่มสร้างถูกแทนที่ด้วยปุ่มการตั้งค่า</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">ปุ่มสร้างไม่ถูกแทนที่ด้วยปุ่มการตั้งค่า</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">การคลิกของปุ่มการตั้งค่าในแท็บ You จะถูกยกเลิกด้วยเช่นกัน</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">การกระทำของปุ่มการตั้งค่า</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"แตะเพื่อเปิดการตั้งค่า Morphe
+แตะค้างเพื่อเปิดการตั้งค่า YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"แตะเพื่อเปิดการตั้งค่า YouTube
+แตะค้างเพื่อเปิดการตั้งค่า Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">จัดเรียงปุ่มที่ถูกแทนที่</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">ปุ่มถูกจัดเรียงใหม่</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">ปุ่มไม่ถูกจัดเรียงใหม่</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">เมนูแบบเลื่อนลง</string>
   <string name="morphe_hide_player_flyout_summary">ซ่อนหรือแสดงรายการเมนูแบบเลื่อนลงของเครื่องเล่น</string>
@@ -957,16 +977,20 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">ไม่ซ่อนแถบนำทาง</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">ซ่อนวิดีโอแนะนำในหน้าจอสิ้นสุด</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">หน้าจอสุดท้ายของวิดีโอแนะนำจะถูกซ่อนเมื่อปิดการเล่นอัตโนมัติ</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">วิดีโอแนะนำในหน้าจอสิ้นสุดถูกซ่อน</string>
   <string name="morphe_end_screen_suggested_video_summary_off">วิดีโอแนะนำในหน้าจอสิ้นสุดจะปรากฏ</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"การตั้งค่านี้จะทำงานได้เฉพาะเมื่อปิดการเล่นวิดีโอถัดไปอัตโนมัติ
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"การตั้งค่านี้จะทำงานเฉพาะเมื่อ 'เล่นวิดีโอถัดไปอัตโนมัติ' ถูกปิด
 
-สามารถเปลี่ยนการเล่นวิดีโอถัดไปอัตโนมัติได้ในการตั้งค่า YouTube:
-การตั้งค่า → การเล่น (หรือ อัตโนมัติ) → เล่นวิดีโอถัดไปอัตโนมัติ"</string>
+คุณสามารถเปลี่ยนได้ใน YouTube:
+ตั้งค่า → การเล่น (หรือเล่นอัตโนมัติ) → เล่นวิดีโอถัดไปอัตโนมัติ"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">ซ่อนวิดีโอที่เกี่ยวข้อง</string>
+  <string name="morphe_hide_player_related_videos_summary_on">วิดีโอที่เกี่ยวข้องถูกซ่อน</string>
+  <string name="morphe_hide_player_related_videos_summary_off">วิดีโอที่เกี่ยวข้องจะแสดง</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">ซ่อนโอเวอร์เลย์วิดีโอที่เกี่ยวข้อง</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอถูกซ่อนไว้</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอแสดงอยู่</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">ซ่อนโอเวอร์เลย์วิดีโอที่เกี่ยวข้อง</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอถูกซ่อนไว้</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">โอเวอร์เลย์วิดีโอที่เกี่ยวข้องในโหมดเต็มจอแสดงอยู่</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">ซ่อนเวลาของวิดีโอ</string>
   <string name="morphe_hide_timestamp_summary_on">เวลาถูกซ่อนอยู่</string>
@@ -1281,6 +1305,12 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_open_system_share_sheet_title">เปิดแชร์ระบบ</string>
   <string name="morphe_open_system_share_sheet_summary_on">เปิดแชร์ระบบ</string>
   <string name="morphe_open_system_share_sheet_summary_off">เปิดแชร์ในแอป</string>
+  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">แทนที่ปุ่ม YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">ปุ่ม YouTube Music เปิดโปรแกรมเพลงของคุณ</string>
+  <string name="morphe_override_youtube_music_button_summary_off">ปุ่ม YouTube Music เปิดแอปพลิเคชันแบบพื้นฐาน</string>
+  <string name="morphe_music_package_name_title">ชื่อแพคเกจ Morphe Music</string>
+  <string name="morphe_music_package_name_summary">ชื่อแพคเกจของแอปพลิเคชันเพลงเป้าหมาย</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">เปลี่ยนหน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
@@ -1589,7 +1619,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_spoof_video_streams_about_js">• ถ้า Deobfuscation ล้มเหลว การเล่นอาจล้มเหลว</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">แปลรูปแบบ JavaScript ของเพลเยอร์</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">แปลรูปแบบ JavaScript ของเพลเยอร์</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">แสดงในสถิติสำหรับพวกเนิร์ด</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">แสดงชนิดไคลเอ็นต์ในสถิติสำหรับพวกเนิร์ด</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">ซ่อนไคลเอ็นต์ในสถิติสำหรับพวกเนิร์ด</string>
