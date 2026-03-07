@@ -346,7 +346,7 @@ private fun Method.findFreeRegistersInternal(
     check(implementation != null) {
         "Method has no implementation: $this"
     }
-    check(startIndex > 0 && startIndex < instructions.count()) {
+    check(startIndex >= 0 && startIndex < instructions.count()) {
         "startIndex out of bounds: $startIndex methodInstructionCount: ${instructions.count()}"
     }
     check(numberOfFreeRegistersNeeded > 0) {
