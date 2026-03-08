@@ -4,6 +4,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
@@ -64,7 +65,9 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1"),
-                    ListPreference("morphe_spoof_video_streams_js_variant"),
+                    ListPreference("morphe_spoof_video_streams_player_js_variant"),
+                    SwitchPreference("morphe_spoof_video_streams_force_player_js_hash"),
+                    TextPreference("morphe_spoof_video_streams_player_js_hash"),
                     SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),
                 )
             )

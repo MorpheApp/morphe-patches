@@ -1,4 +1,14 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches;
+
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_21_10_OR_GREATER;
 
 import android.app.Activity;
 
@@ -24,7 +34,12 @@ public class ShortsAutoplayPatch {
         /**
          * Pause playback after 1 play.
          */
-        END_SCREEN;
+        END_SCREEN,
+        /**
+         * Play once, then advanced to the next Short.
+         * Only found in 21.10+
+         */
+        AUTO_ADVANCE;
 
         static void setYTEnumValue(Enum<?> ytBehavior) {
             for (ShortsLoopBehavior rvBehavior : values()) {
@@ -93,8 +108,12 @@ public class ShortsAutoplayPatch {
                 autoplay = Settings.SHORTS_AUTOPLAY.get();
             }
 
-            Enum<?> overrideBehavior = (autoplay
+            ShortsLoopBehavior autoPlayBehavior = IS_21_10_OR_GREATER
                     ? ShortsLoopBehavior.SINGLE_PLAY
+                    : ShortsLoopBehavior.AUTO_ADVANCE;
+
+            Enum<?> overrideBehavior = (autoplay
+                    ? autoPlayBehavior
                     : ShortsLoopBehavior.REPEAT).ytEnumValue;
 
             if (overrideBehavior != null) {

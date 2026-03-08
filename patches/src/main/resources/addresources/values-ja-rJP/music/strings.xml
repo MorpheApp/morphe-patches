@@ -59,17 +59,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_library">ライブラリ</string>
   <string name="morphe_change_start_page_entry_liked_music">高く評価した音楽</string>
   <string name="morphe_change_start_page_entry_playlists">再生リスト</string>
-  <string name="morphe_change_start_page_entry_podcasts">ポッドキャスト</string>
   <string name="morphe_change_start_page_entry_search">検索</string>
   <string name="morphe_change_start_page_entry_subscriptions">登録チャンネル</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">カテゴリバーを非表示</string>
   <string name="morphe_music_hide_category_bar_summary_on">カテゴリバーは表示されません</string>
   <string name="morphe_music_hide_category_bar_summary_off">カテゴリバーは表示されます</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">ミニプレーヤーの色を変更</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">ミニプレーヤーはフルスクリーン プレーヤーと同じ色を使用します</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">ミニプレーヤーはデフォルトの色を使用します</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">強制ミニプレーヤーを有効にする</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">再生変更時にミニプレーヤーは最小化されたままになります</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">再生変更時にミニプレーヤーはフルスクリーンに展開されます</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ナビゲーション バー</string>
   <string name="morphe_music_navigation_bar_screen_summary">ナビゲーション バーのボタンを変更または非表示にします</string>

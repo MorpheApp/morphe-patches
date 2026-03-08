@@ -177,9 +177,9 @@ Promene uključuju:
   <string name="morphe_hide_quick_actions_title">Сакриј брзе радње</string>
   <string name="morphe_hide_quick_actions_summary_on">Брзе радње у режиму целог екрана су скривене</string>
   <string name="morphe_hide_quick_actions_summary_off">Брзе радње у режиму целог екрана су приказане</string>
-  <string name="morphe_hide_related_videos_title">Сакриј сродне видее</string>
-  <string name="morphe_hide_related_videos_summary_on">Сродни видеи у брзим радњама су скривени</string>
-  <string name="morphe_hide_related_videos_summary_off">Сродни видеи у брзим радњама су приказани</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Сакриј брзе акције за видеосе снимке који су повезани</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Сродни видеи у брзим радњама су скривени</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Сродни видеи у брзим радњама су приказани</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Сакриј смернице пратилаца</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Смернице заједнице пратилаца су скривене</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Смернице заједнице пратилаца су приказане</string>
@@ -281,10 +281,6 @@ Promene uključuju:
   <string name="morphe_hide_community_button_title">Сакриј дугме „Здравље”</string>
   <string name="morphe_hide_community_button_summary_on">Дугме „Здравље” је скривено</string>
   <string name="morphe_hide_community_button_summary_off">Дугме „Здравље” је приказано</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Сакриј полицу „За вас”</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Полица „За вас” је скривена</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Полица „За вас” је приказана</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Сакриј дугме „Учлани ме”</string>
   <string name="morphe_hide_join_button_summary_on">Дугме „Учлани ме” је скривено</string>
@@ -658,18 +654,30 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_hide_notifications_button_title">Сакриј обавештења</string>
   <string name="morphe_hide_notifications_button_summary_on">Дугме „Обавештења” је скривено</string>
   <string name="morphe_hide_notifications_button_summary_off">Дугме „Обавештења” је приказано</string>
-  <string name="morphe_show_search_button_title">Прикажи дугме „Претрага“</string>
+  <string name="morphe_show_search_button_title">Покажи претрагу</string>
   <string name="morphe_show_search_button_summary_on">Дугме „Претрага” је приказано</string>
   <string name="morphe_show_search_button_summary_off">Дугме „Претрага“ није приказана</string>
   <string name="morphe_search_button_index_title">Дугме за претрагу</string>
   <string name="morphe_search_button_index_invalid">Индекс дугмета за претрагу мора бити мањи од %s</string>
+  <string name="morphe_show_settings_button_title">Покажи подешавања</string>
+  <string name="morphe_show_settings_button_summary_on">Подешвање приказано</string>
+  <string name="morphe_show_settings_button_summary_off">Подешвање није приказано</string>
+  <string name="morphe_settings_button_index_title">Поделка зацет активность</string>
+  <string name="morphe_settings_button_index_invalid">Поделка зацет активность смет не може бити мање од %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Замени дугме „Направи” дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Дугме „Направи” је замењено дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Дугме „Направи” није замењено дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Ако промена ове поставке не утиче, покушајте да пребаците у Инкогнито режим.</string>
   <string name="morphe_hide_navigation_button_labels_title">Сакриј ознаке дугмади за навигацију</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Ознаке дугмади за навигацију су скривене</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Ознаке дугмади за навигацију су приказане</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Трака за навигацију сатијају са тачкама</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Трака за навигацију сатијају се појављују</string>
+  <string name="morphe_hide_navigation_bar_title">Сакриј траку за навигацију</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Трака за навигацију је скривена</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Трака за навигацију је приказана</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ово потпуно скрива траку за навигацију, укључујући таб ‘Ја’.
+
+Да бисте приступили Поделкама:
+Отворите било коју видео снимку → Откријте мени Качество → Уплопните ‘Поделки > Наклони уоквирење квалитета’ на дну."</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske dugmad za navigaciju</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između dugmada za navigaciju je usak</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između dugmada za navigaciju je normalan</string>
@@ -690,18 +698,30 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Трака за навигацију у тамном режиму је непрозирна или прозирна</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Sakrijte ili promenite komponente trake za alatke</string>
-  <string name="morphe_hide_toolbar_create_button_title">Сакриј дугме \"Кreiraj\"</string>
+  <string name="morphe_hide_toolbar_create_button_title">Сакриј дугме „Направи”</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Дугме „Направи” је скривено</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Дугме „Направи” је приказано</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Сакриј дугме \"Обавештења\"</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Сакрити Микрофон</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Дугме за Микрофон је скривено</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Дугме за Микрофон је приказано</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Сакриј обавештења</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Дугме „Обавештења” је скривено</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Дугме „Обавештења” је приказано</string>
-  <string name="morphe_hide_toolbar_search_button_title">Сакриј дугме \"Претрага\"</string>
+  <string name="morphe_hide_toolbar_search_button_title">Сакрити Траку за претрагу</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Дугме „Претрага” је скривено</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Дугме „Претрага” је приказано</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Сакриј дугме „Гласна претрага”</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Дугме „Гласна претрага” је скривено</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Дугме „Гласна претрага” је приказано</string>
+  <string name="morphe_replace_toolbar_create_button_title">Замени ‘Направи’ дугме Поделкама</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Дугме ‘Направи’ замењено је дугметом Поделкама</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Дугме ‘Направи’ није замењено дугметом Поделкама</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Клик говора Дугме Поделкама такође се суспендује.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Активирање Поделка Дугмета за тип</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Додир да бисте отворили Поделки Поделкама
+Додир и задржавање да бисте отворили Поделки YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Додир да бисте отворили Поделки YouTube
+Додир и задржавање да бисте отворили Поделки Поделкама"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Реаногирајте замените дугмете</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Дугмете су поређане</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Дугмете нису поређане</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Падајући мени</string>
   <string name="morphe_hide_player_flyout_summary">Сакријте или прикажите предмете у падајућем менију плејера</string>
@@ -965,10 +985,14 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitirati video tokove' u '
 
 Можете да промените ово у Јутубу:
 Поставке → Промена (или Автоматско пуштање) → Автоматско пуштање следећег видеа"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Сакриј сродне видее</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Повезани видеа снимци су скривени</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Погледајте и други видеа</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Сакриј сродне видее</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Сродни видеи у режиму целог екрана су скривени</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Сродни видеи у режиму целог екрана су приказани</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Сакриј сродне видее</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Сродни видеи у режиму целог екрана су скривени</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Сродни видеи у режиму целог екрана су приказани</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Сакриј временску ознаку видеа</string>
   <string name="morphe_hide_timestamp_summary_on">Временска ознака видеа је скривена</string>
@@ -1598,7 +1622,7 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako deobfuskacija propadne, reprodukcija može propasti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Присиљавање оригиналног звука није доступно</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Varijanta JavaScript playera</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript playera</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Прикажи у „Статистици за зналце”</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Тип клијента је приказан у „Статистици за зналце”</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Тип клијента је скривен у „Статистици за зналце”</string>

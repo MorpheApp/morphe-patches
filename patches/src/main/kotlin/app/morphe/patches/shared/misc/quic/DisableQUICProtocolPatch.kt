@@ -14,7 +14,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/patches/DisableQUICProtocolPatch;"
 
-internal fun disableQuicProtocolPatch(
+internal fun disableQUICProtocolPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
 ) = bytecodePatch(

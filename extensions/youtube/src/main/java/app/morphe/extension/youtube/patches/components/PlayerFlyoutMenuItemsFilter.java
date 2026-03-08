@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
 import java.util.List;
@@ -121,6 +129,9 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
         if (ShortsPlayerState.isOpen()) {
             return false;
         }
+
+        // 21.x+ fix.
+        if (path.contains("bottom_sheet_list_option.e")) return false;
 
         return flyoutFilterGroupList.check(buffer).isFiltered();
     }

@@ -28,7 +28,7 @@ val changeStartPagePatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.GENERAL_LAYOUT.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             PreferenceCategory(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,

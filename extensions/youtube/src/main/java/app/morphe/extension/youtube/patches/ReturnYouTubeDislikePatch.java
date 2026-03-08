@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.youtube.returnyoutubedislike.ReturnYouTubeDislike.Vote;
@@ -18,16 +26,17 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.components.ReturnYouTubeDislikeFilter;
 import app.morphe.extension.youtube.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 /**
  * Handles all interaction of UI patch components.
- *
+ * <p>
  * Known limitation:
  * The implementation of Shorts litho requires blocking the loading the first Short until RYD has completed.
  * This is because it modifies the dislikes text synchronously, and if the RYD fetch has
  * not completed yet then the UI will be temporarily frozen.
- *
+ * <p>
  * A (yet to be implemented) solution that fixes this problem.  Any one of:
  * - Modify patch to hook onto the Shorts Litho TextView, and update the dislikes text asynchronously.
  * - Find a way to force Litho to rebuild it's component tree,
@@ -99,7 +108,7 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Logs if new litho text layout is used.
      */
     public static boolean useNewLithoTextCreation(boolean useNewLithoTextCreation) {
@@ -112,18 +121,18 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * For Litho segmented buttons and Litho Shorts player.
      */
-    public static CharSequence onLithoTextLoaded(Object conversionContext,
+    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
                                                  CharSequence original) {
-        return onLithoTextLoaded(conversionContext, original, false);
+        return onLithoTextLoaded(contextInterface, original, false);
     }
 
     /**
      * Called when a litho text component is initially created,
      * and also when a Span is later reused again (such as scrolling off/on screen).
-     *
+     * <p>
      * This method is sometimes called on the main thread, but it is usually called _off_ the main thread.
      * This method can be called multiple times for the same UI element (including after dislikes was added).
      *
@@ -131,7 +140,7 @@ public class ReturnYouTubeDislikePatch {
      * @param isRollingNumber If the span is for a Rolling Number.
      * @return The original char sequence (if nothing should change), or a replacement char sequence that contains dislikes.
      */
-    private static CharSequence onLithoTextLoaded(Object conversionContext,
+    private static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
                                                   CharSequence original,
                                                   boolean isRollingNumber) {
         try {
@@ -139,13 +148,15 @@ public class ReturnYouTubeDislikePatch {
                 return original;
             }
 
-            String conversionContextString = conversionContext.toString();
-
-            if (isRollingNumber && !conversionContextString.contains("video_action_bar.e")) {
+            String identifier = contextInterface.patch_getIdentifier();
+            if (isRollingNumber && (identifier == null || !identifier.contains("video_action_bar.e"))) {
                 return original;
             }
 
-            if (conversionContextString.contains("segmented_like_dislike_button.e")) {
+            StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
+            String path = pathBuilder.toString();
+
+            if (path.contains("segmented_like_dislike_button.e")) {
                 // Regular video.
                 ReturnYouTubeDislike videoData = currentVideoData;
                 if (videoData == null) {
@@ -162,13 +173,11 @@ public class ReturnYouTubeDislikePatch {
                 return original; // No need to check for Shorts in the context.
             }
 
-            if (Utils.containsAny(conversionContextString,
-                    "|shorts_dislike_button.e", "|reel_dislike_button.e")) {
+            if (Utils.containsAny(path, "|shorts_dislike_button.e", "|reel_dislike_button.e")) {
                 return getShortsSpan(original, true);
             }
 
-            if (Utils.containsAny(conversionContextString,
-                    "|shorts_like_button.e", "|reel_like_button.e")) {
+            if (Utils.containsAny(path, "|shorts_like_button.e", "|reel_like_button.e")) {
                 if (!Utils.containsNumber(original)) {
                     Logger.printDebug(() -> "Replacing hidden likes count");
                     return getShortsSpan(original, false);
@@ -223,9 +232,9 @@ public class ReturnYouTubeDislikePatch {
     /**
      * Injection point.
      */
-    public static String onRollingNumberLoaded(Object conversionContext, String original) {
+    public static String onRollingNumberLoaded(ContextInterface contextInterface, String original) {
         try {
-            CharSequence replacement = onLithoTextLoaded(conversionContext, original, true);
+            CharSequence replacement = onLithoTextLoaded(contextInterface, original, true);
 
             String replacementString = replacement.toString();
             if (!replacementString.equals(original)) {
@@ -240,7 +249,7 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Called for all usage of Rolling Number.
      * Modifies the measured String text width to include the left separator and padding, if needed.
      */
@@ -481,7 +490,7 @@ public class ReturnYouTubeDislikePatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Called when the user likes or dislikes.
      *
      * @param vote int that matches {@link Vote#value}

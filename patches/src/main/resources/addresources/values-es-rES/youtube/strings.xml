@@ -85,6 +85,7 @@ Los cambios incluyen:
   <string name="morphe_hide_floating_microphone_button_summary_off">El botón flotante del micrófono en la búsqueda está visible</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar estantes horizontales</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Los estantes horizontales están ocultos, como:
+
 • Noticias de última hora
 • Seguir viendo
 • Explorar más canales
@@ -176,9 +177,9 @@ Los cambios incluyen:
   <string name="morphe_hide_quick_actions_title">Ocultar acciones rápidas</string>
   <string name="morphe_hide_quick_actions_summary_on">Las acciones rápidas en pantalla completa están ocultas</string>
   <string name="morphe_hide_quick_actions_summary_off">Las acciones rápidas en pantalla completa están visibles</string>
-  <string name="morphe_hide_related_videos_title">Ocultar vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_summary_on">Los vídeos relacionados en acciones rápidas están ocultos</string>
-  <string name="morphe_hide_related_videos_summary_off">Los vídeos relacionados en acciones rápidas están visibles</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ocultar acciones rápidas de vídeos relacionados</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Los vídeos relacionados en acciones rápidas están ocultos</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Los vídeos relacionados en acciones rápidas están visibles</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar normas para suscriptores</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Las normas de la comunidad de suscriptores están ocultas</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Las normas de la comunidad de suscriptores están visibles</string>
@@ -280,10 +281,6 @@ Los cambios incluyen:
   <string name="morphe_hide_community_button_title">Ocultar botón \"Comunidad\"</string>
   <string name="morphe_hide_community_button_summary_on">El botón \"Comunidad\" está oculto</string>
   <string name="morphe_hide_community_button_summary_off">El botón \"Comunidad\" está visible</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ocultar estantería \"Para tí\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">La pestaña \"Para tí\" está oculta</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">La pestaña \"Para tí\" está visible</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ocultar botón \"Unirme\"</string>
   <string name="morphe_hide_join_button_summary_on">El botón \"Unirme\" está oculto</string>
@@ -657,18 +654,30 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_hide_notifications_button_title">Ocultar \"Notificaciones\"</string>
   <string name="morphe_hide_notifications_button_summary_on">El botón \"Notificaciones\" está oculto</string>
   <string name="morphe_hide_notifications_button_summary_off">El botón \"Notificaciones\" está visible</string>
-  <string name="morphe_show_search_button_title">Mostrar botón de búsqueda</string>
+  <string name="morphe_show_search_button_title">Mostrar búsqueda</string>
   <string name="morphe_show_search_button_summary_on">El botón de búsqueda está visible</string>
   <string name="morphe_show_search_button_summary_off">El botón de búsqueda está oculto</string>
   <string name="morphe_search_button_index_title">Índice del botón de búsqueda</string>
   <string name="morphe_search_button_index_invalid">El índice del botón de búsqueda debe ser menor que %s</string>
+  <string name="morphe_show_settings_button_title">Mostrar ajustes</string>
+  <string name="morphe_show_settings_button_summary_on">El botón de ajustes está visible</string>
+  <string name="morphe_show_settings_button_summary_off">El botón de ajustes está oculto</string>
+  <string name="morphe_settings_button_index_title">Índice del botón de búsqueda</string>
+  <string name="morphe_settings_button_index_invalid">El índice del botón de ajustes debe ser inferior a %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Intercambiar \"Crear\" con \"Notificaciones\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">El botón \"Crear\" se ha intercambiado con el botón \"Notificaciones\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">El botón \"Crear\" no se ha intercambiado con el botón \"Notificaciones\"</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Si cambiar este ajuste no tiene efecto, intenta cambiar al modo incógnito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas de botones de navegación</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Las etiquetas están ocultas</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Las etiquetas están visibles</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Las etiquetas de botones de navegación están ocultas</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Las etiquetas de botones de navegación están visibles</string>
+  <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
+  <string name="morphe_hide_navigation_bar_summary_on">La barra de navegación está oculta</string>
+  <string name="morphe_hide_navigation_bar_summary_off">La barra de navegación está visible</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Esto oculta completamente la barra de navegación, incluyendo la pestaña \"Tú\".
+
+Para acceder a la configuración:
+Abrir cualquier vídeo → Abrir el menú Calidad → Pulsar en \"Configuración > Preferencias de calidad de vídeo\" en la parte inferior."</string>
   <string name="morphe_narrow_navigation_buttons_title">Activar botones de navegación estrechos</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">El espaciado entre los botones de navegación es estrecho</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">El espaciado entre los botones de navegación es normal</string>
@@ -689,18 +698,30 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">La barra de navegación en modo oscuro es opaca o translúcida</string>
   <string name="morphe_toolbar_screen_title">Barra de herramientas</string>
   <string name="morphe_toolbar_screen_summary">Ocultar o cambiar los componentes de la barra de herramientas</string>
-  <string name="morphe_hide_toolbar_create_button_title">Ocultar botón \"Crear\"</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ocultar \"Crear\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">El botón \"Crear\" está oculto</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">El botón \"Crear\" está visible</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Ocultar botón \"Notificaciones\"</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Ocultar micrófono</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">El botón del micrófono está oculto</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">El botón del micrófono está visible</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ocultar \"Notificaciones\"</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">El botón \"Notificaciones\" está oculto</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">El botón \"Notificaciones\" está visible</string>
-  <string name="morphe_hide_toolbar_search_button_title">Ocultar botón \"Buscar\"</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ocultar búsqueda</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">El botón \"Buscar\" está oculto</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">El botón \"Buscar\" está visible</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Ocultar el botón de búsqueda de voz</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">El botón de búsqueda de voz está oculto</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">El botón de búsqueda de voz está visible</string>
+  <string name="morphe_replace_toolbar_create_button_title">Reemplazar \"Crear\" con \"Configuración\"</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">El botón \"Crear\" se reemplaza por el botón \"Configuración\"</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">El botón \"Crear\" no se reemplaza por el botón \"Configuración\"</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">El comportamiento de pulsación del botón \"Configuración\" en la pestaña \"Tú\" también se reemplaza.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Acción del botón \"Configuración\"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Pulsar para abrir los ajustes de Morphe
+Mantener pulsado para abrir la configuración de YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Pulsar para abrir la configuración de YouTube
+Mantener pulsado para abrir los ajustes de Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Reorganizar los botones reemplazados</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Los botones están reorganizados</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Los botones no están reorganizados</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menú desplegable</string>
   <string name="morphe_hide_player_flyout_summary">Ocultar o mostrar elementos del menú desplegable del reproductor</string>
@@ -962,12 +983,16 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_end_screen_suggested_video_summary_off">El vídeo sugerido en la pantalla final está visible</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"Este ajuste solo funciona si \"Reproducción automática del siguiente vídeo\" está desactivada.
 
-\"Reproducción automática del siguiente vídeo\" se puede cambiar en la configuración de YouTube:
+Puedes cambiar esto en YouTube: 
 Configuración → Reproducción → Reproducción automática del siguiente vídeo"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ocultar vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Los vídeos relacionados están ocultos</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Los vídeos relacionados están visibles</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">La superposición de vídeos relacionados en pantalla completa está oculta</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">La superposición de vídeos relacionados en pantalla completa está visible</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">La superposición de vídeos relacionados en pantalla completa está oculta</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">La superposición de vídeos relacionados en pantalla completa está visible</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ocultar fecha y hora de vídeo</string>
   <string name="morphe_hide_timestamp_summary_on">La fecha y hora está oculta</string>
@@ -1285,10 +1310,10 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_open_system_share_sheet_summary_off">Abre la hoja de compartir en la aplicación</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
   <string name="morphe_override_youtube_music_button_title">Reemplazar botón de YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">El botón de YouTube Music abre tu aplicación de música objetivo</string>
-  <string name="morphe_override_youtube_music_button_summary_off">El botón de YouTube Music abre la aplicación nativa</string>
+  <string name="morphe_override_youtube_music_button_summary_on">El botón de YouTube Music abre tu app de música de destino</string>
+  <string name="morphe_override_youtube_music_button_summary_off">El botón de YouTube Music abre la app nativa</string>
   <string name="morphe_music_package_name_title">Nombre del paquete de Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Nombre del paquete de la aplicación de música de destino</string>
+  <string name="morphe_music_package_name_summary">Nombre del paquete de la app de música de destino</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambiar página de inicio</string>
   <string name="morphe_change_start_page_entry_default">Predeterminado</string>
@@ -1597,7 +1622,7 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
   <string name="morphe_spoof_video_streams_about_js">• Si el descifrado falla, la reproducción puede fallar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forzar audio original no está disponible</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Variante de JavaScript del reproductor</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript del reproductor</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar en \"Estadísticas para nerds\"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">El tipo de cliente se muestra en \"Estadísticas para nerds\"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">El cliente está oculto en \"Estadísticas para nerds\"</string>

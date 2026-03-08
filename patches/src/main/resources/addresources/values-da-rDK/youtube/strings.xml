@@ -86,6 +86,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_floating_microphone_button_summary_off">Flydende mikrofonknap i søgning vises</string>
   <string name="morphe_hide_horizontal_shelves_title">Skjul vandrette hylder</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Horisontale hylder er skjult, såsom:
+
 • Seneste nyheder
 • Fortsæt med at se
 • Udforsk flere kanaler
@@ -177,9 +178,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_quick_actions_title">Skjul hurtige handlinger</string>
   <string name="morphe_hide_quick_actions_summary_on">Hurtige handlinger i fuldskærm er skjult</string>
   <string name="morphe_hide_quick_actions_summary_off">Hurtige handlinger i fuldskærm er vist</string>
-  <string name="morphe_hide_related_videos_title">Skjul relaterede videoer</string>
-  <string name="morphe_hide_related_videos_summary_on">Relaterede videoer i hurtige handlinger er skjult</string>
-  <string name="morphe_hide_related_videos_summary_off">Relaterede videoer i hurtige handlinger er vist</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Skjul hurtige handlinger relaterede videoer</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Relaterede videoer i hurtige handlinger er skjult</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Relaterede videoer i hurtige handlinger er vist</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skjul retningslinjer for abonnenter</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Abonnenter community retningslinjer er skjult</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Abonnenter community retningslinjer er vist</string>
@@ -281,10 +282,6 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_community_button_title">Skjul \'Community\' knappen</string>
   <string name="morphe_hide_community_button_summary_on">Knappen \'Community\' er skjult</string>
   <string name="morphe_hide_community_button_summary_off">Knappen \'Community\' er vist</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Skjul hylden \"Til dig\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Til dig-hylden er skjult</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Til dig-hylden er vist</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Skjul knappen Deltag</string>
   <string name="morphe_hide_join_button_summary_on">Deltag-knappen er skjult</string>
@@ -658,18 +655,30 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_hide_notifications_button_title">Skjul notifikationer</string>
   <string name="morphe_hide_notifications_button_summary_on">Notifikationsknappen er skjult</string>
   <string name="morphe_hide_notifications_button_summary_off">Notifikationsknappen vises</string>
-  <string name="morphe_show_search_button_title">Vis søgeknap</string>
+  <string name="morphe_show_search_button_title">Vis Søgning</string>
   <string name="morphe_show_search_button_summary_on">Søgeknappen vises</string>
   <string name="morphe_show_search_button_summary_off">Søgeknappen vises ikke</string>
   <string name="morphe_search_button_index_title">Søgknappen er skjult</string>
   <string name="morphe_search_button_index_invalid">Søgknappen indeks skal være mindre end %s</string>
+  <string name="morphe_show_settings_button_title">Vis Indstillinger</string>
+  <string name="morphe_show_settings_button_summary_on">Indstillingsknappen vises</string>
+  <string name="morphe_show_settings_button_summary_off">Indstillingsknappen vises ikke</string>
+  <string name="morphe_settings_button_index_title">Indstillingsknappens indeks</string>
+  <string name="morphe_settings_button_index_invalid">Indeks for indstillingsknap skal være mindre end %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Skift Opret med notifikationer</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Opret knappen er skiftet med Notifikationer knappen</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Opret knappen er ikke skiftet med Notifikationer knappen</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Hvis ændringen af denne indstilling ikke virker, prøv at skifte til Incognito-modus.</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigationsknappens etiketter</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Etiketter er skjult</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Etiketter er vist</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Navigationstasto navnen er skjulte</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Navigationstasto navnen er skjulte</string>
+  <string name="morphe_hide_navigation_bar_title">Skjul navigationslinje</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Navigationsbjælken er skjult</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Navigationsbjælken vises</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler navigationslinjen helt, inklusive You-fanen.
+
+For at få adgang til Indstillinger:
+Åbn en video → Åbn Kvalitetsmenuen → Tryk på 'Indstillinger > Video Kvalitet Præferencer' nederst."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Afstanden mellem navigationsknapperne er smal</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Afstanden mellem navigationsknapperne er normal</string>
@@ -690,18 +699,30 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Mørk tilstand navigationslinjen er opak eller gennemsigtig</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Skjul eller ændre værktøjslinje-komponenter</string>
-  <string name="morphe_hide_toolbar_create_button_title">Skjul \"Opret\"-knappen</string>
+  <string name="morphe_hide_toolbar_create_button_title">Skjul Opret</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Opret knap er skjult</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Opret knap vises</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Skjul \"Notifikationer\"-knappen</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofonknappen er skjult</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofonknappen vises</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Skjul notifikationer</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Notifikationsknappen er skjult</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Notifikationsknappen vises</string>
-  <string name="morphe_hide_toolbar_search_button_title">Skjul \"Søg\"-knappen</string>
+  <string name="morphe_hide_toolbar_search_button_title">Skjul Søgning</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Søgeknappen er skjult</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Søgeknappen vises</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Skjul Stemmesøgning-knap</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Stemmesøgning-knappen er skjult</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Stemmesøgning-knappen vises</string>
+  <string name="morphe_replace_toolbar_create_button_title">Erstat Opret med Indstillinger</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Opret knappen er erstattet med Indstillinger knappen</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Opret knappen er ikke udskiftet med Indstillinger knappen</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Klikadfærden for knappen Indstillinger i fanen You overskrives også.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Indstillingsknappen vises</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tryk for at åbne Morphe-indstillinger
+Tryk og hold for at åbne YouTube-indstillinger"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tryk for at åbne YouTube-indstillinger
+Tryk og hold for at åbne Morphe-indstillinger"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Omarranger de udskiftede knapper</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Knapper er omarrangeret</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Knapper er ikke flyttet</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
   <string name="morphe_hide_player_flyout_summary">Skjul eller vis spiller flyout menupunkter</string>
@@ -965,10 +986,14 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
 
 Du kan ændre dette i YouTube:
 Indstillinger → Afspilning (eller Automatisk afspil) → Automatisk afspil næste video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Skjul relaterede videoer</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Relaterede videoer er skjult</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Relaterede videoer vises</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Overlay for relaterede videoer i fuldskærm vises</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Skjul overlay for relaterede videoer</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Overlay for relaterede videoer i fuldskærm er skjult</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Overlay for relaterede videoer i fuldskærm vises</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Skjul tidsstempel på video</string>
   <string name="morphe_hide_timestamp_summary_on">Tidsstempel er skjult</string>
@@ -1598,7 +1623,7 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Spiller JavaScript-variant</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Spiller JavaScript-variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis i Statistik for nørder</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Klienttypen vises i Statistik for nørder</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klienten er skjult i Statistik for nørder</string>

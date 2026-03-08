@@ -34,8 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_summary_off">影片廣告已顯示</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">啟用永久重複播放</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">永久重複播放已啟用</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">永久重複播放已停用</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">已啟用永久重複播放</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">已停用永久重複播放</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">隱藏「投放」按鈕</string>
   <string name="morphe_music_hide_cast_button_summary_on">「投放」按鈕已隱藏</string>
@@ -59,17 +59,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_library">媒體庫</string>
   <string name="morphe_change_start_page_entry_liked_music">喜歡的音樂</string>
   <string name="morphe_change_start_page_entry_playlists">播放清單</string>
-  <string name="morphe_change_start_page_entry_podcasts">播客</string>
   <string name="morphe_change_start_page_entry_search">搜尋</string>
   <string name="morphe_change_start_page_entry_subscriptions">訂閱內容</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">隱藏類別列</string>
   <string name="morphe_music_hide_category_bar_summary_on">類別列已隱藏</string>
   <string name="morphe_music_hide_category_bar_summary_off">類別列已顯示</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">變更迷你播放器顏色</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">迷你播放器顏色符合全螢幕播放器</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">迷你播放器使用預設顏色</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">啟用強制迷你播放器</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">迷你播放器在播放變更時保持最小化</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">迷你播放器在播放變更時擴展到全螢幕</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">導覽列</string>
   <string name="morphe_music_navigation_bar_screen_summary">隱藏或變更導覽列按鈕</string>

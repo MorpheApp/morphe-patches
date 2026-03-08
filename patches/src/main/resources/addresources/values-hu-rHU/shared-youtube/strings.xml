@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Egyéni</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Kísérleti figyelmeztetés! ⚠️</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Kísérleti figyelmeztetés 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"⚠️ Kísérleti alkalmazás verzióját használja: &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Rogyás alkalmazás viselkedést vagy azonosítatlan hibákat várhat, ahogy finomítjuk a címkéket ehhez az alkalmazás verzióhoz.
@@ -95,6 +95,15 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nem tud bejelentkezni a VR-ba: %s</string>
   <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
   <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Kényszerített JavaScript hash a lejátszó számára</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Letiltva a lejátszó JavaScript hash frissítése
+
+• Érvényes lejátszó JavaScript hash szükséges
+• A lejátszás meghibásodik, ha a GVS visszavonja a lejátszó JavaScript hash-t"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Engedélyezve a lejátszó JavaScript hash frissítése</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">A lejátszó JavaScript hash-ai kb. egy hónapig érvényesek, és a GVS visszavonhatja a lejárt hash-okat.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Játékos JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Adjon meg egy érvényes játékos JavaScript hasht</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC protokoll letiltva</string>

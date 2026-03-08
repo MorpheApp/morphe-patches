@@ -324,9 +324,13 @@ public final class NavigationBar {
          */
         EXPLORE("TAB_EXPLORE"),
         /**
-         * Only shown when 'Show search button' is turned on.
+         * Only shown when 'Show Search' is turned on.
          */
         SEARCH("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO"),
+        /**
+         * Only shown when 'Show Settings' is turned on.
+         */
+        SETTINGS("SETTINGS", "SETTINGS_CAIRO"),
         SUBSCRIPTIONS("PIVOT_SUBSCRIPTIONS", "TAB_SUBSCRIPTIONS_CAIRO"),
         /**
          * Notifications tab.  Only present when

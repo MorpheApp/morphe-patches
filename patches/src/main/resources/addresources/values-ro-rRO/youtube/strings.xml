@@ -86,6 +86,7 @@ Schimbari incluse:
   <string name="morphe_hide_floating_microphone_button_summary_off">Butonul microfonului plutitor din căutare este afișat</string>
   <string name="morphe_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Rafturile orizontale sunt ascunse, cum ar fi:
+
 • Știri de ultimă oră
 • Continuă vizionarea
 • Explorează mai multe canale
@@ -177,9 +178,9 @@ Schimbari incluse:
   <string name="morphe_hide_quick_actions_title">Ascunde acțiunile rapide</string>
   <string name="morphe_hide_quick_actions_summary_on">Acțiunile rapide în ecran complet sunt ascunse</string>
   <string name="morphe_hide_quick_actions_summary_off">Acțiunile rapide în ecran complet sunt afișate</string>
-  <string name="morphe_hide_related_videos_title">Ascunde videoclipurile similare</string>
-  <string name="morphe_hide_related_videos_summary_on">Videoclipurile similare în acțiunile rapide sunt ascunse</string>
-  <string name="morphe_hide_related_videos_summary_off">Videoclipurile similare în acțiunile rapide sunt afișate</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ascunde acțiunile rapide legate de videoclipuri</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Videoclipurile similare în acțiunile rapide sunt ascunse</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Videoclipurile similare în acțiunile rapide sunt afișate</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ascunde ghidurile comunității abonaților</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Instrucțiunile comunității abonaților sunt ascunse</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Recomandările comunității abonaților sunt afișate</string>
@@ -281,10 +282,6 @@ Schimbari incluse:
   <string name="morphe_hide_community_button_title">Ascunde butonul \'Comunitate\'</string>
   <string name="morphe_hide_community_button_summary_on">Butonul \'Comunitate\' este ascuns</string>
   <string name="morphe_hide_community_button_summary_off">Butonul \'Comunitate\' este afișat</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ascunde raftul „Pentru tine”</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Raftul Pentru Tine este ascuns</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Raftul Pentru Tine este afișat</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ascunde butonul Alătură-te</string>
   <string name="morphe_hide_join_button_summary_on">Butonul de alăturare este ascuns</string>
@@ -654,18 +651,30 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_hide_notifications_button_title">Ascunde notificările</string>
   <string name="morphe_hide_notifications_button_summary_on">Butonul Notificări este ascuns</string>
   <string name="morphe_hide_notifications_button_summary_off">Butonul Notificări este afișat</string>
-  <string name="morphe_show_search_button_title">Arată butonul de căutare</string>
+  <string name="morphe_show_search_button_title">Afișează Căutare</string>
   <string name="morphe_show_search_button_summary_on">Butonul de căutare este afișat</string>
   <string name="morphe_show_search_button_summary_off">Butonul de căutare nu este arătat</string>
   <string name="morphe_search_button_index_title">Butonul căutări</string>
   <string name="morphe_search_button_index_invalid">Indexul butonului căutări trebuie să fie mai mic decăt %s</string>
+  <string name="morphe_show_settings_button_title">Afișează Setări</string>
+  <string name="morphe_show_settings_button_summary_on">Se afișează butonul Setări</string>
+  <string name="morphe_show_settings_button_summary_off">Butonul Setări nu este afișat</string>
+  <string name="morphe_settings_button_index_title">Indexul butonului Setări</string>
+  <string name="morphe_settings_button_index_invalid">Indexul butonului Setări trebuie să fie mai mic decât %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Comuta Creare cu Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Butonul Creare a fost comutat cu butonul Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Butonul Creare nu este comutat cu butonul Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Dacă schimbarea acestei setări nu are efect, încearcă să treci în modul Incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ascunde etichetele butoanelor de navigare</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Etichetele sunt ascunse</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Etichetele sunt afișate</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Etichetele butonului de navigare sunt ascunse</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Etichetele butonului de navigare sunt afișate</string>
+  <string name="morphe_hide_navigation_bar_title">Ascunde bara de navigare</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Bara de navigare este ascunsă</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Bara de navigare este afișată</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aceasta ascunde complet bara de navigare, inclusiv tab-ul You.
+
+Pentru a accesa Setări:
+Deschideți orice videoclip → Deschideți meniul Calitate → Dați clic pe ‘Setări &gt; Preferințe de Calitate Video’ din partea de jos."</string>
   <string name="morphe_narrow_navigation_buttons_title">Activează butoane de navigare înguste</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Spatiul între butoane de navigare este îngust</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Spatiul între butoane de navigare este normal</string>
@@ -686,18 +695,30 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bara de navigare în modul întunecat este opaca sau translucida</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde sau schimbă componentele barei de navigare</string>
-  <string name="morphe_hide_toolbar_create_button_title">Ascunde butonul Creează</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ascunde Creare</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Butonul de creare este ascuns</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Butonul Creare este afișat</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Ascunde butonul Notificări</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Ascunde Microfon</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Butonul Microfon este ascuns</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Butonul Microfon este afișat</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ascunde notificările</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Butonul Notificări este ascuns</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Butonul Notificări este afișat</string>
-  <string name="morphe_hide_toolbar_search_button_title">Ascunde butonul Căutare</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ascunde Cautare</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Butonul de căutare este ascuns</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Butonul de căutare este afișat</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Ascunde butonul de căutare vocală</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Butonul de căutare vocală este ascuns</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Butonul de căutare vocală este afișat</string>
+  <string name="morphe_replace_toolbar_create_button_title">Înlocuiește Crea cu Setări</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Butonul Crea este înlocuit cu butonul Setări</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Butonul Crea nu este înlocuit cu butonul Setări</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Acțiunea butonului Setări în tab-ul You este, de asemenea, suprascrisă.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Tipul butonului Setări</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Dați clic pentru a deschide Setările Morphe
+Dați clic și țineți apăsat pentru a deschide Setările YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Dați clic pentru a deschide Setările YouTube
+Dați clic și țineți apăsat pentru a deschide Setările Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Rearanjați butoanele înlocuite</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Butoanele sunt rearanjate</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Butoanele nu sunt rearanjate</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Ascunde sau arată elementele de meniu Flyout ale jucătorului</string>
@@ -961,10 +982,14 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
 
 Puteți schimba aceasta în YouTube:
 Setări → Reproducere (sau Autoreproducere) → Reproduceți următorul video"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ascunde videoclipurile similare</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Videoclipurile asociate sunt ascunse</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Videoclipuri similare sunt afișate</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Suprapunerea videoclipurilor similare în ecran complet este ascunsă.</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Suprapunerea videoclipurilor similare în ecran complet este afișată.</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ascunde suprapunerea videoclipurilor similare.</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Suprapunerea videoclipurilor similare în ecran complet este ascunsă.</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Suprapunerea videoclipurilor similare în ecran complet este afișată.</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ascunde marcajul temporal video</string>
   <string name="morphe_hide_timestamp_summary_on">Marcajul de timp este ascuns</string>
@@ -1594,7 +1619,7 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_js">• Dacă deobfuscarea eșuează, reproducerea poate eșua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forțarea sunetului original nu este disponibilă</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Varianta JavaScript a playerului</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Varianta JavaScript a playerului</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afișează în Statistici pentru pasionați</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Tipul clientului este afișat în Statistici pentru pasionați</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Clientul este ascuns în Statistici pentru pasionați</string>

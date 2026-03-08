@@ -52,9 +52,12 @@ Second \"item\" text"</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Byt startsida</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
+  <string name="morphe_change_start_page_entry_charts">Topplistor</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Avsnitt som sparats till senare</string>
   <string name="morphe_change_start_page_entry_explore">Utforska</string>
   <string name="morphe_change_start_page_entry_history">Historik</string>
   <string name="morphe_change_start_page_entry_library">Bibliotek</string>
+  <string name="morphe_change_start_page_entry_liked_music">Musik jag gillar</string>
   <string name="morphe_change_start_page_entry_playlists">Spellistor</string>
   <string name="morphe_change_start_page_entry_search">Sök</string>
   <string name="morphe_change_start_page_entry_subscriptions">Prenumerationer</string>
@@ -62,10 +65,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Dölj kategorifält</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategorifältet är dolt</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategorifältet visas</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Ändra minispelarens färg</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Minispelarens färg matchar helskärmsspelaren</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minispelaren använder standardfärg</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigeringsfält</string>
   <string name="morphe_music_navigation_bar_screen_summary">Dölj eller ändra knappar i navigeringsfältet</string>

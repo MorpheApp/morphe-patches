@@ -90,6 +90,7 @@ Second \"item\" text"</string>
 • Гарячі новини
 • Продовжити перегляд
 • Переглянути більше каналів
+• Для вас
 • Найдоречніші
 • Покупки
 • Дивитися знову"</string>
@@ -178,9 +179,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Приховати швидкі дії</string>
   <string name="morphe_hide_quick_actions_summary_on">Швидкі дії в повноекранному режимі приховано</string>
   <string name="morphe_hide_quick_actions_summary_off">Швидкі дії в повноекранному режимі показуються</string>
-  <string name="morphe_hide_related_videos_title">Приховати пов\'язані відео</string>
-  <string name="morphe_hide_related_videos_summary_on">Пов\'язані відео у швидких діях приховано</string>
-  <string name="morphe_hide_related_videos_summary_off">Пов\'язані відео у швидких діях показуються</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Приховати пов\'язані відео у швидких діях</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Пов\'язані відео у швидких діях приховано</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Пов\'язані відео у швидких діях показуються</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Приховати правила спільноти підписок</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Правила спільноти підписок приховано</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Правила спільноти підписок показуються</string>
@@ -282,10 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Приховати кнопку \"Спільнота\"</string>
   <string name="morphe_hide_community_button_summary_on">Кнопку \"Спільнота\" приховано</string>
   <string name="morphe_hide_community_button_summary_off">Кнопка \"Спільнота\" показується</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Приховати полицю \"Для вас\"</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Полицю \"Для вас\" приховано</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Полиця \"Для вас\" показується</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Приховати \"Підписатися +\"</string>
   <string name="morphe_hide_join_button_summary_on">Кнопку \"Підписатися +\" приховано</string>
@@ -659,11 +656,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Приховати \"Сповіщення\"</string>
   <string name="morphe_hide_notifications_button_summary_on">Кнопку \"Сповіщення\" приховано на панелі навігації</string>
   <string name="morphe_hide_notifications_button_summary_off">Кнопка \"Сповіщення\" показується на панелі навігації</string>
-  <string name="morphe_show_search_button_title">Показати кнопку \"Пошук\"</string>
+  <string name="morphe_show_search_button_title">Показати \"Пошук\"</string>
   <string name="morphe_show_search_button_summary_on">Кнопка \"Пошук\" показується</string>
   <string name="morphe_show_search_button_summary_off">Кнопка \"Пошук\" не показується</string>
   <string name="morphe_search_button_index_title">Індекс кнопки \"Пошук\"</string>
   <string name="morphe_search_button_index_invalid">Індекс кнопки \"Пошук\" має бути меншим за %s</string>
+  <string name="morphe_show_settings_button_title">Показати \"Налаштування\"</string>
+  <string name="morphe_show_settings_button_summary_on">Кнопка \"Налаштування\" показується</string>
+  <string name="morphe_show_settings_button_summary_off">Кнопку \"Налаштування\" приховано</string>
+  <string name="morphe_settings_button_index_title">Індекс кнопки \"Пошук\"</string>
+  <string name="morphe_settings_button_index_invalid">Індекс кнопки \"Пошук\" має бути меншим за %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Замінити \"Створити\" на \"Сповіщення\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Кнопка \"Створити\" замінена на кнопку \"Сповіщення\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Кнопку \"Створити\" не замінено кнопкою \"Сповіщення\"</string>
@@ -671,6 +673,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_hide_navigation_button_labels_summary_on">Підписи кнопок навігації приховано</string>
   <string name="morphe_hide_navigation_button_labels_summary_off">Підписи кнопок навігації показуються</string>
+  <string name="morphe_hide_navigation_bar_title">Приховати панель навігації</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Панель навігації приховано</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Панель навігації показується</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Це повністю приховує панель навігації, включаючи вкладку \"Ви\".
+
+Щоб перейти до Налаштувань:
+Відкрити будь-яке відео → Відкрити меню Якість → Натиснути ‘Налаштування > Параметри якості відео’ у нижній частині екрана."</string>
   <string name="morphe_narrow_navigation_buttons_title">Увімкнути вузькі кнопки навігації</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Відстань між кнопками навігації невелика</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Відстань між кнопками навігації є нормальною</string>
@@ -691,18 +700,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Панель навігації темного режиму непрозора або напівпрозора</string>
   <string name="morphe_toolbar_screen_title">Панель інструментів</string>
   <string name="morphe_toolbar_screen_summary">Приховати або змінити компоненти панелі інструментів</string>
-  <string name="morphe_hide_toolbar_create_button_title">Приховати кнопку \"Створити\"</string>
+  <string name="morphe_hide_toolbar_create_button_title">Приховати \"Створити\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Кнопку \"Створити\" приховано</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Створити\" показується</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Приховати кнопку \"Повідомлення\"</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Приховати \"Мікрофон\"</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Кнопку \"Мікрофон\" приховано</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Кнопка \"Мікрофон\" показується</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Приховати \"Сповіщення\"</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Кнопку \"Повідомлень\" приховано</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Кнопка \"Повідомлень\" показується</string>
-  <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку \"Пошук\"</string>
+  <string name="morphe_hide_toolbar_search_button_title">Приховати \"Пошук\"</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Кнопку \"Пошук\" приховано</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка \"Пошук\" показується</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Приховати кнопку \"Голосовий пошук\"</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Кнопку \"Голосовий пошук\" приховано</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Кнопка \"Голосовий пошук\" показується</string>
+  <string name="morphe_replace_toolbar_create_button_title">Замінити \"Створити\" на \"Налаштування\"</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Кнопка \"Створити\" замінено кнопкою \"Налаштування\"</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Кнопка \"Створити\" не замінено кнопкою \"Налаштування\"</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Поведінку натискання кнопки \"Налаштування\" на вкладці \"Ви\" також перевизначено.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Дія кнопки \"Налаштування\"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Натиснути, щоб відкрити налаштування Morphe
+Натиснути та утримувати, щоб відкрити налаштування YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Натиснути, щоб відкрити налаштування YouTube
+Натиснути та утримувати, щоб відкрити налаштування Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Переставити місцями замінені кнопки</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Кнопки переставлені</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Кнопки не переставлені</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
   <string name="morphe_hide_player_flyout_summary">Приховати або показувати пункти висувного меню плеєра</string>
@@ -959,17 +980,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Панель навігації приховано</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навігації показується</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Приховати пропоноване відео на кінцевому екрані</string>
+  <string name="morphe_end_screen_suggested_video_title">Приховати рекомендоване відео наприкінці перегляду</string>
   <string name="morphe_end_screen_suggested_video_summary_on">Рекомендоване відео наприкінці перегляду приховано</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Пропоноване відео на кінцевому екрані показується</string>
+  <string name="morphe_end_screen_suggested_video_summary_off">Рекомендоване відео наприкінці перегляду показується</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"Цей параметр працює, лише якщо вимкнено налаштування \"Автовідтворення наступного відео\".
 
-Ви можете змінити це на YouTube:
+Ви можете змінити це в YouTube:
 Налаштування → Відтворення (або Автовідтворення) → Автовідтворення наступного відео"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Приховати пов\'язані відео</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Пов\'язані відео приховано</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Пов\'язані відео показуються</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Накладення пов’язаних відео в повноекранному режимі приховано</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Накладення пов’язаних відео в повноекранному режимі показуються</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Приховати накладення пов\'язаних відео</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Накладення пов’язаних відео в повноекранному режимі приховано</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Накладення пов’язаних відео в повноекранному режимі показуються</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Приховати мітку часу відео</string>
   <string name="morphe_hide_timestamp_summary_on">Мітку часу відео над панеллю прогресу приховано</string>
@@ -1286,11 +1311,11 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary_on">Відкриває системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_off">Відкриває вбудований діалог поширення</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Підмінити кнопку YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Кнопка YouTube Music відкриває ваш цільовий музичний додаток</string>
+  <string name="morphe_override_youtube_music_button_title">Замінити кнопку YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Кнопка YouTube Music відкриває ваш цільовий музичний застосунок</string>
   <string name="morphe_override_youtube_music_button_summary_off">Кнопка YouTube Music відкриває вбудований застосунок</string>
-  <string name="morphe_music_package_name_title">Ім\'я пакету Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Ім\'я пакета цільового музичного додатка</string>
+  <string name="morphe_music_package_name_title">Назва пакета Morphe Music</string>
+  <string name="morphe_music_package_name_summary">Назва пакета цільового музичного застосунку</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Змінити початкову сторінку</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>
@@ -1599,7 +1624,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• Якщо деобфускація не вдається, відтворення може завершитися невдачею</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Примусово оригінальна мова звукової доріжки\" недоступна</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Варіант JavaScript плеєра</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Варіант JavaScript плеєра</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показувати у \"Статистиці для сисадмінів\"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Тип клієнта показується у вікні \"Статистика для сисадмінів\"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Тип клієнта приховано у вікні \"Статистика для сисадмінів\"</string>

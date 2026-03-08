@@ -9,6 +9,7 @@
 package app.morphe.patches.youtube.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
@@ -179,8 +180,8 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
             smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
         ),
         SET_VISIBILITY_METHOD_CALL, // clear button.
-        SET_VISIBILITY_METHOD_CALL, // voice search button.
-        SET_VISIBILITY_METHOD_CALL  // lens search button.
+        SET_VISIBILITY_METHOD_CALL, // microphone button.
+        SET_VISIBILITY_METHOD_CALL  // lens button.
     )
 )
 
@@ -191,8 +192,6 @@ internal object SearchFragmentFingerprint : Fingerprint(
         string("search-lens-button")
     )
 )
-
-// region navigation search button
 
 internal object PivotBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
@@ -235,15 +234,23 @@ internal object PivotBarRendererListFingerprint : Fingerprint(
     )
 )
 
-internal object TopBarRendererFingerprint : Fingerprint(
+internal object TopBarRendererPrimaryFilterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        checkCast("Ljava/util/List;"),
+        fieldAccess(opcode = Opcode.SGET_OBJECT),
+        checkCast(
+            type = "Ljava/util/List;",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(
+            opcode = Opcode.CHECK_CAST,
+            location = MatchAfterWithin(3)
+        ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             returnType = "L",
-            location = MatchAfterWithin(5)
+            location = MatchAfterWithin(3)
         ),
         opcode(
             opcode = Opcode.CHECK_CAST,
@@ -253,4 +260,77 @@ internal object TopBarRendererFingerprint : Fingerprint(
     )
 )
 
-// endregion
+internal object TopBarRendererSecondaryFilterFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Ljava/util/List;->iterator()Ljava/util/Iterator;"
+        ),
+        literal(120823052L),
+    )
+)
+
+internal object SettingIntentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "Landroid/content/Intent;",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L"),
+            returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            parameters = listOf("I"),
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object StreamingDataOuterClassFingerprint : Fingerprint(
+    definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        opcode(Opcode.IF_NEZ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            name = "mutableCopy"
+        )
+    )
+)

@@ -36,6 +36,8 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string-array name="morphe_search_button_index_entry_values">
         <item>0</item>
@@ -43,6 +45,26 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="morphe_settings_button_index_entries">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="morphe_settings_button_index_entry_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
@@ -60,7 +82,7 @@
         <item>TV</item>
         <item>VISIONOS</item>
     </string-array>
-    <string-array name="morphe_spoof_video_streams_js_variant_entries">
+    <string-array name="morphe_spoof_video_streams_player_js_variant_entries">
         <item>House Brand</item>
         <item>Phone</item>
         <item>TV ES6</item>
@@ -68,7 +90,7 @@
         <item>Web ES6</item>
         <item>Web Embed</item>
     </string-array>
-    <string-array name="morphe_spoof_video_streams_js_variant_entry_values">
+    <string-array name="morphe_spoof_video_streams_player_js_variant_entry_values">
         <item>HOUSE_BRAND</item>
         <item>PHONE</item>
         <item>TV_ES6</item>

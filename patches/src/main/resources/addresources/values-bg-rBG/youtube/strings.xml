@@ -177,9 +177,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_title">Бързите действия в пълноекранен режим</string>
   <string name="morphe_hide_quick_actions_summary_on">Бързите действия в пълноекранен режим са скрити</string>
   <string name="morphe_hide_quick_actions_summary_off">Бързите действия в пълноекранен режим са показани</string>
-  <string name="morphe_hide_related_videos_title">Скриване в сродни видеоклипове</string>
-  <string name="morphe_hide_related_videos_summary_on">Видео в бързи действия са скрити</string>
-  <string name="morphe_hide_related_videos_summary_off">Видео в бързи действия се показват</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Скриване на бързи действия за свързани видеа</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Видео в бързи действия са скрити</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Видео в бързи действия се показват</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Скриване на указанията за абонатори</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Списъка с правилата на общността за абонати е скрита</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Списъка на общността за абонати са показани</string>
@@ -281,10 +281,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Скриване на бутона \'Общност\'</string>
   <string name="morphe_hide_community_button_summary_on">Бутона \'Общност\' е скрит</string>
   <string name="morphe_hide_community_button_summary_off">Бутона \'Общност\' е показан</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Скрийте \'За вас\' рафт</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Рафтът \'За вас\' е скрит</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Рафтът \'За вас\' е показан</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Скриване на бутона \'Присъедини се\'</string>
   <string name="morphe_hide_join_button_summary_on">Бутона за присъединяване е скрит</string>
@@ -652,18 +648,30 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Бутонът Notifications е скрит</string>
   <string name="morphe_hide_notifications_button_summary_on">Бутонът Notifications се показва</string>
   <string name="morphe_hide_notifications_button_summary_off">Променяй Create с Notifications бутон</string>
-  <string name="morphe_show_search_button_title">Покажи бутона за търсене</string>
+  <string name="morphe_show_search_button_title">Покажи търсене</string>
   <string name="morphe_show_search_button_summary_on">Бутона за Търсене се показва</string>
   <string name="morphe_show_search_button_summary_off">Бутона за търсене не се показва</string>
   <string name="morphe_search_button_index_title">Индекс на бутона за търсене</string>
   <string name="morphe_search_button_index_invalid">Индексът на бутона за търсене трябва да е по-малък от %s</string>
+  <string name="morphe_show_settings_button_title">Покажи настройки</string>
+  <string name="morphe_show_settings_button_summary_on">Бутонът за настройки е показан</string>
+  <string name="morphe_show_settings_button_summary_off">Бутонът за настройки не е показан</string>
+  <string name="morphe_settings_button_index_title">Показ на бутон</string>
+  <string name="morphe_settings_button_index_invalid">Индексът на бутона трябва да бъде по-малък от %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Размени бутона „Създаване“ с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Бутона „Създаване“ е разменен с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Бутона „Създаване“ не е разменен с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Ако промяната на това настройка не заработи, опитайте да превключите в Инкогнито режим.</string>
   <string name="morphe_hide_navigation_button_labels_title">Етикетите са скрити</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Етикетите се показват</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Включи анимации на лентата за навигация</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Етикетите на бутоните за навигация са скрити</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Етикетите на бутоните за навигация са показани</string>
+  <string name="morphe_hide_navigation_bar_title">Скриване на лентата за навигация</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Навигационната лента е скрита</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Навигационната лента се показва</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Това скрива напълно лентата за навигация, включително раздела «За вас».
+
+За достъп до Настройки:
+Отворете каквото и да е видео → Отворете менюто за качество → Натиснете «Настройки &gt; Настройки на качеството на видео» в долната част."</string>
   <string name="morphe_narrow_navigation_buttons_title">Включи тесни навигационни бутони</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Разстоянието между навигационните бутони е тесно</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Разстоянието между навигационните бутони е нормално</string>
@@ -684,18 +692,30 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Бутонът за коментари е скрит</string>
   <string name="morphe_toolbar_screen_title">Тойбър</string>
   <string name="morphe_toolbar_screen_summary">Скриване или промяна на компонентите на toolbar</string>
-  <string name="morphe_hide_toolbar_create_button_title">Скриване на бутона за Създаване</string>
+  <string name="morphe_hide_toolbar_create_button_title">Скрий Създай</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Бутона за Създаване е скрит</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Бутона за Създаване е виден</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Скриване на бутона за Известия</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Скрий Микрофон</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Бутонът за микрофон е скрит</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Бутонът за микрофон е показан</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Скрий Известия</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Бутона за Известия е скрит</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Бутона за Известия е виден</string>
-  <string name="morphe_hide_toolbar_search_button_title">Скриване на бутона за Търсене</string>
+  <string name="morphe_hide_toolbar_search_button_title">Скрий Търсене</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Бутона за Търсене е скрит</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Бутона за Търсене се показва</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Скриване на бутона за гласово търсене</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Бутона за гласово търсене е скрит</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Бутона за гласово търсене се показва</string>
+  <string name="morphe_replace_toolbar_create_button_title">Замени Създай с Настройки</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Бутонът «Създаване» е заменен с бутона «Настройки»</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Бутонът «Създаване» не е заменен с бутона «Настройки»</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Кликването на бутона «Настройки» в раздела «За вас» също се презаписва.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Действие на бутона «Настройки»</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Натиснете, за да отворите Настройките на Morphe
+Натиснете и задръжте, за да отворите Настройките на YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Натиснете, за да отворите Настройките на YouTube
+Натиснете и задръжте, за да отворите Настройките на Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Пренаредите заменените бутони</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Бутоните са пренаредени</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Бутоните не са пренаредени</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Бутонът за коментари се показва</string>
   <string name="morphe_hide_player_flyout_summary">Скрий дублиране на видеа</string>
@@ -959,10 +979,14 @@ Second \"item\" text"</string>
 
 Можете да промените това в YouTube:
 Настройки → Воспроизведение (или Автоматично) → Автоматично следващо видео"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Скриване в сродни видеоклипове</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Свързаните видеа са скрити</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Връзки към свързани видеа са показани</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Дублирането на видеа е скрито</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Дублирането на видеа се показва</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Скрий дублиране на видеа</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Дублирането на видеа е скрито</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Дублирането на видеа се показва</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Скрий дублиране на видеа</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_timestamp_summary_on">Дублирането на видеа се показва</string>
@@ -1583,7 +1607,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• Ако деобфускацията провали, възпроизвеждането може да провали</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Не е налично \"Принудително оригинално аудио\"</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Вариант на Player JavaScript</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Вариант на Player JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Покажи в Статистики за гики</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Тип клиент е показан в Статистики за гики</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Клиентът е скрит в Статистики за гики</string>

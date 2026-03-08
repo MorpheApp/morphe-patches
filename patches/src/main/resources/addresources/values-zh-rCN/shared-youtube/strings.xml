@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">自定义</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 实验警告！ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 实验性提示 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"您正在使用实验版本的⚠️ <b>%1$s</b>
 
 🔧 请期待app行为怪异或未识别的bug，因为我们正在调整此版本的修补程序。
@@ -95,6 +95,15 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已从 Google VR 登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">强制玩家 JavaScript 哈希</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Player JavaScript 哈希更新已禁用
+
+• 需要有效的 Player JavaScript 哈希
+• 如果 GVS 撤销了 Player JavaScript 哈希，则回放失败"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Player JavaScript 哈希更新已启用</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Player JavaScript 哈希有效期约为一个月，过期的哈希可能由 GVS 撤销。</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">输入有效的 Player JavaScript 哈希</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC协议已禁用</string>

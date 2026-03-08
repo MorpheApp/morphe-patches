@@ -4,18 +4,21 @@
  */
 package app.morphe.patches.reddit.misc.settings
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
+import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
@@ -33,6 +36,7 @@ val settingsPatch = bytecodePatch(
 
     dependsOn(
         sharedExtensionPatch,
+        disablePlayStoreUpdatesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
@@ -79,36 +83,47 @@ val settingsPatch = bytecodePatch(
             }
         }
 
-        /**
-         * Initialize settings activity
-         */
-        val getActivityMethod = FragmentHostCallbackFingerprint.method
         PreferenceDestinationFingerprint.let {
-            it.method.apply {
-                val fragmentIndex = it.instructionMatches[1].index
-                val fragmentRegister =
-                    getInstruction<FiveRegisterInstruction>(fragmentIndex).registerC
-                val registerProvider =
-                    getFreeRegisterProvider(fragmentIndex, 1)
-                val freeRegister = registerProvider.getFreeRegister()
+            val getActivityMethod = Fingerprint(
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = RedditActivityFingerprint.originalClassDef.type,
+                parameters = listOf()
+            ).method
 
-                addInstructionsWithLabels(
-                    fragmentIndex,
-                    """
-                        invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAcknowledgment(Ljava/lang/Enum;)Z
-                        move-result v$freeRegister
-                        if-eqz v$freeRegister, :ignore
-                        invoke-virtual { v$fragmentRegister }, $getActivityMethod
-                        move-result-object v$freeRegister
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
-                        move-result-object v$freeRegister
-                        invoke-virtual { v$fragmentRegister, v$freeRegister }, ${getActivityMethod.definingClass}->startActivity(Landroid/content/Intent;)V
-                        return-void
-                        :ignore
-                        nop
-                    """
+            val startActivityMethod = Fingerprint(
+                definingClass = getActivityMethod.definingClass,
+                returnType = "V",
+                parameters = listOf(
+                    "Landroid/content/Intent",
+                    "I",
+                    "Landroid/os/Bundle;"
+                ),
+                filters = listOf(
+                    string(" not attached to Activity"),
                 )
-            }
+            ).method
+
+            it.method.cloneMutableAndPreserveParameters().addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAcknowledgment(Ljava/lang/Enum;)Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    
+                    invoke-virtual { p0 }, $getActivityMethod
+                    move-result-object v0
+                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
+                    move-result-object v0
+                    
+                    const/4 v1, -1
+                    const/4 v2, 0x0
+                    invoke-virtual { p0, v0, v1, v2 }, ${getActivityMethod.definingClass}->${startActivityMethod.name}(Landroid/content/Intent;ILandroid/os/Bundle;)V
+                    return-void
+                    
+                    :ignore
+                    nop
+                """
+            )
         }
 
         WebBrowserActivityOnCreateFingerprint.let {

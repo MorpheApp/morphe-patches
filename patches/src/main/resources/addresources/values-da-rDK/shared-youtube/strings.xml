@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Brugerdefineret</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentelt advarsel! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Du bruger en eksperimentel app-udgave af ⚠️ <b>%1$s</b>
 <br/>
 <br/>
@@ -97,6 +97,15 @@ For at indlogge, tryk på fortsæt nedenfor"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logged ud fra Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Tving JavaScript-hash for spiller</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Opdatering af spillerens JavaScript-hash er deaktiveret
+
+• En gyldig JavaScript-hash for spilleren er påkrævet
+• Afspilning mislykkes, hvis spillerens JavaScript-hash tilbagekaldes af GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Opdatering af spillerens JavaScript-hash er aktiveret</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Spillerens JavaScript-hashes er gyldige i cirka en måned, og forældede hashes kan tilbagekaldes af GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Spiller JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Indtast en gyldig spiller JavaScript hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokollet</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokollet er deaktiveret</string>

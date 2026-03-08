@@ -1,6 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.shared.patches;
 
-import android.app.Notification;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -100,16 +107,32 @@ public class CustomBrandingPatch {
     /**
      * Injection point.
      */
-    public static void setNotificationIcon(Notification.Builder builder) {
+    public static int getSmallIcon(int original) {
         try {
             final int smallIcon = getNotificationSmallIcon();
             if (smallIcon != 0) {
-                builder.setSmallIcon(smallIcon)
-                        .setColor(Color.TRANSPARENT); // Remove YT red tint.
+                return smallIcon;
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "setNotificationIcon failure", ex);
+            Logger.printException(() -> "getSmallIcon failure", ex);
         }
+        return original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static int getColor(int original) {
+        try {
+            final int smallIcon = getNotificationSmallIcon();
+            if (smallIcon != 0) {
+                // Remove YT red tint.
+                return Color.TRANSPARENT;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getColor failure", ex);
+        }
+        return original;
     }
 
     /**

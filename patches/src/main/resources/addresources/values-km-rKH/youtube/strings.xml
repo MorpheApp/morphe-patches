@@ -61,7 +61,6 @@ Second \"item\" text"</string>
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
   <string name="morphe_hide_explore_section_title">លាក់រុករក</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
@@ -113,6 +112,9 @@ Second \"item\" text"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_show_search_button_summary_on">ប៊ូតុងស្វែងរកត្រូវបានបង្ហាញ</string>
+  <string name="morphe_hide_navigation_bar_title">លាក់របាររុករក</string>
+  <string name="morphe_hide_navigation_bar_summary_on">របាររុករកត្រូវបានលាក់</string>
+  <string name="morphe_hide_navigation_bar_summary_off">របាររុករកត្រូវបានបង្ហាញ</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">ប៊ូតុងស្វែងរកត្រូវបានលាក់</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">ប៊ូតុងស្វែងរកត្រូវបានបង្ហាញ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -151,6 +153,7 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->

@@ -96,6 +96,7 @@ Changes include:
 • Breaking news
 • Continue watching
 • Explore more channels
+• For You
 • Most relevant
 • Shopping
 • Watch it again"</string>
@@ -184,9 +185,9 @@ Changes include:
     <string name="morphe_hide_quick_actions_title">Hide quick actions</string>
     <string name="morphe_hide_quick_actions_summary_on">Quick actions in fullscreen are hidden</string>
     <string name="morphe_hide_quick_actions_summary_off">Quick actions in fullscreen  are shown</string>
-    <string name="morphe_hide_related_videos_title">Hide related videos</string>
-    <string name="morphe_hide_related_videos_summary_on">Related videos in quick actions are hidden</string>
-    <string name="morphe_hide_related_videos_summary_off">Related videos in quick actions are shown</string>
+    <string name="morphe_hide_quick_actions_related_videos_title">Hide quick actions related videos</string>
+    <string name="morphe_hide_quick_actions_related_videos_summary_on">Related videos in quick actions are hidden</string>
+    <string name="morphe_hide_quick_actions_related_videos_summary_off">Related videos in quick actions are shown</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
     <string name="morphe_hide_subscribers_community_guidelines_summary_on">Subscribers community guidelines are hidden</string>
     <string name="morphe_hide_subscribers_community_guidelines_summary_off">Subscribers community guidelines are shown</string>
@@ -290,10 +291,6 @@ Changes include:
     <string name="morphe_hide_community_button_title">Hide Community button</string>
     <string name="morphe_hide_community_button_summary_on">Community button is hidden</string>
     <string name="morphe_hide_community_button_summary_off">Community button is shown</string>
-    <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-    <string name="morphe_hide_for_you_shelf_title">Hide \'For You\' shelf</string>
-    <string name="morphe_hide_for_you_shelf_summary_on">For You shelf is hidden</string>
-    <string name="morphe_hide_for_you_shelf_summary_off">For You shelf is shown</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_join_button_title">Hide Join button</string>
     <string name="morphe_hide_join_button_summary_on">Join button is hidden</string>
@@ -697,18 +694,30 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_notifications_button_title">Hide Notifications</string>
     <string name="morphe_hide_notifications_button_summary_on">Notifications button is hidden</string>
     <string name="morphe_hide_notifications_button_summary_off">Notifications button is shown</string>
-    <string name="morphe_show_search_button_title">Show search button</string>
+    <string name="morphe_show_search_button_title">Show Search</string>
     <string name="morphe_show_search_button_summary_on">Search button is shown</string>
     <string name="morphe_show_search_button_summary_off">Search button is not shown</string>
     <string name="morphe_search_button_index_title">Search button index</string>
     <string name="morphe_search_button_index_invalid">Search button index must be less than %s</string>
+    <string name="morphe_show_settings_button_title">Show Settings</string>
+    <string name="morphe_show_settings_button_summary_on">Settings button is shown</string>
+    <string name="morphe_show_settings_button_summary_off">Settings button is not shown</string>
+    <string name="morphe_settings_button_index_title">Settings button index</string>
+    <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
     <string name="morphe_swap_create_with_notifications_button_summary_on">Create button is swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary_off">Create button is not swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_user_dialog_message">If changing this setting does not take effect, try switching to Incognito mode.</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
-    <string name="morphe_hide_navigation_button_labels_summary_on">Labels are hidden</string>
-    <string name="morphe_hide_navigation_button_labels_summary_off">Labels are shown</string>
+    <string name="morphe_hide_navigation_button_labels_summary_on">Navigation button labels are hidden</string>
+    <string name="morphe_hide_navigation_button_labels_summary_off">Navigation button labels are shown</string>
+    <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
+    <string name="morphe_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
+    <string name="morphe_hide_navigation_bar_summary_off">Navigation bar is shown</string>
+    <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
+
+To access Settings:
+Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferences' at the bottom."</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary_on">Spacing between navigation buttons is narrow</string>
     <string name="morphe_narrow_navigation_buttons_summary_off">Spacing between navigation buttons is normal</string>
@@ -730,18 +739,30 @@ Cookies will be saved automatically if they are valid"</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Hide or change toolbar components</string>
-    <string name="morphe_hide_toolbar_create_button_title">Hide Create button</string>
+    <string name="morphe_hide_toolbar_create_button_title">Hide Create</string>
     <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>
-    <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications button</string>
+    <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone</string>
+    <string name="morphe_hide_toolbar_microphone_button_summary_on">Microphone button is hidden</string>
+    <string name="morphe_hide_toolbar_microphone_button_summary_off">Microphone button is shown</string>
+    <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications</string>
     <string name="morphe_hide_toolbar_notification_button_summary_on">Notifications button is hidden</string>
     <string name="morphe_hide_toolbar_notification_button_summary_off">Notifications button is shown</string>
-    <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
+    <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
     <string name="morphe_hide_toolbar_search_button_summary_on">Search button is hidden</string>
     <string name="morphe_hide_toolbar_search_button_summary_off">Search button is shown</string>
-    <string name="morphe_hide_toolbar_voice_search_button_title">Hide Voice search button</string>
-    <string name="morphe_hide_toolbar_voice_search_button_summary_on">Voice search button is hidden</string>
-    <string name="morphe_hide_toolbar_voice_search_button_summary_off">Voice search button is shown</string>
+    <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
+    <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
+    <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in You tab is also overridden.</string>
+    <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
+    <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
+Tap and hold to open YouTube settings"</string>
+    <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+Tap and hold to open Morphe settings"</string>
+    <string name="morphe_rearrange_toolbar_buttons_title">Rearrange the replaced buttons</string>
+    <string name="morphe_rearrange_toolbar_buttons_summary_on">Buttons are rearranged</string>
+    <string name="morphe_rearrange_toolbar_buttons_summary_off">Buttons are not rearranged</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -1016,10 +1037,15 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
 You can change this in YouTube:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
+    <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+    <string name="morphe_hide_player_related_videos_title">Hide related videos</string>
+    <string name="morphe_hide_player_related_videos_summary_on">Related videos are hidden</string>
+    <string name="morphe_hide_player_related_videos_summary_off">Related videos are shown</string>
+
     <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-    <string name="morphe_hide_related_videos_overlay_title">Hide related videos overlay</string>
-    <string name="morphe_hide_related_videos_overlay_summary_on">Related videos overlay in fullscreen is hidden</string>
-    <string name="morphe_hide_related_videos_overlay_summary_off">Related videos overlay in fullscreen is shown</string>
+    <string name="morphe_hide_player_related_videos_overlay_title">Hide related videos overlay</string>
+    <string name="morphe_hide_player_related_videos_overlay_summary_on">Related videos overlay in fullscreen is hidden</string>
+    <string name="morphe_hide_player_related_videos_overlay_summary_off">Related videos overlay in fullscreen is shown</string>
 
     <!-- layout.hide.time.hideTimestampPatch -->
     <string name="morphe_hide_timestamp_title">Hide video timestamp</string>
@@ -1705,7 +1731,7 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
-    <string name="morphe_spoof_video_streams_js_variant_title">Player JavaScript variant</string>
+    <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show in Stats for nerds</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Client type is shown in Stats for nerds</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Client is hidden in Stats for nerds</string>

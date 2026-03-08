@@ -84,11 +84,12 @@ Thay đổi bao gồm:
   <string name="morphe_hide_floating_microphone_button_summary_on">Nút micro đã bị ẩn trong lúc tìm kiếm</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Nút micro được hiển thị trong lúc tìm kiếm</string>
   <string name="morphe_hide_horizontal_shelves_title">Ẩn kệ cá nhân hoá</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Các kệ cá nhân hoá đã bị ẩn, chẳng hạn như:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Các kệ cá nhân đã bị ẩn, chẳng hạn như:
 
 • Tin nổi bật
 • Tiếp tục xem
 • Khám phá các chủ đề khác
+• Dành cho bạn
 • Phù hợp nhất
 • Mua sắm
 • Xem lại"</string>
@@ -177,9 +178,9 @@ Thay đổi bao gồm:
   <string name="morphe_hide_quick_actions_title">Ẩn bảng thao tác nhanh</string>
   <string name="morphe_hide_quick_actions_summary_on">Bảng thao tác nhanh ở chế độ toàn màn hình đã bị ẩn</string>
   <string name="morphe_hide_quick_actions_summary_off">Bảng thao tác nhanh ở chế độ toàn màn hình được hiển thị</string>
-  <string name="morphe_hide_related_videos_title">Ẩn video liên quan</string>
-  <string name="morphe_hide_related_videos_summary_on">Video liên quan trong bảng thao tác nhanh đã bị ẩn</string>
-  <string name="morphe_hide_related_videos_summary_off">Video liên quan trong bảng thao tác nhanh được hiển thị</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Ẩn video liên quan trong bảng nút thao tác nhanh</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Video liên quan trong bảng thao tác nhanh đã bị ẩn</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Video liên quan trong bảng thao tác nhanh được hiển thị</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ẩn nguyên tắc cộng đồng cho người đăng ký</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Nguyên tắc cộng đồng cho người đăng ký đã bị ẩn</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Nguyên tắc cộng đồng dành cho người đăng ký được hiển thị</string>
@@ -281,10 +282,6 @@ Thay đổi bao gồm:
   <string name="morphe_hide_community_button_title">Ẩn nút Cộng đồng</string>
   <string name="morphe_hide_community_button_summary_on">Nút Cộng đồng đã bị ẩn</string>
   <string name="morphe_hide_community_button_summary_off">Nút Cộng đồng được hiển thị</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Ẩn kệ \'Dành cho bạn\'</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Kệ Dành cho bạn đã bị ẩn</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Kệ Dành cho bạn được hiển thị</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ẩn nút Tham gia</string>
   <string name="morphe_hide_join_button_summary_on">Nút tham gia đã bị ẩn</string>
@@ -658,18 +655,30 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_notifications_button_title">Ẩn Thông báo</string>
   <string name="morphe_hide_notifications_button_summary_on">Nút thông báo đã bị ẩn</string>
   <string name="morphe_hide_notifications_button_summary_off">Nút thông báo được hiển thị</string>
-  <string name="morphe_show_search_button_title">Hiện nút tìm kiếm</string>
+  <string name="morphe_show_search_button_title">Hiện Tìm kiếm</string>
   <string name="morphe_show_search_button_summary_on">Nút tìm kiếm đã được hiển thị</string>
   <string name="morphe_show_search_button_summary_off">Nút tìm kiếm không được hiển thị</string>
   <string name="morphe_search_button_index_title">Vị trí nút tìm kiếm</string>
   <string name="morphe_search_button_index_invalid">Giá trị vị trí phải nhỏ hơn %s</string>
+  <string name="morphe_show_settings_button_title">Hiện Cài đặt</string>
+  <string name="morphe_show_settings_button_summary_on">Nút Cài đặt đã được hiển thị</string>
+  <string name="morphe_show_settings_button_summary_off">Nút Cài đặt không được hiển thị</string>
+  <string name="morphe_settings_button_index_title">Vị trí nút cài đặt</string>
+  <string name="morphe_settings_button_index_invalid">Giá trị vị trí phải nhỏ hơn %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Đổi chỗ nút Tạo với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Nút Tạo đã được đổi chỗ với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Nút Tạo không đổi chỗ với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Nếu bật hoặc tắt cài đặt này cũng không có hiệu lực, bạn có thể thử chuyển sang chế độ Ẩn danh.</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Các tên nút đã bị ẩn</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Các tên nút được hiển thị</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Tên các nút điều hướng đã bị ẩn</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Tên các nút điều hướng được hiển thị</string>
+  <string name="morphe_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Thanh điều hướng đang ẩn</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Thanh điều hướng đang hiển thị</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Thao tác này sẽ ẩn hoàn toàn thanh điều hướng kể cả thẻ Bạn.
+
+Để mở cài đặt:
+Mở video bất kỳ → Mở menu Chất lượng → Bấm vào 'Cài đặt &gt; Lựa chọn ưu tiên về chất lượng video' ở dưới cùng."</string>
   <string name="morphe_narrow_navigation_buttons_title">Thu hẹp nút điều hướng</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Khoảng cách giữa các nút trên thanh điều hướng sẽ hẹp hơn</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Khoảng cách giữa các nút trên thanh điều hướng như bình thường</string>
@@ -690,18 +699,30 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Thanh điều hướng sẽ trở nên mờ hoặc trong suốt ở giao diện tối</string>
   <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
   <string name="morphe_toolbar_screen_summary">Ẩn hoặc thay đổi các thành phần của thanh công cụ</string>
-  <string name="morphe_hide_toolbar_create_button_title">Ẩn nút Tạo</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ẩn Tạo</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Nút tạo đã bị ẩn</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Nút tạo được hiển thị</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Ẩn nút Thông báo</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Ẩn Micro</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Nút Micro đã bị ẩn</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Nút Micro được hiển thị</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ẩn Thông báo</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Nút thông báo đã bị ẩn</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Nút thông báo được hiển thị</string>
-  <string name="morphe_hide_toolbar_search_button_title">Ẩn nút Tìm kiếm</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ẩn Tìm kiếm</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Nút tìm kiếm đã bị ẩn</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Nút tìm kiếm được hiển thị</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Ẩn nút Tìm kiếm bằng giọng nói</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Nút tìm kiếm bằng giọng nói đã bị ẩn</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Nút tìm kiếm bằng giọng nói được hiển thị</string>
+  <string name="morphe_replace_toolbar_create_button_title">Thay nút Tạo bằng Cài đặt</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Nút Tạo đã được đổi chỗ với nút Cài đặt</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Nút Tạo không đổi chỗ với nút Cài đặt</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Cách hoạt động của nút Cài đặt trong thẻ Bạn cũng sẽ bị thay đổi.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Thao tác nút Cài đặt</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Bấm để mở Cài đặt Morphe
+Bấm giữ để mở Cài đặt YouTube"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Bấm để mở Cài đặt YouTube
+Bấm giữ để mở Cài đặt Morphe"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Sắp xếp lại các nút đã bị thay thế</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Các nút đã được sắp xếp lại</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Các nút không được sắp xếp lại</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu tuỳ chọn</string>
   <string name="morphe_hide_player_flyout_summary">Ẩn hoặc hiện các mục menu tuỳ chọn trên trình phát</string>
@@ -965,10 +986,14 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
 
 Cách tắt 'Tự động phát video tiếp theo':
 Cài đặt → Phát (hoặc Tự động phát) → Tự động phát video tiếp theo"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ẩn video liên quan</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Các video liên quan đã bị ẩn</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Các video liên quan được hiển thị</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Lớp phủ video liên quan ở chế độ toàn màn hình được hiển thị</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ẩn lớp phủ video liên quan</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Lớp phủ video liên quan ở chế độ toàn màn hình đã bị ẩn</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Lớp phủ video liên quan ở chế độ toàn màn hình được hiển thị</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ẩn dấu thời gian video</string>
   <string name="morphe_hide_timestamp_summary_on">Dấu thời gian đã bị ẩn</string>
@@ -1597,7 +1622,7 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, video có thể không phát được</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Buộc âm thanh gốc không khả dụng</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Biến thể JavaScript của trình phát</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Biến thể JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện trong Thống kê chi tiết</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Client đã được hiển thị trong Thống kê chi tiết</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Client đã bị ẩn trong Thống kê chi tiết</string>

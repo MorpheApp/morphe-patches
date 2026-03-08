@@ -59,17 +59,17 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_library">Zbirka</string>
   <string name="morphe_change_start_page_entry_liked_music">Voljeo muziku</string>
   <string name="morphe_change_start_page_entry_playlists">Plejliste</string>
-  <string name="morphe_change_start_page_entry_podcasts">Podkastovi</string>
   <string name="morphe_change_start_page_entry_search">Pretraga</string>
   <string name="morphe_change_start_page_entry_subscriptions">Praćenja</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Sakrij traku kategorija</string>
   <string name="morphe_music_hide_category_bar_summary_on">Traka kategorija je skrivena</string>
   <string name="morphe_music_hide_category_bar_summary_off">Traka kategorija je prikazana</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Promeni boju mini-plejera</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Boja mini-plejera odgovara plejeru preko celog ekrana</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini-plejer koristi podrazumevanu boju</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Traka za navigaciju</string>
   <string name="morphe_music_navigation_bar_screen_summary">Sakrijte ili promenite dugmad trake za navigaciju</string>

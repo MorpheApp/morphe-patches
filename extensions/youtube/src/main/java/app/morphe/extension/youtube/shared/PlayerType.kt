@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.shared
 
 import app.morphe.extension.shared.Logger
@@ -137,5 +145,6 @@ enum class PlayerType {
 
     fun isMaximizedOrFullscreen(): Boolean {
         return this == WATCH_WHILE_MAXIMIZED || this == WATCH_WHILE_FULLSCREEN
+                || this == WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN
     }
 }

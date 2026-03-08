@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Aangepast</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentel waarschuwing! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentele Waarschuwing 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Je gebruikt een experimentele app-versie van ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 verwacht quirky app-gedrag of onidentificeerde buggen omdat we de patches voor deze app-versie afstemmen.
@@ -89,6 +89,15 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan niet aanmelden bij VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Uitgelogd van Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ongeldig VR aanmeldtoken, probeer opnieuw aan te melden bij VR</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forceer JavaScript-hash van speler</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"JavaScript-hash update van speler is uitgeschakeld
+
+• Een geldige JavaScript-hash van speler is vereist
+• Afspelen mislukt als de JavaScript-hash van de speler door GVS wordt ingetrokken"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">JavaScript-hash update van speler is ingeschakeld</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript-hashes van spelers zijn ongeveer een maand geldig, en verouderde hashes kunnen door GVS worden ingetrokken.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Speler JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Voer een geldige speler JavaScript hash in</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Uitschakelen van het QUIC-protocol</string>
   <string name="morphe_disable_quic_protocol_summary_on">Het QUIC-protocol is uitgeschakeld</string>

@@ -34,3 +34,17 @@ settings {
 }
 
 include(":patches:stub")
+
+// Include morphe-patcher as composite builds if they exist locally
+mapOf(
+    "morphe-patcher" to "app.morphe:morphe-patcher",
+).forEach { (libraryPath, libraryName) ->
+    val libDir = file("../$libraryPath")
+    if (libDir.exists()) {
+        includeBuild(libDir) {
+            dependencySubstitution {
+                substitute(module(libraryName)).using(project(":"))
+            }
+        }
+    }
+}

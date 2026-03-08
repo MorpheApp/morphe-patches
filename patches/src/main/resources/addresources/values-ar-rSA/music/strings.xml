@@ -59,17 +59,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_library">المكتبة</string>
   <string name="morphe_change_start_page_entry_liked_music">موسيقى أعجبتني</string>
   <string name="morphe_change_start_page_entry_playlists">قوائم التشغيل</string>
-  <string name="morphe_change_start_page_entry_podcasts">البودكاست</string>
   <string name="morphe_change_start_page_entry_search">البحث</string>
   <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">إخفاء شريط الفئات</string>
   <string name="morphe_music_hide_category_bar_summary_on">تم إخفاء شريط الفئات</string>
   <string name="morphe_music_hide_category_bar_summary_off">يتم عرض شريط الفئات</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">تغيير لون المشغل المصغر</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">يستخدم المشغل المصغر اللون الافتراضي</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">تمكين مشغل موسيقى مصغر إجباري</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">يظل مشغل الموسيقى مصغراً عند تغيير التشغيل</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">يتوسع مشغل الموسيقى إلى ملء الشاشة عند تغيير التشغيل</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">شريط التنقل</string>
   <string name="morphe_music_navigation_bar_screen_summary">إخفاء أزرار شريط التنقل أو تغييرها</string>

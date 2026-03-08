@@ -87,11 +87,12 @@ Promjene uključuju:
   <string name="morphe_hide_floating_microphone_button_summary_on">Plutajuća tipka mikrofona u pretraživanju je skrivena</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plutajuća tipka mikrofona u pretraživanju je prikazana</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Vodoravne kartice su skrivene, kao što su:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Vodoravne police su skrivene, kao što su:
 
 • Najnovije vijesti
-• Nastavak gledanja
+• Nastavi gledanje
 • Istraži više kanala
+• Za vas
 • Najrelevantnije
 • Kupovina
 • Gledaj ponovno"</string>
@@ -153,39 +154,38 @@ Promjene uključuju:
   <string name="morphe_hide_channel_bar_summary_on">Komentari su skriveni</string>
   <string name="morphe_hide_channel_bar_summary_off">Komentari su prikazani</string>
   <string name="morphe_hide_channel_watermark_title">Sakrij AI chat sažetak</string>
-  <string name="morphe_hide_channel_watermark_summary_on">Vodotenac kanala je skriven</string>
-  <string name="morphe_hide_channel_watermark_summary_off">Vodotenac kanala je prikazan</string>
-  <string name="morphe_hide_crowdfunding_box_title">Sakrij kratke oglase</string>
-  <string name="morphe_hide_crowdfunding_box_summary_on">Kratke oglasi su skriveni</string>
-  <string name="morphe_hide_crowdfunding_box_summary_off">Kratke oglasi su prikazane</string>
+  <string name="morphe_hide_channel_watermark_summary_on">Vodeni žig kanala je skriven</string>
+  <string name="morphe_hide_channel_watermark_summary_off">Vodeni žig kanala je prikazan</string>
+  <string name="morphe_hide_crowdfunding_box_title">Sakrij okvir za grupno financiranje</string>
+  <string name="morphe_hide_crowdfunding_box_summary_on">Okvir  za grupno financiranje je skriven</string>
+  <string name="morphe_hide_crowdfunding_box_summary_off">Okvir  za grupno financiranje je prikazan</string>
   <string name="morphe_hide_emergency_box_title">Sakrij \'Oglasi na ekranu\'</string>
   <string name="morphe_hide_emergency_box_summary_on">Oglasi na ekranu su skriveni</string>
   <string name="morphe_hide_emergency_box_summary_off">Oglasi na ekranu su prikazane</string>
-  <string name="morphe_hide_info_panels_title">Sakrij informativne panjeve</string>
-  <string name="morphe_hide_info_panels_summary_on">Informativne panjeve su skriveni</string>
-  <string name="morphe_hide_info_panels_summary_off">Info paneli se prikazuju</string>
+  <string name="morphe_hide_info_panels_title">Sakrij info ploče</string>
+  <string name="morphe_hide_info_panels_summary_on">Info ploče su skrivene</string>
+  <string name="morphe_hide_info_panels_summary_off">Info ploče se prikazuju</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Sakrij tipku za pridruživanje</string>
-  <string name="morphe_hide_join_membership_button_summary_on">Tipka za prikazivanje je skrivena</string>
-  <string name="morphe_hide_join_membership_button_summary_off">Tipka za prikazivanje je prikazana</string>
+  <string name="morphe_hide_join_membership_button_summary_on">Tipka za pridruživanje je skrivena</string>
+  <string name="morphe_hide_join_membership_button_summary_off">Tipka za pridruživanje je prikazana</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Sakrij dugme \'Live chat replay\'</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">Dugme \'Live chat replay\' u player overlaju je sakriveno</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">Live chat replay dugme na pregledu igrača je prikazano</string>
-  <string name="morphe_hide_medical_panels_title">Sakrij informativne panjeve</string>
-  <string name="morphe_hide_medical_panels_summary_on">Informativne panjeve su skrivene</string>
-  <string name="morphe_hide_medical_panels_summary_off">Video oglasi se prikazuju</string>
-  <string name="morphe_hide_quick_actions_title">Video oglasi su skriveni</string>
-  <string name="morphe_hide_quick_actions_summary_on">Tipke za brzojuk u cijelom ekranu su skrivene</string>
-  <string name="morphe_hide_quick_actions_summary_off">Tipke za brzojuk u cijelom ekranu su prikazane</string>
-  <string name="morphe_hide_related_videos_title">Sakrij povezane videoz</string>
-  <string name="morphe_hide_related_videos_summary_on">Povezane videoz u brzojuku su skrivene</string>
-  <string name="morphe_hide_related_videos_summary_off">Sakrij \'AI generirano video sažete\' odjel</string>
-  <string name="morphe_hide_subscribers_community_guidelines_title">Odjel \'AI generirano video sažete\' je prikazano</string>
-  <string name="morphe_hide_subscribers_community_guidelines_summary_on">Sakrij upute korisnika</string>
-  <string name="morphe_hide_subscribers_community_guidelines_summary_off">Upute korisnika su skrivene</string>
+  <string name="morphe_hide_live_chat_replay_button_title">Sakrij tipku \'Live chat replay\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Tipka za ponovnu reprodukciju chata uživo u prekrivanju playera je skrivena</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Tipka za ponovnu reprodukciju chata uživo u prekrivanju playera je prikazana</string>
+  <string name="morphe_hide_medical_panels_title">Sakrij medicinske ploče</string>
+  <string name="morphe_hide_medical_panels_summary_on">Medicinski paneli su skriveni</string>
+  <string name="morphe_hide_medical_panels_summary_off">Medicinski paneli su prikazani</string>
+  <string name="morphe_hide_quick_actions_title">Sakrij brze radnje</string>
+  <string name="morphe_hide_quick_actions_summary_on">Brze radnje na cijelom zaslonu su skrivene</string>
+  <string name="morphe_hide_quick_actions_summary_off">Brze radnje na cijelom zaslonu su prikazane</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_on">Povezani videozapisi u brzim radnjama su skriveni</string>
+  <string name="morphe_hide_quick_actions_related_videos_summary_off">Povezani videozapisi u brzim radnjama su prikazani</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">Sakrij smjernice za pretplatnike</string>
+  <string name="morphe_hide_subscribers_community_guidelines_summary_on">Smjernice zajednice za pretplatnike su skrivene</string>
+  <string name="morphe_hide_subscribers_community_guidelines_summary_off">Smjernice zajednice za pretplatnike su prikazane</string>
   <string name="morphe_hide_timed_reactions_title">Sakrij \'Korak je ovo video stvoreno\'</string>
   <string name="morphe_hide_timed_reactions_summary_on">Korak je ovo video stvoreno je skriveno</string>
   <string name="morphe_hide_timed_reactions_summary_off">Sakrij \'AI generirano video sažete\' odjel</string>
@@ -284,10 +284,6 @@ Promjene uključuju:
   <string name="morphe_hide_community_button_title">Sakrij tipku \'Zajednica\'</string>
   <string name="morphe_hide_community_button_summary_on">Skrivena je tipka za zajednicu</string>
   <string name="morphe_hide_community_button_summary_off">Tipka za zajednicu je prikazana</string>
-  <!-- 'For You' should be translated using the same localized wording YouTube displays for the shelf. -->
-  <string name="morphe_hide_for_you_shelf_title">Sakrij \'Prikaži\' odjel</string>
-  <string name="morphe_hide_for_you_shelf_summary_on">Odjel \'Prikaži\' je skriveno</string>
-  <string name="morphe_hide_for_you_shelf_summary_off">Odjel \'Prikaži\' je prikazano</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Sakrij tipku \'Pridruži\'</string>
   <string name="morphe_hide_join_button_summary_on">Tipka \'Pridruži\' je skrivena</string>
@@ -661,7 +657,6 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_hide_notifications_button_title">Sakrij Notifications</string>
   <string name="morphe_hide_notifications_button_summary_on">Tipka za obavijesti je skrivena</string>
   <string name="morphe_hide_notifications_button_summary_off">Tipka za obavijesti je prikazana</string>
-  <string name="morphe_show_search_button_title">Prikaži tipku za pretraživanje</string>
   <string name="morphe_show_search_button_summary_on">Tipka za pretraživanje je prikazana</string>
   <string name="morphe_show_search_button_summary_off">Tipka za pretraživanje nije prikazana</string>
   <string name="morphe_search_button_index_title">Indeks tipke za pretraživanje</string>
@@ -671,8 +666,6 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Dugme Stvori nije zamijenjeno s dugmom Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Ako promjena ovog postavke ne učinuje se, pokušajte preći u Incognito način.</string>
   <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake navigacijskih tipki</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Oznake su skrivene</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Oznake su prikazane</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske tipke za navigaciju</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između tipki za navigaciju je uska</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između tipki za navigaciju je normalan</string>
@@ -693,18 +686,12 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tamna moda navigacijska traka ili opaka</string>
   <string name="morphe_toolbar_screen_title">Traka</string>
   <string name="morphe_toolbar_screen_summary">Sakrij ili promijeni komponente trake</string>
-  <string name="morphe_hide_toolbar_create_button_title">Sakrij tipku \'Stvori\'</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tipka \'Stvori\' je sakrivena</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tipka \'Stvori\' je prikazana</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Sakrij tipku \'Obavijesti\'</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Tipka \'Obavijesti\' je sakrivena</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Tipka \'Obavijesti\' je prikazana</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sakrij tipku \'Pretraži\'</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tipka za pretraživanje je skrivena</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Tipka za pretraživanje je prikazana</string>
-  <string name="morphe_hide_toolbar_voice_search_button_title">Sakrij tipku za glasovni pretragu</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_on">Tipka za glasovni pretragu je skrivena</string>
-  <string name="morphe_hide_toolbar_voice_search_button_summary_off">Tipka za glasovni pretragu je prikazana</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
   <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži stavke flyout menija</string>
@@ -962,11 +949,18 @@ Za prikaz izbornika audio zapisa promijenite 'Parodija video streamova' u 'Andro
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Dugmice za prijavu se prikazuju</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_end_screen_suggested_video_title">Sakrij dugmice za kraj videoa</string>
+  <string name="morphe_end_screen_suggested_video_summary_on">Predloženi videozapis završnog zaslona je skriven</string>
   <string name="morphe_end_screen_suggested_video_summary_off">Dugmice za kraj videoa se prikazuju</string>
+  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ova postavka funkcionira samo ako je isključena opcija 'Automatska reprodukcija sljedećeg videa'.
+
+To možete promijeniti na YouTubeu:
+Postavke → Reprodukcija (ili Automatska reprodukcija) → Automatska reprodukcija sljedećeg videa"</string>
+  <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Sakrij povezane videozapise</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_related_videos_overlay_title">Sakrij dugmice za povezane video</string>
-  <string name="morphe_hide_related_videos_overlay_summary_on">Dugmice za povezane video su skrivena</string>
-  <string name="morphe_hide_related_videos_overlay_summary_off">Dugmice za povezane video se prikazuju</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Sakrij dugmice za povezane video</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_on">Dugmice za povezane video su skrivena</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary_off">Dugmice za povezane video se prikazuju</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Sakrij oznaku za trajanje videoa</string>
   <string name="morphe_hide_timestamp_summary_on">Oznaka za trajanje videoa je skrivena</string>
@@ -1283,6 +1277,11 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_open_system_share_sheet_summary_on">Otvara tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otvara tablicu dijeljenja u aplikaciji</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Nadjačaj tipku YouTube Music</string>
+  <string name="morphe_override_youtube_music_button_summary_on">Tipka YouTube Music otvara vašu ciljanu glazbenu aplikaciju</string>
+  <string name="morphe_override_youtube_music_button_summary_off">Tipka YouTube Music otvara vašu izvornu aplikaciju</string>
+  <string name="morphe_music_package_name_title">Morphe Music ime paketa</string>
+  <string name="morphe_music_package_name_summary">Naziv paketa ciljne glazbene aplikacije</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promijenite početnu stranicu</string>
   <string name="morphe_change_start_page_entry_default">Zadano</string>
@@ -1591,7 +1590,7 @@ Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako neuspije deobfuskacija, reproducija može neuspjeti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Nema force original audio</string>
-  <string name="morphe_spoof_video_streams_js_variant_title">Varijanta JavaScript igrača</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript igrača</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži u Statistikama za nerdove</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Vrsta klijenta je prikazana u Statistikama za nerdove</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Klijent je sakriven u Statistikama za nerdove</string>

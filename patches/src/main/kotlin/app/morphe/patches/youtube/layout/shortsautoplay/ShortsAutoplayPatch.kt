@@ -4,6 +4,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -11,6 +12,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_09_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -81,12 +83,20 @@ val shortsAutoplayPatch = bytecodePatch(
             ReelPlaybackRepeatParentFingerprint.originalClassDef
         ).method.apply {
             // The behavior enums are looked up from an ordinal value to an enum type.
-            findInstructionIndicesReversedOrThrow {
-                val reference = getReference<MethodReference>()
-                reference?.definingClass == reelEnumClass &&
-                    reference.parameterTypes.firstOrNull() == "I" &&
-                    reference.returnType == reelEnumClass
-            }.forEach { index ->
+            findInstructionIndicesReversedOrThrow(
+                if (is_21_10_or_greater) {
+                    methodCall(
+                        returnType = reelEnumClass,
+                        parameters = listOf("L")
+                    )
+                } else {
+                    methodCall(
+                        definingClass = reelEnumClass,
+                        returnType = reelEnumClass,
+                        parameters = listOf("I")
+                    )
+                }
+            ).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
                 addInstructions(

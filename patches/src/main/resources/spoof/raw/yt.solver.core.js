@@ -60,25 +60,28 @@ var jsc = (function (meriyah, astring) {
     }
     return value;
   }
-  const nsigExpression = {
-    type: 'VariableDeclaration',
-    kind: 'var',
-    declarations: [
+  const nsig = {
+    type: 'CallExpression',
+    callee: { or: [{ type: 'Identifier' }, { type: 'SequenceExpression' }] },
+    arguments: [
+      {},
       {
-        type: 'VariableDeclarator',
-        init: {
-          type: 'CallExpression',
-          callee: { type: 'Identifier' },
-          arguments: [
-            { type: 'Literal' },
-            {
-              type: 'CallExpression',
-              callee: { type: 'Identifier', name: 'decodeURIComponent' },
-            },
-          ],
-        },
+        type: 'CallExpression',
+        callee: { type: 'Identifier', name: 'decodeURIComponent' },
+        arguments: [{}],
       },
     ],
+  };
+  const nsigAssignment = {
+    type: 'AssignmentExpression',
+    left: { type: 'Identifier' },
+    operator: '=',
+    right: nsig,
+  };
+  const nsigDeclarator = {
+    type: 'VariableDeclarator',
+    id: { type: 'Identifier' },
+    init: nsig,
   };
   const logicalExpression = {
     type: 'ExpressionStatement',
@@ -98,6 +101,17 @@ var jsc = (function (meriyah, astring) {
               arguments: {
                 or: [
                   [
+                    {
+                      type: 'CallExpression',
+                      callee: {
+                        type: 'Identifier',
+                        name: 'decodeURIComponent',
+                      },
+                      arguments: [{ type: 'Identifier' }],
+                      optional: false,
+                    },
+                  ],
+                  [
                     { type: 'Literal' },
                     {
                       type: 'CallExpression',
@@ -110,6 +124,8 @@ var jsc = (function (meriyah, astring) {
                     },
                   ],
                   [
+                    { type: 'Literal' },
+                    { type: 'Literal' },
                     {
                       type: 'CallExpression',
                       callee: {
@@ -138,18 +154,18 @@ var jsc = (function (meriyah, astring) {
         expression: {
           type: 'AssignmentExpression',
           operator: '=',
-          left: { type: 'Identifier' },
-          right: { type: 'FunctionExpression', params: [{}, {}, {}] },
+          left: { or: [{ type: 'Identifier' }, { type: 'MemberExpression' }] },
+          right: { type: 'FunctionExpression' },
         },
       },
-      { type: 'FunctionDeclaration', params: [{}, {}, {}] },
+      { type: 'FunctionDeclaration' },
       {
         type: 'VariableDeclaration',
         declarations: {
           anykey: [
             {
               type: 'VariableDeclarator',
-              init: { type: 'FunctionExpression', params: [{}, {}, {}] },
+              init: { type: 'FunctionExpression' },
             },
           ],
         },
@@ -163,7 +179,7 @@ var jsc = (function (meriyah, astring) {
         node.type === 'ExpressionStatement' &&
         node.expression.type === 'AssignmentExpression' &&
         node.expression.right.type === 'FunctionExpression' &&
-        node.expression.right.params.length === 3
+        node.expression.right.params.length >= 3
       ) {
         blocks.push(node.expression.right.body);
       } else if (node.type === 'VariableDeclaration') {
@@ -176,14 +192,14 @@ var jsc = (function (meriyah, astring) {
               'optionalAccess',
               (_2) => _2.type,
             ]) === 'FunctionExpression' &&
-            decl.init.params.length === 3
+            decl.init.params.length >= 3
           ) {
             blocks.push(decl.init.body);
           }
         }
       } else if (
         node.type === 'FunctionDeclaration' &&
-        node.params.length === 3
+        node.params.length >= 3
       ) {
         blocks.push(node.body);
       } else {
@@ -218,49 +234,63 @@ var jsc = (function (meriyah, astring) {
             stmt.expression.right.expressions[0].right.type === 'CallExpression'
           ) {
             call = stmt.expression.right.expressions[0].right;
-            break;
           }
         } else if (stmt.type === 'IfStatement') {
           let consequent = stmt.consequent;
           while (consequent.type === 'LabeledStatement') {
             consequent = consequent.body;
           }
-          if (consequent.type === 'BlockStatement') {
-            for (const n of consequent.body) {
-              if (!matchesStructure(n, nsigExpression)) {
-                continue;
-              }
+          if (consequent.type !== 'BlockStatement') {
+            continue;
+          }
+          for (const n of consequent.body) {
+            if (n.type !== 'VariableDeclaration') {
+              continue;
+            }
+            for (const decl of n.declarations) {
               if (
-                n.type === 'VariableDeclaration' &&
+                matchesStructure(decl, nsigDeclarator) &&
                 _optionalChain$2([
-                  n,
+                  decl,
                   'access',
-                  (_3) => _3.declarations,
-                  'access',
-                  (_4) => _4[0],
+                  (_3) => _3.init,
                   'optionalAccess',
-                  (_5) => _5.init,
-                  'optionalAccess',
-                  (_6) => _6.type,
+                  (_4) => _4.type,
                 ]) === 'CallExpression'
               ) {
-                call = n.declarations[0].init;
+                call = decl.init;
+                break;
+              }
+            }
+            if (call) {
+              break;
+            }
+          }
+        } else if (stmt.type === 'ExpressionStatement') {
+          if (
+            stmt.expression.type !== 'LogicalExpression' ||
+            stmt.expression.operator !== '&&' ||
+            stmt.expression.right.type !== 'SequenceExpression'
+          ) {
+            continue;
+          }
+          for (const expr of stmt.expression.right.expressions) {
+            if (matchesStructure(expr, nsigAssignment) && expr.type) {
+              if (
+                expr.type === 'AssignmentExpression' &&
+                expr.right.type === 'CallExpression'
+              ) {
+                call = expr.right;
                 break;
               }
             }
           }
-          if (call) break;
+        }
+        if (call) {
+          break;
         }
       }
-      if (
-        _optionalChain$2([
-          call,
-          'optionalAccess',
-          (_7) => _7.callee,
-          'access',
-          (_8) => _8.type,
-        ]) !== 'Identifier'
-      ) {
+      if (!call) {
         continue;
       }
       return {
@@ -268,21 +298,12 @@ var jsc = (function (meriyah, astring) {
         params: [{ type: 'Identifier', name: 'sig' }],
         body: {
           type: 'CallExpression',
-          callee: { type: 'Identifier', name: call.callee.name },
+          callee: call.callee,
           arguments: call.arguments.map((arg) => {
             if (
               arg.type === 'CallExpression' &&
               arg.callee.type === 'Identifier' &&
-              arg.callee.name === 'decodeURIComponent' &&
-              _optionalChain$2([
-                arg,
-                'access',
-                (_9) => _9.arguments,
-                'access',
-                (_10) => _10[0],
-                'optionalAccess',
-                (_11) => _11.type,
-              ]) === 'Identifier'
+              arg.callee.name === 'decodeURIComponent'
             ) {
               return { type: 'Identifier', name: 'sig' };
             }

@@ -4,10 +4,10 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.misc.quic.disableQuicProtocolPatch
+import app.morphe.patches.shared.misc.quic.disableQUICProtocolPatch
 
 @Suppress("unused")
-val disableQuicProtocolPatchMusic = disableQuicProtocolPatch(
+val disableQUICProtocolPatchMusic = disableQUICProtocolPatch(
     block = {
         dependsOn(
             sharedExtensionPatch,

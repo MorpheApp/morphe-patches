@@ -59,17 +59,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_library">Библиотека</string>
   <string name="morphe_change_start_page_entry_liked_music">Нравится музыка</string>
   <string name="morphe_change_start_page_entry_playlists">Плейлисты</string>
-  <string name="morphe_change_start_page_entry_podcasts">Подкасты</string>
   <string name="morphe_change_start_page_entry_search">Поиск</string>
   <string name="morphe_change_start_page_entry_subscriptions">Подписки</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Скрыть панель категорий</string>
   <string name="morphe_music_hide_category_bar_summary_on">Панель категорий скрыта</string>
   <string name="morphe_music_hide_category_bar_summary_off">Панель категорий показана</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Изменить цвет мини-плеера</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Цвет мини-плеера соответствует полноэкранному проигрывателю</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Мини-плеер использует цвет по умолчанию</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Включить принудительный миниплеер</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Миниплеер остаётся свёрнутым во время изменения воспроизведения</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Миниплеер разворачивается на весь экран во время изменения воспроизведения</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Панель навигации</string>
   <string name="morphe_music_navigation_bar_screen_summary">Скрыть или изменить кнопки панели навигации</string>

@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Prilagođeno</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentalna opomena! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално упозорење 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ <b>%1$s</b>
 <br/>
 <br/>
@@ -97,6 +97,15 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljen sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte se ponovno prijaviti na VR</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Silom player JavaScript heš</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Ažuriranje JavaScript heša plejera je onemogućeno
+
+• Potreban je važeći JavaScript heš plejera
+• Reprodukcija može da ne uspe ako je JavaScript heš plejera poništen u GVS"</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Ažuriranje JavaScript heša plejera je omogućeno</string>
+  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript hešovi plejera su važeći otprilike jedan mesec, a zastareli hešovi mogu biti poništeni od strane GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Unesite validan hash JavaScript igrača</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemogući protokol QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je onemogućen</string>
