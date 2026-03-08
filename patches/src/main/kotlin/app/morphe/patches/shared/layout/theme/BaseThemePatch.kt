@@ -60,7 +60,7 @@ internal val darkThemeBackgroundColorOption = stringOption(
     default = "@android:color/black",
     values = mapOf(
         "Pure black" to "@android:color/black",
-        "Material You (Neutral)" to "@android:color/system_neutral1_950",
+        "Material You (Neutral)" to "@android:color/system_neutral1_900",
         "Material You - Primary" to "@android:color/system_accent1_800",
         "Material You - Secondary" to "@android:color/system_accent2_800",
         "Material You - Tertiary" to "@android:color/system_accent3_800",
