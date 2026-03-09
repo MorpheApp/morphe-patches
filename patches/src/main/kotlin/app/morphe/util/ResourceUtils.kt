@@ -238,17 +238,6 @@ internal fun Element.copyAttributesFrom(oldContainer: Element) {
     }
 }
 
-/**
- * @return The play store services version.
- */
-internal fun ResourcePatchContext.findPlayStoreServicesVersion(): Int =
-    document("res/values/integers.xml").use { document ->
-        document.documentElement.childNodes.findElementByAttributeValueOrThrow(
-            "name",
-            "google_play_services_version",
-        ).textContent.toInt()
-    }
-
 internal fun String.trimIndentMultiline() =
     this.split("\n")
         .joinToString("\n") { it.trimIndent() } // Remove the leading whitespace from each line.
