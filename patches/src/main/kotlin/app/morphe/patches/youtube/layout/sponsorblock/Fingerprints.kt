@@ -8,6 +8,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -28,6 +30,7 @@ internal object AppendTimeFingerprint : Fingerprint(
 )
 
 internal object ControlsOverlayFingerprint : Fingerprint(
+    classFingerprint = LayoutConstructorFingerprint,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -36,10 +39,8 @@ internal object ControlsOverlayFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves to the class found in [seekbarFingerprint].
- */
 internal object RectangleFieldInvalidatorFingerprint : Fingerprint(
+    classFingerprint = SeekbarFingerprint,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(

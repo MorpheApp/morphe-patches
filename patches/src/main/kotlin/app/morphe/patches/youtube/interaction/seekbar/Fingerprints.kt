@@ -13,7 +13,7 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object SwipingUpGestureParentFingerprint : Fingerprint(
+private object SwipingUpGestureParentFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
@@ -21,10 +21,8 @@ internal object SwipingUpGestureParentFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves using the class found in [SwipingUpGestureParentFingerprint].
- */
 internal object ShowSwipingUpGuideFingerprint : Fingerprint(
+    classFingerprint = SwipingUpGestureParentFingerprint,
     accessFlags = listOf(AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
@@ -33,10 +31,8 @@ internal object ShowSwipingUpGuideFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves using the class found in [SwipingUpGestureParentFingerprint].
- */
 internal object AllowSwipingUpGestureFingerprint : Fingerprint(
+    classFingerprint = SwipingUpGestureParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L")

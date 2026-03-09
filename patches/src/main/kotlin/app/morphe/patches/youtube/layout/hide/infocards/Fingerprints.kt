@@ -7,20 +7,21 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+private object InfocardsIncognitoParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("player_overlay_info_card_teaser")
+    )
+)
+
 internal object InfocardsIncognitoFingerprint : Fingerprint(
+    classFingerprint = InfocardsIncognitoParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/Boolean;",
     parameters = listOf("L", "J"),
     filters = listOf(
         string("vibrator")
-    )
-)
-
-internal object InfocardsIncognitoParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    filters = listOf(
-        string("player_overlay_info_card_teaser")
     )
 )
 

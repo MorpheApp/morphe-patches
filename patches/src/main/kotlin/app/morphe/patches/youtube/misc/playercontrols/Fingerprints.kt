@@ -23,7 +23,7 @@ internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
     )
 )
 
-internal object YoutubeControlsOverlayFingerprint : Fingerprint(
+private object YoutubeControlsOverlayFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -34,6 +34,7 @@ internal object YoutubeControlsOverlayFingerprint : Fingerprint(
 )
 
 internal object MotionEventFingerprint : Fingerprint(
+    classFingerprint = YoutubeControlsOverlayFingerprint,
     returnType = "V",
     parameters = listOf("Landroid/view/MotionEvent;"),
     filters = listOf(
@@ -89,10 +90,8 @@ internal object OverlayViewInflateFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves to the class found in [playerTopControlsInflateFingerprint].
- */
 internal object ControlsOverlayVisibilityFingerprint : Fingerprint(
+    classFingerprint = PlayerTopControlsInflateFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z", "Z"),

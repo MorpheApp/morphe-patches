@@ -57,9 +57,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
 
         // Inject a call to remember the selected quality for Shorts.
-        VideoQualityItemOnClickFingerprint.match(
-            VideoQualityItemOnClickParentFingerprint.classDef
-        ).method.addInstruction(
+        VideoQualityItemOnClickFingerprint.method.addInstruction(
             0,
             "invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->userChangedShortsQuality(I)V"
         )

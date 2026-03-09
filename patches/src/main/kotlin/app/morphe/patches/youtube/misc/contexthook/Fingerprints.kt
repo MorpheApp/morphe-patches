@@ -35,7 +35,7 @@ internal fun indexOfMessageLiteBuilderReference(method: Method, type: String = "
                 reference.returnType.startsWith(type)
     }
 
-internal object BuildClientContextBodyConstructorFingerprint : Fingerprint(
+private object BuildClientContextBodyConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
@@ -48,6 +48,7 @@ internal object BuildClientContextBodyConstructorFingerprint : Fingerprint(
 )
 
 internal object BuildClientContextBodyFingerprint : Fingerprint(
+    classFingerprint = BuildClientContextBodyConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -75,7 +76,13 @@ internal object BuildDummyClientContextBodyFingerprint : Fingerprint(
     )
 )
 
+internal object BrowseEndpointParentFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    strings = listOf("browseId"),
+)
+
 internal object BrowseEndpointConstructorFingerprint : Fingerprint(
+    classFingerprint = BrowseEndpointParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
@@ -87,11 +94,6 @@ internal object BrowseEndpointConstructorFingerprint : Fingerprint(
             location = MatchAfterImmediately()
         ),
     )
-)
-
-internal object BrowseEndpointParentFingerprint : Fingerprint(
-    returnType = "Ljava/lang/String;",
-    strings = listOf("browseId"),
 )
 
 internal object GuideEndpointConstructorFingerprint : Fingerprint(

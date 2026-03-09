@@ -28,9 +28,7 @@ internal val prioritizeVideoQualityPatch = bytecodePatch {
             SwitchPreference("morphe_prioritize_video_quality")
         )
 
-        VideoStreamingDataConstructorFingerprint.match(
-            VideoStreamingDataToStringFingerprint.originalClassDef
-        ).let {
+        VideoStreamingDataConstructorFingerprint.let {
             // Clone method to preserve parameters.
             it.method.cloneMutableAndPreserveParameters().apply {
                 // Must offset match indexes since cloning adds additional move instructions.

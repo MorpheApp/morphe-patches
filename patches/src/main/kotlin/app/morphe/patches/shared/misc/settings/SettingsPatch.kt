@@ -32,12 +32,11 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
 
 private val settingsColorPatch = bytecodePatch {
     finalize {
-        val extensionClassDef = mutableClassDefBy(EXTENSION_CLASS_DESCRIPTOR)
         if (lightThemeColor != null) {
-            ThemeLightColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(lightThemeColor!!)
+            ThemeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor!!)
         }
         if (darkThemeColor != null) {
-            ThemeDarkColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(darkThemeColor!!)
+            ThemeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor!!)
         }
     }
 }

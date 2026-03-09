@@ -19,6 +19,7 @@ internal object GetOldPlaybackSpeedsFingerprint : Fingerprint(
 )
 
 internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
+    classFingerprint = GetOldPlaybackSpeedsFingerprint,
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "varispeed_unavailable_message")
     )

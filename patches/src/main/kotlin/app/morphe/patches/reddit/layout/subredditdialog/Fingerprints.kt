@@ -66,7 +66,16 @@ internal object NSFWAlertEmitFingerprint : Fingerprint(
     )
 )
 
+internal object NSFWAlertDialogClassFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("NsfwAlertDialogScreenDelegate")
+    )
+)
+
 internal object NSFWAlertDialogBuilderFingerprint : Fingerprint(
+    classFingerprint = NSFWAlertDialogClassFingerprint,
     returnType = "V",
     parameters = listOf("Z"),
     filters = listOf(
@@ -78,6 +87,7 @@ internal object NSFWAlertDialogBuilderFingerprint : Fingerprint(
 )
 
 internal object NSFWAlertDialogInstanceFingerprint : Fingerprint(
+    classFingerprint = NSFWAlertDialogClassFingerprint,
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
@@ -85,13 +95,5 @@ internal object NSFWAlertDialogInstanceFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             name = "show"
         )
-    )
-)
-
-internal object NSFWAlertDialogParentFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        string("NsfwAlertDialogScreenDelegate")
     )
 )

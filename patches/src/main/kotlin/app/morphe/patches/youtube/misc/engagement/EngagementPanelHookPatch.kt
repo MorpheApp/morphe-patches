@@ -58,9 +58,7 @@ val engagementPanelHookPatch = bytecodePatch(
             }
         }
 
-        EngagementPanelUpdateFingerprint.match(
-            EngagementPanelControllerFingerprint.originalClassDef
-        ).method.addInstruction(
+        EngagementPanelUpdateFingerprint.method.addInstruction(
             0,
             "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->close()V"
         )

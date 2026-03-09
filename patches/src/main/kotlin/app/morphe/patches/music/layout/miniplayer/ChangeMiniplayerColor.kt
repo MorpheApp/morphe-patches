@@ -41,7 +41,7 @@ val changeMiniplayerColor = bytecodePatch(
             SwitchPreference("morphe_music_change_miniplayer_color"),
         )
 
-        SwitchToggleColorFingerprint.match(MiniPlayerConstructorFingerprint.classDef).let {
+        SwitchToggleColorFingerprint.let {
             val relativeIndex = it.instructionMatches.last().index + 1
 
             val invokeVirtualIndex = it.method.indexOfFirstInstructionOrThrow(

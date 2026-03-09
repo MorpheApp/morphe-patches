@@ -35,9 +35,7 @@ internal val autoCaptionsPatch = bytecodePatch(
             }
         )
 
-        SubtitleManagerFingerprint.match(
-            SubtitleManagerConstructorFingerprint.originalClassDef
-        ).let {
+        SubtitleManagerFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA

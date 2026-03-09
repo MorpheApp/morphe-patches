@@ -376,9 +376,7 @@ val navigationBarPatch = bytecodePatch(
         // Old search button appears in the Library tab when the app is first installed,
         // or when 'Disable layout update' is enabled
         // This button cannot be hidden with [toolBarHookPatch]
-        OldSearchButtonVisibilityFingerprint.match(
-            OldSearchButtonAccessibilityLabelFingerprint.originalClassDef
-        ).let {
+        OldSearchButtonVisibilityFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.first().index
                 val instruction = getInstruction<FiveRegisterInstruction>(index)
@@ -392,9 +390,7 @@ val navigationBarPatch = bytecodePatch(
         }
 
         // Hide microphone button in the search bar while typing.
-        SearchButtonsVisibilityFingerprint.match(
-            SearchFragmentFingerprint.originalClassDef
-        ).let {
+        SearchButtonsVisibilityFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[2].index
                 val instruction = getInstruction<FiveRegisterInstruction>(index)

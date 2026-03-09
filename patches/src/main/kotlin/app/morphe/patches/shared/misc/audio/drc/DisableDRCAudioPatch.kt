@@ -36,9 +36,7 @@ internal fun disableDRCAudioPatch(
             SwitchPreference("morphe_disable_drc_audio")
         )
 
-        val compressionRatioInstructionMatches = CompressionRatioFingerprint.match(
-            FormatStreamModelConstructorFingerprint.originalClassDef
-        ).instructionMatches
+        val compressionRatioInstructionMatches = CompressionRatioFingerprint.instructionMatches
 
         val formatField =
             compressionRatioInstructionMatches.first().instruction.getReference<FieldReference>()!!

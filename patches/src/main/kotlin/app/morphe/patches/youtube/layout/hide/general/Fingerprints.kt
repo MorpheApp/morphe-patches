@@ -45,12 +45,14 @@ internal object HideShowMoreButtonSetViewFingerprint : Fingerprint(
 )
 
 internal object HideShowMoreButtonGetParentViewFingerprint : Fingerprint(
+    classFingerprint = HideShowMoreButtonSetViewFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf()
 )
 
 internal object HideShowMoreButtonFingerprint : Fingerprint(
+    classFingerprint = HideShowMoreButtonSetViewFingerprint,
     returnType = "V",
     parameters = listOf("L", "Ljava/lang/Object;"),
     filters = listOf(
@@ -117,7 +119,7 @@ internal object ParseElementFromBufferFingerprint : Fingerprint(
     )
 )
 
-internal object PlayerOverlayFingerprint : Fingerprint(
+private object PlayerOverlayFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     filters = listOf(
@@ -126,6 +128,7 @@ internal object PlayerOverlayFingerprint : Fingerprint(
 )
 
 internal object ShowWatermarkFingerprint : Fingerprint(
+    classFingerprint = PlayerOverlayFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "L")
@@ -237,7 +240,7 @@ internal object SearchBoxTypingStringFingerprint : Fingerprint(
     )
 )
 
-internal object SearchSuggestionEndpointConstructorFingerprint : Fingerprint(
+private object SearchSuggestionEndpointConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
@@ -246,6 +249,7 @@ internal object SearchSuggestionEndpointConstructorFingerprint : Fingerprint(
 )
 
 internal object SearchSuggestionEndpointFingerprint : Fingerprint(
+    classFingerprint = SearchSuggestionEndpointConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

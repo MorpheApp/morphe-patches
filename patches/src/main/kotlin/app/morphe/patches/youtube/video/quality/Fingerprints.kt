@@ -48,6 +48,7 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
 )
 
 internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
+    classFingerprint = VideoStreamingDataToStringFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
@@ -68,7 +69,7 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
     ),
 )
 
-internal object VideoStreamingDataToStringFingerprint : Fingerprint(
+private object VideoStreamingDataToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
@@ -77,17 +78,15 @@ internal object VideoStreamingDataToStringFingerprint : Fingerprint(
     )
 )
 
-internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
+private object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT")
     )
 )
 
-/**
- * Resolves to class found in [VideoQualityItemOnClickFingerprint].
- */
 internal object VideoQualityItemOnClickFingerprint : Fingerprint(
+    classFingerprint = VideoQualityItemOnClickParentFingerprint,
     name = "onItemClick",
     returnType = "V",
     parameters = listOf(

@@ -7,13 +7,14 @@ import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object AutoNavConstructorFingerprint : Fingerprint(
+private object AutoNavConstructorFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     strings = listOf("main_app_autonav")
 )
 
 internal object AutoNavStatusFingerprint : Fingerprint(
+    classFingerprint = AutoNavConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf()

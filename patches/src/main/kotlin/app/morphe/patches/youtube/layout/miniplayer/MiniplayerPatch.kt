@@ -250,9 +250,7 @@ val miniplayerPatch = bytecodePatch(
         // Parts of the YT code is removed in 20.37+ and the legacy player no longer works.
 
         if (!is_20_37_or_greater) {
-            MiniplayerOverrideNoContextFingerprint.match(
-                MiniplayerDimensionsCalculatorParentFingerprint.originalClassDef,
-            ).method.apply {
+            MiniplayerOverrideNoContextFingerprint.method.apply {
                 findReturnIndicesReversed().forEach { index ->
                     insertLegacyTabletMiniplayerOverride(
                         index
@@ -385,9 +383,7 @@ val miniplayerPatch = bytecodePatch(
         // YT fixed this mistake in 19.17.
         // Fix this, by swapping the drawable resource values with each other.
         if (!is_19_17_or_greater) {
-            MiniplayerModernExpandCloseDrawablesFingerprint.match(
-                MiniplayerModernViewParentFingerprint.originalClassDef,
-            ).method.apply {
+            MiniplayerModernExpandCloseDrawablesFingerprint.method.apply {
                 listOf(
                     ytOutlinePictureInPictureWhite24 to ytOutlineXWhite24,
                     ytOutlineXWhite24 to ytOutlinePictureInPictureWhite24,
@@ -436,9 +432,7 @@ val miniplayerPatch = bytecodePatch(
             MiniplayerModernForwardButtonFingerprint to "hideMiniplayerRewindForward",
             MiniplayerModernOverlayViewFingerprint to "adjustMiniplayerOpacity"
         ).forEach { (fingerprint, methodName) ->
-            fingerprint.match(
-                MiniplayerModernViewParentFingerprint.classDef,
-            ).method.apply {
+            fingerprint.method.apply {
                 val index = fingerprint.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
@@ -449,9 +443,7 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
-        MiniplayerModernAddViewListenerFingerprint.match(
-            MiniplayerModernViewParentFingerprint.classDef,
-        ).method.addInstruction(
+        MiniplayerModernAddViewListenerFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->" +
                 "hideMiniplayerSubTexts(Landroid/view/View;)V",

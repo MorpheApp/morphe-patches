@@ -72,7 +72,8 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             }
         }
 
-        val PlayabilityStatusFingerprint = Fingerprint(
+        val playabilityStatusFingerprint = Fingerprint(
+            classFingerprint = BackgroundPlaybackManagerShortsFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
             returnType = "Z",
             parameters = listOf(PlayabilityStatusEnumFingerprint.originalClassDef.type),
@@ -83,9 +84,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             }
         )
 
-        PlayabilityStatusFingerprint.match(
-            BackgroundPlaybackManagerShortsFingerprint.originalClassDef
-        ).method.addInstruction(
+        playabilityStatusFingerprint.method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
                     "setPlayabilityStatus(Ljava/lang/Enum;)V"
