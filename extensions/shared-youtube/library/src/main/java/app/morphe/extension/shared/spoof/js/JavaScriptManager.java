@@ -459,6 +459,11 @@ public final class JavaScriptManager {
 
                 return true;
             }
+        } else if (!isAdaptiveFormats) {
+            // The TV client may not have formats in live streams, which is normal.
+            // Since formats aren't used for playback, there's no problem using the default instance.
+            streamingDataBuilder.addFormats(Format.newBuilder().build());
+            return true;
         }
 
         return false;
