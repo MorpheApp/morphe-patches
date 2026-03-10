@@ -305,9 +305,6 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_ai_chat_summary_title">Itago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Nakatago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Ipinapakita ang buod ng AI chat</string>
-  <string name="morphe_hide_comments_ai_summary_title">Itago ang buod ng mga komento ng AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Nakatago ang buod ng mga komento ng AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Ipinapakita ang buod ng mga komento ng AI</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Itago ang mga alituntunin sa channel</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Nakatago ang mga alituntunin sa channel</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Ipinapakita ang mga alituntunin sa channel</string>
@@ -338,6 +335,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_thanks_button_title">Itago ang button na Salamat</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Nakatago ang button na Salamat</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Ipinapakita ang button na Salamat</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Linisin ang category bar</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Ang mga button ng kategorya maliban sa \'Top\' at \'Bago\' ay nakatago sa category bar ng komento</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Ang mga button ng kategorya ay ipinapakita sa category bar ng komento</string>
   <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
   <string name="morphe_custom_filter_screen_summary">Itago ang mga komponente gamit ang mga pasadyang filter</string>
   <string name="morphe_custom_filter_title">Paganahin ang pasadyang filter</string>

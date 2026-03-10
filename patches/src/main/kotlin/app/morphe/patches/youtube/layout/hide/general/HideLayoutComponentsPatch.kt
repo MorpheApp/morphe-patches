@@ -35,6 +35,8 @@ import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
+import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -126,7 +128,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         versionCheckPatch,
         resourceMappingPatch,
         hideHorizontalShelvesPatch,
-        hideUpdateScreenPatch
+        hideUpdateScreenPatch,
+        lazilyConvertedElementHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -168,7 +171,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 "morphe_comments_screen",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
-                    SwitchPreference("morphe_hide_comments_ai_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
                     SwitchPreference("morphe_hide_comments_prompts"),
                     SwitchPreference("morphe_hide_comments_by_members_header"),
@@ -179,6 +181,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
                     SwitchPreference("morphe_hide_comments_preview_comment"),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
+                    SwitchPreference("morphe_sanitize_comments_category_bar"),
                 ),
                 sorting = Sorting.UNSORTED,
             ),
@@ -311,6 +314,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         addLithoFilter(COMMENTS_FILTER_CLASS_NAME)
         addLithoFilter(KEYWORD_FILTER_CLASS_NAME)
         addLithoFilter(CUSTOM_FILTER_CLASS_NAME)
+        hookTreeNodeResult("$COMMENTS_FILTER_CLASS_NAME->sanitizeCommentsCategoryBar")
 
         // region hide mix playlists
 

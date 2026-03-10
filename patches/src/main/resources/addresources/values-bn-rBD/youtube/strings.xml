@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">এআই চ্যাট সারাংশ লুকানো আছে</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">এআই চ্যাট সারাংশ দেখানো হয়েছে</string>
-  <string name="morphe_hide_comments_ai_summary_title">এআই মন্তব্য সংক্ষিপ্তসার লুকান</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">এআই মন্তব্য সারাংশ লুকানো আছে</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">এআই মন্তব্য সারাংশ দেখানো হয়েছে</string>
   <string name="morphe_hide_comments_channel_guidelines_title">চ্যানেল নির্দেশিকা লুকান</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">চ্যানেল নির্দেশিকা লুকানো হয়েছে</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">চ্যানেল নির্দেশিকা দেখানো হয়েছে</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">ধন্যবাদ বাটন লুকান</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">ধন্যবাদ বোতাম লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">ধন্যবাদ বোতাম প্রদর্শিত হয়েছে</string>
+  <string name="morphe_sanitize_comments_category_bar_title">শ্রেণী বার পরিষ্কার করুন</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">\'শীর্ষ\' এবং \'নতুনতম\' ছাড়া অন্য সব শ্রেণীর বোতাম মন্তব্য শ্রেণী বারে লুকানো আছে</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">মন্তব্য শ্রেণী বারে শ্রেণীর বোতামগুলো দেখানো হচ্ছে</string>
   <string name="morphe_custom_filter_screen_title">কাস্টম ফিল্টার</string>
   <string name="morphe_custom_filter_screen_summary">কাস্টম ফিল্টার ব্যবহার করে বিভিন্ন উপাদান লুকান</string>
   <string name="morphe_custom_filter_title">কাস্টম ফিল্টার সক্রিয় করুন</string>

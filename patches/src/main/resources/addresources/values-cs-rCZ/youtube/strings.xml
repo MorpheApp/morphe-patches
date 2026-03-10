@@ -305,9 +305,6 @@ Změny zahrnují:
   <string name="morphe_hide_comments_ai_chat_summary_title">Skrýt souhrn chatu s AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Souhrn chatu s AI je skryt</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Souhrn chatu s AI je zobrazen</string>
-  <string name="morphe_hide_comments_ai_summary_title">Skrýt souhrn komentářů AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Souhrn komentářů AI je skryt</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Souhrn komentářů AI je zobrazen</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skrýt pravidla kanálu</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Pokyny ke kanálu jsou skryty</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Pokyny ke kanálu jsou zobrazeny</string>
@@ -338,6 +335,9 @@ Změny zahrnují:
   <string name="morphe_hide_comments_thanks_button_title">Skrýt tlačítko Poděkování</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tlačítko Poděkování je skryto</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Tlačítko Poděkování je zobrazeno</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Vyčistit panel kategorií</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Kategorie tlačítka kromě \'Top\' a \'Nejnovější\' jsou skryta v panelu kategorií komentářů</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategorie tlačítka jsou zobrazeny v panelu kategorií komentářů</string>
   <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
   <string name="morphe_custom_filter_screen_summary">Skrýt komponenty pomocí vlastních filtrů</string>
   <string name="morphe_custom_filter_title">Povolit vlastní filtr</string>

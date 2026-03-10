@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">flag を保存しました</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">flag をリセットしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">flag をクリップボードにコピーしました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">アプリを再起動してください</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を使用するにはアプリを再起動してください</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>
@@ -113,7 +113,7 @@ Second \"item\" text"</string>
 
 下記ウェブサイト「Don't kill my app!」の携帯電話メーカー別のガイドに従い、MicroG に対するデバイスの設定を変更してください。
 
-これはアプリが正常に動作するために必須です。"</string>
+この操作は、アプリが正常に動作するために必要です。"</string>
   <string name="gms_core_dialog_open_website_text">ウェブサイトを開く</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG の電池の最適化は、問題を防ぐために無効にする必要があります。
 

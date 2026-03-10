@@ -95,13 +95,13 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR oturumu açılamadı: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR oturumu kapatıldı</string>
   <string name="morphe_oauth2_toast_invalid">Geçersiz VR oturum açma belirteci, VR\'da tekrar oturum açmayı deneyin</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Oynatıcı JavaScript hash\'i zorla</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Oynatıcı JavaScript hash güncellemesi devre dışı
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynatıcı JavaScript güncellemesini devre dışı bırak</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Oynatıcı JavaScript güncellemesi devre dışı
 
 • Geçerli bir oynatıcı JavaScript hash'i gereklidir
 • GVS'de Oynatıcı JavaScript hash'i iptal edilirse oynatma başarısız olur"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Oynatıcı JavaScript hash güncellemesi etkin</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Oynatıcı JavaScript hash\'leri yaklaşık bir ay süreyle geçerlidir ve süresi geçmiş hash\'ler GVS tarafından iptal edilebilir.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Oynatıcı JavaScript güncellemesi etkin</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Oynatıcı JavaScript hash\'leri yaklaşık bir ay süreyle geçerlidir ve süresi geçmiş hash\'ler GVS tarafından iptal edilebilir.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Oynatıcı JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Geçerli bir oynatıcı JavaScript hash değeri girin</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

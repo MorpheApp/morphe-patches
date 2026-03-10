@@ -1,5 +1,5 @@
 {
-  "version": "1.18.0-dev.3",
+  "version": "1.18.0",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1163,6 +1163,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],

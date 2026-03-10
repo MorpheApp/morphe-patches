@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 實驗性提示 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"您正在使用實驗版本的 ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 可能會遇到奇怪的應用程式行為或未識別的錯誤，因為我們正在調整此應用程式版本的修補。
-<br/>
-<br/>
-如果您想體驗最平順的使用環境，則請移除此版本並修補推薦的應用程式版本：✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;的实验性应用版本。
+&lt;br/&gt;&lt;br/&gt;
+🔧 预计会出现一些奇怪的应用行为或未识别的错误，因为我们正在调整此应用版本的补丁。
+&lt;br/&gt;&lt;br/&gt;
+如果您想要最无忧无虑的体验，请&lt;b&gt;卸载&lt;/b&gt;此应用，并更新 ✅ &lt;b&gt;%2$s&lt;/b&gt;的推荐应用版本。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要實驗版本</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要穩定版本</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">無法登錄 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已從 Android VR 中登出</string>
   <string name="morphe_oauth2_toast_invalid">無效的 VR 登錄權杖，請重新登錄 VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">強制播放器 JavaScript 雜湊</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"播放器 JavaScript 雜湊更新已停用
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">停用播放器 JavaScript 更新</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"播放器 JavaScript 更新已停用
 
-• 需要有效的播放器 JavaScript 雜湊
-• 如果 GVS 撤銷了播放器 JavaScript 雜湊，則播放將失敗"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">播放器 JavaScript 雜湊更新已啟用</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">播放器 JavaScript 雜湊約有效期一個月，且過期的雜湊可能由 GVS 撤銷。</string>
+• 需要有效的播放器 JavaScript 哈希值
+• 如果 GVS 中撤銷了播放器 JavaScript 哈希值，則播放將失敗"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">播放器 JavaScript 更新已啟用</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">播放器 JavaScript 雜湊約有效期一個月，且過期的雜湊可能由 GVS 撤銷。</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">播放器 JavaScript 雜湊值</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">請輸入有效的播放器 JavaScript 雜湊值</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

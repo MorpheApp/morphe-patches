@@ -305,9 +305,6 @@ I cambiamenti includono:
   <string name="morphe_hide_comments_ai_chat_summary_title">Nascondi riepilogo chat IA</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Il riepilogo chat IA è nascosto</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Il riepilogo chat IA è mostrato</string>
-  <string name="morphe_hide_comments_ai_summary_title">Nascondi il riepilogo dei commenti AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Il riepilogo dei commenti IA è nascosto</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Il riepilogo dei commenti IA è mostrato</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Nascondi linee guida canale</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Le linee guida del canale sono nascoste</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Le linee guida del canale sono mostrate</string>
@@ -338,6 +335,9 @@ I cambiamenti includono:
   <string name="morphe_hide_comments_thanks_button_title">Nascondi il pulsante Grazie</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Il pulsante Grazie è nascosto</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Il pulsante Grazie è visibile</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Sanifica la barra delle categorie</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">I pulsanti delle categorie, tranne \'Principale\' e \'Più nuovo\', sono nascosti nella barra delle categorie dei commenti</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">I pulsanti delle categorie sono visualizzati nella barra delle categorie dei commenti</string>
   <string name="morphe_custom_filter_screen_title">Filtro personalizzato</string>
   <string name="morphe_custom_filter_screen_summary">Nascondi i componenti usando i filtri personalizzati</string>
   <string name="morphe_custom_filter_title">Attiva il filtro personalizzato</string>

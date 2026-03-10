@@ -305,9 +305,6 @@ As mudanças incluem:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ocultar resumo de chat de IA</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Resumo de chat de IA está oculto</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Resumo de chat de IA está visível</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ocultar o resumo dos comentários da IA</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Resumo de comentários de IA está oculto</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Resumo de comentários de IA está visível</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ocultar diretrizes do canal</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Diretrizes do canal estão ocultas</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Diretrizes do canal são mostradas</string>
@@ -338,6 +335,9 @@ As mudanças incluem:
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botão Obrigado</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">O botão de agradecimento está escondido</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">O botão Obrigado é visível</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Limpar barra de categorias</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Botões de categoria, exceto \'Topo\' e \'Mais Recentes\', estão ocultos na barra de categoria de comentários</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Botões de categoria estão visíveis na barra de categoria de comentários</string>
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Esconder componentes usando filtros personalizados</string>
   <string name="morphe_custom_filter_title">Ativar filtro personalizado</string>

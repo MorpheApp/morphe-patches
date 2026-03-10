@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрийте или покажете AI чат сумари</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI чат сумари са скрити</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI чат сумари са показани</string>
-  <string name="morphe_hide_comments_ai_summary_title">Скрийте или покажете AI коментари сумари</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI коментари сумари са скрити</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI коментари сумари са показани</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Скрийте или покажете канал указания</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Канал указания са скрити</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Канал указания са показани</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">Скрийте бутона \'Благодаряне\'</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Бутона \'Благодаряне\' е скрит</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Бутона \'Благодаряне\' е показан</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Почистване на лентата с категории</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Бутоните с категории, с изключение на \'Най-горе\' и \'Най-нови\', са скрити в лентата с категории на коментарите</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Бутоните с категории са показани в лентата с категории на коментарите</string>
   <string name="morphe_custom_filter_screen_title">Скрийте или покажете бутона \'Създай\'</string>
   <string name="morphe_custom_filter_screen_summary">Бутона \'Създай\' е скрит</string>
   <string name="morphe_custom_filter_title">Бутона \'Създай\' е показан</string>

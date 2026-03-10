@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">已隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">已顯示 AI 聊天摘要</string>
-  <string name="morphe_hide_comments_ai_summary_title">隱藏 AI 留言摘要</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">已隱藏 AI 留言摘要</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">已顯示 AI 留言摘要</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隱藏頻道準則</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">已隱藏頻道準則</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">已顯示頻道準則</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">隱藏「感謝」按鈕</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">已隱藏「感謝」按鈕</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">已顯示「感謝」按鈕</string>
+  <string name="morphe_sanitize_comments_category_bar_title">清理類別欄</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">除了「頂」和「最新」之外，類別按鈕會隱藏在評論類別欄中</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">類別按鈕會顯示在評論類別欄中</string>
   <string name="morphe_custom_filter_screen_title">自訂篩選器</string>
   <string name="morphe_custom_filter_screen_summary">使用自訂篩選器隱藏元件</string>
   <string name="morphe_custom_filter_title">啟用自訂篩選器</string>

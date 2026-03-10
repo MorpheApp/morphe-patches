@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">הסתר סיכום AI של צ\'אט</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">סיכום AI של צ\'אט מוסתר</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">סיכום AI של צ\'אט מוצג</string>
-  <string name="morphe_hide_comments_ai_summary_title">הסתר סיכום תגובות AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">סיכום AI של תגובות מוסתר</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">סיכום AI של תגובות מוצג</string>
   <string name="morphe_hide_comments_channel_guidelines_title">הסתר הנחיות ערוץ</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">הנחיות הערוץ מוסתרות</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">הנחיות הערוץ מוצגות</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">הסתר לחצן תודה</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">לחצן תודה מוסתר</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">לחצן תודה מוצג</string>
+  <string name="morphe_sanitize_comments_category_bar_title">ניקוי סרגל קטגוריות</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">לחצני קטגוריה מלבד \'למעלה\' ו-\'חדש\' מוסתרים בסרגל קטגוריות התגובות</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">לחצני קטגוריה מוצגים בסרגל קטגוריות התגובות</string>
   <string name="morphe_custom_filter_screen_title">מסנן מותאם אישית</string>
   <string name="morphe_custom_filter_screen_summary">הסתר רכיבים באמצעות מסננים מותאמים אישית</string>
   <string name="morphe_custom_filter_title">הפעל מסנן מותאם אישית</string>

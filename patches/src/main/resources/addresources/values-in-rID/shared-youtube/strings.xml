@@ -95,13 +95,13 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Paksa pemutar hash JavaScript</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Pembaruan hash pemutar JavaScript dinonaktifkan
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Nonaktifkan pembaruan JavaScript pemain</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Pembaruan JavaScript pemain dinonaktifkan
 
-• Diperlukan hash pemutar JavaScript yang sah
-• Pemutaran gagal jika hash pemutar JavaScript dicabut di GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Pembaruan pemutar hash JavaScript diaktifkan</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
+• Diperlukan hash JavaScript pemain yang valid
+• Pemutaran gagal jika hash JavaScript pemain dicabut di GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pembaruan JavaScript pemain diaktifkan</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash pemutar JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Masukkan hash pemutar JavaScript yang sah</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

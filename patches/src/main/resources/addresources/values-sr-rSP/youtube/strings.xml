@@ -304,9 +304,6 @@ Promene uključuju:
   <string name="morphe_hide_comments_ai_chat_summary_title">Сакриј „Резиме ћаскања који је генерисала вештачка интелигенција”</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">„Резиме ћаскања који је генерисала вештачка интелигенција” је скривен</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">„Резиме ћаскања који је генерисала вештачка интелигенција” је приказан</string>
-  <string name="morphe_hide_comments_ai_summary_title">Сакриј „Резиме коментара који је генерисала вештачка интелигенција”</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">„Резиме коментара који је генерисала вештачка интелигенција” је скривен</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">„Резиме коментара који је генерисала вештачка интелигенција” је приказан</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Сакриј смернице канала</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Смернице канала су скривене</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Смернице канала су приказане</string>
@@ -337,6 +334,9 @@ Promene uključuju:
   <string name="morphe_hide_comments_thanks_button_title">Сакриј дугме „Хвала”</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Дугме „Хвала” је скривено</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Дугме „Хвала” је приказано</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Очисти траку категорија</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Дугмице категорија осим \'Врх\' и \'Најновије\' су скривене у траци категорија коментара</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Дугмице су приказане у траци категорија коментара</string>
   <string name="morphe_custom_filter_screen_title">Прилагођени филтер</string>
   <string name="morphe_custom_filter_screen_summary">Сакријте компоненте користећи прилагођене филтере</string>
   <string name="morphe_custom_filter_title">Омогући прилагођени филтер</string>

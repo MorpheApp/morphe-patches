@@ -305,9 +305,6 @@ Promene uključuju:
   <string name="morphe_hide_comments_ai_chat_summary_title">Sakrij „Rezime ćaskanja koji je generisala veštačka inteligencija”</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">„Rezime ćaskanja koji je generisala veštačka inteligencija” je skriven</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">„Rezime ćaskanja koji je generisala veštačka inteligencija” je prikazan</string>
-  <string name="morphe_hide_comments_ai_summary_title">Sakrij „Rezime komentara koji je generisala veštačka inteligencija”</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">„Rezime komentara koji je generisala veštačka inteligencija” je skriven</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">„Rezime komentara koji je generisala veštačka inteligencija” je prikazan</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Sakrij smernice kanala</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Smernice kanala su skrivene</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Smernice kanala su prikazane</string>
@@ -338,6 +335,9 @@ Promene uključuju:
   <string name="morphe_hide_comments_thanks_button_title">Sakrij dugme „Hvala”</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Dugme „Hvala” je skriveno</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Dugme „Hvala” je prikazano</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Očisti traku kategorija</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Kategorijske opcije osim \'Top\' i \'Novo\' su skrivene u traci kategorija komentara</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategorijske opcije su vidljive u traci kategorija komentara</string>
   <string name="morphe_custom_filter_screen_title">Prilagođeni filter</string>
   <string name="morphe_custom_filter_screen_summary">Sakrijte komponente koristeći prilagođene filtere</string>
   <string name="morphe_custom_filter_title">Omogući prilagođeni filter</string>

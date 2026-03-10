@@ -92,13 +92,13 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne çawa teqezîya VR bikin: %s.</string>
   <string name="morphe_oauth2_toast_reset">Ji Android VR derketim.</string>
   <string name="morphe_oauth2_toast_invalid">Teqezîya VR bi derexaneyê, zî dosya teqezîya nêzîkê bî.</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Dîrosa otostekk ji Player JavaScript zor bike</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Holgera qutkirî ji Player JavaScript bi pêştirîya vegirtinê
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Serê pêşandera JavaScriptê astive</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Serê pêşandera JavaScriptê astive
 
-• Dîrosa Player JavaScript bi pêştirîya vigirtinê qurew e
-• Lê dengê Player JavaScript û GVS ne-qebûl kirin."</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Holgera dîroseyê Player JavaScript saz kirin.</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Dîroyên Player JavaScript bi nêzîkê yeka mehan, Û ya ji GVS girêdayî ev zû çûye.</string>
+• Ji bo pêşandera JavaScriptê rasterast rêyên rast hewce ne
+• Heke pêşandera JavaScriptê di GVS de veqetibe, playback têkdidin"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Serê pêşandera JavaScriptê neastive</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Dîroyên Player JavaScript bi nêzîkê yeka mehan, Û ya ji GVS girêdayî ev zû çûye.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Lepikê JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Dîrê dirstyê Player JavaScript vigirin.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

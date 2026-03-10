@@ -305,9 +305,6 @@ Thay đổi bao gồm:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ẩn tóm tắt cuộc trò chuyện do AI tạo</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tóm tắt cuộc trò chuyện do AI tạo đã bị ẩn</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Tóm tắt cuộc trò chuyện do AI tạo được hiển thị</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ẩn tóm tắt bình luận do AI tạo</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Tóm tắt bình luận do AI tạo đã bị ẩn</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Tóm tắt bình luận do AI tạo được hiển thị</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ẩn nguyên tắc kênh</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Nguyên tắc kênh đã bị ẩn</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Nguyên tắc kênh được hiển thị</string>
@@ -338,6 +335,9 @@ Thay đổi bao gồm:
   <string name="morphe_hide_comments_thanks_button_title">Ẩn nút Cảm ơn</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Nút cảm ơn đã bị ẩn</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Nút cảm ơn được hiển thị</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Thu gọn thanh danh mục</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Các nút danh mục, trừ \'Nổi bật nhất\' và \'Mới nhất\', đã bị ẩn trong thanh danh mục của bảng bình luận</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Các nút danh mục được hiển thị trong thanh danh mục của bảng bình luận</string>
   <string name="morphe_custom_filter_screen_title">Bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_screen_summary">Ẩn các thành phần bằng bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_title">Bật bộ lọc tùy chỉnh</string>

@@ -304,9 +304,6 @@ Változások:
   <string name="morphe_hide_comments_ai_chat_summary_title">MI csevegés összefoglaló elrejtése</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Az MI csevegés összefoglaló elrejtve</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Az MI csevegés összefoglaló megjelenítve</string>
-  <string name="morphe_hide_comments_ai_summary_title">AI-kommentárok összefoglalójának elrejtése</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Az MI megjegyzések összefoglaló elrejtve</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Az MI megjegyzések összefoglaló megjelenítve</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Csatorna irányelveinek elrejtése</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">A csatorna irányelvei rejtve vannak</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">A csatorna irányelvei láthatók</string>
@@ -337,6 +334,9 @@ Változások:
   <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">A köszönet gomb el van rejtve</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">A köszönet gomb látható</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Kategóriasáv tisztítása</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">A \'Legtöbb\' és \'Újabb\' kivételével a kategóriagombokat elrejti a kommentkategóriás sávban</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">A kategóriagombokat megjeleníti a kommentkategóriás sávban</string>
   <string name="morphe_custom_filter_screen_title">Egyedi szűrő</string>
   <string name="morphe_custom_filter_screen_summary">Komponensek elrejtése egyedi szűrők használatával</string>
   <string name="morphe_custom_filter_title">Egyedi szűrők engedélyezése</string>

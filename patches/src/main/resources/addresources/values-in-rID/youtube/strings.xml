@@ -304,9 +304,6 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_ai_chat_summary_title">Sembunyikan ringkasan chat AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Ringkasan chat AI disembunyikan</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Ringkasan chat AI ditampilkan</string>
-  <string name="morphe_hide_comments_ai_summary_title">Sembunyikan ringkasan Komentar AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Ringkasan komentar AI disembunyikan</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Ringkasan komentar AI ditampilkan</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Sembunyikan pedoman saluran</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Pedoman saluran disembunyikan</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Pedoman saluran ditampilkan</string>
@@ -337,6 +334,9 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_thanks_button_title">Sembunyikan tombol Terima Kasih</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tombol terima kasih disembunyikan</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Tombol terima kasih ditampilkan</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Bersihkan bilah kategori</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Tombol kategori kecuali \'Teratas\' dan \'Terbaru\' disembunyikan di bilah kategori komentar</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Tombol kategori ditampilkan di bilah kategori komentar</string>
   <string name="morphe_custom_filter_screen_title">Penyaring khusus</string>
   <string name="morphe_custom_filter_screen_summary">Sembunyikan komponen menggunakan penyaring khusus</string>
   <string name="morphe_custom_filter_title">Aktifkan penyaring khusus</string>

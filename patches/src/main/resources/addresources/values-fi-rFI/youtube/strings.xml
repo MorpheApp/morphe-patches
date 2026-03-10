@@ -305,9 +305,6 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_comments_ai_chat_summary_title">Piilota tekoälyn luoma chat-yhteenveto</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tekoälyn luoma chat-yhteenveto piilotetaan</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Tekoälyn luoma chat-yhteenveto näytetään</string>
-  <string name="morphe_hide_comments_ai_summary_title">Piilota tekoälyn luoma kommenttiyhteenveto</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Tekoälyn luoma kommenttien yhteenveto piilotetaan</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Tekoälyn luoma kommenttien yhteenveto näytetään</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Piilota kanavan säännöt</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanavan säännöt piilotetaan</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanavan säännöt näytetään</string>
@@ -338,6 +335,9 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_comments_thanks_button_title">Piilota Kiitos-painike</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Kiitos-painike piilotetaan</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Kiitos-painike näytetään</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Puhdista kategoriapalkki</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Kategorianapit paitsi \'Ylin\' ja \'Uusin\' on piilotettu kommentikategorian palkissa</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategorianapit näytetään kommentikategorian palkissa</string>
   <string name="morphe_custom_filter_screen_title">Mukautettu suodatin</string>
   <string name="morphe_custom_filter_screen_summary">Piilota osia mukautetuilla suodattimilla</string>
   <string name="morphe_custom_filter_title">Ota mukautettu suodatin käyttöön</string>

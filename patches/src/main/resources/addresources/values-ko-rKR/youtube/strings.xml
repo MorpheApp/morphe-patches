@@ -307,9 +307,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI 채팅 요약 숨기기</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI 채팅 요약이 숨겨집니다</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI 채팅 요약이 표시됩니다</string>
-  <string name="morphe_hide_comments_ai_summary_title">AI 댓글 요약 숨기기</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI 댓글 요약이 숨겨집니다</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI 댓글 요약이 표시됩니다</string>
   <string name="morphe_hide_comments_channel_guidelines_title">채널 가이드라인 숨기기</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">채널 가이드라인이 숨겨집니다</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">채널 가이드라인이 표시됩니다</string>
@@ -340,6 +337,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks 버튼 숨기기</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Thanks 버튼이 숨겨집니다</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Thanks 버튼이 표시됩니다</string>
+  <string name="morphe_sanitize_comments_category_bar_title">카테고리 바 정리하기</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">\'댓글 카테고리 바에서 \'인기순\'과 \'최신순\'을 제외한 카테고리 버튼이 숨겨집니다</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">댓글 카테고리 바에서 카테고리 버튼이 표시됩니다</string>
   <string name="morphe_custom_filter_screen_title">사용자 정의 필터</string>
   <string name="morphe_custom_filter_screen_summary">사용자 정의 필터를 사용하여 구성요소를 숨길 수 있습니다</string>
   <string name="morphe_custom_filter_title">사용자 정의 필터 활성화하기</string>
@@ -540,9 +540,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_like_subscribe_glow_title">빛나는 \'좋아요\' / \'구독\' 비활성화하기</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">동영상에서 \'Like (좋아요)\' 또는 \'Subscribe (구독)\' 버튼이 언급되었을 때, 해당 버튼에 빛나는 애니메이션을 적용하지 않습니다</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">동영상에서 \'Like (좋아요)\' 또는 \'Subscribe (구독)\' 버튼이 언급되었을 때, 해당 버튼에 빛나는 애니메이션을 적용합니다</string>
-  <string name="morphe_hide_action_bar_title">동작바 숨기기</string>
-  <string name="morphe_hide_action_bar_summary_on">동작바가 숨겨집니다</string>
-  <string name="morphe_hide_action_bar_summary_off">동작바가 표시됩니다</string>
+  <string name="morphe_hide_action_bar_title">동작 버튼바 숨기기</string>
+  <string name="morphe_hide_action_bar_summary_on">동작 버튼바가 숨겨집니다</string>
+  <string name="morphe_hide_action_bar_summary_off">동작 버튼바가 표시됩니다</string>
   <string name="morphe_hide_like_dislike_button_title">좋아요 &amp; 싫어요 숨기기</string>
   <string name="morphe_hide_like_dislike_button_summary_on">좋아요 &amp; 싫어요 버튼이 숨겨집니다</string>
   <string name="morphe_hide_like_dislike_button_summary_off">좋아요 &amp; 싫어요 버튼이 표시됩니다</string>

@@ -95,13 +95,7 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken. Försök logga in i VR igen</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Tvinga JavaScript-hash för spelaren</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Uppdatering av JavaScript-hash för spelaren är inaktiverat
-
-• En giltig JavaScript-hash för spelaren krävs
-• Uppspelningen misslyckas om JavaScript-hashen för spelaren återkallas i GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Uppdatering av JavaScript-hash för spelaren är aktiverat</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript-hashar för spelaren är giltiga i ungefär en månad, och inaktuella hashar kan återkallas av GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript-hashar för spelaren är giltiga i ungefär en månad, och inaktuella hashar kan återkallas av GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">JavaScript-hash för spelaren</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Ange en giltig JavaScript-hash för spelaren</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

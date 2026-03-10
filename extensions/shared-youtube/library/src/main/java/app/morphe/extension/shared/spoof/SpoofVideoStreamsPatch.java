@@ -39,14 +39,14 @@ public class SpoofVideoStreamsPatch {
         @Override
         public boolean isAvailable() {
             return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS &&
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_PLAYER_JS_HASH.get();
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get();
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(
                     SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_PLAYER_JS_HASH
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE
             );
         }
     }

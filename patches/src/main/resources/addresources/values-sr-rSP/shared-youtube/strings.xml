@@ -95,13 +95,13 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може се ући у VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Одјављен са Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Неважећи токен за улаз у VR, покушајте поново да уђете у VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Silom JavaScript heš korisnika</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Ažuriranje JavaScript heša plejera je onemogućeno
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Искукључите ажурирање JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Ажурирање JavaScript плеера је искључено
 
-• Potreбан је validan JavaScript heš plejera
-• Reprodukcija neće uspeti ako je JavaScript heš plejera opozvan u GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Ažuriranje JavaScript heša plejera je omogućeno</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript hešovi plejera važe približno jedan mesec, a zastareli hešovi mogu biti opozvani od strane GVS.</string>
+• Потребан је валидни JavaScript хеш плеера
+• Репродукција не успева ако је JavaScript хеш плеера опозиван у GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ажурирање JavaScript плеера је укључено</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hešovi plejera važe približno jedan mesec, a zastareli hešovi mogu biti opozvani od strane GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Хаш JavaScript играча</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Унесите валидан JavaScript хеш играча</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

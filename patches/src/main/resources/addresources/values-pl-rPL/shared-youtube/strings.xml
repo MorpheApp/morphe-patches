@@ -95,13 +95,13 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Aktualizacja hash JavaScript odtwarzacza</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Wyłączona
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Wyłącz aktualizację JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Wyłączona aktualizacja JavaScript odtwarzacza
 
 • Wymagany jest prawidłowy hash JavaScript odtwarzacza
 • Odtwarzanie nie powiedzie się, jeśli hash JavaScript zostanie unieważniony w GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Włączona</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Hashe JavaScript odtwarzacza są ważne przez około miesiąc, a nieaktualne hashe mogą zostać unieważnione przez GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Włączona aktualizacja JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashe JavaScript odtwarzacza są ważne przez około miesiąc, a nieaktualne hashe mogą zostać unieważnione przez GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript odtwarzacza</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Wprowadź poprawny hash JavaScript odtwarzacza</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

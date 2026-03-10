@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do app ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🛠️ Espere comportamento estranho ou bugs não identificados enquanto afinamos os patches para esta versão do app.
-<br/>
-<br/>
-Se você quiser a experiência mais livre de problemas, então <b>desinstale</b> este e faça o patch da versão recomendada do app ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do app ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Espere comportamentos estranhos do app ou bugs não identificados enquanto ajustamos as correções para esta versão do app.
+&lt;br/&gt;&lt;br/&gt;
+Se você deseja a experiência mais tranquila, então &lt;b&gt;desinstale&lt;/b&gt; este e utilize a versão recomendada do app ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quero experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quero estável</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Deslogado do Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forçar hash JavaScript do jogador</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Atualização do hash JavaScript do player está desabilitada
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Desabilitar atualização JavaScript do player</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Atualização JavaScript do player está desabilitada
 
-• É necessário um hash JavaScript do player válido
-• A reprodução falha se o hash JavaScript do Player for revogado em GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Atualização do hash JavaScript do player está habilitada</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Hashes JavaScript do player são válidos por aproximadamente um mês, e hashes desatualizados podem ser revogados pelo GVS.</string>
+• Um hash JavaScript do player válido é necessário
+• A reprodução falha se o hash JavaScript do Player for revogado no GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Atualização JavaScript do player está habilitada</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashes JavaScript do player são válidos por aproximadamente um mês, e hashes desatualizados podem ser revogados pelo GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript do jogador</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Insira um hash JavaScript do jogador válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

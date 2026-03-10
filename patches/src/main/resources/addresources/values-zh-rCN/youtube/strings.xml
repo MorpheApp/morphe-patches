@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隐藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI 聊天摘要已隐藏</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI 聊天摘要已显示</string>
-  <string name="morphe_hide_comments_ai_summary_title">隐藏 AI 评论摘要</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI 评论摘要已隐藏</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI 评论摘要已显示</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隐藏频道准则</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">频道准则已隐藏</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">频道准则已显示</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">隐藏感谢按钮</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">感谢按钮已隐藏</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">感谢按钮已显示</string>
+  <string name="morphe_sanitize_comments_category_bar_title">清理分类栏</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">除了“置顶”和“最新”之外的分类按钮在评论分类栏中被隐藏</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">分类按钮在评论分类栏中显示</string>
   <string name="morphe_custom_filter_screen_title">自定义过滤器</string>
   <string name="morphe_custom_filter_screen_summary">使用自定义过滤器隐藏组件</string>
   <string name="morphe_custom_filter_title">启用自定义筛选器</string>

@@ -305,9 +305,6 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-chatsammendrag er skjult</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-chatsammendrag vises</string>
-  <string name="morphe_hide_comments_ai_summary_title">Skjul AI Kommentar-oversigt</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI-kommentarsammendrag er skjult</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI-kommentarsammendrag vises</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalretningslinjer</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalretningslinjer er skjult</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalretningslinjer er vist</string>
@@ -338,6 +335,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tak knappen er skjult</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Tak knappen er vist</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Rens kategorilinje</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Kategori-knapper undtagen \'Top\' og \'Nyeste\' er skjult i kommentarkategorilinjen</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategori-knapper vises i kommentarkategorilinjen</string>
   <string name="morphe_custom_filter_screen_title">Tilpasset filter</string>
   <string name="morphe_custom_filter_screen_summary">Skjul komponenter ved hjælp af brugerdefinerede filtre</string>
   <string name="morphe_custom_filter_title">Aktiver brugerdefineret filter</string>

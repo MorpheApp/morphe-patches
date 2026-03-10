@@ -305,9 +305,6 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_ai_chat_summary_title">Folaigh achoimre comhrá IS</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tá achoimre comhrá IS i bhfolach</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Taispeántar achoimre ar chomhrá IS</string>
-  <string name="morphe_hide_comments_ai_summary_title">Folaigh achoimre ar thráchtanna IS</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Tá achoimre tráchtanna IS i bhfolach</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Taispeántar achoimre ar thráchtanna IS</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Folaigh treoirlínte an chainéil</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Tá treoirlínte an chainéil i bhfolach</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Taispeántar treoirlínte an chainéil</string>
@@ -338,6 +335,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_thanks_button_title">Folaigh an cnaipe Buíochais</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tá an cnaipe Buíochais i bhfolach</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Taispeántar an cnaipe Buíochais</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Folaigh barr catagóirí</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Tá cúlta bríceanna catagóirí seachas \'Barr\' agus \'Nua\' sa barr catagóirí na gcuidí comhairle</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Tá bríceanna catagóirí tagtha sa barr catagóirí na gcuidí comhairle</string>
   <string name="morphe_custom_filter_screen_title">Scagaire saincheaptha</string>
   <string name="morphe_custom_filter_screen_summary">Folaigh comhpháirteanna ag baint úsáide as scagairí saincheaptha</string>
   <string name="morphe_custom_filter_title">Cumasaigh scagaire saincheaptha</string>

@@ -305,9 +305,6 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_ai_chat_summary_title">Yapay zeka sohbet özetini gizle</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Yapay zeka sohbet özeti gizli</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Yapay zeka sohbet özeti görünür</string>
-  <string name="morphe_hide_comments_ai_summary_title">Yapay zeka yorumların özetini gizle</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Yapay zeka yorumların özeti gizli</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Yapay zeka yorumların özeti görünür</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanal yönergelerini gizle</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanal yönergeleri gizli</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanal yönergeleri görünür</string>
@@ -338,6 +335,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_thanks_button_title">Teşekkürler düğmesini gizle</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Teşekkürler düğmesi gizli</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Teşekkürler düğmesi görünür</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Kategori çubuğunu temizle</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">\'Üst\' ve \'En Yeni\' dışındaki kategori düğmeleri, yorum kategorisi çubuğunda gizlenir</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategori düğmeleri yorum kategorisi çubuğunda gösterilir</string>
   <string name="morphe_custom_filter_screen_title">Özel filtre</string>
   <string name="morphe_custom_filter_screen_summary">Özel filtreler kullanarak bileşenleri gizle</string>
   <string name="morphe_custom_filter_title">Özel filtreyi etkinleştir</string>
@@ -598,9 +598,9 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_hide_clip_button_summary_off">Klip düğmesi görünür</string>
   <string name="morphe_hide_clip_button_user_dialog_message">Bu gizleme işlevi bazı kullanıcı hesapları için çalışmayabilir.</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">Alışverişi gizle</string>
-  <string name="morphe_hide_shop_button_summary_on">Alışveriş düğmesi gizli</string>
-  <string name="morphe_hide_shop_button_summary_off">Alışveriş düğmesi görünür</string>
+  <string name="morphe_hide_shop_button_title">Ürünlere göz at\'ı gizle</string>
+  <string name="morphe_hide_shop_button_summary_on">Ürünlere göz at düğmesi gizli</string>
+  <string name="morphe_hide_shop_button_summary_off">Ürünlere göz at düğmesi görünür</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Kaydet\'i gizle</string>
   <string name="morphe_hide_save_button_summary_on">Kaydet düğmesi gizli</string>

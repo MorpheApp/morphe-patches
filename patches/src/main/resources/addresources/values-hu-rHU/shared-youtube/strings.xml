@@ -95,13 +95,13 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nem tud bejelentkezni a VR-ba: %s</string>
   <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
   <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Kényszerített JavaScript hash a lejátszó számára</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Letiltva a lejátszó JavaScript hash frissítése
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Kapcsold ki a lejátszó JavaScript frissítését</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"A lejátszó JavaScript frissítése ki van kapcsolva
 
 • Érvényes lejátszó JavaScript hash szükséges
-• A lejátszás meghibásodik, ha a GVS visszavonja a lejátszó JavaScript hash-t"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Engedélyezve a lejátszó JavaScript hash frissítése</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">A lejátszó JavaScript hash-ai kb. egy hónapig érvényesek, és a GVS visszavonhatja a lejárt hash-okat.</string>
+• A lejátszó JavaScript hash visszavonása a GVS-ben lejátszási hibákhoz vezet"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">A lejátszó JavaScript frissítése engedélyezve van</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">A lejátszó JavaScript hash-ai kb. egy hónapig érvényesek, és a GVS visszavonhatja a lejárt hash-okat.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Játékos JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Adjon meg egy érvényes játékos JavaScript hasht</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

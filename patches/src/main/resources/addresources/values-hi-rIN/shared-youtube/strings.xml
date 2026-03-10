@@ -95,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR में प्रवेश नहीं किया जा सकता: %s</string>
   <string name="morphe_oauth2_toast_reset">एंड्रॉइड वीआर से लॉग आउट किया गया</string>
   <string name="morphe_oauth2_toast_invalid">VR प्रवेश टोकन अमान्य है, कृपया VR में पुनः प्रवेश करें</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">बलपूर्वक प्लेयर जावास्क्रिप्ट हैश</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"प्लेयर जावास्क्रिप्ट हैश अपडेट अक्षम है
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">प्लेयर जावास्क्रिप्ट अपडेट को अक्षम करें</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"प्लेयर जावास्क्रिप्ट अपडेट अक्षम है
 
 • एक मान्य प्लेयर जावास्क्रिप्ट हैश की आवश्यकता है
-• यदि GVS में प्लेयर जावास्क्रिप्ट हैश रद्द कर दिया जाता है तो प्लेबैक विफल हो जाता है।"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">प्लेयर जावास्क्रिप्ट हैश अपडेट सक्षम है</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">प्लेयर जावास्क्रिप्ट हैश लगभग एक महीने के लिए मान्य होते हैं, और पुराने हैश को GVS द्वारा रद्द किया जा सकता है।</string>
+• यदि GVS में प्लेयर जावास्क्रिप्ट हैश वापस ले लिया जाता है, तो प्लेबैक विफल हो जाता है"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">प्लेयर जावास्क्रिप्ट अपडेट सक्षम है</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">प्लेयर जावास्क्रिप्ट हैश लगभग एक महीने के लिए मान्य होते हैं, और पुराने हैश को GVS द्वारा रद्द किया जा सकता है।</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">प्लेयर जावास्क्रिप्ट हैश</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">एक मान्य प्लेयर जावास्क्रिप्ट हैश दर्ज करें</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

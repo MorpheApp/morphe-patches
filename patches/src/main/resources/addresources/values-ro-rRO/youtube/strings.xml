@@ -305,9 +305,6 @@ Schimbari incluse:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ascunde rezumatul chatului AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Rezumatul chatului AI este ascuns</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Rezumatul chatului AI este afișat</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ascunde rezumatul comentariilor cu IA</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Rezumatul comentariilor AI este ascuns</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Rezumatul comentariilor AI este afișat</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ascunde ghidurile canalului</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Regulile canalului sunt ascunse</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Regulile canalului sunt afișate</string>
@@ -338,6 +335,9 @@ Schimbari incluse:
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Butonul de multumire este ascuns</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Butonul de multumire este afisat</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Curățarea barei de categorii</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Butoanele de categorie, cu excepția \'Top\' și \'Cel mai nou\', sunt ascunse în bara de categorii a comentariilor</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Butoanele de categorie sunt afișate în bara de categorii a comentariilor</string>
   <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
   <string name="morphe_custom_filter_screen_summary">Ascunde componentele folosind filtre personalizate</string>
   <string name="morphe_custom_filter_title">Activează filtru personalizat</string>

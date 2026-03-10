@@ -66,7 +66,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1"),
                     ListPreference("morphe_spoof_video_streams_player_js_variant"),
-                    SwitchPreference("morphe_spoof_video_streams_force_player_js_hash"),
+                    SwitchPreference("morphe_spoof_video_streams_disable_player_js_update"),
                     TextPreference("morphe_spoof_video_streams_player_js_hash"),
                     SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),
                 )

@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentální upozornění 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Používáte experimentální verzi aplikace ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 Očekávejte nepravidelné chování aplikace nebo neidentifikované chyby, protože jsme stále pracovali na úpravách pro tuto verzi aplikace.
-<br/>
-<br/>
-Pokud chcete mít nejbezpečnější zážitek, pak <b>odinstalujte</b> tuto a nainstalujte doporučenou verzi aplikace ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Používáte experimentální verzi aplikace ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Očekávejte neobvyklé chování aplikace nebo neidentifikované chyby, protože dolaďujeme opravy pro tuto verzi aplikace.
+&lt;br/&gt;&lt;br/&gt;
+Pokud chcete mít co nejméně problémů, &lt;b&gt;odinstalujte&lt;/b&gt; tuto aplikaci a aktualizujte doporučenou verzi aplikace ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chci experimentální</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chci stabilní</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Vynutit JavaScriptový hash hráče</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Aktualizace JavaScriptového hashe přehrávače je zakázána.
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Vypnout aktualizaci JavaScriptu přehrávače</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Aktualizace JavaScriptu přehrávače je vypnutá
 
-• Je vyžadován platný JavaScriptový hash přehrávače.
-• Přehrávání selže, pokud je JavaScriptový hash přehrávače odebrán v GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Aktualizace JavaScriptového hashe přehrávače je povolena</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScriptové hashe přehrávačů jsou platné přibližně jeden měsíc a zastaralé hashe mohou být odebrány GVS</string>
+• Pro platnou aktualizaci JavaScriptu přehrávače je vyžadována platná hodnota
+• Přehrávání selže, pokud je aktualizace JavaScriptu přehrávače zrušena v GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Aktualizace JavaScriptu přehrávače je povolena</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScriptové hashe přehrávačů jsou platné přibližně jeden měsíc a zastaralé hashe mohou být odebrány GVS</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Haš JavaScript přehrávače</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Zadejte platný hash JavaScript přehrávače</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

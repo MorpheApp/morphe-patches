@@ -95,13 +95,13 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">No se puede iniciar sesión en VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Desconectado de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de inicio de sesión de VR no válido, intenta iniciar sesión en VR de nuevo</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forzar hash JavaScript del reproductor</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"La actualización del hash JavaScript del reproductor está desactivada
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Desactivar la actualización de JavaScript del reproductor</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"La actualización de JavaScript del reproductor está desactivada
 
 • Se requiere un hash JavaScript del reproductor válido
 • La reproducción fallará si el hash JavaScript del reproductor es revocado por GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">La actualización del hash JavaScript del reproductor está activada</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Los hashes JavaScript del reproductor son válidos aproximadamente un mes, y los hashes obsoletos pueden ser revocados por GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">La actualización de JavaScript del reproductor está activada</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Los hashes JavaScript del reproductor son válidos aproximadamente un mes, y los hashes obsoletos pueden ser revocados por GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript del reproductor</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Introduzca un hash JavaScript del reproductor válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

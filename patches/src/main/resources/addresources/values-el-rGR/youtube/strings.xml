@@ -306,9 +306,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Σύνοψη συζήτησης που δημιουργήθηκε από AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_comments_ai_summary_title">Σύνοψη σχολίων που δημιουργήθηκε από AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Κρυμμένη</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Εμφανίζεται</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Οδηγίες καναλιού</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Εμφανίζονται</string>
@@ -339,6 +336,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">Κουμπί «Σας ευχαριστούμε»</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Καθαρισμός γραμμής κατηγοριών</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Τα κουμπιά κατηγοριών εκτός από \'Κορυφή\' και \'Νεότερες\' είναι κρυμμένα στη γραμμή κατηγοριών σχολίων</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Τα κουμπιά κατηγοριών εμφανίζονται στη γραμμή κατηγοριών σχολίων</string>
   <string name="morphe_custom_filter_screen_title">Προσαρμοσμένο φίλτρο</string>
   <string name="morphe_custom_filter_screen_summary">Απόκρυψη στοιχείων χρησιμοποιώντας προσαρμοσμένα φίλτρα</string>
   <string name="morphe_custom_filter_title">Χρήση προσαρμοσμένου φίλτρου</string>

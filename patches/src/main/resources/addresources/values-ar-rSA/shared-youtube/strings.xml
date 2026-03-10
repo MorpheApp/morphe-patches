@@ -95,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
   <string name="morphe_oauth2_toast_reset">تم تسجيل خروج Android VR</string>
   <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">فرض تجزئة مشغل JavaScript </string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"تم تعطيل تحديث تجزئة مشغل JavaScript
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">تعطيل تحديث مشغل JavaScript</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"تم تعطيل تحديث مشغل JavaScript
 
-• تتطلب تجزئة مشغل JavaScript صالحة
+• تتطلب تجزئة مشغل JavaScript صالحة.
 • قد يفشل التشغيل إذا تم إلغاء تجزئة مشغل JavaScript في GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">تم تمكين تحديث تجزئة مشغل JavaScript</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">تكون تجزئات مشغل JavaScript صالحة لمدة شهر تقريبًا، وقد يتم إلغاء التجزئات القديمة بواسطة GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">تم تمكين تحديث مشغل JavaScript</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">تكون تجزئات مشغل JavaScript صالحة لمدة شهر تقريبًا، وقد يتم إلغاء التجزئات القديمة بواسطة GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">تجزئة مشغل JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">أدخل تجزئة مشغل JavaScript صالحة</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

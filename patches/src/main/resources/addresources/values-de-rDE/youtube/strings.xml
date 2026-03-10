@@ -306,9 +306,6 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_comments_ai_chat_summary_title">KI-Chat-Zusammenfassung ausblenden</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">KI-Chat-Zusammenfassung ist ausgeblendet</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">KI-Chat-Zusammenfassung wird angezeigt</string>
-  <string name="morphe_hide_comments_ai_summary_title">KI-Kommentarübersicht ausblenden</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">KI-Kommentar-Zusammenfassung ist ausgeblendet</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">KI-Kommentar-Zusammenfassung wird angezeigt</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanalrichtlinien ausblenden</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalrichtlinien sind ausgeblendet</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalrichtlinien werden angezeigt</string>
@@ -339,6 +336,9 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_comments_thanks_button_title">Schaltfläche \'Dankeschön\' ausblenden</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">\'Dankeschön\' ist ausgeblendet</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">\'Dankeschön\' wird angezeigt</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Kategorieleiste bereinigen</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Kategorie-Buttons außer \'Oben\' und \'Neu\' sind in der Kommentar-Kategorie-Leiste ausgeblendet</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategorie-Buttons werden in der Kommentar-Kategorie-Leiste angezeigt</string>
   <string name="morphe_custom_filter_screen_title">Eigener Filter</string>
   <string name="morphe_custom_filter_screen_summary">Komponenten mit benutzerdefinierten Filtern ausblenden</string>
   <string name="morphe_custom_filter_title">Eigenen Filter aktivieren</string>
