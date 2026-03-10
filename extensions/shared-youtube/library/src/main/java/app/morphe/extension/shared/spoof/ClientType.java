@@ -109,18 +109,18 @@ public enum ClientType {
      * Uses non-adaptive bitrate.
      * AV1 codec and HDR codec are not available, and the maximum resolution is 720p.
      */
-    // https://dumps.tadiphone.dev/dumps/google/barbet
+    // https://dumps.tadiphone.dev/dumps/google/mustang
     ANDROID_CREATOR(
             14,
             "ANDROID_CREATOR",
             "com.google.android.apps.youtube.creator",
             "Google",
-            "Pixel 9 Pro Fold",
+            "Pixel 10 Pro XL",
             "Android",
-            "15",
-            "35",
-            "AP3A.241005.015.A2",
-            "23.47.101",
+            "16",
+            "36",
+            "BD3A.251005.003.W3",
+            "26.10.000",
             null,
             true,
             true,
