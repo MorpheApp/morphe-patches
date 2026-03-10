@@ -128,15 +128,13 @@ public final class NavigationBarPatch {
         }
 
         if (SHOW_SETTINGS_BUTTON && button == NavigationButton.SETTINGS) {
-            Utils.runOnMainThread(() -> {
-                tabView.setOnClickListener(v -> {
-                    if (SHOW_SETTINGS_BUTTON_TYPE) {
-                        openMorpheSettings(v);
-                    } else {
-                        openYouTubeSettings(v);
-                    }
-                });
-            });
+            Utils.runOnMainThread(() -> tabView.setOnClickListener(v -> {
+                if (SHOW_SETTINGS_BUTTON_TYPE) {
+                    openMorpheSettings(v);
+                } else {
+                    openYouTubeSettings(v);
+                }
+            }));
             return;
         }
 
@@ -430,7 +428,8 @@ public final class NavigationBarPatch {
             && !HIDE_TOOLBAR_NOTIFICATION_BUTTON && Settings.REPLACE_TOOLBAR_NOTIFICATION_BUTTON.get();
     private static final boolean REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE.get();
 
-    private static final boolean REARRANGE_TOOLBAR_BUTTONS = REPLACE_TOOLBAR_CREATE_BUTTON && Settings.REARRANGE_TOOLBAR_BUTTONS.get();
+    private static final boolean REARRANGE_TOOLBAR_BUTTONS = Settings.REARRANGE_TOOLBAR_BUTTONS.get()
+            && (REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON);
 
     /**
      * Interface to use obfuscated methods.
