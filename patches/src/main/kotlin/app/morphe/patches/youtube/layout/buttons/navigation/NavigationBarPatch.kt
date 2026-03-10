@@ -563,7 +563,7 @@ val navigationBarPatch = bytecodePatch(
                         move-result-object v$protoListRegister
                         
                         # Rearrange buttons.
-                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->reRearrangeToolbarButtons(Ljava/util/List;)V
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->reArrangeToolbarButtons(Ljava/util/List;)V
                         
                         :immutable
                         nop

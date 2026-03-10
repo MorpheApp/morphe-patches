@@ -499,24 +499,24 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void reRearrangeToolbarButtons(List<MessageLite> rawButtonList) {
+    public static void reArrangeToolbarButtons(List<MessageLite> rawButtonList) {
         if (REARRANGE_TOOLBAR_BUTTONS && rawButtonList != null && !rawButtonList.isEmpty()) {
             try {
-                boolean containsCreateButton = false;
+                boolean needRotate = false;
+                var buttons = Buttons.parseFrom(rawButtonList.get(0).toByteArray());
+                if (buttons.hasButtonRenderer()) {
+                    var buttonRenderer = buttons.getButtonRenderer();
+                    if (buttonRenderer.hasIcon()) {
+                        var iconName = buttonRenderer.getIcon().getYtIconType().name();
 
-                for (var rawButtons : rawButtonList) {
-                    var buttons = Buttons.parseFrom(rawButtons.toByteArray());
-                    if (buttons.hasButtonRenderer()) {
-                        var navigationEndpoint = buttons.getButtonRenderer().getNavigationEndpoint();
-                        // Rearrange only if there is a Create button.
-                        if (navigationEndpoint.hasCreationEntryEndpoint()) {
-                            containsCreateButton = true;
-                            break;
+                        if (Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS)) {
+                            needRotate = true;
                         }
                     }
+                } else if (buttons.hasTopbarButtonRenderer()) {
+                    needRotate = true;
                 }
-
-                if (containsCreateButton) {
+                if (needRotate) {
                     Collections.rotate(rawButtonList, -1);
                 }
             } catch (Exception ex) {
