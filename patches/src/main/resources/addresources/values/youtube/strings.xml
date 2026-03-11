@@ -406,6 +406,24 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword has conflicting declarations: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
+    <string name="morphe_snackbar_screen_title">Snackbar</string>
+    <string name="morphe_snackbar_screen_summary">Hide or change snackbar related components.</string>
+    <string name="morphe_hide_snackbar_title">Hide snackbar</string>
+    <string name="morphe_hide_snackbar_summary_on">Snackbar is hidden</string>
+    <string name="morphe_hide_snackbar_summary_off">Snackbar is shown</string>
+    <string name="morphe_custom_snackbar_theme_title">Enable custom snackbar</string>
+    <string name="morphe_custom_snackbar_theme_summary_on">Custom background, radius, and stroke are applied</string>
+    <string name="morphe_custom_snackbar_theme_summary_off">Default YouTube snackbar is used</string>
+    <string name="morphe_snackbar_color_dark_title">Dark theme background color</string>
+    <string name="morphe_snackbar_color_dark_summary">Hex color code for dark mode (e.g. #FF181825)</string>
+    <string name="morphe_snackbar_color_light_title">Light theme background color</string>
+    <string name="morphe_snackbar_color_light_summary">Hex color code for light mode (e.g. #FFE6E9EF)</string>
+    <string name="morphe_snackbar_corner_radius_title">Corner radius</string>
+    <string name="morphe_snackbar_corner_radius_summary">Specify a corner radius in dp (e.g. 8.0)</string>
+    <string name="morphe_snackbar_stroke_color_title">Stroke color</string>
+    <string name="morphe_snackbar_stroke_color_summary">Hex color code for the border stroke (leave empty for none)</string>
+    <string name="morphe_snackbar_text_color_title">Text color</string>
+    <string name="morphe_snackbar_text_color_summary">Hex color code for the text (leave empty for auto-contrast)</string>
 
     <!-- ad.general.hideAdsResourcePatch -->
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>

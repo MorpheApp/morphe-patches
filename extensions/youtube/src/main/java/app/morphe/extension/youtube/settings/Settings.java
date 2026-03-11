@@ -125,7 +125,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_WEB_SEARCH_RESULTS = new BooleanSetting("morphe_hide_web_search_results", TRUE);
     public static final BooleanSetting HIDE_YOU_MAY_LIKE_SECTION = new BooleanSetting("morphe_hide_you_may_like_section", TRUE, true);
 
-
     // Alternative thumbnails
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
@@ -154,6 +153,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_MEMBERS_SHELF = new BooleanSetting("morphe_hide_members_shelf", TRUE);
     public static final BooleanSetting HIDE_STORE_BUTTON = new BooleanSetting("morphe_hide_store_button", TRUE);
     public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE = new BooleanSetting("morphe_hide_subscribe_button_in_channel_page", FALSE);
+
+    // Snackbar
+    public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
+    public static final BooleanSetting CUSTOM_SNACKBAR_THEME = new BooleanSetting("morphe_custom_snackbar_theme", FALSE);
+    public static final StringSetting SNACKBAR_COLOR_DARK = new StringSetting("morphe_snackbar_color_dark", "#FF0F0F0F", true, parent(CUSTOM_SNACKBAR_THEME));
+    public static final StringSetting SNACKBAR_COLOR_LIGHT = new StringSetting("morphe_snackbar_color_light", "#FFF1F1F1", true, parent(CUSTOM_SNACKBAR_THEME));
+    public static final StringSetting SNACKBAR_CORNER_RADIUS = new StringSetting("morphe_snackbar_corner_radius", "8.0", true, parent(CUSTOM_SNACKBAR_THEME));
+    public static final StringSetting SNACKBAR_STROKE_COLOR = new StringSetting("morphe_snackbar_stroke_color", "", true, parent(CUSTOM_SNACKBAR_THEME));
+    public static final StringSetting SNACKBAR_TEXT_COLOR = new StringSetting("morphe_snackbar_text_color", "", true, parent(CUSTOM_SNACKBAR_THEME));
 
     // Player
     public static final BooleanSetting COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE);
