@@ -56,7 +56,7 @@ public final class SeekbarColorPatch {
     /**
      * If {@link Settings#SEEKBAR_CUSTOM_COLOR} is enabled,
      * this is the color value of {@link Settings#SEEKBAR_CUSTOM_COLOR_PRIMARY}.
-     * Otherwise this is {@link #ORIGINAL_SEEKBAR_COLOR}.
+     * Otherwise, this is {@link #ORIGINAL_SEEKBAR_COLOR}.
      */
     private static final int customSeekbarColor;
 
@@ -170,7 +170,7 @@ public final class SeekbarColorPatch {
      * Injection point.
      *
      * Overrides all Litho components that use the YouTube seekbar color.
-     * Used only for the video thumbnails seekbar.
+     * Used only for the video thumbnails' seekbar.
      *
      * If {@link Settings#HIDE_SEEKBAR_THUMBNAIL} is enabled, this returns a fully transparent color.
      */
@@ -209,7 +209,7 @@ public final class SeekbarColorPatch {
      */
     public static int[] getPlayerLinearGradient(int[] original, int x0, int y1) {
         // This hook is used for both the player and the feed.
-        // Feed usage always has x0 and y1 value of zero, and the player is always non zero.
+        // Feed usage always has x0 and y1 value of zero, and the player is always non-zero.
         if (HIDE_SEEKBAR_THUMBNAIL_ENABLED && x0 == 0 && y1 == 0) {
             return HIDDEN_SEEKBAR_GRADIENT_COLORS;
         }
