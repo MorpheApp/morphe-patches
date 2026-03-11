@@ -46,26 +46,14 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
 
 /**
  * Matches the watch-while layout's onFinishInflate() method.
- *
- * The class was renamed between versions:
+ * definingClass uses a contains match, covering class renames across builds:
  *   <= 8.x: MppWatchWhileLayout
  *   >= 9.x: WatchWhileLayout
- *
- * Both are non-obfuscated, PROTECTED FINAL. Two separate fingerprints are used
- * since definingClass matches a single class name.
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = emptyList(),
-    definingClass = "/MppWatchWhileLayout;",
-    name = "onFinishInflate"
-)
-
-internal object WatchWhileLayoutFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = emptyList(),
-    definingClass = "/WatchWhileLayout;",
+    definingClass = "WatchWhileLayout;",
     name = "onFinishInflate"
 )

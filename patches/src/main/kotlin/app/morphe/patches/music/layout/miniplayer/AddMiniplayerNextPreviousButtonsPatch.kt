@@ -152,7 +152,7 @@ val addMiniplayerNextPreviousButtonsPatch = bytecodePatch(
         // region 2 — onFinishInflate: store button views and extend the view array.
         // Anchor: play/pause literal if present, otherwise the first const before NEW_ARRAY.
         // View array is passed to a layout helper via INVOKE_STATIC or INVOKE_DIRECT depending on the build.
-        (MppWatchWhileLayoutFingerprint.methodOrNull ?: WatchWhileLayoutFingerprint.method).apply {
+        MppWatchWhileLayoutFingerprint.method.apply {
             // Determine injection anchor index.
             val injectionIndex = run {
                 val byPlayPause = indexOfFirstLiteralInstruction(playPauseResourceId)
