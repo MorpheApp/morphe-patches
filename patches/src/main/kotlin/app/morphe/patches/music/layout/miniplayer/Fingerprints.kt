@@ -8,12 +8,16 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+/**
+ * Matches the miniplayer constructor.
+ * Identified by the play/pause button resource literal and a unique string in the method body.
+ */
 internal object MiniPlayerConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "music_playback_controls")
+        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button")
     ),
-    strings = listOf ("sharedToggleMenuItemMutations")
+    strings = listOf("sharedToggleMenuItemMutations")
 )
 
 /**
@@ -38,4 +42,18 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
     filters = listOf(
         string("w_st")
     )
+)
+
+/**
+ * Matches MppWatchWhileLayout.onFinishInflate().
+ * Matched by class name and method name since the class is not obfuscated.
+ */
+internal object MppWatchWhileLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = emptyList(),
+    custom = { method, classDef ->
+        classDef.type.endsWith("/MppWatchWhileLayout;") &&
+                method.name == "onFinishInflate"
+    }
 )
