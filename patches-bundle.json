@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-03-06T18:34:45",
-  "description": "## [1.17.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.17.0...v1.17.1-dev.1) (2026-03-06)\n\n\n### Bug Fixes\n\n* **YouTube - Hide player flyout menu items:** Do not hide entire flyout menu for eperimental app targets ([7407796](https://github.com/MorpheApp/morphe-patches/commit/7407796551978351a74db742715154ca8e96493e))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.17.1-dev.1/patches-1.17.1-dev.1.mpp",
+  "created_at": "2026-03-11T10:42:36",
+  "description": "## [1.18.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.18.1-dev.1...v1.18.1-dev.2) (2026-03-11)\n\n\n### Bug Fixes\n\n* **YouTube - Shorts autoplay:** Shorts do not autoplay when using older app targets ([1c6478e](https://github.com/MorpheApp/morphe-patches/commit/1c6478e02a6e2a0c795f40608c653ed115292e5e))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.18.1-dev.2/patches-1.18.1-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.17.1-dev.1"
+  "version": "1.18.1-dev.2"
 }

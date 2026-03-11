@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Du bruger en eksperimentel app-udgave af ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 Forvent uregelmæssigt app-adfærd eller ukendte fejl, da vi justerer patcher for denne app-udgave.
-<br/>
-<br/>
-Hvis du vil have den mest problemfrie oplevelse, så <b>fjern</b> denne og patch den anbefalede app-udgave af ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Du bruger en eksperimentel app-version af ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Forvent mærkelige app-adfærd eller uidentificerede fejl, mens vi finjusterer rettelserne til denne app-version.
+&lt;br/&gt;&lt;br/&gt;
+Hvis du ønsker den mest problemfrie oplevelse, så &lt;b&gt;afinstaller&lt;/b&gt; denne og opdater den anbefalede app-version af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil have eksperimentel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil have stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ For at indlogge, tryk på fortsæt nedenfor"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logged ud fra Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Tving JavaScript-hash for spiller</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Opdatering af spillerens JavaScript-hash er deaktiveret
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Deaktiver JavaScript-opdatering for afspiller</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"JavaScript-opdatering for afspiller er deaktiveret
 
-• En gyldig JavaScript-hash for spilleren er påkrævet
-• Afspilning mislykkes, hvis spillerens JavaScript-hash tilbagekaldes af GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Opdatering af spillerens JavaScript-hash er aktiveret</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Spillerens JavaScript-hashes er gyldige i cirka en måned, og forældede hashes kan tilbagekaldes af GVS.</string>
+• En gyldig JavaScript-hash for afspiller er påkrævet
+• Afspilning mislykkes, hvis JavaScript-hash for afspiller tilbagekaldes i GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript-opdatering for afspiller er aktiveret</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Spillerens JavaScript-hashes er gyldige i cirka en måned, og forældede hashes kan tilbagekaldes af GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Spiller JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Indtast en gyldig spiller JavaScript hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

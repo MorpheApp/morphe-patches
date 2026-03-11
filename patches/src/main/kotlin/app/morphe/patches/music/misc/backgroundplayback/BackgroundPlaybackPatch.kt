@@ -4,6 +4,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.util.returnEarly
 
 val backgroundPlaybackPatch = bytecodePatch(
@@ -12,7 +13,8 @@ val backgroundPlaybackPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch
+        settingsPatch,
+        fixRecycledBitmapPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)

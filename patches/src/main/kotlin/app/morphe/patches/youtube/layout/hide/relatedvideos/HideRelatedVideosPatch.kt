@@ -15,11 +15,14 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
+import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.WatchNextResponseParserFingerprint
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -52,7 +55,7 @@ val hideRelatedVideosPatch = bytecodePatch(
         )
 
         val continuationsField = with (WatchNextResponseParserFingerprint) {
-            clearMatch()
+            clearMatch() // Fingerprint is shared and indexes may no longer be correct.
             instructionMatches[2].instruction.getReference<FieldReference>()!!
         }
         val resultsClass = continuationsField.definingClass
@@ -83,14 +86,6 @@ val hideRelatedVideosPatch = bytecodePatch(
 
         val sectionIdentifierField = RelatedItemSectionFingerprint
             .instructionMatches[1].instruction.getReference<FieldReference>()!!
-
-        val (immutableMethod, mutableCopyMethod) =
-            with (StreamingDataOuterClassFingerprint.instructionMatches) {
-                Pair(
-                    first().instruction.getReference<MethodReference>()!!,
-                    last().instruction.getReference<MethodReference>()!!
-                )
-            }
 
         val watchNextResponseModelClass = WatchNextResponseModelClassResolverFingerprint
             .instructionMatches.last().instruction.getReference<TypeReference>()!!.type
@@ -166,14 +161,14 @@ val hideRelatedVideosPatch = bytecodePatch(
 
                             if-eqz v0, :ignore
                             iget-object v0, p1, $contentsField
-                            invoke-interface { v0 }, $immutableMethod
+                            invoke-interface { v0 }, ${immutableMethodRef.get()}
                             move-result v1
 
                             # Check if ProtoList is immutable or not.
                             if-nez v1, :ignore
                             
                             # If mutable, copy the ProtoList.
-                            invoke-static { v0 }, $mutableCopyMethod
+                            invoke-static { v0 }, ${mutableCopyMethodRef.get()}
                             move-result-object v0
                             
                             invoke-interface { v0 }, Ljava/util/List;->iterator()Ljava/util/Iterator;

@@ -1,6 +1,6 @@
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.music.layout.miniplayercolor
+package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch

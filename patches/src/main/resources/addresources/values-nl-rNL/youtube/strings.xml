@@ -305,9 +305,6 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_ai_chat_summary_title">AI-chatsamenvatting verbergen</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-chatsamenvatting is verborgen</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-chatsamenvatting is getoond</string>
-  <string name="morphe_hide_comments_ai_summary_title">AI-opmerkingensamenvatting verbergen</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI-opmerkingensamenvatting is verborgen</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI-opmerkingensamenvatting is getoond</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanaalrichtlijnen verbergen</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanaalrichtlijnen zijn verborgen</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanaalrichtlijnen worden weergegeven</string>
@@ -338,6 +335,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Bedankknop is verborgen</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">De knop \'Bedankt\' wordt weergegeven</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Categoriebalk opschonen</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Categorieknoppen, behalve \'Bovenkant\' en \'Nieuwste\', zijn verborgen in de commentarijcategoriebalk</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Categorieknoppen worden weergegeven in de commentarijcategoriebalk</string>
   <string name="morphe_custom_filter_screen_title">Aangepaste filter</string>
   <string name="morphe_custom_filter_screen_summary">Componenten verbergen met aangepaste filters</string>
   <string name="morphe_custom_filter_title">Aangepaste filter inschakelen</string>
@@ -543,6 +543,9 @@ Pas het volume aan door verticaal over de rechterkant van het scherm te vegen"</
   <string name="morphe_disable_like_subscribe_glow_title">Schakel de gloed van Vind ik leuk en Abonneren uit</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">De knop \"Vind ik leuk\" en \"Abonneren\" zullen niet gloeien wanneer ze worden genoemd</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">De knop \"Vind ik leuk\" en \"Abonneren\" zullen gloeien wanneer ze worden genoemd</string>
+  <string name="morphe_hide_action_bar_title">Actiebar verbergen</string>
+  <string name="morphe_hide_action_bar_summary_on">De actiebar is verborgen</string>
+  <string name="morphe_hide_action_bar_summary_off">De actiebar is zichtbaar</string>
   <string name="morphe_hide_like_dislike_button_title">Vind ik leuk en vind ik niet leuk verbergen</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Vind ik leuk en vind ik niet leuk knoppen zijn verborgen</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Vind ik leuk en vind ik niet leuk knoppen worden weergegeven</string>

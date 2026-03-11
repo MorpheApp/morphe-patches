@@ -30,11 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 实验性提示 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"您正在使用实验版本的⚠️ <b>%1$s</b>
-
-🔧 请期待app行为怪异或未识别的bug，因为我们正在调整此版本的修补程序。
-
-如果您想获得最顺畅的体验，请卸载此版本并安装推荐版本的✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;的实验性应用版本。
+&lt;br/&gt;&lt;br/&gt;
+🔧 预计会出现一些奇怪的应用行为或未识别的错误，因为我们正在调整此应用版本的补丁。
+&lt;br/&gt;&lt;br/&gt;
+如果您想要最无忧无虑的体验，请&lt;b&gt;卸载&lt;/b&gt;此应用，并更新 ✅ &lt;b&gt;%2$s&lt;/b&gt;的推荐应用版本。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要实验版本</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要稳定版本</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -95,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已从 Google VR 登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">强制玩家 JavaScript 哈希</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Player JavaScript 哈希更新已禁用
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">禁用播放器 JavaScript 更新</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"播放器 JavaScript 更新已禁用
 
-• 需要有效的 Player JavaScript 哈希
-• 如果 GVS 撤销了 Player JavaScript 哈希，则回放失败"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Player JavaScript 哈希更新已启用</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Player JavaScript 哈希有效期约为一个月，过期的哈希可能由 GVS 撤销。</string>
+• 需要有效的播放器 JavaScript 哈希值
+• 如果 GVS 中撤销了播放器 JavaScript 哈希，则播放失败"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">播放器 JavaScript 更新已启用</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Player JavaScript 哈希有效期约为一个月，过期的哈希可能由 GVS 撤销。</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">输入有效的 Player JavaScript 哈希</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

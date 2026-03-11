@@ -95,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Έξοδος από το Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Δεν έγκειται το κωδικό εισόδου VR, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Επιβολή JavaScript hash για τον παίκτη</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Η ενημέρωση JavaScript hash για τον παίκτη είναι απενεργοποιημένη
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Απενεργοποίηση ενημέρωσης JavaScript του προγράμματος αναπαραγωγής</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Η ενημέρωση JavaScript του προγράμματος αναπαραγωγής είναι απενεργοποιημένη
 
-• Απαιτείται έγκυρο JavaScript hash για τον παίκτη.
-• Η αναπαραγωγή αποτυγχάνει εάν το JavaScript hash του παίκτη ανακληθεί από το GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Η ενημέρωση JavaScript hash για τον παίκτη είναι ενεργοποιημένη</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Τα JavaScript hashes για τον παίκτη είναι έγκυρα για περίπου ένα μήνα, και τα устаревшая hashes ενδέχεται να ανακληθούν από το GVS.</string>
+• Απαιτείται έγκυρο hash JavaScript του προγράμματος αναπαραγωγής.
+• Η αναπαραγωγή αποτυγχάνει εάν το hash JavaScript του προγράμματος αναπαραγωγής ανακληθεί στο GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Η ενημέρωση JavaScript του προγράμματος αναπαραγωγής είναι ενεργοποιημένη</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Τα JavaScript hashes για τον παίκτη είναι έγκυρα για περίπου ένα μήνα, και τα устаревшая hashes ενδέχεται να ανακληθούν από το GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript παίκτη</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Εισάγετε ένα έγκυρο hash JavaScript παίκτη</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

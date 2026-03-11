@@ -13,17 +13,6 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-private val SHOW_DIALOG_FILTERS = listOf(
-    methodCall(
-        opcode = Opcode.INVOKE_VIRTUAL,
-        name = "show"
-    ),
-    opcode(
-        Opcode.MOVE_RESULT_OBJECT,
-        location = MatchAfterImmediately()
-    ),
-)
-
 internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler\$handleFrequentUpdates$",
     name = "invokeSuspend",
@@ -80,13 +69,23 @@ internal object NSFWAlertEmitFingerprint : Fingerprint(
 internal object NSFWAlertDialogBuilderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Z"),
-    filters = SHOW_DIALOG_FILTERS
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "show"
+        )
+    )
 )
 
 internal object NSFWAlertDialogInstanceFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
-    filters = SHOW_DIALOG_FILTERS
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "show"
+        )
+    )
 )
 
 internal object NSFWAlertDialogParentFingerprint : Fingerprint(

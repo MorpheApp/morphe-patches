@@ -94,13 +94,13 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Nag-log out sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Imbalido ang sign in token ng VR, subukang mag-sign in muli sa VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Puwersahin ang JavaScript hash ng player</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Ang pag-update ng JavaScript hash ng player ay hindi pinagana
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Huwag paganahin ang pag-update ng JavaScript ng player</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Ang pag-update ng JavaScript ng player ay hindi pinagana
 
-• Kinakailangan ang isang wastong JavaScript hash ng player
-• Maaaring ma-revoke ng GVS ang pag-playback kung ang Player JavaScript hash ay na-revoke"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Ang pag-update ng JavaScript hash ng player ay pinagana</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Ang mga JavaScript hash ng player ay balido sa loob ng humigit-kumulang isang buwan, at ang mga hindi napapanahong hash ay maaaring i-revoke ng GVS.</string>
+• Kinakailangan ang wastong player JavaScript hash
+• Hindi magtatagumpay ang pag-playback kung ang Player JavaScript hash ay binawi sa GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ang pag-update ng JavaScript ng player ay pinagana</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Ang mga JavaScript hash ng player ay balido sa loob ng humigit-kumulang isang buwan, at ang mga hindi napapanahong hash ay maaaring i-revoke ng GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash ng JavaScript ng Player</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

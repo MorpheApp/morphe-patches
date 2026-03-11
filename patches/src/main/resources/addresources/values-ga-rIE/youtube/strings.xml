@@ -305,9 +305,6 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_ai_chat_summary_title">Folaigh achoimre comhrá IS</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tá achoimre comhrá IS i bhfolach</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Taispeántar achoimre ar chomhrá IS</string>
-  <string name="morphe_hide_comments_ai_summary_title">Folaigh achoimre ar thráchtanna IS</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Tá achoimre tráchtanna IS i bhfolach</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Taispeántar achoimre ar thráchtanna IS</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Folaigh treoirlínte an chainéil</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Tá treoirlínte an chainéil i bhfolach</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Taispeántar treoirlínte an chainéil</string>
@@ -338,6 +335,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_thanks_button_title">Folaigh an cnaipe Buíochais</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tá an cnaipe Buíochais i bhfolach</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Taispeántar an cnaipe Buíochais</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Folaigh barr catagóirí</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Tá cúlta bríceanna catagóirí seachas \'Barr\' agus \'Nua\' sa barr catagóirí na gcuidí comhairle</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Tá bríceanna catagóirí tagtha sa barr catagóirí na gcuidí comhairle</string>
   <string name="morphe_custom_filter_screen_title">Scagaire saincheaptha</string>
   <string name="morphe_custom_filter_screen_summary">Folaigh comhpháirteanna ag baint úsáide as scagairí saincheaptha</string>
   <string name="morphe_custom_filter_title">Cumasaigh scagaire saincheaptha</string>
@@ -543,6 +543,9 @@ Coigeartaigh an toirt trí swipeáil go hingearach ar thaobh na láimhe deise de
   <string name="morphe_disable_like_subscribe_glow_title">Díchumasaigh lonradh na cnaipí Is maith liom / Liostáil</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Ní bheidh na cnaipe Is maith liom agus Liostáil ag lonrú nuair a luaitear iad</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Lonróidh na cnaipe Is maith liom agus Liostáil nuair a luaitear iad</string>
+  <string name="morphe_hide_action_bar_title">Folaigh barr na cruinneas</string>
+  <string name="morphe_hide_action_bar_summary_on">Tá barr na cruinneas i bhfolach</string>
+  <string name="morphe_hide_action_bar_summary_off">Taispeántar barr na cruinneas</string>
   <string name="morphe_hide_like_dislike_button_title">Folaigh Is Maith Liom agus Ní Maith Liom</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Tá cnaipí Is Maith Liom agus Ní Maith Liom i bhfolach</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Taispeántar cnaipí Is Maith Liom agus Ní Maith Liom</string>
@@ -718,6 +721,8 @@ Fhail isteach ar fíolán arbhachaidh → Fhail isteach ar margaíocht → Tába
   <string name="morphe_replace_toolbar_create_button_type_title">Morphe</string>
   <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
 Tap and hold to open YouTube settings"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+Tap and hold to open Morphe settings"</string>
   <string name="morphe_rearrange_toolbar_buttons_title">An práinneáil na cnaipeí suidéartha</string>
   <string name="morphe_rearrange_toolbar_buttons_summary_on">Tá na cnaipeí suidéartha déanta</string>
   <string name="morphe_rearrange_toolbar_buttons_summary_off">Níl na cnaipeí suidéartha déanta</string>

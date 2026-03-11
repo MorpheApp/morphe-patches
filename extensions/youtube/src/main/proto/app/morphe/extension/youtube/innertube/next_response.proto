@@ -27,14 +27,155 @@ message SecondaryResults {
 
 message SecondaryContents {
     oneof data {
+        SlimVideoMetadataSectionRenderer slimVideoMetadataSectionRenderer = 216561405;
         ItemSectionRenderer itemSectionRenderer = 50195462;
         ShelfRenderer shelfRenderer = 51845067;
     }
 }
 
+message SlimVideoMetadataSectionRenderer {
+    repeated TertiaryContents tertiaryContents = 1;
+    string videoId = 2;
+}
+
 message ItemSectionRenderer {
+    repeated TertiaryContents tertiaryContents = 1;
     string sectionIdentifier = 7;
 }
 
 message ShelfRenderer {
+    Content content = 5;
+}
+
+message Content {
+    HorizontalListRenderer horizontalListRenderer = 51431404;
+}
+
+message HorizontalListRenderer {
+    int32 visibleItemCount = 7;
+}
+
+message TertiaryContents {
+    ElementRenderer elementRenderer = 153515154;
+}
+
+message ElementRenderer {
+    NewElement newElement = 172660663;
+}
+
+message NewElement {
+    Type type = 1;
+    Properties properties = 2;
+}
+
+message Properties {
+    IdentifierProperties identifierProperties = 183314536;
+}
+
+message IdentifierProperties {
+    string identifier = 1; // litho identifier
+}
+
+message Type {
+    ComponentType componentType = 168777401;
+}
+
+message ComponentType {
+    Model model = 5;
+}
+
+message Model {
+    oneof data {
+        VideoActionBarModel videoActionBarModel = 389155117;
+        VideoMetadataCarouselModel videoMetadataCarouselModel = 408379376;
+        YoutubeModel youtubeModel = 413471385;
+    }
+}
+
+// region video metadata carousel
+
+message VideoMetadataCarouselModel {
+    Data data = 1;
+}
+
+message Data {
+    repeated CarouselTitleDatas carouselTitleDatas = 1;
+    repeated CarouselItemDatas carouselItemDatas = 2;
+}
+
+message CarouselTitleDatas {
+    string title = 1;
+}
+
+message CarouselItemDatas {
+}
+
+// endregion
+
+// region collapsed video action bar
+
+message YoutubeModel {
+    ViewModel viewModel = 1;
+}
+
+message ViewModel {
+    CompactifyVideoActionBarViewModel compactifyVideoActionBarViewModel = 2185;
+}
+
+message CompactifyVideoActionBarViewModel {
+    repeated ActionButtons actionButtons = 1;
+}
+
+// endregion
+
+// region non-collapsed video action bar
+
+message VideoActionBarModel {
+    VideoActionBarData videoActionBarData = 17;
+}
+
+message VideoActionBarData {
+    repeated ActionButtons actionButtons = 1;
+}
+
+// endregion
+
+message ActionButtons {
+    PrimaryButtonViewModel primaryButtonViewModel = 10;
+}
+
+message PrimaryButtonViewModel {
+    oneof data {
+        AddToPlaylistButtonViewModel addToPlaylistButtonViewModel = 484598023;
+        SecondaryButtonViewModel secondaryButtonViewModel = 461054335;
+        ClipButtonViewModel clipButtonViewModel = 490025863;
+        CompactChannelBarViewModel compactChannelBarViewModel = 1107;
+        DownloadButtonViewModel downloadButtonViewModel = 33561776;
+        SegmentedLikeDislikeButtonViewModel segmentedLikeDislikeButtonViewModel = 484586709;
+    }
+}
+
+message AddToPlaylistButtonViewModel {
+    string addToPlaylistEntityKey = 2;
+}
+
+message SecondaryButtonViewModel {
+    string iconName = 2;
+    optional string accessibilityId = 17;
+}
+
+message ClipButtonViewModel {
+    string videoActionButtonEnablementEntityKey = 2;
+}
+
+message CompactChannelBarViewModel {
+    bool enableCompactChannelBarInnerRefactor = 29;
+}
+
+message DownloadButtonViewModel {
+    string videoId = 1;
+}
+
+message SegmentedLikeDislikeButtonViewModel {
+    string teasersOrderEntityKey = 10;
 }

@@ -95,13 +95,13 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Buộc dùng mã băm JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Cập nhật mã băm JavaScript của trình phát đã bị tắt
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Tắt cập nhật JavaScript của trình phát</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Cập nhật JavaScript của trình phát đã bị tắt
 
 • Cần có mã băm JavaScript hợp lệ
 • Video sẽ không phát được nếu mã băm này bị GVS thu hồi"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Cập nhật mã băm JavaScript của trình phát đã bật</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Mã băm JavaScript của trình phát thường có hiệu lực khoảng một tháng, và các mã băm quá hạn có thể bị GVS thu hồi.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Cập nhật JavaScript của trình phát đã bật</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Mã băm JavaScript của trình phát thường có hiệu lực khoảng một tháng, và các mã băm quá hạn có thể bị GVS thu hồi.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Mã băm JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Nhập mã băm JavaScript hợp lệ của trình phát</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

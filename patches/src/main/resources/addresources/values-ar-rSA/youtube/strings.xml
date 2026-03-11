@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">إخفاء ملخص محادثات الذكاء الاصطناعي</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">تم إخفاء ملخص محادثة الذكاء الاصطناعي</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">يتم عرض ملخص محادثة الذكاء الاصطناعي</string>
-  <string name="morphe_hide_comments_ai_summary_title">إخفاء ملخص تعليقات الذكاء الاصطناعي</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">تم إخفاء ملخص تعليقات الذكاء الاصطناعي</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">يتم عرض ملخص تعليقات الذكاء الاصطناعي</string>
   <string name="morphe_hide_comments_channel_guidelines_title">إخفاء إرشادات القناة</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">تم إخفاء إرشادات القناة</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">يتم عرض إرشادات القناة</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">إخفاء زر شكرًا</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">تم إخفاء زر شكرًا</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">يتم عرض زر شكرًا</string>
+  <string name="morphe_sanitize_comments_category_bar_title">تنظيف شريط الفئات</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">تم إخفاء أزرار الفئات باستثناء \'الأهم\' و \'أحدث التعليقات\' في شريط فئات التعليقات</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">يتم عرض أزرار الفئات في شريط فئات التعليقات</string>
   <string name="morphe_custom_filter_screen_title">فلتر مخصص</string>
   <string name="morphe_custom_filter_screen_summary">إخفاء المكونات باستخدام فلاتر مخصصة</string>
   <string name="morphe_custom_filter_title">تمكين الفلتر المخصص</string>
@@ -542,6 +542,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_like_subscribe_glow_title">تعطيل توهج الإعجاب واشتراك</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">لن يتوهج زر أعجبني واشتراك عند الإشارة إليه</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">سيتوهَّج زر أعجبني واشتراك عند الإشارة إليه </string>
+  <string name="morphe_hide_action_bar_title">إخفاء شريط الإجراءات</string>
+  <string name="morphe_hide_action_bar_summary_on">تم إخفاء شريط الإجراءات</string>
+  <string name="morphe_hide_action_bar_summary_off">يتم عرض شريط الإجراءات</string>
   <string name="morphe_hide_like_dislike_button_title">إخفاء أعجبني ولم يعجبني</string>
   <string name="morphe_hide_like_dislike_button_summary_on">تم إخفاء أزرار أعجبني ولم يعجبني</string>
   <string name="morphe_hide_like_dislike_button_summary_off">يتم عرض أزرار أعجبني ولم يعجبني</string>

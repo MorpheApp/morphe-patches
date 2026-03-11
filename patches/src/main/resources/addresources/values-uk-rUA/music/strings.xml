@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Приховати панель категорій</string>
   <string name="morphe_music_hide_category_bar_summary_on">Панель категорій приховано</string>
   <string name="morphe_music_hide_category_bar_summary_off">Панель категорій показується</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Змінити колір мініплеєра</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Колір мініплеєра відповідає кольору повноекранного плеєра</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Мініплеєр використовує колір за замовчуванням</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Увімкнути примусово мініплеєр</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Мініплеєр залишається згорнутим, коли змінюється відтворення</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Мініплеєр розгортається на весь екран, коли змінюється відтворення</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Панель навігації</string>
   <string name="morphe_music_navigation_bar_screen_summary">Приховати або змінити кнопки панелі навігації</string>

@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Ascunde bara de categorii</string>
   <string name="morphe_music_hide_category_bar_summary_on">Bara de categorii este ascunsă</string>
   <string name="morphe_music_hide_category_bar_summary_off">Bara de categorii este afișată</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Schimbă culoarea miniplayer-ului</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Culoarea miniplayer-ului se potrivește cu player-ul pe ecran complet</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer-ul folosește culoarea implicită</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Activează miniplayer-ul forțat</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer-ul rămâne minimizat când se schimbă redarea</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer-ul se extinde la ecran complet când se schimbă redarea</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Bară de navigare</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ascundeți sau modificați butoanele barei de navigare</string>

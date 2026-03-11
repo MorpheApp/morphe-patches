@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared with YouTube and YT Music -->
+<!--
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Navê sepanê</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
+  <string name="morphe_custom_branding_icon_title">Îkonê</string>
+  <string name="morphe_custom_branding_icon_entry_1">Yekta</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe reş</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe tarî</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe rovê</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">Xwerî</string>
+  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Xwer pêşbira eksperimentalê 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Hûn ji ⚠️ &lt;b&gt;%1$s&lt;/b&gt; karanîna sepan eksperimentalê îlavên &lt;br/&gt;&lt;br/&gt;
+🔧 Tişta bi nexuş bêkêr be an karanîna bêserneweyî yan bibînin, çima me ji bo holweşana ev sepan saz kiriye.
+&lt;br/&gt;&lt;br/&gt;
+Ger ez kêmtir zirar be, wê demê &lt;b&gt;serbûna&lt;/b&gt; ev û holweşana pêşniyarîya sepanê ✅ &lt;b&gt;%2$s&lt;/b&gt; bikêr ke."</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">Ez vê eksperimental be nêzîkê bikîm</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Min holweşana serbaz be nêzîkê bikîm</string>
+  <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ji nûve ne nîşan bide</string>
+  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Goşiyên wîdyoyê spoof bikin</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Goşiyên wîdyoyê ji bo rêzgirtina kêmasiyên lêxistinê spoof bikin</string>
+  <string name="morphe_spoof_video_streams_title">Goşiyên wîdyoyê spoof bikin</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Goşiyên wîdyoyê spoof kirin
+
+Ger hûn bikarhênerê YouTube Premium in, vê naverokê pêwist nebêje."</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Goşiyên wîdyoyê spoof nakin
+
+ Lêxistin dibe ku naçe."</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Tiştekî ji goşiyên klijentê neyê pêşbaz kirin</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Dibe ku birêveçûna vê naverokê kêmasiyên lêxistinê hebe.</string>
+  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bila veşêre: Spoof video streams > Îqneya VR-a Android</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Klijentê default</string>
+  <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Îqneya VR-a Android</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Naveçeyîn e ku bi VR-a Android ve hatî qeyd kirin</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Niha bi VR-a Android ve hatî qeyd kirin</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ji bo bikardana vê taybetmendiyê, \'Klijenta default\' biguhezîne VR-a Android</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bi VR-a Android ve qeyd bike</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Teqezîya nêzîkê Android VR bikê da ku vexalên lêpêvirîna malandaran ji hin rêzên bidê.
+
+Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Bidawaze</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Derveke</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Amûreyên</string>
+  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Koda aktivasyonê: %s
+
+1. Kilatek 'Malperê veke' li jêr bitarînin da ku malpera 'Cihaskirina alavê' vebxe.
+2. Ji bo çêspêkê (an nivîsê) koda aktivasyonê ku li jor tê nîşandin, vekirin.
+3. Ger hat pêşbazkirin, bi Google-ê têxin nêzîk. Ger mêreka hesabê heya, ev hesabê YouTube-yê hilbijêrin.
+4. Li 'Dibe alavê VR YouTube' bitarînin
+5. Piştî gihîşîya peyamê 'Alav pêwendiya', vegerin serdana ev sepan."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Malperê veke</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ne başa kodu aktivasyonê dabî.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ne başa nîşana otantîkasyonê dabî.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Bi ser ket teqezîya nêzîkê.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Saziyên we ji Morphe nebazin/neçênin Android VR teqezîya otantîkasyonê.
+• Ger ev sepan ji 6 mehyan kêmtir neyê bikarîn, Google ev teqezîya ji holê radike.
+• Ger hûn peyva Google-a xwe biguhênin an ev alav ji avakerên Google-a we ji holê rabikin, wê demê divê we îze ba nêzîkê bikin."</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 niha rê ne. (API derket).</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Teqezîya VR bi rêz ve ne, teqezîya malpera otantîkasyonê ne-qebûl kirin.</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 niha rê ne (demî %d).</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 niha rê ne.</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ne çawa teqezîya VR bikin: otantîkasyonê malpera qebûl kirin.</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Ne çawa teqezîya VR bikin: %s.</string>
+  <string name="morphe_oauth2_toast_reset">Ji Android VR derketim.</string>
+  <string name="morphe_oauth2_toast_invalid">Teqezîya VR bi derexaneyê, zî dosya teqezîya nêzîkê bî.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Serê pêşandera JavaScriptê astive</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Serê pêşandera JavaScriptê astive
+
+• Ji bo pêşandera JavaScriptê rasterast rêyên rast hewce ne
+• Heke pêşandera JavaScriptê di GVS de veqetibe, playback têkdidin"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Serê pêşandera JavaScriptê neastive</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Dîroyên Player JavaScript bi nêzîkê yeka mehan, Û ya ji GVS girêdayî ev zû çûye.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Lepikê JavaScript</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Dîrê dirstyê Player JavaScript vigirin.</string>
+  <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Protocols QUIC qut bikin</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protocols QUIC qut kirin.</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protocols QUIC saz kirin.</string>
+  <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Sazîya DRC dengê qut bikin</string>
+  <string name="morphe_disable_drc_audio_summary_on">Denga DRC qut kirin.</string>
+  <string name="morphe_disable_drc_audio_summary_off">Dengê DRC saz kirin.</string>
+  <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Zimanê dengê orjinal timê bike</string>
+  <string name="morphe_force_original_audio_summary_on">Zimanê dengê orjinal tê bikaranîn</string>
+  <string name="morphe_force_original_audio_summary_off">Dengê default tê bikaranîn</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Ji bo bikardana vê taybetmendiyê, \'Spoof video streams\' biguhezîne her klijentek jê wirêja Android Studio</string>
+  <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parametereka rêşvekirina ji hevparçeyên parvekirî ve tê avêtin</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parametereka rêşvekirina ji hevparçeyên parvekirî ve neavêtin</string>
+  <string name="morphe_replace_music_with_youtube_title">Lînkên parvekirî biguhezîne youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Hevparçeyên parvekirî youtube.com bikar bikin</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Hevparçeyên parvekirî music.youtube.com bikar bikin</string>
+</resources>

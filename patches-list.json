@@ -1,5 +1,5 @@
 {
-  "version": "1.17.1-dev.1",
+  "version": "1.18.1-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -208,9 +208,11 @@
     },
     {
       "name": "Change package name",
-      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues. This patch does not work with Reddit.",
+      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
       "use": false,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": null,
       "options": [
         {
@@ -237,6 +239,15 @@
           "key": "updateProviders",
           "title": "Update providers",
           "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "updateProvidersStrings",
+          "title": "Update providers strings",
+          "description": "Update additional provider names declared by the app in the strings.xml file. Enabling this can fix installation errors, but this can also break features in certain apps.",
           "required": false,
           "type": "kotlin.Boolean",
           "default": false,
@@ -342,6 +353,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
@@ -381,6 +393,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
@@ -409,6 +422,34 @@
           "type": "kotlin.String",
           "default": null,
           "values": null
+        }
+      ]
+    },
+    {
+      "name": "Custom branding name for Reddit",
+      "description": "Changes the Reddit app name to the name specified in patch options.",
+      "use": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
+        ]
+      },
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name of the app.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Reddit Morphe",
+          "values": {
+            "Default": "Reddit Morphe"
+          }
         }
       ]
     },
@@ -464,6 +505,14 @@
           "20.21.37"
         ]
       },
+      "options": []
+    },
+    {
+      "name": "Disable Play Store updates",
+      "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": null,
       "options": []
     },
     {
@@ -744,6 +793,24 @@
     {
       "name": "Enable exclusive audio playback",
       "description": "Enables the option to play audio without video.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.44.54",
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable forced miniplayer",
+      "description": "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -1097,6 +1164,7 @@
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1272,12 +1340,15 @@
     },
     {
       "name": "Hide video action buttons",
-      "description": "Adds options to hide action buttons (such as the Download button) under videos. Patching version 20.21.37 or lower can hide more player button types.",
+      "description": "Adds options to hide action buttons (such as the Download button) under videos.",
       "use": true,
       "dependencies": [
-        "ResourcePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1483,7 +1554,7 @@
     },
     {
       "name": "Override certificate pinning",
-      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy. This patch does not work with Reddit.",
+      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
       "use": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1532,6 +1603,7 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1554,7 +1626,8 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "ResourcePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1701,6 +1774,7 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {

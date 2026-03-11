@@ -95,13 +95,13 @@ Per accedere, premi Continua di seguito"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossibile accedere a VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Disconnesso da Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token di accesso a VR non valido, prova ad accedere nuovamente a VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forzare l\'hash JavaScript del giocatore</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"L'aggiornamento dell'hash JavaScript del lettore è disabilitato
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Disabilita l\'aggiornamento JavaScript del player</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"L'aggiornamento JavaScript del player è disabilitato
 
-• È richiesto un hash JavaScript del lettore valido
-• La riproduzione fallisce se l'hash JavaScript del lettore viene revocato in GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">L\'aggiornamento dell\'hash JavaScript del lettore è abilitato</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Gli hash JavaScript del lettore sono validi per circa un mese e gli hash obsoleti potrebbero essere revocati da GVS.</string>
+• È richiesto un hash JavaScript del player valido
+• La riproduzione non riesce se l'hash JavaScript del Player viene revocato in GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">L\'aggiornamento JavaScript del player è abilitato</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Gli hash JavaScript del lettore sono validi per circa un mese e gli hash obsoleti potrebbero essere revocati da GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript del giocatore</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Inserisci un hash JavaScript del lettore valido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

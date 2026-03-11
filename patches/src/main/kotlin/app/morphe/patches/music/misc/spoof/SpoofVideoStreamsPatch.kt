@@ -51,7 +51,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         tag = "app.morphe.extension.music.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
                     ),
-                    SwitchPreference("morphe_spoof_video_streams_force_player_js_hash"),
+                    SwitchPreference("morphe_spoof_video_streams_disable_player_js_update"),
                     TextPreference("morphe_spoof_video_streams_player_js_hash"),
                 )
             )

@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално упозорење 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 Očekujte neobično ponašanje aplikacije ili neidentificirane greške dok se ne popravi za ovu verziju.
-<br/>
-<br/>
-Da bi imali najstabilniju verziju, deinstalirajte ovu i popravite preporučenu verziju ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Očekujte neobično ponašanje aplikacije ili neidentifikovane greške dok usavršavamo ispravke za ovu verziju aplikacije.
+&lt;br/&gt;&lt;br/&gt;
+Ako želite najmanje problema, &lt;b&gt;deinstalirajte&lt;/b&gt; ovu i popravite preporučenu verziju aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalnu verziju</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilnu verziju</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljen sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte se ponovno prijaviti na VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Silom player JavaScript heš</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Ažuriranje JavaScript heša plejera je onemogućeno
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Искукључите ажурирање JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Ажурирање JavaScript плеера је искључено
 
-• Potreban je važeći JavaScript heš plejera
-• Reprodukcija može da ne uspe ako je JavaScript heš plejera poništen u GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Ažuriranje JavaScript heša plejera je omogućeno</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript hešovi plejera su važeći otprilike jedan mesec, a zastareli hešovi mogu biti poništeni od strane GVS.</string>
+• Потребан је валидан JavaScript hash плеера
+• Репродукција ће отказати ако је JavaScript hash плеера опзван у GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ажурирање JavaScript плеера је укључено</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hešovi plejera su važeći otprilike jedan mesec, a zastareli hešovi mogu biti poništeni od strane GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Unesite validan hash JavaScript igrača</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

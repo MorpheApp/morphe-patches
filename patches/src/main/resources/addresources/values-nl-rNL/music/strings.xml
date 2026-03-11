@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Categoriebalk verbergen</string>
   <string name="morphe_music_hide_category_bar_summary_on">Categoriebalk is verborgen</string>
   <string name="morphe_music_hide_category_bar_summary_off">Categoriebalk wordt weergegeven</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Wijzig miniplayerkleur</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayerkleur komt overeen met de volledigschermspeler</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer gebruikt standaardkleur</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Geforceerde miniplayer inschakelen</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer blijft geminimaliseerd wanneer afspelen verandert</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer wordt vergroot naar volledig scherm wanneer afspelen verandert</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigatiebalk</string>
   <string name="morphe_music_navigation_bar_screen_summary">Navigatiebalkknoppen verbergen of wijzigen</string>

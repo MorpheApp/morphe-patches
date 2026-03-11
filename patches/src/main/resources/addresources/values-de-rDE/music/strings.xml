@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Kategorieleiste ausblenden</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategorieleiste ist ausgeblendet</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategorieleiste wird angezeigt</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Miniplayer-Farbe ändern</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer-Farbe entspricht dem Vollbild-Player</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer verwendet Standardfarbe</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Miniplayer erzwingen aktivieren</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer bleibt minimiert, wenn die Wiedergabe wechselt</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer erweitert sich im Vollbildmodus, wenn die Wiedergabe wechselt</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationsleiste</string>
   <string name="morphe_music_navigation_bar_screen_summary">Navigationsleisten-Schaltflächen ausblenden oder ändern</string>

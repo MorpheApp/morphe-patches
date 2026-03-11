@@ -206,7 +206,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_course_progress_section_title">「コースの進捗状況」を非表示</string>
   <string name="morphe_hide_course_progress_section_summary_on">「コースの進捗状況」セクションは表示されません</string>
   <string name="morphe_hide_course_progress_section_summary_off">「コースの進捗状況」セクションは表示されます</string>
-  <string name="morphe_hide_explore_section_title">「ポッドキャストを検索」を非表示</string>
+  <string name="morphe_hide_explore_section_title">「ポッドキャストを検索」と「このコースを見る」を非表示</string>
   <string name="morphe_hide_explore_section_summary_on">「ポッドキャストを検索」セクションと「このコースを見る」セクションは表示されません</string>
   <string name="morphe_hide_explore_section_summary_off">「ポッドキャストを検索」セクションと「このコースを見る」セクションは表示されます</string>
   <string name="morphe_hide_explore_course_section_title">「このコースを見る」を非表示</string>
@@ -306,9 +306,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI による「チャットの要約」は表示されません</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI による「チャットの要約」は表示されます</string>
-  <string name="morphe_hide_comments_ai_summary_title">AI によるコメントの要約を非表示</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI によるコメントの要約は表示されません\n\nコメント欄のヘッダーにはトピックボタンは表示されません</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI によるコメントの要約は表示されます\n\nコメント欄のヘッダーにはトピックボタンが表示されます</string>
   <string name="morphe_hide_comments_channel_guidelines_title">チャンネルのガイドラインを非表示</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">チャンネルのガイドラインは表示されません</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">チャンネルのガイドラインは表示されます</string>
@@ -322,8 +319,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_summary_on">コメント セクションは表示されません</string>
   <string name="morphe_hide_comments_section_summary_off">コメント セクションは表示されます</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ホームフィードでコメント欄を非表示</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">ホームフィードの動画の下にはコメント欄は表示されません</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">ホームフィードの動画の下にはコメント欄が表示されます</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">ホームフィードの動画の下には、コメント欄は表示されません</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">ホームフィードの動画の下には、コメント欄が表示されます</string>
   <string name="morphe_hide_comments_community_guidelines_title">コミュニティ ガイドラインを非表示</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">コミュニティ ガイドラインは表示されません</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">コミュニティ ガイドラインは表示されます</string>
@@ -339,6 +336,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks ボタンを非表示</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Thanks ボタンは表示されません</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Thanks ボタンは表示されます</string>
+  <string name="morphe_sanitize_comments_category_bar_title">カテゴリバーを無害化</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">コメント欄のカテゴリバーには、「人気順」および「新しい順」以外のカテゴリボタンは表示されません\n\n「トピック」(AI 要約) も表示されません</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">コメント欄のカテゴリバーには、さまざまなカテゴリボタンが表示されます\n\n「トピック」(AI 要約) が表示される場合があります</string>
   <string name="morphe_custom_filter_screen_title">カスタム フィルタ</string>
   <string name="morphe_custom_filter_screen_summary">カスタム フィルタを使用してコンポーネントを非表示にします</string>
   <string name="morphe_custom_filter_title">カスタム フィルタを有効化</string>
@@ -435,13 +435,13 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL をクリップボードにコピーしました</string>
-  <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付きの URL がコピーされました</string>
+  <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付きの URL をコピーしました</string>
   <string name="morphe_copy_video_url_title">「動画の URL をコピー」ボタンを表示</string>
-  <string name="morphe_copy_video_url_summary_on">「動画の URL をコピー」ボタンがプレーヤー オーバーレイに表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
-  <string name="morphe_copy_video_url_summary_off">「動画の URL をコピー」ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_copy_video_url_summary_on">プレーヤー オーバーレイに「動画の URL をコピー」ボタンが表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
+  <string name="morphe_copy_video_url_summary_off">プレーヤー オーバーレイに「動画の URL をコピー」ボタンは表示されません</string>
   <string name="morphe_copy_video_url_timestamp_title">「タイムスタンプ付き URL をコピー」ボタンを表示</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">「タイムスタンプ付き URL をコピー」ボタンがプレーヤー オーバーレイに表示されます。タップするとタイムスタンプ付きの動画の URL が、長押しするとタイムスタンプなしの URL がそれぞれコピーされます</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">「タイムスタンプ付き URL をコピー」ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンが表示されます。タップするとタイムスタンプ付きの動画の URL が、長押しするとタイムスタンプなしの URL がそれぞれコピーされます</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンは表示されません</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">ダイアログは削除されます</string>
@@ -459,8 +459,8 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">外部ダウンロード</string>
   <string name="morphe_external_downloader_screen_summary">外部ダウンローダーの設定</string>
   <string name="morphe_external_downloader_title">外部ダウンロード ボタンを表示</string>
-  <string name="morphe_external_downloader_summary_on">外部ダウンロード ボタンがプレーヤー オーバーレイに表示されます</string>
-  <string name="morphe_external_downloader_summary_off">外部ダウンロード ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_external_downloader_summary_on">プレーヤー オーバーレイに外部ダウンロード ボタンが表示されます</string>
+  <string name="morphe_external_downloader_summary_off">プレーヤー オーバーレイに外部ダウンロード ボタンは表示されません</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">オフライン ボタンの動作を上書き</string>
   <string name="morphe_external_downloader_action_button_summary_on">オフライン ボタンは外部ダウンローダーを呼び出します</string>
@@ -544,6 +544,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_like_subscribe_glow_title">高評価とチャンネル登録のエフェクトを無効化</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">高評価ボタンとチャンネル登録ボタンのエフェクトは無効です</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">高評価ボタンとチャンネル登録ボタンのエフェクトは有効です</string>
+  <string name="morphe_hide_action_bar_title">アクションバーを非表示</string>
+  <string name="morphe_hide_action_bar_summary_on">アクションバーは表示されません</string>
+  <string name="morphe_hide_action_bar_summary_off">アクションバーは表示されます</string>
   <string name="morphe_hide_like_dislike_button_title">高評価ボタンと低評価ボタンを非表示</string>
   <string name="morphe_hide_like_dislike_button_summary_on">高評価ボタンと低評価ボタンは表示されません</string>
   <string name="morphe_hide_like_dislike_button_summary_off">高評価ボタンと低評価ボタンは表示されます</string>
@@ -594,7 +597,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_clip_button_title">クリップボタンを非表示</string>
   <string name="morphe_hide_clip_button_summary_on">クリップボタンは表示されません</string>
   <string name="morphe_hide_clip_button_summary_off">クリップボタンは表示されます</string>
-  <string name="morphe_hide_clip_button_user_dialog_message">この非表示機能は一部のユーザーアカウントでは機能しない可能性があります。</string>
+  <string name="morphe_hide_clip_button_user_dialog_message">この非表示機能は、一部のユーザー アカウントでは動作しない可能性があります。</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shop_button_title">購入ボタンを非表示</string>
   <string name="morphe_hide_shop_button_summary_on">購入ボタンは表示されません</string>
@@ -703,9 +706,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_create_button_title">作成ボタンを非表示</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">作成ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">作成ボタンは表示されます</string>
-  <string name="morphe_hide_toolbar_microphone_button_title">マイクボタンを非表示</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_on">マイクボタンは表示されません</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_off">マイクボタンは表示されます</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">音声検索ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">音声検索ボタンは表示されません</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">音声検索ボタンは表示されます</string>
   <string name="morphe_hide_toolbar_notification_button_title">通知ボタンを非表示</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">通知ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">通知ボタンは表示されます</string>
@@ -722,7 +725,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_toolbar_create_button_type_summary_off">"タップすると YouTube の設定を開きます
 長押しすると Morphe の設定を開きます"</string>
   <string name="morphe_rearrange_toolbar_buttons_title">置き換えたボタンを並び替え</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">置き換えたボタンはマイページタブのボタンと同じ順序で配置されます</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">置き換えたボタンはマイページタブのボタンの順序で配置されます</string>
   <string name="morphe_rearrange_toolbar_buttons_summary_off">置き換えたボタンは置き換え元のボタンの位置にそのまま配置されます</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
@@ -847,9 +850,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_title">サムネイルのシークバーを非表示</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">フィードや再生履歴などの動画のサムネイルのシークバーは表示されません</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">フィードや再生履歴などの動画のサムネイルのシークバーは表示されます</string>
-  <string name="morphe_fullscreen_large_seekbar_title">フルスクリーンでシークバーを大きくする</string>
-  <string name="morphe_fullscreen_large_seekbar_summary_on">フルスクリーンシークバーが大きなサイズです</string>
-  <string name="morphe_fullscreen_large_seekbar_summary_off">フルスクリーンシークバーが通常サイズです</string>
+  <string name="morphe_fullscreen_large_seekbar_title">全画面表示のシークバーを拡大</string>
+  <string name="morphe_fullscreen_large_seekbar_summary_on">全画面表示モードのシークバーを大きいサイズで表示します</string>
+  <string name="morphe_fullscreen_large_seekbar_summary_off">全画面表示モードのシークバーを通常のサイズで表示します</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
   <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
   <string name="morphe_shorts_player_screen_summary">ショート プレーヤーのコンポーネントを表示または非表示にします</string>
@@ -986,7 +989,7 @@ Second \"item\" text"</string>
   <string name="morphe_end_screen_suggested_video_user_dialog_message">"この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。
 
 [次の動画を自動再生] は、YouTube の設定で変更できます:
-[設定] > [再生] (または [自動再生]) > [次の動画を自動再生]"</string>
+[設定] &gt; [再生] (または [自動再生]) &gt; [次の動画を自動再生]"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">関連動画を非表示</string>
   <string name="morphe_hide_player_related_videos_summary_on">関連動画は表示されません</string>
@@ -1074,8 +1077,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock は、ユーザーからの情報提供により YouTube 動画のわずらわしい部分をスキップする機能です</string>
   <string name="morphe_sb_appearance_category">外観</string>
   <string name="morphe_sb_enable_voting">投票ボタンを表示</string>
-  <string name="morphe_sb_enable_voting_sum_on">セグメントへの投票ボタンがプレーヤー オーバーレイに表示されます</string>
-  <string name="morphe_sb_enable_voting_sum_off">セグメントへの投票ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_sb_enable_voting_sum_on">プレーヤー オーバーレイにセグメントへの投票ボタンが表示されます</string>
+  <string name="morphe_sb_enable_voting_sum_off">プレーヤー オーバーレイにセグメントへの投票ボタンは表示されません</string>
   <string name="morphe_sb_square_layout">ボタンとコントロールを直角化</string>
   <string name="morphe_sb_square_layout_sum_on">ボタンとコントロールの角は直角です</string>
   <string name="morphe_sb_square_layout_sum_off">ボタンとコントロールの角は丸角です</string>
@@ -1108,8 +1111,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_general_time_without_sum_off">動画全体の再生時間のみがシークバーに表示されます</string>
   <string name="morphe_sb_create_segment_category">新しいセグメントの作成</string>
   <string name="morphe_sb_enable_create_segment">セグメント作成ボタンを表示</string>
-  <string name="morphe_sb_enable_create_segment_sum_on">セグメント作成ボタンがプレーヤー オーバーレイに表示されます</string>
-  <string name="morphe_sb_enable_create_segment_sum_off">セグメント作成ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_sb_enable_create_segment_sum_on">プレーヤー オーバーレイにセグメント作成ボタンが表示されます</string>
+  <string name="morphe_sb_enable_create_segment_sum_off">プレーヤー オーバーレイにセグメント作成ボタンは表示されません</string>
   <string name="morphe_sb_general_adjusting">セグメントの位置調整幅</string>
   <string name="morphe_sb_general_adjusting_sum">セグメント作成メニュー内の早送り / 巻き戻しボタンで移動する時間 (ミリ秒)</string>
   <string name="morphe_sb_general_adjusting_invalid">値は正の整数でなければなりません</string>
@@ -1483,8 +1486,8 @@ Automotive レイアウト
   <string name="morphe_loop_video_summary_off">動画はループ再生されません</string>
   <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">動画のループ再生ボタンを表示</string>
-  <string name="morphe_loop_video_button_summary_on">動画のループ再生ボタンが表示されます</string>
-  <string name="morphe_loop_video_button_summary_off">動画のループ再生ボタンは表示されません</string>
+  <string name="morphe_loop_video_button_summary_on">プレーヤー オーバーレイに「動画のループ再生」ボタンが表示されます</string>
+  <string name="morphe_loop_video_button_summary_off">プレーヤー オーバーレイに「動画のループ再生」ボタンは表示されません</string>
   <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
   <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
@@ -1546,12 +1549,12 @@ Automotive レイアウト
   <string name="morphe_remember_video_quality_toast_shorts">ショートの画質の変更 (%1$s): %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">再生速度設定ボタンを表示</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">再生速度設定ボタンがプレーヤー オーバーレイに表示されます。長押しすると、再生速度がデフォルトの値にリセットされます</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">再生速度設定ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">プレーヤー オーバーレイに再生速度設定ボタンが表示されます。長押しすると、再生速度がデフォルトの値にリセットされます</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">プレーヤー オーバーレイに再生速度設定ボタンは表示されません</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質設定ボタンを表示</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">画質設定ボタンがプレーヤー オーバーレイに表示されます。長押しすると、画質がデフォルトの値にリセットされます</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">画質設定ボタンはプレーヤー オーバーレイに表示されません</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">プレーヤー オーバーレイに画質設定ボタンが表示されます。長押しすると、画質がデフォルトの値にリセットされます</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">プレーヤー オーバーレイに画質設定ボタンは表示されません</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">カスタム再生速度メニュー</string>
   <string name="morphe_custom_speed_menu_summary_on">カスタム再生速度リストが再生速度メニューに表示されます</string>

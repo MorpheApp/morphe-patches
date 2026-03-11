@@ -115,10 +115,10 @@ Second \"item\" text"</string>
 
 這項設定對於應用程式正常運作為必要條件。"</string>
   <string name="gms_core_dialog_open_website_text">開啟網站</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"必須停用 MicroG 的電池最佳化設定，以防後續出現問題。
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"必須停用 MicroG 的電池最佳化設定，以避免後續的問題發生。
 
-停用 MicroG 的電池最佳化並不會增加電池消耗，對使用情況亦無負面影響。
+停用 MicroG 的電池最佳化並不會增加電池使用量，對使用情況亦無負面影響。
 
-點擊繼續鈕以允許調整相關最佳化設定。"</string>
+點擊繼續按鈕以允許調整相關最佳化設定。"</string>
   <string name="gms_core_dialog_continue_text">繼續</string>
 </resources>

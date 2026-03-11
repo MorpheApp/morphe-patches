@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Kategori çubuğunu gizle</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategori çubuğu gizli</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategori çubuğu görünür</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Mini oynatıcı rengini değiştir</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Mini oynatıcı rengi tam ekran oynatıcıyla eşleşir</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini oynatıcı varsayılan rengi kullanır</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Zorunlu mini oynatıcıyı etkinleştir</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Mini oynatıcı, oynatma değiştiğinde küçültülmüş durumda kalır</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Mini oynatıcı, oynatma değiştiğinde tam ekrana genişler</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Gezinme çubuğu</string>
   <string name="morphe_music_navigation_bar_screen_summary">Gezinme çubuğundaki düğmeleri gizle veya değiştir</string>

@@ -315,9 +315,6 @@ Changes include:
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
     <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI chat summary is hidden</string>
     <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI chat summary is shown</string>
-    <string name="morphe_hide_comments_ai_summary_title">Hide AI comments summary</string>
-    <string name="morphe_hide_comments_ai_summary_summary_on">AI comments summary is hidden</string>
-    <string name="morphe_hide_comments_ai_summary_summary_off">AI comments summary is shown</string>
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_on">Channel guidelines are hidden</string>
     <string name="morphe_hide_comments_channel_guidelines_summary_off">Channel guidelines are shown</string>
@@ -348,6 +345,9 @@ Changes include:
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
     <string name="morphe_hide_comments_thanks_button_summary_on">Thanks button is hidden</string>
     <string name="morphe_hide_comments_thanks_button_summary_off">Thanks button is shown</string>
+    <string name="morphe_sanitize_comments_category_bar_title">Sanitize category bar</string>
+    <string name="morphe_sanitize_comments_category_bar_summary_on">Category buttons except \'Top\' and \'Newest\' are hidden in the comment category bar</string>
+    <string name="morphe_sanitize_comments_category_bar_summary_off">Category buttons are shown in the comment category bar</string>
     <string name="morphe_custom_filter_screen_title">Custom filter</string>
     <string name="morphe_custom_filter_screen_summary">Hide components using custom filters</string>
     <string name="morphe_custom_filter_title">Enable custom filter</string>
@@ -577,6 +577,9 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
     <string name="morphe_disable_like_subscribe_glow_summary_on">Like and Subscribe button will not glow when mentioned</string>
     <string name="morphe_disable_like_subscribe_glow_summary_off">Like and Subscribe button will glow when mentioned</string>
+    <string name="morphe_hide_action_bar_title">Hide action bar</string>
+    <string name="morphe_hide_action_bar_summary_on">Action bar is hidden</string>
+    <string name="morphe_hide_action_bar_summary_off">Action bar is shown</string>
     <string name="morphe_hide_like_dislike_button_title">Hide Like and Dislike</string>
     <string name="morphe_hide_like_dislike_button_summary_on">Like and Dislike buttons are hidden</string>
     <string name="morphe_hide_like_dislike_button_summary_off">Like and Dislike buttons are shown</string>

@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">カテゴリバーを非表示</string>
   <string name="morphe_music_hide_category_bar_summary_on">カテゴリバーは表示されません</string>
   <string name="morphe_music_hide_category_bar_summary_off">カテゴリバーは表示されます</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">ミニプレーヤーの色を変更</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">ミニプレーヤーはフルスクリーン プレーヤーと同じ色を使用します</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">ミニプレーヤーはデフォルトの色を使用します</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">ミニプレーヤーでの連続再生を有効化</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">ミニプレーヤーでの再生中に次の曲をそのままミニプレーヤーで再生します</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">ミニプレーヤーでの再生中に次の曲をフルスクリーンで再生します</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ナビゲーション バー</string>
   <string name="morphe_music_navigation_bar_screen_summary">ナビゲーション バーのボタンを変更または非表示にします</string>

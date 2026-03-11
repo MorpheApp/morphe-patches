@@ -210,9 +210,9 @@ public final class JavaScriptManager {
             long lastSavedTime = PLAYER_JS_SAVED_MILLISECONDS.get();
 
             if (!PLAYER_JS_HASH.get().isEmpty()
-                    // If 'Force player JavaScript hash' is enabled, the 'Player JavaScript hash' will always be used.
+                    // If 'Disable player JavaScript update' is enabled, the 'Player JavaScript hash' will always be used.
                     // In other words, the cache expiration is not checked, and the YouTube iframe API is not fetched either.
-                    && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FORCE_PLAYER_JS_HASH.get()
+                    && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get()
                     || currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS)) {
                 // There is a hash saved in the settings and it was saved within 3 days.
                 // Use the hash saved in the settings.
@@ -459,6 +459,11 @@ public final class JavaScriptManager {
 
                 return true;
             }
+        } else if (!isAdaptiveFormats) {
+            // The TV client may not have formats in live streams, which is normal.
+            // Since formats aren't used for playback, there's no problem using the default instance.
+            streamingDataBuilder.addFormats(Format.newBuilder().build());
+            return true;
         }
 
         return false;

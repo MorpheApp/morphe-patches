@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alertă experimentală 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Folosiți o versiune experimentală a aplicației ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 Așteptați comportament anormal sau bug-uri necunoscut în timp ce noi calibram patch-urile pentru această versiune a aplicației.
-<br/>
-<br/>
-Dacă doriți experiența mai stabilă, atunci <b>dezinstalați</b> această versiune și aplicați versiunea recomandată a aplicației ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Folosiți o versiune experimentală a aplicației ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Așteptați un comportament ciudat al aplicației sau erori neidentificate, deoarece ajustăm remedierile pentru această versiune a aplicației.
+&lt;br/&gt;&lt;br/&gt;
+Dacă doriți o experiență cât mai bună, atunci &lt;b&gt;dezinstalați&lt;/b&gt; această aplicație și actualizați versiunea recomandată a aplicației ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vreau experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vreau stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forțează hash JavaScript al player-ului</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Actualizarea hash-ului JavaScript al player-ului este dezactivată
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Dezactivează actualizarea JavaScript a player-ului</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Actualizarea JavaScript a player-ului este dezactivată
 
-• Este necesar un hash JavaScript al player-ului valid
+• Este necesară o valoare hash JavaScript validă pentru player
 • Redarea eșuează dacă hash-ul JavaScript al player-ului este revocat în GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Actualizarea hash-ului JavaScript al player-ului este activată</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Hash-urile JavaScript ale player-ului sunt valide aproximativ o lună, iar hash-urile învechite pot fi revocate de GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Actualizarea JavaScript a player-ului este activată</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hash-urile JavaScript ale player-ului sunt valide aproximativ o lună, iar hash-urile învechite pot fi revocate de GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript al juc\u00e3torului</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Introduceți un hash JavaScript al jucătorului valid</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

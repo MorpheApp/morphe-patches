@@ -315,22 +315,3 @@ internal object SettingIntentFingerprint : Fingerprint(
         )
     )
 )
-
-internal object StreamingDataOuterClassFingerprint : Fingerprint(
-    definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
-            parameters = listOf(),
-            returnType = "Z"
-        ),
-        opcode(Opcode.IF_NEZ),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            name = "mutableCopy"
-        )
-    )
-)

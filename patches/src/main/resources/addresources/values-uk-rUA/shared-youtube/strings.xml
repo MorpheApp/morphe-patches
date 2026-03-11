@@ -95,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не вдається ввійти до VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Ви вийшли з Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте ввійти у VR ще раз</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Примусово застосувати хеш JavaScript плеєра</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Оновлення хешу JavaScript плеєра вимкнено
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Вимкнути оновлення JavaScript плеєра</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Оновлення JavaScript плеєра вимкнено
 
 • Потрібен дійсний хеш JavaScript плеєра
 • Відтворення не вдається, якщо хеш JavaScript плеєра скасовано у GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Оновлення хешу JavaScript плеєра увімкнено</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Хеші JavaScript плеєра дійсні приблизно один місяць, а застарілі хеші можуть бути скасовані GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Оновлення JavaScript плеєра увімкнено</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Хеші JavaScript плеєра дійсні приблизно один місяць, а застарілі хеші можуть бути скасовані GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Хеш JavaScript плеєра</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Введіть дійсний хеш JavaScript плеєра</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

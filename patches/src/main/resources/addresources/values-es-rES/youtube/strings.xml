@@ -304,9 +304,6 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ocultar resumen del chat con IA</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">El resumen del chat con IA está oculto</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">El resumen del chat con IA está visible</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ocultar resumen de comentarios con IA</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">El resumen de comentarios con IA está oculto</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">El resumen de comentarios con IA está visible</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ocultar normas del canal</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Las normas del canal están ocultas</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Las normas del canal están visibles</string>
@@ -337,6 +334,9 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botón \"Gracias\"</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">El botón \"Gracias\" está oculto</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">El botón \"Gracias\" está visible</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Desinfectar barra de categorías</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Los botones de categoría, excepto \"Mejores\" y \"Más recientes\", están ocultos en la barra de categorías de comentarios</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Los botones de categoría están visibles en la barra de categorías de comentarios</string>
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Oculta componentes usando filtros personalizados</string>
   <string name="morphe_custom_filter_title">Activar filtro personalizado</string>
@@ -542,6 +542,9 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_disable_like_subscribe_glow_title">Desactivar brillo de \"Me gusta\" y \"Suscribirme\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Los botones \"Me gusta\" y \"Suscribirme\" no brillarán cuando se pulsen</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Los botones \"Me gusta\" y \"Suscribirme\" brillarán cuando se pulsen</string>
+  <string name="morphe_hide_action_bar_title">Ocultar barra de acción</string>
+  <string name="morphe_hide_action_bar_summary_on">La barra de acción está oculta</string>
+  <string name="morphe_hide_action_bar_summary_off">La barra de acción está visible</string>
   <string name="morphe_hide_like_dislike_button_title">Ocultar \"Me gusta\" y \"No me gusta\"</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Los botones \"Me gusta\" y \"No me gusta\" están ocultos</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Los botones \"Me gusta\" y \"No me gusta\" están visibles</string>

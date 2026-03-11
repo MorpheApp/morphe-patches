@@ -30,13 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 পরীক্ষামূলক সতর্কতা 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"আপনি পরীক্ষামূলক অ্যাপ ভার্সন ব্যবহার করছেন ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 অ্যাপ ভার্সনের প্যাচগুলি চূড়ান্ত করার সময় কুইর্কি অ্যাপ আচরণ বা অপরিচিত বাগ থাকতে পারে।
-<br/>
-<br/>
-তুমি সবচেয়ে সমস্যা মুক্ত অভিজ্ঞতা চাও, তাহলে <b>ইনস্টলেশন বাতিল</b> করুন এবং রেকমেন্ডেড অ্যাপ ভার্সন ✅ <b>%2$s</b> প্যাচ করুন।"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"আপনি একটি পরীক্ষামূলক অ্যাপ সংস্করণ ব্যবহার করছেন ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 এই অ্যাপ সংস্করণের জন্য প্যাচগুলি আমরা পরিমার্জন করছি, তাই অদ্ভুত অ্যাপ আচরণ বা অজানা বাগ আশা করুন।
+&lt;br/&gt;&lt;br/&gt;
+যদি আপনি সবচেয়ে ঝামেলা-মুক্ত অভিজ্ঞতা পেতে চান, তাহলে এই অ্যাপটি &lt;b&gt;আনইনস্টল করুন&lt;/b&gt; এবং ✅ &lt;b&gt;%2$s&lt;/b&gt; এর প্রস্তাবিত অ্যাপ সংস্করণটি ইনস্টল করুন।"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ আমি পরীক্ষামূলক চাচ্ছি</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ আমি স্থিতিশীল চাচ্ছি</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -97,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR এ প্রবেশ করতে ব্যর্থ হয়েছে: %s</string>
   <string name="morphe_oauth2_toast_reset">অ্যান্ড্রয়েড ভিআর থেকে লগ আউট করা হয়েছে</string>
   <string name="morphe_oauth2_toast_invalid">VR প্রবেশের জন্য অকার্যকর টোকেন, আবার VR এ প্রবেশ করুন</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ প্রয়োগ করুন</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ আপডেট নিষ্ক্রিয় করা হয়েছে
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">প্লেয়ার জাভাস্ক্রিপ্ট আপডেট নিষ্ক্রিয় করুন</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"প্লেয়ার জাভাস্ক্রিপ্ট আপডেট নিষ্ক্রিয় করা হয়েছে
 
 • একটি বৈধ প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ প্রয়োজন
-• GVS-এ প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ বাতিল হলে প্লেব্যাক ব্যর্থ হবে।"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ আপডেট সক্রিয় করা হয়েছে</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশগুলি প্রায় এক মাসের জন্য বৈধ, এবং মেয়াদোত্তীর্ণ হ্যাশগুলি GVS দ্বারা বাতিল করা হতে পারে।</string>
+• প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ GVS-এ বাতিল হলে প্লেব্যাক ব্যর্থ হবে"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">প্লেয়ার জাভাস্ক্রিপ্ট আপডেট সক্রিয় করা হয়েছে</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশগুলি প্রায় এক মাসের জন্য বৈধ, এবং মেয়াদোত্তীর্ণ হ্যাশগুলি GVS দ্বারা বাতিল করা হতে পারে।</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">একটি বৈধ প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ প্রবেশ করুন</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

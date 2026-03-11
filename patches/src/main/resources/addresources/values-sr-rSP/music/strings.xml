@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Сакриј траку категорија</string>
   <string name="morphe_music_hide_category_bar_summary_on">Трака категорија је скривена</string>
   <string name="morphe_music_hide_category_bar_summary_off">Трака категорија је приказана</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Промени боју мини плејера</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Боја мини плејера одговара плејеру преко целог екрана</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Мини плејер користи подразумевану боју</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Омогући принудни мини-плејер</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Мини-плејер остаје минимизиран приликом промене репродукције</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Мини-плејер се проширује на цео екран приликом промене репродукције</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Трака за навигацију</string>
   <string name="morphe_music_navigation_bar_screen_summary">Сакријте или промените дугмад траке за навигацију</string>

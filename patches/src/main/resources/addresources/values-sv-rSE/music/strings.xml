@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Dölj kategorifält</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategorifältet är dolt</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategorifältet visas</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Ändra minispelarens färg</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Minispelarens färg matchar helskärmsspelaren</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minispelaren använder standardfärg</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Aktivera tvingad minispelare</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Minispelaren förblir minimerad när uppspelningen ändras</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Minispelaren expanderas till helskärm när uppspelningen ändras</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigeringsfält</string>
   <string name="morphe_music_navigation_bar_screen_summary">Dölj eller ändra knappar i navigeringsfältet</string>

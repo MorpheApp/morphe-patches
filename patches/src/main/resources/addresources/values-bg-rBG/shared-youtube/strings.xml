@@ -30,11 +30,11 @@ Second \"item\" text"</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментална Аларма 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Използвате експериментална версия на приложението ⚠️ <b>%1$s</b>
-<br/><br/>
-🔧 Очаквайте неочаквани поведения или неидентифицирани грешки, тъй като минаваме към финалните патчове за тази версия на приложението.
-<br/><br/>
-Ако искате най-стабилен опит, тогава <b>деинсталирайте</b> това и патчете препоръчаната версия на приложението ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Използвате експериментална версия на приложението ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Очаквайте странно поведение на приложението или неидентифицирани бъгове, докато доусъвършенстваме корекциите за тази версия на приложението.
+&lt;br/&gt;&lt;br/&gt;
+Ако искате най-безпроблемното изживяване, тогава &lt;b&gt;премахнете&lt;/b&gt; това и актуализирайте препоръчителната версия на приложението ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Избирам експериментално</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Избирам стабилно</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -95,13 +95,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Излезли сте от Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за VR, опитайте се да се влезете в VR отново</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Принудително JavaScript хеширане на играча</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Актуализацията на JavaScript хеша на плейъра е забранена
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Деактивиране на актуализацията на JavaScript за плейъра</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Актуализацията на JavaScript за плейъра е деактивирана
 
-• Изисква се валиден JavaScript хеш на плейъра
-• Възпроизвеждането се проваля, ако JavaScript хешът на плейъра бъде отменен от GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Актуализацията на JavaScript хеша на плейъра е разрешена</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript хешовете на плейъра са валидни приблизително един месец и остарелите хешове може да бъдат отменени от GVS.</string>
+• Необходим е валиден JavaScript хеш на плейъра.
+• Възпроизвеждането се проваля, ако JavaScript хеш на плейъра е отменен в GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Актуализацията на JavaScript за плейъра е активирана</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript хешовете на плейъра са валидни приблизително един месец и остарелите хешове може да бъдат отменени от GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">JavaScript хеш на играча</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Въведете валиден JavaScript хеш на плейъра</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

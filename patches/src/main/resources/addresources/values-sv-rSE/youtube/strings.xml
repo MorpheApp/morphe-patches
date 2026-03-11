@@ -179,6 +179,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_quick_actions_title">Dölj snabbåtgärder</string>
   <string name="morphe_hide_quick_actions_summary_on">Snabbåtgärder i helskärm är dolda</string>
   <string name="morphe_hide_quick_actions_summary_off">Snabbåtgärder i helskärm visas</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Dölj liknande videor i snabbåtgärder</string>
   <string name="morphe_hide_quick_actions_related_videos_summary_on">Liknande videor i snabbåtgärder är dolda</string>
   <string name="morphe_hide_quick_actions_related_videos_summary_off">Liknande videor i snabbåtgärder visas</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Dölj riktlinjer för prenumeranter</string>
@@ -305,9 +306,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_ai_chat_summary_title">Dölj AI-sammanfattning av chatt</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-sammanfattning av chatt är dold</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-sammanfattning av chatt visas</string>
-  <string name="morphe_hide_comments_ai_summary_title">Dölj AI-sammanfattning av kommentarer</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI-sammanfattning av kommentarer är dold</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI-sammanfattning av kommentarer visas</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Dölj kanalriktlinjer</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalriktlinjer är dolda</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalriktlinjer visas</string>
@@ -338,6 +336,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_thanks_button_title">Dölj knappen Thanks</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Knappen Thanks är dold</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Knappen Thanks visas</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Rensa kategorifältet </string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Alla kategoriknappar utom Populärast och Senaste är dolda i kategorifältet för kommentarer</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategoriknapparna visas i kategorifältet för kommentarer</string>
   <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
   <string name="morphe_custom_filter_screen_summary">Dölj komponenter med anpassade filter</string>
   <string name="morphe_custom_filter_title">Aktivera anpassat filter</string>
@@ -523,7 +524,7 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
   <string name="morphe_swipe_text_overlay_size_summary">Textstorleken för svepöverlägg mellan 1 och 30</string>
   <string name="morphe_swipe_text_overlay_size_invalid_toast">Textstorleken måste vara mellan 1 och 30</string>
   <string name="morphe_swipe_threshold_title">Tröskelvärde för svep</string>
-  <string name="morphe_swipe_threshold_summary">Tröskelvärdet för att svep ska uppstå</string>
+  <string name="morphe_swipe_threshold_summary">Tröskelvärdet för att svep ska registreras</string>
   <string name="morphe_swipe_volume_sensitivity_title">Svepkänslighet för volymgest</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Hur mycket volymen ändras per svep</string>
   <string name="morphe_swipe_overlay_style_title">Stil på svepöverlägg</string>
@@ -543,6 +544,9 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
   <string name="morphe_disable_like_subscribe_glow_title">Inaktivera lysande knappar för Gilla och Prenumerera</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Knapparna Gilla och Prenumerera lyser inte när de nämns</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Knapparna Gilla och Prenumerera lyser när de nämns</string>
+  <string name="morphe_hide_action_bar_title">Dölj åtgärdsfält</string>
+  <string name="morphe_hide_action_bar_summary_on">Åtgärdsfältet är dolt</string>
+  <string name="morphe_hide_action_bar_summary_off">Åtgärdsfältet visas</string>
   <string name="morphe_hide_like_dislike_button_title">Dölj Gilla och Ogilla</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Knapparna Gilla och Ogilla är dolda</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Knapparna Gilla och Ogilla visas</string>
@@ -702,9 +706,13 @@ Om du vill komma åt Inställningar:
   <string name="morphe_hide_toolbar_create_button_title">Dölj Skapa</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Knappen Skapa är dold</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Knappen Skapa visas</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Dölj mikrofonknappen</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofonknappen är dold</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofonknappen visas</string>
   <string name="morphe_hide_toolbar_notification_button_title">Dölj Aviseringar</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Knappen Aviseringar är dold</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Knappen Aviseringar visas</string>
+  <string name="morphe_hide_toolbar_search_button_title">Dölj Sök</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Knappen Sök är dold</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Knappen Sök visas</string>
   <string name="morphe_replace_toolbar_create_button_title">Byt ut Skapa mot Inställningar</string>
@@ -747,9 +755,9 @@ Tryck länge för att öppna Morphe-inställningarna"</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_off">Menyn Jämn volym visas</string>
   <string name="morphe_hide_player_flyout_stable_volume_summary_on">Menyn Jämn volym är dold</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">Dölj Hjälp &amp; feedback</string>
-  <string name="morphe_hide_player_flyout_help_summary_on">Menyn Hjälp &amp; feedback är dold</string>
-  <string name="morphe_hide_player_flyout_help_summary_off">Menyn Hjälp &amp; feedback visas</string>
+  <string name="morphe_hide_player_flyout_help_title">Dölj Hjälp och feedback</string>
+  <string name="morphe_hide_player_flyout_help_summary_on">Menyn Hjälp och feedback är dold</string>
+  <string name="morphe_hide_player_flyout_help_summary_off">Menyn Hjälp och feedback visas</string>
   <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_speed_title">Dölj Uppspelningshastighet</string>
   <string name="morphe_hide_player_flyout_speed_summary_on">Menyn Uppspelningshastighet är dold</string>
@@ -806,9 +814,9 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_player_control_buttons_background_title">Dölj bakgrunder för uppspelningsknappar</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Bakgrunder för uppspelningsknappar är dolda</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Bakgrunder för uppspelningsknappar visas</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Dölj knapparna Föregående &amp; Nästa</string>
-  <string name="morphe_hide_player_previous_next_buttons_summary_on">Knapparna Föregående &amp; Nästa är dolda</string>
-  <string name="morphe_hide_player_previous_next_buttons_summary_off">Knapparna Föregående &amp; Nästa visas</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Dölj knapparna Föregående och Nästa</string>
+  <string name="morphe_hide_player_previous_next_buttons_summary_on">Knapparna Föregående och Nästa är dolda</string>
+  <string name="morphe_hide_player_previous_next_buttons_summary_off">Knapparna Föregående och Nästa visas</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Dölj slutskärmskort</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Slutskärmskort är dolda</string>
@@ -1039,12 +1047,12 @@ Begränsning: Ogilla-markeringar kanske inte visas i inkognitoläge"</string>
   <string name="morphe_ryd_estimated_like_title">Visa uppskattade gilla-markeringar</string>
   <string name="morphe_ryd_estimated_like_summary_on">Videor med inaktiverade gilla-markeringar visar ett uppskattat antal gilla-markeringar</string>
   <string name="morphe_ryd_estimated_like_summary_off">Uppskattade gilla-markeringar visas inte</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Visa ett popup-meddelande om API inte är tillgängligt</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Visa ett popup-meddelande om API:et inte är tillgängligt</string>
   <string name="morphe_ryd_toast_on_connection_error_summary_on">Popup-meddelande visas om Return YouTube Dislike inte är tillgängligt</string>
   <string name="morphe_ryd_toast_on_connection_error_summary_off">Popup-meddelande visas inte om Return YouTube Dislike inte är tillgängligt</string>
-  <string name="morphe_ryd_attribution_summary">Data tillhandahålls av Return YouTube Dislike API. Tryck här för att läsa mer</string>
+  <string name="morphe_ryd_attribution_summary">Data tillhandahålls av Return YouTube Dislike-API:et. Tryck här för att läsa mer</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
-  <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API-statistik för denna enhet</string>
+  <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike-API-statistik för denna enhet</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-svarstid, genomsnittlig</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API-svarstid, minsta</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API-svarstid, längsta</string>
@@ -1115,7 +1123,7 @@ Begränsning: Ogilla-markeringar kanske inte visas i inkognitoläge"</string>
   <string name="morphe_sb_guidelines_popup_already_read">Redan läst</string>
   <string name="morphe_sb_guidelines_popup_open">Visa mig</string>
   <string name="morphe_sb_general">Allmänt</string>
-  <string name="morphe_sb_toast_on_connection_error">Visa ett popup-meddelande om API inte är tillgängligt</string>
+  <string name="morphe_sb_toast_on_connection_error">Visa ett popup-meddelande om API:et inte är tillgängligt</string>
   <string name="morphe_sb_toast_on_connection_error_sum_on">Popup-meddelande visas om SponsorBlock inte är tillgängligt</string>
   <string name="morphe_sb_toast_on_connection_error_sum_off">Popup-meddelande visas inte om SponsorBlock inte är tillgängligt</string>
   <string name="morphe_sb_general_skipcount">Aktivera spårning av antalet överhoppningar</string>
@@ -1273,7 +1281,7 @@ Redo att skicka in?"</string>
   <string name="morphe_sb_color_opacity_label">Opacitet:</string>
   <string name="morphe_sb_color_dot_label">Färg:</string>
   <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">Data tillhandahålls av SponsorBlock API. Tryck här för att läsa mer och se nedladdningar för andra plattformar</string>
+  <string name="morphe_sb_about_api_summary">Data tillhandahålls av SponsorBlock-API:et. Tryck här för att läsa mer och se nedladdningar för andra plattformar</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layoutformfaktor</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>
@@ -1306,6 +1314,11 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_open_system_share_sheet_summary_on">Öppnar systemets delningsblad</string>
   <string name="morphe_open_system_share_sheet_summary_off">Öppnar appens delningsblad</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">Åsidosatt YouTube Music-knappen</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music-knappen öppnar målappen för musik</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music-knappen öppnar den ursprungliga appen</string>
+  <string name="morphe_music_package_name_title">Morphe Music-paketnamn</string>
+  <string name="morphe_music_package_name_summary">Paketnamn på målappen för musik</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Byt startsida</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
@@ -1313,7 +1326,7 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_change_start_page_entry_browse">Bläddra bland kanaler</string>
   <string name="morphe_change_start_page_entry_courses">Kurser/lärande</string>
   <string name="morphe_change_start_page_entry_explore">Utforska</string>
-  <string name="morphe_change_start_page_entry_fashion">Mode &amp; skönhet</string>
+  <string name="morphe_change_start_page_entry_fashion">Mode och skönhet</string>
   <string name="morphe_change_start_page_entry_gaming">Spel</string>
   <string name="morphe_change_start_page_entry_history">Historik</string>
   <string name="morphe_change_start_page_entry_library">Bibliotek</string>
@@ -1440,18 +1453,18 @@ Om du aktiverar detta kan det åtgärda saknade bilder som blockeras i vissa reg
   <string name="morphe_alt_thumbnail_subscription_title">Fliken Prenumerationer</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_library_title">Fliken Ditt YouTube</string>
-  <string name="morphe_alt_thumbnail_player_title">Spelarspellistor &amp; rekommendationer</string>
+  <string name="morphe_alt_thumbnail_player_title">Spellistor och rekommendationer i spelaren</string>
   <string name="morphe_alt_thumbnail_search_title">Sökresultat</string>
   <string name="morphe_alt_thumbnail_options_entry_1">Ursprungliga miniatyrer</string>
-  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; originalminiatyrer</string>
-  <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; stillbilder</string>
+  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow och ursprungliga miniatyrer</string>
+  <string name="morphe_alt_thumbnail_options_entry_3">DeArrow och stillbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stillbilder</string>
   <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tillhandahåller crowdsourcing-baserade miniatyrbilder för YouTube-videor. Dessa miniatyrbilder är ofta mer relevanta än de som tillhandahålls av YouTube
 
 Om detta aktiveras skickas videoadresser till API-servern och inga andra data skickas. Om en video inte har DeArrow-miniatyrer visas den ursprungliga bilden eller stillbilder
 
 Tryck här för att läsa mer om DeArrow"</string>
-  <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Visa ett popup-meddelande om API inte är tillgängligt</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Visa ett popup-meddelande om API:et inte är tillgängligt</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_on">Popup-meddelande visas om DeArrow inte är tillgängligt</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary_off">Popup-meddelande visas inte om DeArrow inte är tillgängligt</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">API-slutpunkt för DeArrow</string>
@@ -1501,8 +1514,8 @@ Om du aktiverar detta kan högre videokvaliteter låsas upp"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_on">Haptik för att ångra sökning är inaktiverad</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_summary_off">Haptik för att ångra sökning är aktiverad</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Inaktivera haptik för långt tryck</string>
-  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Haptik för långt tryck är inaktiverat</string>
-  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Haptik för långt tryck är aktiverat</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_on">Haptik för långt tryck är inaktiverad</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_summary_off">Haptik för långt tryck är aktiverad</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Inaktivera zoomhaptik</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoomhaptik är inaktiverad</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoomhaptik är aktiverad</string>

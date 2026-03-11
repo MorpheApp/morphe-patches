@@ -306,9 +306,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Приховати \"Огляд чату від ШІ\"</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">\"Огляд чату від ШІ\" приховано</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">\"Огляд чату від ШІ\" показується</string>
-  <string name="morphe_hide_comments_ai_summary_title">Приховати вкладку \"За темою\"</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Вкладку \"За темою\" приховано</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Вкладка \"За темою\" показується</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Приховати правила каналу</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Правила каналу приховано</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Правила каналу показуються</string>
@@ -339,6 +336,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">Приховати \"Дякую\"</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Кнопку \"Дякую\" приховано</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Кнопка \"Дякую\" показується</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Очистити панель категорій</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Кнопки категорій, окрім \"Найпопулярніші\" та \"Найновіші\", приховано на панелі категорій коментарів</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Кнопки категорій показуються на панелі категорій коментарів</string>
   <string name="morphe_custom_filter_screen_title">Користувацький фільтр</string>
   <string name="morphe_custom_filter_screen_summary">Приховати компоненти за допомогою користувацьких фільтрів</string>
   <string name="morphe_custom_filter_title">Увімкнути користувацький фільтр</string>
@@ -544,6 +544,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_like_subscribe_glow_title">Вимкнути блимання кнопок \"Лайк\" та \"Підписатися\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Кнопки \"Лайк\" та \"Підписатися\" не будуть блимати при згадуванні</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Кнопки \"Лайк\" та \"Підписатися\" не будуть блимати при згадуванні</string>
+  <string name="morphe_hide_action_bar_title">Приховати панель дій</string>
+  <string name="morphe_hide_action_bar_summary_on">Панель дій приховано</string>
+  <string name="morphe_hide_action_bar_summary_off">Панель дій показується</string>
   <string name="morphe_hide_like_dislike_button_title">Приховати \"Лайк\" та \"Дизлайк\"</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Кнопки \"Лайк\" та \"Дизлайк\" приховано</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Кнопки \"Лайк\" та \"Дизлайк\" показуються</string>
@@ -1346,7 +1349,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_always_summary_on">"Початкова сторінка завжди змінюється
 
 Обмеження: Використання кнопки \"Назад\" на панелі інструментів може не працювати"</string>
-  <string name="morphe_change_start_page_always_summary_off">Початкова сторінка змінюється лише під час запуску програми</string>
+  <string name="morphe_change_start_page_always_summary_off">Початкова сторінка змінюється лише під час запуску застосунку</string>
   <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
   <string name="morphe_disable_resuming_shorts_player_title">Вимкнути відновлення плеєра Shorts</string>
   <string name="morphe_disable_resuming_shorts_player_summary_on">Плеєр Shorts не відновиться після запуску застосунку</string>

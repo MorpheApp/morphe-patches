@@ -199,3 +199,28 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
         )
     )
 )
+
+internal object WatchNextResponseParserFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Ljava/lang/Object;"),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
+        literal(49399797L),
+        opcode(Opcode.SGET_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        literal(51779735L),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(
+            Opcode.CHECK_CAST,
+            location = MatchAfterImmediately()
+        ),
+        literal(46659098L),
+    )
+)

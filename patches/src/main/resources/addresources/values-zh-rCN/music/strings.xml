@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">隐藏类别栏</string>
   <string name="morphe_music_hide_category_bar_summary_on">类别栏已隐藏</string>
   <string name="morphe_music_hide_category_bar_summary_off">类别栏已显示</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">更改迷你播放器颜色</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">迷你播放器颜色与全屏播放器一致</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">迷你播放器使用默认颜色</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">启用强制最小播放器</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">播放变化时最小播放器保持最小化</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">播放变化时最小播放器展开为全屏</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">导航栏</string>
   <string name="morphe_music_navigation_bar_screen_summary">隐藏或更改导航栏按钮</string>

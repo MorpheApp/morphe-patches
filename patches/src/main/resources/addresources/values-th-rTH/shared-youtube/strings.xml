@@ -97,13 +97,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ไม่สามารถเข้าสู่ระบบ VR: %s</string>
   <string name="morphe_oauth2_toast_reset">ออกจากระบสเวล VR</string>
   <string name="morphe_oauth2_toast_invalid">โทเค็นเข้าสู่ระบบ VR ไม่ถูกต้อง กรุณาลองเข้าสู่ระบบ VR อีกครั้ง</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">บังคับใช้ JavaScript hash ของผู้เล่น</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"การอัปเดต JavaScript hash ของผู้เล่นถูกปิดใช้งาน
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">ปิดการอัปเดต JavaScript ของผู้เล่น</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"การอัปเดต JavaScript ของผู้เล่นถูกปิดใช้งาน
 
-• จำเป็นต้องมี JavaScript hash ของผู้เล่นที่ถูกต้อง
-• การเล่นวิดีโอจะล้มเหลวหาก JavaScript hash ของผู้เล่นถูกเพิกถอนโดย GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">การอัปเดต JavaScript hash ของผู้เล่นถูกเปิดใช้งาน</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">JavaScript hash ของผู้เล่นมีความถูกต้องประมาณหนึ่งเดือน และ JavaScript hash ที่หมดอายุอาจถูกเพิกถอนโดย GVS</string>
+• จำเป็นต้องมีแฮช JavaScript ของผู้เล่นที่ถูกต้อง
+• การเล่นวิดีโอจะล้มเหลวหากแฮช JavaScript ของผู้เล่นถูกเพิกถอนใน GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">การอัปเดต JavaScript ของผู้เล่นเปิดใช้งาน</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hash ของผู้เล่นมีความถูกต้องประมาณหนึ่งเดือน และ JavaScript hash ที่หมดอายุอาจถูกเพิกถอนโดย GVS</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">ค่าแฮช JavaScript ของผู้เล่น</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">ป้อนค่าแฮช JavaScript ของผู้เล่นที่ถูกต้อง</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
