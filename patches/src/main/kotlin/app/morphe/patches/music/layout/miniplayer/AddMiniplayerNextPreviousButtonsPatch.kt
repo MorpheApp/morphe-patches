@@ -20,7 +20,10 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.adoptChild
 import app.morphe.util.doRecursively
 import app.morphe.util.findFreeRegister
+import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.indexOfFirstLiteralInstruction
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -129,7 +132,7 @@ val addMiniplayerNextPreviousButtonsPatch = bytecodePatch(
                 val playPauseIndex = indexOfFirstLiteralInstructionOrThrow(playPauseResourceId)
                 val findViewByIdIndex = indexOfFirstInstructionOrThrow(playPauseIndex, Opcode.INVOKE_VIRTUAL)
                 val parentRegister = getInstruction<FiveRegisterInstruction>(findViewByIdIndex).registerC
-                val freeReg = findFreeRegister(playPauseIndex)
+                val freeReg = findFreeRegister(playPauseIndex, parentRegister)
 
                 addInstructions(
                     playPauseIndex,
@@ -146,18 +149,32 @@ val addMiniplayerNextPreviousButtonsPatch = bytecodePatch(
             injectOnClickListener(previousButtonResourceId, "setPreviousButtonOnClickListener")
         }
 
-        // region 2 - MppWatchWhileLayout.onFinishInflate: store button views and extend view array.
-        // setButtonView calls store weak references used by getViewArray.
-        // getViewArray wraps the original view array to include the new buttons.
-        MppWatchWhileLayoutFingerprint.method.apply {
-            fun injectSetButtonView(viewId: Long, extensionMethod: String) {
-                val playPauseIndex = indexOfFirstLiteralInstructionOrThrow(playPauseResourceId)
-                val findViewByIdIndex = indexOfFirstInstructionOrThrow(playPauseIndex, Opcode.INVOKE_VIRTUAL)
-                val thisRegister = getInstruction<FiveRegisterInstruction>(findViewByIdIndex).registerC
-                val freeReg = findFreeRegister(playPauseIndex)
+        // region 2 — onFinishInflate: store button views and extend the view array.
+        // Anchor: play/pause literal if present, otherwise the first const before NEW_ARRAY.
+        // View array is passed to a layout helper via INVOKE_STATIC or INVOKE_DIRECT depending on the build.
+        (MppWatchWhileLayoutFingerprint.methodOrNull ?: WatchWhileLayoutFingerprint.method).apply {
+            // Determine injection anchor index.
+            val injectionIndex = run {
+                val byPlayPause = indexOfFirstLiteralInstruction(playPauseResourceId)
+                if (byPlayPause >= 0) {
+                    byPlayPause
+                } else {
+                    // Fall back to the first const before the NEW_ARRAY view array construction.
+                    val newArrayIndex = indexOfFirstInstructionOrThrow(Opcode.NEW_ARRAY)
+                    indexOfFirstInstructionReversedOrThrow(newArrayIndex) {
+                        opcode == Opcode.CONST
+                    }
+                }
+            }
 
+            // Resolve the parent view register from the first INVOKE_VIRTUAL at/after the anchor.
+            val findViewByIdIndex = indexOfFirstInstructionOrThrow(injectionIndex, Opcode.INVOKE_VIRTUAL)
+            val thisRegister = getInstruction<FiveRegisterInstruction>(findViewByIdIndex).registerC
+
+            fun injectSetButtonView(viewId: Long, extensionMethod: String) {
+                val freeReg = findFreeRegister(injectionIndex, thisRegister)
                 addInstructions(
-                    playPauseIndex,
+                    injectionIndex,
                     """
                         const v$freeReg, $viewId
                         invoke-virtual { v$thisRegister, v$freeReg }, $definingClass->findViewById(I)Landroid/view/View;
@@ -170,12 +187,17 @@ val addMiniplayerNextPreviousButtonsPatch = bytecodePatch(
             injectSetButtonView(nextButtonResourceId, "setNextButtonView")
             injectSetButtonView(previousButtonResourceId, "setPreviousButtonView")
 
+            // Wrap the view array before it is passed to the layout helper.
             val newArrayIndex = indexOfFirstInstructionOrThrow(Opcode.NEW_ARRAY)
-            val invokeStaticIndex = indexOfFirstInstructionOrThrow(newArrayIndex, Opcode.INVOKE_STATIC)
-            val viewArrayRegister = getInstruction<FiveRegisterInstruction>(invokeStaticIndex).registerC
+            val arrayPassIndex = run {
+                val staticIdx = indexOfFirstInstruction(newArrayIndex, Opcode.INVOKE_STATIC)
+                if (staticIdx >= 0) staticIdx
+                else indexOfFirstInstructionOrThrow(newArrayIndex, Opcode.INVOKE_DIRECT)
+            }
+            val viewArrayRegister = getInstruction<FiveRegisterInstruction>(arrayPassIndex).registerC
 
             addInstructions(
-                invokeStaticIndex,
+                arrayPassIndex,
                 """
                     invoke-static { v$viewArrayRegister }, $EXTENSION_CLASS_DESCRIPTOR->getViewArray([Landroid/view/View;)[Landroid/view/View;
                     move-result-object v$viewArrayRegister
