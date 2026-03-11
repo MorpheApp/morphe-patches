@@ -47,14 +47,27 @@ val snackbarPatch = bytecodePatch(
         PreferenceScreen.FEED.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_snackbar_screen",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_snackbar"),
                     SwitchPreference("morphe_custom_snackbar_theme"),
-                    TextPreference("morphe_snackbar_color_dark", inputType = InputType.TEXT),
-                    TextPreference("morphe_snackbar_color_light", inputType = InputType.TEXT),
-                    TextPreference("morphe_snackbar_corner_radius", inputType = InputType.NUMBER_DECIMAL),
-                    TextPreference("morphe_snackbar_stroke_color", inputType = InputType.TEXT),
-                    TextPreference("morphe_snackbar_text_color", inputType = InputType.TEXT)
+                    TextPreference("morphe_custom_snackbar_corner_radius", inputType = InputType.NUMBER_DECIMAL),
+                    TextPreference("morphe_custom_snackbar_color_dark",
+                        tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS
+                    ),
+                    TextPreference("morphe_custom_snackbar_color_light",
+                        tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS
+                    ),
+                    TextPreference("morphe_custom_snackbar_stroke_color",
+                        tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS
+                    ),
+                    TextPreference("morphe_custom_snackbar_text_color",
+                        tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS
+                    ),
+                    SwitchPreference("morphe_hide_snackbar"),
                 )
             )
         )
