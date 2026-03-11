@@ -393,13 +393,18 @@ public final class LayoutComponentsFilter extends Filter {
             return channelProfileGroupList.check(accessibility).isFiltered();
         }
 
-        if (matchedGroup == communityPosts
-                && NavigationBar.isBackButtonVisible()
-                && !NavigationBar.isSearchBarActive()
-                && PlayerType.getCurrent() != PlayerType.WATCH_WHILE_MAXIMIZED) {
+        if (matchedGroup == communityPosts) {
+            // Always hide community posts when on the Subscriptions tab
+            if (NavigationButton.getSelectedNavigationButton() == NavigationButton.SUBSCRIPTIONS) {
+                return true;
+            }
+
             // Allow community posts on channel profile page,
             // or if viewing an individual channel in the feed.
-            return false;
+            if (NavigationBar.isBackButtonVisible() && !NavigationBar.isSearchBarActive()
+                    && PlayerType.getCurrent() != PlayerType.WATCH_WHILE_MAXIMIZED) {
+                return false;
+            }
         }
 
 
