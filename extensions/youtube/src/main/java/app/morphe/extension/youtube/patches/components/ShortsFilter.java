@@ -458,8 +458,8 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == shortsActionButton) {
-                return useButtonsBuffer.check(buffer).isFiltered() && path.startsWith(REEL_PLAYER_OVERLAY_PATH)
-                        && path.startsWith(REEL_METAPANEL_PATH);
+                return path.startsWith(REEL_PLAYER_OVERLAY_PATH) || path.startsWith(REEL_METAPANEL_PATH)
+                && useButtonsBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == suggestedAction) {
