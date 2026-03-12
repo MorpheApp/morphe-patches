@@ -20,7 +20,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
-public class AddMiniplayerNextPreviousButtonsPatch {
+public class MiniplayerPreviousNextButtonsPatch {
 
     private static WeakReference<View> nextButtonViewRef = new WeakReference<>(null);
     private static WeakReference<View> previousButtonViewRef = new WeakReference<>(null);
@@ -37,13 +37,13 @@ public class AddMiniplayerNextPreviousButtonsPatch {
     // Called from the miniplayer constructor to register click listeners.
     public static void setNextButtonOnClickListener(View view) {
         if (view == null) return;
-        hideViewUnderCondition(!Settings.ADD_MINIPLAYER_NEXT_BUTTON.get(), view);
+        hideViewUnderCondition(!Settings.MINIPLAYER_NEXT_BUTTON.get(), view);
         view.setOnClickListener(v -> nextButtonClicked());
     }
 
     public static void setPreviousButtonOnClickListener(View view) {
         if (view == null) return;
-        hideViewUnderCondition(!Settings.ADD_MINIPLAYER_PREVIOUS_BUTTON.get(), view);
+        hideViewUnderCondition(!Settings.MINIPLAYER_PREVIOUS_BUTTON.get(), view);
         view.setOnClickListener(v -> previousButtonClicked());
     }
 

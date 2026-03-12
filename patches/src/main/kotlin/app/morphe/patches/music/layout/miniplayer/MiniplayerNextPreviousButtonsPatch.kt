@@ -30,7 +30,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/music/patches/AddMiniplayerNextPreviousButtonsPatch;"
+    "Lapp/morphe/extension/music/patches/MiniplayerPreviousNextButtonsPatch;"
 
 private const val IMAGE_VIEW_TAG =
     "com.google.android.libraries.youtube.common.ui.TouchImageView"
@@ -42,8 +42,8 @@ private const val PREVIOUS_BUTTON_ID = "mini_player_previous_button"
 private var nextButtonResourceId = -1L
 private var previousButtonResourceId = -1L
 
-private val addMiniplayerButtonsResourcePatch = resourcePatch(
-    description = "addMiniplayerButtonsResourcePatch"
+private val miniplayerButtonsResourcePatch = resourcePatch(
+    description = "Injects previous and next button views into the miniplayer layout."
 ) {
     dependsOn(resourceMappingPatch)
 
@@ -104,23 +104,23 @@ private val addMiniplayerButtonsResourcePatch = resourcePatch(
 }
 
 @Suppress("unused")
-val addMiniplayerNextPreviousButtonsPatch = bytecodePatch(
-    name = "Add miniplayer previous and next buttons",
+val miniplayerPreviousNextButtonsPatch = bytecodePatch(
+    name = "Miniplayer previous and next buttons",
     description = "Adds options to show previous and next track buttons in the miniplayer."
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
         resourceMappingPatch,
-        addMiniplayerButtonsResourcePatch
+        miniplayerButtonsResourcePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_add_miniplayer_next_button"),
-            SwitchPreference("morphe_music_add_miniplayer_previous_button"),
+            SwitchPreference("morphe_music_miniplayer_next_button"),
+            SwitchPreference("morphe_music_miniplayer_previous_button"),
         )
 
         val playPauseResourceId = getResourceId(ResourceType.ID, "mini_player_play_pause_replay_button")
