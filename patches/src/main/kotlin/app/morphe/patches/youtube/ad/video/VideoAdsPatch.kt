@@ -1,9 +1,7 @@
 package app.morphe.patches.youtube.ad.video
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
@@ -33,20 +31,32 @@ val videoAdsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_video_ads"),
         )
 
-        LoadVideoAdsFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->shouldShowAds()Z
-                move-result v0
-                if-nez v0, :show_video_ads
-                return-void
-            """,
-            ExternalLabel("show_video_ads", LoadVideoAdsFingerprint.method.getInstruction(0)),
-        )
+        setOf(
+            LoadVideoAdsFingerprint,
+            PlayerBytesAdLayoutFingerprint,
+        ).forEach { fingerprint ->
+            fingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideVideoAds()Z
+                    move-result v0
+                    if-eqz v0, :show_video_ads
+                    return-void
+                    :show_video_ads
+                    nop
+                """
+            )
+        }
 
-        addOSNameHook(
+        setOf(
+            Endpoint.GET_WATCH,
+            Endpoint.PLAYER,
             Endpoint.REEL,
-            "$EXTENSION_CLASS_DESCRIPTOR->hideShortsAds(Ljava/lang/String;)Ljava/lang/String;",
-        )
+        ).forEach { endpoint ->
+            addOSNameHook(
+                endpoint,
+                "$EXTENSION_CLASS_DESCRIPTOR->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;",
+            )
+        }
     }
 }
