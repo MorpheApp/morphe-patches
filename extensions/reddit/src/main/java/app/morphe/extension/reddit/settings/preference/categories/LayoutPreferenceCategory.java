@@ -16,6 +16,7 @@ import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
 import app.morphe.extension.reddit.patches.HideSidebarComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingTodayShelfPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
+import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 
@@ -155,6 +156,15 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.REMOVE_NOTIFICATION_DIALOG,
                     "Remove notification suggestion dialog",
                     "Removes the notifications suggestion dialog that appears when visiting a subreddit by dismissing it automatically"
+            ));
+        }
+
+        if (ShowViewCountPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHOW_VIEW_COUNT,
+                    "Show view count",
+                    "Shows the view count of Posts\n\nLimitation: Only shown if the API response includes the view count"
             ));
         }
     }
