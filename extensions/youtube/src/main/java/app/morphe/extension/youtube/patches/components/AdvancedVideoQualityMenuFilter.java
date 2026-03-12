@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import app.morphe.extension.youtube.patches.playback.quality.AdvancedVideoQualityMenuPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 /**
  * LithoFilter for {@link AdvancedVideoQualityMenuPatch}.
@@ -19,8 +20,14 @@ public final class AdvancedVideoQualityMenuFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         isVideoQualityMenuVisible = true;
 
         return false;

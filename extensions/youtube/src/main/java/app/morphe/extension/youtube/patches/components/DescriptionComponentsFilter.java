@@ -1,6 +1,7 @@
 package app.morphe.extension.youtube.patches.components;
 
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -124,8 +125,14 @@ final class DescriptionComponentsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         // The description panel can be opened in both the regular player and Shorts.
         // If the description panel is opened in a Shorts, PlayerType is 'HIDDEN',
         // so 'PlayerType.getCurrent().isMaximizedOrFullscreen()' does not guarantee that the description panel is open.

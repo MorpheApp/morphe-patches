@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import app.morphe.extension.youtube.patches.playback.speed.CustomPlaybackSpeedPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 /**
  * Abuse LithoFilter for {@link CustomPlaybackSpeedPatch}.
@@ -36,8 +37,14 @@ public final class PlaybackSpeedMenuFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         if (matchedGroup == oldPlaybackMenuGroup) {
             isOldPlaybackSpeedMenuVisible = true;
         } else {
