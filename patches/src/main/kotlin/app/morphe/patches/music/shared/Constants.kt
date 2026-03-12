@@ -11,6 +11,12 @@ internal object Constants {
         packageName = "com.google.android.apps.youtube.music",
         apkFileType = ApkFileType.APK,
         appIconColor = 0xFF0000,
+        signatures = setOf(
+            // Android 13+
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            // Android 7+
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+        ),
         targets = listOf(
             AppTarget(
                 version = "9.10.52",
