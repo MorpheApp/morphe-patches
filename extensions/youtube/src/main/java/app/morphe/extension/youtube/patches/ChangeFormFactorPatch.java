@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public class ChangeFormFactorPatch {
@@ -69,21 +70,19 @@ public class ChangeFormFactorPatch {
         if (FORM_FACTOR_TYPE == null) {
             return original;
         }
-        if (IS_BROKEN_FORM_FACTOR) {
-            // The endpoints used when a player is opened are '/get_watch' and '/next'.
-            // Since both endpoints are handled by {@link #fixBrokenFormFactor(int)}, there is no need to check whether the player is opened.
-            if (!NavigationBar.isSearchBarActive()) {
-                // Automotive type shows error 400 when opening a channel page and using some explore tab.
-                // This is a bug in unpatched YouTube that occurs on actual Android Automotive devices.
-                // Work around the issue by using the tablet form factor if not in search and the
-                // navigation back button is present.
-                if (NavigationBar.isBackButtonVisible()
-                        // Do not change library tab otherwise watch history is hidden.
-                        // Do this check last since the current navigation button is required.
-                        || NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY) {
-                    // The form factor most similar to AUTOMOTIVE is LARGE, so it is replaced with LARGE.
-                    return Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original);
-                }
+        if (IS_BROKEN_FORM_FACTOR
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen()
+                && !NavigationBar.isSearchBarActive()) {
+            // Automotive type shows error 400 when opening a channel page and using some explore tab.
+            // This is a bug in unpatched YouTube that occurs on actual Android Automotive devices.
+            // Work around the issue by using the tablet form factor if not in search and the
+            // navigation back button is present.
+            if (NavigationBar.isBackButtonVisible()
+                    // Do not change library tab otherwise watch history is hidden.
+                    // Do this check last since the current navigation button is required.
+                    || NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY) {
+                // The form factor most similar to AUTOMOTIVE is LARGE, so it is replaced with LARGE.
+                return Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original);
             }
         }
 
