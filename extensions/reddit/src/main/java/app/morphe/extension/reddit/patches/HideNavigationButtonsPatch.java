@@ -6,6 +6,8 @@ package app.morphe.extension.reddit.patches;
 
 import android.content.res.Resources;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +65,40 @@ public final class HideNavigationButtonsPatch {
                 }
             }
             list.add(object);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideNavigationTab(@Nullable Enum<?> tab) {
+        if (tab != null) {
+            String tabName = tab.name();
+            for (BottomNavTab navTab : BottomNavTab.values()) {
+                if (navTab.name().equals(tabName) && navTab.enabled) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private enum BottomNavTab {
+        Answers(Settings.HIDE_ANSWERS_BUTTON.get()),
+        Chat(Settings.HIDE_CHAT_BUTTON.get()),
+        Communities(Settings.HIDE_DISCOVER_BUTTON.get()),
+        Games(Settings.HIDE_GAMES_BUTTON.get()),
+        Home(false),
+        Inbox(false),
+        MyCommunities(Settings.HIDE_DISCOVER_BUTTON.get()),
+        Post(Settings.HIDE_CREATE_BUTTON.get()),
+        Profile(false),
+        UnifiedInbox(false);
+
+        private final boolean enabled;
+
+        BottomNavTab(boolean enabled) {
+            this.enabled = enabled;
         }
     }
 
