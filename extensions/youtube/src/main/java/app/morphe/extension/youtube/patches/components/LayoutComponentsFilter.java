@@ -81,6 +81,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+    private final StringFilterGroupList communityPostStringFilterGroup;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -134,6 +135,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_responsive_root.e",
                 "poll_post_responsive_root.e",
                 "shared_post_root.e"
+        );
+        communityPostStringFilterGroup = new StringFilterGroupList();
+        communityPostStringFilterGroup.addAll(
+                new StringFilterGroup(
+                        null,
+                        // home
+                        "horizontalCollectionSwipeProtector=null",
+                        // subscriptions
+                        "heightConstraint=null"
+                )
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -401,17 +412,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
-            // Always hide community posts when on the Subscriptions tab
-            if (NavigationButton.getSelectedNavigationButton() == NavigationButton.SUBSCRIPTIONS) {
-                return true;
-            }
-
-            // Allow community posts on channel profile page,
-            // or if viewing an individual channel in the feed.
-            if (NavigationBar.isBackButtonVisible() && !NavigationBar.isSearchBarActive()
-                    && PlayerType.getCurrent() != PlayerType.WATCH_WHILE_MAXIMIZED) {
-                return false;
-            }
+            return communityPostStringFilterGroup.check(contextInterface.toString()).isFiltered();
         }
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
