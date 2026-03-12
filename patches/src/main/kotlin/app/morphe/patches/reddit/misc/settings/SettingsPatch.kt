@@ -39,7 +39,7 @@ val settingsPatch = bytecodePatch(
         disablePlayStoreUpdatesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
+            recommendedAppVersion = COMPATIBILITY_REDDIT.targets!!.first { !it.isExperimental }.version!!
         )
     )
 
