@@ -9,6 +9,7 @@ import static app.morphe.extension.reddit.patches.VersionCheckPatch.is_2025_52_o
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
 import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
@@ -37,6 +38,15 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
+        if (DisableModernHomePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_MODERN_HOME,
+                    "Disable modern home",
+                    "Disables the modern home UI"
+            ));
+        }
+
         if (DisableScreenshotPopupPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
