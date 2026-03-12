@@ -87,10 +87,12 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup suggestedAction;
     private final ByteArrayFilterGroupList suggestedActionsBuffer = new ByteArrayFilterGroupList();
 
+    private final StringFilterGroup useButtons;
+    private final ByteArrayFilterGroupList useButtonsBuffer = new ByteArrayFilterGroupList();
+
     private final StringFilterGroup shortsActionBar;
     private final StringFilterGroup shortsActionButton;
     private final StringFilterGroupList shortsActionButtonGroupList = new StringFilterGroupList();
-    private final ByteArrayFilterGroupList useButtonsBuffer = new ByteArrayFilterGroupList();
 
     public ShortsFilter() {
         //
@@ -273,6 +275,13 @@ public final class ShortsFilter extends Filter {
                 "button.e"
         );
 
+        useButtons = new StringFilterGroup(
+                null,
+                REEL_PLAYER_OVERLAY_PATH,
+                REEL_METAPANEL_PATH,
+                "floating_action_button.e"
+        );
+
         useButtonsBuffer.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
@@ -294,7 +303,7 @@ public final class ShortsFilter extends Filter {
         addPathCallbacks(
                 shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
                 livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
-                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, stickers,
+                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, stickers, useButtons,
                 reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton, shortsActionBar
         );
 
@@ -457,9 +466,8 @@ public final class ShortsFilter extends Filter {
                 return false;
             }
 
-            if (matchedGroup == shortsActionButton) {
-                if (path.startsWith(REEL_PLAYER_OVERLAY_PATH) || path.startsWith(REEL_METAPANEL_PATH))
-                    return useButtonsBuffer.check(buffer).isFiltered();
+            if (matchedGroup == useButtons) {
+                return path.contains("button.e") && useButtonsBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == suggestedAction) {
