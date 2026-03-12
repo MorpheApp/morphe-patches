@@ -51,9 +51,9 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
  *   >= 9.x: WatchWhileLayout
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
+    definingClass = "WatchWhileLayout;",
+    name = "onFinishInflate",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
-    parameters = emptyList(),
-    definingClass = "WatchWhileLayout;",
-    name = "onFinishInflate"
+    parameters = listOf(),
 )
