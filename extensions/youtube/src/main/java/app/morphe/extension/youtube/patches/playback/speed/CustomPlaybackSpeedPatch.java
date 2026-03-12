@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -66,6 +74,11 @@ public class CustomPlaybackSpeedPatch {
     private static final float PROGRESS_BAR_VALUE_SCALE = 100;
 
     /**
+     * Disable tap and hold speed, true when TAP_AND_HOLD_SPEED is 0.
+     */
+    private static final boolean DISABLE_TAP_AND_HOLD_SPEED;
+
+    /**
      * Tap and hold speed.
      */
     private static final float TAP_AND_HOLD_SPEED;
@@ -101,7 +114,12 @@ public class CustomPlaybackSpeedPatch {
         speedFormatter.setMaximumFractionDigits(2);
 
         final float holdSpeed = Settings.SPEED_TAP_AND_HOLD.get();
-        if (holdSpeed > 0 && holdSpeed <= PLAYBACK_SPEED_MAXIMUM) {
+        DISABLE_TAP_AND_HOLD_SPEED = holdSpeed == 0;
+
+        if (DISABLE_TAP_AND_HOLD_SPEED) {
+            // A value for handling exceptions, but this is not used.
+            TAP_AND_HOLD_SPEED = Settings.SPEED_TAP_AND_HOLD.defaultValue;
+        } else if (holdSpeed > 0 && holdSpeed <= PLAYBACK_SPEED_MAXIMUM) {
             TAP_AND_HOLD_SPEED = holdSpeed;
         } else {
             showInvalidCustomSpeedToast();
@@ -111,6 +129,14 @@ public class CustomPlaybackSpeedPatch {
         customPlaybackSpeeds = loadCustomSpeeds();
         customPlaybackSpeedsMin = customPlaybackSpeeds[0];
         customPlaybackSpeedsMax = customPlaybackSpeeds[customPlaybackSpeeds.length - 1];
+    }
+
+    /**
+     * Injection point.
+     * Called before {@link #getTapAndHoldSpeed()}
+     */
+    public static boolean disableTapAndHoldSpeed(boolean original) {
+        return !DISABLE_TAP_AND_HOLD_SPEED && original;
     }
 
     /**
