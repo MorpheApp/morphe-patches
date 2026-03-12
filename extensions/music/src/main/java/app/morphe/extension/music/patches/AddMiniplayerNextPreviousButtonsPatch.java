@@ -16,6 +16,7 @@ import android.view.View;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
@@ -95,7 +96,8 @@ public class AddMiniplayerNextPreviousButtonsPatch {
                     new KeyEvent(now, now, KeyEvent.ACTION_DOWN, keyCode, 0));
             audioManager.dispatchMediaKeyEvent(
                     new KeyEvent(now, now, KeyEvent.ACTION_UP, keyCode, 0));
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "dispatchMediaAction failure", ex);
         }
     }
 }
