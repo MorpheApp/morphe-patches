@@ -44,7 +44,7 @@ val snackbarPatch = bytecodePatch(
     execute {
         lithoColorOverrideHook(EXTENSION_CLASS_DESCRIPTOR, "getLithoColor")
 
-        PreferenceScreen.FEED.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_snackbar_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
