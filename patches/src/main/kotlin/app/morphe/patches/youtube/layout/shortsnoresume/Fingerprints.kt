@@ -14,7 +14,7 @@ import com.android.tools.smali.dexlib2.Opcode
 /**
  * 21.03+
  */
-internal object EvaluateShortsResumeFingerprint : Fingerprint(
+internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT_RANGE,
@@ -33,7 +33,7 @@ internal object EvaluateShortsResumeFingerprint : Fingerprint(
 /**
  * 20.02+
  */
-internal object SetUserWasInShortsListenerFingerprint : Fingerprint(
+internal object UserWasInShortsListenerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(

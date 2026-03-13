@@ -41,7 +41,7 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
         )
 
         if (is_21_03_or_greater) {
-            EvaluateShortsResumeFingerprint.let { fingerprint ->
+            UserWasInShortsEvaluateFingerprint.let { fingerprint ->
                 fingerprint.method.apply {
                     val match = fingerprint.instructionMatches.first()
                     val instruction = match.instruction as RegisterRangeInstruction
@@ -57,7 +57,7 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
                 }
             }
         } else if (is_20_03_or_greater) {
-            SetUserWasInShortsListenerFingerprint.let { fingerprint ->
+            UserWasInShortsListenerFingerprint.let { fingerprint ->
                 fingerprint.method.apply {
                     val match = fingerprint.instructionMatches[2]
                     val insertIndex = match.index + 1
