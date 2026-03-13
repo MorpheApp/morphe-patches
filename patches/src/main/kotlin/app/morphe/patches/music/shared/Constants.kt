@@ -7,7 +7,7 @@ import app.morphe.patcher.patch.Compatibility
 internal object Constants {
     // TODO: Rename to COMPATIBILITY_YT_MUSIC
     val COMPATIBILITY_YOUTUBE_MUSIC = Compatibility(
-        name = "YT Music",
+        name = "YouTube Music",
         packageName = "com.google.android.apps.youtube.music",
         apkFileType = ApkFileType.APK,
         appIconColor = 0xFF0000,
@@ -35,12 +35,10 @@ internal object Constants {
             AppTarget(
                 version = "8.40.54",
                 minSdk = 26,
-                isExperimental = true
             ),
             AppTarget(
                 version = "8.10.52",
                 minSdk = 26,
-                isExperimental = true
             ),
             AppTarget(
                 version = "7.29.52",
