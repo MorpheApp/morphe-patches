@@ -358,7 +358,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 
     // Shorts
-    public static final BooleanSetting DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("morphe_disable_resuming_shorts_player", FALSE);
+    public static final BooleanSetting DISABLE_SHORTS_RESUMING_ON_STARTUP = new BooleanSetting("morphe_disable_shorts_resuming_on_startup", FALSE);
     public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("morphe_shorts_disable_background_playback", FALSE);
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("morphe_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
     public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("morphe_hide_shorts_ai_button", FALSE);
