@@ -467,7 +467,7 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == useButtons) {
-                return path.contains("button.e") && useButtonsBuffer.check(buffer).isFiltered();
+                return useButtonsBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == suggestedAction) {
