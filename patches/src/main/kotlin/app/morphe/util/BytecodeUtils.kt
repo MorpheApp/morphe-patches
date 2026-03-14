@@ -122,14 +122,14 @@ private fun Method.findInstructionIndexFromToString(fieldName: String, isField: 
         fieldUsageRegister == writeRegister
     }
 
-    // Some 'toString()' methods, despite using a StringBuilder,
-    // Convert the value via 'Object.toString()' or 'String.valueOf(object)' before appending it to the StringBuilder.
+    // Some 'toString()' methods, despite using a StringBuilder, Convert the value via
+    // 'Object.toString()' or 'String.valueOf(object)' before appending it to the StringBuilder.
     // In this case, the correct index cannot be found.
     // Additional validation is done to find the index of the correct field or method.
     //
-    // Only runs a maximum of 3 times to avoid getting stuck in a loop.
-    var loopCount = 3
-    while (loopCount > 0) {
+    // Check up to 3 method calls.
+    var checksLeft = 3
+    while (checksLeft > 0) {
         // If the field is a method call, then adjust from MOVE_RESULT to the method call.
         val fieldSetOpcode = getInstruction(fieldSetIndex).opcode
         if (fieldSetOpcode == MOVE_RESULT ||
@@ -156,7 +156,7 @@ private fun Method.findInstructionIndexFromToString(fieldName: String, isField: 
             fieldSetIndex = indexOfFirstInstructionReversedOrThrow(fieldSetIndex - 1) {
                 fieldUsageRegister == writeRegister
             }
-            loopCount--
+            checksLeft--
         } else {
             throw IllegalArgumentException("Unknown reference: $fieldSetReference")
         }
