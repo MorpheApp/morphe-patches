@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.Fingerprint
@@ -45,6 +53,18 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     custom = { _, classDef ->
         AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
     }
+)
+
+internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
+
+internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string(FIXED_RESOLUTION_STRING)
+    )
 )
 
 internal object VideoStreamingDataConstructorFingerprint : Fingerprint(

@@ -1289,12 +1289,18 @@ Pronto para enviar?"</string>
   <string name="morphe_change_form_factor_entry_4">Automotivo</string>
   <string name="morphe_change_form_factor_user_dialog_message">"As alterações incluem:
 
-Layout do tablet
-• As postagens da comunidade estão ocultas
+Layout para tablet
+• Publicações da comunidade estão ocultas
+• A configuração de reprodução em feeds não está disponível
+• O botão Remix e o botão Som não estão disponíveis no Shorts
+• A barra de ações de vídeo não está recolhida
 
-Layout automotivo
-• Os Shorts são abertos no reprodutor normal
-• O feed é organizado por tópicos e canais"</string>
+Layout para automóvel
+• O feed é organizado por tópicos e canais
+• A configuração de reprodução em feeds não está disponível
+• O botão Remix e o botão Som não estão disponíveis no Shorts
+• Shorts abre no player regular
+• A barra de ações de vídeo não está recolhida"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versão do Spoof app</string>
   <string name="morphe_spoof_app_version_summary_on">Versão falsificada</string>
@@ -1569,7 +1575,9 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_custom_playback_speeds_parse_exception">Tốc độ phát lại tùy chỉnh không hợp lệ</string>
   <string name="morphe_custom_playback_speeds_auto">Automático</string>
   <string name="morphe_speed_tap_and_hold_title">Velocidade personalizada ao tocar e segurar</string>
-  <string name="morphe_speed_tap_and_hold_summary">Velocidade de reprodução de 0 a 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Velocidade de reprodução entre 0 e 8
+
+Se 0, tocar e segurar desativa a velocidade"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Lembrar velocidade de reprodução</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">As mudanças de velocidade de reprodução aplicam-se a todos os vídeos</string>

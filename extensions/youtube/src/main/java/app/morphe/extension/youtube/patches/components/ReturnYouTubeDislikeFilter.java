@@ -13,17 +13,18 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.ReturnYouTubeDislikePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 /**
  * Searches for video IDs in the proto buffer of Shorts dislike.
- *
+ * <p>
  * Because multiple litho dislike spans are created in the background
  * (and also anytime litho refreshes the components, which is somewhat arbitrary),
  * that makes the value of {@link VideoInformation#getVideoId()} and {@link VideoInformation#getPlayerResponseVideoId()}
  * unreliable to determine which video ID a Shorts litho span belongs to.
- *
+ * <p>
  * But the correct video ID does appear in the protobuffer just before a Shorts litho span is created.
- *
+ * <p>
  * Once a way to asynchronously update litho text is found, this strategy will no longer be needed.
  */
 public final class ReturnYouTubeDislikeFilter extends Filter {
@@ -85,8 +86,14 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         if (!Settings.RYD_ENABLED.get() || !Settings.RYD_SHORTS.get()) {
             return false;
         }

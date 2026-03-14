@@ -1287,14 +1287,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">الجوّال</string>
   <string name="morphe_change_form_factor_entry_3">الجهاز اللوحي</string>
   <string name="morphe_change_form_factor_entry_4">Automotive</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"التغييرات تشمل:
+  <string name="morphe_change_form_factor_user_dialog_message">"تتضمن التغييرات:
 
 تصميم الجهاز اللوحي
-• مشاركات المجتمع مخفية
+• تم إخفاء مشاركات المجتمع
+• إعداد التشغيل في الموجز غير متوفر
+• زر ريمكس و زر الصوت غير متوفرين في Shorts
+• شريط إجراءات الفيديو غير مطوي
 
 تصميم Automotive
-• يتم فتح Shorts في المشغل العادي
-• يتم تنظيم الموجز حسب المواضيع والقنوات"</string>
+• الموجز مُنظم حسب المواضيع والقنوات
+• إعداد التشغيل في الموجز غير متوفر
+• زر ريمكس و زر الصوت غير متوفرين في Shorts
+• فيديوهات Shorts تفتح في المشغل العادي
+• شريط إجراءات الفيديو غير مطوي"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">إصدار تطبيق وهمي</string>
   <string name="morphe_spoof_app_version_summary_on">تم تغيير اصدار التطبيق</string>
@@ -1569,7 +1575,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">سرعات التشغيل المخصصة غير صالحة</string>
   <string name="morphe_custom_playback_speeds_auto">تلقائي</string>
   <string name="morphe_speed_tap_and_hold_title">سرعة النقر مع الاستمرار المخصصة</string>
-  <string name="morphe_speed_tap_and_hold_summary">سرعة التشغيل بين 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"سرعة التشغيل بين 0-8\n\nإذا كانت 0، يتم تعطيل سرعة النقر مع الاستمرار"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">تذكر تغييرات سرعة التشغيل</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">تطبيق تغييرات سرعة التشغيل على جميع الفيديوهات</string>

@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Tentang</string>
   <string name="morphe_settings_screen_01_ads_title">Iklan</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Thumbnail alternatif</string>
-  <string name="morphe_settings_screen_03_feed_title">Umpan</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Umum</string>
   <string name="morphe_settings_screen_05_player_title">Pemutar</string>
   <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
@@ -222,10 +222,10 @@ Perubahan termasuk:
   <string name="morphe_hide_featured_videos_section_title">Sembunyikan video Unggulan</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Bagian video unggulan disembunyikan</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Bagian video unggulan ditampilkan</string>
-  <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu umpan flyout</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_on">Penyaring menu umpan flyout diaktifkan</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_off">Penyaring menu umpan flyout dinonaktifkan</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu umpan flyout</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu feed flyout</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Penyaring menu feed flyout diaktifkan</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Penyaring menu feed flyout dinonaktifkan</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu feed flyout</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Masukkan nama menu flyout untuk disaring, satu per baris</string>
   <string name="morphe_hide_gaming_section_title">Sembunyikan Gaming</string>
   <string name="morphe_hide_gaming_section_summary_on">Bagian Gaming disembunyikan</string>
@@ -257,10 +257,10 @@ Perubahan termasuk:
   <string name="morphe_hide_description_components_screen_title">Keterangan video</string>
   <string name="morphe_hide_description_components_screen_summary">Sembunyikan atau tampilkan komponen keterangan video</string>
   <string name="morphe_hide_filter_bar_screen_title">Bilah saring</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Sembunyikan atau tampilkan bilah penyaring di umpan, video terkait, hasil pencarian, dan riwayat tontonan</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Sembunyikan di umpan</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">Disembunyikan di umpan</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">Ditampilkan di umpan</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Sembunyikan atau tampilkan bilah penyaring di feeds, video terkait, hasil pencarian, dan riwayat tontonan</string>
+  <string name="morphe_hide_filter_bar_feed_in_feed_title">Sembunyikan di feeds</string>
+  <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">Disembunyikan di feeds</string>
+  <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">Ditampilkan di feeds</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Sembunyikan di video terkait</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_on">Disembunyikan di video terkait</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_off">Ditampilkan di video terkait</string>
@@ -316,9 +316,9 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_section_title">Sembunyikan bagian komentar</string>
   <string name="morphe_hide_comments_section_summary_on">Bagian komentar disembunyikan</string>
   <string name="morphe_hide_comments_section_summary_off">Bagian komentar ditampilkan</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Sembunyikan bagian komentar di umpan Beranda</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Bagian komentar di bawah video di umpan Beranda disembunyikan</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Bagian komentar di bawah video di umpan Beranda ditampilkan</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Sembunyikan bagian komentar di feed Beranda</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Bagian komentar di bawah video di feed Beranda disembunyikan</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Bagian komentar di bawah video di feed Beranda ditampilkan</string>
   <string name="morphe_hide_comments_community_guidelines_title">Sembunyikan pedoman komunitas</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Pedoman komunitas disembunyikan</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Pedoman komunitas ditampilkan</string>
@@ -347,15 +347,15 @@ Perubahan termasuk:
   <string name="morphe_custom_filter_strings_summary">Daftar untaian pembuat jalur komponen untuk disaring dipisahkan oleh baris baru</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Penyaring khusus tidak sah: %s</string>
   <string name="morphe_hide_view_count_title">Sembunyikan jumlah penayangan</string>
-  <string name="morphe_hide_view_count_summary_on">Jumlah penayangan disembunyikan di umpan dan hasil pencarian</string>
-  <string name="morphe_hide_view_count_summary_off">Jumlah penayangan ditampilkan di umpan dan hasil pencarian</string>
+  <string name="morphe_hide_view_count_summary_on">Jumlah penayangan disembunyikan di feed dan hasil pencarian</string>
+  <string name="morphe_hide_view_count_summary_off">Jumlah penayangan ditampilkan di feed dan hasil pencarian</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_view_count_user_dialog_message">"Batasan:
 • Rak Shorts, halaman saluran, dan hasil pencarian mungkin masih menampilkan jumlah penayangan.
 • Fitur ini tidak berfungsi dengan faktor bentuk otomotif."</string>
   <string name="morphe_hide_upload_time_title">Sembunyikan waktu unggah</string>
-  <string name="morphe_hide_upload_time_summary_on">Waktu unggah disembunyikan di umpan dan hasil pencarian</string>
-  <string name="morphe_hide_upload_time_summary_off">Waktu unggah ditampilkan di umpan dan hasil pencarian</string>
+  <string name="morphe_hide_upload_time_summary_on">Waktu unggah disembunyikan di feed dan hasil pencarian</string>
+  <string name="morphe_hide_upload_time_summary_off">Waktu unggah ditampilkan di feed dan hasil pencarian</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Batasan:
 • Rak Shorts, halaman saluran, dan hasil pencarian mungkin masih menampilkan waktu unggah.
@@ -499,9 +499,9 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_swipe_press_to_engage_title">Aktifkan tekan untuk gerakan geser</string>
   <string name="morphe_swipe_press_to_engage_summary_on">Tekan untuk menggeser diaktifkan</string>
   <string name="morphe_swipe_press_to_engage_summary_off">Tekan untuk menggeser dinonaktifkan</string>
-  <string name="morphe_swipe_haptic_feedback_title">Aktifkan umpan balik sentuhan</string>
-  <string name="morphe_swipe_haptic_feedback_summary_on">Umpan balik sentuhan diaktifkan</string>
-  <string name="morphe_swipe_haptic_feedback_summary_off">Umpan balik sentuhan dinonaktifkan</string>
+  <string name="morphe_swipe_haptic_feedback_title">Aktifkan umpan balik getar</string>
+  <string name="morphe_swipe_haptic_feedback_summary_on">Umpan balik getar diaktifkan</string>
+  <string name="morphe_swipe_haptic_feedback_summary_off">Umpan balik getar dinonaktifkan</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan pulihkan kecerahan</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_on">Simpan dan pulihkan kecerahan saat keluar atau memasuki layar penuh</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary_off">Jangan simpan dan pulihkan kecerahan saat keluar atau memasuki layar penuh</string>
@@ -858,16 +858,16 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_shorts_channel_summary_on">Disembunyikan di halaman saluran</string>
   <string name="morphe_hide_shorts_channel_summary_off">Ditampilkan di halaman saluran</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_home_title">Sembunyikan Shorts di umpan Beranda</string>
-  <string name="morphe_hide_shorts_home_summary_on">Disembunyikan di umpan Beranda dan video terkait</string>
-  <string name="morphe_hide_shorts_home_summary_off">Ditampilkan di umpan Beranda dan video terkait</string>
+  <string name="morphe_hide_shorts_home_title">Sembunyikan Shorts di feed Beranda</string>
+  <string name="morphe_hide_shorts_home_summary_on">Disembunyikan di feed Beranda dan video terkait</string>
+  <string name="morphe_hide_shorts_home_summary_off">Ditampilkan di feed Beranda dan video terkait</string>
   <string name="morphe_hide_shorts_search_title">Sembunyikan Shorts di hasil pencarian</string>
   <string name="morphe_hide_shorts_search_summary_on">Disembunyikan dalam hasil pencarian</string>
   <string name="morphe_hide_shorts_search_summary_off">Ditampilkan dalam hasil pencarian</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_subscriptions_title">Sembunyikan Shorts di umpan Langganan</string>
-  <string name="morphe_hide_shorts_subscriptions_summary_on">Disembunyikan di umpan Langganan</string>
-  <string name="morphe_hide_shorts_subscriptions_summary_off">Ditampilkan di umpan Langganan</string>
+  <string name="morphe_hide_shorts_subscriptions_title">Sembunyikan Shorts di feed Langganan</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_on">Disembunyikan di feed Langganan</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_off">Ditampilkan di feed Langganan</string>
   <string name="morphe_hide_shorts_video_description_title">Sembunyikan Shorts di deskripsi video</string>
   <string name="morphe_hide_shorts_video_description_summary_on">Disembunyikan di deskripsi video</string>
   <string name="morphe_hide_shorts_video_description_summary_off">Ditampilkan di deskripsi video</string>
@@ -1288,12 +1288,18 @@ Siap mengirim?"</string>
   <string name="morphe_change_form_factor_entry_4">Otomotif</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Perubahan meliputi:
 
-Tata letak tablet
+Tata letak Tablet
 • Postingan komunitas disembunyikan
+• Pengaturan pemutaran di feed tidak tersedia
+• Tombol Remix dan tombol Suara tidak tersedia di Shorts
+• Bilah tindakan video tidak diciutkan
 
-Tata letak otomotif
-• Shorts dibuka di pemutar biasa
-• Umpan diatur berdasarkan topik dan channel"</string>
+Tata letak Otomotif
+• Feed diatur berdasarkan topik dan saluran
+• Pengaturan pemutaran di feed tidak tersedia
+• Tombol Remix dan tombol Suara tidak tersedia di Shorts
+• Shorts terbuka di pemutar reguler
+• Bilah tindakan video tidak diciutkan"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Palsukan versi app</string>
   <string name="morphe_spoof_app_version_summary_on">Versi dipalsukan</string>
@@ -1568,7 +1574,9 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Kecepatan pemutaran khusus tidak sah</string>
   <string name="morphe_custom_playback_speeds_auto">Otomatis</string>
   <string name="morphe_speed_tap_and_hold_title">Kecepatan ketuk dan tahan khusus</string>
-  <string name="morphe_speed_tap_and_hold_summary">Kecepatan pemutaran antara 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Kecepatan pemutaran antara 0-8
+
+Jika 0, ketuk dan tahan kecepatan dinonaktifkan"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Ingat perubahan kecepatan pemutaran</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Perubahan kecepatan pemutaran berlaku untuk semua video</string>

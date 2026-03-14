@@ -117,7 +117,7 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_summary_on">Використовується оригінальна мова звукової доріжки</string>
   <string name="morphe_force_original_audio_summary_off">Використовується звукова доріжка за замовчуванням</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Щоб використовувати цю функцію, змініть клієнт \"Підміни відеопотоків\" на будь-який клієнт, окрім Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Щоб використати цю функцію, змініть \"Підміна відео потоків\" на Android Reel або TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очищення посилань для поширення</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Параметри запиту відстеження вилучаються з поширених посилань</string>

@@ -3,6 +3,7 @@
 package app.morphe.patches.youtube.misc.playservice
 
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.youtube.misc.contexthook.ClientFormFactorEnumOrdinalFingerprint
 import kotlin.properties.Delegates
 
 // Use notNull delegate so an exception is thrown if these fields are accessed before they are set.
@@ -133,6 +134,8 @@ var is_21_08_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_10_or_greater : Boolean by Delegates.notNull()
     private set
+var is_21_11_or_greater : Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = bytecodePatch {
     execute {
@@ -193,5 +196,6 @@ val versionCheckPatch = bytecodePatch {
         is_21_07_or_greater = isEqualsOrGreaterThan("21.07.000")
         is_21_08_or_greater = isEqualsOrGreaterThan("21.08.000")
         is_21_10_or_greater = isEqualsOrGreaterThan("21.10.000")
+        is_21_11_or_greater = isEqualsOrGreaterThan("21.11.000")
     }
 }

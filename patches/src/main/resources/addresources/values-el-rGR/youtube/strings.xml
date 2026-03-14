@@ -1290,12 +1290,18 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Αυτοκίνητο</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Οι αλλαγές περιλαμβάνουν:
 
-Διάταξη tablet
-• Οι δημοσιεύσεις κοινότητας δεν εμφανίζονται
+Διάταξη Tablet
+• Τα δημοσιεύματα της κοινότητας είναι κρυφά
+• Η ρύθμιση αναπαραγωγής σε ροές δεν είναι διαθέσιμη
+• Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
+• Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει
 
-Διάταξη αυτοκινήτου
-• Τα Shorts ανοίγουν στην κανονική οθόνη αναπαραγωγής
-• Η ροή οργανώνεται ανά θέματα και κανάλια"</string>
+Διάταξη Automotive
+• Η ροή είναι οργανωμένη ανά θέματα και κανάλια
+• Η ρύθμιση αναπαραγωγής σε ροές δεν είναι διαθέσιμη
+• Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
+• Τα Shorts ανοίγουν στον κανονικό αναπαραγωγέ
+• Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary_on">Η έκδοση παραποιείται</string>
@@ -1568,7 +1574,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Μη έγκυρες προσαρμοσμένες ταχύτητες αναπαραγωγής</string>
   <string name="morphe_custom_playback_speeds_auto">Αυτόματη</string>
   <string name="morphe_speed_tap_and_hold_title">Προσαρμοσμένη ταχύτητα παρατεταμένου πατήματος</string>
-  <string name="morphe_speed_tap_and_hold_summary">Ταχύτητα αναπαραγωγής μεταξύ 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Ταχύτητα αναπαραγωγής μεταξύ 0-8
+
+Εάν 0, απενεργοποιείται η ταχύτητα πατήματος και συγκράτησης"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Απομνημόνευση αλλαγών ταχύτητας αναπαραγωγής</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Οι αλλαγές ταχύτητας αναπαραγωγής ισχύουν για όλα τα βίντεο</string>

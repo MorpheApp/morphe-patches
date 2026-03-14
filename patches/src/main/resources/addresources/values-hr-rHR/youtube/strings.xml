@@ -181,6 +181,7 @@ Promjene uključuju:
   <string name="morphe_hide_quick_actions_title">Sakrij brze radnje</string>
   <string name="morphe_hide_quick_actions_summary_on">Brze radnje na cijelom zaslonu su skrivene</string>
   <string name="morphe_hide_quick_actions_summary_off">Brze radnje na cijelom zaslonu su prikazane</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Sakrij videozapise povezane s brzim radnjama</string>
   <string name="morphe_hide_quick_actions_related_videos_summary_on">Povezani videozapisi u brzim radnjama su skriveni</string>
   <string name="morphe_hide_quick_actions_related_videos_summary_off">Povezani videozapisi u brzim radnjama su prikazani</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sakrij smjernice za pretplatnike</string>
@@ -337,6 +338,9 @@ Promjene uključuju:
   <string name="morphe_hide_comments_thanks_button_title">Sakrij dugme za pretraživanje</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Dugme za pretraživanje je skriven</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Dugme za pretraživanje je prikazan</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Sanitiziraj traku kategorije</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Tipke osim \'Najbolje\' i \'Najnovije\' skriveni su u traci kategorija komentara</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Tipke kategorija prikazani su u traci kategorija komentara</string>
   <string name="morphe_custom_filter_screen_title">Kustom filtar</string>
   <string name="morphe_custom_filter_screen_summary">Skriva ili prikazi komponente koristeći kustom filtre</string>
   <string name="morphe_custom_filter_title">Omogu filtar</string>
@@ -542,6 +546,9 @@ Prilagodite zvuk pretraživanjem vertikalno na desnoj strani zaslona"</string>
   <string name="morphe_disable_like_subscribe_glow_title">Onemogu ili prikaže dugmice ispod videozapisa</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Onemogu otprezanje na Like i Subscribe dugmice</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Like i Subscribe dugmice će se svijetati kada se spominju</string>
+  <string name="morphe_hide_action_bar_title">Sakrij traku radnji</string>
+  <string name="morphe_hide_action_bar_summary_on">Traka radnji je skrivena</string>
+  <string name="morphe_hide_action_bar_summary_off">Traka radnji je prikazana</string>
   <string name="morphe_hide_like_dislike_button_title">Sakri Like i Dislike dugmice</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Like i Dislike dugmice su skrivena</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Like i Dislike dugmice su prikazane</string>
@@ -654,15 +661,30 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_hide_notifications_button_title">Sakrij Notifications</string>
   <string name="morphe_hide_notifications_button_summary_on">Tipka za obavijesti je skrivena</string>
   <string name="morphe_hide_notifications_button_summary_off">Tipka za obavijesti je prikazana</string>
+  <string name="morphe_show_search_button_title">Prikaži pretraživanje</string>
   <string name="morphe_show_search_button_summary_on">Tipka za pretraživanje je prikazana</string>
   <string name="morphe_show_search_button_summary_off">Tipka za pretraživanje nije prikazana</string>
   <string name="morphe_search_button_index_title">Indeks tipke za pretraživanje</string>
   <string name="morphe_search_button_index_invalid">Indeks tipke za pretraživanje mora biti manji od %s</string>
+  <string name="morphe_show_settings_button_title">Prikaži postavke</string>
+  <string name="morphe_show_settings_button_summary_on">Tipka postavki je prikazana</string>
+  <string name="morphe_show_settings_button_summary_off">Tipka postavki  nije prikazana</string>
+  <string name="morphe_settings_button_index_title">Indeks tipke postavki </string>
+  <string name="morphe_settings_button_index_invalid">Indeks tipke postavki mora biti manji od %s</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamijeni Stvori s Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Dugme Stvori je zamijenjeno s dugmom Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Dugme Stvori nije zamijenjeno s dugmom Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Ako promjena ovog postavke ne učinuje se, pokušajte preći u Incognito način.</string>
   <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake navigacijskih tipki</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Oznake navigacijskih tipki su skrivene</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Oznake navigacijskih tipki su prikazane</string>
+  <string name="morphe_hide_navigation_bar_title">Sakrij navigacijsku traku</string>
+  <string name="morphe_hide_navigation_bar_summary_on">Navigacijska traka je skrivena</string>
+  <string name="morphe_hide_navigation_bar_summary_off">Navigacijska traka je prikazana</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ovo u potpunosti skriva navigacijsku traku, uključujući karticu Vi.
+
+Za pristup Postavkama:
+Otvorite bilo koji videozapis → Otvorite izbornik Kvaliteta → Dodirnite 'Postavke &gt; Postavke kvalitete videozapisa' pri dnu."</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske tipke za navigaciju</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između tipki za navigaciju je uska</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između tipki za navigaciju je normalan</string>
@@ -683,12 +705,30 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tamna moda navigacijska traka ili opaka</string>
   <string name="morphe_toolbar_screen_title">Traka</string>
   <string name="morphe_toolbar_screen_summary">Sakrij ili promijeni komponente trake</string>
+  <string name="morphe_hide_toolbar_create_button_title">Sakrij Izradi</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tipka \'Stvori\' je sakrivena</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tipka \'Stvori\' je prikazana</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Sakrij Mikrofon</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Tipka  mikrofon je skrivena</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Tipka  mikrofon je prikazana</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Sakrij Obavijesti</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Tipka \'Obavijesti\' je sakrivena</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Tipka \'Obavijesti\' je prikazana</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sakrij Pretraži</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tipka za pretraživanje je skrivena</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Tipka za pretraživanje je prikazana</string>
+  <string name="morphe_replace_toolbar_create_button_title">Zamijeni Izradi s Postavkama</string>
+  <string name="morphe_replace_toolbar_create_button_summary_on">Tipka Izradi zamijenjena je tipkom Postavke</string>
+  <string name="morphe_replace_toolbar_create_button_summary_off">Tipka Izradi nije zamijenjena tipkom Postavke</string>
+  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Ponašanje klika na tipku Postavke na kartici Vi također je poništeno.</string>
+  <string name="morphe_replace_toolbar_create_button_type_title">Radnja tipke Postavke</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Dodirnite za otvaranje postavki Morphea
+Dodirnite i držite za otvaranje postavki YouTubea"</string>
+  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Dodirnite za otvaranje postavki YouTubea
+Dodirnite i držite za otvaranje postavki Morphea"</string>
+  <string name="morphe_rearrange_toolbar_buttons_title">Preuredite zamijenjene tipke</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_on">Tipke su preuređene</string>
+  <string name="morphe_rearrange_toolbar_buttons_summary_off">Tipke nisu preuređene</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
   <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži stavke flyout menija</string>
@@ -954,6 +994,8 @@ To možete promijeniti na YouTubeu:
 Postavke → Reprodukcija (ili Automatska reprodukcija) → Automatska reprodukcija sljedećeg videa"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">Sakrij povezane videozapise</string>
+  <string name="morphe_hide_player_related_videos_summary_on">Povezani videozapisi su skriveni</string>
+  <string name="morphe_hide_player_related_videos_summary_off">Povezani videozapisi su prikazani</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_player_related_videos_overlay_title">Sakrij dugmice za povezane video</string>
   <string name="morphe_hide_player_related_videos_overlay_summary_on">Dugmice za povezane video su skrivena</string>
@@ -1248,14 +1290,6 @@ Gotovo je li spreman za slanje?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Promjene uključuju:
-
-Format za tablete
-• Komentari su sakriveni
-
-Format za automobile
-• Shortovi se otvaraju u redovnom pregledu
-• Feed je organiziran po temama i kanaliima"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Imitiraj verziju aplikacije</string>
   <string name="morphe_spoof_app_version_summary_on">Verzija je imitirana</string>
@@ -1530,7 +1564,6 @@ Omogućava se otključivanje viših video kvaliteta"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Invalid custom playback speeds</string>
   <string name="morphe_custom_playback_speeds_auto">Automatski</string>
   <string name="morphe_speed_tap_and_hold_title">Custom tap and hold speed</string>
-  <string name="morphe_speed_tap_and_hold_summary">Brzina pregleda između 0-8</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapamti promjene brzine pregleda</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Promjene brzine pregleda primjenjuju se na sva video</string>

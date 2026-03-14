@@ -1285,12 +1285,18 @@ Ești gata să trimiți?"</string>
   <string name="morphe_change_form_factor_entry_4">Automatizări</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Modificările includ:
 
-Aspect tabletă
+Aspectul pentru tabletă
 • Postările comunității sunt ascunse
+• Setarea Redare în fluxuri nu este disponibilă
+• Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
+• Bara de acțiuni video nu este pliată
 
-Aspect auto
-• Shorts se deschid în playerul obișnuit
-• Fluxul este organizat pe teme și canale"</string>
+Aspectul pentru Automotive
+• Fluxul este organizat pe teme și canale
+• Setarea Redare în fluxuri nu este disponibilă
+• Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
+• Shorts se deschid în playerul normal
+• Bara de acțiuni video nu este pliată"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary_on">Versiune falsificată</string>
@@ -1565,7 +1571,9 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Viteze de redare personalizate nevalide</string>
   <string name="morphe_custom_playback_speeds_auto">Automat</string>
   <string name="morphe_speed_tap_and_hold_title">Viteză personalizată de apăsare și menținere</string>
-  <string name="morphe_speed_tap_and_hold_summary">Viteză de redare între 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Viteză de redare între 0-8
+
+Dacă 0, atingerea lungă pentru a activa viteza este dezactivată"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Memorează schimbările vitezei de redare</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Schimbarea vitezei de redare se aplică tuturor videoclipurilor</string>

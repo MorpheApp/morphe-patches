@@ -70,6 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Boja miniplayera odgovara boji playera preko cijelog zaslona</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer koristi zadanu boju</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Omogući prisilni miniplayer</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer ostaje minimiziran kada se reprodukcija promijeni</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer se proširuje na cijeli zaslon kada se reprodukcija promijeni</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Traka navigacije</string>
   <string name="morphe_music_navigation_bar_screen_summary">Sakrijte ili promijenite tipke na navigacijskoj traci</string>

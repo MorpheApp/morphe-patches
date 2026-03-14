@@ -95,12 +95,12 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">プレーヤー JavaScript の更新を無効にする</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"プレーヤー JavaScript の更新が無効になっています。
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">JavaScript 版プレーヤーの更新を無効化</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"JavaScript 版プレーヤーの更新が無効になっています
 
-• 有効なプレーヤー JavaScript ハッシュが必要です
-• プレーヤー JavaScript ハッシュが GVS 側で無効にされた場合、再生に失敗します"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">プレーヤー JavaScript の更新が有効になっています</string>
+• 有効な「JavaScript 版プレーヤーのハッシュ」を設定する必要がある
+• 設定した「JavaScript 版プレーヤーのハッシュ」が GVS 側で無効にされた場合、再生に失敗する"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript 版プレーヤーの更新が有効になっています</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript 版プレーヤーのハッシュはおよそ1ヶ月間有効です。古くなったハッシュは GVS 側で無効にされる可能性があります。</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">JavaScript 版プレーヤーのハッシュ</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">有効な「JavaScript 版プレーヤーのハッシュ」を入力します</string>
@@ -117,7 +117,7 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
   <string name="morphe_force_original_audio_summary_on">オリジナルの音声トラック (言語) を使用します\n\nオートダビングを含む吹き替えの音声トラックは使用されません</string>
   <string name="morphe_force_original_audio_summary_off">アプリが選択した音声トラック (言語) を使用します\n\nオートダビングを含む吹き替えの音声トラックが使用される場合があります</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを Android Studio 以外の任意のクライアントに変更してください</string>
+  <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを Android Reel または TV に変更してください</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
   <string name="morphe_sanitize_sharing_links_summary_on">共有リンクから追跡パラメータが削除されます</string>

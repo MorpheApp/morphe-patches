@@ -1288,14 +1288,20 @@ Prêt à le soumettre ?"</string>
   <string name="morphe_change_form_factor_entry_2">Téléphone</string>
   <string name="morphe_change_form_factor_entry_3">Tablette</string>
   <string name="morphe_change_form_factor_entry_4">Automobile</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Les changements incluent :
+  <string name="morphe_change_form_factor_user_dialog_message">"Les changements incluent :
 
 Mise en page Tablette
-• Les 'Posts communautaires' sont masqués
+• Les posts communautaires sont masquées
+• Le lecture dans les paramètres de flux n'est pas disponible
+• Le bouton 'Remix' et le bouton 'Son' ne sont pas disponibles dans les Shorts
+• La barre d’actions de la vidéo n’est pas réduite
 
 Mise en page Automobile
+• Le flux est organisé par sujets et par chaînes
+• Le lecture dans les paramètres de flux n'est pas disponible
+• Le bouton 'Remix' et le bouton 'Son' ne sont pas disponibles dans les Shorts
 • Les Shorts s'ouvrent dans le lecteur normal
-• Le flux est organisé par sujets et chaînes"</string>
+• La barre d’actions de la vidéo n’est pas réduite"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifier la version de l\'application</string>
   <string name="morphe_spoof_app_version_summary_on">Version falsifiée</string>
@@ -1572,7 +1578,9 @@ L’activation de cette option peut débloquer des qualités vidéo plus élevé
   <string name="morphe_custom_playback_speeds_parse_exception">Vitesses de lecture personnalisées invalides</string>
   <string name="morphe_custom_playback_speeds_auto">Automatique</string>
   <string name="morphe_speed_tap_and_hold_title">Vitesse personnalisée pour l’appui long</string>
-  <string name="morphe_speed_tap_and_hold_summary">Vitesse de lecture comprise entre 0 et 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Vitesses de lecture entre 0 et 8
+
+Si 0, la vitesse par appui long est désactivée."</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Enregistrer la modification de vitesse de lecture</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">La modification de vitesse de lecture est appliqué pour toutes les vidéos</string>

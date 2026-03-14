@@ -1278,13 +1278,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">Телефон</string>
   <string name="morphe_change_form_factor_entry_3">Таблет</string>
   <string name="morphe_change_form_factor_entry_4">Автомобилна</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Промени: 
+  <string name="morphe_change_form_factor_user_dialog_message">"Промените включват:
 
-Таблетни постове са скрити
+Начален вид на таблет:
+• Публикации от общността са скрити
+• Настройката за възпроизвеждане в каналите не е налична
+• Бутонът за ремикс и бутонът за звук не са налични в Shorts
+• Видео лентата с действия не е сгъната
 
-Автомобилна лайаут: 
-• Видеосите в обикновеният плеър
-• Организирани са по теми и канали"</string>
+Начален вид за автомобил:
+• Каналът е организиран по теми и канали
+• Настройката за възпроизвеждане в каналите не е налична
+• Бутонът за ремикс и бутонът за звук не са налични в Shorts
+• Shorts се отварят в стандартния плейър
+• Видео лентата с действия не е сгъната"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Фалшира версия на приложението</string>
   <string name="morphe_spoof_app_version_summary_on">Версията е фалшира</string>
@@ -1555,7 +1562,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Влачене и пускане е изключено</string>
   <string name="morphe_custom_playback_speeds_auto">Auto</string>
   <string name="morphe_speed_tap_and_hold_title">Изключете хоризонтално влачене движение</string>
-  <string name="morphe_speed_tap_and_hold_summary">Хоризонтално влачене движение е изключено</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Скорост на възпроизвеждане между 0-8
+
+Ако 0, докосване и задържане на скоростта е забранено"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запомнете промените в скоростта на възпроизвеждане</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Скрийте бутоните за надграждане</string>
