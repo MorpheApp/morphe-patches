@@ -72,9 +72,29 @@ val snackbarPatch = bytecodePatch(
             )
         )
 
-        BottomUIContainerPreFingerprint.method.addInstruction(
-            0, "invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onLithoSnackbarPrepare()V"
-        )
+        BottomUIContainerPreFingerprint.method.apply {
+            val instructions = implementation!!.instructions.toList()
+            var insertIndex = -1
+
+            for (i in 0 until instructions.size - 2) {
+                if (instructions[i].opcode == Opcode.IF_NEZ &&
+                    instructions[i + 1].opcode == Opcode.INVOKE_VIRTUAL &&
+                    instructions[i + 2].opcode == Opcode.RETURN_VOID) {
+
+                    insertIndex = i + 1
+                    break
+                }
+            }
+
+            if (insertIndex != -1) {
+                addInstruction(
+                    insertIndex,
+                    "invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onLithoSnackbarPrepare()V"
+                )
+            } else {
+                throw IllegalStateException("Failed to find the Litho Snackbar insertion point in BottomUiContainer")
+            }
+        }
 
         LithoSnackbarFingerprint.method.apply {
             val backGroundColorIndex = findInstructionIndicesReversedOrThrow {

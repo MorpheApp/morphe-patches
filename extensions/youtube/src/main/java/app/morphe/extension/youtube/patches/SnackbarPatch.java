@@ -1,8 +1,3 @@
-/*
- * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
- */
-
 package app.morphe.extension.youtube.patches;
 
 import android.graphics.Color;
@@ -10,13 +5,13 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -25,8 +20,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class SnackbarPatch {
 
-    public static final AtomicBoolean PREPARING_LITHO_SNACKBAR = new AtomicBoolean(false);
-    public static final AtomicInteger LITHO_INTERCEPT_COUNT = new AtomicInteger(0);
+    public static final AtomicBoolean LITHO_SNACKBAR_ACTIVE = new AtomicBoolean(false);
 
     private static final int YT_BLACK_TEXT = 0xFF0F0F0F;
     private static final int YT_WHITE_TEXT = 0xFFF1F1F1;
@@ -37,8 +31,7 @@ public class SnackbarPatch {
 
     public static void onLithoSnackbarPrepare() {
         if (Settings.CUSTOM_SNACKBAR_THEME.get()) {
-            PREPARING_LITHO_SNACKBAR.set(true);
-            LITHO_INTERCEPT_COUNT.set(3);
+            LITHO_SNACKBAR_ACTIVE.set(true);
         }
     }
 
@@ -48,9 +41,6 @@ public class SnackbarPatch {
         }
     }
 
-    /**
-     * Injection point.
-     */
     public static void handleLegacySnackbar(View view) {
         if (Settings.HIDE_SNACKBAR.get()) {
             Utils.hideViewByLayoutParams(view);
@@ -74,8 +64,7 @@ public class SnackbarPatch {
     }
 
     public static void setLithoSnackBarBackgroundColor(FrameLayout frameLayout, int originalColor) {
-        PREPARING_LITHO_SNACKBAR.set(false);
-        LITHO_INTERCEPT_COUNT.set(0);
+        LITHO_SNACKBAR_ACTIVE.set(false);
 
         if (!Settings.CUSTOM_SNACKBAR_THEME.get()) {
             frameLayout.setBackgroundColor(originalColor);
@@ -84,9 +73,6 @@ public class SnackbarPatch {
         applyCustomThemeToView(frameLayout);
     }
 
-    /**
-     * Applies to both Litho FrameLayouts and Legacy ViewGroups.
-     */
     private static void applyCustomThemeToView(View view) {
         try {
             GradientDrawable drawable = new GradientDrawable();
@@ -113,7 +99,7 @@ public class SnackbarPatch {
             view.setBackground(drawable);
 
             if (!(view instanceof FrameLayout)) {
-                applyTextColorToTextViews(view, getCalculatedTextColor(backgroundColor), true);
+                applyTextColorToTextViews(view, getCalculatedTextColor(backgroundColor), 0);
             }
 
         } catch (Exception e) {
@@ -121,19 +107,16 @@ public class SnackbarPatch {
         }
     }
 
-    /**
-     * Recursively searches legacy layouts to paint the TextViews AND strip nested backgrounds.
-     */
-    private static void applyTextColorToTextViews(View view, int textColor, boolean isRoot) {
-        if (!isRoot && view.getBackground() != null) {
-            view.setBackgroundColor(Color.TRANSPARENT);
-        }
+    private static void applyTextColorToTextViews(View view, int textColor, int depth) {
+        if (depth > 5) return;
 
         if (view instanceof TextView) {
-            ((TextView) view).setTextColor(textColor);
+            if (!(view instanceof Button)) {
+                ((TextView) view).setTextColor(textColor);
+            }
         } else if (view instanceof ViewGroup group) {
             for (int i = 0; i < group.getChildCount(); i++) {
-                applyTextColorToTextViews(group.getChildAt(i), textColor, false);
+                applyTextColorToTextViews(group.getChildAt(i), textColor, depth + 1);
             }
         }
     }
@@ -150,20 +133,15 @@ public class SnackbarPatch {
         return luminance > 0.5 ? Color.BLACK : Color.WHITE;
     }
 
-    /**
-     * Intercepts Litho text colors across thread boundaries.
-     */
     public static int getLithoColor(int originalColor) {
-        if (Settings.CUSTOM_SNACKBAR_THEME.get() && PREPARING_LITHO_SNACKBAR.get() && LITHO_INTERCEPT_COUNT.get() > 0) {
-            boolean isDark = Utils.isDarkModeEnabled();
+        if (!Settings.CUSTOM_SNACKBAR_THEME.get()) return originalColor;
 
-            int expectedTextColor = isDark ? YT_WHITE_TEXT : YT_BLACK_TEXT;
-            int expectedBgColor = isDark ? YT_BLACK_TEXT : YT_WHITE_TEXT;
+        boolean isDark = Utils.isDarkModeEnabled();
+        int expectedTextColor = isDark ? YT_WHITE_TEXT : YT_BLACK_TEXT;
+        int expectedBgColor = isDark ? YT_BLACK_TEXT : YT_WHITE_TEXT;
 
-            if (originalColor == expectedTextColor || originalColor == expectedBgColor) {
-                if (LITHO_INTERCEPT_COUNT.decrementAndGet() <= 0) {
-                    PREPARING_LITHO_SNACKBAR.set(false);
-                }
+        if (originalColor == expectedTextColor || originalColor == expectedBgColor) {
+            if (LITHO_SNACKBAR_ACTIVE.compareAndSet(true, false)) {
 
                 if (originalColor == expectedTextColor) {
                     String customColorString = isDark ? Settings.CUSTOM_SNACKBAR_COLOR_DARK.get() : Settings.CUSTOM_SNACKBAR_COLOR_LIGHT.get();
