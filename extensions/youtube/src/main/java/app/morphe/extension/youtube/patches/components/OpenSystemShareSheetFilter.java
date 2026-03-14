@@ -7,6 +7,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 /**
  * LithoFilter for {@link OpenSystemShareSheetPatch}.
@@ -23,7 +24,8 @@ public final class OpenSystemShareSheetFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier,
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
                        String accessibility,
                        String path,
                        byte[] buffer,

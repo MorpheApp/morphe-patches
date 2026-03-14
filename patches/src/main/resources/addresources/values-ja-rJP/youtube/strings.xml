@@ -1292,10 +1292,16 @@ Second \"item\" text"</string>
 
 タブレット レイアウト
 • コミュニティ投稿が表示されない
+• YouTube 設定に「フィードで再生」が表示されない
+• ショート動画の「リミックス」ボタンと「サウンド」ボタンが利用できない
+• 動画のアクションバーの文字表示が復元される
 
 Automotive レイアウト
-• ショート動画を通常のプレーヤーで開く
-• フィードがトピックやチャンネルごとに分類された形で表示される"</string>
+• フィードがトピックやチャンネルごとに分類された形で表示される
+• YouTube 設定に「フィードで再生」が表示されない
+• ショート動画のリミックスボタンとサウンドボタンが利用できない
+• ショート動画が通常のプレーヤーで再生される
+• 動画のアクションバーの文字表示が復元される"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary_on">アプリのバージョンは偽装されています</string>
@@ -1308,7 +1314,7 @@ Automotive レイアウト
   <string name="morphe_spoof_app_version_target_title">アプリバージョンの偽装先</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 古い「再生リストに保存」を復元</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
-  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - アクション ボタンの文字表示を復元</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画のアクションバーの文字表示を復元</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
   <string name="morphe_open_system_share_sheet_summary_on">システムの共有メニューを開きます</string>
@@ -1564,11 +1570,13 @@ Automotive レイアウト
   <string name="morphe_restore_old_speed_menu_summary_off">新しいスタイルの再生速度メニューが表示されます</string>
   <string name="morphe_custom_playback_speeds_title">カスタム再生速度リスト</string>
   <string name="morphe_custom_playback_speeds_summary">カスタム再生速度リストを編集します</string>
-  <string name="morphe_custom_playback_speeds_invalid">再生速度は %s 未満でなければなりません</string>
+  <string name="morphe_custom_playback_speeds_invalid">再生速度は %s 以下でなければなりません</string>
   <string name="morphe_custom_playback_speeds_parse_exception">カスタム再生速度リストの値が無効です</string>
   <string name="morphe_custom_playback_speeds_auto">自動</string>
   <string name="morphe_speed_tap_and_hold_title">長押し倍速再生の速度</string>
-  <string name="morphe_speed_tap_and_hold_summary">再生速度の範囲は 0-8 で、0 および 8 は含まれません</string>
+  <string name="morphe_speed_tap_and_hold_summary">"再生速度の範囲は 0-8 です
+
+0 に設定すると、長押し倍速再生そのものが無効になります。"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">再生速度の変更を保存</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">再生速度の変更はすべての動画に適用されます</string>

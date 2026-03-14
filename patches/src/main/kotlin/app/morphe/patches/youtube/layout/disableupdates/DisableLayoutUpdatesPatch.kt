@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+
 package app.morphe.patches.youtube.layout.disableupdates
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -8,7 +13,8 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/DisableLayoutUpdatesPatch;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/DisableLayoutUpdatesPatch;"
 
 @Suppress("unused")
 val disableLayoutUpdatesPatch = bytecodePatch(

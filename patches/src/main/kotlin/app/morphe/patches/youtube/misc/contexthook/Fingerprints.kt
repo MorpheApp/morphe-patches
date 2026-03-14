@@ -1,3 +1,8 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ */
+
 package app.morphe.patches.youtube.misc.contexthook
 
 import app.morphe.patcher.Fingerprint
@@ -75,18 +80,21 @@ internal object BuildDummyClientContextBodyFingerprint : Fingerprint(
     )
 )
 
-internal object BrowseEndpointConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    filters = listOf(
-        string(""),
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            definingClass = "this",
-            type = "Ljava/lang/String;",
-            location = MatchAfterImmediately()
-        ),
+internal object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
+        "UNKNOWN_FORM_FACTOR",
+        "SMALL_FORM_FACTOR",
+        "LARGE_FORM_FACTOR",
+        "AUTOMOTIVE_FORM_FACTOR",
+        "WEARABLE_FORM_FACTOR",
     )
+)
+
+internal object ClientFormFactorEnumOrdinalFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("I")
 )
 
 internal object BrowseEndpointParentFingerprint : Fingerprint(
@@ -94,10 +102,38 @@ internal object BrowseEndpointParentFingerprint : Fingerprint(
     strings = listOf("browseId"),
 )
 
+internal object GetWatchEndpointConstructorPrimaryFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    strings = listOf("get_watch"),
+    custom = { _, classDef ->
+        classDef.fields.find { it.type == "Ljava/util/function/Consumer;" } != null
+    }
+)
+
+internal object GetWatchEndpointConstructorSecondaryFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    strings = listOf("get_watch"),
+    custom = { _, classDef ->
+        classDef.fields.find { it.type == "Ljava/util/function/Consumer;" } == null
+    }
+)
+
 internal object GuideEndpointConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     strings = listOf("guide"),
+)
+
+internal object NextEndpointParentFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    strings = listOf("watchNextType"),
+)
+
+internal object PlayerEndpointParentFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    strings = listOf("dataExpiredForSeconds"),
 )
 
 internal object ReelCreateItemsEndpointConstructorFingerprint : Fingerprint(

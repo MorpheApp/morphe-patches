@@ -1286,14 +1286,20 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_change_form_factor_entry_2">Телефон</string>
   <string name="morphe_change_form_factor_entry_3">Таблет</string>
   <string name="morphe_change_form_factor_entry_4">Аутомобилски</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Промене укључују:
+  <string name="morphe_change_form_factor_user_dialog_message">"Измене укључују:
 
-Изглед таблета
-• Објаве заједнице су скривене
+Изглед за таблете
+• Обичаване поруке су скривене
+• Подешавање репродукције у каналима недоступно
+• Дугме за ремикс и дугме за звук нису доступна у Shorts
+• Видео трака акција није савијена
 
-Аутомобилски изглед
-• Shorts видеи се отварају у обичном плејеру
-• Фид је организован по темама и каналима"</string>
+Изглед за аутомобиле
+• Канали су организовани по темама и каналима
+• Подешавање репродукције у каналима недоступно
+• Дугме за ремикс и дугме за звук нису доступна у Shorts
+• Shorts се отварају у редовном плејеру
+• Видео трака акција није савијена"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Лажирана верзија апликације</string>
   <string name="morphe_spoof_app_version_summary_on">Верзија је лажирана</string>
@@ -1568,7 +1574,9 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Неважеће прилагођене брзине репродукције</string>
   <string name="morphe_custom_playback_speeds_auto">Аутоматски</string>
   <string name="morphe_speed_tap_and_hold_title">Прилагођена брзина додиривања и задржавања</string>
-  <string name="morphe_speed_tap_and_hold_summary">Брзина репродукције између 0 и 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Брзина репродукције између 0-8
+
+Ако је 0, додиром и задржавањем је забрањена брзина"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запамти промене брзине репродукције</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Промене брзине репродукције се примењују на све видее</string>

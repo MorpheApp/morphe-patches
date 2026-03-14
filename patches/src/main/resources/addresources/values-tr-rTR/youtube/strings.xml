@@ -598,9 +598,9 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_hide_clip_button_summary_off">Klip düğmesi görünür</string>
   <string name="morphe_hide_clip_button_user_dialog_message">Bu gizleme işlevi bazı kullanıcı hesapları için çalışmayabilir.</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">Ürünlere göz at\'ı gizle</string>
-  <string name="morphe_hide_shop_button_summary_on">Ürünlere göz at düğmesi gizli</string>
-  <string name="morphe_hide_shop_button_summary_off">Ürünlere göz at düğmesi görünür</string>
+  <string name="morphe_hide_shop_button_title">Alışveriş\'i gizle</string>
+  <string name="morphe_hide_shop_button_summary_on">Alışveriş düğmesi gizli</string>
+  <string name="morphe_hide_shop_button_summary_off">Alışveriş düğmesi görünür</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Kaydet\'i gizle</string>
   <string name="morphe_hide_save_button_summary_on">Kaydet düğmesi gizli</string>
@@ -1290,11 +1290,17 @@ Göndermeye hazır mısınız?"</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Değişiklikler şunları içerir:
 
 Tablet düzeni
-• Topluluk yayınları gizlenir
+• Topluluk gönderileri gizlenmiştir
+• Feed'deki oynatma ayarı kullanılamıyor
+• Remix düğmesi ve Ses düğmesi Shorts'ta kullanılamıyor
+• Video hareket çubuğu katlanmıyor
 
 Otomotiv düzeni
-• Shorts, normal oynatıcıda açılır
-• Akış, konulara ve kanallara göre düzenlenir"</string>
+• Feed konulara ve kanallara göre düzenlenmiştir
+• Feed'deki oynatma ayarı kullanılamıyor
+• Remix düğmesi ve Ses düğmesi Shorts'ta kullanılamıyor
+• Shorts normal oynatıcıda açılıyor
+• Video hareket çubuğu katlanmıyor"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
   <string name="morphe_spoof_app_version_summary_on">Sürüm taklit ediliyor</string>
@@ -1569,7 +1575,9 @@ Bunu etkinleştirmek daha yüksek video kalitelerini açabilir"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Geçersiz özel oynatma hızları</string>
   <string name="morphe_custom_playback_speeds_auto">Oto</string>
   <string name="morphe_speed_tap_and_hold_title">Dokunup basılı tutma özel hızı</string>
-  <string name="morphe_speed_tap_and_hold_summary">0-8 arası oynatma hızı</string>
+  <string name="morphe_speed_tap_and_hold_summary">"0-8 arasında oynatma hızı
+
+0 ise, dokunarak ve tutarak hız etkinliği devre dışı bırakılır"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Oynatma hızı değişikliklerini hatırla</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Oynatma hızı değişiklikleri tüm videolara uygulanır</string>

@@ -18,9 +18,9 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Fejléc logó</string>
+  <string name="morphe_header_logo_title">Fejléclogó</string>
   <string name="morphe_header_logo_entry_1">Alapértelmezett</string>
-  <string name="morphe_header_logo_entry_3">Egyéni</string>
+  <string name="morphe_header_logo_entry_3">Egyedi</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>
@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Állandó ismétlés engedélyezve</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Az állandó ismétlés le van tiltva</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Kivetítés gomb elrejtése</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Kivetítés gomb elrejtve</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Kivetítés gomb látható</string>
+  <string name="morphe_music_hide_cast_button_title">Átküldés gomb elrejtése</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Az átküldés gomb elrejtve</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Az átküldés gomb látható</string>
   <string name="morphe_music_hide_history_button_title">Előzmények gomb elrejtése</string>
   <string name="morphe_music_hide_history_button_summary_on">Előzmények gomb elrejtve</string>
   <string name="morphe_music_hide_history_button_summary_off">Az előzmények gomb látható</string>

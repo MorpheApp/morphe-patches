@@ -1,3 +1,40 @@
+# [1.19.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0-dev.2...v1.19.0-dev.3) (2026-03-14)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve "Hide community posts" not working when selecting a channel from subscribed channels bar in Subscriptions tab ([#816](https://github.com/MorpheApp/morphe-patches/issues/816)) ([416d4ea](https://github.com/MorpheApp/morphe-patches/commit/416d4ea2b1c7d545d5c9c6ec1af1ce58a8ff5904))
+* **YouTube - Hide Shorts components:** Resolve "Hide 'Use this sound' button" and "Hide 'Use this template' button" breaking Shorts player ([#830](https://github.com/MorpheApp/morphe-patches/issues/830)) ([ffff45a](https://github.com/MorpheApp/morphe-patches/commit/ffff45a529f788707464eed85b7cc6c2c7e513fb))
+* **YouTube - Video quality:** Initial video quality is not overridden ([#822](https://github.com/MorpheApp/morphe-patches/issues/822)) ([753026a](https://github.com/MorpheApp/morphe-patches/commit/753026a6a11552be34b41d55f5d6c0bc728858c7))
+* **YouTube:** Do not show fullscreen black gradient with 21.03+ experimental app targets ([0202d57](https://github.com/MorpheApp/morphe-patches/commit/0202d57a2cb0af94257f06163f0c8e219346ac95))
+
+# [1.19.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0-dev.1...v1.19.0-dev.2) (2026-03-13)
+
+
+### Bug Fixes
+
+* **Sanitize sharing links:** Sanitize new `is` sharing parameter ([18b1fdb](https://github.com/MorpheApp/morphe-patches/commit/18b1fdb80c76a2fc4510fc53775437f5cbfc8bd9))
+* **YouTube - Change form factor:** Explore button sometimes shows in Automotive layout ([#820](https://github.com/MorpheApp/morphe-patches/issues/820)) ([2980489](https://github.com/MorpheApp/morphe-patches/commit/2980489f3c0e6c95d9fd71c8b094ae9423da2a1b))
+
+
+### Features
+
+* **Reddit:** Add experimental support for `2026.11.0` ([e09ddcb](https://github.com/MorpheApp/morphe-patches/commit/e09ddcb9d4082ccd13d3b131baf91d24cf003942))
+* **YouTube:** Add experimental support for `21.11.480` ([d8ced89](https://github.com/MorpheApp/morphe-patches/commit/d8ced89845969bc09275ae540af82229f67799b3))
+
+# [1.19.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.18.1-dev.2...v1.19.0-dev.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **YouTube - Hide Shorts components:** Resolve "Hide 'Use this sound' button" and "Hide 'Use this template' button" not working ([#815](https://github.com/MorpheApp/morphe-patches/issues/815)) ([9f2a67b](https://github.com/MorpheApp/morphe-patches/commit/9f2a67bd38ac2b8fd038197736f8db0483960c7d))
+
+
+### Features
+
+* **Theme:** Use dynamic system accents for Material You colors ([#693](https://github.com/MorpheApp/morphe-patches/issues/693)) ([1a2e61c](https://github.com/MorpheApp/morphe-patches/commit/1a2e61ce2e64f82adc51f215ed79b8c02cf6b869))
+* **YouTube - Playback speed:** Allows disabling tap and hold speed ([#819](https://github.com/MorpheApp/morphe-patches/issues/819)) ([948a8a1](https://github.com/MorpheApp/morphe-patches/commit/948a8a1c4d29b2d8855225706cb7db9c060d7a18))
+
 ## [1.18.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.18.1-dev.1...v1.18.1-dev.2) (2026-03-11)
 
 

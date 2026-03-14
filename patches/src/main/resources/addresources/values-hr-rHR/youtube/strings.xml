@@ -1290,14 +1290,6 @@ Gotovo je li spreman za slanje?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Promjene uključuju:
-
-Format za tablete
-• Komentari su sakriveni
-
-Format za automobile
-• Shortovi se otvaraju u redovnom pregledu
-• Feed je organiziran po temama i kanaliima"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Imitiraj verziju aplikacije</string>
   <string name="morphe_spoof_app_version_summary_on">Verzija je imitirana</string>
@@ -1572,7 +1564,6 @@ Omogućava se otključivanje viših video kvaliteta"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Invalid custom playback speeds</string>
   <string name="morphe_custom_playback_speeds_auto">Automatski</string>
   <string name="morphe_speed_tap_and_hold_title">Custom tap and hold speed</string>
-  <string name="morphe_speed_tap_and_hold_summary">Brzina pregleda između 0-8</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapamti promjene brzine pregleda</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Promjene brzine pregleda primjenjuju se na sva video</string>

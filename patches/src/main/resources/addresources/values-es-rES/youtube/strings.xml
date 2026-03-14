@@ -1286,14 +1286,20 @@ a
   <string name="morphe_change_form_factor_entry_2">Teléfono</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automóvil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Los cambios incluyen:
+  <string name="morphe_change_form_factor_user_dialog_message">"Cambios incluyen:
 
-Diseño para tablets
+Diseño para tabletas
 • Las publicaciones de la comunidad están ocultas
+• La configuración de reproducción en los feeds no está disponible
+• El botón de Remix y el botón de Sonido no están disponibles en Shorts
+• La barra de acción del video no se contrae
 
 Diseño para automóviles
-• Los Shorts se abren en el reproductor normal
-• El feed está organizado por temas y canales"</string>
+• El feed está organizado por temas y canales
+• La configuración de reproducción en los feeds no está disponible
+• El botón de Remix y el botón de Sonido no están disponibles en Shorts
+• Shorts se abre en el reproductor regular
+• La barra de acción del video no se contrae"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsificar versión de la app</string>
   <string name="morphe_spoof_app_version_summary_on">Versión falsificada</string>
@@ -1536,8 +1542,8 @@ Activar esto puede desbloquear calidades de vídeo más altas"</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Mostrar notificación al cambiar la calidad de vídeo</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_on">Se muestra una notificación cuando se cambia la calidad de vídeo predeterminada</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_off">No se muestra una notificación cuando se cambia la calidad de vídeo predeterminada</string>
-  <string name="morphe_video_quality_default_wifi_title">Calidad de vídeo predeterminada en la red Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Calidad de vídeo predeterminada en la red móvil</string>
+  <string name="morphe_video_quality_default_wifi_title">Calidad predeterminada de vídeo en la red Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Calidad predeterminada de vídeo en la red móvil</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Recordar cambios en la calidad de Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_on">Los cambios de calidad se aplican a todos los Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_off">Los cambios de calidad solo se aplican al Short actual</string>
@@ -1568,7 +1574,9 @@ Activar esto puede desbloquear calidades de vídeo más altas"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Velocidades personalizadas de reproducción no válidas</string>
   <string name="morphe_custom_playback_speeds_auto">Automático</string>
   <string name="morphe_speed_tap_and_hold_title">Velocidad personalizada al mantener pulsado</string>
-  <string name="morphe_speed_tap_and_hold_summary">Velocidad de reproducción entre 0 y 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Velocidad de reproducción entre 0 y 8
+
+Si es 0, tocar y mantener pulsado desactiva la velocidad"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Recordar cambios de velocidad de reproducción</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Los cambios de velocidad de reproducción se aplican a todos los vídeos</string>

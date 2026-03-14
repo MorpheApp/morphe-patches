@@ -800,8 +800,8 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_captions_button_title">Felirat gomb elrejtése</string>
   <string name="morphe_hide_captions_button_summary_on">A feliratok gomb el van rejtve</string>
   <string name="morphe_hide_captions_button_summary_off">A feliratok gomb látható</string>
-  <string name="morphe_hide_cast_button_title">Küldés gomb elrejtése</string>
-  <string name="morphe_hide_cast_button_summary_on">Az átküldés gomb rejtve van</string>
+  <string name="morphe_hide_cast_button_title">Átküldés gomb elrejtése</string>
+  <string name="morphe_hide_cast_button_summary_on">Az átküldés gomb el van rejtve</string>
   <string name="morphe_hide_cast_button_summary_off">Az átküldés gomb látható</string>
   <string name="morphe_hide_collapse_button_title">Elrejtés gomb elrejtése</string>
   <string name="morphe_hide_collapse_button_summary_on">Elrejtés gomb elrejtve</string>
@@ -1285,14 +1285,20 @@ Készen állsz a beküldésre?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Táblagép</string>
   <string name="morphe_change_form_factor_entry_4">Autóipari</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"A változások a következők:
+  <string name="morphe_change_form_factor_user_dialog_message">"A módosítások a következők:
 
-Tablet elrendezés
-• A közösségi bejegyzések rejtve vannak
+Táblagépes elrendezés
+• A közösségi bejegyzések el vannak rejtve
+• A feed-ben történő lejátszás beállítás nem érhető el
+• A Remix gomb és a Hang gomb nem érhető el a Shortsban
+• A videó műveleti sáv nem omlik össze
 
-Autóipari elrendezés
-• A \"Shorts\" a szokásos lejátszóban nyílik meg
-• A hírcsatorna témák és csatornák szerint van rendezve"</string>
+Autóelrendezés
+• A feed témák és csatornák szerint van szervezve
+• A feed-ben történő lejátszás beállítás nem érhető el
+• A Remix gomb és a Hang gomb nem érhető el a Shortsban
+• A Shorts a hagyományos lejátszóban nyílnak meg
+• A videó műveleti sáv nem omlik össze"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
   <string name="morphe_spoof_app_version_summary_on">A verzió hamisítva</string>
@@ -1565,7 +1571,9 @@ Ez a beállítás lehetővé teszi a magasabb videóminőségek feloldását"</s
   <string name="morphe_custom_playback_speeds_parse_exception">Érvénytelen egyéni lejátszási sebességek</string>
   <string name="morphe_custom_playback_speeds_auto">Automatikus</string>
   <string name="morphe_speed_tap_and_hold_title">Egyéni koppintás és tartás sebesség</string>
-  <string name="morphe_speed_tap_and_hold_summary">Lejátszási sebesség 0-8 között</string>
+  <string name="morphe_speed_tap_and_hold_summary">"0-8 közötti visszajátszási sebesség
+
+Ha 0, a koppintásos és tartásos sebesség kikapcsolva"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Lejátszási sebesség módosításainak megjegyzése</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">A lejátszási sebesség módosítása minden videóra érvényes</string>

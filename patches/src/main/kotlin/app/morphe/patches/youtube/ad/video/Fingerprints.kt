@@ -8,3 +8,12 @@ internal object LoadVideoAdsFingerprint : Fingerprint(
         "Ping migration no associated ping bindings for activated trigger: ",
     )
 )
+
+internal object PlayerBytesAdLayoutFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L"),
+    strings = listOf(
+        "Bootstrapped layout construction resulted in non PlayerBytesLayout. PlayerAds count: ",
+    )
+)
+

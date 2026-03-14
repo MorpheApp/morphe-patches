@@ -39,6 +39,7 @@ import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -269,7 +270,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                 )
             ),
-            SwitchPreference("morphe_hide_floating_microphone_button"),
             SwitchPreference(
                 key = "morphe_hide_horizontal_shelves",
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
@@ -295,6 +295,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
         if (is_20_21_or_greater) {
             PreferenceScreen.FEED.addPreferences(
                 SwitchPreference("morphe_hide_you_may_like_section")
+            )
+        }
+
+        if (!is_21_11_or_greater) {
+            PreferenceScreen.FEED.addPreferences(
+                SwitchPreference("morphe_hide_floating_microphone_button")
             )
         }
 
@@ -500,18 +506,22 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide floating microphone
 
-        ShowFloatingMicrophoneButtonFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+        if (!is_21_11_or_greater) {
+            // Code has moved in 21.11+, but it's not clear when/where this
+            // floating microphone can show or if this patch is still relevant.
+            ShowFloatingMicrophoneButtonFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    index + 1,
-                    """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
-                        move-result v$register
-                    """,
-                )
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
+                            move-result v$register
+                        """
+                    )
+                }
             }
         }
 
