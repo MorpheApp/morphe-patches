@@ -7,6 +7,7 @@
  */
 package app.morphe.patches.all.misc.packagename
 
+import app.morphe.patcher.PackageMetadata
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -174,11 +175,11 @@ val changePackageNamePatch = resourcePatch(
             //       may not auto update if GitHub non auth API blocks the user ip.
             try {
                 //noinspection CheckResult
-                ResourcePatchContext::class.java.getDeclaredField("packageMetadata")
-            } catch (e: NoSuchFieldException) {
+                ResourcePatchContext::class.java.getMethod("getPackageMetaData")
+            } catch (e: Exception) {
                 throw RuntimeException(
                     "Your Morphe app is outdated. Please manually update Morphe " +
-                            "by downloading from https://Morphe.software"
+                            "by downloading from https://morphe.software\n\n"
                 )
             }
 
