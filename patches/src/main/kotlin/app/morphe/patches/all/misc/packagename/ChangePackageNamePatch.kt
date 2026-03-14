@@ -175,7 +175,7 @@ val changePackageNamePatch = resourcePatch(
             //       may not auto update if GitHub non auth API blocks the user ip.
             try {
                 //noinspection CheckResult
-                ResourcePatchContext::class.java.getMethod("getPackageMetaData")
+                PackageMetadata::class.java.getDeclaredField("packageName")
             } catch (e: Exception) {
                 throw RuntimeException(
                     "Your Morphe app is outdated. Please manually update Morphe " +
