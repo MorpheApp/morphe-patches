@@ -137,12 +137,20 @@ val snackbarPatch = bytecodePatch(
         ).forEach { fingerprint ->
             runCatching {
                 fingerprint.method.apply {
-                    findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                        addInstruction(
-                            index,
-                            "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->handleLegacySnackbar(Landroid/view/View;)V"
-                        )
+                    val currentClass = fingerprint.originalClassDef.type
+                    val superClass = fingerprint.originalClassDef.superclass
+                    val initIndex = indexOfFirstInstructionOrThrow {
+                        opcode == Opcode.INVOKE_DIRECT &&
+                                getReference<MethodReference>()?.let { ref ->
+                                    ref.name == "<init>" &&
+                                            (ref.definingClass == currentClass || ref.definingClass == superClass)
+                                } == true
                     }
+
+                    addInstruction(
+                        initIndex + 1,
+                        "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->handleLegacySnackbar(Landroid/view/View;)V"
+                    )
                 }
             }
         }
