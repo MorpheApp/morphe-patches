@@ -67,7 +67,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_dev_body">這個版本為預先發布版，你可能會遇到非預期的問題</string>
   <string name="morphe_settings_about_links_header">官方連結</string>
   <string name="morphe_settings_about_links_website">網站</string>
-  <string name="morphe_settings_about_links_donate">贊助</string>
+  <string name="morphe_settings_about_links_donate">捐贈</string>
   <string name="morphe_settings_about_links_translations">翻譯</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
@@ -78,10 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_debug_stacktrace_title">記錄檔堆疊追蹤</string>
   <string name="morphe_debug_stacktrace_summary_on">除錯記錄檔會包含堆疊追蹤</string>
   <string name="morphe_debug_stacktrace_summary_off">除錯記錄檔不會包含堆疊追蹤</string>
-  <string name="morphe_debug_toast_on_error_title">在 Morphe 發生錯誤時顯示提示訊息</string>
-  <string name="morphe_debug_toast_on_error_summary_on">如果發生錯誤，則顯示提示訊息</string>
-  <string name="morphe_debug_toast_on_error_summary_off">如果發生錯誤，則不會顯示提示訊息</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"關閉錯誤提示訊息會隱藏所有 Morphe 的錯誤通知。
+  <string name="morphe_debug_toast_on_error_title">在 Morphe 發生錯誤時顯示浮動式訊息</string>
+  <string name="morphe_debug_toast_on_error_summary_on">如果發生錯誤，則顯示浮動式訊息</string>
+  <string name="morphe_debug_toast_on_error_summary_off">如果發生錯誤，則不會顯示浮動式訊息</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"關閉錯誤浮動式訊息會隱藏所有 Morphe 的錯誤通知。
 
 你將不會收到任何非預期的事件通知。"</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">匯出偵錯記錄</string>
@@ -93,14 +93,14 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_buffer_title">清除偵錯記錄</string>
   <string name="morphe_debug_logs_clear_buffer_summary">清除所有儲存的 Morphe 偵錯記錄</string>
   <string name="morphe_debug_logs_clear_toast">已清除記錄</string>
-  <string name="morphe_debug_feature_flags_manager_title">功能旗標 Manager</string>
-  <string name="morphe_debug_feature_flags_manager_summary">管理布林功能旗標</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">啟用的旗標 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">已封鎖的旗標 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">搜尋旗標...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">已儲存旗標</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">已重設旗標</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">已複製旗標到剪貼簿</string>
+  <string name="morphe_debug_feature_flags_manager_title">功能標記管理器</string>
+  <string name="morphe_debug_feature_flags_manager_summary">管理布林功能標記</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">啟用的標記 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">已封鎖的標記 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">搜尋標記...…</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">已儲存標記</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">已重設標記</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">已將標記複製到剪貼簿</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新啟動應用程式以使用此功能</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->

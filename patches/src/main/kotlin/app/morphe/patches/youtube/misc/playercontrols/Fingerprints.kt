@@ -142,3 +142,12 @@ internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
         literal(45713296)
     )
 )
+
+internal object PlayerOverlayOpacityGradientFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45729621)
+    )
+)

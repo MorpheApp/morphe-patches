@@ -21,6 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">O aplikácii</string>
   <string name="morphe_settings_screen_01_ads_title">Reklamy</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternatívne miniatúry</string>
+  <string name="morphe_settings_screen_04_general_title">Všeobecné</string>
   <string name="morphe_settings_screen_05_player_title">Prehrávač</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Ovládanie potiahnutím</string>
   <string name="morphe_settings_screen_11_misc_title">Ostatné</string>
@@ -34,12 +35,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plávajúce tlačidlo mikrofónu vo vyhľadávaní je zobrazené</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_movies_section_title">Skryť sekciu filmov</string>
+  <string name="morphe_hide_movies_section_summary_on">Sekcia filmov je skrytá</string>
+  <string name="morphe_hide_movies_section_summary_off">Sekcia filmov sa zobrazuje</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <string name="morphe_hide_show_more_button_title">Skryť tlačidlo „Zobraziť viac“</string>
+  <string name="morphe_hide_surveys_title">Skryť prieskumy</string>
+  <string name="morphe_hide_surveys_summary_on">Prieskumy sú skryté</string>
+  <string name="morphe_hide_surveys_summary_off">Prieskumy sú zobrazené</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
+  <string name="morphe_hide_channel_watermark_summary_on">Vodoznak kanála je skrytý</string>
+  <string name="morphe_hide_channel_watermark_summary_off">Vodoznak kanála je zobrazený</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.

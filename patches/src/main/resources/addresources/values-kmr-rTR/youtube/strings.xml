@@ -1290,14 +1290,20 @@ Amade ye ji bo weşandinê?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tabled</string>
   <string name="morphe_change_form_factor_entry_4">Otomobîl</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Guhertinên têne qewîkirin:
+  <string name="morphe_change_form_factor_user_dialog_message">"Gûherînên tê de:
 
-Şekla taybetmendera tabletê
-• Postên civakî ve neşandin
+Qeşeyê mezin
+• Postên Civakê veşartin
+• Astîmê lêbelgîrkirinê di danînên belavê de nîne
+• Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
+• Barê çalakiyê ya vîdyoyê pêşîne nedin
 
-Şekla taybetmendera otomobîlê
-• Shorts li lêxerînerê asayî vekirin
-• Feêdi bi temaşîrên û kanalên rêzî kirin"</string>
+Qeşeyê otomotîvê
+• Belavê bi waran û kanalên ku tê de rêz kirin
+• Astîmê lêbelgîrkirinê di danînên belavê de nîne
+• Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
+• Shorts di xîlstokê asayî de vekirin
+• Barê çalakiyê ya vîdyoyê pêşîne nedin"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versona asayî</string>
   <string name="morphe_spoof_app_version_summary_on">Versona tê asayîkirin</string>
@@ -1566,7 +1572,9 @@ Ev dikare bişîne asta bilind a keyfiyetên vîdyoyê"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Hızên çavkaniyê nevalî</string>
   <string name="morphe_custom_playback_speeds_auto">Otomatîk</string>
   <string name="morphe_speed_tap_and_hold_title">Hız-hokma ser-dûre</string>
-  <string name="morphe_speed_tap_and_hold_summary">Nîşana pêşveçûna zû ya navberê 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Hejmara lêdanê di navbera 0-8 de
+
+Ger 0 be, destikî dane girtinê hatiye qefal kirin"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Guhertinên hız-hokmê ya serbixwe ya birêve bibe</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Guhertinên hız-hokmê ji hemû vîdyoyên veşartinê re qebûl kirin</string>

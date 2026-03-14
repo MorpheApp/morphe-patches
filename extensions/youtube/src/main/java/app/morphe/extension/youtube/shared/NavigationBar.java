@@ -320,10 +320,6 @@ public final class NavigationBar {
          */
         CREATE("CREATION_TAB_LARGE", "CREATION_TAB_LARGE_CAIRO"),
         /**
-         * Only shown to automotive layout.
-         */
-        EXPLORE("TAB_EXPLORE"),
-        /**
          * Only shown when 'Show Search' is turned on.
          */
         SEARCH("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO"),

@@ -1290,11 +1290,17 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_change_form_factor_user_dialog_message">"পরিবর্তনগুলির মধ্যে রয়েছে:
 
 ট্যাবলেট লেআউট
-• কমিউনিটির পোস্টগুলি লুকানো আছে
+• কমিউনিটি পোস্টগুলি লুকানো হয়েছে
+• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
+• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
+• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না
 
 অটোমোটিভ লেআউট
-• Shorts নিয়মিত প্লেয়ারে খোলে
-• ফিড বিষয় এবং চ্যানেল দ্বারা সংগঠিত"</string>
+• ফিড বিষয় এবং চ্যানেল অনুসারে সাজানো হয়েছে
+• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
+• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
+• শর্টস নিয়মিত প্লেয়ারে খুলবে
+• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপ সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary_on">সংস্করণ স্পুফ করা হয়েছে</string>
@@ -1569,7 +1575,9 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_custom_playback_speeds_parse_exception">অবৈধ কাস্টম প্লেব্যাক গতি</string>
   <string name="morphe_custom_playback_speeds_auto">স্বতস্ফূর্তভাবে</string>
   <string name="morphe_speed_tap_and_hold_title">কাস্টম ট্যাপ এন্ড হোল্ড স্পিড</string>
-  <string name="morphe_speed_tap_and_hold_summary">০-৮ এর মধ্যে প্লেব্যাক স্পিড</string>
+  <string name="morphe_speed_tap_and_hold_summary">"0-8 এর মধ্যে প্লেব্যাক স্পিড
+
+যদি 0 হয়, তাহলে ট্যাপ এবং হোল্ড স্পিড ডিজেবল করা হবে"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">প্লেব্যাকের স্পিড পরিবর্তন মনে রাখুন</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">প্লেব্যাকের স্পিড পরিবর্তন সকল ভিডিওতে প্রয়োগ হবে</string>

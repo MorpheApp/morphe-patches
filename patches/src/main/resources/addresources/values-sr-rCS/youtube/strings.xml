@@ -1287,14 +1287,20 @@ Spreman za podnošenje?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobilski</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Promene uključuju:
+  <string name="morphe_change_form_factor_user_dialog_message">"Izmene uključuju:
 
-Izgled tableta
-• Objave zajednice su skrivene
+Tablet raspored
+• Obaveštenja zajednice su skrivena
+• Podešavanje reprodukcije u feedu nije dostupno
+• Taster za miksanje i taster za zvuk nisu dostupni u Shorts
+• Traka sa akcijama za video nije uzeta.
 
-Automobilski izgled
-• Shorts videi se otvaraju u običnom plejeru
-• Fid je organizovan po temama i kanalima"</string>
+Automobilski raspored
+• Feed je organizovan po temama i kanalima
+• Podešavanje reprodukcije u feedu nije dostupno
+• Taster za miksanje i taster za zvuk nisu dostupni u Shorts
+• Shorts se otvaraju u redovnom plejeru
+• Traka sa akcijama za video nije uzeta."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Lažirana verzija aplikacije</string>
   <string name="morphe_spoof_app_version_summary_on">Verzija je lažirana</string>
@@ -1569,7 +1575,9 @@ Ako ovo omogućite, mogu biti otključani viši kvaliteti videa"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Nevažeće prilagođene brzine reprodukcije</string>
   <string name="morphe_custom_playback_speeds_auto">Automatski</string>
   <string name="morphe_speed_tap_and_hold_title">Prilagođena brzina dodirivanja i zadržavanja</string>
-  <string name="morphe_speed_tap_and_hold_summary">Brzina reprodukcije između 0 i 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Brzina reprodukcije između 0-8
+
+Ako je 0, tap i držanje brzine je onemogućeno"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapamti promene brzine reprodukcije</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Promene brzine reprodukcije se primenjuju na sve videe</string>

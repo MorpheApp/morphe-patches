@@ -1292,11 +1292,17 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_change_form_factor_user_dialog_message">"Изменения включают:
 
 Планшетный макет
-• Посты сообщества скрыты
+• Публикации сообщества скрыты
+• Настройка воспроизведения в лентах недоступна
+• Кнопки \"Ремикс\" и \"Звук\" недоступны в Short
+• Панель действий видео не свернута
 
 Автомобильный макет
-• Shorts открываются в стандартном плеере
-• Лента организована по темам и каналам"</string>
+• Лента организована по темам и каналам
+• Настройка воспроизведения в лентах недоступна
+• Кнопки \"Ремикс\" и \"Звук\" недоступны в Short
+• Short открываются в обычном плеере
+• Панель действий видео не свернута"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменить версию приложения</string>
   <string name="morphe_spoof_app_version_summary_on">Версия приложения подменена</string>
@@ -1571,7 +1577,9 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_custom_playback_speeds_parse_exception">Недопустимые кастомные скорости воспроизведения</string>
   <string name="morphe_custom_playback_speeds_auto">Автоматически</string>
   <string name="morphe_speed_tap_and_hold_title">Кастомная скорость при нажатии и удержании</string>
-  <string name="morphe_speed_tap_and_hold_summary">Значение кастомной скорости воспроизведения при нажатии и удержании от 0 до 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Скорость воспроизведения между 0-8
+
+Если 0, касание и удержание скорости отключено"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запоминать изменения скорости воспроизведения</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Изменения скорости воспроизведения применяются ко всем видео</string>

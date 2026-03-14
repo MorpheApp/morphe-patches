@@ -1292,12 +1292,18 @@ Oletko valmis lähettämään?"</string>
   <string name="morphe_change_form_factor_entry_4">Ajoneuvo</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Muutokset sisältävät:
 
-Tabletti-asettelu
-• Yhteisöpostaukset on piilotettu
+Tablettiasettelun
+• Yhteisöpostit on piilotettu
+• Toiston asetusta syötteissä ei ole saatavilla
+• Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
+• Videotoimintopalkki ei ole piilotettu
 
-Ajoneuvo-asettelu
-• Shortsit avataan tavallisessa soittimessa
-• Syöte on järjestetty aiheiden ja kanavien mukaan"</string>
+Automaattiasettelun
+• Syöte on järjestetty aiheiden ja kanavien mukaan
+• Toiston asetusta syötteissä ei ole saatavilla
+• Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
+• Shorts-videot avautuvat tavallisessa soittimessa
+• Videotoimintopalkki ei ole piilotettu"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Naamioi sovellusversio</string>
   <string name="morphe_spoof_app_version_summary_on">Versio on naamioitu</string>
@@ -1572,7 +1578,9 @@ Tämä voi avata korkealaatuisemmat videot"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Virheelliset mukautetut toistonopeudet</string>
   <string name="morphe_custom_playback_speeds_auto">Automaattinen</string>
   <string name="morphe_speed_tap_and_hold_title">Mukautettu napauta ja pidä pohjassa -nopeus</string>
-  <string name="morphe_speed_tap_and_hold_summary">Toistonopeus 0–8 välillä</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Toistonopeus välillä 0–8
+
+Jos 0, napauta ja pidä painettuna -nopeutta ei ole käytössä"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Muista toistonopeuden muutokset</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Toistonopeuden muutokset koskevat kaikkia videoita</string>

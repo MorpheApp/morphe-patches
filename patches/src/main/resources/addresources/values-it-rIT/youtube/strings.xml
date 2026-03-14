@@ -1287,14 +1287,20 @@ Pronto per l'invio?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefono</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Veicoli</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Le modifiche includono:
+  <string name="morphe_change_form_factor_user_dialog_message">"Modifiche incluse:
 
 Layout per tablet
 • I post della community sono nascosti
+• L'impostazione di riproduzione nei feed non è disponibile
+• Il pulsante Remix e il pulsante Audio non sono disponibili in Shorts
+• La barra delle azioni video non è collassata
 
 Layout per auto
-• Gli Shorts si aprono nel normale player
-• Il feed è organizzato per argomenti e canali"</string>
+• Il feed è organizzato per argomenti e canali
+• L'impostazione di riproduzione nei feed non è disponibile
+• Il pulsante Remix e il pulsante Audio non sono disponibili in Shorts
+• Shorts si apre nel lettore standard
+• La barra delle azioni video non è collassata"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Simula la versione dell\'app</string>
   <string name="morphe_spoof_app_version_summary_on">La simulazione della versione dell\'app è attivata</string>
@@ -1569,7 +1575,9 @@ Abilitare questa opzione può sbloccare qualità video più elevate"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Velocità di riproduzione personalizzata non valida</string>
   <string name="morphe_custom_playback_speeds_auto">Automatico</string>
   <string name="morphe_speed_tap_and_hold_title">Velocità personalizzata di tocca e tieni premuto</string>
-  <string name="morphe_speed_tap_and_hold_summary">Velocità di riproduzione tra 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Velocità di riproduzione tra 0 e 8
+
+Se 0, tocca e tieni premuto per disabilitare la velocità"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Ricorda le modifiche della velocità di riproduzione</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Le modifiche alla velocità di riproduzione si applicano a tutti i video</string>

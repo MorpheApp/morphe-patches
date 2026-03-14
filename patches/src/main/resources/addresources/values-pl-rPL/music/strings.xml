@@ -18,12 +18,12 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Logo</string>
+  <string name="morphe_header_logo_title">Logo nagłówka</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
   <string name="morphe_header_logo_entry_3">Niestandardowe</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">O aplikacji</string>
+  <string name="morphe_settings_music_screen_0_about_title">Informacje</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
   <string name="morphe_settings_music_screen_2_general_title">Ogólne</string>
   <string name="morphe_settings_music_screen_3_player_title">Odtwarzacz</string>
