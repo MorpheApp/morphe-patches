@@ -109,9 +109,7 @@ val clientContextHookPatch = bytecodePatch(
             }
         }
 
-        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.match(
-            ClientFormFactorEnumConstructorFingerprint.originalClassDef
-        ).method as MethodReference
+        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
 
         val setClientFormFactorFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

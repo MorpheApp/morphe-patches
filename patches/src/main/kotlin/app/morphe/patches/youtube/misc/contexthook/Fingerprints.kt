@@ -81,8 +81,7 @@ internal object BuildDummyClientContextBodyFingerprint : Fingerprint(
     )
 )
 
-internal object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
-    classFingerprint = BrowseEndpointParentFingerprint,
+private object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "UNKNOWN_FORM_FACTOR",
@@ -94,6 +93,7 @@ internal object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
 )
 
 internal object ClientFormFactorEnumOrdinalFingerprint : Fingerprint(
+    classFingerprint = ClientFormFactorEnumConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "L",
     parameters = listOf("I")
