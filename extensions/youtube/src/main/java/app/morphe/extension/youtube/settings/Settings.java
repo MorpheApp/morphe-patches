@@ -156,7 +156,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Snackbar
     public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
-    public static final BooleanSetting CUSTOM_SNACKBAR_THEME = new BooleanSetting("morphe_custom_snackbar_theme", FALSE, parent(HIDE_SNACKBAR));
+    public static final BooleanSetting CUSTOM_SNACKBAR_THEME = new BooleanSetting("morphe_custom_snackbar_theme", FALSE, parentNot(HIDE_SNACKBAR));
     public static final StringSetting CUSTOM_SNACKBAR_COLOR_DARK = new StringSetting("morphe_custom_snackbar_color_dark", "#FF0F0F0F", true, parent(CUSTOM_SNACKBAR_THEME));
     public static final StringSetting CUSTOM_SNACKBAR_COLOR_LIGHT = new StringSetting("morphe_custom_snackbar_color_light", "#FFF1F1F1", true, parent(CUSTOM_SNACKBAR_THEME));
     public static final StringSetting CUSTOM_SNACKBAR_CORNER_RADIUS = new StringSetting("morphe_custom_snackbar_corner_radius", "8.0", true, parent(CUSTOM_SNACKBAR_THEME));
