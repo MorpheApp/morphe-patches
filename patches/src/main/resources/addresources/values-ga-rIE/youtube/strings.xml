@@ -305,9 +305,6 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_ai_chat_summary_title">Folaigh achoimre comhrá IS</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tá achoimre comhrá IS i bhfolach</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Taispeántar achoimre ar chomhrá IS</string>
-  <string name="morphe_hide_comments_ai_summary_title">Folaigh achoimre ar thráchtanna IS</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Tá achoimre tráchtanna IS i bhfolach</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Taispeántar achoimre ar thráchtanna IS</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Folaigh treoirlínte an chainéil</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Tá treoirlínte an chainéil i bhfolach</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Taispeántar treoirlínte an chainéil</string>
@@ -338,6 +335,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_thanks_button_title">Folaigh an cnaipe Buíochais</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tá an cnaipe Buíochais i bhfolach</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Taispeántar an cnaipe Buíochais</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Folaigh barr catagóirí</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Tá cúlta bríceanna catagóirí seachas \'Barr\' agus \'Nua\' sa barr catagóirí na gcuidí comhairle</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Tá bríceanna catagóirí tagtha sa barr catagóirí na gcuidí comhairle</string>
   <string name="morphe_custom_filter_screen_title">Scagaire saincheaptha</string>
   <string name="morphe_custom_filter_screen_summary">Folaigh comhpháirteanna ag baint úsáide as scagairí saincheaptha</string>
   <string name="morphe_custom_filter_title">Cumasaigh scagaire saincheaptha</string>
@@ -1287,14 +1287,20 @@ Réidh le cur isteach?"</string>
   <string name="morphe_change_form_factor_entry_2">Guthán</string>
   <string name="morphe_change_form_factor_entry_3">Táibléad</string>
   <string name="morphe_change_form_factor_entry_4">Gluaisteán</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Áirítear leis na hathruithe:
+  <string name="morphe_change_form_factor_user_dialog_message">"Álainn na hathrú: 
 
-Leagan amach táibléid
-• Tá poist phobail i bhfolach
+Críothacht teilgtheoir
+• Tá ranna pobail faoi chríocha
+• Ní féidir suim leanúna a chur i riantanas
+• Ní bhíonn cnaipe Athrú agus cnaipe Fuar le himeacht i Shorts
+• Ní thiocfaidh barr gníomhaireachta fídeá in chloisteach
 
-Leagan amach gluaisteán
-• Gearrscannáin oscailte sa ghnáth-imreoir
-• Tá an fotha eagraithe de réir topaicí agus bealaí"</string>
+Críothacht feithicil
+• Tá an riantanas ordaithe de réir áit agus gcórais
+• Ní féidir suim leanúna a chur i riantanas
+• Ní bhíonn cnaipe Athrú agus cnaipe Fuar le himeacht i Shorts
+• Osclaíonn Shorts sa n-imreoir ginearálta
+• Ní thiocfaidh barr gníomhaireachta fídeá in chloisteach"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
   <string name="morphe_spoof_app_version_summary_on">Leagan bréagach</string>
@@ -1569,7 +1575,9 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_custom_playback_speeds_parse_exception">Luasanna athsheinm saincheaptha neamhbhailí</string>
   <string name="morphe_custom_playback_speeds_auto">Uath</string>
   <string name="morphe_speed_tap_and_hold_title">Luas saincheaptha tapála agus coinnigh</string>
-  <string name="morphe_speed_tap_and_hold_summary">Luas athsheinm eatarthu 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Rapéáilme speed idir 0-8
+
+Más 0, déantar deacáin an luas tap agus hold"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Cuimhnigh athruithe ar luas athsheinm</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Baineann athruithe luais athsheinm le gach físeáin</string>

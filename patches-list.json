@@ -1,5 +1,5 @@
 {
-  "version": "1.18.0-dev.3",
+  "version": "1.19.0-dev.3",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -119,6 +119,7 @@
       "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
@@ -992,6 +993,7 @@
       "description": "Adds an option to hide the Trending Today shelf from search suggestions.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1163,6 +1165,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -1929,7 +1932,10 @@
           "default": "@android:color/black",
           "values": {
             "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You - Primary": "@android:color/system_accent1_800",
+            "Material You - Secondary": "@android:color/system_accent2_800",
+            "Material You - Tertiary": "@android:color/system_accent3_800",
             "Classic (old YouTube)": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
@@ -1973,7 +1979,10 @@
           "default": "@android:color/black",
           "values": {
             "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You - Primary": "@android:color/system_accent1_800",
+            "Material You - Secondary": "@android:color/system_accent2_800",
+            "Material You - Tertiary": "@android:color/system_accent3_800",
             "Classic (old YouTube)": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
@@ -1993,7 +2002,10 @@
           "default": "@android:color/white",
           "values": {
             "White": "@android:color/white",
-            "Material You": "@android:color/system_neutral1_50",
+            "Material You (Neutral)": "@android:color/system_neutral1_100",
+            "Material You - Primary": "@android:color/system_accent1_200",
+            "Material You - Secondary": "@android:color/system_accent2_200",
+            "Material You - Tertiary": "@android:color/system_accent3_200",
             "Catppuccin (Latte)": "#E6E9EF",
             "Light pink": "#FCCFF3",
             "Light blue": "#D1E0FF",

@@ -23,6 +23,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
@@ -332,6 +333,12 @@ val playerControlsPatch = bytecodePatch(
             if (is_20_30_or_greater) {
                 PlayerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
             }
+        }
+
+        if (is_21_03_or_greater) {
+            // If enabled it can show a black gradient on lower part of screen in fullscreen mode.
+            // This override may not be needed if the new bold player overlay icons are in use.
+            PlayerOverlayOpacityGradientFeatureFlagFingerprint.method.returnLate(false)
         }
     }
 }

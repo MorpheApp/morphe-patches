@@ -95,13 +95,13 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Bhrúigh JavaScript hash an t-seanspiseach</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Tá nuashonrú JavaScript hash an t-seanspiseach deartha
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title"></string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"
 
-• Tá JavaScript hash seanspiseach bhailí riachtanach
-• Déantar aisghabháil ar an gcoinbhleacht Playback mura n-aisghabhann GVS an JavaScript hash an t-seanspiseach"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Tá nuashonrú JavaScript hash an t-seanspiseach iontráilithe</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Tá JavaScript hashanna an t-seanspiseach bailí go tioramháil timpeall mí naoi, agus d’fhéadfá aisghabháil a dhéanamh ar hashanna as dáta ag GVS.</string>
+• Tá hash JavaScript imreora slànacha deartha
+• Gan fhiosrú cineálacha nuair a tugtar isteach hash JavaScript imreora sa GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Tá nuashonruithe JavaScript imreora ar fáil</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Tá JavaScript hashanna an t-seanspiseach bailí go tioramháil timpeall mí naoi, agus d’fhéadfá aisghabháil a dhéanamh ar hashanna as dáta ag GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript an imreoir</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Iosgail hash JavaScript an imreora a bhíonn ceart</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
@@ -117,7 +117,7 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_force_original_audio_summary_on">Ag baint úsáide as an teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary_off">Ag baint úsáide as fuaim réamhshocraithe</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Sruthanna físe bréige\' go haon chliant seachas Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Chun an gné seo a úsáid, athraigh \'Sruthanna físe bréige\' go Android Reel nó TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Baintear paraiméadar fiosrúcháin rianaithe de naisc chomhroinnte</string>

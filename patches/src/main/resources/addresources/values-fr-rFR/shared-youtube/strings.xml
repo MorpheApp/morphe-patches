@@ -95,13 +95,13 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossible de se connecter à VR : %s</string>
   <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Forcer le hachage JavaScript du lecteur</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"La mise à jour du hachage JavaScript du lecteur est désactivée.
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Désactiver la mise à jour JavaScript du lecteur</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"La mise à jour JavaScript du lecteur est désactivée
 
 • Un hachage JavaScript valide du lecteur est requis
 • La lecture échoue si le hachage JavaScript du lecteur est révoqué dans GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">La mise à jour du hachage JavaScript du lecteur est activée</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Les hachages JavaScript du lecteur sont valides pendant environ un mois, et les hachages obsolètes peuvent être révoqués par GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">La mise à jour JavaScript du lecteur est activée</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Les hachages JavaScript du lecteur sont valides pendant environ un mois, et les hachages obsolètes peuvent être révoqués par GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hachage JavaScript du lecteur</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Entrez un hachage JavaScript valide du lecteur</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
@@ -117,7 +117,7 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_force_original_audio_summary_on">Utilisation de la langue audio d\'origine</string>
   <string name="morphe_force_original_audio_summary_off">Utilisation de l\'audio par défaut</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Pour utiliser cette fonctionnalité, changez \'Falsifier les flux vidéo\' vers n’importe quel client sauf Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Pour utiliser cette fonctionnalité, changez \'Falsifier les flux vidéo\' en Android Reel ou TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Nettoyer les liens partagés</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Le paramètre de suivi est supprimé des liens partagés</string>

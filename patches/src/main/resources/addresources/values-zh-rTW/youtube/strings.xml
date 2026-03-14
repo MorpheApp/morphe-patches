@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">已隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">已顯示 AI 聊天摘要</string>
-  <string name="morphe_hide_comments_ai_summary_title">隱藏 AI 留言摘要</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">已隱藏 AI 留言摘要</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">已顯示 AI 留言摘要</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隱藏頻道準則</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">已隱藏頻道準則</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">已顯示頻道準則</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">隱藏「感謝」按鈕</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">已隱藏「感謝」按鈕</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">已顯示「感謝」按鈕</string>
+  <string name="morphe_sanitize_comments_category_bar_title">清理類別欄</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">除了「頂」和「最新」之外，類別按鈕會隱藏在評論類別欄中</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">類別按鈕會顯示在評論類別欄中</string>
   <string name="morphe_custom_filter_screen_title">自訂篩選器</string>
   <string name="morphe_custom_filter_screen_summary">使用自訂篩選器隱藏元件</string>
   <string name="morphe_custom_filter_title">啟用自訂篩選器</string>
@@ -1258,7 +1258,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_title">統計</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">統計資料暫時不可用（API 離線）</string>
-  <string name="morphe_sb_stats_loading">載入中…</string>
+  <string name="morphe_sb_stats_loading">載入中……</string>
   <string name="morphe_sb_stats_sb_disabled">已停用 SponsorBlock</string>
   <string name="morphe_sb_stats_username">你的使用者名稱：&lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">輕觸這裡變更你的使用者名稱</string>
@@ -1287,14 +1287,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">手機</string>
   <string name="morphe_change_form_factor_entry_3">平板電腦</string>
   <string name="morphe_change_form_factor_entry_4">汽車</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"修改項目包括：
+  <string name="morphe_change_form_factor_user_dialog_message">"變更包括：
 
 平板電腦版面配置
-• 隱藏社群貼文
+• 社群貼文已隱藏
+• 播放設定中無法使用「在資訊流中播放」選項
+• Shorts 中無法使用「混音」按鈕和「音效」按鈕
+• 影片動作欄未摺疊
 
-汽車版面配置
-• Shorts 會以一般播放器開啟
-• 動態內容會依主題和頻道整理"</string>
+車用版面配置
+• 資訊流依主題和頻道分類
+• 播放設定中無法使用「在資訊流中播放」選項
+• Shorts 中無法使用「混音」按鈕和「音效」按鈕
+• Shorts 在常規播放器中開啟
+• 影片動作欄未摺疊"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">偽裝應用程式版本</string>
   <string name="morphe_spoof_app_version_summary_on">已偽裝版本</string>
@@ -1573,7 +1579,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">自訂播放速度格式不正確</string>
   <string name="morphe_custom_playback_speeds_auto">自動</string>
   <string name="morphe_speed_tap_and_hold_title">自訂輕觸和按住的速度</string>
-  <string name="morphe_speed_tap_and_hold_summary">播放速度介於 0 到 8 之間</string>
+  <string name="morphe_speed_tap_and_hold_summary">"播放速度介於 0-8
+
+如果為 0，則點擊並按住速度功能已停用"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">記住播放速度</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">播放速度變更適用於所有影片</string>

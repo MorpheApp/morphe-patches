@@ -48,7 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">検索履歴はありません</string>
   <string name="morphe_settings_search_empty_history_summary">検索履歴を保存するには、検索クエリを入力して Enter キーを押してください</string>
   <string name="morphe_settings_search_history_title">設定の検索履歴を表示</string>
-  <string name="morphe_settings_search_history_summary_on">設定の検索履歴は表示されます</string>
+  <string name="morphe_settings_search_history_summary_on">設定の検索履歴が表示されます</string>
   <string name="morphe_settings_search_history_summary_off">設定の検索履歴は表示されません</string>
   <string name="morphe_show_menu_icons_title">Morphe の設定にアイコンを表示</string>
   <string name="morphe_show_menu_icons_summary_on">Morphe の設定メニューにはアイコンが表示されます</string>
@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">flag を保存しました</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">flag をリセットしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">flag をクリップボードにコピーしました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">アプリを再起動してください</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を使用するにはアプリを再起動してください</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>
@@ -113,7 +113,7 @@ Second \"item\" text"</string>
 
 下記ウェブサイト「Don't kill my app!」の携帯電話メーカー別のガイドに従い、MicroG に対するデバイスの設定を変更してください。
 
-これはアプリが正常に動作するために必須です。"</string>
+この操作は、アプリが正常に動作するために必要です。"</string>
   <string name="gms_core_dialog_open_website_text">ウェブサイトを開く</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG の電池の最適化は、問題を防ぐために無効にする必要があります。
 

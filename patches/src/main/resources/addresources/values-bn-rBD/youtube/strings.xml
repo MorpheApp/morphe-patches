@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">এআই চ্যাট সারাংশ লুকানো আছে</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">এআই চ্যাট সারাংশ দেখানো হয়েছে</string>
-  <string name="morphe_hide_comments_ai_summary_title">এআই মন্তব্য সংক্ষিপ্তসার লুকান</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">এআই মন্তব্য সারাংশ লুকানো আছে</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">এআই মন্তব্য সারাংশ দেখানো হয়েছে</string>
   <string name="morphe_hide_comments_channel_guidelines_title">চ্যানেল নির্দেশিকা লুকান</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">চ্যানেল নির্দেশিকা লুকানো হয়েছে</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">চ্যানেল নির্দেশিকা দেখানো হয়েছে</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">ধন্যবাদ বাটন লুকান</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">ধন্যবাদ বোতাম লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">ধন্যবাদ বোতাম প্রদর্শিত হয়েছে</string>
+  <string name="morphe_sanitize_comments_category_bar_title">শ্রেণী বার পরিষ্কার করুন</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">\'শীর্ষ\' এবং \'নতুনতম\' ছাড়া অন্য সব শ্রেণীর বোতাম মন্তব্য শ্রেণী বারে লুকানো আছে</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">মন্তব্য শ্রেণী বারে শ্রেণীর বোতামগুলো দেখানো হচ্ছে</string>
   <string name="morphe_custom_filter_screen_title">কাস্টম ফিল্টার</string>
   <string name="morphe_custom_filter_screen_summary">কাস্টম ফিল্টার ব্যবহার করে বিভিন্ন উপাদান লুকান</string>
   <string name="morphe_custom_filter_title">কাস্টম ফিল্টার সক্রিয় করুন</string>
@@ -1290,11 +1290,17 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_change_form_factor_user_dialog_message">"পরিবর্তনগুলির মধ্যে রয়েছে:
 
 ট্যাবলেট লেআউট
-• কমিউনিটির পোস্টগুলি লুকানো আছে
+• কমিউনিটি পোস্টগুলি লুকানো হয়েছে
+• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
+• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
+• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না
 
 অটোমোটিভ লেআউট
-• Shorts নিয়মিত প্লেয়ারে খোলে
-• ফিড বিষয় এবং চ্যানেল দ্বারা সংগঠিত"</string>
+• ফিড বিষয় এবং চ্যানেল অনুসারে সাজানো হয়েছে
+• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
+• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
+• শর্টস নিয়মিত প্লেয়ারে খুলবে
+• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপ সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary_on">সংস্করণ স্পুফ করা হয়েছে</string>
@@ -1569,7 +1575,9 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_custom_playback_speeds_parse_exception">অবৈধ কাস্টম প্লেব্যাক গতি</string>
   <string name="morphe_custom_playback_speeds_auto">স্বতস্ফূর্তভাবে</string>
   <string name="morphe_speed_tap_and_hold_title">কাস্টম ট্যাপ এন্ড হোল্ড স্পিড</string>
-  <string name="morphe_speed_tap_and_hold_summary">০-৮ এর মধ্যে প্লেব্যাক স্পিড</string>
+  <string name="morphe_speed_tap_and_hold_summary">"0-8 এর মধ্যে প্লেব্যাক স্পিড
+
+যদি 0 হয়, তাহলে ট্যাপ এবং হোল্ড স্পিড ডিজেবল করা হবে"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">প্লেব্যাকের স্পিড পরিবর্তন মনে রাখুন</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">প্লেব্যাকের স্পিড পরিবর্তন সকল ভিডিওতে প্রয়োগ হবে</string>

@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">הסתר סיכום AI של צ\'אט</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">סיכום AI של צ\'אט מוסתר</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">סיכום AI של צ\'אט מוצג</string>
-  <string name="morphe_hide_comments_ai_summary_title">הסתר סיכום תגובות AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">סיכום AI של תגובות מוסתר</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">סיכום AI של תגובות מוצג</string>
   <string name="morphe_hide_comments_channel_guidelines_title">הסתר הנחיות ערוץ</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">הנחיות הערוץ מוסתרות</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">הנחיות הערוץ מוצגות</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">הסתר לחצן תודה</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">לחצן תודה מוסתר</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">לחצן תודה מוצג</string>
+  <string name="morphe_sanitize_comments_category_bar_title">ניקוי סרגל קטגוריות</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">לחצני קטגוריה מלבד \'למעלה\' ו-\'חדש\' מוסתרים בסרגל קטגוריות התגובות</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">לחצני קטגוריה מוצגים בסרגל קטגוריות התגובות</string>
   <string name="morphe_custom_filter_screen_title">מסנן מותאם אישית</string>
   <string name="morphe_custom_filter_screen_summary">הסתר רכיבים באמצעות מסננים מותאמים אישית</string>
   <string name="morphe_custom_filter_title">הפעל מסנן מותאם אישית</string>
@@ -1290,10 +1290,16 @@ Second \"item\" text"</string>
 
 פריסת טאבלט
 • פוסטים קהילתיים מוסתרים
+• הגדרת השמעה במקורות אינה זמינה
+• כפתור 'מיזוג' וכפתור 'סאונד' אינם זמינים ב-Shorts
+• שורת הפעולות של הווידאו אינה מקופלת
 
 פריסת רכב
-• סרטוני Shorts נפתחים בנגן הרגיל
-• פיד מאורגן לפי נושאים וערוצים"</string>
+• המקורות מאורגנים לפי נושאים וערוצים
+• הגדרת השמעה במקורות אינה זמינה
+• כפתור 'מיזוג' וכפתור 'סאונד' אינם זמינים ב-Shorts
+• Shorts נפתחים בנגן הרגיל
+• שורת הפעולות של הווידאו אינה מקופלת"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">זייף גרסת יישום</string>
   <string name="morphe_spoof_app_version_summary_on">גרסה מזויפת</string>
@@ -1567,7 +1573,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">מהירויות הפעלה מותאמות אישית לא חוקיות</string>
   <string name="morphe_custom_playback_speeds_auto">אוטומטי</string>
   <string name="morphe_speed_tap_and_hold_title">מהירות הקשה והחזקה מותאמת אישית</string>
-  <string name="morphe_speed_tap_and_hold_summary">מהירות הפעלה בין 0 ל-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"מהירות ניגון בין 0-8
+
+אם 0, לחיצה ארוכה על מהירות מושבתת"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">זכור שינויי מהירות הפעלה</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">שינויי מהירות הפעלה חלים על כל הסרטונים</string>

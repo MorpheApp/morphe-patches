@@ -305,9 +305,6 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_ai_chat_summary_title">Itago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Nakatago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Ipinapakita ang buod ng AI chat</string>
-  <string name="morphe_hide_comments_ai_summary_title">Itago ang buod ng mga komento ng AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Nakatago ang buod ng mga komento ng AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Ipinapakita ang buod ng mga komento ng AI</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Itago ang mga alituntunin sa channel</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Nakatago ang mga alituntunin sa channel</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Ipinapakita ang mga alituntunin sa channel</string>
@@ -338,6 +335,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_thanks_button_title">Itago ang button na Salamat</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Nakatago ang button na Salamat</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Ipinapakita ang button na Salamat</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Linisin ang category bar</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Ang mga button ng kategorya maliban sa \'Top\' at \'Bago\' ay nakatago sa category bar ng komento</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Ang mga button ng kategorya ay ipinapakita sa category bar ng komento</string>
   <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
   <string name="morphe_custom_filter_screen_summary">Itago ang mga komponente gamit ang mga pasadyang filter</string>
   <string name="morphe_custom_filter_title">Paganahin ang pasadyang filter</string>
@@ -1287,14 +1287,20 @@ Handa nang isumite?"</string>
   <string name="morphe_change_form_factor_entry_2">Telepono</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automotive</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Kabilang ang mga pagbabago:
+  <string name="morphe_change_form_factor_user_dialog_message">"Kasama sa mga pagbabago:
 
 Tablet layout
-• Nakatagong mga post ng komunidad
+• Nakatago ang mga post ng komunidad
+• Hindi magagamit ang playback sa feeds setting
+• Hindi magagamit ang Remix button at Sound button sa Shorts
+• Hindi nakatiklop ang Video action bar
 
 Automotive layout
-• Ang Shorts ay nagbubukas sa regular na player
-• Ang feed ay inaayos ayon sa mga paksa at channels"</string>
+• Nakapag-ayos ang feed ayon sa mga paksa at channel
+• Hindi magagamit ang playback sa feeds setting
+• Hindi magagamit ang Remix button at Sound button sa Shorts
+• Ang Shorts ay bumubukas sa regular na player
+• Hindi nakatiklop ang Video action bar"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app version</string>
   <string name="morphe_spoof_app_version_summary_on">Bersyon ay ginaya</string>
@@ -1569,7 +1575,9 @@ Ang pag-enable nito ay maaaring mag-unlock ng mas mataas na kalidad ng video"</s
   <string name="morphe_custom_playback_speeds_parse_exception">Hindi balido ang custom na bilis ng pag-playback</string>
   <string name="morphe_custom_playback_speeds_auto">Awtomatiko</string>
   <string name="morphe_speed_tap_and_hold_title">Custom na bilis ng pag-tap at pagpindot</string>
-  <string name="morphe_speed_tap_and_hold_summary">Bilis ng pag-playback sa pagitan ng 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Bilis ng pag-playback sa pagitan ng 0-8
+
+Kung 0, hindi pinagana ang bilis sa pag-tap at paghawak"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Tandaan ang mga pagbabago sa bilis ng pag-playback</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Ang mga pagbabago sa bilis ng pag-playback ay ilalapat sa lahat ng mga video</string>

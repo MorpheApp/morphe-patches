@@ -1,3 +1,11 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ */
+
 package app.morphe.patches.youtube.video.speed.custom
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -178,6 +186,18 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                         """
                             invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getTapAndHoldSpeed()F
                             move-result v$speedRegister
+                        """
+                    )
+
+                    val enabledIndex = it.instructionMatches[3].index
+                    val enabledRegister =
+                        getInstruction<OneRegisterInstruction>(enabledIndex).registerA
+
+                    addInstructions(
+                        enabledIndex,
+                        """
+                            invoke-static { v$enabledRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldSpeed(Z)Z
+                            move-result v$enabledRegister
                         """
                     )
                 }

@@ -18,12 +18,12 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Logo</string>
+  <string name="morphe_header_logo_title">Logo nagłówka</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
   <string name="morphe_header_logo_entry_3">Niestandardowe</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">O aplikacji</string>
+  <string name="morphe_settings_music_screen_0_about_title">Informacje</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
   <string name="morphe_settings_music_screen_2_general_title">Ogólne</string>
   <string name="morphe_settings_music_screen_3_player_title">Odtwarzacz</string>
@@ -37,16 +37,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Włączone</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Wyłączone</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Przycisk przesyłania</string>
+  <string name="morphe_music_hide_cast_button_title">Przycisk Przesyłaj</string>
   <string name="morphe_music_hide_cast_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_cast_button_summary_off">Widoczny</string>
-  <string name="morphe_music_hide_history_button_title">Przycisk historii</string>
+  <string name="morphe_music_hide_history_button_title">Przycisk Historia</string>
   <string name="morphe_music_hide_history_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_history_button_summary_off">Widoczny</string>
-  <string name="morphe_music_hide_notification_button_title">Przycisk powiadomień</string>
+  <string name="morphe_music_hide_notification_button_title">Przycisk Powiadomienia</string>
   <string name="morphe_music_hide_notification_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_notification_button_summary_off">Widoczny</string>
-  <string name="morphe_music_hide_search_button_title">Przycisk wyszukiwania</string>
+  <string name="morphe_music_hide_search_button_title">Przycisk Szukaj</string>
   <string name="morphe_music_hide_search_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_search_button_summary_off">Widoczny</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -77,23 +77,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_screen_title">Pasek nawigacji</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ukryj lub zmień przyciski paska nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">Przycisk strony głównej</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Przycisk Główna</string>
   <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Widoczny</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Przycisk sampli</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Przycisk Sample</string>
   <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Widoczny</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Przycisk strony odkrywania</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Przycisk Odkrywaj</string>
   <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Widoczny</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Przycisk biblioteki</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Przycisk Biblioteka</string>
   <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Widoczny</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Przycisk zmiany planu</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Przycisk YouTube Premium</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Widoczny</string>
   <string name="morphe_music_hide_navigation_bar_title">Pasek nawigacji</string>
@@ -107,7 +107,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Ukryta</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Widoczna</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">Przycisk zmiany planu</string>
+  <string name="morphe_music_hide_upgrade_button_title">Przycisk YouTube Premium</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Ukryty</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Widoczny</string>
 </resources>

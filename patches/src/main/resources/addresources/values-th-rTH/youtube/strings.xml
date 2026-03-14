@@ -304,9 +304,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ซ่อนสรุปแชท AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">สรุปแชท AI ถูกซ่อนอยู่</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">สรุปแชท AI แสดงอยู่</string>
-  <string name="morphe_hide_comments_ai_summary_title">ซ่อนสรุปความคิดเห็น AI</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">สรุปความคิดเห็น AI ถูกซ่อนอยู่</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">สรุปความคิดเห็น AI แสดงอยู่</string>
   <string name="morphe_hide_comments_channel_guidelines_title">ซ่อนแนวทางปฏิบัติของช่อง</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">ซ่อนแนวทางช่องแล้ว</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">แสดงแนวทางช่องแล้ว</string>
@@ -337,6 +334,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">ซ่อนปุ่มขอบคุณ</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">ปุ่มขอบคุณถูกซ่อนไว้</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">ปุ่มขอบคุณจะแสดง</string>
+  <string name="morphe_sanitize_comments_category_bar_title">ลบความปลอดภัยแถบหมวดหมู่</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">ปุ่มหมวดหมู่ยกเว้น \'ด้านบน\' และ \'ใหม่ล่าสุด\' จะซ่อนอยู่ในแถบหมวดหมู่ความคิดเห็น</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">ปุ่มหมวดหมู่จะแสดงอยู่ในแถบหมวดหมู่ความคิดเห็น</string>
   <string name="morphe_custom_filter_screen_title">ตัวกรองแบบกำหนดเอง</string>
   <string name="morphe_custom_filter_screen_summary">ซ่อนส่วนประกอบโดยใช้ตัวกรองแบบกำหนดเอง</string>
   <string name="morphe_custom_filter_title">เปิดใช้งานตัวกรองแบบกำหนดเอง</string>
@@ -1283,14 +1283,20 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_change_form_factor_entry_2">โทรศัพท์</string>
   <string name="morphe_change_form_factor_entry_3">แท็บเล็ต</string>
   <string name="morphe_change_form_factor_entry_4">ยานยนต์</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"การเปลี่ยนแปลงรวมถึง:
+  <string name="morphe_change_form_factor_user_dialog_message">"การเปลี่ยนแปลงประกอบด้วย:
 
 รูปแบบแท็บเล็ต
 • โพสต์ชุมชนถูกซ่อน
+• การตั้งค่าการเล่นในฟีดไม่สามารถใช้ได้
+• ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
+• แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ
 
-รูปแบบยานยนต์
+รูปแบบรถยนต์
+• ฟีดถูกจัดระเบียบตามหัวข้อและช่อง
+• การตั้งค่าการเล่นในฟีดไม่สามารถใช้ได้
+• ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
 • Shorts เปิดในเครื่องเล่นปกติ
-• ฟีดจัดระเบียบตามหัวข้อและช่อง"</string>
+• แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary_on">เวอร์ชันปลอมแปลง</string>
@@ -1565,7 +1571,9 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_custom_playback_speeds_parse_exception">ความเร็วในการเล่นที่กําหนดเองไม่ถูกต้อง</string>
   <string name="morphe_custom_playback_speeds_auto">อัตโนมัติ</string>
   <string name="morphe_speed_tap_and_hold_title">**Custom tap and hold speed**</string>
-  <string name="morphe_speed_tap_and_hold_summary">ความเร็วในการเล่นระหว่าง 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"ความเร็วในการเล่นระหว่าง 0-8
+
+หากเป็น 0 ให้แตะค้างเพื่อปิดใช้งานความเร็ว"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">จำการเปลี่ยนแปลงความเร็วในการเล่น</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">การเปลี่ยนแปลงความเร็วในการเล่นใช้กับวิดีโอทั้งหมด</string>

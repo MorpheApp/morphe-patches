@@ -217,6 +217,7 @@ val hideAdsPatch = bytecodePatch(
         setOf(
             Endpoint.BROWSE,
             Endpoint.SEARCH,
+            Endpoint.NEXT,
         ).forEach { endpoint ->
             addOSNameHook(
                 endpoint,
