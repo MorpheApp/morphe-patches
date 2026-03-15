@@ -502,7 +502,12 @@ public abstract class Setting<T> {
             }
 
             String export = json.toString(4);
-            export = export.substring(1, export.length() - 1).trim();
+
+            if (export.startsWith("{") && export.endsWith("}")) {
+                export = export.substring(1, export.length() - 1);
+            }
+
+            export = export.replaceAll("^\\n+", "").replaceAll("\\n+$", "");
 
             return export + ",";
         } catch (JSONException e) {

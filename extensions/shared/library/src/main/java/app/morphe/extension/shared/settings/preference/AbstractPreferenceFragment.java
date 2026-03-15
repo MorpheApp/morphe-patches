@@ -365,36 +365,38 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void showImportExportTextDialog() {
         try {
             Context context = getContext();
-            // Must set text before showing dialog,
-            // otherwise text is non-selectable if this preference is later reopened.
-            existingSettings = Setting.exportToJson(context);
+
+            existingSettings = Setting.exportToJson(null);
             currentImportExportEditText = getEditText(context);
 
-            // Create a custom dialog with the EditText.
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_pref_import_export_title"), // Title.
-                    null,     // No message (EditText replaces it).
-                    currentImportExportEditText, // Pass the EditText.
-                    str("morphe_settings_save"), // OK button text.
-                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()), // OK button action.
-                    () -> {}, // Cancel button action (dismiss only).
-                    str("morphe_settings_import_copy"), // Neutral button (Copy) text.
-                    () -> Utils.setClipboard(currentImportExportEditText.getText().toString()), // Neutral button (Copy) action. Show the user the settings in JSON format.
-                    true // Dismiss dialog when onNeutralClick.
+                    str("morphe_pref_import_export_title"),
+                    null,
+                    currentImportExportEditText,
+                    str("morphe_settings_save"),
+                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()),
+                    () -> {},
+                    str("morphe_settings_import_copy"),
+                    () -> Utils.setClipboard(currentImportExportEditText.getText().toString()),
+                    true
             );
 
             LinearLayout fileButtonsContainer = getLinearLayout(context);
 
             int margin = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 4f, context.getResources().getDisplayMetrics());
             int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
+            int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
             float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
 
-            Button btnExport = new Button(context);
+            Button btnExport = new Button(context, null, 0);
             btnExport.setText(str("morphe_settings_export_file"));
             btnExport.setAllCaps(false);
             btnExport.setTextSize(14);
             btnExport.setSingleLine(true);
+            btnExport.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            btnExport.setGravity(android.view.Gravity.CENTER);
+            btnExport.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
             btnExport.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
 
             android.graphics.drawable.GradientDrawable exportBg = new android.graphics.drawable.GradientDrawable();
@@ -407,11 +409,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             btnExport.setLayoutParams(exportParams);
             btnExport.setOnClickListener(v -> exportActivity());
 
-            Button btnImport = new Button(context);
+            Button btnImport = new Button(context, null, 0);
             btnImport.setText(str("morphe_settings_import_file"));
             btnImport.setAllCaps(false);
             btnImport.setTextSize(14);
             btnImport.setSingleLine(true);
+            btnImport.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            btnImport.setGravity(android.view.Gravity.CENTER);
+            btnImport.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
             btnImport.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
 
             android.graphics.drawable.GradientDrawable importBg = new android.graphics.drawable.GradientDrawable();
@@ -458,8 +463,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private static LinearLayout getLinearLayout(Context context) {
         LinearLayout fileButtonsContainer = new LinearLayout(context);
         fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         int marginTop = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
         fbParams.setMargins(0, marginTop, 0, 0);
@@ -484,6 +488,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     public void exportActivity() {
         try {
+            Setting.exportToJson(getContext());
+
             String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
             String fileName = "Morphe_Settings_" + formatDate + ".txt";
 
@@ -560,7 +566,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private void importSettingsText(Context context, String replacementSettings) {
         try {
-            existingSettings = Setting.exportToJson(context);
+            existingSettings = Setting.exportToJson(null);
             if (replacementSettings.equals(existingSettings)) {
                 return;
             }
