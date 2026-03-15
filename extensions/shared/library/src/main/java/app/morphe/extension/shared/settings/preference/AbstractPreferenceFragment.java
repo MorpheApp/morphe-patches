@@ -553,7 +553,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
                 if (currentImportExportEditText != null) {
                     currentImportExportEditText.setText(result);
-                    Utils.showToastLong("Settings imported. Press Save to apply.");
+                    Utils.showToastLong("Settings imported successfully, tap Save to apply");
                 } else {
                     importSettingsText(getContext(), result);
                 }
