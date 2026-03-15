@@ -582,6 +582,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             PreferenceManager preferenceManager = getPreferenceManager();
             preferenceManager.setSharedPreferencesName(Setting.preferences.name);
 
+            // Must initialize before adding change listener,
+            // otherwise the syncing of Setting -> UI
+            // causes a callback to the listener even though nothing changed.
             initialize();
             updateUIToSettingValues();
 
