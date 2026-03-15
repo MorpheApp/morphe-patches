@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.Logger;
@@ -26,7 +26,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class SnackbarPatch {
 
-    public static final AtomicBoolean LITHO_SNACKBAR_ACTIVE = new AtomicBoolean(false);
+    private static final AtomicInteger LITHO_INTERCEPTS_REMAINING = new AtomicInteger(0);
     private static final AtomicLong LITHO_TIMESTAMP = new AtomicLong(0);
 
     private static final int YT_BLACK_TEXT = 0xFF0F0F0F;
@@ -38,7 +38,7 @@ public class SnackbarPatch {
 
     public static void onLithoSnackbarPrepare() {
         if (Settings.CUSTOM_SNACKBAR_THEME.get()) {
-            LITHO_SNACKBAR_ACTIVE.set(true);
+            LITHO_INTERCEPTS_REMAINING.set(2);
             LITHO_TIMESTAMP.set(System.currentTimeMillis());
         }
     }
@@ -72,7 +72,7 @@ public class SnackbarPatch {
     }
 
     public static void setLithoSnackBarBackgroundColor(FrameLayout frameLayout, int originalColor) {
-        LITHO_SNACKBAR_ACTIVE.set(false);
+        LITHO_INTERCEPTS_REMAINING.set(0);
 
         if (!Settings.CUSTOM_SNACKBAR_THEME.get()) {
             frameLayout.setBackgroundColor(originalColor);
@@ -148,29 +148,29 @@ public class SnackbarPatch {
 
     public static int getLithoColor(int originalColor) {
         if (!Settings.CUSTOM_SNACKBAR_THEME.get()) return originalColor;
-        if (System.currentTimeMillis() - LITHO_TIMESTAMP.get() > 150) {
-            LITHO_SNACKBAR_ACTIVE.set(false);
+
+        if (LITHO_INTERCEPTS_REMAINING.get() <= 0) return originalColor;
+
+        // Tighter timeout: 100ms
+        if (System.currentTimeMillis() - LITHO_TIMESTAMP.get() > 100) {
+            LITHO_INTERCEPTS_REMAINING.set(0);
             return originalColor;
         }
 
-        if (!LITHO_SNACKBAR_ACTIVE.get()) return originalColor;
-
         boolean isDark = Utils.isDarkModeEnabled();
         int expectedTextColor = isDark ? YT_WHITE_TEXT : YT_BLACK_TEXT;
-        int expectedBgColor = isDark ? YT_BLACK_TEXT : YT_WHITE_TEXT;
 
-        if (originalColor == expectedTextColor || originalColor == expectedBgColor) {
-            if (originalColor == expectedTextColor) {
+        if (originalColor == expectedTextColor) {
+            if (LITHO_INTERCEPTS_REMAINING.decrementAndGet() >= 0) {
                 String customColorString = isDark ? Settings.CUSTOM_SNACKBAR_COLOR_DARK.get() : Settings.CUSTOM_SNACKBAR_COLOR_LIGHT.get();
                 int backgroundColor = Utils.isNotEmpty(customColorString)
                         ? Utils.getColorFromString(customColorString)
                         : Color.parseColor(isDark ? "#FF0F0F0F" : "#FFF1F1F1");
 
                 return getCalculatedTextColor(backgroundColor);
-            } else {
-                return Color.TRANSPARENT;
             }
         }
+
         return originalColor;
     }
 }
