@@ -526,6 +526,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
+    protected static void showLocalizedToast(String resourceKey, String fallbackMessage) {
+        if (ResourceUtils.getIdentifier(ResourceType.STRING, resourceKey) != 0) {
+            Utils.showToastLong(str(resourceKey));
+        } else {
+            Utils.showToastLong(fallbackMessage);
+        }
+    }
+
     private void exportTextToFile(android.net.Uri uri) {
         try {
             OutputStream out = getContext().getContentResolver().openOutputStream(uri);
@@ -537,20 +545,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 out.write(textToExport.getBytes(StandardCharsets.UTF_8));
                 out.close();
 
-                String successKey = "morphe_settings_export_file_success";
-                if (ResourceUtils.getIdentifier(ResourceType.STRING, successKey) != 0) {
-                    Utils.showToastLong(str(successKey));
-                } else {
-                    Utils.showToastLong("Settings exported successfully");
-                }
+                showLocalizedToast("morphe_settings_export_file_success", "Settings exported successfully");
             }
         } catch (Exception e) {
-            String failedKey = "morphe_settings_export_file_failed";
-            if (ResourceUtils.getIdentifier(ResourceType.STRING, failedKey) != 0) {
-                Utils.showToastLong(str(failedKey));
-            } else {
-                Utils.showToastLong("Failed to export settings");
-            }
+            showLocalizedToast("morphe_settings_export_file_failed", "Failed to export settings");
             Logger.printException(() -> "exportTextToFile failure", e);
         }
     }
@@ -566,24 +564,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
                 if (currentImportExportEditText != null) {
                     currentImportExportEditText.setText(result);
-
-                    String successKey = "morphe_settings_import_file_success";
-                    if (ResourceUtils.getIdentifier(ResourceType.STRING, successKey) != 0) {
-                        Utils.showToastLong(str(successKey));
-                    } else {
-                        Utils.showToastLong("Settings imported successfully, tap Save to apply.");
-                    }
+                    showLocalizedToast("morphe_settings_import_file_success", "Settings imported successfully, tap Save to apply");
                 } else {
                     importSettingsText(getContext(), result);
                 }
             }
         } catch (Exception e) {
-            String failedKey = "morphe_settings_import_file_failed";
-            if (ResourceUtils.getIdentifier(ResourceType.STRING, failedKey) != 0) {
-                Utils.showToastLong(str(failedKey));
-            } else {
-                Utils.showToastLong("Failed to import settings");
-            }
+            showLocalizedToast("morphe_settings_import_file_failed", "Failed to import settings");
             Logger.printException(() -> "importTextFromFile failure", e);
         }
     }
