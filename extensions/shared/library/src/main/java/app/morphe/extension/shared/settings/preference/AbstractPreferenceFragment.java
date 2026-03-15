@@ -27,6 +27,7 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.util.Pair;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -362,86 +363,69 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     /**
      * Import / Export Subroutines
      */
+    @NonNull
+    private Button createDialogButton(Context context, String text, int marginLeft, int marginRight, View.OnClickListener listener) {
+        int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
+        int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
+        float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
+
+        Button btn = new Button(context, null, 0);
+        btn.setText(text);
+        btn.setAllCaps(false);
+        btn.setTextSize(14);
+        btn.setSingleLine(true);
+        btn.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        btn.setGravity(android.view.Gravity.CENTER);
+        btn.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
+        btn.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
+
+        android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+        bg.setCornerRadius(radius);
+        bg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
+        btn.setBackground(bg);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, height, 1.0f);
+        params.setMargins(marginLeft, 0, marginRight, 0);
+        btn.setLayoutParams(params);
+        btn.setOnClickListener(listener);
+
+        return btn;
+    }
     public void showImportExportTextDialog() {
         try {
             Context context = getContext();
-            // Must set text before showing dialog,
-            // otherwise text is non-selectable if this preference is later reopened.
+
             existingSettings = Setting.exportToJson(null);
             currentImportExportEditText = getEditText(context);
 
-            // Create a custom dialog with the EditText.
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_pref_import_export_title"), // Title.
-                    null,     // No message (EditText replaces it).
-                    currentImportExportEditText, // Pass the EditText.
-                    str("morphe_settings_save"), // OK button text.
-                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()), // OK button action.
-                    () -> {}, // Cancel button action (dismiss only).
-                    str("morphe_settings_import_copy"), // Neutral button (Copy) text.
-                    () -> Utils.setClipboard(currentImportExportEditText.getText().toString()), // Neutral button (Copy) action. Show the user the settings in JSON format.
-                    true // Dismiss dialog when onNeutralClick.
+                    str("morphe_pref_import_export_title"),
+                    null,
+                    currentImportExportEditText,
+                    str("morphe_settings_save"),
+                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()),
+                    () -> {},
+                    str("morphe_settings_import_copy"),
+                    () -> Utils.setClipboard(currentImportExportEditText.getText().toString()),
+                    true
             );
 
             LinearLayout fileButtonsContainer = getLinearLayout(context);
-
             int margin = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 4f, context.getResources().getDisplayMetrics());
-            int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
-            int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
-            float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
 
-            Button btnExport = new Button(context, null, 0);
-            btnExport.setText(str("morphe_settings_export_file"));
-            btnExport.setAllCaps(false);
-            btnExport.setTextSize(14);
-            btnExport.setSingleLine(true);
-            btnExport.setEllipsize(android.text.TextUtils.TruncateAt.END);
-            btnExport.setGravity(android.view.Gravity.CENTER);
-            btnExport.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
-            btnExport.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
-
-            android.graphics.drawable.GradientDrawable exportBg = new android.graphics.drawable.GradientDrawable();
-            exportBg.setCornerRadius(radius);
-            exportBg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
-            btnExport.setBackground(exportBg);
-
-            LinearLayout.LayoutParams exportParams = new LinearLayout.LayoutParams(0, height, 1.0f);
-            exportParams.setMargins(0, 0, margin, 0);
-            btnExport.setLayoutParams(exportParams);
-            btnExport.setOnClickListener(v -> exportActivity());
-
-            Button btnImport = new Button(context, null, 0);
-            btnImport.setText(str("morphe_settings_import_file"));
-            btnImport.setAllCaps(false);
-            btnImport.setTextSize(14);
-            btnImport.setSingleLine(true);
-            btnImport.setEllipsize(android.text.TextUtils.TruncateAt.END);
-            btnImport.setGravity(android.view.Gravity.CENTER);
-            btnImport.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
-            btnImport.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
-
-            android.graphics.drawable.GradientDrawable importBg = new android.graphics.drawable.GradientDrawable();
-            importBg.setCornerRadius(radius);
-            importBg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
-            btnImport.setBackground(importBg);
-
-            LinearLayout.LayoutParams importParams = new LinearLayout.LayoutParams(0, height, 1.0f);
-            importParams.setMargins(margin, 0, 0, 0);
-            btnImport.setLayoutParams(importParams);
-            btnImport.setOnClickListener(v -> importActivity());
+            Button btnExport = createDialogButton(context, str("morphe_settings_export_file"), 0, margin, v -> exportActivity());
+            Button btnImport = createDialogButton(context, str("morphe_settings_import_file"), margin, 0, v -> importActivity());
 
             fileButtonsContainer.addView(btnExport);
             fileButtonsContainer.addView(btnImport);
 
-            dialogPair.second.addView(fileButtonsContainer, 2);
+            dialogPair.second.addView(fileButtonsContainer);
 
             dialogPair.first.setOnDismissListener(d -> {
                 currentImportExportEditText = null;
             });
 
-            // If there are no settings yet, then show the on-screen keyboard and bring focus to
-            // the edit text. This makes it easier to paste saved settings after a reinstallation.
             dialogPair.first.setOnShowListener(dialogInterface -> {
                 if (existingSettings.isEmpty() && currentImportExportEditText != null) {
                     currentImportExportEditText.postDelayed(() -> {
@@ -454,7 +438,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 }
             });
 
-            // Show the dialog.
             dialogPair.first.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showImportExportTextDialog failure", ex);
