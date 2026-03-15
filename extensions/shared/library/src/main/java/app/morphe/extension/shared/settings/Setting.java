@@ -503,9 +503,9 @@ public abstract class Setting<T> {
 
             String export = json.toString(0);
 
-            // Remove the outer JSON braces to make the output more compact,
+            // Remove the outer JSON braces and append a trailing comma to make manual editing easier
             // and leave less chance of the user forgetting to copy it
-            return export.substring(2, export.length() - 2);
+            return export.substring(2, export.length() - 2) + ",";
         } catch (JSONException e) {
             Logger.printException(() -> "Export failure", e); // should never happen
             return "";
@@ -517,6 +517,12 @@ public abstract class Setting<T> {
      */
     public static boolean importFromJSON(Context alertDialogContext, String settingsJsonString) {
         try {
+            // Strip trailing whitespace and remove the trailing comma if it exists
+            settingsJsonString = settingsJsonString.trim();
+            if (settingsJsonString.endsWith(",")) {
+                settingsJsonString = settingsJsonString.substring(0, settingsJsonString.length() - 1);
+            }
+
             if (!settingsJsonString.matches("[\\s\\S]*\\{")) {
                 settingsJsonString = '{' + settingsJsonString + '}'; // Restore outer JSON braces
             }
