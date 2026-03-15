@@ -238,11 +238,11 @@ public final class AlternativeThumbnailsPatch {
     @NonNull
     private static String buildDeArrowThumbnailURL(String videoId, String fallbackURL) {
         // Build thumbnail request URL.
-        // See https://github.com/ajayyy/DeArrowThumbnailCache/blob/29eb4359ebdf823626c79d944a901492d760bbbc/app.py#L29.
+        // See https://github.com/ajayyy/DeArrowThumbnailCache/blob/a947f33787b8fe2568abc53c86894368e3b61b24/app.py#L38
         return dearrowAPIURI
                 .buildUpon()
-                .appendQueryParameter("videoId", videoId)
-                .appendQueryParameter("redirectURL", fallbackURL)
+                .appendQueryParameter("videoID", videoId)
+                .appendQueryParameter("redirectUrl", fallbackURL)
                 .build()
                 .toString();
     }

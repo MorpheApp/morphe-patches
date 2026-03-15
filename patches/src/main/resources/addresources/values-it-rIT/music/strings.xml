@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Nascondi barra delle categorie</string>
   <string name="morphe_music_hide_category_bar_summary_on">La barra delle categorie è nascosta</string>
   <string name="morphe_music_hide_category_bar_summary_off">La barra delle categorie è mostrata</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Modifica colore Miniplayer</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Il colore del miniplayer corrisponde a quello del lettore a schermo intero</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Il miniplayer usa il colore predefinito</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Abilita miniplayer forzato</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer rimane minimizzato durante le modifiche alla riproduzione</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer si espande a schermo intero durante le modifiche alla riproduzione</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra di navigazione</string>
   <string name="morphe_music_navigation_bar_screen_summary">Nascondi o modifica i pulsanti della barra di navigazione</string>

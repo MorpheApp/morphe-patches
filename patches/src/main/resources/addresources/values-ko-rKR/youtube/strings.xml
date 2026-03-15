@@ -307,9 +307,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI 채팅 요약 숨기기</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI 채팅 요약이 숨겨집니다</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI 채팅 요약이 표시됩니다</string>
-  <string name="morphe_hide_comments_ai_summary_title">AI 댓글 요약 숨기기</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI 댓글 요약이 숨겨집니다</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI 댓글 요약이 표시됩니다</string>
   <string name="morphe_hide_comments_channel_guidelines_title">채널 가이드라인 숨기기</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">채널 가이드라인이 숨겨집니다</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">채널 가이드라인이 표시됩니다</string>
@@ -340,6 +337,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks 버튼 숨기기</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Thanks 버튼이 숨겨집니다</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Thanks 버튼이 표시됩니다</string>
+  <string name="morphe_sanitize_comments_category_bar_title">카테고리 바 정리하기</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">댓글 카테고리 바에서 \'인기순\'과 \'최신순\'을 제외한 카테고리 버튼이 숨겨집니다</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">댓글 카테고리 바에서 카테고리 버튼이 표시됩니다</string>
   <string name="morphe_custom_filter_screen_title">사용자 정의 필터</string>
   <string name="morphe_custom_filter_screen_summary">사용자 정의 필터를 사용하여 구성요소를 숨길 수 있습니다</string>
   <string name="morphe_custom_filter_title">사용자 정의 필터 활성화하기</string>
@@ -540,6 +540,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_like_subscribe_glow_title">빛나는 \'좋아요\' / \'구독\' 비활성화하기</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">동영상에서 \'Like (좋아요)\' 또는 \'Subscribe (구독)\' 버튼이 언급되었을 때, 해당 버튼에 빛나는 애니메이션을 적용하지 않습니다</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">동영상에서 \'Like (좋아요)\' 또는 \'Subscribe (구독)\' 버튼이 언급되었을 때, 해당 버튼에 빛나는 애니메이션을 적용합니다</string>
+  <string name="morphe_hide_action_bar_title">동작 버튼바 숨기기</string>
+  <string name="morphe_hide_action_bar_summary_on">동작 버튼바가 숨겨집니다</string>
+  <string name="morphe_hide_action_bar_summary_off">동작 버튼바가 표시됩니다</string>
   <string name="morphe_hide_like_dislike_button_title">좋아요 &amp; 싫어요 숨기기</string>
   <string name="morphe_hide_like_dislike_button_summary_on">좋아요 &amp; 싫어요 버튼이 숨겨집니다</string>
   <string name="morphe_hide_like_dislike_button_summary_off">좋아요 &amp; 싫어요 버튼이 표시됩니다</string>
@@ -686,7 +689,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">상태바가 불투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">상태바가 불투명하거나 반투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"제한 사항:
-• 동영상 플레이어 상단에 검은색 바가 나타날 수 있습니다.
+• 동영상 플레이어 상단에 검은 여백이 나타날 수 있습니다.
 • 시스템 네비게이션 바가 투명하게 변경될 수 있으며, 동영상에 댓글을 달 수 없습니다."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">밝은 반투명 하단바 비활성화하기</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">밝은 테마에서 하단바가 불투명합니다</string>
@@ -1286,10 +1289,16 @@ Second \"item\" text"</string>
 
 태블릿 레이아웃
 • 커뮤니티 게시물이 숨겨집니다
+• '피드에서 재생' 설정을 사용할 수 없습니다
+• Shorts에서 믹스 버튼과 사운드 버튼을 사용할 수 없습니다
+• 플레이어 동작 버튼바가 접히지 않습니다
 
 오토모티브 레이아웃
-• Shorts가 일반 플레이어에서 재생됩니다
-• 피드가 주제와 채널별로 구성됩니다"</string>
+• 피드가 주제 및 채널별로 구성됩니다
+• '피드에서 재생' 설정을 사용할 수 없습니다
+• Shorts에서 믹스 버튼과 사운드 버튼은 사용할 수 없습니다
+• Shorts가 일반 플레이어에서 열립니다
+• 플레이어 동작 버튼바가 접히지 않습니다"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
   <string name="morphe_spoof_app_version_summary_on">앱 버전이 속여집니다</string>
@@ -1302,7 +1311,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_title">속이기에 사용될 앱 버전</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 이전 \'재생목록에 저장\'을 복원합니다</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 굵은 아이콘을 비활성화합니다</string>
-  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 접히지 않은 동영상 동작바를 복원합니다</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 접히지 않은 플레이어 동작 버튼바를 복원합니다</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
   <string name="morphe_open_system_share_sheet_summary_on">시스템 공유 시트를 사용합니다</string>
@@ -1565,7 +1574,9 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">잘못된 사용자 정의 재생 속도 값입니다</string>
   <string name="morphe_custom_playback_speeds_auto">자동</string>
   <string name="morphe_speed_tap_and_hold_title">사용자 정의 길게 탭하여 동영상 재생 속도</string>
-  <string name="morphe_speed_tap_and_hold_summary">화면을 길게 탭하는 동안에 변경되는 동영상 재생 속도를 0-8 사이에서 지정할 수 있습니다</string>
+  <string name="morphe_speed_tap_and_hold_summary">"화면을 길게 탭하는 동안에 변경되는 동영상 재생 속도를 0-8 사이에서 지정할 수 있습니다
+
+0으로 설정되는 경우에는 길게 탭하여 동영상 재생 속도가 비활성화됩니다"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">동영상 재생 속도 저장 활성화하기</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">동영상 재생 속도 값을 변경할 때마다 기본 동영상 재생 속도로 저장합니다</string>

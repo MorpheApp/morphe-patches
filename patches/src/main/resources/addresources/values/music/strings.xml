@@ -77,10 +77,15 @@ Second \"item\" text"</string>
     <string name="morphe_music_hide_category_bar_summary_on">Category bar is hidden</string>
     <string name="morphe_music_hide_category_bar_summary_off">Category bar is shown</string>
 
-    <!-- layout.miniplayercolor.changeMiniplayerColor -->
+    <!-- layout.miniplayer.changeMiniplayerColor -->
     <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
     <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer color matches fullscreen player</string>
     <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer uses default color</string>
+
+    <!-- layout.miniplayer.enableForcedMiniplayer -->
+    <string name="morphe_music_enable_forced_miniplayer_title">Enable forced miniplayer</string>
+    <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer stays minimized when playback changes</string>
+    <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer expands to fullscreen when playback changes</string>
 
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>

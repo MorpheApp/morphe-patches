@@ -305,9 +305,6 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-chatsammendrag er skjult</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-chatsammendrag vises</string>
-  <string name="morphe_hide_comments_ai_summary_title">Skjul AI Kommentar-oversigt</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">AI-kommentarsammendrag er skjult</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">AI-kommentarsammendrag vises</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalretningslinjer</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanalretningslinjer er skjult</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanalretningslinjer er vist</string>
@@ -338,6 +335,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Tak knappen er skjult</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Tak knappen er vist</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Rens kategorilinje</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Kategori-knapper undtagen \'Top\' og \'Nyeste\' er skjult i kommentarkategorilinjen</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kategori-knapper vises i kommentarkategorilinjen</string>
   <string name="morphe_custom_filter_screen_title">Tilpasset filter</string>
   <string name="morphe_custom_filter_screen_summary">Skjul komponenter ved hjælp af brugerdefinerede filtre</string>
   <string name="morphe_custom_filter_title">Aktiver brugerdefineret filter</string>
@@ -543,6 +543,9 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_disable_like_subscribe_glow_title">Deaktiver Like og Abonner-knappen glød</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Lykke- og abonnér-knappen gløder ikke, når den nævnes</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Lykke- og abonnér-knappen gløder, når den nævnes</string>
+  <string name="morphe_hide_action_bar_title">Skjul handlingsbjælke</string>
+  <string name="morphe_hide_action_bar_summary_on">Handlingsbjælken er skjult</string>
+  <string name="morphe_hide_action_bar_summary_off">Handlingsbjælken vises</string>
   <string name="morphe_hide_like_dislike_button_title">Skjul Like og Dislike</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Lige- og Dislike knapper er skjult</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Lige- og Dislike knapper vises</string>
@@ -1284,14 +1287,20 @@ Er du klar til at indsende?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Bil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Ændringer omfatter:
+  <string name="morphe_change_form_factor_user_dialog_message">"Ændringerne inkluderer:
 
-Tabletlayout
-• Fællesskabsopslag er skjulte
+Tablet layout
+• Opslag fra fællesskabet er skjult
+• Indstilling for afspilning i feeds er ikke tilgængelig
+• Remix-knap og lydknap er ikke tilgængelige i Shorts
+• Videohandlingslinjen er ikke foldet sammen
 
-Automotive-layout
+Bil layout
+• Feed er organiseret efter emner og kanaler
+• Indstilling for afspilning i feeds er ikke tilgængelig
+• Remix-knap og lydknap er ikke tilgængelige i Shorts
 • Shorts åbnes i den almindelige afspiller
-• Feed er organiseret efter emner og kanaler"</string>
+• Videohandlingslinjen er ikke foldet sammen"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app-version</string>
   <string name="morphe_spoof_app_version_summary_on">Version-manipulering</string>
@@ -1566,7 +1575,9 @@ Aktivering af dette kan låse op for højere videokvalitet"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Ugyldige brugerdefinerede afspilningshastigheder</string>
   <string name="morphe_custom_playback_speeds_auto">Automatisk</string>
   <string name="morphe_speed_tap_and_hold_title">Brugerdefineret hastighed, når du holder den nede</string>
-  <string name="morphe_speed_tap_and_hold_summary">Afspilningshastighed mellem 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Afspilningshastighed mellem 0-8
+
+Hvis 0, skal du trykke og holde for at deaktivere hastighed"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Husk ændringer i afspilningshastighed</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Ændring af afspilningshastighed gælder for alle videoer</string>

@@ -305,9 +305,6 @@ Thay đổi bao gồm:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ẩn tóm tắt cuộc trò chuyện do AI tạo</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tóm tắt cuộc trò chuyện do AI tạo đã bị ẩn</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Tóm tắt cuộc trò chuyện do AI tạo được hiển thị</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ẩn tóm tắt bình luận do AI tạo</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Tóm tắt bình luận do AI tạo đã bị ẩn</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Tóm tắt bình luận do AI tạo được hiển thị</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ẩn nguyên tắc kênh</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Nguyên tắc kênh đã bị ẩn</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Nguyên tắc kênh được hiển thị</string>
@@ -338,6 +335,9 @@ Thay đổi bao gồm:
   <string name="morphe_hide_comments_thanks_button_title">Ẩn nút Cảm ơn</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Nút cảm ơn đã bị ẩn</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Nút cảm ơn được hiển thị</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Thu gọn thanh danh mục</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Các nút danh mục, trừ \'Nổi bật nhất\' và \'Mới nhất\', đã bị ẩn trong thanh danh mục của bảng bình luận</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Các nút danh mục được hiển thị trong thanh danh mục của bảng bình luận</string>
   <string name="morphe_custom_filter_screen_title">Bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_screen_summary">Ẩn các thành phần bằng bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_title">Bật bộ lọc tùy chỉnh</string>
@@ -543,6 +543,9 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_disable_like_subscribe_glow_title">Tắt hiệu ứng phát sáng nút Thích và Đăng ký</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Nút Thích và Đăng ký sẽ không phát sáng khi được tương tác</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Nút Thích và Đăng ký sẽ phát sáng khi được tương tác</string>
+  <string name="morphe_hide_action_bar_title">Ẩn thanh thao tác</string>
+  <string name="morphe_hide_action_bar_summary_on">Thanh thao tác đã bị ẩn</string>
+  <string name="morphe_hide_action_bar_summary_off">Thanh thao tác được hiển thị</string>
   <string name="morphe_hide_like_dislike_button_title">Ẩn Thích và Không thích</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Các nút Thích và Không thích đã bị ẩn</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Các nút Thích và Không thích được hiển thị</string>
@@ -1283,14 +1286,20 @@ Bạn đã sẵn sàng gửi?"</string>
   <string name="morphe_change_form_factor_entry_2">Điện thoại</string>
   <string name="morphe_change_form_factor_entry_3">Máy tính bảng</string>
   <string name="morphe_change_form_factor_entry_4">Màn hình ô tô</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Thay đổi bao gồm:
+  <string name="morphe_change_form_factor_user_dialog_message">"Các thay đổi bao gồm:
 
-Bố cục máy tính bảng
-• Bài đăng cộng đồng đã bị ẩn
+Giao diện máy tính bảng
+• Bài đăng của cộng đồng bị ẩn
+• Không có tùy chọn phát trong các trang video
+• Không có nút Phối lại và nút Âm thanh trong Shorts
+• Thanh thao tác video không thu gọn được
 
-Bố cục màn hình ô tô
-• Shorts mở trong trình phát thông thường
-• Bảng tin được sắp xếp theo chủ đề và kênh"</string>
+Giao diện màn hình ô tô
+• Các trang video được sắp xếp theo chủ đề và kênh
+• Không có tùy chọn phát trong các trang video
+• Không có nút Phối lại và nút Âm thanh trong Shorts
+• Mở Shorts bằng trình phát thường
+• Thanh thao tác video không thu gọn được"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Giả mạo phiên bản ứng dụng</string>
   <string name="morphe_spoof_app_version_summary_on">Phiên bản đã được giả mạo</string>
@@ -1564,8 +1573,10 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_custom_playback_speeds_invalid">Tốc độ tùy chỉnh phải nhỏ hơn %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Tốc độ phát lại tùy chỉnh không hợp lệ</string>
   <string name="morphe_custom_playback_speeds_auto">Tự động</string>
-  <string name="morphe_speed_tap_and_hold_title">Tốc độ bấm và giữ tùy chỉnh</string>
-  <string name="morphe_speed_tap_and_hold_summary">Tốc độ phát từ 0 đến 8</string>
+  <string name="morphe_speed_tap_and_hold_title">Tùy chỉnh tốc độ phát khi bấm giữ</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Giá trị tốc độ phát nằm trong khoảng từ 0 đến 8
+
+Nhập 0 để tắt tính năng này"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Nhớ các thay đổi tốc độ phát</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Thay đổi tốc độ phát áp dụng cho tất cả video</string>

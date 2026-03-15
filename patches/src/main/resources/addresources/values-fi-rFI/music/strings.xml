@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Piilota kategoriapalkki</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategoriapalkki piilotetaan</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategoriapalkki näytetään</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Muuta minisoittimen väriä</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Minisoittimen väri vastaa kokoruudun soitinta</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minisoitin käyttää oletusväriä</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Ota pakotettu minisoitin käyttöön</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Minisoitin pysyy piilossa toiston vaihtuessa</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Minisoitin laajenee kokoruutunäytölle toiston vaihtuessa</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigointipalkki</string>
   <string name="morphe_music_navigation_bar_screen_summary">Piilota tai muuta navigointipalkin painikkeita</string>

@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.startupshortsreset
+package app.morphe.patches.youtube.layout.shortsnoresume
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
@@ -16,14 +16,16 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/DisableResumingStartupShortsPlayerPatch;"
+    "Lapp/morphe/extension/youtube/patches/DisableShortsResumingOnStartupPatch;"
 
-val disableResumingShortsOnStartupPatch = bytecodePatch(
-    name = "Disable resuming Shorts on startup",
-    description = "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
+@Suppress("unused")
+val disableShortsResumingOnStartupPatch = bytecodePatch(
+    name = "Disable Shorts resuming on startup",
+    description = "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -31,30 +33,40 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
         versionCheckPatch
     )
 
-    // This patch is obsolete with 21.03 because YT seems to have
-    // removed resuming Shorts functionality.
-    // TODO: Before adding 21.03+, merge this patch into `Hide Shorts component`
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        // 21.03+ seems to no longer have resuming Shorts functionality.
-        if (is_21_03_or_greater) return@execute
-
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_disable_resuming_shorts_player"),
+            SwitchPreference("morphe_disable_shorts_resuming_on_startup"),
         )
 
-        if (is_20_03_or_greater) {
-            UserWasInShortsAlternativeFingerprint.let {
-                it.method.apply {
-                    val match = it.instructionMatches[2]
+        if (is_21_03_or_greater) {
+            UserWasInShortsEvaluateFingerprint.let { fingerprint ->
+                fingerprint.method.apply {
+                    val match = fingerprint.instructionMatches.first()
+                    val instruction = match.instruction as RegisterRangeInstruction
+                    val zMRegister = instruction.startRegister + 2
+
+                    addInstructions(
+                        match.index,
+                        """
+                            invoke-static { v$zMRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup(Z)Z
+                            move-result v$zMRegister
+                        """
+                    )
+                }
+            }
+        } else if (is_20_03_or_greater) {
+            UserWasInShortsListenerFingerprint.let { fingerprint ->
+                fingerprint.method.apply {
+                    val match = fingerprint.instructionMatches[2]
                     val insertIndex = match.index + 1
                     val register = match.getInstruction<OneRegisterInstruction>().registerA
 
                     addInstructions(
                         insertIndex,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup(Z)Z
                             move-result v$register
                         """
                     )
@@ -72,7 +84,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     listenableInstructionIndex,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer()Z
+                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :show_startup_shorts_player
                         return-void
@@ -86,7 +98,7 @@ val disableResumingShortsOnStartupPatch = bytecodePatch(
         UserWasInShortsConfigFingerprint.method.addInstructions(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableResumingStartupShortsPlayer()Z
+                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup()Z
                 move-result v0
                 if-eqz v0, :show
                 const/4 v0, 0x0

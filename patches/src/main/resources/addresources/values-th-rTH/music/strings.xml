@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">ซ่อนแถบหมวดหมู่</string>
   <string name="morphe_music_hide_category_bar_summary_on">ซ่อนแถบหมวดหมู่แล้ว</string>
   <string name="morphe_music_hide_category_bar_summary_off">แสดงแถบหมวดหมู่แล้ว</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">เปลี่ยนสีมินิเพลเยอร์</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">สีมินิเพลเยอร์ตรงกับเครื่องเล่นแบบเต็มหน้าจอ</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">มินิเพลเยอร์ใช้สีเริ่มต้น</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">เปิดใช้งานมินิเพลเยอร์แบบบังคับ</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">มินิเพลเยอร์จะยังคงขนาดเล็กเมื่อการเล่นเพลงมีการเปลี่ยนแปลง</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">มินิเพลเยอร์จะขยายเป็นเต็มหน้าจอเมื่อการเล่นเพลงมีการเปลี่ยนแปลง</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">แถบนำทาง</string>
   <string name="morphe_music_navigation_bar_screen_summary">ซ่อนหรือเปลี่ยนปุ่มแถบนำทาง</string>

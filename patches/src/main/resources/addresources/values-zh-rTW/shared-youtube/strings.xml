@@ -22,38 +22,36 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_name_entry_5">自訂</string>
   <string name="morphe_custom_branding_icon_title">應用程式圖示</string>
   <string name="morphe_custom_branding_icon_entry_1">原始</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe 通知</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe 黑色</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe 深色</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe 輕</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe 淺色</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_5">自訂</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 實驗性提示 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"您正在使用實驗版本的 ⚠️ <b>%1$s</b>
-<br/>
-<br/>
-🔧 可能會遇到奇怪的應用程式行為或未識別的錯誤，因為我們正在調整此應用程式版本的修補。
-<br/>
-<br/>
-如果您想體驗最平順的使用環境，則請移除此版本並修補推薦的應用程式版本：✅ <b>%2$s</b>"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要實驗版本</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要穩定版本</string>
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;應用程式的實驗性版本。
+&lt;br/&gt;&lt;br/&gt;
+🔧 我們仍在微調這個版本的修補程式，預計會出現一些奇怪行為或非發現的程式錯誤。
+&lt;br/&gt;&lt;br/&gt;
+假如您想要最穩定的體驗，請&lt;b&gt;解除安裝&lt;/b&gt;此版本，並改用 ✅ &lt;b&gt;%2$s&lt;/b&gt;應用程式的推薦版本。"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要用實驗版本</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要用穩定版本</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由於 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再顯示</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">偽造影片串流</string>
-  <string name="morphe_spoof_video_streams_screen_summary">偽造用戶端影片串流以避免播放問題</string>
+  <string name="morphe_spoof_video_streams_screen_title">偽裝影片串流</string>
+  <string name="morphe_spoof_video_streams_screen_summary">偽裝客戶端影片串流以避免播放問題</string>
   <string name="morphe_spoof_video_streams_title">偽裝影片串流</string>
   <string name="morphe_spoof_video_streams_summary_on">"已偽裝視訊串流
 
 如果您是 YouTube Premium 使用者，則可能不需要此設定"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"未偽裝視訊串流
+  <string name="morphe_spoof_video_streams_summary_off">"視訊串流未經偽裝
 
-播放可能無法運作"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">未能擷取任何用戶端串流</string>
+影片可能無法播放"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">未能擷取任何客戶端串流</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">關閉此設定可能會導致播放問題。</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -82,28 +80,28 @@ Second \"item\" text"</string>
 5. 看到「裝置已連結」訊息後，請返回這個應用程式"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">開啟網站</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">無法發出啟動碼</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">無法發出啟動權杖</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">登入成功</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">無法頒發驗證權杖</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">成功登入</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"驗證已儲存
 
 • 你的 Morphe 設定不會匯入/匯出 Android VR 驗證資訊。
 • 如果這個應用程式超過 6 個月未使用，Google 將會移除這個驗證授權。
 • 如果你變更 Google 密碼，或在 Google 設定中取消註冊這個裝置，則需要重新登入。"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暫時不可用（API 已逾時）</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR 登入已過期，請重新登入 VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR 登入逾期，請再次登入 VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 暫時不可用（狀態 %d）</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暫時不可用</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">無法登入 VR，網站驗證未獲批准</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">無法登錄 VR：%s</string>
-  <string name="morphe_oauth2_toast_reset">已從 Android VR 中登出</string>
-  <string name="morphe_oauth2_toast_invalid">無效的 VR 登錄權杖，請重新登錄 VR</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">強制播放器 JavaScript 雜湊</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"播放器 JavaScript 雜湊更新已停用
+  <string name="morphe_oauth2_connection_failure_auth_error">無法登入 VR：%s</string>
+  <string name="morphe_oauth2_toast_reset">已登出 Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">VR 登入憑證無效，請再次登入 VR</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">停用播放器 JavaScript 更新</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"播放器 JavaScript 更新已停用
 
-• 需要有效的播放器 JavaScript 雜湊
-• 如果 GVS 撤銷了播放器 JavaScript 雜湊，則播放將失敗"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">播放器 JavaScript 雜湊更新已啟用</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">播放器 JavaScript 雜湊約有效期一個月，且過期的雜湊可能由 GVS 撤銷。</string>
+• 需要有效的播放器 JavaScript 雜湊值
+• 如果 GVS 撤銷了播放器 JavaScript 雜湊值，則會無法播放影片"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">已啟用播放器 JavaScript 更新</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">播放器 JavaScript 雜湊值有效期約一個月，且過期的雜湊值可能被 GVS 撤銷。</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">播放器 JavaScript 雜湊值</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">請輸入有效的播放器 JavaScript 雜湊值</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
@@ -119,11 +117,11 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_summary_on">正在使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary_off">使用預設音訊</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android Studio 以外的任何用戶端</string>
+  <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android Reel 或 TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">追蹤查詢參數已從分享連結中移除</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">追蹤查詢參數未從分享連結中移除</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">已從分享連結中移除追蹤查詢參數</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">未從分享連結中移除追蹤查詢參數</string>
   <string name="morphe_replace_music_with_youtube_title">將分享連結更改為 youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">分享連結使用 youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">分享連結使用 music.youtube.com</string>

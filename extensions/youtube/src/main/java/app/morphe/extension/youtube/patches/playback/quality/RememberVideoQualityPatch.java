@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.playback.quality;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -11,8 +21,9 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import j$.util.Optional;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"rawtypes", "unused"})
 public class RememberVideoQualityPatch {
 
     private static final IntegerSetting videoQualityWifi = Settings.VIDEO_QUALITY_DEFAULT_WIFI;
@@ -64,6 +75,25 @@ public class RememberVideoQualityPatch {
                     qualityLabel)
             );
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Overrides the initial video quality to not follow the 'Video quality preferences' in YouTube settings.
+     * (e.g. 'Auto (recommended)' - 360p/480p, 'Higher picture quality' - 720p/1080p...)
+     * If the maximum video quality available is 1080p and the default video quality is 2160p,
+     * 1080p is used as an initial video quality.
+     * <p>
+     * Called before {@link #newVideoStarted(VideoInformation.PlaybackController)}.
+     */
+    public static Optional getInitialVideoQuality(Optional optional) {
+        int preferredQuality = getDefaultQualityResolution();
+        if (preferredQuality != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
+            Logger.printDebug(() -> "initialVideoQuality: " + preferredQuality);
+            return Optional.of(preferredQuality);
+        }
+        return optional;
     }
 
     /**

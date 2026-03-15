@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -32,6 +34,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -80,6 +83,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+    private final StringFilterGroupList communityPostStringFilterGroup;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -133,6 +137,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_responsive_root.e",
                 "poll_post_responsive_root.e",
                 "shared_post_root.e"
+        );
+        communityPostStringFilterGroup = new StringFilterGroupList();
+        communityPostStringFilterGroup.addAll(
+                new StringFilterGroup(
+                        null,
+                        // home
+                        "horizontalCollectionSwipeProtector=null",
+                        // subscriptions
+                        "heightConstraint=null"
+                )
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -373,8 +387,14 @@ public final class LayoutComponentsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         // This identifier is used not only in players but also in search results:
         // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
         // From 2025, the medical information panel is no longer shown in the search results.
@@ -393,15 +413,9 @@ public final class LayoutComponentsFilter extends Filter {
             return channelProfileGroupList.check(accessibility).isFiltered();
         }
 
-        if (matchedGroup == communityPosts
-                && NavigationBar.isBackButtonVisible()
-                && !NavigationBar.isSearchBarActive()
-                && PlayerType.getCurrent() != PlayerType.WATCH_WHILE_MAXIMIZED) {
-            // Allow community posts on channel profile page,
-            // or if viewing an individual channel in the feed.
-            return false;
+        if (matchedGroup == communityPosts) {
+            return communityPostStringFilterGroup.check(contextInterface.toString()).isFiltered();
         }
-
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
 
@@ -474,6 +488,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
+        // FIXME? Is this feature still relevant? When/where does this microphone appear?
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
     }
 

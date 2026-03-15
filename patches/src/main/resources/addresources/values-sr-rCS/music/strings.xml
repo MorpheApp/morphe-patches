@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Sakrij traku kategorija</string>
   <string name="morphe_music_hide_category_bar_summary_on">Traka kategorija je skrivena</string>
   <string name="morphe_music_hide_category_bar_summary_off">Traka kategorija je prikazana</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Promeni boju mini-plejera</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Boja mini-plejera odgovara plejeru preko celog ekrana</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini-plejer koristi podrazumevanu boju</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Omogući prisilni miniplejer</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplejer ostaje umanjen kada se promeni reprodukcija</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplejer se proširuje na ceo ekran kada se promeni reprodukcija</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Traka za navigaciju</string>
   <string name="morphe_music_navigation_bar_screen_summary">Sakrijte ili promenite dugmad trake za navigaciju</string>

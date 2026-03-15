@@ -95,13 +95,13 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_title">Paksa pemutar hash JavaScript</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_on">"Pembaruan hash pemutar JavaScript dinonaktifkan
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Nonaktifkan pembaruan pemutar JavaScript</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Pembaruan pemutar JavaScript dinonaktifkan
 
-• Diperlukan hash pemutar JavaScript yang sah
+• Diperlukan hash player JavaScript yang sah
 • Pemutaran gagal jika hash pemutar JavaScript dicabut di GVS"</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_summary_off">Pembaruan pemutar hash JavaScript diaktifkan</string>
-  <string name="morphe_spoof_video_streams_force_player_js_hash_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pembaruan pemutar JavaScript diaktifkan</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_title">Hash pemutar JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_summary">Masukkan hash pemutar JavaScript yang sah</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
@@ -117,7 +117,7 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_off">Menggunakan audio bawaan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke klien apa pun kecuali Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke Android Reel atau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Parameter kueri pelacakan dihapus dari tautan yang dibagikan</string>

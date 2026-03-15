@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.shared
@@ -197,5 +199,30 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
             type = "I",
             location = MatchAfterImmediately()
         )
+    )
+)
+
+internal object WatchNextResponseParserFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Ljava/lang/Object;"),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
+        literal(49399797L),
+        opcode(Opcode.SGET_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        literal(51779735L),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(
+            Opcode.CHECK_CAST,
+            location = MatchAfterImmediately()
+        ),
+        literal(46659098L),
     )
 )

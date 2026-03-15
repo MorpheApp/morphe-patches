@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.buttons.navigation
@@ -312,25 +314,6 @@ internal object SettingIntentFingerprint : Fingerprint(
             name = "<init>",
             parameters = listOf("I"),
             location = MatchAfterWithin(5)
-        )
-    )
-)
-
-internal object StreamingDataOuterClassFingerprint : Fingerprint(
-    definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
-            parameters = listOf(),
-            returnType = "Z"
-        ),
-        opcode(Opcode.IF_NEZ),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            name = "mutableCopy"
         )
     )
 )

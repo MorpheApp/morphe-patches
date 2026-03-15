@@ -1,7 +1,8 @@
-package app.morphe.patches.music.layout.miniplayercolor
+package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -27,5 +28,14 @@ internal object SwitchToggleColorFingerprint : Fingerprint(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
         Opcode.IGET
+    )
+)
+
+internal object MinimizedPlayerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        string("w_st")
     )
 )

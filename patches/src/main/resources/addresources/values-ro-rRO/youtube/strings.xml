@@ -305,9 +305,6 @@ Schimbari incluse:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ascunde rezumatul chatului AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Rezumatul chatului AI este ascuns</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Rezumatul chatului AI este afișat</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ascunde rezumatul comentariilor cu IA</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Rezumatul comentariilor AI este ascuns</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Rezumatul comentariilor AI este afișat</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ascunde ghidurile canalului</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Regulile canalului sunt ascunse</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Regulile canalului sunt afișate</string>
@@ -338,6 +335,9 @@ Schimbari incluse:
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Butonul de multumire este ascuns</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Butonul de multumire este afisat</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Curățarea barei de categorii</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Butoanele de categorie, cu excepția \'Top\' și \'Cel mai nou\', sunt ascunse în bara de categorii a comentariilor</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Butoanele de categorie sunt afișate în bara de categorii a comentariilor</string>
   <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
   <string name="morphe_custom_filter_screen_summary">Ascunde componentele folosind filtre personalizate</string>
   <string name="morphe_custom_filter_title">Activează filtru personalizat</string>
@@ -539,6 +539,9 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_disable_like_subscribe_glow_title">Dezactivați luminozitatea butonului Like and Subscribe</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Butonul Like and Subscribe nu va străluci când este menționat</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Butonul Like and Subscribe va străluci când este menționat</string>
+  <string name="morphe_hide_action_bar_title">Ascunde bara de acțiuni</string>
+  <string name="morphe_hide_action_bar_summary_on">Bara de acțiuni este ascunsă</string>
+  <string name="morphe_hide_action_bar_summary_off">Bara de acțiuni este afișată</string>
   <string name="morphe_hide_like_dislike_button_title">Ascunde Like și Dislike</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Butoanele Like și Dislike sunt ascunse</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Butoanele Like și Dislike sunt afișate</string>
@@ -1282,12 +1285,18 @@ Ești gata să trimiți?"</string>
   <string name="morphe_change_form_factor_entry_4">Automatizări</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Modificările includ:
 
-Aspect tabletă
+Aspectul pentru tabletă
 • Postările comunității sunt ascunse
+• Setarea Redare în fluxuri nu este disponibilă
+• Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
+• Bara de acțiuni video nu este pliată
 
-Aspect auto
-• Shorts se deschid în playerul obișnuit
-• Fluxul este organizat pe teme și canale"</string>
+Aspectul pentru Automotive
+• Fluxul este organizat pe teme și canale
+• Setarea Redare în fluxuri nu este disponibilă
+• Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
+• Shorts se deschid în playerul normal
+• Bara de acțiuni video nu este pliată"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary_on">Versiune falsificată</string>
@@ -1562,7 +1571,9 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Viteze de redare personalizate nevalide</string>
   <string name="morphe_custom_playback_speeds_auto">Automat</string>
   <string name="morphe_speed_tap_and_hold_title">Viteză personalizată de apăsare și menținere</string>
-  <string name="morphe_speed_tap_and_hold_summary">Viteză de redare între 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Viteză de redare între 0-8
+
+Dacă 0, atingerea lungă pentru a activa viteza este dezactivată"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Memorează schimbările vitezei de redare</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Schimbarea vitezei de redare se aplică tuturor videoclipurilor</string>

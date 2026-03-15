@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">श्रेणी बार छिपाएं</string>
   <string name="morphe_music_hide_category_bar_summary_on">श्रेणी बार छिपा है</string>
   <string name="morphe_music_hide_category_bar_summary_off">श्रेणी बार दिखाया जाता है</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेयर रंग बदलें</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">मिनीप्लेयर का रंग फुलस्क्रीन प्लेयर के साथ मैच करता है</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">मिनीप्लेयर डिफ़ॉल्ट रंग का उपयोग करता है</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">सशर्त मिनीप्लेयर सक्षम करें</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">प्लेबैक बदलने पर मिनीप्लेयर न्यूनतम बना रहता है</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">प्लेबैक बदलने पर मिनीप्लेयर फुलस्क्रीन में विस्तारित होता है</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">नविगेशन बार</string>
   <string name="morphe_music_navigation_bar_screen_summary">नविगेशन बार बटन छिपाएं या बदलें</string>

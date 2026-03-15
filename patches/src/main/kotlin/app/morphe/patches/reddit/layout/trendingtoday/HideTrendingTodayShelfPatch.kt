@@ -1,13 +1,18 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.reddit.layout.trendingtoday
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
@@ -21,7 +26,7 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
 
@@ -41,11 +46,8 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // region patch for hide trending today contents.
 
-        listOf(
-            TrendingTodayItemFingerprint,
-            TrendingTodayItemLegacyFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.method.addInstructionsWithLabels(
+        fun Fingerprint.applyHideTrendingToday() {
+            method.addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideTrendingTodayShelf()Z
@@ -56,6 +58,13 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
                     nop
                 """
             )
+        }
+
+        TrendingTodayItemFingerprint.applyHideTrendingToday()
+
+        if (!is_2026_11_0_or_greater) {
+            // Legacy seems to be removed in 2026.11.0+
+            TrendingTodayItemLegacyFingerprint.applyHideTrendingToday()
         }
 
         // endregion

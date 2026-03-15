@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.startupshortsreset
+package app.morphe.patches.youtube.layout.shortsnoresume
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
@@ -12,20 +12,35 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
+ * 21.03+
+ */
+internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT_RANGE,
+            name = "<init>",
+            parameters = listOf("L", "Z", "Z", "L", "Z")
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT_RANGE,
+            name = "<init>",
+            parameters = listOf("L", "L", "L", "L", "L", "I"),
+            location = InstructionLocation.MatchAfterWithin(50)
+        )
+    )
+)
+
+/**
  * 20.02+
  */
-internal object UserWasInShortsAlternativeFingerprint : Fingerprint(
+internal object UserWasInShortsListenerFingerprint : Fingerprint(
     returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
         checkCast("Ljava/lang/Boolean;"),
         methodCall(smali = "Ljava/lang/Boolean;->booleanValue()Z", location = InstructionLocation.MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT, InstructionLocation.MatchAfterImmediately()),
-        // 20.40+ string was merged into another string and is a partial match.
-        string("userIsInShorts: ", StringComparisonType.CONTAINS,
-            InstructionLocation.MatchAfterWithin(15)
-        )
+        string("ShortsStartup SetUserWasInShortsListener", StringComparisonType.CONTAINS, InstructionLocation.MatchAfterWithin(30))
     )
 )
 

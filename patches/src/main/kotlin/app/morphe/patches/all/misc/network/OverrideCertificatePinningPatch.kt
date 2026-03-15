@@ -7,21 +7,20 @@ import app.morphe.util.trimIndentMultiline
 import org.w3c.dom.Element
 import java.io.File
 
-private const val NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME =
-    "android:networkSecurityConfig"
+private const val NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME = "android:networkSecurityConfig"
 
 @Suppress("unused")
 val overrideCertificatePinningPatch = resourcePatch(
     name = "Override certificate pinning",
-    description = "Overrides certificate pinning, allowing to inspect traffic via a proxy. " +
-            "This patch does not work with Reddit.",
-    use = false,
+    description = "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
+    use = false
 ) {
     execute {
         val resXmlDirectory = get("res/xml")
         var networkSecurityFileName = "network_security_config.xml"
 
-        // Add android:networkSecurityConfig="@xml/network_security_config" and the "networkSecurityConfig" attribute if it does not exist.
+        // Add android:networkSecurityConfig="@xml/network_security_config"
+        // and the "networkSecurityConfig" attribute if it does not exist.
         document("AndroidManifest.xml").use { document ->
             val applicationNode = document.getElementsByTagName("application").item(0) as Element
 

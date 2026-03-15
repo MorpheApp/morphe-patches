@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Skjul kategorilinje</string>
   <string name="morphe_music_hide_category_bar_summary_on">Kategorilinjen er skjult</string>
   <string name="morphe_music_hide_category_bar_summary_off">Kategorilinjen vises</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Skift miniafspillerfarve</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniafspillerfarven matcher fuldskærmsafspilleren</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniafspilleren bruger standardfarven</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Aktivér tvungen minimapspiller</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Minimapsspilleren forbliver minimeret ved afspilningsændringer</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Minimapsspilleren udvides til fuldskærm ved afspilningsændringer</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationslinje</string>
   <string name="morphe_music_navigation_bar_screen_summary">Skjul eller skift navigationslinjeknapper</string>

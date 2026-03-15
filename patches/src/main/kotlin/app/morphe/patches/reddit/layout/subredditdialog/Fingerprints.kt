@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.reddit.layout.subredditdialog
 
@@ -12,17 +14,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-private val SHOW_DIALOG_FILTERS = listOf(
-    methodCall(
-        opcode = Opcode.INVOKE_VIRTUAL,
-        name = "show"
-    ),
-    opcode(
-        Opcode.MOVE_RESULT_OBJECT,
-        location = MatchAfterImmediately()
-    ),
-)
 
 internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler\$handleFrequentUpdates$",
@@ -80,13 +71,23 @@ internal object NSFWAlertEmitFingerprint : Fingerprint(
 internal object NSFWAlertDialogBuilderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Z"),
-    filters = SHOW_DIALOG_FILTERS
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "show"
+        )
+    )
 )
 
 internal object NSFWAlertDialogInstanceFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
-    filters = SHOW_DIALOG_FILTERS
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "show"
+        )
+    )
 )
 
 internal object NSFWAlertDialogParentFingerprint : Fingerprint(

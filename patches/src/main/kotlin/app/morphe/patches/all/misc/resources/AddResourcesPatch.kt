@@ -129,7 +129,8 @@ internal val locales = listOf(
     AppLocale("zh-rTW", "zh-rTW"),
     AppLocale("zu-rZA", "zu"),
     // Languages not found in YouTube.
-    AppLocale("ga-rIE", "ga", isBuiltInLanguage = false)
+    AppLocale("ga-rIE", "ga", isBuiltInLanguage = false),
+    AppLocale("kmr-rTR", "kmr", isBuiltInLanguage = false)
 )
 
 internal class AppLocale(

@@ -1,5 +1,5 @@
 {
-  "version": "1.17.1-dev.1",
+  "version": "1.19.0-dev.5",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -121,6 +121,7 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -208,9 +209,11 @@
     },
     {
       "name": "Change package name",
-      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues. This patch does not work with Reddit.",
+      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
       "use": false,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": null,
       "options": [
         {
@@ -237,6 +240,15 @@
           "key": "updateProviders",
           "title": "Update providers",
           "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "updateProvidersStrings",
+          "title": "Update providers strings",
+          "description": "Update additional provider names declared by the app in the strings.xml file. Enabling this can fix installation errors, but this can also break features in certain apps.",
           "required": false,
           "type": "kotlin.Boolean",
           "default": false,
@@ -342,6 +354,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
@@ -381,6 +394,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
@@ -409,6 +423,34 @@
           "type": "kotlin.String",
           "default": null,
           "values": null
+        }
+      ]
+    },
+    {
+      "name": "Custom branding name for Reddit",
+      "description": "Changes the Reddit app name to the name specified in patch options.",
+      "use": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
+        ]
+      },
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name of the app.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Reddit Morphe",
+          "values": {
+            "Default": "Reddit Morphe"
+          }
         }
       ]
     },
@@ -467,6 +509,14 @@
       "options": []
     },
     {
+      "name": "Disable Play Store updates",
+      "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Disable QUIC protocol",
       "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
       "use": true,
@@ -491,6 +541,25 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.44.38",
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Disable Shorts resuming on startup",
+      "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -558,31 +627,28 @@
       "options": []
     },
     {
+      "name": "Disable modern home",
+      "description": "Adds an option to disable the modern home UI.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Disable player popup panels",
       "description": "Adds an option to disable panels (such as live chat) from opening automatically.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.youtube": [
-          "20.44.38",
-          "20.40.45",
-          "20.31.42",
-          "20.21.37"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Disable resuming Shorts on startup",
-      "description": "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -744,6 +810,24 @@
     {
       "name": "Enable exclusive audio playback",
       "description": "Enables the option to play audio without video.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.44.54",
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable forced miniplayer",
+      "description": "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -925,6 +1009,7 @@
       "description": "Adds an option to hide the Trending Today shelf from search suggestions.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1096,6 +1181,7 @@
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -1272,12 +1358,15 @@
     },
     {
       "name": "Hide video action buttons",
-      "description": "Adds options to hide action buttons (such as the Download button) under videos. Patching version 20.21.37 or lower can hide more player button types.",
+      "description": "Adds options to hide action buttons (such as the Download button) under videos.",
       "use": true,
       "dependencies": [
-        "ResourcePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1483,7 +1572,7 @@
     },
     {
       "name": "Override certificate pinning",
-      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy. This patch does not work with Reddit.",
+      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
       "use": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1532,6 +1621,7 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1554,7 +1644,8 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "ResourcePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1701,6 +1792,7 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1728,6 +1820,23 @@
           "20.40.45",
           "20.31.42",
           "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Show view count",
+      "description": "Adds an option to show the view count of Posts.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
         ]
       },
       "options": []
@@ -1856,7 +1965,10 @@
           "default": "@android:color/black",
           "values": {
             "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You - Primary": "@android:color/system_accent1_800",
+            "Material You - Secondary": "@android:color/system_accent2_800",
+            "Material You - Tertiary": "@android:color/system_accent3_800",
             "Classic (old YouTube)": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
@@ -1900,7 +2012,10 @@
           "default": "@android:color/black",
           "values": {
             "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You - Primary": "@android:color/system_accent1_800",
+            "Material You - Secondary": "@android:color/system_accent2_800",
+            "Material You - Tertiary": "@android:color/system_accent3_800",
             "Classic (old YouTube)": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
@@ -1920,7 +2035,10 @@
           "default": "@android:color/white",
           "values": {
             "White": "@android:color/white",
-            "Material You": "@android:color/system_neutral1_50",
+            "Material You (Neutral)": "@android:color/system_neutral1_100",
+            "Material You - Primary": "@android:color/system_accent1_200",
+            "Material You - Secondary": "@android:color/system_accent2_200",
+            "Material You - Tertiary": "@android:color/system_accent3_200",
             "Catppuccin (Latte)": "#E6E9EF",
             "Light pink": "#FCCFF3",
             "Light blue": "#D1E0FF",

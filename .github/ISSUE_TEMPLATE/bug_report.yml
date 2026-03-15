@@ -20,6 +20,12 @@ body:
         - Add images and videos if possible
     validations:
         required: true
+  - type: input
+    attributes:
+      label: App version patched
+      description: What app version you are using
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Error logs

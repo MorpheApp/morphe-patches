@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">הסתר סרגל קטגוריות</string>
   <string name="morphe_music_hide_category_bar_summary_on">סרגל הקטגוריות מוסתר</string>
   <string name="morphe_music_hide_category_bar_summary_off">סרגל הקטגוריות מוצג</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">שנה צבע מיני-נגן</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">צבע המיני-נגן תואם לנגן במסך מלא</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">מיני-נגן משתמש בצבע ברירת המחדל</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">הפעלת נגן מיני מאולץ</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">נגן המיני נשאר ממוזער בעת שינוי ניגון</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">נגן המיני מתרחב למסך מלא בעת שינוי ניגון</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">סרגל ניווט</string>
   <string name="morphe_music_navigation_bar_screen_summary">הסתר או שנה לחצני סרגל ניווט</string>

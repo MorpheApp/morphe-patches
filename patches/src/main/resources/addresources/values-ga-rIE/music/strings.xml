@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Folaigh an barra catagóirí</string>
   <string name="morphe_music_hide_category_bar_summary_on">Tá an barra catagóirí i bhfolach</string>
   <string name="morphe_music_hide_category_bar_summary_off">Taispeántar an barra catagóirí</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreora</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Tá dath an mhion-imreoir ag teacht leis an imreoir lánscáileáin</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Úsáideann an mhion-imreoir an dath réamhshocraithe</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Cumas miniplaeyer ardaite</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Fanann miniplaeyer arda a bheith lúibhithe nuair a athrú an t-seicheáil</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Leathnaíonn miniplaeyer go scáileán lánscríofa nuair a athrú an t-seicheáil</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra nascleanúna</string>
   <string name="morphe_music_navigation_bar_screen_summary">Folaigh nó athraigh cnaipí an bharra nascleanúna</string>

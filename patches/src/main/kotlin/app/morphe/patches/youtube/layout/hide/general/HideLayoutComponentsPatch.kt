@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.hide.general
@@ -35,8 +37,11 @@ import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
+import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -126,7 +131,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         versionCheckPatch,
         resourceMappingPatch,
         hideHorizontalShelvesPatch,
-        hideUpdateScreenPatch
+        hideUpdateScreenPatch,
+        lazilyConvertedElementHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -168,7 +174,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 "morphe_comments_screen",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
-                    SwitchPreference("morphe_hide_comments_ai_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
                     SwitchPreference("morphe_hide_comments_prompts"),
                     SwitchPreference("morphe_hide_comments_by_members_header"),
@@ -179,6 +184,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
                     SwitchPreference("morphe_hide_comments_preview_comment"),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
+                    SwitchPreference("morphe_sanitize_comments_category_bar"),
                 ),
                 sorting = Sorting.UNSORTED,
             ),
@@ -266,7 +272,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                 )
             ),
-            SwitchPreference("morphe_hide_floating_microphone_button"),
             SwitchPreference(
                 key = "morphe_hide_horizontal_shelves",
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
@@ -295,6 +300,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
             )
         }
 
+        if (!is_21_11_or_greater) {
+            PreferenceScreen.FEED.addPreferences(
+                SwitchPreference("morphe_hide_floating_microphone_button")
+            )
+        }
+
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_custom_filter_screen",
@@ -311,6 +322,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         addLithoFilter(COMMENTS_FILTER_CLASS_NAME)
         addLithoFilter(KEYWORD_FILTER_CLASS_NAME)
         addLithoFilter(CUSTOM_FILTER_CLASS_NAME)
+        hookTreeNodeResult("$COMMENTS_FILTER_CLASS_NAME->sanitizeCommentsCategoryBar")
 
         // region hide mix playlists
 
@@ -496,18 +508,22 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide floating microphone
 
-        ShowFloatingMicrophoneButtonFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+        if (!is_21_11_or_greater) {
+            // Code has moved in 21.11+, but it's not clear when/where this
+            // floating microphone can show or if this patch is still relevant.
+            ShowFloatingMicrophoneButtonFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    index + 1,
-                    """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
-                        move-result v$register
-                    """,
-                )
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
+                            move-result v$register
+                        """
+                    )
+                }
             }
         }
 

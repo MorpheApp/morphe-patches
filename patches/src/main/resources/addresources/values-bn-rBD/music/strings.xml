@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">ক্যাটাগরি বার লুকান</string>
   <string name="morphe_music_hide_category_bar_summary_on">ক্যাটাগরি বার লুকানো আছে</string>
   <string name="morphe_music_hide_category_bar_summary_off">ক্যাটাগরি বার দেখানো আছে</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">মিনিপ্লেয়ার ডিফল্ট রঙ ব্যবহার করে</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title"> compelled মিনিপ্লেয়ার সক্রিয় করুন</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">প্লেব্যাক পরিবর্তনের সময় মিনিপ্লেয়ার ছোট অবস্থায় থাকে</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">প্লেব্যাক পরিবর্তনের সময় মিনিপ্লেয়ার ফুলস্ক্রিনে প্রসারিত হয়</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">নেভিগেশন বার</string>
   <string name="morphe_music_navigation_bar_screen_summary">নেভিগেশন বারের বোতামগুলি লুকান বা পরিবর্তন করুন</string>

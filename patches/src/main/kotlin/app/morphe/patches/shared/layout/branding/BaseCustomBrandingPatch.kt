@@ -2,6 +2,7 @@ package app.morphe.patches.shared.layout.branding
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatch
@@ -11,24 +12,18 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
+import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.util.ResourceGroup
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
 import app.morphe.util.trimIndentMultiline
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
 import java.io.File
@@ -119,6 +114,7 @@ internal fun baseCustomBrandingPatch(
 
     dependsOn(
         resourceMappingPatch,
+        fixRecycledBitmapPatch,
         bytecodePatch {
             execute {
                 mainActivityOnCreateFingerprint.method.addInstruction(
@@ -130,37 +126,36 @@ internal fun baseCustomBrandingPatch(
                 UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
                 UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
 
-                NotificationFingerprint.method.apply {
-                    val getBuilderIndex = if (isYouTubeMusic) {
-                        // YT Music the field is not a plain object type.
-                        indexOfFirstInstructionOrThrow {
-                            getReference<FieldReference>()?.type == "Landroid/app/Notification\$Builder;"
-                        }
-                    } else {
-                        // Find the field name of the notification builder. Field is an Object type.
-                        val builderCastIndex = indexOfFirstInstructionOrThrow {
-                            val reference = getReference<TypeReference>()
-                            opcode == Opcode.CHECK_CAST &&
-                                    reference?.type == "Landroid/app/Notification\$Builder;"
-                        }
-                        indexOfFirstInstructionReversedOrThrow(builderCastIndex) {
-                            getReference<FieldReference>()?.type == "Ljava/lang/Object;"
+                NotificationBuilderFingerprint.let {
+                    it.method.apply {
+                        mapOf(
+                            2 to "getColor",
+                            0 to "getSmallIcon"
+                        ).forEach { (offset, methodName) ->
+                            val index = it.instructionMatches[offset].index
+                            val register = getInstruction<FiveRegisterInstruction>(index).registerD
+
+                            addInstructions(
+                                index,
+                                """
+                                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$methodName(I)I
+                                    move-result v$register                                
+                                """
+                            )
                         }
                     }
+                }
 
-                    val builderFieldName = getInstruction<ReferenceInstruction>(getBuilderIndex)
-                        .getReference<FieldReference>()
+                NotificationIconFingerprint.let {
+                    it.method.apply {
+                        val index = it.instructionMatches.last().index
+                        val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                    findInstructionIndicesReversedOrThrow(
-                        Opcode.RETURN_VOID
-                    ).forEach { index ->
-                        addInstructionsAtControlFlowLabel(
+                        addInstructions(
                             index,
                             """
-                                move-object/from16 v0, p0
-                                iget-object v0, v0, $builderFieldName
-                                check-cast v0, Landroid/app/Notification${'$'}Builder;
-                                invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setNotificationIcon(Landroid/app/Notification${'$'}Builder;)V
+                                invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getSmallIcon(I)I
+                                move-result v$register                                
                             """
                         )
                     }

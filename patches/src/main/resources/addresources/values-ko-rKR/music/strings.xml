@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">카테고리 바 숨기기</string>
   <string name="morphe_music_hide_category_bar_summary_on">카테고리 바가 숨겨집니다</string>
   <string name="morphe_music_hide_category_bar_summary_off">카테고리 바가 표시됩니다</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">미니 플레이어 색상 변경하기</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">미니 플레이어 색상이 전체 화면 플레이어와 일치합니다</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">미니 플레이어 색상이 기본 색상입니다</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">강제된 미니 플레이어 활성화하기</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">다른 트랙으로 변경돼도 미니 플레이어는 최소화된 상태로 유지됩니다</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">다른 트랙으로 변경되면 미니 플레이어가 전체 화면으로 펼쳐집니다</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">하단바</string>
   <string name="morphe_music_navigation_bar_screen_summary">하단바에서 버튼을 숨기거나 변경할 수 있습니다</string>

@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Ẩn thanh danh mục</string>
   <string name="morphe_music_hide_category_bar_summary_on">Thanh danh mục đã bị ẩn</string>
   <string name="morphe_music_hide_category_bar_summary_off">Thanh danh mục được hiển thị</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Đổi màu trình phát thu nhỏ</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Màu trình phát thu nhỏ khớp với trình phát toàn màn hình</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Trình phát thu nhỏ dùng màu mặc định</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Bật trình phát thu nhỏ bắt buộc</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Trình phát thu nhỏ vẫn ở trạng thái thu nhỏ khi bạn thay đổi video nhạc</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Trình phát thu nhỏ mở rộng thành toàn màn hình khi thay đổi video nhạc</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Thanh điều hướng</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ẩn hoặc thay đổi các nút trên thanh điều hướng</string>

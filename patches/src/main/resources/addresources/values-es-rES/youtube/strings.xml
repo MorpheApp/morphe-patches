@@ -304,9 +304,6 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_ai_chat_summary_title">Ocultar resumen del chat con IA</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">El resumen del chat con IA está oculto</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">El resumen del chat con IA está visible</string>
-  <string name="morphe_hide_comments_ai_summary_title">Ocultar resumen de comentarios con IA</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">El resumen de comentarios con IA está oculto</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">El resumen de comentarios con IA está visible</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ocultar normas del canal</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Las normas del canal están ocultas</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Las normas del canal están visibles</string>
@@ -337,6 +334,9 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botón \"Gracias\"</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">El botón \"Gracias\" está oculto</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">El botón \"Gracias\" está visible</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Desinfectar barra de categorías</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Los botones de categoría, excepto \"Mejores\" y \"Más recientes\", están ocultos en la barra de categorías de comentarios</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Los botones de categoría están visibles en la barra de categorías de comentarios</string>
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Oculta componentes usando filtros personalizados</string>
   <string name="morphe_custom_filter_title">Activar filtro personalizado</string>
@@ -542,6 +542,9 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_disable_like_subscribe_glow_title">Desactivar brillo de \"Me gusta\" y \"Suscribirme\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Los botones \"Me gusta\" y \"Suscribirme\" no brillarán cuando se pulsen</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Los botones \"Me gusta\" y \"Suscribirme\" brillarán cuando se pulsen</string>
+  <string name="morphe_hide_action_bar_title">Ocultar barra de acción</string>
+  <string name="morphe_hide_action_bar_summary_on">La barra de acción está oculta</string>
+  <string name="morphe_hide_action_bar_summary_off">La barra de acción está visible</string>
   <string name="morphe_hide_like_dislike_button_title">Ocultar \"Me gusta\" y \"No me gusta\"</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Los botones \"Me gusta\" y \"No me gusta\" están ocultos</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Los botones \"Me gusta\" y \"No me gusta\" están visibles</string>
@@ -1283,14 +1286,20 @@ a
   <string name="morphe_change_form_factor_entry_2">Teléfono</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automóvil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Los cambios incluyen:
+  <string name="morphe_change_form_factor_user_dialog_message">"Cambios incluyen:
 
-Diseño para tablets
+Diseño para tabletas
 • Las publicaciones de la comunidad están ocultas
+• La configuración de reproducción en los feeds no está disponible
+• El botón de Remix y el botón de Sonido no están disponibles en Shorts
+• La barra de acción del video no se contrae
 
 Diseño para automóviles
-• Los Shorts se abren en el reproductor normal
-• El feed está organizado por temas y canales"</string>
+• El feed está organizado por temas y canales
+• La configuración de reproducción en los feeds no está disponible
+• El botón de Remix y el botón de Sonido no están disponibles en Shorts
+• Shorts se abre en el reproductor regular
+• La barra de acción del video no se contrae"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsificar versión de la app</string>
   <string name="morphe_spoof_app_version_summary_on">Versión falsificada</string>
@@ -1533,8 +1542,8 @@ Activar esto puede desbloquear calidades de vídeo más altas"</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Mostrar notificación al cambiar la calidad de vídeo</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_on">Se muestra una notificación cuando se cambia la calidad de vídeo predeterminada</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_off">No se muestra una notificación cuando se cambia la calidad de vídeo predeterminada</string>
-  <string name="morphe_video_quality_default_wifi_title">Calidad de vídeo predeterminada en la red Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Calidad de vídeo predeterminada en la red móvil</string>
+  <string name="morphe_video_quality_default_wifi_title">Calidad predeterminada de vídeo en la red Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Calidad predeterminada de vídeo en la red móvil</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Recordar cambios en la calidad de Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_on">Los cambios de calidad se aplican a todos los Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_off">Los cambios de calidad solo se aplican al Short actual</string>
@@ -1565,7 +1574,9 @@ Activar esto puede desbloquear calidades de vídeo más altas"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Velocidades personalizadas de reproducción no válidas</string>
   <string name="morphe_custom_playback_speeds_auto">Automático</string>
   <string name="morphe_speed_tap_and_hold_title">Velocidad personalizada al mantener pulsado</string>
-  <string name="morphe_speed_tap_and_hold_summary">Velocidad de reproducción entre 0 y 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Velocidad de reproducción entre 0 y 8
+
+Si es 0, tocar y mantener pulsado desactiva la velocidad"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Recordar cambios de velocidad de reproducción</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Los cambios de velocidad de reproducción se aplican a todos los vídeos</string>

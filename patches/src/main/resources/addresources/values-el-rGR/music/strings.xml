@@ -65,10 +65,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Γραμμή κατηγοριών</string>
   <string name="morphe_music_hide_category_bar_summary_on">Κρυμμένη</string>
   <string name="morphe_music_hide_category_bar_summary_off">Εμφανίζεται</string>
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Αλλαγή χρώματος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Το χρώμα της ελαχιστοποιημένης οθόνης αναπαραγωγής ταιριάζει με αυτό της οθόνης αναπαραγωγής πλήρους οθόνης</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Η ελαχιστοποιημένη οθόνη αναπαραγωγής χρησιμοποιεί το προεπιλεγμένο χρώμα</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Ενεργοποίηση αναγκασμένου miniplayer</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Το miniplayer παραμένει ελαχιστοποιημένο κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Το miniplayer επεκτείνεται σε πλήρη οθόνη κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
   <string name="morphe_music_navigation_bar_screen_summary">Απόκρυψη ή αλλαγή κουμπιών της γραμμής πλοήγησης</string>

@@ -306,9 +306,6 @@ Les changements incluent :
   <string name="morphe_hide_comments_ai_chat_summary_title">Masquer le résumé IA du chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Le résumé IA du chat est masqué</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Le résumé IA du chat est affiché</string>
-  <string name="morphe_hide_comments_ai_summary_title">Masquer le résumé IA des commentaires</string>
-  <string name="morphe_hide_comments_ai_summary_summary_on">Le résumé IA des commentaires est masqué</string>
-  <string name="morphe_hide_comments_ai_summary_summary_off">Le résumé IA des commentaires est affiché</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Masquer les règles de la chaîne</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Les règles de la chaîne sont masquées</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Les règles de la chaîne sont affichées</string>
@@ -339,6 +336,9 @@ Les changements incluent :
   <string name="morphe_hide_comments_thanks_button_title">Masquer le bouton \'Merci\'</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Le bouton \'Merci\' est masqué</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Le bouton \'Merci\' est affiché</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Nettoyer la barre de catégories</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">Les boutons de catégorie, sauf \'Les plus populaires\' et \'Les plus récents\' sont masqués dans la barre de catégories des commentaires</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Les boutons de catégorie sont affichés dans la barre de catégories des commentaires</string>
   <string name="morphe_custom_filter_screen_title">Filtre personnalisé</string>
   <string name="morphe_custom_filter_screen_summary">Masquer des composants en utilisant des filtres personnalisés</string>
   <string name="morphe_custom_filter_title">Activer le filtre personnalisé</string>
@@ -544,6 +544,9 @@ Réglez le volume en balayant verticalement sur le côté droit de l’écran"</
   <string name="morphe_disable_like_subscribe_glow_title">Désactiver la lueur des \'J\'aime\' et \'S\'abonner\'</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Les boutons \'J\'aime\' et \'S\'abonner\' ne s\'illuminerons pas lorsqu\'ils seront mentionnés</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Les boutons \'J\'aime\' et \'S\'abonner\' s\'illuminerons lorsqu\'ils seront mentionnés</string>
+  <string name="morphe_hide_action_bar_title">Masquer la barre d\'action</string>
+  <string name="morphe_hide_action_bar_summary_on">La barre d\'action est masquée</string>
+  <string name="morphe_hide_action_bar_summary_off">La barre d\'action est affichée</string>
   <string name="morphe_hide_like_dislike_button_title">Masquer \'J\'aime\' et \'Je n\'aime pas\'</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Les boutons \'J\'aime\' et \'Je n\'aime pas\' sont masqués</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Les boutons \'J\'aime\' et \'Je n\'aime pas\' sont affichés</string>
@@ -1285,14 +1288,20 @@ Prêt à le soumettre ?"</string>
   <string name="morphe_change_form_factor_entry_2">Téléphone</string>
   <string name="morphe_change_form_factor_entry_3">Tablette</string>
   <string name="morphe_change_form_factor_entry_4">Automobile</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Les changements incluent :
+  <string name="morphe_change_form_factor_user_dialog_message">"Les changements incluent :
 
 Mise en page Tablette
-• Les 'Posts communautaires' sont masqués
+• Les posts communautaires sont masquées
+• Le lecture dans les paramètres de flux n'est pas disponible
+• Le bouton 'Remix' et le bouton 'Son' ne sont pas disponibles dans les Shorts
+• La barre d’actions de la vidéo n’est pas réduite
 
 Mise en page Automobile
+• Le flux est organisé par sujets et par chaînes
+• Le lecture dans les paramètres de flux n'est pas disponible
+• Le bouton 'Remix' et le bouton 'Son' ne sont pas disponibles dans les Shorts
 • Les Shorts s'ouvrent dans le lecteur normal
-• Le flux est organisé par sujets et chaînes"</string>
+• La barre d’actions de la vidéo n’est pas réduite"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifier la version de l\'application</string>
   <string name="morphe_spoof_app_version_summary_on">Version falsifiée</string>
@@ -1569,7 +1578,9 @@ L’activation de cette option peut débloquer des qualités vidéo plus élevé
   <string name="morphe_custom_playback_speeds_parse_exception">Vitesses de lecture personnalisées invalides</string>
   <string name="morphe_custom_playback_speeds_auto">Automatique</string>
   <string name="morphe_speed_tap_and_hold_title">Vitesse personnalisée pour l’appui long</string>
-  <string name="morphe_speed_tap_and_hold_summary">Vitesse de lecture comprise entre 0 et 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Vitesses de lecture entre 0 et 8
+
+Si 0, la vitesse par appui long est désactivée."</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Enregistrer la modification de vitesse de lecture</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">La modification de vitesse de lecture est appliqué pour toutes les vidéos</string>

@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.reddit.misc.settings
 
@@ -14,11 +16,12 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object FragmentHostCallbackFingerprint : Fingerprint(
-    definingClass = "Landroidx/fragment/app/",
-    name = "getActivity",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf()
+internal object RedditActivityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(),
+    filters = listOf(
+        string("android:support:lifecycle")
+    )
 )
 
 internal object PreferenceDestinationFingerprint : Fingerprint(
@@ -28,11 +31,6 @@ internal object PreferenceDestinationFingerprint : Fingerprint(
     parameters = listOf("Lcom/reddit/domain/settings/Destination;"),
     filters = listOf(
         opcode(Opcode.IF_EQZ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "requireContext",
-            returnType = "Landroid/content/Context;"
-        ),
         string("settingIntentProvider")
     )
 )

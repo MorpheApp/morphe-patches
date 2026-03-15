@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -14,6 +16,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
@@ -32,32 +35,16 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
     }
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup qualityMenuFooter;
-    private final StringFilterGroup qualityMenuHeader;
-    private final StringFilterGroup captionsMenuHeader;
+    private final StringFilterGroup videoQualityMenuFooter;
 
     public PlayerFlyoutMenuItemsFilter() {
-        qualityMenuHeader = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER,
-                "quality_sheet_header"
-        );
-
-        qualityMenuFooter = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
-                "quality_sheet_footer",
-                "|divider.e"
-        );
-
-        captionsMenuHeader = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
-                "bottom_sheet_header",
-                "|divider.e"
+        videoQualityMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER,
+                "quality_sheet_footer"
         );
 
         addPathCallbacks(
-                captionsMenuHeader,
-                qualityMenuFooter,
-                qualityMenuHeader,
+                videoQualityMenuFooter,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
@@ -123,7 +110,7 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                         "yt_outline_experimental_vr_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
+                        Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY,
                         "yt_outline_adjust_",
                         "yt_outline_experimental_adjust_"
                 )
@@ -131,17 +118,17 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        if (matchedGroup == qualityMenuHeader)
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
+        if (matchedGroup == videoQualityMenuFooter) {
             return true;
-
-        if (matchedGroup == qualityMenuFooter) {
-            return (path.startsWith("overflow_menu_item.e") || path.startsWith("quick_quality_sheet_content.e"));
         }
-
-        if (matchedGroup == captionsMenuHeader)
-            return true;
 
         if (contentIndex != 0) {
             return false; // Overflow menu is always the start of the path.
