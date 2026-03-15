@@ -35,16 +35,32 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
     }
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup videoQualityMenuFooter;
+    private final StringFilterGroup qualityMenuFooter;
+    private final StringFilterGroup qualityMenuHeader;
+    private final StringFilterGroup captionsMenuHeader;
 
     public PlayerFlyoutMenuItemsFilter() {
-        videoQualityMenuFooter = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER,
-                "quality_sheet_footer"
+        qualityMenuHeader = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER,
+                "quality_sheet_header"
+        );
+
+        qualityMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
+                "quality_sheet_footer",
+                "|divider.e"
+        );
+
+        captionsMenuHeader = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
+                "bottom_sheet_header",
+                "|divider.e"
         );
 
         addPathCallbacks(
-                videoQualityMenuFooter,
+                captionsMenuHeader,
+                qualityMenuFooter,
+                qualityMenuHeader,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
@@ -110,7 +126,7 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                         "yt_outline_experimental_vr_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY,
+                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
                         "yt_outline_adjust_",
                         "yt_outline_experimental_adjust_"
                 )
@@ -126,9 +142,15 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == videoQualityMenuFooter) {
+        if (matchedGroup == qualityMenuHeader)
             return true;
+
+        if (matchedGroup == qualityMenuFooter) {
+            return (path.startsWith("overflow_menu_item.e") || path.startsWith("quick_quality_sheet_content.e"));
         }
+
+        if (matchedGroup == captionsMenuHeader)
+            return true;
 
         if (contentIndex != 0) {
             return false; // Overflow menu is always the start of the path.
