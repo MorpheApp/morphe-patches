@@ -365,20 +365,23 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void showImportExportTextDialog() {
         try {
             Context context = getContext();
+            // Must set text before showing dialog,
+            // otherwise text is non-selectable if this preference is later reopened.
             existingSettings = Setting.exportToJson(context);
             currentImportExportEditText = getEditText(context);
 
+            // Create a custom dialog with the EditText.
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_pref_import_export_title"),
-                    null,
-                    currentImportExportEditText,
-                    str("morphe_settings_save"),
-                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()),
-                    () -> {},
-                    str("morphe_settings_import_copy"),
-                    () -> Utils.setClipboard(currentImportExportEditText.getText().toString()),
-                    true
+                    str("morphe_pref_import_export_title"), // Title.
+                    null,     // No message (EditText replaces it).
+                    currentImportExportEditText, // Pass the EditText.
+                    str("morphe_settings_save"), // OK button text.
+                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()), // OK button action.
+                    () -> {}, // Cancel button action (dismiss only).
+                    str("morphe_settings_import_copy"), // Neutral button (Copy) text.
+                    () -> Utils.setClipboard(currentImportExportEditText.getText().toString()), // Neutral button (Copy) action. Show the user the settings in JSON format.
+                    true // Dismiss dialog when onNeutralClick.
             );
 
             LinearLayout fileButtonsContainer = getLinearLayout(context);
