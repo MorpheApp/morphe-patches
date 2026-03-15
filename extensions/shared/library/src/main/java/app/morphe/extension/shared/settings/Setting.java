@@ -504,6 +504,8 @@ public abstract class Setting<T> {
             String export = json.toString(4);
 
             if (export.startsWith("{") && export.endsWith("}")) {
+                // Remove the outer JSON braces to make the output more compact,
+                // and leave less chance of the user forgetting to copy it
                 export = export.substring(1, export.length() - 1);
             }
 
@@ -511,7 +513,7 @@ public abstract class Setting<T> {
 
             return export + ",";
         } catch (JSONException e) {
-            Logger.printException(() -> "Export failure", e);
+            Logger.printException(() -> "Export failure", e); // Should never happen
             return "";
         }
     }
@@ -528,7 +530,7 @@ public abstract class Setting<T> {
             }
 
             if (!settingsJsonString.trim().startsWith("{")) {
-                settingsJsonString = "{\n" + settingsJsonString + "\n}";
+                settingsJsonString = "{\n" + settingsJsonString + "\n}"; // Restore outer JSON braces
             }
             JSONObject json = new JSONObject(settingsJsonString);
 
