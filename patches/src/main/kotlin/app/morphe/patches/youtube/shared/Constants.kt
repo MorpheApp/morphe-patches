@@ -8,7 +8,7 @@ internal object Constants {
     val COMPATIBILITY_YOUTUBE = Compatibility(
         name = "YouTube",
         packageName = "com.google.android.youtube",
-        apkFileType = ApkFileType.APK,
+        apkFileType = ApkFileType.APK_REQUIRED,
         appIconColor = 0xFF0033,
         signatures = setOf(
             // Android 13+
