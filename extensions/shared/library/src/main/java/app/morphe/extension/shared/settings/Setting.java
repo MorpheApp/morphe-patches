@@ -501,13 +501,12 @@ public abstract class Setting<T> {
                 return "";
             }
 
-            String export = json.toString(0);
+            String export = json.toString(4);
+            export = export.substring(1, export.length() - 1).trim();
 
-            // Remove the outer JSON braces and append a trailing comma to make manual editing easier
-            // and leave less chance of the user forgetting to copy it
-            return export.substring(2, export.length() - 2) + ",";
+            return export + ",";
         } catch (JSONException e) {
-            Logger.printException(() -> "Export failure", e); // should never happen
+            Logger.printException(() -> "Export failure", e);
             return "";
         }
     }
@@ -517,14 +516,14 @@ public abstract class Setting<T> {
      */
     public static boolean importFromJSON(Context alertDialogContext, String settingsJsonString) {
         try {
-            // Strip trailing whitespace and remove the trailing comma if it exists
             settingsJsonString = settingsJsonString.trim();
+
             if (settingsJsonString.endsWith(",")) {
                 settingsJsonString = settingsJsonString.substring(0, settingsJsonString.length() - 1);
             }
 
-            if (!settingsJsonString.matches("[\\s\\S]*\\{")) {
-                settingsJsonString = '{' + settingsJsonString + '}'; // Restore outer JSON braces
+            if (!settingsJsonString.trim().startsWith("{")) {
+                settingsJsonString = "{\n" + settingsJsonString + "\n}";
             }
             JSONObject json = new JSONObject(settingsJsonString);
 
