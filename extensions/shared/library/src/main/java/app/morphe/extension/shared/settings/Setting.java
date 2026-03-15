@@ -501,7 +501,7 @@ public abstract class Setting<T> {
                 return "";
             }
 
-            String export = json.toString(4);
+            String export = json.toString(0);
 
             if (export.startsWith("{") && export.endsWith("}")) {
                 // Remove the outer JSON braces to make the output more compact,
