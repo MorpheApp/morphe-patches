@@ -9,7 +9,7 @@ internal object Constants {
     val COMPATIBILITY_YOUTUBE_MUSIC = Compatibility(
         name = "YouTube Music",
         packageName = "com.google.android.apps.youtube.music",
-        apkFileType = ApkFileType.APK,
+        apkFileType = ApkFileType.APK_REQUIRED,
         appIconColor = 0xFF0000,
         signatures = setOf(
             // Android 13+
