@@ -424,9 +424,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             dialogPair.second.addView(fileButtonsContainer, 2);
 
-            dialogPair.first.setOnDismissListener(d -> {
-                currentImportExportEditText = null;
-            });
+            dialogPair.first.setOnDismissListener(d -> currentImportExportEditText = null);
 
             // If there are no settings yet, then show the on-screen keyboard and bring focus to
             // the edit text. This makes it easier to paste saved settings after a reinstallation.
