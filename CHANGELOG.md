@@ -1,3 +1,10 @@
+# [1.19.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0-dev.6...v1.19.0-dev.7) (2026-03-16)
+
+
+### Bug Fixes
+
+* **YouTube:** Prompt to restart app on first launch of clean install ([#874](https://github.com/MorpheApp/morphe-patches/issues/874)) ([35634b7](https://github.com/MorpheApp/morphe-patches/commit/35634b772b8a7a437d560dcd7e6bf667148957de))
+
 # [1.19.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0-dev.5...v1.19.0-dev.6) (2026-03-16)
 
 

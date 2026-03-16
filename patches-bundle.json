@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-03-16T08:02:48",
-  "description": "# [1.19.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0-dev.5...v1.19.0-dev.6) (2026-03-16)\n\n\n### Bug Fixes\n\n* **YouTube - Captions:** Sometimes auto captions are not disabled in Shorts ([#872](https://github.com/MorpheApp/morphe-patches/issues/872)) ([8efba43](https://github.com/MorpheApp/morphe-patches/commit/8efba43064c21652f6221954fddca436cb89e011))\n* **YouTube - Hide Shorts components:** Shorts shelves are sometimes not hidden ([#870](https://github.com/MorpheApp/morphe-patches/issues/870)) ([301d3b0](https://github.com/MorpheApp/morphe-patches/commit/301d3b0528415b56f49979ef4cf7797d034ad308))\n* **YouTube - Playback speed:** Old playback speed menu does not show with experimental app targets ([d90579f](https://github.com/MorpheApp/morphe-patches/commit/d90579fd93bea9628f787df34e2bbf3302c23e85))\n\n\n### Features\n\n* **Spoof video streams:** Update yt-dlp-ejs ([#871](https://github.com/MorpheApp/morphe-patches/issues/871)) ([0fd599a](https://github.com/MorpheApp/morphe-patches/commit/0fd599a08145c9a78d0882342095a26f6a230102))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.19.0-dev.6/patches-1.19.0-dev.6.mpp",
+  "created_at": "2026-03-16T10:25:56",
+  "description": "# [1.19.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0-dev.6...v1.19.0-dev.7) (2026-03-16)\n\n\n### Bug Fixes\n\n* **YouTube:** Prompt to restart app on first launch of clean install ([#874](https://github.com/MorpheApp/morphe-patches/issues/874)) ([35634b7](https://github.com/MorpheApp/morphe-patches/commit/35634b772b8a7a437d560dcd7e6bf667148957de))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.19.0-dev.7/patches-1.19.0-dev.7.mpp",
   "signature_download_url": "",
-  "version": "1.19.0-dev.6"
+  "version": "1.19.0-dev.7"
 }
