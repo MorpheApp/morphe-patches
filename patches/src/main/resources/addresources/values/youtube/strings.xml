@@ -504,19 +504,19 @@ Limitations:
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
 
-    <!-- misc.loop.loopVideoPatch -->
+    <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_loop_video_title">Enable loop video</string>
     <string name="morphe_loop_video_summary_on">Video will loop</string>
     <string name="morphe_loop_video_summary_off">Video will not loop</string>
 
-    <!-- misc.loop.loopVideoButtonPatch -->
+    <!-- interaction.loop.loopVideoButtonPatch -->
     <string name="morphe_loop_video_button_title">Show loop video button</string>
     <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
     <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
     <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
     <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
 
-    <!-- misc.reload.reloadVideoPatch -->
+    <!-- interaction.reload.reloadVideoPatch -->
     <string name="morphe_reload_video_title">Show reload video button</string>
     <string name="morphe_reload_video_summary_on">Reload video button is shown</string>
     <string name="morphe_reload_video_summary_off">Reload video button is not shown</string>
