@@ -12,6 +12,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.resources.addAppResources
+import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.all.misc.resources.localesReddit
+import app.morphe.patches.all.misc.resources.localesYouTube
+import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
@@ -31,7 +36,6 @@ var is_2026_04_or_greater = false
     private set
 
 val settingsPatch = bytecodePatch(
-    name = "Settings for Reddit",
     description = "Applies mandatory patches to implement Morphe settings into the application."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
@@ -39,6 +43,7 @@ val settingsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         disablePlayStoreUpdatesPatch,
+        addResourcesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
@@ -46,6 +51,10 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
+        setAddResourceLocale(localesReddit)
+        addAppResources("shared")
+        addAppResources("reddit")
+
         /**
          * Set version info
          */
