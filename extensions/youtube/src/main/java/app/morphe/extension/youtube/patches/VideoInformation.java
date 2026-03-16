@@ -189,9 +189,15 @@ public final class VideoInformation {
      * @param playlistId The ID of the last playlist loaded.
      */
     public static void setPlayerResponsePlaylistId(@Nullable String playlistId, boolean isShortAndOpeningOrPlaying) {
-        if (!playerResponseVideoIdIsShort && Utils.isNotEmpty(playlistId) && !playerResponsePlaylistId.equals(playlistId)) {
-            Logger.printDebug(() -> "New player response playlist ID: " + playlistId);
-            playerResponsePlaylistId = playlistId;
+        if (!playerResponseVideoIdIsShort) {
+            if (playlistId == null) {
+                playlistId = "";
+            }
+            if (!playerResponsePlaylistId.equals(playlistId)) {
+                String finalPlaylistId = playlistId;
+                Logger.printDebug(() -> "New player response playlist ID: " + finalPlaylistId);
+                playerResponsePlaylistId = playlistId;
+            }
         }
     }
 
