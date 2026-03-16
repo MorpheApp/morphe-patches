@@ -76,6 +76,7 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup shortsCompactFeedVideo;
     private final ByteArrayFilterGroup shortsCompactFeedVideoBuffer;
     private final StringFilterGroup channelProfile;
+    private final ByteArrayFilterGroup channelProfileShelfHeader;
 
     private final StringFilterGroup autoDubbedLabel;
     private final StringFilterGroup subscribeButton;
@@ -113,6 +114,11 @@ public final class ShortsFilter extends Filter {
         channelProfile = new StringFilterGroup(
                 Settings.HIDE_SHORTS_CHANNEL,
                 "shorts_pivot_item"
+        );
+
+        channelProfileShelfHeader = new ByteArrayFilterGroup(
+                Settings.HIDE_SHORTS_CHANNEL,
+                "Shorts"
         );
 
         // Feed Shorts shelf header.
@@ -432,8 +438,12 @@ public final class ShortsFilter extends Filter {
                 if (contentIndex != 0) {
                     return false;
                 }
-            }
-            if (matchedGroup == channelProfile) {
+                // Check ConversationContext to not hide shelf header in channel profile
+                // This value does not exist in the shelf header in the channel profile
+                if (!contextInterface.isHomeFeedOrRelatedVideo()) {
+                    return false;
+                }
+            } else if (matchedGroup == channelProfile) {
                 return true;
             }
 
@@ -471,6 +481,11 @@ public final class ShortsFilter extends Filter {
                 if (contentIndex != 0) {
                     return false;
                 }
+                // Check ConversationContext to not hide shelf header in channel profile
+                // This value does not exist in the shelf header in the channel profile
+                if (!contextInterface.isHomeFeedOrRelatedVideo()) {
+                    return channelProfileShelfHeader.check(buffer).isFiltered();
+                }
 
                 return shouldHideShortsFeedItems();
             }
@@ -485,7 +500,7 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == useButtons) {
-                return path.contains("button.e") && useButtonsBuffer.check(buffer).isFiltered();
+                return path.contains("|button.e") && useButtonsBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == suggestedAction) {
