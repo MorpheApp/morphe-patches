@@ -49,6 +49,20 @@ public class ExperimentalAppNoticePatch {
         return str(key, args);
     }
 
+    public static boolean experimentalNoticeShouldBeShown() {
+        String appVersionName = Utils.getAppVersionName();
+        String recommendedAppVersion = Utils.getRecommendedAppVersion();
+
+        // The current app is the same or less than the recommended.
+        // YT 21.x uses nn.nn.nnn numbers but still sorts correctly compared to older releases.
+        if (appVersionName.compareTo(recommendedAppVersion) <= 0) {
+            return false;
+        }
+
+        // User already confirmed experimental.
+        return !BaseSettings.EXPERIMENTAL_APP_CONFIRMED.get().equals(appVersionName);
+    }
+
     /**
      * Injection point.
      * <p>
@@ -56,18 +70,12 @@ public class ExperimentalAppNoticePatch {
      */
     public static void showExperimentalNoticeIfNeeded(Activity activity) {
         try {
-            String appVersionName = Utils.getAppVersionName();
-            String recommendedAppVersion = Utils.getRecommendedAppVersion();
-
-            // The current app is the same or less than the recommended.
-            // YT 21.x uses nn.nn.nnn numbers but still sorts correctly compared to older releases.
-            if (appVersionName.compareTo(recommendedAppVersion) <= 0) {
+            if (!experimentalNoticeShouldBeShown()) {
                 return;
             }
 
-            if (BaseSettings.EXPERIMENTAL_APP_CONFIRMED.get().equals(appVersionName)) {
-                return; // User already confirmed experimental.
-            }
+            String appVersionName = Utils.getAppVersionName();
+            String recommendedAppVersion = Utils.getRecommendedAppVersion();
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     activity,

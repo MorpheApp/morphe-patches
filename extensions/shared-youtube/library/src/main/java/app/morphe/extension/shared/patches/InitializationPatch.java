@@ -9,11 +9,15 @@ package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.runOnMainThreadDelayed;
-import static app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment.showRestartDialog;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.util.Pair;
+import android.widget.LinearLayout;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
 public class InitializationPatch {
@@ -24,12 +28,25 @@ public class InitializationPatch {
      * <p>
      * To fix this, show the restart dialog when the app is installed for the first time.
      */
-    public static void onCreate(Activity mActivity) {
+    public static void onCreate(Activity activity) {
         if (!SharedYouTubeSettings.SETTINGS_INITIALIZED.get()) {
-            runOnMainThreadDelayed(() ->
-                    SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true), 1000);
-            runOnMainThreadDelayed(() ->
-                    showRestartDialog(mActivity, str("morphe_restart_first_run")), 3500);
+            runOnMainThreadDelayed(() -> SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true), 1000);
+            runOnMainThreadDelayed(() -> {
+                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                        activity,
+                        str("morphe_settings_restart_title"),   // Title.
+                        str("morphe_restart_first_run"),        // Message.
+                        null,                                       // No EditText.
+                        str("morphe_settings_restart"),         // OK button text.
+                        () -> Utils.restartApp(activity),           // OK button action.
+                        null,                                       // Cancel button action (dismiss only).
+                        null,                                       // No Neutral button text.
+                        null,                                       // No Neutral button action.
+                        true                                        // Dismiss dialog when onNeutralClick.
+                );
+
+                Utils.showDialog(activity, dialogPair.first, false, null);
+            }, 3500);
         }
     }
 }
