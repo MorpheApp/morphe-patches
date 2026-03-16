@@ -165,8 +165,6 @@ public final class LithoFilterPatch {
                     filter.identifierCallbacks, Filter.FilterContentType.IDENTIFIER);
             filterUsingCallbacks(pathSearchTree, filter,
                     filter.pathCallbacks, Filter.FilterContentType.PATH);
-            filterUsingCallbacks(contextSearchTree, filter,
-                    filter.contextCallbacks, Filter.FilterContentType.CONTEXT);
         }
 
         Logger.printDebug(() -> "Using: "
