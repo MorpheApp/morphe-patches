@@ -306,12 +306,17 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     public static void showRestartDialog(Context context) {
+        if (restartDialogMessage == null) {
+            restartDialogMessage = str("morphe_settings_restart_dialog_message");
+        }
+
+        showRestartDialog(context, restartDialogMessage);
+    }
+
+    public static void showRestartDialog(Context context, CharSequence dialogMessage) {
         Utils.verifyOnMainThread();
         if (restartDialogTitle == null) {
             restartDialogTitle = str("morphe_settings_restart_title");
-        }
-        if (restartDialogMessage == null) {
-            restartDialogMessage = str("morphe_settings_restart_dialog_message");
         }
         if (restartDialogButtonText == null) {
             restartDialogButtonText = str("morphe_settings_restart");
@@ -320,7 +325,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 restartDialogTitle,              // Title.
-                restartDialogMessage,            // Message.
+                dialogMessage,                   // Message.
                 null,                            // No EditText.
                 restartDialogButtonText,         // OK button text.
                 () -> Utils.restartApp(context), // OK button action.
