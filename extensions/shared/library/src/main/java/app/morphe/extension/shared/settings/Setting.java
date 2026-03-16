@@ -12,7 +12,7 @@ package app.morphe.extension.shared.settings;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.content.Context;
+import android.app.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -134,18 +134,18 @@ public abstract class Setting<T> {
         /**
          * Called after all settings have been imported.
          */
-        void settingsImported(@Nullable Context context);
+        void settingsImported(@Nullable Activity context);
 
         /**
          * Called after all settings have been exported.
          */
-        void settingsExported(@Nullable Context context);
+        void settingsExported(@Nullable Activity context);
     }
 
     private static final List<ImportExportCallback> importExportCallbacks = new ArrayList<>();
 
     /**
-     * Adds a callback for {@link #importFromJSON(Context, String)} and {@link #exportToJson(Context)}.
+     * Adds a callback for {@link #importFromJSON(Activity, String)} and {@link #exportToJson(Activity)}.
      */
     public static void addImportExportCallback(ImportExportCallback callback) {
         importExportCallbacks.add(Objects.requireNonNull(callback));
@@ -477,7 +477,7 @@ public abstract class Setting<T> {
         json.put(importExportKey, value);
     }
 
-    public static String exportToJson(@Nullable Context alertDialogContext) {
+    public static String exportToJson(@Nullable Activity alertDialogContext) {
         try {
             JSONObject json = new JSONObject();
             for (Setting<?> setting : allLoadedSettingsSorted()) {
@@ -521,7 +521,7 @@ public abstract class Setting<T> {
     /**
      * @return if any settings that require a reboot were changed.
      */
-    public static boolean importFromJSON(Context alertDialogContext, String settingsJsonString) {
+    public static boolean importFromJSON(Activity alertDialogContext, String settingsJsonString) {
         try {
             settingsJsonString = settingsJsonString.trim();
 

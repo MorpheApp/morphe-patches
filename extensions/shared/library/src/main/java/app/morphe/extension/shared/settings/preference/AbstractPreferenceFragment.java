@@ -13,6 +13,7 @@ package app.morphe.extension.shared.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -393,10 +394,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
     public void showImportExportTextDialog() {
         try {
-            Context context = getContext();
+            Activity context = getActivity();
             // Must set text before showing dialog,
             // otherwise text is non-selectable if this preference is later reopened.
-            existingSettings = Setting.exportToJson(null);
+            existingSettings = Setting.exportToJson(context);
             currentImportExportEditText = getEditText(context);
 
             // Create a custom dialog with the EditText.
@@ -476,7 +477,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     public void exportActivity() {
         try {
-            Setting.exportToJson(getContext());
+            Setting.exportToJson(getActivity());
 
             String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
             String fileName = "Morphe_Settings_" + formatDate + ".txt";
@@ -568,7 +569,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 return;
             }
             settingImportInProgress = true;
-            final boolean rebootNeeded = Setting.importFromJSON(context, replacementSettings);
+            final boolean rebootNeeded = Setting.importFromJSON(getActivity(), replacementSettings);
             if (rebootNeeded) {
                 showRestartDialog(context);
             }
