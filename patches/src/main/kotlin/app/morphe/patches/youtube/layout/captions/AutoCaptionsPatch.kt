@@ -1,5 +1,16 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.captions
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -8,6 +19,8 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.video.information.onCreateHook
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -19,7 +32,8 @@ internal val autoCaptionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        videoInformationPatch
     )
 
     execute {
@@ -52,18 +66,12 @@ internal val autoCaptionsPatch = bytecodePatch(
             }
         }
 
-        arrayOf(
-            StartVideoInformerFingerprint to 0,
-            StoryboardRendererDecoderRecommendedLevelFingerprint to 1
-        ).forEach { (fingerprint, enabled) ->
-            fingerprint.method.addInstructions(
-                0,
-                """
-                    const/4 v0, 0x$enabled
-                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setCaptionsButtonStatus(Z)V
-                """
-            )
-        }
+        StartVideoInformerFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->preFetchVideo()V"
+        )
+
+        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
 
         if (is_20_26_or_greater) {
             NoVolumeCaptionsFeatureFlagFingerprint.method.apply {
