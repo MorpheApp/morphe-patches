@@ -29,24 +29,27 @@ public class InitializationPatch {
      * To fix this, show the restart dialog when the app is installed for the first time.
      */
     public static void onCreate(Activity activity) {
-        if (!SharedYouTubeSettings.SETTINGS_INITIALIZED.get()) {
-            runOnMainThreadDelayed(() -> SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true), 1000);
-            runOnMainThreadDelayed(() -> {
-                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                        activity,
-                        str("morphe_settings_restart_title"),   // Title.
-                        str("morphe_restart_first_run"),        // Message.
-                        null,                                       // No EditText.
-                        str("morphe_settings_restart"),         // OK button text.
-                        () -> Utils.restartApp(activity),           // OK button action.
-                        null,                                       // Cancel button action (dismiss only).
-                        null,                                       // No Neutral button text.
-                        null,                                       // No Neutral button action.
-                        true                                        // Dismiss dialog when onNeutralClick.
-                );
-
-                Utils.showDialog(activity, dialogPair.first, false, null);
-            }, 3500);
+        if (SharedYouTubeSettings.SETTINGS_INITIALIZED.get()) {
+            return;
         }
+        runOnMainThreadDelayed(() -> SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true), 1000);
+        runOnMainThreadDelayed(() -> {
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    activity,
+                    str("morphe_settings_restart_title"),   // Title.
+                    str("morphe_restart_first_run"),        // Message.
+                    null,                                       // No EditText.
+                    str("morphe_settings_restart"),         // OK button text.
+                    () -> Utils.restartApp(activity),           // OK button action.
+                    null,                                       // No cancel button.
+                    null,                                       // No Neutral button text.
+                    null,                                       // No Neutral button action.
+                    true                                        // Dismiss dialog when onNeutralClick.
+            );
+
+            Dialog dialog = dialogPair.first;
+            dialog.setCancelable(false);
+            dialog.show();
+        }, 3500);
     }
 }
