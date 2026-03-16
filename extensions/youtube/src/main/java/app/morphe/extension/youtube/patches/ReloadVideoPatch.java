@@ -62,8 +62,12 @@ public final class ReloadVideoPatch {
             } else {
                 String videoId = VideoInformation.getVideoId();
                 String playlistId = VideoInformation.getPlaylistId();
+
+                // Dismiss the player.
                 playerInterfaceRef.get().patch_dismissPlayer();
 
+                // Reopens the video after 500ms.
+                // If the video was opened from a playlist, the playlist ID is also used.
                 Utils.runOnMainThreadDelayed(() -> openVideo(playlistId, videoId), 500);
             }
         } catch (Exception ex) {
