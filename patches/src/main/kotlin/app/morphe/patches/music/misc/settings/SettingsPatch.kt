@@ -13,6 +13,7 @@ import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -88,6 +89,9 @@ val settingsPatch = bytecodePatch(
         experimentalAppNoticePatch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.first()
+        ),
+        initializationPatch(
+            mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint
         )
     )
 
