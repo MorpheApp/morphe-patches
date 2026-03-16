@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+    <resources>
+    <string name="morphe_screen_ads_title">Anuncios</string>
+    <string name="morphe_hide_post_ads_title">Ocultar anuncios del feed</string>
+    <string name="morphe_hide_post_ads_summary">Oculta los anuncios en el feed</string>
+    <string name="morphe_hide_comment_ads_title">Ocultar anuncios en comentarios</string>
+    <string name="morphe_hide_comment_ads_summary">Oculta los anuncios en la sección de comentarios</string>
+
+    <string name="morphe_screen_layout_title">Diseño</string>
+    <string name="morphe_disable_modern_home_title">Desactivar inicio moderno</string>
+    <string name="morphe_disable_modern_home_summary">Desactiva la interfaz de inicio moderno</string>
+    <string name="morphe_disable_screenshot_popup_title">Desactivar ventana emergente de captura</string>
+    <string name="morphe_disable_screenshot_popup_summary">Desactiva la ventana emergente que aparece al hacer una captura de pantalla</string>
+    <string name="morphe_hide_answers_button_title">Ocultar botón de Answers</string>
+    <string name="morphe_hide_answers_button_summary">Oculta el botón de Answers en la barra de navegación</string>
+    <string name="morphe_hide_chat_button_title">Ocultar botón de Chat</string>
+    <string name="morphe_hide_chat_button_summary">Oculta el botón de Chat en la barra de navegación</string>
+    <string name="morphe_hide_create_button_title">Ocultar botón de Crear</string>
+    <string name="morphe_hide_create_button_summary">Oculta el botón de Crear en la barra de navegación</string>
+    <string name="morphe_hide_discover_button_title">Ocultar botón de Discover o Comunidades</string>
+    <string name="morphe_hide_discover_button_summary">Oculta el botón de Discover o Comunidades en la barra de navegación</string>
+    <string name="morphe_hide_games_button_title">Ocultar botón de Juegos</string>
+    <string name="morphe_hide_games_button_summary">Oculta el botón de Juegos en la barra de navegación</string>
+    <string name="morphe_hide_recently_visited_shelf_title">Ocultar sección de Visitados recientemente</string>
+    <string name="morphe_hide_recently_visited_shelf_summary">Oculta la sección de Visitados recientemente en la barra lateral</string>
+    <string name="morphe_hide_games_on_reddit_shelf_title">Ocultar sección de Juegos en Reddit</string>
+    <string name="morphe_hide_games_on_reddit_shelf_summary">Oculta la sección de Juegos en Reddit en la barra lateral</string>
+    <string name="morphe_hide_reddit_pro_shelf_title">Ocultar sección de Reddit Pro</string>
+    <string name="morphe_hide_reddit_pro_shelf_summary">Oculta la sección de Reddit Pro en la barra lateral</string>
+    <string name="morphe_hide_about_shelf_title">Ocultar sección Acerca de</string>
+    <string name="morphe_hide_about_shelf_summary">Oculta la sección Acerca de en la barra lateral</string>
+    <string name="morphe_hide_resources_shelf_title">Ocultar sección de Recursos</string>
+    <string name="morphe_hide_resources_shelf_summary">Oculta la sección de Recursos en la barra lateral</string>
+    <string name="morphe_hide_recommended_communities_shelf_title">Ocultar comunidades recomendadas</string>
+    <string name="morphe_hide_recommended_communities_shelf_summary">Oculta las secciones de comunidades recomendadas en los subreddits</string>
+    <string name="morphe_hide_trending_today_shelf_title">Ocultar sección Tendencias de hoy</string>
+    <string name="morphe_hide_trending_today_shelf_summary">"Oculta la sección Tendencias de hoy de las sugerencias de búsqueda
+
+Limitación: Es posible que los separadores visuales no se oculten"</string>
+    <string name="morphe_remove_notification_dialog_title">Eliminar diálogo de sugerencia de notificaciones</string>
+    <string name="morphe_remove_notification_dialog_summary">Elimina automáticamente el diálogo de sugerencia de notificaciones que aparece al visitar un subreddit</string>
+    <string name="morphe_show_view_count_title">Mostrar contador de vistas</string>
+    <string name="morphe_show_view_count_summary">"Muestra el número de vistas de las publicaciones
+
+Limitación: Solo se muestra si la respuesta de la API incluye el contador de vistas"</string>
+    <string name="morphe_remove_nsfw_dialog_title">Eliminar diálogo de advertencia NSFW</string>
+    <string name="morphe_remove_nsfw_dialog_summary">Elimina automáticamente el diálogo de advertencia NSFW que aparece al visitar un subreddit</string>
+
+    <string name="morphe_screen_miscellaneous_title">Misceláneo</string>
+    <string name="morphe_about_title">Acerca de</string>
+    <string name="morphe_about_summary">Versión del parche y enlaces oficiales</string>
+    <string name="morphe_sanitize_sharing_links_title">Sanear enlaces compartidos</string>
+    <string name="morphe_sanitize_sharing_links_summary">Limpia los enlaces compartidos eliminando los parámetros de seguimiento</string>
+    <string name="morphe_open_links_directly_title">Abrir enlaces directamente</string>
+    <string name="morphe_open_links_directly_summary">Omite las URL de redirección en los enlaces externos</string>
+    <string name="morphe_pref_import_export_title">Importar / Exportar</string>
+    <string name="morphe_pref_import_export_summary">Importar / Exportar ajustes de Morphe</string>
+    <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
+    <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>
+    <string name="morphe_settings_about_links_dev_header">Nota</string>
+    <string name="morphe_settings_about_links_dev_body">Esta versión es preliminar y podrías experimentar problemas inesperados</string>
+    <string name="morphe_settings_about_links_header">Enlaces oficiales</string>
+    <string name="morphe_settings_about_links_website">Sitio web</string>
+    <string name="morphe_settings_about_links_donate">Donar</string>
+    <string name="morphe_settings_about_links_translations">Traducciones</string>
+</resources>
