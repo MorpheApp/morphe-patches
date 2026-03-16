@@ -1,23 +1,17 @@
-package app.morphe.extension.youtube.sponsorblock.ui;
+package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.ReloadVideoPatch;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
-import app.morphe.extension.youtube.videoplayer.PlayerControlButton;
 
 @SuppressWarnings("unused")
-public class VotingButton {
+public class ReloadVideoButton {
     @Nullable
     private static PlayerControlButton instance;
-
-    public static void hideControls() {
-        if (instance != null) instance.hide();
-    }
 
     /**
      * injection point.
@@ -26,14 +20,14 @@ public class VotingButton {
         try {
             instance = new PlayerControlButton(
                     controlsView,
-                    "morphe_sb_voting_button",
+                    "morphe_reload_video_button",
                     null,
-                    VotingButton::isButtonEnabled,
-                    v -> SponsorBlockUtils.onVotingClicked(v.getContext()),
+                    Settings.RELOAD_VIDEO::get,
+                    v -> ReloadVideoPatch.reloadVideo(),
                     null
             );
         } catch (Exception ex) {
-            Logger.printException(() -> "initializeButton failure", ex);
+            Logger.printException(() -> "initialize failure", ex);
         }
     }
 
@@ -56,11 +50,5 @@ public class VotingButton {
      */
     public static void setVisibility(boolean visible, boolean animated) {
         if (instance != null) instance.setVisibility(visible, animated);
-    }
-
-    private static boolean isButtonEnabled() {
-        return Settings.SB_ENABLED.get() && Settings.SB_VOTING_BUTTON.get()
-                && SegmentPlaybackController.videoHasSegments()
-                && !SegmentPlaybackController.isAdProgressTextVisible();
     }
 }

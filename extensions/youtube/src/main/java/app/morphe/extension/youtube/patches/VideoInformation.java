@@ -66,6 +66,7 @@ public final class VideoInformation {
     private static long videoLength = 0;
     private static long videoTime = -1;
 
+    private static volatile String playerResponsePlaylistId = "";
     private static volatile String playerResponseVideoId = "";
     private static volatile boolean playerResponseVideoIdIsShort;
     private static volatile boolean videoIdIsShort;
@@ -180,6 +181,18 @@ public final class VideoInformation {
             }
         }
         return signature; // Return the original value since we are observing and not modifying.
+    }
+
+    /**
+     * Injection point.  Called off the main thread.
+     *
+     * @param playlistId The ID of the last playlist loaded.
+     */
+    public static void setPlayerResponsePlaylistId(@Nullable String playlistId, boolean isShortAndOpeningOrPlaying) {
+        if (!playerResponseVideoIdIsShort && Utils.isNotEmpty(playlistId) && !playerResponsePlaylistId.equals(playlistId)) {
+            Logger.printDebug(() -> "New player response playlist ID: " + playlistId);
+            playerResponsePlaylistId = playlistId;
+        }
     }
 
     /**
@@ -344,6 +357,16 @@ public final class VideoInformation {
     @NonNull
     public static String getVideoId() {
         return videoId;
+    }
+
+    /**
+     * This is the playlistId of the player response, but since Shorts does not support playlists, it is the same as the current playlistId.
+     *
+     * @return The playlist id of the video.
+     */
+    @NonNull
+    public static String getPlaylistId() {
+        return playerResponsePlaylistId;
     }
 
     /**
