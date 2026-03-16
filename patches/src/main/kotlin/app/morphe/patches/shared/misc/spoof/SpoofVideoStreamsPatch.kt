@@ -90,7 +90,7 @@ private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
                 "astring-1.9.0.min.js",
                 "meriyah-6.1.4.min.js",
                 "polyfill.js",
-                "yt.solver.core.js", // yt-dlp-ejs 0.5.1: https://github.com/MorpheApp/ejs/releases/tag/0.5.1
+                "yt.solver.core.js", // yt-dlp-ejs 0.7.0: https://github.com/yt-dlp/ejs/releases/tag/0.7.0
             )
         )
 
