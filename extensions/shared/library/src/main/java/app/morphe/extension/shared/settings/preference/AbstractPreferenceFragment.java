@@ -64,6 +64,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         public DebouncedListView(Context context) {
             super(context);
+
+            setId(android.R.id.list); // Required so PreferenceFragment recognizes it.
+
+            // Match the default layout params
+            setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+            ));
         }
 
         @Override
@@ -104,7 +112,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Nullable
     protected static CharSequence restartDialogTitle, restartDialogMessage, restartDialogButtonText, confirmDialogTitle;
 
-    private long lastClickTime = 0;
     private static final int READ_REQUEST_CODE = 42;
     private static final int WRITE_REQUEST_CODE = 43;
     private String existingSettings = "";
@@ -530,16 +537,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        DebouncedListView list = new DebouncedListView(getActivity());
-        list.setId(android.R.id.list); // Required so PreferenceFragment recognizes it.
-
-        // Match the default layout params
-        list.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-        ));
-
-        return list;
+        return new DebouncedListView(getActivity());
     }
 
     @Override
