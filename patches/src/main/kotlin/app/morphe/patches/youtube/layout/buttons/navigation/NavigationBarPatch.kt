@@ -62,7 +62,6 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
