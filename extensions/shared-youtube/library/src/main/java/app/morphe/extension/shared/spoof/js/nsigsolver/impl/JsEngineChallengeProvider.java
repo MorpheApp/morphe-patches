@@ -114,9 +114,12 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
                 ensureIsolate();
 
                 String result = jsIsolate.evaluateJavaScriptAsync(stdin).get();
+                // Periodically reset the isolate to prevent memory leaks.
+                /*
                 if (!warmup) {
                     resetIsolate();
                 }
+                 */
                 executeCount++;
 
                 return result;
