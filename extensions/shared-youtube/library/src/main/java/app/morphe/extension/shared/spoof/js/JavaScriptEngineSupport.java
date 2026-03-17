@@ -1,5 +1,7 @@
 package app.morphe.extension.shared.spoof.js;
 
+import android.webkit.CookieManager;
+
 import androidx.javascriptengine.JavaScriptSandbox;
 
 import app.morphe.extension.shared.Logger;
@@ -11,13 +13,16 @@ public class JavaScriptEngineSupport {
     private static final boolean DEVICE_SUPPORTS_JS_ENGINE;
 
     static {
-        boolean supported = false;
+        boolean sandBoxSupport = false;
         try {
-            supported = JavaScriptSandbox.isSupported();
+            // Checks if the system WebView is supported.
+            CookieManager.getInstance();
+            // Checks if the system WebView supports the JavaScript sandbox.
+            sandBoxSupport = JavaScriptSandbox.isSupported();
         } catch (Exception ex) {
             Logger.printException(() -> "JavaScriptSandbox support check failed", ex);
         }
-        DEVICE_SUPPORTS_JS_ENGINE = supported;
+        DEVICE_SUPPORTS_JS_ENGINE = sandBoxSupport;
 
         Logger.printDebug(() -> DEVICE_SUPPORTS_JS_ENGINE
                 ? "Device supports JavaScriptEngine"
