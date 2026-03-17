@@ -18,13 +18,9 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.annotation)
-
+    implementation(libs.androidx.javascriptengine)
     implementation(libs.gson)
     implementation(libs.protobuf.javalite)
-
-    implementation(libs.javascriptengine)
-
     implementation(project(":extensions:shared:library"))
 }
 
