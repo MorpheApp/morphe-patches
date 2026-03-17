@@ -17,20 +17,14 @@ import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousP
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**
- * Preference fragment for Reddit Morphe settings
+ * Preference fragment for Reddit Morphe settings.
  */
 @SuppressWarnings("deprecation")
 public class RedditPreferenceFragment extends AbstractPreferenceFragment {
 
     @Override
     protected void initialize() {
-        final Context context = getContext();
-
-        // Currently no resources can be compiled for Reddit due to apktool limitations.
-        // So all Reddit Strings are hard coded in extensions.
-        restartDialogTitle = "Restart required";
-        restartDialogMessage = "Restart the app for this change to take effect.";
-        restartDialogButtonText = "Restart";
+        Context context = getContext();
 
         PreferenceScreen preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
         setPreferenceScreen(preferenceScreen);

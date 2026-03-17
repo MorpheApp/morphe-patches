@@ -1,5 +1,8 @@
 package app.morphe.extension.shared.settings.preference;
 
+import static app.morphe.extension.shared.ResourceUtils.getStringArray;
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -9,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 
 /**
  * PreferenceList that sorts itself.
@@ -112,6 +116,16 @@ public class SortedListPreference extends CustomDialogListPreference {
         super(context);
 
         sortEntryAndValues(getFirstEntriesToPreserve());
+    }
+
+    public SortedListPreference(Context context, Setting<?> setting) {
+        this(context);
+
+        String key = setting.key;
+        setKey(key);
+        setTitle(str(key + "_title"));
+        setEntries(getStringArray(key + "_entries"));
+        setEntryValues(getStringArray(key + "_entry_values"));
     }
 
     /**
