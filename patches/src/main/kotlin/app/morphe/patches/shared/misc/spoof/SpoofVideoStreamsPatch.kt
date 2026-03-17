@@ -19,7 +19,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.rawResourcePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -51,8 +51,9 @@ internal const val EXTENSION_CLASS_DESCRIPTOR =
 private lateinit var buildRequestMethodRef : WeakReference<MutableMethod>
 private var buildRequestMethodURLRegister = -1
 
-private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
+private val spoofVideoStreamsResourcePatch = resourcePatch {
     execute {
+        // region copy the ejs wrapper.
 
         copyResources(
             "spoof",
@@ -65,6 +66,8 @@ private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
                 "yt.solver.wrapper.js",
             )
         )
+
+        // endregion
     }
 }
 
@@ -86,7 +89,7 @@ internal fun spoofVideoStreamsPatch(
 
     dependsOn(
         fixProtoLibraryPatch,
-        spoofVideoStreamsRawResourcePatch,
+        spoofVideoStreamsResourcePatch,
     )
 
     execute {
