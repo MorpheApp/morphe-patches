@@ -80,6 +80,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Nullable
     protected static CharSequence restartDialogTitle, restartDialogMessage, restartDialogButtonText, confirmDialogTitle;
 
+    private long lastClickTime = 0;
     private static final int READ_REQUEST_CODE = 42;
     private static final int WRITE_REQUEST_CODE = 43;
     private String existingSettings = "";
@@ -500,6 +501,27 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             startActivityForResult(intent, READ_REQUEST_CODE);
         } catch (Exception ex) {
             Logger.printException(() -> "importActivity failure", ex);
+        }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        View view = getView();
+        if (view != null) {
+            View listView = view.findViewById(android.R.id.list);
+            if (listView instanceof android.widget.ListView list) {
+                android.widget.AdapterView.OnItemClickListener originalListener = list.getOnItemClickListener();
+                list.setOnItemClickListener((parent, v, position, id) -> {
+                    if (android.os.SystemClock.elapsedRealtime() - lastClickTime < 500) {
+                        return;
+                    }
+                    lastClickTime = android.os.SystemClock.elapsedRealtime();
+                    if (originalListener != null) {
+                        originalListener.onItemClick(parent, v, position, id);
+                    }
+                });
+            }
         }
     }
 
