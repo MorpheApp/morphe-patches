@@ -14,12 +14,20 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
+internal object NewAdvancedQualityMenuStyleFlyout : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    filters = listOf(
+        literal(45712556)
+    )
+)
 
 internal object CurrentVideoFormatToStringFingerprint : Fingerprint(
     name = "toString",

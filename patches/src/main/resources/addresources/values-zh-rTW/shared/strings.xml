@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">應用程式語言</string>
   <string name="morphe_pref_import_export_title">匯入/匯出</string>
   <string name="morphe_pref_import_export_summary">匯入/匯出 Morphe 設定</string>
+  <string name="morphe_settings_import_file">從檔案匯入</string>
+  <string name="morphe_settings_import_file_success">設定已成功匯入，點擊儲存以套用</string>
+  <string name="morphe_settings_import_file_failed">匯入設定失敗</string>
+  <string name="morphe_settings_export_file">匯出至檔案</string>
+  <string name="morphe_settings_export_file_success">設定匯出成功</string>
+  <string name="morphe_settings_export_file_failed">匯出設定失敗</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 <i>%s</i></string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式，請使用 Morphe 重新修補此應用程式</string>
@@ -69,6 +75,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">網站</string>
   <string name="morphe_settings_about_links_donate">捐贈</string>
   <string name="morphe_settings_about_links_translations">翻譯</string>
+  <string name="morphe_settings_about_links_credits">權榮</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">最新版本</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">有更新可用</string>
+  <string name="morphe_settings_about_contributors_current">目前開發中</string>
+  <string name="morphe_settings_about_contributors_prior">先前開發</string>
+  <string name="morphe_settings_about_links_morphe">目前開發中</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
   <string name="morphe_debug_screen_summary">啟用或停用偵錯選項</string>

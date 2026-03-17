@@ -100,7 +100,7 @@ public class MorpheAboutPreference extends Preference {
         }
 
         WebLink(String name, @Nullable String subText, String url) {
-            this(false, name, url, subText);
+            this(false, name, subText, url);
         }
 
         WebLink(boolean preferred, String name, @Nullable String subText, String url) {
@@ -121,6 +121,10 @@ public class MorpheAboutPreference extends Preference {
                     ", url='" + url + '\'' +
                     '}';
         }
+    }
+
+    public static void showVancedAsPastContributor(boolean includeVanced) {
+        MorpheCreditsDialog.showVancedAsPastContributor = includeVanced;
     }
 
     /**
@@ -181,7 +185,7 @@ public class MorpheAboutPreference extends Preference {
     // Dummy url
     static final String CREDITS_LINK_PLACEHOLDER_URL = "https://morphe.software/credits/";
 
-    static final WebLink CREDITS_LINK = new WebLink("credits", CREDITS_LINK_PLACEHOLDER_URL, null);
+    static final WebLink CREDITS_LINK = new WebLink("credits", null, CREDITS_LINK_PLACEHOLDER_URL);
 
     private static String useNonBreakingHyphens(String text) {
         // Replace any dashes with non-breaking dashes, so the English text 'pre-release'
@@ -198,7 +202,7 @@ public class MorpheAboutPreference extends Preference {
         return str(key, args);
     }
 
-    private String createDialogHtml(WebLink[] aboutLinks, @Nullable String currentVersion) {
+    private String createDialogHtml(List<WebLink> aboutLinks, @Nullable String currentVersion) {
         final boolean isNetworkConnected = Utils.isNetworkConnected();
 
         // Get theme colors.
@@ -469,7 +473,7 @@ public class MorpheAboutPreference extends Preference {
                                          @Nullable Handler handler,
                                          Runnable showDialogRunnable,
                                          @Nullable ProgressDialog progress) {
-        WebLink[] links = AboutRoutes.fetchAboutLinks();
+        List<WebLink> links = AboutRoutes.fetchAboutLinks();
         String currentVersion = AboutRoutes.getLatestPatchesVersion();
         String htmlDialog = createDialogHtml(links, currentVersion);
 
@@ -486,7 +490,7 @@ public class MorpheAboutPreference extends Preference {
             }
 
             // Don't continue if the activity is done. To test this tap the
-            // about dialog and immediately press back before the dialog can show.
+            // dialog and immediately press back before the dialog can show.
             if (context instanceof Activity activity) {
                 if (activity.isFinishing() || activity.isDestroyed()) {
                     Logger.printDebug(() -> "Not showing about dialog, activity is closed");
@@ -591,10 +595,10 @@ class AboutRoutes {
     /**
      * Links to use if fetch links api call fails.
      */
-    private static final WebLink[] NO_CONNECTION_STATIC_LINKS = {
+    private static final List<WebLink> NO_CONNECTION_STATIC_LINKS = List.of(
             new WebLink(true, "Website", null, "https://morphe.software"),
             CREDITS_LINK
-    };
+    );
 
     private static final String API_URL = "https://api.morphe.software/v2";
     private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
@@ -659,13 +663,13 @@ class AboutRoutes {
     }
 
     @Nullable
-    private static volatile WebLink[] fetchedLinks;
+    private static volatile List<WebLink> fetchedLinks;
 
     static boolean hasFetchedLinks() {
         return fetchedLinks != null;
     }
 
-    static WebLink[] fetchAboutLinks() {
+    static List<WebLink> fetchAboutLinks() {
         try {
             if (hasFetchedLinks()) return fetchedLinks;
 
@@ -710,7 +714,7 @@ class AboutRoutes {
 
             Logger.printDebug(() -> "links: " + links);
 
-            return fetchedLinks = links.toArray(new WebLink[0]);
+            return fetchedLinks = links;
 
         } catch (SocketTimeoutException ex) {
             Logger.printInfo(() -> "Could not fetch about information", ex); // No toast.
@@ -726,19 +730,38 @@ class AboutRoutes {
 
 class MorpheCreditsDialog extends Dialog {
 
-    private static final MorpheAboutPreference.WebLink[] WORKS_LINKS_CURRENT = {
-            new WebLink("Morphe", "https://github.com/morpheapp/morphe-patches/graphs/contributors", str("morphe_settings_about_links_morphe")
-            ),
-    };
-
-    private static final MorpheAboutPreference.WebLink[] WORKS_LINKS_PRIOR = {
-            new WebLink("RVX", "https://github.com/inotia00/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025", str("morphe_settings_about_links_rvx")
-            ),
-            new WebLink("ReVanced", "https://github.com/ReVanced/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025", str("morphe_settings_about_links_rv")
-            ),
-            new WebLink("Vanced", "https://github.com/TeamVanced", str("morphe_settings_about_links_vanced")
+    private static final List<WebLink> WORKS_LINKS_CURRENT = List.of(
+            new WebLink("Morphe",
+                    str("morphe_settings_about_links_morphe"),
+                    "https://github.com/morpheapp/morphe-patches/graphs/contributors"
             )
-    };
+    );
+
+    private static final List<WebLink> WORKS_LINKS_PRIOR = List.of(
+            new WebLink("RVX",
+                    str("morphe_settings_about_links_rvx"),
+                    "https://github.com/inotia00/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025"
+                    ),
+            new WebLink("ReVanced",
+                    str("morphe_settings_about_links_rv"),
+                    "https://github.com/ReVanced/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025"
+            )
+    );
+
+    private static final WebLink WORKS_VANCED = new WebLink("Vanced",
+            str("morphe_settings_about_links_vanced"),
+            "https://github.com/TeamVanced"
+    );
+
+    static boolean showVancedAsPastContributor = true;
+
+    private static List<WebLink> getWorksLinksPrior() {
+        List<WebLink> prior = new ArrayList<>(WORKS_LINKS_PRIOR);
+        if (showVancedAsPastContributor) {
+            prior.add(WORKS_VANCED);
+        }
+        return prior;
+    }
 
     private String createDialogHtml() {
         // Get theme colors.
@@ -876,14 +899,13 @@ class MorpheCreditsDialog extends Dialog {
             <div class="credits-section">
                 <div class="section-label">%s</div>
             """, StringRef.str("morphe_settings_about_contributors_current")));
-        for (MorpheAboutPreference.WebLink link : WORKS_LINKS_CURRENT) {
+        for (WebLink link : WORKS_LINKS_CURRENT) {
             String initial = link.name.substring(0, 1).toUpperCase();
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")
                     .append("<div class=\"contributor-info\">")
                     .append("<div class=\"contributor-name\">").append(link.name).append("</div>")
-                    .append("<div class=\"contributor-role\">")
-                    .append(link.subText).append("</div>")
+                    .append("<div class=\"contributor-role\">").append(link.subText).append("</div>")
                     .append("</div>")
                     .append("<span class=\"link-chevron\">&#x203A;</span>")
                     .append("</a>");
@@ -895,7 +917,7 @@ class MorpheCreditsDialog extends Dialog {
             <div class="credits-section">
                 <div class="section-label">%s</div>
             """, StringRef.str("morphe_settings_about_contributors_prior")));
-        for (MorpheAboutPreference.WebLink link : WORKS_LINKS_PRIOR) {
+        for (WebLink link : getWorksLinksPrior()) {
             String initial = link.name.substring(0, 1).toUpperCase();
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")

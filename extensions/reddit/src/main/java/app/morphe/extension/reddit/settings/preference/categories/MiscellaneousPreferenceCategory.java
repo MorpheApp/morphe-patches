@@ -36,6 +36,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public void addPreferences(Context context) {
+        MorpheAboutPreference.showVancedAsPastContributor(false);
         Preference about = new MorpheAboutPreference(context);
         about.setTitle(str("morphe_about_title"));
         about.setSummary(str("morphe_about_summary"));

@@ -4,8 +4,10 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.insertLiteralOverride
 
 /**
  * Video quality settings. Used to organize all speed related settings together.
@@ -38,5 +40,15 @@ val videoQualityPatch = bytecodePatch(
                 preferences = settingsMenuVideoQualityGroup
             )
         )
+
+        if (is_20_40_or_greater) {
+            // Flag breaks opening advanced quality menu.
+            // Alternatively can be fixed by using a delay when simulating the UI click.
+            NewAdvancedQualityMenuStyleFlyout.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index, false
+                )
+            }
+        }
     }
 }

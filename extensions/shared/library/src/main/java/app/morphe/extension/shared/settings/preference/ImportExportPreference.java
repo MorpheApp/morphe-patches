@@ -1,43 +1,23 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
-import static app.morphe.extension.shared.StringRef.str;
-
-import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.preference.Preference;
-import android.text.InputType;
 import android.util.AttributeSet;
-import android.util.Pair;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class ImportExportPreference extends EditTextPreference implements Preference.OnPreferenceClickListener {
-
-    private String existingSettings;
-
-    private void init() {
-        setSelectable(true);
-
-        EditText editText = getEditText();
-        editText.setTextIsSelectable(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            editText.setAutofillHints((String) null);
-        }
-        editText.setInputType(editText.getInputType() | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        editText.setTextSize(14);
-
-        setOnPreferenceClickListener(this);
-    }
+public class ImportExportPreference extends Preference implements Preference.OnPreferenceClickListener {
 
     public ImportExportPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -56,87 +36,20 @@ public class ImportExportPreference extends EditTextPreference implements Prefer
         init();
     }
 
-    /**
-     * Apps that do not support bundling resources must override this.
-     *
-     * @return A localized string to display for the key.
-     */
-    protected String getString(String key, Object... args) {
-        return str(key, args);
+    private void init() {
+        setOnPreferenceClickListener(this);
     }
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
         try {
-            // Must set text before showing dialog,
-            // otherwise text is non-selectable if this preference is later reopened.
-            existingSettings = Setting.exportToJson(getContext());
-            getEditText().setText(existingSettings);
+            if (AbstractPreferenceFragment.instance != null) {
+                AbstractPreferenceFragment.instance.showImportExportTextDialog();
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "showDialog failure", ex);
+            Logger.printException(() -> "onPreferenceClick failure", ex);
         }
+
         return true;
-    }
-
-    @Override
-    protected void showDialog(Bundle state) {
-        try {
-            Context context = getContext();
-            EditText editText = getEditText();
-
-            // Create a custom dialog with the EditText.
-            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    context,
-                    getString("morphe_pref_import_export_title"), // Title.
-                    null,     // No message (EditText replaces it).
-                    editText, // Pass the EditText.
-                    getString("morphe_settings_import"), // OK button text.
-                    () -> importSettings(context, editText.getText().toString()), // OK button action.
-                    () -> {}, // Cancel button action (dismiss only).
-                    getString("morphe_settings_import_copy"), // Neutral button (Copy) text.
-                    () -> {
-                        // Neutral button (Copy) action. Show the user the settings in JSON format.
-                        Utils.setClipboard(editText.getText());
-                    },
-                    true // Dismiss dialog when onNeutralClick.
-            );
-
-            // If there are no settings yet, then show the on-screen keyboard and bring focus to
-            // the edit text. This makes it easier to paste saved settings after a reinstallation.
-             dialogPair.first.setOnShowListener(dialogInterface -> {
-                 if (existingSettings.isEmpty()) {
-                     editText.postDelayed(() -> {
-                         editText.requestFocus();
-
-                         InputMethodManager inputMethodManager = (InputMethodManager)
-                                 editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                         inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-                     }, 100);
-                 }
-             });
-
-            // Show the dialog.
-            dialogPair.first.show();
-        } catch (Exception ex) {
-            Logger.printException(() -> "showDialog failure", ex);
-        }
-    }
-
-    private void importSettings(Context context, String replacementSettings) {
-        try {
-            if (replacementSettings.equals(existingSettings)) {
-                return;
-            }
-            AbstractPreferenceFragment.settingImportInProgress = true;
-
-            final boolean rebootNeeded = Setting.importFromJSON(context, replacementSettings);
-            if (rebootNeeded) {
-                AbstractPreferenceFragment.showRestartDialog(context);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "importSettings failure", ex);
-        } finally {
-            AbstractPreferenceFragment.settingImportInProgress = false;
-        }
     }
 }

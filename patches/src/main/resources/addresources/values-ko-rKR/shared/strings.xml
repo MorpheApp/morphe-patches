@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">앱 언어</string>
   <string name="morphe_pref_import_export_title">가져오기 / 내보내기</string>
   <string name="morphe_pref_import_export_summary">Morphe 설정을 가져오거나 내보낼 수 있습니다</string>
+  <string name="morphe_settings_import_file">파일에서 가져오기</string>
+  <string name="morphe_settings_import_file_success">설정이 성공적으로 가져왔습니다. 적용하려면 저장(Save)을 탭하세요.</string>
+  <string name="morphe_settings_import_file_failed">설정 가져오기 실패했습니다.</string>
+  <string name="morphe_settings_export_file">파일로 내보내기</string>
+  <string name="morphe_settings_export_file_success">설정을 성공적으로 내보냈습니다</string>
+  <string name="morphe_settings_export_file_failed">설정 내보내기를 실패했습니다</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches &lt;i&gt;%s&lt;/i&gt;&lt;br&gt;최신 버전을 사용하는 중입니다</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;버전을 사용하는 중입니다&lt;br&gt;&lt;br&gt;&lt;b&gt;업데이트 사용 가능: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;패치를 업데이트하려면&lt;br&gt;Morphe를 사용하여&lt;br&gt;이 앱을 다시 패치하세요</string>
@@ -69,7 +75,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">웹사이트</string>
   <string name="morphe_settings_about_links_donate">후원하기</string>
   <string name="morphe_settings_about_links_translations">번역에 도움주기</string>
+  <string name="morphe_settings_about_links_credits">크레딧</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">최신 정보</string>
   <string name="morphe_settings_about_links_dev_header_update_available">업데이트 가능</string>
+  <string name="morphe_settings_about_contributors_current">현재 개발</string>
+  <string name="morphe_settings_about_contributors_prior">이전 개발</string>
+  <string name="morphe_settings_about_links_morphe">현재 개발</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버그</string>
   <string name="morphe_debug_screen_summary">디버그 옵션을 활성화하거나 비활성화할 수 있습니다</string>

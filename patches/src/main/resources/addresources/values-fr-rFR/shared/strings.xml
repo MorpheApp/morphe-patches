@@ -61,6 +61,12 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_language_DEFAULT">Langue de l\'application</string>
   <string name="morphe_pref_import_export_title">Importer / Exporter</string>
   <string name="morphe_pref_import_export_summary">Importer / Exporter les paramètres Morphe</string>
+  <string name="morphe_settings_import_file">Importer depuis un fichier</string>
+  <string name="morphe_settings_import_file_success">Paramètres importés avec succès, appuyez sur Enregistrer pour appliquer</string>
+  <string name="morphe_settings_import_file_failed">Échec de l\'importation des paramètres</string>
+  <string name="morphe_settings_export_file">Exporter vers un fichier</string>
+  <string name="morphe_settings_export_file_success">Paramètres exportés avec succès</string>
+  <string name="morphe_settings_export_file_failed">Échec de l\'exportation des paramètres</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Vous utilisez la dernière version des Patchs Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Vous utilisez la version des Patchs Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Mise à jour disponible : &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pour mettre à jour vos patchs, utilisez Morphe pour repatcher cette application</string>
@@ -73,7 +79,12 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_links_credits">Crédits</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">À jour</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Mise à jour disponible</string>
-  <string name="morphe_settings_about_contributors_current">Développement actuel</string>
+  <string name="morphe_settings_about_contributors_current">Développement en cours</string>
+  <string name="morphe_settings_about_contributors_prior">Développements antérieurs</string>
+  <string name="morphe_settings_about_links_morphe">Développement actif</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
   <string name="morphe_debug_screen_summary">Activez ou désactivez les options de débogage</string>

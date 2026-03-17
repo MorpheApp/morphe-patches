@@ -1,5 +1,5 @@
 {
-  "version": "1.19.0",
+  "version": "1.20.0-dev.1",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1782,24 +1782,6 @@
           "20.40.45",
           "20.31.42",
           "20.21.37"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Settings for Reddit",
-      "description": "Applies mandatory patches to implement Morphe settings into the application.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "ResourcePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.reddit.frontpage": [
-          "2026.04.0",
-          "2026.03.0",
-          "2025.48.0"
         ]
       },
       "options": []

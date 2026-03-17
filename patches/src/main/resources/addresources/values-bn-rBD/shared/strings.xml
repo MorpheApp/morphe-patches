@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">অ্যাপ্লিকেশনের ভাষা</string>
   <string name="morphe_pref_import_export_title">আমদানি এবং রপ্তানি</string>
   <string name="morphe_pref_import_export_summary">Morphe সেটিং আমদানি বা রপ্তানি করুন</string>
+  <string name="morphe_settings_import_file">ফাইল থেকে আমদানি করুন</string>
+  <string name="morphe_settings_import_file_success">সেটিং সফলভাবে আমদানি করা হয়েছে, প্রয়োগ করতে সংরক্ষণ করুনতে ক্লিক করুন</string>
+  <string name="morphe_settings_import_file_failed">সেটিং আমদানি করতে ব্যর্থ হয়েছে</string>
+  <string name="morphe_settings_export_file">ফাইলে রপ্তানি করুন</string>
+  <string name="morphe_settings_export_file_success">সেটিং সফলভাবে এক্সপোর্ট করা হয়েছে</string>
+  <string name="morphe_settings_export_file_failed">সেটিং এক্সপোর্ট করা যায়নি</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%s&lt;/i&gt; ব্যবহার করছেন</string>
   <string name="morphe_settings_about_links_body_version_outdated">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;আপডেট উপলব্ধ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;আপনার প্যাচগুলি আপডেট করতে, Morphe ব্যবহার করে এই অ্যাপ্লিকেশনটিকে পুনরায় প্যাচ করুন</string>
@@ -69,6 +75,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">ওয়েবসাইট</string>
   <string name="morphe_settings_about_links_donate">দান করুন</string>
   <string name="morphe_settings_about_links_translations">অনুবাদগুলি</string>
+  <string name="morphe_settings_about_links_credits">ক্রেডিট</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">আপডেট করা হয়েছে</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">আপডেট উপলব্ধ</string>
+  <string name="morphe_settings_about_contributors_current">চলমান উন্নয়ন</string>
+  <string name="morphe_settings_about_contributors_prior">পূর্ববর্তী উন্নয়ন</string>
+  <string name="morphe_settings_about_links_morphe">সক্রিয় উন্নয়ন</string>
+  <string name="morphe_settings_about_links_rvx">২০২২ &#8209; ২০২৫</string>
+  <string name="morphe_settings_about_links_rv">২০২২ &#8209; ২০২৫</string>
+  <string name="morphe_settings_about_links_vanced">২০১৯ &#8209; ২০২২</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ডিবাগিং</string>
   <string name="morphe_debug_screen_summary">ডিবাগিং অপশন সক্রিয় বা নিষ্ক্রিয় করুন</string>

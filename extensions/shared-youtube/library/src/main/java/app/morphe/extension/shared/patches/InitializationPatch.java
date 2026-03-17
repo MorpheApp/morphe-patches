@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.Utils.runOnMainThreadDelayed;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.os.Build;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
@@ -44,6 +45,12 @@ public class InitializationPatch {
 
         runOnMainThreadDelayed(() -> SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true), 1000);
         runOnMainThreadDelayed(() -> {
+            // Allow canceling if device is Android 9 or less to allow forcing
+            // in-app dark mode before restarting (stock YouTube bug).
+            Runnable cancel = Build.VERSION.SDK_INT <= Build.VERSION_CODES.P
+                    ? () -> {}
+                    : null;
+
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     activity,
                     str("morphe_settings_restart_title"),   // Title.
@@ -51,7 +58,7 @@ public class InitializationPatch {
                     null,                                       // No EditText.
                     str("morphe_settings_restart"),         // OK button text.
                     () -> Utils.restartApp(activity),           // OK button action.
-                    null,                                       // No cancel button.
+                    cancel,                                     // Cancel button.
                     null,                                       // No Neutral button text.
                     null,                                       // No Neutral button action.
                     true                                        // Dismiss dialog when onNeutralClick.

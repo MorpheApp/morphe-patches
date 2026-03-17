@@ -60,6 +60,12 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_language_DEFAULT">Jazyk aplikace</string>
   <string name="morphe_pref_import_export_title">Importovat / Exportovat</string>
   <string name="morphe_pref_import_export_summary">Importovat / exportovat nastavení Morphe</string>
+  <string name="morphe_settings_import_file">Importovat ze souboru</string>
+  <string name="morphe_settings_import_file_success">Nastavení importována úspěšně, klepněte na Uložit pro aplikaci</string>
+  <string name="morphe_settings_import_file_failed">Nepodařilo se importovat nastavení</string>
+  <string name="morphe_settings_export_file">Exportovat do souboru</string>
+  <string name="morphe_settings_export_file_success">Nastavení úspěšně exportováno</string>
+  <string name="morphe_settings_export_file_failed">Nepodařilo se exportovat nastavení</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Používáte nejnovější verzi Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Používáte verzi Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Je dostupná aktualizace: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pro aktualizaci vašich patchů použijte aplikaci Morphe k opětovnému patchování této aplikace</string>
@@ -73,6 +79,11 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuální</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Dostupná aktualizace</string>
   <string name="morphe_settings_about_contributors_current">Současný vývoj</string>
+  <string name="morphe_settings_about_contributors_prior">Předchozí vývoj</string>
+  <string name="morphe_settings_about_links_morphe">Aktivní vývoj</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladění</string>
   <string name="morphe_debug_screen_summary">Povolit nebo zakázat možnosti ladění</string>

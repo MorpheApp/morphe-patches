@@ -1,3 +1,16 @@
+# [1.20.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0...v1.20.0-dev.1) (2026-03-17)
+
+
+### Bug Fixes
+
+* **YouTube:** Advanced video quality menu does not work ([3381026](https://github.com/MorpheApp/morphe-patches/commit/3381026a63c91460243cb512554e64d0f3662a70))
+
+
+### Features
+
+* Add Import/Export settings from/to a file ([#865](https://github.com/MorpheApp/morphe-patches/issues/865)) ([098a0d8](https://github.com/MorpheApp/morphe-patches/commit/098a0d8e8993baff5e85676aae6ff5a66d615473))
+* **Reddit:** Add Crowdin translations ([#882](https://github.com/MorpheApp/morphe-patches/issues/882)) ([c08ccdb](https://github.com/MorpheApp/morphe-patches/commit/c08ccdb30b460ccbe7ca70b2a5c427b05ba29a3c))
+
 # [1.19.0](https://github.com/MorpheApp/morphe-patches/compare/v1.18.0...v1.19.0) (2026-03-16)
 
 
