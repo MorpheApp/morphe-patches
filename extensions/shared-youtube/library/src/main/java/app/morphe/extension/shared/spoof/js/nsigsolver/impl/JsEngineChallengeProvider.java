@@ -7,9 +7,10 @@
 
 package app.morphe.extension.shared.spoof.js.nsigsolver.impl;
 
+import androidx.javascriptengine.EvaluationFailedException;
+import androidx.javascriptengine.IsolateStartupParameters;
 import androidx.javascriptengine.JavaScriptIsolate;
 import androidx.javascriptengine.JavaScriptSandbox;
-import androidx.javascriptengine.EvaluationFailedException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +49,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
         return INSTANCE;
     }
 
+    // Override builtinSource to inject JS specific logic
     @Override
     protected Script builtinSource(ScriptType scriptType) {
         if (scriptType == ScriptType.LIB) {
@@ -59,7 +61,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
 
     private Script npmSource(ScriptType scriptType) {
         try {
-            String code = ScriptUtils.loadScript(npmLibFilenames, "Failed to read challenge solver lib script");
+            String code = ScriptUtils.loadScript(npmLibFilenames, "Failed to read js challenge solver lib script");
             return new Script(scriptType, ScriptVariant.V8_NPM, ScriptSource.BUILTIN, SCRIPT_VERSION, code);
         } catch (ScriptUtils.ScriptLoaderError e) {
             Logger.printException(() -> "Failed to read npm source", e);
@@ -67,18 +69,23 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
         }
     }
 
-    private void ensureSandbox() throws Exception {
+    private void ensureIsolate() throws Exception {
         if (jsSandbox == null) {
             jsSandbox = JavaScriptSandbox.createConnectedInstanceAsync(
                     Utils.getContext().getApplicationContext()
             ).get();
         }
-    }
-
-    private void ensureIsolate() throws Exception {
-        ensureSandbox();
         if (jsIsolate == null) {
-            jsIsolate = jsSandbox.createIsolate();
+            // If Android System WebView 110+ (released February 2023) is installed, set the maximum heap memory.
+            // This can avoid OOM issues.
+            if (jsSandbox.isFeatureSupported(JavaScriptSandbox.JS_FEATURE_ISOLATE_MAX_HEAP_SIZE)) {
+                IsolateStartupParameters params = new IsolateStartupParameters();
+                // Since the size of the Player JS is around 3MB, a maximum heap memory of 128MB is sufficient.
+                params.setMaxHeapSizeBytes(128 * 1024 * 1024); // 128MB
+                jsIsolate = jsSandbox.createIsolate(params);
+            } else { // ~ Android System WebView 109
+                jsIsolate = jsSandbox.createIsolate();
+            }
         }
     }
 
@@ -107,20 +114,15 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
                 ensureIsolate();
 
                 String result = jsIsolate.evaluateJavaScriptAsync(stdin).get();
-
-                // Periodically reset the isolate to prevent memory leaks,
-                // similar to how the V8 runtime was periodically flushed.
-                /* TODO: Check if we need to reset after a certain number of executions or if this
-                    is no longer needed.
-                if (executeCount > 12 && !warmup) {
+                if (!warmup) {
                     resetIsolate();
                 }
-                */
                 executeCount++;
 
                 return result;
             }).get();
 
+            // The results of the warmup are not used anywhere
             if (warmup) {
                 return "";
             }
@@ -154,6 +156,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
     }
 
     public void warmup() {
+        // If jsExecutor terminates for an unexpected reason, it will be recreated
         if (jsExecutor.isShutdown() || jsExecutor.isTerminated()) {
             try {
                 jsExecutor = Executors.newSingleThreadExecutor();
