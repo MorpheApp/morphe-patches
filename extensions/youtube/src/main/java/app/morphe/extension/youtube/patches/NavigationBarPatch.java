@@ -42,8 +42,8 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
@@ -56,38 +56,6 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
-
-    public static class ReplaceToolbarCreateButtonAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get()
-                    && !Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON,
-                    Settings.HIDE_TOOLBAR_CREATE_BUTTON
-            );
-        }
-    }
-
-    public static class ReplaceToolbarNotificationButtonAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return !Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get()
-                    && !Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON,
-                    Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
-            );
-        }
-    }
 
     private static final Map<NavigationButton, Boolean> shouldHideMap = new EnumMap<>(NavigationButton.class) {
         {
@@ -421,17 +389,9 @@ public final class NavigationBarPatch {
 
     private static final boolean HIDE_TOOLBAR_MICROPHONE_BUTTON = Settings.HIDE_TOOLBAR_MICROPHONE_BUTTON.get();
 
-    private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON = SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
-            && !HIDE_TOOLBAR_CREATE_BUTTON && Settings.REPLACE_TOOLBAR_CREATE_BUTTON.get();
-
-    private static final boolean REPLACE_TOOLBAR_CREATE_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_CREATE_BUTTON_TYPE.get();
-
-    private static final boolean REPLACE_TOOLBAR_NOTIFICATION_BUTTON = !SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
-            && !HIDE_TOOLBAR_NOTIFICATION_BUTTON && Settings.REPLACE_TOOLBAR_NOTIFICATION_BUTTON.get();
-    private static final boolean REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE = Settings.REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE.get();
-
-    private static final boolean REARRANGE_TOOLBAR_BUTTONS = Settings.REARRANGE_TOOLBAR_BUTTONS.get()
-            && (REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON);
+    private static final boolean SHOW_TOOLBAR_SETTINGS_BUTTON = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON.get();
+    private static final IntegerSetting SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX;
+    private static final boolean SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE.get();
 
     /**
      * Interface to use obfuscated methods.
@@ -493,7 +453,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void setSettingsController(@NonNull SettingsController settingsController) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON || SHOW_SETTINGS_BUTTON) {
+        if (SHOW_TOOLBAR_SETTINGS_BUTTON || SHOW_SETTINGS_BUTTON) {
             settingsControllerRef = new WeakReference<>(settingsController);
         }
     }
@@ -501,29 +461,30 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void reArrangeToolbarButtons(List<MessageLite> rawButtonList) {
-        if (REARRANGE_TOOLBAR_BUTTONS && rawButtonList != null && !rawButtonList.isEmpty()) {
-            try {
-                boolean needRotate = false;
-                var buttons = Buttons.parseFrom(rawButtonList.get(0).toByteArray());
-                if (buttons.hasButtonRenderer()) {
-                    var buttonRenderer = buttons.getButtonRenderer();
-                    if (buttonRenderer.hasIcon()) {
-                        var iconName = buttonRenderer.getIcon().getYtIconType().name();
+    public static void modifyToolbarButtons(List<MessageLite> rawButtonList) {
+        if (rawButtonList == null || rawButtonList.isEmpty()) return;
 
-                        if (Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS)) {
-                            needRotate = true;
-                        }
+        try {
+            for (int i = rawButtonList.size() - 1; i >= 0; i--) {
+                MessageLite msg = rawButtonList.get(i);
+                Buttons buttons = Buttons.parseFrom(msg.toByteArray());
+
+                if (buttons.hasButtonRenderer() && buttons.getButtonRenderer().hasIcon()) {
+                    String iconName = buttons.getButtonRenderer().getIcon().getYtIconType().name();
+
+                    boolean isCreate = Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS);
+                    boolean isNotification = Utils.equalsAny(iconName, NOTIFICATION_BUTTON_ENUMS);
+                    boolean isSearch = NavigationButton.SEARCH.ytEnumNames.contains(iconName);
+
+                    if ((HIDE_TOOLBAR_CREATE_BUTTON && isCreate) ||
+                            (HIDE_TOOLBAR_NOTIFICATION_BUTTON && isNotification) ||
+                            (HIDE_TOOLBAR_SEARCH_BUTTON && isSearch)) {
+                        rawButtonList.remove(i);
                     }
-                } else if (buttons.hasTopbarButtonRenderer()) {
-                    needRotate = true;
                 }
-                if (needRotate) {
-                    Collections.rotate(rawButtonList, -1);
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to parse Buttons", ex);
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to modify toolbar buttons", ex);
         }
     }
 
@@ -531,58 +492,69 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     @Nullable
-    public static byte[] setReplacedButtonIcon(MessageLite messageLite) {
-        if (REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON) {
-            try {
-                var buttonRenderer = ButtonRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
-                if (buttonRenderer.hasIcon()) {
-                    var iconName = buttonRenderer.getIcon().getYtIconType().name();
+    public static byte[] createToolbarSettingsButton(List<MessageLite> rawButtonList) {
+        if (!SHOW_TOOLBAR_SETTINGS_BUTTON || rawButtonList == null || rawButtonList.isEmpty()) return null;
+        try {
+            for (MessageLite msg : rawButtonList) {
+                try {
+                    Buttons originalButtons = Buttons.parseFrom(msg.toByteArray());
 
-                    boolean isCreate = REPLACE_TOOLBAR_CREATE_BUTTON && Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS);
-                    boolean isNotification = REPLACE_TOOLBAR_NOTIFICATION_BUTTON && Utils.equalsAny(iconName, NOTIFICATION_BUTTON_ENUMS);
+                    if (originalButtons.hasButtonRenderer() && originalButtons.getButtonRenderer().hasIcon()) {
+                        ButtonRenderer.Builder renderer = originalButtons.getButtonRenderer().toBuilder();
 
-                    if (isCreate || isNotification) {
-                        var newIcon = Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build();
+                        renderer.clearButtonRendererAccessibilityData();
+                        renderer.clearRendererAccessibilityData();
 
-                        // Remove accessibility labels and onclick listeners.
-                        buttonRenderer.clearButtonRendererAccessibilityData();
-                        buttonRenderer.clearRendererAccessibilityData();
-                        buttonRenderer.clearNavigationEndpoint();
+                        renderer.clearIcon();
+                        renderer.setIcon(Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build());
 
-                        // Replace icons.
-                        buttonRenderer.clearIcon();
-                        buttonRenderer.setIcon(newIcon);
-
-                        return buttonRenderer.build().toByteArray();
+                        return originalButtons.toBuilder().setButtonRenderer(renderer.build()).build().toByteArray();
                     }
+                } catch (Exception ignored) {
                 }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to parse ButtonRenderer", ex);
             }
+        } catch (Exception e) {
+            Logger.printException(() -> "Failed to create toolbar settings button", e);
         }
-
         return null;
     }
 
     /**
      * Injection point.
      */
-    public static void setReplacedButtonOnClickListener(String enumName, View parentView, ImageView imageView) {
-        if ((REPLACE_TOOLBAR_CREATE_BUTTON || REPLACE_TOOLBAR_NOTIFICATION_BUTTON) && SETTING_BUTTON_ENUM_NAME.equals(enumName)) {
+    public static void applyToolbarSettingsButtonIndex(List<MessageLite> rawButtonList) {
+        if (!SHOW_TOOLBAR_SETTINGS_BUTTON || rawButtonList == null || rawButtonList.isEmpty()) return;
+
+        int targetIndex = SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX.get() - 1;
+
+        targetIndex = Math.max(0, Math.min(targetIndex, rawButtonList.size() - 1));
+
+        MessageLite settingsButton = rawButtonList.remove(rawButtonList.size() - 1);
+        rawButtonList.add(targetIndex, settingsButton);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setToolbarSettingsOnClickListener(String enumName, View parentView, ImageView imageView) {
+        if (SHOW_TOOLBAR_SETTINGS_BUTTON && SETTING_BUTTON_ENUM_NAME.equals(enumName)) {
             Utils.runOnMainThreadDelayed(() -> {
-                boolean type = REPLACE_TOOLBAR_CREATE_BUTTON ? REPLACE_TOOLBAR_CREATE_BUTTON_TYPE : REPLACE_TOOLBAR_NOTIFICATION_BUTTON_TYPE;
-                if (type) {
-                    imageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
-                    imageView.setOnLongClickListener(button -> {
-                        openYouTubeSettings(button);
-                        return true;
-                    });
-                } else {
-                    imageView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
-                    imageView.setOnLongClickListener(button -> {
-                        openMorpheSettings(button);
-                        return true;
-                    });
+                if (imageView != null) {
+                    imageView.setClickable(true);
+
+                    if (SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE) {
+                        imageView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
+                        imageView.setOnLongClickListener(button -> {
+                            openYouTubeSettings(button);
+                            return true;
+                        });
+                    } else {
+                        imageView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
+                        imageView.setOnLongClickListener(button -> {
+                            openMorpheSettings(button);
+                            return true;
+                        });
+                    }
                 }
             }, 100);
         }

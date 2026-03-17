@@ -220,7 +220,6 @@ val navigationBarPatch = bytecodePatch(
         //
         // Navigation search and settings button
         //
-
         ActionBarSearchResultsFingerprint.let {
             it.clearMatch()
             it.method.apply {
@@ -354,11 +353,9 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
-            SwitchPreference("morphe_replace_toolbar_create_button"),
-            SwitchPreference("morphe_replace_toolbar_create_button_type"),
-            SwitchPreference("morphe_replace_toolbar_notification_button"),
-            SwitchPreference("morphe_replace_toolbar_notification_button_type"),
-            SwitchPreference("morphe_rearrange_toolbar_buttons")
+            SwitchPreference("morphe_show_toolbar_settings_button"),
+            ListPreference("morphe_show_toolbar_settings_button_index"),
+            SwitchPreference("morphe_show_toolbar_settings_button_type")
         )
         if (!is_20_31_or_greater) {
             toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
@@ -427,9 +424,9 @@ val navigationBarPatch = bytecodePatch(
         }
 
         //
-        // Replace create/notifications with settings button
+        // Show settings button
         //
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setReplacedButtonOnClickListener")
+        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setToolbarSettingsOnClickListener")
 
         SettingIntentFingerprint.let {
             it.classDef.apply {
@@ -471,77 +468,44 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        var topbarButtonRendererClass: String? = null
+
         TopBarRendererPrimaryFilterFingerprint.let {
-            it.clearMatch()
             it.method.apply {
                 val originalButtonRendererIndex = it.instructionMatches[2].index
-                val originalButtonRendererRegister =
-                    getInstruction<OneRegisterInstruction>(originalButtonRendererIndex).registerA
-                val buttonRendererClass =
-                    getInstruction<ReferenceInstruction>(originalButtonRendererIndex).reference.toString()
+                topbarButtonRendererClass = getInstruction<ReferenceInstruction>(originalButtonRendererIndex).reference.toString()
 
-                // Since there are no free registers available, a helper method is used.
-                val helperMethod = ImmutableMethod(
-                    definingClass,
-                    "patch_setToolbarIcon",
-                    listOf(
-                        ImmutableMethodParameter(
-                            buttonRendererClass,
-                            null,
-                            null
-                        )
-                    ),
-                    buttonRendererClass,
-                    AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(5),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            # Replace the icon if it is a create or notifications button.
-                            invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->setReplacedButtonIcon(Lcom/google/protobuf/MessageLite;)[B
-                            move-result-object v1
-                            if-eqz v1, :ignore
+                val onClickListenerIndex = it.instructionMatches[3].index
+                val onClickListenerRegister = getInstruction<FiveRegisterInstruction>(onClickListenerIndex).registerC
+                val copiedButtonRendererIndex = it.instructionMatches[4].index
+                val copiedButtonRendererRegister =
+                    getInstruction<OneRegisterInstruction>(copiedButtonRendererIndex).registerA
 
-                            # Parse butten renderer.
-                            sget-object v0, $buttonRendererClass->a:$buttonRendererClass
-                            invoke-static { v0, v1 }, $parseByteArrayMethod
-                            move-result-object p1
-                            check-cast p1, $buttonRendererClass
-
-                            :ignore
-                            return-object p1
-                        """
-                    )
-                }
-
-                it.classDef.methods.add(helperMethod)
-
-                val insertIndex = it.instructionMatches.first().index
-                val freeRegister =
-                    getInstruction<OneRegisterInstruction>(insertIndex).registerA
-
-                addInstructions(
-                    insertIndex,
-                    """
-                        move-object/from16 v$freeRegister, p0
-                        check-cast v$originalButtonRendererRegister, $buttonRendererClass
-                        invoke-direct { v$freeRegister, v$originalButtonRendererRegister }, $helperMethod
-                        move-result-object v$originalButtonRendererRegister
-                    """
+                addInstruction(
+                    copiedButtonRendererIndex + 1,
+                    "invoke-static { v$copiedButtonRendererRegister, v$onClickListenerRegister }, " +
+                            "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
                 )
             }
         }
 
         TopBarRendererSecondaryFilterFingerprint.let {
             it.method.apply {
+                var buttonsClass: String? = null
+                val iteratorIndex = it.instructionMatches.first().index
+                for (i in iteratorIndex until implementation!!.instructions.size) {
+                    val instr = getInstruction(i)
+                    if (instr.opcode == Opcode.CHECK_CAST) {
+                        buttonsClass = (instr as ReferenceInstruction).reference.toString()
+                        break
+                    }
+                }
+
                 val protoListIndex = it.instructionMatches.first().index
-                val protoListRegister =
-                    getInstruction<FiveRegisterInstruction>(protoListIndex).registerC
-                val protoListFreeRegister =
-                    getFreeRegisterProvider(protoListIndex, 1).getFreeRegister()
+                val protoListRegister = getInstruction<FiveRegisterInstruction>(protoListIndex).registerC
+                val freeRegisters = getFreeRegisterProvider(protoListIndex, 2)
+                val protoListFreeRegister = freeRegisters.getFreeRegister()
+                val byteRegister = freeRegisters.getFreeRegister()
 
                 addInstructionsWithLabels(
                     protoListIndex,
@@ -556,16 +520,33 @@ val navigationBarPatch = bytecodePatch(
                         invoke-static { v$protoListRegister }, ${mutableCopyMethodRef.get()}
                         move-result-object v$protoListRegister
                         
-                        # Rearrange buttons.
-                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->reArrangeToolbarButtons(Ljava/util/List;)V
+                        # Generate Settings Button Bytes (BEFORE modifying list)
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->createToolbarSettingsButton(Ljava/util/List;)[B
+                        move-result-object v$byteRegister
                         
+                        # Modify list (removes hidden buttons to free up layout space)
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->modifyToolbarButtons(Ljava/util/List;)V
+                        
+                        if-eqz v$byteRegister, :immutable
+
+                        # Parse bytes back into native Buttons wrapper class
+                        sget-object v$protoListFreeRegister, $buttonsClass->a:$buttonsClass
+                        invoke-static { v$protoListFreeRegister, v$byteRegister }, $parseByteArrayMethod
+                        move-result-object v$protoListFreeRegister
+                        check-cast v$protoListFreeRegister, $buttonsClass
+                        
+                        # Append to the list natively
+                        invoke-interface { v$protoListRegister, v$protoListFreeRegister }, Ljava/util/List;->add(Ljava/lang/Object;)Z
+                        
+                        # Move to preferred index
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->applyToolbarSettingsButtonIndex(Ljava/util/List;)V
+
                         :immutable
                         nop
                     """
                 )
             }
         }
-
 
         //
         // Wide searchbar
