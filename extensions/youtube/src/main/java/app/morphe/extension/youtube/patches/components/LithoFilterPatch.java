@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -163,8 +165,6 @@ public final class LithoFilterPatch {
                     filter.identifierCallbacks, Filter.FilterContentType.IDENTIFIER);
             filterUsingCallbacks(pathSearchTree, filter,
                     filter.pathCallbacks, Filter.FilterContentType.PATH);
-            filterUsingCallbacks(contextSearchTree, filter,
-                    filter.contextCallbacks, Filter.FilterContentType.CONTEXT);
         }
 
         Logger.printDebug(() -> "Using: "

@@ -1290,6 +1290,20 @@ Gotovo je li spreman za slanje?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobil</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"Promjene uključuju:
+
+Izgled tableta
+• Objave u zajednici su skrivene
+• Postavka reprodukcije u feedovima nije dostupna
+• Tipke Remix i Zvuk nisu dostupni u Shorts videozapisima
+• Traka s radnjama za videozapise nije sažeta
+
+Automobilski izgled
+• Feed je organiziran po temama i kanalima
+• Postavka reprodukcije u feedovima nije dostupna
+• Tipke Remix i Zvuk nisu dostupni u Shorts videozapisima
+• Shorts videozapisi se otvaraju u uobičajenom playeru
+• Traka s radnjama za videozapise nije sažeta"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Imitiraj verziju aplikacije</string>
   <string name="morphe_spoof_app_version_summary_on">Verzija je imitirana</string>
@@ -1344,10 +1358,10 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
 
 Ograničenje: Koristeći dugme nazad na traci može ne funkcionirati"</string>
   <string name="morphe_change_start_page_always_summary_off">Početna stranica je promijenjena samo pri pokretanju aplikacije</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Onemogućite ponavljanje Shorts pregleda na početku</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts pregleđa neće se ponoviti pri pokretanju aplikacije</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts pregleđa će se ponoviti pri pokretanju aplikacije</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Onemogući nastavak reprodukcije Shorts videozapisa pri pokretanju</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts videozapisi se neće nastaviti prikazivati ​​pri pokretanju aplikacije</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts videozapisi će se nastaviti prikazivati ​​pri pokretanju aplikacije</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Prikaži Shorts</string>
   <string name="morphe_shorts_player_type_shorts">Shorts pregleđ</string>
@@ -1564,6 +1578,9 @@ Omogućava se otključivanje viših video kvaliteta"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Invalid custom playback speeds</string>
   <string name="morphe_custom_playback_speeds_auto">Automatski</string>
   <string name="morphe_speed_tap_and_hold_title">Custom tap and hold speed</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Brzina reprodukcije između 0-8
+
+Ako je 0, brzina dodira i držanja je onemogućena"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapamti promjene brzine pregleda</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Promjene brzine pregleda primjenjuju se na sva video</string>

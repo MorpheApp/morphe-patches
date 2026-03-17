@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Reklam</string>
+  <string name="morphe_hide_post_ads_title">Postan reklaman veşêre</string>
+  <string name="morphe_hide_post_ads_summary">Reklaman li posta veşin</string>
+  <string name="morphe_hide_comment_ads_title">Reklaman li komentaran veşêre</string>
+  <string name="morphe_hide_comment_ads_summary">Dibe nava komên tanê</string>
+  <string name="morphe_screen_layout_title">Sazî</string>
+  <string name="morphe_disable_modern_home_title">Malê nû paqij bike</string>
+  <string name="morphe_disable_modern_home_summary">Malê nû paqij bike</string>
+  <string name="morphe_disable_screenshot_popup_title">Dema çêkirina ekranê, ragihîner azad bike</string>
+  <string name="morphe_disable_screenshot_popup_summary">Dema çêkirina ekranê, ragihîner azad bike</string>
+  <string name="morphe_hide_answers_button_title">Bikutana \'Bersiv\'ê ji holê erxe</string>
+  <string name="morphe_hide_answers_button_summary">Bikutana \'Bersiv\'ê ji holê erxe</string>
+  <string name="morphe_hide_chat_button_title">Bikutana \'Çat\'ê ji holê erxe</string>
+  <string name="morphe_hide_chat_button_summary">Bikutana \'Çat\'ê ji holê erxe</string>
+  <string name="morphe_hide_create_button_title">Bikutana \'Çêkirin\'ê ji holê erxe</string>
+  <string name="morphe_hide_create_button_summary">Bikutana \'Çêkirin\'ê ji holê erxe</string>
+  <string name="morphe_hide_discover_button_title">Motên Komînatan an Civakan veşêre</string>
+  <string name="morphe_hide_discover_button_summary">Motên Komînatan an Civakan veşêre</string>
+  <string name="morphe_hide_games_button_title">Bikutana \'Lûlayê\' ji holê erxe</string>
+  <string name="morphe_hide_games_button_summary">Bikutana \'Lûlayê\' ji holê erxe</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Şefirê \'Serdana Dawî\' veşêre</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Şefirê \'Serdana Dawî\' veşêre</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Şefirê \'Lûlayên li Reddit\' veşêre</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Şefirê \'Lûlayên li Reddit\' veşêre</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Şefirê \'Reddit Pro\' veşêre</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Şefirê \'Reddit Pro\' veşêre</string>
+  <string name="morphe_hide_about_shelf_title">Şefirê \'Derbarê\' veşêre</string>
+  <string name="morphe_hide_about_shelf_summary">Şefirê \'Derbarê\' veşêre</string>
+  <string name="morphe_hide_resources_shelf_title">Şefirê \'Zanyarî\' veşêre</string>
+  <string name="morphe_hide_resources_shelf_summary">Şefirê \'Zanyarî\' veşêre</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Komînîtên pêşniyar kirî veşêre</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Komînîtên pêşniyar kirî veşêre</string>
+  <string name="morphe_hide_trending_today_shelf_title">Şefirê \'Rojê\' veşêre</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Şefirê 'Rojê' veşêre
+
+Sînorkar: Ji bo eşkere nekirina wirdayîşên vîzyonê, karanîna dabeşêner rekîr nabe"</string>
+  <string name="morphe_remove_notification_dialog_title">Ragihînerê îfadekirinê derxiste</string>
+  <string name="morphe_remove_notification_dialog_summary">Ragihînerê îfadekirinê derxiste. Bi qebûlkirina otomatîk a ragihînerê wê di daxwazên Subreddittan de vicîne</string>
+  <string name="morphe_show_view_count_title">Ji bo nîşana hejmara dîtinê</string>
+  <string name="morphe_show_view_count_summary">"Hejmara dîtina Postan nîşan dide
+
+Sînorkar: Tenê dema ku bersivên API hejmara dîtinê diyar bikin, nîşan tê dayin"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Ragihînerê îfadekirinê ji holê erxe</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Ragihînerê îfadekirinê ji holê erxe.  Bi qebûl otomatîk a ragihînerê wê di daxwazên Subreddit de vicîne</string>
+  <string name="morphe_screen_miscellaneous_title">Sazî</string>
+  <string name="morphe_about_title">Derbarê</string>
+  <string name="morphe_about_summary">Versîona dirêjînê, lînkên fermî veşêrin</string>
+  <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
+  <string name="morphe_sanitize_sharing_links_summary">Lînkên parvekirinê paqij bike, bi avakirinê ya parametrikên îzbarê</string>
+  <string name="morphe_open_links_directly_title">Lînkên bi rastî veke</string>
+  <string name="morphe_open_links_directly_summary">Dema ku lînkên derve têne pêşîn, URL\'yên veqefandinê bişîne</string>
+</resources>

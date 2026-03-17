@@ -1355,10 +1355,10 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
 
 Ograničenje: Korišćenje dugmeta „Nazad” na traci sa alatkama možda neće raditi"</string>
   <string name="morphe_change_start_page_always_summary_off">Polazna stranica se menja samo pri pokretanju aplikacije</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Onemogući nastavak reprodukcije Shorts plejera</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts plejer neće nastaviti reprodukciju pri pokretanju aplikacije</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts plejer će nastaviti reprodukciju pri pokretanju aplikacije</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Искулј Shortse при стартовању</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts неће бити поново покренути при стартовању апликације</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts ће бити поново покренути при стартовању апликације</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Otvorite Shorts pomoću</string>
   <string name="morphe_shorts_player_type_shorts">Shorts plejera</string>

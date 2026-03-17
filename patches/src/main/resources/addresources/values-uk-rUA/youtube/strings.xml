@@ -1356,10 +1356,10 @@ Second \"item\" text"</string>
 
 Обмеження: Використання кнопки \"Назад\" на панелі інструментів може не працювати"</string>
   <string name="morphe_change_start_page_always_summary_off">Початкова сторінка змінюється лише під час запуску застосунку</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Вимкнути відновлення плеєра Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Плеєр Shorts не відновиться після запуску застосунку</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Плеєр Shorts відновиться після запуску застосунку</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Вимкнути відновлення Short під час запуску</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Short не відновлюватимуться після запуску додатку</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Short відновлюватимуться після запуску програми</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Відкривати Shorts через</string>
   <string name="morphe_shorts_player_type_shorts">Плеєр Shorts</string>

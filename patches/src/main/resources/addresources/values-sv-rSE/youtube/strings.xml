@@ -1342,10 +1342,7 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
 
 Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_change_start_page_always_summary_off">Startsidan byts endast vid appstart</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Inaktivera att Shorts-spelaren återupptas</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-spelaren återupptas inte vid appstart</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-spelaren återupptas vid appstart</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Öppna Shorts-videor med</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-spelare</string>

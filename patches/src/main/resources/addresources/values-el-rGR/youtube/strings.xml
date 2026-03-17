@@ -1356,10 +1356,10 @@ Second \"item\" text"</string>
 
 Περιορισμός: Η χρήση του κουμπιού επιστροφής στη γραμμή εργαλείων ενδέχεται να μην λειτουργεί"</string>
   <string name="morphe_change_start_page_always_summary_off">Η αρχική σελίδα αλλάζει μόνο κατά την εκκίνηση της εφαρμογής</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Απενεργοποίηση συνέχισης των Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Η αναπαραγωγή Shorts δε θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Η αναπαραγωγή Shorts θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Απενεργοποίηση της συνεχούς αναπαραγωγής των Shorts κατά την εκκίνηση</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Τα Shorts δεν θα συνεχίσουν την αναπαραγωγή κατά την εκκίνηση της εφαρμογής</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Τα Shorts θα συνεχίσουν την αναπαραγωγή κατά την εκκίνηση της εφαρμογής</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Άνοιγμα Shorts με</string>
   <string name="morphe_shorts_player_type_shorts">Οθόνη αναπαραγωγής Shorts</string>

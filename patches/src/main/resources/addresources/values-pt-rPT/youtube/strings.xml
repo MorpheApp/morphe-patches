@@ -1355,10 +1355,10 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
 
 Limitação: Usar o botão voltar na barra de ferramentas pode não funcionar"</string>
   <string name="morphe_change_start_page_always_summary_off">A página inicial é alterada apenas na inicialização do aplicativo</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Desativar a retomada do player do Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Desativar a retomada do player do Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts que o reprodutor continuará na inicialização do aplicativo</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Desativar a retomada de Shorts na inicialização</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts não serão retomados na inicialização do aplicativo</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts serão retomados na inicialização do aplicativo</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Abrir Â Shorts com</string>
   <string name="morphe_shorts_player_type_shorts">Reprodutor de Shorts</string>

@@ -1355,10 +1355,10 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
 
 Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikke"</string>
   <string name="morphe_change_start_page_always_summary_off">Startsiden ændres kun ved appstart</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Deaktivér genoptagelse af Shorts spiller</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-afspilleren genoptages ikke ved app-start</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Kortspilleren vil genoptage ved app-opstart</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Deaktiver afspilning af Shorts ved opstart</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts genoptages ikke ved app-start</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts genoptages ved app-start</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Åbne Shorts med</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-afspiller</string>

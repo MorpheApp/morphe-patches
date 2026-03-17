@@ -1354,10 +1354,10 @@ Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu lö
 
 Einschränkung: Die Verwendung der Zurück-Taste auf der Symbolleiste funktioniert möglicherweise nicht."</string>
   <string name="morphe_change_start_page_always_summary_off">Die Startseite wird nur beim Start der App geändert</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Fortsetzen des Shorts Players deaktivieren</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Der Shorts Player wird beim Start der App nicht fortgesetzt</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-Player wird beim Start der App fortgesetzt</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Shorts beim Starten nicht mehr automatisch fortsetzen</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts werden beim Start der App nicht mehr automatisch fortgesetzt</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts werden beim Start der App automatisch fortgesetzt</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts mit</string>
   <string name="morphe_shorts_player_type_shorts">Shorts Spieler</string>

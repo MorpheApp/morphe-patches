@@ -18,6 +18,8 @@ import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
  * or reference this class.
  */
 public class SharedYouTubeSettings extends BaseSettings {
+    public static final BooleanSetting SETTINGS_INITIALIZED = new BooleanSetting("morphe_settings_initialized", FALSE, false, false);
+
     public static final BooleanSetting SETTINGS_SEARCH_HISTORY = new BooleanSetting("morphe_settings_search_history", TRUE, true);
     public static final StringSetting SETTINGS_SEARCH_ENTRIES = new StringSetting("morphe_settings_search_entries", "");
 

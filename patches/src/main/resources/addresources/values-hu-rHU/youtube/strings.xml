@@ -1351,10 +1351,10 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_change_start_page_always_title">Mindig módosítsa a kezdőoldalt</string>
   <string name="morphe_change_start_page_always_summary_on">"A kezdőlap mindig módosítva van\n\nKorlátozás: A visszalépés gomb a eszköztáron nem biztos, hogy működik"</string>
   <string name="morphe_change_start_page_always_summary_off">A kezdőoldal csak az alkalmazás indításakor változik meg</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">A Shorts lejátszás folytatásának kikapcsolása</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">A Shorts lejátszás nem indul el az alkalmazás indításakor</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">A Shorts lejátszás folytatódik az alkalmazás indításakor</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Shorts lejátszás letiltása indításkor</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">A Shorts lejátszás nem indul el az alkalmazás indításakor</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">A Shorts lejátszás folytatódik az alkalmazás indításakor</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts megnyitása ezzel:</string>
   <string name="morphe_shorts_player_type_shorts">Shorts lejátszó</string>
@@ -1436,7 +1436,7 @@ Csúsztassa a kibontáshoz vagy bezáráshoz"</string>
   <string name="morphe_seekbar_custom_color_invalid">Érvénytelen keresősáv színértéke</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Fejléc logó</string>
+  <string name="morphe_header_logo_title">Fejléclogó</string>
   <string name="morphe_header_logo_entry_1">Alapértelmezett</string>
   <string name="morphe_header_logo_entry_2">Normál</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->

@@ -1355,10 +1355,10 @@ Second \"item\" text"</string>
 
 التقييد: قد لا يعمل استخدام زر الرجوع على شريط الأدوات"</string>
   <string name="morphe_change_start_page_always_summary_off">يتم تغيير صفحة البداية فقط عند بدء تشغيل التطبيق</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">تعطيل استئناف مشغل Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">لن يتم استئناف تشغيل مشغل Shorts عند بدء تشغيل التطبيق</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">سيتم استئناف تشغيل مشغل Shorts عند بدء تشغيل التطبيق</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">تعطيل استئناف Shorts عند بدء التشغيل</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">لن يتم استئناف Shorts عند بدء تشغيل التطبيق</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">سيتم استئناف Shorts عند بدء تشغيل التطبيق</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">فتح فيديوهات Shorts باستخدام</string>
   <string name="morphe_shorts_player_type_shorts">مشغل Shorts</string>

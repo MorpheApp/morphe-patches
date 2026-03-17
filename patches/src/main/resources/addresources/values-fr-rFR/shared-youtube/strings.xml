@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Redémarrez pour terminer la configuration</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nom de l\'application</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->

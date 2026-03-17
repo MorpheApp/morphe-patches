@@ -1358,10 +1358,10 @@ Second \"item\" text"</string>
 
 限制：工具栏上的后退按钮可能无法使用"</string>
   <string name="morphe_change_start_page_always_summary_off">起始页仅在应用启动时更改</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">禁用恢复 Shorts 播放器</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts 播放器不会在应用启动时恢复</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts 播放器将在应用启动时恢复</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">禁用启动时自动恢复Shorts</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts 将不会在应用启动时自动恢复</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts 将会在应用启动时自动恢复</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">使用 Shorts 播放器打开</string>
   <string name="morphe_shorts_player_type_shorts">Shorts 播放器</string>

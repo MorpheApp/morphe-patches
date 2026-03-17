@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Patalastas</string>
+  <string name="morphe_hide_post_ads_title">Itago ang mga patalastas sa feed</string>
+  <string name="morphe_hide_post_ads_summary">Itinatago ang mga patalastas sa feed</string>
+  <string name="morphe_hide_comment_ads_title">Itago ang mga patalastas sa komento</string>
+  <string name="morphe_hide_comment_ads_summary">Itinatago ang mga patalastas sa seksyon ng mga komento</string>
+  <string name="morphe_screen_layout_title">Layout</string>
+  <string name="morphe_disable_modern_home_title">I-disable ang modernong home</string>
+  <string name="morphe_disable_modern_home_summary">Hindi pinapagana ang modernong UI ng home</string>
+  <string name="morphe_disable_screenshot_popup_title">I-disable ang screenshot popup</string>
+  <string name="morphe_disable_screenshot_popup_summary">Hindi pinapagana ang popup na lumalabas kapag kumukuha ng screenshot</string>
+  <string name="morphe_hide_answers_button_title">Itago ang Answers button</string>
+  <string name="morphe_hide_answers_button_summary">Itinatago ang Answers button sa navigation bar</string>
+  <string name="morphe_hide_chat_button_title">Itago ang Chat button</string>
+  <string name="morphe_hide_chat_button_summary">Itinatago ang Chat button sa navigation bar</string>
+  <string name="morphe_hide_create_button_title">Itago ang Create button</string>
+  <string name="morphe_hide_create_button_summary">Itinatago ang Create button sa navigation bar</string>
+  <string name="morphe_hide_discover_button_title">Itago ang Discover o Communities button</string>
+  <string name="morphe_hide_discover_button_summary">Itinatago ang Discover o Communities button sa navigation bar</string>
+  <string name="morphe_hide_games_button_title">Itago ang Games button</string>
+  <string name="morphe_hide_games_button_summary">Itinatago ang Games button sa navigation bar</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Itago ang Recently Visited shelf</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Itinatago ang Recently Visited shelf sa sidebar</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Itago ang Games on Reddit shelf</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Itinatago ang Games on Reddit shelf sa sidebar</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Itago ang Reddit Pro shelf</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Itinatago ang Reddit Pro shelf sa sidebar</string>
+  <string name="morphe_hide_about_shelf_title">Itago ang About shelf</string>
+  <string name="morphe_hide_about_shelf_summary">Itinatago ang About shelf sa sidebar</string>
+  <string name="morphe_hide_resources_shelf_title">Itago ang Resources shelf</string>
+  <string name="morphe_hide_resources_shelf_summary">Itinatago ang Resources shelf sa sidebar</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Itago ang inirerekomendang komunidad</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Itinatago ang mga inirerekomendang komunidad shelves sa mga subreddit</string>
+  <string name="morphe_hide_trending_today_shelf_title">Itago ang Trending Today shelf</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Itinatago ang Trending Today shelf mula sa mga mungkahi sa paghahanap
+
+Limitasyon: Maaaring hindi maitago ang visual spacers"</string>
+  <string name="morphe_remove_notification_dialog_title">Alisin ang notification suggestion dialog</string>
+  <string name="morphe_remove_notification_dialog_summary">Inaalis ang mga notifications suggestion dialog na lumalabas kapag binibisita ang isang subreddit sa pamamagitan ng awtomatikong pagtanggap nito</string>
+  <string name="morphe_show_view_count_title">Ipakita ang view count</string>
+  <string name="morphe_show_view_count_summary">"Ipinapakita ang view count ng mga Post
+
+Limitasyon: Ipinapakita lamang kung ang tugon ng API ay kinabibilangan ng view count"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Alisin ang NSFW warning dialog</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Inaalis ang NSFW warning dialog na lumalabas kapag binibisita ang isang subreddit sa pamamagitan ng awtomatikong pagtanggap nito</string>
+  <string name="morphe_screen_miscellaneous_title">Mga sari-sari</string>
+  <string name="morphe_about_title">Tungkol</string>
+  <string name="morphe_about_summary">Patch version at opisyal na links</string>
+  <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
+  <string name="morphe_sanitize_sharing_links_summary">Nililinis ang mga sharing links sa pamamagitan ng pag-aalis ng mga tracking query parameter</string>
+  <string name="morphe_open_links_directly_title">Buksan ang mga links nang direkta</string>
+  <string name="morphe_open_links_directly_summary">Nilalampasan ang redirection URLs sa mga external link</string>
+</resources>

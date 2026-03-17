@@ -1354,10 +1354,10 @@ Se posteriormente desativado, é recomendável limpar os dados do aplicativo par
 
 Limitação: usar o botão Voltar na barra de ferramentas pode não funcionar"</string>
   <string name="morphe_change_start_page_always_summary_off">A página inicial é alterada apenas na inicialização do aplicativo</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Desativar continuar a reproduzir Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts não irá continuar reproduzindo ao iniciar o aplicativo</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts irá continuar reproduzindo ao iniciar o aplicativo</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Desabilitar a retomada de Shorts na inicialização</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts não serão retomados ao iniciar o aplicativo</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts serão retomados ao iniciar o aplicativo</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Abrir Shorts com</string>
   <string name="morphe_shorts_player_type_shorts">Reprodutor do Shorts</string>

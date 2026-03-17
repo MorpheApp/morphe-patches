@@ -1346,10 +1346,10 @@ Second \"item\" text"</string>
 
 Ограничение: Използването на бутона 'назад' в панелите може да не работи"</string>
   <string name="morphe_change_start_page_always_summary_off">Стартова страница е променена само при пускане на приложението</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Изключете възпроизвеждането на Коротки видеа в началния плеър</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Коротките видеа не ще се възпроизвеждат при пускане на приложението</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Коротките видеа ще се възпроизвеждат при пускане на приложението</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Деактивиране на продължаването на Shorts при стартиране</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts няма да продължат при стартиране на приложението</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts ще продължат при стартиране на приложението</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Отворите Коротки видеа с</string>
   <string name="morphe_shorts_player_type_shorts">Плеер за Коротки видеа</string>

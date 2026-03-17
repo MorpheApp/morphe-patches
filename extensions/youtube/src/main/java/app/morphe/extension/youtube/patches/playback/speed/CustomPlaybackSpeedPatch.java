@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.playback.speed;
@@ -137,6 +139,14 @@ public class CustomPlaybackSpeedPatch {
      */
     public static boolean disableTapAndHoldSpeed(boolean original) {
         return !DISABLE_TAP_AND_HOLD_SPEED && original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean useNewFlyoutMenu(boolean useNewFlyout) {
+        // If using old speed Turn off A/B flyout that breaks old playback speed menu.
+        return useNewFlyout && !Settings.RESTORE_OLD_SPEED_MENU.get();
     }
 
     /**

@@ -18,14 +18,17 @@ import app.morphe.extension.shared.settings.Setting;
 @SuppressWarnings({"unused", "deprecation", "DiscouragedApi"})
 public class ResourceUtils {
 
+    public static boolean useActivityContextIfAvailable = true;
+
     private ResourceUtils() {
     } // utility class
 
     private static Context getActivityOrContext() {
-        Activity mActivity = Utils.getActivity();
-        return mActivity != null
-                ? mActivity
-                : Utils.getContext();
+        if (useActivityContextIfAvailable) {
+            Activity mActivity = Utils.getActivity();
+            if (mActivity != null) return mActivity;
+        }
+        return Utils.getContext();
     }
 
     /**

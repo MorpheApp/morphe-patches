@@ -1354,10 +1354,10 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
 
 Ограничење: Коришћење дугмета „Назад” на траци са алаткама можда неће радити"</string>
   <string name="morphe_change_start_page_always_summary_off">Полазна страница се мења само при покретању апликације</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Онемогући наставак репродукције Shorts плејера</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts плејер неће наставити репродукцију при покретању апликације</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts плејер ће наставити репродукцију при покретању апликације</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Искулј Shortsov обнављање при стартовању</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts се неће обнављати при стартовању апликације</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts ће се обнављати при стартовању апликације</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Отворите Shorts помоћу</string>
   <string name="morphe_shorts_player_type_shorts">Shorts плејера</string>

@@ -69,6 +69,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">ウェブサイト</string>
   <string name="morphe_settings_about_links_donate">寄付</string>
   <string name="morphe_settings_about_links_translations">翻訳</string>
+  <string name="morphe_settings_about_links_credits">クレジット</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">最新の情報</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">利用可能な更新があります</string>
+  <string name="morphe_settings_about_contributors_current">現在開発中</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">デバッグ</string>
   <string name="morphe_debug_screen_summary">デバッグ オプションを有効または無効にします</string>
@@ -87,11 +91,11 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">デバッグログのエクスポート</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe のデバッグログをクリップボードにコピーします</string>
   <string name="morphe_debug_logs_disabled">デバッグログが無効になっています</string>
-  <string name="morphe_debug_logs_none_found">ログが見つかりませんでした</string>
+  <string name="morphe_debug_logs_none_found">ログが見つかりません</string>
   <string name="morphe_debug_logs_copied_to_clipboard">ログをコピーしました</string>
   <string name="morphe_debug_logs_failed_to_export">ログのエクスポートに失敗しました: %s</string>
   <string name="morphe_debug_logs_clear_buffer_title">デバッグログを消去</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">保存されている Morphe のすべてのデバッグログを消去します</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">保存されているすべての Morphe のデバッグログを消去します</string>
   <string name="morphe_debug_logs_clear_toast">ログを消去しました</string>
   <string name="morphe_debug_feature_flags_manager_title">feature flag マネージャー</string>
   <string name="morphe_debug_feature_flags_manager_summary">各機能のオン / オフを制御する feature flag を管理します</string>

@@ -37,6 +37,15 @@ internal object ServerSideMaxSpeedFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object FlyoutMenuNonLegacyFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45731126)
+    )
+)
+
 internal object SpeedArrayGeneratorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "[L",

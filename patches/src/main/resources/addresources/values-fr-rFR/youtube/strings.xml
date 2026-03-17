@@ -1356,10 +1356,10 @@ Si cette option est désactivée ultérieurement, il est recommandé de vider le
 
 Limitation : Le bouton 'Retour' de la barre d'outils peut ne pas fonctionner."</string>
   <string name="morphe_change_start_page_always_summary_off">La page de démarrage est changée uniquement au démarrage de l\'application</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Désactiver la reprise de lecture Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Les Shorts ne reprennent pas au démarrage de l\'application</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Les Shorts reprennent au démarrage de l\'application</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Désactiver la reprise des Shorts au démarrage</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Les Shorts ne reprennent pas au démarrage de l\'application</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Les Shorts reprennent au démarrage de l\'application</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Ouvrir les Shorts avec</string>
   <string name="morphe_shorts_player_type_shorts">Le lecteur Shorts</string>

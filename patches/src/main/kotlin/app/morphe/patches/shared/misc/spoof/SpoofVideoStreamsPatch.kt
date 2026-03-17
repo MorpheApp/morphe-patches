@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.shared.misc.spoof
@@ -88,7 +90,7 @@ private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
                 "astring-1.9.0.min.js",
                 "meriyah-6.1.4.min.js",
                 "polyfill.js",
-                "yt.solver.core.js", // yt-dlp-ejs 0.5.1: https://github.com/MorpheApp/ejs/releases/tag/0.5.1
+                "yt.solver.core.js", // yt-dlp-ejs 0.7.0: https://github.com/yt-dlp/ejs/releases/tag/0.7.0
             )
         )
 

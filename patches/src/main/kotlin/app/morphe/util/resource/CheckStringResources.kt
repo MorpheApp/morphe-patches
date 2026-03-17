@@ -34,7 +34,7 @@
 package app.morphe.util.resource
 
 import app.morphe.patches.all.misc.resources.StringResourceSanitizer.sanitizeAndroidResourceString
-import app.morphe.patches.all.misc.resources.locales
+import app.morphe.patches.all.misc.resources.localesAll
 import app.morphe.util.inputStreamFromBundledResource
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -52,9 +52,10 @@ internal fun main(args: Array<String>) {
         "music",
         "shared",
         "shared-youtube",
-        "youtube"
+        "youtube",
+        "reddit"
     ).forEach { appId ->
-        locales.forEach { locale ->
+        localesAll.forEach { locale ->
             val srcFolderName = locale.getSrcLocaleFolderName()
             val srcSubPath = "$srcFolderName/$appId/strings.xml"
 

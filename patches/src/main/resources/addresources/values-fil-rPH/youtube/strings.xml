@@ -1355,10 +1355,10 @@ Kung i-off ang, inirerekomenda na i-clear ang app data para maiwasan ang UI bugs
 
 Limitasyon: Ang paggamit ng pindutan ng back sa toolbar ay maaaring hindi gumana"</string>
   <string name="morphe_change_start_page_always_summary_off">Binabago lamang ang panimulang pahina sa pagsisimula ng app</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">I-disable ang pagbabalik ng Shorts player</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Hindi ipagpapatuloy ng Shorts player ang pag-play sa pagsisimula ng app</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Ipagpapatuloy ng Shorts player ang pag-play sa pagsisimula ng app</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">I-disable ang Shorts na nagpapatuloy sa startup</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Ang Shorts ay hindi magpapatuloy sa startup ng app</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Ang Shorts ay magpapatuloy sa startup ng app</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Buksan ang Shorts gamit ang</string>
   <string name="morphe_shorts_player_type_shorts">Shorts player</string>

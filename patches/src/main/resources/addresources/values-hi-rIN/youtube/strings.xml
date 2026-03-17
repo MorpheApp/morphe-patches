@@ -1351,10 +1351,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
 सीमा: टूलबार पर बैक बटन का उपयोग काम नहीं कर सकता है"</string>
   <string name="morphe_change_start_page_always_summary_off">शुरुआत पृष्ठ केवल ऐप स्टार्टअप पर बदला जाता है</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">रीज़्यूमिंग शॉर्ट्स प्लेयर को अक्षम करें</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">ऐप स्टार्टअप पर शॉर्ट्स प्लेयर फिर से शुरू नहीं होगा</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">ऐप स्टार्टअप पर शॉर्ट्स प्लेयर फिर से शुरू होगा</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">स्टार्टअप पर शॉर्ट्स फिर से शुरू करना अक्षम करें</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">ऐप स्टार्टअप पर शॉर्ट्स फिर से शुरू नहीं होंगे</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">ऐप स्टार्टअप पर शॉर्ट्स फिर से शुरू होंगे</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">इसके साथ शॉर्ट्स खोलें</string>
   <string name="morphe_shorts_player_type_shorts">शॉर्ट्स प्लेयर</string>

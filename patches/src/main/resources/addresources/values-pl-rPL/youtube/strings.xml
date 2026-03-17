@@ -1356,10 +1356,10 @@ Jeśli później zostanie to wyłączone, rekomendowane jest usunięcie danych a
 
 Ograniczenie: Przycisk wstecz na pasku może nie działać"</string>
   <string name="morphe_change_start_page_always_summary_off">Zmieniana tylko przy starcie aplikacji</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Start od Shortsów</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shortsy nie będą włączane podczas startu aplikacji</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shortsy będą włączane podczas startu aplikacji</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Wznawianie Shortsów przy starcie aplikacji</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Wyłączone</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Włączone</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Otwórz Shortsy w</string>
   <string name="morphe_shorts_player_type_shorts">Odtwarzaczu Shortsów</string>

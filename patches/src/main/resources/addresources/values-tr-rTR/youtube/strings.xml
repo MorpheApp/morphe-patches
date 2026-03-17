@@ -1355,10 +1355,10 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
 
 Kısıtlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"</string>
   <string name="morphe_change_start_page_always_summary_off">Başlangıç sayfası yalnızca uygulama başlatılırken değiştirilir</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Shorts oynatıcıya devam edilmesini devre dışı bırak</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts oynatıcı uygulama açıldığında devam etmeyecek</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts oynatıcı uygulama açıldığında devam edecek</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Shorts\'un başlangıçta devam etmesini devre dışı bırak</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts, uygulama başlatıldığında devam etmeyecek</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts, uygulama başlatıldığında devam edecek</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts\'u şununla aç</string>
   <string name="morphe_shorts_player_type_shorts">Shorts oynatıcı</string>

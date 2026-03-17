@@ -1351,10 +1351,10 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
 
 Limitare: Utilizarea butonului Înapoi de pe bara de instrumente poate să nu funcționeze"</string>
   <string name="morphe_change_start_page_always_summary_off">Pagina de pornire este schimbată doar la pornirea aplicației</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Dezactivează reluarea playerului Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Playerul Shorts nu va relua la pornirea aplicației</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Scurtătura va fi reluată la pornirea aplicației</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Dezactivează reluarea Shorts la pornire</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts nu vor fi reluate la pornirea aplicației</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts vor fi reluate la pornirea aplicației</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Deschide Shorts cu</string>
   <string name="morphe_shorts_player_type_shorts">Player Shorts</string>

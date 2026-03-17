@@ -1,7 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.requests.Route.Method.GET;
+import static app.morphe.extension.shared.settings.preference.MorpheAboutPreference.CREDITS_LINK;
+import static app.morphe.extension.shared.settings.preference.MorpheAboutPreference.CREDITS_LINK_PLACEHOLDER_URL;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -23,6 +35,9 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+
+import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.settings.preference.MorpheAboutPreference.WebLink;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,6 +67,121 @@ import app.morphe.extension.shared.ui.Dim;
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class MorpheAboutPreference extends Preference {
+
+    static class WebLink {
+        /**
+         * Localized name replacements for links.
+         */
+        private static final Map<String, String> webLinkNameReplacements = new HashMap<>() {
+            {
+                // Handle no string resources available, and use the original untranslated tet.
+                var websiteStringKey = "morphe_settings_about_links_website";
+                if (ResourceUtils.getIdentifier(ResourceType.STRING, websiteStringKey) != 0) {
+                    put("website", websiteStringKey);
+                    put("donate", "morphe_settings_about_links_donate");
+                    put("translations", "morphe_settings_about_links_translations");
+                    put("credits", "morphe_settings_about_links_credits");
+                }
+            }
+        };
+
+        final boolean preferred;
+        final String name;
+        @Nullable
+        final String subText;
+        final String url;
+
+        WebLink(JSONObject json) throws JSONException {
+            this(json.getBoolean("preferred"),
+                    json.getString("name"),
+                    null,
+                    json.getString("url")
+            );
+        }
+
+        WebLink(String name, @Nullable String subText, String url) {
+            this(false, name, url, subText);
+        }
+
+        WebLink(boolean preferred, String name, @Nullable String subText, String url) {
+            this.preferred = preferred;
+            String localizedNameKey = webLinkNameReplacements.get(name.toLowerCase(Locale.US));
+            this.name = (localizedNameKey != null) ? str(localizedNameKey) : name;
+            this.subText = subText;
+            this.url = url;
+        }
+
+        @NonNull
+        @Override
+        public String toString() {
+            return "WebLink{" +
+                    "preferred=" + preferred +
+                    ", name='" + name + '\'' +
+                    ", subText='" + subText + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
+    }
+
+    /**
+     * Returns an SVG icon string based on the link URL pattern.
+     * Matching by URL avoids issues with localized link names.
+     */
+    private static String getLinkIcon(String url) {
+        // Globe - website / generic
+        final String iconGlobe =
+                "<svg viewBox='0 0 16 16'><circle cx='8' cy='8' r='6'/>" +
+                        "<ellipse cx='8' cy='8' rx='2.8' ry='6'/>" +
+                        "<line x1='2' y1='8' x2='14' y2='8'/></svg>";
+        // Heart - donate
+        final String iconHeart =
+                "<svg viewBox='0 0 16 16'><path d='M8 13s-5-3.5-5-7a3 3 0 0 1 5-2.24A3 3 0 0 1 13 6c0 3.5-5 7-5 7z'/></svg>";
+        // Bubble + A - translations
+        final String iconTranslate =
+                "<svg viewBox='0 0 16 16'>" +
+                        "<path d='M2 2.5A1.5 1.5 0 0 1 3.5 1h9A1.5 1.5 0 0 1 14 2.5v6A1.5 1.5 0 0 1 12.5 10H9l-3 3v-3H3.5A1.5 1.5 0 0 1 2 8.5v-6z'/>" +
+                        "<path d='M5.5 7.5L7.5 3l2 4.5M6.2 6h2.6' stroke-width='1.3'/>" +
+                        "</svg>";
+        // Person - credits
+        final String iconPerson =
+                "<svg viewBox='0 0 16 16'><circle cx='8' cy='5' r='2.5'/>" +
+                        "<path d='M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5'/></svg>";
+        // GitHub mark
+        final String iconGitHub =
+                "<svg viewBox='0 0 16 16'><path d='M8 1a7 7 0 0 0-2.21 13.64c.35.06.48-.15.48-.34v-1.2C4.07 13.54 3.67 12 3.67 12c-.32-.81-.78-1.02-.78-1.02-.63-.43.05-.42.05-.42.7.05 1.07.72 1.07.72.62 1.06 1.63.75 2.03.58.06-.45.24-.75.44-.92C5 10.79 3.37 10.17 3.37 7.5c0-.75.27-1.36.71-1.84-.07-.18-.31-.87.07-1.82 0 0 .58-.18 1.9.71A6.6 6.6 0 0 1 8 4.18c.59 0 1.18.08 1.73.23 1.31-.89 1.9-.71 1.9-.71.38.95.14 1.64.07 1.82.44.48.71 1.09.71 1.84 0 2.68-1.63 3.28-3.19 3.45.25.22.47.65.47 1.31v1.95c0 .19.13.4.48.34A7 7 0 0 0 8 1z'/></svg>";
+        // X / Twitter
+        final String iconX =
+                "<svg viewBox='0 0 16 16'><path d='M2 2l5 5.5L2 13h2l3.5-4 3.5 4h2L8.5 7.5 13 2h-2L8 5.5 5 2z'/></svg>";
+        // Reddit - alien head
+        final String iconReddit =
+                "<svg viewBox='0 0 16 16'>" +
+                        "<path d='M3 10.5C3 7.46 5.24 5 8 5s5 2.46 5 5.5'/>" +
+                        "<path d='M3 10.5c0 1.93 2.24 3.5 5 3.5s5-1.57 5-3.5'/>" +
+                        "<circle cx='5.8' cy='9.5' r='.9' fill='currentColor' stroke='none'/>" +
+                        "<circle cx='10.2' cy='9.5' r='.9' fill='currentColor' stroke='none'/>" +
+                        "<path d='M6 11.8c.5.7 3.5.7 4 0'/>" +
+                        "<path d='M8 5c.3-1.5 1.5-2 3-1.5'/>" +
+                        "<circle cx='11.5' cy='3.8' r='.9' fill='currentColor' stroke='none'/>" +
+                        "</svg>";
+        // External link - fallback
+        final String iconExternal =
+                "<svg viewBox='0 0 16 16'><path d='M6 3H3v10h10v-3M9 2h5v5M14 2l-6 6'/></svg>";
+
+        if (url == null) return iconExternal;
+        String u = url.toLowerCase(Locale.US);
+        if (u.contains("github.com")) return iconGitHub;
+        if (u.contains("reddit.com")) return iconReddit;
+        if (u.contains("twitter.com") || u.contains("x.com")) return iconX;
+        if (u.contains("crowdin") || u.contains("translate")) return iconTranslate;
+        if (u.contains("donate") || u.contains("donat")) return iconHeart;
+        if (u.equals("https://credits/")) return iconPerson;
+        return iconGlobe;
+    }
+
+    // Dummy url
+    static final String CREDITS_LINK_PLACEHOLDER_URL = "https://morphe.software/credits/";
+
+    static final WebLink CREDITS_LINK = new WebLink("credits", CREDITS_LINK_PLACEHOLDER_URL, null);
 
     private static String useNonBreakingHyphens(String text) {
         // Replace any dashes with non-breaking dashes, so the English text 'pre-release'
@@ -95,156 +225,185 @@ public class MorpheAboutPreference extends Preference {
                                  background: %s;
                                  color: %s;
                                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                                 padding: 24px;
+                                 padding: 0;
+                             }
+                             /* Header */
+                             .about-header {
+                                 padding: 28px 20px 20px;
                                  text-align: center;
+                                 border-bottom: 1px solid rgba(128, 128, 128, 0.12);
                              }
                              .logo-container {
-                                 margin: 0 auto 24px;
-                                 width: 120px;
-                                 height: 120px;
-                                 border-radius: 28px;
+                                 margin: 0 auto 14px;
+                                 width: 72px;
+                                 height: 72px;
+                                 border-radius: 18px;
                                  background: linear-gradient(135deg, %s 0%%, %s 100%%);
-                                 padding: 3px;
+                                 padding: 2px;
                                  display: inline-block;
-                                 box-shadow: 0 8px 24px rgba(30, 90, 168, 0.2);
                              }
                              .logo-inner {
                                  width: 100%%;
                                  height: 100%%;
-                                 border-radius: 26px;
-                                 background: %s;
-                                 display: flex;
-                                 align-items: center;
-                                 justify-content: center;
-                                 overflow: hidden;
-                                 padding: 0px;
-                             }
-                             .logo-bg {
-                                 width: 100%%;
-                                 height: 100%%;
-                                 border-radius: 24px;
+                                 border-radius: 16px;
                                  background: #EEEEEE;
                                  display: flex;
                                  align-items: center;
                                  justify-content: center;
-                                 padding: 12px;
+                                 overflow: hidden;
                              }
                              img {
                                  width: 100%%;
                                  height: 100%%;
                                  object-fit: contain;
                              }
-                             p {
-                                 font-size: 14px;
-                                 line-height: 1.6;
-                                 margin-bottom: 16px;
-                                 opacity: 0.8;
-                             }
-                             .dev-note {
-                                 background: rgba(30, 90, 168, 0.08);
-                                 border: 1px solid rgba(30, 90, 168, 0.2);
-                                 border-radius: 12px;
-                                 padding: 12px 16px;
-                                 margin: 16px 0;
-                             }
-                             .dev-note h3 {
-                                 font-size: 16px;
-                                 font-weight: 600;
-                                 margin-bottom: 6px;
-                                 opacity: 0.9;
-                             }
-                             .dev-note p {
-                                 margin: 0;
-                                 font-size: 13px;
-                                 opacity: 0.8;
-                             }
-                             .links-section {
-                                 margin-top: 32px;
-                             }
-                             h2 {
+                             .app-name {
                                  font-size: 18px;
                                  font-weight: 600;
-                                 margin-bottom: 16px;
-                                 opacity: 0.9;
+                                 color: %s;
+                                 margin-bottom: 10px;
+                             }
+                             /* Info card - version + dev-note, centered, no icon */
+                             .info-card {
+                                 text-align: center;
+                                 margin-bottom: 8px;
+                                 padding: 10px 14px;
+                                 border-radius: 10px;
+                                 background: rgba(30, 90, 168, 0.06);
+                                 border: 1px solid rgba(30, 90, 168, 0.15);
+                             }
+                             .info-card:last-child {
+                                 margin-bottom: 0;
+                             }
+                             .info-card h3 {
+                                 font-size: 13px;
+                                 font-weight: 600;
+                                 color: %s;
+                                 margin-bottom: 2px;
+                             }
+                             .info-card p {
+                                 margin: 0;
+                                 font-size: 12px;
+                                 color: %s;
+                                 opacity: 0.75;
+                                 line-height: 1.4;
+                             }
+                             /* Links */
+                             .links-section {
+                                 padding: 16px;
+                             }
+                             .section-label {
+                                 font-size: 11px;
+                                 font-weight: 600;
+                                 color: %s;
+                                 opacity: 0.5;
+                                 text-transform: uppercase;
+                                 letter-spacing: 0.07em;
+                                 margin-bottom: 8px;
+                                 padding: 0 4px;
                              }
                              .link-button {
-                                 display: block;
+                                 display: flex;
+                                 align-items: center;
+                                 gap: 10px;
                                  text-decoration: none;
                                  color: %s;
-                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%%, rgba(0, 175, 174, 0.08) 100%%);
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.07) 0%%, rgba(0, 175, 174, 0.07) 100%%);
                                  border: 1px solid rgba(30, 90, 168, 0.2);
                                  border-radius: 12px;
-                                 padding: 14px 20px;
-                                 margin-bottom: 10px;
-                                 font-size: 15px;
+                                 padding: 11px 14px;
+                                 margin-bottom: 6px;
+                                 font-size: 14px;
                                  font-weight: 500;
-                                 transition: all 0.2s ease;
-                                 position: relative;
-                                 overflow: hidden;
                                  -webkit-tap-highlight-color: transparent;
                                  -webkit-touch-callout: none;
                                  -webkit-user-select: none;
                                  user-select: none;
                              }
-                             .link-button::after {
-                                 content: '';
-                                 position: absolute;
-                                 top: 50%%;
-                                 left: 50%%;
-                                 width: 0;
-                                 height: 0;
-                                 border-radius: 50%%;
-                                 background: rgba(30, 90, 168, 0.3);
-                                 transform: translate(-50%%, -50%%);
-                                 transition: width 0.3s, height 0.3s;
-                                 pointer-events: none;
+                             .link-button:last-child {
+                                 margin-bottom: 0;
                              }
                              .link-button:active {
-                                 transform: scale(0.98);
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.14) 0%%, rgba(0, 175, 174, 0.14) 100%%);
+                                 border-color: rgba(30, 90, 168, 0.35);
+                             }
+                             .link-icon {
+                                 width: 28px;
+                                 height: 28px;
+                                 border-radius: 8px;
                                  background: linear-gradient(135deg, rgba(30, 90, 168, 0.15) 0%%, rgba(0, 175, 174, 0.15) 100%%);
-                                 border-color: rgba(30, 90, 168, 0.4);
-                                 outline: none;
+                                 display: flex;
+                                 align-items: center;
+                                 justify-content: center;
+                                 flex-shrink: 0;
+                                 font-size: 15px;
                              }
-                             .link-button:active::after {
-                                 width: 300px;
-                                 height: 300px;
+                             .link-icon svg {
+                                 width: 16px;
+                                 height: 16px;
+                                 fill: none;
+                                 stroke: %s;
+                                 stroke-width: 1.6;
+                                 stroke-linecap: round;
+                                 stroke-linejoin: round;
                              }
-                             .link-button:focus {
-                                 outline: none;
+                             .link-label {
+                                 flex: 1;
+                             }
+                             .link-chevron {
+                                 font-size: 24px;
+                                 opacity: 0.3;
+                                 line-height: 1;
                              }
                          </style>
                         """, backgroundColorHex, foregroundColorHex,
                 morpheBlue, morpheTeal,
-                backgroundColorHex, foregroundColorHex
+                foregroundColorHex,
+                morpheBlue, foregroundColorHex,
+                foregroundColorHex, foregroundColorHex, foregroundColorHex
         ));
+
+        // Header section.
+        html.append("<div class=\"about-header\">");
 
         // Logo with Morphe gradient border.
         if (isNetworkConnected) {
             html.append(String.format("""
                     <div class="logo-container">
                         <div class="logo-inner">
-                            <div class="logo-bg">
-                                <img src="%s" onerror="this.parentElement.parentElement.parentElement.style.display='none';" />
-                            </div>
+                            <img src="%s" onerror="this.parentElement.parentElement.style.display='none';" />
                         </div>
                     </div>
                     """, AboutRoutes.aboutLogoUrl));
         }
 
+        // App name.
+        html.append("<div class=\"app-name\">Morphe</div>");
+
         String appPatchesVersion = Utils.getPatchesReleaseVersion();
 
-        // Description.
-        html.append("<p>").append(
-                useNonBreakingHyphens(currentVersion == null || appPatchesVersion.equalsIgnoreCase(currentVersion)
+        // Version info card.
+        boolean isUpToDate = currentVersion == null || appPatchesVersion.equalsIgnoreCase(currentVersion);
+        String versionTitle = isUpToDate
+                ? getString("morphe_settings_about_links_dev_header_up_to_date")
+                : getString("morphe_settings_about_links_dev_header_update_available");
+        html.append(String.format("""
+                <div class="info-card">
+                    <h3>%s</h3>
+                    <p>%s</p>
+                </div>
+                """,
+                useNonBreakingHyphens(versionTitle),
+                useNonBreakingHyphens(isUpToDate
                         ? getString("morphe_settings_about_links_body_version_current", appPatchesVersion)
                         : getString("morphe_settings_about_links_body_version_outdated", appPatchesVersion, currentVersion)
                 )
-        ).append("</p>");
+        ));
 
-        // Dev note banner.
+        // Dev note card.
         if (Utils.isPreReleasePatches()) {
             html.append(String.format("""
-                            <div class="dev-note">
+                            <div class="info-card">
                                 <h3>%s</h3>
                                 <p>%s</p>
                             </div>
@@ -253,16 +412,22 @@ public class MorpheAboutPreference extends Preference {
             ));
         }
 
+        html.append("</div>"); // end .about-header
+
         // Links section.
         html.append(String.format("""
                 <div class="links-section">
-                    <h2>%s</h2>
+                    <div class="section-label">%s</div>
                 """, getString("morphe_settings_about_links_header")));
 
-        // Link buttons.
+        // Link buttons with per-URL SVG icons.
         for (WebLink link : aboutLinks) {
+            String icon = getLinkIcon(link.url);
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
-                    .append(link.name).append("</a>");
+                    .append("<span class=\"link-icon\">").append(icon).append("</span>")
+                    .append("<span class=\"link-label\">").append(link.name).append("</span>")
+                    .append("<span class=\"link-chevron\">&#x203A;</span>")
+                    .append("</a>");
         }
 
         html.append("""
@@ -385,7 +550,7 @@ class WebViewDialog extends Dialog {
         webView.setVerticalScrollBarEnabled(false); // Disable the vertical scrollbar.
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new OpenLinksExternallyWebClient());
+        webView.setWebViewClient(new OpenAboutLinkWebClient());
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
 
         // Add WebView to layout.
@@ -400,67 +565,20 @@ class WebViewDialog extends Dialog {
         }
     }
 
-    private class OpenLinksExternallyWebClient extends WebViewClient {
+    private class OpenAboutLinkWebClient extends OpenLinksExternallyWebClient {
+        public OpenAboutLinkWebClient() {
+            super(getContext(), WebViewDialog.this);
+        }
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                getContext().startActivity(intent);
-            } catch (Exception ex) {
-                Logger.printException(() -> "Open link failure", ex);
+            if (CREDITS_LINK_PLACEHOLDER_URL.equals(url)) {
+                new MorpheCreditsDialog(getContext()).show();
+                dialog.dismiss();
+                return true;
             }
-            // Dismiss the about dialog using a delay,
-            // otherwise without a delay the UI looks hectic with the dialog dismissing
-            // to show the settings while simultaneously a web browser is opening.
-            Utils.runOnMainThreadDelayed(WebViewDialog.this::dismiss, 500);
-            return true;
+            return super.shouldOverrideUrlLoading(view, url);
         }
-    }
-}
-
-class WebLink {
-
-    /**
-     * Localized name replacements for links.
-     */
-    private static final Map<String, String> webLinkNameReplacements = new HashMap<>() {
-        {
-            // Handle no string resources available, and use the original untranslated tet.
-            var websiteStringKey = "morphe_settings_about_links_website";
-            if (ResourceUtils.getIdentifier(ResourceType.STRING, websiteStringKey) != 0) {
-                put("website", websiteStringKey);
-                put("donate", "morphe_settings_about_links_donate");
-                put("translations", "morphe_settings_about_links_translations");
-            }
-        }
-    };
-
-    final boolean preferred;
-    final String name;
-    final String url;
-
-    WebLink(JSONObject json) throws JSONException {
-        this(json.getBoolean("preferred"),
-                json.getString("name"),
-                json.getString("url")
-        );
-    }
-
-    WebLink(boolean preferred, String name, String url) {
-        this.preferred = preferred;
-        this.url = url;
-        String localizedNameKey = webLinkNameReplacements.get(name.toLowerCase(Locale.US));
-        this.name = (localizedNameKey != null) ? str(localizedNameKey) : name;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "WebLink{" +
-                "preferred=" + preferred +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                '}';
     }
 }
 
@@ -474,7 +592,8 @@ class AboutRoutes {
      * Links to use if fetch links api call fails.
      */
     private static final WebLink[] NO_CONNECTION_STATIC_LINKS = {
-            new WebLink(true, "Website", "https://morphe.software")
+            new WebLink(true, "Website", null, "https://morphe.software"),
+            CREDITS_LINK
     };
 
     private static final String API_URL = "https://api.morphe.software/v2";
@@ -492,7 +611,7 @@ class AboutRoutes {
     private static volatile long latestPatchesVersionLastCheckedTime;
 
     static boolean hasFetchedPatchersVersion() {
-        final long updateCheckFrequency = 10 * 60 * 1000; // 10 minutes.
+        final long updateCheckFrequency = 5 * 60 * 1000; // 5 minutes.
         final long now = System.currentTimeMillis();
 
         return latestPatchesVersion != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency;
@@ -586,6 +705,9 @@ class AboutRoutes {
                 links.add(link);
             }
 
+            // Add credits link.
+            links.add(CREDITS_LINK);
+
             Logger.printDebug(() -> "links: " + links);
 
             return fetchedLinks = links.toArray(new WebLink[0]);
@@ -599,5 +721,270 @@ class AboutRoutes {
         }
 
         return NO_CONNECTION_STATIC_LINKS;
+    }
+}
+
+class MorpheCreditsDialog extends Dialog {
+
+    private static final MorpheAboutPreference.WebLink[] WORKS_LINKS_CURRENT = {
+            new WebLink("Morphe", "https://github.com/morpheapp/morphe-patches/graphs/contributors", str("morphe_settings_about_links_morphe")
+            ),
+    };
+
+    private static final MorpheAboutPreference.WebLink[] WORKS_LINKS_PRIOR = {
+            new WebLink("RVX", "https://github.com/inotia00/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025", str("morphe_settings_about_links_rvx")
+            ),
+            new WebLink("ReVanced", "https://github.com/ReVanced/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025", str("morphe_settings_about_links_rv")
+            ),
+            new WebLink("Vanced", "https://github.com/TeamVanced", str("morphe_settings_about_links_vanced")
+            )
+    };
+
+    private String createDialogHtml() {
+        // Get theme colors.
+        String foregroundColorHex = Utils.getColorHexString(Utils.getAppForegroundColor());
+        String backgroundColorHex = Utils.getColorHexString(Utils.getDialogBackgroundColor());
+
+        // Morphe brand colors from logo.
+        String morpheBlue = "#1E5AA8";
+        String morpheTeal = "#00AFAE";
+
+        StringBuilder html = new StringBuilder(String.format("""
+                 <html>
+                 <head>
+                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 </head>
+                 <body>
+                 <style>
+                     * {
+                         margin: 0;
+                         padding: 0;
+                         box-sizing: border-box;
+                     }
+                     body {
+                         background: %s;
+                         color: %s;
+                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                         padding: 0;
+                     }
+                     /* Header */
+                     .credits-header {
+                         padding: 22px 20px 16px;
+                         text-align: center;
+                         border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+                     }
+                     .credits-title {
+                         font-size: 17px;
+                         font-weight: 600;
+                         color: %s;
+                     }
+                     /* Sections */
+                     .credits-section {
+                         padding: 14px 16px;
+                     }
+                     .credits-section + .credits-section {
+                         border-top: 1px solid rgba(128, 128, 128, 0.12);
+                     }
+                     .section-label {
+                         font-size: 11px;
+                         font-weight: 600;
+                         color: %s;
+                         opacity: 0.5;
+                         text-transform: uppercase;
+                         letter-spacing: 0.07em;
+                         margin-bottom: 8px;
+                         padding: 0 4px;
+                     }
+                     /* Contributor rows - same style as About */
+                     .link-button {
+                         display: flex;
+                         align-items: center;
+                         gap: 10px;
+                         text-decoration: none;
+                         color: %s;
+                         background: linear-gradient(135deg, rgba(30, 90, 168, 0.07) 0%%, rgba(0, 175, 174, 0.07) 100%%);
+                         border: 1px solid rgba(30, 90, 168, 0.2);
+                         border-radius: 12px;
+                         padding: 11px 14px;
+                         margin-bottom: 6px;
+                         font-size: 14px;
+                         font-weight: 500;
+                         -webkit-tap-highlight-color: transparent;
+                         -webkit-touch-callout: none;
+                         -webkit-user-select: none;
+                         user-select: none;
+                     }
+                     .link-button:last-child {
+                         margin-bottom: 0;
+                     }
+                     .link-button:active {
+                         background: linear-gradient(135deg, rgba(30, 90, 168, 0.14) 0%%, rgba(0, 175, 174, 0.14) 100%%);
+                         border-color: rgba(30, 90, 168, 0.35);
+                     }
+                     .avatar {
+                         width: 28px;
+                         height: 28px;
+                         border-radius: 50%%;
+                         background: linear-gradient(135deg, %s 0%%, %s 100%%);
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         font-size: 12px;
+                         font-weight: 700;
+                         color: #ffffff;
+                         flex-shrink: 0;
+                     }
+                     .contributor-info {
+                         flex: 1;
+                     }
+                     .contributor-name {
+                         font-size: 14px;
+                         font-weight: 500;
+                         color: %s;
+                     }
+                     .contributor-role {
+                         font-size: 11px;
+                         color: %s;
+                         opacity: 0.5;
+                         margin-top: 1px;
+                     }
+                     .link-chevron {
+                         font-size: 24px;
+                         color: %s;
+                         opacity: 0.3;
+                         line-height: 1;
+                     }
+                 </style>
+                """,
+                backgroundColorHex, foregroundColorHex,
+                foregroundColorHex, foregroundColorHex,
+                foregroundColorHex, morpheBlue, morpheTeal,
+                foregroundColorHex, foregroundColorHex, foregroundColorHex
+        ));
+
+        // Header.
+        html.append(String.format("""
+                <div class="credits-header">
+                    <div class="credits-title">%s</div>
+                </div>
+                """,
+                StringRef.str("morphe_settings_about_links_credits")
+        ));
+
+        // Current contributors section.
+        html.append(String.format("""
+            <div class="credits-section">
+                <div class="section-label">%s</div>
+            """, StringRef.str("morphe_settings_about_contributors_current")));
+        for (MorpheAboutPreference.WebLink link : WORKS_LINKS_CURRENT) {
+            String initial = link.name.substring(0, 1).toUpperCase();
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
+                    .append("<div class=\"avatar\">").append(initial).append("</div>")
+                    .append("<div class=\"contributor-info\">")
+                    .append("<div class=\"contributor-name\">").append(link.name).append("</div>")
+                    .append("<div class=\"contributor-role\">")
+                    .append(link.subText).append("</div>")
+                    .append("</div>")
+                    .append("<span class=\"link-chevron\">&#x203A;</span>")
+                    .append("</a>");
+        }
+        html.append("</div>");
+
+        // Prior contributors section.
+        html.append(String.format("""
+            <div class="credits-section">
+                <div class="section-label">%s</div>
+            """, StringRef.str("morphe_settings_about_contributors_prior")));
+        for (MorpheAboutPreference.WebLink link : WORKS_LINKS_PRIOR) {
+            String initial = link.name.substring(0, 1).toUpperCase();
+            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
+                    .append("<div class=\"avatar\">").append(initial).append("</div>")
+                    .append("<div class=\"contributor-info\">")
+                    .append("<div class=\"contributor-name\">").append(link.name).append("</div>");
+            if (link.subText != null) {
+                html.append("<div class=\"contributor-role\">").append(link.subText).append("</div>");
+            }
+            html.append("</div>")
+                    .append("<span class=\"link-chevron\">&#x203A;</span>")
+                    .append("</a>");
+        }
+        html.append("</div>");
+
+        html.append("""
+                </body>
+                </html>
+            """);
+
+        return html.toString();
+    }
+
+    private final String htmlContent;
+
+    public MorpheCreditsDialog(Context context) {
+        super(context);
+        this.htmlContent = createDialogHtml();
+    }
+
+    // JS required to hide any broken images. No remote JavaScript is ever loaded.
+    @SuppressLint("SetJavaScriptEnabled")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); // Remove default title bar.
+
+        // Create main layout.
+        LinearLayout mainLayout = new LinearLayout(getContext());
+        mainLayout.setOrientation(LinearLayout.VERTICAL);
+
+        mainLayout.setPadding(Dim.dp10, Dim.dp10, Dim.dp10, Dim.dp10);
+        // Set rounded rectangle background.
+        ShapeDrawable mainBackground = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(28), null, null));
+        mainBackground.getPaint().setColor(Utils.getDialogBackgroundColor());
+        mainLayout.setBackground(mainBackground);
+
+        // Create WebView.
+        WebView webView = new WebView(getContext());
+        webView.setVerticalScrollBarEnabled(false); // Disable the vertical scrollbar.
+        webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new OpenLinksExternallyWebClient(getContext(), this));
+        webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
+
+        // Add WebView to layout.
+        mainLayout.addView(webView);
+
+        setContentView(mainLayout);
+
+        // Set dialog window attributes.
+        Window window = getWindow();
+        if (window != null) {
+            Utils.setDialogWindowParameters(window, Gravity.CENTER, 0, 90, false);
+        }
+    }
+}
+
+class OpenLinksExternallyWebClient extends WebViewClient {
+    final Context context;
+    final Dialog dialog;
+
+    public OpenLinksExternallyWebClient(Context context, Dialog dialog) {
+        this.context = context;
+        this.dialog = dialog;
+    }
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Open link failure", ex);
+        }
+        // Dismiss the dialog using a delay,
+        // otherwise without a delay the UI looks hectic with the dialog dismissing
+        // to show the settings while simultaneously a web browser is opening.
+        Utils.runOnMainThreadDelayed(dialog::dismiss, 500);
+        return true;
     }
 }

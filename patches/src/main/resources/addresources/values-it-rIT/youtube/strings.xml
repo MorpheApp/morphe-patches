@@ -1355,10 +1355,10 @@ Se in seguito verrà disattivato, si consiglia di cancellare i dati dell'app per
 
 Limitazione: l'utilizzo del pulsante Indietro sulla barra degli strumenti potrebbe non funzionare"</string>
   <string name="morphe_change_start_page_always_summary_off">La pagina iniziale viene modificata solo all\'avvio dell\'app</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Disabilita la ripresa del player Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Il player Shorts non riprenderà all\'avvio dell\'app</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Il player Shorts riprenderà all\'avvio dell\'app</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Disabilitare la ripresa di Shorts all\'avvio</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts non verranno ripresi all\'avvio dell\'app</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts verranno ripresi all\'avvio dell\'app</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Apri Shorts con</string>
   <string name="morphe_shorts_player_type_shorts">Lettore Shorts</string>

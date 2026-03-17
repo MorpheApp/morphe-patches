@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -81,7 +83,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
-    private final StringFilterGroupList communityPostStringFilterGroup;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -135,16 +136,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_responsive_root.e",
                 "poll_post_responsive_root.e",
                 "shared_post_root.e"
-        );
-        communityPostStringFilterGroup = new StringFilterGroupList();
-        communityPostStringFilterGroup.addAll(
-                new StringFilterGroup(
-                        null,
-                        // home
-                        "horizontalCollectionSwipeProtector=null",
-                        // subscriptions
-                        "heightConstraint=null"
-                )
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -412,7 +403,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
-            return communityPostStringFilterGroup.check(contextInterface.toString()).isFiltered();
+            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.

@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.extension.reddit.settings.preference;
 
@@ -12,23 +14,24 @@ import android.widget.ListView;
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousPreferenceCategory;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**
- * Preference fragment for Reddit Morphe settings
+ * Preference fragment for Reddit Morphe settings.
  */
 @SuppressWarnings("deprecation")
 public class RedditPreferenceFragment extends AbstractPreferenceFragment {
 
     @Override
     protected void initialize() {
-        final Context context = getContext();
+        Context context = getContext();
 
-        // Currently no resources can be compiled for Reddit due to apktool limitations.
-        // So all Reddit Strings are hard coded in extensions.
-        restartDialogTitle = "Restart required";
-        restartDialogMessage = "Restart the app for this change to take effect.";
-        restartDialogButtonText = "Restart";
+        // Must use utils modified language context if language override is active.
+        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
+            ResourceUtils.useActivityContextIfAvailable = false;
+        }
 
         PreferenceScreen preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
         setPreferenceScreen(preferenceScreen);

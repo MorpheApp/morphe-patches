@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.video.speed.custom
@@ -25,12 +27,14 @@ import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
+import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -90,7 +94,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             ServerSideMaxSpeedFeatureFlagFingerprint.method.returnEarly(false)
         }
 
-        // region Force old video quality menu.
+        // region Force old playback speed.
 
         // Replace the speeds float array with custom speeds.
         SpeedArrayGeneratorFingerprint.let {
@@ -158,6 +162,15 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                     invoke-virtual { v0 }, $showOldPlaybackSpeedMenuMethod
                 """
             )
+        }
+
+        if (is_21_02_or_greater) {
+            FlyoutMenuNonLegacyFeatureFlagFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS_DESCRIPTOR->useNewFlyoutMenu(Z)Z"
+                )
+            }
         }
 
         // endregion

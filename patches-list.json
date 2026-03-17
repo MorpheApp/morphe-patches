@@ -1,5 +1,5 @@
 {
-  "version": "1.19.0-dev.3",
+  "version": "1.19.0",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -553,6 +553,25 @@
       "options": []
     },
     {
+      "name": "Disable Shorts resuming on startup",
+      "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.44.38",
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Disable double tap actions",
       "description": "Adds an option to disable player double tap gestures.",
       "use": true,
@@ -608,31 +627,28 @@
       "options": []
     },
     {
+      "name": "Disable modern home",
+      "description": "Adds an option to disable the modern home UI.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Disable player popup panels",
       "description": "Adds an option to disable panels (such as live chat) from opening automatically.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.youtube": [
-          "20.44.38",
-          "20.40.45",
-          "20.31.42",
-          "20.21.37"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Disable resuming Shorts on startup",
-      "description": "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1804,6 +1820,23 @@
           "20.40.45",
           "20.31.42",
           "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Show view count",
+      "description": "Adds an option to show the view count of Posts.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
         ]
       },
       "options": []

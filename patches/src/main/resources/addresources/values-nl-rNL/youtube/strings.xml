@@ -1353,10 +1353,10 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_change_start_page_always_title">Startpagina altijd wijzigen</string>
   <string name="morphe_change_start_page_always_summary_on">"De startpagina wordt altijd gewijzigd\n\nBeperking: Het gebruik van de terugknop op de werkbalk werkt mogelijk niet"</string>
   <string name="morphe_change_start_page_always_summary_off">Startpagina wordt alleen gewijzigd bij het opstarten van de app</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Schakel het hervatten van Shorts-speler uit</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-speler wordt niet hervat bij het opstarten van de app</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-speler wordt hervat bij het opstarten van de app</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Shorts hervatten uitschakelen bij opstarten</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts worden niet hervat bij het opstarten van de app</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts worden hervat bij het opstarten van de app</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts openen met</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-speler</string>
