@@ -31,7 +31,6 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -44,9 +43,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
-import org.w3c.dom.Element
 import java.lang.ref.WeakReference
-import java.nio.file.Files
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
@@ -57,32 +54,6 @@ private var buildRequestMethodURLRegister = -1
 private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
     execute {
 
-        // region copy the j2v8 library.
-
-        setOf(
-            "arm64-v8a",
-            "armeabi-v7a",
-            "x86",
-            "x86_64"
-        ).forEach { arch ->
-            val architectureDirectory = get("lib/$arch")
-
-            // For YouTube Music, there is only one architecture in the app.
-            // Copy only if the architecture folder exists.
-            if (architectureDirectory.exists()) {
-                val inputStream = inputStreamFromBundledResource(
-                    "spoof/jniLibs",
-                    "$arch/libj2v8.so"
-                )
-                if (inputStream != null) {
-                    Files.copy(
-                        inputStream,
-                        architectureDirectory.resolve("libj2v8.so").toPath(),
-                    )
-                }
-            }
-        }
-
         copyResources(
             "spoof",
             ResourceGroup(
@@ -91,19 +62,9 @@ private val spoofVideoStreamsRawResourcePatch = rawResourcePatch {
                 "meriyah-6.1.4.min.js",
                 "polyfill.js",
                 "yt.solver.core.js", // yt-dlp-ejs 0.7.0: https://github.com/yt-dlp/ejs/releases/tag/0.7.0
+                "yt.solver.wrapper.js",
             )
         )
-
-        // Fix compile error in YouTube Music.
-        document("AndroidManifest.xml").use { document ->
-            val applicationNode =
-                document
-                    .getElementsByTagName("application")
-                    .item(0) as Element
-            applicationNode.setAttribute("android:extractNativeLibs", "true")
-        }
-
-        // endregion
     }
 }
 

@@ -12,7 +12,7 @@ package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
-import static app.morphe.extension.shared.spoof.js.J2V8Support.supportJ2V8;
+import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
@@ -74,8 +74,8 @@ public class StreamingDataRequest {
 
         int i = 1;
         for (ClientType c : availableClients) {
-            if (c.requireJS && !supportJ2V8()) {
-                Logger.printDebug(() -> "Could not find J2V8 runtime. Skipping JavaScript client: " + c.name());
+            if (c.requireJS && !supportsJavaScriptEngine()) {
+                Logger.printDebug(() -> "Could not find JavaScript engine. Skipping JavaScript client: " + c.name());
                 continue;
             }
 

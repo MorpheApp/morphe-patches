@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.spoof.js.nsigsolver.impl.V8ChallengeProvider;
+import app.morphe.extension.shared.spoof.js.nsigsolver.impl.JsEngineChallengeProvider;
 import app.morphe.extension.shared.spoof.js.nsigsolver.provider.*;
 
 /**
@@ -19,8 +19,8 @@ import app.morphe.extension.shared.spoof.js.nsigsolver.provider.*;
 public class PlayerDataExtractor {
 
     public PlayerDataExtractor(String playerJS, String playerJSHash) {
-        V8ChallengeProvider.getInstance().setPlayerJS(playerJS, playerJSHash);
-        V8ChallengeProvider.getInstance().warmup();
+        JsEngineChallengeProvider.getInstance().setPlayerJS(playerJS, playerJSHash);
+        JsEngineChallengeProvider.getInstance().warmup();
 
         checkAllData();
     }
@@ -30,7 +30,7 @@ public class PlayerDataExtractor {
         List<String> sProcessed = new ArrayList<>();
 
         List<JsChallengeRequest> requests = getJsChallengeRequests(nParams, sParams);
-        List<JsChallengeProviderResponse> result = V8ChallengeProvider.getInstance().bulkSolve(requests);
+        List<JsChallengeProviderResponse> result = JsEngineChallengeProvider.getInstance().bulkSolve(requests);
 
         for (JsChallengeProviderResponse item : result) {
             var response = item.getResponse();
@@ -95,7 +95,7 @@ public class PlayerDataExtractor {
             requests.add(new JsChallengeRequest(JsChallengeType.N, new ChallengeInput(param)));
             requests.add(new JsChallengeRequest(JsChallengeType.SIG, new ChallengeInput(param)));
 
-            V8ChallengeProvider.getInstance().bulkSolve(requests);
+            JsEngineChallengeProvider.getInstance().bulkSolve(requests);
         } catch (Exception ex) {
             Logger.printException(() -> "Deobfuscation test failed", ex);
         }
