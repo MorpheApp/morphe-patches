@@ -477,8 +477,7 @@ val navigationBarPatch = bytecodePatch(
                 val onClickListenerIndex = it.instructionMatches[3].index
                 val onClickListenerRegister = getInstruction<FiveRegisterInstruction>(onClickListenerIndex).registerC
                 val copiedButtonRendererIndex = it.instructionMatches[4].index
-                val copiedButtonRendererRegister =
-                    getInstruction<OneRegisterInstruction>(copiedButtonRendererIndex).registerA
+                val copiedButtonRendererRegister = getInstruction<OneRegisterInstruction>(copiedButtonRendererIndex).registerA
 
                 addInstruction(
                     copiedButtonRendererIndex + 1,
