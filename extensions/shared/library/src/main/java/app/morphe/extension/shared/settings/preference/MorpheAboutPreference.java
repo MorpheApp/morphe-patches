@@ -87,24 +87,28 @@ public class MorpheAboutPreference extends Preference {
 
         final boolean preferred;
         final String name;
+        @Nullable
+        final String subText;
         final String url;
 
         WebLink(JSONObject json) throws JSONException {
             this(json.getBoolean("preferred"),
                     json.getString("name"),
+                    null,
                     json.getString("url")
             );
         }
 
-        WebLink(String name, String url) {
-            this(false, name, url);
+        WebLink(String name, @Nullable String subText, String url) {
+            this(false, name, url, subText);
         }
 
-        WebLink(boolean preferred, String name, String url) {
+        WebLink(boolean preferred, String name, @Nullable String subText, String url) {
             this.preferred = preferred;
-            this.url = url;
             String localizedNameKey = webLinkNameReplacements.get(name.toLowerCase(Locale.US));
             this.name = (localizedNameKey != null) ? str(localizedNameKey) : name;
+            this.subText = subText;
+            this.url = url;
         }
 
         @NonNull
@@ -113,6 +117,7 @@ public class MorpheAboutPreference extends Preference {
             return "WebLink{" +
                     "preferred=" + preferred +
                     ", name='" + name + '\'' +
+                    ", subText='" + subText + '\'' +
                     ", url='" + url + '\'' +
                     '}';
         }
@@ -173,9 +178,10 @@ public class MorpheAboutPreference extends Preference {
         return iconGlobe;
     }
 
-    static final String CREDITS_LINK_PLACEHOLDER_URL = "https://credits/";
+    // Dummy url
+    static final String CREDITS_LINK_PLACEHOLDER_URL = "https://morphe.software/credits/";
 
-    static final WebLink CREDITS_LINK = new WebLink("credits", CREDITS_LINK_PLACEHOLDER_URL);
+    static final WebLink CREDITS_LINK = new WebLink("credits", CREDITS_LINK_PLACEHOLDER_URL, null);
 
     private static String useNonBreakingHyphens(String text) {
         // Replace any dashes with non-breaking dashes, so the English text 'pre-release'
@@ -544,7 +550,7 @@ class WebViewDialog extends Dialog {
         webView.setVerticalScrollBarEnabled(false); // Disable the vertical scrollbar.
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new OpenLinksExternallyWebClient());
+        webView.setWebViewClient(new OpenAboutLinkWebClient());
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
 
         // Add WebView to layout.
@@ -559,25 +565,19 @@ class WebViewDialog extends Dialog {
         }
     }
 
-    private class OpenLinksExternallyWebClient extends WebViewClient {
+    private class OpenAboutLinkWebClient extends OpenLinksExternallyWebClient {
+        public OpenAboutLinkWebClient() {
+            super(getContext(), WebViewDialog.this);
+        }
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            try {
-                if (CREDITS_LINK_PLACEHOLDER_URL.equals(url)){
-                    new MorpheCreditsDialog(getContext()).show();
-                } else {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    getContext().startActivity(intent);
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Open link failure", ex);
+            if (CREDITS_LINK_PLACEHOLDER_URL.equals(url)) {
+                new MorpheCreditsDialog(getContext()).show();
+                dialog.dismiss();
+                return true;
             }
-
-            // Dismiss the dialog using a delay,
-            // otherwise without a delay the UI looks hectic with the dialog dismissing
-            // to show the settings while simultaneously a web browser is opening.
-            Utils.runOnMainThreadDelayed(WebViewDialog.this::dismiss, 500);
-            return true;
+            return super.shouldOverrideUrlLoading(view, url);
         }
     }
 }
@@ -592,7 +592,7 @@ class AboutRoutes {
      * Links to use if fetch links api call fails.
      */
     private static final WebLink[] NO_CONNECTION_STATIC_LINKS = {
-            new WebLink(true, "Website", "https://morphe.software"),
+            new WebLink(true, "Website", null, "https://morphe.software"),
             CREDITS_LINK
     };
 
@@ -611,7 +611,7 @@ class AboutRoutes {
     private static volatile long latestPatchesVersionLastCheckedTime;
 
     static boolean hasFetchedPatchersVersion() {
-        final long updateCheckFrequency = 10 * 60 * 1000; // 10 minutes.
+        final long updateCheckFrequency = 5 * 60 * 1000; // 5 minutes.
         final long now = System.currentTimeMillis();
 
         return latestPatchesVersion != null && (now - latestPatchesVersionLastCheckedTime) < updateCheckFrequency;
@@ -727,20 +727,18 @@ class AboutRoutes {
 class MorpheCreditsDialog extends Dialog {
 
     private static final MorpheAboutPreference.WebLink[] WORKS_LINKS_CURRENT = {
-            new WebLink("Morphe", "https://github.com/morpheapp/morphe-patches/graphs/contributors"),
+            new WebLink("Morphe", "https://github.com/morpheapp/morphe-patches/graphs/contributors", str("morphe_settings_about_links_morphe")
+            ),
     };
 
     private static final MorpheAboutPreference.WebLink[] WORKS_LINKS_PRIOR = {
-            new WebLink("RVX", "https://github.com/inotia00/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025"),
-            new WebLink("ReVanced", "https://github.com/ReVanced/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025"),
-            new WebLink("Vanced", "https://github.com/TeamVanced")
+            new WebLink("RVX", "https://github.com/inotia00/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025", str("morphe_settings_about_links_rvx")
+            ),
+            new WebLink("ReVanced", "https://github.com/ReVanced/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025", str("morphe_settings_about_links_rv")
+            ),
+            new WebLink("Vanced", "https://github.com/TeamVanced", str("morphe_settings_about_links_vanced")
+            )
     };
-
-    private static final java.util.Map<String, String> CONTRIBUTOR_DATE_RANGES = new java.util.HashMap<>() {{
-        put("rvx",      "Mar 2022 &#8209; Dec 2025");
-        put("revanced", "Mar 2022 &#8209; Dec 2025");
-        put("vanced",   "2019 &#8209; 2022");
-    }};
 
     private String createDialogHtml() {
         // Get theme colors.
@@ -884,7 +882,8 @@ class MorpheCreditsDialog extends Dialog {
                     .append("<div class=\"avatar\">").append(initial).append("</div>")
                     .append("<div class=\"contributor-info\">")
                     .append("<div class=\"contributor-name\">").append(link.name).append("</div>")
-                    .append("<div class=\"contributor-role\">").append(StringRef.str("morphe_settings_about_contributors_active")).append("</div>")
+                    .append("<div class=\"contributor-role\">")
+                    .append(link.subText).append("</div>")
                     .append("</div>")
                     .append("<span class=\"link-chevron\">&#x203A;</span>")
                     .append("</a>");
@@ -898,13 +897,12 @@ class MorpheCreditsDialog extends Dialog {
             """, StringRef.str("morphe_settings_about_contributors_prior")));
         for (MorpheAboutPreference.WebLink link : WORKS_LINKS_PRIOR) {
             String initial = link.name.substring(0, 1).toUpperCase();
-            String dateRange = CONTRIBUTOR_DATE_RANGES.get(link.name.toLowerCase(java.util.Locale.US));
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")
                     .append("<div class=\"contributor-info\">")
                     .append("<div class=\"contributor-name\">").append(link.name).append("</div>");
-            if (dateRange != null) {
-                html.append("<div class=\"contributor-role\">").append(dateRange).append("</div>");
+            if (link.subText != null) {
+                html.append("<div class=\"contributor-role\">").append(link.subText).append("</div>");
             }
             html.append("</div>")
                     .append("<span class=\"link-chevron\">&#x203A;</span>")
@@ -950,7 +948,7 @@ class MorpheCreditsDialog extends Dialog {
         webView.setVerticalScrollBarEnabled(false); // Disable the vertical scrollbar.
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new OpenLinksExternallyWebClient());
+        webView.setWebViewClient(new OpenLinksExternallyWebClient(getContext(), this));
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
 
         // Add WebView to layout.
@@ -964,21 +962,29 @@ class MorpheCreditsDialog extends Dialog {
             Utils.setDialogWindowParameters(window, Gravity.CENTER, 0, 90, false);
         }
     }
+}
 
-    private class OpenLinksExternallyWebClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                getContext().startActivity(intent);
-            } catch (Exception ex) {
-                Logger.printException(() -> "Open link failure", ex);
-            }
-            // Dismiss the about dialog using a delay,
-            // otherwise without a delay the UI looks hectic with the dialog dismissing
-            // to show the settings while simultaneously a web browser is opening.
-            Utils.runOnMainThreadDelayed(MorpheCreditsDialog.this::dismiss, 500);
-            return true;
+class OpenLinksExternallyWebClient extends WebViewClient {
+    final Context context;
+    final Dialog dialog;
+
+    public OpenLinksExternallyWebClient(Context context, Dialog dialog) {
+        this.context = context;
+        this.dialog = dialog;
+    }
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Open link failure", ex);
         }
+        // Dismiss the dialog using a delay,
+        // otherwise without a delay the UI looks hectic with the dialog dismissing
+        // to show the settings while simultaneously a web browser is opening.
+        Utils.runOnMainThreadDelayed(dialog::dismiss, 500);
+        return true;
     }
 }
