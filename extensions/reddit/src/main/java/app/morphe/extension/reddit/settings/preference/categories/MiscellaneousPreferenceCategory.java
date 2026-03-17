@@ -16,8 +16,10 @@ import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
 import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
+import app.morphe.extension.shared.settings.preference.SortedListPreference;
 
 @SuppressWarnings("deprecation")
 public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCategory {
@@ -43,6 +45,9 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         importPref.setTitle(str("morphe_pref_import_export_title"));
         importPref.setSummary(str("morphe_pref_import_export_summary"));
         addPreference(importPref);
+
+        SortedListPreference language = new SortedListPreference(context, BaseSettings.MORPHE_LANGUAGE);
+        addPreference(language);
 
         if (OpenLinksDirectlyPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(

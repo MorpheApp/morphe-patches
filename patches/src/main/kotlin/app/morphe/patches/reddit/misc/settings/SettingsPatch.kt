@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -21,7 +22,9 @@ import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -46,7 +49,22 @@ val settingsPatch = bytecodePatch(
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
-        )
+        ),
+        resourcePatch {
+            execute {
+                copyResources(
+                    "settings",
+                    ResourceGroup("drawable",
+                        "morphe_ic_dialog_alert.xml",
+                        "morphe_settings_custom_checkmark.xml",
+                        "morphe_settings_custom_checkmark_bold.xml",
+                    ),
+                    ResourceGroup("layout",
+                        "morphe_custom_list_item_checked.xml"
+                    )
+                )
+            }
+        }
     )
 
     execute {
