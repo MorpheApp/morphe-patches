@@ -1,3 +1,5 @@
+@file:Suppress("UnnecessaryVariable")
+
 package app.morphe.extension.youtube.swipecontrols.views
 
 import android.annotation.SuppressLint
@@ -15,7 +17,6 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.RelativeLayout
 import app.morphe.extension.shared.ResourceType
-import app.morphe.extension.shared.ResourceUtils.getIdentifier
 import app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow
 import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
@@ -63,6 +64,7 @@ class SwipeControlsOverlayLayout(
     }
 
     // Initialize progress bars.
+    @Suppress("JoinDeclarationAndAssignment")
     private val circularProgressView: CircularProgressView
     private val horizontalProgressView: HorizontalProgressView
     private val verticalBrightnessProgressView: VerticalProgressView
