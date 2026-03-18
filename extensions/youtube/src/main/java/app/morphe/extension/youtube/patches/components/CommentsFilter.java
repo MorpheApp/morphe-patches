@@ -28,9 +28,9 @@ public class CommentsFilter extends Filter {
     private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
-    private static final String VIDEO_META_DATA_PATH = "video_metadata_carousel";
+    private static final String VIDEO_METADATA_CAROUSEL_PATH = "video_metadata_carousel.e";
 
-    private static final List<String> commentsPageFilterStrings = getFilterStrings(Settings.HIDE_COMMENTS_PAGE_FILTER_STRINGS);
+    private static final List<String> commentsCarouselFilterStrings = getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
 
     private final StringFilterGroup comments;
     private final StringFilterGroup emojiAndTimestampButtons;
@@ -132,11 +132,11 @@ public class CommentsFilter extends Filter {
      * Injection point.
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
-        if (Settings.HIDE_COMMENTS_PAGE.get() && !commentsPageFilterStrings.isEmpty()) {
+        if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()) {
             try {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
                 var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
-                if (identifier != null && identifier.contains(VIDEO_META_DATA_PATH)) {
+                if (identifier != null && identifier.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
                     var type = newElement.getType().toBuilder();
                     var componentType = type.getComponentType().toBuilder();
                     var model = componentType.getModel().toBuilder();
@@ -153,7 +153,7 @@ public class CommentsFilter extends Filter {
                         Logger.printDebug(() -> "comments title: " + title);
 
                         if (title != null) {
-                            for (String filter : commentsPageFilterStrings) {
+                            for (String filter : commentsCarouselFilterStrings) {
                                 if (title.contains(filter)) {
                                     data.removeCarouselItemDatas(i);
                                     data.removeCarouselTitleDatas(i);

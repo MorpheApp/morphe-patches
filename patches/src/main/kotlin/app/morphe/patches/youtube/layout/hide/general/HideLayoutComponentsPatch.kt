@@ -183,9 +183,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         sorting = Sorting.UNSORTED,
                         tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                         preferences = setOf(
-                            SwitchPreference("morphe_hide_comments_page"),
+                            SwitchPreference("morphe_hide_comments_carousel"),
                             TextPreference(
-                                "morphe_hide_comments_page_filter_strings",
+                                "morphe_hide_comments_carousel_filter_strings",
                                 inputType = InputType.TEXT_MULTI_LINE
                             ),
                         )
