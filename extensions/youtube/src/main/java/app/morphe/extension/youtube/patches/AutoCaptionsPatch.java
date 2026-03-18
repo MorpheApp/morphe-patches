@@ -10,6 +10,9 @@
 
 package app.morphe.extension.youtube.patches;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -22,7 +25,7 @@ public class AutoCaptionsPatch {
         WITHOUT_VOLUME_ONLY
     }
 
-    private static volatile boolean captionsButtonStatus;
+    private static final AtomicBoolean captionsButtonStatus = new AtomicBoolean(false);
 
     /**
      * Injection point.
@@ -36,7 +39,7 @@ public class AutoCaptionsPatch {
             // Disable auto-captioning only
             // when 'withVolumeAutoCaptioningEnabled'
             // field is false
-            return !captionsButtonStatus || original;
+            return !captionsButtonStatus.get() || original;
         }
 
         return original;
@@ -58,15 +61,17 @@ public class AutoCaptionsPatch {
 
     /**
      * Injection point.
+     * Called before {@link #disableAutoCaptions(boolean)}.
      */
-    public static void preFetchVideo() {
-        captionsButtonStatus = false;
+    public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
+        captionsButtonStatus.set(false);
     }
 
     /**
      * Injection point.
+     * Called after {@link #disableAutoCaptions(boolean)}.
      */
-    public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
-        captionsButtonStatus = true;
+    public static void videoInformationLoaded() {
+        Utils.runOnMainThreadDelayed(() -> captionsButtonStatus.compareAndSet(false, true), 150);
     }
 }
