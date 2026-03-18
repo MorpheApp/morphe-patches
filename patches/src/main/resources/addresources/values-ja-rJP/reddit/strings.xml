@@ -17,15 +17,15 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_screen_ads_title">広告</string>
-  <string name="morphe_hide_post_ads_title">フィード広告を非表示にする</string>
-  <string name="morphe_hide_post_ads_summary">フィード内の広告を非表示にする</string>
-  <string name="morphe_hide_comment_ads_title">コメント広告を非表示にする</string>
+  <string name="morphe_hide_post_ads_title">フィード広告を非表示</string>
+  <string name="morphe_hide_post_ads_summary">フィード内の広告を非表示にします</string>
+  <string name="morphe_hide_comment_ads_title">コメント広告を非表示</string>
   <string name="morphe_hide_comment_ads_summary">コメント セクションで広告を非表示にします</string>
   <string name="morphe_screen_layout_title">レイアウト</string>
   <string name="morphe_disable_modern_home_title">モダンホームを無効化</string>
-  <string name="morphe_disable_modern_home_summary">モダンホームUIを無効化</string>
+  <string name="morphe_disable_modern_home_summary">モダンホームUIを無効にします</string>
   <string name="morphe_disable_screenshot_popup_title">スクリーンショットポップアップを無効化</string>
-  <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効化</string>
+  <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効にします</string>
   <string name="morphe_hide_answers_button_title">Answersボタンを非表示</string>
   <string name="morphe_hide_answers_button_summary">ナビゲーションバーのAnswersボタンを非表示にします</string>
   <string name="morphe_hide_chat_button_title">Chatボタンを非表示</string>
@@ -36,20 +36,20 @@ Second \"item\" text"</string>
   <string name="morphe_hide_discover_button_summary">ナビゲーションバーのDiscoverまたはコミュニティボタンを非表示にします</string>
   <string name="morphe_hide_games_button_title">Gamesボタンを非表示</string>
   <string name="morphe_hide_games_button_summary">ナビゲーションバーのGamesボタンを非表示にします</string>
-  <string name="morphe_hide_recently_visited_shelf_title">最近アクセスしたシェルフを非表示</string>
-  <string name="morphe_hide_recently_visited_shelf_summary">サイドバーの最近アクセスしたシェルフを非表示にします</string>
-  <string name="morphe_hide_games_on_reddit_shelf_title">RedditのGamesシェルフを非表示</string>
-  <string name="morphe_hide_games_on_reddit_shelf_summary">サイドバーのRedditのGamesシェルフを非表示にします</string>
-  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Proシェルフを非表示</string>
-  <string name="morphe_hide_reddit_pro_shelf_summary">サイドバーのReddit Proシェルフを非表示にします</string>
-  <string name="morphe_hide_about_shelf_title">Aboutシェルフを非表示</string>
-  <string name="morphe_hide_about_shelf_summary">サイドバーのAboutシェルフを非表示にします</string>
-  <string name="morphe_hide_resources_shelf_title">Resourcesシェルフを非表示</string>
-  <string name="morphe_hide_resources_shelf_summary">サイドバーのResourcesシェルフを非表示にします</string>
+  <string name="morphe_hide_recently_visited_shelf_title">最近訪問したコミュニティ欄を非表示</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">サイドバーの最近訪問したコミュニティ欄を非表示にします</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">RedditのGames欄を非表示</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">サイドバーのRedditのGames欄を非表示にします</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro欄を非表示</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">サイドバーのReddit Pro欄を非表示にします</string>
+  <string name="morphe_hide_about_shelf_title">About欄を非表示</string>
+  <string name="morphe_hide_about_shelf_summary">サイドバーのAbout欄を非表示にします</string>
+  <string name="morphe_hide_resources_shelf_title">Resources欄を非表示</string>
+  <string name="morphe_hide_resources_shelf_summary">サイドバーのResources欄を非表示にします</string>
   <string name="morphe_hide_recommended_communities_shelf_title">おすすめのコミュニティを非表示</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">サブredditの推奨コミュニティシェルフを非表示にします</string>
-  <string name="morphe_hide_trending_today_shelf_title">今日のトレンドシェルフを非表示</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"検索候補から今日のトレンドシェルフを非表示にします
+  <string name="morphe_hide_recommended_communities_shelf_summary">サブredditの推奨コミュニティ欄を非表示にします</string>
+  <string name="morphe_hide_trending_today_shelf_title">今日のトレンド欄を非表示</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"検索候補から今日のトレンド欄を非表示にします
 
 制限: 視覚的なスペーサーは非表示にならない場合があります"</string>
   <string name="morphe_remove_notification_dialog_title">通知の提案ダイアログを削除</string>

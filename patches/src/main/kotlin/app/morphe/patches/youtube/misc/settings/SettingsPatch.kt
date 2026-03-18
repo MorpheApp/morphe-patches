@@ -224,7 +224,7 @@ val settingsPatch = bytecodePatch(
             iconBold = "@drawable/morphe_settings_screen_00_about_bold",
             layout = "@layout/preference_with_icon",
             summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.MorpheAboutPreference",
+            tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
             selectable = true,
         )
 

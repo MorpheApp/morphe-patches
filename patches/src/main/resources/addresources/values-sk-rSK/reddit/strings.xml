@@ -52,6 +52,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_today_shelf_summary">"Skryje ponuku 'Trending Today' z návrhov vyhľadávania
 
 Obmedzenie: Môžu sa zobrazovať vizuálne medzery"</string>
+  <string name="morphe_remove_notification_dialog_title">Skryť návrh notifikácií</string>
+  <string name="morphe_remove_notification_dialog_summary">Skryje dialógové okno návrhu upozornení, ktoré sa zobrazuje pri návšteve subredditu jeho automatickým zavretím.</string>
   <string name="morphe_show_view_count_title">Zobrazovať počet zhliadnutí</string>
   <string name="morphe_show_view_count_summary">"Zobrazuje počet zhliadnutí príspevkov
 
@@ -64,4 +66,5 @@ Obmedzenie: Zobrazuje sa len ak odpoveď z API zahŕňa počet zhliadnutí"</str
   <string name="morphe_sanitize_sharing_links_title">Vyčistiť odkazy na zdieľanie</string>
   <string name="morphe_sanitize_sharing_links_summary">Vyčistí odkazy na zdieľanie odstránením sledovacích prvkov</string>
   <string name="morphe_open_links_directly_title">Otvárať odkazy priamo</string>
+  <string name="morphe_open_links_directly_summary">Preskočí presmerovacie URL v externých odkazoch</string>
 </resources>

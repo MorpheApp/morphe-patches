@@ -38,33 +38,33 @@ Second \"item\" text"</string>
   <string name="morphe_hide_games_button_summary">Menyembunyikan tombol Game di bilah navigasi</string>
   <string name="morphe_hide_recently_visited_shelf_title">Sembunyikan rak Baru-baru Ini Dikunjungi</string>
   <string name="morphe_hide_recently_visited_shelf_summary">Menyembunyikan rak Baru-baru Ini Dikunjungi di bilah sisi</string>
-  <string name="morphe_hide_games_on_reddit_shelf_title">Sembunyikan game di Reddit</string>
-  <string name="morphe_hide_games_on_reddit_shelf_summary">Menyembunyikan game di Reddit rak di bilah sisi</string>
-  <string name="morphe_hide_reddit_pro_shelf_title">Sembunyikan Reddit Pro rak</string>
-  <string name="morphe_hide_reddit_pro_shelf_summary">Menyembunyikan Reddit Pro rak di bilah sisi</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Sembunyikan rak Game di Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Menyembunyikan rak Game di Reddit di bilah sisi</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Sembunyikan rak Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Menyembunyikan rak Reddit Pro di bilah sisi</string>
   <string name="morphe_hide_about_shelf_title">Sembunyikan rak Tentang</string>
   <string name="morphe_hide_about_shelf_summary">Menyembunyikan rak Tentang di bilah sisi</string>
   <string name="morphe_hide_resources_shelf_title">Sembunyikan rak Sumber Daya</string>
   <string name="morphe_hide_resources_shelf_summary">Menyembunyikan rak Sumber Daya di bilah sisi</string>
   <string name="morphe_hide_recommended_communities_shelf_title">Sembunyikan komunitas yang direkomendasikan</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Menyembunyikan rak komunitas yang direkomendasikan di subreddit</string>
-  <string name="morphe_hide_trending_today_shelf_title">Sembunyikan rak Hari Ini Tren</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Menyembunyikan rak Hari Ini Tren dari saran pencarian.
+  <string name="morphe_hide_recommended_communities_shelf_summary">Menyembunyikan rak-rak komunitas yang direkomendasikan di subreddit</string>
+  <string name="morphe_hide_trending_today_shelf_title">Sembunyikan rak Tren Hari Ini</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Menyembunyikan rak Tren Hari Ini dari saran pencarian
 
 Batasan: Spasi visual mungkin tidak disembunyikan"</string>
   <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
-  <string name="morphe_remove_notification_dialog_summary">Menghapus dialog saran notifikasi yang muncul saat mengunjungi subreddit dengan secara otomatis menolaknya</string>
+  <string name="morphe_remove_notification_dialog_summary">Menghapus dialog saran notifikasi yang muncul saat mengunjungi subreddit dengan menutupnya secara otomatis</string>
   <string name="morphe_show_view_count_title">Tampilkan hitungan tampilan</string>
-  <string name="morphe_show_view_count_summary">"Menampilkan hitungan tampilan Posting.
+  <string name="morphe_show_view_count_summary">"Menampilkan hitungan tampilan Postingan
 
 Batasan: Hanya ditampilkan jika respons API menyertakan hitungan tampilan"</string>
   <string name="morphe_remove_nsfw_dialog_title">Hapus dialog peringatan NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Menghapus dialog peringatan NSFW yang muncul saat mengunjungi subreddit dengan secara otomatis menerimanya</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Menghapus dialog peringatan NSFW yang muncul saat mengunjungi subreddit dengan menerimanya secara otomatis</string>
   <string name="morphe_screen_miscellaneous_title">Lain-lain</string>
   <string name="morphe_about_title">Tentang</string>
-  <string name="morphe_about_summary">Versi patch dan tautan resmi</string>
+  <string name="morphe_about_summary">Versi tambalan dan tautan resmi</string>
   <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
-  <string name="morphe_sanitize_sharing_links_summary">Menyederhanakan tautan berbagi dengan menghapus parameter pelacakan</string>
+  <string name="morphe_sanitize_sharing_links_summary">Membersihkan tautan berbagi dengan menghapus parameter pelacakan</string>
   <string name="morphe_open_links_directly_title">Buka tautan secara langsung</string>
-  <string name="morphe_open_links_directly_summary">Lewati URL pengalihan dalam tautan eksternal</string>
+  <string name="morphe_open_links_directly_summary">Melewati URL pengalihan pada tautan eksternal</string>
 </resources>

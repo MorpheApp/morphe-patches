@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">تغيير لون المشغل المصغر</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">يستخدم المشغل المصغر اللون الافتراضي</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">عرض زر التالي في المشغل المصغر</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">يتم عرض زر التالي في المشغل المصغر</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">لا يتم عرض زر التالي في المشغل المصغر</string>
+  <string name="morphe_music_miniplayer_previous_button_title">عرض زر السابق في المشغل المصغر</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">يتم عرض زر السابق في المشغل المصغر</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">لا يتم عرض زر السابق في المشغل المصغر</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">تمكين فرض المشغل المصغر</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">يبقى المشغل المصغر مصغرًا عند تغيير التشغيل</string>

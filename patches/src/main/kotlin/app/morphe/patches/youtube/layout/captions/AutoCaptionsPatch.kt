@@ -66,12 +66,12 @@ internal val autoCaptionsPatch = bytecodePatch(
             }
         }
 
+        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
+
         StartVideoInformerFingerprint.method.addInstruction(
             0,
-            "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->preFetchVideo()V"
+            "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->videoInformationLoaded()V"
         )
-
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
 
         if (is_20_26_or_greater) {
             NoVolumeCaptionsFeatureFlagFingerprint.method.apply {

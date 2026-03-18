@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Changer la couleur du mini-lecteur</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">La couleur du mini-lecteur correspond à la couleur du lecteur plein écran.</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Le mini-lecteur utilise la couleur par défaut</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Afficher le bouton \'Suivant\' sur le mini-lecteur</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Le bouton \'Suivant\' est affiché sur le mini-lecteur</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Le bouton \'Suivant\' n\'est pas affiché sur le mini-lecteur</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Afficher le bouton \'Précédent\' sur le mini-lecteur</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Le bouton \'Précédent\' est affiché sur le mini-lecteur</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Le bouton \'Précédent\' n\'est pas affiché sur le mini-lecteur</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Activer le mini-lecteur forcé</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Le mini-lecteur reste réduit lorsque la lecture change</string>

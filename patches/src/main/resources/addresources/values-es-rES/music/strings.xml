@@ -66,13 +66,20 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_summary_on">La barra de categorías está oculta</string>
   <string name="morphe_music_hide_category_bar_summary_off">La barra de categorías es visible</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
-  <string name="morphe_music_change_miniplayer_color_title">Cambiar color del minirreproductor</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">El color del minirreproductor coincide con el del reproductor de pantalla completa</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">El minirreproductor utiliza el color predeterminado</string>
+  <string name="morphe_music_change_miniplayer_color_title">Cambiar color del reproductor en miniatura</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">El color del reproductor en miniatura coincide con el del reproductor en pantalla completa</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">El reproductor en miniatura utiliza el color predeterminado</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Mostrar botón \"Siguiente\" en reproductor en miniatura</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">El botón \"Siguiente\" se muestra en el reproductor en miniatura</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">El botón \"Siguiente\" no se muestra en el reproductor en miniatura</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Mostrar botón \"Anterior\" en reproductor en miniatura</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">El botón \"Anterior\" se muestra en el reproductor en miniatura</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">El botón \"Anterior\" no se muestra en el reproductor en miniatura</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Activar minireproductor forzado</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">El minireproductor permanece minimizado al cambiar la reproducción</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">El minireproductor se expande a pantalla completa al cambiar la reproducción</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Activar reproductor en miniatura forzado</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">El reproductor en miniatura permanece minimizado al cambiar la reproducción</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">El reproductor en miniatura se expande a pantalla completa al cambiar la reproducción</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra de navegación</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ocultar o cambiar los botones de la barra de navegación</string>

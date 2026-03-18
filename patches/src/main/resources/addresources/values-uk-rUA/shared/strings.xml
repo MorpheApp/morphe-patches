@@ -61,7 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">Імпорт / Експорт налаштувань</string>
   <string name="morphe_pref_import_export_summary">Імпорт / Експорт налаштувань Morphe\n\nДля збереження налаштувань скопіюйте текст у вікні кнопкою \"Копіювати\" та збережіть його в текстовому файлі.\nДля відновлення налаштувань вставте у вікно збережений раніше текст та натисніть кнопку \"Імпортувати\"</string>
   <string name="morphe_settings_import_file">Імпорт з файлу</string>
-  <string name="morphe_settings_import_file_success">Налаштування успішно імпортовано, торкніться «Зберегти», щоб застосувати</string>
+  <string name="morphe_settings_import_file_success">Налаштування успішно імпортовано, натисніть \"Зберегти\", щоб застосувати</string>
   <string name="morphe_settings_import_file_failed">Не вдалося імпортувати налаштування</string>
   <string name="morphe_settings_export_file">Експорт до файлу</string>
   <string name="morphe_settings_export_file_success">Налаштування успішно експортовано</string>
@@ -75,15 +75,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Вебсайт</string>
   <string name="morphe_settings_about_links_donate">Підтримати</string>
   <string name="morphe_settings_about_links_translations">Переклади</string>
-  <string name="morphe_settings_about_links_credits">Кредити</string>
-  <string name="morphe_settings_about_links_dev_header_up_to_date">Актуально</string>
+  <string name="morphe_settings_about_links_credits">Подяки</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальному стані</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Доступне оновлення</string>
   <string name="morphe_settings_about_contributors_current">Поточна розробка</string>
   <string name="morphe_settings_about_contributors_prior">Попередня розробка</string>
   <string name="morphe_settings_about_links_morphe">Активна розробка</string>
-  <string name="morphe_settings_about_links_rvx">2022 − 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 − 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 − 2022</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Налагодження</string>
   <string name="morphe_debug_screen_summary">Увімкнення або вимкнення параметрів налагодження</string>

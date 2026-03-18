@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Skift miniafspillerfarve</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniafspillerfarven matcher fuldskærmsafspilleren</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniafspilleren bruger standardfarven</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Vis næste knap i miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Næste knap vises i miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Næste knap vises ikke i miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Vis forrige knap i mini afspiller</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Forrige knap vises i mini afspiller</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Forrige knap vises ikke i mini afspiller</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Aktivér tvungen minimapspiller</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Minimapsspilleren forbliver minimeret ved afspilningsændringer</string>

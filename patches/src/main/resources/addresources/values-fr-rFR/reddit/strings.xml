@@ -48,23 +48,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_resources_shelf_summary">Masque l\'étagère \'Ressources\' dans la barre latérale</string>
   <string name="morphe_hide_recommended_communities_shelf_title">Masquer les communautés recommandées</string>
   <string name="morphe_hide_recommended_communities_shelf_summary">Masque les étagères de communautés recommandées dans les subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Masquer l\'étagère \'Tendances d\'aujourd\'hui\'</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Masque l'étagère 'Tendances d'aujourd'hui' dans les suggestions de recherche
+  <string name="morphe_hide_trending_today_shelf_title">Masquer l\'étagère \'Tendance\'</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Masque l'étagère 'Tendance' dans les suggestions de recherche
 
 Limitation : Les séparateurs visuels peuvent ne pas être masqués"</string>
   <string name="morphe_remove_notification_dialog_title">Supprimer la boîte de dialogue de suggestion de notification</string>
-  <string name="morphe_remove_notification_dialog_summary">Supprime la boîte de dialogue de suggestion de notifications qui apparaît lors de la visite d\'un subreddit en l\'acceptant automatiquement</string>
+  <string name="morphe_remove_notification_dialog_summary">Supprime automatiquement la boîte de dialogue de suggestion de notifications qui apparaît lors de la visite d’un subreddit en la fermant automatiquement</string>
   <string name="morphe_show_view_count_title">Afficher le nombre de vues</string>
-  <string name="morphe_show_view_count_summary">"Affiche le nombre de vues des Publications
+  <string name="morphe_show_view_count_summary">"Affiche le nombre de vues des Posts
 
-Limitation : N'est affiché que si la réponse API inclut le nombre de vues"</string>
-  <string name="morphe_remove_nsfw_dialog_title">Supprimer la boîte de dialogue d\'avertissement NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Supprime la boîte de dialogue d\'avertissement NSFW qui apparaît lors de la visite d\'un subreddit en l\'acceptant automatiquement</string>
+Limitation : Affiché uniquement si la réponse de l’API inclut le nombre de vues"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Supprimer la boîte de dialogue d’avertissement NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Supprime automatiquement la boîte de dialogue d’avertissement NSFW qui apparaît lors de la visite d’un subreddit en l\'acceptant automatiquement</string>
   <string name="morphe_screen_miscellaneous_title">Divers</string>
   <string name="morphe_about_title">À propos</string>
-  <string name="morphe_about_summary">Version du correctif et liens officiels</string>
+  <string name="morphe_about_summary">Version de patch et liens officiels</string>
   <string name="morphe_sanitize_sharing_links_title">Nettoyer les liens partagés</string>
-  <string name="morphe_sanitize_sharing_links_summary">Nettoyer les liens de partage en supprimant les paramètres de suivi</string>
+  <string name="morphe_sanitize_sharing_links_summary">Nettoie les liens de partage en retirant les paramètres de suivi</string>
   <string name="morphe_open_links_directly_title">Ouvrir les liens directement</string>
-  <string name="morphe_open_links_directly_summary">Ignorer les URL de redirection dans les liens externes</string>
+  <string name="morphe_open_links_directly_summary">Ignore les URL de redirection dans les liens externes</string>
 </resources>
