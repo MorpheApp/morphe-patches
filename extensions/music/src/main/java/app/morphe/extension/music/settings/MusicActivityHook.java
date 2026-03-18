@@ -41,11 +41,21 @@ public class MusicActivityHook extends BaseActivityHook {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);
     }
 
+    private static long lastLaunchTime = 0;
+
     /**
      * Injection point.
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
+
+        long now = android.os.SystemClock.elapsedRealtime();
+        if (now - lastLaunchTime < 500) {
+            parentActivity.finish();
+            return;
+        }
+        lastLaunchTime = now;
+
         // Must touch the Music settings to ensure the settings class is loaded and
         // the values can be found when setting the UI preferences.
         // Logging anything under non debug ensures this is set.
