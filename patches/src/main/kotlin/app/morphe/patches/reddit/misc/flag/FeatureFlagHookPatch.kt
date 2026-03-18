@@ -22,9 +22,7 @@ val featureFlagHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch)
 
     execute {
-        FeatureFlagFingerprint.match(
-            FeatureFlagParentFingerprint.originalClassDef
-        ).let {
+        FeatureFlagFingerprint.let {
             it.method.apply {
                 // Not enough registers in the method. Clone the method and use the
                 // original method as an intermediate to call extension code.

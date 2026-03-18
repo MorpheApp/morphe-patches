@@ -75,6 +75,7 @@ val rememberVideoQualityPatch = bytecodePatch {
                 .findFieldFromToString(FIXED_RESOLUTION_STRING)
 
         val playbackStartParametersConstructorFingerprint = Fingerprint(
+            classFingerprint = PlaybackStartParametersToStringFingerprint,
             name = "<init>",
             filters = listOf(
                 fieldAccess(
@@ -85,9 +86,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         )
 
         // Inject a call to override initial video quality.
-        playbackStartParametersConstructorFingerprint.match(
-            PlaybackStartParametersToStringFingerprint.classDef
-        ).let {
+        playbackStartParametersConstructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
