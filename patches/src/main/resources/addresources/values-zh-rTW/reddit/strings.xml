@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">廣告</string>
+  <string name="morphe_hide_post_ads_title">隱藏動態廣告</string>
+  <string name="morphe_hide_post_ads_summary">隱藏動態中的廣告</string>
+  <string name="morphe_hide_comment_ads_title">隱藏留言廣告</string>
+  <string name="morphe_hide_comment_ads_summary">隱藏留言區</string>
+  <string name="morphe_screen_layout_title">版面配置</string>
+  <string name="morphe_disable_modern_home_title">停用現代主頁</string>
+  <string name="morphe_disable_modern_home_summary">停用現代主頁 UI</string>
+  <string name="morphe_disable_screenshot_popup_title">停用截圖彈出視窗</string>
+  <string name="morphe_disable_screenshot_popup_summary">停用截圖彈出視窗</string>
+  <string name="morphe_hide_answers_button_title">隱藏回覆按鈕</string>
+  <string name="morphe_hide_answers_button_summary">隱藏回覆按鈕在導覽欄中</string>
+  <string name="morphe_hide_chat_button_title">隱藏聊天按鈕</string>
+  <string name="morphe_hide_chat_button_summary">隱藏聊天按鈕在導覽欄中</string>
+  <string name="morphe_hide_create_button_title">隱藏建立按鈕</string>
+  <string name="morphe_hide_create_button_summary">隱藏建立按鈕在導覽欄中</string>
+  <string name="morphe_hide_discover_button_title">隱藏「探索」或社群按鈕</string>
+  <string name="morphe_hide_discover_button_summary">隱藏「探索」或社群按鈕在導覽欄中</string>
+  <string name="morphe_hide_games_button_title">隱藏遊戲按鈕</string>
+  <string name="morphe_hide_games_button_summary">隱藏遊戲按鈕在導覽欄中</string>
+  <string name="morphe_hide_recently_visited_shelf_title">隱藏常用瀏覽區塊</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">隱藏常用瀏覽區塊在側欄中</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">隱藏 Reddit 上的遊戲區塊</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">隱藏 Reddit 上的遊戲區塊在側欄中</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">隱藏 Reddit Pro 區塊</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">隱藏 Reddit Pro 區塊在側欄中</string>
+  <string name="morphe_hide_about_shelf_title">隱藏關於區塊</string>
+  <string name="morphe_hide_about_shelf_summary">隱藏關於區塊在側欄中</string>
+  <string name="morphe_hide_resources_shelf_title">隱藏資源區塊</string>
+  <string name="morphe_hide_resources_shelf_summary">隱藏資源區塊在側欄中</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">隱藏推薦社群</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">隱藏推薦社群區塊在版塊中</string>
+  <string name="morphe_hide_trending_today_shelf_title">隱藏今日熱門區塊</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"隱藏今日熱門區塊，但搜尋建議失敗
+
+限制：視覺間隔符號可能無法隱藏"</string>
+  <string name="morphe_remove_notification_dialog_title">移除通知建議對話框</string>
+  <string name="morphe_remove_notification_dialog_summary">自動接受訪問版塊時出現的通知建議對話框</string>
+  <string name="morphe_show_view_count_title">顯示觀看次數</string>
+  <string name="morphe_show_view_count_summary">"顯示貼文的觀看次數
+
+限制：僅當 API 回應包含觀看次數時才會顯示"</string>
+  <string name="morphe_remove_nsfw_dialog_title">移除 NSFW 警告對話框</string>
+  <string name="morphe_remove_nsfw_dialog_summary">自動接受訪問版塊時出現的 NSFW 警告對話框</string>
+  <string name="morphe_screen_miscellaneous_title">其他</string>
+  <string name="morphe_about_title">關於</string>
+  <string name="morphe_about_summary">版本資訊和官方連結</string>
+  <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
+  <string name="morphe_sanitize_sharing_links_summary">清除分享連結中的追蹤查詢參數</string>
+  <string name="morphe_open_links_directly_title">直接開啟連結</string>
+  <string name="morphe_open_links_directly_summary">外部連結時略過重定向網址</string>
+</resources>

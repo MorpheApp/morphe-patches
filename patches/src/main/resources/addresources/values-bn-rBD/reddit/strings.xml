@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">বিজ্ঞাপন</string>
+  <string name="morphe_hide_post_ads_title">ফিড বিজ্ঞাপন লুকান</string>
+  <string name="morphe_hide_post_ads_summary">ফিডে বিজ্ঞাপন লুকানো</string>
+  <string name="morphe_hide_comment_ads_title">মন্তব্য বিজ্ঞাপনের লুকান</string>
+  <string name="morphe_hide_comment_ads_summary">মন্তব্যের বিভাগে বিজ্ঞাপন লুকানো হয়</string>
+  <string name="morphe_screen_layout_title">বিন্যাস</string>
+  <string name="morphe_disable_modern_home_title">আধুনিক হোম নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_modern_home_summary">আধুনিক হোম UI নিষ্ক্রিয় করা হয়েছে</string>
+  <string name="morphe_disable_screenshot_popup_title">স্ক্রিনশট পপআপ নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_screenshot_popup_summary">স্ক্রিনশট নেওয়ার সময় যে পপআপটি দেখা যায় সেটি নিষ্ক্রিয় করা হয়েছে</string>
+  <string name="morphe_hide_answers_button_title">উত্তর বোতাম লুকান</string>
+  <string name="morphe_hide_answers_button_summary">নেভিগেশন বারে উত্তর বোতাম লুকানো হয়েছে</string>
+  <string name="morphe_hide_chat_button_title">চ্যাট বোতাম লুকান</string>
+  <string name="morphe_hide_chat_button_summary">নেভিগেশন বারে চ্যাট বোতাম লুকানো হয়েছে</string>
+  <string name="morphe_hide_create_button_title">তৈরি বোতাম লুকান</string>
+  <string name="morphe_hide_create_button_summary">নেভিগেশন বারে তৈরি বোতাম লুকানো হয়েছে</string>
+  <string name="morphe_hide_discover_button_title">ডিসকভার বা কমিউনিটিস বোতাম লুকান</string>
+  <string name="morphe_hide_discover_button_summary">নেভিগেশন বারে ডিসকভার বা কমিউনিটিস বোতাম লুকানো হয়েছে</string>
+  <string name="morphe_hide_games_button_title">গেমস বোতাম লুকান</string>
+  <string name="morphe_hide_games_button_summary">নেভিগেশন বারে গেমস বোতাম লুকানো হয়েছে</string>
+  <string name="morphe_hide_recently_visited_shelf_title">সাম্প্রতিক ভিজিট করা শেল্ফ লুকান</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">সাইডবারেসাম্প্রতিক ভিজিট করা শেল্ফ লুকানো হয়েছে</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">রেডিট শেল্ফে গেমস লুকান</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">সাইডবারে রেডিট শেল্ফে গেমস লুকানো হয়েছে</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">রেডিট প্রো শেল্ফ লুকান</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">সাইডবারে রেডিট প্রো শেল্ফ লুকানো হয়েছে</string>
+  <string name="morphe_hide_about_shelf_title">অ্যাবাউট শেল্ফ লুকান</string>
+  <string name="morphe_hide_about_shelf_summary">সাইডবারে অ্যাবাউট শেল্ফ লুকানো হয়েছে</string>
+  <string name="morphe_hide_resources_shelf_title">রিসোর্স শেল্ফ লুকান</string>
+  <string name="morphe_hide_resources_shelf_summary">সাইডবারে রিসোর্স শেল্ফ লুকানো হয়েছে</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">প্রস্তাবিত কমিউনিটিস লুকান</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">সাবরেডিটগুলিতে প্রস্তাবিত কমিউনিটিস শেল্ফ লুকানো হয়েছে</string>
+  <string name="morphe_hide_trending_today_shelf_title">ট্রেন্ডিং টুডে শেল্ফ লুকান</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"অনুসন্ধান পরামর্শ থেকে ট্রেন্ডিং টুডে শেল্ফ লুকানো হয়েছে
+
+সীমাবদ্ধতা: ভিজ্যুয়াল স্পেসার লুকানো নাও যেতে পারে"</string>
+  <string name="morphe_remove_notification_dialog_title">নোটিফিকেশন পরামর্শ ডায়ালগ সরান</string>
+  <string name="morphe_remove_notification_dialog_summary">সাবরেডিট ভিজিট করার সময় যে নোটিফিকেশন পরামর্শ ডায়ালগটি দেখায় সেটি স্বয়ংক্রিয়ভাবে বাতিল করে সরিয়ে দেওয়া হয়েছে</string>
+  <string name="morphe_show_view_count_title">ভিউ গণনা দেখান</string>
+  <string name="morphe_show_view_count_summary">"পোস্টগুলির ভিউ গণনা দেখায়
+
+সীমাবদ্ধতা: শুধুমাত্র যদি API প্রতিক্রিয়াতে ভিউ গণনা অন্তর্ভুক্ত থাকে তবেই দেখানো হবে"</string>
+  <string name="morphe_remove_nsfw_dialog_title">NSFW সতর্কতা ডায়ালগ সরান</string>
+  <string name="morphe_remove_nsfw_dialog_summary">সাবরেডিট ভিজিট করার সময় যে NSFW সতর্কতা ডায়ালগটি দেখায় সেটি স্বয়ংক্রিয়ভাবে গ্রহণ করে সরিয়ে দেওয়া হয়েছে</string>
+  <string name="morphe_screen_miscellaneous_title">বিবিধ</string>
+  <string name="morphe_about_title">মর্ফ সম্পর্কে</string>
+  <string name="morphe_about_summary">সংস্করণ এবং অফিসিয়াল লিঙ্ক</string>
+  <string name="morphe_sanitize_sharing_links_title">শেয়ারিং লিঙ্ক স্যানিটাইজ করুন</string>
+  <string name="morphe_sanitize_sharing_links_summary">শেয়ারিং লিঙ্কগুলি স্যানিটাইজ করা হয়েছে, ট্র্যাকিং ক্যোয়ারী প্যারামিটারগুলি সরানো হয়েছে</string>
+  <string name="morphe_open_links_directly_title">লিঙ্ক সরাসরি খুলুন</string>
+  <string name="morphe_open_links_directly_summary">এক্সটার্নাল লিঙ্কে রিডাইরেকশন URLগুলি এড়িয়ে চলুন</string>
+</resources>

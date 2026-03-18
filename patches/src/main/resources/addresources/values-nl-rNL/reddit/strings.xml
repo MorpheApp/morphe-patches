@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Advertenties</string>
+  <string name="morphe_hide_post_ads_title">Advertenties in de feed verbergen</string>
+  <string name="morphe_hide_post_ads_summary">Verbergt advertenties in de feed</string>
+  <string name="morphe_hide_comment_ads_title">Advertenties in reacties verbergen</string>
+  <string name="morphe_hide_comment_ads_summary">Verbergt advertenties in de commentaarsectie</string>
+  <string name="morphe_screen_layout_title">Layout</string>
+  <string name="morphe_disable_modern_home_title">Modern startscherm uitschakelen</string>
+  <string name="morphe_disable_modern_home_summary">Schakelt het moderne startscherm-UI uit</string>
+  <string name="morphe_disable_screenshot_popup_title">Screenshot-popup uitschakelen</string>
+  <string name="morphe_disable_screenshot_popup_summary">Schakelt het popup-venster uit dat verschijnt bij het maken van een screenshot</string>
+  <string name="morphe_hide_answers_button_title">Antwoordenknop verbergen</string>
+  <string name="morphe_hide_answers_button_summary">Verbergt de Antwoordenknop in de navigatiebalk</string>
+  <string name="morphe_hide_chat_button_title">Chatknop verbergen</string>
+  <string name="morphe_hide_chat_button_summary">Verbergt de Chatknop in de navigatiebalk</string>
+  <string name="morphe_hide_create_button_title">Maakknop verbergen</string>
+  <string name="morphe_hide_create_button_summary">Verbergt de Maakknop in de navigatiebalk</string>
+  <string name="morphe_hide_discover_button_title">Ontdek- of Communityknop verbergen</string>
+  <string name="morphe_hide_discover_button_summary">Verbergt de Ontdek- of Communityknop in de navigatiebalk</string>
+  <string name="morphe_hide_games_button_title">Gamesknop verbergen</string>
+  <string name="morphe_hide_games_button_summary">Verbergt de Gamesknop in de navigatiebalk</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Recent bezocht plank verbergen</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Verbergt de Recent bezocht plank in de zijbalk</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Games op Reddit plank verbergen</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Verbergt de Games op Reddit plank in de zijbalk</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro plank verbergen</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Verbergt de Reddit Pro plank in de zijbalk</string>
+  <string name="morphe_hide_about_shelf_title">Info plank verbergen</string>
+  <string name="morphe_hide_about_shelf_summary">Verbergt de Info plank in de zijbalk</string>
+  <string name="morphe_hide_resources_shelf_title">Bronnenplank verbergen</string>
+  <string name="morphe_hide_resources_shelf_summary">Verbergt de Bronnenplank in de zijbalk</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Aanbevolen communities verbergen</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Verbergt de aanbevolen communities planken in subreddits</string>
+  <string name="morphe_hide_trending_today_shelf_title">Trending Today plank verbergen</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Verbergt de Trending Today plank uit zoeksuggesties
+
+Beperking: Visuele spatieen worden mogelijk niet verborgen"</string>
+  <string name="morphe_remove_notification_dialog_title">Verwijder notificatie suggestie dialoog</string>
+  <string name="morphe_remove_notification_dialog_summary">Verwijdert de notificatie suggestie dialoog die verschijnt bij het bezoeken van een subreddit, door deze automatisch te accepteren</string>
+  <string name="morphe_show_view_count_title">Aantal weergaven tonen</string>
+  <string name="morphe_show_view_count_summary">"Toont het aantal weergaven van Posts
+
+Beperking: Wordt alleen getoond als de API-reactie het aantal weergaven bevat"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Verwijder NSFW waarschuwing dialoog</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Verwijdert de NSFW waarschuwing dialoog die verschijnt bij het bezoeken van een subreddit, door deze automatisch te accepteren</string>
+  <string name="morphe_screen_miscellaneous_title">Diversen</string>
+  <string name="morphe_about_title">Over</string>
+  <string name="morphe_about_summary">Patch versie en officiële links</string>
+  <string name="morphe_sanitize_sharing_links_title">Deelbare links opschonen</string>
+  <string name="morphe_sanitize_sharing_links_summary">Sanitise deel links door tracking query parameters te verwijderen</string>
+  <string name="morphe_open_links_directly_title">Links direct openen</string>
+  <string name="morphe_open_links_directly_summary">Slaat omleidings-URL\'s in externe links over</string>
+</resources>

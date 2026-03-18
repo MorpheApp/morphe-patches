@@ -18,8 +18,9 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Başlıq simvolu</string>
+  <string name="morphe_header_logo_title">Sərlövhə simvolu</string>
   <string name="morphe_header_logo_entry_1">İlkin</string>
+  <string name="morphe_header_logo_entry_3">Fərdi</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Haqqında</string>
@@ -38,7 +39,7 @@ Second \"item\" text"</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Yayım düyməsini gizlət</string>
   <string name="morphe_music_hide_cast_button_summary_on">Yayım düyməsi gizlidir</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Yayım düyməsi göstərilir</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Yayım düyməsi görünür</string>
   <string name="morphe_music_hide_history_button_title">Tarixçə düyməsini gizlət</string>
   <string name="morphe_music_hide_history_button_summary_on">Tarixçə düyməsi gizlidir</string>
   <string name="morphe_music_hide_history_button_summary_off">Tarixçə düyməsi görünür</string>

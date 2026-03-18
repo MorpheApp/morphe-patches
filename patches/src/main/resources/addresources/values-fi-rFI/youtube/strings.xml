@@ -1358,10 +1358,10 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
 
 Rajoitus: Työkalupalkin takaisin-painikkeen käyttäminen ei välttämättä toimi"</string>
   <string name="morphe_change_start_page_always_summary_off">Aloitussivu vaihdetaan vain sovelluksen käynnistyessä</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Poista Shorts-soittimen jatkaminen käytöstä</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-soitin ei jatka sovelluksen käynnistyessä</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-soitin jatkaa sovelluksen käynnistyessä</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Poista lyhyiden videoiden automaattinen jatkaminen käynnistyksen yhteydessä</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Lyhyet videot eivät jatku sovelluksen käynnistyessä</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Lyhyet videot jatkuvat sovelluksen käynnistyessä</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shortsien avaustapa</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-soitin</string>

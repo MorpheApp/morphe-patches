@@ -1354,10 +1354,10 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
 
 Limitación: Es posible que el uso del botón de retroceso en la barra de herramientas no funcione"</string>
   <string name="morphe_change_start_page_always_summary_off">La página de inicio se cambia solo al iniciar la aplicación</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Desactivar reanudación del reproductor de Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">El reproductor de Shorts no se reanudará al iniciar la aplicación</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">El reproductor de Shorts se reanudará al iniciar la aplicación</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Desactivar la reanudación de Shorts al iniciar</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Los Shorts no se reanudarán al iniciar la aplicación</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Los Shorts se reanudarán al iniciar la aplicación</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Abrir Shorts con</string>
   <string name="morphe_shorts_player_type_shorts">Reproductor de Shorts</string>

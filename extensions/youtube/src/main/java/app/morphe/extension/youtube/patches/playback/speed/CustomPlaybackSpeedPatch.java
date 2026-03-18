@@ -96,9 +96,9 @@ public class CustomPlaybackSpeedPatch {
     private static final float customPlaybackSpeedsMin, customPlaybackSpeedsMax;
 
     /**
-     * The last time the old playback menu was forcefully called.
+     * The last time the playback menu was forcefully called.
      */
-    private static volatile long lastTimeOldPlaybackMenuInvoked;
+    private static volatile long lastTimePlaybackMenuInvoked;
 
     /**
      * Formats speeds to UI strings.
@@ -139,6 +139,14 @@ public class CustomPlaybackSpeedPatch {
      */
     public static boolean disableTapAndHoldSpeed(boolean original) {
         return !DISABLE_TAP_AND_HOLD_SPEED && original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean useNewFlyoutMenu(boolean useNewFlyout) {
+        // If using old speed Turn off A/B flyout that breaks old playback speed menu.
+        return useNewFlyout && !Settings.RESTORE_OLD_SPEED_MENU.get();
     }
 
     /**
@@ -245,6 +253,15 @@ public class CustomPlaybackSpeedPatch {
             return false;
         }
 
+        // This method is sometimes used multiple times.
+        // To prevent this, ignore method reuse within 1 second.
+        final long now = System.currentTimeMillis();
+        if (now - lastTimePlaybackMenuInvoked < 1000) {
+            Logger.printDebug(() -> "Ignoring call to hideLithoMenuAndShowSpeedMenu");
+            return true;
+        }
+        lastTimePlaybackMenuInvoked = now;
+
         // Dismiss View [R.id.touch_outside] is the 1st ChildView of the 4th ParentView.
         // This only shows in phone layout.
         var touchInsidedView = parentView4th.getChildAt(0);
@@ -268,16 +285,8 @@ public class CustomPlaybackSpeedPatch {
     }
 
     public static void showOldPlaybackSpeedMenu() {
-        // This method is sometimes used multiple times.
-        // To prevent this, ignore method reuse within 1 second.
-        final long now = System.currentTimeMillis();
-        if (now - lastTimeOldPlaybackMenuInvoked < 1000) {
-            Logger.printDebug(() -> "Ignoring call to showOldPlaybackSpeedMenu");
-            return;
-        }
-        lastTimeOldPlaybackMenuInvoked = now;
-
         // Rest of the implementation added by patch.
+        Logger.printDebug(() -> "showOldPlaybackSpeedMenu");
     }
 
     /**

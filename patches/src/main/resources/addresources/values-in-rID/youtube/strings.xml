@@ -1354,10 +1354,10 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
 
 Batasan: Menggunakan tombol kembali pada toolbar mungkin tidak berfungsi"</string>
   <string name="morphe_change_start_page_always_summary_off">Halaman awal hanya diubah saat aplikasi dimulai</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Nonaktifkan melanjutkan pemutar Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Pemutaran Shorts tidak akan dilanjutkan saat aplikasi dimulai</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Pemutaran Shorts akan dilanjutkan saat aplikasi dimulai</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Nonaktifkan pemutaran ulang Shorts saat memulai</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts tidak akan dilanjutkan saat memulai aplikasi</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts akan dilanjutkan saat memulai aplikasi</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Buka Shorts dengan</string>
   <string name="morphe_shorts_player_type_shorts">Pemutar Shorts</string>

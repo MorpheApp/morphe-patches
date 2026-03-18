@@ -1354,10 +1354,10 @@ Second \"item\" text"</string>
 
 מגבלה: ייתכן שלחצן החזרה בסרגל הכלים לא יפעל"</string>
   <string name="morphe_change_start_page_always_summary_off">דף הפתיחה משתנה רק בעת הפעלת האפליקציה</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">השבת חידוש נגן Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">נגן Shorts לא יתחדש בעת הפעלת היישום</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">נגן Shorts יתחדש בעת הפעלת היישום</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">השבת המשך צפייה בסרטוני Shorts בעת הפעלה מחדש</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">סרטוני Shorts לא יתחדשו בעת הפעלת האפליקציה</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">סרטוני Shorts יתחדשו בעת הפעלת האפליקציה</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">פתח Shorts עם</string>
   <string name="morphe_shorts_player_type_shorts">נגן Shorts</string>

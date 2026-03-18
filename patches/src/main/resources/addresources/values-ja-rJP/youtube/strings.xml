@@ -82,8 +82,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_summary_on">動画下の展開可能なカードは表示されません</string>
   <string name="morphe_hide_expandable_card_summary_off">動画下の展開可能なカードは表示されます</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
-  <string name="morphe_hide_floating_microphone_button_summary_on">検索時の音声入力のフローティング ボタンは表示されません</string>
-  <string name="morphe_hide_floating_microphone_button_summary_off">検索時の音声入力のフローティング ボタンは表示されます</string>
+  <string name="morphe_hide_floating_microphone_button_summary_on">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されません</string>
+  <string name="morphe_hide_floating_microphone_button_summary_off">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されます</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"横スクロール欄は表示されません
 例:
@@ -707,8 +707,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">作成ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">作成ボタンは表示されます</string>
   <string name="morphe_hide_toolbar_microphone_button_title">音声検索ボタンを非表示</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_on">音声検索ボタンは表示されません</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_off">音声検索ボタンは表示されます</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">音声検索ボタン (マイクアイコン) は表示されません</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">音声検索ボタン (マイクアイコン) は表示されます</string>
   <string name="morphe_hide_toolbar_notification_button_title">通知ボタンを非表示</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">通知ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">通知ボタンは表示されます</string>
@@ -1292,16 +1292,16 @@ Second \"item\" text"</string>
 
 タブレット レイアウト
 • コミュニティ投稿が表示されない
-• YouTube 設定に「フィードで再生」が表示されない
-• ショート動画の「リミックス」ボタンと「サウンド」ボタンが利用できない
-• 動画のアクションバーの文字表示が復元される
+• YouTube の設定に「フィードで再生」が表示されない
+• ショート動画のリミックス ボタンとサウンドボタンが利用できない
+• アクション ボタンにボタン名が表示される
 
 Automotive レイアウト
 • フィードがトピックやチャンネルごとに分類された形で表示される
-• YouTube 設定に「フィードで再生」が表示されない
-• ショート動画のリミックスボタンとサウンドボタンが利用できない
+• YouTube の設定に「フィードで再生」が表示されない
+• ショート動画のリミックス ボタンとサウンドボタンが利用できない
 • ショート動画が通常のプレーヤーで再生される
-• 動画のアクションバーの文字表示が復元される"</string>
+• アクション ボタンにボタン名が表示される"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary_on">アプリのバージョンは偽装されています</string>
@@ -1314,7 +1314,7 @@ Automotive レイアウト
   <string name="morphe_spoof_app_version_target_title">アプリバージョンの偽装先</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 古い「再生リストに保存」を復元</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
-  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画のアクションバーの文字表示を復元</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - アクション ボタンの文字表示を復元</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
   <string name="morphe_open_system_share_sheet_summary_on">システムの共有メニューを開きます</string>
@@ -1356,10 +1356,10 @@ Automotive レイアウト
 
 制限事項: ツールバーの [戻る] ボタンが機能しない場合があります"</string>
   <string name="morphe_change_start_page_always_summary_off">スタート画面の変更はアプリの起動時にのみ適用されます</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">ショート プレーヤーの再開を無効化</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">ショート プレーヤーはアプリ起動時に再開されません</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">ショート プレーヤーはアプリ起動時に再開されます</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">起動時のショートの再開を無効化</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">アプリ起動時にショート動画の再生は再開されません</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">アプリ起動時にショート動画の再生が再開されます</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">ショート動画を開くプレーヤー</string>
   <string name="morphe_shorts_player_type_shorts">ショート プレーヤー</string>
@@ -1543,13 +1543,13 @@ Automotive レイアウト
   <string name="morphe_remember_video_quality_last_selected_toast_summary_on">デフォルトの画質が変更されたときに通知が表示されます</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_off">デフォルトの画質が変更されたときに通知は表示されません</string>
   <string name="morphe_video_quality_default_wifi_title">デフォルトの画質 (Wi-Fi)</string>
-  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイルデータ)</string>
+  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイル)</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質の変更を保存</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_on">画質の変更はすべてのショート動画に適用されます</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_off">画質の変更は現在のショート動画にのみ適用されます</string>
   <string name="morphe_shorts_quality_default_wifi_title">デフォルトのショートの画質 (Wi-Fi)</string>
-  <string name="morphe_shorts_quality_default_mobile_title">デフォルトのショートの画質 (モバイルデータ)</string>
-  <string name="morphe_remember_video_quality_mobile">携帯回線</string>
+  <string name="morphe_shorts_quality_default_mobile_title">デフォルトのショートの画質 (モバイル)</string>
+  <string name="morphe_remember_video_quality_mobile">モバイル</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">デフォルトの画質の変更 (%1$s): %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">ショートの画質の変更 (%1$s): %2$s</string>

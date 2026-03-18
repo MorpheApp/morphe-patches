@@ -1355,10 +1355,10 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
 
 Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</string>
   <string name="morphe_change_start_page_always_summary_off">Úvodní stránka se změní pouze při spuštění aplikace</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Zakázat obnovení přehrávače Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Přehrávač Shorts nebude obnoven při spuštění aplikace</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Přehrávač Shorts se po spuštění aplikace znovu spustí</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Vypnout obnovování Shorts při spuštění</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts se při spuštění aplikace nebudou obnovovat</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts se při spuštění aplikace znovu spustí</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Otevřít Shorts s</string>
   <string name="morphe_shorts_player_type_shorts">Přehrávač Shorts</string>

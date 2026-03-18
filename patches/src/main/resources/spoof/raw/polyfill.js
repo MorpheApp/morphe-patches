@@ -12,33 +12,60 @@ if (typeof URL === 'undefined') {
     this.href = url;
 
     // naive parsing for hostname
-    const match = url.match(/^(\w+):\/\/([^\/?#]+)(?:[\/?#]|$)/);
-    this.protocol = match ? match[1] + ':' : '';
+    const match = url.match(/^(https?:)\/\/([^\/?#:]+)(?::(\d+))?([^?#]*)?(\?[^#]*)?(#.*)?$/);
+    this.protocol = match ? match[1] : '';
     this.hostname = match ? match[2] : '';
-    this.port = ''; // optional
-    this.pathname = url.replace(/^(\w+:\/\/[^\/?#]+)?/, '') || '/';
-    this.search = '';
-    this.hash = '';
+    this.port = match && match[3] ? match[3] : '';
+    this.pathname = match && match[4] ? match[4] : '/';
+    this.search = match && match[5] ? match[5] : '';
+    this.hash = match && match[6] ? match[6] : '';
   };
 }
 
 if (typeof window === 'undefined') {
-  globalThis.window = {};
+  globalThis.window = globalThis;
+}
+
+if (typeof self === 'undefined') {
+  globalThis.self = globalThis;
 }
 
 if (!window.location) {
+  const defaultHost = "https://localhost/";
+
   window.location = {
-    _url: '',
+    _url: defaultHost,
+    _parsed: new URL(defaultHost), // default, so hostname works
     set href(url) {
       this._url = url;
-      // parse the URL so hostname works
       this._parsed = new URL(url);
     },
     get href() {
       return this._url;
     },
+    get protocol() {
+      return this._parsed.protocol;
+    },
     get hostname() {
-      return this._parsed ? this._parsed.hostname : '';
+      return this._parsed.hostname;
+    },
+    get port() {
+      return this._parsed.port;
+    },
+    get host() {
+      return this._parsed.hostname + (this._parsed.port ? ':' + this._parsed.port : '');
+    },
+    get origin() {
+      return this._parsed.protocol + '//' + this.host;
+    },
+    get pathname() {
+      return this._parsed.pathname;
+    },
+    get search() {
+      return this._parsed.search;
+    },
+    get hash() {
+      return this._parsed.hash;
     }
   };
 }

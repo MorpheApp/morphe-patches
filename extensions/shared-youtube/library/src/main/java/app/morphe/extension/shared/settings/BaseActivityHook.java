@@ -81,7 +81,7 @@ public abstract class BaseActivityHook extends Activity {
      */
     @SuppressWarnings("unused")
     public static Context getAttachBaseContext(Context original) {
-        AppLanguage language = SharedYouTubeSettings.MORPHE_LANGUAGE.get();
+        AppLanguage language = BaseSettings.MORPHE_LANGUAGE.get();
         if (language == AppLanguage.DEFAULT) {
             return original;
         }

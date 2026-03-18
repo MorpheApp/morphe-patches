@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Reclame</string>
+  <string name="morphe_hide_post_ads_title">Ascunde reclamele din flux</string>
+  <string name="morphe_hide_post_ads_summary">Ascunde reclamele în flux</string>
+  <string name="morphe_hide_comment_ads_title">Ascunde reclamele din comentarii</string>
+  <string name="morphe_hide_comment_ads_summary">Ascunde reclamele în secțiunea de comentarii</string>
+  <string name="morphe_screen_layout_title">Aspect</string>
+  <string name="morphe_disable_modern_home_title">Dezactivează pagina principală modernă</string>
+  <string name="morphe_disable_modern_home_summary">Dezactivează interfața modernă a paginii principale</string>
+  <string name="morphe_disable_screenshot_popup_title">Dezactivează fereastra de notificare pentru capturi de ecran</string>
+  <string name="morphe_disable_screenshot_popup_summary">Dezactivează fereastra care apare când faci o captură de ecran</string>
+  <string name="morphe_hide_answers_button_title">Ascunde butonul Răspunsuri</string>
+  <string name="morphe_hide_answers_button_summary">Ascunde butonul Răspunsuri în bara de navigare</string>
+  <string name="morphe_hide_chat_button_title">Ascunde butonul Chat</string>
+  <string name="morphe_hide_chat_button_summary">Ascunde butonul Chat în bara de navigare</string>
+  <string name="morphe_hide_create_button_title">Ascunde butonul Creare</string>
+  <string name="morphe_hide_create_button_summary">Ascunde butonul Creare în bara de navigare</string>
+  <string name="morphe_hide_discover_button_title">Ascunde butonul Descoperă sau Comunități</string>
+  <string name="morphe_hide_discover_button_summary">Ascunde butonul Descoperă sau Comunități în bara de navigare</string>
+  <string name="morphe_hide_games_button_title">Ascunde butonul Jocuri</string>
+  <string name="morphe_hide_games_button_summary">Ascunde butonul Jocuri în bara de navigare</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Ascunde raftul Vizitat recent</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Ascunde raftul Vizitat recent în bara laterală</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Ascunde raftul Jocuri pe Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Ascunde raftul Jocuri pe Reddit în bara laterală</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Ascunde raftul Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Ascunde raftul Reddit Pro în bara laterală</string>
+  <string name="morphe_hide_about_shelf_title">Ascunde raftul Despre</string>
+  <string name="morphe_hide_about_shelf_summary">Ascunde raftul Despre în bara laterală</string>
+  <string name="morphe_hide_resources_shelf_title">Ascunde raftul Resurse</string>
+  <string name="morphe_hide_resources_shelf_summary">Ascunde raftul Resurse în bara laterală</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Ascunde comunități recomandate</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Ascunde rafturile comunități recomandate în subreddituri</string>
+  <string name="morphe_hide_trending_today_shelf_title">Ascunde raftul Astăzi în tendințe</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Ascunde raftul Astăzi în tendințe din sugestiile de căutare
+
+Limitare: Spațiatorii vizuali pot să nu fie ascunși"</string>
+  <string name="morphe_remove_notification_dialog_title">Elimină dialogul de sugestie a notificărilor</string>
+  <string name="morphe_remove_notification_dialog_summary">Elimină dialogul de sugestie a notificărilor care apare la vizitarea unui subreddit, acceptându-l automat</string>
+  <string name="morphe_show_view_count_title">Afișează numărul de vizualizări</string>
+  <string name="morphe_show_view_count_summary">"Afișează numărul de vizualizări pentru Postări
+
+Limitare: Se afișează doar dacă răspunsul API include numărul de vizualizări"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Elimină dialogul de avertisment NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Elimină dialogul de avertisment NSFW care apare la vizitarea unui subreddit, acceptându-l automat</string>
+  <string name="morphe_screen_miscellaneous_title">Diverse</string>
+  <string name="morphe_about_title">Despre</string>
+  <string name="morphe_about_summary">Versiunea aplicației și link-uri oficiale</string>
+  <string name="morphe_sanitize_sharing_links_title">Igienizează linkurile de partajare</string>
+  <string name="morphe_sanitize_sharing_links_summary">Optimizează link-urile de partajare prin eliminarea parametrilor de urmărire</string>
+  <string name="morphe_open_links_directly_title">Deschide link-uri direct</string>
+  <string name="morphe_open_links_directly_summary">Ocolește URL-urile de redirecționare în link-urile externe</string>
+</resources>

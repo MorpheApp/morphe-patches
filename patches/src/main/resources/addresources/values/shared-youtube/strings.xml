@@ -15,6 +15,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <!-- misc.initialization.initializationPatch -->
+    <string name="morphe_restart_first_run">Restart to finish setting up</string>
+
     <!-- layout.branding.baseCustomBrandingPatch -->
     <string name="morphe_custom_branding_name_title">App name</string>
 

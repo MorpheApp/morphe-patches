@@ -4,6 +4,11 @@ api_token_env: "CROWDIN_PERSONAL_TOKEN"
 preserve_hierarchy: true
 
 files:
+    - source: patches/src/main/resources/addresources/values/reddit/strings.xml
+      translation: patches/src/main/resources/addresources/values-%android_code%/reddit/strings.xml
+      dest: '/Patches/reddit.xml'
+      skip_untranslated_strings: true
+
     - source: patches/src/main/resources/addresources/values/music/strings.xml
       translation: patches/src/main/resources/addresources/values-%android_code%/music/strings.xml
       dest: '/Patches/music.xml'
