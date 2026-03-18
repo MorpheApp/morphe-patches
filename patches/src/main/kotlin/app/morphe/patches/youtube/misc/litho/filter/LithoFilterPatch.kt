@@ -25,7 +25,7 @@ import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
-import app.morphe.patches.youtube.misc.fix.verticalscroll.verticalScrollPatch
+import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
@@ -77,8 +77,8 @@ val lithoFilterPatch = bytecodePatch(
         sharedExtensionPatch,
         conversionContextPatch,
         versionCheckPatch,
-        verticalScrollPatch,
         fixBackToExitGesturePatch,
+        fixVerticalScrollPatch,
     )
 
     /**

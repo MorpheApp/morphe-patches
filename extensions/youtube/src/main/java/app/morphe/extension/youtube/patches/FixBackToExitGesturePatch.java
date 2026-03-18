@@ -32,22 +32,9 @@ public class FixBackToExitGesturePatch {
     private static long lastTimeBackPressed = 0;
 
     /**
-     * Whether {@link Activity#moveTaskToBack(boolean)} was called by the patch.
-     */
-    private static final AtomicBoolean isTaskToBack = new AtomicBoolean(false);
-
-    /**
      * State whether the scroll position reaches the top.
      */
     private static final AtomicBoolean isTopView = new AtomicBoolean(false);
-
-    /**
-     * Injection point.
-     * Disable PiP mode when {@link Activity#moveTaskToBack(boolean)} is triggered by the patch.
-     */
-    public static boolean getMoveTaskToBackState(boolean original) {
-        return !isTaskToBack.get() && original;
-    }
 
     /**
      * Handle the event after clicking the back button.
@@ -70,9 +57,6 @@ public class FixBackToExitGesturePatch {
                     && VideoState.getCurrent() == VideoState.PLAYING
                     && activity.moveTaskToBack(true)) {
                 Logger.printDebug(() -> "Moving task to back");
-                isTaskToBack.set(true);
-                // Change to false after PiP mode availability is checked.
-                Utils.runOnMainThreadDelayed(() -> isTaskToBack.compareAndSet(true, false), 500);
             } else {
                 Logger.printDebug(() -> "Activity is closed");
                 activity.finish();
