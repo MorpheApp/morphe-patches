@@ -132,7 +132,7 @@ public class CommentsFilter extends Filter {
      * Injection point.
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
-        if (Settings.HIDE_COMMENTS_PAGE.get()) {
+        if (Settings.HIDE_COMMENTS_PAGE.get() && !commentsPageFilterStrings.isEmpty()) {
             try {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
                 var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
