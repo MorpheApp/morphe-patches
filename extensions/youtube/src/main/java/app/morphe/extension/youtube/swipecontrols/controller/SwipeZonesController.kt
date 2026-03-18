@@ -12,7 +12,7 @@ package app.morphe.extension.youtube.swipecontrols.controller
 
 import android.app.Activity
 import android.util.TypedValue
-import android.view.ViewGroup
+import android.view.View
 import app.morphe.extension.shared.ResourceType
 import app.morphe.extension.shared.ResourceUtils.getIdentifier
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
@@ -65,10 +65,10 @@ class SwipeZonesController(
     private val _80dp = 80.applyDimension(host, TypedValue.COMPLEX_UNIT_DIP)
 
     /**
-     * id for R.id.player_view
+     * id for R.id.inset_controls_overlay_wrapper
      */
-    private val playerViewId = getIdentifier(
-        host, ResourceType.ID, "player_view"
+    private val sizeAdjustableOverlayId = getIdentifier(
+        host, ResourceType.ID, "inset_controls_overlay_wrapper"
     )
 
     /**
@@ -126,7 +126,7 @@ class SwipeZonesController(
      */
     private fun maybeAttachPlayerBoundsListener() {
         if (playerRect != null) return
-        host.findViewById<ViewGroup>(playerViewId)?.let {
+        host.findViewById<View>(sizeAdjustableOverlayId)?.let {
             onPlayerViewLayout(it)
             it.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
                 onPlayerViewLayout(it)
@@ -137,21 +137,19 @@ class SwipeZonesController(
     /**
      * update the player rectangle on player_view layout
      *
-     * @param playerView the player view
+     * @param sizeAdjustableOverlay the player view
      */
-    private fun onPlayerViewLayout(playerView: ViewGroup) {
-        playerView.getChildAt(0)?.let { playerSurface ->
-            // the player surface is centered in the player view
-            // figure out the width of the surface including the padding (same on the left and right side)
-            // and use that width for the player rectangle size
-            // this automatically excludes any engagement panel from the rect
-            val playerWidthWithPadding = playerSurface.width + (playerSurface.x.toInt() * 2)
-            playerRect = Rectangle(
-                playerView.x.toInt(),
-                playerView.y.toInt(),
-                min(playerView.width, playerWidthWithPadding),
-                playerView.height,
-            )
-        }
+    private fun onPlayerViewLayout(sizeAdjustableOverlay: View) {
+        // the player surface is centered in the player view
+        // figure out the width of the surface including the padding (same on the left and right side)
+        // and use that width for the player rectangle size
+        // this automatically excludes any engagement panel from the rect
+        val playerWidthWithPadding = sizeAdjustableOverlay.width + (sizeAdjustableOverlay.x.toInt() * 2)
+        playerRect = Rectangle(
+            sizeAdjustableOverlay.x.toInt(),
+            sizeAdjustableOverlay.y.toInt(),
+            min(sizeAdjustableOverlay.width, playerWidthWithPadding),
+            sizeAdjustableOverlay.height,
+        )
     }
 }

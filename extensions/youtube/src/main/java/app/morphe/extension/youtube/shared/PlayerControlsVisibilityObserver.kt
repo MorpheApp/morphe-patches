@@ -27,43 +27,49 @@ class PlayerControlsVisibilityObserverImpl(
 ) : PlayerControlsVisibilityObserver {
 
     /**
-     * ID of the direct parent of controls_layout, R.id.youtube_controls_overlay
+     * ID of the direct parent of player_control_play_pause_replay_button_touch_area, R.id.controls_button_group_layout
      */
-    private val controlsLayoutParentId =
-        getIdentifier(activity, ResourceType.ID, "youtube_controls_overlay")
+    private val controlsButtonGroupId = getIdentifier(
+        activity,
+        ResourceType.ID,
+        "controls_button_group_layout"
+    )
 
     /**
-     * id of R.id.controls_layout
+     * id of R.id.player_control_play_pause_replay_button_touch_area
      */
-    private val controlsLayoutId =
-        getIdentifier(activity, ResourceType.ID, "controls_layout")
+    private val controlButtonId = getIdentifier(
+        activity,
+        ResourceType.ID,
+        "player_control_play_pause_replay_button_touch_area"
+    )
 
     /**
-     * reference to the controls layout view
+     * reference to the control button view
      */
-    private var controlsLayoutView = WeakReference<View>(null)
+    private var controlButtonView = WeakReference<View>(null)
 
     /**
-     * is the [controlsLayoutView] set to a valid reference of a view?
+     * is the [controlButtonView] set to a valid reference of a view?
      */
     private val isAttached: Boolean
         get() {
-            val view = controlsLayoutView.get()
+            val view = controlButtonView.get()
             return view != null && view.parent != null
         }
 
     /**
-     * find and attach the controls_layout view if needed
+     * find and attach the player_control_play_pause_replay_button_touch_area view if needed
      */
     private fun maybeAttach() {
         if (isAttached) return
 
-        // find parent, then controls_layout view
-        // this is needed because there may be two views where id=R.id.controls_layout
+        // find parent, then player_control_play_pause_replay_button_touch_area view
+        // this is needed because there may be two views where id=R.id.player_control_play_pause_replay_button_touch_area
         // because why should google confine themselves to their own guidelines...
-        activity.findViewById<ViewGroup>(controlsLayoutParentId)?.let { parent ->
-            parent.findViewById<View>(controlsLayoutId)?.let {
-                controlsLayoutView = WeakReference(it)
+        activity.findViewById<ViewGroup>(controlsButtonGroupId)?.let { parent ->
+            parent.findViewById<View>(controlButtonId)?.let {
+                controlButtonView = WeakReference(it)
             }
         }
     }
@@ -71,7 +77,7 @@ class PlayerControlsVisibilityObserverImpl(
     override val playerControlsVisibility: Int
         get() {
             maybeAttach()
-            return controlsLayoutView.get()?.visibility ?: View.GONE
+            return controlButtonView.get()?.visibility ?: View.GONE
         }
 
     override val arePlayerControlsVisible: Boolean
