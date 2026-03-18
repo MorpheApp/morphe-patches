@@ -5,7 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.fix.verticalscroll.verticalScrollPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -16,7 +15,6 @@ import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.engagement.addEngagementPanelIdHook
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
-import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
@@ -82,8 +80,6 @@ val hideAdsPatch = bytecodePatch(
 ) {
     dependsOn(
         hideAdsResourcePatch,
-        verticalScrollPatch,
-        fixBackToExitGesturePatch,
         versionCheckPatch
     )
 

@@ -1,4 +1,4 @@
-package app.morphe.patches.shared.misc.fix.verticalscroll
+package app.morphe.patches.youtube.misc.fix.verticalscroll
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
