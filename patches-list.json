@@ -1,5 +1,5 @@
 {
-  "version": "1.20.0-dev.1",
+  "version": "1.20.0-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1412,6 +1412,26 @@
           "20.40.45",
           "20.31.42",
           "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Miniplayer previous and next buttons",
+      "description": "Adds options to show previous and next track buttons in the miniplayer.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.44.54",
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
         ]
       },
       "options": []

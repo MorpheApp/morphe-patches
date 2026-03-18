@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Mini oynatıcı rengini değiştir</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Mini oynatıcı rengi tam ekran oynatıcıyla eşleşir</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini oynatıcı varsayılan rengi kullanır</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Mini oynatıcıda ileri düğmesini göster</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">İleri düğmesi mini oynatıcıda gösteriliyor</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">İleri düğmesi mini oynatıcıda gösterilmiyor</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Önceki düğme mini oynatıcıda gösterilir</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Önceki düğme mini oynatıcıda gösteriliyor</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Önceki düğme mini oynatıcıda gösterilmiyor</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Zorunlu mini oynatıcıyı etkinleştir</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Mini oynatıcı, oynatma değiştiğinde küçültülmüş durumda kalır</string>

@@ -18,7 +18,7 @@ import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
-import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
+import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 import app.morphe.extension.shared.settings.preference.SortedListPreference;
 
 @SuppressWarnings("deprecation")

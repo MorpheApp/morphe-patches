@@ -58,7 +58,8 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
+import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("NewApi")
@@ -386,6 +387,20 @@ public class Utils {
         Logger.printDebug(() -> "Could not find parent view of depth: " + nthParent
                 + " and instead found at: " + currentDepthLog + " view: " + view);
         return null;
+    }
+
+    public static List<String> getFilterStrings(StringSetting setting) {
+        String[] filterArray = setting.get().split("\\n");
+        List<String> filters = new ArrayList<>(filterArray.length);
+
+        for (String line : filterArray) {
+            String trimmed = line.trim();
+            if (!trimmed.isEmpty()) {
+                filters.add(trimmed);
+            }
+        }
+
+        return filters;
     }
 
     public static void restartApp(Context context) {

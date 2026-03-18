@@ -10,7 +10,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object LicenseActivityOnCreateFingerprint : Fingerprint(
-    definingClass = "/LicenseActivity;",
+    definingClass = "Lcom/google/android/libraries/social/licenses/LicenseActivity;",
     name = "onCreate",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

@@ -61,11 +61,11 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar ajustes de Morphe</string>
   <string name="morphe_settings_import_file">Importar desde archivo</string>
-  <string name="morphe_settings_import_file_success">Ajustes importados correctamente, pulse Guardar para aplicar</string>
-  <string name="morphe_settings_import_file_failed">Error al importar ajustes</string>
+  <string name="morphe_settings_import_file_success">Ajustes importados correctamente, pulse \"Guardar\" para aplicar</string>
+  <string name="morphe_settings_import_file_failed">Error al importar los ajustes</string>
   <string name="morphe_settings_export_file">Exportar a archivo</string>
-  <string name="morphe_settings_export_file_success">Configuración exportada correctamente</string>
-  <string name="morphe_settings_export_file_failed">Error al exportar la configuración</string>
+  <string name="morphe_settings_export_file_success">Ajustes exportados correctamente</string>
+  <string name="morphe_settings_export_file_failed">Error al exportar los ajustes</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>

@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Muuta minisoittimen väriä</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Minisoittimen väri vastaa kokoruudun soitinta</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minisoitin käyttää oletusväriä</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Näytä seuraava -painike minisoittimessa</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Seuraava -painike näkyy minisoittimessa</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Seuraava -painike ei näy minisoittimessa</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Näytä edellinen painike minisoittimessa</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Edellinen painike näytetään minisoittimessa</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Edellinen painike ei näytetä minisoittimessa</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Ota pakotettu minisoitin käyttöön</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Minisoitin pysyy piilossa toiston vaihtuessa</string>

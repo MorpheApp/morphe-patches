@@ -312,6 +312,16 @@ Changes include:
 
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Hide or show comments section components</string>
+    <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
+    <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
+    <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
+    <string name="morphe_hide_comments_carousel_dialog_message">"Note
+
+• Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
+• Hiding carousel items may have unintended side effects.
+• If all carousel items are hidden, the entire comments section will also be hidden."</string>
+    <string name="morphe_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
+    <string name="morphe_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, one per line</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
     <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI chat summary is hidden</string>
     <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI chat summary is shown</string>

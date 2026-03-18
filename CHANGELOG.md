@@ -1,3 +1,22 @@
+# [1.20.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.20.0-dev.1...v1.20.0-dev.2) (2026-03-18)
+
+
+### Bug Fixes
+
+* **Settings:** Prevent duplicate dialogs on rapid preference clicks ([#900](https://github.com/MorpheApp/morphe-patches/issues/900)) ([478d97a](https://github.com/MorpheApp/morphe-patches/commit/478d97aa0856b6ebd7cbf41d5c10850295ba2fb8))
+* **YouTube - Captions:** Captions disabled due to incorrect hooking ([#908](https://github.com/MorpheApp/morphe-patches/issues/908)) ([a03f245](https://github.com/MorpheApp/morphe-patches/commit/a03f24563a567a6ebd7bf55e1844ef6f2c06529c))
+* **YouTube - Playback speed:** Playback speed menu opens from the feed flyout menu when `Restore old playback speed menu` is off ([#906](https://github.com/MorpheApp/morphe-patches/issues/906)) ([3bb93a9](https://github.com/MorpheApp/morphe-patches/commit/3bb93a9fd1b838593ed5e3f38314855cade17c3f))
+
+
+### Features
+
+* **YouTube Music:** Add `Miniplayer previous and next buttons` patch ([#818](https://github.com/MorpheApp/morphe-patches/issues/818)) ([7e7e08d](https://github.com/MorpheApp/morphe-patches/commit/7e7e08dbfff859890b3bce26fcc882cff1074f4a))
+
+
+### Performance Improvements
+
+* Reduce patches bundle size ([#891](https://github.com/MorpheApp/morphe-patches/issues/891)) ([74c4611](https://github.com/MorpheApp/morphe-patches/commit/74c461185ac19a3d7258f738e92f49da74721703))
+
 # [1.20.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.19.0...v1.20.0-dev.1) (2026-03-17)
 
 

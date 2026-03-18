@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Змінити колір мініплеєра</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Колір мініплеєра відповідає кольору повноекранного плеєра</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Мініплеєр використовує колір за замовчуванням</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Показати кнопку наступного треку в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Кнопка наступного треку показується в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Кнопка наступного треку не показується в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Показати кнопку попереднього треку в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Кнопка попереднього треку показується в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Кнопка попереднього треку не показується в мініплеєрі</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Увімкнути примусово мініплеєр</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Мініплеєр залишається згорнутим, коли змінюється відтворення</string>

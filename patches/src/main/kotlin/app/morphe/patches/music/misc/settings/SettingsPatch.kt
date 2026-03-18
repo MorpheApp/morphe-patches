@@ -106,7 +106,7 @@ val settingsPatch = bytecodePatch(
         preferences += NonInteractivePreference(
             key = "morphe_settings_music_screen_0_about",
             summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.MorpheAboutPreference",
+            tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
             selectable = true,
         )
 

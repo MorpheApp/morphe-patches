@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreora</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Tá dath an mhion-imreoir ag teacht leis an imreoir lánscáileáin</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Úsáideann an mhion-imreoir an dath réamhshocraithe</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Seas ar maith an cnaip \"Réidh\" sa imreoir beag</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Tá an cnaip \"Réidh\" tagtha i bhféidhm sa imreoir beag</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Níl an cnaip \"Réidh\" tagtha i bhféidhm sa imreoir beag</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Seas roinnt cúcán roimhe</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Tá cúcán roimhe á chaitheamh sa miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Níl cúcán roimhe á chaitheamh sa miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Cumas miniplaeyer ardaite</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Fanann miniplaeyer arda a bheith lúibhithe nuair a athrú an t-seicheáil</string>
