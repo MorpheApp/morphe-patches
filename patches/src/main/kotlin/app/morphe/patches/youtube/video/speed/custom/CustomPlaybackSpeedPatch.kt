@@ -174,11 +174,11 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             )
         }
 
+        // Fix restore old playback speed menu.
         if (is_21_12_or_greater) {
             val onItemClickClass: String
             val fragmentIdField: MutableField
             val fragmentManagerMethod : MethodReference
-
             PlaybackSpeedOnItemClickParentFingerprint.let {
                 it.method.apply {
                     // Add a fragment id instance field to the class.
@@ -243,11 +243,6 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                         addInstructions(
                             0,
                             """
-                                # Check if it is enabled.
-                                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->restoreOldPlaybackSpeedMenu()Z
-                                move-result v0
-                                if-eqz v0, :ignore
-                                
                                 # Check if the bottom sheet is available.
                                 iget-object v0, p0, $onItemClickField
                                 invoke-virtual { v0 }, $bottomSheetAvailabilityPrimaryMethodCall

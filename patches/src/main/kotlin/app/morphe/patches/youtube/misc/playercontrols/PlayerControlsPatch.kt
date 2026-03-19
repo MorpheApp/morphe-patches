@@ -352,18 +352,21 @@ val playerControlsPatch = bytecodePatch(
                         // This may not be needed if the new bold player overlay icons are in use.
                         PlayerBottomGradientScrimFingerprint.let {
                             it.method.apply {
-                                val gradientHelperIndex = it.instructionMatches.last().index
-                                val gradientHelperRegister =
-                                    getInstruction<TwoRegisterInstruction>(gradientHelperIndex).registerA
+                                val gradientFieldIndex = it.instructionMatches.last().index
+                                val gradientFieldRegister =
+                                    getInstruction<TwoRegisterInstruction>(gradientFieldIndex).registerA
 
                                 val gradientViewIndex = it.instructionMatches[1].index
                                 val gradientViewRegister =
                                     getInstruction<OneRegisterInstruction>(gradientViewIndex).registerA
 
+                                // This field is Nullable, and if null, the bottom gradient is not set.
                                 addInstruction(
-                                    gradientHelperIndex,
-                                    "const/4 v$gradientHelperRegister, 0x0"
+                                    gradientFieldIndex,
+                                    "const/4 v$gradientFieldRegister, 0x0"
                                 )
+
+                                // Make the bottom gradient transparent and hide it.
                                 addInstruction(
                                     gradientViewIndex + 1,
                                     "invoke-static { v$gradientViewRegister }, " +
