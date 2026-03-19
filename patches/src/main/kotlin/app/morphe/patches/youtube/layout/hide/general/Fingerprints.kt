@@ -233,7 +233,37 @@ internal object SearchResultsChipBarFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.11+
+ *
+ * Resolves using the method found in [ShowFloatingMicrophoneButtonParentFingerprint]
+ */
 internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Lcom/google/android/libraries/quantum/fab/FloatingActionButton;", "Landroid/view/ViewStub;"),
+    filters = listOf(
+        opcode(Opcode.IGET_BOOLEAN)
+    )
+)
+
+/**
+ * 21.11+
+ */
+internal object ShowFloatingMicrophoneButtonParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z"),
+    strings = listOf("Current FAB View Wrapper does not support this operation. Text: "),
+    custom = { _, classDef ->
+        !classDef.interfaces.contains("Landroid/view/View\$OnClickListener;")
+    }
+)
+
+/**
+ * ~ 21.10
+ */
+internal object ShowFloatingMicrophoneButtonLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
