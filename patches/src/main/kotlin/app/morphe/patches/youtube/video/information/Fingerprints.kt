@@ -7,6 +7,7 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -18,10 +19,8 @@ internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves using the method found in [PlaybackSpeedOnItemClickParentFingerprint].
- */
 internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
+    classFingerprint = PlaybackSpeedOnItemClickParentFingerprint,
     name = "onItemClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

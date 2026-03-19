@@ -459,10 +459,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide floating microphone
 
         val showFloatingMicrophoneButtonFingerprintMatch = if (is_21_11_or_greater)
-            ShowFloatingMicrophoneButtonFingerprint.match(
-                ShowFloatingMicrophoneButtonParentFingerprint.originalClassDef
-            )
-        else ShowFloatingMicrophoneButtonLegacyFingerprint.match()
+            ShowFloatingMicrophoneButtonFingerprint
+        else ShowFloatingMicrophoneButtonLegacyFingerprint
 
         showFloatingMicrophoneButtonFingerprintMatch.let {
             it.method.apply {

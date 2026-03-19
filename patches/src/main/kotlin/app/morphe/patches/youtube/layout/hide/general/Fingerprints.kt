@@ -242,6 +242,7 @@ internal object SearchResultsChipBarFingerprint : Fingerprint(
  * Resolves using the method found in [ShowFloatingMicrophoneButtonParentFingerprint]
  */
 internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(
+    classFingerprint = ShowFloatingMicrophoneButtonParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "Lcom/google/android/libraries/quantum/fab/FloatingActionButton;", "Landroid/view/ViewStub;"),
