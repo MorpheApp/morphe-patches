@@ -268,7 +268,7 @@ public class CustomPlaybackSpeedPatch {
         touchInsidedView.callOnClick();
 
         // In tablet layout and phone layout of YouTube 21.12 or higher,
-        // there no Dismiss View, so instead just hide two parent views.
+        // there no Dismiss View. Just hide two parent views.
         parentView3rd.setVisibility(View.GONE);
         parentView4th.setVisibility(View.GONE);
 
