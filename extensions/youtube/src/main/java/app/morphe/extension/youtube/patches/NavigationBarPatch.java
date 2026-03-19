@@ -29,7 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
-import com.google.android.libraries.social.licenses.LicenseActivity;
+import com.google.android.gms.common.api.GoogleApiActivity.GoogleApiActivity;
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
@@ -597,7 +597,7 @@ public final class NavigationBarPatch {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.setData(Uri.parse("morphe_settings_intent"));
             intent.setPackage(context.getPackageName());
-            intent.setClass(context, LicenseActivity.class);
+            intent.setClass(context, GoogleApiActivity.class);
 
             if (activity == null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

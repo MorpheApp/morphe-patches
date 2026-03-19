@@ -303,6 +303,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Кнопка \"Підписатися\" показується</string>
   <string name="morphe_comments_screen_title">Коментарі</string>
   <string name="morphe_comments_screen_summary">Приховати або показувати компоненти секції коментарів</string>
+  <string name="morphe_hide_comments_carousel_title">Увімкнути фільтр каруселі коментарів</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Фільтр каруселі коментарів увімкнено</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Фільтр каруселі коментарів вимкнено</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Примітка
+
+• Обов’язково введіть точну назву елемента каруселі (наприклад, Запитати, Розрекламувати це відео, Слухати на YouTube Music тощо).
+• Приховування елементів каруселі може мати небажані побічні ефекти.
+• Якщо всі елементи каруселі приховані, весь розділ коментарів також буде прихований."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Фільтр каруселі коментарів</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Введіть назви каруселі коментарів для фільтрації, по одній на рядок</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Приховати \"Огляд чату від ШІ\"</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">\"Огляд чату від ШІ\" приховано</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">\"Огляд чату від ШІ\" показується</string>

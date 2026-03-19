@@ -14,6 +14,7 @@ import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -125,8 +126,7 @@ val settingsPatch = bytecodePatch(
         )
 
         modifyActivityForSettingsInjection(
-            GoogleApiActivityFingerprint.classDef,
-            GoogleApiActivityFingerprint.method,
+            GoogleApiActivityOnCreateFingerprint,
             MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
             true
         )

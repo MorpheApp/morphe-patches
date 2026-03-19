@@ -11,7 +11,7 @@
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.Utils.getFilterStrings;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_10_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
@@ -458,7 +458,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
-        // FIXME? Is this feature still relevant? When/where does this microphone appear?
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
     }
 
@@ -493,13 +492,24 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static int hideInRelatedVideos(int height) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
+                ? 0
+                : height;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED || original;
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideInRelatedVideos(View chipView) {
-        // Cannot use 0dp hide with later targets, otherwise the suggested videos
-        // can be shown in full screen mode.
-        // This behavior may also be present in earlier app targets.
-        if (IS_20_21_OR_GREATER) {
-            // FIXME: The filter bar is still briefly shown when dragging the suggested videos
-            //        below the video player.
+        if (IS_20_10_OR_GREATER) {
             Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
         } else {
             Utils.hideViewBy0dpUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);

@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -27,6 +37,7 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -53,7 +64,7 @@ public class GmsCoreSupportPatch {
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
     private static String getOriginalPackageName() {
-       return null; // Modified during patching.
+        return null; // Modified during patching.
     }
 
     /**
@@ -159,11 +170,13 @@ public class GmsCoreSupportPatch {
             } else if (batteryOptimizationsEnabled(context)) {
                 Logger.printInfo(() -> "GmsCore is not whitelisted from battery optimizations");
 
-                showBatteryOptimizationDialog(context,
-                        "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
-                        "gms_core_dialog_continue_text",
-                        (dialog, id) -> openGmsCoreDisableBatteryOptimizationsIntent(context));
-                return;
+                if (BaseSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                    showBatteryOptimizationDialog(context,
+                            "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
+                            "gms_core_dialog_continue_text",
+                            (dialog, id) -> openGmsCoreDisableBatteryOptimizationsIntent(context));
+                    return;
+                }
             }
 
             // Check if GmsCore is currently running in the background.
@@ -172,12 +185,15 @@ public class GmsCoreSupportPatch {
             try {
                 if (client == null) {
                     Logger.printInfo(() -> "GmsCore is not running in the background");
-                    checkIfDontKillMyAppSupportsManufacturer();
 
-                    showBatteryOptimizationDialog(context,
-                            "gms_core_dialog_not_whitelisted_not_allowed_in_background_message",
-                            "gms_core_dialog_open_website_text",
-                            (dialog, id) -> openDontKillMyApp());
+                    if (BaseSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                        checkIfDontKillMyAppSupportsManufacturer();
+
+                        showBatteryOptimizationDialog(context,
+                                "gms_core_dialog_not_whitelisted_not_allowed_in_background_message",
+                                "gms_core_dialog_open_website_text",
+                                (dialog, id) -> openDontKillMyApp());
+                    }
                 }
             } finally {
                 if (client != null) client.close();

@@ -17,7 +17,30 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_screen_ads_title">Reklamlar</string>
+  <string name="morphe_hide_post_ads_title">Axın reklamların gizlət</string>
+  <string name="morphe_hide_post_ads_summary">Axındakı reklamlar gizlədilir</string>
+  <string name="morphe_hide_comment_ads_title">Şərh reklamlarını gizlət</string>
+  <string name="morphe_hide_comment_ads_summary">Şərhlər bölməsindəki reklamlar gizlədilir</string>
+  <string name="morphe_screen_layout_title">Tərtibat</string>
+  <string name="morphe_disable_modern_home_title">Müasir əsas səhifəni qapat</string>
+  <string name="morphe_disable_modern_home_summary">Müasir əsas UI-ni qapadır</string>
+  <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü ani görüntüsün qapat</string>
+  <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü çəkərkən görünən ani görüntünü qapadır</string>
+  <string name="morphe_hide_answers_button_title">Cavablar düyməsin gizlət</string>
+  <string name="morphe_hide_answers_button_summary">Fəaliyyət cizgisində Cavablar düyməsi gizlədilir</string>
+  <string name="morphe_hide_chat_button_title">Söhbət düyməsin gizlət</string>
+  <string name="morphe_hide_chat_button_summary">Fəaliyyət cizgisində Söhbət düyməsi gizlədilir</string>
+  <string name="morphe_hide_create_button_title">Yarat düyməsini gizlət</string>
+  <string name="morphe_hide_create_button_summary">Fəaliyyət cizgisində Yarat düyməsi gizlədilir</string>
+  <string name="morphe_hide_discover_button_title">Kəşf et və ya İcmalar düyməsini gizlət</string>
+  <string name="morphe_hide_discover_button_summary">Fəaliyyət cizgisində Kəşf et və ya İcmalar düyməsi gizlədilir</string>
+  <string name="morphe_hide_games_button_title">Oyunlar düyməsini gizlət</string>
+  <string name="morphe_hide_games_button_summary">Fəaliyyət cizgisində Oyunlar düyməsi gizlədilir</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Yenicə Daxil Olunan Səhifəni Gizlət</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Yan Cizgidə Son Daxil Olunan Səhifə Gizlədilir</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Reddit səhifəsində Oyunları gizlət</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Reddit səhifəsindəki Oyunlar yan cizgidə gizlədilir</string>
   <string name="morphe_screen_miscellaneous_title">Çoxvariantlı</string>
   <string name="morphe_about_title">Haqqında</string>
-  <string name="morphe_sanitize_sharing_links_title">Paylaşım linklərin təmizlə</string>
+  <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
 </resources>

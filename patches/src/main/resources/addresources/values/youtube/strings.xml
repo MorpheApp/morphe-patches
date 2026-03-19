@@ -514,6 +514,24 @@ Limitations:
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
 
+    <!-- interaction.loop.loopVideoPatch -->
+    <string name="morphe_loop_video_title">Enable loop video</string>
+    <string name="morphe_loop_video_summary_on">Video will loop</string>
+    <string name="morphe_loop_video_summary_off">Video will not loop</string>
+
+    <!-- interaction.loop.loopVideoButtonPatch -->
+    <string name="morphe_loop_video_button_title">Show loop video button</string>
+    <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
+    <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
+    <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
+    <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
+
+    <!-- interaction.reload.reloadVideoPatch -->
+    <string name="morphe_reload_video_title">Show reload video button</string>
+    <string name="morphe_reload_video_summary_on">Reload video button is shown</string>
+    <string name="morphe_reload_video_summary_off">Reload video button is not shown</string>
+    <string name="morphe_dismiss_player_not_available_toast">Video id is unavailable. Please manually reopen the video.</string>
+
     <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_on">Precise seeking gesture is disabled</string>
@@ -1588,18 +1606,6 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_announcements_enabled_summary" translatable="false">Show announcements on startup</string>
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
-
-    <!-- misc.loopvideo.loopVideoPatch -->
-    <string name="morphe_loop_video_title">Enable loop video</string>
-    <string name="morphe_loop_video_summary_on">Video will loop</string>
-    <string name="morphe_loop_video_summary_off">Video will not loop</string>
-
-    <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-    <string name="morphe_loop_video_button_title">Show loop video button</string>
-    <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
-    <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
-    <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
-    <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
 
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>

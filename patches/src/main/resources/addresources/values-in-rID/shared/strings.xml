@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Pengaturan Morphe diatur ke bawaan</string>
-  <string name="morphe_settings_import_success">%d Setelan terimpor</string>
+  <string name="morphe_settings_import_success">%d Pengaturan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_search_hint">Pengaturan pencarian</string>
   <string name="morphe_settings_search_no_results_title">Tidak ada hasil yang ditemukan untuk \'%s\'</string>
@@ -59,7 +59,7 @@ Second \"item\" text"</string>
 Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kunjungi morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Bahasa aplikasi</string>
   <string name="morphe_pref_import_export_title">Impor / Ekspor</string>
-  <string name="morphe_pref_import_export_summary">Impor / Ekspor setelan Morphe</string>
+  <string name="morphe_pref_import_export_summary">Impor / Ekspor pengaturan Morphe</string>
   <string name="morphe_settings_import_file">Impor dari berkas</string>
   <string name="morphe_settings_import_file_success">Pengaturan berhasil diimpor, ketuk Simpan untuk menerapkan</string>
   <string name="morphe_settings_import_file_failed">Gagal mengimpor pengaturan</string>
@@ -84,6 +84,8 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Pemberitahuan lisensi</string>
+  <string name="morphe_settings_about_licenses_loading">Memuat...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Aktifkan atau nonaktifkan pilihan debugging</string>

@@ -2,6 +2,7 @@ package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
@@ -9,6 +10,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
+import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -79,6 +82,22 @@ internal object PlayerBottomControlsInflateFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches same method as [ControlsOverlayFingerprint] and [CreatePlayerOverviewFingerprint].
+ */
+internal object PlayerBottomGradientScrimFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "bottom_gradient_scrim_overlay"),
+        checkCast("Landroid/widget/ImageView;", MatchAfterWithin(10)),
+        opcode(Opcode.NEW_INSTANCE),
+        opcode(Opcode.IPUT_OBJECT),
+        opcode(Opcode.IPUT_OBJECT, MatchAfterImmediately()),
+        opcode(Opcode.IPUT_OBJECT, MatchAfterImmediately()),
+    )
+)
+
 internal object OverlayViewInflateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -90,6 +109,9 @@ internal object OverlayViewInflateFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Resolves to the class found in [PlayerTopControlsInflateFingerprint].
+ */
 internal object ControlsOverlayVisibilityFingerprint : Fingerprint(
     classFingerprint = PlayerTopControlsInflateFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
@@ -139,14 +161,5 @@ internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         literal(45713296)
-    )
-)
-
-internal object PlayerOverlayOpacityGradientFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        literal(45729621)
     )
 )

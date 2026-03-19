@@ -13,10 +13,11 @@ package app.morphe.patches.youtube.layout.hide.general
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -24,7 +25,6 @@ import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import app.morphe.patches.youtube.layout.buttons.navigation.WideSearchbarLayoutFingerprint
-import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -148,63 +148,125 @@ internal object YouTubeDoodlesImageViewFingerprint : Fingerprint(
     )
 )
 
-internal object CrowdfundingBoxFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.IPUT_OBJECT,
-    ),
-    custom = customLiteral { crowdfundingBoxId } // TODO: Convert this to an instruction filter
-)
-
 internal object AlbumCardsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { albumCardId } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "album_card"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object CrowdfundingBoxFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "donation_companion"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
 )
 
 internal object FilterBarHeightFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IPUT,
-    ),
-    custom = customLiteral { filterBarHeightId } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "filter_bar_height"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "getDimensionPixelSize",
+            returnType = "I",
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
 )
 
+/**
+ * 20.10+
+ */
 internal object RelatedChipCloudFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-    ),
-    custom = customLiteral { relatedChipCloudMarginId } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "related_chip_cloud"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        literal(45682279L),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "getDimensionPixelSize",
+            returnType = "I",
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * ~ 20.09
+ */
+internal object RelatedChipCloudLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "related_chip_cloud"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        )
+    )
 )
 
 internal object SearchResultsChipBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-    ),
-    custom = customLiteral { barContainerHeightId } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "bar_container_height"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "getDimensionPixelSize",
+            returnType = "I",
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
 )
 
+/**
+ * 21.11+
+ *
+ * Resolves using the method found in [ShowFloatingMicrophoneButtonParentFingerprint]
+ */
 internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Lcom/google/android/libraries/quantum/fab/FloatingActionButton;", "Landroid/view/ViewStub;"),
+    filters = listOf(
+        opcode(Opcode.IGET_BOOLEAN)
+    )
+)
+
+/**
+ * 21.11+
+ */
+internal object ShowFloatingMicrophoneButtonParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z"),
+    strings = listOf("Current FAB View Wrapper does not support this operation. Text: "),
+    custom = { _, classDef ->
+        !classDef.interfaces.contains("Landroid/view/View\$OnClickListener;")
+    }
+)
+
+/**
+ * ~ 21.10
+ */
+internal object ShowFloatingMicrophoneButtonLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -218,8 +280,7 @@ internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(
 internal object HideViewCountFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/CharSequence;",
-
-    filters = OpcodesFilter.opcodesToFilters(
+    filters = opcodesToFilters(
         Opcode.RETURN_OBJECT,
         Opcode.CONST_STRING,
         Opcode.RETURN_OBJECT,

@@ -303,6 +303,16 @@ Zmiany obejmują:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Widoczny</string>
   <string name="morphe_comments_screen_title">Komentarze</string>
   <string name="morphe_comments_screen_summary">Ukryj lub pokazuj komponenty sekcji komentarzy</string>
+  <string name="morphe_hide_comments_carousel_title">Filtr karuzeli komentarzy</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Włączony</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Wyłączony</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Notka
+
+• Upewnij się, że wprowadzasz dokładną nazwę elementu karuzeli (np. Pytania, Podbij ten film, Słuchaj w YouTube Music itp.).
+• Ukrywanie elementów karuzeli może mieć nieoczekiwane skutki uboczne.
+• Jeśli wszystkie elementy karuzeli zostaną ukryte, cała sekcja komentarzy również zostanie ukryta."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filtr karuzeli komentarzy</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Wprowadź nazwy elementów karuzeli do filtrowania, po jednej w wierszu</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Podsumowanie czatu generowane przez AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Ukryte</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Widoczne</string>
@@ -1308,7 +1318,7 @@ Układ samochodowy
   <string name="morphe_spoof_app_version_summary_off">Wyłączone</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Wersja aplikacji zostanie oszukana do starszej wersji YouTube.
 
-Zmieni to wygląd i funkcje aplikacji, lecz mogą wystąpić nieznane efekty uboczne.
+Zmieni to wygląd i funkcje aplikacji, lecz mogą wystąpić nieznane skutki uboczne.
 
 Jeśli później zostanie to wyłączone, rekomendowane jest usunięcie danych aplikacji, aby zapobiec błędom w interfejsie użytkownika."</string>
   <string name="morphe_spoof_app_version_target_title">Oszukiwana wersja aplikacji</string>
@@ -1502,7 +1512,7 @@ Stuknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
   <string name="morphe_spoof_device_dimensions_title">Oszukaj rozdzielczość urządzenia</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Rozdzielczość urządzenia jest oszukiwana
 
-Wyższe jakości wideo mogą zostać odblokowane, ale możesz doświadczyć zacinania się obrazu, krótszego czasu pracy na baterii oraz nieznanych efektów ubocznych"</string>
+Wyższe jakości wideo mogą zostać odblokowane, ale możesz doświadczyć zacinania się obrazu, krótszego czasu pracy na baterii oraz nieznanych skutków ubocznych"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"Rozdzielczość urządzenia nie jest oszukiwana
 
 Włączenie tej opcji może odblokować wyższe jakości wideo"</string>
@@ -1625,7 +1635,7 @@ Odtwarzanie może się zacinać lub gubić klatki"</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tego ustawienia może używać programowego dekodowania AV1.
 
 Odtwarzanie wideo z AV1 może powodować zacinanie się lub gubienie klatek."</string>
-  <string name="morphe_spoof_video_streams_about_title">Efekty uboczne oszukiwania</string>
+  <string name="morphe_spoof_video_streams_about_title">Skutki uboczne oszukiwania</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Jest to eksperymentalny klient i może przestać działać w każdej chwili</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Film może zatrzymać się po pierwszej minucie lub może być niedostępny w niektórych regionach</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Brakuje menu ścieżki dźwiękowej</string>

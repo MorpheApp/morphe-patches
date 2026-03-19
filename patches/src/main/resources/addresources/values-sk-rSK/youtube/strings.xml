@@ -145,6 +145,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skryť AI súhrn četu</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI súhrn četu je skrytý</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI súhrn četu sa zobrazuje</string>
+  <string name="morphe_hide_comments_section_summary_off">Sekcia komentárov sa zobrazuje</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Skryť pokyny pre komunitu</string>
+  <string name="morphe_hide_comments_community_guidelines_summary_on">Pokyny pre komunitu sú skryté</string>
+  <string name="morphe_hide_comments_community_guidelines_summary_off">Pokyny pre komunitu sa zobrazujú</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skryť tlačidlo \'Vytvoriť Short\'</string>
   <string name="morphe_hide_comments_create_a_short_button_summary_on">Tlačidlo Vytvoriť Short je skryté</string>
   <string name="morphe_hide_comments_create_a_short_button_summary_off">Tlačidlo Vytvoriť Short sa zobrazuje</string>
@@ -158,6 +162,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_summary_off">Vlastný filter je zakázaný</string>
   <string name="morphe_custom_filter_strings_title">Vlastný filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_hide_view_count_title">Skryť počet zhliadnutí</string>
+  <string name="morphe_hide_view_count_summary_on">Počet zhliadnutí je skrytý vo feede a výsledkoch vyhľadávania</string>
+  <string name="morphe_hide_view_count_summary_off">Počet zhliadnutí sa zobrazuje vo feede a výsledkoch vyhľadávania</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_title">Skryť čas nahrania</string>
   <string name="morphe_hide_upload_time_summary_on">Čas nahrania je skrytý vo feede a vo výsledkoch vyhľadávania</string>
@@ -211,6 +218,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Dvojité ťuknutie nikdy nespustí preskočenie na ďalšiu/predchádzajúcu kapitolu</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Dvojitým ťuknutím môže dôjsť k preskočeniu na ďalšiu/predchádzajúcu kapitolu</string>
   <!-- interaction.downloads.downloadsResourcePatch -->
+  <string name="morphe_external_downloader_summary_on">Tlačidlo Stiahnuť v prehrávači sa zobrazuje</string>
+  <string name="morphe_external_downloader_summary_off">Tlačidlo Stiahnuť v prehrávači sa nezobrazuje</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_other_item_hint">Zadajte názov balíka</string>
   <string name="morphe_external_downloader_other_item">Ostatné</string>
@@ -224,6 +233,9 @@ Uistite sa, že názov balíka je správny a aplikácia je nainštalovaná"</str
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+  <string name="morphe_swipe_volume_summary_on">"Zmena hlasitosti potiahnutím v režime na celú obrazovku je povolená
+
+Hlasitosť možno zmeniť vertikálnym potiahnutím v pravej časti obrazovky"</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_hide_like_dislike_button_title">Skryť \'Páči sa mi\' a \'Nepáči sa mi\'</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Tlačidlá \'Páči sa mi\' a \'Nepáči sa mi\' sú skryté</string>
@@ -262,6 +274,7 @@ Uistite sa, že názov balíka je správny a aplikácia je nainštalovaná"</str
   <string name="morphe_hide_save_button_summary_off">Tlačidlo Uložiť sa zobrazuje</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_entry_2">Nikdy nezobrazovať</string>
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -301,6 +314,9 @@ Uistite sa, že názov balíka je správny a aplikácia je nainštalovaná"</str
   <string name="morphe_hide_toolbar_notification_button_title">Skryť tlačidlo Upozornenia</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Tlačidlo Upozornenia je skryté</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Tlačidlo Upozornenia sa zobrazuje</string>
+  <string name="morphe_hide_toolbar_search_button_title">Skryť tlačidlo Hľadať</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">Tlačidlo Hľadať je skryté</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">Tlačidlo Hľadať sa zobrazuje</string>
   <string name="morphe_replace_toolbar_create_button_title">Nahradiť tlačidlo Vytvoriť tlačidlom Nastavenia</string>
   <string name="morphe_replace_toolbar_create_button_summary_on">Tlačidlo Vytvoriť je nahradené tlačidlom Nastavenia</string>
   <string name="morphe_replace_toolbar_create_button_summary_off">Tlačidlo Vytvoriť nie je nahradené tlačidlom Nastavenia</string>
@@ -330,8 +346,21 @@ Uistite sa, že názov balíka je správny a aplikácia je nainštalovaná"</str
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <string name="morphe_shorts_player_screen_title">Prehrávač Shorts</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_search_title">Skryť Shorts vo výsledkoch vyhľadávania</string>
+  <string name="morphe_hide_shorts_search_summary_on">Skryté vo výsledkoch vyhľadávania</string>
+  <string name="morphe_hide_shorts_search_summary_off">Zobrazuje sa vo výsledkoch vyhľadávania</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_subscriptions_title">Skryť Shorts vo feede Odbery</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_on">Skryté vo feede Odbery</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_off">Zobrazuje sa vo feede Odbery</string>
+  <string name="morphe_hide_shorts_video_description_title">Skryť Shorts v popise videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">Skryté v popise videa</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">Zobrazuje sa v popise videa</string>
+  <string name="morphe_hide_shorts_history_title">Skryť Shorts z histórie pozerania</string>
+  <string name="morphe_hide_shorts_history_summary_on">Skryté v histórii pozerania</string>
+  <string name="morphe_hide_shorts_history_summary_off">Zobrazuje sa v histórii pozerania</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->

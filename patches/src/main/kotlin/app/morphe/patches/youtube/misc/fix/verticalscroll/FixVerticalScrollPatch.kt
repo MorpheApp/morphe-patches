@@ -1,11 +1,11 @@
-package app.morphe.patches.shared.misc.fix.verticalscroll
+package app.morphe.patches.youtube.misc.fix.verticalscroll
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-val verticalScrollPatch = bytecodePatch(
+val fixVerticalScrollPatch = bytecodePatch(
     description = "Fixes issues with refreshing the feed when the first component is of type EmptyComponent.",
 ) {
 

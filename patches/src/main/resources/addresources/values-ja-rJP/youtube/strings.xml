@@ -1625,10 +1625,10 @@ Automotive レイアウト
 AV1 での動画再生は、カクつくまたはコマ落ちが発生する可能性があります。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽装による副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 実験的なクライアントであり、いつでも動作しなくなる可能性がある</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• 動画が 01:00 で停止する、または一部の地域で利用できない可能性がある</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">•「音声トラック」がフライアウト メニューに表示されない</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• 動画が 01:00 で停止する可能性がある。また、一部の地域では再生できない可能性がある</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• フライアウト メニューに「音声トラック」が表示されない</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
-  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 没入モードが利用できない</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 動画では没入モードが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->

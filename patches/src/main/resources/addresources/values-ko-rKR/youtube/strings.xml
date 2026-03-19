@@ -304,6 +304,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">구독 버튼이 표시됩니다</string>
   <string name="morphe_comments_screen_title">댓글</string>
   <string name="morphe_comments_screen_summary">댓글 섹션에서 구성요소가 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
+  <string name="morphe_hide_comments_carousel_summary_on">댓글 좌우 슬라이드 필터를 활성화합니다</string>
+  <string name="morphe_hide_comments_carousel_summary_off">댓글 좌우 슬라이드 필터를 비활성화합니다</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"알림:
+
+• 좌우 슬라이드 항목의 정확한 이름을 입력하세요 (예: 질문하기, 이 동영상 Hype하기, YouTube Music에서 감상하기, etc.).
+• 좌우 슬라이드 항목이 숨겨지면 의도하지 않은 부작용이 발생할 수 있습니다.
+• 좌우 슬라이드 항목이 모두 숨겨지면 전체 댓글 섹션도 숨겨집니다."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">댓글 좌우 슬라이드 필터</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">필터링할 댓글 좌우 슬라이드 이름을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI 채팅 요약 숨기기</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI 채팅 요약이 숨겨집니다</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI 채팅 요약이 표시됩니다</string>

@@ -301,6 +301,16 @@ Los cambios incluyen:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">El botón \"Suscribirme\" está visible</string>
   <string name="morphe_comments_screen_title">Comentarios</string>
   <string name="morphe_comments_screen_summary">Ocultar o mostrar componentes de la sección de comentarios</string>
+  <string name="morphe_hide_comments_carousel_title">Activar filtro de carrusel de comentarios</string>
+  <string name="morphe_hide_comments_carousel_summary_on">El filtro de carrusel de comentarios está activado</string>
+  <string name="morphe_hide_comments_carousel_summary_off">El filtro de carrusel de comentarios está desactivado</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Nota
+
+• Asegúrate de introducir el nombre exacto del elemento del carrusel (p. ej., Preguntar, Promocionar este vídeo, Escuchar en YouTube Music, etc.).
+• Ocultar elementos del carrusel puede tener efectos secundarios no deseados.
+• Si se ocultan todos los elementos del carrusel, también se ocultará toda la sección de comentarios."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filtro de carrusel de comentarios</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Ingrese los nombres del carrusel de comentarios para filtrar, uno por línea</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ocultar resumen del chat con IA</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">El resumen del chat con IA está oculto</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">El resumen del chat con IA está visible</string>

@@ -8,6 +8,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
+import app.morphe.patches.youtube.misc.playercontrols.PlayerBottomGradientScrimFingerprint
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.util.getReference
@@ -29,6 +31,9 @@ internal object AppendTimeFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches same method as [CreatePlayerOverviewFingerprint] and [PlayerBottomGradientScrimFingerprint].
+ */
 internal object ControlsOverlayFingerprint : Fingerprint(
     classFingerprint = LayoutConstructorFingerprint,
     returnType = "V",

@@ -39,9 +39,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_protobuffer_title">Buffer protokol log</string>
   <string name="morphe_debug_protobuffer_summary_on">Pencatatan debug termasuk buffer proto</string>
   <string name="morphe_debug_protobuffer_summary_off">Pencatatan debug tidak menyertakan buffer proto</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Mengaktifkan setelan ini akan mencatat data tata letak tambahan, termasuk teks pada layar untuk beberapa komponen UI.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Mengaktifkan pengaturan ini akan mencatat data tata letak tambahan, termasuk teks pada layar untuk beberapa komponen UI.
 
-Ini dapat membantu mengidentifikasi komponen saat membuat filter khusus.
+Ini dapat membantu mengidentifikasi komponen saat membuat penyaring khusus.
 
 Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -301,6 +301,14 @@ Perubahan termasuk:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Tombol berlangganan ditampilkan</string>
   <string name="morphe_comments_screen_title">Komentar</string>
   <string name="morphe_comments_screen_summary">Sembunyikan atau tampilkan komponen bagian komentar</string>
+  <string name="morphe_hide_comments_carousel_title">Aktifkan penyaring komentar yang berputar</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Penyaring komentar yang berputar diaktifkan</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Penyaring komentar yang berputar dinonaktifkan</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"• Pastikan untuk memasukkan nama item yang berputar yang tepat (misalnya: Tanya, Hype video ini, Dengarkan di YouTube Music, dll.).
+• Menyembunyikan item yang berputar mungkin memiliki efek samping yang tidak diinginkan.
+• Jika semua item yang berputar disembunyikan, seluruh bagian komentar juga akan disembunyikan."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Penyaring komentar yang berputar</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Masukkan nama komentar yang berputar untuk disaring, satu per baris</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sembunyikan ringkasan chat AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Ringkasan chat AI disembunyikan</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Ringkasan chat AI ditampilkan</string>
@@ -344,7 +352,7 @@ Perubahan termasuk:
   <string name="morphe_custom_filter_summary_off">Penyaring khusus dinonaktifkan</string>
   <string name="morphe_custom_filter_strings_title">Penyaring khusus</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Daftar untaian pembuat jalur komponen untuk disaring dipisahkan oleh baris baru</string>
+  <string name="morphe_custom_filter_strings_summary">Daftar strings pembuat jalur komponen untuk disaring dipisahkan oleh baris baru</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Penyaring khusus tidak sah: %s</string>
   <string name="morphe_hide_view_count_title">Sembunyikan jumlah penayangan</string>
   <string name="morphe_hide_view_count_summary_on">Jumlah penayangan disembunyikan di feed dan hasil pencarian</string>

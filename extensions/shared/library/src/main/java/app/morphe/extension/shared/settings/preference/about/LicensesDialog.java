@@ -4,10 +4,14 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Insets;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowInsets;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -62,7 +66,7 @@ public class LicensesDialog extends Dialog {
     private WebView webView;
 
     public LicensesDialog(Context context) {
-        super(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        super(context, android.R.style.Theme_DeviceDefault_NoActionBar);
     }
 
     @Override
@@ -70,10 +74,19 @@ public class LicensesDialog extends Dialog {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        // Apply the background color to the navigation bar.
+        Window window = getWindow();
+        if (window != null) {
+            window.setNavigationBarColor(Utils.getAppBackgroundColor());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                window.setNavigationBarContrastEnforced(true);
+            }
+        }
+
         showList();
         setOnKeyListener((dialog, keyCode, event) -> {
-            if (keyCode == android.view.KeyEvent.KEYCODE_BACK
-                    && event.getAction() == android.view.KeyEvent.ACTION_UP
+            if (keyCode == KeyEvent.KEYCODE_BACK
+                    && event.getAction() == KeyEvent.ACTION_UP
                     && webView != null) {
                 webView = null;
                 showList();
@@ -98,11 +111,10 @@ public class LicensesDialog extends Dialog {
         listView.setOnItemClickListener((parent, view, position, id) ->
                 showDetail(dependencies.get(position)));
         setContentView(listView);
+        applyInsetsToContentView();
     }
 
     private void showDetail(License dep) {
-        setTitle(dep.name);
-
         webView = new WebView(getContext());
         webView.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -112,10 +124,39 @@ public class LicensesDialog extends Dialog {
         webView.loadDataWithBaseURL(null, loadingHtml(),
                 "text/html", "UTF-8", null);
         setContentView(webView);
+        applyInsetsToContentView();
 
         List<String> allUrls = new ArrayList<>(dep.noticeUrls);
         allUrls.addAll(dep.licenseUrls);
         fetchAllAndRender(allUrls);
+    }
+
+    /**
+     * Applies window insets to the content root view.
+     */
+    private void applyInsetsToContentView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return;
+
+        Window window = getWindow();
+        if (window == null) return;
+
+        ViewGroup rootView = (ViewGroup) window.getDecorView()
+                .findViewById(android.R.id.content)
+                .getParent();
+
+        rootView.setOnApplyWindowInsetsListener((v, insets) -> {
+            Insets statusInsets = insets.getInsets(WindowInsets.Type.statusBars());
+            Insets navInsets    = insets.getInsets(WindowInsets.Type.navigationBars());
+            Insets cutoutInsets = insets.getInsets(WindowInsets.Type.displayCutout());
+
+            v.setPadding(
+                    cutoutInsets.left,
+                    statusInsets.top,
+                    cutoutInsets.right,
+                    navInsets.bottom
+            );
+            return insets;
+        });
     }
 
     private void fetchAllAndRender(List<String> urls) {
@@ -172,7 +213,8 @@ public class LicensesDialog extends Dialog {
                 "       font-family:monospace;font-size:13px;line-height:1.6;}" +
                 "  h2{color:#D0BCFF;font-family:sans-serif;font-size:13px;word-break:break-all;" +
                 "     border-bottom:1px solid #49454F;padding-bottom:6px;margin-top:24px;}" +
-                "  pre{white-space:pre-wrap;word-break:break-word;margin:0;}" +
+                "  h2:first-of-type{margin-top:0;}" +
+                "  pre{white-space:pre;overflow-x:auto;word-break:normal;overflow-wrap:normal;margin:0;}" +
                 "  a{color:#80BCFF;}" +
                 "</style></head><body>" + body + "</body></html>";
     }

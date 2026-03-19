@@ -277,7 +277,7 @@ Thay đổi bao gồm:
   <string name="morphe_hide_channel_tab_summary_on">Bộ lọc thẻ kênh đã được bật</string>
   <string name="morphe_hide_channel_tab_summary_off">Bộ lọc tùy chỉnh đã tắt</string>
   <string name="morphe_hide_channel_tab_filter_strings_title">Cài đặt bộ lọc</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Nhập tên thẻ kênh mà bạn muốn lọc, một dòng mỗi thẻ</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Nhập tên thẻ kênh mà bạn muốn lọc, mỗi dòng một thẻ</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_community_button_title">Ẩn nút Cộng đồng</string>
   <string name="morphe_hide_community_button_summary_on">Nút Cộng đồng đã bị ẩn</string>
@@ -302,6 +302,16 @@ Thay đổi bao gồm:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Nút đăng ký được hiển thị</string>
   <string name="morphe_comments_screen_title">Bình luận</string>
   <string name="morphe_comments_screen_summary">Ẩn hoặc hiện các thành phần bình luận</string>
+  <string name="morphe_hide_comments_carousel_title">Bật bộ lọc bình luận</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Bộ lọc bình luận đã được bật</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Bộ lọc bình luận đã tắt</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Lưu ý
+
+• Hãy nhập chính xác tên mục (ví dụ như: Hỏi, Khuấy động video này, Nghe trên Youtube Music, v.v...).
+• Ẩn các mục cũng có thể khiến giao diện bị lỗi.
+• Nếu ẩn hết các mục, thì toàn bộ bình luận cũng ẩn theo."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Cài đặt bộ lọc</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Nhập tên mục mà bạn muốn lọc, mỗi dòng một mục</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ẩn tóm tắt cuộc trò chuyện do AI tạo</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tóm tắt cuộc trò chuyện do AI tạo đã bị ẩn</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Tóm tắt cuộc trò chuyện do AI tạo được hiển thị</string>

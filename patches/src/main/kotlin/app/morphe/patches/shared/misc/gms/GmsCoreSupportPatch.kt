@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
@@ -18,6 +28,7 @@ import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
 import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.returnEarly
@@ -64,7 +75,7 @@ fun gmsCoreSupportPatch(
 ) = bytecodePatch(
     name = "GmsCore support",
     description = "Allows the app to work without root by using a different package name when patched " +
-        "using a GmsCore instead of Google Play Services.",
+            "using a GmsCore instead of Google Play Services.",
 ) {
 
     dependsOn(
@@ -113,7 +124,7 @@ fun gmsCoreSupportPatch(
             in PERMISSIONS,
             in ACTIONS,
             in AUTHORITIES,
-            -> referencedString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)
+                -> referencedString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)
 
             // No vendor prefix for whatever reason...
             "subscribedfeeds" -> "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds"
@@ -148,7 +159,7 @@ fun gmsCoreSupportPatch(
             when (string) {
                 "$fromPackageName.SuggestionProvider",
                 "$fromPackageName.fileprovider",
-                -> string.replace(fromPackageName, toPackageName)
+                    -> string.replace(fromPackageName, toPackageName)
 
                 else -> null
             }
@@ -594,7 +605,8 @@ fun gmsCoreSupportResourcePatch(
                 intent = IntentPreference.Intent("", "org.microg.gms.ui.SettingsActivity") {
                     "$GMS_CORE_VENDOR_GROUP_ID.android.gms"
                 }
-            )
+            ),
+            SwitchPreference("morphe_gms_core_battery_optimization_dialog")
         )
 
         executeBlock()

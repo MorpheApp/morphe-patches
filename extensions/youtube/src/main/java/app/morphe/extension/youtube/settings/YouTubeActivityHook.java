@@ -7,7 +7,7 @@ import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
 
-import com.google.android.libraries.social.licenses.LicenseActivity;
+import com.google.android.gms.common.api.GoogleApiActivity.GoogleApiActivity;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -19,7 +19,7 @@ import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragmen
 import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
 
 /**
- * Hooks {@link LicenseActivity} to inject a custom {@link YouTubePreferenceFragment}
+ * Hooks {@link GoogleApiActivity} to inject a custom {@link YouTubePreferenceFragment}
  * with a toolbar and search functionality.
  */
 @SuppressWarnings("deprecation")

@@ -76,8 +76,8 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
-                        "yt_outline_person_radar_",
-                        "yt_outline_experimental_person_radar_"
+                        "yt_outline_person_",
+                        "yt_outline_experimental_person_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
@@ -92,11 +92,13 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO,
                         "yt_outline_arrow_repeat_1_",
-                        "yt_outline_experimental_repeat1_"
+                        "yt_outline_experimental_repeat1_",
+                        "yt_outline_experimental_play_circle"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
                         "volume_stable_",
+                        "yt_fill_experimental_stable_volume_",
                         "yt_outline_experimental_stable_volume_"
                 ),
                 new ByteArrayFilterGroup(
