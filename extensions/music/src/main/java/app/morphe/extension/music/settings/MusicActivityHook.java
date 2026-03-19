@@ -49,6 +49,7 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
 
+        // Prevent opening multiple settings activities if menu is double tapped quickly.
         long now = android.os.SystemClock.elapsedRealtime();
         if (now - lastLaunchTime < 500) {
             parentActivity.finish();
