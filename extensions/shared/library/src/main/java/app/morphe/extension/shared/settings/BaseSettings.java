@@ -30,7 +30,7 @@ public class BaseSettings {
     public static final StringSetting EXPERIMENTAL_APP_CONFIRMED = new StringSetting("morphe_experimental_app_target_confirmed", "", false, false);
 
     /** If the GmsCore battery optimization dialogs should be shown. */
-    public static final BooleanSetting GMS_CORE_BATTERY_OPTIMIZATION_DIALOG = new BooleanSetting("morphe_gms_core_battery_optimization_dialog", TRUE, "morphe_gms_core_battery_optimization_dialog_user_dialog_message");
+    public static final BooleanSetting GMS_CORE_BATTERY_OPTIMIZATION_DIALOG = new BooleanSetting("morphe_gms_core_battery_optimization_dialog", TRUE, true, "morphe_gms_core_battery_optimization_dialog_user_dialog_message");
 
     static {
         final long now = System.currentTimeMillis();
