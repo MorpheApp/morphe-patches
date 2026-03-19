@@ -19,7 +19,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -60,14 +59,10 @@ import app.morphe.extension.shared.ui.CustomDialog;
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private static class DebouncedListView extends ListView {
-        private long lastClick;
 
         public DebouncedListView(Context context) {
             super(context);
-
             setId(android.R.id.list); // Required so PreferenceFragment recognizes it.
-
-            // Match the default layout params
             setLayoutParams(new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
@@ -76,34 +71,24 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         @Override
         public boolean performItemClick(View view, int position, long id) {
-            final long now = SystemClock.elapsedRealtime();
-            if (now - lastClick < 500) {
+            if (Utils.isFastClick()) {
                 return true; // Ignore fast double click.
             }
-            lastClick = now;
-
             return super.performItemClick(view, position, id);
         }
     }
 
-    private static class DebouncedItemClickListener implements AdapterView.OnItemClickListener {
-        private final AdapterView.OnItemClickListener originalListener;
-        private long lastClick;
-
-        public DebouncedItemClickListener(AdapterView.OnItemClickListener originalListener) {
-            this.originalListener = originalListener;
-        }
+    private record DebouncedItemClickListener(
+            AdapterView.OnItemClickListener originalListener) implements AdapterView.OnItemClickListener {
 
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            final long now = SystemClock.elapsedRealtime();
-            if (now - lastClick < 500) {
-                return; // Ignore fast double click.
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (Utils.isFastClick()) {
+                    return; // Ignore fast double click.
+                }
+                originalListener.onItemClick(parent, view, position, id);
             }
-            lastClick = now;
-            originalListener.onItemClick(parent, view, position, id);
         }
-    }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {

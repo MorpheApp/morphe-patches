@@ -41,8 +41,6 @@ public class MusicActivityHook extends BaseActivityHook {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);
     }
 
-    private static long lastLaunchTime = 0;
-
     /**
      * Injection point.
      */
@@ -50,12 +48,10 @@ public class MusicActivityHook extends BaseActivityHook {
     public static void initialize(Activity parentActivity) {
 
         // Prevent opening multiple settings activities if menu is double tapped quickly.
-        long now = android.os.SystemClock.elapsedRealtime();
-        if (now - lastLaunchTime < 500) {
+        if (Utils.isFastClick()) {
             parentActivity.finish();
             return;
         }
-        lastLaunchTime = now;
 
         // Must touch the Music settings to ensure the settings class is loaded and
         // the values can be found when setting the UI preferences.

@@ -145,7 +145,11 @@ public class Utils {
         if (applicationLabel == null) {
             try {
                 ApplicationInfo applicationInfo = getPackageInfo().applicationInfo;
-                applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
+                if (applicationInfo != null) {
+                    applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
+                } else {
+                    applicationLabel = "Unknown";
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to get application name", ex);
                 applicationLabel = "Unknown";
@@ -746,6 +750,20 @@ public class Utils {
         if (isCurrentlyOnMainThread()) {
             throw new IllegalStateException("Must call _off_ the main thread");
         }
+    }
+
+    private static long lastClickTime = 0;
+
+    /**
+     * @return true if the action occurred within 500ms of the last recorded action.
+     */
+    public static boolean isFastClick() {
+        long now = android.os.SystemClock.elapsedRealtime();
+        if (now - lastClickTime < 500) {
+            return true; // Ignore fast double click.
+        }
+        lastClickTime = now;
+        return false;
     }
 
     public static void openLink(String url) {
