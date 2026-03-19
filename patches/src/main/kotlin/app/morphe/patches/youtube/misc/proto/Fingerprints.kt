@@ -19,12 +19,15 @@ import com.android.tools.smali.dexlib2.Opcode
  * Resolves using the method found in [ProtoStuffReflectionFingerprint].
  */
 internal object NewElementProtoParserFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC),
     parameters = listOf("L"),
     returnType = "[B",
     filters = listOf(
         checkCast("[B")
-    )
+    ),
+    custom = { method, _ ->
+        // 'static' or 'public static'
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object ProtoStuffReflectionFingerprint : Fingerprint(
