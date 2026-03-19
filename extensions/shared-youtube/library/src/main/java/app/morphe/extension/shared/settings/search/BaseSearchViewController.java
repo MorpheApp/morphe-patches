@@ -561,7 +561,7 @@ public abstract class BaseSearchViewController {
         isSearchActive = true;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback == null) {
-            nativeBackCallback = PredictiveBackHandler.register(activity, this::closeSearch);
+            nativeBackCallback = PredictiveBackHandler.register(activity, this::handleBackPress);
         }
 
         toolbar.getMenu().findItem(ID_ACTION_SEARCH).setVisible(false);
@@ -703,6 +703,31 @@ public abstract class BaseSearchViewController {
         background.setCornerRadius(Dim.dp28);
         background.setColor(getSearchViewBackground());
         return background;
+    }
+
+    /**
+     * Handles the back press logic intelligently.
+     * If the keyboard is open, it hides the keyboard. Otherwise, it closes the search.
+     *
+     * @return true if the back press was handled.
+     */
+    public boolean handleBackPress() {
+        if (!isSearchActive) return false;
+
+        boolean isKeyboardVisible = false;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            android.view.WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
+            if (insets != null) {
+                isKeyboardVisible = insets.isVisible(android.view.WindowInsets.Type.ime());
+            }
+        }
+
+        if (isKeyboardVisible) {
+            inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+        } else {
+            closeSearch();
+        }
+        return true;
     }
 
     /**
