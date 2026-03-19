@@ -103,7 +103,13 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @Override
     protected View.OnClickListener getNavigationClickListener(Activity activity) {
-        return null;
+        return view -> {
+            if (searchViewController != null && searchViewController.isSearchActive()) {
+                searchViewController.handleBackPress();
+            } else {
+                activity.finish();
+            }
+        };
     }
 
     /**
@@ -146,9 +152,9 @@ public class YouTubeActivityHook extends BaseActivityHook {
             return false;
         }
 
-        // On the first launch of a clean install, forcing the cairo menu can give a
+        // On the first launch of a clean install, forcing the Cairo menu can give a
         // half broken appearance because all the preference icons may not be available yet.
-        // 19.34+ cairo settings are always on, so it doesn't need to be forced anyway.
+        // 19.34+ Cairo settings are always on, so it doesn't need to be forced anyway.
         // Cairo setting will show on the next launch of the app.
         return original;
     }
@@ -176,7 +182,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
      * @return if the original activity finish method should be allowed to run.
      */
     @SuppressWarnings("unused")
-    public static boolean handleFinish(YouTubeSearchViewController searchViewController) {
+    public static boolean handleBackPress() {
         if (searchViewController != null && searchViewController.isSearchActive()) {
             return searchViewController.handleBackPress();
         }

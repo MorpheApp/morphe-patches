@@ -136,6 +136,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Nullable
     protected static CharSequence restartDialogTitle, restartDialogMessage, restartDialogButtonText, confirmDialogTitle;
 
+    private android.content.ComponentCallbacks2 configurationListener;
+    private int currentUiMode = -1;
     private static final int READ_REQUEST_CODE = 42;
     private static final int WRITE_REQUEST_CODE = 43;
     private String existingSettings = "";
@@ -520,9 +522,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private EditText getEditText(Context context) {
         EditText editText = new EditText(context);
         editText.setText(existingSettings);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            editText.setAutofillHints((String) null);
-        }
+        editText.setAutofillHints((String) null);
         editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
                 android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
                 android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
@@ -645,14 +645,42 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentUiMode = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
         instance = this;
+
+        configurationListener = new android.content.ComponentCallbacks2() {
+            @SuppressLint("ChromeOsOnConfigurationChanged")
+            @Override
+            public void onConfigurationChanged(@NonNull android.content.res.Configuration newConfig) {
+                int newUiMode = newConfig.uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+                if (currentUiMode != -1 && newUiMode != currentUiMode) {
+                    currentUiMode = newUiMode;
+                    Utils.setIsDarkModeEnabled(newUiMode == android.content.res.Configuration.UI_MODE_NIGHT_YES);
+
+                    Activity activity = getActivity();
+                    if (activity != null) {
+                        Intent intent = activity.getIntent();
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        activity.finish();
+                        activity.overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        activity.overridePendingTransition(0, 0);
+                    }
+                }
+            }
+
+            @Override
+            public void onLowMemory() {}
+
+            @Override
+            public void onTrimMemory(int level) {}
+        };
+        getActivity().getApplicationContext().registerComponentCallbacks(configurationListener);
+
         try {
             PreferenceManager preferenceManager = getPreferenceManager();
             preferenceManager.setSharedPreferencesName(Setting.preferences.name);
 
-            // Must initialize before adding change listener,
-            // otherwise the syncing of Setting -> UI
-            // causes a callback to the listener even though nothing changed.
             initialize();
             updateUIToSettingValues();
 
@@ -666,6 +694,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void onDestroy() {
         if (instance == this) {
             instance = null;
+        }
+        if (configurationListener != null && getActivity() != null) {
+            getActivity().getApplicationContext().unregisterComponentCallbacks(configurationListener);
         }
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(listener);
         super.onDestroy();
