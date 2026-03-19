@@ -55,21 +55,22 @@ import app.morphe.extension.shared.ui.Dim;
  */
 @SuppressWarnings("deprecation")
 public abstract class BaseSearchViewController {
-    protected SearchView searchView;
-    protected FrameLayout searchContainer;
-    protected FrameLayout overlayContainer;
-    protected final Toolbar toolbar;
+    protected BaseSearchResultsAdapter searchResultsAdapter;
+    protected boolean isSearchActive;
+    protected boolean isShowingSearchHistory;
     protected final Activity activity;
     protected final BasePreferenceFragment fragment;
     protected final CharSequence originalTitle;
-    protected BaseSearchResultsAdapter searchResultsAdapter;
+    protected final InputMethodManager inputMethodManager;
     protected final List<BaseSearchResultItem> allSearchItems;
     protected final List<BaseSearchResultItem> filteredSearchItems;
     protected final Map<String, BaseSearchResultItem> keyToSearchItem;
-    protected final InputMethodManager inputMethodManager;
+    protected final Toolbar toolbar;
+    protected FrameLayout overlayContainer;
+    protected FrameLayout searchContainer;
+    protected Object nativeBackCallback;
     protected SearchHistoryManager searchHistoryManager;
-    protected boolean isSearchActive;
-    protected boolean isShowingSearchHistory;
+    protected SearchView searchView;
 
     protected static final int MAX_SEARCH_RESULTS = 50; // Maximum number of search results displayed.
 
@@ -523,9 +524,7 @@ public abstract class BaseSearchViewController {
 
         if (!filteredSearchItems.isEmpty()) {
             //noinspection ComparatorCombinators
-            Collections.sort(filteredSearchItems, (o1, o2) ->
-                    o1.navigationPath.compareTo(o2.navigationPath)
-            );
+            filteredSearchItems.sort((o1, o2) -> o1.navigationPath.compareTo(o2.navigationPath));
             List<BaseSearchResultItem> displayItems = new ArrayList<>();
             String currentPath = null;
             for (BaseSearchResultItem item : filteredSearchItems) {
@@ -560,6 +559,11 @@ public abstract class BaseSearchViewController {
      */
     protected void openSearch() {
         isSearchActive = true;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback == null) {
+            nativeBackCallback = PredictiveBackHandler.register(activity, this::closeSearch);
+        }
+
         toolbar.getMenu().findItem(ID_ACTION_SEARCH).setVisible(false);
         toolbar.setTitle("");
         searchContainer.setVisibility(View.VISIBLE);
@@ -579,6 +583,11 @@ public abstract class BaseSearchViewController {
     public void closeSearch() {
         isSearchActive = false;
         isShowingSearchHistory = false;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback != null) {
+            PredictiveBackHandler.unregister(activity, nativeBackCallback);
+            nativeBackCallback = null;
+        }
 
         searchHistoryManager.hideSearchHistoryContainer();
         overlayContainer.setVisibility(View.GONE);
@@ -701,5 +710,23 @@ public abstract class BaseSearchViewController {
      */
     public boolean isSearchActive() {
         return isSearchActive;
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private static class PredictiveBackHandler {
+        static Object register(Activity activity, Runnable onBackAction) {
+            android.window.OnBackInvokedCallback callback = onBackAction::run;
+            activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                    android.window.OnBackInvokedDispatcher.PRIORITY_OVERLAY,
+                    callback
+            );
+            return callback;
+        }
+
+        static void unregister(Activity activity, Object callbackObj) {
+            if (callbackObj instanceof android.window.OnBackInvokedCallback callback) {
+                activity.getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(callback);
+            }
+        }
     }
 }
