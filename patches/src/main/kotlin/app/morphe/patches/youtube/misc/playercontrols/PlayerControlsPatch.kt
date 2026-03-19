@@ -25,6 +25,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.copyXmlNode
@@ -36,6 +37,7 @@ import app.morphe.util.returnEarly
 import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Node
 import java.lang.ref.WeakReference
 
@@ -341,17 +343,37 @@ val playerControlsPatch = bytecodePatch(
 
             if (is_20_28_or_greater) {
                 PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint.method.returnLate(false)
-            }
 
-            if (is_20_30_or_greater) {
-                PlayerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
-            }
-        }
+                if (is_20_30_or_greater) {
+                    PlayerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
 
-        if (is_21_03_or_greater) {
-            // If enabled it can show a black gradient on lower part of screen in fullscreen mode.
-            // This override may not be needed if the new bold player overlay icons are in use.
-            PlayerOverlayOpacityGradientFeatureFlagFingerprint.method.returnLate(false)
+                    if (is_20_40_or_greater) {
+                        // Clear bottom gradient.
+                        // This may not be needed if the new bold player overlay icons are in use.
+                        PlayerBottomGradientScrimFingerprint.let {
+                            it.method.apply {
+                                val gradientHelperIndex = it.instructionMatches.last().index
+                                val gradientHelperRegister =
+                                    getInstruction<TwoRegisterInstruction>(gradientHelperIndex).registerA
+
+                                val gradientViewIndex = it.instructionMatches[1].index
+                                val gradientViewRegister =
+                                    getInstruction<OneRegisterInstruction>(gradientViewIndex).registerA
+
+                                addInstruction(
+                                    gradientHelperIndex,
+                                    "const/4 v$gradientHelperRegister, 0x0"
+                                )
+                                addInstruction(
+                                    gradientViewIndex + 1,
+                                    "invoke-static { v$gradientViewRegister }, " +
+                                            "$EXTENSION_CLASS_DESCRIPTOR->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
+                                )
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

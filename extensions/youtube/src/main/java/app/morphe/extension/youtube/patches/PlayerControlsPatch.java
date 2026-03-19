@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class PlayerControlsPatch {
@@ -15,6 +16,18 @@ public class PlayerControlsPatch {
 
     private static boolean fullscreenButtonVisibilityCallbacksExist() {
         return false; // Modified during patching if needed.
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideBottomGradientScrim(ImageView bottomGradientScrim) {
+        if (bottomGradientScrim != null) {
+            Utils.runOnMainThread(() -> {
+                bottomGradientScrim.setImageAlpha(0);
+                bottomGradientScrim.setVisibility(View.GONE);
+            });
+        }
     }
 
     /**

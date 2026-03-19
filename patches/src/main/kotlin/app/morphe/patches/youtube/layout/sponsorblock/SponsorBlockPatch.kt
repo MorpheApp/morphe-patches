@@ -234,8 +234,8 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Initialize the SponsorBlock view.
         ControlsOverlayFingerprint.match(LayoutConstructorFingerprint.originalClassDef).let {
-            val checkCastIndex = it.instructionMatches.last().index
             it.method.apply {
+                val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
                 addInstruction(
                     checkCastIndex + 1,
