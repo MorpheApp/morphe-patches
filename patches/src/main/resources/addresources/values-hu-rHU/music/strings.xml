@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Minilejátszó színének módosítása</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">A minilejátszó színe megegyezik a teljes képernyős lejátszóéval</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">A minilejátszó alapértelmezett színt használ</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Mutasd a következő gombot a miniplayeren</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">A következő gomb megjelenik a miniplayeren</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">A következő gomb nem jelenik meg a miniplayeren</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Mutasd az előző gombot a miniplayeren</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Az előző gomb látható a miniplayeren</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Az előző gomb nem látható a miniplayeren</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Engedélyezze a kényszerített miniállítópanelet</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">A miniállítópaneel lerövidülten marad, amikor a lejátszás változik</string>

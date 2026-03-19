@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Miniplayer-Farbe ändern</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer-Farbe entspricht dem Vollbild-Player</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer verwendet Standardfarbe</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Nächster Button im Miniplayer anzeigen</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Der Nächster Button wird im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Der Nächster Button wird nicht im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Vorherige Schaltfläche im Miniplayer anzeigen</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Die vorherige Schaltfläche wird im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Die vorherige Schaltfläche wird nicht im Miniplayer angezeigt</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Miniplayer erzwingen aktivieren</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer bleibt minimiert, wenn die Wiedergabe wechselt</string>

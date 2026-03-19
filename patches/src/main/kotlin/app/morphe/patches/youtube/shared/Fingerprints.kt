@@ -52,7 +52,6 @@ internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
 )
 
 internal object EngagementPanelControllerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L", "L", "Z", "Z"),
     filters = listOf(

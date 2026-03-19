@@ -60,6 +60,12 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
   <string name="morphe_pref_import_export_title">Uvoz / Izvoz</string>
   <string name="morphe_pref_import_export_summary">Uvoz / Izvoz Morphe postavki</string>
+  <string name="morphe_settings_import_file">Uvezi iz datoteke</string>
+  <string name="morphe_settings_import_file_success">Postavke su uspješno uvezene, dodirnite Spremi za primjenu</string>
+  <string name="morphe_settings_import_file_failed">Uvoz postavki nije uspio</string>
+  <string name="morphe_settings_export_file">Izvezi u datoteku</string>
+  <string name="morphe_settings_export_file_success">Postavke su uspješno izvezene</string>
+  <string name="morphe_settings_export_file_failed">Izvoz postavki nije uspio</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Koristite najnoviju verziju Morphe Patcheva &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Koristite verziju Morphe Patcheva &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupno ažuriranje: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Za ažuriranje patcheva, koristite Morphe za ponovno patchanje ove aplikacije</string>
@@ -69,6 +75,15 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_settings_about_links_website">Web stranica</string>
   <string name="morphe_settings_about_links_donate">Donirajte</string>
   <string name="morphe_settings_about_links_translations">Prijevod</string>
+  <string name="morphe_settings_about_links_credits">Zasluge</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Ažurno</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Dostupno ažuriranje</string>
+  <string name="morphe_settings_about_contributors_current">Trenutni razvoj</string>
+  <string name="morphe_settings_about_contributors_prior">Prijašnji razvoj</string>
+  <string name="morphe_settings_about_links_morphe">Aktivni razvoj</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje pogrešaka</string>
   <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije otklanjanja pogrešaka</string>

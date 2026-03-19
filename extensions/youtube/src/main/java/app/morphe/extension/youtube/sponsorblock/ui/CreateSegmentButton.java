@@ -32,7 +32,7 @@ public class CreateSegmentButton {
     /**
      * injection point.
      */
-    public static void initialize(View controlsView) {
+    public static void initializeButton(View controlsView) {
         try {
             instance = new PlayerControlButton(
                     controlsView,
@@ -43,15 +43,15 @@ public class CreateSegmentButton {
                     null
             );
 
-            // FIXME: Bold YT player icons are currently forced off.
-            //        Enable this logic when the new player icons are not forced off.
-            ImageView icon = Utils.getChildViewByResourceName(controlsView,
-                    "morphe_sb_create_segment_button");
             if (false) {
+                // FIXME: Bold YT player icons are currently forced off.
+                //        Enable this logic when the new player icons are not forced off.
+                ImageView icon = Utils.getChildViewByResourceName(controlsView,
+                        "morphe_sb_create_segment_button");
                 icon.setImageResource(DRAWABLE_SB_LOGO);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "initialize failure", ex);
+            Logger.printException(() -> "initializeButton failure", ex);
         }
     }
 

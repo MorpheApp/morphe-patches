@@ -845,9 +845,9 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_seekbar_summary_on">A videólejátszó folyamatsávja el van rejtve</string>
   <string name="morphe_hide_seekbar_summary_off">A videólejátszó folyamatsávja megjelenik</string>
   <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
-  <string name="morphe_hide_seekbar_thumbnail_title">Videó miniatűrök keresősávjának elrejtése</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary_on">A videó miniatűrök keresősávja elrejtve</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary_off">A videó miniatűrök keresősávja megjelenítve</string>
+  <string name="morphe_hide_seekbar_thumbnail_title">Keresősáv elrejtése a videó indexképén</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary_on">A keresősáv az indexképeken rejtve van</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary_off">A keresősáv megjelenik az indexképeken</string>
   <string name="morphe_fullscreen_large_seekbar_title">Teljes képernyős, nagy méretű keresősáv engedélyezése</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">Teljes képernyős keresősáv nagy méretben</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">Teljes képernyős keresősáv normál méretben</string>
@@ -1456,8 +1456,8 @@ Ez a beállítás megoldhatja a hiányzó képek problémáját, amelyek blokkol
   <string name="morphe_alt_thumbnail_library_title">Te lap</string>
   <string name="morphe_alt_thumbnail_player_title">Lejátszó lejátszási listák &amp; ajánlások</string>
   <string name="morphe_alt_thumbnail_search_title">Keresési eredmények</string>
-  <string name="morphe_alt_thumbnail_options_entry_1">Eredeti miniatűrök</string>
-  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Eredeti bélyegképek</string>
+  <string name="morphe_alt_thumbnail_options_entry_1">Eredeti indexképek</string>
+  <string name="morphe_alt_thumbnail_options_entry_2">DeArrow és eredeti indexképek</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Állóképek</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Pillanatképek</string>
   <string name="morphe_alt_thumbnail_dearrow_about_summary">"A DeArrow tömegforrásból származó miniatűr képeket biztosít a YouTube-videókhoz. Ezek a miniatűr képek gyakran relevánsabbak, mint a YouTube által biztosítottak

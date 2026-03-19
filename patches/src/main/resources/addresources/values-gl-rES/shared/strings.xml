@@ -17,11 +17,81 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Axustes</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Está seguro de querer continuar?</string>
+  <string name="morphe_settings_save">Gardar</string>
+  <string name="morphe_settings_reset">Restablecer</string>
+  <string name="morphe_settings_reset_color">Restablecer cor</string>
+  <string name="morphe_settings_color_invalid">Cor non válida</string>
+  <string name="morphe_settings_restart_title">Reinicio necesario</string>
+  <string name="morphe_settings_restart_dialog_message">Reinicie a aplicación para que o cambio teña efecto</string>
+  <string name="morphe_settings_restart">Reiniciar</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Importar</string>
+  <string name="morphe_settings_import_copy">Copiar</string>
+  <string name="morphe_settings_import_reset">As configuracións de Morphe se restablecerán os valores predeterminados</string>
+  <string name="morphe_settings_import_success">Configuracións %d importadas</string>
+  <string name="morphe_settings_import_failure_parse">Importación falida: %s</string>
+  <string name="morphe_settings_search_hint">Buscar axustes</string>
+  <string name="morphe_settings_search_no_results_title">Sen resultados para \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Probe outra palabra clave</string>
+  <string name="morphe_settings_search_recent_searches">Buscas recentes</string>
+  <string name="morphe_settings_search_remove_message">Eliminar do historial de busca?</string>
+  <string name="morphe_settings_search_clear_history">Limpar historial de busca</string>
+  <string name="morphe_settings_search_clear_history_message">Está seguro de querer limpar todo o historial de busca?</string>
+  <string name="morphe_settings_search_tips_title">Consellos de busca</string>
+  <string name="morphe_settings_search_tips_summary">"• Toque nunha dirección para navegar ata ela
+• Manteña pulsado un axuste para navegar ata el
+• Prema Intro para gardar unha busca no historial
+• As buscas ignoran maiúsculas e signos de puntuación
+• Os axustes pais aparecen por riba dos axustes fillos desactivados"</string>
+  <string name="morphe_settings_search_empty_history_title">O historial de buscas está baleiro</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_dev_header">Nota</string>
+  <string name="morphe_settings_about_links_dev_body">Esta é una versión preliminar e podería experimentar problemas inesperados</string>
+  <string name="morphe_settings_about_links_header">Ligazóns oficiais</string>
+  <string name="morphe_settings_about_links_website">Sitio web</string>
+  <string name="morphe_settings_about_links_donate">Doar</string>
+  <string name="morphe_settings_about_links_translations">Traducións</string>
+  <string name="morphe_settings_about_links_credits">Créditos</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Ao día</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Actualización dispoñible</string>
+  <string name="morphe_settings_about_contributors_current">Desenvolvemento actual</string>
+  <string name="morphe_settings_about_contributors_prior">Desenvolvemento previo</string>
+  <string name="morphe_settings_about_links_morphe">Desenvolvemento activo</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Depuración</string>
+  <string name="morphe_debug_screen_summary">Activar ou desactivar as opcións de depuración</string>
+  <string name="morphe_debug_title">Rexistro de depuración</string>
+  <string name="morphe_debug_summary_on">Os rexistros de depuración están activados</string>
+  <string name="morphe_debug_summary_off">Os rexistros de depuración están desactivados</string>
+  <string name="morphe_debug_stacktrace_title">Pila de rexistros</string>
+  <string name="morphe_debug_stacktrace_summary_on">Os rexistros de depuración inclúen rastrexamento en pila</string>
+  <string name="morphe_debug_stacktrace_summary_off">Os rexistros de depuración non inclúen rastrexamento en pila</string>
+  <string name="morphe_debug_toast_on_error_title">Mostrar mensaxe toast en caso de erro de Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">A mensaxe toast mostraráse en caso de erro</string>
+  <string name="morphe_debug_toast_on_error_summary_off">A mensaxe toast non se mostrará en caso de erro</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar as mensaxes toast en caso de erro ocultará tódalas notificacións de erros de Morphe.
+
+Non se lle notificará de ningún evento inesperado."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar rexistros de depuración</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia os rexistros de depuración de morphe ao portapapeis</string>
+  <string name="morphe_debug_logs_disabled">O rexistro de depuración está desactivado</string>
+  <string name="morphe_debug_logs_none_found">Non se atoparon rexistros</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Rexistros copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Fallo ao exportar rexistros: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Limpar rexistros de depuración</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Limpar tódolos rexistros de depuración de Morphe almacenados</string>
+  <string name="morphe_debug_logs_clear_toast">Rexistros borrados</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG non está instalado. Instáleo.</string>
+  <string name="gms_core_dialog_title">Acción necesaria</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_open_website_text">Abrir sitio web</string>
+  <string name="gms_core_dialog_continue_text">Continuar</string>
 </resources>

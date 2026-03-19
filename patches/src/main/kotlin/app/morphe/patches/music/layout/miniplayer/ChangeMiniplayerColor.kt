@@ -42,19 +42,11 @@ val changeMiniplayerColor = bytecodePatch(
         )
 
         SwitchToggleColorFingerprint.match(MiniPlayerConstructorFingerprint.classDef).let {
-            val relativeIndex = it.instructionMatches.last().index + 1
+            val colorMathPlayerInvokeVirtualReference = it.instructionMatches.last()
+                .getInstruction<ReferenceInstruction>().reference
 
-            val invokeVirtualIndex = it.method.indexOfFirstInstructionOrThrow(
-                relativeIndex, Opcode.INVOKE_VIRTUAL
-            )
-            val colorMathPlayerInvokeVirtualReference = it.method
-                .getInstruction<ReferenceInstruction>(invokeVirtualIndex).reference
-
-            val iGetIndex = it.method.indexOfFirstInstructionOrThrow(
-                relativeIndex, Opcode.IGET
-            )
-            val colorMathPlayerIGetReference = it.method
-                .getInstruction<ReferenceInstruction>(iGetIndex).reference as FieldReference
+            val colorMathPlayerIGetReference = it.instructionMatches[3]
+                .getInstruction<ReferenceInstruction>().reference  as FieldReference
 
             val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
                 getReference<MethodReference>()?.name == "getColor"

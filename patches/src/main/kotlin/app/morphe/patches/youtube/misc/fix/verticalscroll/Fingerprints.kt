@@ -6,7 +6,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object CanScrollVerticallyFingerprint : Fingerprint(
-    definingClass = "/SwipeRefreshLayout;",
+    definingClass = "Landroidx/swiperefreshlayout/widget/SwipeRefreshLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

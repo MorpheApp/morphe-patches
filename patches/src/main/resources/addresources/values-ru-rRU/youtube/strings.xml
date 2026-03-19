@@ -303,6 +303,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Кнопка \"Подписаться\" в Shorts показана</string>
   <string name="morphe_comments_screen_title">Комментарии</string>
   <string name="morphe_comments_screen_summary">Скрыть или показать компоненты раздела комментариев</string>
+  <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Фильтр карусели комментариев включен</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Фильтр карусели комментариев выключен</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Примечание
+
+• Введите точное название элемента карусели (например, Спросить, Разрекламировать это видео, Слушать на YouTube Music и т.д.).
+• Скрытие элементов карусели может иметь нежелательные побочные эффекты.
+• Если все элементы карусели скрыты, весь раздел комментариев также будет скрыт."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите названия карусели комментариев для фильтрации, по одному на строчку</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Секция ИИ сводки чата скрыта</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Секция ИИ сводки чата показана</string>

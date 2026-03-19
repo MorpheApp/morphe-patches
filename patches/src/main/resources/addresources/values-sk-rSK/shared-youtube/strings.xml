@@ -17,21 +17,114 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Reštartujte aplikáciu, aby sa dokončila konfigurácia</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Názov aplikácie</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">Vlastný</string>
+  <string name="morphe_custom_branding_icon_title">Ikona aplikácie</string>
+  <string name="morphe_custom_branding_icon_entry_1">Pôvodná</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe čierna</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe tmavá</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe svetlá</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">Vlastná</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentálna výstraha 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Používate experimentálnu verziu aplikácie ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Očakávajte zvláštne správanie aplikácie alebo neidentifikované chyby, keďže ešte dolaďujeme záplaty pre túto verziu aplikácie.
+&lt;br/&gt;&lt;br/&gt;
+Ak sa chcete vyvarovať zbytočným problémom, potom toto radšej &lt;b&gt;odinštalujte&lt;/b&gt; a zaplátajte odporúčanú verziu aplikácie ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcem experimentálnu verziu</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcem stabilnú verziu</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornenie Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša história sledovania sa neukladá.&lt;br&gt;&lt;br&gt;Toto je s najväčšou pravdepodobnosťou spôsobené DNS blokovačom reklám alebo sieťovým proxy.&lt;br&gt;&lt;br&gt;Ak to chcete vyriešiť, pridajte &lt;b&gt;s.youtube.com&lt;/b&gt; do whitelistu alebo vypnite všetky DNS blokovače a proxy servery.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Už nezobrazovať</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Falšovanie toku videa</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Falšovanie toku videa v klientovi pomáha predchádzať problémom s prehrávaním</string>
+  <string name="morphe_spoof_video_streams_title">Falšovať tok videa</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Toky videa sú falšované
+
+Ak máte aktívne YouTube Premium, toto nastavenie nemusí byť potrebné"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Toky videa nie sú falšované
+
+Prehrávanie nemusí správne fungovať"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Nebolo možné načítať žiadne toky klientov</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutie tohto nastavenia môže spôsobiť problémy s prehrávaním.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Skúste povoliť: Falšovanie toku videa &gt; Prihlásenie do Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Predvolený klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prihlásenie Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie ste prihlásený do Android VR. Klepnite sem pre prihlásenie</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Aktuálne prihlásené do Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Na používanie tejto funkcie zmeňte \'Predvolený klient\' na Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prihláste sa do Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prihlásenie do Android VR môže niektorým používateľom pomôcť pri problémoch s prehrávaním.
+
+Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Pokračovať</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásiť sa</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Pokyny</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivačný kód: %s
+
+1. Ťuknite na 'Otvoriť webstránku' nižšie, aby ste otvorili webstránku 'Pripojiť zariadenie'
+2. Skopírujte zo schránky (alebo zadajte) aktivačný kód uvedený vyššie
+3. Ak budete vyzvaní prihláste sa do Google. Ak máte viacero účtov, vyberte tento účet YouTube
+4. Ťuknite na 'Povoliť YouTube VR' aby ste udelili prístup
+5. Vráťte sa do tejto aplikácie po zobrazení správy 'Zariadenie pripojené'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otvoriť webstránku</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nepodarilo sa vydať aktivačný kód</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nepodarilo sa vydať overovací token</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Prihlásenie úspešné</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Overenie uložené
+
+• Nastavenia Morphe nebudú importovať/exportovať overenie pre Android VR
+• Po 6 mesiacoch od posledného použitia tejto aplikácie Google odstráni toto overenie
+• Budete sa musieť znova prihlásiť, ak zmeníte svoje heslo Google alebo zrušíte registráciu tohto zariadenia v nastaveniach Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je dočasne nedostupné (časový limit API vypršal)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Vypršala platnosť prihlásenia Android VR, skúste sa znova prihlásiť do VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 je dočasne nedostupné (stav %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 je dočasne nedostupné</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nie je možné prihlásiť sa do VR, overenie na webovej lokalite nebolo schválené</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nie je možné prihlásiť sa do VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Odhlásené z Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Neplatný token prihlásenia VR, skúste sa znova prihlásiť do VR</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Vypnúť aktualizáciu JavaScriptu prehrávača</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Aktualizácia JavaScriptu prehrávača je vypnutá
+
+• Vyžaduje sa platný hash JavaScriptu prehrávača
+• Prehrávanie zlyhá, ak je hash JavaScriptu prehrávača zamietnutý v GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Aktualizácia JavaScriptu prehrávača je povolená</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashe JavaScriptu prehrávača sú platné približne jeden mesiac a zastarané hashe môžu byť zrušené GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScriptu prehrávača</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_summary">Zadajte platný hash JavaScriptu prehrávača</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Zakázať protokol QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je zakázaný</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC je povolený</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Zakázať zvuk DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Zvuk DRC je zakázaný</string>
+  <string name="morphe_disable_drc_audio_summary_off">Zvuk DRC je povolený</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Vynútiť pôvodný jazyk zvukovej stopy</string>
+  <string name="morphe_force_original_audio_summary_on">Používa sa pôvodný jazyk zvukovej stopy</string>
+  <string name="morphe_force_original_audio_summary_off">Používa sa predvolená zvuková stopa</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Na používanie tejto funkcie zmeňte \'Falšovanie toku videa\' na Android Reel alebo TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Vyčistiť odkazy na zdieľanie</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parameter sledovania je odstránený zo zdieľaných odkazov</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parameter sledovania nie je odstránený zo zdieľaných odkazov</string>
+  <string name="morphe_replace_music_with_youtube_title">Zmeniť odkazy na zdieľanie na youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Zdieľané odkazy používajú youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Zdieľané odkazy používajú music.youtube.com</string>
 </resources>

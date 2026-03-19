@@ -22,6 +22,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
@@ -43,6 +44,8 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
+import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -132,6 +135,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         resourceMappingPatch,
         hideHorizontalShelvesPatch,
         hideUpdateScreenPatch,
+        elementProtoParserHookPatch,
+        fixProtoLibraryPatch,
         lazilyConvertedElementHookPatch
     )
 
@@ -173,6 +178,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 "morphe_comments_screen",
                 preferences = setOf(
+                    PreferenceCategory(
+                        titleKey = null,
+                        sorting = Sorting.UNSORTED,
+                        tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                        preferences = setOf(
+                            SwitchPreference("morphe_hide_comments_carousel"),
+                            TextPreference(
+                                "morphe_hide_comments_carousel_filter_strings",
+                                inputType = InputType.TEXT_MULTI_LINE
+                            ),
+                        )
+                    ),
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
                     SwitchPreference("morphe_hide_comments_prompts"),
@@ -503,6 +520,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
             }
         }
+
+        // endregion
+
+        // region hide comment page
+
+        hookElement("$COMMENTS_FILTER_CLASS_NAME->onCommentsLoaded([B)[B")
 
         // endregion
 

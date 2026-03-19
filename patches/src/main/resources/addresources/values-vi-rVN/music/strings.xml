@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Đổi màu trình phát thu nhỏ</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Màu trình phát thu nhỏ khớp với trình phát toàn màn hình</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Trình phát thu nhỏ dùng màu mặc định</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Hiện nút tiếp theo trong trình phát thu nhỏ</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Nút tiếp theo được hiển thị trong trình phát thu nhỏ</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Nút tiếp theo không được hiển thị trong trình phát thu nhỏ</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Hiện nút quay lại trong trình phát thu nhỏ</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Nút quay lại được hiển thị trong trình phát thu nhỏ</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Nút quay lại không được hiển thị trong trình phát thu nhỏ</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Bật trình phát thu nhỏ bắt buộc</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Trình phát thu nhỏ vẫn ở trạng thái thu nhỏ khi bạn thay đổi video nhạc</string>

@@ -10,6 +10,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.shared.Utils.getFilterStrings;
 import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
@@ -25,13 +26,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
@@ -50,26 +49,8 @@ public final class LayoutComponentsFilter extends Filter {
             "&list="
     );
 
-    private static final List<String> channelTabFilterStrings;
-    private static final List<String> flyoutMenuFilterStrings;
-    static {
-        channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
-        flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
-    }
-
-    private static List<String> getFilterStrings(StringSetting setting) {
-        String[] filterArray = setting.get().split("\\n");
-        List<String> filters = new ArrayList<>(filterArray.length);
-
-        for (String line : filterArray) {
-            String trimmed = line.trim();
-            if (!trimmed.isEmpty()) {
-                filters.add(trimmed);
-            }
-        }
-
-        return filters;
-    }
+    private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
+    private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;

@@ -69,10 +69,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Ubah warna pemutar mini</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Warna pemutar mini sesuai dengan pemutar layar penuh</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Pemutar mini menggunakan warna standar</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Tampilkan tombol berikutnya di pemutar mini</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Tombol berikutnya ditampilkan di pemutar mini</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Tombol berikutnya tidak ditampilkan di pemutar mini</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Tampilkan tombol sebelumnya di pemutar mini</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Tombol sebelumnya ditampilkan di pemutar mini</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Tombol sebelumnya tidak ditampilkan di pemutar mini</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Aktifkan paksa miniplayer</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer tetap diminimalkan saat perubahan pemutaran</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer diperluas ke layar penuh saat perubahan pemutaran</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Aktifkan paksa pemutar mini</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Pemutar mini tetap diminimalkan saat perubahan pemutaran</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Pemutar mini diperluas ke layar penuh saat perubahan pemutaran</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Bilah navigasi</string>
   <string name="morphe_music_navigation_bar_screen_summary">Sembunyikan atau ubah tombol bilah navigasi</string>

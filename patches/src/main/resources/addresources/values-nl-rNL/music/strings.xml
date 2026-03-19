@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Wijzig miniplayerkleur</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayerkleur komt overeen met de volledigschermspeler</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer gebruikt standaardkleur</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Volgende knop weergeven in miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Volgende knop wordt weergegeven in de miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Volgende knop wordt niet weergegeven in de miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Toon vorige knop in miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Vorige knop wordt weergegeven in de miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Vorige knop wordt niet weergegeven in de miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Geforceerde miniplayer inschakelen</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer blijft geminimaliseerd wanneer afspelen verandert</string>

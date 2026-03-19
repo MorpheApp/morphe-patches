@@ -21,17 +21,16 @@ public class BaseSettings {
 
     public static final EnumSetting<AppLanguage> MORPHE_LANGUAGE = new EnumSetting<>("morphe_language", AppLanguage.DEFAULT, true, "morphe_language_user_dialog_message");
 
-    /**
-     * Use the icons declared in the preferences created during patching. If no icons or styles are declared then this setting does nothing.
-     */
+    /** Use the icons declared in the preferences created during patching. If no icons or styles are declared then this setting does nothing. */
     public static final BooleanSetting SHOW_MENU_ICONS = new BooleanSetting("morphe_show_menu_icons", TRUE, true);
 
-    /**
-     * The first time the app was launched with no previous app data (either a clean install, or after wiping app data).
-     */
+    /** The first time the app was launched with no previous app data (either a clean install, or after wiping app data). */
     public static final LongSetting FIRST_TIME_APP_LAUNCHED = new LongSetting("morphe_last_time_app_was_launched", -1L, false, false);
 
     public static final StringSetting EXPERIMENTAL_APP_CONFIRMED = new StringSetting("morphe_experimental_app_target_confirmed", "", false, false);
+
+    /** If the GmsCore battery optimization dialogs should be shown. */
+    public static final BooleanSetting GMS_CORE_BATTERY_OPTIMIZATION_DIALOG = new BooleanSetting("morphe_gms_core_battery_optimization_dialog", TRUE, true, "morphe_gms_core_battery_optimization_dialog_user_dialog_message");
 
     static {
         final long now = System.currentTimeMillis();

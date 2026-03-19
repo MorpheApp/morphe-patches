@@ -44,8 +44,10 @@ import java.lang.ref.WeakReference
  */
 @Suppress("KDocUnresolvedReference")
 // Internal until this is modified to work with any patch (and not just SponsorBlock).
-internal lateinit var addTopControl: (String) -> Unit
+internal lateinit var addTopControl: (String, String, String) -> Unit
     private set
+
+private var insertElementId = "@id/player_video_heading"
 
 /**
  * Add a new bottom to the bottom of the YouTube player.
@@ -92,7 +94,7 @@ internal val playerControlsResourcePatch = resourcePatch {
             setAttribute("android:layout_width", "48.0dip")
         }
 
-        addTopControl = { resourceDirectoryName ->
+        addTopControl = { resourceDirectoryName, startElementId, endElementId ->
             val resourceFileName = "host/layout/youtube_controls_layout.xml"
             val hostingResourceStream = inputStreamFromBundledResource(
                 resourceDirectoryName,
@@ -100,21 +102,30 @@ internal val playerControlsResourcePatch = resourcePatch {
             ) ?: throw PatchException("Could not find $resourceFileName")
 
             val document = document("res/layout/youtube_controls_layout.xml")
+            val androidId = "android:id"
+            val androidLayoutToStartOf = "android:layout_toStartOf"
 
             "RelativeLayout".copyXmlNode(
                 document(hostingResourceStream),
                 document,
             ).use {
-                val element = document.childNodes.findElementByAttributeValueOrThrow(
-                    "android:id",
-                    "@id/player_video_heading",
+                val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
+                    androidId,
+                    insertElementId,
                 )
+                val endElement = document.childNodes.findElementByAttributeValueOrThrow(
+                    androidId,
+                    endElementId,
+                )
+                val insertElementLayoutToStartOf =
+                    insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue!!
 
-                // FIXME: This uses hard coded values that only works with SponsorBlock.
-                // If other top buttons are added by other patches, this code must be changed.
-                // voting button id from the voting button view from the youtube_controls_layout.xml host file
-                val votingButtonId = "@+id/morphe_sb_voting_button"
-                element.attributes.getNamedItem("android:layout_toStartOf").nodeValue = votingButtonId
+                insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
+                    startElementId
+                endElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
+                    insertElementLayoutToStartOf
+
+                insertElementId = endElementId
             }
         }
 
@@ -174,7 +185,7 @@ internal val playerControlsResourcePatch = resourcePatch {
 internal fun initializeTopControl(descriptor: String) {
     inflateTopControlMethodRef.get()!!.addInstruction(
         inflateTopControlInsertIndex++,
-        "invoke-static { v$inflateTopControlRegister }, $descriptor->initialize(Landroid/view/View;)V",
+        "invoke-static { v$inflateTopControlRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
     )
 }
 

@@ -85,6 +85,8 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
     <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
     <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+    <string name="morphe_settings_about_links_licenses">License notices</string>
+    <string name="morphe_settings_about_licenses_loading">Loading...</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
@@ -140,4 +142,13 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 
 Tap the continue button and allow optimization changes."</string>
     <string name="gms_core_dialog_continue_text">Continue</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimization dialog</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimization dialog is shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimization dialog is not shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
+
+If battery optimizations are not changed then you may experience:
+• App may randomly close
+• Notifications may not work
+• Background playback may not work"</string>
 </resources>

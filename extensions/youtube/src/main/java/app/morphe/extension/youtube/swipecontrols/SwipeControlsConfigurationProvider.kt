@@ -1,12 +1,16 @@
 package app.morphe.extension.youtube.swipecontrols
 
 import android.graphics.Color
+import android.view.MotionEvent
 import app.morphe.extension.shared.Logger
 import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.shared.Utils
 import app.morphe.extension.shared.settings.StringSetting
 import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.shared.PlayerType
+import app.morphe.extension.youtube.swipecontrols.controller.gesture.ClassicSwipeController
+import app.morphe.extension.youtube.swipecontrols.controller.gesture.PressToSwipeController
+import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController
 
 /**
  * Provides configuration settings for volume and brightness swipe controls in the YouTube player.
@@ -19,7 +23,7 @@ class SwipeControlsConfigurationProvider {
      * Returns true if either volume or brightness controls are enabled and the video is in fullscreen mode.
      */
     val enableSwipeControls: Boolean
-        get() = (enableVolumeControls || enableBrightnessControl) && isFullscreenVideo
+        get() = (enableVolumeControls || enableBrightnessControl) && (isFullscreenVideo || isVideoSliding)
 
     /**
      * Indicates whether swipe controls for adjusting volume are enabled.
@@ -34,8 +38,25 @@ class SwipeControlsConfigurationProvider {
     /**
      * Checks if the video player is currently in fullscreen mode.
      */
-    private val isFullscreenVideo: Boolean
+    val isFullscreenVideo: Boolean
         get() = PlayerType.current == PlayerType.WATCH_WHILE_FULLSCREEN
+
+    /**
+     * Checks if the video player is currently in sliding mode.
+     *
+     * The swipe control patch hooks functions of MainActivity (top-level activity) to detect [MotionEvent].
+     * Although the player is already in the fullscreen, a [MotionEvent] is detected before the [PlayerType] is updated,
+     * so the current [PlayerType] may be [PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN].
+     *
+     * In this case, [BaseGestureController.submitTouchEvent] cancels the MotionEvent,
+     * but sometimes the canceled [MotionEvent] triggers the tap and hold playback speed.
+     * See: https://github.com/MorpheApp/morphe-patches/issues/658.
+     *
+     * To resolve this concurrency issue, pass the [MotionEvent] even when the player type is [PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN],
+     * and finally validate the swipe gesture in [ClassicSwipeController.onSwipe] and [PressToSwipeController.onSwipe].
+     */
+    val isVideoSliding: Boolean
+        get() = PlayerType.current == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN
     //endregion
 
     //region keys enable

@@ -1,0 +1,70 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
+package app.morphe.patches.youtube.interaction.loop
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.playerStatusMethodRef
+import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LoopVideoPatch;"
+
+val loopVideoPatch = bytecodePatch(
+    name = "Loop video",
+    description = "Adds an option to loop videos and display loop video button in the video player.",
+) {
+    dependsOn(
+        sharedExtensionPatch,
+        loopVideoButtonPatch,
+        videoInformationPatch
+    )
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
+
+    execute {
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_loop_video"),
+        )
+
+        playerStatusMethodRef.get()!!.apply {
+            // Add call to start playback again, but must not allow exit fullscreen patch call
+            // to be reached if the video is looped.
+            val insertIndex =
+                indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
+            // Since instructions are added just above Opcode.SGET_OBJECT, instead of calling findFreeRegister(),
+            // a register from Opcode.SGET_OBJECT is used.
+            val freeRegister =
+                getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+            // Since 'videoInformationPatch' is used as a dependency of this patch,
+            // the loop is implemented through 'VideoInformation.seekTo(0)'.
+            addInstructionsWithLabels(
+                insertIndex,
+                """
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->shouldLoopVideo(Ljava/lang/Enum;)Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :do_not_loop
+                    return-void
+                    :do_not_loop
+                    nop
+                """
+            )
+        }
+    }
+}

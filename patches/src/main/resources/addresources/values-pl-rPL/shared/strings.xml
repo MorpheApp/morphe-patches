@@ -61,10 +61,10 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_pref_import_export_title">Importuj / Eksportuj</string>
   <string name="morphe_pref_import_export_summary">Importuj / Eksportuj ustawienia Morphe</string>
   <string name="morphe_settings_import_file">Importuj z pliku</string>
-  <string name="morphe_settings_import_file_success">Ustawienia zostały pomyślnie zaimportowane, dotknij Zapisz, aby zastosować</string>
+  <string name="morphe_settings_import_file_success">Ustawienia zostały pomyślnie zaimportowane, stuknij Zapisz, aby zastosować</string>
   <string name="morphe_settings_import_file_failed">Nie udało się zaimportować ustawień</string>
-  <string name="morphe_settings_export_file">Wyeksportuj do pliku</string>
-  <string name="morphe_settings_export_file_success">Pomyślnie wyeksportowano ustawienia</string>
+  <string name="morphe_settings_export_file">Eksportuj do pliku</string>
+  <string name="morphe_settings_export_file_success">Ustawienia wyeksportowane pomyślnie</string>
   <string name="morphe_settings_export_file_failed">Nie udało się wyeksportować ustawień</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Używasz najnowszej wersji modyfikacji Morphe &lt;i&gt;%s&lt;/i&gt;</string>
@@ -84,6 +84,8 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_settings_about_links_rvx">2022 - 2025</string>
   <string name="morphe_settings_about_links_rv">2022 - 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 - 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licencje</string>
+  <string name="morphe_settings_about_licenses_loading">Wczytywanie...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
   <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>

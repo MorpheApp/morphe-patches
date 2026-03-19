@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेयर रंग बदलें</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">मिनीप्लेयर का रंग फुलस्क्रीन प्लेयर के साथ मैच करता है</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">मिनीप्लेयर डिफ़ॉल्ट रंग का उपयोग करता है</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">मिनीप्लेयर में अगला बटन दिखाएँ</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">मिनीप्लेयर में अगला बटन दिखाया गया है</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">मिनीप्लेयर में अगला बटन नहीं दिखाया गया है</string>
+  <string name="morphe_music_miniplayer_previous_button_title">पिछला बटन मिनीप्लेयर में दिखाया गया है</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">पिछला बटन मिनीप्लेयर में दिखाया गया है</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">पिछला बटन मिनीप्लेयर में नहीं दिखाया गया है</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">सशर्त मिनीप्लेयर सक्षम करें</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">प्लेबैक बदलने पर मिनीप्लेयर न्यूनतम बना रहता है</string>
