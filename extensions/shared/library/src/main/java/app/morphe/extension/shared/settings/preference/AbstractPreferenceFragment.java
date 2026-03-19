@@ -28,11 +28,11 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -84,6 +84,42 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             return super.performItemClick(view, position, id);
         }
+    }
+
+    private static class DebouncedItemClickListener implements AdapterView.OnItemClickListener {
+        private final AdapterView.OnItemClickListener originalListener;
+        private long lastClick;
+
+        public DebouncedItemClickListener(AdapterView.OnItemClickListener originalListener) {
+            this.originalListener = originalListener;
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            final long now = SystemClock.elapsedRealtime();
+            if (now - lastClick < 500) {
+                return; // Ignore fast double click.
+            }
+            lastClick = now;
+            originalListener.onItemClick(parent, view, position, id);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference instanceof PreferenceScreen) {
+            Dialog dialog = ((PreferenceScreen) preference).getDialog();
+            if (dialog != null) {
+                ListView listView = dialog.findViewById(android.R.id.list);
+                if (listView != null) {
+                    AdapterView.OnItemClickListener originalListener = listView.getOnItemClickListener();
+                    if (originalListener != null && !(originalListener instanceof DebouncedItemClickListener)) {
+                        listView.setOnItemClickListener(new DebouncedItemClickListener(originalListener));
+                    }
+                }
+            }
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @SuppressLint("StaticFieldLeak")
