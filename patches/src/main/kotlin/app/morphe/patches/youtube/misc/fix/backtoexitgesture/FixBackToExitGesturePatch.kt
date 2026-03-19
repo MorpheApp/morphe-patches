@@ -60,12 +60,16 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
                 }
         }
 
-        YouTubeMainActivityOnBackPressedFingerprint.method.apply {
-            val index = indexOfFirstInstructionOrThrow(Opcode.RETURN_VOID)
-            addInstruction(
-                index,
-                "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V"
-            )
+        YouTubeMainActivityOnBackPressedFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                val index = it.instructionMatches.first().index + 1
+
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V"
+                )
+            }
         }
     }
 }

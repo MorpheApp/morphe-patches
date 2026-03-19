@@ -12,29 +12,26 @@ package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.shared.PlayerType;
-import app.morphe.extension.youtube.shared.VideoState;
 
 @SuppressWarnings("unused")
 public class FixBackToExitGesturePatch {
     /**
      * Time between two back button presses.
      */
-    private static final long PRESSED_TIMEOUT_MILLISECONDS = 1500L;
+    private static final long PRESSED_TIMEOUT_MILLISECONDS = 2000L;
 
     /**
      * Last time back button was pressed.
      */
-    private static long lastTimeBackPressed = 0;
+    private static volatile long lastTimeBackPressed = 0;
 
     /**
      * State whether the scroll position reaches the top.
      */
-    private static final AtomicBoolean isTopView = new AtomicBoolean(false);
+    private static volatile boolean isTopView = false;
 
     /**
      * Handle the event after clicking the back button.
@@ -42,31 +39,30 @@ public class FixBackToExitGesturePatch {
      * @param activity The activity, the app is launched with to finish.
      */
     public static void onBackPressed(Activity activity) {
-        if (!isTopView.get()) return;
-        long now = System.currentTimeMillis();
+        if (isTopView) {
+            long now = System.currentTimeMillis();
 
-        // If the time between two back button presses does not reach PRESSED_TIMEOUT_MILLISECONDS,
-        // set lastTimeBackPressed to the current time.
-        if (now - lastTimeBackPressed < PRESSED_TIMEOUT_MILLISECONDS) {
-            // In the latest YouTube, there is an issue where the video pauses if 'onDestroy()' is called while the video is minimized and playing,
-            // and then 'onCreate()' is called again (Unpatched YouTube issue).
-            // See: https://github.com/MorpheApp/morphe-patches/issues/279
-            // As a workaround for this issue, use 'moveTaskToBack()' instead of 'finish()'
-            // when the video is minimized and playing to avoid the call to 'onDestroy()'.
-            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED
-                    && VideoState.getCurrent() == VideoState.PLAYING
-                    && activity.moveTaskToBack(true)) {
-                Logger.printDebug(() -> "Moving task to back");
+            // If the time between two back button presses does not reach PRESSED_TIMEOUT_MILLISECONDS,
+            // set lastTimeBackPressed to the current time.
+            if (now - lastTimeBackPressed < PRESSED_TIMEOUT_MILLISECONDS) {
+                // In the latest YouTube, there is an issue where the video pauses if 'onDestroy()' is called while the video is minimized,
+                // and then 'onCreate()' is called again (Unpatched YouTube issue).
+                // See: https://github.com/MorpheApp/morphe-patches/issues/279
+                // As a workaround for this issue, use 'moveTaskToBack()' instead of 'finish()'
+                // when the video is minimized to avoid the call to 'onDestroy()'.
+                if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED && activity.moveTaskToBack(true)) {
+                    Logger.printDebug(() -> "Moving task to back");
+                } else {
+                    Logger.printDebug(() -> "Closing activity");
+                    activity.finish();
+                }
             } else {
-                Logger.printDebug(() -> "Activity is closed");
-                activity.finish();
+                lastTimeBackPressed = now;
+                Utils.runOnMainThreadDelayed(() -> {
+                    // After the timeout, the user should double-click the back button again.
+                    isTopView = false;
+                }, PRESSED_TIMEOUT_MILLISECONDS);
             }
-        } else {
-            lastTimeBackPressed = now;
-            Utils.runOnMainThreadDelayed(() -> {
-                // After the timeout, the user should double-click the back button again.
-                isTopView.compareAndSet(true, false);
-            }, PRESSED_TIMEOUT_MILLISECONDS);
         }
     }
 
@@ -75,7 +71,7 @@ public class FixBackToExitGesturePatch {
      */
     public static void onScrollingViews() {
         Logger.printDebug(() -> "Views are scrolling");
-        isTopView.set(false);
+        isTopView = false;
     }
 
     /**
@@ -83,6 +79,6 @@ public class FixBackToExitGesturePatch {
      */
     public static void onTopView() {
         Logger.printDebug(() -> "Scrolling reached the top");
-        isTopView.set(true);
+        isTopView = true;
     }
 }
