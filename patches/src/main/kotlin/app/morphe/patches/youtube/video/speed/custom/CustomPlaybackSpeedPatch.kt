@@ -165,7 +165,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             )
         }
 
-        // FIXME: Restore the old playback speed menu in YouTube 21.12+.
+        // FIXME: Restore old playback speed menu in YouTube 21.12+.
         if (is_21_02_or_greater && !is_21_12_or_greater) {
             FlyoutMenuNonLegacyFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
