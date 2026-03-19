@@ -28,6 +28,7 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
@@ -164,7 +165,8 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             )
         }
 
-        if (is_21_02_or_greater) {
+        // FIXME: Restore the old playback speed menu in YouTube 21.12+.
+        if (is_21_02_or_greater && !is_21_12_or_greater) {
             FlyoutMenuNonLegacyFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
