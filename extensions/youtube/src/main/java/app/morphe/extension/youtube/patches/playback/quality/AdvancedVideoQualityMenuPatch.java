@@ -31,13 +31,11 @@ public final class AdvancedVideoQualityMenuPatch {
                 }
                 AdvancedVideoQualityMenuFilter.isVideoQualityMenuVisible = false;
 
-                ViewParent quickQualityViewParent = Utils.getParentView(recyclerView, 3);
-                if (!(quickQualityViewParent instanceof ViewGroup)) {
+                if (!(Utils.getParentView(recyclerView, 3) instanceof ViewGroup quickQualityViewParent)) {
                     return;
                 }
 
-                View firstChild = recyclerView.getChildAt(0);
-                if (!(firstChild instanceof ViewGroup firstChildGroup)) {
+                if (!(recyclerView.getChildAt(0) instanceof ViewGroup firstChildGroup)) {
                     return;
                 }
 
@@ -45,16 +43,14 @@ public final class AdvancedVideoQualityMenuPatch {
                     return;
                 }
 
-                View advancedQualityView = firstChildGroup.getChildAt(3);
-                if (advancedQualityView == null) {
+                if (!(firstChildGroup.getChildAt(3) instanceof ViewGroup advancedQualityView)) {
                     return;
                 }
 
-                ((ViewGroup) quickQualityViewParent).setVisibility(View.GONE);
+                quickQualityViewParent.setVisibility(View.GONE);
 
                 // Click the "Advanced" quality menu to show the "old" quality menu.
-                advancedQualityView.setSoundEffectsEnabled(false);
-                advancedQualityView.performClick();
+                advancedQualityView.callOnClick();
             } catch (Exception ex) {
                 Logger.printException(() -> "onFlyoutMenuCreate failure", ex);
             }
@@ -63,7 +59,7 @@ public final class AdvancedVideoQualityMenuPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Shorts video quality flyout.
      */
     public static void addVideoQualityListMenuListener(ListView listView) {
@@ -94,7 +90,7 @@ public final class AdvancedVideoQualityMenuPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Used to force the creation of the advanced menu item for the Shorts quality flyout.
      */
     public static boolean forceAdvancedVideoQualityMenuCreation(boolean original) {
