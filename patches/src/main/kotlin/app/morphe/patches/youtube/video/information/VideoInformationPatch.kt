@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
@@ -232,7 +233,7 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the user playback speed selection.
          */
-        OnPlaybackSpeedItemClickFingerprint.match(OnPlaybackSpeedItemClickParentFingerprint.classDef).method.apply {
+        PlaybackSpeedOnItemClickFingerprint.match(PlaybackSpeedOnItemClickParentFingerprint.classDef).method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethodRef = WeakReference(this)
@@ -297,7 +298,7 @@ val videoInformationPatch = bytecodePatch(
             setPlaybackSpeedMethodIndex = 0
 
             // Add override playback speed method.
-            OnPlaybackSpeedItemClickFingerprint.classDef.methods.add(
+            PlaybackSpeedOnItemClickParentFingerprint.classDef.methods.add(
                 ImmutableMethod(
                     definingClass,
                     "overridePlaybackSpeed",

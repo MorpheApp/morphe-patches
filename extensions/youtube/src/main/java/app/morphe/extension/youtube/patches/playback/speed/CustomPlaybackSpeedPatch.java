@@ -144,6 +144,13 @@ public class CustomPlaybackSpeedPatch {
     /**
      * Injection point.
      */
+    public static boolean restoreOldPlaybackSpeedMenu() {
+        return Settings.RESTORE_OLD_SPEED_MENU.get();
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean useNewFlyoutMenu(boolean useNewFlyout) {
         // If using old speed Turn off A/B flyout that breaks old playback speed menu.
         return useNewFlyout && !Settings.RESTORE_OLD_SPEED_MENU.get();

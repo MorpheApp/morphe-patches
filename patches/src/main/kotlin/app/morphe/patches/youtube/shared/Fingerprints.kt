@@ -177,6 +177,27 @@ internal object ToolBarButtonFingerprint : Fingerprint(
     )
 )
 
+internal object PlaybackSpeedOnItemClickParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            returnType = "L",
+            parameters = listOf("Ljava/lang/String;"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 8
+    }
+)
+
 internal object VideoQualityChangedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",

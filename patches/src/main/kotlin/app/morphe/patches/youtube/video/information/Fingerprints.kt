@@ -1,15 +1,13 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -21,31 +19,10 @@ internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
     )
 )
 
-internal object OnPlaybackSpeedItemClickParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "L",
-    parameters = listOf("L", "Ljava/lang/String;"),
-    filters = listOf(
-        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        methodCall(
-            returnType = "L",
-            parameters = listOf("Ljava/lang/String;"),
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
-        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
-    ),
-    custom = { _, classDef ->
-        classDef.methods.count() == 8
-    }
-)
-
 /**
- * Resolves using the method found in [OnPlaybackSpeedItemClickParentFingerprint].
+ * Resolves using the method found in [PlaybackSpeedOnItemClickParentFingerprint].
  */
-internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
+internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     name = "onItemClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
