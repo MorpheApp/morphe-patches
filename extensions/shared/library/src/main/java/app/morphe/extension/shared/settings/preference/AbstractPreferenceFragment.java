@@ -62,7 +62,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         public DebouncedListView(Context context) {
             super(context);
+
             setId(android.R.id.list); // Required so PreferenceFragment recognizes it.
+
+            // Match the default layout params
             setLayoutParams(new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
