@@ -312,6 +312,16 @@ Changes include:
 
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Hide or show comments section components</string>
+    <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
+    <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
+    <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
+    <string name="morphe_hide_comments_carousel_dialog_message">"Note
+
+• Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
+• Hiding carousel items may have unintended side effects.
+• If all carousel items are hidden, the entire comments section will also be hidden."</string>
+    <string name="morphe_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
+    <string name="morphe_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, one per line</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
     <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI chat summary is hidden</string>
     <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI chat summary is shown</string>
@@ -503,6 +513,24 @@ Limitations:
 
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
+
+    <!-- interaction.loop.loopVideoPatch -->
+    <string name="morphe_loop_video_title">Enable loop video</string>
+    <string name="morphe_loop_video_summary_on">Video will loop</string>
+    <string name="morphe_loop_video_summary_off">Video will not loop</string>
+
+    <!-- interaction.loop.loopVideoButtonPatch -->
+    <string name="morphe_loop_video_button_title">Show loop video button</string>
+    <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
+    <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
+    <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
+    <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
+
+    <!-- interaction.reload.reloadVideoPatch -->
+    <string name="morphe_reload_video_title">Show reload video button</string>
+    <string name="morphe_reload_video_summary_on">Reload video button is shown</string>
+    <string name="morphe_reload_video_summary_off">Reload video button is not shown</string>
+    <string name="morphe_dismiss_player_not_available_toast">Video id is unavailable. Please manually reopen the video.</string>
 
     <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
@@ -1353,10 +1381,16 @@ Ready to submit?"</string>
 
 Tablet layout
 • Community posts are hidden
+• Playback in feeds setting is not available
+• Remix button and Sound button are not available in Shorts
+• Video action bar is not collapsed
 
 Automotive layout
+• Feed is organized by topics and channels
+• Playback in feeds setting is not available
+• Remix button and Sound button are not available in Shorts
 • Shorts open in the regular player
-• Feed is organized by topics and channels"</string>
+• Video action bar is not collapsed"</string>
 
     <!-- layout.spoofappversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
@@ -1417,10 +1451,10 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
 Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_change_start_page_always_summary_off">Start page is changed only on app startup</string>
 
-    <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-    <string name="morphe_disable_resuming_shorts_player_title">Disable resuming Shorts player</string>
-    <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts player will not resume on app startup</string>
-    <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts player will resume on app startup</string>
+    <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+    <string name="morphe_disable_shorts_resuming_on_startup_title">Disable Shorts resuming on startup</string>
+    <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts will not resume on app startup</string>
+    <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts will resume on app startup</string>
 
     <!-- layout.shortsplayer.shortsPlayerTypePatch -->
     <string name="morphe_shorts_player_type_title">Open Shorts with</string>
@@ -1571,18 +1605,6 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
 
-    <!-- misc.loopvideo.loopVideoPatch -->
-    <string name="morphe_loop_video_title">Enable loop video</string>
-    <string name="morphe_loop_video_summary_on">Video will loop</string>
-    <string name="morphe_loop_video_summary_off">Video will not loop</string>
-
-    <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-    <string name="morphe_loop_video_button_title">Show loop video button</string>
-    <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
-    <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
-    <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
-    <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
-
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>
     <string name="morphe_spoof_device_dimensions_summary_on">"Device dimensions spoofed
@@ -1669,7 +1691,9 @@ Enabling this can unlock higher video qualities"</string>
     <string name="morphe_custom_playback_speeds_parse_exception">Invalid custom playback speeds</string>
     <string name="morphe_custom_playback_speeds_auto">Auto</string>
     <string name="morphe_speed_tap_and_hold_title">Custom tap and hold speed</string>
-    <string name="morphe_speed_tap_and_hold_summary">Playback speed between 0-8</string>
+    <string name="morphe_speed_tap_and_hold_summary">"Playback speed between 0-8
+
+If 0, tap and hold speed is disabled"</string>
 
     <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
     <string name="morphe_remember_playback_speed_last_selected_title">Remember playback speed changes</string>

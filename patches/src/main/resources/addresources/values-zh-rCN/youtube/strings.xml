@@ -473,6 +473,21 @@ Second \"item\" text"</string>
 
 请验证包名是否正确且应用已安装"</string>
   <string name="morphe_external_downloader_empty_warning">包名不能为空</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">启用循环播放视频</string>
+  <string name="morphe_loop_video_summary_on">视频将循环播放</string>
+  <string name="morphe_loop_video_summary_off">视频将不循环播放</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">显示循环播放视频按钮</string>
+  <string name="morphe_loop_video_button_summary_on">循环播放视频已显示</string>
+  <string name="morphe_loop_video_button_summary_off">循环播放视频未显示</string>
+  <string name="morphe_loop_video_button_toast_on">循环播放视频已开启</string>
+  <string name="morphe_loop_video_button_toast_off">循环播放视频已关闭</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">显示重新加载视频按钮</string>
+  <string name="morphe_reload_video_summary_on">显示重新加载视频按钮</string>
+  <string name="morphe_reload_video_summary_off">不显示重新加载视频按钮</string>
+  <string name="morphe_dismiss_player_not_available_toast">视频 ID 不可用。请手动重新打开视频。</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">禁用上滑精确定位进度手势</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精准定位手势已禁用</string>
@@ -1294,10 +1309,16 @@ Second \"item\" text"</string>
 
 平板电脑布局
 • 社区帖子已隐藏
+• 订阅源中的播放设置不可用
+• Shorts 中未提供 Remix 按钮和 Sound 按钮
+• 视频操作栏未折叠
 
-汽车布局
+车载布局
+• 订阅源按主题和频道组织
+• 订阅源中的播放设置不可用
+• Shorts 中未提供 Remix 按钮和 Sound 按钮
 • Shorts 在常规播放器中打开
-• Feed 按主题和频道组织"</string>
+• 视频操作栏未折叠"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">伪装应用程序版本</string>
   <string name="morphe_spoof_app_version_summary_on">客户端版本已伪装</string>
@@ -1352,10 +1373,10 @@ Second \"item\" text"</string>
 
 限制：工具栏上的后退按钮可能无法使用"</string>
   <string name="morphe_change_start_page_always_summary_off">起始页仅在应用启动时更改</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">禁用恢复 Shorts 播放器</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts 播放器不会在应用启动时恢复</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts 播放器将在应用启动时恢复</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">禁用启动时自动恢复Shorts</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts 将不会在应用启动时自动恢复</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts 将会在应用启动时自动恢复</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">使用 Shorts 播放器打开</string>
   <string name="morphe_shorts_player_type_shorts">Shorts 播放器</string>
@@ -1484,16 +1505,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow 暂时不可用（状态码：%s）</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow 暂时不可用</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">启用循环播放视频</string>
-  <string name="morphe_loop_video_summary_on">视频将循环播放</string>
-  <string name="morphe_loop_video_summary_off">视频将不循环播放</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">显示循环播放视频按钮</string>
-  <string name="morphe_loop_video_button_summary_on">循环播放视频已显示</string>
-  <string name="morphe_loop_video_button_summary_off">循环播放视频未显示</string>
-  <string name="morphe_loop_video_button_toast_on">循环播放视频已开启</string>
-  <string name="morphe_loop_video_button_toast_off">循环播放视频已关闭</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">伪装设备尺寸</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"已伪装设备尺寸
@@ -1572,7 +1583,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">自定义播放速度无效</string>
   <string name="morphe_custom_playback_speeds_auto">自动</string>
   <string name="morphe_speed_tap_and_hold_title">自定义长按速度</string>
-  <string name="morphe_speed_tap_and_hold_summary">0-8之间的播放速度</string>
+  <string name="morphe_speed_tap_and_hold_summary">"回放速度在 0-8 之间
+
+如果为 0，则禁用点击并按住速度"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">记住播放速度更改</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">播放速度更改适用于所有视频</string>

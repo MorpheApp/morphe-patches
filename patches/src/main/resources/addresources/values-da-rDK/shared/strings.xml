@@ -60,6 +60,12 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_language_DEFAULT">App-sprog</string>
   <string name="morphe_pref_import_export_title">Importér/Eksportér</string>
   <string name="morphe_pref_import_export_summary">Importér/Eksportér Morphe-indstillinger</string>
+  <string name="morphe_settings_import_file">Importér fra fil</string>
+  <string name="morphe_settings_import_file_success">Indstillinger importeret med succes, tryk på Gem for at anvende</string>
+  <string name="morphe_settings_import_file_failed">Mislykkedes at importere indstillinger</string>
+  <string name="morphe_settings_export_file">Eksportér til fil</string>
+  <string name="morphe_settings_export_file_success">Indstillingerne er eksporteret med succes</string>
+  <string name="morphe_settings_export_file_failed">Mislykkedes med at eksportere indstillinger</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Du bruger den nyeste Morphe Patches-version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Du bruger Morphe Patches-versionen &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Opdatering tilgængelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For at opdatere dine patches, brug Morphe til at genpatche denne app</string>
@@ -69,6 +75,16 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Donér</string>
   <string name="morphe_settings_about_links_translations">Oversættelser</string>
+  <string name="morphe_settings_about_links_credits">Fortjenester</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Opdateret</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Opdatering tilgængelig</string>
+  <string name="morphe_settings_about_contributors_current">Aktuel udvikling</string>
+  <string name="morphe_settings_about_contributors_prior">Tidligere udvikling</string>
+  <string name="morphe_settings_about_links_morphe">Aktiv udvikling</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Indlæser...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Fejlfinding</string>
   <string name="morphe_debug_screen_summary">Aktivér eller deaktiver fejlfindingsindstillinger</string>
@@ -121,4 +137,13 @@ Deaktivering af batteryoptimeringer for MicroG vil ikke negativt påvirke batter
 
 Tryk på knappen Fortsæt og tillad optimeringsskift."</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterioptimering-dialog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG batterioptimeringsdialog vises</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG batterioptimeringsdialog vises ikke</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.
+
+Hvis batterioptimeringer ikke ændres, kan du opleve:
+• Appen kan lukke tilfældigt
+• Notifikationer virker muligvis ikke
+• Baggrundsafspilning virker muligvis ikke"</string>
 </resources>

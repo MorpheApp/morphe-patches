@@ -475,6 +475,21 @@ Second \"item\" text"</string>
 
 Επιβεβαιώστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
   <string name="morphe_external_downloader_empty_warning">Το όνομα πακέτου δεν μπορεί να είναι κενό</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Αυτόματη επανάληψη βίντεο</string>
+  <string name="morphe_loop_video_summary_on">Το βίντεο θα αναπαράγεται σε επανάληψη</string>
+  <string name="morphe_loop_video_summary_off">Το βίντεο δεν θα επαναληφθεί</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Εμφάνιση κουμπιού επανάληψης βίντεο</string>
+  <string name="morphe_loop_video_button_summary_on">Εμφανίζεται</string>
+  <string name="morphe_loop_video_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_loop_video_button_toast_on">Η επανάληψη βίντεο είναι ενεργοποιημένη</string>
+  <string name="morphe_loop_video_button_toast_off">Η επανάληψη βίντεο είναι απενεργοποιημένη</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Εμφάνιση κουμπιού επανεξέτασης βίντεο</string>
+  <string name="morphe_reload_video_summary_on">Εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
+  <string name="morphe_reload_video_summary_off">Δεν εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
+  <string name="morphe_dismiss_player_not_available_toast">Το αναγνωριστικό βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανοίξτε ξανά το βίντεο χειροκίνητα.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Η χειρονομία αναζήτησης καρέ-καρέ είναι απενεργοποιημένη</string>
@@ -1290,12 +1305,18 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Αυτοκίνητο</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Οι αλλαγές περιλαμβάνουν:
 
-Διάταξη tablet
-• Οι δημοσιεύσεις κοινότητας δεν εμφανίζονται
+Διάταξη Tablet
+• Τα δημοσιεύματα της κοινότητας είναι κρυφά
+• Η ρύθμιση αναπαραγωγής σε ροές δεν είναι διαθέσιμη
+• Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
+• Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει
 
-Διάταξη αυτοκινήτου
-• Τα Shorts ανοίγουν στην κανονική οθόνη αναπαραγωγής
-• Η ροή οργανώνεται ανά θέματα και κανάλια"</string>
+Διάταξη Automotive
+• Η ροή είναι οργανωμένη ανά θέματα και κανάλια
+• Η ρύθμιση αναπαραγωγής σε ροές δεν είναι διαθέσιμη
+• Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
+• Τα Shorts ανοίγουν στον κανονικό αναπαραγωγέ
+• Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary_on">Η έκδοση παραποιείται</string>
@@ -1350,10 +1371,10 @@ Second \"item\" text"</string>
 
 Περιορισμός: Η χρήση του κουμπιού επιστροφής στη γραμμή εργαλείων ενδέχεται να μην λειτουργεί"</string>
   <string name="morphe_change_start_page_always_summary_off">Η αρχική σελίδα αλλάζει μόνο κατά την εκκίνηση της εφαρμογής</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Απενεργοποίηση συνέχισης των Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Η αναπαραγωγή Shorts δε θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Η αναπαραγωγή Shorts θα συνεχίζεται κατά την εκκίνηση της εφαρμογής</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Απενεργοποίηση της συνεχούς αναπαραγωγής των Shorts κατά την εκκίνηση</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Τα Shorts δεν θα συνεχίσουν την αναπαραγωγή κατά την εκκίνηση της εφαρμογής</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Τα Shorts θα συνεχίσουν την αναπαραγωγή κατά την εκκίνηση της εφαρμογής</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Άνοιγμα Shorts με</string>
   <string name="morphe_shorts_player_type_shorts">Οθόνη αναπαραγωγής Shorts</string>
@@ -1480,16 +1501,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow προσωρινά μη διαθέσιμο (κωδικός: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow προσωρινά μη διαθέσιμο</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Αυτόματη επανάληψη βίντεο</string>
-  <string name="morphe_loop_video_summary_on">Το βίντεο θα αναπαράγεται σε επανάληψη</string>
-  <string name="morphe_loop_video_summary_off">Το βίντεο δεν θα επαναληφθεί</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Εμφάνιση κουμπιού επανάληψης βίντεο</string>
-  <string name="morphe_loop_video_button_summary_on">Εμφανίζεται</string>
-  <string name="morphe_loop_video_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_loop_video_button_toast_on">Η επανάληψη βίντεο είναι ενεργοποιημένη</string>
-  <string name="morphe_loop_video_button_toast_off">Η επανάληψη βίντεο είναι απενεργοποιημένη</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Παραποίηση διαστάσεων συσκευής</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Οι διαστάσεις συσκευής παραποιούνται
@@ -1568,7 +1579,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Μη έγκυρες προσαρμοσμένες ταχύτητες αναπαραγωγής</string>
   <string name="morphe_custom_playback_speeds_auto">Αυτόματη</string>
   <string name="morphe_speed_tap_and_hold_title">Προσαρμοσμένη ταχύτητα παρατεταμένου πατήματος</string>
-  <string name="morphe_speed_tap_and_hold_summary">Ταχύτητα αναπαραγωγής μεταξύ 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Ταχύτητα αναπαραγωγής μεταξύ 0-8
+
+Εάν 0, απενεργοποιείται η ταχύτητα πατήματος και συγκράτησης"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Απομνημόνευση αλλαγών ταχύτητας αναπαραγωγής</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Οι αλλαγές ταχύτητας αναπαραγωγής ισχύουν για όλα τα βίντεο</string>

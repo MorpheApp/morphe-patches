@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">广告</string>
+  <string name="morphe_hide_post_ads_title">隐藏广告</string>
+  <string name="morphe_hide_post_ads_summary">隐藏信息流中的广告</string>
+  <string name="morphe_hide_comment_ads_title">隐藏评论广告</string>
+  <string name="morphe_hide_comment_ads_summary">隐藏广告出现在评论区</string>
+  <string name="morphe_screen_layout_title">布局</string>
+  <string name="morphe_disable_modern_home_title">禁用现代主页</string>
+  <string name="morphe_disable_modern_home_summary">禁用现代主页 UI</string>
+  <string name="morphe_disable_screenshot_popup_title">禁用截图弹窗</string>
+  <string name="morphe_disable_screenshot_popup_summary">禁用在截屏时出现的弹窗</string>
+  <string name="morphe_hide_answers_button_title">隐藏“答案”按钮</string>
+  <string name="morphe_hide_answers_button_summary">隐藏导航栏中的“答案”按钮</string>
+  <string name="morphe_hide_chat_button_title">隐藏“聊天”按钮</string>
+  <string name="morphe_hide_chat_button_summary">隐藏导航栏中的“聊天”按钮</string>
+  <string name="morphe_hide_create_button_title">隐藏“创建”按钮</string>
+  <string name="morphe_hide_create_button_summary">隐藏导航栏中的“创建”按钮</string>
+  <string name="morphe_hide_discover_button_title">隐藏“发现”或“社区”按钮</string>
+  <string name="morphe_hide_discover_button_summary">隐藏导航栏中的“发现”或“社区”按钮</string>
+  <string name="morphe_hide_games_button_title">隐藏“游戏”按钮</string>
+  <string name="morphe_hide_games_button_summary">隐藏导航栏中的“游戏”按钮</string>
+  <string name="morphe_hide_recently_visited_shelf_title">隐藏“最近访问”专栏</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">隐藏侧边栏中的“最近访问”专栏</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">隐藏“游戏在 Reddit 上”专栏</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">隐藏侧边栏中的“游戏在 Reddit 上”专栏</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">隐藏 “Reddit Pro”专栏</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">隐藏侧边栏中的 “Reddit Pro”专栏</string>
+  <string name="morphe_hide_about_shelf_title">隐藏“关于”专栏</string>
+  <string name="morphe_hide_about_shelf_summary">隐藏侧边栏中的“关于”专栏</string>
+  <string name="morphe_hide_resources_shelf_title">隐藏“资源”专栏</string>
+  <string name="morphe_hide_resources_shelf_summary">隐藏侧边栏中的“资源”专栏</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">隐藏推荐社区</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">隐藏子版块中的推荐社区专栏</string>
+  <string name="morphe_hide_trending_today_shelf_title">隐藏“今日热门”专栏</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"隐藏搜索建议中的“今日热门”专栏。
+
+限制：视觉间隔符可能无法隐藏"</string>
+  <string name="morphe_remove_notification_dialog_title">移除通知建议对话框</string>
+  <string name="morphe_remove_notification_dialog_summary">自动通过访问子版块时出现的通知建议对话框</string>
+  <string name="morphe_show_view_count_title">显示帖子观看次数</string>
+  <string name="morphe_show_view_count_summary">"显示帖子的观看次数。
+
+限制：仅当 API 响应包含观看次数时显示"</string>
+  <string name="morphe_remove_nsfw_dialog_title">移除 NSFW 警告对话框</string>
+  <string name="morphe_remove_nsfw_dialog_summary">通过自动接受来移除访问子版块时出现的 NSFW 警告对话框</string>
+  <string name="morphe_screen_miscellaneous_title">其他</string>
+  <string name="morphe_about_title">关于</string>
+  <string name="morphe_about_summary">修补版本和官方链接</string>
+  <string name="morphe_sanitize_sharing_links_title">净化分享链接</string>
+  <string name="morphe_sanitize_sharing_links_summary">通过移除跟踪查询参数来净化分享链接</string>
+  <string name="morphe_open_links_directly_title">直接打开链接</string>
+  <string name="morphe_open_links_directly_summary">在外部链接中跳过重定向 URL</string>
+</resources>

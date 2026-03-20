@@ -474,6 +474,21 @@ Teorainneacha:
 
 Fíoraigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"</string>
   <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
+  <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
+  <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
+  <string name="morphe_loop_video_button_summary_on">Taispeántar roghchlár físe lúb</string>
+  <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
+  <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
+  <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Taispeáin an cnaipín athlúnaigh físe</string>
+  <string name="morphe_reload_video_summary_on">Taispeántar an cnaipín athlúnaigh físe</string>
+  <string name="morphe_reload_video_summary_off">Ní thaispeántar an cnaipín athlúnaigh físe</string>
+  <string name="morphe_dismiss_player_not_available_toast">Tá roghchlár ID físe nach bhfuil ar fáil. Léime an físe arís go láimhe, le do thoil.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh gotha ​​cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tá gotha ​​cuardaigh chruinn díchumasaithe</string>
@@ -1287,14 +1302,20 @@ Réidh le cur isteach?"</string>
   <string name="morphe_change_form_factor_entry_2">Guthán</string>
   <string name="morphe_change_form_factor_entry_3">Táibléad</string>
   <string name="morphe_change_form_factor_entry_4">Gluaisteán</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Áirítear leis na hathruithe:
+  <string name="morphe_change_form_factor_user_dialog_message">"Álainn na hathrú: 
 
-Leagan amach táibléid
-• Tá poist phobail i bhfolach
+Críothacht teilgtheoir
+• Tá ranna pobail faoi chríocha
+• Ní féidir suim leanúna a chur i riantanas
+• Ní bhíonn cnaipe Athrú agus cnaipe Fuar le himeacht i Shorts
+• Ní thiocfaidh barr gníomhaireachta fídeá in chloisteach
 
-Leagan amach gluaisteán
-• Gearrscannáin oscailte sa ghnáth-imreoir
-• Tá an fotha eagraithe de réir topaicí agus bealaí"</string>
+Críothacht feithicil
+• Tá an riantanas ordaithe de réir áit agus gcórais
+• Ní féidir suim leanúna a chur i riantanas
+• Ní bhíonn cnaipe Athrú agus cnaipe Fuar le himeacht i Shorts
+• Osclaíonn Shorts sa n-imreoir ginearálta
+• Ní thiocfaidh barr gníomhaireachta fídeá in chloisteach"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
   <string name="morphe_spoof_app_version_summary_on">Leagan bréagach</string>
@@ -1349,10 +1370,10 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
 
 Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbarra uirlisí"</string>
   <string name="morphe_change_start_page_always_summary_off">Ní athraítear an leathanach tosaigh ach amháin nuair a thosaítear an aip</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Díchumasaigh atosú seinnteoir Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Ní atosóidh seinnteoir Shorts nuair a thosófar an aip</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Atosóidh seinnteoir Shorts nuair a thosóidh an aip arís</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Deisigh Shorts ag tosú arís ag tús</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Ní hatosóidh Shorts nuair a thosófar an aip</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Atosóidh Shorts nuair a thosóidh an aip arís</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Oscail Shorts le</string>
   <string name="morphe_shorts_player_type_shorts">Shorts seinnteoir</string>
@@ -1481,16 +1502,6 @@ Brúigh anseo chun tuilleadh eolais a fháil faoi DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">Níl DeArrow ar fáil go sealadach (cód stádais: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">Níl DeArrow ar fáil go sealadach</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
-  <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
-  <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
-  <string name="morphe_loop_video_button_summary_on">Taispeántar roghchlár físe lúb</string>
-  <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
-  <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
-  <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Toisí gléas a fhalsú</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Toisí na ngléasanna falsaithe
@@ -1569,7 +1580,9 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_custom_playback_speeds_parse_exception">Luasanna athsheinm saincheaptha neamhbhailí</string>
   <string name="morphe_custom_playback_speeds_auto">Uath</string>
   <string name="morphe_speed_tap_and_hold_title">Luas saincheaptha tapála agus coinnigh</string>
-  <string name="morphe_speed_tap_and_hold_summary">Luas athsheinm eatarthu 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Rapéáilme speed idir 0-8
+
+Más 0, déantar deacáin an luas tap agus hold"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Cuimhnigh athruithe ar luas athsheinm</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Baineann athruithe luais athsheinm le gach físeáin</string>

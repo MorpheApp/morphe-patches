@@ -473,6 +473,21 @@ Limitações:
 
 Verifique se o nome do pacote está correto e se o aplicativo está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
+  <string name="morphe_loop_video_summary_on">O vídeo será repetido</string>
+  <string name="morphe_loop_video_summary_off">O vídeo não será repetido</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Mostrar botão de vídeo em loop</string>
+  <string name="morphe_loop_video_button_summary_on">Botão de loop de vídeo é mostrado</string>
+  <string name="morphe_loop_video_button_summary_off">Botão de loop de vídeo não é mostrado</string>
+  <string name="morphe_loop_video_button_toast_on">Vídeo em loop está ativado</string>
+  <string name="morphe_loop_video_button_toast_off">Vídeo em loop está desativado</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Mostrar botão de recarregar vídeo</string>
+  <string name="morphe_reload_video_summary_on">Botão de recarregar vídeo está visível</string>
+  <string name="morphe_reload_video_summary_off">Botão de recarregar vídeo não está visível</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID do vídeo indisponível. Por favor, reabra o vídeo manualmente.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desativar gesto de busca precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesto desativado</string>
@@ -1286,14 +1301,20 @@ Pronto para enviar?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefone</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automóveis</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"As alterações incluem:
+  <string name="morphe_change_form_factor_user_dialog_message">"Alterações incluem:
 
 Layout para tablet
 • Publicações da comunidade estão ocultas
+• Configuração de reprodução em feeds não está disponível
+• Botão Remix e Botão de Som não estão disponíveis em Shorts
+• Barra de ações de vídeo não está recolhida
 
-Layout automotivo
-• Shorts são abertos no reprodutor normal
-• O feed é organizado por tópicos e canais"</string>
+Layout para automóvel
+• Feed é organizado por tópicos e canais
+• Configuração de reprodução em feeds não está disponível
+• Botão Remix e Botão de Som não estão disponíveis em Shorts
+• Shorts abrem no player normal
+• Barra de ações de vídeo não está recolhida"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoofing da versão do aplicativo</string>
   <string name="morphe_spoof_app_version_summary_on">Versão spoofada</string>
@@ -1348,10 +1369,10 @@ Se posteriormente desativado, é recomendável limpar os dados do aplicativo par
 
 Limitação: usar o botão Voltar na barra de ferramentas pode não funcionar"</string>
   <string name="morphe_change_start_page_always_summary_off">A página inicial é alterada apenas na inicialização do aplicativo</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Desativar continuar a reproduzir Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts não irá continuar reproduzindo ao iniciar o aplicativo</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts irá continuar reproduzindo ao iniciar o aplicativo</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Desabilitar a retomada de Shorts na inicialização</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts não serão retomados ao iniciar o aplicativo</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts serão retomados ao iniciar o aplicativo</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Abrir Shorts com</string>
   <string name="morphe_shorts_player_type_shorts">Reprodutor do Shorts</string>
@@ -1480,16 +1501,6 @@ Toque aqui para saber mais sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow não está disponível temporariamente (código de status: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow não está disponível temporariamente</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
-  <string name="morphe_loop_video_summary_on">O vídeo será repetido</string>
-  <string name="morphe_loop_video_summary_off">O vídeo não será repetido</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Mostrar botão de vídeo em loop</string>
-  <string name="morphe_loop_video_button_summary_on">Botão de loop de vídeo é mostrado</string>
-  <string name="morphe_loop_video_button_summary_off">Botão de loop de vídeo não é mostrado</string>
-  <string name="morphe_loop_video_button_toast_on">Vídeo em loop está ativado</string>
-  <string name="morphe_loop_video_button_toast_off">Vídeo em loop está desativado</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoofing de dimensões do dispositivo</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimensões do dispositivo falsificadas
@@ -1568,7 +1579,9 @@ Habilitar isso pode desbloquear qualidades de vídeo mais altas"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Velocidades de reprodução personalizadas inválidas</string>
   <string name="morphe_custom_playback_speeds_auto">Automático</string>
   <string name="morphe_speed_tap_and_hold_title">Velocidade personalizada de tocar e segurar</string>
-  <string name="morphe_speed_tap_and_hold_summary">Velocidade de reprodução entre 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Velocidade de reprodução entre 0 e 8
+
+Se 0, tocar e segurar desativa a velocidade"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Lembrar mudança na velocidade de reprodução</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Mudanças de velocidade de reprodução se aplicam a todos os vídeos</string>

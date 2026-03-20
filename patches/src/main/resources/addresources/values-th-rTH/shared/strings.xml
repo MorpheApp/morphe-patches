@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">ภาษาของแอป</string>
   <string name="morphe_pref_import_export_title">นำเข้า / ส่งออก</string>
   <string name="morphe_pref_import_export_summary">นำเข้า / ส่งออกการตั้งค่า Morphe</string>
+  <string name="morphe_settings_import_file">นำเข้าจากไฟล์</string>
+  <string name="morphe_settings_import_file_success">การตั้งค่าถูกนำเข้าเรียบร้อยแล้ว แตะที่บันทึกเพื่อใช้</string>
+  <string name="morphe_settings_import_file_failed">ไม่สามารถนำเข้าการตั้งค่า</string>
+  <string name="morphe_settings_export_file">ส่งออกไปยังไฟล์</string>
+  <string name="morphe_settings_export_file_success">การส่งออกการตั้งค่าสำเร็จ</string>
+  <string name="morphe_settings_export_file_failed">การส่งออกการตั้งค่าล้มเหลว</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;อัพเดตใหม่พร้อมให้ใช้: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;เพื่ออัพเดตแพทช์ของคุณ ให้ใช้ Morphe เพื่อแพทช์แอปพลิเคชันนี้ใหม่</string>
@@ -69,6 +75,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">เว็บไซต์</string>
   <string name="morphe_settings_about_links_donate">บริจาค</string>
   <string name="morphe_settings_about_links_translations">การแปลภาษา</string>
+  <string name="morphe_settings_about_links_credits">เครดิต</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">เป็นปัจจุบัน</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">มีการอัปเดตพร้อมใช้งาน</string>
+  <string name="morphe_settings_about_contributors_current">กำลังพัฒนาอยู่</string>
+  <string name="morphe_settings_about_contributors_prior">การพัฒนาในช่วงก่อนหน้า</string>
+  <string name="morphe_settings_about_links_morphe">การพัฒนาในปัจจุบัน</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">กำลังโหลด...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ดีบัก</string>
   <string name="morphe_debug_screen_summary">เปิดใช้งานหรือปิดใช้งานตัวเลือกการแก้ไขข้อบกพร่อง</string>
@@ -121,4 +137,13 @@ Second \"item\" text"</string>
 
 แตะปุ่มตกลง และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
   <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">กล่องข้อความเพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">ไม่มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"การปิดใช้งานนี้จะซ่อนข้อความแจ้ง MicroG เพิ่มประสิทธิภาพแบตเตอรี่
+
+หากการเพิ่มประสิทธิภาพแบตเตอรี่ไม่ได้มีการเปลี่ยนแปลง คุณอาจพบ:
+• แอปพลิเคชันอาจปิดโดยสุ่ม
+• การแจ้งเตือนอาจใช้งานไม่ได้
+• การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
 </resources>

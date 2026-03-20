@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">שנה צבע מיני-נגן</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">צבע המיני-נגן תואם לנגן במסך מלא</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">מיני-נגן משתמש בצבע ברירת המחדל</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">הצג כפתור הבא בנגן המיני</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">כפתור הבא מוצג בנגן המיני</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">כפתור הבא אינו מוצג בנגן המיני</string>
+  <string name="morphe_music_miniplayer_previous_button_title">לחצן קודם בנגן מיני</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">לחצן קודם מוצג בנגן מיני</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">לחצן קודם אינו מוצג בנגן מיני</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">הפעלת נגן מיני מאולץ</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">נגן המיני נשאר ממוזער בעת שינוי ניגון</string>

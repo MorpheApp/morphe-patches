@@ -1,0 +1,19 @@
+package app.morphe.patches.youtube.misc.fix.verticalscroll
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+
+internal object CanScrollVerticallyFingerprint : Fingerprint(
+    definingClass = "Landroidx/swiperefreshlayout/widget/SwipeRefreshLayout;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.MOVE_RESULT,
+        Opcode.RETURN,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT
+    )
+)

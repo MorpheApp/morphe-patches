@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Смени цвет на миниплеъра</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Цвятът на миниплеера съвпада с цвятът на пълноекранния плеер</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Миниплеърът използва стандартна цветова схема</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Покажи следващия бутон в мини плейъра</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Следващият бутон е показан в мини плейъра</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Следващият бутон не е показан в мини плейъра</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Показ предишен бутон в мини плейъра</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Предишен бутон е показан в мини плейъра</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Предишен бутон не е показан в мини плейъра</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Активиране на принудителния мини плейър</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Мини плейърът остава свит при промяна на възпроизвеждането</string>

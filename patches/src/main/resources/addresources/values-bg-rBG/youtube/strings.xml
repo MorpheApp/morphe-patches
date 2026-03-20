@@ -471,6 +471,21 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_not_installed_warning">Външен свалик</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Външен свалик не е инсталиран. Инсталирайте го."</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакета не може да бъде празно</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Версията е фалшира</string>
+  <string name="morphe_loop_video_summary_on">Версията не е фалшира</string>
+  <string name="morphe_loop_video_summary_off">Видео не ще се повтаря</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Цел на фалшира версия на приложението</string>
+  <string name="morphe_loop_video_button_summary_on">Бутона за повторение на видеоклипа е показан</string>
+  <string name="morphe_loop_video_button_summary_off">Бутона за повторение на видеоклипа не е показан</string>
+  <string name="morphe_loop_video_button_toast_on">Видео в цикъл е включено</string>
+  <string name="morphe_loop_video_button_toast_off">Промянете стартова страница</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Покажи бутона за презареждане на видеото</string>
+  <string name="morphe_reload_video_summary_on">Показва се бутонът за презареждане на видеото</string>
+  <string name="morphe_reload_video_summary_off">Не се показва бутонът за презареждане на видеото</string>
+  <string name="morphe_dismiss_player_not_available_toast">Видео id е недостъпен. Моля, отвори ръчно видеото отново.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Изключи прецизно сваляне на позиция</string>
@@ -1278,13 +1293,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">Телефон</string>
   <string name="morphe_change_form_factor_entry_3">Таблет</string>
   <string name="morphe_change_form_factor_entry_4">Автомобилна</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Промени: 
+  <string name="morphe_change_form_factor_user_dialog_message">"Промените включват:
 
-Таблетни постове са скрити
+Начален вид на таблет:
+• Публикации от общността са скрити
+• Настройката за възпроизвеждане в каналите не е налична
+• Бутонът за ремикс и бутонът за звук не са налични в Shorts
+• Видео лентата с действия не е сгъната
 
-Автомобилна лайаут: 
-• Видеосите в обикновеният плеър
-• Организирани са по теми и канали"</string>
+Начален вид за автомобил:
+• Каналът е организиран по теми и канали
+• Настройката за възпроизвеждане в каналите не е налична
+• Бутонът за ремикс и бутонът за звук не са налични в Shorts
+• Shorts се отварят в стандартния плейър
+• Видео лентата с действия не е сгъната"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Фалшира версия на приложението</string>
   <string name="morphe_spoof_app_version_summary_on">Версията е фалшира</string>
@@ -1339,10 +1361,10 @@ Second \"item\" text"</string>
 
 Ограничение: Използването на бутона 'назад' в панелите може да не работи"</string>
   <string name="morphe_change_start_page_always_summary_off">Стартова страница е променена само при пускане на приложението</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Изключете възпроизвеждането на Коротки видеа в началния плеър</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Коротките видеа не ще се възпроизвеждат при пускане на приложението</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Коротките видеа ще се възпроизвеждат при пускане на приложението</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Деактивиране на продължаването на Shorts при стартиране</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts няма да продължат при стартиране на приложението</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts ще продължат при стартиране на приложението</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Отворите Коротки видеа с</string>
   <string name="morphe_shorts_player_type_shorts">Плеер за Коротки видеа</string>
@@ -1469,16 +1491,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow временно не е наличен (код на състоянието: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow временно не е наличен</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Версията е фалшира</string>
-  <string name="morphe_loop_video_summary_on">Версията не е фалшира</string>
-  <string name="morphe_loop_video_summary_off">Видео не ще се повтаря</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Цел на фалшира версия на приложението</string>
-  <string name="morphe_loop_video_button_summary_on">Бутона за повторение на видеоклипа е показан</string>
-  <string name="morphe_loop_video_button_summary_off">Бутона за повторение на видеоклипа не е показан</string>
-  <string name="morphe_loop_video_button_toast_on">Видео в цикъл е включено</string>
-  <string name="morphe_loop_video_button_toast_off">Промянете стартова страница</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">По подразбиране</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размерите на устройството са подправени
@@ -1555,7 +1567,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Влачене и пускане е изключено</string>
   <string name="morphe_custom_playback_speeds_auto">Auto</string>
   <string name="morphe_speed_tap_and_hold_title">Изключете хоризонтално влачене движение</string>
-  <string name="morphe_speed_tap_and_hold_summary">Хоризонтално влачене движение е изключено</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Скорост на възпроизвеждане между 0-8
+
+Ако 0, докосване и задържане на скоростта е забранено"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запомнете промените в скоростта на възпроизвеждане</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Скрийте бутоните за надграждане</string>

@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">שפת היישום</string>
   <string name="morphe_pref_import_export_title">ייבוא / ייצוא</string>
   <string name="morphe_pref_import_export_summary">ייבוא / ייצוא הגדרות Morphe</string>
+  <string name="morphe_settings_import_file">ייבוא מתוך קובץ</string>
+  <string name="morphe_settings_import_file_success">ההגדרות יובאו בהצלחה, הקש שמור כדי להחיל</string>
+  <string name="morphe_settings_import_file_failed">נכשל ייבוא הגדרות</string>
+  <string name="morphe_settings_export_file">ייצוא לקובץ</string>
+  <string name="morphe_settings_export_file_success">הגדרות יובאו בהצלחה</string>
+  <string name="morphe_settings_export_file_failed">נכשל לייצא הגדרות</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">אתה משתמש בגרסה האחרונה של Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">אתה משתמש בגרסת Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;עדכון זמין: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;כדי לעדכן את התיקונים שלך, השתמש ב-Morphe כדי לתקן מחדש את האפליקציה הזו</string>
@@ -69,6 +75,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">אתר אינטרנט</string>
   <string name="morphe_settings_about_links_donate">תרומה</string>
   <string name="morphe_settings_about_links_translations">תרגומים</string>
+  <string name="morphe_settings_about_links_credits">קרדיטים</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">עדכני</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">עדכון Morphe זמין</string>
+  <string name="morphe_settings_about_contributors_current">פיתוח נוכחי</string>
+  <string name="morphe_settings_about_contributors_prior">פיתוח קודם</string>
+  <string name="morphe_settings_about_links_morphe">פיתוח פעיל</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">טוען...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">איתור באגים</string>
   <string name="morphe_debug_screen_summary">הפעל או השבת אפשרויות לאיתור באגים</string>
@@ -121,4 +137,13 @@ Second \"item\" text"</string>
 
 תMouseEvent על הלחצן 'המשך' ואפשר שינויי מיטוב."</string>
   <string name="gms_core_dialog_continue_text">המשך</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">תיבת דו-שיח אופטימיזציית סוללה</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">לא מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ביטול האפשרות יסתר את ההודעה של MicroG לאופטימיזציית הסוללה.
+
+אם הגדרות האופטימיזציה של הסוללה לא ישונו, ייתכן שתחוו:
+• האפליקציה עלולה להיסגר באופן אקראי
+• התראות עלולות לא לעבוד
+• השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
 </resources>

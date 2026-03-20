@@ -96,7 +96,11 @@ private val sponsorBlockResourcePatch = resourcePatch {
             copyResources("sponsorblock", resourceGroup)
         }
 
-        addTopControl("sponsorblock")
+        addTopControl(
+            "sponsorblock",
+            "@+id/morphe_sb_voting_button",
+            "@+id/morphe_sb_create_segment_button"
+        )
     }
 }
 
@@ -230,8 +234,8 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Initialize the SponsorBlock view.
         ControlsOverlayFingerprint.match(LayoutConstructorFingerprint.originalClassDef).let {
-            val checkCastIndex = it.instructionMatches.last().index
             it.method.apply {
+                val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
                 addInstruction(
                     checkCastIndex + 1,

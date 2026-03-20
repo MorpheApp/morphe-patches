@@ -474,6 +474,21 @@ Second \"item\" text"</string>
 
 पैकेज नाम को सही और एप्लिकेशन को स्थापित किया गया है, यह सुनिश्चित करें"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज का नाम खाली नहीं हो सकता</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">लूप वीडियो सक्षम करें</string>
+  <string name="morphe_loop_video_summary_on">वीडियो लूप होगा</string>
+  <string name="morphe_loop_video_summary_off">वीडियो लूप नहीं होगा</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">वीडियो लूप बटन दिखाएं</string>
+  <string name="morphe_loop_video_button_summary_on">वीडियो लूप बटन दिखाई देता है</string>
+  <string name="morphe_loop_video_button_summary_off">वीडियो लूप बटन दिखाई नहीं देता है</string>
+  <string name="morphe_loop_video_button_toast_on">वीडियो लूप चालू है</string>
+  <string name="morphe_loop_video_button_toast_off">वीडियो लूप बंद है</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">वीडियो रीलोड बटन दिखाएँ</string>
+  <string name="morphe_reload_video_summary_on">रीलोड वीडियो बटन दिखाया गया है</string>
+  <string name="morphe_reload_video_summary_off">रीलोड वीडियो बटन नहीं दिखाया गया है</string>
+  <string name="morphe_dismiss_player_not_available_toast">वीडियो आईडी उपलब्ध नहीं है। कृपया वीडियो को मैन्युअल रूप से फिर से खोलें।</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">प्रकृतिक खोज गेस्टर को अक्षम करना</string>
@@ -1286,11 +1301,17 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_change_form_factor_user_dialog_message">"परिवर्तनों में शामिल हैं:
 
 टैबलेट लेआउट
-• सामुदायिक पोस्ट छिपा दिए गए हैं
+• समुदाय पोस्ट्स छिपे हुए हैं
+• फ़ीड में प्लेबैक सेटिंग उपलब्ध नहीं है
+• शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
+• वीडियो एक्शन बार संकुचित नहीं होता है
 
 ऑटोमोटिव लेआउट
+• फ़ीड विषयों और चैनलों द्वारा व्यवस्थित है
+• फ़ीड में प्लेबैक सेटिंग उपलब्ध नहीं है
+• शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
 • शॉर्ट्स नियमित प्लेयर में खुलते हैं
-• फ़ीड विषयों और चैनलों के अनुसार व्यवस्थित है"</string>
+• वीडियो एक्शन बार संकुचित नहीं होता है"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof ऐप संस्करण</string>
   <string name="morphe_spoof_app_version_summary_on">संस्करण Spoofed</string>
@@ -1345,10 +1366,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
 सीमा: टूलबार पर बैक बटन का उपयोग काम नहीं कर सकता है"</string>
   <string name="morphe_change_start_page_always_summary_off">शुरुआत पृष्ठ केवल ऐप स्टार्टअप पर बदला जाता है</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">रीज़्यूमिंग शॉर्ट्स प्लेयर को अक्षम करें</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">ऐप स्टार्टअप पर शॉर्ट्स प्लेयर फिर से शुरू नहीं होगा</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">ऐप स्टार्टअप पर शॉर्ट्स प्लेयर फिर से शुरू होगा</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">स्टार्टअप पर शॉर्ट्स फिर से शुरू करना अक्षम करें</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">ऐप स्टार्टअप पर शॉर्ट्स फिर से शुरू नहीं होंगे</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">ऐप स्टार्टअप पर शॉर्ट्स फिर से शुरू होंगे</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">इसके साथ शॉर्ट्स खोलें</string>
   <string name="morphe_shorts_player_type_shorts">शॉर्ट्स प्लेयर</string>
@@ -1477,16 +1498,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow अस्थायी रूप से उपलब्ध नहीं है (स्थिति कोड: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow अस्थायी रूप से उपलब्ध नहीं है</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">लूप वीडियो सक्षम करें</string>
-  <string name="morphe_loop_video_summary_on">वीडियो लूप होगा</string>
-  <string name="morphe_loop_video_summary_off">वीडियो लूप नहीं होगा</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">वीडियो लूप बटन दिखाएं</string>
-  <string name="morphe_loop_video_button_summary_on">वीडियो लूप बटन दिखाई देता है</string>
-  <string name="morphe_loop_video_button_summary_off">वीडियो लूप बटन दिखाई नहीं देता है</string>
-  <string name="morphe_loop_video_button_toast_on">वीडियो लूप चालू है</string>
-  <string name="morphe_loop_video_button_toast_off">वीडियो लूप बंद है</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">डिवाइस आयामों को स्पूफ करें</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"डिवाइस डिमेंशन स्पॉफ किया जाता है
@@ -1565,7 +1576,9 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">अमान्य कस्टम प्लेबैक स्पीड</string>
   <string name="morphe_custom_playback_speeds_auto">स्वचालित</string>
   <string name="morphe_speed_tap_and_hold_title">कस्टम टैप और होल्ड स्पीड</string>
-  <string name="morphe_speed_tap_and_hold_summary">0-8 के बीच प्लेबैक स्पीड</string>
+  <string name="morphe_speed_tap_and_hold_summary">"0-8 के बीच प्लेबैक गति
+
+यदि 0 है, तो टैप और होल्ड गति अक्षम है"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">प्लेबैक स्पीड परिवर्तन याद रखें</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">प्लेबैक स्पीड परिवर्तन सभी वीडियो पर लागू होते हैं</string>

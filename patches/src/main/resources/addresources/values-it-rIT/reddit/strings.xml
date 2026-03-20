@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Pubblicità</string>
+  <string name="morphe_hide_post_ads_title">Nascondi gli annunci nel feed</string>
+  <string name="morphe_hide_post_ads_summary">Nasconde gli annunci nel feed</string>
+  <string name="morphe_hide_comment_ads_title">Nascondi gli annunci nei commenti</string>
+  <string name="morphe_hide_comment_ads_summary">Nasconde gli annunci nella sezione commenti</string>
+  <string name="morphe_screen_layout_title">Layout</string>
+  <string name="morphe_disable_modern_home_title">Disabilita la schermata principale moderna</string>
+  <string name="morphe_disable_modern_home_summary">Disabilita l\'interfaccia utente della schermata principale moderna</string>
+  <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di screenshot</string>
+  <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue lo screenshot</string>
+  <string name="morphe_hide_answers_button_title">Nascondi il pulsante Risposte</string>
+  <string name="morphe_hide_answers_button_summary">Nasconde il pulsante Risposte nella barra di navigazione</string>
+  <string name="morphe_hide_chat_button_title">Nascondi il pulsante Chat</string>
+  <string name="morphe_hide_chat_button_summary">Nasconde il pulsante Chat nella barra di navigazione</string>
+  <string name="morphe_hide_create_button_title">Nascondi il pulsante Crea</string>
+  <string name="morphe_hide_create_button_summary">Nasconde il pulsante Crea nella barra di navigazione</string>
+  <string name="morphe_hide_discover_button_title">Nascondi il pulsante Scopri o Community</string>
+  <string name="morphe_hide_discover_button_summary">Nasconde il pulsante Scopri o Community nella barra di navigazione</string>
+  <string name="morphe_hide_games_button_title">Nascondi il pulsante Giochi</string>
+  <string name="morphe_hide_games_button_summary">Nasconde il pulsante Giochi nella barra di navigazione</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Nascondi lo scaffale Visitati di recente</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Nasconde lo scaffale Visitati di recente nella barra laterale</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Nascondi lo scaffale Giochi su Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Nasconde lo scaffale Giochi su Reddit nella barra laterale</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Nascondi lo scaffale Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Nasconde lo scaffale Reddit Pro nella barra laterale</string>
+  <string name="morphe_hide_about_shelf_title">Nascondi lo scaffale Informazioni</string>
+  <string name="morphe_hide_about_shelf_summary">Nasconde lo scaffale Informazioni nella barra laterale</string>
+  <string name="morphe_hide_resources_shelf_title">Nascondi lo scaffale Risorse</string>
+  <string name="morphe_hide_resources_shelf_summary">Nasconde lo scaffale Risorse nella barra laterale</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Nascondi community consigliate</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Nasconde gli scaffali delle community consigliate nei subreddit</string>
+  <string name="morphe_hide_trending_today_shelf_title">Nascondi lo scaffale Oggi in tendenza</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Nasconde lo scaffale Oggi in tendenza dai suggerimenti di ricerca
+
+Limitazione: I separatori visivi potrebbero non essere nascosti"</string>
+  <string name="morphe_remove_notification_dialog_title">Rimuovi il dialogo di suggerimento della notifica</string>
+  <string name="morphe_remove_notification_dialog_summary">Rimuove il dialogo di suggerimento delle notifiche che appare quando si visita un subreddit accettandolo automaticamente</string>
+  <string name="morphe_show_view_count_title">Mostra il numero di visualizzazioni</string>
+  <string name="morphe_show_view_count_summary">"Mostra il numero di visualizzazioni dei Post
+
+Limitazione: visualizzato solo se la risposta API include il numero di visualizzazioni"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Rimuovi il dialogo di avviso NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Rimuove il dialogo di avviso NSFW che appare quando si visita un subreddit accettandolo automaticamente</string>
+  <string name="morphe_screen_miscellaneous_title">Varie</string>
+  <string name="morphe_about_title">A proposito di</string>
+  <string name="morphe_about_summary">Versione patch e link ufficiali</string>
+  <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
+  <string name="morphe_sanitize_sharing_links_summary">Sanifica i link di condivisione rimuovendo i parametri di tracciamento</string>
+  <string name="morphe_open_links_directly_title">Apri i link direttamente</string>
+  <string name="morphe_open_links_directly_summary">Salta gli URL di reindirizzamento nei link esterni</string>
+</resources>

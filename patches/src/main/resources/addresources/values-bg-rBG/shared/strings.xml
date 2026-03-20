@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Език на приложението</string>
   <string name="morphe_pref_import_export_title">Импорт / Експорт</string>
   <string name="morphe_pref_import_export_summary">Импорт / Експор на настройките на Morphe</string>
+  <string name="morphe_settings_import_file">Импортиране от файл</string>
+  <string name="morphe_settings_import_file_success">Настройките бяха импортирани успешно, докоснете Запази, за да ги приложите</string>
+  <string name="morphe_settings_import_file_failed">Неуспешно импортиране на настройки</string>
+  <string name="morphe_settings_export_file">Експортиране във файл</string>
+  <string name="morphe_settings_export_file_success">Успешно експортирани настройки</string>
+  <string name="morphe_settings_export_file_failed">Неуспешно експортиране на настройки</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Вие използвате последната версия на Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Използвате Morphe Patches версия &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Достъпна е нова версия: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;За да актуализирате пачовете си, използвайте Morphe, за да направите повторен пач на това приложение.</string>
@@ -69,6 +75,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Уебсайт</string>
   <string name="morphe_settings_about_links_donate">Дарение</string>
   <string name="morphe_settings_about_links_translations">Преводи</string>
+  <string name="morphe_settings_about_links_credits">Кредити</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Актуален</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Налично обновение</string>
+  <string name="morphe_settings_about_contributors_current">Текуща разработка</string>
+  <string name="morphe_settings_about_contributors_prior">Разработка в миналото</string>
+  <string name="morphe_settings_about_links_morphe">Активна разработка</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отстраняване на грешки</string>
   <string name="morphe_debug_screen_summary">Активиране или деактивиране на отстраняването на грешки</string>
@@ -121,4 +136,13 @@ Second \"item\" text"</string>
 
 Докоснете бутона за продължаване и разрешете промени в оптимизацията."</string>
   <string name="gms_core_dialog_continue_text">Продължи</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Диалогово прозорец за оптимизация на батерията</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Показва се диалогов прозорец за оптимизация на батерията MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Не се показва диалогов прозорец за оптимизация на батерията MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Деактивирането на това ще скрие подканата за оптимизация на батерията MicroG.
+
+Ако оптимизациите на батерията не бъдат променени, може да изпитате:
+• Приложението може случайно да се затвори
+• Известията може да не работят
+• Възпроизвеждането във фонов режим може да не работи"</string>
 </resources>

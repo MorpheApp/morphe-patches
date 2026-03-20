@@ -1,8 +1,12 @@
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
+
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 final class DescriptionComponentsFilter extends Filter {
@@ -124,20 +128,17 @@ final class DescriptionComponentsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        // The description panel can be opened in both the regular player and Shorts.
-        // If the description panel is opened in a Shorts, PlayerType is 'HIDDEN',
-        // so 'PlayerType.getCurrent().isMaximizedOrFullscreen()' does not guarantee that the description panel is open.
-        // Instead, use the engagement id to check if the description panel is opened.
-        if (!EngagementPanel.isDescription()) {
-            return false;
-        }
-
-        // PlayerType when the description panel is opened: [NONE], [HIDDEN],
-        // [WATCH_WHILE_MAXIMIZED], [WATCH_WHILE_FULLSCREEN], [WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN].
-        PlayerType playerType = PlayerType.getCurrent();
-        if (!playerType.isNoneOrHidden() && !playerType.isMaximizedOrFullscreen()) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
+        // Immediately after the layout is refreshed, litho components are updated before the UI is drawn.
+        // In this case, EngagementPanel.isDescription() cannot be used, and isActionBarVisible.get() should be used.
+        if (!EngagementPanel.isDescription() && !(PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get() || ShortsPlayerState.isOpen())) {
             return false;
         }
 

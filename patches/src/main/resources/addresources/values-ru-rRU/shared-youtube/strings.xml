@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Название приложения</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
@@ -102,8 +104,8 @@ Second \"item\" text"</string>
 • Воспроизведение не удается, если хеш JavaScript проигрывателя отменен в GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Обновление JavaScript плеера включено</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Хеши JavaScript плеера действительны примерно один месяц, а устаревший хеш может быть отменен GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Хеш JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Введите допустимый хеш JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Хеш JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Введите допустимый хеш JavaScript плеера</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Отключить протокол QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Протокол QUIC отключен</string>
@@ -117,7 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_summary_on">Используется оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary_off">Используется звуковая дорожка по умолчанию</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Для использования этой функции измените клиент в \"Подмене видеопотоков\" на любой, кроме Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Чтобы использовать эту функцию, измените \"Подмена видео потоков\" на Android Reel или TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очищать ссылки для обмена</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Параметр отслеживания запросов удален из ссылок для обмена</string>

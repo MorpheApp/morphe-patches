@@ -474,6 +474,21 @@ Beperkingen:
 
 Controleer of de pakketnaam correct is en de app is geïnstalleerd"</string>
   <string name="morphe_external_downloader_empty_warning">De pakketnaam kan niet leeg zijn</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Loopvideo inschakelen</string>
+  <string name="morphe_loop_video_summary_on">Video zal herhalen</string>
+  <string name="morphe_loop_video_summary_off">Video zal niet herhalen</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Knop voor loopvideo weergeven</string>
+  <string name="morphe_loop_video_button_summary_on">Knop om video te herhalen wordt weergegeven</string>
+  <string name="morphe_loop_video_button_summary_off">Knop om video te herhalen wordt niet weergegeven</string>
+  <string name="morphe_loop_video_button_toast_on">Loopvideo is ingeschakeld</string>
+  <string name="morphe_loop_video_button_toast_off">Loopvideo is uitgeschakeld</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Toon de knop voor het opnieuw laden van de video</string>
+  <string name="morphe_reload_video_summary_on">De knop voor het opnieuw laden van de video wordt weergegeven</string>
+  <string name="morphe_reload_video_summary_off">De knop voor het opnieuw laden van de video wordt niet weergegeven</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video-id is niet beschikbaar. Open de video handmatig opnieuw.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Precisie-zoekbeweging uitschakelen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Beweging is uitgeschakeld</string>
@@ -1290,11 +1305,17 @@ Klaar om in te dienen?"</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Wijzigingen omvatten:
 
 Tablet lay-out
-• Community posts zijn verborgen
+• Communityberichten zijn verborgen
+• Afspelen in feeds-instelling is niet beschikbaar
+• Remix-knop en Geluidsknop zijn niet beschikbaar in Shorts
+• Videobalk is niet ingeklapt
 
-Automotive lay-out
-• Shorts worden geopend in de normale speler
-• Feed is georganiseerd op onderwerp en kanalen"</string>
+Auto lay-out
+• Feed is georganiseerd per onderwerpen en kanalen
+• Afspelen in feeds-instelling is niet beschikbaar
+• Remix-knop en Geluidsknop zijn niet beschikbaar in Shorts
+• Shorts openen in de reguliere speler
+• Videobalk is niet ingeklapt"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-versie vervalsen</string>
   <string name="morphe_spoof_app_version_summary_on">Versie vervalst</string>
@@ -1347,10 +1368,10 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_change_start_page_always_title">Startpagina altijd wijzigen</string>
   <string name="morphe_change_start_page_always_summary_on">"De startpagina wordt altijd gewijzigd\n\nBeperking: Het gebruik van de terugknop op de werkbalk werkt mogelijk niet"</string>
   <string name="morphe_change_start_page_always_summary_off">Startpagina wordt alleen gewijzigd bij het opstarten van de app</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Schakel het hervatten van Shorts-speler uit</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-speler wordt niet hervat bij het opstarten van de app</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-speler wordt hervat bij het opstarten van de app</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Shorts hervatten uitschakelen bij opstarten</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts worden niet hervat bij het opstarten van de app</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts worden hervat bij het opstarten van de app</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts openen met</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-speler</string>
@@ -1479,16 +1500,6 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow is tijdelijk niet beschikbaar (statuscode: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow is tijdelijk niet beschikbaar</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Loopvideo inschakelen</string>
-  <string name="morphe_loop_video_summary_on">Video zal herhalen</string>
-  <string name="morphe_loop_video_summary_off">Video zal niet herhalen</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Knop voor loopvideo weergeven</string>
-  <string name="morphe_loop_video_button_summary_on">Knop om video te herhalen wordt weergegeven</string>
-  <string name="morphe_loop_video_button_summary_off">Knop om video te herhalen wordt niet weergegeven</string>
-  <string name="morphe_loop_video_button_toast_on">Loopvideo is ingeschakeld</string>
-  <string name="morphe_loop_video_button_toast_off">Loopvideo is uitgeschakeld</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoof apparaatdimensies</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Apparaatdimensies gespoofed
@@ -1567,7 +1578,9 @@ Het inschakelen hiervan kan hogere videokwaliteiten ontgrendelen"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Ongeldige aangepaste afspeelsnelheden</string>
   <string name="morphe_custom_playback_speeds_auto">Automatisch</string>
   <string name="morphe_speed_tap_and_hold_title">De snelheid van aangepast tikken en vasthouden</string>
-  <string name="morphe_speed_tap_and_hold_summary">Afspeelsnelheid tussen 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Afspeelsnelheid tussen 0-8
+
+Als 0, tik en houd snelheidsfunctie is uitgeschakeld"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Onthoud wijzigingen in afspeelsnelheid</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Wijzigingen in afspeelsnelheid worden op alle video\'s toegepast</string>

@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Промени боју мини плејера</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Боја мини плејера одговара плејеру преко целог екрана</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Мини плејер користи подразумевану боју</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Покажи дугме наредно у мини-плеерима</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Дугме наредно је приказано у мини-плеерима</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Дугме наредно није приказано у мини-плеерима</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Покажи претходну дугмад у мини-плеера</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Претходно дугме је приказано у мини-плеера</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Претходно дугме није приказано у мини-плеера</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Омогући принудни мини-плејер</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Мини-плејер остаје минимизиран приликом промене репродукције</string>

@@ -474,6 +474,21 @@ Omezení:
 
 Zkontrolujte, zda je název balíčku správný a aplikace je nainstalována"</string>
   <string name="morphe_external_downloader_empty_warning">Název balíčku nemůže být prázdný</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Povolit smyčku videa</string>
+  <string name="morphe_loop_video_summary_on">Video se bude přehrávat ve smyčce</string>
+  <string name="morphe_loop_video_summary_off">Video se nebude přehrávat ve smyčce</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Zobrazit tlačítko pro smyčku videa</string>
+  <string name="morphe_loop_video_button_summary_on">Menu Opakování videa je zobrazeno</string>
+  <string name="morphe_loop_video_button_summary_off">Menu Opakování videa je zobrazeno</string>
+  <string name="morphe_loop_video_button_toast_on">Smyčka videa je zapnuta</string>
+  <string name="morphe_loop_video_button_toast_off">Smyčka videa je vypnuta</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Zobrazit tlačítko pro obnovení videa</string>
+  <string name="morphe_reload_video_summary_on">Tlačítko pro obnovení videa je zobrazeno</string>
+  <string name="morphe_reload_video_summary_off">Tlačítko pro obnovení videa není zobrazeno</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID videa je nedostupné. Prosím, video ručně znovu otevřete.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázat přesné gesto pro vyhledávání</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Přesné gesto pro vyhledávání je zakázáno</string>
@@ -1289,12 +1304,18 @@ Připraveni k odeslání?"</string>
   <string name="morphe_change_form_factor_entry_4">Automobilový</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Změny zahrnují:
 
-Rozvržení tabletu
-• Příspěvky komunity jsou skryté
+Rozložení pro tablet
+• Komunitní příspěvky jsou skryté
+• Nastavení přehrávání v kanálech není k dispozici
+• Tlačítko Remix a tlačítko Zvuk nejsou k dispozici ve Shorts
+• Akční lišta videa není složená
 
-Rozvržení automobilu
+Rozložení pro automobil
+• Kanál je uspořádán podle témat a kanálů
+• Nastavení přehrávání v kanálech není k dispozici
+• Tlačítko Remix a tlačítko Zvuk nejsou k dispozici ve Shorts
 • Shorts se otevírají v běžném přehrávači
-• Kanál je uspořádán podle témat a kanálů"</string>
+• Akční lišta videa není složená"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
   <string name="morphe_spoof_app_version_summary_on">Verze napodobena</string>
@@ -1349,10 +1370,10 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
 
 Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</string>
   <string name="morphe_change_start_page_always_summary_off">Úvodní stránka se změní pouze při spuštění aplikace</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Zakázat obnovení přehrávače Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Přehrávač Shorts nebude obnoven při spuštění aplikace</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Přehrávač Shorts se po spuštění aplikace znovu spustí</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Vypnout obnovování Shorts při spuštění</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts se při spuštění aplikace nebudou obnovovat</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts se při spuštění aplikace znovu spustí</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Otevřít Shorts s</string>
   <string name="morphe_shorts_player_type_shorts">Přehrávač Shorts</string>
@@ -1481,16 +1502,6 @@ Klepnutím sem se dozvíte více o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow je dočasně nedostupný (kód stavu: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow je dočasně nedostupný</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Povolit smyčku videa</string>
-  <string name="morphe_loop_video_summary_on">Video se bude přehrávat ve smyčce</string>
-  <string name="morphe_loop_video_summary_off">Video se nebude přehrávat ve smyčce</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Zobrazit tlačítko pro smyčku videa</string>
-  <string name="morphe_loop_video_button_summary_on">Menu Opakování videa je zobrazeno</string>
-  <string name="morphe_loop_video_button_summary_off">Menu Opakování videa je zobrazeno</string>
-  <string name="morphe_loop_video_button_toast_on">Smyčka videa je zapnuta</string>
-  <string name="morphe_loop_video_button_toast_off">Smyčka videa je vypnuta</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Napodobovat rozměry zařízení</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Rozměry zařízení jsou zfalšovány
@@ -1569,7 +1580,9 @@ Povolením této funkce lze odemknout vyšší kvality videa"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Neplatné vlastní rychlosti přehrávání</string>
   <string name="morphe_custom_playback_speeds_auto">Automaticky</string>
   <string name="morphe_speed_tap_and_hold_title">Vlastní rychlost stisknutí a podržení</string>
-  <string name="morphe_speed_tap_and_hold_summary">Rychlost přehrávání 0 až 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Rychlost přehrávání mezi 0-8
+
+Pokud je 0, dotykové a podržení rychlosti je vypnuto"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Pamatovat si změny rychlosti přehrávání</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Změny rychlosti přehrávání se vztahují na všechna videa</string>

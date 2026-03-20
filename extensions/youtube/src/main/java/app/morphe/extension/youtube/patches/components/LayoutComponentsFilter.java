@@ -4,11 +4,14 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
+import static app.morphe.extension.shared.Utils.getFilterStrings;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_10_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
@@ -23,15 +26,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -47,26 +49,8 @@ public final class LayoutComponentsFilter extends Filter {
             "&list="
     );
 
-    private static final List<String> channelTabFilterStrings;
-    private static final List<String> flyoutMenuFilterStrings;
-    static {
-        channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
-        flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
-    }
-
-    private static List<String> getFilterStrings(StringSetting setting) {
-        String[] filterArray = setting.get().split("\\n");
-        List<String> filters = new ArrayList<>(filterArray.length);
-
-        for (String line : filterArray) {
-            String trimmed = line.trim();
-            if (!trimmed.isEmpty()) {
-                filters.add(trimmed);
-            }
-        }
-
-        return filters;
-    }
+    private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
+    private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;
@@ -373,8 +357,14 @@ public final class LayoutComponentsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         // This identifier is used not only in players but also in search results:
         // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
         // From 2025, the medical information panel is no longer shown in the search results.
@@ -393,15 +383,9 @@ public final class LayoutComponentsFilter extends Filter {
             return channelProfileGroupList.check(accessibility).isFiltered();
         }
 
-        if (matchedGroup == communityPosts
-                && NavigationBar.isBackButtonVisible()
-                && !NavigationBar.isSearchBarActive()
-                && PlayerType.getCurrent() != PlayerType.WATCH_WHILE_MAXIMIZED) {
-            // Allow community posts on channel profile page,
-            // or if viewing an individual channel in the feed.
-            return false;
+        if (matchedGroup == communityPosts) {
+            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
-
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
 
@@ -508,13 +492,24 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static int hideInRelatedVideos(int height) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
+                ? 0
+                : height;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED || original;
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideInRelatedVideos(View chipView) {
-        // Cannot use 0dp hide with later targets, otherwise the suggested videos
-        // can be shown in full screen mode.
-        // This behavior may also be present in earlier app targets.
-        if (IS_20_21_OR_GREATER) {
-            // FIXME: The filter bar is still briefly shown when dragging the suggested videos
-            //        below the video player.
+        if (IS_20_10_OR_GREATER) {
             Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
         } else {
             Utils.hideViewBy0dpUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);

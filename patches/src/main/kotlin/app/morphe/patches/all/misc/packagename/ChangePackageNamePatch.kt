@@ -4,9 +4,12 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 package app.morphe.patches.all.misc.packagename
 
+import app.morphe.patcher.PackageMetadata
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -170,13 +173,24 @@ val changePackageNamePatch = resourcePatch(
 
     dependsOn(bytecodePatch {
         execute {
-            when (val originalPackageName = packageMetadata.packageName) {
-                PACKAGE_NAME_REDDIT -> {
-                    applyGetPackageName(
-                        originalPackageName,
-                        "Lcom/google/android/recaptcha/internal"
-                    )
+            try {
+                when (val originalPackageName = packageMetadata.packageName) {
+                    PACKAGE_NAME_REDDIT -> {
+                        applyGetPackageName(
+                            originalPackageName,
+                            "Lcom/google/android/recaptcha/internal"
+                        )
+                    }
                 }
+            } catch (e: Throwable) {
+                // TODO: Eventually remove this check. Early versions of Morphe Manager
+                //       may not auto update if GitHub non auth API blocks the user ip.
+                throw RuntimeException(
+                    "\n\n#####################################\n\n" +
+                            "Your Morphe app is outdated. Please manually update Morphe " +
+                            "by downloading from https://morphe.software\n\n" +
+                            "#####################################\n\n"
+                )
             }
         }
     })

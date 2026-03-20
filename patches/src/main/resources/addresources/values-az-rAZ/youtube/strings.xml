@@ -421,6 +421,17 @@ Məhdudiyyətlər
 
 Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş ola bilməz</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
+  <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
+  <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Video təkrarlama düyməsini göstər</string>
+  <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
+  <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
+  <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
+  <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq axtarış jestini qapadın</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Jest qeyri-aktiv edilib</string>
@@ -1130,14 +1141,6 @@ Təqdim etməyə hazırdır?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Planşet</string>
   <string name="morphe_change_form_factor_entry_4">Avtomobil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Dəyişikliklər ehtiva edir:
-
-Planşet tərtibatı
-• İcma elanları gizlədilib
-
-Avtomobil tərtibatı
-• Shorts müntəzəm oynadıcıda açılır
-• Axın mövzular və kanallardan ibarətdir"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Tətbiq versiyasını saxtalaşdır</string>
   <string name="morphe_spoof_app_version_summary_on">Versiya saxtalaşdırıldı</string>
@@ -1182,10 +1185,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
 
 Məhdudiyyət: Alətlər cizgisindəki geri düyməsin istifadə işləməyə bilər"</string>
   <string name="morphe_change_start_page_always_summary_off">Başlatma səhifəsi yalnız tətbiq işə salındıqda dəyişdirilir</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Shorts oynadıcı başladıcını qapat</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Tətbiq açılanda Shorts oynadıcı davam etməyəcək</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Tətbiq açılanda Shorts oynadıcı davam edəcək</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts-u bununla aç</string>
   <string name="morphe_shorts_player_type_shorts">Shorts oynadıcı</string>
@@ -1314,16 +1314,6 @@ DeArrow haqqında ətraflı öyrənmək üçün bura toxun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow müvəqqəti mövcud deyil (status kodu: %s) </string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow müvəqqəti olaraq mövcud deyil</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
-  <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
-  <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Video təkrarlama düyməsini göstər</string>
-  <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
-  <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
-  <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
-  <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz ölçülərini saxtalaşdır</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Cihaz ölçüləri saxtalaşdırıldı
@@ -1399,7 +1389,6 @@ Bunu aktivləşdirmə daha yüksək video keyfiyyətləri əngəlin silə bilər
   <string name="morphe_custom_playback_speeds_parse_exception">Fərdi oynatma sürətləri etibarsızdır</string>
   <string name="morphe_custom_playback_speeds_auto">Avtomatik</string>
   <string name="morphe_speed_tap_and_hold_title">Xüsusi toxunma və saxlanılma sürəti</string>
-  <string name="morphe_speed_tap_and_hold_summary">0-8 arası oynatma sürəti</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Oynatma sürəti dəyişikliklərin xatırla</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Oynatma sürəti dəyişiklikləri bütün videolara aiddir</string>

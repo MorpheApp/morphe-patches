@@ -35,13 +35,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
 
     // Player
+    public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
+    public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final BooleanSetting CHANGE_MINIPLAYER_COLOR = new BooleanSetting("morphe_music_change_miniplayer_color", FALSE, true);
     public static final BooleanSetting ENABLE_FORCED_MINIPLAYER = new BooleanSetting("morphe_music_enable_forced_miniplayer", FALSE, true);
     public static final BooleanSetting PERMANENT_REPEAT = new BooleanSetting("morphe_music_play_permanent_repeat", FALSE, true);
 
     // Miscellaneous
     public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type",
-            ClientType.ANDROID_VR_1_47_48, true, parent(SPOOF_VIDEO_STREAMS));
+            ClientType.ANDROID_REEL, true, parent(SPOOF_VIDEO_STREAMS));
 
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
 

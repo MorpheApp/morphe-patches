@@ -82,8 +82,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_summary_on">動画下の展開可能なカードは表示されません</string>
   <string name="morphe_hide_expandable_card_summary_off">動画下の展開可能なカードは表示されます</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
-  <string name="morphe_hide_floating_microphone_button_summary_on">検索時の音声入力のフローティング ボタンは表示されません</string>
-  <string name="morphe_hide_floating_microphone_button_summary_off">検索時の音声入力のフローティング ボタンは表示されます</string>
+  <string name="morphe_hide_floating_microphone_button_summary_on">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されません</string>
+  <string name="morphe_hide_floating_microphone_button_summary_off">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されます</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"横スクロール欄は表示されません
 例:
@@ -475,6 +475,21 @@ Second \"item\" text"</string>
 
 パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
   <string name="morphe_external_downloader_empty_warning">パッケージ名は空欄にはできません</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
+  <string name="morphe_loop_video_summary_on">動画はループ再生されます</string>
+  <string name="morphe_loop_video_summary_off">動画はループ再生されません</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">動画のループ再生ボタンを表示</string>
+  <string name="morphe_loop_video_button_summary_on">プレーヤー オーバーレイに「動画のループ再生」ボタンが表示されます</string>
+  <string name="morphe_loop_video_button_summary_off">プレーヤー オーバーレイに「動画のループ再生」ボタンは表示されません</string>
+  <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
+  <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">動画の再読み込みボタンを表示</string>
+  <string name="morphe_reload_video_summary_on">動画の再読み込みボタンが表示されます</string>
+  <string name="morphe_reload_video_summary_off">動画の再読み込みボタンは表示されません</string>
+  <string name="morphe_dismiss_player_not_available_toast">動画 ID が利用できません。手動で動画を再度開いてください</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精密シーク ジェスチャーは無効です。シークバーを上へスワイプしても、「再生位置の細かい調整」モードにはなりません</string>
@@ -707,8 +722,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">作成ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">作成ボタンは表示されます</string>
   <string name="morphe_hide_toolbar_microphone_button_title">音声検索ボタンを非表示</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_on">音声検索ボタンは表示されません</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_off">音声検索ボタンは表示されます</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">音声検索ボタン (マイクアイコン) は表示されません</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">音声検索ボタン (マイクアイコン) は表示されます</string>
   <string name="morphe_hide_toolbar_notification_button_title">通知ボタンを非表示</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">通知ボタンは表示されません</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">通知ボタンは表示されます</string>
@@ -1292,10 +1307,16 @@ Second \"item\" text"</string>
 
 タブレット レイアウト
 • コミュニティ投稿が表示されない
+• YouTube の設定に「フィードで再生」が表示されない
+• ショート動画のリミックス ボタンとサウンドボタンが利用できない
+• アクション ボタンにボタン名が表示される
 
 Automotive レイアウト
-• ショート動画を通常のプレーヤーで開く
-• フィードがトピックやチャンネルごとに分類された形で表示される"</string>
+• フィードがトピックやチャンネルごとに分類された形で表示される
+• YouTube の設定に「フィードで再生」が表示されない
+• ショート動画のリミックス ボタンとサウンドボタンが利用できない
+• ショート動画が通常のプレーヤーで再生される
+• アクション ボタンにボタン名が表示される"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary_on">アプリのバージョンは偽装されています</string>
@@ -1350,10 +1371,10 @@ Automotive レイアウト
 
 制限事項: ツールバーの [戻る] ボタンが機能しない場合があります"</string>
   <string name="morphe_change_start_page_always_summary_off">スタート画面の変更はアプリの起動時にのみ適用されます</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">ショート プレーヤーの再開を無効化</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">ショート プレーヤーはアプリ起動時に再開されません</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">ショート プレーヤーはアプリ起動時に再開されます</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">起動時のショートの再開を無効化</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">アプリ起動時にショート動画の再生は再開されません</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">アプリ起動時にショート動画の再生が再開されます</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">ショート動画を開くプレーヤー</string>
   <string name="morphe_shorts_player_type_shorts">ショート プレーヤー</string>
@@ -1480,16 +1501,6 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow は一時的に利用できません (status code: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow は一時的に利用できません</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
-  <string name="morphe_loop_video_summary_on">動画はループ再生されます</string>
-  <string name="morphe_loop_video_summary_off">動画はループ再生されません</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">動画のループ再生ボタンを表示</string>
-  <string name="morphe_loop_video_button_summary_on">プレーヤー オーバーレイに「動画のループ再生」ボタンが表示されます</string>
-  <string name="morphe_loop_video_button_summary_off">プレーヤー オーバーレイに「動画のループ再生」ボタンは表示されません</string>
-  <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
-  <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"デバイスの画面サイズは偽装されています
@@ -1537,13 +1548,13 @@ Automotive レイアウト
   <string name="morphe_remember_video_quality_last_selected_toast_summary_on">デフォルトの画質が変更されたときに通知が表示されます</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary_off">デフォルトの画質が変更されたときに通知は表示されません</string>
   <string name="morphe_video_quality_default_wifi_title">デフォルトの画質 (Wi-Fi)</string>
-  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイルデータ)</string>
+  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイル)</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質の変更を保存</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_on">画質の変更はすべてのショート動画に適用されます</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary_off">画質の変更は現在のショート動画にのみ適用されます</string>
   <string name="morphe_shorts_quality_default_wifi_title">デフォルトのショートの画質 (Wi-Fi)</string>
-  <string name="morphe_shorts_quality_default_mobile_title">デフォルトのショートの画質 (モバイルデータ)</string>
-  <string name="morphe_remember_video_quality_mobile">携帯回線</string>
+  <string name="morphe_shorts_quality_default_mobile_title">デフォルトのショートの画質 (モバイル)</string>
+  <string name="morphe_remember_video_quality_mobile">モバイル</string>
   <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
   <string name="morphe_remember_video_quality_toast">デフォルトの画質の変更 (%1$s): %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">ショートの画質の変更 (%1$s): %2$s</string>
@@ -1564,11 +1575,13 @@ Automotive レイアウト
   <string name="morphe_restore_old_speed_menu_summary_off">新しいスタイルの再生速度メニューが表示されます</string>
   <string name="morphe_custom_playback_speeds_title">カスタム再生速度リスト</string>
   <string name="morphe_custom_playback_speeds_summary">カスタム再生速度リストを編集します</string>
-  <string name="morphe_custom_playback_speeds_invalid">再生速度は %s 未満でなければなりません</string>
+  <string name="morphe_custom_playback_speeds_invalid">再生速度は %s 以下でなければなりません</string>
   <string name="morphe_custom_playback_speeds_parse_exception">カスタム再生速度リストの値が無効です</string>
   <string name="morphe_custom_playback_speeds_auto">自動</string>
   <string name="morphe_speed_tap_and_hold_title">長押し倍速再生の速度</string>
-  <string name="morphe_speed_tap_and_hold_summary">再生速度の範囲は 0-8 で、0 および 8 は含まれません</string>
+  <string name="morphe_speed_tap_and_hold_summary">"再生速度の範囲は 0-8 です
+
+0 に設定すると、長押し倍速再生そのものが無効になります。"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">再生速度の変更を保存</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">再生速度の変更はすべての動画に適用されます</string>
@@ -1617,10 +1630,10 @@ Automotive レイアウト
 AV1 での動画再生は、カクつくまたはコマ落ちが発生する可能性があります。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽装による副作用</string>
   <string name="morphe_spoof_video_streams_about_experimental">• 実験的なクライアントであり、いつでも動作しなくなる可能性がある</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• 動画が 01:00 で停止する、または一部の地域で利用できない可能性がある</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">•「音声トラック」がフライアウト メニューに表示されない</string>
+  <string name="morphe_spoof_video_streams_about_playback_failure">• 動画が 01:00 で停止する可能性がある。また、一部の地域では再生できない可能性がある</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• フライアウト メニューに「音声トラック」が表示されない</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
-  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 没入モードが利用できない</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 動画では没入モードが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->

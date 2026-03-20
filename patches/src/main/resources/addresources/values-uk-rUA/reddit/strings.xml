@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Реклама</string>
+  <string name="morphe_hide_post_ads_title">Приховати рекламу у стрічці</string>
+  <string name="morphe_hide_post_ads_summary">Приховує рекламу у стрічці</string>
+  <string name="morphe_hide_comment_ads_title">Приховати рекламу у коментарях</string>
+  <string name="morphe_hide_comment_ads_summary">Приховує рекламу в розділі коментарів</string>
+  <string name="morphe_screen_layout_title">Макет</string>
+  <string name="morphe_disable_modern_home_title">Вимкнути сучасний домашній екран</string>
+  <string name="morphe_disable_modern_home_summary">Вимикає інтерфейс нового домашнього екрана</string>
+  <string name="morphe_disable_screenshot_popup_title">Вимкнути спливаюче вікно знімку екрана</string>
+  <string name="morphe_disable_screenshot_popup_summary">Вимикає спливаюче вікно, яке з\'являється під час створення знімка екрана</string>
+  <string name="morphe_hide_answers_button_title">Приховати кнопку \"Відповіді\"</string>
+  <string name="morphe_hide_answers_button_summary">Приховує кнопку \"Відповіді\" на панелі навігації</string>
+  <string name="morphe_hide_chat_button_title">Приховати кнопку \"Чат\"</string>
+  <string name="morphe_hide_chat_button_summary">Приховує кнопку \"Чат\" на панелі навігації</string>
+  <string name="morphe_hide_create_button_title">Приховати кнопку \"Створити\"</string>
+  <string name="morphe_hide_create_button_summary">Приховує кнопку \"Створити\" на панелі навігації</string>
+  <string name="morphe_hide_discover_button_title">Приховати кнопку \"Відкривати\" або \"Спільноти\"</string>
+  <string name="morphe_hide_discover_button_summary">Приховує кнопку \"Відкривати\" або \"Спільноти\" на панелі навігації</string>
+  <string name="morphe_hide_games_button_title">Приховати кнопку \"Ігри\"</string>
+  <string name="morphe_hide_games_button_summary">Приховує кнопку \"Ігри\" на панелі навігації</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Приховати полицю \"Нещодавно відвідані\"</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Приховує полицю \"Нещодавно відвідані\" в бічній панелі</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Приховати полицю \"Ігри на Reddit\"</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Приховує полицю \"Ігри на Reddit\" в бічній панелі</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Приховати полицю \"Reddit Pro\"</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Приховує полицю \"Reddit Pro\" в бічній панелі</string>
+  <string name="morphe_hide_about_shelf_title">Приховати полицю \"Про додаток\"</string>
+  <string name="morphe_hide_about_shelf_summary">Приховує полицю \"Про додаток\" в бічній панелі</string>
+  <string name="morphe_hide_resources_shelf_title">Приховати полицю \"Ресурси\"</string>
+  <string name="morphe_hide_resources_shelf_summary">Приховує полицю \"Ресурси\" в бічній панелі</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Приховати рекомендовані спільноти</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Приховує полиці з рекомендованими спільнотами у субреддітах</string>
+  <string name="morphe_hide_trending_today_shelf_title">Приховати полицю \"Тренди сьогодні\"</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Приховує полицю \"Тренди сьогодні\" з пропозицій пошуку
+
+Обмеження: Візуальні роздільники можуть не приховуватися"</string>
+  <string name="morphe_remove_notification_dialog_title">Видалити діалог пропозиції сповіщень</string>
+  <string name="morphe_remove_notification_dialog_summary">Видаляє діалог пропозиції сповіщень, який з’являється під час відвідування субреддіту, автоматично відхиляючи його</string>
+  <string name="morphe_show_view_count_title">Показати кількість переглядів</string>
+  <string name="morphe_show_view_count_summary">"Показує кількість переглядів для дописів
+
+Обмеження: Показується лише якщо відповідь API містить кількість переглядів"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Видалити діалог попередження NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Видаляє діалог попередження NSFW, який з’являється під час відвідування субреддіту, автоматично приймаючи його</string>
+  <string name="morphe_screen_miscellaneous_title">Різне</string>
+  <string name="morphe_about_title">Про Morphe</string>
+  <string name="morphe_about_summary">Версія патчів та офіційні посилання</string>
+  <string name="morphe_sanitize_sharing_links_title">Очищення посилань для поширення</string>
+  <string name="morphe_sanitize_sharing_links_summary">Вилучає параметри запиту відстеження з посилань під час поширення посилань</string>
+  <string name="morphe_open_links_directly_title">Відкривати посилання напряму</string>
+  <string name="morphe_open_links_directly_summary">Пропускає URL-переадресації у зовнішніх посиланнях</string>
+</resources>

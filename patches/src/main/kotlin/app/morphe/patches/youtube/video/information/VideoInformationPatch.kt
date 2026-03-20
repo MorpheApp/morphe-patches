@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.video.information
@@ -25,11 +27,13 @@ import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponsePlaylistId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
@@ -194,6 +198,9 @@ val videoInformationPatch = bytecodePatch(
         val videoIdMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoId(Ljava/lang/String;)V"
         hookVideoId(videoIdMethodDescriptor)
         hookBackgroundPlayVideoId(videoIdMethodDescriptor)
+        hookPlayerResponsePlaylistId(
+            "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponsePlaylistId(Ljava/lang/String;Z)V",
+        )
         hookPlayerResponseVideoId(
             "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
         )
@@ -226,7 +233,7 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the user playback speed selection.
          */
-        OnPlaybackSpeedItemClickFingerprint.match(OnPlaybackSpeedItemClickParentFingerprint.classDef).method.apply {
+        PlaybackSpeedOnItemClickFingerprint.match(PlaybackSpeedOnItemClickParentFingerprint.classDef).method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethodRef = WeakReference(this)
@@ -291,7 +298,7 @@ val videoInformationPatch = bytecodePatch(
             setPlaybackSpeedMethodIndex = 0
 
             // Add override playback speed method.
-            OnPlaybackSpeedItemClickFingerprint.classDef.methods.add(
+            PlaybackSpeedOnItemClickParentFingerprint.classDef.methods.add(
                 ImmutableMethod(
                     definingClass,
                     "overridePlaybackSpeed",

@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Мова застосунку</string>
   <string name="morphe_pref_import_export_title">Імпорт / Експорт налаштувань</string>
   <string name="morphe_pref_import_export_summary">Імпорт / Експорт налаштувань Morphe\n\nДля збереження налаштувань скопіюйте текст у вікні кнопкою \"Копіювати\" та збережіть його в текстовому файлі.\nДля відновлення налаштувань вставте у вікно збережений раніше текст та натисніть кнопку \"Імпортувати\"</string>
+  <string name="morphe_settings_import_file">Імпорт з файлу</string>
+  <string name="morphe_settings_import_file_success">Налаштування успішно імпортовано, натисніть \"Зберегти\", щоб застосувати</string>
+  <string name="morphe_settings_import_file_failed">Не вдалося імпортувати налаштування</string>
+  <string name="morphe_settings_export_file">Експорт до файлу</string>
+  <string name="morphe_settings_export_file_success">Налаштування успішно експортовано</string>
+  <string name="morphe_settings_export_file_failed">Не вдалося експортувати налаштування</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Ви використовуєте останню версію Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчінгу цього застосунку</string>
@@ -69,6 +75,17 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Вебсайт</string>
   <string name="morphe_settings_about_links_donate">Підтримати</string>
   <string name="morphe_settings_about_links_translations">Переклади</string>
+  <string name="morphe_settings_about_links_credits">Подяки</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальному стані</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Доступне оновлення</string>
+  <string name="morphe_settings_about_contributors_current">Поточна розробка</string>
+  <string name="morphe_settings_about_contributors_prior">Попередня розробка</string>
+  <string name="morphe_settings_about_links_morphe">Активна розробка</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Ліцензії відкритого коду</string>
+  <string name="morphe_settings_about_licenses_loading">Завантаження...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Налагодження</string>
   <string name="morphe_debug_screen_summary">Увімкнення або вимкнення параметрів налагодження</string>
@@ -121,4 +138,13 @@ Second \"item\" text"</string>
 
 Натисніть кнопку \"Продовжити\" та вимкніть оптимізацію."</string>
   <string name="gms_core_dialog_continue_text">Продовжити</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Діалогове вікно оптимізації батареї</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Діалогове вікно оптимізації батареї MicroG показується</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Діалогове вікно оптимізації батареї MicroG не показується</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Якщо вимкнути цю функцію, запит на оптимізацію батареї MicroG буде приховано.
+
+Якщо оптимізацію батареї не змінити, ви можете зіткнутися з такими проблемами:
+• Застосунок може випадково закриватися
+• Сповіщення можуть не працювати
+• Фонове відтворення може не працювати"</string>
 </resources>

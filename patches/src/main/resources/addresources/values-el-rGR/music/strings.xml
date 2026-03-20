@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Αλλαγή χρώματος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Το χρώμα της ελαχιστοποιημένης οθόνης αναπαραγωγής ταιριάζει με αυτό της οθόνης αναπαραγωγής πλήρους οθόνης</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Η ελαχιστοποιημένη οθόνη αναπαραγωγής χρησιμοποιεί το προεπιλεγμένο χρώμα</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Εμφάνιση κουμπιού Επόμενο στην έξυπνη αναπαραγωγή</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Το κουμπί Επόμενο εμφανίζεται στην έξυπνη αναπαραγωγή</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Το κουμπί Επόμενο δεν εμφανίζεται στην έξυπνη αναπαραγωγή</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Εμφάνιση προηγούμενου κουμπιού στο miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Το προηγούμενο κουμπί εμφανίζεται στο miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Το προηγούμενο κουμπί δεν εμφανίζεται στο miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Ενεργοποίηση αναγκασμένου miniplayer</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Το miniplayer παραμένει ελαχιστοποιημένο κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>

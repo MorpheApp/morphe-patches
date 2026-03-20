@@ -60,6 +60,12 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_language_DEFAULT">Sovelluksen kieli</string>
   <string name="morphe_pref_import_export_title">Tuonti/vienti</string>
   <string name="morphe_pref_import_export_summary">Tuo/vie Morphe-asetukset</string>
+  <string name="morphe_settings_import_file">Tuo tiedostosta</string>
+  <string name="morphe_settings_import_file_success">Asetusten tuonti onnistui, napauta Tallenna sovellettavaksi</string>
+  <string name="morphe_settings_import_file_failed">Asetusten tuonti epäonnistui</string>
+  <string name="morphe_settings_export_file">Vie tiedostoon</string>
+  <string name="morphe_settings_export_file_success">Asetukset on viety onnistuneesti</string>
+  <string name="morphe_settings_export_file_failed">Asetusten vienti epäonnistui</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Käytät uusinta Morphe Patchesin versiota &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Käytät Morphe Patchesin versiota &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Päivitys saatavilla: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Päivittääksesi muokkaukset, käytä Morphea muokataksesi tämän sovelluksen uudelleen</string>
@@ -69,6 +75,16 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_settings_about_links_website">Verkkosivusto</string>
   <string name="morphe_settings_about_links_donate">Lahjoita</string>
   <string name="morphe_settings_about_links_translations">Käännökset</string>
+  <string name="morphe_settings_about_links_credits">Kiitokset</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Ajantasainen</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Päivitys saatavilla</string>
+  <string name="morphe_settings_about_contributors_current">Nykyinen kehitys</string>
+  <string name="morphe_settings_about_contributors_prior">Aiempi kehitys</string>
+  <string name="morphe_settings_about_links_morphe">Käynnissä oleva kehitys</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Ladataan...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Virheenkorjaus</string>
   <string name="morphe_debug_screen_summary">Ota tai poista virheenkorjausasetukset käytöstä</string>
@@ -121,4 +137,13 @@ Akun optimoinnin poistamisella ei ole kielteistä vaikutusta akun kestoon.
 
 Napauta Jatka-painiketta ja salli muutokset optimointiin."</string>
   <string name="gms_core_dialog_continue_text">Jatka</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Akun optimointi -dialogi</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG:n akun optimointi -dialogi näytetään</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG:n akun optimointi -dialogi ei näytetä</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tämän poistaminen piilottaa MicroG:n akun optimointi -kehotteen.
+
+Jos akun optimointeja ei muuteta, voit kokea:
+• Sovellus saattaa sulkeutua satunnaisesti
+• Ilmoitukset eivät välttämättä toimi
+• Taustalla toistaminen ei välttämättä toimi"</string>
 </resources>

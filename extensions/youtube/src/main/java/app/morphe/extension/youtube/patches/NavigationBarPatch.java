@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.equalsAny;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
+import static app.morphe.extension.shared.settings.BaseActivityHook.MORPHE_SETTINGS_INTENT;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.app.Activity;
@@ -29,7 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
-import com.google.android.libraries.social.licenses.LicenseActivity;
+import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
@@ -589,9 +590,9 @@ public final class NavigationBarPatch {
 
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setData(Uri.parse("morphe_settings_intent"));
+            intent.setData(Uri.parse(MORPHE_SETTINGS_INTENT));
             intent.setPackage(context.getPackageName());
-            intent.setClass(context, LicenseActivity.class);
+            intent.setClass(context, GoogleApiActivity.class);
 
             if (activity == null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

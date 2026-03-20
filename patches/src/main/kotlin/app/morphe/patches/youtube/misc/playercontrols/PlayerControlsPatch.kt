@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.misc.playercontrols
@@ -23,6 +25,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
@@ -33,6 +37,7 @@ import app.morphe.util.returnEarly
 import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Node
 import java.lang.ref.WeakReference
 
@@ -41,8 +46,10 @@ import java.lang.ref.WeakReference
  */
 @Suppress("KDocUnresolvedReference")
 // Internal until this is modified to work with any patch (and not just SponsorBlock).
-internal lateinit var addTopControl: (String) -> Unit
+internal lateinit var addTopControl: (String, String, String) -> Unit
     private set
+
+private var insertElementId = "@id/player_video_heading"
 
 /**
  * Add a new bottom to the bottom of the YouTube player.
@@ -89,7 +96,7 @@ internal val playerControlsResourcePatch = resourcePatch {
             setAttribute("android:layout_width", "48.0dip")
         }
 
-        addTopControl = { resourceDirectoryName ->
+        addTopControl = { resourceDirectoryName, startElementId, endElementId ->
             val resourceFileName = "host/layout/youtube_controls_layout.xml"
             val hostingResourceStream = inputStreamFromBundledResource(
                 resourceDirectoryName,
@@ -97,21 +104,30 @@ internal val playerControlsResourcePatch = resourcePatch {
             ) ?: throw PatchException("Could not find $resourceFileName")
 
             val document = document("res/layout/youtube_controls_layout.xml")
+            val androidId = "android:id"
+            val androidLayoutToStartOf = "android:layout_toStartOf"
 
             "RelativeLayout".copyXmlNode(
                 document(hostingResourceStream),
                 document,
             ).use {
-                val element = document.childNodes.findElementByAttributeValueOrThrow(
-                    "android:id",
-                    "@id/player_video_heading",
+                val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
+                    androidId,
+                    insertElementId,
                 )
+                val endElement = document.childNodes.findElementByAttributeValueOrThrow(
+                    androidId,
+                    endElementId,
+                )
+                val insertElementLayoutToStartOf =
+                    insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue!!
 
-                // FIXME: This uses hard coded values that only works with SponsorBlock.
-                // If other top buttons are added by other patches, this code must be changed.
-                // voting button id from the voting button view from the youtube_controls_layout.xml host file
-                val votingButtonId = "@+id/morphe_sb_voting_button"
-                element.attributes.getNamedItem("android:layout_toStartOf").nodeValue = votingButtonId
+                insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
+                    startElementId
+                endElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
+                    insertElementLayoutToStartOf
+
+                insertElementId = endElementId
             }
         }
 
@@ -171,7 +187,7 @@ internal val playerControlsResourcePatch = resourcePatch {
 internal fun initializeTopControl(descriptor: String) {
     inflateTopControlMethodRef.get()!!.addInstruction(
         inflateTopControlInsertIndex++,
-        "invoke-static { v$inflateTopControlRegister }, $descriptor->initialize(Landroid/view/View;)V",
+        "invoke-static { v$inflateTopControlRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
     )
 }
 
@@ -327,10 +343,39 @@ val playerControlsPatch = bytecodePatch(
 
             if (is_20_28_or_greater) {
                 PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint.method.returnLate(false)
-            }
 
-            if (is_20_30_or_greater) {
-                PlayerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
+                if (is_20_30_or_greater) {
+                    PlayerControlsButtonStrokeFeatureFlagFingerprint.method.returnLate(false)
+
+                    if (is_20_40_or_greater) {
+                        // Clear bottom gradient.
+                        // This may not be needed if the new bold player overlay icons are in use.
+                        PlayerBottomGradientScrimFingerprint.let {
+                            it.method.apply {
+                                val gradientFieldIndex = it.instructionMatches.last().index
+                                val gradientFieldRegister =
+                                    getInstruction<TwoRegisterInstruction>(gradientFieldIndex).registerA
+
+                                val gradientViewIndex = it.instructionMatches[1].index
+                                val gradientViewRegister =
+                                    getInstruction<OneRegisterInstruction>(gradientViewIndex).registerA
+
+                                // This field is Nullable, and if null, the bottom gradient is not set.
+                                addInstruction(
+                                    gradientFieldIndex,
+                                    "const/4 v$gradientFieldRegister, 0x0"
+                                )
+
+                                // Make the bottom gradient transparent and hide it.
+                                addInstruction(
+                                    gradientViewIndex + 1,
+                                    "invoke-static { v$gradientViewRegister }, " +
+                                            "$EXTENSION_CLASS_DESCRIPTOR->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
+                                )
+                            }
+                        }
+                    }
+                }
             }
         }
     }

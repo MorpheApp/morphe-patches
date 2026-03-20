@@ -1,8 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -13,8 +23,8 @@ import com.android.tools.smali.dexlib2.Opcode
 internal object ScrollPositionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L"),
-    filters = OpcodesFilter.opcodesToFilters(
+    parameters = listOf("Landroid/os/Bundle;"),
+    filters = opcodesToFilters(
         Opcode.IF_NEZ,
         Opcode.INVOKE_DIRECT,
         Opcode.RETURN_VOID

@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">미니 플레이어 색상 변경하기</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">미니 플레이어 색상이 전체 화면 플레이어와 일치합니다</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">미니 플레이어 색상이 기본 색상입니다</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">미니 플레이어 다음 재생 버튼 표시하기</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">미니 플레이어에서 다음 재생 버튼을 표시합니다</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">미니 플레이어에서 다음 재생 버튼을 표시하지 않습니다</string>
+  <string name="morphe_music_miniplayer_previous_button_title">미니 플레이어 이전 재생 버튼 표시하기</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">미니 플레이어에서 이전 재생 버튼을 표시합니다</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">미니 플레이어에서 이전 재생 버튼을 표시하지 않습니다</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">강제된 미니 플레이어 활성화하기</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">다른 트랙으로 변경돼도 미니 플레이어는 최소화된 상태로 유지됩니다</string>

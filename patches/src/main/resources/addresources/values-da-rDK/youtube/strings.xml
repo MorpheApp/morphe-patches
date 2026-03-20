@@ -474,6 +474,21 @@ Begrænsninger:
 
 Kontrollér, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkenavnet må ikke være tomt</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Aktiver loop-video</string>
+  <string name="morphe_loop_video_summary_on">Videoen vil loope</string>
+  <string name="morphe_loop_video_summary_off">Videoen vil ikke loope</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Vis knap for loop-video</string>
+  <string name="morphe_loop_video_button_summary_on">Loop video menu er vist</string>
+  <string name="morphe_loop_video_button_summary_off">Loop video menu er vist</string>
+  <string name="morphe_loop_video_button_toast_on">Loop-video er slået til</string>
+  <string name="morphe_loop_video_button_toast_off">Loop-video er slået fra</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Vis knap for at indlæse video</string>
+  <string name="morphe_reload_video_summary_on">Indlæs video knap vises</string>
+  <string name="morphe_reload_video_summary_off">Indlæs video knap vises ikke</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video-id er ikke tilgængelig. Åbn venligst videoen manuelt.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktivér præcis søgemåde</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Bevægelse er deaktiveret</string>
@@ -1287,14 +1302,20 @@ Er du klar til at indsende?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Bil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Ændringer omfatter:
+  <string name="morphe_change_form_factor_user_dialog_message">"Ændringerne inkluderer:
 
-Tabletlayout
-• Fællesskabsopslag er skjulte
+Tablet layout
+• Opslag fra fællesskabet er skjult
+• Indstilling for afspilning i feeds er ikke tilgængelig
+• Remix-knap og lydknap er ikke tilgængelige i Shorts
+• Videohandlingslinjen er ikke foldet sammen
 
-Automotive-layout
+Bil layout
+• Feed er organiseret efter emner og kanaler
+• Indstilling for afspilning i feeds er ikke tilgængelig
+• Remix-knap og lydknap er ikke tilgængelige i Shorts
 • Shorts åbnes i den almindelige afspiller
-• Feed er organiseret efter emner og kanaler"</string>
+• Videohandlingslinjen er ikke foldet sammen"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app-version</string>
   <string name="morphe_spoof_app_version_summary_on">Version-manipulering</string>
@@ -1349,10 +1370,10 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
 
 Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikke"</string>
   <string name="morphe_change_start_page_always_summary_off">Startsiden ændres kun ved appstart</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Deaktivér genoptagelse af Shorts spiller</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-afspilleren genoptages ikke ved app-start</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Kortspilleren vil genoptage ved app-opstart</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Deaktiver afspilning af Shorts ved opstart</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts genoptages ikke ved app-start</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts genoptages ved app-start</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Åbne Shorts med</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-afspiller</string>
@@ -1481,16 +1502,6 @@ Tryk her for at lære mere om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow er midlertidigt ikke tilgængelig (statuskode: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow er midlertidigt ikke tilgængelig</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Aktiver loop-video</string>
-  <string name="morphe_loop_video_summary_on">Videoen vil loope</string>
-  <string name="morphe_loop_video_summary_off">Videoen vil ikke loope</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Vis knap for loop-video</string>
-  <string name="morphe_loop_video_button_summary_on">Loop video menu er vist</string>
-  <string name="morphe_loop_video_button_summary_off">Loop video menu er vist</string>
-  <string name="morphe_loop_video_button_toast_on">Loop-video er slået til</string>
-  <string name="morphe_loop_video_button_toast_off">Loop-video er slået fra</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoof enhedens dimensioner</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Enhedens dimensioner er forfalsket
@@ -1569,7 +1580,9 @@ Aktivering af dette kan låse op for højere videokvalitet"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Ugyldige brugerdefinerede afspilningshastigheder</string>
   <string name="morphe_custom_playback_speeds_auto">Automatisk</string>
   <string name="morphe_speed_tap_and_hold_title">Brugerdefineret hastighed, når du holder den nede</string>
-  <string name="morphe_speed_tap_and_hold_summary">Afspilningshastighed mellem 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Afspilningshastighed mellem 0-8
+
+Hvis 0, skal du trykke og holde for at deaktivere hastighed"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Husk ændringer i afspilningshastighed</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Ændring af afspilningshastighed gælder for alle videoer</string>

@@ -4,13 +4,15 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
-import static app.morphe.extension.shared.spoof.js.J2V8Support.supportJ2V8;
+import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
@@ -72,8 +74,8 @@ public class StreamingDataRequest {
 
         int i = 1;
         for (ClientType c : availableClients) {
-            if (c.requireJS && !supportJ2V8()) {
-                Logger.printDebug(() -> "Could not find J2V8 runtime. Skipping JavaScript client: " + c.name());
+            if (c.requireJS && !supportsJavaScriptEngine()) {
+                Logger.printDebug(() -> "Could not find JavaScript engine. Skipping JavaScript client: " + c.name());
                 continue;
             }
 
@@ -342,7 +344,7 @@ public class StreamingDataRequest {
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
         var preferredClient = clientOrderToUse[0];
-        if (preferredClient != ClientType.ANDROID_VR_1_47_48 && preferredClient != ClientType.ANDROID_VR_1_54_20
+        if (preferredClient != ClientType.ANDROID_VR_1_64 && preferredClient != ClientType.ANDROID_VR_1_65
                 && !SharedYouTubeSettings.OAUTH2_REFRESH_TOKEN.get().isBlank()) {
             handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         }

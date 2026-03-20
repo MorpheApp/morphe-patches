@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">لغة التطبيق</string>
   <string name="morphe_pref_import_export_title">استيراد / تصدير</string>
   <string name="morphe_pref_import_export_summary">استيراد / تصدير إعدادات Morphe</string>
+  <string name="morphe_settings_import_file">استيراد من ملف</string>
+  <string name="morphe_settings_import_file_success">تم استيراد الإعدادات بنجاح، انقر على حفظ للتطبيق</string>
+  <string name="morphe_settings_import_file_failed">فشل استيراد الإعدادات</string>
+  <string name="morphe_settings_export_file">تصدير إلى ملف</string>
+  <string name="morphe_settings_export_file_success">تم تصدير الإعدادات بنجاح</string>
+  <string name="morphe_settings_export_file_failed">فشل تصدير الإعدادات</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">أنت تستخدم أحدث إصدار من Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">أنت تستخدم إصدار Morphe Patches&lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;تحديث متاح: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;لتحديث التعديلات الخاصة بك، استخدم Morphe لإعادة تعديل هذا التطبيق</string>
@@ -69,6 +75,17 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">الموقع الإلكتروني</string>
   <string name="morphe_settings_about_links_donate">تبرع</string>
   <string name="morphe_settings_about_links_translations">الترجمات</string>
+  <string name="morphe_settings_about_links_credits">حقوق الملكية</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">محدث</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">تحديث متاح</string>
+  <string name="morphe_settings_about_contributors_current">التطوير الحالي</string>
+  <string name="morphe_settings_about_contributors_prior">التطوير المسبق</string>
+  <string name="morphe_settings_about_links_morphe">التطوير النشط</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">إشعارات الترخيص</string>
+  <string name="morphe_settings_about_licenses_loading">جارٍ التحميل...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">تصحيح الأخطاء</string>
   <string name="morphe_debug_screen_summary">تمكين أو تعطيل خيارات تصحيح الأخطاء</string>
@@ -121,4 +138,13 @@ Second \"item\" text"</string>
 
  انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">نافذة تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">يتم عرض رسالة MicroG تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">لا يتم عرض رسالة MicroG تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة MicroG لتحسين البطارية.
+
+إذا لم يتم تغيير تحسينات البطارية فقد تواجه:
+• قد يغلق التطبيق بشكل عشوائي
+• قد لا تعمل الإشعارات
+• قد لا يعمل التشغيل في الخلفية"</string>
 </resources>

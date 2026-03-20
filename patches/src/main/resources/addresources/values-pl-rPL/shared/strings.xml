@@ -60,6 +60,12 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_language_DEFAULT">Język aplikacji</string>
   <string name="morphe_pref_import_export_title">Importuj / Eksportuj</string>
   <string name="morphe_pref_import_export_summary">Importuj / Eksportuj ustawienia Morphe</string>
+  <string name="morphe_settings_import_file">Importuj z pliku</string>
+  <string name="morphe_settings_import_file_success">Ustawienia zostały pomyślnie zaimportowane, stuknij Zapisz, aby zastosować</string>
+  <string name="morphe_settings_import_file_failed">Nie udało się zaimportować ustawień</string>
+  <string name="morphe_settings_export_file">Eksportuj do pliku</string>
+  <string name="morphe_settings_export_file_success">Ustawienia wyeksportowane pomyślnie</string>
+  <string name="morphe_settings_export_file_failed">Nie udało się wyeksportować ustawień</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Używasz najnowszej wersji modyfikacji Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Używasz modyfikacji Morphe w wersji &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostępna aktualizacja: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aby zaktualizować modyfikacje, użyj Morphe, aby zmodyfikować tę aplikację ponownie</string>
@@ -69,6 +75,17 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_settings_about_links_website">Strona internetowa</string>
   <string name="morphe_settings_about_links_donate">Wesprzyj</string>
   <string name="morphe_settings_about_links_translations">Tłumaczenia</string>
+  <string name="morphe_settings_about_links_credits">Podziękowania</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Aktualna</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Dostępna aktualizacja</string>
+  <string name="morphe_settings_about_contributors_current">Obecny rozwój</string>
+  <string name="morphe_settings_about_contributors_prior">Wcześniejszy rozwój</string>
+  <string name="morphe_settings_about_links_morphe">Aktywny rozwój</string>
+  <string name="morphe_settings_about_links_rvx">2022 - 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 - 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 - 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licencje</string>
+  <string name="morphe_settings_about_licenses_loading">Wczytywanie...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
   <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>
@@ -86,7 +103,7 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
 Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">Wyeksportuj logi debugowania</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje logi debugowania Morphe do schowka</string>
-  <string name="morphe_debug_logs_disabled">Wyłączone jest rejestrowanie debugowania</string>
+  <string name="morphe_debug_logs_disabled">Rejestrowanie debugowania jest wyłączone</string>
   <string name="morphe_debug_logs_none_found">Nie znaleziono logów</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Logi skopiowane</string>
   <string name="morphe_debug_logs_failed_to_export">Nie udało się wyeksportować logów: %s</string>
@@ -121,4 +138,13 @@ Wyłączenie optymalizacji baterii MicroG nie będzie negatywnie wpływało na z
 
 Stuknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
   <string name="gms_core_dialog_continue_text">Kontynuuj</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Okno optymalizacji baterii</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Widoczne</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Ukryte</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Wyłączenie tej opcji spowoduje ukrycie ostrzeżeń dotyczących optymalizacji baterii dla MicroG.
+
+Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić następujące problemy:
+• Aplikacja może się nieoczekiwanie zamykać
+• Powiadomienia mogą nie działać
+• Odtwarzanie w tle może nie działać"</string>
 </resources>

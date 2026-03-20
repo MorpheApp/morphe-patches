@@ -25,6 +25,7 @@ import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -52,7 +53,7 @@ final class KeywordContentFilter extends Filter {
 
     /**
      * Strings found in the buffer for every video. Full strings should be specified.
-     *
+     * <p>
      * This list does not include every common buffer string, and this can be added/changed as needed.
      * Words must be entered with the exact casing as found in the buffer.
      */
@@ -127,7 +128,7 @@ final class KeywordContentFilter extends Filter {
     /**
      * Path components to not filter.  Cannot filter the buffer when these are present,
      * otherwise text in UI controls can be filtered as a keyword (such as using "Playlist" as a keyword).
-     *
+     * <p>
      * This is also a small performance improvement since
      * the buffer of the parent component was already searched and passed.
      */
@@ -161,10 +162,10 @@ final class KeywordContentFilter extends Filter {
      * Rolling average of how many videos were filtered by a keyword.
      * Used to detect if a keyword passes the initial check against {@link #STRINGS_IN_EVERY_BUFFER}
      * but a keyword is still hiding all videos.
-     *
+     * <p>
      * This check can still fail if some extra UI elements pass the keywords,
      * such as the video chapter preview or any other elements.
-     *
+     * <p>
      * To test this, add a filter that appears in all videos (such as 'ovd='),
      * and open the subscription feed. In practice this does not always identify problems
      * in the home feed and search, because the home feed has a finite amount of content and
@@ -533,7 +534,7 @@ final class KeywordContentFilter extends Filter {
         }
 
         return switch (selectedNavButton) {
-            case HOME, EXPLORE -> hideHome;
+            case HOME -> hideHome;
             case SUBSCRIPTIONS -> hideSubscriptions;
             // User is in the Library or notifications.
             default -> false;
@@ -561,8 +562,14 @@ final class KeywordContentFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         if (contentIndex != 0 && matchedGroup == startsWithFilter) {
             return false;
         }

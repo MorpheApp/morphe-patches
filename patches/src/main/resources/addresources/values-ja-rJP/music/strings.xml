@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">ミニプレーヤーの色を変更</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">ミニプレーヤーはフルスクリーン プレーヤーと同じ色を使用します</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">ミニプレーヤーはデフォルトの色を使用します</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">ミニプレーヤーに次の曲ボタンを表示</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">ミニプレーヤーに次の曲ボタンが表示されます</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">ミニプレーヤーに次の曲ボタンは表示されません</string>
+  <string name="morphe_music_miniplayer_previous_button_title">ミニプレーヤーに前の曲ボタンを表示</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">ミニプレーヤーに前の曲ボタンが表示されます</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">ミニプレーヤーに前の曲ボタンは表示されません</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">ミニプレーヤーでの連続再生を有効化</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">ミニプレーヤーでの再生中に次の曲をそのままミニプレーヤーで再生します</string>

@@ -60,6 +60,13 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_language_DEFAULT">App language</string>
     <string name="morphe_pref_import_export_title">Import / Export</string>
     <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
+    <string name="morphe_settings_import_file">Import from file</string>
+    <string name="morphe_settings_import_file_success">Settings imported successfully, tap Save to apply</string>
+    <string name="morphe_settings_import_file_failed">Failed to import settings</string>
+    <string name="morphe_settings_export_file">Export to file</string>
+    <string name="morphe_settings_export_file_success">Settings exported successfully</string>
+    <string name="morphe_settings_export_file_failed">Failed to export settings</string>
+
     <!-- String is also duplicated in Reddit about preference -->
     <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
     <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
@@ -69,6 +76,17 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_settings_about_links_website">Website</string>
     <string name="morphe_settings_about_links_donate">Donate</string>
     <string name="morphe_settings_about_links_translations">Translations</string>
+    <string name="morphe_settings_about_links_credits">Credits</string>
+    <string name="morphe_settings_about_links_dev_header_up_to_date">Up to date</string>
+    <string name="morphe_settings_about_links_dev_header_update_available">Update available</string>
+    <string name="morphe_settings_about_contributors_current">Current development</string>
+    <string name="morphe_settings_about_contributors_prior">Prior development</string>
+    <string name="morphe_settings_about_links_morphe">Active development</string>
+    <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+    <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+    <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+    <string name="morphe_settings_about_links_licenses">License notices</string>
+    <string name="morphe_settings_about_licenses_loading">Loading...</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
@@ -124,4 +142,13 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 
 Tap the continue button and allow optimization changes."</string>
     <string name="gms_core_dialog_continue_text">Continue</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimization dialog</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimization dialog is shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimization dialog is not shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
+
+If battery optimizations are not changed then you may experience:
+• App may randomly close
+• Notifications may not work
+• Background playback may not work"</string>
 </resources>

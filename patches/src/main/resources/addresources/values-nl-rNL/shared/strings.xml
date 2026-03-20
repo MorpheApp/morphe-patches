@@ -60,6 +60,12 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <string name="morphe_language_DEFAULT">App-taal</string>
   <string name="morphe_pref_import_export_title">Importeren / Exporteren</string>
   <string name="morphe_pref_import_export_summary">Morphe-instellingen importeren / exporteren</string>
+  <string name="morphe_settings_import_file">Importeren uit bestand</string>
+  <string name="morphe_settings_import_file_success">Instellingen succesvol geïmporteerd, tik op Opslaan om toe te passen</string>
+  <string name="morphe_settings_import_file_failed">Het importeren van instellingen is mislukt</string>
+  <string name="morphe_settings_export_file">Exporteren naar bestand</string>
+  <string name="morphe_settings_export_file_success">Instellingen succesvol geëxporteerd</string>
+  <string name="morphe_settings_export_file_failed">Het exporteren van instellingen is mislukt</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">U gebruikt de nieuwste Morphe Patches versie &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">U gebruikt Morphe Patches versie &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Bijwerking beschikbaar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om uw patches bij te werken, gebruikt u Morphe om deze app opnieuw te patchen</string>
@@ -69,6 +75,16 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Doneren</string>
   <string name="morphe_settings_about_links_translations">Vertalingen</string>
+  <string name="morphe_settings_about_links_credits">Credits</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Up to date</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Update beschikbaar</string>
+  <string name="morphe_settings_about_contributors_current">Huidige ontwikkeling</string>
+  <string name="morphe_settings_about_contributors_prior">Eerdere ontwikkeling</string>
+  <string name="morphe_settings_about_links_morphe">Actieve ontwikkeling</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Bezig met laden...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debuggen</string>
   <string name="morphe_debug_screen_summary">Schakel debugopties in of uit</string>
@@ -121,4 +137,13 @@ Uitzchakelen van batterijoptimalisaties voor MicroG heeft geen negatieve invloed
 
 Druk op de knop Door en ga akkoord met wijzigingen in de optimalisatie."</string>
   <string name="gms_core_dialog_continue_text">Doorgaan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterijoptimalisatiedialoog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">De MicroG batterijoptimalisatiedialoog wordt weergegeven</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">De MicroG batterijoptimalisatiedialoog wordt niet weergegeven</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Het uitschakelen hiervan verbergt het MicroG-prompt voor batterijoptimalisatie.
+
+Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
+• De app kan willekeurig sluiten
+• Meldingen werken mogelijk niet
+• Achtergrondafspelen werkt mogelijk niet"</string>
 </resources>

@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.settings.preference;
@@ -98,8 +100,8 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                             + '\n' + str("morphe_spoof_video_streams_about_no_force_original_audio");
             case ANDROID_REEL ->
                     summary = str("morphe_spoof_video_streams_about_playback_failure");
-            // VR 1.54 is not exposed in the UI and should never be reached here.
-            case ANDROID_VR_1_47_48, ANDROID_VR_1_54_20 ->
+            // VR 1.65 is not exposed in the UI and should never be reached here.
+            case ANDROID_VR_1_64, ANDROID_VR_1_65 ->
                     summary = str("morphe_spoof_video_streams_about_no_audio_tracks")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume");
             case TV ->

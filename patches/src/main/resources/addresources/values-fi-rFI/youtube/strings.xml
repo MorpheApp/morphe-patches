@@ -474,6 +474,21 @@ Rajoitukset:
 
 Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_external_downloader_empty_warning">Paketin nimi ei voi olla tyhjä</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Ota jatkuva toisto käyttöön</string>
+  <string name="morphe_loop_video_summary_on">Videota toistetaan jatkuvasti</string>
+  <string name="morphe_loop_video_summary_off">Videota ei toisteta jatkuvasti</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Näytä jatkuva toisto -painike</string>
+  <string name="morphe_loop_video_button_summary_on">Toista videota jatkuvasti -valinta näytetään</string>
+  <string name="morphe_loop_video_button_summary_off">Toista videota jatkuvasti -valinta näytetään</string>
+  <string name="morphe_loop_video_button_toast_on">Jatkuva toisto on käytössä</string>
+  <string name="morphe_loop_video_button_toast_off">Jatkuva toisto ei ole käytössä</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Näytä videon uudelleenlataus -painike</string>
+  <string name="morphe_reload_video_summary_on">Videon uudelleenlataus -painike näytetään</string>
+  <string name="morphe_reload_video_summary_off">Videon uudelleenlataus -painiketta ei näytetä</string>
+  <string name="morphe_dismiss_player_not_available_toast">Videon tunnus ei ole saatavilla. Avaa video manuaalisesti uudelleen.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Poista tarkka etsintäele käytöstä</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Ele ei ole käytössä</string>
@@ -1292,12 +1307,18 @@ Oletko valmis lähettämään?"</string>
   <string name="morphe_change_form_factor_entry_4">Ajoneuvo</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Muutokset sisältävät:
 
-Tabletti-asettelu
-• Yhteisöpostaukset on piilotettu
+Tablettiasettelun
+• Yhteisöpostit on piilotettu
+• Toiston asetusta syötteissä ei ole saatavilla
+• Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
+• Videotoimintopalkki ei ole piilotettu
 
-Ajoneuvo-asettelu
-• Shortsit avataan tavallisessa soittimessa
-• Syöte on järjestetty aiheiden ja kanavien mukaan"</string>
+Automaattiasettelun
+• Syöte on järjestetty aiheiden ja kanavien mukaan
+• Toiston asetusta syötteissä ei ole saatavilla
+• Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
+• Shorts-videot avautuvat tavallisessa soittimessa
+• Videotoimintopalkki ei ole piilotettu"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Naamioi sovellusversio</string>
   <string name="morphe_spoof_app_version_summary_on">Versio on naamioitu</string>
@@ -1352,10 +1373,10 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
 
 Rajoitus: Työkalupalkin takaisin-painikkeen käyttäminen ei välttämättä toimi"</string>
   <string name="morphe_change_start_page_always_summary_off">Aloitussivu vaihdetaan vain sovelluksen käynnistyessä</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Poista Shorts-soittimen jatkaminen käytöstä</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-soitin ei jatka sovelluksen käynnistyessä</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-soitin jatkaa sovelluksen käynnistyessä</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Poista lyhyiden videoiden automaattinen jatkaminen käynnistyksen yhteydessä</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Lyhyet videot eivät jatku sovelluksen käynnistyessä</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Lyhyet videot jatkuvat sovelluksen käynnistyessä</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shortsien avaustapa</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-soitin</string>
@@ -1484,16 +1505,6 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow ei ole tilapäisesti käytettävissä (tila: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow ei ole tilapäisesti käytettävissä</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Ota jatkuva toisto käyttöön</string>
-  <string name="morphe_loop_video_summary_on">Videota toistetaan jatkuvasti</string>
-  <string name="morphe_loop_video_summary_off">Videota ei toisteta jatkuvasti</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Näytä jatkuva toisto -painike</string>
-  <string name="morphe_loop_video_button_summary_on">Toista videota jatkuvasti -valinta näytetään</string>
-  <string name="morphe_loop_video_button_summary_off">Toista videota jatkuvasti -valinta näytetään</string>
-  <string name="morphe_loop_video_button_toast_on">Jatkuva toisto on käytössä</string>
-  <string name="morphe_loop_video_button_toast_off">Jatkuva toisto ei ole käytössä</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Naamioi laitteen mitat</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Laitteen mitat naamioidaan
@@ -1572,7 +1583,9 @@ Tämä voi avata korkealaatuisemmat videot"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Virheelliset mukautetut toistonopeudet</string>
   <string name="morphe_custom_playback_speeds_auto">Automaattinen</string>
   <string name="morphe_speed_tap_and_hold_title">Mukautettu napauta ja pidä pohjassa -nopeus</string>
-  <string name="morphe_speed_tap_and_hold_summary">Toistonopeus 0–8 välillä</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Toistonopeus välillä 0–8
+
+Jos 0, napauta ja pidä painettuna -nopeutta ei ole käytössä"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Muista toistonopeuden muutokset</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Toistonopeuden muutokset koskevat kaikkia videoita</string>

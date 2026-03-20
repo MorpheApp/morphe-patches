@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Реклами</string>
+  <string name="morphe_hide_post_ads_title">Скриване на рекламите в канала</string>
+  <string name="morphe_hide_post_ads_summary">Скрива рекламите в канала</string>
+  <string name="morphe_hide_comment_ads_title">Скриване на реклами в коментарите</string>
+  <string name="morphe_hide_comment_ads_summary">Скрива рекламите в секцията с коментари</string>
+  <string name="morphe_screen_layout_title">Оформление</string>
+  <string name="morphe_disable_modern_home_title">Изключване на модерния начален екран</string>
+  <string name="morphe_disable_modern_home_summary">Изключва модернизиран потребителски интерфейс на началния екран</string>
+  <string name="morphe_disable_screenshot_popup_title">Изключване на изскачащия прозорец за екранна снимка</string>
+  <string name="morphe_disable_screenshot_popup_summary">Изключва изскачащия прозорец, който се появява при правене на екранна снимка</string>
+  <string name="morphe_hide_answers_button_title">Скриване на бутона \"Отговори\"</string>
+  <string name="morphe_hide_answers_button_summary">Скрива бутона \"Отговори\" в навигационната лента</string>
+  <string name="morphe_hide_chat_button_title">Скриване на бутона \"Чат\"</string>
+  <string name="morphe_hide_chat_button_summary">Скрива бутона \"Чат\" в навигационната лента</string>
+  <string name="morphe_hide_create_button_title">Скриване на бутона \"Създай\"</string>
+  <string name="morphe_hide_create_button_summary">Скрива бутона \"Създай\" в навигационната лента</string>
+  <string name="morphe_hide_discover_button_title">Скриване на бутоните Общности или Открий</string>
+  <string name="morphe_hide_discover_button_summary">Скрива бутоните Общности или Открий в навигационната лента</string>
+  <string name="morphe_hide_games_button_title">Скриване на бутона \"Игри\"</string>
+  <string name="morphe_hide_games_button_summary">Скрива бутона \"Игри\" в навигационната лента</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Скриване на рафта \"Наскоро посетени\"</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Скрива рафта \"Наскоро посетени\" в страничната лента</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Скриване на рафта \"Игри в Reddit\"</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Скрива рафта \"Игри в Reddit\" в страничната лента</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Скриване на рафта \"Reddit Pro\"</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Скрива рафта \"Reddit Pro\" в страничната лента</string>
+  <string name="morphe_hide_about_shelf_title">Скриване на рафта \"Информация\"</string>
+  <string name="morphe_hide_about_shelf_summary">Скрива рафта \"Информация\" в страничната лента</string>
+  <string name="morphe_hide_resources_shelf_title">Скриване на рафта \"Ресурси\"</string>
+  <string name="morphe_hide_resources_shelf_summary">Скрива рафта \"Ресурси\" в страничната лента</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Скриване на препоръчаните общности</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Скрива рафтовете с препоръчани общности в подредитите</string>
+  <string name="morphe_hide_trending_today_shelf_title">Скриване на рафта \"Днес най-популярни\"</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Скрива рафта \"Днес най-популярни\" от предложенията за търсене
+
+Ограничение: Визуалните разделители може да не бъдат скрити"</string>
+  <string name="morphe_remove_notification_dialog_title">Премахване на диалоговия прозорец за предложения за известия</string>
+  <string name="morphe_remove_notification_dialog_summary">Премахва диалоговия прозорец за предложения за известия, който се появява при посещение на подредит, като го затваря автоматично</string>
+  <string name="morphe_show_view_count_title">Показване на броя на прегледите</string>
+  <string name="morphe_show_view_count_summary">"Показва броя на прегледите на Публикациите
+
+Ограничение: Показва се само ако API отговорът включва броя на прегледите"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Премахване на диалоговия прозорец за NSFW предупреждение</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Премахва диалоговия прозорец за NSFW предупреждение, който се появява при посещение на подредит, като го приема автоматично</string>
+  <string name="morphe_screen_miscellaneous_title">Други</string>
+  <string name="morphe_about_title">Относно</string>
+  <string name="morphe_about_summary">Версия на поправката и официални връзки</string>
+  <string name="morphe_sanitize_sharing_links_title">Почистване на споделените връзки</string>
+  <string name="morphe_sanitize_sharing_links_summary">Почиства споделящите връзки чрез премахване на параметри за проследяване</string>
+  <string name="morphe_open_links_directly_title">Отваряне на връзки директно</string>
+  <string name="morphe_open_links_directly_summary">Прескачане на URL адреси за пренасочване във външни връзки</string>
+</resources>

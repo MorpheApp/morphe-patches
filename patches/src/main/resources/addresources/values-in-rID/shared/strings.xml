@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Pengaturan Morphe diatur ke bawaan</string>
-  <string name="morphe_settings_import_success">%d Setelan terimpor</string>
+  <string name="morphe_settings_import_success">%d Pengaturan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_search_hint">Pengaturan pencarian</string>
   <string name="morphe_settings_search_no_results_title">Tidak ada hasil yang ditemukan untuk \'%s\'</string>
@@ -59,7 +59,13 @@ Second \"item\" text"</string>
 Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kunjungi morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Bahasa aplikasi</string>
   <string name="morphe_pref_import_export_title">Impor / Ekspor</string>
-  <string name="morphe_pref_import_export_summary">Impor / Ekspor setelan Morphe</string>
+  <string name="morphe_pref_import_export_summary">Impor / Ekspor pengaturan Morphe</string>
+  <string name="morphe_settings_import_file">Impor dari berkas</string>
+  <string name="morphe_settings_import_file_success">Pengaturan berhasil diimpor, ketuk Simpan untuk menerapkan</string>
+  <string name="morphe_settings_import_file_failed">Gagal mengimpor pengaturan</string>
+  <string name="morphe_settings_export_file">Ekspor ke berkas</string>
+  <string name="morphe_settings_export_file_success">Pengaturan berhasil diekspor</string>
+  <string name="morphe_settings_export_file_failed">Gagal mengekspor pengaturan</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Anda menggunakan Tambalan Morphe terbaru versi &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Anda menggunakan Tambalan Morphe versi &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Pembaruan tersedia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Untuk memperbarui tambalan Anda, gunakan Morphe untuk menambal ulang aplikasi ini</string>
@@ -69,6 +75,17 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_about_links_website">Situs Web</string>
   <string name="morphe_settings_about_links_donate">Donasi</string>
   <string name="morphe_settings_about_links_translations">Terjemahan</string>
+  <string name="morphe_settings_about_links_credits">Kredit</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Terbaru</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Pembaruan tersedia</string>
+  <string name="morphe_settings_about_contributors_current">Pengembangan saat ini</string>
+  <string name="morphe_settings_about_contributors_prior">Pengembangan sebelumnya</string>
+  <string name="morphe_settings_about_links_morphe">Pengembangan aktif</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Pemberitahuan lisensi</string>
+  <string name="morphe_settings_about_licenses_loading">Memuat...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Aktifkan atau nonaktifkan pilihan debugging</string>
@@ -121,4 +138,13 @@ Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan ba
 
 Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan."</string>
   <string name="gms_core_dialog_continue_text">Lanjutkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog optimasi baterai</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialog optimasi baterai MicroG ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialog optimasi baterai MicroG tidak ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan perintah optimasi baterai MicroG.
+
+Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
+• Aplikasi mungkin secara acak tertutup
+• Pemberitahuan mungkin tidak berfungsi
+• Pemutaran latar belakang mungkin tidak berfungsi"</string>
 </resources>

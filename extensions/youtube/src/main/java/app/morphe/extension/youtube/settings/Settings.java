@@ -195,6 +195,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("morphe_open_videos_fullscreen_portrait", FALSE);
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE);
+    public static final BooleanSetting RELOAD_VIDEO = new BooleanSetting("morphe_reload_video", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
 
@@ -228,6 +229,8 @@ public class Settings extends SharedYouTubeSettings {
             "com.deniscerri.ytdl" /* YTDLnis */, parentsAny(EXTERNAL_DOWNLOADER, EXTERNAL_DOWNLOADER_ACTION_BUTTON));
 
     // Comments
+    public static final BooleanSetting HIDE_COMMENTS_CAROUSEL = new BooleanSetting("morphe_hide_comments_carousel", FALSE, "morphe_hide_comments_carousel_dialog_message");
+    public static final StringSetting HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS = new StringSetting("morphe_hide_comments_carousel_filter_strings", "", true, parent(HIDE_COMMENTS_CAROUSEL));
     public static final BooleanSetting HIDE_COMMENTS_AI_CHAT_SUMMARY = new BooleanSetting("morphe_hide_comments_ai_chat_summary", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_BY_MEMBERS_HEADER = new BooleanSetting("morphe_hide_comments_by_members_header", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_CHANNEL_GUIDELINES = new BooleanSetting("morphe_hide_comments_channel_guidelines", TRUE);
@@ -357,7 +360,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 
     // Shorts
-    public static final BooleanSetting DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("morphe_disable_resuming_shorts_player", FALSE);
+    public static final BooleanSetting DISABLE_SHORTS_RESUMING_ON_STARTUP = new BooleanSetting("morphe_disable_shorts_resuming_on_startup", FALSE);
     public static final BooleanSetting DISABLE_SHORTS_BACKGROUND_PLAYBACK = new BooleanSetting("morphe_shorts_disable_background_playback", FALSE);
     public static final EnumSetting<ShortsPlayerType> SHORTS_PLAYER_TYPE = new EnumSetting<>("morphe_shorts_player_type", ShortsPlayerType.SHORTS_PLAYER);
     public static final BooleanSetting HIDE_SHORTS_AI_BUTTON = new BooleanSetting("morphe_hide_shorts_ai_button", FALSE);
@@ -424,7 +427,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("morphe_external_browser", TRUE, true);
     public static final BooleanSetting SPOOF_DEVICE_DIMENSIONS = new BooleanSetting("morphe_spoof_device_dimensions", FALSE, true,
             "morphe_spoof_device_dimensions_user_dialog_message");
-    public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.ANDROID_VR_1_47_48, true, parent(SPOOF_VIDEO_STREAMS));
+    public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.ANDROID_REEL, true, parent(SPOOF_VIDEO_STREAMS));
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_AV1 = new BooleanSetting("morphe_spoof_video_streams_av1", FALSE, true,
             "morphe_spoof_video_streams_av1_user_dialog_message", new SpoofClientAv1Availability());
     public static final BooleanSetting DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false,
@@ -522,6 +525,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_DISABLE_SIGNIN_TO_TV_POPUP = new BooleanSetting("morphe_disable_signin_to_tv_popup", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
     private static final BooleanSetting DEPRECATED_SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
+    private static final BooleanSetting DEPRECATED_DISABLE_RESUMING_SHORTS_PLAYER = new BooleanSetting("morphe_disable_resuming_shorts_player", FALSE);
 
     static {
         // region Migration
@@ -529,6 +533,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_HIDE_ENDSCREEN_CARDS, HIDE_END_SCREEN_CARDS);
         migrateOldSettingToNew(DEPRECATED_DISABLE_SIGNIN_TO_TV_POPUP, DISABLE_SIGN_IN_TO_TV_POPUP);
         migrateOldSettingToNew(DEPRECATED_SEEKBAR_TAPPING, TAP_TO_SEEK);
+        migrateOldSettingToNew(DEPRECATED_DISABLE_RESUMING_SHORTS_PLAYER, DISABLE_SHORTS_RESUMING_ON_STARTUP);
 
 
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.
@@ -548,8 +553,8 @@ public class Settings extends SharedYouTubeSettings {
             SPOOF_APP_VERSION.resetToDefault();
         }
 
-        // VR 1.54 is not selectable in the settings, and it's selected by spoof stream patch if needed.
-        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.ANDROID_VR_1_54_20) {
+        // VR 1.65 is not selectable in the settings, and it's selected by spoof stream patch if needed.
+        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.ANDROID_VR_1_65) {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();
         }
 

@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -73,10 +76,7 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup shortsCompactFeedVideo;
     private final ByteArrayFilterGroup shortsCompactFeedVideoBuffer;
     private final StringFilterGroup channelProfile;
-    private final StringFilterGroup useSoundButton;
-    private final ByteArrayFilterGroup useSoundButtonBuffer;
-    private final StringFilterGroup useTemplateButton;
-    private final ByteArrayFilterGroup useTemplateButtonBuffer;
+    private final ByteArrayFilterGroup channelProfileShelfHeader;
 
     private final StringFilterGroup autoDubbedLabel;
     private final StringFilterGroup subscribeButton;
@@ -90,6 +90,9 @@ public final class ShortsFilter extends Filter {
 
     private final StringFilterGroup suggestedAction;
     private final ByteArrayFilterGroupList suggestedActionsBuffer = new ByteArrayFilterGroupList();
+
+    private final StringFilterGroup useButtons;
+    private final ByteArrayFilterGroupList useButtonsBuffer = new ByteArrayFilterGroupList();
 
     private final StringFilterGroup shortsActionBar;
     private final StringFilterGroup shortsActionButton;
@@ -111,6 +114,11 @@ public final class ShortsFilter extends Filter {
         channelProfile = new StringFilterGroup(
                 Settings.HIDE_SHORTS_CHANNEL,
                 "shorts_pivot_item"
+        );
+
+        channelProfileShelfHeader = new ByteArrayFilterGroup(
+                Settings.HIDE_SHORTS_CHANNEL,
+                "Shorts"
         );
 
         // Feed Shorts shelf header.
@@ -266,31 +274,6 @@ public final class ShortsFilter extends Filter {
                 )
         );
 
-        useSoundButton = new StringFilterGroup(
-                Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
-                // First filter needed for "Use this sound" that can appear when viewing Shorts
-                // through the "Short remixing this video" section.
-                "floating_action_button.e",
-                // Second filter needed for "Use this sound" that can appear below the video title.
-                REEL_METAPANEL_PATH
-        );
-
-        useSoundButtonBuffer = new ByteArrayFilterGroup(
-                null,
-                "yt_outline_camera_"
-        );
-
-        useTemplateButton = new StringFilterGroup(
-                Settings.HIDE_SHORTS_USE_TEMPLATE_BUTTON,
-                // Second filter needed for "Use this template" that can appear below the video title.
-                REEL_METAPANEL_PATH
-        );
-
-        useTemplateButtonBuffer = new ByteArrayFilterGroup(
-                null,
-                "yt_outline_template_add_"
-        );
-
         shortsActionButton = new StringFilterGroup(
                 null,
                 // Can be any of:
@@ -301,6 +284,26 @@ public final class ShortsFilter extends Filter {
                 "button.e"
         );
 
+        useButtons = new StringFilterGroup(
+                null,
+                REEL_PLAYER_OVERLAY_PATH,
+                REEL_METAPANEL_PATH,
+                "floating_action_button.e"
+        );
+
+        useButtonsBuffer.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
+                        "yt_outline_camera_",
+                        "yt_outline_experimental_camera_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_USE_TEMPLATE_BUTTON,
+                        "yt_outline_template_add_",
+                        "yt_outline_experimental_template_add_"
+                )
+        );
+
         suggestedAction = new StringFilterGroup(
                 null,
                 "suggested_action.e"
@@ -309,7 +312,7 @@ public final class ShortsFilter extends Filter {
         addPathCallbacks(
                 shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
                 livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
-                autoDubbedLabel, fullVideoLinkLabel, videoTitle, useSoundButton, soundButton, stickers,
+                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, stickers, useButtons,
                 reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton, shortsActionBar
         );
 
@@ -420,8 +423,14 @@ public final class ShortsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
         if (contentType == FilterContentType.IDENTIFIER) {
             if (matchedGroup == shelfHeaderIdentifier) {
                 // Shelf header reused in history/channel/etc.
@@ -429,8 +438,12 @@ public final class ShortsFilter extends Filter {
                 if (contentIndex != 0) {
                     return false;
                 }
-            }
-            if (matchedGroup == channelProfile) {
+                // Check ConversationContext to not hide shelf header in channel profile
+                // This value does not exist in the shelf header in the channel profile
+                if (!contextInterface.isHomeFeedOrRelatedVideo()) {
+                    return false;
+                }
+            } else if (matchedGroup == channelProfile) {
                 return true;
             }
 
@@ -449,16 +462,17 @@ public final class ShortsFilter extends Filter {
                 return reelCarouselBuffer.check(buffer).isFiltered();
             }
 
-            if (matchedGroup == useSoundButton) {
-                return useSoundButtonBuffer.check(buffer).isFiltered();
-            }
-
-            if (matchedGroup == useTemplateButton) {
-                return useTemplateButtonBuffer.check(buffer).isFiltered();
-            }
-
             if (matchedGroup == shortsCompactFeedVideo) {
-                return shouldHideShortsFeedItems() && shortsCompactFeedVideoBuffer.check(buffer).isFiltered();
+                return shouldHideShortsFeedItems()
+                        && shortsCompactFeedVideoBuffer.check(buffer).isFiltered()
+                        // The litho path of the feed video is 'video_lockup_with_attachment.e'.
+                        // It appears [shortsCompactFeedVideoBuffer] is used after 20 seconds during autoplay in the feed in YouTube 20.44.38.
+                        // If the Shorts shelf is hidden on the Home feed, the video in the feed will be hidden after 20 seconds have passed since autoplay began in the feed.
+                        // See: https://github.com/MorpheApp/morphe-patches/issues/773.
+                        //
+                        // When a video is autoplaying in the feed, no new components are drawn on the screen.
+                        // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
+                        && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL;
             }
 
             if (matchedGroup == shelfHeaderPath) {
@@ -466,6 +480,11 @@ public final class ShortsFilter extends Filter {
                 // Shorts header is always index 0
                 if (contentIndex != 0) {
                     return false;
+                }
+                // Check ConversationContext to not hide shelf header in channel profile
+                // This value does not exist in the shelf header in the channel profile
+                if (!contextInterface.isHomeFeedOrRelatedVideo()) {
+                    return channelProfileShelfHeader.check(buffer).isFiltered();
                 }
 
                 return shouldHideShortsFeedItems();
@@ -478,6 +497,10 @@ public final class ShortsFilter extends Filter {
                     return shortsActionButtonGroupList.check(accessibility).isFiltered();
                 }
                 return false;
+            }
+
+            if (matchedGroup == useButtons) {
+                return path.contains("|button.e") && useButtonsBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == suggestedAction) {
@@ -514,16 +537,6 @@ public final class ShortsFilter extends Filter {
         if (!hideHome && !hideSubscriptions && !hideSearch && !hideVideoDescription && !hideHistory) {
             return false;
         }
-        // The litho path of the feed video is 'video_lockup_with_attachment.e'.
-        // It appears [shortsCompactFeedVideoBuffer] is used after 20 seconds during autoplay in the feed in YouTube 20.44.38.
-        // If the Shorts shelf is hidden on the Home feed, the video in the feed will be hidden after 20 seconds have passed since autoplay began in the feed.
-        // See: https://github.com/MorpheApp/morphe-patches/issues/773.
-        //
-        // When a video is autoplaying in the feed, no new components are drawn on the screen.
-        // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
-        if (PlayerType.getCurrent() == PlayerType.INLINE_MINIMAL) {
-            return false;
-        }
         if (hideHome && hideSubscriptions && hideSearch && hideVideoDescription && hideHistory) {
             return true;
         }
@@ -552,7 +565,7 @@ public final class ShortsFilter extends Filter {
         }
 
         return switch (selectedNavButton) {
-            case HOME, EXPLORE -> hideHome;
+            case HOME -> hideHome;
             case SEARCH -> hideSearch;
             case SUBSCRIPTIONS -> hideSubscriptions;
             case LIBRARY -> hideHistory;

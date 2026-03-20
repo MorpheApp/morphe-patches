@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
+
 /**
  * Filters litho based components.
- *
+ * <p>
  * Callbacks to filter content are added using {@link #addIdentifierCallbacks(StringFilterGroup...)}
  * and {@link #addPathCallbacks(StringFilterGroup...)}.
- *
+ * <p>
  * To filter {@link FilterContentType#PROTOBUFFER} or {@link FilterContentType#ACCESSIBILITY}, first add a callback to
  * either an identifier or a path.
- * Then inside {@link #isFiltered(String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
+ * Then inside {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
  * search for the buffer content using either a {@link ByteArrayFilterGroup} (if searching for 1 pattern)
  * or a {@link ByteArrayFilterGroupList} (if searching for more than 1 pattern).
- *
+ * <p>
  * All callbacks must be registered before the constructor completes.
  */
 abstract class Filter {
@@ -39,7 +41,7 @@ abstract class Filter {
     protected final List<StringFilterGroup> pathCallbacks = new ArrayList<>();
 
     /**
-     * Adds callbacks to {@link #isFiltered(String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
+     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
      * if any of the groups are found.
      */
     protected final void addIdentifierCallbacks(StringFilterGroup... groups) {
@@ -47,7 +49,7 @@ abstract class Filter {
     }
 
     /**
-     * Adds callbacks to {@link #isFiltered(String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
+     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
      * if any of the groups are found.
      */
     protected final void addPathCallbacks(StringFilterGroup... groups) {
@@ -69,7 +71,7 @@ abstract class Filter {
      * @param contentIndex Matched index of the identifier or path.
      * @return True if the litho component should be filtered out.
      */
-    boolean isFiltered(String identifier, String accessibility, String path, byte[] buffer,
+    boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility, String path, byte[] buffer,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         return true;
     }

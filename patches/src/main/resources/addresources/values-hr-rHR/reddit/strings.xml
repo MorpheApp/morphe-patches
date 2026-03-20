@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Oglasi</string>
+  <string name="morphe_hide_post_ads_title">Sakrij oglase u feedu</string>
+  <string name="morphe_hide_post_ads_summary">Skriva oglase u feedu</string>
+  <string name="morphe_hide_comment_ads_title">Sakrij oglase s komentarima</string>
+  <string name="morphe_hide_comment_ads_summary">Skriva oglase u odjeljku za komentare</string>
+  <string name="morphe_screen_layout_title">Raspored</string>
+  <string name="morphe_disable_modern_home_title">Onemogući moderni dom</string>
+  <string name="morphe_disable_modern_home_summary">Onemogućuje moderno korisničko sučelje doma</string>
+  <string name="morphe_disable_screenshot_popup_title">Onemogući skočni prozor zaslona</string>
+  <string name="morphe_disable_screenshot_popup_summary">Onemogućuje skočni prozor koji se pojavljuje prilikom snimanja zaslona</string>
+  <string name="morphe_hide_answers_button_title">Sakrij tipke za odgovore</string>
+  <string name="morphe_hide_answers_button_summary">Skriva tipku Odgovori u navigacijskoj traci</string>
+  <string name="morphe_hide_chat_button_title">Sakrij tipku Chat </string>
+  <string name="morphe_hide_chat_button_summary">Skriva tipku Chat u navigacijskoj traci</string>
+  <string name="morphe_hide_create_button_title">Sakrij tipku Izradi</string>
+  <string name="morphe_hide_create_button_summary">Skriva tipku Izradi u navigacijskoj traci</string>
+  <string name="morphe_hide_discover_button_title">Sakrij tipku Otkrij ili Zajednice</string>
+  <string name="morphe_hide_discover_button_summary">Skriva tipku Otkrij ili Zajednice u navigacijskoj traci</string>
+  <string name="morphe_hide_games_button_title">Sakrij tipku Igre</string>
+  <string name="morphe_hide_games_button_summary">Skriva tipku Igre u navigacijskoj traci</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Sakrij policu nedavno posjećeno</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Skriva policu Nedavno posjećeno u bočnoj traci</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Sakrij igre na polici Reddita</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Skriva policu Igre na Redditu u bočnoj traci</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Sakrij policu Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Skriva policu Reddit Pro u bočnoj traci</string>
+  <string name="morphe_hide_about_shelf_title">Sakrij policu O</string>
+  <string name="morphe_hide_about_shelf_summary">Skriva policu O nama u bočnoj traci</string>
+  <string name="morphe_hide_resources_shelf_title">Sakrij policu resursi</string>
+  <string name="morphe_hide_resources_shelf_summary">Skriva policu Resursi u bočnoj traci</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Sakrij preporučene zajednice</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Skriva police preporučenih zajednica u subredditima</string>
+  <string name="morphe_hide_trending_today_shelf_title">Sakrij policu Trendovi danas</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Skriva policu Trendovi danas iz prijedloga za pretraživanje
+
+Ograničenje: Vizualni razmaci ne mogu biti skriveni"</string>
+  <string name="morphe_remove_notification_dialog_title">Uklanja  dijalog s prijedlozima obavijesti</string>
+  <string name="morphe_remove_notification_dialog_summary">Uklanja dijalog s prijedlozima obavijesti koji se pojavljuje prilikom posjeta subredditu automatskim odbacivanjem</string>
+  <string name="morphe_show_view_count_title">Pokaži broj pregleda</string>
+  <string name="morphe_show_view_count_summary">"Prikazuje broj pregleda objava
+
+Ograničenje: Prikazuje se samo ako API odgovor uključuje broj pregleda"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Uklanja NSFW upozorenje</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Uklanja NSFW upozorenje koje se pojavljuje prilikom posjeta subredditu automatskim prihvaćanjem</string>
+  <string name="morphe_screen_miscellaneous_title">Razno</string>
+  <string name="morphe_about_title">O aplikaciji</string>
+  <string name="morphe_about_summary">Verzija patcha i službene poveznice</string>
+  <string name="morphe_sanitize_sharing_links_title">Očisti poveznice za dijeljenje</string>
+  <string name="morphe_sanitize_sharing_links_summary">Sanira poveznice za dijeljenje uklanjanjem parametara upita za praćenje</string>
+  <string name="morphe_open_links_directly_title">Otvara poveznice izravno</string>
+  <string name="morphe_open_links_directly_summary">Preskače poveznice preusmjeravanja u vanjskim poveznicama</string>
+</resources>

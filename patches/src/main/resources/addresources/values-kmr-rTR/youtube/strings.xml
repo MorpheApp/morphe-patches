@@ -477,6 +477,21 @@ Sînorgertî:
 
 Doza navê pakkê rast be û sepan serdest be"</string>
   <string name="morphe_external_downloader_empty_warning">Navê pakkê nikare vala be</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Çalak bikin loop vîdyoyê</string>
+  <string name="morphe_loop_video_summary_on">Vîdyoyê dê loop bibe</string>
+  <string name="morphe_loop_video_summary_off">Vîdyoyê dê loop nebe</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Nîşandin butona loop vîdyoyê</string>
+  <string name="morphe_loop_video_button_summary_on">Butona pêlîstina vîdyoyê dest pê dike</string>
+  <string name="morphe_loop_video_button_summary_off">Butona pêlîstina vîdyoyê nêşerin</string>
+  <string name="morphe_loop_video_button_toast_on">Loop vîdyoyê ye ser</string>
+  <string name="morphe_loop_video_button_toast_off">Loop vîdyoyê ye xwer</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Sergî rewşa videoê paşê vebike</string>
+  <string name="morphe_reload_video_summary_on">Sergûşê rewşa videoê destûr e</string>
+  <string name="morphe_reload_video_summary_off">Sergûşê rewşa videoê qedexe ye</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID-ya video-yê neberdayî ye. Ji kerema xwe video-yê bi destan vezire.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tiliyê rovnêr a lêkirinê qut bikin</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tiliyê rovnêr a lêkirinê qut kirî ye</string>
@@ -1290,14 +1305,20 @@ Amade ye ji bo weşandinê?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tabled</string>
   <string name="morphe_change_form_factor_entry_4">Otomobîl</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Guhertinên têne qewîkirin:
+  <string name="morphe_change_form_factor_user_dialog_message">"Gûherînên tê de:
 
-Şekla taybetmendera tabletê
-• Postên civakî ve neşandin
+Qeşeyê mezin
+• Postên Civakê veşartin
+• Astîmê lêbelgîrkirinê di danînên belavê de nîne
+• Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
+• Barê çalakiyê ya vîdyoyê pêşîne nedin
 
-Şekla taybetmendera otomobîlê
-• Shorts li lêxerînerê asayî vekirin
-• Feêdi bi temaşîrên û kanalên rêzî kirin"</string>
+Qeşeyê otomotîvê
+• Belavê bi waran û kanalên ku tê de rêz kirin
+• Astîmê lêbelgîrkirinê di danînên belavê de nîne
+• Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
+• Shorts di xîlstokê asayî de vekirin
+• Barê çalakiyê ya vîdyoyê pêşîne nedin"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versona asayî</string>
   <string name="morphe_spoof_app_version_summary_on">Versona tê asayîkirin</string>
@@ -1350,10 +1371,10 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_change_start_page_always_title">\xe6\x9c\x80\xe6\x96\xb0\xe7\x8f\x8d\xe4\xb8\x96\xe6\x98\xbb\xe6\x9c\x89\xe4\xb8\x80\xe4\xb8\x8a</string>
   <string name="morphe_change_start_page_always_summary_on">"\xe6\x9c\x80\xe6\x96\xb0\xe7\x8f\x8d\xe4\xb8\x96\xe6\x98\xbb\xe6\x9c\x89\xe4\xb8\x80\xe4\xb8\x8a\n\n\xe9\x99\x8d\xe6\x9c\xaa\xe6\x8f\x8f\xe4\xb8\x80\xe4\xb8\x8a\xe4\xb8\x8b\xe5\x8f\x82\xe8\xb7\xaf\xe4\xb8\x8b\xe9\x9d\b6\xe5\xb1\x95\xe4\xb8\x8b\xe4\xb8\x80\xe4\xb8\x8a"</string>
   <string name="morphe_change_start_page_always_summary_off">\xe6\x9c\x80\xe6\x96\xb0\xe7\x8f\x8d\xe4\xb8\x96\xe6\x98\xbb\xe6\x9c\x89\xe4\xb8\x80\xe4\xb8\x8a</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">\xe5\x85\x8d\xe9\x87\x8d\xe9\x8f\a8\xe9\x9a\xb6\xe4\xb8\x80\xe9\x9a\xb6\xe6\x80\a7\xe9\x97\x86</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">\xe5\x8f\x8c\xe7\x9c\x99\xe4\xb8\x80\xe4\xb8\x8b\xe4\xb8\x8b\xe9\x80\b2\xe8\xb7\x87\xe4\xb8\x8b\xe9\x80\b2\xe5\xa7\x8b</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">\xe5\x8f\x8c\xe7\x9c\x99\xe4\xb8\x8b\xe9\x80\b2\xe8\xb7\x87\xe4\xb8\x8b\xe9\x80\b2\xe5\xa7\x8b</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Serdî Shortsên dest pê kirinê asteng bike</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts dê li ser destpêkê neyênerin</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts dê li ser destpêkê yênerin</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">\xe4\xb8\x80\xe6\x9c\x80\xe4\xb8\x80\xe9\x83\xa1\xe5\xa4\x9f\xe5\xa5\x87\xe4\xb8\x80\xe9\x83\xa1</string>
   <string name="morphe_shorts_player_type_shorts">\xe5\x8f\x8c\xe7\x9c\x99\xe4\xb8\x8b\xe9\x80\b2\xe8\xb7\x87</string>
@@ -1477,16 +1498,6 @@ Li vir bitapîre ji bo bêtir hêsanîyê li ser DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow niha neyê (koda statû: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow niha neyê</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Çalak bikin loop vîdyoyê</string>
-  <string name="morphe_loop_video_summary_on">Vîdyoyê dê loop bibe</string>
-  <string name="morphe_loop_video_summary_off">Vîdyoyê dê loop nebe</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Nîşandin butona loop vîdyoyê</string>
-  <string name="morphe_loop_video_button_summary_on">Butona pêlîstina vîdyoyê dest pê dike</string>
-  <string name="morphe_loop_video_button_summary_off">Butona pêlîstina vîdyoyê nêşerin</string>
-  <string name="morphe_loop_video_button_toast_on">Loop vîdyoyê ye ser</string>
-  <string name="morphe_loop_video_button_toast_off">Loop vîdyoyê ye xwer</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Çalak bikin dimensiyonên alavê</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Pêşdizima alavê tê qelsekirin
@@ -1566,7 +1577,9 @@ Ev dikare bişîne asta bilind a keyfiyetên vîdyoyê"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Hızên çavkaniyê nevalî</string>
   <string name="morphe_custom_playback_speeds_auto">Otomatîk</string>
   <string name="morphe_speed_tap_and_hold_title">Hız-hokma ser-dûre</string>
-  <string name="morphe_speed_tap_and_hold_summary">Nîşana pêşveçûna zû ya navberê 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Hejmara lêdanê di navbera 0-8 de
+
+Ger 0 be, destikî dane girtinê hatiye qefal kirin"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Guhertinên hız-hokmê ya serbixwe ya birêve bibe</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Guhertinên hız-hokmê ji hemû vîdyoyên veşartinê re qebûl kirin</string>

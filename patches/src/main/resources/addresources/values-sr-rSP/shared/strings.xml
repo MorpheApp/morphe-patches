@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Језик апликације</string>
   <string name="morphe_pref_import_export_title">Увоз / Извоз</string>
   <string name="morphe_pref_import_export_summary">Увоз / Извоз подешавања Morphe-а</string>
+  <string name="morphe_settings_import_file">Увоз из фајла</string>
+  <string name="morphe_settings_import_file_success">Подешавања су успешно увезена, додирните Сачувај да бисте их применили</string>
+  <string name="morphe_settings_import_file_failed">Неуспешан увоз подешавања</string>
+  <string name="morphe_settings_export_file">Извоз у фајл</string>
+  <string name="morphe_settings_export_file_success">Успешно извезени подешавања</string>
+  <string name="morphe_settings_export_file_failed">Неуспео извоз подешавања</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Користите последњу верзију Morphe печева &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Користите Morphe печеве верзије &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступно је ажурирање: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Да бисте ажурирали печеве, користите Morphe да бисте поново закрпили ову апликацију</string>
@@ -69,6 +75,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Веб сајт</string>
   <string name="morphe_settings_about_links_donate">Донација</string>
   <string name="morphe_settings_about_links_translations">Преводи</string>
+  <string name="morphe_settings_about_links_credits">Популарност</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Актуализовано</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Доступна је нова верзија</string>
+  <string name="morphe_settings_about_contributors_current">Тренутни развој</string>
+  <string name="morphe_settings_about_contributors_prior">Ранија развојна фаза</string>
+  <string name="morphe_settings_about_links_morphe">Активна развојна фаза</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Учитавање…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отклањање грешака</string>
   <string name="morphe_debug_screen_summary">Омогућите или онемогућите опције за отклањање грешака</string>
@@ -121,4 +137,13 @@ Second \"item\" text"</string>
 
 Додирните дугму \"Настави\" и дозволите промене у оптимизацији батерије."</string>
   <string name="gms_core_dialog_continue_text">Настави</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Показан је дијалог о оптимизацији батерије MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеомагућивање ове опције спречиће појаву промпта за оптимизацију батерије MicroG.
+
+Ако се оптимизације батерије не промене, може доћи до:
+• Сталног затварања апликације
+• Неисправног рада нотификација
+• Неисправног рада музичког плејера у позадини"</string>
 </resources>

@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Pangalan ng aplikasyon</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
@@ -101,8 +103,8 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 • Hindi magtatagumpay ang pag-playback kung ang Player JavaScript hash ay binawi sa GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ang pag-update ng JavaScript ng player ay pinagana</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Ang mga JavaScript hash ng player ay balido sa loob ng humigit-kumulang isang buwan, at ang mga hindi napapanahong hash ay maaaring i-revoke ng GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash ng JavaScript ng Player</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash ng JavaScript ng Player</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
   <string name="morphe_disable_quic_protocol_summary_on">Nakapatay ang QUIC protocol</string>
@@ -116,7 +118,7 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_force_original_audio_summary_on">Ginagamit ang orihinal na tunog ng wika</string>
   <string name="morphe_force_original_audio_summary_off">Ginagamit ang default na tunog</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Upang gamitin ang tampok na ito, baguhin ang \'Gayahin ang mga video stream\' sa anumang kliyente maliban sa Android Studio</string>
+  <string name="morphe_force_original_audio_not_available">Para magamit ang feature na ito, baguhin ang \'Gayahin ang mga video stream\' sa Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Inalis ang pagsubaybay sa query parameter mula sa nakabahaging link</string>

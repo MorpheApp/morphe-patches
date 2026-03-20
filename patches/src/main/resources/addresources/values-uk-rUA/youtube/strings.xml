@@ -303,6 +303,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Кнопка \"Підписатися\" показується</string>
   <string name="morphe_comments_screen_title">Коментарі</string>
   <string name="morphe_comments_screen_summary">Приховати або показувати компоненти секції коментарів</string>
+  <string name="morphe_hide_comments_carousel_title">Увімкнути фільтр каруселі коментарів</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Фільтр каруселі коментарів увімкнено</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Фільтр каруселі коментарів вимкнено</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Примітка
+
+• Обов’язково введіть точну назву елемента каруселі (наприклад, Запитати, Розрекламувати це відео, Слухати на YouTube Music тощо).
+• Приховування елементів каруселі може мати небажані побічні ефекти.
+• Якщо всі елементи каруселі приховані, весь розділ коментарів також буде прихований."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Фільтр каруселі коментарів</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Введіть назви каруселі коментарів для фільтрації, по одній на рядок</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Приховати \"Огляд чату від ШІ\"</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">\"Огляд чату від ШІ\" приховано</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">\"Огляд чату від ШІ\" показується</string>
@@ -475,6 +485,21 @@ Second \"item\" text"</string>
 
 Перевірте, чи правильне ім'я пакета та чи встановлено застосунок"</string>
   <string name="morphe_external_downloader_empty_warning">Ім\'я пакета не може бути порожнім</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
+  <string name="morphe_loop_video_summary_on">Відео буде повторюватися</string>
+  <string name="morphe_loop_video_summary_off">Відео не буде повторюватися</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Кнопка повторення відео</string>
+  <string name="morphe_loop_video_button_summary_on">Пункт меню \"Повторювати відео\" показується</string>
+  <string name="morphe_loop_video_button_summary_off">Пункт меню \"Повторювати відео\" не показується в відеоплеєрі</string>
+  <string name="morphe_loop_video_button_toast_on">Повторення відео ввімкнено</string>
+  <string name="morphe_loop_video_button_toast_off">Повторення відео вимкнено</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Кнопка перезавантаження відео</string>
+  <string name="morphe_reload_video_summary_on">Кнопка перезавантаження відео показується</string>
+  <string name="morphe_reload_video_summary_off">Кнопка перезавантаження відео не показується</string>
+  <string name="morphe_dismiss_player_not_available_toast">Ідентифікатор відео недоступний. Будь ласка, вручну повторно відкрийте відео.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест для точного покадрового перемотування вимкнено</string>
@@ -1292,10 +1317,16 @@ Second \"item\" text"</string>
 
 Планшетний макет
 • Публікації спільноти приховані
+• Налаштування відтворення у стрічках недоступне
+• Кнопки \"Ремікс\" та \"Звук\" недоступні в Short
+• Панель дій відео не згорнуто
 
 Автомобільний макет
-• Shorts відкриваються у звичайному плеєрі
-• Стрічка впорядкована за темами та каналами"</string>
+• Стрічка організована за темами та каналами
+• Налаштування відтворення у стрічках недоступне
+• Кнопки \"Ремікс\" та \"Звук\" недоступні в Short
+• Short відкриваються у звичайному плеєрі
+• Панель дій відео не згорнуто"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Підміна версії застосунку</string>
   <string name="morphe_spoof_app_version_summary_on">Версію підмінено</string>
@@ -1350,10 +1381,10 @@ Second \"item\" text"</string>
 
 Обмеження: Використання кнопки \"Назад\" на панелі інструментів може не працювати"</string>
   <string name="morphe_change_start_page_always_summary_off">Початкова сторінка змінюється лише під час запуску застосунку</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Вимкнути відновлення плеєра Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Плеєр Shorts не відновиться після запуску застосунку</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Плеєр Shorts відновиться після запуску застосунку</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Вимкнути відновлення Short під час запуску</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Short не відновлюються після запуску застосунку</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Short відновлюються після запуску застосунку</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Відкривати Shorts через</string>
   <string name="morphe_shorts_player_type_shorts">Плеєр Shorts</string>
@@ -1482,16 +1513,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow тимчасово недоступний (код статусу: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow тимчасово недоступний</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
-  <string name="morphe_loop_video_summary_on">Відео буде повторюватися</string>
-  <string name="morphe_loop_video_summary_off">Відео не буде повторюватися</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Кнопка повторення відео</string>
-  <string name="morphe_loop_video_button_summary_on">Пункт меню \"Повторювати відео\" показується</string>
-  <string name="morphe_loop_video_button_summary_off">Пункт меню \"Повторювати відео\" не показується в відеоплеєрі</string>
-  <string name="morphe_loop_video_button_toast_on">Повторення відео ввімкнено</string>
-  <string name="morphe_loop_video_button_toast_off">Повторення відео вимкнено</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Підміняти розміри пристрою</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Розміри пристрою підмінено
@@ -1570,7 +1591,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Неправильні користувацькі швидкості відтворення</string>
   <string name="morphe_custom_playback_speeds_auto">Авто</string>
   <string name="morphe_speed_tap_and_hold_title">Користувацька швидкість при натисканні та утриманні</string>
-  <string name="morphe_speed_tap_and_hold_summary">Швидкість відтворення від 0 до 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Швидкість відтворення від 0 до 8
+
+Якщо 0, швидкість при натисканні та утриманні вимкнено"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запам\'ятовувати зміни швидкості</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Зміни швидкості відтворення застосовуються до всіх відео</string>

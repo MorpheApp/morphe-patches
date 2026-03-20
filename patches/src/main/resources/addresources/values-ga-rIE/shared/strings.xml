@@ -60,6 +60,12 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_language_DEFAULT">Teanga an aip</string>
   <string name="morphe_pref_import_export_title">Iompórtáil / Easpórtáil</string>
   <string name="morphe_pref_import_export_summary">Socruithe Morphe a Iompórtáil / Easpórtáil</string>
+  <string name="morphe_settings_import_file">Importáil ón bhfile</string>
+  <string name="morphe_settings_import_file_success">D\'éirigh leis na socruithe a iompórtáil, tap Save chun iarratas a chur ar cheann</string>
+  <string name="morphe_settings_import_file_failed">Theip ar na socruithe a iompórtáil</string>
+  <string name="morphe_settings_export_file">Easpórtáil go dtí an bhfile</string>
+  <string name="morphe_settings_export_file_success">D\'éirigh leis na socruití a onnmhairiú</string>
+  <string name="morphe_settings_export_file_failed">Theip ar na socruití a onnmhairiú</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Tá tú ag baint úsáide as an leagan is déanaí de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Tá tú ag baint úsáide as leagan &lt;i&gt;%1$s&lt;/i&gt; Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Nuashonrú ar fáil: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Chun do phaisteanna a nuashonrú, bain úsáid as Morphe chun an aip seo a athphaisteáil</string>
@@ -69,6 +75,16 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_links_website">Suíomh Gréasáin</string>
   <string name="morphe_settings_about_links_donate">Tabhair Síntiús</string>
   <string name="morphe_settings_about_links_translations">Aistriúcháin</string>
+  <string name="morphe_settings_about_links_credits">Crèidteacha</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Faoin dáta</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Nuashonrú ar fáil</string>
+  <string name="morphe_settings_about_contributors_current">Forbairt reatha</string>
+  <string name="morphe_settings_about_contributors_prior">Forbairt roimhe</string>
+  <string name="morphe_settings_about_links_morphe">Forbairt ghinearálta</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Ag lódáil...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
   <string name="morphe_debug_screen_summary">Cumasaigh nó díchumasaigh roghanna dífhabhtaithe</string>
@@ -121,4 +137,13 @@ Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí do MicroG a dhích
 
 Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe."</string>
   <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialóg optimisation ceallraí</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Tá taispeánadh ag tarlú de dhiagal optimisations ceallraí MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Níl taispeánadh ag tarlú de dhiagal optimisations ceallraí MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Laghdú an urlabhaithe seo éadrom ó léiriú an stráice MicroG optimisations ceallraí.
+
+Má n-athraítear optamaithe ceallraí, d’fhéadfá an méadún seo a eispériment: 
+• Dúnadh rándómach na gcur
+• Ní oibreoidh fáil Teamh
+• Ní oibreoidh seoladh tús agaibh"</string>
 </resources>

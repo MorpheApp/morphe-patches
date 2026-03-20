@@ -17,6 +17,8 @@ import app.morphe.util.insertFirst
 import app.morphe.util.returnEarly
 import org.w3c.dom.Node
 
+const val MORPHE_SETTINGS_INTENT = "morphe_settings_intent"
+
 private var lightThemeColor : String? = null
 private var darkThemeColor : String? = null
 

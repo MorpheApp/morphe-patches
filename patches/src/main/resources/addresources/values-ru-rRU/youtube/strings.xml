@@ -303,6 +303,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Кнопка \"Подписаться\" в Shorts показана</string>
   <string name="morphe_comments_screen_title">Комментарии</string>
   <string name="morphe_comments_screen_summary">Скрыть или показать компоненты раздела комментариев</string>
+  <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Фильтр карусели комментариев включен</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Фильтр карусели комментариев выключен</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Примечание
+
+• Введите точное название элемента карусели (например, Спросить, Разрекламировать это видео, Слушать на YouTube Music и т.д.).
+• Скрытие элементов карусели может иметь нежелательные побочные эффекты.
+• Если все элементы карусели скрыты, весь раздел комментариев также будет скрыт."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите названия карусели комментариев для фильтрации, по одному на строчку</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Секция ИИ сводки чата скрыта</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Секция ИИ сводки чата показана</string>
@@ -475,6 +485,21 @@ Second \"item\" text"</string>
 
 Убедитесь, что имя пакета указано правильно и приложение установлено"</string>
   <string name="morphe_external_downloader_empty_warning">Имя пакета не может быть пустым</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Включить повтор воспроизведения</string>
+  <string name="morphe_loop_video_summary_on">Видео будет повторяться</string>
+  <string name="morphe_loop_video_summary_off">Видео не будет повторяться</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Показать кнопку повтора воспроизведения</string>
+  <string name="morphe_loop_video_button_summary_on">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера показан</string>
+  <string name="morphe_loop_video_button_summary_off">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера не показан</string>
+  <string name="morphe_loop_video_button_toast_on">Повтор видео включен</string>
+  <string name="morphe_loop_video_button_toast_off">Повтор видео выключен</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Показать кнопку перезагрузки видео</string>
+  <string name="morphe_reload_video_summary_on">Кнопка перезагрузки видео показана</string>
+  <string name="morphe_reload_video_summary_off">Кнопка перезагрузки видео скрыта</string>
+  <string name="morphe_dismiss_player_not_available_toast">Идентификатор видео недоступен. Пожалуйста, откройте видео снова вручную.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Отключить жест покадровой перемотки</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест покадровой перемотки отключен</string>
@@ -1292,11 +1317,17 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_change_form_factor_user_dialog_message">"Изменения включают:
 
 Планшетный макет
-• Посты сообщества скрыты
+• Публикации сообщества скрыты
+• Настройка воспроизведения в лентах недоступна
+• Кнопки \"Ремикс\" и \"Звук\" недоступны в Short
+• Панель действий видео не свернута
 
 Автомобильный макет
-• Shorts открываются в стандартном плеере
-• Лента организована по темам и каналам"</string>
+• Лента организована по темам и каналам
+• Настройка воспроизведения в лентах недоступна
+• Кнопки \"Ремикс\" и \"Звук\" недоступны в Short
+• Short открываются в обычном плеере
+• Панель действий видео не свернута"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменить версию приложения</string>
   <string name="morphe_spoof_app_version_summary_on">Версия приложения подменена</string>
@@ -1351,10 +1382,10 @@ Cookies будут сохраняться автоматически, если �
 
 Ограничение: использование кнопки \"Назад\" на панели инструментов может не работать"</string>
   <string name="morphe_change_start_page_always_summary_off">Начальная страница изменяется только при запуске приложения</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Отключить возобновление плеера Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Возобновление плеера Shorts при запуске приложения отключено</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Возобновление плеера Shorts при запуске приложения включено</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Отключить восстановление Short при запуске</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Short не будет восстанавливаться после запуска программы</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Short будут восстанавливаться после запуска программы</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Плеер для открытия Shorts</string>
   <string name="morphe_shorts_player_type_shorts">Плеер Shorts</string>
@@ -1483,16 +1514,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow временно недоступен (код статуса: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow временно недоступен</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Включить повтор воспроизведения</string>
-  <string name="morphe_loop_video_summary_on">Видео будет повторяться</string>
-  <string name="morphe_loop_video_summary_off">Видео не будет повторяться</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Показать кнопку повтора воспроизведения</string>
-  <string name="morphe_loop_video_button_summary_on">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера показан</string>
-  <string name="morphe_loop_video_button_summary_off">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера не показан</string>
-  <string name="morphe_loop_video_button_toast_on">Повтор видео включен</string>
-  <string name="morphe_loop_video_button_toast_off">Повтор видео выключен</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Подменить размеры устройства</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размеры устройства подменены
@@ -1571,7 +1592,9 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_custom_playback_speeds_parse_exception">Недопустимые кастомные скорости воспроизведения</string>
   <string name="morphe_custom_playback_speeds_auto">Автоматически</string>
   <string name="morphe_speed_tap_and_hold_title">Кастомная скорость при нажатии и удержании</string>
-  <string name="morphe_speed_tap_and_hold_summary">Значение кастомной скорости воспроизведения при нажатии и удержании от 0 до 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Скорость воспроизведения между 0-8
+
+Если 0, касание и удержание скорости отключено"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запоминать изменения скорости воспроизведения</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Изменения скорости воспроизведения применяются ко всем видео</string>

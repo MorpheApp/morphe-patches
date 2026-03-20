@@ -1,8 +1,12 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.extension.reddit.settings.preference.categories;
+
+import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
 import android.preference.PreferenceScreen;
@@ -15,7 +19,7 @@ import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
     public AdsPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle("Ads");
+        setTitle(str("morphe_screen_layout_title"));
     }
 
     @Override
@@ -27,13 +31,11 @@ public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
     public void addPreferences(Context context) {
         addPreference(new BooleanSettingPreference(
                 context,
-                Settings.HIDE_COMMENT_ADS, "Hide comment ads",
-                "Hides ads in the comments section"
+                Settings.HIDE_COMMENT_ADS
         ));
         addPreference(new BooleanSettingPreference(
                 context,
-                Settings.HIDE_POST_ADS, "Hide feed ads",
-                "Hides ads in the feed"
+                Settings.HIDE_POST_ADS
         ));
     }
 }

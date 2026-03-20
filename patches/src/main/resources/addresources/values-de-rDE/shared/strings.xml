@@ -60,6 +60,12 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_language_DEFAULT">App-Sprache</string>
   <string name="morphe_pref_import_export_title">Import/Export</string>
   <string name="morphe_pref_import_export_summary">Morphe-Einstellungen importieren/exportieren</string>
+  <string name="morphe_settings_import_file">Aus Datei importieren</string>
+  <string name="morphe_settings_import_file_success">Einstellungen erfolgreich importiert, tippen Sie auf Speichern, um sie anzuwenden</string>
+  <string name="morphe_settings_import_file_failed">Einstellungen konnten nicht importiert werden</string>
+  <string name="morphe_settings_export_file">In Datei exportieren</string>
+  <string name="morphe_settings_export_file_success">Einstellungen erfolgreich exportiert</string>
+  <string name="morphe_settings_export_file_failed">Fehler beim Exportieren der Einstellungen</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Sie verwenden die neueste Morphe-Patches-Version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Sie verwenden die Morphe-Patches-Version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Update verfügbar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Um Ihre Patches zu aktualisieren, verwenden Sie Morphe, um diese App erneut zu patchen.</string>
@@ -69,6 +75,16 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Spenden</string>
   <string name="morphe_settings_about_links_translations">Übersetzungen</string>
+  <string name="morphe_settings_about_links_credits">Credits</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Auf dem neuesten Stand</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Update verfügbar</string>
+  <string name="morphe_settings_about_contributors_current">Aktuelle Entwicklung</string>
+  <string name="morphe_settings_about_contributors_prior">Frühere Entwicklung</string>
+  <string name="morphe_settings_about_links_morphe">Aktuelle Entwicklung</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Lädt...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Fehlerbehebung</string>
   <string name="morphe_debug_screen_summary">Aktiviert oder deaktiviert Debugging-Optionen</string>
@@ -121,4 +137,13 @@ Die Deaktivierung der Akkubedienstoptimierungen für MicroG beeinflusst negativ 
 
 Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die OptimierungsÃderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Akkuoptimierung</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Der MicroG-Akkuoptimierungsdialog wird angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Der MicroG-Akkuoptimierungsdialog wird nicht angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Akkuoptimierungsaufforderung.
+
+Wenn die Akkuoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
+• Die App kann unerwartet geschlossen werden
+• Benachrichtigungen funktionieren möglicherweise nicht
+• Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
 </resources>

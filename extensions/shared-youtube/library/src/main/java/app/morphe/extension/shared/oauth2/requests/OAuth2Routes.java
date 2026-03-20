@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.extension.shared.oauth2.requests;
@@ -18,7 +20,7 @@ final class OAuth2Routes {
     private static final String OAUTH2_GOOGLE_API_URL = "https://oauth2.googleapis.com/";
     private static final String OAUTH2_YOUTUBE_API_URL = "https://www.youtube.com/o/oauth2/";
     private static final String USER_AGENT =
-            "com.google.android.apps.youtube.vr.oculus/1.47.48(Linux; U; Android 10; en_US; Quest Build/QQ3A.200805.001) gzip";
+            "com.google.android.apps.youtube.vr.oculus/1.64.34(Linux; U; Android 10; en_US; Quest Build/QQ3A.200805.001) gzip";
 
     /**
      * TCP connection and HTTP read timeout.

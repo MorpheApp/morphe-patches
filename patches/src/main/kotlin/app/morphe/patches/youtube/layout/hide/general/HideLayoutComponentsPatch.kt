@@ -4,12 +4,12 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.hide.general
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.Match.InstructionMatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -17,11 +17,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -38,8 +36,12 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
+import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -48,10 +50,11 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.injectHideViewCall
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -60,48 +63,6 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
-
-internal var albumCardId = -1L
-    private set
-internal var crowdfundingBoxId = -1L
-    private set
-internal var filterBarHeightId = -1L
-    private set
-internal var relatedChipCloudMarginId = -1L
-    private set
-internal var barContainerHeightId = -1L
-    private set
-
-private val hideLayoutComponentsResourcePatch = resourcePatch {
-    dependsOn(resourceMappingPatch)
-
-    execute {
-        albumCardId = getResourceId(
-            ResourceType.LAYOUT,
-            "album_card",
-        )
-
-        crowdfundingBoxId = getResourceId(
-            ResourceType.LAYOUT,
-            "donation_companion",
-        )
-
-        relatedChipCloudMarginId = getResourceId(
-            ResourceType.LAYOUT,
-            "related_chip_cloud_reduced_margins",
-        )
-
-        filterBarHeightId = getResourceId(
-            ResourceType.DIMEN,
-            "filter_bar_height",
-        )
-
-        barContainerHeightId = getResourceId(
-            ResourceType.DIMEN,
-            "bar_container_height",
-        )
-    }
-}
 
 private const val LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
@@ -123,12 +84,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
         lithoFilterPatch,
         settingsPatch,
         engagementPanelHookPatch,
-        hideLayoutComponentsResourcePatch,
         navigationBarHookPatch,
         versionCheckPatch,
         resourceMappingPatch,
         hideHorizontalShelvesPatch,
         hideUpdateScreenPatch,
+        elementProtoParserHookPatch,
+        fixProtoLibraryPatch,
         lazilyConvertedElementHookPatch
     )
 
@@ -170,6 +132,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 "morphe_comments_screen",
                 preferences = setOf(
+                    PreferenceCategory(
+                        titleKey = null,
+                        sorting = Sorting.UNSORTED,
+                        tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                        preferences = setOf(
+                            SwitchPreference("morphe_hide_comments_carousel"),
+                            TextPreference(
+                                "morphe_hide_comments_carousel_filter_strings",
+                                inputType = InputType.TEXT_MULTI_LINE
+                            ),
+                        )
+                    ),
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
                     SwitchPreference("morphe_hide_comments_prompts"),
@@ -431,16 +405,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
         else HideSubscribedChannelsBarConstructorLegacyFingerprint
 
         constructorFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                addInstruction(
-                    index + 1,
-                    "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
-                            "->hideSubscribedChannelsBar(Landroid/view/View;)V",
-                )
-            }
+            it.method.injectHideViewCall(
+                it.instructionMatches[1].index,
+                LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                "hideSubscribedChannelsBar"
+            )
         }
 
         // Phone (landscape mode)
@@ -463,44 +432,45 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region hide crowdfunding box
+        // region hide album cards
 
-        CrowdfundingBoxFingerprint.let {
-            it.method.apply {
-                val insertIndex = it.instructionMatches.last().index
-                val objectRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
-
-                addInstruction(
-                    insertIndex,
-                    "invoke-static {v$objectRegister}, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
-                        "->hideCrowdfundingBox(Landroid/view/View;)V",
-                )
-            }
+        AlbumCardsFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                "hideAlbumCard"
+            )
         }
 
         // endregion
 
-        // region hide album cards
+        // region hide comment page
 
-        AlbumCardsFingerprint.let {
-            it.method.apply {
-                val checkCastAnchorIndex = it.instructionMatches.last().index
-                val insertIndex = checkCastAnchorIndex + 1
-                val register = getInstruction<OneRegisterInstruction>(checkCastAnchorIndex).registerA
+        hookElement("$COMMENTS_FILTER_CLASS_NAME->onCommentsLoaded([B)[B")
 
-                addInstruction(
-                    insertIndex,
-                    "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
-                        "->hideAlbumCard(Landroid/view/View;)V",
-                )
-            }
+        // endregion
+
+        // region hide crowdfunding box
+
+        CrowdfundingBoxFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                "hideCrowdfundingBox"
+            )
         }
 
         // endregion
 
         // region hide floating microphone
 
-        ShowFloatingMicrophoneButtonFingerprint.let {
+        val showFloatingMicrophoneButtonFingerprintMatch = if (is_21_11_or_greater)
+            ShowFloatingMicrophoneButtonFingerprint.match(
+                ShowFloatingMicrophoneButtonParentFingerprint.originalClassDef
+            )
+        else ShowFloatingMicrophoneButtonLegacyFingerprint.match()
+
+        showFloatingMicrophoneButtonFingerprintMatch.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -510,7 +480,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     """
                         invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
                         move-result v$register
-                    """,
+                    """
                 )
             }
         }
@@ -523,14 +493,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
             LatestVideosContentPillFingerprint,
             LatestVideosBarFingerprint,
         ).forEach { fingerprint ->
-            fingerprint.method.apply {
-                val moveIndex = fingerprint.instructionMatches.last().index
-                val viewRegister = getInstruction<OneRegisterInstruction>(moveIndex).registerA
-
-                addInstruction(
-                    moveIndex + 1,
-                    "invoke-static { v$viewRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR" +
-                            "->hideLatestVideosButton(Landroid/view/View;)V"
+            fingerprint.let {
+                it.method.injectHideViewCall(
+                    it.instructionMatches.last().index,
+                    LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                    "hideLatestVideosButton"
                 )
             }
         }
@@ -590,43 +557,58 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide filter bar
 
-        /**
-         * Patch a [Method] with a given [instructions].
-         *
-         * @param RegisterInstruction The type of instruction to get the register from.
-         * @param insertIndexOffset The offset to add to the end index of the [InstructionMatch].
-         * @param hookRegisterOffset The offset to add to the register of the hook.
-         * @param instructions The instructions to add with the register as a parameter.
-         */
-        fun <RegisterInstruction : OneRegisterInstruction> Fingerprint.patch(
-            insertIndexOffset: Int = 0,
-            hookRegisterOffset: Int = 0,
-            instructions: (Int) -> String,
-        ) = method.apply {
-            val endIndex = instructionMatches.last().index
-            val insertIndex = endIndex + insertIndexOffset
-            val register = getInstruction<RegisterInstruction>(endIndex + hookRegisterOffset).registerA
-
-            addInstructions(insertIndex, instructions(register))
+        val filterBars = mutableMapOf(
+            FilterBarHeightFingerprint to "hideInFeed",
+            SearchResultsChipBarFingerprint to "hideInSearch",
+        )
+        if (is_20_10_or_greater) {
+            filterBars += Pair(RelatedChipCloudFingerprint, "hideInRelatedVideos")
         }
 
-        FilterBarHeightFingerprint.patch<TwoRegisterInstruction> { register ->
-            """
-                invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInFeed(I)I
-                move-result v$register
-            """
+        filterBars.forEach { (fingerprint, methodName) ->
+            fingerprint.method.apply {
+                val moveIndex = fingerprint.instructionMatches.last().index
+                val sizeRegister = getInstruction<OneRegisterInstruction>(moveIndex).registerA
+
+                addInstructions(
+                    moveIndex + 1,
+                    """
+                        invoke-static { v$sizeRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->$methodName(I)I
+                        move-result v$sizeRegister
+                    """
+                )
+            }
         }
 
-        SearchResultsChipBarFingerprint.patch<OneRegisterInstruction>(-1, -2) { register ->
-            """
-                invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInSearch(I)I
-                move-result v$register
-            """
+        if (is_20_10_or_greater) {
+            RelatedChipCloudFingerprint.let {
+                it.clearMatch()
+                it.method.apply {
+                    insertLiteralOverride(
+                        it.instructionMatches[2].index,
+                        "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Z)Z"
+                    )
+                }
+            }
         }
 
-        RelatedChipCloudFingerprint.patch<OneRegisterInstruction>(1) { register ->
-            "invoke-static { v$register }, " +
-                "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Landroid/view/View;)V"
+        val relatedChipCloudFingerprintMatch = if (is_20_10_or_greater)
+            RelatedChipCloudFingerprint
+        else RelatedChipCloudLegacyFingerprint
+
+        relatedChipCloudFingerprintMatch.let {
+            it.clearMatch()
+            it.method.apply {
+                val viewIndex = it.instructionMatches[1].index
+                val viewRegister = getInstruction<FiveRegisterInstruction>(viewIndex).registerC
+
+                injectHideViewCall(
+                    viewIndex,
+                    viewRegister,
+                    LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                    "hideInRelatedVideos"
+                )
+            }
         }
 
         // endregion

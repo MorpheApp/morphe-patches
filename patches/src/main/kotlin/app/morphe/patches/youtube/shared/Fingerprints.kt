@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.shared
@@ -50,7 +52,6 @@ internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
 )
 
 internal object EngagementPanelControllerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L", "L", "Z", "Z"),
     filters = listOf(
@@ -93,6 +94,13 @@ internal object YouTubeMainActivityOnBackPressedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_SUPER,
+            name = "onBackPressed"
+        ),
+        opcode(Opcode.RETURN_VOID)
+    )
 )
 
 internal object YouTubeActivityOnCreateFingerprint : Fingerprint(
@@ -174,6 +182,27 @@ internal object ToolBarButtonFingerprint : Fingerprint(
             location = MatchAfterWithin(4)
         )
     )
+)
+
+internal object PlaybackSpeedOnItemClickParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            returnType = "L",
+            parameters = listOf("Ljava/lang/String;"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 8
+    }
 )
 
 internal object VideoQualityChangedFingerprint : Fingerprint(

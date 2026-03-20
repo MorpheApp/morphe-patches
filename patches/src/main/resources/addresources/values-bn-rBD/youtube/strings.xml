@@ -473,6 +473,21 @@ Second \"item\" text"</string>
 
 প্যাকেজের নামটি সঠিক এবং অ্যাপটি ইনস্টল করা আছে কিনা তা যাচাই করুন"</string>
   <string name="morphe_external_downloader_empty_warning">প্যাকেজের নাম খালি রাখা যাবে না</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
+  <string name="morphe_loop_video_summary_on">ভিডিও লুপ হবে</string>
+  <string name="morphe_loop_video_summary_off">ভিডিও লুপ হবে না</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
+  <string name="morphe_loop_video_button_summary_on">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_loop_video_button_summary_off">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
+  <string name="morphe_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">পুনরায় লোড ভিডিও বোতাম দেখান</string>
+  <string name="morphe_reload_video_summary_on">পুনরায় লোড ভিডিও বোতামটি দেখানো হয়েছে</string>
+  <string name="morphe_reload_video_summary_off">পুনরায় লোড ভিডিও বোতামটি দেখানো হয়নি</string>
+  <string name="morphe_dismiss_player_not_available_toast">ভিডিও আইডি অনুপলব্ধ। অনুগ্রহ করে ম্যানুয়ালি ভিডিওটি পুনরায় খুলুন।</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ভিডিওর নির্দিষ্ট অংশে যাওয়ার অঙ্গভঙ্গি নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">অঙ্গভঙ্গি নিষ্ক্রিয় করা হয়েছে</string>
@@ -1290,11 +1305,17 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_change_form_factor_user_dialog_message">"পরিবর্তনগুলির মধ্যে রয়েছে:
 
 ট্যাবলেট লেআউট
-• কমিউনিটির পোস্টগুলি লুকানো আছে
+• কমিউনিটি পোস্টগুলি লুকানো হয়েছে
+• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
+• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
+• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না
 
 অটোমোটিভ লেআউট
-• Shorts নিয়মিত প্লেয়ারে খোলে
-• ফিড বিষয় এবং চ্যানেল দ্বারা সংগঠিত"</string>
+• ফিড বিষয় এবং চ্যানেল অনুসারে সাজানো হয়েছে
+• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
+• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
+• শর্টস নিয়মিত প্লেয়ারে খুলবে
+• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপ সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary_on">সংস্করণ স্পুফ করা হয়েছে</string>
@@ -1349,10 +1370,10 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
 
 সীমাবদ্ধতা: টুলবারে পিছনের বোতাম ব্যবহার করলে কাজ নাও করতে পারে"</string>
   <string name="morphe_change_start_page_always_summary_off">অ্যাপ শুরু করার সময় শুধুমাত্র শুরুর পৃষ্ঠা পরিবর্তন করা হয়</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Shorts প্লেয়ার আবার চালানো নিষ্ক্রিয় করুন</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">অ্যাপের শুরুতে Shorts প্লেয়ার আবার চলবে না</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">অ্যাপের শুরুতে Shorts প্লেয়ার আবার চলবে</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Startup-এ Shorts পুনরায় চালু করা নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">অ্যাপ startup-এ Shorts আবার চলবে না</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">অ্যাপ startup-এ Shorts আবার চলবে</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts সঙ্গে খুলুন</string>
   <string name="morphe_shorts_player_type_shorts">Shorts প্লেয়ার</string>
@@ -1481,16 +1502,6 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow সাময়িকভাবে উপলব্ধ নেই (স্ট্যাটাস কোড: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow সাময়িকভাবে উপলব্ধ নেই</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
-  <string name="morphe_loop_video_summary_on">ভিডিও লুপ হবে</string>
-  <string name="morphe_loop_video_summary_off">ভিডিও লুপ হবে না</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
-  <string name="morphe_loop_video_button_summary_on">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
-  <string name="morphe_loop_video_button_summary_off">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
-  <string name="morphe_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
-  <string name="morphe_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ডিভাইস ডাইমেনশন স্পুফ করুন</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"ডিভাইসের মাত্রা ভুয়া
@@ -1569,7 +1580,9 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_custom_playback_speeds_parse_exception">অবৈধ কাস্টম প্লেব্যাক গতি</string>
   <string name="morphe_custom_playback_speeds_auto">স্বতস্ফূর্তভাবে</string>
   <string name="morphe_speed_tap_and_hold_title">কাস্টম ট্যাপ এন্ড হোল্ড স্পিড</string>
-  <string name="morphe_speed_tap_and_hold_summary">০-৮ এর মধ্যে প্লেব্যাক স্পিড</string>
+  <string name="morphe_speed_tap_and_hold_summary">"0-8 এর মধ্যে প্লেব্যাক স্পিড
+
+যদি 0 হয়, তাহলে ট্যাপ এবং হোল্ড স্পিড ডিজেবল করা হবে"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">প্লেব্যাকের স্পিড পরিবর্তন মনে রাখুন</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">প্লেব্যাকের স্পিড পরিবর্তন সকল ভিডিওতে প্রয়োগ হবে</string>

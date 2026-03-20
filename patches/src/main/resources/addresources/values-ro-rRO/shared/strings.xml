@@ -60,6 +60,12 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_language_DEFAULT">Limba aplicației</string>
   <string name="morphe_pref_import_export_title">Importă / Exportă</string>
   <string name="morphe_pref_import_export_summary">Import/Export setări Morphe</string>
+  <string name="morphe_settings_import_file">Importare din fișier</string>
+  <string name="morphe_settings_import_file_success">Setările au fost importate cu succes, atinge Salvează pentru a aplica</string>
+  <string name="morphe_settings_import_file_failed">Nu s-au putut importa setările</string>
+  <string name="morphe_settings_export_file">Exportare în fișier</string>
+  <string name="morphe_settings_export_file_success">Setările exportate cu succes</string>
+  <string name="morphe_settings_export_file_failed">Eșec la exportarea setărilor</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Utilizați cea mai recentă versiune a patch-urilor Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Utilizați versiunea patch-urilor Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualizare disponibilă: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pentru a actualiza patch-urile, folosiți Morphe pentru a repatcha această aplicație</string>
@@ -69,6 +75,16 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_links_website">Site web</string>
   <string name="morphe_settings_about_links_donate">Donează</string>
   <string name="morphe_settings_about_links_translations">Traduceri</string>
+  <string name="morphe_settings_about_links_credits">Credite</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Actualizat</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Actualizare disponibilă</string>
+  <string name="morphe_settings_about_contributors_current">Dezvoltare curentă</string>
+  <string name="morphe_settings_about_contributors_prior">Dezvoltare anterioară</string>
+  <string name="morphe_settings_about_links_morphe">Dezvoltare activă</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Se încarcă...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depanare</string>
   <string name="morphe_debug_screen_summary">Activează sau dezactivează opțiunile de depanare</string>
@@ -121,4 +137,13 @@ Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizar
 
 Apăsați butonul Continuare și permiteți modificările de optimizare."</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog de optimizare a bateriei</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialogul de optimizare a bateriei MicroG este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialogul de optimizare a bateriei MicroG nu este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
+
+Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următoarele probleme:
+• Aplicația se poate închide aleatoriu
+• Notificările pot să nu funcționeze
+• Redarea în fundal poate să nu funcționeze"</string>
 </resources>

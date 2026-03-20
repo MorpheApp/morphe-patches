@@ -60,6 +60,12 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_language_DEFAULT">Idioma de la aplicación</string>
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar ajustes de Morphe</string>
+  <string name="morphe_settings_import_file">Importar desde archivo</string>
+  <string name="morphe_settings_import_file_success">Ajustes importados correctamente, pulse \"Guardar\" para aplicar</string>
+  <string name="morphe_settings_import_file_failed">Error al importar los ajustes</string>
+  <string name="morphe_settings_export_file">Exportar a archivo</string>
+  <string name="morphe_settings_export_file_success">Ajustes exportados correctamente</string>
+  <string name="morphe_settings_export_file_failed">Error al exportar los ajustes</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>
@@ -69,6 +75,17 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_links_website">Sitio web</string>
   <string name="morphe_settings_about_links_donate">Donar</string>
   <string name="morphe_settings_about_links_translations">Traducciones</string>
+  <string name="morphe_settings_about_links_credits">Créditos</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Actualizado</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Actualización disponible</string>
+  <string name="morphe_settings_about_contributors_current">Desarrollo actual</string>
+  <string name="morphe_settings_about_contributors_prior">Desarrollo anterior</string>
+  <string name="morphe_settings_about_links_morphe">Desarrollo activo</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Avisos de licencia</string>
+  <string name="morphe_settings_about_licenses_loading">Cargando...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
   <string name="morphe_debug_screen_summary">Activar o desactivar las opciones de depuración</string>
@@ -121,4 +138,13 @@ Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto neg
 
 Toca el botón continuar y permite los cambios de optimización."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Diálogo de optimización de la batería</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Se muestra el diálogo de optimización de batería de MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">No se muestra el diálogo de optimización de batería de MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deshabilitar esto ocultará la pregunta de optimización de batería de MicroG.
+
+Si no se modifican las optimizaciones de la batería, es posible que experimente:
+• La aplicación puede cerrarse aleatoriamente
+• Las notificaciones pueden no funcionar
+• La reproducción en segundo plano puede no funcionar"</string>
 </resources>

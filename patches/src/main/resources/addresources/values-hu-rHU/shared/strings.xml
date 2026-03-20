@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Alkalmazás nyelve</string>
   <string name="morphe_pref_import_export_title">Importálás / exportálás</string>
   <string name="morphe_pref_import_export_summary">Morphe beállítások importálása / exportálása</string>
+  <string name="morphe_settings_import_file">Fájlból importálás</string>
+  <string name="morphe_settings_import_file_success">A beállítások sikeresen importálva, koppintson a Mentés gombra a alkalmazáshoz</string>
+  <string name="morphe_settings_import_file_failed">Hiba történt a beállítások importálásakor</string>
+  <string name="morphe_settings_export_file">Fájlba exportálás</string>
+  <string name="morphe_settings_export_file_success">A beállítások sikeresen exportálva</string>
+  <string name="morphe_settings_export_file_failed">Hiba történt a beállítások exportálásakor</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">A Morphe Patches legutóbbi &lt;i&gt;%s&lt;/i&gt; verzióját itt használja</string>
   <string name="morphe_settings_about_links_body_version_outdated">Itt használja a Morphe Patches &lt;i&gt;%1$s&lt;/i&gt; verzióját&lt;br&gt;&lt;br&gt;&lt;b&gt;Frissítés elérhető: &lt;i&gt;%2$s&lt;i&gt;&lt;b&gt;&lt;br&gt;&lt;br&gt;Az appfrissítéshez használja a Morphe-t</string>
@@ -69,6 +75,17 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Weboldal</string>
   <string name="morphe_settings_about_links_donate">Adományozz</string>
   <string name="morphe_settings_about_links_translations">Fordítások</string>
+  <string name="morphe_settings_about_links_credits">Előadók</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Naprakész</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Frissítés elérhető</string>
+  <string name="morphe_settings_about_contributors_current">Folyamatos fejlesztés</string>
+  <string name="morphe_settings_about_contributors_prior">Korábbi fejlesztés</string>
+  <string name="morphe_settings_about_links_morphe">Folyamatban lévő fejlesztés</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licencmegjegyzések</string>
+  <string name="morphe_settings_about_licenses_loading">Betöltés...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hibakeresés</string>
   <string name="morphe_debug_screen_summary">Hibakeresési beállítások engedélyezése vagy letiltása</string>
@@ -121,4 +138,13 @@ A MicroG akkumulátor-optimalizálásának letiltása nem befolyásolja negatív
 
 Kattintson a folytatás gombra, és engedélyezze az optimalizálási módosításokat."</string>
   <string name="gms_core_dialog_continue_text">Folytatás</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Akkugenerációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Megjelenik a MicroG akkumulátor-optimalizációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Nem jelenik meg a MicroG akkumulátor-optimalizációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"A letiltás elrejti a MicroG akkumulátor-optimalizációs kérést.
+
+Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
+• Az alkalmazás véletlenszerűen lezárulhat
+• Az értesítések nem működhetnek
+• A háttérbeli lejátszás nem működhet"</string>
 </resources>

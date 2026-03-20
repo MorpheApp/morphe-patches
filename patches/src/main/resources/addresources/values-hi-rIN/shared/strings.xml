@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">एप्लिकेशन भाषा</string>
   <string name="morphe_pref_import_export_title">आयात / निर्यात</string>
   <string name="morphe_pref_import_export_summary">Morphe सेटिंग्स आयात करें / निर्यात करें</string>
+  <string name="morphe_settings_import_file">फ़ाइल से आयात करें</string>
+  <string name="morphe_settings_import_file_success">सेटिंग्स सफलतापूर्वक आयात की गईं, लागू करने के लिए सहेजें पर टैप करें</string>
+  <string name="morphe_settings_import_file_failed">सेटिंग्स आयात करने में विफल</string>
+  <string name="morphe_settings_export_file">फ़ाइल में निर्यात करें</string>
+  <string name="morphe_settings_export_file_success">सेटिंग्स सफलतापूर्वक एक्सपोर्ट हो गया</string>
+  <string name="morphe_settings_export_file_failed">सेटिंग्स एक्सपोर्ट करने में विफल</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">आप Morphe Patches की नवीनतम संस्करण &lt;i&gt;%s&lt;/i&gt; का उपयोग कर रहे हैं</string>
   <string name="morphe_settings_about_links_body_version_outdated">आप Morphe Patches संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध है: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;अपडेट करने के लिए, इस ऐप को पुनपटच करें</string>
@@ -69,6 +75,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">वेबसाइट</string>
   <string name="morphe_settings_about_links_donate">दान करें</string>
   <string name="morphe_settings_about_links_translations">ट्रांसलेशन्स</string>
+  <string name="morphe_settings_about_links_credits">क्रेडिट</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">नवीनतम</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">अपडेट उपलब्ध है</string>
+  <string name="morphe_settings_about_contributors_current">वर्तमान विकास</string>
+  <string name="morphe_settings_about_contributors_prior">पूर्व विकास</string>
+  <string name="morphe_settings_about_links_morphe">सक्रिय विकास</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버깅</string>
   <string name="morphe_debug_screen_summary">디버깅 옵션을 활성 या 비활성 करें</string>
@@ -121,4 +136,13 @@ Second \"item\" text"</string>
 
 टाप करें और ऑप्टिमाइज़ेशन बदलने की अनुमति दें।"</string>
   <string name="gms_core_dialog_continue_text">जारी रखें</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">बैटरी अनुकूलन संवाद</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG बैटरी अनुकूलन संवाद दिखाया गया है</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG बैटरी अनुकूलन संवाद नहीं दिखाया गया है</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"इसे अक्षम करने से MicroG बैटरी अनुकूलन प्रॉम्प्ट छिप जाएगा।
+
+यदि बैटरी अनुकूलन नहीं बदले गए हैं तो आपको निम्नलिखित अनुभव हो सकते हैं:
+• ऐप बेतरतीब ढंग से बंद हो सकता है
+• सूचनाएं काम नहीं कर सकती हैं
+• पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
 </resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Reklamy</string>
+  <string name="morphe_hide_post_ads_title">Skrýt reklamní obsah</string>
+  <string name="morphe_hide_post_ads_summary">Skrývá reklamní obsah v kanálu</string>
+  <string name="morphe_hide_comment_ads_title">Skrýt reklamy v komentářích</string>
+  <string name="morphe_hide_comment_ads_summary">Skrýt reklamy v sekci komentářů</string>
+  <string name="morphe_screen_layout_title">Rozložení</string>
+  <string name="morphe_disable_modern_home_title">Zakázat moderní domovskou stránku</string>
+  <string name="morphe_disable_modern_home_summary">Zakáže moderní domovské rozhraní</string>
+  <string name="morphe_disable_screenshot_popup_title">Zakázat vyskakovací okno pro screenshot</string>
+  <string name="morphe_disable_screenshot_popup_summary">Zakáže vyskakovací okno, které se zobrazí při pořízení screenshotu</string>
+  <string name="morphe_hide_answers_button_title">Skrýt tlačítko Odpovědi</string>
+  <string name="morphe_hide_answers_button_summary">Skrývá tlačítko Odpovědi v navigační liště</string>
+  <string name="morphe_hide_chat_button_title">Skrýt tlačítko Chatu</string>
+  <string name="morphe_hide_chat_button_summary">Skrývá tlačítko Chatu v navigační liště</string>
+  <string name="morphe_hide_create_button_title">Skrýt tlačítko Vytvořit</string>
+  <string name="morphe_hide_create_button_summary">Skrývá tlačítko Vytvořit v navigační liště</string>
+  <string name="morphe_hide_discover_button_title">Skrýt tlačítko Objevit nebo Komunity</string>
+  <string name="morphe_hide_discover_button_summary">Skrývá tlačítko Objevit nebo Komunity v navigační liště</string>
+  <string name="morphe_hide_games_button_title">Skrýt tlačítko Hry</string>
+  <string name="morphe_hide_games_button_summary">Skrývá tlačítko Hry v navigační liště</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Skrýt panel Nedávno navštívené</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Skrývá panel Nedávno navštívené na bočním panelu</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Skrýt panel Hry na Redditu</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Skrývá panel Hry na Redditu na bočním panelu</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Skrýt panel Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Skrývá panel Reddit Pro na bočním panelu</string>
+  <string name="morphe_hide_about_shelf_title">Skrýt panel O nás</string>
+  <string name="morphe_hide_about_shelf_summary">Skrývá panel O nás na bočním panelu</string>
+  <string name="morphe_hide_resources_shelf_title">Skrýt panel Zdroje</string>
+  <string name="morphe_hide_resources_shelf_summary">Skrývá panel Zdroje na bočním panelu</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Skrýt doporučené komunity</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Skrývá panely s doporučenými komunitami na subredditech</string>
+  <string name="morphe_hide_trending_today_shelf_title">Skrýt panel Trendující dnes</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Skrývá panel Trendující dnes z návrhů vyhledávání
+
+Omezení: Vizuální mezery nemusí být skryty"</string>
+  <string name="morphe_remove_notification_dialog_title">Odstranit dialogové okno s návrhem oznámení</string>
+  <string name="morphe_remove_notification_dialog_summary">Odstraní dialogové okno s návrhem oznámení, které se zobrazí při návštěvě subredditu automatickým přijetím</string>
+  <string name="morphe_show_view_count_title">Zobrazit počet zhlédnutí</string>
+  <string name="morphe_show_view_count_summary">"Zobrazuje počet zhlédnutí příspěvků
+
+Omezení: Zobrazuje se pouze pokud API odpověď zahrnuje počet zhlédnutí"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Odstranit dialogové okno s upozorněním NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Odstraní dialogové okno s upozorněním NSFW, které se zobrazí při návštěvě subredditu automatickým přijetím</string>
+  <string name="morphe_screen_miscellaneous_title">Různé</string>
+  <string name="morphe_about_title">O aplikaci</string>
+  <string name="morphe_about_summary">Verze aplikace a oficiální odkazy</string>
+  <string name="morphe_sanitize_sharing_links_title">Vyčistit sdílené odkazy</string>
+  <string name="morphe_sanitize_sharing_links_summary">Čistí sdílecí odkazy odstraněním parametrů sledování</string>
+  <string name="morphe_open_links_directly_title">Otevírat odkazy přímo</string>
+  <string name="morphe_open_links_directly_summary">Přeskakuje přes URL adresy přesměrování ve vnějších odkazech</string>
+</resources>

@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">应用语言</string>
   <string name="morphe_pref_import_export_title">导入/导出</string>
   <string name="morphe_pref_import_export_summary">导入/导出 Morphe 设置</string>
+  <string name="morphe_settings_import_file">从文件导入</string>
+  <string name="morphe_settings_import_file_success">设置导入成功，点击保存以应用</string>
+  <string name="morphe_settings_import_file_failed">设置导入失败</string>
+  <string name="morphe_settings_export_file">导出到文件</string>
+  <string name="morphe_settings_export_file_success">设置导出成功</string>
+  <string name="morphe_settings_export_file_failed">导出设置失败</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">您正在使用最新的Morphe Patches版本 &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用Morphe Patches版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;可用更新版本: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;要更新您的补丁,请使用Morphe重新修补此应用程序</string>
@@ -69,6 +75,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">网站</string>
   <string name="morphe_settings_about_links_donate">捐助</string>
   <string name="morphe_settings_about_links_translations">翻译</string>
+  <string name="morphe_settings_about_links_credits">积分</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">最新</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">有可用更新</string>
+  <string name="morphe_settings_about_contributors_current">当前开发</string>
+  <string name="morphe_settings_about_contributors_prior">早期开发</string>
+  <string name="morphe_settings_about_links_morphe">当前开发</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_licenses_loading">正在加载…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">调试</string>
   <string name="morphe_debug_screen_summary">启用或禁用调试选项</string>
@@ -121,4 +137,13 @@ Second \"item\" text"</string>
 
 点击继续按钮并允许优化更改。"</string>
   <string name="gms_core_dialog_continue_text">继续</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">电池优化对话框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">显示 MicroG 电池优化对话框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">不显示 MicroG 电池优化对话框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"禁用此功能会隐藏 MicroG 电池优化提示。
+
+如果未更改电池优化设置，您可能会遇到以下情况：
+• 应用可能会随机关闭
+• 通知可能无法正常工作
+• 后台播放可能无法正常工作"</string>
 </resources>

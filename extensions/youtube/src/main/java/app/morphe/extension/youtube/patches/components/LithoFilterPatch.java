@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -27,15 +29,17 @@ public final class LithoFilterPatch {
      * Simple wrapper to pass the litho parameters through the prefix search.
      */
     private static final class LithoFilterParameters {
+        final ContextInterface contextInterface;
         final String identifier;
         final String path;
         final String accessibility;
         final byte[] buffer;
 
-        LithoFilterParameters(String lithoIdentifier, String lithoPath,
-                              String accessibility, byte[] buffer) {
-            this.identifier = lithoIdentifier;
-            this.path = lithoPath;
+        LithoFilterParameters(ContextInterface contextInterface, String identifier,
+                              String path, String accessibility, byte[] buffer) {
+            this.contextInterface = contextInterface;
+            this.identifier = identifier;
+            this.path = path;
             this.accessibility = accessibility;
             this.buffer = buffer;
         }
@@ -150,6 +154,7 @@ public final class LithoFilterPatch {
      */
     private static final ThreadLocal<byte[]> bufferThreadLocal = new ThreadLocal<>();
 
+    private static final StringTrieSearch contextSearchTree = new StringTrieSearch();
     private static final StringTrieSearch pathSearchTree = new StringTrieSearch();
     private static final StringTrieSearch identifierSearchTree = new StringTrieSearch();
 
@@ -185,9 +190,9 @@ public final class LithoFilterPatch {
                             if (!group.isEnabled()) return false;
 
                             LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
-                            final boolean isFiltered = filter.isFiltered(parameters.identifier,
-                                    parameters.accessibility, parameters.path, parameters.buffer,
-                                    group, type, matchedStartIndex);
+                            final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
+                                    parameters.identifier, parameters.accessibility, parameters.path,
+                                    parameters.buffer, group, type, matchedStartIndex);
 
                             if (isFiltered && BaseSettings.DEBUG.get()) {
                                 Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
@@ -251,7 +256,7 @@ public final class LithoFilterPatch {
             if (accessibilityText != null && !accessibilityText.isBlank()) {
                 accessibility = accessibilityId + '|' + accessibilityText;
             }
-            LithoFilterParameters parameter = new LithoFilterParameters(identifier, path, accessibility, buffer);
+            LithoFilterParameters parameter = new LithoFilterParameters(contextInterface, identifier, path, accessibility, buffer);
             Logger.printDebug(() -> "Searching " + parameter);
 
             return identifierSearchTree.matches(identifier, parameter)

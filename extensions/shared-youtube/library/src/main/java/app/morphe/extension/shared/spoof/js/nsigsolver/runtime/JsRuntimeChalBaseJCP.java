@@ -35,6 +35,10 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
 
     private Script libScript;
     private Script coreScript;
+    private Script wrapperScript;
+
+    // Track the current player hash loaded in the JS runtime
+    private String loadedPlayerHash = "";
 
     // LRU Cache equivalent
     protected final Map<String, String> cache = Collections.synchronizedMap(
@@ -52,11 +56,13 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         Map<ScriptType, String> sMap = new HashMap<>();
         sMap.put(ScriptType.LIB, LIB_PREFIX + "yt.solver.lib.js");
         sMap.put(ScriptType.CORE, LIB_PREFIX + "yt.solver.core.js");
+        sMap.put(ScriptType.WRAPPER, LIB_PREFIX + "yt.solver.wrapper.js");
         scriptFilenames = Collections.unmodifiableMap(sMap);
 
         Map<ScriptType, String> mMap = new HashMap<>();
         mMap.put(ScriptType.LIB, "yt.solver.lib.min.js");
         mMap.put(ScriptType.CORE, "yt.solver.core.min.js");
+        mMap.put(ScriptType.WRAPPER, "yt.solver.wrapper.min.js");
         minScriptFilenames = Collections.unmodifiableMap(mMap);
     }
 
@@ -72,23 +78,53 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         this.playerJSHash = playerJSHash;
     }
 
+    /**
+     * Reset the loaded player state. Call this when the JS runtime is reset
+     * (e.g., V8 runtime is released) to force reloading the player on the next solve.
+     */
+    protected void resetLoadedPlayerState() {
+        this.loadedPlayerHash = "";
+    }
+
     @Override
     protected List<JsChallengeProviderResponse> realBulkSolve(List<JsChallengeRequest> requests) {
         List<JsChallengeProviderResponse> responses = new ArrayList<>();
 
         try {
-            CachedData data = cacheService.get(CACHE_SECTION, "player:" + playerJSHash);
-            String player = (data != null) ? data.getCode() : null;
-            boolean cached;
+            // Check if we need to load/reload the player into JS runtime
+            boolean playerChanged = !playerJSHash.equals(loadedPlayerHash);
 
-            if (player != null) {
-                cached = true;
-            } else {
-                player = playerJS;
-                cached = false;
+            if (playerChanged) {
+                // Try to get preprocessed player from cache
+                CachedData data = cacheService.get(CACHE_SECTION, "player:" + playerJSHash);
+                String player = (data != null) ? data.getCode() : null;
+                boolean preprocessed = (player != null);
+
+                if (!preprocessed) {
+                    player = playerJS;
+                }
+
+                // Load player into JS runtime wrapper
+                String loadStdin = constructPlayerLoadStdin(player, playerJSHash, preprocessed);
+                String loadResult = runJsRuntime(loadStdin);
+
+                // Parse the load result to check for preprocessed player
+                Gson gson = new Gson();
+                try {
+                    SolverOutput loadOutput = gson.fromJson(loadResult, SOLVER_OUTPUT_TYPE);
+                    if (loadOutput != null && loadOutput.getPreprocessedPlayer() != null) {
+                        cacheService.save(CACHE_SECTION, "player:" + playerJSHash, new CachedData(loadOutput.getPreprocessedPlayer()));
+                    }
+                } catch (JsonSyntaxException ex) {
+                    // Ignore parse errors for load result - the important thing is the player is loaded
+                    Logger.printDebug(() -> "Could not parse player load result (non-fatal)");
+                }
+
+                loadedPlayerHash = playerJSHash;
             }
 
-            String stdin = constructStdin(player, cached, requests);
+            // Now solve challenges using the wrapper (player is already in JS runtime memory)
+            String stdin = constructWrapperStdin(requests);
             String stdout = runJsRuntime(stdin);
 
             Gson gson = new Gson();
@@ -103,11 +139,6 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
             if ("error".equals(output.getType())) {
                 String message = output.getError() != null ? output.getError() : "Unknown solver output error";
                 throw new JsChallengeProviderError(message);
-            }
-
-            String preprocessed = output.getPreprocessedPlayer();
-            if (preprocessed != null) {
-                cacheService.save(CACHE_SECTION, "player:" + playerJSHash, new CachedData(preprocessed));
             }
 
             List<ResponseData> outputResponses = output.getResponses();
@@ -142,7 +173,41 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         return responses;
     }
 
-    private String constructStdin(String playerJS, boolean preprocessed, List<JsChallengeRequest> requests) {
+    /**
+     * Constructs stdin to load a player into the JS wrapper.
+     * This is called when the player changes or on first solve.
+     */
+    private String constructPlayerLoadStdin(String playerJS, String playerHash, boolean preprocessed) {
+        Gson gson = new Gson();
+        String escapedPlayer = gson.toJson(playerJS);
+        String escapedHash = gson.toJson(playerHash);
+
+        StringBuilder sb = new StringBuilder();
+
+        if (preprocessed) {
+            // Use setPreprocessedPlayer for already-preprocessed player
+            sb.append(String.format("setPreprocessedPlayer(%s, %s);\n", escapedPlayer, escapedHash));
+            sb.append("JSON.stringify({type: 'result', responses: []});\n");
+        } else {
+            // Use setPlayer for raw player, then do a dummy solve to trigger preprocessing
+            sb.append(String.format("setPlayer(%s, %s);\n", escapedPlayer, escapedHash));
+            // Do a minimal solve to trigger preprocessing and get the preprocessed player back
+            sb.append("JSON.stringify((function() {\n");
+            sb.append("  var result = jscw({requests: [{type: 'n', challenges: []}]});\n");
+            sb.append("  var pp = getPreprocessedPlayer();\n");
+            sb.append("  if (pp) result.preprocessed_player = pp;\n");
+            sb.append("  return result;\n");
+            sb.append("})());\n");
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * Constructs stdin to solve challenges using the wrapper.
+     * The player is already loaded in the JS runtime.
+     */
+    private String constructWrapperStdin(List<JsChallengeRequest> requests) {
         List<Map<String, Object>> jsonRequests = new ArrayList<>();
         for (JsChallengeRequest request : requests) {
             Map<String, Object> reqMap = new HashMap<>();
@@ -152,20 +217,11 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         }
 
         Map<String, Object> data = new HashMap<>();
-        if (preprocessed) {
-            data.put("type", "preprocessed");
-            data.put("preprocessed_player", playerJS);
-            data.put("requests", jsonRequests);
-        } else {
-            data.put("type", "player");
-            data.put("player", playerJS);
-            data.put("requests", jsonRequests);
-            data.put("output_preprocessed", true);
-        }
+        data.put("requests", jsonRequests);
 
         Gson gson = new Gson();
         String jsonData = gson.toJson(data);
-        return String.format("\nJSON.stringify(jsc(%s));\n", jsonData);
+        return String.format("\nJSON.stringify(jscw(%s));\n", jsonData);
     }
 
     protected String constructCommonStdin() {
@@ -173,6 +229,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
             return String.join("\n",
                     getLibScript().getCode(),
                     getCoreScript().getCode(),
+                    getWrapperScript().getCode(),
                     "\"\";"
             );
         } catch (JsChallengeProviderRejectedRequest ex) {
@@ -193,6 +250,13 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
             coreScript = getScript(ScriptType.CORE);
         }
         return coreScript;
+    }
+
+    private Script getWrapperScript() throws JsChallengeProviderRejectedRequest {
+        if (wrapperScript == null) {
+            wrapperScript = getScript(ScriptType.WRAPPER);
+        }
+        return wrapperScript;
     }
 
     private interface ScriptSourceProvider {

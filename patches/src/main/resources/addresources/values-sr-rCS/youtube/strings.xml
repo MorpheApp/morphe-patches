@@ -474,6 +474,21 @@ Ograničenja:
 
 Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</string>
   <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Omogući ponavljanje videa</string>
+  <string name="morphe_loop_video_summary_on">Video će se ponavljati</string>
+  <string name="morphe_loop_video_summary_off">Video se neće ponavljati</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Prikaži dugme za ponavljanje videa</string>
+  <string name="morphe_loop_video_button_summary_on">Dugme „Ponavljaj video” je prikazano</string>
+  <string name="morphe_loop_video_button_summary_off">Dugme „Ponavljaj video” je prikazano</string>
+  <string name="morphe_loop_video_button_toast_on">Ponavljanje videa je uključeno</string>
+  <string name="morphe_loop_video_button_toast_off">Ponavljanje videa je isključeno</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Prikaži dugme za učitavanje videa</string>
+  <string name="morphe_reload_video_summary_on">Dugme za učitavanje videa je prikazano</string>
+  <string name="morphe_reload_video_summary_off">Dugme za učitavanje videa nije prikazano</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID videa nije dostupan. Molim vas, ručno ponovo otvorite video.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogući pokret preciznog premotavanja</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Pokret preciznog premotavanja je onemogućen</string>
@@ -1287,14 +1302,20 @@ Spreman za podnošenje?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobilski</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Promene uključuju:
+  <string name="morphe_change_form_factor_user_dialog_message">"Izmene uključuju:
 
-Izgled tableta
-• Objave zajednice su skrivene
+Tablet raspored
+• Obaveštenja zajednice su skrivena
+• Podešavanje reprodukcije u feedu nije dostupno
+• Taster za miksanje i taster za zvuk nisu dostupni u Shorts
+• Traka sa akcijama za video nije uzeta.
 
-Automobilski izgled
-• Shorts videi se otvaraju u običnom plejeru
-• Fid je organizovan po temama i kanalima"</string>
+Automobilski raspored
+• Feed je organizovan po temama i kanalima
+• Podešavanje reprodukcije u feedu nije dostupno
+• Taster za miksanje i taster za zvuk nisu dostupni u Shorts
+• Shorts se otvaraju u redovnom plejeru
+• Traka sa akcijama za video nije uzeta."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Lažirana verzija aplikacije</string>
   <string name="morphe_spoof_app_version_summary_on">Verzija je lažirana</string>
@@ -1349,10 +1370,10 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
 
 Ograničenje: Korišćenje dugmeta „Nazad” na traci sa alatkama možda neće raditi"</string>
   <string name="morphe_change_start_page_always_summary_off">Polazna stranica se menja samo pri pokretanju aplikacije</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Onemogući nastavak reprodukcije Shorts plejera</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts plejer neće nastaviti reprodukciju pri pokretanju aplikacije</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts plejer će nastaviti reprodukciju pri pokretanju aplikacije</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Искулј Shortse при стартовању</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts неће бити поново покренути при стартовању апликације</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts ће бити поново покренути при стартовању апликације</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Otvorite Shorts pomoću</string>
   <string name="morphe_shorts_player_type_shorts">Shorts plejera</string>
@@ -1481,16 +1502,6 @@ Dodirnite ovde da saznate više o DeArrowu"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow privremeno nije dostupan (kôd statusa: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow privremeno nije dostupan</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Omogući ponavljanje videa</string>
-  <string name="morphe_loop_video_summary_on">Video će se ponavljati</string>
-  <string name="morphe_loop_video_summary_off">Video se neće ponavljati</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Prikaži dugme za ponavljanje videa</string>
-  <string name="morphe_loop_video_button_summary_on">Dugme „Ponavljaj video” je prikazano</string>
-  <string name="morphe_loop_video_button_summary_off">Dugme „Ponavljaj video” je prikazano</string>
-  <string name="morphe_loop_video_button_toast_on">Ponavljanje videa je uključeno</string>
-  <string name="morphe_loop_video_button_toast_off">Ponavljanje videa je isključeno</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Lažirane dimenzije uređaja</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimenzije uređaja su lažirane
@@ -1569,7 +1580,9 @@ Ako ovo omogućite, mogu biti otključani viši kvaliteti videa"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Nevažeće prilagođene brzine reprodukcije</string>
   <string name="morphe_custom_playback_speeds_auto">Automatski</string>
   <string name="morphe_speed_tap_and_hold_title">Prilagođena brzina dodirivanja i zadržavanja</string>
-  <string name="morphe_speed_tap_and_hold_summary">Brzina reprodukcije između 0 i 8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Brzina reprodukcije između 0-8
+
+Ako je 0, tap i držanje brzine je onemogućeno"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Zapamti promene brzine reprodukcije</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Promene brzine reprodukcije se primenjuju na sve videe</string>

@@ -60,6 +60,12 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite morphe
   <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
   <string name="morphe_pref_import_export_title">Uvoz / Izvoz</string>
   <string name="morphe_pref_import_export_summary">Uvoz / Izvoz podešavanja Morphea</string>
+  <string name="morphe_settings_import_file">Uvoz iz fajla</string>
+  <string name="morphe_settings_import_file_success">Podešavanja su uspešno uvezena, dodirnite Sačuvaj da biste primenili</string>
+  <string name="morphe_settings_import_file_failed">Neuspešan uvoz podešavanja</string>
+  <string name="morphe_settings_export_file">Izvoz u fajl</string>
+  <string name="morphe_settings_export_file_success">Uspešno izvezeni podešavanja</string>
+  <string name="morphe_settings_export_file_failed">Nije uspelo izvođenje podešavanja</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Koristite najnoviju verziju &lt;i&gt;%s&lt;/i&gt; Morphe pečeva</string>
   <string name="morphe_settings_about_links_body_version_outdated">Koristite verziju &lt;i&gt;%1$s&lt;/i&gt; Morphe pečeva&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupna je ažurirana verzija: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Da biste ažurirali svoje pečeve, upotrebite Morphe da biste ponovo zakrpali ovu aplikaciju</string>
@@ -69,6 +75,16 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite morphe
   <string name="morphe_settings_about_links_website">Veb stranica</string>
   <string name="morphe_settings_about_links_donate">Doniraj</string>
   <string name="morphe_settings_about_links_translations">Prevodi</string>
+  <string name="morphe_settings_about_links_credits">Потисници</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Ажурно</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Доступно ажурирање</string>
+  <string name="morphe_settings_about_contributors_current">Тренутни развој</string>
+  <string name="morphe_settings_about_contributors_prior">Raniji razvoj</string>
+  <string name="morphe_settings_about_links_morphe">Aktuelan razvoj</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_licenses_loading">Učitavanje…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje grešaka</string>
   <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije za otklanjanje grešaka</string>
@@ -121,4 +137,13 @@ Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potro
 
 Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Приказан је дијалог о оптимизацији батерије за MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије за MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеослабљивање ове опције ће скрити промпт за оптимизацију батерије за MicroG.
+
+Ако се оптимизације батерије не промене, могуће је да искусите:
+• Апликација може насумично да се затвори
+• Обавештења можда неће радити
+• Позадинска репродукција можда неће радити"</string>
 </resources>

@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Změnit barvu minipřehrávače</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Barva minipřehrávače odpovídá přehrávači na celou obrazovku</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minipřehrávač používá výchozí barvu</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Zobrazit tlačítko Další v mini přehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Tlačítko Další se zobrazuje v mini přehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Tlačítko Další se nezobrazuje v mini přehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Zobrazit předchozí tlačítko v mini přehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Předchozí tlačítko je zobrazeno v mini přehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Předchozí tlačítko není zobrazeno v mini přehrávači</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Povolit vynucený mini přehrávač</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Mini přehrávač zůstává minimalizovaný při změnách přehrávání</string>

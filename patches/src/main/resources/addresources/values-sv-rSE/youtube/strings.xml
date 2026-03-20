@@ -475,6 +475,17 @@ Begränsningar:
 
 Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Aktivera videoslinga</string>
+  <string name="morphe_loop_video_summary_on">Slinga skapas för videon</string>
+  <string name="morphe_loop_video_summary_off">Slinga skapas inte för videon</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Visa knapp för videoslinga</string>
+  <string name="morphe_loop_video_button_summary_on">Knapp för videoslinga visas</string>
+  <string name="morphe_loop_video_button_summary_off">Knapp för videoslinga visas inte</string>
+  <string name="morphe_loop_video_button_toast_on">Videoslinga är aktiverat</string>
+  <string name="morphe_loop_video_button_toast_off">Videoslinga är inaktiverat</string>
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>
@@ -1288,14 +1299,6 @@ Redo att skicka in?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Surfplatta</string>
   <string name="morphe_change_form_factor_entry_4">Bil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Ändringar inkluderar:
-
-Layout för surfplattor
-• Community-inlägg döljs
-
-Billayout
-• Shorts-videor öppnas i vanliga spelaren
-• Flödet ordnas efter ämnen och kanaler"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Förfalska appversionen</string>
   <string name="morphe_spoof_app_version_summary_on">Versionen är förfalskad</string>
@@ -1350,10 +1353,7 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
 
 Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_change_start_page_always_summary_off">Startsidan byts endast vid appstart</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Inaktivera att Shorts-spelaren återupptas</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-spelaren återupptas inte vid appstart</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Shorts-spelaren återupptas vid appstart</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Öppna Shorts-videor med</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-spelare</string>
@@ -1482,16 +1482,6 @@ Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow är inte tillgängligt just nu (statuskod: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow är inte tillgängligt just nu</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Aktivera videoslinga</string>
-  <string name="morphe_loop_video_summary_on">Slinga skapas för videon</string>
-  <string name="morphe_loop_video_summary_off">Slinga skapas inte för videon</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Visa knapp för videoslinga</string>
-  <string name="morphe_loop_video_button_summary_on">Knapp för videoslinga visas</string>
-  <string name="morphe_loop_video_button_summary_off">Knapp för videoslinga visas inte</string>
-  <string name="morphe_loop_video_button_toast_on">Videoslinga är aktiverat</string>
-  <string name="morphe_loop_video_button_toast_off">Videoslinga är inaktiverat</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Förfalska enhetens mått</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Enhetens mått förfalskas
@@ -1570,7 +1560,6 @@ Om du aktiverar detta kan högre videokvaliteter låsas upp"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Ogiltiga anpassade uppspelningshastigheter</string>
   <string name="morphe_custom_playback_speeds_auto">Automatiskt</string>
   <string name="morphe_speed_tap_and_hold_title">Anpassad hastighet för att trycka länge</string>
-  <string name="morphe_speed_tap_and_hold_summary">Uppspelningshastighet mellan 0 och 8</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Kom ihåg ändringar av uppspelningshastigheten</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Ändring av uppspelningshastighet gäller för alla videor</string>

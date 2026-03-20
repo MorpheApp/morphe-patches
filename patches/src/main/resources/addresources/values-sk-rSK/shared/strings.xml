@@ -17,11 +17,134 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Nastavenia</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Naozaj chcete pokračovať?</string>
+  <string name="morphe_settings_save">Uložiť</string>
+  <string name="morphe_settings_reset">Reset</string>
+  <string name="morphe_settings_reset_color">Pôvodná farba</string>
+  <string name="morphe_settings_color_invalid">Neplatná farba</string>
+  <string name="morphe_settings_restart_title">Vyžaduje sa reštart</string>
+  <string name="morphe_settings_restart_dialog_message">Restartujte aplikáciu, aby sa táto zmena prejavila.</string>
+  <string name="morphe_settings_restart">Reštartovať</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Importovať</string>
+  <string name="morphe_settings_import_copy">Kopírovať</string>
+  <string name="morphe_settings_import_reset">Nastavenia Morphe boli obnovené na predvolené</string>
+  <string name="morphe_settings_import_success">Importovaných %d nastavení</string>
+  <string name="morphe_settings_import_failure_parse">Importovanie zlyhalo: %s</string>
+  <string name="morphe_settings_search_hint">Nastavenia vyhľadávania</string>
+  <string name="morphe_settings_search_no_results_title">Nenašli sa žiadne výsledky pre \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Skúste iné kľúčové slovo</string>
+  <string name="morphe_settings_search_recent_searches">Nedávne vyhľadávania</string>
+  <string name="morphe_settings_search_remove_message">Odstrániť z histórie vyhľadávania?</string>
+  <string name="morphe_settings_search_clear_history">Vymazať históriu vyhľadávania</string>
+  <string name="morphe_settings_search_clear_history_message">Naozaj chcete vymazať celú históriu vyhľadávania?</string>
+  <string name="morphe_settings_search_tips_title">Tipy na vyhľadávanie</string>
+  <string name="morphe_settings_search_tips_summary">"• Ťuknite na cestu, aby ste sa do nej presunuli
+• K nastaveniu sa dostanete dlhým stlačením
+• Stlačením klávesy Enter uložíte vyhľadávanie do histórie
+• Vyhľadávanie ignoruje veľkosť písmen a interpunkciu
+• Nad vypnutými nastaveniami sa zobrazujú nadradené nastavenia"</string>
+  <string name="morphe_settings_search_empty_history_title">História vyhľadávania je prázdna</string>
+  <string name="morphe_settings_search_empty_history_summary">Pre uloženie do histórie vyhľadávania zadajte vyhľadávací dotaz a stlačte Enter</string>
+  <string name="morphe_settings_search_history_title">Zobraziť históriu vyhľadávania v nastaveniach</string>
+  <string name="morphe_settings_search_history_summary_on">História vyhľadávania v nastaveniach sa zobrazuje</string>
+  <string name="morphe_settings_search_history_summary_off">História vyhľadávania v nastaveniach sa nezobrazuje</string>
+  <string name="morphe_show_menu_icons_title">Zobraziť ikony nastavení Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Ikony nastavení sa zobrazujú</string>
+  <string name="morphe_show_menu_icons_summary_off">Ikony nastavení sa nezobrazujú</string>
+  <string name="morphe_language_title">Jazyk Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Preklady pre niektoré jazyky sa môžu byť neúplné.
+
+Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navštívte morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Jazyk aplikácie</string>
+  <string name="morphe_pref_import_export_title">Importovať / Exportovať</string>
+  <string name="morphe_pref_import_export_summary">Importovať / Exportovať nastavenia Morphe</string>
+  <string name="morphe_settings_import_file">Importovať zo súboru</string>
+  <string name="morphe_settings_import_file_success">Nastavenia boli úspešne importované, klepnite na Uložiť, aby ste ich aplikovali</string>
+  <string name="morphe_settings_import_file_failed">Nepodarilo sa importovať nastavenia</string>
+  <string name="morphe_settings_export_file">Exportovať do súboru</string>
+  <string name="morphe_settings_export_file_success">Nastavenia boli úspešne exportované</string>
+  <string name="morphe_settings_export_file_failed">Nepodarilo sa exportovať nastavenia</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Používate najnovšiu verziu Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Používate záplaty Morphe verzia &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupná aktualizácia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Na aktualizáciu záplat znovu zaplátajte aplikáciu cez Morphe</string>
+  <string name="morphe_settings_about_links_dev_header">Poznámka</string>
+  <string name="morphe_settings_about_links_dev_body">Táto verzia je predbežná a môžu sa vyskytnúť neočakávané problémy</string>
+  <string name="morphe_settings_about_links_header">Oficiálne odkazy</string>
+  <string name="morphe_settings_about_links_website">Webová stránka</string>
+  <string name="morphe_settings_about_links_donate">Prispieť</string>
+  <string name="morphe_settings_about_links_translations">Preklady</string>
+  <string name="morphe_settings_about_links_credits">Poďakovanie</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuálne</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Aktualizácia je k dispozícii</string>
+  <string name="morphe_settings_about_contributors_current">Aktuálny vývoj</string>
+  <string name="morphe_settings_about_contributors_prior">Predchádzajúci vývoj</string>
+  <string name="morphe_settings_about_links_morphe">Aktívny vývoj</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licenčné upozornenia</string>
+  <string name="morphe_settings_about_licenses_loading">Načítava sa...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Ladenie chýb</string>
+  <string name="morphe_debug_screen_summary">Povoliť alebo zakázať možnosti ladenia</string>
+  <string name="morphe_debug_title">Zaznamenávanie ladiacich informácií</string>
+  <string name="morphe_debug_summary_on">Záznamy ladenia sú povolené</string>
+  <string name="morphe_debug_summary_off">Záznamy ladenia nie sú povolené</string>
+  <string name="morphe_debug_stacktrace_title">Zaznamenávať trasovanie</string>
+  <string name="morphe_debug_stacktrace_summary_on">Záznamy ladenia budú obsahovať trasovacie stopy</string>
+  <string name="morphe_debug_stacktrace_summary_off">Záznamy ladenia nebudú obsahovať trasovacie stopy</string>
+  <string name="morphe_debug_toast_on_error_title">Zobraziť oznámenie v prípade chyby Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Ak sa vyskytne chyba, zobrazí sa upozornenie</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Ak sa vyskytne chyba, nezobrazí sa upozornenie</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutím chybových upozornení skryjete všetky notifikácie Morphe o chybách.
+
+Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Exportovať záznamy ladenia</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Skopíruje záznamy ladenia Morphe do schránky</string>
+  <string name="morphe_debug_logs_disabled">Zaznamenávanie ladiacich informácií nie je povolené</string>
+  <string name="morphe_debug_logs_none_found">Neboli nájdené žiadne záznamy</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Záznamy skopírované</string>
+  <string name="morphe_debug_logs_failed_to_export">Nepodarilo sa exportovať záznamy: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">Vymazať záznamy ladenia</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">Vymaže všetky uložené záznamy ladenia Morphe</string>
+  <string name="morphe_debug_logs_clear_toast">Záznamy vymazané</string>
+  <string name="morphe_debug_feature_flags_manager_title">Správca príznakov funkcií</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Spravovať príznaky booleovských funkcií</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktívne príznaky (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokované príznaky (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Hľadať príznaky...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Príznaky uložené</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Príznaky obnovené</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Príznaky skopírované do schránky</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reštartujte aplikáciu, aby ste mohli použiť túto funkciu</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Otvorte nastavenia microG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">microG nie je nainštalovaný. Nainštalujte ho.</string>
+  <string name="gms_core_dialog_title">Vyžaduje sa akcia</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG nemá povolenie spúšťať sa na pozadí.
+
+Postupujte podľa návodu na 'Don't kill my app' pre váš telefón a aplikujte inštrukcie na vašu inštaláciu microG.
+
+Je to potrebné pre správnu funkciu aplikácie."</string>
+  <string name="gms_core_dialog_open_website_text">Prejsť na webovú stránku</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Aby sa predišlo problémom optimalizácie batérie pre microG musia byť vypnuté.
+
+Vypnutie optimalizácie batérie pre microG neovplyvní spotrebu batérie.
+
+Ťuknite na tlačidlo pokračovať a povoľte zmeny optimalizácie."</string>
+  <string name="gms_core_dialog_continue_text">Pokračovať</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialógové okno optimalizácie batérie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialógové okno optimalizácie batérie pre microG sa zobrazuje</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialógové okno optimalizácie batérie pre MicroG sa nezobrazuje</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Vypnutím sa skryje výzva MicroG na optimalizáciu batérie.
+
+Ak nezmeníte optimalizácie batérie môže sa stať, že:
+• aplikácia sa môže náhodne zatvoriť,
+• upozornenia nebudú fungovať,
+• prehrávanie na pozadí nemusí fungovať"</string>
 </resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">विज्ञापन</string>
+  <string name="morphe_hide_post_ads_title">फ़ीड विज्ञापन छिपाएं</string>
+  <string name="morphe_hide_post_ads_summary">फ़ीड में विज्ञापन छिपाता है</string>
+  <string name="morphe_hide_comment_ads_title">टिप्पणी विज्ञापन छिपाएं</string>
+  <string name="morphe_hide_comment_ads_summary">टिप्पणी अनुभाग में विज्ञापन छुपाएं</string>
+  <string name="morphe_screen_layout_title">लेआउट</string>
+  <string name="morphe_disable_modern_home_title">आधुनिक होम अक्षम करें</string>
+  <string name="morphe_disable_modern_home_summary">आधुनिक होम यूआई को अक्षम करता है</string>
+  <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करें</string>
+  <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट लेने पर दिखाई देने वाले पॉपअप को अक्षम करता है</string>
+  <string name="morphe_hide_answers_button_title">उत्तर बटन छुपाएं</string>
+  <string name="morphe_hide_answers_button_summary">नेविगेशन बार में उत्तर बटन छुपाता है</string>
+  <string name="morphe_hide_chat_button_title">चैट बटन छुपाएं</string>
+  <string name="morphe_hide_chat_button_summary">नेविगेशन बार में चैट बटन छुपाता है</string>
+  <string name="morphe_hide_create_button_title">बनाएं बटन छुपाएं</string>
+  <string name="morphe_hide_create_button_summary">नेविगेशन बार में बनाएं बटन छुपाता है</string>
+  <string name="morphe_hide_discover_button_title">खोजें या समुदाय बटन छुपाएं</string>
+  <string name="morphe_hide_discover_button_summary">नेविगेशन बार में खोजें या समुदाय बटन छुपाता है</string>
+  <string name="morphe_hide_games_button_title">गेम्स बटन छुपाएं</string>
+  <string name="morphe_hide_games_button_summary">नेविगेशन बार में गेम्स बटन छुपाता है</string>
+  <string name="morphe_hide_recently_visited_shelf_title">हाल ही में देखे गए शेल्फ छुपाएं</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">साइडबार में हाल ही में देखे गए शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">रेडिट पर गेम्स शेल्फ छुपाएं</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">साइडबार में रेडिट पर गेम्स शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">रेडिट प्रो शेल्फ छुपाएं</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">साइडबार में रेडिट प्रो शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_about_shelf_title">अबाउट शेल्फ छुपाएं</string>
+  <string name="morphe_hide_about_shelf_summary">साइडबार में अबाउट शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_resources_shelf_title">संसाधन शेल्फ छुपाएं</string>
+  <string name="morphe_hide_resources_shelf_summary">साइडबार में संसाधन शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">अनुशंसित समुदाय छुपाएं</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">सबरेडिट में अनुशंसित समुदाय शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_trending_today_shelf_title">आज के ट्रेंडिंग शेल्फ छुपाएं</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"खोज सुझावों से ट्रेंडिंग आज शेल्फ को छुपाता है
+
+सीमा: दृश्य स्पेसर्स को छुपाया नहीं जा सकता है"</string>
+  <string name="morphe_remove_notification_dialog_title">नोटिफिकेशन सुझाव संवाद हटाएं</string>
+  <string name="morphe_remove_notification_dialog_summary">एक सबरेडिट पर जाने पर दिखाई देने वाले नोटिफिकेशन सुझाव संवाद को स्वचालित रूप से खारिज करके हटाता है</string>
+  <string name="morphe_show_view_count_title">व्यू काउंट दिखाएं</string>
+  <string name="morphe_show_view_count_summary">"पोस्ट के व्यू काउंट दिखाता है
+
+सीमा: केवल तभी दिखाया जाता है जब एपीआई प्रतिक्रिया में व्यू काउंट शामिल हो।"</string>
+  <string name="morphe_remove_nsfw_dialog_title">एनएसएफडब्ल्यू चेतावनी संवाद हटाएं</string>
+  <string name="morphe_remove_nsfw_dialog_summary">एक सबरेडिट पर जाने पर दिखाई देने वाले एनएसएफडब्ल्यू चेतावनी संवाद को स्वचालित रूप से स्वीकार करके हटाता है</string>
+  <string name="morphe_screen_miscellaneous_title">मिसलेनियस</string>
+  <string name="morphe_about_title">इसके बारे में</string>
+  <string name="morphe_about_summary">संस्करण और आधिकारिक लिंक</string>
+  <string name="morphe_sanitize_sharing_links_title">साझाकरण लिंक साफ़ करें</string>
+  <string name="morphe_sanitize_sharing_links_summary">साझाकरण लिंक को ट्रैकिंग क्वेरी पैरामीटर हटाकर साफ़ करता है</string>
+  <string name="morphe_open_links_directly_title">लिंक सीधे खोलें</string>
+  <string name="morphe_open_links_directly_summary">बाहरी लिंक में रीडायरेक्शन यूआरएल को छोड़ देता है</string>
+</resources>

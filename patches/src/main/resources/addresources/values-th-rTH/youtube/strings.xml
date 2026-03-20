@@ -473,6 +473,21 @@ Second \"item\" text"</string>
 
 ตรวจสอบว่าชื่อแพ็กเกจถูกต้องและติดตั้งแอปแล้ว"</string>
   <string name="morphe_external_downloader_empty_warning">ชื่อแพ็กเกจต้องไม่ว่างเปล่า</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">เปิดใช้งานการเล่นวิดีโอซ้ำ</string>
+  <string name="morphe_loop_video_summary_on">วิดีโอจะเล่นซ้ำ</string>
+  <string name="morphe_loop_video_summary_off">วิดีโอจะไม่เล่นซ้ำ</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">แสดงปุ่มเล่นวิดีโอซ้ำ</string>
+  <string name="morphe_loop_video_button_summary_on">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
+  <string name="morphe_loop_video_button_summary_off">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
+  <string name="morphe_loop_video_button_toast_on">เปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
+  <string name="morphe_loop_video_button_toast_off">ปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">แสดงปุ่มโหลดวิดีโอ</string>
+  <string name="morphe_reload_video_summary_on">ปุ่มโหลดวิดีโอแสดง</string>
+  <string name="morphe_reload_video_summary_off">ปุ่มโหลดวิดีโอไม่แสดง</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video id พร้อมใช้งาน กรุณาเปิดวิดีโอใหม่อีกครั้ง</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ปิดใช้งานท่าทางการค้นหาแบบแม่นยำ</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">ท่าทางถูกปิดใช้งาน</string>
@@ -1283,14 +1298,20 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_change_form_factor_entry_2">โทรศัพท์</string>
   <string name="morphe_change_form_factor_entry_3">แท็บเล็ต</string>
   <string name="morphe_change_form_factor_entry_4">ยานยนต์</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"การเปลี่ยนแปลงรวมถึง:
+  <string name="morphe_change_form_factor_user_dialog_message">"การเปลี่ยนแปลงประกอบด้วย:
 
 รูปแบบแท็บเล็ต
 • โพสต์ชุมชนถูกซ่อน
+• การตั้งค่าการเล่นในฟีดไม่สามารถใช้ได้
+• ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
+• แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ
 
-รูปแบบยานยนต์
+รูปแบบรถยนต์
+• ฟีดถูกจัดระเบียบตามหัวข้อและช่อง
+• การตั้งค่าการเล่นในฟีดไม่สามารถใช้ได้
+• ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
 • Shorts เปิดในเครื่องเล่นปกติ
-• ฟีดจัดระเบียบตามหัวข้อและช่อง"</string>
+• แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary_on">เวอร์ชันปลอมแปลง</string>
@@ -1345,10 +1366,10 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 
 ข้อจำกัด: การใช้ปุ่มย้อนกลับบนแถบเครื่องมืออาจใช้ไม่ได้"</string>
   <string name="morphe_change_start_page_always_summary_off">หน้าเริ่มต้นจะเปลี่ยนเมื่อเริ่มแอปเท่านั้น</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">ปิดใช้งานการกลับมาทำงานต่อของเครื่องเล่น Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">เครื่องเล่น Shorts จะไม่กลับมาทำงานต่อเมื่อเริ่มต้นแอป</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">เครื่องเล่น Shorts จะกลับมาทำงานต่อเมื่อเริ่มต้นแอป</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">ปิดการเล่น Shorts อัตโนมัติเมื่อเริ่มแอป</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts จะไม่เล่นต่อเมื่อเริ่มแอป</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts จะเล่นต่อเมื่อเริ่มแอป</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">เปิด \"Shorts\" ด้วย</string>
   <string name="morphe_shorts_player_type_shorts">Shorts Player</string>
@@ -1477,16 +1498,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow ไม่พร้อมใช้งานชั่วคราว (รหัสสถานะ: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow ไม่พร้อมใช้งานชั่วคราว</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">เปิดใช้งานการเล่นวิดีโอซ้ำ</string>
-  <string name="morphe_loop_video_summary_on">วิดีโอจะเล่นซ้ำ</string>
-  <string name="morphe_loop_video_summary_off">วิดีโอจะไม่เล่นซ้ำ</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">แสดงปุ่มเล่นวิดีโอซ้ำ</string>
-  <string name="morphe_loop_video_button_summary_on">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
-  <string name="morphe_loop_video_button_summary_off">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
-  <string name="morphe_loop_video_button_toast_on">เปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
-  <string name="morphe_loop_video_button_toast_off">ปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ปลอมแปลงมิติของอุปกรณ์</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"มิติของอุปกรณ์ถูกปลอมแปลง
@@ -1565,7 +1576,9 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_custom_playback_speeds_parse_exception">ความเร็วในการเล่นที่กําหนดเองไม่ถูกต้อง</string>
   <string name="morphe_custom_playback_speeds_auto">อัตโนมัติ</string>
   <string name="morphe_speed_tap_and_hold_title">**Custom tap and hold speed**</string>
-  <string name="morphe_speed_tap_and_hold_summary">ความเร็วในการเล่นระหว่าง 0-8</string>
+  <string name="morphe_speed_tap_and_hold_summary">"ความเร็วในการเล่นระหว่าง 0-8
+
+หากเป็น 0 ให้แตะค้างเพื่อปิดใช้งานความเร็ว"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">จำการเปลี่ยนแปลงความเร็วในการเล่น</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">การเปลี่ยนแปลงความเร็วในการเล่นใช้กับวิดีโอทั้งหมด</string>

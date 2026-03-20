@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.shared;
@@ -319,10 +321,6 @@ public final class NavigationBar {
          * This tab will never be in a selected state, even if the Create video UI is on screen.
          */
         CREATE("CREATION_TAB_LARGE", "CREATION_TAB_LARGE_CAIRO"),
-        /**
-         * Only shown to automotive layout.
-         */
-        EXPLORE("TAB_EXPLORE"),
         /**
          * Only shown when 'Show Search' is turned on.
          */

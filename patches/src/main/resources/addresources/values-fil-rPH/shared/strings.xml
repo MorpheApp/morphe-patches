@@ -60,6 +60,12 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_language_DEFAULT">Wika ng aplikasyon</string>
   <string name="morphe_pref_import_export_title">I-import / I-export</string>
   <string name="morphe_pref_import_export_summary">I-import / I-export ang mga pagpipilian sa Morphe</string>
+  <string name="morphe_settings_import_file">Mag-import mula sa file</string>
+  <string name="morphe_settings_import_file_success">Matagumpay na na-import ang mga setting, i-tap ang I-save upang ilapat</string>
+  <string name="morphe_settings_import_file_failed">Nabigong mai-import ang mga setting</string>
+  <string name="morphe_settings_export_file">Mag-export sa file</string>
+  <string name="morphe_settings_export_file_success">Matagumpay na na-export ang mga setting</string>
+  <string name="morphe_settings_export_file_failed">Nabigong ma-export ang mga setting</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Ginagamit mo ang pinakabagong bersyon ng Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Gumagamit ka ng Morphe Patches na may bersyon&lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Magagamit ang isang update:&lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Upang i-update ang iyong mga patch, gamitin ang Morphe upang ire-patch ang aplikasyong ito</string>
@@ -69,6 +75,15 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Magbigay</string>
   <string name="morphe_settings_about_links_translations">Mga Pagsasalin</string>
+  <string name="morphe_settings_about_links_credits">Kredito</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Napapanahon</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Mayroon nang update</string>
+  <string name="morphe_settings_about_contributors_current">Kasalukuyang pagpapaunlad</string>
+  <string name="morphe_settings_about_contributors_prior">Paunang pag-unlad</string>
+  <string name="morphe_settings_about_links_morphe">Aktibong pag-unlad</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
   <string name="morphe_debug_screen_summary">Paganahin o patayin ang mga pagpipilian sa debugging</string>
@@ -121,4 +136,13 @@ Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng batery
 
 Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize."</string>
   <string name="gms_core_dialog_continue_text">Magpatuloy</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pag-uusap tungkol sa pag-optimize ng baterya</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hindi ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ang hindi pag-disable nito ay itatago ang prompt ng pag-optimize ng baterya ng MicroG.
+
+Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
+• Maaaring biglang magsara ang app
+• Maaaring hindi gumana ang mga notification
+• Maaaring hindi gumana ang background playback"</string>
 </resources>

@@ -1,5 +1,5 @@
 {
-  "version": "1.18.1-dev.2",
+  "version": "1.20.0",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -13,6 +13,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -32,6 +33,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -50,6 +52,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -87,6 +90,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -106,6 +110,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -121,10 +126,12 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -169,6 +176,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -283,6 +291,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -317,6 +326,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -336,6 +346,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -398,6 +409,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -463,6 +475,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -499,6 +512,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -543,6 +557,27 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
+          "20.44.38",
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Disable Shorts resuming on startup",
+      "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -562,6 +597,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -580,6 +616,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -598,10 +635,27 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
           "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Disable modern home",
+      "description": "Adds an option to disable the modern home UI.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
         ]
       },
       "options": []
@@ -616,25 +670,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
-          "20.44.38",
-          "20.40.45",
-          "20.31.42",
-          "20.21.37"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Disable resuming Shorts on startup",
-      "description": "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -653,6 +689,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -688,6 +725,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -707,6 +745,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -724,6 +763,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -743,6 +783,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -782,6 +823,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -839,6 +881,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -877,6 +920,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -918,6 +962,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -960,6 +1005,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -992,6 +1038,7 @@
       "description": "Adds an option to hide the Trending Today shelf from search suggestions.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1025,12 +1072,11 @@
       "use": true,
       "dependencies": [
         "ResourcePatch",
-        "BytecodePatch",
-        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1050,6 +1096,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1106,6 +1153,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1123,6 +1171,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1143,6 +1192,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1159,16 +1209,18 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
+        "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1222,6 +1274,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1242,6 +1295,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1277,6 +1331,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1296,6 +1351,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1330,6 +1386,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1352,6 +1409,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1371,6 +1429,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1390,10 +1449,31 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
           "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Miniplayer previous and next buttons",
+      "description": "Adds options to show previous and next track buttons in the miniplayer.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.44.54",
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
         ]
       },
       "options": []
@@ -1433,6 +1513,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1455,6 +1536,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1488,6 +1570,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1508,6 +1591,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1526,6 +1610,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1544,6 +1629,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1589,6 +1675,27 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
+          "20.44.38",
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Reload video",
+      "description": "Adds options to display buttons in the video player to reload video.",
+      "use": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1631,6 +1738,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1665,6 +1773,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1688,6 +1797,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1740,6 +1850,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1760,28 +1871,11 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
           "20.21.37"
-        ]
-      },
-      "options": []
-    },
-    {
-      "name": "Settings for Reddit",
-      "description": "Applies mandatory patches to implement Morphe settings into the application.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "ResourcePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.reddit.frontpage": [
-          "2026.04.0",
-          "2026.03.0",
-          "2025.48.0"
         ]
       },
       "options": []
@@ -1798,10 +1892,28 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
           "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Show view count",
+      "description": "Adds an option to show the view count of Posts.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2026.03.0",
+          "2025.48.0"
         ]
       },
       "options": []
@@ -1821,6 +1933,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1842,6 +1955,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1860,6 +1974,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1895,6 +2010,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1930,7 +2046,10 @@
           "default": "@android:color/black",
           "values": {
             "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You - Primary": "@android:color/system_accent1_800",
+            "Material You - Secondary": "@android:color/system_accent2_800",
+            "Material You - Tertiary": "@android:color/system_accent3_800",
             "Classic (old YouTube)": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
@@ -1958,6 +2077,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1974,7 +2094,10 @@
           "default": "@android:color/black",
           "values": {
             "Pure black": "@android:color/black",
-            "Material You": "@android:color/system_neutral1_900",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You - Primary": "@android:color/system_accent1_800",
+            "Material You - Secondary": "@android:color/system_accent2_800",
+            "Material You - Tertiary": "@android:color/system_accent3_800",
             "Classic (old YouTube)": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
@@ -1994,7 +2117,10 @@
           "default": "@android:color/white",
           "values": {
             "White": "@android:color/white",
-            "Material You": "@android:color/system_neutral1_50",
+            "Material You (Neutral)": "@android:color/system_neutral1_100",
+            "Material You - Primary": "@android:color/system_accent1_200",
+            "Material You - Secondary": "@android:color/system_accent2_200",
+            "Material You - Tertiary": "@android:color/system_accent3_200",
             "Catppuccin (Latte)": "#E6E9EF",
             "Light pink": "#FCCFF3",
             "Light blue": "#D1E0FF",
@@ -2017,6 +2143,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -2038,6 +2165,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",

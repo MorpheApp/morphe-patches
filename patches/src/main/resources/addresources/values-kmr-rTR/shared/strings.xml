@@ -60,6 +60,12 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_language_DEFAULT">Zimanê sepanê</string>
   <string name="morphe_pref_import_export_title">Importe kirin / Export kirin</string>
   <string name="morphe_pref_import_export_summary">Importe kirin / Export kirin sazkirina Morphe</string>
+  <string name="morphe_settings_import_file">дидохбіо митно илибве</string>
+  <string name="morphe_settings_import_file_success">Nastînên bi serketî hatin vegirtin, kilîka \"Çekn\"ê biçpîne ku bixebitîn</string>
+  <string name="morphe_settings_import_file_failed">Овининее не блине пештиистее</string>
+  <string name="morphe_settings_export_file">остатенизе митне митле</string>
+  <string name="morphe_settings_export_file_success">Nastînên sazkirinê ji rêzika hevokî ve birayê.</string>
+  <string name="morphe_settings_export_file_failed">Ji rêzika hevokî sazkirinên nezanin.</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Hûn îro versîyona herî dawî ya Morphe Patches &lt;i&gt;%s&lt;/i&gt; bikar tînin</string>
   <string name="morphe_settings_about_links_body_version_outdated">Hûn versîyona Morphe Patches &lt;i&gt;%1$s&lt;/i&gt; bikar tînin &lt;br&gt;&lt;br&gt;&lt;b&gt;Nûvekirin heye: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Da ku patches xwe nûve bikin, sêwirana Morphe bi karanîn pêxin.</string>
@@ -69,6 +75,15 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_settings_about_links_website">Malper</string>
   <string name="morphe_settings_about_links_donate">Dayînin</string>
   <string name="morphe_settings_about_links_translations">Wergerandin</string>
+  <string name="morphe_settings_about_links_credits">Kredît</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Sergona</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Nûvekirin hez</string>
+  <string name="morphe_settings_about_contributors_current">Geliştina heyî</string>
+  <string name="morphe_settings_about_contributors_prior">Geliştiyên berê</string>
+  <string name="morphe_settings_about_links_morphe">Geliştiya nişte</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug kirin</string>
   <string name="morphe_debug_screen_summary">Serdest amûrên pêşbirkaya bin</string>
@@ -121,4 +136,13 @@ Quteyîn optimîzasyonên bateriyê ji bo MicroG bê bandora berhetiyê li ser k
 
 Serzêviya pêşveçûna din bitşikîne û guherînên optimîzasyonê pêşî bînin."</string>
   <string name="gms_core_dialog_continue_text">Bidomîne</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pijdarê dovaniya optimîzasyona bateriyê</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dîyaloga optimîzasyona bateriyê ya MicroG tê nîşandin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dîyaloga optimîzasyona bateriyê ya MicroG tê veşartin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Birçawiya vê, dê ragirinê MicroG optimîzasyona bateriyê veşêre.
+
+Ger optimîzasyonên bateriyê neyhatin guherandin, dê we kêfa:
+• Serlo kêlî wezîneyê bigere
+• Ragirinan neçar bin
+• Lêxistinê paşverê nebêje"</string>
 </resources>
