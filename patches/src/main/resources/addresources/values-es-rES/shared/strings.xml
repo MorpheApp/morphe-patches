@@ -138,4 +138,13 @@ Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto neg
 
 Toca el botón continuar y permite los cambios de optimización."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Diálogo de optimización de la batería</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Se muestra el diálogo de optimización de batería de MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">No se muestra el diálogo de optimización de batería de MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deshabilitar esto ocultará la pregunta de optimización de batería de MicroG.
+
+Si no se modifican las optimizaciones de la batería, es posible que experimente:
+• La aplicación puede cerrarse aleatoriamente
+• Las notificaciones pueden no funcionar
+• La reproducción en segundo plano puede no funcionar"</string>
 </resources>

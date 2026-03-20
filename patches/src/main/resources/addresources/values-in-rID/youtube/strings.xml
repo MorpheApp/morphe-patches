@@ -476,11 +476,26 @@ Keterbatasan
   <string name="morphe_external_downloader_other_item_hint">Masukkan nama paket</string>
   <string name="morphe_external_downloader_other_item">Lainnya</string>
   <string name="morphe_external_downloader_not_found_title">Aplikasi tidak terpasang</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s belum terpasang. Silahkan pasang.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s belum terpasang. Silakan pasang.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Tidak dapat menemukan aplikasi terpasang dengan nama paket: %s
 
 Verifikasi nama paket sudah benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_external_downloader_empty_warning">Nama paket tidak boleh kosong</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Aktifkan pengulangan video</string>
+  <string name="morphe_loop_video_summary_on">Video akan diulangi</string>
+  <string name="morphe_loop_video_summary_off">Video tidak akan diulangi</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Tampilkan tombol pengulangan video</string>
+  <string name="morphe_loop_video_button_summary_on">Tombol ulangi video ditampilkan</string>
+  <string name="morphe_loop_video_button_summary_off">Tombol ulangi video tidak ditampilkan</string>
+  <string name="morphe_loop_video_button_toast_on">Pengulangan video aktif</string>
+  <string name="morphe_loop_video_button_toast_off">Pengulangan video tidak aktif</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Tampilkan tombol muat ulang video</string>
+  <string name="morphe_reload_video_summary_on">Tombol muat ulang video ditampilkan</string>
+  <string name="morphe_reload_video_summary_off">Tombol muat ulang video tidak ditampilkan</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID video tidak tersedia. Silakan buka kembali video secara manual.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Nonaktifkan gerakan pencarian presisi</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gerakan pencarian yang presisi dinonaktifkan</string>
@@ -1494,16 +1509,6 @@ Ketuk di sini untuk mempelajari lebih lanjut tentang DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow sementara tidak tersedia (kode status: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow sementara tidak tersedia</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Aktifkan pengulangan video</string>
-  <string name="morphe_loop_video_summary_on">Video akan diulangi</string>
-  <string name="morphe_loop_video_summary_off">Video tidak akan diulangi</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Tampilkan tombol pengulangan video</string>
-  <string name="morphe_loop_video_button_summary_on">Tombol ulangi video ditampilkan</string>
-  <string name="morphe_loop_video_button_summary_off">Tombol ulangi video tidak ditampilkan</string>
-  <string name="morphe_loop_video_button_toast_on">Pengulangan video aktif</string>
-  <string name="morphe_loop_video_button_toast_off">Pengulangan video tidak aktif</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Palsukan dimensi perangkat</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimensi perangkat dipalsukan

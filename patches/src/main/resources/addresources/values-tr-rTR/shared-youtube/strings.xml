@@ -104,8 +104,8 @@ Oturum açmak için, devam et butonuna basın."</string>
 • GVS'de Oynatıcı JavaScript hash'i iptal edilirse oynatma başarısız olur"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Oynatıcı JavaScript güncellemesi etkin</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Oynatıcı JavaScript hash\'leri yaklaşık bir ay süreyle geçerlidir ve süresi geçmiş hash\'ler GVS tarafından iptal edilebilir.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Oynatıcı JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Geçerli bir oynatıcı JavaScript hash değeri girin</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Oynatıcı JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Geçerli bir oynatıcı JavaScript hash değeri girin</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC protokolü devre dışı</string>

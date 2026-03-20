@@ -474,6 +474,21 @@ Beperkingen:
 
 Controleer of de pakketnaam correct is en de app is geïnstalleerd"</string>
   <string name="morphe_external_downloader_empty_warning">De pakketnaam kan niet leeg zijn</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Loopvideo inschakelen</string>
+  <string name="morphe_loop_video_summary_on">Video zal herhalen</string>
+  <string name="morphe_loop_video_summary_off">Video zal niet herhalen</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Knop voor loopvideo weergeven</string>
+  <string name="morphe_loop_video_button_summary_on">Knop om video te herhalen wordt weergegeven</string>
+  <string name="morphe_loop_video_button_summary_off">Knop om video te herhalen wordt niet weergegeven</string>
+  <string name="morphe_loop_video_button_toast_on">Loopvideo is ingeschakeld</string>
+  <string name="morphe_loop_video_button_toast_off">Loopvideo is uitgeschakeld</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Toon de knop voor het opnieuw laden van de video</string>
+  <string name="morphe_reload_video_summary_on">De knop voor het opnieuw laden van de video wordt weergegeven</string>
+  <string name="morphe_reload_video_summary_off">De knop voor het opnieuw laden van de video wordt niet weergegeven</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video-id is niet beschikbaar. Open de video handmatig opnieuw.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Precisie-zoekbeweging uitschakelen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Beweging is uitgeschakeld</string>
@@ -1485,16 +1500,6 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow is tijdelijk niet beschikbaar (statuscode: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow is tijdelijk niet beschikbaar</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Loopvideo inschakelen</string>
-  <string name="morphe_loop_video_summary_on">Video zal herhalen</string>
-  <string name="morphe_loop_video_summary_off">Video zal niet herhalen</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Knop voor loopvideo weergeven</string>
-  <string name="morphe_loop_video_button_summary_on">Knop om video te herhalen wordt weergegeven</string>
-  <string name="morphe_loop_video_button_summary_off">Knop om video te herhalen wordt niet weergegeven</string>
-  <string name="morphe_loop_video_button_toast_on">Loopvideo is ingeschakeld</string>
-  <string name="morphe_loop_video_button_toast_off">Loopvideo is uitgeschakeld</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoof apparaatdimensies</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Apparaatdimensies gespoofed

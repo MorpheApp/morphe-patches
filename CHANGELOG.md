@@ -1,3 +1,18 @@
+# [1.20.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.20.0-dev.3...v1.20.0-dev.4) (2026-03-20)
+
+
+### Bug Fixes
+
+* **YouTube - LithoFilter:** Press the back button twice instead of once to exit the app ([#907](https://github.com/MorpheApp/morphe-patches/issues/907)) ([c450c5a](https://github.com/MorpheApp/morphe-patches/commit/c450c5abecc416e05b335fa178382501b0e3d7b3))
+
+
+### Features
+
+* **GmsCore support:** Add a setting to not prompt to disable MicroG battery optimization ([#921](https://github.com/MorpheApp/morphe-patches/issues/921)) ([4632fb6](https://github.com/MorpheApp/morphe-patches/commit/4632fb69f9359a709e96d4699d9bfb05133c3a5c))
+* **Spoof video streams:** Default client maintenance ([#928](https://github.com/MorpheApp/morphe-patches/issues/928)) ([0884870](https://github.com/MorpheApp/morphe-patches/commit/088487090bc59b1c6358551f4e4634f2a847e781))
+* **YouTube:** Add `Reload video` patch ([#873](https://github.com/MorpheApp/morphe-patches/issues/873)) ([fad0e95](https://github.com/MorpheApp/morphe-patches/commit/fad0e95e6be8b29bd32bcec4ef518efff3bcc0eb))
+* **YouTube:** Add experimental support for `21.12.521` ([#925](https://github.com/MorpheApp/morphe-patches/issues/925)) ([039e982](https://github.com/MorpheApp/morphe-patches/commit/039e9827fe22562e6b4b9c103621a04f08509fc4))
+
 # [1.20.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.20.0-dev.2...v1.20.0-dev.3) (2026-03-19)
 
 

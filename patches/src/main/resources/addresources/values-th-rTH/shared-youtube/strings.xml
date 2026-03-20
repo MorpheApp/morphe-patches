@@ -106,8 +106,8 @@ Second \"item\" text"</string>
 • การเล่นวิดีโอจะล้มเหลวหากแฮช JavaScript ของผู้เล่นถูกเพิกถอนใน GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">การอัปเดต JavaScript ของผู้เล่นเปิดใช้งาน</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hash ของผู้เล่นมีความถูกต้องประมาณหนึ่งเดือน และ JavaScript hash ที่หมดอายุอาจถูกเพิกถอนโดย GVS</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">ค่าแฮช JavaScript ของผู้เล่น</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">ป้อนค่าแฮช JavaScript ของผู้เล่นที่ถูกต้อง</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">ค่าแฮช JavaScript ของผู้เล่น</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">ป้อนค่าแฮช JavaScript ของผู้เล่นที่ถูกต้อง</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">โพรโทคอล QUIC ถูกปิดใช้งาน</string>

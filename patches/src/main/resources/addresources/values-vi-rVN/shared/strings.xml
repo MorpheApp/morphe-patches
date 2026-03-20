@@ -130,4 +130,13 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Hộp thoại tối ưu hoá pin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Hộp thoại tối ưu hoá pin MicroG đã được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hộp thoại tối ưu hoá pin MicroG không được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
+
+Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể xẩy ra như:
+• Ứng dụng tự tắt bất chợt
+• Không nhận được thông báo
+• Không phát được trong nền"</string>
 </resources>

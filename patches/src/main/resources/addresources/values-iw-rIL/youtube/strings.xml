@@ -473,6 +473,21 @@ Second \"item\" text"</string>
 
 יש לוודא ששם החבילה נכון ושהיישום מותקן"</string>
   <string name="morphe_external_downloader_empty_warning">שם החבילה אינו יכול להיות ריק</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">הפעל סרטון בלולאה</string>
+  <string name="morphe_loop_video_summary_on">הסרטון יופעל בלולאה</string>
+  <string name="morphe_loop_video_summary_off">הסרטון לא יופעל בלולאה</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">הצג לחצן הפעלת סרטון בלולאה</string>
+  <string name="morphe_loop_video_button_summary_on">תפריט סרטון בלופ מוצג</string>
+  <string name="morphe_loop_video_button_summary_off">תפריט סרטון בלופ מוצג</string>
+  <string name="morphe_loop_video_button_toast_on">הפעלת סרטון בלולאה מופעלת</string>
+  <string name="morphe_loop_video_button_toast_off">הפעלת סרטון בלולאה כבויה</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">הצג לחצן טעינת סרטון</string>
+  <string name="morphe_reload_video_summary_on">לחצן טעינת סרטון מוצג</string>
+  <string name="morphe_reload_video_summary_off">לחצן טעינת סרטון אינו מוצג</string>
+  <string name="morphe_dismiss_player_not_available_toast">מזהה הסרטון אינו זמין. אנא פתח מחדש את הסרטון באופן ידני.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">מחווה מושבתת</string>
@@ -1486,16 +1501,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">השירות DeArrow אינו זמין באופן זמני (קוד מצב: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">השירות DeArrow אינו זמין באופן זמני</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">הפעל סרטון בלולאה</string>
-  <string name="morphe_loop_video_summary_on">הסרטון יופעל בלולאה</string>
-  <string name="morphe_loop_video_summary_off">הסרטון לא יופעל בלולאה</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">הצג לחצן הפעלת סרטון בלולאה</string>
-  <string name="morphe_loop_video_button_summary_on">תפריט סרטון בלופ מוצג</string>
-  <string name="morphe_loop_video_button_summary_off">תפריט סרטון בלופ מוצג</string>
-  <string name="morphe_loop_video_button_toast_on">הפעלת סרטון בלולאה מופעלת</string>
-  <string name="morphe_loop_video_button_toast_off">הפעלת סרטון בלולאה כבויה</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">זייף ממדי מכשיר</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"מימדי המכשיר מזויפים

@@ -485,6 +485,21 @@ Second \"item\" text"</string>
 
 Перевірте, чи правильне ім'я пакета та чи встановлено застосунок"</string>
   <string name="morphe_external_downloader_empty_warning">Ім\'я пакета не може бути порожнім</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
+  <string name="morphe_loop_video_summary_on">Відео буде повторюватися</string>
+  <string name="morphe_loop_video_summary_off">Відео не буде повторюватися</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Кнопка повторення відео</string>
+  <string name="morphe_loop_video_button_summary_on">Пункт меню \"Повторювати відео\" показується</string>
+  <string name="morphe_loop_video_button_summary_off">Пункт меню \"Повторювати відео\" не показується в відеоплеєрі</string>
+  <string name="morphe_loop_video_button_toast_on">Повторення відео ввімкнено</string>
+  <string name="morphe_loop_video_button_toast_off">Повторення відео вимкнено</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Кнопка перезавантаження відео</string>
+  <string name="morphe_reload_video_summary_on">Кнопка перезавантаження відео показується</string>
+  <string name="morphe_reload_video_summary_off">Кнопка перезавантаження відео не показується</string>
+  <string name="morphe_dismiss_player_not_available_toast">Ідентифікатор відео недоступний. Будь ласка, вручну повторно відкрийте відео.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест для точного покадрового перемотування вимкнено</string>
@@ -1498,16 +1513,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow тимчасово недоступний (код статусу: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow тимчасово недоступний</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
-  <string name="morphe_loop_video_summary_on">Відео буде повторюватися</string>
-  <string name="morphe_loop_video_summary_off">Відео не буде повторюватися</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Кнопка повторення відео</string>
-  <string name="morphe_loop_video_button_summary_on">Пункт меню \"Повторювати відео\" показується</string>
-  <string name="morphe_loop_video_button_summary_off">Пункт меню \"Повторювати відео\" не показується в відеоплеєрі</string>
-  <string name="morphe_loop_video_button_toast_on">Повторення відео ввімкнено</string>
-  <string name="morphe_loop_video_button_toast_off">Повторення відео вимкнено</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Підміняти розміри пристрою</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Розміри пристрою підмінено

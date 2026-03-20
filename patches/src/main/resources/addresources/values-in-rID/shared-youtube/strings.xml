@@ -104,8 +104,8 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Pemutaran gagal jika hash pemutar JavaScript dicabut di GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pembaruan pemutar JavaScript diaktifkan</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash pemutar JavaScript</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Masukkan hash pemutar JavaScript yang sah</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash pemutar JavaScript</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Masukkan hash pemutar JavaScript yang sah</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC dinonaktifkan</string>

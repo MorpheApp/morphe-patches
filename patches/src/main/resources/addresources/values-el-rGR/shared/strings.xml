@@ -137,4 +137,13 @@ Second \"item\" text"</string>
 
 Πατήστε το κουμπί \"Συνέχεια\" και επιτρέψτε τις αλλαγές βελτιστοποίησης."</string>
   <string name="gms_core_dialog_continue_text">Συνέχεια</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Διάλογος βελτιστοποίησης μπαταρίας</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Εμφανίζεται ο διάλογος βελτιστοποίησης μπαταρίας MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Δεν εμφανίζεται ο διάλογος βελτιστοποίησης μπαταρίας MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Απενεργοποιώντας αυτό, θα κρυφτεί η προτροπή βελτιστοποίησης μπαταρίας MicroG.
+
+Εάν οι βελτιστοποιήσεις μπαταρίας δεν αλλάξουν, ενδέχεται να αντιμετωπίσετε:
+• Η εφαρμογή ενδέχεται να κλείνει τυχαία
+• Οι ειδοποιήσεις ενδέχεται να μην λειτουργούν
+• Η αναπαραγωγή στο παρασκήνιο ενδέχεται να μην λειτουργεί"</string>
 </resources>

@@ -473,6 +473,21 @@ Second \"item\" text"</string>
 
 請驗證套件名稱是否正確以及應用程式是否已安裝"</string>
   <string name="morphe_external_downloader_empty_warning">套件名稱不能為空</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">啟用循環播放影片</string>
+  <string name="morphe_loop_video_summary_on">影片將循環播放</string>
+  <string name="morphe_loop_video_summary_off">影片將不循環播放</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">顯示循環播放影片按鈕</string>
+  <string name="morphe_loop_video_button_summary_on">已顯示「循環播放影片」選單</string>
+  <string name="morphe_loop_video_button_summary_off">不顯示「循環播放影片」選單</string>
+  <string name="morphe_loop_video_button_toast_on">已開啟循環播放影片</string>
+  <string name="morphe_loop_video_button_toast_off">已關閉循環播放影片</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">顯示重新載入影片按鈕</string>
+  <string name="morphe_reload_video_summary_on">已顯示重新載入影片按鈕</string>
+  <string name="morphe_reload_video_summary_off">未顯示重新載入影片按鈕</string>
+  <string name="morphe_dismiss_player_not_available_toast">影片 ID 無法使用。請手動重新開啟影片。</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">已停用精準跳轉手勢</string>
@@ -1491,16 +1506,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow 暫時無法使用（狀態碼：%s）</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow 暫時無法使用</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">啟用循環播放影片</string>
-  <string name="morphe_loop_video_summary_on">影片將循環播放</string>
-  <string name="morphe_loop_video_summary_off">影片將不循環播放</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">顯示循環播放影片按鈕</string>
-  <string name="morphe_loop_video_button_summary_on">已顯示「循環播放影片」選單</string>
-  <string name="morphe_loop_video_button_summary_off">不顯示「循環播放影片」選單</string>
-  <string name="morphe_loop_video_button_toast_on">已開啟循環播放影片</string>
-  <string name="morphe_loop_video_button_toast_off">已關閉循環播放影片</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">偽裝裝置尺寸</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"已偽裝裝置尺寸

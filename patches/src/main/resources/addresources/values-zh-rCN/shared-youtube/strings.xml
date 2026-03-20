@@ -104,8 +104,8 @@ Second \"item\" text"</string>
 • 如果 GVS 中撤销了播放器 JavaScript 哈希，则播放失败"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">播放器 JavaScript 更新已启用</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Player JavaScript 哈希有效期约为一个月，过期的哈希可能由 GVS 撤销。</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">输入有效的 Player JavaScript 哈希</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">输入有效的 Player JavaScript 哈希</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC协议已禁用</string>

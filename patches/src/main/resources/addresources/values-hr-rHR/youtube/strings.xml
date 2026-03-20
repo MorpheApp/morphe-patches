@@ -477,6 +477,17 @@ Ograničenja:
 
 Potvrdite da naziv paketa je tačan i da je aplikacija instalirana."</string>
   <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Omogu petljati video</string>
+  <string name="morphe_loop_video_summary_on">Video će se ponavljati</string>
+  <string name="morphe_loop_video_summary_off">Video neće se ponavljati</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Pokaži dugme za petljati video</string>
+  <string name="morphe_loop_video_button_summary_on">Tipka za petljanje videa je prikazana</string>
+  <string name="morphe_loop_video_button_summary_off">Tipka za petljanje videa nije prikazana</string>
+  <string name="morphe_loop_video_button_toast_on">Petljati video je uključen</string>
+  <string name="morphe_loop_video_button_toast_off">Petljati video je isključen</string>
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogu precizan pritisak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Precizan pritisak je onemogu</string>
@@ -1490,16 +1501,6 @@ Tapajte ovdje da saznajte više o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow privremeno nije dostupan (status kod: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow privremeno nije dostupan</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Omogu petljati video</string>
-  <string name="morphe_loop_video_summary_on">Video će se ponavljati</string>
-  <string name="morphe_loop_video_summary_off">Video neće se ponavljati</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Pokaži dugme za petljati video</string>
-  <string name="morphe_loop_video_button_summary_on">Tipka za petljanje videa je prikazana</string>
-  <string name="morphe_loop_video_button_summary_off">Tipka za petljanje videa nije prikazana</string>
-  <string name="morphe_loop_video_button_toast_on">Petljati video je uključen</string>
-  <string name="morphe_loop_video_button_toast_off">Petljati video je isključen</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Simuliraj dimenzije uređaja</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimenzije uređaja su lažirane

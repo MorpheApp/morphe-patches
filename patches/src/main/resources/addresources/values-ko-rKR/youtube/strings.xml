@@ -485,6 +485,21 @@ Second \"item\" text"</string>
 
 패키지 이름이 올바르고 앱이 설치되어 있는지 확인하세요"</string>
   <string name="morphe_external_downloader_empty_warning">패키지명은 비워둘 수 없습니다</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">동영상 연속 재생 활성화하기</string>
+  <string name="morphe_loop_video_summary_on">동영상을 연속 재생합니다</string>
+  <string name="morphe_loop_video_summary_off">동영상을 연속 재생하지 않습니다</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">동영상 연속 재생 버튼 표시하기</string>
+  <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼을 표시합니다</string>
+  <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
+  <string name="morphe_loop_video_button_toast_on">동영상 연속 재생을 활성화합니다</string>
+  <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">동영상 새로고침 버튼 표시하기</string>
+  <string name="morphe_reload_video_summary_on">동영상 새로고침 버튼을 표시합니다</string>
+  <string name="morphe_reload_video_summary_off">동영상 새로고침 버튼을 표시하지 않습니다</string>
+  <string name="morphe_dismiss_player_not_available_toast">동영상 ID를 사용할 수 없습니다. 동영상을 수동으로 다시 재생하세요.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">세밀한 탐색 제스처를 비활성화합니다</string>
@@ -1496,16 +1511,6 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow를 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow를 일시적으로 사용할 수 없습니다</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">동영상 연속 재생 활성화하기</string>
-  <string name="morphe_loop_video_summary_on">동영상을 연속 재생합니다</string>
-  <string name="morphe_loop_video_summary_off">동영상을 연속 재생하지 않습니다</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">동영상 연속 재생 버튼 표시하기</string>
-  <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼을 표시합니다</string>
-  <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
-  <string name="morphe_loop_video_button_toast_on">동영상 연속 재생을 활성화합니다</string>
-  <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">기기 크기 정보 속이기</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"기기 크기 정보가 속여집니다

@@ -137,4 +137,13 @@ Uitzchakelen van batterijoptimalisaties voor MicroG heeft geen negatieve invloed
 
 Druk op de knop Door en ga akkoord met wijzigingen in de optimalisatie."</string>
   <string name="gms_core_dialog_continue_text">Doorgaan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterijoptimalisatiedialoog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">De MicroG batterijoptimalisatiedialoog wordt weergegeven</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">De MicroG batterijoptimalisatiedialoog wordt niet weergegeven</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Het uitschakelen hiervan verbergt het MicroG-prompt voor batterijoptimalisatie.
+
+Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
+• De app kan willekeurig sluiten
+• Meldingen werken mogelijk niet
+• Achtergrondafspelen werkt mogelijk niet"</string>
 </resources>

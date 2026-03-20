@@ -137,4 +137,13 @@ Die Deaktivierung der Akkubedienstoptimierungen für MicroG beeinflusst negativ 
 
 Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die OptimierungsÃderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Akkuoptimierung</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Der MicroG-Akkuoptimierungsdialog wird angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Der MicroG-Akkuoptimierungsdialog wird nicht angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Akkuoptimierungsaufforderung.
+
+Wenn die Akkuoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
+• Die App kann unerwartet geschlossen werden
+• Benachrichtigungen funktionieren möglicherweise nicht
+• Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
 </resources>

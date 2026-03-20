@@ -45,7 +45,7 @@ val changeMiniplayerColor = bytecodePatch(
             val colorMathPlayerInvokeVirtualReference = it.instructionMatches.last()
                 .getInstruction<ReferenceInstruction>().reference
 
-            val colorMathPlayerIGetReference = it.instructionMatches[3]
+            val colorMathPlayerIGetReference = it.instructionMatches[4]
                 .getInstruction<ReferenceInstruction>().reference  as FieldReference
 
             val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {

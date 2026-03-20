@@ -138,4 +138,13 @@ Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan ba
 
 Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan."</string>
   <string name="gms_core_dialog_continue_text">Lanjutkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog optimasi baterai</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialog optimasi baterai MicroG ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialog optimasi baterai MicroG tidak ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan perintah optimasi baterai MicroG.
+
+Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
+• Aplikasi mungkin secara acak tertutup
+• Pemberitahuan mungkin tidak berfungsi
+• Pemutaran latar belakang mungkin tidak berfungsi"</string>
 </resources>

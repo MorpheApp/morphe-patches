@@ -84,6 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licencmegjegyzések</string>
   <string name="morphe_settings_about_licenses_loading">Betöltés...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hibakeresés</string>
@@ -137,4 +138,13 @@ A MicroG akkumulátor-optimalizálásának letiltása nem befolyásolja negatív
 
 Kattintson a folytatás gombra, és engedélyezze az optimalizálási módosításokat."</string>
   <string name="gms_core_dialog_continue_text">Folytatás</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Akkugenerációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Megjelenik a MicroG akkumulátor-optimalizációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Nem jelenik meg a MicroG akkumulátor-optimalizációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"A letiltás elrejti a MicroG akkumulátor-optimalizációs kérést.
+
+Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
+• Az alkalmazás véletlenszerűen lezárulhat
+• Az értesítések nem működhetnek
+• A háttérbeli lejátszás nem működhet"</string>
 </resources>

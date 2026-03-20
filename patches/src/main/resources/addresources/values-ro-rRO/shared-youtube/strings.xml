@@ -104,8 +104,8 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
 • Redarea eșuează dacă hash-ul JavaScript al player-ului este revocat în GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Actualizarea JavaScript a player-ului este activată</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hash-urile JavaScript ale player-ului sunt valide aproximativ o lună, iar hash-urile învechite pot fi revocate de GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript al juc\u00e3torului</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Introduceți un hash JavaScript al jucătorului valid</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript al juc\u00e3torului</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduceți un hash JavaScript al jucătorului valid</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protocolul QUIC este dezactivat</string>

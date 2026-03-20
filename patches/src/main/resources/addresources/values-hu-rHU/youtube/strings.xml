@@ -473,6 +473,21 @@ Korlátozások
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
   <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Hurokismétlés engedélyezése</string>
+  <string name="morphe_loop_video_summary_on">A videó ismétlődni fog</string>
+  <string name="morphe_loop_video_summary_off">A videó nem fog ismétlődni</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Hurokismétlés gomb megjelenítése</string>
+  <string name="morphe_loop_video_button_summary_on">A videó folyamatos ismétlése menü látható</string>
+  <string name="morphe_loop_video_button_summary_off">A videó folyamatos ismétlése menü el van rejtve</string>
+  <string name="morphe_loop_video_button_toast_on">A hurokismétlés be van kapcsolva</string>
+  <string name="morphe_loop_video_button_toast_off">A hurokismétlés ki van kapcsolva</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Videó újraindítás gomb megjelenítése</string>
+  <string name="morphe_reload_video_summary_on">A videó újraindítás gomb látható</string>
+  <string name="morphe_reload_video_summary_off">A videó újraindítás gomb nem látható</string>
+  <string name="morphe_dismiss_player_not_available_toast">A videó azonosítója nem elérhető. Kézzel nyissa újra a videót.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Pontos keresési kézmozdulat letiltása</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">A kézmozdulat letiltva</string>
@@ -1483,16 +1498,6 @@ Ha engedélyezve van, akkor a videók URL-jeit elküldjük az API kiszolgálóna
   <string name="morphe_alt_thumbnail_dearrow_error">A DeArrow átmenetileg nem érhető el (állapotkód: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">A DeArrow átmenetileg nem érhető el</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Hurokismétlés engedélyezése</string>
-  <string name="morphe_loop_video_summary_on">A videó ismétlődni fog</string>
-  <string name="morphe_loop_video_summary_off">A videó nem fog ismétlődni</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Hurokismétlés gomb megjelenítése</string>
-  <string name="morphe_loop_video_button_summary_on">A videó folyamatos ismétlése menü látható</string>
-  <string name="morphe_loop_video_button_summary_off">A videó folyamatos ismétlése menü el van rejtve</string>
-  <string name="morphe_loop_video_button_toast_on">A hurokismétlés be van kapcsolva</string>
-  <string name="morphe_loop_video_button_toast_off">A hurokismétlés ki van kapcsolva</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Eszközméret hamisítása</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Az eszköz méretei hamisítva vannak

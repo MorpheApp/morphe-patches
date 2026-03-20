@@ -474,6 +474,21 @@ Mga Limitasyon:
 
 Suriin kung tama ang pangalan ng package at naka-install ang app"</string>
   <string name="morphe_external_downloader_empty_warning">Hindi maaaring walang laman ang pangalan ng package</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">I-enable ang loop video</string>
+  <string name="morphe_loop_video_summary_on">Maglo-loop ang video</string>
+  <string name="morphe_loop_video_summary_off">Hindi maglo-loop ang video</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Ipakita ang button para sa loop video</string>
+  <string name="morphe_loop_video_button_summary_on">Ipinapakita ang button ng loop ng video</string>
+  <string name="morphe_loop_video_button_summary_off">Hindi ipinapakita ang button ng loop ng video</string>
+  <string name="morphe_loop_video_button_toast_on">Naka-on ang loop video</string>
+  <string name="morphe_loop_video_button_toast_off">Naka-off ang loop video</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Ipakita ang button na i-reload ang video</string>
+  <string name="morphe_reload_video_summary_on">Ipinapakita ang button na i-reload ang video</string>
+  <string name="morphe_reload_video_summary_off">Hindi ipinapakita ang button na i-reload ang video</string>
+  <string name="morphe_dismiss_player_not_available_toast">Ang video id ay hindi magagamit. Mangyaring buksan muli nang manu-mano ang video.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">I-disable ang tumpak na pag-ugong ng pag-ugong</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Naka-disable ang tumpak na pag-ugong ng pag-ugong</string>
@@ -1487,16 +1502,6 @@ I-tap dito upang matuto nang higit pa tungkol sa DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">Ang DeArrow ay pansamantalang hindi magagamit (status code: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">Ang DeArrow ay pansamantalang hindi magagamit</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">I-enable ang loop video</string>
-  <string name="morphe_loop_video_summary_on">Maglo-loop ang video</string>
-  <string name="morphe_loop_video_summary_off">Hindi maglo-loop ang video</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Ipakita ang button para sa loop video</string>
-  <string name="morphe_loop_video_button_summary_on">Ipinapakita ang button ng loop ng video</string>
-  <string name="morphe_loop_video_button_summary_off">Hindi ipinapakita ang button ng loop ng video</string>
-  <string name="morphe_loop_video_button_toast_on">Naka-on ang loop video</string>
-  <string name="morphe_loop_video_button_toast_off">Naka-off ang loop video</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">I-spoof ang device dimensions</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Sine-spoof ang sukat ng device

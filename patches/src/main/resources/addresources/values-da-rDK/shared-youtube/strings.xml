@@ -104,8 +104,8 @@ For at indlogge, tryk på fortsæt nedenfor"</string>
 • Afspilning mislykkes, hvis JavaScript-hash for afspiller tilbagekaldes i GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript-opdatering for afspiller er aktiveret</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Spillerens JavaScript-hashes er gyldige i cirka en måned, og forældede hashes kan tilbagekaldes af GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Spiller JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Indtast en gyldig spiller JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Spiller JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Indtast en gyldig spiller JavaScript hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokollet</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokollet er deaktiveret</string>

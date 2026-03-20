@@ -137,4 +137,13 @@ Second \"item\" text"</string>
 
 แตะปุ่มตกลง และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
   <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">กล่องข้อความเพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">ไม่มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"การปิดใช้งานนี้จะซ่อนข้อความแจ้ง MicroG เพิ่มประสิทธิภาพแบตเตอรี่
+
+หากการเพิ่มประสิทธิภาพแบตเตอรี่ไม่ได้มีการเปลี่ยนแปลง คุณอาจพบ:
+• แอปพลิเคชันอาจปิดโดยสุ่ม
+• การแจ้งเตือนอาจใช้งานไม่ได้
+• การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
 </resources>

@@ -421,6 +421,17 @@ Məhdudiyyətlər
 
 Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş ola bilməz</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
+  <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
+  <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Video təkrarlama düyməsini göstər</string>
+  <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
+  <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
+  <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
+  <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq axtarış jestini qapadın</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Jest qeyri-aktiv edilib</string>
@@ -1303,16 +1314,6 @@ DeArrow haqqında ətraflı öyrənmək üçün bura toxun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow müvəqqəti mövcud deyil (status kodu: %s) </string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow müvəqqəti olaraq mövcud deyil</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
-  <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
-  <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Video təkrarlama düyməsini göstər</string>
-  <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
-  <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
-  <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
-  <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz ölçülərini saxtalaşdır</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Cihaz ölçüləri saxtalaşdırıldı

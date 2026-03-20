@@ -103,8 +103,8 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 • Hindi magtatagumpay ang pag-playback kung ang Player JavaScript hash ay binawi sa GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ang pag-update ng JavaScript ng player ay pinagana</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Ang mga JavaScript hash ng player ay balido sa loob ng humigit-kumulang isang buwan, at ang mga hindi napapanahong hash ay maaaring i-revoke ng GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash ng JavaScript ng Player</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash ng JavaScript ng Player</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
   <string name="morphe_disable_quic_protocol_summary_on">Nakapatay ang QUIC protocol</string>

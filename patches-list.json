@@ -1,5 +1,5 @@
 {
-  "version": "1.20.0-dev.3",
+  "version": "1.20.0-dev.4",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1072,8 +1072,6 @@
       "use": true,
       "dependencies": [
         "ResourcePatch",
-        "BytecodePatch",
-        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
@@ -1211,7 +1209,6 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
         "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
@@ -1673,6 +1670,26 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.45.36",
+          "20.44.38",
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Reload video",
+      "description": "Adds options to display buttons in the video player to reload video.",
+      "use": true,
+      "dependencies": [
+        "ResourcePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],

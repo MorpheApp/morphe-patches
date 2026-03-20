@@ -104,8 +104,8 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
 • Prehrávanie zlyhá, ak je hash JavaScriptu prehrávača zamietnutý v GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Aktualizácia JavaScriptu prehrávača je povolená</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashe JavaScriptu prehrávača sú platné približne jeden mesiac a zastarané hashe môžu byť zrušené GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScriptu prehrávača</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Zadajte platný hash JavaScriptu prehrávača</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScriptu prehrávača</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Zadajte platný hash JavaScriptu prehrávača</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zakázať protokol QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je zakázaný</string>

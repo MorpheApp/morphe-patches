@@ -474,6 +474,21 @@ Omezení:
 
 Zkontrolujte, zda je název balíčku správný a aplikace je nainstalována"</string>
   <string name="morphe_external_downloader_empty_warning">Název balíčku nemůže být prázdný</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Povolit smyčku videa</string>
+  <string name="morphe_loop_video_summary_on">Video se bude přehrávat ve smyčce</string>
+  <string name="morphe_loop_video_summary_off">Video se nebude přehrávat ve smyčce</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Zobrazit tlačítko pro smyčku videa</string>
+  <string name="morphe_loop_video_button_summary_on">Menu Opakování videa je zobrazeno</string>
+  <string name="morphe_loop_video_button_summary_off">Menu Opakování videa je zobrazeno</string>
+  <string name="morphe_loop_video_button_toast_on">Smyčka videa je zapnuta</string>
+  <string name="morphe_loop_video_button_toast_off">Smyčka videa je vypnuta</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Zobrazit tlačítko pro obnovení videa</string>
+  <string name="morphe_reload_video_summary_on">Tlačítko pro obnovení videa je zobrazeno</string>
+  <string name="morphe_reload_video_summary_off">Tlačítko pro obnovení videa není zobrazeno</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID videa je nedostupné. Prosím, video ručně znovu otevřete.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázat přesné gesto pro vyhledávání</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Přesné gesto pro vyhledávání je zakázáno</string>
@@ -1487,16 +1502,6 @@ Klepnutím sem se dozvíte více o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow je dočasně nedostupný (kód stavu: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow je dočasně nedostupný</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Povolit smyčku videa</string>
-  <string name="morphe_loop_video_summary_on">Video se bude přehrávat ve smyčce</string>
-  <string name="morphe_loop_video_summary_off">Video se nebude přehrávat ve smyčce</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Zobrazit tlačítko pro smyčku videa</string>
-  <string name="morphe_loop_video_button_summary_on">Menu Opakování videa je zobrazeno</string>
-  <string name="morphe_loop_video_button_summary_off">Menu Opakování videa je zobrazeno</string>
-  <string name="morphe_loop_video_button_toast_on">Smyčka videa je zapnuta</string>
-  <string name="morphe_loop_video_button_toast_off">Smyčka videa je vypnuta</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Napodobovat rozměry zařízení</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Rozměry zařízení jsou zfalšovány

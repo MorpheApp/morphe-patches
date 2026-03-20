@@ -84,6 +84,8 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licenčné upozornenia</string>
+  <string name="morphe_settings_about_licenses_loading">Načítava sa...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladenie chýb</string>
   <string name="morphe_debug_screen_summary">Povoliť alebo zakázať možnosti ladenia</string>
@@ -136,4 +138,13 @@ Vypnutie optimalizácie batérie pre microG neovplyvní spotrebu batérie.
 
 Ťuknite na tlačidlo pokračovať a povoľte zmeny optimalizácie."</string>
   <string name="gms_core_dialog_continue_text">Pokračovať</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialógové okno optimalizácie batérie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialógové okno optimalizácie batérie pre microG sa zobrazuje</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialógové okno optimalizácie batérie pre MicroG sa nezobrazuje</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Vypnutím sa skryje výzva MicroG na optimalizáciu batérie.
+
+Ak nezmeníte optimalizácie batérie môže sa stať, že:
+• aplikácia sa môže náhodne zatvoriť,
+• upozornenia nebudú fungovať,
+• prehrávanie na pozadí nemusí fungovať"</string>
 </resources>

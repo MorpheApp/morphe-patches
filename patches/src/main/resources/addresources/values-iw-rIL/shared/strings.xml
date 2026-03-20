@@ -137,4 +137,13 @@ Second \"item\" text"</string>
 
 תMouseEvent על הלחצן 'המשך' ואפשר שינויי מיטוב."</string>
   <string name="gms_core_dialog_continue_text">המשך</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">תיבת דו-שיח אופטימיזציית סוללה</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">לא מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ביטול האפשרות יסתר את ההודעה של MicroG לאופטימיזציית הסוללה.
+
+אם הגדרות האופטימיזציה של הסוללה לא ישונו, ייתכן שתחוו:
+• האפליקציה עלולה להיסגר באופן אקראי
+• התראות עלולות לא לעבוד
+• השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
 </resources>

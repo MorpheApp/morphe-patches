@@ -137,4 +137,13 @@ Disabilitare le ottimizzazioni della batteria non influirà negativamente sull'u
 
 Clicca \"Continua\" e consenta le modifiche."</string>
   <string name="gms_core_dialog_continue_text">Continua</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Finestra di dialogo ottimizzazione batteria</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">È mostrata la finestra di dialogo di ottimizzazione della batteria MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Non è mostrata la finestra di dialogo di ottimizzazione della batteria MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabilitando questa opzione, verrà nascosto il prompt di ottimizzazione della batteria MicroG.
+
+Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificarsi i seguenti problemi:
+• L'app potrebbe chiudersi in modo casuale
+• Le notifiche potrebbero non funzionare
+• La riproduzione in background potrebbe non funzionare"</string>
 </resources>

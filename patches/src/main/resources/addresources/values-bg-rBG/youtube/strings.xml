@@ -471,6 +471,21 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_not_installed_warning">Външен свалик</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Външен свалик не е инсталиран. Инсталирайте го."</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакета не може да бъде празно</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Версията е фалшира</string>
+  <string name="morphe_loop_video_summary_on">Версията не е фалшира</string>
+  <string name="morphe_loop_video_summary_off">Видео не ще се повтаря</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Цел на фалшира версия на приложението</string>
+  <string name="morphe_loop_video_button_summary_on">Бутона за повторение на видеоклипа е показан</string>
+  <string name="morphe_loop_video_button_summary_off">Бутона за повторение на видеоклипа не е показан</string>
+  <string name="morphe_loop_video_button_toast_on">Видео в цикъл е включено</string>
+  <string name="morphe_loop_video_button_toast_off">Промянете стартова страница</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Покажи бутона за презареждане на видеото</string>
+  <string name="morphe_reload_video_summary_on">Показва се бутонът за презареждане на видеото</string>
+  <string name="morphe_reload_video_summary_off">Не се показва бутонът за презареждане на видеото</string>
+  <string name="morphe_dismiss_player_not_available_toast">Видео id е недостъпен. Моля, отвори ръчно видеото отново.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Изключи прецизно сваляне на позиция</string>
@@ -1476,16 +1491,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow временно не е наличен (код на състоянието: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow временно не е наличен</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Версията е фалшира</string>
-  <string name="morphe_loop_video_summary_on">Версията не е фалшира</string>
-  <string name="morphe_loop_video_summary_off">Видео не ще се повтаря</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Цел на фалшира версия на приложението</string>
-  <string name="morphe_loop_video_button_summary_on">Бутона за повторение на видеоклипа е показан</string>
-  <string name="morphe_loop_video_button_summary_off">Бутона за повторение на видеоклипа не е показан</string>
-  <string name="morphe_loop_video_button_toast_on">Видео в цикъл е включено</string>
-  <string name="morphe_loop_video_button_toast_off">Промянете стартова страница</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">По подразбиране</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размерите на устройството са подправени

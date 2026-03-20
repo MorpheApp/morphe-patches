@@ -475,6 +475,21 @@ Second \"item\" text"</string>
 
 パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
   <string name="morphe_external_downloader_empty_warning">パッケージ名は空欄にはできません</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
+  <string name="morphe_loop_video_summary_on">動画はループ再生されます</string>
+  <string name="morphe_loop_video_summary_off">動画はループ再生されません</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">動画のループ再生ボタンを表示</string>
+  <string name="morphe_loop_video_button_summary_on">プレーヤー オーバーレイに「動画のループ再生」ボタンが表示されます</string>
+  <string name="morphe_loop_video_button_summary_off">プレーヤー オーバーレイに「動画のループ再生」ボタンは表示されません</string>
+  <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
+  <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">動画の再読み込みボタンを表示</string>
+  <string name="morphe_reload_video_summary_on">動画の再読み込みボタンが表示されます</string>
+  <string name="morphe_reload_video_summary_off">動画の再読み込みボタンは表示されません</string>
+  <string name="morphe_dismiss_player_not_available_toast">動画 ID が利用できません。手動で動画を再度開いてください</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精密シーク ジェスチャーは無効です。シークバーを上へスワイプしても、「再生位置の細かい調整」モードにはなりません</string>
@@ -1486,16 +1501,6 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow は一時的に利用できません (status code: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow は一時的に利用できません</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
-  <string name="morphe_loop_video_summary_on">動画はループ再生されます</string>
-  <string name="morphe_loop_video_summary_off">動画はループ再生されません</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">動画のループ再生ボタンを表示</string>
-  <string name="morphe_loop_video_button_summary_on">プレーヤー オーバーレイに「動画のループ再生」ボタンが表示されます</string>
-  <string name="morphe_loop_video_button_summary_off">プレーヤー オーバーレイに「動画のループ再生」ボタンは表示されません</string>
-  <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
-  <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"デバイスの画面サイズは偽装されています

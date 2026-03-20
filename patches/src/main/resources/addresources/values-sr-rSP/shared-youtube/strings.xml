@@ -104,8 +104,8 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
 • Репродукција не успева ако је JavaScript хеш плеера опозиван у GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ажурирање JavaScript плеера је укључено</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hešovi plejera važe približno jedan mesec, a zastareli hešovi mogu biti opozvani od strane GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Хаш JavaScript играча</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Унесите валидан JavaScript хеш играча</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Хаш JavaScript играча</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Унесите валидан JavaScript хеш играча</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Oнемогући протокол QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Протокол QUIC је онемогућен</string>

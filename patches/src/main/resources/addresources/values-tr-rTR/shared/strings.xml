@@ -84,6 +84,7 @@ Yeni dilleri çevirmek veya mevcut çevirileri geliştirmek için morphe.softwar
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lisans bildirimleri</string>
   <string name="morphe_settings_about_licenses_loading">Yükleniyor...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hata ayıklama</string>
@@ -137,4 +138,13 @@ MicroG için pil optimizasyonlarını devre dışı bırakmak, pil kullanımın�
 
 Devam düğmesine dokunun ve optimizasyon değişikliklerine izin verin."</string>
   <string name="gms_core_dialog_continue_text">Devam et</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Akü optimizasyonları iletişim kutusu</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG pil optimizasyonları iletişim kutusu gösteriliyor</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG pil optimizasyonları iletişim kutusu gösterilmiyor</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu devre dışı bırakmak MicroG pil optimizasyonları istemini gizleyecektir.
+
+Pil optimizasyonları değiştirilmezse aşağıdaki sorunlarla karşılaşabilirsiniz:
+• Uygulama rastgele kapanabilir
+• Bildirimler çalışmayabilir
+• Arka planda oynatma çalışmayabilir"</string>
 </resources>

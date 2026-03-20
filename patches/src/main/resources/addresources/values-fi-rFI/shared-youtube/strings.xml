@@ -104,8 +104,8 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
 • Toisto epäonnistuu, jos pelaajan JavaScript-hash on peruutettu GVS:ssä"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pelaajan JavaScript-päivitys on käytössä</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pelaajan JavaScript-hashit ovat voimassa noin kuukauden, ja vanhentuneet hashit voidaan mitätöidä GVS:n toimesta.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Pelaajan JavaScript-hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Anna kelpoinen pelaajan JavaScript-hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Pelaajan JavaScript-hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Anna kelpoinen pelaajan JavaScript-hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokolla on poistettu käytöstä</string>

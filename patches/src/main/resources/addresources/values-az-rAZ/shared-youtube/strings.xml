@@ -17,46 +17,58 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Tətbiq adı</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
-  <string name="morphe_custom_branding_name_entry_5">Xüsusi</string>
+  <string name="morphe_custom_branding_name_entry_5">Fərdi</string>
   <string name="morphe_custom_branding_icon_title">Tətbiq simvolu</string>
-  <string name="morphe_custom_branding_icon_entry_1">Orijinal</string>
+  <string name="morphe_custom_branding_icon_entry_1">Əsil</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe qara</string>
-  <string name="morphe_custom_branding_icon_entry_3">Morphe tünd</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe kəhvədi</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe qaranlıq</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe işıqlı</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Xüsusi</string>
+  <string name="morphe_custom_branding_icon_entry_5">Fərdi</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Təcrübi Xəbərdarlıq 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Siz ⚠️ &lt;b&gt;%1$s&lt;/b&gt; &lt;br/&gt;&lt;br/&gt; nömrəsinin təcrübi tətbiq versiyasın istifadə edirsiniz
+
+🔧 Bu tətbiq versiyası üçün yamaqları həssas köklədiyimiz üçün qəribə tətbiq davranışı və ya naməlum səhvlər gözləyin. &lt;br/&gt;&lt;br/&gt;
+
+Ən qüsursuz təcrübə istəyirsinizsə, bunu &lt;b&gt;silin&lt;/b&gt; və ✅ &lt;b&gt;%2$s&lt;/b&gt; nömrəsinin tövsiyə olunan tətbiq versiyasını yamaqlayın"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Mən təcrübi istəyirəm</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Mən sabitlik istəyirəm</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildiriş</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam bloklayıcı və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;.Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS bloklayıcıları və proksiləri bağlayın.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirişi</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Təkrar göstərmə</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video yayımların saxtalaşdır</string>
   <string name="morphe_spoof_video_streams_screen_summary">Oynatma problemlərin önləmək üçün qəbuledici video yayımların saxtalaşdır</string>
-  <string name="morphe_spoof_video_streams_title">Video yayımları saxtalaşdır</string>
+  <string name="morphe_spoof_video_streams_title">Video yayımların saxtalaşdır</string>
   <string name="morphe_spoof_video_streams_summary_on">"Video yayımları saxtalaşdırılıb
 
 Əgər YouTube Premium istifadəçisisinizsə, bu tənzimlənmə tələb olunmaya bilər"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Video yayımları saxtalaşmayıb
 
 Oynatma işləməyə bilər"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Heç bir client axını əldə etmək mümkün olmadı.</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Hər hansı qəbuledici yayımları əldə etmək olmadı</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bunları aktiv etməyə cəhd edin: Video axınlarını əyləcələmək > Android VR-na daxil olmaq.</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-na daxil olmaq.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-a daxil edilməmiş. Daxil olmaq üçün bura vurun.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR girişi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-a daxil olunmayıb. Daxil olmaq üçün bura toxun</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hal-hazırda Android VR-a daxil edilmişsiniz.</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu funksiyanı istifadə etmək üçün, \'Zəhmət client\'ni Android VR ilə dəyişin.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-a daxil ol.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-a daxil olmaq bəzi istifadəçilər üçün oynatma problemlərini düzəldə bilər
+
+Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Davam et.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıxış.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Qaydalar.</string>
@@ -78,16 +90,36 @@ Oynatma işləməyə bilər"</string>
 • Əgər bu proqram 6 ay ərzində istifadə edilməsə, Google bu kimliyi siləcək.
 • Əgər Google parolunuzu dəyişir və ya bu cihazınızı Google tənzimlənmələrdən çıxarthersəyid, yenidən daxil olmaq lazım."</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 müvəqqəti olaraq mövcud deyil (API vaxtı bitdi).</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 müvəqqəti olaraq mövcud deyil (status %d).</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 müvəqqəti olaraq mövcud deyil.</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-a daxil olmaq olmur, veb sayt təsdiqlənməsi qəbul edilməyib</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq olmur: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR-dən çıxdı.</string>
+  <string name="morphe_oauth2_toast_invalid">Token-dəki etibarsız VR girişi, VR-a təkrar daxil olmağa cəhd et</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynadıcı JavaScript yenilənməsini qapat</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Oynadıcı JavaScript yenilənməsi qapadılıb
+
+• Etibarlı oynadıcı JavaScript hash-i tələb olunur
+• GVS-də Oynadıcı JavaScript hash-i ləğv edilərsə, oynatma uğursuz olur"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Oynadıcı JavaScript yenilənməsi işləkdir</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Oynadıcı JavaScript hash-ləri təqribi bir ay müddətində etibarlıdır və köhnələn hash-lər GVS tərəfindən ləğv edilə bilər.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Oynadıcı JavaScript hash-i</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">İşlək oynadıcı JavaScript hash-i qeyd et</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC protokolu qapadılıb</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC protokolu işləkdir</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">DRC səsin qapat</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC səsi qapalıdır</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC səsi işləkdir</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
   <string name="morphe_force_original_audio_summary_on">Orijinal səs dilini istifadə</string>
   <string name="morphe_force_original_audio_summary_off">İlkin səs istifadəsi</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı Android Reel-ə və ya TV-yə dəyişdir</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Paylaşım linklərin təmizlə</string>
   <string name="morphe_sanitize_sharing_links_summary_on">İzləmə sorğusu faktoru paylaşılan linklərdən silinir</string>

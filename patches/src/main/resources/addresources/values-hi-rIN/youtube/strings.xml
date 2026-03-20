@@ -474,6 +474,21 @@ Second \"item\" text"</string>
 
 पैकेज नाम को सही और एप्लिकेशन को स्थापित किया गया है, यह सुनिश्चित करें"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज का नाम खाली नहीं हो सकता</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">लूप वीडियो सक्षम करें</string>
+  <string name="morphe_loop_video_summary_on">वीडियो लूप होगा</string>
+  <string name="morphe_loop_video_summary_off">वीडियो लूप नहीं होगा</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">वीडियो लूप बटन दिखाएं</string>
+  <string name="morphe_loop_video_button_summary_on">वीडियो लूप बटन दिखाई देता है</string>
+  <string name="morphe_loop_video_button_summary_off">वीडियो लूप बटन दिखाई नहीं देता है</string>
+  <string name="morphe_loop_video_button_toast_on">वीडियो लूप चालू है</string>
+  <string name="morphe_loop_video_button_toast_off">वीडियो लूप बंद है</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">वीडियो रीलोड बटन दिखाएँ</string>
+  <string name="morphe_reload_video_summary_on">रीलोड वीडियो बटन दिखाया गया है</string>
+  <string name="morphe_reload_video_summary_off">रीलोड वीडियो बटन नहीं दिखाया गया है</string>
+  <string name="morphe_dismiss_player_not_available_toast">वीडियो आईडी उपलब्ध नहीं है। कृपया वीडियो को मैन्युअल रूप से फिर से खोलें।</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">प्रकृतिक खोज गेस्टर को अक्षम करना</string>
@@ -1483,16 +1498,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow अस्थायी रूप से उपलब्ध नहीं है (स्थिति कोड: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow अस्थायी रूप से उपलब्ध नहीं है</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">लूप वीडियो सक्षम करें</string>
-  <string name="morphe_loop_video_summary_on">वीडियो लूप होगा</string>
-  <string name="morphe_loop_video_summary_off">वीडियो लूप नहीं होगा</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">वीडियो लूप बटन दिखाएं</string>
-  <string name="morphe_loop_video_button_summary_on">वीडियो लूप बटन दिखाई देता है</string>
-  <string name="morphe_loop_video_button_summary_off">वीडियो लूप बटन दिखाई नहीं देता है</string>
-  <string name="morphe_loop_video_button_toast_on">वीडियो लूप चालू है</string>
-  <string name="morphe_loop_video_button_toast_off">वीडियो लूप बंद है</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">डिवाइस आयामों को स्पूफ करें</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"डिवाइस डिमेंशन स्पॉफ किया जाता है

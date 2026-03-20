@@ -136,4 +136,13 @@ Second \"item\" text"</string>
 
 टाप करें और ऑप्टिमाइज़ेशन बदलने की अनुमति दें।"</string>
   <string name="gms_core_dialog_continue_text">जारी रखें</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">बैटरी अनुकूलन संवाद</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG बैटरी अनुकूलन संवाद दिखाया गया है</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG बैटरी अनुकूलन संवाद नहीं दिखाया गया है</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"इसे अक्षम करने से MicroG बैटरी अनुकूलन प्रॉम्प्ट छिप जाएगा।
+
+यदि बैटरी अनुकूलन नहीं बदले गए हैं तो आपको निम्नलिखित अनुभव हो सकते हैं:
+• ऐप बेतरतीब ढंग से बंद हो सकता है
+• सूचनाएं काम नहीं कर सकती हैं
+• पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
 </resources>

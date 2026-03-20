@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
-  <string name="morphe_settings_about_links_licenses">Ліцензійні повідомлення</string>
+  <string name="morphe_settings_about_links_licenses">Ліцензії відкритого коду</string>
   <string name="morphe_settings_about_licenses_loading">Завантаження...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Налагодження</string>
@@ -138,4 +138,13 @@ Second \"item\" text"</string>
 
 Натисніть кнопку \"Продовжити\" та вимкніть оптимізацію."</string>
   <string name="gms_core_dialog_continue_text">Продовжити</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Діалогове вікно оптимізації батареї</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Діалогове вікно оптимізації батареї MicroG показується</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Діалогове вікно оптимізації батареї MicroG не показується</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Якщо вимкнути цю функцію, запит на оптимізацію батареї MicroG буде приховано.
+
+Якщо оптимізацію батареї не змінити, ви можете зіткнутися з такими проблемами:
+• Застосунок може випадково закриватися
+• Сповіщення можуть не працювати
+• Фонове відтворення може не працювати"</string>
 </resources>

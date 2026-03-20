@@ -136,4 +136,13 @@ Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng batery
 
 Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize."</string>
   <string name="gms_core_dialog_continue_text">Magpatuloy</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pag-uusap tungkol sa pag-optimize ng baterya</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hindi ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ang hindi pag-disable nito ay itatago ang prompt ng pag-optimize ng baterya ng MicroG.
+
+Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
+• Maaaring biglang magsara ang app
+• Maaaring hindi gumana ang mga notification
+• Maaaring hindi gumana ang background playback"</string>
 </resources>

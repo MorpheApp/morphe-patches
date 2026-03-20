@@ -475,6 +475,17 @@ Begränsningar:
 
 Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Aktivera videoslinga</string>
+  <string name="morphe_loop_video_summary_on">Slinga skapas för videon</string>
+  <string name="morphe_loop_video_summary_off">Slinga skapas inte för videon</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Visa knapp för videoslinga</string>
+  <string name="morphe_loop_video_button_summary_on">Knapp för videoslinga visas</string>
+  <string name="morphe_loop_video_button_summary_off">Knapp för videoslinga visas inte</string>
+  <string name="morphe_loop_video_button_toast_on">Videoslinga är aktiverat</string>
+  <string name="morphe_loop_video_button_toast_off">Videoslinga är inaktiverat</string>
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>
@@ -1471,16 +1482,6 @@ Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow är inte tillgängligt just nu (statuskod: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow är inte tillgängligt just nu</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Aktivera videoslinga</string>
-  <string name="morphe_loop_video_summary_on">Slinga skapas för videon</string>
-  <string name="morphe_loop_video_summary_off">Slinga skapas inte för videon</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Visa knapp för videoslinga</string>
-  <string name="morphe_loop_video_button_summary_on">Knapp för videoslinga visas</string>
-  <string name="morphe_loop_video_button_summary_off">Knapp för videoslinga visas inte</string>
-  <string name="morphe_loop_video_button_toast_on">Videoslinga är aktiverat</string>
-  <string name="morphe_loop_video_button_toast_off">Videoslinga är inaktiverat</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Förfalska enhetens mått</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Enhetens mått förfalskas

@@ -474,6 +474,21 @@ Teorainneacha:
 
 Fíoraigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"</string>
   <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
+  <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
+  <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
+  <string name="morphe_loop_video_button_summary_on">Taispeántar roghchlár físe lúb</string>
+  <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
+  <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
+  <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Taispeáin an cnaipín athlúnaigh físe</string>
+  <string name="morphe_reload_video_summary_on">Taispeántar an cnaipín athlúnaigh físe</string>
+  <string name="morphe_reload_video_summary_off">Ní thaispeántar an cnaipín athlúnaigh físe</string>
+  <string name="morphe_dismiss_player_not_available_toast">Tá roghchlár ID físe nach bhfuil ar fáil. Léime an físe arís go láimhe, le do thoil.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh gotha ​​cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tá gotha ​​cuardaigh chruinn díchumasaithe</string>
@@ -1487,16 +1502,6 @@ Brúigh anseo chun tuilleadh eolais a fháil faoi DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">Níl DeArrow ar fáil go sealadach (cód stádais: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">Níl DeArrow ar fáil go sealadach</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
-  <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
-  <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
-  <string name="morphe_loop_video_button_summary_on">Taispeántar roghchlár físe lúb</string>
-  <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
-  <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
-  <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Toisí gléas a fhalsú</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Toisí na ngléasanna falsaithe

@@ -137,4 +137,13 @@ Akun optimoinnin poistamisella ei ole kielteistä vaikutusta akun kestoon.
 
 Napauta Jatka-painiketta ja salli muutokset optimointiin."</string>
   <string name="gms_core_dialog_continue_text">Jatka</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Akun optimointi -dialogi</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG:n akun optimointi -dialogi näytetään</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG:n akun optimointi -dialogi ei näytetä</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tämän poistaminen piilottaa MicroG:n akun optimointi -kehotteen.
+
+Jos akun optimointeja ei muuteta, voit kokea:
+• Sovellus saattaa sulkeutua satunnaisesti
+• Ilmoitukset eivät välttämättä toimi
+• Taustalla toistaminen ei välttämättä toimi"</string>
 </resources>

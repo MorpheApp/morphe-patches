@@ -40,7 +40,31 @@ Second \"item\" text"</string>
   <string name="morphe_hide_recently_visited_shelf_summary">Yan Cizgidə Son Daxil Olunan Səhifə Gizlədilir</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Reddit səhifəsində Oyunları gizlət</string>
   <string name="morphe_hide_games_on_reddit_shelf_summary">Reddit səhifəsindəki Oyunlar yan cizgidə gizlədilir</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro səhifəsin gizlət</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Reddit Pro səhifəsi yan cizgidə gizlədilir</string>
+  <string name="morphe_hide_about_shelf_title">Haqqında səhifəsin gizlət</string>
+  <string name="morphe_hide_about_shelf_summary">Yan cizgidə Haqqında səhifəsi gizlədilir</string>
+  <string name="morphe_hide_resources_shelf_title">Mənbələr səhifəsin gizlət</string>
+  <string name="morphe_hide_resources_shelf_summary">Yan cizgidə Mənbələr səhifəsi gizlədilir</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Tövsiyə olunan icmaları gizlət</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Tövsiyə olunan icma səhifələri subreddit-lərdə gizlədilir</string>
+  <string name="morphe_hide_trending_today_shelf_title">Bu gün trenddə olan cərgəsin gizlət</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Bu gün trenddə olan səhifəsi axtarış təkliflərindən gizlədilir
+
+Məhdudiyyət: Vizual boşluqlar gizlədilməyə bilər"</string>
+  <string name="morphe_remove_notification_dialog_title">Bildiriş təklifi dialoqunu sil</string>
+  <string name="morphe_remove_notification_dialog_summary">Subreddit-ə daxil olanda görünən bildiriş təklifi dialoqunu birbaşa imtina edərək silir</string>
+  <string name="morphe_show_view_count_title">Baxış sayını göstər</string>
+  <string name="morphe_show_view_count_summary">"Elanların baxış sayı görünür
+
+Məhdudiyyət: Yalnız API cavabı baxış sayını daxil edərsə görünür"</string>
+  <string name="morphe_remove_nsfw_dialog_title">NSFW xəbərdarlıq dialoqunu sil</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Subreddit-ə daxil olanda görünən NSFW xəbərdarlıq dialoqu birbaşa qəbul edilərək silinir</string>
   <string name="morphe_screen_miscellaneous_title">Çoxvariantlı</string>
   <string name="morphe_about_title">Haqqında</string>
+  <string name="morphe_about_summary">Yamaq versiyası və xidməti bağlantılar</string>
   <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
+  <string name="morphe_sanitize_sharing_links_summary">İzlənmə sorğusu faktorların silməklə paylaşma bağlantıların təmizləyir</string>
+  <string name="morphe_open_links_directly_title">Keçidləri birbaşa açın</string>
+  <string name="morphe_open_links_directly_summary">Xarici keçidlərdə yönləndirmə URL-lərindən yan keçir</string>
 </resources>

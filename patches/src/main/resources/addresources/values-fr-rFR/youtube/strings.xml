@@ -485,6 +485,21 @@ Limitations :
 
 Vérifiez que le nom du package est correct et que l’application est bien installée."</string>
   <string name="morphe_external_downloader_empty_warning">Le nom du package ne peut pas être vide</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Activer la lecture en boucle</string>
+  <string name="morphe_loop_video_summary_on">La vidéo sera lue en boucle</string>
+  <string name="morphe_loop_video_summary_off">La vidéo ne sera pas lue en boucle</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Afficher un bouton \'Lecture en boucle\'</string>
+  <string name="morphe_loop_video_button_summary_on">Le bouton \'Lecture en boucle\' est affiché</string>
+  <string name="morphe_loop_video_button_summary_off">Le bouton \'Lecture en boucle\' n\'est pas affiché</string>
+  <string name="morphe_loop_video_button_toast_on">La lecture en boucle est activée</string>
+  <string name="morphe_loop_video_button_toast_off">La lecture en boucle est désactivée</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Afficher un bouton \'Recharger la vidéo\'</string>
+  <string name="morphe_reload_video_summary_on">Le bouton \'Recharger la vidéo\' est affiché</string>
+  <string name="morphe_reload_video_summary_off">Le bouton \'Recharger la vidéo\' n\'est pas affiché</string>
+  <string name="morphe_dismiss_player_not_available_toast">L\'identifiant de la vidéo est indisponible. Veuillez rouvrir la vidéo manuellement</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Désactiver le geste de barre de progression précise</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Le geste est désactivé</string>
@@ -1498,16 +1513,6 @@ Appuyez ici pour en savoir plus sur DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow est temporairement indisponible (statut : %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow est temporairement indisponible</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Activer la lecture en boucle</string>
-  <string name="morphe_loop_video_summary_on">La vidéo sera lue en boucle</string>
-  <string name="morphe_loop_video_summary_off">La vidéo ne sera pas lue en boucle</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Afficher un bouton \'Lecture en boucle\'</string>
-  <string name="morphe_loop_video_button_summary_on">Le bouton \'Lecture en boucle\' est affiché</string>
-  <string name="morphe_loop_video_button_summary_off">Le bouton \'Lecture en boucle\' n\'est pas affiché</string>
-  <string name="morphe_loop_video_button_toast_on">La lecture en boucle est activée</string>
-  <string name="morphe_loop_video_button_toast_off">La lecture en boucle est désactivée</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsifier les dimensions de l\'appareil</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimensions de l’appareil falsifiées

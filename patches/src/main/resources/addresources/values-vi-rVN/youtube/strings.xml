@@ -484,6 +484,21 @@ Hạn chế:
 
 Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được cài trên thiết bị"</string>
   <string name="morphe_external_downloader_empty_warning">Tên gói không được để trống</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Bật video lặp lại</string>
+  <string name="morphe_loop_video_summary_on">Video sẽ lặp lại</string>
+  <string name="morphe_loop_video_summary_off">Video sẽ không lặp lại</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Hiện nút lặp lại video</string>
+  <string name="morphe_loop_video_button_summary_on">Nút cho video lặp lại đã được hiển thị</string>
+  <string name="morphe_loop_video_button_summary_off">Nút cho video lặp lại không được hiển thị</string>
+  <string name="morphe_loop_video_button_toast_on">Lặp lại video đang bật</string>
+  <string name="morphe_loop_video_button_toast_off">Lặp lại video đang tắt</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Hiện nút tải lại video</string>
+  <string name="morphe_reload_video_summary_on">Nút tải lại video đã được hiển thị</string>
+  <string name="morphe_reload_video_summary_off">Nút tải lại video không được hiển thị</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID video không khả dụng. Vui lòng tự mở lại video.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tắt cử chỉ tua chính xác</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Cử chỉ đã tắt</string>
@@ -1496,16 +1511,6 @@ Bấm vào đây để tìm hiểu thêm về DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow tạm thời không khả dụng (mã trạng thái: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow tạm thời không khả dụng</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Bật video lặp lại</string>
-  <string name="morphe_loop_video_summary_on">Video sẽ lặp lại</string>
-  <string name="morphe_loop_video_summary_off">Video sẽ không lặp lại</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Hiện nút lặp lại video</string>
-  <string name="morphe_loop_video_button_summary_on">Nút cho video lặp lại đã được hiển thị</string>
-  <string name="morphe_loop_video_button_summary_off">Nút cho video lặp lại không được hiển thị</string>
-  <string name="morphe_loop_video_button_toast_on">Lặp lại video đang bật</string>
-  <string name="morphe_loop_video_button_toast_off">Lặp lại video đang tắt</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Giả mạo kích thước thiết bị</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Kích thước thiết bị đã được giả mạo

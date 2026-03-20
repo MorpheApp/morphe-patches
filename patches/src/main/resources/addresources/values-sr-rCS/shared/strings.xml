@@ -137,4 +137,13 @@ Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potro
 
 Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Приказан је дијалог о оптимизацији батерије за MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије за MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеослабљивање ове опције ће скрити промпт за оптимизацију батерије за MicroG.
+
+Ако се оптимизације батерије не промене, могуће је да искусите:
+• Апликација може насумично да се затвори
+• Обавештења можда неће радити
+• Позадинска репродукција можда неће радити"</string>
 </resources>

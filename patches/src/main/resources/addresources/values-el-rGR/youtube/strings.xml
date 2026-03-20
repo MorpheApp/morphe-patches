@@ -475,6 +475,21 @@ Second \"item\" text"</string>
 
 Επιβεβαιώστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
   <string name="morphe_external_downloader_empty_warning">Το όνομα πακέτου δεν μπορεί να είναι κενό</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Αυτόματη επανάληψη βίντεο</string>
+  <string name="morphe_loop_video_summary_on">Το βίντεο θα αναπαράγεται σε επανάληψη</string>
+  <string name="morphe_loop_video_summary_off">Το βίντεο δεν θα επαναληφθεί</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Εμφάνιση κουμπιού επανάληψης βίντεο</string>
+  <string name="morphe_loop_video_button_summary_on">Εμφανίζεται</string>
+  <string name="morphe_loop_video_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_loop_video_button_toast_on">Η επανάληψη βίντεο είναι ενεργοποιημένη</string>
+  <string name="morphe_loop_video_button_toast_off">Η επανάληψη βίντεο είναι απενεργοποιημένη</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Εμφάνιση κουμπιού επανεξέτασης βίντεο</string>
+  <string name="morphe_reload_video_summary_on">Εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
+  <string name="morphe_reload_video_summary_off">Δεν εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
+  <string name="morphe_dismiss_player_not_available_toast">Το αναγνωριστικό βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανοίξτε ξανά το βίντεο χειροκίνητα.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Η χειρονομία αναζήτησης καρέ-καρέ είναι απενεργοποιημένη</string>
@@ -1486,16 +1501,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow προσωρινά μη διαθέσιμο (κωδικός: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow προσωρινά μη διαθέσιμο</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Αυτόματη επανάληψη βίντεο</string>
-  <string name="morphe_loop_video_summary_on">Το βίντεο θα αναπαράγεται σε επανάληψη</string>
-  <string name="morphe_loop_video_summary_off">Το βίντεο δεν θα επαναληφθεί</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Εμφάνιση κουμπιού επανάληψης βίντεο</string>
-  <string name="morphe_loop_video_button_summary_on">Εμφανίζεται</string>
-  <string name="morphe_loop_video_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_loop_video_button_toast_on">Η επανάληψη βίντεο είναι ενεργοποιημένη</string>
-  <string name="morphe_loop_video_button_toast_off">Η επανάληψη βίντεο είναι απενεργοποιημένη</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Παραποίηση διαστάσεων συσκευής</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Οι διαστάσεις συσκευής παραποιούνται

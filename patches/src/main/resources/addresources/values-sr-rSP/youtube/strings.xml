@@ -473,6 +473,21 @@ Promene uključuju:
 
 Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Назив пакета не може бити празан</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Омогући понављање видеа</string>
+  <string name="morphe_loop_video_summary_on">Видео ће се понављати</string>
+  <string name="morphe_loop_video_summary_off">Видео се неће понављати</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Прикажи дугме за понављање видеа</string>
+  <string name="morphe_loop_video_button_summary_on">Дугме „Понављај видео” је приказано</string>
+  <string name="morphe_loop_video_button_summary_off">Дугме „Понављај видео” није приказано</string>
+  <string name="morphe_loop_video_button_toast_on">Понављање видеа је укључено</string>
+  <string name="morphe_loop_video_button_toast_off">Понављање видеа је искључено</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Покажи дугме за поновно приказивање видеа</string>
+  <string name="morphe_reload_video_summary_on">Дугме за поновно приказивање видеа је приказано</string>
+  <string name="morphe_reload_video_summary_off">Дугме за поновно приказивање видеа није приказано</string>
+  <string name="morphe_dismiss_player_not_available_toast">ИД видеа је недоступан. Молимо ручно поново отворите видео.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Онемогући покрет прецизног премотавања</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Покрет прецизног премотавања је онемогућен</string>
@@ -1486,16 +1501,6 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow привремено није доступан (кôд статуса: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow привремено није доступан</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Омогући понављање видеа</string>
-  <string name="morphe_loop_video_summary_on">Видео ће се понављати</string>
-  <string name="morphe_loop_video_summary_off">Видео се неће понављати</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Прикажи дугме за понављање видеа</string>
-  <string name="morphe_loop_video_button_summary_on">Дугме „Понављај видео” је приказано</string>
-  <string name="morphe_loop_video_button_summary_off">Дугме „Понављај видео” није приказано</string>
-  <string name="morphe_loop_video_button_toast_on">Понављање видеа је укључено</string>
-  <string name="morphe_loop_video_button_toast_off">Понављање видеа је искључено</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Лажиране димензије уређаја</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Димензије уређаја су лажиране

@@ -477,6 +477,21 @@ Sînorgertî:
 
 Doza navê pakkê rast be û sepan serdest be"</string>
   <string name="morphe_external_downloader_empty_warning">Navê pakkê nikare vala be</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Çalak bikin loop vîdyoyê</string>
+  <string name="morphe_loop_video_summary_on">Vîdyoyê dê loop bibe</string>
+  <string name="morphe_loop_video_summary_off">Vîdyoyê dê loop nebe</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Nîşandin butona loop vîdyoyê</string>
+  <string name="morphe_loop_video_button_summary_on">Butona pêlîstina vîdyoyê dest pê dike</string>
+  <string name="morphe_loop_video_button_summary_off">Butona pêlîstina vîdyoyê nêşerin</string>
+  <string name="morphe_loop_video_button_toast_on">Loop vîdyoyê ye ser</string>
+  <string name="morphe_loop_video_button_toast_off">Loop vîdyoyê ye xwer</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Sergî rewşa videoê paşê vebike</string>
+  <string name="morphe_reload_video_summary_on">Sergûşê rewşa videoê destûr e</string>
+  <string name="morphe_reload_video_summary_off">Sergûşê rewşa videoê qedexe ye</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID-ya video-yê neberdayî ye. Ji kerema xwe video-yê bi destan vezire.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tiliyê rovnêr a lêkirinê qut bikin</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tiliyê rovnêr a lêkirinê qut kirî ye</string>
@@ -1483,16 +1498,6 @@ Li vir bitapîre ji bo bêtir hêsanîyê li ser DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow niha neyê (koda statû: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow niha neyê</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Çalak bikin loop vîdyoyê</string>
-  <string name="morphe_loop_video_summary_on">Vîdyoyê dê loop bibe</string>
-  <string name="morphe_loop_video_summary_off">Vîdyoyê dê loop nebe</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Nîşandin butona loop vîdyoyê</string>
-  <string name="morphe_loop_video_button_summary_on">Butona pêlîstina vîdyoyê dest pê dike</string>
-  <string name="morphe_loop_video_button_summary_off">Butona pêlîstina vîdyoyê nêşerin</string>
-  <string name="morphe_loop_video_button_toast_on">Loop vîdyoyê ye ser</string>
-  <string name="morphe_loop_video_button_toast_off">Loop vîdyoyê ye xwer</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Çalak bikin dimensiyonên alavê</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Pêşdizima alavê tê qelsekirin

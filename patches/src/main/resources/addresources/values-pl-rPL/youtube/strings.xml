@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">O aplikacji</string>
+  <string name="morphe_settings_screen_00_about_title">Informacje</string>
   <string name="morphe_settings_screen_01_ads_title">Reklamy</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternatywne miniaturki</string>
   <string name="morphe_settings_screen_03_feed_title">Strona główna</string>
@@ -138,7 +138,7 @@ Zmiany obejmują:
   <string name="morphe_hide_video_recommendation_labels_title">Etykiety z rekomendacjami filmów</string>
   <string name="morphe_hide_video_recommendation_labels_summary_on">Ukryte są etykiety \"Ludzie też oglądali\" i \"Może Ci się spodobać\" w wynikach wyszukiwania</string>
   <string name="morphe_hide_video_recommendation_labels_summary_off">Widoczne są etykiety \"Ludzie też oglądali\" i \"Może Ci się spodobać\" w wynikach wyszukiwania</string>
-  <string name="morphe_hide_web_search_results_title">Wyniki wyszukiwania stron internetowych</string>
+  <string name="morphe_hide_web_search_results_title">Wyniki wyszukiwania z sieci</string>
   <string name="morphe_hide_web_search_results_summary_on">Ukryte</string>
   <string name="morphe_hide_web_search_results_summary_off">Widoczne</string>
   <string name="morphe_hide_you_may_like_section_title">Sekcja \"Może Cię zainteresować\"</string>
@@ -485,6 +485,21 @@ Ograniczenia:
 
 Sprawdź, czy nazwa pakietu jest prawidłowa i czy aplikacja jest zainstalowana"</string>
   <string name="morphe_external_downloader_empty_warning">Nazwa pakietu nie może być pusta</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Zapętlanie filmu</string>
+  <string name="morphe_loop_video_summary_on">Włączone</string>
+  <string name="morphe_loop_video_summary_off">Wyłączone</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Przycisk Odtwarzaj w pętli</string>
+  <string name="morphe_loop_video_button_summary_on">Widoczny</string>
+  <string name="morphe_loop_video_button_summary_off">Ukryty</string>
+  <string name="morphe_loop_video_button_toast_on">Zapętlanie filmu jest włączone</string>
+  <string name="morphe_loop_video_button_toast_off">Zapętlanie filmu jest wyłączone</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Przycisk odświeżenia filmu</string>
+  <string name="morphe_reload_video_summary_on">Widoczny</string>
+  <string name="morphe_reload_video_summary_off">Ukryty</string>
+  <string name="morphe_dismiss_player_not_available_toast">Identyfikator filmu jest niedostępny. Otwórz film ponownie ręcznie.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Gest precyzyjnego przewijania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Wyłączony</string>
@@ -788,7 +803,7 @@ Przytrzymaj, aby otworzyć ustawienia Morphe"</string>
           'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ukryte
 
-Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmu\" na \"Android Reel\" lub \"TV\""</string>
+Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Oszukuj strumienie filmów\" na \"Android Reel\" lub \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Menu oglądania w VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Ukryte</string>
@@ -1162,25 +1177,25 @@ Ograniczenie: Liczba łapek w dół może nie być widoczna w trybie incognito"<
 Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Nie pokazuj ponownie</string>
   <string name="morphe_sb_diff_segments">Zmień sposoby pomijania segmentów</string>
-  <string name="morphe_sb_segments_sponsor">Treści Sponsorowane</string>
+  <string name="morphe_sb_segments_sponsor">Treści sponsorowane</string>
   <string name="morphe_sb_segments_sponsor_sum">Płatna promocja, płatne rekomendacje oraz bezpośrednie reklamy. Nie do autoreklam ani darmowych wyrazów uznania dla idei / twórców / stron / produktów, które im się podobają</string>
   <string name="morphe_sb_segments_selfpromo">Nieopłacona / Autoreklama</string>
   <string name="morphe_sb_segments_selfpromo_sum">Podobne do treści sponsorowanych, z wyjątkiem nieopłaconych lub autoreklam. Obejmuje to sekcje o własnych towarach, darowiznach czy informacjach o tym, z kim współpracowali</string>
   <string name="morphe_sb_segments_interaction">Przypomnienie o interakcji (Subskrybuj)</string>
-  <string name="morphe_sb_segments_interaction_sum">Krótkie przypomnienie o łapce w górę, subskrypcji lub obserwowaniu. Jeśli trwa długo lub dotyczy czegoś konkretnego, powinno być oznaczone jako autoreklama</string>
+  <string name="morphe_sb_segments_interaction_sum">Krótkie przypomnienie o polubieniu, subskrypcji lub obserwowaniu. Dłuższe wstawki o konkretnej tematyce są klasyfikowane jako autopromocja</string>
   <string name="morphe_sb_segments_highlight">Najważniejsza część</string>
   <string name="morphe_sb_segments_highlight_sum">Część filmu, która interesuje większość osób</string>
-  <string name="morphe_sb_segments_intro">Przerywnik / Animowane Intro</string>
+  <string name="morphe_sb_segments_intro">Przerywnik / Animowane intro</string>
   <string name="morphe_sb_segments_intro_sum">Fragment bez faktycznej treści. Może to być pauza, statyczna klatka lub powtarzająca się animacja. Nie dotyczy przejść zawierających informacje</string>
-  <string name="morphe_sb_segments_outro">Karty / Napisy Końcowe</string>
-  <string name="morphe_sb_segments_outro_sum">Napisy końcowe lub gdy pojawia się ekran końcowy. Nie dotyczy zakończeń zawierających informacje</string>
-  <string name="morphe_sb_segments_hook">Haczyk / Pozdrowienia</string>
-  <string name="morphe_sb_segments_hook_sum">Narracyjne zwiastuny nadchodzącego filmu, pozdrowienia i pożegnania. Nie obejmuje sekcji zawierających dodatkową treść</string>
+  <string name="morphe_sb_segments_outro">Karty / Napisy końcowe</string>
+  <string name="morphe_sb_segments_outro_sum">Napisy końcowe lub moment pojawienia się kart końcowych. Nie dotyczy merytorycznego podsumowania filmu</string>
+  <string name="morphe_sb_segments_hook">Wstęp / Przywitanie</string>
+  <string name="morphe_sb_segments_hook_sum">Zapowiedzi nadchodzącego filmu, przywitania i pożegnania. Nie obejmuje sekcji zawierających dodatkową treść</string>
   <string name="morphe_sb_segments_preview">Zapowiedź / Podsumowanie</string>
   <string name="morphe_sb_segments_preview_sum">Zbiór klipów pokazujących to, co pojawi się lub co pojawiło się w tym filmie, oraz innych filmach z tej serii, w którym wszystkie informacje są gdzieś powtarzane</string>
   <string name="morphe_sb_segments_filler">Wypełniacz / Żarty</string>
-  <string name="morphe_sb_segments_filler_sum">Segmenty nietematyczne dodawane tylko dla wypełnienia lub humor, który nie jest wymagany do zrozumienia głównej treści filmu. Nie dotyczy segmentów zawierających informacje kontekstowe lub szczegółowe</string>
-  <string name="morphe_sb_segments_nomusic">Muzyka: Sekcja Bez Muzyki</string>
+  <string name="morphe_sb_segments_filler_sum">Poboczne sceny lub żarty, które nie są wymagane do zrozumienia głównej treści filmu. Nie dotyczy segmentów zawierających kontekst lub tło wydarzeń</string>
+  <string name="morphe_sb_segments_nomusic">Muzyka: Sekcja bez muzyki</string>
   <string name="morphe_sb_segments_nomusic_sum">Do użytku jedynie w teledyskach. Sekcje teledysków, które nie są uwzględnione w innej kategorii</string>
   <string name="morphe_sb_skip_button_compact">Pomiń</string>
   <string name="morphe_sb_skip_button_compact_highlight">Najważniejsza część</string>
@@ -1188,11 +1203,11 @@ Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."
   <string name="morphe_sb_skip_button_selfpromo">Pomiń autoreklamę</string>
   <string name="morphe_sb_skip_button_interaction">Pomiń przypomnienie o interakcji</string>
   <string name="morphe_sb_skip_button_highlight">Pomiń do najważniejszej części</string>
-  <string name="morphe_sb_skip_button_intro_beginning">Pomiń wstęp</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Pomiń intro</string>
   <string name="morphe_sb_skip_button_intro_middle">Pomiń przerywnik</string>
   <string name="morphe_sb_skip_button_intro_end">Pomiń przerywnik</string>
   <string name="morphe_sb_skip_button_outro">Pomiń zakończenie</string>
-  <string name="morphe_sb_skip_button_hook">Pomiń haczyk</string>
+  <string name="morphe_sb_skip_button_hook">Pomiń wstęp</string>
   <string name="morphe_sb_skip_button_preview_beginning">Pomiń zapowiedź</string>
   <string name="morphe_sb_skip_button_preview_middle">Pomiń zapowiedź</string>
   <string name="morphe_sb_skip_button_preview_end">Pomiń podsumowanie</string>
@@ -1203,11 +1218,11 @@ Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."
   <string name="morphe_sb_skipped_selfpromo">Pominięto autoreklamę</string>
   <string name="morphe_sb_skipped_interaction">Pominięto irytujące przypomnienie</string>
   <string name="morphe_sb_skipped_highlight">Pominięto do najważniejszej części</string>
-  <string name="morphe_sb_skipped_intro_beginning">Pominięto wstęp</string>
+  <string name="morphe_sb_skipped_intro_beginning">Pominięto intro</string>
   <string name="morphe_sb_skipped_intro_middle">Pominięto przerywnik</string>
   <string name="morphe_sb_skipped_intro_end">Pominięto przerywnik</string>
   <string name="morphe_sb_skipped_outro">Pominięto zakończenie</string>
-  <string name="morphe_sb_skipped_hook">Pominięto haczyk</string>
+  <string name="morphe_sb_skipped_hook">Pominięto wstęp</string>
   <string name="morphe_sb_skipped_preview_beginning">Pominięto zapowiedź</string>
   <string name="morphe_sb_skipped_preview_middle">Pominięto zapowiedź</string>
   <string name="morphe_sb_skipped_preview_end">Pominięto podsumowanie</string>
@@ -1215,8 +1230,8 @@ Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."
   <string name="morphe_sb_skipped_nomusic">Pominięto fragment bez muzyki</string>
   <string name="morphe_sb_skipped_unsubmitted">Pominięto niewysłany segment</string>
   <string name="morphe_sb_skipped_multiple_segments">Pominięto kilka segmentów</string>
-  <string name="morphe_sb_skip_automatically">Pomiń automatycznie</string>
-  <string name="morphe_sb_skip_automatically_once">Pomiń automatycznie jeden raz</string>
+  <string name="morphe_sb_skip_automatically">Pomijaj automatycznie</string>
+  <string name="morphe_sb_skip_automatically_once">Pomiń automatycznie raz</string>
   <string name="morphe_sb_skip_showbutton">Pokaż przycisk Pomiń</string>
   <string name="morphe_sb_skip_seekbaronly">Pokazuj w pasku postępu filmu</string>
   <string name="morphe_sb_skip_ignore">Wyłącz</string>
@@ -1290,7 +1305,7 @@ Gotowy do przesłania?"</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekund</string>
   <string name="morphe_sb_color_opacity_label">Przezroczystość:</string>
   <string name="morphe_sb_color_dot_label">Kolor:</string>
-  <string name="morphe_sb_about_title">O integracji</string>
+  <string name="morphe_sb_about_title">Informacje</string>
   <string name="morphe_sb_about_api_summary">Dane są dostarczane przez API SponsorBlock. Stuknij tutaj, aby dowiedzieć się więcej i pobrać na inne platformy</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Współczynnik kształtu układu aplikacji</string>
@@ -1486,11 +1501,11 @@ Stuknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Punkt końcowy API DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">Adres URL punktu końcowego do miniaturek DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Miniaturki przechwycone z filmu</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">Miniaturki przechwytywane z filmu są brane z początku, środka lub końca filmu. Obrazy te są wbudowane w YouTube, więc żadne zewnętrzne API nie jest używane</string>
-  <string name="morphe_alt_thumbnail_stills_fast_title">Szybkie przechwytywanie miniaturek z filmu</string>
-  <string name="morphe_alt_thumbnail_stills_fast_summary_on">Używasz przechwytywania średniej jakości. Miniaturki będą ładować się szybciej, lecz mogą pozostać puste w przypadku transmisji na żywo, niewydanych i bardzo starych filmów</string>
-  <string name="morphe_alt_thumbnail_stills_fast_summary_off">Używasz przechwytywania wysokiej jakości</string>
-  <string name="morphe_alt_thumbnail_stills_time_title">Czas, z którego ma być przechwycona miniaturka z filmu</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Statyczne miniaturki są pobierane z początku, środka lub końca każdego filmu. Obrazy te są wbudowane w YouTube i nie korzystają z zewnętrznych API</string>
+  <string name="morphe_alt_thumbnail_stills_fast_title">Szybkie przechwytywanie miniaturek</string>
+  <string name="morphe_alt_thumbnail_stills_fast_summary_on">Używanie miniaturek średniej jakości. Miniaturki będą ładować się szybciej, ale transmisje na żywo, nieopublikowane lub bardzo stare filmy mogą wyświetlać puste miniaturki</string>
+  <string name="morphe_alt_thumbnail_stills_fast_summary_off">Używanie miniaturek wysokiej jakości</string>
+  <string name="morphe_alt_thumbnail_stills_time_title">Czas filmu, z którego pobierane są miniaturki</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_1">Początek filmu</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_2">Środek filmu</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_3">Koniec filmu</string>
@@ -1498,16 +1513,6 @@ Stuknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow jest tymczasowo niedostępny (kod statusu: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow jest tymczasowo niedostępny</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Zapętlanie filmu</string>
-  <string name="morphe_loop_video_summary_on">Włączone</string>
-  <string name="morphe_loop_video_summary_off">Wyłączone</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Przycisk Odtwarzaj w pętli</string>
-  <string name="morphe_loop_video_button_summary_on">Widoczny</string>
-  <string name="morphe_loop_video_button_summary_off">Ukryty</string>
-  <string name="morphe_loop_video_button_toast_on">Włączone jest zapętlanie filmu</string>
-  <string name="morphe_loop_video_button_toast_off">Wyłączone jest zapętlanie filmu</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Oszukaj rozdzielczość urządzenia</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Rozdzielczość urządzenia jest oszukiwana
@@ -1515,7 +1520,7 @@ Stuknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
 Wyższe jakości wideo mogą zostać odblokowane, ale możesz doświadczyć zacinania się obrazu, krótszego czasu pracy na baterii oraz nieznanych skutków ubocznych"</string>
   <string name="morphe_spoof_device_dimensions_summary_off">"Rozdzielczość urządzenia nie jest oszukiwana
 
-Włączenie tej opcji może odblokować wyższe jakości wideo"</string>
+Włączenie tej opcji może odblokować wyższe jakości filmów"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Włączenie tego może spowodować zacinanie się obrazu, szybsze zużycie baterii oraz inne nieprzewidziane skutki uboczne.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Wibracje</string>
@@ -1606,14 +1611,14 @@ Wartość 0 wyłącza funkcję"</string>
   <string name="morphe_force_avc_codec_summary_on">Wymuszony</string>
   <string name="morphe_force_avc_codec_summary_off">Określony automatycznie</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Korzyści:
-• Może poprawić żywotność baterii
+• Może wydłużyć czas pracy na baterii
 • Może przywrócić brakujące rozdzielczości filmów na starszych urządzeniach
 
 Ograniczenia:
 • Maksymalna rozdzielczość to 1080p
-• Odtwarzanie filmów będzie zużywać więcej danych internetowych niż VP9 lub AV1
-• Filmy HDR nie będą używać AVC
-• Niektóre urządzenia nie mogą wymusić użycia AVC"</string>
+• Odtwarzanie filmów zużyje więcej danych internetowych niż VP9 lub AV1
+• Filmy HDR nie będą korzystać z AVC
+• Niektóre urządzenia nie pozwalają na wymuszenie AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Zaawansowane menu jakości filmu</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Widoczne</string>
@@ -1634,7 +1639,7 @@ Odtwarzanie może się zacinać lub gubić klatki"</string>
   <string name="morphe_spoof_video_streams_av1_summary_off">Kodek filmu to AVC (H.264) lub VP9</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tego ustawienia może używać programowego dekodowania AV1.
 
-Odtwarzanie wideo z AV1 może powodować zacinanie się lub gubienie klatek."</string>
+Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie klatek."</string>
   <string name="morphe_spoof_video_streams_about_title">Skutki uboczne oszukiwania</string>
   <string name="morphe_spoof_video_streams_about_experimental">• Jest to eksperymentalny klient i może przestać działać w każdej chwili</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Film może zatrzymać się po pierwszej minucie lub może być niedostępny w niektórych regionach</string>

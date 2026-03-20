@@ -138,4 +138,13 @@ Second \"item\" text"</string>
 
 Нажмите кнопку \"Продолжить\" и разрешите изменения оптимизации."</string>
   <string name="gms_core_dialog_continue_text">Продолжить</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Диалоговое окно оптимизации батареи</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Диалоговое окно оптимизации батареи MicroG показано</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Диалоговое окно оптимизации батареи MicroG скрыто</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Выключение этой функции скроет запрос оптимизации батареи MicroG.
+
+Если оптимизацию батареи не изменить, вы можете столкнуться с такими проблемами:
+• Приложение может случайно закрываться
+• Уведомления могут не работать
+• Фоновое воспроизведение может не работать"</string>
 </resources>

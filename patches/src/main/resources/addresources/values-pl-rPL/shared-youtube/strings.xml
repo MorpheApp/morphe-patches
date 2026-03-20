@@ -44,20 +44,20 @@ Jeśli chcesz najbardziej stabilną wersję, to &lt;b&gt;odinstaluj&lt;/b&gt; t�
   <string name="morphe_check_watch_history_domain_name_dialog_message">Twoja historia oglądania nie jest zapisywana.&lt;br&gt;&lt;br&gt;Najprawdopodobniej jest to spowodowane blokadą reklam DNS lub przez serwer proxy.&lt;br&gt;&lt;br&gt;Aby to naprawić, dodaj do białej listy&lt;b&gt;s.youtube.com&lt;/b&gt; lub wyłącz wszystkie blokady DNS i proxy.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nie pokazuj ponownie</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">Oszukuj strumienie filmu</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Oszukuje strumień filmu klienta, aby zapobiec problemom z odtwarzaniem</string>
-  <string name="morphe_spoof_video_streams_title">Oszukuj strumienie filmu</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Strumienie filmu są oszukiwane
+  <string name="morphe_spoof_video_streams_screen_title">Oszukuj strumienie filmów</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Oszukuje strumień filmów klienta, aby zapobiec problemom z odtwarzaniem</string>
+  <string name="morphe_spoof_video_streams_title">Oszukuj strumienie filmów</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Strumienie filmów są oszukiwane
 
 Jeśli jesteś użytkownikiem YouTube Premium, to ustawienie może nie być wymagane"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Strumienie filmu nie są oszukiwane
+  <string name="morphe_spoof_video_streams_summary_off">"Strumienie filmów nie są oszukiwane
 
 Odtwarzanie może nie działać"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nie można przechwycić żadnego ze strumieni klienta.</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może spowodować problemy z odtwarzaniem.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Oszukuj strumienie filmu i Logowanie Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Oszukuj strumienie filmów i Logowanie Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Domyślny klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie Android VR</string>
@@ -104,8 +104,8 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 • Odtwarzanie nie powiedzie się, jeśli hash JavaScript zostanie unieważniony w GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Włączone</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashe JavaScript odtwarzacza są ważne przez około miesiąc, a nieaktualne hashe mogą zostać unieważnione przez GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript odtwarzacza</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Wprowadź poprawny hash JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Wprowadź poprawny hash JavaScript odtwarzacza</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protokół QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Wyłączony</string>
@@ -119,7 +119,7 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_force_original_audio_summary_on">Włączone</string>
   <string name="morphe_force_original_audio_summary_off">Wyłączone</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Aby użyć tej funkcji, zmień \"Oszukuj strumienie filmu\" na Android Reel lub TV</string>
+  <string name="morphe_force_original_audio_not_available">Aby użyć tej funkcji, zmień \"Oszukuj strumienie filmów\" na Android Reel lub TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Oczyść udostępniane linki</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Parametr śledzenia jest usuwany z udostępnianych linków</string>

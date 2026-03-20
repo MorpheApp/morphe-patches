@@ -137,4 +137,13 @@ Second \"item\" text"</string>
 
 點擊繼續按鈕以允許調整相關最佳化設定。"</string>
   <string name="gms_core_dialog_continue_text">繼續</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">電池最佳化對話框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">顯示 MicroG 電池最佳化對話框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">未顯示 MicroG 電池最佳化對話框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"停用此功能將隱藏 MicroG 電池最佳化提示。
+
+如果未更改電池最佳化設定，您可能會遇到：
+• 應用程式可能隨機關閉
+• 通知可能無法正常運作
+• 背景播放可能無法正常運作"</string>
 </resources>

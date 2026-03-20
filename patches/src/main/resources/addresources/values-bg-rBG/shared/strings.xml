@@ -136,4 +136,13 @@ Second \"item\" text"</string>
 
 Докоснете бутона за продължаване и разрешете промени в оптимизацията."</string>
   <string name="gms_core_dialog_continue_text">Продължи</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Диалогово прозорец за оптимизация на батерията</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Показва се диалогов прозорец за оптимизация на батерията MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Не се показва диалогов прозорец за оптимизация на батерията MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Деактивирането на това ще скрие подканата за оптимизация на батерията MicroG.
+
+Ако оптимизациите на батерията не бъдат променени, може да изпитате:
+• Приложението може случайно да се затвори
+• Известията може да не работят
+• Възпроизвеждането във фонов режим може да не работи"</string>
 </resources>

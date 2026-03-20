@@ -474,6 +474,21 @@ Limitações:
 
 Verifique se o nome do pacote está correto e se o aplicativo está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
+  <string name="morphe_loop_video_summary_on">O vídeo ficará em loop</string>
+  <string name="morphe_loop_video_summary_off">O vídeo não ficará em loop</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Mostrar botão de vídeo em loop</string>
+  <string name="morphe_loop_video_button_summary_on">Botão de repetição de vídeo é mostrado</string>
+  <string name="morphe_loop_video_button_summary_off">Botão de repetição de vídeo não é mostrado</string>
+  <string name="morphe_loop_video_button_toast_on">Vídeo em loop está ativado</string>
+  <string name="morphe_loop_video_button_toast_off">Vídeo em loop está desativado</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Mostrar botão de vídeo para recarregar</string>
+  <string name="morphe_reload_video_summary_on">Botão de vídeo para recarregar está visível</string>
+  <string name="morphe_reload_video_summary_off">Botão de vídeo para recarregar não está visível</string>
+  <string name="morphe_dismiss_player_not_available_toast">O ID do vídeo não está disponível. Por favor, abra o vídeo novamente manualmente.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desativar gesto de pesquisa precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesto está desativado </string>
@@ -1487,16 +1502,6 @@ Toque aqui para saber mais sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow não está disponível temporariamente (código de status: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow não está disponível temporariamente</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
-  <string name="morphe_loop_video_summary_on">O vídeo ficará em loop</string>
-  <string name="morphe_loop_video_summary_off">O vídeo não ficará em loop</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Mostrar botão de vídeo em loop</string>
-  <string name="morphe_loop_video_button_summary_on">Botão de repetição de vídeo é mostrado</string>
-  <string name="morphe_loop_video_button_summary_off">Botão de repetição de vídeo não é mostrado</string>
-  <string name="morphe_loop_video_button_toast_on">Vídeo em loop está ativado</string>
-  <string name="morphe_loop_video_button_toast_off">Vídeo em loop está desativado</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Dimensões do dispositivo Spoof</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimensões do dispositivo são falsificadas

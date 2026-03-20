@@ -137,4 +137,13 @@ Second \"item\" text"</string>
 
 Додирните дугму \"Настави\" и дозволите промене у оптимизацији батерије."</string>
   <string name="gms_core_dialog_continue_text">Настави</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Показан је дијалог о оптимизацији батерије MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеомагућивање ове опције спречиће појаву промпта за оптимизацију батерије MicroG.
+
+Ако се оптимизације батерије не промене, може доћи до:
+• Сталног затварања апликације
+• Неисправног рада нотификација
+• Неисправног рада музичког плејера у позадини"</string>
 </resources>

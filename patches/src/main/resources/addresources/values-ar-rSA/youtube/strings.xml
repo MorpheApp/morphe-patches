@@ -301,6 +301,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">يتم عرض زر اشتراك</string>
   <string name="morphe_comments_screen_title">التعليقات</string>
   <string name="morphe_comments_screen_summary">إخفاء أو عرض مكونات قسم التعليقات</string>
+  <string name="morphe_hide_comments_carousel_title">تمكين شريط تصفية التعليقات</string>
+  <string name="morphe_hide_comments_carousel_summary_on">تم تمكين شريط تصفية التعليقات</string>
+  <string name="morphe_hide_comments_carousel_summary_off">تم تعطيل شريط تصفية التعليقات</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"ملاحظة
+
+• تأكد من إدخال الاسم الدقيق لعنصر الشريط (مثل: طرح سؤال، تشجيع هذا الفيديو، الاستماع إلى موسيقى YouTube، الخ.).
+• قد يؤدي إخفاء عناصر الشريط إلى نتائج غير متوقعة.
+• إذا تم إخفاء جميع عناصر الشريط، فسيتم إخفاء قسم التعليقات بالكامل أيضًا."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">شريط تصفية التعليقات</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">أدخل أسماء عناصر شريط التعليقات المراد تصفيتها، بحيث يكون كل اسم في سطر منفصل</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">إخفاء ملخص محادثات الذكاء الاصطناعي</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">تم إخفاء ملخص محادثة الذكاء الاصطناعي</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">يتم عرض ملخص محادثة الذكاء الاصطناعي</string>
@@ -473,6 +483,21 @@ Second \"item\" text"</string>
 
 تأكد من أن اسم الحزمة صحيح وأن التطبيق مثبت"</string>
   <string name="morphe_external_downloader_empty_warning">لا يمكن أن يكون اسم الحزمة فارغًا</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
+  <string name="morphe_loop_video_summary_on">سيتم تكرار الفيديو</string>
+  <string name="morphe_loop_video_summary_off">لن يتم تكرار الفيديو</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">عرض زر تكرار الفيديو</string>
+  <string name="morphe_loop_video_button_summary_on">يتم عرض زر تكرار الفيديو</string>
+  <string name="morphe_loop_video_button_summary_off">لا يتم عرض زر تكرار الفيديو</string>
+  <string name="morphe_loop_video_button_toast_on">تكرار الفيديو قيد التشغيل</string>
+  <string name="morphe_loop_video_button_toast_off">تكرار الفيديو متوقف</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">عرض زر إعادة تحميل الفيديو</string>
+  <string name="morphe_reload_video_summary_on">يتم عرض زر إعادة تحميل الفيديو</string>
+  <string name="morphe_reload_video_summary_off">لا يتم عرض زر إعادة تحميل الفيديو</string>
+  <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة فتح الفيديو يدويًا.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل إيماءة التمرير الدقيقة</string>
@@ -1487,16 +1512,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow غير متوفر مؤقتًا (رمز الحالة: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow غير متوفر مؤقتًا</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
-  <string name="morphe_loop_video_summary_on">سيتم تكرار الفيديو</string>
-  <string name="morphe_loop_video_summary_off">لن يتم تكرار الفيديو</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">عرض زر تكرار الفيديو</string>
-  <string name="morphe_loop_video_button_summary_on">يتم عرض زر تكرار الفيديو</string>
-  <string name="morphe_loop_video_button_summary_off">لا يتم عرض زر تكرار الفيديو</string>
-  <string name="morphe_loop_video_button_toast_on">تكرار الفيديو قيد التشغيل</string>
-  <string name="morphe_loop_video_button_toast_off">تكرار الفيديو متوقف</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">تزوير أبعاد الجهاز</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"تم تزييف أبعاد الجهاز

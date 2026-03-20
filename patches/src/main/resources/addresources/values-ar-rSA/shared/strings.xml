@@ -138,4 +138,13 @@ Second \"item\" text"</string>
 
  انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">نافذة تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">يتم عرض رسالة MicroG تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">لا يتم عرض رسالة MicroG تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة MicroG لتحسين البطارية.
+
+إذا لم يتم تغيير تحسينات البطارية فقد تواجه:
+• قد يغلق التطبيق بشكل عشوائي
+• قد لا تعمل الإشعارات
+• قد لا يعمل التشغيل في الخلفية"</string>
 </resources>

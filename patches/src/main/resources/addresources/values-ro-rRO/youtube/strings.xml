@@ -470,6 +470,21 @@ Limitări:
 
 Verificați dacă numele pachetului este corect și dacă aplicația este instalată"</string>
   <string name="morphe_external_downloader_empty_warning">Numele pachetului nu poate fi gol</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Activează bucla video</string>
+  <string name="morphe_loop_video_summary_on">Videoclipul se va repeta în buclă</string>
+  <string name="morphe_loop_video_summary_off">Videoclipul nu se va repeta în buclă</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Afișează butonul de buclă video</string>
+  <string name="morphe_loop_video_button_summary_on">Meniu cu buclă video este afișat</string>
+  <string name="morphe_loop_video_button_summary_off">Meniu cu buclă video nu este afișat</string>
+  <string name="morphe_loop_video_button_toast_on">Bucla video este activată</string>
+  <string name="morphe_loop_video_button_toast_off">Bucla video este dezactivată</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Afișează butonul de reîncărcare video</string>
+  <string name="morphe_reload_video_summary_on">Butonul de reîncărcare video este afișat</string>
+  <string name="morphe_reload_video_summary_off">Butonul de reîncărcare video nu este afișat</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID-ul videoclipului nu este disponibil. Te rugăm să redeschizi manual videoclipul.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gestul este dezactivat</string>
@@ -1483,16 +1498,6 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow nu este disponibil temporar (cod de stare: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow nu este disponibil temporar</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Activează bucla video</string>
-  <string name="morphe_loop_video_summary_on">Videoclipul se va repeta în buclă</string>
-  <string name="morphe_loop_video_summary_off">Videoclipul nu se va repeta în buclă</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Afișează butonul de buclă video</string>
-  <string name="morphe_loop_video_button_summary_on">Meniu cu buclă video este afișat</string>
-  <string name="morphe_loop_video_button_summary_off">Meniu cu buclă video nu este afișat</string>
-  <string name="morphe_loop_video_button_toast_on">Bucla video este activată</string>
-  <string name="morphe_loop_video_button_toast_off">Bucla video este dezactivată</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoul dimensiunilor dispozitivului</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Dimensiunile dispozitivului falsificate

@@ -137,4 +137,13 @@ Deaktivering af batteryoptimeringer for MicroG vil ikke negativt påvirke batter
 
 Tryk på knappen Fortsæt og tillad optimeringsskift."</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterioptimering-dialog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG batterioptimeringsdialog vises</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG batterioptimeringsdialog vises ikke</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.
+
+Hvis batterioptimeringer ikke ændres, kan du opleve:
+• Appen kan lukke tilfældigt
+• Notifikationer virker muligvis ikke
+• Baggrundsafspilning virker muligvis ikke"</string>
 </resources>

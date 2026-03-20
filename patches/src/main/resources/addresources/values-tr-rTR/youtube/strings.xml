@@ -302,6 +302,16 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Abone ol düğmesi görünür</string>
   <string name="morphe_comments_screen_title">Yorumlar</string>
   <string name="morphe_comments_screen_summary">Yorumlar kısmı bileşenlerini gizle veya göster</string>
+  <string name="morphe_hide_comments_carousel_title">Kaydırmalı yorum filtresi aktifleştir</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Kaydırmalı yorum filtresi açık</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Kaydırmalı yorum filtresi kapalı.</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Kaydırmalı öğe adını tam olarak girdiğinizden emin olun (Örn: Ask, Hype this video, Listen on YouTube Music, vb.).
+
+• Kaydırmalı öğeleri gizlemek beklenmedik yan etkilere neden olabilir.
+
+Tüm kaydırmalı öğeler gizlenirse, yorumlar bölümünün tamamı da gizlenecektir."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kaydırmalı yorum filtresi</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Filtrelemek istediğiniz kaydırmalı yorum adlarını, her satıra bir tane gelecek şekilde girin.</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Yapay zeka sohbet özetini gizle</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Yapay zeka sohbet özeti gizli</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Yapay zeka sohbet özeti görünür</string>
@@ -474,6 +484,21 @@ Sınırlamalar
 
 Paket adının doğru olduğunu ve uygulamanın yüklü olduğunu doğrulayın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş olamaz</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
+  <string name="morphe_loop_video_summary_on">Video döngüye girecek</string>
+  <string name="morphe_loop_video_summary_off">Video döngüye girmeyecek</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Videoyu döngüye al düğmesini göster</string>
+  <string name="morphe_loop_video_button_summary_on">Videoyu döngüye al düğmesi gösterilir</string>
+  <string name="morphe_loop_video_button_summary_off">Videoyu döngüye al düğmesi gösterilmez</string>
+  <string name="morphe_loop_video_button_toast_on">Videoyu döngüye alma açık</string>
+  <string name="morphe_loop_video_button_toast_off">Videoyu döngüye alma kapalı</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Yenile video butonu göster</string>
+  <string name="morphe_reload_video_summary_on">Yenile video butonu gösteriliyor</string>
+  <string name="morphe_reload_video_summary_off">Yenile video butonu gösterilmiyor</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video kimliği kullanılamıyor. Lütfen videoyu manuel olarak yeniden açın.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Hassas sardırma hareketi devre dışı</string>
@@ -1487,16 +1512,6 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow geçici olarak kullanılamıyor (durum kodu: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow geçici olarak kullanılamıyor</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
-  <string name="morphe_loop_video_summary_on">Video döngüye girecek</string>
-  <string name="morphe_loop_video_summary_off">Video döngüye girmeyecek</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Videoyu döngüye al düğmesini göster</string>
-  <string name="morphe_loop_video_button_summary_on">Videoyu döngüye al düğmesi gösterilir</string>
-  <string name="morphe_loop_video_button_summary_off">Videoyu döngüye al düğmesi gösterilmez</string>
-  <string name="morphe_loop_video_button_toast_on">Videoyu döngüye alma açık</string>
-  <string name="morphe_loop_video_button_toast_off">Videoyu döngüye alma kapalı</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz boyutlarını taklit et</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Cihaz boyutları taklit edilir

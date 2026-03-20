@@ -137,4 +137,13 @@ Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizar
 
 Apăsați butonul Continuare și permiteți modificările de optimizare."</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog de optimizare a bateriei</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialogul de optimizare a bateriei MicroG este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialogul de optimizare a bateriei MicroG nu este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
+
+Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următoarele probleme:
+• Aplicația se poate închide aleatoriu
+• Notificările pot să nu funcționeze
+• Redarea în fundal poate să nu funcționeze"</string>
 </resources>
