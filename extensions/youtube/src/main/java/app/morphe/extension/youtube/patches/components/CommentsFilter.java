@@ -12,6 +12,9 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.Utils.getFilterStrings;
 
+import android.view.View;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 
 import java.util.List;
@@ -34,7 +37,7 @@ public class CommentsFilter extends Filter {
 
     private final StringFilterGroup comments;
     private final StringFilterGroup emojiAndTimestampButtons;
-    
+
     public CommentsFilter() {
         var chatSummary = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_AI_CHAT_SUMMARY,
@@ -193,6 +196,17 @@ public class CommentsFilter extends Filter {
         }
 
         return bytes;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCommentsInfoButton(View view) {
+        if (Settings.HIDE_COMMENTS_INFO_BUTTON.get()) {
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, 0);
+            view.setLayoutParams(lp);
+            view.setVisibility(View.GONE);
+        }
     }
 
     /**

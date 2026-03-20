@@ -153,6 +153,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
+                    SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_preview_comment"),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
                     SwitchPreference("morphe_sanitize_comments_category_bar"),
@@ -444,11 +445,27 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region hide comment page
+        // region hide comments carousel
 
         hookElement("$COMMENTS_FILTER_CLASS_NAME->onCommentsLoaded([B)[B")
 
         // endregion
+
+        // region hide comments info button
+
+        EngagementPanelInformationButtonFingerprint.let {
+            it.method.apply {
+                val checkCastIndex = it.instructionMatches[1].index
+                val viewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                addInstruction(
+                    checkCastIndex + 1,
+                    "invoke-static { v$viewRegister }, $COMMENTS_FILTER_CLASS_NAME->hideCommentsInfoButton(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        //endregion
 
         // region hide crowdfunding box
 
