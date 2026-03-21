@@ -2,21 +2,6 @@
   "version": "1.20.0",
   "patches": [
     {
-      "name": "Placeholder button exploder UI",
-      "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.google.android.youtube": [
-          "21.12.522"
-        ]
-      },
-      "options": []
-    },
-    {
       "name": "Alternative thumbnails",
       "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
       "use": true,
