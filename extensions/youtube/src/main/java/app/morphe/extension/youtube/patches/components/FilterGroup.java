@@ -197,14 +197,12 @@ class ByteArrayFilterGroup extends FilterGroup<byte[]> {
     public FilterGroupResult check(final byte[] bytes) {
         int matchedLength = 0;
         int matchedIndex = -1;
-        
         if (isEnabled()) {
             int[][] tables = skipTables;
             if (tables == null) {
-                buildSkipTables(); // Lazy load
+                buildSkipTables(); // Lazy load.
                 tables = skipTables;
             }
-            
             for (int i = 0, length = filters.length; i < length; i++) {
                 byte[] filter = filters[i];
                 matchedIndex = indexOf(bytes, filter, tables[i]);
@@ -214,7 +212,6 @@ class ByteArrayFilterGroup extends FilterGroup<byte[]> {
                 }
             }
         }
-        
         return new FilterGroupResult(setting, matchedIndex, matchedLength);
     }
 }
