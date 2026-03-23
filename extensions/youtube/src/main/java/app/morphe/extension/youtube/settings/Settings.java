@@ -19,7 +19,7 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHid
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHorizontalDragAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import static app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
-import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuItemsFilter.HideAudioFlyoutMenuAvailability;
+import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
 import static app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import static app.morphe.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
 import static app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
