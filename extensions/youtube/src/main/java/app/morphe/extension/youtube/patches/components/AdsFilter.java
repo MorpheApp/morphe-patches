@@ -176,7 +176,7 @@ public final class AdsFilter extends Filter {
         if (matchedGroup == promotionBanner) {
             if (contentIndex == 0) {
                 if (promotionBannerBuffer.check(buffer).isFiltered()) {
-                    return Settings.HIDE_DOODLES.get(); // TODO: Change to HIDE_YOUTUBE_DOODLES before merge
+                    return Settings.HIDE_YOUTUBE_DOODLES.get();
                 }
                 return Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get();
             }
