@@ -36,9 +36,6 @@ public final class AdsFilter extends Filter {
             Settings.HIDE_END_SCREEN_STORE_BANNER.get();
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
-
-    private final StringFilterGroup promotionBanner;
-    private final ByteArrayFilterGroup promotionBannerBuffer;
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
 
@@ -133,15 +130,9 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
-        promotionBanner = new StringFilterGroup(
+        final var promotionBanner = new StringFilterGroup(
                 Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
                 "statement_banner"
-        );
-
-        promotionBannerBuffer = new ByteArrayFilterGroup(
-                null,
-                "img/promos/growth/", // Link, https://www.gstatic.com/youtube/img/promos/growth/ is only used for ads.
-                "SPunlimited" // Word associated with Premium, should be unique to differentiate Doodle from ad banner.
         );
 
         final var selfSponsor = new StringFilterGroup(
@@ -172,10 +163,6 @@ public final class AdsFilter extends Filter {
                        int contentIndex) {
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
-        }
-
-        if (matchedGroup == promotionBanner) {
-            return contentIndex == 0 && promotionBannerBuffer.check(buffer).isFiltered();
         }
 
         return !exceptions.matches(path);

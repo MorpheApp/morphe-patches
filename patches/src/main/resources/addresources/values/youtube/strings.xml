@@ -151,11 +151,14 @@ Changes include:
     <string name="morphe_hide_you_may_like_section_summary_on">You may like section is hidden</string>
     <string name="morphe_hide_you_may_like_section_summary_off">You may like section is shown</string>
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-    <string name="morphe_hide_doodles_title">Hide YouTube Doodles</string>
-    <string name="morphe_hide_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
-    <string name="morphe_hide_doodles_summary_off">YouTube Doodles animation on the logo is shown</string>
-• If Hide Doodles is turned off it might break Custom Header
-    
+    <string name="morphe_hide_youtube_doodles_title">Hide YouTube Doodles</string>
+    <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
+    <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animation on the logo is shown</string>
+    <string name="morphe_hide_youtube_doodles_user_dialog_message">"Warning:
+
+• Showing YouTube Doodles may break custom header logos.
+• YouTube Doodle will be unclickable if 'Hide YouTube Premium promotions' is enabled."</string>
+
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_bar_summary_on">Channel bar is hidden</string>
     <string name="morphe_hide_channel_bar_summary_off">Channel bar is shown</string>
@@ -317,7 +320,7 @@ Changes include:
     <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
     <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
     <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
-    <string name="morphe_hide_comments_carousel_dialog_message">"Note
+    <string name="morphe_hide_comments_carousel_user_dialog_message">"Note:
 
 • Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
 • Hiding carousel items may have unintended side effects.
