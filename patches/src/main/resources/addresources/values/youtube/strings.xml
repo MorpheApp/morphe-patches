@@ -155,9 +155,8 @@ Changes include:
     <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
     <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animation on the logo is shown</string>
     <string name="morphe_hide_youtube_doodles_user_dialog_message">"Warning:
-
 • Showing YouTube Doodles may break custom header logos.
-• YouTube Doodle will be unclickable if 'Hide YouTube Premium promotions' is enabled."</string>
+• YouTube Doodles will be unclickable if 'Hide YouTube Premium promotions' is enabled."</string>
 
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_bar_summary_on">Channel bar is hidden</string>
@@ -321,7 +320,6 @@ Changes include:
     <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
     <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
     <string name="morphe_hide_comments_carousel_user_dialog_message">"Note:
-
 • Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
 • Hiding carousel items may have unintended side effects.
 • If all carousel items are hidden, the entire comments section will also be hidden."</string>
@@ -754,19 +752,18 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
     <string name="morphe_hide_navigation_bar_summary_off">Navigation bar is shown</string>
-    <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
+    <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the 'You' tab.
 
-To access Settings:
-Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferences' at the bottom."</string>
+To access Settings, enable the Settings button via General → Toolbar → 'Show Settings'."</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary_on">Spacing between navigation buttons is narrow</string>
     <string name="morphe_narrow_navigation_buttons_summary_off">Spacing between navigation buttons is normal</string>
     <string name="morphe_navigation_bar_animations_title">Enable navigation bar animations</string>
     <string name="morphe_navigation_bar_animations_summary_on">Navigation transitions are animated</string>
     <string name="morphe_navigation_bar_animations_summary_off">Navigation transitions are not animated</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable navigation bar auto-hide</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not auto-hide</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable auto-hiding navigation bar</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not hide while scrolling</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar will hide while scrolling</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
