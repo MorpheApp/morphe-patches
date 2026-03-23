@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">피드</string>
   <string name="morphe_settings_screen_04_general_title">일반</string>
   <string name="morphe_settings_screen_05_player_title">플레이어</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">재생바</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">스와이프 제스처</string>
   <string name="morphe_settings_screen_11_misc_title">기타</string>
@@ -714,6 +715,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">하단바 애니메이션 활성화하기</string>
   <string name="morphe_navigation_bar_animations_summary_on">하단바 전환 애니메이션을 활성화합니다</string>
   <string name="morphe_navigation_bar_animations_summary_off">하단바 전환 애니메이션을 비활성화합니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨김 비활성화하기</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">하단바가 자동으로 숨겨지지 않습니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">하단바가 자동으로 숨겨질 수 있습니다</string>
   <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">상태바가 불투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">상태바가 불투명하거나 반투명합니다</string>
@@ -1368,6 +1372,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">재생목록</string>
   <string name="morphe_change_start_page_entry_search">검색</string>
   <string name="morphe_change_start_page_entry_shopping">쇼핑</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">스포츠</string>
   <string name="morphe_change_start_page_entry_subscriptions">구독</string>
   <string name="morphe_change_start_page_entry_trending">인기 급상승</string>

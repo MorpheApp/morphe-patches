@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Kanál</string>
   <string name="morphe_settings_screen_04_general_title">Obecné</string>
   <string name="morphe_settings_screen_05_player_title">Přehrávač</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Lišta pro převíjení</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Ovládání gesty</string>
   <string name="morphe_settings_screen_11_misc_title">Různé</string>
@@ -717,6 +718,9 @@ Otevřete jakékoli video → Otevřete nabídku Kvality → Klepněte na 'Nasta
   <string name="morphe_navigation_bar_animations_title">Povolit animace navigační lišty</string>
   <string name="morphe_navigation_bar_animations_summary_on">Přechody navigace jsou animované</string>
   <string name="morphe_navigation_bar_animations_summary_off">Přechody navigace nejsou animované</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Vypnout automatické skrývání navigační lišty</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigační lišta se nebude automaticky skrývat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigační lišta se může automaticky skrývat</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktivovat průsvitný stavový řádek</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Stavový řádek je neprůhledný</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Stavový řádek je neprůhledný nebo průsvitný</string>
@@ -1370,6 +1374,7 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_change_start_page_entry_playlists">Přehrávací seznamy</string>
   <string name="morphe_change_start_page_entry_search">Hledat</string>
   <string name="morphe_change_start_page_entry_shopping">Nakupování</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Odběry</string>
   <string name="morphe_change_start_page_entry_trending">Trendy</string>

@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Recomendações</string>
   <string name="morphe_settings_screen_04_general_title">Geral</string>
   <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra de pesquisa</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Controlos por Gestos</string>
   <string name="morphe_settings_screen_11_misc_title">Diversos</string>
@@ -717,6 +718,9 @@ Abra qualquer vídeo → Abra o menu de qualidade → Toque em 'Configurações 
   <string name="morphe_navigation_bar_animations_title">Ativar animações da barra de navegação</string>
   <string name="morphe_navigation_bar_animations_summary_on">As transições de navegação são animadas</string>
   <string name="morphe_navigation_bar_animations_summary_off">As transições de navegação não são animadas</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Desativar ocultação automática da barra de navegação</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">A barra de navegação não será ocultada automaticamente</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A barra de navegação pode ser ocultada automaticamente</string>
   <string name="morphe_disable_translucent_status_bar_title">Desativar a barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
@@ -1370,6 +1374,7 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
   <string name="morphe_change_start_page_entry_playlists">Listas de reprodução</string>
   <string name="morphe_change_start_page_entry_search">Pesquisa</string>
   <string name="morphe_change_start_page_entry_shopping">Compras</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Desportos</string>
   <string name="morphe_change_start_page_entry_subscriptions">Inscrições</string>
   <string name="morphe_change_start_page_entry_trending">Tendências</string>

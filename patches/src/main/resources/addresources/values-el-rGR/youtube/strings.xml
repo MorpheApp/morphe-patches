@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Ροή</string>
   <string name="morphe_settings_screen_04_general_title">Γενικά</string>
   <string name="morphe_settings_screen_05_player_title">Οθόνη αναπαραγωγής</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Γραμμή προόδου</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Έλεγχος με σάρωση οθόνης</string>
   <string name="morphe_settings_screen_11_misc_title">Διάφορα</string>
@@ -717,6 +718,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">Ενεργοποίηση κινούμενων εικόνων στη γραμμή πλοήγησης</string>
   <string name="morphe_navigation_bar_animations_summary_on">Οι μεταβάσεις πλοήγησης κινούνται</string>
   <string name="morphe_navigation_bar_animations_summary_off">Οι μεταβάσεις πλοήγησης δεν κινούνται</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Απενεργοποίηση αυτόματης απόκρυψης της γραμμής πλοήγησης</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Η γραμμή πλοήγησης δεν θα αποκρύπτεται αυτόματα</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης ενδέχεται να αποκρύπτεται αυτόματα</string>
   <string name="morphe_disable_translucent_status_bar_title">Απενεργοποίηση διαφανούς γραμμής κατάστασης</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
@@ -1370,6 +1374,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">Λίστες αναπαραγωγής</string>
   <string name="morphe_change_start_page_entry_search">Αναζήτηση</string>
   <string name="morphe_change_start_page_entry_shopping">Αγορές</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Αθλητικά</string>
   <string name="morphe_change_start_page_entry_subscriptions">Εγγραφές</string>
   <string name="morphe_change_start_page_entry_trending">Τάσεις</string>

@@ -15,4 +15,54 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">Ads</string>
+  <string name="morphe_hide_post_ads_title">دابەزاندنی ڕاوەستێنانی بابەتەکان</string>
+  <string name="morphe_hide_post_ads_summary">دابەزاندنی ڕاوەستێنانی بابەتەکان لە بابەتەکاندا</string>
+  <string name="morphe_hide_comment_ads_title">دابەزاندنی ڕاوەستێنانی کۆمێنتەکان</string>
+  <string name="morphe_hide_comment_ads_summary">دابەزاندنی ڕاوەستێنانی کۆمێنتەکان لە بەشێک کۆمێنتەکاندا</string>
+  <string name="morphe_screen_layout_title">سازان</string>
+  <string name="morphe_disable_modern_home_title">خۆراکێکی نۆڤی ڕاگەخشاوە</string>
+  <string name="morphe_disable_modern_home_summary">خۆراکێکی نۆڤی ڕاگەخشاوە، UI</string>
+  <string name="morphe_disable_screenshot_popup_title">خۆراکێکی ڕەخساوییەکە ڕاگەخشاوە</string>
+  <string name="morphe_disable_screenshot_popup_summary">خۆراکێکی ڕەخساوییەکە ڕاگەخشاوە دێت کاتێک تۆ دەگرێتە ڕەسی ڕەخساو</string>
+  <string name="morphe_hide_answers_button_title">خۆراکێکی زانینی ڕاوەستێنە</string>
+  <string name="morphe_hide_answers_button_summary">ڕاوەستێنانی زانین لە بارەگای ناڤیگەیشن</string>
+  <string name="morphe_hide_chat_button_title">خۆراکێکی چا پیشاندە</string>
+  <string name="morphe_hide_chat_button_summary">ڕاوەستێنانی چا لە بارەگای ناڤیگەیشن</string>
+  <string name="morphe_hide_create_button_title">خۆراکێکی دروست بکە ڕاوەستێنە</string>
+  <string name="morphe_hide_create_button_summary">ڕاوەستێنانی دروست کردن لە بارەگای ناڤیگەیشن</string>
+  <string name="morphe_hide_discover_button_title">خۆراکێکی دەزفەرمان یان کۆمێنیتی ڕاوەستێنە</string>
+  <string name="morphe_hide_discover_button_summary">ڕاوەستێنانی دەزفەرمان یان کۆمێنیتی لە بارەگای ناڤیگەیشن</string>
+  <string name="morphe_hide_games_button_title">خۆراکێکی پێکھاتە ڕاوەستێنە</string>
+  <string name="morphe_hide_games_button_summary">ڕاوەستێنانی پێکھاتە لە بارەگای ناڤیگەیشن</string>
+  <string name="morphe_hide_recently_visited_shelf_title">خۆراکێکی سەح لە ڕاوەستێنە</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">ڕاوەستێنانی سەح لە ڕەڵەسەباری لا</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">خۆراکێکی پێکھاتە لە Reddit دەستبێژیە دەستبێژیە</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">ڕاوەستێنانی پێکھاتە لە Reddit دەستبێژیە دەستبێژیە لە ڕەڵەسەباری لا</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">خۆراکێکی Reddit Pro دەستبێژیە دەستبێژیە ڕاوەستێنە</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">ڕاوەستێنانی Reddit Pro دەستبێژیە دەستبێژیە لە ڕەڵەسەباری لا</string>
+  <string name="morphe_hide_about_shelf_title">خۆراکێکی دەربارە ڕاوەستێنە</string>
+  <string name="morphe_hide_about_shelf_summary">ڕاوەستێنانی دەربارە لە ڕەڵەسەباری لا</string>
+  <string name="morphe_hide_resources_shelf_title">خۆراکێکی سەرچاوە ڕاوەستێنە</string>
+  <string name="morphe_hide_resources_shelf_summary">ڕاوەستێنانی سەرچاوە لە ڕەڵەسەباری لا</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">خۆراکێکی کۆمێنیتی ڕێکخستراو ڕاوەستێنە</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">ڕاوەستێنانی کۆمێنیتی ڕێکخستراو لە ڕەڵەسەباری لا</string>
+  <string name="morphe_hide_trending_today_shelf_title">خۆراکێکی ڕۆژێک لە ڕێیا زانین ڕاوەستێنە</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"ڕاوەستێنانی ڕۆژێک لە ڕێیا زانین لە پێشنیارە نێو ڕێکخستن
+
+ێلا：「 هەوڵدان مرۆڤێن غایەم دەس لەپرۆتە مەدوە"</string>
+  <string name="morphe_remove_notification_dialog_title">خۆراکێکی ئەزموونی پێشنیار پەشاندە بە سڕاندن</string>
+  <string name="morphe_remove_notification_dialog_summary">سڕاندنی ئەزموونی پێشنیار کە دەس دەچێت کە ڕاست دە کەوێت ڕێزانگەشەیە دە سڕاندن خۆی یەک</string>
+  <string name="morphe_show_view_count_title">خۆراکێکی ژمارەک دەربارە</string>
+  <string name="morphe_show_view_count_summary">"دەرباری ژمارە لە بابەتە کە شیتەکەیە فۆرما دە جانە ژمارەیە خاڵی ڕێزەن و خاوەڵەن خاڵی ڕیزا ڕەن"</string>
+  <string name="morphe_remove_nsfw_dialog_title">خۆراکێکی ڕەخساوییەکە ڕەشاندە</string>
+  <string name="morphe_remove_nsfw_dialog_summary">سڕاندنی ڕەخساوییەکە ڕەخساییەکە دە سڕاندن بانر ڕاستە بەخۆ</string>
+  <string name="morphe_screen_miscellaneous_title">تشتەکان</string>
+  <string name="morphe_about_title">دربارە</string>
+  <string name="morphe_about_summary">نسخە و ڕێزاکانی فەڕمى</string>
+  <string name="morphe_sanitize_sharing_links_title">سەنکارى كەروکە ڕێگەگەرانى کۆتەنەکەش مەسز ئەڤە ڕحسەکەنە ئەڤە ڕحسەکەنەی جکوازاخەڵ هەست ڕەزەنە</string>
+  <string name="morphe_sanitize_sharing_links_summary">سەنکارى کەروکە ڕێگەگەرانى کۆتەنەکەش مەسز ئەڤە ڕحسەکەنە دە سەنگار یەکە و ڕێگەگەران نەگەلشۆتا ڕحسەکەی ئادەکس فیلمەکە شەگەل</string>
+  <string name="morphe_open_links_directly_title">ڕێگەڕوگەشاندنى سەککە</string>
+  <string name="morphe_open_links_directly_summary">ڕکەت ئەکە دەخه‌ سەر ڕو یەک بچرکە ڕێکە پێش پێش وانگەشاندن ڕیفەکەن دە وۆچ</string>
+</resources>

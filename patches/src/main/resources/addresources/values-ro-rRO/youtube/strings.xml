@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Flux</string>
   <string name="morphe_settings_screen_04_general_title">Generalități</string>
   <string name="morphe_settings_screen_05_player_title">Jucător</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Bară de progres</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Controale glisare</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
@@ -713,6 +714,9 @@ Deschideți orice videoclip → Deschideți meniul Calitate → Dați clic pe �
   <string name="morphe_navigation_bar_animations_title">Activare animații bară de navigare</string>
   <string name="morphe_navigation_bar_animations_summary_on">Tranzițiile de navigare sunt animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Tranzițiile de navigare nu sunt animate</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Dezactivează ascunderea automată a barei de navigare</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bara de navigare nu se va ascunde automat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bara de navigare se poate ascunde automat</string>
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
@@ -1366,6 +1370,7 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_change_start_page_entry_playlists">Liste de redare</string>
   <string name="morphe_change_start_page_entry_search">Caută</string>
   <string name="morphe_change_start_page_entry_shopping">Cumpărături</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonamente</string>
   <string name="morphe_change_start_page_entry_trending">Populare</string>

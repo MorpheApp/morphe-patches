@@ -14,6 +14,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.equalsAny;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 import static app.morphe.extension.shared.settings.BaseActivityHook.MORPHE_SETTINGS_INTENT;
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_45_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.app.Activity;
@@ -76,6 +77,8 @@ public final class NavigationBarPatch {
 
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
+    private static final boolean DISABLE_AUTO_HIDE_NAVIGATION_BAR = Settings.DISABLE_AUTO_HIDE_NAVIGATION_BAR.get();
+
     private static final boolean HIDE_NAVIGATION_BAR = Settings.HIDE_NAVIGATION_BAR.get();
 
     /**
@@ -123,7 +126,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static boolean useAnimatedNavigationButtons(boolean original) {
-        return Settings.NAVIGATION_BAR_ANIMATIONS.get();
+        return !IS_20_45_OR_GREATER && Settings.NAVIGATION_BAR_ANIMATIONS.get();
     }
 
     /**
@@ -131,6 +134,13 @@ public final class NavigationBarPatch {
      */
     public static boolean enableNarrowNavigationButton(boolean original) {
         return NARROW_NAVIGATION_BUTTONS || original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableAutoHidingNavigationBar() {
+        return DISABLE_AUTO_HIDE_NAVIGATION_BAR;
     }
 
     /**

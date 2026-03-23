@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Strona główna</string>
   <string name="morphe_settings_screen_04_general_title">Ogólne</string>
   <string name="morphe_settings_screen_05_player_title">Odtwarzacz</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Pasek postępu filmu</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Sterowanie gestami</string>
   <string name="morphe_settings_screen_11_misc_title">Pozostałe</string>
@@ -690,14 +691,14 @@ Ciasteczka zostaną zapisane automatycznie, jeśli są poprawne"</string>
   <string name="morphe_show_search_button_title">Przycisk Szukaj</string>
   <string name="morphe_show_search_button_summary_on">Widoczny</string>
   <string name="morphe_show_search_button_summary_off">Ukryty</string>
-  <string name="morphe_show_search_button_index_title">Indeks przycisku wyszukiwania</string>
+  <string name="morphe_show_search_button_index_title">Indeks przycisku Szukaj</string>
   <string name="morphe_show_settings_button_title">Przycisk Ustawienia</string>
   <string name="morphe_show_settings_button_summary_on">Widoczny</string>
   <string name="morphe_show_settings_button_summary_off">Ukryty</string>
-  <string name="morphe_show_settings_button_index_title">Indeks przycisku ustawień</string>
-  <string name="morphe_show_settings_button_type_title">Działanie przycisku ustawień</string>
-  <string name="morphe_show_settings_button_type_summary_on">Dotknij, aby otworzyć ustawienia Morphe</string>
-  <string name="morphe_show_settings_button_type_summary_off">Dotknij, aby otworzyć ustawienia YouTube</string>
+  <string name="morphe_show_settings_button_index_title">Indeks przycisku Ustawienia</string>
+  <string name="morphe_show_settings_button_type_title">Działanie przycisku Ustawienia</string>
+  <string name="morphe_show_settings_button_type_summary_on">Stuknij, aby otworzyć ustawienia Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">Stuknij, aby otworzyć ustawienia YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">Przyciski przesyłania i powiadomień</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Zamienione</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Niezamienione</string>
@@ -718,6 +719,9 @@ Otwórz dowolny film → Otwórz menu jakości → Stuknij \"Ustawienia &gt; Pre
   <string name="morphe_navigation_bar_animations_title">Animacje paska nawigacji</string>
   <string name="morphe_navigation_bar_animations_summary_on">Włączone</string>
   <string name="morphe_navigation_bar_animations_summary_off">Wyłączone</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Automatyczne ukrywanie paska nawigacji</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Wyłączone</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Włączone</string>
   <string name="morphe_disable_translucent_status_bar_title">Półprzezroczysty pasek statusu</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Wyłączony</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Włączony</string>
@@ -747,8 +751,8 @@ Otwórz dowolny film → Otwórz menu jakości → Stuknij \"Ustawienia &gt; Pre
   <string name="morphe_show_toolbar_settings_button_title">Przycisk Ustawienia</string>
   <string name="morphe_show_toolbar_settings_button_summary_on">Widoczny</string>
   <string name="morphe_show_toolbar_settings_button_summary_off">Ukryty</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Indeks przycisku ustawień</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">Działanie przycisku ustawień</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Indeks przycisku Ustawienia</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Działanie przycisku Ustawienia</string>
   <string name="morphe_show_toolbar_settings_button_type_summary_on">"Stuknij, aby otworzyć ustawienia Morphe
 Przytrzymaj, aby otworzyć ustawienia YouTube"</string>
   <string name="morphe_show_toolbar_settings_button_type_summary_off">"Stuknij, aby otworzyć ustawienia YouTube
@@ -1371,6 +1375,7 @@ Jeśli później zostanie to wyłączone, rekomendowane jest usunięcie danych a
   <string name="morphe_change_start_page_entry_playlists">Playlisty</string>
   <string name="morphe_change_start_page_entry_search">Wyszukiwanie</string>
   <string name="morphe_change_start_page_entry_shopping">Zakupy</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Subskrypcje</string>
   <string name="morphe_change_start_page_entry_trending">Na czasie</string>

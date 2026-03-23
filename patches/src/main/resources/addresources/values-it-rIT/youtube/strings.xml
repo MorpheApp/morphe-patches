@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Generale</string>
   <string name="morphe_settings_screen_05_player_title">Lettore</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra di avanzamento</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Controlli a gesti</string>
   <string name="morphe_settings_screen_11_misc_title">Varie</string>
@@ -498,9 +499,9 @@ Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</str
   <string name="morphe_loop_video_button_toast_on">Riproduzione video in loop attivata</string>
   <string name="morphe_loop_video_button_toast_off">Riproduzione video in loop disattivata</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">Mostra pulsante riproduzione video</string>
-  <string name="morphe_reload_video_summary_on">Il pulsante riproduzione video è mostrato</string>
-  <string name="morphe_reload_video_summary_off">Il pulsante riproduzione video non è mostrato</string>
+  <string name="morphe_reload_video_title">Mostra il pulsante ricarica video</string>
+  <string name="morphe_reload_video_summary_on">Il pulsante ricarica video è visibile</string>
+  <string name="morphe_reload_video_summary_off">Il pulsante ricarica video non è visibile</string>
   <string name="morphe_dismiss_player_not_available_toast">L\'ID del video non è disponibile. Riapri manualmente il video.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Disabilita il gesto di ricerca preciso</string>
@@ -717,6 +718,9 @@ Aprire qualsiasi video → Aprire il menu Qualità → Fare clic su 'Impostazion
   <string name="morphe_navigation_bar_animations_title">Abilita animazioni della barra di navigazione</string>
   <string name="morphe_navigation_bar_animations_summary_on">Le transizioni di navigazione sono animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Le transizioni di navigazione non sono animate</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Disabilitare nascondita automatica della barra di navigazione</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra di navigazione non si nasconderà automaticamente</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra di navigazione potrebbe nascondersi automaticamente</string>
   <string name="morphe_disable_translucent_status_bar_title">Disabilita la barra di stato traslucida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra di stato è opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra di stato è opaca o traslucida</string>
@@ -1370,6 +1374,7 @@ Se in seguito verrà disattivato, si consiglia di cancellare i dati dell'app per
   <string name="morphe_change_start_page_entry_playlists">Playlist</string>
   <string name="morphe_change_start_page_entry_search">Cerca</string>
   <string name="morphe_change_start_page_entry_shopping">Acquisti</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Iscrizioni</string>
   <string name="morphe_change_start_page_entry_trending">Tendenze</string>

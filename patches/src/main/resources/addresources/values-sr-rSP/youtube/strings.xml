@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Фид</string>
   <string name="morphe_settings_screen_04_general_title">Опште</string>
   <string name="morphe_settings_screen_05_player_title">Плејер</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Трака за премотавање</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Контроле превлачења</string>
   <string name="morphe_settings_screen_11_misc_title">Разно</string>
@@ -716,6 +717,9 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_navigation_bar_animations_title">Омогући анимације траке за навигацију</string>
   <string name="morphe_navigation_bar_animations_summary_on">Анимације прелаза у навигацији су укључене</string>
   <string name="morphe_navigation_bar_animations_summary_off">Анимације прелаза у навигацији су искључене</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Искључити аутоматско скривање траке за навигацију</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Трака за навигацију неће бити аутоматски скривена</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Трака за навигацију може бити аутоматски скривена</string>
   <string name="morphe_disable_translucent_status_bar_title">Онемогући прозирну статусну траку</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Статусна трака је непрозирна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Статусна трака је непрозирна или прозирна</string>
@@ -1369,6 +1373,7 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_change_start_page_entry_playlists">Плејлисте</string>
   <string name="morphe_change_start_page_entry_search">Претрага</string>
   <string name="morphe_change_start_page_entry_shopping">Куповина</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Спорт</string>
   <string name="morphe_change_start_page_entry_subscriptions">Праћења</string>
   <string name="morphe_change_start_page_entry_trending">У тренду</string>

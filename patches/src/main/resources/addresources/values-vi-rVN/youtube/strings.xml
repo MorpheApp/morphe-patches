@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Trang video</string>
   <string name="morphe_settings_screen_04_general_title">Chung</string>
   <string name="morphe_settings_screen_05_player_title">Trình phát</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Thanh tiến trình</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Cử chỉ vuốt</string>
   <string name="morphe_settings_screen_11_misc_title">Khác</string>
@@ -717,6 +718,9 @@ Mở video bất kỳ → Mở menu Chất lượng → Bấm vào 'Cài đặt 
   <string name="morphe_navigation_bar_animations_title">Bật hiệu ứng thanh điều hướng</string>
   <string name="morphe_navigation_bar_animations_summary_on">Chuyển điều hướng sẽ có hiệu ứng</string>
   <string name="morphe_navigation_bar_animations_summary_off">Chuyển điều hướng không có hiệu ứng</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Tắt tính năng tự ẩn thanh điều hướng</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Thanh điều hướng sẽ không tự ẩn</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Thanh điều hướng có thể tự ẩn</string>
   <string name="morphe_disable_translucent_status_bar_title">Vô hiệu hóa thanh trạng thái trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Thanh trạng thái sẽ không còn trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Thanh trạng thái sẽ trở nên mờ hoặc trong suốt</string>
@@ -1369,6 +1373,7 @@ Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh 
   <string name="morphe_change_start_page_entry_playlists">Danh sách phát</string>
   <string name="morphe_change_start_page_entry_search">Tìm kiếm</string>
   <string name="morphe_change_start_page_entry_shopping">Mua sắm</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Thể thao</string>
   <string name="morphe_change_start_page_entry_subscriptions">Kênh đăng ký</string>
   <string name="morphe_change_start_page_entry_trending">Xu hướng</string>

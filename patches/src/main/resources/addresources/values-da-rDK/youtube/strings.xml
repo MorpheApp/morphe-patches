@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Foder</string>
   <string name="morphe_settings_screen_04_general_title">Generelt</string>
   <string name="morphe_settings_screen_05_player_title">Afspiller</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Søg i videon</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Strygekontroller</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
@@ -717,6 +718,9 @@ For at få adgang til Indstillinger:
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationsovergange animeres</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationsovergange animeres ikke</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjulning af navigationslinjen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigationslinjen vil ikke automatisk blive skjult</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigationslinjen kan automatisk blive skjult</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
@@ -1370,6 +1374,7 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
   <string name="morphe_change_start_page_entry_playlists">Playlister</string>
   <string name="morphe_change_start_page_entry_search">Søg</string>
   <string name="morphe_change_start_page_entry_shopping">Køb ind</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementer</string>
   <string name="morphe_change_start_page_entry_trending">Populære</string>

@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Umum</string>
   <string name="morphe_settings_screen_05_player_title">Pemutar</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kontrol usap</string>
   <string name="morphe_settings_screen_11_misc_title">Lain-lain</string>
@@ -714,6 +715,9 @@ Buka video apa pun → Buka menu Kualitas → Ketuk 'Pengaturan &gt; Preferensi 
   <string name="morphe_navigation_bar_animations_title">Aktifkan animasi bilah navigasi</string>
   <string name="morphe_navigation_bar_animations_summary_on">Transisi navigasi dianimasikan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Transisi navigasi tidak dianimasikan</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Nonaktifkan sembunyi otomatis bilah navigasi</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bilah navigasi tidak akan bersembunyi otomatis</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bilah navigasi mungkin bersembunyi otomatis</string>
   <string name="morphe_disable_translucent_status_bar_title">Nonaktifkan bilah status tembus cahaya</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bilah status buram</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bilah status buram atau tembus pandang</string>
@@ -1367,6 +1371,7 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_change_start_page_entry_playlists">Daftar Putar</string>
   <string name="morphe_change_start_page_entry_search">Pencarian</string>
   <string name="morphe_change_start_page_entry_shopping">Belanja</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Olahraga</string>
   <string name="morphe_change_start_page_entry_subscriptions">Langganan</string>
   <string name="morphe_change_start_page_entry_trending">Sedang tren</string>

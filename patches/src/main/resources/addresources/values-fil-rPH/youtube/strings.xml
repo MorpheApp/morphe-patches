@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Pangkalahatan</string>
   <string name="morphe_settings_screen_05_player_title">Manlalaro</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Pag-swipe ng mga kontrol</string>
   <string name="morphe_settings_screen_11_misc_title">Mga sari-sari</string>
@@ -717,6 +718,9 @@ Buksan ang anumang video → Buksan ang Quality menu → I-tap ang 'Settings &gt
   <string name="morphe_navigation_bar_animations_title">I-enable ang mga animasyon ng navigation bar</string>
   <string name="morphe_navigation_bar_animations_summary_on">Ang mga transition ng Navigation ay may animasyon</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ang mga transition ng Navigation ay walang animasyon</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Huwag paganahin ang auto-hide ng navigation bar</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ang navigation bar ay hindi mag-a-auto-hide</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Ang navigation bar ay maaaring mag-auto-hide</string>
   <string name="morphe_disable_translucent_status_bar_title">I-disable ang translucent status bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Ang status bar ay opaque</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Ang status bar ay opaque o translucent</string>
@@ -1370,6 +1374,7 @@ Kung i-off ang, inirerekomenda na i-clear ang app data para maiwasan ang UI bugs
   <string name="morphe_change_start_page_entry_playlists">Mga Tala Tugtugin</string>
   <string name="morphe_change_start_page_entry_search">Hanapin</string>
   <string name="morphe_change_start_page_entry_shopping">Pamimili</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Palakasan</string>
   <string name="morphe_change_start_page_entry_subscriptions">Mga Subskripsyon</string>
   <string name="morphe_change_start_page_entry_trending">Umuusbong</string>

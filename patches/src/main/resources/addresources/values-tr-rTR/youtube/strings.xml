@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Akış</string>
   <string name="morphe_settings_screen_04_general_title">Genel</string>
   <string name="morphe_settings_screen_05_player_title">Oynatıcı</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Zaman çubuğu</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kaydırma denetimleri</string>
   <string name="morphe_settings_screen_11_misc_title">Çeşitli</string>
@@ -679,18 +680,18 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_create_button_summary_on">Oluştur düğmesi gizli</string>
   <string name="morphe_hide_create_button_summary_off">Oluştur düğmesi görünür</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_subscriptions_button_title">Abonelikleri gizle</string>
+  <string name="morphe_hide_subscriptions_button_title">Abonelikler\'i gizle</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Abonelikler düğmesi gizli</string>
   <string name="morphe_hide_subscriptions_button_summary_off">Abonelikler düğmesi görünür</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_notifications_button_title">Bildirimleri gizle</string>
+  <string name="morphe_hide_notifications_button_title">Bildirimler\'i gizle</string>
   <string name="morphe_hide_notifications_button_summary_on">Bildirimler düğmesi gizli</string>
   <string name="morphe_hide_notifications_button_summary_off">Bildirimler düğmesi görünür</string>
-  <string name="morphe_show_search_button_title">Ara\'yı Göster</string>
+  <string name="morphe_show_search_button_title">Ara\'yı göster</string>
   <string name="morphe_show_search_button_summary_on">Arama düğmesi gösteriliyor</string>
   <string name="morphe_show_search_button_summary_off">Arama düğmesi gösterilmiyor</string>
-  <string name="morphe_show_search_button_index_title">Arama düğmesi dizini</string>
-  <string name="morphe_show_settings_button_title">Ayarlar\'ı Göster</string>
+  <string name="morphe_show_search_button_index_title">Arama düğmesi indeksi</string>
+  <string name="morphe_show_settings_button_title">Ayarlar\'ı göster</string>
   <string name="morphe_show_settings_button_summary_on">Ayarlar düğmesi gösteriliyor</string>
   <string name="morphe_show_settings_button_summary_off">Ayarlar düğmesi gösterilmiyor</string>
   <string name="morphe_show_settings_button_index_title">Ayarlar düğmesi indeksi</string>
@@ -702,8 +703,8 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Oluştur düğmesi, Bildirimler düğmesiyle değiştirilmedi</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin.</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Navigasyon düğmesi etiketleri gizleniyor</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Navigasyon düğmesi etiketleri gösteriliyor</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Navigasyon düğmesi etiketleri gizli</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Navigasyon düğmesi etiketleri görünür</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_hide_navigation_bar_summary_on">Gezinme çubuğu gizli</string>
   <string name="morphe_hide_navigation_bar_summary_off">Gezinme çubuğu görünür</string>
@@ -711,21 +712,24 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
 
 Ayarlara erişmek için:
 Herhangi bir videoyu açın → Kalite menüsünü açın → Altta 'Ayarlar > Video Kalitesi Tercihleri'ne dokunun."</string>
-  <string name="morphe_narrow_navigation_buttons_title">Navigasyon düğmeleri dar yapılandırmayı etkinleştirin</string>
+  <string name="morphe_narrow_navigation_buttons_title">Dar gezinme düğmelerini etkinleştir</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Navigasyon düğmeleri arasındaki boşluk dar</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Navigasyon düğmeleri arasındaki boşluk normal</string>
   <string name="morphe_navigation_bar_animations_title">Gezinme çubuğu animasyonlarını etkinleştir</string>
   <string name="morphe_navigation_bar_animations_summary_on">Gezinme geçişleri animasyonludur</string>
   <string name="morphe_navigation_bar_animations_summary_off">Gezinme geçişleri animasyonlu değildir</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesi devre dışı</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Gezinme çubuğu artık otomatik olarak gizlenmeyecek</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Gezinme çubuğu otomatik olarak gizlenebilir</string>
   <string name="morphe_disable_translucent_status_bar_title">Yarı saydam durum çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sınırlamalar:
 • Video oynatma çubuğunun üstünde siyah bir çubuğun görünebileceği olabilir.
 • Sistem navigasyon çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Aydınlık temada yarı saydam çubuğu devre dışı bırak</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Aydınlık temada gezinti çubuğu opak</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Aydınlık temada gezinti çubuğu opak veya yarı saydam</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_title">Açık temada yarı saydam çubuğu devre dışı bırak</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Açık temada gezinti çubuğu opak</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Açık temada gezinti çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Koyu temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Koyu temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Koyu temada gezinti çubuğu opak veya yarı saydam</string>
@@ -734,16 +738,16 @@ Herhangi bir videoyu açın → Kalite menüsünü açın → Altta 'Ayarlar > V
   <string name="morphe_hide_toolbar_create_button_title">Oluştur\'u gizle</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Oluştur düğmesi gizli</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Oluştur düğmesi görünür</string>
-  <string name="morphe_hide_toolbar_microphone_button_title">Mikrofonu gizle</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofon düğmesi gizlenmiş</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofon düğmesi gösteriliyor</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Bildirimleri gizle</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon\'u gizle</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofon düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofon düğmesi görünür</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Bildirimler\'i gizle</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Bildirimler düğmesi gizli</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirimler düğmesi görünür</string>
-  <string name="morphe_hide_toolbar_search_button_title">Ara\'yı Gizle</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ara\'yı gizle</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Arama düğmesi gizli</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Arama düğmesi görünür</string>
-  <string name="morphe_show_toolbar_settings_button_title">Ayarlar\'ı Göster</string>
+  <string name="morphe_show_toolbar_settings_button_title">Ayarlar\'ı göster</string>
   <string name="morphe_show_toolbar_settings_button_summary_on">Ayarlar düğmesi gösteriliyor</string>
   <string name="morphe_show_toolbar_settings_button_summary_off">Ayarlar düğmesi gösterilmiyor</string>
   <string name="morphe_show_toolbar_settings_button_index_title">Ayarlar düğmesi indeksi</string>
@@ -1370,6 +1374,7 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_change_start_page_entry_playlists">Oynatma listeleri</string>
   <string name="morphe_change_start_page_entry_search">Arama</string>
   <string name="morphe_change_start_page_entry_shopping">Alışveriş</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Spor</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonelikler</string>
   <string name="morphe_change_start_page_entry_trending">Trendler</string>
@@ -1454,7 +1459,7 @@ Genişletmek veya kapatmak için kaydırın"</string>
   <string name="morphe_gradient_loading_screen_summary_off">Yükleme ekranı tek renk bir arka plana sahip olacak</string>
   <string name="morphe_splash_screen_animation_style_title">Açılış ekranı stili</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Renk</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Siyah beyaz</string>
   <string name="morphe_seekbar_custom_color_title">Özel zaman çubuğu rengini etkinleştir</string>
   <string name="morphe_seekbar_custom_color_summary_on">Özel zaman çubuğu rengi gösterilir</string>

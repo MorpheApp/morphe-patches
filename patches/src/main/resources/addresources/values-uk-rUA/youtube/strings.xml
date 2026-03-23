@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Стрічка</string>
   <string name="morphe_settings_screen_04_general_title">Загальні</string>
   <string name="morphe_settings_screen_05_player_title">Плеєр</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Панель прогресу</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Керування жестами</string>
   <string name="morphe_settings_screen_11_misc_title">Різне</string>
@@ -694,7 +695,7 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_title">Показати \"Налаштування\"</string>
   <string name="morphe_show_settings_button_summary_on">Кнопка \"Налаштування\" показується</string>
   <string name="morphe_show_settings_button_summary_off">Кнопку \"Налаштування\" приховано</string>
-  <string name="morphe_show_settings_button_index_title">Індекс кнопки \"Пошук\"</string>
+  <string name="morphe_show_settings_button_index_title">Індекс кнопки \"Налаштування\"</string>
   <string name="morphe_show_settings_button_type_title">Дія кнопки \"Налаштування\"</string>
   <string name="morphe_show_settings_button_type_summary_on">Натисніть, щоб відкрити налаштування Morphe</string>
   <string name="morphe_show_settings_button_type_summary_off">Натисніть, щоб відкрити налаштування YouTube</string>
@@ -718,6 +719,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">Увімкнути анімації панелі навігації</string>
   <string name="morphe_navigation_bar_animations_summary_on">Переходи навігації анімовані</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходи навігації не анімовані</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоматичне приховування панелі навігації</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навігації не буде автоматично приховуватися</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навігації може автоматично приховуватися</string>
   <string name="morphe_disable_translucent_status_bar_title">Вимкнути напівпрозорість рядка стану</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Рядок стану непрозорий</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Рядок стану непрозорий або напівпрозорий</string>
@@ -747,12 +751,12 @@ Second \"item\" text"</string>
   <string name="morphe_show_toolbar_settings_button_title">Показати \"Налаштування\"</string>
   <string name="morphe_show_toolbar_settings_button_summary_on">Кнопка \"Налаштування\" показується</string>
   <string name="morphe_show_toolbar_settings_button_summary_off">Кнопку \"Налаштування\" приховано</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Індекс кнопки \"Пошук\"</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Індекс кнопки \"Налаштування\"</string>
   <string name="morphe_show_toolbar_settings_button_type_title">Дія кнопки \"Налаштування\"</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Натиснути, щоб відкрити налаштування Morphe
-Натиснути та утримувати, щоб відкрити налаштування YouTube"</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Натиснути, щоб відкрити налаштування YouTube
-Натиснути та утримувати, щоб відкрити налаштування Morphe"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Натисніть, щоб відкрити налаштування Morphe
+Натисніть і утримуйте, щоб відкрити налаштування YouTube"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Натисніть, щоб відкрити налаштування YouTube
+Натисніть і утримуйте, щоб відкрити налаштування Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
   <string name="morphe_hide_player_flyout_summary">Приховати або показувати пункти висувного меню плеєра</string>
@@ -1371,6 +1375,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">Списки відтворення</string>
   <string name="morphe_change_start_page_entry_search">Пошук на YouTube</string>
   <string name="morphe_change_start_page_entry_shopping">Покупки</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Спорт</string>
   <string name="morphe_change_start_page_entry_subscriptions">Підписки</string>
   <string name="morphe_change_start_page_entry_trending">Популярне</string>

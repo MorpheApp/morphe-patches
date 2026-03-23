@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Fotha</string>
   <string name="morphe_settings_screen_04_general_title">Ginearálta</string>
   <string name="morphe_settings_screen_05_player_title">Seinnteoir</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra Cuardaigh</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Rialuithe Svaidhpeála</string>
   <string name="morphe_settings_screen_11_misc_title">Ilghnéitheach</string>
@@ -717,6 +718,9 @@ Fhail isteach ar fíolán arbhachaidh → Fhail isteach ar margaíocht → Tába
   <string name="morphe_navigation_bar_animations_title">Cumasaigh beochana barra nascleanúna</string>
   <string name="morphe_navigation_bar_animations_summary_on">Tá aistrithe nascleanúna beoite</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ní bhíonn aistrithe nascleanúna beoite</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deiligh uathoibriú isteach na barra naiceant</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ní bheidh an barra naiceant ag isteach uathoibriúil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Seans go d’oibreoidh an barra naiceant isteach uathoibriúil</string>
   <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tá an barra stádais teimhneach</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tá an barra stádais teimhneach nó tréshoilseach</string>
@@ -1370,6 +1374,7 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_change_start_page_entry_playlists">Liostaí seinnte</string>
   <string name="morphe_change_start_page_entry_search">Cuardaigh</string>
   <string name="morphe_change_start_page_entry_shopping">Siopadóireacht</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Spóirt</string>
   <string name="morphe_change_start_page_entry_subscriptions">Síntiúis</string>
   <string name="morphe_change_start_page_entry_trending">Ag treocht</string>

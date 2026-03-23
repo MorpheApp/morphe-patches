@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Flux</string>
   <string name="morphe_settings_screen_04_general_title">Général</string>
   <string name="morphe_settings_screen_05_player_title">Lecteur</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barre de progression</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Contrôle par balayage</string>
   <string name="morphe_settings_screen_11_misc_title">Divers</string>
@@ -718,6 +719,9 @@ Ouvrez une vidéo → Ouvrez le menu 'Qualité' → Appuyez sur 'Paramètres &gt
   <string name="morphe_navigation_bar_animations_title">Activer les animations de la barre de navigation</string>
   <string name="morphe_navigation_bar_animations_summary_on">Les transitions de navigation sont animées</string>
   <string name="morphe_navigation_bar_animations_summary_off">Les transitions de navigation ne sont pas animées</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Désactiver le masquage automatique de la barre de navigation</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barre de navigation ne se masquera pas automatiquement</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barre de navigation peut se masquer automatiquement</string>
   <string name="morphe_disable_translucent_status_bar_title">Désactiver la barre de notification translucide</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barre de notification est opaque</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barre de notification est opaque ou translucide</string>
@@ -1371,6 +1375,7 @@ Si cette option est désactivée ultérieurement, il est recommandé de vider le
   <string name="morphe_change_start_page_entry_playlists">Playlists</string>
   <string name="morphe_change_start_page_entry_search">Recherche</string>
   <string name="morphe_change_start_page_entry_shopping">Produits</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sports</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnements</string>
   <string name="morphe_change_start_page_entry_trending">Tendances</string>

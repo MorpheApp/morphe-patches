@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Algemeen</string>
   <string name="morphe_settings_screen_05_player_title">Speler</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Zoekbalk</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Veegbediening</string>
   <string name="morphe_settings_screen_11_misc_title">Diversen</string>
@@ -717,6 +718,9 @@ Open een video → Open het menu Kwaliteit → Tik op 'Instellingen > Voorkeuren
   <string name="morphe_navigation_bar_animations_title">Navigatiebalkanimaties inschakelen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigatieovergangen worden geanimeerd</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigatieovergangen worden niet geanimeerd</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Navigatiebalk automatisch verbergen uitschakelen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">De navigatiebalk verbergt niet automatisch</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">De navigatiebalk kan automatisch worden verborgen</string>
   <string name="morphe_disable_translucent_status_bar_title">Transparante statusbalk uitschakelen</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusbalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusbalk is ondoorzichtig of doorschijnend</string>
@@ -1370,6 +1374,7 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_change_start_page_entry_playlists">Afspeellijsten</string>
   <string name="morphe_change_start_page_entry_search">Zoeken</string>
   <string name="morphe_change_start_page_entry_shopping">Winkelen</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementen</string>
   <string name="morphe_change_start_page_entry_trending">Trends</string>

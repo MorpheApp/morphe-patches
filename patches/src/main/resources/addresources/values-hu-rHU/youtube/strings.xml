@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Általános</string>
   <string name="morphe_settings_screen_05_player_title">Lejátszó</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Keresősáv</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Csúsztatási vezérlők</string>
   <string name="morphe_settings_screen_11_misc_title">Egyéb</string>
@@ -716,6 +717,9 @@ Nyisson meg bármilyen videót → Nyissa meg a minőségi menüt → Nyomja meg
   <string name="morphe_navigation_bar_animations_title">Navigációs sáv animációinak engedélyezése</string>
   <string name="morphe_navigation_bar_animations_summary_on">A navigációs átmenetek animáltak</string>
   <string name="morphe_navigation_bar_animations_summary_off">A navigációs átmenetek nem animáltak</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Navigációs sáv automatikus elrejtésének letiltása</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">A navigációs sáv nem rejtődik automatikusan</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A navigációs sáv esetleg automatikusan elrejthető</string>
   <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Az állapotsor nem áttetsző</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Az állapotsor nem áttetsző vagy áttetsző</string>
@@ -1368,6 +1372,7 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_change_start_page_entry_playlists">Lejátszási listák</string>
   <string name="morphe_change_start_page_entry_search">Keresés</string>
   <string name="morphe_change_start_page_entry_shopping">Bevásárlás</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sportok</string>
   <string name="morphe_change_start_page_entry_subscriptions">Feliratkozások</string>
   <string name="morphe_change_start_page_entry_trending">Felkapott</string>

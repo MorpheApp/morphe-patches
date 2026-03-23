@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Fid</string>
   <string name="morphe_settings_screen_04_general_title">Opšte</string>
   <string name="morphe_settings_screen_05_player_title">Plejer</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Traka za premotavanje</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kontrole prevlačenja</string>
   <string name="morphe_settings_screen_11_misc_title">Razno</string>
@@ -717,6 +718,9 @@ Otvorite bilo koji video → Otvorite izbornik Kvaliteta → Dodirnite ‘Podeš
   <string name="morphe_navigation_bar_animations_title">Omogući animacije navigacione trake</string>
   <string name="morphe_navigation_bar_animations_summary_on">Animacije prelaza navigacije su uključene</string>
   <string name="morphe_navigation_bar_animations_summary_off">Animacije prelaza navigacije su isključene</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Искључити аутоматско скривање траке за навигацију</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Трака за навигацију неће бити аутоматски скривена</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Трака за навигацију може бити аутоматски скривена</string>
   <string name="morphe_disable_translucent_status_bar_title">Onemogući prozirnu statusnu traku</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusna traka je neprozirna</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusna traka je neprozirna ili prozirna</string>
@@ -1370,6 +1374,7 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
   <string name="morphe_change_start_page_entry_playlists">Plejliste</string>
   <string name="morphe_change_start_page_entry_search">Pretraga</string>
   <string name="morphe_change_start_page_entry_shopping">Kupovina</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Praćenja</string>
   <string name="morphe_change_start_page_entry_trending">U trendu</string>

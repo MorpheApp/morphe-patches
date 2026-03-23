@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Syöte</string>
   <string name="morphe_settings_screen_04_general_title">Yleiset</string>
   <string name="morphe_settings_screen_05_player_title">Soitin</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Etenemispalkki</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Pyyhkäisyohjaus</string>
   <string name="morphe_settings_screen_11_misc_title">Sekalaiset</string>
@@ -719,6 +720,9 @@ Avaa mikä tahansa video → Avaa Laadinta-valikko → Napauta 'Asetukset > Vide
   <string name="morphe_navigation_bar_animations_title">Ota käyttöön navigaatiopalkin animaatiot</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigaatiosiirtymät animoidaan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigaatiosiirtymiä ei animoida</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Poista navigointipalkin automaattinen piilottaminen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigointipalkki ei piiloudu automaattisesti</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigointipalkki saattaa piiloutua automaattisesti</string>
   <string name="morphe_disable_translucent_status_bar_title">Poista läpikuultava tilapalkki käytöstä</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tilapalkki on läpinäkymätön</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tilapalkki on läpinäkymätön tai läpikuultava</string>
@@ -1373,6 +1377,7 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_change_start_page_entry_playlists">Soittolistat</string>
   <string name="morphe_change_start_page_entry_search">Haku</string>
   <string name="morphe_change_start_page_entry_shopping">Ostokset</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Urheilu</string>
   <string name="morphe_change_start_page_entry_subscriptions">Tilaukset</string>
   <string name="morphe_change_start_page_entry_trending">Nousussa</string>

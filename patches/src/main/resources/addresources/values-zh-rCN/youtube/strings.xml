@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">订阅源</string>
   <string name="morphe_settings_screen_04_general_title">常规</string>
   <string name="morphe_settings_screen_05_player_title">播放器</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">进度条</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">滑动控制</string>
   <string name="morphe_settings_screen_11_misc_title">其他</string>
@@ -716,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">启用导航栏动画</string>
   <string name="morphe_navigation_bar_animations_summary_on">导航过渡是动画的</string>
   <string name="morphe_navigation_bar_animations_summary_off">导航过渡没有动画</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">禁用导航栏自动隐藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">导航栏将不会自动隐藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">导航栏可能会自动隐藏</string>
   <string name="morphe_disable_translucent_status_bar_title">禁用半透明状态栏</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
@@ -1373,6 +1377,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">播放列表</string>
   <string name="morphe_change_start_page_entry_search">搜索</string>
   <string name="morphe_change_start_page_entry_shopping">购物</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">体育</string>
   <string name="morphe_change_start_page_entry_subscriptions">订阅</string>
   <string name="morphe_change_start_page_entry_trending">趋势</string>

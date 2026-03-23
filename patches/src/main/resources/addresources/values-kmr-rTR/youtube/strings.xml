@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Xwarê</string>
   <string name="morphe_settings_screen_04_general_title">Serniştim</string>
   <string name="morphe_settings_screen_05_player_title">Lîstikvan</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Qerêkê bîtreşî</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kontrolên kişandinê</string>
   <string name="morphe_settings_screen_11_misc_title">Sernêşe</string>
@@ -720,6 +721,9 @@ Sazûdefeye vîdyoyek vekin → Menuya Kvalîteyê vekin → Li jêr 'Nast &gt; 
   <string name="morphe_navigation_bar_animations_title">Animasyonên barê naweşandinê çalak bike</string>
   <string name="morphe_navigation_bar_animations_summary_on">Wereyê devikê naweşandinê animasyonê</string>
   <string name="morphe_navigation_bar_animations_summary_off">Wereyê devikê naweşandinê animasyon nîne</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Navbarê rawştinê ji xeynêbûna otomatîk</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navbar ji xeynêbûna otomatîk ê nabe</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navbar dibe ku bi otomatîk veşêre</string>
   <string name="morphe_disable_translucent_status_bar_title">Barê rewşê jîyayî saz bike</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Barê rewşê zixiyayî ye</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Barê rewşê zixiyayî yan jî jîyayî ye</string>
@@ -1373,6 +1377,7 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_change_start_page_entry_playlists">Lîsteyên reşbîr</string>
   <string name="morphe_change_start_page_entry_search">Lêgerîn</string>
   <string name="morphe_change_start_page_entry_shopping">Kêrdegirî</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Spor</string>
   <string name="morphe_change_start_page_entry_subscriptions">Nêrînên abone bûyî</string>
   <string name="morphe_change_start_page_entry_trending">Niha di nav tendisê de</string>

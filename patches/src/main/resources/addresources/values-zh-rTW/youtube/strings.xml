@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">推薦內容</string>
   <string name="morphe_settings_screen_04_general_title">一般</string>
   <string name="morphe_settings_screen_05_player_title">播放器</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">跳轉列</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">滑動控制</string>
   <string name="morphe_settings_screen_11_misc_title">其他</string>
@@ -716,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary_on">導覽轉換會進行動畫</string>
   <string name="morphe_navigation_bar_animations_summary_off">導覽轉換不會進行動畫</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">停用導覽列自動隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">導覽列將不會自動隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">導覽列可能會自動隱藏</string>
   <string name="morphe_disable_translucent_status_bar_title">停用半透明狀態列</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">狀態列為不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">狀態列為不透明或半透明</string>
@@ -1370,6 +1374,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">播放清單</string>
   <string name="morphe_change_start_page_entry_search">搜尋</string>
   <string name="morphe_change_start_page_entry_shopping">購物</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">運動</string>
   <string name="morphe_change_start_page_entry_subscriptions">訂閱內容</string>
   <string name="morphe_change_start_page_entry_trending">發燒影片</string>

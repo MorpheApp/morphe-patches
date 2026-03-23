@@ -17,21 +17,113 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Ser-dike da dane setup bikin</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">ناوەکە</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <string name="morphe_custom_branding_name_entry_5">خۆشکردن</string>
+  <string name="morphe_custom_branding_icon_title">بەکلوپەی سەرەکی</string>
+  <string name="morphe_custom_branding_icon_entry_1">ئەساسی</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe ڕەش</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe تاریک</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe ڕۆشن</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_5">خۆشکردن</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">⚠️ Îzaltan 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Hûn bi sepanek eksperimental ⚠️ <b>%1$s</b> bikartînin
+<br/>
+🔧 Ceribandinên bistirin an serê pê têkildarê wê bibe, li ser pêwistiyên vê sepanê xemil dike. 
+<br/>
+Ger di her awayî de ezmûnî lêzêde tê pêwist, khir bistînin û sepanekî nashatî ✅ <b>%2$s</b>"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">Ez eksperimental bikarim</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ez sebatî bikarim</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">ڕاگەیاندنی Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">جوتیان تۆمارە نەکراوە. &lt;br&gt;&lt;br&gt;ئەگەری زۆرە کە ئەمەش بەهۆی مسرەفەکانی DNS یان ناوتۆکی کاربێت.&lt;br&gt;&lt;br&gt;چۆنیەت بە ڕێگای سڕینەوە &lt;b&gt;s.youtube.com&lt;/b&gt; یان خەڵادانەوەی هەموو مسرەفەکانی DNS ناوتۆکی و پرووکسێکان.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">یان نێربەڕینەوە</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
+  <string name="morphe_spoof_video_streams_screen_summary">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ بۆ ڕێگەگرتن لە کێشەکانی پەرباسە</string>
+  <string name="morphe_spoof_video_streams_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
+  <string name="morphe_spoof_video_streams_summary_on">"ڕاستگۆکان ڕەسەمن دەکرێن
+
+کاتێک بەکاردانی YouTube Premium تێکردوویی، هیچ پێتبخۆشێت پێویست بێت."</string>
+  <string name="morphe_spoof_video_streams_summary_off">"ڕاستگۆکان ڕەسەمن ناکرێن
+
+پەڕتباسە کار نەکات."</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">هیچ ڕاستگۆیەکی ئەندازی نەیادەخرێت</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">خەڵادانەوەی ئەم ناسنامەیە دەبێتە هۆی کێشە لە پەرباسەدا.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">سعی بکە: گەڕانەوە سەر ڕاستگۆ > نیشانی ووردەی ئەندرۆید</string>
+  <string name="morphe_spoof_video_streams_client_type_title">ئەگەر سەرەکی</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">نیشانی ووردەی ئەندرۆید</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">زانیشتوی ئەندرۆید VR تێکردوویی. پە لەسەر بێت بۆ نیشان</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ئەنجووم زانیشتوی ئەندرۆید VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">لە کارخستنی ئەم ئاژەڵەتە ، گۆرینەوەی \'سەرەکی\' بۆ ئەندرۆید VR تێکرد Fin</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">نیشانی ووردەی ئەندرۆید VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Te'îl kirin ji Android VR dikare berhetiyên xendina we çareser bike
+
+Da te'îl bikin, li ser berdewam bikin xwarê"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">بڕواییدان</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">خەڵادانەوە</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">ئامۆژگار</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Koda aktivkir: %s
+
+1. Dike 'Ve web sayt'  xwarê pê bike ku malpera 'Danê alavêk' vekê
+2. Ji bo çalaka nîşaneya çalunê (an ku dinivîse) koda aktîvkirîyê yê ku li serê tê nîşandin çêkirin
+3. Ger hat pêşxistinê, te'îl bidin Google. Ger hesabên pir hebên, heta hesabê YouTube vê joriyê pê xistine
+4. Dike 'İzinê YouTube VR' akses
+5. Piştî gihîşîya peyamê 'Alav çêkirin', dîsa te'îl bidin serîna vê sepanê"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Ve web sayt bike</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Serketina îsda kirina koda aktîvkirîyê ji holê qe</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Serketina îsda kirina tîkena otantîkasyonê ji holê qe</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Te\'îl kirin, serketî</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Otantîkasyon parastin
+
+• Ayarên Morphe we yê ne import/export otantîkasyonê VR Android
+• Ger ev sepan zî 6 mehan bê ser bikarîn, Google ev otantîkasyon dê bide nê
+• Ger we peyva Google we zî biguhênin an alavê we ji ayarên Google we betal bikin, wêyê te'îl bidin serîna"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 niha rê nade (API demê qe</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Te\'îlkirina Android VR qe, hewildanek te\'îl kirin ji VR ser bike</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 niha rê nade (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 niha rê nade</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nabe te\'îl kirin ji VR, otantîkasyonê malperê pê qebûl nekirî</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nabe te\'îl kirin ji VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Derkirî ji Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Tîkena te\'îlkirinê ji VR serdar nebû, hewildanek te\'îl kirin ji VR ser bike</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Nûvekirina JavaScript pêlkesera çavkanî bike</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Nûvekirina JavaScript pêlkesera çavkanî kirin
+
+• Hashê JavaScript pêlkesera pêlvedinê yê serdar tê xwes"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Nûvekirina JavaScript pêlkesera serdar kirin</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashê JavaScript yên pêlkesera pêlvedinê ji xwarê ma dewreyeka meşinê, û hashê ku derketiye kêşkê dê ji hêla GVS ve hatin paqijkirin.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hashê JavaScript pêlkesera pêlvedinê</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Hashê JavaScript pêlkesera pêlvedinê yê serdar avêjin</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Protokol QUIC çavkanî bike</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC çavkanî kirin</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC serdar kirin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">DRC audio çavkanî bike</string>
+  <string name="morphe_disable_drc_audio_summary_on">Audio DRC çavkanî kirin</string>
+  <string name="morphe_disable_drc_audio_summary_off">Audio DRC serdar kirin</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">به‌زانیشتنی زمانی دەنگی ئەسڵی</string>
+  <string name="morphe_force_original_audio_summary_on">بەزانیشتنی زمانی دەنگی ئەسڵی</string>
+  <string name="morphe_force_original_audio_summary_off">بەزانیشتنی دەنگی خەڵات</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Da vê taybetmendariya bikarînin, \'Pêlvedanên dîmenan\' heta Android Reel an TV biguhêrin</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">خەڵەتەکانی هەڵواسانی دەړووستن</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">پارامەتری ڕدی لە هەڵواسانی سیستەم سڕدراوە.</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">پارامەتری ڕدی لە هەڵواسانی سیستەم سڕدراوە.</string>
+  <string name="morphe_replace_music_with_youtube_title">گۆڕینەوەی سیستەمەکانی هەڵواسە بۆ youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">سیستەمەکانی هەڵواسە youtube.com دەخوازن</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">سیستەمەکانی هەڵواسە music.youtube.com دەخوازن</string>
 </resources>

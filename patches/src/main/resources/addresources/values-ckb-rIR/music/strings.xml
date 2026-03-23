@@ -18,22 +18,103 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">لۆگۆی سەرەوە</string>
+  <string name="morphe_header_logo_entry_1">دیفۆڵت</string>
+  <string name="morphe_header_logo_entry_3">خۆش دەست</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">دربارە</string>
+  <string name="morphe_settings_music_screen_1_ads_title">ئەلەکان</string>
+  <string name="morphe_settings_music_screen_2_general_title">ئاسماني</string>
+  <string name="morphe_settings_music_screen_3_player_title">خۆسەر</string>
+  <string name="morphe_settings_music_screen_4_misc_title">تشتەکان</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">ڤیدیۆ ئەلکان قایم بێت</string>
+  <string name="morphe_music_hide_video_ads_summary_on">ڤیدیۆ ئەلکان قەبارە</string>
+  <string name="morphe_music_hide_video_ads_summary_off">ڤیدیۆ ئەلکان دەربارەیەن</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">ئەوەه کۆمەڵ پێوه‌ردانی گه‌وره‌یان دروستی بێت</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">ئەوەه کۆمەڵ پێوه‌ردانی گه‌وره‌یان پێوه‌ردراوه‌</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">ئەوەه کۆمەڵ پێوه‌ردانی گه‌وره‌یان نه‌پێوه‌ردراون</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">گۆشتنی پاشکی خوارە</string>
+  <string name="morphe_music_hide_cast_button_summary_on">گۆشتنی پاشکی خوارە قایمە</string>
+  <string name="morphe_music_hide_cast_button_summary_off">گۆشتنی پاشکی خوارە دەربارە</string>
+  <string name="morphe_music_hide_history_button_title">گۆشتنی پاشکی ڕێكخستن</string>
+  <string name="morphe_music_hide_history_button_summary_on">گۆشتنی پاشکی ڕێكخستن قایمە</string>
+  <string name="morphe_music_hide_history_button_summary_off">گۆشتنی پاشکی ڕێكخستن دەربارە</string>
+  <string name="morphe_music_hide_notification_button_title">گۆشتنی پاشکی ڕاگواستن</string>
+  <string name="morphe_music_hide_notification_button_summary_on">گۆشتنی پاشکی ڕاگواستن قایمە</string>
+  <string name="morphe_music_hide_notification_button_summary_off">گۆشتنی پاشکی ڕاگواستن دەربارە</string>
+  <string name="morphe_music_hide_search_button_title">گۆشتنی پاشکی لێزه‌ر</string>
+  <string name="morphe_music_hide_search_button_summary_on">گۆشتنی پاشکی لێزه‌ر قایمە</string>
+  <string name="morphe_music_hide_search_button_summary_off">گۆشتنی پاشکی لێزه‌ر دەربارە</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">گەڕانێکە بۆ دەستپێچکردن بگۆڕە</string>
+  <string name="morphe_change_start_page_entry_default">دیفۆڵت</string>
+  <string name="morphe_change_start_page_entry_charts">نمودگان</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">بۆ دواترەوە بڵاو بکرێنە سەر</string>
+  <string name="morphe_change_start_page_entry_explore">هەژمار کە لەسەر ئەمەش ئەسروەقە</string>
+  <string name="morphe_change_start_page_entry_history">ئاست</string>
+  <string name="morphe_change_start_page_entry_library">کتابخانە</string>
+  <string name="morphe_change_start_page_entry_liked_music">مۆزیکی قۆڵی کە خاوەندارێتیان پێ کردووم</string>
+  <string name="morphe_change_start_page_entry_playlists">سەفینەکان</string>
+  <string name="morphe_change_start_page_entry_search">گەڕانە</string>
+  <string name="morphe_change_start_page_entry_subscriptions">پێشنیارەکان</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">خوارە کاتەگۆرایە</string>
+  <string name="morphe_music_hide_category_bar_summary_on">خوارە کاتەگۆرایە قایمە</string>
+  <string name="morphe_music_hide_category_bar_summary_off">خوارە کاتەگۆرایە دەربارە</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">گۆرینی ڕەنگی ئێگەرچەی ڤیدیۆ</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">ڕەنگی ئێگەرچەی ڤیدیۆ دابەزێ لەت ڕیز یەکدەستکاري شۆف</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">ئێگەرچەی ڤیدیۆ ڕەنگی پێشەنگایە</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">پەشێو بۆ دەربنمانی دگمه‌کەی کۆتایی</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">دگمه‌کەی کۆتایی دەربنمە</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">دگمه‌کەی کۆتایی ناتەوانە دەربنمە</string>
+  <string name="morphe_music_miniplayer_previous_button_title">دەرخشاندنی دگمه‌کەی پێشەوە</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">دگمه‌کەی پێشەوە دەربنمە</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">دگمه‌کەی پێشەوە ناتەوانە دەربنمە</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">هەڵبژاردنێکە بۆ نیشاندانی مینىپڵەی وەڕ گنجمانە</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">مینىپڵەی سیە هەسارایە کە دەبێتە سەرگۆی بازگەردان</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">مینىپڵەی هەر هەسارایە لە کاتی دەستپێشاندن پێشگرتە هەسارە</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">ناوەڕۆکی ڕاهێتەاند</string>
+  <string name="morphe_music_navigation_bar_screen_summary">خوارێ یان گۆرینی پەیوەندی خۆڵە</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">خۆڵەی سەرەکی قایم بێت</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">خۆڵەی سەرەکی هەڵە</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">خۆڵەی سەرەکی دەربارە</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">خۆڵەی نمونەی قایم بێت</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">خۆڵەی نمونە هەڵە</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">خۆڵەی نمونە دەربارە</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">خۆڵەی تاقیكەی قایم بێت</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">خۆڵەی تاقیكە هەڵە</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">خۆڵەی تاقیكە دەربارە</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">خۆڵەی دەستووریەتی قایم بێت</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">خۆڵەی دەستووریەتی هەڵە</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">خۆڵەی دەستووریەتی دەربارە</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">خۆڵەی زیادكاری قایم بێت</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">خۆڵەی زیادكاری هەڵە</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">دگمه‌که‌ی زیادکردن نیشانە دەردەکەوێت</string>
+  <string name="morphe_music_hide_navigation_bar_title">سەرشێوەی بارەگای دەربنێ</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">بارەگای دەربنێ هەیە</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">بارەگای دەربنێ نیشانە دەردەکەوێت</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">لامەکانی دەربنێ پنهان بکە</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">لامەکان پنهانن</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">لامەکان نیشانە دەردەکەون</string>
   <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'هێنانی مۆزیکی پریمیم\' لامی پنهان بکە</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">لامەکە پنهانە</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">لامەکە نیشانە دەردەکەوێت</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">زیادکردنەکە پنهان بکە</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">دگمه‌کە پنهانە</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">دگمه‌کە نیشانە دەردەکەوێت</string>
 </resources>

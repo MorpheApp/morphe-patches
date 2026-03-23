@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">الموجز</string>
   <string name="morphe_settings_screen_04_general_title">عام</string>
   <string name="morphe_settings_screen_05_player_title">المشغل</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">شريط تقدم الفيديو</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">التحكم عن طريق إيماءة التمرير</string>
   <string name="morphe_settings_screen_11_misc_title">خيارات متنوعة</string>
@@ -716,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary_on">تم تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary_off">تم تعطيل تأثير حركة التنقل في شريط التنقل</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">تعطيل إخفاء شريط التنقل تلقائيًا</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">لن يتم إخفاء شريط التنقل تلقائيًا</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">قد يتم إخفاء شريط التنقل تلقائيًا</string>
   <string name="morphe_disable_translucent_status_bar_title">تعطيل شريط الحالة الشفاف</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">شريط الحالة غير شفاف</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">شريط الحالة معتم أو شفاف</string>
@@ -1370,6 +1374,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">قوائم التشغيل</string>
   <string name="morphe_change_start_page_entry_search">البحث</string>
   <string name="morphe_change_start_page_entry_shopping">تسوق</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">الرياضة</string>
   <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
   <string name="morphe_change_start_page_entry_trending">المحتوى الرائج</string>

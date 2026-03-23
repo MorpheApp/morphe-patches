@@ -1,3 +1,15 @@
+# [1.22.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.21.1...v1.22.0-dev.1) (2026-03-23)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Resolve patch failing on `20.21.37` and `20.31.42` ([#971](https://github.com/MorpheApp/morphe-patches/issues/971)) ([387df8c](https://github.com/MorpheApp/morphe-patches/commit/387df8cc609b26ff2591b3a97e3865996e425db3))
+
+
+### Features
+
+* **YouTube - Navigation bar:** Add "Disable auto-hide navigation bar" setting ([#973](https://github.com/MorpheApp/morphe-patches/issues/973)) ([f04d001](https://github.com/MorpheApp/morphe-patches/commit/f04d00108539368894aca6820e160324ab102559))
+
 ## [1.21.1](https://github.com/MorpheApp/morphe-patches/compare/v1.21.0...v1.21.1) (2026-03-22)
 
 

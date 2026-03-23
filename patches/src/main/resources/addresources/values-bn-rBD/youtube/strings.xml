@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">ফিড</string>
   <string name="morphe_settings_screen_04_general_title">সাধারণ</string>
   <string name="morphe_settings_screen_05_player_title">প্লেয়ার</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">সিকবার</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">সোয়াইপ কন্ট্রোল</string>
   <string name="morphe_settings_screen_11_misc_title">বিবিধ</string>
@@ -716,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">নেভিগেশন বার অ্যানিমেশন সক্ষম করুন</string>
   <string name="morphe_navigation_bar_animations_summary_on">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড</string>
   <string name="morphe_navigation_bar_animations_summary_off">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড নয়</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">নেভিগেশন বার স্বয়ংক্রিয়ভাবে লুকানো নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">নেভিগেশন বার স্বয়ংক্রিয়ভাবে লুকাবে না</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">নেভিগেশন বার স্বয়ংক্রিয়ভাবে লুকানো যেতে পারে</string>
   <string name="morphe_disable_translucent_status_bar_title">অর্ধস্বচ্ছ স্থিতি বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">স্ট্যাটাস বারটি অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">স্ট্যাটাস বারটি অস্বচ্ছ বা স্বচ্ছ</string>
@@ -1370,6 +1374,7 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_change_start_page_entry_playlists">চ্লাস ন৊টিস্য়াসেগ</string>
   <string name="morphe_change_start_page_entry_search">অনুসন্ধান</string>
   <string name="morphe_change_start_page_entry_shopping">শোপিংগ</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">খেলাধুলা</string>
   <string name="morphe_change_start_page_entry_subscriptions">সদস্যতা</string>
   <string name="morphe_change_start_page_entry_trending">এখন জনপ্রিয়</string>

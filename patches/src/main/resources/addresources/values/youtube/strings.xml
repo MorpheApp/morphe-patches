@@ -24,7 +24,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_screen_03_feed_title">Feed</string>
     <string name="morphe_settings_screen_04_general_title">General</string>
     <string name="morphe_settings_screen_05_player_title">Player</string>
-    <string name="morphe_settings_screen_06_shorts_title" translatable="false">Shorts</string>
+    <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
     <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
     <string name="morphe_settings_screen_08_swipe_controls_title">Swipe controls</string>
     <string name="morphe_settings_screen_09_return_youtube_dislike_title" translatable="false">Return YouTube Dislike</string>
@@ -764,6 +764,9 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_navigation_bar_animations_title">Enable navigation bar animations</string>
     <string name="morphe_navigation_bar_animations_summary_on">Navigation transitions are animated</string>
     <string name="morphe_navigation_bar_animations_summary_off">Navigation transitions are not animated</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable navigation bar auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may auto-hide</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
@@ -1446,7 +1449,7 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_change_start_page_entry_playlists">Playlists</string>
     <string name="morphe_change_start_page_entry_search">Search</string>
     <string name="morphe_change_start_page_entry_shopping">Shopping</string>
-    <string name="morphe_change_start_page_entry_shorts" translatable="false">Shorts</string>
+    <string name="morphe_change_start_page_entry_shorts">Shorts</string>
     <string name="morphe_change_start_page_entry_sports">Sports</string>
     <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
     <string name="morphe_change_start_page_entry_trending">Trending</string>

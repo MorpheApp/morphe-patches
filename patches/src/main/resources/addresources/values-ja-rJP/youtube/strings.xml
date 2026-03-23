@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">フィード</string>
   <string name="morphe_settings_screen_04_general_title">全般</string>
   <string name="morphe_settings_screen_05_player_title">プレーヤー</string>
+  <string name="morphe_settings_screen_06_shorts_title">ショート</string>
   <string name="morphe_settings_screen_07_seekbar_title">シークバー</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">スワイプ コントロール</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
@@ -341,8 +342,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">絵文字ボタンとタイムスタンプ ボタンは表示されません</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">絵文字ボタンとタイムスタンプ ボタンは表示されます</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタンを非表示</string>
-  <string name="morphe_hide_comments_info_button_summary_on">情報ボタンは表示されません</string>
-  <string name="morphe_hide_comments_info_button_summary_off">情報ボタンは表示されます</string>
+  <string name="morphe_hide_comments_info_button_summary_on">情報ボタン (i アイコン) は表示されません</string>
+  <string name="morphe_hide_comments_info_button_summary_off">情報ボタン (i アイコン) は表示されます</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">コメントのプレビューは表示されません</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">コメントのプレビューは表示されます</string>
@@ -696,8 +697,8 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_summary_off">設定ボタンは表示されません</string>
   <string name="morphe_show_settings_button_index_title">設定ボタンの表示位置</string>
   <string name="morphe_show_settings_button_type_title">設定ボタンの動作</string>
-  <string name="morphe_show_settings_button_type_summary_on">Morphe の設定を開くにはタップしてください</string>
-  <string name="morphe_show_settings_button_type_summary_off">YouTubeの設定を開くにはタップします</string>
+  <string name="morphe_show_settings_button_type_summary_on">タップすると Morphe の設定を開きます</string>
+  <string name="morphe_show_settings_button_type_summary_off">タップすると YouTube の設定を開きます</string>
   <string name="morphe_swap_create_with_notifications_button_title">「作成」と「通知」を入れ替え</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">作成ボタンと通知ボタンが入れ替わります</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">作成ボタンと通知ボタンは入れ替わりません</string>
@@ -718,6 +719,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">ナビゲーション バーのアニメーションを有効化</string>
   <string name="morphe_navigation_bar_animations_summary_on">ナビゲーションの遷移がアニメーション表示されます</string>
   <string name="morphe_navigation_bar_animations_summary_off">ナビゲーションの遷移はアニメーション表示されません</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効にする</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">ナビゲーション バーは自動で非表示になりません</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">ナビゲーション バーが自動で非表示になる場合があります</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
@@ -749,10 +753,10 @@ Second \"item\" text"</string>
   <string name="morphe_show_toolbar_settings_button_summary_off">設定ボタンは表示されません</string>
   <string name="morphe_show_toolbar_settings_button_index_title">設定ボタンの表示位置</string>
   <string name="morphe_show_toolbar_settings_button_type_title">設定ボタンの動作</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary_on">"タップすると Morphe の設定を開きます
-長押しすると YouTube の設定を開きます"</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary_off">"タップすると YouTube の設定を開きます
-長押しすると Morphe の設定を開きます"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"タップすると Morphe の設定を開く
+長押しすると YouTube の設定を開く"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"タップすると YouTube の設定を開く
+長押しすると Morphe の設定を開く"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
   <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューの項目を表示または非表示にします</string>
@@ -1371,6 +1375,7 @@ Automotive レイアウト
   <string name="morphe_change_start_page_entry_playlists">再生リスト</string>
   <string name="morphe_change_start_page_entry_search">検索</string>
   <string name="morphe_change_start_page_entry_shopping">ショッピング</string>
+  <string name="morphe_change_start_page_entry_shorts">ショート</string>
   <string name="morphe_change_start_page_entry_sports">スポーツ</string>
   <string name="morphe_change_start_page_entry_subscriptions">登録チャンネル</string>
   <string name="morphe_change_start_page_entry_trending">急上昇</string>

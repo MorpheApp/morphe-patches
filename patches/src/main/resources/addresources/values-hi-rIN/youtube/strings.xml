@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">खाना</string>
   <string name="morphe_settings_screen_04_general_title">सामान्य</string>
   <string name="morphe_settings_screen_05_player_title">प्लेयर</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">सीकबार</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">सвайप कंट्रोल्स</string>
   <string name="morphe_settings_screen_11_misc_title">अन्य</string>
@@ -717,6 +718,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">नेविगेशन बार एनिमेशन सक्षम करें</string>
   <string name="morphe_navigation_bar_animations_summary_on">नेविगेशन ट्रांज़िशन एनिमेटेड हैं</string>
   <string name="morphe_navigation_bar_animations_summary_off">नेविगेशन ट्रांज़िशन एनिमेटेड नहीं हैं</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">नेविगेशन बार ऑटो-हाइड को निष्क्रिय करें</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">नेविगेशन बार ऑटो-हाइड नहीं होगा</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">नेविगेशन बार ऑटो-हाइड हो सकता है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">स्थिति बार अपारदर्शी है</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">स्थिति बार अपारदर्शी या पारदर्शी है</string>
@@ -1366,6 +1370,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट</string>
   <string name="morphe_change_start_page_entry_search">खोज</string>
   <string name="morphe_change_start_page_entry_shopping">खरीदारी</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">खेल</string>
   <string name="morphe_change_start_page_entry_subscriptions">सदस्यताएँ</string>
   <string name="morphe_change_start_page_entry_trending">ट्रेंडिंग</string>

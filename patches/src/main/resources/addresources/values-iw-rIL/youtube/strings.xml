@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">פיד</string>
   <string name="morphe_settings_screen_04_general_title">כללי</string>
   <string name="morphe_settings_screen_05_player_title">נגן</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">סרגל דילוג</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">פקדי החלקה</string>
   <string name="morphe_settings_screen_11_misc_title">שונות</string>
@@ -716,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">הפעלת אנימציות של שורת הניווט</string>
   <string name="morphe_navigation_bar_animations_summary_on">מעברי ניווט מונפשים</string>
   <string name="morphe_navigation_bar_animations_summary_off">מעברי ניווט אינם מונפשים</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">אתלַרִ הֲיַהִ אב-גֲיַה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">גַהְה בְטֵר אכוֳיַה לֲיַה אב-גֲיַה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">גַהְה בְטֵר אכוֳיַה</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
@@ -1369,6 +1373,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">פלייליסטים</string>
   <string name="morphe_change_start_page_entry_search">חיפוש</string>
   <string name="morphe_change_start_page_entry_shopping">שופינג</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">ספורט</string>
   <string name="morphe_change_start_page_entry_subscriptions">מינויים</string>
   <string name="morphe_change_start_page_entry_trending">הסרטונים החמים</string>
