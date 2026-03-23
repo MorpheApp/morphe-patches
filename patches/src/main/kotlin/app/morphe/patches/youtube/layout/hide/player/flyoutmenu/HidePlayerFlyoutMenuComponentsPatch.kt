@@ -24,7 +24,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentFilter;"
+        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
