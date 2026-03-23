@@ -759,6 +759,9 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_navigation_bar_animations_title">Enable navigation bar animations</string>
     <string name="morphe_navigation_bar_animations_summary_on">Navigation transitions are animated</string>
     <string name="morphe_navigation_bar_animations_summary_off">Navigation transitions are not animated</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable navigation bar auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may auto-hide</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
