@@ -19,7 +19,8 @@
         <item>@string/morphe_custom_branding_name_entry_2</item>
         <item>@string/morphe_custom_branding_name_entry_3</item>
         <item>@string/morphe_custom_branding_name_entry_4</item>
-        <item>@string/morphe_custom_branding_name_entry_5</item>
+        <!-- Set to 99 to avoid touching translations every time -->
+        <item>@string/morphe_custom_branding_name_entry_99</item>
     </string-array>
     <string-array name="morphe_custom_branding_name_custom_entry_values">
         <item>1</item>

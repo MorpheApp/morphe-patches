@@ -44,16 +44,13 @@ public class CustomBrandingPatch {
     //
     // The most that can be done is to hide a theme from the UI and keep the alias with dummy data.
     public enum BrandingTheme {
-        /**
-         * Original unpatched icon.
-         */
+        /** Original unpatched icon. */
         ORIGINAL,
         LIGHT,
         DARK,
         BLACK,
-        /**
-         * User provided custom icon.
-         */
+        PLAY,
+        /**  User provided custom icon. */
         CUSTOM;
 
         private String packageAndNameIndexToClassAlias(String packageName, int appIndex) {
@@ -61,6 +58,26 @@ public class CustomBrandingPatch {
                 throw new IllegalArgumentException("App index starts at index 1");
             }
             return packageName + ".morphe_" + name().toLowerCase(Locale.US) + '_' + appIndex;
+        }
+
+        /**
+         * Returns the notification icon resource name for this theme.
+         * <p>
+         * Each built-in theme has its own XML vector drawable so the notification icon
+         * matches the selected launcher icon. The CUSTOM theme uses a separate resource
+         * that can be overridden at patch time with either an XML or a PNG supplied by
+         * the user.
+         * <p>
+         * Returns {@code null} for {@link #ORIGINAL} (no override desired).
+         */
+        @Nullable
+        String notificationIconResourceName() {
+            return switch (this) {
+                case ORIGINAL -> null;
+                case CUSTOM -> "morphe_notification_icon_custom";
+                // LIGHT, DARK, BLACK, PLAY – each has its own bundled XML.
+                default ->"morphe_notification_icon_" + name().toLowerCase(Locale.US);
+            };
         }
     }
 
@@ -77,18 +94,13 @@ public class CustomBrandingPatch {
             }
 
             BrandingTheme branding = SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
-            if (branding == BrandingTheme.ORIGINAL) {
+            String iconName = branding.notificationIconResourceName();
+            if (iconName == null) {
                 notificationSmallIcon = 0;
             } else {
-                // Original icon is quantum_ic_video_youtube_white_24
-                String iconName = "morphe_notification_icon";
-                if (branding == BrandingTheme.CUSTOM) {
-                    iconName += "_custom";
-                }
-
                 notificationSmallIcon = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
                 if (notificationSmallIcon == 0) {
-                    Logger.printException(() -> "Could not load notification small icon");
+                    Logger.printException(() -> "Could not load notification small icon: " + iconName);
                 }
             }
         }
@@ -232,6 +244,11 @@ public class CustomBrandingPatch {
                 componentToEnable = defaultComponent;
                 componentsToDisable.remove(defaultComponent);
             }
+
+            // Reset cached notification icon so it is re-resolved with the current theme
+            // on the next notification. This handles the case where setBranding() is called
+            // more than once in a session (e.g. after a settings change).
+            notificationSmallIcon = null;
 
             for (ComponentName disable : componentsToDisable) {
                 pm.setComponentEnabledSetting(disable,
