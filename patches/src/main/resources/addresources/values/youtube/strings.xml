@@ -154,6 +154,8 @@ Changes include:
     <string name="morphe_hide_doodles_title">Hide YouTube Doodles</string>
     <string name="morphe_hide_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
     <string name="morphe_hide_doodles_summary_off">YouTube Doodles animation on the logo is shown</string>
+• If Hide Doodles is turned off it might break Custom Header
+    
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_bar_summary_on">Channel bar is hidden</string>
     <string name="morphe_hide_channel_bar_summary_off">Channel bar is shown</string>
