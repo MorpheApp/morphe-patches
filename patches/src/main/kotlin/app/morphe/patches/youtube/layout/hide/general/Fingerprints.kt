@@ -408,8 +408,6 @@ internal object ChannelTabRendererFingerprint : Fingerprint(
 )
 
 internal object EngagementPanelInformationButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
-    returnType = "V",
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "information_button"),
